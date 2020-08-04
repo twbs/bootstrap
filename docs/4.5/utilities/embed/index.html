@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Create responsive video or slideshow embeds based on the width of the parent by creating an intrinsic ratio that scales on any device.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/utilities/embed/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -476,19 +477,22 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Embeds</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/utilities/embed.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Embeds</h1>
+          </div>
           <p class="bd-lead">Create responsive video or slideshow embeds based on the width of the parent by creating an intrinsic ratio that scales on any device.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="about">About</h2>
 
-<p>Rules are directly applied to <code class="highlighter-rouge">&lt;iframe&gt;</code>, <code class="highlighter-rouge">&lt;embed&gt;</code>, <code class="highlighter-rouge">&lt;video&gt;</code>, and <code class="highlighter-rouge">&lt;object&gt;</code> elements; optionally use an explicit descendant class <code class="highlighter-rouge">.embed-responsive-item</code> when you want to match the styling for other attributes.</p>
+<p>Rules are directly applied to <code class="language-plaintext highlighter-rouge">&lt;iframe&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;embed&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;video&gt;</code>, and <code class="language-plaintext highlighter-rouge">&lt;object&gt;</code> elements; optionally use an explicit descendant class <code class="language-plaintext highlighter-rouge">.embed-responsive-item</code> when you want to match the styling for other attributes.</p>
 
-<p><strong>Pro-Tip!</strong> You don’t need to include <code class="highlighter-rouge">frameborder="0"</code> in your <code class="highlighter-rouge">&lt;iframe&gt;</code>s as we override that for you.</p>
+<p><strong>Pro-Tip!</strong> You don’t need to include <code class="language-plaintext highlighter-rouge">frameborder="0"</code> in your <code class="language-plaintext highlighter-rouge">&lt;iframe&gt;</code>s as we override that for you.</p>
 
 <h2 id="example">Example</h2>
 
-<p>Wrap any embed like an <code class="highlighter-rouge">&lt;iframe&gt;</code> in a parent element with <code class="highlighter-rouge">.embed-responsive</code> and an aspect ratio. The <code class="highlighter-rouge">.embed-responsive-item</code> isn’t strictly required, but we encourage it.</p>
+<p>Wrap any embed like an <code class="language-plaintext highlighter-rouge">&lt;iframe&gt;</code> in a parent element with <code class="language-plaintext highlighter-rouge">.embed-responsive</code> and an aspect ratio. The <code class="language-plaintext highlighter-rouge">.embed-responsive-item</code> isn’t strictly required, but we encourage it.</p>
 
 <div class="bd-example">
 <div class="embed-responsive embed-responsive-16by9">
@@ -523,7 +527,7 @@
   <span class="nt">&lt;iframe</span> <span class="na">class=</span><span class="s">"embed-responsive-item"</span> <span class="na">src=</span><span class="s">"..."</span><span class="nt">&gt;&lt;/iframe&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
-<p>Within <code class="highlighter-rouge">_variables.scss</code>, you can change the aspect ratios you want to use. Here’s an example of the <code class="highlighter-rouge">$embed-responsive-aspect-ratios</code> list:</p>
+<p>Within <code class="language-plaintext highlighter-rouge">_variables.scss</code>, you can change the aspect ratios you want to use. Here’s an example of the <code class="language-plaintext highlighter-rouge">$embed-responsive-aspect-ratios</code> list:</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nv">$embed-responsive-aspect-ratios</span><span class="p">:</span> <span class="p">(</span>
   <span class="p">(</span><span class="m">21</span> <span class="m">9</span><span class="p">)</span><span class="o">,</span>
@@ -538,6 +542,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Documentation and examples for Bootstrap’s media object to construct highly repetitive components like blog comments, tweets, and the like.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/components/media-object/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -478,7 +479,10 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Media object</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/components/media-object.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Media object</h1>
+          </div>
           <p class="bd-lead">Documentation and examples for Bootstrap’s media object to construct highly repetitive components like blog comments, tweets, and the like.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
@@ -486,7 +490,7 @@
 
 <p>The <a href="http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/">media object</a> helps build complex and repetitive components where some media is positioned alongside content that doesn’t wrap around said media. Plus, it does this with only two required classes thanks to flexbox.</p>
 
-<p>Below is an example of a single media object. Only two classes are required—the wrapping <code class="highlighter-rouge">.media</code> and the <code class="highlighter-rouge">.media-body</code> around your content. Optional padding and margin can be controlled through <a href="/docs/4.5/utilities/spacing/">spacing utilities</a>.</p>
+<p>Below is an example of a single media object. Only two classes are required—the wrapping <code class="language-plaintext highlighter-rouge">.media</code> and the <code class="language-plaintext highlighter-rouge">.media-body</code> around your content. Optional padding and margin can be controlled through <a href="/docs/4.5/utilities/spacing/">spacing utilities</a>.</p>
 
 <div class="bd-example">
 <div class="media">
@@ -508,14 +512,14 @@
 <div class="bd-callout bd-callout-warning">
 <h5 id="flexbug-12-inline-elements-arent-treated-as-flex-items">Flexbug #12: Inline elements aren’t treated as flex items</h5>
 
-<p>Internet Explorer 10-11 do not render inline elements like links or images (or <code class="highlighter-rouge">::before</code> and <code class="highlighter-rouge">::after</code> pseudo-elements) as flex items. The only workaround is to set a non-inline <code class="highlighter-rouge">display</code> value (e.g., <code class="highlighter-rouge">block</code>, <code class="highlighter-rouge">inline-block</code>, or <code class="highlighter-rouge">flex</code>). We suggest using <code class="highlighter-rouge">.d-flex</code>, one of our <a href="/docs/4.5/utilities/display/">display utilities</a>, as an easy fix.</p>
+<p>Internet Explorer 10-11 do not render inline elements like links or images (or <code class="language-plaintext highlighter-rouge">::before</code> and <code class="language-plaintext highlighter-rouge">::after</code> pseudo-elements) as flex items. The only workaround is to set a non-inline <code class="language-plaintext highlighter-rouge">display</code> value (e.g., <code class="language-plaintext highlighter-rouge">block</code>, <code class="language-plaintext highlighter-rouge">inline-block</code>, or <code class="language-plaintext highlighter-rouge">flex</code>). We suggest using <code class="language-plaintext highlighter-rouge">.d-flex</code>, one of our <a href="/docs/4.5/utilities/display/">display utilities</a>, as an easy fix.</p>
 
 <p><strong>Source:</strong> <a href="https://github.com/philipwalton/flexbugs#flexbug-12">Flexbugs on GitHub</a></p>
 </div>
 
 <h2 id="nesting">Nesting</h2>
 
-<p>Media objects can be infinitely nested, though we suggest you stop at some point. Place nested <code class="highlighter-rouge">.media</code> within the <code class="highlighter-rouge">.media-body</code> of a parent media object.</p>
+<p>Media objects can be infinitely nested, though we suggest you stop at some point. Place nested <code class="language-plaintext highlighter-rouge">.media</code> within the <code class="language-plaintext highlighter-rouge">.media-body</code> of a parent media object.</p>
 
 <div class="bd-example">
 <div class="media">
@@ -556,7 +560,7 @@
 
 <h2 id="alignment">Alignment</h2>
 
-<p>Media in a media object can be aligned with flexbox utilities to the top (default), middle, or end of your <code class="highlighter-rouge">.media-body</code> content.</p>
+<p>Media in a media object can be aligned with flexbox utilities to the top (default), middle, or end of your <code class="language-plaintext highlighter-rouge">.media-body</code> content.</p>
 
 <div class="bd-example">
 <div class="media">
@@ -617,7 +621,7 @@
 
 <h2 id="order">Order</h2>
 
-<p>Change the order of content in media objects by modifying the HTML itself, or by adding some custom flexbox CSS to set the <code class="highlighter-rouge">order</code> property (to an integer of your choosing).</p>
+<p>Change the order of content in media objects by modifying the HTML itself, or by adding some custom flexbox CSS to set the <code class="language-plaintext highlighter-rouge">order</code> property (to an integer of your choosing).</p>
 
 <div class="bd-example">
 <div class="media">
@@ -638,7 +642,7 @@
 
 <h2 id="media-list">Media list</h2>
 
-<p>Because the media object has so few structural requirements, you can also use these classes on list HTML elements. On your <code class="highlighter-rouge">&lt;ul&gt;</code> or <code class="highlighter-rouge">&lt;ol&gt;</code>, add the <code class="highlighter-rouge">.list-unstyled</code> to remove any browser default list styles, and then apply <code class="highlighter-rouge">.media</code> to your <code class="highlighter-rouge">&lt;li&gt;</code>s. As always, use spacing utilities wherever needed to fine tune.</p>
+<p>Because the media object has so few structural requirements, you can also use these classes on list HTML elements. On your <code class="language-plaintext highlighter-rouge">&lt;ul&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;ol&gt;</code>, add the <code class="language-plaintext highlighter-rouge">.list-unstyled</code> to remove any browser default list styles, and then apply <code class="language-plaintext highlighter-rouge">.media</code> to your <code class="language-plaintext highlighter-rouge">&lt;li&gt;</code>s. As always, use spacing utilities wherever needed to fine tune.</p>
 
 <div class="bd-example">
 <ul class="list-unstyled">
@@ -695,6 +699,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

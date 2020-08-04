@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/components/scrollspy/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -491,7 +492,10 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Scrollspy</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/components/scrollspy.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Scrollspy</h1>
+          </div>
           <p class="bd-lead">Automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
@@ -500,14 +504,14 @@
 <p>Scrollspy has a few requirements to function properly:</p>
 
 <ul>
-  <li>If you’re building our JavaScript from source, it <a href="/docs/4.5/getting-started/javascript/#util">requires <code class="highlighter-rouge">util.js</code></a>.</li>
+  <li>If you’re building our JavaScript from source, it <a href="/docs/4.5/getting-started/javascript/#util">requires <code class="language-plaintext highlighter-rouge">util.js</code></a>.</li>
   <li>It must be used on a Bootstrap <a href="/docs/4.5/components/navs/">nav component</a> or <a href="/docs/4.5/components/list-group/">list group</a>.</li>
-  <li>Scrollspy requires <code class="highlighter-rouge">position: relative;</code> on the element you’re spying on, usually the <code class="highlighter-rouge">&lt;body&gt;</code>.</li>
-  <li>When spying on elements other than the <code class="highlighter-rouge">&lt;body&gt;</code>, be sure to have a <code class="highlighter-rouge">height</code> set and <code class="highlighter-rouge">overflow-y: scroll;</code> applied.</li>
-  <li>Anchors (<code class="highlighter-rouge">&lt;a&gt;</code>) are required and must point to an element with that <code class="highlighter-rouge">id</code>.</li>
+  <li>Scrollspy requires <code class="language-plaintext highlighter-rouge">position: relative;</code> on the element you’re spying on, usually the <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code>.</li>
+  <li>When spying on elements other than the <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code>, be sure to have a <code class="language-plaintext highlighter-rouge">height</code> set and <code class="language-plaintext highlighter-rouge">overflow-y: scroll;</code> applied.</li>
+  <li>Anchors (<code class="language-plaintext highlighter-rouge">&lt;a&gt;</code>) are required and must point to an element with that <code class="language-plaintext highlighter-rouge">id</code>.</li>
 </ul>
 
-<p>When successfully implemented, your nav or list group will update accordingly, moving the <code class="highlighter-rouge">.active</code> class from one item to the next based on their associated targets.</p>
+<p>When successfully implemented, your nav or list group will update accordingly, moving the <code class="language-plaintext highlighter-rouge">.active</code> class from one item to the next based on their associated targets.</p>
 
 <h2 id="example-in-navbar">Example in navbar</h2>
 
@@ -585,7 +589,7 @@
 
 <h2 id="example-with-nested-nav">Example with nested nav</h2>
 
-<p>Scrollspy also works with nested <code class="highlighter-rouge">.nav</code>s. If a nested <code class="highlighter-rouge">.nav</code> is <code class="highlighter-rouge">.active</code>, its parents will also be <code class="highlighter-rouge">.active</code>. Scroll the area next to the navbar and watch the active class change.</p>
+<p>Scrollspy also works with nested <code class="language-plaintext highlighter-rouge">.nav</code>s. If a nested <code class="language-plaintext highlighter-rouge">.nav</code> is <code class="language-plaintext highlighter-rouge">.active</code>, its parents will also be <code class="language-plaintext highlighter-rouge">.active</code>. Scroll the area next to the navbar and watch the active class change.</p>
 
 <div class="bd-example">
   <div class="row">
@@ -664,7 +668,7 @@
 
 <h2 id="example-with-list-group">Example with list-group</h2>
 
-<p>Scrollspy also works with <code class="highlighter-rouge">.list-group</code>s. Scroll the area next to the list group and watch the active class change.</p>
+<p>Scrollspy also works with <code class="language-plaintext highlighter-rouge">.list-group</code>s. Scroll the area next to the list group and watch the active class change.</p>
 
 <div class="bd-example">
   <div class="row">
@@ -712,7 +716,7 @@
 
 <h3 id="via-data-attributes">Via data attributes</h3>
 
-<p>To easily add scrollspy behavior to your topbar navigation, add <code class="highlighter-rouge">data-spy="scroll"</code> to the element you want to spy on (most typically this would be the <code class="highlighter-rouge">&lt;body&gt;</code>). Then add the <code class="highlighter-rouge">data-target</code> attribute with the ID or class of the parent element of any Bootstrap <code class="highlighter-rouge">.nav</code> component.</p>
+<p>To easily add scrollspy behavior to your topbar navigation, add <code class="language-plaintext highlighter-rouge">data-spy="scroll"</code> to the element you want to spy on (most typically this would be the <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code>). Then add the <code class="language-plaintext highlighter-rouge">data-target</code> attribute with the ID or class of the parent element of any Bootstrap <code class="language-plaintext highlighter-rouge">.nav</code> component.</p>
 
 <figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">body</span> <span class="p">{</span>
   <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
@@ -730,25 +734,25 @@
 
 <h3 id="via-javascript">Via JavaScript</h3>
 
-<p>After adding <code class="highlighter-rouge">position: relative;</code> in your CSS, call the scrollspy via JavaScript:</p>
+<p>After adding <code class="language-plaintext highlighter-rouge">position: relative;</code> in your CSS, call the scrollspy via JavaScript:</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">body</span><span class="dl">'</span><span class="p">).</span><span class="nx">scrollspy</span><span class="p">({</span> <span class="na">target</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#navbar-example</span><span class="dl">'</span> <span class="p">})</span></code></pre></figure>
 
 <div class="bd-callout bd-callout-danger">
 <h4 id="resolvable-id-targets-required">Resolvable ID targets required</h4>
 
-<p>Navbar links must have resolvable id targets. For example, a <code class="highlighter-rouge">&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the DOM like <code class="highlighter-rouge">&lt;div id="home"&gt;&lt;/div&gt;</code>.</p>
+<p>Navbar links must have resolvable id targets. For example, a <code class="language-plaintext highlighter-rouge">&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the DOM like <code class="language-plaintext highlighter-rouge">&lt;div id="home"&gt;&lt;/div&gt;</code>.</p>
 </div>
 
 <div class="bd-callout bd-callout-info">
-<h4 id="non-visible-target-elements-ignored">Non-<code class="highlighter-rouge">:visible</code> target elements ignored</h4>
+<h4 id="non-visible-target-elements-ignored">Non-<code class="language-plaintext highlighter-rouge">:visible</code> target elements ignored</h4>
 
-<p>Target elements that are not <a href="https://api.jquery.com/visible-selector/"><code class="highlighter-rouge">:visible</code> according to jQuery</a> will be ignored and their corresponding nav items will never be highlighted.</p>
+<p>Target elements that are not <a href="https://api.jquery.com/visible-selector/"><code class="language-plaintext highlighter-rouge">:visible</code> according to jQuery</a> will be ignored and their corresponding nav items will never be highlighted.</p>
 </div>
 
 <h3 id="methods">Methods</h3>
 
-<h4 id="scrollspyrefresh"><code class="highlighter-rouge">.scrollspy('refresh')</code></h4>
+<h4 id="scrollspyrefresh"><code class="language-plaintext highlighter-rouge">.scrollspy('refresh')</code></h4>
 
 <p>When using scrollspy in conjunction with adding or removing of elements from the DOM, you’ll need to call the refresh method like so:</p>
 
@@ -756,13 +760,13 @@
   <span class="kd">var</span> <span class="nx">$spy</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">scrollspy</span><span class="p">(</span><span class="dl">'</span><span class="s1">refresh</span><span class="dl">'</span><span class="p">)</span>
 <span class="p">})</span></code></pre></figure>
 
-<h4 id="scrollspydispose"><code class="highlighter-rouge">.scrollspy('dispose')</code></h4>
+<h4 id="scrollspydispose"><code class="language-plaintext highlighter-rouge">.scrollspy('dispose')</code></h4>
 
 <p>Destroys an element’s scrollspy.</p>
 
 <h3 id="options">Options</h3>
 
-<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code class="highlighter-rouge">data-</code>, as in <code class="highlighter-rouge">data-offset=""</code>.</p>
+<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code class="language-plaintext highlighter-rouge">data-</code>, as in <code class="language-plaintext highlighter-rouge">data-offset=""</code>.</p>
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -822,6 +826,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

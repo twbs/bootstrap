@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Reboot, a collection of element-specific CSS changes in a single file, kickstart Bootstrap to provide an elegant, consistent, and simple baseline to build upon.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/content/reboot/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -494,32 +495,35 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Reboot</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/content/reboot.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Reboot</h1>
+          </div>
           <p class="bd-lead">Reboot, a collection of element-specific CSS changes in a single file, kickstart Bootstrap to provide an elegant, consistent, and simple baseline to build upon.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="approach">Approach</h2>
 
-<p>Reboot builds upon Normalize, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some <code class="highlighter-rouge">&lt;table&gt;</code> styles for a simpler baseline and later provide <code class="highlighter-rouge">.table</code>, <code class="highlighter-rouge">.table-bordered</code>, and more.</p>
+<p>Reboot builds upon Normalize, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some <code class="language-plaintext highlighter-rouge">&lt;table&gt;</code> styles for a simpler baseline and later provide <code class="language-plaintext highlighter-rouge">.table</code>, <code class="language-plaintext highlighter-rouge">.table-bordered</code>, and more.</p>
 
 <p>Here are our guidelines and reasons for choosing what to override in Reboot:</p>
 
 <ul>
-  <li>Update some browser default values to use <code class="highlighter-rouge">rem</code>s instead of <code class="highlighter-rouge">em</code>s for scalable component spacing.</li>
-  <li>Avoid <code class="highlighter-rouge">margin-top</code>. Vertical margins can collapse, yielding unexpected results. More importantly though, a single direction of <code class="highlighter-rouge">margin</code> is a simpler mental model.</li>
-  <li>For easier scaling across device sizes, block elements should use <code class="highlighter-rouge">rem</code>s for <code class="highlighter-rouge">margin</code>s.</li>
-  <li>Keep declarations of <code class="highlighter-rouge">font</code>-related properties to a minimum, using <code class="highlighter-rouge">inherit</code> whenever possible.</li>
+  <li>Update some browser default values to use <code class="language-plaintext highlighter-rouge">rem</code>s instead of <code class="language-plaintext highlighter-rouge">em</code>s for scalable component spacing.</li>
+  <li>Avoid <code class="language-plaintext highlighter-rouge">margin-top</code>. Vertical margins can collapse, yielding unexpected results. More importantly though, a single direction of <code class="language-plaintext highlighter-rouge">margin</code> is a simpler mental model.</li>
+  <li>For easier scaling across device sizes, block elements should use <code class="language-plaintext highlighter-rouge">rem</code>s for <code class="language-plaintext highlighter-rouge">margin</code>s.</li>
+  <li>Keep declarations of <code class="language-plaintext highlighter-rouge">font</code>-related properties to a minimum, using <code class="language-plaintext highlighter-rouge">inherit</code> whenever possible.</li>
 </ul>
 
 <h2 id="page-defaults">Page defaults</h2>
 
-<p>The <code class="highlighter-rouge"><span class="nt">&lt;html&gt;</span></code> and <code class="highlighter-rouge">&lt;body&gt;</code> elements are updated to provide better page-wide defaults. More specifically:</p>
+<p>The <code class="language-plaintext highlighter-rouge">&lt;html&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> elements are updated to provide better page-wide defaults. More specifically:</p>
 
 <ul>
-  <li>The <code class="highlighter-rouge">box-sizing</code> is globally set on every element—including <code class="highlighter-rouge">*::before</code> and <code class="highlighter-rouge">*::after</code>, to <code class="highlighter-rouge">border-box</code>. This ensures that the declared width of element is never exceeded due to padding or border.</li>
-  <li>No base <code class="highlighter-rouge">font-size</code> is declared on the <code class="highlighter-rouge"><span class="nt">&lt;html&gt;</span></code>, but <code class="highlighter-rouge">16px</code> is assumed (the browser default). <code class="highlighter-rouge">font-size: 1rem</code> is applied on the <code class="highlighter-rouge">&lt;body&gt;</code> for easy responsive type-scaling via media queries while respecting user preferences and ensuring a more accessible approach.</li>
-  <li>The <code class="highlighter-rouge">&lt;body&gt;</code> also sets a global <code class="highlighter-rouge">font-family</code>, <code class="highlighter-rouge">line-height</code>, and <code class="highlighter-rouge">text-align</code>. This is inherited later by some form elements to prevent font inconsistencies.</li>
-  <li>For safety, the <code class="highlighter-rouge">&lt;body&gt;</code> has a declared <code class="highlighter-rouge">background-color</code>, defaulting to <code class="highlighter-rouge">#fff</code>.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">box-sizing</code> is globally set on every element—including <code class="language-plaintext highlighter-rouge">*::before</code> and <code class="language-plaintext highlighter-rouge">*::after</code>, to <code class="language-plaintext highlighter-rouge">border-box</code>. This ensures that the declared width of element is never exceeded due to padding or border.</li>
+  <li>No base <code class="language-plaintext highlighter-rouge">font-size</code> is declared on the <code class="language-plaintext highlighter-rouge">&lt;html&gt;</code>, but <code class="language-plaintext highlighter-rouge">16px</code> is assumed (the browser default). <code class="language-plaintext highlighter-rouge">font-size: 1rem</code> is applied on the <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> for easy responsive type-scaling via media queries while respecting user preferences and ensuring a more accessible approach.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> also sets a global <code class="language-plaintext highlighter-rouge">font-family</code>, <code class="language-plaintext highlighter-rouge">line-height</code>, and <code class="language-plaintext highlighter-rouge">text-align</code>. This is inherited later by some form elements to prevent font inconsistencies.</li>
+  <li>For safety, the <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> has a declared <code class="language-plaintext highlighter-rouge">background-color</code>, defaulting to <code class="language-plaintext highlighter-rouge">#fff</code>.</li>
 </ul>
 
 <h2 id="native-font-stack">Native font stack</h2>
@@ -544,11 +548,11 @@
   <span class="c1">// Emoji fonts</span>
   <span class="s2">"Apple Color Emoji"</span><span class="o">,</span> <span class="s2">"Segoe UI Emoji"</span><span class="o">,</span> <span class="s2">"Segoe UI Symbol"</span><span class="o">,</span> <span class="s2">"Noto Color Emoji"</span> <span class="o">!</span><span class="nt">default</span><span class="o">;</span></code></pre></figure>
 
-<p>This <code class="highlighter-rouge">font-family</code> is applied to the <code class="highlighter-rouge">&lt;body&gt;</code> and automatically inherited globally throughout Bootstrap. To switch the global <code class="highlighter-rouge">font-family</code>, update <code class="highlighter-rouge">$font-family-base</code> and recompile Bootstrap.</p>
+<p>This <code class="language-plaintext highlighter-rouge">font-family</code> is applied to the <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> and automatically inherited globally throughout Bootstrap. To switch the global <code class="language-plaintext highlighter-rouge">font-family</code>, update <code class="language-plaintext highlighter-rouge">$font-family-base</code> and recompile Bootstrap.</p>
 
 <h2 id="headings-and-paragraphs">Headings and paragraphs</h2>
 
-<p>All heading elements—e.g., <code class="highlighter-rouge">&lt;h1&gt;</code>—and <code class="highlighter-rouge">&lt;p&gt;</code> are reset to have their <code class="highlighter-rouge">margin-top</code> removed. Headings have <code class="highlighter-rouge">margin-bottom: .5rem</code> added and paragraphs <code class="highlighter-rouge">margin-bottom: 1rem</code> for easy spacing.</p>
+<p>All heading elements—e.g., <code class="language-plaintext highlighter-rouge">&lt;h1&gt;</code>—and <code class="language-plaintext highlighter-rouge">&lt;p&gt;</code> are reset to have their <code class="language-plaintext highlighter-rouge">margin-top</code> removed. Headings have <code class="language-plaintext highlighter-rouge">margin-bottom: .5rem</code> added and paragraphs <code class="language-plaintext highlighter-rouge">margin-bottom: 1rem</code> for easy spacing.</p>
 
 <table>
   <thead>
@@ -560,42 +564,42 @@
   <tbody>
     <tr>
       <td>
-        <p><code class="highlighter-rouge">&lt;h1&gt;&lt;/h1&gt;</code></p>
+        <p><code class="language-plaintext highlighter-rouge">&lt;h1&gt;&lt;/h1&gt;</code></p>
 
       </td>
       <td><span class="h1">h1. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        <p><code class="highlighter-rouge">&lt;h2&gt;&lt;/h2&gt;</code></p>
+        <p><code class="language-plaintext highlighter-rouge">&lt;h2&gt;&lt;/h2&gt;</code></p>
 
       </td>
       <td><span class="h2">h2. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        <p><code class="highlighter-rouge">&lt;h3&gt;&lt;/h3&gt;</code></p>
+        <p><code class="language-plaintext highlighter-rouge">&lt;h3&gt;&lt;/h3&gt;</code></p>
 
       </td>
       <td><span class="h3">h3. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        <p><code class="highlighter-rouge">&lt;h4&gt;&lt;/h4&gt;</code></p>
+        <p><code class="language-plaintext highlighter-rouge">&lt;h4&gt;&lt;/h4&gt;</code></p>
 
       </td>
       <td><span class="h4">h4. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        <p><code class="highlighter-rouge">&lt;h5&gt;&lt;/h5&gt;</code></p>
+        <p><code class="language-plaintext highlighter-rouge">&lt;h5&gt;&lt;/h5&gt;</code></p>
 
       </td>
       <td><span class="h5">h5. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        <p><code class="highlighter-rouge">&lt;h6&gt;&lt;/h6&gt;</code></p>
+        <p><code class="language-plaintext highlighter-rouge">&lt;h6&gt;&lt;/h6&gt;</code></p>
 
       </td>
       <td><span class="h6">h6. Bootstrap heading</span></td>
@@ -605,7 +609,7 @@
 
 <h2 id="lists">Lists</h2>
 
-<p>All lists—<code class="highlighter-rouge">&lt;ul&gt;</code>, <code class="highlighter-rouge">&lt;ol&gt;</code>, and <code class="highlighter-rouge">&lt;dl&gt;</code>—have their <code class="highlighter-rouge">margin-top</code> removed and a <code class="highlighter-rouge">margin-bottom: 1rem</code>. Nested lists have no <code class="highlighter-rouge">margin-bottom</code>.</p>
+<p>All lists—<code class="language-plaintext highlighter-rouge">&lt;ul&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;ol&gt;</code>, and <code class="language-plaintext highlighter-rouge">&lt;dl&gt;</code>—have their <code class="language-plaintext highlighter-rouge">margin-top</code> removed and a <code class="language-plaintext highlighter-rouge">margin-bottom: 1rem</code>. Nested lists have no <code class="language-plaintext highlighter-rouge">margin-bottom</code>.</p>
 
 <div class="bd-example">
 
@@ -641,7 +645,7 @@
 
 </div>
 
-<p>For simpler styling, clear hierarchy, and better spacing, description lists have updated <code class="highlighter-rouge">margin</code>s. <code class="highlighter-rouge">&lt;dd&gt;</code>s reset <code class="highlighter-rouge">margin-left</code> to <code class="highlighter-rouge">0</code> and add <code class="highlighter-rouge">margin-bottom: .5rem</code>. <code class="highlighter-rouge">&lt;dt&gt;</code>s are <strong>bolded</strong>.</p>
+<p>For simpler styling, clear hierarchy, and better spacing, description lists have updated <code class="language-plaintext highlighter-rouge">margin</code>s. <code class="language-plaintext highlighter-rouge">&lt;dd&gt;</code>s reset <code class="language-plaintext highlighter-rouge">margin-left</code> to <code class="language-plaintext highlighter-rouge">0</code> and add <code class="language-plaintext highlighter-rouge">margin-bottom: .5rem</code>. <code class="language-plaintext highlighter-rouge">&lt;dt&gt;</code>s are <strong>bolded</strong>.</p>
 
 <div class="bd-example">
   <dl>
@@ -657,7 +661,7 @@
 
 <h2 id="preformatted-text">Preformatted text</h2>
 
-<p>The <code class="highlighter-rouge">&lt;pre&gt;</code> element is reset to remove its <code class="highlighter-rouge">margin-top</code> and use <code class="highlighter-rouge">rem</code> units for its <code class="highlighter-rouge">margin-bottom</code>.</p>
+<p>The <code class="language-plaintext highlighter-rouge">&lt;pre&gt;</code> element is reset to remove its <code class="language-plaintext highlighter-rouge">margin-top</code> and use <code class="language-plaintext highlighter-rouge">rem</code> units for its <code class="language-plaintext highlighter-rouge">margin-bottom</code>.</p>
 
 <div class="bd-example">
 <pre>
@@ -669,7 +673,7 @@
 
 <h2 id="tables">Tables</h2>
 
-<p>Tables are slightly adjusted to style <code class="highlighter-rouge">&lt;caption&gt;</code>s, collapse borders, and ensure consistent <code class="highlighter-rouge">text-align</code> throughout. Additional changes for borders, padding, and more come with <a href="/docs/4.5/content/tables/">the <code class="highlighter-rouge">.table</code> class</a>.</p>
+<p>Tables are slightly adjusted to style <code class="language-plaintext highlighter-rouge">&lt;caption&gt;</code>s, collapse borders, and ensure consistent <code class="language-plaintext highlighter-rouge">text-align</code> throughout. Additional changes for borders, padding, and more come with <a href="/docs/4.5/content/tables/">the <code class="language-plaintext highlighter-rouge">.table</code> class</a>.</p>
 
 <div class="bd-example">
   <table>
@@ -712,12 +716,12 @@
 <p>Various form elements have been rebooted for simpler base styles. Here are some of the most notable changes:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">&lt;fieldset&gt;</code>s have no borders, padding, or margin so they can be easily used as wrappers for individual inputs or groups of inputs.</li>
-  <li><code class="highlighter-rouge">&lt;legend&gt;</code>s, like fieldsets, have also been restyled to be displayed as a heading of sorts.</li>
-  <li><code class="highlighter-rouge">&lt;label&gt;</code>s are set to <code class="highlighter-rouge">display: inline-block</code> to allow <code class="highlighter-rouge">margin</code> to be applied.</li>
-  <li><code class="highlighter-rouge">&lt;input&gt;</code>s, <code class="highlighter-rouge">&lt;select&gt;</code>s, <code class="highlighter-rouge">&lt;textarea&gt;</code>s, and <code class="highlighter-rouge">&lt;button&gt;</code>s are mostly addressed by Normalize, but Reboot removes their <code class="highlighter-rouge">margin</code> and sets <code class="highlighter-rouge">line-height: inherit</code>, too.</li>
-  <li><code class="highlighter-rouge">&lt;textarea&gt;</code>s are modified to only be resizable vertically as horizontal resizing often “breaks” page layout.</li>
-  <li><code class="highlighter-rouge">&lt;button&gt;</code>s and <code class="highlighter-rouge">&lt;input&gt;</code> button elements have <code class="highlighter-rouge">cursor: pointer</code> when <code class="highlighter-rouge">:not(:disabled)</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;fieldset&gt;</code>s have no borders, padding, or margin so they can be easily used as wrappers for individual inputs or groups of inputs.</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;legend&gt;</code>s, like fieldsets, have also been restyled to be displayed as a heading of sorts.</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;label&gt;</code>s are set to <code class="language-plaintext highlighter-rouge">display: inline-block</code> to allow <code class="language-plaintext highlighter-rouge">margin</code> to be applied.</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;input&gt;</code>s, <code class="language-plaintext highlighter-rouge">&lt;select&gt;</code>s, <code class="language-plaintext highlighter-rouge">&lt;textarea&gt;</code>s, and <code class="language-plaintext highlighter-rouge">&lt;button&gt;</code>s are mostly addressed by Normalize, but Reboot removes their <code class="language-plaintext highlighter-rouge">margin</code> and sets <code class="language-plaintext highlighter-rouge">line-height: inherit</code>, too.</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;textarea&gt;</code>s are modified to only be resizable vertically as horizontal resizing often “breaks” page layout.</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;button&gt;</code>s and <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> button elements have <code class="language-plaintext highlighter-rouge">cursor: pointer</code> when <code class="language-plaintext highlighter-rouge">:not(:disabled)</code>.</li>
 </ul>
 
 <p>These changes, and more, are demonstrated below.</p>
@@ -808,18 +812,18 @@
 
 <h3 id="pointers-on-buttons">Pointers on buttons</h3>
 
-<p>Reboot includes an enhancement for <code class="highlighter-rouge">role="button"</code> to change the default cursor to <code class="highlighter-rouge">pointer</code>. Add this attribute to elements to help indicate elements are interactive. This role isn’t necessary for <code class="highlighter-rouge">&lt;button&gt;</code> elements, which get their own <code class="highlighter-rouge">cursor</code> change.</p>
+<p>Reboot includes an enhancement for <code class="language-plaintext highlighter-rouge">role="button"</code> to change the default cursor to <code class="language-plaintext highlighter-rouge">pointer</code>. Add this attribute to elements to help indicate elements are interactive. This role isn’t necessary for <code class="language-plaintext highlighter-rouge">&lt;button&gt;</code> elements, which get their own <code class="language-plaintext highlighter-rouge">cursor</code> change.</p>
 
 <div class="bd-example">
-<span role="button">Non-button element button</span>
+<span role="button" tabindex="0">Non-button element button</span>
 </div>
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;span</span> <span class="na">role=</span><span class="s">"button"</span><span class="nt">&gt;</span>Non-button element button<span class="nt">&lt;/span&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;span</span> <span class="na">role=</span><span class="s">"button"</span> <span class="na">tabindex=</span><span class="s">"0"</span><span class="nt">&gt;</span>Non-button element button<span class="nt">&lt;/span&gt;</span></code></pre></figure>
 
 <h2 id="misc-elements">Misc elements</h2>
 
 <h3 id="address">Address</h3>
 
-<p>The <code class="highlighter-rouge">&lt;address&gt;</code> element is updated to reset the browser default <code class="highlighter-rouge">font-style</code> from <code class="highlighter-rouge">italic</code> to <code class="highlighter-rouge">normal</code>. <code class="highlighter-rouge">line-height</code> is also now inherited, and <code class="highlighter-rouge">margin-bottom: 1rem</code> has been added. <code class="highlighter-rouge">&lt;address&gt;</code>s are for presenting contact information for the nearest ancestor (or an entire body of work). Preserve formatting by ending lines with <code class="highlighter-rouge">&lt;br&gt;</code>.</p>
+<p>The <code class="language-plaintext highlighter-rouge">&lt;address&gt;</code> element is updated to reset the browser default <code class="language-plaintext highlighter-rouge">font-style</code> from <code class="language-plaintext highlighter-rouge">italic</code> to <code class="language-plaintext highlighter-rouge">normal</code>. <code class="language-plaintext highlighter-rouge">line-height</code> is also now inherited, and <code class="language-plaintext highlighter-rouge">margin-bottom: 1rem</code> has been added. <code class="language-plaintext highlighter-rouge">&lt;address&gt;</code>s are for presenting contact information for the nearest ancestor (or an entire body of work). Preserve formatting by ending lines with <code class="language-plaintext highlighter-rouge">&lt;br&gt;</code>.</p>
 
 <div class="bd-example">
   <address>
@@ -837,7 +841,7 @@
 
 <h3 id="blockquote">Blockquote</h3>
 
-<p>The default <code class="highlighter-rouge">margin</code> on blockquotes is <code class="highlighter-rouge">1em 40px</code>, so we reset that to <code class="highlighter-rouge">0 0 1rem</code> for something more consistent with other elements.</p>
+<p>The default <code class="language-plaintext highlighter-rouge">margin</code> on blockquotes is <code class="language-plaintext highlighter-rouge">1em 40px</code>, so we reset that to <code class="language-plaintext highlighter-rouge">0 0 1rem</code> for something more consistent with other elements.</p>
 
 <div class="bd-example">
   <blockquote class="blockquote">
@@ -848,7 +852,7 @@
 
 <h3 id="inline-elements">Inline elements</h3>
 
-<p>The <code class="highlighter-rouge">&lt;abbr&gt;</code> element receives basic styling to make it stand out amongst paragraph text.</p>
+<p>The <code class="language-plaintext highlighter-rouge">&lt;abbr&gt;</code> element receives basic styling to make it stand out amongst paragraph text.</p>
 
 <div class="bd-example">
   Nulla <abbr title="attribute">attr</abbr> vitae elit libero, a pharetra augue.
@@ -856,7 +860,7 @@
 
 <h3 id="summary">Summary</h3>
 
-<p>The default <code class="highlighter-rouge">cursor</code> on summary is <code class="highlighter-rouge">text</code>, so we reset that to <code class="highlighter-rouge">pointer</code> to convey that the element can be interacted with by clicking on it.</p>
+<p>The default <code class="language-plaintext highlighter-rouge">cursor</code> on summary is <code class="language-plaintext highlighter-rouge">text</code>, so we reset that to <code class="language-plaintext highlighter-rouge">pointer</code> to convey that the element can be interacted with by clicking on it.</p>
 
 <div class="bd-example">
   <details>
@@ -870,25 +874,25 @@
   </details>
 </div>
 
-<h2 id="html5-hidden-attribute">HTML5 <code class="highlighter-rouge">[hidden]</code> attribute</h2>
+<h2 id="html5-hidden-attribute">HTML5 <code class="language-plaintext highlighter-rouge">[hidden]</code> attribute</h2>
 
-<p>HTML5 adds <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden">a new global attribute named <code class="highlighter-rouge">[hidden]</code></a>, which is styled as <code class="highlighter-rouge">display: none</code> by default. Borrowing an idea from <a href="https://purecss.io/">PureCSS</a>, we improve upon this default by making <code class="highlighter-rouge">[hidden] { display: none !important; }</code> to help prevent its <code class="highlighter-rouge">display</code> from getting accidentally overridden. While <code class="highlighter-rouge">[hidden]</code> isn’t natively supported by IE10, the explicit declaration in our CSS gets around that problem.</p>
+<p>HTML5 adds <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden">a new global attribute named <code class="language-plaintext highlighter-rouge">[hidden]</code></a>, which is styled as <code class="language-plaintext highlighter-rouge">display: none</code> by default. Borrowing an idea from <a href="https://purecss.io/">PureCSS</a>, we improve upon this default by making <code class="language-plaintext highlighter-rouge">[hidden] { display: none !important; }</code> to help prevent its <code class="language-plaintext highlighter-rouge">display</code> from getting accidentally overridden. While <code class="language-plaintext highlighter-rouge">[hidden]</code> isn’t natively supported by IE10, the explicit declaration in our CSS gets around that problem.</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">hidden</span><span class="nt">&gt;</span></code></pre></figure>
 
 <div class="bd-callout bd-callout-warning">
 <h5 id="jquery-incompatibility">jQuery incompatibility</h5>
 
-<p><code class="highlighter-rouge">[hidden]</code> is not compatible with jQuery’s <code class="highlighter-rouge">$(...).hide()</code> and <code class="highlighter-rouge">$(...).show()</code> methods. Therefore, we don’t currently especially endorse <code class="highlighter-rouge">[hidden]</code> over other techniques for managing the <code class="highlighter-rouge">display</code> of elements.</p>
+<p><code class="language-plaintext highlighter-rouge">[hidden]</code> is not compatible with jQuery’s <code class="language-plaintext highlighter-rouge">$(...).hide()</code> and <code class="language-plaintext highlighter-rouge">$(...).show()</code> methods. Therefore, we don’t currently especially endorse <code class="language-plaintext highlighter-rouge">[hidden]</code> over other techniques for managing the <code class="language-plaintext highlighter-rouge">display</code> of elements.</p>
 </div>
 
-<p>To merely toggle the visibility of an element, meaning its <code class="highlighter-rouge">display</code> is not modified and the element can still affect the flow of the document, use <a href="/docs/4.5/utilities/visibility/">the <code class="highlighter-rouge">.invisible</code> class</a> instead.</p>
+<p>To merely toggle the visibility of an element, meaning its <code class="language-plaintext highlighter-rouge">display</code> is not modified and the element can still affect the flow of the document, use <a href="/docs/4.5/utilities/visibility/">the <code class="language-plaintext highlighter-rouge">.invisible</code> class</a> instead.</p>
 
         </main>
       </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

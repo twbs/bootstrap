@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Documentation and examples for adding custom Bootstrap tooltips with CSS and JavaScript using CSS3 for animations and data-attributes for local title storage.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/components/tooltips/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -497,7 +498,10 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Tooltips</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/components/tooltips.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Tooltips</h1>
+          </div>
           <p class="bd-lead">Documentation and examples for adding custom Bootstrap tooltips with CSS and JavaScript using CSS3 for animations and data-attributes for local title storage.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
@@ -506,27 +510,27 @@
 <p>Things to know when using the tooltip plugin:</p>
 
 <ul>
-  <li>Tooltips rely on the 3rd party library <a href="https://popper.js.org/">Popper.js</a> for positioning. You must include <a href="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js">popper.min.js</a> before bootstrap.js or use <code class="highlighter-rouge">bootstrap.bundle.min.js</code> / <code class="highlighter-rouge">bootstrap.bundle.js</code> which contains Popper.js in order for tooltips to work!</li>
-  <li>If you’re building our JavaScript from source, it <a href="/docs/4.5/getting-started/javascript/#util">requires <code class="highlighter-rouge">util.js</code></a>.</li>
+  <li>Tooltips rely on the 3rd party library <a href="https://popper.js.org/">Popper.js</a> for positioning. You must include <a href="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js">popper.min.js</a> before bootstrap.js or use <code class="language-plaintext highlighter-rouge">bootstrap.bundle.min.js</code> / <code class="language-plaintext highlighter-rouge">bootstrap.bundle.js</code> which contains Popper.js in order for tooltips to work!</li>
+  <li>If you’re building our JavaScript from source, it <a href="/docs/4.5/getting-started/javascript/#util">requires <code class="language-plaintext highlighter-rouge">util.js</code></a>.</li>
   <li>Tooltips are opt-in for performance reasons, so <strong>you must initialize them yourself</strong>.</li>
   <li>Tooltips with zero-length titles are never displayed.</li>
-  <li>Specify <code class="highlighter-rouge">container: 'body'</code> to avoid rendering problems in more complex components (like our input groups, button groups, etc).</li>
+  <li>Specify <code class="language-plaintext highlighter-rouge">container: 'body'</code> to avoid rendering problems in more complex components (like our input groups, button groups, etc).</li>
   <li>Triggering tooltips on hidden elements will not work.</li>
-  <li>Tooltips for <code class="highlighter-rouge">.disabled</code> or <code class="highlighter-rouge">disabled</code> elements must be triggered on a wrapper element.</li>
-  <li>When triggered from hyperlinks that span multiple lines, tooltips will be centered. Use <code class="highlighter-rouge">white-space: nowrap;</code> on your <code class="highlighter-rouge">&lt;a&gt;</code>s to avoid this behavior.</li>
+  <li>Tooltips for <code class="language-plaintext highlighter-rouge">.disabled</code> or <code class="language-plaintext highlighter-rouge">disabled</code> elements must be triggered on a wrapper element.</li>
+  <li>When triggered from hyperlinks that span multiple lines, tooltips will be centered. Use <code class="language-plaintext highlighter-rouge">white-space: nowrap;</code> on your <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code>s to avoid this behavior.</li>
   <li>Tooltips must be hidden before their corresponding elements have been removed from the DOM.</li>
   <li>Tooltips can be triggered thanks to an element inside a shadow DOM.</li>
 </ul>
 
 <div class="bd-callout bd-callout-info">
-<p>The animation effect of this component is dependent on the <code class="highlighter-rouge">prefers-reduced-motion</code> media query. See the <a href="/docs/4.5/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>.</p>
+<p>The animation effect of this component is dependent on the <code class="language-plaintext highlighter-rouge">prefers-reduced-motion</code> media query. See the <a href="/docs/4.5/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>.</p>
 </div>
 
 <p>Got all that? Great, let’s see how they work with some examples.</p>
 
 <h2 id="example-enable-tooltips-everywhere">Example: Enable tooltips everywhere</h2>
 
-<p>One way to initialize all tooltips on a page would be to select them by their <code class="highlighter-rouge">data-toggle</code> attribute:</p>
+<p>One way to initialize all tooltips on a page would be to select them by their <code class="language-plaintext highlighter-rouge">data-toggle</code> attribute:</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-toggle="tooltip"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">()</span>
@@ -581,9 +585,9 @@
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#example</span><span class="dl">'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span></code></pre></figure>
 
 <div class="bd-callout bd-callout-warning">
-<h5 id="overflow-auto-and-scroll">Overflow <code class="highlighter-rouge">auto</code> and <code class="highlighter-rouge">scroll</code></h5>
+<h5 id="overflow-auto-and-scroll">Overflow <code class="language-plaintext highlighter-rouge">auto</code> and <code class="language-plaintext highlighter-rouge">scroll</code></h5>
 
-<p>Tooltip position attempts to automatically change when a parent container has <code class="highlighter-rouge">overflow: auto</code> or <code class="highlighter-rouge">overflow: scroll</code> like our <code class="highlighter-rouge">.table-responsive</code>, but still keeps the original placement’s positioning. To resolve, set the <code class="highlighter-rouge">boundary</code> option to anything other than default value, <code class="highlighter-rouge">'scrollParent'</code>, such as <code class="highlighter-rouge">'window'</code>:</p>
+<p>Tooltip position attempts to automatically change when a parent container has <code class="language-plaintext highlighter-rouge">overflow: auto</code> or <code class="language-plaintext highlighter-rouge">overflow: scroll</code> like our <code class="language-plaintext highlighter-rouge">.table-responsive</code>, but still keeps the original placement’s positioning. To resolve, set the <code class="language-plaintext highlighter-rouge">boundary</code> option to anything other than default value, <code class="language-plaintext highlighter-rouge">'scrollParent'</code>, such as <code class="language-plaintext highlighter-rouge">'window'</code>:</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#example</span><span class="dl">'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">({</span> <span class="na">boundary</span><span class="p">:</span> <span class="dl">'</span><span class="s1">window</span><span class="dl">'</span> <span class="p">})</span></code></pre></figure>
 
@@ -591,12 +595,12 @@
 
 <h3 id="markup">Markup</h3>
 
-<p>The required markup for a tooltip is only a <code class="highlighter-rouge">data</code> attribute and <code class="highlighter-rouge">title</code> on the HTML element you wish to have a tooltip. The generated markup of a tooltip is rather simple, though it does require a position (by default, set to <code class="highlighter-rouge">top</code> by the plugin).</p>
+<p>The required markup for a tooltip is only a <code class="language-plaintext highlighter-rouge">data</code> attribute and <code class="language-plaintext highlighter-rouge">title</code> on the HTML element you wish to have a tooltip. The generated markup of a tooltip is rather simple, though it does require a position (by default, set to <code class="language-plaintext highlighter-rouge">top</code> by the plugin).</p>
 
 <div class="bd-callout bd-callout-warning">
 <h5 id="making-tooltips-work-for-keyboard-and-assistive-technology-users">Making tooltips work for keyboard and assistive technology users</h5>
 
-<p>You should only add tooltips to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as <code class="highlighter-rouge">&lt;span&gt;</code>s) can be made focusable by adding the <code class="highlighter-rouge">tabindex="0"</code> attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users, and most assistive technologies currently do not announce the tooltip in this situation. Additionally, do not rely solely on <code class="highlighter-rouge">hover</code> as the trigger for your tooltip, as this will make your tooltips impossible to trigger for keyboard users.</p>
+<p>You should only add tooltips to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as <code class="language-plaintext highlighter-rouge">&lt;span&gt;</code>s) can be made focusable by adding the <code class="language-plaintext highlighter-rouge">tabindex="0"</code> attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users, and most assistive technologies currently do not announce the tooltip in this situation. Additionally, do not rely solely on <code class="language-plaintext highlighter-rouge">hover</code> as the trigger for your tooltip, as this will make your tooltips impossible to trigger for keyboard users.</p>
 </div>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- HTML to write --&gt;</span>
@@ -612,7 +616,7 @@
 
 <h3 id="disabled-elements">Disabled elements</h3>
 
-<p>Elements with the <code class="highlighter-rouge">disabled</code> attribute aren’t interactive, meaning users cannot focus, hover, or click them to trigger a tooltip (or popover). As a workaround, you’ll want to trigger the tooltip from a wrapper <code class="highlighter-rouge">&lt;div&gt;</code> or <code class="highlighter-rouge">&lt;span&gt;</code>, ideally made keyboard-focusable using <code class="highlighter-rouge">tabindex="0"</code>, and override the <code class="highlighter-rouge">pointer-events</code> on the disabled element.</p>
+<p>Elements with the <code class="language-plaintext highlighter-rouge">disabled</code> attribute aren’t interactive, meaning users cannot focus, hover, or click them to trigger a tooltip (or popover). As a workaround, you’ll want to trigger the tooltip from a wrapper <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;span&gt;</code>, ideally made keyboard-focusable using <code class="language-plaintext highlighter-rouge">tabindex="0"</code>, and override the <code class="language-plaintext highlighter-rouge">pointer-events</code> on the disabled element.</p>
 
 <div class="tooltip-demo">
 
@@ -629,10 +633,10 @@
 
 <h3 id="options">Options</h3>
 
-<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code class="highlighter-rouge">data-</code>, as in <code class="highlighter-rouge">data-animation=""</code>.</p>
+<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code class="language-plaintext highlighter-rouge">data-</code>, as in <code class="language-plaintext highlighter-rouge">data-animation=""</code>.</p>
 
 <div class="bd-callout bd-callout-warning">
-<p>Note that for security reasons the <code class="highlighter-rouge">sanitize</code>, <code class="highlighter-rouge">sanitizeFn</code> and <code class="highlighter-rouge">whiteList</code> options cannot be supplied using data attributes.</p>
+<p>Note that for security reasons the <code class="language-plaintext highlighter-rouge">sanitize</code>, <code class="language-plaintext highlighter-rouge">sanitizeFn</code> and <code class="language-plaintext highlighter-rouge">whiteList</code> options cannot be supplied using data attributes.</p>
 </div>
 
 <table class="table table-bordered table-striped">
@@ -790,53 +794,53 @@
 <p><a href="/docs/4.5/getting-started/javascript/">See our JavaScript documentation for more information</a>.</p>
 </div>
 
-<h4 id="tooltipoptions"><code class="highlighter-rouge">$().tooltip(options)</code></h4>
+<h4 id="tooltipoptions"><code class="language-plaintext highlighter-rouge">$().tooltip(options)</code></h4>
 
 <p>Attaches a tooltip handler to an element collection.</p>
 
-<h4 id="tooltipshow"><code class="highlighter-rouge">.tooltip('show')</code></h4>
+<h4 id="tooltipshow"><code class="language-plaintext highlighter-rouge">.tooltip('show')</code></h4>
 
-<p>Reveals an element’s tooltip. <strong>Returns to the caller before the tooltip has actually been shown</strong> (i.e. before the <code class="highlighter-rouge">shown.bs.tooltip</code> event occurs). This is considered a “manual” triggering of the tooltip. Tooltips with zero-length titles are never displayed.</p>
+<p>Reveals an element’s tooltip. <strong>Returns to the caller before the tooltip has actually been shown</strong> (i.e. before the <code class="language-plaintext highlighter-rouge">shown.bs.tooltip</code> event occurs). This is considered a “manual” triggering of the tooltip. Tooltips with zero-length titles are never displayed.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#element</span><span class="dl">'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">(</span><span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="tooltiphide"><code class="highlighter-rouge">.tooltip('hide')</code></h4>
+<h4 id="tooltiphide"><code class="language-plaintext highlighter-rouge">.tooltip('hide')</code></h4>
 
-<p>Hides an element’s tooltip. <strong>Returns to the caller before the tooltip has actually been hidden</strong> (i.e. before the <code class="highlighter-rouge">hidden.bs.tooltip</code> event occurs). This is considered a “manual” triggering of the tooltip.</p>
+<p>Hides an element’s tooltip. <strong>Returns to the caller before the tooltip has actually been hidden</strong> (i.e. before the <code class="language-plaintext highlighter-rouge">hidden.bs.tooltip</code> event occurs). This is considered a “manual” triggering of the tooltip.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#element</span><span class="dl">'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">(</span><span class="dl">'</span><span class="s1">hide</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="tooltiptoggle"><code class="highlighter-rouge">.tooltip('toggle')</code></h4>
+<h4 id="tooltiptoggle"><code class="language-plaintext highlighter-rouge">.tooltip('toggle')</code></h4>
 
-<p>Toggles an element’s tooltip. <strong>Returns to the caller before the tooltip has actually been shown or hidden</strong> (i.e. before the <code class="highlighter-rouge">shown.bs.tooltip</code> or <code class="highlighter-rouge">hidden.bs.tooltip</code> event occurs). This is considered a “manual” triggering of the tooltip.</p>
+<p>Toggles an element’s tooltip. <strong>Returns to the caller before the tooltip has actually been shown or hidden</strong> (i.e. before the <code class="language-plaintext highlighter-rouge">shown.bs.tooltip</code> or <code class="language-plaintext highlighter-rouge">hidden.bs.tooltip</code> event occurs). This is considered a “manual” triggering of the tooltip.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#element</span><span class="dl">'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">(</span><span class="dl">'</span><span class="s1">toggle</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="tooltipdispose"><code class="highlighter-rouge">.tooltip('dispose')</code></h4>
+<h4 id="tooltipdispose"><code class="language-plaintext highlighter-rouge">.tooltip('dispose')</code></h4>
 
-<p>Hides and destroys an element’s tooltip. Tooltips that use delegation (which are created using <a href="#options">the <code class="highlighter-rouge">selector</code> option</a>) cannot be individually destroyed on descendant trigger elements.</p>
+<p>Hides and destroys an element’s tooltip. Tooltips that use delegation (which are created using <a href="#options">the <code class="language-plaintext highlighter-rouge">selector</code> option</a>) cannot be individually destroyed on descendant trigger elements.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#element</span><span class="dl">'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">(</span><span class="dl">'</span><span class="s1">dispose</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="tooltipenable"><code class="highlighter-rouge">.tooltip('enable')</code></h4>
+<h4 id="tooltipenable"><code class="language-plaintext highlighter-rouge">.tooltip('enable')</code></h4>
 
 <p>Gives an element’s tooltip the ability to be shown. <strong>Tooltips are enabled by default.</strong></p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#element</span><span class="dl">'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">(</span><span class="dl">'</span><span class="s1">enable</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="tooltipdisable"><code class="highlighter-rouge">.tooltip('disable')</code></h4>
+<h4 id="tooltipdisable"><code class="language-plaintext highlighter-rouge">.tooltip('disable')</code></h4>
 
 <p>Removes the ability for an element’s tooltip to be shown. The tooltip will only be able to be shown if it is re-enabled.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#element</span><span class="dl">'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">(</span><span class="dl">'</span><span class="s1">disable</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="tooltiptoggleenabled"><code class="highlighter-rouge">.tooltip('toggleEnabled')</code></h4>
+<h4 id="tooltiptoggleenabled"><code class="language-plaintext highlighter-rouge">.tooltip('toggleEnabled')</code></h4>
 
 <p>Toggles the ability for an element’s tooltip to be shown or hidden.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#element</span><span class="dl">'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">(</span><span class="dl">'</span><span class="s1">toggleEnabled</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="tooltipupdate"><code class="highlighter-rouge">.tooltip('update')</code></h4>
+<h4 id="tooltipupdate"><code class="language-plaintext highlighter-rouge">.tooltip('update')</code></h4>
 
 <p>Updates the position of an element’s tooltip.</p>
 
@@ -885,6 +889,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

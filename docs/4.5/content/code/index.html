@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Documentation and examples for displaying inline and multiline blocks of code with Bootstrap.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/content/code/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -478,13 +479,16 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Code</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/content/code.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Code</h1>
+          </div>
           <p class="bd-lead">Documentation and examples for displaying inline and multiline blocks of code with Bootstrap.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="inline-code">Inline code</h2>
 
-<p>Wrap inline snippets of code with <code class="highlighter-rouge">&lt;code&gt;</code>. Be sure to escape HTML angle brackets.</p>
+<p>Wrap inline snippets of code with <code class="language-plaintext highlighter-rouge">&lt;code&gt;</code>. Be sure to escape HTML angle brackets.</p>
 
 <div class="bd-example">
 For example, <code>&lt;section&gt;</code> should be wrapped as inline.
@@ -493,7 +497,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 <h2 id="code-blocks">Code blocks</h2>
 
-<p>Use <code class="highlighter-rouge">&lt;pre&gt;</code>s for multiple lines of code. Once again, be sure to escape any angle brackets in the code for proper rendering. You may optionally add the <code class="highlighter-rouge">.pre-scrollable</code> class, which will set a max-height of 340px and provide a y-axis scrollbar.</p>
+<p>Use <code class="language-plaintext highlighter-rouge">&lt;pre&gt;</code>s for multiple lines of code. Once again, be sure to escape any angle brackets in the code for proper rendering. You may optionally add the <code class="language-plaintext highlighter-rouge">.pre-scrollable</code> class, which will set a max-height of 340px and provide a y-axis scrollbar.</p>
 
 <div class="bd-example">
 <pre><code>&lt;p&gt;Sample text here...&lt;/p&gt;
@@ -506,7 +510,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 <h2 id="variables">Variables</h2>
 
-<p>For indicating variables use the <code class="highlighter-rouge">&lt;var&gt;</code> tag.</p>
+<p>For indicating variables use the <code class="language-plaintext highlighter-rouge">&lt;var&gt;</code> tag.</p>
 
 <div class="bd-example">
 <var>y</var> = <var>m</var><var>x</var> + <var>b</var>
@@ -515,7 +519,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 <h2 id="user-input">User input</h2>
 
-<p>Use the <code class="highlighter-rouge">&lt;kbd&gt;</code> to indicate input that is typically entered via keyboard.</p>
+<p>Use the <code class="language-plaintext highlighter-rouge">&lt;kbd&gt;</code> to indicate input that is typically entered via keyboard.</p>
 
 <div class="bd-example">
 To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br />
@@ -526,7 +530,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
 <h2 id="sample-output">Sample output</h2>
 
-<p>For indicating sample output from a program use the <code class="highlighter-rouge">&lt;samp&gt;</code> tag.</p>
+<p>For indicating sample output from a program use the <code class="language-plaintext highlighter-rouge">&lt;samp&gt;</code> tag.</p>
 
 <div class="bd-example">
 <samp>This text is meant to be treated as sample output from a computer program.</samp>
@@ -539,6 +543,6 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

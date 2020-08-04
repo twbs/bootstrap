@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Documentation and examples for Bootstrap typography, including global settings, headings, body text, lists, and more.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/content/typography/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -498,7 +499,10 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Typography</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/content/typography.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Typography</h1>
+          </div>
           <p class="bd-lead">Documentation and examples for Bootstrap typography, including global settings, headings, body text, lists, and more.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
@@ -507,18 +511,18 @@
 <p>Bootstrap sets basic global display, typography, and link styles. When more control is needed, check out the <a href="/docs/4.5/utilities/text/">textual utility classes</a>.</p>
 
 <ul>
-  <li>Use a <a href="/docs/4.5/content/reboot/#native-font-stack">native font stack</a> that selects the best <code class="highlighter-rouge">font-family</code> for each OS and device.</li>
-  <li>For a more inclusive and accessible type scale, we assume the browser default root <code class="highlighter-rouge">font-size</code> (typically 16px) so visitors can customize their browser defaults as needed.</li>
-  <li>Use the <code class="highlighter-rouge">$font-family-base</code>, <code class="highlighter-rouge">$font-size-base</code>, and <code class="highlighter-rouge">$line-height-base</code> attributes as our typographic base applied to the <code class="highlighter-rouge">&lt;body&gt;</code>.</li>
-  <li>Set the global link color via <code class="highlighter-rouge">$link-color</code> and apply link underlines only on <code class="highlighter-rouge">:hover</code>.</li>
-  <li>Use <code class="highlighter-rouge">$body-bg</code> to set a <code class="highlighter-rouge">background-color</code> on the <code class="highlighter-rouge">&lt;body&gt;</code> (<code class="highlighter-rouge">#fff</code> by default).</li>
+  <li>Use a <a href="/docs/4.5/content/reboot/#native-font-stack">native font stack</a> that selects the best <code class="language-plaintext highlighter-rouge">font-family</code> for each OS and device.</li>
+  <li>For a more inclusive and accessible type scale, we assume the browser default root <code class="language-plaintext highlighter-rouge">font-size</code> (typically 16px) so visitors can customize their browser defaults as needed.</li>
+  <li>Use the <code class="language-plaintext highlighter-rouge">$font-family-base</code>, <code class="language-plaintext highlighter-rouge">$font-size-base</code>, and <code class="language-plaintext highlighter-rouge">$line-height-base</code> attributes as our typographic base applied to the <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code>.</li>
+  <li>Set the global link color via <code class="language-plaintext highlighter-rouge">$link-color</code> and apply link underlines only on <code class="language-plaintext highlighter-rouge">:hover</code>.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">$body-bg</code> to set a <code class="language-plaintext highlighter-rouge">background-color</code> on the <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> (<code class="language-plaintext highlighter-rouge">#fff</code> by default).</li>
 </ul>
 
-<p>These styles can be found within <code class="highlighter-rouge">_reboot.scss</code>, and the global variables are defined in <code class="highlighter-rouge">_variables.scss</code>. Make sure to set <code class="highlighter-rouge">$font-size-base</code> in <code class="highlighter-rouge">rem</code>.</p>
+<p>These styles can be found within <code class="language-plaintext highlighter-rouge">_reboot.scss</code>, and the global variables are defined in <code class="language-plaintext highlighter-rouge">_variables.scss</code>. Make sure to set <code class="language-plaintext highlighter-rouge">$font-size-base</code> in <code class="language-plaintext highlighter-rouge">rem</code>.</p>
 
 <h2 id="headings">Headings</h2>
 
-<p>All HTML headings, <code class="highlighter-rouge">&lt;h1&gt;</code> through <code class="highlighter-rouge">&lt;h6&gt;</code>, are available.</p>
+<p>All HTML headings, <code class="language-plaintext highlighter-rouge">&lt;h1&gt;</code> through <code class="language-plaintext highlighter-rouge">&lt;h6&gt;</code>, are available.</p>
 
 <table>
   <thead>
@@ -530,42 +534,42 @@
   <tbody>
     <tr>
       <td>
-        <p><code class="highlighter-rouge">&lt;h1&gt;&lt;/h1&gt;</code></p>
+        <p><code class="language-plaintext highlighter-rouge">&lt;h1&gt;&lt;/h1&gt;</code></p>
 
       </td>
       <td><span class="h1">h1. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        <p><code class="highlighter-rouge">&lt;h2&gt;&lt;/h2&gt;</code></p>
+        <p><code class="language-plaintext highlighter-rouge">&lt;h2&gt;&lt;/h2&gt;</code></p>
 
       </td>
       <td><span class="h2">h2. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        <p><code class="highlighter-rouge">&lt;h3&gt;&lt;/h3&gt;</code></p>
+        <p><code class="language-plaintext highlighter-rouge">&lt;h3&gt;&lt;/h3&gt;</code></p>
 
       </td>
       <td><span class="h3">h3. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        <p><code class="highlighter-rouge">&lt;h4&gt;&lt;/h4&gt;</code></p>
+        <p><code class="language-plaintext highlighter-rouge">&lt;h4&gt;&lt;/h4&gt;</code></p>
 
       </td>
       <td><span class="h4">h4. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        <p><code class="highlighter-rouge">&lt;h5&gt;&lt;/h5&gt;</code></p>
+        <p><code class="language-plaintext highlighter-rouge">&lt;h5&gt;&lt;/h5&gt;</code></p>
 
       </td>
       <td><span class="h5">h5. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        <p><code class="highlighter-rouge">&lt;h6&gt;&lt;/h6&gt;</code></p>
+        <p><code class="language-plaintext highlighter-rouge">&lt;h6&gt;&lt;/h6&gt;</code></p>
 
       </td>
       <td><span class="h6">h6. Bootstrap heading</span></td>
@@ -580,7 +584,7 @@
 <span class="nt">&lt;h5&gt;</span>h5. Bootstrap heading<span class="nt">&lt;/h5&gt;</span>
 <span class="nt">&lt;h6&gt;</span>h6. Bootstrap heading<span class="nt">&lt;/h6&gt;</span></code></pre></figure>
 
-<p><code class="highlighter-rouge">.h1</code> through <code class="highlighter-rouge">.h6</code> classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.</p>
+<p><code class="language-plaintext highlighter-rouge">.h1</code> through <code class="language-plaintext highlighter-rouge">.h6</code> classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.</p>
 
 <div class="bd-example">
 <p class="h1">h1. Bootstrap heading</p>
@@ -642,7 +646,7 @@
 
 <h2 id="lead">Lead</h2>
 
-<p>Make a paragraph stand out by adding <code class="highlighter-rouge">.lead</code>.</p>
+<p>Make a paragraph stand out by adding <code class="language-plaintext highlighter-rouge">.lead</code>.</p>
 
 <div class="bd-example">
 <p class="lead">
@@ -676,9 +680,9 @@
 <span class="nt">&lt;p&gt;&lt;strong&gt;</span>This line rendered as bold text.<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
 <span class="nt">&lt;p&gt;&lt;em&gt;</span>This line rendered as italicized text.<span class="nt">&lt;/em&gt;&lt;/p&gt;</span></code></pre></figure>
 
-<p><code class="highlighter-rouge">.mark</code> and <code class="highlighter-rouge">.small</code> classes are also available to apply the same styles as <code class="highlighter-rouge">&lt;mark&gt;</code> and <code class="highlighter-rouge">&lt;small&gt;</code> while avoiding any unwanted semantic implications that the tags would bring.</p>
+<p><code class="language-plaintext highlighter-rouge">.mark</code> and <code class="language-plaintext highlighter-rouge">.small</code> classes are also available to apply the same styles as <code class="language-plaintext highlighter-rouge">&lt;mark&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;small&gt;</code> while avoiding any unwanted semantic implications that the tags would bring.</p>
 
-<p>While not shown above, feel free to use <code class="highlighter-rouge">&lt;b&gt;</code> and <code class="highlighter-rouge">&lt;i&gt;</code> in HTML5. <code class="highlighter-rouge">&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code class="highlighter-rouge">&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+<p>While not shown above, feel free to use <code class="language-plaintext highlighter-rouge">&lt;b&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;i&gt;</code> in HTML5. <code class="language-plaintext highlighter-rouge">&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code class="language-plaintext highlighter-rouge">&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
 
 <h2 id="text-utilities">Text utilities</h2>
 
@@ -686,9 +690,9 @@
 
 <h2 id="abbreviations">Abbreviations</h2>
 
-<p>Stylized implementation of HTML’s <code class="highlighter-rouge">&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations have a default underline and gain a help cursor to provide additional context on hover and to users of assistive technologies.</p>
+<p>Stylized implementation of HTML’s <code class="language-plaintext highlighter-rouge">&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations have a default underline and gain a help cursor to provide additional context on hover and to users of assistive technologies.</p>
 
-<p>Add <code class="highlighter-rouge">.initialism</code> to an abbreviation for a slightly smaller font-size.</p>
+<p>Add <code class="language-plaintext highlighter-rouge">.initialism</code> to an abbreviation for a slightly smaller font-size.</p>
 
 <div class="bd-example">
 <p><abbr title="attribute">attr</abbr></p>
@@ -699,7 +703,7 @@
 
 <h2 id="blockquotes">Blockquotes</h2>
 
-<p>For quoting blocks of content from another source within your document. Wrap <code class="highlighter-rouge">&lt;blockquote class="blockquote"&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote.</p>
+<p>For quoting blocks of content from another source within your document. Wrap <code class="language-plaintext highlighter-rouge">&lt;blockquote class="blockquote"&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote.</p>
 
 <div class="bd-example">
 <blockquote class="blockquote">
@@ -712,7 +716,7 @@
 
 <h3 id="naming-a-source">Naming a source</h3>
 
-<p>Add a <code class="highlighter-rouge">&lt;footer class="blockquote-footer"&gt;</code> for identifying the source. Wrap the name of the source work in <code class="highlighter-rouge">&lt;cite&gt;</code>.</p>
+<p>Add a <code class="language-plaintext highlighter-rouge">&lt;footer class="blockquote-footer"&gt;</code> for identifying the source. Wrap the name of the source work in <code class="language-plaintext highlighter-rouge">&lt;cite&gt;</code>.</p>
 
 <div class="bd-example">
 <blockquote class="blockquote">
@@ -755,7 +759,7 @@
 
 <h3 id="unstyled">Unstyled</h3>
 
-<p>Remove the default <code class="highlighter-rouge">list-style</code> and left margin on list items (immediate children only). <strong>This only applies to immediate children list items</strong>, meaning you will need to add the class for any nested lists as well.</p>
+<p>Remove the default <code class="language-plaintext highlighter-rouge">list-style</code> and left margin on list items (immediate children only). <strong>This only applies to immediate children list items</strong>, meaning you will need to add the class for any nested lists as well.</p>
 
 <div class="bd-example">
 <ul class="list-unstyled">
@@ -796,7 +800,7 @@
 
 <h3 id="inline">Inline</h3>
 
-<p>Remove a list’s bullets and apply some light <code class="highlighter-rouge">margin</code> with a combination of two classes, <code class="highlighter-rouge">.list-inline</code> and <code class="highlighter-rouge">.list-inline-item</code>.</p>
+<p>Remove a list’s bullets and apply some light <code class="language-plaintext highlighter-rouge">margin</code> with a combination of two classes, <code class="language-plaintext highlighter-rouge">.list-inline</code> and <code class="language-plaintext highlighter-rouge">.list-inline-item</code>.</p>
 
 <div class="bd-example">
 <ul class="list-inline">
@@ -813,7 +817,7 @@
 
 <h3 id="description-list-alignment">Description list alignment</h3>
 
-<p>Align terms and descriptions horizontally by using our grid system’s predefined classes (or semantic mixins). For longer terms, you can optionally add a <code class="highlighter-rouge">.text-truncate</code> class to truncate the text with an ellipsis.</p>
+<p>Align terms and descriptions horizontally by using our grid system’s predefined classes (or semantic mixins). For longer terms, you can optionally add a <code class="language-plaintext highlighter-rouge">.text-truncate</code> class to truncate the text with an ellipsis.</p>
 
 <div class="bd-example">
 <dl class="row">
@@ -868,15 +872,15 @@
 
 <h2 id="responsive-font-sizes">Responsive font sizes</h2>
 
-<p>Bootstrap v4.3 ships with the option to enable responsive font sizes, allowing text to scale more naturally across device and viewport sizes. <abbr title="Responsive font sizes">RFS</abbr> can be enabled by changing the <code class="highlighter-rouge">$enable-responsive-font-sizes</code> Sass variable to <code class="highlighter-rouge">true</code> and recompiling Bootstrap.</p>
+<p>Bootstrap v4.3 ships with the option to enable responsive font sizes, allowing text to scale more naturally across device and viewport sizes. <abbr title="Responsive font sizes">RFS</abbr> can be enabled by changing the <code class="language-plaintext highlighter-rouge">$enable-responsive-font-sizes</code> Sass variable to <code class="language-plaintext highlighter-rouge">true</code> and recompiling Bootstrap.</p>
 
-<p>To support <abbr title="Responsive font sizes">RFS</abbr>, we use a Sass mixin to replace our normal <code class="highlighter-rouge">font-size</code> properties. Responsive font sizes will be compiled into <code class="highlighter-rouge">calc()</code> functions with a mix of <code class="highlighter-rouge">rem</code> and viewport units to enable the responsive scaling behavior. More about <abbr title="Responsive font sizes">RFS</abbr> and its configuration can be found on its <a href="https://github.com/twbs/rfs/tree/v8.0.4">GitHub repository</a>.</p>
+<p>To support <abbr title="Responsive font sizes">RFS</abbr>, we use a Sass mixin to replace our normal <code class="language-plaintext highlighter-rouge">font-size</code> properties. Responsive font sizes will be compiled into <code class="language-plaintext highlighter-rouge">calc()</code> functions with a mix of <code class="language-plaintext highlighter-rouge">rem</code> and viewport units to enable the responsive scaling behavior. More about <abbr title="Responsive font sizes">RFS</abbr> and its configuration can be found on its <a href="https://github.com/twbs/rfs/tree/v8.0.4">GitHub repository</a>.</p>
 
         </main>
       </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Push notifications to your visitors with a toast, a lightweight and easily customizable alert message.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/components/toasts/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -498,7 +499,10 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Toasts</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/components/toasts.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Toasts</h1>
+          </div>
           <p class="bd-lead">Push notifications to your visitors with a toast, a lightweight and easily customizable alert message.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
@@ -509,21 +513,21 @@
 <p>Things to know when using the toast plugin:</p>
 
 <ul>
-  <li>If you’re building our JavaScript from source, it <a href="/docs/4.5/getting-started/javascript/#util">requires <code class="highlighter-rouge">util.js</code></a>.</li>
+  <li>If you’re building our JavaScript from source, it <a href="/docs/4.5/getting-started/javascript/#util">requires <code class="language-plaintext highlighter-rouge">util.js</code></a>.</li>
   <li>Toasts are opt-in for performance reasons, so <strong>you must initialize them yourself</strong>.</li>
   <li><strong>Please note that you are responsible for positioning toasts.</strong></li>
-  <li>Toasts will automatically hide if you do not specify <code class="highlighter-rouge">autohide: false</code>.</li>
+  <li>Toasts will automatically hide if you do not specify <code class="language-plaintext highlighter-rouge">autohide: false</code>.</li>
 </ul>
 
 <div class="bd-callout bd-callout-info">
-<p>The animation effect of this component is dependent on the <code class="highlighter-rouge">prefers-reduced-motion</code> media query. See the <a href="/docs/4.5/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>.</p>
+<p>The animation effect of this component is dependent on the <code class="language-plaintext highlighter-rouge">prefers-reduced-motion</code> media query. See the <a href="/docs/4.5/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>.</p>
 </div>
 
 <h2 id="examples">Examples</h2>
 
 <h3 id="basic">Basic</h3>
 
-<p>To encourage extensible and predictable toasts, we recommend a header and body. Toast headers use <code class="highlighter-rouge">display: flex</code>, allowing easy alignment of content thanks to our margin and flexbox utilities.</p>
+<p>To encourage extensible and predictable toasts, we recommend a header and body. Toast headers use <code class="language-plaintext highlighter-rouge">display: flex</code>, allowing easy alignment of content thanks to our margin and flexbox utilities.</p>
 
 <p>Toasts are as flexible as you need and have very little required markup. At a minimum, we require a single element to contain your “toasted” content and strongly encourage a dismiss button.</p>
 
@@ -558,7 +562,7 @@
 
 <h3 id="translucent">Translucent</h3>
 
-<p>Toasts are slightly translucent, too, so they blend over whatever they might appear over. For browsers that support the <code class="highlighter-rouge">backdrop-filter</code> CSS property, we’ll also attempt to blur the elements under a toast.</p>
+<p>Toasts are slightly translucent, too, so they blend over whatever they might appear over. For browsers that support the <code class="language-plaintext highlighter-rouge">backdrop-filter</code> CSS property, we’ll also attempt to blur the elements under a toast.</p>
 
 <div class="bd-example bg-dark">
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -652,7 +656,7 @@
 
 <h2 id="placement">Placement</h2>
 
-<p>Place toasts with custom CSS as you need them. The top right is often used for notifications, as is the top middle. If you’re only ever going to show one toast at a time, put the positioning styles right on the <code class="highlighter-rouge">.toast</code>.</p>
+<p>Place toasts with custom CSS as you need them. The top right is often used for notifications, as is the top middle. If you’re only ever going to show one toast at a time, put the positioning styles right on the <code class="language-plaintext highlighter-rouge">.toast</code>.</p>
 
 <div class="bd-example bg-dark">
 <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
@@ -764,7 +768,7 @@
 
 <div class="bd-example bg-dark">
 <!-- Flexbox container for aligning the toasts -->
-<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
+<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="height: 200px;">
 
   <!-- Then put toasts within -->
   <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -783,7 +787,7 @@
 </div>
 </div>
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Flexbox container for aligning the toasts --&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">aria-live=</span><span class="s">"polite"</span> <span class="na">aria-atomic=</span><span class="s">"true"</span> <span class="na">class=</span><span class="s">"d-flex justify-content-center align-items-center"</span> <span class="na">style=</span><span class="s">"min-height: 200px;"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">aria-live=</span><span class="s">"polite"</span> <span class="na">aria-atomic=</span><span class="s">"true"</span> <span class="na">class=</span><span class="s">"d-flex justify-content-center align-items-center"</span> <span class="na">style=</span><span class="s">"height: 200px;"</span><span class="nt">&gt;</span>
 
   <span class="c">&lt;!-- Then put toasts within --&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"toast"</span> <span class="na">role=</span><span class="s">"alert"</span> <span class="na">aria-live=</span><span class="s">"assertive"</span> <span class="na">aria-atomic=</span><span class="s">"true"</span><span class="nt">&gt;</span>
@@ -803,19 +807,19 @@
 
 <h2 id="accessibility">Accessibility</h2>
 
-<p>Toasts are intended to be small interruptions to your visitors or users, so to help those with screen readers and similar assistive technologies, you should wrap your toasts in an <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions"><code class="highlighter-rouge">aria-live</code> region</a>. Changes to live regions (such as injecting/updating a toast component) are automatically announced by screen readers without needing to move the user’s focus or otherwise interrupt the user. Additionally, include <code class="highlighter-rouge">aria-atomic="true"</code> to ensure that the entire toast is always announced as a single (atomic) unit, rather than announcing what was changed (which could lead to problems if you only update part of the toast’s content, or if displaying the same toast content at a later point in time). If the information needed is important for the process, e.g. for a list of errors in a form, then use the <a href="/docs/4.5/components/alerts/">alert component</a> instead of toast.</p>
+<p>Toasts are intended to be small interruptions to your visitors or users, so to help those with screen readers and similar assistive technologies, you should wrap your toasts in an <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions"><code class="language-plaintext highlighter-rouge">aria-live</code> region</a>. Changes to live regions (such as injecting/updating a toast component) are automatically announced by screen readers without needing to move the user’s focus or otherwise interrupt the user. Additionally, include <code class="language-plaintext highlighter-rouge">aria-atomic="true"</code> to ensure that the entire toast is always announced as a single (atomic) unit, rather than announcing what was changed (which could lead to problems if you only update part of the toast’s content, or if displaying the same toast content at a later point in time). If the information needed is important for the process, e.g. for a list of errors in a form, then use the <a href="/docs/4.5/components/alerts/">alert component</a> instead of toast.</p>
 
 <p>Note that the live region needs to be present in the markup <em>before</em> the toast is generated or updated. If you dynamically generate both at the same time and inject them into the page, they will generally not be announced by assistive technologies.</p>
 
-<p>You also need to adapt the <code class="highlighter-rouge">role</code> and <code class="highlighter-rouge">aria-live</code> level depending on the content. If it’s an important message like an error, use <code class="highlighter-rouge">role="alert" aria-live="assertive"</code>, otherwise use <code class="highlighter-rouge">role="status" aria-live="polite"</code> attributes.</p>
+<p>You also need to adapt the <code class="language-plaintext highlighter-rouge">role</code> and <code class="language-plaintext highlighter-rouge">aria-live</code> level depending on the content. If it’s an important message like an error, use <code class="language-plaintext highlighter-rouge">role="alert" aria-live="assertive"</code>, otherwise use <code class="language-plaintext highlighter-rouge">role="status" aria-live="polite"</code> attributes.</p>
 
-<p>As the content you’re displaying changes, be sure to update the <a href="#options"><code class="highlighter-rouge">delay</code> timeout</a> to ensure people have enough time to read the toast.</p>
+<p>As the content you’re displaying changes, be sure to update the <a href="#options"><code class="language-plaintext highlighter-rouge">delay</code> timeout</a> to ensure people have enough time to read the toast.</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"toast"</span> <span class="na">role=</span><span class="s">"alert"</span> <span class="na">aria-live=</span><span class="s">"polite"</span> <span class="na">aria-atomic=</span><span class="s">"true"</span> <span class="na">data-delay=</span><span class="s">"10000"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">"alert"</span> <span class="na">aria-live=</span><span class="s">"assertive"</span> <span class="na">aria-atomic=</span><span class="s">"true"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
-<p>When using <code class="highlighter-rouge">autohide: false</code>, you must add a close button to allow users to dismiss the toast.</p>
+<p>When using <code class="language-plaintext highlighter-rouge">autohide: false</code>, you must add a close button to allow users to dismiss the toast.</p>
 
 <div class="bd-example bg-light">
 <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
@@ -856,7 +860,7 @@
 
 <h3 id="options">Options</h3>
 
-<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code class="highlighter-rouge">data-</code>, as in <code class="highlighter-rouge">data-animation=""</code>.</p>
+<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code class="language-plaintext highlighter-rouge">data-</code>, as in <code class="language-plaintext highlighter-rouge">data-animation=""</code>.</p>
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -901,24 +905,24 @@
 <p><a href="/docs/4.5/getting-started/javascript/">See our JavaScript documentation for more information</a>.</p>
 </div>
 
-<h4 id="toastoptions"><code class="highlighter-rouge">$().toast(options)</code></h4>
+<h4 id="toastoptions"><code class="language-plaintext highlighter-rouge">$().toast(options)</code></h4>
 
 <p>Attaches a toast handler to an element collection.</p>
 
-<h4 id="toastshow"><code class="highlighter-rouge">.toast('show')</code></h4>
+<h4 id="toastshow"><code class="language-plaintext highlighter-rouge">.toast('show')</code></h4>
 
-<p>Reveals an element’s toast. <strong>Returns to the caller before the toast has actually been shown</strong> (i.e. before the <code class="highlighter-rouge">shown.bs.toast</code> event occurs).
+<p>Reveals an element’s toast. <strong>Returns to the caller before the toast has actually been shown</strong> (i.e. before the <code class="language-plaintext highlighter-rouge">shown.bs.toast</code> event occurs).
 You have to manually call this method, instead your toast won’t show.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#element</span><span class="dl">'</span><span class="p">).</span><span class="nx">toast</span><span class="p">(</span><span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="toasthide"><code class="highlighter-rouge">.toast('hide')</code></h4>
+<h4 id="toasthide"><code class="language-plaintext highlighter-rouge">.toast('hide')</code></h4>
 
-<p>Hides an element’s toast. <strong>Returns to the caller before the toast has actually been hidden</strong> (i.e. before the <code class="highlighter-rouge">hidden.bs.toast</code> event occurs). You have to manually call this method if you made <code class="highlighter-rouge">autohide</code> to <code class="highlighter-rouge">false</code>.</p>
+<p>Hides an element’s toast. <strong>Returns to the caller before the toast has actually been hidden</strong> (i.e. before the <code class="language-plaintext highlighter-rouge">hidden.bs.toast</code> event occurs). You have to manually call this method if you made <code class="language-plaintext highlighter-rouge">autohide</code> to <code class="language-plaintext highlighter-rouge">false</code>.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#element</span><span class="dl">'</span><span class="p">).</span><span class="nx">toast</span><span class="p">(</span><span class="dl">'</span><span class="s1">hide</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="toastdispose"><code class="highlighter-rouge">.toast('dispose')</code></h4>
+<h4 id="toastdispose"><code class="language-plaintext highlighter-rouge">.toast('dispose')</code></h4>
 
 <p>Hides an element’s toast. Your toast will remain on the DOM but won’t show anymore.</p>
 
@@ -963,6 +967,6 @@ You have to manually call this method, instead your toast won’t show.</p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

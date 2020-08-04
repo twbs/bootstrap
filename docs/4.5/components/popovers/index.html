@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Documentation and examples for adding Bootstrap popovers, like those found in iOS, to any element on your site.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/components/popovers/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -502,7 +503,10 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Popovers</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/components/popovers.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Popovers</h1>
+          </div>
           <p class="bd-lead">Documentation and examples for adding Bootstrap popovers, like those found in iOS, to any element on your site.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
@@ -511,36 +515,36 @@
 <p>Things to know when using the popover plugin:</p>
 
 <ul>
-  <li>Popovers rely on the 3rd party library <a href="https://popper.js.org/">Popper.js</a> for positioning. You must include <a href="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js">popper.min.js</a> before bootstrap.js or use <code class="highlighter-rouge">bootstrap.bundle.min.js</code> / <code class="highlighter-rouge">bootstrap.bundle.js</code> which contains Popper.js in order for popovers to work!</li>
+  <li>Popovers rely on the 3rd party library <a href="https://popper.js.org/">Popper.js</a> for positioning. You must include <a href="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js">popper.min.js</a> before bootstrap.js or use <code class="language-plaintext highlighter-rouge">bootstrap.bundle.min.js</code> / <code class="language-plaintext highlighter-rouge">bootstrap.bundle.js</code> which contains Popper.js in order for popovers to work!</li>
   <li>Popovers require the <a href="/docs/4.5/components/tooltips/">tooltip plugin</a> as a dependency.</li>
-  <li>If you’re building our JavaScript from source, it <a href="/docs/4.5/getting-started/javascript/#util">requires <code class="highlighter-rouge">util.js</code></a>.</li>
+  <li>If you’re building our JavaScript from source, it <a href="/docs/4.5/getting-started/javascript/#util">requires <code class="language-plaintext highlighter-rouge">util.js</code></a>.</li>
   <li>Popovers are opt-in for performance reasons, so <strong>you must initialize them yourself</strong>.</li>
-  <li>Zero-length <code class="highlighter-rouge">title</code> and <code class="highlighter-rouge">content</code> values will never show a popover.</li>
-  <li>Specify <code class="highlighter-rouge">container: 'body'</code> to avoid rendering problems in more complex components (like our input groups, button groups, etc).</li>
+  <li>Zero-length <code class="language-plaintext highlighter-rouge">title</code> and <code class="language-plaintext highlighter-rouge">content</code> values will never show a popover.</li>
+  <li>Specify <code class="language-plaintext highlighter-rouge">container: 'body'</code> to avoid rendering problems in more complex components (like our input groups, button groups, etc).</li>
   <li>Triggering popovers on hidden elements will not work.</li>
-  <li>Popovers for <code class="highlighter-rouge">.disabled</code> or <code class="highlighter-rouge">disabled</code> elements must be triggered on a wrapper element.</li>
-  <li>When triggered from anchors that wrap across multiple lines, popovers will be centered between the anchors’ overall width. Use <code class="highlighter-rouge">.text-nowrap</code> on your <code class="highlighter-rouge">&lt;a&gt;</code>s to avoid this behavior.</li>
+  <li>Popovers for <code class="language-plaintext highlighter-rouge">.disabled</code> or <code class="language-plaintext highlighter-rouge">disabled</code> elements must be triggered on a wrapper element.</li>
+  <li>When triggered from anchors that wrap across multiple lines, popovers will be centered between the anchors’ overall width. Use <code class="language-plaintext highlighter-rouge">.text-nowrap</code> on your <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code>s to avoid this behavior.</li>
   <li>Popovers must be hidden before their corresponding elements have been removed from the DOM.</li>
   <li>Popovers can be triggered thanks to an element inside a shadow DOM.</li>
 </ul>
 
 <div class="bd-callout bd-callout-info">
-<p>The animation effect of this component is dependent on the <code class="highlighter-rouge">prefers-reduced-motion</code> media query. See the <a href="/docs/4.5/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>.</p>
+<p>The animation effect of this component is dependent on the <code class="language-plaintext highlighter-rouge">prefers-reduced-motion</code> media query. See the <a href="/docs/4.5/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>.</p>
 </div>
 
 <p>Keep reading to see how popovers work with some examples.</p>
 
 <h2 id="example-enable-popovers-everywhere">Example: Enable popovers everywhere</h2>
 
-<p>One way to initialize all popovers on a page would be to select them by their <code class="highlighter-rouge">data-toggle</code> attribute:</p>
+<p>One way to initialize all popovers on a page would be to select them by their <code class="language-plaintext highlighter-rouge">data-toggle</code> attribute:</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-toggle="popover"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">popover</span><span class="p">()</span>
 <span class="p">})</span></code></pre></figure>
 
-<h2 id="example-using-the-container-option">Example: Using the <code class="highlighter-rouge">container</code> option</h2>
+<h2 id="example-using-the-container-option">Example: Using the <code class="language-plaintext highlighter-rouge">container</code> option</h2>
 
-<p>When you have some styles on a parent element that interfere with a popover, you’ll want to specify a custom <code class="highlighter-rouge">container</code> so that the popover’s HTML appears within that element instead.</p>
+<p>When you have some styles on a parent element that interfere with a popover, you’ll want to specify a custom <code class="language-plaintext highlighter-rouge">container</code> so that the popover’s HTML appears within that element instead.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.example-popover</span><span class="dl">'</span><span class="p">).</span><span class="nx">popover</span><span class="p">({</span>
@@ -595,12 +599,12 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 
 <h3 id="dismiss-on-next-click">Dismiss on next click</h3>
 
-<p>Use the <code class="highlighter-rouge">focus</code> trigger to dismiss popovers on the user’s next click of a different element than the toggle element.</p>
+<p>Use the <code class="language-plaintext highlighter-rouge">focus</code> trigger to dismiss popovers on the user’s next click of a different element than the toggle element.</p>
 
 <div class="bd-callout bd-callout-danger">
 <h4 id="specific-markup-required-for-dismiss-on-next-click">Specific markup required for dismiss-on-next-click</h4>
 
-<p>For proper cross-browser and cross-platform behavior, you must use the <code class="highlighter-rouge">&lt;a&gt;</code> tag, <em>not</em> the <code class="highlighter-rouge">&lt;button&gt;</code> tag, and you also must include a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex"><code class="highlighter-rouge">tabindex</code></a> attribute.</p>
+<p>For proper cross-browser and cross-platform behavior, you must use the <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> tag, <em>not</em> the <code class="language-plaintext highlighter-rouge">&lt;button&gt;</code> tag, and you also must include a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex"><code class="language-plaintext highlighter-rouge">tabindex</code></a> attribute.</p>
 </div>
 
 <div class="bd-example">
@@ -614,9 +618,9 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 
 <h3 id="disabled-elements">Disabled elements</h3>
 
-<p>Elements with the <code class="highlighter-rouge">disabled</code> attribute aren’t interactive, meaning users cannot hover or click them to trigger a popover (or tooltip). As a workaround, you’ll want to trigger the popover from a wrapper <code class="highlighter-rouge">&lt;div&gt;</code> or <code class="highlighter-rouge">&lt;span&gt;</code> and override the <code class="highlighter-rouge">pointer-events</code> on the disabled element.</p>
+<p>Elements with the <code class="language-plaintext highlighter-rouge">disabled</code> attribute aren’t interactive, meaning users cannot hover or click them to trigger a popover (or tooltip). As a workaround, you’ll want to trigger the popover from a wrapper <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;span&gt;</code> and override the <code class="language-plaintext highlighter-rouge">pointer-events</code> on the disabled element.</p>
 
-<p>For disabled popover triggers, you may also prefer <code class="highlighter-rouge">data-trigger="hover"</code> so that the popover appears as immediate visual feedback to your users as they may not expect to <em>click</em> on a disabled element.</p>
+<p>For disabled popover triggers, you may also prefer <code class="language-plaintext highlighter-rouge">data-trigger="hover"</code> so that the popover appears as immediate visual feedback to your users as they may not expect to <em>click</em> on a disabled element.</p>
 
 <div class="bd-example">
 <span class="d-inline-block" data-toggle="popover" data-content="Disabled popover">
@@ -636,19 +640,19 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 <div class="bd-callout bd-callout-warning">
 <h3 id="making-popovers-work-for-keyboard-and-assistive-technology-users">Making popovers work for keyboard and assistive technology users</h3>
 
-<p>To allow keyboard users to activate your popovers, you should only add them to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as <code class="highlighter-rouge">&lt;span&gt;</code>s) can be made focusable by adding the <code class="highlighter-rouge">tabindex="0"</code> attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users, and most assistive technologies currently do not announce the popover’s content in this situation. Additionally, do not rely solely on <code class="highlighter-rouge">hover</code> as the trigger for your popovers, as this will make them impossible to trigger for keyboard users.</p>
+<p>To allow keyboard users to activate your popovers, you should only add them to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as <code class="language-plaintext highlighter-rouge">&lt;span&gt;</code>s) can be made focusable by adding the <code class="language-plaintext highlighter-rouge">tabindex="0"</code> attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users, and most assistive technologies currently do not announce the popover’s content in this situation. Additionally, do not rely solely on <code class="language-plaintext highlighter-rouge">hover</code> as the trigger for your popovers, as this will make them impossible to trigger for keyboard users.</p>
 
-<p>While you can insert rich, structured HTML in popovers with the <code class="highlighter-rouge">html</code> option, we strongly recommend that you avoid adding an excessive amount of content. The way popovers currently work is that, once displayed, their content is tied to the trigger element with the <code class="highlighter-rouge">aria-describedby</code> attribute. As a result, the entirety of the popover’s content will be announced to assistive technology users as one long, uninterrupted stream.</p>
+<p>While you can insert rich, structured HTML in popovers with the <code class="language-plaintext highlighter-rouge">html</code> option, we strongly recommend that you avoid adding an excessive amount of content. The way popovers currently work is that, once displayed, their content is tied to the trigger element with the <code class="language-plaintext highlighter-rouge">aria-describedby</code> attribute. As a result, the entirety of the popover’s content will be announced to assistive technology users as one long, uninterrupted stream.</p>
 
-<p>Additionally, while it is possible to also include interactive controls (such as form elements or links) in your popover (by adding these elements to the <code class="highlighter-rouge">whiteList</code> or allowed attributes and tags), be aware that currently the popover does not manage keyboard focus order. When a keyboard user opens a popover, focus remains on the triggering element, and as the popover usually does not immediately follow the trigger in the document’s structure, there is no guarantee that moving forward/pressing <kbd>TAB</kbd> will move a keyboard user into the popover itself. In short, simply adding interactive controls to a popover is likely to make these controls unreachable/unusable for keyboard users and users of assistive technologies, or at the very least make for an illogical overall focus order. In these cases, consider using a modal dialog instead.</p>
+<p>Additionally, while it is possible to also include interactive controls (such as form elements or links) in your popover (by adding these elements to the <code class="language-plaintext highlighter-rouge">whiteList</code> or allowed attributes and tags), be aware that currently the popover does not manage keyboard focus order. When a keyboard user opens a popover, focus remains on the triggering element, and as the popover usually does not immediately follow the trigger in the document’s structure, there is no guarantee that moving forward/pressing <kbd>TAB</kbd> will move a keyboard user into the popover itself. In short, simply adding interactive controls to a popover is likely to make these controls unreachable/unusable for keyboard users and users of assistive technologies, or at the very least make for an illogical overall focus order. In these cases, consider using a modal dialog instead.</p>
 </div>
 
 <h3 id="options">Options</h3>
 
-<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code class="highlighter-rouge">data-</code>, as in <code class="highlighter-rouge">data-animation=""</code>.</p>
+<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code class="language-plaintext highlighter-rouge">data-</code>, as in <code class="language-plaintext highlighter-rouge">data-animation=""</code>.</p>
 
 <div class="bd-callout bd-callout-warning">
-<p>Note that for security reasons the <code class="highlighter-rouge">sanitize</code>, <code class="highlighter-rouge">sanitizeFn</code> and <code class="highlighter-rouge">whiteList</code> options cannot be supplied using data attributes.</p>
+<p>Note that for security reasons the <code class="language-plaintext highlighter-rouge">sanitize</code>, <code class="language-plaintext highlighter-rouge">sanitizeFn</code> and <code class="language-plaintext highlighter-rouge">whiteList</code> options cannot be supplied using data attributes.</p>
 </div>
 
 <table class="table table-bordered table-striped">
@@ -804,53 +808,53 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 <p><a href="/docs/4.5/getting-started/javascript/">See our JavaScript documentation for more information</a>.</p>
 </div>
 
-<h4 id="popoveroptions"><code class="highlighter-rouge">$().popover(options)</code></h4>
+<h4 id="popoveroptions"><code class="language-plaintext highlighter-rouge">$().popover(options)</code></h4>
 
 <p>Initializes popovers for an element collection.</p>
 
-<h4 id="popovershow"><code class="highlighter-rouge">.popover('show')</code></h4>
+<h4 id="popovershow"><code class="language-plaintext highlighter-rouge">.popover('show')</code></h4>
 
-<p>Reveals an element’s popover. <strong>Returns to the caller before the popover has actually been shown</strong> (i.e. before the <code class="highlighter-rouge">shown.bs.popover</code> event occurs). This is considered a “manual” triggering of the popover. Popovers whose title and content are both zero-length are never displayed.</p>
+<p>Reveals an element’s popover. <strong>Returns to the caller before the popover has actually been shown</strong> (i.e. before the <code class="language-plaintext highlighter-rouge">shown.bs.popover</code> event occurs). This is considered a “manual” triggering of the popover. Popovers whose title and content are both zero-length are never displayed.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#element</span><span class="dl">'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="popoverhide"><code class="highlighter-rouge">.popover('hide')</code></h4>
+<h4 id="popoverhide"><code class="language-plaintext highlighter-rouge">.popover('hide')</code></h4>
 
-<p>Hides an element’s popover. <strong>Returns to the caller before the popover has actually been hidden</strong> (i.e. before the <code class="highlighter-rouge">hidden.bs.popover</code> event occurs). This is considered a “manual” triggering of the popover.</p>
+<p>Hides an element’s popover. <strong>Returns to the caller before the popover has actually been hidden</strong> (i.e. before the <code class="language-plaintext highlighter-rouge">hidden.bs.popover</code> event occurs). This is considered a “manual” triggering of the popover.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#element</span><span class="dl">'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="dl">'</span><span class="s1">hide</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="popovertoggle"><code class="highlighter-rouge">.popover('toggle')</code></h4>
+<h4 id="popovertoggle"><code class="language-plaintext highlighter-rouge">.popover('toggle')</code></h4>
 
-<p>Toggles an element’s popover. <strong>Returns to the caller before the popover has actually been shown or hidden</strong> (i.e. before the <code class="highlighter-rouge">shown.bs.popover</code> or <code class="highlighter-rouge">hidden.bs.popover</code> event occurs). This is considered a “manual” triggering of the popover.</p>
+<p>Toggles an element’s popover. <strong>Returns to the caller before the popover has actually been shown or hidden</strong> (i.e. before the <code class="language-plaintext highlighter-rouge">shown.bs.popover</code> or <code class="language-plaintext highlighter-rouge">hidden.bs.popover</code> event occurs). This is considered a “manual” triggering of the popover.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#element</span><span class="dl">'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="dl">'</span><span class="s1">toggle</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="popoverdispose"><code class="highlighter-rouge">.popover('dispose')</code></h4>
+<h4 id="popoverdispose"><code class="language-plaintext highlighter-rouge">.popover('dispose')</code></h4>
 
-<p>Hides and destroys an element’s popover. Popovers that use delegation (which are created using <a href="#options">the <code class="highlighter-rouge">selector</code> option</a>) cannot be individually destroyed on descendant trigger elements.</p>
+<p>Hides and destroys an element’s popover. Popovers that use delegation (which are created using <a href="#options">the <code class="language-plaintext highlighter-rouge">selector</code> option</a>) cannot be individually destroyed on descendant trigger elements.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#element</span><span class="dl">'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="dl">'</span><span class="s1">dispose</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="popoverenable"><code class="highlighter-rouge">.popover('enable')</code></h4>
+<h4 id="popoverenable"><code class="language-plaintext highlighter-rouge">.popover('enable')</code></h4>
 
 <p>Gives an element’s popover the ability to be shown. <strong>Popovers are enabled by default.</strong></p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#element</span><span class="dl">'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="dl">'</span><span class="s1">enable</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="popoverdisable"><code class="highlighter-rouge">.popover('disable')</code></h4>
+<h4 id="popoverdisable"><code class="language-plaintext highlighter-rouge">.popover('disable')</code></h4>
 
 <p>Removes the ability for an element’s popover to be shown. The popover will only be able to be shown if it is re-enabled.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#element</span><span class="dl">'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="dl">'</span><span class="s1">disable</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="popovertoggleenabled"><code class="highlighter-rouge">.popover('toggleEnabled')</code></h4>
+<h4 id="popovertoggleenabled"><code class="language-plaintext highlighter-rouge">.popover('toggleEnabled')</code></h4>
 
 <p>Toggles the ability for an element’s popover to be shown or hidden.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#element</span><span class="dl">'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="dl">'</span><span class="s1">toggleEnabled</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="popoverupdate"><code class="highlighter-rouge">.popover('update')</code></h4>
+<h4 id="popoverupdate"><code class="language-plaintext highlighter-rouge">.popover('update')</code></h4>
 
 <p>Updates the position of an element’s popover.</p>
 
@@ -899,6 +903,6 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

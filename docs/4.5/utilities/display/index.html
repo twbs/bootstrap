@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/utilities/display/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -478,42 +479,45 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Display property</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/utilities/display.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Display property</h1>
+          </div>
           <p class="bd-lead">Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="how-it-works">How it works</h2>
 
-<p>Change the value of the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display"><code class="highlighter-rouge">display</code> property</a> with our responsive display utility classes. We purposely support only a subset of all possible values for <code class="highlighter-rouge">display</code>. Classes can be combined for various effects as you need.</p>
+<p>Change the value of the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display"><code class="language-plaintext highlighter-rouge">display</code> property</a> with our responsive display utility classes. We purposely support only a subset of all possible values for <code class="language-plaintext highlighter-rouge">display</code>. Classes can be combined for various effects as you need.</p>
 
 <h2 id="notation">Notation</h2>
 
-<p>Display utility classes that apply to all <a href="/docs/4.5/layout/overview/#responsive-breakpoints">breakpoints</a>, from <code class="highlighter-rouge">xs</code> to <code class="highlighter-rouge">xl</code>, have no breakpoint abbreviation in them. This is because those classes are applied from <code class="highlighter-rouge">min-width: 0;</code> and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.</p>
+<p>Display utility classes that apply to all <a href="/docs/4.5/layout/overview/#responsive-breakpoints">breakpoints</a>, from <code class="language-plaintext highlighter-rouge">xs</code> to <code class="language-plaintext highlighter-rouge">xl</code>, have no breakpoint abbreviation in them. This is because those classes are applied from <code class="language-plaintext highlighter-rouge">min-width: 0;</code> and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.</p>
 
 <p>As such, the classes are named using the format:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">.d-{value}</code> for <code class="highlighter-rouge">xs</code></li>
-  <li><code class="highlighter-rouge">.d-{breakpoint}-{value}</code> for <code class="highlighter-rouge">sm</code>, <code class="highlighter-rouge">md</code>, <code class="highlighter-rouge">lg</code>, and <code class="highlighter-rouge">xl</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">.d-{value}</code> for <code class="language-plaintext highlighter-rouge">xs</code></li>
+  <li><code class="language-plaintext highlighter-rouge">.d-{breakpoint}-{value}</code> for <code class="language-plaintext highlighter-rouge">sm</code>, <code class="language-plaintext highlighter-rouge">md</code>, <code class="language-plaintext highlighter-rouge">lg</code>, and <code class="language-plaintext highlighter-rouge">xl</code>.</li>
 </ul>
 
 <p>Where <em>value</em> is one of:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">none</code></li>
-  <li><code class="highlighter-rouge">inline</code></li>
-  <li><code class="highlighter-rouge">inline-block</code></li>
-  <li><code class="highlighter-rouge">block</code></li>
-  <li><code class="highlighter-rouge">table</code></li>
-  <li><code class="highlighter-rouge">table-cell</code></li>
-  <li><code class="highlighter-rouge">table-row</code></li>
-  <li><code class="highlighter-rouge">flex</code></li>
-  <li><code class="highlighter-rouge">inline-flex</code></li>
+  <li><code class="language-plaintext highlighter-rouge">none</code></li>
+  <li><code class="language-plaintext highlighter-rouge">inline</code></li>
+  <li><code class="language-plaintext highlighter-rouge">inline-block</code></li>
+  <li><code class="language-plaintext highlighter-rouge">block</code></li>
+  <li><code class="language-plaintext highlighter-rouge">table</code></li>
+  <li><code class="language-plaintext highlighter-rouge">table-cell</code></li>
+  <li><code class="language-plaintext highlighter-rouge">table-row</code></li>
+  <li><code class="language-plaintext highlighter-rouge">flex</code></li>
+  <li><code class="language-plaintext highlighter-rouge">inline-flex</code></li>
 </ul>
 
-<p>The display values can be altered by changing the <code class="highlighter-rouge">$displays</code> variable and recompiling the SCSS.</p>
+<p>The display values can be altered by changing the <code class="language-plaintext highlighter-rouge">$displays</code> variable and recompiling the SCSS.</p>
 
-<p>The media queries effect screen widths with the given breakpoint <em>or larger</em>. For example, <code class="highlighter-rouge">.d-lg-none</code> sets <code class="highlighter-rouge">display: none;</code> on both <code class="highlighter-rouge">lg</code> and <code class="highlighter-rouge">xl</code> screens.</p>
+<p>The media queries affect screen widths with the given breakpoint <em>or larger</em>. For example, <code class="language-plaintext highlighter-rouge">.d-lg-none</code> sets <code class="language-plaintext highlighter-rouge">display: none;</code> on both <code class="language-plaintext highlighter-rouge">lg</code> and <code class="language-plaintext highlighter-rouge">xl</code> screens.</p>
 
 <h2 id="examples">Examples</h2>
 
@@ -535,9 +539,9 @@
 
 <p>For faster mobile-friendly development, use responsive display classes for showing and hiding elements by device. Avoid creating entirely different versions of the same site, instead hide elements responsively for each screen size.</p>
 
-<p>To hide elements simply use the <code class="highlighter-rouge">.d-none</code> class or one of the <code class="highlighter-rouge">.d-{sm,md,lg,xl}-none</code> classes for any responsive screen variation.</p>
+<p>To hide elements simply use the <code class="language-plaintext highlighter-rouge">.d-none</code> class or one of the <code class="language-plaintext highlighter-rouge">.d-{sm,md,lg,xl}-none</code> classes for any responsive screen variation.</p>
 
-<p>To show an element only on a given interval of screen sizes you can combine one <code class="highlighter-rouge">.d-*-none</code> class with a <code class="highlighter-rouge">.d-*-*</code> class, for example <code class="highlighter-rouge">.d-none .d-md-block .d-xl-none</code> will hide the element for all screen sizes except on medium and large devices.</p>
+<p>To show an element only on a given interval of screen sizes you can combine one <code class="language-plaintext highlighter-rouge">.d-*-none</code> class with a <code class="language-plaintext highlighter-rouge">.d-*-*</code> class, for example <code class="language-plaintext highlighter-rouge">.d-none .d-md-block .d-xl-none</code> will hide the element for all screen sizes except on medium and large devices.</p>
 
 <table>
   <thead>
@@ -549,51 +553,51 @@
   <tbody>
     <tr>
       <td>Hidden on all</td>
-      <td><code class="highlighter-rouge">.d-none</code></td>
+      <td><code class="language-plaintext highlighter-rouge">.d-none</code></td>
     </tr>
     <tr>
       <td>Hidden only on xs</td>
-      <td><code class="highlighter-rouge">.d-none .d-sm-block</code></td>
+      <td><code class="language-plaintext highlighter-rouge">.d-none .d-sm-block</code></td>
     </tr>
     <tr>
       <td>Hidden only on sm</td>
-      <td><code class="highlighter-rouge">.d-sm-none .d-md-block</code></td>
+      <td><code class="language-plaintext highlighter-rouge">.d-sm-none .d-md-block</code></td>
     </tr>
     <tr>
       <td>Hidden only on md</td>
-      <td><code class="highlighter-rouge">.d-md-none .d-lg-block</code></td>
+      <td><code class="language-plaintext highlighter-rouge">.d-md-none .d-lg-block</code></td>
     </tr>
     <tr>
       <td>Hidden only on lg</td>
-      <td><code class="highlighter-rouge">.d-lg-none .d-xl-block</code></td>
+      <td><code class="language-plaintext highlighter-rouge">.d-lg-none .d-xl-block</code></td>
     </tr>
     <tr>
       <td>Hidden only on xl</td>
-      <td><code class="highlighter-rouge">.d-xl-none</code></td>
+      <td><code class="language-plaintext highlighter-rouge">.d-xl-none</code></td>
     </tr>
     <tr>
       <td>Visible on all</td>
-      <td><code class="highlighter-rouge">.d-block</code></td>
+      <td><code class="language-plaintext highlighter-rouge">.d-block</code></td>
     </tr>
     <tr>
       <td>Visible only on xs</td>
-      <td><code class="highlighter-rouge">.d-block .d-sm-none</code></td>
+      <td><code class="language-plaintext highlighter-rouge">.d-block .d-sm-none</code></td>
     </tr>
     <tr>
       <td>Visible only on sm</td>
-      <td><code class="highlighter-rouge">.d-none .d-sm-block .d-md-none</code></td>
+      <td><code class="language-plaintext highlighter-rouge">.d-none .d-sm-block .d-md-none</code></td>
     </tr>
     <tr>
       <td>Visible only on md</td>
-      <td><code class="highlighter-rouge">.d-none .d-md-block .d-lg-none</code></td>
+      <td><code class="language-plaintext highlighter-rouge">.d-none .d-md-block .d-lg-none</code></td>
     </tr>
     <tr>
       <td>Visible only on lg</td>
-      <td><code class="highlighter-rouge">.d-none .d-lg-block .d-xl-none</code></td>
+      <td><code class="language-plaintext highlighter-rouge">.d-none .d-lg-block .d-xl-none</code></td>
     </tr>
     <tr>
       <td>Visible only on xl</td>
-      <td><code class="highlighter-rouge">.d-none .d-xl-block</code></td>
+      <td><code class="language-plaintext highlighter-rouge">.d-none .d-xl-block</code></td>
     </tr>
   </tbody>
 </table>
@@ -607,18 +611,18 @@
 
 <h2 id="display-in-print">Display in print</h2>
 
-<p>Change the <code class="highlighter-rouge">display</code> value of elements when printing with our print display utility classes. Includes support for the same <code class="highlighter-rouge">display</code> values as our responsive <code class="highlighter-rouge">.d-*</code> utilities.</p>
+<p>Change the <code class="language-plaintext highlighter-rouge">display</code> value of elements when printing with our print display utility classes. Includes support for the same <code class="language-plaintext highlighter-rouge">display</code> values as our responsive <code class="language-plaintext highlighter-rouge">.d-*</code> utilities.</p>
 
 <ul>
-  <li><code class="highlighter-rouge">.d-print-none</code></li>
-  <li><code class="highlighter-rouge">.d-print-inline</code></li>
-  <li><code class="highlighter-rouge">.d-print-inline-block</code></li>
-  <li><code class="highlighter-rouge">.d-print-block</code></li>
-  <li><code class="highlighter-rouge">.d-print-table</code></li>
-  <li><code class="highlighter-rouge">.d-print-table-row</code></li>
-  <li><code class="highlighter-rouge">.d-print-table-cell</code></li>
-  <li><code class="highlighter-rouge">.d-print-flex</code></li>
-  <li><code class="highlighter-rouge">.d-print-inline-flex</code></li>
+  <li><code class="language-plaintext highlighter-rouge">.d-print-none</code></li>
+  <li><code class="language-plaintext highlighter-rouge">.d-print-inline</code></li>
+  <li><code class="language-plaintext highlighter-rouge">.d-print-inline-block</code></li>
+  <li><code class="language-plaintext highlighter-rouge">.d-print-block</code></li>
+  <li><code class="language-plaintext highlighter-rouge">.d-print-table</code></li>
+  <li><code class="language-plaintext highlighter-rouge">.d-print-table-row</code></li>
+  <li><code class="language-plaintext highlighter-rouge">.d-print-table-cell</code></li>
+  <li><code class="language-plaintext highlighter-rouge">.d-print-flex</code></li>
+  <li><code class="language-plaintext highlighter-rouge">.d-print-inline-flex</code></li>
 </ul>
 
 <p>The print and display classes can be combined.</p>
@@ -638,6 +642,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

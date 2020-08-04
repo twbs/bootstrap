@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Easily extend form controls by adding text, buttons, or button groups on either side of textual inputs, custom selects, and custom file inputs.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/components/input-group/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -489,13 +490,16 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Input group</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/components/input-group.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Input group</h1>
+          </div>
           <p class="bd-lead">Easily extend form controls by adding text, buttons, or button groups on either side of textual inputs, custom selects, and custom file inputs.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="basic-example">Basic example</h2>
 
-<p>Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember to place <code class="highlighter-rouge">&lt;label&gt;</code>s outside the input group.</p>
+<p>Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember to place <code class="language-plaintext highlighter-rouge">&lt;label&gt;</code>s outside the input group.</p>
 
 <div class="bd-example">
 <div class="input-group mb-3">
@@ -578,7 +582,7 @@
 
 <h2 id="wrapping">Wrapping</h2>
 
-<p>Input groups wrap by default via <code class="highlighter-rouge">flex-wrap: wrap</code> in order to accommodate custom form field validation within an input group. You may disable this with <code class="highlighter-rouge">.flex-nowrap</code>.</p>
+<p>Input groups wrap by default via <code class="language-plaintext highlighter-rouge">flex-wrap: wrap</code> in order to accommodate custom form field validation within an input group. You may disable this with <code class="language-plaintext highlighter-rouge">.flex-nowrap</code>.</p>
 
 <div class="bd-example">
 <div class="input-group flex-nowrap">
@@ -597,7 +601,7 @@
 
 <h2 id="sizing">Sizing</h2>
 
-<p>Add the relative form sizing classes to the <code class="highlighter-rouge">.input-group</code> itself and contents within will automatically resize—no need for repeating the form control size classes on each element.</p>
+<p>Add the relative form sizing classes to the <code class="language-plaintext highlighter-rouge">.input-group</code> itself and contents within will automatically resize—no need for repeating the form control size classes on each element.</p>
 
 <p><strong>Sizing on the individual input group elements isn’t supported.</strong></p>
 
@@ -687,7 +691,7 @@
 
 <h2 id="multiple-inputs">Multiple inputs</h2>
 
-<p>While multiple <code class="highlighter-rouge">&lt;input&gt;</code>s are supported visually, validation styles are only available for input groups with a single <code class="highlighter-rouge">&lt;input&gt;</code>.</p>
+<p>While multiple <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code>s are supported visually, validation styles are only available for input groups with a single <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code>.</p>
 
 <div class="bd-example">
 <div class="input-group">
@@ -1124,15 +1128,26 @@
 
 <h2 id="accessibility">Accessibility</h2>
 
-<p>Screen readers will have trouble with your forms if you don’t include a label for every input. For these input groups, ensure that any additional label or functionality is conveyed to assistive technologies.</p>
+<p>Ensure that all form controls have an appropriate accessible name so that their purpose can be conveyed to users of assistive technologies. The simplest way to achieve this is to use a <code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> element, or—in the case of buttons—to include sufficiently descriptive text as part of the <code class="language-plaintext highlighter-rouge">&lt;button&gt;...&lt;/button&gt;</code> content.</p>
 
-<p>The exact technique to be used (<code class="highlighter-rouge">&lt;label&gt;</code> elements hidden using the <code class="highlighter-rouge">.sr-only</code> class, or use of the <code class="highlighter-rouge">aria-label</code> and <code class="highlighter-rouge">aria-labelledby</code> attributes, possibly in combination with <code class="highlighter-rouge">aria-describedby</code>) and what additional information will need to be conveyed will vary depending on the exact type of interface widget you’re implementing. The examples in this section provide a few suggested, case-specific approaches.</p>
+<p>For situations where it’s not possible to include a visible <code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> or appropriate text content, there are alternative ways of still providing an accessible name, such as:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> elements hidden using the <code class="language-plaintext highlighter-rouge">.visually-hidden</code> class</li>
+  <li>Pointing to an existing element that can act as a label using <code class="language-plaintext highlighter-rouge">aria-labelledby</code></li>
+  <li>Providing a <code class="language-plaintext highlighter-rouge">title</code> attribute</li>
+  <li>Explicitly setting the accessible name on an element using <code class="language-plaintext highlighter-rouge">aria-label</code></li>
+</ul>
+
+<p>If none of these are present, assistive technologies may resort to using the <code class="language-plaintext highlighter-rouge">placeholder</code> attribute as a fallback for the accessible name on <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;textarea&gt;</code> elements. The examples in this section provide a few suggested, case-specific approaches.</p>
+
+<p>While using visually hidden content (<code class="language-plaintext highlighter-rouge">.sr-only</code>, <code class="language-plaintext highlighter-rouge">aria-label</code>, and even <code class="language-plaintext highlighter-rouge">placeholder</code> content, which disappears once a form field has content) will benefit assistive technology users, a lack of visible label text may still be problematic for certain users. Some form of visible label is generally the best approach, both for accessibility and usability.</p>
 
         </main>
       </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

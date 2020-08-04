@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Toggle the visibility of content across your project with a few classes and our JavaScript plugins.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/components/collapse/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -495,16 +496,19 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Collapse</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/components/collapse.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Collapse</h1>
+          </div>
           <p class="bd-lead">Toggle the visibility of content across your project with a few classes and our JavaScript plugins.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="how-it-works">How it works</h2>
 
-<p>The collapse JavaScript plugin is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. Collapsing an element will animate the <code class="highlighter-rouge">height</code> from its current value to <code class="highlighter-rouge">0</code>. Given how CSS handles animations, you cannot use <code class="highlighter-rouge">padding</code> on a <code class="highlighter-rouge">.collapse</code> element. Instead, use the class as an independent wrapping element.</p>
+<p>The collapse JavaScript plugin is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. Collapsing an element will animate the <code class="language-plaintext highlighter-rouge">height</code> from its current value to <code class="language-plaintext highlighter-rouge">0</code>. Given how CSS handles animations, you cannot use <code class="language-plaintext highlighter-rouge">padding</code> on a <code class="language-plaintext highlighter-rouge">.collapse</code> element. Instead, use the class as an independent wrapping element.</p>
 
 <div class="bd-callout bd-callout-info">
-<p>The animation effect of this component is dependent on the <code class="highlighter-rouge">prefers-reduced-motion</code> media query. See the <a href="/docs/4.5/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>.</p>
+<p>The animation effect of this component is dependent on the <code class="language-plaintext highlighter-rouge">prefers-reduced-motion</code> media query. See the <a href="/docs/4.5/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>.</p>
 </div>
 
 <h2 id="example">Example</h2>
@@ -512,12 +516,12 @@
 <p>Click the buttons below to show and hide another element via class changes:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">.collapse</code> hides content</li>
-  <li><code class="highlighter-rouge">.collapsing</code> is applied during transitions</li>
-  <li><code class="highlighter-rouge">.collapse.show</code> shows content</li>
+  <li><code class="language-plaintext highlighter-rouge">.collapse</code> hides content</li>
+  <li><code class="language-plaintext highlighter-rouge">.collapsing</code> is applied during transitions</li>
+  <li><code class="language-plaintext highlighter-rouge">.collapse.show</code> shows content</li>
 </ul>
 
-<p>You can use a link with the <code class="highlighter-rouge">href</code> attribute, or a button with the <code class="highlighter-rouge">data-target</code> attribute. In both cases, the <code class="highlighter-rouge">data-toggle="collapse"</code> is required.</p>
+<p>You can use a link with the <code class="language-plaintext highlighter-rouge">href</code> attribute, or a button with the <code class="language-plaintext highlighter-rouge">data-target</code> attribute. In both cases, the <code class="language-plaintext highlighter-rouge">data-toggle="collapse"</code> is required.</p>
 
 <div class="bd-example">
 <p>
@@ -550,8 +554,8 @@
 
 <h2 id="multiple-targets">Multiple targets</h2>
 
-<p>A <code class="highlighter-rouge">&lt;button&gt;</code> or <code class="highlighter-rouge">&lt;a&gt;</code> can show and hide multiple elements by referencing them with a JQuery selector in its <code class="highlighter-rouge">href</code> or <code class="highlighter-rouge">data-target</code> attribute.
-Multiple <code class="highlighter-rouge">&lt;button&gt;</code> or <code class="highlighter-rouge">&lt;a&gt;</code> can show and hide an element if they each reference it with their <code class="highlighter-rouge">href</code> or <code class="highlighter-rouge">data-target</code> attribute</p>
+<p>A <code class="language-plaintext highlighter-rouge">&lt;button&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> can show and hide multiple elements by referencing them with a JQuery selector in its <code class="language-plaintext highlighter-rouge">href</code> or <code class="language-plaintext highlighter-rouge">data-target</code> attribute.
+Multiple <code class="language-plaintext highlighter-rouge">&lt;button&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> can show and hide an element if they each reference it with their <code class="language-plaintext highlighter-rouge">href</code> or <code class="language-plaintext highlighter-rouge">data-target</code> attribute</p>
 
 <div class="bd-example">
 <p>
@@ -600,7 +604,7 @@ Multiple <code class="highlighter-rouge">&lt;button&gt;</code> or <code class="h
 
 <h2 id="accordion-example">Accordion example</h2>
 
-<p>Using the <a href="/docs/4.5/components/card/">card</a> component, you can extend the default collapse behavior to create an accordion. To properly achieve the accordion style, be sure to use <code class="highlighter-rouge">.accordion</code> as a wrapper.</p>
+<p>Using the <a href="/docs/4.5/components/card/">card</a> component, you can extend the default collapse behavior to create an accordion. To properly achieve the accordion style, be sure to use <code class="language-plaintext highlighter-rouge">.accordion</code> as a wrapper.</p>
 
 <div class="bd-example">
 <div class="accordion" id="accordionExample">
@@ -697,9 +701,9 @@ Multiple <code class="highlighter-rouge">&lt;button&gt;</code> or <code class="h
 
 <h2 id="accessibility">Accessibility</h2>
 
-<p>Be sure to add <code class="highlighter-rouge">aria-expanded</code> to the control element. This attribute explicitly conveys the current state of the collapsible element tied to the control to screen readers and similar assistive technologies. If the collapsible element is closed by default, the attribute on the control element should have a value of <code class="highlighter-rouge">aria-expanded="false"</code>. If you’ve set the collapsible element to be open by default using the <code class="highlighter-rouge">show</code> class, set <code class="highlighter-rouge">aria-expanded="true"</code> on the control instead. The plugin will automatically toggle this attribute on the control based on whether or not the collapsible element has been opened or closed (via JavaScript, or because the user triggered another control element also tied to the same collapsible element). If the control element’s HTML element is not a button (e.g., an <code class="highlighter-rouge">&lt;a&gt;</code> or <code class="highlighter-rouge">&lt;div&gt;</code>), the attribute <code class="highlighter-rouge">role="button"</code> should be added to the element.</p>
+<p>Be sure to add <code class="language-plaintext highlighter-rouge">aria-expanded</code> to the control element. This attribute explicitly conveys the current state of the collapsible element tied to the control to screen readers and similar assistive technologies. If the collapsible element is closed by default, the attribute on the control element should have a value of <code class="language-plaintext highlighter-rouge">aria-expanded="false"</code>. If you’ve set the collapsible element to be open by default using the <code class="language-plaintext highlighter-rouge">show</code> class, set <code class="language-plaintext highlighter-rouge">aria-expanded="true"</code> on the control instead. The plugin will automatically toggle this attribute on the control based on whether or not the collapsible element has been opened or closed (via JavaScript, or because the user triggered another control element also tied to the same collapsible element). If the control element’s HTML element is not a button (e.g., an <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code>), the attribute <code class="language-plaintext highlighter-rouge">role="button"</code> should be added to the element.</p>
 
-<p>If your control element is targeting a single collapsible element – i.e. the <code class="highlighter-rouge">data-target</code> attribute is pointing to an <code class="highlighter-rouge">id</code> selector – you should add the <code class="highlighter-rouge">aria-controls</code> attribute to the control element, containing the <code class="highlighter-rouge">id</code> of the collapsible element. Modern screen readers and similar assistive technologies make use of this attribute to provide users with additional shortcuts to navigate directly to the collapsible element itself.</p>
+<p>If your control element is targeting a single collapsible element – i.e. the <code class="language-plaintext highlighter-rouge">data-target</code> attribute is pointing to an <code class="language-plaintext highlighter-rouge">id</code> selector – you should add the <code class="language-plaintext highlighter-rouge">aria-controls</code> attribute to the control element, containing the <code class="language-plaintext highlighter-rouge">id</code> of the collapsible element. Modern screen readers and similar assistive technologies make use of this attribute to provide users with additional shortcuts to navigate directly to the collapsible element itself.</p>
 
 <p>Note that Bootstrap’s current implementation does not cover the various keyboard interactions described in the <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#accordion">WAI-ARIA Authoring Practices 1.1 accordion pattern</a> - you will need to include these yourself with custom JavaScript.</p>
 
@@ -708,18 +712,18 @@ Multiple <code class="highlighter-rouge">&lt;button&gt;</code> or <code class="h
 <p>The collapse plugin utilizes a few classes to handle the heavy lifting:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">.collapse</code> hides the content</li>
-  <li><code class="highlighter-rouge">.collapse.show</code> shows the content</li>
-  <li><code class="highlighter-rouge">.collapsing</code> is added when the transition starts, and removed when it finishes</li>
+  <li><code class="language-plaintext highlighter-rouge">.collapse</code> hides the content</li>
+  <li><code class="language-plaintext highlighter-rouge">.collapse.show</code> shows the content</li>
+  <li><code class="language-plaintext highlighter-rouge">.collapsing</code> is added when the transition starts, and removed when it finishes</li>
 </ul>
 
-<p>These classes can be found in <code class="highlighter-rouge">_transitions.scss</code>.</p>
+<p>These classes can be found in <code class="language-plaintext highlighter-rouge">_transitions.scss</code>.</p>
 
 <h3 id="via-data-attributes">Via data attributes</h3>
 
-<p>Just add <code class="highlighter-rouge">data-toggle="collapse"</code> and a <code class="highlighter-rouge">data-target</code> to the element to automatically assign control of one or more collapsible elements. The <code class="highlighter-rouge">data-target</code> attribute accepts a CSS selector to apply the collapse to. Be sure to add the class <code class="highlighter-rouge">collapse</code> to the collapsible element. If you’d like it to default open, add the additional class <code class="highlighter-rouge">show</code>.</p>
+<p>Just add <code class="language-plaintext highlighter-rouge">data-toggle="collapse"</code> and a <code class="language-plaintext highlighter-rouge">data-target</code> to the element to automatically assign control of one or more collapsible elements. The <code class="language-plaintext highlighter-rouge">data-target</code> attribute accepts a CSS selector to apply the collapse to. Be sure to add the class <code class="language-plaintext highlighter-rouge">collapse</code> to the collapsible element. If you’d like it to default open, add the additional class <code class="language-plaintext highlighter-rouge">show</code>.</p>
 
-<p>To add accordion-like group management to a collapsible area, add the data attribute <code class="highlighter-rouge">data-parent="#selector"</code>. Refer to the demo to see this in action.</p>
+<p>To add accordion-like group management to a collapsible area, add the data attribute <code class="language-plaintext highlighter-rouge">data-parent="#selector"</code>. Refer to the demo to see this in action.</p>
 
 <h3 id="via-javascript">Via JavaScript</h3>
 
@@ -729,7 +733,7 @@ Multiple <code class="highlighter-rouge">&lt;button&gt;</code> or <code class="h
 
 <h3 id="options">Options</h3>
 
-<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code class="highlighter-rouge">data-</code>, as in <code class="highlighter-rouge">data-parent=""</code>.</p>
+<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code class="language-plaintext highlighter-rouge">data-</code>, as in <code class="language-plaintext highlighter-rouge">data-parent=""</code>.</p>
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -766,27 +770,27 @@ Multiple <code class="highlighter-rouge">&lt;button&gt;</code> or <code class="h
 <p><a href="/docs/4.5/getting-started/javascript/">See our JavaScript documentation for more information</a>.</p>
 </div>
 
-<h4 id="collapseoptions"><code class="highlighter-rouge">.collapse(options)</code></h4>
+<h4 id="collapseoptions"><code class="language-plaintext highlighter-rouge">.collapse(options)</code></h4>
 
-<p>Activates your content as a collapsible element. Accepts an optional options <code class="highlighter-rouge">object</code>.</p>
+<p>Activates your content as a collapsible element. Accepts an optional options <code class="language-plaintext highlighter-rouge">object</code>.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#myCollapsible</span><span class="dl">'</span><span class="p">).</span><span class="nx">collapse</span><span class="p">({</span>
   <span class="na">toggle</span><span class="p">:</span> <span class="kc">false</span>
 <span class="p">})</span></code></pre></figure>
 
-<h4 id="collapsetoggle"><code class="highlighter-rouge">.collapse('toggle')</code></h4>
+<h4 id="collapsetoggle"><code class="language-plaintext highlighter-rouge">.collapse('toggle')</code></h4>
 
-<p>Toggles a collapsible element to shown or hidden. <strong>Returns to the caller before the collapsible element has actually been shown or hidden</strong> (i.e. before the <code class="highlighter-rouge">shown.bs.collapse</code> or <code class="highlighter-rouge">hidden.bs.collapse</code> event occurs).</p>
+<p>Toggles a collapsible element to shown or hidden. <strong>Returns to the caller before the collapsible element has actually been shown or hidden</strong> (i.e. before the <code class="language-plaintext highlighter-rouge">shown.bs.collapse</code> or <code class="language-plaintext highlighter-rouge">hidden.bs.collapse</code> event occurs).</p>
 
-<h4 id="collapseshow"><code class="highlighter-rouge">.collapse('show')</code></h4>
+<h4 id="collapseshow"><code class="language-plaintext highlighter-rouge">.collapse('show')</code></h4>
 
-<p>Shows a collapsible element. <strong>Returns to the caller before the collapsible element has actually been shown</strong> (i.e. before the <code class="highlighter-rouge">shown.bs.collapse</code> event occurs).</p>
+<p>Shows a collapsible element. <strong>Returns to the caller before the collapsible element has actually been shown</strong> (i.e. before the <code class="language-plaintext highlighter-rouge">shown.bs.collapse</code> event occurs).</p>
 
-<h4 id="collapsehide"><code class="highlighter-rouge">.collapse('hide')</code></h4>
+<h4 id="collapsehide"><code class="language-plaintext highlighter-rouge">.collapse('hide')</code></h4>
 
-<p>Hides a collapsible element. <strong>Returns to the caller before the collapsible element has actually been hidden</strong> (i.e. before the <code class="highlighter-rouge">hidden.bs.collapse</code> event occurs).</p>
+<p>Hides a collapsible element. <strong>Returns to the caller before the collapsible element has actually been hidden</strong> (i.e. before the <code class="language-plaintext highlighter-rouge">hidden.bs.collapse</code> event occurs).</p>
 
-<h4 id="collapsedispose"><code class="highlighter-rouge">.collapse('dispose')</code></h4>
+<h4 id="collapsedispose"><code class="language-plaintext highlighter-rouge">.collapse('dispose')</code></h4>
 
 <p>Destroys an element’s collapse.</p>
 
@@ -831,6 +835,6 @@ Multiple <code class="highlighter-rouge">&lt;button&gt;</code> or <code class="h
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>
