@@ -98,6 +98,56 @@ When you have multiple toasts, we default to vertically stacking them in a reada
 </div>
 {{< /example >}}
 
+### Custom content
+
+Customize your toasts by removing sub-components, tweaking with [utilities]({{< docsref "/utilities/api" >}}), or adding your own markup. Here we've created a simpler toast by removing the default `.toast-header`, adding a custom hide icon from [Bootstrap Icons]({{< param icons >}}), and using some [flexbox utilities]({{< docsref "/utilities/flex" >}}) to adjust the layout.
+
+{{< example class="bg-light" >}}
+<div class="toast d-flex" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-body">
+    Hello, world! This is a toast message.
+  </div>
+  <button type="button" class="ml-auto p-2 close" data-dismiss="toast" aria-label="Close">
+    <svg class="bi bi-x" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+      <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+    </svg>
+  </button>
+</div>
+{{< /example >}}
+
+Alternatively, you can also add additional controls and components to toasts.
+
+{{< example class="bg-light" >}}
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-body">
+    Hello, world! This is a toast message.
+    <div class="mt-2 pt-2 border-top">
+      <button type="button" class="btn btn-primary btn-sm">Take action</button>
+      <button type="button" class="btn btn-secondary btn-sm" data-dismiss="toast">Close</button>
+    </div>
+  </div>
+</div>
+{{< /example >}}
+
+### Color schemes
+
+Building on the above example, you can create different toast color schemes with our [color utilities]({{< docsref "/utilities/colors" >}}). Here we've added `.bg-primary` and `.text-white` to the `.toast`, and then added `.text-white` to our close button. For a crisp edge, we remove the default border with `.border-0`.
+
+{{< example class="bg-light" >}}
+<div class="toast d-flex text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-body">
+    Hello, world! This is a toast message.
+  </div>
+  <button type="button" class="ml-auto p-2 close text-white" data-dismiss="toast" aria-label="Close">
+    <svg class="bi bi-x" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+      <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+    </svg>
+  </button>
+</div>
+{{< /example >}}
+
 ## Placement
 
 Place toasts with custom CSS as you need them. The top right is often used for notifications, as is the top middle. If you're only ever going to show one toast at a time, put the positioning styles right on the `.toast`.
@@ -244,22 +294,22 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </thead>
   <tbody>
     <tr>
-      <td>animation</td>
+      <td><code>animation</code></td>
       <td>boolean</td>
-      <td>true</td>
+      <td><code>true</code></td>
       <td>Apply a CSS fade transition to the toast</td>
     </tr>
     <tr>
-      <td>autohide</td>
+      <td><code>autohide</code></td>
       <td>boolean</td>
-      <td>true</td>
+      <td><code>true</code></td>
       <td>Auto hide the toast</td>
     </tr>
     <tr>
-      <td>delay</td>
+      <td><code>delay</code></td>
       <td>number</td>
       <td>
-        <code>500</code>
+        <code>5000</code>
       </td>
       <td>Delay hiding the toast (ms)</td>
     </tr>
@@ -302,19 +352,19 @@ Hides an element's toast. Your toast will remain on the DOM but won't show anymo
   </thead>
   <tbody>
     <tr>
-      <td>show.bs.toast</td>
+      <td><code>show.bs.toast</code></td>
       <td>This event fires immediately when the <code>show</code> instance method is called.</td>
     </tr>
     <tr>
-      <td>shown.bs.toast</td>
+      <td><code>shown.bs.toast</code></td>
       <td>This event is fired when the toast has been made visible to the user.</td>
     </tr>
     <tr>
-      <td>hide.bs.toast</td>
+      <td><code>hide.bs.toast</code></td>
       <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
     </tr>
     <tr>
-      <td>hidden.bs.toast</td>
+      <td><code>hidden.bs.toast</code></td>
       <td>This event is fired when the toast has finished being hidden from the user.</td>
     </tr>
   </tbody>
