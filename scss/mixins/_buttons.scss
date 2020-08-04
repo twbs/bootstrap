@@ -12,7 +12,7 @@
   $hover-color: color-contrast($hover-background),
   $active-background: if($color == $color-contrast-light, darken($background, 10%), lighten($background, 10%)),
   $active-border: if($color == $color-contrast-light, darken($border, 12.5%), lighten($border, 5%)),
-  $active-color: color-contrast($active-background)
+  $active-color: color-contrast($active-background),
   $disabled-background: $background,
   $disabled-border: $border,
   $disabled-color: color-contrast($disabled-background)
