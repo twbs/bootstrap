@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap button.js v4.5.1 (https://getbootstrap.com/)
+  * Bootstrap button.js v4.5.2 (https://getbootstrap.com/)
   * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -21,7 +21,7 @@
    */
 
   var NAME = 'button';
-  var VERSION = '4.5.1';
+  var VERSION = '4.5.2';
   var DATA_KEY = 'bs.button';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
