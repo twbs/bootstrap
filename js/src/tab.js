@@ -40,7 +40,6 @@ const CLASS_NAME_SHOW = 'show'
 const SELECTOR_DROPDOWN = '.dropdown'
 const SELECTOR_NAV_LIST_GROUP = '.nav, .list-group'
 const SELECTOR_ACTIVE = '.active'
-const SELECTOR_ACTIVE_UL = ':scope > li > .active'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]'
 const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 const SELECTOR_DROPDOWN_ACTIVE_CHILD = ':scope > .dropdown-menu .active'
@@ -72,8 +71,7 @@ class Tab extends BaseComponent {
     const listElement = this._element.closest(SELECTOR_NAV_LIST_GROUP)
 
     if (listElement) {
-      const itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? SELECTOR_ACTIVE_UL : SELECTOR_ACTIVE
-      previous = SelectorEngine.find(itemSelector, listElement)
+      previous = SelectorEngine.find(SELECTOR_ACTIVE, listElement)
       previous = previous[previous.length - 1]
     }
 
@@ -112,9 +110,7 @@ class Tab extends BaseComponent {
   // Private
 
   _activate(element, container, callback) {
-    const activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL') ?
-      SelectorEngine.find(SELECTOR_ACTIVE_UL, container) :
-      SelectorEngine.children(container, SELECTOR_ACTIVE)
+    const activeElements = SelectorEngine.find(SELECTOR_ACTIVE, container)
 
     const active = activeElements[0]
     const isTransitioning = callback && (active && active.classList.contains(CLASS_NAME_FADE))
