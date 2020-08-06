@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v4.5.1 (https://getbootstrap.com/)
+ * Bootstrap v4.5.2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
@@ -579,8 +579,6 @@ pre code {
 .row {
   display: -ms-flexbox;
   display: flex;
-  -ms-flex: 1 0 100%;
-  flex: 1 0 100%;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin-right: -15px;
