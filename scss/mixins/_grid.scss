@@ -25,7 +25,7 @@
       max-width: $container-max-width;
     }
   }
-  @include deprecate("The `make-container-max-widths` mixin", "v4.5.2", "v5", $ignore-warning);
+  @include deprecate("The `make-container-max-widths` mixin", "v4.5.2", "v5");
 }
 
 @mixin make-col-ready($gutter: $grid-gutter-width) {
