@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.5.1): button.js
+ * Bootstrap (v4.5.2): button.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -14,7 +14,7 @@ import $ from 'jquery'
  */
 
 const NAME                = 'button'
-const VERSION             = '4.5.1'
+const VERSION             = '4.5.2'
 const DATA_KEY            = 'bs.button'
 const EVENT_KEY           = `.${DATA_KEY}`
 const DATA_API_KEY        = '.data-api'
