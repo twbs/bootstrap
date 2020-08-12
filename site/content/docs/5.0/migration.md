@@ -110,6 +110,7 @@ Changes to our source Sass files and compiled CSS.
 - The `bg-gradient-variant()` mixin is removed since the `.bg-gradient` class can now be used to add gradients to elements instead of the `.bg-gradient-*` classes.
 - The `media-breakpoint-down()` uses the breakpoint itself instead of the next breakpoint. Use `media-breakpoint-down(lg)` instead of `media-breakpoint-down(md)` to target viewports smaller than the `lg` breakpoint.
 - The `media-breakpoint-between()` mixin's second parameter also uses the breakpoint itself instead of the next breakpoint. Use `media-between(sm, lg)` instead of `media-breakpoint-between(sm, md)` to target viewports between the `sm` and `lg` breakpoints.
+- The `box-shadow()` mixin now better supports `none` and `null` with multiple arguments. Now you can pass multiple arguements with either value, and get the expected output. [See #30394](https://github.com/twbs/bootstrap/pull/30394).
 
 ### JavaScript
 
@@ -152,7 +153,7 @@ Changes to Reboot, typography, tables, and more.
 - Split table cell padding variables into `-y` and `-x`.
 - Dropped `.pre-scrollable` class. [See #29135](https://github.com/twbs/bootstrap/pull/29135)
 - `.text-*` utilities do not add hover and focus states to links anymore. `.link-*` helper classes can be used instead. [See #29267](https://github.com/twbs/bootstrap/pull/29267)
-- Drop `.text-justify` class. [See #229793](https://github.com/twbs/bootstrap/pull/29793)
+- Drop `.text-justify` class. [See #29793](https://github.com/twbs/bootstrap/pull/29793)
 
 ### Typography
 
