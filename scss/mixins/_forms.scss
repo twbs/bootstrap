@@ -131,3 +131,16 @@
     }
   }
 }
+
+@mixin form-control-focus() {
+  color: $input-focus-color;
+  background-color: $input-focus-bg;
+  border: $input-border-width $input-focus-border-color solid;
+  outline: 0;
+  @if $enable-shadows {
+    @include box-shadow($input-box-shadow, $input-focus-box-shadow);
+  } @else {
+    // Avoid using mixin so we can pass custom focus shadow properly
+    box-shadow: $input-focus-box-shadow;
+  }
+}

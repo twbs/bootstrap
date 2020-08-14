@@ -8,6 +8,19 @@
   flex-wrap: wrap; // For form validation feedback
   align-items: stretch;
   width: 100%;
+  @include border-radius($input-border-radius, 0);
+
+  &:focus-within {
+    @include form-control-focus();
+
+    > .form-control:focus {
+      color: $input-color;
+      background-color: $input-bg;
+      border-color: $input-border-color;
+      outline: 0;
+      box-shadow: none;
+    }
+  }
 
   > .form-control,
   > .form-select,
