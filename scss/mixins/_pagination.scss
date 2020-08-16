@@ -42,24 +42,24 @@
     color: $color;
 
     &:hover {
-      background: $hover-background;
       color: $hover-color;
+      background: $hover-background;
       border-color: $hover-border;
     }
 
     &:focus {
-      background: $hover-background;
       color: $hover-color;
+      background: $hover-background;
       border-color: $hover-border;
-      box-shadow: 0 0 0 $pagination-focus-width rgba($color, 0.5);
+      box-shadow: 0 0 0 $pagination-focus-width rgba($color, .5);
     }
   }
 
   .page-item {
     &.active .page-link {
-      @include gradient-bg($active-background);
-      border-color: $active-border;
       color: $active-color;
+      border-color: $active-border;
+      @include gradient-bg($active-background);
     }
 
     &.disabled .page-link {
