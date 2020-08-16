@@ -339,13 +339,13 @@ $border-radius:               .25rem !default;
 $border-radius-sm:            .2rem !default;
 $border-radius-lg:            .3rem !default;
 $border-widths: (
-  0: 0px,
+  0: 0,
   1: 1px,
   2: 2px,
   3: 3px,
   4: 4px,
   5: 5px
-);
+) !default;
 
 $rounded-pill:                50rem !default;
 
