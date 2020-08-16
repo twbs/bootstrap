@@ -88,7 +88,10 @@ $utilities: map-merge(
         50: 50%,
         75: 75%,
         100: 100%,
-        auto: auto
+        auto: auto,
+        fit: fit-content,
+        min: min-content,
+        max: max-content,
       )
     ),
     "max-width": (
