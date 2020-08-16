@@ -842,6 +842,12 @@ $zindex-popover:                    1060 !default;
 $zindex-tooltip:                    1070 !default;
 // scss-docs-end zindex-stack
 
+$z-index-levels: (
+  n1: -1,
+  0: 0,
+  1: 1,
+  2: 2
+) !default;
 
 // Navs
 

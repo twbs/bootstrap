@@ -539,6 +539,10 @@ $utilities: map-merge(
         visible: visible,
         invisible: hidden,
       )
+    ),
+    "z-index": (
+      property: z-index,
+      values: $z-index-levels,
     )
   ),
   $utilities

@@ -265,6 +265,35 @@
   }
 }
 
+.bd-example-stack-utils {
+  height: 10rem;
+
+  [class*="z-index"] {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .z-index-n1 {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .z-index-0 {
+    top: 2rem;
+    left: 2rem;
+  }
+
+  .z-index-1 {
+    top: 3rem;
+    left: 3rem;
+  }
+
+  .z-index-2 {
+    top: 4rem;
+    left: 4rem;
+  }
+}
+
 //
 // Code snippets
 //

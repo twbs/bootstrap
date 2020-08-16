@@ -103,6 +103,7 @@
     - title: Text
     - title: Vertical align
     - title: Visibility
+    - title: Z-index
 
 - title: Extend
   pages:
