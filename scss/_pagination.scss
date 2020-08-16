@@ -49,6 +49,14 @@
   }
 }
 
+//
+// Colors
+//
+@each $color, $value in $theme-colors {
+  .pagination-#{$color} {
+    @include pagination-variant($value);
+  }
+}
 
 //
 // Sizing
