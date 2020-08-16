@@ -497,7 +497,38 @@ $utilities: map-merge(
         visible: visible,
         invisible: hidden,
       )
-    )
+    ),
+    "inset": (
+      property: top bottom right left,
+      class: inset,
+      values: (0: 0, auto: auto)
+    ),
+    "inset-y": (
+      property: top bottom,
+      class: inset-y,
+      values: (0: 0, auto: auto)
+    ),
+    "inset-x": (
+      property: right left,
+      class: inset-x,
+      values: (0: 0, auto: auto)
+    ),
+    "top": (
+      property: top,
+      values: map-merge($position-sizes, (0: 0, auto: auto))
+    ),
+    "bottom": (
+      property: bottom,
+      values: map-merge($position-sizes, (0: 0, auto: auto))
+    ),
+    "right": (
+      property: right,
+      values: map-merge($position-sizes, (0: 0, auto: auto))
+    ),
+    "left": (
+      property: left,
+      values: map-merge($position-sizes, (0: 0, auto: auto))
+    ),
   ),
   $utilities
 );
