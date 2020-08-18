@@ -7,6 +7,7 @@
   min-height: $form-check-min-height;
   padding-left: $form-check-padding-left;
   margin-bottom: $form-check-margin-bottom;
+  @include clearfix();
 
   .form-check-input {
     float: left;
