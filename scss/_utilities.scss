@@ -376,7 +376,7 @@ $utilities: map-merge(
     ),
     "text-align": (
       responsive: true,
-      property: text-align,
+      property: text-align text-align-last,
       class: text,
       values: left right center
     ),
