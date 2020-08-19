@@ -20,10 +20,10 @@ Bootstrap's grid system uses a series of containers, rows, and columns to layout
       One of three columns
     </div>
     <div class="col-sm">
-      One of three columns
+      Two of three columns
     </div>
     <div class="col-sm">
-      One of three columns
+      Three of three columns
     </div>
   </div>
 </div>
