@@ -23,7 +23,7 @@ $utilities: map-merge(
       print: true,
       property: display,
       class: d,
-      values: none inline inline-block block table table-row table-cell flex inline-flex
+      values: inline inline-block block table table-row table-cell flex inline-flex none
     ),
     "shadow": (
       property: box-shadow,

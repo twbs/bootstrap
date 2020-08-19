@@ -44,6 +44,7 @@
     "unicorn/no-null": "off",
     "unicorn/no-unused-properties": "error",
     "unicorn/no-useless-undefined": "off",
+    "unicorn/prefer-array-find": "off",
     "unicorn/prefer-dataset": "off",
     "unicorn/prefer-includes": "off",
     "unicorn/prefer-node-append": "off",
