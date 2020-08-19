@@ -55,6 +55,10 @@ Add classes to an element to easily round its corners.
 {{< placeholder width="75" height="75" class="rounded-left" title="Example left rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-circle" title="Completely round image" >}}
 {{< placeholder width="150" height="75" class="rounded-pill" title="Rounded pill image" >}}
+{{< placeholder width="150" height="75" class="rounded-pill-top" title="Rounded pill top image" >}}
+{{< placeholder width="150" height="75" class="rounded-pill-right" title="Rounded pill right image" >}}
+{{< placeholder width="150" height="75" class="rounded-pill-bottom" title="Rounded pill bottom image" >}}
+{{< placeholder width="150" height="75" class="rounded-pill-left" title="Rounded pill left image" >}}
 {{< placeholder width="75" height="75" class="rounded-0" title="Example non-rounded image (overrides rounding applied elsewhere)" >}}
 {{< /example >}}
 

@@ -490,6 +490,27 @@ $utilities: map-merge(
       class: rounded-left,
       values: (null: $border-radius)
     ),
+    // Rounded pill side
+    "rounded-pill-top": (
+      property: border-top-left-radius border-top-right-radius,
+      class: rounded-pill-top,
+      values: (null: $rounded-pill)
+    ),
+    "rounded-pill-right": (
+      property: border-top-right-radius border-bottom-right-radius,
+      class: rounded-pill-right,
+      values: (null: $rounded-pill)
+    ),
+    "rounded-pill-bottom": (
+      property: border-bottom-right-radius border-bottom-left-radius,
+      class: rounded-pill-bottom,
+      values: (null: $rounded-pill)
+    ),
+    "rounded-pill-left": (
+      property: border-bottom-left-radius border-top-left-radius,
+      class: rounded-pill-left,
+      values: (null: $rounded-pill)
+    ),
     "visibility": (
       property: visibility,
       class: null,
