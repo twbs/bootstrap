@@ -81,7 +81,7 @@ $utilities: map-merge(
     ),
     "border-width": (
       property: border-width,
-      class: border-width,
+      class: border,
       values: $border-widths
     ),
     // Sizing utilities
