@@ -128,7 +128,7 @@
 
 // stylelint-disable-next-line no-duplicate-selectors
 .input-group {
-  > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
+  > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(:has(+.invalid-feedback)),
   > .dropdown-toggle:nth-last-child(n + 3) {
     @include border-right-radius(0);
   }
