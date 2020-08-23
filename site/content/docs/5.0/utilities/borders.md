@@ -19,7 +19,7 @@ Use border utilities to add or remove an element's borders. Choose from all bord
 <span class="border-bottom"></span>
 <span class="border-left"></span>
 {{< /example >}}
-
+ 
 ### Subtractive
 
 {{< example class="bd-example-border-utils bd-example-border-utils-0" >}}
@@ -41,6 +41,16 @@ Change the border color using utilities built on our theme colors.
 {{- end -}}
 {{< /border.inline >}}
 <span class="border border-white"></span>
+{{< /example >}}
+
+### Border-width
+
+{{< example class="bd-example-border-utils" >}}
+<span class="border border-1"></span>
+<span class="border border-2"></span>
+<span class="border border-3"></span>
+<span class="border border-4"></span>
+<span class="border border-5"></span>
 {{< /example >}}
 
 ## Border-radius
