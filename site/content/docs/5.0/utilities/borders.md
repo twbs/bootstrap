@@ -19,7 +19,7 @@ Use border utilities to add or remove an element's borders. Choose from all bord
 <span class="border-bottom"></span>
 <span class="border-left"></span>
 {{< /example >}}
- 
+
 ### Subtractive
 
 {{< example class="bd-example-border-utils bd-example-border-utils-0" >}}
