@@ -53,7 +53,6 @@
   .#{$state}-tooltip {
     position: absolute;
     top: 100%;
-    left: 0;
     z-index: 5;
     display: none;
     max-width: 100%; // Contain to parent when possible
@@ -64,6 +63,19 @@
     color: color-yiq($color);
     background-color: rgba($color, $form-feedback-tooltip-opacity);
     @include border-radius($form-feedback-tooltip-border-radius);
+
+    // CSS hacks for IE's absolute positioning
+    // stylelint-disable-next-line
+    _:-ms-input-placeholder,
+    :root .form-row > .col > &,
+    :root .form-row > [class*="col-"] > & {
+      left: $form-grid-gutter-width / 2;
+    }
+    // stylelint-disable-next-line
+    _:-ms-input-placeholder,
+    :root & {
+      left: 0;
+    }
   }
 
   @include form-validation-state-selector($state) {
