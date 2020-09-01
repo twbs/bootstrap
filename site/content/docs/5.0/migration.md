@@ -111,6 +111,7 @@ Changes to our source Sass files and compiled CSS.
 - The `media-breakpoint-down()` uses the breakpoint itself instead of the next breakpoint. Use `media-breakpoint-down(lg)` instead of `media-breakpoint-down(md)` to target viewports smaller than the `lg` breakpoint.
 - The `media-breakpoint-between()` mixin's second parameter also uses the breakpoint itself instead of the next breakpoint. Use `media-between(sm, lg)` instead of `media-breakpoint-between(sm, md)` to target viewports between the `sm` and `lg` breakpoints.
 - The `box-shadow()` mixin now better supports `none` and `null` with multiple arguments. Now you can pass multiple arguements with either value, and get the expected output. [See #30394](https://github.com/twbs/bootstrap/pull/30394).
+- Each `border-radius()` mixin now has a default value. You can now call these mixins without specifying a border radius value and the `$border-radius` variable will be used. [See #31571](https://github.com/twbs/bootstrap/pull/31571)
 
 ### JavaScript
 
