@@ -85,7 +85,7 @@ Bootstrap's source Sass files include three maps to help you quickly and easily 
 
 - `$colors` lists all our available base (`500`) colors
 - `$theme-colors` lists all semantically named theme colors (shown below)
-- `$grays` lists all tins and shades of gray
+- `$grays` lists all tints and shades of gray
 
 Within `scss/_variables.scss`, you'll find Bootstrap's color variables and Sass map. Here's an example of the `$colors` Sass map:
 
