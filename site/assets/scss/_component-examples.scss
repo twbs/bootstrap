@@ -217,6 +217,42 @@
   }
 }
 
+.bd-example-inset-utils {
+  display: flex;
+  flex-wrap: wrap;
+
+  span {
+    position: absolute;
+    display: block;
+  }
+
+  div {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+
+    &:nth-child(1) span,
+    &:nth-child(3) span {
+      height: 32px;
+    }
+
+    &:nth-child(2) span,
+    &:nth-child(4) span {
+      width: 32px;
+    }
+
+    &:nth-child(6) span,
+    &:nth-child(7) span,
+    &:nth-child(8) span,
+    &:nth-child(9) span {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
 //
 // Code snippets
 //
