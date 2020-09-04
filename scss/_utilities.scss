@@ -501,33 +501,33 @@ $utilities: map-merge(
     "inset": (
       property: top bottom right left,
       class: inset,
-      values: (0: 0, auto: auto)
+      values: (0: 0)
     ),
     "inset-y": (
       property: top bottom,
       class: inset-y,
-      values: (0: 0, auto: auto)
+      values: (0: 0)
     ),
     "inset-x": (
       property: right left,
       class: inset-x,
-      values: (0: 0, auto: auto)
+      values: (0: 0)
     ),
     "top": (
       property: top,
-      values: map-merge($position-sizes, (0: 0, auto: auto))
+      values: map-merge($position-sizes, (0: 0))
     ),
     "bottom": (
       property: bottom,
-      values: map-merge($position-sizes, (0: 0, auto: auto))
+      values: map-merge($position-sizes, (0: 0))
     ),
     "right": (
       property: right,
-      values: map-merge($position-sizes, (0: 0, auto: auto))
+      values: map-merge($position-sizes, (0: 0))
     ),
     "left": (
       property: left,
-      values: map-merge($position-sizes, (0: 0, auto: auto))
+      values: map-merge($position-sizes, (0: 0))
     ),
   ),
   $utilities
