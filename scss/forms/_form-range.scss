@@ -6,7 +6,7 @@
 
 .form-range {
   width: 100%;
-  height: add($form-range-thumb-height, $form-range-thumb-focus-box-shadow-width * 2);
+  height: add($form-range-thumb-height, $form-range-height-value2);
   padding: 0; // Need to reset padding
   background-color: transparent;
   appearance: none;
@@ -28,7 +28,7 @@
   &::-webkit-slider-thumb {
     width: $form-range-thumb-width;
     height: $form-range-thumb-height;
-    margin-top: ($form-range-track-height - $form-range-thumb-height) / 2; // Webkit specific
+    margin-top: $form-range-webkit-slider-thumb; // Webkit specific
     @include gradient-bg($form-range-thumb-bg);
     border: $form-range-thumb-border;
     @include border-radius($form-range-thumb-border-radius);
@@ -103,7 +103,7 @@
     cursor: $form-range-track-cursor;
     background-color: transparent;
     border-color: transparent;
-    border-width: $form-range-thumb-height / 2;
+    border-width: $form-range-ms-track;
     @include box-shadow($form-range-track-box-shadow);
   }
 

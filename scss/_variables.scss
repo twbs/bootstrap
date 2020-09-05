@@ -817,6 +817,9 @@ $form-check-input-margin-left:             $form-check-padding-left * -1 !defaul
 $form-check-input-margin-top:              ($line-height-base - $form-check-input-width) / 2 !default;
 $form-switch-form-check-input-margin-left: $form-switch-padding-left * -1 !default;
 $form-file-button-margin-left:             -$form-file-border-width !default;
+$form-range-webkit-slider-thumb:           ($form-range-track-height - $form-range-thumb-height) / 2 !default;
+$form-range-ms-track:                      $form-range-thumb-height / 2 !default;
+$form-range-height-value2:                 $form-range-thumb-focus-box-shadow-width * 2 !default;
 
 // scss-docs-start form-validation-states
 $form-validation-states: (
