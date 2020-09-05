@@ -79,7 +79,7 @@
     border-top-width: 0;
 
     &.active {
-      margin-top: -$list-group-border-width;
+      margin-top: $list-group-item-active-plus-margin-top;
       border-top-width: $list-group-border-width;
     }
   }
