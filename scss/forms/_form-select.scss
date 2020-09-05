@@ -7,7 +7,7 @@
   display: block;
   width: 100%;
   height: $form-select-height;
-  padding: $form-select-padding-y ($form-select-padding-x + $form-select-indicator-padding) $form-select-padding-y $form-select-padding-x;
+  padding: $form-select-padding-y $form-select-padding-right $form-select-padding-y $form-select-padding-x;
   font-family: $form-select-font-family;
   @include font-size($form-select-font-size);
   font-weight: $form-select-font-weight;
