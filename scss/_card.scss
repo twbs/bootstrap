@@ -236,7 +236,7 @@
 
     > .card-header {
       @include border-radius(0);
-      margin-bottom: -$card-border-width;
+      margin-bottom: $accordion-card-header-margin-bottom;
     }
   }
 }
