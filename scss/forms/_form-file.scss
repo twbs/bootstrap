@@ -60,7 +60,7 @@
   display: block;
   flex-shrink: 0;
   padding: $form-file-padding-y $form-file-padding-x;
-  margin-left: -$form-file-border-width;
+  margin-left: $form-file-button-margin-left;
   line-height: $form-file-line-height;
   color: $form-file-button-color;
   @include gradient-bg($form-file-button-bg);

@@ -816,6 +816,7 @@ $form-feedback-icon-invalid:        url("data:image/svg+xml,<svg xmlns='http://w
 $form-check-input-margin-left:             $form-check-padding-left * -1 !default;
 $form-check-input-margin-top:              ($line-height-base - $form-check-input-width) / 2 !default;
 $form-switch-form-check-input-margin-left: $form-switch-padding-left * -1 !default;
+$form-file-button-margin-left:             -$form-file-border-width !default;
 
 // scss-docs-start form-validation-states
 $form-validation-states: (
