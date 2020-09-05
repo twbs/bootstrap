@@ -939,6 +939,14 @@ $dropdown-item-padding-x:           $spacer !default;
 $dropdown-header-color:             $gray-600 !default;
 $dropdown-header-padding:           $dropdown-padding-y $dropdown-item-padding-x !default;
 
+$dropdown-toggle-split-padding-right: $btn-padding-x * .75 !default;
+$dropdown-toggle-split-padding-left:  $btn-padding-x * .75 !default;
+
+$dropdown-toggle-split-btn-sm-padding-right: $btn-padding-x-sm * .75 !default;
+$dropdown-toggle-split-btn-sm-padding-left:  $btn-padding-x-sm * .75 !default;
+
+$dropdown-toggle-split-btn-lg-padding-right: $btn-padding-x-lg * .75 !default;
+$dropdown-toggle-split-btn-lg-padding-left:  $btn-padding-x-lg * .75 !default;
 
 // Pagination
 
