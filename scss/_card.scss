@@ -106,9 +106,9 @@
 //
 
 .card-header-tabs {
-  margin-right: -$card-cap-padding-x / 2;
-  margin-bottom: -$card-cap-padding-y;
-  margin-left: -$card-cap-padding-x / 2;
+  margin-right: $card-header-tabs-margin-right;
+  margin-bottom: $card-header-tabs-margin-bottom;
+  margin-left: $card-header-tabs-margin-left;
   border-bottom: 0;
 
   @if $nav-tabs-link-active-bg != $card-bg {

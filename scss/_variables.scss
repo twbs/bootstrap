@@ -995,6 +995,9 @@ $card-img-overlay-padding:          $spacer !default;
 
 $card-group-margin:                 $grid-gutter-width / 2 !default;
 
+$card-header-tabs-margin-right:     -$card-cap-padding-x / 2 !default;
+$card-header-tabs-margin-bottom:    -$card-cap-padding-y !default;
+$card-header-tabs-margin-left:      -$card-cap-padding-x / 2 !default;
 
 // Tooltips
 
