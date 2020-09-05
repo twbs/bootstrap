@@ -120,8 +120,8 @@
 }
 
 .card-header-pills {
-  margin-right: -$card-cap-padding-x / 2;
-  margin-left: -$card-cap-padding-x / 2;
+  margin-right: $card-header-pills-margin-right;
+  margin-left: $card-header-pills-margin-left;
 }
 
 // Card image
