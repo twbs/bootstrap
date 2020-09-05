@@ -1265,6 +1265,9 @@ $close-color:                       $black !default;
 $close-text-shadow:                 0 1px 0 $white !default;
 
 
+// Alert dismissible
+$alert-dismissible-padding-right:   $close-font-size + $alert-padding-x * 2 !default;
+
 // Code
 
 $code-font-size:                    $small-font-size !default;
