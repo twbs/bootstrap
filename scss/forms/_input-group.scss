@@ -134,7 +134,7 @@
   }
 
   > :not(:first-child):not(.dropdown-menu) {
-    margin-left: -$input-border-width;
+    margin-left: $input-group-not-first-child-and-dropdown-menu;
     @include border-left-radius(0);
   }
 }

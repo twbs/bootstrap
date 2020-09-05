@@ -822,6 +822,8 @@ $form-range-ms-track:                      $form-range-thumb-height / 2 !default
 $form-range-height-value2:                 $form-range-thumb-focus-box-shadow-width * 2 !default;
 $form-select-padding-right:                ($form-select-padding-x + $form-select-indicator-padding) !default;
 
+$input-group-not-first-child-and-dropdown-menu: -$input-border-width !default;
+
 // scss-docs-start form-validation-states
 $form-validation-states: (
   "valid": (
