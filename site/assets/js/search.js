@@ -5,13 +5,13 @@
 (function () {
   'use strict'
 
-  var inputElement = document.getElementById('search-input')
+  const inputElement = document.getElementById('search-input')
 
   if (!window.docsearch || !inputElement) {
     return
   }
 
-  var siteDocsVersion = inputElement.getAttribute('data-bd-docs-version')
+  const siteDocsVersion = inputElement.getAttribute('data-bd-docs-version')
 
   document.addEventListener('keydown', function (event) {
     if (event.ctrlKey && event.key === '/') {
@@ -27,8 +27,8 @@
     algoliaOptions: {
       facetFilters: ['version:' + siteDocsVersion]
     },
-    transformData: function (hits) {
-      return hits.map(function (hit) {
+    transformData(hits) {
+      return hits.map(hit => {
         var liveUrl = 'https://getbootstrap.com/'
 
         hit.url = window.location.origin.startsWith(liveUrl) ?
