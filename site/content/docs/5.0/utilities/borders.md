@@ -45,7 +45,7 @@ Change the border color using utilities built on our theme colors.
 
 ### Border-width
 
-{{< example >}}
+{{< example class="bd-example-border-utils" >}}
 <span class="border border-1"></span>
 <span class="border border-2"></span>
 <span class="border border-3"></span>
