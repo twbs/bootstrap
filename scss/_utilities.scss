@@ -79,6 +79,11 @@ $utilities: map-merge(
       class: border,
       values: map-merge($theme-colors, ("white": $white))
     ),
+    "border-width": (
+      property: border-width,
+      class: border,
+      values: $border-widths
+    ),
     // Sizing utilities
     "width": (
       property: width,
