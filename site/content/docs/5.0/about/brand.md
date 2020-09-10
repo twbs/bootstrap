@@ -6,14 +6,14 @@ group: about
 toc: true
 ---
 
-Have a need for Bootstrap's brand resources? Great! We have only a few guidelines we follow, and in turn ask you to follow as well. These guidelines were inspired by MailChimp's [Brand Assets](https://mailchimp.com/about/brand-assets/).
+Have a need for Bootstrap's brand resources? Great! We have only a few guidelines we follow, and in turn ask you to follow as well.
 
 ## Logo
 
 When referencing Bootstrap, use our logo mark. Do not modify our logos in any way. Do not use Bootstrap's branding for your own open or closed source projects. **Do not use the Twitter name or logo** in association with Bootstrap.
 
 <div class="bd-brand-item px-2 py-5 mb-3 bg-light rounded-lg">
-  <img class="d-block mx-auto" src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="512" height="408">
+  <img class="d-block img-fluid mx-auto" src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="256" height="204">
 </div>
 
 Our logo mark is also available in black and white. All rules for our primary logo apply to these as well.
@@ -44,16 +44,4 @@ Bootstrap should always be referred to as just **Bootstrap**. No Twitter before 
     <div class="h3 text-muted">Twitter Bootstrap</div>
     <strong class="text-danger">Incorrect</strong>
   </div>
-</div>
-
-## Bootstrap projects
-
-Official Bootstrap side projects use and extend our primary logo.
-
-<div class="bd-brand-item px-2 py-5 mb-3 bg-light rounded-lg">
-  <img class="d-block mx-auto" src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-icons-logo.svg" alt="Bootstrap Icons" width="512" height="408" loading="lazy">
-</div>
-
-<div class="bd-brand-item px-2 py-5 mb-3 bg-light rounded-lg">
-  <img class="d-block mx-auto" src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-npm-logo.svg" alt="Bootstrap Icons" width="512" height="408" loading="lazy">
 </div>
