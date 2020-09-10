@@ -1,5 +1,5 @@
 <div class="container masthead-followup px-4 px-md-3">
-  <div class="row mb-5 pb-md-4 align-items-center">
+  <section class="row mb-5 pb-md-4 align-items-center">
     <div class="col-md-5">
       <div class="masthead-followup-icon d-inline-block mb-2 text-white bg-success">
         {{ partial "icons/code.svg" (dict "width" "32" "height" "32") }}
@@ -15,9 +15,9 @@
       {{ highlight "npm install bootstrap" "sh" "" }}
       {{ highlight (printf ("gem install bootstrap -v %s") .Site.Params.current_ruby_version) "sh" "" }}
     </div>
-  </div>
+  </section>
 
-  <div class="row mb-5 pb-md-4 align-items-center">
+  <section class="row mb-5 pb-md-4 align-items-center">
     <div class="col-md-5">
       <div class="masthead-followup-icon d-inline-block mb-2 text-white bg-primary">
         {{ partial "icons/cloud-fill.svg" (dict "width" "32" "height" "32") }}
@@ -39,9 +39,9 @@
 <script src="%s" integrity=%q crossorigin="anonymous"></script>
 `) .Site.Params.cdn.popper (.Site.Params.cdn.popper_hash | safeHTMLAttr) .Site.Params.cdn.js (.Site.Params.cdn.js_hash | safeHTMLAttr)) "html" "" }}
     </div>
-  </div>
+  </section>
 
-  <div class="row mb-5 pb-md-4 align-items-center">
+  <section class="row mb-5 pb-md-4 align-items-center">
     <div class="col-md-5">
       <div class="masthead-followup-icon d-inline-block mb-2 text-white bd-bg-purple-bright">
         {{ partial "icons/circle-square.svg" (dict "width" "32" "height" "32") }}
@@ -61,9 +61,9 @@
                                                src="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-icons.png"
                                                alt="Bootstrap Icons" width="966" height="600" loading="lazy">
     </div>
-  </div>
+  </section>
 
-  <div class="row mb-5 pb-md-4 align-items-center">
+  <section class="row mb-5 pb-md-4 align-items-center">
     <div class="col-md-5">
       <div class="masthead-followup-icon d-inline-block mb-2 text-white bg-danger">
         {{ partial "icons/droplet-fill.svg" (dict "width" "32" "height" "32") }}
@@ -83,5 +83,5 @@
                                                src="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes.png"
                                                alt="Bootstrap Icons" width="700" height="500" loading="lazy">
     </div>
-  </div>
+  </section>
 </div>

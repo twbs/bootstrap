@@ -8,8 +8,10 @@
 
     {{ partial "docs-navbar" . }}
 
-    {{ partial "home/masthead" . }}
-    {{ partial "home/masthead-followup" . }}
+    <main>
+      {{ partial "home/masthead" . }}
+      {{ partial "home/masthead-followup" . }}
+    </main>
 
     {{ .Content }}
 
