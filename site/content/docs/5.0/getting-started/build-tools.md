@@ -13,7 +13,8 @@ Bootstrap uses [npm scripts](https://docs.npmjs.com/misc/scripts) for its build 
 To use our build system and run our documentation locally, you'll need a copy of Bootstrap's source files and Node. Follow these steps and you should be ready to rock:
 
 1. [Download and install Node.js](https://nodejs.org/en/download/), which we use to manage our dependencies.
-2. Navigate to the root `/bootstrap` directory and run `npm install` to install our local dependencies listed in [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/package.json).
+2. Either [download Bootstrap's sources]({{< param "download.source" >}}) or fork [Bootstrap's repository]({{< param repo >}}).
+3. Navigate to the root `/bootstrap` directory and run `npm install` to install our local dependencies listed in [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/package.json).
 
 When completed, you'll be able to run the various commands provided from the command line.
 
