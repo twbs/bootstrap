@@ -27,13 +27,14 @@ $utilities: map-merge(
     ),
     "shadow": (
       property: box-shadow,
+      hover: true,
       class: shadow,
       values: (
         null: $box-shadow,
         sm: $box-shadow-sm,
         lg: $box-shadow-lg,
         none: none,
-      )
+      ),
     ),
     "position": (
       property: position,
@@ -41,6 +42,7 @@ $utilities: map-merge(
     ),
     "border": (
       property: border,
+      hover: true,
       values: (
         null: $border-width solid $border-color,
         0: 0,
@@ -48,6 +50,7 @@ $utilities: map-merge(
     ),
     "border-top": (
       property: border-top,
+      hover: true,
       values: (
         null: $border-width solid $border-color,
         0: 0,
@@ -55,6 +58,7 @@ $utilities: map-merge(
     ),
     "border-right": (
       property: border-right,
+      hover: true,
       values: (
         null: $border-width solid $border-color,
         0: 0,
@@ -62,6 +66,7 @@ $utilities: map-merge(
     ),
     "border-bottom": (
       property: border-bottom,
+      hover: true,
       values: (
         null: $border-width solid $border-color,
         0: 0,
@@ -69,6 +74,7 @@ $utilities: map-merge(
     ),
     "border-left": (
       property: border-left,
+      hover: true,
       values: (
         null: $border-width solid $border-color,
         0: 0,
@@ -76,17 +82,20 @@ $utilities: map-merge(
     ),
     "border-color": (
       property: border-color,
+      hover: true,
       class: border,
       values: map-merge($theme-colors, ("white": $white))
     ),
     "border-width": (
       property: border-width,
+      hover: true,
       class: border,
       values: $border-widths
     ),
     // Sizing utilities
     "width": (
       property: width,
+      hover: true,
       class: w,
       values: (
         25: 25%,
@@ -113,6 +122,7 @@ $utilities: map-merge(
     ),
     "height": (
       property: height,
+      hover: true,
       class: h,
       values: (
         25: 25%,
@@ -366,6 +376,7 @@ $utilities: map-merge(
     // Text
     "font-weight": (
       property: font-weight,
+      hover: true,
       values: (
         light: $font-weight-light,
         lighter: $font-weight-lighter,
@@ -376,6 +387,7 @@ $utilities: map-merge(
     ),
     "text-transform": (
       property: text-transform,
+      hover: true,
       class: text,
       values: lowercase uppercase capitalize
     ),
@@ -387,6 +399,7 @@ $utilities: map-merge(
     ),
     "color": (
       property: color,
+      hover: true,
       class: text,
       values: map-merge(
         $theme-colors,
@@ -412,6 +425,7 @@ $utilities: map-merge(
     ),
     "background-color": (
       property: background-color,
+      hover: true,
       class: bg,
       values: map-merge(
         $theme-colors,
@@ -424,6 +438,7 @@ $utilities: map-merge(
     ),
     "gradient": (
       property: background-image,
+      hover: true,
       class: bg,
       values: (gradient: var(--bs-gradient))
     ),
@@ -437,10 +452,12 @@ $utilities: map-merge(
     ),
     "text-decoration": (
       property: text-decoration,
+      hover: true,
       values: none underline line-through
     ),
     "font-style": (
       property: font-style,
+      hover: true,
       class: font,
       values: italic normal
     ),
@@ -465,6 +482,7 @@ $utilities: map-merge(
     ),
     "rounded": (
       property: border-radius,
+      hover: true,
       class: rounded,
       values: (
         null: $border-radius,
@@ -477,21 +495,25 @@ $utilities: map-merge(
     ),
     "rounded-top": (
       property: border-top-left-radius border-top-right-radius,
+      hover: true,
       class: rounded-top,
       values: (null: $border-radius)
     ),
     "rounded-right": (
       property: border-top-right-radius border-bottom-right-radius,
+      hover: true,
       class: rounded-right,
       values: (null: $border-radius)
     ),
     "rounded-bottom": (
       property: border-bottom-right-radius border-bottom-left-radius,
+      hover: true,
       class: rounded-bottom,
       values: (null: $border-radius)
     ),
     "rounded-left": (
       property: border-bottom-left-radius border-top-left-radius,
+      hover: true,
       class: rounded-left,
       values: (null: $border-radius)
     ),
