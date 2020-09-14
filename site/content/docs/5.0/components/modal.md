@@ -44,9 +44,7 @@ Below is a _static_ modal example (meaning its `position` and `display` have bee
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <p>Modal body text goes here.</p>
@@ -400,7 +398,7 @@ Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` w
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="gridModalLabel">Grids in modals</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="container-fluid bd-example-row">
