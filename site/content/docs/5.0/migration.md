@@ -48,6 +48,12 @@ toc: true
 
 - Disabled states of buttons are easier to customize thanks to additional arguments in the `button-variant()` mixin. [See #30639.](https://github.com/twbs/bootstrap/pull/30639)
 
+#### Close button
+
+- Renamed `.close` to `.btn-close` for a less generic name.
+- Close buttons now use a `background-image` (embedded SVG) instead of a `&times;` in the HTML, allowing for easier customization without the need to touch your markup.
+- Added new variables to better control the customization.
+
 #### Navs
 
 - Added new `null` variables for `font-size`, `font-weight`, `color`, and `:hover` `color` to the `.nav-link` class.
