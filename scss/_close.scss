@@ -13,24 +13,25 @@
   background-clip: content-box;
   border: 0; // for button elements
   @include border-radius();
-  opacity: .5;
+  opacity: $btn-close-opacity;
 
   // Override <a>'s hover style
   &:hover {
     color: $btn-close-color;
     text-decoration: none;
-    opacity: .75;
+    opacity: $btn-close-hover-opacity;
   }
 
   &:focus {
     outline: none;
     box-shadow: $btn-close-focus-shadow;
-    opacity: 1;
+    opacity: $btn-close-focus-opacity;
   }
 
   &:disabled,
   &.disabled {
     pointer-events: none;
     user-select: none;
+    opacity: $btn-close-disabled-opacity;
   }
 }
