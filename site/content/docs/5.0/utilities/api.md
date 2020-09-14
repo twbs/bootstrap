@@ -264,3 +264,59 @@ $utilities: map-merge(
   )
 );
 ```
+
+## Adding pseudo-classes to utilities
+
+With the `state` option, pseudo-class utilities can be generated:
+
+```scss
+$utilities: (
+  "shadow": (
+    property: box-shadow,
+    state: hover focus,
+    class: shadow,
+    values: (
+      null: $box-shadow,
+      sm: $box-shadow-sm,
+      lg: $box-shadow-lg,
+      none: none,
+    )
+  )
+);
+```
+
+Output:
+
+```css
+.shadow-hover:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.shadow-focus:focus {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.shadow-sm-hover:hover {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+.shadow-sm-focus:focus {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+.shadow-lg-hover:hover {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.shadow-lg-focus:focus {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.shadow-none-hover:hover {
+  box-shadow: none !important;
+}
+
+.shadow-none-focus:focus {
+  box-shadow: none !important;
+}
+```
