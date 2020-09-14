@@ -596,6 +596,12 @@ iframe {
 summary {
   display: list-item; // 1
   cursor: pointer;
+  @include border-radius();
+
+  &:focus {
+    outline: 0;
+    box-shadow: $btn-focus-box-shadow;
+  }
 }
 
 

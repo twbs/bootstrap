@@ -166,6 +166,17 @@ Use `<pre>`s for multiple lines of code. Once again, be sure to escape any angle
 </code></pre>
 {{< /example >}}
 
+## Details
+
+The `<details>` disclosure element has been updated to feature a more consistent cross-browser focus state.
+
+{{< example >}}
+<details>
+  <summary>Show details</summary>
+  This is an example of the details element.
+</details>
+{{< /example >}}
+
 ## Variables
 
 For indicating variables use the `<var>` tag.
