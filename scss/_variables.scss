@@ -1242,6 +1242,9 @@ $carousel-control-next-icon-bg:      url("data:image/svg+xml,<svg viewBox='0 0 1
 $carousel-transition-duration:       .6s !default;
 $carousel-transition:                transform $carousel-transition-duration ease-in-out !default; // Define transform transition first if using multiple transitions (e.g., `transform 2s ease, opacity .5s ease-out`)
 
+$carousel-dark-indicator-active-bg:  $black !default;
+$carousel-dark-caption-color:        $black !default;
+
 
 // Spinners
 
