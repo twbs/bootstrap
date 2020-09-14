@@ -6,13 +6,15 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js')) :
   typeof define === 'function' && define.amd ? define(['./dom/data.js', './dom/event-handler.js', './dom/manipulator.js', './dom/selector-engine.js'], factory) :
-  (global = global || self, global.Carousel = factory(global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine));
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Carousel = factory(global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine));
 }(this, (function (Data, EventHandler, Manipulator, SelectorEngine) { 'use strict';
 
-  Data = Data && Object.prototype.hasOwnProperty.call(Data, 'default') ? Data['default'] : Data;
-  EventHandler = EventHandler && Object.prototype.hasOwnProperty.call(EventHandler, 'default') ? EventHandler['default'] : EventHandler;
-  Manipulator = Manipulator && Object.prototype.hasOwnProperty.call(Manipulator, 'default') ? Manipulator['default'] : Manipulator;
-  SelectorEngine = SelectorEngine && Object.prototype.hasOwnProperty.call(SelectorEngine, 'default') ? SelectorEngine['default'] : SelectorEngine;
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var Data__default = /*#__PURE__*/_interopDefaultLegacy(Data);
+  var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
+  var Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
+  var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
 
   /**
    * --------------------------------------------------------------------------
@@ -137,11 +139,7 @@
     return null;
   };
 
-  function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
@@ -233,13 +231,13 @@
       this.touchDeltaX = 0;
       this._config = this._getConfig(config);
       this._element = element;
-      this._indicatorsElement = SelectorEngine.findOne(SELECTOR_INDICATORS, this._element);
+      this._indicatorsElement = SelectorEngine__default['default'].findOne(SELECTOR_INDICATORS, this._element);
       this._touchSupported = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0;
       this._pointerEvent = Boolean(window.PointerEvent);
 
       this._addEventListeners();
 
-      Data.setData(element, DATA_KEY, this);
+      Data__default['default'].setData(element, DATA_KEY, this);
     } // Getters
 
 
@@ -271,7 +269,7 @@
         this._isPaused = true;
       }
 
-      if (SelectorEngine.findOne(SELECTOR_NEXT_PREV, this._element)) {
+      if (SelectorEngine__default['default'].findOne(SELECTOR_NEXT_PREV, this._element)) {
         triggerTransitionEnd(this._element);
         this.cycle(true);
       }
@@ -298,7 +296,7 @@
     _proto.to = function to(index) {
       var _this = this;
 
-      this._activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element);
+      this._activeElement = SelectorEngine__default['default'].findOne(SELECTOR_ACTIVE_ITEM, this._element);
 
       var activeIndex = this._getItemIndex(this._activeElement);
 
@@ -307,7 +305,7 @@
       }
 
       if (this._isSliding) {
-        EventHandler.one(this._element, EVENT_SLID, function () {
+        EventHandler__default['default'].one(this._element, EVENT_SLID, function () {
           return _this.to(index);
         });
         return;
@@ -325,8 +323,8 @@
     };
 
     _proto.dispose = function dispose() {
-      EventHandler.off(this._element, EVENT_KEY);
-      Data.removeData(this._element, DATA_KEY);
+      EventHandler__default['default'].off(this._element, EVENT_KEY);
+      Data__default['default'].removeData(this._element, DATA_KEY);
       this._items = null;
       this._config = null;
       this._element = null;
@@ -339,7 +337,7 @@
     ;
 
     _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread(_objectSpread({}, Default), config);
+      config = _extends({}, Default, config);
       typeCheckConfig(NAME, config, DefaultType);
       return config;
     };
@@ -368,16 +366,16 @@
       var _this2 = this;
 
       if (this._config.keyboard) {
-        EventHandler.on(this._element, EVENT_KEYDOWN, function (event) {
+        EventHandler__default['default'].on(this._element, EVENT_KEYDOWN, function (event) {
           return _this2._keydown(event);
         });
       }
 
       if (this._config.pause === 'hover') {
-        EventHandler.on(this._element, EVENT_MOUSEENTER, function (event) {
+        EventHandler__default['default'].on(this._element, EVENT_MOUSEENTER, function (event) {
           return _this2.pause(event);
         });
-        EventHandler.on(this._element, EVENT_MOUSELEAVE, function (event) {
+        EventHandler__default['default'].on(this._element, EVENT_MOUSELEAVE, function (event) {
           return _this2.cycle(event);
         });
       }
@@ -434,29 +432,29 @@
         }
       };
 
-      SelectorEngine.find(SELECTOR_ITEM_IMG, this._element).forEach(function (itemImg) {
-        EventHandler.on(itemImg, EVENT_DRAG_START, function (e) {
+      SelectorEngine__default['default'].find(SELECTOR_ITEM_IMG, this._element).forEach(function (itemImg) {
+        EventHandler__default['default'].on(itemImg, EVENT_DRAG_START, function (e) {
           return e.preventDefault();
         });
       });
 
       if (this._pointerEvent) {
-        EventHandler.on(this._element, EVENT_POINTERDOWN, function (event) {
+        EventHandler__default['default'].on(this._element, EVENT_POINTERDOWN, function (event) {
           return start(event);
         });
-        EventHandler.on(this._element, EVENT_POINTERUP, function (event) {
+        EventHandler__default['default'].on(this._element, EVENT_POINTERUP, function (event) {
           return end(event);
         });
 
         this._element.classList.add(CLASS_NAME_POINTER_EVENT);
       } else {
-        EventHandler.on(this._element, EVENT_TOUCHSTART, function (event) {
+        EventHandler__default['default'].on(this._element, EVENT_TOUCHSTART, function (event) {
           return start(event);
         });
-        EventHandler.on(this._element, EVENT_TOUCHMOVE, function (event) {
+        EventHandler__default['default'].on(this._element, EVENT_TOUCHMOVE, function (event) {
           return move(event);
         });
-        EventHandler.on(this._element, EVENT_TOUCHEND, function (event) {
+        EventHandler__default['default'].on(this._element, EVENT_TOUCHEND, function (event) {
           return end(event);
         });
       }
@@ -481,7 +479,7 @@
     };
 
     _proto._getItemIndex = function _getItemIndex(element) {
-      this._items = element && element.parentNode ? SelectorEngine.find(SELECTOR_ITEM, element.parentNode) : [];
+      this._items = element && element.parentNode ? SelectorEngine__default['default'].find(SELECTOR_ITEM, element.parentNode) : [];
       return this._items.indexOf(element);
     };
 
@@ -506,9 +504,9 @@
     _proto._triggerSlideEvent = function _triggerSlideEvent(relatedTarget, eventDirectionName) {
       var targetIndex = this._getItemIndex(relatedTarget);
 
-      var fromIndex = this._getItemIndex(SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element));
+      var fromIndex = this._getItemIndex(SelectorEngine__default['default'].findOne(SELECTOR_ACTIVE_ITEM, this._element));
 
-      return EventHandler.trigger(this._element, EVENT_SLIDE, {
+      return EventHandler__default['default'].trigger(this._element, EVENT_SLIDE, {
         relatedTarget: relatedTarget,
         direction: eventDirectionName,
         from: fromIndex,
@@ -518,7 +516,7 @@
 
     _proto._setActiveIndicatorElement = function _setActiveIndicatorElement(element) {
       if (this._indicatorsElement) {
-        var indicators = SelectorEngine.find(SELECTOR_ACTIVE, this._indicatorsElement);
+        var indicators = SelectorEngine__default['default'].find(SELECTOR_ACTIVE, this._indicatorsElement);
 
         for (var i = 0; i < indicators.length; i++) {
           indicators[i].classList.remove(CLASS_NAME_ACTIVE);
@@ -535,7 +533,7 @@
     _proto._slide = function _slide(direction, element) {
       var _this4 = this;
 
-      var activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element);
+      var activeElement = SelectorEngine__default['default'].findOne(SELECTOR_ACTIVE_ITEM, this._element);
 
       var activeElementIndex = this._getItemIndex(activeElement);
 
@@ -597,13 +595,13 @@
         }
 
         var transitionDuration = getTransitionDurationFromElement(activeElement);
-        EventHandler.one(activeElement, TRANSITION_END, function () {
+        EventHandler__default['default'].one(activeElement, TRANSITION_END, function () {
           nextElement.classList.remove(directionalClassName, orderClassName);
           nextElement.classList.add(CLASS_NAME_ACTIVE);
           activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName);
           _this4._isSliding = false;
           setTimeout(function () {
-            EventHandler.trigger(_this4._element, EVENT_SLID, {
+            EventHandler__default['default'].trigger(_this4._element, EVENT_SLID, {
               relatedTarget: nextElement,
               direction: eventDirectionName,
               from: activeElementIndex,
@@ -616,7 +614,7 @@
         activeElement.classList.remove(CLASS_NAME_ACTIVE);
         nextElement.classList.add(CLASS_NAME_ACTIVE);
         this._isSliding = false;
-        EventHandler.trigger(this._element, EVENT_SLID, {
+        EventHandler__default['default'].trigger(this._element, EVENT_SLID, {
           relatedTarget: nextElement,
           direction: eventDirectionName,
           from: activeElementIndex,
@@ -631,12 +629,12 @@
     ;
 
     Carousel.carouselInterface = function carouselInterface(element, config) {
-      var data = Data.getData(element, DATA_KEY);
+      var data = Data__default['default'].getData(element, DATA_KEY);
 
-      var _config = _objectSpread(_objectSpread({}, Default), Manipulator.getDataAttributes(element));
+      var _config = _extends({}, Default, Manipulator__default['default'].getDataAttributes(element));
 
       if (typeof config === 'object') {
-        _config = _objectSpread(_objectSpread({}, _config), config);
+        _config = _extends({}, _config, config);
       }
 
       var action = typeof config === 'string' ? config : _config.slide;
@@ -672,7 +670,7 @@
         return;
       }
 
-      var config = _objectSpread(_objectSpread({}, Manipulator.getDataAttributes(target)), Manipulator.getDataAttributes(this));
+      var config = _extends({}, Manipulator__default['default'].getDataAttributes(target), Manipulator__default['default'].getDataAttributes(this));
 
       var slideIndex = this.getAttribute('data-slide-to');
 
@@ -683,14 +681,14 @@
       Carousel.carouselInterface(target, config);
 
       if (slideIndex) {
-        Data.getData(target, DATA_KEY).to(slideIndex);
+        Data__default['default'].getData(target, DATA_KEY).to(slideIndex);
       }
 
       event.preventDefault();
     };
 
     Carousel.getInstance = function getInstance(element) {
-      return Data.getData(element, DATA_KEY);
+      return Data__default['default'].getData(element, DATA_KEY);
     };
 
     _createClass(Carousel, null, [{
@@ -714,12 +712,12 @@
    */
 
 
-  EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler);
-  EventHandler.on(window, EVENT_LOAD_DATA_API, function () {
-    var carousels = SelectorEngine.find(SELECTOR_DATA_RIDE);
+  EventHandler__default['default'].on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler);
+  EventHandler__default['default'].on(window, EVENT_LOAD_DATA_API, function () {
+    var carousels = SelectorEngine__default['default'].find(SELECTOR_DATA_RIDE);
 
     for (var i = 0, len = carousels.length; i < len; i++) {
-      Carousel.carouselInterface(carousels[i], Data.getData(carousels[i], DATA_KEY));
+      Carousel.carouselInterface(carousels[i], Data__default['default'].getData(carousels[i], DATA_KEY));
     }
   });
   var $ = getjQuery();
