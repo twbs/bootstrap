@@ -41,35 +41,27 @@ Where *position* is one of:
   <div class="position-absolute right-0 top-0"></div>
   <div class="position-absolute left-50 top-50"></div>
   <div class="position-absolute right-50 bottom-50"></div>
-  <div class="position-absolute right-0 bottom-0"></div>
   <div class="position-absolute left-0 bottom-0"></div>
+  <div class="position-absolute right-0 bottom-0"></div>
 </div>
 {{< /example >}}
 
 ## Center elements
 
-In addition, you can also center the elements with transform utilities. The format is `tt-{x-axis}{y-axis}`.
+In addition, you can also center the elements with the transform utility class `.translate-middle`.
 
-Where *x-axis* is one of:
-
-- `x` - for `50%` horizontal translation
-- `nx` - for `-50%` horizontal translation
-
-Where *y-axis* is one of:
-
-- `y` - for `50%` vertical translation
-- `ny` - for `-50%` vertical translation
+This class applies the transformations `translateX(-50%)` and `translateY(-50%)` to the element which, in combination with the edge positioning utilities, allows you to absolute center an element.
 
 {{< example class="bd-example-position-utils" >}}
 <div class="position-relative">
-  <div class="position-absolute left-0 top-0 tt-nxny"></div>
-  <div class="position-absolute left-50 top-0 tt-nxny"></div>
-  <div class="position-absolute right-0 top-0 tt-xny"></div>
-  <div class="position-absolute right-0 top-50 tt-xny"></div>
-  <div class="position-absolute left-0 bottom-0 tt-nxy"></div>
-  <div class="position-absolute left-50 bottom-0 tt-nxy"></div>
-  <div class="position-absolute right-0 bottom-0 tt-xy"></div>
-  <div class="position-absolute left-0 top-50 tt-nxny"></div>
-  <div class="position-absolute left-50 top-50 tt-nxny"></div>
+  <div class="position-absolute left-0 top-0 translate-middle"></div>
+  <div class="position-absolute left-50 top-0 translate-middle"></div>
+  <div class="position-absolute left-100 top-0 translate-middle"></div>
+  <div class="position-absolute left-0 top-50 translate-middle"></div>
+  <div class="position-absolute left-50 top-50 translate-middle"></div>
+  <div class="position-absolute left-100 top-50 translate-middle"></div>
+  <div class="position-absolute left-0 top-100 translate-middle"></div>
+  <div class="position-absolute left-50 top-100 translate-middle"></div>
+  <div class="position-absolute left-100 top-100 translate-middle"></div>
 </div>
 {{< /example >}}
