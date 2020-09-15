@@ -13,7 +13,8 @@
 {{- $js := resources.Match "js/*.js" -}}
 {{- $targetDocsJSPath := path.Join "/docs" .Site.Params.docs_version "assets/js/docs.js" -}}
 {{- $babelOptions := dict "config" ".babelrc.js" -}}
-{{- $docsJs := append $js $vendor | resources.Concat $targetDocsJSPath | babel $babelOptions -}}
+{{- $srcJs := $js | resources.Concat "temp.js" | babel $babelOptions -}}
+{{- $docsJs := $vendor | append $srcJs | resources.Concat $targetDocsJSPath -}}
 
 {{- if eq hugo.Environment "production" -}}
   {{- $docsJs = $docsJs | resources.Minify -}}
