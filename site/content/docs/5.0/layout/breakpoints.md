@@ -31,7 +31,7 @@ Bootstrap includes six default breakpoints, sometimes referred to as _grid tiers
     <tr>
       <td>X-Small</td>
       <td><em>None</em></td>
-      <td>0–576px</td>
+      <td>&lt;576px</td>
     </tr>
     <tr>
       <td>Small</td>
@@ -61,7 +61,7 @@ Bootstrap includes six default breakpoints, sometimes referred to as _grid tiers
   </tbody>
 </table>
 
-Each breakpoint size was chosen to be a multiple of 12 and to be representative of a subset of common device sizes and viewport dimensions. They don't specifically target every use case or device, but the provide ranges provide a strong and consistent foundation to build on for any nearly device.
+Each breakpoint was chosen to comfortably hold containers whose widths are multiples of 12. Breakpoints are also representative of a subset of common device sizes and viewport dimensions—they don't specifically target every use case or device. Instead, the ranges provide a strong and consistent foundation to build on for nearly any device.
 
 These breakpoints are customizable via Sass—you'll find them in a Sass map in our `_variables.scss` stylesheet.
 
@@ -202,4 +202,3 @@ Which results in:
 // Apply styles starting from medium devices and up to extra large devices
 @media (min-width: 768px) and (max-width: 1199.98px) { ... }
 {{< /highlight >}}
-
