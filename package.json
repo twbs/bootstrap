@@ -132,7 +132,7 @@
     "rollup-plugin-istanbul": "^2.0.1",
     "shelljs": "^0.8.4",
     "sirv-cli": "^1.0.6",
-    "stylelint": "^13.6.1",
+    "stylelint": "^13.7.1",
     "stylelint-config-twbs-bootstrap": "^2.0.3",
     "terser": "^5.1.0",
     "vnu-jar": "20.6.30"
