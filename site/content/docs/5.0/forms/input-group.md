@@ -121,32 +121,32 @@ Use `.btn`s as starting and ending addons with our supported form controls.
 
 {{< example >}}
 <div class="input-group-start mb-3">
-  <button class="btn btn-outline-secondary" type="button" id="button-addon1">Button</button>
-  <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+  <button class="btn btn-outline-secondary" type="button" id="buttonAddon01">Button</button>
+  <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="buttonAddon01">
 </div>
 
 <div class="input-group-end">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="buttonAddon02">
+  <button class="btn btn-outline-secondary" type="button" id="buttonAddon02">Button</button>
 </div>
 {{< /example >}}
 
 {{< example >}}
 <div class="input-group-start mb-3">
-  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
-  <textarea class="form-control" aria-label="With textarea"></textarea>
+  <button class="btn btn-outline-secondary" type="button" id="buttonAddon03">Button</button>
+  <textarea class="form-control" aria-label="With textarea" aria-describedby="buttonAddon03"></textarea>
 </div>
 
 <div class="input-group-end">
-  <textarea class="form-control" aria-label="With textarea"></textarea>
-  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+  <textarea class="form-control" aria-label="With textarea" aria-describedby="buttonAddon04"></textarea>
+  <button class="btn btn-outline-secondary" type="button" id="buttonAddon04">Button</button>
 </div>
 {{< /example >}}
 
 {{< example >}}
 <div class="input-group-start mb-3">
-  <button class="btn btn-outline-secondary" type="button">Button</button>
-  <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+  <button class="btn btn-outline-secondary" type="button" id="buttonAddon05">Button</button>
+  <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon" aria-describedby="buttonAddon05">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -155,21 +155,21 @@ Use `.btn`s as starting and ending addons with our supported form controls.
 </div>
 
 <div class="input-group-end">
-  <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+  <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon" aria-describedby="buttonAddon06">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
   </select>
-  <button class="btn btn-outline-secondary" type="button">Button</button>
+  <button class="btn btn-outline-secondary" type="button" id="buttonAddon06">Button</button>
 </div>
 {{< /example >}}
 
 {{< example >}}
 <div class="input-group-start mb-3">
-  <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03">Button</button>
+  <button class="btn btn-outline-secondary" type="button" id="buttonAddon07">Button</button>
   <div class="form-file">
-    <input type="file" class="form-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
+    <input type="file" class="form-file-input" id="inputGroupFile03" aria-describedby="buttonAddon07">
     <label class="form-file-label" for="inputGroupFile03">
       <span class="form-file-text">Choose file...</span>
       <span class="form-file-button">Browse</span>
@@ -179,13 +179,13 @@ Use `.btn`s as starting and ending addons with our supported form controls.
 
 <div class="input-group-end">
   <div class="form-file">
-    <input type="file" class="form-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+    <input type="file" class="form-file-input" id="inputGroupFile04" aria-describedby="buttonAddon08">
     <label class="form-file-label" for="inputGroupFile04">
       <span class="form-file-text">Choose file...</span>
       <span class="form-file-button">Browse</span>
     </label>
   </div>
-  <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
+  <button class="btn btn-outline-secondary" type="button" id="buttonAddon08">Button</button>
 </div>
 {{< /example >}}
 
