@@ -659,12 +659,15 @@ $input-height-inner:                    add($input-line-height * 1em, $input-pad
 $input-height-inner-half:               add($input-line-height * .5em, $input-padding-y) !default;
 $input-height-inner-quarter:            add($input-line-height * .25em, $input-padding-y / 2) !default;
 
-$input-height:                          add($input-line-height * 1em, add($input-padding-y * 2, $input-height-border, false)) !default;
-$input-height-sm:                       add($input-line-height * 1em, add($input-padding-y-sm * 2, $input-height-border, false)) !default;
-$input-height-lg:                       add($input-line-height * 1em, add($input-padding-y-lg * 2, $input-height-border, false)) !default;
+$input-height:                          add($input-font-size * $line-height-base, add($input-padding-y * 2, $input-height-border, false)) !default;
+$input-height-sm:                       add($input-font-size-sm * $line-height-base, add($input-padding-y-sm * 2, $input-height-border, false)) !default;
+$input-height-lg:                       add($input-font-size-lg * $line-height-base, add($input-padding-y-lg * 2, $input-height-border, false)) !default;
 
 $input-transition:                      border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
+$input-with-icon-width:                 $input-height !default;
+$input-with-icon-width-sm:              $input-height-sm !default;
+$input-with-icon-width-lg:              $input-height-lg !default;
 
 $form-check-input-width:                  1em !default;
 $form-check-min-height:                   $font-size-base * $line-height-base !default;

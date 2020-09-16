@@ -96,3 +96,67 @@ Learn more about [support for datalist elements](https://caniuse.com/#feat=datal
   <option value="Chicago">
 </datalist>
 {{< /example >}}
+
+## With icons
+
+Wrap your form control in an element with `.form-control-with-icon`, then add a new element as a sibling to the form control with `.form-control-icon`. Place your icons within that new element. Icons will be automatically centered vertically and horizontally, but the sizing of them is up to you.
+
+You can also add icons [to selects]({{< docsref "/forms/select#with-icons" >}}) and to [file inputs]({{< docsref "/forms/file#with-icons" >}}). Textareas are currently not supported.
+
+Examples below are shown with [Bootstrap Icons](https://icons.getbootstrap.com).
+
+{{< example >}}
+<label for="formControlWithIcon" class="form-label">Email address</label>
+<div class="form-control-with-icon">
+  <input type="email" class="form-control" id="formControlWithIcon" placeholder="name@example.com">
+  <div class="form-control-icon">
+    <svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+    </svg>
+  </div>
+</div>
+{{< /example >}}
+
+### Spinners
+
+You can also place any of Bootstrap's [spinners]({{< docsref "/components/spinners" >}}) within the `.form-control-icon`.
+
+{{< example >}}
+<label for="formControlWithSpinner" class="form-label">Email address</label>
+<div class="form-control-with-icon">
+  <input type="email" class="form-control" id="formControlWithSpinner" placeholder="name@example.com">
+  <div class="form-control-icon">
+    <div class="spinner-border spinner-border-sm" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</div>
+{{< /example >}}
+
+### Sizing
+
+Add `.form-control-sm` or `.form-control-lg` to your `.form-control` and the `.form-control-icon` will automatically resize. However, the sizing of the icons themselves is up to you.
+
+{{< example >}}
+<label for="formControlWithIconSm" class="form-label">Email address</label>
+<div class="form-control-with-icon">
+  <input type="email" class="form-control form-control-sm" id="formControlWithIconSm" placeholder="name@example.com">
+  <div class="form-control-icon">
+    <svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+    </svg>
+  </div>
+</div>
+{{< /example >}}
+
+{{< example >}}
+<label for="formControlWithIconLg" class="form-label">Email address</label>
+<div class="form-control-with-icon">
+  <input type="email" class="form-control form-control-lg" id="formControlWithIconLg" placeholder="name@example.com">
+  <div class="form-control-icon">
+    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+    </svg>
+  </div>
+</div>
+{{< /example >}}

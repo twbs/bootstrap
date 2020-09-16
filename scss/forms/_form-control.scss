@@ -114,3 +114,57 @@
 .form-control-color::-webkit-color-swatch {
   @include border-radius($input-border-radius);
 }
+
+
+// With icons
+
+.form-control-with-icon {
+  position: relative;
+
+  .form-control,
+  .form-select,
+  .form-file-text {
+    padding-left: $input-with-icon-width;
+  }
+
+  .form-control-icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $input-with-icon-width;
+    color: $input-placeholder-color;
+  }
+
+  .form-control-sm,
+  .form-select-sm,
+  .form-file-sm .form-file-text {
+    padding-left: $input-with-icon-width-sm;
+  }
+
+  .form-control-sm,
+  .form-select-sm,
+  .form-file-sm {
+    + .form-control-icon {
+      width: $input-with-icon-width-sm;
+    }
+  }
+
+  .form-control-lg,
+  .form-select-lg,
+  .form-file-lg .form-file-text {
+    padding-left: $input-with-icon-width-lg;
+  }
+
+  .form-control-lg,
+  .form-select-lg,
+  .form-file-lg {
+    + .form-control-icon {
+      width: $input-with-icon-width-lg;
+    }
+  }
+}
