@@ -129,32 +129,30 @@
 // with the `.input-group >` part, but without it, we cannot override the sizing.
 
 // stylelint-disable-next-line no-duplicate-selectors
-.input-group {
-  &-start {
-    > .input-group-text,
-    > .btn {
-      @include border-right-radius(0);
-    }
-
-    > .form-control,
-    > .form-select,
-    > .form-file {
-      margin-left: -$input-border-width;
-      @include border-left-radius(0);
-    }
+.input-group-start {
+  > .input-group-text,
+  > .btn {
+    @include border-right-radius(0);
   }
 
-  &-end {
-    > .input-group-text,
-    > .btn {
-      margin-left: -$input-border-width;
-      @include border-left-radius(0);
-    }
+  > .form-control,
+  > .form-select,
+  > .form-file {
+    margin-left: -$input-border-width;
+    @include border-left-radius(0);
+  }
+}
 
-    > .form-control,
-    > .form-select,
-    > .form-file {
-      @include border-right-radius(0);
-    }
+.input-group-end {
+  > .input-group-text,
+  > .btn {
+    margin-left: -$input-border-width;
+    @include border-left-radius(0);
+  }
+
+  > .form-control,
+  > .form-select,
+  > .form-file {
+    @include border-right-radius(0);
   }
 }
