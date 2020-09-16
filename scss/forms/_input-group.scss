@@ -2,7 +2,9 @@
 // Base styles
 //
 
-.input-group {
+// .input-group,
+.input-group-start,
+.input-group-end {
   position: relative;
   display: flex;
   flex-wrap: wrap; // For form validation feedback
@@ -128,13 +130,31 @@
 
 // stylelint-disable-next-line no-duplicate-selectors
 .input-group {
-  > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
-  > .dropdown-toggle:nth-last-child(n + 3) {
-    @include border-right-radius(0);
+  &-start {
+    > .input-group-text,
+    > .btn {
+      @include border-right-radius(0);
+    }
+
+    > .form-control,
+    > .form-select,
+    > .form-file {
+      margin-left: -$input-border-width;
+      @include border-left-radius(0);
+    }
   }
 
-  > :not(:first-child):not(.dropdown-menu) {
-    margin-left: -$input-border-width;
-    @include border-left-radius(0);
+  &-end {
+    > .input-group-text,
+    > .btn {
+      margin-left: -$input-border-width;
+      @include border-left-radius(0);
+    }
+
+    > .form-control,
+    > .form-select,
+    > .form-file {
+      @include border-right-radius(0);
+    }
   }
 }
