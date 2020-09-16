@@ -224,7 +224,7 @@ The example below uses a flexbox utility to vertically center the contents and c
   </div>
   <div class="col-auto">
     <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
-    <div class="input-group">
+    <div class="input-group-start">
       <div class="input-group-text">@</div>
       <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="Username">
     </div>
@@ -262,7 +262,7 @@ You can then remix that once again with size-specific column classes.
   </div>
   <div class="col-sm-3">
     <label class="visually-hidden" for="specificSizeInputGroupUsername">Username</label>
-    <div class="input-group">
+    <div class="input-group-start">
       <div class="input-group-text">@</div>
       <input type="text" class="form-control" id="specificSizeInputGroupUsername" placeholder="Username">
     </div>
@@ -298,7 +298,7 @@ Use the `.col-auto` class to create horizontal layouts. By adding [gutter modifi
 <form class="row row-cols-lg-auto g-3 align-items-center">
   <div class="col-12">
     <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
-    <div class="input-group">
+    <div class="input-group-start">
       <div class="input-group-text">@</div>
       <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
     </div>

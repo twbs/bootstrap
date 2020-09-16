@@ -52,7 +52,7 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
   </div>
   <div class="col-md-4">
     <label for="validationCustomUsername" class="form-label">Username</label>
-    <div class="input-group">
+    <div class="input-group-start">
       <span class="input-group-text" id="inputGroupPrepend">@</span>
       <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
       <div class="invalid-feedback">
@@ -125,7 +125,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
   </div>
   <div class="col-md-4">
     <label for="validationDefaultUsername" class="form-label">Username</label>
-    <div class="input-group">
+    <div class="input-group-start">
       <span class="input-group-text" id="inputGroupPrepend2">@</span>
       <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
     </div>
@@ -183,7 +183,7 @@ For invalid fields, ensure that the invalid feedback/error message is associated
   </div>
   <div class="col-md-4">
     <label for="validationServerUsername" class="form-label">Username</label>
-    <div class="input-group">
+    <div class="input-group-start">
       <span class="input-group-text" id="inputGroupPrepend3">@</span>
       <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
       <div id="validationServerUsernameFeedback" class="invalid-feedback">
@@ -239,7 +239,8 @@ Validation styles are available for the following form controls and components:
 - `<input>`s and `<textarea>`s with `.form-control` (including up to one `.form-control` in input groups)
 - `<select>`s with `.form-select`
 - `.form-check`s
-- `.form-file`
+- `.form-file`s
+- Input groups (both `.input-group-start` and `.input-group-end`)
 
 {{< example >}}
 <form class="was-validated">
@@ -287,6 +288,17 @@ Validation styles are available for the following form controls and components:
   </div>
 
   <div class="mb-3">
+    <label for="validationInputGroup" class="form-label">Username</label>
+    <div class="input-group-end">
+      <span class="input-group-text" id="validationInputGroupAddon">@</span>
+      <input type="text" class="form-control is-invalid" id="validationInputGroup" aria-describedby="validationInputGroupAddon" required>
+      <div class="invalid-feedback">
+        Please choose a username.
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
     <button class="btn btn-primary" type="submit" disabled>Submit form</button>
   </div>
 </form>
@@ -314,7 +326,7 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
   </div>
   <div class="col-md-4 position-relative">
     <label for="validationTooltipUsername" class="form-label">Username</label>
-    <div class="input-group">
+    <div class="input-group-start">
       <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
       <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
       <div class="invalid-tooltip">
