@@ -8,7 +8,9 @@ toc: true
 
 ## Default
 
-The file input is the most gnarly of the bunch and requires additional JavaScript if you'd like to hook them up with functional *Choose file...* and selected file name text.
+Unlike our selects, checkboxes, and radios, the file input is much more difficult to customize. This means we've had to add additional HTML around the `<input type="file">` to create our the custom design. As such, it also requires additional JavaScript to make the custom form work with the input.
+
+As of Bootstrap 5, this JavaScript is included in a new official plugin. Folks using Bootstrap 4 will need to make use of an [external plugin](https://www.npmjs.com/package/bs-custom-file-input).
 
 {{< example >}}
 <div class="form-file" data-toggle="file-input">
@@ -119,7 +121,7 @@ Activate a file input without writing JavaScript. Set `data-toggle="file-input"`
 </div>
 {{< /highlight >}}
 
-### Via JavaScript:
+### Via JavaScript
 
 {{< highlight js >}}
 var formFileNode = document.querySelector('.form-file')
