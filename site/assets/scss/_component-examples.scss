@@ -235,6 +235,7 @@
     padding: 0;
     margin-top: .65rem;
     margin-bottom: .65rem;
+    white-space: pre;
     background-color: transparent;
     border: 0;
   }
@@ -242,6 +243,7 @@
   pre code {
     @include font-size(inherit);
     color: $gray-900; // Effectively the base text color
+    word-wrap: normal;
   }
 }
 
