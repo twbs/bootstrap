@@ -83,6 +83,14 @@
       border-top-width: $list-group-border-width;
     }
   }
+  
+  // Make single `.list-group-item-action`s in `.list-group-item` fill their container
+  .list-group-item-action:only-child {
+    display: block;
+    margin: ($list-group-item-padding-y * -1) ($list-group-item-padding-x * -1);
+    padding: $list-group-item-padding-y $list-group-item-padding-x;
+    width: auto; // Override `width: 100%` to account for parent padding. Might also be achieved using calc(100% + ($list-group-item-padding-x * -1))
+  }
 }
 
 
