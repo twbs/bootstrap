@@ -55,10 +55,12 @@ For Bootstrap to compile, make sure you install and use the required loaders: [s
   }, {
     loader: 'postcss-loader', // Run postcss actions
     options: {
-      plugins: function () { // postcss plugins, can be exported to postcss.config.js
-        return [
-          require('autoprefixer')
-        ];
+      postcssOptions: {
+        plugins: function () { // post css plugins, can be exported to postcss.config.js
+          return [
+            require('autoprefixer')
+          ];
+        }
       }
     }
   }, {
