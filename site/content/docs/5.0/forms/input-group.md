@@ -47,13 +47,13 @@ Use `.input-group-text` as starting and ending addons with our supported form co
 
 {{< example >}}
 <div class="input-group-start mb-3">
-  <span class="input-group-text" id="inputGroupStart01">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="inputGroupStart01">
+  <span class="input-group-text" id="inputGroupStart02">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="inputGroupStart02">
 </div>
 
 <div class="input-group-end">
-  <input type="text" class="form-control" placeholder="100" aria-label="Amount" aria-describedby="inputGroupEnd01">
-  <span class="input-group-text" id="inputGroupEnd01">.00</span>
+  <input type="text" class="form-control" placeholder="100" aria-label="Amount" aria-describedby="inputGroupEnd02">
+  <span class="input-group-text" id="inputGroupEnd02">.00</span>
 </div>
 {{< /example >}}
 
