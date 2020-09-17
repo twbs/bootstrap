@@ -19,6 +19,7 @@
     margin-top: .125rem;
     color: rgba($black, .65);
     text-decoration: if($link-decoration == none, null, none);
+    visibility: visible;
 
     &:hover,
     &:focus {

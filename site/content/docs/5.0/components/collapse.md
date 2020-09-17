@@ -40,6 +40,24 @@ You can use a link with the `href` attribute, or a button with the `data-target`
 </div>
 {{< /example >}}
 
+## Horizontal
+
+{{< example >}}
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseHorizontalExample" role="button" aria-expanded="false" aria-controls="collapseHorizontalExample">
+    Link with href
+  </a>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseHorizontalExample" aria-expanded="false" aria-controls="collapseHorizontalExample">
+    Button with data-target
+  </button>
+</p>
+<div class="collapse show collapse-horizontal" id="collapseHorizontalExample">
+  <div style="width: 400px;">
+    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</p>
+  </div>
+</div>
+{{< /example >}}
+
 ## Multiple targets
 
 A `<button>` or `<a>` can show and hide multiple elements by referencing them with a selector in its `href` or `data-target` attribute.
