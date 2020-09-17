@@ -10,7 +10,7 @@
 }
 
 .breadcrumb-item {
-  display: flex;
+  display: block; // inline-block adds white space from some HTML formatting, flex has some side effects
 
   // The separator between breadcrumbs (by default, a forward-slash: "/")
   + .breadcrumb-item {
