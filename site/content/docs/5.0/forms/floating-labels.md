@@ -3,6 +3,7 @@ layout: docs
 title: Floating labels
 description: Create beautifully simple forms labels that float over your input fields.
 group: forms
+toc: true
 ---
 
 ## Example
@@ -16,7 +17,7 @@ This approach works in the new Microsoft Edge built on Chromium and gracefully d
   <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
   <label for="floatingInput">Email address</label>
 </div>
-<div class="form-floating mb-3">
+<div class="form-floating">
   <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
   <label for="floatingPassword">Password</label>
 </div>
@@ -25,7 +26,7 @@ This approach works in the new Microsoft Edge built on Chromium and gracefully d
 When there's a `value` already defined, `<label>`s will automatically adjust to their floated position.
 
 {{< example >}}
-<form class="form-floating mb-3">
+<form class="form-floating">
   <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="test@example.com">
   <label for="floatingInputValue">Input with value</label>
 </form>
@@ -34,10 +35,30 @@ When there's a `value` already defined, `<label>`s will automatically adjust to 
 Form validation styles also work as expected.
 
 {{< example >}}
-<form class="form-floating mb-3">
+<form class="form-floating">
   <input type="email" class="form-control is-invalid" id="floatingInputInvalid" placeholder="name@example.com" value="test@example.com">
   <label for="floatingInputInvalid">Invalid input</label>
 </form>
+{{< /example >}}
+
+## Textareas
+
+By default, `<textarea>`s with `.form-control` will be the same height as `<input>`s.
+
+{{< example >}}
+<div class="form-floating">
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+  <label for="floatingTextarea">Comments</label>
+</div>
+{{< /example >}}
+
+To set a custom height on your `<textarea>`, do not use the `rows` attribute. Instead, set an explicit `height` (either inline or via custom CSS).
+
+{{< example >}}
+<div class="form-floating">
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+  <label for="floatingTextarea2">Comments</label>
+</div>
 {{< /example >}}
 
 ## Selects
@@ -45,7 +66,7 @@ Form validation styles also work as expected.
 Other than `.form-control`, floating labels only available on `.form-select`s. They work in the same way, but unlike `<input>`s, they'll always show the `<label>` in its floated state.
 
 {{< example >}}
-<div class="form-floating mb-3">
+<div class="form-floating">
   <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
     <option selected>Open this select menu</option>
     <option value="1">One</option>

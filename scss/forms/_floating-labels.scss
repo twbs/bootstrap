@@ -3,7 +3,6 @@
 .form-floating {
   position: relative;
 
-  > label,
   > .form-control,
   > .form-select {
     height: $form-floating-height;
@@ -14,13 +13,10 @@
     position: absolute;
     top: 0;
     left: 0;
-    display: block;
-    width: 100%;
-    margin-bottom: 0; // Override default `<label>` margin
+    height: 100%; // allow textareas
+    padding: $form-floating-padding-y $form-floating-padding-x;
     pointer-events: none;
-    cursor: text; // Match the input under the label
-    border: $input-border-width solid transparent;
-    @include border-radius(.25rem);
+    border: $input-border-width solid transparent; // Required for aligning label's text with the input as it affects inner box model
     @include transition(all .1s ease-in-out);
   }
 
@@ -29,6 +25,7 @@
       color: transparent;
     }
 
+    &:focus,
     &:not(:placeholder-shown) {
       padding-top: $form-floating-input-padding-t;
       padding-bottom: $form-floating-input-padding-b;
@@ -40,6 +37,7 @@
     padding-bottom: $form-floating-input-padding-b;
   }
 
+  > .form-control:focus,
   > .form-control:not(:placeholder-shown),
   > .form-select {
     ~ label {
