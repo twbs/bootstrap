@@ -222,6 +222,10 @@ $enable-negative-margins:     false !default;
 $enable-deprecation-messages: true !default;
 $enable-important-utilities:  true !default;
 
+// Prefix for :root CSS variables
+
+$variable-prefix:             bs- !default;
+
 // Gradient
 //
 // The gradient which is added to components if `$enable-gradients` is `true`
