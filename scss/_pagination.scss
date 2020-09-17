@@ -1,4 +1,15 @@
 .pagination {
+  --pagination-color: #{$pagination-color};
+  --pagination-bg: #{$pagination-bg};
+  --pagination-border-width: #{$pagination-border-width};
+  --pagination-border-color: #{$pagination-border-color};
+  --pagination-hover-color: #{$pagination-hover-color};
+  --pagination-hover-bg: #{$pagination-hover-bg};
+  --pagination-hover-border-color: #{$pagination-hover-border-color};
+  --pagination-focus-color: #{$pagination-focus-color};
+  --pagination-focus-bg: #{$pagination-focus-bg};
+  --pagination-focus-box-shadow: #{$pagination-focus-box-shadow};
+
   display: flex;
   @include list-unstyled();
 }
