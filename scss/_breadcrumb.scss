@@ -15,7 +15,7 @@
     padding-left: $breadcrumb-item-padding-x;
 
     &::before {
-      float: left; // Suppress inline spacings and underlining of the separator 
+      float: left; // Suppress inline spacings and underlining of the separator
       padding-right: $breadcrumb-item-padding-x;
       color: $breadcrumb-divider-color;
       content: escape-svg($breadcrumb-divider);
