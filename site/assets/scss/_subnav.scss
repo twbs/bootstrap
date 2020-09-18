@@ -25,9 +25,35 @@
 }
 
 .bd-search {
-  .form-control:focus {
-    border-color: $bd-purple-bright;
-    box-shadow: 0 0 0 3px rgba($bd-purple-bright, .25);
+  position: relative;
+
+  &::after {
+    position: absolute;
+    top: .4rem;
+    right: .4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    @include font-size(.75rem);
+    color: $gray-600;
+    content: "/";
+    border: $border-width solid $border-color;
+    @include border-radius();
+  }
+
+  @include media-breakpoint-down(md) {
+    width: 100%;
+  }
+
+  .form-control {
+    padding-right: 2.25rem;
+
+    &:focus {
+      border-color: $bd-purple-bright;
+      box-shadow: 0 0 0 3px rgba($bd-purple-bright, .25);
+    }
   }
 }
 
