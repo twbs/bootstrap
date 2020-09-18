@@ -41,7 +41,9 @@ include_js: false
       <a class="p-2 link-secondary" href="#">Travel</a>
     </nav>
   </div>
+</div>
 
+<main class="container">
   <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
       <h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
@@ -80,16 +82,14 @@ include_js: false
       </div>
     </div>
   </div>
-</div>
 
-<main class="container">
   <div class="row">
     <div class="col-md-8">
       <h3 class="pb-4 mb-4 font-italic border-bottom">
         From the Firehose
       </h3>
 
-      <div class="blog-post">
+      <article class="blog-post">
         <h2 class="blog-post-title">Sample blog post</h2>
         <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
 
@@ -120,9 +120,9 @@ include_js: false
           <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
         </ol>
         <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
-      </div><!-- /.blog-post -->
+      </article><!-- /.blog-post -->
 
-      <div class="blog-post">
+      <article class="blog-post">
         <h2 class="blog-post-title">Another blog post</h2>
         <p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
 
@@ -132,9 +132,9 @@ include_js: false
         </blockquote>
         <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
         <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-      </div><!-- /.blog-post -->
+      </article><!-- /.blog-post -->
 
-      <div class="blog-post">
+      <article class="blog-post">
         <h2 class="blog-post-title">New feature</h2>
         <p class="blog-post-meta">December 14, 2013 by <a href="#">Chris</a></p>
 
@@ -146,16 +146,16 @@ include_js: false
         </ul>
         <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
         <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-      </div><!-- /.blog-post -->
+      </article><!-- /.blog-post -->
 
-      <nav class="blog-pagination">
+      <nav class="blog-pagination" aria-label="Pagination">
         <a class="btn btn-outline-primary" href="#">Older</a>
         <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
       </nav>
 
     </div>
 
-    <aside class="col-md-4">
+    <div class="col-md-4">
       <div class="p-4 mb-3 bg-light rounded">
         <h4 class="font-italic">About</h4>
         <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
@@ -187,7 +187,7 @@ include_js: false
           <li><a href="#">Facebook</a></li>
         </ol>
       </div>
-    </aside>
+    </div>
 
   </div><!-- /.row -->
 

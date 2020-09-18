@@ -40,13 +40,14 @@ Skip the download with [BootstrapCDN](https://www.bootstrapcdn.com/) to deliver 
 
 {{< highlight html >}}
 <link rel="stylesheet" href="{{< param "cdn.css" >}}" integrity="{{< param "cdn.css_hash" >}}" crossorigin="anonymous">
-<script src="{{< param "cdn.js" >}}" integrity="{{< param "cdn.js_hash" >}}" crossorigin="anonymous"></script>
+<script src="{{< param "cdn.js_bundle" >}}" integrity="{{< param "cdn.js_bundle_hash" >}}" crossorigin="anonymous"></script>
 {{< /highlight >}}
 
-If you're using our compiled JavaScript, don't forget to include Popper.js, via a CDN preferably, before our JS.
+If you're using our compiled JavaScript and prefer to include Popper.js separately, add Popper.js before our JS, via a CDN preferably.
 
 {{< highlight html >}}
 <script src="{{< param "cdn.popper" >}}" integrity="{{< param "cdn.popper_hash" >}}" crossorigin="anonymous"></script>
+<script src="{{< param "cdn.js" >}}" integrity="{{< param "cdn.js_hash" >}}" crossorigin="anonymous"></script>
 {{< /highlight >}}
 
 ## Package managers

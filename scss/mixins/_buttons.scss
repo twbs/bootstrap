@@ -7,12 +7,15 @@
   $background,
   $border,
   $color: color-contrast($background),
-  $hover-background: darken($background, 7.5%),
-  $hover-border: darken($border, 10%),
+  $hover-background: if($color == $color-contrast-light, darken($background, 7.5%), lighten($background, 7.5%)),
+  $hover-border: if($color == $color-contrast-light, darken($border, 10%), lighten($border, 5%)),
   $hover-color: color-contrast($hover-background),
-  $active-background: darken($background, 10%),
-  $active-border: darken($border, 12.5%),
-  $active-color: color-contrast($active-background)
+  $active-background: if($color == $color-contrast-light, darken($background, 10%), lighten($background, 10%)),
+  $active-border: if($color == $color-contrast-light, darken($border, 12.5%), lighten($border, 5%)),
+  $active-color: color-contrast($active-background),
+  $disabled-background: $background,
+  $disabled-border: $border,
+  $disabled-color: color-contrast($disabled-background)
 ) {
   color: $color;
   @include gradient-bg($background);
@@ -61,11 +64,11 @@
 
   &:disabled,
   &.disabled {
-    color: $color;
-    background-color: $background;
+    color: $disabled-color;
+    background-color: $disabled-background;
     // Remove CSS gradients if they're enabled
     background-image: if($enable-gradients, none, null);
-    border-color: $border;
+    border-color: $disabled-border;
   }
 }
 

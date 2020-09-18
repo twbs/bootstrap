@@ -23,7 +23,7 @@ $utilities: map-merge(
       print: true,
       property: display,
       class: d,
-      values: none inline inline-block block table table-row table-cell flex inline-flex
+      values: inline inline-block block table table-row table-cell flex inline-flex none
     ),
     "shadow": (
       property: box-shadow,
@@ -78,6 +78,11 @@ $utilities: map-merge(
       property: border-color,
       class: border,
       values: map-merge($theme-colors, ("white": $white))
+    ),
+    "border-width": (
+      property: border-width,
+      class: border,
+      values: $border-widths
     ),
     // Sizing utilities
     "width": (
