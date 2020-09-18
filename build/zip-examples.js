@@ -43,7 +43,7 @@ sh.cp('-f', [
 sh.rm(`${folderName}/index.html`)
 
 // get all examples' HTML files
-sh.find(`${folderName}/**/*.html`).forEach((file) => {
+sh.find(`${folderName}/**/*.html`).forEach(file => {
   const fileContents = sh.cat(file)
     .toString()
     .replace(new RegExp(`"/docs/${versionShort}/`, 'g'), '"../')

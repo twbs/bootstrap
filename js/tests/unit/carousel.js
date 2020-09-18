@@ -65,8 +65,8 @@ $(function () {
     $el.bootstrapCarousel()
     try {
       $el.bootstrapCarousel('noMethod')
-    } catch (err) {
-      assert.strictEqual(err.message, 'No method named "noMethod"')
+    } catch (error) {
+      assert.strictEqual(error.message, 'No method named "noMethod"')
     }
   })
 
@@ -89,8 +89,8 @@ $(function () {
 
     try {
       $('<div/>').bootstrapCarousel(config)
-    } catch (err) {
-      message = err.message
+    } catch (error) {
+      message = error.message
     }
 
     assert.ok(message === expectedMessage, 'correct error message')
@@ -102,8 +102,8 @@ $(function () {
 
     try {
       $('<div/>').bootstrapCarousel(config)
-    } catch (err) {
-      message = err.message
+    } catch (error) {
+      message = error.message
     }
 
     assert.ok(message === expectedMessage, 'correct error message')
@@ -652,7 +652,7 @@ $(function () {
     var eventArrowDown = $.Event('keydown', {
       which: 40
     })
-    var eventArrowUp   = $.Event('keydown', {
+    var eventArrowUp = $.Event('keydown', {
       which: 38
     })
 

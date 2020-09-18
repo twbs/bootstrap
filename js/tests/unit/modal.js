@@ -44,8 +44,8 @@ $(function () {
     $el.bootstrapModal()
     try {
       $el.bootstrapModal('noMethod')
-    } catch (err) {
-      assert.strictEqual(err.message, 'No method named "noMethod"')
+    } catch (error) {
+      assert.strictEqual(error.message, 'No method named "noMethod"')
     }
   })
 
@@ -450,8 +450,8 @@ $(function () {
     var originalPadding = $body.css('padding-right')
 
     // Hide scrollbars to prevent the body overflowing
-    $body.css('overflow', 'hidden')        // Real scrollbar (for in-browser testing)
-    $('html').css('padding-right', '0px')  // Simulated scrollbar (for PhantomJS)
+    $body.css('overflow', 'hidden') // Real scrollbar (for in-browser testing)
+    $('html').css('padding-right', '0px') // Simulated scrollbar (for PhantomJS)
 
     $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
