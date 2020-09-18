@@ -197,11 +197,11 @@ $cyan-900: shade-color($cyan, 8) !default;
 
 // Characters which are escaped by the escape-svg function
 $escaped-characters: (
-  ("<","%3c"),
-  (">","%3e"),
-  ("#","%23"),
-  ("(","%28"),
-  (")","%29"),
+  ("<", "%3c"),
+  (">", "%3e"),
+  ("#", "%23"),
+  ("(", "%28"),
+  (")", "%29"),
 ) !default;
 
 // Options
@@ -338,6 +338,14 @@ $border-color:                $gray-300 !default;
 $border-radius:               .25rem !default;
 $border-radius-sm:            .2rem !default;
 $border-radius-lg:            .3rem !default;
+$border-widths: (
+  0: 0,
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px
+) !default;
 
 $rounded-pill:                50rem !default;
 
@@ -658,7 +666,7 @@ $input-height-lg:                       add($input-line-height * 1em, add($input
 $input-transition:                      border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 
-$form-check-input-width:                  1.25em !default;
+$form-check-input-width:                  1em !default;
 $form-check-min-height:                   $font-size-base * $line-height-base !default;
 $form-check-padding-left:                 $form-check-input-width + .5em !default;
 $form-check-margin-bottom:                .125rem !default;
@@ -954,6 +962,8 @@ $pagination-border-radius:          $border-radius !default;
 $pagination-margin-left:            -$pagination-border-width !default;
 $pagination-border-color:           $gray-300 !default;
 
+$pagination-focus-color:            $link-hover-color !default;
+$pagination-focus-bg:               $gray-200 !default;
 $pagination-focus-box-shadow:       $input-btn-focus-box-shadow !default;
 $pagination-focus-outline:          0 !default;
 
@@ -969,6 +979,7 @@ $pagination-disabled-color:         $gray-600 !default;
 $pagination-disabled-bg:            $white !default;
 $pagination-disabled-border-color:  $gray-300 !default;
 
+$pagination-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 // Cards
 
@@ -1067,8 +1078,8 @@ $toast-header-border-color:         rgba(0, 0, 0, .05) !default;
 $badge-font-size:                   .75em !default;
 $badge-font-weight:                 $font-weight-bold !default;
 $badge-color:                       $white !default;
-$badge-padding-y:                   .25em !default;
-$badge-padding-x:                   .5em !default;
+$badge-padding-y:                   .35em !default;
+$badge-padding-x:                   .65em !default;
 $badge-border-radius:               $border-radius !default;
 
 

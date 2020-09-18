@@ -220,6 +220,8 @@
 //
 
 .accordion {
+  overflow-anchor: none;
+
   > .card {
     overflow: hidden;
 

@@ -33,7 +33,7 @@ Where *value* is one of:
 
 The display values can be altered by changing the `$displays` variable and recompiling the SCSS.
 
-The media queries affect screen widths with the given breakpoint *or larger*. For example, `.d-lg-none` sets `display: none;` on both `lg`, `xl`, and `xxl` screens.
+The media queries affect screen widths with the given breakpoint *or larger*. For example, `.d-lg-none` sets `display: none;` on `lg`, `xl`, and `xxl` screens.
 
 ## Examples
 

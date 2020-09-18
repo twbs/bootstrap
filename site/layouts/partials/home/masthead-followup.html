@@ -1,5 +1,5 @@
 <div class="container masthead-followup px-4 px-md-3">
-  <div class="row mb-5 pb-md-4 align-items-center">
+  <section class="row mb-5 pb-md-4 align-items-center">
     <div class="col-md-5">
       <div class="masthead-followup-icon d-inline-block mb-2 text-white bg-success">
         {{ partial "icons/code.svg" (dict "width" "32" "height" "32") }}
@@ -15,9 +15,9 @@
       {{ highlight "npm install bootstrap" "sh" "" }}
       {{ highlight (printf ("gem install bootstrap -v %s") .Site.Params.current_ruby_version) "sh" "" }}
     </div>
-  </div>
+  </section>
 
-  <div class="row mb-5 pb-md-4 align-items-center">
+  <section class="row mb-5 pb-md-4 align-items-center">
     <div class="col-md-5">
       <div class="masthead-followup-icon d-inline-block mb-2 text-white bg-primary">
         {{ partial "icons/cloud-fill.svg" (dict "width" "32" "height" "32") }}
@@ -27,21 +27,19 @@
         When you only need to include Bootstrap’s compiled CSS or JS, you can use <a href="https://www.bootstrapcdn.com/">BootstrapCDN</a>.
       </p>
       <p>
-        See it in action with our simple <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/#starter-template">starter template</a>, or <a href="/docs/{{ .Site.Params.docs_version }}/examples/">browse the examples</a> to jumpstart your next project.
+        See it in action with our simple <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/#starter-template">starter template</a>, or <a href="/docs/{{ .Site.Params.docs_version }}/examples/">browse the examples</a> to jumpstart your next project. You can also choose to include Popper.js and our JS <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/#separate">separately</a>.
       </p>
       <a class="btn btn-lg btn-outline-primary mb-3" href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/">Explore the docs</a>
     </div>
     <div class="col-md-7 pl-md-5">
       {{ highlight (printf (`<!-- CSS only -->
 <link rel="stylesheet" href="%s" integrity=%q crossorigin="anonymous">`) .Site.Params.cdn.css (.Site.Params.cdn.css_hash | safeHTMLAttr)) "html" "" }}
-      {{ highlight (printf (`<!-- JavaScript and dependencies -->
-<script src="%s" integrity=%q crossorigin="anonymous"></script>
-<script src="%s" integrity=%q crossorigin="anonymous"></script>
-`) .Site.Params.cdn.popper (.Site.Params.cdn.popper_hash | safeHTMLAttr) .Site.Params.cdn.js (.Site.Params.cdn.js_hash | safeHTMLAttr)) "html" "" }}
+      {{ highlight (printf (`<!-- JavaScript Bundle with Popper.js -->
+<script src="%s" integrity=%q crossorigin="anonymous"></script>`) .Site.Params.cdn.js_bundle (.Site.Params.cdn.js_bundle_hash | safeHTMLAttr)) "html" "" }}
     </div>
-  </div>
+  </section>
 
-  <div class="row mb-5 pb-md-4 align-items-center">
+  <section class="row mb-5 pb-md-4 align-items-center">
     <div class="col-md-5">
       <div class="masthead-followup-icon d-inline-block mb-2 text-white bd-bg-purple-bright">
         {{ partial "icons/circle-square.svg" (dict "width" "32" "height" "32") }}
@@ -61,9 +59,9 @@
                                                src="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-icons.png"
                                                alt="Bootstrap Icons" width="966" height="600" loading="lazy">
     </div>
-  </div>
+  </section>
 
-  <div class="row mb-5 pb-md-4 align-items-center">
+  <section class="row mb-5 pb-md-4 align-items-center">
     <div class="col-md-5">
       <div class="masthead-followup-icon d-inline-block mb-2 text-white bg-danger">
         {{ partial "icons/droplet-fill.svg" (dict "width" "32" "height" "32") }}
@@ -83,5 +81,5 @@
                                                src="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes.png"
                                                alt="Bootstrap Icons" width="700" height="500" loading="lazy">
     </div>
-  </div>
+  </section>
 </div>

@@ -31,6 +31,7 @@ $utilities: (
       0: 0,
       25: .25,
       50: .5,
+      75: .75,
       100: 1,
     )
   )
@@ -45,6 +46,9 @@ Output:
 }
 .opacity-25 {
   opacity: .25;
+}
+.opacity-50 {
+  opacity: .5;
 }
 .opacity-75 {
   opacity: .75;
@@ -68,6 +72,7 @@ $utilities: (
       0: 0,
       25: .25,
       50: .5,
+      75: .75,
       100: 1,
     )
   )
@@ -82,6 +87,9 @@ Output:
 }
 .o-25 {
   opacity: .25;
+}
+.o-50 {
+  opacity: .5;
 }
 .o-75 {
   opacity: .75;
@@ -104,6 +112,7 @@ $utilities: (
       0: 0,
       25: .25,
       50: .5,
+      75: .75,
       100: 1,
     )
   )
@@ -119,6 +128,9 @@ Output:
 .opacity-25 {
   opacity: .25;
 }
+.opacity-50 {
+  opacity: .5;
+}
 .opacity-75 {
   opacity: .75;
 }
@@ -131,6 +143,9 @@ Output:
   }
   .opacity-sm-25 {
     opacity: .25;
+  }
+  .opacity-sm-50 {
+    opacity: .5;
   }
   .opacity-sm-75 {
     opacity: .75;
@@ -146,6 +161,9 @@ Output:
   .opacity-md-25 {
     opacity: .25;
   }
+  .opacity-md-50 {
+    opacity: .5;
+  }
   .opacity-md-75 {
     opacity: .75;
   }
@@ -160,6 +178,9 @@ Output:
   .opacity-lg-25 {
     opacity: .25;
   }
+  .opacity-lg-50 {
+    opacity: .5;
+  }
   .opacity-lg-75 {
     opacity: .75;
   }
@@ -173,6 +194,9 @@ Output:
   }
   .opacity-xl-25 {
     opacity: .25;
+  }
+  .opacity-xl-50 {
+    opacity: .5;
   }
   .opacity-xl-75 {
     opacity: .75;
@@ -213,6 +237,7 @@ $utilities: (
       0: 0,
       25: .25,
       50: .5,
+      75: .75,
       100: 1,
     )
   )
@@ -228,6 +253,9 @@ Output:
 .o-25 {
   opacity: .25;
 }
+.o-50 {
+  opacity: .5;
+}
 .o-75 {
   opacity: .75;
 }
@@ -241,6 +269,9 @@ Output:
   }
   .o-print-25 {
     opacity: .25;
+  }
+  .o-print-50 {
+    opacity: .5;
   }
   .o-print-75 {
     opacity: .75;
