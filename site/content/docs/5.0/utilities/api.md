@@ -294,12 +294,10 @@ $utilities: (
 
 ## Adding to existing utilities
 
-The default utilities can be added to with `map-merge`
-
-Make sure to import this file instead of the default file in your Bootstrap imports
+Add new utilities with `map-merge`.Start by importing the utilities stylesheet, then use `map-merge` to add new properties and values.s
 
 ```scss
-@import "[PATH TO BOOTSTRAP]/scss/utilities";
+@import "bootstrap/scss/utilities";
 
 $utilities: map-merge(
   $utilities,
@@ -315,12 +313,10 @@ $utilities: map-merge(
 
 ## Modifying existing utilities
 
-The default utilities can be modified with a combination `map-get` and `map-merge`
-
-Make sure to import this file instead of the default file in your Bootstrap imports
+Modify existing utilities with `map-get` and `map-merge`. Once again, be sure to import the utilities stylesheet before your custom utilities.
 
 ```scss
-@import "[PATH TO BOOTSTRAP]/scss/utilities";
+@import "bootstrap/scss/utilities";
 
 $utilities: map-merge(
   $utilities,
