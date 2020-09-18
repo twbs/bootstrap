@@ -59,17 +59,14 @@ class Button {
   toggle() {
     let triggerChangeEvent = true
     let addAriaPressed = true
-    const rootElement = $(this._element).closest(
-      SELECTOR_DATA_TOGGLES
-    )[0]
+    const rootElement = $(this._element).closest(SELECTOR_DATA_TOGGLES)[0]
 
     if (rootElement) {
       const input = this._element.querySelector(SELECTOR_INPUT)
 
       if (input) {
         if (input.type === 'radio') {
-          if (input.checked &&
-            this._element.classList.contains(CLASS_NAME_ACTIVE)) {
+          if (input.checked && this._element.classList.contains(CLASS_NAME_ACTIVE)) {
             triggerChangeEvent = false
           } else {
             const activeElement = rootElement.querySelector(SELECTOR_ACTIVE)
@@ -96,8 +93,7 @@ class Button {
 
     if (!(this._element.hasAttribute('disabled') || this._element.classList.contains('disabled'))) {
       if (addAriaPressed) {
-        this._element.setAttribute('aria-pressed',
-          !this._element.classList.contains(CLASS_NAME_ACTIVE))
+        this._element.setAttribute('aria-pressed', !this._element.classList.contains(CLASS_NAME_ACTIVE))
       }
 
       if (triggerChangeEvent) {
