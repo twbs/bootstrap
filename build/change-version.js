@@ -30,18 +30,21 @@ function walkAsync(directory, excludedDirectories, fileCallback, errback) {
   if (excludedDirectories.has(path.parse(directory).base)) {
     return
   }
+
   fs.readdir(directory, (err, names) => {
     if (err) {
       errback(err)
       return
     }
-    names.forEach((name) => {
+
+    names.forEach(name => {
       const filepath = path.join(directory, name)
       fs.lstat(filepath, (err, stats) => {
         if (err) {
           process.nextTick(errback, err)
           return
         }
+
         if (stats.isDirectory()) {
           process.nextTick(walkAsync, filepath, excludedDirectories, fileCallback, errback)
         } else if (stats.isFile()) {
@@ -55,18 +58,19 @@ function walkAsync(directory, excludedDirectories, fileCallback, errback) {
 function replaceRecursively(directory, excludedDirectories, allowedExtensions, original, replacement) {
   original = new RegExp(regExpQuote(original), 'g')
   replacement = regExpQuoteReplacement(replacement)
-  const updateFile = DRY_RUN ? (filepath) => {
+  const updateFile = DRY_RUN ? filepath => {
     if (allowedExtensions.has(path.parse(filepath).ext)) {
       console.log(`FILE: ${filepath}`)
     } else {
       console.log(`EXCLUDED:${filepath}`)
     }
-  } : (filepath) => {
+  } : filepath => {
     if (allowedExtensions.has(path.parse(filepath).ext)) {
       sh.sed('-i', original, replacement, filepath)
     }
   }
-  walkAsync(directory, excludedDirectories, updateFile, (err) => {
+
+  walkAsync(directory, excludedDirectories, updateFile, err => {
     console.error('ERROR while traversing directory!:')
     console.error(err)
     process.exit(1)
@@ -79,6 +83,7 @@ function main(args) {
     console.error('Got arguments:', args)
     process.exit(1)
   }
+
   const oldVersion = args[0]
   const newVersion = args[1]
   const EXCLUDED_DIRS = new Set([
