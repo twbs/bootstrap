@@ -41,35 +41,19 @@ $utilities: map-merge(
     ),
     "top": (
       property: top,
-      values: (
-        0: 0,
-        50: 50%,
-        100: 100%
-      )
+      values: $position-values
     ),
     "bottom": (
       property: bottom,
-      values: (
-        0: 0,
-        50: 50%,
-        100: 100%
-      )
+      values: $position-values
     ),
     "left": (
       property: left,
-      values: (
-        0: 0,
-        50: 50%,
-        100: 100%
-      )
+      values: $position-values
     ),
     "right": (
       property: right,
-      values: (
-        0: 0,
-        50: 50%,
-        100: 100%
-      )
+      values: $position-values
     ),
     "translate-middle": (
       property: transform,

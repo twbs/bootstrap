@@ -246,6 +246,17 @@ $spacers: (
 
 $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
 
+// Position
+//
+// Define the edge positioning anchors of the position utilities.
+
+$position-values: (
+  0: 0,
+  50: 50%,
+  100: 100%
+) !default;
+
+
 // Body
 //
 // Settings for the `<body>` element.

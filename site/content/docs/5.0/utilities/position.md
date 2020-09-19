@@ -35,6 +35,8 @@ Where *position* is one of:
 - `50` - for `50%` edge position
 - `100` - for `100%` edge position
 
+(You can add more position values by adding entries to the `$position-values` Sass map variable.)
+
 {{< example class="bd-example-position-utils" >}}
 <div class="position-relative">
   <div class="position-absolute left-0 top-0"></div>
