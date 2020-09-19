@@ -890,9 +890,9 @@ $(function () {
   })
 
   QUnit.test('should not close modal when clicking outside of modal-content if backdrop = static', function (assert) {
-    assert.expect(1)
+    assert.expect(2)
     var done = assert.async()
-    var $modal = $('<div class="modal" data-backdrop="static"><div class="modal-dialog" /></div>').appendTo('#qunit-fixture')
+    var $modal = $('<div class="modal" data-backdrop="static"><div class="modal-dialog" style="transition-duration: 20ms;"/></div>').appendTo('#qunit-fixture')
 
     $modal.on('shown.bs.modal', function () {
       $modal.trigger('click')
@@ -900,6 +900,7 @@ $(function () {
         var modal = $modal.data('bs.modal')
 
         assert.strictEqual(modal._isShown, true)
+        assert.ok($modal.hasClass('modal-static'), 'has modal-static class')
         done()
       }, 10)
     })
@@ -971,23 +972,6 @@ $(function () {
         assert.strictEqual($modal[0].clientHeight, $modal[0].scrollHeight)
         done()
       }, 20)
-    })
-      .bootstrapModal({
-        backdrop: 'static'
-      })
-  })
-
-  QUnit.test('should get modal-static class when clicking outside of modal-content if backdrop = static', function (assert) {
-    assert.expect(1)
-    var done = assert.async()
-    var $modal = $('<div class="modal" data-backdrop="static"><div class="modal-dialog" style="transition-duration: 20ms;"/></div>').appendTo('#qunit-fixture')
-
-    $modal.on('shown.bs.modal', function () {
-      $modal.trigger('click')
-      setTimeout(function () {
-        assert.ok($modal.hasClass('modal-static'), 'has modal-static class')
-        done()
-      }, 0)
     })
       .bootstrapModal({
         backdrop: 'static'
