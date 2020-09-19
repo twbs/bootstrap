@@ -39,12 +39,12 @@ Where *position* is one of:
 
 {{< example class="bd-example-position-utils" >}}
 <div class="position-relative">
-  <div class="position-absolute left-0 top-0"></div>
-  <div class="position-absolute right-0 top-0"></div>
-  <div class="position-absolute left-50 top-50"></div>
-  <div class="position-absolute right-50 bottom-50"></div>
-  <div class="position-absolute left-0 bottom-0"></div>
-  <div class="position-absolute right-0 bottom-0"></div>
+  <div class="position-absolute top-0 left-0"></div>
+  <div class="position-absolute top-0 right-0"></div>
+  <div class="position-absolute top-50 left-50"></div>
+  <div class="position-absolute bottom-50 right-50"></div>
+  <div class="position-absolute bottom-0 left-0"></div>
+  <div class="position-absolute bottom-0 right-0"></div>
 </div>
 {{< /example >}}
 
@@ -56,14 +56,14 @@ This class applies the transformations `translateX(-50%)` and `translateY(-50%)`
 
 {{< example class="bd-example-position-utils" >}}
 <div class="position-relative">
-  <div class="position-absolute left-0 top-0 translate-middle"></div>
-  <div class="position-absolute left-50 top-0 translate-middle"></div>
-  <div class="position-absolute left-100 top-0 translate-middle"></div>
-  <div class="position-absolute left-0 top-50 translate-middle"></div>
-  <div class="position-absolute left-50 top-50 translate-middle"></div>
-  <div class="position-absolute left-100 top-50 translate-middle"></div>
-  <div class="position-absolute left-0 top-100 translate-middle"></div>
-  <div class="position-absolute left-50 top-100 translate-middle"></div>
-  <div class="position-absolute left-100 top-100 translate-middle"></div>
+  <div class="position-absolute top-0 left-0 translate-middle"></div>
+  <div class="position-absolute top-0 left-50 translate-middle"></div>
+  <div class="position-absolute top-0 left-100 translate-middle"></div>
+  <div class="position-absolute top-50 left-0 translate-middle"></div>
+  <div class="position-absolute top-50 left-50 translate-middle"></div>
+  <div class="position-absolute top-50 left-100 translate-middle"></div>
+  <div class="position-absolute top-100 left-0 translate-middle"></div>
+  <div class="position-absolute top-100 left-50 translate-middle"></div>
+  <div class="position-absolute top-100 left-100 translate-middle"></div>
 </div>
 {{< /example >}}
