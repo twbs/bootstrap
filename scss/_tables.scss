@@ -3,14 +3,15 @@
 //
 
 .table {
-  --bs-table-bg: #{$table-bg};
-  --bs-table-accent-bg: transparent;
-  --bs-table-striped-color: #{$table-striped-color};
-  --bs-table-striped-bg: #{$table-striped-bg};
-  --bs-table-active-color: #{$table-active-color};
-  --bs-table-active-bg: #{$table-active-bg};
-  --bs-table-hover-color: #{$table-hover-color};
-  --bs-table-hover-bg: #{$table-hover-bg};
+  --bs-table-bg: transparent;
+  --bs-table-color: #{$body-color};
+  --bs-table-border-color: #{$border-color};
+  --bs-table-striped-bg: #{rgba($black, $table-striped-bg-factor)};
+  --bs-table-striped-color: #{$table-color};
+  --bs-table-active-bg: #{rgba($black, $table-active-bg-factor)};
+  --bs-table-active-color: #{$table-color};
+  --bs-table-hover-bg: #{rgba($black, $table-hover-bg-factor)};
+  --bs-table-hover-color: #{$table-color};
 
   width: 100%;
   margin-bottom: $spacer;
@@ -25,8 +26,7 @@
   // stylelint-disable-next-line selector-max-universal
   > :not(caption) > * > * {
     padding: $table-cell-padding-y $table-cell-padding-x;
-    background-color: var(--bs-table-bg);
-    background-image: linear-gradient(var(--bs-table-accent-bg), var(--bs-table-accent-bg));
+    background-color: $table-bg;
     border-bottom-width: $table-border-width;
   }
 
@@ -99,8 +99,10 @@
 
 .table-striped {
   > tbody > tr:nth-of-type(#{$table-striped-order}) {
-    --bs-table-accent-bg: var(--bs-table-striped-bg);
-    color: var(--bs-table-striped-color);
+    color: $table-striped-color;
+    > * {
+      background-image: linear-gradient($table-striped-bg, $table-striped-bg);
+    }
   }
 }
 
@@ -109,8 +111,12 @@
 // The `.table-active` class can be added to highlight rows or cells
 
 .table-active {
-  --bs-table-accent-bg: var(--bs-table-active-bg);
-  color: var(--bs-table-active-color);
+  color: $table-active-color;
+
+  &:not(tr),
+  > * {
+    background-image: linear-gradient($table-active-bg, $table-active-bg);
+  }
 }
 
 // Hover effect
@@ -119,8 +125,10 @@
 
 .table-hover {
   > tbody > tr:hover {
-    --bs-table-accent-bg: var(--bs-table-hover-bg);
-    color: var(--bs-table-hover-color);
+    color: $table-hover-color;
+    > * {
+      background-image: linear-gradient($table-hover-bg, $table-hover-bg);
+    }
   }
 }
 

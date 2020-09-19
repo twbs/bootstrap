@@ -1,21 +1,29 @@
 // scss-docs-start table-variant
-@mixin table-variant($state, $background) {
+@mixin table-variant(
+  $state,
+  $background,
+  $color: color-contrast(opaque($body-bg, $background)),
+  $border-color: mix($color, $background, percentage($table-border-factor)),
+  $hover-bg: mix($color, $background, percentage($table-hover-bg-factor)),
+  $hover-color: color-contrast($hover-bg),
+  $striped-bg: mix($color, $background, percentage($table-striped-bg-factor)),
+  $striped-color: color-contrast($striped-bg),
+  $active-bg: mix($color, $background, percentage($table-active-bg-factor)),
+  $active-color: color-contrast($active-bg)
+) {
   .table-#{$state} {
-    $color: color-contrast(opaque($body-bg, $background));
-    $hover-bg: mix($color, $background, percentage($table-hover-bg-factor));
-    $striped-bg: mix($color, $background, percentage($table-striped-bg-factor));
-    $active-bg: mix($color, $background, percentage($table-active-bg-factor));
-
     --bs-table-bg: #{$background};
+    --bs-table-color: #{$color};
+    --bs-table-border-color: #{$border-color};
     --bs-table-striped-bg: #{$striped-bg};
-    --bs-table-striped-color: #{color-contrast($striped-bg)};
+    --bs-table-striped-color: #{$striped-color};
     --bs-table-active-bg: #{$active-bg};
-    --bs-table-active-color: #{color-contrast($active-bg)};
+    --bs-table-active-color: #{$active-color};
     --bs-table-hover-bg: #{$hover-bg};
-    --bs-table-hover-color: #{color-contrast($hover-bg)};
+    --bs-table-hover-color: #{$hover-color};
 
-    color: $color;
-    border-color: mix($color, $background, percentage($table-border-factor));
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color);
   }
 }
 // scss-docs-end table-variant
