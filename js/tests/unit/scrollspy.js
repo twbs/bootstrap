@@ -31,8 +31,8 @@ $(function () {
     $el.bootstrapScrollspy()
     try {
       $el.bootstrapScrollspy('noMethod')
-    } catch (err) {
-      assert.strictEqual(err.message, 'No method named "noMethod"')
+    } catch (error) {
+      assert.strictEqual(error.message, 'No method named "noMethod"')
     }
   })
 

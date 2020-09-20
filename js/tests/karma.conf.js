@@ -135,7 +135,7 @@ conf.plugins = plugins
 conf.reporters = reporters
 conf.files = files
 
-module.exports = (karmaConfig) => {
+module.exports = karmaConfig => {
   // possible values: karmaConfig.LOG_DISABLE || karmaConfig.LOG_ERROR || karmaConfig.LOG_WARN || karmaConfig.LOG_INFO || karmaConfig.LOG_DEBUG
   conf.logLevel = karmaConfig.LOG_ERROR || karmaConfig.LOG_WARN
   karmaConfig.set(conf)

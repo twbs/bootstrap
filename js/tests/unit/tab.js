@@ -31,8 +31,8 @@ $(function () {
     $el.bootstrapTab()
     try {
       $el.bootstrapTab('noMethod')
-    } catch (err) {
-      assert.strictEqual(err.message, 'No method named "noMethod"')
+    } catch (error) {
+      assert.strictEqual(error.message, 'No method named "noMethod"')
     }
   })
 
@@ -94,7 +94,7 @@ $(function () {
 
   QUnit.test('should activate element by tab id in nav list', function (assert) {
     assert.expect(2)
-    var tabsHTML =  '<nav class="nav">' +
+    var tabsHTML = '<nav class="nav">' +
                       '<a href="#home">Home</a>' +
                       '<a href="#profile">Profile</a>' +
                     '</nav>'
@@ -110,7 +110,7 @@ $(function () {
 
   QUnit.test('should activate element by tab id in list group', function (assert) {
     assert.expect(2)
-    var tabsHTML =  '<div class="list-group">' +
+    var tabsHTML = '<div class="list-group">' +
                       '<a href="#home">Home</a>' +
                       '<a href="#profile">Profile</a>' +
                     '</div>'
