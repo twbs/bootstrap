@@ -234,8 +234,8 @@
   }
 }
 
-.bd-example-position-examples{
-  &:after{
+.bd-example-position-examples {
+  &::after {
     content: none;
   }
 }
