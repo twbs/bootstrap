@@ -234,6 +234,12 @@
   }
 }
 
+.bd-example-position-examples{
+  &:after{
+    content: none;
+  }
+}
+
 //
 // Code snippets
 //
