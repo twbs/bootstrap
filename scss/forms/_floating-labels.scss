@@ -17,7 +17,7 @@
     padding: $form-floating-padding-y $form-floating-padding-x;
     pointer-events: none;
     border: $input-border-width solid transparent; // Required for aligning label's text with the input as it affects inner box model
-    @include transition(all .1s ease-in-out);
+    @include transition(opacity .1s ease-in-out, transform .1s ease-in-out);
   }
 
   > .form-control {
@@ -41,9 +41,8 @@
   > .form-control:not(:placeholder-shown),
   > .form-select {
     ~ label {
-      @include font-size($form-floating-label-font-size);
-      opacity: .65;
-      transform: translate3d(0, -.75rem, 0);
+      opacity: $form-floating-label-opacity;
+      transform: $form-floating-label-transform;
     }
   }
 }
@@ -58,6 +57,6 @@
     display: none;
   }
   .form-floating > .form-control::-ms-input-placeholder {
-    color: #777;
+    color: $input-placeholder-color;
   }
 }

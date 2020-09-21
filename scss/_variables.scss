@@ -828,8 +828,8 @@ $form-floating-padding-x:         $input-padding-x !default;
 $form-floating-padding-y:         1rem !default;
 $form-floating-input-padding-t:   1.75rem !default;
 $form-floating-input-padding-b:   .5rem !default;
-$form-floating-label-font-size:   .85rem !default;
-
+$form-floating-label-opacity:     .65 !default;
+$form-floating-label-transform:   scale(.85) translateY(-1rem) translateX(-.5rem) !default;
 
 // Form validation
 
