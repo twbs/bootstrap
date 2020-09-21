@@ -995,11 +995,12 @@ $(function () {
   })
 
   QUnit.test('should not get modal-static class when clicking outside of modal-content if backdrop = static and event is prevented', function (assert) {
-    assert.expect(1)
+    assert.expect(2)
     var done = assert.async()
     var $modal = $('<div class="modal" data-backdrop="static"><div class="modal-dialog" style="transition-duration: 20ms;"/></div>').appendTo('#qunit-fixture')
 
     $modal.on('hidePrevented.bs.modal', function (e) {
+      assert.ok(true, 'should trigger hidePrevented event')
       e.preventDefault()
     })
 
