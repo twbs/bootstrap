@@ -72,6 +72,13 @@ toc: true
 
 - Renamed `whiteList` option to `allowList`.
 
+### Helpers
+
+- [Responsive embed helpers]({{< docsref "/helpers/embed" >}}) have new modifier classes and include CSS variables.
+  - Classes have been renamed to change `by` to `x` in the aspect ratrio. For example, `.embed-responsive-16by9` is now `.responsive-16x9`.
+  - The `$embed-responsive-aspect-ratios` has been simplified to include the class name and the percentage as the `key: value` pair. This requires some math on your part when customizing, but ultimately makes it simpler on our end.
+  - CSS variables are now generated and included for each value in the Sass map. Modify the `--aspect-ratio` variable on the `.embed-responsive` to create any [custom aspect ratio]({{< docsref "/helpers/embed#custom-ratios" >}}).
+
 ---
 
 ## v5.0.0-alpha1
