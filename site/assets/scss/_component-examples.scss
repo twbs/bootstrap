@@ -165,6 +165,19 @@
     margin-top: .5rem;
     margin-bottom: .5rem;
   }
+
+  // Responsive embed helpers
+  .embed-responsive {
+    display: inline-block;
+    color: $gray-600;
+    background-color: $gray-100;
+    border: $border-width solid $border-color;
+  }
+  .embed-responsive-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .bd-example-modal {

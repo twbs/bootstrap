@@ -378,22 +378,10 @@ $transition-collapse:         height .35s ease !default;
 
 // scss-docs-start embed-responsive-aspect-ratios
 $embed-responsive-aspect-ratios: (
-  "21by9": (
-    x: 21,
-    y: 9
-  ),
-  "16by9": (
-    x: 16,
-    y: 9
-  ),
-  "4by3": (
-    x: 4,
-    y: 3
-  ),
-  "1by1": (
-    x: 1,
-    y: 1
-  )
+  "1x1": 100%,
+  "4x3": 75%,
+  "16x9": 56.25%,
+  "21x9": 42.857142%
 ) !default;
 // scss-docs-end embed-responsive-aspect-ratios
 

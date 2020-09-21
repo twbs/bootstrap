@@ -1,11 +1,13 @@
 // Credit: Nicolas Gallagher and SUIT CSS.
 
 .embed-responsive {
+
   position: relative;
   width: 100%;
 
   &::before {
     display: block;
+    padding-top: var(--aspect-ratio);
     content: "";
   }
 
@@ -24,8 +26,6 @@
 
 @each $key, $ratio in $embed-responsive-aspect-ratios {
   .embed-responsive-#{$key} {
-    &::before {
-      padding-top: percentage(map-get($ratio, y) / map-get($ratio, x));
-    }
+    --aspect-ratio: #{$ratio};
   }
 }
