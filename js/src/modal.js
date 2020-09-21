@@ -234,7 +234,7 @@ class Modal {
       const hideEventPrevented = $.Event(EVENT_HIDE_PREVENTED)
 
       $(this._element).trigger(hideEventPrevented)
-      if (hideEventPrevented.defaultPrevented) {
+      if (hideEventPrevented.isDefaultPrevented()) {
         return
       }
 
