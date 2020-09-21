@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v5.0.0-alpha1): modal.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
@@ -248,6 +248,7 @@ class Modal {
     this._element.style.display = 'block'
     this._element.removeAttribute('aria-hidden')
     this._element.setAttribute('aria-modal', true)
+    this._element.setAttribute('role', 'dialog')
     this._element.scrollTop = 0
 
     if (modalBody) {
@@ -323,6 +324,7 @@ class Modal {
     this._element.style.display = 'none'
     this._element.setAttribute('aria-hidden', true)
     this._element.removeAttribute('aria-modal')
+    this._element.removeAttribute('role')
     this._isTransitioning = false
     this._showBackdrop(() => {
       document.body.classList.remove(CLASS_NAME_OPEN)
@@ -407,10 +409,23 @@ class Modal {
         return
       }
 
+      const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
+
+      if (!isModalOverflowing) {
+        this._element.style.overflowY = 'hidden'
+      }
+
       this._element.classList.add(CLASS_NAME_STATIC)
-      const modalTransitionDuration = getTransitionDurationFromElement(this._element)
+      const modalTransitionDuration = getTransitionDurationFromElement(this._dialog)
+      EventHandler.off(this._element, TRANSITION_END)
       EventHandler.one(this._element, TRANSITION_END, () => {
         this._element.classList.remove(CLASS_NAME_STATIC)
+        if (!isModalOverflowing) {
+          EventHandler.one(this._element, TRANSITION_END, () => {
+            this._element.style.overflowY = ''
+          })
+          emulateTransitionEnd(this._element, modalTransitionDuration)
+        }
       })
       emulateTransitionEnd(this._element, modalTransitionDuration)
       this._element.focus()
@@ -529,7 +544,7 @@ class Modal {
       const _config = {
         ...Default,
         ...Manipulator.getDataAttributes(this),
-        ...typeof config === 'object' && config ? config : {}
+        ...(typeof config === 'object' && config ? config : {})
       }
 
       if (!data) {

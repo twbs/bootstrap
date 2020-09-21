@@ -4,18 +4,16 @@
 
 // Logo series wrapper
 .bd-brand-logos {
-  color: $bd-purple;
+  color: $bd-purple-bright;
 
   .inverse {
     color: $white;
-    background-color: $bd-purple;
+    background-color: $bd-purple-bright;
   }
 }
 
 // Individual items
 .bd-brand-item {
-  padding: 4rem 1rem;
-
   + .bd-brand-item {
     border-top: 1px solid $white;
   }

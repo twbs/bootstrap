@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v5.0.0-alpha1): popover.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
@@ -116,11 +116,11 @@ class Popover extends Tooltip {
     tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
   }
 
+  // Private
+
   _addAttachmentClass(attachment) {
     this.getTipElement().classList.add(`${CLASS_PREFIX}-${attachment}`)
   }
-
-  // Private
 
   _getContent() {
     return this.element.getAttribute('data-content') ||

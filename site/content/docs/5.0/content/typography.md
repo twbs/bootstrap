@@ -145,7 +145,7 @@ Styling for common inline HTML5 elements.
 <p><del>This line of text is meant to be treated as deleted text.</del></p>
 <p><s>This line of text is meant to be treated as no longer accurate.</s></p>
 <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
-<p><u>This line of text will render as underlined</u></p>
+<p><u>This line of text will render as underlined.</u></p>
 <p><small>This line of text is meant to be treated as fine print.</small></p>
 <p><strong>This line rendered as bold text.</strong></p>
 <p><em>This line rendered as italicized text.</em></p>
@@ -188,19 +188,23 @@ For quoting blocks of content from another source within your document. Wrap `<b
 
 {{< example >}}
 <blockquote class="blockquote">
-  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 </blockquote>
 {{< /example >}}
 
 ### Naming a source
 
-Add a `<footer class="blockquote-footer">` for identifying the source. Wrap the name of the source work in `<cite>`.
+The HTML spec requires that blockquote attribution be placed outside the `<blockquote>`. When providing attribution, wrap your `<blockquote>` in a `<figure>` and use a `<figcaption>` or a block level element (e.g., `<p>`) with the `.blockquote-footer` class. Be sure to wrap the name of the source work in `<cite>` as well.
 
 {{< example >}}
-<blockquote class="blockquote">
-  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-</blockquote>
+<figure>
+  <blockquote class="blockquote">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    Someone famous in <cite title="Source Title">Source Title</cite>
+  </figcaption>
+</figure>
 {{< /example >}}
 
 ### Alignment
@@ -208,17 +212,25 @@ Add a `<footer class="blockquote-footer">` for identifying the source. Wrap the 
 Use text utilities as needed to change the alignment of your blockquote.
 
 {{< example >}}
-<blockquote class="blockquote text-center">
-  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-</blockquote>
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    Someone famous in <cite title="Source Title">Source Title</cite>
+  </figcaption>
+</figure>
 {{< /example >}}
 
 {{< example >}}
-<blockquote class="blockquote text-right">
-  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-</blockquote>
+<figure class="text-right">
+  <blockquote class="blockquote">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    Someone famous in <cite title="Source Title">Source Title</cite>
+  </figcaption>
+</figure>
 {{< /example >}}
 
 ## Lists

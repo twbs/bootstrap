@@ -12,10 +12,15 @@ Scrollspy has a few requirements to function properly:
 
 - It must be used on a Bootstrap [nav component]({{< docsref "/components/navs" >}}) or [list group]({{< docsref "/components/list-group" >}}).
 - Scrollspy requires `position: relative;` on the element you're spying on, usually the `<body>`.
-- When spying on elements other than the `<body>`, be sure to have a `height` set and `overflow-y: scroll;` applied.
 - Anchors (`<a>`) are required and must point to an element with that `id`.
 
 When successfully implemented, your nav or list group will update accordingly, moving the `.active` class from one item to the next based on their associated targets.
+
+{{< callout >}}
+### Scrollable containers and keyboard access
+
+If you're making a scrollable container (other than the `<body>`), be sure to have a `height` set and `overflow-y: scroll;` applied to it—alongside a `tabindex="0"` to ensure keyboard access.
+{{< /callout >}}
 
 ## Example in navbar
 
@@ -42,7 +47,7 @@ Scroll the area below the navbar and watch the active class change. The dropdown
       </li>
     </ul>
   </nav>
-  <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example">
+  <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example" tabindex="0">
     <h4 id="fat">@fat</h4>
     <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
     <h4 id="mdo">@mdo</h4>
@@ -79,7 +84,7 @@ Scroll the area below the navbar and watch the active class change. The dropdown
     </li>
   </ul>
 </nav>
-<div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
+<div data-spy="scroll" data-target="#navbar-example2" data-offset="0" tabindex="0">
   <h4 id="fat">@fat</h4>
   <p>...</p>
   <h4 id="mdo">@mdo</h4>
@@ -118,7 +123,7 @@ Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its p
       </nav>
     </div>
     <div class="col-8">
-      <div data-spy="scroll" data-target="#navbar-example3" data-offset="0" class="scrollspy-example-2">
+      <div data-spy="scroll" data-target="#navbar-example3" data-offset="0" class="scrollspy-example-2" tabindex="0">
         <h4 id="item-1">Item 1</h4>
         <p>Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu. Do aute ipsum ipsum ullamco cillum consectetur ut et aute consectetur labore. Fugiat laborum incididunt tempor eu consequat enim dolore proident. Qui laborum do non excepteur nulla magna eiusmod consectetur in. Aliqua et aliqua officia quis et incididunt voluptate non anim reprehenderit adipisicing dolore ut consequat deserunt mollit dolore. Aliquip nulla enim veniam non fugiat id cupidatat nulla elit cupidatat commodo velit ut eiusmod cupidatat elit dolore.</p>
         <h5 id="item-1-1">Item 1-1</h5>
@@ -156,7 +161,7 @@ Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its p
   </nav>
 </nav>
 
-<div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+<div data-spy="scroll" data-target="#navbar-example3" data-offset="0" tabindex="0">
   <h4 id="item-1">Item 1</h4>
   <p>...</p>
   <h5 id="item-1-1">Item 1-1</h5>
@@ -189,7 +194,7 @@ Scrollspy also works with `.list-group`s. Scroll the area next to the list group
       </div>
     </div>
     <div class="col-8">
-      <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+      <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example" tabindex="0">
         <h4 id="list-item-1">Item 1</h4>
         <p>Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu. Do aute ipsum ipsum ullamco cillum consectetur ut et aute consectetur labore. Fugiat laborum incididunt tempor eu consequat enim dolore proident. Qui laborum do non excepteur nulla magna eiusmod consectetur in. Aliqua et aliqua officia quis et incididunt voluptate non anim reprehenderit adipisicing dolore ut consequat deserunt mollit dolore. Aliquip nulla enim veniam non fugiat id cupidatat nulla elit cupidatat commodo velit ut eiusmod cupidatat elit dolore.</p>
         <h4 id="list-item-2">Item 2</h4>
@@ -210,7 +215,7 @@ Scrollspy also works with `.list-group`s. Scroll the area next to the list group
   <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
   <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
 </div>
-<div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+<div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example" tabindex="0">
   <h4 id="list-item-1">Item 1</h4>
   <p>...</p>
   <h4 id="list-item-2">Item 2</h4>
@@ -311,19 +316,19 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </thead>
   <tbody>
     <tr>
-      <td>offset</td>
+      <td><code>offset</code></td>
       <td>number</td>
-      <td>10</td>
+      <td><code>10</code></td>
       <td>Pixels to offset from top when calculating position of scroll.</td>
     </tr>
     <tr>
-      <td>method</td>
+      <td><code>method</code></td>
       <td>string</td>
-      <td>auto</td>
+      <td><code>auto</code></td>
       <td>Finds which section the spied element is in. <code>auto</code> will choose the best method to get scroll coordinates. <code>offset</code> will use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect"><code>Element.getBoundingClientRect()</code></a> method to get scroll coordinates. <code>position</code> will use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop"><code>HTMLElement.offsetTop</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetLeft"><code>HTMLElement.offsetLeft</code></a> properties to get scroll coordinates.</td>
     </tr>
     <tr>
-      <td>target</td>
+      <td><code>target</code></td>
       <td>string | jQuery object | DOM element</td>
       <td></td>
       <td>Specifies element to apply Scrollspy plugin.</td>
@@ -342,7 +347,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </thead>
   <tbody>
     <tr>
-      <td>activate.bs.scrollspy</td>
+      <td><code>activate.bs.scrollspy</code></td>
       <td>This event fires on the scroll element whenever a new item becomes activated by the scrollspy.</td>
     </tr>
   </tbody>

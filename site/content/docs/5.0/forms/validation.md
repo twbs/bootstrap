@@ -4,10 +4,13 @@ title: Validation
 description: Provide valuable, actionable feedback to your users with HTML5 form validation, via browser default behaviors or custom styles and JavaScript.
 group: forms
 toc: true
+extra_js:
+  - src: "/docs/5.0/assets/js/validate-forms.js"
+    async: true
 ---
 
 {{< callout warning >}}
-We currently recommend using custom validation styles, as native browser default validation messages are not consistently exposed to assistive technologies in all browsers (most notably, Chrome on desktop and mobile).
+We are aware that currently the client-side custom validation styles and tooltips are not accessible, since they are not exposed to assistive technologies. While we work on a solution, we'd recommend either using the server-side option or the default browser validation method.
 {{< /callout >}}
 
 ## How it works
@@ -96,29 +99,12 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
     <button class="btn btn-primary" type="submit">Submit form</button>
   </div>
 </form>
+{{< /example >}}
 
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function () {
-  'use strict';
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll('.needs-validation');
-
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-
-        form.classList.add('was-validated');
-      }, false);
-    });
-})();
-</script>
+{{< example lang="js" show_preview="false" >}}
+{{< js.inline >}}
+{{- readFile (printf "site/static/docs/%s/assets/js/validate-forms.js" .Site.Params.docs_version) -}}
+{{< /js.inline >}}
 {{< /example >}}
 
 ## Browser defaults
@@ -177,6 +163,8 @@ While these feedback styles cannot be styled with CSS, you can still customize t
 
 We recommend using client-side validation, but in case you require server-side validation, you can indicate invalid and valid form fields with `.is-invalid` and `.is-valid`. Note that `.invalid-feedback` is also supported with these classes.
 
+For invalid fields, ensure that the invalid feedback/error message is associated with the relevant form field using `aria-describedby` (noting that this attribute allows more than one `id` to be referenced, in case the field already points to additional form text).
+
 {{< example >}}
 <form class="row g-3">
   <div class="col-md-4">
@@ -197,43 +185,43 @@ We recommend using client-side validation, but in case you require server-side v
     <label for="validationServerUsername" class="form-label">Username</label>
     <div class="input-group">
       <span class="input-group-text" id="inputGroupPrepend3">@</span>
-      <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3" required>
-      <div class="invalid-feedback">
+      <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
+      <div id="validationServerUsernameFeedback" class="invalid-feedback">
         Please choose a username.
       </div>
     </div>
   </div>
   <div class="col-md-6">
     <label for="validationServer03" class="form-label">City</label>
-    <input type="text" class="form-control is-invalid" id="validationServer03" required>
-    <div class="invalid-feedback">
+    <input type="text" class="form-control is-invalid" id="validationServer03" aria-describedby="validationServer03Feedback" required>
+    <div id="validationServer03Feedback" class="invalid-feedback">
       Please provide a valid city.
     </div>
   </div>
   <div class="col-md-3">
     <label for="validationServer04" class="form-label">State</label>
-    <select class="form-select is-invalid" id="validationServer04" required>
+    <select class="form-select is-invalid" id="validationServer04" aria-describedby="validationServer04Feedback" required>
       <option selected disabled value="">Choose...</option>
       <option>...</option>
     </select>
-    <div class="invalid-feedback">
+    <div id="validationServer04Feedback" class="invalid-feedback">
       Please select a valid state.
     </div>
   </div>
   <div class="col-md-3">
     <label for="validationServer05" class="form-label">Zip</label>
-    <input type="text" class="form-control is-invalid" id="validationServer05" required>
-    <div class="invalid-feedback">
+    <input type="text" class="form-control is-invalid" id="validationServer05" aria-describedby="validationServer05Feedback" required>
+    <div id="validationServer05Feedback" class="invalid-feedback">
       Please provide a valid zip.
     </div>
   </div>
   <div class="col-12">
     <div class="form-check">
-      <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+      <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
       <label class="form-check-label" for="invalidCheck3">
         Agree to terms and conditions
       </label>
-      <div class="invalid-feedback">
+      <div id="invalidCheck3Feedback" class="invalid-feedback">
         You must agree before submitting.
       </div>
     </div>

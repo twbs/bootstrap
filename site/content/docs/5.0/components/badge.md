@@ -34,7 +34,7 @@ Unless the context is clear (as with the "Notifications" example, where it is un
 {{< example >}}
 <button type="button" class="btn btn-primary">
   Profile <span class="badge bg-secondary">9</span>
-  <span class="sr-only">unread messages</span>
+  <span class="visually-hidden">unread messages</span>
 </button>
 {{< /example >}}
 

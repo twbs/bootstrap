@@ -14,7 +14,7 @@ toc: true
 
 - **Columns build on the grid's flexbox architecture.** Flexbox means we have options for changing individual columns and [modifying groups of columns at the row level]({{< docsref "/layout/grid#row-columns" >}}). You choose how columns grow, shrink, or otherwise change.
 
-- **When building grid layouts, all content goes in columns.** The hierarchy of Bootstrap's grid goes from [container]({{< docsref "/layout/containers" >}}) to row to column to your content. On rare ocassions, you may combine content and column, but be aware there can be unintended consequences.
+- **When building grid layouts, all content goes in columns.** The hierarchy of Bootstrap's grid goes from [container]({{< docsref "/layout/containers" >}}) to row to column to your content. On rare occasions, you may combine content and column, but be aware there can be unintended consequences.
 
 - **Bootstrap includes predefined classes for creating fast, responsive layouts.** With [six breakpoints]({{< docsref "/layout/breakpoints" >}}) and a dozen columns at each grid tier, we have dozens of classes already built for you to create your desired layouts. This can be disabled via Sass if you wish.
 
@@ -115,6 +115,14 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
     </div>
   </div>
   <div class="row justify-content-between">
+    <div class="col-4">
+      One of two columns
+    </div>
+    <div class="col-4">
+      One of two columns
+    </div>
+  </div>
+  <div class="row justify-content-evenly">
     <div class="col-4">
       One of two columns
     </div>

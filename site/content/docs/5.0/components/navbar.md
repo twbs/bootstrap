@@ -104,7 +104,7 @@ Adding images to the `.navbar-brand` will likely always require custom styles or
 <nav class="navbar navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="#">
-      <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="" loading="lazy">
+      <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24">
     </a>
   </div>
 </nav>
@@ -115,7 +115,7 @@ Adding images to the `.navbar-brand` will likely always require custom styles or
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+      <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-top">
       Bootstrap
     </a>
   </div>
@@ -168,10 +168,10 @@ And because we use classes for our navs, you can avoid the list-based approach e
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-item nav-link" href="#">Features</a>
-        <a class="nav-item nav-link" href="#">Pricing</a>
-        <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </div>
     </div>
   </div>

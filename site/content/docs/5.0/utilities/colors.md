@@ -6,6 +6,16 @@ group: utilities
 toc: true
 ---
 
+{{< callout info >}}
+##### Dealing with specificity
+
+Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` with the class.
+{{< /callout >}}
+
+{{< callout info >}}
+{{< partial "callout-warning-color-assistive-technologies.md" >}}
+{{< /callout >}}
+
 ## Color
 
 Colorize text with color utilities. If you want to colorize links, you can use the [`.link-*` helper classes]({{< docsref "/helpers/colored-links" >}}) which have `:hover` and `:focus` states.
@@ -50,13 +60,3 @@ Do you need a gradient in your custom CSS? Just add `background-image: var(--bs-
 {{- end -}}
 {{< /colors.inline >}}
 {{< /markdown >}}
-
-{{< callout info >}}
-#### Dealing with specificity
-
-Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` with the class.
-{{< /callout >}}
-
-{{< callout info >}}
-{{< partial "callout-warning-color-assistive-technologies.md" >}}
-{{< /callout >}}

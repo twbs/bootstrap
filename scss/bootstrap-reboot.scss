@@ -2,11 +2,14 @@
  * Bootstrap Reboot v5.0.0-alpha1 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md)
  */
 
 @import "functions";
 @import "variables";
+// Prevent the usage of custom properties since we don't add them to `:root` in reboot
+$font-family-base: $font-family-sans-serif; // stylelint-disable-line scss/dollar-variable-default
+$font-family-code: $font-family-monospace; // stylelint-disable-line scss/dollar-variable-default
 @import "mixins";
 @import "reboot";

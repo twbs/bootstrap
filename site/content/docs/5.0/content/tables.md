@@ -215,7 +215,7 @@ For the accented tables ([striped rows](#striped-rows), [hoverable rows](#hovera
 - We start by setting the background of a table cell with the `--bs-table-bg` custom property. All table variants then set that custom property to colorize the table cells. This way, we don't get into trouble if semi-transparent colors are used as table backgrounds.
 - Then we add a gradient on the table cells with `background-image: linear-gradient(var(--bs-table-accent-bg), var(--bs-table-accent-bg));` to layer on top of any specified `background-color`. Since `--bs-table-accent-bg` is transparent by default, we have an invisible transparent linear gradient by default.
 - When either `.table-striped`, `.table-hover` or `.table-active` classes are added, the `--bs-table-accent-bg` is set to a semitransparent color to colorize the background.
-- For each table variant, we generate a `--bs-table-accent-bg` color with the highest contrast depedending on that color. For example, the accent color for `.table-primary` is darker while `.table-dark` has a lighter accent color.
+- For each table variant, we generate a `--bs-table-accent-bg` color with the highest contrast depending on that color. For example, the accent color for `.table-primary` is darker while `.table-dark` has a lighter accent color.
 - Text and border colors are generated the same way, and their colors are inherited by default.
 
 Behind the scenes it looks like this:
