@@ -164,10 +164,13 @@
     margin-top: .5rem;
     margin-bottom: .5rem;
   }
+}
 
-  // Responsive embed helpers
+// Ratio helpers
+.bd-example-ratios {
   .ratio {
     display: inline-block;
+    width: 10rem;
     color: $gray-600;
     background-color: $gray-100;
     border: $border-width solid $border-color;
