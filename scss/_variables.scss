@@ -221,6 +221,7 @@ $enable-validation-icons:     true !default;
 $enable-negative-margins:     false !default;
 $enable-deprecation-messages: true !default;
 $enable-important-utilities:  true !default;
+$enable-custom-properties:    true !default; // Disable to have better support of IE11
 
 // Gradient
 //
@@ -493,25 +494,34 @@ $table-cell-padding-x-sm:     .25rem !default;
 $table-cell-vertical-align:   top !default;
 
 $table-color:                 var(--bs-table-color) !default;
+$table-color-var:             $body-color !default;
 $table-bg:                    var(--bs-table-bg) !default;
+$table-bg-var:                transparent !default;
 
 $table-th-font-weight:        null !default;
 
 $table-striped-color:         var(--bs-table-striped-color) !default;
+$table-striped-color-var:     $table-color !default;
 $table-striped-bg-factor:     .05 !default;
 $table-striped-bg:            var(--bs-table-striped-bg) !default;
+$table-striped-bg-var:        rgba($black, $table-striped-bg-factor) !default;
 
 $table-active-color:          var(--bs-table-active-color) !default;
+$table-active-color-var:      $table-color !default;
 $table-active-bg-factor:      .1 !default;
 $table-active-bg:             var(--bs-table-active-bg) !default;
+$table-active-bg-var:         rgba($black, $table-active-bg-factor) !default;
 
 $table-hover-color:           var(--bs-table-hover-color) !default;
+$table-hover-color-var:       $table-color !default;
 $table-hover-bg-factor:       .075 !default;
 $table-hover-bg:              var(--bs-table-hover-bg) !default;
+$table-hover-bg-var:          rgba($black, $table-hover-bg-factor) !default;
 
 $table-border-factor:         .1 !default;
 $table-border-width:          $border-width !default;
 $table-border-color:          var(--bs-table-border-color) !default;
+$table-border-color-var:      $border-color !default;
 
 $table-striped-order:         odd !default;
 

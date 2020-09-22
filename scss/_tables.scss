@@ -3,15 +3,21 @@
 //
 
 .table {
-  --bs-table-bg: transparent;
-  --bs-table-color: #{$body-color};
-  --bs-table-border-color: #{$border-color};
-  --bs-table-striped-bg: #{rgba($black, $table-striped-bg-factor)};
-  --bs-table-striped-color: #{$table-color};
-  --bs-table-active-bg: #{rgba($black, $table-active-bg-factor)};
-  --bs-table-active-color: #{$table-color};
-  --bs-table-hover-bg: #{rgba($black, $table-hover-bg-factor)};
-  --bs-table-hover-color: #{$table-color};
+  // Modifiers / variants variables
+  --bs-table-bg: #{$table-bg-var};
+  --bs-table-color: #{$table-color-var};
+  --bs-table-border-color: #{$table-border-color-var};
+  --bs-table-striped-bg: #{$table-striped-bg-var};
+  --bs-table-striped-color: #{$table-striped-color-var};
+  --bs-table-active-bg: #{$table-active-bg-var};
+  --bs-table-active-color: #{$table-active-color-var};
+  --bs-table-hover-bg: #{$table-hover-bg-var};
+  --bs-table-hover-color: #{$table-hover-color-var};
+
+  // Custom properties
+  @if $enable-custom-properties {
+    --bs-table-accent-bg: transparent;
+  }
 
   width: 100%;
   margin-bottom: $spacer;
@@ -27,6 +33,10 @@
   > :not(caption) > * > * {
     padding: $table-cell-padding-y $table-cell-padding-x;
     background-color: $table-bg;
+    @if $enable-custom-properties {
+      background-image: linear-gradient(var(--bs-table-accent-bg), var(--bs-table-accent-bg));
+    }
+
     border-bottom-width: $table-border-width;
   }
 
@@ -100,8 +110,13 @@
 .table-striped {
   > tbody > tr:nth-of-type(#{$table-striped-order}) {
     color: $table-striped-color;
-    > * {
-      background-image: linear-gradient($table-striped-bg, $table-striped-bg);
+
+    @if $enable-custom-properties {
+      --bs-table-accent-bg: #{$table-striped-bg};
+    } @else {
+      > * {
+        background-image: linear-gradient($table-striped-bg, $table-striped-bg);
+      }
     }
   }
 }
@@ -113,9 +128,13 @@
 .table-active {
   color: $table-active-color;
 
-  &:not(tr),
-  > * {
-    background-image: linear-gradient($table-active-bg, $table-active-bg);
+  @if $enable-custom-properties {
+    --bs-table-accent-bg: #{$table-active-bg};
+  } @else {
+    &:not(tr),
+    > * {
+      background-image: linear-gradient($table-active-bg, $table-active-bg);
+    }
   }
 }
 
@@ -126,8 +145,13 @@
 .table-hover {
   > tbody > tr:hover {
     color: $table-hover-color;
-    > * {
-      background-image: linear-gradient($table-hover-bg, $table-hover-bg);
+
+    @if $enable-custom-properties {
+      --bs-table-accent-bg: #{$table-hover-bg};
+    } @else {
+      > * {
+        background-image: linear-gradient($table-hover-bg, $table-hover-bg);
+      }
     }
   }
 }
