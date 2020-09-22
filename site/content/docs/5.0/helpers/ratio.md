@@ -55,6 +55,23 @@ For example, to create a 2x1 aspect ratio, set `--aspect-ratio: 50%` on the `.ra
 </div>
 {{< /example >}}
 
+This CSS variable makes it easy to modify the aspect ratio across breakpoints. The following is 4x3 to start, but changes to a custom 2x1 at the medium breakpoint.
+
+{{< highlight scss >}}
+.ratio-4x3 {
+  @include media-breakpoint-up(md) {
+    --aspect-ratio: 50%; // 2x1
+  }
+}
+{{< /highlight >}}
+
+{{< example class="bd-example-ratios bd-example-ratios-breakpoint" >}}
+<div class="ratio ratio-4x3">
+  <div class="ratio-item">4x3, then 2x1</div>
+</div>
+{{< /example >}}
+
+
 ## Sass map
 
 Within `_variables.scss`, you can change the aspect ratios you want to use. Here's our default `$ratio-aspect-ratios` map. Modify the map as you like and recompile your Sass to put them to use.

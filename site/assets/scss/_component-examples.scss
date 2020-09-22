@@ -181,6 +181,15 @@
     justify-content: center;
   }
 }
+.bd-example-ratios-breakpoint {
+  .ratio-4x3 {
+    width: 16rem;
+
+    @include media-breakpoint-up(md) {
+      --aspect-ratio: 50%; // 2x1
+    }
+  }
+}
 
 .bd-example-modal {
   background-color: #fafafa;
