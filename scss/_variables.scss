@@ -197,11 +197,11 @@ $cyan-900: shade-color($cyan, 8) !default;
 
 // Characters which are escaped by the escape-svg function
 $escaped-characters: (
-  ("<","%3c"),
-  (">","%3e"),
-  ("#","%23"),
-  ("(","%28"),
-  (")","%29"),
+  ("<", "%3c"),
+  (">", "%3e"),
+  ("#", "%23"),
+  ("(", "%28"),
+  (")", "%29"),
 ) !default;
 
 // Options
@@ -245,6 +245,17 @@ $spacers: (
 ) !default;
 
 $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
+
+// Position
+//
+// Define the edge positioning anchors of the position utilities.
+
+$position-values: (
+  0: 0,
+  50: 50%,
+  100: 100%
+) !default;
+
 
 // Body
 //
