@@ -1,7 +1,6 @@
 // Credit: Nicolas Gallagher and SUIT CSS.
 
-.embed-responsive {
-
+.ratio {
   position: relative;
   width: 100%;
 
@@ -11,7 +10,7 @@
     content: "";
   }
 
-  .embed-responsive-item,
+  .ratio-item,
   iframe,
   embed,
   object,
@@ -24,8 +23,8 @@
   }
 }
 
-@each $key, $ratio in $embed-responsive-aspect-ratios {
-  .embed-responsive-#{$key} {
+@each $key, $ratio in $aspect-ratios {
+  .ratio-#{$key} {
     --aspect-ratio: #{$ratio};
   }
 }

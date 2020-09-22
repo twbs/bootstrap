@@ -376,14 +376,16 @@ $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;
 $transition-collapse:         height .35s ease !default;
 
-// scss-docs-start embed-responsive-aspect-ratios
-$embed-responsive-aspect-ratios: (
+// stylelint-disable function-blacklist
+// scss-docs-start aspect-ratios
+$aspect-ratios: (
   "1x1": 100%,
-  "4x3": 75%,
-  "16x9": 56.25%,
-  "21x9": 42.857142%
+  "4x3": calc(3 / 4 * 100%),
+  "16x9": calc(9 / 16 * 100%),
+  "21x9": calc(9 / 21 * 100%)
 ) !default;
-// scss-docs-end embed-responsive-aspect-ratios
+// scss-docs-end aspect-ratios
+// stylelint-enable function-blacklist
 
 // Typography
 //
