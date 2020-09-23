@@ -53,8 +53,16 @@
 //
 
 @supports (-ms-ime-align: auto) {
+  .form-floating {
+    display: flex;
+    flex-direction: column-reverse;
+  }
   .form-floating > label {
-    display: none;
+    position: static;
+    padding: 0;
+    margin-bottom: calc(#{$form-floating-padding-y} / 2);
+    border: 0;
+    @include transition(none);
   }
   .form-floating > .form-control::-ms-input-placeholder {
     color: $input-placeholder-color;
