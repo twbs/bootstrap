@@ -27,7 +27,7 @@ There are multiple ways to customize Bootstrap. Your best path can depend on you
 Our two preferred methods are:
 
 1. Using Bootstrap [via package manager]({{< docsref "/getting-started/download#package-managers" >}}) so you can use and extend our source files.
-2. Using Bootstrap's compiled distribution files or the [Bootstrap CDN]({{< docsref "/getting-started/download#bootstrapcdn" >}}) so you can add onto or override Bootstrap's styles.
+2. Using Bootstrap's compiled distribution files or the [BootstrapCDN]({{< docsref "/getting-started/download#bootstrapcdn" >}}) so you can add onto or override Bootstrap's styles.
 
 While we cannot go into details here on how to use every package manager, we can give some guidance on [using Bootstrap with your own Sass compiler]({{< docsref "/customize/sass" >}}).
 

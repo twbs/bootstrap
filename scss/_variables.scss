@@ -38,9 +38,9 @@ $pink:    #d63384 !default;
 $red:     #dc3545 !default;
 $orange:  #fd7e14 !default;
 $yellow:  #ffc107 !default;
-$green:   #28a745 !default;
+$green:   #198754 !default;
 $teal:    #20c997 !default;
-$cyan:    #17a2b8 !default;
+$cyan:    #0dcaf0 !default;
 
 // scss-docs-start colors-map
 $colors: (
@@ -87,10 +87,10 @@ $theme-color-interval: 8% !default;
 
 // The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
 // See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
-$min-contrast-ratio:   3 !default;
+$min-contrast-ratio:   4.5 !default;
 
 // Customize the light and dark text colors for use in our color contrast function.
-$color-contrast-dark:      $gray-900 !default;
+$color-contrast-dark:      $black !default;
 $color-contrast-light:     $white !default;
 
 // fusv-disable
@@ -197,11 +197,11 @@ $cyan-900: shade-color($cyan, 8) !default;
 
 // Characters which are escaped by the escape-svg function
 $escaped-characters: (
-  ("<","%3c"),
-  (">","%3e"),
-  ("#","%23"),
-  ("(","%28"),
-  (")","%29"),
+  ("<", "%3c"),
+  (">", "%3e"),
+  ("#", "%23"),
+  ("(", "%28"),
+  (")", "%29"),
 ) !default;
 
 // Options
@@ -245,6 +245,17 @@ $spacers: (
 ) !default;
 
 $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
+
+// Position
+//
+// Define the edge positioning anchors of the position utilities.
+
+$position-values: (
+  0: 0,
+  50: 50%,
+  100: 100%
+) !default;
+
 
 // Body
 //
@@ -338,6 +349,14 @@ $border-color:                $gray-300 !default;
 $border-radius:               .25rem !default;
 $border-radius-sm:            .2rem !default;
 $border-radius-lg:            .3rem !default;
+$border-widths: (
+  0: 0,
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px
+) !default;
 
 $rounded-pill:                50rem !default;
 
@@ -487,6 +506,8 @@ $table-cell-vertical-align:   top !default;
 $table-color:                 $body-color !default;
 $table-bg:                    transparent !default;
 
+$table-th-font-weight:        null !default;
+
 $table-striped-color:         $table-color !default;
 $table-striped-bg-factor:     .05 !default;
 $table-striped-bg:            rgba($black, $table-striped-bg-factor) !default;
@@ -505,7 +526,7 @@ $table-border-color:          $border-color !default;
 
 $table-striped-order:         odd !default;
 
-$table-group-seperator-color: currentColor !default;
+$table-group-separator-color: currentColor !default;
 
 $table-caption-color:         $text-muted !default;
 
@@ -534,7 +555,7 @@ $input-btn-font-family:       null !default;
 $input-btn-font-size:         $font-size-base !default;
 $input-btn-line-height:       $line-height-base !default;
 
-$input-btn-focus-width:         .2rem !default;
+$input-btn-focus-width:         .25em !default;
 $input-btn-focus-color-opacity: .25 !default;
 $input-btn-focus-color:         rgba($component-active-bg, $input-btn-focus-color-opacity) !default;
 $input-btn-focus-box-shadow:    0 0 0 $input-btn-focus-width $input-btn-focus-color !default;
@@ -656,7 +677,7 @@ $input-height-lg:                       add($input-line-height * 1em, add($input
 $input-transition:                      border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 
-$form-check-input-width:                  1.25em !default;
+$form-check-input-width:                  1em !default;
 $form-check-min-height:                   $font-size-base * $line-height-base !default;
 $form-check-padding-left:                 $form-check-input-width + .5em !default;
 $form-check-margin-bottom:                .125rem !default;
@@ -844,6 +865,10 @@ $zindex-tooltip:                    1070 !default;
 
 $nav-link-padding-y:                .5rem !default;
 $nav-link-padding-x:                1rem !default;
+$nav-link-font-size:                null !default;
+$nav-link-font-weight:              null !default;
+$nav-link-color:                    null !default;
+$nav-link-hover-color:              null !default;
 $nav-link-transition:               color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
 $nav-link-disabled-color:           $gray-600 !default;
 
@@ -906,6 +931,7 @@ $navbar-dark-brand-hover-color:           $navbar-dark-active-color !default;
 // Dropdown menu container and contents.
 
 $dropdown-min-width:                10rem !default;
+$dropdown-padding-x:                0 !default;
 $dropdown-padding-y:                .5rem !default;
 $dropdown-spacer:                   .125rem !default;
 $dropdown-font-size:                $font-size-base !default;
@@ -915,7 +941,7 @@ $dropdown-border-color:             rgba($black, .15) !default;
 $dropdown-border-radius:            $border-radius !default;
 $dropdown-border-width:             $border-width !default;
 $dropdown-inner-border-radius:      subtract($dropdown-border-radius, $dropdown-border-width) !default;
-$dropdown-divider-bg:               $gray-200 !default;
+$dropdown-divider-bg:               $dropdown-border-color !default;
 $dropdown-divider-margin-y:         $spacer / 2 !default;
 $dropdown-box-shadow:               $box-shadow !default;
 
@@ -951,6 +977,8 @@ $pagination-border-radius:          $border-radius !default;
 $pagination-margin-left:            -$pagination-border-width !default;
 $pagination-border-color:           $gray-300 !default;
 
+$pagination-focus-color:            $link-hover-color !default;
+$pagination-focus-bg:               $gray-200 !default;
 $pagination-focus-box-shadow:       $input-btn-focus-box-shadow !default;
 $pagination-focus-outline:          0 !default;
 
@@ -966,6 +994,7 @@ $pagination-disabled-color:         $gray-600 !default;
 $pagination-disabled-bg:            $white !default;
 $pagination-disabled-border-color:  $gray-300 !default;
 
+$pagination-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 // Cards
 
@@ -1045,7 +1074,7 @@ $popover-arrow-outer-color:         fade-in($popover-border-color, .05) !default
 
 $toast-max-width:                   350px !default;
 $toast-padding-x:                   .75rem !default;
-$toast-padding-y:                   .25rem !default;
+$toast-padding-y:                   .5rem !default;
 $toast-font-size:                   .875rem !default;
 $toast-color:                       null !default;
 $toast-background-color:            rgba($white, .85) !default;
@@ -1064,8 +1093,8 @@ $toast-header-border-color:         rgba(0, 0, 0, .05) !default;
 $badge-font-size:                   .75em !default;
 $badge-font-weight:                 $font-weight-bold !default;
 $badge-color:                       $white !default;
-$badge-padding-y:                   .25em !default;
-$badge-padding-x:                   .5em !default;
+$badge-padding-y:                   .35em !default;
+$badge-padding-x:                   .65em !default;
 $badge-border-radius:               $border-radius !default;
 
 
@@ -1126,6 +1155,8 @@ $alert-border-width:                $border-width !default;
 $alert-bg-level:                    -10 !default;
 $alert-border-level:                -9 !default;
 $alert-color-level:                 6 !default;
+
+$alert-dismissible-padding-r:       $alert-padding-x * 3 !default; // 3x covers width of x plus default padding on either side
 
 
 // Progress bars
@@ -1243,11 +1274,18 @@ $spinner-border-width-sm: .2em !default;
 
 // Close
 
-$close-font-size:                   $font-size-base * 1.5 !default;
-$close-font-weight:                 $font-weight-bold !default;
-$close-color:                       $black !default;
-$close-text-shadow:                 0 1px 0 $white !default;
-
+$btn-close-width:            1em !default;
+$btn-close-height:           $btn-close-width !default;
+$btn-close-padding-x:        .25em !default;
+$btn-close-padding-y:        $btn-close-padding-x !default;
+$btn-close-color:            $black !default;
+$btn-close-bg:               url("data:image/svg+xml,<svg fill='#{$btn-close-color}' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>") !default;
+$btn-close-focus-shadow:     $input-btn-focus-box-shadow !default;
+$btn-close-opacity:          .5 !default;
+$btn-close-hover-opacity:    .75 !default;
+$btn-close-focus-opacity:    1 !default;
+$btn-close-disabled-opacity: .25 !default;
+$btn-close-white-filter:      invert(1) grayscale(100%) brightness(200%) !default;
 
 // Code
 

@@ -23,7 +23,7 @@ $utilities: map-merge(
       print: true,
       property: display,
       class: d,
-      values: none inline inline-block block table table-row table-cell flex inline-flex
+      values: inline inline-block block table table-row table-cell flex inline-flex none
     ),
     "shadow": (
       property: box-shadow,
@@ -38,6 +38,29 @@ $utilities: map-merge(
     "position": (
       property: position,
       values: static relative absolute fixed sticky
+    ),
+    "top": (
+      property: top,
+      values: $position-values
+    ),
+    "bottom": (
+      property: bottom,
+      values: $position-values
+    ),
+    "left": (
+      property: left,
+      values: $position-values
+    ),
+    "right": (
+      property: right,
+      values: $position-values
+    ),
+    "translate-middle": (
+      property: transform,
+      class: translate-middle,
+      values: (
+        null: (translateX(-50%) translateY(-50%))
+      )
     ),
     "border": (
       property: border,
@@ -78,6 +101,11 @@ $utilities: map-merge(
       property: border-color,
       class: border,
       values: map-merge($theme-colors, ("white": $white))
+    ),
+    "border-width": (
+      property: border-width,
+      class: border,
+      values: $border-widths
     ),
     // Sizing utilities
     "width": (

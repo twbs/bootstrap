@@ -5,7 +5,7 @@
     @if $emphasized-link-hover-darken-percentage != 0 {
       &:hover,
       &:focus {
-        color: darken($value, $emphasized-link-hover-darken-percentage);
+        color: if(color-contrast($value) == $color-contrast-light, darken($value, $emphasized-link-hover-darken-percentage), lighten($value, $emphasized-link-hover-darken-percentage));
       }
     }
   }

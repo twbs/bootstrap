@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v5.0.0-alpha1): dropdown.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
@@ -262,11 +262,7 @@ class Dropdown {
       ...config
     }
 
-    typeCheckConfig(
-      NAME,
-      config,
-      this.constructor.DefaultType
-    )
+    typeCheckConfig(NAME, config, this.constructor.DefaultType)
 
     return config
   }
@@ -307,7 +303,7 @@ class Dropdown {
       offset.fn = data => {
         data.offsets = {
           ...data.offsets,
-          ...this._config.offset(data.offsets, this._element) || {}
+          ...(this._config.offset(data.offsets, this._element) || {})
         }
 
         return data
@@ -472,8 +468,7 @@ class Dropdown {
       return
     }
 
-    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, parent)
-      .filter(isVisible)
+    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, parent).filter(isVisible)
 
     if (!items.length) {
       return
@@ -515,8 +510,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   event.stopPropagation()
   Dropdown.dropdownInterface(this, 'toggle')
 })
-EventHandler
-  .on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stopPropagation())
+EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stopPropagation())
 
 const $ = getjQuery()
 

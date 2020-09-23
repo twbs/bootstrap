@@ -69,7 +69,6 @@ body {
 //
 // 1. Reset Firefox's gray color
 // 2. Set correct height and prevent the `size` attribute to make the `hr` look like an input field
-//    See https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_hr_size
 
 hr {
   margin: $hr-margin-y 0;
@@ -369,12 +368,14 @@ caption {
   text-align: left;
 }
 
-// 1. Matches default `<td>` alignment by inheriting `text-align`.
-// 2. Fix alignment for Safari
+// 1. Removes font-weight bold by inheriting
+// 2. Matches default `<td>` alignment by inheriting `text-align`.
+// 3. Fix alignment for Safari
 
 th {
-  text-align: inherit; // 1
-  text-align: -webkit-match-parent; // 2
+  font-weight: $table-th-font-weight; // 1
+  text-align: inherit; // 2
+  text-align: -webkit-match-parent; // 3
 }
 
 thead,
@@ -439,6 +440,13 @@ input {
 button,
 select {
   text-transform: none;
+}
+
+// Set the cursor for non-`<button>` buttons
+//
+// Details at https://github.com/twbs/bootstrap/pull/30562
+[role="button"] {
+  cursor: pointer;
 }
 
 // Remove the inheritance of word-wrap in Safari.

@@ -43,6 +43,16 @@ Change the border color using utilities built on our theme colors.
 <span class="border border-white"></span>
 {{< /example >}}
 
+### Border-width
+
+{{< example class="bd-example-border-utils" >}}
+<span class="border border-1"></span>
+<span class="border border-2"></span>
+<span class="border border-3"></span>
+<span class="border border-4"></span>
+<span class="border border-5"></span>
+{{< /example >}}
+
 ## Border-radius
 
 Add classes to an element to easily round its corners.

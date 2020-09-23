@@ -54,10 +54,11 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 @import "../node_modules/bootstrap/scss/mixins";
 
 // Optional
+@import "../node_modules/bootstrap/scss/root";
 @import "../node_modules/bootstrap/scss/reboot";
 @import "../node_modules/bootstrap/scss/type";
 @import "../node_modules/bootstrap/scss/images";
-@import "../node_modules/bootstrap/scss/code";
+@import "../node_modules/bootstrap/scss/containers";
 @import "../node_modules/bootstrap/scss/grid";
 {{< /highlight >}}
 
@@ -110,12 +111,16 @@ $theme-colors: (
 
 ### Add to map
 
-To add a new color to `$theme-colors`, add the new key and value:
+Add new colors to `$theme-colors`, or any other map, by creating a new Sass map with your custom values and merging it with the original map. In this case, we'll create a new `$custom-colors` map and merge it with `$theme-colors`.
 
 {{< highlight scss >}}
-$theme-colors: (
+// Create your own map
+$custom-colors: (
   "custom-color": #900
 );
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
 {{< /highlight >}}
 
 ### Remove from map
@@ -202,7 +207,7 @@ You can also specify a base color with our color map functions:
 
 ### Escape SVG
 
-We use the `escape-svg` function to escape the `<`, `>` and `#` characters for SVG background images.
+We use the `escape-svg` function to escape the `<`, `>` and `#` characters for SVG background images. When using the `escape-svg` function, data URIs must be quoted.
 
 ### Add and Subtract functions
 
