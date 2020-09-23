@@ -199,7 +199,7 @@
 .carousel-dark {
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
-    filter: invert(1) grayscale(100);
+    filter: $carousel-dark-control-icon-filter;
   }
 
   .carousel-indicators li {
