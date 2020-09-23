@@ -10,11 +10,7 @@
     content: "";
   }
 
-  .ratio-item,
-  iframe,
-  embed,
-  object,
-  video {
+  > * {
     position: absolute;
     top: 0;
     left: 0;
