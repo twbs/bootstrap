@@ -63,8 +63,8 @@
 .text-decoration-none { text-decoration: none !important; }
 
 .text-break {
-  word-break: break-word !important; // IE & < Edge 18
-  overflow-wrap: break-word !important;
+  word-break: break-word !important; // we use deprecated `word-break: break-word` to avoid issues with flex containers
+  word-wrap: break-word !important;  // we use `word-wrap` instead of the more common `overflow-wrap` for support IE & Edge Legacy
 }
 
 // Reset
