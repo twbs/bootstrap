@@ -8,7 +8,9 @@ toc: true
 
 ## About
 
-Rules are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` elements. You can also use an explicit use an explicit descendant class, `.ratio-item`, when you want to match the styling for other attributes. Aspect ratios are declared in a Sass map and included in each class via CSS variable, which also allows [custom aspect ratios](#custom-ratios).
+Use the ratio helper to manage the aspect ratios of external content like `<iframe>`s, `<embed>`s, `<video>`s, and `<object>`s. These helpers also can be used on any standard HTML child element (e.g., a `<div>` or `<img>`). Styles are applied from the parent `.ratio` class directly to the child.
+
+Aspect ratios are declared in a Sass map and included in each class via CSS variable, which also allows [custom aspect ratios](#custom-ratios).
 
 {{< callout info >}}
 **Pro-Tip!** You don't need `frameborder="0"` on your `<iframe>`s as we override that for you in [Reboot]({{< docsref "/content/reboot" >}}).
@@ -16,11 +18,11 @@ Rules are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` e
 
 ## Example
 
-Wrap any embed, like an `<iframe>`, in a parent element with `.ratio` and an aspect ratio class. As mentioned above, the `.ratio-item` isn't strictly required, but we encourage it.
+Wrap any embed, like an `<iframe>`, in a parent element with `.ratio` and an aspect ratio class. The immediate child element is automatically sized thanks to our universal selector `.ratio > *`.
 
 {{< example >}}
 <div class="ratio ratio-16x9">
-  <iframe class="ratio-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" title="YouTube video" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" title="YouTube video" allowfullscreen></iframe>
 </div>
 {{< /example >}}
 
@@ -30,16 +32,16 @@ Aspect ratios can be customized with modifier classes. By default the following 
 
 {{< example class="bd-example-ratios" >}}
 <div class="ratio ratio-1x1">
-  <div class="ratio-item">1x1</div>
+  <div>1x1</div>
 </div>
 <div class="ratio ratio-4x3">
-  <div class="ratio-item">4x3</div>
+  <div>4x3</div>
 </div>
 <div class="ratio ratio-16x9">
-  <div class="ratio-item">16x9</div>
+  <div>16x9</div>
 </div>
 <div class="ratio ratio-21x9">
-  <div class="ratio-item">21x9</div>
+  <div>21x9</div>
 </div>
 {{< /example >}}
 
@@ -51,7 +53,7 @@ For example, to create a 2x1 aspect ratio, set `--aspect-ratio: 50%` on the `.ra
 
 {{< example class="bd-example-ratios" >}}
 <div class="ratio" style="--aspect-ratio: 50%;">
-  <div class="ratio-item">2x1</div>
+  <div>2x1</div>
 </div>
 {{< /example >}}
 
@@ -67,7 +69,7 @@ This CSS variable makes it easy to modify the aspect ratio across breakpoints. T
 
 {{< example class="bd-example-ratios bd-example-ratios-breakpoint" >}}
 <div class="ratio ratio-4x3">
-  <div class="ratio-item">4x3, then 2x1</div>
+  <div>4x3, then 2x1</div>
 </div>
 {{< /example >}}
 

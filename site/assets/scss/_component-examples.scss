@@ -175,11 +175,12 @@
     color: $gray-600;
     background-color: $gray-100;
     border: $border-width solid $border-color;
-  }
-  .ratio-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 .bd-example-ratios-breakpoint {
