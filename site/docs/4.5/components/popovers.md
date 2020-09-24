@@ -139,7 +139,13 @@ Enable popovers via JavaScript:
 {% capture callout %}
 ##### GPU acceleration
 
-Popovers sometimes appear blurry on Windows 10 devices due to GPU acceleration and a modified system DPI. The workaround for this in v4 is to disable GPU acceleration as needed on your popovers. [See this issue for details and a suggested fix](https://github.com/twbs/bootstrap/issues/22610).
+Popovers sometimes appear blurry on Windows 10 devices due to GPU acceleration and a modified system DPI. The workaround for this in v4 is to disable GPU acceleration as needed on your popovers.
+
+Suggested fix:
+
+{% highlight js %}
+Popper.Defaults.modifiers.computeStyle.gpuAcceleration = !(window.devicePixelRatio < 1.5 && /Win/.test(navigator.platform))
+{% endhighlight %}
 {% endcapture %}
 {% include callout.html content=callout type="warning" %}
 
