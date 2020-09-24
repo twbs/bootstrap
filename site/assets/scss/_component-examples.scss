@@ -122,8 +122,7 @@
   // Buttons
   > .btn,
   > .btn-group {
-    margin-top: .25rem;
-    margin-bottom: .25rem;
+    margin: .25rem .125rem;
   }
   > .btn-toolbar + .btn-toolbar {
     margin-top: .5rem;
@@ -164,6 +163,32 @@
   .pagination {
     margin-top: .5rem;
     margin-bottom: .5rem;
+  }
+}
+
+// Ratio helpers
+.bd-example-ratios {
+  .ratio {
+    display: inline-block;
+    width: 10rem;
+    color: $gray-600;
+    background-color: $gray-100;
+    border: $border-width solid $border-color;
+
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+.bd-example-ratios-breakpoint {
+  .ratio-4x3 {
+    width: 16rem;
+
+    @include media-breakpoint-up(md) {
+      --aspect-ratio: 50%; // 2x1
+    }
   }
 }
 
