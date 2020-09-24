@@ -26,9 +26,9 @@
   background-position: center;
   background-size: contain;
   border: $form-check-input-border;
+  cursor: pointer;
   appearance: none;
   color-adjust: exact; // Keep themed appearance for print
-  cursor: pointer;
   @include transition($form-check-transition);
 
   &[type="checkbox"] {
@@ -85,8 +85,8 @@
   &:disabled {
     pointer-events: none;
     filter: none;
-    opacity: .5;
     cursor: default;
+    opacity: .5;
   }
 
   // Use disabled attribute in addition of :disabled pseudo-class
@@ -94,8 +94,8 @@
   &[disabled],
   &:disabled {
     ~ .form-check-label {
-      opacity: .5;
       cursor: default;
+      opacity: .5;
     }
   }
 }
@@ -117,10 +117,10 @@
   .form-check-input {
     width: $form-switch-width;
     margin-left: $form-switch-padding-left * -1;
+    cursor: pointer;
     background-image: escape-svg($form-switch-bg-image);
     background-position: left center;
     @include border-radius($form-switch-border-radius);
-    cursor: pointer;
 
     &:focus {
       background-image: escape-svg($form-switch-focus-bg-image);
