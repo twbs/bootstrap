@@ -149,3 +149,17 @@
     }
   }
 }
+
+
+// Sticky header
+//
+// Table header <thead> with the `.thead-sticky` class applied sticks its cells
+// on top allowing only <tbody> to scroll.
+
+@supports (position: sticky) {
+  .thead-sticky th {
+    position: sticky;
+    top: $table-head-sticky-top;
+    z-index: 5;
+  }
+}
