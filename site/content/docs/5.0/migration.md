@@ -48,6 +48,13 @@ toc: true
 
 - Disabled states of buttons are easier to customize thanks to additional arguments in the `button-variant()` mixin. [See #30639.](https://github.com/twbs/bootstrap/pull/30639)
 
+#### Close button
+
+- Renamed `.close` to `.btn-close` for a less generic name.
+- Close buttons now use a `background-image` (embedded SVG) instead of a `&times;` in the HTML, allowing for easier customization without the need to touch your markup.
+- Added new variables to better control the customization.
+- Added new `.btn-close-white` variant that uses `backdrop-filter: invert(1)` to enable higher contrast dismiss icons against darker backgrounds.
+
 #### Navs
 
 - Added new `null` variables for `font-size`, `font-weight`, `color`, and `:hover` `color` to the `.nav-link` class.
@@ -64,6 +71,14 @@ toc: true
 #### Tooltips
 
 - Renamed `whiteList` option to `allowList`.
+
+### Helpers
+
+- Responsive embed helpers have been renamed to [ratio helpers]({{< docsref "/helpers/ratio" >}}) with new class names and improved behaviors, as well as a helpful CSS variable.
+  - Classes have been renamed to change `by` to `x` in the aspect ratrio. For example, `.ratio-16by9` is now `.ratio-16x9`.
+  - We've dropped the `.embed-responsive-item` and element group selector in favor of a simpler `.ratio > *` selector. No more class needed, and the ratio helper now works with any HTML element.
+  - The `$embed-responsive-aspect-ratios` Sass map has been renamed to `$aspect-ratios` and its values have been simplified to include the class name and the percentage as the `key: value` pair.
+  - CSS variables are now generated and included for each value in the Sass map. Modify the `--aspect-ratio` variable on the `.ratio` to create any [custom aspect ratio]({{< docsref "/helpers/ratio#custom-ratios" >}}).
 
 ---
 
