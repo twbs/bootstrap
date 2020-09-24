@@ -1,11 +1,11 @@
 // Container mixins
 
 @mixin make-container($gutter: $container-padding-x) {
-  --bs-gutter-x: #{$gutter};
+  --bs-gutter-x: calc(#{$gutter} / 2); // stylelint-disable-line function-blacklist
 
   width: 100%;
-  padding-right: calc(var(--bs-gutter-x) / 2); // stylelint-disable-line function-disallowed-list
-  padding-left: calc(var(--bs-gutter-x) / 2); // stylelint-disable-line function-disallowed-list
+  padding-right: var(--bs-gutter-x);
+  padding-left: var(--bs-gutter-x);
   margin-right: auto;
   margin-left: auto;
 }
