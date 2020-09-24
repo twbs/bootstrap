@@ -246,6 +246,17 @@ $spacers: (
 
 $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
 
+// Position
+//
+// Define the edge positioning anchors of the position utilities.
+
+$position-values: (
+  0: 0,
+  50: 50%,
+  100: 100%
+) !default;
+
+
 // Body
 //
 // Settings for the `<body>` element.
@@ -325,7 +336,7 @@ $gutters: $spacers !default;
 
 // Container padding
 
-$container-padding-x: 1rem !default;
+$container-padding-x: $grid-gutter-width !default;
 
 
 // Components
@@ -365,26 +376,16 @@ $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;
 $transition-collapse:         height .35s ease !default;
 
-// scss-docs-start embed-responsive-aspect-ratios
-$embed-responsive-aspect-ratios: (
-  "21by9": (
-    x: 21,
-    y: 9
-  ),
-  "16by9": (
-    x: 16,
-    y: 9
-  ),
-  "4by3": (
-    x: 4,
-    y: 3
-  ),
-  "1by1": (
-    x: 1,
-    y: 1
-  )
+// stylelint-disable function-blacklist
+// scss-docs-start aspect-ratios
+$aspect-ratios: (
+  "1x1": 100%,
+  "4x3": calc(3 / 4 * 100%),
+  "16x9": calc(9 / 16 * 100%),
+  "21x9": calc(9 / 21 * 100%)
 ) !default;
-// scss-docs-end embed-responsive-aspect-ratios
+// scss-docs-end aspect-ratios
+// stylelint-enable function-blacklist
 
 // Typography
 //
@@ -544,7 +545,7 @@ $input-btn-font-family:       null !default;
 $input-btn-font-size:         $font-size-base !default;
 $input-btn-line-height:       $line-height-base !default;
 
-$input-btn-focus-width:         .2rem !default;
+$input-btn-focus-width:         .25em !default;
 $input-btn-focus-color-opacity: .25 !default;
 $input-btn-focus-color:         rgba($component-active-bg, $input-btn-focus-color-opacity) !default;
 $input-btn-focus-box-shadow:    0 0 0 $input-btn-focus-width $input-btn-focus-color !default;
@@ -709,6 +710,9 @@ $form-switch-checked-bg-position: right center !default;
 
 $form-check-inline-margin-right:        1rem !default;
 
+$input-group-addon-padding-y:           $input-padding-y !default;
+$input-group-addon-padding-x:           $input-padding-x !default;
+$input-group-addon-font-weight:         $input-font-weight !default;
 $input-group-addon-color:               $input-color !default;
 $input-group-addon-bg:                  $gray-200 !default;
 $input-group-addon-border-color:        $input-border-color !default;
@@ -917,6 +921,7 @@ $navbar-dark-brand-hover-color:           $navbar-dark-active-color !default;
 // Dropdown menu container and contents.
 
 $dropdown-min-width:                10rem !default;
+$dropdown-padding-x:                0 !default;
 $dropdown-padding-y:                .5rem !default;
 $dropdown-spacer:                   .125rem !default;
 $dropdown-font-size:                $font-size-base !default;
@@ -1059,7 +1064,7 @@ $popover-arrow-outer-color:         fade-in($popover-border-color, .05) !default
 
 $toast-max-width:                   350px !default;
 $toast-padding-x:                   .75rem !default;
-$toast-padding-y:                   .25rem !default;
+$toast-padding-y:                   .5rem !default;
 $toast-font-size:                   .875rem !default;
 $toast-color:                       null !default;
 $toast-background-color:            rgba($white, .85) !default;
@@ -1140,6 +1145,8 @@ $alert-border-width:                $border-width !default;
 $alert-bg-level:                    -10 !default;
 $alert-border-level:                -9 !default;
 $alert-color-level:                 6 !default;
+
+$alert-dismissible-padding-r:       $alert-padding-x * 3 !default; // 3x covers width of x plus default padding on either side
 
 
 // Progress bars
@@ -1257,11 +1264,18 @@ $spinner-border-width-sm: .2em !default;
 
 // Close
 
-$close-font-size:                   $font-size-base * 1.5 !default;
-$close-font-weight:                 $font-weight-bold !default;
-$close-color:                       $black !default;
-$close-text-shadow:                 0 1px 0 $white !default;
-
+$btn-close-width:            1em !default;
+$btn-close-height:           $btn-close-width !default;
+$btn-close-padding-x:        .25em !default;
+$btn-close-padding-y:        $btn-close-padding-x !default;
+$btn-close-color:            $black !default;
+$btn-close-bg:               url("data:image/svg+xml,<svg fill='#{$btn-close-color}' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>") !default;
+$btn-close-focus-shadow:     $input-btn-focus-box-shadow !default;
+$btn-close-opacity:          .5 !default;
+$btn-close-hover-opacity:    .75 !default;
+$btn-close-focus-opacity:    1 !default;
+$btn-close-disabled-opacity: .25 !default;
+$btn-close-white-filter:      invert(1) grayscale(100%) brightness(200%) !default;
 
 // Code
 
