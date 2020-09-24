@@ -19,6 +19,7 @@
 .form-check-input {
   width: $form-check-input-width;
   height: $form-check-input-width;
+  cursor: pointer;
   margin-top: ($line-height-base - $form-check-input-width) / 2; // line-height minus check height
   vertical-align: top;
   background-color: $form-check-input-bg;
@@ -26,7 +27,6 @@
   background-position: center;
   background-size: contain;
   border: $form-check-input-border;
-  cursor: pointer;
   appearance: none;
   color-adjust: exact; // Keep themed appearance for print
   @include transition($form-check-transition);
@@ -83,9 +83,9 @@
   }
 
   &:disabled {
+    cursor: default;
     pointer-events: none;
     filter: none;
-    cursor: default;
     opacity: .5;
   }
 
