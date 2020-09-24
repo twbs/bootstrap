@@ -7,10 +7,12 @@
   min-height: $form-check-min-height;
   padding-left: $form-check-padding-left;
   margin-bottom: $form-check-margin-bottom;
+  cursor: pointer;
 
   .form-check-input {
     float: left;
     margin-left: $form-check-padding-left * -1;
+    cursor: pointer;
   }
 }
 
@@ -26,6 +28,7 @@
   border: $form-check-input-border;
   appearance: none;
   color-adjust: exact; // Keep themed appearance for print
+  cursor: pointer;
   @include transition($form-check-transition);
 
   &[type="checkbox"] {
@@ -83,6 +86,7 @@
     pointer-events: none;
     filter: none;
     opacity: .5;
+    cursor: default;
   }
 
   // Use disabled attribute in addition of :disabled pseudo-class
@@ -91,6 +95,7 @@
   &:disabled {
     ~ .form-check-label {
       opacity: .5;
+      cursor: default;
     }
   }
 }
@@ -98,6 +103,7 @@
 .form-check-label {
   color: $form-check-label-color;
   cursor: $form-check-label-cursor;
+  cursor: pointer;
 }
 
 //
@@ -106,6 +112,7 @@
 
 .form-switch {
   padding-left: $form-switch-padding-left;
+  cursor: pointer;
 
   .form-check-input {
     width: $form-switch-width;
@@ -113,6 +120,7 @@
     background-image: escape-svg($form-switch-bg-image);
     background-position: left center;
     @include border-radius($form-switch-border-radius);
+    cursor: pointer;
 
     &:focus {
       background-image: escape-svg($form-switch-focus-bg-image);
@@ -133,6 +141,7 @@
 .form-check-inline {
   display: inline-block;
   margin-right: $form-check-inline-margin-right;
+  cursor: pointer;
 }
 
 .btn-check {
