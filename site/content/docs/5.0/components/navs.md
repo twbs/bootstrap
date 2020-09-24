@@ -241,6 +241,47 @@ If you need responsive nav variations, consider using a series of [flexbox utili
 </nav>
 {{< /example >}}
 
+## Nav scroll
+
+Use the wrapper `.nav-scroll` to make any `.nav` scroll horizontally. This component has some important constraints given how it must be built. Here's how it works:
+
+- `.nav-scroll` has a fixed `height` that you can customize via local CSS variable.
+- We use `overflow-y: hidden` and some large `padding-bottom` on the `.nav-scroll > .nav` to push and crop the horizontal scrollbar out of view.
+- `.nav-scroll` adds some pseudo-elements that help fade the left and right edges into the RGB color of your choice (default is `255, 255, 255`). We use an RGB value so we can turn it into an RGBa value and create the blending we want.
+
+And here it is in action.
+
+{{< example >}}
+<div class="nav-scroll">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Active link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Longer link title</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Another link here</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Fourth link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Fifth link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Sixth link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Seventh link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled link</a>
+    </li>
+  </ul>
+</div>
+{{< /example >}}
+
 ## Regarding accessibility
 
 If you're using navs to provide a navigation bar, be sure to add a `role="navigation"` to the most logical parent container of the `<ul>`, or wrap a `<nav>` element around the whole navigation. Do not add the role to the `<ul>` itself, as this would prevent it from being announced as an actual list by assistive technologies.

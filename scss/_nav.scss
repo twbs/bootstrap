@@ -125,3 +125,50 @@
     display: block;
   }
 }
+
+
+// Nav scroll
+//
+// Makeshift horizontal navigation view.
+
+.nav-scroll {
+  --nav-scroll-bg: 255, 255, 255;
+  --nav-scroll-height: 2.5rem;
+
+  position: relative;
+  z-index: 2;
+  height: var(--nav-scroll-height);
+  overflow-y: hidden;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    display: block;
+    width: var(--nav-scroll-height);
+    height: var(--nav-scroll-height);
+    content: "";
+    background-color: transparent;
+  }
+  &::before {
+    left: 0;
+    background-image: linear-gradient(90deg, rgba(var(--nav-scroll-bg), 1), rgba(var(--nav-scroll-bg), .01));
+  }
+  &::after {
+    right: 0;
+    background-image: linear-gradient(90deg, rgba(var(--nav-scroll-bg), .01), rgba(var(--nav-scroll-bg), 1));
+  }
+
+  > .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-right: 1.5rem;
+    padding-bottom: 1.5rem; // Sufficiently large bottom padding to push the scrollbar out of view
+    padding-left: 1.5rem;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+}
