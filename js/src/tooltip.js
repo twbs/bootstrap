@@ -331,6 +331,10 @@ class Tooltip {
   }
 
   hide() {
+    if (!this._popper) {
+      return
+    }
+
     const tip = this.getTipElement()
     const complete = () => {
       if (this._hoverState !== HOVER_STATE_SHOW && tip.parentNode) {
