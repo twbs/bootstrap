@@ -1,6 +1,6 @@
 .bd-sidebar {
   @include media-breakpoint-down(md) {
-    margin: 0 -1.5rem 1rem;
+    margin: 0 -.75rem 1rem;
   }
 }
 
@@ -23,7 +23,7 @@
 
   > ul {
     @include media-breakpoint-down(md) {
-      padding: 1.5rem;
+      padding: 1.5rem .75rem;
       background-color: $gray-100;
       border-bottom: 1px solid $gray-200;
     }
