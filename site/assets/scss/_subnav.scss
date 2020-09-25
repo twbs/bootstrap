@@ -36,7 +36,11 @@
 
   &:hover,
   &:focus {
-    color: $link-color;
+    color: $bd-purple-bright;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($bd-purple-bright, .25);
   }
 
   .bi {
