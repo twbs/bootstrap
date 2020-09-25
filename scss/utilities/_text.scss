@@ -63,8 +63,19 @@
 .text-decoration-none { text-decoration: none !important; }
 
 .text-break {
-  word-break: break-word !important; // we use the deprecated `word-break: break-word` to avoid issues with flex containers
-  word-wrap: break-word !important;  // we use `word-wrap` instead of the more common `overflow-wrap` for support IE & Edge Legacy
+  // We wan't to use `overflow-wrap: anywhere` to avoid issues with flex containers
+  // But `overflow-wrap` don't supported by IE and Edge Legacy at all
+  // and `overflow-wrap: anywhere` don't supported by Safari.
+  // So we use combination of word-break (modern browsers) + word-wrap (IE/Edge Legacy)
+
+  // This value deprecated for modern browsers (and never supported by IE/Edge Legacy)
+  // The same as `word-break: normal` and `overflow-wrap: anywhere` (regardless of the actual value of the overflow-wrap property)
+  word-break: break-word !important; // all browsers except IE/Edge Legacy, working inside flex
+
+  // Because `word-break: break-word` don't supported by IE/Edge Legacy we adding `word-wrap: break-word` which is old name for `overflow-wrap: break-word`.
+  // The same as `overflow-wrap: break-word`
+  // all browsers except IE/Edge legacy ignore it because of `word-break: break-word` above
+  word-wrap: break-word !important; // for IE/Edge Legacy, DON'T working inside flex
 }
 
 // Reset
