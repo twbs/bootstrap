@@ -39,6 +39,7 @@
 *.sublime-workspace
 nbproject
 Thumbs.db
+/.vscode/
 
 # Komodo
 .komodotools
