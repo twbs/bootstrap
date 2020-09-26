@@ -16,6 +16,7 @@ toc: true
   - Renamed `.sr-only` and `.sr-only-focusable` to `.visually-hidden` and `.visually-hidden-focusable`
   - Renamed `sr-only()` and `sr-only-focusable()` mixins to `visually-hidden()` and `visually-hidden-focusable()`.
 - Add border width utility, see [31484](https://github.com/twbs/bootstrap/pull/31484)
+- Add alert color variants API similar to Utilities API.
 
 ### Docs
 

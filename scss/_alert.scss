@@ -34,17 +34,47 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding: $alert-padding-y * 1.25 $alert-padding-x;
+    padding: $alert-dismissible-close-padding;
   }
 }
 
 
 // scss-docs-start alert-modifiers
 // Generate contextual modifier classes for colorizing the alert.
-
-@each $color, $value in $theme-colors {
-  .alert-#{$color} {
-    @include alert-variant(color-level($value, $alert-bg-level), color-level($value, $alert-border-level), color-level($value, $alert-color-level));
+@if $alert-variants-custom-properties {
+  // With CSS Custom Properties
+  .alert {
+    @include alert-variant(
+      var(--bs-alert-bg-color, transparent),
+      var(--bs-alert-border-color, transparent),
+      var(--bs-alert-color),
+      var(--bs-alert-link-color),
+    );
+  }
+  @each $color, $value in $alert-variants {
+    @if type-of($value) == "map" {
+      .alert-#{$color} {
+        --bs-alert-bg-color: #{map-get($value, bg-color)};
+        --bs-alert-border-color: #{map-get($value, border-color)};
+        --bs-alert-color: #{map-get($value, color)};
+        --bs-alert-link-color: #{map-get($value, link-color)};
+      }
+    }
+  }
+} @else {
+  // Without CSS Custom Properties - only specific values
+  @each $color, $value in $alert-variants {
+    @if type-of($value) == "map" {
+      // Generate variants without custom properties
+      .alert-#{$color} {
+        @include alert-variant(
+          map-get($value, bg-color),
+          map-get($value, border-color),
+          map-get($value, color),
+          map-get($value, link-color),
+        );
+      }
+    }
   }
 }
 // scss-docs-end alert-modifiers

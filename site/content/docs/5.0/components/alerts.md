@@ -182,3 +182,43 @@ myAlert.addEventListener('closed.bs.alert', function () {
   // document.getElementById('…').focus()
 })
 {{< /highlight >}}
+
+### Alert custom color variants API
+
+Similar to new Utilities API, it is possible to add, change or remove color variants.
+
+Add:
+
+{{< highlight scss >}}
+$alert-variants: (
+  custom: (
+    bg-color: gold,
+    border-color: red,
+    color: black,
+    link-color: red
+  )
+);
+{{< /highlight >}}
+
+Change:
+
+{{< highlight scss >}}
+$alert-variants: (
+  info: (
+    bg-color: lightblue,
+    border-color: blue,
+    color: black,
+    link-color: blue
+  )
+);
+{{< /highlight >}}
+
+Remove:
+
+{{< highlight scss >}}
+$alert-variants: (
+  dark: null
+);
+{{< /highlight >}}
+
+To generate variants using CSS custom properties, instead of plain CSS use this variable: `$alert-variants-custom-properties: true;` for cases when need to change alert colors runtime.
