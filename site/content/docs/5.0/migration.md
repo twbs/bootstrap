@@ -12,7 +12,7 @@ toc: true
 ### Sass
 
 - Added default parameters to each `border-radius` mixin. [See #31571](https://github.com/twbs/bootstrap/pull/31571).
-- Updated next breakpoint when targeting only the `xs` breakpoint. [See #31500](https://github.com/twbs/bootstrap/pull/31500).
+- Updated the next breakpoint when targeting only the `xs` breakpoint. [See #31500](https://github.com/twbs/bootstrap/pull/31500).
 - `box-shadow` mixins now allow `null` values and drop `none` from multiple arguments. [See #30394](https://github.com/twbs/bootstrap/pull/30394).
 
 ### Docs
@@ -37,7 +37,7 @@ toc: true
 
 - Bumped color contrast ratio from 3:1 to 4.5:1.
 - Set `$black` as color contrast color instead of `$gray-900`.
-- Improved `$green` (and its theme alias `$success`) color to reach new minimum color contrast (moving from `#28a745` to `#198754`).
+- Improved `$green` (and its theme alias `$success`) color to reach a new minimum color contrast (moving from `#28a745` to `#198754`).
 - Improved `$cyan` (and its theme alias `$info`) color to be more vibrant (moving from `#17a2b8` to `#0dcaf0`).
 
 ### Forms
@@ -103,8 +103,8 @@ toc: true
 ### Helpers
 
 - Responsive embed helpers have been renamed to [ratio helpers]({{< docsref "/helpers/ratio" >}}) with new class names and improved behaviors, as well as a helpful CSS variable.
-  - Classes have been renamed to change `by` to `x` in the aspect ratrio. For example, `.ratio-16by9` is now `.ratio-16x9`.
-  - We've dropped the `.embed-responsive-item` and element group selector in favor of a simpler `.ratio > *` selector. No more class needed, and the ratio helper now works with any HTML element.
+  - Classes have been renamed to change `by` to `x` in the aspect ratio. For example, `.ratio-16by9` is now `.ratio-16x9`.
+  - We've dropped the `.embed-responsive-item` and element group selector in favor of a simpler `.ratio > *` selector. No more class is needed, and the ratio helper now works with any HTML element.
   - The `$embed-responsive-aspect-ratios` Sass map has been renamed to `$aspect-ratios` and its values have been simplified to include the class name and the percentage as the `key: value` pair.
   - CSS variables are now generated and included for each value in the Sass map. Modify the `--aspect-ratio` variable on the `.ratio` to create any [custom aspect ratio]({{< docsref "/helpers/ratio#custom-ratios" >}}).
 - "Screen reader" classes are now ["visually hidden" classes]({{< docsref "/helpers/visually-hidden" >}}).
@@ -166,7 +166,7 @@ Changes to our source Sass files and compiled CSS.
 - The `bg-gradient-variant()` mixin is removed since the `.bg-gradient` class can now be used to add gradients to elements instead of the `.bg-gradient-*` classes.
 - The `media-breakpoint-down()` uses the breakpoint itself instead of the next breakpoint. Use `media-breakpoint-down(lg)` instead of `media-breakpoint-down(md)` to target viewports smaller than the `lg` breakpoint.
 - The `media-breakpoint-between()` mixin's second parameter also uses the breakpoint itself instead of the next breakpoint. Use `media-between(sm, lg)` instead of `media-breakpoint-between(sm, md)` to target viewports between the `sm` and `lg` breakpoints.
-- The `box-shadow()` mixin now better supports `none` and `null` with multiple arguments. Now you can pass multiple arguements with either value, and get the expected output. [See #30394](https://github.com/twbs/bootstrap/pull/30394).
+- The `box-shadow()` mixin now better supports `none` and `null` with multiple arguments. Now you can pass multiple arguments with either value and get the expected output. [See #30394](https://github.com/twbs/bootstrap/pull/30394).
 - Each `border-radius()` mixin now has a default value. You can now call these mixins without specifying a border radius value and the `$border-radius` variable will be used. [See #31571](https://github.com/twbs/bootstrap/pull/31571)
 
 ### JavaScript
@@ -192,7 +192,7 @@ Changes to any layout tools and our grid system.
 - Remove `position: relative` from grid columns.
 - The horizontal padding is added to the direct children in a row instead of the columns themselves.
   - This simplifies our codebase.
-  - The column classes can now be used stand alone. Whenever they are used outside a `.row`, horizontal padding won't be added.
+  - The column classes can now be used stand-alone. Whenever they are used outside a `.row`, horizontal padding won't be added.
 - The responsive gutter classes can be used to control the gutter width in horizontal, vertical or both directions.
 - The gutter width is now set in `rem` and decreased from `30px` to `1.5rem` (24px).
 - `bootstrap-grid.css` now only applies `box-sizing: border-box` to the column instead of resetting the global box-sizing. This way the grid system can be used, even if `box-sizing: border-box` is not applied to each element.
@@ -225,7 +225,7 @@ Changes to Reboot, typography, tables, and more.
   - Split out old Forms page into several subpages
   - Moved input groups docs under the new Forms section
 - Rearranged source Sass files under `scss/forms/`, including moving over input group styles.
-- Combined native and custom checkboxes and radios into single `.form-check` class.
+- Combined native and custom checkboxes and radios into a single `.form-check` class.
   - New checks support sizing via `em`/`font-size` or explicit modifier classes now.
   - New checks now appear larger by default for improved usability.
   - Dropped `.custom-control` and associated classes.
