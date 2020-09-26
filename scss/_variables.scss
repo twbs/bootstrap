@@ -1202,6 +1202,25 @@ $list-group-action-hover-color:     $list-group-action-color !default;
 $list-group-action-active-color:    $body-color !default;
 $list-group-action-active-bg:       $gray-200 !default;
 
+$list-group-item-variants: () !default;
+@each $color, $value in $theme-colors {
+  $value-bg-color: color-level($value, $list-group-item-bg-level);
+  $value-color: color-level($value, $list-group-item-color-level);
+  $list-group-item-variants: map-merge(
+    (
+      $color: (
+        bg-color: $value-bg-color,
+        color: $value-color,
+        hover-bg-color: darken($value-bg-color, 5%),
+        hover-color: $value-color,
+        active-bg-color: $value-color,
+        active-color: $white
+      )
+    ),
+    $list-group-item-variants
+  );
+}
+
 
 // Image thumbnails
 
