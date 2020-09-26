@@ -1059,6 +1059,7 @@ $popover-box-shadow:                $box-shadow !default;
 
 $popover-header-bg:                 darken($popover-bg, 3%) !default;
 $popover-header-color:              $headings-color !default;
+$popover-header-border-color:       darken($popover-header-bg, 5%) !default;
 $popover-header-padding-y:          .5rem !default;
 $popover-header-padding-x:          $spacer !default;
 
@@ -1071,6 +1072,14 @@ $popover-arrow-height:              .5rem !default;
 $popover-arrow-color:               $popover-bg !default;
 
 $popover-arrow-outer-color:         fade-in($popover-border-color, .05) !default;
+
+// Popover arrows derivable variables - usually they just derivable from other popover variables
+// Can be set null or replaced with CSS variables
+$popover-arrow-offset:              subtract(-$popover-arrow-height, $popover-border-width) !default;
+$popover-top-arrow-border-width:    $popover-arrow-height ($popover-arrow-width / 2) 0 !default;
+$popover-right-arrow-border-width:  ($popover-arrow-width / 2) $popover-arrow-height ($popover-arrow-width / 2) 0 !default;
+$popover-bottom-arrow-border-width: 0 ($popover-arrow-width / 2) $popover-arrow-height ($popover-arrow-width / 2) !default;
+$popover-left-arrow-border-width:   ($popover-arrow-width / 2) 0 ($popover-arrow-width / 2) $popover-arrow-height !default;
 
 
 // Toasts
