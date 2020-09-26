@@ -11,9 +11,9 @@ toc: true
 
 ### Sass
 
-- Added default parameters to each `border-radius` mixin. See #31571.
-- Updated next breakpoint when targeting only the `xs` breakpoint. See #31500.
-- `box-shadow` mixins now allow `null` values and drop `none` from multiple arguments. See #30394.
+- Added default parameters to each `border-radius` mixin. [See #31571](https://github.com/twbs/bootstrap/pull/31571).
+- Updated next breakpoint when targeting only the `xs` breakpoint. [See #31500](https://github.com/twbs/bootstrap/pull/31500).
+- `box-shadow` mixins now allow `null` values and drop `none` from multiple arguments. [See #30394](https://github.com/twbs/bootstrap/pull/30394).
 
 ### Docs
 
@@ -22,12 +22,12 @@ toc: true
 - Improved documentation of check/radio powered button groups
 - Improved skip links in our docs.
 - Redesigned docs navigation for larger tap targets on mobile and a streamlined subnav.
-- #3114: Improved form documentation with regards to accessibility.
+- [#31114](https://github.com/twbs/bootstrap/pull/31114): Improved form documentation with regards to accessibility.
 
 ### Layout
 
 - Container horizontal padding updated to match the gutter size of `.row`s.
-- #31439: Removed `flex: 1 0 100%` from rows due to regressions in grid behavior.
+- [#31439](https://github.com/twbs/bootstrap/pull/31439): Removed `flex: 1 0 100%` from rows due to regressions in grid behavior.
 
 ### Reboot
 
@@ -42,23 +42,23 @@ toc: true
 
 ### Forms
 
-- #31383: Resized checks and radios to be `1em` instead of `1.25em` in an effort to make them scale better with custom `$font-size-base` values and more.
+- [#31383](https://github.com/twbs/bootstrap/pull/31383): Resized checks and radios to be `1em` instead of `1.25em` in an effort to make them scale better with custom `$font-size-base` values and more.
 
 ### Components
 
 #### Badges
 
-- #31132: Increased default padding for badges from `.25em`/`.5em` to `.35em`/`.65em`.
+- [#31132](https://github.com/twbs/bootstrap/pull/31132): Increased default padding for badges from `.25em`/`.5em` to `.35em`/`.65em`.
 
 #### Buttons
 
 - [#30639](https://github.com/twbs/bootstrap/pull/30639): Disabled states of buttons are easier to customize thanks to additional arguments in the `button-variant()` mixin.
-- #30989: Updated buttons to ensure increased contrast on hover and active states.
+- [#30989](https://github.com/twbs/bootstrap/pull/30989): Updated buttons to ensure increased contrast on hover and active states.
 
 #### Carousel
 
-- Replaced chevron icons for carousel controls with new SVGs from [Bootstrap Icons](http://icons.getbootstrap.com).
-- Added new [`.carousel-dark` variant]({{< docsref "/components/carousel/#dark-variant" >}}) for dark text, controls, and indicators (great for lighter backgrounds).
+- Replaced chevron icons for carousel controls with new SVGs from [Bootstrap Icons]({{< param "icons" >}}).
+- Added new [`.carousel-dark` variant]({{< docsref "/components/carousel#dark-variant" >}}) for dark text, controls, and indicators (great for lighter backgrounds).
 
 #### Close button
 
@@ -69,7 +69,7 @@ toc: true
 
 #### Collapse
 
-- #31346: Removed scroll anchoring for accordions.
+- [#31346](https://github.com/twbs/bootstrap/pull/31346): Removed scroll anchoring for accordions.
 
 #### Dropdowns
 
@@ -79,11 +79,11 @@ toc: true
 
 #### Navs
 
-- #31035: Added new `null` variables for `font-size`, `font-weight`, `color`, and `:hover` `color` to the `.nav-link` class.
+- [#31035](https://github.com/twbs/bootstrap/pull/31035): Added new `null` variables for `font-size`, `font-weight`, `color`, and `:hover` `color` to the `.nav-link` class.
 
 #### Pagination
 
-- Added `transition`s to pagination links. See #31396.
+- Added `transition`s to pagination links. [See #31396](https://github.com/twbs/bootstrap/pull/31396).
 
 #### Popovers
 
@@ -91,9 +91,9 @@ toc: true
 
 #### Toasts
 
-- #31155: Clear `timeout` before showing toasts.
-- #31109: Made default toast duration 5 seconds.
-- #31381: Removed `overflow: hidden` from toasts and replaced with proper `border-radius`s with `calc()` functions.
+- [#31109](https://github.com/twbs/bootstrap/pull/31109): Made default toast duration 5 seconds.
+- [#31155](https://github.com/twbs/bootstrap/pull/31155): Clear `timeout` before showing toasts.
+- [#31381](https://github.com/twbs/bootstrap/pull/31381): Removed `overflow: hidden` from toasts and replaced with proper `border-radius`s with `calc()` functions.
 - Updated docs to include additional examples for how to customize and theme toasts.
 
 #### Tooltips
@@ -107,18 +107,18 @@ toc: true
   - We've dropped the `.embed-responsive-item` and element group selector in favor of a simpler `.ratio > *` selector. No more class needed, and the ratio helper now works with any HTML element.
   - The `$embed-responsive-aspect-ratios` Sass map has been renamed to `$aspect-ratios` and its values have been simplified to include the class name and the percentage as the `key: value` pair.
   - CSS variables are now generated and included for each value in the Sass map. Modify the `--aspect-ratio` variable on the `.ratio` to create any [custom aspect ratio]({{< docsref "/helpers/ratio#custom-ratios" >}}).
-- "Screen reader" classes are now ["visually hidden" classes]({{< docsref "/helpers/visually-hidden/" >}}).
+- "Screen reader" classes are now ["visually hidden" classes]({{< docsref "/helpers/visually-hidden" >}}).
   - Changed the Sass file from `scss/helpers/_screenreaders.scss` to `scss/helpers/_visually-hidden.scss`
   - Renamed `.sr-only` and `.sr-only-focusable` to `.visually-hidden` and `.visually-hidden-focusable`
   - Renamed `sr-only()` and `sr-only-focusable()` mixins to `visually-hidden()` and `visually-hidden-focusable()`.
 
 ### Utilities
 
-- #31280: Added new [position utilities]({{< docsref "/utilities/position/#arrange-elements" >}}) for `top`, `right`, `bottom`, and `left`. Values include `0`, `50%`, and `100%` for each property.
+- [#31280](https://github.com/twbs/bootstrap/pull/31280): Added new [position utilities]({{< docsref "/utilities/position#arrange-elements" >}}) for `top`, `right`, `bottom`, and `left`. Values include `0`, `50%`, and `100%` for each property.
   - We also added new `translate` utilities to accompany those position utilities for centering elements when they're being positioned.
   - Some great examples have been added to the docs to show these off.
-- [#31484](https://github.com/twbs/bootstrap/pull/31484): Added new [`border-width` utility]({{< docsref "/utilities/borders/#border-width" >}}).
-- #31473: The `.d-none` utility was moved in our CSS to give it more weight over other display utilities.
+- [#31484](https://github.com/twbs/bootstrap/pull/31484): Added new [`border-width` utility]({{< docsref "/utilities/borders#border-width" >}}).
+- [#31473](https://github.com/twbs/bootstrap/pull/31473): The `.d-none` utility was moved in our CSS to give it more weight over other display utilities.
 
 ---
 
