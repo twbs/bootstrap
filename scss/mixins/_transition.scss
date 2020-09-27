@@ -1,4 +1,4 @@
-// stylelint-disable property-blacklist
+// stylelint-disable property-disallowed-list
 @mixin transition($transition...) {
   @if length($transition) == 0 {
     $transition: $transition-base;

@@ -13,7 +13,7 @@
   vertical-align: text-bottom;
   border: $spinner-border-width solid currentColor;
   border-right-color: transparent;
-  // stylelint-disable-next-line property-blacklist
+  // stylelint-disable-next-line property-disallowed-list
   border-radius: 50%;
   animation: spinner-border .75s linear infinite;
 }
@@ -44,7 +44,7 @@
   height: $spinner-height;
   vertical-align: text-bottom;
   background-color: currentColor;
-  // stylelint-disable-next-line property-blacklist
+  // stylelint-disable-next-line property-disallowed-list
   border-radius: 50%;
   opacity: 0;
   animation: spinner-grow .75s linear infinite;
