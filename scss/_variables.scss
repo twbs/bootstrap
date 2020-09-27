@@ -376,7 +376,7 @@ $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;
 $transition-collapse:         height .35s ease !default;
 
-// stylelint-disable function-blacklist
+// stylelint-disable function-disallowed-list
 // scss-docs-start aspect-ratios
 $aspect-ratios: (
   "1x1": 100%,
@@ -385,7 +385,7 @@ $aspect-ratios: (
   "21x9": calc(9 / 21 * 100%)
 ) !default;
 // scss-docs-end aspect-ratios
-// stylelint-enable function-blacklist
+// stylelint-enable function-disallowed-list
 
 // Typography
 //
