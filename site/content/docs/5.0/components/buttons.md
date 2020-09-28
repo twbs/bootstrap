@@ -54,6 +54,18 @@ In need of a button, but not the hefty background colors they bring? Replace the
 {{< /buttons.inline >}}
 {{< /example >}}
 
+## Gradient buttons
+
+Like gradients? Just add `bg-gradient` to any button to make it a gradient.
+
+{{< example >}}
+{{< buttons.inline >}}
+{{- range (index $.Site.Data "theme-colors") }}
+<button type="button" class="btn btn-{{ .name }} bg-gradient">{{ .name | title }}</button>
+{{- end -}}
+{{< /buttons.inline >}}
+{{< /example >}}
+
 ## Sizes
 
 Fancy larger or smaller buttons? Add `.btn-lg` or `.btn-sm` for additional sizes.
