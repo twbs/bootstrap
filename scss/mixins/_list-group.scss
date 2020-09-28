@@ -7,7 +7,7 @@
   $hover-bg-color: darken($bg-color, 5%),
   $hover-color: $color,
   $active-bg-color: $color,
-  $active-color: $white
+  $active-color: color-contrast($color)
 ) {
   .list-group-item-#{$state} {
     color: $color;

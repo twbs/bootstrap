@@ -155,12 +155,7 @@
   @if type-of($value) == "map" {
     @include list-group-item-variant(
       $color,
-      map-get($value, bg-color),
-      map-get($value, color),
-      map-get($value, hover-bg-color),
-      map-get($value, hover-color),
-      map-get($value, active-bg-color),
-      map-get($value, active-color)
+      $value...
     );
   }
 }
