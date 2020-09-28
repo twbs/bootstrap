@@ -99,7 +99,7 @@
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "autoprefixer": "^9.8.6",
-    "bundlewatch": "^0.3.0",
+    "bundlewatch": "^0.3.1",
     "clean-css-cli": "^4.3.0",
     "cross-env": "^7.0.2",
     "eslint": "^7.9.0",
