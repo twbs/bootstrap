@@ -34,17 +34,21 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding: $alert-padding-y * 1.25 $alert-padding-x;
+    padding: $alert-dismissible-close-padding;
   }
 }
 
 
 // scss-docs-start alert-modifiers
 // Generate contextual modifier classes for colorizing the alert.
-
-@each $color, $value in $theme-colors {
-  .alert-#{$color} {
-    @include alert-variant(color-level($value, $alert-bg-level), color-level($value, $alert-border-level), color-level($value, $alert-color-level));
+@if $alert-variants-enable {
+  @each $color, $value in $alert-variants {
+    @if type-of($value) == "map" {
+      // Generate variants without custom properties
+      .alert-#{$color} {
+        @include alert-variant($value...);
+      }
+    }
   }
 }
 // scss-docs-end alert-modifiers

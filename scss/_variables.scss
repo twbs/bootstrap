@@ -1160,7 +1160,27 @@ $alert-border-level:                -9 !default;
 $alert-color-level:                 6 !default;
 
 $alert-dismissible-padding-r:       $alert-padding-x * 3 !default; // 3x covers width of x plus default padding on either side
+$alert-dismissible-close-padding:   $alert-padding-y * 1.25 $alert-padding-x !default;
 
+// scss-docs-start alert-variants
+$alert-variants-enable:             true !default; // In case of `false` - won't generate variants
+$alert-variants:                    () !default; // Can be overwritten in a similar way how Utilities API done
+@each $color, $value in $theme-colors {
+  // Can be add optional `link-color` parameter.
+  // If not used it will take default value from `alert-variant` mixin:
+  //   link-color: darken($color, 10%)
+  $alert-variants: map-merge(
+    (
+      $color: (
+        bg-color: color-level($value, $alert-bg-level),
+        border-color: color-level($value, $alert-border-level),
+        color: color-level($value, $alert-color-level)
+      )
+    ),
+    $alert-variants
+  );
+}
+// scss-docs-end alert-variants
 
 // Progress bars
 

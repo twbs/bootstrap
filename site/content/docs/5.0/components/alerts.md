@@ -182,3 +182,76 @@ myAlert.addEventListener('closed.bs.alert', function () {
   // document.getElementById('...').focus()
 })
 {{< /highlight >}}
+
+### Customizing
+
+Alert color variants can be customized via Sass with the `$alert-variants` located in our `_variables.scss` file. Included is a nested map for customizing each variant's background color, border color or link color.
+
+This is the Sass map from `_variables.scss`. Override this and recompile your Sass to generate different states:
+
+{{< scss-docs name="alert-variants" file="scss/_variables.scss" >}}
+
+Similar to new Bootstrap Utilities API, it is possible to add, change or remove color variants.
+
+Add:
+
+{{< highlight scss >}}
+$alert-variants: (
+  custom: (
+    bg-color: gold,
+    border-color: red,
+    color: black,
+    link-color: red
+  )
+);
+{{< /highlight >}}
+
+Change:
+
+{{< highlight scss >}}
+$alert-variants: (
+  info: (
+    bg-color: lightblue,
+    border-color: blue,
+    color: black,
+    link-color: blue
+  )
+);
+{{< /highlight >}}
+
+Remove:
+
+{{< highlight scss >}}
+$alert-variants: (
+  dark: null
+);
+{{< /highlight >}}
+
+#### Use with CSS variables
+
+To generate variants using CSS custom properties, instead of plain CSS values you can customize in the following way:
+
+{{< highlight scss >}}
+// 1. Disable plain CSS variants by setting `$alert-variants-enable` to `false`
+$alert-variants-enable: false;
+
+// 2. Add CSS variables as values to a `alert` selector
+.alert {
+  @include alert-variant(
+    var(--bs-alert-bg-color, transparent),
+    var(--bs-alert-border-color, transparent),
+    var(--bs-alert-color),
+    var(--bs-alert-link-color),
+  );
+}
+
+// 3. Generate CSS Custom Properties declarations
+@each $color, $value in $alert-variants {
+  .alert-#{$color} {
+    --bs-alert-bg-color: #{map-get($value, bg-color)};
+    --bs-alert-border-color: #{map-get($value, border-color)};
+    --bs-alert-color: #{map-get($value, color)};
+    --bs-alert-link-color: #{darken(map-get($value, color), 10%)};
+  }
+}
+{{< /highlight >}}
