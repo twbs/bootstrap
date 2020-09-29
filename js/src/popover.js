@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha1): popover.js
+ * Bootstrap (v5.0.0-alpha2): popover.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -17,7 +17,7 @@ import Tooltip from './tooltip'
  */
 
 const NAME = 'popover'
-const VERSION = '5.0.0-alpha1'
+const VERSION = '5.0.0-alpha2'
 const DATA_KEY = 'bs.popover'
 const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'bs-popover'
