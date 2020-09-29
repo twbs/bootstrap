@@ -62,9 +62,9 @@
 .input-group-text {
   display: flex;
   align-items: center;
-  padding: $input-padding-y $input-padding-x;
+  padding: $input-group-addon-padding-y $input-group-addon-padding-x;
   @include font-size($input-font-size); // Match inputs
-  font-weight: $font-weight-normal;
+  font-weight: $input-group-addon-font-weight;
   line-height: $input-line-height;
   color: $input-group-addon-color;
   text-align: center;
