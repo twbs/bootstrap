@@ -33,7 +33,7 @@
   }
 
   &[type="radio"] {
-    // stylelint-disable-next-line property-blacklist
+    // stylelint-disable-next-line property-disallowed-list
     border-radius: $form-check-radio-border-radius;
   }
 

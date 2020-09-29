@@ -112,7 +112,7 @@
           margin-top: 0;
         }
 
-        & + .list-group-item {
+        + .list-group-item {
           border-top-width: $list-group-border-width;
           border-left-width: 0;
 
