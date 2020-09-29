@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap tooltip.js v5.0.0-alpha1 (https://getbootstrap.com/)
+  * Bootstrap tooltip.js v5.0.0-alpha2 (https://getbootstrap.com/)
   * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -19,7 +19,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-alpha1): util/index.js
+   * Bootstrap (v5.0.0-alpha2): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -150,7 +150,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-alpha1): util/sanitizer.js
+   * Bootstrap (v5.0.0-alpha2): util/sanitizer.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -287,7 +287,7 @@
    */
 
   var NAME = 'tooltip';
-  var VERSION = '5.0.0-alpha1';
+  var VERSION = '5.0.0-alpha2';
   var DATA_KEY = 'bs.tooltip';
   var EVENT_KEY = "." + DATA_KEY;
   var CLASS_PREFIX = 'bs-tooltip';
@@ -540,6 +540,10 @@
 
     _proto.hide = function hide() {
       var _this2 = this;
+
+      if (!this._popper) {
+        return;
+      }
 
       var tip = this.getTipElement();
 

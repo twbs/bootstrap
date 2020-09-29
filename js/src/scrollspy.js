@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha1): scrollspy.js
+ * Bootstrap (v5.0.0-alpha2): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -24,7 +24,7 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'scrollspy'
-const VERSION = '5.0.0-alpha1'
+const VERSION = '5.0.0-alpha2'
 const DATA_KEY = 'bs.scrollspy'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
