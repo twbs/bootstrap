@@ -717,6 +717,20 @@ describe('Tooltip', () => {
 
       tooltip.show()
     })
+
+    it('should not throw error running hide if popper hasn\'t been shown', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const tooltip = new Tooltip(div)
+
+      try {
+        tooltip.hide()
+        expect().nothing()
+      } catch {
+        throw new Error('should not throw error')
+      }
+    })
   })
 
   describe('update', () => {

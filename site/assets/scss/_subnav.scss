@@ -25,12 +25,32 @@
 }
 
 .bd-search {
-  @include media-breakpoint-down(md) {
-    width: 100%;
-  }
-
   .form-control:focus {
     border-color: $bd-purple-bright;
     box-shadow: 0 0 0 3px rgba($bd-purple-bright, .25);
+  }
+}
+
+.bd-sidebar-toggle {
+  color: $text-muted;
+
+  &:hover,
+  &:focus {
+    color: $bd-purple-bright;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($bd-purple-bright, .25);
+  }
+
+  .bi {
+    fill: currentColor;
+  }
+
+  .bi-collapse { display: none; }
+
+  &:not(.collapsed) {
+    .bi-expand { display: none; }
+    .bi-collapse { display: inline-block; }
   }
 }

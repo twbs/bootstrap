@@ -66,9 +66,7 @@ You can see this in action with a live demo:
 {{< example >}}
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
   <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
 </div>
 {{< /example >}}
 
@@ -92,9 +90,7 @@ alertList.forEach(function (alert) {
 Or with `data` attributes on a button **within the alert**, as demonstrated above:
 
 {{< highlight html >}}
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  <span aria-hidden="true">&times;</span>
-</button>
+<button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
 {{< /highlight >}}
 
 Note that closing an alert will remove it from the DOM.
@@ -181,8 +177,8 @@ Bootstrap's alert plugin exposes a few events for hooking into alert functionali
 {{< highlight js >}}
 var myAlert = document.getElementById('myAlert')
 myAlert.addEventListener('closed.bs.alert', function () {
-  // do something … for instance, explicitly move focus to the most appropriate element,
+  // do something, for instance, explicitly move focus to the most appropriate element,
   // so it doesn't get lost/reset to the start of the page
-  // document.getElementById('…').focus()
+  // document.getElementById('...').focus()
 })
 {{< /highlight >}}

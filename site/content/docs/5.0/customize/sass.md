@@ -207,7 +207,7 @@ You can also specify a base color with our color map functions:
 
 ### Escape SVG
 
-We use the `escape-svg` function to escape the `<`, `>` and `#` characters for SVG background images.
+We use the `escape-svg` function to escape the `<`, `>` and `#` characters for SVG background images. When using the `escape-svg` function, data URIs must be quoted.
 
 ### Add and Subtract functions
 

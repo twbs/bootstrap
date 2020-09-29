@@ -1,21 +1,23 @@
 /*!
-  * Bootstrap tab.js v5.0.0-alpha1 (https://getbootstrap.com/)
+  * Bootstrap tab.js v5.0.0-alpha2 (https://getbootstrap.com/)
   * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/selector-engine.js')) :
   typeof define === 'function' && define.amd ? define(['./dom/data.js', './dom/event-handler.js', './dom/selector-engine.js'], factory) :
-  (global = global || self, global.Tab = factory(global.Data, global.EventHandler, global.SelectorEngine));
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Tab = factory(global.Data, global.EventHandler, global.SelectorEngine));
 }(this, (function (Data, EventHandler, SelectorEngine) { 'use strict';
 
-  Data = Data && Object.prototype.hasOwnProperty.call(Data, 'default') ? Data['default'] : Data;
-  EventHandler = EventHandler && Object.prototype.hasOwnProperty.call(EventHandler, 'default') ? EventHandler['default'] : EventHandler;
-  SelectorEngine = SelectorEngine && Object.prototype.hasOwnProperty.call(SelectorEngine, 'default') ? SelectorEngine['default'] : SelectorEngine;
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var Data__default = /*#__PURE__*/_interopDefaultLegacy(Data);
+  var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
+  var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-alpha1): util/index.js
+   * Bootstrap (v5.0.0-alpha2): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -108,7 +110,7 @@
    */
 
   var NAME = 'tab';
-  var VERSION = '5.0.0-alpha1';
+  var VERSION = '5.0.0-alpha2';
   var DATA_KEY = 'bs.tab';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -138,7 +140,7 @@
   var Tab = /*#__PURE__*/function () {
     function Tab(element) {
       this._element = element;
-      Data.setData(this._element, DATA_KEY, this);
+      Data__default['default'].setData(this._element, DATA_KEY, this);
     } // Getters
 
 
@@ -159,19 +161,19 @@
 
       if (listElement) {
         var itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? SELECTOR_ACTIVE_UL : SELECTOR_ACTIVE;
-        previous = SelectorEngine.find(itemSelector, listElement);
+        previous = SelectorEngine__default['default'].find(itemSelector, listElement);
         previous = previous[previous.length - 1];
       }
 
       var hideEvent = null;
 
       if (previous) {
-        hideEvent = EventHandler.trigger(previous, EVENT_HIDE, {
+        hideEvent = EventHandler__default['default'].trigger(previous, EVENT_HIDE, {
           relatedTarget: this._element
         });
       }
 
-      var showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
+      var showEvent = EventHandler__default['default'].trigger(this._element, EVENT_SHOW, {
         relatedTarget: previous
       });
 
@@ -182,10 +184,10 @@
       this._activate(this._element, listElement);
 
       var complete = function complete() {
-        EventHandler.trigger(previous, EVENT_HIDDEN, {
+        EventHandler__default['default'].trigger(previous, EVENT_HIDDEN, {
           relatedTarget: _this._element
         });
-        EventHandler.trigger(_this._element, EVENT_SHOWN, {
+        EventHandler__default['default'].trigger(_this._element, EVENT_SHOWN, {
           relatedTarget: previous
         });
       };
@@ -198,7 +200,7 @@
     };
 
     _proto.dispose = function dispose() {
-      Data.removeData(this._element, DATA_KEY);
+      Data__default['default'].removeData(this._element, DATA_KEY);
       this._element = null;
     } // Private
     ;
@@ -206,7 +208,7 @@
     _proto._activate = function _activate(element, container, callback) {
       var _this2 = this;
 
-      var activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL') ? SelectorEngine.find(SELECTOR_ACTIVE_UL, container) : SelectorEngine.children(container, SELECTOR_ACTIVE);
+      var activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL') ? SelectorEngine__default['default'].find(SELECTOR_ACTIVE_UL, container) : SelectorEngine__default['default'].children(container, SELECTOR_ACTIVE);
       var active = activeElements[0];
       var isTransitioning = callback && active && active.classList.contains(CLASS_NAME_FADE);
 
@@ -217,7 +219,7 @@
       if (active && isTransitioning) {
         var transitionDuration = getTransitionDurationFromElement(active);
         active.classList.remove(CLASS_NAME_SHOW);
-        EventHandler.one(active, TRANSITION_END, complete);
+        EventHandler__default['default'].one(active, TRANSITION_END, complete);
         emulateTransitionEnd(active, transitionDuration);
       } else {
         complete();
@@ -227,7 +229,7 @@
     _proto._transitionComplete = function _transitionComplete(element, active, callback) {
       if (active) {
         active.classList.remove(CLASS_NAME_ACTIVE);
-        var dropdownChild = SelectorEngine.findOne(SELECTOR_DROPDOWN_ACTIVE_CHILD, active.parentNode);
+        var dropdownChild = SelectorEngine__default['default'].findOne(SELECTOR_DROPDOWN_ACTIVE_CHILD, active.parentNode);
 
         if (dropdownChild) {
           dropdownChild.classList.remove(CLASS_NAME_ACTIVE);
@@ -254,7 +256,7 @@
         var dropdownElement = element.closest(SELECTOR_DROPDOWN);
 
         if (dropdownElement) {
-          SelectorEngine.find(SELECTOR_DROPDOWN_TOGGLE).forEach(function (dropdown) {
+          SelectorEngine__default['default'].find(SELECTOR_DROPDOWN_TOGGLE).forEach(function (dropdown) {
             return dropdown.classList.add(CLASS_NAME_ACTIVE);
           });
         }
@@ -270,7 +272,7 @@
 
     Tab.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
-        var data = Data.getData(this, DATA_KEY) || new Tab(this);
+        var data = Data__default['default'].getData(this, DATA_KEY) || new Tab(this);
 
         if (typeof config === 'string') {
           if (typeof data[config] === 'undefined') {
@@ -283,7 +285,7 @@
     };
 
     Tab.getInstance = function getInstance(element) {
-      return Data.getData(element, DATA_KEY);
+      return Data__default['default'].getData(element, DATA_KEY);
     };
 
     _createClass(Tab, null, [{
@@ -302,9 +304,9 @@
    */
 
 
-  EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+  EventHandler__default['default'].on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
     event.preventDefault();
-    var data = Data.getData(this, DATA_KEY) || new Tab(this);
+    var data = Data__default['default'].getData(this, DATA_KEY) || new Tab(this);
     data.show();
   });
   var $ = getjQuery();

@@ -33,7 +33,7 @@
   }
 
   &[type="radio"] {
-    // stylelint-disable-next-line property-blacklist
+    // stylelint-disable-next-line property-disallowed-list
     border-radius: $form-check-radio-border-radius;
   }
 
@@ -82,7 +82,7 @@
   &:disabled {
     pointer-events: none;
     filter: none;
-    opacity: .5;
+    opacity: $form-check-input-disabled-opacity;
   }
 
   // Use disabled attribute in addition of :disabled pseudo-class
@@ -90,7 +90,7 @@
   &[disabled],
   &:disabled {
     ~ .form-check-label {
-      opacity: .5;
+      opacity: $form-check-label-disabled-opacity;
     }
   }
 }
@@ -139,4 +139,13 @@
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
+
+  &[disabled],
+  &:disabled {
+    + .btn {
+      pointer-events: none;
+      filter: none;
+      opacity: $form-check-btn-check-disabled-opacity;
+    }
+  }
 }
