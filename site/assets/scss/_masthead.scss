@@ -2,10 +2,6 @@
   padding: 3rem 0;
   background: linear-gradient(165deg, lighten($bd-purple-light, 16%) 50%, $white 50%);
 
-  @include media-breakpoint-up(sm) {
-    padding: 5rem 0;
-  }
-
   h1 {
     @include font-size(4rem);
     line-height: 1;

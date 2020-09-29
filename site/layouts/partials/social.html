@@ -10,7 +10,7 @@
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:title" content="{{ .Title | markdownify }}">
 <meta property="og:description" content="{{ .Page.Params.description | default .Site.Params.description | markdownify }}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:image" content="{{ .Site.Params.social_image_path | absURL }}">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1000">
