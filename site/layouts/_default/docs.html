@@ -9,15 +9,15 @@
     {{ partial "docs-navbar" . }}
     {{ partial "docs-subnav" . }}
 
-    <div class="container-xxl my-4 bd-layout">
+    <div class="container-xxl my-md-4 bd-layout">
       <aside class="bd-sidebar">
         {{ partial "docs-sidebar" . }}
       </aside>
 
       <main class="bd-main order-1">
-        <div class="bd-intro pt-md-3 pl-lg-4">
+        <div class="bd-intro pl-lg-4">
           <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-            <a class="btn btn-sm btn-bd-light mb-2 mb-md-0" href="{{ .Site.Params.repo }}/tree/main/site/content/{{ .Page.File.Path }}" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <a class="btn btn-sm btn-bd-light mb-2 mb-md-0" href="{{ .Site.Params.repo }}/blob/main/site/content/{{ .Page.File.Path }}" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
             <h1 class="bd-title" id="content">{{ .Title | markdownify }}</h1>
           </div>
           <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
@@ -25,10 +25,10 @@
         </div>
 
         {{ if (eq .Page.Params.toc true) }}
-        <div class="bd-toc pl-xl-3 text-muted mb-lg-5">
-          <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
-          {{ .TableOfContents }}
-        </div>
+          <div class="bd-toc mt-4 mb-5 my-md-0 pl-xl-3 mb-lg-5 text-muted">
+            <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
+            {{ .TableOfContents }}
+          </div>
         {{ end }}
 
         <div class="bd-content pl-lg-4">
