@@ -1,4 +1,17 @@
+// Dependencies
+//
+// _variables.scss
+// _functions.scss
+// _reboot.scss
+// mixins/_reset-text.scss
+// mixins/_border-radius.scss
+// vendor/_rfs.scss
+
+
+//
 // Base class
+//
+
 .tooltip {
   position: absolute;
   z-index: $zindex-tooltip;

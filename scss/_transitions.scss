@@ -1,3 +1,9 @@
+// Dependencies
+//
+// _variables.scss
+// mixins/_transition.scss
+
+
 .fade {
   @include transition($transition-fade);
 
