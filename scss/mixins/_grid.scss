@@ -3,13 +3,13 @@
 // Generate semantic grid columns with these mixins.
 
 @mixin make-row($gutter: $grid-gutter-width) {
-  --bs-gutter-x: #{$gutter};
-  --bs-gutter-y: 0;
+  --#{$variable-prefix}gutter-x: #{$gutter};
+  --#{$variable-prefix}gutter-y: 0;
   display: flex;
   flex-wrap: wrap;
-  margin-top: calc(var(--bs-gutter-y) * -1); // stylelint-disable-line function-disallowed-list
-  margin-right: calc(var(--bs-gutter-x) / -2); // stylelint-disable-line function-disallowed-list
-  margin-left: calc(var(--bs-gutter-x) / -2); // stylelint-disable-line function-disallowed-list
+  margin-top: calc(var(--#{$variable-prefix}gutter-y) * -1); // stylelint-disable-line function-disallowed-list
+  margin-right: calc(var(--#{$variable-prefix}gutter-x) / -2); // stylelint-disable-line function-disallowed-list
+  margin-left: calc(var(--#{$variable-prefix}gutter-x) / -2); // stylelint-disable-line function-disallowed-list
 }
 
 @mixin make-col-ready($gutter: $grid-gutter-width) {
@@ -21,9 +21,9 @@
   flex-shrink: 0;
   width: 100%;
   max-width: 100%; // Prevent `.col-auto`, `.col` (& responsive variants) from breaking out the grid
-  padding-right: calc(var(--bs-gutter-x) / 2); // stylelint-disable-line function-disallowed-list
-  padding-left: calc(var(--bs-gutter-x) / 2); // stylelint-disable-line function-disallowed-list
-  margin-top: var(--bs-gutter-y);
+  padding-right: calc(var(--#{$variable-prefix}gutter-x) / 2); // stylelint-disable-line function-disallowed-list
+  padding-left: calc(var(--#{$variable-prefix}gutter-x) / 2); // stylelint-disable-line function-disallowed-list
+  margin-top: var(--#{$variable-prefix}gutter-y);
 }
 
 @mixin make-col($size, $columns: $grid-columns) {
@@ -107,12 +107,12 @@
       @each $key, $value in $gutters {
         .g#{$infix}-#{$key},
         .gx#{$infix}-#{$key} {
-          --bs-gutter-x: #{$value};
+          --#{$variable-prefix}gutter-x: #{$value};
         }
 
         .g#{$infix}-#{$key},
         .gy#{$infix}-#{$key} {
-          --bs-gutter-y: #{$value};
+          --#{$variable-prefix}gutter-y: #{$value};
         }
       }
     }
