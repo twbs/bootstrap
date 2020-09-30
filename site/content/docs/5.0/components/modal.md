@@ -683,6 +683,10 @@ Another override is the option to pop up a modal that covers the user viewport, 
       <td><code>.modal-fullscreen-xl-down</code></td>
       <td>Below <code>1200px</code></td>
     </tr>
+    <tr>
+      <td><code>.modal-fullscreen-xxl-down</code></td>
+      <td>Below <code>1400px</code></td>
+    </tr>
   </tbody>
 </table>
 
@@ -692,6 +696,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalFullscreenMd">Full screen below md</button>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalFullscreenLg">Full screen below lg</button>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalFullscreenXl">Full screen below xl</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalFullscreenXxl">Full screen below xxl</button>
 </div>
 
 {{< highlight html >}}
@@ -791,6 +796,23 @@ Another override is the option to pop up a modal that covers the user viewport, 
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title h4" id="exampleModalFullscreenXlLabel">Full screen below xl</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalFullscreenXxl" tabindex="-1" aria-labelledby="exampleModalFullscreenXxlLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-xxl-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title h4" id="exampleModalFullscreenXxlLabel">Full screen below xxl</h5>
         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
