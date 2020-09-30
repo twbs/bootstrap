@@ -185,6 +185,7 @@ class Toast extends BaseComponent {
   _positionToast() {
     this._element.style.position = 'absolute'
     const toastList = SelectorEngine.find(`.toast.${this._config.position}`, this._element.parentNode)
+    const styles = {}
 
     if (this._config.position.indexOf('top-') > -1) {
       const top = toastList.reduce((top, toastEl) => {
@@ -196,18 +197,19 @@ class Toast extends BaseComponent {
 
       if (this._config.position === POSITION_TOP_RIGHT) {
         this._element.classList.add(POSITION_TOP_RIGHT)
-        this._element.style.right = `${this._config.positionMargin}px`
+        styles.right = `${this._config.positionMargin}px`
       } else if (this._config.position === POSITION_TOP_LEFT) {
         this._element.classList.add(POSITION_TOP_LEFT)
-        this._element.style.left = `${this._config.positionMargin}px`
+        styles.left = `${this._config.positionMargin}px`
       } else {
         const leftPx = this._getMiddleToastPosition()
 
         this._element.classList.add(POSITION_TOP_CENTER)
-        this._element.style.left = `${leftPx}px`
+        styles.left = `${leftPx}px`
       }
 
-      this._element.style.top = `${top}px`
+      styles.top = `${top}px`
+      Manipulator.applyCss(this._element, styles)
       return
     }
 
@@ -220,18 +222,19 @@ class Toast extends BaseComponent {
 
     if (this._config.position === POSITION_BOTTOM_RIGHT) {
       this._element.classList.add(POSITION_BOTTOM_RIGHT)
-      this._element.style.right = `${this._config.positionMargin}px`
+      styles.right = `${this._config.positionMargin}px`
     } else if (this._config.position === POSITION_BOTTOM_LEFT) {
       this._element.classList.add(POSITION_BOTTOM_LEFT)
-      this._element.style.left = `${this._config.positionMargin}px`
+      styles.left = `${this._config.positionMargin}px`
     } else {
       const leftPx = this._getMiddleToastPosition()
 
       this._element.classList.add(POSITION_BOTTOM_CENTER)
-      this._element.style.left = `${leftPx}px`
+      styles.left = `${leftPx}px`
     }
 
-    this._element.style.bottom = `${bottom}px`
+    styles.bottom = `${bottom}px`
+    Manipulator.applyCss(this._element, styles)
   }
 
   _repositionExistingToasts() {
@@ -273,12 +276,14 @@ class Toast extends BaseComponent {
   }
 
   _clearPositioning() {
-    this._element.style.position = ''
+    Manipulator.applyCss(this._element, {
+      position: '',
+      right: '',
+      left: '',
+      bottom: '',
+      top: ''
+    })
 
-    this._element.style.right = ''
-    this._element.style.left = ''
-    this._element.style.bottom = ''
-    this._element.style.top = ''
     this._element.classList.remove(POSITION_TOP_RIGHT)
     this._element.classList.remove(POSITION_TOP_LEFT)
     this._element.classList.remove(POSITION_TOP_CENTER)

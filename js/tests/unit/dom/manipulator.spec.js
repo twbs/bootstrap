@@ -133,4 +133,58 @@ describe('Manipulator', () => {
       expect(position.left).toEqual(jasmine.any(Number))
     })
   })
+
+  describe('applyCss', () => {
+    const parseCssText = cssText => cssText.split(';')
+      .filter(rule => rule.length)
+      .reduce((reducedCss, rule) => {
+        const [property, value] = rule.split(':')
+          .map(item => item.trim())
+
+        return {
+          ...reducedCss,
+          [property]: value
+        }
+      }, {})
+
+    it('should not error out if element is null or undefined', () => {
+      Manipulator.applyCss(null, {})
+      Manipulator.applyCss(undefined, {})
+      expect().nothing()
+    })
+
+    it('should apply given css', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const expected = { top: '10px', left: '30px' }
+
+      Manipulator.applyCss(div, expected)
+      expect(parseCssText(div.style.cssText)).toEqual(expected)
+    })
+
+    it('should keep existing css', () => {
+      fixtureEl.innerHTML = '<div style="background-color: white"></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const expected = {
+        'background-color': 'white',
+        top: '10px',
+        left: '30px'
+      }
+
+      Manipulator.applyCss(div, { top: '10px', left: '30px' })
+      expect(parseCssText(div.style.cssText)).toEqual(expected)
+    })
+
+    it('should reset css', () => {
+      fixtureEl.innerHTML = '<div style="top: 10px; left: 50px; position: absolute;"></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const expected = {}
+
+      Manipulator.applyCss(div, { top: '', left: '', position: '' })
+      expect(parseCssText(div.style.cssText)).toEqual(expected)
+    })
+  })
 })

@@ -74,6 +74,33 @@ const Manipulator = {
       top: element.offsetTop,
       left: element.offsetLeft
     }
+  },
+
+  applyCss(element, cssObject) {
+    if (!element) {
+      return
+    }
+
+    const existingStyle = element.style.cssText.split(';')
+      .filter(rule => rule.length)
+      .reduce((reducedCss, rule) => {
+        const [property, value] = rule.split(':')
+          .map(item => item.trim())
+
+        return {
+          ...reducedCss,
+          [property]: value
+        }
+      }, {})
+
+    const cssToApply = {
+      ...existingStyle,
+      ...cssObject
+    }
+
+    element.style.cssText = Object.keys(cssToApply)
+      .map(objKey => `${objKey}: ${cssToApply[objKey]};`)
+      .join(' ')
   }
 }
 
