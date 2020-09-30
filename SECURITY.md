@@ -1,4 +1,4 @@
-# Reporting Security Issues
+# Reporting Security Issues is our responsibility
 
 The Bootstrap team and community take security issues in Bootstrap seriously. We appreciate your efforts to responsibly disclose your findings, and will make every effort to acknowledge your contributions.
 
