@@ -5,8 +5,9 @@ description: An appendix of hosted documentation for nearly every release of Boo
 ---
 
 <div class="row">
-{% for release in site.data.docs-versions %}
-  <div class="col-md">
+{% assign releases = site.data.docs-versions | reverse %}
+{% for release in releases %}
+  <div class="col-md-6 col-lg-4 col-xl mb-4">
     <h2>{{ release.group }}</h2>
     <p>{{ release.description }}</p>
     {% assign versions = release.versions | reverse %}
