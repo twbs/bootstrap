@@ -95,13 +95,13 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "@popperjs/core": "^2.4.2"
+    "@popperjs/core": "^2.5.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.8",
     "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
-    "@popperjs/core": "^2.4.2",
+    "@popperjs/core": "^2.5.4",
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
@@ -168,7 +168,7 @@
     },
     "dependencies": {},
     "peerDependencies": {
-      "@popperjs/core": "^2.4.2"
+      "@popperjs/core": "^2.5.4"
     }
   }
 }
