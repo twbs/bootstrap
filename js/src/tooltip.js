@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha1): tooltip.js
+ * Bootstrap (v5.0.0-alpha2): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -33,7 +33,7 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'tooltip'
-const VERSION = '5.0.0-alpha1'
+const VERSION = '5.0.0-alpha2'
 const DATA_KEY = 'bs.tooltip'
 const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'bs-tooltip'
@@ -331,6 +331,10 @@ class Tooltip {
   }
 
   hide() {
+    if (!this._popper) {
+      return
+    }
+
     const tip = this.getTipElement()
     const complete = () => {
       if (this._hoverState !== HOVER_STATE_SHOW && tip.parentNode) {

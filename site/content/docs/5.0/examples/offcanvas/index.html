@@ -8,10 +8,10 @@ extra_js:
 body_class: "bg-light"
 ---
 
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Offcanvas navbar</a>
-    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -47,7 +47,7 @@ body_class: "bg-light"
 </nav>
 
 <div class="nav-scroller bg-white shadow-sm">
-  <nav class="nav nav-underline">
+  <nav class="nav nav-underline" aria-label="Secondary navigation">
     <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
     <a class="nav-link" href="#">
       Friends
@@ -64,10 +64,10 @@ body_class: "bg-light"
 </div>
 
 <main class="container">
-  <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
-    <img class="mr-3" src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">
+  <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+    <img class="mr-3" src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo-white.svg" alt="" width="48" height="38">
     <div class="lh-1">
-      <h6 class="mb-0 text-white lh-1">Bootstrap</h6>
+      <h1 class="h6 mb-0 text-white lh-1">Bootstrap</h1>
       <small>Since 2011</small>
     </div>
   </div>

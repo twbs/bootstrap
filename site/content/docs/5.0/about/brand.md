@@ -6,71 +6,42 @@ group: about
 toc: true
 ---
 
-Have a need for Bootstrap's brand resources? Great! We have only a few guidelines we follow, and in turn ask you to follow as well. These guidelines were inspired by MailChimp's [Brand Assets](https://mailchimp.com/about/brand-assets/).
+Have a need for Bootstrap's brand resources? Great! We have only a few guidelines we follow, and in turn ask you to follow as well.
 
-## Mark and logo
+## Logo
 
-Use either the Bootstrap mark (a capital **B**) or the standard logo (just **Bootstrap**). It should always appear in San Francisco Display Semibold. **Do not use the Twitter bird** in association with Bootstrap.
+When referencing Bootstrap, use our logo mark. Do not modify our logos in any way. Do not use Bootstrap's branding for your own open or closed source projects. **Do not use the Twitter name or logo** in association with Bootstrap.
 
-<div class="bd-brand-logos d-sm-flex text-center bg-light rounded overflow-hidden w-100 mb-3">
-  <div class="bd-brand-item w-100">
-    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-solid.svg" alt="Bootstrap" width="144" height="144" loading="lazy">
-  </div>
-  <div class="bd-brand-item w-100 inverse">
-    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-outline.svg" alt="Bootstrap" width="144" height="144" loading="lazy">
-  </div>
-</div>
-<div class="bd-brand-logos d-sm-flex text-center bg-light rounded overflow-hidden w-100 mb-3">
-  <div class="bd-brand-item w-100">
-    <span class="h1">Bootstrap</span>
-  </div>
-  <div class="bd-brand-item w-100 inverse">
-    <span class="h1">Bootstrap</span>
-  </div>
+<div class="bd-brand-item px-2 py-5 mb-3 bg-light rounded-lg">
+  <img class="d-block img-fluid mx-auto" src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="256" height="204">
 </div>
 
-## Download mark
+Our logo mark is also available in black and white. All rules for our primary logo apply to these as well.
 
-Download the Bootstrap mark in one of three styles, each available as an SVG file. **Click to download the logos**.
-
-<div class="bd-brand-logos d-sm-flex text-center bg-light rounded overflow-hidden w-100 mb-3">
-  <a href="/docs/{{< param docs_version >}}/assets/brand/bootstrap-solid.svg" download class="bd-brand-item w-100" title="Download solid logo">
-    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-solid.svg" alt="Bootstrap" width="144" height="144" loading="lazy">
-  </a>
-  <a href="/docs/{{< param docs_version >}}/assets/brand/bootstrap-outline.svg" download class="bd-brand-item w-100 inverse" title="Download outlined logo">
-    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-outline.svg" alt="Bootstrap" width="144" height="144" loading="lazy">
-  </a>
-  <a href="/docs/{{< param docs_version >}}/assets/brand/bootstrap-punchout.svg" download class="bd-brand-item w-100 inverse" title="Download inverted logo">
-    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-punchout.svg" alt="Bootstrap" width="144" height="144" loading="lazy">
-  </a>
+<div class="bd-brand-logos d-sm-flex text-center bg-light rounded-lg overflow-hidden w-100 mb-3">
+  <div class="bd-brand-item w-100 px-2 py-5">
+    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo-black.svg" alt="Bootstrap" width="128" height="102" loading="lazy">
+  </div>
+  <div class="bd-brand-item w-100 px-2 py-5 inverse">
+    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo-white.svg" alt="Bootstrap" width="128" height="102" loading="lazy">
+  </div>
 </div>
 
 ## Name
 
-The project and framework should always be referred to as **Bootstrap**. No Twitter before it, no capital _s_, and no abbreviations except for one, a capital **B**.
+Bootstrap should always be referred to as just **Bootstrap**. No Twitter before it and no capital _s_.
 
-<div class="bd-brand-logos d-sm-flex text-center bg-light rounded overflow-hidden w-100 mb-3">
-  <div class="bd-brand-item w-100">
-    <span class="h3">Bootstrap</span>
-    <strong class="text-success">Right</strong>
+<div class="bd-brand-logos d-sm-flex text-center bg-light rounded-lg overflow-hidden w-100 mb-3">
+  <div class="bd-brand-item w-100 p-3">
+    <div class="h3">Bootstrap</div>
+    <strong class="text-success">Correct</strong>
   </div>
-  <div class="bd-brand-item w-100">
-    <span class="h3 text-muted">BootStrap</span>
-    <strong class="text-warning">Wrong</strong>
+  <div class="bd-brand-item w-100 p-3">
+    <div class="h3 text-muted">BootStrap</div>
+    <strong class="text-danger">Incorrect</strong>
   </div>
-  <div class="bd-brand-item w-100">
-    <span class="h3 text-muted">Twitter Bootstrap</span>
-    <strong class="text-warning">Wrong</strong>
+  <div class="bd-brand-item w-100 p-3">
+    <div class="h3 text-muted">Twitter Bootstrap</div>
+    <strong class="text-danger">Incorrect</strong>
   </div>
-</div>
-
-## Colors
-
-Our docs and branding use a handful of primary colors to differentiate what *is* Bootstrap from what *is in* Bootstrap. In other words, if it's purple, it's representative of Bootstrap.
-
-<div class="color-swatches d-flex">
-  <div class="color-swatch bd-purple rounded mx-1"></div>
-  <div class="color-swatch bd-purple-light rounded mx-1"></div>
-  <div class="color-swatch bd-purple-lighter rounded mx-1"></div>
-  <div class="color-swatch bd-gray rounded mx-1"></div>
 </div>

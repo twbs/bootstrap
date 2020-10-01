@@ -27,7 +27,7 @@ import Alert from 'bootstrap/js/dist/alert';
 {{< /highlight >}}
 
 Bootstrap depends on [Popper](https://popper.js.org/), which is specified in the `peerDependencies` property.
-This means that you will have to make sure to add both of them to your `package.json` using `npm install popper.js`.
+This means that you will have to make sure to add it to your `package.json` using `npm install popper.js`.
 
 ## Importing Styles
 
@@ -42,30 +42,39 @@ First, create your own `_custom.scss` and use it to override the [built-in custo
 @import "~bootstrap/scss/bootstrap";
 {{< /highlight >}}
 
-For Bootstrap to compile, make sure you install and use the required loaders: [sass-loader](https://github.com/webpack-contrib/sass-loader), [postcss-loader](https://github.com/postcss/postcss-loader) with [Autoprefixer](https://github.com/postcss/autoprefixer#webpack). With minimal setup, your webpack config should include this rule or similar:
+For Bootstrap to compile, make sure you install and use the required loaders: [sass-loader](https://github.com/webpack-contrib/sass-loader), [postcss-loader](https://github.com/webpack-contrib/postcss-loader) with [Autoprefixer](https://github.com/postcss/autoprefixer#webpack). With minimal setup, your webpack config should include this rule or similar:
 
 {{< highlight js >}}
-...
+// ...
 {
   test: /\.(scss)$/,
   use: [{
-    loader: 'style-loader', // inject CSS to page
+    // inject CSS to page
+    loader: 'style-loader'
   }, {
-    loader: 'css-loader', // translates CSS into CommonJS modules
+    // translates CSS into CommonJS modules
+    loader: 'css-loader'
   }, {
-    loader: 'postcss-loader', // Run postcss actions
+    // Run postcss actions
+    loader: 'postcss-loader',
     options: {
-      plugins: function () { // postcss plugins, can be exported to postcss.config.js
-        return [
-          require('autoprefixer')
-        ];
+      // `postcssOptions` is needed for postcss 8.x;
+      // if you use postcss 7.x skip the key
+      postcssOptions: {
+        // postcss plugins, can be exported to postcss.config.js
+        plugins: function () {
+          return [
+            require('autoprefixer')
+          ];
+        }
       }
     }
   }, {
-    loader: 'sass-loader' // compiles Sass to CSS
+    // compiles Sass to CSS
+    loader: 'sass-loader'
   }]
-},
-...
+}
+// ...
 {{< /highlight >}}
 
 ### Importing Compiled CSS
@@ -79,14 +88,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 In this case you may use your existing rule for `css` without any special modifications to webpack config, except you don't need `sass-loader` just [style-loader](https://github.com/webpack-contrib/style-loader) and [css-loader](https://github.com/webpack-contrib/css-loader).
 
 {{< highlight js >}}
-...
+// ...
 module: {
   rules: [
     {
       test: /\.css$/,
-      use: ['style-loader', 'css-loader']
+      use: [
+        'style-loader',
+        'css-loader'
+      ]
     }
   ]
 }
-...
+// ...
 {{< /highlight >}}

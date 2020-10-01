@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Utilities v5.0.0-alpha1 (https://getbootstrap.com/)
+ * Bootstrap Utilities v5.0.0-alpha2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
@@ -48,10 +48,6 @@
   overflow: hidden !important;
 }
 
-.d-none {
-  display: none !important;
-}
-
 .d-inline {
   display: inline !important;
 }
@@ -82,6 +78,10 @@
 
 .d-inline-flex {
   display: inline-flex !important;
+}
+
+.d-none {
+  display: none !important;
 }
 
 .shadow {
@@ -119,6 +119,58 @@
 .position-sticky {
   position: -webkit-sticky !important;
   position: sticky !important;
+}
+
+.top-0 {
+  top: 0 !important;
+}
+
+.top-50 {
+  top: 50% !important;
+}
+
+.top-100 {
+  top: 100% !important;
+}
+
+.bottom-0 {
+  bottom: 0 !important;
+}
+
+.bottom-50 {
+  bottom: 50% !important;
+}
+
+.bottom-100 {
+  bottom: 100% !important;
+}
+
+.left-0 {
+  left: 0 !important;
+}
+
+.left-50 {
+  left: 50% !important;
+}
+
+.left-100 {
+  left: 100% !important;
+}
+
+.right-0 {
+  right: 0 !important;
+}
+
+.right-50 {
+  right: 50% !important;
+}
+
+.right-100 {
+  right: 100% !important;
+}
+
+.translate-middle {
+  transform: translateX(-50%) translateY(-50%) !important;
 }
 
 .border {
@@ -170,11 +222,11 @@
 }
 
 .border-success {
-  border-color: #28a745 !important;
+  border-color: #198754 !important;
 }
 
 .border-info {
-  border-color: #17a2b8 !important;
+  border-color: #0dcaf0 !important;
 }
 
 .border-warning {
@@ -195,6 +247,30 @@
 
 .border-white {
   border-color: #fff !important;
+}
+
+.border-0 {
+  border-width: 0 !important;
+}
+
+.border-1 {
+  border-width: 1px !important;
+}
+
+.border-2 {
+  border-width: 2px !important;
+}
+
+.border-3 {
+  border-width: 3px !important;
+}
+
+.border-4 {
+  border-width: 4px !important;
+}
+
+.border-5 {
+  border-width: 5px !important;
 }
 
 .w-25 {
@@ -876,11 +952,11 @@
 }
 
 .text-success {
-  color: #28a745 !important;
+  color: #198754 !important;
 }
 
 .text-info {
-  color: #17a2b8 !important;
+  color: #0dcaf0 !important;
 }
 
 .text-warning {
@@ -948,11 +1024,11 @@
 }
 
 .bg-success {
-  background-color: #28a745 !important;
+  background-color: #198754 !important;
 }
 
 .bg-info {
-  background-color: #17a2b8 !important;
+  background-color: #0dcaf0 !important;
 }
 
 .bg-warning {
@@ -1115,9 +1191,6 @@
   .float-sm-none {
     float: none !important;
   }
-  .d-sm-none {
-    display: none !important;
-  }
   .d-sm-inline {
     display: inline !important;
   }
@@ -1141,6 +1214,9 @@
   }
   .d-sm-inline-flex {
     display: inline-flex !important;
+  }
+  .d-sm-none {
+    display: none !important;
   }
   .flex-sm-fill {
     flex: 1 1 auto !important;
@@ -1591,9 +1667,6 @@
   .float-md-none {
     float: none !important;
   }
-  .d-md-none {
-    display: none !important;
-  }
   .d-md-inline {
     display: inline !important;
   }
@@ -1617,6 +1690,9 @@
   }
   .d-md-inline-flex {
     display: inline-flex !important;
+  }
+  .d-md-none {
+    display: none !important;
   }
   .flex-md-fill {
     flex: 1 1 auto !important;
@@ -2067,9 +2143,6 @@
   .float-lg-none {
     float: none !important;
   }
-  .d-lg-none {
-    display: none !important;
-  }
   .d-lg-inline {
     display: inline !important;
   }
@@ -2093,6 +2166,9 @@
   }
   .d-lg-inline-flex {
     display: inline-flex !important;
+  }
+  .d-lg-none {
+    display: none !important;
   }
   .flex-lg-fill {
     flex: 1 1 auto !important;
@@ -2543,9 +2619,6 @@
   .float-xl-none {
     float: none !important;
   }
-  .d-xl-none {
-    display: none !important;
-  }
   .d-xl-inline {
     display: inline !important;
   }
@@ -2569,6 +2642,9 @@
   }
   .d-xl-inline-flex {
     display: inline-flex !important;
+  }
+  .d-xl-none {
+    display: none !important;
   }
   .flex-xl-fill {
     flex: 1 1 auto !important;
@@ -3019,9 +3095,6 @@
   .float-xxl-none {
     float: none !important;
   }
-  .d-xxl-none {
-    display: none !important;
-  }
   .d-xxl-inline {
     display: inline !important;
   }
@@ -3045,6 +3118,9 @@
   }
   .d-xxl-inline-flex {
     display: inline-flex !important;
+  }
+  .d-xxl-none {
+    display: none !important;
   }
   .flex-xxl-fill {
     flex: 1 1 auto !important;
@@ -3486,9 +3562,6 @@
 }
 
 @media print {
-  .d-print-none {
-    display: none !important;
-  }
   .d-print-inline {
     display: inline !important;
   }
@@ -3512,6 +3585,9 @@
   }
   .d-print-inline-flex {
     display: inline-flex !important;
+  }
+  .d-print-none {
+    display: none !important;
   }
 }
 /*# sourceMappingURL=bootstrap-utilities.css.map */
