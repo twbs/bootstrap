@@ -358,6 +358,15 @@ Updates the position of an element's tooltip.
 
 {{< highlight js >}}tooltip.update(){{< /highlight >}}
 
+#### getInstance
+
+*Static* method which allows you to get the tooltip instance associated with a DOM element
+
+{{< highlight js >}}
+var exampleTriggerEl = document.getElementById('example')
+var tooltip = bootstrap.Tooltip.getInstance(exampleTriggerEl) // Returns a Bootstrap tooltip instance
+{{< /highlight >}}
+
 ### Events
 
 <table class="table">

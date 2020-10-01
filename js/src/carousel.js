@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha1): carousel.js
+ * Bootstrap (v5.0.0-alpha2): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -28,7 +28,7 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'carousel'
-const VERSION = '5.0.0-alpha1'
+const VERSION = '5.0.0-alpha2'
 const DATA_KEY = 'bs.carousel'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -263,15 +263,12 @@ class Carousel {
 
   _addEventListeners() {
     if (this._config.keyboard) {
-      EventHandler
-        .on(this._element, EVENT_KEYDOWN, event => this._keydown(event))
+      EventHandler.on(this._element, EVENT_KEYDOWN, event => this._keydown(event))
     }
 
     if (this._config.pause === 'hover') {
-      EventHandler
-        .on(this._element, EVENT_MOUSEENTER, event => this.pause(event))
-      EventHandler
-        .on(this._element, EVENT_MOUSELEAVE, event => this.cycle(event))
+      EventHandler.on(this._element, EVENT_MOUSEENTER, event => this.pause(event))
+      EventHandler.on(this._element, EVENT_MOUSELEAVE, event => this.cycle(event))
     }
 
     if (this._config.touch && this._touchSupported) {
@@ -476,24 +473,23 @@ class Carousel {
 
       const transitionDuration = getTransitionDurationFromElement(activeElement)
 
-      EventHandler
-        .one(activeElement, TRANSITION_END, () => {
-          nextElement.classList.remove(directionalClassName, orderClassName)
-          nextElement.classList.add(CLASS_NAME_ACTIVE)
+      EventHandler.one(activeElement, TRANSITION_END, () => {
+        nextElement.classList.remove(directionalClassName, orderClassName)
+        nextElement.classList.add(CLASS_NAME_ACTIVE)
 
-          activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
+        activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
 
-          this._isSliding = false
+        this._isSliding = false
 
-          setTimeout(() => {
-            EventHandler.trigger(this._element, EVENT_SLID, {
-              relatedTarget: nextElement,
-              direction: eventDirectionName,
-              from: activeElementIndex,
-              to: nextElementIndex
-            })
-          }, 0)
-        })
+        setTimeout(() => {
+          EventHandler.trigger(this._element, EVENT_SLID, {
+            relatedTarget: nextElement,
+            direction: eventDirectionName,
+            from: activeElementIndex,
+            to: nextElementIndex
+          })
+        }, 0)
+      })
 
       emulateTransitionEnd(activeElement, transitionDuration)
     } else {
@@ -593,8 +589,7 @@ class Carousel {
  * ------------------------------------------------------------------------
  */
 
-EventHandler
-  .on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler)
+EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler)
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)

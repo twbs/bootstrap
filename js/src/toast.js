@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha1): toast.js
+ * Bootstrap (v5.0.0-alpha2): toast.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -24,7 +24,7 @@ import Manipulator from './dom/manipulator'
  */
 
 const NAME = 'toast'
-const VERSION = '5.0.0-alpha1'
+const VERSION = '5.0.0-alpha2'
 const DATA_KEY = 'bs.toast'
 const EVENT_KEY = `.${DATA_KEY}`
 
@@ -48,7 +48,7 @@ const DefaultType = {
 const Default = {
   animation: true,
   autohide: true,
-  delay: 500
+  delay: 5000
 }
 
 const SELECTOR_DATA_DISMISS = '[data-dismiss="toast"]'
@@ -170,7 +170,7 @@ class Toast {
     config = {
       ...Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...typeof config === 'object' && config ? config : {}
+      ...(typeof config === 'object' && config ? config : {})
     }
 
     typeCheckConfig(NAME, config, this.constructor.DefaultType)
@@ -179,12 +179,7 @@ class Toast {
   }
 
   _setListeners() {
-    EventHandler.on(
-      this._element,
-      EVENT_CLICK_DISMISS,
-      SELECTOR_DATA_DISMISS,
-      () => this.hide()
-    )
+    EventHandler.on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, () => this.hide())
   }
 
   _clearTimeout() {

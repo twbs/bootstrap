@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha1): scrollspy.js
+ * Bootstrap (v5.0.0-alpha2): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -24,7 +24,7 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'scrollspy'
-const VERSION = '5.0.0-alpha1'
+const VERSION = '5.0.0-alpha2'
 const DATA_KEY = 'bs.scrollspy'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -70,9 +70,7 @@ class ScrollSpy {
     this._element = element
     this._scrollElement = element.tagName === 'BODY' ? window : element
     this._config = this._getConfig(config)
-    this._selector = `${this._config.target} ${SELECTOR_NAV_LINKS},` +
-                          `${this._config.target} ${SELECTOR_LIST_ITEMS},` +
-                          `${this._config.target} .${CLASS_NAME_DROPDOWN_ITEM}`
+    this._selector = `${this._config.target} ${SELECTOR_NAV_LINKS}, ${this._config.target} ${SELECTOR_LIST_ITEMS}, ${this._config.target} .${CLASS_NAME_DROPDOWN_ITEM}`
     this._offsets = []
     this._targets = []
     this._activeTarget = null
@@ -113,32 +111,26 @@ class ScrollSpy {
 
     this._offsets = []
     this._targets = []
-
     this._scrollHeight = this._getScrollHeight()
 
     const targets = SelectorEngine.find(this._selector)
 
-    targets
-      .map(element => {
-        let target
-        const targetSelector = getSelectorFromElement(element)
+    targets.map(element => {
+      const targetSelector = getSelectorFromElement(element)
+      const target = targetSelector ? SelectorEngine.findOne(targetSelector) : null
 
-        if (targetSelector) {
-          target = SelectorEngine.findOne(targetSelector)
+      if (target) {
+        const targetBCR = target.getBoundingClientRect()
+        if (targetBCR.width || targetBCR.height) {
+          return [
+            Manipulator[offsetMethod](target).top + offsetBase,
+            targetSelector
+          ]
         }
+      }
 
-        if (target) {
-          const targetBCR = target.getBoundingClientRect()
-          if (targetBCR.width || targetBCR.height) {
-            return [
-              Manipulator[offsetMethod](target).top + offsetBase,
-              targetSelector
-            ]
-          }
-        }
-
-        return null
-      })
+      return null
+    })
       .filter(item => item)
       .sort((a, b) => a[0] - b[0])
       .forEach(item => {
@@ -166,7 +158,7 @@ class ScrollSpy {
   _getConfig(config) {
     config = {
       ...Default,
-      ...typeof config === 'object' && config ? config : {}
+      ...(typeof config === 'object' && config ? config : {})
     }
 
     if (typeof config.target !== 'string' && isElement(config.target)) {
@@ -253,8 +245,7 @@ class ScrollSpy {
     const link = SelectorEngine.findOne(queries.join(','))
 
     if (link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
-      SelectorEngine
-        .findOne(SELECTOR_DROPDOWN_TOGGLE, link.closest(SELECTOR_DROPDOWN))
+      SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE, link.closest(SELECTOR_DROPDOWN))
         .classList.add(CLASS_NAME_ACTIVE)
 
       link.classList.add(CLASS_NAME_ACTIVE)
@@ -262,8 +253,7 @@ class ScrollSpy {
       // Set triggered link as active
       link.classList.add(CLASS_NAME_ACTIVE)
 
-      SelectorEngine
-        .parents(link, SELECTOR_NAV_LIST_GROUP)
+      SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP)
         .forEach(listGroup => {
           // Set triggered links parents as active
           // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
