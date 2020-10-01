@@ -19,7 +19,7 @@ sections:
   - title: Input group
     description: Attach labels and buttons to your inputs for increased semantic value.
   - title: Floating labels
-    description: Create beautifully simple forms labels that float over your input fields.
+    description: Create beautifully simple form labels that float over your input fields.
   - title: Layout
     description: Create inline, horizontal, or complex grid-based layouts with your forms.
   - title: Validation
