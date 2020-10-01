@@ -30,18 +30,18 @@ Some combinations of colors that currently make up Bootstrap's default paletteâ€
 
 Content which should be visually hidden, but remain accessible to assistive technologies such as screen readers, can be styled using the `.visually-hidden` class. This can be useful in situations where additional visual information or cues (such as meaning denoted through the use of color) need to also be conveyed to non-visual users.
 
-{{< highlight html >}}
+```html
 <p class="text-danger">
   <span class="visually-hidden">Danger: </span>
   This action is not reversible
 </p>
-{{< /highlight >}}
+```
 
 For visually hidden interactive controls, such as traditional "skip" links, use the `.visually-hidden-focusable` class. This will ensure that the control becomes visible once focused (for sighted keyboard users). **Watch out, compared to the equivalent `.sr-only` and `.sr-only-focusable` classes in past versions, Bootstrap 5's `.visually-hidden-focusable` is a standalone class, and must not be used in combination with the `.visually-hidden` class.**
 
-{{< highlight html >}}
+```html
 <a class="visually-hidden-focusable" href="#content">Skip to main content</a>
-{{< /highlight >}}
+```
 
 ### Reduced motion
 

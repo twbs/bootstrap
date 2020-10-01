@@ -121,33 +121,33 @@ See them in action and compare them in our [Grid example]({{< docsref "/examples
 
 Our default `.container` class is a responsive, fixed-width container, meaning its `max-width` changes at each breakpoint.
 
-{{< highlight html >}}
+```html
 <div class="container">
   <!-- Content here -->
 </div>
-{{< /highlight >}}
+```
 
 ## Responsive containers
 
 Responsive containers allow you to specify a class that is 100% wide until the specified breakpoint is reached, after which we apply `max-width`s for each of the higher breakpoints. For example, `.container-sm` is 100% wide to start until the `sm` breakpoint is reached, where it will scale up with `md`, `lg`, `xl`, and `xxl`.
 
-{{< highlight html >}}
+```html
 <div class="container-sm">100% wide until small breakpoint</div>
 <div class="container-md">100% wide until medium breakpoint</div>
 <div class="container-lg">100% wide until large breakpoint</div>
 <div class="container-xl">100% wide until extra large breakpoint</div>
 <div class="container-xxl">100% wide until extra extra large breakpoint</div>
-{{< /highlight >}}
+```
 
 ## Fluid containers
 
 Use `.container-fluid` for a full width container, spanning the entire width of the viewport.
 
-{{< highlight html >}}
+```html
 <div class="container-fluid">
   ...
 </div>
-{{< /highlight >}}
+```
 
 ## Sass
 
@@ -157,7 +157,7 @@ As shown above, Bootstrap generates a series of predefined container classes to 
 
 In addition to customizing the Sass, you can also create your own containers with our Sass mixin.
 
-{{< highlight scss >}}
+```scss
 // Source mixin
 @mixin make-container($padding-x: $container-padding-x) {
   width: 100%;
@@ -171,6 +171,6 @@ In addition to customizing the Sass, you can also create your own containers wit
 .custom-container {
   @include make-container();
 }
-{{< /highlight >}}
+```
 
 For more information and examples on how to modify our Sass maps and variables, please refer to [the Sass section of the Grid documentation]({{< docsref "/layout/grid#sass" >}}).

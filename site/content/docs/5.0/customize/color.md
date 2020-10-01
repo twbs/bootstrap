@@ -97,12 +97,12 @@ Add, remove, or modify values within the map to update how they're used in many 
 
 Here's how you can use these in your Sass:
 
-{{< highlight scss >}}
+```scss
 .alpha { color: $purple; }
 .beta {
   color: $yellow-300;
   background-color: $indigo-900;
 }
-{{< /highlight >}}
+```
 
 [Color utility classes]({{< docsref "/utilities/colors" >}}) are also available for setting `color` and `background-color` using the `500` color values.
