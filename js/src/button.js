@@ -23,6 +23,7 @@ const JQUERY_NO_CONFLICT = $.fn[NAME]
 const CLASS_NAME_ACTIVE = 'active'
 const CLASS_NAME_BUTTON = 'btn'
 const CLASS_NAME_FOCUS = 'focus'
+const CLASS_NAME_CHANGING = 'changing'
 
 const SELECTOR_DATA_TOGGLE_CARROT = '[data-toggle^="button"]'
 const SELECTOR_DATA_TOGGLES = '[data-toggle="buttons"]'
@@ -56,7 +57,7 @@ class Button {
 
   // Public
 
-  toggle(avoidTriggerChange) {
+  toggle() {
     let triggerChangeEvent = true
     let addAriaPressed = true
     const rootElement = $(this._element).closest(
@@ -85,10 +86,10 @@ class Button {
           if (input.type === 'checkbox' || input.type === 'radio') {
             input.checked = !this._element.classList.contains(CLASS_NAME_ACTIVE)
           }
-
-          if (!avoidTriggerChange) {
+          if (!$(this._element).hasClass(CLASS_NAME_CHANGING)) {
             $(input).trigger('change')
           }
+          $(this._element).removeClass(CLASS_NAME_CHANGING)
         }
 
         input.focus()
@@ -115,7 +116,7 @@ class Button {
 
   // Static
 
-  static _jQueryInterface(config, avoidTriggerChange) {
+  static _jQueryInterface(config) {
     return this.each(function () {
       let data = $(this).data(DATA_KEY)
 
@@ -125,7 +126,7 @@ class Button {
       }
 
       if (config === 'toggle') {
-        data[config](avoidTriggerChange)
+        data[config]()
       }
     })
   }
@@ -157,7 +158,10 @@ $(document)
       }
 
       if (initialButton.tagName === 'INPUT' || button.tagName !== 'LABEL') {
-        Button._jQueryInterface.call($(button), 'toggle', initialButton.tagName === 'INPUT')
+        if (initialButton.tagName === 'INPUT') {
+          $(button).addClass(CLASS_NAME_CHANGING)
+        }
+        Button._jQueryInterface.call($(button), 'toggle')
       }
     }
   })
