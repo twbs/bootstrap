@@ -20,9 +20,9 @@ Bootstrap includes several predefined button styles, each serving its own semant
 <button type="button" class="btn btn-link">Link</button>
 {{< /example >}}
 
-{{< callout info >}}
+{{% callout info %}}
 {{< partial "callout-warning-color-assistive-technologies.md" >}}
-{{< /callout >}}
+{{% /callout %}}
 
 ## Disable text wrapping
 
@@ -95,19 +95,19 @@ Disabled buttons using the `<a>` element behave a bit different:
 <a href="#" class="btn btn-secondary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">Link</a>
 {{< /example >}}
 
-{{< callout warning >}}
+{{% callout warning %}}
 ##### Link functionality caveat
 
 The `.disabled` class uses `pointer-events: none` to try to disable the link functionality of `<a>`s, but that CSS property is not yet standardized. In addition, even in browsers that do support `pointer-events: none`, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links. So to be safe, in addition to `aria-disabled="true"`, also include a `tabindex="-1"` attribute on these links to prevent them from receiving keyboard focus, and use custom JavaScript to disable their functionality altogether.
-{{< /callout >}}
+{{% /callout %}}
 
 ## Button plugin
 
 The button plugin allows you to create simple on/off toggle buttons.
 
-{{< callout info >}}
+{{% callout info %}}
 Visually, these toggle buttons are identical to the [checkbox toggle buttons]({{< docsref "/forms/checks-radios#checkbox-toggle-buttons" >}}). However, they are conveyed differently by assistive technologies: the checkbox toggles will be announced by screen readers as "checked"/"not checked" (since, despite their appearance, they are fundamentally still checkboxes), whereas these toggle buttons will be announced as "button"/"button pressed". The choice between these two approaches will depend on the type of toggle you are creating, and whether or not the toggle will make sense to users when announced as a checkbox or as an actual button.
-{{< /callout >}}
+{{% /callout %}}
 
 ### Toggle states
 

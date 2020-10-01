@@ -49,9 +49,9 @@ Use our background utility classes to quickly change the appearance of a badge. 
 {{< /badge.inline >}}
 {{< /example >}}
 
-{{< callout info >}}
+{{% callout info %}}
 {{< partial "callout-warning-color-assistive-technologies.md" >}}
-{{< /callout >}}
+{{% /callout %}}
 
 ## Pill badges
 

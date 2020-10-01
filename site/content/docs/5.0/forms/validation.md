@@ -9,9 +9,9 @@ extra_js:
     async: true
 ---
 
-{{< callout warning >}}
+{{% callout warning %}}
 We are aware that currently the client-side custom validation styles and tooltips are not accessible, since they are not exposed to assistive technologies. While we work on a solution, we'd recommend either using the server-side option or the default browser validation method.
-{{< /callout >}}
+{{% /callout %}}
 
 ## How it works
 
