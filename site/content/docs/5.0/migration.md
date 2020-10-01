@@ -21,6 +21,19 @@ toc: true
 
 - Introduce `$enable-smooth-scroll`, which applies `scroll-behavior: smooth` globally—except for users asking for reduced motion through `prefers-reduced-motion` media query. [See #31877](https://github.com/twbs/bootstrap/pull/31877)
 
+### Components
+
+#### Input groups
+
+- Drastically reduced supported options, dropping support for:
+  - Addons on both sides
+  - Dropdowns and button groups as addons
+  - Multiple text and button addons
+  - Multiple form controls
+- Replaced `.input-group` with `.input-group-start` and `.input-group-end`. Use one of the two classes depending on where you want your text or button addon.
+
+---
+
 ## v5.0.0-alpha2
 
 ### Sass
@@ -257,17 +270,8 @@ Changes to Reboot, typography, tables, and more.
 - Dropped `.form-row` for the more flexible grid gutters.
 - Dropped `.form-inline` for the more flexible grid.
 - Dropped support for `.form-control-plaintext` inside `.input-group`s.
-- Form labels now require the `.form-label` class. Sass variables are now available to style form labels to your needs. [See #30476](https://github.com/twbs/bootstrap/pull/30476)
-
-#### Input groups
-
-- Drastically reduced supported options, dropping support for:
-  - Addons on both sides
-  - Dropdowns and button groups as addons
-  - Multiple text and button addons
-  - Multiple form controls
-- Replaced `.input-group` with `.input-group-start` and `.input-group-end`. Use one of the two classes depending on where you want your text or button addon.
 - Dropped `.input-group-append` and `.input-group-prepend`. You can now just add buttons and `.input-group-text` as direct children of the input groups.
+- Form labels now require the `.form-label` class. Sass variables are now available to style form labels to your needs. [See #30476](https://github.com/twbs/bootstrap/pull/30476)
 
 ### Components
 
