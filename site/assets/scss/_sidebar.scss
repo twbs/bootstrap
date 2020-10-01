@@ -1,4 +1,11 @@
+.bd-sidebar {
+  @include media-breakpoint-down(md) {
+    margin: 0 -.75rem 1rem;
+  }
+}
+
 .bd-links {
+  overflow: auto;
   font-weight: 600;
 
   @include media-breakpoint-up(md) {
@@ -12,6 +19,14 @@
     padding-left: .25rem;
     margin-left: -.25rem;
     overflow-y: auto;
+  }
+
+  > ul {
+    @include media-breakpoint-down(md) {
+      padding: 1.5rem .75rem;
+      background-color: $gray-100;
+      border-bottom: 1px solid $gray-200;
+    }
   }
 
   a {

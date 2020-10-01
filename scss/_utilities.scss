@@ -39,6 +39,29 @@ $utilities: map-merge(
       property: position,
       values: static relative absolute fixed sticky
     ),
+    "top": (
+      property: top,
+      values: $position-values
+    ),
+    "bottom": (
+      property: bottom,
+      values: $position-values
+    ),
+    "left": (
+      property: left,
+      values: $position-values
+    ),
+    "right": (
+      property: right,
+      values: $position-values
+    ),
+    "translate-middle": (
+      property: transform,
+      class: translate-middle,
+      values: (
+        null: (translateX(-50%) translateY(-50%))
+      )
+    ),
     "border": (
       property: border,
       values: (
@@ -425,7 +448,7 @@ $utilities: map-merge(
     "gradient": (
       property: background-image,
       class: bg,
-      values: (gradient: var(--bs-gradient))
+      values: (gradient: var(--#{$variable-prefix}gradient))
     ),
     "white-space": (
       property: white-space,
@@ -452,7 +475,7 @@ $utilities: map-merge(
     "font-family": (
       property: font-family,
       class: font,
-      values: (monospace: var(--bs-font-monospace))
+      values: (monospace: var(--#{$variable-prefix}font-monospace))
     ),
     "user-select": (
       property: user-select,

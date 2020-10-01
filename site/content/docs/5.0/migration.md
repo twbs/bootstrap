@@ -11,17 +11,23 @@ toc: true
 
 ### Sass
 
-- "Screen reader" classes are now "visually hidden" classes.
-  - Changed the Sass file from `scss/helpers/_screenreaders.scss` to `scss/helpers/_visually-hidden.scss`
-  - Renamed `.sr-only` and `.sr-only-focusable` to `.visually-hidden` and `.visually-hidden-focusable`
-  - Renamed `sr-only()` and `sr-only-focusable()` mixins to `visually-hidden()` and `visually-hidden-focusable()`.
-- Add border width utility, see [31484](https://github.com/twbs/bootstrap/pull/31484)
+- Added default parameters to each `border-radius` mixin. [See #31571](https://github.com/twbs/bootstrap/pull/31571).
+- Updated the next breakpoint when targeting only the `xs` breakpoint. [See #31500](https://github.com/twbs/bootstrap/pull/31500).
+- `box-shadow` mixins now allow `null` values and drop `none` from multiple arguments. [See #30394](https://github.com/twbs/bootstrap/pull/30394).
 
 ### Docs
 
 - Renamed "Screen readers" helper page to "Visually hidden", and filename to `visually-hidden`
 - Renamed "Checks" page to "Checks & radios", and filename to `checks-radios`
 - Improved documentation of check/radio powered button groups
+- Improved skip links in our docs.
+- Redesigned docs navigation for larger tap targets on mobile and a streamlined subnav.
+- [#31114](https://github.com/twbs/bootstrap/pull/31114): Improved form documentation with regards to accessibility.
+
+### Layout
+
+- Container horizontal padding updated to match the gutter size of `.row`s.
+- [#31439](https://github.com/twbs/bootstrap/pull/31439): Removed `flex: 1 0 100%` from rows due to regressions in grid behavior.
 
 ### Reboot
 
@@ -31,26 +37,53 @@ toc: true
 
 - Bumped color contrast ratio from 3:1 to 4.5:1.
 - Set `$black` as color contrast color instead of `$gray-900`.
-- Improved `$green` (and its theme alias `$success`) color to reach new minimum color contrast (moving from `#28a745` to `#198754`).
+- Improved `$green` (and its theme alias `$success`) color to reach a new minimum color contrast (moving from `#28a745` to `#198754`).
 - Improved `$cyan` (and its theme alias `$info`) color to be more vibrant (moving from `#17a2b8` to `#0dcaf0`).
 
 ### Forms
 
-- Resized checks and radios to be `1em` instead of `1.25em` in an effort to make them scale better with custom `$font-size-base` values and more.
+- [#31383](https://github.com/twbs/bootstrap/pull/31383): Resized checks and radios to be `1em` instead of `1.25em` in an effort to make them scale better with custom `$font-size-base` values and more.
 
 ### Components
 
-### Badges
+#### Badges
 
-- Increased default padding for badges from `.25em`/`.5em` to `.35em`/`.65em`.
+- [#31132](https://github.com/twbs/bootstrap/pull/31132): Increased default padding for badges from `.25em`/`.5em` to `.35em`/`.65em`.
 
 #### Buttons
 
-- Disabled states of buttons are easier to customize thanks to additional arguments in the `button-variant()` mixin. [See #30639.](https://github.com/twbs/bootstrap/pull/30639)
+- [#30639](https://github.com/twbs/bootstrap/pull/30639): Disabled states of buttons are easier to customize thanks to additional arguments in the `button-variant()` mixin.
+- [#30989](https://github.com/twbs/bootstrap/pull/30989): Updated buttons to ensure increased contrast on hover and active states.
+
+#### Carousel
+
+- Replaced chevron icons for carousel controls with new SVGs from [Bootstrap Icons]({{< param "icons" >}}).
+- Added new [`.carousel-dark` variant]({{< docsref "/components/carousel#dark-variant" >}}) for dark text, controls, and indicators (great for lighter backgrounds).
+
+#### Close button
+
+- Renamed `.close` to `.btn-close` for a less generic name.
+- Close buttons now use a `background-image` (embedded SVG) instead of a `&times;` in the HTML, allowing for easier customization without the need to touch your markup.
+- Added new variables to better control the customization.
+- Added new `.btn-close-white` variant that uses `filter: invert(1)` to enable higher contrast dismiss icons against darker backgrounds.
+
+#### Collapse
+
+- [#31346](https://github.com/twbs/bootstrap/pull/31346): Removed scroll anchoring for accordions.
+
+#### Dropdowns
+
+- Added new `.dropdown-menu-dark` variant and associated variables for on-demand dark dropdowns.
+- Added new variable for `$dropdown-padding-x`.
+- Darkened the dropdown divider for improved contrast.
 
 #### Navs
 
-- Added new `null` variables for `font-size`, `font-weight`, `color`, and `:hover` `color` to the `.nav-link` class.
+- [#31035](https://github.com/twbs/bootstrap/pull/31035): Added new `null` variables for `font-size`, `font-weight`, `color`, and `:hover` `color` to the `.nav-link` class.
+
+#### Pagination
+
+- Added `transition`s to pagination links. [See #31396](https://github.com/twbs/bootstrap/pull/31396).
 
 #### Popovers
 
@@ -58,12 +91,34 @@ toc: true
 
 #### Toasts
 
-- Made default toast duration 5 seconds.
-- Removed `overflow: hidden` from toasts and replaced with proper `border-radius`s with `calc()` functions.
+- [#31109](https://github.com/twbs/bootstrap/pull/31109): Made default toast duration 5 seconds.
+- [#31155](https://github.com/twbs/bootstrap/pull/31155): Clear `timeout` before showing toasts.
+- [#31381](https://github.com/twbs/bootstrap/pull/31381): Removed `overflow: hidden` from toasts and replaced with proper `border-radius`s with `calc()` functions.
+- Updated docs to include additional examples for how to customize and theme toasts.
 
 #### Tooltips
 
 - Renamed `whiteList` option to `allowList`.
+
+### Helpers
+
+- Responsive embed helpers have been renamed to [ratio helpers]({{< docsref "/helpers/ratio" >}}) with new class names and improved behaviors, as well as a helpful CSS variable.
+  - Classes have been renamed to change `by` to `x` in the aspect ratio. For example, `.ratio-16by9` is now `.ratio-16x9`.
+  - We've dropped the `.embed-responsive-item` and element group selector in favor of a simpler `.ratio > *` selector. No more class is needed, and the ratio helper now works with any HTML element.
+  - The `$embed-responsive-aspect-ratios` Sass map has been renamed to `$aspect-ratios` and its values have been simplified to include the class name and the percentage as the `key: value` pair.
+  - CSS variables are now generated and included for each value in the Sass map. Modify the `--aspect-ratio` variable on the `.ratio` to create any [custom aspect ratio]({{< docsref "/helpers/ratio#custom-ratios" >}}).
+- "Screen reader" classes are now ["visually hidden" classes]({{< docsref "/helpers/visually-hidden" >}}).
+  - Changed the Sass file from `scss/helpers/_screenreaders.scss` to `scss/helpers/_visually-hidden.scss`
+  - Renamed `.sr-only` and `.sr-only-focusable` to `.visually-hidden` and `.visually-hidden-focusable`
+  - Renamed `sr-only()` and `sr-only-focusable()` mixins to `visually-hidden()` and `visually-hidden-focusable()`.
+
+### Utilities
+
+- [#31280](https://github.com/twbs/bootstrap/pull/31280): Added new [position utilities]({{< docsref "/utilities/position#arrange-elements" >}}) for `top`, `right`, `bottom`, and `left`. Values include `0`, `50%`, and `100%` for each property.
+  - We also added new `translate` utilities to accompany those position utilities for centering elements when they're being positioned.
+  - Some great examples have been added to the docs to show these off.
+- [#31484](https://github.com/twbs/bootstrap/pull/31484): Added new [`border-width` utility]({{< docsref "/utilities/borders#border-width" >}}).
+- [#31473](https://github.com/twbs/bootstrap/pull/31473): The `.d-none` utility was moved in our CSS to give it more weight over other display utilities.
 
 ---
 
@@ -111,7 +166,7 @@ Changes to our source Sass files and compiled CSS.
 - The `bg-gradient-variant()` mixin is removed since the `.bg-gradient` class can now be used to add gradients to elements instead of the `.bg-gradient-*` classes.
 - The `media-breakpoint-down()` uses the breakpoint itself instead of the next breakpoint. Use `media-breakpoint-down(lg)` instead of `media-breakpoint-down(md)` to target viewports smaller than the `lg` breakpoint.
 - The `media-breakpoint-between()` mixin's second parameter also uses the breakpoint itself instead of the next breakpoint. Use `media-between(sm, lg)` instead of `media-breakpoint-between(sm, md)` to target viewports between the `sm` and `lg` breakpoints.
-- The `box-shadow()` mixin now better supports `none` and `null` with multiple arguments. Now you can pass multiple arguements with either value, and get the expected output. [See #30394](https://github.com/twbs/bootstrap/pull/30394).
+- The `box-shadow()` mixin now better supports `none` and `null` with multiple arguments. Now you can pass multiple arguments with either value and get the expected output. [See #30394](https://github.com/twbs/bootstrap/pull/30394).
 - Each `border-radius()` mixin now has a default value. You can now call these mixins without specifying a border radius value and the `$border-radius` variable will be used. [See #31571](https://github.com/twbs/bootstrap/pull/31571)
 
 ### JavaScript
@@ -137,7 +192,7 @@ Changes to any layout tools and our grid system.
 - Remove `position: relative` from grid columns.
 - The horizontal padding is added to the direct children in a row instead of the columns themselves.
   - This simplifies our codebase.
-  - The column classes can now be used stand alone. Whenever they are used outside a `.row`, horizontal padding won't be added.
+  - The column classes can now be used stand-alone. Whenever they are used outside a `.row`, horizontal padding won't be added.
 - The responsive gutter classes can be used to control the gutter width in horizontal, vertical or both directions.
 - The gutter width is now set in `rem` and decreased from `30px` to `1.5rem` (24px).
 - `bootstrap-grid.css` now only applies `box-sizing: border-box` to the column instead of resetting the global box-sizing. This way the grid system can be used, even if `box-sizing: border-box` is not applied to each element.
@@ -170,7 +225,7 @@ Changes to Reboot, typography, tables, and more.
   - Split out old Forms page into several subpages
   - Moved input groups docs under the new Forms section
 - Rearranged source Sass files under `scss/forms/`, including moving over input group styles.
-- Combined native and custom checkboxes and radios into single `.form-check` class.
+- Combined native and custom checkboxes and radios into a single `.form-check` class.
   - New checks support sizing via `em`/`font-size` or explicit modifier classes now.
   - New checks now appear larger by default for improved usability.
   - Dropped `.custom-control` and associated classes.
