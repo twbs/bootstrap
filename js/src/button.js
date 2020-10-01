@@ -83,9 +83,11 @@ class Button {
           if (input.type === 'checkbox' || input.type === 'radio') {
             input.checked = !this._element.classList.contains(CLASS_NAME_ACTIVE)
           }
+
           if (!$(this._element).hasClass(CLASS_NAME_CHANGING)) {
             $(input).trigger('change')
           }
+
           $(this._element).removeClass(CLASS_NAME_CHANGING)
         }
 
@@ -155,9 +157,11 @@ $(document)
       }
 
       if (initialButton.tagName === 'INPUT' || button.tagName !== 'LABEL') {
+
         if (initialButton.tagName === 'INPUT') {
           $(button).addClass(CLASS_NAME_CHANGING)
         }
+
         Button._jQueryInterface.call($(button), 'toggle')
       }
     }
