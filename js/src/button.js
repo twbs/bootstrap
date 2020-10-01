@@ -157,7 +157,6 @@ $(document)
       }
 
       if (initialButton.tagName === 'INPUT' || button.tagName !== 'LABEL') {
-
         if (initialButton.tagName === 'INPUT') {
           $(button).addClass(CLASS_NAME_CHANGING)
         }
