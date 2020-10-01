@@ -44,10 +44,10 @@ You can use a link with the `href` attribute, or a button with the `data-target`
 
 {{< example >}}
 <p>
-  <a class="btn btn-primary" data-toggle="collapse" href="#collapseHorizontalExample" role="button" aria-expanded="false" aria-controls="collapseHorizontalExample">
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseHorizontalExample" role="button" aria-expanded="true" aria-controls="collapseHorizontalExample">
     Link with href
   </a>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseHorizontalExample" aria-expanded="false" aria-controls="collapseHorizontalExample">
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseHorizontalExample" aria-expanded="true" aria-controls="collapseHorizontalExample">
     Button with data-target
   </button>
 </p>
