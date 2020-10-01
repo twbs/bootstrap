@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h3 align="center">Bootstrap</h3>
+<h3 align="center">BOOTSTRAP</h3>
 
 <p align="center">
   Sleek, intuitive, and powerful front-end framework for faster and easier web development.
@@ -23,7 +23,7 @@
 
 
 ## Bootstrap 4
-
+Get started with Bootstrap, the world’s most popular framework for building responsive, mobile-first sites, with BootstrapCDN and a template starter page.
 Our default branch is for development of our upcoming Bootstrap 5 release. Head to the [`v4-dev` branch](https://github.com/twbs/bootstrap/tree/v4-dev) to view the readme, documentation, and source code for Bootstrap 4.
 
 
@@ -43,8 +43,7 @@ Our default branch is for development of our upcoming Bootstrap 5 release. Head 
 
 
 ## Quick start
-
-Several quick start options are available:
+there are multipal Several quick start options are available:
 
 - [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.0.0-alpha2.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
