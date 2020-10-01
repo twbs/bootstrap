@@ -364,6 +364,10 @@ var carousel = new bootstrap.Carousel(myCarousel, {
     </tr>
     <tr>
       <td><code>nextWhenVisible</code></td>
+      <td>Don't cycle carousel to next if it's not available. <strong>Returns to the caller before the target item has been shown</strong>
+    </tr>
+    <tr>
+      <td><code>to</code></td>
       <td>Cycles the carousel to a particular frame (0 based, similar to an array). <strong>Returns to the caller before the target item has been shown</strong> (e.g., before the <code>slid.bs.carousel</code> event occurs).</td>
     </tr>
     <tr>
