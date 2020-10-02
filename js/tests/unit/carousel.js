@@ -517,6 +517,11 @@ $(function () {
     var $carousel = $(templateHTML)
 
     $carousel.appendTo('body')
+    $carousel.bootstrapCarousel(0)
+    assert.strictEqual($carousel.data('bs.carousel')._config.interval, 2814)
+    $carousel.remove()
+
+    $carousel.appendTo('body')
     $carousel.bootstrapCarousel(1)
     assert.strictEqual($carousel.data('bs.carousel')._config.interval, 3814)
     $carousel.remove()
