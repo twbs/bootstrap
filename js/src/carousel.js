@@ -184,11 +184,7 @@ class Carousel {
       this._activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
 
       if (this._activeElement) {
-        const activeElementInterval = parseInt(this._activeElement.getAttribute('data-interval'), 10)
-
-        if (activeElementInterval) {
-          this._config.interval = activeElementInterval
-        }
+        this._updateInterval(this._activeElement)
       }
 
       this._interval = setInterval(
@@ -376,7 +372,7 @@ class Carousel {
     const activeIndex = this._getItemIndex(activeElement)
     const lastItemIndex = this._items.length - 1
     const isGoingToWrap = (isPrevDirection && activeIndex === 0) ||
-                            (isNextDirection && activeIndex === lastItemIndex)
+      (isNextDirection && activeIndex === lastItemIndex)
 
     if (isGoingToWrap && !this._config.wrap) {
       return activeElement
@@ -416,6 +412,17 @@ class Carousel {
       if (nextIndicator) {
         nextIndicator.classList.add(CLASS_NAME_ACTIVE)
       }
+    }
+  }
+
+  _updateInterval(element) {
+    const elementInterval = parseInt(element.getAttribute('data-interval'), 10)
+
+    if (elementInterval) {
+      this._config.defaultInterval = this._config.defaultInterval || this._config.interval
+      this._config.interval = elementInterval
+    } else {
+      this._config.interval = this._config.defaultInterval || this._config.interval
     }
   }
 
@@ -473,13 +480,7 @@ class Carousel {
       activeElement.classList.add(directionalClassName)
       nextElement.classList.add(directionalClassName)
 
-      const nextElementInterval = parseInt(nextElement.getAttribute('data-interval'), 10)
-      if (nextElementInterval) {
-        this._config.defaultInterval = this._config.defaultInterval || this._config.interval
-        this._config.interval = nextElementInterval
-      } else {
-        this._config.interval = this._config.defaultInterval || this._config.interval
-      }
+      this._updateInterval(nextElement)
 
       const transitionDuration = getTransitionDurationFromElement(activeElement)
 
