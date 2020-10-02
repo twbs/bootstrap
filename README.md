@@ -141,7 +141,7 @@ Learn more about using Hugo by reading its [documentation](https://gohugo.io/doc
 
 ### Documentation for previous releases
 
-You can find all our previous releases docs on <https://v5.getbootstrap.com/docs/versions/>.
+You can find all our previous releases documentations on <https://v5.getbootstrap.com/docs/versions/>.
 
 [Previous releases](https://github.com/twbs/bootstrap/releases) and their documentation are also available for download.
 
