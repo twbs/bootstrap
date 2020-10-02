@@ -23,7 +23,6 @@ const JQUERY_NO_CONFLICT = $.fn[NAME]
 const CLASS_NAME_ACTIVE = 'active'
 const CLASS_NAME_BUTTON = 'btn'
 const CLASS_NAME_FOCUS = 'focus'
-const CLASS_NAME_CHANGING = 'changing'
 
 const SELECTOR_DATA_TOGGLE_CARROT = '[data-toggle^="button"]'
 const SELECTOR_DATA_TOGGLES = '[data-toggle="buttons"]'
@@ -47,6 +46,7 @@ const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 class Button {
   constructor(element) {
     this._element = element
+    this.shouldAvoidTriggerChange = false
   }
 
   // Getters
@@ -84,11 +84,9 @@ class Button {
             input.checked = !this._element.classList.contains(CLASS_NAME_ACTIVE)
           }
 
-          if (!$(this._element).hasClass(CLASS_NAME_CHANGING)) {
+          if (!this.shouldAvoidTriggerChange) {
             $(input).trigger('change')
           }
-
-          $(this._element).removeClass(CLASS_NAME_CHANGING)
         }
 
         input.focus()
@@ -114,7 +112,7 @@ class Button {
 
   // Static
 
-  static _jQueryInterface(config) {
+  static _jQueryInterface(config, avoidTriggerChange) {
     return this.each(function () {
       const $element = $(this)
       let data = $element.data(DATA_KEY)
@@ -123,6 +121,8 @@ class Button {
         data = new Button(this)
         $element.data(DATA_KEY, data)
       }
+
+      data.shouldAvoidTriggerChange = avoidTriggerChange
 
       if (config === 'toggle') {
         data[config]()
@@ -157,11 +157,7 @@ $(document)
       }
 
       if (initialButton.tagName === 'INPUT' || button.tagName !== 'LABEL') {
-        if (initialButton.tagName === 'INPUT') {
-          $(button).addClass(CLASS_NAME_CHANGING)
-        }
-
-        Button._jQueryInterface.call($(button), 'toggle')
+        Button._jQueryInterface.call($(button), 'toggle', initialButton.tagName === 'INPUT')
       }
     }
   })
