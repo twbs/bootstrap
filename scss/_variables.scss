@@ -498,26 +498,26 @@ $table-cell-padding-x-sm:     .25rem !default;
 
 $table-cell-vertical-align:   top !default;
 
-$table-color:                 var(--bs-table-color, $body-color) !default;
-$table-bg:                    var(--bs-table-bg, transparent) !default;
+$table-color:                 var(--#{$variable-prefix}table-color, $body-color) !default;
+$table-bg:                    var(--#{$variable-prefix}table-bg, transparent) !default;
 
 $table-th-font-weight:        null !default;
 
-$table-striped-color:         var(--bs-table-striped-color, $table-color) !default;
+$table-striped-color:         var(--#{$variable-prefix}table-striped-color, $table-color) !default;
 $table-striped-bg-factor:     .05 !default;
-$table-striped-bg:            var(--bs-table-striped-bg, rgba($black, $table-striped-bg-factor)) !default;
+$table-striped-bg:            var(--#{$variable-prefix}table-striped-bg, rgba($black, $table-striped-bg-factor)) !default;
 
-$table-active-color:          var(--bs-table-active-color, $table-color) !default;
+$table-active-color:          var(--#{$variable-prefix}table-active-color, $table-color) !default;
 $table-active-bg-factor:      .1 !default;
-$table-active-bg:             var(--bs-table-active-bg, rgba($black, $table-active-bg-factor)) !default;
+$table-active-bg:             var(--#{$variable-prefix}table-active-bg, rgba($black, $table-active-bg-factor)) !default;
 
-$table-hover-color:           var(--bs-table-hover-color, $table-color) !default;
+$table-hover-color:           var(--#{$variable-prefix}table-hover-color, $table-color) !default;
 $table-hover-bg-factor:       .075 !default;
-$table-hover-bg:              var(--bs-table-hover-bg, rgba($black, $table-hover-bg-factor)) !default;
+$table-hover-bg:              var(--#{$variable-prefix}table-hover-bg, rgba($black, $table-hover-bg-factor)) !default;
 
 $table-border-factor:         .1 !default;
 $table-border-width:          $border-width !default;
-$table-border-color:          var(--bs-table-border-color, $border-color) !default;
+$table-border-color:          var(--#{$variable-prefix}table-border-color, $border-color) !default;
 
 $table-striped-order:         odd !default;
 
