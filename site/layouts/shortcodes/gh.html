@@ -1,25 +1,44 @@
 {{- /*
-  Usage: gh "foo", where foo can be:
+  Usage: `gh type="foo" value="bar" text="foobar"`, where:
 
-  * "pr 1" -> <a href="https://github.com/twbs/bootstrap/pull/1">#1</a>
-  * "issue 2" -> <a href="https://github.com/twbs/bootstrap/issues/2">#2</a>
-  * "@XhmikosR" -> <a href="https://github.com/XhmikosR">@XhmikosR</a>
-  * "a3b09530fb31cfe6bd14d49965c19e8f89c1b023" -> <a href="https://github.com/twbs/bootstrap/commit/a3b09530fb31cfe6bd14d49965c19e8f89c1b023">a3b0953</a>
-  * "a3b0953" -> <a href="https://github.com/twbs/bootstrap/commit/a3b09530fb31cfe6bd14d49965c19e8f89c1b023">a3b0953</a>
+    * type: "issue", "pull", "pr", "pull request", "commit"/"hash", "user" - default: "issue"
+    * value or val: Required - `type`s value, i.e. 1
+    * text: the link's text; default for PRs/Issues #number, @user for users
 
-  Quotes are not always needed, but Hugo can choke on some characters like @, in which case wrap the parameter with quotes. Also, they are needed for PR and Issue
+  Examples:
+
+    * gh type=pr val=1 or gh val=1 -> <a href="https://github.com/twbs/bootstrap/pull/1">#1</a>
+    * gh type=issue val=2-> <a href="https://github.com/twbs/bootstrap/issues/2">#2</a>
+    * gh type=user value=XhmikosR -> <a href="https://github.com/XhmikosR">@XhmikosR</a>
+    * gh type=commit (or hash) value="a3b09530fb31cfe6bd14d49965c19e8f89c1b023" -> <a href="https://github.com/twbs/bootstrap/commit/a3b09530fb31cfe6bd14d49965c19e8f89c1b023">a3b0953</a>
+    * gh type=commit (or hash) value="a3b0953" -> <a href="https://github.com/twbs/bootstrap/commit/a3b09530fb31cfe6bd14d49965c19e8f89c1b023">a3b0953</a>
+
+  Quotes are not always needed, but Hugo can choke on some characters like @, in which case wrap the parameter with quotes.
 */ -}}
 
-{{ range .Params -}}
-  {{- if hasPrefix . "@" -}}
-    <a href="https://github.com/{{ substr . 1 }}">{{ . }}</a>
-  {{- else if hasPrefix (. | lower) "pr" -}}
-    <a href="{{ $.Site.Params.repo }}/pull/{{ trim (substr . 2) " " }}">#{{ trim (substr . 2) " " }}</a>
-  {{- else if hasPrefix (. | lower) "issue" -}}
-    <a href="{{ $.Site.Params.repo }}/issues/{{ trim (substr . 5) " " }}">#{{ trim (substr . (len "issue")) " " }}</a>
-  {{- else if or (eq (len .) 7) (eq (len .) 40) -}}
-    <a href="{{ $.Site.Params.repo }}/commit/{{ trim . " " }}">{{ trim (substr . 0 7) " " }}</a>
+{{- $type := .Get "type" | default "pr" -}}
+{{- $is_pr := or (eq $type "pull") (eq $type "pr") (eq $type "pull request") -}}
+{{- $text := .Get "text" -}}
+{{- $value := or (.Get "value") (.Get "val") -}}
+{{- $commit := or (.Get "commit") (.Get "hash") -}}
+
+{{- if not $text -}}
+  {{- if eq $type "user" -}}
+    {{- $text = printf "@%s" $value -}}
+    {{- $type = "" -}}
+  {{- else if (or $is_pr (eq $type "issue")) -}}
+    {{- $text = printf "#%s" $value -}}
+    {{- if eq $type "issue" -}}
+      {{- $type = "issues" -}}
+    {{- else -}}
+      {{- $type = "pull" -}}
+    {{- end -}}
+  {{- else if (and (or $commit (eq (len $value) 7) (eq (len $value) 40))) -}}
+    {{- $text = printf "%s" (substr $value 0 7) -}}
+    {{- $type = "commit" -}}
   {{- else -}}
-    {{ errorf `Wrong parameter passed in %q shortcode: %s` $.Name $.Position }}
+    {{- errorf `Wrong parameter passed in %q shortcode: %s` $.Name $.Position -}}
   {{- end -}}
 {{- end -}}
+
+<a href="{{ printf "%s/%s/%s" $.Site.Params.repo $type $value }}">{{ $text }}</a>
