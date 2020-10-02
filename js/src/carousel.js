@@ -172,11 +172,7 @@ class Carousel {
       this._activeElement = this._element.querySelector(SELECTOR_ACTIVE_ITEM)
 
       if (this._activeElement) {
-        const activeElementInterval = parseInt(this._activeElement.getAttribute('data-interval'), 10)
-
-        if (activeElementInterval) {
-          this._config.interval = activeElementInterval
-        }
+        this._updateInterval(this._activeElement)
       }
 
       this._interval = setInterval(
@@ -411,6 +407,17 @@ class Carousel {
     }
   }
 
+  _updateInterval(element) {
+    const elementInterval = parseInt(element.getAttribute('data-interval'), 10)
+
+    if (elementInterval) {
+      this._config.defaultInterval = this._config.defaultInterval || this._config.interval
+      this._config.interval = elementInterval
+    } else {
+      this._config.interval = this._config.defaultInterval || this._config.interval
+    }
+  }
+
   _slide(direction, element) {
     const activeElement = this._element.querySelector(SELECTOR_ACTIVE_ITEM)
     const activeElementIndex = this._getItemIndex(activeElement)
@@ -471,13 +478,7 @@ class Carousel {
       $(activeElement).addClass(directionalClassName)
       $(nextElement).addClass(directionalClassName)
 
-      const nextElementInterval = parseInt(nextElement.getAttribute('data-interval'), 10)
-      if (nextElementInterval) {
-        this._config.defaultInterval = this._config.defaultInterval || this._config.interval
-        this._config.interval = nextElementInterval
-      } else {
-        this._config.interval = this._config.defaultInterval || this._config.interval
-      }
+      this._updateInterval(nextElement)
 
       const transitionDuration = Util.getTransitionDurationFromElement(activeElement)
 
