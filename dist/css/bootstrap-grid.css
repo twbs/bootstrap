@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Grid v5.0.0-alpha1 (https://getbootstrap.com/)
+ * Bootstrap Grid v5.0.0-alpha2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
@@ -11,9 +11,10 @@
 .container-lg,
 .container-xl,
 .container-xxl {
+  --bs-gutter-x: 1.5rem;
   width: 100%;
-  padding-right: 1rem;
-  padding-left: 1rem;
+  padding-right: calc(var(--bs-gutter-x) / 2);
+  padding-left: calc(var(--bs-gutter-x) / 2);
   margin-right: auto;
   margin-left: auto;
 }

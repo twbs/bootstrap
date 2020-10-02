@@ -127,7 +127,7 @@ This makes an alert listen for click events on descendant elements which have th
         <code>dispose</code>
       </td>
       <td>
-        Destroys an element's alert.
+        Destroys an element's alert. (Removes stored data on the DOM element)
       </td>
     </tr>
     <tr>
@@ -177,8 +177,8 @@ Bootstrap's alert plugin exposes a few events for hooking into alert functionali
 {{< highlight js >}}
 var myAlert = document.getElementById('myAlert')
 myAlert.addEventListener('closed.bs.alert', function () {
-  // do something … for instance, explicitly move focus to the most appropriate element,
+  // do something, for instance, explicitly move focus to the most appropriate element,
   // so it doesn't get lost/reset to the start of the page
-  // document.getElementById('…').focus()
+  // document.getElementById('...').focus()
 })
 {{< /highlight >}}
