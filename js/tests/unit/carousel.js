@@ -480,7 +480,7 @@ $(function () {
   })
 
   QUnit.test('should set interval from data attribute on individual carousel-item', function (assert) {
-    assert.expect(2)
+    assert.expect(3)
     var templateHTML = '<div id="myCarousel" class="carousel slide" data-interval="1814">' +
         '<div class="carousel-inner">' +
         '<div class="carousel-item active" data-interval="2814">' +
