@@ -364,7 +364,7 @@ var carousel = new bootstrap.Carousel(myCarousel, {
     </tr>
     <tr>
       <td><code>nextWhenVisible</code></td>
-      <td>Don't cycle carousel to next if it's not available. <strong>Returns to the caller before the target item has been shown</strong>
+      <td>Don't cycle carousel to next when the page isn't visible or the carousel or its parent isn't visible. <strong>Returns to the caller before the target item has been shown</strong>
     </tr>
     <tr>
       <td><code>to</code></td>
