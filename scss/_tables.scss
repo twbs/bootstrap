@@ -5,7 +5,7 @@
 .table {
   // Custom properties
   @if $enable-custom-properties {
-    --bs-table-accent-bg: transparent;
+    --#{$variable-prefix}table-accent-bg: transparent;
   }
 
   width: 100%;
@@ -23,7 +23,7 @@
     padding: $table-cell-padding-y $table-cell-padding-x;
     background-color: $table-bg;
     @if $enable-custom-properties {
-      background-image: linear-gradient(var(--bs-table-accent-bg), var(--bs-table-accent-bg));
+      background-image: linear-gradient(var(--#{$variable-prefix}table-accent-bg), var(--#{$variable-prefix}table-accent-bg));
     }
 
     border-bottom-width: $table-border-width;
@@ -101,7 +101,7 @@
     color: $table-striped-color;
 
     @if $enable-custom-properties {
-      --bs-table-accent-bg: #{$table-striped-bg};
+      --#{$variable-prefix}table-accent-bg: #{$table-striped-bg};
     } @else {
       > * {
         background-image: linear-gradient($table-striped-bg, $table-striped-bg);
@@ -118,7 +118,7 @@
   color: $table-active-color;
 
   @if $enable-custom-properties {
-    --bs-table-accent-bg: #{$table-active-bg};
+    --#{$variable-prefix}table-accent-bg: #{$table-active-bg};
   } @else {
     &:not(tr),
     > * {
@@ -136,7 +136,7 @@
     color: $table-hover-color;
 
     @if $enable-custom-properties {
-      --bs-table-accent-bg: #{$table-hover-bg};
+      --#{$variable-prefix}table-accent-bg: #{$table-hover-bg};
     } @else {
       > * {
         background-image: linear-gradient($table-hover-bg, $table-hover-bg);

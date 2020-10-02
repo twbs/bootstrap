@@ -12,18 +12,18 @@
   $active-color: color-contrast($active-bg)
 ) {
   .table-#{$state} {
-    --bs-table-bg: #{$background};
-    --bs-table-color: #{$color};
-    --bs-table-border-color: #{$border-color};
-    --bs-table-striped-bg: #{$striped-bg};
-    --bs-table-striped-color: #{$striped-color};
-    --bs-table-active-bg: #{$active-bg};
-    --bs-table-active-color: #{$active-color};
-    --bs-table-hover-bg: #{$hover-bg};
-    --bs-table-hover-color: #{$hover-color};
+    --#{$variable-prefix}table-bg: #{$background};
+    --#{$variable-prefix}table-color: #{$color};
+    --#{$variable-prefix}table-border-color: #{$border-color};
+    --#{$variable-prefix}table-striped-bg: #{$striped-bg};
+    --#{$variable-prefix}table-striped-color: #{$striped-color};
+    --#{$variable-prefix}table-active-bg: #{$active-bg};
+    --#{$variable-prefix}table-active-color: #{$active-color};
+    --#{$variable-prefix}table-hover-bg: #{$hover-bg};
+    --#{$variable-prefix}table-hover-color: #{$hover-color};
 
-    color: var(--bs-table-color);
-    border-color: var(--bs-table-border-color);
+    color: var(--#{$variable-prefix}table-color);
+    border-color: var(--#{$variable-prefix}table-border-color);
   }
 }
 // scss-docs-end table-variant
