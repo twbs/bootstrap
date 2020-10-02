@@ -81,6 +81,26 @@ Running our documentation locally requires the use of Hugo, which gets installed
 
 Learn more about using Hugo by reading its [documentation](https://gohugo.io/documentation/).
 
+
+## lite-server local setup for bootstrap project
+For running your project on lite-server(light-weight Web Server)
+lite server is good choice for running your project on local system check official docs [lite-server](https://github.com/johnpapa/lite-server)
+## Steps
+* `mkdir ExampleProject` & include bootstrap4 CDN links in your .html files 
+* Then Do `cd ExampleProject`
+* install lite-server in respective directory through CMD/terminal `npm init -y` We use npm to initialize an empty project. The -y tells it to just use the defaults for any parameters.
+* then do `npm install --save-dev lite-server`
+* This installs the lite-server package and adds it to the devDependencies in our project’s package.json file.
+
+`"devDependencies": {    "lite-server": "^2.3.0"  }`
+you can check dependancies in `node_modules/ite-server `
+* Run lite-server
+
+In your package.json file, modify the scripts object. Replace the contents with an entry called start that runs lite-server, like this:
+
+`"scripts": { "start": "lite-server"}`,
+* `npm start` will run your project on http://localhost:3000/ port.
+
 ## Troubleshooting
 
 Should you encounter problems with installing dependencies, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
