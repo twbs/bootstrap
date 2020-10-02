@@ -24,7 +24,7 @@
 
 ## Bootstrap 4
 
-Our default branch is for development of our upcoming Bootstrap 5 release. Head to the [`v4-dev` branch](https://github.com/twbs/bootstrap/tree/v4-dev) to view the readme, documentation, and source code for Bootstrap 4.
+Our default branch is for the development of our upcoming Bootstrap 5 release. Head to the [`v4-dev` branch](https://github.com/twbs/bootstrap/tree/v4-dev) to view the readme, documentation, and source code for Bootstrap 4.
 
 
 ## Table of contents
@@ -42,7 +42,7 @@ Our default branch is for development of our upcoming Bootstrap 5 release. Head 
 - [Copyright and license](#copyright-and-license)
 
 
-## Quick start
+## Quickstart
 
 Several quick start options are available:
 
@@ -53,7 +53,7 @@ Several quick start options are available:
 - Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.0.0-alpha2`
 - Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap` Sass: `Install-Package bootstrap.sass`
 
-Read the [Getting started page](https://v5.getbootstrap.com/docs/5.0/getting-started/introduction/) for information on the framework contents, templates and examples, and more.
+Read the [Getting started page](https://v5.getbootstrap.com/docs/5.0/getting-started/introduction/) for information on the framework contents, templates, and examples, and more.
 
 
 ## Status
@@ -128,7 +128,7 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 
 Bootstrap's documentation, included in this repo in the root directory, is built with [Hugo](https://gohugo.io/) and publicly hosted on GitHub Pages at <https://v5.getbootstrap.com/>. The docs may also be run locally.
 
-Documentation search is powered by [Algolia's DocSearch](https://community.algolia.com/docsearch/). Working on our search? Be sure to set `debug: true` in `site/assets/js/src/search.js` file.
+The documentation search is powered by [Algolia's DocSearch](https://community.algolia.com/docsearch/). Working on our search? Be sure to set `debug: true` in the `site/assets/js/src/search.js` file.
 
 ### Running documentation locally
 
@@ -164,7 +164,7 @@ Get updates on Bootstrap's development and chat with the project maintainers and
 - Join [the official Slack room](https://bootstrap-slack.herokuapp.com/).
 - Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##bootstrap` channel.
 - Implementation help may be found at Stack Overflow (tagged [`bootstrap-5`](https://stackoverflow.com/questions/tagged/bootstrap-5)).
-- Developers should use the keyword `bootstrap` on packages which modify or add to the functionality of Bootstrap when distributing through [npm](https://www.npmjs.com/browse/keyword/bootstrap) or similar delivery mechanisms for maximum discoverability.
+- Developers should use the keyword `bootstrap` on packages that modify or add to the functionality of Bootstrap when distributing through [npm](https://www.npmjs.com/browse/keyword/bootstrap) or similar delivery mechanisms for maximum discoverability.
 
 
 ## Versioning
