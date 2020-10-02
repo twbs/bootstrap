@@ -169,6 +169,16 @@ class Carousel {
     }
 
     if (this._config.interval && !this._isPaused) {
+      this._activeElement = this._element.querySelector(SELECTOR_ACTIVE_ITEM)
+
+      if (this._activeElement) {
+        const activeElementInterval = parseInt(this._activeElement.getAttribute('data-interval'), 10)
+
+        if (activeElementInterval) {
+          this._config.interval = activeElementInterval
+        }
+      }
+
       this._interval = setInterval(
         (document.visibilityState ? this.nextWhenVisible : this.next).bind(this),
         this._config.interval
