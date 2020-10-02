@@ -495,7 +495,8 @@ $utilities: map-merge(
         lg: $border-radius-lg,
         circle: 50%,
         pill: $rounded-pill,
-        0: 0,
+        // 0: 0,
+        $spacers
       )
     ),
     "rounded-top": (
@@ -516,6 +517,26 @@ $utilities: map-merge(
     "rounded-left": (
       property: border-bottom-left-radius border-top-left-radius,
       class: rounded-left,
+      values: (null: $border-radius)
+    ),
+    "rounded-top-left": (
+      property: border-top-left-radius,
+      class: rounded-top-left,
+      values: (null: $border-radius)
+    ),
+    "rounded-top-right": (
+      property: border-top-right-radius,
+      class: rounded-top-right,
+      values: (null: $border-radius)
+    ),
+    "rounded-bottom-left": (
+      property: border-bottom-left-radius,
+      class: rounded-bottom-left,
+      values: (null: $border-radius)
+    ),
+    "rounded-bottom-right": (
+      property: border-bottom-right-radius,
+      class: rounded-bottom-right,
       values: (null: $border-radius)
     ),
     "visibility": (
