@@ -368,7 +368,7 @@ var carousel = new bootstrap.Carousel(myCarousel, {
     </tr>
     <tr>
       <td><code>dispose</code></td>
-      <td>Destroys an element's carousel.</td>
+      <td>Destroys an element's carousel. (Removes stored data on the DOM element)</td>
     </tr>
     <tr>
       <td><code>getInstance</code></td>
