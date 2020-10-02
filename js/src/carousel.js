@@ -372,7 +372,7 @@ class Carousel {
     const activeIndex = this._getItemIndex(activeElement)
     const lastItemIndex = this._items.length - 1
     const isGoingToWrap = (isPrevDirection && activeIndex === 0) ||
-                          (isNextDirection && activeIndex === lastItemIndex)
+                            (isNextDirection && activeIndex === lastItemIndex)
 
     if (isGoingToWrap && !this._config.wrap) {
       return activeElement
