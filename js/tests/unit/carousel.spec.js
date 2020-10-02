@@ -876,6 +876,29 @@ describe('Carousel', () => {
       expect(window.setInterval).toHaveBeenCalled()
       expect(window.clearInterval).toHaveBeenCalled()
     })
+
+    it('should get interval from data attribute in individual item', () => {
+      fixtureEl.innerHTML = [
+        '<div id="myCarousel" class="carousel slide">',
+        '  <div class="carousel-inner">',
+        '    <div class="carousel-item active" data-interval="7">item 1</div>',
+        '    <div class="carousel-item">item 2</div>',
+        '    <div class="carousel-item">item 3</div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const carouselEl = fixtureEl.querySelector('#myCarousel')
+      const carousel = new Carousel(carouselEl, {
+        interval: 1814
+      })
+
+      expect(carousel._config.interval).toEqual(1814)
+
+      carousel.cycle()
+
+      expect(carousel._config.interval).toEqual(7)
+    })
   })
 
   describe('to', () => {
