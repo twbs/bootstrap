@@ -127,7 +127,7 @@ This makes an alert listen for click events on descendant elements which have th
         <code>dispose</code>
       </td>
       <td>
-        Destroys an element's alert.
+        Destroys an element's alert. (Removes stored data on the DOM element)
       </td>
     </tr>
     <tr>

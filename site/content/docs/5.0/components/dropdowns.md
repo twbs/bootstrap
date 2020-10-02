@@ -949,7 +949,7 @@ Note when `boundary` is set to any value other than `'scrollParent'`, the style 
     <tr>
       <td><code>dispose</code></td>
       <td>
-        Destroys an element's dropdown.
+        Destroys an element's dropdown. (Removes stored data on the DOM element)
       </td>
     </tr>
     <tr>

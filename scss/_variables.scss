@@ -67,7 +67,7 @@ $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
-$dark:          $gray-800 !default;
+$dark:          $gray-900 !default;
 
 // scss-docs-start theme-colors-map
 $theme-colors: (
@@ -221,6 +221,10 @@ $enable-validation-icons:     true !default;
 $enable-negative-margins:     false !default;
 $enable-deprecation-messages: true !default;
 $enable-important-utilities:  true !default;
+
+// Prefix for :root CSS variables
+
+$variable-prefix:             bs- !default;
 
 // Gradient
 //
@@ -395,8 +399,8 @@ $aspect-ratios: (
 $font-family-sans-serif:      system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 // stylelint-enable value-keyword-case
-$font-family-base:            var(--bs-font-sans-serif) !default;
-$font-family-code:            var(--bs-font-monospace) !default;
+$font-family-base:            var(--#{$variable-prefix}font-sans-serif) !default;
+$font-family-code:            var(--#{$variable-prefix}font-monospace) !default;
 
 // $font-size-root effects the value of `rem`, which is used for as well font sizes, paddings and margins
 // $font-size-base effects the font size of the body text
@@ -694,6 +698,10 @@ $form-check-input-indeterminate-color:          $component-active-color !default
 $form-check-input-indeterminate-bg-color:       $component-active-bg !default;
 $form-check-input-indeterminate-border-color:   $form-check-input-indeterminate-bg-color !default;
 $form-check-input-indeterminate-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-indeterminate-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>") !default;
+
+$form-check-input-disabled-opacity:        .5 !default;
+$form-check-label-disabled-opacity:        $form-check-input-disabled-opacity !default;
+$form-check-btn-check-disabled-opacity:    $btn-disabled-opacity !default;
 
 $form-switch-color:               rgba(0, 0, 0, .25) !default;
 $form-switch-width:               2em !default;
