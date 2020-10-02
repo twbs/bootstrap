@@ -181,7 +181,7 @@ class Carousel {
     }
 
     if (this._config && this._config.interval && !this._isPaused) {
-      this._activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
+      this._activeElement = this._activeElement || SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
 
       if (this._activeElement) {
         this._updateInterval(this._activeElement)
@@ -515,6 +515,9 @@ class Carousel {
         to: nextElementIndex
       })
     }
+
+    // does not wait for the transition to complete
+    this._activeElement = nextElement
 
     if (isCycling) {
       this.cycle()
