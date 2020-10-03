@@ -135,6 +135,7 @@ var bsButton = new bootstrap.Button(button)
 {{< /highlight >}}
 
 Or create a button instance via jQuery:
+
 {{< highlight js >}}
 var button = $('#myButton')
 var bsButton = new bootstrap.Button(button)
