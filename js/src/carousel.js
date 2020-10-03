@@ -181,11 +181,7 @@ class Carousel {
     }
 
     if (this._config && this._config.interval && !this._isPaused) {
-      this._activeElement = this._activeElement || SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
-
-      if (this._activeElement) {
-        this._updateInterval(this._activeElement)
-      }
+      this._updateInterval()
 
       this._interval = setInterval(
         (document.visibilityState ? this.nextWhenVisible : this.next).bind(this),
@@ -415,14 +411,18 @@ class Carousel {
     }
   }
 
-  _updateInterval(element) {
-    const elementInterval = parseInt(element.getAttribute('data-interval'), 10)
+  _updateInterval() {
+    const element = this._activeElement || SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
 
-    if (elementInterval) {
-      this._config.defaultInterval = this._config.defaultInterval || this._config.interval
-      this._config.interval = elementInterval
-    } else {
-      this._config.interval = this._config.defaultInterval || this._config.interval
+    if (element) {
+      const elementInterval = parseInt(element.getAttribute('data-interval'), 10)
+
+      if (elementInterval) {
+        this._config.defaultInterval = this._config.defaultInterval || this._config.interval
+        this._config.interval = elementInterval
+      } else {
+        this._config.interval = this._config.defaultInterval || this._config.interval
+      }
     }
   }
 
@@ -471,6 +471,7 @@ class Carousel {
     }
 
     this._setActiveIndicatorElement(nextElement)
+    this._activeElement = nextElement
 
     if (this._element.classList.contains(CLASS_NAME_SLIDE)) {
       nextElement.classList.add(orderClassName)
@@ -479,8 +480,6 @@ class Carousel {
 
       activeElement.classList.add(directionalClassName)
       nextElement.classList.add(directionalClassName)
-
-      this._updateInterval(nextElement)
 
       const transitionDuration = getTransitionDurationFromElement(activeElement)
 
@@ -515,9 +514,6 @@ class Carousel {
         to: nextElementIndex
       })
     }
-
-    // does not wait for the transition to complete
-    this._activeElement = nextElement
 
     if (isCycling) {
       this.cycle()
