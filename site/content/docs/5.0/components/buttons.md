@@ -127,10 +127,16 @@ Add `data-toggle="button"` to toggle a button's `active` state. If you're pre-to
 
 ### Methods
 
-You can create a button instance with the button constructor, for example:
+You can create a button instance with the button constructor, for example via JavaScript:
 
 {{< highlight js >}}
 var button = document.getElementById('myButton')
+var bsButton = new bootstrap.Button(button)
+{{< /highlight >}}
+
+Or create a button instance via jQuery:
+{{< highlight js >}}
+var button = $('#myButton')
 var bsButton = new bootstrap.Button(button)
 {{< /highlight >}}
 
@@ -161,12 +167,22 @@ var bsButton = new bootstrap.Button(button)
   </tbody>
 </table>
 
-For example, to toggle all buttons
+For example, to toggle all buttons via JavaScript:
 
 {{< highlight js >}}
 var buttons = document.querySelectorAll('.btn')
 buttons.forEach(function (button) {
   var button = new bootstrap.Button(button)
+  button.toggle()
+})
+{{< /highlight >}}
+
+To toggle all buttons via jQuery:
+
+{{< highlight js >}}
+var buttons = $('.btn')
+buttons.each(function () {
+  var button = new bootstrap.Button(this)
   button.toggle()
 })
 {{< /highlight >}}
