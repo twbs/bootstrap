@@ -672,8 +672,8 @@ $input-transition:                      border-color .15s ease-in-out, box-shado
 
 
 $form-check-input-width:                  1em !default;
+$form-check-input-margin-right:           .2rem !default;
 $form-check-min-height:                   $font-size-base * $line-height-base !default;
-$form-check-padding-left:                 $form-check-input-width + .5em !default;
 $form-check-margin-bottom:                .125rem !default;
 $form-check-label-color:                  null !default;
 $form-check-label-cursor:                 null !default;
