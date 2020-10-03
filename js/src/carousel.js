@@ -169,7 +169,7 @@ class Carousel {
     }
 
     if (this._config.interval && !this._isPaused) {
-      this._activeElement = this._element.querySelector(SELECTOR_ACTIVE_ITEM)
+      this._activeElement = this._activeElement || this._element.querySelector(SELECTOR_ACTIVE_ITEM)
 
       if (this._activeElement) {
         this._updateInterval(this._activeElement)
@@ -502,6 +502,9 @@ class Carousel {
       this._isSliding = false
       $(this._element).trigger(slidEvent)
     }
+
+    // does not wait for the transition to complete
+    this._activeElement = nextElement
 
     if (isCycling) {
       this.cycle()
