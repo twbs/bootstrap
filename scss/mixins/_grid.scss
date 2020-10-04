@@ -62,7 +62,7 @@
 // numberof columns. Supports wrapping to new lines, but does not do a Masonry
 // style grid.
 @mixin row-cols($count) {
-  & > * {
+  > * {
     flex: 0 0 100% / $count;
     max-width: 100% / $count;
   }

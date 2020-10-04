@@ -39,3 +39,5 @@ While we haven't tried these out, they do look promising and provide multiple fo
 - [Dripicons](http://demo.amitjakhu.com/dripicons/)
 - [Ikons](http://ikons.piotrkwiatkowski.co.uk/)
 - [Icons8](https://icons8.com/)
+- [icofont](https://icofont.com/)
+- [CoreUI Icons](https://icons.coreui.io/)

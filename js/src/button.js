@@ -13,29 +13,29 @@ import $ from 'jquery'
  * ------------------------------------------------------------------------
  */
 
-const NAME                = 'button'
-const VERSION             = '4.5.2'
-const DATA_KEY            = 'bs.button'
-const EVENT_KEY           = `.${DATA_KEY}`
-const DATA_API_KEY        = '.data-api'
-const JQUERY_NO_CONFLICT  = $.fn[NAME]
+const NAME = 'button'
+const VERSION = '4.5.2'
+const DATA_KEY = 'bs.button'
+const EVENT_KEY = `.${DATA_KEY}`
+const DATA_API_KEY = '.data-api'
+const JQUERY_NO_CONFLICT = $.fn[NAME]
 
 const CLASS_NAME_ACTIVE = 'active'
 const CLASS_NAME_BUTTON = 'btn'
-const CLASS_NAME_FOCUS  = 'focus'
+const CLASS_NAME_FOCUS = 'focus'
 
-const SELECTOR_DATA_TOGGLE_CARROT   = '[data-toggle^="button"]'
-const SELECTOR_DATA_TOGGLES         = '[data-toggle="buttons"]'
-const SELECTOR_DATA_TOGGLE          = '[data-toggle="button"]'
+const SELECTOR_DATA_TOGGLE_CARROT = '[data-toggle^="button"]'
+const SELECTOR_DATA_TOGGLES = '[data-toggle="buttons"]'
+const SELECTOR_DATA_TOGGLE = '[data-toggle="button"]'
 const SELECTOR_DATA_TOGGLES_BUTTONS = '[data-toggle="buttons"] .btn'
-const SELECTOR_INPUT                = 'input:not([type="hidden"])'
-const SELECTOR_ACTIVE               = '.active'
-const SELECTOR_BUTTON               = '.btn'
+const SELECTOR_INPUT = 'input:not([type="hidden"])'
+const SELECTOR_ACTIVE = '.active'
+const SELECTOR_BUTTON = '.btn'
 
-const EVENT_CLICK_DATA_API      = `click${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_FOCUS_BLUR_DATA_API = `focus${EVENT_KEY}${DATA_API_KEY} ` +
                           `blur${EVENT_KEY}${DATA_API_KEY}`
-const EVENT_LOAD_DATA_API       = `load${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 
 /**
  * ------------------------------------------------------------------------
@@ -46,6 +46,7 @@ const EVENT_LOAD_DATA_API       = `load${EVENT_KEY}${DATA_API_KEY}`
 class Button {
   constructor(element) {
     this._element = element
+    this.shouldAvoidTriggerChange = false
   }
 
   // Getters
@@ -59,17 +60,14 @@ class Button {
   toggle() {
     let triggerChangeEvent = true
     let addAriaPressed = true
-    const rootElement = $(this._element).closest(
-      SELECTOR_DATA_TOGGLES
-    )[0]
+    const rootElement = $(this._element).closest(SELECTOR_DATA_TOGGLES)[0]
 
     if (rootElement) {
       const input = this._element.querySelector(SELECTOR_INPUT)
 
       if (input) {
         if (input.type === 'radio') {
-          if (input.checked &&
-            this._element.classList.contains(CLASS_NAME_ACTIVE)) {
+          if (input.checked && this._element.classList.contains(CLASS_NAME_ACTIVE)) {
             triggerChangeEvent = false
           } else {
             const activeElement = rootElement.querySelector(SELECTOR_ACTIVE)
@@ -85,7 +83,10 @@ class Button {
           if (input.type === 'checkbox' || input.type === 'radio') {
             input.checked = !this._element.classList.contains(CLASS_NAME_ACTIVE)
           }
-          $(input).trigger('change')
+
+          if (!this.shouldAvoidTriggerChange) {
+            $(input).trigger('change')
+          }
         }
 
         input.focus()
@@ -95,8 +96,7 @@ class Button {
 
     if (!(this._element.hasAttribute('disabled') || this._element.classList.contains('disabled'))) {
       if (addAriaPressed) {
-        this._element.setAttribute('aria-pressed',
-          !this._element.classList.contains(CLASS_NAME_ACTIVE))
+        this._element.setAttribute('aria-pressed', !this._element.classList.contains(CLASS_NAME_ACTIVE))
       }
 
       if (triggerChangeEvent) {
@@ -112,14 +112,17 @@ class Button {
 
   // Static
 
-  static _jQueryInterface(config) {
+  static _jQueryInterface(config, avoidTriggerChange) {
     return this.each(function () {
-      let data = $(this).data(DATA_KEY)
+      const $element = $(this)
+      let data = $element.data(DATA_KEY)
 
       if (!data) {
         data = new Button(this)
-        $(this).data(DATA_KEY, data)
+        $element.data(DATA_KEY, data)
       }
+
+      data.shouldAvoidTriggerChange = avoidTriggerChange
 
       if (config === 'toggle') {
         data[config]()
@@ -135,7 +138,7 @@ class Button {
  */
 
 $(document)
-  .on(EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE_CARROT, (event) => {
+  .on(EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE_CARROT, event => {
     let button = event.target
     const initialButton = button
 
@@ -153,12 +156,12 @@ $(document)
         return
       }
 
-      if (initialButton.tagName !== 'LABEL' || inputBtn && inputBtn.type !== 'checkbox') {
-        Button._jQueryInterface.call($(button), 'toggle')
+      if (initialButton.tagName === 'INPUT' || button.tagName !== 'LABEL') {
+        Button._jQueryInterface.call($(button), 'toggle', initialButton.tagName === 'INPUT')
       }
     }
   })
-  .on(EVENT_FOCUS_BLUR_DATA_API, SELECTOR_DATA_TOGGLE_CARROT, (event) => {
+  .on(EVENT_FOCUS_BLUR_DATA_API, SELECTOR_DATA_TOGGLE_CARROT, event => {
     const button = $(event.target).closest(SELECTOR_BUTTON)[0]
     $(button).toggleClass(CLASS_NAME_FOCUS, /^focus(in)?$/.test(event.type))
   })
