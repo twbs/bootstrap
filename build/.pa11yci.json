@@ -6,6 +6,6 @@
     "runners": [
       "htmlcs"
     ],
-    "hideElements": ".bd-search, [class*=-success], [class*=-info], [class*=-light]"
+    "hideElements": ".bd-search"
   }
 }
