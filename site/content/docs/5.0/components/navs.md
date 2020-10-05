@@ -518,7 +518,7 @@ You can activate a tab or pill navigation without writing any JavaScript by simp
 Enable tabbable tabs via JavaScript with jQuery:
 
 {{< highlight js >}}
-$('#myTab a').on('click', function(e){
+$('#myTab a').on('click', function(e) {
   var tabTrigger = new bootstrap.Tab(e.target)
   e.preventDefault()
   tabTrigger.show()
