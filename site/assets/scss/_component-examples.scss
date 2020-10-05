@@ -121,7 +121,8 @@
 
   // Buttons
   > .btn,
-  > .btn-group {
+  > .btn-group,
+  > .btn-toolbar > .btn-group {
     margin: .25rem .125rem;
   }
   > .btn-toolbar + .btn-toolbar {
