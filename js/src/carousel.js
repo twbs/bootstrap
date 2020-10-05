@@ -414,15 +414,17 @@ class Carousel {
   _updateInterval() {
     const element = this._activeElement || SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
 
-    if (element) {
-      const elementInterval = parseInt(element.getAttribute('data-interval'), 10)
+    if (!element) {
+      return
+    }
 
-      if (elementInterval) {
-        this._config.defaultInterval = this._config.defaultInterval || this._config.interval
-        this._config.interval = elementInterval
-      } else {
-        this._config.interval = this._config.defaultInterval || this._config.interval
-      }
+    const elementInterval = parseInt(element.getAttribute('data-interval'), 10)
+
+    if (elementInterval) {
+      this._config.defaultInterval = this._config.defaultInterval || this._config.interval
+      this._config.interval = elementInterval
+    } else {
+      this._config.interval = this._config.defaultInterval || this._config.interval
     }
   }
 
