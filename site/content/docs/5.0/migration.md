@@ -74,7 +74,7 @@ toc: true
 - Renamed `.close` to `.btn-close` for a less generic name.
 - Close buttons now use a `background-image` (embedded SVG) instead of a `&times;` in the HTML, allowing for easier customization without the need to touch your markup.
 - Added new variables to better control the customization.
-- Added new `.btn-close-white` variant that uses `backdrop-filter: invert(1)` to enable higher contrast dismiss icons against darker backgrounds.
+- Added new `.btn-close-white` variant that uses `filter: invert(1)` to enable higher contrast dismiss icons against darker backgrounds.
 
 #### Collapse
 

@@ -24,7 +24,7 @@ Disabled close buttons change their `opacity`. We've also applied `pointer-event
 
 ## White variant
 
-Change the default `.btn-close` to be white with the `.btn-close-white` class. This class uses the `backdrop-filter` property to invert the `background-image`.
+Change the default `.btn-close` to be white with the `.btn-close-white` class. This class uses the `filter` property to invert the `background-image`.
 
 {{< example class="bg-dark" >}}
 <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>

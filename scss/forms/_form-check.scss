@@ -53,7 +53,7 @@
 
     &[type="checkbox"] {
       @if $enable-gradients {
-        background-image: escape-svg($form-check-input-checked-bg-image), var(--bs-gradient);
+        background-image: escape-svg($form-check-input-checked-bg-image), var(--#{$variable-prefix}gradient);
       } @else {
         background-image: escape-svg($form-check-input-checked-bg-image);
       }
@@ -61,7 +61,7 @@
 
     &[type="radio"] {
       @if $enable-gradients {
-        background-image: escape-svg($form-check-radio-checked-bg-image), var(--bs-gradient);
+        background-image: escape-svg($form-check-radio-checked-bg-image), var(--#{$variable-prefix}gradient);
       } @else {
         background-image: escape-svg($form-check-radio-checked-bg-image);
       }
@@ -73,7 +73,7 @@
     border-color: $form-check-input-indeterminate-border-color;
 
     @if $enable-gradients {
-      background-image: escape-svg($form-check-input-indeterminate-bg-image), var(--bs-gradient);
+      background-image: escape-svg($form-check-input-indeterminate-bg-image), var(--#{$variable-prefix}gradient);
     } @else {
       background-image: escape-svg($form-check-input-indeterminate-bg-image);
     }
@@ -82,7 +82,7 @@
   &:disabled {
     pointer-events: none;
     filter: none;
-    opacity: .5;
+    opacity: $form-check-input-disabled-opacity;
   }
 
   // Use disabled attribute in addition of :disabled pseudo-class
@@ -90,7 +90,7 @@
   &[disabled],
   &:disabled {
     ~ .form-check-label {
-      opacity: .5;
+      opacity: $form-check-label-disabled-opacity;
     }
   }
 }
@@ -122,7 +122,7 @@
       background-position: $form-switch-checked-bg-position;
 
       @if $enable-gradients {
-        background-image: escape-svg($form-switch-checked-bg-image), var(--bs-gradient);
+        background-image: escape-svg($form-switch-checked-bg-image), var(--#{$variable-prefix}gradient);
       } @else {
         background-image: escape-svg($form-switch-checked-bg-image);
       }
@@ -139,4 +139,13 @@
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
+
+  &[disabled],
+  &:disabled {
+    + .btn {
+      pointer-events: none;
+      filter: none;
+      opacity: $form-check-btn-check-disabled-opacity;
+    }
+  }
 }

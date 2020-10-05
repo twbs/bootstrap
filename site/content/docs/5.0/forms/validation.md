@@ -362,6 +362,6 @@ This is the Sass map from `_variables.scss`. Override this and recompile your Sa
 
 {{< scss-docs name="form-validation-states" file="scss/_variables.scss" >}}
 
-This is the loop from `forms/_validation.scss.scss`. Any modifications to the above Sass map will be reflected in your compiled CSS via this loop:
+This is the loop from `forms/_validation.scss`. Any modifications to the above Sass map will be reflected in your compiled CSS via this loop:
 
 {{< scss-docs name="form-validation-states-loop" file="scss/forms/_validation.scss" >}}

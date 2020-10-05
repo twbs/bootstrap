@@ -29,6 +29,15 @@ Set heights using classes like `.form-control-lg` and `.form-control-sm`.
 <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example">
 {{< /example >}}
 
+## Disabled
+
+Add the `disabled` boolean attribute on an input to give it a grayed out appearance and remove pointer events.
+
+{{< example >}}
+<input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
+<input class="form-control" type="text" placeholder="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
+{{< /example >}}
+
 ## Readonly
 
 Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
