@@ -260,7 +260,7 @@ Button dropdowns work with buttons of all sizes, including default and split dro
         <li><a class="dropdown-item" href="#">Separated link</a></li>
       </ul>
     </div><!-- /btn-group -->
-    <div class="btn-group ml-sm-2">
+    <div class="btn-group">
       <button type="button" class="btn btn-lg btn-secondary">Large split button</button>
       <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
         <span class="visually-hidden">Toggle Dropdown</span>
@@ -287,7 +287,7 @@ Button dropdowns work with buttons of all sizes, including default and split dro
         <li><a class="dropdown-item" href="#">Separated link</a></li>
       </ul>
     </div><!-- /btn-group -->
-    <div class="btn-group ml-2">
+    <div class="btn-group">
       <button type="button" class="btn btn-sm btn-secondary">Small split button</button>
       <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
         <span class="visually-hidden">Toggle Dropdown</span>
