@@ -61,19 +61,18 @@ gem install bootstrap -v {{ site.current_ruby_version }}
           When you only need to include Bootstrap’s compiled CSS or JS, you can use <a href="https://www.bootstrapcdn.com/">BootstrapCDN</a>.
         </p>
         <p>
-          See it in action with our simple <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/introduction/#starter-template">starter template</a>, or <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/">browse the examples</a> to jumpstart your next project.
+          See it in action with our simple <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/introduction/#starter-template">starter template</a>, or <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/">browse the examples</a> to jumpstart your next project. You can also choose to include Popper.js and our JS <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/introduction/#separate">separately</a>.
         </p>
         <a class="btn btn-lg btn-outline-primary mb-3" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/layout/overview/">Explore the docs</a>
       </div>
       <div class="col-md-7 pl-md-5">
 {% highlight html %}
-<!-- CSS only -->
+<!-- CSS -->
 <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
 
-<!-- JS, Popper.js, and jQuery -->
+<!-- jQuery and JS bundle w/ Popper.js -->
 <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
-<script src="{{ site.cdn.popper }}" integrity="{{ site.cdn.popper_hash }}" crossorigin="anonymous"></script>
-<script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
+<script src="{{ site.cdn.js_bundle }}" integrity="{{ site.cdn.js_bundle_hash }}" crossorigin="anonymous"></script>
 {% endhighlight %}
       </div>
     </div>
@@ -96,7 +95,7 @@ gem install bootstrap -v {{ site.current_ruby_version }}
         <img class="img-fluid mt-3 mx-auto" srcset="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/img/bootstrap-icons.png,
                                                     {{ site.baseurl }}/docs/{{ site.docs_version }}/assets/img/bootstrap-icons@2x.png 2x"
                                                     src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/img/bootstrap-icons.png"
-                                                    alt="Bootstrap Icons" width="966" height="600" loading="lazy">
+                                                    alt="Bootstrap Icons" width="700" height="425" loading="lazy">
       </div>
     </div>
 

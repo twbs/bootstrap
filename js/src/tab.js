@@ -14,31 +14,31 @@ import Util from './util'
  * ------------------------------------------------------------------------
  */
 
-const NAME               = 'tab'
-const VERSION            = '4.5.2'
-const DATA_KEY           = 'bs.tab'
-const EVENT_KEY          = `.${DATA_KEY}`
-const DATA_API_KEY       = '.data-api'
+const NAME = 'tab'
+const VERSION = '4.5.2'
+const DATA_KEY = 'bs.tab'
+const EVENT_KEY = `.${DATA_KEY}`
+const DATA_API_KEY = '.data-api'
 const JQUERY_NO_CONFLICT = $.fn[NAME]
 
-const EVENT_HIDE           = `hide${EVENT_KEY}`
-const EVENT_HIDDEN         = `hidden${EVENT_KEY}`
-const EVENT_SHOW           = `show${EVENT_KEY}`
-const EVENT_SHOWN          = `shown${EVENT_KEY}`
+const EVENT_HIDE = `hide${EVENT_KEY}`
+const EVENT_HIDDEN = `hidden${EVENT_KEY}`
+const EVENT_SHOW = `show${EVENT_KEY}`
+const EVENT_SHOWN = `shown${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_DROPDOWN_MENU = 'dropdown-menu'
-const CLASS_NAME_ACTIVE        = 'active'
-const CLASS_NAME_DISABLED      = 'disabled'
-const CLASS_NAME_FADE          = 'fade'
-const CLASS_NAME_SHOW          = 'show'
+const CLASS_NAME_ACTIVE = 'active'
+const CLASS_NAME_DISABLED = 'disabled'
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_SHOW = 'show'
 
-const SELECTOR_DROPDOWN              = '.dropdown'
-const SELECTOR_NAV_LIST_GROUP        = '.nav, .list-group'
-const SELECTOR_ACTIVE                = '.active'
-const SELECTOR_ACTIVE_UL             = '> li > .active'
-const SELECTOR_DATA_TOGGLE           = '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]'
-const SELECTOR_DROPDOWN_TOGGLE       = '.dropdown-toggle'
+const SELECTOR_DROPDOWN = '.dropdown'
+const SELECTOR_NAV_LIST_GROUP = '.nav, .list-group'
+const SELECTOR_ACTIVE = '.active'
+const SELECTOR_ACTIVE_UL = '> li > .active'
+const SELECTOR_DATA_TOGGLE = '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]'
+const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 const SELECTOR_DROPDOWN_ACTIVE_CHILD = '> .dropdown-menu .active'
 
 /**
@@ -135,9 +135,9 @@ class Tab {
   // Private
 
   _activate(element, container, callback) {
-    const activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL')
-      ? $(container).find(SELECTOR_ACTIVE_UL)
-      : $(container).children(SELECTOR_ACTIVE)
+    const activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL') ?
+      $(container).find(SELECTOR_ACTIVE_UL) :
+      $(container).children(SELECTOR_ACTIVE)
 
     const active = activeElements[0]
     const isTransitioning = callback && (active && $(active).hasClass(CLASS_NAME_FADE))
@@ -220,6 +220,7 @@ class Tab {
         if (typeof data[config] === 'undefined') {
           throw new TypeError(`No method named "${config}"`)
         }
+
         data[config]()
       }
     })

@@ -8,6 +8,11 @@
   description: Bootstrap 4 · 全球最流行的 HTML、CSS 和 JS 工具库。
   url: https://code.z01.com/v4/
 
+- name: Chinese Simplified
+  code: zh-CN
+  description: Bootstrap · 全球最受欢迎的 HTML、CSS 和 JS 库。
+  url: https://bootstrap-zh-cn.github.io/
+
 - name: Brazilian Portuguese
   code: pt-BR
   description: Bootstrap 4 Português do Brasil

@@ -32,8 +32,8 @@ $(function () {
     $el.bootstrapTooltip()
     try {
       $el.bootstrapTooltip('noMethod')
-    } catch (err) {
-      assert.strictEqual(err.message, 'No method named "noMethod"')
+    } catch (error) {
+      assert.strictEqual(error.message, 'No method named "noMethod"')
     }
   })
 
@@ -231,8 +231,8 @@ $(function () {
 
     try {
       $('<div title="tooltip title" style="display: none"/>').bootstrapTooltip('show')
-    } catch (err) {
-      assert.strictEqual(err.message, 'Please use show on visible elements')
+    } catch (error) {
+      assert.strictEqual(error.message, 'Please use show on visible elements')
       done()
     }
   })
@@ -336,7 +336,7 @@ $(function () {
     assert.expect(7)
     var $tooltip = $('<div/>')
       .bootstrapTooltip()
-      .on('click.foo', function () {})  // eslint-disable-line no-empty-function
+      .on('click.foo', function () {})
 
     assert.ok($tooltip.data('bs.tooltip'), 'tooltip has data')
     assert.ok($._data($tooltip[0], 'events').mouseover && $._data($tooltip[0], 'events').mouseout, 'tooltip has hover events')
@@ -561,7 +561,7 @@ $(function () {
 
     try {
       $tooltip.bootstrapTooltip('show')
-    } catch (err) {
+    } catch (_) {
       passed = false
     }
 
