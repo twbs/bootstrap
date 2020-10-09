@@ -10,6 +10,9 @@
   > .btn {
     position: relative;
     flex: 1 1 auto;
+    &.btn-primary{
+      border-color: #0257d5;
+    }
   }
 
   // Bring the hover, focused, and "active" buttons to the front to overlay
