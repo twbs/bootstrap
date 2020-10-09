@@ -330,7 +330,7 @@ Toggles an element's tooltip. **Returns to the caller before the tooltip has act
 
 #### dispose
 
-Hides and destroys an element's tooltip. Tooltips that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
+Hides and destroys an element's tooltip (Removes stored data on the DOM element). Tooltips that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
 
 {{< highlight js >}}tooltip.dispose(){{< /highlight >}}
 
