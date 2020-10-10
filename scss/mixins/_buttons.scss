@@ -28,6 +28,15 @@
     border-color: $hover-border;
   }
 
+  .btn-group & + & {
+    border-left-color: $hover-border;
+
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+      border-color: $active-border;
+    }
+  }
+
   .btn-check:focus + &,
   &:focus {
     color: $hover-color;
