@@ -232,9 +232,9 @@ Create button-like checkboxes and radio buttons by using `.btn` styles rather th
 <label class="btn btn-primary" for="btn-check-3">Disabled</label>
 {{< /example >}}
 
-{{% callout info %}}
+{{< callout info >}}
 Visually, these checkbox toggle buttons are identical to the [button plugin toggle buttons]({{< docsref "/components/buttons#button-plugin" >}}). However, they are conveyed differently by assistive technologies: the checkbox toggles will be announced by screen readers as "checked"/"not checked" (since, despite their appearance, they are fundamentally still checkboxes), whereas the button plugin toggle buttons will be announced as "button"/"button pressed". The choice between these two approaches will depend on the type of toggle you are creating, and whether or not the toggle will make sense to users when announced as a checkbox or as an actual button.
-{{% /callout %}}
+{{< /callout >}}
 
 ### Radio toggle buttons
 

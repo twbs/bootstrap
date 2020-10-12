@@ -10,9 +10,9 @@ toc: true
 
 The collapse JavaScript plugin is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. Collapsing an element will animate the `height` from its current value to `0`. Given how CSS handles animations, you cannot use `padding` on a `.collapse` element. Instead, use the class as an independent wrapping element.
 
-{{% callout info %}}
+{{< callout info >}}
 {{< partial "callout-info-prefersreducedmotion.md" >}}
-{{% /callout %}}
+{{< /callout >}}
 
 ## Example
 
@@ -187,9 +187,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
-{{% callout danger %}}
+{{< callout danger >}}
 {{< partial "callout-danger-async-methods.md" >}}
-{{% /callout %}}
+{{< /callout >}}
 
 Activates your content as a collapsible element. Accepts an optional options `object`.
 
