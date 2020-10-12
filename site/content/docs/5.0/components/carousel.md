@@ -12,9 +12,9 @@ The carousel is a slideshow for cycling through a series of content, built with 
 
 In browsers where the [Page Visibility API](https://www.w3.org/TR/page-visibility/) is supported, the carousel will avoid sliding when the webpage is not visible to the user (such as when the browser tab is inactive, the browser window is minimized, etc.).
 
-{{< callout info >}}
+{{% callout info %}}
 {{< partial "callout-info-prefersreducedmotion.md" >}}
-{{< /callout >}}
+{{% /callout %}}
 
 Please be aware that nested carousels are not supported, and carousels are generally not compliant with accessibility standards.
 
@@ -324,9 +324,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
-{{< callout danger >}}
+{{% callout danger %}}
 {{< partial "callout-danger-async-methods.md" >}}
-{{< /callout >}}
+{{% /callout %}}
 
 You can create a carousel instance with the carousel constructor, for example, to initialize with additional options and start cycling through items:
 
@@ -364,6 +364,10 @@ var carousel = new bootstrap.Carousel(myCarousel, {
     </tr>
     <tr>
       <td><code>nextWhenVisible</code></td>
+      <td>Don't cycle carousel to next when the page isn't visible or the carousel or its parent isn't visible. <strong>Returns to the caller before the target item has been shown</strong>
+    </tr>
+    <tr>
+      <td><code>to</code></td>
       <td>Cycles the carousel to a particular frame (0 based, similar to an array). <strong>Returns to the caller before the target item has been shown</strong> (e.g., before the <code>slid.bs.carousel</code> event occurs).</td>
     </tr>
     <tr>

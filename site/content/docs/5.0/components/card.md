@@ -386,9 +386,9 @@ Turn an image into a card background and overlay your card's text. Depending on 
 </div>
 {{< /example >}}
 
-{{< callout info >}}
+{{% callout info %}}
 Note that content should not be larger than the height of the image. If content is larger than the image the content will be displayed outside the image.
-{{< /callout >}}
+{{% /callout %}}
 
 ## Horizontal
 
@@ -422,7 +422,7 @@ Use [text and background utilities]({{< docsref "/utilities/colors" >}}) to chan
 {{< example >}}
 {{< card.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
-<div class="card{{ if (eq .name "info") }} text-body {{ else if not (or (eq .name "light") (eq .name "warning")) }} text-white{{ end }} bg-{{ .name }} mb-3" style="max-width: 18rem;">
+<div class="card{{ if (eq .name "info") }} text-body{{ else if not (or (eq .name "light") (eq .name "warning") (eq .name "info")) }} text-white{{ end }} bg-{{ .name }} mb-3" style="max-width: 18rem;">
   <div class="card-header">Header</div>
   <div class="card-body">
     <h5 class="card-title">{{ .name | title }} card title</h5>
@@ -433,9 +433,9 @@ Use [text and background utilities]({{< docsref "/utilities/colors" >}}) to chan
 {{< /card.inline >}}
 {{< /example >}}
 
-{{< callout info >}}
+{{% callout info %}}
 {{< partial "callout-warning-color-assistive-technologies.md" >}}
-{{< /callout >}}
+{{% /callout %}}
 
 ### Border
 
