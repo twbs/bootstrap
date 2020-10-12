@@ -323,7 +323,7 @@ Toggles an element's popover. **Returns to the caller before the popover has act
 
 #### dispose
 
-Hides and destroys an element's popover. Popovers that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
+Hides and destroys an element's popover (Removes stored data on the DOM element). Popovers that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
 
 {{< highlight js >}}myPopover.dispose(){{< /highlight >}}
 

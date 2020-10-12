@@ -155,7 +155,7 @@ var bsButton = new bootstrap.Button(button)
         <code>dispose</code>
       </td>
       <td>
-        Destroys an element's button.
+        Destroys an element's button. (Removes stored data on the DOM element)
       </td>
     </tr>
   </tbody>

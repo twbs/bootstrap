@@ -290,7 +290,7 @@ dataSpyList.forEach(function (dataSpyEl) {
 
 #### dispose
 
-Destroys an element's scrollspy.
+Destroys an element's scrollspy. (Removes stored data on the DOM element)
 
 #### getInstance
 

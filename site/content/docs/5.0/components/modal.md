@@ -928,7 +928,7 @@ Manually readjust the modal's position if the height of a modal changes while it
 
 #### dispose
 
-Destroys an element's modal.
+Destroys an element's modal. (Removes stored data on the DOM element)
 
 {{< highlight js >}}myModal.dispose(){{< /highlight >}}
 

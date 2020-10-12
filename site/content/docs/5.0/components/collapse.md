@@ -224,7 +224,7 @@ var bsCollapse = new bootstrap.Collapse(myCollapse, {
     </tr>
     <tr>
       <td><code>dispose</code></td>
-      <td>Destroys an element's collapse.</td>
+      <td>Destroys an element's collapse. (Removes stored data on the DOM element)</td>
     </tr>
     <tr>
       <td><code>getInstance</code></td>
