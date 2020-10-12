@@ -36,9 +36,9 @@ The border spinner uses `currentColor` for its `border-color`, meaning you can c
 {{< /spinner.inline >}}
 {{< /example >}}
 
-{{< callout info >}}
+{{% callout info %}}
 **Why not use `border-color` utilities?** Each border spinner specifies a `transparent` border for at least one side, so `.border-{color}` utilities would override that.
-{{< /callout >}}
+{{% /callout %}}
 
 ## Growing spinner
 
