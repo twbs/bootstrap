@@ -152,7 +152,7 @@ For example, we use the `primary`, `success`, and `danger` keys from `$theme-col
 
 ### Colors
 
-In Bootstrap 5, we've dropped the `color()`, `theme-color()` and `gray()` functions because the values are also available as standalone variables. So instead of using `theme-color("primary")`, you can now just use the `$primary` variable.
+Next to the [Sass maps]({{< docsref "/customize/color#color-sass-maps" >}}) we have, theme colors can also be used as standalone variables, like `$primary`.
 
 {{< highlight scss >}}
 .custom-element {
@@ -161,15 +161,19 @@ In Bootstrap 5, we've dropped the `color()`, `theme-color()` and `gray()` functi
 }
 {{< /highlight >}}
 
-We also have a function for getting a particular _level_ of color. Negative level values will lighten the color, while higher levels will darken.
+You can lighten or darken colors with Bootstrap's `tint-color()` and `shade-color()` functions. These functions will mix colors with black or white, unlike Sass' native `lighten()` and `darken()` functions which will change the lightness by a fixed amount, which often doesn't lead to the desired effect.
 
-{{< scss-docs name="color-level" file="scss/_functions.scss" >}}
+{{< scss-docs name="color-functions" file="scss/_functions.scss" >}}
 
-In practice, you'd call the function and pass in two parameters: the name of the color from `$theme-colors` (e.g., primary or danger) and a numeric level.
+In practice, you'd call the function and pass in the color and weight parameters.
 
 {{< highlight scss >}}
 .custom-element {
-  color: color-level($primary, -10);
+  color: tint-color($primary, 10%);
+}
+
+.custom-element-2 {
+  color: shade-color($danger, 30%);
 }
 {{< /highlight >}}
 
