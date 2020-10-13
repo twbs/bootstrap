@@ -140,9 +140,9 @@ Contextual classes also work with `.list-group-item-action`. Note the addition o
 </div>
 {{< /example >}}
 
-{{< callout info >}}
+{{% callout info %}}
 {{< partial "callout-warning-color-assistive-technologies.md" >}}
-{{< /callout >}}
+{{% /callout %}}
 
 ## With badges
 
