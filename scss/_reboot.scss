@@ -27,6 +27,10 @@
 
 :root {
   font-size: $font-size-root;
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
 }
 
 
