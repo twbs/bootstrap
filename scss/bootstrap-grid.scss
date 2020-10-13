@@ -16,6 +16,9 @@ html {
   box-sizing: inherit;
 }
 
+// Deprecate
+@import "mixins/deprecate";
+
 @import "functions";
 @import "variables";
 
