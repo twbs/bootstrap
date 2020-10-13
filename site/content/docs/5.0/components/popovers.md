@@ -21,9 +21,9 @@ Things to know when using the popover plugin:
 - Popovers must be hidden before their corresponding elements have been removed from the DOM.
 - Popovers can be triggered thanks to an element inside a shadow DOM.
 
-{{% callout info %}}
+{{< callout info >}}
 {{< partial "callout-info-prefersreducedmotion.md" >}}
-{{% /callout %}}
+{{< /callout >}}
 
 Keep reading to see how popovers work with some examples.
 
@@ -98,11 +98,11 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
 
 Use the `focus` trigger to dismiss popovers on the user's next click of a different element than the toggle element.
 
-{{% callout danger %}}
+{{< callout danger >}}
 #### Specific markup required for dismiss-on-next-click
 
 For proper cross-browser and cross-platform behavior, you must use the `<a>` tag, _not_ the `<button>` tag, and you also must include a [`tabindex`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) attribute.
-{{% /callout %}}
+{{< /callout >}}
 
 {{< example >}}
 <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
@@ -135,7 +135,7 @@ var exampleEl = document.getElementById('example')
 var popover = new bootstrap.Popover(exampleEl, options)
 {{< /highlight >}}
 
-{{% callout warning %}}
+{{< callout warning >}}
 ### Making popovers work for keyboard and assistive technology users
 
 To allow keyboard users to activate your popovers, you should only add them to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as `<span>`s) can be made focusable by adding the `tabindex="0"` attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users, and most assistive technologies currently do not announce the popover's content in this situation. Additionally, do not rely solely on `hover` as the trigger for your popovers, as this will make them impossible to trigger for keyboard users.
@@ -143,15 +143,15 @@ To allow keyboard users to activate your popovers, you should only add them to H
 While you can insert rich, structured HTML in popovers with the `html` option, we strongly recommend that you avoid adding an excessive amount of content. The way popovers currently work is that, once displayed, their content is tied to the trigger element with the `aria-describedby` attribute. As a result, the entirety of the popover's content will be announced to assistive technology users as one long, uninterrupted stream.
 
 Additionally, while it is possible to also include interactive controls (such as form elements or links) in your popover (by adding these elements to the `allowList` of allowed attributes and tags), be aware that currently the popover does not manage keyboard focus order. When a keyboard user opens a popover, focus remains on the triggering element, and as the popover usually does not immediately follow the trigger in the document's structure, there is no guarantee that moving forward/pressing <kbd>TAB</kbd> will move a keyboard user into the popover itself. In short, simply adding interactive controls to a popover is likely to make these controls unreachable/unusable for keyboard users and users of assistive technologies, or at the very least make for an illogical overall focus order. In these cases, consider using a modal dialog instead.
-{{% /callout %}}
+{{< /callout >}}
 
 ### Options
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
 
-{{% callout warning %}}
+{{< callout warning >}}
 Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` options cannot be supplied using data attributes.
-{{% /callout %}}
+{{< /callout >}}
 
 <table class="table">
   <thead>
@@ -290,17 +290,17 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
   </tbody>
 </table>
 
-{{% callout info %}}
+{{< callout info >}}
 #### Data attributes for individual popovers
 
 Options for individual popovers can alternatively be specified through the use of data attributes, as explained above.
-{{% /callout %}}
+{{< /callout >}}
 
 ### Methods
 
-{{% callout danger %}}
+{{< callout danger >}}
 {{< partial "callout-danger-async-methods.md" >}}
-{{% /callout %}}
+{{< /callout >}}
 
 
 #### show

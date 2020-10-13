@@ -25,11 +25,11 @@ We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootst
 </script>
 {{< /highlight >}}
 
-{{% callout warning %}}
+{{< callout warning >}}
 ## Incompatible plugins
 
 Due to browser limitations, some of our plugins, namely Dropdown, Tooltip and Popover plugins, cannot be used in a `<script>` tag with `module` type because they depend on Popper.js. For more information about the issue see [here](https://v8.dev/features/modules#specifiers).
-{{% /callout %}}
+{{< /callout >}}
 
 ## Dependencies
 
@@ -45,12 +45,12 @@ Bootstrap 5 is designed to be used without jQuery, but it's still possible to us
 
 Nearly all Bootstrap plugins can be enabled and configured through HTML alone with data attributes (our preferred way of using JavaScript functionality). Be sure to **only use one set of data attributes on a single element** (e.g., you cannot trigger a tooltip and modal from the same button.)
 
-{{% callout warning %}}
+{{< callout warning >}}
 ## Selectors
 
 Currently to query DOM elements we use the native methods `querySelector` and `querySelectorAll` for performance reasons, so you have to use [valid selectors](https://www.w3.org/TR/CSS21/syndata.html#value-def-identifier).
 If you use special selectors, for example: `collapse:Example` be sure to escape them.
-{{% /callout %}}
+{{< /callout >}}
 
 ## Events
 
@@ -68,7 +68,7 @@ myModal.addEventListener('show.bs.modal', function (e) {
 })
 {{< /highlight >}}
 
-{{% callout warning %}}
+{{< callout warning >}}
 ## jQuery events
 
 Bootstrap will detect jQuery if `jQuery` is present in the `window` object and there is no `data-no-jquery` attribute set on `<body>`. If jQuery is found, Bootstrap will emit events thanks to jQuery's event system. So if you want to listen to Bootstrap's events, you'll have to use the jQuery methods (`.on`, `.one`) instead of `addEventListener`.
@@ -78,7 +78,7 @@ $('#myTab a').on('shown.bs.tab', function () {
   // do something...
 })
 {{< /highlight >}}
-{{% /callout %}}
+{{< /callout >}}
 
 ## Programmatic API
 
@@ -151,11 +151,11 @@ bootstrap.Tooltip.VERSION // => "{{< param current_version >}}"
 
 Bootstrap's plugins don't fall back particularly gracefully when JavaScript is disabled. If you care about the user experience in this case, use [`<noscript>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript) to explain the situation (and how to re-enable JavaScript) to your users, and/or add your own custom fallbacks.
 
-{{% callout warning %}}
+{{< callout warning >}}
 ##### Third-party libraries
 
 **Bootstrap does not officially support third-party JavaScript libraries** like Prototype or jQuery UI. Despite `.noConflict` and namespaced events, there may be compatibility problems that you need to fix on your own.
-{{% /callout %}}
+{{< /callout >}}
 
 ## Sanitizer
 

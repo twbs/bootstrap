@@ -21,9 +21,9 @@ Easily realign text to components with text alignment classes. For left, right, 
 <p class="text-xl-left">Left aligned text on viewports sized XL (extra-large) or wider.</p>
 {{< /example >}}
 
-{{% callout info %}}
+{{< callout info >}}
 Note that we don't provide utility classes for justified text. While, aesthetically, justified text might look more appealing, it does make word-spacing more random and therefore harder to read.
-{{% /callout %}}
+{{< /callout >}}
 
 ## Text wrapping and overflow
 
