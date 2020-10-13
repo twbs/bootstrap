@@ -366,9 +366,9 @@ These changes, and more, are demonstrated below.
   </fieldset>
 </form>
 
-{{% callout warning %}}
+{{< callout warning >}}
 {{< partial "callout-warning-input-support.md" >}}
-{{% /callout %}}
+{{< /callout >}}
 
 ### Pointers on buttons
 
@@ -441,10 +441,10 @@ HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.o
 <input type="text" hidden>
 {{< /highlight >}}
 
-{{% callout warning %}}
+{{< callout warning >}}
 ##### jQuery incompatibility
 
 `[hidden]` is not compatible with jQuery's `$(...).hide()` and `$(...).show()` methods. Therefore, we don't currently especially endorse `[hidden]` over other techniques for managing the `display` of elements.
-{{% /callout %}}
+{{< /callout >}}
 
 To merely toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document, use [the `.invisible` class]({{< docsref "/utilities/visibility" >}}) instead.

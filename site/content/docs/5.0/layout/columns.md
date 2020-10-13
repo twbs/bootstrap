@@ -6,9 +6,9 @@ group: layout
 toc: true
 ---
 
-{{% callout info %}}
+{{< callout info >}}
 **Heads up!** Be sure to [read the Grid page]({{< docsref "/layout/grid" >}}) first before diving into how to modify and customize your grid columns.
-{{% /callout %}}
+{{< /callout >}}
 
 ## How they work
 

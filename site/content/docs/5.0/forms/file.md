@@ -6,9 +6,9 @@ group: forms
 toc: true
 ---
 
-{{% callout info %}}
+{{< callout info >}}
 The recommended plugin to animate custom file inputs is [bs-custom-file-input](https://www.npmjs.com/package/bs-custom-file-input); it's what we use here in our docs.
-{{% /callout %}}
+{{< /callout >}}
 
 ## Default
 

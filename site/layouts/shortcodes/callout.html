@@ -6,5 +6,5 @@
 {{- $css_class := .Get 0 | default "info" -}}
 
 <div class="bd-callout bd-callout-{{ $css_class }}">
-{{ .Inner }}
+{{ .Inner | markdownify }}
 </div>

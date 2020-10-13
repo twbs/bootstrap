@@ -26,9 +26,9 @@ myModal.addEventListener('shown.bs.modal', function () {
 })
 {{< /highlight >}}
 
-{{% callout info %}}
+{{< callout info >}}
 {{< partial "callout-info-prefersreducedmotion.md" >}}
-{{% /callout %}}
+{{< /callout >}}
 
 Keep reading for demos and usage guidelines.
 
@@ -888,9 +888,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
-{{% callout danger %}}
+{{< callout danger >}}
 {{< partial "callout-danger-async-methods.md" >}}
-{{% /callout %}}
+{{< /callout >}}
 
 #### Passing options
 
