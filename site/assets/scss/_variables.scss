@@ -2,8 +2,8 @@
 
 // Local docs variables
 $bd-purple:        #563d7c;
-$bd-purple-bright: lighten(saturate($bd-purple, 5%), 15%);
-$bd-purple-light:  lighten(saturate($bd-purple, 5%), 45%);
+$bd-purple-bright: lighten(saturate($bd-purple, 5%), 15%); // stylelint-disable-line function-disallowed-list
+$bd-purple-light:  lighten(saturate($bd-purple, 5%), 45%); // stylelint-disable-line function-disallowed-list
 $bd-dark:          #2a2730;
 $bd-download:      #ffe484;
 $bd-info:          #5bc0de;
