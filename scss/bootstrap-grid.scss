@@ -16,12 +16,10 @@ html {
   box-sizing: inherit;
 }
 
-// Deprecate
-@import "mixins/deprecate";
-
 @import "functions";
 @import "variables";
 
+@import "mixins/deprecate";
 @import "mixins/breakpoints";
 @import "mixins/grid-framework";
 @import "mixins/grid";
