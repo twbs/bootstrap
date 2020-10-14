@@ -64,7 +64,7 @@ While the `.disabled` class uses `pointer-events: none` to _try_ to disable the 
     </li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item active" aria-current="page">
-      <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+      <a class="page-link" href="#">2</a>
     </li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item">
@@ -85,10 +85,7 @@ You can optionally swap out active or disabled anchors for `<span>`, or omit the
     </li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item active" aria-current="page">
-      <span class="page-link">
-        2
-        <span class="sr-only">(current)</span>
-      </span>
+      <span class="page-link">2</span>
     </li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item">
@@ -107,10 +104,7 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 <nav aria-label="...">
   <ul class="pagination pagination-lg">
     <li class="page-item active" aria-current="page">
-      <span class="page-link">
-        1
-        <span class="sr-only">(current)</span>
-      </span>
+      <span class="page-link">1</span>
     </li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
@@ -123,10 +117,7 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 <nav aria-label="...">
   <ul class="pagination pagination-sm">
     <li class="page-item active" aria-current="page">
-      <span class="page-link">
-        1
-        <span class="sr-only">(current)</span>
-      </span>
+      <span class="page-link">1</span>
     </li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
