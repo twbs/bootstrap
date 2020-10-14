@@ -152,6 +152,6 @@
 // Organizationally, this must come after the `:hover` states.
 
 @each $color, $value in $theme-colors {
-  @include list-group-item-variant($color, color-level($value, $list-group-item-bg-level), color-level($value, $list-group-item-color-level));
+  @include list-group-item-variant($color, scale-color($value, $list-group-item-bg-scale), scale-color($value, $list-group-item-color-scale));
 }
 // scss-docs-end list-group-modifiers
