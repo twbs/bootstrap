@@ -7972,46 +7972,6 @@ button.bg-dark:focus {
   user-select: none !important;
 }
 
-.opacity-0 {
-  opacity: 0;
-}
-
-.opacity-10 {
-  opacity: .1;
-}
-
-.opacity-20 {
-  opacity: .2;
-}
-
-.opacity-30 {
-  opacity: .3;
-}
-
-.opacity-40 {
-  opacity: .4;
-}
-
-.opacity-50 {
-  opacity: .5;
-}
-
-.opacity-60 {
-  opacity: .6;
-}
-
-.opacity-70 {
-  opacity: .7;
-}
-
-.opacity-80 {
-  opacity: .8;
-}
-
-.opacity-90 {
-  opacity: .9;
-}
-
 .overflow-auto {
   overflow: auto !important;
 }
