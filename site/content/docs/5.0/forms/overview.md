@@ -103,7 +103,8 @@ However, if your form also includes custom button-like elements such as `<a clas
 
 {{< example >}}
 <form>
-  <fieldset disabled aria-label="Disabled fieldset example">
+  <fieldset disabled>
+    <legend>Disabled fieldset example</legend>
     <div class="mb-3">
       <label for="disabledTextInput" class="form-label">Disabled input</label>
       <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
