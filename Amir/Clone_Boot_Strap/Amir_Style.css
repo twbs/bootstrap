@@ -1,0 +1,286 @@
+/* Main Bar With Search Icon Color In Dark Green */
+
+.navbar
+{
+  background-color: #054711 !important;
+}
+.btn-group .btn-secondary
+{
+  border: none !important;
+  padding-top:15px !important ;
+  padding-bottom:15px !important ;
+  background-color: #054711 !important;
+  text-align-last: left !important ;
+  font-size: 14px;
+  font-weight: bold;
+}
+.glass_search
+{
+  border: 1px solid #15952c;
+  padding:5px;
+  background-color: #23ba3f !important;
+  size:20px;
+}
+
+/* Second Bar With Different Button */
+.Second_bar .navbar
+{
+  background-color: #11d12b !important;
+}
+
+.Second_bar .navbar_2 .btn-group_2 .btn-secondary_2
+{
+  border: none !important;
+  padding-top:10px !important ;
+  padding-bottom:10px !important ;
+  background-color: #11d12b !important;
+  text-align-last: right !important ;
+  font-size: 14px;
+  font-weight: bold;
+}
+.container
+
+/* Icons Or Image of Apply Now , Location And Course */
+{
+  padding: 20px 20px !important;
+  margin-left: 150px !important;
+  margin-bottom: 30px !important;
+}
+.Apply_Now
+{
+  margin-left: 1200px;
+  font-size: 20px;
+  background-color: black;
+  border-radius: 25%;
+}
+
+/* Banner Or Flow Chart */
+.flowchart
+{
+  padding-top:100px;
+  padding-bottom: 100px;
+  text-align: center;
+  width:1632;
+  height: 795;
+  background: rgb(88,88,88);
+  background: linear-gradient(0deg, rgba(88,88,88,1) 13%, rgba(48,48,48,1) 100%);
+}
+/* About Us and Vision Block */
+.About_Vision
+{
+  background-color: #003300;
+  color: white;
+  text-align: justify;
+  padding: 40px 100px;
+}
+.About_Head
+{
+  font-weight: bold;
+}
+.Vision_Head
+{
+  font-weight: bold;
+}
+.course_content
+{
+  background: rgb(88,88,88);
+  background: linear-gradient(0deg, rgba(88,88,88,1) 13%, rgba(48,48,48,1) 100%);
+  text-align: center;
+  color: white;
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+.course_content .course_track_head
+{
+  font-family: arial;
+  font-weight: bold;
+}
+
+
+
+.Candi_Table
+{
+  padding-top: 30px;
+  padding-bottom: 40px !important;
+}
+.Candi_Port
+{
+  font-weight: bold;
+  text-align: justify;
+  padding-left: 50px;
+}
+.list-group-item
+{
+border: none !important;
+padding-left: 50px !important;
+font-size: 23px !important;
+}
+.potrtal_text
+{
+  border: 1px solid black;
+  background-color: black;
+  color: white;
+  font-size: 23px;
+  text-align: left !important;
+  padding-left: 10px;
+  padding-right: 30px;
+}
+.candidatae_portal
+{
+  font-size:10px;
+  color: white;
+}
+.potrtal_text:hover
+{
+  background-color: white;
+  color: black !important;
+  text-decoration: underline !important;
+}
+.Candidate_login
+{
+  justify-content: center !important;
+  align-items: center !important;
+  margin-left: 550px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  background-color: lime;
+  color: white;
+  padding: 5px 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.Candidate_Arrow
+{
+  border: 1px solid green;
+  background-color: green;
+  font-size: 20px;
+  margin-top: 10px;
+  padding: 7px 10px 9px 1px;
+  color: white;
+  text-align: justify !important ;
+  margin-bottom: 20px;
+}
+.map_image
+{
+border: 1px;
+margin-bottom: 20px;
+}
+.Card_Contents
+{
+  background-color: grey;
+}
+.news_head
+{
+  padding-top: 20px;
+  text-align: center;
+}
+.card-deck
+{
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-bottom: 50px;
+}
+.card-img-top:hover
+{
+  border: 10px solid grey;
+}
+.Apply_Trainer_LAB
+{
+  margin-left: 500px;
+  padding-left:20px;
+  text-align: right !important;
+  position: relative;
+}
+
+.Read_more
+{
+  background-color: green;
+  color: white;
+}
+.Read_more_2
+{
+margin-left: 550px;
+background-color: lime;
+}
+.Careers_Blog
+{
+  background: rgb(49,49,49);
+  background: linear-gradient(27deg, rgba(49,49,49,1) 0%, rgba(111,111,111,1) 59%, rgba(123,123,123,1) 70%, rgba(128,128,128,1) 75%, rgba(154,154,154,1) 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-weight: bold;
+  color: white;
+
+}
+
+.Apply_Trainer
+{
+  background-color: black;
+  color: white;
+}
+
+.Trainer_Arrow
+{
+border:1px solid green;
+color:white;
+background-color: green;
+padding: 5px 5px;
+}
+.Apply_Lab
+{
+  background-color: black;
+  color: white;
+}
+.Lab_Arrow
+{
+border:1px solid green;
+color:white;
+background-color: green;
+padding: 5px 5px;
+}
+
+.page-footer
+{
+  background-color: grey;
+  color: white;
+}
+.rw_last .last_but .btn-secondary2
+{
+  background-color:black;
+  border: none;
+}
+
+.btn-group1 .btn-secondary1
+{
+  border: none !important;
+  padding-top:15px !important ;
+  padding-bottom:15px !important ;
+  background-color: black !important;
+  text-align-last: left !important ;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.list-unstyled .fb_icon
+{
+  font-size: 30px;
+}
+.text-right
+{
+  color:white;
+}
+.page_footer_blog
+{
+  background-color: black;
+}
+.page_footer_blog .row_last .last_but .btn-secondary2
+{
+  background-color: black;
+  border: none;
+}
+.page_footer_blog .row_last .copy_rite
+{
+  color:white;
+  font-size: 10px;
+  padding-right: 20px;
+}

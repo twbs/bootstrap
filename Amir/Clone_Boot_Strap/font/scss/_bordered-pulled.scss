@@ -1,0 +1,20 @@
+// Bordered & Pulled
+// -------------------------
+
+.#{$fa-css-prefix}-border {
+  border: solid .08em $fa-border-color;
+  border-radius: .1em;
+  padding: .2em .25em .15em;
+}
+
+.#{$fa-css-prefix}-pull-left { float: left; }
+.#{$fa-css-prefix}-pull-right { float: right; }
+
+.#{$fa-css-prefix},
+.fas,
+.far,
+.fal,
+.fab {
+  &.#{$fa-css-prefix}-pull-left { margin-right: .3em; }
+  &.#{$fa-css-prefix}-pull-right { margin-left: .3em; }
+}

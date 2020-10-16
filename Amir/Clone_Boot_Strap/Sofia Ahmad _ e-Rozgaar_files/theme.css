@@ -1,0 +1,982 @@
+/**
+ * Juicebox 1.4.3.2 Classic Theme
+ *
+ * Copyright (c) 2015 Juicebox Inc. All rights reserved.
+ * http://www.juicebox.net
+ *
+ * BY USING THIS SOFTWARE, YOU AGREE TO THE JUICEBOX TERMS OF USE
+ * http://www.juicebox.net/terms
+ *
+ * Support and Documentation: http://www.juicebox.net/support
+ *
+ * Build Time: 02/11/2015 04:42:56 PM
+ */
+
+.juicebox-gallery
+{
+	outline: none;
+}
+
+.juicebox-gallery h1, .juicebox-gallery h2, .juicebox-gallery h3, .juicebox-gallery h4,
+.juicebox-gallery div, .juicebox-gallery span{
+	border-spacing: 0;
+	padding: 0;
+	margin: 0;
+	border: none 0;
+	vertical-align: middle;	/*don't make this "!important", or the next "vertical-align: bottom;" will be broken. */
+	line-height: 1.1;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+	font-family: 'juicebox';
+}
+
+.juicebox-gallery a, .juicebox-gallery u {
+	margin: 0;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.juicebox-gallery .jb-idx-thb-list-page-number,
+.juicebox-gallery .jb-area-large-mode-title,
+.juicebox-gallery .jb-idx-title,
+.juicebox-gallery .jb-idx-title textarea,
+.juicebox-gallery .jb-area-caption div,
+.juicebox-gallery .jb-area-caption p,
+.juicebox-gallery .jb-splash h3,
+.juicebox-gallery .jb-splash p,
+.juicebox-gallery .jb-splash a,
+.juicebox-gallery .jb-go-back a,
+.juicebox-gallery .jb-idx-thumbnail-show-more a,
+.juicebox-gallery .jb-status-message{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.juicebox-gallery table, .juicebox-gallery tr, .juicebox-gallery td, .juicebox-gallery tbody{
+	border-spacing: 0;
+	padding: 0 !important;
+	margin: 0 !important;
+	border: none 0 !important;
+	background: none repeat scroll 0 0 transparent !important;
+	vertical-align: middle;	/*don't make this "!important", or the next "vertical-align: bottom;" will be broken. */
+	width: 100%;
+	height: 100%;
+	line-height: 1;
+}
+
+.juicebox-gallery .jb-area-caption table,
+.juicebox-gallery .jb-area-caption tr,
+.juicebox-gallery .jb-area-caption td,
+.juicebox-gallery .jb-area-caption tbody
+{
+	vertical-align: bottom;
+}
+
+.juicebox-gallery .jb-panel-detail table,
+.juicebox-gallery .jb-panel-detail tr,
+.juicebox-gallery .jb-panel-detail td,
+.juicebox-gallery .jb-panel-detail tbody
+{
+	vertical-align: middle;
+}
+
+.juicebox-gallery li {
+	list-style: none
+}
+
+.juicebox-gallery p {
+	width: auto;
+	height: auto;
+	padding: 0;
+	margin: 0;
+}
+
+.juicebox-gallery img
+{
+	max-width: none;
+	margin: 0;
+	padding: 0;
+	border:none;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+}
+
+.juicebox-gallery textarea {
+    box-shadow: none;
+    transition: none;
+}
+
+/*#162 otherwise there will be a white border around it in IE9*/
+.jb-go-back img
+{
+	border:none;
+}
+
+/* gallery top panel */
+div.jb-panel-top
+{
+	background: transparent;
+}
+.jb-flag-msie-bf9 .jb-panel-top
+{
+	background-color:Black;
+}
+.jb-go-back-icon-frame a
+{
+	outline: none;
+}
+/* gallery index panel */
+.jb-panel-index
+{
+	height:100%;	/* for gallery preloader */
+	width:100%;
+}
+
+.juicebox-gallery .jb-idx-thb-container {
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align: bottom;
+	position: absolute
+}
+.jb-flag-large-screen-mode .jb-idx-thb-container {
+	height: auto;
+}
+
+table .jb-idx-thb-list
+{
+	vertical-align: middle;
+}
+
+div.jb-idx-thb-list {
+	margin: 5px;
+	background-color: Transparent;
+}
+
+.jb-idx-thb-list .jb-idx-thumb {
+	float: left;
+	background-color: rgba(0, 0, 0, 0.5);
+	position: relative;
+}
+
+div.jb-idx-thb-list .jb-thm-thumb-dot {
+    background-color: transparent;
+}
+
+.jb-idx-thb-list .jb-idx-thumb img {
+	border: 0px solid transparent;
+	cursor: pointer;
+	max-width: none;
+}
+.jb-idx-thb-list .jb-idx-thumb img:active {
+	-webkit-transform: translate(2px,2px);
+	-moz-transform: translate(2px,2px);
+	-o-transform: translate(2px,2px);
+}
+.jb-idx-thumb {
+	background: transparent;
+}
+.jb-idx-thb-frame {
+	border: 0px solid transparent;
+	cursor: pointer;
+}
+.jb-idx-thb-frame:hover {
+	border-color: rgb(255, 255, 255);
+	border-color: rgba(255, 255, 255, .5);
+	border-style: solid;
+}
+.jb-flag-large-screen-mode .jb-thm-thumb-selected .jb-idx-thb-frame {
+	border-color: rgb(255, 255, 255);
+	border-color: rgba(255, 255, 255, .5);
+	border-style: solid;
+}
+.jb-flag-msie .jb-idx-thb-frame {	/* the frame around thumbnail won't work correctly on IE without this */
+	background: url('img/assets.png') no-repeat -454px -61px;
+}
+div.jb-idx-thb-list-page-number {
+	font-size: 13px;
+}
+
+/* gallery detail panel */
+div.jb-panel-detail {
+	overflow: hidden;
+}
+div.jb-dt-main-frame {
+	position: absolute;
+	vertical-align: middle;
+	float: left;
+	text-align: center;
+	overflow: hidden;
+}
+.jb-dt-main-frame .jb-dt-main-image {
+	-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, .4);
+	-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, .4);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, .4);
+	border-color: White;
+}
+.jb-dt-main-frame img
+{
+	max-width: none;
+}
+.jb-flag-msie .jb-panel-detail {
+	position: relative;
+}
+.jb-watermark, .jb-watermark a, .jb-watermark img, .jb-watermark a:visited, .jb-watermark a:active, .jb-watermark a:link, .jb-watermark a:hover
+{
+	border:none 0 transparent;
+	outline: none;
+}
+
+/* gallery caption area */
+div.jb-area-caption
+{
+	vertical-align: bottom;
+}
+
+.jb-cap-frame {
+	float: left;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	position: absolute;
+}
+.jb-cap-frame tr {
+	vertical-align: bottom;
+}
+.jb-flag-size-fixed .jb-cap-frame tr {
+	vertical-align: top;
+}
+.jb-cap-frame .jb-caption {
+	background-color: rgba(0, 0, 0, .3);
+	color: white;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+.jb-cap-frame .jbac-number {
+	float: right;
+	color: #ccc;
+	width: 72px;
+	text-align: right;
+	font-size: 13px;
+	cursor:default;
+}
+.jb-caption .jb-caption-title {
+	font-size: 17px;
+	cursor:default;
+}
+
+.jb-caption p
+{
+	margin-bottom: 0 !important;
+	margin-right: 72px;	/* equal to "width" in .jb-cap-frame .jbac-number; margin-top is set in code in order to hide the top margin when there is no desc */
+	margin-left: 0;
+	font-size: 13px;
+	line-height: 23px;
+	cursor:default;
+}
+.jb-caption a {
+	color: white;
+}
+.jb-flag-msie-bf9 .jb-cap-frame .jb-caption {
+	background-color:Black;
+}
+p.jb-cap-content {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.jb-flag-size-fixed .jb-caption
+{
+	height:100%;
+}
+
+/* gallery title area */
+.jb-idx-ssm-title-wrapper {
+    font-family:inherit;
+    font-size:16px;
+    color:inherit;
+}
+
+.jb-flag-large-screen-mode .jb-area-large-mode-title {
+	position: absolute;
+	top: 10px;
+	padding: 5px 10px 5px 10px;
+	color: #FFFFFF;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.4), 0 0 5px rgba(0,0,0,0.2);
+	font-size: 18px;
+	outline: none;
+	border: none;
+	cursor:default;
+}
+
+.jb-flag-large-screen-mode .jb-idx-thumbnail-container .jb-area-large-mode-title {
+	padding: 0;
+}
+
+.jb-flag-large-screen-mode .jb-area-large-mode-title a, .jb-flag-large-screen-mode .jb-area-large-mode-title img
+{
+	outline: none;
+	border: none;
+}
+
+/* gallery button bar */
+.jb-classifier-link-wrapper {
+	display: none;
+	position: absolute;
+	top: 7px;
+}
+
+div.jb-bb-bar {
+	float: left;
+	background-color: rgba(0, 0, 0, .4);
+	padding: 0 4px 0 4px;
+	margin: 0 10px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.jb-classifier-thumb-area div.jb-bb-bar {
+	margin: 0 0 0 2px;
+}
+
+/*BUTTONS*/
+div.jb-bb-button {
+	float: left;
+/*	background: url(img/assets.png) no-repeat;	*/
+	cursor: pointer;
+	text-align: center;
+	margin: 0;
+	border-top-style: solid;
+	border-top-width: 10px;
+	border-top-color: transparent;
+	padding: 0px;
+	font-size: 20px;
+	height: 30px;
+	width: 38px;
+}
+
+.jb-flag-msiever8 div.jb-bb-button {
+	border-top-style: solid;
+	border-top-width: 5px;
+	border-top-color: transparent;
+}
+
+.jb-flag-msie-bf9 .jb-bb-button {
+	margin: 0 0 0 0;
+}
+
+.jb-flag-msie-bf9 .jb-bb-bar {
+	float: right;
+	padding: 0 0 0 0;
+	height: 38px;
+	background-color:Black;
+}
+
+/* gallery button bar on index page*/
+
+div.jb-classifier-link-wrapper.jb-classifier-thumb-area {
+	width: 50px
+}
+
+div.jb-bb-splitter
+{
+	border-color: White;
+	display: block;
+	height: 20px;
+	border-style: none solid none none;
+	border-width: 1px;
+	float: left;
+	margin: 10px 0 0 3px;
+}
+
+/* gallery navigation */
+.jb-navigation {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.jb-navigation .jbn-nav-touch-area, .jb-navigation .jbn-nav-button{
+	font-family: 'juicebox';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-size:20px;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+.jb-navigation .jbn-nav-button
+{
+	width: 28px;
+	height: 28px;
+	padding:0;
+}
+.jb-navigation .jbn-nav-button-icon
+{
+	padding: 4px 2px 0 2px;
+	text-align: center;
+    line-height: 1;
+}
+
+.jb-flag-msie .jb-navigation .jbn-nav-button-icon
+{
+	padding: 5px 2px 0 2px;
+}
+.jb-flag-msie .jb-navigation .jbn-left-button,
+	.jb-flag-msie .jb-navigation .jbn-right-button,
+	.jb-flag-msie div.index-navigation.jb-navigation .jbn-nav-button-icon
+{
+	height: 23px;
+}
+div.jb-flag-msiever8 .jb-navigation .jbn-nav-button-icon
+{
+	padding: 0px 2px 4px 2px;
+}
+div.index-navigation.jb-navigation .jbn-nav-button-icon
+{
+	width: 24px;
+	height: 24px;
+}
+.jb-navigation .jbn-left-button {
+	display: none;
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+	background-color: rgba(0,0,0,0.4);
+}
+
+.jb-flag-msie-bf9 .jb-navigation .jbn-left-button
+{
+	background-color:Black;
+}
+
+.jb-navigation .jbn-right-button {
+	display: none;
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	-moz-border-radius: 14px;
+	-webkit-border-radius: 14px;
+	border-radius: 14px;
+	background-color: rgba(0,0,0,0.4);
+}
+
+.jb-flag-msie-bf9 .jb-navigation .jbn-right-button
+{
+	background-color:Black;
+}
+
+.jb-navigation .jbn-nav-left-button {
+	color: blue;
+	width: 50%
+}
+.jb-navigation .jbn-nav-right-button {
+	color: blue;
+	width: 50%;
+}
+.jb-navigation .jbn-left-button, .jb-navigation .jbn-right-button {
+	cursor: pointer;
+}
+
+/* gallery navigation for index */
+
+.jb-thm-thumb-dot .jb-thm-thumb-image {
+	margin: 0;
+	padding: 0;
+	display: block;
+	cursor: pointer;
+}
+.jb-idx-thb-list div.jb-thm-thumb-dot {
+	margin: 0;
+	padding: 0;
+}
+
+/* gallery navigation for detail */
+.jb-navigation .jbn-nav-touch-area {
+	display: inline-block;
+	height: 100%;
+	width: 50%;
+	position: relative;
+	cursor: pointer;
+}
+
+.jb-flag-touchable .jb-navigation .jbn-nav-touch-area {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    cursor:not-allowed;
+}
+
+.jb-flag-msiever7 .jb-navigation .jbn-nav-touch-area
+{
+	width: 49.99%;
+}
+
+.jb-navigation .dt-nav-disabled {
+	cursor: default !important;
+}
+.jb-flag-msie .jbn-nav-touch-area {	/* this will make the jbn-nav-touch-area clickable on IE */
+	background: url('img/assets.png') no-repeat -454px -61px;
+}
+.jb-flag-msie .jb-navigation .jbn-nav-touch-area {
+	display: block;
+	float: left;
+}
+
+/* gallery go back button */
+div.jb-go-back
+{
+	padding: 5px 10px;
+	margin: 0;
+}
+
+div.jb-go-back-icon-frame
+{
+	background-color: rgba(0, 0, 0, .4);
+	padding: 0 4px;	/*match div.jb-bb-bar to make them vertically align*/
+}
+
+a.jb-go-back-icon
+{
+	cursor: pointer;
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+	font-size: 13px;
+	height: 28px;
+	width: 38px;
+	display: block;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-top-style: solid;
+	border-top-width: 10px;
+	border-top-color: transparent;
+}
+
+.jb-flag-msiever8 a.jb-go-back-icon {
+	border-top-style: solid;
+	border-top-width: 8px;
+	border-top-color: transparent;
+}
+
+.jb-flag-msie-bf9 a.jb-go-back-icon
+{
+	background-color:Black;
+}
+
+.jb-go-back a {
+	text-decoration: none;
+}
+
+/* gallery splash page */
+.jb-splash-info
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.3);
+	height: auto;
+	width:100%;
+}
+.jb-splash-info p {
+	color: white;
+	font-size: 17px;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+	line-height: 25px;
+	width:auto;
+}
+/* Splash page description*/
+p.jb-splash-desc
+{
+	width:auto;
+	padding: 0 20px 20px 20px;
+}
+/* Splash page photo count*/
+p.jb-splash-cnt
+{
+	padding: 0 20px 20px 20px;
+	font-weight: normal;
+}
+/* Splash page title, add important in order to avoid collisions with Word Press*/
+.jb-splash-info h3 {
+	color: white !important;
+	padding: 20px !important;
+	margin: 0 !important;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
+	font-size: 26px !important;
+	font-weight: normal !important;
+	letter-spacing: 1px !important;
+}
+/* Splash 'View Gallery' Text*/
+a.jb-splash-view-glry {
+	color: white;
+	font-size: 14px;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-decoration: none;
+	display: block;
+	width: auto;
+	margin: 0;
+	padding: 0 20px 20px 20px;
+}
+div.jb-splash
+{
+	height: 100%;
+	width: 100%;
+	position:relative;
+	margin:0;
+	padding:0;
+    cursor: pointer;
+}
+
+.jb-idx-thumbnail-container .jb-splash-holder img
+{
+	max-width: none;
+	max-height: none;
+}
+.jb-splash-holder
+{
+	position:relative;
+}
+.jb-splash-background
+{
+	background-color: rgba(0, 0, 0, 0.35);
+}
+
+/* gallery messages */
+.jb-error-message {
+	color: White;
+	padding: 8px 10px;
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 17px;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.3), 0 0 5px rgba(0,0,0,0.2);
+	text-align:center;
+}
+
+.jb-error-message a{
+	color: White;
+}
+
+/* Autoplay message */
+.juicebox-gallery  .jb-status-message{
+	color: White;
+	padding: 8px 10px 12px 8px;
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 17px;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.3), 0 0 5px rgba(0,0,0,0.2);
+	font-weight: normal;
+	text-align:center;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background-color: rgba(0, 0, 0, .5);
+    overflow: hidden;
+}
+
+/* gallery flag */
+.jb-flag-size-fixed
+{
+	overflow:hidden;
+}
+
+/* gallery status */
+.jb-status-thumb-loading
+{
+	background-color:rgba(0,0,0,0.5);
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+.jb-flag-msie-bf9 .jb-status-thumb-loading
+{
+	background-color:Black;
+}
+div.jb-status-loading {
+	background: url('img/spinner.gif') no-repeat center;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	text-align: center
+}
+.jb-badge
+{
+	background: url('img/jb001.png') no-repeat center;
+}
+
+
+/****** font icon stuff ******/
+@font-face {
+	font-family: 'juicebox';
+	src:url('fonts/juicebox.eot');
+	src:url('fonts/juicebox.eot?#iefix') format('embedded-opentype'),
+		url('fonts/juicebox.woff') format('woff'),
+		url('fonts/juicebox.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+
+div.jb-bb-button:before, .jb-thm-thumb-dot, a.jb-go-back-icon
+{
+	font-family: 'juicebox' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+.jb-thm-thumb-dot, a.jb-go-back-icon
+{
+	font-size: 20px;
+}
+
+/* Icon Font Ids */
+.jb-navigation .jbn-left-button:before, .jb-flag-large-screen-mode .jb-navigation .jbn-left-button:before
+{
+	content: "\e000";
+}
+.jb-navigation .jbn-right-button:before, .jb-flag-large-screen-mode .jb-navigation .jbn-right-button:before
+{
+	content: "\e001";
+}
+.jb-flag-large-screen-mode .jb-bb-button.jb-bb-btn-de-show-list:before
+{
+	content: "\e002";
+}
+.jb-bb-button.jb-bb-btn-de-show-list:before
+{
+	content: "\e003";
+}
+.jb-bb-button.jb-bb-btn-open-url:before
+{
+	content: "\e004";
+}
+.jb-bb-button.jb-bb-btn-full-screen:before
+{
+	content: "\e005";
+}
+.jb-bb-button.jb-bb-btn-full-screen.jb-bb-btn-de-full-screen:before
+{
+	content: "\e006";
+}
+.jb-bb-button.jb-bb-btn-top-nav.jb-bb-btn-top-nav-left:before
+{
+	content: "\e007";
+}
+.jb-bb-button.jb-bb-btn-top-nav.jb-bb-btn-top-nav-right:before
+{
+	content: "\e008";
+}
+.jb-bb-button.jb-bb-btn-auto-play:before
+{
+	content: "\e009";
+}
+.jb-bb-button.jb-bb-btn-auto-play.jb-status-playing:before
+{
+	content: "\e00a";
+}
+.jb-bb-button.jb-bb-btn-show-info:before
+{
+	content: "\e00b";
+}
+.jb-bb-button.jb-bb-btn-audio:before {
+	content: "\e00c";
+}
+.jb-bb-button.jb-bb-btn-audio.jb-status-playing:before
+{
+	content: "\e00d";
+}
+.jb-bb-button.jb-bb-btn-fotomoto:before
+{
+	content: "\e00e";
+}
+.jb-bb-button.jb-bb-btn-facebook:before
+{
+	content: "\e00f";
+}
+.jb-bb-button.jb-bb-btn-twitter:before
+{
+	content: "\e010";
+}
+.jb-bb-button.jb-bb-btn-gplus:before
+{
+	content: "\e011";
+}
+.jb-bb-button.jb-bb-btn-printerest:before
+{
+	content: "\e012";
+}
+.jb-bb-button.jb-bb-btn-tumblr:before
+{
+	content: "\e013";
+}
+a.jb-go-back-icon:before
+{
+	content: "\e014";
+}
+
+.jb-thm-thumb-dot .jb-thm-thumb-image:before
+{
+	content: "\e015";
+}
+
+/* IE8 need something differently */
+.jb-flag-msiever8 .jb-navigation .jbn-left-button:before, .jb-flag-msiever8 .jb-flag-large-screen-mode .jb-navigation .jbn-left-button:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-navigation .jbn-right-button:before, .jb-flag-msiever8 .jb-flag-large-screen-mode .jb-navigation .jbn-right-button:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-flag-large-screen-mode .jb-bb-button.jb-bb-btn-de-show-list:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-bb-button.jb-bb-btn-de-show-list:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-bb-button.jb-bb-btn-open-url:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-bb-button.jb-bb-btn-full-screen:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-bb-button.jb-bb-btn-full-screen.jb-bb-btn-de-full-screen:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-bb-button.jb-bb-btn-top-nav.jb-bb-btn-top-nav-left:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-bb-button.jb-bb-btn-top-nav.jb-bb-btn-top-nav-right:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-bb-button.jb-bb-btn-auto-play:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-bb-button.jb-bb-btn-auto-play.jb-status-playing:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-bb-button.jb-bb-btn-show-info:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-bb-button.jb-bb-btn-audio:before {
+	content: "";
+}
+.jb-flag-msiever8 .jb-bb-button.jb-bb-btn-audio.jb-status-playing:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-bb-button.jb-bb-btn-fotomoto:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-bb-button.jb-bb-btn-facebook:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-bb-button.jb-bb-btn-twitter:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-bb-button.jb-bb-btn-gplus:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-bb-button.jb-bb-btn-printerest:before
+{
+	content: "";
+}
+.jb-flag-msiever8 .jb-bb-button.jb-bb-btn-tumblr:before
+{
+	content: "";
+}
+.jb-flag-msiever8 a.jb-go-back-icon:before
+{
+	content: "";
+}
+
+.jb-flag-msiever8 .jb-thm-thumb-dot .jb-thm-thumb-image:before {
+	content: "";
+}
+
+div.jb-idx-thumbnail-show-more {
+  	padding: 0;
+	margin: 0 0 5px 0;
+}
+
+.jb-idx-thumbnail-show-more a {
+   	text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+#jb-glry-dlg {
+    z-index: 9999;
+}
+
+@media only screen {
+    @-ms-viewport {width: device-width; initial-scale: 1; user-scalable: no;}
+}
+
+body, html {
+	-ms-touch-action:none;
+}
+.jcbx-glry-classic {
+	background: #222222;
+	color: white;
+	clear: both;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	height: 500px;
+	color: #FFF;
+	position: relative;
+	overflow: hidden;
+	display:block !important;
+}
+
+.jcbx-glry-classic a{
+	color:#FFF;
+}
+.jcbx-glry-classic:hover .button_bar {
+}
+.jcbx-glry-classic:hover .navigation {
+}
+.jcbx-glry-classic .jb-idx-thb-list .jb-idx-thumb img {
+	-moz-box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+	box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+	/* For IE 8
+	 -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color='#000000')";
+	 / For IE 5.5 - 7 /
+	 filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=270, Color='#000000');
+	 */
+}
+.jb-idx-title, .jb-idx-title textarea, .jb-go-back .jb-go-back-text {
+	font-size: 18px;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.4), 0 0 5px rgba(0,0,0,0.2);
+}
+.jb-idx-thb-list-page-number {
+}

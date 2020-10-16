@@ -1,0 +1,298 @@
+area-chart:
+  name: chart-area
+arrow-circle-o-down:
+  name: arrow-alt-circle-down
+  prefix: far
+arrow-circle-o-left:
+  name: arrow-alt-circle-left
+  prefix: far
+arrow-circle-o-right:
+  name: arrow-alt-circle-right
+  prefix: far
+arrow-circle-o-up:
+  name: arrow-alt-circle-up
+  prefix: far
+arrows:
+  name: arrows-alt
+arrows-alt:
+  name: expand-arrows-alt
+arrows-h:
+  name: arrows-alt-h
+arrows-v:
+  name: arrows-alt-v
+bar-chart:
+  name: chart-bar
+  prefix: far
+bitbucket-square:
+  name: bitbucket
+  prefix: fab
+calendar:
+  name: calendar-alt
+calendar-o:
+  name: calendar
+  prefix: far
+caret-square-o-down:
+  name: caret-square-down
+  prefix: far
+caret-square-o-left:
+  name: caret-square-left
+  prefix: far
+caret-square-o-right:
+  name: caret-square-right
+  prefix: far
+caret-square-o-up:
+  name: caret-square-up
+  prefix: far
+cc:
+  name: closed-captioning
+  prefix: far
+chain-broken:
+  name: unlink
+circle-o-notch:
+  name: circle-notch
+circle-thin:
+  name: circle
+  prefix: far
+clipboard:
+  prefix: far
+clone:
+  prefix: far
+cloud-download:
+  name: cloud-download-alt
+cloud-upload:
+  name: cloud-upload-alt
+code-fork:
+  name: code-branch
+comment-alt:
+  name: comment-dots
+  prefix: far
+commenting:
+  name: comment-dots
+compass:
+  prefix: far
+compress:
+  name: compress-alt
+copyright:
+  prefix: far
+creative-commons:
+  prefix: fab
+credit-card:
+  prefix: far
+credit-card-alt:
+  name: credit-card
+cutlery:
+  name: utensils
+diamond:
+  name: gem
+  prefix: far
+eercast:
+  name: sellcast
+  prefix: fab
+eur:
+  name: euro-sign
+exchange:
+  name: exchange-alt
+expand:
+  name: expand-alt
+external-link:
+  name: external-link-alt
+external-link-square:
+  name: external-link-square-alt
+eye:
+  prefix: far
+eye-dropper:
+  name: eye-dropper
+  prefix: far
+eye-slash:
+  prefix: far
+eyedropper:
+  name: eye-dropper
+facebook:
+  name: facebook-f
+  prefix: fab
+facebook-official:
+  name: facebook
+  prefix: fab
+file-text:
+  name: file-alt
+files-o:
+  name: copy
+  prefix: far
+floppy-o:
+  name: save
+  prefix: far
+gbp:
+  name: pound-sign
+glass:
+  name: glass-martini
+google-plus:
+  name: google-plus-g
+  prefix: fab
+google-plus-circle:
+  name: google-plus
+  prefix: fab
+google-plus-official:
+  name: google-plus
+  prefix: fab
+hand-o-down:
+  name: hand-point-down
+  prefix: far
+hand-o-left:
+  name: hand-point-left
+  prefix: far
+hand-o-right:
+  name: hand-point-right
+  prefix: far
+hand-o-up:
+  name: hand-point-up
+  prefix: far
+header:
+  name: heading
+id-badge:
+  prefix: far
+ils:
+  name: shekel-sign
+inr:
+  name: rupee-sign
+intersex:
+  name: transgender
+jpy:
+  name: yen-sign
+krw:
+  name: won-sign
+level-down:
+  name: level-down-alt
+level-up:
+  name: level-up-alt
+life-ring:
+  prefix: far
+line-chart:
+  name: chart-line
+linkedin:
+  name: linkedin-in
+  prefix: fab
+linkedin-square:
+  name: linkedin
+  prefix: fab
+list-alt:
+  prefix: far
+long-arrow-down:
+  name: long-arrow-alt-down
+long-arrow-left:
+  name: long-arrow-alt-left
+long-arrow-right:
+  name: long-arrow-alt-right
+long-arrow-up:
+  name: long-arrow-alt-up
+map-marker:
+  name: map-marker-alt
+meanpath:
+  name: font-awesome
+  prefix: fab
+mobile:
+  name: mobile-alt
+money:
+  name: money-bill-alt
+  prefix: far
+object-group:
+  prefix: far
+object-ungroup:
+  prefix: far
+paste:
+  prefix: far
+pencil:
+  name: pencil-alt
+pencil-square:
+  name: pen-square
+pencil-square-o:
+  name: edit
+  prefix: far
+picture:
+  name: image
+pie-chart:
+  name: chart-pie
+refresh:
+  name: sync
+registered:
+  prefix: far
+repeat:
+  name: redo
+rub:
+  name: ruble-sign
+scissors:
+  name: cut
+shield:
+  name: shield-alt
+sign-in:
+  name: sign-in-alt
+sign-out:
+  name: sign-out-alt
+sliders:
+  name: sliders-h
+sort-alpha-asc:
+  name: sort-alpha-down
+sort-alpha-desc:
+  name: sort-alpha-down-alt
+sort-amount-asc:
+  name: sort-amount-down
+sort-amount-desc:
+  name: sort-amount-down-alt
+sort-asc:
+  name: sort-up
+sort-desc:
+  name: sort-down
+sort-numeric-asc:
+  name: sort-numeric-down
+sort-numeric-desc:
+  name: sort-numeric-down-alt
+spoon:
+  name: utensil-spoon
+star-half-empty:
+  name: star-half
+star-half-full:
+  name: star-half
+support:
+  name: life-ring
+  prefix: far
+tablet:
+  name: tablet-alt
+tachometer:
+  name: tachometer-alt
+television:
+  name: tv
+thumb-tack:
+  name: thumbtack
+thumbs-o-down:
+  name: thumbs-down
+  prefix: far
+thumbs-o-up:
+  name: thumbs-up
+  prefix: far
+ticket:
+  name: ticket-alt
+trash:
+  name: trash-alt
+trash-o:
+  name: trash-alt
+  prefix: far
+try:
+  name: lira-sign
+usd:
+  name: dollar-sign
+video-camera:
+  name: video
+vimeo:
+  name: vimeo-v
+  prefix: fab
+volume-control-phone:
+  name: phone-volume
+wheelchair-alt:
+  name: accessible-icon
+  prefix: fab
+window-maximize:
+  prefix: far
+window-restore:
+  prefix: far
+youtube-play:
+  name: youtube
+  prefix: fab
