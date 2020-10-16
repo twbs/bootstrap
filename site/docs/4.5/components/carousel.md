@@ -321,6 +321,14 @@ Cycles to the next item. **Returns to the caller before the next item has been s
 
 Destroys an element's carousel.
 
+#### `.carousel('nextWhenVisible')`
+
+Don't cycle the carousel to next when the page isn't visible or the carousel or its parent isn't visible. **Returns to the caller before the next item has been shown** (i.e. before the `slid.bs.carousel` event occurs).
+
+#### `.carousel('to')`
+
+Cycles the carousel to a particular frame (0 based, similar to an array). **Returns to the caller before the next item has been shown** (i.e. before the `slid.bs.carousel` event occurs).
+
 ### Events
 
 Bootstrap's carousel class exposes two events for hooking into carousel functionality. Both events have the following additional properties:
