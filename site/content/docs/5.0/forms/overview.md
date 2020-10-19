@@ -93,9 +93,9 @@ Inline text can use any typical inline HTML element (be it a `<span>`, `<small>`
 
 Add the `disabled` boolean attribute on an input to prevent user interactions and make it appear lighter.
 
-{{< highlight html >}}
+```html
 <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
-{{< /highlight >}}
+```
 
 Add the `disabled` attribute to a `<fieldset>` to disable all the controls within. Browsers treat all native form controls (`<input>`, `<select>`, and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them.
 
