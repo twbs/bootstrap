@@ -18,7 +18,7 @@ toc: true
 
 ### Reboot
 
-- Uee `scroll-behavior: smooth` globally, except for users asking for reduced motion through `prefers-reduced-motion` media query. [See #31877](https://github.com/twbs/bootstrap/pull/31877)
+- Introduce `$enable-smooth-scroll`, which applies `scroll-behavior: smooth` globally—except for users asking for reduced motion through `prefers-reduced-motion` media query. [See #31877](https://github.com/twbs/bootstrap/pull/31877)
 
 ## v5.0.0-alpha2
 

@@ -28,8 +28,10 @@
 :root {
   font-size: $font-size-root;
 
-  @media (prefers-reduced-motion: no-preference) {
-    scroll-behavior: smooth;
+  @if $enable-smooth-scroll {
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
   }
 }
 
