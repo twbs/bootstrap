@@ -12,6 +12,10 @@ Bootstrap "spinners" can be used to show the loading state in your projects. The
 
 For accessibility purposes, each loader here includes `role="status"` and a nested `<span class="visually-hidden">Loading...</span>`.
 
+{{< callout info >}}
+{{< partial "callout-info-prefersreducedmotion.md" >}}
+{{< /callout >}}
+
 ## Border spinner
 
 Use the border spinners for a lightweight loading indicator.
