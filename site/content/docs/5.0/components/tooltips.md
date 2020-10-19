@@ -20,9 +20,9 @@ Things to know when using the tooltip plugin:
 - Tooltips must be hidden before their corresponding elements have been removed from the DOM.
 - Tooltips can be triggered thanks to an element inside a shadow DOM.
 
-{{% callout info %}}
+{{< callout info >}}
 {{< partial "callout-info-prefersreducedmotion.md" >}}
-{{% /callout %}}
+{{< /callout >}}
 
 Got all that? Great, let's see how they work with some examples.
 
@@ -103,7 +103,7 @@ var exampleEl = document.getElementById('example')
 var tooltip = new bootstrap.Tooltip(exampleEl, options)
 {{< /highlight >}}
 
-{{% callout warning %}}
+{{< callout warning >}}
 ##### Overflow `auto` and `scroll`
 
 Tooltip position attempts to automatically change when a parent container has `overflow: auto` or `overflow: scroll` like our `.table-responsive`, but still keeps the original placement's positioning. To resolve, set the `boundary` option to anything other than default value, `'scrollParent'`, such as `'window'`:
@@ -114,17 +114,17 @@ var tooltip = new bootstrap.Tooltip(exampleEl, {
   boundary: 'window'
 })
 {{< /highlight >}}
-{{% /callout %}}
+{{< /callout >}}
 
 ### Markup
 
 The required markup for a tooltip is only a `data` attribute and `title` on the HTML element you wish to have a tooltip. The generated markup of a tooltip is rather simple, though it does require a position (by default, set to `top` by the plugin).
 
-{{% callout warning %}}
+{{< callout warning >}}
 ##### Making tooltips work for keyboard and assistive technology users
 
 You should only add tooltips to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as `<span>`s) can be made focusable by adding the `tabindex="0"` attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users, and most assistive technologies currently do not announce the tooltip in this situation. Additionally, do not rely solely on `hover` as the trigger for your tooltip, as this will make your tooltips impossible to trigger for keyboard users.
-{{% /callout %}}
+{{< /callout >}}
 
 {{< highlight html >}}
 <!-- HTML to write -->
@@ -155,9 +155,9 @@ Elements with the `disabled` attribute aren't interactive, meaning users cannot 
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
 
-{{% callout warning %}}
+{{< callout warning >}}
 Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` options cannot be supplied using data attributes.
-{{% /callout %}}
+{{< /callout >}}
 
 <table class="table">
   <thead>
@@ -298,17 +298,17 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
   </tbody>
 </table>
 
-{{% callout info %}}
+{{< callout info >}}
 #### Data attributes for individual tooltips
 
 Options for individual tooltips can alternatively be specified through the use of data attributes, as explained above.
-{{% /callout %}}
+{{< /callout >}}
 
 ### Methods
 
-{{% callout danger %}}
+{{< callout danger >}}
 {{< partial "callout-danger-async-methods.md" >}}
-{{% /callout %}}
+{{< /callout >}}
 
 #### show
 

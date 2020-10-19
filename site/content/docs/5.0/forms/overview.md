@@ -55,11 +55,11 @@ Here's a quick example to demonstrate Bootstrap's form styles. Keep reading for 
 
 Block-level or inline-level form text can be created using `.form-text`.
 
-{{% callout warning %}}
+{{< callout warning >}}
 ##### Associating form text with form controls
 
 Form text should be explicitly associated with the form control it relates to using the `aria-describedby` attribute. This will ensure that assistive technologies—such as screen readers—will announce this form text when the user focuses or enters the control.
-{{% /callout %}}
+{{< /callout >}}
 
 Form text below inputs can be styled with `.form-text`. If a block-level element will be used, a top margin is added for easy spacing from the inputs above.
 
@@ -103,7 +103,8 @@ However, if your form also includes custom button-like elements such as `<a clas
 
 {{< example >}}
 <form>
-  <fieldset disabled aria-label="Disabled fieldset example">
+  <fieldset disabled>
+    <legend>Disabled fieldset example</legend>
     <div class="mb-3">
       <label for="disabledTextInput" class="form-label">Disabled input</label>
       <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
