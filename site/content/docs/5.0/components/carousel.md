@@ -286,7 +286,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td><code>interval</code></td>
       <td>number</td>
       <td><code>5000</code></td>
-      <td>The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.</td>
+      <td>The amount of time in ms to delay between automatically cycling an item. If false, carousel will not automatically cycle.</td>
     </tr>
     <tr>
       <td><code>keyboard</code></td>
