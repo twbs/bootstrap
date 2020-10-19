@@ -12,9 +12,9 @@ The carousel is a slideshow for cycling through a series of content, built with 
 
 In browsers where the [Page Visibility API](https://www.w3.org/TR/page-visibility/) is supported, the carousel will avoid sliding when the webpage is not visible to the user (such as when the browser tab is inactive, the browser window is minimized, etc.).
 
-{{% callout info %}}
+{{< callout info >}}
 {{< partial "callout-info-prefersreducedmotion.md" >}}
-{{% /callout %}}
+{{< /callout >}}
 
 Please be aware that nested carousels are not supported, and carousels are generally not compliant with accessibility standards.
 
@@ -263,10 +263,10 @@ The `data-ride="carousel"` attribute is used to mark a carousel as animating sta
 
 Call carousel manually with:
 
-{{< highlight js >}}
+```js
 var myCarousel = document.querySelector('#myCarousel')
 var carousel = new bootstrap.Carousel(myCarousel)
-{{< /highlight >}}
+```
 
 ### Options
 
@@ -324,19 +324,19 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
-{{% callout danger %}}
+{{< callout danger >}}
 {{< partial "callout-danger-async-methods.md" >}}
-{{% /callout %}}
+{{< /callout >}}
 
 You can create a carousel instance with the carousel constructor, for example, to initialize with additional options and start cycling through items:
 
-{{< highlight js >}}
+```js
 var myCarousel = document.querySelector('#myCarousel')
 var carousel = new bootstrap.Carousel(myCarousel, {
   interval: 2000,
   wrap: false
 })
-{{< /highlight >}}
+```
 
 <table class="table">
   <thead>
@@ -411,13 +411,13 @@ All carousel events are fired at the carousel itself (i.e. at the `<div class="c
   </tbody>
 </table>
 
-{{< highlight js >}}
+```js
 var myCarousel = document.getElementById('myCarousel')
 
 myCarousel.addEventListener('slide.bs.carousel', function () {
   // do something...
 })
-{{< /highlight >}}
+```
 
 ### Change transition duration
 

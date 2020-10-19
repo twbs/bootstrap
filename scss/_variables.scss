@@ -82,9 +82,6 @@ $theme-colors: (
 ) !default;
 // scss-docs-end theme-colors-map
 
-// Set a specific jump point for requesting color jumps
-$theme-color-interval: 8% !default;
-
 // The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
 // See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
 $min-contrast-ratio:   4.5 !default;
@@ -94,105 +91,105 @@ $color-contrast-dark:      $black !default;
 $color-contrast-light:     $white !default;
 
 // fusv-disable
-$blue-100: tint-color($blue, 8) !default;
-$blue-200: tint-color($blue, 6) !default;
-$blue-300: tint-color($blue, 4) !default;
-$blue-400: tint-color($blue, 2) !default;
+$blue-100: tint-color($blue, 80%) !default;
+$blue-200: tint-color($blue, 60%) !default;
+$blue-300: tint-color($blue, 40%) !default;
+$blue-400: tint-color($blue, 20%) !default;
 $blue-500: $blue !default;
-$blue-600: shade-color($blue, 2) !default;
-$blue-700: shade-color($blue, 4) !default;
-$blue-800: shade-color($blue, 6) !default;
-$blue-900: shade-color($blue, 8) !default;
+$blue-600: shade-color($blue, 20%) !default;
+$blue-700: shade-color($blue, 40%) !default;
+$blue-800: shade-color($blue, 60%) !default;
+$blue-900: shade-color($blue, 80%) !default;
 
-$indigo-100: tint-color($indigo, 8) !default;
-$indigo-200: tint-color($indigo, 6) !default;
-$indigo-300: tint-color($indigo, 4) !default;
-$indigo-400: tint-color($indigo, 2) !default;
+$indigo-100: tint-color($indigo, 80%) !default;
+$indigo-200: tint-color($indigo, 60%) !default;
+$indigo-300: tint-color($indigo, 40%) !default;
+$indigo-400: tint-color($indigo, 20%) !default;
 $indigo-500: $indigo !default;
-$indigo-600: shade-color($indigo, 2) !default;
-$indigo-700: shade-color($indigo, 4) !default;
-$indigo-800: shade-color($indigo, 6) !default;
-$indigo-900: shade-color($indigo, 8) !default;
+$indigo-600: shade-color($indigo, 20%) !default;
+$indigo-700: shade-color($indigo, 40%) !default;
+$indigo-800: shade-color($indigo, 60%) !default;
+$indigo-900: shade-color($indigo, 80%) !default;
 
-$purple-100: tint-color($purple, 8) !default;
-$purple-200: tint-color($purple, 6) !default;
-$purple-300: tint-color($purple, 4) !default;
-$purple-400: tint-color($purple, 2) !default;
+$purple-100: tint-color($purple, 80%) !default;
+$purple-200: tint-color($purple, 60%) !default;
+$purple-300: tint-color($purple, 40%) !default;
+$purple-400: tint-color($purple, 20%) !default;
 $purple-500: $purple !default;
-$purple-600: shade-color($purple, 2) !default;
-$purple-700: shade-color($purple, 4) !default;
-$purple-800: shade-color($purple, 6) !default;
-$purple-900: shade-color($purple, 8) !default;
+$purple-600: shade-color($purple, 20%) !default;
+$purple-700: shade-color($purple, 40%) !default;
+$purple-800: shade-color($purple, 60%) !default;
+$purple-900: shade-color($purple, 80%) !default;
 
-$pink-100: tint-color($pink, 8) !default;
-$pink-200: tint-color($pink, 6) !default;
-$pink-300: tint-color($pink, 4) !default;
-$pink-400: tint-color($pink, 2) !default;
+$pink-100: tint-color($pink, 80%) !default;
+$pink-200: tint-color($pink, 60%) !default;
+$pink-300: tint-color($pink, 40%) !default;
+$pink-400: tint-color($pink, 20%) !default;
 $pink-500: $pink !default;
-$pink-600: shade-color($pink, 2) !default;
-$pink-700: shade-color($pink, 4) !default;
-$pink-800: shade-color($pink, 6) !default;
-$pink-900: shade-color($pink, 8) !default;
+$pink-600: shade-color($pink, 20%) !default;
+$pink-700: shade-color($pink, 40%) !default;
+$pink-800: shade-color($pink, 60%) !default;
+$pink-900: shade-color($pink, 80%) !default;
 
-$red-100: tint-color($red, 8) !default;
-$red-200: tint-color($red, 6) !default;
-$red-300: tint-color($red, 4) !default;
-$red-400: tint-color($red, 2) !default;
+$red-100: tint-color($red, 80%) !default;
+$red-200: tint-color($red, 60%) !default;
+$red-300: tint-color($red, 40%) !default;
+$red-400: tint-color($red, 20%) !default;
 $red-500: $red !default;
-$red-600: shade-color($red, 2) !default;
-$red-700: shade-color($red, 4) !default;
-$red-800: shade-color($red, 6) !default;
-$red-900: shade-color($red, 8) !default;
+$red-600: shade-color($red, 20%) !default;
+$red-700: shade-color($red, 40%) !default;
+$red-800: shade-color($red, 60%) !default;
+$red-900: shade-color($red, 80%) !default;
 
-$orange-100: tint-color($orange, 8) !default;
-$orange-200: tint-color($orange, 6) !default;
-$orange-300: tint-color($orange, 4) !default;
-$orange-400: tint-color($orange, 2) !default;
+$orange-100: tint-color($orange, 80%) !default;
+$orange-200: tint-color($orange, 60%) !default;
+$orange-300: tint-color($orange, 40%) !default;
+$orange-400: tint-color($orange, 20%) !default;
 $orange-500: $orange !default;
-$orange-600: shade-color($orange, 2) !default;
-$orange-700: shade-color($orange, 4) !default;
-$orange-800: shade-color($orange, 6) !default;
-$orange-900: shade-color($orange, 8) !default;
+$orange-600: shade-color($orange, 20%) !default;
+$orange-700: shade-color($orange, 40%) !default;
+$orange-800: shade-color($orange, 60%) !default;
+$orange-900: shade-color($orange, 80%) !default;
 
-$yellow-100: tint-color($yellow, 8) !default;
-$yellow-200: tint-color($yellow, 6) !default;
-$yellow-300: tint-color($yellow, 4) !default;
-$yellow-400: tint-color($yellow, 2) !default;
+$yellow-100: tint-color($yellow, 80%) !default;
+$yellow-200: tint-color($yellow, 60%) !default;
+$yellow-300: tint-color($yellow, 40%) !default;
+$yellow-400: tint-color($yellow, 20%) !default;
 $yellow-500: $yellow !default;
-$yellow-600: shade-color($yellow, 2) !default;
-$yellow-700: shade-color($yellow, 4) !default;
-$yellow-800: shade-color($yellow, 6) !default;
-$yellow-900: shade-color($yellow, 8) !default;
+$yellow-600: shade-color($yellow, 20%) !default;
+$yellow-700: shade-color($yellow, 40%) !default;
+$yellow-800: shade-color($yellow, 60%) !default;
+$yellow-900: shade-color($yellow, 80%) !default;
 
-$green-100: tint-color($green, 8) !default;
-$green-200: tint-color($green, 6) !default;
-$green-300: tint-color($green, 4) !default;
-$green-400: tint-color($green, 2) !default;
+$green-100: tint-color($green, 80%) !default;
+$green-200: tint-color($green, 60%) !default;
+$green-300: tint-color($green, 40%) !default;
+$green-400: tint-color($green, 20%) !default;
 $green-500: $green !default;
-$green-600: shade-color($green, 2) !default;
-$green-700: shade-color($green, 4) !default;
-$green-800: shade-color($green, 6) !default;
-$green-900: shade-color($green, 8) !default;
+$green-600: shade-color($green, 20%) !default;
+$green-700: shade-color($green, 40%) !default;
+$green-800: shade-color($green, 60%) !default;
+$green-900: shade-color($green, 80%) !default;
 
-$teal-100: tint-color($teal, 8) !default;
-$teal-200: tint-color($teal, 6) !default;
-$teal-300: tint-color($teal, 4) !default;
-$teal-400: tint-color($teal, 2) !default;
+$teal-100: tint-color($teal, 80%) !default;
+$teal-200: tint-color($teal, 60%) !default;
+$teal-300: tint-color($teal, 40%) !default;
+$teal-400: tint-color($teal, 20%) !default;
 $teal-500: $teal !default;
-$teal-600: shade-color($teal, 2) !default;
-$teal-700: shade-color($teal, 4) !default;
-$teal-800: shade-color($teal, 6) !default;
-$teal-900: shade-color($teal, 8) !default;
+$teal-600: shade-color($teal, 20%) !default;
+$teal-700: shade-color($teal, 40%) !default;
+$teal-800: shade-color($teal, 60%) !default;
+$teal-900: shade-color($teal, 80%) !default;
 
-$cyan-100: tint-color($cyan, 8) !default;
-$cyan-200: tint-color($cyan, 6) !default;
-$cyan-300: tint-color($cyan, 4) !default;
-$cyan-400: tint-color($cyan, 2) !default;
+$cyan-100: tint-color($cyan, 80%) !default;
+$cyan-200: tint-color($cyan, 60%) !default;
+$cyan-300: tint-color($cyan, 40%) !default;
+$cyan-400: tint-color($cyan, 20%) !default;
 $cyan-500: $cyan !default;
-$cyan-600: shade-color($cyan, 2) !default;
-$cyan-700: shade-color($cyan, 4) !default;
-$cyan-800: shade-color($cyan, 6) !default;
-$cyan-900: shade-color($cyan, 8) !default;
+$cyan-600: shade-color($cyan, 20%) !default;
+$cyan-700: shade-color($cyan, 40%) !default;
+$cyan-800: shade-color($cyan, 60%) !default;
+$cyan-900: shade-color($cyan, 80%) !default;
 // fusv-enable
 
 // Characters which are escaped by the escape-svg function
@@ -214,6 +211,7 @@ $enable-shadows:              false !default;
 $enable-gradients:            false !default;
 $enable-transitions:          true !default;
 $enable-reduced-motion:       true !default;
+$enable-smooth-scroll:        true !default;
 $enable-grid-classes:         true !default;
 $enable-button-pointers:      true !default;
 $enable-rfs:                  true !default;
@@ -276,10 +274,9 @@ $body-text-align:           null !default;
 
 $link-color:                              $primary !default;
 $link-decoration:                         underline !default;
-$link-hover-color:                        darken($link-color, 15%) !default;
+$link-shade-percentage:                   20% !default;
+$link-hover-color:                        scale-color($link-color, $link-shade-percentage) !default;
 $link-hover-decoration:                   null !default;
-// Darken percentage for links with `.text-*` class (e.g. `.text-success`)
-$emphasized-link-hover-darken-percentage: 15% !default;
 
 $stretched-link-pseudo-element:           after !default;
 $stretched-link-z-index:                  1 !default;
@@ -524,15 +521,15 @@ $table-group-separator-color: currentColor !default;
 
 $table-caption-color:         $text-muted !default;
 
-$table-bg-level:              -9 !default;
+$table-bg-scale:              -80% !default;
 
 $table-variants: (
-  "primary":    color-level($primary, $table-bg-level),
-  "secondary":  color-level($secondary, $table-bg-level),
-  "success":    color-level($success, $table-bg-level),
-  "info":       color-level($info, $table-bg-level),
-  "warning":    color-level($warning, $table-bg-level),
-  "danger":     color-level($danger, $table-bg-level),
+  "primary":    scale-color($primary, $table-bg-scale),
+  "secondary":  scale-color($secondary, $table-bg-scale),
+  "success":    scale-color($success, $table-bg-scale),
+  "info":       scale-color($info, $table-bg-scale),
+  "warning":    scale-color($warning, $table-bg-scale),
+  "danger":     scale-color($danger, $table-bg-scale),
   "light":      $light,
   "dark":       $dark,
 ) !default;
@@ -650,7 +647,7 @@ $input-border-radius-sm:                $border-radius-sm !default;
 $input-border-radius-lg:                $border-radius-lg !default;
 
 $input-focus-bg:                        $input-bg !default;
-$input-focus-border-color:              lighten($component-active-bg, 25%) !default;
+$input-focus-border-color:              tint-color($component-active-bg, 50%) !default;
 $input-focus-color:                     $input-color !default;
 $input-focus-width:                     $input-btn-focus-width !default;
 $input-focus-box-shadow:                $input-btn-focus-box-shadow !default;
@@ -782,7 +779,7 @@ $form-range-thumb-border-radius:           1rem !default;
 $form-range-thumb-box-shadow:              0 .1rem .25rem rgba($black, .1) !default;
 $form-range-thumb-focus-box-shadow:        0 0 0 1px $body-bg, $input-focus-box-shadow !default;
 $form-range-thumb-focus-box-shadow-width:  $input-focus-width !default; // For focus box shadow issue in Edge
-$form-range-thumb-active-bg:               lighten($component-active-bg, 35%) !default;
+$form-range-thumb-active-bg:               tint-color($component-active-bg, 70%) !default;
 $form-range-thumb-disabled-bg:             $gray-500 !default;
 $form-range-thumb-transition:              background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
@@ -944,7 +941,7 @@ $dropdown-divider-margin-y:         $spacer / 2 !default;
 $dropdown-box-shadow:               $box-shadow !default;
 
 $dropdown-link-color:               $gray-900 !default;
-$dropdown-link-hover-color:         darken($gray-900, 5%) !default;
+$dropdown-link-hover-color:         shade-color($gray-900, 10%) !default;
 $dropdown-link-hover-bg:            $gray-100 !default;
 
 $dropdown-link-active-color:        $component-active-color !default;
@@ -1065,7 +1062,7 @@ $popover-border-radius:             $border-radius-lg !default;
 $popover-inner-border-radius:       subtract($popover-border-radius, $popover-border-width) !default;
 $popover-box-shadow:                $box-shadow !default;
 
-$popover-header-bg:                 darken($popover-bg, 3%) !default;
+$popover-header-bg:                 shade-color($popover-bg, 6%) !default;
 $popover-header-color:              $headings-color !default;
 $popover-header-padding-y:          .5rem !default;
 $popover-header-padding-x:          $spacer !default;
@@ -1163,9 +1160,9 @@ $alert-border-radius:               $border-radius !default;
 $alert-link-font-weight:            $font-weight-bold !default;
 $alert-border-width:                $border-width !default;
 
-$alert-bg-level:                    -10 !default;
-$alert-border-level:                -9 !default;
-$alert-color-level:                 6 !default;
+$alert-bg-scale:                    -80% !default;
+$alert-border-scale:                -70% !default;
+$alert-color-scale:                 50% !default;
 
 $alert-dismissible-padding-r:       $alert-padding-x * 3 !default; // 3x covers width of x plus default padding on either side
 
@@ -1193,8 +1190,8 @@ $list-group-border-radius:          $border-radius !default;
 
 $list-group-item-padding-y:         $spacer / 2 !default;
 $list-group-item-padding-x:         $spacer !default;
-$list-group-item-bg-level:          -9 !default;
-$list-group-item-color-level:       6 !default;
+$list-group-item-bg-scale:          -80% !default;
+$list-group-item-color-scale:       50% !default;
 
 $list-group-hover-bg:               $gray-100 !default;
 $list-group-active-color:           $component-active-color !default;

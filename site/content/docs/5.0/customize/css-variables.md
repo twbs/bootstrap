@@ -14,7 +14,7 @@ Bootstrap includes around two dozen [CSS custom properties (variables)](https://
 
 Here are the variables we include (note that the `:root` is required) that can be accessed anywhere Bootstrap's CSS is loaded. They're located in our `_root.scss` file and included in our compiled dist files.
 
-{{< highlight css >}}
+```css
 {{< root.inline >}}
 {{- $css := readFile "dist/css/bootstrap.css" -}}
 {{- $match := findRE ":root {([^}]*)}" $css 1 -}}
@@ -26,7 +26,7 @@ Here are the variables we include (note that the `:root` is required) that can b
 {{- index $match 0 -}}
 
 {{< /root.inline >}}
-{{< /highlight >}}
+```
 
 ## Component variables
 
@@ -40,11 +40,11 @@ We're also using CSS variables across our grids—primarily for gutters—with m
 
 CSS variables offer similar flexibility to Sass's variables, but without the need for compilation before being served to the browser. For example, here we're resetting our page's font and link styles with CSS variables.
 
-{{< highlight css >}}
+```css
 body {
   font: 1rem/1.5 var(--bs-font-sans-serif);
 }
 a {
   color: var(--bs-blue);
 }
-{{< /highlight >}}
+```

@@ -12,9 +12,9 @@ Use the ratio helper to manage the aspect ratios of external content like `<ifra
 
 Aspect ratios are declared in a Sass map and included in each class via CSS variable, which also allows [custom aspect ratios](#custom-ratios).
 
-{{% callout info %}}
+{{< callout info >}}
 **Pro-Tip!** You don't need `frameborder="0"` on your `<iframe>`s as we override that for you in [Reboot]({{< docsref "/content/reboot" >}}).
-{{% /callout %}}
+{{< /callout >}}
 
 ## Example
 
@@ -59,13 +59,13 @@ For example, to create a 2x1 aspect ratio, set `--aspect-ratio: 50%` on the `.ra
 
 This CSS variable makes it easy to modify the aspect ratio across breakpoints. The following is 4x3 to start, but changes to a custom 2x1 at the medium breakpoint.
 
-{{< highlight scss >}}
+```scss
 .ratio-4x3 {
   @include media-breakpoint-up(md) {
     --aspect-ratio: 50%; // 2x1
   }
 }
-{{< /highlight >}}
+```
 
 {{< example class="bd-example-ratios bd-example-ratios-breakpoint" >}}
 <div class="ratio ratio-4x3">

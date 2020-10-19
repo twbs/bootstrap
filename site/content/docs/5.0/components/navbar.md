@@ -17,9 +17,9 @@ Here's what you need to know before getting started with the navbar:
 - Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
 - Indicate the current item by using `aria-current="page"` for the current page or `aria-current="true"` for the current item in a set.
 
-{{% callout info %}}
+{{< callout info >}}
 {{< partial "callout-info-prefersreducedmotion.md" >}}
-{{% /callout %}}
+{{< /callout >}}
 
 Read on for an example and list of supported sub-components.
 
@@ -403,7 +403,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
   </nav>
 </div>
 
-{{< highlight html >}}
+```html
 <nav class="navbar navbar-dark bg-dark">
   <!-- Navbar content -->
 </nav>
@@ -415,7 +415,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
   <!-- Navbar content -->
 </nav>
-{{< /highlight >}}
+```
 
 ## Containers
 

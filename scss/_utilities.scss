@@ -16,7 +16,7 @@ $utilities: map-merge(
     ),
     "overflow": (
       property: overflow,
-      values: auto hidden,
+      values: auto hidden visible scroll,
     ),
     "display": (
       responsive: true,

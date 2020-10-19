@@ -46,9 +46,9 @@ We encourage you to adopt these guidelines when building with Bootstrap to creat
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="callout">...</div>
-{{< /highlight >}}
+```
 
 In your CSS, you'd have something like the following where the bulk of the styling is done via `.callout`. Then, the unique styles between each variant is controlled via modifier class.
 
@@ -64,14 +64,14 @@ In your CSS, you'd have something like the following where the bulk of the styli
 
 For the callouts, that unique styling is just a `border-left-color`. When you combine that base class with one of those modifier classes, you get your complete component family:
 
-{{% callout info %}}
+{{< callout info >}}
 **This is an info callout.** Example text to show it in action.
-{{% /callout %}}
+{{< /callout >}}
 
-{{% callout warning %}}
+{{< callout warning >}}
 **This is a warning callout.** Example text to show it in action.
-{{% /callout %}}
+{{< /callout >}}
 
-{{% callout danger %}}
+{{< callout danger >}}
 **This is a danger callout.** Example text to show it in action.
-{{% /callout %}}
+{{< /callout >}}
