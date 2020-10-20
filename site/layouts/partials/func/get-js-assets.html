@@ -18,7 +18,7 @@
 {{ $jsAssets := slice }}
 
 {{/* Storing the reused mount warning message */}}
-{{ $missing_file_warning := "%s not found. Check your mounts settings." }}
+{{ $missing_file_warning := "%s not found. Check your mounts settings and/or run `npm i`." }}
 {{ $doc_version := site.Params.docs_version }}
 {{/* Doc Search */}}
 {{ if eq .Page.Layout "docs" -}}
@@ -31,7 +31,7 @@
   */}}
     {{ $jsAssets = $jsAssets | append . }}
   {{ else }}
-    {{ warnf $missing_file_warning "docsearch.min.js" }}
+    {{ errorf $missing_file_warning "docsearch.min.js" }}
   {{ end }}
 {{- end }}
 
@@ -44,12 +44,12 @@
   1. Check for missing mounts and throw an error
   2. Control order if need be
   3. Exclude docsearch (though there would be other ways) */}}
-{{ $vendor_filenames := slice "clipboard.min.js" "anchor.min.js" "bs-custom-file-input.min.js" }}
+{{ $vendor_filenames := slice "clipboard.min.js" "anchor.min.js" }}
 {{ range $filename := $vendor_filenames }}
   {{ with resources.GetMatch (print "js/vendor/" .) }}
     {{ $vendor_assets = $vendor_assets | append . }}
   {{ else }}
-    {{ warnf $missing_file_warning $filename }}
+    {{ errorf $missing_file_warning $filename }}
   {{ end }}
 {{ end }}
 {{ with $vendor_assets }}
