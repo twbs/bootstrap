@@ -48,8 +48,6 @@ module:
     ## The following vendor files will be bundled together on top of local js files as /docs.js
     - source:           node_modules/anchor-js/anchor.min.js
       target:           assets/js/vendor/anchor.min.js
-    - source:           node_modules/bs-custom-file-input/dist/bs-custom-file-input.min.js
-      target:           assets/js/vendor/bs-custom-file-input.min.js
     - source:           node_modules/clipboard/dist/clipboard.min.js
       target:           assets/js/vendor/clipboard.min.js
 
