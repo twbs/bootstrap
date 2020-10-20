@@ -17,6 +17,7 @@
     padding: $form-floating-padding-y $form-floating-padding-x;
     pointer-events: none;
     border: $input-border-width solid transparent; // Required for aligning label's text with the input as it affects inner box model
+    transform-origin: 0 0;
     @include transition(opacity .1s ease-in-out, transform .1s ease-in-out);
   }
 
