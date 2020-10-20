@@ -40,14 +40,15 @@ import 'bootstrap/js/dist/modal';
 This way, you're not including any JavaScript you don't intend to use for components like buttons, carousels, and tooltips. If you're importing dropdowns, tooltips or popovers, be sure to list the Popper.js dependency in your `package.json` file.
 
 {{< callout info >}}
-### Exports
+### Default Exports
 
 Files in `bootstrap/js/dist` use the **default export**, so if you want to use one of them you have to do the following:
 
-{{< highlight js >}}
+```js
 import Modal from 'bootstrap/js/dist/modal'
+
 const modal = new Modal(document.getElementById('myModal'))
-{{< /highlight >}}
+```
 {{< /callout >}}
 
 ## Autoprefixer .browserslistrc
