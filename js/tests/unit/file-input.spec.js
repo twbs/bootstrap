@@ -4,6 +4,7 @@ import FileInput from '../../src/file-input'
 import { getFixture, clearFixture, jQueryMock, mockFileApi } from '../helpers/fixture'
 
 describe('FileInput', () => {
+  // TODO
   const isEdge = window.navigator.userAgent.indexOf('Edge') > -1
 
   let fixtureEl
@@ -57,7 +58,7 @@ describe('FileInput', () => {
       input.dispatchEvent(new Event('change'))
     })
 
-    it('should not re create a new file input', () => {
+    it('should not recreate a new file input', () => {
       if (isEdge) {
         return expect().nothing()
       }
@@ -164,7 +165,7 @@ describe('FileInput', () => {
       input.dispatchEvent(new Event('change'))
     })
 
-    it('should handle change when multiple files added', done => {
+    it('should handle change when multiple files are added', done => {
       if (isEdge) {
         expect().nothing()
         return done()
@@ -291,7 +292,7 @@ describe('FileInput', () => {
   })
 
   describe('jQueryInterface', () => {
-    it('should just create an file input instance', () => {
+    it('should just create a file input instance', () => {
       fixtureEl.innerHTML = [
         '<div class="form-file" data-toggle="file-input">',
         '  <input type="file" class="form-file-input" id="customFile">',
