@@ -62,7 +62,8 @@ class FileInput {
   // Public
 
   dispose() {
-    [window, this._element].forEach(htmlElement => EventHandler.off(htmlElement, EVENT_KEY))
+    EventHandler.off(window, EVENT_KEY)
+    EventHandler.off(this._element, EVENT_KEY)
 
     Data.removeData(this._element, DATA_KEY)
     this._element = null
