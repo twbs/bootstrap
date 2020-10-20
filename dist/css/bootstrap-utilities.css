@@ -48,6 +48,14 @@
   overflow: hidden !important;
 }
 
+.overflow-visible {
+  overflow: visible !important;
+}
+
+.overflow-scroll {
+  overflow: scroll !important;
+}
+
 .d-inline {
   display: inline !important;
 }
@@ -242,7 +250,7 @@
 }
 
 .border-dark {
-  border-color: #343a40 !important;
+  border-color: #212529 !important;
 }
 
 .border-white {
@@ -291,6 +299,24 @@
 
 .w-auto {
   width: auto !important;
+}
+
+.w-fit-content {
+  width: -webkit-fit-content !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+}
+
+.w-max-content {
+  width: -webkit-max-content !important;
+  width: -moz-max-content !important;
+  width: max-content !important;
+}
+
+.w-min-content {
+  width: -webkit-min-content !important;
+  width: -moz-min-content !important;
+  width: min-content !important;
 }
 
 .mw-100 {
@@ -972,7 +998,7 @@
 }
 
 .text-dark {
-  color: #343a40 !important;
+  color: #212529 !important;
 }
 
 .text-white {
@@ -1044,7 +1070,7 @@
 }
 
 .bg-dark {
-  background-color: #343a40 !important;
+  background-color: #212529 !important;
 }
 
 .bg-body {
