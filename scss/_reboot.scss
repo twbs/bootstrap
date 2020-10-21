@@ -27,6 +27,12 @@
 
 :root {
   font-size: $font-size-root;
+
+  @if $enable-smooth-scroll {
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
+  }
 }
 
 
@@ -402,7 +408,7 @@ label {
 // See https://github.com/twbs/bootstrap/issues/24093
 
 button {
-  // stylelint-disable-next-line property-blacklist
+  // stylelint-disable-next-line property-disallowed-list
   border-radius: 0;
 }
 

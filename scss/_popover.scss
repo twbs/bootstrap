@@ -156,7 +156,7 @@
   @include font-size($font-size-base);
   color: $popover-header-color;
   background-color: $popover-header-bg;
-  border-bottom: $popover-border-width solid darken($popover-header-bg, 5%);
+  border-bottom: $popover-border-width solid shade-color($popover-header-bg, 10%);
   @include border-top-radius($popover-inner-border-radius);
 
   &:empty {
