@@ -163,11 +163,11 @@ Instead of applying button sizing classes to every button in a group, just add `
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="btn-group btn-group-lg" role="group" aria-label="...">...</div>
 <div class="btn-group" role="group" aria-label="...">...</div>
 <div class="btn-group btn-group-sm" role="group" aria-label="...">...</div>
-{{< /highlight >}}
+```
 
 ## Nesting
 
@@ -261,8 +261,8 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="btn-group-vertical">
   ...
 </div>
-{{< /highlight >}}
+```
