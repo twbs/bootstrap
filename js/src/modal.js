@@ -465,14 +465,9 @@ class Modal {
   }
 
   _checkScrollbar() {
-    let contentHeight = null
-
-    if (window.getComputedStyle(document.body).overflowY === 'hidden') {
-      const { bottom } = document.documentElement.getBoundingClientRect()
-      contentHeight = bottom
-    } else {
-      contentHeight = document.documentElement.scrollHeight
-    }
+    const contentHeight = window.getComputedStyle(document.body).overflowY === 'hidden' ?
+      document.documentElement.getBoundingClientRect().bottom :
+      document.documentElement.scrollHeight
 
     this._isBodyOverflowing = Math.round(contentHeight > window.innerHeight)
     this._scrollbarWidth = this._getScrollbarWidth()
