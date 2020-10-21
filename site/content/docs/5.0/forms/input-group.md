@@ -10,7 +10,7 @@ toc: true
 
 In an effort to streamline our components and still support form validation styles, input groups have been drastically simplified in Bootstrap 5. We no longer support multiple addons, multiple buttons, multiple form controls, dropdowns, and segmented button dropdowns. If you find yourself needing these, we suggest using standard form controls, buttons, and dropdowns in an inline form layout.
 
-With v5, `.input-group` has been replaced by direction-specific classes `.input-group-start` and `.input-group-end`. The naming scheme here pulls from CSS's flex box and logical properties. For example, instead of _left_, we use _start_.
+With v5, `.input-group` has been replaced by direction-specific classes `.input-group-start`, `.input-group-end`, and `.input-group-ardoun`. The naming scheme here pulls from CSS's flex box and logical properties. For example, instead of _left_, we use _start_.
 
 Place one add-on or button on either side of an input. Remember to place `<label>`s outside the input group.
 
@@ -20,9 +20,15 @@ Place one add-on or button on either side of an input. Remember to place `<label
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="inputGroupStart01">
 </div>
 
-<div class="input-group-end">
+<div class="input-group-end mb-3">
   <input type="text" class="form-control" placeholder="100" aria-label="Amount" aria-describedby="inputGroupEnd01">
   <span class="input-group-text" id="inputGroupEnd01">.00</span>
+</div>
+
+<div class="input-group-around">
+  <span class="input-group-text" id="inputGroupAround01">$</span>
+  <input type="text" class="form-control" placeholder="100" aria-label="Amount" aria-describedby="inputGroupAround01 inputGroupAround01b">
+  <span class="input-group-text" id="inputGroupAround01b">.00</span>
 </div>
 {{< /example >}}
 
@@ -38,6 +44,7 @@ Configurations that are supported include:
 
 - Text or button before a form control
 - Text or button after a form control
+- Text or button before and after a form control
 
 See how these form controls come together with text or button addons in our supported configurations below.
 
@@ -51,9 +58,15 @@ Use `.input-group-text` as starting and ending addons with our supported form co
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="inputGroupStart02">
 </div>
 
-<div class="input-group-end">
+<div class="input-group-end mb-3">
   <input type="text" class="form-control" placeholder="100" aria-label="Amount" aria-describedby="inputGroupEnd02">
   <span class="input-group-text" id="inputGroupEnd02">.00</span>
+</div>
+
+<div class="input-group-around">
+  <span class="input-group-text" id="inputGroupAround02">$</span>
+  <input type="text" class="form-control" placeholder="100" aria-label="Amount" aria-describedby="inputGroupAround02 inputGroupAround02b">
+  <span class="input-group-text" id="inputGroupAround02b">.00</span>
 </div>
 {{< /example >}}
 

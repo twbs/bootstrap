@@ -3,7 +3,8 @@
 //
 
 .input-group-start,
-.input-group-end {
+.input-group-end,
+.input-group-around {
   position: relative;
   display: flex;
   flex-wrap: wrap; // For form validation feedback
@@ -153,5 +154,26 @@
   > .form-select,
   > .form-file {
     @include border-right-radius(0);
+  }
+}
+
+.input-group-around {
+  > .input-group-text,
+  > .btn {
+    &:first-child {
+      @include border-right-radius(0);
+    }
+
+    &:not(:first-child) {
+      margin-left: -$input-border-width;
+      @include border-left-radius(0);
+    }
+  }
+
+  > .form-control,
+  > .form-select,
+  > .form-file {
+    margin-left: -$input-border-width;
+    @include border-radius(0);
   }
 }
