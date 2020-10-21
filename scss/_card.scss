@@ -185,12 +185,12 @@
 
           .card-img-top,
           .card-header {
-            // stylelint-disable-next-line property-blacklist
+            // stylelint-disable-next-line property-disallowed-list
             border-top-right-radius: 0;
           }
           .card-img-bottom,
           .card-footer {
-            // stylelint-disable-next-line property-blacklist
+            // stylelint-disable-next-line property-disallowed-list
             border-bottom-right-radius: 0;
           }
         }
@@ -200,12 +200,12 @@
 
           .card-img-top,
           .card-header {
-            // stylelint-disable-next-line property-blacklist
+            // stylelint-disable-next-line property-disallowed-list
             border-top-left-radius: 0;
           }
           .card-img-bottom,
           .card-footer {
-            // stylelint-disable-next-line property-blacklist
+            // stylelint-disable-next-line property-disallowed-list
             border-bottom-left-radius: 0;
           }
         }
@@ -220,6 +220,8 @@
 //
 
 .accordion {
+  overflow-anchor: none;
+
   > .card {
     overflow: hidden;
 

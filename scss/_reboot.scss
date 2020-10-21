@@ -27,6 +27,12 @@
 
 :root {
   font-size: $font-size-root;
+
+  @if $enable-smooth-scroll {
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
+  }
 }
 
 
@@ -69,7 +75,6 @@ body {
 //
 // 1. Reset Firefox's gray color
 // 2. Set correct height and prevent the `size` attribute to make the `hr` look like an input field
-//    See https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_hr_size
 
 hr {
   margin: $hr-margin-y 0;
@@ -403,7 +408,7 @@ label {
 // See https://github.com/twbs/bootstrap/issues/24093
 
 button {
-  // stylelint-disable-next-line property-blacklist
+  // stylelint-disable-next-line property-disallowed-list
   border-radius: 0;
 }
 

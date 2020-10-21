@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha1): dom/event-handler.js
+ * Bootstrap (v5.0.0-alpha2): dom/event-handler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -95,6 +95,7 @@ function getEvent(element) {
 function bootstrapHandler(element, fn) {
   return function handler(event) {
     event.delegateTarget = element
+
     if (handler.oneOff) {
       EventHandler.off(element, event.type, fn)
     }
@@ -111,6 +112,7 @@ function bootstrapDelegationHandler(element, selector, fn) {
       for (let i = domElements.length; i--;) {
         if (domElements[i] === target) {
           event.delegateTarget = target
+
           if (handler.oneOff) {
             EventHandler.off(element, event.type, fn)
           }

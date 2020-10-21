@@ -10,9 +10,9 @@ Easily clear `float`s by adding `.clearfix` **to the parent element**. Can also 
 
 Use in HTML:
 
-{{< highlight html >}}
+```html
 <div class="clearfix">...</div>
-{{< /highlight >}}
+```
 
 The mixin source code:
 
@@ -20,11 +20,11 @@ The mixin source code:
 
 Use the mixin in SCSS:
 
-{{< highlight scss >}}
+```scss
 .element {
   @include clearfix;
 }
-{{< /highlight >}}
+```
 
 The following example shows how the clearfix can be used. Without the clearfix the wrapping div would not span around the buttons which would cause a broken layout.
 

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha1): popover.js
+ * Bootstrap (v5.0.0-alpha2): popover.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -17,7 +17,7 @@ import Tooltip from './tooltip'
  */
 
 const NAME = 'popover'
-const VERSION = '5.0.0-alpha1'
+const VERSION = '5.0.0-alpha2'
 const DATA_KEY = 'bs.popover'
 const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'bs-popover'
@@ -116,11 +116,11 @@ class Popover extends Tooltip {
     tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
   }
 
+  // Private
+
   _addAttachmentClass(attachment) {
     this.getTipElement().classList.add(`${CLASS_PREFIX}-${attachment}`)
   }
-
-  // Private
 
   _getContent() {
     return this.element.getAttribute('data-content') ||

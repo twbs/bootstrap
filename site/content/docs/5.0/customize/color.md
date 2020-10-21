@@ -14,7 +14,7 @@ We use a subset of all colors to create a smaller color palette for generating c
   {{< theme-colors.inline >}}
   {{- range (index $.Site.Data "theme-colors") }}
     <div class="col-md-4">
-      <div class="p-3 mb-3 bg-{{ .name }} {{ if or (eq .name "light") (eq .name "warning") }}text-dark{{ else if (eq .name "info")}}text-body{{ else }}text-white{{ end }}">{{ .name | title }}</div>
+      <div class="p-3 mb-3 bg-{{ .name }} {{ if or (eq .name "light") (eq .name "warning") (eq .name "info") }}text-dark{{ else if (eq .name "info")}}text-body{{ else }}text-white{{ end }}">{{ .name | title }}</div>
     </div>
   {{ end -}}
   {{< /theme-colors.inline >}}
@@ -85,7 +85,7 @@ Bootstrap's source Sass files include three maps to help you quickly and easily 
 
 - `$colors` lists all our available base (`500`) colors
 - `$theme-colors` lists all semantically named theme colors (shown below)
-- `$grays` lists all tins and shades of gray
+- `$grays` lists all tints and shades of gray
 
 Within `scss/_variables.scss`, you'll find Bootstrap's color variables and Sass map. Here's an example of the `$colors` Sass map:
 
@@ -97,12 +97,12 @@ Add, remove, or modify values within the map to update how they're used in many 
 
 Here's how you can use these in your Sass:
 
-{{< highlight scss >}}
+```scss
 .alpha { color: $purple; }
 .beta {
   color: $yellow-300;
   background-color: $indigo-900;
 }
-{{< /highlight >}}
+```
 
 [Color utility classes]({{< docsref "/utilities/colors" >}}) are also available for setting `color` and `background-color` using the `500` color values.

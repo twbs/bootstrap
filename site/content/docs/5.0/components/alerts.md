@@ -52,7 +52,6 @@ Alerts can also contain additional HTML elements like headings, paragraphs and d
 </div>
 {{< /example >}}
 
-
 ### Dismissing
 
 Using the alert JavaScript plugin, it's possible to dismiss any alert inline. Here's how:
@@ -67,11 +66,13 @@ You can see this in action with a live demo:
 {{< example >}}
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
   <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
 </div>
 {{< /example >}}
+
+{{< callout warning >}}
+When an alert is dismissed, the element is completely removed from the page structure. If a keyboard user dismisses the alert using the close button, their focus will suddenly be lost and, depending on the browser, reset to the start of the page/document. For this reason, we recommend including additional JavaScript that listens for the `closed.bs.alert` event and programmatically sets `focus()` to the most appropriate location in the page. If you're planning to move focus to a non-interactive element that normally does not receive focus, make sure to add `tabindex="-1"` to the element.
+{{< /callout >}}
 
 ## JavaScript behavior
 
@@ -79,20 +80,18 @@ You can see this in action with a live demo:
 
 Enable dismissal of an alert via JavaScript:
 
-{{< highlight js >}}
+```js
 var alertList = document.querySelectorAll('.alert')
 alertList.forEach(function (alert) {
   new bootstrap.Alert(alert)
 })
-{{< /highlight >}}
+```
 
 Or with `data` attributes on a button **within the alert**, as demonstrated above:
 
-{{< highlight html >}}
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  <span aria-hidden="true">&times;</span>
-</button>
-{{< /highlight >}}
+```html
+<button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+```
 
 Note that closing an alert will remove it from the DOM.
 
@@ -100,10 +99,10 @@ Note that closing an alert will remove it from the DOM.
 
 You can create an alert instance with the alert constructor, for example:
 
-{{< highlight js >}}
+```js
 var myAlert = document.getElementById('myAlert')
 var bsAlert = new bootstrap.Alert(myAlert)
-{{< /highlight >}}
+```
 
 This makes an alert listen for click events on descendant elements which have the `data-dismiss="alert"` attribute. (Not necessary when using the data-api's auto-initialization.)
 
@@ -128,7 +127,7 @@ This makes an alert listen for click events on descendant elements which have th
         <code>dispose</code>
       </td>
       <td>
-        Destroys an element's alert.
+        Destroys an element's alert. (Removes stored data on the DOM element)
       </td>
     </tr>
     <tr>
@@ -142,11 +141,11 @@ This makes an alert listen for click events on descendant elements which have th
   </tbody>
 </table>
 
-{{< highlight js >}}
+```js
 var alertNode = document.querySelector('.alert')
 var alert = bootstrap.Alert.getInstance(alertNode)
 alert.close()
-{{< /highlight >}}
+```
 
 ### Events
 
@@ -175,9 +174,11 @@ Bootstrap's alert plugin exposes a few events for hooking into alert functionali
   </tbody>
 </table>
 
-{{< highlight js >}}
+```js
 var myAlert = document.getElementById('myAlert')
 myAlert.addEventListener('closed.bs.alert', function () {
-  // do something…
+  // do something, for instance, explicitly move focus to the most appropriate element,
+  // so it doesn't get lost/reset to the start of the page
+  // document.getElementById('...').focus()
 })
-{{< /highlight >}}
+```

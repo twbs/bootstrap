@@ -2,25 +2,39 @@
   @include media-breakpoint-up(md) {
     display: grid;
     gap: $grid-gutter-width;
-    grid-template-areas:
-      "sidebar intro"
-      "sidebar toc"
-      "sidebar content";
+    grid-template-areas: "sidebar main";
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: auto auto 1fr;
   }
 
   @include media-breakpoint-up(lg) {
-    grid-template-areas:
-      "sidebar intro toc"
-      "sidebar content toc";
-    grid-template-columns: 1fr 4fr 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 5fr;
   }
 }
 
 .bd-sidebar {
   grid-area: sidebar;
+}
+
+.bd-main {
+  grid-area: main;
+
+  @include media-breakpoint-up(md) {
+    display: grid;
+    gap: inherit;
+    grid-template-areas:
+      "intro"
+      "toc"
+      "content";
+    grid-template-rows: auto auto 1fr;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-template-areas:
+      "intro   toc"
+      "content toc";
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: auto 1fr;
+  }
 }
 
 .bd-intro {
