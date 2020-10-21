@@ -16,14 +16,14 @@ If you use a bundler (Webpack, Rollup...), you can use `/js/dist/*.js` files whi
 
 We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootstrap.esm.min.js`) which allows you to use Bootstrap as a module in your browser, if your [targeted browsers support it](https://caniuse.com/#feat=es6-module).
 
-{{< highlight html >}}
+```html
 <script type="module">
   import { Toast } from 'bootstrap.esm.min.js'
 
   Array.from(document.querySelectorAll('.toast'))
     .forEach(toastNode => new Toast(toastNode))
 </script>
-{{< /highlight >}}
+```
 
 {{< callout warning >}}
 ## Incompatible plugins
@@ -58,7 +58,7 @@ Bootstrap provides custom events for most plugins' unique actions. Generally, th
 
 All infinitive events provide [`preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) functionality. This provides the ability to stop the execution of an action before it starts. Returning false from an event handler will also automatically call `preventDefault()`.
 
-{{< highlight js >}}
+```js
 var myModal = document.getElementById('myModal')
 
 myModal.addEventListener('show.bs.modal', function (e) {
@@ -66,30 +66,30 @@ myModal.addEventListener('show.bs.modal', function (e) {
     return e.preventDefault() // stops modal from being shown
   }
 })
-{{< /highlight >}}
+```
 
 {{< callout warning >}}
 ## jQuery events
 
 Bootstrap will detect jQuery if `jQuery` is present in the `window` object and there is no `data-no-jquery` attribute set on `<body>`. If jQuery is found, Bootstrap will emit events thanks to jQuery's event system. So if you want to listen to Bootstrap's events, you'll have to use the jQuery methods (`.on`, `.one`) instead of `addEventListener`.
 
-{{< highlight js >}}
+```js
 $('#myTab a').on('shown.bs.tab', function () {
   // do something...
 })
-{{< /highlight >}}
+```
 {{< /callout >}}
 
 ## Programmatic API
 
 All constructors accept an optional options object or nothing (which initiates a plugin with its default behavior):
 
-{{< highlight js >}}
+```js
 var myModalEl = document.getElementById('myModal')
 
 var modal = new bootstrap.Modal(myModalEl) // initialized with defaults
 var modal = new bootstrap.Modal(myModalEl, { keyboard: false }) // initialized with no keyboard
-{{< /highlight >}}
+```
 
 If you'd like to get a particular plugin instance, each plugin exposes a `getInstance` method. In order to retrieve it directly from an element, do this: `bootstrap.Popover.getInstance(myPopoverEl)`.
 
@@ -99,17 +99,17 @@ All programmatic API methods are **asynchronous** and return to the caller once 
 
 In order to execute an action once the transition is complete, you can listen to the corresponding event.
 
-{{< highlight js >}}
+```js
 var myCollapseEl = document.getElementById('#myCollapse')
 
 myCollapseEl.addEventListener('shown.bs.collapse', function (e) {
   // Action to execute once the collapsible area is expanded
 })
-{{< /highlight >}}
+```
 
 In addition a method call on a **transitioning component will be ignored**.
 
-{{< highlight js >}}
+```js
 var myCarouselEl = document.getElementById('myCarousel')
 var carousel = bootstrap.Carousel.getInstance(myCarouselEl) // Retrieve a Carousel instance
 
@@ -119,33 +119,33 @@ myCarouselEl.addEventListener('slid.bs.carousel', function (e) {
 
 carousel.to('1') // Will start sliding to the slide 1 and returns to the caller
 carousel.to('2') // !! Will be ignored, as the transition to the slide 1 is not finished !!
-{{< /highlight >}}
+```
 
 ### Default settings
 
 You can change the default settings for a plugin by modifying the plugin's `Constructor.Default` object:
 
-{{< highlight js >}}
+```js
 // changes default for the modal plugin's `keyboard` option to false
 bootstrap.Modal.Default.keyboard = false
-{{< /highlight >}}
+```
 
 ## No conflict (only if you use jQuery)
 
 Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances, namespace collisions can occasionally occur. If this happens, you may call `.noConflict` on the plugin you wish to revert the value of.
 
-{{< highlight js >}}
+```js
 var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
 $.fn.bootstrapBtn = bootstrapButton // give $().bootstrapBtn the Bootstrap functionality
-{{< /highlight >}}
+```
 
 ## Version numbers
 
 The version of each of Bootstrap's plugins can be accessed via the `VERSION` property of the plugin's constructor. For example, for the tooltip plugin:
 
-{{< highlight js >}}
+```js
 bootstrap.Tooltip.VERSION // => "{{< param current_version >}}"
-{{< /highlight >}}
+```
 
 ## No special fallbacks when JavaScript is disabled
 
@@ -163,7 +163,7 @@ Tooltips and Popovers use our built-in sanitizer to sanitize options which accep
 
 The default `allowList` value is the following:
 
-{{< highlight js >}}
+```js
 var ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i
 var DefaultAllowlist = {
   // Global attributes allowed on any supplied element below.
@@ -198,11 +198,11 @@ var DefaultAllowlist = {
   u: [],
   ul: []
 }
-{{< /highlight >}}
+```
 
 If you want to add new values to this default `allowList` you can do the following:
 
-{{< highlight js >}}
+```js
 var myDefaultAllowList = bootstrap.Tooltip.Default.allowList
 
 // To allow table elements
@@ -215,15 +215,15 @@ myDefaultAllowList.td = ['data-option']
 // Be careful about your regular expressions being too lax
 var myCustomRegex = /^data-my-app-[\w-]+/
 myDefaultAllowList['*'].push(myCustomRegex)
-{{< /highlight >}}
+```
 
 If you want to bypass our sanitizer because you prefer to use a dedicated library, for example [DOMPurify](https://www.npmjs.com/package/dompurify), you should do the following:
 
-{{< highlight js >}}
+```js
 var yourTooltipEl = document.getElementById('yourTooltip')
 var tooltip = new bootstrap.Tooltip(yourTooltipEl, {
   sanitizeFn: function (content) {
     return DOMPurify.sanitize(content)
   }
 })
-{{< /highlight >}}
+```

@@ -15,6 +15,11 @@ toc: true
 - All `lighten()` and `darken()` functions in our codebase are replaced by `tint-color()` and `shade-color()`. These functions will mix the color with either white or black instead of changing its lightness by a fixed amount.
 - The `scale-color()` will either tint or shade a color depending on whether its weight parameter is positive or negative.
 - See [this PR](https://github.com/twbs/bootstrap/pull/30622) for more details.
+- Spinners now honor `prefers-reduced-motion: reduce` by slowing down animations. [See #31882](https://github.com/twbs/bootstrap/pull/31882).
+
+### Reboot
+
+- Introduce `$enable-smooth-scroll`, which applies `scroll-behavior: smooth` globally—except for users asking for reduced motion through `prefers-reduced-motion` media query. [See #31877](https://github.com/twbs/bootstrap/pull/31877)
 
 ## v5.0.0-alpha2
 

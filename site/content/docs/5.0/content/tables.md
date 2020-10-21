@@ -134,7 +134,7 @@ Highlight a table row or cell by adding a `.table-active` class.
   </table>
 </div>
 
-{{< highlight html >}}
+```html
 <table class="table">
   <thead>
     ...
@@ -153,7 +153,7 @@ Highlight a table row or cell by adding a `.table-active` class.
     </tr>
   </tbody>
 </table>
-{{< /highlight >}}
+```
 
 <div class="bd-example">
   <table class="table table-dark">
@@ -187,7 +187,7 @@ Highlight a table row or cell by adding a `.table-active` class.
   </table>
 </div>
 
-{{< highlight html >}}
+```html
 <table class="table table-dark">
   <thead>
     ...
@@ -206,7 +206,7 @@ Highlight a table row or cell by adding a `.table-active` class.
     </tr>
   </tbody>
 </table>
-{{< /highlight >}}
+```
 
 ## How do the variants and accented tables work?
 
@@ -289,7 +289,7 @@ Table cells of `<thead>` are always vertical aligned to the bottom. Table cells 
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <table class="table table-sm table-dark">
   <div class="table-responsive">
     <table class="table align-middle">
@@ -315,7 +315,7 @@ Table cells of `<thead>` are always vertical aligned to the bottom. Table cells 
     </table>
   </div>
 </table>
-{{< /highlight >}}
+```
 
 ## Nesting
 
@@ -378,7 +378,7 @@ Border styles, active styles, and table variants are not inherited by nested tab
 </table>
 </div>
 
-{{< highlight html >}}
+```html
 <table class="table table-striped">
   <thead>
     ...
@@ -395,7 +395,7 @@ Border styles, active styles, and table variants are not inherited by nested tab
     ...
   </tbody>
 </table>
-{{< /highlight >}}
+```
 
 ## How nesting works
 
@@ -442,7 +442,7 @@ Similar to tables and dark tables, use the modifier classes `.table-light` or `.
 </table>
 </div>
 
-{{< highlight html >}}
+```html
 <table class="table">
   <thead class="table-light">
     ...
@@ -451,7 +451,7 @@ Similar to tables and dark tables, use the modifier classes `.table-light` or `.
     ...
   </tbody>
 </table>
-{{< /highlight >}}
+```
 
 <div class="bd-example">
 <table class="table">
@@ -486,7 +486,7 @@ Similar to tables and dark tables, use the modifier classes `.table-light` or `.
 </table>
 </div>
 
-{{< highlight html >}}
+```html
 <table class="table">
   <thead class="table-dark">
     ...
@@ -495,7 +495,7 @@ Similar to tables and dark tables, use the modifier classes `.table-light` or `.
     ...
   </tbody>
 </table>
-{{< /highlight >}}
+```
 
 
 ### Table foot
@@ -541,7 +541,7 @@ Similar to tables and dark tables, use the modifier classes `.table-light` or `.
 </table>
 </div>
 
-{{< highlight html >}}
+```html
 <table class="table">
   <thead>
     ...
@@ -553,7 +553,7 @@ Similar to tables and dark tables, use the modifier classes `.table-light` or `.
     ...
   </tfoot>
 </table>
-{{< /highlight >}}
+```
 
 ### Captions
 
@@ -566,7 +566,7 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
   </table>
 </div>
 
-{{< highlight html >}}
+```html
 <table class="table table-sm">
   <caption>List of users</caption>
   <thead>
@@ -576,7 +576,7 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
     ...
   </tbody>
 </table>
-{{< /highlight >}}
+```
 
 You can also put the `<caption>` on the top of the table with `.caption-top`.
 
@@ -687,13 +687,13 @@ Across every breakpoint, use `.table-responsive` for horizontally scrolling tabl
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="table-responsive">
   <table class="table">
     ...
   </table>
 </div>
-{{< /highlight >}}
+```
 
 ### Breakpoint specific
 
