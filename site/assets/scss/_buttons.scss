@@ -11,8 +11,8 @@
   &:hover,
   &:active {
     color: $white;
-    background-color: darken($bd-purple-bright, 10%);
-    border-color: darken($bd-purple-bright, 10%);
+    background-color: shade-color($bd-purple-bright, 20%);
+    border-color: shade-color($bd-purple-bright, 20%);
   }
 
   &:focus {

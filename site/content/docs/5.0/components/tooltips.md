@@ -30,12 +30,12 @@ Got all that? Great, let's see how they work with some examples.
 
 One way to initialize all tooltips on a page would be to select them by their `data-toggle` attribute:
 
-{{< highlight js >}}
+```js
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
-{{< /highlight >}}
+```
 
 ## Examples
 
@@ -58,7 +58,7 @@ Hover over the buttons below to see the four tooltips directions: top, right, bo
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
   Tooltip on top
 </button>
@@ -71,15 +71,15 @@ Hover over the buttons below to see the four tooltips directions: top, right, bo
 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
   Tooltip on left
 </button>
-{{< /highlight >}}
+```
 
 And with custom HTML added:
 
-{{< highlight html >}}
+```html
 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
   Tooltip with HTML
 </button>
-{{< /highlight >}}
+```
 
 With an SVG:
 
@@ -98,22 +98,22 @@ The tooltip plugin generates content and markup on demand, and by default places
 
 Trigger the tooltip via JavaScript:
 
-{{< highlight js >}}
+```js
 var exampleEl = document.getElementById('example')
 var tooltip = new bootstrap.Tooltip(exampleEl, options)
-{{< /highlight >}}
+```
 
 {{< callout warning >}}
 ##### Overflow `auto` and `scroll`
 
 Tooltip position attempts to automatically change when a parent container has `overflow: auto` or `overflow: scroll` like our `.table-responsive`, but still keeps the original placement's positioning. To resolve, set the `boundary` option to anything other than default value, `'scrollParent'`, such as `'window'`:
 
-{{< highlight js >}}
+```js
 var exampleEl = document.getElementById('example')
 var tooltip = new bootstrap.Tooltip(exampleEl, {
   boundary: 'window'
 })
-{{< /highlight >}}
+```
 {{< /callout >}}
 
 ### Markup
@@ -126,7 +126,7 @@ The required markup for a tooltip is only a `data` attribute and `title` on the 
 You should only add tooltips to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as `<span>`s) can be made focusable by adding the `tabindex="0"` attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users, and most assistive technologies currently do not announce the tooltip in this situation. Additionally, do not rely solely on `hover` as the trigger for your tooltip, as this will make your tooltips impossible to trigger for keyboard users.
 {{< /callout >}}
 
-{{< highlight html >}}
+```html
 <!-- HTML to write -->
 <a href="#" data-toggle="tooltip" title="Some tooltip text!">Hover over me</a>
 
@@ -137,7 +137,7 @@ You should only add tooltips to HTML elements that are traditionally keyboard-fo
     Some tooltip text!
   </div>
 </div>
-{{< /highlight >}}
+```
 
 ### Disabled elements
 
@@ -314,58 +314,74 @@ Options for individual tooltips can alternatively be specified through the use o
 
 Reveals an element's tooltip. **Returns to the caller before the tooltip has actually been shown** (i.e. before the `shown.bs.tooltip` event occurs). This is considered a "manual" triggering of the tooltip. Tooltips with zero-length titles are never displayed.
 
-{{< highlight js >}}tooltip.show(){{< /highlight >}}
+```js
+tooltip.show()
+```
 
 #### hide
 
 Hides an element's tooltip. **Returns to the caller before the tooltip has actually been hidden** (i.e. before the `hidden.bs.tooltip` event occurs). This is considered a "manual" triggering of the tooltip.
 
-{{< highlight js >}}tooltip.hide(){{< /highlight >}}
+```js
+tooltip.hide()
+```
 
 #### toggle
 
 Toggles an element's tooltip. **Returns to the caller before the tooltip has actually been shown or hidden** (i.e. before the `shown.bs.tooltip` or `hidden.bs.tooltip` event occurs). This is considered a "manual" triggering of the tooltip.
 
-{{< highlight js >}}tooltip.toggle(){{< /highlight >}}
+```js
+tooltip.toggle()
+```
 
 #### dispose
 
-Hides and destroys an element's tooltip. Tooltips that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
+Hides and destroys an element's tooltip (Removes stored data on the DOM element). Tooltips that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
 
-{{< highlight js >}}tooltip.dispose(){{< /highlight >}}
+```js
+tooltip.dispose()
+```
 
 #### enable
 
 Gives an element's tooltip the ability to be shown. **Tooltips are enabled by default.**
 
-{{< highlight js >}}tooltip.enable(){{< /highlight >}}
+```js
+tooltip.enable()
+```
 
 #### disable
 
 Removes the ability for an element's tooltip to be shown. The tooltip will only be able to be shown if it is re-enabled.
 
-{{< highlight js >}}tooltip.disable(){{< /highlight >}}
+```js
+tooltip.disable()
+```
 
 #### toggleEnabled
 
 Toggles the ability for an element's tooltip to be shown or hidden.
 
-{{< highlight js >}}tooltip.toggleEnabled(){{< /highlight >}}
+```js
+tooltip.toggleEnabled()
+```
 
 #### update
 
 Updates the position of an element's tooltip.
 
-{{< highlight js >}}tooltip.update(){{< /highlight >}}
+```js
+tooltip.update()
+```
 
 #### getInstance
 
 *Static* method which allows you to get the tooltip instance associated with a DOM element
 
-{{< highlight js >}}
+```js
 var exampleTriggerEl = document.getElementById('example')
 var tooltip = bootstrap.Tooltip.getInstance(exampleTriggerEl) // Returns a Bootstrap tooltip instance
-{{< /highlight >}}
+```
 
 ### Events
 
@@ -400,7 +416,7 @@ var tooltip = bootstrap.Tooltip.getInstance(exampleTriggerEl) // Returns a Boots
   </tbody>
 </table>
 
-{{< highlight js >}}
+```js
 var myTooltipEl = document.getElementById('myTooltip')
 var tooltip = new bootstrap.Tooltip(myTooltipEl)
 
@@ -409,4 +425,4 @@ myTooltipEl.addEventListener('hidden.bs.tooltip', function () {
 })
 
 tooltip.hide()
-{{< /highlight >}}
+```

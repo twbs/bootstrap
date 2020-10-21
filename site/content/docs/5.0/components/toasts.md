@@ -216,11 +216,11 @@ You also need to adapt the `role` and `aria-live` level depending on the content
 
 As the content you're displaying changes, be sure to update the [`delay` timeout](#options) to ensure people have enough time to read the toast.
 
-{{< highlight html >}}
+```html
 <div class="toast" role="alert" aria-live="polite" aria-atomic="true" data-delay="10000">
   <div role="alert" aria-live="assertive" aria-atomic="true">...</div>
 </div>
-{{< /highlight >}}
+```
 
 When using `autohide: false`, you must add a close button to allow users to dismiss the toast.
 
@@ -244,12 +244,12 @@ When using `autohide: false`, you must add a close button to allow users to dism
 
 Initialize toasts via JavaScript:
 
-{{< highlight js >}}
+```js
 var toastElList = [].slice.call(document.querySelectorAll('.toast'))
 var toastList = toastElList.map(function (toastEl) {
   return new bootstrap.Toast(toastEl, option)
 })
-{{< /highlight >}}
+```
 
 ### Options
 
@@ -299,19 +299,25 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 Reveals an element's toast. **Returns to the caller before the toast has actually been shown** (i.e. before the `shown.bs.toast` event occurs).
 You have to manually call this method, instead your toast won't show.
 
-{{< highlight js >}}toast.show(){{< /highlight >}}
+```js
+toast.show()
+```
 
 #### hide
 
 Hides an element's toast. **Returns to the caller before the toast has actually been hidden** (i.e. before the `hidden.bs.toast` event occurs). You have to manually call this method if you made `autohide` to `false`.
 
-{{< highlight js >}}toast.hide(){{< /highlight >}}
+```js
+toast.hide()
+```
 
 #### dispose
 
 Hides an element's toast. Your toast will remain on the DOM but won't show anymore.
 
-{{< highlight js >}}toast.dispose(){{< /highlight >}}
+```js
+toast.dispose()
+```
 
 ### Events
 
@@ -342,9 +348,9 @@ Hides an element's toast. Your toast will remain on the DOM but won't show anymo
   </tbody>
 </table>
 
-{{< highlight js >}}
+```js
 var myToastEl = document.getElementById('myToast')
 myToastEl.addEventListener('hidden.bs.toast', function () {
   // do something...
 })
-{{< /highlight >}}
+```

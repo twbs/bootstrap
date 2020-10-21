@@ -263,10 +263,10 @@ The `data-ride="carousel"` attribute is used to mark a carousel as animating sta
 
 Call carousel manually with:
 
-{{< highlight js >}}
+```js
 var myCarousel = document.querySelector('#myCarousel')
 var carousel = new bootstrap.Carousel(myCarousel)
-{{< /highlight >}}
+```
 
 ### Options
 
@@ -330,13 +330,13 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 You can create a carousel instance with the carousel constructor, for example, to initialize with additional options and start cycling through items:
 
-{{< highlight js >}}
+```js
 var myCarousel = document.querySelector('#myCarousel')
 var carousel = new bootstrap.Carousel(myCarousel, {
   interval: 2000,
   wrap: false
 })
-{{< /highlight >}}
+```
 
 <table class="table">
   <thead>
@@ -364,11 +364,15 @@ var carousel = new bootstrap.Carousel(myCarousel, {
     </tr>
     <tr>
       <td><code>nextWhenVisible</code></td>
+      <td>Don't cycle carousel to next when the page isn't visible or the carousel or its parent isn't visible. <strong>Returns to the caller before the target item has been shown</strong>
+    </tr>
+    <tr>
+      <td><code>to</code></td>
       <td>Cycles the carousel to a particular frame (0 based, similar to an array). <strong>Returns to the caller before the target item has been shown</strong> (e.g., before the <code>slid.bs.carousel</code> event occurs).</td>
     </tr>
     <tr>
       <td><code>dispose</code></td>
-      <td>Destroys an element's carousel.</td>
+      <td>Destroys an element's carousel. (Removes stored data on the DOM element)</td>
     </tr>
     <tr>
       <td><code>getInstance</code></td>
@@ -407,13 +411,13 @@ All carousel events are fired at the carousel itself (i.e. at the `<div class="c
   </tbody>
 </table>
 
-{{< highlight js >}}
+```js
 var myCarousel = document.getElementById('myCarousel')
 
 myCarousel.addEventListener('slide.bs.carousel', function () {
   // do something...
 })
-{{< /highlight >}}
+```
 
 ### Change transition duration
 

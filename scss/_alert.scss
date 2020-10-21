@@ -34,6 +34,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    z-index: $stretched-link-z-index + 1;
     padding: $alert-padding-y * 1.25 $alert-padding-x;
   }
 }
@@ -44,7 +45,7 @@
 
 @each $color, $value in $theme-colors {
   .alert-#{$color} {
-    @include alert-variant(color-level($value, $alert-bg-level), color-level($value, $alert-border-level), color-level($value, $alert-color-level));
+    @include alert-variant(scale-color($value, $alert-bg-scale), scale-color($value, $alert-border-scale), scale-color($value, $alert-color-scale));
   }
 }
 // scss-docs-end alert-modifiers
