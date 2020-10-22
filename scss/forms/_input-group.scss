@@ -135,7 +135,12 @@
     }
   }
 
-  > :not(:first-child):not(.dropdown-menu) {
+  $validation-messages: "";
+  @each $state in map-keys($form-validation-states) {
+    $validation-messages: $validation-messages + ":not(." + unquote($state) + "-tooltip)" + ":not(." + unquote($state) + "-feedback)";
+  }
+
+  > :not(:first-child):not(.dropdown-menu)#{$validation-messages} {
     margin-left: -$input-border-width;
     @include border-left-radius(0);
   }
