@@ -241,7 +241,6 @@ Validation styles are available for the following form controls and components:
 - `<input>`s and `<textarea>`s with `.form-control` (including up to one `.form-control` in input groups)
 - `<select>`s with `.form-select`
 - `.form-check`s
-- `.form-file`
 
 {{< example >}}
 <form class="was-validated">
@@ -279,12 +278,8 @@ Validation styles are available for the following form controls and components:
     <div class="invalid-feedback">Example invalid select feedback</div>
   </div>
 
-  <div class="form-file mb-3">
-    <input type="file" class="form-file-input" id="validationFormFile" required>
-    <label class="form-file-label" for="validationFormFile">
-      <span class="form-file-text">Choose file...</span>
-      <span class="form-file-button">Browse</span>
-    </label>
+  <div class="mb-3">
+    <input type="file" class="form-control" aria-label="file example" required>
     <div class="invalid-feedback">Example invalid form file feedback</div>
   </div>
 

@@ -10,8 +10,7 @@
   width: 100%;
 
   > .form-control,
-  > .form-select,
-  > .form-file {
+  > .form-select {
     position: relative; // For focus state's z-index
     flex: 1 1 auto;
     width: 1%;
@@ -20,24 +19,8 @@
 
   // Bring the "active" form control to the top of surrounding elements
   > .form-control:focus,
-  > .form-select:focus,
-  > .form-file .form-file-input:focus ~ .form-file-label {
+  > .form-select:focus {
     z-index: 3;
-  }
-
-  // Bring the custom file input above the label
-  > .form-file {
-    > .form-file-input:focus {
-      z-index: 4;
-    }
-
-    &:not(:last-child) > .form-file-label {
-      @include border-right-radius(0);
-    }
-
-    &:not(:first-child) > .form-file-label {
-      @include border-left-radius(0);
-    }
   }
 
   // Ensure buttons are always above inputs for more visually pleasing borders.
