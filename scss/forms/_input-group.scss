@@ -135,6 +135,13 @@
     }
   }
 
+  &.has-validation {
+    > :nth-last-child(n + 3):not(.dropdown-toggle):not(.dropdown-menu),
+    > .dropdown-toggle:nth-last-child(n + 4) {
+      @include border-right-radius(0);
+    }
+  }
+
   $validation-messages: "";
   @each $state in map-keys($form-validation-states) {
     $validation-messages: $validation-messages + ":not(." + unquote($state) + "-tooltip)" + ":not(." + unquote($state) + "-feedback)";
