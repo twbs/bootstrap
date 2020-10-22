@@ -165,6 +165,8 @@ We recommend using client-side validation, but in case you require server-side v
 
 For invalid fields, ensure that the invalid feedback/error message is associated with the relevant form field using `aria-describedby` (noting that this attribute allows more than one `id` to be referenced, in case the field already points to additional form text).
 
+To fix [issues with border radii](https://github.com/twbs/bootstrap/issues/25110), input groups require an additional `.has-validation` class.
+
 {{< example >}}
 <form class="row g-3">
   <div class="col-md-4">
@@ -183,7 +185,7 @@ For invalid fields, ensure that the invalid feedback/error message is associated
   </div>
   <div class="col-md-4">
     <label for="validationServerUsername" class="form-label">Username</label>
-    <div class="input-group">
+    <div class="input-group has-validation">
       <span class="input-group-text" id="inputGroupPrepend3">@</span>
       <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
       <div id="validationServerUsernameFeedback" class="invalid-feedback">
@@ -314,7 +316,7 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
   </div>
   <div class="col-md-4 position-relative">
     <label for="validationTooltipUsername" class="form-label">Username</label>
-    <div class="input-group">
+    <div class="input-group has-validation">
       <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
       <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
       <div class="invalid-tooltip">
