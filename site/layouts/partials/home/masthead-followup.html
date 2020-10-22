@@ -33,7 +33,7 @@
     </div>
     <div class="col-md-7 pl-md-5">
       {{ highlight (printf (`<!-- CSS only -->
-<link rel="stylesheet" href="%s" integrity=%q crossorigin="anonymous">`) .Site.Params.cdn.css (.Site.Params.cdn.css_hash | safeHTMLAttr)) "html" "" }}
+<link href="%s" rel="stylesheet" integrity=%q crossorigin="anonymous">`) .Site.Params.cdn.css (.Site.Params.cdn.css_hash | safeHTMLAttr)) "html" "" }}
       {{ highlight (printf (`<!-- JavaScript Bundle with Popper.js -->
 <script src="%s" integrity=%q crossorigin="anonymous"></script>`) .Site.Params.cdn.js_bundle (.Site.Params.cdn.js_bundle_hash | safeHTMLAttr)) "html" "" }}
     </div>
