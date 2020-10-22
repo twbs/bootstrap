@@ -1,13 +1,14 @@
-<nav class="bd-subnavbar pt-2 pb-3 pb-md-2" aria-label="Secondary navigation">
-  <div class="container-xxl d-flex align-items-md-center flex-wrap">
-    <form class="bd-search position-relative mb-2 mb-md-0 mr-auto">
+<nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
+  <div class="container-xxl d-flex align-items-md-center">
+    <form class="bd-search position-relative mr-auto">
       <input type="search" class="form-control" id="search-input" placeholder="Search docs..." aria-label="Search docs for..." autocomplete="off" data-docs-version="{{ .Site.Params.docs_version }}">
     </form>
 
     {{ partial "docs-versions" . }}
 
-    <button class="btn bd-search-docs-toggle d-md-none p-0 ml-3 order-3 ml-auto" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
-     {{ partial "icons/menu.svg" (dict "width" "30" "height" "30") }}
-   </button>
+    <button class="btn bd-sidebar-toggle d-md-none py-0 px-1 ml-3 order-3 collapsed" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+      {{ partial "icons/expand.svg" (dict "class" "bi bi-expand" "width" "24" "height" "24") }}
+      {{ partial "icons/collapse.svg" (dict "class" "bi bi-collapse" "width" "24" "height" "24") }}
+    </button>
   </div>
 </nav>

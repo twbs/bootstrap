@@ -4,6 +4,6 @@
   border-color: $border;
 
   .alert-link {
-    color: darken($color, 10%);
+    color: shade-color($color, 20%);
   }
 }

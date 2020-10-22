@@ -193,3 +193,20 @@
   color: $carousel-caption-color;
   text-align: center;
 }
+
+// Dark mode carousel
+
+.carousel-dark {
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    filter: $carousel-dark-control-icon-filter;
+  }
+
+  .carousel-indicators li {
+    background-color: $carousel-dark-indicator-active-bg;
+  }
+
+  .carousel-caption {
+    color: $carousel-dark-caption-color;
+  }
+}

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha1): dom/manipulator.js
+ * Bootstrap (v5.0.0-alpha2): dom/manipulator.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -71,18 +71,6 @@ const Manipulator = {
     return {
       top: element.offsetTop,
       left: element.offsetLeft
-    }
-  },
-
-  toggleClass(element, className) {
-    if (!element) {
-      return
-    }
-
-    if (element.classList.contains(className)) {
-      element.classList.remove(className)
-    } else {
-      element.classList.add(className)
     }
   }
 }
