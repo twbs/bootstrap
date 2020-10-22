@@ -131,7 +131,7 @@ Building on the above example, you can create different toast color schemes with
 
 ## Placement
 
-Our toast are dynamically placed according to the position you specified and to their container. The top right is often used for notifications, as is the top middle. If you're only ever going to show one toast at a time. If you have several toasts displayed at once, they will stack automatically.
+Toasts are dynamically placed relative to their container with the position you specify. The top right and top middle are often the most often used for notifications across devices and operating systems. If you have more than one toast displayed at the same time, they will automatically stack.
 
 {{< example >}}
 <form>
