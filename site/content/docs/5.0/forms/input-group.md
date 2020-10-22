@@ -290,45 +290,21 @@ Input groups include support for custom selects and custom file inputs. Browser 
 {{< example >}}
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-  <div class="form-file">
-    <input type="file" class="form-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-    <label class="form-file-label" for="inputGroupFile01">
-      <span class="form-file-text">Choose file...</span>
-      <span class="form-file-button">Browse</span>
-    </label>
-  </div>
+  <input type="file" class="form-control" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
 </div>
 
 <div class="input-group mb-3">
-  <div class="form-file">
-    <input type="file" class="form-file-input" id="inputGroupFile02">
-    <label class="form-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">
-      <span class="form-file-text">Choose file...</span>
-      <span class="form-file-button">Browse</span>
-    </label>
-  </div>
+  <input type="file" class="form-control" id="inputGroupFile02" aria-describedby="inputGroupFileAddon02">
   <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
 </div>
 
 <div class="input-group mb-3">
   <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03">Button</button>
-  <div class="form-file">
-    <input type="file" class="form-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
-    <label class="form-file-label" for="inputGroupFile03">
-      <span class="form-file-text">Choose file...</span>
-      <span class="form-file-button">Browse</span>
-    </label>
-  </div>
+  <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
 </div>
 
 <div class="input-group">
-  <div class="form-file">
-    <input type="file" class="form-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
-    <label class="form-file-label" for="inputGroupFile04">
-      <span class="form-file-text">Choose file...</span>
-      <span class="form-file-button">Browse</span>
-    </label>
-  </div>
+  <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
   <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
 </div>
 {{< /example >}}

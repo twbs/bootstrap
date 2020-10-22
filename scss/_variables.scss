@@ -793,35 +793,9 @@ $form-range-thumb-active-bg:               tint-color($component-active-bg, 70%)
 $form-range-thumb-disabled-bg:             $gray-500 !default;
 $form-range-thumb-transition:              background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
-$form-file-height:                $input-height !default;
-$form-file-focus-border-color:    $input-focus-border-color !default;
-$form-file-focus-box-shadow:      $input-focus-box-shadow !default;
-$form-file-disabled-bg:           $input-disabled-bg !default;
-$form-file-disabled-border-color: $input-disabled-border-color !default;
-
-$form-file-padding-y:             $input-padding-y !default;
-$form-file-padding-x:             $input-padding-x !default;
-$form-file-line-height:           $input-line-height !default;
-$form-file-font-family:           $input-font-family !default;
-$form-file-font-weight:           $input-font-weight !default;
-$form-file-color:                 $input-color !default;
-$form-file-bg:                    $input-bg !default;
-$form-file-border-width:          $input-border-width !default;
-$form-file-border-color:          $input-border-color !default;
-$form-file-border-radius:         $input-border-radius !default;
-$form-file-box-shadow:            $input-box-shadow !default;
-$form-file-button-color:          $form-file-color !default;
+$form-file-button-color:          $input-color !default;
 $form-file-button-bg:             $input-group-addon-bg !default;
-
-$form-file-padding-y-sm:          $input-padding-y-sm !default;
-$form-file-padding-x-sm:          $input-padding-x-sm !default;
-$form-file-font-size-sm:          $input-font-size-sm !default;
-$form-file-height-sm:             $input-height-sm !default;
-
-$form-file-padding-y-lg:          $input-padding-y-lg !default;
-$form-file-padding-x-lg:          $input-padding-x-lg !default;
-$form-file-font-size-lg:          $input-font-size-lg !default;
-$form-file-height-lg:             $input-height-lg !default;
+$form-file-button-hover-bg:       shade-color($input-group-addon-bg, 5%) !default;
 
 $form-floating-height:            add(3.5rem, $input-height-border) !default;
 $form-floating-padding-x:         $input-padding-x !default;
