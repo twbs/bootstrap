@@ -285,12 +285,14 @@ class Toast extends BaseComponent {
       top: ''
     })
 
-    this._element.classList.remove(POSITION_TOP_RIGHT)
-    this._element.classList.remove(POSITION_TOP_LEFT)
-    this._element.classList.remove(POSITION_TOP_CENTER)
-    this._element.classList.remove(POSITION_BOTTOM_RIGHT)
-    this._element.classList.remove(POSITION_BOTTOM_LEFT)
-    this._element.classList.remove(POSITION_BOTTOM_CENTER)
+    this._element.classList.remove(
+      POSITION_TOP_RIGHT,
+      POSITION_TOP_LEFT,
+      POSITION_TOP_CENTER,
+      POSITION_BOTTOM_RIGHT,
+      POSITION_BOTTOM_LEFT,
+      POSITION_BOTTOM_CENTER
+    )
   }
 
   _getMiddleToastPosition() {
