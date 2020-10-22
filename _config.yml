@@ -19,6 +19,9 @@ encoding:       UTF-8
 exclude:
   - docs/4.5/assets/scss/
 
+liquid:
+  error_mode:   strict
+
 plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
