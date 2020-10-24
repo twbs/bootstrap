@@ -754,12 +754,6 @@ We are aware that currently the client-side custom validation styles and tooltip
 {% endcapture %}
 {% include callout.html content=callout type="warning" %}
 
-{% capture callout %}
-##### Input group validation
-Input groups have difficulty with validation styles, unfortunately. Our recommendation is to place feedback messages as sibling elements of the `.input-group` that has `.is-{valid|invalid}`. Placing feedback messages within input groups breaks the `border-radius`. [See this workaround](#input-group-validation-workaround).
-{% endcapture %}
-{% include callout.html content=callout type="warning" %}
-
 ### How it works
 
 Here's how form validation works with Bootstrap:
@@ -1157,16 +1151,16 @@ $form-validation-states: map-merge(
 }
 {% endhighlight %}
 
-### Input group validation workaround
+### Input group validation
 
-We're unable to resolve the broken `border-radius` of input groups with validation due to selector limitations, so manual overrides are required. When you're using a standard input group and don't customize the default border radius values, add `.rounded-right` to the elements with the broken `border-radius`.
+To detect what elements need rounded corners inside an input group with validation, an input group requires an additional `.has-validation` class.
 
 {% highlight html %}
-<div class="input-group">
+<div class="input-group has-validation">
   <div class="input-group-prepend">
     <span class="input-group-text">@</span>
   </div>
-  <input type="text" class="form-control rounded-right" required>
+  <input type="text" class="form-control" required>
   <div class="invalid-feedback">
     Please choose a username.
   </div>
@@ -1174,45 +1168,11 @@ We're unable to resolve the broken `border-radius` of input groups with validati
 {% endhighlight %}
 
 <div class="bd-example bd-example-forms-input-group-workaround">
-  <div class="input-group">
+  <div class="input-group has-validation">
     <div class="input-group-prepend">
       <span class="input-group-text">@</span>
     </div>
-    <input type="text" class="form-control is-invalid rounded-right" required>
-    <div class="invalid-feedback">
-      Please choose a username.
-    </div>
-  </div>
-</div>
-
-When you are using a small or large input group or customizing the default `border-radius` values, add custom CSS to the element with the busted `border-radius`.
-
-{% highlight css %}
-/* Change values to match the radius of your form control */
-.fix-rounded-right {
-  border-top-right-radius: .2rem !important;
-  border-bottom-right-radius: .2rem !important;
-}
-{% endhighlight %}
-
-{% highlight html %}
-<div class="input-group input-group-sm">
-  <div class="input-group-prepend">
-    <span class="input-group-text">@</span>
-  </div>
-  <input type="text" class="form-control fix-rounded-right" required>
-  <div class="invalid-feedback">
-    Please choose a username.
-  </div>
-</div>
-{% endhighlight %}
-
-<div class="bd-example bd-example-forms-input-group-workaround">
-  <div class="input-group input-group-sm">
-    <div class="input-group-prepend">
-      <span class="input-group-text">@</span>
-    </div>
-    <input type="text" class="form-control is-invalid fix-rounded-right" required>
+    <input type="text" class="form-control is-invalid" required>
     <div class="invalid-feedback">
       Please choose a username.
     </div>
