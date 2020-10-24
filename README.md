@@ -58,6 +58,7 @@ Read the [Getting started page](https://v5.getbootstrap.com/docs/5.0/getting-sta
 
 ## Status
 
+[![Bootstrap 4.5](https://img.shields.io/badge/version-4.5-purple?logo=bootstrap)](https://www.npmjs.com/package/bootstrap)
 [![Slack](https://bootstrap-slack.herokuapp.com/badge.svg)](https://bootstrap-slack.herokuapp.com/)
 [![Build Status](https://github.com/twbs/bootstrap/workflows/JS%20Tests/badge.svg?branch=main)](https://github.com/twbs/bootstrap/actions?query=workflow%3AJS+Tests+branch%3Amain)
 [![npm version](https://img.shields.io/npm/v/bootstrap)](https://www.npmjs.com/package/bootstrap)
