@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Navs & Tabs
+title: Navs and Tabs
 description: Documentation and examples for how to use Bootstrap's included navigation components.
 group: components
 aliases: "/docs/5.0/components/navs/"
