@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Navs and tabs
+title: Navs & Tabs
 description: Documentation and examples for how to use Bootstrap's included navigation components.
 group: components
 toc: true
