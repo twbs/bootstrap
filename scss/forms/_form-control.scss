@@ -71,6 +71,7 @@
     padding: $input-padding-y $input-padding-x;
     margin: (-$input-padding-y) (-$input-padding-x);
     margin-inline-end: $input-padding-x;
+    -moz-margin-end: subtract($input-padding-x, 5px); // stylelint-disable-line property-no-vendor-prefix
     line-height: inherit;
     color: $form-file-button-color;
     @include gradient-bg($form-file-button-bg);
@@ -150,6 +151,7 @@
     padding: $input-padding-y-sm $input-padding-x-sm;
     margin: (-$input-padding-y-sm) (-$input-padding-x-sm);
     margin-inline-end: $input-padding-x-sm;
+    -moz-margin-end: subtract($input-padding-x-sm, 5px); // stylelint-disable-line property-no-vendor-prefix
   }
 
   &::-webkit-file-upload-button {
@@ -170,6 +172,7 @@
     padding: $input-padding-y-lg $input-padding-x-lg;
     margin: (-$input-padding-y-lg) (-$input-padding-x-lg);
     margin-inline-end: $input-padding-x-lg;
+    -moz-margin-end: subtract($input-padding-x-lg, 5px); // stylelint-disable-line property-no-vendor-prefix
   }
 
   &::-webkit-file-upload-button {
