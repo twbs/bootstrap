@@ -91,7 +91,7 @@ Quickly change the `font-weight` or `font-style` of text with these utilities. `
 <p class="fw-light">Light weight text.</p>
 <p class="fw-lighter">Lighter weight text (relative to the parent element).</p>
 <p class="fst-italic">Italic text.</p>
-<p class="fst-normal">Text without font style</p>
+<p class="fst-normal">Text with normal font style</p>
 {{< /example >}}
 
 ## Line height
