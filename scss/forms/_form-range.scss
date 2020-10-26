@@ -18,7 +18,6 @@
     // No box-shadow() mixin for focus accessibility.
     &::-webkit-slider-thumb { box-shadow: $form-range-thumb-focus-box-shadow; }
     &::-moz-range-thumb     { box-shadow: $form-range-thumb-focus-box-shadow; }
-    &::-ms-thumb            { box-shadow: $form-range-thumb-focus-box-shadow; }
   }
 
   &::-moz-focus-outer {
@@ -78,46 +77,6 @@
     @include box-shadow($form-range-track-box-shadow);
   }
 
-  &::-ms-thumb {
-    width: $form-range-thumb-width;
-    height: $form-range-thumb-height;
-    margin-top: 0; // Edge specific
-    margin-right: $form-range-thumb-focus-box-shadow-width; // Workaround that overflowed box-shadow is hidden.
-    margin-left: $form-range-thumb-focus-box-shadow-width;  // Workaround that overflowed box-shadow is hidden.
-    @include gradient-bg($form-range-thumb-bg);
-    border: $form-range-thumb-border;
-    @include border-radius($form-range-thumb-border-radius);
-    @include box-shadow($form-range-thumb-box-shadow);
-    @include transition($form-range-thumb-transition);
-    appearance: none;
-
-    &:active {
-      @include gradient-bg($form-range-thumb-active-bg);
-    }
-  }
-
-  &::-ms-track {
-    width: $form-range-track-width;
-    height: $form-range-track-height;
-    color: transparent;
-    cursor: $form-range-track-cursor;
-    background-color: transparent;
-    border-color: transparent;
-    border-width: $form-range-thumb-height / 2;
-    @include box-shadow($form-range-track-box-shadow);
-  }
-
-  &::-ms-fill-lower {
-    background-color: $form-range-track-bg;
-    @include border-radius($form-range-track-border-radius);
-  }
-
-  &::-ms-fill-upper {
-    margin-right: 15px; // arbitrary?
-    background-color: $form-range-track-bg;
-    @include border-radius($form-range-track-border-radius);
-  }
-
   &:disabled {
     pointer-events: none;
 
@@ -126,10 +85,6 @@
     }
 
     &::-moz-range-thumb {
-      background-color: $form-range-thumb-disabled-bg;
-    }
-
-    &::-ms-thumb {
       background-color: $form-range-thumb-disabled-bg;
     }
   }
