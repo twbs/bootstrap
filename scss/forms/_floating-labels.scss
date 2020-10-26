@@ -21,6 +21,7 @@
     @include transition(opacity .1s ease-in-out, transform .1s ease-in-out);
   }
 
+  // stylelint-disable no-duplicate-selectors
   > .form-control {
     &::placeholder {
       color: transparent;
@@ -58,6 +59,7 @@
       transform: $form-floating-label-transform;
     }
   }
+  // stylelint-enable no-duplicate-selectors
 }
 
 
