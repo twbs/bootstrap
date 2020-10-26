@@ -10,20 +10,6 @@ import { getUID } from '../util/index'
 let find = Element.prototype.querySelectorAll
 let findOne = Element.prototype.querySelector
 
-// MSEdge resets defaultPrevented flag upon dispatchEvent call if at least one listener is attached
-const defaultPreventedPreservedOnDispatch = (() => {
-  const e = new CustomEvent('Bootstrap', {
-    cancelable: true
-  })
-
-  const element = document.createElement('div')
-  element.addEventListener('Bootstrap', () => null)
-
-  e.preventDefault()
-  element.dispatchEvent(e)
-  return e.defaultPrevented
-})()
-
 const scopeSelectorRegex = /:scope\b/
 const supportsScopeQuery = (() => {
   const element = document.createElement('div')
@@ -75,6 +61,5 @@ if (!supportsScopeQuery) {
 
 export {
   find,
-  findOne,
-  defaultPreventedPreservedOnDispatch
+  findOne
 }

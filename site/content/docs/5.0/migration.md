@@ -9,6 +9,10 @@ toc: true
 
 ## v5.0.0-alpha3
 
+### Browser support
+
+- Dropped support for Microsoft Legacy Edge. See [here](#browser-support-1) for the previous browser support changes.
+
 ### Colors
 
 - The color system which worked with `color-level()` and `$theme-color-interval` was removed in favor of a new color system.
