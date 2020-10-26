@@ -31,6 +31,7 @@ toc: true
 
 ### Docs
 
+- Renamed "Navs" page to "Navs & Tabs"
 - Renamed "Screen readers" helper page to "Visually hidden", and filename to `visually-hidden`
 - Renamed "Checks" page to "Checks & radios", and filename to `checks-radios`
 - Improved documentation of check/radio powered button groups
