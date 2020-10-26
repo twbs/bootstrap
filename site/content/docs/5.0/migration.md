@@ -21,17 +21,13 @@ toc: true
 
 - Introduce `$enable-smooth-scroll`, which applies `scroll-behavior: smooth` globally—except for users asking for reduced motion through `prefers-reduced-motion` media query. [See #31877](https://github.com/twbs/bootstrap/pull/31877)
 
-<<<<<<< HEAD
 ### Forms
 
 - The longstanding [Missing border radius on input group with validation feedback bug](https://github.com/twbs/bootstrap/issues/25110) is finally fixed by adding an additional `.has-validation` class to input groups with validation.
+- Promoted the Floating labels example to fully supported form component. [See the new Floating labels page.]({{< docsref "/forms/floating-labels" >}})
 
 ### Utilities
 
-=======
-### Utilities
-
->>>>>>> Update migration guide for more details, splitting alpha 2 stuff back to the appropriate section in Migration guide
 - **Text utilities:**
   - Added `.fs-*` utilities for `font-size` utilities (with RFS enabled). These use the same scale as HTML's default headings (1-6, large to small), and can be modified via Sass map.
   - Renamed `.font-weight-*` utilities as `.fw-*` for brevity and consistency.
