@@ -7,7 +7,7 @@ env:
 jobs:
   browserstack:
     runs-on: ubuntu-latest
-    if: github.repository == 'twbs/bootstrap'
+    if: github.repository == 'twbs/bootstrap' && (!contains(github.event.commits[0].message, '[ci skip]') && !contains(github.event.commits[0].message, '[skip ci]'))
 
     steps:
       - name: Clone repository
