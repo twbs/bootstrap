@@ -1,6 +1,8 @@
+@use "../variables";
+
 // Container mixins
 
-@mixin make-container($gutter: $container-padding-x) {
+@mixin make-container($gutter: variables.$container-padding-x) {
   --bs-gutter-x: #{$gutter};
 
   width: 100%;

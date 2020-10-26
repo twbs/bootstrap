@@ -1,22 +1,26 @@
+@use "mixins/breakpoints";
+@use "mixins/container";
+@use "variables";
+
 // Container widths
 //
 // Set the container width, and override it for fixed navbars in media queries.
 
-@if $enable-grid-classes {
+@if variables.$enable-grid-classes {
   // Single container class with breakpoint max-widths
   .container,
   // 100% wide container at all breakpoints
   .container-fluid {
-    @include make-container();
+    @include container.make-container();
   }
 
   // Responsive containers that are 100% wide until a breakpoint
-  @each $breakpoint, $container-max-width in $container-max-widths {
+  @each $breakpoint, $container-max-width in variables.$container-max-widths {
     .container-#{$breakpoint} {
       @extend .container-fluid;
     }
 
-    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+    @include breakpoints.media-breakpoint-up($breakpoint, variables.$grid-breakpoints) {
       %responsive-container-#{$breakpoint} {
         max-width: $container-max-width;
       }
@@ -24,9 +28,9 @@
       // Extend each breakpoint which is smaller or equal to the current breakpoint
       $extend-breakpoint: true;
 
-      @each $name, $width in $grid-breakpoints {
+      @each $name, $width in variables.$grid-breakpoints {
         @if ($extend-breakpoint) {
-          .container#{breakpoint-infix($name, $grid-breakpoints)} {
+          .container#{breakpoints.breakpoint-infix($name, variables.$grid-breakpoints)} {
             @extend %responsive-container-#{$breakpoint};
           }
 

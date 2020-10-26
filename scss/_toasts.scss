@@ -1,16 +1,21 @@
+@use "functions";
+@use "mixins/border-radius";
+@use "variables";
+@use "vendor/rfs";
+
 .toast {
-  max-width: $toast-max-width;
-  @include font-size($toast-font-size);
-  color: $toast-color;
-  background-color: $toast-background-color;
+  max-width: variables.$toast-max-width;
+  @include rfs.font-size(variables.$toast-font-size);
+  color: variables.$toast-color;
+  background-color: variables.$toast-background-color;
   background-clip: padding-box;
-  border: $toast-border-width solid $toast-border-color;
-  box-shadow: $toast-box-shadow;
+  border: variables.$toast-border-width solid variables.$toast-border-color;
+  box-shadow: variables.$toast-box-shadow;
   opacity: 0;
-  @include border-radius($toast-border-radius);
+  @include border-radius.border-radius(variables.$toast-border-radius);
 
   &:not(:last-child) {
-    margin-bottom: $toast-padding-x;
+    margin-bottom: variables.$toast-padding-x;
   }
 
   &.showing {
@@ -30,19 +35,19 @@
 .toast-header {
   display: flex;
   align-items: center;
-  padding: $toast-padding-y $toast-padding-x;
-  color: $toast-header-color;
-  background-color: $toast-header-background-color;
+  padding: variables.$toast-padding-y variables.$toast-padding-x;
+  color: variables.$toast-header-color;
+  background-color: variables.$toast-header-background-color;
   background-clip: padding-box;
-  border-bottom: $toast-border-width solid $toast-header-border-color;
-  @include border-top-radius(subtract($toast-border-radius, $toast-border-width));
+  border-bottom: variables.$toast-border-width solid variables.$toast-header-border-color;
+  @include border-radius.border-top-radius(functions.subtract(variables.$toast-border-radius, variables.$toast-border-width));
 
   .btn-close {
-    margin-right: $toast-padding-x / -2;
-    margin-left: $toast-padding-x;
+    margin-right: variables.$toast-padding-x / -2;
+    margin-left: variables.$toast-padding-x;
   }
 }
 
 .toast-body {
-  padding: $toast-padding-x; // apply to both vertical and horizontal
+  padding: variables.$toast-padding-x; // apply to both vertical and horizontal
 }

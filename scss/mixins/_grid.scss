@@ -1,34 +1,40 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+@use "../variables";
+@use "breakpoints";
+
 /// Grid system
 //
 // Generate semantic grid columns with these mixins.
 
-@mixin make-row($gutter: $grid-gutter-width) {
-  --#{$variable-prefix}gutter-x: #{$gutter};
-  --#{$variable-prefix}gutter-y: 0;
+@mixin make-row($gutter: variables.$grid-gutter-width) {
+  --#{variables.$variable-prefix}gutter-x: #{$gutter};
+  --#{variables.$variable-prefix}gutter-y: 0;
   display: flex;
   flex-wrap: wrap;
-  margin-top: calc(var(--#{$variable-prefix}gutter-y) * -1); // stylelint-disable-line function-disallowed-list
-  margin-right: calc(var(--#{$variable-prefix}gutter-x) / -2); // stylelint-disable-line function-disallowed-list
-  margin-left: calc(var(--#{$variable-prefix}gutter-x) / -2); // stylelint-disable-line function-disallowed-list
+  margin-top: calc(var(--#{variables.$variable-prefix}gutter-y) * -1); // stylelint-disable-line function-disallowed-list
+  margin-right: calc(var(--#{variables.$variable-prefix}gutter-x) / -2); // stylelint-disable-line function-disallowed-list
+  margin-left: calc(var(--#{variables.$variable-prefix}gutter-x) / -2); // stylelint-disable-line function-disallowed-list
 }
 
-@mixin make-col-ready($gutter: $grid-gutter-width) {
+@mixin make-col-ready($gutter: variables.$grid-gutter-width) {
   // Add box sizing if only the grid is loaded
-  box-sizing: if(variable-exists(include-column-box-sizing) and $include-column-box-sizing, border-box, null);
+  box-sizing: if(meta.variable-exists(include-column-box-sizing) and $include-column-box-sizing, border-box, null);
   // Prevent columns from becoming too narrow when at smaller grid tiers by
   // always setting `width: 100%;`. This works because we set the width
   // later on to override this initial width.
   flex-shrink: 0;
   width: 100%;
   max-width: 100%; // Prevent `.col-auto`, `.col` (& responsive variants) from breaking out the grid
-  padding-right: calc(var(--#{$variable-prefix}gutter-x) / 2); // stylelint-disable-line function-disallowed-list
-  padding-left: calc(var(--#{$variable-prefix}gutter-x) / 2); // stylelint-disable-line function-disallowed-list
-  margin-top: var(--#{$variable-prefix}gutter-y);
+  padding-right: calc(var(--#{variables.$variable-prefix}gutter-x) / 2); // stylelint-disable-line function-disallowed-list
+  padding-left: calc(var(--#{variables.$variable-prefix}gutter-x) / 2); // stylelint-disable-line function-disallowed-list
+  margin-top: var(--#{variables.$variable-prefix}gutter-y);
 }
 
-@mixin make-col($size, $columns: $grid-columns) {
+@mixin make-col($size, $columns: variables.$grid-columns) {
   flex: 0 0 auto;
-  width: percentage($size / $columns);
+  width: math.percentage($size / $columns);
 }
 
 @mixin make-col-auto() {
@@ -36,9 +42,9 @@
   width: auto;
 }
 
-@mixin make-col-offset($size, $columns: $grid-columns) {
+@mixin make-col-offset($size, $columns: variables.$grid-columns) {
   $num: $size / $columns;
-  margin-left: if($num == 0, 0, percentage($num));
+  margin-left: if($num == 0, 0, math.percentage($num));
 }
 
 // Row columns
@@ -58,11 +64,11 @@
 // Used only by Bootstrap to generate the correct number of grid classes given
 // any value of `$grid-columns`.
 
-@mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
-  @each $breakpoint in map-keys($breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $breakpoints);
+@mixin make-grid-columns($columns: variables.$grid-columns, $gutter: variables.$grid-gutter-width, $breakpoints: variables.$grid-breakpoints) {
+  @each $breakpoint in map.keys($breakpoints) {
+    $infix: breakpoints.breakpoint-infix($breakpoint, $breakpoints);
 
-    @include media-breakpoint-up($breakpoint, $breakpoints) {
+    @include breakpoints.media-breakpoint-up($breakpoint, $breakpoints) {
       // Provide basic `.col-{bp}` classes for equal-width flexbox columns
       .col#{$infix} {
         flex: 1 0 0%; // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
@@ -72,8 +78,8 @@
         @include make-col-auto();
       }
 
-      @if $grid-row-columns > 0 {
-        @for $i from 1 through $grid-row-columns {
+      @if variables.$grid-row-columns > 0 {
+        @for $i from 1 through variables.$grid-row-columns {
           .row-cols#{$infix}-#{$i} {
             @include row-cols($i);
           }
@@ -104,15 +110,15 @@
       // Gutters
       //
       // Make use of `.g-*`, `.gx-*` or `.gy-*` utilities to change spacing between the columns.
-      @each $key, $value in $gutters {
+      @each $key, $value in variables.$gutters {
         .g#{$infix}-#{$key},
         .gx#{$infix}-#{$key} {
-          --#{$variable-prefix}gutter-x: #{$value};
+          --#{variables.$variable-prefix}gutter-x: #{$value};
         }
 
         .g#{$infix}-#{$key},
         .gy#{$infix}-#{$key} {
-          --#{$variable-prefix}gutter-y: #{$value};
+          --#{variables.$variable-prefix}gutter-y: #{$value};
         }
       }
     }

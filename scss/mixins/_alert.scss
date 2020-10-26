@@ -1,9 +1,12 @@
+@use "../functions";
+@use "gradients";
+
 @mixin alert-variant($background, $border, $color) {
   color: $color;
-  @include gradient-bg($background);
+  @include gradients.gradient-bg($background);
   border-color: $border;
 
   .alert-link {
-    color: shade-color($color, 20%);
+    color: functions.shade-color($color, 20%);
   }
 }

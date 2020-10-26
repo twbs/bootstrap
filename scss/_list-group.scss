@@ -1,3 +1,10 @@
+@use "sass:map";
+@use "functions";
+@use "mixins/border-radius";
+@use "mixins/breakpoints";
+@use "mixins/list-group";
+@use "variables";
+
 // Base class
 //
 // Easily usable on <ul>, <ol>, or <div>.
@@ -9,7 +16,7 @@
   // No need to set list-style: none; since .list-group-item is block level
   padding-left: 0; // reset padding because ul and ol
   margin-bottom: 0;
-  @include border-radius($list-group-border-radius);
+  @include border-radius.border-radius(variables.$list-group-border-radius);
 }
 
 
@@ -20,21 +27,21 @@
 
 .list-group-item-action {
   width: 100%; // For `<button>`s (anchors become 100% by default though)
-  color: $list-group-action-color;
+  color: variables.$list-group-action-color;
   text-align: inherit; // For `<button>`s (anchors inherit)
 
   // Hover state
   &:hover,
   &:focus {
     z-index: 1; // Place hover/focus items above their siblings for proper border styling
-    color: $list-group-action-hover-color;
+    color: variables.$list-group-action-hover-color;
     text-decoration: none;
-    background-color: $list-group-hover-bg;
+    background-color: variables.$list-group-hover-bg;
   }
 
   &:active {
-    color: $list-group-action-active-color;
-    background-color: $list-group-action-active-bg;
+    color: variables.$list-group-action-active-color;
+    background-color: variables.$list-group-action-active-bg;
   }
 }
 
@@ -46,41 +53,41 @@
 .list-group-item {
   position: relative;
   display: block;
-  padding: $list-group-item-padding-y $list-group-item-padding-x;
-  color: $list-group-color;
-  text-decoration: if($link-decoration == none, null, none);
-  background-color: $list-group-bg;
-  border: $list-group-border-width solid $list-group-border-color;
+  padding: variables.$list-group-item-padding-y variables.$list-group-item-padding-x;
+  color: variables.$list-group-color;
+  text-decoration: if(variables.$link-decoration == none, null, none);
+  background-color: variables.$list-group-bg;
+  border: variables.$list-group-border-width solid variables.$list-group-border-color;
 
   &:first-child {
-    @include border-top-radius(inherit);
+    @include border-radius.border-top-radius(inherit);
   }
 
   &:last-child {
-    @include border-bottom-radius(inherit);
+    @include border-radius.border-bottom-radius(inherit);
   }
 
   &.disabled,
   &:disabled {
-    color: $list-group-disabled-color;
+    color: variables.$list-group-disabled-color;
     pointer-events: none;
-    background-color: $list-group-disabled-bg;
+    background-color: variables.$list-group-disabled-bg;
   }
 
   // Include both here for `<a>`s and `<button>`s
   &.active {
     z-index: 2; // Place active items above their siblings for proper border styling
-    color: $list-group-active-color;
-    background-color: $list-group-active-bg;
-    border-color: $list-group-active-border-color;
+    color: variables.$list-group-active-color;
+    background-color: variables.$list-group-active-bg;
+    border-color: variables.$list-group-active-border-color;
   }
 
   & + & {
     border-top-width: 0;
 
     &.active {
-      margin-top: -$list-group-border-width;
-      border-top-width: $list-group-border-width;
+      margin-top: -(variables.$list-group-border-width);
+      border-top-width: variables.$list-group-border-width;
     }
   }
 }
@@ -90,22 +97,22 @@
 //
 // Change the layout of list group items from vertical (default) to horizontal.
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+@each $breakpoint in map.keys(variables.$grid-breakpoints) {
+  @include breakpoints.media-breakpoint-up($breakpoint) {
+    $infix: breakpoints.breakpoint-infix($breakpoint, variables.$grid-breakpoints);
 
     .list-group-horizontal#{$infix} {
       flex-direction: row;
 
       > .list-group-item {
         &:first-child {
-          @include border-bottom-left-radius($list-group-border-radius);
-          @include border-top-right-radius(0);
+          @include border-radius.border-bottom-left-radius(variables.$list-group-border-radius);
+          @include border-radius.border-top-right-radius(0);
         }
 
         &:last-child {
-          @include border-top-right-radius($list-group-border-radius);
-          @include border-bottom-left-radius(0);
+          @include border-radius.border-top-right-radius(variables.$list-group-border-radius);
+          @include border-radius.border-bottom-left-radius(0);
         }
 
         &.active {
@@ -113,12 +120,12 @@
         }
 
         + .list-group-item {
-          border-top-width: $list-group-border-width;
+          border-top-width: variables.$list-group-border-width;
           border-left-width: 0;
 
           &.active {
-            margin-left: -$list-group-border-width;
-            border-left-width: $list-group-border-width;
+            margin-left: -(variables.$list-group-border-width);
+            border-left-width: variables.$list-group-border-width;
           }
         }
       }
@@ -133,10 +140,10 @@
 // useful within other components (e.g., cards).
 
 .list-group-flush {
-  @include border-radius(0);
+  @include border-radius.border-radius(0);
 
   > .list-group-item {
-    border-width: 0 0 $list-group-border-width;
+    border-width: 0 0 variables.$list-group-border-width;
 
     &:last-child {
       border-bottom-width: 0;
@@ -151,7 +158,7 @@
 // Add modifier classes to change text and background color on individual items.
 // Organizationally, this must come after the `:hover` states.
 
-@each $color, $value in $theme-colors {
-  @include list-group-item-variant($color, scale-color($value, $list-group-item-bg-scale), scale-color($value, $list-group-item-color-scale));
+@each $color, $value in variables.$theme-colors {
+  @include list-group.list-group-item-variant($color, functions.scale-color($value, variables.$list-group-item-bg-scale), functions.scale-color($value, variables.$list-group-item-color-scale));
 }
 // scss-docs-end list-group-modifiers

@@ -1,28 +1,33 @@
+@use "functions";
+@use "mixins/border-radius";
+@use "variables";
+@use "vendor/rfs";
+
 .breadcrumb {
   display: flex;
   flex-wrap: wrap;
-  padding: $breadcrumb-padding-y $breadcrumb-padding-x;
-  margin-bottom: $breadcrumb-margin-bottom;
-  @include font-size($breadcrumb-font-size);
+  padding: variables.$breadcrumb-padding-y variables.$breadcrumb-padding-x;
+  margin-bottom: variables.$breadcrumb-margin-bottom;
+  @include rfs.font-size(variables.$breadcrumb-font-size);
   list-style: none;
-  background-color: $breadcrumb-bg;
-  @include border-radius($breadcrumb-border-radius);
+  background-color: variables.$breadcrumb-bg;
+  @include border-radius.border-radius(variables.$breadcrumb-border-radius);
 }
 
 .breadcrumb-item {
   // The separator between breadcrumbs (by default, a forward-slash: "/")
   + .breadcrumb-item {
-    padding-left: $breadcrumb-item-padding-x;
+    padding-left: variables.$breadcrumb-item-padding-x;
 
     &::before {
       float: left; // Suppress inline spacings and underlining of the separator
-      padding-right: $breadcrumb-item-padding-x;
-      color: $breadcrumb-divider-color;
-      content: escape-svg($breadcrumb-divider);
+      padding-right: variables.$breadcrumb-item-padding-x;
+      color: variables.$breadcrumb-divider-color;
+      content: functions.escape-svg(variables.$breadcrumb-divider);
     }
   }
 
   &.active {
-    color: $breadcrumb-active-color;
+    color: variables.$breadcrumb-active-color;
   }
 }

@@ -1,3 +1,9 @@
+@use "mixins/border-radius";
+@use "mixins/gradients";
+@use "mixins/transition";
+@use "variables";
+@use "vendor/rfs";
+
 // Base class
 //
 // Kickstart any navigation component with a set of style resets. Works with
@@ -13,22 +19,22 @@
 
 .nav-link {
   display: block;
-  padding: $nav-link-padding-y $nav-link-padding-x;
-  @include font-size($nav-link-font-size);
-  font-weight: $nav-link-font-weight;
-  color: $nav-link-color;
-  text-decoration: if($link-decoration == none, null, none);
-  @include transition($nav-link-transition);
+  padding: variables.$nav-link-padding-y variables.$nav-link-padding-x;
+  @include rfs.font-size(variables.$nav-link-font-size);
+  font-weight: variables.$nav-link-font-weight;
+  color: variables.$nav-link-color;
+  text-decoration: if(variables.$link-decoration == none, null, none);
+  @include transition.transition(variables.$nav-link-transition);
 
   &:hover,
   &:focus {
-    color: $nav-link-hover-color;
-    text-decoration: if($link-hover-decoration == underline, none, null);
+    color: variables.$nav-link-hover-color;
+    text-decoration: if(variables.$link-hover-decoration == underline, none, null);
   }
 
   // Disabled state lightens text
   &.disabled {
-    color: $nav-link-disabled-color;
+    color: variables.$nav-link-disabled-color;
     pointer-events: none;
     cursor: default;
   }
@@ -39,20 +45,20 @@
 //
 
 .nav-tabs {
-  border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
+  border-bottom: variables.$nav-tabs-border-width solid variables.$nav-tabs-border-color;
 
   .nav-link {
-    margin-bottom: -$nav-tabs-border-width;
-    border: $nav-tabs-border-width solid transparent;
-    @include border-top-radius($nav-tabs-border-radius);
+    margin-bottom: -(variables.$nav-tabs-border-width);
+    border: variables.$nav-tabs-border-width solid transparent;
+    @include border-radius.border-top-radius(variables.$nav-tabs-border-radius);
 
     &:hover,
     &:focus {
-      border-color: $nav-tabs-link-hover-border-color;
+      border-color: variables.$nav-tabs-link-hover-border-color;
     }
 
     &.disabled {
-      color: $nav-link-disabled-color;
+      color: variables.$nav-link-disabled-color;
       background-color: transparent;
       border-color: transparent;
     }
@@ -60,16 +66,16 @@
 
   .nav-link.active,
   .nav-item.show .nav-link {
-    color: $nav-tabs-link-active-color;
-    background-color: $nav-tabs-link-active-bg;
-    border-color: $nav-tabs-link-active-border-color;
+    color: variables.$nav-tabs-link-active-color;
+    background-color: variables.$nav-tabs-link-active-bg;
+    border-color: variables.$nav-tabs-link-active-border-color;
   }
 
   .dropdown-menu {
     // Make dropdown border overlap tab border
-    margin-top: -$nav-tabs-border-width;
+    margin-top: -(variables.$nav-tabs-border-width);
     // Remove the top rounded corners here since there is a hard edge above the menu
-    @include border-top-radius(0);
+    @include border-radius.border-top-radius(0);
   }
 }
 
@@ -80,13 +86,13 @@
 
 .nav-pills {
   .nav-link {
-    @include border-radius($nav-pills-border-radius);
+    @include border-radius.border-radius(variables.$nav-pills-border-radius);
   }
 
   .nav-link.active,
   .show > .nav-link {
-    color: $nav-pills-link-active-color;
-    @include gradient-bg($nav-pills-link-active-bg);
+    color: variables.$nav-pills-link-active-color;
+    @include gradients.gradient-bg(variables.$nav-pills-link-active-bg);
   }
 }
 

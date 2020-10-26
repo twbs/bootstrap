@@ -1,3 +1,5 @@
+@use "../variables";
+
 // Credit: Nicolas Gallagher and SUIT CSS.
 
 .ratio {
@@ -19,7 +21,7 @@
   }
 }
 
-@each $key, $ratio in $aspect-ratios {
+@each $key, $ratio in variables.$aspect-ratios {
   .ratio-#{$key} {
     --aspect-ratio: #{$ratio};
   }

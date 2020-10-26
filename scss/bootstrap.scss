@@ -7,44 +7,70 @@
 
 // scss-docs-start import-stack
 // Configuration
-@import "functions";
-@import "variables";
-@import "mixins";
-@import "utilities";
+@forward "functions" hide assert-ascending, assert-starts-at-zero;
+@forward "variables";
+@use "mixins";
+@forward "utilities";
 
 // Layout & components
-@import "root";
-@import "reboot";
-@import "type";
-@import "images";
-@import "containers";
-@import "grid";
-@import "tables";
-@import "forms";
-@import "buttons";
-@import "transitions";
-@import "dropdown";
-@import "button-group";
-@import "nav";
-@import "navbar";
-@import "card";
-@import "breadcrumb";
-@import "pagination";
-@import "badge";
-@import "alert";
-@import "progress";
-@import "list-group";
-@import "close";
-@import "toasts";
-@import "modal";
-@import "tooltip";
-@import "popover";
-@import "carousel";
-@import "spinners";
+@use "root";
+@use "reboot";
+@use "type";
+@use "images";
+@use "containers";
+@use "grid";
+@use "tables";
+@use "forms";
+@use "buttons";
+@use "transitions";
+@use "dropdown";
+@use "button-group";
+@use "nav";
+@use "navbar";
+@use "card";
+@use "breadcrumb";
+@use "pagination";
+@use "badge";
+@use "alert";
+@use "progress";
+@use "list-group";
+@use "close";
+@use "toasts";
+@use "modal";
+@use "tooltip";
+@use "popover";
+@use "carousel";
+@use "spinners";
 
 // Helpers
-@import "helpers";
+@use "helpers";
 
 // Utilities
-@import "utilities/api";
+@use "utilities/api";
+
+@forward "mixins/alert";
+@forward "mixins/border-radius";
+@forward "mixins/box-shadow";
+@forward "mixins/breakpoints";
+@forward "mixins/buttons";
+@forward "mixins/caret";
+@forward "mixins/clearfix";
+@forward "mixins/container";
+@forward "mixins/deprecate";
+@forward "mixins/forms";
+@forward "mixins/gradients";
+@forward "mixins/grid";
+@forward "mixins/image";
+@forward "mixins/list-group";
+@forward "mixins/lists";
+@forward "mixins/pagination";
+@forward "mixins/reset-text";
+@forward "mixins/resize";
+@forward "mixins/table-variants";
+@forward "mixins/text-truncate";
+@forward "mixins/transition";
+@forward "mixins/utilities";
+@forward "mixins/visually-hidden";
+@forward "vendor/rfs";
+
 // scss-docs-end import-stack

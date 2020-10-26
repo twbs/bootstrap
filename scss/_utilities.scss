@@ -1,8 +1,11 @@
+@use "sass:map";
+@use "variables";
+
 // Utilities
 
 $utilities: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
-$utilities: map-merge(
+$utilities: map.merge(
   (
     "align": (
       property: vertical-align,
@@ -29,9 +32,9 @@ $utilities: map-merge(
       property: box-shadow,
       class: shadow,
       values: (
-        null: $box-shadow,
-        sm: $box-shadow-sm,
-        lg: $box-shadow-lg,
+        null: variables.$box-shadow,
+        sm: variables.$box-shadow-sm,
+        lg: variables.$box-shadow-lg,
         none: none,
       )
     ),
@@ -41,19 +44,19 @@ $utilities: map-merge(
     ),
     "top": (
       property: top,
-      values: $position-values
+      values: variables.$position-values
     ),
     "bottom": (
       property: bottom,
-      values: $position-values
+      values: variables.$position-values
     ),
     "left": (
       property: left,
-      values: $position-values
+      values: variables.$position-values
     ),
     "right": (
       property: right,
-      values: $position-values
+      values: variables.$position-values
     ),
     "translate-middle": (
       property: transform,
@@ -65,47 +68,47 @@ $utilities: map-merge(
     "border": (
       property: border,
       values: (
-        null: $border-width solid $border-color,
+        null: variables.$border-width solid variables.$border-color,
         0: 0,
       )
     ),
     "border-top": (
       property: border-top,
       values: (
-        null: $border-width solid $border-color,
+        null: variables.$border-width solid variables.$border-color,
         0: 0,
       )
     ),
     "border-right": (
       property: border-right,
       values: (
-        null: $border-width solid $border-color,
+        null: variables.$border-width solid variables.$border-color,
         0: 0,
       )
     ),
     "border-bottom": (
       property: border-bottom,
       values: (
-        null: $border-width solid $border-color,
+        null: variables.$border-width solid variables.$border-color,
         0: 0,
       )
     ),
     "border-left": (
       property: border-left,
       values: (
-        null: $border-width solid $border-color,
+        null: variables.$border-width solid variables.$border-color,
         0: 0,
       )
     ),
     "border-color": (
       property: border-color,
       class: border,
-      values: map-merge($theme-colors, ("white": $white))
+      values: map.merge(variables.$theme-colors, ("white": variables.$white))
     ),
     "border-width": (
       property: border-width,
       class: border,
-      values: $border-widths
+      values: variables.$border-widths
     ),
     // Sizing utilities
     "width": (
@@ -262,139 +265,139 @@ $utilities: map-merge(
       responsive: true,
       property: margin,
       class: m,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge(variables.$spacers, (auto: auto))
     ),
     "margin-x": (
       responsive: true,
       property: margin-right margin-left,
       class: mx,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge(variables.$spacers, (auto: auto))
     ),
     "margin-y": (
       responsive: true,
       property: margin-top margin-bottom,
       class: my,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge(variables.$spacers, (auto: auto))
     ),
     "margin-top": (
       responsive: true,
       property: margin-top,
       class: mt,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge(variables.$spacers, (auto: auto))
     ),
     "margin-right": (
       responsive: true,
       property: margin-right,
       class: mr,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge(variables.$spacers, (auto: auto))
     ),
     "margin-bottom": (
       responsive: true,
       property: margin-bottom,
       class: mb,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge(variables.$spacers, (auto: auto))
     ),
     "margin-left": (
       responsive: true,
       property: margin-left,
       class: ml,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge(variables.$spacers, (auto: auto))
     ),
     // Negative margin utilities
     "negative-margin": (
       responsive: true,
       property: margin,
       class: m,
-      values: $negative-spacers
+      values: variables.$negative-spacers
     ),
     "negative-margin-x": (
       responsive: true,
       property: margin-right margin-left,
       class: mx,
-      values: $negative-spacers
+      values: variables.$negative-spacers
     ),
     "negative-margin-y": (
       responsive: true,
       property: margin-top margin-bottom,
       class: my,
-      values: $negative-spacers
+      values: variables.$negative-spacers
     ),
     "negative-margin-top": (
       responsive: true,
       property: margin-top,
       class: mt,
-      values: $negative-spacers
+      values: variables.$negative-spacers
     ),
     "negative-margin-right": (
       responsive: true,
       property: margin-right,
       class: mr,
-      values: $negative-spacers
+      values: variables.$negative-spacers
     ),
     "negative-margin-bottom": (
       responsive: true,
       property: margin-bottom,
       class: mb,
-      values: $negative-spacers
+      values: variables.$negative-spacers
     ),
     "negative-margin-left": (
       responsive: true,
       property: margin-left,
       class: ml,
-      values: $negative-spacers
+      values: variables.$negative-spacers
     ),
     // Padding utilities
     "padding": (
       responsive: true,
       property: padding,
       class: p,
-      values: $spacers
+      values: variables.$spacers
     ),
     "padding-x": (
       responsive: true,
       property: padding-right padding-left,
       class: px,
-      values: $spacers
+      values: variables.$spacers
     ),
     "padding-y": (
       responsive: true,
       property: padding-top padding-bottom,
       class: py,
-      values: $spacers
+      values: variables.$spacers
     ),
     "padding-top": (
       responsive: true,
       property: padding-top,
       class: pt,
-      values: $spacers
+      values: variables.$spacers
     ),
     "padding-right": (
       responsive: true,
       property: padding-right,
       class: pr,
-      values: $spacers
+      values: variables.$spacers
     ),
     "padding-bottom": (
       responsive: true,
       property: padding-bottom,
       class: pb,
-      values: $spacers
+      values: variables.$spacers
     ),
     "padding-left": (
       responsive: true,
       property: padding-left,
       class: pl,
-      values: $spacers
+      values: variables.$spacers
     ),
     // Text
     "font-weight": (
       property: font-weight,
       values: (
-        light: $font-weight-light,
-        lighter: $font-weight-lighter,
-        normal: $font-weight-normal,
-        bold: $font-weight-bold,
-        bolder: $font-weight-bolder
+        light: variables.$font-weight-light,
+        lighter: variables.$font-weight-lighter,
+        normal: variables.$font-weight-normal,
+        bold: variables.$font-weight-bold,
+        bolder: variables.$font-weight-bolder
       )
     ),
     "text-transform": (
@@ -411,14 +414,14 @@ $utilities: map-merge(
     "color": (
       property: color,
       class: text,
-      values: map-merge(
-        $theme-colors,
+      values: map.merge(
+        variables.$theme-colors,
         (
-          "white": $white,
-          "body": $body-color,
-          "muted": $text-muted,
-          "black-50": rgba($black, .5),
-          "white-50": rgba($white, .5),
+          "white": variables.$white,
+          "body": variables.$body-color,
+          "muted": variables.$text-muted,
+          "black-50": rgba(variables.$black, .5),
+          "white-50": rgba(variables.$white, .5),
           "reset": inherit,
         )
       )
@@ -428,19 +431,19 @@ $utilities: map-merge(
       class: lh,
       values: (
         1: 1,
-        sm: $line-height-sm,
-        base: $line-height-base,
-        lg: $line-height-lg,
+        sm: variables.$line-height-sm,
+        base: variables.$line-height-base,
+        lg: variables.$line-height-lg,
       )
     ),
     "background-color": (
       property: background-color,
       class: bg,
-      values: map-merge(
-        $theme-colors,
+      values: map.merge(
+        variables.$theme-colors,
         (
-          "body": $body-bg,
-          "white": $white,
+          "body": variables.$body-bg,
+          "white": variables.$white,
           "transparent": transparent
         )
       )
@@ -448,7 +451,7 @@ $utilities: map-merge(
     "gradient": (
       property: background-image,
       class: bg,
-      values: (gradient: var(--#{$variable-prefix}gradient))
+      values: (gradient: var(--#{variables.$variable-prefix}gradient))
     ),
     "white-space": (
       property: white-space,
@@ -475,7 +478,7 @@ $utilities: map-merge(
     "font-family": (
       property: font-family,
       class: font,
-      values: (monospace: var(--#{$variable-prefix}font-monospace))
+      values: (monospace: var(--#{variables.$variable-prefix}font-monospace))
     ),
     "user-select": (
       property: user-select,
@@ -490,33 +493,33 @@ $utilities: map-merge(
       property: border-radius,
       class: rounded,
       values: (
-        null: $border-radius,
-        sm: $border-radius-sm,
-        lg: $border-radius-lg,
+        null: variables.$border-radius,
+        sm: variables.$border-radius-sm,
+        lg: variables.$border-radius-lg,
         circle: 50%,
-        pill: $rounded-pill,
+        pill: variables.$rounded-pill,
         0: 0,
       )
     ),
     "rounded-top": (
       property: border-top-left-radius border-top-right-radius,
       class: rounded-top,
-      values: (null: $border-radius)
+      values: (null: variables.$border-radius)
     ),
     "rounded-right": (
       property: border-top-right-radius border-bottom-right-radius,
       class: rounded-right,
-      values: (null: $border-radius)
+      values: (null: variables.$border-radius)
     ),
     "rounded-bottom": (
       property: border-bottom-right-radius border-bottom-left-radius,
       class: rounded-bottom,
-      values: (null: $border-radius)
+      values: (null: variables.$border-radius)
     ),
     "rounded-left": (
       property: border-bottom-left-radius border-top-left-radius,
       class: rounded-left,
-      values: (null: $border-radius)
+      values: (null: variables.$border-radius)
     ),
     "visibility": (
       property: visibility,

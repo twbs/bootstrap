@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "sass:meta";
+@use "sass:string";
 // stylelint-disable property-blacklist, scss/dollar-variable-default
 
 // SCSS RFS mixin
@@ -30,7 +33,7 @@ $rfs-two-dimensional: false !default;
 // Factor of decrease
 $rfs-factor: 10 !default;
 
-@if type-of($rfs-factor) != number or $rfs-factor <= 1 {
+@if meta.type-of($rfs-factor) != number or $rfs-factor <= 1 {
   @error "`#{$rfs-factor}` is not a valid  $rfs-factor, it must be greater than 1.";
 }
 
@@ -50,7 +53,7 @@ $rfs-safari-iframe-resize-bug-fix: false !default;
 $enable-rfs: true !default;
 
 // Cache $rfs-base-value unit
-$rfs-base-value-unit: unit($rfs-base-value);
+$rfs-base-value-unit: math.unit($rfs-base-value);
 
 // Remove px-unit from $rfs-base-value for calculations
 @if $rfs-base-value-unit == px {
@@ -61,7 +64,7 @@ $rfs-base-value-unit: unit($rfs-base-value);
 }
 
 // Cache $rfs-breakpoint unit to prevent multiple calls
-$rfs-breakpoint-unit-cache: unit($rfs-breakpoint);
+$rfs-breakpoint-unit-cache: math.unit($rfs-breakpoint);
 
 // Remove unit from $rfs-breakpoint for calculations
 @if $rfs-breakpoint-unit-cache == px {
@@ -149,7 +152,7 @@ $rfs-mq-property-height: if($rfs-mode == max-media-query, max-height, min-height
 // Helper function to get the formatted non-responsive value
 @function rfs-value($values) {
   // Convert to list
-  $values: if(type-of($values) != list, ($values,), $values);
+  $values: if(meta.type-of($values) != list, ($values,), $values);
 
   $val: '';
 
@@ -160,7 +163,7 @@ $rfs-mq-property-height: if($rfs-mode == max-media-query, max-height, min-height
     }
     @else {
       // Cache $value unit
-      $unit: if(type-of($value) == "number", unit($value), false);
+      $unit: if(meta.type-of($value) == "number", math.unit($value), false);
 
       @if $unit == px {
         // Convert to rem if needed
@@ -178,13 +181,13 @@ $rfs-mq-property-height: if($rfs-mode == max-media-query, max-height, min-height
   }
 
   // Remove first space
-  @return unquote(str-slice($val, 2));
+  @return string.unquote(string.slice($val, 2));
 }
 
 // Helper function to get the responsive value calculated by RFS
 @function rfs-fluid-value($values) {
   // Convert to list
-  $values: if(type-of($values) != list, ($values,), $values);
+  $values: if(meta.type-of($values) != list, ($values,), $values);
 
   $val: '';
 
@@ -196,7 +199,7 @@ $rfs-mq-property-height: if($rfs-mode == max-media-query, max-height, min-height
 
     @else {
       // Cache $value unit
-      $unit: if(type-of($value) == "number", unit($value), false);
+      $unit: if(meta.type-of($value) == "number", math.unit($value), false);
 
       // If $value isn't a number (like inherit) or $value has a unit (not px or rem, like 1.5em) or $ is 0, just print the value
       @if not $unit or $unit != px and $unit != rem {
@@ -208,15 +211,15 @@ $rfs-mq-property-height: if($rfs-mode == max-media-query, max-height, min-height
         $value: $value / ($value * 0 + if($unit == px, 1, 1 / $rfs-rem-value));
 
         // Only add the media query if the value is greater than the minimum value
-        @if abs($value) <= $rfs-base-value or not $enable-rfs {
+        @if math.abs($value) <= $rfs-base-value or not $enable-rfs {
           $val: $val + ' ' +  if($rfs-unit == rem, #{$value / $rfs-rem-value}rem, #{$value}px);
         }
         @else {
           // Calculate the minimum value
-          $value-min: $rfs-base-value + (abs($value) - $rfs-base-value) / $rfs-factor;
+          $value-min: $rfs-base-value + (math.abs($value) - $rfs-base-value) / $rfs-factor;
 
           // Calculate difference between $value and the minimum value
-          $value-diff: abs($value) - $value-min;
+          $value-diff: math.abs($value) - $value-min;
 
           // Base value formatting
           $min-width: if($rfs-unit == rem, #{$value-min / $rfs-rem-value}rem, #{$value-min}px);
@@ -238,7 +241,7 @@ $rfs-mq-property-height: if($rfs-mode == max-media-query, max-height, min-height
   }
 
   // Remove first space
-  @return unquote(str-slice($val, 2));
+  @return string.unquote(string.slice($val, 2));
 }
 
 // RFS mixin

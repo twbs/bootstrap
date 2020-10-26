@@ -1,3 +1,11 @@
+@use "sass:color";
+@use "../functions";
+@use "../variables";
+@use "../vendor/rfs";
+@use "border-radius";
+@use "box-shadow";
+@use "gradients";
+
 // Button variants
 //
 // Easily pump out default styles, as well as :hover, :focus, :active,
@@ -6,38 +14,38 @@
 @mixin button-variant(
   $background,
   $border,
-  $color: color-contrast($background),
-  $hover-background: if($color == $color-contrast-light, shade-color($background, 15%), tint-color($background, 15%)),
-  $hover-border: if($color == $color-contrast-light, shade-color($border, 20%), tint-color($border, 10%)),
-  $hover-color: color-contrast($hover-background),
-  $active-background: if($color == $color-contrast-light, shade-color($background, 20%), tint-color($background, 20%)),
-  $active-border: if($color == $color-contrast-light, shade-color($border, 25%), tint-color($border, 10%)),
-  $active-color: color-contrast($active-background),
+  $color: functions.color-contrast($background),
+  $hover-background: if($color == variables.$color-contrast-light, functions.shade-color($background, 15%), functions.tint-color($background, 15%)),
+  $hover-border: if($color == variables.$color-contrast-light, functions.shade-color($border, 20%), functions.tint-color($border, 10%)),
+  $hover-color: functions.color-contrast($hover-background),
+  $active-background: if($color == variables.$color-contrast-light, functions.shade-color($background, 20%), functions.tint-color($background, 20%)),
+  $active-border: if($color == variables.$color-contrast-light, functions.shade-color($border, 25%), functions.tint-color($border, 10%)),
+  $active-color: functions.color-contrast($active-background),
   $disabled-background: $background,
   $disabled-border: $border,
-  $disabled-color: color-contrast($disabled-background)
+  $disabled-color: functions.color-contrast($disabled-background)
 ) {
   color: $color;
-  @include gradient-bg($background);
+  @include gradients.gradient-bg($background);
   border-color: $border;
-  @include box-shadow($btn-box-shadow);
+  @include box-shadow.box-shadow(variables.$btn-box-shadow);
 
   &:hover {
     color: $hover-color;
-    @include gradient-bg($hover-background);
+    @include gradients.gradient-bg($hover-background);
     border-color: $hover-border;
   }
 
   .btn-check:focus + &,
   &:focus {
     color: $hover-color;
-    @include gradient-bg($hover-background);
+    @include gradients.gradient-bg($hover-background);
     border-color: $hover-border;
-    @if $enable-shadows {
-      @include box-shadow($btn-box-shadow, 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5));
+    @if variables.$enable-shadows {
+      @include box-shadow.box-shadow(variables.$btn-box-shadow, 0 0 0 variables.$btn-focus-width rgba(color.mix($color, $border, 15%), .5));
     } @else {
       // Avoid using mixin so we can pass custom focus shadow properly
-      box-shadow: 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
+      box-shadow: 0 0 0 variables.$btn-focus-width rgba(color.mix($color, $border, 15%), .5);
     }
   }
 
@@ -49,15 +57,15 @@
     color: $active-color;
     background-color: $active-background;
     // Remove CSS gradients if they're enabled
-    background-image: if($enable-gradients, none, null);
+    background-image: if(variables.$enable-gradients, none, null);
     border-color: $active-border;
 
     &:focus {
-      @if $enable-shadows {
-        @include box-shadow($btn-active-box-shadow, 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5));
+      @if variables.$enable-shadows {
+        @include box-shadow.box-shadow(variables.$btn-active-box-shadow, 0 0 0 variables.$btn-focus-width rgba(color.mix($color, $border, 15%), .5));
       } @else {
         // Avoid using mixin so we can pass custom focus shadow properly
-        box-shadow: 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
+        box-shadow: 0 0 0 variables.$btn-focus-width rgba(color.mix($color, $border, 15%), .5);
       }
     }
   }
@@ -67,17 +75,17 @@
     color: $disabled-color;
     background-color: $disabled-background;
     // Remove CSS gradients if they're enabled
-    background-image: if($enable-gradients, none, null);
+    background-image: if(variables.$enable-gradients, none, null);
     border-color: $disabled-border;
   }
 }
 
 @mixin button-outline-variant(
   $color,
-  $color-hover: color-contrast($color),
+  $color-hover: functions.color-contrast($color),
   $active-background: $color,
   $active-border: $color,
-  $active-color: color-contrast($active-background)
+  $active-color: functions.color-contrast($active-background)
 ) {
   color: $color;
   border-color: $color;
@@ -90,7 +98,7 @@
 
   .btn-check:focus + &,
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
+    box-shadow: 0 0 0 variables.$btn-focus-width rgba($color, .5);
   }
 
   .btn-check:checked + &,
@@ -103,11 +111,11 @@
     border-color: $active-border;
 
     &:focus {
-      @if $enable-shadows {
-        @include box-shadow($btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($color, .5));
+      @if variables.$enable-shadows {
+        @include box-shadow.box-shadow(variables.$btn-active-box-shadow, 0 0 0 variables.$btn-focus-width rgba($color, .5));
       } @else {
         // Avoid using mixin so we can pass custom focus shadow properly
-        box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
+        box-shadow: 0 0 0 variables.$btn-focus-width rgba($color, .5);
       }
     }
   }
@@ -122,7 +130,7 @@
 // Button sizes
 @mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
   padding: $padding-y $padding-x;
-  @include font-size($font-size);
+  @include rfs.font-size($font-size);
   // Manually declare to provide an override to the browser default
-  @include border-radius($border-radius, 0);
+  @include border-radius.border-radius($border-radius, 0);
 }

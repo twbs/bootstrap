@@ -1,3 +1,8 @@
+@use "../functions";
+@use "../variables";
+@use "../vendor/rfs";
+@use "border-radius";
+
 // This mixin uses an `if()` technique to be compatible with Dart Sass
 // See https://github.com/sass/sass/issues/1873#issuecomment-152293725 for more details
 @mixin form-validation-state-selector($state) {
@@ -17,9 +22,9 @@
   .#{$state}-feedback {
     display: none;
     width: 100%;
-    margin-top: $form-feedback-margin-top;
-    @include font-size($form-feedback-font-size);
-    font-style: $form-feedback-font-style;
+    margin-top: variables.$form-feedback-margin-top;
+    @include rfs.font-size(variables.$form-feedback-font-size);
+    font-style: variables.$form-feedback-font-style;
     color: $color;
   }
 
@@ -29,13 +34,13 @@
     z-index: 5;
     display: none;
     max-width: 100%; // Contain to parent when possible
-    padding: $form-feedback-tooltip-padding-y $form-feedback-tooltip-padding-x;
+    padding: variables.$form-feedback-tooltip-padding-y variables.$form-feedback-tooltip-padding-x;
     margin-top: .1rem;
-    @include font-size($form-feedback-tooltip-font-size);
-    line-height: $form-feedback-tooltip-line-height;
-    color: color-contrast($color);
-    background-color: rgba($color, $form-feedback-tooltip-opacity);
-    @include border-radius($form-feedback-tooltip-border-radius);
+    @include rfs.font-size(variables.$form-feedback-tooltip-font-size);
+    line-height: variables.$form-feedback-tooltip-line-height;
+    color: functions.color-contrast($color);
+    background-color: rgba($color, variables.$form-feedback-tooltip-opacity);
+    @include border-radius.border-radius(variables.$form-feedback-tooltip-border-radius);
   }
 
   @include form-validation-state-selector($state) {
@@ -49,17 +54,17 @@
     @include form-validation-state-selector($state) {
       border-color: $color;
 
-      @if $enable-validation-icons {
-        padding-right: $input-height-inner;
-        background-image: escape-svg($icon);
+      @if variables.$enable-validation-icons {
+        padding-right: variables.$input-height-inner;
+        background-image: functions.escape-svg($icon);
         background-repeat: no-repeat;
-        background-position: right $input-height-inner-quarter center;
-        background-size: $input-height-inner-half $input-height-inner-half;
+        background-position: right variables.$input-height-inner-quarter center;
+        background-size: variables.$input-height-inner-half variables.$input-height-inner-half;
       }
 
       &:focus {
         border-color: $color;
-        box-shadow: 0 0 0 $input-focus-width rgba($color, $input-btn-focus-color-opacity);
+        box-shadow: 0 0 0 variables.$input-focus-width rgba($color, variables.$input-btn-focus-color-opacity);
       }
     }
   }
@@ -67,9 +72,9 @@
   // stylelint-disable-next-line selector-no-qualifying-type
   textarea.form-control {
     @include form-validation-state-selector($state) {
-      @if $enable-validation-icons {
-        padding-right: $input-height-inner;
-        background-position: top $input-height-inner-quarter right $input-height-inner-quarter;
+      @if variables.$enable-validation-icons {
+        padding-right: variables.$input-height-inner;
+        background-position: top variables.$input-height-inner-quarter right variables.$input-height-inner-quarter;
       }
     }
   }
@@ -78,16 +83,16 @@
     @include form-validation-state-selector($state) {
       border-color: $color;
 
-      @if $enable-validation-icons {
-        padding-right: $form-select-feedback-icon-padding-right;
-        background-image: escape-svg($form-select-indicator), escape-svg($icon);
-        background-position: $form-select-bg-position, $form-select-feedback-icon-position;
-        background-size: $form-select-bg-size, $form-select-feedback-icon-size;
+      @if variables.$enable-validation-icons {
+        padding-right: variables.$form-select-feedback-icon-padding-right;
+        background-image: functions.escape-svg(variables.$form-select-indicator), functions.escape-svg($icon);
+        background-position: variables.$form-select-bg-position, variables.$form-select-feedback-icon-position;
+        background-size: variables.$form-select-bg-size, variables.$form-select-feedback-icon-size;
       }
 
       &:focus {
         border-color: $color;
-        box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+        box-shadow: 0 0 0 variables.$input-focus-width rgba($color, .25);
       }
     }
   }
@@ -101,7 +106,7 @@
       }
 
       &:focus {
-        box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+        box-shadow: 0 0 0 variables.$input-focus-width rgba($color, .25);
       }
 
       ~ .form-check-label {
@@ -125,7 +130,7 @@
       &:focus {
         ~ .form-file-label {
           border-color: $color;
-          box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+          box-shadow: 0 0 0 variables.$input-focus-width rgba($color, .25);
         }
       }
     }

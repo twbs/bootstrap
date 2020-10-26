@@ -1,3 +1,11 @@
+@use "sass:map";
+@use "functions";
+@use "mixins/border-radius";
+@use "mixins/box-shadow";
+@use "mixins/breakpoints";
+@use "mixins/transition";
+@use "variables";
+
 // .modal-open      - body class for killing the scroll
 // .modal           - container to scroll within
 // .modal-dialog    - positioning shell for the actual modal
@@ -19,7 +27,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: $zindex-modal;
+  z-index: variables.$zindex-modal;
   display: none;
   width: 100%;
   height: 100%;
@@ -36,27 +44,27 @@
 .modal-dialog {
   position: relative;
   width: auto;
-  margin: $modal-dialog-margin;
+  margin: variables.$modal-dialog-margin;
   // allow clicks to pass through for custom click handling to close modal
   pointer-events: none;
 
   // When fading in the modal, animate it to slide down
   .modal.fade & {
-    @include transition($modal-transition);
-    transform: $modal-fade-transform;
+    @include transition.transition(variables.$modal-transition);
+    transform: variables.$modal-fade-transform;
   }
   .modal.show & {
-    transform: $modal-show-transform;
+    transform: variables.$modal-show-transform;
   }
 
   // When trying to close, animate focus to scale
   .modal.modal-static & {
-    transform: $modal-scale-transform;
+    transform: variables.$modal-scale-transform;
   }
 }
 
 .modal-dialog-scrollable {
-  height: subtract(100%, $modal-dialog-margin * 2);
+  height: functions.subtract(100%, variables.$modal-dialog-margin * 2);
 
   .modal-content {
     max-height: 100%;
@@ -71,7 +79,7 @@
 .modal-dialog-centered {
   display: flex;
   align-items: center;
-  min-height: subtract(100%, $modal-dialog-margin * 2);
+  min-height: functions.subtract(100%, variables.$modal-dialog-margin * 2);
 }
 
 // Actual modal
@@ -81,13 +89,13 @@
   flex-direction: column;
   width: 100%; // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
   // counteract the pointer-events: none; in the .modal-dialog
-  color: $modal-content-color;
+  color: variables.$modal-content-color;
   pointer-events: auto;
-  background-color: $modal-content-bg;
+  background-color: variables.$modal-content-bg;
   background-clip: padding-box;
-  border: $modal-content-border-width solid $modal-content-border-color;
-  @include border-radius($modal-content-border-radius);
-  @include box-shadow($modal-content-box-shadow-xs);
+  border: variables.$modal-content-border-width solid variables.$modal-content-border-color;
+  @include border-radius.border-radius(variables.$modal-content-border-radius);
+  @include box-shadow.box-shadow(variables.$modal-content-box-shadow-xs);
   // Remove focus outline from opened modal
   outline: 0;
 }
@@ -97,14 +105,14 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: $zindex-modal-backdrop;
+  z-index: variables.$zindex-modal-backdrop;
   width: 100vw;
   height: 100vh;
-  background-color: $modal-backdrop-bg;
+  background-color: variables.$modal-backdrop-bg;
 
   // Fade for backdrop
   &.fade { opacity: 0; }
-  &.show { opacity: $modal-backdrop-opacity; }
+  &.show { opacity: variables.$modal-backdrop-opacity; }
 }
 
 // Modal header
@@ -114,20 +122,20 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
-  padding: $modal-header-padding;
-  border-bottom: $modal-header-border-width solid $modal-header-border-color;
-  @include border-top-radius($modal-content-inner-border-radius);
+  padding: variables.$modal-header-padding;
+  border-bottom: variables.$modal-header-border-width solid variables.$modal-header-border-color;
+  @include border-radius.border-top-radius(variables.$modal-content-inner-border-radius);
 
   .btn-close {
-    padding: ($modal-header-padding-y / 2) ($modal-header-padding-x / 2);
-    margin: ($modal-header-padding-y / -2) ($modal-header-padding-x / -2) ($modal-header-padding-y / -2) auto;
+    padding: (variables.$modal-header-padding-y / 2) (variables.$modal-header-padding-x / 2);
+    margin: (variables.$modal-header-padding-y / -2) (variables.$modal-header-padding-x / -2) (variables.$modal-header-padding-y / -2) auto;
   }
 }
 
 // Title text within header
 .modal-title {
   margin-bottom: 0;
-  line-height: $modal-title-line-height;
+  line-height: variables.$modal-title-line-height;
 }
 
 // Modal body
@@ -137,7 +145,7 @@
   // Enable `flex-grow: 1` so that the body take up as much space as possible
   // when there should be a fixed height on `.modal-dialog`.
   flex: 1 1 auto;
-  padding: $modal-inner-padding;
+  padding: variables.$modal-inner-padding;
 }
 
 // Footer (for actions)
@@ -147,15 +155,15 @@
   flex-shrink: 0;
   align-items: center; // vertically center
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
-  padding: $modal-inner-padding - $modal-footer-margin-between / 2;
-  border-top: $modal-footer-border-width solid $modal-footer-border-color;
-  @include border-bottom-radius($modal-content-inner-border-radius);
+  padding: variables.$modal-inner-padding - variables.$modal-footer-margin-between / 2;
+  border-top: variables.$modal-footer-border-width solid variables.$modal-footer-border-color;
+  @include border-radius.border-bottom-radius(variables.$modal-content-inner-border-radius);
 
   // Place margin between footer elements
   // This solution is far from ideal because of the universal selector usage,
   // but is needed to fix https://github.com/twbs/bootstrap/issues/24800
   > * {
-    margin: $modal-footer-margin-between / 2;
+    margin: variables.$modal-footer-margin-between / 2;
   }
 }
 
@@ -169,44 +177,44 @@
 }
 
 // Scale up the modal
-@include media-breakpoint-up(sm) {
+@include breakpoints.media-breakpoint-up(sm) {
   // Automatically set modal's width for larger viewports
   .modal-dialog {
-    max-width: $modal-md;
-    margin: $modal-dialog-margin-y-sm-up auto;
+    max-width: variables.$modal-md;
+    margin: variables.$modal-dialog-margin-y-sm-up auto;
   }
 
   .modal-dialog-scrollable {
-    height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
+    height: functions.subtract(100%, variables.$modal-dialog-margin-y-sm-up * 2);
   }
 
   .modal-dialog-centered {
-    min-height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
+    min-height: functions.subtract(100%, variables.$modal-dialog-margin-y-sm-up * 2);
   }
 
   .modal-content {
-    @include box-shadow($modal-content-box-shadow-sm-up);
+    @include box-shadow.box-shadow(variables.$modal-content-box-shadow-sm-up);
   }
 
-  .modal-sm { max-width: $modal-sm; }
+  .modal-sm { max-width: variables.$modal-sm; }
 }
 
-@include media-breakpoint-up(lg) {
+@include breakpoints.media-breakpoint-up(lg) {
   .modal-lg,
   .modal-xl {
-    max-width: $modal-lg;
+    max-width: variables.$modal-lg;
   }
 }
 
-@include media-breakpoint-up(xl) {
-  .modal-xl { max-width: $modal-xl; }
+@include breakpoints.media-breakpoint-up(xl) {
+  .modal-xl { max-width: variables.$modal-xl; }
 }
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+@each $breakpoint in map.keys(variables.$grid-breakpoints) {
+  $infix: breakpoints.breakpoint-infix($breakpoint, variables.$grid-breakpoints);
   $postfix: if($infix != "", $infix + "-down", "");
 
-  @include media-breakpoint-down($breakpoint) {
+  @include breakpoints.media-breakpoint-down($breakpoint) {
     .modal-fullscreen#{$postfix} {
       width: 100vw;
       max-width: none;
@@ -216,11 +224,11 @@
       .modal-content {
         height: 100%;
         border: 0;
-        @include border-radius(0);
+        @include border-radius.border-radius(0);
       }
 
       .modal-header {
-        @include border-radius(0);
+        @include border-radius.border-radius(0);
       }
 
       .modal-body {
@@ -228,7 +236,7 @@
       }
 
       .modal-footer {
-        @include border-radius(0);
+        @include border-radius.border-radius(0);
       }
     }
   }

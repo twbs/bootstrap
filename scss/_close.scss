@@ -1,3 +1,7 @@
+@use "functions";
+@use "mixins/border-radius";
+@use "variables";
+
 // transparent background and border properties included for button version.
 // iOS requires the button element instead of an anchor tag.
 // If you want the anchor version, it requires `href="#"`.
@@ -5,36 +9,36 @@
 
 .btn-close {
   box-sizing: content-box;
-  width: $btn-close-width;
-  height: $btn-close-height;
-  padding: $btn-close-padding-y $btn-close-padding-x;
-  color: $btn-close-color;
-  background: transparent escape-svg($btn-close-bg) no-repeat center center / $btn-close-width auto; // include transparent for button elements
+  width: variables.$btn-close-width;
+  height: variables.$btn-close-height;
+  padding: variables.$btn-close-padding-y variables.$btn-close-padding-x;
+  color: variables.$btn-close-color;
+  background: transparent functions.escape-svg(variables.$btn-close-bg) no-repeat center center / variables.$btn-close-width auto; // include transparent for button elements
   border: 0; // for button elements
-  @include border-radius();
-  opacity: $btn-close-opacity;
+  @include border-radius.border-radius();
+  opacity: variables.$btn-close-opacity;
 
   // Override <a>'s hover style
   &:hover {
-    color: $btn-close-color;
+    color: variables.$btn-close-color;
     text-decoration: none;
-    opacity: $btn-close-hover-opacity;
+    opacity: variables.$btn-close-hover-opacity;
   }
 
   &:focus {
     outline: none;
-    box-shadow: $btn-close-focus-shadow;
-    opacity: $btn-close-focus-opacity;
+    box-shadow: variables.$btn-close-focus-shadow;
+    opacity: variables.$btn-close-focus-opacity;
   }
 
   &:disabled,
   &.disabled {
     pointer-events: none;
     user-select: none;
-    opacity: $btn-close-disabled-opacity;
+    opacity: variables.$btn-close-disabled-opacity;
   }
 }
 
 .btn-close-white {
-  filter: $btn-close-white-filter;
+  filter: variables.$btn-close-white-filter;
 }

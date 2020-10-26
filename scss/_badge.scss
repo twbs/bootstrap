@@ -1,3 +1,8 @@
+@use "mixins/border-radius";
+@use "mixins/gradients";
+@use "variables";
+@use "vendor/rfs";
+
 // Base class
 //
 // Requires one of the contextual, color modifier classes for `color` and
@@ -5,16 +10,16 @@
 
 .badge {
   display: inline-block;
-  padding: $badge-padding-y $badge-padding-x;
-  @include font-size($badge-font-size);
-  font-weight: $badge-font-weight;
+  padding: variables.$badge-padding-y variables.$badge-padding-x;
+  @include rfs.font-size(variables.$badge-font-size);
+  font-weight: variables.$badge-font-weight;
   line-height: 1;
-  color: $badge-color;
+  color: variables.$badge-color;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  @include border-radius($badge-border-radius);
-  @include gradient-bg();
+  @include border-radius.border-radius(variables.$badge-border-radius);
+  @include gradients.gradient-bg();
 
   // Empty badges collapse automatically
   &:empty {

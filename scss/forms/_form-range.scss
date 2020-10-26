@@ -1,3 +1,10 @@
+@use "../functions";
+@use "../mixins/border-radius";
+@use "../mixins/box-shadow";
+@use "../mixins/gradients";
+@use "../mixins/transition";
+@use "../variables";
+
 // Range
 //
 // Style range inputs the same across browsers. Vendor-specific rules for pseudo
@@ -6,7 +13,7 @@
 
 .form-range {
   width: 100%;
-  height: add($form-range-thumb-height, $form-range-thumb-focus-box-shadow-width * 2);
+  height: functions.add(variables.$form-range-thumb-height, variables.$form-range-thumb-focus-box-shadow-width * 2);
   padding: 0; // Need to reset padding
   background-color: transparent;
   appearance: none;
@@ -16,9 +23,9 @@
 
     // Pseudo-elements must be split across multiple rulesets to have an effect.
     // No box-shadow() mixin for focus accessibility.
-    &::-webkit-slider-thumb { box-shadow: $form-range-thumb-focus-box-shadow; }
-    &::-moz-range-thumb     { box-shadow: $form-range-thumb-focus-box-shadow; }
-    &::-ms-thumb            { box-shadow: $form-range-thumb-focus-box-shadow; }
+    &::-webkit-slider-thumb { box-shadow: variables.$form-range-thumb-focus-box-shadow; }
+    &::-moz-range-thumb     { box-shadow: variables.$form-range-thumb-focus-box-shadow; }
+    &::-ms-thumb            { box-shadow: variables.$form-range-thumb-focus-box-shadow; }
   }
 
   &::-moz-focus-outer {
@@ -26,111 +33,111 @@
   }
 
   &::-webkit-slider-thumb {
-    width: $form-range-thumb-width;
-    height: $form-range-thumb-height;
-    margin-top: ($form-range-track-height - $form-range-thumb-height) / 2; // Webkit specific
-    @include gradient-bg($form-range-thumb-bg);
-    border: $form-range-thumb-border;
-    @include border-radius($form-range-thumb-border-radius);
-    @include box-shadow($form-range-thumb-box-shadow);
-    @include transition($form-range-thumb-transition);
+    width: variables.$form-range-thumb-width;
+    height: variables.$form-range-thumb-height;
+    margin-top: (variables.$form-range-track-height - variables.$form-range-thumb-height) / 2; // Webkit specific
+    @include gradients.gradient-bg(variables.$form-range-thumb-bg);
+    border: variables.$form-range-thumb-border;
+    @include border-radius.border-radius(variables.$form-range-thumb-border-radius);
+    @include box-shadow.box-shadow(variables.$form-range-thumb-box-shadow);
+    @include transition.transition(variables.$form-range-thumb-transition);
     appearance: none;
 
     &:active {
-      @include gradient-bg($form-range-thumb-active-bg);
+      @include gradients.gradient-bg(variables.$form-range-thumb-active-bg);
     }
   }
 
   &::-webkit-slider-runnable-track {
-    width: $form-range-track-width;
-    height: $form-range-track-height;
+    width: variables.$form-range-track-width;
+    height: variables.$form-range-track-height;
     color: transparent; // Why?
-    cursor: $form-range-track-cursor;
-    background-color: $form-range-track-bg;
+    cursor: variables.$form-range-track-cursor;
+    background-color: variables.$form-range-track-bg;
     border-color: transparent;
-    @include border-radius($form-range-track-border-radius);
-    @include box-shadow($form-range-track-box-shadow);
+    @include border-radius.border-radius(variables.$form-range-track-border-radius);
+    @include box-shadow.box-shadow(variables.$form-range-track-box-shadow);
   }
 
   &::-moz-range-thumb {
-    width: $form-range-thumb-width;
-    height: $form-range-thumb-height;
-    @include gradient-bg($form-range-thumb-bg);
-    border: $form-range-thumb-border;
-    @include border-radius($form-range-thumb-border-radius);
-    @include box-shadow($form-range-thumb-box-shadow);
-    @include transition($form-range-thumb-transition);
+    width: variables.$form-range-thumb-width;
+    height: variables.$form-range-thumb-height;
+    @include gradients.gradient-bg(variables.$form-range-thumb-bg);
+    border: variables.$form-range-thumb-border;
+    @include border-radius.border-radius(variables.$form-range-thumb-border-radius);
+    @include box-shadow.box-shadow(variables.$form-range-thumb-box-shadow);
+    @include transition.transition(variables.$form-range-thumb-transition);
     appearance: none;
 
     &:active {
-      @include gradient-bg($form-range-thumb-active-bg);
+      @include gradients.gradient-bg(variables.$form-range-thumb-active-bg);
     }
   }
 
   &::-moz-range-track {
-    width: $form-range-track-width;
-    height: $form-range-track-height;
+    width: variables.$form-range-track-width;
+    height: variables.$form-range-track-height;
     color: transparent;
-    cursor: $form-range-track-cursor;
-    background-color: $form-range-track-bg;
+    cursor: variables.$form-range-track-cursor;
+    background-color: variables.$form-range-track-bg;
     border-color: transparent; // Firefox specific?
-    @include border-radius($form-range-track-border-radius);
-    @include box-shadow($form-range-track-box-shadow);
+    @include border-radius.border-radius(variables.$form-range-track-border-radius);
+    @include box-shadow.box-shadow(variables.$form-range-track-box-shadow);
   }
 
   &::-ms-thumb {
-    width: $form-range-thumb-width;
-    height: $form-range-thumb-height;
+    width: variables.$form-range-thumb-width;
+    height: variables.$form-range-thumb-height;
     margin-top: 0; // Edge specific
-    margin-right: $form-range-thumb-focus-box-shadow-width; // Workaround that overflowed box-shadow is hidden.
-    margin-left: $form-range-thumb-focus-box-shadow-width;  // Workaround that overflowed box-shadow is hidden.
-    @include gradient-bg($form-range-thumb-bg);
-    border: $form-range-thumb-border;
-    @include border-radius($form-range-thumb-border-radius);
-    @include box-shadow($form-range-thumb-box-shadow);
-    @include transition($form-range-thumb-transition);
+    margin-right: variables.$form-range-thumb-focus-box-shadow-width; // Workaround that overflowed box-shadow is hidden.
+    margin-left: variables.$form-range-thumb-focus-box-shadow-width;  // Workaround that overflowed box-shadow is hidden.
+    @include gradients.gradient-bg(variables.$form-range-thumb-bg);
+    border: variables.$form-range-thumb-border;
+    @include border-radius.border-radius(variables.$form-range-thumb-border-radius);
+    @include box-shadow.box-shadow(variables.$form-range-thumb-box-shadow);
+    @include transition.transition(variables.$form-range-thumb-transition);
     appearance: none;
 
     &:active {
-      @include gradient-bg($form-range-thumb-active-bg);
+      @include gradients.gradient-bg(variables.$form-range-thumb-active-bg);
     }
   }
 
   &::-ms-track {
-    width: $form-range-track-width;
-    height: $form-range-track-height;
+    width: variables.$form-range-track-width;
+    height: variables.$form-range-track-height;
     color: transparent;
-    cursor: $form-range-track-cursor;
+    cursor: variables.$form-range-track-cursor;
     background-color: transparent;
     border-color: transparent;
-    border-width: $form-range-thumb-height / 2;
-    @include box-shadow($form-range-track-box-shadow);
+    border-width: variables.$form-range-thumb-height / 2;
+    @include box-shadow.box-shadow(variables.$form-range-track-box-shadow);
   }
 
   &::-ms-fill-lower {
-    background-color: $form-range-track-bg;
-    @include border-radius($form-range-track-border-radius);
+    background-color: variables.$form-range-track-bg;
+    @include border-radius.border-radius(variables.$form-range-track-border-radius);
   }
 
   &::-ms-fill-upper {
     margin-right: 15px; // arbitrary?
-    background-color: $form-range-track-bg;
-    @include border-radius($form-range-track-border-radius);
+    background-color: variables.$form-range-track-bg;
+    @include border-radius.border-radius(variables.$form-range-track-border-radius);
   }
 
   &:disabled {
     pointer-events: none;
 
     &::-webkit-slider-thumb {
-      background-color: $form-range-thumb-disabled-bg;
+      background-color: variables.$form-range-thumb-disabled-bg;
     }
 
     &::-moz-range-thumb {
-      background-color: $form-range-thumb-disabled-bg;
+      background-color: variables.$form-range-thumb-disabled-bg;
     }
 
     &::-ms-thumb {
-      background-color: $form-range-thumb-disabled-bg;
+      background-color: variables.$form-range-thumb-disabled-bg;
     }
   }
 }

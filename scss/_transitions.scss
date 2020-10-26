@@ -1,5 +1,8 @@
+@use "mixins/transition";
+@use "variables";
+
 .fade {
-  @include transition($transition-fade);
+  @include transition.transition(variables.$transition-fade);
 
   &:not(.show) {
     opacity: 0;
@@ -15,5 +18,5 @@
 .collapsing {
   height: 0;
   overflow: hidden;
-  @include transition($transition-collapse);
+  @include transition.transition(variables.$transition-collapse);
 }

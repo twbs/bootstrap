@@ -1,3 +1,8 @@
+@use "sass:list";
+@use "sass:math";
+@use "sass:meta";
+@use "../variables";
+
 // stylelint-disable property-disallowed-list
 // Single side border-radius
 
@@ -5,17 +10,17 @@
 @function valid-radius($radius) {
   $return: ();
   @each $value in $radius {
-    @if type-of($value) == number {
-      $return: append($return, max($value, 0));
+    @if meta.type-of($value) == number {
+      $return: list.append($return, math.max($value, 0));
     } @else {
-      $return: append($return, $value);
+      $return: list.append($return, $value);
     }
   }
   @return $return;
 }
 
-@mixin border-radius($radius: $border-radius, $fallback-border-radius: false) {
-  @if $enable-rounded {
+@mixin border-radius($radius: variables.$border-radius, $fallback-border-radius: false) {
+  @if variables.$enable-rounded {
     border-radius: valid-radius($radius);
   }
   @else if $fallback-border-radius != false {
@@ -23,54 +28,54 @@
   }
 }
 
-@mixin border-top-radius($radius: $border-radius) {
-  @if $enable-rounded {
+@mixin border-top-radius($radius: variables.$border-radius) {
+  @if variables.$enable-rounded {
     border-top-left-radius: valid-radius($radius);
     border-top-right-radius: valid-radius($radius);
   }
 }
 
-@mixin border-right-radius($radius: $border-radius) {
-  @if $enable-rounded {
+@mixin border-right-radius($radius: variables.$border-radius) {
+  @if variables.$enable-rounded {
     border-top-right-radius: valid-radius($radius);
     border-bottom-right-radius: valid-radius($radius);
   }
 }
 
-@mixin border-bottom-radius($radius: $border-radius) {
-  @if $enable-rounded {
+@mixin border-bottom-radius($radius: variables.$border-radius) {
+  @if variables.$enable-rounded {
     border-bottom-right-radius: valid-radius($radius);
     border-bottom-left-radius: valid-radius($radius);
   }
 }
 
-@mixin border-left-radius($radius: $border-radius) {
-  @if $enable-rounded {
+@mixin border-left-radius($radius: variables.$border-radius) {
+  @if variables.$enable-rounded {
     border-top-left-radius: valid-radius($radius);
     border-bottom-left-radius: valid-radius($radius);
   }
 }
 
-@mixin border-top-left-radius($radius: $border-radius) {
-  @if $enable-rounded {
+@mixin border-top-left-radius($radius: variables.$border-radius) {
+  @if variables.$enable-rounded {
     border-top-left-radius: valid-radius($radius);
   }
 }
 
-@mixin border-top-right-radius($radius: $border-radius) {
-  @if $enable-rounded {
+@mixin border-top-right-radius($radius: variables.$border-radius) {
+  @if variables.$enable-rounded {
     border-top-right-radius: valid-radius($radius);
   }
 }
 
-@mixin border-bottom-right-radius($radius: $border-radius) {
-  @if $enable-rounded {
+@mixin border-bottom-right-radius($radius: variables.$border-radius) {
+  @if variables.$enable-rounded {
     border-bottom-right-radius: valid-radius($radius);
   }
 }
 
-@mixin border-bottom-left-radius($radius: $border-radius) {
-  @if $enable-rounded {
+@mixin border-bottom-left-radius($radius: variables.$border-radius) {
+  @if variables.$enable-rounded {
     border-bottom-left-radius: valid-radius($radius);
   }
 }

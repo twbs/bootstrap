@@ -1,16 +1,19 @@
+@use "sass:meta";
+@use "variables";
+
 :root {
   // Custom variable values only support SassScript inside `#{}`.
-  @each $color, $value in $colors {
-    --#{$variable-prefix}#{$color}: #{$value};
+  @each $color, $value in variables.$colors {
+    --#{variables.$variable-prefix}#{$color}: #{$value};
   }
 
-  @each $color, $value in $theme-colors {
-    --#{$variable-prefix}#{$color}: #{$value};
+  @each $color, $value in variables.$theme-colors {
+    --#{variables.$variable-prefix}#{$color}: #{$value};
   }
 
   // Use `inspect` for lists so that quoted items keep the quotes.
   // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
-  --#{$variable-prefix}font-sans-serif: #{inspect($font-family-sans-serif)};
-  --#{$variable-prefix}font-monospace: #{inspect($font-family-monospace)};
-  --#{$variable-prefix}gradient: #{$gradient};
+  --#{variables.$variable-prefix}font-sans-serif: #{meta.inspect(variables.$font-family-sans-serif)};
+  --#{variables.$variable-prefix}font-monospace: #{meta.inspect(variables.$font-family-monospace)};
+  --#{variables.$variable-prefix}gradient: #{variables.$gradient};
 }

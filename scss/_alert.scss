@@ -1,13 +1,18 @@
+@use "functions";
+@use "mixins/alert";
+@use "mixins/border-radius";
+@use "variables";
+
 //
 // Base styles
 //
 
 .alert {
   position: relative;
-  padding: $alert-padding-y $alert-padding-x;
-  margin-bottom: $alert-margin-bottom;
-  border: $alert-border-width solid transparent;
-  @include border-radius($alert-border-radius);
+  padding: variables.$alert-padding-y variables.$alert-padding-x;
+  margin-bottom: variables.$alert-margin-bottom;
+  border: variables.$alert-border-width solid transparent;
+  @include border-radius.border-radius(variables.$alert-border-radius);
 }
 
 // Headings for larger alerts
@@ -18,7 +23,7 @@
 
 // Provide class for links that match alerts
 .alert-link {
-  font-weight: $alert-link-font-weight;
+  font-weight: variables.$alert-link-font-weight;
 }
 
 
@@ -27,15 +32,15 @@
 // Expand the right padding and account for the close button's positioning.
 
 .alert-dismissible {
-  padding-right: $alert-dismissible-padding-r;
+  padding-right: variables.$alert-dismissible-padding-r;
 
   // Adjust close link position
   .btn-close {
     position: absolute;
     top: 0;
     right: 0;
-    z-index: $stretched-link-z-index + 1;
-    padding: $alert-padding-y * 1.25 $alert-padding-x;
+    z-index: variables.$stretched-link-z-index + 1;
+    padding: variables.$alert-padding-y * 1.25 variables.$alert-padding-x;
   }
 }
 
@@ -43,9 +48,9 @@
 // scss-docs-start alert-modifiers
 // Generate contextual modifier classes for colorizing the alert.
 
-@each $color, $value in $theme-colors {
+@each $color, $value in variables.$theme-colors {
   .alert-#{$color} {
-    @include alert-variant(scale-color($value, $alert-bg-scale), scale-color($value, $alert-border-scale), scale-color($value, $alert-color-scale));
+    @include alert.alert-variant(functions.scale-color($value, variables.$alert-bg-scale), functions.scale-color($value, variables.$alert-border-scale), functions.scale-color($value, variables.$alert-color-scale));
   }
 }
 // scss-docs-end alert-modifiers

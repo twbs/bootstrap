@@ -1,11 +1,14 @@
-@each $color, $value in $theme-colors {
+@use "../functions";
+@use "../variables";
+
+@each $color, $value in variables.$theme-colors {
   .link-#{$color} {
     color: $value;
 
-    @if $link-shade-percentage != 0 {
+    @if variables.$link-shade-percentage != 0 {
       &:hover,
       &:focus {
-        color: if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage));
+        color: if(functions.color-contrast($value) == variables.$color-contrast-light, functions.shade-color($value, variables.$link-shade-percentage), functions.tint-color($value, variables.$link-shade-percentage));
       }
     }
   }

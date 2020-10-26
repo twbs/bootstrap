@@ -1,18 +1,25 @@
+@use "mixins/border-radius";
+@use "mixins/box-shadow";
+@use "mixins/gradients";
+@use "mixins/transition";
+@use "variables";
+@use "vendor/rfs";
+
 // Disable animation if transitions are disabled
-@if $enable-transitions {
+@if variables.$enable-transitions {
   @keyframes progress-bar-stripes {
-    0% { background-position-x: $progress-height; }
+    0% { background-position-x: variables.$progress-height; }
   }
 }
 
 .progress {
   display: flex;
-  height: $progress-height;
+  height: variables.$progress-height;
   overflow: hidden; // force rounded corners by cropping it
-  @include font-size($progress-font-size);
-  background-color: $progress-bg;
-  @include border-radius($progress-border-radius);
-  @include box-shadow($progress-box-shadow);
+  @include rfs.font-size(variables.$progress-font-size);
+  background-color: variables.$progress-bg;
+  @include border-radius.border-radius(variables.$progress-border-radius);
+  @include box-shadow.box-shadow(variables.$progress-box-shadow);
 }
 
 .progress-bar {
@@ -20,23 +27,23 @@
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  color: $progress-bar-color;
+  color: variables.$progress-bar-color;
   text-align: center;
   white-space: nowrap;
-  background-color: $progress-bar-bg;
-  @include transition($progress-bar-transition);
+  background-color: variables.$progress-bar-bg;
+  @include transition.transition(variables.$progress-bar-transition);
 }
 
 .progress-bar-striped {
-  @include gradient-striped();
-  background-size: $progress-height $progress-height;
+  @include gradients.gradient-striped();
+  background-size: variables.$progress-height variables.$progress-height;
 }
 
-@if $enable-transitions {
+@if variables.$enable-transitions {
   .progress-bar-animated {
-    animation: progress-bar-stripes $progress-bar-animation-timing;
+    animation: progress-bar-stripes variables.$progress-bar-animation-timing;
 
-    @if $enable-reduced-motion {
+    @if variables.$enable-reduced-motion {
       @media (prefers-reduced-motion: reduce) {
         animation: none;
       }

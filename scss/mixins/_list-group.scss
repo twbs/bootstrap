@@ -1,3 +1,6 @@
+@use "../functions";
+@use "../variables";
+
 // List Groups
 
 @mixin list-group-item-variant($state, $background, $color) {
@@ -9,11 +12,11 @@
       &:hover,
       &:focus {
         color: $color;
-        background-color: shade-color($background, 10%);
+        background-color: functions.shade-color($background, 10%);
       }
 
       &.active {
-        color: $white;
+        color: variables.$white;
         background-color: $color;
         border-color: $color;
       }

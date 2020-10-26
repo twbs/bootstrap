@@ -1,3 +1,9 @@
+@use "../mixins/border-radius";
+@use "../mixins/box-shadow";
+@use "../mixins/transition";
+@use "../variables";
+@use "../vendor/rfs";
+
 //
 // Textual form controls
 //
@@ -5,41 +11,41 @@
 .form-control {
   display: block;
   width: 100%;
-  min-height: $input-height;
-  padding: $input-padding-y $input-padding-x;
-  font-family: $input-font-family;
-  @include font-size($input-font-size);
-  font-weight: $input-font-weight;
-  line-height: $input-line-height;
-  color: $input-color;
-  background-color: $input-bg;
+  min-height: variables.$input-height;
+  padding: variables.$input-padding-y variables.$input-padding-x;
+  font-family: variables.$input-font-family;
+  @include rfs.font-size(variables.$input-font-size);
+  font-weight: variables.$input-font-weight;
+  line-height: variables.$input-line-height;
+  color: variables.$input-color;
+  background-color: variables.$input-bg;
   background-clip: padding-box;
-  border: $input-border-width solid $input-border-color;
+  border: variables.$input-border-width solid variables.$input-border-color;
   appearance: none; // Fix appearance for date inputs in Safari
 
   // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
-  @include border-radius($input-border-radius, 0);
+  @include border-radius.border-radius(variables.$input-border-radius, 0);
 
-  @include box-shadow($input-box-shadow);
-  @include transition($input-transition);
+  @include box-shadow.box-shadow(variables.$input-box-shadow);
+  @include transition.transition(variables.$input-transition);
 
   // Customize the `:focus` state to imitate native WebKit styles.
   &:focus {
-    color: $input-focus-color;
-    background-color: $input-focus-bg;
-    border-color: $input-focus-border-color;
+    color: variables.$input-focus-color;
+    background-color: variables.$input-focus-bg;
+    border-color: variables.$input-focus-border-color;
     outline: 0;
-    @if $enable-shadows {
-      @include box-shadow($input-box-shadow, $input-focus-box-shadow);
+    @if variables.$enable-shadows {
+      @include box-shadow.box-shadow(variables.$input-box-shadow, variables.$input-focus-box-shadow);
     } @else {
       // Avoid using mixin so we can pass custom focus shadow properly
-      box-shadow: $input-focus-box-shadow;
+      box-shadow: variables.$input-focus-box-shadow;
     }
   }
 
   // Placeholder
   &::placeholder {
-    color: $input-placeholder-color;
+    color: variables.$input-placeholder-color;
     // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
     opacity: 1;
   }
@@ -51,8 +57,8 @@
   // don't honor that edge case; we style them as disabled anyway.
   &:disabled,
   &[readonly] {
-    background-color: $input-disabled-bg;
-    border-color: $input-disabled-border-color;
+    background-color: variables.$input-disabled-bg;
+    border-color: variables.$input-disabled-border-color;
     // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
     opacity: 1;
   }
@@ -66,13 +72,13 @@
 .form-control-plaintext {
   display: block;
   width: 100%;
-  padding: $input-padding-y 0;
+  padding: variables.$input-padding-y 0;
   margin-bottom: 0; // match inputs if this class comes on inputs with default margins
-  line-height: $input-line-height;
-  color: $input-plaintext-color;
+  line-height: variables.$input-line-height;
+  color: variables.$input-plaintext-color;
   background-color: transparent;
   border: solid transparent;
-  border-width: $input-border-width 0;
+  border-width: variables.$input-border-width 0;
 
   &.form-control-sm,
   &.form-control-lg {
@@ -89,28 +95,28 @@
 // Repeated in `_input_group.scss` to avoid Sass extend issues.
 
 .form-control-sm {
-  min-height: $input-height-sm;
-  padding: $input-padding-y-sm $input-padding-x-sm;
-  @include font-size($input-font-size-sm);
-  @include border-radius($input-border-radius-sm);
+  min-height: variables.$input-height-sm;
+  padding: variables.$input-padding-y-sm variables.$input-padding-x-sm;
+  @include rfs.font-size(variables.$input-font-size-sm);
+  @include border-radius.border-radius(variables.$input-border-radius-sm);
 }
 
 .form-control-lg {
-  min-height: $input-height-lg;
-  padding: $input-padding-y-lg $input-padding-x-lg;
-  @include font-size($input-font-size-lg);
-  @include border-radius($input-border-radius-lg);
+  min-height: variables.$input-height-lg;
+  padding: variables.$input-padding-y-lg variables.$input-padding-x-lg;
+  @include rfs.font-size(variables.$input-font-size-lg);
+  @include border-radius.border-radius(variables.$input-border-radius-lg);
 }
 
 .form-control-color {
   max-width: 3rem;
-  padding: $input-padding-y;
+  padding: variables.$input-padding-y;
 }
 
 .form-control-color::-moz-color-swatch {
-  @include border-radius($input-border-radius);
+  @include border-radius.border-radius(variables.$input-border-radius);
 }
 
 .form-control-color::-webkit-color-swatch {
-  @include border-radius($input-border-radius);
+  @include border-radius.border-radius(variables.$input-border-radius);
 }
