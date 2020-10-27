@@ -242,9 +242,13 @@ Add `.table-borderless` for a table without borders.
 
 {{< table class="table table-dark table-borderless" >}}
 
-## Small tables
+## Sizes
 
-Add `.table-sm` to make any `.table` more compact by cutting all cell `padding` in half.
+Add `.table-lg` to make any `.table` larger or add `.table-sm` to make any `.table` more compact by cutting all cell `padding` in half.
+
+{{< table class="table table-lg" >}}
+
+{{< table class="table table-dark table-lg" >}}
 
 {{< table class="table table-sm" >}}
 
