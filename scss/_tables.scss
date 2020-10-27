@@ -59,15 +59,15 @@
 //
 
 .table-lg {
+  // stylelint-disable-next-line selector-max-universal
   > :not(caption) > * > * {
-    // stylelint-disable-next-line selector-max-universal
     padding: $table-cell-padding-y-lg $table-cell-padding-x-lg;
   }
 }
 
 .table-sm {
+  // stylelint-disable-next-line selector-max-universal
   > :not(caption) > * > * {
-    // stylelint-disable-next-line selector-max-universal
     padding: $table-cell-padding-y-sm $table-cell-padding-x-sm;
   }
 }
