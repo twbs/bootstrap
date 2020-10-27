@@ -7,9 +7,15 @@ name: "CodeQL"
 
 on:
   push:
-    branches-ignore:
-      - "dependabot/**"
+    branches:
+      - main
+      - v4-dev
+      - "!dependabot/**"
   pull_request:
+    # The branches below must be a subset of the branches above
+    branches:
+      - main
+      - v4-dev
   schedule:
     - cron: "0 2 * * 5"
 
