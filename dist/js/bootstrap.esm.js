@@ -971,6 +971,17 @@ var Manipulator = {
       top: element.offsetTop,
       left: element.offsetLeft
     };
+  },
+  toggleClass: function toggleClass(element, className) {
+    if (!element) {
+      return;
+    }
+
+    if (element.classList.contains(className)) {
+      element.classList.remove(className);
+    } else {
+      element.classList.add(className);
+    }
   }
 };
 
@@ -2215,10 +2226,8 @@ var Dropdown = /*#__PURE__*/function () {
 
     this._element.setAttribute('aria-expanded', true);
 
-    this._menu.classList.toggle(CLASS_NAME_SHOW$1);
-
-    this._element.classList.toggle(CLASS_NAME_SHOW$1);
-
+    Manipulator.toggleClass(this._menu, CLASS_NAME_SHOW$1);
+    Manipulator.toggleClass(this._element, CLASS_NAME_SHOW$1);
     EventHandler.trigger(parent, EVENT_SHOWN$1, relatedTarget);
   };
 
@@ -2241,10 +2250,8 @@ var Dropdown = /*#__PURE__*/function () {
       this._popper.destroy();
     }
 
-    this._menu.classList.toggle(CLASS_NAME_SHOW$1);
-
-    this._element.classList.toggle(CLASS_NAME_SHOW$1);
-
+    Manipulator.toggleClass(this._menu, CLASS_NAME_SHOW$1);
+    Manipulator.toggleClass(this._element, CLASS_NAME_SHOW$1);
     EventHandler.trigger(parent, EVENT_HIDDEN$1, relatedTarget);
   };
 

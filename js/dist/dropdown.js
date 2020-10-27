@@ -258,10 +258,8 @@
 
       this._element.setAttribute('aria-expanded', true);
 
-      this._menu.classList.toggle(CLASS_NAME_SHOW);
-
-      this._element.classList.toggle(CLASS_NAME_SHOW);
-
+      Manipulator__default['default'].toggleClass(this._menu, CLASS_NAME_SHOW);
+      Manipulator__default['default'].toggleClass(this._element, CLASS_NAME_SHOW);
       EventHandler__default['default'].trigger(parent, EVENT_SHOWN, relatedTarget);
     };
 
@@ -284,10 +282,8 @@
         this._popper.destroy();
       }
 
-      this._menu.classList.toggle(CLASS_NAME_SHOW);
-
-      this._element.classList.toggle(CLASS_NAME_SHOW);
-
+      Manipulator__default['default'].toggleClass(this._menu, CLASS_NAME_SHOW);
+      Manipulator__default['default'].toggleClass(this._element, CLASS_NAME_SHOW);
       EventHandler__default['default'].trigger(parent, EVENT_HIDDEN, relatedTarget);
     };
 

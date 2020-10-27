@@ -8,7 +8,7 @@ toc: true
 
 ## Relative to the parent
 
-Width and height utilities are generated from the utility API in `_utilities.scss`. Includes support for `25%`, `50%`, `75%`, `100%`, and `auto` by default. Width, min-width and max-width also support the `fit-content`, `min-content` and `max-content` properties. Modify those values as you need to generate different utilities here.
+Width and height utilities are generated from the utility API in `_utilities.scss`. Includes support for `25%`, `50%`, `75%`, `100%`, and `auto` by default. Modify those values as you need to generate different utilities here.
 
 {{< example >}}
 <div class="w-25 p-3" style="background-color: #eee;">Width 25%</div>
@@ -16,9 +16,6 @@ Width and height utilities are generated from the utility API in `_utilities.scs
 <div class="w-75 p-3" style="background-color: #eee;">Width 75%</div>
 <div class="w-100 p-3" style="background-color: #eee;">Width 100%</div>
 <div class="w-auto p-3" style="background-color: #eee;">Width auto</div>
-<div class="w-fit-content p-3" style="background-color: #eee;">Width fit-content</div>
-<div class="w-min-content p-3" style="background-color: #eee;">Width min-content</div>
-<div class="w-max-content p-3" style="background-color: #eee;">Width max-content</div>
 {{< /example >}}
 
 {{< example >}}
