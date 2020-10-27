@@ -387,6 +387,17 @@ $utilities: map-merge(
       values: $spacers
     ),
     // Text
+    "font-size": (
+      rfs: true,
+      property: font-size,
+      class: fs,
+      values: $font-sizes
+    ),
+    "font-style": (
+      property: font-style,
+      class: fst,
+      values: italic normal
+    ),
     "font-weight": (
       property: font-weight,
       values: (
@@ -461,11 +472,6 @@ $utilities: map-merge(
     "text-decoration": (
       property: text-decoration,
       values: none underline line-through
-    ),
-    "font-style": (
-      property: font-style,
-      class: font,
-      values: italic normal
     ),
     "word-wrap": (
       property: word-wrap word-break,
