@@ -55,11 +55,16 @@
 
 
 //
-// Condensed table w/ half padding
+// Table Sizes
 //
 
+.table-lg {
+  > :not(caption) > * > * {
+    padding: $table-cell-padding-y-lg $table-cell-padding-x-lg;
+  }
+}
+
 .table-sm {
-  // stylelint-disable-next-line selector-max-universal
   > :not(caption) > * > * {
     padding: $table-cell-padding-y-sm $table-cell-padding-x-sm;
   }
