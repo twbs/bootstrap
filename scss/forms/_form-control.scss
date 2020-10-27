@@ -5,7 +5,6 @@
 .form-control {
   display: block;
   width: 100%;
-  min-height: $input-height;
   padding: $input-padding-y $input-padding-x;
   font-family: $input-font-family;
   @include font-size($input-font-size);
@@ -43,6 +42,13 @@
       // Avoid using mixin so we can pass custom focus shadow properly
       box-shadow: $input-focus-box-shadow;
     }
+  }
+
+  // Add some height to date inputs on IOS
+  // https://github.com/twbs/bootstrap/issues/23307
+  &::-webkit-date-and-time-value {
+    // Multiply line-height by 1em if it has no unit
+    height: if(unit($input-line-height) == "", $input-line-height * 1em, $input-line-height);
   }
 
   // Placeholder
@@ -179,6 +185,24 @@
     margin-inline-end: $input-padding-x-lg;
   }
 }
+
+// Make sure textareas don't shrink too much when resized
+// https://github.com/twbs/bootstrap/pull/29124
+// stylelint-disable selector-no-qualifying-type
+textarea {
+  &.form-control {
+    min-height: $input-height;
+  }
+
+  &.form-control-sm {
+    min-height: $input-height-sm;
+  }
+
+  &.form-control-lg {
+    min-height: $input-height-lg;
+  }
+}
+// stylelint-enable selector-no-qualifying-type
 
 .form-control-color {
   max-width: 3rem;
