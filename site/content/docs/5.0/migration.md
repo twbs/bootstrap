@@ -27,7 +27,6 @@ toc: true
 
 ### Utilities
 
->>>>>>> Update migration guide for more details, splitting alpha 2 stuff back to the appropriate section in Migration guide
 - **Text utilities:**
   - Added `.fs-*` utilities for `font-size` utilities (with RFS enabled). These use the same scale as HTML's default headings (1-6, large to small), and can be modified via Sass map.
   - Renamed `.font-weight-*` utilities as `.fw-*` for brevity and consistency.
