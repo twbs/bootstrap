@@ -10,7 +10,7 @@ toc: true
 
 Scrollspy has a few requirements to function properly:
 
-- It must be used on a Bootstrap [nav component]({{< docsref "/components/navs" >}}) or [list group]({{< docsref "/components/list-group" >}}).
+- It must be used on a Bootstrap [nav component]({{< docsref "/components/navs-tabs" >}}) or [list group]({{< docsref "/components/list-group" >}}).
 - Scrollspy requires `position: relative;` on the element you're spying on, usually the `<body>`.
 - Anchors (`<a>`) are required and must point to an element with that `id`.
 
