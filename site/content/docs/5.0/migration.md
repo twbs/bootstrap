@@ -21,14 +21,10 @@ toc: true
 
 - Introduce `$enable-smooth-scroll`, which applies `scroll-behavior: smooth` globally—except for users asking for reduced motion through `prefers-reduced-motion` media query. [See #31877](https://github.com/twbs/bootstrap/pull/31877)
 
-<<<<<<< HEAD
 ### Forms
 
 - The longstanding [Missing border radius on input group with validation feedback bug](https://github.com/twbs/bootstrap/issues/25110) is finally fixed by adding an additional `.has-validation` class to input groups with validation.
 
-### Utilities
-
-=======
 ### Utilities
 
 >>>>>>> Update migration guide for more details, splitting alpha 2 stuff back to the appropriate section in Migration guide
