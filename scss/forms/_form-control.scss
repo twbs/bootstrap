@@ -72,7 +72,6 @@
     margin: (-$input-padding-y) (-$input-padding-x);
     margin-inline-end: $input-padding-x;
     -moz-margin-end: subtract($input-padding-x, 5px); // stylelint-disable-line property-no-vendor-prefix
-    line-height: inherit;
     color: $form-file-button-color;
     @include gradient-bg($form-file-button-bg);
     pointer-events: none;
@@ -93,7 +92,6 @@
     padding: $input-padding-y $input-padding-x;
     margin: (-$input-padding-y) (-$input-padding-x);
     margin-inline-end: $input-padding-x;
-    line-height: inherit;
     color: $form-file-button-color;
     @include gradient-bg($form-file-button-bg);
     pointer-events: none;
