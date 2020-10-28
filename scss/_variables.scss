@@ -823,11 +823,11 @@ $form-file-padding-x-lg:          $input-padding-x-lg !default;
 $form-file-font-size-lg:          $input-font-size-lg !default;
 $form-file-height-lg:             $input-height-lg !default;
 
-$form-floating-height:            add(3.75rem, $input-height-border) !default;
+$form-floating-height:            add(3.5rem, $input-height-border) !default;
 $form-floating-padding-x:         $input-padding-x !default;
 $form-floating-padding-y:         1rem !default;
-$form-floating-input-padding-t:   1.75rem !default;
-$form-floating-input-padding-b:   .5rem !default;
+$form-floating-input-padding-t:   1.625rem !default;
+$form-floating-input-padding-b:   .625rem !default;
 $form-floating-label-opacity:     .65 !default;
 $form-floating-label-transform:   scale(.85) translateY(-.5rem) translateX(.15rem) !default;
 $form-floating-transition:        opacity .1s ease-in-out, transform .1s ease-in-out !default;
