@@ -1,5 +1,11 @@
 name: CSS
-on: [push, pull_request]
+
+on:
+  push:
+    branches-ignore:
+      - "dependabot/**"
+  pull_request:
+
 env:
   CI: true
   NODE: 12.x
@@ -12,7 +18,7 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v2
 
-      - name: Set Node.js version
+      - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
           node-version: "${{ env.NODE }}"
