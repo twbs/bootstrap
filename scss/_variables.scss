@@ -648,7 +648,7 @@ $input-bg:                              $white !default;
 $input-disabled-bg:                     $gray-200 !default;
 $input-disabled-border-color:           null !default;
 
-$input-color:                           $gray-700 !default;
+$input-color:                           $body-color !default;
 $input-border-color:                    $gray-400 !default;
 $input-border-width:                    $input-btn-border-width !default;
 $input-box-shadow:                      $box-shadow-inset !default;
@@ -732,7 +732,6 @@ $input-group-addon-font-weight:         $input-font-weight !default;
 $input-group-addon-color:               $input-color !default;
 $input-group-addon-bg:                  $gray-200 !default;
 $input-group-addon-border-color:        $input-border-color !default;
-
 
 $form-select-padding-y:             $input-padding-y !default;
 $form-select-padding-x:             $input-padding-x !default;
@@ -824,6 +823,14 @@ $form-file-padding-x-lg:          $input-padding-x-lg !default;
 $form-file-font-size-lg:          $input-font-size-lg !default;
 $form-file-height-lg:             $input-height-lg !default;
 
+$form-floating-height:            add(3.5rem, $input-height-border) !default;
+$form-floating-padding-x:         $input-padding-x !default;
+$form-floating-padding-y:         1rem !default;
+$form-floating-input-padding-t:   1.625rem !default;
+$form-floating-input-padding-b:   .625rem !default;
+$form-floating-label-opacity:     .65 !default;
+$form-floating-label-transform:   scale(.85) translateY(-.5rem) translateX(.15rem) !default;
+$form-floating-transition:        opacity .1s ease-in-out, transform .1s ease-in-out !default;
 
 // Form validation
 
