@@ -34,13 +34,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 1.5rem;
     height: 1.5rem;
+    padding-right: .25rem;
+    padding-left: .25rem;
     @include font-size(.75rem);
     color: $gray-600;
-    content: "/";
+    content: "Ctrl + /";
     border: $border-width solid $border-color;
-    @include border-radius();
+    @include border-radius(.125rem);
   }
 
   @include media-breakpoint-down(md) {
@@ -48,7 +49,7 @@
   }
 
   .form-control {
-    padding-right: 2.25rem;
+    padding-right: 3.75rem;
 
     &:focus {
       border-color: $bd-purple-bright;
