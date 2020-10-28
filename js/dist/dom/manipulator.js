@@ -77,17 +77,6 @@
         top: element.offsetTop,
         left: element.offsetLeft
       };
-    },
-    toggleClass: function toggleClass(element, className) {
-      if (!element) {
-        return;
-      }
-
-      if (element.classList.contains(className)) {
-        element.classList.remove(className);
-      } else {
-        element.classList.add(className);
-      }
     }
   };
 
