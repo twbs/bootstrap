@@ -69,7 +69,7 @@ Add classes to an element to easily round its corners.
 
 ### Sizes
 
-Use the scaling classes for larger or smaller rounded corners. Sizes range from `0` to `3`.
+Use the scaling classes for larger or smaller rounded corners. Sizes range from `0` to `3`, and can be configured by modifying the utilities API.
 
 {{< example >}}
 {{< placeholder width="75" height="75" class="rounded-0" title="Example non-rounded image" >}}
