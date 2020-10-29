@@ -1,4 +1,4 @@
-name: CSS (Dart Sass)
+name: CSS (node-sass)
 on: [push, pull_request]
 env:
   CI: true
@@ -17,8 +17,8 @@ jobs:
         with:
           node-version: "${{ env.NODE }}"
 
-      - name: Build CSS with Dart Sass
+      - name: Build CSS with node-sass
         run: |
-          npx --package sass@latest sass --version
-          npx --package sass@latest sass --style expanded --source-map --embed-sources --no-error-css scss/:dist-sass/css/
+          npx --package node-sass@latest node-sass --version
+          npx --package node-sass@latest node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/ -o dist-sass/css/
           ls -Al dist-sass/css
