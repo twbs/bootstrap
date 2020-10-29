@@ -737,7 +737,6 @@ $form-select-padding-y:             $input-padding-y !default;
 $form-select-padding-x:             $input-padding-x !default;
 $form-select-font-family:           $input-font-family !default;
 $form-select-font-size:             $input-font-size !default;
-$form-select-height:                $input-height !default;
 $form-select-indicator-padding:     1rem !default; // Extra padding to account for the presence of the background-image based indicator
 $form-select-font-weight:           $input-font-weight !default;
 $form-select-line-height:           $input-line-height !default;
@@ -767,12 +766,10 @@ $form-select-focus-box-shadow:    0 0 0 $form-select-focus-width $input-btn-focu
 $form-select-padding-y-sm:        $input-padding-y-sm !default;
 $form-select-padding-x-sm:        $input-padding-x-sm !default;
 $form-select-font-size-sm:        $input-font-size-sm !default;
-$form-select-height-sm:           $input-height-sm !default;
 
 $form-select-padding-y-lg:        $input-padding-y-lg !default;
 $form-select-padding-x-lg:        $input-padding-x-lg !default;
 $form-select-font-size-lg:        $input-font-size-lg !default;
-$form-select-height-lg:           $input-height-lg !default;
 
 $form-range-track-width:          100% !default;
 $form-range-track-height:         .5rem !default;
