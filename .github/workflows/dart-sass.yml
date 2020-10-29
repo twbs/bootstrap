@@ -8,7 +8,7 @@ on:
 
 env:
   CI: true
-  NODE: 12.x
+  NODE: 14.x
 
 jobs:
   css:
