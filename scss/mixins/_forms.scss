@@ -64,6 +64,13 @@
     color: color-yiq($color);
     background-color: rgba($color, $form-feedback-tooltip-opacity);
     @include border-radius($form-feedback-tooltip-border-radius);
+
+    // See https://github.com/twbs/bootstrap/pull/31557
+    // Align tooltip to form elements
+    .form-row > .col > &,
+    .form-row > [class*="col-"] > & {
+      left: $form-grid-gutter-width / 2;
+    }
   }
 
   @include form-validation-state-selector($state) {
