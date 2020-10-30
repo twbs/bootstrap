@@ -563,6 +563,15 @@ legend {
   -webkit-appearance: textfield; // 2
 }
 
+// Correct element displays on iOS.
+// See https://stackoverflow.com/a/26573346
+[type="date"],
+[type="time"],
+[type="datetime-local"],
+[type="month"] {
+  -webkit-appearance: textfield;
+}
+
 // Remove the inner padding in Chrome and Safari on macOS.
 
 ::-webkit-search-decoration {
@@ -589,15 +598,6 @@ legend {
 ::-webkit-file-upload-button {
   font: inherit; // 1
   -webkit-appearance: button; // 2
-}
-
-// Correct element displays on iOS.
-// See https://stackoverflow.com/questions/26573346/ios-safari-messes-up-input-type-date.
-[type="date"],
-[type="time"],
-[type="datetime-local"],
-[type="month"] {
-  -webkit-appearance: textfield;
 }
 
 // Correct element displays
