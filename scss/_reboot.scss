@@ -591,6 +591,15 @@ legend {
   -webkit-appearance: button; // 2
 }
 
+// Correct element displays on iOS.
+// See https://stackoverflow.com/questions/26573346/ios-safari-messes-up-input-type-date.
+[type="date"],
+[type="time"],
+[type="datetime-local"],
+[type="month"] {
+  -webkit-appearance: textfield;
+}
+
 // Correct element displays
 
 output {
