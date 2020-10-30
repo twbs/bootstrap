@@ -413,7 +413,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
- * add .collapse to jQuery only if jQuery is present
+ * add .Collapse to jQuery only if jQuery is present
  */
 
 onDOMContentLoaded(() => {

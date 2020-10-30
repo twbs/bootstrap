@@ -616,7 +616,7 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
- * add .carousel to jQuery only if jQuery is present
+ * add .Carousel to jQuery only if jQuery is present
  */
 
 onDOMContentLoaded(() => {

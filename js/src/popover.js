@@ -171,6 +171,7 @@ class Popover extends Tooltip {
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
+ * add .Popover to jQuery only if jQuery is present
  */
 
 onDOMContentLoaded(() => {

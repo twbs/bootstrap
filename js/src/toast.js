@@ -218,7 +218,7 @@ class Toast {
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
- *  add .toast to jQuery only if jQuery is present
+ * add .Toast to jQuery only if jQuery is present
  */
 
 onDOMContentLoaded(() => {

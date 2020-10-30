@@ -517,7 +517,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stop
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
- * add .dropdown to jQuery only if jQuery is present
+ * add .Dropdown to jQuery only if jQuery is present
  */
 
 onDOMContentLoaded(() => {
