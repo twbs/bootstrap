@@ -71,7 +71,7 @@ Add classes to an element to easily round its corners.
 
 Use the scaling classes for larger or smaller rounded corners. Sizes range from `0` to `3`.
 
-{{< example >}}
+{{< example class="bd-example-rounded-utils" >}}
 {{< placeholder width="75" height="75" class="rounded-0" title="Example non-rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-1" title="Example small rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-2" title="Example default rounded image" >}}
