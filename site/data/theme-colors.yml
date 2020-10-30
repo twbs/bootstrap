@@ -11,6 +11,7 @@
   contrast_color: dark
 - name: info
   hex: "#17a2b8"
+  contrast_color: dark
 - name: light
   hex: "#f8f9fa"
   contrast_color: dark

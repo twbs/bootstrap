@@ -56,7 +56,7 @@ Do you need a gradient in your custom CSS? Just add `background-image: var(--bs-
 {{< markdown >}}
 {{< colors.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
-<div class="p-3 mb-2 bg-{{ .name }} bg-gradient {{ if or (eq .name "light") (eq .name "warning") (eq .name "info") }}text-dark{{ else }}text-white{{ end }}">.bg-{{ .name }}.bg-gradient</div>
+<div class="p-3 mb-2 bg-{{ .name }} bg-gradient{{ with .contrast_color }} text-{{ . }}{{ else }} text-white{{ end }}">.bg-{{ .name }}.bg-gradient</div>
 {{- end -}}
 {{< /colors.inline >}}
 {{< /markdown >}}
