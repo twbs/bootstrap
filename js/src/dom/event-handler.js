@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { getjQuery, onDOMContentLoaded } from '../util/index'
+import { getjQuery } from '../util/index'
 import { defaultPreventedPreservedOnDispatch } from './polyfill'
 
 /**
@@ -271,6 +271,7 @@ const EventHandler = {
       return null
     }
 
+    const $ = getjQuery()
     const typeEvent = event.replace(stripNameRegex, '')
     const inNamespace = event !== typeEvent
     const isNative = nativeEvents.indexOf(typeEvent) > -1
@@ -281,18 +282,13 @@ const EventHandler = {
     let defaultPrevented = false
     let evt = null
 
-    if (inNamespace) {
-      onDOMContentLoaded(() => {
-        const $ = getjQuery()
-        if ($) {
-          jQueryEvent = $.Event(event, args)
+    if (inNamespace && $) {
+      jQueryEvent = $.Event(event, args)
 
-          $(element).trigger(jQueryEvent)
-          bubbles = !jQueryEvent.isPropagationStopped()
-          nativeDispatch = !jQueryEvent.isImmediatePropagationStopped()
-          defaultPrevented = jQueryEvent.isDefaultPrevented()
-        }
-      })
+      $(element).trigger(jQueryEvent)
+      bubbles = !jQueryEvent.isPropagationStopped()
+      nativeDispatch = !jQueryEvent.isImmediatePropagationStopped()
+      defaultPrevented = jQueryEvent.isDefaultPrevented()
     }
 
     if (isNative) {
