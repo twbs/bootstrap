@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { getjQuery } from '../util/index'
+import { getjQuery, onDOMContentLoaded } from '../util/index'
 import { defaultPreventedPreservedOnDispatch } from './polyfill'
 
 /**
@@ -14,7 +14,6 @@ import { defaultPreventedPreservedOnDispatch } from './polyfill'
  * ------------------------------------------------------------------------
  */
 
-const $ = getjQuery()
 const namespaceRegex = /[^.]*(?=\..*)\.|.*/
 const stripNameRegex = /\..*/
 const stripUidRegex = /::\d+$/
@@ -282,13 +281,18 @@ const EventHandler = {
     let defaultPrevented = false
     let evt = null
 
-    if (inNamespace && $) {
-      jQueryEvent = $.Event(event, args)
+    if (inNamespace) {
+      onDOMContentLoaded(() => {
+        const $ = getjQuery()
+        if ($) {
+          jQueryEvent = $.Event(event, args)
 
-      $(element).trigger(jQueryEvent)
-      bubbles = !jQueryEvent.isPropagationStopped()
-      nativeDispatch = !jQueryEvent.isImmediatePropagationStopped()
-      defaultPrevented = jQueryEvent.isDefaultPrevented()
+          $(element).trigger(jQueryEvent)
+          bubbles = !jQueryEvent.isPropagationStopped()
+          nativeDispatch = !jQueryEvent.isImmediatePropagationStopped()
+          defaultPrevented = jQueryEvent.isDefaultPrevented()
+        }
+      })
     }
 
     if (isNative) {
