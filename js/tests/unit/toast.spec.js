@@ -381,7 +381,7 @@ describe('Toast', () => {
   })
 
   describe('getInstance', () => {
-    it('should return collapse instance', () => {
+    it('should return a toast instance', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
@@ -390,7 +390,7 @@ describe('Toast', () => {
       expect(Toast.getInstance(div)).toEqual(toast)
     })
 
-    it('should return null when there is no collapse instance', () => {
+    it('should return null when there is no toast instance', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
