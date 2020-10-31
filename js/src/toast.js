@@ -101,6 +101,10 @@ class Toast extends BaseComponent {
   }
 
   show() {
+    if (this._element.classList.contains(CLASS_NAME_SHOW)) {
+      return
+    }
+
     const showEvent = EventHandler.trigger(this._element, EVENT_SHOW)
 
     if (showEvent.defaultPrevented) {

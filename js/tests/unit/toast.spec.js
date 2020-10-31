@@ -116,6 +116,22 @@ describe('Toast', () => {
       toast.show()
     })
 
+    it('should do nothing if a toast is already shown', () => {
+      fixtureEl.innerHTML = [
+        '<div class="toast show">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toast = new Toast(toastEl)
+
+      toast.show()
+      expect().nothing()
+    })
+
     it('should not add fade class', done => {
       fixtureEl.innerHTML = [
         '<div class="toast" data-bs-animation="false">',
@@ -163,33 +179,6 @@ describe('Toast', () => {
       toastEl.addEventListener('shown.bs.toast', () => {
         throw new Error('shown event should not be triggered if show is prevented')
       })
-
-      toast.show()
-    })
-
-    it('should clear timeout if toast is shown again before it is hidden', done => {
-      fixtureEl.innerHTML = [
-        '<div class="toast">',
-        '  <div class="toast-body">',
-        '    a simple toast',
-        '  </div>',
-        '</div>'
-      ].join('')
-
-      const toastEl = fixtureEl.querySelector('.toast')
-      const toast = new Toast(toastEl)
-
-      setTimeout(() => {
-        toast._config.autohide = false
-        toastEl.addEventListener('shown.bs.toast', () => {
-          expect(toast._clearTimeout).toHaveBeenCalled()
-          expect(toast._timeout).toBeNull()
-          done()
-        })
-        toast.show()
-      }, toast._config.delay / 2)
-
-      spyOn(toast, '_clearTimeout').and.callThrough()
 
       toast.show()
     })
