@@ -520,9 +520,9 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stop
  * add .dropdown to jQuery only if jQuery is present
  */
 
-/* istanbul ignore if */
 onDOMContentLoaded(() => {
   const $ = getjQuery()
+  /* istanbul ignore if */
   if ($) {
     const JQUERY_NO_CONFLICT = $.fn[NAME]
     $.fn[NAME] = Dropdown.jQueryInterface

@@ -324,9 +324,9 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  * ------------------------------------------------------------------------
  */
 
-/* istanbul ignore if */
 onDOMContentLoaded(() => {
   const $ = getjQuery()
+  /* istanbul ignore if */
   if ($) {
     const JQUERY_NO_CONFLICT = $.fn[NAME]
     $.fn[NAME] = ScrollSpy.jQueryInterface

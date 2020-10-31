@@ -221,9 +221,9 @@ class Toast {
  *  add .toast to jQuery only if jQuery is present
  */
 
-/* istanbul ignore if */
 onDOMContentLoaded(() => {
   const $ = getjQuery()
+  /* istanbul ignore if */
   if ($) {
     const JQUERY_NO_CONFLICT = $.fn[NAME]
     $.fn[NAME] = Toast.jQueryInterface

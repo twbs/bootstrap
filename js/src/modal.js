@@ -615,9 +615,9 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .modal to jQuery only if jQuery is present
  */
 
-/* istanbul ignore if */
 onDOMContentLoaded(() => {
   const $ = getjQuery()
+  /* istanbul ignore if */
   if ($) {
     const JQUERY_NO_CONFLICT = $.fn[NAME]
     $.fn[NAME] = Modal.jQueryInterface

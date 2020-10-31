@@ -173,9 +173,9 @@ class Popover extends Tooltip {
  * ------------------------------------------------------------------------
  */
 
-/* istanbul ignore if */
 onDOMContentLoaded(() => {
   const $ = getjQuery()
+  /* istanbul ignore if */
   if ($) {
     const JQUERY_NO_CONFLICT = $.fn[NAME]
     $.fn[NAME] = Popover.jQueryInterface
