@@ -325,7 +325,7 @@ Button dropdowns work with buttons of all sizes, including default and split dro
   </div>
 </div>
 
-```
+```html
 <div class="btn-group">
   <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
     Small button
