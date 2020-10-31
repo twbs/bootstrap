@@ -35,8 +35,8 @@ sh.cp('-Rf', `_gh_pages/docs/${versionShort}/examples/*`, folderName)
 sh.cp('-Rf', `_gh_pages/docs/${versionShort}/dist/`, `${folderName}/assets/`)
 // also copy the two brand images we use in the examples
 sh.cp('-f', [
-  `_gh_pages/docs/${versionShort}/assets/brand/bootstrap-outline.svg`,
-  `_gh_pages/docs/${versionShort}/assets/brand/bootstrap-solid.svg`
+  `_gh_pages/docs/${versionShort}/assets/brand/bootstrap-logo.svg`,
+  `_gh_pages/docs/${versionShort}/assets/brand/bootstrap-logo-white.svg`
 ], `${folderName}/assets/brand/`)
 sh.rm(`${folderName}/index.html`)
 

@@ -63,11 +63,11 @@ Adding in the previous and next controls:
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+    <span class="visually-hidden">Previous</span>
   </a>
   <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
+    <span class="visually-hidden">Next</span>
   </a>
 </div>
 {{< /example >}}
@@ -96,11 +96,11 @@ You can also add the indicators to the carousel, alongside the controls, too.
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+    <span class="visually-hidden">Previous</span>
   </a>
   <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
+    <span class="visually-hidden">Next</span>
   </a>
 </div>
 {{< /example >}}
@@ -141,11 +141,11 @@ Add captions to your slides easily with the `.carousel-caption` element within a
   </div>
   <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+    <span class="visually-hidden">Previous</span>
   </a>
   <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
+    <span class="visually-hidden">Next</span>
   </a>
 </div>
 {{< /example >}}
@@ -169,11 +169,11 @@ Add `.carousel-fade` to your carousel to animate slides with a fade transition i
   </div>
   <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+    <span class="visually-hidden">Previous</span>
   </a>
   <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
+    <span class="visually-hidden">Next</span>
   </a>
 </div>
 {{< /example >}}
@@ -197,15 +197,59 @@ Add `data-interval=""` to a `.carousel-item` to change the amount of time to del
   </div>
   <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+    <span class="visually-hidden">Previous</span>
   </a>
   <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
+    <span class="visually-hidden">Next</span>
   </a>
 </div>
 {{< /example >}}
 
+## Dark variant
+
+Add `.carousel-dark` to the `.carousel` for darker controls, indicators, and captions. Controls have been inverted from their default white fill with the `filter` CSS property. Captions and controls have additional Sass variables that customize the `color` and `background-color`.
+
+{{< example >}}
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleDark" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleDark" data-slide-to="1"></li>
+    <li data-target="#carouselExampleDark" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-interval="10000">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#aaa" background="#f5f5f5" text="First slide" >}}
+      <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </div>
+    <div class="carousel-item" data-interval="2000">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#bbb" background="#eee" text="Second slide" >}}
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#999" background="#e5e5e5" text="Third slide" >}}
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleDark" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleDark" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
+</div>
+{{< /example >}}
 
 ## Usage
 
@@ -219,10 +263,10 @@ The `data-ride="carousel"` attribute is used to mark a carousel as animating sta
 
 Call carousel manually with:
 
-{{< highlight js >}}
+```js
 var myCarousel = document.querySelector('#myCarousel')
 var carousel = new bootstrap.Carousel(myCarousel)
-{{< /highlight >}}
+```
 
 ### Options
 
@@ -239,40 +283,40 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </thead>
   <tbody>
     <tr>
-      <td>interval</td>
+      <td><code>interval</code></td>
       <td>number</td>
-      <td>5000</td>
+      <td><code>5000</code></td>
       <td>The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.</td>
     </tr>
     <tr>
-      <td>keyboard</td>
+      <td><code>keyboard</code></td>
       <td>boolean</td>
-      <td>true</td>
+      <td><code>true</code></td>
       <td>Whether the carousel should react to keyboard events.</td>
     </tr>
     <tr>
-      <td>pause</td>
+      <td><code>pause</code></td>
       <td>string | boolean</td>
-      <td>"hover"</td>
+      <td><code>"hover"</code></td>
       <td><p>If set to <code>"hover"</code>, pauses the cycling of the carousel on <code>mouseenter</code> and resumes the cycling of the carousel on <code>mouseleave</code>. If set to <code>false</code>, hovering over the carousel won't pause it.</p>
       <p>On touch-enabled devices, when set to <code>"hover"</code>, cycling will pause on <code>touchend</code> (once the user finished interacting with the carousel) for two intervals, before automatically resuming. Note that this is in addition to the above mouse behavior.</p></td>
     </tr>
     <tr>
-      <td>slide</td>
+      <td><code>slide</code></td>
       <td>string | boolean</td>
-      <td>false</td>
+      <td><code>false</code></td>
       <td>Autoplays the carousel after the user manually cycles the first item. If "carousel", autoplays the carousel on load.</td>
     </tr>
     <tr>
-      <td>wrap</td>
+      <td><code>wrap</code></td>
       <td>boolean</td>
-      <td>true</td>
+      <td><code>true</code></td>
       <td>Whether the carousel should cycle continuously or have hard stops.</td>
     </tr>
     <tr>
-      <td>touch</td>
+      <td><code>touch</code></td>
       <td>boolean</td>
-      <td>true</td>
+      <td><code>true</code></td>
       <td>Whether the carousel should support left/right swipe interactions on touchscreen devices.</td>
     </tr>
   </tbody>
@@ -286,13 +330,13 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 You can create a carousel instance with the carousel constructor, for example, to initialize with additional options and start cycling through items:
 
-{{< highlight js >}}
+```js
 var myCarousel = document.querySelector('#myCarousel')
 var carousel = new bootstrap.Carousel(myCarousel, {
   interval: 2000,
   wrap: false
 })
-{{< /highlight >}}
+```
 
 <table class="table">
   <thead>
@@ -320,11 +364,15 @@ var carousel = new bootstrap.Carousel(myCarousel, {
     </tr>
     <tr>
       <td><code>nextWhenVisible</code></td>
+      <td>Don't cycle carousel to next when the page isn't visible or the carousel or its parent isn't visible. <strong>Returns to the caller before the target item has been shown</strong>
+    </tr>
+    <tr>
+      <td><code>to</code></td>
       <td>Cycles the carousel to a particular frame (0 based, similar to an array). <strong>Returns to the caller before the target item has been shown</strong> (e.g., before the <code>slid.bs.carousel</code> event occurs).</td>
     </tr>
     <tr>
       <td><code>dispose</code></td>
-      <td>Destroys an element's carousel.</td>
+      <td>Destroys an element's carousel. (Removes stored data on the DOM element)</td>
     </tr>
     <tr>
       <td><code>getInstance</code></td>
@@ -363,13 +411,13 @@ All carousel events are fired at the carousel itself (i.e. at the `<div class="c
   </tbody>
 </table>
 
-{{< highlight js >}}
+```js
 var myCarousel = document.getElementById('myCarousel')
 
 myCarousel.addEventListener('slide.bs.carousel', function () {
   // do something...
 })
-{{< /highlight >}}
+```
 
 ### Change transition duration
 

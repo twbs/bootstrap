@@ -296,7 +296,7 @@ You can quickly change the text alignment of any card—in its entirety or speci
 
 ## Navigation
 
-Add some navigation to a card's header (or block) with Bootstrap's [nav components]({{< docsref "/components/navs" >}}).
+Add some navigation to a card's header (or block) with Bootstrap's [nav components]({{< docsref "/components/navs-tabs" >}}).
 
 {{< example >}}
 <div class="card text-center">
@@ -422,7 +422,7 @@ Use [text and background utilities]({{< docsref "/utilities/colors" >}}) to chan
 {{< example >}}
 {{< card.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
-<div class="card{{ if (eq .name "info") }} text-body {{ else if not (or (eq .name "light") (eq .name "warning")) }} text-white{{ end }} bg-{{ .name }} mb-3" style="max-width: 18rem;">
+<div class="card{{ if .contrast_color }} text-{{ .contrast_color }}{{ else }} text-white{{ end }} bg-{{ .name }} mb-3" style="max-width: 18rem;">
   <div class="card-header">Header</div>
   <div class="card-body">
     <h5 class="card-title">{{ .name | title }} card title</h5>
@@ -446,7 +446,7 @@ Use [border utilities]({{< docsref "/utilities/borders" >}}) to change just the 
 {{- range (index $.Site.Data "theme-colors") }}
 <div class="card border-{{ .name }} mb-3" style="max-width: 18rem;">
   <div class="card-header">Header</div>
-  <div class="card-body{{ if not (or (eq .name "light") (eq .name "warning") (eq .name "info")) }} text-{{ .name }}{{ end }}">
+  <div class="card-body{{ if not .contrast_color }} text-{{ .name }}{{ end }}">
     <h5 class="card-title">{{ .name | title }} card title</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>

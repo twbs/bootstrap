@@ -43,6 +43,16 @@ Change the border color using utilities built on our theme colors.
 <span class="border border-white"></span>
 {{< /example >}}
 
+## Border-width
+
+{{< example class="bd-example-border-utils" >}}
+<span class="border border-1"></span>
+<span class="border border-2"></span>
+<span class="border border-3"></span>
+<span class="border border-4"></span>
+<span class="border border-5"></span>
+{{< /example >}}
+
 ## Border-radius
 
 Add classes to an element to easily round its corners.
@@ -55,15 +65,15 @@ Add classes to an element to easily round its corners.
 {{< placeholder width="75" height="75" class="rounded-left" title="Example left rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-circle" title="Completely round image" >}}
 {{< placeholder width="150" height="75" class="rounded-pill" title="Rounded pill image" >}}
-{{< placeholder width="75" height="75" class="rounded-0" title="Example non-rounded image (overrides rounding applied elsewhere)" >}}
 {{< /example >}}
 
+### Sizes
 
-## Sizes
-
-Use `.rounded-lg` or `.rounded-sm` for larger or smaller border-radius.
+Use the scaling classes for larger or smaller rounded corners. Sizes range from `0` to `3`, and can be configured by modifying the utilities API.
 
 {{< example class="bd-example-rounded-utils" >}}
-{{< placeholder width="75" height="75" class="rounded-sm" title="Example small rounded image" >}}
-{{< placeholder width="75" height="75" class="rounded-lg" title="Example large rounded image" >}}
+{{< placeholder width="75" height="75" class="rounded-0" title="Example non-rounded image" >}}
+{{< placeholder width="75" height="75" class="rounded-1" title="Example small rounded image" >}}
+{{< placeholder width="75" height="75" class="rounded-2" title="Example default rounded image" >}}
+{{< placeholder width="75" height="75" class="rounded-3" title="Example large rounded image" >}}
 {{< /example >}}

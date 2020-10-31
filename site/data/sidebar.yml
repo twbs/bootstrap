@@ -44,10 +44,10 @@
     - title: Overview
     - title: Form control
     - title: Select
-    - title: Checks
-    - title: File
+    - title: Checks & radios
     - title: Range
     - title: Input group
+    - title: Floating labels
     - title: Layout
     - title: Validation
 
@@ -65,7 +65,7 @@
     - title: Dropdowns
     - title: List group
     - title: Modal
-    - title: Navs
+    - title: Navs & tabs
     - title: Navbar
     - title: Pagination
     - title: Popovers
@@ -79,9 +79,9 @@
   pages:
     - title: Clearfix
     - title: Colored links
-    - title: Embed
+    - title: Ratio
     - title: Position
-    - title: Screen readers
+    - title: Visually hidden
     - title: Stretched link
     - title: Text truncation
 

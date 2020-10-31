@@ -371,7 +371,7 @@ Use these row columns classes to quickly create basic grid layouts or to control
 
 You can also use the accompanying Sass mixin, `row-cols()`:
 
-{{< highlight scss >}}
+```scss
 .element {
   // Three columns to start
   @include row-cols(3);
@@ -381,7 +381,7 @@ You can also use the accompanying Sass mixin, `row-cols()`:
     @include row-cols(5);
   }
 }
-{{< /highlight >}}
+```
 
 ## Nesting
 
@@ -415,10 +415,10 @@ When using Bootstrap's source Sass files, you have the option of using Sass vari
 
 Variables and maps determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.
 
-{{< highlight scss >}}
+```scss
 $grid-columns:      12;
 $grid-gutter-width: 1.5rem;
-{{< /highlight >}}
+```
 
 {{< scss-docs name="grid-breakpoints" file="scss/_variables.scss" >}}
 
@@ -428,7 +428,7 @@ $grid-gutter-width: 1.5rem;
 
 Mixins are used in conjunction with the grid variables to generate semantic CSS for individual grid columns.
 
-{{< highlight scss >}}
+```scss
 // Creates a wrapper for a series of columns
 @include make-row();
 
@@ -438,13 +438,13 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 
 // Get fancy by offsetting, or changing the sort order
 @include make-col-offset($size, $columns: $grid-columns);
-{{< /highlight >}}
+```
 
 ### Example usage
 
 You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.
 
-{{< highlight scss >}}
+```scss
 .example-container {
   @include make-container();
   // Make sure to define this width after the mixin to override
@@ -477,7 +477,7 @@ You can modify the variables to your own custom values, or just use the mixins w
     @include make-col(4);
   }
 }
-{{< /highlight >}}
+```
 
 {{< example >}}
 <div class="example-container">
@@ -496,16 +496,16 @@ Using our built-in grid Sass variables and maps, it's possible to completely cus
 
 The number of grid columns can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each individual column while `$grid-gutter-width` sets the width for the column gutters.
 
-{{< highlight scss >}}
+```scss
 $grid-columns: 12 !default;
 $grid-gutter-width: 1.5rem !default;
-{{< /highlight >}}
+```
 
 ### Grid tiers
 
 Moving beyond the columns themselves, you may also customize the number of grid tiers. If you wanted just four grid tiers, you'd update the `$grid-breakpoints` and `$container-max-widths` to something like this:
 
-{{< highlight scss >}}
+```scss
 $grid-breakpoints: (
   xs: 0,
   sm: 480px,
@@ -518,6 +518,6 @@ $container-max-widths: (
   md: 720px,
   lg: 960px
 );
-{{< /highlight >}}
+```
 
 When making any changes to the Sass variables or maps, you'll need to save your changes and recompile. Doing so will output a brand new set of predefined grid classes for column widths, offsets, and ordering. Responsive visibility utilities will also be updated to use the custom breakpoints. Make sure to set grid values in `px` (not `rem`, `em`, or `%`).

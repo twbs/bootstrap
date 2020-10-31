@@ -33,6 +33,12 @@ Place one add-on or button on either side of an input. You may also place one on
   <span class="input-group-text">.00</span>
 </div>
 
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Username">
+  <span class="input-group-text">@</span>
+  <input type="text" class="form-control" placeholder="Server">
+</div>
+
 <div class="input-group">
   <span class="input-group-text">With textarea</span>
   <textarea class="form-control" aria-label="With textarea"></textarea>
@@ -203,7 +209,7 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 <div class="input-group mb-3">
   <button type="button" class="btn btn-outline-secondary">Action</button>
   <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-    <span class="sr-only">Toggle Dropdown</span>
+    <span class="visually-hidden">Toggle Dropdown</span>
   </button>
   <ul class="dropdown-menu">
     <li><a class="dropdown-item" href="#">Action</a></li>
@@ -219,7 +225,7 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
   <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
   <button type="button" class="btn btn-outline-secondary">Action</button>
   <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-    <span class="sr-only">Toggle Dropdown</span>
+    <span class="visually-hidden">Toggle Dropdown</span>
   </button>
   <ul class="dropdown-menu dropdown-menu-right">
     <li><a class="dropdown-item" href="#">Action</a></li>
@@ -284,51 +290,21 @@ Input groups include support for custom selects and custom file inputs. Browser 
 {{< example >}}
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-  <div class="form-file">
-    <input type="file" class="form-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-    <label class="form-file-label" for="inputGroupFile01">
-      <span class="form-file-text">Choose file...</span>
-      <span class="form-file-button">Browse</span>
-    </label>
-  </div>
+  <input type="file" class="form-control" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
 </div>
 
 <div class="input-group mb-3">
-  <div class="form-file">
-    <input type="file" class="form-file-input" id="inputGroupFile02">
-    <label class="form-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">
-      <span class="form-file-text">Choose file...</span>
-      <span class="form-file-button">Browse</span>
-    </label>
-  </div>
+  <input type="file" class="form-control" id="inputGroupFile02" aria-describedby="inputGroupFileAddon02">
   <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
 </div>
 
 <div class="input-group mb-3">
   <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03">Button</button>
-  <div class="form-file">
-    <input type="file" class="form-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
-    <label class="form-file-label" for="inputGroupFile03">
-      <span class="form-file-text">Choose file...</span>
-      <span class="form-file-button">Browse</span>
-    </label>
-  </div>
+  <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
 </div>
 
 <div class="input-group">
-  <div class="form-file">
-    <input type="file" class="form-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
-    <label class="form-file-label" for="inputGroupFile04">
-      <span class="form-file-text">Choose file...</span>
-      <span class="form-file-button">Browse</span>
-    </label>
-  </div>
+  <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
   <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
 </div>
 {{< /example >}}
-
-## Accessibility
-
-Screen readers will have trouble with your forms if you don't include a label for every input. For these input groups, ensure that any additional label or functionality is conveyed to assistive technologies.
-
-The exact technique to be used (`<label>` elements hidden using the `.sr-only` class, or use of the `aria-label` and `aria-labelledby` attributes, possibly in combination with `aria-describedby`) and what additional information will need to be conveyed will vary depending on the exact type of interface widget you're implementing. The examples in this section provide a few suggested, case-specific approaches.

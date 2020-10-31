@@ -288,7 +288,7 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="row">
   <div class="col-4">
     <div class="list-group" id="list-tab" role="tablist">
@@ -307,37 +307,37 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
     </div>
   </div>
 </div>
-{{< /highlight >}}
+```
 
 ### Using data attributes
 
 You can activate a list group navigation without writing any JavaScript by simply specifying `data-toggle="list"` or on an element. Use these data attributes on `.list-group-item`.
 
+```html
 <div role="tabpanel">
-{{< highlight html >}}
-<!-- List group -->
-<div class="list-group" id="myList" role="tablist">
-  <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Home</a>
-  <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile" role="tab">Profile</a>
-  <a class="list-group-item list-group-item-action" data-toggle="list" href="#messages" role="tab">Messages</a>
-  <a class="list-group-item list-group-item-action" data-toggle="list" href="#settings" role="tab">Settings</a>
-</div>
+  <!-- List group -->
+  <div class="list-group" id="myList" role="tablist">
+    <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Home</a>
+    <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile" role="tab">Profile</a>
+    <a class="list-group-item list-group-item-action" data-toggle="list" href="#messages" role="tab">Messages</a>
+    <a class="list-group-item list-group-item-action" data-toggle="list" href="#settings" role="tab">Settings</a>
+  </div>
 
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane active" id="home" role="tabpanel">...</div>
-  <div class="tab-pane" id="profile" role="tabpanel">...</div>
-  <div class="tab-pane" id="messages" role="tabpanel">...</div>
-  <div class="tab-pane" id="settings" role="tabpanel">...</div>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane active" id="home" role="tabpanel">...</div>
+    <div class="tab-pane" id="profile" role="tabpanel">...</div>
+    <div class="tab-pane" id="messages" role="tabpanel">...</div>
+    <div class="tab-pane" id="settings" role="tabpanel">...</div>
+  </div>
 </div>
-{{< /highlight >}}
-</div>
+```
 
 ### Via JavaScript
 
 Enable tabbable list item via JavaScript (each list item needs to be activated individually):
 
-{{< highlight js >}}
+```js
 var triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
 triggerTabList.forEach(function (triggerEl) {
   var tabTrigger = new bootstrap.Tab(triggerEl)
@@ -347,30 +347,30 @@ triggerTabList.forEach(function (triggerEl) {
     tabTrigger.show()
   })
 })
-{{< /highlight >}}
+```
 
 You can activate individual list item in several ways:
 
-{{< highlight js >}}
+```js
 var triggerEl = document.querySelector('#myTab a[href="#profile"]')
 bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
 
 var triggerFirstTabEl = document.querySelector('#myTab li:first-child a')
 bootstrap.Tab.getInstance(triggerFirstTabEl).show() // Select first tab
-{{< /highlight >}}
+```
 
 ### Fade effect
 
 To make tabs panel fade in, add `.fade` to each `.tab-pane`. The first tab pane must also have `.show` to make the initial content visible.
 
-{{< highlight html >}}
+```html
 <div class="tab-content">
   <div class="tab-pane fade show active" id="home" role="tabpanel">...</div>
   <div class="tab-pane fade" id="profile" role="tabpanel">...</div>
   <div class="tab-pane fade" id="messages" role="tabpanel">...</div>
   <div class="tab-pane fade" id="settings" role="tabpanel">...</div>
 </div>
-{{< /highlight >}}
+```
 
 ### Methods
 
@@ -378,7 +378,7 @@ To make tabs panel fade in, add `.fade` to each `.tab-pane`. The first tab pane 
 
 Activates a list item element and content container. Tab should have either a `data-target` or an `href` targeting a container node in the DOM.
 
-{{< highlight html >}}
+```html
 <div class="list-group" id="myList" role="tablist">
   <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Home</a>
   <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile" role="tab">Profile</a>
@@ -399,18 +399,18 @@ Activates a list item element and content container. Tab should have either a `d
 
   firstTab.show()
 </script>
-{{< /highlight >}}
+```
 
 #### show
 
 Selects the given list item and shows its associated pane. Any other list item that was previously selected becomes unselected and its associated pane is hidden. **Returns to the caller before the tab pane has actually been shown** (for example, before the `shown.bs.tab` event occurs).
 
-{{< highlight js >}}
+```js
   var someListItemEl = document.querySelector('#someListItem')
   var tab = new bootstrap.Tab(someListItemEl)
 
   tab.show()
-{{< /highlight >}}
+```
 
 #### dispose
 
@@ -420,10 +420,10 @@ Destroys an element's tab.
 
 *Static* method which allows you to get the tab instance associated with a DOM element
 
-{{< highlight js >}}
+```js
 var triggerEl = document.querySelector('#trigger')
 var tab = bootstrap.Tab.getInstance(triggerEl) // Returns a Bootstrap tab instance
-{{< /highlight >}}
+```
 
 ### Events
 
@@ -445,28 +445,28 @@ If no tab was already active, the `hide.bs.tab` and `hidden.bs.tab` events will 
   </thead>
   <tbody>
     <tr>
-      <td>show.bs.tab</td>
+      <td><code>show.bs.tab</code></td>
       <td>This event fires on tab show, but before the new tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
     </tr>
     <tr>
-      <td>shown.bs.tab</td>
+      <td><code>shown.bs.tab</code></td>
       <td>This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
     </tr>
     <tr>
-      <td>hide.bs.tab</td>
+      <td><code>hide.bs.tab</code></td>
       <td>This event fires when a new tab is to be shown (and thus the previous active tab is to be hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the current active tab and the new soon-to-be-active tab, respectively.</td>
     </tr>
     <tr>
-      <td>hidden.bs.tab</td>
+      <td><code>hidden.bs.tab</code></td>
       <td>This event fires after a new tab is shown (and thus the previous active tab is hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the previous active tab and the new active tab, respectively.</td>
     </tr>
   </tbody>
 </table>
 
-{{< highlight js >}}
+```js
 var tabEl = document.querySelector('a[data-toggle="list"]')
 tabEl.addEventListener('shown.bs.tab', function (e) {
   e.target // newly activated tab
   e.relatedTarget // previous active tab
 })
-{{< /highlight >}}
+```
