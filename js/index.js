@@ -1,3 +1,10 @@
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap (v4.5.3): index.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
 import Alert from './src/alert'
 import Button from './src/button'
 import Carousel from './src/carousel'
@@ -10,13 +17,6 @@ import Tab from './src/tab'
 import Toast from './src/toast'
 import Tooltip from './src/tooltip'
 import Util from './src/util'
-
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v4.5.3): index.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- * --------------------------------------------------------------------------
- */
 
 export {
   Util,
