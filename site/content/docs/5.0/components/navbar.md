@@ -480,6 +480,8 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 
 ## Scrolling
 
+Add `.navbar-nav-scroll` to a `.navbar-nav` to enable vertical scrolling when expanded navbar content gets too tall. By default, scrolling kicks in at `75vh` (or 75% of the viewport height), but you may override that with a local CSS custom property. For example, add `style="--height: 65vh;"` to the `.navbar-nav`.
+
 {{< example >}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
