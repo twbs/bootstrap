@@ -400,6 +400,7 @@ $utilities: map-merge(
     ),
     "font-weight": (
       property: font-weight,
+      class: fw,
       values: (
         light: $font-weight-light,
         lighter: $font-weight-lighter,
