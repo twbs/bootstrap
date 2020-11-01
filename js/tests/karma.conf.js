@@ -134,17 +134,17 @@ if (browserStack) {
       emitWarning: false,
       global: {
         statements: 90,
-        branches: 90,
+        branches: 89,
         functions: 90,
         lines: 90
       },
       each: {
         overrides: {
           'js/src/dom/polyfill.js': {
-            statements: 39,
-            lines: 37,
-            branches: 19,
-            functions: 50
+            statements: 30,
+            lines: 30,
+            branches: 8,
+            functions: 30
           }
         }
       }
