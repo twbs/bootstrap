@@ -1,9 +1,10 @@
 /* eslint-env node */
+
 const path = require('path')
 const ip = require('ip')
-const babel = require('rollup-plugin-babel')
+const { babel } = require('@rollup/plugin-babel')
 const istanbul = require('rollup-plugin-istanbul')
-const resolve = require('rollup-plugin-node-resolve')
+const { nodeResolve } = require('@rollup/plugin-node-resolve')
 
 const {
   browsers,
@@ -13,6 +14,7 @@ const {
 const { env } = process
 const browserStack = env.BROWSER === 'true'
 const debug = env.DEBUG === 'true'
+const jQueryTest = env.JQUERY === 'true'
 const frameworks = [
   'jasmine'
 ]
@@ -58,32 +60,27 @@ const conf = {
   },
   files: [
     'node_modules/hammer-simulator/index.js',
-    { pattern: 'js/tests/units/**/*.spec.js', watched: !browserStack }
+    { pattern: 'js/tests/unit/**/!(jquery).spec.js', watched: !browserStack }
   ],
   preprocessors: {
-    'js/tests/units/**/*.spec.js': ['rollup']
+    'js/tests/unit/**/*.spec.js': ['rollup']
   },
   rollupPreprocessor: {
     plugins: [
       istanbul({
-        exclude: ['js/tests/units/**/*.spec.js', 'js/tests/helpers/**/*.js']
+        exclude: [
+          'node_modules/**',
+          'js/tests/unit/**/*.spec.js',
+          'js/tests/helpers/**/*.js'
+        ]
       }),
       babel({
         // Only transpile our source code
         exclude: 'node_modules/**',
-        // Include only required helpers
-        externalHelpersWhitelist: [
-          'defineProperties',
-          'createClass',
-          'inheritsLoose',
-          'defineProperty',
-          'objectSpread2'
-        ],
-        plugins: [
-          '@babel/plugin-proposal-object-rest-spread'
-        ]
+        // Inline the required helpers in each file
+        babelHelpers: 'inline'
       }),
-      resolve()
+      nodeResolve()
     ],
     output: {
       format: 'iife',
@@ -106,6 +103,19 @@ if (browserStack) {
   conf.customLaunchers = browsers
   conf.browsers = browsersKeys
   reporters.push('BrowserStack', 'kjhtml')
+} else if (jQueryTest) {
+  frameworks.push('detectBrowsers')
+  plugins.push(
+    'karma-chrome-launcher',
+    'karma-firefox-launcher',
+    'karma-detect-browsers'
+  )
+  conf.customLaunchers = customLaunchers
+  conf.detectBrowsers = detectBrowsers
+  conf.files = [
+    'node_modules/jquery/dist/jquery.slim.min.js',
+    { pattern: 'js/tests/unit/jquery.spec.js', watched: false }
+  ]
 } else {
   frameworks.push('detectBrowsers')
   plugins.push(

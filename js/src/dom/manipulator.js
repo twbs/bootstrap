@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.3.1): dom/manipulator.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Bootstrap (v5.0.0-alpha2): dom/manipulator.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
@@ -26,7 +26,7 @@ function normalizeData(val) {
 }
 
 function normalizeDataKey(key) {
-  return key.replace(/[A-Z]/g, chr => chr.toLowerCase())
+  return key.replace(/[A-Z]/g, chr => `-${chr.toLowerCase()}`)
 }
 
 const Manipulator = {
@@ -71,18 +71,6 @@ const Manipulator = {
     return {
       top: element.offsetTop,
       left: element.offsetLeft
-    }
-  },
-
-  toggleClass(element, className) {
-    if (!element) {
-      return
-    }
-
-    if (element.classList.contains(className)) {
-      element.classList.remove(className)
-    } else {
-      element.classList.add(className)
     }
   }
 }

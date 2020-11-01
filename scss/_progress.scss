@@ -19,6 +19,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow: hidden;
   color: $progress-bar-color;
   text-align: center;
   white-space: nowrap;
@@ -35,7 +36,7 @@
   .progress-bar-animated {
     animation: progress-bar-stripes $progress-bar-animation-timing;
 
-    @if $enable-prefers-reduced-motion-media-query {
+    @if $enable-reduced-motion {
       @media (prefers-reduced-motion: reduce) {
         animation: none;
       }

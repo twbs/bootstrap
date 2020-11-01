@@ -1,0 +1,9 @@
+{{- /*
+  Usage: `bs-table "class class-foo"`,
+  where class can be anything
+*/ -}}
+
+{{- $css_class := .Get 0 | default "table" -}}
+{{- $html_table := .Inner | markdownify -}}
+{{- $html_table = replace $html_table "<table>" (printf `<table class="%s">` $css_class) -}}
+{{- $html_table | safeHTML -}}

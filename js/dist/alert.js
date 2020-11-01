@@ -1,38 +1,23 @@
 /*!
-  * Bootstrap alert.js v4.3.1 (https://getbootstrap.com/)
-  * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * Bootstrap alert.js v5.0.0-alpha2 (https://getbootstrap.com/)
+  * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('../dom/data.js'), require('../dom/event-handler.js'), require('../dom/selector-engine.js')) :
-  typeof define === 'function' && define.amd ? define(['../dom/data.js', '../dom/event-handler.js', '../dom/selector-engine.js'], factory) :
-  (global = global || self, global.Alert = factory(global.Data, global.EventHandler, global.SelectorEngine));
-}(this, function (Data, EventHandler, SelectorEngine) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js')) :
+  typeof define === 'function' && define.amd ? define(['./dom/data.js', './dom/event-handler.js'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Alert = factory(global.Data, global.EventHandler));
+}(this, (function (Data, EventHandler) { 'use strict';
 
-  Data = Data && Data.hasOwnProperty('default') ? Data['default'] : Data;
-  EventHandler = EventHandler && EventHandler.hasOwnProperty('default') ? EventHandler['default'] : EventHandler;
-  SelectorEngine = SelectorEngine && SelectorEngine.hasOwnProperty('default') ? SelectorEngine['default'] : SelectorEngine;
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-  function _defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }
-
-  function _createClass(Constructor, protoProps, staticProps) {
-    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties(Constructor, staticProps);
-    return Constructor;
-  }
+  var Data__default = /*#__PURE__*/_interopDefaultLegacy(Data);
+  var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): util/index.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * Bootstrap (v5.0.0-alpha2): util/index.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   var MILLISECONDS_MULTIPLIER = 1000;
@@ -78,9 +63,7 @@
   };
 
   var triggerTransitionEnd = function triggerTransitionEnd(element) {
-    var evt = document.createEvent('HTMLEvents');
-    evt.initEvent(TRANSITION_END, true, true);
-    element.dispatchEvent(evt);
+    element.dispatchEvent(new Event(TRANSITION_END));
   };
 
   var emulateTransitionEnd = function emulateTransitionEnd(element, duration) {
@@ -112,6 +95,9 @@
     return null;
   };
 
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -119,38 +105,29 @@
    */
 
   var NAME = 'alert';
-  var VERSION = '4.3.1';
+  var VERSION = '5.0.0-alpha2';
   var DATA_KEY = 'bs.alert';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
-  var Selector = {
-    DISMISS: '[data-dismiss="alert"]'
-  };
-  var Event = {
-    CLOSE: "close" + EVENT_KEY,
-    CLOSED: "closed" + EVENT_KEY,
-    CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
-  };
-  var ClassName = {
-    ALERT: 'alert',
-    FADE: 'fade',
-    SHOW: 'show'
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
+  var SELECTOR_DISMISS = '[data-dismiss="alert"]';
+  var EVENT_CLOSE = "close" + EVENT_KEY;
+  var EVENT_CLOSED = "closed" + EVENT_KEY;
+  var EVENT_CLICK_DATA_API = "click" + EVENT_KEY + DATA_API_KEY;
+  var CLASSNAME_ALERT = 'alert';
+  var CLASSNAME_FADE = 'fade';
+  var CLASSNAME_SHOW = 'show';
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
 
-  };
-
-  var Alert =
-  /*#__PURE__*/
-  function () {
+  var Alert = /*#__PURE__*/function () {
     function Alert(element) {
       this._element = element;
 
       if (this._element) {
-        Data.setData(element, DATA_KEY, this);
+        Data__default['default'].setData(element, DATA_KEY, this);
       }
     } // Getters
 
@@ -159,11 +136,7 @@
 
     // Public
     _proto.close = function close(element) {
-      var rootElement = this._element;
-
-      if (element) {
-        rootElement = this._getRootElement(element);
-      }
+      var rootElement = element ? this._getRootElement(element) : this._element;
 
       var customEvent = this._triggerCloseEvent(rootElement);
 
@@ -175,38 +148,32 @@
     };
 
     _proto.dispose = function dispose() {
-      Data.removeData(this._element, DATA_KEY);
+      Data__default['default'].removeData(this._element, DATA_KEY);
       this._element = null;
     } // Private
     ;
 
     _proto._getRootElement = function _getRootElement(element) {
-      var parent = getElementFromSelector(element);
-
-      if (!parent) {
-        parent = SelectorEngine.closest(element, "." + ClassName.ALERT);
-      }
-
-      return parent;
+      return getElementFromSelector(element) || element.closest("." + CLASSNAME_ALERT);
     };
 
     _proto._triggerCloseEvent = function _triggerCloseEvent(element) {
-      return EventHandler.trigger(element, Event.CLOSE);
+      return EventHandler__default['default'].trigger(element, EVENT_CLOSE);
     };
 
     _proto._removeElement = function _removeElement(element) {
       var _this = this;
 
-      element.classList.remove(ClassName.SHOW);
+      element.classList.remove(CLASSNAME_SHOW);
 
-      if (!element.classList.contains(ClassName.FADE)) {
+      if (!element.classList.contains(CLASSNAME_FADE)) {
         this._destroyElement(element);
 
         return;
       }
 
       var transitionDuration = getTransitionDurationFromElement(element);
-      EventHandler.one(element, TRANSITION_END, function () {
+      EventHandler__default['default'].one(element, TRANSITION_END, function () {
         return _this._destroyElement(element);
       });
       emulateTransitionEnd(element, transitionDuration);
@@ -217,13 +184,13 @@
         element.parentNode.removeChild(element);
       }
 
-      EventHandler.trigger(element, Event.CLOSED);
+      EventHandler__default['default'].trigger(element, EVENT_CLOSED);
     } // Static
     ;
 
     Alert.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
-        var data = Data.getData(this, DATA_KEY);
+        var data = Data__default['default'].getData(this, DATA_KEY);
 
         if (!data) {
           data = new Alert(this);
@@ -246,7 +213,7 @@
     };
 
     Alert.getInstance = function getInstance(element) {
-      return Data.getData(element, DATA_KEY);
+      return Data__default['default'].getData(element, DATA_KEY);
     };
 
     _createClass(Alert, null, [{
@@ -265,7 +232,7 @@
    */
 
 
-  EventHandler.on(document, Event.CLICK_DATA_API, Selector.DISMISS, Alert.handleDismiss(new Alert()));
+  EventHandler__default['default'].on(document, EVENT_CLICK_DATA_API, SELECTOR_DISMISS, Alert.handleDismiss(new Alert()));
   var $ = getjQuery();
   /**
    * ------------------------------------------------------------------------
@@ -289,5 +256,5 @@
 
   return Alert;
 
-}));
+})));
 //# sourceMappingURL=alert.js.map

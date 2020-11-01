@@ -4,19 +4,16 @@
 
 // Logo series wrapper
 .bd-brand-logos {
-  color: $bd-purple;
+  color: $bd-purple-bright;
 
   .inverse {
     color: $white;
-    background-color: $bd-purple;
+    background-color: $bd-purple-bright;
   }
 }
 
 // Individual items
 .bd-brand-item {
-  width: 100%;
-  padding: 4rem 1rem;
-
   + .bd-brand-item {
     border-top: 1px solid $white;
   }
@@ -35,7 +32,6 @@
 //
 
 .color-swatches {
-  display: flex;
   margin: 0 -5px;
 
   // Docs colors
@@ -56,9 +52,6 @@
 .color-swatch {
   width: 4rem;
   height: 4rem;
-  margin-right: .25rem;
-  margin-left: .25rem;
-  @include border-radius();
 
   @include media-breakpoint-up(md) {
     width: 6rem;

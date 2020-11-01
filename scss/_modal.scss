@@ -48,20 +48,19 @@
   .modal.show & {
     transform: $modal-show-transform;
   }
+
+  // When trying to close, animate focus to scale
+  .modal.modal-static & {
+    transform: $modal-scale-transform;
+  }
 }
 
 .modal-dialog-scrollable {
-  display: flex; // IE10/11
-  max-height: calc(100% - #{$modal-dialog-margin * 2});
+  height: subtract(100%, $modal-dialog-margin * 2);
 
   .modal-content {
-    max-height: calc(100vh - #{$modal-dialog-margin * 2}); // IE10/11
+    max-height: 100%;
     overflow: hidden;
-  }
-
-  .modal-header,
-  .modal-footer {
-    flex-shrink: 0;
   }
 
   .modal-body {
@@ -72,29 +71,7 @@
 .modal-dialog-centered {
   display: flex;
   align-items: center;
-  min-height: calc(100% - #{$modal-dialog-margin * 2});
-
-  // Ensure `modal-dialog-centered` extends the full height of the view (IE10/11)
-  &::before {
-    display: block; // IE10
-    height: calc(100vh - #{$modal-dialog-margin * 2});
-    content: "";
-  }
-
-  // Ensure `.modal-body` shows scrollbar (IE10/11)
-  &.modal-dialog-scrollable {
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-
-    .modal-content {
-      max-height: none;
-    }
-
-    &::before {
-      content: none;
-    }
-  }
+  min-height: subtract(100%, $modal-dialog-margin * 2);
 }
 
 // Actual modal
@@ -134,16 +111,16 @@
 // Top section of the modal w/ title and dismiss
 .modal-header {
   display: flex;
-  align-items: flex-start; // so the close btn always stays on the upper right corner
+  flex-shrink: 0;
+  align-items: center;
   justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
   padding: $modal-header-padding;
   border-bottom: $modal-header-border-width solid $modal-header-border-color;
   @include border-top-radius($modal-content-inner-border-radius);
 
-  .close {
-    padding: $modal-header-padding;
-    // auto on the left force icon to the right even when there is no .modal-title
-    margin: (-$modal-header-padding-y) (-$modal-header-padding-x) (-$modal-header-padding-y) auto;
+  .btn-close {
+    padding: ($modal-header-padding-y / 2) ($modal-header-padding-x / 2);
+    margin: ($modal-header-padding-y / -2) ($modal-header-padding-x / -2) ($modal-header-padding-y / -2) auto;
   }
 }
 
@@ -167,6 +144,7 @@
 .modal-footer {
   display: flex;
   flex-wrap: wrap;
+  flex-shrink: 0;
   align-items: center; // vertically center
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
   padding: $modal-inner-padding - $modal-footer-margin-between / 2;
@@ -199,19 +177,11 @@
   }
 
   .modal-dialog-scrollable {
-    max-height: calc(100% - #{$modal-dialog-margin-y-sm-up * 2});
-
-    .modal-content {
-      max-height: calc(100vh - #{$modal-dialog-margin-y-sm-up * 2});
-    }
+    height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
   }
 
   .modal-dialog-centered {
-    min-height: calc(100% - #{$modal-dialog-margin-y-sm-up * 2});
-
-    &::before {
-      height: calc(100vh - #{$modal-dialog-margin-y-sm-up * 2});
-    }
+    min-height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
   }
 
   .modal-content {
@@ -230,4 +200,36 @@
 
 @include media-breakpoint-up(xl) {
   .modal-xl { max-width: $modal-xl; }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+  $postfix: if($infix != "", $infix + "-down", "");
+
+  @include media-breakpoint-down($breakpoint) {
+    .modal-fullscreen#{$postfix} {
+      width: 100vw;
+      max-width: none;
+      height: 100%;
+      margin: 0;
+
+      .modal-content {
+        height: 100%;
+        border: 0;
+        @include border-radius(0);
+      }
+
+      .modal-header {
+        @include border-radius(0);
+      }
+
+      .modal-body {
+        overflow-y: auto;
+      }
+
+      .modal-footer {
+        @include border-radius(0);
+      }
+    }
+  }
 }

@@ -1,93 +1,34 @@
 /*!
-  * Bootstrap scrollspy.js v4.3.1 (https://getbootstrap.com/)
-  * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * Bootstrap scrollspy.js v5.0.0-alpha2 (https://getbootstrap.com/)
+  * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('../dom/data.js'), require('../dom/event-handler.js'), require('../dom/manipulator.js'), require('../dom/selector-engine.js')) :
-  typeof define === 'function' && define.amd ? define(['../dom/data.js', '../dom/event-handler.js', '../dom/manipulator.js', '../dom/selector-engine.js'], factory) :
-  (global = global || self, global.ScrollSpy = factory(global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine));
-}(this, function (Data, EventHandler, Manipulator, SelectorEngine) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js')) :
+  typeof define === 'function' && define.amd ? define(['./dom/data.js', './dom/event-handler.js', './dom/manipulator.js', './dom/selector-engine.js'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ScrollSpy = factory(global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine));
+}(this, (function (Data, EventHandler, Manipulator, SelectorEngine) { 'use strict';
 
-  Data = Data && Data.hasOwnProperty('default') ? Data['default'] : Data;
-  EventHandler = EventHandler && EventHandler.hasOwnProperty('default') ? EventHandler['default'] : EventHandler;
-  Manipulator = Manipulator && Manipulator.hasOwnProperty('default') ? Manipulator['default'] : Manipulator;
-  SelectorEngine = SelectorEngine && SelectorEngine.hasOwnProperty('default') ? SelectorEngine['default'] : SelectorEngine;
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-  function _defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }
-
-  function _createClass(Constructor, protoProps, staticProps) {
-    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties(Constructor, staticProps);
-    return Constructor;
-  }
-
-  function _defineProperty(obj, key, value) {
-    if (key in obj) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-    } else {
-      obj[key] = value;
-    }
-
-    return obj;
-  }
-
-  function ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-
-    if (Object.getOwnPropertySymbols) {
-      var symbols = Object.getOwnPropertySymbols(object);
-      if (enumerableOnly) symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      });
-      keys.push.apply(keys, symbols);
-    }
-
-    return keys;
-  }
-
-  function _objectSpread2(target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i] != null ? arguments[i] : {};
-
-      if (i % 2) {
-        ownKeys(source, true).forEach(function (key) {
-          _defineProperty(target, key, source[key]);
-        });
-      } else if (Object.getOwnPropertyDescriptors) {
-        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-      } else {
-        ownKeys(source).forEach(function (key) {
-          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-      }
-    }
-
-    return target;
-  }
+  var Data__default = /*#__PURE__*/_interopDefaultLegacy(Data);
+  var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
+  var Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
+  var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): util/index.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * Bootstrap (v5.0.0-alpha2): util/index.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   var MAX_UID = 1000000;
 
   var toType = function toType(obj) {
+    if (obj === null || obj === undefined) {
+      return "" + obj;
+    }
+
     return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
   };
   /**
@@ -99,8 +40,7 @@
 
   var getUID = function getUID(prefix) {
     do {
-      // eslint-disable-next-line no-bitwise
-      prefix += ~~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
+      prefix += Math.floor(Math.random() * MAX_UID);
     } while (document.getElementById(prefix));
 
     return prefix;
@@ -143,14 +83,6 @@
     });
   };
 
-  var makeArray = function makeArray(nodeList) {
-    if (!nodeList) {
-      return [];
-    }
-
-    return [].slice.call(nodeList);
-  };
-
   var getjQuery = function getjQuery() {
     var _window = window,
         jQuery = _window.jQuery;
@@ -162,6 +94,11 @@
     return null;
   };
 
+  function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -169,7 +106,7 @@
    */
 
   var NAME = 'scrollspy';
-  var VERSION = '4.3.1';
+  var VERSION = '5.0.0-alpha2';
   var DATA_KEY = 'bs.scrollspy';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -183,57 +120,46 @@
     method: 'string',
     target: '(string|element)'
   };
-  var Event = {
-    ACTIVATE: "activate" + EVENT_KEY,
-    SCROLL: "scroll" + EVENT_KEY,
-    LOAD_DATA_API: "load" + EVENT_KEY + DATA_API_KEY
-  };
-  var ClassName = {
-    DROPDOWN_ITEM: 'dropdown-item',
-    ACTIVE: 'active'
-  };
-  var Selector = {
-    DATA_SPY: '[data-spy="scroll"]',
-    NAV_LIST_GROUP: '.nav, .list-group',
-    NAV_LINKS: '.nav-link',
-    NAV_ITEMS: '.nav-item',
-    LIST_ITEMS: '.list-group-item',
-    DROPDOWN: '.dropdown',
-    DROPDOWN_TOGGLE: '.dropdown-toggle'
-  };
-  var OffsetMethod = {
-    OFFSET: 'offset',
-    POSITION: 'position'
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
+  var EVENT_ACTIVATE = "activate" + EVENT_KEY;
+  var EVENT_SCROLL = "scroll" + EVENT_KEY;
+  var EVENT_LOAD_DATA_API = "load" + EVENT_KEY + DATA_API_KEY;
+  var CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item';
+  var CLASS_NAME_ACTIVE = 'active';
+  var SELECTOR_DATA_SPY = '[data-spy="scroll"]';
+  var SELECTOR_NAV_LIST_GROUP = '.nav, .list-group';
+  var SELECTOR_NAV_LINKS = '.nav-link';
+  var SELECTOR_NAV_ITEMS = '.nav-item';
+  var SELECTOR_LIST_ITEMS = '.list-group-item';
+  var SELECTOR_DROPDOWN = '.dropdown';
+  var SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle';
+  var METHOD_OFFSET = 'offset';
+  var METHOD_POSITION = 'position';
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
 
-  };
-
-  var ScrollSpy =
-  /*#__PURE__*/
-  function () {
+  var ScrollSpy = /*#__PURE__*/function () {
     function ScrollSpy(element, config) {
       var _this = this;
 
       this._element = element;
       this._scrollElement = element.tagName === 'BODY' ? window : element;
       this._config = this._getConfig(config);
-      this._selector = this._config.target + " " + Selector.NAV_LINKS + "," + (this._config.target + " " + Selector.LIST_ITEMS + ",") + (this._config.target + " ." + ClassName.DROPDOWN_ITEM);
+      this._selector = this._config.target + " " + SELECTOR_NAV_LINKS + ", " + this._config.target + " " + SELECTOR_LIST_ITEMS + ", " + this._config.target + " ." + CLASS_NAME_DROPDOWN_ITEM;
       this._offsets = [];
       this._targets = [];
       this._activeTarget = null;
       this._scrollHeight = 0;
-      EventHandler.on(this._scrollElement, Event.SCROLL, function (event) {
+      EventHandler__default['default'].on(this._scrollElement, EVENT_SCROLL, function (event) {
         return _this._process(event);
       });
       this.refresh();
 
       this._process();
 
-      Data.setData(element, DATA_KEY, this);
+      Data__default['default'].setData(element, DATA_KEY, this);
     } // Getters
 
 
@@ -243,26 +169,22 @@
     _proto.refresh = function refresh() {
       var _this2 = this;
 
-      var autoMethod = this._scrollElement === this._scrollElement.window ? OffsetMethod.OFFSET : OffsetMethod.POSITION;
+      var autoMethod = this._scrollElement === this._scrollElement.window ? METHOD_OFFSET : METHOD_POSITION;
       var offsetMethod = this._config.method === 'auto' ? autoMethod : this._config.method;
-      var offsetBase = offsetMethod === OffsetMethod.POSITION ? this._getScrollTop() : 0;
+      var offsetBase = offsetMethod === METHOD_POSITION ? this._getScrollTop() : 0;
       this._offsets = [];
       this._targets = [];
       this._scrollHeight = this._getScrollHeight();
-      var targets = makeArray(SelectorEngine.find(this._selector));
+      var targets = SelectorEngine__default['default'].find(this._selector);
       targets.map(function (element) {
-        var target;
         var targetSelector = getSelectorFromElement(element);
-
-        if (targetSelector) {
-          target = SelectorEngine.findOne(targetSelector);
-        }
+        var target = targetSelector ? SelectorEngine__default['default'].findOne(targetSelector) : null;
 
         if (target) {
           var targetBCR = target.getBoundingClientRect();
 
           if (targetBCR.width || targetBCR.height) {
-            return [Manipulator[offsetMethod](target).top + offsetBase, targetSelector];
+            return [Manipulator__default['default'][offsetMethod](target).top + offsetBase, targetSelector];
           }
         }
 
@@ -279,8 +201,8 @@
     };
 
     _proto.dispose = function dispose() {
-      Data.removeData(this._element, DATA_KEY);
-      EventHandler.off(this._scrollElement, EVENT_KEY);
+      Data__default['default'].removeData(this._element, DATA_KEY);
+      EventHandler__default['default'].off(this._scrollElement, EVENT_KEY);
       this._element = null;
       this._scrollElement = null;
       this._config = null;
@@ -293,9 +215,9 @@
     ;
 
     _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread2({}, Default, {}, typeof config === 'object' && config ? config : {});
+      config = _extends({}, Default, typeof config === 'object' && config ? config : {});
 
-      if (typeof config.target !== 'string') {
+      if (typeof config.target !== 'string' && isElement(config.target)) {
         var id = config.target.id;
 
         if (!id) {
@@ -351,9 +273,7 @@
         return;
       }
 
-      var offsetLength = this._offsets.length;
-
-      for (var i = offsetLength; i--;) {
+      for (var i = this._offsets.length; i--;) {
         var isActiveTarget = this._activeTarget !== this._targets[i] && scrollTop >= this._offsets[i] && (typeof this._offsets[i + 1] === 'undefined' || scrollTop < this._offsets[i + 1]);
 
         if (isActiveTarget) {
@@ -371,46 +291,46 @@
         return selector + "[data-target=\"" + target + "\"]," + selector + "[href=\"" + target + "\"]";
       });
 
-      var link = SelectorEngine.findOne(queries.join(','));
+      var link = SelectorEngine__default['default'].findOne(queries.join(','));
 
-      if (link.classList.contains(ClassName.DROPDOWN_ITEM)) {
-        SelectorEngine.findOne(Selector.DROPDOWN_TOGGLE, SelectorEngine.closest(link, Selector.DROPDOWN)).classList.add(ClassName.ACTIVE);
-        link.classList.add(ClassName.ACTIVE);
+      if (link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
+        SelectorEngine__default['default'].findOne(SELECTOR_DROPDOWN_TOGGLE, link.closest(SELECTOR_DROPDOWN)).classList.add(CLASS_NAME_ACTIVE);
+        link.classList.add(CLASS_NAME_ACTIVE);
       } else {
         // Set triggered link as active
-        link.classList.add(ClassName.ACTIVE);
-        SelectorEngine.parents(link, Selector.NAV_LIST_GROUP).forEach(function (listGroup) {
+        link.classList.add(CLASS_NAME_ACTIVE);
+        SelectorEngine__default['default'].parents(link, SELECTOR_NAV_LIST_GROUP).forEach(function (listGroup) {
           // Set triggered links parents as active
           // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
-          SelectorEngine.prev(listGroup, Selector.NAV_LINKS + ", " + Selector.LIST_ITEMS).forEach(function (item) {
-            return item.classList.add(ClassName.ACTIVE);
+          SelectorEngine__default['default'].prev(listGroup, SELECTOR_NAV_LINKS + ", " + SELECTOR_LIST_ITEMS).forEach(function (item) {
+            return item.classList.add(CLASS_NAME_ACTIVE);
           }); // Handle special case when .nav-link is inside .nav-item
 
-          SelectorEngine.prev(listGroup, Selector.NAV_ITEMS).forEach(function (navItem) {
-            SelectorEngine.children(navItem, Selector.NAV_LINKS).forEach(function (item) {
-              return item.classList.add(ClassName.ACTIVE);
+          SelectorEngine__default['default'].prev(listGroup, SELECTOR_NAV_ITEMS).forEach(function (navItem) {
+            SelectorEngine__default['default'].children(navItem, SELECTOR_NAV_LINKS).forEach(function (item) {
+              return item.classList.add(CLASS_NAME_ACTIVE);
             });
           });
         });
       }
 
-      EventHandler.trigger(this._scrollElement, Event.ACTIVATE, {
+      EventHandler__default['default'].trigger(this._scrollElement, EVENT_ACTIVATE, {
         relatedTarget: target
       });
     };
 
     _proto._clear = function _clear() {
-      makeArray(SelectorEngine.find(this._selector)).filter(function (node) {
-        return node.classList.contains(ClassName.ACTIVE);
+      SelectorEngine__default['default'].find(this._selector).filter(function (node) {
+        return node.classList.contains(CLASS_NAME_ACTIVE);
       }).forEach(function (node) {
-        return node.classList.remove(ClassName.ACTIVE);
+        return node.classList.remove(CLASS_NAME_ACTIVE);
       });
     } // Static
     ;
 
     ScrollSpy.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
-        var data = Data.getData(this, DATA_KEY);
+        var data = Data__default['default'].getData(this, DATA_KEY);
 
         var _config = typeof config === 'object' && config;
 
@@ -429,7 +349,7 @@
     };
 
     ScrollSpy.getInstance = function getInstance(element) {
-      return Data.getData(element, DATA_KEY);
+      return Data__default['default'].getData(element, DATA_KEY);
     };
 
     _createClass(ScrollSpy, null, [{
@@ -453,9 +373,9 @@
    */
 
 
-  EventHandler.on(window, Event.LOAD_DATA_API, function () {
-    makeArray(SelectorEngine.find(Selector.DATA_SPY)).forEach(function (spy) {
-      return new ScrollSpy(spy, Manipulator.getDataAttributes(spy));
+  EventHandler__default['default'].on(window, EVENT_LOAD_DATA_API, function () {
+    SelectorEngine__default['default'].find(SELECTOR_DATA_SPY).forEach(function (spy) {
+      return new ScrollSpy(spy, Manipulator__default['default'].getDataAttributes(spy));
     });
   });
   var $ = getjQuery();
@@ -480,5 +400,5 @@
 
   return ScrollSpy;
 
-}));
+})));
 //# sourceMappingURL=scrollspy.js.map

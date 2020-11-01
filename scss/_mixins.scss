@@ -12,7 +12,7 @@
 @import "mixins/breakpoints";
 @import "mixins/image";
 @import "mixins/resize";
-@import "mixins/screen-reader";
+@import "mixins/visually-hidden";
 @import "mixins/reset-text";
 @import "mixins/text-truncate";
 
@@ -27,10 +27,9 @@
 @import "mixins/lists";
 @import "mixins/list-group";
 @import "mixins/forms";
-@import "mixins/table-row";
+@import "mixins/table-variants";
 
 // Skins
-@import "mixins/background-variant";
 @import "mixins/border-radius";
 @import "mixins/box-shadow";
 @import "mixins/gradients";
@@ -38,5 +37,5 @@
 
 // Layout
 @import "mixins/clearfix";
-@import "mixins/grid-framework";
+@import "mixins/container";
 @import "mixins/grid";

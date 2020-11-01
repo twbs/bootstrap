@@ -17,3 +17,8 @@
   code: ja
   description: Bootstrap 4 日本語リファレンス
   url: https://getbootstrap.jp/
+
+- name: Russian
+  code: ru
+  description: Bootstrap 5 на русском
+  url: https://getbootstrap.su/

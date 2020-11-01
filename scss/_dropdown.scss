@@ -21,7 +21,7 @@
   z-index: $zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
   min-width: $dropdown-min-width;
-  padding: $dropdown-padding-y 0;
+  padding: $dropdown-padding-y $dropdown-padding-x;
   margin: $dropdown-spacer 0 0; // override default ul
   @include font-size($dropdown-font-size);
   color: $dropdown-color;
@@ -34,6 +34,7 @@
   @include box-shadow($dropdown-box-shadow);
 }
 
+// scss-docs-start responsive-breakpoints
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
@@ -49,6 +50,7 @@
     }
   }
 }
+// scss-docs-end responsive-breakpoints
 
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 // Just add .dropup after the standard .dropdown class and you're set.
@@ -130,6 +132,7 @@
   font-weight: $font-weight-normal;
   color: $dropdown-link-color;
   text-align: inherit; // For `<button>`s
+  text-decoration: if($link-decoration == none, null, none);
   white-space: nowrap; // prevent links from randomly breaking onto new lines
   background-color: transparent; // For `<button>`s
   border: 0; // For `<button>`s
@@ -149,7 +152,7 @@
   &:hover,
   &:focus {
     color: $dropdown-link-hover-color;
-    text-decoration: none;
+    text-decoration: if($link-hover-decoration == underline, none, null);
     @include gradient-bg($dropdown-link-hover-bg);
   }
 
@@ -166,9 +169,7 @@
     pointer-events: none;
     background-color: transparent;
     // Remove CSS gradients if they're enabled
-    @if $enable-gradients {
-      background-image: none;
-    }
+    background-image: if($enable-gradients, none, null);
   }
 }
 
@@ -179,7 +180,7 @@
 // Dropdown section headers
 .dropdown-header {
   display: block;
-  padding: $dropdown-padding-y $dropdown-item-padding-x;
+  padding: $dropdown-header-padding;
   margin-bottom: 0; // for use with heading elements
   @include font-size($font-size-sm);
   color: $dropdown-header-color;
@@ -191,4 +192,45 @@
   display: block;
   padding: $dropdown-item-padding-y $dropdown-item-padding-x;
   color: $dropdown-link-color;
+}
+
+// Dark dropdowns
+.dropdown-menu-dark {
+  color: $dropdown-dark-color;
+  background-color: $dropdown-dark-bg;
+  border-color: $dropdown-dark-border-color;
+  @include box-shadow($dropdown-dark-box-shadow);
+
+  .dropdown-item {
+    color: $dropdown-dark-link-color;
+
+    &:hover,
+    &:focus {
+      color: $dropdown-dark-link-hover-color;
+      @include gradient-bg($dropdown-dark-link-hover-bg);
+    }
+
+    &.active,
+    &:active {
+      color: $dropdown-dark-link-active-color;
+      @include gradient-bg($dropdown-dark-link-active-bg);
+    }
+
+    &.disabled,
+    &:disabled {
+      color: $dropdown-dark-link-disabled-color;
+    }
+  }
+
+  .dropdown-divider {
+    border-color: $dropdown-dark-divider-bg;
+  }
+
+  .dropdown-item-text {
+    color: $dropdown-dark-link-color;
+  }
+
+  .dropdown-header {
+    color: $dropdown-dark-header-color;
+  }
 }
