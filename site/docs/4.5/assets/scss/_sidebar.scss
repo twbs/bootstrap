@@ -66,21 +66,16 @@
 }
 
 .bd-links {
+  width: 100%;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  margin-right: -15px;
-  margin-left: -15px;
+  border-top: 1px solid rgba(0, 0, 0, .05);
 
   @include media-breakpoint-up(md) {
     @supports (position: sticky) {
       max-height: subtract(100vh, 9rem);
       overflow-y: auto;
     }
-  }
-
-  // Override collapse behaviors
-  @include media-breakpoint-up(md) {
-    display: block !important;
   }
 }
 
@@ -89,7 +84,6 @@
   padding: 1rem 15px;
   margin-right: -15px;
   margin-left: -15px;
-  border-bottom: 1px solid rgba(0, 0, 0, .05);
 
   .form-control:focus {
     border-color: $bd-purple-bright;
