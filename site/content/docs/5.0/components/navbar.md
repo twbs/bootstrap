@@ -403,7 +403,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
   </nav>
 </div>
 
-{{< highlight html >}}
+```html
 <nav class="navbar navbar-dark bg-dark">
   <!-- Navbar content -->
 </nav>
@@ -415,7 +415,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
   <!-- Navbar content -->
 </nav>
-{{< /highlight >}}
+```
 
 ## Containers
 

@@ -31,22 +31,22 @@ Keep reading to see how popovers work with some examples.
 
 One way to initialize all popovers on a page would be to select them by their `data-toggle` attribute:
 
-{{< highlight js >}}
+```js
 var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
 var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   return new bootstrap.Popover(popoverTriggerEl)
 })
-{{< /highlight >}}
+```
 
 ## Example: Using the `container` option
 
 When you have some styles on a parent element that interfere with a popover, you'll want to specify a custom `container` so that the popover's HTML appears within that element instead.
 
-{{< highlight js >}}
+```js
 var popover = new bootstrap.Popover(document.querySelector('.example-popover'), {
   container: 'body'
 })
-{{< /highlight >}}
+```
 
 ## Example
 
@@ -75,7 +75,7 @@ Four options are available: top, right, bottom, and left aligned.
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
   Popover on top
 </button>
@@ -92,7 +92,7 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
 <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
   Popover on left
 </button>
-{{< /highlight >}}
+```
 
 ### Dismiss on next click
 
@@ -108,11 +108,11 @@ For proper cross-browser and cross-platform behavior, you must use the `<a>` tag
 <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
 {{< /example >}}
 
-{{< highlight js >}}
+```js
 var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
   trigger: 'focus'
 })
-{{< /highlight >}}
+```
 
 ### Disabled elements
 
@@ -130,10 +130,10 @@ For disabled popover triggers, you may also prefer `data-trigger="hover"` so tha
 
 Enable popovers via JavaScript:
 
-{{< highlight js >}}
+```js
 var exampleEl = document.getElementById('example')
 var popover = new bootstrap.Popover(exampleEl, options)
-{{< /highlight >}}
+```
 
 {{< callout warning >}}
 ### Making popovers work for keyboard and assistive technology users
@@ -307,58 +307,74 @@ Options for individual popovers can alternatively be specified through the use o
 
 Reveals an element's popover. **Returns to the caller before the popover has actually been shown** (i.e. before the `shown.bs.popover` event occurs). This is considered a "manual" triggering of the popover. Popovers whose title and content are both zero-length are never displayed.
 
-{{< highlight js >}}myPopover.show(){{< /highlight >}}
+```js
+myPopover.show()
+```
 
 #### hide
 
 Hides an element's popover. **Returns to the caller before the popover has actually been hidden** (i.e. before the `hidden.bs.popover` event occurs). This is considered a "manual" triggering of the popover.
 
-{{< highlight js >}}myPopover.hide(){{< /highlight >}}
+```js
+myPopover.hide()
+```
 
 #### toggle
 
 Toggles an element's popover. **Returns to the caller before the popover has actually been shown or hidden** (i.e. before the `shown.bs.popover` or `hidden.bs.popover` event occurs). This is considered a "manual" triggering of the popover.
 
-{{< highlight js >}}myPopover.toggle(){{< /highlight >}}
+```js
+myPopover.toggle()
+```
 
 #### dispose
 
-Hides and destroys an element's popover. Popovers that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
+Hides and destroys an element's popover (Removes stored data on the DOM element). Popovers that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
 
-{{< highlight js >}}myPopover.dispose(){{< /highlight >}}
+```js
+myPopover.dispose()
+```
 
 #### enable
 
 Gives an element's popover the ability to be shown. **Popovers are enabled by default.**
 
-{{< highlight js >}}myPopover.enable(){{< /highlight >}}
+```js
+myPopover.enable()
+```
 
 #### disable
 
 Removes the ability for an element's popover to be shown. The popover will only be able to be shown if it is re-enabled.
 
-{{< highlight js >}}myPopover.disable(){{< /highlight >}}
+```js
+myPopover.disable()
+```
 
 #### toggleEnabled
 
 Toggles the ability for an element's popover to be shown or hidden.
 
-{{< highlight js >}}myPopover.toggleEnabled(){{< /highlight >}}
+```js
+myPopover.toggleEnabled()
+```
 
 #### update
 
 Updates the position of an element's popover.
 
-{{< highlight js >}}myPopover.update(){{< /highlight >}}
+```js
+myPopover.update()
+```
 
 #### getInstance
 
 *Static* method which allows you to get the popover instance associated with a DOM element
 
-{{< highlight js >}}
+```js
 var exampleTriggerEl = document.getElementById('example')
 var popover = bootstrap.Popover.getInstance(exampleTriggerEl) // Returns a Bootstrap popover instance
-{{< /highlight >}}
+```
 
 ### Events
 
@@ -393,9 +409,9 @@ var popover = bootstrap.Popover.getInstance(exampleTriggerEl) // Returns a Boots
   </tbody>
 </table>
 
-{{< highlight js >}}
+```js
 var myPopoverTrigger = document.getElementById('myPopover')
 myPopoverTrigger.addEventListener('hidden.bs.popover', function () {
   // do something...
 })
-{{< /highlight >}}
+```

@@ -10,7 +10,7 @@ toc: true
 
 Scrollspy has a few requirements to function properly:
 
-- It must be used on a Bootstrap [nav component]({{< docsref "/components/navs" >}}) or [list group]({{< docsref "/components/list-group" >}}).
+- It must be used on a Bootstrap [nav component]({{< docsref "/components/navs-tabs" >}}) or [list group]({{< docsref "/components/list-group" >}}).
 - Scrollspy requires `position: relative;` on the element you're spying on, usually the `<body>`.
 - Anchors (`<a>`) are required and must point to an element with that `id`.
 
@@ -63,7 +63,7 @@ Scroll the area below the navbar and watch the active class change. The dropdown
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <nav id="navbar-example2" class="navbar navbar-light bg-light px-3">
   <a class="navbar-brand" href="#">Navbar</a>
   <ul class="nav nav-pills">
@@ -96,7 +96,7 @@ Scroll the area below the navbar and watch the active class change. The dropdown
   <h4 id="three">three</h4>
   <p>...</p>
 </div>
-{{< /highlight >}}
+```
 
 ## Example with nested nav
 
@@ -143,7 +143,7 @@ Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its p
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <nav id="navbar-example3" class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
   <nav class="nav nav-pills flex-column">
@@ -177,7 +177,7 @@ Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its p
   <h5 id="item-3-2">Item 3-2</h5>
   <p>...</p>
 </div>
-{{< /highlight >}}
+```
 
 ## Example with list-group
 
@@ -208,7 +208,7 @@ Scrollspy also works with `.list-group`s. Scroll the area next to the list group
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div id="list-example" class="list-group">
   <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
   <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
@@ -225,7 +225,7 @@ Scrollspy also works with `.list-group`s. Scroll the area next to the list group
   <h4 id="list-item-4">Item 4</h4>
   <p>...</p>
 </div>
-{{< /highlight >}}
+```
 
 
 ## Usage
@@ -234,13 +234,13 @@ Scrollspy also works with `.list-group`s. Scroll the area next to the list group
 
 To easily add scrollspy behavior to your topbar navigation, add `data-spy="scroll"` to the element you want to spy on (most typically this would be the `<body>`). Then add the `data-target` attribute with the ID or class of the parent element of any Bootstrap `.nav` component.
 
-{{< highlight css >}}
+```css
 body {
   position: relative;
 }
-{{< /highlight >}}
+```
 
-{{< highlight html >}}
+```html
 <body data-spy="scroll" data-target="#navbar-example">
   ...
   <div id="navbar-example">
@@ -250,17 +250,17 @@ body {
   </div>
   ...
 </body>
-{{< /highlight >}}
+```
 
 ### Via JavaScript
 
 After adding `position: relative;` in your CSS, call the scrollspy via JavaScript:
 
-{{< highlight js >}}
+```js
 var scrollSpy = new bootstrap.ScrollSpy(document.body, {
   target: '#navbar-example'
 })
-{{< /highlight >}}
+```
 
 {{< callout danger >}}
 #### Resolvable ID targets required
@@ -280,26 +280,26 @@ Target elements that are not visible will be ignored and their corresponding nav
 
 When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:
 
-{{< highlight js >}}
+```js
 var dataSpyList = [].slice.call(document.querySelectorAll('[data-spy="scroll"]'))
 dataSpyList.forEach(function (dataSpyEl) {
   bootstrap.ScrollSpy.getInstance(dataSpyEl)
     .refresh()
 })
-{{< /highlight >}}
+```
 
 #### dispose
 
-Destroys an element's scrollspy.
+Destroys an element's scrollspy. (Removes stored data on the DOM element)
 
 #### getInstance
 
 *Static* method which allows you to get the scrollspy instance associated with a DOM element
 
-{{< highlight js >}}
+```js
 var scrollSpyContentEl = document.getElementById('content')
 var scrollSpy = bootstrap.ScrollSpy.getInstance(scrollSpyContentEl) // Returns a Bootstrap scrollspy instance
-{{< /highlight >}}
+```
 
 ### Options
 
@@ -353,9 +353,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </tbody>
 </table>
 
-{{< highlight js >}}
+```js
 var firstScrollSpyEl = document.querySelector('[data-spy="scroll"]')
 firstScrollSpyEl.addEventListener('activate.bs.scrollspy', function () {
   // do something...
 })
-{{< /highlight >}}
+```

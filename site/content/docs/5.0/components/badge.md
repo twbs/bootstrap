@@ -45,7 +45,7 @@ Use our background utility classes to quickly change the appearance of a badge. 
 {{< example >}}
 {{< badge.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
-<span class="badge bg-{{ .name }}{{ if or (eq .name "light") (eq .name "warning") }} text-dark{{ end }}">{{ .name | title }}</span>{{- end -}}
+<span class="badge bg-{{ .name }}{{ with .contrast_color }} text-{{ . }}{{ end }}">{{ .name | title }}</span>{{- end -}}
 {{< /badge.inline >}}
 {{< /example >}}
 
@@ -60,6 +60,6 @@ Use the `.rounded-pill` utility class to make badges more rounded with a larger 
 {{< example >}}
 {{< badge.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
-<span class="badge rounded-pill bg-{{ .name }}{{ if or (eq .name "light") (eq .name "warning") }} text-dark{{ end }}">{{ .name | title }}</span>{{- end -}}
+<span class="badge rounded-pill bg-{{ .name }}{{ with .contrast_color }} text-{{ . }}{{ end }}">{{ .name | title }}</span>{{- end -}}
 {{< /badge.inline >}}
 {{< /example >}}

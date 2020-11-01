@@ -47,7 +47,7 @@ Where *size* is one of:
 
 Here are some representative examples of these classes:
 
-{{< highlight scss >}}
+```scss
 .mt-0 {
   margin-top: 0 !important;
 }
@@ -64,7 +64,7 @@ Here are some representative examples of these classes:
 .p-3 {
   padding: $spacer !important;
 }
-{{< /highlight >}}
+```
 
 ### Horizontal centering
 
@@ -76,11 +76,11 @@ Additionally, Bootstrap also includes an `.mx-auto` class for horizontally cente
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="mx-auto" style="width: 200px;">
   Centered element
 </div>
-{{< /highlight >}}
+```
 
 ### Negative margin
 
@@ -88,8 +88,8 @@ In CSS, `margin` properties can utilize negative values (`padding` cannot). Thes
 
 The syntax is nearly the same as the default, positive margin utilities, but with the addition of `n` before the requested size. Here's an example class that's the opposite of `.mt-1`:
 
-{{< highlight scss >}}
+```scss
 .mt-n1 {
   margin-top: -0.25rem !important;
 }
-{{< /highlight >}}
+```

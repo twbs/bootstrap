@@ -27,7 +27,7 @@ const defaultPreventedPreservedOnDispatch = (() => {
 })()
 
 const scopeSelectorRegex = /:scope\b/
-const supportScopeQuery = (() => {
+const supportsScopeQuery = (() => {
   const element = document.createElement('div')
 
   try {
@@ -39,7 +39,7 @@ const supportScopeQuery = (() => {
   return true
 })()
 
-if (!supportScopeQuery) {
+if (!supportsScopeQuery) {
   find = function (selector) {
     if (!scopeSelectorRegex.test(selector)) {
       return this.querySelectorAll(selector)
@@ -71,11 +71,7 @@ if (!supportScopeQuery) {
 
     const matches = find.call(this, selector)
 
-    if (typeof matches[0] !== 'undefined') {
-      return matches[0]
-    }
-
-    return null
+    return matches[0] ? matches[0] : null
   }
 }
 

@@ -24,14 +24,32 @@ For instance, assuming you're using your own JavaScript bundler like Webpack or 
 ```js
 // Import just what we need
 
-// If you're importing tooltips or popovers, be sure to include the Popper.js dependency
-// import "../../node_modules/popper.js/dist/popper.min.js";
-
-import "../../node_modules/bootstrap/js/dist/util.js";
-import "../../node_modules/bootstrap/js/dist/modal.js";
+// import 'bootstrap/js/dist/alert';
+// import 'bootstrap/js/dist/button';
+// import 'bootstrap/js/dist/carousel';
+// import 'bootstrap/js/dist/collapse';
+// import 'bootstrap/js/dist/dropdown';
+import 'bootstrap/js/dist/modal';
+// import 'bootstrap/js/dist/popover';
+// import 'bootstrap/js/dist/scrollspy';
+// import 'bootstrap/js/dist/tab';
+// import 'bootstrap/js/dist/toast';
+// import 'bootstrap/js/dist/tooltip';
 ```
 
-This way, you're not including any JavaScript you don't intend to use for components like buttons, carousels, and tooltips.
+This way, you're not including any JavaScript you don't intend to use for components like buttons, carousels, and tooltips. If you're importing dropdowns, tooltips or popovers, be sure to list the Popper.js dependency in your `package.json` file.
+
+{{< callout info >}}
+### Default Exports
+
+Files in `bootstrap/js/dist` use the **default export**, so if you want to use one of them you have to do the following:
+
+```js
+import Modal from 'bootstrap/js/dist/modal'
+
+const modal = new Modal(document.getElementById('myModal'))
+```
+{{< /callout >}}
 
 ## Autoprefixer .browserslistrc
 
