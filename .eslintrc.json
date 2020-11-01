@@ -21,7 +21,12 @@
       "warn",
       5
     ],
-    "new-cap": "off",
+    "new-cap": [
+      "error",
+      {
+        "properties": false
+      }
+    ],
     "no-console": "error",
     "no-mixed-operators": "off",
     "no-negated-condition": "off",
