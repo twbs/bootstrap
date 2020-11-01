@@ -25,6 +25,8 @@ toc: true
 
 - The longstanding [Missing border radius on input group with validation feedback bug](https://github.com/twbs/bootstrap/issues/25110) is finally fixed by adding an additional `.has-validation` class to input groups with validation.
 - Promoted the Floating labels example to fully supported form component. [See the new Floating labels page.]({{< docsref "/forms/floating-labels" >}})
+- File inputs now use the `.form-control` class and don't require JavaScript, additional HTML, or additional classes. [See #31955](https://github.com/twbs/bootstrap/pull/31955).
+- Added `cursor:pointer` to `.form-control-color` color inputs.
 
 ### Utilities
 
@@ -266,7 +268,7 @@ Changes to Reboot, typography, tables, and more.
 - Updated file input component with the same overall design, but improved HTML.
   - Refactored `.form-file` markup to resolve some visual bugs while allowing translation and button text changes via HTML instead of CSS.
   - Dropped native `.form-control-file` and `.form-control-range` components entirely.
-  - Renamed `.custom-file` to `.form-file` (including variables).
+  - Renamed `.custom-file` to `.form-file` (including variables). **Watch out:** `.form-file` was later on dropped in `v5.0.0-alpha3`, now you can use `.form-control`.
   - Added support for `:focus` and `:disabled` styles.
 - Renamed `.custom-range` to `.form-range` (including variables).
 - Dropped `.form-group` for margin utilities (we've replaced our docs examples with `.mb-3`).
