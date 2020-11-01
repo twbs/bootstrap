@@ -387,8 +387,20 @@ $utilities: map-merge(
       values: $spacers
     ),
     // Text
+    "font-size": (
+      rfs: true,
+      property: font-size,
+      class: fs,
+      values: $font-sizes
+    ),
+    "font-style": (
+      property: font-style,
+      class: fst,
+      values: italic normal
+    ),
     "font-weight": (
       property: font-weight,
+      class: fw,
       values: (
         light: $font-weight-light,
         lighter: $font-weight-lighter,
@@ -462,11 +474,6 @@ $utilities: map-merge(
       property: text-decoration,
       values: none underline line-through
     ),
-    "font-style": (
-      property: font-style,
-      class: font,
-      values: italic normal
-    ),
     "word-wrap": (
       property: word-wrap word-break,
       class: text,
@@ -491,11 +498,12 @@ $utilities: map-merge(
       class: rounded,
       values: (
         null: $border-radius,
-        sm: $border-radius-sm,
-        lg: $border-radius-lg,
-        circle: 50%,
-        pill: $rounded-pill,
         0: 0,
+        1: $border-radius-sm,
+        2: $border-radius,
+        3: $border-radius-lg,
+        circle: 50%,
+        pill: $border-radius-pill
       )
     ),
     "rounded-top": (
