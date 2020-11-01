@@ -575,7 +575,15 @@ legend {
   padding: 0;
 }
 
-// 1. Change font properties to `inherit` in Safari.
+
+// Inherit font family and line height for file input buttons
+
+// stylelint-disable-next-line selector-pseudo-element-no-unknown
+::file-selector-button {
+  font: inherit;
+}
+
+// 1. Change font properties to `inherit`
 // 2. Correct the inability to style clickable types in iOS and Safari.
 
 ::-webkit-file-upload-button {
