@@ -394,4 +394,23 @@ describe('Util', () => {
       expect(Util.getjQuery()).toEqual(null)
     })
   })
+
+  describe('onDOMContentLoaded', () => {
+    it('should execute callback when DOMContentLoaded is fired', () => {
+      const spy = jasmine.createSpy()
+      spyOnProperty(document, 'readyState').and.returnValue('loading')
+      Util.onDOMContentLoaded(spy)
+      window.document.dispatchEvent(new Event('DOMContentLoaded', {
+        bubbles: true,
+        cancelable: true
+      }))
+      expect(spy).toHaveBeenCalled()
+    })
+
+    it('should execute callback if readyState is not "loading"', () => {
+      const spy = jasmine.createSpy()
+      Util.onDOMContentLoaded(spy)
+      expect(spy).toHaveBeenCalled()
+    })
+  })
 })
