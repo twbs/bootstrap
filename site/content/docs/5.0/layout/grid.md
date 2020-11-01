@@ -69,33 +69,33 @@ As noted above, each of these breakpoints have their own container, unique class
       <th scope="col"></th>
       <th scope="col">
         xs<br>
-        <span class="font-weight-normal">&lt;576px</span>
+        <span class="fw-normal">&lt;576px</span>
       </th>
       <th scope="col">
         sm<br>
-        <span class="font-weight-normal">&ge;576px</span>
+        <span class="fw-normal">&ge;576px</span>
       </th>
       <th scope="col">
         md<br>
-        <span class="font-weight-normal">&ge;768px</span>
+        <span class="fw-normal">&ge;768px</span>
       </th>
       <th scope="col">
         lg<br>
-        <span class="font-weight-normal">&ge;992px</span>
+        <span class="fw-normal">&ge;992px</span>
       </th>
       <th scope="col">
         xl<br>
-        <span class="font-weight-normal">&ge;1200px</span>
+        <span class="fw-normal">&ge;1200px</span>
       </th>
       <th scope="col">
         xxl<br>
-        <span class="font-weight-normal">&ge;1400px</span>
+        <span class="fw-normal">&ge;1400px</span>
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th class="text-nowrap" scope="row">Container <code class="font-weight-normal">max-width</code></th>
+      <th class="text-nowrap" scope="row">Container <code class="fw-normal">max-width</code></th>
       <td>None (auto)</td>
       <td>540px</td>
       <td>720px</td>
