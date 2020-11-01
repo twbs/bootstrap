@@ -12,9 +12,9 @@
   var inputElement = document.getElementById('search-input')
   var siteDocsVersion = inputElement.getAttribute('data-docs-version')
 
-  document.addEventListener('keydown', function (e) {
-    if (e.ctrlKey && e.key === '/') {
-      e.preventDefault()
+  document.addEventListener('keydown', function (event) {
+    if (event.ctrlKey && event.key === '/') {
+      event.preventDefault()
       inputElement.focus()
     }
   })
