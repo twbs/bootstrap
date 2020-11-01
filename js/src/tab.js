@@ -240,7 +240,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
- * add .tab to jQuery only if jQuery is present
+ * add .Tab to jQuery only if jQuery is present
  */
 
 onDOMContentLoaded(() => {

@@ -322,6 +322,7 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
+ * add .ScrollSpy to jQuery only if jQuery is present
  */
 
 onDOMContentLoaded(() => {

@@ -798,7 +798,7 @@ class Tooltip {
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
- * add .tooltip to jQuery only if jQuery is present
+ * add .Tooltip to jQuery only if jQuery is present
  */
 
 onDOMContentLoaded(() => {

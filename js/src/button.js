@@ -101,7 +101,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, event => {
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
- * add .button to jQuery only if jQuery is present
+ * add .Button to jQuery only if jQuery is present
  */
 
 onDOMContentLoaded(() => {

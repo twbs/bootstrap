@@ -151,7 +151,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DISMISS, Alert.handleDi
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
- * add .alert to jQuery only if jQuery is present
+ * add .Alert to jQuery only if jQuery is present
  */
 
 onDOMContentLoaded(() => {
