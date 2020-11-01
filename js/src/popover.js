@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { getjQuery } from './util/index'
+import { getjQuery, onDOMContentLoaded } from './util/index'
 import Data from './dom/data'
 import SelectorEngine from './dom/selector-engine'
 import Tooltip from './tooltip'
@@ -167,22 +167,24 @@ class Popover extends Tooltip {
   }
 }
 
-const $ = getjQuery()
-
 /**
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
  */
-/* istanbul ignore if */
-if ($) {
-  const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = Popover.jQueryInterface
-  $.fn[NAME].Constructor = Popover
-  $.fn[NAME].noConflict = () => {
-    $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Popover.jQueryInterface
+
+onDOMContentLoaded(() => {
+  const $ = getjQuery()
+  /* istanbul ignore if */
+  if ($) {
+    const JQUERY_NO_CONFLICT = $.fn[NAME]
+    $.fn[NAME] = Popover.jQueryInterface
+    $.fn[NAME].Constructor = Popover
+    $.fn[NAME].noConflict = () => {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Popover.jQueryInterface
+    }
   }
-}
+})
 
 export default Popover

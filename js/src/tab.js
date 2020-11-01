@@ -7,6 +7,7 @@
 
 import {
   getjQuery,
+  onDOMContentLoaded,
   TRANSITION_END,
   emulateTransitionEnd,
   getElementFromSelector,
@@ -235,23 +236,25 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   data.show()
 })
 
-const $ = getjQuery()
-
 /**
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
  * add .tab to jQuery only if jQuery is present
  */
-/* istanbul ignore if */
-if ($) {
-  const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = Tab.jQueryInterface
-  $.fn[NAME].Constructor = Tab
-  $.fn[NAME].noConflict = () => {
-    $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Tab.jQueryInterface
+
+onDOMContentLoaded(() => {
+  const $ = getjQuery()
+  /* istanbul ignore if */
+  if ($) {
+    const JQUERY_NO_CONFLICT = $.fn[NAME]
+    $.fn[NAME] = Tab.jQueryInterface
+    $.fn[NAME].Constructor = Tab
+    $.fn[NAME].noConflict = () => {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Tab.jQueryInterface
+    }
   }
-}
+})
 
 export default Tab
