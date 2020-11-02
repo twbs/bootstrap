@@ -317,7 +317,7 @@ describe('Tooltip', () => {
 
         expect(tooltipShown).toBeDefined()
         expect(tooltipEl.getAttribute('aria-describedby')).toEqual(tooltipShown.getAttribute('id'))
-        expect(tooltipShown.getAttribute('id').indexOf('tooltip') !== -1).toEqual(true)
+        expect(tooltipShown.getAttribute('id')).toContain('tooltip')
         done()
       })
 
