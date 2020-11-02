@@ -56,7 +56,7 @@ describe('Manipulator', () => {
 
   describe('getDataAttributes', () => {
     it('should return empty object for null', () => {
-      expect(Manipulator.getDataAttributes(null), {})
+      expect(Manipulator.getDataAttributes(null)).toEqual({})
       expect().nothing()
     })
 
