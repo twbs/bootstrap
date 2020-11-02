@@ -1170,7 +1170,7 @@ $(function () {
       })
 
     var tooltip = $trigger.data('bs.tooltip')
-    assert.strictEqual(tooltip.config.template.indexOf('script'), -1)
+    assert.strictEqual(tooltip.config.template.indexOf('href="javascript:alert(7)"'), -1)
   })
 
   QUnit.test('should allow custom sanitization rules', function (assert) {
