@@ -1,8 +1,16 @@
-# Enforce Unix newlines
+# Enforce POSIX newlines
 * text=auto eol=lf
 
+# Git control files should always be POSIX text files
+.git*   text
+
 # Don't diff or textually merge source maps
-*.map binary
+*.map   binary
 
 bootstrap.css linguist-vendored=false
 bootstrap.js linguist-vendored=false
+
+# Images should not be modified
+
+*.jpg   binary
+*.png   binary
