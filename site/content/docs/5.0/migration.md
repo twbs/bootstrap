@@ -15,6 +15,10 @@ toc: true
 
 ## v5.0.0-alpha3
 
+### JavaScript
+
+- Data attributes for all JavaScript plugins are now namespaced to help distinguish Bootstrap functionality from third parties and your own code. For example, we use `data-bs-toggle` instead of `data-toggle`.
+
 ### Browser support
 
 - Dropped support for Microsoft Edge Legacy. See [here](#browser-support-1) for the previous browser support changes.
