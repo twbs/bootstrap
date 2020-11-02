@@ -20,7 +20,7 @@ describe('Sanitizer', () => {
 
       const result = sanitizeHtml(template, DefaultAllowlist, null)
 
-      expect(result).not.toContain('script')
+      expect(result).not.toContain('href="javascript:alert(7)')
     })
 
     it('should allow aria attributes and safe attributes', () => {
