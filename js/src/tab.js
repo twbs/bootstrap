@@ -38,7 +38,7 @@ const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 
 const SELECTOR_DROPDOWN = '.dropdown'
-const SELECTOR_NAV_LIST_GROUP = '.nav, .list-group'
+const SELECTOR_NAV_PARENT = '.nav, .list-group, .btn-toolbar'
 const SELECTOR_ACTIVE = '.active'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]'
 const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
@@ -68,7 +68,7 @@ class Tab extends BaseComponent {
 
     let previous
     const target = getElementFromSelector(this._element)
-    const listElement = this._element.closest(SELECTOR_NAV_LIST_GROUP)
+    const listElement = this._element.closest(SELECTOR_NAV_PARENT)
 
     if (listElement) {
       previous = SelectorEngine.find(SELECTOR_ACTIVE, listElement)
