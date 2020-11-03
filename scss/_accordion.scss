@@ -36,7 +36,6 @@
     background-image: escape-svg($accordion-button-icon);
     background-repeat: no-repeat;
     background-size: $accordion-icon-width;
-    transform-origin: center center;
     @include transition($accordion-icon-transition);
   }
 
