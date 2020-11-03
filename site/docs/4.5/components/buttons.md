@@ -49,6 +49,11 @@ In need of a button, but not the hefty background colors they bring? Replace the
 {% endcapture %}
 {% include example.html content=example %}
 
+{% capture callout %}
+Some of the button styles use a relatively light foreground color, and should only be used on a dark background in order to have sufficient contrast.
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
+
 ## Sizes
 
 Fancy larger or smaller buttons? Add `.btn-lg` or `.btn-sm` for additional sizes.
