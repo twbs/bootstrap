@@ -792,7 +792,7 @@ $form-range-thumb-transition:              background-color .15s ease-in-out, bo
 
 $form-file-button-color:          $input-color !default;
 $form-file-button-bg:             $input-group-addon-bg !default;
-$form-file-button-hover-bg:       shade-color($input-group-addon-bg, 5%) !default;
+$form-file-button-hover-bg:       shade-color($form-file-button-bg, 5%) !default;
 
 $form-floating-height:            add(3.5rem, $input-height-border) !default;
 $form-floating-padding-x:         $input-padding-x !default;
