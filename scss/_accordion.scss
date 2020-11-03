@@ -3,6 +3,7 @@
 //
 
 .accordion-button {
+  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
@@ -39,8 +40,12 @@
     @include transition($accordion-icon-transition);
   }
 
+  &:hover {
+    z-index: 2;
+  }
+
   &:focus {
-    position: relative;
+    z-index: 3;
     outline: 0;
     box-shadow: $btn-focus-box-shadow;
   }
