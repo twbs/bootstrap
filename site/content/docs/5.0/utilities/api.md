@@ -203,19 +203,13 @@ Output:
 }
 ```
 
-### Remove utilities
+## Using the API
 
-Utilities can also be removed by changing the group key to `null`:
+Now that you're familiar with how the utilities API works, learn how to add your own custom classes and modify our default utilities.
 
-```scss
-$utilities: (
-  "float": null,
-);
-```
+### Add utilities
 
-## Adding to existing utilities
-
-Add new utilities with `map-merge`.Start by importing the utilities stylesheet, then use `map-merge` to add new properties and values.s
+New utilities can be added to the default `$utilities` map with a `map-merge`. Make sure our `_utilities.scss` is imported first, then use the `map-merge` to add your additional utilities. For example, here's how to add a responsive `cursor` utility with three values.
 
 ```scss
 @import "bootstrap/scss/utilities";
@@ -223,18 +217,19 @@ Add new utilities with `map-merge`.Start by importing the utilities stylesheet, 
 $utilities: map-merge(
   $utilities,
   (
-    "font-size": (
+    "cursor": (
+      property: cursor,
+      class: cursor
       responsive: true,
-      property: font-weight,
-      values: $display-font-sizes,
+      values: auto pointer grab,
     )
   )
 );
 ```
 
-## Modifying existing utilities
+### Modify utilities
 
-Modify existing utilities with `map-get` and `map-merge`. Once again, be sure to import the utilities stylesheet before your custom utilities.
+Modify existing utilities in the default `$utilities` map with `map-get` and `map-merge` functions. In the example below, we're adding an additional value to the `width` utilities. Start with an initial `map-merge` and then specify which utility you want to modify. From there, fetch the nested `"width"` map with `map-get` to access and modify the utility's options and values.
 
 ```scss
 @import "bootstrap/scss/utilities";
@@ -251,6 +246,21 @@ $utilities: map-merge(
         ),
       ),
     ),
+  )
+);
+```
+
+### Remove utilities
+
+Remove any of the default utilities by setting the group key to `null`. For example, to remove all our `width` utilities, create a `$utilities` `map-merge` and add `"width": null` within.
+
+```scss
+@import "bootstrap/scss/utilities";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "width": null
   )
 );
 ```
