@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"{{ with .Page.Params.html_class }} class="{{ . }}"{{ end }}>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="{{ .Site.Params.authors }}">
+    <meta name="generator" content="Hugo {{ hugo.Version }}">
+    <title>{{ .Page.Title | markdownify }} · {{ .Site.Title | markdownify }}</title>
+
+    <link rel="canonical" href="{{ .Permalink }}">
+
+    {{ with .Params.robots -}}
+    <meta name="robots" content="{{ . }}">
+    {{- end }}
+
+    {{ partial "stylesheet" . }}
+    {{ partial "favicons" . }}
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    {{ range .Page.Params.extra_css }}
+    {{ "<!-- Custom styles for this template -->" | safeHTML }}
+    <link href="{{ . }}" rel="stylesheet">
+    {{- end }}
+  </head>
+  <body{{ with .Page.Params.body_class }} class="{{ . }}"{{ end }}>
+    {{ .Content }}
+
+    {{ if ne .Page.Params.include_js false -}}
+      <script src="{{ .Site.Params.cdn.jquery }}" {{ printf "integrity=%q" .Site.Params.cdn.jquery_hash | safeHTMLAttr }} crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/{{ .Site.Params.docs_version }}/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+
+      {{- if eq hugo.Environment "production" -}}
+        <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.min.js" {{ printf "integrity=%q" .Site.Params.cdn.js_bundle_hash | safeHTMLAttr }} crossorigin="anonymous"></script>
+      {{- else -}}
+        <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
+      {{- end }}
+
+      {{ range .Page.Params.extra_js }}
+        <script src="{{ . }}"></script>
+      {{- end }}
+    {{- end }}
+  </body>
+</html>

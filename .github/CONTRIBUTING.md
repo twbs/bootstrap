@@ -142,7 +142,7 @@ and/or [`/bootstrap/js/src/`](https://github.com/twbs/bootstrap/tree/v4-dev/js/s
 
 Similarly, when contributing to Bootstrap's documentation, you should edit the
 documentation source files in
-[the `/bootstrap/site/docs/` directory of the `v4-dev` branch](https://github.com/twbs/bootstrap/tree/v4-dev/site/docs).
+[the `/bootstrap/site/content/docs/` directory of the `v4-dev` branch](https://github.com/twbs/bootstrap/tree/v4-dev/site/content/docs).
 **Do not edit the `gh-pages` branch.** That branch is generated from the
 documentation source files and is managed separately by the Bootstrap Core Team.
 

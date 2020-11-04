@@ -1,0 +1,54 @@
+// stylelint-disable selector-max-combinators, selector-max-type, selector-max-compound-selectors
+
+//
+// Right side table of contents
+//
+
+.bd-toc {
+  @supports (position: sticky) {
+    position: sticky;
+    top: 4rem;
+    height: subtract(100vh, 4rem);
+    overflow-y: auto;
+  }
+  order: 2;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  @include font-size(.875rem);
+
+  nav {
+    padding-left: 0;
+    border-left: 1px solid #eee;
+
+    ul {
+      padding-left: 0;
+
+      ul {
+        padding-left: 1rem;
+      }
+    }
+
+    a code {
+      font: inherit;
+    }
+
+    li {
+      display: block;
+
+      ul li ul {
+        padding-left: 1rem;
+      }
+
+      a {
+        display: block;
+        padding: .125rem 1.5rem;
+        color: #77757a;
+
+        &:hover {
+          color: $blue;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
