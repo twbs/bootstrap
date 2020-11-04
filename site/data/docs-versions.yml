@@ -1,0 +1,46 @@
+- group: v1.x
+  baseurl: "https://getbootstrap.com"
+  description: "Every minor and patch release from v1 is listed below."
+  versions:
+    - v: "1.0.0"
+    - v: "1.1.0"
+    - v: "1.1.1"
+    - v: "1.2.0"
+    - v: "1.3.0"
+    - v: "1.4.0"
+
+- group: v2.x
+  baseurl: "https://getbootstrap.com"
+  description: "Every minor and patch release from v2 is listed below."
+  versions:
+    - v: "2.0.0"
+    - v: "2.0.1"
+    - v: "2.0.2"
+    - v: "2.0.3"
+    - v: "2.0.4"
+    - v: "2.1.0"
+    - v: "2.1.1"
+    - v: "2.2.0"
+    - v: "2.2.1"
+    - v: "2.2.2"
+    - v: "2.3.0"
+    - v: "2.3.1"
+    - v: "2.3.2"
+
+- group: v3.x
+  baseurl: "https://getbootstrap.com/docs"
+  description: "Every minor and patch release from v3 is listed below. Last update was v3.4.1."
+  versions:
+    - v: "3.3"
+    - v: "3.4"
+
+- group: v4.x
+  baseurl: "https://getbootstrap.com/docs"
+  description: "Current major release and its minor versions. Last update was v4.5.3."
+  versions:
+    - v: "4.0"
+    - v: "4.1"
+    - v: "4.2"
+    - v: "4.3"
+    - v: "4.4"
+    - v: "4.5"
