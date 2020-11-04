@@ -12,12 +12,12 @@ sections:
     description: Improve browser default select elements with a custom initial appearance.
   - title: Checks & radios
     description: Use our custom radio buttons and checkboxes in forms for selecting input options.
-  - title: File
-    description: Replace browser default file inputs with our custom version with optional JavaScript.
   - title: Range
     description: Replace browser default range inputs with our custom version.
   - title: Input group
     description: Attach labels and buttons to your inputs for increased semantic value.
+  - title: Floating labels
+    description: Create beautifully simple form labels that float over your input fields.
   - title: Layout
     description: Create inline, horizontal, or complex grid-based layouts with your forms.
   - title: Validation

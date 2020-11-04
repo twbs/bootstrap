@@ -14,7 +14,6 @@ import { defaultPreventedPreservedOnDispatch } from './polyfill'
  * ------------------------------------------------------------------------
  */
 
-const $ = getjQuery()
 const namespaceRegex = /[^.]*(?=\..*)\.|.*/
 const stripNameRegex = /\..*/
 const stripUidRegex = /::\d+$/
@@ -272,6 +271,7 @@ const EventHandler = {
       return null
     }
 
+    const $ = getjQuery()
     const typeEvent = event.replace(stripNameRegex, '')
     const inNamespace = event !== typeEvent
     const isNative = nativeEvents.indexOf(typeEvent) > -1

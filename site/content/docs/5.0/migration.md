@@ -21,6 +21,20 @@ toc: true
 
 - Introduce `$enable-smooth-scroll`, which applies `scroll-behavior: smooth` globally—except for users asking for reduced motion through `prefers-reduced-motion` media query. [See #31877](https://github.com/twbs/bootstrap/pull/31877)
 
+### Forms
+
+- The longstanding [Missing border radius on input group with validation feedback bug](https://github.com/twbs/bootstrap/issues/25110) is finally fixed by adding an additional `.has-validation` class to input groups with validation.
+- Promoted the Floating labels example to fully supported form component. [See the new Floating labels page.]({{< docsref "/forms/floating-labels" >}})
+- File inputs now use the `.form-control` class and don't require JavaScript, additional HTML, or additional classes. [See #31955](https://github.com/twbs/bootstrap/pull/31955).
+- Added `cursor:pointer` to `.form-control-color` color inputs.
+
+### Utilities
+
+- **Text utilities:**
+  - Added `.fs-*` utilities for `font-size` utilities (with RFS enabled). These use the same scale as HTML's default headings (1-6, large to small), and can be modified via Sass map.
+  - Renamed `.font-weight-*` utilities as `.fw-*` for brevity and consistency.
+  - Renamed `.font-style-*` utilities as `.fst-*` for brevity and consistency.
+
 ## v5.0.0-alpha2
 
 ### Sass
@@ -134,6 +148,9 @@ toc: true
   - Some great examples have been added to the docs to show these off.
 - [#31484](https://github.com/twbs/bootstrap/pull/31484): Added new [`border-width` utility]({{< docsref "/utilities/borders#border-width" >}}).
 - [#31473](https://github.com/twbs/bootstrap/pull/31473): The `.d-none` utility was moved in our CSS to give it more weight over other display utilities.
+- Renamed `.text-monospace` to `.font-monospace`.
+- Removed `.text-hide` as it's an antiquated method for hiding text that shouldn't be used anymore.
+- New `line-height` utilities: `.lh-1`, `.lh-sm`, `.lh-base` and `.lh-lg`. See [here]({{< docsref "/utilities/text#line-height" >}}).
 
 ---
 
@@ -251,7 +268,7 @@ Changes to Reboot, typography, tables, and more.
 - Updated file input component with the same overall design, but improved HTML.
   - Refactored `.form-file` markup to resolve some visual bugs while allowing translation and button text changes via HTML instead of CSS.
   - Dropped native `.form-control-file` and `.form-control-range` components entirely.
-  - Renamed `.custom-file` to `.form-file` (including variables).
+  - Renamed `.custom-file` to `.form-file` (including variables). **Watch out:** `.form-file` was later on dropped in `v5.0.0-alpha3`, now you can use `.form-control`.
   - Added support for `:focus` and `:disabled` styles.
 - Renamed `.custom-range` to `.form-range` (including variables).
 - Dropped `.form-group` for margin utilities (we've replaced our docs examples with `.mb-3`).
@@ -316,12 +333,13 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 ### Utilities
 
-- Renamed `.text-monospace` to `.font-monospace`
+### Grid
+
 - Decreased the number of responsive order utilities per breakpoint. The highest order utility with a number now is `.order-5` instead of `.order-12`. [See #28874](https://github.com/twbs/bootstrap/pull/28874).
-- New `line-height` utilities: `.lh-1`, `.lh-sm`, `.lh-base` and `.lh-lg`. See [here]({{< docsref "/utilities/text#line-height" >}}).
+
+### Misc
+
 - Added `.bg-body` for quickly setting the `<body>`'s background to additional elements.
-- Drop `.text-hide` as it's an antiquated method for hiding text that shouldn't be used anymore
-- Split utilities into property-value utility classes and helpers
 - Negative margin utilities are disabled by default. You can re-enable them by setting `$enable-negative-margins: true`, but keep in mind this can increase the file size quite a lot.
 
 ### Docs
