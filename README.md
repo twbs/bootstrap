@@ -111,18 +111,18 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 
 ## Documentation
 
-Bootstrap's documentation, included in this repo in the root directory, is built with [Jekyll](https://jekyllrb.com/) and publicly hosted on GitHub Pages at <https://getbootstrap.com/>. The docs may also be run locally.
+Bootstrap's documentation, included in this repo in the root directory, is built with [Hugo](https://gohugo.io/) and publicly hosted on GitHub Pages at <https://getbootstrap.com/>. The docs may also be run locally.
 
-Documentation search is powered by [Algolia's DocSearch](https://community.algolia.com/docsearch/). Working on our search? Be sure to set `debug: true` in `site/docs/4.5/assets/js/src/search.js` file.
+Documentation search is powered by [Algolia's DocSearch](https://community.algolia.com/docsearch/). Working on our search? Be sure to set `debug: true` in `site/assets/js/src/search.js` file.
 
 ### Running documentation locally
 
-1. Run through the [tooling setup](https://getbootstrap.com/docs/4.5/getting-started/build-tools/#tooling-setup) to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
-2. Run `npm install` to install Node.js dependencies.
+1. Run `npm install` to install the Node.js dependencies, including Hugo (the site builder).
+2. Run `npm run test` (or a specific npm script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
 3. Run `npm start` to compile CSS and JavaScript files, generate our docs, and watch for changes.
-4. Open `http://localhost:9001` in your browser, and voilà.
+4. Open `http://localhost:9001/` in your browser, and voilà.
 
-Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/).
+Learn more about using Hugo by reading its [documentation](https://gohugo.io/documentation/).
 
 ### Documentation for previous releases
 
