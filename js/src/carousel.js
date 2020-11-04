@@ -169,11 +169,7 @@ class Carousel {
     }
 
     if (this._config.interval && !this._isPaused) {
-      this._activeElement = this._activeElement || this._element.querySelector(SELECTOR_ACTIVE_ITEM)
-
-      if (this._activeElement) {
-        this._updateInterval(this._activeElement)
-      }
+      this._updateInterval()
 
       this._interval = setInterval(
         (document.visibilityState ? this.nextWhenVisible : this.next).bind(this),
@@ -407,7 +403,13 @@ class Carousel {
     }
   }
 
-  _updateInterval(element) {
+  _updateInterval() {
+    const element = this._activeElement || this._element.querySelector(SELECTOR_ACTIVE_ITEM)
+
+    if (!element) {
+      return
+    }
+
     const elementInterval = parseInt(element.getAttribute('data-interval'), 10)
 
     if (elementInterval) {
@@ -462,6 +464,7 @@ class Carousel {
     }
 
     this._setActiveIndicatorElement(nextElement)
+    this._activeElement = nextElement
 
     const slidEvent = $.Event(EVENT_SLID, {
       relatedTarget: nextElement,
@@ -477,8 +480,6 @@ class Carousel {
 
       $(activeElement).addClass(directionalClassName)
       $(nextElement).addClass(directionalClassName)
-
-      this._updateInterval(nextElement)
 
       const transitionDuration = Util.getTransitionDurationFromElement(activeElement)
 
@@ -502,9 +503,6 @@ class Carousel {
       this._isSliding = false
       $(this._element).trigger(slidEvent)
     }
-
-    // does not wait for the transition to complete
-    this._activeElement = nextElement
 
     if (isCycling) {
       this.cycle()
