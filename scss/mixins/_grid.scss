@@ -27,13 +27,11 @@
 }
 
 @mixin make-col($size, $columns: $grid-columns) {
-  flex: 0 0 auto;
-  width: percentage($size / $columns);
+  flex: 0 0 percentage($size / $columns);
 }
 
 @mixin make-col-auto() {
   flex: 0 0 auto;
-  width: auto;
 }
 
 @mixin make-col-offset($size, $columns: $grid-columns) {
@@ -48,8 +46,7 @@
 // style grid.
 @mixin row-cols($count) {
   > * {
-    flex: 0 0 auto;
-    width: 100% / $count;
+    flex: 0 0 (100% / $count);
   }
 }
 
