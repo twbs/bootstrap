@@ -1,21 +1,22 @@
 .bd-subnavbar {
   // The position and z-index are needed for the dropdown to stay on top of the content
   position: relative;
-  z-index: $zindex-sticky;
-  background-color: rgba($white, .95);
-  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .05), inset 0 -1px 0 rgba(0, 0, 0, .15);
+  z-index: 199;
+  background-color: rgba($white, 0.95);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
 
   .dropdown-menu {
-    @include font-size(.875rem);
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .05);
+    @include font-size(0.875rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
   }
 
   .dropdown-item.current {
     font-weight: 600;
     background-image: escape-svg($dropdown-active-icon);
     background-repeat: no-repeat;
-    background-position: right $dropdown-item-padding-x top .6rem;
-    background-size: .75rem .75rem;
+    background-position: right $dropdown-item-padding-x top 0.6rem;
+    background-size: 0.75rem 0.75rem;
   }
 
   @include media-breakpoint-up(md) {
@@ -29,19 +30,19 @@
 
   &::after {
     position: absolute;
-    top: .4rem;
-    right: .4rem;
+    top: 0.4rem;
+    right: 0.4rem;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 1.5rem;
-    padding-right: .25rem;
-    padding-left: .25rem;
-    @include font-size(.75rem);
+    padding-right: 0.25rem;
+    padding-left: 0.25rem;
+    @include font-size(0.75rem);
     color: $gray-600;
     content: "Ctrl + /";
     border: $border-width solid $border-color;
-    @include border-radius(.125rem);
+    @include border-radius(0.125rem);
   }
 
   @include media-breakpoint-down(md) {
@@ -53,7 +54,7 @@
 
     &:focus {
       border-color: $bd-purple-bright;
-      box-shadow: 0 0 0 3px rgba($bd-purple-bright, .25);
+      box-shadow: 0 0 0 3px rgba($bd-purple-bright, 0.25);
     }
   }
 }
@@ -67,17 +68,23 @@
   }
 
   &:focus {
-    box-shadow: 0 0 0 3px rgba($bd-purple-bright, .25);
+    box-shadow: 0 0 0 3px rgba($bd-purple-bright, 0.25);
   }
 
   .bi {
     fill: currentColor;
   }
 
-  .bi-collapse { display: none; }
+  .bi-collapse {
+    display: none;
+  }
 
   &:not(.collapsed) {
-    .bi-expand { display: none; }
-    .bi-collapse { display: inline-block; }
+    .bi-expand {
+      display: none;
+    }
+    .bi-collapse {
+      display: inline-block;
+    }
   }
 }
