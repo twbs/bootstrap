@@ -211,21 +211,21 @@ Add `data-bs-interval=""` to a `.carousel-item` to change the amount of time to 
 Add `.carousel-dark` to the `.carousel` for darker controls, indicators, and captions. Controls have been inverted from their default white fill with the `filter` CSS property. Captions and controls have additional Sass variables that customize the `color` and `background-color`.
 
 {{< example >}}
-<div id="carouselExampleDark" class="carousel carousel-dark slide" data-ride="carousel">
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleDark" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleDark" data-slide-to="1"></li>
-    <li data-target="#carouselExampleDark" data-slide-to="2"></li>
+    <li data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"></li>
+    <li data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></li>
+    <li data-bs-target="#carouselExampleDark" data-bs-slide-to="2"></li>
   </ol>
   <div class="carousel-inner">
-    <div class="carousel-item active" data-interval="10000">
+    <div class="carousel-item active" data-bs-interval="10000">
       {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#aaa" background="#f5f5f5" text="First slide" >}}
       <div class="carousel-caption d-none d-md-block">
         <h5>First slide label</h5>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
       </div>
     </div>
-    <div class="carousel-item" data-interval="2000">
+    <div class="carousel-item" data-bs-interval="2000">
       {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#bbb" background="#eee" text="Second slide" >}}
       <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
@@ -240,11 +240,11 @@ Add `.carousel-dark` to the `.carousel` for darker controls, indicators, and cap
       </div>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleDark" role="button" data-slide="prev">
+  <a class="carousel-control-prev" href="#carouselExampleDark" role="button" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleDark" role="button" data-slide="next">
+  <a class="carousel-control-next" href="#carouselExampleDark" role="button" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </a>
