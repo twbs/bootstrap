@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Spacing
-description: Bootstrap includes a wide range of shorthand responsive margin and padding utility classes to modify an element's appearance.
+description: Bootstrap includes a wide range of shorthand responsive margin, padding, and gap utility classes to modify an element's appearance.
 group: utilities
 toc: true
 ---
@@ -9,6 +9,8 @@ toc: true
 ## How it works
 
 Assign responsive-friendly `margin` or `padding` values to an element or a subset of its sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. Classes are built from a default Sass map ranging from `.25rem` to `3rem`.
+
+Using the CSS Grid layout module? Consider using [the gap utility](#gap).
 
 ## Notation
 
@@ -93,3 +95,17 @@ The syntax is nearly the same as the default, positive margin utilities, but wit
   margin-top: -0.25rem !important;
 }
 ```
+
+## Gap
+
+When using `display: grid`, you can make use of `gap` utilities on the parent grid container. This can save on having to add margin utilities to individual grid items (children of a `display: grid` container). Gap utilities are responsive by default, and are generated via our utilities API, based on the `$spacers` Sass map.
+
+{{< example html >}}
+<div class="d-grid gap-3">
+  <div class="p-2 bg-light border">Grid item 1</div>
+  <div class="p-2 bg-light border">Grid item 2</div>
+  <div class="p-2 bg-light border">Grid item 3</div>
+</div>
+{{< /example >}}
+
+Support includes responsive options for all of Bootstrap's grid breakpoints, as well as six sizes from the `$spacers` map (`0`–`5`). There is no `.gap-auto` utility class as it's effectively the same as `.gap-0`.
