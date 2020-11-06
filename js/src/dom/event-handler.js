@@ -6,7 +6,6 @@
  */
 
 import { getjQuery } from '../util/index'
-import { defaultPreventedPreservedOnDispatch } from './polyfill'
 
 /**
  * ------------------------------------------------------------------------
@@ -14,7 +13,6 @@ import { defaultPreventedPreservedOnDispatch } from './polyfill'
  * ------------------------------------------------------------------------
  */
 
-const $ = getjQuery()
 const namespaceRegex = /[^.]*(?=\..*)\.|.*/
 const stripNameRegex = /\..*/
 const stripUidRegex = /::\d+$/
@@ -272,6 +270,7 @@ const EventHandler = {
       return null
     }
 
+    const $ = getjQuery()
     const typeEvent = event.replace(stripNameRegex, '')
     const inNamespace = event !== typeEvent
     const isNative = nativeEvents.indexOf(typeEvent) > -1
@@ -314,12 +313,6 @@ const EventHandler = {
 
     if (defaultPrevented) {
       evt.preventDefault()
-
-      if (!defaultPreventedPreservedOnDispatch) {
-        Object.defineProperty(evt, 'defaultPrevented', {
-          get: () => true
-        })
-      }
     }
 
     if (nativeDispatch) {

@@ -180,8 +180,15 @@ const getjQuery = () => {
   return null
 }
 
+const onDOMContentLoaded = callback => {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', callback)
+  } else {
+    callback()
+  }
+}
+
 export {
-  getjQuery,
   TRANSITION_END,
   getUID,
   getSelectorFromElement,
@@ -194,5 +201,7 @@ export {
   isVisible,
   findShadowRoot,
   noop,
-  reflow
+  reflow,
+  getjQuery,
+  onDOMContentLoaded
 }
