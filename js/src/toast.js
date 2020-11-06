@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.5.2): toast.js
+ * Bootstrap (v4.5.3): toast.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,7 +15,7 @@ import Util from './util'
  */
 
 const NAME = 'toast'
-const VERSION = '4.5.2'
+const VERSION = '4.5.3'
 const DATA_KEY = 'bs.toast'
 const EVENT_KEY = `.${DATA_KEY}`
 const JQUERY_NO_CONFLICT = $.fn[NAME]
@@ -151,7 +151,7 @@ class Toast {
     config = {
       ...Default,
       ...$(this._element).data(),
-      ...typeof config === 'object' && config ? config : {}
+      ...(typeof config === 'object' && config ? config : {})
     }
 
     Util.typeCheckConfig(

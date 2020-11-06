@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.5.2): button.js
+ * Bootstrap (v4.5.3): button.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -14,7 +14,7 @@ import $ from 'jquery'
  */
 
 const NAME = 'button'
-const VERSION = '4.5.2'
+const VERSION = '4.5.3'
 const DATA_KEY = 'bs.button'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -46,6 +46,7 @@ const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 class Button {
   constructor(element) {
     this._element = element
+    this.shouldAvoidTriggerChange = false
   }
 
   // Getters
@@ -59,17 +60,14 @@ class Button {
   toggle() {
     let triggerChangeEvent = true
     let addAriaPressed = true
-    const rootElement = $(this._element).closest(
-      SELECTOR_DATA_TOGGLES
-    )[0]
+    const rootElement = $(this._element).closest(SELECTOR_DATA_TOGGLES)[0]
 
     if (rootElement) {
       const input = this._element.querySelector(SELECTOR_INPUT)
 
       if (input) {
         if (input.type === 'radio') {
-          if (input.checked &&
-            this._element.classList.contains(CLASS_NAME_ACTIVE)) {
+          if (input.checked && this._element.classList.contains(CLASS_NAME_ACTIVE)) {
             triggerChangeEvent = false
           } else {
             const activeElement = rootElement.querySelector(SELECTOR_ACTIVE)
@@ -86,7 +84,9 @@ class Button {
             input.checked = !this._element.classList.contains(CLASS_NAME_ACTIVE)
           }
 
-          $(input).trigger('change')
+          if (!this.shouldAvoidTriggerChange) {
+            $(input).trigger('change')
+          }
         }
 
         input.focus()
@@ -96,8 +96,7 @@ class Button {
 
     if (!(this._element.hasAttribute('disabled') || this._element.classList.contains('disabled'))) {
       if (addAriaPressed) {
-        this._element.setAttribute('aria-pressed',
-          !this._element.classList.contains(CLASS_NAME_ACTIVE))
+        this._element.setAttribute('aria-pressed', !this._element.classList.contains(CLASS_NAME_ACTIVE))
       }
 
       if (triggerChangeEvent) {
@@ -113,14 +112,17 @@ class Button {
 
   // Static
 
-  static _jQueryInterface(config) {
+  static _jQueryInterface(config, avoidTriggerChange) {
     return this.each(function () {
-      let data = $(this).data(DATA_KEY)
+      const $element = $(this)
+      let data = $element.data(DATA_KEY)
 
       if (!data) {
         data = new Button(this)
-        $(this).data(DATA_KEY, data)
+        $element.data(DATA_KEY, data)
       }
+
+      data.shouldAvoidTriggerChange = avoidTriggerChange
 
       if (config === 'toggle') {
         data[config]()
@@ -154,8 +156,8 @@ $(document)
         return
       }
 
-      if (initialButton.tagName !== 'LABEL' || inputBtn && inputBtn.type !== 'checkbox') {
-        Button._jQueryInterface.call($(button), 'toggle')
+      if (initialButton.tagName === 'INPUT' || button.tagName !== 'LABEL') {
+        Button._jQueryInterface.call($(button), 'toggle', initialButton.tagName === 'INPUT')
       }
     }
   })

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.5.2): collapse.js
+ * Bootstrap (v4.5.3): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,7 +15,7 @@ import Util from './util'
  */
 
 const NAME = 'collapse'
-const VERSION = '4.5.2'
+const VERSION = '4.5.3'
 const DATA_KEY = 'bs.collapse'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -324,12 +324,12 @@ class Collapse {
 
   static _jQueryInterface(config) {
     return this.each(function () {
-      const $this = $(this)
-      let data = $this.data(DATA_KEY)
+      const $element = $(this)
+      let data = $element.data(DATA_KEY)
       const _config = {
         ...Default,
-        ...$this.data(),
-        ...typeof config === 'object' && config ? config : {}
+        ...$element.data(),
+        ...(typeof config === 'object' && config ? config : {})
       }
 
       if (!data && _config.toggle && typeof config === 'string' && /show|hide/.test(config)) {
@@ -338,7 +338,7 @@ class Collapse {
 
       if (!data) {
         data = new Collapse(this, _config)
-        $this.data(DATA_KEY, data)
+        $element.data(DATA_KEY, data)
       }
 
       if (typeof config === 'string') {

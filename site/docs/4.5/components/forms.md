@@ -400,34 +400,31 @@ At times, you maybe need to use margin or padding utilities to create that perfe
       <input type="password" class="form-control" id="inputPassword3">
     </div>
   </div>
-  <fieldset class="form-group">
-    <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-          <label class="form-check-label" for="gridRadios1">
-            First radio
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-          <label class="form-check-label" for="gridRadios2">
-            Second radio
-          </label>
-        </div>
-        <div class="form-check disabled">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-          <label class="form-check-label" for="gridRadios3">
-            Third disabled radio
-          </label>
-        </div>
+  <fieldset class="form-group row">
+    <legend class="col-form-label col-sm-2 float-sm-left pt-0">Radios</legend>
+    <div class="col-sm-10">
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+        <label class="form-check-label" for="gridRadios1">
+          First radio
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+        <label class="form-check-label" for="gridRadios2">
+          Second radio
+        </label>
+      </div>
+      <div class="form-check disabled">
+        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+        <label class="form-check-label" for="gridRadios3">
+          Third disabled radio
+        </label>
       </div>
     </div>
   </fieldset>
   <div class="form-group row">
-    <div class="col-sm-2">Checkbox</div>
-    <div class="col-sm-10">
+    <div class="col-sm-10 offset-sm-2">
       <div class="form-check">
         <input class="form-check-input" type="checkbox" id="gridCheck1">
         <label class="form-check-label" for="gridCheck1">
@@ -705,6 +702,7 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 {% capture example %}
 <form>
   <fieldset disabled>
+    <legend>Disabled fieldset example</legend>
     <div class="form-group">
       <label for="disabledTextInput">Disabled input</label>
       <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
@@ -754,12 +752,6 @@ We are aware that currently the client-side custom validation styles and tooltip
 {% endcapture %}
 {% include callout.html content=callout type="warning" %}
 
-{% capture callout %}
-##### Input group validation
-Input groups have difficulty with validation styles, unfortunately. Our recommendation is to place feedback messages as sibling elements of the `.input-group` that has `.is-{valid|invalid}`. Placing feedback messages within input groups breaks the `border-radius`. [See this workaround](#input-group-validation-workaround).
-{% endcapture %}
-{% include callout.html content=callout type="warning" %}
-
 ### How it works
 
 Here's how form validation works with Bootstrap:
@@ -769,7 +761,7 @@ Here's how form validation works with Bootstrap:
 - To reset the appearance of the form (for instance, in the case of dynamic form submissions using AJAX), remove the `.was-validated` class from the `<form>` again after submission.
 - As a fallback, `.is-invalid` and `.is-valid` classes may be used instead of the pseudo-classes for [server side validation](#server-side). They do not require a `.was-validated` parent class.
 - Due to constraints in how CSS works, we cannot (at present) apply styles to a `<label>` that comes before a form control in the DOM without the help of custom JavaScript.
-- All modern browsers support the [constraint validation API](https://www.w3.org/TR/html5/sec-forms.html#the-constraint-validation-api), a series of JavaScript methods for validating form controls.
+- All modern browsers support the [constraint validation API](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#the-constraint-validation-api), a series of JavaScript methods for validating form controls.
 - Feedback messages may utilize the [browser defaults](#browser-defaults) (different for each browser, and unstylable via CSS) or our custom feedback styles with additional HTML and CSS.
 - You may provide custom validity messages with `setCustomValidity` in JavaScript.
 
@@ -1157,16 +1149,16 @@ $form-validation-states: map-merge(
 }
 {% endhighlight %}
 
-### Input group validation workaround
+### Input group validation
 
-We're unable to resolve the broken `border-radius` of input groups with validation due to selector limitations, so manual overrides are required. When you're using a standard input group and don't customize the default border radius values, add `.rounded-right` to the elements with the broken `border-radius`.
+To detect what elements need rounded corners inside an input group with validation, an input group requires an additional `.has-validation` class.
 
 {% highlight html %}
-<div class="input-group">
+<div class="input-group has-validation">
   <div class="input-group-prepend">
     <span class="input-group-text">@</span>
   </div>
-  <input type="text" class="form-control rounded-right" required>
+  <input type="text" class="form-control" required>
   <div class="invalid-feedback">
     Please choose a username.
   </div>
@@ -1174,45 +1166,11 @@ We're unable to resolve the broken `border-radius` of input groups with validati
 {% endhighlight %}
 
 <div class="bd-example bd-example-forms-input-group-workaround">
-  <div class="input-group">
+  <div class="input-group has-validation">
     <div class="input-group-prepend">
       <span class="input-group-text">@</span>
     </div>
-    <input type="text" class="form-control is-invalid rounded-right" required>
-    <div class="invalid-feedback">
-      Please choose a username.
-    </div>
-  </div>
-</div>
-
-When you are using a small or large input group or customizing the default `border-radius` values, add custom CSS to the element with the busted `border-radius`.
-
-{% highlight css %}
-/* Change values to match the radius of your form control */
-.fix-rounded-right {
-  border-top-right-radius: .2rem !important;
-  border-bottom-right-radius: .2rem !important;
-}
-{% endhighlight %}
-
-{% highlight html %}
-<div class="input-group input-group-sm">
-  <div class="input-group-prepend">
-    <span class="input-group-text">@</span>
-  </div>
-  <input type="text" class="form-control fix-rounded-right" required>
-  <div class="invalid-feedback">
-    Please choose a username.
-  </div>
-</div>
-{% endhighlight %}
-
-<div class="bd-example bd-example-forms-input-group-workaround">
-  <div class="input-group input-group-sm">
-    <div class="input-group-prepend">
-      <span class="input-group-text">@</span>
-    </div>
-    <input type="text" class="form-control is-invalid fix-rounded-right" required>
+    <input type="text" class="form-control is-invalid" required>
     <div class="invalid-feedback">
       Please choose a username.
     </div>
@@ -1276,11 +1234,11 @@ $('.your-checkbox').prop('indeterminate', true)
 
 {% capture example %}
 <div class="custom-control custom-radio custom-control-inline">
-  <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+  <input type="radio" id="customRadioInline1" name="customRadioInline" class="custom-control-input">
   <label class="custom-control-label" for="customRadioInline1">Toggle this custom radio</label>
 </div>
 <div class="custom-control custom-radio custom-control-inline">
-  <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+  <input type="radio" id="customRadioInline2" name="customRadioInline" class="custom-control-input">
   <label class="custom-control-label" for="customRadioInline2">Or toggle this other custom radio</label>
 </div>
 {% endcapture %}

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.5.2): modal.js
+ * Bootstrap (v4.5.3): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,7 +15,7 @@ import Util from './util'
  */
 
 const NAME = 'modal'
-const VERSION = '4.5.2'
+const VERSION = '4.5.3'
 const DATA_KEY = 'bs.modal'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -234,7 +234,7 @@ class Modal {
       const hideEventPrevented = $.Event(EVENT_HIDE_PREVENTED)
 
       $(this._element).trigger(hideEventPrevented)
-      if (hideEventPrevented.defaultPrevented) {
+      if (hideEventPrevented.isDefaultPrevented()) {
         return
       }
 
@@ -453,8 +453,7 @@ class Modal {
   // ----------------------------------------------------------------------
 
   _adjustDialog() {
-    const isModalOverflowing =
-      this._element.scrollHeight > document.documentElement.clientHeight
+    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
 
     if (!this._isBodyOverflowing && isModalOverflowing) {
       this._element.style.paddingLeft = `${this._scrollbarWidth}px`
@@ -553,7 +552,7 @@ class Modal {
       const _config = {
         ...Default,
         ...$(this).data(),
-        ...typeof config === 'object' && config ? config : {}
+        ...(typeof config === 'object' && config ? config : {})
       }
 
       if (!data) {

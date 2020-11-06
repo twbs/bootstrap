@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap popover.js v4.5.2 (https://getbootstrap.com/)
+  * Bootstrap popover.js v4.5.3 (https://getbootstrap.com/)
   * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -9,8 +9,10 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Popover = factory(global.jQuery, global.Tooltip));
 }(this, (function ($, Tooltip) { 'use strict';
 
-  $ = $ && Object.prototype.hasOwnProperty.call($, 'default') ? $['default'] : $;
-  Tooltip = Tooltip && Object.prototype.hasOwnProperty.call(Tooltip, 'default') ? Tooltip['default'] : Tooltip;
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var $__default = /*#__PURE__*/_interopDefaultLegacy($);
+  var Tooltip__default = /*#__PURE__*/_interopDefaultLegacy(Tooltip);
 
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
@@ -26,21 +28,21 @@
    */
 
   var NAME = 'popover';
-  var VERSION = '4.5.2';
+  var VERSION = '4.5.3';
   var DATA_KEY = 'bs.popover';
   var EVENT_KEY = "." + DATA_KEY;
-  var JQUERY_NO_CONFLICT = $.fn[NAME];
+  var JQUERY_NO_CONFLICT = $__default['default'].fn[NAME];
   var CLASS_PREFIX = 'bs-popover';
   var BSCLS_PREFIX_REGEX = new RegExp("(^|\\s)" + CLASS_PREFIX + "\\S+", 'g');
 
-  var Default = _extends({}, Tooltip.Default, {
+  var Default = _extends({}, Tooltip__default['default'].Default, {
     placement: 'right',
     trigger: 'click',
     content: '',
     template: '<div class="popover" role="tooltip">' + '<div class="arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div></div>'
   });
 
-  var DefaultType = _extends({}, Tooltip.DefaultType, {
+  var DefaultType = _extends({}, Tooltip__default['default'].DefaultType, {
     content: '(string|element|function)'
   });
 
@@ -81,16 +83,16 @@
     };
 
     _proto.addAttachmentClass = function addAttachmentClass(attachment) {
-      $(this.getTipElement()).addClass(CLASS_PREFIX + "-" + attachment);
+      $__default['default'](this.getTipElement()).addClass(CLASS_PREFIX + "-" + attachment);
     };
 
     _proto.getTipElement = function getTipElement() {
-      this.tip = this.tip || $(this.config.template)[0];
+      this.tip = this.tip || $__default['default'](this.config.template)[0];
       return this.tip;
     };
 
     _proto.setContent = function setContent() {
-      var $tip = $(this.getTipElement()); // We use append for html objects to maintain js events
+      var $tip = $__default['default'](this.getTipElement()); // We use append for html objects to maintain js events
 
       this.setElementContent($tip.find(SELECTOR_TITLE), this.getTitle());
 
@@ -110,7 +112,7 @@
     };
 
     _proto._cleanTipClass = function _cleanTipClass() {
-      var $tip = $(this.getTipElement());
+      var $tip = $__default['default'](this.getTipElement());
       var tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX);
 
       if (tabClass !== null && tabClass.length > 0) {
@@ -121,7 +123,7 @@
 
     Popover._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
-        var data = $(this).data(DATA_KEY);
+        var data = $__default['default'](this).data(DATA_KEY);
 
         var _config = typeof config === 'object' ? config : null;
 
@@ -131,7 +133,7 @@
 
         if (!data) {
           data = new Popover(this, _config);
-          $(this).data(DATA_KEY, data);
+          $__default['default'](this).data(DATA_KEY, data);
         }
 
         if (typeof config === 'string') {
@@ -183,7 +185,7 @@
     }]);
 
     return Popover;
-  }(Tooltip);
+  }(Tooltip__default['default']);
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -191,11 +193,11 @@
    */
 
 
-  $.fn[NAME] = Popover._jQueryInterface;
-  $.fn[NAME].Constructor = Popover;
+  $__default['default'].fn[NAME] = Popover._jQueryInterface;
+  $__default['default'].fn[NAME].Constructor = Popover;
 
-  $.fn[NAME].noConflict = function () {
-    $.fn[NAME] = JQUERY_NO_CONFLICT;
+  $__default['default'].fn[NAME].noConflict = function () {
+    $__default['default'].fn[NAME] = JQUERY_NO_CONFLICT;
     return Popover._jQueryInterface;
   };
 

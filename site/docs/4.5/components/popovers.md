@@ -137,6 +137,19 @@ Enable popovers via JavaScript:
 {% highlight js %}$('#example').popover(options){% endhighlight %}
 
 {% capture callout %}
+##### GPU acceleration
+
+Popovers sometimes appear blurry on Windows 10 devices due to GPU acceleration and a modified system DPI. The workaround for this in v4 is to disable GPU acceleration as needed on your popovers.
+
+Suggested fix:
+
+{% highlight js %}
+Popper.Defaults.modifiers.computeStyle.gpuAcceleration = !(window.devicePixelRatio < 1.5 && /Win/.test(navigator.platform))
+{% endhighlight %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
+
+{% capture callout %}
 ### Making popovers work for keyboard and assistive technology users
 
 To allow keyboard users to activate your popovers, you should only add them to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as `<span>`s) can be made focusable by adding the `tabindex="0"` attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users, and most assistive technologies currently do not announce the popover's content in this situation. Additionally, do not rely solely on `hover` as the trigger for your popovers, as this will make them impossible to trigger for keyboard users.

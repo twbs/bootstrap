@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.5.2): tooltip.js
+ * Bootstrap (v4.5.3): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -20,7 +20,7 @@ import Util from './util'
  */
 
 const NAME = 'tooltip'
-const VERSION = '4.5.2'
+const VERSION = '4.5.3'
 const DATA_KEY = 'bs.tooltip'
 const EVENT_KEY = `.${DATA_KEY}`
 const JQUERY_NO_CONFLICT = $.fn[NAME]
@@ -473,7 +473,7 @@ class Tooltip {
       offset.fn = data => {
         data.offsets = {
           ...data.offsets,
-          ...this.config.offset(data.offsets, this.element) || {}
+          ...(this.config.offset(data.offsets, this.element) || {})
         }
 
         return data
@@ -657,7 +657,7 @@ class Tooltip {
     config = {
       ...this.constructor.Default,
       ...dataAttributes,
-      ...typeof config === 'object' && config ? config : {}
+      ...(typeof config === 'object' && config ? config : {})
     }
 
     if (typeof config.delay === 'number') {
@@ -735,7 +735,8 @@ class Tooltip {
 
   static _jQueryInterface(config) {
     return this.each(function () {
-      let data = $(this).data(DATA_KEY)
+      const $element = $(this)
+      let data = $element.data(DATA_KEY)
       const _config = typeof config === 'object' && config
 
       if (!data && /dispose|hide/.test(config)) {
@@ -744,7 +745,7 @@ class Tooltip {
 
       if (!data) {
         data = new Tooltip(this, _config)
-        $(this).data(DATA_KEY, data)
+        $element.data(DATA_KEY, data)
       }
 
       if (typeof config === 'string') {

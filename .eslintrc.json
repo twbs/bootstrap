@@ -21,7 +21,12 @@
       "warn",
       5
     ],
-    "new-cap": "off",
+    "new-cap": [
+      "error",
+      {
+        "properties": false
+      }
+    ],
     "no-console": "error",
     "no-mixed-operators": "off",
     "no-negated-condition": "off",
@@ -45,6 +50,7 @@
     "unicorn/prefer-array-find": "off",
     "unicorn/prefer-dataset": "off",
     "unicorn/prefer-includes": "off",
+    "unicorn/prefer-math-trunc": "off",
     "unicorn/prefer-node-append": "off",
     "unicorn/prefer-node-remove": "off",
     "unicorn/prefer-number-properties": "off",

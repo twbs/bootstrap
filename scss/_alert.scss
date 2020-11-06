@@ -34,6 +34,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 2;
     padding: $alert-padding-y $alert-padding-x;
     color: inherit;
   }

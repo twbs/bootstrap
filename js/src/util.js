@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.5.2): util.js
+ * Bootstrap (v4.5.3): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -125,7 +125,6 @@ const Util = {
     $(element).trigger(TRANSITION_END)
   },
 
-  // TODO: Remove in v5
   supportsTransitionEnd() {
     return Boolean(TRANSITION_END)
   },

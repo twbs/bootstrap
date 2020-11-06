@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.5.2): carousel.js
+ * Bootstrap (v4.5.3): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,7 +15,7 @@ import Util from './util'
  */
 
 const NAME = 'carousel'
-const VERSION = '4.5.2'
+const VERSION = '4.5.3'
 const DATA_KEY = 'bs.carousel'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -129,10 +129,11 @@ class Carousel {
   }
 
   nextWhenVisible() {
+    const $element = $(this._element)
     // Don't call next when the page isn't visible
     // or the carousel or its parent isn't visible
     if (!document.hidden &&
-      ($(this._element).is(':visible') && $(this._element).css('visibility') !== 'hidden')) {
+      ($element.is(':visible') && $element.css('visibility') !== 'hidden')) {
       this.next()
     }
   }

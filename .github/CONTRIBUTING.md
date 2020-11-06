@@ -102,12 +102,12 @@ Example:
 Sometimes bugs reported to us are actually caused by bugs in the browser(s) themselves, not bugs in Bootstrap per se.
 When feasible, we aim to report such upstream bugs to the relevant browser vendor(s), and then list them on our [Wall of Browser Bugs](https://getbootstrap.com/browser-bugs/) and [document them in MDN](https://developer.mozilla.org/en-US/docs/Web).
 
-| Vendor(s)     | Browser(s)                   | Rendering engine | Bug reporting website(s)                                                              | Notes                                                    |
-| ------------- | ---------------------------- | ---------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| Mozilla       | Firefox                      | Gecko            | https://bugzilla.mozilla.org/enter_bug.cgi                                            | "Core" is normally the right product option to choose.   |
-| Apple         | Safari                       | WebKit           | https://bugs.webkit.org/enter_bug.cgi?product=WebKit <br> https://bugreport.apple.com/ | In Apple's bug reporter, choose "Safari" as the product. |
-| Google, Opera | Chrome, Chromium, Opera v15+ | Blink            | https://bugs.chromium.org/p/chromium/issues/list                                      | Click the "New issue" button.                            |
-| Microsoft     | Edge                         | EdgeHTML         | https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/                 |                                                          |
+| Vendor(s)     | Browser(s)                   | Rendering engine | Bug reporting website(s)                                              | Notes                                                    |
+| ------------- | ---------------------------- | ---------------- | --------------------------------------------------------------------- | -------------------------------------------------------- |
+| Mozilla       | Firefox                      | Gecko            | https://bugzilla.mozilla.org/enter_bug.cgi                            | "Core" is normally the right product option to choose.   |
+| Apple         | Safari                       | WebKit           | https://bugs.webkit.org/enter_bug.cgi?product=WebKit                  | In Apple's bug reporter, choose "Safari" as the product. |
+| Google, Opera | Chrome, Chromium, Opera v15+ | Blink            | https://bugs.chromium.org/p/chromium/issues/list                      | Click the "New issue" button.                            |
+| Microsoft     | Edge                         | Blink            | https://developer.microsoft.com/en-us/microsoft-edge/                 | Go to "Help > Send Feedback" from the browser            |
 
 
 ## Feature requests
@@ -124,10 +124,12 @@ Good pull requests—patches, improvements, new features—are a fantastic
 help. They should remain focused in scope and avoid containing unrelated
 commits.
 
-**Please ask first** before embarking on any significant pull request (e.g.
+**Please ask first** before embarking on any **significant** pull request (e.g.
 implementing features, refactoring code, porting to a different language),
 otherwise you risk spending a lot of time working on something that the
-project's developers might not want to merge into the project.
+project's developers might not want to merge into the project. For trivial
+things, or things that don't require a lot of your time, you can go ahead and
+make a PR.
 
 Please adhere to the [coding guidelines](#code-guidelines) used throughout the
 project (indentation, accurate comments, etc.) and any other requirements
@@ -216,7 +218,7 @@ includes code changes) and under the terms of the
 [Adhere to the Code Guide.](https://codeguide.co/#css)
 
 - When feasible, default color palettes should comply with [WCAG color contrast guidelines](https://www.w3.org/TR/WCAG20/#visual-audio-contrast).
-- Except in rare cases, don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](https://a11yproject.com/posts/never-remove-css-outlines/) for more details.
+- Except in rare cases, don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](https://www.a11yproject.com/posts/2013-01-25-never-remove-css-outlines/) for more details.
 
 ### JS
 
