@@ -6,13 +6,13 @@ group: utilities
 toc: true
 ---
 
-## How it works
+## Margin and padding
 
 Assign responsive-friendly `margin` or `padding` values to an element or a subset of its sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. Classes are built from a default Sass map ranging from `.25rem` to `3rem`.
 
 Using the CSS Grid layout module? Consider using [the gap utility](#gap).
 
-## Notation
+### Notation
 
 Spacing utilities that apply to all breakpoints, from `xs` to `xxl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
 
@@ -45,7 +45,7 @@ Where *size* is one of:
 
 (You can add more sizes by adding entries to the `$spacers` Sass map variable.)
 
-## Examples
+### Examples
 
 Here are some representative examples of these classes:
 
@@ -84,7 +84,7 @@ Additionally, Bootstrap also includes an `.mx-auto` class for horizontally cente
 </div>
 ```
 
-### Negative margin
+## Negative margin
 
 In CSS, `margin` properties can utilize negative values (`padding` cannot). These negative margins are **disabled by default**, but can be enabled in Sass by setting `$enable-negative-margins: true`.
 
