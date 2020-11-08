@@ -31,7 +31,7 @@ The `<html>` and `<body>` elements are updated to provide better page-wide defau
 
 The default web fonts (Helvetica Neue, Helvetica, and Arial) have been dropped in Bootstrap 4 and replaced with a "native font stack" for optimum text rendering on every device and OS. Read more about [native font stacks in this *Smashing Magazine* article](https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/).
 
-```sass
+```scss
 $font-family-sans-serif:
   // Safari for macOS and iOS (San Francisco)
   -apple-system,
