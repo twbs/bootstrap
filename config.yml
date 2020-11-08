@@ -57,7 +57,6 @@ params:
   slack:                "https://bootstrap-slack.herokuapp.com/"
   opencollective:       "https://opencollective.com/bootstrap"
   blog:                 "https://blog.getbootstrap.com/"
-  expo:                 "https://expo.getbootstrap.com/"
   themes:               "https://themes.getbootstrap.com/"
   icons:                "https://icons.getbootstrap.com/"
 
