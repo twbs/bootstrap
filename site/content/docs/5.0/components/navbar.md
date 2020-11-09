@@ -77,7 +77,7 @@ This example uses [color]({{< docsref "/utilities/colors" >}}) (`bg-light`) and 
 
 ### Brand
 
-The `.navbar-brand` can be applied to most elements, but an anchor works best as some elements might require utility classes or custom styles.
+The `.navbar-brand` can be applied to most elements, but an anchor works best, as some elements might require utility classes or custom styles.
 
 {{< example >}}
 <!-- As a link -->
@@ -176,7 +176,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
 </nav>
 {{< /example >}}
 
-You may also utilize dropdowns in your navbar nav. Dropdown menus require a wrapping element for positioning, so be sure to use separate and nested elements for `.nav-item` and `.nav-link` as shown below.
+You can also use dropdowns in your navbar. Dropdown menus require a wrapping element for positioning, so be sure to use separate and nested elements for `.nav-item` and `.nav-link` as shown below.
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -227,7 +227,7 @@ Place various form controls and components within a navbar:
 </nav>
 {{< /example >}}
 
-Immediate children elements in `.navbar` use flex layout and will default to `justify-content: space-between`. Use additional [flex utilities]({{< docsref "/utilities/flex" >}}) as needed to adjust this behavior.
+Immediate child elements of `.navbar` use flex layout and will default to `justify-content: space-between`. Use additional [flex utilities]({{< docsref "/utilities/flex" >}}) as needed to adjust this behavior.
 
 {{< example >}}
 <nav class="navbar navbar-light bg-light">
@@ -241,7 +241,7 @@ Immediate children elements in `.navbar` use flex layout and will default to `ju
 </nav>
 {{< /example >}}
 
-Input groups work, too. If your navbar is an entire form, or mostly form, you can use the `<form>` element as the container and save some HTML. Applies to the option above and below this copy.
+Input groups work, too. If your navbar is an entire form, or mostly a form, you can use the `<form>` element as the container and save some HTML.
 
 {{< example >}}
 <nav class="navbar navbar-light bg-light">
@@ -417,7 +417,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
 
 ## Containers
 
-Although it's not required, you can wrap a navbar in a `.container` to center it on a page or add one within to only center the contents of a [fixed or static top navbar](#placement). Note that an inner container is still required.
+Although it's not required, you can wrap a navbar in a `.container` to center it on a page–though note that an inner container is still required. Or you can add a container inside the `.navbar` to only center the contents of a [fixed or static top navbar](#placement).
 
 {{< example >}}
 <div class="container">
@@ -429,7 +429,7 @@ Although it's not required, you can wrap a navbar in a `.container` to center it
 </div>
 {{< /example >}}
 
-Use any of the responsive containers to change how wide the content in your navbar.
+Use any of the responsive containers to change how wide the content in your navbar is presented.
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -479,7 +479,7 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 
 ## Responsive behaviors
 
-Navbars can utilize `.navbar-toggler`, `.navbar-collapse`, and `.navbar-expand{-sm|-md|-lg|-xl|-xxl}` classes to change when their content collapses behind a button. In combination with other utilities, you can easily choose when to show or hide particular elements.
+Navbars can use `.navbar-toggler`, `.navbar-collapse`, and `.navbar-expand{-sm|-md|-lg|-xl|-xxl}` classes to determine when their content collapses behind a button. In combination with other utilities, you can easily choose when to show or hide particular elements.
 
 For navbars that never collapse, add the `.navbar-expand` class on the navbar. For navbars that always collapse, don't add any `.navbar-expand` class.
 
@@ -487,7 +487,7 @@ For navbars that never collapse, add the `.navbar-expand` class on the navbar. F
 
 Navbar togglers are left-aligned by default, but should they follow a sibling element like a `.navbar-brand`, they'll automatically be aligned to the far right. Reversing your markup will reverse the placement of the toggler. Below are examples of different toggle styles.
 
-With no `.navbar-brand` shown in lowest breakpoint:
+With no `.navbar-brand` shown at the smallest breakpoint:
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
