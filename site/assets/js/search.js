@@ -144,9 +144,9 @@
   }
 
   window.docsearch({
-    appId: '4Y8GPLL6DU',
-    apiKey: 'b52e904f627693602a90f2f6d64b260c',
-    indexName: 'bootstrap',
+    appId: 'BH4D9OD16A',
+    apiKey: 'c121570761efc762fb8b433b124415fb',
+    indexName: 'bootstrap-icons',
     container: '#search-input',
     hitComponent: Hits,
     // algoliaOptions: {
