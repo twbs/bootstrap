@@ -9,15 +9,6 @@
     return
   }
 
-  var inputElement = document.getElementById('search-input')
-
-  document.addEventListener('keydown', function (event) {
-    if (event.ctrlKey && event.key === '/') {
-      event.preventDefault()
-      inputElement.focus()
-    }
-  })
-
   function isIconHit(hit) {
     return hit.hierarchy.lvl0 === 'Bootstrap Icons'
   }
@@ -135,6 +126,5 @@
     indexName: 'bootstrap-icons',
     container: '#search-input',
     hitComponent: Hits,
-    debug: false,
   })
 })()
