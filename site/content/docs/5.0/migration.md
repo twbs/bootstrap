@@ -25,6 +25,10 @@ toc: true
 
 - Introduce `$enable-smooth-scroll`, which applies `scroll-behavior: smooth` globally—except for users asking for reduced motion through `prefers-reduced-motion` media query. [See #31877](https://github.com/twbs/bootstrap/pull/31877)
 
+### Buttons
+
+- [**Dropped `.btn-block` in favor of CSS grid utility classes.**]({{< docsref "/components/buttons#block-buttons" >}}) Instead of applying `.btn-block` to individual buttons, a group of buttons now get wrapped in a parent `.d-grid` class and can use `.gap-*` utilities for spacing.
+
 ### Forms
 
 - The longstanding [Missing border radius on input group with validation feedback bug](https://github.com/twbs/bootstrap/issues/25110) is finally fixed by adding an additional `.has-validation` class to input groups with validation.
@@ -38,6 +42,8 @@ toc: true
   - Added `.fs-*` utilities for `font-size` utilities (with RFS enabled). These use the same scale as HTML's default headings (1-6, large to small), and can be modified via Sass map.
   - Renamed `.font-weight-*` utilities as `.fw-*` for brevity and consistency.
   - Renamed `.font-style-*` utilities as `.fst-*` for brevity and consistency.
+- Added `.d-grid` to display utilities
+- Added new `gap` utilities (`.gap`) for CSS Grid layouts
 
 ## v5.0.0-alpha2
 
