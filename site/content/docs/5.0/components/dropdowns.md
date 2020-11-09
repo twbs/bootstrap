@@ -644,7 +644,7 @@ By default, a dropdown menu is automatically positioned 100% from the top and al
 {{< example >}}
 <div class="btn-group">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-    Right-aligned menu
+    Right-aligned menu example
   </button>
   <ul class="dropdown-menu dropdown-menu-end">
     <li><button class="dropdown-item" type="button">Action</button></li>
