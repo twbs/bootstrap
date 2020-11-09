@@ -637,7 +637,7 @@ describe('Modal', () => {
       modalEl.addEventListener('shown.bs.modal', () => {
         modalEl.click()
         setTimeout(() => {
-          expect(modalEl.clientHeight === modalEl.scrollHeight).toEqual(true)
+          expect(modalEl.clientHeight).toEqual(modalEl.scrollHeight)
           done()
         }, 20)
       })
