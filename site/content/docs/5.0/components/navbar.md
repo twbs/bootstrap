@@ -21,8 +21,6 @@ Here's what you need to know before getting started with the navbar:
 {{< partial "callout-info-prefersreducedmotion.md" >}}
 {{< /callout >}}
 
-Read on for an example and list of supported sub-components.
-
 ## Supported content
 
 Navbars come with built-in support for a handful of sub-components. Choose from the following as needed:
