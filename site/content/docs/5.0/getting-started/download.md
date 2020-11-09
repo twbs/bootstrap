@@ -11,7 +11,7 @@ toc: true
 Download ready-to-use compiled code for **Bootstrap v{{< param current_version >}}** to easily drop into your project, which includes:
 
 - Compiled and minified CSS bundles (see [CSS files comparison]({{< docsref "/getting-started/contents#css-files" >}}))
-- Compiled and minified JavaScript plugins
+- Compiled and minified JavaScript plugins (see [JS files comparison]({{< docsref "/getting-started/contents#js-files" >}}))
 
 This doesn't include documentation, source files, or any optional JavaScript dependencies like Popper.js.
 

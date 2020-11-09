@@ -196,6 +196,12 @@ $utilities: map-merge(
       class: flex,
       values: wrap nowrap wrap-reverse
     ),
+    "gap": (
+      responsive: true,
+      property: gap,
+      class: gap,
+      values: $spacers
+    ),
     "justify-content": (
       responsive: true,
       property: justify-content,
