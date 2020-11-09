@@ -129,10 +129,10 @@
   background-size: 100% 100%;
 }
 .carousel-control-prev-icon {
-  background-image: escape-svg($carousel-control-prev-icon-bg);
+  background-image: bs-escape-svg($carousel-control-prev-icon-bg);
 }
 .carousel-control-next-icon {
-  background-image: escape-svg($carousel-control-next-icon-bg);
+  background-image: bs-escape-svg($carousel-control-next-icon-bg);
 }
 
 

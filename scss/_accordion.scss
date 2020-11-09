@@ -25,7 +25,7 @@
     background-color: $accordion-button-active-bg;
 
     &::after {
-      background-image: escape-svg($accordion-button-active-icon);
+      background-image: bs-escape-svg($accordion-button-active-icon);
       transform: $accordion-icon-transform;
     }
   }
@@ -37,7 +37,7 @@
     height: $accordion-icon-width;
     margin-left: auto;
     content: "";
-    background-image: escape-svg($accordion-button-icon);
+    background-image: bs-escape-svg($accordion-button-icon);
     background-repeat: no-repeat;
     background-size: $accordion-icon-width;
     @include transition($accordion-icon-transition);

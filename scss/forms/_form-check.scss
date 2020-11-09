@@ -53,17 +53,17 @@
 
     &[type="checkbox"] {
       @if $enable-gradients {
-        background-image: escape-svg($form-check-input-checked-bg-image), var(--#{$variable-prefix}gradient);
+        background-image: bs-escape-svg($form-check-input-checked-bg-image), var(--#{$variable-prefix}gradient);
       } @else {
-        background-image: escape-svg($form-check-input-checked-bg-image);
+        background-image: bs-escape-svg($form-check-input-checked-bg-image);
       }
     }
 
     &[type="radio"] {
       @if $enable-gradients {
-        background-image: escape-svg($form-check-radio-checked-bg-image), var(--#{$variable-prefix}gradient);
+        background-image: bs-escape-svg($form-check-radio-checked-bg-image), var(--#{$variable-prefix}gradient);
       } @else {
-        background-image: escape-svg($form-check-radio-checked-bg-image);
+        background-image: bs-escape-svg($form-check-radio-checked-bg-image);
       }
     }
   }
@@ -73,9 +73,9 @@
     border-color: $form-check-input-indeterminate-border-color;
 
     @if $enable-gradients {
-      background-image: escape-svg($form-check-input-indeterminate-bg-image), var(--#{$variable-prefix}gradient);
+      background-image: bs-escape-svg($form-check-input-indeterminate-bg-image), var(--#{$variable-prefix}gradient);
     } @else {
-      background-image: escape-svg($form-check-input-indeterminate-bg-image);
+      background-image: bs-escape-svg($form-check-input-indeterminate-bg-image);
     }
   }
 
@@ -110,21 +110,21 @@
   .form-check-input {
     width: $form-switch-width;
     margin-left: $form-switch-padding-left * -1;
-    background-image: escape-svg($form-switch-bg-image);
+    background-image: bs-escape-svg($form-switch-bg-image);
     background-position: left center;
     @include border-radius($form-switch-border-radius);
 
     &:focus {
-      background-image: escape-svg($form-switch-focus-bg-image);
+      background-image: bs-escape-svg($form-switch-focus-bg-image);
     }
 
     &:checked {
       background-position: $form-switch-checked-bg-position;
 
       @if $enable-gradients {
-        background-image: escape-svg($form-switch-checked-bg-image), var(--#{$variable-prefix}gradient);
+        background-image: bs-escape-svg($form-switch-checked-bg-image), var(--#{$variable-prefix}gradient);
       } @else {
-        background-image: escape-svg($form-switch-checked-bg-image);
+        background-image: bs-escape-svg($form-switch-checked-bg-image);
       }
     }
   }

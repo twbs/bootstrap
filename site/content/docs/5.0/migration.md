@@ -13,11 +13,15 @@ toc: true
 
 - Dropped support for Microsoft Edge Legacy. See [here](#browser-support-1) for the previous browser support changes.
 
+### Sass
+
+- All internal Sass functions are now prefixed by `bs-` to avoid conflicts and to make a clear separation between native Sass functions and custom bootstrap functions.
+
 ### Colors
 
 - The color system which worked with `color-level()` and `$theme-color-interval` was removed in favor of a new color system.
-- All `lighten()` and `darken()` functions in our codebase are replaced by `tint-color()` and `shade-color()`. These functions will mix the color with either white or black instead of changing its lightness by a fixed amount.
-- The `scale-color()` will either tint or shade a color depending on whether its weight parameter is positive or negative.
+- All `lighten()` and `darken()` functions in our codebase are replaced by `bs-tint-color()` and `bs-shade-color()`. These functions will mix the color with either white or black instead of changing its lightness by a fixed amount.
+- The `bs-scale-color()` will either tint or shade a color depending on whether its weight parameter is positive or negative.
 - See [this PR](https://github.com/twbs/bootstrap/pull/30622) for more details.
 - Spinners now honor `prefers-reduced-motion: reduce` by slowing down animations. [See #31882](https://github.com/twbs/bootstrap/pull/31882).
 
@@ -198,10 +202,10 @@ Changes to our source Sass files and compiled CSS.
 - `$enable-grid-classes` doesn't disable the generation of container classes anymore [See #29146](https://github.com/twbs/bootstrap/pull/29146)
 - Renamed `$enable-prefers-reduced-motion-media-query` and `$enable-pointer-cursor-for-buttons` to `$enable-reduced-motion` and `$enable-button-pointers` for brevity.
 - Line heights are dropped from several components to simplify our codebase. The `button-size()` and `pagination-size()` do not accept line height parameters anymore. [See #29271](https://github.com/twbs/bootstrap/pull/29271)
-- The `button-variant()` mixin now accepts 3 optional color parameters, for each button state, to override the color provided by `color-contrast()`. By default, these parameters will find which color provides more contrast against the button state's background color with `color-contrast()`.
-- The `button-outline-variant()` mixin now accepts an additional argument, `$active-color`, for setting the button's active state text color. By default, this parameter will find which color provides more contrast against the button's active background color with `color-contrast()`.
+- The `button-variant()` mixin now accepts 3 optional color parameters, for each button state, to override the color provided by `bs-color-contrast()`. By default, these parameters will find which color provides more contrast against the button state's background color with `bs-color-contrast()`.
+- The `button-outline-variant()` mixin now accepts an additional argument, `$active-color`, for setting the button's active state text color. By default, this parameter will find which color provides more contrast against the button's active background color with `bs-color-contrast()`.
 - Ditch the Sass map merges, which makes it easier to remove redundant values. Keep in mind you now have to define all values in the Sass maps like `$theme-colors`. Check out how to deal with [Sass maps]({{< docsref "/customize/sass#maps-and-loops" >}}).
-- `color-yiq()` function and related variables are renamed to `color-contrast()` since it's not related to YIQ colorspace anymore. [See #30168.](https://github.com/twbs/bootstrap/pull/30168/)
+- `color-yiq()` function and related variables are renamed to `bs-color-contrast()` since it's not related to YIQ colorspace anymore. [See #30168.](https://github.com/twbs/bootstrap/pull/30168/)
   - `$yiq-contrasted-threshold` is renamed to `$min-contrast-ratio`.
   - `$yiq-text-dark` and `$yiq-text-light` are respectively renamed to `$color-contrast-dark` and `$color-contrast-light`.
 - Linear gradients are simplified when gradients are enabled and therefore, `gradient-bg()` now only accepts an optional `$color` parameter.
@@ -224,7 +228,7 @@ We've updated the color system that powers Bootstrap to improve color contrast a
 
 - Updated blue and pink base colors (`-500`) to ensure WCAG 2.1 AA contrast.
 - Added new tints and shades for every color, providing nine separate colors for each base color, as new Sass variables.
-- To support our color system, we've added new custom `tint-color()` and `shade-color()` functions to mix our colors appropriately.
+- To support our color system, we've added new custom `bs-tint-color()` and `bs-shade-color()` functions to mix our colors appropriately.
 
 ### Grid and layout
 

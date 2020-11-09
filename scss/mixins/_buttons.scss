@@ -6,16 +6,16 @@
 @mixin button-variant(
   $background,
   $border,
-  $color: color-contrast($background),
-  $hover-background: if($color == $color-contrast-light, shade-color($background, 15%), tint-color($background, 15%)),
-  $hover-border: if($color == $color-contrast-light, shade-color($border, 20%), tint-color($border, 10%)),
-  $hover-color: color-contrast($hover-background),
-  $active-background: if($color == $color-contrast-light, shade-color($background, 20%), tint-color($background, 20%)),
-  $active-border: if($color == $color-contrast-light, shade-color($border, 25%), tint-color($border, 10%)),
-  $active-color: color-contrast($active-background),
+  $color: bs-color-contrast($background),
+  $hover-background: if($color == $color-contrast-light, bs-shade-color($background, 15%), bs-tint-color($background, 15%)),
+  $hover-border: if($color == $color-contrast-light, bs-shade-color($border, 20%), bs-tint-color($border, 10%)),
+  $hover-color: bs-color-contrast($hover-background),
+  $active-background: if($color == $color-contrast-light, bs-shade-color($background, 20%), bs-tint-color($background, 20%)),
+  $active-border: if($color == $color-contrast-light, bs-shade-color($border, 25%), bs-tint-color($border, 10%)),
+  $active-color: bs-color-contrast($active-background),
   $disabled-background: $background,
   $disabled-border: $border,
-  $disabled-color: color-contrast($disabled-background)
+  $disabled-color: bs-color-contrast($disabled-background)
 ) {
   color: $color;
   @include gradient-bg($background);
@@ -74,10 +74,10 @@
 
 @mixin button-outline-variant(
   $color,
-  $color-hover: color-contrast($color),
+  $color-hover: bs-color-contrast($color),
   $active-background: $color,
   $active-border: $color,
-  $active-color: color-contrast($active-background)
+  $active-color: bs-color-contrast($active-background)
 ) {
   color: $color;
   border-color: $color;

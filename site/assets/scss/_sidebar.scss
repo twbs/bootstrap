@@ -14,7 +14,7 @@
     // Override collapse behaviors
     // stylelint-disable-next-line declaration-no-important
     display: block !important;
-    height: subtract(100vh, 7rem);
+    height: bs-subtract(100vh, 7rem);
     // Prevent focus styles to be cut off:
     padding-left: .25rem;
     margin-left: -.25rem;
@@ -52,7 +52,7 @@
       &::before {
         width: 1.25em;
         line-height: 0; // Align in the middle
-        content: escape-svg($sidebar-collapse-icon);
+        content: bs-escape-svg($sidebar-collapse-icon);
         @include transition(transform .35s ease);
         transform-origin: .5em 50%;
       }

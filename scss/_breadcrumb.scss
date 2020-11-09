@@ -18,7 +18,7 @@
       float: left; // Suppress inline spacings and underlining of the separator
       padding-right: $breadcrumb-item-padding-x;
       color: $breadcrumb-divider-color;
-      content: escape-svg($breadcrumb-divider);
+      content: bs-escape-svg($breadcrumb-divider);
     }
   }
 

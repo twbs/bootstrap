@@ -9,7 +9,7 @@
   height: $btn-close-height;
   padding: $btn-close-padding-y $btn-close-padding-x;
   color: $btn-close-color;
-  background: transparent escape-svg($btn-close-bg) no-repeat center center / $btn-close-width auto; // include transparent for button elements
+  background: transparent bs-escape-svg($btn-close-bg) no-repeat center center / $btn-close-width auto; // include transparent for button elements
   border: 0; // for button elements
   @include border-radius();
   opacity: $btn-close-opacity;

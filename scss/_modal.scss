@@ -56,7 +56,7 @@
 }
 
 .modal-dialog-scrollable {
-  height: subtract(100%, $modal-dialog-margin * 2);
+  height: bs-subtract(100%, $modal-dialog-margin * 2);
 
   .modal-content {
     max-height: 100%;
@@ -71,7 +71,7 @@
 .modal-dialog-centered {
   display: flex;
   align-items: center;
-  min-height: subtract(100%, $modal-dialog-margin * 2);
+  min-height: bs-subtract(100%, $modal-dialog-margin * 2);
 }
 
 // Actual modal
@@ -177,11 +177,11 @@
   }
 
   .modal-dialog-scrollable {
-    height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
+    height: bs-subtract(100%, $modal-dialog-margin-y-sm-up * 2);
   }
 
   .modal-dialog-centered {
-    min-height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
+    min-height: bs-subtract(100%, $modal-dialog-margin-y-sm-up * 2);
   }
 
   .modal-content {

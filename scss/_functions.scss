@@ -4,7 +4,7 @@
 
 // Ascending
 // Used to evaluate Sass maps like our grid breakpoints.
-@mixin _assert-ascending($map, $map-name) {
+@mixin _bs-assert-ascending($map, $map-name) {
   $prev-key: null;
   $prev-num: null;
   @each $key, $num in $map {
@@ -22,7 +22,7 @@
 
 // Starts at zero
 // Used to ensure the min-width of the lowest breakpoint starts at 0.
-@mixin _assert-starts-at-zero($map, $map-name: "$grid-breakpoints") {
+@mixin _bs-assert-starts-at-zero($map, $map-name: "$grid-breakpoints") {
   @if length($map) > 0 {
     $values: map-values($map);
     $first-value: nth($values, 1);
@@ -34,7 +34,7 @@
 
 // Internal Bootstrap function to turn maps into its negative variant.
 // It prefixes the keys with `n` and makes the value negative.
-@function negativify-map($map) {
+@function bs-negativify-map($map) {
   $result: ();
   @each $key, $value in $map {
     @if $key != 0 {
@@ -45,7 +45,7 @@
 }
 
 // Get multiple keys from a sass map
-@function map-get-multiple($map, $values) {
+@function bs-map-get-multiple($map, $values) {
   $result: ();
   @each $key, $value in $map {
     @if (index($values, $key) != null) {
@@ -63,11 +63,11 @@
 // @param {String} $search - Substring to replace
 // @param {String} $replace ('') - New value
 // @return {String} - Updated string
-@function str-replace($string, $search, $replace: "") {
+@function bs-str-replace($string, $search, $replace: "") {
   $index: str-index($string, $search);
 
   @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    @return str-slice($string, 1, $index - 1) + $replace + bs-str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
   }
 
   @return $string;
@@ -77,14 +77,14 @@
 //
 // Requires the use of quotes around data URIs.
 
-@function escape-svg($string) {
+@function bs-escape-svg($string) {
   @if str-index($string, "data:image/svg+xml") {
     @each $char, $encoded in $escaped-characters {
       // Do not escape the url brackets
       @if str-index($string, "url(") == 1 {
-        $string: url("#{str-replace(str-slice($string, 6, -3), $char, $encoded)}");
+        $string: url("#{bs-str-replace(str-slice($string, 6, -3), $char, $encoded)}");
       } @else {
-        $string: str-replace($string, $char, $encoded);
+        $string: bs-str-replace($string, $char, $encoded);
       }
     }
   }
@@ -99,13 +99,13 @@
 // stylelint-disable-next-line scss/dollar-variable-default, scss/dollar-variable-pattern
 $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003 .0033 .0037 .004 .0044 .0048 .0052 .0056 .006 .0065 .007 .0075 .008 .0086 .0091 .0097 .0103 .011 .0116 .0123 .013 .0137 .0144 .0152 .016 .0168 .0176 .0185 .0194 .0203 .0212 .0222 .0232 .0242 .0252 .0262 .0273 .0284 .0296 .0307 .0319 .0331 .0343 .0356 .0369 .0382 .0395 .0409 .0423 .0437 .0452 .0467 .0482 .0497 .0513 .0529 .0545 .0561 .0578 .0595 .0612 .063 .0648 .0666 .0685 .0704 .0723 .0742 .0762 .0782 .0802 .0823 .0844 .0865 .0887 .0908 .0931 .0953 .0976 .0999 .1022 .1046 .107 .1095 .1119 .1144 .117 .1195 .1221 .1248 .1274 .1301 .1329 .1356 .1384 .1413 .1441 .147 .15 .1529 .1559 .159 .162 .1651 .1683 .1714 .1746 .1779 .1812 .1845 .1878 .1912 .1946 .1981 .2016 .2051 .2086 .2122 .2159 .2195 .2232 .227 .2307 .2346 .2384 .2423 .2462 .2502 .2542 .2582 .2623 .2664 .2705 .2747 .2789 .2831 .2874 .2918 .2961 .3005 .305 .3095 .314 .3185 .3231 .3278 .3325 .3372 .3419 .3467 .3515 .3564 .3613 .3663 .3712 .3763 .3813 .3864 .3916 .3968 .402 .4072 .4125 .4179 .4233 .4287 .4342 .4397 .4452 .4508 .4564 .4621 .4678 .4735 .4793 .4851 .491 .4969 .5029 .5089 .5149 .521 .5271 .5333 .5395 .5457 .552 .5583 .5647 .5711 .5776 .5841 .5906 .5972 .6038 .6105 .6172 .624 .6308 .6376 .6445 .6514 .6584 .6654 .6724 .6795 .6867 .6939 .7011 .7084 .7157 .7231 .7305 .7379 .7454 .7529 .7605 .7682 .7758 .7835 .7913 .7991 .807 .8148 .8228 .8308 .8388 .8469 .855 .8632 .8714 .8796 .8879 .8963 .9047 .9131 .9216 .9301 .9387 .9473 .956 .9647 .9734 .9823 .9911 1;
 
-@function color-contrast($background, $color-contrast-dark: $color-contrast-dark, $color-contrast-light: $color-contrast-light, $min-contrast-ratio: $min-contrast-ratio) {
+@function bs-color-contrast($background, $color-contrast-dark: $color-contrast-dark, $color-contrast-light: $color-contrast-light, $min-contrast-ratio: $min-contrast-ratio) {
   $foregrounds: $color-contrast-light, $color-contrast-dark, $white, $black;
   $max-ratio: 0;
   $max-ratio-color: null;
 
   @each $color in $foregrounds {
-    $contrast-ratio: contrast-ratio($background, $color);
+    $contrast-ratio: bs-contrast-ratio($background, $color);
     @if $contrast-ratio > $min-contrast-ratio {
       @return $color;
     } @else if $contrast-ratio > $max-ratio {
@@ -119,9 +119,9 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
   @return $max-ratio-color;
 }
 
-@function contrast-ratio($background, $foreground: $color-contrast-light) {
-  $l1: luminance($background);
-  $l2: luminance(opaque($background, $foreground));
+@function bs-contrast-ratio($background, $foreground: $color-contrast-light) {
+  $l1: bs-luminance($background);
+  $l2: bs-luminance(bs-opaque($background, $foreground));
 
   @return if($l1 > $l2, ($l1 + .05) / ($l2 + .05), ($l2 + .05) / ($l1 + .05));
 }
@@ -129,7 +129,7 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 // Return WCAG2.0 relative luminance
 // See https://www.w3.org/WAI/GL/wiki/Relative_luminance
 // See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
-@function luminance($color) {
+@function bs-luminance($color) {
   $rgb: (
     "r": red($color),
     "g": green($color),
@@ -145,31 +145,31 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 }
 
 // Return opaque color
-// opaque(#fff, rgba(0, 0, 0, .5)) => #808080
-@function opaque($background, $foreground) {
+// bs-opaque(#fff, rgba(0, 0, 0, .5)) => #808080
+@function bs-opaque($background, $foreground) {
   @return mix(rgba($foreground, 1), $background, opacity($foreground) * 100);
 }
 
 // scss-docs-start color-functions
 // Tint a color: mix a color with white
-@function tint-color($color, $weight) {
+@function bs-tint-color($color, $weight) {
   @return mix(white, $color, $weight);
 }
 
 // Shade a color: mix a color with black
-@function shade-color($color, $weight) {
+@function bs-shade-color($color, $weight) {
   @return mix(black, $color, $weight);
 }
 
 // Scale a color:
 // Shade the color if the weight is positive, else tint it
-@function scale-color($color, $weight) {
-  @return if($weight > 0, shade-color($color, $weight), tint-color($color, -$weight));
+@function bs-scale-color($color, $weight) {
+  @return if($weight > 0, bs-shade-color($color, $weight), bs-tint-color($color, -$weight));
 }
 // scss-docs-end color-functions
 
 // Return valid calc
-@function add($value1, $value2, $return-calc: true) {
+@function bs-add($value1, $value2, $return-calc: true) {
   @if $value1 == null {
     @return $value2;
   }
@@ -185,7 +185,7 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
   @return if($return-calc == true, calc(#{$value1} + #{$value2}), $value1 + unquote(" + ") + $value2);
 }
 
-@function subtract($value1, $value2, $return-calc: true) {
+@function bs-subtract($value1, $value2, $return-calc: true) {
   @if $value1 == null and $value2 == null {
     @return null;
   }

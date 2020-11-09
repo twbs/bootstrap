@@ -161,7 +161,7 @@ Next to the [Sass maps]({{< docsref "/customize/color#color-sass-maps" >}}) we h
 }
 ```
 
-You can lighten or darken colors with Bootstrap's `tint-color()` and `shade-color()` functions. These functions will mix colors with black or white, unlike Sass' native `lighten()` and `darken()` functions which will change the lightness by a fixed amount, which often doesn't lead to the desired effect.
+You can lighten or darken colors with Bootstrap's `bs-tint-color()` and `bs-shade-color()` functions. These functions will mix colors with black or white, unlike Sass' native `lighten()` and `darken()` functions which will change the lightness by a fixed amount, which often doesn't lead to the desired effect.
 
 {{< scss-docs name="color-functions" file="scss/_functions.scss" >}}
 
@@ -169,11 +169,11 @@ In practice, you'd call the function and pass in the color and weight parameters
 
 ```scss
 .custom-element {
-  color: tint-color($primary, 10%);
+  color: bs-tint-color($primary, 10%);
 }
 
 .custom-element-2 {
-  color: shade-color($danger, 30%);
+  color: bs-shade-color($danger, 30%);
 }
 ```
 
@@ -188,7 +188,7 @@ For example, to generate color swatches from our `$theme-colors` map:
 ```scss
 @each $color, $value in $theme-colors {
   .swatch-#{$color} {
-    color: color-contrast($value);
+    color: bs-color-contrast($value);
   }
 }
 ```
@@ -197,7 +197,7 @@ It can also be used for one-off contrast needs:
 
 ```scss
 .custom-element {
-  color: color-contrast(#000); // returns `color: #fff`
+  color: bs-color-contrast(#000); // returns `color: #fff`
 }
 ```
 
@@ -205,13 +205,13 @@ You can also specify a base color with our color map functions:
 
 ```scss
 .custom-element {
-  color: color-contrast($dark); // returns `color: #fff`
+  color: bs-color-contrast($dark); // returns `color: #fff`
 }
 ```
 
 ### Escape SVG
 
-We use the `escape-svg` function to escape the `<`, `>` and `#` characters for SVG background images. When using the `escape-svg` function, data URIs must be quoted.
+We use the `bs-escape-svg` function to escape the `<`, `>` and `#` characters for SVG background images. When using the `bs-escape-svg` function, data URIs must be quoted.
 
 ### Add and Subtract functions
 
@@ -230,7 +230,7 @@ $border-width: 1px;
 
 .element {
   // Output the same calc(.25rem - 1px) as above
-  border-radius: subtract($border-radius, $border-width);
+  border-radius: bs-subtract($border-radius, $border-width);
 }
 ```
 
@@ -247,6 +247,6 @@ $border-width: 0;
 
 .element {
   // Output .25rem
-  border-radius: subtract($border-radius, $border-width);
+  border-radius: bs-subtract($border-radius, $border-width);
 }
 ```

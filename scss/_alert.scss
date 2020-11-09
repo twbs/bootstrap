@@ -44,11 +44,11 @@
 // Generate contextual modifier classes for colorizing the alert.
 
 @each $state, $value in $theme-colors {
-  $background: scale-color($value, $alert-bg-scale);
-  $border: scale-color($value, $alert-border-scale);
-  $color: scale-color($value, $alert-color-scale);
-  @if (contrast-ratio($background, $color) < $min-contrast-ratio) {
-    $color: mix($value, color-contrast($background), abs($alert-color-scale));
+  $background: bs-scale-color($value, $alert-bg-scale);
+  $border: bs-scale-color($value, $alert-border-scale);
+  $color: bs-scale-color($value, $alert-color-scale);
+  @if (bs-contrast-ratio($background, $color) < $min-contrast-ratio) {
+    $color: mix($value, bs-color-contrast($background), abs($alert-color-scale));
   }
   .alert-#{$state} {
     @include alert-variant($background, $border, $color);

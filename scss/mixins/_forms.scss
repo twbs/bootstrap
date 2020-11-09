@@ -33,7 +33,7 @@
     margin-top: .1rem;
     @include font-size($form-feedback-tooltip-font-size);
     line-height: $form-feedback-tooltip-line-height;
-    color: color-contrast($color);
+    color: bs-color-contrast($color);
     background-color: rgba($color, $form-feedback-tooltip-opacity);
     @include border-radius($form-feedback-tooltip-border-radius);
   }
@@ -51,7 +51,7 @@
 
       @if $enable-validation-icons {
         padding-right: $input-height-inner;
-        background-image: escape-svg($icon);
+        background-image: bs-escape-svg($icon);
         background-repeat: no-repeat;
         background-position: right $input-height-inner-quarter center;
         background-size: $input-height-inner-half $input-height-inner-half;
@@ -80,7 +80,7 @@
 
       @if $enable-validation-icons {
         padding-right: $form-select-feedback-icon-padding-right;
-        background-image: escape-svg($form-select-indicator), escape-svg($icon);
+        background-image: bs-escape-svg($form-select-indicator), bs-escape-svg($icon);
         background-position: $form-select-bg-position, $form-select-feedback-icon-position;
         background-size: $form-select-bg-size, $form-select-feedback-icon-size;
       }

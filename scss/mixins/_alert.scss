@@ -4,6 +4,6 @@
   border-color: $border;
 
   .alert-link {
-    color: shade-color($color, 20%);
+    color: bs-shade-color($color, 20%);
   }
 }

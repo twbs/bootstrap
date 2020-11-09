@@ -14,7 +14,7 @@
   color: $form-select-color;
   vertical-align: middle;
   background-color: $form-select-bg;
-  background-image: escape-svg($form-select-indicator);
+  background-image: bs-escape-svg($form-select-indicator);
   background-repeat: no-repeat;
   background-position: $form-select-bg-position;
   background-size: $form-select-bg-size;
