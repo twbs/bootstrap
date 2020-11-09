@@ -20,19 +20,6 @@
     }
   })
 
-  function getOrigin() {
-    var location = window.location
-    var origin = location.origin
-
-    if (!origin) {
-      var port = location.port ? ':' + location.port : ''
-
-      origin = location.protocol + '//' + location.hostname + port
-    }
-
-    return origin
-  }
-
   window.docsearch({
     apiKey: '5990ad008512000bba2cf951ccf0332f',
     indexName: 'bootstrap',
@@ -42,10 +29,9 @@
     },
     transformData: function (hits) {
       return hits.map(function (hit) {
-        var currentUrl = getOrigin()
         var liveUrl = 'https://v5.getbootstrap.com/'
 
-        hit.url = currentUrl.startsWith(liveUrl) ?
+        hit.url = window.location.origin.startsWith(liveUrl) ?
           // On production, return the result as is
           hit.url :
           // On development or Netlify, replace `hit.url` with a trailing slash,
