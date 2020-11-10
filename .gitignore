@@ -5,7 +5,7 @@
 /site/docs/**/dist/
 # Jekyll's cache folder; keeping it for the same reason as above
 /site/.jekyll-cache/
-# Hugo resources folder
+# Hugo resource
 /resources/
 
 # Ignore ruby/bundler files;
