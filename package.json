@@ -130,7 +130,7 @@
     "postcss-cli": "^8.2.0",
     "rollup": "^2.33.1",
     "rollup-plugin-istanbul": "^2.0.1",
-    "sass": "^1.28.0",
+    "sass": "^1.29.0",
     "shelljs": "^0.8.4",
     "stylelint": "^13.7.2",
     "stylelint-config-twbs-bootstrap": "^2.1.0",
