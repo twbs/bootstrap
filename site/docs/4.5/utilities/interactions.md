@@ -16,4 +16,6 @@ Change how the content is selected when the user interacts with it.
 {% endcapture %}
 {% include example.html content=example %}
 
+**Note: `user-select-all` is not supported on Internet Explorer or Edge Legacy.**
+
 Customize the available classes by changing the `$user-selects` Sass list in `_variables.scss`.
