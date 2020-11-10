@@ -98,7 +98,7 @@
     "@rollup/plugin-babel": "^5.2.1",
     "@rollup/plugin-commonjs": "^16.0.0",
     "@rollup/plugin-node-resolve": "^10.0.0",
-    "autoprefixer": "^10.0.1",
+    "autoprefixer": "^10.0.2",
     "bundlewatch": "^0.3.1",
     "clean-css-cli": "^4.3.0",
     "cross-env": "^7.0.2",
