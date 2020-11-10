@@ -1050,6 +1050,59 @@ describe('Tooltip', () => {
     })
   })
 
+  describe('aria-label', () => {
+    it('should add the aria-label attribute for referencing original title', done => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      tooltipEl.addEventListener('shown.bs.tooltip', () => {
+        const tooltipShown = document.querySelector('.tooltip')
+
+        expect(tooltipShown).toBeDefined()
+        expect(tooltipEl.getAttribute('aria-label')).toEqual('Another tooltip')
+        done()
+      })
+
+      tooltip.show()
+    })
+
+    it('should not add the aria-label attribute if the attribute already exists', done => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" aria-label="Different label" title="Another tooltip"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      tooltipEl.addEventListener('shown.bs.tooltip', () => {
+        const tooltipShown = document.querySelector('.tooltip')
+
+        expect(tooltipShown).toBeDefined()
+        expect(tooltipEl.getAttribute('aria-label')).toEqual('Different label')
+        done()
+      })
+
+      tooltip.show()
+    })
+
+    it('should not add the aria-label attribute if the element has text content', done => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">text content</a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      tooltipEl.addEventListener('shown.bs.tooltip', () => {
+        const tooltipShown = document.querySelector('.tooltip')
+
+        expect(tooltipShown).toBeDefined()
+        expect(tooltipEl.getAttribute('aria-label')).toBeNull()
+        done()
+      })
+
+      tooltip.show()
+    })
+  })
+
   describe('jQueryInterface', () => {
     it('should create a tooltip', () => {
       fixtureEl.innerHTML = '<div></div>'
