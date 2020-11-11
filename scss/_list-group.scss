@@ -151,7 +151,13 @@
 // Add modifier classes to change text and background color on individual items.
 // Organizationally, this must come after the `:hover` states.
 
-@each $color, $value in $theme-colors {
-  @include list-group-item-variant($color, color-level($value, $list-group-item-bg-level), color-level($value, $list-group-item-color-level));
+@each $state, $value in $theme-colors {
+  $background: scale-color($value, $list-group-item-bg-scale);
+  $color: scale-color($value, $list-group-item-color-scale);
+  @if (contrast-ratio($background, $color) < $min-contrast-ratio) {
+    $color: mix($value, color-contrast($background), abs($alert-color-scale));
+  }
+
+  @include list-group-item-variant($state, $background, $color);
 }
 // scss-docs-end list-group-modifiers

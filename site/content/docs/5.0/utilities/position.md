@@ -10,13 +10,13 @@ toc: true
 
 Quick positioning classes are available, though they are not responsive.
 
-{{< highlight html >}}
+```html
 <div class="position-static">...</div>
 <div class="position-relative">...</div>
 <div class="position-absolute">...</div>
 <div class="position-fixed">...</div>
 <div class="position-sticky">...</div>
-{{< /highlight >}}
+```
 
 ## Arrange elements
 

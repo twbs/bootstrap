@@ -27,6 +27,12 @@
 
 :root {
   font-size: $font-size-root;
+
+  @if $enable-smooth-scroll {
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
+  }
 }
 
 
@@ -289,8 +295,6 @@ samp {
 // 1. Remove browser default top margin
 // 2. Reset browser default of `1em` to use `rem`s
 // 3. Don't allow content to break outside
-// 4. Disable auto-hiding scrollbar in legacy Edge to avoid overlap,
-//    making it impossible to interact with the content
 
 pre {
   display: block;
@@ -299,7 +303,6 @@ pre {
   overflow: auto; // 3
   @include font-size($code-font-size);
   color: $pre-color;
-  -ms-overflow-style: scrollbar; // 4
 
   // Account for some code outputs that place code tags in pre tags
   code {
@@ -402,7 +405,7 @@ label {
 // See https://github.com/twbs/bootstrap/issues/24093
 
 button {
-  // stylelint-disable-next-line property-blacklist
+  // stylelint-disable-next-line property-disallowed-list
   border-radius: 0;
 }
 
@@ -411,8 +414,8 @@ button {
 // Credit https://github.com/suitcss/base/
 
 button:focus {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
+  outline: dotted 1px;
+  outline: -webkit-focus-ring-color auto 5px;
 }
 
 // 1. Remove the margin in Firefox and Safari
@@ -426,13 +429,6 @@ textarea {
   font-family: inherit;
   @include font-size(inherit);
   line-height: inherit;
-}
-
-// Show the overflow in Edge
-
-button,
-input {
-  overflow: visible;
 }
 
 // Remove the inheritance of text transform in Firefox
@@ -510,8 +506,7 @@ fieldset {
 
 // 1. By using `float: left`, the legend will behave like a block element.
 //    This way the border of a fieldset wraps around the legend if present.
-// 2. Correct the text wrapping in Edge.
-// 3. Fix wrapping bug.
+// 2. Fix wrapping bug.
 //    See https://github.com/twbs/bootstrap/issues/29712
 
 legend {
@@ -522,10 +517,9 @@ legend {
   @include font-size($legend-font-size);
   font-weight: $legend-font-weight;
   line-height: inherit;
-  white-space: normal; // 2
 
   + * {
-    clear: left; // 3
+    clear: left; // 2
   }
 }
 
@@ -569,7 +563,15 @@ legend {
   padding: 0;
 }
 
-// 1. Change font properties to `inherit` in Safari.
+
+// Inherit font family and line height for file input buttons
+
+// stylelint-disable-next-line selector-pseudo-element-no-unknown
+::file-selector-button {
+  font: inherit;
+}
+
+// 1. Change font properties to `inherit`
 // 2. Correct the inability to style clickable types in iOS and Safari.
 
 ::-webkit-file-upload-button {

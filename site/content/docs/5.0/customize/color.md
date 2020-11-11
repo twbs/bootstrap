@@ -14,7 +14,7 @@ We use a subset of all colors to create a smaller color palette for generating c
   {{< theme-colors.inline >}}
   {{- range (index $.Site.Data "theme-colors") }}
     <div class="col-md-4">
-      <div class="p-3 mb-3 bg-{{ .name }} {{ if or (eq .name "light") (eq .name "warning") }}text-dark{{ else if (eq .name "info")}}text-body{{ else }}text-white{{ end }}">{{ .name | title }}</div>
+      <div class="p-3 mb-3 bg-{{ .name }} {{ if .contrast_color }}text-{{ .contrast_color }}{{ else }}text-white{{ end }}">{{ .name | title }}</div>
     </div>
   {{ end -}}
   {{< /theme-colors.inline >}}
@@ -97,12 +97,12 @@ Add, remove, or modify values within the map to update how they're used in many 
 
 Here's how you can use these in your Sass:
 
-{{< highlight scss >}}
+```scss
 .alpha { color: $purple; }
 .beta {
   color: $yellow-300;
   background-color: $indigo-900;
 }
-{{< /highlight >}}
+```
 
 [Color utility classes]({{< docsref "/utilities/colors" >}}) are also available for setting `color` and `background-color` using the `500` color values.

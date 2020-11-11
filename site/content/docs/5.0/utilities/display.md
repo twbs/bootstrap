@@ -25,6 +25,7 @@ Where *value* is one of:
 - `inline`
 - `inline-block`
 - `block`
+- `grid`
 - `table`
 - `table-cell`
 - `table-row`
@@ -135,6 +136,7 @@ Change the `display` value of elements when printing with our print display util
 - `.d-print-inline`
 - `.d-print-inline-block`
 - `.d-print-block`
+- `.d-print-grid`
 - `.d-print-table`
 - `.d-print-table-row`
 - `.d-print-table-cell`

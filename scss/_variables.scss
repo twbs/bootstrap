@@ -67,7 +67,7 @@ $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
-$dark:          $gray-800 !default;
+$dark:          $gray-900 !default;
 
 // scss-docs-start theme-colors-map
 $theme-colors: (
@@ -82,9 +82,6 @@ $theme-colors: (
 ) !default;
 // scss-docs-end theme-colors-map
 
-// Set a specific jump point for requesting color jumps
-$theme-color-interval: 8% !default;
-
 // The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
 // See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
 $min-contrast-ratio:   4.5 !default;
@@ -94,105 +91,105 @@ $color-contrast-dark:      $black !default;
 $color-contrast-light:     $white !default;
 
 // fusv-disable
-$blue-100: tint-color($blue, 8) !default;
-$blue-200: tint-color($blue, 6) !default;
-$blue-300: tint-color($blue, 4) !default;
-$blue-400: tint-color($blue, 2) !default;
+$blue-100: tint-color($blue, 80%) !default;
+$blue-200: tint-color($blue, 60%) !default;
+$blue-300: tint-color($blue, 40%) !default;
+$blue-400: tint-color($blue, 20%) !default;
 $blue-500: $blue !default;
-$blue-600: shade-color($blue, 2) !default;
-$blue-700: shade-color($blue, 4) !default;
-$blue-800: shade-color($blue, 6) !default;
-$blue-900: shade-color($blue, 8) !default;
+$blue-600: shade-color($blue, 20%) !default;
+$blue-700: shade-color($blue, 40%) !default;
+$blue-800: shade-color($blue, 60%) !default;
+$blue-900: shade-color($blue, 80%) !default;
 
-$indigo-100: tint-color($indigo, 8) !default;
-$indigo-200: tint-color($indigo, 6) !default;
-$indigo-300: tint-color($indigo, 4) !default;
-$indigo-400: tint-color($indigo, 2) !default;
+$indigo-100: tint-color($indigo, 80%) !default;
+$indigo-200: tint-color($indigo, 60%) !default;
+$indigo-300: tint-color($indigo, 40%) !default;
+$indigo-400: tint-color($indigo, 20%) !default;
 $indigo-500: $indigo !default;
-$indigo-600: shade-color($indigo, 2) !default;
-$indigo-700: shade-color($indigo, 4) !default;
-$indigo-800: shade-color($indigo, 6) !default;
-$indigo-900: shade-color($indigo, 8) !default;
+$indigo-600: shade-color($indigo, 20%) !default;
+$indigo-700: shade-color($indigo, 40%) !default;
+$indigo-800: shade-color($indigo, 60%) !default;
+$indigo-900: shade-color($indigo, 80%) !default;
 
-$purple-100: tint-color($purple, 8) !default;
-$purple-200: tint-color($purple, 6) !default;
-$purple-300: tint-color($purple, 4) !default;
-$purple-400: tint-color($purple, 2) !default;
+$purple-100: tint-color($purple, 80%) !default;
+$purple-200: tint-color($purple, 60%) !default;
+$purple-300: tint-color($purple, 40%) !default;
+$purple-400: tint-color($purple, 20%) !default;
 $purple-500: $purple !default;
-$purple-600: shade-color($purple, 2) !default;
-$purple-700: shade-color($purple, 4) !default;
-$purple-800: shade-color($purple, 6) !default;
-$purple-900: shade-color($purple, 8) !default;
+$purple-600: shade-color($purple, 20%) !default;
+$purple-700: shade-color($purple, 40%) !default;
+$purple-800: shade-color($purple, 60%) !default;
+$purple-900: shade-color($purple, 80%) !default;
 
-$pink-100: tint-color($pink, 8) !default;
-$pink-200: tint-color($pink, 6) !default;
-$pink-300: tint-color($pink, 4) !default;
-$pink-400: tint-color($pink, 2) !default;
+$pink-100: tint-color($pink, 80%) !default;
+$pink-200: tint-color($pink, 60%) !default;
+$pink-300: tint-color($pink, 40%) !default;
+$pink-400: tint-color($pink, 20%) !default;
 $pink-500: $pink !default;
-$pink-600: shade-color($pink, 2) !default;
-$pink-700: shade-color($pink, 4) !default;
-$pink-800: shade-color($pink, 6) !default;
-$pink-900: shade-color($pink, 8) !default;
+$pink-600: shade-color($pink, 20%) !default;
+$pink-700: shade-color($pink, 40%) !default;
+$pink-800: shade-color($pink, 60%) !default;
+$pink-900: shade-color($pink, 80%) !default;
 
-$red-100: tint-color($red, 8) !default;
-$red-200: tint-color($red, 6) !default;
-$red-300: tint-color($red, 4) !default;
-$red-400: tint-color($red, 2) !default;
+$red-100: tint-color($red, 80%) !default;
+$red-200: tint-color($red, 60%) !default;
+$red-300: tint-color($red, 40%) !default;
+$red-400: tint-color($red, 20%) !default;
 $red-500: $red !default;
-$red-600: shade-color($red, 2) !default;
-$red-700: shade-color($red, 4) !default;
-$red-800: shade-color($red, 6) !default;
-$red-900: shade-color($red, 8) !default;
+$red-600: shade-color($red, 20%) !default;
+$red-700: shade-color($red, 40%) !default;
+$red-800: shade-color($red, 60%) !default;
+$red-900: shade-color($red, 80%) !default;
 
-$orange-100: tint-color($orange, 8) !default;
-$orange-200: tint-color($orange, 6) !default;
-$orange-300: tint-color($orange, 4) !default;
-$orange-400: tint-color($orange, 2) !default;
+$orange-100: tint-color($orange, 80%) !default;
+$orange-200: tint-color($orange, 60%) !default;
+$orange-300: tint-color($orange, 40%) !default;
+$orange-400: tint-color($orange, 20%) !default;
 $orange-500: $orange !default;
-$orange-600: shade-color($orange, 2) !default;
-$orange-700: shade-color($orange, 4) !default;
-$orange-800: shade-color($orange, 6) !default;
-$orange-900: shade-color($orange, 8) !default;
+$orange-600: shade-color($orange, 20%) !default;
+$orange-700: shade-color($orange, 40%) !default;
+$orange-800: shade-color($orange, 60%) !default;
+$orange-900: shade-color($orange, 80%) !default;
 
-$yellow-100: tint-color($yellow, 8) !default;
-$yellow-200: tint-color($yellow, 6) !default;
-$yellow-300: tint-color($yellow, 4) !default;
-$yellow-400: tint-color($yellow, 2) !default;
+$yellow-100: tint-color($yellow, 80%) !default;
+$yellow-200: tint-color($yellow, 60%) !default;
+$yellow-300: tint-color($yellow, 40%) !default;
+$yellow-400: tint-color($yellow, 20%) !default;
 $yellow-500: $yellow !default;
-$yellow-600: shade-color($yellow, 2) !default;
-$yellow-700: shade-color($yellow, 4) !default;
-$yellow-800: shade-color($yellow, 6) !default;
-$yellow-900: shade-color($yellow, 8) !default;
+$yellow-600: shade-color($yellow, 20%) !default;
+$yellow-700: shade-color($yellow, 40%) !default;
+$yellow-800: shade-color($yellow, 60%) !default;
+$yellow-900: shade-color($yellow, 80%) !default;
 
-$green-100: tint-color($green, 8) !default;
-$green-200: tint-color($green, 6) !default;
-$green-300: tint-color($green, 4) !default;
-$green-400: tint-color($green, 2) !default;
+$green-100: tint-color($green, 80%) !default;
+$green-200: tint-color($green, 60%) !default;
+$green-300: tint-color($green, 40%) !default;
+$green-400: tint-color($green, 20%) !default;
 $green-500: $green !default;
-$green-600: shade-color($green, 2) !default;
-$green-700: shade-color($green, 4) !default;
-$green-800: shade-color($green, 6) !default;
-$green-900: shade-color($green, 8) !default;
+$green-600: shade-color($green, 20%) !default;
+$green-700: shade-color($green, 40%) !default;
+$green-800: shade-color($green, 60%) !default;
+$green-900: shade-color($green, 80%) !default;
 
-$teal-100: tint-color($teal, 8) !default;
-$teal-200: tint-color($teal, 6) !default;
-$teal-300: tint-color($teal, 4) !default;
-$teal-400: tint-color($teal, 2) !default;
+$teal-100: tint-color($teal, 80%) !default;
+$teal-200: tint-color($teal, 60%) !default;
+$teal-300: tint-color($teal, 40%) !default;
+$teal-400: tint-color($teal, 20%) !default;
 $teal-500: $teal !default;
-$teal-600: shade-color($teal, 2) !default;
-$teal-700: shade-color($teal, 4) !default;
-$teal-800: shade-color($teal, 6) !default;
-$teal-900: shade-color($teal, 8) !default;
+$teal-600: shade-color($teal, 20%) !default;
+$teal-700: shade-color($teal, 40%) !default;
+$teal-800: shade-color($teal, 60%) !default;
+$teal-900: shade-color($teal, 80%) !default;
 
-$cyan-100: tint-color($cyan, 8) !default;
-$cyan-200: tint-color($cyan, 6) !default;
-$cyan-300: tint-color($cyan, 4) !default;
-$cyan-400: tint-color($cyan, 2) !default;
+$cyan-100: tint-color($cyan, 80%) !default;
+$cyan-200: tint-color($cyan, 60%) !default;
+$cyan-300: tint-color($cyan, 40%) !default;
+$cyan-400: tint-color($cyan, 20%) !default;
 $cyan-500: $cyan !default;
-$cyan-600: shade-color($cyan, 2) !default;
-$cyan-700: shade-color($cyan, 4) !default;
-$cyan-800: shade-color($cyan, 6) !default;
-$cyan-900: shade-color($cyan, 8) !default;
+$cyan-600: shade-color($cyan, 20%) !default;
+$cyan-700: shade-color($cyan, 40%) !default;
+$cyan-800: shade-color($cyan, 60%) !default;
+$cyan-900: shade-color($cyan, 80%) !default;
 // fusv-enable
 
 // Characters which are escaped by the escape-svg function
@@ -214,6 +211,7 @@ $enable-shadows:              false !default;
 $enable-gradients:            false !default;
 $enable-transitions:          true !default;
 $enable-reduced-motion:       true !default;
+$enable-smooth-scroll:        true !default;
 $enable-grid-classes:         true !default;
 $enable-button-pointers:      true !default;
 $enable-rfs:                  true !default;
@@ -221,6 +219,10 @@ $enable-validation-icons:     true !default;
 $enable-negative-margins:     false !default;
 $enable-deprecation-messages: true !default;
 $enable-important-utilities:  true !default;
+
+// Prefix for :root CSS variables
+
+$variable-prefix:             bs- !default;
 
 // Gradient
 //
@@ -272,10 +274,9 @@ $body-text-align:           null !default;
 
 $link-color:                              $primary !default;
 $link-decoration:                         underline !default;
-$link-hover-color:                        darken($link-color, 15%) !default;
+$link-shade-percentage:                   20% !default;
+$link-hover-color:                        scale-color($link-color, $link-shade-percentage) !default;
 $link-hover-decoration:                   null !default;
-// Darken percentage for links with `.text-*` class (e.g. `.text-success`)
-$emphasized-link-hover-darken-percentage: 15% !default;
 
 $stretched-link-pseudo-element:           after !default;
 $stretched-link-z-index:                  1 !default;
@@ -344,11 +345,6 @@ $container-padding-x: $grid-gutter-width !default;
 // Define common padding and border radius sizes and more.
 
 $border-width:                1px !default;
-$border-color:                $gray-300 !default;
-
-$border-radius:               .25rem !default;
-$border-radius-sm:            .2rem !default;
-$border-radius-lg:            .3rem !default;
 $border-widths: (
   0: 0,
   1: 1px,
@@ -358,7 +354,12 @@ $border-widths: (
   5: 5px
 ) !default;
 
-$rounded-pill:                50rem !default;
+$border-color:                $gray-300 !default;
+
+$border-radius:               .25rem !default;
+$border-radius-sm:            .2rem !default;
+$border-radius-lg:            .3rem !default;
+$border-radius-pill:          50rem !default;
 
 $box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
 $box-shadow-sm:               0 .125rem .25rem rgba($black, .075) !default;
@@ -376,7 +377,7 @@ $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;
 $transition-collapse:         height .35s ease !default;
 
-// stylelint-disable function-blacklist
+// stylelint-disable function-disallowed-list
 // scss-docs-start aspect-ratios
 $aspect-ratios: (
   "1x1": 100%,
@@ -385,18 +386,18 @@ $aspect-ratios: (
   "21x9": calc(9 / 21 * 100%)
 ) !default;
 // scss-docs-end aspect-ratios
-// stylelint-enable function-blacklist
+// stylelint-enable function-disallowed-list
 
 // Typography
 //
 // Font, line-height, and color for body text, headings, and more.
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-sans-serif:      system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 // stylelint-enable value-keyword-case
-$font-family-base:            var(--bs-font-sans-serif) !default;
-$font-family-code:            var(--bs-font-monospace) !default;
+$font-family-base:            var(--#{$variable-prefix}font-sans-serif) !default;
+$font-family-code:            var(--#{$variable-prefix}font-monospace) !default;
 
 // $font-size-root effects the value of `rem`, which is used for as well font sizes, paddings and margins
 // $font-size-base effects the font size of the body text
@@ -423,6 +424,17 @@ $h3-font-size:                $font-size-base * 1.75 !default;
 $h4-font-size:                $font-size-base * 1.5 !default;
 $h5-font-size:                $font-size-base * 1.25 !default;
 $h6-font-size:                $font-size-base !default;
+
+// scss-docs-start font-sizes
+$font-sizes: (
+  1: $h1-font-size,
+  2: $h2-font-size,
+  3: $h3-font-size,
+  4: $h4-font-size,
+  5: $h5-font-size,
+  6: $h6-font-size
+) !default;
+// scss-docs-end font-sizes
 
 $headings-margin-bottom:      $spacer / 2 !default;
 $headings-font-family:        null !default;
@@ -520,15 +532,15 @@ $table-group-separator-color: currentColor !default;
 
 $table-caption-color:         $text-muted !default;
 
-$table-bg-level:              -9 !default;
+$table-bg-scale:              -80% !default;
 
 $table-variants: (
-  "primary":    color-level($primary, $table-bg-level),
-  "secondary":  color-level($secondary, $table-bg-level),
-  "success":    color-level($success, $table-bg-level),
-  "info":       color-level($info, $table-bg-level),
-  "warning":    color-level($warning, $table-bg-level),
-  "danger":     color-level($danger, $table-bg-level),
+  "primary":    scale-color($primary, $table-bg-scale),
+  "secondary":  scale-color($secondary, $table-bg-scale),
+  "success":    scale-color($success, $table-bg-scale),
+  "info":       scale-color($info, $table-bg-scale),
+  "warning":    scale-color($warning, $table-bg-scale),
+  "danger":     scale-color($danger, $table-bg-scale),
   "light":      $light,
   "dark":       $dark,
 ) !default;
@@ -545,7 +557,7 @@ $input-btn-font-family:       null !default;
 $input-btn-font-size:         $font-size-base !default;
 $input-btn-line-height:       $line-height-base !default;
 
-$input-btn-focus-width:         .25em !default;
+$input-btn-focus-width:         .25rem !default;
 $input-btn-focus-color-opacity: .25 !default;
 $input-btn-focus-color:         rgba($component-active-bg, $input-btn-focus-color-opacity) !default;
 $input-btn-focus-box-shadow:    0 0 0 $input-btn-focus-width $input-btn-focus-color !default;
@@ -593,8 +605,6 @@ $btn-link-color:              $link-color !default;
 $btn-link-hover-color:        $link-hover-color !default;
 $btn-link-disabled-color:     $gray-600 !default;
 
-$btn-block-spacing-y:         .5rem !default;
-
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:           $border-radius !default;
 $btn-border-radius-sm:        $border-radius-sm !default;
@@ -636,7 +646,7 @@ $input-bg:                              $white !default;
 $input-disabled-bg:                     $gray-200 !default;
 $input-disabled-border-color:           null !default;
 
-$input-color:                           $gray-700 !default;
+$input-color:                           $body-color !default;
 $input-border-color:                    $gray-400 !default;
 $input-border-width:                    $input-btn-border-width !default;
 $input-box-shadow:                      $box-shadow-inset !default;
@@ -646,7 +656,7 @@ $input-border-radius-sm:                $border-radius-sm !default;
 $input-border-radius-lg:                $border-radius-lg !default;
 
 $input-focus-bg:                        $input-bg !default;
-$input-focus-border-color:              lighten($component-active-bg, 25%) !default;
+$input-focus-border-color:              tint-color($component-active-bg, 50%) !default;
 $input-focus-color:                     $input-color !default;
 $input-focus-width:                     $input-btn-focus-width !default;
 $input-focus-box-shadow:                $input-btn-focus-box-shadow !default;
@@ -695,6 +705,10 @@ $form-check-input-indeterminate-bg-color:       $component-active-bg !default;
 $form-check-input-indeterminate-border-color:   $form-check-input-indeterminate-bg-color !default;
 $form-check-input-indeterminate-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-indeterminate-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>") !default;
 
+$form-check-input-disabled-opacity:        .5 !default;
+$form-check-label-disabled-opacity:        $form-check-input-disabled-opacity !default;
+$form-check-btn-check-disabled-opacity:    $btn-disabled-opacity !default;
+
 $form-switch-color:               rgba(0, 0, 0, .25) !default;
 $form-switch-width:               2em !default;
 $form-switch-padding-left:        $form-switch-width + .5em !default;
@@ -717,12 +731,10 @@ $input-group-addon-color:               $input-color !default;
 $input-group-addon-bg:                  $gray-200 !default;
 $input-group-addon-border-color:        $input-border-color !default;
 
-
 $form-select-padding-y:             $input-padding-y !default;
 $form-select-padding-x:             $input-padding-x !default;
 $form-select-font-family:           $input-font-family !default;
 $form-select-font-size:             $input-font-size !default;
-$form-select-height:                $input-height !default;
 $form-select-indicator-padding:     1rem !default; // Extra padding to account for the presence of the background-image based indicator
 $form-select-font-weight:           $input-font-weight !default;
 $form-select-line-height:           $input-line-height !default;
@@ -752,12 +764,10 @@ $form-select-focus-box-shadow:    0 0 0 $form-select-focus-width $input-btn-focu
 $form-select-padding-y-sm:        $input-padding-y-sm !default;
 $form-select-padding-x-sm:        $input-padding-x-sm !default;
 $form-select-font-size-sm:        $input-font-size-sm !default;
-$form-select-height-sm:           $input-height-sm !default;
 
 $form-select-padding-y-lg:        $input-padding-y-lg !default;
 $form-select-padding-x-lg:        $input-padding-x-lg !default;
 $form-select-font-size-lg:        $input-font-size-lg !default;
-$form-select-height-lg:           $input-height-lg !default;
 
 $form-range-track-width:          100% !default;
 $form-range-track-height:         .5rem !default;
@@ -774,40 +784,22 @@ $form-range-thumb-border-radius:           1rem !default;
 $form-range-thumb-box-shadow:              0 .1rem .25rem rgba($black, .1) !default;
 $form-range-thumb-focus-box-shadow:        0 0 0 1px $body-bg, $input-focus-box-shadow !default;
 $form-range-thumb-focus-box-shadow-width:  $input-focus-width !default; // For focus box shadow issue in Edge
-$form-range-thumb-active-bg:               lighten($component-active-bg, 35%) !default;
+$form-range-thumb-active-bg:               tint-color($component-active-bg, 70%) !default;
 $form-range-thumb-disabled-bg:             $gray-500 !default;
 $form-range-thumb-transition:              background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
-$form-file-height:                $input-height !default;
-$form-file-focus-border-color:    $input-focus-border-color !default;
-$form-file-focus-box-shadow:      $input-focus-box-shadow !default;
-$form-file-disabled-bg:           $input-disabled-bg !default;
-$form-file-disabled-border-color: $input-disabled-border-color !default;
-
-$form-file-padding-y:             $input-padding-y !default;
-$form-file-padding-x:             $input-padding-x !default;
-$form-file-line-height:           $input-line-height !default;
-$form-file-font-family:           $input-font-family !default;
-$form-file-font-weight:           $input-font-weight !default;
-$form-file-color:                 $input-color !default;
-$form-file-bg:                    $input-bg !default;
-$form-file-border-width:          $input-border-width !default;
-$form-file-border-color:          $input-border-color !default;
-$form-file-border-radius:         $input-border-radius !default;
-$form-file-box-shadow:            $input-box-shadow !default;
-$form-file-button-color:          $form-file-color !default;
+$form-file-button-color:          $input-color !default;
 $form-file-button-bg:             $input-group-addon-bg !default;
+$form-file-button-hover-bg:       shade-color($form-file-button-bg, 5%) !default;
 
-$form-file-padding-y-sm:          $input-padding-y-sm !default;
-$form-file-padding-x-sm:          $input-padding-x-sm !default;
-$form-file-font-size-sm:          $input-font-size-sm !default;
-$form-file-height-sm:             $input-height-sm !default;
-
-$form-file-padding-y-lg:          $input-padding-y-lg !default;
-$form-file-padding-x-lg:          $input-padding-x-lg !default;
-$form-file-font-size-lg:          $input-font-size-lg !default;
-$form-file-height-lg:             $input-height-lg !default;
-
+$form-floating-height:            add(3.5rem, $input-height-border) !default;
+$form-floating-padding-x:         $input-padding-x !default;
+$form-floating-padding-y:         1rem !default;
+$form-floating-input-padding-t:   1.625rem !default;
+$form-floating-input-padding-b:   .625rem !default;
+$form-floating-label-opacity:     .65 !default;
+$form-floating-label-transform:   scale(.85) translateY(-.5rem) translateX(.15rem) !default;
+$form-floating-transition:        opacity .1s ease-in-out, transform .1s ease-in-out !default;
 
 // Form validation
 
@@ -820,7 +812,7 @@ $form-feedback-invalid-color:       $danger !default;
 $form-feedback-icon-valid-color:    $form-feedback-valid-color !default;
 $form-feedback-icon-valid:          url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-valid-color}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>") !default;
 $form-feedback-icon-invalid-color:  $form-feedback-invalid-color !default;
-$form-feedback-icon-invalid:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='#{$form-feedback-icon-invalid-color}' viewBox='0 0 12 12'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$form-feedback-icon-invalid-color}' stroke='none'/></svg>") !default;
+$form-feedback-icon-invalid:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{$form-feedback-icon-invalid-color}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$form-feedback-icon-invalid-color}' stroke='none'/></svg>") !default;
 
 // scss-docs-start form-validation-states
 $form-validation-states: (
@@ -936,7 +928,7 @@ $dropdown-divider-margin-y:         $spacer / 2 !default;
 $dropdown-box-shadow:               $box-shadow !default;
 
 $dropdown-link-color:               $gray-900 !default;
-$dropdown-link-hover-color:         darken($gray-900, 5%) !default;
+$dropdown-link-hover-color:         shade-color($gray-900, 10%) !default;
 $dropdown-link-hover-bg:            $gray-100 !default;
 
 $dropdown-link-active-color:        $component-active-color !default;
@@ -1020,6 +1012,37 @@ $card-img-overlay-padding:          $spacer !default;
 
 $card-group-margin:                 $grid-gutter-width / 2 !default;
 
+// Accordion
+$accordion-padding-y:                     1rem !default;
+$accordion-padding-x:                     1.25rem !default;
+$accordion-color:                         $body-color !default;
+$accordion-bg:                            transparent !default;
+$accordion-border-width:                  $border-width !default;
+$accordion-border-color:                  rgba($black, .125) !default;
+$accordion-border-radius:                 $border-radius !default;
+
+$accordion-body-padding-y:                $accordion-padding-y !default;
+$accordion-body-padding-x:                $accordion-padding-x !default;
+
+$accordion-button-padding-y:              $accordion-padding-y !default;
+$accordion-button-padding-x:              $accordion-padding-x !default;
+$accordion-button-color:                  $accordion-color !default;
+$accordion-button-bg:                     $accordion-bg !default;
+$accordion-transition:                    $btn-transition, border-radius .15s ease !default;
+$accordion-button-active-bg:              tint-color($component-active-bg, 90%) !default;
+$accordion-button-active-color:           shade-color($primary, 10%) !default;
+
+$accordion-button-focus-border-color:     $input-focus-border-color !default;
+$accordion-button-focus-box-shadow:       $btn-focus-box-shadow !default;
+
+$accordion-icon-width:                    1.25rem !default;
+$accordion-icon-color:                    $accordion-color !default;
+$accordion-icon-active-color:             $accordion-button-active-color !default;
+$accordion-icon-transition:               transform .2s ease-in-out !default;
+$accordion-icon-transform:                rotate(180deg) !default;
+
+$accordion-button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-color}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+$accordion-button-active-icon:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-active-color}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
 
 // Tooltips
 
@@ -1057,7 +1080,7 @@ $popover-border-radius:             $border-radius-lg !default;
 $popover-inner-border-radius:       subtract($popover-border-radius, $popover-border-width) !default;
 $popover-box-shadow:                $box-shadow !default;
 
-$popover-header-bg:                 darken($popover-bg, 3%) !default;
+$popover-header-bg:                 shade-color($popover-bg, 6%) !default;
 $popover-header-color:              $headings-color !default;
 $popover-header-padding-y:          .5rem !default;
 $popover-header-padding-x:          $spacer !default;
@@ -1155,9 +1178,9 @@ $alert-border-radius:               $border-radius !default;
 $alert-link-font-weight:            $font-weight-bold !default;
 $alert-border-width:                $border-width !default;
 
-$alert-bg-level:                    -10 !default;
-$alert-border-level:                -9 !default;
-$alert-color-level:                 6 !default;
+$alert-bg-scale:                    -80% !default;
+$alert-border-scale:                -70% !default;
+$alert-color-scale:                 40% !default;
 
 $alert-dismissible-padding-r:       $alert-padding-x * 3 !default; // 3x covers width of x plus default padding on either side
 
@@ -1185,8 +1208,8 @@ $list-group-border-radius:          $border-radius !default;
 
 $list-group-item-padding-y:         $spacer / 2 !default;
 $list-group-item-padding-x:         $spacer !default;
-$list-group-item-bg-level:          -9 !default;
-$list-group-item-color-level:       6 !default;
+$list-group-item-bg-scale:          -80% !default;
+$list-group-item-color-scale:       40% !default;
 
 $list-group-hover-bg:               $gray-100 !default;
 $list-group-active-color:           $component-active-color !default;
@@ -1256,8 +1279,8 @@ $carousel-caption-spacer:            1.25rem !default;
 
 $carousel-control-icon-width:        2rem !default;
 
-$carousel-control-prev-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 16 16'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/></svg>") !default;
-$carousel-control-next-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 16 16'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/></svg>") !default;
+$carousel-control-prev-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$carousel-control-color}'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/></svg>") !default;
+$carousel-control-next-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$carousel-control-color}'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/></svg>") !default;
 
 $carousel-transition-duration:       .6s !default;
 $carousel-transition:                transform $carousel-transition-duration ease-in-out !default; // Define transform transition first if using multiple transitions (e.g., `transform 2s ease, opacity .5s ease-out`)
@@ -1286,7 +1309,7 @@ $btn-close-height:           $btn-close-width !default;
 $btn-close-padding-x:        .25em !default;
 $btn-close-padding-y:        $btn-close-padding-x !default;
 $btn-close-color:            $black !default;
-$btn-close-bg:               url("data:image/svg+xml,<svg fill='#{$btn-close-color}' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>") !default;
+$btn-close-bg:               url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>") !default;
 $btn-close-focus-shadow:     $input-btn-focus-box-shadow !default;
 $btn-close-opacity:          .5 !default;
 $btn-close-hover-opacity:    .75 !default;

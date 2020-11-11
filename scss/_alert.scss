@@ -34,6 +34,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    z-index: $stretched-link-z-index + 1;
     padding: $alert-padding-y * 1.25 $alert-padding-x;
   }
 }
@@ -42,9 +43,15 @@
 // scss-docs-start alert-modifiers
 // Generate contextual modifier classes for colorizing the alert.
 
-@each $color, $value in $theme-colors {
-  .alert-#{$color} {
-    @include alert-variant(color-level($value, $alert-bg-level), color-level($value, $alert-border-level), color-level($value, $alert-color-level));
+@each $state, $value in $theme-colors {
+  $background: scale-color($value, $alert-bg-scale);
+  $border: scale-color($value, $alert-border-scale);
+  $color: scale-color($value, $alert-color-scale);
+  @if (contrast-ratio($background, $color) < $min-contrast-ratio) {
+    $color: mix($value, color-contrast($background), abs($alert-color-scale));
+  }
+  .alert-#{$state} {
+    @include alert-variant($background, $border, $color);
   }
 }
 // scss-docs-end alert-modifiers

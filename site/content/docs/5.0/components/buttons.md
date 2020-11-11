@@ -54,6 +54,10 @@ In need of a button, but not the hefty background colors they bring? Replace the
 {{< /buttons.inline >}}
 {{< /example >}}
 
+{{< callout info >}}
+Some of the button styles use a relatively light foreground color, and should only be used on a dark background in order to have sufficient contrast.
+{{< /callout >}}
+
 ## Sizes
 
 Fancy larger or smaller buttons? Add `.btn-lg` or `.btn-sm` for additional sizes.
@@ -66,13 +70,6 @@ Fancy larger or smaller buttons? Add `.btn-lg` or `.btn-sm` for additional sizes
 {{< example >}}
 <button type="button" class="btn btn-primary btn-sm">Small button</button>
 <button type="button" class="btn btn-secondary btn-sm">Small button</button>
-{{< /example >}}
-
-Create block level buttons—those that span the full width of a parent—by adding `.btn-block`.
-
-{{< example >}}
-<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-<button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
 {{< /example >}}
 
 ## Disabled state
@@ -100,6 +97,44 @@ Disabled buttons using the `<a>` element behave a bit different:
 
 The `.disabled` class uses `pointer-events: none` to try to disable the link functionality of `<a>`s, but that CSS property is not yet standardized. In addition, even in browsers that do support `pointer-events: none`, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links. So to be safe, in addition to `aria-disabled="true"`, also include a `tabindex="-1"` attribute on these links to prevent them from receiving keyboard focus, and use custom JavaScript to disable their functionality altogether.
 {{< /callout >}}
+
+## Block buttons
+
+Create responsive stacks of full-width, "block buttons" like those in Bootstrap 4 with a mix of our display and gap utilities. By using utilities instead of button specific classes, we have much greater control over spacing, alignment, and responsive behaviors.
+
+{{< example >}}
+<div class="d-grid gap-2">
+  <button class="btn btn-primary" type="button">Button</button>
+  <button class="btn btn-primary" type="button">Button</button>
+</div>
+{{< /example >}}
+
+Here we create a responsive variation, starting with vertically stacked buttons until the `md` breakpoing, where `.d-md-block` replaces the `.d-grid` class, thus nullifying the `gap-2` utility. Resize your browser to see them change.
+
+{{< example >}}
+<div class="d-grid gap-2 d-md-block">
+  <button class="btn btn-primary" type="button">Button</button>
+  <button class="btn btn-primary" type="button">Button</button>
+</div>
+{{< /example >}}
+
+You can adjust the width of your block buttons with grid column width classes. For example, for a half-width "block button", use `.col-6`. Center it horizontally with `.mx-auto`, too.
+
+{{< example >}}
+<div class="d-grid gap-2 col-6 mx-auto">
+  <button class="btn btn-primary" type="button">Button</button>
+  <button class="btn btn-primary" type="button">Button</button>
+</div>
+{{< /example >}}
+
+Additional utilities can be used to adjust the alignment of buttons when horizontal. Here we've taken our previous responsive example and added some flex utilities and a margin utility on the button to right align the buttons when they're no longer stacked.
+
+{{< example >}}
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <button class="btn btn-primary mr-md-2" type="button">Button</button>
+  <button class="btn btn-primary" type="button">Button</button>
+</div>
+{{< /example >}}
 
 ## Button plugin
 
@@ -129,10 +164,10 @@ Add `data-toggle="button"` to toggle a button's `active` state. If you're pre-to
 
 You can create a button instance with the button constructor, for example:
 
-{{< highlight js >}}
+```js
 var button = document.getElementById('myButton')
 var bsButton = new bootstrap.Button(button)
-{{< /highlight >}}
+```
 
 <table class="table">
   <thead>
@@ -155,7 +190,7 @@ var bsButton = new bootstrap.Button(button)
         <code>dispose</code>
       </td>
       <td>
-        Destroys an element's button.
+        Destroys an element's button. (Removes stored data on the DOM element)
       </td>
     </tr>
   </tbody>
@@ -163,10 +198,10 @@ var bsButton = new bootstrap.Button(button)
 
 For example, to toggle all buttons
 
-{{< highlight js >}}
+```js
 var buttons = document.querySelectorAll('.btn')
 buttons.forEach(function (button) {
   var button = new bootstrap.Button(button)
   button.toggle()
 })
-{{< /highlight >}}
+```

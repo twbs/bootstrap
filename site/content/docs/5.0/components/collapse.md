@@ -69,58 +69,6 @@ Multiple `<button>` or `<a>` can show and hide an element if they each reference
 </div>
 {{< /example >}}
 
-## Accordion example
-
-Using the [card]({{< docsref "/components/card" >}}) component, you can extend the default collapse behavior to create an accordion. To properly achieve the accordion style, be sure to use `.accordion` as a wrapper.
-
-{{< example >}}
-<div class="accordion" id="accordionExample">
-  <div class="card">
-    <div class="card-header p-0" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-light btn-block text-left p-3 rounded-0" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Collapsible Group Item #1
-        </button>
-      </h2>
-    </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header p-0" id="headingTwo">
-      <h2 class="mb-0">
-        <button class="btn btn-light btn-block text-left collapsed p-3 rounded-0" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Collapsible Group Item #2
-        </button>
-      </h2>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header p-0" id="headingThree">
-      <h2 class="mb-0">
-        <button class="btn btn-light btn-block text-left collapsed p-3 rounded-0" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Collapsible Group Item #3
-        </button>
-      </h2>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-</div>
-{{< /example >}}
-
 ## Accessibility
 
 Be sure to add `aria-expanded` to the control element. This attribute explicitly conveys the current state of the collapsible element tied to the control to screen readers and similar assistive technologies. If the collapsible element is closed by default, the attribute on the control element should have a value of `aria-expanded="false"`. If you've set the collapsible element to be open by default using the `show` class, set `aria-expanded="true"` on the control instead. The plugin will automatically toggle this attribute on the control based on whether or not the collapsible element has been opened or closed (via JavaScript, or because the user triggered another control element also tied to the same collapsible element). If the control element's HTML element is not a button (e.g., an `<a>` or `<div>`), the attribute `role="button"` should be added to the element.
@@ -149,12 +97,12 @@ To add accordion-like group management to a collapsible area, add the data attri
 
 Enable manually with:
 
-{{< highlight js >}}
+```js
 var collapseElementList = [].slice.call(document.querySelectorAll('.collapse'))
 var collapseList = collapseElementList.map(function (collapseEl) {
   return new bootstrap.Collapse(collapseEl)
 })
-{{< /highlight >}}
+```
 
 ### Options
 
@@ -195,12 +143,12 @@ Activates your content as a collapsible element. Accepts an optional options `ob
 
 You can create a collapse instance with the constructor, for example:
 
-{{< highlight js >}}
+```js
 var myCollapse = document.getElementById('myCollapse')
 var bsCollapse = new bootstrap.Collapse(myCollapse, {
   toggle: false
 })
-{{< /highlight >}}
+```
 
 <table class="table">
   <thead>
@@ -224,7 +172,7 @@ var bsCollapse = new bootstrap.Collapse(myCollapse, {
     </tr>
     <tr>
       <td><code>dispose</code></td>
-      <td>Destroys an element's collapse.</td>
+      <td>Destroys an element's collapse. (Removes stored data on the DOM element)</td>
     </tr>
     <tr>
       <td><code>getInstance</code></td>
@@ -264,9 +212,9 @@ Bootstrap's collapse class exposes a few events for hooking into collapse functi
   </tbody>
 </table>
 
-{{< highlight js >}}
+```js
 var myCollapsible = document.getElementById('myCollapsible')
 myCollapsible.addEventListener('hidden.bs.collapse', function () {
   // do something...
 })
-{{< /highlight >}}
+```

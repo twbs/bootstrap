@@ -21,8 +21,6 @@ Here's what you need to know before getting started with the navbar:
 {{< partial "callout-info-prefersreducedmotion.md" >}}
 {{< /callout >}}
 
-Read on for an example and list of supported sub-components.
-
 ## Supported content
 
 Navbars come with built-in support for a handful of sub-components. Choose from the following as needed:
@@ -79,7 +77,7 @@ This example uses [color]({{< docsref "/utilities/colors" >}}) (`bg-light`) and 
 
 ### Brand
 
-The `.navbar-brand` can be applied to most elements, but an anchor works best as some elements might require utility classes or custom styles.
+The `.navbar-brand` can be applied to most elements, but an anchor works best, as some elements might require utility classes or custom styles.
 
 {{< example >}}
 <!-- As a link -->
@@ -178,7 +176,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
 </nav>
 {{< /example >}}
 
-You may also utilize dropdowns in your navbar nav. Dropdown menus require a wrapping element for positioning, so be sure to use separate and nested elements for `.nav-item` and `.nav-link` as shown below.
+You can also use dropdowns in your navbar. Dropdown menus require a wrapping element for positioning, so be sure to use separate and nested elements for `.nav-item` and `.nav-link` as shown below.
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -229,7 +227,7 @@ Place various form controls and components within a navbar:
 </nav>
 {{< /example >}}
 
-Immediate children elements in `.navbar` use flex layout and will default to `justify-content: space-between`. Use additional [flex utilities]({{< docsref "/utilities/flex" >}}) as needed to adjust this behavior.
+Immediate child elements of `.navbar` use flex layout and will default to `justify-content: space-between`. Use additional [flex utilities]({{< docsref "/utilities/flex" >}}) as needed to adjust this behavior.
 
 {{< example >}}
 <nav class="navbar navbar-light bg-light">
@@ -243,7 +241,7 @@ Immediate children elements in `.navbar` use flex layout and will default to `ju
 </nav>
 {{< /example >}}
 
-Input groups work, too. If your navbar is an entire form, or mostly form, you can use the `<form>` element as the container and save some HTML. Applies to the option above and below this copy.
+Input groups work, too. If your navbar is an entire form, or mostly a form, you can use the `<form>` element as the container and save some HTML.
 
 {{< example >}}
 <nav class="navbar navbar-light bg-light">
@@ -403,7 +401,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
   </nav>
 </div>
 
-{{< highlight html >}}
+```html
 <nav class="navbar navbar-dark bg-dark">
   <!-- Navbar content -->
 </nav>
@@ -415,11 +413,11 @@ Theming the navbar has never been easier thanks to the combination of theming cl
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
   <!-- Navbar content -->
 </nav>
-{{< /highlight >}}
+```
 
 ## Containers
 
-Although it's not required, you can wrap a navbar in a `.container` to center it on a page or add one within to only center the contents of a [fixed or static top navbar](#placement). Note that an inner container is still required.
+Although it's not required, you can wrap a navbar in a `.container` to center it on a page–though note that an inner container is still required. Or you can add a container inside the `.navbar` to only center the contents of a [fixed or static top navbar](#placement).
 
 {{< example >}}
 <div class="container">
@@ -431,7 +429,7 @@ Although it's not required, you can wrap a navbar in a `.container` to center it
 </div>
 {{< /example >}}
 
-Use any of the responsive containers to change how wide the content in your navbar.
+Use any of the responsive containers to change how wide the content in your navbar is presented.
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -481,7 +479,7 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 
 ## Responsive behaviors
 
-Navbars can utilize `.navbar-toggler`, `.navbar-collapse`, and `.navbar-expand{-sm|-md|-lg|-xl|-xxl}` classes to change when their content collapses behind a button. In combination with other utilities, you can easily choose when to show or hide particular elements.
+Navbars can use `.navbar-toggler`, `.navbar-collapse`, and `.navbar-expand{-sm|-md|-lg|-xl|-xxl}` classes to determine when their content collapses behind a button. In combination with other utilities, you can easily choose when to show or hide particular elements.
 
 For navbars that never collapse, add the `.navbar-expand` class on the navbar. For navbars that always collapse, don't add any `.navbar-expand` class.
 
@@ -489,7 +487,7 @@ For navbars that never collapse, add the `.navbar-expand` class on the navbar. F
 
 Navbar togglers are left-aligned by default, but should they follow a sibling element like a `.navbar-brand`, they'll automatically be aligned to the far right. Reversing your markup will reverse the placement of the toggler. Below are examples of different toggle styles.
 
-With no `.navbar-brand` shown in lowest breakpoint:
+With no `.navbar-brand` shown at the smallest breakpoint:
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -581,7 +579,7 @@ With a toggler on the left and brand name on the right:
 
 ### External content
 
-Sometimes you want to use the collapse plugin to trigger hidden content elsewhere on the page. Because our plugin works on the `id` and `data-target` matching, that's easily done!
+Sometimes you want to use the collapse plugin to trigger a container element for content that structurally sits outside of the `.navbar` . Because our plugin works on the `id` and `data-target` matching, that's easily done!
 
 {{< example >}}
 <div class="collapse" id="navbarToggleExternalContent">
@@ -598,3 +596,5 @@ Sometimes you want to use the collapse plugin to trigger hidden content elsewher
   </div>
 </nav>
 {{< /example >}}
+
+When you do this, we recommend including additional JavaScript to move the focus programmatically to the container when it is opened. Otherwise, keyboard users and users of assistive technologies will likely have a hard time finding the newly revealed content - particularly if the container that was opened comes *before* the toggler in the document's structure. We also recommend making sure that the toggler has the `aria-controls` attribute, pointing to the `id` of the content container. In theory, this allows assistive technology users to jump directly from the toggler to the container it controls–but support for this is currently quite patchy.

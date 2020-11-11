@@ -29,6 +29,15 @@ Set heights using classes like `.form-control-lg` and `.form-control-sm`.
 <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example">
 {{< /example >}}
 
+## Disabled
+
+Add the `disabled` boolean attribute on an input to give it a grayed out appearance and remove pointer events.
+
+{{< example >}}
+<input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
+<input class="form-control" type="text" placeholder="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
+{{< /example >}}
+
 ## Readonly
 
 Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
@@ -70,6 +79,31 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
     <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
   </div>
 </form>
+{{< /example >}}
+
+## File input
+
+{{< example >}}
+<div class="mb-3">
+  <label for="formFile" class="form-label">Default file input example</label>
+  <input class="form-control" type="file" id="formFile">
+</div>
+<div class="mb-3">
+  <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+  <input class="form-control" type="file" id="formFileMultiple" multiple>
+</div>
+<div class="mb-3">
+  <label for="formFileDisabled" class="form-label">Disabled file input example</label>
+  <input class="form-control" type="file" id="formFileDisabled" disabled>
+</div>
+<div class="mb-3">
+  <label for="formFileSm" class="form-label">Small file input example</label>
+  <input class="form-control form-control-sm" id="formFileSm" type="file">
+</div>
+<div>
+  <label for="formFileLg" class="form-label">Large file input example</label>
+  <input class="form-control form-control-lg" id="formFileLg" type="file">
+</div>
 {{< /example >}}
 
 ## Color

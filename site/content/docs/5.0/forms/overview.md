@@ -12,12 +12,12 @@ sections:
     description: Improve browser default select elements with a custom initial appearance.
   - title: Checks & radios
     description: Use our custom radio buttons and checkboxes in forms for selecting input options.
-  - title: File
-    description: Replace browser default file inputs with our custom version with optional JavaScript.
   - title: Range
     description: Replace browser default range inputs with our custom version.
   - title: Input group
     description: Attach labels and buttons to your inputs for increased semantic value.
+  - title: Floating labels
+    description: Create beautifully simple form labels that float over your input fields.
   - title: Layout
     description: Create inline, horizontal, or complex grid-based layouts with your forms.
   - title: Validation
@@ -93,9 +93,9 @@ Inline text can use any typical inline HTML element (be it a `<span>`, `<small>`
 
 Add the `disabled` boolean attribute on an input to prevent user interactions and make it appear lighter.
 
-{{< highlight html >}}
+```html
 <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
-{{< /highlight >}}
+```
 
 Add the `disabled` attribute to a `<fieldset>` to disable all the controls within. Browsers treat all native form controls (`<input>`, `<select>`, and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them.
 
@@ -103,7 +103,8 @@ However, if your form also includes custom button-like elements such as `<a clas
 
 {{< example >}}
 <form>
-  <fieldset disabled aria-label="Disabled fieldset example">
+  <fieldset disabled>
+    <legend>Disabled fieldset example</legend>
     <div class="mb-3">
       <label for="disabledTextInput" class="form-label">Disabled input</label>
       <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">

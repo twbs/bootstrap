@@ -3,9 +3,6 @@ layout: docs
 title: Alerts
 description: Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
 group: components
-aliases:
-  - "/components/"
-  - "/docs/5.0/components/"
 toc: true
 ---
 
@@ -80,18 +77,18 @@ When an alert is dismissed, the element is completely removed from the page stru
 
 Enable dismissal of an alert via JavaScript:
 
-{{< highlight js >}}
+```js
 var alertList = document.querySelectorAll('.alert')
 alertList.forEach(function (alert) {
   new bootstrap.Alert(alert)
 })
-{{< /highlight >}}
+```
 
 Or with `data` attributes on a button **within the alert**, as demonstrated above:
 
-{{< highlight html >}}
+```html
 <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
-{{< /highlight >}}
+```
 
 Note that closing an alert will remove it from the DOM.
 
@@ -99,10 +96,10 @@ Note that closing an alert will remove it from the DOM.
 
 You can create an alert instance with the alert constructor, for example:
 
-{{< highlight js >}}
+```js
 var myAlert = document.getElementById('myAlert')
 var bsAlert = new bootstrap.Alert(myAlert)
-{{< /highlight >}}
+```
 
 This makes an alert listen for click events on descendant elements which have the `data-dismiss="alert"` attribute. (Not necessary when using the data-api's auto-initialization.)
 
@@ -127,7 +124,7 @@ This makes an alert listen for click events on descendant elements which have th
         <code>dispose</code>
       </td>
       <td>
-        Destroys an element's alert.
+        Destroys an element's alert. (Removes stored data on the DOM element)
       </td>
     </tr>
     <tr>
@@ -141,11 +138,11 @@ This makes an alert listen for click events on descendant elements which have th
   </tbody>
 </table>
 
-{{< highlight js >}}
+```js
 var alertNode = document.querySelector('.alert')
 var alert = bootstrap.Alert.getInstance(alertNode)
 alert.close()
-{{< /highlight >}}
+```
 
 ### Events
 
@@ -174,11 +171,11 @@ Bootstrap's alert plugin exposes a few events for hooking into alert functionali
   </tbody>
 </table>
 
-{{< highlight js >}}
+```js
 var myAlert = document.getElementById('myAlert')
 myAlert.addEventListener('closed.bs.alert', function () {
-  // do something … for instance, explicitly move focus to the most appropriate element,
+  // do something, for instance, explicitly move focus to the most appropriate element,
   // so it doesn't get lost/reset to the start of the page
-  // document.getElementById('…').focus()
+  // document.getElementById('...').focus()
 })
-{{< /highlight >}}
+```

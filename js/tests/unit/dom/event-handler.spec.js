@@ -297,31 +297,31 @@ describe('EventHandler', () => {
       EventHandler.trigger(subelement, 'click')
 
       // first listeners called
-      expect(i === 2).toEqual(true)
+      expect(i).toEqual(2)
 
       EventHandler.off(element, 'click', 'span', handler)
       EventHandler.trigger(subelement, 'click')
 
       // removed listener not called
-      expect(i === 2).toEqual(true)
+      expect(i).toEqual(2)
 
       EventHandler.trigger(anchor, 'click')
 
       // not removed listener called
-      expect(i === 3).toEqual(true)
+      expect(i).toEqual(3)
 
       EventHandler.on(element, 'click', 'span', handler)
       EventHandler.trigger(anchor, 'click')
       EventHandler.trigger(subelement, 'click')
 
       // listener re-registered
-      expect(i === 5).toEqual(true)
+      expect(i).toEqual(5)
 
       EventHandler.off(element, 'click', 'span')
       EventHandler.trigger(subelement, 'click')
 
       // listener removed again
-      expect(i === 5).toEqual(true)
+      expect(i).toEqual(5)
     })
   })
 })

@@ -3,10 +3,12 @@
     "stylelint-config-twbs-bootstrap/scss"
   ],
   "rules": {
-    "function-blacklist": [
-      "calc"
+    "function-disallowed-list": [
+      "calc",
+      "lighten",
+      "darken"
     ],
-    "property-blacklist": [
+    "property-disallowed-list": [
       "border-radius",
       "border-top-left-radius",
       "border-top-right-radius",

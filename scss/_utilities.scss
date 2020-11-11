@@ -16,14 +16,14 @@ $utilities: map-merge(
     ),
     "overflow": (
       property: overflow,
-      values: auto hidden,
+      values: auto hidden visible scroll,
     ),
     "display": (
       responsive: true,
       print: true,
       property: display,
       class: d,
-      values: inline inline-block block table table-row table-cell flex inline-flex none
+      values: inline inline-block block grid table table-row table-cell flex inline-flex none
     ),
     "shadow": (
       property: box-shadow,
@@ -195,6 +195,12 @@ $utilities: map-merge(
       property: flex-wrap,
       class: flex,
       values: wrap nowrap wrap-reverse
+    ),
+    "gap": (
+      responsive: true,
+      property: gap,
+      class: gap,
+      values: $spacers
     ),
     "justify-content": (
       responsive: true,
@@ -387,8 +393,20 @@ $utilities: map-merge(
       values: $spacers
     ),
     // Text
+    "font-size": (
+      rfs: true,
+      property: font-size,
+      class: fs,
+      values: $font-sizes
+    ),
+    "font-style": (
+      property: font-style,
+      class: fst,
+      values: italic normal
+    ),
     "font-weight": (
       property: font-weight,
+      class: fw,
       values: (
         light: $font-weight-light,
         lighter: $font-weight-lighter,
@@ -448,7 +466,7 @@ $utilities: map-merge(
     "gradient": (
       property: background-image,
       class: bg,
-      values: (gradient: var(--bs-gradient))
+      values: (gradient: var(--#{$variable-prefix}gradient))
     ),
     "white-space": (
       property: white-space,
@@ -462,11 +480,6 @@ $utilities: map-merge(
       property: text-decoration,
       values: none underline line-through
     ),
-    "font-style": (
-      property: font-style,
-      class: font,
-      values: italic normal
-    ),
     "word-wrap": (
       property: word-wrap word-break,
       class: text,
@@ -475,7 +488,7 @@ $utilities: map-merge(
     "font-family": (
       property: font-family,
       class: font,
-      values: (monospace: var(--bs-font-monospace))
+      values: (monospace: var(--#{$variable-prefix}font-monospace))
     ),
     "user-select": (
       property: user-select,
@@ -491,11 +504,12 @@ $utilities: map-merge(
       class: rounded,
       values: (
         null: $border-radius,
-        sm: $border-radius-sm,
-        lg: $border-radius-lg,
-        circle: 50%,
-        pill: $rounded-pill,
         0: 0,
+        1: $border-radius-sm,
+        2: $border-radius,
+        3: $border-radius-lg,
+        circle: 50%,
+        pill: $border-radius-pill
       )
     ),
     "rounded-top": (

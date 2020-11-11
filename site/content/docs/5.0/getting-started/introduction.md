@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Introduction
-description: Get started with Bootstrap, the world's most popular framework for building responsive, mobile-first sites, with BootstrapCDN and a template starter page.
+description: Get started with Bootstrap, the world's most popular framework for building responsive, mobile-first sites, with jsDelivr and a template starter page.
 group: getting-started
 aliases:
   - "/docs/5.0/getting-started/"
@@ -12,15 +12,15 @@ toc: true
 
 ## Quick start
 
-Looking to quickly add Bootstrap to your project? Use BootstrapCDN, provided for free by the folks at StackPath. Using a package manager or need to download the source files? [Head to the downloads page]({{< docsref "/getting-started/download" >}}).
+Looking to quickly add Bootstrap to your project? Use jsDelivr, a free open source CDN. Using a package manager or need to download the source files? [Head to the downloads page]({{< docsref "/getting-started/download" >}}).
 
 ### CSS
 
 Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets to load our CSS.
 
-{{< highlight html >}}
-<link rel="stylesheet" href="{{< param "cdn.css" >}}" integrity="{{< param "cdn.css_hash" >}}" crossorigin="anonymous">
-{{< /highlight >}}
+```html
+<link href="{{< param "cdn.css" >}}" rel="stylesheet" integrity="{{< param "cdn.css_hash" >}}" crossorigin="anonymous">
+```
 
 ### JS
 
@@ -28,20 +28,20 @@ Many of our components require the use of JavaScript to function. Specifically, 
 
 #### Bundle
 
-Include everything you need in one script with our bundle. Our `bootstrap.bundle.js` and `bootstrap.bundle.min.js` include [Popper](https://popper.js.org/). For more information about what's included in Bootstrap, please see our [contents]({{< docsref "/getting-started/contents#precompiled-bootstrap" >}}) section.
+Include every Bootstrap JavaScript plugin and dependency with one of our two bundles. Both `bootstrap.bundle.js` and `bootstrap.bundle.min.js` include [Popper](https://popper.js.org/) for our tooltips and popovers. For more information about what's included in Bootstrap, please see our [contents]({{< docsref "/getting-started/contents#precompiled-bootstrap" >}}) section.
 
-{{< highlight html >}}
+```html
 <script src="{{< param "cdn.js_bundle" >}}" integrity="{{< param "cdn.js_bundle_hash" >}}" crossorigin="anonymous"></script>
-{{< /highlight >}}
+```
 
 #### Separate
 
-If you decide to go with the separate scripts solution, Popper.js must come first, and then our JavaScript plugins.
+If you decide to go with the separate scripts solution, Popper.js must come first (if you're using tooltips or popovers), and then our JavaScript plugins.
 
-{{< highlight html >}}
+```html
 <script src="{{< param "cdn.popper" >}}" integrity="{{< param "cdn.popper_hash" >}}" crossorigin="anonymous"></script>
 <script src="{{< param "cdn.js" >}}" integrity="{{< param "cdn.js_hash" >}}" crossorigin="anonymous"></script>
-{{< /highlight >}}
+```
 
 #### Modules
 
@@ -51,13 +51,27 @@ If you use `<script type="module">`, please refer to our [using Bootstrap as a m
 
 Curious which components explicitly require our JavaScript and Popper.js? Click the show components link below. If you're at all unsure about the general page structure, keep reading for an example page template.
 
-{{< partial "getting-started/components-requiring-javascript" >}}
+<details>
+<summary class="text-primary mb-3">Show components requiring JavaScript</summary>
+{{< markdown >}}
+- Alerts for dismissing
+- Buttons for toggling states and checkbox/radio functionality
+- Carousel for all slide behaviors, controls, and indicators
+- Collapse for toggling visibility of content
+- Dropdowns for displaying and positioning (also requires [Popper.js](https://popper.js.org/))
+- Modals for displaying, positioning, and scroll behavior
+- Navbar for extending our Collapse plugin to implement responsive behavior
+- Toasts for displaying and dismissing
+- Tooltips and popovers for displaying and positioning (also requires [Popper.js](https://popper.js.org/))
+- Scrollspy for scroll behavior and navigation updates
+{{< /markdown >}}
+</details>
 
 ## Starter template
 
 Be sure to have your pages set up with the latest design and development standards. That means using an HTML5 doctype and including a viewport meta tag for proper responsive behaviors. Put it all together and your pages should look like this:
 
-{{< highlight html >}}
+```html
 <!doctype html>
 <html lang="en">
   <head>
@@ -66,7 +80,7 @@ Be sure to have your pages set up with the latest design and development standar
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{< param "cdn.css" >}}" integrity="{{< param "cdn.css_hash" >}}" crossorigin="anonymous">
+    <link href="{{< param "cdn.css" >}}" rel="stylesheet" integrity="{{< param "cdn.css_hash" >}}" crossorigin="anonymous">
 
     <title>Hello, world!</title>
   </head>
@@ -84,7 +98,7 @@ Be sure to have your pages set up with the latest design and development standar
     -->
   </body>
 </html>
-{{< /highlight >}}
+```
 
 That's all you need for overall page requirements. Visit the [Layout docs]({{< docsref "/layout/grid" >}}) or [our official examples]({{< docsref "/examples" >}}) to start laying out your site's content and components.
 
@@ -96,20 +110,20 @@ Bootstrap employs a handful of important global styles and settings that you'll 
 
 Bootstrap requires the use of the HTML5 doctype. Without it, you'll see some funky incomplete styling, but including it shouldn't cause any considerable hiccups.
 
-{{< highlight html >}}
+```html
 <!doctype html>
 <html lang="en">
   ...
 </html>
-{{< /highlight >}}
+```
 
 ### Responsive meta tag
 
 Bootstrap is developed *mobile first*, a strategy in which we optimize code for mobile devices first and then scale up components as necessary using CSS media queries. To ensure proper rendering and touch zooming for all devices, **add the responsive viewport meta tag** to your `<head>`.
 
-{{< highlight html >}}
+```html
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{{< /highlight >}}
+```
 
 You can see an example of this in action in the [starter template](#starter-template).
 
@@ -119,11 +133,11 @@ For more straightforward sizing in CSS, we switch the global `box-sizing` value 
 
 On the rare occasion you need to override it, use something like the following:
 
-{{< highlight css >}}
+```css
 .selector-for-some-widget {
   box-sizing: content-box;
 }
-{{< /highlight >}}
+```
 
 With the above snippet, nested elements—including generated content via `::before` and `::after`—will all inherit the specified `box-sizing` for that `.selector-for-some-widget`.
 

@@ -56,7 +56,7 @@ describe('Manipulator', () => {
 
   describe('getDataAttributes', () => {
     it('should return empty object for null', () => {
-      expect(Manipulator.getDataAttributes(null), {})
+      expect(Manipulator.getDataAttributes(null)).toEqual({})
       expect().nothing()
     })
 
@@ -127,32 +127,6 @@ describe('Manipulator', () => {
       expect(position).toBeDefined()
       expect(position.top).toEqual(jasmine.any(Number))
       expect(position.left).toEqual(jasmine.any(Number))
-    })
-  })
-
-  describe('toggleClass', () => {
-    it('should not error out if element is null or undefined', () => {
-      Manipulator.toggleClass(null, 'test')
-      Manipulator.toggleClass(undefined, 'test')
-      expect().nothing()
-    })
-
-    it('should add class if it is missing', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-
-      Manipulator.toggleClass(div, 'test')
-      expect(div.classList.contains('test')).toEqual(true)
-    })
-
-    it('should remove class if it is set', () => {
-      fixtureEl.innerHTML = '<div class="test"></div>'
-
-      const div = fixtureEl.querySelector('div')
-
-      Manipulator.toggleClass(div, 'test')
-      expect(div.classList.contains('test')).toEqual(false)
     })
   })
 })

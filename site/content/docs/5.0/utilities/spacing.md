@@ -1,16 +1,18 @@
 ---
 layout: docs
 title: Spacing
-description: Bootstrap includes a wide range of shorthand responsive margin and padding utility classes to modify an element's appearance.
+description: Bootstrap includes a wide range of shorthand responsive margin, padding, and gap utility classes to modify an element's appearance.
 group: utilities
 toc: true
 ---
 
-## How it works
+## Margin and padding
 
 Assign responsive-friendly `margin` or `padding` values to an element or a subset of its sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. Classes are built from a default Sass map ranging from `.25rem` to `3rem`.
 
-## Notation
+Using the CSS Grid layout module? Consider using [the gap utility](#gap).
+
+### Notation
 
 Spacing utilities that apply to all breakpoints, from `xs` to `xxl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
 
@@ -43,11 +45,11 @@ Where *size* is one of:
 
 (You can add more sizes by adding entries to the `$spacers` Sass map variable.)
 
-## Examples
+### Examples
 
 Here are some representative examples of these classes:
 
-{{< highlight scss >}}
+```scss
 .mt-0 {
   margin-top: 0 !important;
 }
@@ -64,7 +66,7 @@ Here are some representative examples of these classes:
 .p-3 {
   padding: $spacer !important;
 }
-{{< /highlight >}}
+```
 
 ### Horizontal centering
 
@@ -76,20 +78,34 @@ Additionally, Bootstrap also includes an `.mx-auto` class for horizontally cente
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="mx-auto" style="width: 200px;">
   Centered element
 </div>
-{{< /highlight >}}
+```
 
-### Negative margin
+## Negative margin
 
 In CSS, `margin` properties can utilize negative values (`padding` cannot). These negative margins are **disabled by default**, but can be enabled in Sass by setting `$enable-negative-margins: true`.
 
 The syntax is nearly the same as the default, positive margin utilities, but with the addition of `n` before the requested size. Here's an example class that's the opposite of `.mt-1`:
 
-{{< highlight scss >}}
+```scss
 .mt-n1 {
   margin-top: -0.25rem !important;
 }
-{{< /highlight >}}
+```
+
+## Gap
+
+When using `display: grid`, you can make use of `gap` utilities on the parent grid container. This can save on having to add margin utilities to individual grid items (children of a `display: grid` container). Gap utilities are responsive by default, and are generated via our utilities API, based on the `$spacers` Sass map.
+
+{{< example html >}}
+<div class="d-grid gap-3">
+  <div class="p-2 bg-light border">Grid item 1</div>
+  <div class="p-2 bg-light border">Grid item 2</div>
+  <div class="p-2 bg-light border">Grid item 3</div>
+</div>
+{{< /example >}}
+
+Support includes responsive options for all of Bootstrap's grid breakpoints, as well as six sizes from the `$spacers` map (`0`–`5`). There is no `.gap-auto` utility class as it's effectively the same as `.gap-0`.
