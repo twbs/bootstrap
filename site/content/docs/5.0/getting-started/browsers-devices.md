@@ -16,7 +16,7 @@ You can find our supported range of browsers and their versions [in our `.browse
 
 ```text
 {{< rf.inline >}}
-{{- readFile ".browserslistrc" | htmlEscape -}}
+{{- readFile ".browserslistrc" | chomp | htmlEscape -}}
 {{< /rf.inline >}}
 ```
 
