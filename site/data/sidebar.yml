@@ -53,6 +53,7 @@
 
 - title: Components
   pages:
+    - title: Accordion
     - title: Alerts
     - title: Badge
     - title: Breadcrumb

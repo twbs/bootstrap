@@ -221,7 +221,7 @@
       function reportFirefoxTestResult(result) {
         if (!firefoxTestDone) {
           ffBugTestResult.classList.add(result ? 'text-success' : 'text-danger')
-          ffBugTestResult.innerHTML = result ? 'PASS' : 'FAIL'
+          ffBugTestResult.textContent = result ? 'PASS' : 'FAIL'
         }
       }
 
