@@ -136,8 +136,7 @@
   height: 1.5em;
   vertical-align: middle;
   content: "";
-  background: no-repeat center center;
-  background-size: 100% 100%;
+  background: 50% / 100% 100% no-repeat;
 }
 
 // Generate series of `.navbar-expand-*` responsive classes for configuring
