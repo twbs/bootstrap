@@ -13,10 +13,8 @@
         <a class="btn btn-lg btn-outline-primary mb-3" href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/">Read installation docs</a>
       </div>
       <div class="col-md-7 pl-md-5">
-{{ highlight (printf (`# Via npm
-npm install bootstrap
-# Via gem
-gem install bootstrap -v %s`) .Site.Params.current_ruby_version) "sh" "" }}
+      {{ highlight "npm install bootstrap" "sh" "" }}
+      {{ highlight (printf ("gem install bootstrap -v %s") .Site.Params.current_ruby_version) "sh" "" }}
       </div>
     </div>
 
@@ -36,10 +34,12 @@ gem install bootstrap -v %s`) .Site.Params.current_ruby_version) "sh" "" }}
       </div>
       <div class="col-md-7 pl-md-5">
       {{ highlight (printf (`<!-- CSS -->
-<link href="%s" rel="stylesheet" integrity=%q crossorigin="anonymous">`) .Site.Params.cdn.css (.Site.Params.cdn.css_hash | safeHTMLAttr)) "html" "" }}
-      {{ highlight (printf (`<!-- jQuery and JS bundle w/ Popper.js -->
+<link href="%s" rel="stylesheet" integrity=%q crossorigin="anonymous">
+`) .Site.Params.cdn.css (.Site.Params.cdn.css_hash | safeHTMLAttr)) "html" "" }}
+      {{ highlight (printf (`<!-- jQuery and JavaScript Bundle with Popper.js -->
 <script src="%s" integrity=%q crossorigin="anonymous"></script>
-<script src="%s" integrity=%q crossorigin="anonymous"></script>`) .Site.Params.cdn.jquery (.Site.Params.cdn.jquery_hash | safeHTMLAttr) .Site.Params.cdn.js_bundle (.Site.Params.cdn.js_bundle_hash | safeHTMLAttr)) "html" "" }}
+<script src="%s" integrity=%q crossorigin="anonymous"></script>
+`) .Site.Params.cdn.jquery (.Site.Params.cdn.jquery_hash | safeHTMLAttr) .Site.Params.cdn.js_bundle (.Site.Params.cdn.js_bundle_hash | safeHTMLAttr)) "html" "" }}
       </div>
     </div>
 

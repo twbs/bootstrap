@@ -44,8 +44,6 @@
 }
 
 .masthead-followup {
-  .bd-clipboard { display: none; }
-
   h2 {
     @include font-size(2.5rem);
   }
@@ -60,10 +58,6 @@
     pre code {
       display: inline-block;
       white-space: pre;
-
-      &::before {
-        display: none;
-      }
     }
   }
 }
