@@ -316,6 +316,7 @@
   height: $custom-file-height;
   margin: 0;
   opacity: 0;
+  overflow: hidden;
 
   &:focus ~ .custom-file-label {
     border-color: $custom-file-focus-border-color;
