@@ -480,7 +480,7 @@ $(function () {
   })
 
   QUnit.test('should set interval from data attribute on individual carousel-item', function (assert) {
-    assert.expect(2)
+    assert.expect(4)
     var templateHTML = '<div id="myCarousel" class="carousel slide" data-interval="1814">' +
         '<div class="carousel-inner">' +
         '<div class="carousel-item active" data-interval="2814">' +
@@ -517,12 +517,25 @@ $(function () {
     var $carousel = $(templateHTML)
 
     $carousel.appendTo('body')
+    $carousel.bootstrapCarousel()
+    assert.strictEqual($carousel.data('bs.carousel')._config.interval, 1814)
+    $carousel.remove()
+
+    $carousel.appendTo('body')
+    $carousel.bootstrapCarousel(0)
+    $carousel.data('bs.carousel').cycle()
+    assert.strictEqual($carousel.data('bs.carousel')._config.interval, 2814)
+    $carousel.remove()
+
+    $carousel.appendTo('body')
     $carousel.bootstrapCarousel(1)
+    $carousel.data('bs.carousel').cycle()
     assert.strictEqual($carousel.data('bs.carousel')._config.interval, 3814)
     $carousel.remove()
 
     $carousel.appendTo('body')
     $carousel.bootstrapCarousel(2)
+    $carousel.data('bs.carousel').cycle()
     assert.strictEqual($carousel.data('bs.carousel')._config.interval, 1814, 'reverts to default interval if no data-interval is set')
     $carousel.remove()
   })
