@@ -33,6 +33,12 @@ Place one add-on or button on either side of an input. You may also place one on
   <span class="input-group-text">.00</span>
 </div>
 
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+  <span class="input-group-text">@</span>
+  <input type="text" class="form-control" placeholder="Server" aria-label="Server">
+</div>
+
 <div class="input-group">
   <span class="input-group-text">With textarea</span>
   <textarea class="form-control" aria-label="With textarea"></textarea>
@@ -283,46 +289,22 @@ Input groups include support for custom selects and custom file inputs. Browser 
 
 {{< example >}}
 <div class="input-group mb-3">
-  <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-  <div class="form-file">
-    <input type="file" class="form-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-    <label class="form-file-label" for="inputGroupFile01">
-      <span class="form-file-text">Choose file...</span>
-      <span class="form-file-button">Browse</span>
-    </label>
-  </div>
+  <label class="input-group-text" for="inputGroupFile01">Upload</label>
+  <input type="file" class="form-control" id="inputGroupFile01">
 </div>
 
 <div class="input-group mb-3">
-  <div class="form-file">
-    <input type="file" class="form-file-input" id="inputGroupFile02">
-    <label class="form-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">
-      <span class="form-file-text">Choose file...</span>
-      <span class="form-file-button">Browse</span>
-    </label>
-  </div>
-  <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
+  <input type="file" class="form-control" id="inputGroupFile02">
+  <label class="input-group-text" for="inputGroupFile02">Upload</label>
 </div>
 
 <div class="input-group mb-3">
   <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03">Button</button>
-  <div class="form-file">
-    <input type="file" class="form-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
-    <label class="form-file-label" for="inputGroupFile03">
-      <span class="form-file-text">Choose file...</span>
-      <span class="form-file-button">Browse</span>
-    </label>
-  </div>
+  <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
 </div>
 
 <div class="input-group">
-  <div class="form-file">
-    <input type="file" class="form-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
-    <label class="form-file-label" for="inputGroupFile04">
-      <span class="form-file-text">Choose file...</span>
-      <span class="form-file-button">Browse</span>
-    </label>
-  </div>
+  <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
   <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
 </div>
 {{< /example >}}

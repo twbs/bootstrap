@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap dropdown.js v5.0.0-alpha2 (https://getbootstrap.com/)
+  * Bootstrap dropdown.js v5.0.0-alpha3 (https://getbootstrap.com/)
   * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -19,7 +19,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-alpha2): util/index.js
+   * Bootstrap (v5.0.0-alpha3): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -93,6 +93,14 @@
     return null;
   };
 
+  var onDOMContentLoaded = function onDOMContentLoaded(callback) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', callback);
+    } else {
+      callback();
+    }
+  };
+
   function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -105,7 +113,7 @@
    */
 
   var NAME = 'dropdown';
-  var VERSION = '5.0.0-alpha2';
+  var VERSION = '5.0.0-alpha3';
   var DATA_KEY = 'bs.dropdown';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -258,8 +266,10 @@
 
       this._element.setAttribute('aria-expanded', true);
 
-      Manipulator__default['default'].toggleClass(this._menu, CLASS_NAME_SHOW);
-      Manipulator__default['default'].toggleClass(this._element, CLASS_NAME_SHOW);
+      this._menu.classList.toggle(CLASS_NAME_SHOW);
+
+      this._element.classList.toggle(CLASS_NAME_SHOW);
+
       EventHandler__default['default'].trigger(parent, EVENT_SHOWN, relatedTarget);
     };
 
@@ -282,8 +292,10 @@
         this._popper.destroy();
       }
 
-      Manipulator__default['default'].toggleClass(this._menu, CLASS_NAME_SHOW);
-      Manipulator__default['default'].toggleClass(this._element, CLASS_NAME_SHOW);
+      this._menu.classList.toggle(CLASS_NAME_SHOW);
+
+      this._element.classList.toggle(CLASS_NAME_SHOW);
+
       EventHandler__default['default'].trigger(parent, EVENT_HIDDEN, relatedTarget);
     };
 
@@ -335,11 +347,7 @@
       var placement = PLACEMENT_BOTTOM; // Handle dropup
 
       if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
-        placement = PLACEMENT_TOP;
-
-        if (this._menu.classList.contains(CLASS_NAME_MENURIGHT)) {
-          placement = PLACEMENT_TOPEND;
-        }
+        placement = this._menu.classList.contains(CLASS_NAME_MENURIGHT) ? PLACEMENT_TOPEND : PLACEMENT_TOP;
       } else if (parentDropdown.classList.contains(CLASS_NAME_DROPRIGHT)) {
         placement = PLACEMENT_RIGHT;
       } else if (parentDropdown.classList.contains(CLASS_NAME_DROPLEFT)) {
@@ -583,26 +591,28 @@
   EventHandler__default['default'].on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, function (e) {
     return e.stopPropagation();
   });
-  var $ = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
    * ------------------------------------------------------------------------
-   * add .dropdown to jQuery only if jQuery is present
+   * add .Dropdown to jQuery only if jQuery is present
    */
 
-  /* istanbul ignore if */
+  onDOMContentLoaded(function () {
+    var $ = getjQuery();
+    /* istanbul ignore if */
 
-  if ($) {
-    var JQUERY_NO_CONFLICT = $.fn[NAME];
-    $.fn[NAME] = Dropdown.jQueryInterface;
-    $.fn[NAME].Constructor = Dropdown;
+    if ($) {
+      var JQUERY_NO_CONFLICT = $.fn[NAME];
+      $.fn[NAME] = Dropdown.jQueryInterface;
+      $.fn[NAME].Constructor = Dropdown;
 
-    $.fn[NAME].noConflict = function () {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Dropdown.jQueryInterface;
-    };
-  }
+      $.fn[NAME].noConflict = function () {
+        $.fn[NAME] = JQUERY_NO_CONFLICT;
+        return Dropdown.jQueryInterface;
+      };
+    }
+  });
 
   return Dropdown;
 
