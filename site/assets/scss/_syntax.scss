@@ -92,12 +92,6 @@
       content: "$ ";
       user-select: none;
     }
-
-    // This is just to work around a Chroma bug;
-    // should be removed when fixed upstream
-    .m {
-      color: inherit;
-    }
   }
 
   .language-powershell::before {
