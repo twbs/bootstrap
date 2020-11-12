@@ -374,7 +374,7 @@ Ensure that all form controls have an appropriate accessible name so that their 
 
 For situations where it's not possible to include a visible `<label>` or appropriate text content, there are alternative ways of still providing an accessible name, such as:
 
-- `<label>` elements hidden using the `.visually-hidden` class
+- `<label>` elements hidden using the `.sr-only` class
 - Pointing to an existing element that can act as a label using `aria-labelledby`
 - Providing a `title` attribute
 - Explicitly setting the accessible name on an element using `aria-label`
