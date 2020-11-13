@@ -5,11 +5,12 @@
 (function () {
   'use strict'
 
-  if (!window.docsearch) {
+  var inputElement = document.getElementById('search-input')
+
+  if (!window.docsearch || !inputElement) {
     return
   }
 
-  var inputElement = document.getElementById('search-input')
   var siteDocsVersion = inputElement.getAttribute('data-docs-version')
 
   function getOrigin() {
