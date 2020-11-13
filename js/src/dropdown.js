@@ -1,12 +1,13 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha2): dropdown.js
+ * Bootstrap (v5.0.0-alpha3): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
   getjQuery,
+  onDOMContentLoaded,
   getElementFromSelector,
   isElement,
   isVisible,
@@ -26,7 +27,7 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'dropdown'
-const VERSION = '5.0.0-alpha2'
+const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.dropdown'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -277,10 +278,9 @@ class Dropdown {
 
     // Handle dropup
     if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
-      placement = PLACEMENT_TOP
-      if (this._menu.classList.contains(CLASS_NAME_MENURIGHT)) {
-        placement = PLACEMENT_TOPEND
-      }
+      placement = this._menu.classList.contains(CLASS_NAME_MENURIGHT) ?
+        PLACEMENT_TOPEND :
+        PLACEMENT_TOP
     } else if (parentDropdown.classList.contains(CLASS_NAME_DROPRIGHT)) {
       placement = PLACEMENT_RIGHT
     } else if (parentDropdown.classList.contains(CLASS_NAME_DROPLEFT)) {
@@ -512,23 +512,25 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
 })
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stopPropagation())
 
-const $ = getjQuery()
-
 /**
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
- * add .dropdown to jQuery only if jQuery is present
+ * add .Dropdown to jQuery only if jQuery is present
  */
-/* istanbul ignore if */
-if ($) {
-  const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = Dropdown.jQueryInterface
-  $.fn[NAME].Constructor = Dropdown
-  $.fn[NAME].noConflict = () => {
-    $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Dropdown.jQueryInterface
+
+onDOMContentLoaded(() => {
+  const $ = getjQuery()
+  /* istanbul ignore if */
+  if ($) {
+    const JQUERY_NO_CONFLICT = $.fn[NAME]
+    $.fn[NAME] = Dropdown.jQueryInterface
+    $.fn[NAME].Constructor = Dropdown
+    $.fn[NAME].noConflict = () => {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Dropdown.jQueryInterface
+    }
   }
-}
+})
 
 export default Dropdown

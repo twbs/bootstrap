@@ -1,17 +1,17 @@
 /*!
-  * Bootstrap event-handler.js v5.0.0-alpha2 (https://getbootstrap.com/)
+  * Bootstrap event-handler.js v5.0.0-alpha3 (https://getbootstrap.com/)
   * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./polyfill.js')) :
-  typeof define === 'function' && define.amd ? define(['./polyfill.js'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.EventHandler = factory(global.Polyfill));
-}(this, (function (polyfill_js) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.EventHandler = factory());
+}(this, (function () { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-alpha2): util/index.js
+   * Bootstrap (v5.0.0-alpha3): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -29,7 +29,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-alpha2): dom/event-handler.js
+   * Bootstrap (v5.0.0-alpha3): dom/event-handler.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -39,7 +39,6 @@
    * ------------------------------------------------------------------------
    */
 
-  var $ = getjQuery();
   var namespaceRegex = /[^.]*(?=\..*)\.|.*/;
   var stripNameRegex = /\..*/;
   var stripUidRegex = /::\d+$/;
@@ -248,6 +247,7 @@
         return null;
       }
 
+      var $ = getjQuery();
       var typeEvent = event.replace(stripNameRegex, '');
       var inNamespace = event !== typeEvent;
       var isNative = nativeEvents.indexOf(typeEvent) > -1;
@@ -288,14 +288,6 @@
 
       if (defaultPrevented) {
         evt.preventDefault();
-
-        if (!polyfill_js.defaultPreventedPreservedOnDispatch) {
-          Object.defineProperty(evt, 'defaultPrevented', {
-            get: function get() {
-              return true;
-            }
-          });
-        }
       }
 
       if (nativeDispatch) {

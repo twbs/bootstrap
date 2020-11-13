@@ -17,7 +17,7 @@
       <main class="bd-main order-1">
         <div class="bd-intro pl-lg-4">
           <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-            <a class="btn btn-sm btn-bd-light mb-2 mb-md-0" href="{{ .Site.Params.repo }}/blob/main/site/content/{{ .Page.File.Path }}" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <a class="btn btn-sm btn-bd-light mb-2 mb-md-0" href="{{ .Site.Params.repo }}/blob/main/site/content/{{ .Page.File.Path | replaceRE `\\` "/" }}" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
             <h1 class="bd-title" id="content">{{ .Title | markdownify }}</h1>
           </div>
           <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>

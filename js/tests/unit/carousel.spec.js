@@ -636,27 +636,24 @@ describe('Carousel', () => {
       carousel.next()
     })
 
-    it('should get interval from data attribute in individual item', () => {
+    it('should update the active element to the next item before sliding', () => {
       fixtureEl.innerHTML = [
         '<div id="myCarousel" class="carousel slide">',
         '  <div class="carousel-inner">',
         '    <div class="carousel-item active">item 1</div>',
-        '    <div class="carousel-item" data-interval="7">item 2</div>',
+        '    <div id="secondItem" class="carousel-item">item 2</div>',
         '    <div class="carousel-item">item 3</div>',
         '  </div>',
         '</div>'
       ].join('')
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
-      const carousel = new Carousel(carouselEl, {
-        interval: 1814
-      })
-
-      expect(carousel._config.interval).toEqual(1814)
+      const secondItemEl = fixtureEl.querySelector('#secondItem')
+      const carousel = new Carousel(carouselEl)
 
       carousel.next()
 
-      expect(carousel._config.interval).toEqual(7)
+      expect(carousel._activeElement).toEqual(secondItemEl)
     })
 
     it('should update indicators if present', done => {
@@ -875,6 +872,35 @@ describe('Carousel', () => {
 
       expect(window.setInterval).toHaveBeenCalled()
       expect(window.clearInterval).toHaveBeenCalled()
+    })
+
+    it('should get interval from data attribute on the active item element', () => {
+      fixtureEl.innerHTML = [
+        '<div id="myCarousel" class="carousel slide">',
+        '  <div class="carousel-inner">',
+        '    <div class="carousel-item active" data-interval="7">item 1</div>',
+        '    <div id="secondItem" class="carousel-item" data-interval="9385">item 2</div>',
+        '    <div class="carousel-item">item 3</div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const carouselEl = fixtureEl.querySelector('#myCarousel')
+      const secondItemEl = fixtureEl.querySelector('#secondItem')
+      const carousel = new Carousel(carouselEl, {
+        interval: 1814
+      })
+
+      expect(carousel._config.interval).toEqual(1814)
+
+      carousel.cycle()
+
+      expect(carousel._config.interval).toEqual(7)
+
+      carousel._activeElement = secondItemEl
+      carousel.cycle()
+
+      expect(carousel._config.interval).toEqual(9385)
     })
   })
 

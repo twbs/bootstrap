@@ -107,18 +107,3 @@
 .btn-sm {
   @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
 }
-
-
-//
-// Block button
-//
-
-.btn-block {
-  display: block;
-  width: 100%;
-
-  // Vertically space out multiple block buttons
-  + .btn-block {
-    margin-top: $btn-block-spacing-y;
-  }
-}

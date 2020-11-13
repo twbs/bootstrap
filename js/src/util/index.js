@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha2): util/index.js
+ * Bootstrap (v5.0.0-alpha3): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -180,8 +180,15 @@ const getjQuery = () => {
   return null
 }
 
+const onDOMContentLoaded = callback => {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', callback)
+  } else {
+    callback()
+  }
+}
+
 export {
-  getjQuery,
   TRANSITION_END,
   getUID,
   getSelectorFromElement,
@@ -194,5 +201,7 @@ export {
   isVisible,
   findShadowRoot,
   noop,
-  reflow
+  reflow,
+  getjQuery,
+  onDOMContentLoaded
 }

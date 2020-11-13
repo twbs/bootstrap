@@ -10,8 +10,7 @@
   width: 100%;
 
   > .form-control,
-  > .form-select,
-  > .form-file {
+  > .form-select {
     position: relative; // For focus state's z-index
     flex: 1 1 auto;
     width: 1%;
@@ -20,24 +19,8 @@
 
   // Bring the "active" form control to the top of surrounding elements
   > .form-control:focus,
-  > .form-select:focus,
-  > .form-file .form-file-input:focus ~ .form-file-label {
+  > .form-select:focus {
     z-index: 3;
-  }
-
-  // Bring the custom file input above the label
-  > .form-file {
-    > .form-file-input:focus {
-      z-index: 4;
-    }
-
-    &:not(:last-child) > .form-file-label {
-      @include border-right-radius(0);
-    }
-
-    &:not(:first-child) > .form-file-label {
-      @include border-left-radius(0);
-    }
   }
 
   // Ensure buttons are always above inputs for more visually pleasing borders.
@@ -80,14 +63,6 @@
 // Remix the default form control sizing classes into new ones for easier
 // manipulation.
 
-.input-group-lg > .form-control {
-  min-height: $input-height-lg;
-}
-
-.input-group-lg > .form-select {
-  height: $input-height-lg;
-}
-
 .input-group-lg > .form-control,
 .input-group-lg > .form-select,
 .input-group-lg > .input-group-text,
@@ -95,14 +70,6 @@
   padding: $input-padding-y-lg $input-padding-x-lg;
   @include font-size($input-font-size-lg);
   @include border-radius($input-border-radius-lg);
-}
-
-.input-group-sm > .form-control {
-  min-height: $input-height-sm;
-}
-
-.input-group-sm > .form-select {
-  height: $input-height-sm;
 }
 
 .input-group-sm > .form-control,
@@ -128,12 +95,26 @@
 
 // stylelint-disable-next-line no-duplicate-selectors
 .input-group {
-  > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
-  > .dropdown-toggle:nth-last-child(n + 3) {
-    @include border-right-radius(0);
+  &:not(.has-validation) {
+    > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
+    > .dropdown-toggle:nth-last-child(n + 3) {
+      @include border-right-radius(0);
+    }
   }
 
-  > :not(:first-child):not(.dropdown-menu) {
+  &.has-validation {
+    > :nth-last-child(n + 3):not(.dropdown-toggle):not(.dropdown-menu),
+    > .dropdown-toggle:nth-last-child(n + 4) {
+      @include border-right-radius(0);
+    }
+  }
+
+  $validation-messages: "";
+  @each $state in map-keys($form-validation-states) {
+    $validation-messages: $validation-messages + ":not(." + unquote($state) + "-tooltip)" + ":not(." + unquote($state) + "-feedback)";
+  }
+
+  > :not(:first-child):not(.dropdown-menu)#{$validation-messages} {
     margin-left: -$input-border-width;
     @include border-left-radius(0);
   }

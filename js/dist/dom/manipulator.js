@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap manipulator.js v5.0.0-alpha2 (https://getbootstrap.com/)
+  * Bootstrap manipulator.js v5.0.0-alpha3 (https://getbootstrap.com/)
   * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -13,7 +13,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-alpha2): dom/manipulator.js
+   * Bootstrap (v5.0.0-alpha3): dom/manipulator.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -77,17 +77,6 @@
         top: element.offsetTop,
         left: element.offsetLeft
       };
-    },
-    toggleClass: function toggleClass(element, className) {
-      if (!element) {
-        return;
-      }
-
-      if (element.classList.contains(className)) {
-        element.classList.remove(className);
-      } else {
-        element.classList.add(className);
-      }
     }
   };
 
