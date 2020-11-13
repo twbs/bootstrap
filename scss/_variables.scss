@@ -605,8 +605,6 @@ $btn-link-color:              $link-color !default;
 $btn-link-hover-color:        $link-hover-color !default;
 $btn-link-disabled-color:     $gray-600 !default;
 
-$btn-block-spacing-y:         .5rem !default;
-
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:           $border-radius !default;
 $btn-border-radius-sm:        $border-radius-sm !default;
@@ -1182,7 +1180,7 @@ $alert-border-width:                $border-width !default;
 
 $alert-bg-scale:                    -80% !default;
 $alert-border-scale:                -70% !default;
-$alert-color-scale:                 50% !default;
+$alert-color-scale:                 40% !default;
 
 $alert-dismissible-padding-r:       $alert-padding-x * 3 !default; // 3x covers width of x plus default padding on either side
 
@@ -1211,7 +1209,7 @@ $list-group-border-radius:          $border-radius !default;
 $list-group-item-padding-y:         $spacer / 2 !default;
 $list-group-item-padding-x:         $spacer !default;
 $list-group-item-bg-scale:          -80% !default;
-$list-group-item-color-scale:       50% !default;
+$list-group-item-color-scale:       40% !default;
 
 $list-group-hover-bg:               $gray-100 !default;
 $list-group-active-color:           $component-active-color !default;
