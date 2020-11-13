@@ -7,7 +7,7 @@ group: utilities
 
 ## Text selection
 
-Change how the content is selected when the user interacts with it.
+Change how the content is selected when the user interacts with it. Note that Internet Explorer and Legacy Edge have no support for the `all` value for `user-select`, and as such, **`.user-select-all` is not supported by either browser.**
 
 {% capture example %}
 <p class="user-select-all">This paragraph will be entirely selected when clicked by the user.</p>
