@@ -152,8 +152,8 @@
 // Organizationally, this must come after the `:hover` states.
 
 @each $state, $value in $theme-colors {
-  $background: scale-color($value, $list-group-item-bg-scale);
-  $color: scale-color($value, $list-group-item-color-scale);
+  $background: shift-color($value, $list-group-item-bg-scale);
+  $color: shift-color($value, $list-group-item-color-scale);
   @if (contrast-ratio($background, $color) < $min-contrast-ratio) {
     $color: mix($value, color-contrast($background), abs($alert-color-scale));
   }

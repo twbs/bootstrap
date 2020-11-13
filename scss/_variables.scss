@@ -275,7 +275,7 @@ $body-text-align:           null !default;
 $link-color:                              $primary !default;
 $link-decoration:                         underline !default;
 $link-shade-percentage:                   20% !default;
-$link-hover-color:                        scale-color($link-color, $link-shade-percentage) !default;
+$link-hover-color:                        shift-color($link-color, $link-shade-percentage) !default;
 $link-hover-decoration:                   null !default;
 
 $stretched-link-pseudo-element:           after !default;
@@ -535,12 +535,12 @@ $table-caption-color:         $text-muted !default;
 $table-bg-scale:              -80% !default;
 
 $table-variants: (
-  "primary":    scale-color($primary, $table-bg-scale),
-  "secondary":  scale-color($secondary, $table-bg-scale),
-  "success":    scale-color($success, $table-bg-scale),
-  "info":       scale-color($info, $table-bg-scale),
-  "warning":    scale-color($warning, $table-bg-scale),
-  "danger":     scale-color($danger, $table-bg-scale),
+  "primary":    shift-color($primary, $table-bg-scale),
+  "secondary":  shift-color($secondary, $table-bg-scale),
+  "success":    shift-color($success, $table-bg-scale),
+  "info":       shift-color($info, $table-bg-scale),
+  "warning":    shift-color($warning, $table-bg-scale),
+  "danger":     shift-color($danger, $table-bg-scale),
   "light":      $light,
   "dark":       $dark,
 ) !default;
