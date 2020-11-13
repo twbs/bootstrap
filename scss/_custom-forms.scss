@@ -104,7 +104,7 @@
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
     content: "";
-    background: no-repeat 50% / #{$custom-control-indicator-bg-size};
+    background: 50% / #{$custom-control-indicator-bg-size} no-repeat;
   }
 }
 
