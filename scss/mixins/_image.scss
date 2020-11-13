@@ -26,7 +26,7 @@
   // Autoprefixer takes care of adding -webkit-min-device-pixel-ratio and -o-min-device-pixel-ratio,
   // but doesn't convert dppx=>dpi.
   // There's no such thing as unprefixed min-device-pixel-ratio since it's nonstandard.
-  // Compatibility info: https://caniuse.com/#feat=css-media-resolution
+  // Compatibility info: https://caniuse.com/css-media-resolution
   @media only screen and (min-resolution: 192dpi), // IE9-11 don't support dppx
     only screen and (min-resolution: 2dppx) { // Standardized
     background-image: url($file-2x);
