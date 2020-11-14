@@ -1,12 +1,11 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha1): dom/event-handler.js
+ * Bootstrap (v5.0.0-alpha3): dom/event-handler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import { getjQuery } from '../util/index'
-import { defaultPreventedPreservedOnDispatch } from './polyfill'
 
 /**
  * ------------------------------------------------------------------------
@@ -14,7 +13,6 @@ import { defaultPreventedPreservedOnDispatch } from './polyfill'
  * ------------------------------------------------------------------------
  */
 
-const $ = getjQuery()
 const namespaceRegex = /[^.]*(?=\..*)\.|.*/
 const stripNameRegex = /\..*/
 const stripUidRegex = /::\d+$/
@@ -95,6 +93,7 @@ function getEvent(element) {
 function bootstrapHandler(element, fn) {
   return function handler(event) {
     event.delegateTarget = element
+
     if (handler.oneOff) {
       EventHandler.off(element, event.type, fn)
     }
@@ -111,6 +110,7 @@ function bootstrapDelegationHandler(element, selector, fn) {
       for (let i = domElements.length; i--;) {
         if (domElements[i] === target) {
           event.delegateTarget = target
+
           if (handler.oneOff) {
             EventHandler.off(element, event.type, fn)
           }
@@ -270,6 +270,7 @@ const EventHandler = {
       return null
     }
 
+    const $ = getjQuery()
     const typeEvent = event.replace(stripNameRegex, '')
     const inNamespace = event !== typeEvent
     const isNative = nativeEvents.indexOf(typeEvent) > -1
@@ -312,12 +313,6 @@ const EventHandler = {
 
     if (defaultPrevented) {
       evt.preventDefault()
-
-      if (!defaultPreventedPreservedOnDispatch) {
-        Object.defineProperty(evt, 'defaultPrevented', {
-          get: () => true
-        })
-      }
     }
 
     if (nativeDispatch) {

@@ -1,22 +1,21 @@
 .bd-navbar {
-  padding: .625rem 0;
+  padding: .75rem 0;
   background-color: $bd-purple-bright;
 
-  @include media-breakpoint-down(lg) {
-    .navbar-nav-scroll {
-      width: 100%;
+  .navbar-toggler {
+    padding: 0;
+    border: 0;
 
-      .navbar-nav {
-        margin: -.5rem 0;
-        overflow-x: auto;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
+    .bi {
+      width: 2rem;
+      fill: currentColor;
     }
   }
 
   .navbar-nav {
     .nav-link {
+      padding-right: $spacer / 4;
+      padding-left: $spacer / 4;
       color: rgba($white, .85);
 
       &:hover,

@@ -74,6 +74,9 @@
 }
 
 // See https://codepen.io/kevinweber/pen/dXWoRw
+//
+// Requires the use of quotes around data URIs.
+
 @function escape-svg($string) {
   @if str-index($string, "data:image/svg+xml") {
     @each $char, $encoded in $escaped-characters {
@@ -111,7 +114,7 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
     }
   }
 
-  @warn "Found no color leading to #{$min-contrast-ratio}:1 contrast ratio against #{$background}…";
+  @warn "Found no color leading to #{$min-contrast-ratio}:1 contrast ratio against #{$background}...";
 
   @return $max-ratio-color;
 }
@@ -147,23 +150,22 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
   @return mix(rgba($foreground, 1), $background, opacity($foreground) * 100);
 }
 
-// Request a color level
-// scss-docs-start color-level
-@function color-level($color: $primary, $level: 0) {
-  $color-base: if($level > 0, $black, $white);
-  $level: abs($level);
-
-  @return mix($color-base, $color, $level * $theme-color-interval);
-}
-// scss-docs-end color-level
-
-@function tint-color($color, $level) {
-  @return mix(white, $color, $level * $theme-color-interval);
+// scss-docs-start color-functions
+// Tint a color: mix a color with white
+@function tint-color($color, $weight) {
+  @return mix(white, $color, $weight);
 }
 
-@function shade-color($color, $level) {
-  @return mix(black, $color, $level * $theme-color-interval);
+// Shade a color: mix a color with black
+@function shade-color($color, $weight) {
+  @return mix(black, $color, $weight);
 }
+
+// Shade the color if the weight is positive, else tint it
+@function shift-color($color, $weight) {
+  @return if($weight > 0, shade-color($color, $weight), tint-color($color, -$weight));
+}
+// scss-docs-end color-functions
 
 // Return valid calc
 @function add($value1, $value2, $return-calc: true) {

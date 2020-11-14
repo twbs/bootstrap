@@ -28,12 +28,14 @@
 }
 
 // Variations
-@mixin bs-callout-variant($color) {
-  border-left-color: $color;
-
-  h4 { color: $color; }
+.bd-callout-info {
+  border-left-color: $bd-info;
 }
 
-.bd-callout-info { @include bs-callout-variant($bd-info); }
-.bd-callout-warning { @include bs-callout-variant($bd-warning); }
-.bd-callout-danger { @include bs-callout-variant($bd-danger); }
+.bd-callout-warning {
+  border-left-color: $bd-warning;
+}
+
+.bd-callout-danger {
+  border-left-color: $bd-danger;
+}

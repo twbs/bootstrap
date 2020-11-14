@@ -20,7 +20,7 @@ describe('Sanitizer', () => {
 
       const result = sanitizeHtml(template, DefaultAllowlist, null)
 
-      expect(result.indexOf('script') === -1).toEqual(true)
+      expect(result).not.toContain('href="javascript:alert(7)')
     })
 
     it('should allow aria attributes and safe attributes', () => {
@@ -32,8 +32,8 @@ describe('Sanitizer', () => {
 
       const result = sanitizeHtml(template, DefaultAllowlist, null)
 
-      expect(result.indexOf('aria-pressed') !== -1).toEqual(true)
-      expect(result.indexOf('class="test"') !== -1).toEqual(true)
+      expect(result).toContain('aria-pressed')
+      expect(result).toContain('class="test"')
     })
 
     it('should remove tags not in allowlist', () => {
@@ -45,7 +45,7 @@ describe('Sanitizer', () => {
 
       const result = sanitizeHtml(template, DefaultAllowlist, null)
 
-      expect(result.indexOf('<script>') === -1).toEqual(true)
+      expect(result).not.toContain('<script>')
     })
 
     it('should not use native api to sanitize if a custom function passed', () => {

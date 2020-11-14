@@ -1,12 +1,13 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha1): collapse.js
+ * Bootstrap (v5.0.0-alpha3): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
   getjQuery,
+  onDOMContentLoaded,
   TRANSITION_END,
   emulateTransitionEnd,
   getSelectorFromElement,
@@ -28,7 +29,7 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'collapse'
-const VERSION = '5.0.0-alpha1'
+const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.collapse'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -58,7 +59,7 @@ const WIDTH = 'width'
 const HEIGHT = 'height'
 
 const SELECTOR_ACTIVES = '.show, .collapsing'
-const SELECTOR_DATA_TOGGLE = '[data-toggle="collapse"]'
+const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]'
 
 /**
  * ------------------------------------------------------------------------
@@ -73,7 +74,7 @@ class Collapse {
     this._config = this._getConfig(config)
     this._triggerArray = SelectorEngine.find(
       `${SELECTOR_DATA_TOGGLE}[href="#${element.id}"],` +
-      `${SELECTOR_DATA_TOGGLE}[data-target="#${element.id}"]`
+      `${SELECTOR_DATA_TOGGLE}[data-bs-target="#${element.id}"]`
     )
 
     const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
@@ -136,7 +137,7 @@ class Collapse {
       actives = SelectorEngine.find(SELECTOR_ACTIVES, this._parent)
         .filter(elem => {
           if (typeof this._config.parent === 'string') {
-            return elem.getAttribute('data-parent') === this._config.parent
+            return elem.getAttribute('data-bs-parent') === this._config.parent
           }
 
           return elem.classList.contains(CLASS_NAME_COLLAPSE)
@@ -302,7 +303,7 @@ class Collapse {
       parent = SelectorEngine.findOne(parent)
     }
 
-    const selector = `${SELECTOR_DATA_TOGGLE}[data-parent="${parent}"]`
+    const selector = `${SELECTOR_DATA_TOGGLE}[data-bs-parent="${parent}"]`
 
     SelectorEngine.find(selector, parent)
       .forEach(element => {
@@ -342,7 +343,7 @@ class Collapse {
     const _config = {
       ...Default,
       ...Manipulator.getDataAttributes(element),
-      ...typeof config === 'object' && config ? config : {}
+      ...(typeof config === 'object' && config ? config : {})
     }
 
     if (!data && _config.toggle && typeof config === 'string' && /show|hide/.test(config)) {
@@ -408,23 +409,25 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   })
 })
 
-const $ = getjQuery()
-
 /**
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
- * add .collapse to jQuery only if jQuery is present
+ * add .Collapse to jQuery only if jQuery is present
  */
-/* istanbul ignore if */
-if ($) {
-  const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = Collapse.jQueryInterface
-  $.fn[NAME].Constructor = Collapse
-  $.fn[NAME].noConflict = () => {
-    $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Collapse.jQueryInterface
+
+onDOMContentLoaded(() => {
+  const $ = getjQuery()
+  /* istanbul ignore if */
+  if ($) {
+    const JQUERY_NO_CONFLICT = $.fn[NAME]
+    $.fn[NAME] = Collapse.jQueryInterface
+    $.fn[NAME].Constructor = Collapse
+    $.fn[NAME].noConflict = () => {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Collapse.jQueryInterface
+    }
   }
-}
+})
 
 export default Collapse

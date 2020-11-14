@@ -4,12 +4,9 @@ module.exports = {
       '@babel/preset-env',
       {
         loose: true,
-        modules: false,
-        exclude: ['transform-typeof-symbol']
+        bugfixes: true,
+        modules: false
       }
     ]
-  ],
-  plugins: [
-    '@babel/plugin-proposal-object-rest-spread'
   ]
 };

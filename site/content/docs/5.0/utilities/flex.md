@@ -113,14 +113,14 @@ Use `justify-content` utilities on flexbox containers to change the alignment of
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="d-flex justify-content-start">...</div>
 <div class="d-flex justify-content-end">...</div>
 <div class="d-flex justify-content-center">...</div>
 <div class="d-flex justify-content-between">...</div>
 <div class="d-flex justify-content-around">...</div>
 <div class="d-flex justify-content-evenly">...</div>
-{{< /highlight >}}
+```
 
 Responsive variations also exist for `justify-content`.
 
@@ -169,13 +169,13 @@ Use `align-items` utilities on flexbox containers to change the alignment of fle
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="d-flex align-items-start">...</div>
 <div class="d-flex align-items-end">...</div>
 <div class="d-flex align-items-center">...</div>
 <div class="d-flex align-items-baseline">...</div>
 <div class="d-flex align-items-stretch">...</div>
-{{< /highlight >}}
+```
 
 Responsive variations also exist for `align-items`.
 
@@ -223,13 +223,13 @@ Use `align-self` utilities on flexbox items to individually change their alignme
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="align-self-start">Aligned flex item</div>
 <div class="align-self-end">Aligned flex item</div>
 <div class="align-self-center">Aligned flex item</div>
 <div class="align-self-baseline">Aligned flex item</div>
 <div class="align-self-stretch">Aligned flex item</div>
-{{< /highlight >}}
+```
 
 Responsive variations also exist for `align-self`.
 
@@ -355,11 +355,11 @@ Change how flex items wrap in a flex container. Choose from no wrapping at all (
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="d-flex flex-nowrap">
   ...
 </div>
-{{< /highlight >}}
+```
 
 <div class="bd-example">
   <div class="d-flex flex-wrap bd-highlight">
@@ -381,11 +381,11 @@ Change how flex items wrap in a flex container. Choose from no wrapping at all (
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="d-flex flex-wrap">
   ...
 </div>
-{{< /highlight >}}
+```
 
 <div class="bd-example">
   <div class="d-flex flex-wrap-reverse bd-highlight">
@@ -407,11 +407,11 @@ Change how flex items wrap in a flex container. Choose from no wrapping at all (
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="d-flex flex-wrap-reverse">
   ...
 </div>
-{{< /highlight >}}
+```
 
 
 Responsive variations also exist for `flex-wrap`.
@@ -488,11 +488,11 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="d-flex align-content-start flex-wrap">
   ...
 </div>
-{{< /highlight >}}
+```
 
 <div class="bd-example">
   <div class="d-flex align-content-end flex-wrap bd-highlight mb-3" style="height: 200px">
@@ -514,9 +514,9 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="d-flex align-content-end flex-wrap">...</div>
-{{< /highlight >}}
+```
 
 <div class="bd-example">
   <div class="d-flex align-content-center flex-wrap bd-highlight mb-3" style="height: 200px">
@@ -538,9 +538,9 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="d-flex align-content-center flex-wrap">...</div>
-{{< /highlight >}}
+```
 
 <div class="bd-example">
   <div class="d-flex align-content-between flex-wrap bd-highlight mb-3" style="height: 200px">
@@ -562,9 +562,9 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="d-flex align-content-between flex-wrap">...</div>
-{{< /highlight >}}
+```
 
 <div class="bd-example">
   <div class="d-flex align-content-around flex-wrap bd-highlight mb-3" style="height: 200px">
@@ -586,9 +586,9 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="d-flex align-content-around flex-wrap">...</div>
-{{< /highlight >}}
+```
 
 <div class="bd-example">
   <div class="d-flex align-content-stretch flex-wrap bd-highlight mb-3" style="height: 200px">
@@ -610,9 +610,9 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="d-flex align-content-stretch flex-wrap">...</div>
-{{< /highlight >}}
+```
 
 Responsive variations also exist for `align-content`.
 

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha1): util/index.js
+ * Bootstrap (v5.0.0-alpha3): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -33,7 +33,7 @@ const getUID = prefix => {
 }
 
 const getSelector = element => {
-  let selector = element.getAttribute('data-target')
+  let selector = element.getAttribute('data-bs-target')
 
   if (!selector || selector === '#') {
     const hrefAttr = element.getAttribute('href')
@@ -173,15 +173,22 @@ const reflow = element => element.offsetHeight
 const getjQuery = () => {
   const { jQuery } = window
 
-  if (jQuery && !document.body.hasAttribute('data-no-jquery')) {
+  if (jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
     return jQuery
   }
 
   return null
 }
 
+const onDOMContentLoaded = callback => {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', callback)
+  } else {
+    callback()
+  }
+}
+
 export {
-  getjQuery,
   TRANSITION_END,
   getUID,
   getSelectorFromElement,
@@ -194,5 +201,7 @@ export {
   isVisible,
   findShadowRoot,
   noop,
-  reflow
+  reflow,
+  getjQuery,
+  onDOMContentLoaded
 }
