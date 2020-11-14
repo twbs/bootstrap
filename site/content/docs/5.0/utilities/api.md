@@ -17,6 +17,7 @@ The `$utilities` map contains all our utilities and is later merged with your cu
 | `property` | **Required** | Name of the property, this can be a string or an array of strings (e.g., horizontal paddings or margins). |
 | `values` | **Required** | List of values, or a map if you don't want the class name to be the same as the value. If `null` is used as map key, it isn't compiled. |
 | `class` | Optional | Variable for the class name if you don't want it to be the same as the property. In case you don't provide the `class` key and `property` key is an array of strings, the class name will be the first element of the `property` array. |
+| `state` | Optional | List of pseudo-class variants like `:hover` or `:focus` to generate for the utility. No default value. |
 | `responsive` | Optional | Boolean indicating if responsive classes need to be generated. `false` by default. |
 | `rfs` | Optional | Boolean to enable fluid rescaling. Have a look at the [RFS]({{< docsref "/getting-started/rfs" >}}) page to find out how this works. `false` by default. |
 | `print` | Optional | Boolean indicating if print classes need to be generated. `false` by default. |
@@ -79,6 +80,39 @@ Output:
 .o-50 { opacity: .5; }
 .o-75 { opacity: .75; }
 .o-100 { opacity: 1; }
+```
+
+## States
+
+Use the `state` option to generate pseudo-class variations. Example pseudo-classes are `:hover` and `:focus`. When a list of states are provided, classnames are created for that pseudo-class. For example, to change opacity on hover, add `state: hover` and you'll get `.opacity-hover:hover` in your compiled CSS.
+
+Need multiple pseudo-classes? Use a space-separated list of states: `state: hover focus`.
+
+```scss
+$utilities: (
+  "opacity": (
+    property: opacity,
+    class: opacity,
+    state: hover,
+    values: (
+      0: 0,
+      25: .25,
+      50: .5,
+      75: .75,
+      100: 1,
+    )
+  )
+);
+```
+
+Output:
+
+```css
+.opacity-0-hover:hover { opacity: 0; }
+.opacity-25-hover:hover { opacity: .25; }
+.opacity-50-hover:hover { opacity: .5; }
+.opacity-75-hover:hover { opacity: .75; }
+.opacity-100-hover:hover { opacity: 1; }
 ```
 
 ### Responsive utilities

@@ -44,9 +44,9 @@
 // Generate contextual modifier classes for colorizing the alert.
 
 @each $state, $value in $theme-colors {
-  $background: scale-color($value, $alert-bg-scale);
-  $border: scale-color($value, $alert-border-scale);
-  $color: scale-color($value, $alert-color-scale);
+  $background: shift-color($value, $alert-bg-scale);
+  $border: shift-color($value, $alert-border-scale);
+  $color: shift-color($value, $alert-color-scale);
   @if (contrast-ratio($background, $color) < $min-contrast-ratio) {
     $color: mix($value, color-contrast($background), abs($alert-color-scale));
   }
