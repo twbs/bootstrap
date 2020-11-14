@@ -419,7 +419,7 @@ class Carousel {
       return
     }
 
-    const elementInterval = parseInt(element.getAttribute('data-bs-interval'), 10)
+    const elementInterval = Number.parseInt(element.getAttribute('data-bs-interval'), 10)
 
     if (elementInterval) {
       this._config.defaultInterval = this._config.defaultInterval || this._config.interval
