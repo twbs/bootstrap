@@ -361,9 +361,7 @@ Our first demo is for `.modal-left`, which also has a vertical `.nav-pills` comp
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalLeftLabel">Modal left</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <ul class="nav nav-pills flex-column">
@@ -390,9 +388,7 @@ Our first demo is for `.modal-left`, which also has a vertical `.nav-pills` comp
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalLeftFadeLabel">Modal left</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <ul class="nav nav-pills flex-column">
@@ -415,29 +411,29 @@ Our first demo is for `.modal-left`, which also has a vertical `.nav-pills` comp
 </div>
 
 <div class="bd-example">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLeft">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalLeft">
     Launch left modal
   </button>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLeftFade">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalLeftFade">
     Launch left modal w/ fade
   </button>
 </div>
 
-{{< highlight html >}}
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLeft">
+```html
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalLeft">
   Launch left modal
 </button>
 <div class="modal modal-left" id="modalLeftFade" tabindex="-1" aria-labelledby="modalLeftFadeLabel" aria-hidden="true">
   ...
 </div>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLeftFadeFade">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalLeftFadeFade">
   Launch left modal w/ fade
 </button>
 <div class="modal modal-left fade" id="modalLeftFadeFade" tabindex="-1" aria-labelledby="modalLeftFadeFadeLabel" aria-hidden="true">
   ...
 </div>
-{{< /highlight >}}
+```
 
 ### Right modal
 
@@ -448,15 +444,11 @@ In this `.modal-right` example, we've removed the default `.modal-body` padding 
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalRightLabel">Modal right</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-0">
         <div class="list-group list-group-flush">
-          <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-            Cras justo odio
-          </a>
+          <a href="#" class="list-group-item list-group-item-action active" aria-current="true">Cras justo odio</a>
           <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
           <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
           <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
@@ -472,15 +464,11 @@ In this `.modal-right` example, we've removed the default `.modal-body` padding 
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalRightFadeLabel">Modal right</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-0">
         <div class="list-group list-group-flush">
-          <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-            Cras justo odio
-          </a>
+          <a href="#" class="list-group-item list-group-item-action active" aria-current="true">Cras justo odio</a>
           <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
           <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
           <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
@@ -492,30 +480,29 @@ In this `.modal-right` example, we've removed the default `.modal-body` padding 
 </div>
 
 <div class="bd-example">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalRight">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRight">
     Launch right modal
   </button>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalRightFade">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRightFade">
     Launch right modal w/ fade
   </button>
 </div>
 
-{{< highlight html >}}
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalRight">
+```html
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRight">
   Launch right modal
 </button>
 <div class="modal modal-right" id="modalRight" tabindex="-1" aria-labelledby="modalRightLabel" aria-hidden="true">
   ...
 </div>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalRightFade">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRightFade">
   Launch right modal w/ fade
 </button>
 <div class="modal modal-right fade" id="modalRightFade" tabindex="-1" aria-labelledby="modalRightFadeLabel" aria-hidden="true">
   ...
 </div>
-
-{{< /highlight >}}
+```
 
 ## Working with modals
 
