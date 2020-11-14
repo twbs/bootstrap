@@ -46,9 +46,7 @@ describe('Toast', () => {
     it('should close toast when close element with data-bs-dismiss attribute is set', done => {
       fixtureEl.innerHTML = [
         '<div class="toast" data-bs-delay="1" data-bs-autohide="false" data-bs-animation="false">',
-        '  <button type="button" class="ml-2 mb-1 close" data-bs-dismiss="toast">',
-        '    close',
-        '  </button>',
+        '  <button type="button" class="ml-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
         '</div>'
       ].join('')
 
@@ -58,7 +56,7 @@ describe('Toast', () => {
       toastEl.addEventListener('shown.bs.toast', () => {
         expect(toastEl.classList.contains('show')).toEqual(true)
 
-        const button = toastEl.querySelector('.close')
+        const button = toastEl.querySelector('.btn-close')
 
         button.click()
       })
@@ -80,9 +78,7 @@ describe('Toast', () => {
 
       fixtureEl.innerHTML = [
         '<div class="toast" data-bs-autohide="false" data-bs-animation="false">',
-        '  <button type="button" class="ml-2 mb-1 close" data-bs-dismiss="toast">',
-        '    close',
-        '  </button>',
+        '  <button type="button" class="ml-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
         '</div>'
       ].join('')
 
