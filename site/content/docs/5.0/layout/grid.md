@@ -434,6 +434,9 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 
 // Make the element grid-ready (applying everything but the width)
 @include make-col-ready();
+
+// Without optional size values, the mixin will create equal columns (similar to using .col)
+@include make-col();
 @include make-col($size, $columns: $grid-columns);
 
 // Get fancy by offsetting, or changing the sort order
