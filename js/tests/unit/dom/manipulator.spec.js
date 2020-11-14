@@ -60,14 +60,14 @@ describe('Manipulator', () => {
       expect().nothing()
     })
 
-    it('should get all data attributes', () => {
-      fixtureEl.innerHTML = '<div data-test="js" data-test2="js2" ></div>'
+    it('should get only bs prefixed data attributes without bs namespace', () => {
+      fixtureEl.innerHTML = '<div data-bs-toggle="tabs" data-bs-target="#element" data-another="value" data-target-bs="#element" data-in-bs-out="in-between"></div>'
 
       const div = fixtureEl.querySelector('div')
 
       expect(Manipulator.getDataAttributes(div)).toEqual({
-        test: 'js',
-        test2: 'js2'
+        toggle: 'tabs',
+        target: '#element'
       })
     })
   })

@@ -49,7 +49,7 @@ const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 const CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item'
 const CLASS_NAME_ACTIVE = 'active'
 
-const SELECTOR_DATA_SPY = '[data-spy="scroll"]'
+const SELECTOR_DATA_SPY = '[data-bs-spy="scroll"]'
 const SELECTOR_NAV_LIST_GROUP = '.nav, .list-group'
 const SELECTOR_NAV_LINKS = '.nav-link'
 const SELECTOR_NAV_ITEMS = '.nav-item'
@@ -241,7 +241,7 @@ class ScrollSpy {
     this._clear()
 
     const queries = this._selector.split(',')
-      .map(selector => `${selector}[data-target="${target}"],${selector}[href="${target}"]`)
+      .map(selector => `${selector}[data-bs-target="${target}"],${selector}[href="${target}"]`)
 
     const link = SelectorEngine.findOne(queries.join(','))
 
