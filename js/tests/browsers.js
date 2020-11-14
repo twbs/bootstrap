@@ -23,13 +23,6 @@ const browsers = {
     browser: 'Firefox',
     browser_version: 'latest'
   },
-  edgeWin10: {
-    base: 'BrowserStack',
-    os: 'Windows',
-    os_version: '10',
-    browser: 'Edge',
-    browser_version: '16'
-  },
   chromeWin10: {
     base: 'BrowserStack',
     os: 'Windows',

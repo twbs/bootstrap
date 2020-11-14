@@ -64,7 +64,7 @@ describe('Tooltip', () => {
 
   describe('constructor', () => {
     it('should not take care of disallowed data attributes', () => {
-      fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-sanitize="false" title="Another tooltip">'
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-bs-sanitize="false" title="Another tooltip">'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
@@ -317,7 +317,7 @@ describe('Tooltip', () => {
 
         expect(tooltipShown).toBeDefined()
         expect(tooltipEl.getAttribute('aria-describedby')).toEqual(tooltipShown.getAttribute('id'))
-        expect(tooltipShown.getAttribute('id').indexOf('tooltip') !== -1).toEqual(true)
+        expect(tooltipShown.getAttribute('id')).toContain('tooltip')
         done()
       })
 
@@ -716,6 +716,20 @@ describe('Tooltip', () => {
       })
 
       tooltip.show()
+    })
+
+    it('should not throw error running hide if popper hasn\'t been shown', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const tooltip = new Tooltip(div)
+
+      try {
+        tooltip.hide()
+        expect().nothing()
+      } catch {
+        throw new Error('should not throw error')
+      }
     })
   })
 

@@ -47,8 +47,6 @@
 - category: Experiments
   description: "Examples that focus on future-friendly features or techniques."
   examples:
-    - name: Floating labels
-      description: "Beautifully simple forms with floating labels over your inputs."
     - name: Offcanvas
       description: "Turn your expandable navbar into a sliding offcanvas menu."
 

@@ -26,7 +26,6 @@ const bsPlugins = {
   Data: path.resolve(__dirname, '../js/src/dom/data.js'),
   EventHandler: path.resolve(__dirname, '../js/src/dom/event-handler.js'),
   Manipulator: path.resolve(__dirname, '../js/src/dom/manipulator.js'),
-  Polyfill: path.resolve(__dirname, '../js/src/dom/polyfill.js'),
   SelectorEngine: path.resolve(__dirname, '../js/src/dom/selector-engine.js'),
   Alert: path.resolve(__dirname, '../js/src/alert.js'),
   Button: path.resolve(__dirname, '../js/src/button.js'),
@@ -66,10 +65,7 @@ const getConfigByPluginKey = pluginKey => {
     pluginKey === 'Sanitizer'
   ) {
     return {
-      external: [bsPlugins.Polyfill],
-      globals: {
-        [bsPlugins.Polyfill]: 'Polyfill'
-      }
+      external: []
     }
   }
 
@@ -138,7 +134,6 @@ const domObjects = [
   'Data',
   'EventHandler',
   'Manipulator',
-  'Polyfill',
   'SelectorEngine'
 ]
 

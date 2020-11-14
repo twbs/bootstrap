@@ -25,7 +25,12 @@
       "error",
       "always-multiline"
     ],
-    "new-cap": "off",
+    "new-cap": [
+      "error",
+      {
+        "properties": false
+      }
+    ],
     "no-console": "error",
     "object-curly-spacing": [
       "error",

@@ -227,6 +227,11 @@ Create button-like checkboxes and radio buttons by using `.btn` styles rather th
 <label class="btn btn-primary" for="btn-check-2">Checked</label>
 {{< /example >}}
 
+{{< example >}}
+<input type="checkbox" class="btn-check" id="btn-check-3" autocomplete="off" disabled>
+<label class="btn btn-primary" for="btn-check-3">Disabled</label>
+{{< /example >}}
+
 {{< callout info >}}
 Visually, these checkbox toggle buttons are identical to the [button plugin toggle buttons]({{< docsref "/components/buttons#button-plugin" >}}). However, they are conveyed differently by assistive technologies: the checkbox toggles will be announced by screen readers as "checked"/"not checked" (since, despite their appearance, they are fundamentally still checkboxes), whereas the button plugin toggle buttons will be announced as "button"/"button pressed". The choice between these two approaches will depend on the type of toggle you are creating, and whether or not the toggle will make sense to users when announced as a checkbox or as an actual button.
 {{< /callout >}}
@@ -240,8 +245,11 @@ Visually, these checkbox toggle buttons are identical to the [button plugin togg
 <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
 <label class="btn btn-secondary" for="option2">Radio</label>
 
-<input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
-<label class="btn btn-secondary" for="option3">Radio</label>
+<input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" disabled>
+<label class="btn btn-secondary" for="option3">Disabled</label>
+
+<input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
+<label class="btn btn-secondary" for="option4">Radio</label>
 {{< /example >}}
 
 ### Outlined styles

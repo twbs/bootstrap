@@ -11,7 +11,7 @@ toc: true
 Download ready-to-use compiled code for **Bootstrap v{{< param current_version >}}** to easily drop into your project, which includes:
 
 - Compiled and minified CSS bundles (see [CSS files comparison]({{< docsref "/getting-started/contents#css-files" >}}))
-- Compiled and minified JavaScript plugins
+- Compiled and minified JavaScript plugins (see [JS files comparison]({{< docsref "/getting-started/contents#js-files" >}}))
 
 This doesn't include documentation, source files, or any optional JavaScript dependencies like Popper.js.
 
@@ -34,21 +34,21 @@ If you want to download and examine our [examples]({{< docsref "/examples" >}}),
 
 <a href="{{< param "download.dist_examples" >}}" class="btn btn-bd-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Examples');">Download Examples</a>
 
-## BootstrapCDN
+## CDN via jsDelivr
 
-Skip the download with [BootstrapCDN](https://www.bootstrapcdn.com/) to deliver cached version of Bootstrap's compiled CSS and JS to your project.
+Skip the download with [jsDelivr](https://www.jsdelivr.com/) to deliver cached version of Bootstrap's compiled CSS and JS to your project.
 
-{{< highlight html >}}
-<link rel="stylesheet" href="{{< param "cdn.css" >}}" integrity="{{< param "cdn.css_hash" >}}" crossorigin="anonymous">
+```html
+<link href="{{< param "cdn.css" >}}" rel="stylesheet" integrity="{{< param "cdn.css_hash" >}}" crossorigin="anonymous">
 <script src="{{< param "cdn.js_bundle" >}}" integrity="{{< param "cdn.js_bundle_hash" >}}" crossorigin="anonymous"></script>
-{{< /highlight >}}
+```
 
 If you're using our compiled JavaScript and prefer to include Popper.js separately, add Popper.js before our JS, via a CDN preferably.
 
-{{< highlight html >}}
+```html
 <script src="{{< param "cdn.popper" >}}" integrity="{{< param "cdn.popper_hash" >}}" crossorigin="anonymous"></script>
 <script src="{{< param "cdn.js" >}}" integrity="{{< param "cdn.js_hash" >}}" crossorigin="anonymous"></script>
-{{< /highlight >}}
+```
 
 ## Package managers
 
@@ -58,9 +58,9 @@ Pull in Bootstrap's **source files** into nearly any project with some of the mo
 
 Install Bootstrap in your Node.js powered apps with [the npm package](https://www.npmjs.com/package/bootstrap):
 
-{{< highlight sh >}}
+```sh
 npm install bootstrap@next
-{{< /highlight >}}
+```
 
 `const bootstrap = require('bootstrap')` or `import bootstrap from 'bootstrap'` will load all of Bootstrap's plugins onto a `bootstrap` object.
 The `bootstrap` module itself exports all of our plugins. You can manually load Bootstrap's plugins individually by loading the `/js/dist/*.js` files under the package's top-level directory.
@@ -74,23 +74,23 @@ Bootstrap's `package.json` contains some additional metadata under the following
 
 Install Bootstrap in your Node.js powered apps with [the yarn package](https://yarnpkg.com/en/package/bootstrap):
 
-{{< highlight sh >}}
+```sh
 yarn add bootstrap@next
-{{< /highlight >}}
+```
 
 ### RubyGems
 
 Install Bootstrap in your Ruby apps using [Bundler](https://bundler.io/) (**recommended**) and [RubyGems](https://rubygems.org/) by adding the following line to your [`Gemfile`](https://bundler.io/gemfile.html):
 
-{{< highlight ruby >}}
+```ruby
 gem 'bootstrap', '~> {{< param current_ruby_version >}}'
-{{< /highlight >}}
+```
 
 Alternatively, if you're not using Bundler, you can install the gem by running this command:
 
-{{< highlight sh >}}
+```sh
 gem install bootstrap -v {{< param current_ruby_version >}}
-{{< /highlight >}}
+```
 
 [See the gem's README](https://github.com/twbs/bootstrap-rubygem/blob/master/README.md) for further details.
 
@@ -98,18 +98,18 @@ gem install bootstrap -v {{< param current_ruby_version >}}
 
 You can also install and manage Bootstrap's Sass and JavaScript using [Composer](https://getcomposer.org/):
 
-{{< highlight sh >}}
+```sh
 composer require twbs/bootstrap:{{< param current_version >}}
-{{< /highlight >}}
+```
 
 ### NuGet
 
 If you develop in .NET, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org/):
 
-{{< highlight powershell >}}
+```powershell
 Install-Package bootstrap
-{{< /highlight >}}
+```
 
-{{< highlight powershell >}}
+```powershell
 Install-Package bootstrap.sass
-{{< /highlight >}}
+```

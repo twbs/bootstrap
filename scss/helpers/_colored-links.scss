@@ -2,10 +2,10 @@
   .link-#{$color} {
     color: $value;
 
-    @if $emphasized-link-hover-darken-percentage != 0 {
+    @if $link-shade-percentage != 0 {
       &:hover,
       &:focus {
-        color: if(color-contrast($value) == $color-contrast-light, darken($value, $emphasized-link-hover-darken-percentage), lighten($value, $emphasized-link-hover-darken-percentage));
+        color: if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage));
       }
     }
   }

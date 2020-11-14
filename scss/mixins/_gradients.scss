@@ -4,7 +4,7 @@
   background-color: $color;
 
   @if $enable-gradients {
-    background-image: var(--bs-gradient);
+    background-image: var(--#{$variable-prefix}gradient);
   }
 }
 

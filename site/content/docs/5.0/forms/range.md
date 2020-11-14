@@ -15,6 +15,15 @@ Create custom `<input type="range">` controls with `.form-range`. The track (the
 <input type="range" class="form-range" id="customRange1">
 {{< /example >}}
 
+## Disabled
+
+Add the `disabled` boolean attribute on an input to give it a grayed out appearance and remove pointer events.
+
+{{< example >}}
+<label for="disabledRange" class="form-label">Disabled range</label>
+<input type="range" class="form-range" id="disabledRange" disabled>
+{{< /example >}}
+
 ## Min and max
 
 Range inputs have implicit values for `min` and `max`—`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
