@@ -1,12 +1,13 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha1): tooltip.js
+ * Bootstrap (v5.0.0-alpha3): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
   getjQuery,
+  onDOMContentLoaded,
   TRANSITION_END,
   emulateTransitionEnd,
   findShadowRoot,
@@ -33,12 +34,12 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'tooltip'
-const VERSION = '5.0.0-alpha1'
+const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.tooltip'
 const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'bs-tooltip'
 const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
-const DISALLOWED_ATTRIBUTES = ['sanitize', 'allowList', 'sanitizeFn']
+const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn'])
 
 const DefaultType = {
   animation: 'boolean',
@@ -333,6 +334,10 @@ class Tooltip {
   }
 
   hide() {
+    if (!this._popper) {
+      return
+    }
+
     const tip = this.getTipElement()
     const complete = () => {
       if (this._hoverState !== HOVER_STATE_SHOW && tip.parentNode) {
@@ -474,7 +479,7 @@ class Tooltip {
   }
 
   getTitle() {
-    let title = this.element.getAttribute('data-original-title')
+    let title = this.element.getAttribute('data-bs-original-title')
 
     if (!title) {
       title = typeof this.config.title === 'function' ?
@@ -527,7 +532,7 @@ class Tooltip {
       offset.fn = data => {
         data.offsets = {
           ...data.offsets,
-          ...this.config.offset(data.offsets, this.element) || {}
+          ...(this.config.offset(data.offsets, this.element) || {})
         }
 
         return data
@@ -609,14 +614,11 @@ class Tooltip {
   }
 
   _fixTitle() {
-    const titleType = typeof this.element.getAttribute('data-original-title')
+    const title = this.element.getAttribute('title')
+    const originalTitleType = typeof this.element.getAttribute('data-bs-original-title')
 
-    if (this.element.getAttribute('title') || titleType !== 'string') {
-      this.element.setAttribute(
-        'data-original-title',
-        this.element.getAttribute('title') || ''
-      )
-
+    if (title || originalTitleType !== 'string') {
+      this.element.setAttribute('data-bs-original-title', title || '')
       this.element.setAttribute('title', '')
     }
   }
@@ -718,12 +720,11 @@ class Tooltip {
   _getConfig(config) {
     const dataAttributes = Manipulator.getDataAttributes(this.element)
 
-    Object.keys(dataAttributes)
-      .forEach(dataAttr => {
-        if (DISALLOWED_ATTRIBUTES.indexOf(dataAttr) !== -1) {
-          delete dataAttributes[dataAttr]
-        }
-      })
+    Object.keys(dataAttributes).forEach(dataAttr => {
+      if (DISALLOWED_ATTRIBUTES.has(dataAttr)) {
+        delete dataAttributes[dataAttr]
+      }
+    })
 
     if (config && typeof config.container === 'object' && config.container.jquery) {
       config.container = config.container[0]
@@ -732,7 +733,7 @@ class Tooltip {
     config = {
       ...this.constructor.Default,
       ...dataAttributes,
-      ...typeof config === 'object' && config ? config : {}
+      ...(typeof config === 'object' && config ? config : {})
     }
 
     if (typeof config.delay === 'number') {
@@ -783,8 +784,7 @@ class Tooltip {
   }
 
   _handlePopperPlacementChange(popperData) {
-    const popperInstance = popperData.instance
-    this.tip = popperInstance.popper
+    this.tip = popperData.instance.popper
     this._cleanTipClass()
     this._addAttachmentClass(this._getAttachment(popperData.placement))
   }
@@ -833,23 +833,25 @@ class Tooltip {
   }
 }
 
-const $ = getjQuery()
-
 /**
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
- * add .tooltip to jQuery only if jQuery is present
+ * add .Tooltip to jQuery only if jQuery is present
  */
-/* istanbul ignore if */
-if ($) {
-  const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = Tooltip.jQueryInterface
-  $.fn[NAME].Constructor = Tooltip
-  $.fn[NAME].noConflict = () => {
-    $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Tooltip.jQueryInterface
+
+onDOMContentLoaded(() => {
+  const $ = getjQuery()
+  /* istanbul ignore if */
+  if ($) {
+    const JQUERY_NO_CONFLICT = $.fn[NAME]
+    $.fn[NAME] = Tooltip.jQueryInterface
+    $.fn[NAME].Constructor = Tooltip
+    $.fn[NAME].noConflict = () => {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Tooltip.jQueryInterface
+    }
   }
-}
+})
 
 export default Tooltip

@@ -25,6 +25,7 @@ Where *value* is one of:
 - `inline`
 - `inline-block`
 - `block`
+- `grid`
 - `table`
 - `table-cell`
 - `table-row`
@@ -33,7 +34,7 @@ Where *value* is one of:
 
 The display values can be altered by changing the `$displays` variable and recompiling the SCSS.
 
-The media queries affect screen widths with the given breakpoint *or larger*. For example, `.d-lg-none` sets `display: none;` on both `lg`, `xl`, and `xxl` screens.
+The media queries affect screen widths with the given breakpoint *or larger*. For example, `.d-lg-none` sets `display: none;` on `lg`, `xl`, and `xxl` screens.
 
 ## Examples
 
@@ -135,6 +136,7 @@ Change the `display` value of elements when printing with our print display util
 - `.d-print-inline`
 - `.d-print-inline-block`
 - `.d-print-block`
+- `.d-print-grid`
 - `.d-print-table`
 - `.d-print-table-row`
 - `.d-print-table-cell`

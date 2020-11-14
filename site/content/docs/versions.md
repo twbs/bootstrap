@@ -1,12 +1,12 @@
 ---
 title: Versions
-description: An appendix of hosted documentation for nearly every release of Bootstrap, from v1 through v4.
+description: An appendix of hosted documentation for nearly every release of Bootstrap, from v1 through v5.
 ---
 
 {{< list-versions.inline >}}
 <div class="row">
-  {{- range $release := (index $.Site.Data "docs-versions") }}
-  <div class="col-md">
+  {{- range $release := sort (index $.Site.Data "docs-versions") "group" "desc" }}
+  <div class="col-md-6 col-lg-4 col-xl mb-4">
     <h2>{{ $release.group }}</h2>
     <p>{{ $release.description }}</p>
     {{- $versions := sort $release.versions "v" "desc" -}}

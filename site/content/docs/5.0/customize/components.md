@@ -46,9 +46,9 @@ We encourage you to adopt these guidelines when building with Bootstrap to creat
   </div>
 </div>
 
-{{< highlight html >}}
+```html
 <div class="callout">...</div>
-{{< /highlight >}}
+```
 
 In your CSS, you'd have something like the following where the bulk of the styling is done via `.callout`. Then, the unique styles between each variant is controlled via modifier class.
 
