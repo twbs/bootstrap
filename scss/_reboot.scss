@@ -270,7 +270,7 @@ a {
 
 // dropdown-item focus
 a.dropdown-item:focus {
-  outline: dotted 1px;
+  outline: $primary solid 1px;
 }
 
 // And undo these styles for placeholder links/named anchors (without href).
@@ -419,7 +419,7 @@ button {
 // Credit https://github.com/suitcss/base/
 
 button:focus {
-  outline: dotted 1px;
+  outline: $primary solid 1px;
 }
 
 // 1. Remove the margin in Firefox and Safari
