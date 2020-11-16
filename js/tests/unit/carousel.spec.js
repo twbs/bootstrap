@@ -1070,7 +1070,7 @@ describe('Carousel', () => {
       const carousel = new Carousel(div)
 
       expect(Carousel.getInstance(div)).toEqual(carousel)
-      expect(Carousel.getInstance(div) instanceof Carousel).toEqual(true)
+      expect(Carousel.getInstance(div)).toBeInstanceOf(Carousel)
     })
 
     it('should return null when there is no carousel instance', () => {
