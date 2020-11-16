@@ -268,6 +268,11 @@ a {
   }
 }
 
+// dropdown-item focus
+a.dropdown-item:focus {
+  outline: dotted 1px;
+}
+
 // And undo these styles for placeholder links/named anchors (without href).
 // It would be more straightforward to just use a[href] in previous block, but that
 // causes specificity issues in many other styles that are too complex to fix.
@@ -415,7 +420,6 @@ button {
 
 button:focus {
   outline: dotted 1px;
-  outline: -webkit-focus-ring-color auto 5px;
 }
 
 // 1. Remove the margin in Firefox and Safari
