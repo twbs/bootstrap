@@ -55,7 +55,7 @@ Using the alert JavaScript plugin, it's possible to dismiss any alert inline. He
 
 - Be sure you've loaded the alert plugin, or the compiled Bootstrap JavaScript.
 - Add a [close button]({{< docsref "/components/close-button" >}}) and the `.alert-dismissible` class, which adds extra padding to the right of the alert and positions the close button.
-- On the close button, add the `data-dismiss="alert"` attribute, which triggers the JavaScript functionality. Be sure to use the `<button>` element with it for proper behavior across all devices.
+- On the close button, add the `data-bs-dismiss="alert"` attribute, which triggers the JavaScript functionality. Be sure to use the `<button>` element with it for proper behavior across all devices.
 - To animate alerts when dismissing them, be sure to add the `.fade` and `.show` classes.
 
 You can see this in action with a live demo:
@@ -63,7 +63,7 @@ You can see this in action with a live demo:
 {{< example >}}
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
   <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {{< /example >}}
 
@@ -87,7 +87,7 @@ alertList.forEach(function (alert) {
 Or with `data` attributes on a button **within the alert**, as demonstrated above:
 
 ```html
-<button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 ```
 
 Note that closing an alert will remove it from the DOM.
@@ -101,7 +101,7 @@ var myAlert = document.getElementById('myAlert')
 var bsAlert = new bootstrap.Alert(myAlert)
 ```
 
-This makes an alert listen for click events on descendant elements which have the `data-dismiss="alert"` attribute. (Not necessary when using the data-api's auto-initialization.)
+This makes an alert listen for click events on descendant elements which have the `data-bs-dismiss="alert"` attribute. (Not necessary when using the data-api's auto-initialization.)
 
 <table class="table">
   <thead>

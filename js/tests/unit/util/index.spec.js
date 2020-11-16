@@ -24,9 +24,9 @@ describe('Util', () => {
   })
 
   describe('getSelectorFromElement', () => {
-    it('should get selector from data-target', () => {
+    it('should get selector from data-bs-target', () => {
       fixtureEl.innerHTML = [
-        '<div id="test" data-target=".target"></div>',
+        '<div id="test" data-bs-target=".target"></div>',
         '<div class="target"></div>'
       ].join('')
 
@@ -35,7 +35,7 @@ describe('Util', () => {
       expect(Util.getSelectorFromElement(testEl)).toEqual('.target')
     })
 
-    it('should get selector from href if no data-target set', () => {
+    it('should get selector from href if no data-bs-target set', () => {
       fixtureEl.innerHTML = [
         '<a id="test" href=".target"></a>',
         '<div class="target"></div>'
@@ -46,9 +46,9 @@ describe('Util', () => {
       expect(Util.getSelectorFromElement(testEl)).toEqual('.target')
     })
 
-    it('should get selector from href if data-target equal to #', () => {
+    it('should get selector from href if data-bs-target equal to #', () => {
       fixtureEl.innerHTML = [
-        '<a id="test" data-target="#" href=".target"></a>',
+        '<a id="test" data-bs-target="#" href=".target"></a>',
         '<div class="target"></div>'
       ].join('')
 
@@ -75,9 +75,9 @@ describe('Util', () => {
   })
 
   describe('getElementFromSelector', () => {
-    it('should get element from data-target', () => {
+    it('should get element from data-bs-target', () => {
       fixtureEl.innerHTML = [
-        '<div id="test" data-target=".target"></div>',
+        '<div id="test" data-bs-target=".target"></div>',
         '<div class="target"></div>'
       ].join('')
 
@@ -86,7 +86,7 @@ describe('Util', () => {
       expect(Util.getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('.target'))
     })
 
-    it('should get element from href if no data-target set', () => {
+    it('should get element from href if no data-bs-target set', () => {
       fixtureEl.innerHTML = [
         '<a id="test" href=".target"></a>',
         '<div class="target"></div>'
@@ -380,13 +380,13 @@ describe('Util', () => {
       expect(Util.getjQuery()).toEqual(fakejQuery)
     })
 
-    it('should not return jQuery object when present if data-no-jquery', () => {
-      document.body.setAttribute('data-no-jquery', '')
+    it('should not return jQuery object when present if data-bs-no-jquery', () => {
+      document.body.setAttribute('data-bs-no-jquery', '')
 
       expect(window.jQuery).toEqual(fakejQuery)
       expect(Util.getjQuery()).toEqual(null)
 
-      document.body.removeAttribute('data-no-jquery')
+      document.body.removeAttribute('data-bs-no-jquery')
     })
 
     it('should not return jQuery if not present', () => {
