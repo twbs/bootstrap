@@ -983,7 +983,7 @@ describe('Tooltip', () => {
       const alert = new Tooltip(div)
 
       expect(Tooltip.getInstance(div)).toEqual(alert)
-      expect(Tooltip.getInstance(div) instanceof Tooltip).toEqual(true)
+      expect(Tooltip.getInstance(div)).toBeInstanceOf(Tooltip)
     })
 
     it('should return null when there is no tooltip instance', () => {

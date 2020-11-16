@@ -641,7 +641,7 @@ describe('ScrollSpy', () => {
       const scrollSpy = new ScrollSpy(div)
 
       expect(ScrollSpy.getInstance(div)).toEqual(scrollSpy)
-      expect(ScrollSpy.getInstance(div) instanceof ScrollSpy).toEqual(true)
+      expect(ScrollSpy.getInstance(div)).toBeInstanceOf(ScrollSpy)
     })
 
     it('should return null if there is no instance', () => {
