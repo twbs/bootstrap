@@ -179,7 +179,7 @@ describe('Alert', () => {
       const alert = new Alert(div)
 
       expect(Alert.getInstance(div)).toEqual(alert)
-      expect(Alert.getInstance(div) instanceof Alert).toEqual(true)
+      expect(Alert.getInstance(div)).toBeInstanceOf(Alert)
     })
 
     it('should return null when there is no alert instance', () => {

@@ -137,7 +137,7 @@ describe('Button', () => {
       const button = new Button(div)
 
       expect(Button.getInstance(div)).toEqual(button)
-      expect(Button.getInstance(div) instanceof Button).toEqual(true)
+      expect(Button.getInstance(div)).toBeInstanceOf(Button)
     })
 
     it('should return null when there is no button instance', () => {

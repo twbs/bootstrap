@@ -1108,7 +1108,7 @@ describe('Modal', () => {
       const modal = new Modal(div)
 
       expect(Modal.getInstance(div)).toEqual(modal)
-      expect(Modal.getInstance(div) instanceof Modal).toEqual(true)
+      expect(Modal.getInstance(div)).toBeInstanceOf(Modal)
     })
 
     it('should return null when there is no modal instance', () => {
