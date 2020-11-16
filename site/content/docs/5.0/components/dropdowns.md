@@ -6,19 +6,6 @@ group: components
 toc: true
 ---
 
-## KMS
-{{< example >}}
-<a href="#">Das ist ein Link</a>
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown button
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <li><a class="dropdown-item" href="#">Action a</a></li>
-    <li><button class="dropdown-item" href="#">Another button</button></li>
-  </ul>
-</div>
-{{< /example >}}
 ## Overview
 
 Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They're made interactive with the included Bootstrap dropdown JavaScript plugin. They're toggled by clicking, not by hovering; this is [an intentional design decision](https://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/).
