@@ -39,7 +39,7 @@ describe('Dropdown', () => {
     it('should create offset modifier correctly when offset option is a function', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -47,7 +47,7 @@ describe('Dropdown', () => {
       ].join('')
 
       const getOffset = offsets => offsets
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown, {
         offset: getOffset
       })
@@ -61,7 +61,7 @@ describe('Dropdown', () => {
     it('should create offset modifier correctly when offset option is not a function', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -69,7 +69,7 @@ describe('Dropdown', () => {
       ].join('')
 
       const myOffset = 7
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown, {
         offset: myOffset
       })
@@ -80,7 +80,7 @@ describe('Dropdown', () => {
       expect(offset.fn).toBeUndefined()
     })
 
-    it('should add a listener on trigger which do not have data-toggle="dropdown"', () => {
+    it('should add a listener on trigger which do not have data-bs-toggle="dropdown"', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
         '  <button class="btn">Dropdown</button>',
@@ -103,14 +103,14 @@ describe('Dropdown', () => {
     it('should allow to pass config to popper.js with `popperConfig`', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown, {
         popperConfig: {
           placement: 'left'
@@ -127,14 +127,14 @@ describe('Dropdown', () => {
     it('should toggle a dropdown', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -150,13 +150,13 @@ describe('Dropdown', () => {
     it('should destroy old popper references on toggle', done => {
       fixtureEl.innerHTML = [
         '<div class="first dropdown">',
-        '  <button class="firstBtn btn" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="firstBtn btn" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>',
         '<div class="second dropdown">',
-        '  <button class="secondBtn btn" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="secondBtn btn" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -187,7 +187,7 @@ describe('Dropdown', () => {
     it('should toggle a dropdown and add/remove event listener on mobile', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -195,7 +195,7 @@ describe('Dropdown', () => {
       ].join('')
 
       const defaultValueOnTouchStart = document.documentElement.ontouchstart
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -226,14 +226,14 @@ describe('Dropdown', () => {
     it('should toggle a dropdown at the right', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu dropdown-menu-right">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -249,14 +249,14 @@ describe('Dropdown', () => {
     it('should toggle a dropup', done => {
       fixtureEl.innerHTML = [
         '<div class="dropup">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropupEl = fixtureEl.querySelector('.dropup')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -272,14 +272,14 @@ describe('Dropdown', () => {
     it('should toggle a dropup at the right', done => {
       fixtureEl.innerHTML = [
         '<div class="dropup">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu dropdown-menu-right">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropupEl = fixtureEl.querySelector('.dropup')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -295,14 +295,14 @@ describe('Dropdown', () => {
     it('should toggle a dropright', done => {
       fixtureEl.innerHTML = [
         '<div class="dropright">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const droprightEl = fixtureEl.querySelector('.dropright')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -318,14 +318,14 @@ describe('Dropdown', () => {
     it('should toggle a dropleft', done => {
       fixtureEl.innerHTML = [
         '<div class="dropleft">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropleftEl = fixtureEl.querySelector('.dropleft')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -341,14 +341,14 @@ describe('Dropdown', () => {
     it('should toggle a dropdown with parent reference', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown, {
         reference: 'parent'
@@ -366,14 +366,14 @@ describe('Dropdown', () => {
     it('should toggle a dropdown with a dom node reference', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown, {
         reference: fixtureEl
@@ -391,14 +391,14 @@ describe('Dropdown', () => {
     it('should toggle a dropdown with a jquery object reference', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown, {
         reference: { 0: fixtureEl, jquery: 'jQuery' }
@@ -416,14 +416,14 @@ describe('Dropdown', () => {
     it('should not toggle a dropdown if the element is disabled', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button disabled class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button disabled class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -442,14 +442,14 @@ describe('Dropdown', () => {
     it('should not toggle a dropdown if the element contains .disabled', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle disabled" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle disabled" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -468,14 +468,14 @@ describe('Dropdown', () => {
     it('should not toggle a dropdown if the menu is shown', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu show">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -494,14 +494,14 @@ describe('Dropdown', () => {
     it('should not toggle a dropdown if show event is prevented', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -526,14 +526,14 @@ describe('Dropdown', () => {
     it('should show a dropdown', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -548,14 +548,14 @@ describe('Dropdown', () => {
     it('should not show a dropdown if the element is disabled', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button disabled class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button disabled class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -574,14 +574,14 @@ describe('Dropdown', () => {
     it('should not show a dropdown if the element contains .disabled', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle disabled" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle disabled" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -600,14 +600,14 @@ describe('Dropdown', () => {
     it('should not show a dropdown if the menu is shown', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu show">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -626,14 +626,14 @@ describe('Dropdown', () => {
     it('should not show a dropdown if show event is prevented', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -658,14 +658,14 @@ describe('Dropdown', () => {
     it('should hide a dropdown', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu show">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
       const dropdown = new Dropdown(btnDropdown)
@@ -681,14 +681,14 @@ describe('Dropdown', () => {
     it('should hide a dropdown and destroy popper', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -708,14 +708,14 @@ describe('Dropdown', () => {
     it('should not hide a dropdown if the element is disabled', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button disabled class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button disabled class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu show">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
       const dropdown = new Dropdown(btnDropdown)
@@ -735,14 +735,14 @@ describe('Dropdown', () => {
     it('should not hide a dropdown if the element contains .disabled', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle disabled" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle disabled" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu show">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
       const dropdown = new Dropdown(btnDropdown)
@@ -762,14 +762,14 @@ describe('Dropdown', () => {
     it('should not hide a dropdown if the menu is not shown', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown)
 
@@ -788,14 +788,14 @@ describe('Dropdown', () => {
     it('should not hide a dropdown if hide event is prevented', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu show">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
       const dropdown = new Dropdown(btnDropdown)
@@ -821,14 +821,14 @@ describe('Dropdown', () => {
     it('should dispose dropdown', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown)
 
       expect(dropdown._popper).toBeNull()
@@ -844,14 +844,14 @@ describe('Dropdown', () => {
     it('should dispose dropdown with popper.js', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown)
 
       dropdown.toggle()
@@ -875,14 +875,14 @@ describe('Dropdown', () => {
     it('should call popper.js and detect navbar on update', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown)
 
       dropdown.toggle()
@@ -901,14 +901,14 @@ describe('Dropdown', () => {
     it('should just detect navbar on update', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown)
 
       spyOn(dropdown, '_detectNavbar')
@@ -924,14 +924,14 @@ describe('Dropdown', () => {
     it('should not add class position-static to dropdown if boundary not set', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
 
       dropdownEl.addEventListener('shown.bs.dropdown', () => {
@@ -945,14 +945,14 @@ describe('Dropdown', () => {
     it('should add class position-static to dropdown if boundary not scrollParent', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown" data-boundary="viewport">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-boundary="viewport">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
 
       dropdownEl.addEventListener('shown.bs.dropdown', () => {
@@ -966,14 +966,14 @@ describe('Dropdown', () => {
     it('should show and hide a dropdown', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       let showEventTriggered = false
       let hideEventTriggered = false
@@ -1009,7 +1009,7 @@ describe('Dropdown', () => {
       fixtureEl.innerHTML = [
         '<nav class="navbar navbar-expand-md navbar-light bg-light">',
         '  <div class="dropdown">',
-        '    <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '    <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '    <div class="dropdown-menu">',
         '      <a class="dropdown-item" href="#">Secondary link</a>',
         '    </div>',
@@ -1017,7 +1017,7 @@ describe('Dropdown', () => {
         '</nav>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
 
@@ -1032,14 +1032,14 @@ describe('Dropdown', () => {
     it('should not use popper.js if display set to static', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown" data-display="static">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
 
@@ -1055,14 +1055,14 @@ describe('Dropdown', () => {
     it('should remove "show" class if tabbing outside of menu', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
 
       dropdownEl.addEventListener('shown.bs.dropdown', () => {
@@ -1086,7 +1086,7 @@ describe('Dropdown', () => {
       fixtureEl.innerHTML = [
         '<div class="nav">',
         '  <div class="dropdown" id="testmenu">',
-        '    <a class="dropdown-toggle" data-toggle="dropdown" href="#testmenu">Test menu</a>',
+        '    <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#testmenu">Test menu</a>',
         '    <div class="dropdown-menu">',
         '      <a class="dropdown-item" href="#sub1">Submenu 1</a>',
         '    </div>',
@@ -1094,14 +1094,14 @@ describe('Dropdown', () => {
         '</div>',
         '<div class="btn-group">',
         '  <button class="btn">Actions</button>',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown"></button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown"></button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Action 1</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const triggerDropdownList = fixtureEl.querySelectorAll('[data-toggle="dropdown"]')
+      const triggerDropdownList = fixtureEl.querySelectorAll('[data-bs-toggle="dropdown"]')
 
       expect(triggerDropdownList.length).toEqual(2)
 
@@ -1138,21 +1138,21 @@ describe('Dropdown', () => {
     it('should remove "show" class if body if tabbing outside of menu, with multiple dropdowns', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <a class="dropdown-toggle" data-toggle="dropdown" href="#testmenu">Test menu</a>',
+        '  <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#testmenu">Test menu</a>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#sub1">Submenu 1</a>',
         '  </div>',
         '</div>',
         '<div class="btn-group">',
         '  <button class="btn">Actions</button>',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown"></button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown"></button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Action 1</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const triggerDropdownList = fixtureEl.querySelectorAll('[data-toggle="dropdown"]')
+      const triggerDropdownList = fixtureEl.querySelectorAll('[data-bs-toggle="dropdown"]')
 
       expect(triggerDropdownList.length).toEqual(2)
 
@@ -1197,14 +1197,14 @@ describe('Dropdown', () => {
     it('should fire hide and hidden event without a clickEvent if event type is not click', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#sub1">Submenu 1</a>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const triggerDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = fixtureEl.querySelector('.dropdown')
 
       dropdown.addEventListener('hide.bs.dropdown', e => {
@@ -1229,7 +1229,7 @@ describe('Dropdown', () => {
     it('should ignore keyboard events within <input>s and <textarea>s', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#sub1">Submenu 1</a>',
         '    <input type="text">',
@@ -1238,7 +1238,7 @@ describe('Dropdown', () => {
         '</div>'
       ].join('')
 
-      const triggerDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = fixtureEl.querySelector('.dropdown')
       const input = fixtureEl.querySelector('input')
       const textarea = fixtureEl.querySelector('textarea')
@@ -1265,7 +1265,7 @@ describe('Dropdown', () => {
     it('should skip disabled element when using keyboard navigation', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item disabled" href="#sub1">Submenu 1</a>',
         '    <button class="dropdown-item" type="button" disabled>Disabled button</button>',
@@ -1274,7 +1274,7 @@ describe('Dropdown', () => {
         '</div>'
       ].join('')
 
-      const triggerDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = fixtureEl.querySelector('.dropdown')
 
       dropdown.addEventListener('shown.bs.dropdown', () => {
@@ -1300,7 +1300,7 @@ describe('Dropdown', () => {
         '  }',
         '</style>',
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <button class="dropdown-item d-none" type="button">Hidden button by class</button>',
         '    <a class="dropdown-item" href="#sub1" style="display: none">Hidden link</a>',
@@ -1310,7 +1310,7 @@ describe('Dropdown', () => {
         '</div>'
       ].join('')
 
-      const triggerDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = fixtureEl.querySelector('.dropdown')
 
       dropdown.addEventListener('shown.bs.dropdown', () => {
@@ -1332,7 +1332,7 @@ describe('Dropdown', () => {
     it('should focus next/previous element when using keyboard navigation', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a id="item1" class="dropdown-item" href="#">A link</a>',
         '    <a id="item2" class="dropdown-item" href="#">Another link</a>',
@@ -1340,7 +1340,7 @@ describe('Dropdown', () => {
         '</div>'
       ].join('')
 
-      const triggerDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = fixtureEl.querySelector('.dropdown')
       const item1 = fixtureEl.querySelector('#item1')
       const item2 = fixtureEl.querySelector('#item2')
@@ -1370,7 +1370,7 @@ describe('Dropdown', () => {
     it('should focus on the first element when using ArrowUp for the first time', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a id="item1" class="dropdown-item" href="#">A link</a>',
         '    <a id="item2" class="dropdown-item" href="#">Another link</a>',
@@ -1378,7 +1378,7 @@ describe('Dropdown', () => {
         '</div>'
       ].join('')
 
-      const triggerDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = fixtureEl.querySelector('.dropdown')
       const item1 = fixtureEl.querySelector('#item1')
 
@@ -1398,14 +1398,14 @@ describe('Dropdown', () => {
     it('should not close the dropdown if the user clicks on a text field', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <input type="text">',
         '  </div>',
         '</div>'
       ].join('')
 
-      const triggerDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = fixtureEl.querySelector('.dropdown')
       const input = fixtureEl.querySelector('input')
 
@@ -1425,14 +1425,14 @@ describe('Dropdown', () => {
     it('should not close the dropdown if the user clicks on a textarea', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <textarea></textarea>',
         '  </div>',
         '</div>'
       ].join('')
 
-      const triggerDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = fixtureEl.querySelector('.dropdown')
       const textarea = fixtureEl.querySelector('textarea')
 
@@ -1452,7 +1452,7 @@ describe('Dropdown', () => {
     it('should ignore keyboard events for <input>s and <textarea>s within dropdown-menu, except for escape key', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#sub1">Submenu 1</a>',
         '    <input type="text">',
@@ -1461,7 +1461,7 @@ describe('Dropdown', () => {
         '</div>'
       ].join('')
 
-      const triggerDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = fixtureEl.querySelector('.dropdown')
       const input = fixtureEl.querySelector('input')
       const textarea = fixtureEl.querySelector('textarea')
@@ -1527,7 +1527,7 @@ describe('Dropdown', () => {
       fixtureEl.innerHTML = [
         '<div class="tabs">',
         '  <div class="dropdown">',
-        '    <button disabled class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '    <button disabled class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
         '    <div class="dropdown-menu">',
         '      <a class="dropdown-item" href="#">Secondary link</a>',
         '      <a class="dropdown-item" href="#">Something else here</a>',
@@ -1538,9 +1538,9 @@ describe('Dropdown', () => {
         '</div>'
       ]
 
-      const triggerDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(triggerDropdown)
-      const button = fixtureEl.querySelector('button[data-toggle="dropdown"]')
+      const button = fixtureEl.querySelector('button[data-bs-toggle="dropdown"]')
 
       spyOn(dropdown, 'toggle')
 

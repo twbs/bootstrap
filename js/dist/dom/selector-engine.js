@@ -1,26 +1,26 @@
 /*!
-  * Bootstrap selector-engine.js v5.0.0-alpha2 (https://getbootstrap.com/)
+  * Bootstrap selector-engine.js v5.0.0-alpha3 (https://getbootstrap.com/)
   * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./polyfill.js')) :
-  typeof define === 'function' && define.amd ? define(['./polyfill.js'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.SelectorEngine = factory(global.Polyfill));
-}(this, (function (polyfill_js) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.SelectorEngine = factory());
+}(this, (function () { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-alpha2): dom/selector-engine.js
+   * Bootstrap (v5.0.0-alpha3): dom/selector-engine.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
+
   /**
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
    */
-
   var NODE_TEXT = 3;
   var SelectorEngine = {
     matches: function matches(element, selector) {
@@ -33,14 +33,14 @@
         element = document.documentElement;
       }
 
-      return (_ref = []).concat.apply(_ref, polyfill_js.find.call(element, selector));
+      return (_ref = []).concat.apply(_ref, Element.prototype.querySelectorAll.call(element, selector));
     },
     findOne: function findOne(selector, element) {
       if (element === void 0) {
         element = document.documentElement;
       }
 
-      return polyfill_js.findOne.call(element, selector);
+      return Element.prototype.querySelector.call(element, selector);
     },
     children: function children(element, selector) {
       var _ref2;

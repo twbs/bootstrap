@@ -7,18 +7,25 @@ aliases: "/migration/"
 toc: true
 ---
 
+## v5.0.0-beta1
+
+### JavaScript
+
+- Data attributes for all JavaScript plugins are now namespaced to help distinguish Bootstrap functionality from third parties and your own code. For example, we use `data-bs-toggle` instead of `data-toggle`.
+
+### Sass
+
+- Renamed `scale-color()` function to `shift-color()` to avoid collision with Sass's own color scaling function.
+
 ## v5.0.0-alpha3
 
 ### Browser support
 
 - Dropped support for Microsoft Edge Legacy. See [here](#browser-support-1) for the previous browser support changes.
 
-### Colors
+### Sass
 
-- The color system which worked with `color-level()` and `$theme-color-interval` was removed in favor of a new color system.
-- All `lighten()` and `darken()` functions in our codebase are replaced by `tint-color()` and `shade-color()`. These functions will mix the color with either white or black instead of changing its lightness by a fixed amount.
-- The `scale-color()` will either tint or shade a color depending on whether its weight parameter is positive or negative.
-- See [this PR](https://github.com/twbs/bootstrap/pull/30622) for more details.
+- The color system which worked with `color-level()` and `$theme-color-interval` was removed in favor of a new color system. All `lighten()` and `darken()` functions in our codebase are replaced by `tint-color()` and `shade-color()`. These functions will mix the color with either white or black instead of changing its lightness by a fixed amount. The `scale-color()` (changed to `shift-color()` in Beta 1) will either tint or shade a color depending on whether its weight parameter is positive or negative. [See #30622](https://github.com/twbs/bootstrap/pull/30622) for more details.
 - Spinners now honor `prefers-reduced-motion: reduce` by slowing down animations. [See #31882](https://github.com/twbs/bootstrap/pull/31882).
 
 ### Reboot
@@ -27,7 +34,7 @@ toc: true
 
 ### Buttons
 
-- [**Dropped `.btn-block` in favor of CSS grid utility classes.**]({{< docsref "/components/buttons#block-buttons" >}}) Instead of applying `.btn-block` to individual buttons, a group of buttons now get wrapped in a parent `.d-grid` class and can use `.gap-*` utilities for spacing.
+- [Dropped `.btn-block` in favor of CSS grid utility classes.]({{< docsref "/components/buttons#block-buttons" >}}) Instead of applying `.btn-block` to individual buttons, a group of buttons now get wrapped in a parent `.d-grid` class and can use `.gap-*` utilities for spacing.
 
 ### Forms
 
