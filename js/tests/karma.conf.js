@@ -33,11 +33,15 @@ const detectBrowsers = {
       return debug ? ['Chrome'] : ['ChromeHeadless']
     }
 
+    if (env.CI === true || availableBrowser.includes('Chromium')) {
+      return debug ? ['Chromium'] : ['ChromiumHeadless']
+    }
+
     if (availableBrowser.includes('Firefox')) {
       return debug ? ['Firefox'] : ['FirefoxHeadless']
     }
 
-    throw new Error('Please install Firefox or Chrome')
+    throw new Error('Please install Chrome, Chromium or Firefox')
   }
 }
 
