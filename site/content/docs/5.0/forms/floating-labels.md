@@ -61,7 +61,7 @@ To set a custom height on your `<textarea>`, do not use the `rows` attribute. In
 
 ## Selects
 
-Other than `.form-control`, floating labels only available on `.form-select`s. They work in the same way, but unlike `<input>`s, they'll always show the `<label>` in its floated state.
+Other than `.form-control`, floating labels are only available on `.form-select`s. They work in the same way, but unlike `<input>`s, they'll always show the `<label>` in its floated state.
 
 {{< example >}}
 <div class="form-floating">

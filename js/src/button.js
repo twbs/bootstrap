@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha2): button.js
+ * Bootstrap (v5.0.0-alpha3): button.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,14 +16,14 @@ import EventHandler from './dom/event-handler'
  */
 
 const NAME = 'button'
-const VERSION = '5.0.0-alpha2'
+const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.button'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
 const CLASS_NAME_ACTIVE = 'active'
 
-const SELECTOR_DATA_TOGGLE = '[data-toggle="button"]'
+const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="button"]'
 
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
