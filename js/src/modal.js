@@ -365,7 +365,11 @@ class Modal {
           return
         }
 
-        this._triggerBackdropTransition()
+        if (this._config.backdrop === 'static') {
+          this._triggerBackdropTransition()
+        } else {
+          this.hide()
+        }
       })
 
       if (animate) {
@@ -404,35 +408,31 @@ class Modal {
   }
 
   _triggerBackdropTransition() {
-    if (this._config.backdrop === 'static') {
-      const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED)
-      if (hideEvent.defaultPrevented) {
-        return
-      }
-
-      const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
-
-      if (!isModalOverflowing) {
-        this._element.style.overflowY = 'hidden'
-      }
-
-      this._element.classList.add(CLASS_NAME_STATIC)
-      const modalTransitionDuration = getTransitionDurationFromElement(this._dialog)
-      EventHandler.off(this._element, TRANSITION_END)
-      EventHandler.one(this._element, TRANSITION_END, () => {
-        this._element.classList.remove(CLASS_NAME_STATIC)
-        if (!isModalOverflowing) {
-          EventHandler.one(this._element, TRANSITION_END, () => {
-            this._element.style.overflowY = ''
-          })
-          emulateTransitionEnd(this._element, modalTransitionDuration)
-        }
-      })
-      emulateTransitionEnd(this._element, modalTransitionDuration)
-      this._element.focus()
-    } else {
-      this.hide()
+    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED)
+    if (hideEvent.defaultPrevented) {
+      return
     }
+
+    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
+
+    if (!isModalOverflowing) {
+      this._element.style.overflowY = 'hidden'
+    }
+
+    this._element.classList.add(CLASS_NAME_STATIC)
+    const modalTransitionDuration = getTransitionDurationFromElement(this._dialog)
+    EventHandler.off(this._element, TRANSITION_END)
+    EventHandler.one(this._element, TRANSITION_END, () => {
+      this._element.classList.remove(CLASS_NAME_STATIC)
+      if (!isModalOverflowing) {
+        EventHandler.one(this._element, TRANSITION_END, () => {
+          this._element.style.overflowY = ''
+        })
+        emulateTransitionEnd(this._element, modalTransitionDuration)
+      }
+    })
+    emulateTransitionEnd(this._element, modalTransitionDuration)
+    this._element.focus()
   }
 
   // ----------------------------------------------------------------------
