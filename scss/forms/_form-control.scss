@@ -1,11 +1,10 @@
 //
-// Textual form controls
+// General form controls (plus a few specific high-level interventions)
 //
 
 .form-control {
   display: block;
   width: 100%;
-  min-height: $input-height;
   padding: $input-padding-y $input-padding-x;
   font-family: $input-font-family;
   @include font-size($input-font-size);
@@ -23,6 +22,14 @@
   @include box-shadow($input-box-shadow);
   @include transition($input-transition);
 
+  &[type="file"] {
+    overflow: hidden; // prevent pseudo element button overlap
+
+    &:not(:disabled):not([readonly]) {
+      cursor: pointer;
+    }
+  }
+
   // Customize the `:focus` state to imitate native WebKit styles.
   &:focus {
     color: $input-focus-color;
@@ -35,6 +42,14 @@
       // Avoid using mixin so we can pass custom focus shadow properly
       box-shadow: $input-focus-box-shadow;
     }
+  }
+
+  // Add some height to date inputs on iOS
+  // https://github.com/twbs/bootstrap/issues/23307
+  // TODO: we can remove this workaround once https://bugs.webkit.org/show_bug.cgi?id=198959 is resolved
+  &::-webkit-date-and-time-value {
+    // Multiply line-height by 1em if it has no unit
+    height: if(unit($input-line-height) == "", $input-line-height * 1em, $input-line-height);
   }
 
   // Placeholder
@@ -55,6 +70,47 @@
     border-color: $input-disabled-border-color;
     // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
     opacity: 1;
+  }
+
+  // File input buttons theming
+  // stylelint-disable-next-line selector-pseudo-element-no-unknown
+  &::file-selector-button {
+    padding: $input-padding-y $input-padding-x;
+    margin: (-$input-padding-y) (-$input-padding-x);
+    margin-inline-end: $input-padding-x;
+    color: $form-file-button-color;
+    @include gradient-bg($form-file-button-bg);
+    pointer-events: none;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    border-inline-end-width: $input-border-width;
+    border-radius: 0; // stylelint-disable-line property-disallowed-list
+    @include transition($btn-transition);
+  }
+
+  // stylelint-disable-next-line selector-pseudo-element-no-unknown
+  &:hover:not(:disabled):not([readonly])::file-selector-button {
+    background-color: $form-file-button-hover-bg;
+  }
+
+  &::-webkit-file-upload-button {
+    padding: $input-padding-y $input-padding-x;
+    margin: (-$input-padding-y) (-$input-padding-x);
+    margin-inline-end: $input-padding-x;
+    color: $form-file-button-color;
+    @include gradient-bg($form-file-button-bg);
+    pointer-events: none;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    border-inline-end-width: $input-border-width;
+    border-radius: 0; // stylelint-disable-line property-disallowed-list
+    @include transition($btn-transition);
+  }
+
+  &:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
+    background-color: $form-file-button-hover-bg;
   }
 }
 
@@ -93,6 +149,19 @@
   padding: $input-padding-y-sm $input-padding-x-sm;
   @include font-size($input-font-size-sm);
   @include border-radius($input-border-radius-sm);
+
+  // stylelint-disable-next-line selector-pseudo-element-no-unknown
+  &::file-selector-button {
+    padding: $input-padding-y-sm $input-padding-x-sm;
+    margin: (-$input-padding-y-sm) (-$input-padding-x-sm);
+    margin-inline-end: $input-padding-x-sm;
+  }
+
+  &::-webkit-file-upload-button {
+    padding: $input-padding-y-sm $input-padding-x-sm;
+    margin: (-$input-padding-y-sm) (-$input-padding-x-sm);
+    margin-inline-end: $input-padding-x-sm;
+  }
 }
 
 .form-control-lg {
@@ -100,17 +169,55 @@
   padding: $input-padding-y-lg $input-padding-x-lg;
   @include font-size($input-font-size-lg);
   @include border-radius($input-border-radius-lg);
+
+  // stylelint-disable-next-line selector-pseudo-element-no-unknown
+  &::file-selector-button {
+    padding: $input-padding-y-lg $input-padding-x-lg;
+    margin: (-$input-padding-y-lg) (-$input-padding-x-lg);
+    margin-inline-end: $input-padding-x-lg;
+  }
+
+  &::-webkit-file-upload-button {
+    padding: $input-padding-y-lg $input-padding-x-lg;
+    margin: (-$input-padding-y-lg) (-$input-padding-x-lg);
+    margin-inline-end: $input-padding-x-lg;
+  }
 }
+
+// Make sure textareas don't shrink too much when resized
+// https://github.com/twbs/bootstrap/pull/29124
+// stylelint-disable selector-no-qualifying-type
+textarea {
+  &.form-control {
+    min-height: $input-height;
+  }
+
+  &.form-control-sm {
+    min-height: $input-height-sm;
+  }
+
+  &.form-control-lg {
+    min-height: $input-height-lg;
+  }
+}
+// stylelint-enable selector-no-qualifying-type
 
 .form-control-color {
   max-width: 3rem;
+  height: auto; // Override fixed browser height
   padding: $input-padding-y;
-}
 
-.form-control-color::-moz-color-swatch {
-  @include border-radius($input-border-radius);
-}
+  &:not(:disabled):not([readonly]) {
+    cursor: pointer;
+  }
 
-.form-control-color::-webkit-color-swatch {
-  @include border-radius($input-border-radius);
+  &::-moz-color-swatch {
+    height: if(unit($input-line-height) == "", $input-line-height * 1em, $input-line-height);
+    @include border-radius($input-border-radius);
+  }
+
+  &::-webkit-color-swatch {
+    height: if(unit($input-line-height) == "", $input-line-height * 1em, $input-line-height);
+    @include border-radius($input-border-radius);
+  }
 }

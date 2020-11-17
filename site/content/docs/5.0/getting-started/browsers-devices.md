@@ -8,7 +8,7 @@ toc: true
 
 ## Supported browsers
 
-Bootstrap supports the **latest, stable releases** of all major browsers and platforms. This also includes the latest version of Legacy Edge (EdgeHTML layout engine).
+Bootstrap supports the **latest, stable releases** of all major browsers and platforms.
 
 Alternative browsers which use the latest version of WebKit, Blink, or Gecko, whether directly or via the platform's web view API, are not explicitly supported. However, Bootstrap should (in most cases) display and function correctly in these browsers as well. More specific support information is provided below.
 
@@ -16,7 +16,7 @@ You can find our supported range of browsers and their versions [in our `.browse
 
 ```text
 {{< rf.inline >}}
-{{- readFile ".browserslistrc" | htmlEscape -}}
+{{- readFile ".browserslistrc" | chomp | htmlEscape -}}
 {{< /rf.inline >}}
 ```
 

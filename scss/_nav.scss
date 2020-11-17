@@ -14,11 +14,15 @@
 .nav-link {
   display: block;
   padding: $nav-link-padding-y $nav-link-padding-x;
+  @include font-size($nav-link-font-size);
+  font-weight: $nav-link-font-weight;
+  color: $nav-link-color;
   text-decoration: if($link-decoration == none, null, none);
   @include transition($nav-link-transition);
 
   &:hover,
   &:focus {
+    color: $nav-link-hover-color;
     text-decoration: if($link-hover-decoration == underline, none, null);
   }
 

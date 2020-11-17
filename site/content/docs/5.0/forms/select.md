@@ -60,3 +60,16 @@ As is the `size` attribute:
   <option value="3">Three</option>
 </select>
 {{< /example >}}
+
+## Disabled
+
+Add the `disabled` boolean attribute on a select to give it a grayed out appearance and remove pointer events.
+
+{{< example >}}
+<select class="form-select" aria-label="Disabled select example" disabled>
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+{{< /example >}}

@@ -6,7 +6,6 @@
 .form-select {
   display: block;
   width: 100%;
-  height: $form-select-height;
   padding: $form-select-padding-y ($form-select-padding-x + $form-select-indicator-padding) $form-select-padding-y $form-select-padding-x;
   font-family: $form-select-font-family;
   @include font-size($form-select-font-size);
@@ -33,21 +32,10 @@
       // Avoid using mixin so we can pass custom focus shadow properly
       box-shadow: $form-select-focus-box-shadow;
     }
-
-    &::-ms-value {
-      // For visual consistency with other platforms/browsers,
-      // suppress the default white text on blue background highlight given to
-      // the selected option text when the (still closed) <select> receives focus
-      // in Edge.
-      // See https://github.com/twbs/bootstrap/issues/19398.
-      color: $input-color;
-      background-color: $input-bg;
-    }
   }
 
   &[multiple],
   &[size]:not([size="1"]) {
-    height: auto;
     padding-right: $form-select-padding-x;
     background-image: none;
   }
@@ -66,7 +54,6 @@
 }
 
 .form-select-sm {
-  height: $form-select-height-sm;
   padding-top: $form-select-padding-y-sm;
   padding-bottom: $form-select-padding-y-sm;
   padding-left: $form-select-padding-x-sm;
@@ -74,7 +61,6 @@
 }
 
 .form-select-lg {
-  height: $form-select-height-lg;
   padding-top: $form-select-padding-y-lg;
   padding-bottom: $form-select-padding-y-lg;
   padding-left: $form-select-padding-x-lg;

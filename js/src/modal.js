@@ -1,12 +1,13 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha1): modal.js
+ * Bootstrap (v5.0.0-alpha3): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
   getjQuery,
+  onDOMContentLoaded,
   TRANSITION_END,
   emulateTransitionEnd,
   getElementFromSelector,
@@ -27,7 +28,7 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'modal'
-const VERSION = '5.0.0-alpha1'
+const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.modal'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -69,8 +70,8 @@ const CLASS_NAME_STATIC = 'modal-static'
 
 const SELECTOR_DIALOG = '.modal-dialog'
 const SELECTOR_MODAL_BODY = '.modal-body'
-const SELECTOR_DATA_TOGGLE = '[data-toggle="modal"]'
-const SELECTOR_DATA_DISMISS = '[data-dismiss="modal"]'
+const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="modal"]'
+const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="modal"]'
 const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
 const SELECTOR_STICKY_CONTENT = '.sticky-top'
 
@@ -409,10 +410,23 @@ class Modal {
         return
       }
 
+      const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
+
+      if (!isModalOverflowing) {
+        this._element.style.overflowY = 'hidden'
+      }
+
       this._element.classList.add(CLASS_NAME_STATIC)
-      const modalTransitionDuration = getTransitionDurationFromElement(this._element)
+      const modalTransitionDuration = getTransitionDurationFromElement(this._dialog)
+      EventHandler.off(this._element, TRANSITION_END)
       EventHandler.one(this._element, TRANSITION_END, () => {
         this._element.classList.remove(CLASS_NAME_STATIC)
+        if (!isModalOverflowing) {
+          EventHandler.one(this._element, TRANSITION_END, () => {
+            this._element.style.overflowY = ''
+          })
+          emulateTransitionEnd(this._element, modalTransitionDuration)
+        }
       })
       emulateTransitionEnd(this._element, modalTransitionDuration)
       this._element.focus()
@@ -459,8 +473,8 @@ class Modal {
         .forEach(element => {
           const actualPadding = element.style.paddingRight
           const calculatedPadding = window.getComputedStyle(element)['padding-right']
-          Manipulator.setDataAttribute(element, 'padding-right', actualPadding)
-          element.style.paddingRight = `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`
+          Manipulator.setDataAttribute(element, 'bs-padding-right', actualPadding)
+          element.style.paddingRight = `${Number.parseFloat(calculatedPadding) + this._scrollbarWidth}px`
         })
 
       // Adjust sticky content margin
@@ -468,16 +482,16 @@ class Modal {
         .forEach(element => {
           const actualMargin = element.style.marginRight
           const calculatedMargin = window.getComputedStyle(element)['margin-right']
-          Manipulator.setDataAttribute(element, 'margin-right', actualMargin)
-          element.style.marginRight = `${parseFloat(calculatedMargin) - this._scrollbarWidth}px`
+          Manipulator.setDataAttribute(element, 'bs-margin-right', actualMargin)
+          element.style.marginRight = `${Number.parseFloat(calculatedMargin) - this._scrollbarWidth}px`
         })
 
       // Adjust body padding
       const actualPadding = document.body.style.paddingRight
       const calculatedPadding = window.getComputedStyle(document.body)['padding-right']
 
-      Manipulator.setDataAttribute(document.body, 'padding-right', actualPadding)
-      document.body.style.paddingRight = `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`
+      Manipulator.setDataAttribute(document.body, 'bs-padding-right', actualPadding)
+      document.body.style.paddingRight = `${Number.parseFloat(calculatedPadding) + this._scrollbarWidth}px`
     }
 
     document.body.classList.add(CLASS_NAME_OPEN)
@@ -487,9 +501,9 @@ class Modal {
     // Restore fixed content padding
     SelectorEngine.find(SELECTOR_FIXED_CONTENT)
       .forEach(element => {
-        const padding = Manipulator.getDataAttribute(element, 'padding-right')
+        const padding = Manipulator.getDataAttribute(element, 'bs-padding-right')
         if (typeof padding !== 'undefined') {
-          Manipulator.removeDataAttribute(element, 'padding-right')
+          Manipulator.removeDataAttribute(element, 'bs-padding-right')
           element.style.paddingRight = padding
         }
       })
@@ -497,19 +511,19 @@ class Modal {
     // Restore sticky content and navbar-toggler margin
     SelectorEngine.find(`${SELECTOR_STICKY_CONTENT}`)
       .forEach(element => {
-        const margin = Manipulator.getDataAttribute(element, 'margin-right')
+        const margin = Manipulator.getDataAttribute(element, 'bs-margin-right')
         if (typeof margin !== 'undefined') {
-          Manipulator.removeDataAttribute(element, 'margin-right')
+          Manipulator.removeDataAttribute(element, 'bs-margin-right')
           element.style.marginRight = margin
         }
       })
 
     // Restore body padding
-    const padding = Manipulator.getDataAttribute(document.body, 'padding-right')
+    const padding = Manipulator.getDataAttribute(document.body, 'bs-padding-right')
     if (typeof padding === 'undefined') {
       document.body.style.paddingRight = ''
     } else {
-      Manipulator.removeDataAttribute(document.body, 'padding-right')
+      Manipulator.removeDataAttribute(document.body, 'bs-padding-right')
       document.body.style.paddingRight = padding
     }
   }
@@ -531,7 +545,7 @@ class Modal {
       const _config = {
         ...Default,
         ...Manipulator.getDataAttributes(this),
-        ...typeof config === 'object' && config ? config : {}
+        ...(typeof config === 'object' && config ? config : {})
       }
 
       if (!data) {
@@ -594,23 +608,25 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   data.show(this)
 })
 
-const $ = getjQuery()
-
 /**
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
- * add .modal to jQuery only if jQuery is present
+ * add .Modal to jQuery only if jQuery is present
  */
-/* istanbul ignore if */
-if ($) {
-  const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = Modal.jQueryInterface
-  $.fn[NAME].Constructor = Modal
-  $.fn[NAME].noConflict = () => {
-    $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Modal.jQueryInterface
+
+onDOMContentLoaded(() => {
+  const $ = getjQuery()
+  /* istanbul ignore if */
+  if ($) {
+    const JQUERY_NO_CONFLICT = $.fn[NAME]
+    $.fn[NAME] = Modal.jQueryInterface
+    $.fn[NAME].Constructor = Modal
+    $.fn[NAME].noConflict = () => {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Modal.jQueryInterface
+    }
   }
-}
+})
 
 export default Modal

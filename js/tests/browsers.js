@@ -23,20 +23,6 @@ const browsers = {
     browser: 'Firefox',
     browser_version: 'latest'
   },
-  edgeWin10: {
-    base: 'BrowserStack',
-    os: 'Windows',
-    os_version: '10',
-    browser: 'Edge',
-    browser_version: '16'
-  },
-  edgeWin10Latest: {
-    base: 'BrowserStack',
-    os: 'Windows',
-    os_version: '10',
-    browser: 'Edge',
-    browser_version: 'latest'
-  },
   chromeWin10: {
     base: 'BrowserStack',
     os: 'Windows',
@@ -51,11 +37,18 @@ const browsers = {
     browser: 'Firefox',
     browser_version: 'latest'
   },
-  iphoneX: {
+  iphone7: {
     base: 'BrowserStack',
     os: 'ios',
-    os_version: '11.0',
-    device: 'iPhone X',
+    os_version: '10.0',
+    device: 'iPhone 7',
+    real_mobile: true
+  },
+  iphone11: {
+    base: 'BrowserStack',
+    os: 'ios',
+    os_version: '13.0',
+    device: 'iPhone 11',
     real_mobile: true
   },
   pixel2: {

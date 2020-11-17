@@ -4,9 +4,6 @@
 - name: Jacob Thornton
   user: fat
 
-- name: Chris Rebert
-  user: cvrebert
-
 - name: XhmikosR
   user: xhmikosr
 
@@ -18,9 +15,6 @@
 
 - name: Johann-S
   user: johann-s
-
-- name: Andres Galante
-  user: andresgalante
 
 - name: Martijn Cuppens
   user: martijncuppens
