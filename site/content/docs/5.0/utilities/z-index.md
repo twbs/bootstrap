@@ -3,7 +3,6 @@ layout: docs
 title: z-index
 description: Use z-index utilities to quickly change the stack level of an element in its stacking context.
 group: utilities
-toc: true
 ---
 
 ## Z-index
