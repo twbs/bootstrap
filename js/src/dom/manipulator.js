@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha2): dom/manipulator.js
+ * Bootstrap (v5.0.0-alpha3): dom/manipulator.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -43,13 +43,15 @@ const Manipulator = {
       return {}
     }
 
-    const attributes = {
-      ...element.dataset
-    }
+    const attributes = {}
 
-    Object.keys(attributes).forEach(key => {
-      attributes[key] = normalizeData(attributes[key])
-    })
+    Object.keys(element.dataset)
+      .filter(key => key.startsWith('bs'))
+      .forEach(key => {
+        let pureKey = key.replace(/^bs/, '')
+        pureKey = pureKey.charAt(0).toLowerCase() + pureKey.slice(1, pureKey.length)
+        attributes[pureKey] = normalizeData(element.dataset[key])
+      })
 
     return attributes
   },

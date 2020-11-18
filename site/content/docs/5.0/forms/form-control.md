@@ -81,6 +81,31 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 </form>
 {{< /example >}}
 
+## File input
+
+{{< example >}}
+<div class="mb-3">
+  <label for="formFile" class="form-label">Default file input example</label>
+  <input class="form-control" type="file" id="formFile">
+</div>
+<div class="mb-3">
+  <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+  <input class="form-control" type="file" id="formFileMultiple" multiple>
+</div>
+<div class="mb-3">
+  <label for="formFileDisabled" class="form-label">Disabled file input example</label>
+  <input class="form-control" type="file" id="formFileDisabled" disabled>
+</div>
+<div class="mb-3">
+  <label for="formFileSm" class="form-label">Small file input example</label>
+  <input class="form-control form-control-sm" id="formFileSm" type="file">
+</div>
+<div>
+  <label for="formFileLg" class="form-label">Large file input example</label>
+  <input class="form-control form-control-lg" id="formFileLg" type="file">
+</div>
+{{< /example >}}
+
 ## Color
 
 {{< example >}}
@@ -92,7 +117,7 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 
 Datalists allow you to create a group of `<option>`s that can be accessed (and autocompleted) from within an `<input>`. These are similar to `<select>` elements, but come with more menu styling limitations and differences. While most browsers and operating systems include some support for `<datalist>` elements, their styling is inconsistent at best.
 
-Learn more about [support for datalist elements](https://caniuse.com/#feat=datalist).
+Learn more about [support for datalist elements](https://caniuse.com/datalist).
 
 {{< example >}}
 <label for="exampleDataList" class="form-label">Datalist example</label>

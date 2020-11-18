@@ -26,33 +26,33 @@ See them in action and compare them in our [Grid example]({{< docsref "/examples
       <td class="border-dark"></td>
       <th scope="col">
         Extra small<br>
-        <span class="font-weight-normal">&lt;576px</span>
+        <span class="fw-normal">&lt;576px</span>
       </th>
       <th scope="col">
         Small<br>
-        <span class="font-weight-normal">&ge;576px</span>
+        <span class="fw-normal">&ge;576px</span>
       </th>
       <th scope="col">
         Medium<br>
-        <span class="font-weight-normal">&ge;768px</span>
+        <span class="fw-normal">&ge;768px</span>
       </th>
       <th scope="col">
         Large<br>
-        <span class="font-weight-normal">&ge;992px</span>
+        <span class="fw-normal">&ge;992px</span>
       </th>
       <th scope="col">
         X-Large<br>
-        <span class="font-weight-normal">&ge;1200px</span>
+        <span class="fw-normal">&ge;1200px</span>
       </th>
       <th scope="col">
         XX-Large<br>
-        <span class="font-weight-normal">&ge;1400px</span>
+        <span class="fw-normal">&ge;1400px</span>
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row" class="font-weight-normal"><code>.container</code></th>
+      <th scope="row" class="fw-normal"><code>.container</code></th>
       <td class="text-muted">100%</td>
       <td>540px</td>
       <td>720px</td>
@@ -61,7 +61,7 @@ See them in action and compare them in our [Grid example]({{< docsref "/examples
       <td>1320px</td>
     </tr>
     <tr>
-      <th scope="row" class="font-weight-normal"><code>.container-sm</code></th>
+      <th scope="row" class="fw-normal"><code>.container-sm</code></th>
       <td class="text-muted">100%</td>
       <td>540px</td>
       <td>720px</td>
@@ -70,7 +70,7 @@ See them in action and compare them in our [Grid example]({{< docsref "/examples
       <td>1320px</td>
     </tr>
     <tr>
-      <th scope="row" class="font-weight-normal"><code>.container-md</code></th>
+      <th scope="row" class="fw-normal"><code>.container-md</code></th>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>
       <td>720px</td>
@@ -79,7 +79,7 @@ See them in action and compare them in our [Grid example]({{< docsref "/examples
       <td>1320px</td>
     </tr>
     <tr>
-      <th scope="row" class="font-weight-normal"><code>.container-lg</code></th>
+      <th scope="row" class="fw-normal"><code>.container-lg</code></th>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>
@@ -88,7 +88,7 @@ See them in action and compare them in our [Grid example]({{< docsref "/examples
       <td>1320px</td>
     </tr>
     <tr>
-      <th scope="row" class="font-weight-normal"><code>.container-xl</code></th>
+      <th scope="row" class="fw-normal"><code>.container-xl</code></th>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>
@@ -97,7 +97,7 @@ See them in action and compare them in our [Grid example]({{< docsref "/examples
       <td>1320px</td>
     </tr>
     <tr>
-      <th scope="row" class="font-weight-normal"><code>.container-xxl</code></th>
+      <th scope="row" class="fw-normal"><code>.container-xxl</code></th>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>
@@ -106,7 +106,7 @@ See them in action and compare them in our [Grid example]({{< docsref "/examples
       <td>1320px</td>
     </tr>
     <tr>
-      <th scope="row" class="font-weight-normal"><code>.container-fluid</code></th>
+      <th scope="row" class="fw-normal"><code>.container-fluid</code></th>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>

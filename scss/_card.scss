@@ -213,30 +213,3 @@
     }
   }
 }
-
-
-//
-// Accordion
-//
-
-.accordion {
-  overflow-anchor: none;
-
-  > .card {
-    overflow: hidden;
-
-    &:not(:last-of-type) {
-      border-bottom: 0;
-      @include border-bottom-radius(0);
-    }
-
-    &:not(:first-of-type) {
-      @include border-top-radius(0);
-    }
-
-    > .card-header {
-      @include border-radius(0);
-      margin-bottom: -$card-border-width;
-    }
-  }
-}

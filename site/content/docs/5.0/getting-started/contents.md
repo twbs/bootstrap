@@ -65,8 +65,8 @@ Bootstrap includes a handful of options for including some or all of our compile
   <tbody>
     <tr>
       <th scope="row">
-        <div><code class="font-weight-normal text-nowrap">bootstrap.css</code></div>
-        <div><code class="font-weight-normal text-nowrap">bootstrap.min.css</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap.css</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap.min.css</code></div>
       </th>
       <td>Included</td>
       <td>Included</td>
@@ -75,8 +75,8 @@ Bootstrap includes a handful of options for including some or all of our compile
     </tr>
     <tr>
       <th scope="row">
-        <div><code class="font-weight-normal text-nowrap">bootstrap-grid.css</code></div>
-        <div><code class="font-weight-normal text-nowrap">bootstrap-grid.min.css</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap-grid.css</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap-grid.min.css</code></div>
       </th>
       <td><a class="link-secondary" href="{{< docsref "/layout/grid" >}}">Only grid system</a></td>
       <td class="text-muted">&mdash;</td>
@@ -85,8 +85,8 @@ Bootstrap includes a handful of options for including some or all of our compile
     </tr>
     <tr>
       <th scope="row">
-        <div><code class="font-weight-normal text-nowrap">bootstrap-utilities.css</code></div>
-        <div><code class="font-weight-normal text-nowrap">bootstrap-utilities.min.css</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap-utilities.css</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap-utilities.min.css</code></div>
       </th>
       <td class="text-muted">&mdash;</td>
       <td class="text-muted">&mdash;</td>
@@ -95,8 +95,8 @@ Bootstrap includes a handful of options for including some or all of our compile
     </tr>
     <tr>
       <th scope="row">
-        <div><code class="font-weight-normal text-nowrap">bootstrap-reboot.css</code></div>
-        <div><code class="font-weight-normal text-nowrap">bootstrap-reboot.min.css</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap-reboot.css</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap-reboot.min.css</code></div>
       </th>
       <td class="text-muted">&mdash;</td>
       <td><a class="link-secondary" href="{{< docsref "/content/reboot" >}}">Only Reboot</a></td>
@@ -120,15 +120,15 @@ Similarly, we have options for including some or all of our compiled JavaScript.
   <tbody>
     <tr>
       <th scope="row">
-        <div><code class="font-weight-normal text-nowrap">bootstrap.bundle.js</code></div>
-        <div><code class="font-weight-normal text-nowrap">bootstrap.bundle.min.js</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap.bundle.js</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap.bundle.min.js</code></div>
       </th>
       <td>Included</td>
     </tr>
     <tr>
       <th scope="row">
-        <div><code class="font-weight-normal text-nowrap">bootstrap.js</code></div>
-        <div><code class="font-weight-normal text-nowrap">bootstrap.min.js</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap.js</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap.min.js</code></div>
       </th>
       <td class="text-muted">&mdash;</td>
     </tr>
