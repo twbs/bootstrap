@@ -108,7 +108,7 @@ Bootstrap's alert plugin exposes a few events for hooking into alert functionali
 
 | Event | Description |
 | --- | --- |
-| `close.bs.alert` | This event fires immediately when the <code>close</code> instance method is called. |
+| `close.bs.alert` | This event fires immediately when the `close` instance method is called. |
 | `closed.bs.alert` | This event is fired when the alert has been closed (will wait for CSS transitions to complete). |
 
 {% highlight js %}
