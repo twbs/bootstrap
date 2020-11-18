@@ -34,7 +34,7 @@ toc: true
 
 ### Buttons
 
-- [Dropped `.btn-block` in favor of CSS grid utility classes.]({{< docsref "/components/buttons#block-buttons" >}}) Instead of applying `.btn-block` to individual buttons, a group of buttons now get wrapped in a parent `.d-grid` class and can use `.gap-*` utilities for spacing.
+- [Dropped `.btn-block` in favor of CSS grid utility classes.]({{< docsref "/components/buttons#block-buttons" >}}) Instead of applying `.btn-block` to individual buttons, a group of buttons now get wrapped in a parent `.d-grid` class and can use `.gap-*` utilities for spacing. For individual "block buttons", add `.w-100`.
 
 ### Forms
 
