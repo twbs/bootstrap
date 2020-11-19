@@ -75,7 +75,7 @@ describe('Manipulator', () => {
   })
 
   describe('getDataAttribute', () => {
-    it('should get only bs-prefixed data attribute', () => {
+    it('should only get bs-prefixed data attribute', () => {
       fixtureEl.innerHTML = '<div data-bs-key="value" data-test-bs="postFixed"></div>'
 
       const div = fixtureEl.querySelector('div')
