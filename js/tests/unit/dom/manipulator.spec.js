@@ -15,7 +15,7 @@ describe('Manipulator', () => {
   })
 
   describe('setDataAttribute', () => {
-    it('should set data attribute with bs prefixed', () => {
+    it('should set data attribute prefixed with bs', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
@@ -35,7 +35,7 @@ describe('Manipulator', () => {
   })
 
   describe('removeDataAttribute', () => {
-    it('should remove only bs prefixed data attribute', () => {
+    it('should only remove bs-prefixed data attribute', () => {
       fixtureEl.innerHTML = '<div data-bs-key="value" data-key-bs="postfixed" data-key="value"></div>'
 
       const div = fixtureEl.querySelector('div')
@@ -57,12 +57,12 @@ describe('Manipulator', () => {
   })
 
   describe('getDataAttributes', () => {
-    it('should return empty object for null', () => {
+    it('should return an empty object for null', () => {
       expect(Manipulator.getDataAttributes(null)).toEqual({})
       expect().nothing()
     })
 
-    it('should get only bs prefixed data attributes without bs namespace', () => {
+    it('should get only bs-prefixed data attributes without bs namespace', () => {
       fixtureEl.innerHTML = '<div data-bs-toggle="tabs" data-bs-target="#element" data-another="value" data-target-bs="#element" data-in-bs-out="in-between"></div>'
 
       const div = fixtureEl.querySelector('div')
@@ -75,7 +75,7 @@ describe('Manipulator', () => {
   })
 
   describe('getDataAttribute', () => {
-    it('should get only bs prefixed data attribute', () => {
+    it('should get only bs-prefixed data attribute', () => {
       fixtureEl.innerHTML = '<div data-bs-key="value" data-test-bs="postFixed"></div>'
 
       const div = fixtureEl.querySelector('div')
@@ -108,7 +108,7 @@ describe('Manipulator', () => {
   })
 
   describe('offset', () => {
-    it('should return object with two properties top and left, both numbers', () => {
+    it('should return an object with two properties top and left, both numbers', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
@@ -121,7 +121,7 @@ describe('Manipulator', () => {
   })
 
   describe('position', () => {
-    it('should return object with two properties top and left, both numbers', () => {
+    it('should return an object with two properties top and left, both numbers', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
