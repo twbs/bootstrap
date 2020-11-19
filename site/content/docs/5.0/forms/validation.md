@@ -52,7 +52,7 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
   </div>
   <div class="col-md-4">
     <label for="validationCustomUsername" class="form-label">Username</label>
-    <div class="input-group">
+    <div class="input-group has-validation">
       <span class="input-group-text" id="inputGroupPrepend">@</span>
       <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
       <div class="invalid-feedback">
