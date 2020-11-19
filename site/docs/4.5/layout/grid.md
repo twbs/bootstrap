@@ -547,7 +547,7 @@ Here's the source code for creating these styles. Note that column overrides are
 
 **Need an edge-to-edge design?** Drop the parent `.container` or `.container-fluid`.
 
-{% highlight sass %}
+{% highlight scss %}
 .no-gutters {
   margin-right: 0;
   margin-left: 0;
