@@ -27,15 +27,15 @@ There are two strict requirements for enabling RTL in Bootstrap-powered pages.
 
 From there, you'll need to include an RTL version of our CSS. For example, here's the stylesheet for our compiled and minified CSS with RTL enabled:
 
-{{< highlight html >}}
+```html
 <link rel="stylesheet" href="{{< param "cdn.css_rtl" >}}" integrity="{{< param "cdn.css_rtl_hash" >}}" crossorigin="anonymous">
-{{< /highlight >}}
+```
 
 ### Starter template
 
 You can see the above requirements reflected in this modified RTL starter template.
 
-{{< highlight html >}}
+```html
 <!doctype html>
 <html lang="ar" dir="rtl">
   <head>
@@ -51,13 +51,19 @@ You can see the above requirements reflected in this modified RTL starter templa
   <body>
     <h1>مرحبا بالعالم!</h1>
 
-    <!-- Optional JavaScript -->
-    <!-- Popper.js first, then Bootstrap JS -->
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper.js -->
+    <script src="{{< param "cdn.js_bundle" >}}" integrity="{{< param "cdn.js_bundle_hash" >}}" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper.js and Bootstrap JS -->
+    <!--
     <script src="{{< param "cdn.popper" >}}" integrity="{{< param "cdn.popper_hash" >}}" crossorigin="anonymous"></script>
     <script src="{{< param "cdn.js" >}}" integrity="{{< param "cdn.js_hash" >}}" crossorigin="anonymous"></script>
+    -->
   </body>
 </html>
-{{< /highlight >}}
+```
 
 ### RTL examples
 
@@ -83,13 +89,13 @@ When it comes to [customization]({{< docsref "/customize/sass" >}}), the preferr
 
 Using [RTLCSS value directives](https://rtlcss.com/learn/usage-guide/value-directives/), you can make a variable output a different value for RTL. For example, to decrease the weight for `$font-weight-bold` throughout the codebase, you may use the `/*rtl: {value}*/` syntax:
 
-{{< highlight scss >}}
+```scss
 $font-weight-bold: 700 #{/* rtl:600 */} !default;
-{{< /highlight >}}
+```
 
 Which would ouput to the following for our default CSS and RTL CSS:
 
-{{< highlight css >}}
+```css
 /* bootstrap.css */
 dt {
   font-weight: 700 /* rtl:600 */;
@@ -99,7 +105,7 @@ dt {
 dt {
   font-weight: 600;
 }
-{{< /highlight >}}
+```
 
 ### Alternative font stack
 
@@ -107,7 +113,7 @@ In the case you're using a custom font, be aware that not all fonts support the 
 
 For example, to switch from `Helvetica Neue Webfont` for LTR to `Helvetica Neue Arabic` for RTL, your Sass code look like this:
 
-{{< highlight scss >}}
+```scss
 $font-family-sans-serif:
   Helvetica Neue #{"/* rtl:insert:Arabic */"},
   // Safari for macOS and iOS (San Francisco)
@@ -126,7 +132,7 @@ $font-family-sans-serif:
   sans-serif,
   // Emoji fonts
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-{{< /highlight >}}
+```
 
 ## The breadcrumb case
 
