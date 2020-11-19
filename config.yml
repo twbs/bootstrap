@@ -40,16 +40,6 @@ module:
       target:           static/apple-touch-icon.png
     - source:           site/static/docs/5.0/assets/img/favicons/favicon.ico
       target:           static/favicon.ico
-    
-    # the following are processed via Hugo pipes so we need them in the assets folder
-    ## the following will be printed with Hugo pipes
-    - source:           node_modules/docsearch.js/dist/cdn/docsearch.min.js
-      target:           assets/js/vendor/docsearch.min.js
-    ## The following vendor files will be bundled together on top of local js files as /docs.js
-    - source:           node_modules/anchor-js/anchor.min.js
-      target:           assets/js/vendor/anchor.min.js
-    - source:           node_modules/clipboard/dist/clipboard.min.js
-      target:           assets/js/vendor/clipboard.min.js
 
 params:
   description:          "The most popular HTML, CSS, and JS library in the world."
