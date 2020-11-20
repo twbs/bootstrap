@@ -34,7 +34,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
     {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
     <strong class="mr-auto">Bootstrap</strong>
     <small>11 mins ago</small>
-    <button type="button" class="btn-close" data-dismiss="toast" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
   <div class="toast-body">
     Hello, world! This is a toast message.
@@ -52,7 +52,7 @@ Toasts are slightly translucent, too, so they blend over whatever they might app
     {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
     <strong class="mr-auto">Bootstrap</strong>
     <small class="text-muted">11 mins ago</small>
-    <button type="button" class="btn-close" data-dismiss="toast" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
   <div class="toast-body">
     Hello, world! This is a toast message.
@@ -70,7 +70,7 @@ When you have multiple toasts, we default to vertically stacking them in a reada
     {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
     <strong class="mr-auto">Bootstrap</strong>
     <small class="text-muted">just now</small>
-    <button type="button" class="btn-close" data-dismiss="toast" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
   <div class="toast-body">
     See? Just like this.
@@ -82,7 +82,7 @@ When you have multiple toasts, we default to vertically stacking them in a reada
     {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
     <strong class="mr-auto">Bootstrap</strong>
     <small class="text-muted">2 seconds ago</small>
-    <button type="button" class="btn-close" data-dismiss="toast" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
   <div class="toast-body">
     Heads up, toasts will stack automatically
@@ -99,7 +99,7 @@ Customize your toasts by removing sub-components, tweaking with [utilities]({{< 
   <div class="toast-body">
     Hello, world! This is a toast message.
   </div>
-  <button type="button" class="btn-close ml-auto mr-2" data-dismiss="toast" aria-label="Close"></button>
+  <button type="button" class="btn-close ml-auto mr-2" data-bs-dismiss="toast" aria-label="Close"></button>
 </div>
 {{< /example >}}
 
@@ -111,7 +111,7 @@ Alternatively, you can also add additional controls and components to toasts.
     Hello, world! This is a toast message.
     <div class="mt-2 pt-2 border-top">
       <button type="button" class="btn btn-primary btn-sm">Take action</button>
-      <button type="button" class="btn btn-secondary btn-sm" data-dismiss="toast">Close</button>
+      <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
     </div>
   </div>
 </div>
@@ -126,7 +126,7 @@ Building on the above example, you can create different toast color schemes with
   <div class="toast-body">
     Hello, world! This is a toast message.
   </div>
-  <button type="button" class="btn-close btn-close-white ml-auto mr-2" data-dismiss="toast" aria-label="Close"></button>
+  <button type="button" class="btn-close btn-close-white ml-auto mr-2" data-bs-dismiss="toast" aria-label="Close"></button>
 </div>
 {{< /example >}}
 
@@ -141,7 +141,7 @@ Place toasts with custom CSS as you need them. The top right is often used for n
       {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
       <strong class="mr-auto">Bootstrap</strong>
       <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-dismiss="toast" aria-label="Close"></button>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">
       Hello, world! This is a toast message.
@@ -163,7 +163,7 @@ For systems that generate more notifications, consider using a wrapping element 
         {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
         <strong class="mr-auto">Bootstrap</strong>
         <small class="text-muted">just now</small>
-        <button type="button" class="btn-close" data-dismiss="toast" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">
         See? Just like this.
@@ -175,7 +175,7 @@ For systems that generate more notifications, consider using a wrapping element 
         {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
         <strong class="mr-auto">Bootstrap</strong>
         <small class="text-muted">2 seconds ago</small>
-        <button type="button" class="btn-close" data-dismiss="toast" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">
         Heads up, toasts will stack automatically
@@ -197,7 +197,7 @@ You can also get fancy with flexbox utilities to align toasts horizontally and/o
       {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
       <strong class="mr-auto">Bootstrap</strong>
       <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-dismiss="toast" aria-label="Close"></button>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">
       Hello, world! This is a toast message.
@@ -216,21 +216,21 @@ You also need to adapt the `role` and `aria-live` level depending on the content
 
 As the content you're displaying changes, be sure to update the [`delay` timeout](#options) to ensure people have enough time to read the toast.
 
-{{< highlight html >}}
-<div class="toast" role="alert" aria-live="polite" aria-atomic="true" data-delay="10000">
+```html
+<div class="toast" role="alert" aria-live="polite" aria-atomic="true" data-bs-delay="10000">
   <div role="alert" aria-live="assertive" aria-atomic="true">...</div>
 </div>
-{{< /highlight >}}
+```
 
 When using `autohide: false`, you must add a close button to allow users to dismiss the toast.
 
 {{< example class="bg-light" >}}
-<div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+<div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="false">
   <div class="toast-header">
     {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
     <strong class="mr-auto">Bootstrap</strong>
     <small>11 mins ago</small>
-    <button type="button" class="btn-close" data-dismiss="toast" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
   <div class="toast-body">
     Hello, world! This is a toast message.
@@ -244,16 +244,16 @@ When using `autohide: false`, you must add a close button to allow users to dism
 
 Initialize toasts via JavaScript:
 
-{{< highlight js >}}
+```js
 var toastElList = [].slice.call(document.querySelectorAll('.toast'))
 var toastList = toastElList.map(function (toastEl) {
   return new bootstrap.Toast(toastEl, option)
 })
-{{< /highlight >}}
+```
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-animation=""`.
 
 <table class="table">
   <thead>
@@ -299,19 +299,25 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 Reveals an element's toast. **Returns to the caller before the toast has actually been shown** (i.e. before the `shown.bs.toast` event occurs).
 You have to manually call this method, instead your toast won't show.
 
-{{< highlight js >}}toast.show(){{< /highlight >}}
+```js
+toast.show()
+```
 
 #### hide
 
 Hides an element's toast. **Returns to the caller before the toast has actually been hidden** (i.e. before the `hidden.bs.toast` event occurs). You have to manually call this method if you made `autohide` to `false`.
 
-{{< highlight js >}}toast.hide(){{< /highlight >}}
+```js
+toast.hide()
+```
 
 #### dispose
 
 Hides an element's toast. Your toast will remain on the DOM but won't show anymore.
 
-{{< highlight js >}}toast.dispose(){{< /highlight >}}
+```js
+toast.dispose()
+```
 
 ### Events
 
@@ -342,9 +348,9 @@ Hides an element's toast. Your toast will remain on the DOM but won't show anymo
   </tbody>
 </table>
 
-{{< highlight js >}}
+```js
 var myToastEl = document.getElementById('myToast')
 myToastEl.addEventListener('hidden.bs.toast', function () {
   // do something...
 })
-{{< /highlight >}}
+```

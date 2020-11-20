@@ -1,12 +1,13 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha2): scrollspy.js
+ * Bootstrap (v5.0.0-alpha3): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
   getjQuery,
+  onDOMContentLoaded,
   getSelectorFromElement,
   getUID,
   isElement,
@@ -24,7 +25,7 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'scrollspy'
-const VERSION = '5.0.0-alpha2'
+const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.scrollspy'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -48,7 +49,7 @@ const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 const CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item'
 const CLASS_NAME_ACTIVE = 'active'
 
-const SELECTOR_DATA_SPY = '[data-spy="scroll"]'
+const SELECTOR_DATA_SPY = '[data-bs-spy="scroll"]'
 const SELECTOR_NAV_LIST_GROUP = '.nav, .list-group'
 const SELECTOR_NAV_LINKS = '.nav-link'
 const SELECTOR_NAV_ITEMS = '.nav-item'
@@ -240,7 +241,7 @@ class ScrollSpy {
     this._clear()
 
     const queries = this._selector.split(',')
-      .map(selector => `${selector}[data-target="${target}"],${selector}[href="${target}"]`)
+      .map(selector => `${selector}[data-bs-target="${target}"],${selector}[href="${target}"]`)
 
     const link = SelectorEngine.findOne(queries.join(','))
 
@@ -317,22 +318,25 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
     .forEach(spy => new ScrollSpy(spy, Manipulator.getDataAttributes(spy)))
 })
 
-const $ = getjQuery()
-
 /**
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
+ * add .ScrollSpy to jQuery only if jQuery is present
  */
-/* istanbul ignore if */
-if ($) {
-  const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = ScrollSpy.jQueryInterface
-  $.fn[NAME].Constructor = ScrollSpy
-  $.fn[NAME].noConflict = () => {
-    $.fn[NAME] = JQUERY_NO_CONFLICT
-    return ScrollSpy.jQueryInterface
+
+onDOMContentLoaded(() => {
+  const $ = getjQuery()
+  /* istanbul ignore if */
+  if ($) {
+    const JQUERY_NO_CONFLICT = $.fn[NAME]
+    $.fn[NAME] = ScrollSpy.jQueryInterface
+    $.fn[NAME].Constructor = ScrollSpy
+    $.fn[NAME].noConflict = () => {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return ScrollSpy.jQueryInterface
+    }
   }
-}
+})
 
 export default ScrollSpy

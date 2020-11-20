@@ -4,7 +4,9 @@
   ],
   "rules": {
     "function-disallowed-list": [
-      "calc"
+      "calc",
+      "lighten",
+      "darken"
     ],
     "property-disallowed-list": [
       "border-radius",

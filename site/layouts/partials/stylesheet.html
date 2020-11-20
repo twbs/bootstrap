@@ -7,7 +7,7 @@
 
 {{- if (ne .Page.Layout "examples") }}
 {{- $targetDocsCssPath := printf "/docs/%s/assets/css/docs.css" .Site.Params.docs_version -}}
-{{- $sassOptions := dict "targetPath" $targetDocsCssPath "precision" 6 -}}
+{{- $sassOptions := dict "targetPath" $targetDocsCssPath "outputStyle" "expanded" "precision" 6 -}}
 {{- $postcssOptions := dict "use" "autoprefixer" "noMap" true -}}
 
 {{ if eq hugo.Environment "production" -}}
@@ -16,5 +16,5 @@
 
 {{- $style := resources.Get "scss/docs.scss" | toCSS $sassOptions | postCSS $postcssOptions }}
 
-<link rel="stylesheet" href="{{ $style.Permalink | relURL }}">
+<link href="{{ $style.Permalink | relURL }}" rel="stylesheet">
 {{- end }}

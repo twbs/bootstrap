@@ -13,7 +13,7 @@ Visually hide an element while still allowing it to be exposed to assistive tech
 <a class="visually-hidden-focusable" href="#content">Skip to main content</a>
 {{< /example >}}
 
-{{< highlight scss >}}
+```scss
 // Usage as a mixin
 
 .visually-hidden-title {
@@ -23,4 +23,4 @@ Visually hide an element while still allowing it to be exposed to assistive tech
 .skip-navigation {
   @include visually-hidden-focusable;
 }
-{{< /highlight >}}
+```

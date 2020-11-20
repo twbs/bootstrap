@@ -77,7 +77,7 @@ Since Bootstrap is developed to be mobile first, we use a handful of [media quer
 
 Bootstrap primarily uses the following media query ranges—or breakpoints—in our source Sass files for our layout, grid system, and components.
 
-{{< highlight scss >}}
+```scss
 // Source mixins
 
 // No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
@@ -98,11 +98,11 @@ Bootstrap primarily uses the following media query ranges—or breakpoints—in 
     display: block;
   }
 }
-{{< /highlight >}}
+```
 
 These Sass mixins translate in our compiled CSS using the values declared in our Sass variables. For example:
 
-{{< highlight scss >}}
+```scss
 // X-Small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
 
@@ -120,13 +120,13 @@ These Sass mixins translate in our compiled CSS using the values declared in our
 
 // XX-Large devices (larger desktops, 1400px and up)
 @media (min-width: 1400px) { ... }
-{{< /highlight >}}
+```
 
 ### Max-width
 
 We occasionally use media queries that go in the other direction (the given screen size *or smaller*):
 
-{{< highlight scss >}}
+```scss
 // No media query necessary for xs breakpoint as it's effectively `@media (max-width: 0) { ... }`
 @include media-breakpoint-down(sm) { ... }
 @include media-breakpoint-down(md) { ... }
@@ -140,11 +140,11 @@ We occasionally use media queries that go in the other direction (the given scre
     display: block;
   }
 }
-{{< /highlight >}}
+```
 
 These mixins take those declared breakpoints, subtract `.02px` from them, and use them as our `max-width` values. For example:
 
-{{< highlight scss >}}
+```scss
 // X-Small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) { ... }
 
@@ -162,7 +162,7 @@ These mixins take those declared breakpoints, subtract `.02px` from them, and us
 
 // XX-Large devices (larger desktops)
 // No media query since the xxl breakpoint has no upper bound on its width
-{{< /highlight >}}
+```
 
 {{< callout warning >}}
 {{< partial "callout-info-mediaqueries-breakpoints.md" >}}
@@ -172,33 +172,33 @@ These mixins take those declared breakpoints, subtract `.02px` from them, and us
 
 There are also media queries and mixins for targeting a single segment of screen sizes using the minimum and maximum breakpoint widths.
 
-{{< highlight scss >}}
+```scss
 @include media-breakpoint-only(xs) { ... }
 @include media-breakpoint-only(sm) { ... }
 @include media-breakpoint-only(md) { ... }
 @include media-breakpoint-only(lg) { ... }
 @include media-breakpoint-only(xl) { ... }
 @include media-breakpoint-only(xxl) { ... }
-{{< /highlight >}}
+```
 
 For example the `@include media-breakpoint-only(md) { ... }` will result in :
 
-{{< highlight scss >}}
+```scss
 @media (min-width: 768px) and (max-width: 991.98px) { ... }
-{{< /highlight >}}
+```
 
 ### Between breakpoints
 
 Similarly, media queries may span multiple breakpoint widths:
 
-{{< highlight scss >}}
+```scss
 @include media-breakpoint-between(md, xl) { ... }
-{{< /highlight >}}
+```
 
 Which results in:
 
-{{< highlight scss >}}
+```scss
 // Example
 // Apply styles starting from medium devices and up to extra large devices
 @media (min-width: 768px) and (max-width: 1199.98px) { ... }
-{{< /highlight >}}
+```
