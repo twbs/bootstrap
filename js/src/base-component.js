@@ -17,6 +17,11 @@ class BaseComponent {
     Data.setData(element, this.constructor.DATA_KEY, this)
   }
 
+  dispose() {
+    Data.removeData(this._element, this.constructor.DATA_KEY)
+    this._element = null
+  }
+
   /** Static */
 
   static getInstance(element) {

@@ -126,11 +126,6 @@ class Tab extends BaseComponent {
     }
   }
 
-  dispose() {
-    Data.removeData(this._element, DATA_KEY)
-    this._element = null
-  }
-
   // Private
 
   _activate(element, container, callback) {

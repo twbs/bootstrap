@@ -52,11 +52,6 @@ class Button extends BaseComponent {
     this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE))
   }
 
-  dispose() {
-    Data.removeData(this._element, DATA_KEY)
-    this._element = null
-  }
-
   // Static
 
   static jQueryInterface(config) {

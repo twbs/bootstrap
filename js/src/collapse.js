@@ -272,11 +272,9 @@ class Collapse extends BaseComponent {
   }
 
   dispose() {
-    Data.removeData(this._element, DATA_KEY)
-
+    super.dispose()
     this._config = null
     this._parent = null
-    this._element = null
     this._triggerArray = null
     this._isTransitioning = null
   }

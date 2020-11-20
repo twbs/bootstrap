@@ -207,6 +207,8 @@ class Modal extends BaseComponent {
     [window, this._element, this._dialog]
       .forEach(htmlElement => EventHandler.off(htmlElement, EVENT_KEY))
 
+    super.dispose()
+
     /**
      * `document` has 2 events `EVENT_FOCUSIN` and `EVENT_CLICK_DATA_API`
      * Do not move `document` in `htmlElements` array
@@ -214,10 +216,7 @@ class Modal extends BaseComponent {
      */
     EventHandler.off(document, EVENT_FOCUSIN)
 
-    Data.removeData(this._element, DATA_KEY)
-
     this._config = null
-    this._element = null
     this._dialog = null
     this._backdrop = null
     this._isShown = null
