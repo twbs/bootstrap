@@ -595,12 +595,11 @@ describe('Modal', () => {
       modal.show()
     })
 
-    it('should not close modal when escape key is pressed with keyboard = false and backdrop = static', done => {
-      fixtureEl.innerHTML = '<div class="modal" data-bs-backdrop="static" data-bs-keyboard="false"><div class="modal-dialog"></div>'
+    it('should not close modal when escape key is pressed with keyboard = false', done => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
-        backdrop: 'static',
         keyboard: false
       })
 
