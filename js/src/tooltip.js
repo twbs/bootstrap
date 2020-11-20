@@ -229,8 +229,6 @@ class Tooltip extends BaseComponent {
   dispose() {
     clearTimeout(this._timeout)
 
-    Data.removeData(this._element, this.constructor.DATA_KEY)
-
     EventHandler.off(this._element, this.constructor.EVENT_KEY)
     EventHandler.off(this._element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler)
 
@@ -247,9 +245,9 @@ class Tooltip extends BaseComponent {
     }
 
     this._popper = null
-    this._element = null
     this.config = null
     this.tip = null
+    super.dispose()
   }
 
   show() {

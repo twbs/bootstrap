@@ -69,11 +69,6 @@ class Alert extends BaseComponent {
     this._removeElement(rootElement)
   }
 
-  dispose() {
-    Data.removeData(this._element, DATA_KEY)
-    this._element = null
-  }
-
   // Private
 
   _getRootElement(element) {
