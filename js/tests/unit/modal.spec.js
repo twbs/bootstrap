@@ -155,20 +155,19 @@ describe('Modal', () => {
       ].join('')
 
       const stickyTopEl = fixtureEl.querySelector('.sticky-top')
-      const originalMargin = parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+      const originalMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
 
       modalEl.addEventListener('shown.bs.modal', () => {
-        const expectedMargin = 0
-        const currentMargin = parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+        const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
 
-        expect(currentMargin).toEqual(expectedMargin, 'sticky element margin should not be adjusted while opening')
+        expect(currentMargin).toEqual(originalMargin, 'sticky element margin should not be adjusted while opening')
         modal.toggle()
       })
 
       modalEl.addEventListener('hidden.bs.modal', () => {
-        const currentMargin = parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+        const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
 
         expect(stickyTopEl.getAttribute('data-margin-right')).toEqual(null, 'data-margin-right should be cleared after closing')
         expect(currentMargin).toEqual(originalMargin, 'sticky element margin should be reset after closing')
