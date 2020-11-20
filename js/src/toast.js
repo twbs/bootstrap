@@ -192,11 +192,11 @@ class Toast extends BaseComponent {
     const toastList = SelectorEngine.find(`.toast.${this._config.position}`, this._element.parentNode)
     const styles = {}
 
-    if (this._config.position.indexOf('top-') > -1) {
+    if (this._config.position.includes('top-')) {
       const top = toastList.reduce((top, toastEl) => {
         const { height, marginBottom } = window.getComputedStyle(toastEl)
 
-        top += (parseInt(height, 10) + parseInt(marginBottom, 10))
+        top += (Number.parseInt(height, 10) + Number.parseInt(marginBottom, 10))
         return top
       }, this._config.positionMargin)
 
@@ -221,7 +221,7 @@ class Toast extends BaseComponent {
     const bottom = toastList.reduce((bottom, toastEl) => {
       const { height, marginTop } = window.getComputedStyle(toastEl)
 
-      bottom += (parseInt(height, 10) + parseInt(marginTop, 10))
+      bottom += (Number.parseInt(height, 10) + Number.parseInt(marginTop, 10))
       return bottom
     }, this._config.positionMargin)
 
@@ -252,27 +252,27 @@ class Toast extends BaseComponent {
     toastList.forEach((toastEl, index) => {
       const toastInstance = Toast.getInstance(toastEl)
 
-      if (toastInstance.config.position.indexOf('top-') > -1) {
+      if (toastInstance.config.position.includes('top-')) {
         let top = toastInstance.config.positionMargin
 
         if (index > 0) {
           const previousToast = toastList[index - 1]
           const { height, marginBottom } = window.getComputedStyle(previousToast)
 
-          top += (parseInt(height, 10) + parseInt(marginBottom, 10))
+          top += (Number.parseInt(height, 10) + Number.parseInt(marginBottom, 10))
         }
 
         toastEl.style.top = `${top}px`
       }
 
-      if (toastInstance.config.position.indexOf('bottom-') > -1) {
+      if (toastInstance.config.position.includes('bottom-')) {
         let bottom = toastInstance.config.positionMargin
 
         if (index > 0) {
           const previousToast = toastList[index - 1]
           const { height, marginTop } = window.getComputedStyle(previousToast)
 
-          bottom += (parseInt(height, 10) + parseInt(marginTop, 10))
+          bottom += (Number.parseInt(height, 10) + Number.parseInt(marginTop, 10))
         }
 
         toastEl.style.bottom = `${bottom}px`
@@ -302,8 +302,8 @@ class Toast extends BaseComponent {
   _getMiddleToastPosition() {
     const { width: computedWidthToast } = window.getComputedStyle(this._element)
     const { width: computedWidthContainer } = window.getComputedStyle(this._element.parentNode)
-    const widthContainer = parseInt(computedWidthContainer === 'auto' ? window.innerWidth : computedWidthContainer, 10)
-    const widthToast = parseInt(computedWidthToast === 'auto' ? widthContainer : computedWidthToast, 10)
+    const widthContainer = Number.parseInt(computedWidthContainer === 'auto' ? window.innerWidth : computedWidthContainer, 10)
+    const widthToast = Number.parseInt(computedWidthToast === 'auto' ? widthContainer : computedWidthToast, 10)
     const middleContainerWidth = widthContainer / 2
     const middleToastWidth = widthToast / 2
 
