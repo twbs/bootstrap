@@ -270,6 +270,15 @@ Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` opti
       Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..flip.behavior">behavior docs</a></td>
     </tr>
     <tr>
+      <td>customClass</td>
+      <td>string | function</td>
+      <td>''</td>
+      <td>
+        <p>Add classes to the popover when it is shown. Note that these classes will be added in addition to any classes specified in the template. To add mutiple classes, separate them with spaces: <code>'a b'</code>.</p>
+        <p>You can also pass a function that should return a single string containing additional class names.</p>
+      </td>
+    </tr>
+    <tr>
       <td>boundary</td>
       <td>string | element</td>
       <td>'scrollParent'</td>
