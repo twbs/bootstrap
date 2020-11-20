@@ -107,7 +107,7 @@
       @each $key, $value in $gutters {
         .g#{$infix}-#{$key},
         .gx#{$infix}-#{$key} {
-          --#{$variable-prefix}gutter-x: #{$value};
+          --#{$variable-prefix}gutter-x: #{($value / 2)};
         }
 
         .g#{$infix}-#{$key},
