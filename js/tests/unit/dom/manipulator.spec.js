@@ -76,12 +76,13 @@ describe('Manipulator', () => {
 
   describe('getDataAttribute', () => {
     it('should only get bs-prefixed data attribute', () => {
-      fixtureEl.innerHTML = '<div data-bs-key="value" data-test-bs="postFixed"></div>'
+      fixtureEl.innerHTML = '<div data-bs-key="value" data-test-bs="postFixed" data-toggle="tab"></div>'
 
       const div = fixtureEl.querySelector('div')
 
       expect(Manipulator.getDataAttribute(div, 'key')).toEqual('value')
       expect(Manipulator.getDataAttribute(div, 'test')).toBeNull()
+      expect(Manipulator.getDataAttribute(div, 'toggle')).toBeNull()
     })
 
     it('should get data attribute in kebab case', () => {
