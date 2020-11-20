@@ -146,10 +146,9 @@ class ScrollSpy extends BaseComponent {
   }
 
   dispose() {
-    Data.removeData(this._element, DATA_KEY)
+    super.dispose()
     EventHandler.off(this._scrollElement, EVENT_KEY)
 
-    this._element = null
     this._scrollElement = null
     this._config = null
     this._selector = null

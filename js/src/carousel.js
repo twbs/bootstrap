@@ -224,12 +224,11 @@ class Carousel extends BaseComponent {
   }
 
   dispose() {
+    super.dispose()
     EventHandler.off(this._element, EVENT_KEY)
-    Data.removeData(this._element, DATA_KEY)
 
     this._items = null
     this._config = null
-    this._element = null
     this._interval = null
     this._isPaused = null
     this._isSliding = null
