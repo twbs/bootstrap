@@ -21,6 +21,6 @@
 - name: white
   hex: "#fff"
 - name: gray
-  hex: "#868e96"
+  hex: "#6c757d"
 - name: gray-dark
   hex: "#343a40"
