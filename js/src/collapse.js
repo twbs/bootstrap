@@ -150,8 +150,8 @@ class Collapse {
 
     const container = SelectorEngine.findOne(this._selector)
     if (actives) {
-      const tempActiveData = actives.filter(elem => container !== elem)
-      activesData = tempActiveData[0] ? Data.getData(tempActiveData[0], DATA_KEY) : null
+      const tempActiveData = actives.find(elem => container !== elem)
+      activesData = tempActiveData ? Data.getData(tempActiveData, DATA_KEY) : null
 
       if (activesData && activesData._isTransitioning) {
         return
