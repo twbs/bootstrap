@@ -11,9 +11,9 @@
 
 const path = require('path')
 const sh = require('shelljs')
+const { version } = require('../package.json')
 
-const { version, version_short: versionShort } = require('../package.json')
-
+const versionShort = `${version.split[0]}.${version.split[1]}`
 const folderName = `bootstrap-${version}-examples`
 
 sh.config.fatal = true
