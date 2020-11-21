@@ -998,7 +998,7 @@ $(function () {
     }, 200)
   })
 
-  QUnit.test('should call Popper.js to update', function (assert) {
+  QUnit.test('should call Popper to update', function (assert) {
     assert.expect(2)
 
     var $tooltip = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
@@ -1014,7 +1014,7 @@ $(function () {
     assert.ok(spyPopper.called)
   })
 
-  QUnit.test('should not call Popper.js to update', function (assert) {
+  QUnit.test('should not call Popper to update', function (assert) {
     assert.expect(1)
 
     var $tooltip = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
@@ -1027,7 +1027,7 @@ $(function () {
     assert.ok(tooltip._popper === null)
   })
 
-  QUnit.test('should use Popper.js to get the tip on placement change', function (assert) {
+  QUnit.test('should use Popper to get the tip on placement change', function (assert) {
     assert.expect(1)
 
     var $tooltip = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
@@ -1267,7 +1267,7 @@ $(function () {
     assert.strictEqual(tooltip.config.sanitize, true)
   })
 
-  QUnit.test('should allow to pass config to popper.js with `popperConfig`', function (assert) {
+  QUnit.test('should allow to pass config to Popper with `popperConfig`', function (assert) {
     assert.expect(1)
 
     var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
