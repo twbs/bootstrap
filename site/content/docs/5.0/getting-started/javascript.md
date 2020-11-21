@@ -61,9 +61,9 @@ All infinitive events provide [`preventDefault()`](https://developer.mozilla.org
 ```js
 var myModal = document.getElementById('myModal')
 
-myModal.addEventListener('show.bs.modal', function (e) {
+myModal.addEventListener('show.bs.modal', function (event) {
   if (!data) {
-    return e.preventDefault() // stops modal from being shown
+    return event.preventDefault() // stops modal from being shown
   }
 })
 ```
@@ -102,7 +102,7 @@ In order to execute an action once the transition is complete, you can listen to
 ```js
 var myCollapseEl = document.getElementById('#myCollapse')
 
-myCollapseEl.addEventListener('shown.bs.collapse', function (e) {
+myCollapseEl.addEventListener('shown.bs.collapse', function (event) {
   // Action to execute once the collapsible area is expanded
 })
 ```
@@ -113,7 +113,7 @@ In addition a method call on a **transitioning component will be ignored**.
 var myCarouselEl = document.getElementById('myCarousel')
 var carousel = bootstrap.Carousel.getInstance(myCarouselEl) // Retrieve a Carousel instance
 
-myCarouselEl.addEventListener('slid.bs.carousel', function (e) {
+myCarouselEl.addEventListener('slid.bs.carousel', function (event) {
   carousel.to('2') // Will slide to the slide 2 as soon as the transition to slide 1 is finished
 })
 
