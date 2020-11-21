@@ -156,7 +156,7 @@ class Dropdown {
       return
     }
 
-    // Totally disable Popper for Dropdown in Navbar
+    // Totally disable Popper for Dropdowns in Navbar
     if (!this._inNavbar) {
       if (typeof Popper === 'undefined') {
         throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)')
