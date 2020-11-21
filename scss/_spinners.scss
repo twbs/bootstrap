@@ -15,7 +15,7 @@
   border-right-color: transparent;
   // stylelint-disable-next-line property-disallowed-list
   border-radius: 50%;
-  animation: spinner-border $spinner-animation-speed linear infinite;
+  animation: $spinner-animation-speed linear infinite spinner-border;
 }
 
 .spinner-border-sm {
@@ -47,10 +47,19 @@
   // stylelint-disable-next-line property-disallowed-list
   border-radius: 50%;
   opacity: 0;
-  animation: spinner-grow $spinner-animation-speed linear infinite;
+  animation: $spinner-animation-speed linear infinite spinner-grow;
 }
 
 .spinner-grow-sm {
   width: $spinner-width-sm;
   height: $spinner-height-sm;
+}
+
+@if $enable-reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    .spinner-border,
+    .spinner-grow {
+      animation-duration: $spinner-animation-speed * 2;
+    }
+  }
 }

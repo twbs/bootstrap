@@ -1,6 +1,6 @@
 .bd-masthead {
   padding: 3rem 0;
-  background: linear-gradient(165deg, lighten($bd-purple-light, 16%) 50%, $white 50%);
+  background: linear-gradient(165deg, tint-color($bd-purple-light, 85%) 50%, $white 50%);
 
   h1 {
     @include font-size(4rem);

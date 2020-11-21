@@ -64,7 +64,7 @@ describe('Tooltip', () => {
 
   describe('constructor', () => {
     it('should not take care of disallowed data attributes', () => {
-      fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-sanitize="false" title="Another tooltip">'
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-bs-sanitize="false" title="Another tooltip">'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
@@ -317,7 +317,7 @@ describe('Tooltip', () => {
 
         expect(tooltipShown).toBeDefined()
         expect(tooltipEl.getAttribute('aria-describedby')).toEqual(tooltipShown.getAttribute('id'))
-        expect(tooltipShown.getAttribute('id').indexOf('tooltip') !== -1).toEqual(true)
+        expect(tooltipShown.getAttribute('id')).toContain('tooltip')
         done()
       })
 

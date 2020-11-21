@@ -47,8 +47,8 @@ params:
   social_image_path:    /docs/5.0/assets/brand/bootstrap-social.png
   social_logo_path:     /docs/5.0/assets/brand/bootstrap-social-logo.png
 
-  current_version:      "5.0.0-alpha2"
-  current_ruby_version: "5.0.0.alpha2"
+  current_version:      "5.0.0-alpha3"
+  current_ruby_version: "5.0.0.alpha3"
   docs_version:         "5.0"
   rfs_version:          "9.0.3"
   github_org:           "https://github.com/twbs"
@@ -57,22 +57,21 @@ params:
   slack:                "https://bootstrap-slack.herokuapp.com/"
   opencollective:       "https://opencollective.com/bootstrap"
   blog:                 "https://blog.getbootstrap.com/"
-  expo:                 "https://expo.getbootstrap.com/"
   themes:               "https://themes.getbootstrap.com/"
   icons:                "https://icons.getbootstrap.com/"
 
   download:
-    source:             "https://github.com/twbs/bootstrap/archive/v5.0.0-alpha2.zip"
-    dist:               "https://github.com/twbs/bootstrap/releases/download/v5.0.0-alpha2/bootstrap-5.0.0-alpha2-dist.zip"
-    dist_examples:      "https://github.com/twbs/bootstrap/releases/download/v5.0.0-alpha2/bootstrap-5.0.0-alpha2-examples.zip"
+    source:             "https://github.com/twbs/bootstrap/archive/v5.0.0-alpha3.zip"
+    dist:               "https://github.com/twbs/bootstrap/releases/download/v5.0.0-alpha3/bootstrap-5.0.0-alpha3-dist.zip"
+    dist_examples:      "https://github.com/twbs/bootstrap/releases/download/v5.0.0-alpha3/bootstrap-5.0.0-alpha3-examples.zip"
 
   cdn:
     # See https://www.srihash.org for info on how to generate the hashes
-    css:              "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
-    css_hash:         "sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK"
-    js:               "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"
-    js_hash:          "sha384-5h4UG+6GOuV9qXh6HqOLwZMY4mnLPraeTrjT5v07o347pj6IkfuoASuGBhfDsp3d"
-    js_bundle:        "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"
-    js_bundle_hash:   "sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
+    css:              "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css"
+    css_hash:         "sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ"
+    js:               "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.min.js"
+    js_hash:          "sha384-t6I8D5dJmMXjCsRLhSzCltuhNZg6P10kE0m0nAncLUjH6GeYLhRU1zfLoW3QNQDF"
+    js_bundle:        "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    js_bundle_hash:   "sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy"
     popper:           "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
     popper_hash:      "sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
