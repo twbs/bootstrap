@@ -255,7 +255,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` opti
       <td>string | function</td>
       <td>''</td>
       <td>
-        <p>Add classes to the popover when it is shown. Note that these classes will be added in addition to any classes specified in the template. To add mutiple classes, separate them with spaces: <code>'a b'</code>.</p>
+        <p>Add classes to the tooltip when it is shown. Note that these classes will be added in addition to any classes specified in the template. To add multiple classes, separate them with spaces: <code>'a b'</code>.</p>
         <p>You can also pass a function that should return a single string containing additional class names.</p>
       </td>
     </tr>
