@@ -57,10 +57,8 @@ files.forEach(file => {
 
     sh.sed(
       '-i',
-      new RegExp(`(\\s*${file.configPropertyName}:\\s*("|'))(\\S*)(("|'))`),
-      // NOTE: Using capture groups 1 and 4, because there are multiple,
-      // smaller capture groups used, for the "|' or-ing to work properly.
-      `$1${integrity}$4`,
+      new RegExp(`^(\\s*${file.configPropertyName}:\\s*["'])\\S*(["'])`),
+      `$1${integrity}$2`,
       configFile
     )
   })
