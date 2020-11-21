@@ -365,7 +365,11 @@ class Modal {
           return
         }
 
-        this._triggerBackdropTransition()
+        if (this._config.backdrop === 'static') {
+          this._triggerBackdropTransition()
+        } else {
+          this.hide()
+        }
       })
 
       if (animate) {
@@ -404,35 +408,31 @@ class Modal {
   }
 
   _triggerBackdropTransition() {
-    if (this._config.backdrop === 'static') {
-      const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED)
-      if (hideEvent.defaultPrevented) {
-        return
-      }
-
-      const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
-
-      if (!isModalOverflowing) {
-        this._element.style.overflowY = 'hidden'
-      }
-
-      this._element.classList.add(CLASS_NAME_STATIC)
-      const modalTransitionDuration = getTransitionDurationFromElement(this._dialog)
-      EventHandler.off(this._element, TRANSITION_END)
-      EventHandler.one(this._element, TRANSITION_END, () => {
-        this._element.classList.remove(CLASS_NAME_STATIC)
-        if (!isModalOverflowing) {
-          EventHandler.one(this._element, TRANSITION_END, () => {
-            this._element.style.overflowY = ''
-          })
-          emulateTransitionEnd(this._element, modalTransitionDuration)
-        }
-      })
-      emulateTransitionEnd(this._element, modalTransitionDuration)
-      this._element.focus()
-    } else {
-      this.hide()
+    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED)
+    if (hideEvent.defaultPrevented) {
+      return
     }
+
+    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
+
+    if (!isModalOverflowing) {
+      this._element.style.overflowY = 'hidden'
+    }
+
+    this._element.classList.add(CLASS_NAME_STATIC)
+    const modalTransitionDuration = getTransitionDurationFromElement(this._dialog)
+    EventHandler.off(this._element, TRANSITION_END)
+    EventHandler.one(this._element, TRANSITION_END, () => {
+      this._element.classList.remove(CLASS_NAME_STATIC)
+      if (!isModalOverflowing) {
+        EventHandler.one(this._element, TRANSITION_END, () => {
+          this._element.style.overflowY = ''
+        })
+        emulateTransitionEnd(this._element, modalTransitionDuration)
+      }
+    })
+    emulateTransitionEnd(this._element, modalTransitionDuration)
+    this._element.focus()
   }
 
   // ----------------------------------------------------------------------
@@ -473,7 +473,7 @@ class Modal {
         .forEach(element => {
           const actualPadding = element.style.paddingRight
           const calculatedPadding = window.getComputedStyle(element)['padding-right']
-          Manipulator.setDataAttribute(element, 'bs-padding-right', actualPadding)
+          Manipulator.setDataAttribute(element, 'padding-right', actualPadding)
           element.style.paddingRight = `${Number.parseFloat(calculatedPadding) + this._scrollbarWidth}px`
         })
 
@@ -482,7 +482,7 @@ class Modal {
         .forEach(element => {
           const actualMargin = element.style.marginRight
           const calculatedMargin = window.getComputedStyle(element)['margin-right']
-          Manipulator.setDataAttribute(element, 'bs-margin-right', actualMargin)
+          Manipulator.setDataAttribute(element, 'margin-right', actualMargin)
           element.style.marginRight = `${Number.parseFloat(calculatedMargin) - this._scrollbarWidth}px`
         })
 
@@ -490,7 +490,7 @@ class Modal {
       const actualPadding = document.body.style.paddingRight
       const calculatedPadding = window.getComputedStyle(document.body)['padding-right']
 
-      Manipulator.setDataAttribute(document.body, 'bs-padding-right', actualPadding)
+      Manipulator.setDataAttribute(document.body, 'padding-right', actualPadding)
       document.body.style.paddingRight = `${Number.parseFloat(calculatedPadding) + this._scrollbarWidth}px`
     }
 
@@ -501,9 +501,9 @@ class Modal {
     // Restore fixed content padding
     SelectorEngine.find(SELECTOR_FIXED_CONTENT)
       .forEach(element => {
-        const padding = Manipulator.getDataAttribute(element, 'bs-padding-right')
+        const padding = Manipulator.getDataAttribute(element, 'padding-right')
         if (typeof padding !== 'undefined') {
-          Manipulator.removeDataAttribute(element, 'bs-padding-right')
+          Manipulator.removeDataAttribute(element, 'padding-right')
           element.style.paddingRight = padding
         }
       })
@@ -511,19 +511,19 @@ class Modal {
     // Restore sticky content and navbar-toggler margin
     SelectorEngine.find(`${SELECTOR_STICKY_CONTENT}`)
       .forEach(element => {
-        const margin = Manipulator.getDataAttribute(element, 'bs-margin-right')
+        const margin = Manipulator.getDataAttribute(element, 'margin-right')
         if (typeof margin !== 'undefined') {
-          Manipulator.removeDataAttribute(element, 'bs-margin-right')
+          Manipulator.removeDataAttribute(element, 'margin-right')
           element.style.marginRight = margin
         }
       })
 
     // Restore body padding
-    const padding = Manipulator.getDataAttribute(document.body, 'bs-padding-right')
+    const padding = Manipulator.getDataAttribute(document.body, 'padding-right')
     if (typeof padding === 'undefined') {
       document.body.style.paddingRight = ''
     } else {
-      Manipulator.removeDataAttribute(document.body, 'bs-padding-right')
+      Manipulator.removeDataAttribute(document.body, 'padding-right')
       document.body.style.paddingRight = padding
     }
   }
