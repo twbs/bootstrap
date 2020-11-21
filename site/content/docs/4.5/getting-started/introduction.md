@@ -24,9 +24,9 @@ Copy-paste the stylesheet `<link>` into your `<head>` before all other styleshee
 
 ### JS
 
-Many of our components require the use of JavaScript to function. Specifically, they require [jQuery](https://jquery.com/), [Popper.js](https://popper.js.org/), and our own JavaScript plugins. We use [jQuery's slim build](https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/), but the full version is also supported.
+Many of our components require the use of JavaScript to function. Specifically, they require [jQuery](https://jquery.com/), [Popper](https://popper.js.org/), and our own JavaScript plugins. We use [jQuery's slim build](https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/), but the full version is also supported.
 
-Place **one of the following `<script>`s** near the end of your pages, right before the closing `</body>` tag, to enable them. jQuery must come first, then Popper.js, and then our JavaScript plugins.
+Place **one of the following `<script>`s** near the end of your pages, right before the closing `</body>` tag, to enable them. jQuery must come first, then Popper, and then our JavaScript plugins.
 
 #### Bundle
 
@@ -39,7 +39,7 @@ Include every Bootstrap JavaScript plugin with one of our two bundles. Both `boo
 
 #### Separate
 
-If you decide to go with the separate scripts solution, Popper.js must come first (if you're using tooltips or popovers), and then our JavaScript plugins.
+If you decide to go with the separate scripts solution, Popper must come first (if you're using tooltips or popovers), and then our JavaScript plugins.
 
 ```html
 <script src="{{< param "cdn.jquery" >}}" integrity="{{< param "cdn.jquery_hash" >}}" crossorigin="anonymous"></script>
@@ -49,7 +49,7 @@ If you decide to go with the separate scripts solution, Popper.js must come firs
 
 #### Components
 
-Curious which components explicitly require jQuery, our JavaScript, and Popper.js? Click the show components link below. If you're unsure about the page structure, keep reading for an example page template.
+Curious which components explicitly require jQuery, our JavaScript, and Popper? Click the show components link below. If you're unsure about the page structure, keep reading for an example page template.
 
 <details>
 <summary class="text-primary mb-3">Show components requiring JavaScript</summary>
@@ -58,10 +58,10 @@ Curious which components explicitly require jQuery, our JavaScript, and Popper.j
 - Buttons for toggling states and checkbox/radio functionality
 - Carousel for all slide behaviors, controls, and indicators
 - Collapse for toggling visibility of content
-- Dropdowns for displaying and positioning (also requires [Popper.js](https://popper.js.org/))
+- Dropdowns for displaying and positioning (also requires [Popper](https://popper.js.org/))
 - Modals for displaying, positioning, and scroll behavior
 - Navbar for extending our Collapse plugin to implement responsive behavior
-- Tooltips and popovers for displaying and positioning (also requires [Popper.js](https://popper.js.org/))
+- Tooltips and popovers for displaying and positioning (also requires [Popper](https://popper.js.org/))
 - Scrollspy for scroll behavior and navigation updates
 {{< /markdown >}}
 </details>
@@ -92,7 +92,7 @@ Be sure to have your pages set up with the latest design and development standar
     <script src="{{< param "cdn.jquery" >}}" integrity="{{< param "cdn.jquery_hash" >}}" crossorigin="anonymous"></script>
     <script src="{{< param "cdn.js_bundle" >}}" integrity="{{< param "cdn.js_bundle_hash" >}}" crossorigin="anonymous"></script>
 
-    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+    <!-- Option 2: jQuery, Popper, and Bootstrap JS
     <script src="{{< param "cdn.jquery" >}}" integrity="{{< param "cdn.jquery_hash" >}}" crossorigin="anonymous"></script>
     <script src="{{< param "cdn.popper" >}}" integrity="{{< param "cdn.popper_hash" >}}" crossorigin="anonymous"></script>
     <script src="{{< param "cdn.js" >}}" integrity="{{< param "cdn.js_hash" >}}" crossorigin="anonymous"></script>

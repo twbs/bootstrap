@@ -114,7 +114,7 @@ const TRIGGER_MANUAL = 'manual'
 class Tooltip {
   constructor(element, config) {
     if (typeof Popper === 'undefined') {
-      throw new TypeError('Bootstrap\'s tooltips require Popper.js (https://popper.js.org/)')
+      throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)')
     }
 
     // private
