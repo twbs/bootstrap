@@ -300,7 +300,7 @@ class Tooltip {
 
       const customClass = typeof this.config.customClass === 'function' ? this.config.customClass() : this.config.customClass
       if (customClass) {
-        tip.classList.add(customClass)
+        tip.classList.add(...customClass.split(' '))
       }
 
       // If this is a touch-enabled device we add extra
