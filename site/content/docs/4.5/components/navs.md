@@ -526,8 +526,8 @@ You can activate a tab or pill navigation without writing any JavaScript by simp
 Enable tabbable tabs via JavaScript (each tab needs to be activated individually):
 
 ```js
-$('#myTab a').on('click', function (e) {
-  e.preventDefault()
+$('#myTab a').on('click', function (event) {
+  event.preventDefault()
   $(this).tab('show')
 })
 ```
@@ -645,8 +645,8 @@ If no tab was already active, then the `hide.bs.tab` and `hidden.bs.tab` events 
 </table>
 
 ```js
-$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-  e.target // newly activated tab
-  e.relatedTarget // previous active tab
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (event) {
+  event.target // newly activated tab
+  event.relatedTarget // previous active tab
 })
 ```

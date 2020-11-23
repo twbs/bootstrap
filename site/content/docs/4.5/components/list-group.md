@@ -281,8 +281,8 @@ You can activate a list group navigation without writing any JavaScript by simpl
 Enable tabbable list item via JavaScript (each list item needs to be activated individually):
 
 ```js
-$('#myList a').on('click', function (e) {
-  e.preventDefault()
+$('#myList a').on('click', function (event) {
+  event.preventDefault()
   $(this).tab('show')
 })
 ```
@@ -384,8 +384,8 @@ If no tab was already active, the `hide.bs.tab` and `hidden.bs.tab` events will 
 </table>
 
 ```js
-$('a[data-toggle="list"]').on('shown.bs.tab', function (e) {
-  e.target // newly activated tab
-  e.relatedTarget // previous active tab
+$('a[data-toggle="list"]').on('shown.bs.tab', function (event) {
+  event.target // newly activated tab
+  event.relatedTarget // previous active tab
 })
 ```
