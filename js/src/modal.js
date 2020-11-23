@@ -37,15 +37,13 @@ const ESCAPE_KEY = 'Escape'
 const Default = {
   backdrop: true,
   keyboard: true,
-  focus: true,
-  show: true
+  focus: true
 }
 
 const DefaultType = {
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
-  focus: 'boolean',
-  show: 'boolean'
+  focus: 'boolean'
 }
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
@@ -558,8 +556,6 @@ class Modal {
         }
 
         data[config](relatedTarget)
-      } else if (_config.show) {
-        data.show(relatedTarget)
       }
     })
   }
