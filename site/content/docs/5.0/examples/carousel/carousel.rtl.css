@@ -29,7 +29,7 @@ body {
 .carousel-item > img {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   min-width: 100%;
   height: 32rem;
 }
@@ -46,12 +46,10 @@ body {
 .marketing h2 {
   font-weight: 400;
 }
-/* rtl:begin:ignore */
 .marketing .col-lg-4 p {
   margin-right: .75rem;
   margin-left: .75rem;
 }
-/* rtl:end:ignore */
 
 
 /* Featurettes
@@ -65,8 +63,6 @@ body {
 .featurette-heading {
   font-weight: 300;
   line-height: 1;
-  /* rtl:remove */
-  letter-spacing: -.05rem;
 }
 
 
