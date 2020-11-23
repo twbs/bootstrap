@@ -47,7 +47,7 @@
   };
 
   var getSelector = function getSelector(element) {
-    var selector = element.getAttribute('data-target');
+    var selector = element.getAttribute('data-bs-target');
 
     if (!selector || selector === '#') {
       var hrefAttr = element.getAttribute('href');
@@ -87,7 +87,7 @@
     var _window = window,
         jQuery = _window.jQuery;
 
-    if (jQuery && !document.body.hasAttribute('data-no-jquery')) {
+    if (jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
       return jQuery;
     }
 
@@ -133,7 +133,7 @@
   var EVENT_LOAD_DATA_API = "load" + EVENT_KEY + DATA_API_KEY;
   var CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item';
   var CLASS_NAME_ACTIVE = 'active';
-  var SELECTOR_DATA_SPY = '[data-spy="scroll"]';
+  var SELECTOR_DATA_SPY = '[data-bs-spy="scroll"]';
   var SELECTOR_NAV_LIST_GROUP = '.nav, .list-group';
   var SELECTOR_NAV_LINKS = '.nav-link';
   var SELECTOR_NAV_ITEMS = '.nav-item';
@@ -296,7 +296,7 @@
       this._clear();
 
       var queries = this._selector.split(',').map(function (selector) {
-        return selector + "[data-target=\"" + target + "\"]," + selector + "[href=\"" + target + "\"]";
+        return selector + "[data-bs-target=\"" + target + "\"]," + selector + "[href=\"" + target + "\"]";
       });
 
       var link = SelectorEngine__default['default'].findOne(queries.join(','));
