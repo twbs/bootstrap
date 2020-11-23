@@ -51,7 +51,7 @@ $(function () {
 
     var $el = $('<div/>')
     var $toast = $el.bootstrapToast()
-    assert.ok($toast instanceof $, 'returns jquery collection')
+    assert.true($toast instanceof $, 'returns jquery collection')
     assert.strictEqual($toast[0], $el[0], 'collection contains element')
   })
 
@@ -71,7 +71,7 @@ $(function () {
       .appendTo($('#qunit-fixture'))
 
     $toast.on('hidden.bs.toast', function () {
-      assert.strictEqual($toast.hasClass('show'), false)
+      assert.false($toast.hasClass('show'))
       done()
     })
       .bootstrapToast('show')
@@ -93,7 +93,7 @@ $(function () {
       .appendTo($('#qunit-fixture'))
 
     $toast.on('shown.bs.toast', function () {
-      assert.strictEqual($toast.hasClass('fade'), false)
+      assert.false($toast.hasClass('fade'))
       done()
     })
       .bootstrapToast('show')
@@ -119,7 +119,7 @@ $(function () {
         $toast.bootstrapToast('hide')
       })
       .on('hidden.bs.toast', function () {
-        assert.strictEqual($toast.hasClass('show'), false)
+        assert.false($toast.hasClass('show'))
         done()
       })
       .bootstrapToast('show')
@@ -136,7 +136,7 @@ $(function () {
 
     $toast.bootstrapToast('hide')
 
-    assert.strictEqual(spy.called, true)
+    assert.true(spy.called)
   })
 
   QUnit.test('should allow to destroy toast', function (assert) {
@@ -146,11 +146,11 @@ $(function () {
       .bootstrapToast()
       .appendTo($('#qunit-fixture'))
 
-    assert.ok(typeof $toast.data('bs.toast') !== 'undefined')
+    assert.notStrictEqual(typeof $toast.data('bs.toast'), 'undefined')
 
     $toast.bootstrapToast('dispose')
 
-    assert.ok(typeof $toast.data('bs.toast') === 'undefined')
+    assert.strictEqual(typeof $toast.data('bs.toast'), 'undefined')
   })
 
   QUnit.test('should allow to destroy toast and hide it before that', function (assert) {
@@ -170,13 +170,13 @@ $(function () {
 
     $toast.one('shown.bs.toast', function () {
       setTimeout(function () {
-        assert.ok($toast.hasClass('show'))
-        assert.ok(typeof $toast.data('bs.toast') !== 'undefined')
+        assert.true($toast.hasClass('show'))
+        assert.notStrictEqual(typeof $toast.data('bs.toast'), 'undefined')
 
         $toast.bootstrapToast('dispose')
 
-        assert.ok(typeof $toast.data('bs.toast') === 'undefined')
-        assert.ok($toast.hasClass('show') === false)
+        assert.strictEqual(typeof $toast.data('bs.toast'), 'undefined')
+        assert.false($toast.hasClass('show'))
 
         done()
       }, 1)
@@ -202,7 +202,7 @@ $(function () {
       .appendTo($('#qunit-fixture'))
 
     $toast.on('shown.bs.toast', function () {
-      assert.strictEqual($toast.hasClass('show'), true)
+      assert.true($toast.hasClass('show'))
       done()
     })
       .bootstrapToast('show')
@@ -225,12 +225,12 @@ $(function () {
 
     $toast
       .on('shown.bs.toast', function () {
-        assert.strictEqual($toast.hasClass('show'), true)
+        assert.true($toast.hasClass('show'))
         var button = $toast.find('.close')
         button.trigger('click')
       })
       .on('hidden.bs.toast', function () {
-        assert.strictEqual($toast.hasClass('show'), false)
+        assert.false($toast.hasClass('show'))
         done()
       })
       .bootstrapToast('show')
@@ -274,7 +274,7 @@ $(function () {
     var shownCalled = false
     function assertDone() {
       setTimeout(function () {
-        assert.strictEqual(shownCalled, false)
+        assert.false(shownCalled)
         done()
       }, 20)
     }
@@ -311,8 +311,8 @@ $(function () {
     setTimeout(function () {
       toast._config.autohide = false
       $toast.on('shown.bs.toast', function () {
-        assert.ok(spyClearTimeout.called)
-        assert.ok(toast._timeout === null)
+        assert.true(spyClearTimeout.called)
+        assert.strictEqual(toast._timeout, null)
         done()
       })
       $toast.bootstrapToast('show')
@@ -339,7 +339,7 @@ $(function () {
     var hiddenCalled = false
     function assertDone() {
       setTimeout(function () {
-        assert.strictEqual(hiddenCalled, false)
+        assert.false(hiddenCalled)
         done()
       }, 20)
     }
