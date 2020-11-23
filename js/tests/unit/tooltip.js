@@ -1283,4 +1283,54 @@ $(function () {
 
     assert.strictEqual(popperConfig.placement, 'left')
   })
+
+  QUnit.test('additional classes can be applied via data attribute', function (assert) {
+    assert.expect(2)
+
+    $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip" data-custom-class="a b"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip()
+      .bootstrapTooltip('show')
+
+    var tooltip = $('.tooltip')
+
+    assert.strictEqual(tooltip.hasClass('a b'), true)
+    assert.strictEqual(tooltip.hasClass('tooltip fade bs-tooltip-top show'), true)
+  })
+
+  QUnit.test('additional classes can be applied via config string', function (assert) {
+    assert.expect(2)
+
+    $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip" />')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        customClass: 'a b'
+      })
+      .bootstrapTooltip('show')
+
+    var tooltip = $('.tooltip')
+
+    assert.strictEqual(tooltip.hasClass('a b'), true)
+    assert.strictEqual(tooltip.hasClass('tooltip fade bs-tooltip-top show'), true)
+  })
+
+  QUnit.test('additional classes can be applied via function', function (assert) {
+    assert.expect(2)
+
+    var getClasses = function () {
+      return 'a b'
+    }
+
+    $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip" />')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        customClass: getClasses
+      })
+      .bootstrapTooltip('show')
+
+    var tooltip = $('.tooltip')
+
+    assert.strictEqual(tooltip.hasClass('a b'), true)
+    assert.strictEqual(tooltip.hasClass('tooltip fade bs-tooltip-top show'), true)
+  })
 })

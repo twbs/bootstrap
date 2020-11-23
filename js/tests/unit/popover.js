@@ -61,6 +61,19 @@ $(function () {
       .bootstrapPopover('show')
   })
 
+  QUnit.test('should render popover element with additional classes', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    $('<a href="#" title="mdo" data-content="https://twitter.com/mdo" data-custom-class="a b">@mdo</a>')
+      .appendTo('#qunit-fixture')
+      .on('shown.bs.popover', function () {
+        assert.strictEqual($('.popover').hasClass('popover fade bs-popover-right show'), true, 'has default classes')
+        assert.strictEqual($('.popover').hasClass('a b'), true, 'has custom classes')
+        done()
+      })
+      .bootstrapPopover('show')
+  })
+
   QUnit.test('should store popover instance in popover data object', function (assert) {
     assert.expect(1)
     var $popover = $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>').bootstrapPopover()

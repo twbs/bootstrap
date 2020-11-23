@@ -230,39 +230,35 @@ class Modal {
   }
 
   _triggerBackdropTransition() {
-    if (this._config.backdrop === 'static') {
-      const hideEventPrevented = $.Event(EVENT_HIDE_PREVENTED)
+    const hideEventPrevented = $.Event(EVENT_HIDE_PREVENTED)
 
-      $(this._element).trigger(hideEventPrevented)
-      if (hideEventPrevented.isDefaultPrevented()) {
-        return
-      }
-
-      const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
-
-      if (!isModalOverflowing) {
-        this._element.style.overflowY = 'hidden'
-      }
-
-      this._element.classList.add(CLASS_NAME_STATIC)
-
-      const modalTransitionDuration = Util.getTransitionDurationFromElement(this._dialog)
-      $(this._element).off(Util.TRANSITION_END)
-
-      $(this._element).one(Util.TRANSITION_END, () => {
-        this._element.classList.remove(CLASS_NAME_STATIC)
-        if (!isModalOverflowing) {
-          $(this._element).one(Util.TRANSITION_END, () => {
-            this._element.style.overflowY = ''
-          })
-            .emulateTransitionEnd(this._element, modalTransitionDuration)
-        }
-      })
-        .emulateTransitionEnd(modalTransitionDuration)
-      this._element.focus()
-    } else {
-      this.hide()
+    $(this._element).trigger(hideEventPrevented)
+    if (hideEventPrevented.isDefaultPrevented()) {
+      return
     }
+
+    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
+
+    if (!isModalOverflowing) {
+      this._element.style.overflowY = 'hidden'
+    }
+
+    this._element.classList.add(CLASS_NAME_STATIC)
+
+    const modalTransitionDuration = Util.getTransitionDurationFromElement(this._dialog)
+    $(this._element).off(Util.TRANSITION_END)
+
+    $(this._element).one(Util.TRANSITION_END, () => {
+      this._element.classList.remove(CLASS_NAME_STATIC)
+      if (!isModalOverflowing) {
+        $(this._element).one(Util.TRANSITION_END, () => {
+          this._element.style.overflowY = ''
+        })
+          .emulateTransitionEnd(this._element, modalTransitionDuration)
+      }
+    })
+      .emulateTransitionEnd(modalTransitionDuration)
+    this._element.focus()
   }
 
   _showElement(relatedTarget) {
@@ -400,7 +396,11 @@ class Modal {
           return
         }
 
-        this._triggerBackdropTransition()
+        if (this._config.backdrop === 'static') {
+          this._triggerBackdropTransition()
+        } else {
+          this.hide()
+        }
       })
 
       if (animate) {
