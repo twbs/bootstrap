@@ -32,6 +32,7 @@
     "css-prefix": "npm-run-all --parallel css-prefix-*",
     "css-prefix-main": "postcss --config build/postcss.config.js --replace \"dist/css/*.css\" \"!dist/css/*.rtl*.css\" \"!dist/css/*.min.css\"",
     "css-prefix-examples": "postcss --config build/postcss.config.js --replace \"site/content/**/*.css\"",
+    "css-prefix-examples-rtl": "cross-env NODE_ENV=RTL postcss --config build/postcss.config.js --dir \"site/content/docs/$npm_package_version_short/examples/\" --ext \".rtl.css\" --base \"site/content/docs/$npm_package_version_short/examples/\" \"site/content/docs/$npm_package_version_short/examples/{blog,carousel,dashboard,cheatsheet}/*.css\" \"!site/content/docs/$npm_package_version_short/examples/{blog,carousel,dashboard,cheatsheet}/*.rtl.css\"",
     "js": "npm-run-all js-compile js-minify",
     "js-compile": "npm-run-all --parallel js-compile-*",
     "js-compile-standalone": "rollup --environment BUNDLE:false --config build/rollup.config.js --sourcemap",
