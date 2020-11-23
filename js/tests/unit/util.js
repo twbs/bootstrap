@@ -67,7 +67,7 @@ $(function () {
 
     Util.typeCheckConfig(namePlugin, config, defaultType)
 
-    assert.strictEqual(true, true)
+    assert.true(true)
   })
 
   QUnit.test('Util.isElement should check if we passed an element or not', function (assert) {
@@ -76,7 +76,7 @@ $(function () {
 
     assert.strictEqual(Util.isElement($div), 1)
     assert.strictEqual(Util.isElement($div[0]), 1)
-    assert.strictEqual(typeof Util.isElement({}) === 'undefined', true)
+    assert.strictEqual(typeof Util.isElement({}), 'undefined')
   })
 
   QUnit.test('Util.getTransitionDurationFromElement should accept transition durations in milliseconds', function (assert) {
@@ -129,18 +129,18 @@ $(function () {
     var id = Util.getUID('test')
     var id2 = Util.getUID('test')
 
-    assert.ok(id !== id2, id + ' !== ' + id2)
+    assert.notStrictEqual(id, id2, id + ' !== ' + id2)
 
     id = Util.getUID('test')
     $('<div id="' + id + '"></div>').appendTo($('#qunit-fixture'))
 
     id2 = Util.getUID('test')
-    assert.ok(id !== id2, id + ' !== ' + id2)
+    assert.notStrictEqual(id, id2, id + ' !== ' + id2)
   })
 
   QUnit.test('Util.supportsTransitionEnd should return true', function (assert) {
     assert.expect(1)
-    assert.ok(Util.supportsTransitionEnd())
+    assert.true(Util.supportsTransitionEnd())
   })
 
   QUnit.test('Util.findShadowRoot should find the shadow DOM root', function (assert) {
@@ -166,7 +166,7 @@ $(function () {
 
     var $div = $('<div id="test"></div>').appendTo($('#qunit-fixture'))
     if (!document.documentElement.attachShadow) {
-      assert.strictEqual(null, Util.findShadowRoot($div[0]))
+      assert.strictEqual(Util.findShadowRoot($div[0]), null)
     } else {
       var sandbox = sinon.createSandbox()
 
@@ -175,7 +175,7 @@ $(function () {
         return $div
       })
 
-      assert.strictEqual(null, Util.findShadowRoot($div[0]))
+      assert.strictEqual(Util.findShadowRoot($div[0]), null)
       sandbox.restore()
     }
   })

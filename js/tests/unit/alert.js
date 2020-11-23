@@ -29,7 +29,7 @@ $(function () {
     assert.expect(2)
     var $el = $('<div/>')
     var $alert = $el.bootstrapAlert()
-    assert.ok($alert instanceof $, 'returns jquery collection')
+    assert.true($alert instanceof $, 'returns jquery collection')
     assert.strictEqual($alert[0], $el[0], 'collection contains element')
   })
 
@@ -44,7 +44,7 @@ $(function () {
 
     $alert.find('.close').trigger('click')
 
-    assert.strictEqual($alert.hasClass('show'), false, 'remove .show class on .close click')
+    assert.false($alert.hasClass('show'), 'remove .show class on .close click')
   })
 
   QUnit.test('should remove element when clicking .close', function (assert) {
@@ -104,18 +104,18 @@ $(function () {
     var $el = $('<div/>')
     var $alert = $el.bootstrapAlert()
 
-    assert.ok(typeof $alert.data('bs.alert') !== 'undefined')
+    assert.notStrictEqual(typeof $alert.data('bs.alert'), 'undefined')
 
     $alert.data('bs.alert').dispose()
 
-    assert.ok(typeof $alert.data('bs.button') === 'undefined')
+    assert.strictEqual(typeof $alert.data('bs.button'), 'undefined')
   })
 
   QUnit.test('should return alert version', function (assert) {
     assert.expect(1)
 
     if (typeof Alert !== 'undefined') {
-      assert.ok(typeof Alert.VERSION === 'string')
+      assert.strictEqual(typeof Alert.VERSION, 'string')
     } else {
       assert.notOk()
     }
