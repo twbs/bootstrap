@@ -43,6 +43,12 @@ toc: true
 - File inputs now use the `.form-control` class and don't require JavaScript, additional HTML, or additional classes. [See #31955](https://github.com/twbs/bootstrap/pull/31955).
 - Added `cursor:pointer` to `.form-control-color` color inputs.
 
+### Components
+
+#### Breadcrumbs
+
+- Set the default padding to `0`, and the background color and border to `null`, for the `.breadcrumb` styles. These can still be overridden using the `$breadcrumb-padding-x`, `$breadcrumb-padding-y`, `$breadcrumb-bg`, and `$breadcrumb-border-radius` variables.
+
 ### Utilities
 
 - **Text utilities:**
