@@ -188,7 +188,7 @@ For quoting blocks of content from another source within your document. Wrap `<b
 
 {{< example >}}
 <blockquote class="blockquote">
-  <p>>A well-known quote, contained in a blockquote element.</p>
+  <p>A well-known quote, contained in a blockquote element.</p>
 </blockquote>
 {{< /example >}}
 
@@ -199,7 +199,7 @@ The HTML spec requires that blockquote attribution be placed outside the `<block
 {{< example >}}
 <figure>
   <blockquote class="blockquote">
-    <p>>A well-known quote, contained in a blockquote element.</p>
+    <p>A well-known quote, contained in a blockquote element.</p>
   </blockquote>
   <figcaption class="blockquote-footer">
     Someone famous in <cite title="Source Title">Source Title</cite>
@@ -214,7 +214,7 @@ Use text utilities as needed to change the alignment of your blockquote.
 {{< example >}}
 <figure class="text-center">
   <blockquote class="blockquote">
-    <p>>A well-known quote, contained in a blockquote element.</p>
+    <p>A well-known quote, contained in a blockquote element.</p>
   </blockquote>
   <figcaption class="blockquote-footer">
     Someone famous in <cite title="Source Title">Source Title</cite>
@@ -225,7 +225,7 @@ Use text utilities as needed to change the alignment of your blockquote.
 {{< example >}}
 <figure class="text-right">
   <blockquote class="blockquote">
-    <p>>A well-known quote, contained in a blockquote element.</p>
+    <p>A well-known quote, contained in a blockquote element.</p>
   </blockquote>
   <figcaption class="blockquote-footer">
     Someone famous in <cite title="Source Title">Source Title</cite>
