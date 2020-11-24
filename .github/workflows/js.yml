@@ -9,6 +9,7 @@ on:
 env:
   CI: true
   FORCE_COLOR: 2
+  OPENCOLLECTIVE_HIDE: true
 
 jobs:
   run:

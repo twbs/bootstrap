@@ -10,6 +10,7 @@ env:
   CI: true
   FORCE_COLOR: 2
   NODE: 14.x
+  OPENCOLLECTIVE_HIDE: true
 
 jobs:
   bundlewatch:
