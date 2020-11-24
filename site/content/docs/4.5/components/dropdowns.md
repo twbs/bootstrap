@@ -10,7 +10,7 @@ toc: true
 
 Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They're made interactive with the included Bootstrap dropdown JavaScript plugin. They're toggled by clicking, not by hovering; this is [an intentional design decision](https://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/).
 
-Dropdowns are built on a third party library, [Popper.js](https://popper.js.org/), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js]({{< param "cdn.popper" >}}) before Bootstrap's JavaScript or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js. Popper.js isn't used to position dropdowns in navbars though as dynamic positioning isn't required.
+Dropdowns are built on a third party library, [Popper](https://popper.js.org/), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js]({{< param "cdn.popper" >}}) before Bootstrap's JavaScript or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper. Popper isn't used to position dropdowns in navbars though as dynamic positioning isn't required.
 
 If you're building our JavaScript from source, it [requires `util.js`]({{< docsref "/getting-started/javascript#util" >}}).
 
@@ -590,7 +590,7 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. Add `.dropdown-menu-right` to a `.dropdown-menu` to right align the dropdown menu.
 
 {{< callout info >}}
-**Heads up!** Dropdowns are positioned thanks to Popper.js (except when they are contained in a navbar).
+**Heads up!** Dropdowns are positioned thanks to Popper (except when they are contained in a navbar).
 {{< /callout >}}
 
 {{< example >}}
@@ -640,7 +640,7 @@ To align **left** the dropdown menu with the given breakpoint or larger, add `.d
 </div>
 {{< /example >}}
 
-Note that you don't need to add a `data-display="static"` attribute to dropdown buttons in navbars, since Popper.js isn't used in navbars.
+Note that you don't need to add a `data-display="static"` attribute to dropdown buttons in navbars, since Popper isn't used in navbars.
 
 ## Menu content
 
@@ -772,7 +772,7 @@ Use `data-offset` or `data-reference` to change the location of the dropdown.
 
 ## Usage
 
-Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the `.show` class on the parent list item. The `data-toggle="dropdown"` attribute is relied on for closing dropdown menus at an application level, so it's a good idea to always use it.
+Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the `.show` class on the parent `.dropdown-menu`. The `data-toggle="dropdown"` attribute is relied on for closing dropdown menus at an application level, so it's a good idea to always use it.
 
 {{< callout info >}}
 On touch-enabled devices, opening a dropdown adds empty (`$.noop`) `mouseover` handlers to the immediate children of the `<body>` element. This admittedly ugly hack is necessary to work around a [quirk in iOS' event delegation](https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html), which would otherwise prevent a tap anywhere outside of the dropdown from triggering the code that closes the dropdown. Once the dropdown is closed, these additional empty `mouseover` handlers are removed.
@@ -828,38 +828,38 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>
         <p>Offset of the dropdown relative to its target.</p>
         <p>When a function is used to determine the offset, it is called with an object containing the offset data as its first argument. The function must return an object with the same structure. The triggering element DOM node is passed as the second argument.</p>
-        <p>For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..offset.offset">offset docs</a>.</p>
+        <p>For more information refer to Popper's <a href="https://popper.js.org/docs/v1/#modifiers..offset.offset">offset docs</a>.</p>
       </td>
     </tr>
     <tr>
       <td>flip</td>
       <td>boolean</td>
       <td>true</td>
-      <td>Allow Dropdown to flip in case of an overlapping on the reference element. For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..flip.enabled">flip docs</a>.</td>
+      <td>Allow Dropdown to flip in case of an overlapping on the reference element. For more information refer to Popper's <a href="https://popper.js.org/docs/v1/#modifiers..flip.enabled">flip docs</a>.</td>
     </tr>
     <tr>
       <td>boundary</td>
       <td>string | element</td>
       <td>'scrollParent'</td>
-      <td>Overflow constraint boundary of the dropdown menu. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
+      <td>Overflow constraint boundary of the dropdown menu. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper's <a href="https://popper.js.org/docs/v1/#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
     </tr>
     <tr>
       <td>reference</td>
       <td>string | element</td>
       <td>'toggle'</td>
-      <td>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, or an HTMLElement reference. For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#referenceObject">referenceObject docs</a>.</td>
+      <td>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, or an HTMLElement reference. For more information refer to Popper's <a href="https://popper.js.org/docs/v1/#referenceObject">referenceObject docs</a>.</td>
     </tr>
     <tr>
       <td>display</td>
       <td>string</td>
       <td>'dynamic'</td>
-      <td>By default, we use Popper.js for dynamic positioning. Disable this with <code>static</code>.</td>
+      <td>By default, we use Popper for dynamic positioning. Disable this with <code>static</code>.</td>
     </tr>
     <tr>
       <td>popperConfig</td>
       <td>null | object</td>
       <td>null</td>
-      <td>To change Bootstrap's default Popper.js config, see <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper.js's configuration</a></td>
+      <td>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper's configuration</a></td>
     </tr>
   </tbody>
 </table>

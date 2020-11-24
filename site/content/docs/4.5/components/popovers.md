@@ -10,7 +10,7 @@ toc: true
 
 Things to know when using the popover plugin:
 
-- Popovers rely on the 3rd party library [Popper.js](https://popper.js.org/) for positioning. You must include [popper.min.js]({{< param "cdn.popper" >}}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js in order for popovers to work!
+- Popovers rely on the 3rd party library [Popper](https://popper.js.org/) for positioning. You must include [popper.min.js]({{< param "cdn.popper" >}}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper in order for popovers to work!
 - Popovers require the [tooltip plugin]({{< docsref "/components/tooltips" >}}) as a dependency.
 - If you're building our JavaScript from source, it [requires `util.js`]({{< docsref "/getting-started/javascript#util" >}}).
 - Popovers are opt-in for performance reasons, so **you must initialize them yourself**.
@@ -260,21 +260,21 @@ Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` opti
       <td>offset</td>
       <td>number | string</td>
       <td>0</td>
-      <td>Offset of the popover relative to its target. For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..offset.offset">offset docs</a>.</td>
+      <td>Offset of the popover relative to its target. For more information refer to Popper's <a href="https://popper.js.org/docs/v1/#modifiers..offset.offset">offset docs</a>.</td>
     </tr>
     <tr>
       <td>fallbackPlacement</td>
       <td>string | array</td>
       <td>'flip'</td>
       <td>Allow to specify which position Popper will use on fallback. For more information refer to
-      Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..flip.behavior">behavior docs</a></td>
+      Popper's <a href="https://popper.js.org/docs/v1/#modifiers..flip.behavior">behavior docs</a></td>
     </tr>
     <tr>
       <td>customClass</td>
       <td>string | function</td>
       <td>''</td>
       <td>
-        <p>Add classes to the popover when it is shown. Note that these classes will be added in addition to any classes specified in the template. To add mutiple classes, separate them with spaces: <code>'a b'</code>.</p>
+        <p>Add classes to the popover when it is shown. Note that these classes will be added in addition to any classes specified in the template. To add multiple classes, separate them with spaces: <code>'a b'</code>.</p>
         <p>You can also pass a function that should return a single string containing additional class names.</p>
       </td>
     </tr>
@@ -282,7 +282,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` opti
       <td>boundary</td>
       <td>string | element</td>
       <td>'scrollParent'</td>
-      <td>Overflow constraint boundary of the popover. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
+      <td>Overflow constraint boundary of the popover. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper's <a href="https://popper.js.org/docs/v1/#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
     </tr>
     <tr>
       <td>sanitize</td>
@@ -306,7 +306,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` opti
       <td>popperConfig</td>
       <td>null | object</td>
       <td>null</td>
-      <td>To change Bootstrap's default Popper.js config, see <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper.js's configuration</a></td>
+      <td>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper's configuration</a></td>
     </tr>
   </tbody>
 </table>
