@@ -242,7 +242,7 @@ Remove the default `list-style` and left margin on list items (immediate childre
 {{< example >}}
 <ul class="list-unstyled">
   <li>This is a list.</li>
-  <li>It appear completely unstyled.</li>
+  <li>It appears completely unstyled.</li>
   <li>Structurally, it's still a list.</li>
   <li>However, this style only applies to immediate child elements.</li>
   <li>Nested lists:
