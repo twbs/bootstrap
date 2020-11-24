@@ -34,7 +34,7 @@
   };
 
   var getSelector = function getSelector(element) {
-    var selector = element.getAttribute('data-target');
+    var selector = element.getAttribute('data-bs-target');
 
     if (!selector || selector === '#') {
       var hrefAttr = element.getAttribute('href');
@@ -59,8 +59,8 @@
         transitionDuration = _window$getComputedSt.transitionDuration,
         transitionDelay = _window$getComputedSt.transitionDelay;
 
-    var floatTransitionDuration = parseFloat(transitionDuration);
-    var floatTransitionDelay = parseFloat(transitionDelay); // Return 0 if element or transition duration is not found
+    var floatTransitionDuration = Number.parseFloat(transitionDuration);
+    var floatTransitionDelay = Number.parseFloat(transitionDelay); // Return 0 if element or transition duration is not found
 
     if (!floatTransitionDuration && !floatTransitionDelay) {
       return 0;
@@ -69,7 +69,7 @@
 
     transitionDuration = transitionDuration.split(',')[0];
     transitionDelay = transitionDelay.split(',')[0];
-    return (parseFloat(transitionDuration) + parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER;
+    return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER;
   };
 
   var triggerTransitionEnd = function triggerTransitionEnd(element) {
@@ -132,7 +132,7 @@
     var _window = window,
         jQuery = _window.jQuery;
 
-    if (jQuery && !document.body.hasAttribute('data-no-jquery')) {
+    if (jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
       return jQuery;
     }
 
@@ -196,8 +196,8 @@
   var CLASS_NAME_STATIC = 'modal-static';
   var SELECTOR_DIALOG = '.modal-dialog';
   var SELECTOR_MODAL_BODY = '.modal-body';
-  var SELECTOR_DATA_TOGGLE = '[data-toggle="modal"]';
-  var SELECTOR_DATA_DISMISS = '[data-dismiss="modal"]';
+  var SELECTOR_DATA_TOGGLE = '[data-bs-toggle="modal"]';
+  var SELECTOR_DATA_DISMISS = '[data-bs-dismiss="modal"]';
   var SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top';
   var SELECTOR_STICKY_CONTENT = '.sticky-top';
   /**
@@ -508,7 +508,11 @@
             return;
           }
 
-          _this8._triggerBackdropTransition();
+          if (_this8._config.backdrop === 'static') {
+            _this8._triggerBackdropTransition();
+          } else {
+            _this8.hide();
+          }
         });
 
         if (animate) {
@@ -550,39 +554,35 @@
     _proto._triggerBackdropTransition = function _triggerBackdropTransition() {
       var _this9 = this;
 
-      if (this._config.backdrop === 'static') {
-        var hideEvent = EventHandler__default['default'].trigger(this._element, EVENT_HIDE_PREVENTED);
+      var hideEvent = EventHandler__default['default'].trigger(this._element, EVENT_HIDE_PREVENTED);
 
-        if (hideEvent.defaultPrevented) {
-          return;
-        }
+      if (hideEvent.defaultPrevented) {
+        return;
+      }
 
-        var isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
+      var isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
+
+      if (!isModalOverflowing) {
+        this._element.style.overflowY = 'hidden';
+      }
+
+      this._element.classList.add(CLASS_NAME_STATIC);
+
+      var modalTransitionDuration = getTransitionDurationFromElement(this._dialog);
+      EventHandler__default['default'].off(this._element, TRANSITION_END);
+      EventHandler__default['default'].one(this._element, TRANSITION_END, function () {
+        _this9._element.classList.remove(CLASS_NAME_STATIC);
 
         if (!isModalOverflowing) {
-          this._element.style.overflowY = 'hidden';
+          EventHandler__default['default'].one(_this9._element, TRANSITION_END, function () {
+            _this9._element.style.overflowY = '';
+          });
+          emulateTransitionEnd(_this9._element, modalTransitionDuration);
         }
+      });
+      emulateTransitionEnd(this._element, modalTransitionDuration);
 
-        this._element.classList.add(CLASS_NAME_STATIC);
-
-        var modalTransitionDuration = getTransitionDurationFromElement(this._dialog);
-        EventHandler__default['default'].off(this._element, TRANSITION_END);
-        EventHandler__default['default'].one(this._element, TRANSITION_END, function () {
-          _this9._element.classList.remove(CLASS_NAME_STATIC);
-
-          if (!isModalOverflowing) {
-            EventHandler__default['default'].one(_this9._element, TRANSITION_END, function () {
-              _this9._element.style.overflowY = '';
-            });
-            emulateTransitionEnd(_this9._element, modalTransitionDuration);
-          }
-        });
-        emulateTransitionEnd(this._element, modalTransitionDuration);
-
-        this._element.focus();
-      } else {
-        this.hide();
-      }
+      this._element.focus();
     } // ----------------------------------------------------------------------
     // the following methods are used to handle overflowing modals
     // ----------------------------------------------------------------------
@@ -622,20 +622,20 @@
           var actualPadding = element.style.paddingRight;
           var calculatedPadding = window.getComputedStyle(element)['padding-right'];
           Manipulator__default['default'].setDataAttribute(element, 'padding-right', actualPadding);
-          element.style.paddingRight = parseFloat(calculatedPadding) + _this10._scrollbarWidth + "px";
+          element.style.paddingRight = Number.parseFloat(calculatedPadding) + _this10._scrollbarWidth + "px";
         }); // Adjust sticky content margin
 
         SelectorEngine__default['default'].find(SELECTOR_STICKY_CONTENT).forEach(function (element) {
           var actualMargin = element.style.marginRight;
           var calculatedMargin = window.getComputedStyle(element)['margin-right'];
           Manipulator__default['default'].setDataAttribute(element, 'margin-right', actualMargin);
-          element.style.marginRight = parseFloat(calculatedMargin) - _this10._scrollbarWidth + "px";
+          element.style.marginRight = Number.parseFloat(calculatedMargin) - _this10._scrollbarWidth + "px";
         }); // Adjust body padding
 
         var actualPadding = document.body.style.paddingRight;
         var calculatedPadding = window.getComputedStyle(document.body)['padding-right'];
         Manipulator__default['default'].setDataAttribute(document.body, 'padding-right', actualPadding);
-        document.body.style.paddingRight = parseFloat(calculatedPadding) + this._scrollbarWidth + "px";
+        document.body.style.paddingRight = Number.parseFloat(calculatedPadding) + this._scrollbarWidth + "px";
       }
 
       document.body.classList.add(CLASS_NAME_OPEN);

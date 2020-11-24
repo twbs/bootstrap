@@ -988,7 +988,7 @@ Bootstrap's modal class exposes a few events for hooking into modal functionalit
 
 ```js
 var myModalEl = document.getElementById('myModal')
-myModalEl.addEventListener('hidden.bs.modal', function (e) {
+myModalEl.addEventListener('hidden.bs.modal', function (event) {
   // do something...
 })
 ```
