@@ -85,6 +85,12 @@
   }
 }
 
+// Explicit override to allow numbers to show when using an <ol>
+ol.list-group > .list-group-item {
+  display: list-item;
+  list-style-position: inside;
+}
+
 
 // Horizontal
 //

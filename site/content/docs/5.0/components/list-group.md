@@ -20,6 +20,18 @@ The most basic list group is an unordered list with list items and the proper cl
 </ul>
 {{< /example >}}
 
+When the `.list-group` class is applied to an `<ol>` ordered list, list item numbers are also shown.
+
+{{< example >}}
+<ol class="list-group">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
+</ol>
+{{< /example >}}
+
 ## Active items
 
 Add `.active` to a `.list-group-item` to indicate the current active selection.
@@ -253,7 +265,6 @@ And if you want `<label>`s as the `.list-group-item` for large hit areas, you ca
   </label>
 </div>
 {{< /example >}}
-
 
 ## JavaScript behavior
 
