@@ -192,7 +192,7 @@ Add nearly any HTML within, even for linked list groups like the one below, with
       <h5 class="mb-1">List group item heading</h5>
       <small class="text-muted">3 days ago</small>
     </div>
-    <p class="mb-1"Some placeholder content in a paragraph.</p>
+    <p class="mb-1">Some placeholder content in a paragraph.</p>
     <small class="text-muted">And some muted small print.</small>
   </a>
 </div>
