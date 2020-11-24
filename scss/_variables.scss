@@ -1028,7 +1028,7 @@ $accordion-button-padding-y:              $accordion-padding-y !default;
 $accordion-button-padding-x:              $accordion-padding-x !default;
 $accordion-button-color:                  $accordion-color !default;
 $accordion-button-bg:                     $accordion-bg !default;
-$accordion-transition:                    $btn-transition, border-radius .15s ease !default;
+$accordion-transition:                    $btn-transition, border-radius .15s ease, border .35s ease !default; // border transition matches speed of transition-collapse
 $accordion-button-active-bg:              tint-color($component-active-bg, 90%) !default;
 $accordion-button-active-color:           shade-color($primary, 10%) !default;
 
