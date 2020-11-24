@@ -100,7 +100,7 @@ describe('Dropdown', () => {
       expect(dropdown.toggle).toHaveBeenCalled()
     })
 
-    it('should allow to pass config to popper.js with `popperConfig`', () => {
+    it('should allow to pass config to Popper with `popperConfig`', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -841,7 +841,7 @@ describe('Dropdown', () => {
       expect(dropdown._element).toBeNull()
     })
 
-    it('should dispose dropdown with popper.js', () => {
+    it('should dispose dropdown with Popper', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -872,7 +872,7 @@ describe('Dropdown', () => {
   })
 
   describe('update', () => {
-    it('should call popper.js and detect navbar on update', () => {
+    it('should call Popper and detect navbar on update', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -1005,7 +1005,7 @@ describe('Dropdown', () => {
       btnDropdown.click()
     })
 
-    it('should not use popper.js in navbar', done => {
+    it('should not use Popper in navbar', done => {
       fixtureEl.innerHTML = [
         '<nav class="navbar navbar-expand-md navbar-light bg-light">',
         '  <div class="dropdown">',
@@ -1022,14 +1022,14 @@ describe('Dropdown', () => {
       const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
 
       dropdownEl.addEventListener('shown.bs.dropdown', () => {
-        expect(dropdownMenu.getAttribute('style')).toEqual(null, 'no inline style applied by popper.js')
+        expect(dropdownMenu.getAttribute('style')).toEqual(null, 'no inline style applied by Popper')
         done()
       })
 
       btnDropdown.click()
     })
 
-    it('should not use popper.js if display set to static', done => {
+    it('should not use Popper if display set to static', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">Dropdown</button>',
@@ -1044,7 +1044,7 @@ describe('Dropdown', () => {
       const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
 
       dropdownEl.addEventListener('shown.bs.dropdown', () => {
-        // popper.js add this attribute when we use it
+        // Popper adds this attribute when we use it
         expect(dropdownMenu.getAttribute('x-placement')).toEqual(null)
         done()
       })

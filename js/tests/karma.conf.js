@@ -33,7 +33,7 @@ const detectBrowsers = {
       return debug ? ['Chrome'] : ['ChromeHeadless']
     }
 
-    if (env.CI === true || availableBrowser.includes('Chromium')) {
+    if (availableBrowser.includes('Chromium')) {
       return debug ? ['Chromium'] : ['ChromiumHeadless']
     }
 
