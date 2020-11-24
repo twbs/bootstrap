@@ -342,8 +342,8 @@ var triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
 triggerTabList.forEach(function (triggerEl) {
   var tabTrigger = new bootstrap.Tab(triggerEl)
 
-  triggerEl.addEventListener('click', function (e) {
-    e.preventDefault()
+  triggerEl.addEventListener('click', function (event) {
+    event.preventDefault()
     tabTrigger.show()
   })
 })
@@ -465,8 +465,8 @@ If no tab was already active, the `hide.bs.tab` and `hidden.bs.tab` events will 
 
 ```js
 var tabEl = document.querySelector('a[data-bs-toggle="list"]')
-tabEl.addEventListener('shown.bs.tab', function (e) {
-  e.target // newly activated tab
-  e.relatedTarget // previous active tab
+tabEl.addEventListener('shown.bs.tab', function (event) {
+  event.target // newly activated tab
+  event.relatedTarget // previous active tab
 })
 ```
