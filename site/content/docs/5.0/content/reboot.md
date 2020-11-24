@@ -114,7 +114,7 @@ All lists—`<ul>`, `<ol>`, and `<dl>`—have their `margin-top` removed and a `
 <div class="bd-example">
 {{< markdown >}}
 * All lists have their top margin removed
-* And their bottom margin normalised
+* And their bottom margin normalized
 * Nested lists have no bottom margin
   * This way they have a more even appearance
   * Particularly when followed by more list items
