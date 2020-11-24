@@ -820,7 +820,7 @@ Bootstrap's modal class exposes a few events for hooking into modal functionalit
 </table>
 
 ```js
-$('#myModal').on('hidden.bs.modal', function (e) {
+$('#myModal').on('hidden.bs.modal', function (event) {
   // do something...
 })
 ```

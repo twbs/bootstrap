@@ -747,7 +747,7 @@ $(function () {
     $dropdown.trigger('click')
   })
 
-  QUnit.test('Dropdown should not use Popper.js in navbar', function (assert) {
+  QUnit.test('Dropdown should not use Popper in navbar', function (assert) {
     assert.expect(1)
     var done = assert.async()
     var html = '<nav class="navbar navbar-expand-md navbar-light bg-light">' +
@@ -770,7 +770,7 @@ $(function () {
     $triggerDropdown
       .parent('.dropdown')
       .on('shown.bs.dropdown', function () {
-        assert.ok(typeof $dropdownMenu.attr('style') === 'undefined', 'No inline style applied by Popper.js')
+        assert.ok(typeof $dropdownMenu.attr('style') === 'undefined', 'No inline style applied by Popper')
         done()
       })
     $triggerDropdown.trigger($.Event('click'))
@@ -1084,7 +1084,7 @@ $(function () {
     done()
   })
 
-  QUnit.test('should not use Popper.js if display set to static', function (assert) {
+  QUnit.test('should not use Popper if display set to static', function (assert) {
     assert.expect(1)
     var dropdownHTML =
         '<div class="dropdown">' +
@@ -1106,7 +1106,7 @@ $(function () {
 
     $dropdown.parent('.dropdown')
       .on('shown.bs.dropdown', function () {
-        // Popper.js add this attribute when we use it
+        // Popper adds this attribute when we use it
         assert.strictEqual(dropdownMenu.getAttribute('x-placement'), null)
         done()
       })
@@ -1114,7 +1114,7 @@ $(function () {
     $dropdown.trigger('click')
   })
 
-  QUnit.test('should call Popper.js and detect navbar on update', function (assert) {
+  QUnit.test('should call Popper and detect navbar on update', function (assert) {
     assert.expect(3)
 
     var dropdownHTML =
@@ -1546,7 +1546,7 @@ $(function () {
     assert.ok(typeof offset.fn === 'undefined')
   })
 
-  QUnit.test('should allow to pass config to popper.js with `popperConfig`', function (assert) {
+  QUnit.test('should allow to pass config to Popper with `popperConfig`', function (assert) {
     assert.expect(1)
 
     var dropdownHTML =

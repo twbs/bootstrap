@@ -100,7 +100,7 @@
   }
 }
 
-// When enabled Popper.js, reset basic dropdown position
+// When Popper is enabled, reset the basic dropdown position
 // stylelint-disable-next-line no-duplicate-selectors
 .dropdown-menu {
   &[x-placement^="top"],

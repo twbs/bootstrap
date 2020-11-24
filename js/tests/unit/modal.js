@@ -934,10 +934,10 @@ $(function () {
       })
   })
 
-  QUnit.test('should not close modal when escape key is pressed with keyboard = false and backdrop = static', function (assert) {
+  QUnit.test('should not close modal when escape key is pressed with keyboard = false', function (assert) {
     assert.expect(1)
     var done = assert.async()
-    var $modal = $('<div class="modal" data-backdrop="static" data-keyboard="false"><div class="modal-dialog" /></div>').appendTo('#qunit-fixture')
+    var $modal = $('<div class="modal"><div class="modal-dialog" /></div>').appendTo('#qunit-fixture')
 
     $modal.on('shown.bs.modal', function () {
       $modal.trigger($.Event('keydown', {
@@ -955,7 +955,6 @@ $(function () {
         assert.strictEqual(false, true, 'should not hide the modal')
       })
       .bootstrapModal({
-        backdrop: 'static',
         keyboard: false
       })
   })

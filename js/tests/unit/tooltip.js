@@ -998,7 +998,7 @@ $(function () {
     }, 200)
   })
 
-  QUnit.test('should call Popper.js to update', function (assert) {
+  QUnit.test('should call Popper to update', function (assert) {
     assert.expect(2)
 
     var $tooltip = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
@@ -1014,7 +1014,7 @@ $(function () {
     assert.ok(spyPopper.called)
   })
 
-  QUnit.test('should not call Popper.js to update', function (assert) {
+  QUnit.test('should not call Popper to update', function (assert) {
     assert.expect(1)
 
     var $tooltip = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
@@ -1027,7 +1027,7 @@ $(function () {
     assert.ok(tooltip._popper === null)
   })
 
-  QUnit.test('should use Popper.js to get the tip on placement change', function (assert) {
+  QUnit.test('should use Popper to get the tip on placement change', function (assert) {
     assert.expect(1)
 
     var $tooltip = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
@@ -1267,7 +1267,7 @@ $(function () {
     assert.strictEqual(tooltip.config.sanitize, true)
   })
 
-  QUnit.test('should allow to pass config to popper.js with `popperConfig`', function (assert) {
+  QUnit.test('should allow to pass config to Popper with `popperConfig`', function (assert) {
     assert.expect(1)
 
     var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
@@ -1282,5 +1282,55 @@ $(function () {
     var popperConfig = tooltip._getPopperConfig('top')
 
     assert.strictEqual(popperConfig.placement, 'left')
+  })
+
+  QUnit.test('additional classes can be applied via data attribute', function (assert) {
+    assert.expect(2)
+
+    $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip" data-custom-class="a b"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip()
+      .bootstrapTooltip('show')
+
+    var tooltip = $('.tooltip')
+
+    assert.strictEqual(tooltip.hasClass('a b'), true)
+    assert.strictEqual(tooltip.hasClass('tooltip fade bs-tooltip-top show'), true)
+  })
+
+  QUnit.test('additional classes can be applied via config string', function (assert) {
+    assert.expect(2)
+
+    $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip" />')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        customClass: 'a b'
+      })
+      .bootstrapTooltip('show')
+
+    var tooltip = $('.tooltip')
+
+    assert.strictEqual(tooltip.hasClass('a b'), true)
+    assert.strictEqual(tooltip.hasClass('tooltip fade bs-tooltip-top show'), true)
+  })
+
+  QUnit.test('additional classes can be applied via function', function (assert) {
+    assert.expect(2)
+
+    var getClasses = function () {
+      return 'a b'
+    }
+
+    $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip" />')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        customClass: getClasses
+      })
+      .bootstrapTooltip('show')
+
+    var tooltip = $('.tooltip')
+
+    assert.strictEqual(tooltip.hasClass('a b'), true)
+    assert.strictEqual(tooltip.hasClass('tooltip fade bs-tooltip-top show'), true)
   })
 })
