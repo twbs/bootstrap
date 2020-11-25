@@ -263,6 +263,15 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       <td>Overflow constraint boundary of the popover. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper's <a href="https://popper.js.org/docs/v1/#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
     </tr>
     <tr>
+      <td><code>customClass</code></td>
+      <td>string | function</td>
+      <td><code>''</code></td>
+      <td>
+        <p>Add classes to the popover when it is shown. Note that these classes will be added in addition to any classes specified in the template. To add multiple classes, separate them with spaces: <code>'class-1 class-2'</code>.</p>
+        <p>You can also pass a function that should return a single string containing additional class names.</p>
+      </td>
+    </tr>
+    <tr>
       <td><code>sanitize</code></td>
       <td>boolean</td>
       <td><code>true</code></td>
