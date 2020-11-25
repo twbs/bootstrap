@@ -7,6 +7,14 @@
 
 import Data from './dom/data'
 
+/**
+ * ------------------------------------------------------------------------
+ * Constants
+ * ------------------------------------------------------------------------
+ */
+
+const VERSION = '5.0.0-alpha3'
+
 class BaseComponent {
   constructor(element) {
     if (!element) {
@@ -26,6 +34,10 @@ class BaseComponent {
 
   static getInstance(element) {
     return Data.getData(element, this.DATA_KEY)
+  }
+
+  static get VERSION() {
+    return VERSION
   }
 
   static get DATA_KEY() {

@@ -24,7 +24,6 @@ import BaseComponent from './base-component'
  */
 
 const NAME = 'alert'
-const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.alert'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -47,10 +46,6 @@ const CLASSNAME_SHOW = 'show'
 
 class Alert extends BaseComponent {
   // Getters
-
-  static get VERSION() {
-    return VERSION
-  }
 
   static get DATA_KEY() {
     return DATA_KEY
