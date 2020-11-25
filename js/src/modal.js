@@ -508,7 +508,7 @@ class Modal extends BaseComponent {
 
   static jQueryInterface(config, relatedTarget) {
     return this.each(function () {
-      let data = Data.getData(this, DATA_KEY)
+      let data = Data.get(this, DATA_KEY)
       const _config = {
         ...Default,
         ...Manipulator.getDataAttributes(this),
@@ -556,7 +556,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     })
   })
 
-  let data = Data.getData(target, DATA_KEY)
+  let data = Data.get(target, DATA_KEY)
   if (!data) {
     const config = {
       ...Manipulator.getDataAttributes(target),

@@ -11,57 +11,44 @@
  * ------------------------------------------------------------------------
  */
 
-const mapData = (() => {
-  const storeData = {}
-  let id = 1
-  return {
-    set(element, key, data) {
-      if (typeof element.bsKey === 'undefined') {
-        element.bsKey = {
-          key,
-          id
-        }
-        id++
-      }
+const elementMap = new Map()
 
-      storeData[element.bsKey.id] = data
-    },
-    get(element, key) {
-      if (!element || typeof element.bsKey === 'undefined') {
-        return null
-      }
+export default {
+  set(element, key, instance) {
+    if (!elementMap.has(element)) {
+      elementMap.set(element, new Map())
+    }
 
-      const keyProperties = element.bsKey
-      if (keyProperties.key === key) {
-        return storeData[keyProperties.id]
-      }
+    const instanceMap = elementMap.get(element)
 
-      return null
-    },
-    delete(element, key) {
-      if (typeof element.bsKey === 'undefined') {
-        return
-      }
+    // make it clear we only want one instance per element
+    // can be removed later when multiple key/instances are fine to be used
+    if (!instanceMap.has(key) && instanceMap.size !== 0) {
+      // eslint-disable-next-line no-console
+      console.error(`Notice: The design of Bootstrap currently discourages to use more than one instance per element. Bound instance(s): ${[...instanceMap.keys()].join(', ')}.`)
+    }
 
-      const keyProperties = element.bsKey
-      if (keyProperties.key === key) {
-        delete storeData[keyProperties.id]
-        delete element.bsKey
+    instanceMap.set(key, instance)
+  },
+
+  get(element, key) {
+    if (elementMap.has(element)) {
+      return elementMap.get(element).get(key) || null
+    }
+
+    return null
+  },
+
+  remove(element, key) {
+    if (elementMap.has(element)) {
+      const instanceMap = elementMap.get(element)
+
+      instanceMap.delete(key)
+
+      // free up element references if there are no instances left for an element
+      if (instanceMap.size === 0) {
+        elementMap.delete(element)
       }
     }
   }
-})()
-
-const Data = {
-  setData(instance, key, data) {
-    mapData.set(instance, key, data)
-  },
-  getData(instance, key) {
-    return mapData.get(instance, key)
-  },
-  removeData(instance, key) {
-    mapData.delete(instance, key)
-  }
 }
-
-export default Data
