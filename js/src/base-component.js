@@ -39,10 +39,6 @@ class BaseComponent {
   static get VERSION() {
     return VERSION
   }
-
-  static get DATA_KEY() {
-    return null
-  }
 }
 
 export default BaseComponent
