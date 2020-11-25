@@ -584,8 +584,8 @@ class Tooltip extends BaseComponent {
 
     if (title || originalTitleType !== 'string') {
       this._element.setAttribute('data-bs-original-title', title || '')
-      if (this._element.getAttribute('title') && !this._element.getAttribute('aria-label') && !this._element.textContent) {
-        this._element.setAttribute('aria-label', this._element.getAttribute('title'))
+      if (title && !this._element.getAttribute('aria-label') && !this._element.textContent) {
+        this._element.setAttribute('aria-label', title)
       }
 
       this._element.setAttribute('title', '')
