@@ -26,7 +26,6 @@ import BaseComponent from './base-component'
  */
 
 const NAME = 'tab'
-const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.tab'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -59,10 +58,6 @@ const SELECTOR_DROPDOWN_ACTIVE_CHILD = ':scope > .dropdown-menu .active'
 
 class Tab extends BaseComponent {
   // Getters
-
-  static get VERSION() {
-    return VERSION
-  }
 
   static get DATA_KEY() {
     return DATA_KEY

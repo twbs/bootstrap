@@ -26,7 +26,6 @@ import BaseComponent from './base-component'
  */
 
 const NAME = 'toast'
-const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.toast'
 const EVENT_KEY = `.${DATA_KEY}`
 
@@ -72,10 +71,6 @@ class Toast extends BaseComponent {
   }
 
   // Getters
-
-  static get VERSION() {
-    return VERSION
-  }
 
   static get DefaultType() {
     return DefaultType

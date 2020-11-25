@@ -35,7 +35,6 @@ import BaseComponent from './base-component'
  */
 
 const NAME = 'tooltip'
-const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.tooltip'
 const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'bs-tooltip'
@@ -147,10 +146,6 @@ class Tooltip extends BaseComponent {
   }
 
   // Getters
-
-  static get VERSION() {
-    return VERSION
-  }
 
   static get Default() {
     return Default

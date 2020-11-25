@@ -17,7 +17,6 @@ import Tooltip from './tooltip'
  */
 
 const NAME = 'popover'
-const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.popover'
 const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'bs-popover'
@@ -66,10 +65,6 @@ const SELECTOR_CONTENT = '.popover-body'
 
 class Popover extends Tooltip {
   // Getters
-
-  static get VERSION() {
-    return VERSION
-  }
 
   static get Default() {
     return Default

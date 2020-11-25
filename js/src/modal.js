@@ -29,7 +29,6 @@ import BaseComponent from './base-component'
  */
 
 const NAME = 'modal'
-const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.modal'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -98,10 +97,6 @@ class Modal extends BaseComponent {
   }
 
   // Getters
-
-  static get VERSION() {
-    return VERSION
-  }
 
   static get Default() {
     return Default
