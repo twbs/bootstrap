@@ -17,7 +17,6 @@ import BaseComponent from './base-component'
  */
 
 const NAME = 'button'
-const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.button'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -36,10 +35,6 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
 class Button extends BaseComponent {
   // Getters
-
-  static get VERSION() {
-    return VERSION
-  }
 
   static get DATA_KEY() {
     return DATA_KEY

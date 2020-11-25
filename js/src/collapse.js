@@ -30,7 +30,6 @@ import BaseComponent from './base-component'
  */
 
 const NAME = 'collapse'
-const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.collapse'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -107,10 +106,6 @@ class Collapse extends BaseComponent {
   }
 
   // Getters
-
-  static get VERSION() {
-    return VERSION
-  }
 
   static get Default() {
     return Default
