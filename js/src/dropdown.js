@@ -57,7 +57,6 @@ const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_DROPUP = 'dropup'
 const CLASS_NAME_DROPEND = 'dropend'
 const CLASS_NAME_DROPSTART = 'dropstart'
-const CLASS_NAME_MENUEND = 'dropdown-menu-end'
 const CLASS_NAME_NAVBAR = 'navbar'
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]'
@@ -268,22 +267,23 @@ class Dropdown extends BaseComponent {
 
   _getPlacement() {
     const parentDropdown = this._element.parentNode
-    let placement = PLACEMENT_BOTTOM
 
-    // Handle dropup
-    if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
-      placement = this._menu.classList.contains(CLASS_NAME_MENUEND) ?
-        PLACEMENT_TOPEND :
-        PLACEMENT_TOP
-    } else if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
-      placement = PLACEMENT_RIGHT
-    } else if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) {
-      placement = PLACEMENT_LEFT
-    } else if (this._menu.classList.contains(CLASS_NAME_MENUEND)) {
-      placement = PLACEMENT_BOTTOMEND
+    if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
+      return PLACEMENT_RIGHT
     }
 
-    return placement
+    if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) {
+      return PLACEMENT_LEFT
+    }
+
+    // We need to trim the value because custom properties can also include spaces
+    const isEnd = getComputedStyle(this._menu).getPropertyValue('--bs-position').trim() === 'end'
+
+    if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
+      return isEnd ? PLACEMENT_TOPEND : PLACEMENT_TOP
+    }
+
+    return isEnd ? PLACEMENT_BOTTOMEND : PLACEMENT_BOTTOM
   }
 
   _detectNavbar() {
