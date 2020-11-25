@@ -16,10 +16,6 @@
   overflow-anchor: none;
   @include transition($accordion-transition);
 
-  &.collapsed {
-    border-bottom-width: 0;
-  }
-
   &:not(.collapsed) {
     color: $accordion-button-active-color;
     background-color: $accordion-button-active-bg;
@@ -78,6 +74,14 @@
     .accordion-collapse {
       border-bottom-width: $accordion-border-width;
       @include border-bottom-radius($accordion-border-radius);
+    }
+  }
+
+  &:not(:last-of-type) {
+    .accordion-button {
+      &.collapsed {
+        border-bottom-color: transparent;
+      }
     }
   }
 }
