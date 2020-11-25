@@ -59,10 +59,8 @@ const Selector = {
   TABLIST: '[role="tablist"]'
 }
 
-const Orientation = {
-  VERTICAL: 'vertical',
-  HORIZONTAL: 'horizontal'
-}
+const ORIENTATION_VERTICAL = 'vertical'
+const ORIENTATION_HORIZONTAL = 'horizontal'
 
 /**
  * ------------------------------------------------------------------------
@@ -227,12 +225,12 @@ class Tab {
   static _dataApiKeydownHandler(event) {
     const tablist = SelectorEngine.closest(event.target, Selector.TABLIST)
     let tabListOrientation = tablist.getAttribute('aria-orientation')
-    if (tabListOrientation !== Orientation.VERTICAL) {
-      tabListOrientation = Orientation.HORIZONTAL
+    if (tabListOrientation !== ORIENTATION_VERTICAL) {
+      tabListOrientation = ORIENTATION_HORIZONTAL
     }
 
-    if ((tabListOrientation === Orientation.HORIZONTAL && event.which !== ARROW_LEFT_KEYCODE && event.which !== ARROW_RIGHT_KEYCODE) ||
-      (tabListOrientation === Orientation.VERTICAL && event.which !== ARROW_UP_KEYCODE && event.which !== ARROW_DOWN_KEYCODE)) {
+    if ((tabListOrientation === ORIENTATION_HORIZONTAL && event.which !== ARROW_LEFT_KEYCODE && event.which !== ARROW_RIGHT_KEYCODE) ||
+      (tabListOrientation === ORIENTATION_VERTICAL && event.which !== ARROW_UP_KEYCODE && event.which !== ARROW_DOWN_KEYCODE)) {
       return
     }
 
