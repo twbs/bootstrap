@@ -56,25 +56,32 @@
   // Position toast
   var selectToastPlacement = document.getElementById('selectToastPlacement')
   if (selectToastPlacement) {
+    var toastPlacement = document.querySelector('.toast-placement')
+
+    toastPlacement.addEventListener('show.bs.toast', function () {
+      selectToastPlacement.disabled = true
+    })
+
+    toastPlacement.addEventListener('hidden.bs.toast', function () {
+      selectToastPlacement.disabled = false
+    })
+
     selectToastPlacement.addEventListener('change', function () {
       if (selectToastPlacement.value.length === 0) {
         return
       }
 
-      document.querySelectorAll('.toast-placement')
-        .forEach(function (toastEl) {
-          var toast = bootstrap.Toast.getInstance(toastEl)
+      var toast = bootstrap.Toast.getInstance(toastPlacement)
 
-          if (toast) {
-            toast.config.position = selectToastPlacement.value
-          } else {
-            toast = new bootstrap.Toast(toastEl, {
-              position: selectToastPlacement.value
-            })
-          }
-
-          toast.show()
+      if (toast) {
+        toast.config.position = selectToastPlacement.value
+      } else {
+        toast = new bootstrap.Toast(toastPlacement, {
+          position: selectToastPlacement.value
         })
+      }
+
+      toast.show()
     })
   }
 
