@@ -144,7 +144,6 @@ class Tooltip extends BaseComponent {
     this.tip = null
 
     this._setListeners()
-    Data.setData(element, this.constructor.DATA_KEY, this)
   }
 
   // Getters
