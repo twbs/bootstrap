@@ -352,22 +352,6 @@ $(function () {
     assert.strictEqual(typeof $._data($tooltip[0], 'events').mouseout, 'undefined', 'tooltip does not have mouseout event')
   })
 
-  // QUnit.test('should show tooltip with delegate selector on click', function (assert) {
-  //   assert.expect(2)
-  //   var $div = $('<div><a href="#" rel="tooltip" title="Another tooltip"/></div>')
-  //     .appendTo('#qunit-fixture')
-  //     .bootstrapTooltip({
-  //       selector: 'a[rel="tooltip"]',
-  //       trigger: 'click'
-  //     })
-
-  //   $div.find('a').trigger('click')
-  //   assert.true($('.tooltip').is('.fade.in'), 'tooltip is faded in')
-
-  //   $div.find('a').trigger('click')
-  //   assert.strictEqual($div.data('bs.tooltip').tip.parentNode, null, 'tooltip removed')
-  // })
-
   QUnit.test('should show tooltip when toggle is called', function (assert) {
     assert.expect(1)
     $('<a href="#" rel="tooltip" title="tooltip on toggle"/>')
