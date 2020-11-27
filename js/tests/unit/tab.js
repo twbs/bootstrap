@@ -60,7 +60,7 @@ $(function () {
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
-  QUnit.test('should activate element by tab id', function (assert) {
+  QUnit.test('should activate element by tab id (.nav-pills)', function (assert) {
     assert.expect(2)
     var pillsHTML = '<ul class="nav nav-pills">' +
         '<li><a href="#home">Home</a></li>' +
