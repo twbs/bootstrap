@@ -1227,7 +1227,7 @@ $(function () {
   })
 
   QUnit.test('should show dropdown', function (assert) {
-    assert.expect(2)
+    assert.expect(3)
 
     var dropdownHTML =
       '<div class="dropdown">' +
@@ -1248,6 +1248,7 @@ $(function () {
     $dropdown
       .parent('.dropdown')
       .on('show.bs.dropdown', function () {
+        assert.strictEqual(dropdown._popper, null)
         assert.ok(true, 'show was fired')
       })
       .on('shown.bs.dropdown', function () {
@@ -1333,39 +1334,6 @@ $(function () {
     var dropdown = $dropdown.data('bs.dropdown')
     dropdown.hide()
     assert.false($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is still hidden')
-  })
-
-  QUnit.test('should show dropdown', function (assert) {
-    assert.expect(3)
-
-    var dropdownHTML =
-      '<div class="dropdown">' +
-      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
-      '  <div class="dropdown-menu">' +
-      '    <a class="dropdown-item" href="#">Another link</a>' +
-      '  </div>' +
-      '</div>'
-
-    var $dropdown = $(dropdownHTML)
-      .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
-      .bootstrapDropdown()
-
-    var dropdown = $dropdown.data('bs.dropdown')
-    var done = assert.async()
-
-    $dropdown
-      .parent('.dropdown')
-      .on('show.bs.dropdown', function () {
-        assert.strictEqual(dropdown._popper, null)
-        assert.ok(true, 'show was fired')
-      })
-      .on('shown.bs.dropdown', function () {
-        assert.true($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
-        done()
-      })
-
-    dropdown.show()
   })
 
   QUnit.test('should prevent default event on show method call', function (assert) {
