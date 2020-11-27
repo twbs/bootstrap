@@ -1,6 +1,8 @@
 $(function () {
   'use strict'
 
+  window.Button = typeof bootstrap !== 'undefined' ? bootstrap.Button : Button
+
   QUnit.module('button plugin')
 
   QUnit.test('should be defined on jquery object', function (assert) {
@@ -472,10 +474,6 @@ $(function () {
   QUnit.test('should return button version', function (assert) {
     assert.expect(1)
 
-    if (typeof Button !== 'undefined') {
-      assert.strictEqual(typeof Button.VERSION, 'string')
-    } else {
-      assert.notOk()
-    }
+    assert.strictEqual(typeof Button.VERSION, 'string')
   })
 })
