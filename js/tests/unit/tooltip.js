@@ -629,29 +629,6 @@ $(function () {
     $tooltip.trigger('mouseenter')
   })
 
-  QUnit.test('should not show tooltip if leave event occurs before delay expires', function (assert) {
-    assert.expect(2)
-    var done = assert.async()
-
-    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
-      .appendTo('#qunit-fixture')
-      .bootstrapTooltip({
-        delay: 150
-      })
-
-    setTimeout(function () {
-      assert.false($('.tooltip').is('.fade.show'), '100ms: tooltip not faded active')
-      $tooltip.trigger('mouseout')
-    }, 100)
-
-    setTimeout(function () {
-      assert.false($('.tooltip').is('.fade.show'), '200ms: tooltip not faded active')
-      done()
-    }, 200)
-
-    $tooltip.trigger('mouseenter')
-  })
-
   QUnit.test('should not show tooltip if leave event occurs before delay expires, even if hide delay is 0', function (assert) {
     assert.expect(2)
     var done = assert.async()
