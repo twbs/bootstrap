@@ -3,6 +3,8 @@ $(function () {
 
   window.Util = typeof bootstrap !== 'undefined' ? bootstrap.Util : Util
 
+  var supportsAttachShadow = document.documentElement.attachShadow
+
   QUnit.module('util', {
     afterEach: function () {
       $('#qunit-fixture').html('')
@@ -143,13 +145,8 @@ $(function () {
     assert.true(Util.supportsTransitionEnd())
   })
 
-  QUnit.test('Util.findShadowRoot should find the shadow DOM root', function (assert) {
-    // Only for newer browsers
-    if (!document.documentElement.attachShadow) {
-      assert.expect(0)
-      return
-    }
-
+  // Only for newer browsers
+  QUnit[supportsAttachShadow ? 'test' : 'skip']('Util.findShadowRoot should find the shadow DOM root', function (assert) {
     assert.expect(2)
     var $div = $('<div id="test"></div>').appendTo($('#qunit-fixture'))
     var shadowRoot = $div[0].attachShadow({
@@ -161,23 +158,11 @@ $(function () {
     assert.strictEqual(shadowRoot, Util.findShadowRoot(shadowRoot.firstChild))
   })
 
-  QUnit.test('Util.findShadowRoot should return null when attachShadow is not available', function (assert) {
+  QUnit[supportsAttachShadow ? 'skip' : 'test']('Util.findShadowRoot should return null when attachShadow is not available', function (assert) {
     assert.expect(1)
-
     var $div = $('<div id="test"></div>').appendTo($('#qunit-fixture'))
-    if (!document.documentElement.attachShadow) {
-      assert.strictEqual(Util.findShadowRoot($div[0]), null)
-    } else {
-      var sandbox = sinon.createSandbox()
 
-      sandbox.replace(document.documentElement, 'attachShadow', function () {
-        // to avoid empty function
-        return $div
-      })
-
-      assert.strictEqual(Util.findShadowRoot($div[0]), null)
-      sandbox.restore()
-    }
+    assert.strictEqual(Util.findShadowRoot($div[0]), null)
   })
 
   QUnit.test('Util.jQueryDetection should detect jQuery', function (assert) {
