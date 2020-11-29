@@ -106,7 +106,6 @@ class Dropdown extends BaseComponent {
     this._inNavbar = this._detectNavbar()
 
     this._addEventListeners()
-    Data.setData(element, DATA_KEY, this)
   }
 
   // Getters

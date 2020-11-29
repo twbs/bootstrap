@@ -93,7 +93,6 @@ class Modal extends BaseComponent {
     this._ignoreBackdropClick = false
     this._isTransitioning = false
     this._scrollbarWidth = 0
-    Data.setData(element, DATA_KEY, this)
   }
 
   // Getters

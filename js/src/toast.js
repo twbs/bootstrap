@@ -67,7 +67,6 @@ class Toast extends BaseComponent {
     this._config = this._getConfig(config)
     this._timeout = null
     this._setListeners()
-    Data.setData(element, DATA_KEY, this)
   }
 
   // Getters
