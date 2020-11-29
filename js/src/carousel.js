@@ -123,7 +123,6 @@ class Carousel extends BaseComponent {
     this._pointerEvent = Boolean(window.PointerEvent)
 
     this._addEventListeners()
-    Data.setData(element, DATA_KEY, this)
   }
 
   // Getters

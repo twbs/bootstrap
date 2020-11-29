@@ -101,8 +101,6 @@ class Collapse extends BaseComponent {
     if (this._config.toggle) {
       this.toggle()
     }
-
-    Data.setData(element, DATA_KEY, this)
   }
 
   // Getters

@@ -81,8 +81,6 @@ class ScrollSpy extends BaseComponent {
 
     this.refresh()
     this._process()
-
-    Data.setData(element, DATA_KEY, this)
   }
 
   // Getters
