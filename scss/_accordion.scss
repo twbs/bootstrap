@@ -16,10 +16,6 @@
   overflow-anchor: none;
   @include transition($accordion-transition);
 
-  &.collapsed {
-    border-bottom-width: 0;
-  }
-
   &:not(.collapsed) {
     color: $accordion-button-active-color;
     background-color: $accordion-button-active-bg;
@@ -66,11 +62,14 @@
     }
   }
 
+  &:not(:first-child) {
+    margin-top: -1px;
+  }
+
   &:last-of-type {
     .accordion-button {
       // Only set a border-radius on the last item if the accordion is collapsed
       &.collapsed {
-        border-bottom-width: $accordion-border-width;
         @include border-bottom-radius($accordion-border-radius);
       }
     }
