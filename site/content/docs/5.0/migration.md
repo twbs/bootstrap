@@ -17,6 +17,13 @@ toc: true
 
 - Renamed `scale-color()` function to `shift-color()` to avoid collision with Sass's own color scaling function.
 
+### Components
+
+#### Breadcrumbs
+
+- Simplified the default appearance of breadcrumbs by removing `padding`, `background-color`, and `border-radius`.
+- Added new CSS custom property `--bs-breadcrumb-divider` for easy customization without needing to recompile CSS.
+
 ## v5.0.0-alpha3
 
 ### Browser support
@@ -42,12 +49,6 @@ toc: true
 - Promoted the Floating labels example to fully supported form component. [See the new Floating labels page.]({{< docsref "/forms/floating-labels" >}})
 - File inputs now use the `.form-control` class and don't require JavaScript, additional HTML, or additional classes. [See #31955](https://github.com/twbs/bootstrap/pull/31955).
 - Added `cursor:pointer` to `.form-control-color` color inputs.
-
-### Components
-
-#### Breadcrumbs
-
-- Set the default padding to `0`, and the background color and border to `null`, for the `.breadcrumb` styles. These can still be overridden using the `$breadcrumb-padding-x`, `$breadcrumb-padding-y`, `$breadcrumb-bg`, and `$breadcrumb-border-radius` variables.
 
 ### Utilities
 
