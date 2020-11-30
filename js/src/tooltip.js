@@ -6,8 +6,7 @@
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
+  defineJQueryPlugin,
   TRANSITION_END,
   emulateTransitionEnd,
   findShadowRoot,
@@ -795,18 +794,6 @@ class Tooltip extends BaseComponent {
  * add .Tooltip to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Tooltip.jQueryInterface
-    $.fn[NAME].Constructor = Tooltip
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Tooltip.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Tooltip)
 
 export default Tooltip

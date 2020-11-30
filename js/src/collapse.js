@@ -6,8 +6,7 @@
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
+  defineJQueryPlugin,
   TRANSITION_END,
   emulateTransitionEnd,
   getSelectorFromElement,
@@ -407,18 +406,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Collapse to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Collapse.jQueryInterface
-    $.fn[NAME].Constructor = Collapse
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Collapse.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Collapse)
 
 export default Collapse

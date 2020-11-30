@@ -6,8 +6,7 @@
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
+  defineJQueryPlugin,
   getElementFromSelector,
   isElement,
   isVisible,
@@ -516,18 +515,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stop
  * add .Dropdown to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Dropdown.jQueryInterface
-    $.fn[NAME].Constructor = Dropdown
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Dropdown.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Dropdown)
 
 export default Dropdown
