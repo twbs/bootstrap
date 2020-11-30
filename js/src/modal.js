@@ -20,6 +20,7 @@ import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
+import BaseComponent from './base-component'
 
 /**
  * ------------------------------------------------------------------------
@@ -28,7 +29,6 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'modal'
-const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.modal'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -79,10 +79,11 @@ const SELECTOR_STICKY_CONTENT = '.sticky-top'
  * ------------------------------------------------------------------------
  */
 
-class Modal {
+class Modal extends BaseComponent {
   constructor(element, config) {
+    super(element)
+
     this._config = this._getConfig(config)
-    this._element = element
     this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, element)
     this._backdrop = null
     this._isShown = false
@@ -90,17 +91,16 @@ class Modal {
     this._ignoreBackdropClick = false
     this._isTransitioning = false
     this._scrollbarWidth = 0
-    Data.setData(element, DATA_KEY, this)
   }
 
   // Getters
 
-  static get VERSION() {
-    return VERSION
-  }
-
   static get Default() {
     return Default
+  }
+
+  static get DATA_KEY() {
+    return DATA_KEY
   }
 
   // Public
@@ -199,6 +199,8 @@ class Modal {
     [window, this._element, this._dialog]
       .forEach(htmlElement => EventHandler.off(htmlElement, EVENT_KEY))
 
+    super.dispose()
+
     /**
      * `document` has 2 events `EVENT_FOCUSIN` and `EVENT_CLICK_DATA_API`
      * Do not move `document` in `htmlElements` array
@@ -206,10 +208,7 @@ class Modal {
      */
     EventHandler.off(document, EVENT_FOCUSIN)
 
-    Data.removeData(this._element, DATA_KEY)
-
     this._config = null
-    this._element = null
     this._dialog = null
     this._backdrop = null
     this._isShown = null
@@ -558,10 +557,6 @@ class Modal {
         data[config](relatedTarget)
       }
     })
-  }
-
-  static getInstance(element) {
-    return Data.getData(element, DATA_KEY)
   }
 }
 
