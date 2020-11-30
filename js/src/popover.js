@@ -17,7 +17,6 @@ import Tooltip from './tooltip'
  */
 
 const NAME = 'popover'
-const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.popover'
 const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'bs-popover'
@@ -67,10 +66,6 @@ const SELECTOR_CONTENT = '.popover-body'
 class Popover extends Tooltip {
   // Getters
 
-  static get VERSION() {
-    return VERSION
-  }
-
   static get Default() {
     return Default
   }
@@ -108,7 +103,7 @@ class Popover extends Tooltip {
     this.setElementContent(SelectorEngine.findOne(SELECTOR_TITLE, tip), this.getTitle())
     let content = this._getContent()
     if (typeof content === 'function') {
-      content = content.call(this.element)
+      content = content.call(this._element)
     }
 
     this.setElementContent(SelectorEngine.findOne(SELECTOR_CONTENT, tip), content)
@@ -123,7 +118,7 @@ class Popover extends Tooltip {
   }
 
   _getContent() {
-    return this.element.getAttribute('data-bs-content') ||
+    return this._element.getAttribute('data-bs-content') ||
       this.config.content
   }
 
@@ -160,10 +155,6 @@ class Popover extends Tooltip {
         data[config]()
       }
     })
-  }
-
-  static getInstance(element) {
-    return Data.getData(element, DATA_KEY)
   }
 }
 

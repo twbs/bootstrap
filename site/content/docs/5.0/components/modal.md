@@ -877,12 +877,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td><code>true</code></td>
       <td>Puts the focus on the modal when initialized.</td>
     </tr>
-    <tr>
-      <td><code>show</code></td>
-      <td>boolean</td>
-      <td><code>true</code></td>
-      <td>Shows the modal when initialized.</td>
-    </tr>
   </tbody>
 </table>
 
