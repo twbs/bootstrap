@@ -61,12 +61,20 @@ Breakpoints specific variants are consequently renamed too (eg. `.text-md-start`
 
 - Renamed `scale-color()` function to `shift-color()` to avoid collision with Sass's own color scaling function.
 
+### Utilities
+
+- Added new `.translate-middle-x` & `.translate-middle-y` utilities to horizontally or vertically center absolute/fixed positioned elements.
+
 ### Components
 
 #### Breadcrumbs
 
 - Simplified the default appearance of breadcrumbs by removing `padding`, `background-color`, and `border-radius`.
 - Added new CSS custom property `--bs-breadcrumb-divider` for easy customization without needing to recompile CSS.
+
+#### Toasts
+
+- Toasts can now be [positioned]({{< docsref "/components/toasts#placement" >}}) in a `.toast-container` with the help of [positioning utilities]({{< docsref "/utilities/position" >}}).
 
 ## v5.0.0-alpha3
 
