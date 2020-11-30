@@ -51,11 +51,11 @@ const browsers = {
     device: 'iPhone 11',
     real_mobile: true
   },
-  pixel2: {
+  pixel4: {
     base: 'BrowserStack',
     os: 'android',
-    os_version: '8.0',
-    device: 'Google Pixel 2',
+    os_version: '11.0',
+    device: 'Google Pixel 4',
     real_mobile: true
   }
 }
