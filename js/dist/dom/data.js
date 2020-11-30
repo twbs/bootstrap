@@ -69,7 +69,12 @@
       mapData.set(instance, key, data);
     },
     getData: function getData(instance, key) {
-      return mapData.get(instance, key);
+      // eslint-disable-next-line no-console
+      console.log('instance', instance, 'key', key);
+      var res = mapData.get(instance, key); // eslint-disable-next-line no-console
+
+      console.log(res);
+      return res;
     },
     removeData: function removeData(instance, key) {
       mapData.delete(instance, key);
