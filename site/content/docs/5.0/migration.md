@@ -34,7 +34,7 @@ toc: true
 
 ### Buttons
 
-- [Dropped `.btn-block` in favor of CSS grid utility classes.]({{< docsref "/components/buttons#block-buttons" >}}) Instead of applying `.btn-block` to individual buttons, a group of buttons now get wrapped in a parent `.d-grid` class and can use `.gap-*` utilities for spacing.
+- [Dropped `.btn-block` in favor of CSS grid utility classes.]({{< docsref "/components/buttons#block-buttons" >}}) Instead of applying `.btn-block` to individual buttons, a group of buttons now get wrapped in a parent `.d-grid` class and can use `.gap-*` utilities for spacing. For individual "block buttons", add `.w-100`.
 
 ### Forms
 
@@ -267,6 +267,7 @@ Changes to Reboot, typography, tables, and more.
 - Removed individual `$display-*-weight` variables for a single `$display-font-weight`.
 - Added two new `.display-*` heading styles, `.display-5` and `.display-6`.
 - Resized existing display headings for a slightly more consistent set of `font-size`s.
+- Links are underlined by default (not just on hover), unless they're part of specific components.
 
 ### Forms
 
@@ -317,7 +318,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 #### Buttons
 
-- The checkbox/radio toggle is removed from the button plugin in favour of a CSS only solution, which is documented in the [form checks and radios]({{< docsref "/forms/checks-radios#toggle-buttons" >}}) docs. The `.btn-check` class can be added to inputs, any label with `.btn` and modifier class can be used to theme the labels. [See #30650](https://github.com/twbs/bootstrap/pull/30650).
+- The checkbox/radio toggle is removed from the button plugin in favor of a CSS only solution, which is documented in the [form checks and radios]({{< docsref "/forms/checks-radios#toggle-buttons" >}}) docs. The `.btn-check` class can be added to inputs, any label with `.btn` and modifier class can be used to theme the labels. [See #30650](https://github.com/twbs/bootstrap/pull/30650).
 
 #### Cards
 
