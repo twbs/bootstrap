@@ -105,8 +105,6 @@ class Dropdown {
     this._inNavbar = this._detectNavbar()
 
     this._addEventListeners()
-    // eslint-disable-next-line no-console
-    console.log('data set of', element)
     Data.setData(this._element, DATA_KEY, this)
   }
 
@@ -127,18 +125,12 @@ class Dropdown {
   // Public
 
   toggle() {
-    // eslint-disable-next-line no-console
-    console.log('toogle element', this._element)
-    // eslint-disable-next-line no-console
-    console.log('toogle menu', this._menu)
     if (this._element.disabled || this._element.classList.contains(CLASS_NAME_DISABLED)) {
       return
     }
 
     const isActive = this._element.classList.contains(CLASS_NAME_SHOW)
 
-    // eslint-disable-next-line no-console
-    // console.log('contains show', isActive)
     Dropdown.clearMenus()
 
     if (isActive) {
@@ -149,31 +141,21 @@ class Dropdown {
   }
 
   show() {
-    // eslint-disable-next-line no-console
-    // console.log('show', this._element)
-    // eslint-disable-next-line no-console
-    // console.log('menu', this._menu)
     if (this._element.disabled || this._element.classList.contains(CLASS_NAME_DISABLED) || this._menu.classList.contains(CLASS_NAME_SHOW)) {
       return
     }
 
     const parent = Dropdown.getParentFromElement(this._element)
-    // eslint-disable-next-line no-console
-    // console.log('parent', parent)
     const relatedTarget = {
       relatedTarget: this._element
     }
 
-    // eslint-disable-next-line no-console
-    console.log('relatedTarget', relatedTarget)
     const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, relatedTarget)
 
     if (showEvent.defaultPrevented) {
       return
     }
 
-    // eslint-disable-next-line no-console
-    console.log('navbar', this._inNavbar)
     // Totally disable Popper for Dropdowns in Navbar
     if (!this._inNavbar) {
       if (typeof Popper === 'undefined') {
@@ -214,8 +196,6 @@ class Dropdown {
     }
 
     this._element.focus()
-    // eslint-disable-next-line no-console
-    console.log('this element is setting an attribute', this._element)
     this._element.setAttribute('aria-expanded', true)
 
     this._menu.classList.toggle(CLASS_NAME_SHOW)
@@ -289,39 +269,21 @@ class Dropdown {
   }
 
   _getMenuElement() {
-    // eslint-disable-next-line no-console
-    console.log('_getMenuElement', this._element)
-    // eslint-disable-next-line no-console
-    console.log('selector menu', SELECTOR_MENU)
-    const resThis = SelectorEngine.matches(this._element, SELECTOR_MENU)
+    const isAMenu = SelectorEngine.matches(this._element, SELECTOR_MENU)
 
-    // eslint-disable-next-line no-console
-    console.log('this element matches', resThis)
-    if (resThis) {
+    if (isAMenu) {
       // search the toogle of the menu
       const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
-      // eslint-disable-next-line no-console
-      console.log(toggles)
       for (let i = 0, len = toggles.length; i < len; i++) {
         const parent = Dropdown.getParentFromElement(toggles[i])
         const parentOfThis = this._element.parentNode
-
-        //  const parent = this._element.parentNode
-        // eslint-disable-next-line no-console
-        console.log('parent', parent, 'parentofthis', parentOfThis)
         if (parent === parentOfThis) {
-          // eslint-disable-next-line no-console
-          console.log('same parents')
-          // eslint-disable-next-line no-console
-          console.log('correspondante toogle', toggles[i])
           this._element = toggles[i]
           break
         }
       }
     }
 
-    // eslint-disable-next-line no-console
-    console.log('element entering to selector engine', this._element)
     return SelectorEngine.next(this._element, SELECTOR_MENU)[0]
   }
 
@@ -421,53 +383,33 @@ class Dropdown {
   }
 
   static clearMenus(event) {
-    // eslint-disable-next-line no-console
-    console.log('clearing menus')
     if (event && (event.button === RIGHT_MOUSE_BUTTON ||
-      (event.type === 'keyup' && event.key !== TAB_KEY))) {
+      (event.type === 'keyup' && event.key !== TAB_KEY) ||
+      event.button === 0)) {
       return
     }
 
     const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
-    // eslint-disable-next-line no-console
-    console.log('toggles', toggles)
     for (let i = 0, len = toggles.length; i < len; i++) {
       const parent = Dropdown.getParentFromElement(toggles[i])
-      // eslint-disable-next-line no-console
-      console.log('parent in clear menus', parent)
-      // eslint-disable-next-line no-console
-      console.log('getting data of toogle', toggles[i], 'dataKey', DATA_KEY)
       const context = Data.getData(toggles[i], DATA_KEY)
-      // eslint-disable-next-line no-console
-      console.log('context', context)
-
       const relatedTarget = {
         relatedTarget: toggles[i]
       }
-      // eslint-disable-next-line no-console
-      console.log('relatedTarget', relatedTarget)
 
       if (event && event.type === 'click') {
-        // eslint-disable-next-line no-console
-        console.log('event', event, 'event.type', event.type)
         relatedTarget.clickEvent = event
       }
 
-      // eslint-disable-next-line no-console
-      console.log('getting before context')
       if (!context) {
         continue
       }
 
-      // eslint-disable-next-line no-console
-      console.log('getting before dropdown menu')
       const dropdownMenu = context._menu
       if (!toggles[i].classList.contains(CLASS_NAME_SHOW)) {
         continue
       }
 
-      // eslint-disable-next-line no-console
-      console.log('getting before events')
       if (event && ((event.type === 'click' &&
           /input|textarea/i.test(event.target.tagName)) ||
           (event.type === 'keyup' && event.key === TAB_KEY)) &&
@@ -475,8 +417,6 @@ class Dropdown {
         continue
       }
 
-      // eslint-disable-next-line no-console
-      console.log('getting before hide event')
       const hideEvent = EventHandler.trigger(parent, EVENT_HIDE, relatedTarget)
       if (hideEvent.defaultPrevented) {
         continue
@@ -489,16 +429,12 @@ class Dropdown {
           .forEach(elem => EventHandler.off(elem, 'mouseover', null, noop()))
       }
 
-      // eslint-disable-next-line no-console
-      console.log('getting before set attribute')
       toggles[i].setAttribute('aria-expanded', 'false')
 
       if (context._popper) {
         context._popper.destroy()
       }
 
-      // eslint-disable-next-line no-console
-      console.log('removing:', CLASS_NAME_SHOW)
       dropdownMenu.classList.remove(CLASS_NAME_SHOW)
       toggles[i].classList.remove(CLASS_NAME_SHOW)
       EventHandler.trigger(parent, EVENT_HIDDEN, relatedTarget)
