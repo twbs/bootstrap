@@ -17,6 +17,13 @@ toc: true
 
 - Renamed `scale-color()` function to `shift-color()` to avoid collision with Sass's own color scaling function.
 
+### Components
+
+#### Breadcrumbs
+
+- Simplified the default appearance of breadcrumbs by removing `padding`, `background-color`, and `border-radius`.
+- Added new CSS custom property `--bs-breadcrumb-divider` for easy customization without needing to recompile CSS.
+
 ## v5.0.0-alpha3
 
 ### Browser support
