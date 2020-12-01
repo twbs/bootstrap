@@ -21,6 +21,7 @@ import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
+import BaseComponent from './base-component'
 
 /**
  * ------------------------------------------------------------------------
@@ -29,7 +30,6 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'collapse'
-const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.collapse'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -67,10 +67,11 @@ const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]'
  * ------------------------------------------------------------------------
  */
 
-class Collapse {
+class Collapse extends BaseComponent {
   constructor(element, config) {
+    super(element)
+
     this._isTransitioning = false
-    this._element = element
     this._config = this._getConfig(config)
     this._triggerArray = SelectorEngine.find(
       `${SELECTOR_DATA_TOGGLE}[href="#${element.id}"],` +
@@ -100,18 +101,16 @@ class Collapse {
     if (this._config.toggle) {
       this.toggle()
     }
-
-    Data.setData(element, DATA_KEY, this)
   }
 
   // Getters
 
-  static get VERSION() {
-    return VERSION
-  }
-
   static get Default() {
     return Default
+  }
+
+  static get DATA_KEY() {
+    return DATA_KEY
   }
 
   // Public
@@ -266,11 +265,9 @@ class Collapse {
   }
 
   dispose() {
-    Data.removeData(this._element, DATA_KEY)
-
+    super.dispose()
     this._config = null
     this._parent = null
-    this._element = null
     this._triggerArray = null
     this._isTransitioning = null
   }
@@ -367,10 +364,6 @@ class Collapse {
     return this.each(function () {
       Collapse.collapseInterface(this, config)
     })
-  }
-
-  static getInstance(element) {
-    return Data.getData(element, DATA_KEY)
   }
 }
 
