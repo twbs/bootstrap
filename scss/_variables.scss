@@ -571,7 +571,7 @@ $input-btn-padding-x-lg:      1rem !default;
 $input-btn-font-size-lg:      $font-size-lg !default;
 
 $input-btn-border-width:      $border-width !default;
-
+$input-invalid-padding-x:      .35rem !default;
 
 // Buttons
 //
@@ -744,6 +744,7 @@ $form-select-bg:                    $input-bg !default;
 $form-select-disabled-bg:           $gray-200 !default;
 $form-select-disabled-border-color: $input-disabled-border-color !default;
 $form-select-bg-position:           right $form-select-padding-x center !default;
+$form-invalid-select-bg-position:   right $input-invalid-padding-x center !default;
 $form-select-bg-size:               16px 12px !default; // In pixels because image dimensions
 $form-select-indicator-color:       $gray-800 !default;
 $form-select-indicator:             url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-select-indicator-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>") !default;
