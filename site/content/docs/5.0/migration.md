@@ -267,6 +267,7 @@ Changes to Reboot, typography, tables, and more.
 - Removed individual `$display-*-weight` variables for a single `$display-font-weight`.
 - Added two new `.display-*` heading styles, `.display-5` and `.display-6`.
 - Resized existing display headings for a slightly more consistent set of `font-size`s.
+- Links are underlined by default (not just on hover), unless they're part of specific components.
 
 ### Forms
 
