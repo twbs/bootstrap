@@ -437,19 +437,9 @@ class Carousel extends BaseComponent {
     const nextElementIndex = this._getItemIndex(nextElement)
     const isCycling = Boolean(this._interval)
 
-    let directionalClassName
-    let orderClassName
-    let eventDirectionName
-
-    if (direction === DIRECTION_NEXT) {
-      directionalClassName = CLASS_NAME_START
-      orderClassName = CLASS_NAME_NEXT
-      eventDirectionName = DIRECTION_LEFT
-    } else {
-      directionalClassName = CLASS_NAME_END
-      orderClassName = CLASS_NAME_PREV
-      eventDirectionName = DIRECTION_RIGHT
-    }
+    const directionalClassName = direction === DIRECTION_NEXT ? CLASS_NAME_START : CLASS_NAME_END
+    const orderClassName = direction === DIRECTION_NEXT ? CLASS_NAME_NEXT : CLASS_NAME_PREV
+    const eventDirectionName = direction === DIRECTION_NEXT ? DIRECTION_LEFT : DIRECTION_RIGHT
 
     if (nextElement && nextElement.classList.contains(CLASS_NAME_ACTIVE)) {
       this._isSliding = false
