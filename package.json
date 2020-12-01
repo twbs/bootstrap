@@ -129,7 +129,7 @@
     "popper.js": "^1.16.1",
     "postcss": "^8.1.10",
     "postcss-cli": "^8.3.0",
-    "rollup": "^2.33.3",
+    "rollup": "^2.34.0",
     "rollup-plugin-istanbul": "^2.0.1",
     "sass": "^1.29.0",
     "shelljs": "^0.8.4",
