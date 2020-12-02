@@ -491,11 +491,13 @@ class Dropdown extends BaseComponent {
 
     let index = items.indexOf(event.target)
 
-    if (event.key === ARROW_UP_KEY && index > 0) { // Up
+    // Up
+    if (event.key === ARROW_UP_KEY && index > 0) {
       index--
     }
 
-    if (event.key === ARROW_DOWN_KEY && index < items.length - 1) { // Down
+    // Down
+    if (event.key === ARROW_DOWN_KEY && index < items.length - 1) {
       index++
     }
 

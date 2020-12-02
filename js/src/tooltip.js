@@ -72,8 +72,9 @@ const AttachmentMap = {
 const Default = {
   animation: true,
   template: '<div class="tooltip" role="tooltip">' +
-                    '<div class="tooltip-arrow"></div>' +
-                    '<div class="tooltip-inner"></div></div>',
+              '<div class="tooltip-arrow"></div>' +
+              '<div class="tooltip-inner"></div>' +
+            '</div>',
   trigger: 'hover focus',
   title: '',
   delay: 0,
@@ -196,10 +197,7 @@ class Tooltip extends BaseComponent {
       let context = Data.getData(event.delegateTarget, dataKey)
 
       if (!context) {
-        context = new this.constructor(
-          event.delegateTarget,
-          this._getDelegateConfig()
-        )
+        context = new this.constructor(event.delegateTarget, this._getDelegateConfig())
         Data.setData(event.delegateTarget, dataKey, context)
       }
 
@@ -530,10 +528,7 @@ class Tooltip extends BaseComponent {
 
     triggers.forEach(trigger => {
       if (trigger === 'click') {
-        EventHandler.on(this._element,
-          this.constructor.Event.CLICK,
-          this.config.selector,
-          event => this.toggle(event)
+        EventHandler.on(this._element, this.constructor.Event.CLICK, this.config.selector, event => this.toggle(event)
         )
       } else if (trigger !== TRIGGER_MANUAL) {
         const eventIn = trigger === TRIGGER_HOVER ?
@@ -543,16 +538,8 @@ class Tooltip extends BaseComponent {
           this.constructor.Event.MOUSELEAVE :
           this.constructor.Event.FOCUSOUT
 
-        EventHandler.on(this._element,
-          eventIn,
-          this.config.selector,
-          event => this._enter(event)
-        )
-        EventHandler.on(this._element,
-          eventOut,
-          this.config.selector,
-          event => this._leave(event)
-        )
+        EventHandler.on(this._element, eventIn, this.config.selector, event => this._enter(event))
+        EventHandler.on(this._element, eventOut, this.config.selector, event => this._leave(event))
       }
     })
 
@@ -562,10 +549,7 @@ class Tooltip extends BaseComponent {
       }
     }
 
-    EventHandler.on(this._element.closest(`.${CLASS_NAME_MODAL}`),
-      'hide.bs.modal',
-      this._hideModalHandler
-    )
+    EventHandler.on(this._element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler)
 
     if (this.config.selector) {
       this.config = {
@@ -610,8 +594,7 @@ class Tooltip extends BaseComponent {
       ] = true
     }
 
-    if (context.getTipElement().classList.contains(CLASS_NAME_SHOW) ||
-        context._hoverState === HOVER_STATE_SHOW) {
+    if (context.getTipElement().classList.contains(CLASS_NAME_SHOW) || context._hoverState === HOVER_STATE_SHOW) {
       context._hoverState = HOVER_STATE_SHOW
       return
     }
