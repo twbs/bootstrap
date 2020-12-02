@@ -11,13 +11,13 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
 ## Sponsors
 
 {{< sponsors.inline >}}
-<div id="sponsorList" class="d-flex flex-wrap mx-n2 text-center font-weight-bold"></div>
+<div id="sponsorList" class="d-flex flex-wrap mx-n2 text-center"></div>
 {{< /sponsors.inline >}}
 
 ## Backers
 
 {{< backers.inline >}}
-<div id="backerList" class="d-flex flex-wrap mx-n1 text-center font-weight-bold"></div>
+<div id="backerList" class="d-flex flex-wrap mx-n1 text-center"></div>
 {{< /backers.inline >}}
 
 ## Services
@@ -27,7 +27,7 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
   {{- range (index $.Site.Data "services") }}
     <div class="m-3 position-relative">
       {{ if .website -}}
-        <a href="{{ .website }}" class="stretched-link text-reset" title="{{ .name }}">
+        <a href="{{ .website }}" class="stretched-link text-reset" title="{{ .name }}" target="_blank" rel="nofollow noopener noreferrer">
       {{ end -}}
       <img src="{{ printf ("/docs/%s/assets/img/services/%s") $.Site.Params.docs_version .image }}" alt="{{ .name }}" class="mh-100 mw-100">
       {{ if .website -}}
@@ -59,7 +59,7 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
         )
 
         if (sponsorAccount.website) {
-          output.push('<a href="' + sponsorAccount.website + '" class="stretched-link text-reset">' + sponsorAccount.name + '</a>')
+          output.push('<a href="' + sponsorAccount.website + '" class="stretched-link text-reset" target="_blank" rel="nofollow noopener noreferrer">' + sponsorAccount.name + '</a>')
         } else {
           output.push(sponsorAccount.name)
         }
@@ -82,12 +82,12 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
 
         output.push(
           '<div class="m-1 position-relative">',
-          ' <div class="img-thumbnail d-flex align-items-center justify-content-center overflow-hidden sponsor-sm">'
+          ' <div class="img-thumbnail d-flex align-items-center justify-content-center overflow-hidden sponsor">'
         )
 
         if (backerAccount.website) {
           output.push(
-            '<a href="' + backerAccount.website + '" class="stretched-link text-reset" title="' + backerAccount.name + '">'
+            '<a href="' + backerAccount.website + '" class="stretched-link text-reset" title="' + backerAccount.name + '" target="_blank" rel="nofollow noopener noreferrer">'
           )
         }
 
