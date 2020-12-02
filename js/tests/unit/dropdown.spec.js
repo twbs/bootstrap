@@ -1623,4 +1623,46 @@ describe('Dropdown', () => {
       expect(Dropdown.getInstance(div)).toEqual(null)
     })
   })
+
+  describe('toggle menu with button', () => {
+    it('should invoke the toggle menu event.', done => {
+      fixtureEl.innerHTML = [
+        '<div class="container mb-2">',
+        '<ul class="navbar-nav border bg-secondary">',
+        '<li class="nav-item dropdown">',
+        '<a data-bs-toggle="dropdown" class="navbar-brand ml-1" id="mainMenuButton">',
+        '<h4 class="btn btn-dark btn-lg mb-0">Main Menu</h4>',
+        '</a>',
+        '<div class="dropdown-menu" id="mainMenu" aria-labelledby="mainMenuButton">',
+        '<a class="dropdown-item" target="_blank" href="https://www.google.com">Link With Target</a>',
+        '<a class="dropdown-item" href="https://www.google.com">Link Without Target</a>',
+        '</div>',
+        '</li>',
+        '</ul>',
+        '</div>',
+        '<div class="container">',
+        '<p>Before clicking the blue button, links in the main menu work as expected.</p>',
+        '<button type="button" id="buttonBreak" class="btn btn-primary btn-block" onclick="breakMainMenu()">',
+        'Click to call the breakMainMenu function. After you click me, links in the main menu no longer respond to click events, as if the href attribute was removed.',
+        '</button>',
+        '<br/>',
+        '</div>'
+      ].join('')
+
+      const triggerButtonMenu = fixtureEl.querySelector('.btn')
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdownEl = fixtureEl.querySelector('.dropdown')
+      const dropdown = new Dropdown(btnDropdown)
+
+      dropdownEl.addEventListener('shown.bs.dropdown', () => {
+        expect(btnDropdown.classList.contains('show')).toEqual(true)
+        expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
+        done()
+      })
+
+      triggerButtonMenu.click(() => {
+        dropdown.toggle()
+      })
+    })
+  })
 })

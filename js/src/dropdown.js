@@ -279,6 +279,7 @@ class Dropdown extends BaseComponent {
         const parentOfThis = this._element.parentNode
         if (parent === parentOfThis) {
           this._element = toggles[i]
+          Data.setData(this._element, DATA_KEY, this)
           break
         }
       }
