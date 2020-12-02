@@ -273,6 +273,7 @@ class Dropdown extends BaseComponent {
     if (isAMenu) {
       // search the toogle of the menu
       const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
+
       for (let i = 0, len = toggles.length; i < len; i++) {
         const parent = Dropdown.getParentFromElement(toggles[i])
         const parentOfThis = this._element.parentNode
