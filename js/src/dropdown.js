@@ -385,7 +385,7 @@ class Dropdown {
   static clearMenus(event) {
     if (event && (event.button === RIGHT_MOUSE_BUTTON ||
       (event.type === 'keyup' && event.key !== TAB_KEY) ||
-      event.button === 0)) {
+      event.target.type !== undefined)) {
       return
     }
 
@@ -398,6 +398,8 @@ class Dropdown {
       }
 
       if (event && event.type === 'click') {
+        // eslint-disable-next-line no-console
+        console.log(event)
         relatedTarget.clickEvent = event
       }
 
