@@ -106,7 +106,6 @@ class Dropdown extends BaseComponent {
     this._inNavbar = this._detectNavbar()
 
     this._addEventListeners()
-    Data.setData(this._element, DATA_KEY, this)
   }
 
   // Getters
@@ -383,13 +382,12 @@ class Dropdown extends BaseComponent {
   }
 
   static clearMenus(event) {
-    if (event && (event.button === RIGHT_MOUSE_BUTTON ||
-      (event.type === 'keyup' && event.key !== TAB_KEY) ||
-      event.target.type !== undefined)) {
+    if (event && (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY) || event.target.type !== undefined)) {
       return
     }
 
     const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
+
     for (let i = 0, len = toggles.length; i < len; i++) {
       const parent = Dropdown.getParentFromElement(toggles[i])
       const context = Data.getData(toggles[i], DATA_KEY)
