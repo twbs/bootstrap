@@ -17,6 +17,13 @@ toc: true
 
 - Renamed `scale-color()` function to `shift-color()` to avoid collision with Sass's own color scaling function.
 
+### Components
+
+#### Breadcrumbs
+
+- Simplified the default appearance of breadcrumbs by removing `padding`, `background-color`, and `border-radius`.
+- Added new CSS custom property `--bs-breadcrumb-divider` for easy customization without needing to recompile CSS.
+
 ## v5.0.0-alpha3
 
 ### Browser support
@@ -267,6 +274,7 @@ Changes to Reboot, typography, tables, and more.
 - Removed individual `$display-*-weight` variables for a single `$display-font-weight`.
 - Added two new `.display-*` heading styles, `.display-5` and `.display-6`.
 - Resized existing display headings for a slightly more consistent set of `font-size`s.
+- Links are underlined by default (not just on hover), unless they're part of specific components.
 
 ### Forms
 

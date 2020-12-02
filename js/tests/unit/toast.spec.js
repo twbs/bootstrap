@@ -384,6 +384,7 @@ describe('Toast', () => {
       const toast = new Toast(div)
 
       expect(Toast.getInstance(div)).toEqual(toast)
+      expect(Toast.getInstance(div)).toBeInstanceOf(Toast)
     })
 
     it('should return null when there is no toast instance', () => {
