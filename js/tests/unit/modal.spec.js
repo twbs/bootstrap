@@ -1119,4 +1119,60 @@ describe('Modal', () => {
       expect(Modal.getInstance(div)).toEqual(null)
     })
   })
+
+  describe('on', () => {
+    it('should register an event handler', done => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+
+      const onShow = e => {
+        expect(e).toBeDefined()
+      }
+
+      const onShown = () => {
+        expect(modalEl.getAttribute('aria-modal')).toEqual('true')
+        expect(modalEl.getAttribute('role')).toEqual('dialog')
+        expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
+        expect(modalEl.style.display).toEqual('block')
+        expect(document.querySelector('.modal-backdrop')).toBeDefined()
+        done()
+      }
+
+      new Modal(modalEl)
+        .on('show', onShow)
+        .on('shown', onShown)
+        .show()
+    })
+  })
+
+  describe('off', () => {
+    it('should remove a registered event handler', () => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+      let counter = 0
+
+      const incrementCounter = () => {
+        counter += 1
+      }
+
+      modal.on('shown', incrementCounter)
+           .on('hidden', incrementCounter)
+
+      modal.show()
+      modal.hide()
+
+      expect(counter).toEqual(2)
+
+      modal.off('shown', incrementCounter)
+           .off('hidden', incrementCounter)
+
+      modal.show()
+      modal.hide()
+
+      expect(counter).toEqual(2)
+    })
+  })
 })
