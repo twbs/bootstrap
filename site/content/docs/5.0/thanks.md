@@ -130,10 +130,10 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
       requestOC(function (data) {
         var allBackerList = data.nodes
         var backerList = allBackerList.filter(function (backer) {
-          return backer.tier.slug === 'backer'
+          return backer.tier && backer.tier.slug === 'backer'
         })
         var sponsorList = allBackerList.filter(function (backer) {
-          return backer.tier.slug === 'sponsor'
+          return backer.tier && backer.tier.slug === 'sponsor'
         })
 
         // Sort by total amount donated
