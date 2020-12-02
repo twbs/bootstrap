@@ -95,15 +95,11 @@ class Tab extends BaseComponent {
       relatedTarget: previous
     })
 
-    if (showEvent.defaultPrevented ||
-      (hideEvent !== null && hideEvent.defaultPrevented)) {
+    if (showEvent.defaultPrevented || (hideEvent !== null && hideEvent.defaultPrevented)) {
       return
     }
 
-    this._activate(
-      this._element,
-      listElement
-    )
+    this._activate(this._element, listElement)
 
     const complete = () => {
       EventHandler.trigger(previous, EVENT_HIDDEN, {
@@ -129,14 +125,9 @@ class Tab extends BaseComponent {
       SelectorEngine.children(container, SELECTOR_ACTIVE)
 
     const active = activeElements[0]
-    const isTransitioning = callback &&
-      (active && active.classList.contains(CLASS_NAME_FADE))
+    const isTransitioning = callback && (active && active.classList.contains(CLASS_NAME_FADE))
 
-    const complete = () => this._transitionComplete(
-      element,
-      active,
-      callback
-    )
+    const complete = () => this._transitionComplete(element, active, callback)
 
     if (active && isTransitioning) {
       const transitionDuration = getTransitionDurationFromElement(active)

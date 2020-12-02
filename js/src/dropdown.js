@@ -367,8 +367,7 @@ class Dropdown extends BaseComponent {
   }
 
   static clearMenus(event) {
-    if (event && (event.button === RIGHT_MOUSE_BUTTON ||
-      (event.type === 'keyup' && event.key !== TAB_KEY))) {
+    if (event && (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY))) {
       return
     }
 
@@ -475,11 +474,13 @@ class Dropdown extends BaseComponent {
 
     let index = items.indexOf(event.target)
 
-    if (event.key === ARROW_UP_KEY && index > 0) { // Up
+    // Up
+    if (event.key === ARROW_UP_KEY && index > 0) {
       index--
     }
 
-    if (event.key === ARROW_DOWN_KEY && index < items.length - 1) { // Down
+    // Down
+    if (event.key === ARROW_DOWN_KEY && index < items.length - 1) {
       index++
     }
 
