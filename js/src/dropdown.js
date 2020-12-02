@@ -398,8 +398,6 @@ class Dropdown {
       }
 
       if (event && event.type === 'click') {
-        // eslint-disable-next-line no-console
-        console.log(event)
         relatedTarget.clickEvent = event
       }
 
