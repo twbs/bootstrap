@@ -101,12 +101,12 @@ Example:
 
 Sometimes bugs reported to us are actually caused by bugs in the browser(s) themselves, not bugs in Bootstrap per se.
 
-| Vendor(s)     | Browser(s)                   | Rendering engine | Bug reporting website(s)                                              | Notes                                                    |
-| ------------- | ---------------------------- | ---------------- | --------------------------------------------------------------------- | -------------------------------------------------------- |
-| Mozilla       | Firefox                      | Gecko            | https://bugzilla.mozilla.org/enter_bug.cgi                            | "Core" is normally the right product option to choose.   |
-| Apple         | Safari                       | WebKit           | https://bugs.webkit.org/enter_bug.cgi?product=WebKit                  | In Apple's bug reporter, choose "Safari" as the product. |
-| Google, Opera | Chrome, Chromium, Opera v15+ | Blink            | https://bugs.chromium.org/p/chromium/issues/list                      | Click the "New issue" button.                            |
-| Microsoft     | Edge                         | Blink            | https://developer.microsoft.com/en-us/microsoft-edge/                 | Go to "Help > Send Feedback" from the browser            |
+| Vendor(s)     | Browser(s)                   | Rendering engine | Bug reporting website(s)                               | Notes                                                    |
+| ------------- | ---------------------------- | ---------------- | ------------------------------------------------------ | -------------------------------------------------------- |
+| Mozilla       | Firefox                      | Gecko            | https://bugzilla.mozilla.org/enter_bug.cgi             | "Core" is normally the right product option to choose.   |
+| Apple         | Safari                       | WebKit           | https://bugs.webkit.org/enter_bug.cgi?product=WebKit   | In Apple's bug reporter, choose "Safari" as the product. |
+| Google, Opera | Chrome, Chromium, Opera v15+ | Blink            | https://bugs.chromium.org/p/chromium/issues/list       | Click the "New issue" button.                            |
+| Microsoft     | Edge                         | Blink            | https://developer.microsoft.com/en-us/microsoft-edge/  | Go to "Help > Send Feedback" from the browser            |
 
 
 ## Feature requests
@@ -134,9 +134,9 @@ Please adhere to the [coding guidelines](#code-guidelines) used throughout the
 project (indentation, accurate comments, etc.) and any other requirements
 (such as test coverage).
 
-**Do not edit `bootstrap.css`, or `bootstrap.js`
-directly!** Those files are automatically generated. You should edit the
-source files in [`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/main/scss)
+**Do not edit `bootstrap.css`, `bootstrap.js` directly! Also, please do not commit
+any dist files (`dist/` or `js/dist`)!** Those files are automatically generated. You should
+edit the source files in [`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/main/scss)
 and/or [`/bootstrap/js/src/`](https://github.com/twbs/bootstrap/tree/main/js/src) instead.
 
 Similarly, when contributing to Bootstrap's documentation, you should edit the
