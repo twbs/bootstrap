@@ -59,7 +59,7 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
         )
 
         if (sponsorAccount.website) {
-          output.push('<a href="' + sponsorAccount.website + '" class="stretched-link text-reset" target="_blank" rel="nofollow noopener noreferrer">' + sponsorAccount.name + '</a>')
+          output.push('<a href="' + sponsorAccount.website + '" class="stretched-link text-reset" title="' + sponsorAccount.name + '"target="_blank" rel="nofollow noopener noreferrer">' + sponsorAccount.name + '</a>')
         } else {
           output.push(sponsorAccount.name)
         }
