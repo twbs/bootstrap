@@ -397,6 +397,7 @@ class Carousel extends BaseComponent {
   _setActiveIndicatorElement(element) {
     if (this._indicatorsElement) {
       const indicators = SelectorEngine.find(SELECTOR_ACTIVE, this._indicatorsElement)
+
       for (let i = 0; i < indicators.length; i++) {
         indicators[i].classList.remove(CLASS_NAME_ACTIVE)
       }
@@ -431,8 +432,7 @@ class Carousel extends BaseComponent {
   _slide(direction, element) {
     const activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
     const activeElementIndex = this._getItemIndex(activeElement)
-    const nextElement = element || (activeElement &&
-      this._getItemByDirection(direction, activeElement))
+    const nextElement = element || (activeElement && this._getItemByDirection(direction, activeElement))
 
     const nextElementIndex = this._getItemIndex(nextElement)
     const isCycling = Boolean(this._interval)
