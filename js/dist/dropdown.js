@@ -101,6 +101,8 @@
     }
   };
 
+  var isRTL = document.documentElement.dir === 'rtl';
+
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
   function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
@@ -181,9 +183,9 @@
   var CLASS_NAME_DISABLED = 'disabled';
   var CLASS_NAME_SHOW = 'show';
   var CLASS_NAME_DROPUP = 'dropup';
-  var CLASS_NAME_DROPRIGHT = 'dropright';
-  var CLASS_NAME_DROPLEFT = 'dropleft';
-  var CLASS_NAME_MENURIGHT = 'dropdown-menu-right';
+  var CLASS_NAME_DROPEND = 'dropend';
+  var CLASS_NAME_DROPSTART = 'dropstart';
+  var CLASS_NAME_MENUEND = 'dropdown-menu-end';
   var CLASS_NAME_NAVBAR = 'navbar';
   var CLASS_NAME_POSITION_STATIC = 'position-static';
   var SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]';
@@ -191,12 +193,12 @@
   var SELECTOR_MENU = '.dropdown-menu';
   var SELECTOR_NAVBAR_NAV = '.navbar-nav';
   var SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)';
-  var PLACEMENT_TOP = 'top-start';
-  var PLACEMENT_TOPEND = 'top-end';
-  var PLACEMENT_BOTTOM = 'bottom-start';
-  var PLACEMENT_BOTTOMEND = 'bottom-end';
-  var PLACEMENT_RIGHT = 'right-start';
-  var PLACEMENT_LEFT = 'left-start';
+  var PLACEMENT_TOP = isRTL ? 'top-end' : 'top-start';
+  var PLACEMENT_TOPEND = isRTL ? 'top-start' : 'top-end';
+  var PLACEMENT_BOTTOM = isRTL ? 'bottom-end' : 'bottom-start';
+  var PLACEMENT_BOTTOMEND = isRTL ? 'bottom-start' : 'bottom-end';
+  var PLACEMENT_RIGHT = isRTL ? 'left-start' : 'right-start';
+  var PLACEMENT_LEFT = isRTL ? 'right-start' : 'left-start';
   var Default = {
     offset: 0,
     flip: true,
@@ -396,12 +398,12 @@
       var placement = PLACEMENT_BOTTOM; // Handle dropup
 
       if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
-        placement = this._menu.classList.contains(CLASS_NAME_MENURIGHT) ? PLACEMENT_TOPEND : PLACEMENT_TOP;
-      } else if (parentDropdown.classList.contains(CLASS_NAME_DROPRIGHT)) {
+        placement = this._menu.classList.contains(CLASS_NAME_MENUEND) ? PLACEMENT_TOPEND : PLACEMENT_TOP;
+      } else if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
         placement = PLACEMENT_RIGHT;
-      } else if (parentDropdown.classList.contains(CLASS_NAME_DROPLEFT)) {
+      } else if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) {
         placement = PLACEMENT_LEFT;
-      } else if (this._menu.classList.contains(CLASS_NAME_MENURIGHT)) {
+      } else if (this._menu.classList.contains(CLASS_NAME_MENUEND)) {
         placement = PLACEMENT_BOTTOMEND;
       }
 

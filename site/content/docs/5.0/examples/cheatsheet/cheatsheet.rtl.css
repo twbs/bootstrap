@@ -146,7 +146,7 @@ body {
     left: 0;
     z-index: -1;
     content: "";
-    background-image: linear-gradient(to bottom, #fff calc(100% - 3rem), transparent);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1) calc(100% - 3rem), rgba(255, 255, 255, .01));
   }
 
   .bd-cheatsheet article,
