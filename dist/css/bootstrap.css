@@ -1914,7 +1914,6 @@ progress {
 }
 .table {
   --bs-table-bg: transparent;
-  --bs-table-accent-bg: transparent;
   --bs-table-striped-color: #212529;
   --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
   --bs-table-active-color: #212529;
@@ -3754,7 +3753,7 @@ textarea.form-control-lg {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-.btn-group-vertical > .btn:not(:first-child),
+.btn-group-vertical > .btn ~ .btn,
 .btn-group-vertical > .btn-group:not(:first-child) > .btn {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -4397,11 +4396,9 @@ textarea.form-control-lg {
 .breadcrumb {
   display: flex;
   flex-wrap: wrap;
-  padding: 0.5rem 1rem;
+  padding: 0 0;
   margin-bottom: 1rem;
   list-style: none;
-  background-color: #e9ecef;
-  border-radius: 0.25rem;
 }
 
 .breadcrumb-item + .breadcrumb-item {
@@ -4411,7 +4408,7 @@ textarea.form-control-lg {
   float: left;
   padding-right: 0.5rem;
   color: #6c757d;
-  content: "/";
+  content: var(--bs-breadcrumb-divider, "/");
 }
 .breadcrumb-item.active {
   color: #6c757d;
