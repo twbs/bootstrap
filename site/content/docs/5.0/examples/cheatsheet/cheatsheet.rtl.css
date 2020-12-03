@@ -23,38 +23,53 @@ body {
 
 /* Table of contents */
 .bd-aside a {
-  padding: .125rem 1rem;
-  color: inherit;
-}
-
-.bd-aside a:not(:hover) {
+  padding: .1875rem .5rem;
+  margin-top: .125rem;
+  margin-right: .3125rem;
+  color: rgba(0, 0, 0, .65);
   text-decoration: none;
 }
 
-.bd-aside a:not(:only-child) {
-  margin-right: -1rem;
+.bd-aside a:hover,
+.bd-aside a:focus {
+  color: rgba(0, 0, 0, .85);
+  background-color: rgba(121, 82, 179, .1);
 }
 
-.bd-aside a:not(:only-child)::before {
-  width: 1rem;
+.bd-aside .active {
+  font-weight: 600;
+  color: rgba(0, 0, 0, .85);
+}
+
+.bd-aside .btn {
+  padding: .25rem .5rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, .65);
+  border: 0;
+}
+
+.bd-aside .btn:hover,
+.bd-aside .btn:focus {
+  color: rgba(0, 0, 0, .85);
+  background-color: rgba(121, 82, 179, .1);
+}
+
+.bd-aside .btn:focus {
+  box-shadow: 0 0 0 1px rgba(121, 82, 179, .7);
+}
+
+.bd-aside .btn::before {
+  width: 1.25em;
   line-height: 0;
-  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
   transition: transform .35s ease;
   transform-origin: .5em 50%;
 }
 
-.bd-aside a:not(:only-child):not(.collapsed) {
-  color: #000;
+.bd-aside .btn[aria-expanded="true"]::before {
+  transform: rotate(90deg);
 }
 
-.bd-aside a:not(:only-child):not(.collapsed)::before {
-  transform: rotate(-90deg);
-}
-
-.bd-aside .active {
-  font-weight: 700;
-  color: #000;
-}
 
 /* Examples */
 .scrollspy-example {
@@ -123,8 +138,15 @@ body {
     scroll-margin-top: 2rem;
   }
 
-  .bd-cheatsheet section > h2 {
-    grid-column: 1 / span 2;
+  .bd-cheatsheet section > h2::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: -2rem;
+    left: 0;
+    z-index: -1;
+    content: "";
+    background-image: linear-gradient(to bottom, #fff calc(100% - 3rem), transparent);
   }
 
   .bd-cheatsheet article,
