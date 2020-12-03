@@ -21,6 +21,7 @@ import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
+import BaseComponent from './base-component'
 
 /**
  * ------------------------------------------------------------------------
@@ -29,7 +30,6 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'carousel'
-const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.carousel'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -104,8 +104,10 @@ const PointerType = {
  * Class Definition
  * ------------------------------------------------------------------------
  */
-class Carousel {
+class Carousel extends BaseComponent {
   constructor(element, config) {
+    super(element)
+
     this._items = null
     this._interval = null
     this._activeElement = null
@@ -116,23 +118,21 @@ class Carousel {
     this.touchDeltaX = 0
 
     this._config = this._getConfig(config)
-    this._element = element
     this._indicatorsElement = SelectorEngine.findOne(SELECTOR_INDICATORS, this._element)
     this._touchSupported = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
     this._pointerEvent = Boolean(window.PointerEvent)
 
     this._addEventListeners()
-    Data.setData(element, DATA_KEY, this)
   }
 
   // Getters
 
-  static get VERSION() {
-    return VERSION
-  }
-
   static get Default() {
     return Default
+  }
+
+  static get DATA_KEY() {
+    return DATA_KEY
   }
 
   // Public
@@ -218,12 +218,11 @@ class Carousel {
   }
 
   dispose() {
+    super.dispose()
     EventHandler.off(this._element, EVENT_KEY)
-    Data.removeData(this._element, DATA_KEY)
 
     this._items = null
     this._config = null
-    this._element = null
     this._interval = null
     this._isPaused = null
     this._isSliding = null
@@ -398,6 +397,7 @@ class Carousel {
   _setActiveIndicatorElement(element) {
     if (this._indicatorsElement) {
       const indicators = SelectorEngine.find(SELECTOR_ACTIVE, this._indicatorsElement)
+
       for (let i = 0; i < indicators.length; i++) {
         indicators[i].classList.remove(CLASS_NAME_ACTIVE)
       }
@@ -432,8 +432,7 @@ class Carousel {
   _slide(direction, element) {
     const activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
     const activeElementIndex = this._getItemIndex(activeElement)
-    const nextElement = element || (activeElement &&
-      this._getItemByDirection(direction, activeElement))
+    const nextElement = element || (activeElement && this._getItemByDirection(direction, activeElement))
 
     const nextElementIndex = this._getItemIndex(nextElement)
     const isCycling = Boolean(this._interval)
@@ -589,10 +588,6 @@ class Carousel {
     }
 
     event.preventDefault()
-  }
-
-  static getInstance(element) {
-    return Data.getData(element, DATA_KEY)
   }
 }
 

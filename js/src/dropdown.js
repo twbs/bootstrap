@@ -19,6 +19,7 @@ import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import Popper from 'popper.js'
 import SelectorEngine from './dom/selector-engine'
+import BaseComponent from './base-component'
 
 /**
  * ------------------------------------------------------------------------
@@ -27,7 +28,6 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'dropdown'
-const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.dropdown'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -96,23 +96,19 @@ const DefaultType = {
  * ------------------------------------------------------------------------
  */
 
-class Dropdown {
+class Dropdown extends BaseComponent {
   constructor(element, config) {
-    this._element = element
+    super(element)
+
     this._popper = null
     this._config = this._getConfig(config)
     this._menu = this._getMenuElement()
     this._inNavbar = this._detectNavbar()
 
     this._addEventListeners()
-    Data.setData(element, DATA_KEY, this)
   }
 
   // Getters
-
-  static get VERSION() {
-    return VERSION
-  }
 
   static get Default() {
     return Default
@@ -120,6 +116,10 @@ class Dropdown {
 
   static get DefaultType() {
     return DefaultType
+  }
+
+  static get DATA_KEY() {
+    return DATA_KEY
   }
 
   // Public
@@ -229,9 +229,8 @@ class Dropdown {
   }
 
   dispose() {
-    Data.removeData(this._element, DATA_KEY)
+    super.dispose()
     EventHandler.off(this._element, EVENT_KEY)
-    this._element = null
     this._menu = null
     if (this._popper) {
       this._popper.destroy()
@@ -368,8 +367,7 @@ class Dropdown {
   }
 
   static clearMenus(event) {
-    if (event && (event.button === RIGHT_MOUSE_BUTTON ||
-      (event.type === 'keyup' && event.key !== TAB_KEY))) {
+    if (event && (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY))) {
       return
     }
 
@@ -476,11 +474,13 @@ class Dropdown {
 
     let index = items.indexOf(event.target)
 
-    if (event.key === ARROW_UP_KEY && index > 0) { // Up
+    // Up
+    if (event.key === ARROW_UP_KEY && index > 0) {
       index--
     }
 
-    if (event.key === ARROW_DOWN_KEY && index < items.length - 1) { // Down
+    // Down
+    if (event.key === ARROW_DOWN_KEY && index < items.length - 1) {
       index++
     }
 
@@ -488,10 +488,6 @@ class Dropdown {
     index = index === -1 ? 0 : index
 
     items[index].focus()
-  }
-
-  static getInstance(element) {
-    return Data.getData(element, DATA_KEY)
   }
 }
 
