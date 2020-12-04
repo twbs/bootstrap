@@ -186,6 +186,8 @@ const onDOMContentLoaded = callback => {
   }
 }
 
+const isRTL = document.documentElement.dir === 'rtl'
+
 export {
   TRANSITION_END,
   getUID,
@@ -201,5 +203,6 @@ export {
   noop,
   reflow,
   getjQuery,
-  onDOMContentLoaded
+  onDOMContentLoaded,
+  isRTL
 }

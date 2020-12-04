@@ -79,8 +79,8 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const CLASS_NAME_CAROUSEL = 'carousel'
 const CLASS_NAME_ACTIVE = 'active'
 const CLASS_NAME_SLIDE = 'slide'
-const CLASS_NAME_RIGHT = 'carousel-item-right'
-const CLASS_NAME_LEFT = 'carousel-item-left'
+const CLASS_NAME_END = 'carousel-item-end'
+const CLASS_NAME_START = 'carousel-item-start'
 const CLASS_NAME_NEXT = 'carousel-item-next'
 const CLASS_NAME_PREV = 'carousel-item-prev'
 const CLASS_NAME_POINTER_EVENT = 'pointer-event'
@@ -442,11 +442,11 @@ class Carousel extends BaseComponent {
     let eventDirectionName
 
     if (direction === DIRECTION_NEXT) {
-      directionalClassName = CLASS_NAME_LEFT
+      directionalClassName = CLASS_NAME_START
       orderClassName = CLASS_NAME_NEXT
       eventDirectionName = DIRECTION_LEFT
     } else {
-      directionalClassName = CLASS_NAME_RIGHT
+      directionalClassName = CLASS_NAME_END
       orderClassName = CLASS_NAME_PREV
       eventDirectionName = DIRECTION_RIGHT
     }
