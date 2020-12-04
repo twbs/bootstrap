@@ -286,7 +286,7 @@ class Tooltip {
       this._popper = new Popper(this.element, tip, this._getPopperConfig(attachment))
 
       $(tip).addClass(CLASS_NAME_SHOW)
-      $(tip).addClass(this._getCustomClass())
+      $(tip).addClass(this.config.customClass)
 
       // If this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
@@ -732,10 +732,6 @@ class Tooltip {
     this.hide()
     this.show()
     this.config.animation = initConfigAnimation
-  }
-
-  _getCustomClass() {
-    return this.element.getAttribute('data-custom-class') || this.config.customClass
   }
 
   // Static
