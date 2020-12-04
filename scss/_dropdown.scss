@@ -35,7 +35,7 @@
 
   // Reset positioning when positioned with Popper
   &[style] {
-    right: auto;
+    right: auto !important; // stylelint-disable-line declaration-no-important
   }
 }
 
