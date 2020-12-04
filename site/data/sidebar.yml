@@ -1,3 +1,6 @@
+# This file holds all sidebar menu's entries.
+# The logic for the sidebar generation is in "site/layouts/partials/docs-sidebar.html".
+
 - title: Getting started
   pages:
     - title: Introduction
@@ -26,7 +29,6 @@
     - title: Breakpoints
     - title: Containers
     - title: Grid
-    # - title: Rows
     - title: Columns
     - title: Gutters
     - title: Utilities
@@ -117,3 +119,5 @@
     - title: Brand
     - title: License
     - title: Translations
+
+- title: Migration
