@@ -47,14 +47,14 @@
   padding: 0 $tooltip-arrow-height;
 
   .tooltip-arrow {
-    left: 0 #{"/* rtl:ignore */"};
+    left: 0;
     width: $tooltip-arrow-height;
     height: $tooltip-arrow-width;
 
     &::before {
-      right: -1px #{"/* rtl:ignore */"};
-      border-width: ($tooltip-arrow-width / 2) $tooltip-arrow-height ($tooltip-arrow-width / 2) 0 #{"/* rtl:ignore */"};
-      border-right-color: $tooltip-arrow-color #{"/* rtl:ignore */"};
+      right: -1px;
+      border-width: ($tooltip-arrow-width / 2) $tooltip-arrow-height ($tooltip-arrow-width / 2) 0;
+      border-right-color: $tooltip-arrow-color;
     }
   }
 }
@@ -77,14 +77,14 @@
   padding: 0 $tooltip-arrow-height;
 
   .tooltip-arrow {
-    right: 0 #{"/* rtl:ignore */"};
+    right: 0;
     width: $tooltip-arrow-height;
     height: $tooltip-arrow-width;
 
     &::before {
-      left: -1px #{"/* rtl:ignore */"};
-      border-width: ($tooltip-arrow-width / 2) 0 ($tooltip-arrow-width / 2) $tooltip-arrow-height #{"/* rtl:ignore */"};
-      border-left-color: $tooltip-arrow-color #{"/* rtl:ignore */"};
+      left: -1px;
+      border-width: ($tooltip-arrow-width / 2) 0 ($tooltip-arrow-width / 2) $tooltip-arrow-height;
+      border-left-color: $tooltip-arrow-color;
     }
   }
 }

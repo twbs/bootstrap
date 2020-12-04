@@ -58,24 +58,24 @@
 
 .bs-popover-end {
   // Overrule margin set by popper.js
-  margin-left: $popover-arrow-height !important #{"/* rtl:ignore */"}; // stylelint-disable-line declaration-no-important
+  margin-left: $popover-arrow-height !important; // stylelint-disable-line declaration-no-important
 
   > .popover-arrow {
-    left: subtract(-$popover-arrow-height, $popover-border-width) #{"/* rtl:ignore */"};
+    left: subtract(-$popover-arrow-height, $popover-border-width);
     width: $popover-arrow-height;
     height: $popover-arrow-width;
     margin: $popover-border-radius 0; // make sure the arrow does not touch the popover's rounded corners
 
     &::before {
-      left: 0 #{"/* rtl:ignore */"};
-      border-width: ($popover-arrow-width / 2) $popover-arrow-height ($popover-arrow-width / 2) 0 #{"/* rtl:ignore */"};
-      border-right-color: $popover-arrow-outer-color #{"/* rtl:ignore */"};
+      left: 0;
+      border-width: ($popover-arrow-width / 2) $popover-arrow-height ($popover-arrow-width / 2) 0;
+      border-right-color: $popover-arrow-outer-color;
     }
 
     &::after {
-      left: $popover-border-width #{"/* rtl:ignore */"};
-      border-width: ($popover-arrow-width / 2) $popover-arrow-height ($popover-arrow-width / 2) 0 #{"/* rtl:ignore */"};
-      border-right-color: $popover-arrow-color #{"/* rtl:ignore */"};
+      left: $popover-border-width;
+      border-width: ($popover-arrow-width / 2) $popover-arrow-height ($popover-arrow-width / 2) 0;
+      border-right-color: $popover-arrow-color;
     }
   }
 }
@@ -115,24 +115,24 @@
 
 .bs-popover-start {
   // Overrule margin set by popper.js
-  margin-right: $popover-arrow-height !important #{"/* rtl:ignore */"}; // stylelint-disable-line declaration-no-important
+  margin-right: $popover-arrow-height !important; // stylelint-disable-line declaration-no-important
 
   > .popover-arrow {
-    right: subtract(-$popover-arrow-height, $popover-border-width) #{"/* rtl:ignore */"};
+    right: subtract(-$popover-arrow-height, $popover-border-width);
     width: $popover-arrow-height;
     height: $popover-arrow-width;
     margin: $popover-border-radius 0; // make sure the arrow does not touch the popover's rounded corners
 
     &::before {
-      right: 0 #{"/* rtl:ignore */"};
-      border-width: ($popover-arrow-width / 2) 0 ($popover-arrow-width / 2) $popover-arrow-height #{"/* rtl:ignore */"};
-      border-left-color: $popover-arrow-outer-color #{"/* rtl:ignore */"};
+      right: 0;
+      border-width: ($popover-arrow-width / 2) 0 ($popover-arrow-width / 2) $popover-arrow-height;
+      border-left-color: $popover-arrow-outer-color;
     }
 
     &::after {
-      right: $popover-border-width #{"/* rtl:ignore */"};
-      border-width: ($popover-arrow-width / 2) 0 ($popover-arrow-width / 2) $popover-arrow-height #{"/* rtl:ignore */"};
-      border-left-color: $popover-arrow-color #{"/* rtl:ignore */"};
+      right: $popover-border-width;
+      border-width: ($popover-arrow-width / 2) 0 ($popover-arrow-width / 2) $popover-arrow-height;
+      border-left-color: $popover-arrow-color;
     }
   }
 }
