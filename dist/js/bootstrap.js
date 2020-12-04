@@ -236,6 +236,8 @@
     }
   };
 
+  var isRTL = document.documentElement.dir === 'rtl';
+
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.0-alpha3): dom/data.js
@@ -1072,8 +1074,8 @@
   var CLASS_NAME_CAROUSEL = 'carousel';
   var CLASS_NAME_ACTIVE$1 = 'active';
   var CLASS_NAME_SLIDE = 'slide';
-  var CLASS_NAME_RIGHT = 'carousel-item-right';
-  var CLASS_NAME_LEFT = 'carousel-item-left';
+  var CLASS_NAME_END = 'carousel-item-end';
+  var CLASS_NAME_START = 'carousel-item-start';
   var CLASS_NAME_NEXT = 'carousel-item-next';
   var CLASS_NAME_PREV = 'carousel-item-prev';
   var CLASS_NAME_POINTER_EVENT = 'pointer-event';
@@ -1446,11 +1448,11 @@
       var eventDirectionName;
 
       if (direction === DIRECTION_NEXT) {
-        directionalClassName = CLASS_NAME_LEFT;
+        directionalClassName = CLASS_NAME_START;
         orderClassName = CLASS_NAME_NEXT;
         eventDirectionName = DIRECTION_LEFT;
       } else {
-        directionalClassName = CLASS_NAME_RIGHT;
+        directionalClassName = CLASS_NAME_END;
         orderClassName = CLASS_NAME_PREV;
         eventDirectionName = DIRECTION_RIGHT;
       }
@@ -2061,9 +2063,9 @@
   var CLASS_NAME_DISABLED = 'disabled';
   var CLASS_NAME_SHOW$1 = 'show';
   var CLASS_NAME_DROPUP = 'dropup';
-  var CLASS_NAME_DROPRIGHT = 'dropright';
-  var CLASS_NAME_DROPLEFT = 'dropleft';
-  var CLASS_NAME_MENURIGHT = 'dropdown-menu-right';
+  var CLASS_NAME_DROPEND = 'dropend';
+  var CLASS_NAME_DROPSTART = 'dropstart';
+  var CLASS_NAME_MENUEND = 'dropdown-menu-end';
   var CLASS_NAME_NAVBAR = 'navbar';
   var CLASS_NAME_POSITION_STATIC = 'position-static';
   var SELECTOR_DATA_TOGGLE$2 = '[data-bs-toggle="dropdown"]';
@@ -2071,12 +2073,12 @@
   var SELECTOR_MENU = '.dropdown-menu';
   var SELECTOR_NAVBAR_NAV = '.navbar-nav';
   var SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)';
-  var PLACEMENT_TOP = 'top-start';
-  var PLACEMENT_TOPEND = 'top-end';
-  var PLACEMENT_BOTTOM = 'bottom-start';
-  var PLACEMENT_BOTTOMEND = 'bottom-end';
-  var PLACEMENT_RIGHT = 'right-start';
-  var PLACEMENT_LEFT = 'left-start';
+  var PLACEMENT_TOP = isRTL ? 'top-end' : 'top-start';
+  var PLACEMENT_TOPEND = isRTL ? 'top-start' : 'top-end';
+  var PLACEMENT_BOTTOM = isRTL ? 'bottom-end' : 'bottom-start';
+  var PLACEMENT_BOTTOMEND = isRTL ? 'bottom-start' : 'bottom-end';
+  var PLACEMENT_RIGHT = isRTL ? 'left-start' : 'right-start';
+  var PLACEMENT_LEFT = isRTL ? 'right-start' : 'left-start';
   var Default$2 = {
     offset: 0,
     flip: true,
@@ -2276,12 +2278,12 @@
       var placement = PLACEMENT_BOTTOM; // Handle dropup
 
       if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
-        placement = this._menu.classList.contains(CLASS_NAME_MENURIGHT) ? PLACEMENT_TOPEND : PLACEMENT_TOP;
-      } else if (parentDropdown.classList.contains(CLASS_NAME_DROPRIGHT)) {
+        placement = this._menu.classList.contains(CLASS_NAME_MENUEND) ? PLACEMENT_TOPEND : PLACEMENT_TOP;
+      } else if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
         placement = PLACEMENT_RIGHT;
-      } else if (parentDropdown.classList.contains(CLASS_NAME_DROPLEFT)) {
+      } else if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) {
         placement = PLACEMENT_LEFT;
-      } else if (this._menu.classList.contains(CLASS_NAME_MENURIGHT)) {
+      } else if (this._menu.classList.contains(CLASS_NAME_MENUEND)) {
         placement = PLACEMENT_BOTTOMEND;
       }
 
@@ -2979,11 +2981,11 @@
     _proto._adjustDialog = function _adjustDialog() {
       var isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
 
-      if (!this._isBodyOverflowing && isModalOverflowing) {
+      if (!this._isBodyOverflowing && isModalOverflowing && !isRTL || this._isBodyOverflowing && !isModalOverflowing && isRTL) {
         this._element.style.paddingLeft = this._scrollbarWidth + "px";
       }
 
-      if (this._isBodyOverflowing && !isModalOverflowing) {
+      if (this._isBodyOverflowing && !isModalOverflowing && !isRTL || !this._isBodyOverflowing && isModalOverflowing && isRTL) {
         this._element.style.paddingRight = this._scrollbarWidth + "px";
       }
     };
@@ -3326,9 +3328,9 @@
   var AttachmentMap = {
     AUTO: 'auto',
     TOP: 'top',
-    RIGHT: 'right',
+    RIGHT: isRTL ? 'left' : 'right',
     BOTTOM: 'bottom',
-    LEFT: 'left'
+    LEFT: isRTL ? 'right' : 'left'
   };
   var Default$4 = {
     animation: true,
@@ -3690,6 +3692,18 @@
       }
 
       return title;
+    };
+
+    _proto.updateAttachment = function updateAttachment(attachment) {
+      if (attachment === 'right') {
+        return 'end';
+      }
+
+      if (attachment === 'left') {
+        return 'start';
+      }
+
+      return attachment;
     } // Private
     ;
 
@@ -3723,7 +3737,7 @@
     };
 
     _proto._addAttachmentClass = function _addAttachmentClass(attachment) {
-      this.getTipElement().classList.add(CLASS_PREFIX + "-" + attachment);
+      this.getTipElement().classList.add(CLASS_PREFIX + "-" + this.updateAttachment(attachment));
     };
 
     _proto._getOffset = function _getOffset() {
@@ -4136,7 +4150,7 @@
     ;
 
     _proto._addAttachmentClass = function _addAttachmentClass(attachment) {
-      this.getTipElement().classList.add(CLASS_PREFIX$1 + "-" + attachment);
+      this.getTipElement().classList.add(CLASS_PREFIX$1 + "-" + this.updateAttachment(attachment));
     };
 
     _proto._getContent = function _getContent() {

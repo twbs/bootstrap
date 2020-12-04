@@ -886,6 +886,40 @@ describe('Tooltip', () => {
     })
   })
 
+  describe('updateAttachment', () => {
+    it('should use end class name when right placement specified', done => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl, {
+        placement: 'right'
+      })
+
+      tooltipEl.addEventListener('inserted.bs.tooltip', () => {
+        expect(tooltip.getTipElement().classList.contains('bs-tooltip-end')).toEqual(true)
+        done()
+      })
+
+      tooltip.show()
+    })
+
+    it('should use start class name when left placement specified', done => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl, {
+        placement: 'left'
+      })
+
+      tooltipEl.addEventListener('inserted.bs.tooltip', () => {
+        expect(tooltip.getTipElement().classList.contains('bs-tooltip-start')).toEqual(true)
+        done()
+      })
+
+      tooltip.show()
+    })
+  })
+
   describe('setElementContent', () => {
     it('should do nothing if the element is null', () => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'

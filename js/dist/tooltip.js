@@ -156,6 +156,8 @@
     }
   };
 
+  var isRTL = document.documentElement.dir === 'rtl';
+
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.0-alpha3): util/sanitizer.js
@@ -368,9 +370,9 @@
   var AttachmentMap = {
     AUTO: 'auto',
     TOP: 'top',
-    RIGHT: 'right',
+    RIGHT: isRTL ? 'left' : 'right',
     BOTTOM: 'bottom',
-    LEFT: 'left'
+    LEFT: isRTL ? 'right' : 'left'
   };
   var Default = {
     animation: true,
@@ -732,6 +734,18 @@
       }
 
       return title;
+    };
+
+    _proto.updateAttachment = function updateAttachment(attachment) {
+      if (attachment === 'right') {
+        return 'end';
+      }
+
+      if (attachment === 'left') {
+        return 'start';
+      }
+
+      return attachment;
     } // Private
     ;
 
@@ -765,7 +779,7 @@
     };
 
     _proto._addAttachmentClass = function _addAttachmentClass(attachment) {
-      this.getTipElement().classList.add(CLASS_PREFIX + "-" + attachment);
+      this.getTipElement().classList.add(CLASS_PREFIX + "-" + this.updateAttachment(attachment));
     };
 
     _proto._getOffset = function _getOffset() {
