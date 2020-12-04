@@ -12,7 +12,8 @@ module.exports = ctx => {
     plugins: {
       autoprefixer: {
         cascade: false
-      }
+      },
+      rtlcss: ctx.env === 'RTL' ? {} : false
     }
   }
 }
