@@ -11,6 +11,7 @@ import {
   getElementFromSelector,
   isElement,
   isVisible,
+  isRTL,
   noop,
   typeCheckConfig
 } from './util/index'
@@ -53,9 +54,9 @@ const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY}${DATA_API_KEY}`
 const CLASS_NAME_DISABLED = 'disabled'
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_DROPUP = 'dropup'
-const CLASS_NAME_DROPRIGHT = 'dropright'
-const CLASS_NAME_DROPLEFT = 'dropleft'
-const CLASS_NAME_MENURIGHT = 'dropdown-menu-right'
+const CLASS_NAME_DROPEND = 'dropend'
+const CLASS_NAME_DROPSTART = 'dropstart'
+const CLASS_NAME_MENUEND = 'dropdown-menu-end'
 const CLASS_NAME_NAVBAR = 'navbar'
 const CLASS_NAME_POSITION_STATIC = 'position-static'
 
@@ -65,12 +66,12 @@ const SELECTOR_MENU = '.dropdown-menu'
 const SELECTOR_NAVBAR_NAV = '.navbar-nav'
 const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
 
-const PLACEMENT_TOP = 'top-start'
-const PLACEMENT_TOPEND = 'top-end'
-const PLACEMENT_BOTTOM = 'bottom-start'
-const PLACEMENT_BOTTOMEND = 'bottom-end'
-const PLACEMENT_RIGHT = 'right-start'
-const PLACEMENT_LEFT = 'left-start'
+const PLACEMENT_TOP = isRTL ? 'top-end' : 'top-start'
+const PLACEMENT_TOPEND = isRTL ? 'top-start' : 'top-end'
+const PLACEMENT_BOTTOM = isRTL ? 'bottom-end' : 'bottom-start'
+const PLACEMENT_BOTTOMEND = isRTL ? 'bottom-start' : 'bottom-end'
+const PLACEMENT_RIGHT = isRTL ? 'left-start' : 'right-start'
+const PLACEMENT_LEFT = isRTL ? 'right-start' : 'left-start'
 
 const Default = {
   offset: 0,
@@ -277,14 +278,14 @@ class Dropdown extends BaseComponent {
 
     // Handle dropup
     if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
-      placement = this._menu.classList.contains(CLASS_NAME_MENURIGHT) ?
+      placement = this._menu.classList.contains(CLASS_NAME_MENUEND) ?
         PLACEMENT_TOPEND :
         PLACEMENT_TOP
-    } else if (parentDropdown.classList.contains(CLASS_NAME_DROPRIGHT)) {
+    } else if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
       placement = PLACEMENT_RIGHT
-    } else if (parentDropdown.classList.contains(CLASS_NAME_DROPLEFT)) {
+    } else if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) {
       placement = PLACEMENT_LEFT
-    } else if (this._menu.classList.contains(CLASS_NAME_MENURIGHT)) {
+    } else if (this._menu.classList.contains(CLASS_NAME_MENUEND)) {
       placement = PLACEMENT_BOTTOMEND
     }
 
