@@ -433,13 +433,9 @@ describe('Util', () => {
       pluginMock.jQueryInterface = function () {}
 
       Util.defineJQueryPlugin('test', pluginMock)
-      window.document.dispatchEvent(new Event('DOMContentLoaded', {
-        bubbles: true,
-        cancelable: true
-      }))
       expect(fakejQuery.fn.test).toBe(pluginMock.jQueryInterface)
       expect(fakejQuery.fn.test.Constructor).toBe(pluginMock)
-      expect(fakejQuery.fn.test.noConflict).toBeDefined()
+      expect(typeof fakejQuery.fn.test.noConflict).toEqual('function')
     })
   })
 })
