@@ -19,18 +19,34 @@ bootstrap/
 │   ├── bootstrap-grid.css.map
 │   ├── bootstrap-grid.min.css
 │   ├── bootstrap-grid.min.css.map
+│   ├── bootstrap-grid.rtl.css
+│   ├── bootstrap-grid.rtl.css.map
+│   ├── bootstrap-grid.rtl.min.css
+│   ├── bootstrap-grid.rtl.min.css.map
 │   ├── bootstrap-reboot.css
 │   ├── bootstrap-reboot.css.map
 │   ├── bootstrap-reboot.min.css
 │   ├── bootstrap-reboot.min.css.map
+│   ├── bootstrap-reboot.rtl.css
+│   ├── bootstrap-reboot.rtl.css.map
+│   ├── bootstrap-reboot.rtl.min.css
+│   ├── bootstrap-reboot.rtl.min.css.map
 │   ├── bootstrap-utilities.css
 │   ├── bootstrap-utilities.css.map
 │   ├── bootstrap-utilities.min.css
 │   ├── bootstrap-utilities.min.css.map
+│   ├── bootstrap-utilities.rtl.css
+│   ├── bootstrap-utilities.rtl.css.map
+│   ├── bootstrap-utilities.rtl.min.css
+│   ├── bootstrap-utilities.rtl.min.css.map
 │   ├── bootstrap.css
 │   ├── bootstrap.css.map
 │   ├── bootstrap.min.css
-│   └── bootstrap.min.css.map
+│   ├── bootstrap.min.css.map
+│   ├── bootstrap.rtl.css
+│   ├── bootstrap.rtl.css.map
+│   ├── bootstrap.rtl.min.css
+│   └── bootstrap.rtl.min.css.map
 └── js/
     ├── bootstrap.bundle.js
     ├── bootstrap.bundle.js.map
@@ -66,7 +82,9 @@ Bootstrap includes a handful of options for including some or all of our compile
     <tr>
       <th scope="row">
         <div><code class="fw-normal text-nowrap">bootstrap.css</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap.rtl.css</code></div>
         <div><code class="fw-normal text-nowrap">bootstrap.min.css</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap.rtl.min.css</code></div>
       </th>
       <td>Included</td>
       <td>Included</td>
@@ -76,7 +94,9 @@ Bootstrap includes a handful of options for including some or all of our compile
     <tr>
       <th scope="row">
         <div><code class="fw-normal text-nowrap">bootstrap-grid.css</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap-grid.rtl.css</code></div>
         <div><code class="fw-normal text-nowrap">bootstrap-grid.min.css</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap-grid.rtl.min.css</code></div>
       </th>
       <td><a class="link-secondary" href="{{< docsref "/layout/grid" >}}">Only grid system</a></td>
       <td class="text-muted">&mdash;</td>
@@ -86,7 +106,9 @@ Bootstrap includes a handful of options for including some or all of our compile
     <tr>
       <th scope="row">
         <div><code class="fw-normal text-nowrap">bootstrap-utilities.css</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap-utilities.rtl.css</code></div>
         <div><code class="fw-normal text-nowrap">bootstrap-utilities.min.css</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap-utilities.rtl.min.css</code></div>
       </th>
       <td class="text-muted">&mdash;</td>
       <td class="text-muted">&mdash;</td>
@@ -96,7 +118,9 @@ Bootstrap includes a handful of options for including some or all of our compile
     <tr>
       <th scope="row">
         <div><code class="fw-normal text-nowrap">bootstrap-reboot.css</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap-reboot.rtl.css</code></div>
         <div><code class="fw-normal text-nowrap">bootstrap-reboot.min.css</code></div>
+        <div><code class="fw-normal text-nowrap">bootstrap-reboot.rtl.min.css</code></div>
       </th>
       <td class="text-muted">&mdash;</td>
       <td><a class="link-secondary" href="{{< docsref "/content/reboot" >}}">Only Reboot</a></td>

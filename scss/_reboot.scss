@@ -290,6 +290,8 @@ kbd,
 samp {
   font-family: $font-family-code;
   @include font-size(1em); // Correct the odd `em` font sizing in all browsers.
+  direction: ltr #{"/* rtl:ignore */"};
+  unicode-bidi: bidi-override;
 }
 
 // 1. Remove browser default top margin
@@ -550,6 +552,20 @@ legend {
   outline-offset: -2px; // 1
   -webkit-appearance: textfield; // 2
 }
+
+// 1. A few input types should stay LTR
+// See https://rtlstyling.com/posts/rtl-styling#form-inputs
+// 2. RTL only output
+// See https://rtlcss.com/learn/usage-guide/control-directives/#raw
+
+/* rtl:raw:
+[type="tel"],
+[type="url"],
+[type="email"],
+[type="number"] {
+  direction: ltr;
+}
+*/
 
 // Remove the inner padding in Chrome and Safari on macOS.
 
