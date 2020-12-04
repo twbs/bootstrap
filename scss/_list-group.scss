@@ -99,13 +99,13 @@
 
       > .list-group-item {
         &:first-child {
-          @include border-bottom-left-radius($list-group-border-radius);
-          @include border-top-right-radius(0);
+          @include border-bottom-start-radius($list-group-border-radius);
+          @include border-top-end-radius(0);
         }
 
         &:last-child {
-          @include border-top-right-radius($list-group-border-radius);
-          @include border-bottom-left-radius(0);
+          @include border-top-end-radius($list-group-border-radius);
+          @include border-bottom-start-radius(0);
         }
 
         &.active {

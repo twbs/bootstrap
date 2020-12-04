@@ -66,10 +66,7 @@ const getTransitionDurationFromElement = element => {
   }
 
   // Get transition-duration of the element
-  let {
-    transitionDuration,
-    transitionDelay
-  } = window.getComputedStyle(element)
+  let { transitionDuration, transitionDelay } = window.getComputedStyle(element)
 
   const floatTransitionDuration = Number.parseFloat(transitionDuration)
   const floatTransitionDelay = Number.parseFloat(transitionDelay)
@@ -96,6 +93,7 @@ const emulateTransitionEnd = (element, duration) => {
   let called = false
   const durationPadding = 5
   const emulatedDuration = duration + durationPadding
+
   function listener() {
     called = true
     element.removeEventListener(TRANSITION_END, listener)
@@ -188,6 +186,8 @@ const onDOMContentLoaded = callback => {
   }
 }
 
+const isRTL = document.documentElement.dir === 'rtl'
+
 export {
   TRANSITION_END,
   getUID,
@@ -203,5 +203,6 @@ export {
   noop,
   reflow,
   getjQuery,
-  onDOMContentLoaded
+  onDOMContentLoaded,
+  isRTL
 }
