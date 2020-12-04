@@ -270,19 +270,19 @@ Table cells of `<thead>` are always vertical aligned to the bottom. Table cells 
           <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
           <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
           <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
-          <td>Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.</td>
+          <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
         </tr>
         <tr class="align-bottom">
           <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
           <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
           <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
-          <td>Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.</td>
+          <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
         </tr>
         <tr>
           <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
           <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
           <td class="align-top">This cell is aligned to the top.</td>
-          <td>Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.</td>
+          <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
         </tr>
       </tbody>
     </table>
@@ -496,7 +496,6 @@ Similar to tables and dark tables, use the modifier classes `.table-light` or `.
   </tbody>
 </table>
 ```
-
 
 ### Table foot
 
