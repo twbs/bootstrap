@@ -287,7 +287,7 @@ class Dropdown extends BaseComponent {
   }
 
   _detectNavbar() {
-    return Boolean(this._element.closest(`.${CLASS_NAME_NAVBAR}`))
+    return this._element.closest(`.${CLASS_NAME_NAVBAR}`) !== null
   }
 
   _getPopperConfig() {
