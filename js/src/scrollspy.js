@@ -106,7 +106,7 @@ class ScrollSpy extends BaseComponent {
 
     const offsetBase = offsetMethod === METHOD_POSITION ?
       this._getScrollTop() :
-      0
+      window.pageYOffset
 
     this._offsets = []
     this._targets = []
