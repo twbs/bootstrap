@@ -27,8 +27,8 @@ In addition to our [border-radius utilities]({{< docsref "/utilities/borders" >}
 Align images with the [helper float classes]({{< docsref "/utilities/float" >}}) or [text alignment classes]({{< docsref "/utilities/text#text-alignment" >}}). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{< docsref "/utilities/spacing#horizontal-centering" >}}).
 
 {{< example >}}
-{{< placeholder width="200" height="200" class="rounded float-left" >}}
-{{< placeholder width="200" height="200" class="rounded float-right" >}}
+{{< placeholder width="200" height="200" class="rounded float-start" >}}
+{{< placeholder width="200" height="200" class="rounded float-end" >}}
 {{< /example >}}
 
 
@@ -47,9 +47,9 @@ Align images with the [helper float classes]({{< docsref "/utilities/float" >}})
 
 If you are using the `<picture>` element to specify multiple `<source>` elements for a specific `<img>`, make sure to add the `.img-*` classes to the `<img>` and not to the `<picture>` tag.
 
-{{< highlight html >}}
+```html
 ​<picture>
   <source srcset="..." type="image/svg+xml">
   <img src="..." class="img-fluid img-thumbnail" alt="...">
 </picture>
-{{< /highlight >}}
+```

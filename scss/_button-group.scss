@@ -1,5 +1,3 @@
-// stylelint-disable selector-no-qualifying-type
-
 // Make the div behave like a button
 .btn-group,
 .btn-group-vertical {
@@ -45,7 +43,7 @@
   // Reset rounded corners
   > .btn:not(:last-child):not(.dropdown-toggle),
   > .btn-group:not(:last-child) > .btn {
-    @include border-right-radius(0);
+    @include border-end-radius(0);
   }
 
   // The left radius should be 0 if the button is:
@@ -55,7 +53,7 @@
   > .btn:nth-child(n + 3),
   > :not(.btn-check) + .btn,
   > .btn-group:not(:first-child) > .btn {
-    @include border-left-radius(0);
+    @include border-start-radius(0);
   }
 }
 
@@ -77,11 +75,11 @@
 
   &::after,
   .dropup &::after,
-  .dropright &::after {
+  .dropend &::after {
     margin-left: 0;
   }
 
-  .dropleft &::before {
+  .dropstart &::before {
     margin-right: 0;
   }
 }
@@ -134,7 +132,7 @@
     @include border-bottom-radius(0);
   }
 
-  > .btn:not(:first-child),
+  > .btn ~ .btn,
   > .btn-group:not(:first-child) > .btn {
     @include border-top-radius(0);
   }

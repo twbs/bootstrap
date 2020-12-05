@@ -1,11 +1,11 @@
 /*!
-  * Bootstrap dropdown.js v5.0.0-alpha2 (https://getbootstrap.com/)
+  * Bootstrap dropdown.js v5.0.0-alpha3 (https://getbootstrap.com/)
   * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('popper.js'), require('./dom/selector-engine.js')) :
-  typeof define === 'function' && define.amd ? define(['./dom/data.js', './dom/event-handler.js', './dom/manipulator.js', 'popper.js', './dom/selector-engine.js'], factory) :
+  typeof define === 'function' && define.amd ? define(['./dom/data', './dom/event-handler', './dom/manipulator', 'popper.js', './dom/selector-engine'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Dropdown = factory(global.Data, global.EventHandler, global.Manipulator, global.Popper, global.SelectorEngine));
 }(this, (function (Data, EventHandler, Manipulator, Popper, SelectorEngine) { 'use strict';
 
@@ -19,7 +19,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-alpha2): util/index.js
+   * Bootstrap (v5.0.0-alpha3): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -33,7 +33,7 @@
   };
 
   var getSelector = function getSelector(element) {
-    var selector = element.getAttribute('data-target');
+    var selector = element.getAttribute('data-bs-target');
 
     if (!selector || selector === '#') {
       var hrefAttr = element.getAttribute('href');
@@ -86,14 +86,22 @@
     var _window = window,
         jQuery = _window.jQuery;
 
-    if (jQuery && !document.body.hasAttribute('data-no-jquery')) {
+    if (jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
       return jQuery;
     }
 
     return null;
   };
 
-  function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+  var onDOMContentLoaded = function onDOMContentLoaded(callback) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', callback);
+    } else {
+      callback();
+    }
+  };
+
+  var isRTL = document.documentElement.dir === 'rtl';
 
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
@@ -104,8 +112,55 @@
    * ------------------------------------------------------------------------
    */
 
+  var VERSION = '5.0.0-alpha3';
+
+  var BaseComponent = /*#__PURE__*/function () {
+    function BaseComponent(element) {
+      if (!element) {
+        return;
+      }
+
+      this._element = element;
+      Data__default['default'].setData(element, this.constructor.DATA_KEY, this);
+    }
+
+    var _proto = BaseComponent.prototype;
+
+    _proto.dispose = function dispose() {
+      Data__default['default'].removeData(this._element, this.constructor.DATA_KEY);
+      this._element = null;
+    }
+    /** Static */
+    ;
+
+    BaseComponent.getInstance = function getInstance(element) {
+      return Data__default['default'].getData(element, this.DATA_KEY);
+    };
+
+    _createClass(BaseComponent, null, [{
+      key: "VERSION",
+      get: function get() {
+        return VERSION;
+      }
+    }]);
+
+    return BaseComponent;
+  }();
+
+  function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+  function _defineProperties$1(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass$1(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$1(Constructor.prototype, protoProps); if (staticProps) _defineProperties$1(Constructor, staticProps); return Constructor; }
+
+  function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+  /**
+   * ------------------------------------------------------------------------
+   * Constants
+   * ------------------------------------------------------------------------
+   */
+
   var NAME = 'dropdown';
-  var VERSION = '5.0.0-alpha2';
   var DATA_KEY = 'bs.dropdown';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -128,22 +183,22 @@
   var CLASS_NAME_DISABLED = 'disabled';
   var CLASS_NAME_SHOW = 'show';
   var CLASS_NAME_DROPUP = 'dropup';
-  var CLASS_NAME_DROPRIGHT = 'dropright';
-  var CLASS_NAME_DROPLEFT = 'dropleft';
-  var CLASS_NAME_MENURIGHT = 'dropdown-menu-right';
+  var CLASS_NAME_DROPEND = 'dropend';
+  var CLASS_NAME_DROPSTART = 'dropstart';
+  var CLASS_NAME_MENUEND = 'dropdown-menu-end';
   var CLASS_NAME_NAVBAR = 'navbar';
   var CLASS_NAME_POSITION_STATIC = 'position-static';
-  var SELECTOR_DATA_TOGGLE = '[data-toggle="dropdown"]';
+  var SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]';
   var SELECTOR_FORM_CHILD = '.dropdown form';
   var SELECTOR_MENU = '.dropdown-menu';
   var SELECTOR_NAVBAR_NAV = '.navbar-nav';
   var SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)';
-  var PLACEMENT_TOP = 'top-start';
-  var PLACEMENT_TOPEND = 'top-end';
-  var PLACEMENT_BOTTOM = 'bottom-start';
-  var PLACEMENT_BOTTOMEND = 'bottom-end';
-  var PLACEMENT_RIGHT = 'right-start';
-  var PLACEMENT_LEFT = 'left-start';
+  var PLACEMENT_TOP = isRTL ? 'top-end' : 'top-start';
+  var PLACEMENT_TOPEND = isRTL ? 'top-start' : 'top-end';
+  var PLACEMENT_BOTTOM = isRTL ? 'bottom-end' : 'bottom-start';
+  var PLACEMENT_BOTTOMEND = isRTL ? 'bottom-start' : 'bottom-end';
+  var PLACEMENT_RIGHT = isRTL ? 'left-start' : 'right-start';
+  var PLACEMENT_LEFT = isRTL ? 'right-start' : 'left-start';
   var Default = {
     offset: 0,
     flip: true,
@@ -166,17 +221,21 @@
    * ------------------------------------------------------------------------
    */
 
-  var Dropdown = /*#__PURE__*/function () {
+  var Dropdown = /*#__PURE__*/function (_BaseComponent) {
+    _inheritsLoose(Dropdown, _BaseComponent);
+
     function Dropdown(element, config) {
-      this._element = element;
-      this._popper = null;
-      this._config = this._getConfig(config);
-      this._menu = this._getMenuElement();
-      this._inNavbar = this._detectNavbar();
+      var _this;
 
-      this._addEventListeners();
+      _this = _BaseComponent.call(this, element) || this;
+      _this._popper = null;
+      _this._config = _this._getConfig(config);
+      _this._menu = _this._getMenuElement();
+      _this._inNavbar = _this._detectNavbar();
 
-      Data__default['default'].setData(element, DATA_KEY, this);
+      _this._addEventListeners();
+
+      return _this;
     } // Getters
 
 
@@ -212,12 +271,12 @@
 
       if (showEvent.defaultPrevented) {
         return;
-      } // Disable totally Popper.js for Dropdown in Navbar
+      } // Totally disable Popper for Dropdowns in Navbar
 
 
       if (!this._inNavbar) {
         if (typeof Popper__default['default'] === 'undefined') {
-          throw new TypeError('Bootstrap\'s dropdowns require Popper.js (https://popper.js.org)');
+          throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)');
         }
 
         var referenceElement = this._element;
@@ -258,8 +317,10 @@
 
       this._element.setAttribute('aria-expanded', true);
 
-      Manipulator__default['default'].toggleClass(this._menu, CLASS_NAME_SHOW);
-      Manipulator__default['default'].toggleClass(this._element, CLASS_NAME_SHOW);
+      this._menu.classList.toggle(CLASS_NAME_SHOW);
+
+      this._element.classList.toggle(CLASS_NAME_SHOW);
+
       EventHandler__default['default'].trigger(parent, EVENT_SHOWN, relatedTarget);
     };
 
@@ -282,15 +343,17 @@
         this._popper.destroy();
       }
 
-      Manipulator__default['default'].toggleClass(this._menu, CLASS_NAME_SHOW);
-      Manipulator__default['default'].toggleClass(this._element, CLASS_NAME_SHOW);
+      this._menu.classList.toggle(CLASS_NAME_SHOW);
+
+      this._element.classList.toggle(CLASS_NAME_SHOW);
+
       EventHandler__default['default'].trigger(parent, EVENT_HIDDEN, relatedTarget);
     };
 
     _proto.dispose = function dispose() {
-      Data__default['default'].removeData(this._element, DATA_KEY);
+      _BaseComponent.prototype.dispose.call(this);
+
       EventHandler__default['default'].off(this._element, EVENT_KEY);
-      this._element = null;
       this._menu = null;
 
       if (this._popper) {
@@ -310,13 +373,13 @@
     ;
 
     _proto._addEventListeners = function _addEventListeners() {
-      var _this = this;
+      var _this2 = this;
 
       EventHandler__default['default'].on(this._element, EVENT_CLICK, function (event) {
         event.preventDefault();
         event.stopPropagation();
 
-        _this.toggle();
+        _this2.toggle();
       });
     };
 
@@ -335,16 +398,12 @@
       var placement = PLACEMENT_BOTTOM; // Handle dropup
 
       if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
-        placement = PLACEMENT_TOP;
-
-        if (this._menu.classList.contains(CLASS_NAME_MENURIGHT)) {
-          placement = PLACEMENT_TOPEND;
-        }
-      } else if (parentDropdown.classList.contains(CLASS_NAME_DROPRIGHT)) {
+        placement = this._menu.classList.contains(CLASS_NAME_MENUEND) ? PLACEMENT_TOPEND : PLACEMENT_TOP;
+      } else if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
         placement = PLACEMENT_RIGHT;
-      } else if (parentDropdown.classList.contains(CLASS_NAME_DROPLEFT)) {
+      } else if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) {
         placement = PLACEMENT_LEFT;
-      } else if (this._menu.classList.contains(CLASS_NAME_MENURIGHT)) {
+      } else if (this._menu.classList.contains(CLASS_NAME_MENUEND)) {
         placement = PLACEMENT_BOTTOMEND;
       }
 
@@ -356,13 +415,13 @@
     };
 
     _proto._getOffset = function _getOffset() {
-      var _this2 = this;
+      var _this3 = this;
 
       var offset = {};
 
       if (typeof this._config.offset === 'function') {
         offset.fn = function (data) {
-          data.offsets = _extends({}, data.offsets, _this2._config.offset(data.offsets, _this2._element) || {});
+          data.offsets = _extends({}, data.offsets, _this3._config.offset(data.offsets, _this3._element) || {});
           return data;
         };
       } else {
@@ -384,7 +443,7 @@
             boundariesElement: this._config.boundary
           }
         }
-      }; // Disable Popper.js if we have a static display
+      }; // Disable Popper if we have a static display
 
       if (this._config.display === 'static') {
         popperConfig.modifiers.applyStyle = {
@@ -524,15 +583,14 @@
         return;
       }
 
-      var index = items.indexOf(event.target);
+      var index = items.indexOf(event.target); // Up
 
       if (event.key === ARROW_UP_KEY && index > 0) {
-        // Up
         index--;
-      }
+      } // Down
+
 
       if (event.key === ARROW_DOWN_KEY && index < items.length - 1) {
-        // Down
         index++;
       } // index is -1 if the first keydown is an ArrowUp
 
@@ -541,16 +599,7 @@
       items[index].focus();
     };
 
-    Dropdown.getInstance = function getInstance(element) {
-      return Data__default['default'].getData(element, DATA_KEY);
-    };
-
-    _createClass(Dropdown, null, [{
-      key: "VERSION",
-      get: function get() {
-        return VERSION;
-      }
-    }, {
+    _createClass$1(Dropdown, null, [{
       key: "Default",
       get: function get() {
         return Default;
@@ -560,10 +609,15 @@
       get: function get() {
         return DefaultType;
       }
+    }, {
+      key: "DATA_KEY",
+      get: function get() {
+        return DATA_KEY;
+      }
     }]);
 
     return Dropdown;
-  }();
+  }(BaseComponent);
   /**
    * ------------------------------------------------------------------------
    * Data Api implementation
@@ -583,26 +637,28 @@
   EventHandler__default['default'].on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, function (e) {
     return e.stopPropagation();
   });
-  var $ = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
    * ------------------------------------------------------------------------
-   * add .dropdown to jQuery only if jQuery is present
+   * add .Dropdown to jQuery only if jQuery is present
    */
 
-  /* istanbul ignore if */
+  onDOMContentLoaded(function () {
+    var $ = getjQuery();
+    /* istanbul ignore if */
 
-  if ($) {
-    var JQUERY_NO_CONFLICT = $.fn[NAME];
-    $.fn[NAME] = Dropdown.jQueryInterface;
-    $.fn[NAME].Constructor = Dropdown;
+    if ($) {
+      var JQUERY_NO_CONFLICT = $.fn[NAME];
+      $.fn[NAME] = Dropdown.jQueryInterface;
+      $.fn[NAME].Constructor = Dropdown;
 
-    $.fn[NAME].noConflict = function () {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Dropdown.jQueryInterface;
-    };
-  }
+      $.fn[NAME].noConflict = function () {
+        $.fn[NAME] = JQUERY_NO_CONFLICT;
+        return Dropdown.jQueryInterface;
+      };
+    }
+  });
 
   return Dropdown;
 

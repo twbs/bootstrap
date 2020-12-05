@@ -46,11 +46,11 @@ Our default branch is for development of our upcoming Bootstrap 5 release. Head 
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.0.0-alpha2.zip)
+- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.0.0-alpha3.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
 - Install with [npm](https://www.npmjs.com/): `npm install bootstrap@next`
 - Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@next`
-- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.0.0-alpha2`
+- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.0.0-alpha3`
 - Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap` Sass: `Install-Package bootstrap.sass`
 
 Read the [Getting started page](https://v5.getbootstrap.com/docs/5.0/getting-started/introduction/) for information on the framework contents, templates and examples, and more.
@@ -83,37 +83,52 @@ Within the download you'll find the following directories and files, logically g
 
 ```text
 bootstrap/
-└── dist/
-    ├── css/
-    │   ├── bootstrap-grid.css
-    │   ├── bootstrap-grid.css.map
-    │   ├── bootstrap-grid.min.css
-    │   ├── bootstrap-grid.min.css.map
-    │   ├── bootstrap-reboot.css
-    │   ├── bootstrap-reboot.css.map
-    │   ├── bootstrap-reboot.min.css
-    │   ├── bootstrap-reboot.min.css.map
-    │   ├── bootstrap-utilities.css
-    │   ├── bootstrap-utilities.css.map
-    │   ├── bootstrap-utilities.min.css
-    │   ├── bootstrap-utilities.min.css.map
-    │   ├── bootstrap.css
-    │   ├── bootstrap.css.map
-    │   ├── bootstrap.min.css
-    │   └── bootstrap.min.css.map
-    └── js/
-        ├── bootstrap.bundle.js
-        ├── bootstrap.bundle.js.map
-        ├── bootstrap.bundle.min.js
-        ├── bootstrap.bundle.min.js.map
-        ├── bootstrap.esm.js
-        ├── bootstrap.esm.js.map
-        ├── bootstrap.esm.min.js
-        ├── bootstrap.esm.min.js.map
-        ├── bootstrap.js
-        ├── bootstrap.js.map
-        ├── bootstrap.min.js
-        └── bootstrap.min.js.map
+├── css/
+│   ├── bootstrap-grid.css
+│   ├── bootstrap-grid.css.map
+│   ├── bootstrap-grid.min.css
+│   ├── bootstrap-grid.min.css.map
+│   ├── bootstrap-grid.rtl.css
+│   ├── bootstrap-grid.rtl.css.map
+│   ├── bootstrap-grid.rtl.min.css
+│   ├── bootstrap-grid.rtl.min.css.map
+│   ├── bootstrap-reboot.css
+│   ├── bootstrap-reboot.css.map
+│   ├── bootstrap-reboot.min.css
+│   ├── bootstrap-reboot.min.css.map
+│   ├── bootstrap-reboot.rtl.css
+│   ├── bootstrap-reboot.rtl.css.map
+│   ├── bootstrap-reboot.rtl.min.css
+│   ├── bootstrap-reboot.rtl.min.css.map
+│   ├── bootstrap-utilities.css
+│   ├── bootstrap-utilities.css.map
+│   ├── bootstrap-utilities.min.css
+│   ├── bootstrap-utilities.min.css.map
+│   ├── bootstrap-utilities.rtl.css
+│   ├── bootstrap-utilities.rtl.css.map
+│   ├── bootstrap-utilities.rtl.min.css
+│   ├── bootstrap-utilities.rtl.min.css.map
+│   ├── bootstrap.css
+│   ├── bootstrap.css.map
+│   ├── bootstrap.min.css
+│   ├── bootstrap.min.css.map
+│   ├── bootstrap.rtl.css
+│   ├── bootstrap.rtl.css.map
+│   ├── bootstrap.rtl.min.css
+│   └── bootstrap.rtl.min.css.map
+└── js/
+    ├── bootstrap.bundle.js
+    ├── bootstrap.bundle.js.map
+    ├── bootstrap.bundle.min.js
+    ├── bootstrap.bundle.min.js.map
+    ├── bootstrap.esm.js
+    ├── bootstrap.esm.js.map
+    ├── bootstrap.esm.min.js
+    ├── bootstrap.esm.min.js.map
+    ├── bootstrap.js
+    ├── bootstrap.js.map
+    ├── bootstrap.min.js
+    └── bootstrap.min.js.map
 ```
 
 We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). [source maps](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Popper](https://popper.js.org/).
@@ -128,7 +143,7 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 
 Bootstrap's documentation, included in this repo in the root directory, is built with [Hugo](https://gohugo.io/) and publicly hosted on GitHub Pages at <https://v5.getbootstrap.com/>. The docs may also be run locally.
 
-Documentation search is powered by [Algolia's DocSearch](https://community.algolia.com/docsearch/). Working on our search? Be sure to set `debug: true` in `site/assets/js/src/search.js` file.
+Documentation search is powered by [Algolia's DocSearch](https://community.algolia.com/docsearch/). Working on our search? Be sure to set `debug: true` in `site/assets/js/search.js`.
 
 ### Running documentation locally
 

@@ -7,6 +7,110 @@ aliases: "/migration/"
 toc: true
 ---
 
+## v5.0.0-beta1
+
+### RTL
+
+**The RTL feature is still experimental and will probably evolve according to user feedback.** Spotted something or have an improvement to suggest? [Open an issue]({{< param repo >}}/issues/new), we'd love to get your insights.
+
+#### Sass
+
+Horizontal direction sensitive variables, utilities and mixins are renamed with more logical names — `start` and `end` in lieu of `left` and `right`.
+
+##### Components
+
+- Renamed `.dropleft` and `.dropright` to `.dropstart` and `dropend`.
+- Renamed `.dropdown-menu-*-left` and `.dropdown-menu-*-right` to `.dropdown-menu-*-start` and `.dropdown-menu-*-end`.
+- Renamed `.bs-popover-left` and `.bs-popover-right` to `.bs-popover-start` and `.bs-popover-end`.
+- Renamed `.bs-tooltip-left` and `.bs-tooltip-right` to `.bs-tooltip-start` and `.bs-tooltip-end`.
+- Renamed `.carousel-item-left` and `.carousel-item-right` to `.carousel-item-start` and `.carousel-item-end`.
+
+##### Utilities
+
+- Renamed `.left-*` and `.right-*` to `.start-*` and `.end-*`.
+- Renamed `.float-left` and `.float-right` to `.float-start` and `.float-end`.
+- Renamed `.border-left` and `.border-right` to `.border-start` and `.border-end`.
+- Renamed `.rounded-left` and `.rounded-right` to `.rounded-start` and `.rounded-end`.
+- Renamed `.ml-*` and `.mr-*` to `.ms-*` and `.me-*`.
+- Renamed `.pl-*` and `.pr-*` to `.ps-*` and `.pe-*`.
+- Renamed `.text-left` and `.text-right` to `.text-start` and `.text-end`.
+
+Breakpoints specific variants are consequently renamed too (eg. `.text-md-start` replaces `.text-md-left`).
+
+##### Mixins
+
+- Renamed `border-left-radius()` and `border-right-radius()` to `border-start-radius()` and `border-end-radius()` — as well as their corner relative variants (eg. `.border-bottom-left-radius` became `.border-bottom-start-radius`).
+- Renamed `caret-left()` and `caret-right()` to `caret-start()` and `caret-end()` — subsequently, the `caret()` mixin now takes `start` and `end` as arguments instead of `left` and `right`.
+
+##### Variables
+
+- New `$breadcrumb-divider-flipped` if a different breadcrumb separator is needed in RTL.
+- Renamed `$navbar-brand-margin-right` to `$navbar-brand-margin-end`.
+- Renamed `$pagination-margin-left` to `$pagination-margin-start`.
+- Renamed `$form-check-padding-left` to `$form-check-padding-start`.
+- Renamed `$form-switch-padding-left` to `$form-switch-padding-start`.
+- Renamed `$form-check-inline-margin-right` to `$form-check-inline-margin-end`.
+- Renamed `$form-select-feedback-icon-padding-right` to `$form-select-feedback-icon-padding-end`.
+
+
+### JavaScript
+
+- Data attributes for all JavaScript plugins are now namespaced to help distinguish Bootstrap functionality from third parties and your own code. For example, we use `data-bs-toggle` instead of `data-toggle`.
+
+### Sass
+
+- Renamed `scale-color()` function to `shift-color()` to avoid collision with Sass's own color scaling function.
+
+### Utilities
+
+- Added new `.translate-middle-x` & `.translate-middle-y` utilities to horizontally or vertically center absolute/fixed positioned elements.
+
+### Components
+
+#### Breadcrumbs
+
+- Simplified the default appearance of breadcrumbs by removing `padding`, `background-color`, and `border-radius`.
+- Added new CSS custom property `--bs-breadcrumb-divider` for easy customization without needing to recompile CSS.
+
+#### Toasts
+
+- Toasts can now be [positioned]({{< docsref "/components/toasts#placement" >}}) in a `.toast-container` with the help of [positioning utilities]({{< docsref "/utilities/position" >}}).
+
+## v5.0.0-alpha3
+
+### Browser support
+
+- Dropped support for Microsoft Edge Legacy. See [here](#browser-support-1) for the previous browser support changes.
+
+### Sass
+
+- The color system which worked with `color-level()` and `$theme-color-interval` was removed in favor of a new color system. All `lighten()` and `darken()` functions in our codebase are replaced by `tint-color()` and `shade-color()`. These functions will mix the color with either white or black instead of changing its lightness by a fixed amount. The `scale-color()` (changed to `shift-color()` in Beta 1) will either tint or shade a color depending on whether its weight parameter is positive or negative. [See #30622](https://github.com/twbs/bootstrap/pull/30622) for more details.
+- Spinners now honor `prefers-reduced-motion: reduce` by slowing down animations. [See #31882](https://github.com/twbs/bootstrap/pull/31882).
+
+### Reboot
+
+- Introduce `$enable-smooth-scroll`, which applies `scroll-behavior: smooth` globally—except for users asking for reduced motion through `prefers-reduced-motion` media query. [See #31877](https://github.com/twbs/bootstrap/pull/31877)
+
+### Buttons
+
+- [Dropped `.btn-block` in favor of CSS grid utility classes.]({{< docsref "/components/buttons#block-buttons" >}}) Instead of applying `.btn-block` to individual buttons, a group of buttons now get wrapped in a parent `.d-grid` class and can use `.gap-*` utilities for spacing. For individual "block buttons", add `.w-100`.
+
+### Forms
+
+- The longstanding [Missing border radius on input group with validation feedback bug](https://github.com/twbs/bootstrap/issues/25110) is finally fixed by adding an additional `.has-validation` class to input groups with validation.
+- Promoted the Floating labels example to fully supported form component. [See the new Floating labels page.]({{< docsref "/forms/floating-labels" >}})
+- File inputs now use the `.form-control` class and don't require JavaScript, additional HTML, or additional classes. [See #31955](https://github.com/twbs/bootstrap/pull/31955).
+- Added `cursor:pointer` to `.form-control-color` color inputs.
+
+### Utilities
+
+- **Text utilities:**
+  - Added `.fs-*` utilities for `font-size` utilities (with RFS enabled). These use the same scale as HTML's default headings (1-6, large to small), and can be modified via Sass map.
+  - Renamed `.font-weight-*` utilities as `.fw-*` for brevity and consistency.
+  - Renamed `.font-style-*` utilities as `.fst-*` for brevity and consistency.
+- Added `.d-grid` to display utilities
+- Added new `gap` utilities (`.gap`) for CSS Grid layouts
+
 ## v5.0.0-alpha2
 
 ### Sass
@@ -17,6 +121,7 @@ toc: true
 
 ### Docs
 
+- Renamed "Navs" page to "Navs & Tabs"
 - Renamed "Screen readers" helper page to "Visually hidden", and filename to `visually-hidden`
 - Renamed "Checks" page to "Checks & radios", and filename to `checks-radios`
 - Improved documentation of check/radio powered button groups
@@ -119,6 +224,9 @@ toc: true
   - Some great examples have been added to the docs to show these off.
 - [#31484](https://github.com/twbs/bootstrap/pull/31484): Added new [`border-width` utility]({{< docsref "/utilities/borders#border-width" >}}).
 - [#31473](https://github.com/twbs/bootstrap/pull/31473): The `.d-none` utility was moved in our CSS to give it more weight over other display utilities.
+- Renamed `.text-monospace` to `.font-monospace`.
+- Removed `.text-hide` as it's an antiquated method for hiding text that shouldn't be used anymore.
+- New `line-height` utilities: `.lh-1`, `.lh-sm`, `.lh-base` and `.lh-lg`. See [here]({{< docsref "/utilities/text#line-height" >}}).
 
 ---
 
@@ -152,7 +260,7 @@ Changes to our source Sass files and compiled CSS.
 - Rearranged forms source files under `scss/forms/`. [See Forms section for more details.](#forms)
 - Removed print styles and `$enable-print-styles` variable. Print display classes, however, have remained intact. [See #28339](https://github.com/twbs/bootstrap/pull/28339).
 - Dropped `color()`, `theme-color()` & `gray()` functions in favor of variables. [See #29083](https://github.com/twbs/bootstrap/pull/29083)
-- The `theme-color-level()` function is renamed to `color-level()` and now accepts any color you want instead of only `$theme-color` colors. [See #29083](https://github.com/twbs/bootstrap/pull/29083)
+- The `theme-color-level()` function is renamed to `color-level()` and now accepts any color you want instead of only `$theme-color` colors. [See #29083](https://github.com/twbs/bootstrap/pull/29083) **Watch out:** `color-level()` was later on dropped in `v5.0.0-alpha3`.
 - `$enable-grid-classes` doesn't disable the generation of container classes anymore [See #29146](https://github.com/twbs/bootstrap/pull/29146)
 - Renamed `$enable-prefers-reduced-motion-media-query` and `$enable-pointer-cursor-for-buttons` to `$enable-reduced-motion` and `$enable-button-pointers` for brevity.
 - Line heights are dropped from several components to simplify our codebase. The `button-size()` and `pagination-size()` do not accept line height parameters anymore. [See #29271](https://github.com/twbs/bootstrap/pull/29271)
@@ -218,6 +326,7 @@ Changes to Reboot, typography, tables, and more.
 - Removed individual `$display-*-weight` variables for a single `$display-font-weight`.
 - Added two new `.display-*` heading styles, `.display-5` and `.display-6`.
 - Resized existing display headings for a slightly more consistent set of `font-size`s.
+- Links are underlined by default (not just on hover), unless they're part of specific components.
 
 ### Forms
 
@@ -236,7 +345,7 @@ Changes to Reboot, typography, tables, and more.
 - Updated file input component with the same overall design, but improved HTML.
   - Refactored `.form-file` markup to resolve some visual bugs while allowing translation and button text changes via HTML instead of CSS.
   - Dropped native `.form-control-file` and `.form-control-range` components entirely.
-  - Renamed `.custom-file` to `.form-file` (including variables).
+  - Renamed `.custom-file` to `.form-file` (including variables). **Watch out:** `.form-file` was later on dropped in `v5.0.0-alpha3`, now you can use `.form-control`.
   - Added support for `:focus` and `:disabled` styles.
 - Renamed `.custom-range` to `.form-range` (including variables).
 - Dropped `.form-group` for margin utilities (we've replaced our docs examples with `.mb-3`).
@@ -268,7 +377,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 #### Buttons
 
-- The checkbox/radio toggle is removed from the button plugin in favour of a CSS only solution, which is documented in the [form checks and radios]({{< docsref "/forms/checks-radios#toggle-buttons" >}}) docs. The `.btn-check` class can be added to inputs, any label with `.btn` and modifier class can be used to theme the labels. [See #30650](https://github.com/twbs/bootstrap/pull/30650).
+- The checkbox/radio toggle is removed from the button plugin in favor of a CSS only solution, which is documented in the [form checks and radios]({{< docsref "/forms/checks-radios#toggle-buttons" >}}) docs. The `.btn-check` class can be added to inputs, any label with `.btn` and modifier class can be used to theme the labels. [See #30650](https://github.com/twbs/bootstrap/pull/30650).
 
 #### Cards
 
@@ -301,12 +410,13 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 ### Utilities
 
-- Renamed `.text-monospace` to `.font-monospace`
+### Grid
+
 - Decreased the number of responsive order utilities per breakpoint. The highest order utility with a number now is `.order-5` instead of `.order-12`. [See #28874](https://github.com/twbs/bootstrap/pull/28874).
-- New `line-height` utilities: `.lh-1`, `.lh-sm`, `.lh-base` and `.lh-lg`. See [here]({{< docsref "/utilities/text#line-height" >}}).
+
+### Misc
+
 - Added `.bg-body` for quickly setting the `<body>`'s background to additional elements.
-- Drop `.text-hide` as it's an antiquated method for hiding text that shouldn't be used anymore
-- Split utilities into property-value utility classes and helpers
 - Negative margin utilities are disabled by default. You can re-enable them by setting `$enable-negative-margins: true`, but keep in mind this can increase the file size quite a lot.
 
 ### Docs

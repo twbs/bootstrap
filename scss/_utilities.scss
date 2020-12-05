@@ -12,18 +12,22 @@ $utilities: map-merge(
     "float": (
       responsive: true,
       property: float,
-      values: left right none
+      values: (
+        start: left,
+        end: right,
+        none: none,
+      )
     ),
     "overflow": (
       property: overflow,
-      values: auto hidden,
+      values: auto hidden visible scroll,
     ),
     "display": (
       responsive: true,
       print: true,
       property: display,
       class: d,
-      values: inline inline-block block table table-row table-cell flex inline-flex none
+      values: inline inline-block block grid table table-row table-cell flex inline-flex none
     ),
     "shadow": (
       property: box-shadow,
@@ -47,19 +51,23 @@ $utilities: map-merge(
       property: bottom,
       values: $position-values
     ),
-    "left": (
+    "start": (
       property: left,
+      class: start,
       values: $position-values
     ),
-    "right": (
+    "end": (
       property: right,
+      class: end,
       values: $position-values
     ),
     "translate-middle": (
       property: transform,
       class: translate-middle,
       values: (
-        null: (translateX(-50%) translateY(-50%))
+        null: translate(-50%, -50%),
+        x: translateX(-50%),
+        y: translateY(-50%),
       )
     ),
     "border": (
@@ -76,8 +84,9 @@ $utilities: map-merge(
         0: 0,
       )
     ),
-    "border-right": (
+    "border-end": (
       property: border-right,
+      class: border-end,
       values: (
         null: $border-width solid $border-color,
         0: 0,
@@ -90,8 +99,9 @@ $utilities: map-merge(
         0: 0,
       )
     ),
-    "border-left": (
+    "border-start": (
       property: border-left,
+      class: border-start,
       values: (
         null: $border-width solid $border-color,
         0: 0,
@@ -196,6 +206,12 @@ $utilities: map-merge(
       class: flex,
       values: wrap nowrap wrap-reverse
     ),
+    "gap": (
+      responsive: true,
+      property: gap,
+      class: gap,
+      values: $spacers
+    ),
     "justify-content": (
       responsive: true,
       property: justify-content,
@@ -282,10 +298,10 @@ $utilities: map-merge(
       class: mt,
       values: map-merge($spacers, (auto: auto))
     ),
-    "margin-right": (
+    "margin-end": (
       responsive: true,
       property: margin-right,
-      class: mr,
+      class: me,
       values: map-merge($spacers, (auto: auto))
     ),
     "margin-bottom": (
@@ -294,10 +310,10 @@ $utilities: map-merge(
       class: mb,
       values: map-merge($spacers, (auto: auto))
     ),
-    "margin-left": (
+    "margin-start": (
       responsive: true,
       property: margin-left,
-      class: ml,
+      class: ms,
       values: map-merge($spacers, (auto: auto))
     ),
     // Negative margin utilities
@@ -325,10 +341,10 @@ $utilities: map-merge(
       class: mt,
       values: $negative-spacers
     ),
-    "negative-margin-right": (
+    "negative-margin-end": (
       responsive: true,
       property: margin-right,
-      class: mr,
+      class: me,
       values: $negative-spacers
     ),
     "negative-margin-bottom": (
@@ -337,10 +353,10 @@ $utilities: map-merge(
       class: mb,
       values: $negative-spacers
     ),
-    "negative-margin-left": (
+    "negative-margin-start": (
       responsive: true,
       property: margin-left,
-      class: ml,
+      class: ms,
       values: $negative-spacers
     ),
     // Padding utilities
@@ -368,10 +384,10 @@ $utilities: map-merge(
       class: pt,
       values: $spacers
     ),
-    "padding-right": (
+    "padding-end": (
       responsive: true,
       property: padding-right,
-      class: pr,
+      class: pe,
       values: $spacers
     ),
     "padding-bottom": (
@@ -380,15 +396,27 @@ $utilities: map-merge(
       class: pb,
       values: $spacers
     ),
-    "padding-left": (
+    "padding-start": (
       responsive: true,
       property: padding-left,
-      class: pl,
+      class: ps,
       values: $spacers
     ),
     // Text
+    "font-size": (
+      rfs: true,
+      property: font-size,
+      class: fs,
+      values: $font-sizes
+    ),
+    "font-style": (
+      property: font-style,
+      class: fst,
+      values: italic normal
+    ),
     "font-weight": (
       property: font-weight,
+      class: fw,
       values: (
         light: $font-weight-light,
         lighter: $font-weight-lighter,
@@ -406,7 +434,11 @@ $utilities: map-merge(
       responsive: true,
       property: text-align,
       class: text,
-      values: left right center
+      values: (
+        start: left,
+        end: right,
+        center: center,
+      )
     ),
     "color": (
       property: color,
@@ -462,15 +494,11 @@ $utilities: map-merge(
       property: text-decoration,
       values: none underline line-through
     ),
-    "font-style": (
-      property: font-style,
-      class: font,
-      values: italic normal
-    ),
     "word-wrap": (
       property: word-wrap word-break,
       class: text,
-      values: (break: break-word)
+      values: (break: break-word),
+      rtl: false
     ),
     "font-family": (
       property: font-family,
@@ -491,11 +519,12 @@ $utilities: map-merge(
       class: rounded,
       values: (
         null: $border-radius,
-        sm: $border-radius-sm,
-        lg: $border-radius-lg,
-        circle: 50%,
-        pill: $rounded-pill,
         0: 0,
+        1: $border-radius-sm,
+        2: $border-radius,
+        3: $border-radius-lg,
+        circle: 50%,
+        pill: $border-radius-pill
       )
     ),
     "rounded-top": (
@@ -503,9 +532,9 @@ $utilities: map-merge(
       class: rounded-top,
       values: (null: $border-radius)
     ),
-    "rounded-right": (
+    "rounded-end": (
       property: border-top-right-radius border-bottom-right-radius,
-      class: rounded-right,
+      class: rounded-end,
       values: (null: $border-radius)
     ),
     "rounded-bottom": (
@@ -513,9 +542,9 @@ $utilities: map-merge(
       class: rounded-bottom,
       values: (null: $border-radius)
     ),
-    "rounded-left": (
+    "rounded-start": (
       property: border-bottom-left-radius border-top-left-radius,
-      class: rounded-left,
+      class: rounded-start,
       values: (null: $border-radius)
     ),
     "visibility": (

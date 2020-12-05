@@ -30,6 +30,10 @@ const files = [
     configPropertyName: 'css_hash'
   },
   {
+    file: 'dist/css/bootstrap.rtl.min.css',
+    configPropertyName: 'css_rtl_hash'
+  },
+  {
     file: 'dist/js/bootstrap.min.js',
     configPropertyName: 'js_hash'
   },
@@ -55,6 +59,6 @@ files.forEach(file => {
 
     console.log(`${file.configPropertyName}: ${integrity}`)
 
-    sh.sed('-i', new RegExp(`(\\s${file.configPropertyName}:\\s+"|')(\\S+)("|')`), `$1${integrity}$3`, configFile)
+    sh.sed('-i', new RegExp(`^(\\s+${file.configPropertyName}:\\s+["'])\\S*(["'])`), `$1${integrity}$2`, configFile)
   })
 })

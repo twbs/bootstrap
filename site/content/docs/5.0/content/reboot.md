@@ -31,7 +31,7 @@ The `<html>` and `<body>` elements are updated to provide better page-wide defau
 
 Bootstrap utilizes a "native font stack" or "system font stack" for optimum text rendering on every device and OS. These system fonts have been designed specifically with today's devices in mind, with improved rendering on screens, variable font support, and more. Read more about [native font stacks in this *Smashing Magazine* article](https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/).
 
-{{< highlight scss >}}
+```scss
 $font-family-sans-serif:
   // Safari for macOS and iOS (San Francisco)
   -apple-system,
@@ -45,11 +45,14 @@ $font-family-sans-serif:
   "Helvetica Neue", Arial,
   // Linux
   "Noto Sans",
+  "Liberation Sans",
   // Sans serif fallback
   sans-serif,
   // Emoji fonts
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-{{< /highlight >}}
+```
+
+Note that because the font stack includes emoji fonts, many common symbol/dingbat unicode characters will be rendered as multi-colored pictographs. Their appearance will vary, depending on the style used in the browser/platform's native emoji font, and they won't be affected by any CSS `color` styles.
 
 This `font-family` is applied to the `<body>` and automatically inherited globally throughout Bootstrap. To switch the global `font-family`, update `$font-family-base` and recompile Bootstrap.
 
@@ -437,9 +440,9 @@ The default `cursor` on summary is `text`, so we reset that to `pointer` to conv
 
 HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden), which is styled as `display: none` by default. Borrowing an idea from [PureCSS](https://purecss.io/), we improve upon this default by making `[hidden] { display: none !important; }` to help prevent its `display` from getting accidentally overridden.
 
-{{< highlight html >}}
+```html
 <input type="text" hidden>
-{{< /highlight >}}
+```
 
 {{< callout warning >}}
 ##### jQuery incompatibility

@@ -23,7 +23,7 @@ describe('Alert', () => {
     it('should close an alert without instantiating it manually', () => {
       fixtureEl.innerHTML = [
         '<div class="alert">',
-        '  <button type="button" data-dismiss="alert">x</button>',
+        '  <button type="button" data-bs-dismiss="alert">x</button>',
         '</div>'
       ].join('')
 
@@ -36,7 +36,7 @@ describe('Alert', () => {
     it('should close an alert without instantiating it manually with the parent selector', () => {
       fixtureEl.innerHTML = [
         '<div class="alert">',
-        '  <button type="button" data-target=".alert" data-dismiss="alert">x</button>',
+        '  <button type="button" data-bs-target=".alert" data-bs-dismiss="alert">x</button>',
         '</div>'
       ].join('')
 
@@ -168,6 +168,26 @@ describe('Alert', () => {
 
       expect(Alert.getInstance(alertEl)).toBeDefined()
       expect(fixtureEl.querySelector('.alert')).not.toBeNull()
+    })
+  })
+
+  describe('getInstance', () => {
+    it('should return alert instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const alert = new Alert(div)
+
+      expect(Alert.getInstance(div)).toEqual(alert)
+      expect(Alert.getInstance(div)).toBeInstanceOf(Alert)
+    })
+
+    it('should return null when there is no alert instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Alert.getInstance(div)).toEqual(null)
     })
   })
 })

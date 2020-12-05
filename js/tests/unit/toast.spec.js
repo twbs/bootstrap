@@ -43,12 +43,10 @@ describe('Toast', () => {
       toast.show()
     })
 
-    it('should close toast when close element with data-dismiss attribute is set', done => {
+    it('should close toast when close element with data-bs-dismiss attribute is set', done => {
       fixtureEl.innerHTML = [
-        '<div class="toast" data-delay="1" data-autohide="false" data-animation="false">',
-        '  <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">',
-        '    close',
-        '  </button>',
+        '<div class="toast" data-bs-delay="1" data-bs-autohide="false" data-bs-animation="false">',
+        '  <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
         '</div>'
       ].join('')
 
@@ -58,7 +56,7 @@ describe('Toast', () => {
       toastEl.addEventListener('shown.bs.toast', () => {
         expect(toastEl.classList.contains('show')).toEqual(true)
 
-        const button = toastEl.querySelector('.close')
+        const button = toastEl.querySelector('.btn-close')
 
         button.click()
       })
@@ -79,10 +77,8 @@ describe('Toast', () => {
       Toast.Default.delay = defaultDelay
 
       fixtureEl.innerHTML = [
-        '<div class="toast" data-autohide="false" data-animation="false">',
-        '  <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">',
-        '    close',
-        '  </button>',
+        '<div class="toast" data-bs-autohide="false" data-bs-animation="false">',
+        '  <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
         '</div>'
       ].join('')
 
@@ -102,7 +98,7 @@ describe('Toast', () => {
   describe('show', () => {
     it('should auto hide', done => {
       fixtureEl.innerHTML = [
-        '<div class="toast" data-delay="1">',
+        '<div class="toast" data-bs-delay="1">',
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
@@ -122,7 +118,7 @@ describe('Toast', () => {
 
     it('should not add fade class', done => {
       fixtureEl.innerHTML = [
-        '<div class="toast" data-delay="1" data-animation="false">',
+        '<div class="toast" data-bs-delay="1" data-bs-animation="false">',
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
@@ -142,7 +138,7 @@ describe('Toast', () => {
 
     it('should not trigger shown if show is prevented', done => {
       fixtureEl.innerHTML = [
-        '<div class="toast" data-delay="1" data-animation="false">',
+        '<div class="toast" data-bs-delay="1" data-bs-animation="false">',
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
@@ -202,7 +198,7 @@ describe('Toast', () => {
   describe('hide', () => {
     it('should allow to hide toast manually', done => {
       fixtureEl.innerHTML = [
-        '<div class="toast" data-delay="1" data-autohide="false">',
+        '<div class="toast" data-bs-delay="1" data-bs-autohide="false">',
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
@@ -239,7 +235,7 @@ describe('Toast', () => {
 
     it('should not trigger hidden if hide is prevented', done => {
       fixtureEl.innerHTML = [
-        '<div class="toast" data-delay="1" data-animation="false">',
+        '<div class="toast" data-bs-delay="1" data-bs-animation="false">',
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
@@ -289,7 +285,7 @@ describe('Toast', () => {
 
     it('should allow to destroy toast and hide it before that', done => {
       fixtureEl.innerHTML = [
-        '<div class="toast" data-delay="0" data-autohide="false">',
+        '<div class="toast" data-bs-delay="0" data-bs-autohide="false">',
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
@@ -381,16 +377,17 @@ describe('Toast', () => {
   })
 
   describe('getInstance', () => {
-    it('should return collapse instance', () => {
+    it('should return a toast instance', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
       const toast = new Toast(div)
 
       expect(Toast.getInstance(div)).toEqual(toast)
+      expect(Toast.getInstance(div)).toBeInstanceOf(Toast)
     })
 
-    it('should return null when there is no collapse instance', () => {
+    it('should return null when there is no toast instance', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
