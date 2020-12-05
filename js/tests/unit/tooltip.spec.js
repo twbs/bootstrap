@@ -63,6 +63,17 @@ describe('Tooltip', () => {
   })
 
   describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = '<a href="#" id="tooltipEl" rel="tooltip" title="Nice and short title">'
+
+      const tooltipEl = fixtureEl.querySelector('#tooltipEl')
+      const tooltipBySelector = new Tooltip('#tooltipEl')
+      const tooltipByElement = new Tooltip(tooltipEl)
+
+      expect(tooltipBySelector._element).toEqual(tooltipEl)
+      expect(tooltipByElement._element).toEqual(tooltipEl)
+    })
+
     it('should not take care of disallowed data attributes', () => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-bs-sanitize="false" title="Another tooltip">'
 

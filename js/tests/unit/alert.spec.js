@@ -15,6 +15,17 @@ describe('Alert', () => {
     clearFixture()
   })
 
+  it('should take care of element either passed as css selector or DOM element', () => {
+    fixtureEl.innerHTML = '<div class="alert"></div>'
+
+    const alertEl = fixtureEl.querySelector('.alert')
+    const alertBySelector = new Alert('.alert')
+    const alertByElement = new Alert(alertEl)
+
+    expect(alertBySelector._element).toEqual(alertEl)
+    expect(alertByElement._element).toEqual(alertEl)
+  })
+
   it('should return version', () => {
     expect(typeof Alert.VERSION).toEqual('string')
   })

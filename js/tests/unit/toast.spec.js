@@ -27,6 +27,17 @@ describe('Toast', () => {
   })
 
   describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = '<div class="toast"></div>'
+
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toastBySelector = new Toast('.toast')
+      const toastByElement = new Toast(toastEl)
+
+      expect(toastBySelector._element).toEqual(toastEl)
+      expect(toastByElement._element).toEqual(toastEl)
+    })
+
     it('should allow to config in js', done => {
       fixtureEl.innerHTML = [
         '<div class="toast">',
