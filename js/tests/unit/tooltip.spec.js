@@ -886,6 +886,40 @@ describe('Tooltip', () => {
     })
   })
 
+  describe('updateAttachment', () => {
+    it('should use end class name when right placement specified', done => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl, {
+        placement: 'right'
+      })
+
+      tooltipEl.addEventListener('inserted.bs.tooltip', () => {
+        expect(tooltip.getTipElement().classList.contains('bs-tooltip-end')).toEqual(true)
+        done()
+      })
+
+      tooltip.show()
+    })
+
+    it('should use start class name when left placement specified', done => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl, {
+        placement: 'left'
+      })
+
+      tooltipEl.addEventListener('inserted.bs.tooltip', () => {
+        expect(tooltip.getTipElement().classList.contains('bs-tooltip-start')).toEqual(true)
+        done()
+      })
+
+      tooltip.show()
+    })
+  })
+
   describe('setElementContent', () => {
     it('should do nothing if the element is null', () => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
@@ -1027,6 +1061,79 @@ describe('Tooltip', () => {
       })
 
       expect(tooltip.getTitle()).toEqual('test')
+    })
+  })
+
+  describe('getInstance', () => {
+    it('should return tooltip instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const alert = new Tooltip(div)
+
+      expect(Tooltip.getInstance(div)).toEqual(alert)
+      expect(Tooltip.getInstance(div)).toBeInstanceOf(Tooltip)
+    })
+
+    it('should return null when there is no tooltip instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Tooltip.getInstance(div)).toEqual(null)
+    })
+  })
+
+  describe('aria-label', () => {
+    it('should add the aria-label attribute for referencing original title', done => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      tooltipEl.addEventListener('shown.bs.tooltip', () => {
+        const tooltipShown = document.querySelector('.tooltip')
+
+        expect(tooltipShown).toBeDefined()
+        expect(tooltipEl.getAttribute('aria-label')).toEqual('Another tooltip')
+        done()
+      })
+
+      tooltip.show()
+    })
+
+    it('should not add the aria-label attribute if the attribute already exists', done => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" aria-label="Different label" title="Another tooltip"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      tooltipEl.addEventListener('shown.bs.tooltip', () => {
+        const tooltipShown = document.querySelector('.tooltip')
+
+        expect(tooltipShown).toBeDefined()
+        expect(tooltipEl.getAttribute('aria-label')).toEqual('Different label')
+        done()
+      })
+
+      tooltip.show()
+    })
+
+    it('should not add the aria-label attribute if the element has text content', done => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">text content</a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      tooltipEl.addEventListener('shown.bs.tooltip', () => {
+        const tooltipShown = document.querySelector('.tooltip')
+
+        expect(tooltipShown).toBeDefined()
+        expect(tooltipEl.getAttribute('aria-label')).toBeNull()
+        done()
+      })
+
+      tooltip.show()
     })
   })
 
