@@ -43,9 +43,8 @@ const createTallContent = () => {
 const getModalInnerHtml = () => {
   return [
     '<div class="modal"><div class="modal-dialog" ><div class="modal-content">',
-    '      <div class="modal-body" id="modal-body">',
-    '      </div>',
-    '    </div></div></div>'
+    '  <div class="modal-body" id="modal-body"></div>',
+    '</div></div></div>'
   ].join('\n')
 }
 
