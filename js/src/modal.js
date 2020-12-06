@@ -13,6 +13,7 @@ import {
   getElementFromSelector,
   getTransitionDurationFromElement,
   isVisible,
+  isRTL,
   reflow,
   typeCheckConfig
 } from './util/index'
@@ -37,15 +38,13 @@ const ESCAPE_KEY = 'Escape'
 const Default = {
   backdrop: true,
   keyboard: true,
-  focus: true,
-  show: true
+  focus: true
 }
 
 const DefaultType = {
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
-  focus: 'boolean',
-  show: 'boolean'
+  focus: 'boolean'
 }
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
@@ -138,11 +137,7 @@ class Modal extends BaseComponent {
     this._setEscapeEvent()
     this._setResizeEvent()
 
-    EventHandler.on(this._element,
-      EVENT_CLICK_DISMISS,
-      SELECTOR_DATA_DISMISS,
-      event => this.hide(event)
-    )
+    EventHandler.on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, event => this.hide(event))
 
     EventHandler.on(this._dialog, EVENT_MOUSEDOWN_DISMISS, () => {
       EventHandler.one(this._element, EVENT_MOUSEUP_DISMISS, event => {
@@ -239,8 +234,7 @@ class Modal extends BaseComponent {
     const transition = this._element.classList.contains(CLASS_NAME_FADE)
     const modalBody = SelectorEngine.findOne(SELECTOR_MODAL_BODY, this._dialog)
 
-    if (!this._element.parentNode ||
-        this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
+    if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
       // Don't move modal's DOM position
       document.body.appendChild(this._element)
     }
@@ -442,11 +436,11 @@ class Modal extends BaseComponent {
     const isModalOverflowing =
       this._element.scrollHeight > document.documentElement.clientHeight
 
-    if (!this._isBodyOverflowing && isModalOverflowing) {
+    if ((!this._isBodyOverflowing && isModalOverflowing && !isRTL) || (this._isBodyOverflowing && !isModalOverflowing && isRTL)) {
       this._element.style.paddingLeft = `${this._scrollbarWidth}px`
     }
 
-    if (this._isBodyOverflowing && !isModalOverflowing) {
+    if ((this._isBodyOverflowing && !isModalOverflowing && !isRTL) || (!this._isBodyOverflowing && isModalOverflowing && isRTL)) {
       this._element.style.paddingRight = `${this._scrollbarWidth}px`
     }
   }
@@ -557,8 +551,6 @@ class Modal extends BaseComponent {
         }
 
         data[config](relatedTarget)
-      } else if (_config.show) {
-        data.show(relatedTarget)
       }
     })
   }

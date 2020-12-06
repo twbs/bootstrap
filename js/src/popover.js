@@ -29,8 +29,9 @@ const Default = {
   content: '',
   template: '<div class="popover" role="tooltip">' +
               '<div class="popover-arrow"></div>' +
-              '<h3 class="popover-header"></h3>' +
-              '<div class="popover-body"></div></div>'
+                '<h3 class="popover-header"></h3>' +
+              '<div class="popover-body"></div>' +
+            '</div>'
 }
 
 const DefaultType = {
@@ -114,12 +115,11 @@ class Popover extends Tooltip {
   // Private
 
   _addAttachmentClass(attachment) {
-    this.getTipElement().classList.add(`${CLASS_PREFIX}-${attachment}`)
+    this.getTipElement().classList.add(`${CLASS_PREFIX}-${this.updateAttachment(attachment)}`)
   }
 
   _getContent() {
-    return this._element.getAttribute('data-bs-content') ||
-      this.config.content
+    return this._element.getAttribute('data-bs-content') || this.config.content
   }
 
   _cleanTipClass() {
