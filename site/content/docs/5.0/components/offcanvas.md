@@ -219,9 +219,9 @@ var offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
 {{< partial "callout-danger-async-methods.md" >}}
 {{< /callout >}}
 
-Activates your content as a offcanvas element. Accepts an optional options `object`.
+Activates your content as an offcanvas element. Accepts an optional options `object`.
 
-You can create a offcanvas instance with the constructor, for example:
+You can create an offcanvas instance with the constructor, for example:
 
 {{< highlight js >}}
 var myOffcanvas = document.getElementById('myOffcanvas')
@@ -230,9 +230,9 @@ var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
 
 | Method | Description |
 | --- | --- |
-| `toggle` | Toggles a offcanvas element to shown or hidden. **Returns to the caller before the offcanvas element has actually been shown or hidden** (i.e. before the `shown.bs.offcanvas` or `hidden.bs.offcanvas` event occurs). |
-| `show` | Shows a offcanvas element. **Returns to the caller before the offcanvas element has actually been shown** (i.e. before the `shown.bs.offcanvas` event occurs).|
-| `hide` | Hides a offcanvas element. **Returns to the caller before the offcanvas element has actually been hidden** (i.e. before the `hidden.bs.offcanvas` event occurs).|
+| `toggle` | Toggles an offcanvas element to shown or hidden. **Returns to the caller before the offcanvas element has actually been shown or hidden** (i.e. before the `shown.bs.offcanvas` or `hidden.bs.offcanvas` event occurs). |
+| `show` | Shows an offcanvas element. **Returns to the caller before the offcanvas element has actually been shown** (i.e. before the `shown.bs.offcanvas` event occurs).|
+| `hide` | Hides an offcanvas element. **Returns to the caller before the offcanvas element has actually been hidden** (i.e. before the `hidden.bs.offcanvas` event occurs).|
 | `_getInstance` | *Static* method which allows you to get the offcanvas instance associated with a DOM element |
 
 ### Events
@@ -253,7 +253,7 @@ Bootstrap's offcanvas class exposes a few events for hooking into offcanvas func
     </tr>
     <tr>
       <td>shown.bs.offcanvas</td>
-      <td>This event is fired when a offcanvas element has been made visible to the user (will wait for CSS transitions to complete).</td>
+      <td>This event is fired when an offcanvas element has been made visible to the user (will wait for CSS transitions to complete).</td>
     </tr>
     <tr>
       <td>hide.bs.offcanvas</td>
@@ -261,7 +261,7 @@ Bootstrap's offcanvas class exposes a few events for hooking into offcanvas func
     </tr>
     <tr>
       <td>hidden.bs.offcanvas</td>
-      <td>This event is fired when a offcanvas element has been hidden from the user (will wait for CSS transitions to complete).</td>
+      <td>This event is fired when an offcanvas element has been hidden from the user (will wait for CSS transitions to complete).</td>
     </tr>
   </tbody>
 </table>
