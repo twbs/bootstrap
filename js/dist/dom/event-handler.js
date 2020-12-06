@@ -20,12 +20,14 @@
     var _window = window,
         jQuery = _window.jQuery;
 
-    if (jQuery && !document.body.hasAttribute('data-no-jquery')) {
+    if (jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
       return jQuery;
     }
 
     return null;
   };
+
+  var isRTL = document.documentElement.dir === 'rtl';
 
   /**
    * --------------------------------------------------------------------------
@@ -49,7 +51,7 @@
     mouseenter: 'mouseover',
     mouseleave: 'mouseout'
   };
-  var nativeEvents = ['click', 'dblclick', 'mouseup', 'mousedown', 'contextmenu', 'mousewheel', 'DOMMouseScroll', 'mouseover', 'mouseout', 'mousemove', 'selectstart', 'selectend', 'keydown', 'keypress', 'keyup', 'orientationchange', 'touchstart', 'touchmove', 'touchend', 'touchcancel', 'pointerdown', 'pointermove', 'pointerup', 'pointerleave', 'pointercancel', 'gesturestart', 'gesturechange', 'gestureend', 'focus', 'blur', 'change', 'reset', 'select', 'submit', 'focusin', 'focusout', 'load', 'unload', 'beforeunload', 'resize', 'move', 'DOMContentLoaded', 'readystatechange', 'error', 'abort', 'scroll'];
+  var nativeEvents = new Set(['click', 'dblclick', 'mouseup', 'mousedown', 'contextmenu', 'mousewheel', 'DOMMouseScroll', 'mouseover', 'mouseout', 'mousemove', 'selectstart', 'selectend', 'keydown', 'keypress', 'keyup', 'orientationchange', 'touchstart', 'touchmove', 'touchend', 'touchcancel', 'pointerdown', 'pointermove', 'pointerup', 'pointerleave', 'pointercancel', 'gesturestart', 'gesturechange', 'gestureend', 'focus', 'blur', 'change', 'reset', 'select', 'submit', 'focusin', 'focusout', 'load', 'unload', 'beforeunload', 'resize', 'move', 'DOMContentLoaded', 'readystatechange', 'error', 'abort', 'scroll']);
   /**
    * ------------------------------------------------------------------------
    * Private methods
@@ -131,7 +133,7 @@
       typeEvent = custom;
     }
 
-    var isNative = nativeEvents.indexOf(typeEvent) > -1;
+    var isNative = nativeEvents.has(typeEvent);
 
     if (!isNative) {
       typeEvent = originalTypeEvent;
@@ -188,7 +190,7 @@
   function removeNamespacedHandlers(element, events, typeEvent, namespace) {
     var storeElementEvent = events[typeEvent] || {};
     Object.keys(storeElementEvent).forEach(function (handlerKey) {
-      if (handlerKey.indexOf(namespace) > -1) {
+      if (handlerKey.includes(namespace)) {
         var event = storeElementEvent[handlerKey];
         removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector);
       }
@@ -214,7 +216,7 @@
 
       var inNamespace = typeEvent !== originalTypeEvent;
       var events = getEvent(element);
-      var isNamespace = originalTypeEvent.charAt(0) === '.';
+      var isNamespace = originalTypeEvent.startsWith('.');
 
       if (typeof originalHandler !== 'undefined') {
         // Simplest case: handler is passed, remove that listener ONLY.
@@ -236,7 +238,7 @@
       Object.keys(storeElementEvent).forEach(function (keyHandlers) {
         var handlerKey = keyHandlers.replace(stripUidRegex, '');
 
-        if (!inNamespace || originalTypeEvent.indexOf(handlerKey) > -1) {
+        if (!inNamespace || originalTypeEvent.includes(handlerKey)) {
           var event = storeElementEvent[keyHandlers];
           removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector);
         }
@@ -250,7 +252,7 @@
       var $ = getjQuery();
       var typeEvent = event.replace(stripNameRegex, '');
       var inNamespace = event !== typeEvent;
-      var isNative = nativeEvents.indexOf(typeEvent) > -1;
+      var isNative = nativeEvents.has(typeEvent);
       var jQueryEvent;
       var bubbles = true;
       var nativeDispatch = true;

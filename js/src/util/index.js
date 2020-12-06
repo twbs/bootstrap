@@ -66,13 +66,10 @@ const getTransitionDurationFromElement = element => {
   }
 
   // Get transition-duration of the element
-  let {
-    transitionDuration,
-    transitionDelay
-  } = window.getComputedStyle(element)
+  let { transitionDuration, transitionDelay } = window.getComputedStyle(element)
 
-  const floatTransitionDuration = parseFloat(transitionDuration)
-  const floatTransitionDelay = parseFloat(transitionDelay)
+  const floatTransitionDuration = Number.parseFloat(transitionDuration)
+  const floatTransitionDelay = Number.parseFloat(transitionDelay)
 
   // Return 0 if element or transition duration is not found
   if (!floatTransitionDuration && !floatTransitionDelay) {
@@ -83,7 +80,7 @@ const getTransitionDurationFromElement = element => {
   transitionDuration = transitionDuration.split(',')[0]
   transitionDelay = transitionDelay.split(',')[0]
 
-  return (parseFloat(transitionDuration) + parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER
+  return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER
 }
 
 const triggerTransitionEnd = element => {
@@ -96,6 +93,7 @@ const emulateTransitionEnd = (element, duration) => {
   let called = false
   const durationPadding = 5
   const emulatedDuration = duration + durationPadding
+
   function listener() {
     called = true
     element.removeEventListener(TRANSITION_END, listener)
@@ -188,6 +186,8 @@ const onDOMContentLoaded = callback => {
   }
 }
 
+const isRTL = document.documentElement.dir === 'rtl'
+
 export {
   TRANSITION_END,
   getUID,
@@ -203,5 +203,6 @@ export {
   noop,
   reflow,
   getjQuery,
-  onDOMContentLoaded
+  onDOMContentLoaded,
+  isRTL
 }

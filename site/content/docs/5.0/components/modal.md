@@ -563,14 +563,14 @@ Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` w
         <div class="container-fluid bd-example-row">
           <div class="row">
             <div class="col-md-4">.col-md-4</div>
-            <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
+            <div class="col-md-4 ms-auto">.col-md-4 .ms-auto</div>
           </div>
           <div class="row">
-            <div class="col-md-3 ml-auto">.col-md-3 .ml-auto</div>
-            <div class="col-md-2 ml-auto">.col-md-2 .ml-auto</div>
+            <div class="col-md-3 ms-auto">.col-md-3 .ms-auto</div>
+            <div class="col-md-2 ms-auto">.col-md-2 .ms-auto</div>
           </div>
           <div class="row">
-            <div class="col-md-6 ml-auto">.col-md-6 .ml-auto</div>
+            <div class="col-md-6 ms-auto">.col-md-6 .ms-auto</div>
           </div>
           <div class="row">
             <div class="col-sm-9">
@@ -606,14 +606,14 @@ Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` w
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-4">.col-md-4</div>
-      <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
+      <div class="col-md-4 ms-auto">.col-md-4 .ms-auto</div>
     </div>
     <div class="row">
-      <div class="col-md-3 ml-auto">.col-md-3 .ml-auto</div>
-      <div class="col-md-2 ml-auto">.col-md-2 .ml-auto</div>
+      <div class="col-md-3 ms-auto">.col-md-3 .ms-auto</div>
+      <div class="col-md-2 ms-auto">.col-md-2 .ms-auto</div>
     </div>
     <div class="row">
-      <div class="col-md-6 ml-auto">.col-md-6 .ml-auto</div>
+      <div class="col-md-6 ms-auto">.col-md-6 .ms-auto</div>
     </div>
     <div class="row">
       <div class="col-sm-9">
@@ -1036,12 +1036,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td><code>true</code></td>
       <td>Puts the focus on the modal when initialized.</td>
     </tr>
-    <tr>
-      <td><code>show</code></td>
-      <td>boolean</td>
-      <td><code>true</code></td>
-      <td>Shows the modal when initialized.</td>
-    </tr>
   </tbody>
 </table>
 
@@ -1147,7 +1141,7 @@ Bootstrap's modal class exposes a few events for hooking into modal functionalit
 
 ```js
 var myModalEl = document.getElementById('myModal')
-myModalEl.addEventListener('hidden.bs.modal', function (e) {
+myModalEl.addEventListener('hidden.bs.modal', function (event) {
   // do something...
 })
 ```
