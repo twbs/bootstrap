@@ -20,15 +20,19 @@
   "scripts": {
     "start": "npm-run-all --parallel watch docs-serve",
     "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
-    "css": "npm-run-all css-compile css-prefix css-minify",
+    "css": "npm-run-all css-compile css-prefix css-rtl css-minify",
     "css-compile": "sass --style expanded --source-map --embed-sources --no-error-css scss/:dist/css/",
+    "css-rtl": "cross-env NODE_ENV=RTL postcss --config build/postcss.config.js --dir \"dist/css\" --ext \".rtl.css\" \"dist/css/*.css\" \"!dist/css/*.min.css\" \"!dist/css/*.rtl.css\"",
     "css-lint": "npm-run-all --continue-on-error --parallel css-lint-*",
     "css-lint-stylelint": "stylelint \"**/*.{css,scss}\" --cache --cache-location .cache/.stylelintcache --rd",
     "css-lint-vars": "fusv scss/ site/assets/scss/",
-    "css-minify": "cleancss -O1 --format breakWith=lf --source-map --source-map-inline-sources --output dist/css/bootstrap.min.css dist/css/bootstrap.css && cleancss -O1 --format breakWith=lf --source-map --source-map-inline-sources --output dist/css/bootstrap-grid.min.css dist/css/bootstrap-grid.css && cleancss -O1 --format breakWith=lf --source-map --source-map-inline-sources --output dist/css/bootstrap-utilities.min.css dist/css/bootstrap-utilities.css && cleancss -O1 --format breakWith=lf --source-map --source-map-inline-sources --output dist/css/bootstrap-reboot.min.css dist/css/bootstrap-reboot.css",
+    "css-minify": "npm-run-all --parallel css-minify-*",
+    "css-minify-main": "cleancss -O1 --format breakWith=lf --source-map --source-map-inline-sources --output dist/css/bootstrap.min.css dist/css/bootstrap.css && cleancss -O1 --format breakWith=lf --source-map --source-map-inline-sources --output dist/css/bootstrap-grid.min.css dist/css/bootstrap-grid.css && cleancss -O1 --format breakWith=lf --source-map --source-map-inline-sources --output dist/css/bootstrap-utilities.min.css dist/css/bootstrap-utilities.css && cleancss -O1 --format breakWith=lf --source-map --source-map-inline-sources --output dist/css/bootstrap-reboot.min.css dist/css/bootstrap-reboot.css",
+    "css-minify-rtl": "cleancss -O1 --format breakWith=lf --source-map --source-map-inline-sources --output dist/css/bootstrap.rtl.min.css dist/css/bootstrap.rtl.css && cleancss -O1 --format breakWith=lf --source-map --source-map-inline-sources --output dist/css/bootstrap-grid.rtl.min.css dist/css/bootstrap-grid.rtl.css && cleancss -O1 --format breakWith=lf --source-map --source-map-inline-sources --output dist/css/bootstrap-utilities.rtl.min.css dist/css/bootstrap-utilities.rtl.css && cleancss -O1 --format breakWith=lf --source-map --source-map-inline-sources --output dist/css/bootstrap-reboot.rtl.min.css dist/css/bootstrap-reboot.rtl.css",
     "css-prefix": "npm-run-all --parallel css-prefix-*",
-    "css-prefix-main": "postcss --config build/postcss.config.js --replace \"dist/css/*.css\" \"!dist/css/*.min.css\"",
+    "css-prefix-main": "postcss --config build/postcss.config.js --replace \"dist/css/*.css\" \"!dist/css/*.rtl*.css\" \"!dist/css/*.min.css\"",
     "css-prefix-examples": "postcss --config build/postcss.config.js --replace \"site/content/**/*.css\"",
+    "css-prefix-examples-rtl": "cross-env-shell NODE_ENV=RTL postcss --config build/postcss.config.js --dir \"site/content/docs/$npm_package_version_short/examples/\" --ext \".rtl.css\" --base \"site/content/docs/$npm_package_version_short/examples/\" \"site/content/docs/$npm_package_version_short/examples/{blog,carousel,dashboard,cheatsheet}/*.css\" \"!site/content/docs/$npm_package_version_short/examples/{blog,carousel,dashboard,cheatsheet}/*.rtl.css\"",
     "js": "npm-run-all js-compile js-minify",
     "js-compile": "npm-run-all --parallel js-compile-*",
     "js-compile-standalone": "rollup --environment BUNDLE:false --config build/rollup.config.js --sourcemap",
@@ -68,6 +72,7 @@
     "netlify": "cross-env-shell HUGO_BASEURL=$DEPLOY_PRIME_URL npm-run-all dist release-sri docs-build",
     "watch": "npm-run-all --parallel watch-*",
     "watch-css-main": "nodemon --watch scss/ --ext scss --exec \"npm-run-all css-lint css-compile css-prefix\"",
+    "watch-css-dist": "nodemon --watch dist/css/ --ext css --ignore \"dist/css/*.rtl.*\" --exec \"npm run css-rtl\"",
     "watch-css-docs": "nodemon --watch site/assets/scss/ --ext scss --exec \"npm run css-lint\"",
     "watch-js-main": "nodemon --watch js/src/ --ext js --exec \"npm-run-all js-lint js-compile\"",
     "watch-js-docs": "nodemon --watch site/assets/js/ --ext js --exec \"npm run js-lint\""
@@ -90,19 +95,21 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "popper.js": "^1.16.1"
+    "@popperjs/core": "^2.5.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.8",
-    "@babel/core": "^7.12.8",
+    "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
-    "@rollup/plugin-babel": "^5.2.1",
-    "@rollup/plugin-commonjs": "^16.0.0",
-    "@rollup/plugin-node-resolve": "^10.0.0",
-    "autoprefixer": "^10.0.2",
+    "@popperjs/core": "^2.5.4",
+    "@rollup/plugin-babel": "^5.2.2",
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-replace": "^2.3.4",
+    "autoprefixer": "^10.0.4",
     "bundlewatch": "^0.3.1",
     "clean-css-cli": "^4.3.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "eslint": "^7.14.0",
     "eslint-config-xo": "^0.33.1",
     "eslint-plugin-import": "^2.22.1",
@@ -110,7 +117,7 @@
     "find-unused-sass-variables": "^3.0.0",
     "glob": "^7.1.6",
     "hammer-simulator": "0.0.1",
-    "hugo-bin": "^0.66.2",
+    "hugo-bin": "^0.67.0",
     "ip": "^1.1.5",
     "jquery": "^3.5.1",
     "karma": "^5.2.3",
@@ -122,15 +129,15 @@
     "karma-jasmine": "^4.0.1",
     "karma-jasmine-html-reporter": "^1.5.4",
     "karma-rollup-preprocessor": "^7.0.5",
-    "linkinator": "^2.2.2",
+    "linkinator": "^2.5.1",
     "lockfile-lint": "^4.3.7",
     "nodemon": "^2.0.6",
     "npm-run-all": "^4.1.5",
-    "popper.js": "^1.16.1",
     "postcss": "^8.1.10",
     "postcss-cli": "^8.3.0",
-    "rollup": "^2.33.3",
+    "rollup": "^2.34.0",
     "rollup-plugin-istanbul": "^2.0.1",
+    "rtlcss": "^2.6.2",
     "sass": "^1.29.0",
     "shelljs": "^0.8.4",
     "stylelint": "^13.8.0",
@@ -155,13 +162,13 @@
     "shim": {
       "js/bootstrap": {
         "deps": [
-          "popper.js"
+          "@popperjs/core"
         ]
       }
     },
     "dependencies": {},
     "peerDependencies": {
-      "popper.js": "^1.16.1"
+      "@popperjs/core": "^2.5.4"
     }
   }
 }

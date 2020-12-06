@@ -5,7 +5,7 @@
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js')) :
-  typeof define === 'function' && define.amd ? define(['./dom/data.js', './dom/event-handler.js', './dom/manipulator.js'], factory) :
+  typeof define === 'function' && define.amd ? define(['./dom/data', './dom/event-handler', './dom/manipulator'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Toast = factory(global.Data, global.EventHandler, global.Manipulator));
 }(this, (function (Data, EventHandler, Manipulator) { 'use strict';
 
@@ -116,7 +116,7 @@
     }
   };
 
-  function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+  var isRTL = document.documentElement.dir === 'rtl';
 
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
@@ -127,8 +127,55 @@
    * ------------------------------------------------------------------------
    */
 
-  var NAME = 'toast';
   var VERSION = '5.0.0-alpha3';
+
+  var BaseComponent = /*#__PURE__*/function () {
+    function BaseComponent(element) {
+      if (!element) {
+        return;
+      }
+
+      this._element = element;
+      Data__default['default'].setData(element, this.constructor.DATA_KEY, this);
+    }
+
+    var _proto = BaseComponent.prototype;
+
+    _proto.dispose = function dispose() {
+      Data__default['default'].removeData(this._element, this.constructor.DATA_KEY);
+      this._element = null;
+    }
+    /** Static */
+    ;
+
+    BaseComponent.getInstance = function getInstance(element) {
+      return Data__default['default'].getData(element, this.DATA_KEY);
+    };
+
+    _createClass(BaseComponent, null, [{
+      key: "VERSION",
+      get: function get() {
+        return VERSION;
+      }
+    }]);
+
+    return BaseComponent;
+  }();
+
+  function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+  function _defineProperties$1(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass$1(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$1(Constructor.prototype, protoProps); if (staticProps) _defineProperties$1(Constructor, staticProps); return Constructor; }
+
+  function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+  /**
+   * ------------------------------------------------------------------------
+   * Constants
+   * ------------------------------------------------------------------------
+   */
+
+  var NAME = 'toast';
   var DATA_KEY = 'bs.toast';
   var EVENT_KEY = "." + DATA_KEY;
   var EVENT_CLICK_DISMISS = "click.dismiss" + EVENT_KEY;
@@ -157,15 +204,19 @@
    * ------------------------------------------------------------------------
    */
 
-  var Toast = /*#__PURE__*/function () {
+  var Toast = /*#__PURE__*/function (_BaseComponent) {
+    _inheritsLoose(Toast, _BaseComponent);
+
     function Toast(element, config) {
-      this._element = element;
-      this._config = this._getConfig(config);
-      this._timeout = null;
+      var _this;
 
-      this._setListeners();
+      _this = _BaseComponent.call(this, element) || this;
+      _this._config = _this._getConfig(config);
+      _this._timeout = null;
 
-      Data__default['default'].setData(element, DATA_KEY, this);
+      _this._setListeners();
+
+      return _this;
     } // Getters
 
 
@@ -173,7 +224,7 @@
 
     // Public
     _proto.show = function show() {
-      var _this = this;
+      var _this2 = this;
 
       var showEvent = EventHandler__default['default'].trigger(this._element, EVENT_SHOW);
 
@@ -188,16 +239,16 @@
       }
 
       var complete = function complete() {
-        _this._element.classList.remove(CLASS_NAME_SHOWING);
+        _this2._element.classList.remove(CLASS_NAME_SHOWING);
 
-        _this._element.classList.add(CLASS_NAME_SHOW);
+        _this2._element.classList.add(CLASS_NAME_SHOW);
 
-        EventHandler__default['default'].trigger(_this._element, EVENT_SHOWN);
+        EventHandler__default['default'].trigger(_this2._element, EVENT_SHOWN);
 
-        if (_this._config.autohide) {
-          _this._timeout = setTimeout(function () {
-            _this.hide();
-          }, _this._config.delay);
+        if (_this2._config.autohide) {
+          _this2._timeout = setTimeout(function () {
+            _this2.hide();
+          }, _this2._config.delay);
         }
       };
 
@@ -217,7 +268,7 @@
     };
 
     _proto.hide = function hide() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (!this._element.classList.contains(CLASS_NAME_SHOW)) {
         return;
@@ -230,9 +281,9 @@
       }
 
       var complete = function complete() {
-        _this2._element.classList.add(CLASS_NAME_HIDE);
+        _this3._element.classList.add(CLASS_NAME_HIDE);
 
-        EventHandler__default['default'].trigger(_this2._element, EVENT_HIDDEN);
+        EventHandler__default['default'].trigger(_this3._element, EVENT_HIDDEN);
       };
 
       this._element.classList.remove(CLASS_NAME_SHOW);
@@ -254,8 +305,9 @@
       }
 
       EventHandler__default['default'].off(this._element, EVENT_CLICK_DISMISS);
-      Data__default['default'].removeData(this._element, DATA_KEY);
-      this._element = null;
+
+      _BaseComponent.prototype.dispose.call(this);
+
       this._config = null;
     } // Private
     ;
@@ -267,10 +319,10 @@
     };
 
     _proto._setListeners = function _setListeners() {
-      var _this3 = this;
+      var _this4 = this;
 
       EventHandler__default['default'].on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, function () {
-        return _this3.hide();
+        return _this4.hide();
       });
     };
 
@@ -300,16 +352,7 @@
       });
     };
 
-    Toast.getInstance = function getInstance(element) {
-      return Data__default['default'].getData(element, DATA_KEY);
-    };
-
-    _createClass(Toast, null, [{
-      key: "VERSION",
-      get: function get() {
-        return VERSION;
-      }
-    }, {
+    _createClass$1(Toast, null, [{
       key: "DefaultType",
       get: function get() {
         return DefaultType;
@@ -319,10 +362,15 @@
       get: function get() {
         return Default;
       }
+    }, {
+      key: "DATA_KEY",
+      get: function get() {
+        return DATA_KEY;
+      }
     }]);
 
     return Toast;
-  }();
+  }(BaseComponent);
   /**
    * ------------------------------------------------------------------------
    * jQuery
