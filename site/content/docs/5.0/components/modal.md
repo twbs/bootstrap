@@ -415,7 +415,7 @@ Our first demo is for `.modal-left`, which also has a vertical `.nav-pills` comp
     Launch left modal
   </button>
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalLeftFade">
-    Launch left modal w/ fade
+    Launch left modal with fade
   </button>
 </div>
 
@@ -428,7 +428,7 @@ Our first demo is for `.modal-left`, which also has a vertical `.nav-pills` comp
 </div>
 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalLeftFadeFade">
-  Launch left modal w/ fade
+  Launch left modal with fade
 </button>
 <div class="modal modal-left fade" id="modalLeftFadeFade" tabindex="-1" aria-labelledby="modalLeftFadeFadeLabel" aria-hidden="true">
   ...
@@ -484,7 +484,7 @@ In this `.modal-right` example, we've removed the default `.modal-body` padding 
     Launch right modal
   </button>
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRightFade">
-    Launch right modal w/ fade
+    Launch right modal with fade
   </button>
 </div>
 
@@ -497,7 +497,7 @@ In this `.modal-right` example, we've removed the default `.modal-body` padding 
 </div>
 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRightFade">
-  Launch right modal w/ fade
+  Launch right modal with fade
 </button>
 <div class="modal modal-right fade" id="modalRightFade" tabindex="-1" aria-labelledby="modalRightFadeLabel" aria-hidden="true">
   ...
