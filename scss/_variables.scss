@@ -866,6 +866,14 @@ $nav-pills-border-radius:           $border-radius !default;
 $nav-pills-link-active-color:       $component-active-color !default;
 $nav-pills-link-active-bg:          $component-active-bg !default;
 
+$nav-pills-link-hover-color:         null !default;
+$nav-pills-link-hover-bg:            null !default;
+$nav-pills-link-hover-border-color:  null !default;
+
+$nav-pills-focus-width:             .25rem !default;
+$nav-pills-focus-color-opacity:     .25 !default;
+$nav-pills-focus-color:             rgba($component-active-bg, $nav-pills-focus-color-opacity) !default;
+$nav-pills-focus-box-shadow:        0 0 0 $nav-pills-focus-width $nav-pills-focus-color !default;
 
 // Navbar
 
