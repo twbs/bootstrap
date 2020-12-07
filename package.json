@@ -1,7 +1,7 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "5.0.0-alpha3",
+  "version": "5.0.0-beta1",
   "version_short": "5.0",
   "keywords": [
     "css",
@@ -95,15 +95,17 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "popper.js": "^1.16.1"
+    "@popperjs/core": "^2.5.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.8",
     "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
+    "@popperjs/core": "^2.5.4",
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-replace": "^2.3.4",
     "autoprefixer": "^10.0.4",
     "bundlewatch": "^0.3.1",
     "clean-css-cli": "^4.3.0",
@@ -131,7 +133,6 @@
     "lockfile-lint": "^4.3.7",
     "nodemon": "^2.0.6",
     "npm-run-all": "^4.1.5",
-    "popper.js": "^1.16.1",
     "postcss": "^8.1.10",
     "postcss-cli": "^8.3.0",
     "rollup": "^2.34.0",
@@ -161,13 +162,13 @@
     "shim": {
       "js/bootstrap": {
         "deps": [
-          "popper.js"
+          "@popperjs/core"
         ]
       }
     },
     "dependencies": {},
     "peerDependencies": {
-      "popper.js": "^1.16.1"
+      "@popperjs/core": "^2.5.4"
     }
   }
 }

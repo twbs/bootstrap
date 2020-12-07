@@ -65,7 +65,9 @@ $utilities: map-merge(
       property: transform,
       class: translate-middle,
       values: (
-        null: (translateX(-50%) translateY(-50%))
+        null: translate(-50%, -50%),
+        x: translateX(-50%),
+        y: translateY(-50%),
       )
     ),
     "border": (
