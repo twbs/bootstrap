@@ -23,6 +23,10 @@ Things to know when using the popover plugin:
 - Popovers can be triggered thanks to an element inside a shadow DOM.
 
 {{< callout info >}}
+{{< partial "callout-info-sanitizer.md" >}}
+{{< /callout >}}
+
+{{< callout info >}}
 {{< partial "callout-info-prefersreducedmotion.md" >}}
 {{< /callout >}}
 
@@ -268,7 +272,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` opti
       <td>sanitize</td>
       <td>boolean</td>
       <td>true</td>
-      <td>Enable or disable the sanitization. If activated <code>'template'</code>, <code>'content'</code> and <code>'title'</code> options will be sanitized.</td>
+      <td>Enable or disable the sanitization. If activated <code>'template'</code>, <code>'content'</code> and <code>'title'</code> options will be sanitized. See the <a href="{{< docsref "/getting-started/javascript#sanitizer" >}}">sanitizer section in our JavaScript documentation</a>.</td>
     </tr>
     <tr>
       <td>whiteList</td>
