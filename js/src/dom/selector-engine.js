@@ -14,10 +14,6 @@
 const NODE_TEXT = 3
 
 const SelectorEngine = {
-  matches(element, selector) {
-    return element.matches(selector)
-  },
-
   find(selector, element = document.documentElement) {
     return [].concat(...Element.prototype.querySelectorAll.call(element, selector))
   },
@@ -38,7 +34,7 @@ const SelectorEngine = {
     let ancestor = element.parentNode
 
     while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== NODE_TEXT) {
-      if (this.matches(ancestor, selector)) {
+      if (ancestor.matches(selector)) {
         parents.push(ancestor)
       }
 
@@ -66,7 +62,7 @@ const SelectorEngine = {
     let next = element.nextElementSibling
 
     while (next) {
-      if (this.matches(next, selector)) {
+      if (next.matches(selector)) {
         return [next]
       }
 
