@@ -854,11 +854,6 @@ $nav-link-hover-color:              null !default;
 $nav-link-transition:               color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
 $nav-link-disabled-color:           $gray-600 !default;
 
-$nav-link-focus-width:             .25rem !default;
-$nav-link-focus-color-opacity:     .25 !default;
-$nav-link-focus-color:             rgba($component-active-bg, $nav-link-focus-color-opacity) !default;
-$nav-link-focus-box-shadow:        0 0 0 $nav-link-focus-width $nav-link-focus-color !default;
-
 $nav-tabs-border-color:             $gray-300 !default;
 $nav-tabs-border-width:             $border-width !default;
 $nav-tabs-border-radius:            $border-radius !default;
@@ -870,6 +865,12 @@ $nav-tabs-link-active-border-color: $gray-300 $gray-300 $nav-tabs-link-active-bg
 $nav-pills-border-radius:           $border-radius !default;
 $nav-pills-link-active-color:       $component-active-color !default;
 $nav-pills-link-active-bg:          $component-active-bg !default;
+
+$nav-pills-link-hover-color:              null !default;
+$nav-pills-link-focus-width:             .25rem !default;
+$nav-pills-link-focus-color-opacity:     .25 !default;
+$nav-pills-link-focus-color:             rgba($component-active-bg, $nav-pills-link-focus-color-opacity) !default;
+$nav-pills-link-focus-box-shadow:        0 0 0 $nav-pills-link-focus-width $nav-pills-link-focus-color !default;
 
 // Navbar
 

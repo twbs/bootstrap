@@ -24,7 +24,6 @@
   &:focus {
     color: $nav-link-hover-color;
     text-decoration: if($link-hover-decoration == underline, none, null);
-    box-shadow: $nav-link-focus-box-shadow;
   }
 
   // Disabled state lightens text
@@ -82,6 +81,12 @@
 .nav-pills {
   .nav-link {
     @include border-radius($nav-pills-border-radius);
+    &:hover,
+    &:focus {
+      color: $nav-pills-link-hover-color;
+      text-decoration: if($link-hover-decoration == underline, none, null);
+      box-shadow: $nav-pills-link-focus-box-shadow;
+    }
   }
 
   .nav-link.active,
