@@ -1,9 +1,10 @@
 /*!
-  * Bootstrap v5.0.0-alpha3 (https://getbootstrap.com/)
+  * Bootstrap v5.0.0-beta1 (https://getbootstrap.com/)
   * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
-import Popper from 'popper.js';
+import * as Popper from '@popperjs/core';
+import { createPopper } from '@popperjs/core';
 
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
@@ -47,7 +48,7 @@ function _inheritsLoose(subClass, superClass) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): util/index.js
+ * Bootstrap (v5.0.0-beta1): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -232,7 +233,7 @@ var isRTL = document.documentElement.dir === 'rtl';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): dom/data.js
+ * Bootstrap (v5.0.0-beta1): dom/data.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -299,7 +300,7 @@ var Data = {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): dom/event-handler.js
+ * Bootstrap (v5.0.0-beta1): dom/event-handler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -578,7 +579,7 @@ var EventHandler = {
  * ------------------------------------------------------------------------
  */
 
-var VERSION = '5.0.0-alpha3';
+var VERSION = '5.0.0-beta1';
 
 var BaseComponent = /*#__PURE__*/function () {
   function BaseComponent(element) {
@@ -861,7 +862,7 @@ onDOMContentLoaded(function () {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): dom/manipulator.js
+ * Bootstrap (v5.0.0-beta1): dom/manipulator.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -933,7 +934,7 @@ var Manipulator = {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): dom/selector-engine.js
+ * Bootstrap (v5.0.0-beta1): dom/selector-engine.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2057,9 +2058,7 @@ var CLASS_NAME_SHOW$1 = 'show';
 var CLASS_NAME_DROPUP = 'dropup';
 var CLASS_NAME_DROPEND = 'dropend';
 var CLASS_NAME_DROPSTART = 'dropstart';
-var CLASS_NAME_MENUEND = 'dropdown-menu-end';
 var CLASS_NAME_NAVBAR = 'navbar';
-var CLASS_NAME_POSITION_STATIC = 'position-static';
 var SELECTOR_DATA_TOGGLE$2 = '[data-bs-toggle="dropdown"]';
 var SELECTOR_FORM_CHILD = '.dropdown form';
 var SELECTOR_MENU = '.dropdown-menu';
@@ -2074,7 +2073,7 @@ var PLACEMENT_LEFT = isRTL ? 'right-start' : 'left-start';
 var Default$2 = {
   offset: 0,
   flip: true,
-  boundary: 'scrollParent',
+  boundary: 'clippingParents',
   reference: 'toggle',
   display: 'dynamic',
   popperConfig: null
@@ -2161,16 +2160,9 @@ var Dropdown = /*#__PURE__*/function (_BaseComponent) {
         if (typeof this._config.reference.jquery !== 'undefined') {
           referenceElement = this._config.reference[0];
         }
-      } // If boundary is not `scrollParent`, then set position to `static`
-      // to allow the menu to "escape" the scroll parent's boundaries
-      // https://github.com/twbs/bootstrap/issues/24251
-
-
-      if (this._config.boundary !== 'scrollParent') {
-        parent.classList.add(CLASS_NAME_POSITION_STATIC);
       }
 
-      this._popper = new Popper(referenceElement, this._menu, this._getPopperConfig());
+      this._popper = createPopper(referenceElement, this._menu, this._getPopperConfig());
     } // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
@@ -2239,7 +2231,7 @@ var Dropdown = /*#__PURE__*/function (_BaseComponent) {
     this._inNavbar = this._detectNavbar();
 
     if (this._popper) {
-      this._popper.scheduleUpdate();
+      this._popper.update();
     }
   } // Private
   ;
@@ -2267,60 +2259,46 @@ var Dropdown = /*#__PURE__*/function (_BaseComponent) {
 
   _proto._getPlacement = function _getPlacement() {
     var parentDropdown = this._element.parentNode;
-    var placement = PLACEMENT_BOTTOM; // Handle dropup
 
-    if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
-      placement = this._menu.classList.contains(CLASS_NAME_MENUEND) ? PLACEMENT_TOPEND : PLACEMENT_TOP;
-    } else if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
-      placement = PLACEMENT_RIGHT;
-    } else if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) {
-      placement = PLACEMENT_LEFT;
-    } else if (this._menu.classList.contains(CLASS_NAME_MENUEND)) {
-      placement = PLACEMENT_BOTTOMEND;
+    if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
+      return PLACEMENT_RIGHT;
     }
 
-    return placement;
+    if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) {
+      return PLACEMENT_LEFT;
+    } // We need to trim the value because custom properties can also include spaces
+
+
+    var isEnd = getComputedStyle(this._menu).getPropertyValue('--bs-position').trim() === 'end';
+
+    if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
+      return isEnd ? PLACEMENT_TOPEND : PLACEMENT_TOP;
+    }
+
+    return isEnd ? PLACEMENT_BOTTOMEND : PLACEMENT_BOTTOM;
   };
 
   _proto._detectNavbar = function _detectNavbar() {
-    return Boolean(this._element.closest("." + CLASS_NAME_NAVBAR));
-  };
-
-  _proto._getOffset = function _getOffset() {
-    var _this3 = this;
-
-    var offset = {};
-
-    if (typeof this._config.offset === 'function') {
-      offset.fn = function (data) {
-        data.offsets = _extends({}, data.offsets, _this3._config.offset(data.offsets, _this3._element) || {});
-        return data;
-      };
-    } else {
-      offset.offset = this._config.offset;
-    }
-
-    return offset;
+    return this._element.closest("." + CLASS_NAME_NAVBAR) !== null;
   };
 
   _proto._getPopperConfig = function _getPopperConfig() {
     var popperConfig = {
       placement: this._getPlacement(),
-      modifiers: {
-        offset: this._getOffset(),
-        flip: {
-          enabled: this._config.flip
-        },
-        preventOverflow: {
-          boundariesElement: this._config.boundary
+      modifiers: [{
+        name: 'preventOverflow',
+        options: {
+          altBoundary: this._config.flip,
+          rootBoundary: this._config.boundary
         }
-      }
+      }]
     }; // Disable Popper if we have a static display
 
     if (this._config.display === 'static') {
-      popperConfig.modifiers.applyStyle = {
+      popperConfig.modifiers = [{
+        name: 'applyStyles',
         enabled: false
-      };
+      }];
     }
 
     return _extends({}, popperConfig, this._config.popperConfig);
@@ -3161,7 +3139,7 @@ onDOMContentLoaded(function () {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): util/sanitizer.js
+ * Bootstrap (v5.0.0-beta1): util/sanitizer.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3307,9 +3285,8 @@ var DefaultType$4 = {
   html: 'boolean',
   selector: '(string|boolean)',
   placement: '(string|function)',
-  offset: '(number|string|function)',
   container: '(string|element|boolean)',
-  fallbackPlacement: '(string|array)',
+  fallbackPlacements: '(null|array)',
   boundary: '(string|element)',
   customClass: '(string|function)',
   sanitize: 'boolean',
@@ -3333,10 +3310,9 @@ var Default$4 = {
   html: false,
   selector: false,
   placement: 'top',
-  offset: 0,
   container: false,
-  fallbackPlacement: 'flip',
-  boundary: 'scrollParent',
+  fallbackPlacements: null,
+  boundary: 'clippingParents',
   customClass: '',
   sanitize: true,
   sanitizeFn: null,
@@ -3513,7 +3489,7 @@ var Tooltip = /*#__PURE__*/function (_BaseComponent) {
       }
 
       EventHandler.trigger(this._element, this.constructor.Event.INSERTED);
-      this._popper = new Popper(this._element, tip, this._getPopperConfig(attachment));
+      this._popper = createPopper(this._element, tip, this._getPopperConfig(attachment));
       tip.classList.add(CLASS_NAME_SHOW$3);
       var customClass = typeof this.config.customClass === 'function' ? this.config.customClass() : this.config.customClass;
 
@@ -3536,10 +3512,6 @@ var Tooltip = /*#__PURE__*/function (_BaseComponent) {
       }
 
       var complete = function complete() {
-        if (_this2.config.animation) {
-          _this2._fixTransition();
-        }
-
         var prevHoverState = _this2._hoverState;
         _this2._hoverState = null;
         EventHandler.trigger(_this2._element, _this2.constructor.Event.SHOWN);
@@ -3579,7 +3551,11 @@ var Tooltip = /*#__PURE__*/function (_BaseComponent) {
 
       EventHandler.trigger(_this3._element, _this3.constructor.Event.HIDDEN);
 
-      _this3._popper.destroy();
+      if (_this3._popper) {
+        _this3._popper.destroy();
+
+        _this3._popper = null;
+      }
     };
 
     var hideEvent = EventHandler.trigger(this._element, this.constructor.Event.HIDE);
@@ -3616,7 +3592,7 @@ var Tooltip = /*#__PURE__*/function (_BaseComponent) {
 
   _proto.update = function update() {
     if (this._popper !== null) {
-      this._popper.scheduleUpdate();
+      this._popper.update();
     }
   } // Protected
   ;
@@ -3702,27 +3678,41 @@ var Tooltip = /*#__PURE__*/function (_BaseComponent) {
   _proto._getPopperConfig = function _getPopperConfig(attachment) {
     var _this4 = this;
 
+    var flipModifier = {
+      name: 'flip',
+      options: {
+        altBoundary: true
+      }
+    };
+
+    if (this.config.fallbackPlacements) {
+      flipModifier.options.fallbackPlacements = this.config.fallbackPlacements;
+    }
+
     var defaultBsConfig = {
       placement: attachment,
-      modifiers: {
-        offset: this._getOffset(),
-        flip: {
-          behavior: this.config.fallbackPlacement
-        },
-        arrow: {
-          element: "." + this.constructor.NAME + "-arrow"
-        },
-        preventOverflow: {
-          boundariesElement: this.config.boundary
+      modifiers: [flipModifier, {
+        name: 'preventOverflow',
+        options: {
+          rootBoundary: this.config.boundary
         }
-      },
-      onCreate: function onCreate(data) {
-        if (data.originalPlacement !== data.placement) {
+      }, {
+        name: 'arrow',
+        options: {
+          element: "." + this.constructor.NAME + "-arrow"
+        }
+      }, {
+        name: 'onChange',
+        enabled: true,
+        phase: 'afterWrite',
+        fn: function fn(data) {
+          return _this4._handlePopperPlacementChange(data);
+        }
+      }],
+      onFirstUpdate: function onFirstUpdate(data) {
+        if (data.options.placement !== data.placement) {
           _this4._handlePopperPlacementChange(data);
         }
-      },
-      onUpdate: function onUpdate(data) {
-        return _this4._handlePopperPlacementChange(data);
       }
     };
     return _extends({}, defaultBsConfig, this.config.popperConfig);
@@ -3730,23 +3720,6 @@ var Tooltip = /*#__PURE__*/function (_BaseComponent) {
 
   _proto._addAttachmentClass = function _addAttachmentClass(attachment) {
     this.getTipElement().classList.add(CLASS_PREFIX + "-" + this.updateAttachment(attachment));
-  };
-
-  _proto._getOffset = function _getOffset() {
-    var _this5 = this;
-
-    var offset = {};
-
-    if (typeof this.config.offset === 'function') {
-      offset.fn = function (data) {
-        data.offsets = _extends({}, data.offsets, _this5.config.offset(data.offsets, _this5._element) || {});
-        return data;
-      };
-    } else {
-      offset.offset = this.config.offset;
-    }
-
-    return offset;
   };
 
   _proto._getContainer = function _getContainer() {
@@ -3766,29 +3739,29 @@ var Tooltip = /*#__PURE__*/function (_BaseComponent) {
   };
 
   _proto._setListeners = function _setListeners() {
-    var _this6 = this;
+    var _this5 = this;
 
     var triggers = this.config.trigger.split(' ');
     triggers.forEach(function (trigger) {
       if (trigger === 'click') {
-        EventHandler.on(_this6._element, _this6.constructor.Event.CLICK, _this6.config.selector, function (event) {
-          return _this6.toggle(event);
+        EventHandler.on(_this5._element, _this5.constructor.Event.CLICK, _this5.config.selector, function (event) {
+          return _this5.toggle(event);
         });
       } else if (trigger !== TRIGGER_MANUAL) {
-        var eventIn = trigger === TRIGGER_HOVER ? _this6.constructor.Event.MOUSEENTER : _this6.constructor.Event.FOCUSIN;
-        var eventOut = trigger === TRIGGER_HOVER ? _this6.constructor.Event.MOUSELEAVE : _this6.constructor.Event.FOCUSOUT;
-        EventHandler.on(_this6._element, eventIn, _this6.config.selector, function (event) {
-          return _this6._enter(event);
+        var eventIn = trigger === TRIGGER_HOVER ? _this5.constructor.Event.MOUSEENTER : _this5.constructor.Event.FOCUSIN;
+        var eventOut = trigger === TRIGGER_HOVER ? _this5.constructor.Event.MOUSELEAVE : _this5.constructor.Event.FOCUSOUT;
+        EventHandler.on(_this5._element, eventIn, _this5.config.selector, function (event) {
+          return _this5._enter(event);
         });
-        EventHandler.on(_this6._element, eventOut, _this6.config.selector, function (event) {
-          return _this6._leave(event);
+        EventHandler.on(_this5._element, eventOut, _this5.config.selector, function (event) {
+          return _this5._leave(event);
         });
       }
     });
 
     this._hideModalHandler = function () {
-      if (_this6._element) {
-        _this6.hide();
+      if (_this5._element) {
+        _this5.hide();
       }
     };
 
@@ -3961,26 +3934,17 @@ var Tooltip = /*#__PURE__*/function (_BaseComponent) {
   };
 
   _proto._handlePopperPlacementChange = function _handlePopperPlacementChange(popperData) {
-    this.tip = popperData.instance.popper;
+    var state = popperData.state;
 
-    this._cleanTipClass();
-
-    this._addAttachmentClass(this._getAttachment(popperData.placement));
-  };
-
-  _proto._fixTransition = function _fixTransition() {
-    var tip = this.getTipElement();
-    var initConfigAnimation = this.config.animation;
-
-    if (tip.getAttribute('x-placement') !== null) {
+    if (!state) {
       return;
     }
 
-    tip.classList.remove(CLASS_NAME_FADE$1);
-    this.config.animation = false;
-    this.hide();
-    this.show();
-    this.config.animation = initConfigAnimation;
+    this.tip = state.elements.popper;
+
+    this._cleanTipClass();
+
+    this._addAttachmentClass(this._getAttachment(state.placement));
   } // Static
   ;
 
