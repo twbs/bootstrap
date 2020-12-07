@@ -1027,6 +1027,56 @@ Validation styles are available for the following form controls and components:
 </form>
 {{< /example >}}
 
+### Controlling input group validation programatically
+
+To display the invalid feedback message programatically on input groups, add the `is-invalid` class to the `input-group` element and style the input itself with `is-valid` or `is-invalid` classes.
+
+{{< example >}}
+<form>
+  <div class="mb-3">
+    <div class="input-group is-invalid">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="validatedInputGroupPrepend">@</span>
+      </div>
+      <input type="text" class="form-control is-invalid" aria-describedby="validatedInputGroupPrepend">
+    </div>
+    <div class="invalid-feedback">
+      Example invalid input group feedback
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="validatedInputGroupSelect">Options</label>
+      </div>
+      <select class="custom-select is-valid" id="validatedInputGroupSelect" required>
+        <option value="">Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+    <div class="invalid-feedback">
+      Example invalid input group feedback
+    </div>
+  </div>
+
+  <div class="input-group is-invalid">
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" id="validatedInputGroupCustomFile" required>
+      <label class="custom-file-label" for="validatedInputGroupCustomFile">Choose file...</label>
+    </div>
+    <div class="input-group-append">
+       <button class="btn btn-outline-secondary" type="button">Button</button>
+    </div>
+  </div>
+  <div class="invalid-feedback">
+    Example invalid input group feedback
+  </div>
+</form>
+{{< /example >}}
+
 ### Tooltips
 
 If your form layout allows it, you can swap the `.{valid|invalid}-feedback` classes for `.{valid|invalid}-tooltip` classes to display validation feedback in a styled tooltip. Be sure to have a parent with `position: relative` on it for tooltip positioning. In the example below, our column classes have this already, but your project may require an alternative setup.
