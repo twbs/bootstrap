@@ -1036,9 +1036,9 @@ To display the invalid feedback message programatically on input groups, add the
   <div class="mb-3">
     <div class="input-group is-invalid">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="validatedInputGroupPrepend">@</span>
+        <span class="input-group-text" id="validatedInputGroupProgramPrepend">@</span>
       </div>
-      <input type="text" class="form-control is-invalid" aria-describedby="validatedInputGroupPrepend">
+      <input type="text" class="form-control is-invalid" aria-describedby="validatedInputGroupProgramPrepend">
     </div>
     <div class="invalid-feedback">
       Example invalid input group feedback
@@ -1048,9 +1048,9 @@ To display the invalid feedback message programatically on input groups, add the
   <div class="mb-3">
     <div class="input-group">
       <div class="input-group-prepend">
-        <label class="input-group-text" for="validatedInputGroupSelect">Options</label>
+        <label class="input-group-text" for="validatedInputGroupProgramSelect">Options</label>
       </div>
-      <select class="custom-select is-valid" id="validatedInputGroupSelect" required>
+      <select class="custom-select is-valid" id="validatedInputGroupProgramSelect" required>
         <option value="">Choose...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -1064,8 +1064,8 @@ To display the invalid feedback message programatically on input groups, add the
 
   <div class="input-group is-invalid">
     <div class="custom-file">
-      <input type="file" class="custom-file-input" id="validatedInputGroupCustomFile" required>
-      <label class="custom-file-label" for="validatedInputGroupCustomFile">Choose file...</label>
+      <input type="file" class="custom-file-input" id="validatedInputGroupProgramCustomFile" required>
+      <label class="custom-file-label" for="validatedInputGroupProgramCustomFile">Choose file...</label>
     </div>
     <div class="input-group-append">
        <button class="btn btn-outline-secondary" type="button">Button</button>
