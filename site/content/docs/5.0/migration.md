@@ -56,6 +56,9 @@ Breakpoints specific variants are consequently renamed too (eg. `.text-md-start`
 ### JavaScript
 
 - Data attributes for all JavaScript plugins are now namespaced to help distinguish Bootstrap functionality from third parties and your own code. For example, we use `data-bs-toggle` instead of `data-toggle`.
+- Updated Popper to v2.x:
+  - Removed `offset` option from our Tooltip/Popover and Dropdown plugins; this can still be achieved using the `popperConfig` parameter.
+  - The `fallbackPlacement` option has become `fallbackPlacements`.
 
 ### Sass
 
