@@ -1,13 +1,12 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): modal.js
+ * Bootstrap (v5.0.0-beta1): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
+  defineJQueryPlugin,
   TRANSITION_END,
   emulateTransitionEnd,
   getElementFromSelector,
@@ -602,18 +601,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Modal to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Modal.jQueryInterface
-    $.fn[NAME].Constructor = Modal
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Modal.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Modal)
 
 export default Modal

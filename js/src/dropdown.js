@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): dropdown.js
+ * Bootstrap (v5.0.0-beta1): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -8,8 +8,7 @@
 import * as Popper from '@popperjs/core'
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
+  defineJQueryPlugin,
   getElementFromSelector,
   isElement,
   isVisible,
@@ -490,18 +489,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stop
  * add .Dropdown to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Dropdown.jQueryInterface
-    $.fn[NAME].Constructor = Dropdown
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Dropdown.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Dropdown)
 
 export default Dropdown
