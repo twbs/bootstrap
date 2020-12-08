@@ -1,13 +1,12 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): tab.js
+ * Bootstrap (v5.0.0-beta1): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
+  defineJQueryPlugin,
   TRANSITION_END,
   emulateTransitionEnd,
   getElementFromSelector,
@@ -95,15 +94,11 @@ class Tab extends BaseComponent {
       relatedTarget: previous
     })
 
-    if (showEvent.defaultPrevented ||
-      (hideEvent !== null && hideEvent.defaultPrevented)) {
+    if (showEvent.defaultPrevented || (hideEvent !== null && hideEvent.defaultPrevented)) {
       return
     }
 
-    this._activate(
-      this._element,
-      listElement
-    )
+    this._activate(this._element, listElement)
 
     const complete = () => {
       EventHandler.trigger(previous, EVENT_HIDDEN, {
@@ -129,14 +124,9 @@ class Tab extends BaseComponent {
       SelectorEngine.children(container, SELECTOR_ACTIVE)
 
     const active = activeElements[0]
-    const isTransitioning = callback &&
-      (active && active.classList.contains(CLASS_NAME_FADE))
+    const isTransitioning = callback && (active && active.classList.contains(CLASS_NAME_FADE))
 
-    const complete = () => this._transitionComplete(
-      element,
-      active,
-      callback
-    )
+    const complete = () => this._transitionComplete(element, active, callback)
 
     if (active && isTransitioning) {
       const transitionDuration = getTransitionDurationFromElement(active)
@@ -228,18 +218,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Tab to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Tab.jQueryInterface
-    $.fn[NAME].Constructor = Tab
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Tab.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Tab)
 
 export default Tab

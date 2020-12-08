@@ -1,13 +1,12 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): scrollspy.js
+ * Bootstrap (v5.0.0-beta1): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
+  defineJQueryPlugin,
   getSelectorFromElement,
   getUID,
   isElement,
@@ -196,9 +195,7 @@ class ScrollSpy extends BaseComponent {
   _process() {
     const scrollTop = this._getScrollTop() + this._config.offset
     const scrollHeight = this._getScrollHeight()
-    const maxScroll = this._config.offset +
-      scrollHeight -
-      this._getOffsetHeight()
+    const maxScroll = this._config.offset + scrollHeight - this._getOffsetHeight()
 
     if (this._scrollHeight !== scrollHeight) {
       this.refresh()
@@ -223,8 +220,7 @@ class ScrollSpy extends BaseComponent {
     for (let i = this._offsets.length; i--;) {
       const isActiveTarget = this._activeTarget !== this._targets[i] &&
           scrollTop >= this._offsets[i] &&
-          (typeof this._offsets[i + 1] === 'undefined' ||
-              scrollTop < this._offsets[i + 1])
+          (typeof this._offsets[i + 1] === 'undefined' || scrollTop < this._offsets[i + 1])
 
       if (isActiveTarget) {
         this._activate(this._targets[i])
@@ -318,18 +314,6 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  * add .ScrollSpy to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = ScrollSpy.jQueryInterface
-    $.fn[NAME].Constructor = ScrollSpy
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return ScrollSpy.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, ScrollSpy)
 
 export default ScrollSpy

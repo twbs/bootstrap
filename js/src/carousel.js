@@ -1,13 +1,12 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): carousel.js
+ * Bootstrap (v5.0.0-beta1): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
+  defineJQueryPlugin,
   TRANSITION_END,
   emulateTransitionEnd,
   getElementFromSelector,
@@ -79,8 +78,8 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const CLASS_NAME_CAROUSEL = 'carousel'
 const CLASS_NAME_ACTIVE = 'active'
 const CLASS_NAME_SLIDE = 'slide'
-const CLASS_NAME_RIGHT = 'carousel-item-right'
-const CLASS_NAME_LEFT = 'carousel-item-left'
+const CLASS_NAME_END = 'carousel-item-end'
+const CLASS_NAME_START = 'carousel-item-start'
 const CLASS_NAME_NEXT = 'carousel-item-next'
 const CLASS_NAME_PREV = 'carousel-item-prev'
 const CLASS_NAME_POINTER_EVENT = 'pointer-event'
@@ -397,6 +396,7 @@ class Carousel extends BaseComponent {
   _setActiveIndicatorElement(element) {
     if (this._indicatorsElement) {
       const indicators = SelectorEngine.find(SELECTOR_ACTIVE, this._indicatorsElement)
+
       for (let i = 0; i < indicators.length; i++) {
         indicators[i].classList.remove(CLASS_NAME_ACTIVE)
       }
@@ -431,8 +431,7 @@ class Carousel extends BaseComponent {
   _slide(direction, element) {
     const activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
     const activeElementIndex = this._getItemIndex(activeElement)
-    const nextElement = element || (activeElement &&
-      this._getItemByDirection(direction, activeElement))
+    const nextElement = element || (activeElement && this._getItemByDirection(direction, activeElement))
 
     const nextElementIndex = this._getItemIndex(nextElement)
     const isCycling = Boolean(this._interval)
@@ -442,11 +441,11 @@ class Carousel extends BaseComponent {
     let eventDirectionName
 
     if (direction === DIRECTION_NEXT) {
-      directionalClassName = CLASS_NAME_LEFT
+      directionalClassName = CLASS_NAME_START
       orderClassName = CLASS_NAME_NEXT
       eventDirectionName = DIRECTION_LEFT
     } else {
-      directionalClassName = CLASS_NAME_RIGHT
+      directionalClassName = CLASS_NAME_END
       orderClassName = CLASS_NAME_PREV
       eventDirectionName = DIRECTION_RIGHT
     }
@@ -614,18 +613,6 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  * add .Carousel to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Carousel.jQueryInterface
-    $.fn[NAME].Constructor = Carousel
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Carousel.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Carousel)
 
 export default Carousel
