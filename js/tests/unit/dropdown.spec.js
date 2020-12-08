@@ -1,5 +1,3 @@
-import Popper from 'popper.js'
-
 import Dropdown from '../../src/dropdown'
 import EventHandler from '../../src/dom/event-handler'
 
@@ -36,50 +34,6 @@ describe('Dropdown', () => {
   })
 
   describe('constructor', () => {
-    it('should create offset modifier correctly when offset option is a function', () => {
-      fixtureEl.innerHTML = [
-        '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
-        '  <div class="dropdown-menu">',
-        '    <a class="dropdown-item" href="#">Secondary link</a>',
-        '  </div>',
-        '</div>'
-      ].join('')
-
-      const getOffset = offsets => offsets
-      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
-      const dropdown = new Dropdown(btnDropdown, {
-        offset: getOffset
-      })
-
-      const offset = dropdown._getOffset()
-
-      expect(offset.offset).toBeUndefined()
-      expect(typeof offset.fn).toEqual('function')
-    })
-
-    it('should create offset modifier correctly when offset option is not a function', () => {
-      fixtureEl.innerHTML = [
-        '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
-        '  <div class="dropdown-menu">',
-        '    <a class="dropdown-item" href="#">Secondary link</a>',
-        '  </div>',
-        '</div>'
-      ].join('')
-
-      const myOffset = 7
-      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
-      const dropdown = new Dropdown(btnDropdown, {
-        offset: myOffset
-      })
-
-      const offset = dropdown._getOffset()
-
-      expect(offset.offset).toEqual(myOffset)
-      expect(offset.fn).toBeUndefined()
-    })
-
     it('should add a listener on trigger which do not have data-bs-toggle="dropdown"', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
@@ -227,7 +181,7 @@ describe('Dropdown', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
-        '  <div class="dropdown-menu dropdown-menu-right">',
+        '  <div class="dropdown-menu dropdown-menu-end">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
@@ -273,7 +227,7 @@ describe('Dropdown', () => {
       fixtureEl.innerHTML = [
         '<div class="dropup">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
-        '  <div class="dropdown-menu dropdown-menu-right">',
+        '  <div class="dropdown-menu dropdown-menu-end">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
@@ -292,9 +246,9 @@ describe('Dropdown', () => {
       dropdown.toggle()
     })
 
-    it('should toggle a dropright', done => {
+    it('should toggle a dropend', done => {
       fixtureEl.innerHTML = [
-        '<div class="dropright">',
+        '<div class="dropend">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
@@ -303,10 +257,10 @@ describe('Dropdown', () => {
       ].join('')
 
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
-      const droprightEl = fixtureEl.querySelector('.dropright')
+      const dropendEl = fixtureEl.querySelector('.dropend')
       const dropdown = new Dropdown(btnDropdown)
 
-      droprightEl.addEventListener('shown.bs.dropdown', () => {
+      dropendEl.addEventListener('shown.bs.dropdown', () => {
         expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         done()
@@ -315,9 +269,9 @@ describe('Dropdown', () => {
       dropdown.toggle()
     })
 
-    it('should toggle a dropleft', done => {
+    it('should toggle a dropstart', done => {
       fixtureEl.innerHTML = [
-        '<div class="dropleft">',
+        '<div class="dropstart">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
@@ -326,10 +280,10 @@ describe('Dropdown', () => {
       ].join('')
 
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
-      const dropleftEl = fixtureEl.querySelector('.dropleft')
+      const dropstartEl = fixtureEl.querySelector('.dropstart')
       const dropdown = new Dropdown(btnDropdown)
 
-      dropleftEl.addEventListener('shown.bs.dropdown', () => {
+      dropstartEl.addEventListener('shown.bs.dropdown', () => {
         expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         done()
@@ -860,14 +814,11 @@ describe('Dropdown', () => {
       expect(dropdown._menu).toBeDefined()
       expect(dropdown._element).toBeDefined()
 
-      spyOn(Popper.prototype, 'destroy')
-
       dropdown.dispose()
 
       expect(dropdown._popper).toBeNull()
       expect(dropdown._menu).toBeNull()
       expect(dropdown._element).toBeNull()
-      expect(Popper.prototype.destroy).toHaveBeenCalled()
     })
   })
 
@@ -889,12 +840,12 @@ describe('Dropdown', () => {
 
       expect(dropdown._popper).toBeDefined()
 
-      spyOn(dropdown._popper, 'scheduleUpdate')
+      spyOn(dropdown._popper, 'update')
       spyOn(dropdown, '_detectNavbar')
 
       dropdown.update()
 
-      expect(dropdown._popper.scheduleUpdate).toHaveBeenCalled()
+      expect(dropdown._popper.update).toHaveBeenCalled()
       expect(dropdown._detectNavbar).toHaveBeenCalled()
     })
 
@@ -921,48 +872,6 @@ describe('Dropdown', () => {
   })
 
   describe('data-api', () => {
-    it('should not add class position-static to dropdown if boundary not set', done => {
-      fixtureEl.innerHTML = [
-        '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
-        '  <div class="dropdown-menu">',
-        '    <a class="dropdown-item" href="#">Secondary link</a>',
-        '  </div>',
-        '</div>'
-      ].join('')
-
-      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
-      const dropdownEl = fixtureEl.querySelector('.dropdown')
-
-      dropdownEl.addEventListener('shown.bs.dropdown', () => {
-        expect(dropdownEl.classList.contains('position-static')).toEqual(false)
-        done()
-      })
-
-      btnDropdown.click()
-    })
-
-    it('should add class position-static to dropdown if boundary not scrollParent', done => {
-      fixtureEl.innerHTML = [
-        '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-boundary="viewport">Dropdown</button>',
-        '  <div class="dropdown-menu">',
-        '    <a class="dropdown-item" href="#">Secondary link</a>',
-        '  </div>',
-        '</div>'
-      ].join('')
-
-      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
-      const dropdownEl = fixtureEl.querySelector('.dropdown')
-
-      dropdownEl.addEventListener('shown.bs.dropdown', () => {
-        expect(dropdownEl.classList.contains('position-static')).toEqual(true)
-        done()
-      })
-
-      btnDropdown.click()
-    })
-
     it('should show and hide a dropdown', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
