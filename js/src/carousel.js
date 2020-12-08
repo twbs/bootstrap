@@ -7,7 +7,6 @@
 
 import {
   defineJQueryPlugin,
-  TRANSITION_END,
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
@@ -484,7 +483,7 @@ class Carousel extends BaseComponent {
 
       const transitionDuration = getTransitionDurationFromElement(activeElement)
 
-      EventHandler.one(activeElement, TRANSITION_END, () => {
+      EventHandler.one(activeElement, 'transitionend', () => {
         nextElement.classList.remove(directionalClassName, orderClassName)
         nextElement.classList.add(CLASS_NAME_ACTIVE)
 

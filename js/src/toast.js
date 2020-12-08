@@ -7,7 +7,6 @@
 
 import {
   defineJQueryPlugin,
-  TRANSITION_END,
   emulateTransitionEnd,
   getTransitionDurationFromElement,
   reflow,
@@ -52,6 +51,8 @@ const Default = {
 }
 
 const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="toast"]'
+
+const TRANSITION_END = 'transitionend'
 
 /**
  * ------------------------------------------------------------------------

@@ -9,7 +9,6 @@ import * as Popper from '@popperjs/core'
 
 import {
   defineJQueryPlugin,
-  TRANSITION_END,
   emulateTransitionEnd,
   findShadowRoot,
   getTransitionDurationFromElement,
@@ -117,6 +116,8 @@ const TRIGGER_HOVER = 'hover'
 const TRIGGER_FOCUS = 'focus'
 const TRIGGER_CLICK = 'click'
 const TRIGGER_MANUAL = 'manual'
+
+const TRANSITION_END = 'transitionend'
 
 /**
  * ------------------------------------------------------------------------

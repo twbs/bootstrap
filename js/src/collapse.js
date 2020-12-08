@@ -7,7 +7,6 @@
 
 import {
   defineJQueryPlugin,
-  TRANSITION_END,
   emulateTransitionEnd,
   getSelectorFromElement,
   getElementFromSelector,
@@ -59,6 +58,8 @@ const HEIGHT = 'height'
 
 const SELECTOR_ACTIVES = '.show, .collapsing'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]'
+
+const TRANSITION_END = 'transitionend'
 
 /**
  * ------------------------------------------------------------------------

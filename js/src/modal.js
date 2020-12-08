@@ -7,7 +7,6 @@
 
 import {
   defineJQueryPlugin,
-  TRANSITION_END,
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
@@ -72,6 +71,8 @@ const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="modal"]'
 const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="modal"]'
 const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
 const SELECTOR_STICKY_CONTENT = '.sticky-top'
+
+const TRANSITION_END = 'transitionend'
 
 /**
  * ------------------------------------------------------------------------
