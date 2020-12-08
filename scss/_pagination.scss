@@ -31,7 +31,7 @@
 
 .page-item {
   &:not(:first-child) .page-link {
-    margin-left: $pagination-margin-left;
+    margin-left: $pagination-margin-start;
   }
 
   &.active .page-link {
