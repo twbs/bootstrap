@@ -29,7 +29,7 @@
     },
     transformData: function (hits) {
       return hits.map(function (hit) {
-        var liveUrl = 'https://v5.getbootstrap.com/'
+        var liveUrl = 'https://getbootstrap.com/'
 
         hit.url = window.location.origin.startsWith(liveUrl) ?
           // On production, return the result as is

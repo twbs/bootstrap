@@ -1,7 +1,7 @@
 .popover {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 0 #{"/* rtl:ignore */"};
   z-index: $zindex-popover;
   display: block;
   max-width: $popover-max-width;
@@ -36,7 +36,8 @@
 }
 
 .bs-popover-top {
-  margin-bottom: $popover-arrow-height;
+  // Overrule margin set by popper.js
+  margin-bottom: $popover-arrow-height !important; // stylelint-disable-line declaration-no-important
 
   > .popover-arrow {
     bottom: subtract(-$popover-arrow-height, $popover-border-width);
@@ -55,8 +56,9 @@
   }
 }
 
-.bs-popover-right {
-  margin-left: $popover-arrow-height;
+.bs-popover-end {
+  // Overrule margin set by popper.js
+  margin-left: $popover-arrow-height !important; // stylelint-disable-line declaration-no-important
 
   > .popover-arrow {
     left: subtract(-$popover-arrow-height, $popover-border-width);
@@ -79,7 +81,8 @@
 }
 
 .bs-popover-bottom {
-  margin-top: $popover-arrow-height;
+  // Overrule margin set by popper.js
+  margin-top: $popover-arrow-height !important; // stylelint-disable-line declaration-no-important
 
   > .popover-arrow {
     top: subtract(-$popover-arrow-height, $popover-border-width);
@@ -110,8 +113,9 @@
   }
 }
 
-.bs-popover-left {
-  margin-right: $popover-arrow-height;
+.bs-popover-start {
+  // Overrule margin set by popper.js
+  margin-right: $popover-arrow-height !important; // stylelint-disable-line declaration-no-important
 
   > .popover-arrow {
     right: subtract(-$popover-arrow-height, $popover-border-width);
@@ -134,20 +138,19 @@
 }
 
 .bs-popover-auto {
-  &[x-placement^="top"] {
+  &[data-popper-placement^="top"] {
     @extend .bs-popover-top;
   }
-  &[x-placement^="right"] {
-    @extend .bs-popover-right;
+  &[data-popper-placement^="right"] {
+    @extend .bs-popover-end;
   }
-  &[x-placement^="bottom"] {
+  &[data-popper-placement^="bottom"] {
     @extend .bs-popover-bottom;
   }
-  &[x-placement^="left"] {
-    @extend .bs-popover-left;
+  &[data-popper-placement^="left"] {
+    @extend .bs-popover-start;
   }
 }
-
 
 // Offset the popover to account for the popover arrow
 .popover-header {

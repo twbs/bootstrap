@@ -1,13 +1,12 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): tab.js
+ * Bootstrap (v5.0.0-beta1): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
+  defineJQueryPlugin,
   TRANSITION_END,
   emulateTransitionEnd,
   getElementFromSelector,
@@ -17,6 +16,7 @@ import {
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import SelectorEngine from './dom/selector-engine'
+import BaseComponent from './base-component'
 
 /**
  * ------------------------------------------------------------------------
@@ -25,7 +25,6 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'tab'
-const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.tab'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -56,17 +55,11 @@ const SELECTOR_DROPDOWN_ACTIVE_CHILD = ':scope > .dropdown-menu .active'
  * ------------------------------------------------------------------------
  */
 
-class Tab {
-  constructor(element) {
-    this._element = element
-
-    Data.setData(this._element, DATA_KEY, this)
-  }
-
+class Tab extends BaseComponent {
   // Getters
 
-  static get VERSION() {
-    return VERSION
+  static get DATA_KEY() {
+    return DATA_KEY
   }
 
   // Public
@@ -101,15 +94,11 @@ class Tab {
       relatedTarget: previous
     })
 
-    if (showEvent.defaultPrevented ||
-      (hideEvent !== null && hideEvent.defaultPrevented)) {
+    if (showEvent.defaultPrevented || (hideEvent !== null && hideEvent.defaultPrevented)) {
       return
     }
 
-    this._activate(
-      this._element,
-      listElement
-    )
+    this._activate(this._element, listElement)
 
     const complete = () => {
       EventHandler.trigger(previous, EVENT_HIDDEN, {
@@ -127,11 +116,6 @@ class Tab {
     }
   }
 
-  dispose() {
-    Data.removeData(this._element, DATA_KEY)
-    this._element = null
-  }
-
   // Private
 
   _activate(element, container, callback) {
@@ -140,14 +124,9 @@ class Tab {
       SelectorEngine.children(container, SELECTOR_ACTIVE)
 
     const active = activeElements[0]
-    const isTransitioning = callback &&
-      (active && active.classList.contains(CLASS_NAME_FADE))
+    const isTransitioning = callback && (active && active.classList.contains(CLASS_NAME_FADE))
 
-    const complete = () => this._transitionComplete(
-      element,
-      active,
-      callback
-    )
+    const complete = () => this._transitionComplete(element, active, callback)
 
     if (active && isTransitioning) {
       const transitionDuration = getTransitionDurationFromElement(active)
@@ -217,10 +196,6 @@ class Tab {
       }
     })
   }
-
-  static getInstance(element) {
-    return Data.getData(element, DATA_KEY)
-  }
 }
 
 /**
@@ -243,18 +218,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Tab to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Tab.jQueryInterface
-    $.fn[NAME].Constructor = Tab
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Tab.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Tab)
 
 export default Tab

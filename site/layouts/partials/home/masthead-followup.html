@@ -11,7 +11,7 @@
       <p>Package managed installs don’t include documentation or our full build scripts. You can also <a href="https://github.com/twbs/bootstrap-npm-starter">use our npm template repo</a> to quickly generate a Bootstrap project via npm.</p>
       <a class="btn btn-lg btn-outline-primary mb-3" href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/">Read installation docs</a>
     </div>
-    <div class="col-md-7 pl-md-5">
+    <div class="col-md-7 ps-md-5">
       {{ highlight "npm install bootstrap@next" "sh" "" }}
       {{ highlight (printf ("gem install bootstrap -v %s") .Site.Params.current_ruby_version) "sh" "" }}
     </div>
@@ -27,15 +27,15 @@
         When you only need to include Bootstrap’s compiled CSS or JS, you can use <a href="https://www.jsdelivr.com/">jsDelivr</a>.
       </p>
       <p>
-        See it in action with our simple <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/#starter-template">starter template</a>, or <a href="/docs/{{ .Site.Params.docs_version }}/examples/">browse the examples</a> to jumpstart your next project. You can also choose to include Popper.js and our JS <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/#separate">separately</a>.
+        See it in action with our simple <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/#starter-template">starter template</a>, or <a href="/docs/{{ .Site.Params.docs_version }}/examples/">browse the examples</a> to jumpstart your next project. You can also choose to include Popper and our JS <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/#separate">separately</a>.
       </p>
       <a class="btn btn-lg btn-outline-primary mb-3" href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/">Explore the docs</a>
     </div>
-    <div class="col-md-7 pl-md-5">
+    <div class="col-md-7 ps-md-5">
       {{ highlight (printf (`<!-- CSS only -->
 <link href="%s" rel="stylesheet" integrity=%q crossorigin="anonymous">
 `) .Site.Params.cdn.css (.Site.Params.cdn.css_hash | safeHTMLAttr)) "html" "" }}
-      {{ highlight (printf (`<!-- JavaScript Bundle with Popper.js -->
+      {{ highlight (printf (`<!-- JavaScript Bundle with Popper -->
 <script src="%s" integrity=%q crossorigin="anonymous"></script>
 `) .Site.Params.cdn.js_bundle (.Site.Params.cdn.js_bundle_hash | safeHTMLAttr)) "html" "" }}
     </div>
@@ -55,7 +55,7 @@
       </p>
       <a href="{{ .Site.Params.icons }}" class="btn btn-lg btn-outline-primary mb-3">Get Bootstrap Icons</a>
     </div>
-    <div class="col-md-7 pl-md-5">
+    <div class="col-md-7 ps-md-5">
         <img class="img-fluid mt-3 mx-auto" srcset="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-icons.png,
                                                     /docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-icons@2x.png 2x"
                                             src="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-icons.png"
@@ -77,11 +77,11 @@
       </p>
       <a href="{{ .Site.Params.themes }}" class="btn btn-lg btn-outline-primary mb-3">Browse themes</a>
     </div>
-    <div class="col-md-7 pl-md-5">
+    <div class="col-md-7 ps-md-5">
         <img class="img-fluid mt-3 mx-auto" srcset="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes.png,
                                                     /docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes@2x.png 2x"
                                             src="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes.png"
-                                            alt="Bootstrap Icons" width="700" height="500" loading="lazy">
+                                            alt="Bootstrap Themes" width="700" height="500" loading="lazy">
     </div>
   </section>
 </div>
