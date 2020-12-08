@@ -19,21 +19,20 @@ Click the buttons below to show and hide an offcanvas element via class changes:
 - `.offcanvas` hides content
 - `.offcanvas.show` shows content
 
-You can use a link with the `href` attribute, or a button with the `data-target` attribute. In both cases, the `data-toggle="offcanvas"` is required.
+You can use a link with the `href` attribute, or a button with the `data-bs-target` attribute. In both cases, the `data-bs-toggle="offcanvas"` is required.
 
 {{< example >}}
-<a class="btn btn-primary" data-toggle="offcanvas" href="#offcanvasExample" role="button" aria-expanded="false" aria-controls="offcanvasExample">
+<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-expanded="false" aria-controls="offcanvasExample">
   Link with href
 </a>
-<button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample" aria-expanded="false" aria-controls="offcanvasExample">
-  Button with data-target
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-expanded="false" aria-controls="offcanvasExample">
+  Button with data-bs-target
 </button>
 
 <div class="offcanvas offcanvas-left" tabindex="-1" id="offcanvasExample">
   <div class="offcanvas-header">
     <div>Offcanvas</div>
-    <button type="button" class="close text-reset" data-dismiss="offcanvas" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
     </button>
   </div>
   <div class="offcanvas-body">
@@ -41,7 +40,7 @@ You can use a link with the `href` attribute, or a button with the `data-target`
       <a href="#" class="list-group-item list-group-item-action active">
         Cras justo odio
       </a>
-      <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item lis`t-group-item-action">Dapibus ac facilisis in</a>
       <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
       <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
       <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
@@ -51,7 +50,7 @@ You can use a link with the `href` attribute, or a button with the `data-target`
     </div>
 
     <div class="dropdown mt-3">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
         Dropdown button
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -80,14 +79,13 @@ Change the placement of an offcanvas element with modifier classes:
 
 {{< example >}}
 
-<button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample2" aria-expanded="false" aria-controls="offcanvasExample2">Toggle right offcanvas</button>
-<button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample3" aria-expanded="false" aria-controls="offcanvasExample3">Toggle bottom offcanvas</button>
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample2" aria-expanded="false" aria-controls="offcanvasExample2">Toggle right offcanvas</button>
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample3" aria-expanded="false" aria-controls="offcanvasExample3">Toggle bottom offcanvas</button>
 
 <div class="offcanvas offcanvas-right" tabindex="-1" id="offcanvasExample2">
   <div class="offcanvas-header">
     <div>Offcanvas right</div>
-    <button type="button" class="close text-reset" data-dismiss="offcanvas" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
     </button>
   </div>
   <div class="offcanvas-body small">
@@ -106,8 +104,7 @@ Change the placement of an offcanvas element with modifier classes:
 <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasExample3">
   <div class="offcanvas-header">
     <div>Offcanvas bottom</div>
-    <button type="button" class="close text-reset" data-dismiss="offcanvas" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
     </button>
   </div>
   <div class="offcanvas-body small">
@@ -125,13 +122,12 @@ Change the placement of an offcanvas element with modifier classes:
 Easily style an offcanvas element with a different `background-color` or `color` with our [color utilities]({{< docsref "/utilities/colors" >}}).
 
 {{< example >}}
-<button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasColored" aria-expanded="false" aria-controls="offcanvasColored">Colored offcanvas</button>
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasColored" aria-expanded="false" aria-controls="offcanvasColored">Colored offcanvas</button>
 
-<div class="offcanvas offcanvas-left bg-dark text-white" data-body="scroll" tabindex="-1" id="offcanvasColored">
+<div class="offcanvas offcanvas-left bg-dark text-white" data-bs-body="scroll" tabindex="-1" id="offcanvasColored">
   <div class="offcanvas-header">
     Colored offcanvas
-    <button type="button" class="close text-reset" data-dismiss="offcanvas" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
     </button>
   </div>
   <div class="offcanvas-body">
@@ -156,14 +152,14 @@ Easily style an offcanvas element with a different `background-color` or `color`
 
 By default, when an offcanvas is visible, the `<body>` of your page cannot be scrolled. You can use the following data-options to change this behavior:
 
-- `data-body="scroll"` enables scrolling on the `<body>` when offcanvas is open
-- `data-body="backdrop"` disables scrolling and creates a backdrop over the `<body>` when offcanvas is open
+- `data-bs-body="scroll"` enables scrolling on the `<body>` when offcanvas is open
+- `data-bs-body="backdrop"` disables scrolling and creates a backdrop over the `<body>` when offcanvas is open
 
 {{< example >}}
-<button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample4" aria-expanded="false" aria-controls="offcanvasExample4">Enable body scrolling </button>
-<button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample5" aria-expanded="false" aria-controls="offcanvasExample5">Body backdrop</button>
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample4" aria-expanded="false" aria-controls="offcanvasExample4">Enable body scrolling </button>
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample5" aria-expanded="false" aria-controls="offcanvasExample5">Body backdrop</button>
 
-<div class="offcanvas offcanvas-left" data-body="scroll" tabindex="-1" id="offcanvasExample4">
+<div class="offcanvas offcanvas-left" data-bs-body="scroll" tabindex="-1" id="offcanvasExample4">
   <div class="offcanvas-header">
     Offcanvas with scrolling
   </div>
@@ -171,7 +167,7 @@ By default, when an offcanvas is visible, the `<body>` of your page cannot be sc
     <p>Try scrolling the rest of the page to see this option in action.</p>
   </div>
 </div>
-<div class="offcanvas offcanvas-left" data-body="backdrop" tabindex="-1" id="offcanvasExample5">
+<div class="offcanvas offcanvas-left" data-bs-body="backdrop" tabindex="-1" id="offcanvasExample5">
   <div class="offcanvas-header">
     Offcanvas with backdrop
   </div>
@@ -193,14 +189,14 @@ The offcanvas plugin utilizes a few classes and attributes to handle the heavy l
 - `.offcanvas.show` shows the content
 - `.offcanvas-right` hides the offcanvas on the right
 - `.offcanvas-bottom` hides the offcanvas on the bottom
-- `data-body="scroll"` enables `<body>` scrolling when offcanvas is open
-- `data-body="backdrop"` disables `<body>` scrolling and adds backdrop when offcanvas is open
+- `data-bs-body="scroll"` enables `<body>` scrolling when offcanvas is open
+- `data-bs-body="backdrop"` disables `<body>` scrolling and adds backdrop when offcanvas is open
 
-Add a dismiss button with the `data-dismiss="offcanvas"` attribute, which triggers the JavaScript functionality. Be sure to use the `<button>` element with it for proper behavior across all devices.
+Add a dismiss button with the `data-bs-dismiss="offcanvas"` attribute, which triggers the JavaScript functionality. Be sure to use the `<button>` element with it for proper behavior across all devices.
 
 ### Via data attributes
 
-Add `data-toggle="offcanvas"` and a `data-target` or `href` to the element to automatically assign control of one offcanvas element. The `data-target` attribute accepts a CSS selector to apply the offcanvas to. Be sure to add the class `offcanvas` to the offcanvas element. If you'd like it to default open, add the additional class `show`.
+Add `data-bs-toggle="offcanvas"` and a `data-bs-target` or `href` to the element to automatically assign control of one offcanvas element. The `data-bs-target` attribute accepts a CSS selector to apply the offcanvas to. Be sure to add the class `offcanvas` to the offcanvas element. If you'd like it to default open, add the additional class `show`.
 
 ### Via JavaScript
 

@@ -5,11 +5,17 @@
  * --------------------------------------------------------------------------
  */
 
-import { getjQuery, getSelectorFromElement, getTransitionDurationFromElement } from './util/index'
+import {
+  getElementFromSelector,
+  getjQuery,
+  getSelectorFromElement,
+  getTransitionDurationFromElement,
+  onDOMContentLoaded
+} from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
+import BaseComponent from './base-component'
 import SelectorEngine from './dom/selector-engine'
-
 /**
  * ------------------------------------------------------------------------
  * Constants
@@ -17,22 +23,11 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'offcanvas'
-const VERSION = '5.0.0-alpha1'
 const DATA_KEY = 'bs.offcanvas'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 const ESCAPE_KEY = 'Escape'
-const DATA_BODY_ACTIONS = 'data-body'
-
-const SELECTOR_DATA_DISMISS = '[data-dismiss="offcanvas"]'
-const SELECTOR_DATA_TOGGLE = '[data-toggle="offcanvas"]'
-
-const EVENT_SHOW = `show${EVENT_KEY}`
-const EVENT_SHOWN = `shown${EVENT_KEY}`
-const EVENT_HIDE = `hide${EVENT_KEY}`
-const EVENT_HIDDEN = `hidden${EVENT_KEY}`
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
-const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
+const DATA_BODY_ACTIONS = 'data-bs-body'
 
 const CLASS_NAME_BACKDROP_BODY = 'offcanvas-backdrop'
 const CLASS_NAME_DISABLED = 'disabled'
@@ -41,36 +36,40 @@ const CLASS_NAME_TOGGLING = 'offcanvas-toggling'
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_STOP_OVERFLOW = 'offcanvas-freeze'
 
+const EVENT_SHOW = `show${EVENT_KEY}`
+const EVENT_SHOWN = `shown${EVENT_KEY}`
+const EVENT_HIDE = `hide${EVENT_KEY}`
+const EVENT_HIDDEN = `hidden${EVENT_KEY}`
+const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
+
+const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="offcanvas"]'
+const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="offcanvas"]'
+
 /**
  * ------------------------------------------------------------------------
  * Class Definition
  * ------------------------------------------------------------------------
  */
 
-class OffCanvas {
+class OffCanvas extends BaseComponent {
   constructor(element) {
-    this._element = element
+    super(element)
+
     this._isShown = element.classList.contains(CLASS_NAME_SHOW)
     this._bodyOptions = element.getAttribute(DATA_BODY_ACTIONS)
 
     this._handleClosing()
-    Data.setData(element, DATA_KEY, this)
-  }
-
-  // Getters
-
-  static get VERSION() {
-    return VERSION
   }
 
   // Public
 
   toggle(relatedTarget) {
-    return this._isShown ? this.hide(relatedTarget) : this.show(relatedTarget)
+    return this._isShown ? this.hide() : this.show(relatedTarget)
   }
 
   show(relatedTarget) {
-    if (this._isShown) {
+    if (this._isShown || this._isTransitioning) {
       return
     }
 
@@ -105,12 +104,12 @@ class OffCanvas {
     }, getTransitionDurationFromElement(this._element))
   }
 
-  hide(relatedTarget) {
+  hide() {
     if (!this._isShown) {
       return
     }
 
-    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE, { relatedTarget })
+    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE)
 
     if (hideEvent.defaultPrevented) {
       return
@@ -141,7 +140,7 @@ class OffCanvas {
       this._element.removeAttribute('aria-offcanvas')
       this.hidden = true
 
-      EventHandler.trigger(this._element, EVENT_HIDDEN, { relatedTarget })
+      EventHandler.trigger(this._element, EVENT_HIDDEN)
     }, getTransitionDurationFromElement(this._element))
   }
 
@@ -153,18 +152,18 @@ class OffCanvas {
   }
 
   _handleClosing() {
-    EventHandler.on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, event => this.hide(event))
+    EventHandler.on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, () => this.hide())
 
     EventHandler.on(document, 'keydown', event => {
       if (event.key === ESCAPE_KEY) {
-        this.hide(event.target)
+        this.hide()
       }
     })
 
     EventHandler.on(document, EVENT_CLICK_DATA_API, event => {
       const target = SelectorEngine.findOne(getSelectorFromElement(event.target))
       if (!this._element.contains(event.target) && target !== this._element) {
-        this.hide(event.target)
+        this.hide()
       }
     })
   }
@@ -184,10 +183,6 @@ class OffCanvas {
       }
     })
   }
-
-  static getInstance(element) {
-    return Data.getData(element, DATA_KEY)
-  }
 }
 
 /**
@@ -197,7 +192,9 @@ class OffCanvas {
  */
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
-  if (['A', 'AREA'].indexOf(this.tagName) > -1) {
+  const target = getElementFromSelector(this)
+
+  if (['A', 'AREA'].includes(this.tagName)) {
     event.preventDefault()
   }
 
@@ -205,28 +202,28 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     return
   }
 
-  const target = SelectorEngine.findOne(getSelectorFromElement(this))
+  window.xx = target
   const data = Data.getData(target, DATA_KEY) || new OffCanvas(target)
-
   data.toggle(this)
 })
-
-const $ = getjQuery()
 
 /**
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
  */
-/* istanbul ignore if */
-if ($) {
-  const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = OffCanvas.jQueryInterface
-  $.fn[NAME].Constructor = OffCanvas
-  $.fn[NAME].noConflict = () => {
-    $.fn[NAME] = JQUERY_NO_CONFLICT
-    return OffCanvas.jQueryInterface
+onDOMContentLoaded(() => {
+  const $ = getjQuery()
+  /* istanbul ignore if */
+  if ($) {
+    const JQUERY_NO_CONFLICT = $.fn[NAME]
+    $.fn[NAME] = OffCanvas.jQueryInterface
+    $.fn[NAME].Constructor = OffCanvas
+    $.fn[NAME].noConflict = () => {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return OffCanvas.jQueryInterface
+    }
   }
-}
+})
 
 export default OffCanvas
