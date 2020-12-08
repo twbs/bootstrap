@@ -19,6 +19,28 @@
   "contributors": [
     "Twitter, Inc."
   ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twbs/bootstrap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/twbs/bootstrap/issues"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/twbs"
+    },
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/bootstrap"
+    }
+  ],
+  "main": "dist/js/bootstrap.js",
+  "module": "dist/js/bootstrap.esm.js",
+  "sass": "scss/bootstrap.scss",
+  "style": "dist/css/bootstrap.css",
   "scripts": {
     "start": "npm-run-all --parallel watch docs-serve",
     "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
@@ -79,22 +101,6 @@
     "watch-css-docs": "nodemon --watch site/assets/scss/ --ext scss --exec \"npm run css-lint\"",
     "watch-js-main": "nodemon --watch js/src/ --ext js --exec \"npm-run-all js-lint js-compile\"",
     "watch-js-docs": "nodemon --watch site/assets/js/ --ext js --exec \"npm run js-lint\""
-  },
-  "style": "dist/css/bootstrap.css",
-  "sass": "scss/bootstrap.scss",
-  "main": "dist/js/bootstrap.js",
-  "module": "dist/js/bootstrap.esm.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/twbs/bootstrap.git"
-  },
-  "bugs": {
-    "url": "https://github.com/twbs/bootstrap/issues"
-  },
-  "license": "MIT",
-  "funding": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/bootstrap"
   },
   "peerDependencies": {
     "@popperjs/core": "^2.11.0"
