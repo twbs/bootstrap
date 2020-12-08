@@ -23,10 +23,10 @@ describe('OffCanvas', () => {
   })
 
   describe('constructor', () => {
-    it('should call hide when a element with data-dismiss="offcanvas" is clicked', () => {
+    it('should call hide when a element with data-bs-dismiss="offcanvas" is clicked', () => {
       fixtureEl.innerHTML = [
         '<div class="offcanvas">',
-        '  <a href="#" data-dismiss="offcanvas">Close</a>',
+        '  <a href="#" data-bs-dismiss="offcanvas">Close</a>',
         '</div>'
       ].join('')
 
@@ -211,7 +211,7 @@ describe('OffCanvas', () => {
   describe('data-api', () => {
     it('should not prevent event for input', done => {
       fixtureEl.innerHTML = [
-        '<input type="checkbox" data-toggle="offcanvas" data-target="#offcanvasdiv1" />',
+        '<input type="checkbox" data-bs-toggle="offcanvas" data-bs-target="#offcanvasdiv1" />',
         '<div id="offcanvasdiv1" class="offcanvas"></div>'
       ].join('')
 
@@ -229,7 +229,7 @@ describe('OffCanvas', () => {
 
     it('should not call toggle on disabled elements', () => {
       fixtureEl.innerHTML = [
-        '<a href="#" data-toggle="offcanvas" data-target="#offcanvasdiv1" class="disabled"></a>',
+        '<a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasdiv1" class="disabled"></a>',
         '<div id="offcanvasdiv1" class="offcanvas"></div>'
       ].join('')
 
@@ -291,15 +291,14 @@ describe('OffCanvas', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
-      const offCanvas = new OffCanvas(div)
 
-      spyOn(offCanvas, 'show')
+      spyOn(OffCanvas.prototype, 'show')
 
       jQueryMock.fn.offcanvas = OffCanvas.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.offcanvas.call(jQueryMock, 'show')
-      expect(offCanvas.show).toHaveBeenCalled()
+      expect(OffCanvas.prototype.show).toHaveBeenCalled()
     })
   })
 
@@ -311,6 +310,7 @@ describe('OffCanvas', () => {
       const offCanvas = new OffCanvas(div)
 
       expect(OffCanvas.getInstance(div)).toEqual(offCanvas)
+      expect(OffCanvas.getInstance(div)).toBeInstanceOf(OffCanvas)
     })
 
     it('should return null when there is no offcanvas instance', () => {

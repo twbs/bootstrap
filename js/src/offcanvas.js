@@ -6,16 +6,16 @@
  */
 
 import {
+  defineJQueryPlugin,
   getElementFromSelector,
-  getjQuery,
   getSelectorFromElement,
-  getTransitionDurationFromElement,
-  onDOMContentLoaded
+  getTransitionDurationFromElement
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import BaseComponent from './base-component'
 import SelectorEngine from './dom/selector-engine'
+
 /**
  * ------------------------------------------------------------------------
  * Constants
@@ -202,7 +202,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     return
   }
 
-  window.xx = target
   const data = Data.getData(target, DATA_KEY) || new OffCanvas(target)
   data.toggle(this)
 })
@@ -212,18 +211,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * jQuery
  * ------------------------------------------------------------------------
  */
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = OffCanvas.jQueryInterface
-    $.fn[NAME].Constructor = OffCanvas
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return OffCanvas.jQueryInterface
-    }
-  }
-})
+
+defineJQueryPlugin(NAME, OffCanvas)
 
 export default OffCanvas
