@@ -32,19 +32,29 @@
   border: $dropdown-border-width solid $dropdown-border-color;
   @include border-radius($dropdown-border-radius);
   @include box-shadow($dropdown-box-shadow);
+
+  // Reset positioning when positioned with Popper
+  &[style] {
+    right: auto !important; // stylelint-disable-line declaration-no-important
+  }
 }
 
 // scss-docs-start responsive-breakpoints
+// We deliberately hardcode the `bs-` prefix because we check
+// this custom property in JS to determine Popper's positioning
+
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
     .dropdown-menu#{$infix}-start {
+      --bs-position: start;
       right: auto #{"/* rtl:ignore */"};
       left: 0 #{"/* rtl:ignore */"};
     }
 
     .dropdown-menu#{$infix}-end {
+      --bs-position: end;
       right: 0 #{"/* rtl:ignore */"};
       left: auto #{"/* rtl:ignore */"};
     }
@@ -98,19 +108,6 @@
     &::before {
       vertical-align: 0;
     }
-  }
-}
-
-// When Popper is enabled, reset the basic dropdown position
-// stylelint-disable-next-line no-duplicate-selectors
-.dropdown-menu {
-  &[x-placement^="top"],
-  &[x-placement^="right"],
-  &[x-placement^="bottom"],
-  &[x-placement^="left"] {
-    right: auto;
-    bottom: auto;
-    left: auto;
   }
 }
 
