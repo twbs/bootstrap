@@ -248,13 +248,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. <code>manual</code> cannot be combined with any other trigger.</td>
     </tr>
     <tr>
-      <td><code>offset</code></td>
-      <td>number | string</td>
-      <td><code>0</code></td>
-      <td>Offset of the popover relative to its target. For more information refer to Popper's <a href="https://popper.js.org/docs/v2/modifiers/offset">offset docs</a>.</td>
-    </tr>
-    <tr>
-      <td><code>fallbackPlacement</code></td>
+      <td><code>fallbackPlacements</code></td>
       <td>string | array</td>
       <td><code>'flip'</code></td>
       <td>Allow to specify which position Popper will use on fallback. For more information refer to

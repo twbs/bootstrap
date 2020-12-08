@@ -253,7 +253,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       </td>
     </tr>
     <tr>
-      <td><code>fallbackPlacement</code></td>
+      <td><code>fallbackPlacements</code></td>
       <td>null | array</td>
       <td><code>null</code></td>
       <td>Allow to specify which position Popper will use on fallback. For more information refer to
