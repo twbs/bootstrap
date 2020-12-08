@@ -21,7 +21,7 @@ The table below illustrates how each container's `max-width` compares to the ori
 
 See them in action and compare them in our [Grid example]({{< docsref "/examples/grid#containers" >}}).
 
-<table class="table text-left">
+<table class="table">
   <thead>
     <tr>
       <th></th>
