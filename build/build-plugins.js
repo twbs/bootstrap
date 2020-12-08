@@ -19,8 +19,8 @@ const plugins = [
   babel({
     // Only transpile our source code
     exclude: 'node_modules/**',
-    // Inline the required helpers in each file
-    babelHelpers: 'inline'
+    // Include the helpers in each file, at most one copy of each
+    babelHelpers: 'bundled'
   })
 ]
 const bsPlugins = {

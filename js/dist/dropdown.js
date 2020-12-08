@@ -1,25 +1,45 @@
 /*!
-  * Bootstrap dropdown.js v5.0.0-alpha3 (https://getbootstrap.com/)
+  * Bootstrap dropdown.js v5.0.0-beta1 (https://getbootstrap.com/)
   * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('popper.js'), require('./dom/selector-engine.js')) :
-  typeof define === 'function' && define.amd ? define(['./dom/data', './dom/event-handler', './dom/manipulator', 'popper.js', './dom/selector-engine'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Dropdown = factory(global.Data, global.EventHandler, global.Manipulator, global.Popper, global.SelectorEngine));
-}(this, (function (Data, EventHandler, Manipulator, Popper, SelectorEngine) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@popperjs/core'), require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js')) :
+  typeof define === 'function' && define.amd ? define(['@popperjs/core', './dom/data', './dom/event-handler', './dom/manipulator', './dom/selector-engine'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Dropdown = factory(global.Popper, global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine));
+}(this, (function (Popper, Data, EventHandler, Manipulator, SelectorEngine) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
+  function _interopNamespace(e) {
+    if (e && e.__esModule) return e;
+    var n = Object.create(null);
+    if (e) {
+      Object.keys(e).forEach(function (k) {
+        if (k !== 'default') {
+          var d = Object.getOwnPropertyDescriptor(e, k);
+          Object.defineProperty(n, k, d.get ? d : {
+            enumerable: true,
+            get: function () {
+              return e[k];
+            }
+          });
+        }
+      });
+    }
+    n['default'] = e;
+    return Object.freeze(n);
+  }
+
+  var Popper__namespace = /*#__PURE__*/_interopNamespace(Popper);
   var Data__default = /*#__PURE__*/_interopDefaultLegacy(Data);
   var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
   var Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
-  var Popper__default = /*#__PURE__*/_interopDefaultLegacy(Popper);
   var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-alpha3): util/index.js
+   * Bootstrap (v5.0.0-beta1): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -112,7 +132,7 @@
    * ------------------------------------------------------------------------
    */
 
-  var VERSION = '5.0.0-alpha3';
+  var VERSION = '5.0.0-beta1';
 
   var BaseComponent = /*#__PURE__*/function () {
     function BaseComponent(element) {
@@ -185,9 +205,7 @@
   var CLASS_NAME_DROPUP = 'dropup';
   var CLASS_NAME_DROPEND = 'dropend';
   var CLASS_NAME_DROPSTART = 'dropstart';
-  var CLASS_NAME_MENUEND = 'dropdown-menu-end';
   var CLASS_NAME_NAVBAR = 'navbar';
-  var CLASS_NAME_POSITION_STATIC = 'position-static';
   var SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]';
   var SELECTOR_FORM_CHILD = '.dropdown form';
   var SELECTOR_MENU = '.dropdown-menu';
@@ -202,7 +220,7 @@
   var Default = {
     offset: 0,
     flip: true,
-    boundary: 'scrollParent',
+    boundary: 'clippingParents',
     reference: 'toggle',
     display: 'dynamic',
     popperConfig: null
@@ -275,7 +293,7 @@
 
 
       if (!this._inNavbar) {
-        if (typeof Popper__default['default'] === 'undefined') {
+        if (typeof Popper__namespace === 'undefined') {
           throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)');
         }
 
@@ -289,16 +307,9 @@
           if (typeof this._config.reference.jquery !== 'undefined') {
             referenceElement = this._config.reference[0];
           }
-        } // If boundary is not `scrollParent`, then set position to `static`
-        // to allow the menu to "escape" the scroll parent's boundaries
-        // https://github.com/twbs/bootstrap/issues/24251
-
-
-        if (this._config.boundary !== 'scrollParent') {
-          parent.classList.add(CLASS_NAME_POSITION_STATIC);
         }
 
-        this._popper = new Popper__default['default'](referenceElement, this._menu, this._getPopperConfig());
+        this._popper = Popper.createPopper(referenceElement, this._menu, this._getPopperConfig());
       } // If this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
       // only needed because of broken event delegation on iOS
@@ -367,7 +378,7 @@
       this._inNavbar = this._detectNavbar();
 
       if (this._popper) {
-        this._popper.scheduleUpdate();
+        this._popper.update();
       }
     } // Private
     ;
@@ -395,60 +406,46 @@
 
     _proto._getPlacement = function _getPlacement() {
       var parentDropdown = this._element.parentNode;
-      var placement = PLACEMENT_BOTTOM; // Handle dropup
 
-      if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
-        placement = this._menu.classList.contains(CLASS_NAME_MENUEND) ? PLACEMENT_TOPEND : PLACEMENT_TOP;
-      } else if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
-        placement = PLACEMENT_RIGHT;
-      } else if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) {
-        placement = PLACEMENT_LEFT;
-      } else if (this._menu.classList.contains(CLASS_NAME_MENUEND)) {
-        placement = PLACEMENT_BOTTOMEND;
+      if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
+        return PLACEMENT_RIGHT;
       }
 
-      return placement;
+      if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) {
+        return PLACEMENT_LEFT;
+      } // We need to trim the value because custom properties can also include spaces
+
+
+      var isEnd = getComputedStyle(this._menu).getPropertyValue('--bs-position').trim() === 'end';
+
+      if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
+        return isEnd ? PLACEMENT_TOPEND : PLACEMENT_TOP;
+      }
+
+      return isEnd ? PLACEMENT_BOTTOMEND : PLACEMENT_BOTTOM;
     };
 
     _proto._detectNavbar = function _detectNavbar() {
-      return Boolean(this._element.closest("." + CLASS_NAME_NAVBAR));
-    };
-
-    _proto._getOffset = function _getOffset() {
-      var _this3 = this;
-
-      var offset = {};
-
-      if (typeof this._config.offset === 'function') {
-        offset.fn = function (data) {
-          data.offsets = _extends({}, data.offsets, _this3._config.offset(data.offsets, _this3._element) || {});
-          return data;
-        };
-      } else {
-        offset.offset = this._config.offset;
-      }
-
-      return offset;
+      return this._element.closest("." + CLASS_NAME_NAVBAR) !== null;
     };
 
     _proto._getPopperConfig = function _getPopperConfig() {
       var popperConfig = {
         placement: this._getPlacement(),
-        modifiers: {
-          offset: this._getOffset(),
-          flip: {
-            enabled: this._config.flip
-          },
-          preventOverflow: {
-            boundariesElement: this._config.boundary
+        modifiers: [{
+          name: 'preventOverflow',
+          options: {
+            altBoundary: this._config.flip,
+            rootBoundary: this._config.boundary
           }
-        }
+        }]
       }; // Disable Popper if we have a static display
 
       if (this._config.display === 'static') {
-        popperConfig.modifiers.applyStyle = {
+        popperConfig.modifiers = [{
+          name: 'applyStyles',
           enabled: false
-        };
+        }];
       }
 
       return _extends({}, popperConfig, this._config.popperConfig);
