@@ -23,9 +23,8 @@ const SelectorEngine = {
   },
 
   children(element, selector) {
-    const children = [].concat(...element.children)
-
-    return children.filter(child => child.matches(selector))
+    return [].concat(...element.children)
+      .filter(child => child.matches(selector))
   },
 
   parents(element, selector) {
