@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): tooltip.js
+ * Bootstrap (v5.0.0-beta1): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -8,8 +8,7 @@
 import * as Popper from '@popperjs/core'
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
+  defineJQueryPlugin,
   TRANSITION_END,
   emulateTransitionEnd,
   findShadowRoot,
@@ -471,7 +470,8 @@ class Tooltip extends BaseComponent {
     const flipModifier = {
       name: 'flip',
       options: {
-        altBoundary: true
+        altBoundary: true,
+        fallbackPlacements: ['top', 'right', 'bottom', 'left']
       }
     }
 
@@ -786,18 +786,6 @@ class Tooltip extends BaseComponent {
  * add .Tooltip to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Tooltip.jQueryInterface
-    $.fn[NAME].Constructor = Tooltip
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Tooltip.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Tooltip)
 
 export default Tooltip

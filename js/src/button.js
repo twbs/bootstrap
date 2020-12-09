@@ -1,11 +1,11 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): button.js
+ * Bootstrap (v5.0.0-beta1): button.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import { getjQuery, onDOMContentLoaded } from './util/index'
+import { defineJQueryPlugin } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import BaseComponent from './base-component'
@@ -90,19 +90,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, event => {
  * add .Button to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Button.jQueryInterface
-    $.fn[NAME].Constructor = Button
-
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Button.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Button)
 
 export default Button
