@@ -205,23 +205,23 @@ Place Bootstrap's checkboxes and radios within list group items and customize as
 {{< example >}}
 <ul class="list-group">
   <li class="list-group-item">
-    <input class="form-check-input mr-1" type="checkbox" value="" aria-label="...">
+    <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
     Cras justo odio
   </li>
   <li class="list-group-item">
-    <input class="form-check-input mr-1" type="checkbox" value="" aria-label="...">
+    <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
     Dapibus ac facilisis in
   </li>
   <li class="list-group-item">
-    <input class="form-check-input mr-1" type="checkbox" value="" aria-label="...">
+    <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
     Morbi leo risus
   </li>
   <li class="list-group-item">
-    <input class="form-check-input mr-1" type="checkbox" value="" aria-label="...">
+    <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
     Porta ac consectetur ac
   </li>
   <li class="list-group-item">
-    <input class="form-check-input mr-1" type="checkbox" value="" aria-label="...">
+    <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
     Vestibulum at eros
   </li>
 </ul>
@@ -232,23 +232,23 @@ And if you want `<label>`s as the `.list-group-item` for large hit areas, you ca
 {{< example >}}
 <div class="list-group">
   <label class="list-group-item">
-    <input class="form-check-input mr-1" type="checkbox" value="">
+    <input class="form-check-input me-1" type="checkbox" value="">
     Cras justo odio
   </label>
   <label class="list-group-item">
-    <input class="form-check-input mr-1" type="checkbox" value="">
+    <input class="form-check-input me-1" type="checkbox" value="">
     Dapibus ac facilisis in
   </label>
   <label class="list-group-item">
-    <input class="form-check-input mr-1" type="checkbox" value="">
+    <input class="form-check-input me-1" type="checkbox" value="">
     Morbi leo risus
   </label>
   <label class="list-group-item">
-    <input class="form-check-input mr-1" type="checkbox" value="">
+    <input class="form-check-input me-1" type="checkbox" value="">
     Porta ac consectetur ac
   </label>
   <label class="list-group-item">
-    <input class="form-check-input mr-1" type="checkbox" value="">
+    <input class="form-check-input me-1" type="checkbox" value="">
     Vestibulum at eros
   </label>
 </div>
@@ -342,8 +342,8 @@ var triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
 triggerTabList.forEach(function (triggerEl) {
   var tabTrigger = new bootstrap.Tab(triggerEl)
 
-  triggerEl.addEventListener('click', function (e) {
-    e.preventDefault()
+  triggerEl.addEventListener('click', function (event) {
+    event.preventDefault()
     tabTrigger.show()
   })
 })
@@ -465,8 +465,8 @@ If no tab was already active, the `hide.bs.tab` and `hidden.bs.tab` events will 
 
 ```js
 var tabEl = document.querySelector('a[data-bs-toggle="list"]')
-tabEl.addEventListener('shown.bs.tab', function (e) {
-  e.target // newly activated tab
-  e.relatedTarget // previous active tab
+tabEl.addEventListener('shown.bs.tab', function (event) {
+  event.target // newly activated tab
+  event.relatedTarget // previous active tab
 })
 ```
