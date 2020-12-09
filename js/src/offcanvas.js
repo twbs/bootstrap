@@ -11,11 +11,11 @@ import {
   getSelectorFromElement,
   getTransitionDurationFromElement
 } from './util/index'
+import { getScrollBarWidth, resetScrollbar, setScrollbar } from './util/scrollbar'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import BaseComponent from './base-component'
 import SelectorEngine from './dom/selector-engine'
-
 /**
  * ------------------------------------------------------------------------
  * Constants
@@ -58,6 +58,8 @@ class OffCanvas extends BaseComponent {
 
     this._isShown = element.classList.contains(CLASS_NAME_SHOW)
     this._bodyOptions = element.getAttribute(DATA_BODY_ACTIONS)
+    this._isBodyOverflowing = null
+    this._scrollbarWidth = null
 
     this._handleClosing()
   }
@@ -69,7 +71,7 @@ class OffCanvas extends BaseComponent {
   }
 
   show(relatedTarget) {
-    if (this._isShown || this._isTransitioning) {
+    if (this._isShown) {
       return
     }
 
@@ -87,6 +89,8 @@ class OffCanvas extends BaseComponent {
     }
 
     if (this._bodyOptions !== 'scroll') {
+      this._scrollbarWidth = getScrollBarWidth()
+      setScrollbar(this._scrollbarWidth)
       document.body.classList.add(CLASS_NAME_STOP_OVERFLOW)
     }
 
@@ -126,6 +130,7 @@ class OffCanvas extends BaseComponent {
     }
 
     if (this._bodyOptions !== 'scroll') {
+      resetScrollbar()
       document.body.classList.remove(CLASS_NAME_STOP_OVERFLOW)
     }
 
