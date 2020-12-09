@@ -413,4 +413,29 @@ describe('Util', () => {
       expect(spy).toHaveBeenCalled()
     })
   })
+
+  describe('defineJQueryPlugin', () => {
+    const fakejQuery = { fn: {} }
+
+    beforeEach(() => {
+      Object.defineProperty(window, 'jQuery', {
+        value: fakejQuery,
+        writable: true
+      })
+    })
+
+    afterEach(() => {
+      window.jQuery = undefined
+    })
+
+    it('should define a plugin on the jQuery instance', () => {
+      const pluginMock = function () {}
+      pluginMock.jQueryInterface = function () {}
+
+      Util.defineJQueryPlugin('test', pluginMock)
+      expect(fakejQuery.fn.test).toBe(pluginMock.jQueryInterface)
+      expect(fakejQuery.fn.test.Constructor).toBe(pluginMock)
+      expect(typeof fakejQuery.fn.test.noConflict).toEqual('function')
+    })
+  })
 })
