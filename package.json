@@ -1,7 +1,7 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "5.0.0-alpha3",
+  "version": "5.0.0-beta1",
   "version_short": "5.0",
   "keywords": [
     "css",
@@ -95,20 +95,22 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "popper.js": "^1.16.1"
+    "@popperjs/core": "^2.5.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.8",
     "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
+    "@popperjs/core": "^2.5.4",
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
-    "autoprefixer": "^10.0.4",
+    "@rollup/plugin-replace": "^2.3.4",
+    "autoprefixer": "^10.1.0",
     "bundlewatch": "^0.3.1",
     "clean-css-cli": "^4.3.0",
     "cross-env": "^7.0.3",
-    "eslint": "^7.14.0",
+    "eslint": "^7.15.0",
     "eslint-config-xo": "^0.33.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-unicorn": "^23.0.0",
@@ -127,17 +129,16 @@
     "karma-jasmine": "^4.0.1",
     "karma-jasmine-html-reporter": "^1.5.4",
     "karma-rollup-preprocessor": "^7.0.5",
-    "linkinator": "^2.5.1",
+    "linkinator": "^2.8.0",
     "lockfile-lint": "^4.3.7",
     "nodemon": "^2.0.6",
     "npm-run-all": "^4.1.5",
-    "popper.js": "^1.16.1",
-    "postcss": "^8.1.10",
+    "postcss": "^8.2.1",
     "postcss-cli": "^8.3.0",
-    "rollup": "^2.34.0",
+    "rollup": "^2.34.2",
     "rollup-plugin-istanbul": "^2.0.1",
     "rtlcss": "^2.6.2",
-    "sass": "^1.29.0",
+    "sass": "^1.30.0",
     "shelljs": "^0.8.4",
     "stylelint": "^13.8.0",
     "stylelint-config-twbs-bootstrap": "^2.1.0",
@@ -161,13 +162,13 @@
     "shim": {
       "js/bootstrap": {
         "deps": [
-          "popper.js"
+          "@popperjs/core"
         ]
       }
     },
     "dependencies": {},
     "peerDependencies": {
-      "popper.js": "^1.16.1"
+      "@popperjs/core": "^2.5.4"
     }
   }
 }

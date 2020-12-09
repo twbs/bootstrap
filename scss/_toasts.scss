@@ -1,29 +1,31 @@
 .toast {
-  max-width: $toast-max-width;
+  width: $toast-max-width;
+  max-width: 100%;
   @include font-size($toast-font-size);
   color: $toast-color;
+  pointer-events: auto;
   background-color: $toast-background-color;
   background-clip: padding-box;
   border: $toast-border-width solid $toast-border-color;
   box-shadow: $toast-box-shadow;
-  opacity: 0;
   @include border-radius($toast-border-radius);
 
-  &:not(:last-child) {
-    margin-bottom: $toast-padding-x;
-  }
-
-  &.showing {
-    opacity: 1;
-  }
-
-  &.show {
-    display: block;
-    opacity: 1;
+  &:not(.showing):not(.show) {
+    opacity: 0;
   }
 
   &.hide {
     display: none;
+  }
+}
+
+.toast-container {
+  width: max-content;
+  max-width: 100%;
+  pointer-events: none;
+
+  > :not(:last-child) {
+    margin-bottom: $toast-spacing;
   }
 }
 
