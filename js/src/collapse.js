@@ -134,7 +134,7 @@ class Collapse extends BaseComponent {
       actives = SelectorEngine.find(SELECTOR_ACTIVES, this._parent)
         .filter(elem => {
           if (typeof this._config.parent === 'string') {
-            return elem.getAttribute('data-bs-parent') === this._config.parent
+            return Manipulator.getDataAttribute(elem, 'parent') === this._config.parent
           }
 
           return elem.classList.contains(CLASS_NAME_COLLAPSE)

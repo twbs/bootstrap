@@ -418,7 +418,7 @@ class Carousel extends BaseComponent {
       return
     }
 
-    const elementInterval = Number.parseInt(element.getAttribute('data-bs-interval'), 10)
+    const elementInterval = Manipulator.getDataAttribute(element, 'interval')
 
     if (elementInterval) {
       this._config.defaultInterval = this._config.defaultInterval || this._config.interval
@@ -574,7 +574,7 @@ class Carousel extends BaseComponent {
       ...Manipulator.getDataAttributes(target),
       ...Manipulator.getDataAttributes(this)
     }
-    const slideIndex = this.getAttribute('data-bs-slide-to')
+    const slideIndex = Manipulator.getDataAttribute(this, 'slide-to')
 
     if (slideIndex) {
       config.interval = false

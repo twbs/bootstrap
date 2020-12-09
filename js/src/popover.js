@@ -7,6 +7,7 @@
 
 import { defineJQueryPlugin } from './util/index'
 import Data from './dom/data'
+import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
 import Tooltip from './tooltip'
 
@@ -119,7 +120,7 @@ class Popover extends Tooltip {
   }
 
   _getContent() {
-    return this._element.getAttribute('data-bs-content') || this.config.content
+    return Manipulator.getDataAttribute(this._element, 'content') || this.config.content
   }
 
   _cleanTipClass() {
