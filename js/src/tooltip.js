@@ -469,7 +469,8 @@ class Tooltip extends BaseComponent {
     const flipModifier = {
       name: 'flip',
       options: {
-        altBoundary: true
+        altBoundary: true,
+        fallbackPlacements: ['top', 'right', 'bottom', 'left']
       }
     }
 
