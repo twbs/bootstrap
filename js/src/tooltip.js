@@ -117,8 +117,6 @@ const TRIGGER_FOCUS = 'focus'
 const TRIGGER_CLICK = 'click'
 const TRIGGER_MANUAL = 'manual'
 
-const TRANSITION_END = 'transitionend'
-
 /**
  * ------------------------------------------------------------------------
  * Class Definition
@@ -318,7 +316,7 @@ class Tooltip extends BaseComponent {
 
       if (this.tip.classList.contains(CLASS_NAME_FADE)) {
         const transitionDuration = getTransitionDurationFromElement(this.tip)
-        EventHandler.one(this.tip, TRANSITION_END, complete)
+        EventHandler.one(this.tip, 'transitionend', complete)
         emulateTransitionEnd(this.tip, transitionDuration)
       } else {
         complete()
@@ -368,7 +366,7 @@ class Tooltip extends BaseComponent {
     if (this.tip.classList.contains(CLASS_NAME_FADE)) {
       const transitionDuration = getTransitionDurationFromElement(tip)
 
-      EventHandler.one(tip, TRANSITION_END, complete)
+      EventHandler.one(tip, 'transitionend', complete)
       emulateTransitionEnd(tip, transitionDuration)
     } else {
       complete()

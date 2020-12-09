@@ -52,8 +52,6 @@ const Default = {
 
 const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="toast"]'
 
-const TRANSITION_END = 'transitionend'
-
 /**
  * ------------------------------------------------------------------------
  * Class Definition
@@ -117,7 +115,7 @@ class Toast extends BaseComponent {
     if (this._config.animation) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
-      EventHandler.one(this._element, TRANSITION_END, complete)
+      EventHandler.one(this._element, 'transitionend', complete)
       emulateTransitionEnd(this._element, transitionDuration)
     } else {
       complete()
@@ -144,7 +142,7 @@ class Toast extends BaseComponent {
     if (this._config.animation) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
-      EventHandler.one(this._element, TRANSITION_END, complete)
+      EventHandler.one(this._element, 'transitionend', complete)
       emulateTransitionEnd(this._element, transitionDuration)
     } else {
       complete()
