@@ -152,7 +152,6 @@ For improved cross-browser rendering, we use [Reboot]({{< docsref "/content/rebo
 
 Stay up to date on the development of Bootstrap and reach out to the community with these helpful resources.
 
-- Follow [@getbootstrap on Twitter](https://twitter.com/{{< param twitter >}}).
 - Read and subscribe to [The Official Bootstrap Blog]({{< param blog >}}).
 - Join [the official Slack room]({{< param slack >}}).
 - Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##bootstrap` channel.
