@@ -339,16 +339,12 @@ class Carousel extends BaseComponent {
       return
     }
 
-    switch (event.key) {
-      case ARROW_LEFT_KEY:
-        event.preventDefault()
-        this.prev()
-        break
-      case ARROW_RIGHT_KEY:
-        event.preventDefault()
-        this.next()
-        break
-      default:
+    if (event.key === ARROW_LEFT_KEY) {
+      event.preventDefault()
+      this.prev()
+    } else if (event.key === ARROW_RIGHT_KEY) {
+      event.preventDefault()
+      this.next()
     }
   }
 
