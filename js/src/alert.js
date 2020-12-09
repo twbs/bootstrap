@@ -33,9 +33,9 @@ const EVENT_CLOSE = `close${EVENT_KEY}`
 const EVENT_CLOSED = `closed${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
-const CLASSNAME_ALERT = 'alert'
-const CLASSNAME_FADE = 'fade'
-const CLASSNAME_SHOW = 'show'
+const CLASS_NAME_ALERT = 'alert'
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_SHOW = 'show'
 
 /**
  * ------------------------------------------------------------------------
@@ -66,7 +66,7 @@ class Alert extends BaseComponent {
   // Private
 
   _getRootElement(element) {
-    return getElementFromSelector(element) || element.closest(`.${CLASSNAME_ALERT}`)
+    return getElementFromSelector(element) || element.closest(`.${CLASS_NAME_ALERT}`)
   }
 
   _triggerCloseEvent(element) {
@@ -74,9 +74,9 @@ class Alert extends BaseComponent {
   }
 
   _removeElement(element) {
-    element.classList.remove(CLASSNAME_SHOW)
+    element.classList.remove(CLASS_NAME_SHOW)
 
-    if (!element.classList.contains(CLASSNAME_FADE)) {
+    if (!element.classList.contains(CLASS_NAME_FADE)) {
       this._destroyElement(element)
       return
     }
