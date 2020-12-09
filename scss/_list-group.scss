@@ -84,8 +84,8 @@
     }
   }
 
-  // Make single `.list-group-item-action`s in `.list-group-item` fill their container
-  .list-group-item-action:only-child {
+  // Make `.list-group-item-action`s in `.list-group-item` fill their container
+  .list-group-item-action {
     display: block;
     // Override `width: 100%` to account for parent padding.
     // Might also be achieved using calc(100% + ($list-group-item-padding-x * -1))
