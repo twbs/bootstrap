@@ -257,9 +257,7 @@ class Dropdown extends BaseComponent {
 
     typeCheckConfig(NAME, config, this.constructor.DefaultType)
 
-    if (
-      typeof config.reference === 'object' &&
-      !isElement(config.reference) &&
+    if (typeof config.reference === 'object' && !isElement(config.reference) &&
       typeof config.reference.getBoundingClientRect !== 'function'
     ) {
       // Popper virtual elements require a getBoundingClientRect method
