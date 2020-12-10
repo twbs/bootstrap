@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): util/index.js
+ * Bootstrap (v5.0.0-beta1): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -66,10 +66,7 @@ const getTransitionDurationFromElement = element => {
   }
 
   // Get transition-duration of the element
-  let {
-    transitionDuration,
-    transitionDelay
-  } = window.getComputedStyle(element)
+  let { transitionDuration, transitionDelay } = window.getComputedStyle(element)
 
   const floatTransitionDuration = Number.parseFloat(transitionDuration)
   const floatTransitionDelay = Number.parseFloat(transitionDelay)
@@ -96,6 +93,7 @@ const emulateTransitionEnd = (element, duration) => {
   let called = false
   const durationPadding = 5
   const emulatedDuration = duration + durationPadding
+
   function listener() {
     called = true
     element.removeEventListener(TRANSITION_END, listener)
@@ -188,6 +186,24 @@ const onDOMContentLoaded = callback => {
   }
 }
 
+const isRTL = document.documentElement.dir === 'rtl'
+
+const defineJQueryPlugin = (name, plugin) => {
+  onDOMContentLoaded(() => {
+    const $ = getjQuery()
+    /* istanbul ignore if */
+    if ($) {
+      const JQUERY_NO_CONFLICT = $.fn[name]
+      $.fn[name] = plugin.jQueryInterface
+      $.fn[name].Constructor = plugin
+      $.fn[name].noConflict = () => {
+        $.fn[name] = JQUERY_NO_CONFLICT
+        return plugin.jQueryInterface
+      }
+    }
+  })
+}
+
 export {
   TRANSITION_END,
   getUID,
@@ -203,5 +219,7 @@ export {
   noop,
   reflow,
   getjQuery,
-  onDOMContentLoaded
+  onDOMContentLoaded,
+  isRTL,
+  defineJQueryPlugin
 }

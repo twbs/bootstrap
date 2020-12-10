@@ -483,24 +483,6 @@ describe('Tooltip', () => {
       tooltip.show()
     })
 
-    it('should show a tooltip with offset as a function', done => {
-      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
-
-      const spy = jasmine.createSpy('offset').and.returnValue({})
-      const tooltipEl = fixtureEl.querySelector('a')
-      const tooltip = new Tooltip(tooltipEl, {
-        offset: spy
-      })
-
-      tooltipEl.addEventListener('shown.bs.tooltip', () => {
-        expect(document.querySelector('.tooltip')).toBeDefined()
-        expect(spy).toHaveBeenCalled()
-        done()
-      })
-
-      tooltip.show()
-    })
-
     it('should show a tooltip without the animation', done => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
 
@@ -789,18 +771,18 @@ describe('Tooltip', () => {
   })
 
   describe('update', () => {
-    it('should call popper schedule update', done => {
+    it('should call popper update', done => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
-        spyOn(tooltip._popper, 'scheduleUpdate')
+        spyOn(tooltip._popper, 'update')
 
         tooltip.update()
 
-        expect(tooltip._popper.scheduleUpdate).toHaveBeenCalled()
+        expect(tooltip._popper.update).toHaveBeenCalled()
         done()
       })
 
@@ -883,6 +865,40 @@ describe('Tooltip', () => {
       expect(tip.classList.contains('show')).toEqual(false)
       expect(tip.classList.contains('fade')).toEqual(false)
       expect(tip.querySelector('.tooltip-inner').textContent).toEqual('Another tooltip')
+    })
+  })
+
+  describe('updateAttachment', () => {
+    it('should use end class name when right placement specified', done => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl, {
+        placement: 'right'
+      })
+
+      tooltipEl.addEventListener('inserted.bs.tooltip', () => {
+        expect(tooltip.getTipElement().classList.contains('bs-tooltip-end')).toEqual(true)
+        done()
+      })
+
+      tooltip.show()
+    })
+
+    it('should use start class name when left placement specified', done => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl, {
+        placement: 'left'
+      })
+
+      tooltipEl.addEventListener('inserted.bs.tooltip', () => {
+        expect(tooltip.getTipElement().classList.contains('bs-tooltip-start')).toEqual(true)
+        done()
+      })
+
+      tooltip.show()
     })
   })
 
