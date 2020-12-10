@@ -1,12 +1,7 @@
 # Ignore docs files
 /_gh_pages/
-/site/docs/**/dist/
-/site/static/**/dist/
-
-# Ignore ruby/bundler files
-/.bundle/
-/vendor/
-/.ruby-version
+# Hugo folders
+/resources/
 
 # Numerous always-ignore extensions
 *.diff
@@ -44,4 +39,3 @@ Thumbs.db
 # Folders to ignore
 /js/coverage/
 /node_modules/
-/resources/
