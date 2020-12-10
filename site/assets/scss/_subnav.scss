@@ -70,10 +70,6 @@
     box-shadow: 0 0 0 3px rgba($bd-purple-bright, .25);
   }
 
-  .bi {
-    fill: currentColor;
-  }
-
   .bi-collapse { display: none; }
 
   &:not(.collapsed) {
