@@ -14,6 +14,9 @@ categories:
       - 'fix'
       - 'bugfix'
       - 'bug'
+  - title: '⚡ Performance Improvements'
+    labels:
+      - 'performance'
   - title: '🎨 CSS'
     labels:
       - 'css'
@@ -31,6 +34,7 @@ categories:
       - 'build'
       - 'meta'
       - 'chore'
+      - 'CI'
   - title: '📦 Dependencies'
     labels:
       - 'dependencies'
