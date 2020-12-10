@@ -26,7 +26,7 @@
 // null by default, thus nothing is generated.
 
 :root {
-  font-size: $font-size-root;
+  font-size: var(--root-font-size);
 
   @if $enable-smooth-scroll {
     @media (prefers-reduced-motion: no-preference) {
@@ -45,13 +45,13 @@
 
 body {
   margin: 0; // 1
-  font-family: $font-family-base;
-  @include font-size($font-size-base);
+  font-family: var(--bs-body-font);
+  @include font-size(var(--bs-body-font-size));
   font-weight: $font-weight-base;
   line-height: $line-height-base;
-  color: $body-color;
+  color: var(--bs-body-color);
   text-align: $body-text-align;
-  background-color: $body-bg; // 2
+  background-color: var(--bs-body-bg); // 2
   -webkit-text-size-adjust: 100%; // 3
   -webkit-tap-highlight-color: rgba($black, 0); // 4
 }
