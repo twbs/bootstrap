@@ -8,8 +8,7 @@
 import * as Popper from '@popperjs/core'
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
+  defineJQueryPlugin,
   getElementFromSelector,
   isElement,
   isVisible,
@@ -299,6 +298,12 @@ class Dropdown extends BaseComponent {
           altBoundary: this._config.flip,
           rootBoundary: this._config.boundary
         }
+      },
+      {
+        name: 'flip',
+        options: {
+          fallbackPlacements: ['top', 'right', 'bottom', 'left']
+        }
       }]
     }
 
@@ -490,18 +495,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stop
  * add .Dropdown to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Dropdown.jQueryInterface
-    $.fn[NAME].Constructor = Dropdown
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Dropdown.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Dropdown)
 
 export default Dropdown

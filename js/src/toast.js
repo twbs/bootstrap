@@ -6,8 +6,7 @@
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
+  defineJQueryPlugin,
   TRANSITION_END,
   emulateTransitionEnd,
   getTransitionDurationFromElement,
@@ -216,18 +215,6 @@ class Toast extends BaseComponent {
  * add .Toast to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Toast.jQueryInterface
-    $.fn[NAME].Constructor = Toast
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Toast.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Toast)
 
 export default Toast
