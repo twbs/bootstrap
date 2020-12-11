@@ -14,14 +14,6 @@ describe('SelectorEngine', () => {
     clearFixture()
   })
 
-  describe('matches', () => {
-    it('should return matched elements', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      expect(SelectorEngine.matches(fixtureEl, 'div')).toEqual(true)
-    })
-  })
-
   describe('find', () => {
     it('should find elements', () => {
       fixtureEl.innerHTML = '<div></div>'

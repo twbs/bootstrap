@@ -1,14 +1,12 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): tab.js
+ * Bootstrap (v5.0.0-beta1): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
-  TRANSITION_END,
+  defineJQueryPlugin,
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
@@ -133,7 +131,7 @@ class Tab extends BaseComponent {
       const transitionDuration = getTransitionDurationFromElement(active)
       active.classList.remove(CLASS_NAME_SHOW)
 
-      EventHandler.one(active, TRANSITION_END, complete)
+      EventHandler.one(active, 'transitionend', complete)
       emulateTransitionEnd(active, transitionDuration)
     } else {
       complete()
@@ -219,18 +217,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Tab to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Tab.jQueryInterface
-    $.fn[NAME].Constructor = Tab
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Tab.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Tab)
 
 export default Tab

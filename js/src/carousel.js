@@ -1,14 +1,12 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): carousel.js
+ * Bootstrap (v5.0.0-beta1): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
-  TRANSITION_END,
+  defineJQueryPlugin,
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
@@ -341,16 +339,12 @@ class Carousel extends BaseComponent {
       return
     }
 
-    switch (event.key) {
-      case ARROW_LEFT_KEY:
-        event.preventDefault()
-        this.prev()
-        break
-      case ARROW_RIGHT_KEY:
-        event.preventDefault()
-        this.next()
-        break
-      default:
+    if (event.key === ARROW_LEFT_KEY) {
+      event.preventDefault()
+      this.prev()
+    } else if (event.key === ARROW_RIGHT_KEY) {
+      event.preventDefault()
+      this.next()
     }
   }
 
@@ -485,7 +479,7 @@ class Carousel extends BaseComponent {
 
       const transitionDuration = getTransitionDurationFromElement(activeElement)
 
-      EventHandler.one(activeElement, TRANSITION_END, () => {
+      EventHandler.one(activeElement, 'transitionend', () => {
         nextElement.classList.remove(directionalClassName, orderClassName)
         nextElement.classList.add(CLASS_NAME_ACTIVE)
 
@@ -614,18 +608,6 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  * add .Carousel to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Carousel.jQueryInterface
-    $.fn[NAME].Constructor = Carousel
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Carousel.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Carousel)
 
 export default Carousel
