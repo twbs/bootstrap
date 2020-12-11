@@ -22,6 +22,7 @@
   width: 100%; // For `<button>`s (anchors become 100% by default though)
   color: $list-group-action-color;
   text-align: inherit; // For `<button>`s (anchors inherit)
+  background-color: inherit; // For `<button>`s in `.list-group-item`
 
   // Hover state
   &:hover,
@@ -60,6 +61,29 @@
     @include border-bottom-radius(inherit);
   }
 
+  // Allow `.list-group-item-action`s in `.list-group-item`
+  .list-group-item-action {
+    box-sizing: content-box; // For `<button>s`
+    display: block;
+    width: 100%; // For `<button>s`
+    padding: inherit; // Reapply parent padding
+    margin: ($list-group-item-padding-y * -1) ($list-group-item-padding-x * -1); // Remove parent padding
+    color: $list-group-action-color;
+    text-decoration: if($link-decoration == none, null, none); // Don't underline `<a>s`
+    border: none; // Remove initial border on `<button>`s
+    @include border-radius(inherit);
+
+    &.disabled,
+    &:disabled {
+      color: $list-group-disabled-color;
+      background-color: $list-group-disabled-bg;
+    }
+    &.active {
+      color: $list-group-active-color;
+      background-color: $list-group-active-bg;
+    }
+  }
+
   &.disabled,
   &:disabled {
     color: $list-group-disabled-color;
@@ -82,16 +106,6 @@
       margin-top: -$list-group-border-width;
       border-top-width: $list-group-border-width;
     }
-  }
-
-  // Make `.list-group-item-action`s in `.list-group-item` fill their container
-  .list-group-item-action {
-    display: block;
-    // Override `width: 100%` to account for parent padding.
-    // Might also be achieved using calc(100% + ($list-group-item-padding-x * -1))
-    width: auto;
-    padding: $list-group-item-padding-y $list-group-item-padding-x;
-    margin: ($list-group-item-padding-y * -1) ($list-group-item-padding-x * -1);
   }
 }
 
