@@ -7,7 +7,6 @@
 
 import {
   defineJQueryPlugin,
-  TRANSITION_END,
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
@@ -130,7 +129,7 @@ class Tab extends BaseComponent {
       const transitionDuration = getTransitionDurationFromElement(active)
       active.classList.remove(CLASS_NAME_SHOW)
 
-      EventHandler.one(active, TRANSITION_END, complete)
+      EventHandler.one(active, 'transitionend', complete)
       emulateTransitionEnd(active, transitionDuration)
     } else {
       complete()

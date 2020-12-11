@@ -22,3 +22,8 @@
   code: ru
   description: Bootstrap 5 на русском
   url: https://getbootstrap.su/
+
+- name: Korean
+  code: ko
+  description: Bootstrap 5 한국어 문서
+  url: https://getbootstrap.kr/
