@@ -286,6 +286,24 @@ describe('Tooltip', () => {
       expect(Tooltip.getInstance(tooltipEl)).toEqual(null)
     })
 
+    it('should destroy a tooltip after it is shown and hidden', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      tooltipEl.addEventListener('shown.bs.tooltip', () => {
+        tooltip.hide()
+      })
+      tooltipEl.addEventListener('hidden.bs.tooltip', () => {
+        tooltip.dispose()
+        expect(tooltip.tip).toEqual(null)
+        expect(Tooltip.getInstance(tooltipEl)).toEqual(null)
+      })
+
+      tooltip.show()
+    })
+
     it('should destroy a tooltip and remove it from the dom', done => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
 
