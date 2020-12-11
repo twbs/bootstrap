@@ -80,6 +80,22 @@ With `<button>`s, you can also make use of the `disabled` attribute instead of t
 </div>
 {{< /example >}}
 
+## Using actionable items in lists
+
+Actionable links and buttons can also be mixed with regular list group items. 
+
+{{< example >}}
+<ul class="list-group">
+  <li class="list-group-item"><a href="#" class="list-group-item-action">An action link</a></li>
+  <li class="list-group-item"><a href="#" class="list-group-item-action disabled">A disabled action link</a></li>
+  <li class="list-group-item"><a href="#" class="list-group-item-action active">An active action link</a></li>
+  <li class="list-group-item">Plain text</li>
+  <li class="list-group-item"><button class="list-group-item-action">An action button</button></li>
+  <li class="list-group-item"><button class="list-group-item-action" disabled>A disabled action button</button></li>
+  <li class="list-group-item"><button class="list-group-item-action active">An active action button</button></li>
+</ul>
+{{< /example >}}
+
 ## Flush
 
 Add `.list-group-flush` to remove some borders and rounded corners to render list group items edge-to-edge in a parent container (e.g., cards).
