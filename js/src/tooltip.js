@@ -9,7 +9,6 @@ import * as Popper from '@popperjs/core'
 
 import {
   defineJQueryPlugin,
-  TRANSITION_END,
   emulateTransitionEnd,
   findShadowRoot,
   getTransitionDurationFromElement,
@@ -223,7 +222,7 @@ class Tooltip extends BaseComponent {
     EventHandler.off(this._element, this.constructor.EVENT_KEY)
     EventHandler.off(this._element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler)
 
-    if (this.tip) {
+    if (this.tip && this.tip.parentNode) {
       this.tip.parentNode.removeChild(this.tip)
     }
 
@@ -317,7 +316,7 @@ class Tooltip extends BaseComponent {
 
       if (this.tip.classList.contains(CLASS_NAME_FADE)) {
         const transitionDuration = getTransitionDurationFromElement(this.tip)
-        EventHandler.one(this.tip, TRANSITION_END, complete)
+        EventHandler.one(this.tip, 'transitionend', complete)
         emulateTransitionEnd(this.tip, transitionDuration)
       } else {
         complete()
@@ -367,7 +366,7 @@ class Tooltip extends BaseComponent {
     if (this.tip.classList.contains(CLASS_NAME_FADE)) {
       const transitionDuration = getTransitionDurationFromElement(tip)
 
-      EventHandler.one(tip, TRANSITION_END, complete)
+      EventHandler.one(tip, 'transitionend', complete)
       emulateTransitionEnd(tip, transitionDuration)
     } else {
       complete()
@@ -470,7 +469,8 @@ class Tooltip extends BaseComponent {
     const flipModifier = {
       name: 'flip',
       options: {
-        altBoundary: true
+        altBoundary: true,
+        fallbackPlacements: ['top', 'right', 'bottom', 'left']
       }
     }
 
