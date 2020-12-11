@@ -374,6 +374,29 @@ describe('Collapse', () => {
   })
 
   describe('data-api', () => {
+    it('should prevent url change if click on nested elements', done => {
+      fixtureEl.innerHTML = [
+        '<a role="button" data-bs-toggle="collapse" class="collapsed" href="#collapse">',
+        '  <span id="nested"></span>',
+        '</a>',
+        '<div id="collapse" class="collapse"></div>'
+      ].join('')
+
+      const triggerEl = fixtureEl.querySelector('a')
+      const nestedTriggerEl = fixtureEl.querySelector('#nested')
+
+      spyOn(Event.prototype, 'preventDefault').and.callThrough()
+
+      triggerEl.addEventListener('click', ev => {
+        expect(ev.target.isEqualNode(nestedTriggerEl)).toEqual(true)
+        expect(ev.delegateTarget.isEqualNode(triggerEl)).toEqual(true)
+        expect(Event.prototype.preventDefault).toHaveBeenCalled()
+        done()
+      })
+
+      nestedTriggerEl.click()
+    })
+
     it('should show multiple collapsed elements', done => {
       fixtureEl.innerHTML = [
         '<a role="button" data-bs-toggle="collapse" class="collapsed" href=".multi"></a>',
