@@ -92,20 +92,6 @@
   outline: 0;
 }
 
-// Modal background
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: $zindex-modal-backdrop;
-  width: 100vw;
-  height: 100vh;
-  background-color: $modal-backdrop-bg;
-
-  // Fade for backdrop
-  &.fade { opacity: 0; }
-  &.show { opacity: $modal-backdrop-opacity; }
-}
 
 // Modal header
 // Top section of the modal w/ title and dismiss

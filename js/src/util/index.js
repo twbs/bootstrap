@@ -102,6 +102,15 @@ const triggerTransitionEnd = element => {
 
 const isElement = obj => (obj[0] || obj).nodeType
 
+const promiseTimeout = duration => {
+  const durationPadding = 5
+  const emulatedDuration = (duration || 0) + durationPadding
+
+  return new Promise(resolve => {
+    setTimeout(resolve, emulatedDuration)
+  })
+}
+
 const emulateTransitionEnd = (element, duration) => {
   let called = false
   const durationPadding = 5
@@ -230,6 +239,12 @@ const defineJQueryPlugin = (name, plugin) => {
   })
 }
 
+const execute = callback => {
+  if (typeof callback === 'function') {
+    callback()
+  }
+}
+
 export {
   getUID,
   getSelectorFromElement,
@@ -247,5 +262,7 @@ export {
   getjQuery,
   onDOMContentLoaded,
   isRTL,
-  defineJQueryPlugin
+  defineJQueryPlugin,
+  promiseTimeout,
+  execute
 }
