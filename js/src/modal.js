@@ -7,7 +7,6 @@
 
 import {
   defineJQueryPlugin,
-  TRANSITION_END,
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
@@ -184,7 +183,7 @@ class Modal extends BaseComponent {
     if (transition) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
-      EventHandler.one(this._element, TRANSITION_END, event => this._hideModal(event))
+      EventHandler.one(this._element, 'transitionend', event => this._hideModal(event))
       emulateTransitionEnd(this._element, transitionDuration)
     } else {
       this._hideModal()
@@ -272,7 +271,7 @@ class Modal extends BaseComponent {
     if (transition) {
       const transitionDuration = getTransitionDurationFromElement(this._dialog)
 
-      EventHandler.one(this._dialog, TRANSITION_END, transitionComplete)
+      EventHandler.one(this._dialog, 'transitionend', transitionComplete)
       emulateTransitionEnd(this._dialog, transitionDuration)
     } else {
       transitionComplete()
@@ -377,7 +376,7 @@ class Modal extends BaseComponent {
 
       const backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop)
 
-      EventHandler.one(this._backdrop, TRANSITION_END, callback)
+      EventHandler.one(this._backdrop, 'transitionend', callback)
       emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
     } else if (!this._isShown && this._backdrop) {
       this._backdrop.classList.remove(CLASS_NAME_SHOW)
@@ -389,7 +388,7 @@ class Modal extends BaseComponent {
 
       if (this._element.classList.contains(CLASS_NAME_FADE)) {
         const backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop)
-        EventHandler.one(this._backdrop, TRANSITION_END, callbackRemove)
+        EventHandler.one(this._backdrop, 'transitionend', callbackRemove)
         emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
       } else {
         callbackRemove()
@@ -413,11 +412,11 @@ class Modal extends BaseComponent {
 
     this._element.classList.add(CLASS_NAME_STATIC)
     const modalTransitionDuration = getTransitionDurationFromElement(this._dialog)
-    EventHandler.off(this._element, TRANSITION_END)
-    EventHandler.one(this._element, TRANSITION_END, () => {
+    EventHandler.off(this._element, 'transitionend')
+    EventHandler.one(this._element, 'transitionend', () => {
       this._element.classList.remove(CLASS_NAME_STATIC)
       if (!isModalOverflowing) {
-        EventHandler.one(this._element, TRANSITION_END, () => {
+        EventHandler.one(this._element, 'transitionend', () => {
           this._element.style.overflowY = ''
         })
         emulateTransitionEnd(this._element, modalTransitionDuration)

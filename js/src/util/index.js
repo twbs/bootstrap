@@ -205,7 +205,6 @@ const defineJQueryPlugin = (name, plugin) => {
 }
 
 export {
-  TRANSITION_END,
   getUID,
   getSelectorFromElement,
   getElementFromSelector,
