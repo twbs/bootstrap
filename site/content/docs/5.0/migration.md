@@ -9,6 +9,10 @@ toc: true
 
 ## v5.0.0-beta2
 
+### Sass
+
+- Extended the `.visually-hidden-focusable` helper to also work on containers, using `:focus-within`.
+
 ### JavaScript
 
 - The default value for the `fallbackPlacements` is changed to `['top', 'right', 'bottom', 'left']` for better placement of popper elements.
@@ -57,7 +61,6 @@ Breakpoints specific variants are consequently renamed too (eg. `.text-md-start`
 - Renamed `$form-switch-padding-left` to `$form-switch-padding-start`.
 - Renamed `$form-check-inline-margin-right` to `$form-check-inline-margin-end`.
 - Renamed `$form-select-feedback-icon-padding-right` to `$form-select-feedback-icon-padding-end`.
-
 
 ### JavaScript
 
