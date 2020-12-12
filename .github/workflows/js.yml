@@ -5,6 +5,13 @@ on:
     branches-ignore:
       - "dependabot/**"
   pull_request:
+    branches:
+      # https://github.community/t/how-to-trigger-an-action-on-push-or-pull-request-but-not-both/16662/10
+      # Branches from forks have the form 'user:branch-name' so we only run
+      # this job on pull_request events for branches that look like fork
+      # branches. Without this we would end up running this job twice for non
+      # forked PRs, once for the push and then once for opening the PR.
+    - "**:**"
 
 env:
   CI: true
