@@ -5,6 +5,7 @@ const ip = require('ip')
 const { babel } = require('@rollup/plugin-babel')
 const istanbul = require('rollup-plugin-istanbul')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
+const replace = require('@rollup/plugin-replace')
 
 const {
   browsers,
@@ -33,11 +34,15 @@ const detectBrowsers = {
       return debug ? ['Chrome'] : ['ChromeHeadless']
     }
 
+    if (availableBrowser.includes('Chromium')) {
+      return debug ? ['Chromium'] : ['ChromiumHeadless']
+    }
+
     if (availableBrowser.includes('Firefox')) {
       return debug ? ['Firefox'] : ['FirefoxHeadless']
     }
 
-    throw new Error('Please install Firefox or Chrome')
+    throw new Error('Please install Chrome, Chromium or Firefox')
   }
 }
 
@@ -70,6 +75,9 @@ const conf = {
   },
   rollupPreprocessor: {
     plugins: [
+      replace({
+        'process.env.NODE_ENV': '"dev"'
+      }),
       istanbul({
         exclude: [
           'node_modules/**',

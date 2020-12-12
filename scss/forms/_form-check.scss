@@ -5,12 +5,12 @@
 .form-check {
   display: block;
   min-height: $form-check-min-height;
-  padding-left: $form-check-padding-left;
+  padding-left: $form-check-padding-start;
   margin-bottom: $form-check-margin-bottom;
 
   .form-check-input {
     float: left;
-    margin-left: $form-check-padding-left * -1;
+    margin-left: $form-check-padding-start * -1;
   }
 }
 
@@ -105,11 +105,11 @@
 //
 
 .form-switch {
-  padding-left: $form-switch-padding-left;
+  padding-left: $form-switch-padding-start;
 
   .form-check-input {
     width: $form-switch-width;
-    margin-left: $form-switch-padding-left * -1;
+    margin-left: $form-switch-padding-start * -1;
     background-image: escape-svg($form-switch-bg-image);
     background-position: left center;
     @include border-radius($form-switch-border-radius);
@@ -132,7 +132,7 @@
 
 .form-check-inline {
   display: inline-block;
-  margin-right: $form-check-inline-margin-right;
+  margin-right: $form-check-inline-margin-end;
 }
 
 .btn-check {
