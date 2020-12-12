@@ -28,8 +28,8 @@
   // Disable empty links
   document.querySelectorAll('[href="#"]')
     .forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        e.preventDefault()
+      link.addEventListener('click', function (event) {
+        event.preventDefault()
       })
     })
 

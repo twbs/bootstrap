@@ -25,8 +25,8 @@
   > :not(caption) > * > * {
     padding: $table-cell-padding-y $table-cell-padding-x;
     background-color: var(--#{$variable-prefix}table-bg);
-    background-image: linear-gradient(var(--#{$variable-prefix}table-accent-bg), var(--#{$variable-prefix}table-accent-bg));
     border-bottom-width: $table-border-width;
+    box-shadow: inset 0 0 0 9999px var(--#{$variable-prefix}table-accent-bg);
   }
 
   > tbody {

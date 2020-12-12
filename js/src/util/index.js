@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): util/index.js
+ * Bootstrap (v5.0.0-beta1): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -188,8 +188,23 @@ const onDOMContentLoaded = callback => {
 
 const isRTL = document.documentElement.dir === 'rtl'
 
+const defineJQueryPlugin = (name, plugin) => {
+  onDOMContentLoaded(() => {
+    const $ = getjQuery()
+    /* istanbul ignore if */
+    if ($) {
+      const JQUERY_NO_CONFLICT = $.fn[name]
+      $.fn[name] = plugin.jQueryInterface
+      $.fn[name].Constructor = plugin
+      $.fn[name].noConflict = () => {
+        $.fn[name] = JQUERY_NO_CONFLICT
+        return plugin.jQueryInterface
+      }
+    }
+  })
+}
+
 export {
-  TRANSITION_END,
   getUID,
   getSelectorFromElement,
   getElementFromSelector,
@@ -204,5 +219,6 @@ export {
   reflow,
   getjQuery,
   onDOMContentLoaded,
-  isRTL
+  isRTL,
+  defineJQueryPlugin
 }

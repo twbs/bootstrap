@@ -1,14 +1,12 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): carousel.js
+ * Bootstrap (v5.0.0-beta1): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
-  TRANSITION_END,
+  defineJQueryPlugin,
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
@@ -94,10 +92,8 @@ const SELECTOR_INDICATORS = '.carousel-indicators'
 const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]'
 const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]'
 
-const PointerType = {
-  TOUCH: 'touch',
-  PEN: 'pen'
-}
+const POINTER_TYPE_TOUCH = 'touch'
+const POINTER_TYPE_PEN = 'pen'
 
 /**
  * ------------------------------------------------------------------------
@@ -280,7 +276,7 @@ class Carousel extends BaseComponent {
 
   _addTouchEventListeners() {
     const start = event => {
-      if (this._pointerEvent && PointerType[event.pointerType.toUpperCase()]) {
+      if (this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)) {
         this.touchStartX = event.clientX
       } else if (!this._pointerEvent) {
         this.touchStartX = event.touches[0].clientX
@@ -297,7 +293,7 @@ class Carousel extends BaseComponent {
     }
 
     const end = event => {
-      if (this._pointerEvent && PointerType[event.pointerType.toUpperCase()]) {
+      if (this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)) {
         this.touchDeltaX = event.clientX - this.touchStartX
       }
 
@@ -341,16 +337,12 @@ class Carousel extends BaseComponent {
       return
     }
 
-    switch (event.key) {
-      case ARROW_LEFT_KEY:
-        event.preventDefault()
-        this.prev()
-        break
-      case ARROW_RIGHT_KEY:
-        event.preventDefault()
-        this.next()
-        break
-      default:
+    if (event.key === ARROW_LEFT_KEY) {
+      event.preventDefault()
+      this.prev()
+    } else if (event.key === ARROW_RIGHT_KEY) {
+      event.preventDefault()
+      this.next()
     }
   }
 
@@ -437,19 +429,9 @@ class Carousel extends BaseComponent {
     const nextElementIndex = this._getItemIndex(nextElement)
     const isCycling = Boolean(this._interval)
 
-    let directionalClassName
-    let orderClassName
-    let eventDirectionName
-
-    if (direction === DIRECTION_NEXT) {
-      directionalClassName = CLASS_NAME_START
-      orderClassName = CLASS_NAME_NEXT
-      eventDirectionName = DIRECTION_LEFT
-    } else {
-      directionalClassName = CLASS_NAME_END
-      orderClassName = CLASS_NAME_PREV
-      eventDirectionName = DIRECTION_RIGHT
-    }
+    const directionalClassName = direction === DIRECTION_NEXT ? CLASS_NAME_START : CLASS_NAME_END
+    const orderClassName = direction === DIRECTION_NEXT ? CLASS_NAME_NEXT : CLASS_NAME_PREV
+    const eventDirectionName = direction === DIRECTION_NEXT ? DIRECTION_LEFT : DIRECTION_RIGHT
 
     if (nextElement && nextElement.classList.contains(CLASS_NAME_ACTIVE)) {
       this._isSliding = false
@@ -485,7 +467,7 @@ class Carousel extends BaseComponent {
 
       const transitionDuration = getTransitionDurationFromElement(activeElement)
 
-      EventHandler.one(activeElement, TRANSITION_END, () => {
+      EventHandler.one(activeElement, 'transitionend', () => {
         nextElement.classList.remove(directionalClassName, orderClassName)
         nextElement.classList.add(CLASS_NAME_ACTIVE)
 
@@ -614,18 +596,6 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  * add .Carousel to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Carousel.jQueryInterface
-    $.fn[NAME].Constructor = Carousel
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Carousel.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Carousel)
 
 export default Carousel
