@@ -7,7 +7,6 @@
 
 import {
   defineJQueryPlugin,
-  TRANSITION_END,
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
@@ -82,13 +81,11 @@ class Tab extends BaseComponent {
       previous = previous[previous.length - 1]
     }
 
-    let hideEvent = null
-
-    if (previous) {
-      hideEvent = EventHandler.trigger(previous, EVENT_HIDE, {
+    const hideEvent = previous ?
+      EventHandler.trigger(previous, EVENT_HIDE, {
         relatedTarget: this._element
-      })
-    }
+      }) :
+      null
 
     const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
       relatedTarget: previous
@@ -132,7 +129,7 @@ class Tab extends BaseComponent {
       const transitionDuration = getTransitionDurationFromElement(active)
       active.classList.remove(CLASS_NAME_SHOW)
 
-      EventHandler.one(active, TRANSITION_END, complete)
+      EventHandler.one(active, 'transitionend', complete)
       emulateTransitionEnd(active, transitionDuration)
     } else {
       complete()
