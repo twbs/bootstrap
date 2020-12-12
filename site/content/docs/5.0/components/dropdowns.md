@@ -897,6 +897,16 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>By default, we use Popper for dynamic positioning. Disable this with <code>static</code>.</td>
     </tr>
     <tr>
+      <td><code>offset</code></td>
+      <td>array | string | function</td>
+      <td><code>[0, 0]</code></td>
+      <td>
+        <p>Offset of the dropdown relative to its target.</p>
+        <p>When a function is used to determine the offset, it is called with an object containing the <code>popper</code> instance, the <code>refecence</code> Element and the <code>placement</code> as its first argument. The function must return an array with two numbers: <code>[<a href="https://popper.js.org/docs/v2/modifiers/offset/#skidding-1">skidding</a>, <a href="https://popper.js.org/docs/v2/modifiers/offset/#distance-1">distance</a>]</code>. The triggering element DOM node is passed as the second argument.</p>
+        <p>For more information refer to Popper.js's <a href="https://popper.js.org/docs/v2/modifiers/offset/#options">offset docs</a>.</p>
+      </td>
+    </tr>
+    <tr>
       <td><code>popperConfig</code></td>
       <td>null | object</td>
       <td><code>null</code></td>
