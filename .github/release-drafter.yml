@@ -4,6 +4,9 @@ prerelease: true
 exclude-labels:
   - 'skip-changelog'
 categories:
+  - title: '❗ Breaking Changes'
+    labels:
+      - 'breaking-change'
   - title: '🚀 Features'
     labels:
       - 'new-feature'
@@ -29,6 +32,13 @@ categories:
   - title: '🌎 Accessibility'
     labels:
       - 'accessibility'
+  - title: '🏭 Utility API'
+    labels:
+      - 'utility API'
+      - 'utilities'
+  - title: '🏭 Tests'
+    labels:
+      - 'tests'
   - title: '🧰 Misc'
     labels:
       - 'build'
