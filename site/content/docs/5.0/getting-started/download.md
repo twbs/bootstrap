@@ -104,8 +104,7 @@ composer require twbs/bootstrap:{{< param current_version >}}
 
 ### NuGet
 
-If you develop in .NET, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org/). 
-As of 5.0.0-beta1, [PopperJS](https://popper.js.org/) needs to be [installed](https://popper.js.org/docs/v2/tutorial/#setting-up) independently as it is no longer published as a NuGet package:
+If you develop in .NET, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org/):
 
 ```powershell
 Install-Package bootstrap

@@ -9,7 +9,7 @@
     <owners>bootstrap</owners>
     <description>The most popular front-end framework for developing responsive, mobile first projects on the web.</description>
     <releaseNotes>https://blog.getbootstrap.com/</releaseNotes>
-    <summary>Bootstrap framework in Sass. Includes JavaScript but requires PopperJS which must be installed independently</summary>
+    <summary>Bootstrap framework in Sass. Includes JavaScript</summary>
     <language>en-us</language>
     <projectUrl>https://getbootstrap.com/</projectUrl>
     <icon>bootstrap.png</icon>
