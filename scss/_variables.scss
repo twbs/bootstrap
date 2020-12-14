@@ -991,6 +991,9 @@ $pagination-disabled-border-color:  $gray-300 !default;
 
 $pagination-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
+$pagination-border-radius-sm:       $border-radius-sm !default;
+$pagination-border-radius-lg:       $border-radius-lg !default;
+
 // Cards
 
 $card-spacer-y:                     $spacer !default;
