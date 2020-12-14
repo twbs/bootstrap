@@ -7,6 +7,12 @@ aliases: "/migration/"
 toc: true
 ---
 
+## v5.0.0-beta2
+
+### JavaScript
+
+- The default value for the `fallbackPlacements` is changed to `['top', 'right', 'bottom', 'left']` for better placement of popper elements.
+
 ## v5.0.0-beta1
 
 ### RTL
