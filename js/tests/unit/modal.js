@@ -557,6 +557,26 @@ $(function () {
       .bootstrapModal('show')
   })
 
+  QUnit.test('should not adjust the inline margin and padding of sticky and fixed elements when elements do not have full width', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var $element = $('<div class="sticky-top" style="margin-right: 0px; padding-right: 0px; width: calc(100vw - 50%)"></div>').appendTo('#qunit-fixture')
+    var originalMargin = $element.css('margin-right')
+    var originalPadding = $element.css('padding-right')
+
+    $('<div id="modal-test"/>')
+      .on('shown.bs.modal', function () {
+        var currentMargin = $element.css('margin-right')
+        var currentPadding = $element.css('padding-right')
+        assert.strictEqual(currentMargin, originalMargin, 'sticky element\'s margin should not be adjusted while opening')
+        assert.strictEqual(currentPadding, originalPadding, 'sticky element\'s padding should not be adjusted while opening')
+        $element.remove()
+        $(this).bootstrapModal('hide')
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
   QUnit.test('should store the original margin of sticky elements in data-margin-right before showing', function (assert) {
     assert.expect(2)
     var done = assert.async()
