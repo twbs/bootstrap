@@ -1,7 +1,7 @@
 .bd-layout {
   @include media-breakpoint-up(md) {
     display: grid;
-    gap: $grid-gutter-width * 2;
+    gap: $grid-gutter-width;
     grid-template-areas: "sidebar main";
     grid-template-columns: 1fr 3fr;
   }

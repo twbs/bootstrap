@@ -330,14 +330,15 @@ $container-max-widths: (
 // Set the number of columns and specify the width of the gutters.
 
 $grid-columns:                12 !default;
-$grid-gutter-width:           .75rem !default;
+$grid-gutter-width:           1.5rem !default;
+$grid-gutter-half:            $grid-gutter-width / 2 !default;
 $grid-row-columns:            6 !default;
 
 $gutters: $spacers !default;
 
 // Container padding
 
-$container-padding-x: $grid-gutter-width !default;
+$container-padding-x: $grid-gutter-half !default;
 
 
 // Components
@@ -1010,7 +1011,7 @@ $card-bg:                           $white !default;
 
 $card-img-overlay-padding:          $spacer !default;
 
-$card-group-margin:                 $grid-gutter-width !default;
+$card-group-margin:                 $grid-gutter-half !default;
 
 // Accordion
 $accordion-padding-y:                     1rem !default;
