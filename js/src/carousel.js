@@ -11,6 +11,7 @@ import {
   getElementFromSelector,
   getTransitionDurationFromElement,
   isVisible,
+  isRTL,
   reflow,
   triggerTransitionEnd,
   typeCheckConfig
@@ -250,12 +251,20 @@ class Carousel extends BaseComponent {
 
     // swipe left
     if (direction > 0) {
-      this.prev()
+      if (isRTL) {
+        this.next()
+      } else {
+        this.prev()
+      }
     }
 
     // swipe right
     if (direction < 0) {
-      this.next()
+      if (isRTL) {
+        this.prev()
+      } else {
+        this.next()
+      }
     }
   }
 
@@ -339,10 +348,18 @@ class Carousel extends BaseComponent {
 
     if (event.key === ARROW_LEFT_KEY) {
       event.preventDefault()
-      this.prev()
+      if (isRTL) {
+        this.next()
+      } else {
+        this.prev()
+      }
     } else if (event.key === ARROW_RIGHT_KEY) {
       event.preventDefault()
-      this.next()
+      if (isRTL) {
+        this.prev()
+      } else {
+        this.next()
+      }
     }
   }
 

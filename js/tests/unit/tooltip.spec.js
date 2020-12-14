@@ -286,7 +286,7 @@ describe('Tooltip', () => {
       expect(Tooltip.getInstance(tooltipEl)).toEqual(null)
     })
 
-    it('should destroy a tooltip after it is shown and hidden', () => {
+    it('should destroy a tooltip after it is shown and hidden', done => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
 
       const tooltipEl = fixtureEl.querySelector('a')
@@ -299,6 +299,7 @@ describe('Tooltip', () => {
         tooltip.dispose()
         expect(tooltip.tip).toEqual(null)
         expect(Tooltip.getInstance(tooltipEl)).toEqual(null)
+        done()
       })
 
       tooltip.show()
