@@ -11,6 +11,7 @@ import {
   getElementFromSelector,
   getTransitionDurationFromElement,
   isVisible,
+  isRTL,
   reflow,
   triggerTransitionEnd,
   typeCheckConfig
@@ -92,10 +93,8 @@ const SELECTOR_INDICATORS = '.carousel-indicators'
 const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]'
 const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]'
 
-const PointerType = {
-  TOUCH: 'touch',
-  PEN: 'pen'
-}
+const POINTER_TYPE_TOUCH = 'touch'
+const POINTER_TYPE_PEN = 'pen'
 
 /**
  * ------------------------------------------------------------------------
@@ -252,12 +251,20 @@ class Carousel extends BaseComponent {
 
     // swipe left
     if (direction > 0) {
-      this.prev()
+      if (isRTL) {
+        this.next()
+      } else {
+        this.prev()
+      }
     }
 
     // swipe right
     if (direction < 0) {
-      this.next()
+      if (isRTL) {
+        this.prev()
+      } else {
+        this.next()
+      }
     }
   }
 
@@ -278,7 +285,7 @@ class Carousel extends BaseComponent {
 
   _addTouchEventListeners() {
     const start = event => {
-      if (this._pointerEvent && PointerType[event.pointerType.toUpperCase()]) {
+      if (this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)) {
         this.touchStartX = event.clientX
       } else if (!this._pointerEvent) {
         this.touchStartX = event.touches[0].clientX
@@ -295,7 +302,7 @@ class Carousel extends BaseComponent {
     }
 
     const end = event => {
-      if (this._pointerEvent && PointerType[event.pointerType.toUpperCase()]) {
+      if (this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)) {
         this.touchDeltaX = event.clientX - this.touchStartX
       }
 
@@ -341,10 +348,18 @@ class Carousel extends BaseComponent {
 
     if (event.key === ARROW_LEFT_KEY) {
       event.preventDefault()
-      this.prev()
+      if (isRTL) {
+        this.next()
+      } else {
+        this.prev()
+      }
     } else if (event.key === ARROW_RIGHT_KEY) {
       event.preventDefault()
-      this.next()
+      if (isRTL) {
+        this.prev()
+      } else {
+        this.next()
+      }
     }
   }
 
