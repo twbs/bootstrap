@@ -16,7 +16,7 @@
     {{- $is_active_group := eq $.Page.Params.group $group_slug -}}
 
     {{- if $group.pages }}
-      <li class="mb-1{{ if $is_active_group }} active{{ end }}">
+      <li class="mb-1">
         <button class="btn d-inline-flex align-items-center rounded{{ if not $is_active_group }} collapsed{{ end }}" data-bs-toggle="collapse" data-bs-target="#{{ $group_slug }}-collapse" aria-expanded="{{ $is_active_group }}"{{ if $is_active_group }} aria-current="true"{{ end }}>
           {{ $group.title }}
         </button>
@@ -34,8 +34,8 @@
       </li>
     {{- else }}
       <li class="my-3 mx-4 border-top"></li>
-      <li{{ if $is_active_group }} class="active"{{ end }}>
-        <a href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/" class="d-inline-flex align-items-center rounded">
+      <li>
+        <a href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/" class="d-inline-flex align-items-center rounded{{ if $is_active_group }} active{{ end }}"{{ if $is_active_group }} aria-current="page"{{ end }}>
           {{ $group.title }}
         </a>
       </li>
