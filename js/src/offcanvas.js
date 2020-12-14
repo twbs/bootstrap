@@ -16,6 +16,7 @@ import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import BaseComponent from './base-component'
 import SelectorEngine from './dom/selector-engine'
+
 /**
  * ------------------------------------------------------------------------
  * Constants
@@ -40,6 +41,7 @@ const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
 const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
+const EVENT_FOCUSIN = `focusin${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
 
@@ -97,15 +99,15 @@ class OffCanvas extends BaseComponent {
     this._element.removeAttribute('aria-hidden')
     this._element.classList.add(CLASS_NAME_SHOW)
     this.hidden = false
-    setTimeout(() => {
-      this._element.setAttribute('aria-expanded', true)
-      this._element.setAttribute('aria-offcanvas', true)
 
+    const completeCallBack = () => {
       document.body.classList.add(CLASS_NAME_OPEN)
       document.body.classList.remove(CLASS_NAME_TOGGLING)
       this._enforceFocus()
       EventHandler.trigger(this._element, EVENT_SHOWN, { relatedTarget })
-    }, getTransitionDurationFromElement(this._element))
+    }
+
+    setTimeout(completeCallBack, getTransitionDurationFromElement(this._element))
   }
 
   hide() {
@@ -119,41 +121,42 @@ class OffCanvas extends BaseComponent {
       return
     }
 
+    this._element.blur()
     this._isShown = false
-
-    if (!document.body.classList.contains(CLASS_NAME_TOGGLING)) {
-      document.body.classList.remove(CLASS_NAME_OPEN)
-    }
 
     if (this._bodyOptions === 'backdrop') {
       document.body.classList.remove(CLASS_NAME_BACKDROP_BODY)
     }
 
     if (this._bodyOptions !== 'scroll') {
-      resetScrollbar()
       document.body.classList.remove(CLASS_NAME_STOP_OVERFLOW)
+      resetScrollbar()
     }
 
     document.body.classList.add(CLASS_NAME_TOGGLING)
     this._element.classList.remove(CLASS_NAME_SHOW)
-    this._element.blur()
 
-    setTimeout(() => {
+    const completeCallback = () => {
       document.body.classList.remove(CLASS_NAME_TOGGLING)
       this._element.setAttribute('aria-hidden', true)
-      this._element.setAttribute('aria-expanded', false)
-      this._element.removeAttribute('aria-offcanvas')
       this.hidden = true
 
       EventHandler.trigger(this._element, EVENT_HIDDEN)
-    }, getTransitionDurationFromElement(this._element))
+    }
+
+    setTimeout(completeCallback, getTransitionDurationFromElement(this._element))
   }
 
-  // Private
   _enforceFocus() {
-    this._element.setAttribute('tabindex', '0')
+    EventHandler.off(document, EVENT_FOCUSIN) // guard against infinite focus loop
+    EventHandler.on(document, EVENT_FOCUSIN, event => {
+      if (document !== event.target &&
+        this._element !== event.target &&
+        !this._element.contains(event.target)) {
+        this._element.focus()
+      }
+    })
     this._element.focus()
-    this._element.setAttribute('tabindex', 1)
   }
 
   _handleClosing() {
