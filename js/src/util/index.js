@@ -7,7 +7,6 @@
 
 const MAX_UID = 1000000
 const MILLISECONDS_MULTIPLIER = 1000
-const TRANSITION_END = 'transitionend'
 
 // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 const toType = obj => {
@@ -96,28 +95,15 @@ const getTransitionDurationFromElement = element => {
   return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER
 }
 
-const triggerTransitionEnd = element => {
-  element.dispatchEvent(new Event(TRANSITION_END))
-}
-
 const isElement = obj => (obj[0] || obj).nodeType
 
-const emulateTransitionEnd = (element, duration) => {
-  let called = false
+const promiseTimeout = duration => {
   const durationPadding = 5
-  const emulatedDuration = duration + durationPadding
+  const emulatedDuration = (duration || 0) + durationPadding
 
-  function listener() {
-    called = true
-    element.removeEventListener(TRANSITION_END, listener)
-  }
-
-  element.addEventListener(TRANSITION_END, listener)
-  setTimeout(() => {
-    if (!called) {
-      triggerTransitionEnd(element)
-    }
-  }, emulatedDuration)
+  return new Promise(resolve => {
+    setTimeout(resolve, emulatedDuration)
+  })
 }
 
 const typeCheckConfig = (componentName, config, configTypes) => {
@@ -237,9 +223,7 @@ export {
   getSelectorFromElement,
   getElementFromSelector,
   getTransitionDurationFromElement,
-  triggerTransitionEnd,
   isElement,
-  emulateTransitionEnd,
   typeCheckConfig,
   isVisible,
   isDisabled,
@@ -249,5 +233,6 @@ export {
   getjQuery,
   onDOMContentLoaded,
   isRTL,
-  defineJQueryPlugin
+  defineJQueryPlugin,
+  promiseTimeout
 }

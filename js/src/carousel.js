@@ -7,13 +7,12 @@
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
   isRTL,
+  promiseTimeout,
   isVisible,
   reflow,
-  triggerTransitionEnd,
   typeCheckConfig
 } from './util/index'
 import Data from './dom/data'
@@ -161,7 +160,6 @@ class Carousel extends BaseComponent {
     }
 
     if (SelectorEngine.findOne(SELECTOR_NEXT_PREV, this._element)) {
-      triggerTransitionEnd(this._element)
       this.cycle(true)
     }
 
@@ -468,7 +466,7 @@ class Carousel extends BaseComponent {
 
       const transitionDuration = getTransitionDurationFromElement(activeElement)
 
-      EventHandler.one(activeElement, 'transitionend', () => {
+      const complete = () => {
         nextElement.classList.remove(directionalClassName, orderClassName)
         nextElement.classList.add(CLASS_NAME_ACTIVE)
 
@@ -484,9 +482,9 @@ class Carousel extends BaseComponent {
             to: nextElementIndex
           })
         }, 0)
-      })
+      }
 
-      emulateTransitionEnd(activeElement, transitionDuration)
+      promiseTimeout(transitionDuration).then(complete)
     } else {
       activeElement.classList.remove(CLASS_NAME_ACTIVE)
       nextElement.classList.add(CLASS_NAME_ACTIVE)

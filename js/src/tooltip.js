@@ -9,13 +9,13 @@ import * as Popper from '@popperjs/core'
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
   findShadowRoot,
   getTransitionDurationFromElement,
   getUID,
   isElement,
   isRTL,
   noop,
+  promiseTimeout,
   typeCheckConfig
 } from './util/index'
 import {
@@ -316,12 +316,12 @@ class Tooltip extends BaseComponent {
       }
     }
 
-    if (this.tip.classList.contains(CLASS_NAME_FADE)) {
-      const transitionDuration = getTransitionDurationFromElement(this.tip)
-      EventHandler.one(this.tip, 'transitionend', complete)
-      emulateTransitionEnd(this.tip, transitionDuration)
-    } else {
-      complete()
+      if (this.tip.classList.contains(CLASS_NAME_FADE)) {
+        const transitionDuration = getTransitionDurationFromElement(this.tip)
+        promiseTimeout(transitionDuration).then(complete)
+      } else {
+        complete()
+      }
     }
   }
 
@@ -371,8 +371,7 @@ class Tooltip extends BaseComponent {
     if (this.tip.classList.contains(CLASS_NAME_FADE)) {
       const transitionDuration = getTransitionDurationFromElement(tip)
 
-      EventHandler.one(tip, 'transitionend', complete)
-      emulateTransitionEnd(tip, transitionDuration)
+      promiseTimeout(transitionDuration).then(complete)
     } else {
       complete()
     }

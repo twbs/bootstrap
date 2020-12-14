@@ -7,11 +7,11 @@
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
-  isVisible,
   isRTL,
+  isVisible,
+  promiseTimeout,
   reflow,
   typeCheckConfig
 } from './util/index'
@@ -182,9 +182,7 @@ class Modal extends BaseComponent {
 
     if (isAnimated) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
-
-      EventHandler.one(this._element, 'transitionend', event => this._hideModal(event))
-      emulateTransitionEnd(this._element, transitionDuration)
+      promiseTimeout(transitionDuration).then(() => this._hideModal())
     } else {
       this._hideModal()
     }
@@ -270,9 +268,7 @@ class Modal extends BaseComponent {
 
     if (isAnimated) {
       const transitionDuration = getTransitionDurationFromElement(this._dialog)
-
-      EventHandler.one(this._dialog, 'transitionend', transitionComplete)
-      emulateTransitionEnd(this._dialog, transitionDuration)
+      promiseTimeout(transitionDuration).then(transitionComplete)
     } else {
       transitionComplete()
     }
@@ -282,8 +278,8 @@ class Modal extends BaseComponent {
     EventHandler.off(document, EVENT_FOCUSIN) // guard against infinite focus loop
     EventHandler.on(document, EVENT_FOCUSIN, event => {
       if (document !== event.target &&
-          this._element !== event.target &&
-          !this._element.contains(event.target)) {
+        this._element !== event.target &&
+        !this._element.contains(event.target)) {
         this._element.focus()
       }
     })
@@ -372,9 +368,7 @@ class Modal extends BaseComponent {
       }
 
       const backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop)
-
-      EventHandler.one(this._backdrop, 'transitionend', callback)
-      emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
+      promiseTimeout(backdropTransitionDuration).then(callback)
     } else if (!this._isShown && this._backdrop) {
       this._backdrop.classList.remove(CLASS_NAME_SHOW)
 
@@ -385,8 +379,7 @@ class Modal extends BaseComponent {
 
       if (isAnimated) {
         const backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop)
-        EventHandler.one(this._backdrop, 'transitionend', callbackRemove)
-        emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
+        promiseTimeout(backdropTransitionDuration).then(callbackRemove)
       } else {
         callbackRemove()
       }
@@ -413,17 +406,16 @@ class Modal extends BaseComponent {
 
     this._element.classList.add(CLASS_NAME_STATIC)
     const modalTransitionDuration = getTransitionDurationFromElement(this._dialog)
-    EventHandler.off(this._element, 'transitionend')
-    EventHandler.one(this._element, 'transitionend', () => {
+    const callback = (() => {
       this._element.classList.remove(CLASS_NAME_STATIC)
       if (!isModalOverflowing) {
-        EventHandler.one(this._element, 'transitionend', () => {
+        promiseTimeout(modalTransitionDuration).then(() => () => {
           this._element.style.overflowY = ''
         })
-        emulateTransitionEnd(this._element, modalTransitionDuration)
       }
     })
-    emulateTransitionEnd(this._element, modalTransitionDuration)
+
+    promiseTimeout(modalTransitionDuration).then(callback)
     this._element.focus()
   }
 

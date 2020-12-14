@@ -7,10 +7,10 @@
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
   isDisabled,
+  promiseTimeout,
   reflow
 } from './util/index'
 import Data from './dom/data'
@@ -128,9 +128,7 @@ class Tab extends BaseComponent {
     if (active && isTransitioning) {
       const transitionDuration = getTransitionDurationFromElement(active)
       active.classList.remove(CLASS_NAME_SHOW)
-
-      EventHandler.one(active, 'transitionend', complete)
-      emulateTransitionEnd(active, transitionDuration)
+      promiseTimeout(transitionDuration).then(complete)
     } else {
       complete()
     }

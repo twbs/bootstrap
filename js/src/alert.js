@@ -7,9 +7,9 @@
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
   getElementFromSelector,
-  getTransitionDurationFromElement
+  getTransitionDurationFromElement,
+  promiseTimeout
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
@@ -81,9 +81,7 @@ class Alert extends BaseComponent {
     }
 
     const transitionDuration = getTransitionDurationFromElement(element)
-
-    EventHandler.one(element, 'transitionend', () => this._destroyElement(element))
-    emulateTransitionEnd(element, transitionDuration)
+    promiseTimeout(transitionDuration).then(() => this._destroyElement(element))
   }
 
   _destroyElement(element) {

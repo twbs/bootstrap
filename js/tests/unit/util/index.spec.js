@@ -136,40 +136,6 @@ describe('Util', () => {
     })
   })
 
-  describe('getTransitionDurationFromElement', () => {
-    it('should get transition from element', () => {
-      fixtureEl.innerHTML = '<div style="transition: all 300ms ease-out;"></div>'
-
-      expect(Util.getTransitionDurationFromElement(fixtureEl.querySelector('div'))).toEqual(300)
-    })
-
-    it('should return 0 if the element is undefined or null', () => {
-      expect(Util.getTransitionDurationFromElement(null)).toEqual(0)
-      expect(Util.getTransitionDurationFromElement(undefined)).toEqual(0)
-    })
-
-    it('should return 0 if the element do not possess transition', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      expect(Util.getTransitionDurationFromElement(fixtureEl.querySelector('div'))).toEqual(0)
-    })
-  })
-
-  describe('triggerTransitionEnd', () => {
-    it('should trigger transitionend event', done => {
-      fixtureEl.innerHTML = '<div style="transition: all 300ms ease-out;"></div>'
-
-      const el = fixtureEl.querySelector('div')
-
-      el.addEventListener('transitionend', () => {
-        expect().nothing()
-        done()
-      })
-
-      Util.triggerTransitionEnd(el)
-    })
-  })
-
   describe('isElement', () => {
     it('should detect if the parameter is an element or not', () => {
       fixtureEl.innerHTML = '<div></div>'
@@ -189,33 +155,6 @@ describe('Util', () => {
       }
 
       expect(Util.isElement(fakejQuery)).toEqual(el.nodeType)
-    })
-  })
-
-  describe('emulateTransitionEnd', () => {
-    it('should emulate transition end', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const el = document.querySelector('div')
-      const spy = spyOn(window, 'setTimeout')
-
-      Util.emulateTransitionEnd(el, 10)
-      expect(spy).toHaveBeenCalled()
-    })
-
-    it('should not emulate transition end if already triggered', done => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const el = fixtureEl.querySelector('div')
-      const spy = spyOn(el, 'removeEventListener')
-
-      Util.emulateTransitionEnd(el, 10)
-      Util.triggerTransitionEnd(el)
-
-      setTimeout(() => {
-        expect(spy).toHaveBeenCalled()
-        done()
-      }, 20)
     })
   })
 
