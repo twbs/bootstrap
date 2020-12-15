@@ -137,7 +137,7 @@ Place toasts with custom CSS as you need them. The top right is often used for n
 
 {{< example >}}
 <form>
-  <div class="form-group mb-3">
+  <div class="mb-3">
     <label for="selectToastPlacement">Toast placement</label>
     <select class="form-select mt-2" id="selectToastPlacement">
       <option value="" selected>Select a position...</option>
