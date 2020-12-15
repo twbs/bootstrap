@@ -116,6 +116,8 @@ For example, to switch from `Helvetica Neue Webfont` for LTR to `Helvetica Neue 
 ```scss
 $font-family-sans-serif:
   Helvetica Neue #{"/* rtl:insert:Arabic */"},
+  // Cross-platform generic font family (default user interface font)
+  system-ui,
   // Safari for macOS and iOS (San Francisco)
   -apple-system,
   // Chrome < 56 for macOS (San Francisco)
