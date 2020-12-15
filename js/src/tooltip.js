@@ -51,7 +51,7 @@ const DefaultType = {
   selector: '(string|boolean)',
   placement: '(string|function)',
   container: '(string|element|boolean)',
-  fallbackPlacements: '(null|array)',
+  fallbackPlacements: 'array',
   boundary: '(string|element)',
   customClass: '(string|function)',
   sanitize: 'boolean',
@@ -81,7 +81,7 @@ const Default = {
   selector: false,
   placement: 'top',
   container: false,
-  fallbackPlacements: null,
+  fallbackPlacements: ['top', 'right', 'bottom', 'left'],
   boundary: 'clippingParents',
   customClass: '',
   sanitize: true,
@@ -466,22 +466,16 @@ class Tooltip extends BaseComponent {
   // Private
 
   _getPopperConfig(attachment) {
-    const flipModifier = {
-      name: 'flip',
-      options: {
-        altBoundary: true,
-        fallbackPlacements: ['top', 'right', 'bottom', 'left']
-      }
-    }
-
-    if (this.config.fallbackPlacements) {
-      flipModifier.options.fallbackPlacements = this.config.fallbackPlacements
-    }
-
     const defaultBsConfig = {
       placement: attachment,
       modifiers: [
-        flipModifier,
+        {
+          name: 'flip',
+          options: {
+            altBoundary: true,
+            fallbackPlacements: this.config.fallbackPlacements
+          }
+        },
         {
           name: 'preventOverflow',
           options: {
