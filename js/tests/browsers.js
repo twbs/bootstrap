@@ -19,7 +19,7 @@ const browsers = {
   firefoxMac: {
     base: 'BrowserStack',
     os: 'OS X',
-    os_version: 'Catalina,
+    os_version: 'Catalina',
     browser: 'Firefox',
     browser_version: 'latest'
   },
