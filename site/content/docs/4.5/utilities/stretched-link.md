@@ -29,7 +29,7 @@ Media objects do not have `position: relative` by default, so we need to add the
   {{< placeholder width="144" height="144" class="mr-3" text=" " title="Generic placeholder image" >}}
   <div class="media-body">
     <h5 class="mt-0">Media with stretched link</h5>
-    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+    <p>This is some placeholder content for the media object. It is intended to mimic what some real-world content would look like, and we're using it here to give the component a bit of body and size.</p>
     <a href="#" class="stretched-link">Go somewhere</a>
   </div>
 </div>
@@ -44,7 +44,7 @@ Columns are `position: relative` by default, so clickable columns only require t
   </div>
   <div class="col-md-6 position-static p-4 pl-md-0">
     <h5 class="mt-0">Columns with stretched link</h5>
-    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+    <p>Another instance of placeholder content for this other custom component. It is intended to mimic what some real-world content would look like, and we're using it here to give the component a bit of body and size.</p>
     <a href="#" class="stretched-link">Go somewhere</a>
   </div>
 </div>

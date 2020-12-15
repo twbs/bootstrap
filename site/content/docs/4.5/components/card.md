@@ -81,9 +81,9 @@ Create lists of content in a card with a flush list group.
 {{< example >}}
 <div class="card" style="width: 18rem;">
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
   </ul>
 </div>
 {{< /example >}}
@@ -94,9 +94,9 @@ Create lists of content in a card with a flush list group.
     Featured
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
   </ul>
 </div>
 {{< /example >}}
@@ -104,9 +104,9 @@ Create lists of content in a card with a flush list group.
 {{< example >}}
 <div class="card" style="width: 18rem;">
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
   </ul>
   <div class="card-footer">
     Card footer
@@ -126,9 +126,9 @@ Mix and match multiple content types to create the card you need, or throw every
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
   </ul>
   <div class="card-body">
     <a href="#" class="card-link">Card link</a>
@@ -174,7 +174,7 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
   </div>
   <div class="card-body">
     <blockquote class="blockquote mb-0">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <p>A well-known quote, contained in a blockquote element.</p>
       <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
     </blockquote>
   </div>
@@ -762,7 +762,7 @@ Cards can be organized into [Masonry](https://masonry.desandro.com/)-like column
   </div>
   <div class="card p-3">
     <blockquote class="blockquote mb-0 card-body">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <p>A well-known quote, contained in a blockquote element.</p>
       <footer class="blockquote-footer">
         <small class="text-muted">
           Someone famous in <cite title="Source Title">Source Title</cite>
@@ -780,7 +780,7 @@ Cards can be organized into [Masonry](https://masonry.desandro.com/)-like column
   </div>
   <div class="card bg-primary text-white text-center p-3">
     <blockquote class="blockquote mb-0">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+      <p>A well-known quote, contained in a blockquote element.</p>
       <footer class="blockquote-footer text-white">
         <small>
           Someone famous in <cite title="Source Title">Source Title</cite>
@@ -800,7 +800,7 @@ Cards can be organized into [Masonry](https://masonry.desandro.com/)-like column
   </div>
   <div class="card p-3 text-right">
     <blockquote class="blockquote mb-0">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <p>A well-known quote, contained in a blockquote element.</p>
       <footer class="blockquote-footer">
         <small class="text-muted">
           Someone famous in <cite title="Source Title">Source Title</cite>
