@@ -315,6 +315,10 @@ Input groups include support for custom selects and custom file inputs. Browser 
 
 ### Custom file input
 
+{{< callout info >}}
+This example uses the [custom file browser]({{< docsref "/components/forms#file-browser" >}}) component, which relies on the separate [bs-custom-file-input](https://www.npmjs.com/package/bs-custom-file-input) plugin.
+{{< /callout >}}
+
 {{< example >}}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
