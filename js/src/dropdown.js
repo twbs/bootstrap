@@ -172,6 +172,8 @@ class Dropdown extends BaseComponent {
         if (typeof this._config.reference.jquery !== 'undefined') {
           referenceElement = this._config.reference[0]
         }
+      } else if (typeof this._config.reference === 'object') {
+        referenceElement = this._config.reference
       }
 
       this._popper = Popper.createPopper(referenceElement, this._menu, this._getPopperConfig())
