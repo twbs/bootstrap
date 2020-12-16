@@ -5,21 +5,21 @@ const browsers = {
   safariMac: {
     base: 'BrowserStack',
     os: 'OS X',
-    os_version: 'High Sierra',
+    os_version: 'Catalina',
     browser: 'Safari',
     browser_version: 'latest'
   },
   chromeMac: {
     base: 'BrowserStack',
     os: 'OS X',
-    os_version: 'High Sierra',
+    os_version: 'Catalina',
     browser: 'Chrome',
     browser_version: 'latest'
   },
   firefoxMac: {
     base: 'BrowserStack',
     os: 'OS X',
-    os_version: 'High Sierra',
+    os_version: 'Catalina',
     browser: 'Firefox',
     browser_version: 'latest'
   },
