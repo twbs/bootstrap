@@ -379,28 +379,37 @@ describe('Dropdown', () => {
 
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
-      expect(() => new Dropdown(btnDropdown, {
-        reference: {}
-      })).toThrow()
-      expect(() => new Dropdown(btnDropdown, {
-        reference: {
-          getBoundingClientRect: 'not-a-function'
-        }
-      })).toThrow()
-      const dropdown = new Dropdown(btnDropdown, {
-        reference: {
-          getBoundingClientRect: () => ({
+      const virtualElement = {
+        getBoundingClientRect() {
+          return {
             width: 0,
             height: 0,
             top: 0,
             right: 0,
             bottom: 0,
             left: 0
-          })
+          }
         }
+      }
+
+      expect(() => new Dropdown(btnDropdown, {
+        reference: {}
+      })).toThrow()
+
+      expect(() => new Dropdown(btnDropdown, {
+        reference: {
+          getBoundingClientRect: 'not-a-function'
+        }
+      })).toThrow()
+
+      const dropdown = new Dropdown(btnDropdown, {
+        reference: virtualElement
       })
 
+      spyOn(virtualElement, 'getBoundingClientRect')
+
       dropdownEl.addEventListener('shown.bs.dropdown', () => {
+        expect(virtualElement.getBoundingClientRect).toHaveBeenCalled()
         expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         done()
