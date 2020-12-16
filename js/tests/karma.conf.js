@@ -107,8 +107,7 @@ if (browserStack) {
     username: env.BROWSER_STACK_USERNAME,
     accessKey: env.BROWSER_STACK_ACCESS_KEY,
     build: `bootstrap-${new Date().toISOString()}`,
-    project: 'Bootstrap',
-    retryLimit: 2
+    project: 'Bootstrap'
   }
   plugins.push('karma-browserstack-launcher', 'karma-jasmine-html-reporter')
   conf.customLaunchers = browsers
