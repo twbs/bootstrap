@@ -33,6 +33,8 @@ Bootstrap utilizes a "native font stack" or "system font stack" for optimum text
 
 ```scss
 $font-family-sans-serif:
+  // Cross-platform generic font family (default user interface font)
+  system-ui,
   // Safari for macOS and iOS (San Francisco)
   -apple-system,
   // Chrome < 56 for macOS (San Francisco)
