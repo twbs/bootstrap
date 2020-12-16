@@ -34,7 +34,7 @@
   @include box-shadow($dropdown-box-shadow);
 
   // Reset positioning when positioned with Popper
-  &[style] {
+  &.popper-active {
     right: auto#{"/* rtl:ignore */"} !important; // stylelint-disable-line declaration-no-important
   }
 }

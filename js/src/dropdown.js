@@ -57,6 +57,7 @@ const CLASS_NAME_DROPUP = 'dropup'
 const CLASS_NAME_DROPEND = 'dropend'
 const CLASS_NAME_DROPSTART = 'dropstart'
 const CLASS_NAME_NAVBAR = 'navbar'
+const CLASS_NAME_POPPER_ACTIVE = 'popper-active'
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]'
 const SELECTOR_FORM_CHILD = '.dropdown form'
@@ -176,7 +177,12 @@ class Dropdown extends BaseComponent {
         referenceElement = this._config.reference
       }
 
+      // The `.popper-active` class removes the `right` property in CSS
+      // This way popper can position the dropdown correctly
+      // We add it back after the calculations to get control over our positioning with our CSS again
+      this._menu.classList.add(CLASS_NAME_POPPER_ACTIVE)
       this._popper = Popper.createPopper(referenceElement, this._menu, this._getPopperConfig())
+      this._menu.classList.remove(CLASS_NAME_POPPER_ACTIVE)
     }
 
     // If this is a touch-enabled device we add extra
