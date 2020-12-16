@@ -7,7 +7,6 @@
 
 import {
   defineJQueryPlugin,
-  TRANSITION_END,
   emulateTransitionEnd,
   getTransitionDurationFromElement,
   reflow,
@@ -116,7 +115,7 @@ class Toast extends BaseComponent {
     if (this._config.animation) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
-      EventHandler.one(this._element, TRANSITION_END, complete)
+      EventHandler.one(this._element, 'transitionend', complete)
       emulateTransitionEnd(this._element, transitionDuration)
     } else {
       complete()
@@ -143,7 +142,7 @@ class Toast extends BaseComponent {
     if (this._config.animation) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
-      EventHandler.one(this._element, TRANSITION_END, complete)
+      EventHandler.one(this._element, 'transitionend', complete)
       emulateTransitionEnd(this._element, transitionDuration)
     } else {
       complete()
