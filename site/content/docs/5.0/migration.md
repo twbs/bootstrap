@@ -11,7 +11,10 @@ toc: true
 
 ### Sass
 
+#### Utilities
+
 - Extended the `.visually-hidden-focusable` helper to also work on containers, using `:focus-within`.
+- `bootstrap-utilities.css` now also includes helpers. Helpers doesn't needs to be imported in custom builds anymore.
 
 ### JavaScript
 
