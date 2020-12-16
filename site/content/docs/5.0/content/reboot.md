@@ -33,6 +33,8 @@ Bootstrap utilizes a "native font stack" or "system font stack" for optimum text
 
 ```scss
 $font-family-sans-serif:
+  // Cross-platform generic font family (default user interface font)
+  system-ui,
   // Safari for macOS and iOS (San Francisco)
   -apple-system,
   // Chrome < 56 for macOS (San Francisco)
@@ -113,27 +115,17 @@ All lists—`<ul>`, `<ol>`, and `<dl>`—have their `margin-top` removed and a `
 
 <div class="bd-example">
 {{< markdown >}}
-* Lorem ipsum dolor sit amet
-* Consectetur adipiscing elit
-* Integer molestie lorem at massa
-* Facilisis in pretium nisl aliquet
-* Nulla volutpat aliquam velit
-  * Phasellus iaculis neque
-  * Purus sodales ultricies
-  * Vestibulum laoreet porttitor sem
-  * Ac tristique libero volutpat at
-* Faucibus porta lacus fringilla vel
-* Aenean sit amet erat nunc
-* Eget porttitor lorem
+* All lists have their top margin removed
+* And their bottom margin normalized
+* Nested lists have no bottom margin
+  * This way they have a more even appearance
+  * Particularly when followed by more list items
+* The left padding has also been reset
 
-1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
-4. Facilisis in pretium nisl aliquet
-5. Nulla volutpat aliquam velit
-6. Faucibus porta lacus fringilla vel
-7. Aenean sit amet erat nunc
-8. Eget porttitor lorem
+1. Here's an ordered list
+2. With a few list items
+3. It has the same overall look
+4. As the previous unordered list
 {{< /markdown >}}
 </div>
 
@@ -143,11 +135,11 @@ For simpler styling, clear hierarchy, and better spacing, description lists have
   <dl>
     <dt>Description lists</dt>
     <dd>A description list is perfect for defining terms.</dd>
-    <dt>Euismod</dt>
-    <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem.</dd>
-    <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-    <dt>Malesuada porta</dt>
-    <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+    <dt>Term</dt>
+    <dd>Definition for the term.</dd>
+    <dd>A second definition for the same term.</dd>
+    <dt>Another term</dt>
+    <dd>Definition for this other term.</dd>
   </dl>
 </div>
 
@@ -256,7 +248,7 @@ These changes, and more, are demonstrated below.
     </p>
     <p>
       <label for="email">Example email</label>
-      <input type="email" id="email" placeholder="lorem@ipsum.com">
+      <input type="email" id="email" placeholder="test@example.com">
     </p>
     <p>
       <label for="tel">Example telephone</label>
@@ -407,7 +399,7 @@ The default `margin` on blockquotes is `1em 40px`, so we reset that to `0 0 1rem
 
 <div class="bd-example">
   <blockquote class="blockquote">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <p>A well-known quote, contained in a blockquote element.</p>
   </blockquote>
   <p>Someone famous in <cite title="Source Title">Source Title</cite></p>
 </div>
