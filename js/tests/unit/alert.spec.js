@@ -15,7 +15,7 @@ describe('Alert', () => {
     clearFixture()
   })
 
-  it('should take care of element either passed as css selector or DOM element', () => {
+  it('should take care of element either passed as a CSS selector or DOM element', () => {
     fixtureEl.innerHTML = '<div class="alert"></div>'
 
     const alertEl = fixtureEl.querySelector('.alert')
