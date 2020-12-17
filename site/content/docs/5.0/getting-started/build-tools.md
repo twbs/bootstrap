@@ -65,6 +65,12 @@ Our [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/packag
   </tbody>
 </table>
 
+## Sass
+
+Bootstrap uses [Dart Sass](https://sass-lang.com/dart-sass) for compiling our source Sass files into CSS files. We previously used Node Sass for Bootstrap v4, but LibSass and packages built on top of it, including Node Sass, are now [deprecated](https://sass-lang.com/blog/libsass-is-deprecated).
+
+Dart Sass builds with a rounding precision of 10 and for efficiency reasons does not allow adjustment of this value. We don't lower this precision during further processing of our generated CSS, such as during minification, but if you chose to do so we recommend maintaining a precision of at least 6 to prevent issues with browser rounding.
+
 ## Autoprefixer
 
 Bootstrap uses [Autoprefixer][autoprefixer] (included in our build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.
