@@ -60,40 +60,20 @@ $(function () {
 
 Four options are available: top, right, bottom, and left aligned.
 
-<div class="bd-example popover-demo">
-  <div class="bd-example-popovers">
-    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Top popover">
-      Popover on top
-    </button>
-    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Right popover">
-      Popover on right
-    </button>
-    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Bottom popover">
-      Popover on bottom
-    </button>
-    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Left popover">
-      Popover on left
-    </button>
-  </div>
-</div>
-
-```html
+{{< example >}}
 <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Top popover">
   Popover on top
 </button>
-
 <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Right popover">
   Popover on right
 </button>
-
 <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Bottom popover">
   Popover on bottom
 </button>
-
 <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Left popover">
   Popover on left
 </button>
-```
+{{< /example >}}
 
 ### Dismiss on next click
 
