@@ -458,48 +458,48 @@ class Modal extends BaseComponent {
     if (this._isBodyOverflowing) {
       // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
       //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
-
-      const setElement = (selector, styleProp, callback) => {
-        SelectorEngine.find(selector)
-          .forEach(element => {
-            const actualValue = element.style[styleProp]
-            const calculatedValue = window.getComputedStyle(element)[styleProp]
-            Manipulator.setDataAttribute(element, styleProp, actualValue)
-            element.style[styleProp] = callback(Number.parseFloat(calculatedValue)) + 'px'
-          })
-      }
-
       // Adjust fixed content padding
-      setElement(SELECTOR_FIXED_CONTENT, 'paddingRight', calculatedValue => calculatedValue + this._scrollbarWidth)
+      this._setElement(SELECTOR_FIXED_CONTENT, 'paddingRight', calculatedValue => calculatedValue + this._scrollbarWidth)
       // Adjust sticky content margin
-      setElement(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - this._scrollbarWidth)
+      this._setElement(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - this._scrollbarWidth)
       // Adjust body padding
-      setElement('body', 'paddingRight', calculatedValue => calculatedValue + this._scrollbarWidth)
+      this._setElement('body', 'paddingRight', calculatedValue => calculatedValue + this._scrollbarWidth)
     }
 
     document.body.classList.add(CLASS_NAME_OPEN)
   }
 
+  _setElement(selector, styleProp, callback) {
+    SelectorEngine.find(selector)
+      .forEach(element => {
+        const actualValue = element.style[styleProp]
+        const calculatedValue = window.getComputedStyle(element)[styleProp]
+        Manipulator.setDataAttribute(element, styleProp, actualValue)
+        element.style[styleProp] = callback(Number.parseFloat(calculatedValue)) + 'px'
+      })
+  }
+
   _resetScrollbar() {
     // Reset changed values
-    const resetElement = (selector, styleProp) => {
-      SelectorEngine.find(selector).forEach(element => {
-        const value = Manipulator.getDataAttribute(element, styleProp)
-        if (typeof value === 'undefined' && element === document.body) {
-          element.style[styleProp] = ''
-        } else {
-          Manipulator.removeDataAttribute(element, styleProp)
-          element.style[styleProp] = value
-        }
-      })
-    }
 
     // Restore fixed content padding
-    resetElement(SELECTOR_FIXED_CONTENT, 'paddingRight')
+    this._resetElement(SELECTOR_FIXED_CONTENT, 'paddingRight')
     // Restore sticky content and navbar-toggler margin
-    resetElement(SELECTOR_STICKY_CONTENT, 'marginRight')
+    this._resetElement(SELECTOR_STICKY_CONTENT, 'marginRight')
     // Restore body padding
-    resetElement('body', 'paddingRight')
+    this._resetElement('body', 'paddingRight')
+  }
+
+  _resetElement(selector, styleProp) {
+    SelectorEngine.find(selector).forEach(element => {
+      const value = Manipulator.getDataAttribute(element, styleProp)
+      if (typeof value === 'undefined' && element === document.body) {
+        element.style[styleProp] = ''
+      } else {
+        Manipulator.removeDataAttribute(element, styleProp)
+        element.style[styleProp] = value
+      }
+    })
   }
 
   _getScrollbarWidth() { // thx d.walsh
