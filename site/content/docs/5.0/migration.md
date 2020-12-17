@@ -7,15 +7,76 @@ aliases: "/migration/"
 toc: true
 ---
 
+## v5.0.0-beta2
+
+### Sass
+
+- Extended the `.visually-hidden-focusable` helper to also work on containers, using `:focus-within`.
+- Extended form validation states customization capabilities. Added three new optional parameters to the `form-validation-state` mixin: `tooltip-color`, `tooltip-bg-color`, `focus-box-shadow`. These parameters can be set in the `$form-validation-states` map. [See #31757](https://github.com/twbs/bootstrap/pull/31757).
+
+### JavaScript
+
+- The default value for the `fallbackPlacements` is changed to `['top', 'right', 'bottom', 'left']` for better placement of popper elements.
+
 ## v5.0.0-beta1
+
+### RTL
+
+**The RTL feature is still experimental and will probably evolve according to user feedback.** Spotted something or have an improvement to suggest? [Open an issue]({{< param repo >}}/issues/new), we'd love to get your insights.
+
+#### Sass
+
+Horizontal direction sensitive variables, utilities and mixins are renamed with more logical names — `start` and `end` in lieu of `left` and `right`.
+
+##### Components
+
+- Renamed `.dropleft` and `.dropright` to `.dropstart` and `dropend`.
+- Renamed `.dropdown-menu-*-left` and `.dropdown-menu-*-right` to `.dropdown-menu-*-start` and `.dropdown-menu-*-end`.
+- Renamed `.bs-popover-left` and `.bs-popover-right` to `.bs-popover-start` and `.bs-popover-end`.
+- Renamed `.bs-tooltip-left` and `.bs-tooltip-right` to `.bs-tooltip-start` and `.bs-tooltip-end`.
+- Renamed `.carousel-item-left` and `.carousel-item-right` to `.carousel-item-start` and `.carousel-item-end`.
+
+##### Utilities
+
+- Renamed `.left-*` and `.right-*` to `.start-*` and `.end-*`.
+- Renamed `.float-left` and `.float-right` to `.float-start` and `.float-end`.
+- Renamed `.border-left` and `.border-right` to `.border-start` and `.border-end`.
+- Renamed `.rounded-left` and `.rounded-right` to `.rounded-start` and `.rounded-end`.
+- Renamed `.ml-*` and `.mr-*` to `.ms-*` and `.me-*`.
+- Renamed `.pl-*` and `.pr-*` to `.ps-*` and `.pe-*`.
+- Renamed `.text-left` and `.text-right` to `.text-start` and `.text-end`.
+
+Breakpoints specific variants are consequently renamed too (eg. `.text-md-start` replaces `.text-md-left`).
+
+##### Mixins
+
+- Renamed `border-left-radius()` and `border-right-radius()` to `border-start-radius()` and `border-end-radius()` — as well as their corner relative variants (eg. `.border-bottom-left-radius` became `.border-bottom-start-radius`).
+- Renamed `caret-left()` and `caret-right()` to `caret-start()` and `caret-end()` — subsequently, the `caret()` mixin now takes `start` and `end` as arguments instead of `left` and `right`.
+
+##### Variables
+
+- New `$breadcrumb-divider-flipped` if a different breadcrumb separator is needed in RTL.
+- Renamed `$navbar-brand-margin-right` to `$navbar-brand-margin-end`.
+- Renamed `$pagination-margin-left` to `$pagination-margin-start`.
+- Renamed `$form-check-padding-left` to `$form-check-padding-start`.
+- Renamed `$form-switch-padding-left` to `$form-switch-padding-start`.
+- Renamed `$form-check-inline-margin-right` to `$form-check-inline-margin-end`.
+- Renamed `$form-select-feedback-icon-padding-right` to `$form-select-feedback-icon-padding-end`.
 
 ### JavaScript
 
 - Data attributes for all JavaScript plugins are now namespaced to help distinguish Bootstrap functionality from third parties and your own code. For example, we use `data-bs-toggle` instead of `data-toggle`.
+- Updated Popper to v2.x:
+  - Removed `offset` option from our Tooltip/Popover and Dropdown plugins; this can still be achieved using the `popperConfig` parameter.
+  - The `fallbackPlacement` option has become `fallbackPlacements`.
 
 ### Sass
 
 - Renamed `scale-color()` function to `shift-color()` to avoid collision with Sass's own color scaling function.
+
+### Utilities
+
+- Added new `.translate-middle-x` & `.translate-middle-y` utilities to horizontally or vertically center absolute/fixed positioned elements.
 
 ### Components
 
@@ -23,6 +84,10 @@ toc: true
 
 - Simplified the default appearance of breadcrumbs by removing `padding`, `background-color`, and `border-radius`.
 - Added new CSS custom property `--bs-breadcrumb-divider` for easy customization without needing to recompile CSS.
+
+#### Toasts
+
+- Toasts can now be [positioned]({{< docsref "/components/toasts#placement" >}}) in a `.toast-container` with the help of [positioning utilities]({{< docsref "/utilities/position" >}}).
 
 ## v5.0.0-alpha3
 

@@ -9,7 +9,7 @@ Customize Bootstrap with our built-in custom variables file and easily toggle gl
 
 You can find and customize these variables for key global options in Bootstrap's `scss/_variables.scss` file.
 
-{{< bs-table "table text-left" >}}
+{{< bs-table "table text-start" >}}
 | Variable                       | Values                             | Description                                                                            |
 | ------------------------------ | ---------------------------------- | -------------------------------------------------------------------------------------- |
 | `$spacer`                      | `1rem` (default), or any value > 0 | Specifies the default spacer value to programmatically generate our [spacer utilities]({{< docsref "/utilities/spacing" >}}). |

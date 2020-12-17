@@ -27,7 +27,7 @@ import Alert from 'bootstrap/js/dist/alert';
 ```
 
 Bootstrap depends on [Popper](https://popper.js.org/), which is specified in the `peerDependencies` property.
-This means that you will have to make sure to add it to your `package.json` using `npm install popper.js`.
+This means that you will have to make sure to add it to your `package.json` using `npm install @popperjs/core`.
 
 ## Importing Styles
 
