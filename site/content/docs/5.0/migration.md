@@ -12,6 +12,7 @@ toc: true
 ### Sass
 
 - Extended the `.visually-hidden-focusable` helper to also work on containers, using `:focus-within`.
+- Extended form validation states customization capabilities. Added three new optional parameters to the `form-validation-state` mixin: `tooltip-color`, `tooltip-bg-color`, `focus-box-shadow`. These parameters can be set in the `$form-validation-states` map. [See #31757](https://github.com/twbs/bootstrap/pull/31757).
 
 ### JavaScript
 
