@@ -61,7 +61,7 @@
     "docs-serve": "hugo server --port 9001 --disableFastRender",
     "docs-serve-only": "npx sirv-cli _gh_pages --port 9001",
     "lockfile-lint": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",
-    "update-deps": "ncu -u -x karma-browserstack-launcher,terser && npm update && echo Manually update site/assets/js/vendor",
+    "update-deps": "ncu -u -x terser && npm update && echo Manually update site/assets/js/vendor",
     "release": "npm-run-all dist release-sri docs-build release-zip*",
     "release-sri": "node build/generate-sri.js",
     "release-version": "node build/change-version.js",
@@ -95,16 +95,16 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "@popperjs/core": "^2.5.4"
+    "@popperjs/core": "^2.6.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.10",
-    "@popperjs/core": "^2.5.4",
+    "@popperjs/core": "^2.6.0",
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-commonjs": "^17.0.0",
-    "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-node-resolve": "^11.0.1",
     "@rollup/plugin-replace": "^2.3.4",
     "autoprefixer": "^10.1.0",
     "bundlewatch": "^0.3.1",
@@ -121,7 +121,7 @@
     "ip": "^1.1.5",
     "jquery": "^3.5.1",
     "karma": "^5.2.3",
-    "karma-browserstack-launcher": "1.4.0",
+    "karma-browserstack-launcher": "^1.6.0",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage-istanbul-reporter": "^3.0.3",
     "karma-detect-browsers": "^2.3.3",
@@ -134,10 +134,10 @@
     "nodemon": "^2.0.6",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.2.1",
-    "postcss-cli": "^8.3.0",
-    "rollup": "^2.34.2",
+    "postcss-cli": "^8.3.1",
+    "rollup": "^2.35.1",
     "rollup-plugin-istanbul": "^2.0.1",
-    "rtlcss": "^2.6.2",
+    "rtlcss": "^3.0.0",
     "sass": "^1.30.0",
     "shelljs": "^0.8.4",
     "stylelint": "^13.8.0",
@@ -168,7 +168,7 @@
     },
     "dependencies": {},
     "peerDependencies": {
-      "@popperjs/core": "^2.5.4"
+      "@popperjs/core": "^2.6.0"
     }
   }
 }
