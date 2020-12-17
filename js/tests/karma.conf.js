@@ -16,6 +16,7 @@ const { env } = process
 const browserStack = env.BROWSER === 'true'
 const debug = env.DEBUG === 'true'
 const jQueryTest = env.JQUERY === 'true'
+
 const frameworks = [
   'jasmine'
 ]
@@ -106,7 +107,7 @@ if (browserStack) {
   conf.browserStack = {
     username: env.BROWSER_STACK_USERNAME,
     accessKey: env.BROWSER_STACK_ACCESS_KEY,
-    build: `bootstrap-${new Date().toISOString()}`,
+    build: `bootstrap-${env.GITHUB_SHA ? env.GITHUB_SHA : ''} ${new Date().toISOString()}`,
     project: 'Bootstrap',
     retryLimit: 2
   }
