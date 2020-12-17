@@ -1,12 +1,12 @@
+- name: Chinese
+  code: zh
+  description: Bootstrap 5 · 全球最流行的 HTML、CSS 和 JS 工具库。
+  url: https://code.z01.com/bootstrap/
+
 - name: 中文(繁體)
   code: zh-tw
   description: Bootstrap 4 繁體中文手冊
   url: https://bootstrap.hexschool.com/
-
-- name: Chinese
-  code: zh
-  description: Bootstrap 4 · 全球最流行的 HTML、CSS 和 JS 工具库。
-  url: https://code.z01.com/v4/
 
 - name: Brazilian Portuguese
   code: pt-BR
