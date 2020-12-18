@@ -558,3 +558,119 @@ $utilities: map-merge(
   ),
   $utilities
 );
+
+@if $enable-aliased-utilities {
+  $utilities: map-merge(
+    (
+      "float-left": (
+        property: float,
+        values: left,
+        rtl: false,
+      ),
+      "float-right": (
+        property: float,
+        values: right,
+        rtl: false,
+      ),
+      "left": (
+        property: left,
+        class: left,
+        values: $position-values,
+        rtl: false,
+      ),
+      "right": (
+        property: right,
+        class: right,
+        values: $position-values,
+        rtl: false,
+      ),
+      "border-right": (
+        property: border-right,
+        class: border-right,
+        values: (
+          null: $border-width solid $border-color,
+          0: 0,
+        ),
+        rtl: false,
+      ),
+      "border-left": (
+        property: border-left,
+        class: border-left,
+        values: (
+          null: $border-width solid $border-color,
+          0: 0,
+        ),
+        rtl: false,
+      ),
+      "margin-right": (
+        responsive: true,
+        property: margin-right,
+        class: mr,
+        values: map-merge($spacers, (auto: auto)),
+        rtl: false,
+      ),
+      "margin-left": (
+        responsive: true,
+        property: margin-left,
+        class: ml,
+        values: map-merge($spacers, (auto: auto)),
+        rtl: false,
+      ),
+      "negative-margin-right": (
+        responsive: true,
+        property: margin-right,
+        class: mr,
+        values: $negative-spacers,
+        rtl: false,
+      ),
+      "negative-margin-left": (
+        responsive: true,
+        property: margin-left,
+        class: ml,
+        values: $negative-spacers,
+        rtl: false,
+      ),
+      "padding-right": (
+        responsive: true,
+        property: padding-right,
+        class: pr,
+        values: $spacers,
+        rtl: false,
+      ),
+      "padding-left": (
+        responsive: true,
+        property: padding-left,
+        class: pl,
+        values: $spacers,
+        rtl: false,
+      ),
+      "text-align-left": (
+        responsive: true,
+        property: text-align,
+        class: text,
+        values: left,
+        rtl: false,
+      ),
+      "text-align-right": (
+        responsive: true,
+        property: text-align,
+        class: text,
+        values: right,
+        rtl: false,
+      ),
+      "rounded-right": (
+        property: border-top-right-radius border-bottom-right-radius,
+        class: rounded-end,
+        values: (null: $border-radius),
+        rtl: false,
+      ),
+      "rounded-left": (
+        property: border-bottom-left-radius border-top-left-radius,
+        class: rounded-start,
+        values: (null: $border-radius),
+        rtl: false,
+      ),
+    ),
+    $utilities
+  );
+}
