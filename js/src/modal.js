@@ -456,20 +456,18 @@ class Modal extends BaseComponent {
 
   _setScrollbar() {
     if (this._isBodyOverflowing) {
-      // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
-      //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
       // Adjust fixed content padding
-      this._setElement(SELECTOR_FIXED_CONTENT, 'paddingRight', calculatedValue => calculatedValue + this._scrollbarWidth)
+      this._setElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight', calculatedValue => calculatedValue + this._scrollbarWidth)
       // Adjust sticky content margin
-      this._setElement(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - this._scrollbarWidth)
+      this._setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - this._scrollbarWidth)
       // Adjust body padding
-      this._setElement('body', 'paddingRight', calculatedValue => calculatedValue + this._scrollbarWidth)
+      this._setElementAttributes('body', 'paddingRight', calculatedValue => calculatedValue + this._scrollbarWidth)
     }
 
     document.body.classList.add(CLASS_NAME_OPEN)
   }
 
-  _setElement(selector, styleProp, callback) {
+  _setElementAttributes(selector, styleProp, callback) {
     SelectorEngine.find(selector)
       .forEach(element => {
         const actualValue = element.style[styleProp]
@@ -479,18 +477,17 @@ class Modal extends BaseComponent {
       })
   }
 
+  // Reset changed values
   _resetScrollbar() {
-    // Reset changed values
-
     // Restore fixed content padding
-    this._resetElement(SELECTOR_FIXED_CONTENT, 'paddingRight')
+    this._resetElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight')
     // Restore sticky content and navbar-toggler margin
-    this._resetElement(SELECTOR_STICKY_CONTENT, 'marginRight')
+    this._resetElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight')
     // Restore body padding
-    this._resetElement('body', 'paddingRight')
+    this._resetElementAttributes('body', 'paddingRight')
   }
 
-  _resetElement(selector, styleProp) {
+  _resetElementAttributes(selector, styleProp) {
     SelectorEngine.find(selector).forEach(element => {
       const value = Manipulator.getDataAttribute(element, styleProp)
       if (typeof value === 'undefined' && element === document.body) {
