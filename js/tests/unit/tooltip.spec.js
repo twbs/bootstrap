@@ -465,13 +465,12 @@ describe('Tooltip', () => {
       })
 
       tooltipEl.addEventListener('inserted.bs.tooltip', () => {
-        expect(tooltip.getTipElement().classList.contains('bs-tooltip-bottom')).toEqual(true)
+        expect(tooltip.getTipElement().classList.contains('bs-tooltip-auto')).toEqual(true)
       })
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
-        const tooltipShown = document.querySelector('.tooltip')
-
-        expect(tooltipShown.classList.contains('bs-tooltip-bottom')).toEqual(true)
+        expect(tooltip.getTipElement().classList.contains('bs-tooltip-auto')).toEqual(true)
+        expect(tooltip.getTipElement().getAttribute('data-popper-placement')).toEqual('bottom')
         done()
       })
 
@@ -699,6 +698,7 @@ describe('Tooltip', () => {
 
         setTimeout(() => {
           expect(tooltip.getTipElement().classList.contains('show')).toEqual(true)
+          expect(document.querySelectorAll('.tooltip').length).toEqual(1)
           done()
         }, 200)
       }, 0)
@@ -1092,7 +1092,7 @@ describe('Tooltip', () => {
       })
 
       tooltipEl.addEventListener('inserted.bs.tooltip', () => {
-        expect(tooltip.getTipElement().classList.contains('bs-tooltip-end')).toEqual(true)
+        expect(tooltip.getTipElement().classList.contains('bs-tooltip-auto')).toEqual(true)
         done()
       })
 
@@ -1108,7 +1108,7 @@ describe('Tooltip', () => {
       })
 
       tooltipEl.addEventListener('inserted.bs.tooltip', () => {
-        expect(tooltip.getTipElement().classList.contains('bs-tooltip-start')).toEqual(true)
+        expect(tooltip.getTipElement().classList.contains('bs-tooltip-auto')).toEqual(true)
         done()
       })
 
