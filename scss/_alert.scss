@@ -44,14 +44,14 @@
 // Generate contextual modifier classes for colorizing the alert.
 
 @each $state, $value in $theme-colors {
-  $background: shift-color($value, $alert-bg-scale);
-  $border: shift-color($value, $alert-border-scale);
-  $color: shift-color($value, $alert-color-scale);
-  @if (contrast-ratio($background, $color) < $min-contrast-ratio) {
-    $color: mix($value, color-contrast($background), abs($alert-color-scale));
+  $alert-background: shift-color($value, $alert-bg-scale);
+  $alert-border: shift-color($value, $alert-border-scale);
+  $alert-color: shift-color($value, $alert-color-scale);
+  @if (contrast-ratio($alert-background, $alert-color) < $min-contrast-ratio) {
+    $alert-color: mix($value, color-contrast($alert-background), abs($alert-color-scale));
   }
   .alert-#{$state} {
-    @include alert-variant($background, $border, $color);
+    @include alert-variant($alert-background, $alert-border, $alert-color);
   }
 }
 // scss-docs-end alert-modifiers
