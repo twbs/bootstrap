@@ -191,13 +191,7 @@ class Tooltip extends BaseComponent {
     }
 
     if (event) {
-      const dataKey = this.constructor.DATA_KEY
-      let context = Data.getData(event.delegateTarget, dataKey)
-
-      if (!context) {
-        context = new this.constructor(event.delegateTarget, this._getDelegateConfig())
-        Data.setData(event.delegateTarget, dataKey, context)
-      }
+      const context = this._initializeOnDelegatedTarget(event)
 
       context._activeTrigger.click = !context._activeTrigger.click
 
@@ -465,6 +459,18 @@ class Tooltip extends BaseComponent {
 
   // Private
 
+  _initializeOnDelegatedTarget(event, context) {
+    const dataKey = this.constructor.DATA_KEY
+    context = context || Data.getData(event.delegateTarget, dataKey)
+
+    if (!context) {
+      context = new this.constructor(event.delegateTarget, this._getDelegateConfig())
+      Data.setData(event.delegateTarget, dataKey, context)
+    }
+
+    return context
+  }
+
   _getPopperConfig(attachment) {
     const defaultBsConfig = {
       placement: attachment,
@@ -582,16 +588,7 @@ class Tooltip extends BaseComponent {
   }
 
   _enter(event, context) {
-    const dataKey = this.constructor.DATA_KEY
-    context = context || Data.getData(event.delegateTarget, dataKey)
-
-    if (!context) {
-      context = new this.constructor(
-        event.delegateTarget,
-        this._getDelegateConfig()
-      )
-      Data.setData(event.delegateTarget, dataKey, context)
-    }
+    context = this._initializeOnDelegatedTarget(event, context)
 
     if (event) {
       context._activeTrigger[
@@ -621,16 +618,7 @@ class Tooltip extends BaseComponent {
   }
 
   _leave(event, context) {
-    const dataKey = this.constructor.DATA_KEY
-    context = context || Data.getData(event.delegateTarget, dataKey)
-
-    if (!context) {
-      context = new this.constructor(
-        event.delegateTarget,
-        this._getDelegateConfig()
-      )
-      Data.setData(event.delegateTarget, dataKey, context)
-    }
+    context = this._initializeOnDelegatedTarget(event, context)
 
     if (event) {
       context._activeTrigger[
