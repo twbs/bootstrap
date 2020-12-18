@@ -52,6 +52,6 @@ describe('jQuery', () => {
         done()
       })
 
-    $(fixtureEl).find('button').click()
+    $(fixtureEl).find('button').trigger('click')
   })
 })
