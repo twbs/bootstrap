@@ -139,13 +139,49 @@
 // Keep as a separate element so folks can easily override it with another icon
 // or image file as needed.
 .navbar-toggler-icon {
+  position: relative;
   display: inline-block;
-  width: 1.5em;
-  height: 1.5em;
-  vertical-align: middle;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100%;
+  width: $navbar-toggler-font-size;
+  height: $border-width * 2;
+  vertical-align: super;
+  background: currentColor;
+  @include transition(background .3s ease);
+
+  &::before,
+  &::after {
+    position: absolute;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    content: "";
+    background: currentColor;
+    transform: rotate3d(0, 0, 1, 0);
+    transform-origin: 50% 50%;
+    @include transition(.3s ease);
+  }
+  &::before {
+    top: $navbar-toggler-padding-y * -2;
+  }
+  &::after {
+    top: $navbar-toggler-padding-y * 2;
+  }
+
+  // Apply changes as soon as aria-expanded is modified
+  // (the `collapsed` class is only added after the transition has ended)
+  [aria-expanded="true"] & {
+    background: transparent;
+
+    &::before,
+    &::after {
+      top: 0;
+    }
+    &::before {
+      transform: rotate3d(0, 0, 1, -45deg);
+    }
+    &::after {
+      transform: rotate3d(0, 0, 1, 45deg);
+    }
+  }
 }
 
 // Generate series of `.navbar-expand-*` responsive classes for configuring
@@ -227,10 +263,6 @@
     border-color: $navbar-light-toggler-border-color;
   }
 
-  .navbar-toggler-icon {
-    background-image: escape-svg($navbar-light-toggler-icon-bg);
-  }
-
   .navbar-text {
     color: $navbar-light-color;
 
@@ -276,10 +308,6 @@
   .navbar-toggler {
     color: $navbar-dark-color;
     border-color: $navbar-dark-toggler-border-color;
-  }
-
-  .navbar-toggler-icon {
-    background-image: escape-svg($navbar-dark-toggler-icon-bg);
   }
 
   .navbar-text {
