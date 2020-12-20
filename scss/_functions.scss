@@ -161,9 +161,8 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
   @return mix(black, $color, $weight);
 }
 
-// Scale a color:
 // Shade the color if the weight is positive, else tint it
-@function scale-color($color, $weight) {
+@function shift-color($color, $weight) {
   @return if($weight > 0, shade-color($color, $weight), tint-color($color, -$weight));
 }
 // scss-docs-end color-functions

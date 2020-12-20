@@ -10,7 +10,7 @@ toc: true
 
 Things to know when using the popover plugin:
 
-- Popovers rely on the 3rd party library [Popper.js](https://popper.js.org/) for positioning. You must include [popper.min.js]({{< param "cdn.popper" >}}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js in order for popovers to work!
+- Popovers rely on the 3rd party library [Popper](https://popper.js.org/) for positioning. You must include [popper.min.js]({{< param "cdn.popper" >}}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper in order for popovers to work!
 - Popovers require the [tooltip plugin]({{< docsref "/components/tooltips" >}}) as a dependency.
 - Popovers are opt-in for performance reasons, so **you must initialize them yourself**.
 - Zero-length `title` and `content` values will never show a popover.
@@ -22,6 +22,10 @@ Things to know when using the popover plugin:
 - Popovers can be triggered thanks to an element inside a shadow DOM.
 
 {{< callout info >}}
+{{< partial "callout-info-sanitizer.md" >}}
+{{< /callout >}}
+
+{{< callout info >}}
 {{< partial "callout-info-prefersreducedmotion.md" >}}
 {{< /callout >}}
 
@@ -29,10 +33,10 @@ Keep reading to see how popovers work with some examples.
 
 ## Example: Enable popovers everywhere
 
-One way to initialize all popovers on a page would be to select them by their `data-toggle` attribute:
+One way to initialize all popovers on a page would be to select them by their `data-bs-toggle` attribute:
 
 ```js
-var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
+var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
 var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   return new bootstrap.Popover(popoverTriggerEl)
 })
@@ -51,48 +55,27 @@ var popover = new bootstrap.Popover(document.querySelector('.example-popover'), 
 ## Example
 
 {{< example >}}
-<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
 {{< /example >}}
 
 ### Four directions
 
-Four options are available: top, right, bottom, and left aligned.
+Four options are available: top, right, bottom, and left aligned. Directions are mirrored when using Bootstrap in RTL.
 
-<div class="bd-example popover-demo">
-  <div class="bd-example-popovers">
-    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-      Popover on top
-    </button>
-    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-      Popover on right
-    </button>
-    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-      Popover on bottom
-    </button>
-    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-      Popover on left
-    </button>
-  </div>
-</div>
-
-```html
-<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+{{< example >}}
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
   Popover on top
 </button>
-
-<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover">
   Popover on right
 </button>
-
-<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
-sagittis lacus vel augue laoreet rutrum faucibus.">
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
   Popover on bottom
 </button>
-
-<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Left popover">
   Popover on left
 </button>
-```
+{{< /example >}}
 
 ### Dismiss on next click
 
@@ -105,7 +88,7 @@ For proper cross-browser and cross-platform behavior, you must use the `<a>` tag
 {{< /callout >}}
 
 {{< example >}}
-<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
+<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Dismissible popover" data-bs-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
 {{< /example >}}
 
 ```js
@@ -116,13 +99,13 @@ var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), 
 
 ### Disabled elements
 
-Elements with the `disabled` attribute aren't interactive, meaning users cannot hover or click them to trigger a popover (or tooltip). As a workaround, you'll want to trigger the popover from a wrapper `<div>` or `<span>` and override the `pointer-events` on the disabled element.
+Elements with the `disabled` attribute aren't interactive, meaning users cannot hover or click them to trigger a popover (or tooltip). As a workaround, you'll want to trigger the popover from a wrapper `<div>` or `<span>`.
 
-For disabled popover triggers, you may also prefer `data-trigger="hover"` so that the popover appears as immediate visual feedback to your users as they may not expect to _click_ on a disabled element.
+For disabled popover triggers, you may also prefer `data-bs-trigger="hover"` so that the popover appears as immediate visual feedback to your users as they may not expect to _click_ on a disabled element.
 
 {{< example >}}
-<span class="d-inline-block" data-toggle="popover" data-content="Disabled popover">
-  <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button>
+<span class="d-inline-block" data-bs-toggle="popover" data-bs-content="Disabled popover">
+  <button class="btn btn-primary" type="button" disabled>Disabled button</button>
 </span>
 {{< /example >}}
 
@@ -147,7 +130,7 @@ Additionally, while it is possible to also include interactive controls (such as
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-animation=""`.
 
 {{< callout warning >}}
 Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` options cannot be supplied using data attributes.
@@ -182,7 +165,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       <td>string | element | function</td>
       <td><code>''</code></td>
       <td>
-        <p>Default content value if <code>data-content</code> attribute isn't present.</p>
+        <p>Default content value if <code>data-bs-content</code> attribute isn't present.</p>
         <p>If a function is given, it will be called with its <code>this</code> reference set to the element that the popover is attached to.</p>
       </td>
     </tr>
@@ -215,7 +198,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       <td><code>selector</code></td>
       <td>string | false</td>
       <td><code>false</code></td>
-      <td>If a selector is provided, popover objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="{{< param repo >}}/issues/4215">this</a> and <a href="https://codepen.io/Johann-S/pen/djJYPb">an informative example</a>.</td>
+      <td>If a selector is provided, popover objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="{{< param repo >}}/issues/4215">this</a> and <a href="https://codepen.io/team/bootstrap/pen/zYBXGwX?editors=1010">an informative example</a>.</td>
     </tr>
     <tr>
       <td><code>template</code></td>
@@ -245,29 +228,32 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. <code>manual</code> cannot be combined with any other trigger.</td>
     </tr>
     <tr>
-      <td><code>offset</code></td>
-      <td>number | string</td>
-      <td><code>0</code></td>
-      <td>Offset of the popover relative to its target. For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..offset.offset">offset docs</a>.</td>
-    </tr>
-    <tr>
-      <td><code>fallbackPlacement</code></td>
-      <td>string | array</td>
-      <td><code>'flip'</code></td>
-      <td>Allow to specify which position Popper will use on fallback. For more information refer to
-      Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..flip.behavior">behavior docs</a></td>
+      <td><code>fallbackPlacements</code></td>
+      <td>array</td>
+      <td><code>['top', 'right', 'bottom', 'left']</code></td>
+      <td>Define fallback placements by providing a list of placements in array (in order of preference). For more information refer to
+      Popper's <a href="https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements">behavior docs</a></td>
     </tr>
     <tr>
       <td><code>boundary</code></td>
       <td>string | element</td>
       <td><code>'scrollParent'</code></td>
-      <td>Overflow constraint boundary of the popover. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
+      <td>Overflow constraint boundary of the popover. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper's <a href="https://popper.js.org/docs/v2/utils/detect-overflow/#boundary">preventOverflow docs</a>.</td>
+    </tr>
+    <tr>
+      <td><code>customClass</code></td>
+      <td>string | function</td>
+      <td><code>''</code></td>
+      <td>
+        <p>Add classes to the popover when it is shown. Note that these classes will be added in addition to any classes specified in the template. To add multiple classes, separate them with spaces: <code>'class-1 class-2'</code>.</p>
+        <p>You can also pass a function that should return a single string containing additional class names.</p>
+      </td>
     </tr>
     <tr>
       <td><code>sanitize</code></td>
       <td>boolean</td>
       <td><code>true</code></td>
-      <td>Enable or disable the sanitization. If activated <code>'template'</code>, <code>'content'</code> and <code>'title'</code> options will be sanitized.</td>
+      <td>Enable or disable the sanitization. If activated <code>'template'</code>, <code>'content'</code> and <code>'title'</code> options will be sanitized. See the <a href="{{< docsref "/getting-started/javascript#sanitizer" >}}">sanitizer section in our JavaScript documentation</a>.</td>
     </tr>
     <tr>
       <td><code>allowList</code></td>
@@ -285,7 +271,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       <td><code>popperConfig</code></td>
       <td>null | object</td>
       <td><code>null</code></td>
-      <td>To change Bootstrap's default Popper.js config, see <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper.js's configuration</a></td>
+      <td>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v2/constructors/#options">Popper's configuration</a></td>
     </tr>
   </tbody>
 </table>

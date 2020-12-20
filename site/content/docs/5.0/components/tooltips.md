@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Tooltips
-description: Documentation and examples for adding custom Bootstrap tooltips with CSS and JavaScript using CSS3 for animations and data-attributes for local title storage.
+description: Documentation and examples for adding custom Bootstrap tooltips with CSS and JavaScript using CSS3 for animations and data-bs-attributes for local title storage.
 group: components
 toc: true
 ---
@@ -10,7 +10,7 @@ toc: true
 
 Things to know when using the tooltip plugin:
 
-- Tooltips rely on the 3rd party library [Popper.js](https://popper.js.org/) for positioning. You must include [popper.min.js]({{< param "cdn.popper" >}}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js in order for tooltips to work!
+- Tooltips rely on the 3rd party library [Popper](https://popper.js.org/) for positioning. You must include [popper.min.js]({{< param "cdn.popper" >}}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper in order for tooltips to work!
 - Tooltips are opt-in for performance reasons, so **you must initialize them yourself**.
 - Tooltips with zero-length titles are never displayed.
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
@@ -21,6 +21,10 @@ Things to know when using the tooltip plugin:
 - Tooltips can be triggered thanks to an element inside a shadow DOM.
 
 {{< callout info >}}
+{{< partial "callout-info-sanitizer.md" >}}
+{{< /callout >}}
+
+{{< callout info >}}
 {{< partial "callout-info-prefersreducedmotion.md" >}}
 {{< /callout >}}
 
@@ -28,10 +32,10 @@ Got all that? Great, let's see how they work with some examples.
 
 ## Example: Enable tooltips everywhere
 
-One way to initialize all tooltips on a page would be to select them by their `data-toggle` attribute:
+One way to initialize all tooltips on a page would be to select them by their `data-bs-toggle` attribute:
 
 ```js
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
@@ -42,33 +46,33 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 Hover over the links below to see tooltips:
 
 <div class="bd-example tooltip-demo">
-  <p class="muted">Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-toggle="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-toggle="tooltip" title="Another one here too">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-toggle="tooltip" title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.
+  <p class="muted">Placeholder text to demonstrate some <a href="#" data-bs-toggle="tooltip" title="Default tooltip">inline links</a>with tooltips. This is now just filler, no killer. Content placed here just to mimic the presence of <a href="#" data-bs-toggle="tooltip" title="Another tooltip">real text</a>. And all that just to give you an idea of how tooltips would look when used in real-world situations. So hopefully you've now seen how <a href="#" data-bs-toggle="tooltip" title="Another one here too">these tooltips on links</a> can work in practice, once you use them on <a href="#" data-bs-toggle="tooltip" title="The last tip!">your own</a> site or project.
   </p>
 </div>
 
-Hover over the buttons below to see the four tooltips directions: top, right, bottom, and left.
+Hover over the buttons below to see the four tooltips directions: top, right, bottom, and left. Directions are mirrored when using Bootstrap in RTL.
 
 <div class="bd-example tooltip-demo">
   <div class="bd-example-tooltips">
-    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>
-    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
-    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
-    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
-    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Tooltip with HTML</button>
+    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">Tooltip on top</button>
+    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">Tooltip on right</button>
+    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
+    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">Tooltip on left</button>
+    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Tooltip with HTML</button>
   </div>
 </div>
 
 ```html
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
   Tooltip on top
 </button>
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
+<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">
   Tooltip on right
 </button>
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
   Tooltip on bottom
 </button>
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">
   Tooltip on left
 </button>
 ```
@@ -76,7 +80,7 @@ Hover over the buttons below to see the four tooltips directions: top, right, bo
 And with custom HTML added:
 
 ```html
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
+<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
   Tooltip with HTML
 </button>
 ```
@@ -84,7 +88,7 @@ And with custom HTML added:
 With an SVG:
 
 <div class="bd-example tooltip-demo">
-  <a href="#" data-toggle="tooltip" title="Default tooltip">
+  <a href="#" data-bs-toggle="tooltip" title="Default tooltip">
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
       <rect width="100%" height="100%" fill="#563d7c"/>
       <circle cx="50" cy="50" r="30" fill="#007bff"/>
@@ -128,7 +132,7 @@ You should only add tooltips to HTML elements that are traditionally keyboard-fo
 
 ```html
 <!-- HTML to write -->
-<a href="#" data-toggle="tooltip" title="Some tooltip text!">Hover over me</a>
+<a href="#" data-bs-toggle="tooltip" title="Some tooltip text!">Hover over me</a>
 
 <!-- Generated markup by the plugin -->
 <div class="tooltip bs-tooltip-top" role="tooltip">
@@ -141,19 +145,19 @@ You should only add tooltips to HTML elements that are traditionally keyboard-fo
 
 ### Disabled elements
 
-Elements with the `disabled` attribute aren't interactive, meaning users cannot focus, hover, or click them to trigger a tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`, and override the `pointer-events` on the disabled element.
+Elements with the `disabled` attribute aren't interactive, meaning users cannot focus, hover, or click them to trigger a tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`.
 
 <div class="tooltip-demo">
 {{< example >}}
-<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
-  <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button>
+<span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Disabled tooltip">
+  <button class="btn btn-primary" type="button" disabled>Disabled button</button>
 </span>
 {{< /example >}}
 </div>
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-animation=""`.
 
 {{< callout warning >}}
 Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` options cannot be supplied using data attributes.
@@ -216,7 +220,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       <td><code>selector</code></td>
       <td>string | false</td>
       <td><code>false</code></td>
-      <td>If a selector is provided, tooltip objects will be delegated to the specified targets. In practice, this is used to also apply tooltips to dynamically added DOM elements (<code>jQuery.on</code> support). See <a href="{{< param repo >}}/issues/4215">this</a> and <a href="https://codepen.io/Johann-S/pen/djJYPb">an informative example</a>.</td>
+      <td>If a selector is provided, tooltip objects will be delegated to the specified targets. In practice, this is used to also apply tooltips to dynamically added DOM elements (<code>jQuery.on</code> support). See <a href="{{< param repo >}}/issues/4215">this</a> and <a href="https://codepen.io/team/bootstrap/pen/zYBXGwX?editors=1010">an informative example</a>.</td>
     </tr>
     <tr>
       <td><code>template</code></td>
@@ -249,33 +253,32 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       </td>
     </tr>
     <tr>
-      <td><code>offset</code></td>
-      <td>number | string | function</td>
-      <td><code>0</code></td>
-      <td>
-        <p>Offset of the tooltip relative to its target.</p>
-        <p>When a function is used to determine the offset, it is called with an object containing the offset data as its first argument. The function must return an object with the same structure. The triggering element DOM node is passed as the second argument.</p>
-        <p>For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..offset.offset">offset docs</a>.</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code>fallbackPlacement</code></td>
-      <td>string | array</td>
-      <td><code>'flip'</code></td>
-      <td>Allow to specify which position Popper will use on fallback. For more information refer to
-      Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..flip.behavior">behavior docs</a></td>
+      <td><code>fallbackPlacements</code></td>
+      <td>array</td>
+      <td><code>['top', 'right', 'bottom', 'left']</code></td>
+      <td>Define fallback placements by providing a list of placements in array (in order of preference). For more information refer to
+      Popper's <a href="https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements">behavior docs</a></td>
     </tr>
     <tr>
       <td><code>boundary</code></td>
       <td>string | element</td>
-      <td><code>'scrollParent'</code></td>
-      <td>Overflow constraint boundary of the tooltip. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
+      <td><code>'clippingParents'</code></td>
+      <td>Overflow constraint boundary of the tooltip. By default it's <code>'clippingParents'</code> and can accept an HTMLElement reference (JavaScript only). For more information refer to Popper's <a href="https://popper.js.org/docs/v2/utils/detect-overflow/#boundary">preventOverflow docs</a>.</td>
+    </tr>
+    <tr>
+      <td><code>customClass</code></td>
+      <td>string | function</td>
+      <td><code>''</code></td>
+      <td>
+        <p>Add classes to the tooltip when it is shown. Note that these classes will be added in addition to any classes specified in the template. To add multiple classes, separate them with spaces: <code>'class-1 class-2'</code>.</p>
+        <p>You can also pass a function that should return a single string containing additional class names.</p>
+      </td>
     </tr>
     <tr>
       <td><code>sanitize</code></td>
       <td>boolean</td>
       <td><code>true</code></td>
-      <td>Enable or disable the sanitization. If activated <code>'template'</code> and <code>'title'</code> options will be sanitized.</td>
+      <td>Enable or disable the sanitization. If activated <code>'template'</code> and <code>'title'</code> options will be sanitized. See the <a href="{{< docsref "/getting-started/javascript#sanitizer" >}}">sanitizer section in our JavaScript documentation</a>.</td>
     </tr>
     <tr>
       <td><code>allowList</code></td>
@@ -293,7 +296,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       <td><code>popperConfig</code></td>
       <td>null | object</td>
       <td><code>null</code></td>
-      <td>To change Bootstrap's default Popper.js config, see <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper.js's configuration</a></td>
+      <td>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v2/constructors/#options">Popper's configuration</a></td>
     </tr>
   </tbody>
 </table>

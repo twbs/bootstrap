@@ -1,11 +1,11 @@
 /*!
-  * Bootstrap collapse.js v5.0.0-alpha2 (https://getbootstrap.com/)
+  * Bootstrap collapse.js v5.0.0-beta1 (https://getbootstrap.com/)
   * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js')) :
-  typeof define === 'function' && define.amd ? define(['./dom/data.js', './dom/event-handler.js', './dom/manipulator.js', './dom/selector-engine.js'], factory) :
+  typeof define === 'function' && define.amd ? define(['./dom/data', './dom/event-handler', './dom/manipulator', './dom/selector-engine'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Collapse = factory(global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine));
 }(this, (function (Data, EventHandler, Manipulator, SelectorEngine) { 'use strict';
 
@@ -18,7 +18,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-alpha2): util/index.js
+   * Bootstrap (v5.0.0-beta1): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -34,7 +34,7 @@
   };
 
   var getSelector = function getSelector(element) {
-    var selector = element.getAttribute('data-target');
+    var selector = element.getAttribute('data-bs-target');
 
     if (!selector || selector === '#') {
       var hrefAttr = element.getAttribute('href');
@@ -69,8 +69,8 @@
         transitionDuration = _window$getComputedSt.transitionDuration,
         transitionDelay = _window$getComputedSt.transitionDelay;
 
-    var floatTransitionDuration = parseFloat(transitionDuration);
-    var floatTransitionDelay = parseFloat(transitionDelay); // Return 0 if element or transition duration is not found
+    var floatTransitionDuration = Number.parseFloat(transitionDuration);
+    var floatTransitionDelay = Number.parseFloat(transitionDelay); // Return 0 if element or transition duration is not found
 
     if (!floatTransitionDuration && !floatTransitionDelay) {
       return 0;
@@ -79,7 +79,7 @@
 
     transitionDuration = transitionDuration.split(',')[0];
     transitionDelay = transitionDelay.split(',')[0];
-    return (parseFloat(transitionDuration) + parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER;
+    return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER;
   };
 
   var triggerTransitionEnd = function triggerTransitionEnd(element) {
@@ -128,14 +128,22 @@
     var _window = window,
         jQuery = _window.jQuery;
 
-    if (jQuery && !document.body.hasAttribute('data-no-jquery')) {
+    if (jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
       return jQuery;
     }
 
     return null;
   };
 
-  function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+  var onDOMContentLoaded = function onDOMContentLoaded(callback) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', callback);
+    } else {
+      callback();
+    }
+  };
+
+  var isRTL = document.documentElement.dir === 'rtl';
 
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
@@ -146,8 +154,55 @@
    * ------------------------------------------------------------------------
    */
 
+  var VERSION = '5.0.0-beta1';
+
+  var BaseComponent = /*#__PURE__*/function () {
+    function BaseComponent(element) {
+      if (!element) {
+        return;
+      }
+
+      this._element = element;
+      Data__default['default'].setData(element, this.constructor.DATA_KEY, this);
+    }
+
+    var _proto = BaseComponent.prototype;
+
+    _proto.dispose = function dispose() {
+      Data__default['default'].removeData(this._element, this.constructor.DATA_KEY);
+      this._element = null;
+    }
+    /** Static */
+    ;
+
+    BaseComponent.getInstance = function getInstance(element) {
+      return Data__default['default'].getData(element, this.DATA_KEY);
+    };
+
+    _createClass(BaseComponent, null, [{
+      key: "VERSION",
+      get: function get() {
+        return VERSION;
+      }
+    }]);
+
+    return BaseComponent;
+  }();
+
+  function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+  function _defineProperties$1(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass$1(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$1(Constructor.prototype, protoProps); if (staticProps) _defineProperties$1(Constructor, staticProps); return Constructor; }
+
+  function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+  /**
+   * ------------------------------------------------------------------------
+   * Constants
+   * ------------------------------------------------------------------------
+   */
+
   var NAME = 'collapse';
-  var VERSION = '5.0.0-alpha2';
   var DATA_KEY = 'bs.collapse';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -171,19 +226,23 @@
   var WIDTH = 'width';
   var HEIGHT = 'height';
   var SELECTOR_ACTIVES = '.show, .collapsing';
-  var SELECTOR_DATA_TOGGLE = '[data-toggle="collapse"]';
+  var SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]';
   /**
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
    */
 
-  var Collapse = /*#__PURE__*/function () {
+  var Collapse = /*#__PURE__*/function (_BaseComponent) {
+    _inheritsLoose(Collapse, _BaseComponent);
+
     function Collapse(element, config) {
-      this._isTransitioning = false;
-      this._element = element;
-      this._config = this._getConfig(config);
-      this._triggerArray = SelectorEngine__default['default'].find(SELECTOR_DATA_TOGGLE + "[href=\"#" + element.id + "\"]," + (SELECTOR_DATA_TOGGLE + "[data-target=\"#" + element.id + "\"]"));
+      var _this;
+
+      _this = _BaseComponent.call(this, element) || this;
+      _this._isTransitioning = false;
+      _this._config = _this._getConfig(config);
+      _this._triggerArray = SelectorEngine__default['default'].find(SELECTOR_DATA_TOGGLE + "[href=\"#" + element.id + "\"]," + (SELECTOR_DATA_TOGGLE + "[data-bs-target=\"#" + element.id + "\"]"));
       var toggleList = SelectorEngine__default['default'].find(SELECTOR_DATA_TOGGLE);
 
       for (var i = 0, len = toggleList.length; i < len; i++) {
@@ -194,23 +253,23 @@
         });
 
         if (selector !== null && filterElement.length) {
-          this._selector = selector;
+          _this._selector = selector;
 
-          this._triggerArray.push(elem);
+          _this._triggerArray.push(elem);
         }
       }
 
-      this._parent = this._config.parent ? this._getParent() : null;
+      _this._parent = _this._config.parent ? _this._getParent() : null;
 
-      if (!this._config.parent) {
-        this._addAriaAndCollapsedClass(this._element, this._triggerArray);
+      if (!_this._config.parent) {
+        _this._addAriaAndCollapsedClass(_this._element, _this._triggerArray);
       }
 
-      if (this._config.toggle) {
-        this.toggle();
+      if (_this._config.toggle) {
+        _this.toggle();
       }
 
-      Data__default['default'].setData(element, DATA_KEY, this);
+      return _this;
     } // Getters
 
 
@@ -226,7 +285,7 @@
     };
 
     _proto.show = function show() {
-      var _this = this;
+      var _this2 = this;
 
       if (this._isTransitioning || this._element.classList.contains(CLASS_NAME_SHOW)) {
         return;
@@ -237,8 +296,8 @@
 
       if (this._parent) {
         actives = SelectorEngine__default['default'].find(SELECTOR_ACTIVES, this._parent).filter(function (elem) {
-          if (typeof _this._config.parent === 'string') {
-            return elem.getAttribute('data-parent') === _this._config.parent;
+          if (typeof _this2._config.parent === 'string') {
+            return elem.getAttribute('data-bs-parent') === _this2._config.parent;
           }
 
           return elem.classList.contains(CLASS_NAME_COLLAPSE);
@@ -252,10 +311,10 @@
       var container = SelectorEngine__default['default'].findOne(this._selector);
 
       if (actives) {
-        var tempActiveData = actives.filter(function (elem) {
+        var tempActiveData = actives.find(function (elem) {
           return container !== elem;
         });
-        activesData = tempActiveData[0] ? Data__default['default'].getData(tempActiveData[0], DATA_KEY) : null;
+        activesData = tempActiveData ? Data__default['default'].getData(tempActiveData, DATA_KEY) : null;
 
         if (activesData && activesData._isTransitioning) {
           return;
@@ -298,15 +357,15 @@
       this.setTransitioning(true);
 
       var complete = function complete() {
-        _this._element.classList.remove(CLASS_NAME_COLLAPSING);
+        _this2._element.classList.remove(CLASS_NAME_COLLAPSING);
 
-        _this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW);
+        _this2._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW);
 
-        _this._element.style[dimension] = '';
+        _this2._element.style[dimension] = '';
 
-        _this.setTransitioning(false);
+        _this2.setTransitioning(false);
 
-        EventHandler__default['default'].trigger(_this._element, EVENT_SHOWN);
+        EventHandler__default['default'].trigger(_this2._element, EVENT_SHOWN);
       };
 
       var capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
@@ -318,7 +377,7 @@
     };
 
     _proto.hide = function hide() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this._isTransitioning || !this._element.classList.contains(CLASS_NAME_SHOW)) {
         return;
@@ -356,13 +415,13 @@
       this.setTransitioning(true);
 
       var complete = function complete() {
-        _this2.setTransitioning(false);
+        _this3.setTransitioning(false);
 
-        _this2._element.classList.remove(CLASS_NAME_COLLAPSING);
+        _this3._element.classList.remove(CLASS_NAME_COLLAPSING);
 
-        _this2._element.classList.add(CLASS_NAME_COLLAPSE);
+        _this3._element.classList.add(CLASS_NAME_COLLAPSE);
 
-        EventHandler__default['default'].trigger(_this2._element, EVENT_HIDDEN);
+        EventHandler__default['default'].trigger(_this3._element, EVENT_HIDDEN);
       };
 
       this._element.style[dimension] = '';
@@ -376,10 +435,10 @@
     };
 
     _proto.dispose = function dispose() {
-      Data__default['default'].removeData(this._element, DATA_KEY);
+      _BaseComponent.prototype.dispose.call(this);
+
       this._config = null;
       this._parent = null;
-      this._element = null;
       this._triggerArray = null;
       this._isTransitioning = null;
     } // Private
@@ -398,7 +457,7 @@
     };
 
     _proto._getParent = function _getParent() {
-      var _this3 = this;
+      var _this4 = this;
 
       var parent = this._config.parent;
 
@@ -411,11 +470,11 @@
         parent = SelectorEngine__default['default'].findOne(parent);
       }
 
-      var selector = SELECTOR_DATA_TOGGLE + "[data-parent=\"" + parent + "\"]";
+      var selector = SELECTOR_DATA_TOGGLE + "[data-bs-parent=\"" + parent + "\"]";
       SelectorEngine__default['default'].find(selector, parent).forEach(function (element) {
         var selected = getElementFromSelector(element);
 
-        _this3._addAriaAndCollapsedClass(selected, [element]);
+        _this4._addAriaAndCollapsedClass(selected, [element]);
       });
       return parent;
     };
@@ -466,24 +525,20 @@
       });
     };
 
-    Collapse.getInstance = function getInstance(element) {
-      return Data__default['default'].getData(element, DATA_KEY);
-    };
-
-    _createClass(Collapse, null, [{
-      key: "VERSION",
-      get: function get() {
-        return VERSION;
-      }
-    }, {
+    _createClass$1(Collapse, null, [{
       key: "Default",
       get: function get() {
         return Default;
       }
+    }, {
+      key: "DATA_KEY",
+      get: function get() {
+        return DATA_KEY;
+      }
     }]);
 
     return Collapse;
-  }();
+  }(BaseComponent);
   /**
    * ------------------------------------------------------------------------
    * Data Api implementation
@@ -519,26 +574,28 @@
       Collapse.collapseInterface(element, config);
     });
   });
-  var $ = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
    * ------------------------------------------------------------------------
-   * add .collapse to jQuery only if jQuery is present
+   * add .Collapse to jQuery only if jQuery is present
    */
 
-  /* istanbul ignore if */
+  onDOMContentLoaded(function () {
+    var $ = getjQuery();
+    /* istanbul ignore if */
 
-  if ($) {
-    var JQUERY_NO_CONFLICT = $.fn[NAME];
-    $.fn[NAME] = Collapse.jQueryInterface;
-    $.fn[NAME].Constructor = Collapse;
+    if ($) {
+      var JQUERY_NO_CONFLICT = $.fn[NAME];
+      $.fn[NAME] = Collapse.jQueryInterface;
+      $.fn[NAME].Constructor = Collapse;
 
-    $.fn[NAME].noConflict = function () {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Collapse.jQueryInterface;
-    };
-  }
+      $.fn[NAME].noConflict = function () {
+        $.fn[NAME] = JQUERY_NO_CONFLICT;
+        return Collapse.jQueryInterface;
+      };
+    }
+  });
 
   return Collapse;
 

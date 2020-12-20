@@ -14,7 +14,7 @@ If you use a bundler (Webpack, Rollup...), you can use `/js/dist/*.js` files whi
 
 ## Using Bootstrap as a module
 
-We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootstrap.esm.min.js`) which allows you to use Bootstrap as a module in your browser, if your [targeted browsers support it](https://caniuse.com/#feat=es6-module).
+We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootstrap.esm.min.js`) which allows you to use Bootstrap as a module in your browser, if your [targeted browsers support it](https://caniuse.com/es6-module).
 
 ```html
 <script type="module">
@@ -28,18 +28,18 @@ We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootst
 {{< callout warning >}}
 ## Incompatible plugins
 
-Due to browser limitations, some of our plugins, namely Dropdown, Tooltip and Popover plugins, cannot be used in a `<script>` tag with `module` type because they depend on Popper.js. For more information about the issue see [here](https://v8.dev/features/modules#specifiers).
+Due to browser limitations, some of our plugins, namely Dropdown, Tooltip and Popover plugins, cannot be used in a `<script>` tag with `module` type because they depend on Popper. For more information about the issue see [here](https://v8.dev/features/modules#specifiers).
 {{< /callout >}}
 
 ## Dependencies
 
 Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs.
 
-Our dropdowns, popovers and tooltips also depend on [Popper.js](https://popper.js.org/).
+Our dropdowns, popovers and tooltips also depend on [Popper](https://popper.js.org/).
 
 ## Still want to use jQuery? It's possible!
 
-Bootstrap 5 is designed to be used without jQuery, but it's still possible to use our components with jQuery. **If Bootstrap detects `jQuery` in the `window` object** it'll add all of our components in jQuery's plugin system; this means you'll be able to do `$('[data-toggle="tooltip"]').tooltip()` to enable tooltips. The same goes for our other components.
+Bootstrap 5 is designed to be used without jQuery, but it's still possible to use our components with jQuery. **If Bootstrap detects `jQuery` in the `window` object** it'll add all of our components in jQuery's plugin system; this means you'll be able to do `$('[data-bs-toggle="tooltip"]').tooltip()` to enable tooltips. The same goes for our other components.
 
 ## Data attributes
 
@@ -61,9 +61,9 @@ All infinitive events provide [`preventDefault()`](https://developer.mozilla.org
 ```js
 var myModal = document.getElementById('myModal')
 
-myModal.addEventListener('show.bs.modal', function (e) {
+myModal.addEventListener('show.bs.modal', function (event) {
   if (!data) {
-    return e.preventDefault() // stops modal from being shown
+    return event.preventDefault() // stops modal from being shown
   }
 })
 ```
@@ -71,7 +71,7 @@ myModal.addEventListener('show.bs.modal', function (e) {
 {{< callout warning >}}
 ## jQuery events
 
-Bootstrap will detect jQuery if `jQuery` is present in the `window` object and there is no `data-no-jquery` attribute set on `<body>`. If jQuery is found, Bootstrap will emit events thanks to jQuery's event system. So if you want to listen to Bootstrap's events, you'll have to use the jQuery methods (`.on`, `.one`) instead of `addEventListener`.
+Bootstrap will detect jQuery if `jQuery` is present in the `window` object and there is no `data-bs-no-jquery` attribute set on `<body>`. If jQuery is found, Bootstrap will emit events thanks to jQuery's event system. So if you want to listen to Bootstrap's events, you'll have to use the jQuery methods (`.on`, `.one`) instead of `addEventListener`.
 
 ```js
 $('#myTab a').on('shown.bs.tab', function () {
@@ -102,7 +102,7 @@ In order to execute an action once the transition is complete, you can listen to
 ```js
 var myCollapseEl = document.getElementById('#myCollapse')
 
-myCollapseEl.addEventListener('shown.bs.collapse', function (e) {
+myCollapseEl.addEventListener('shown.bs.collapse', function (event) {
   // Action to execute once the collapsible area is expanded
 })
 ```
@@ -113,7 +113,7 @@ In addition a method call on a **transitioning component will be ignored**.
 var myCarouselEl = document.getElementById('myCarousel')
 var carousel = bootstrap.Carousel.getInstance(myCarouselEl) // Retrieve a Carousel instance
 
-myCarouselEl.addEventListener('slid.bs.carousel', function (e) {
+myCarouselEl.addEventListener('slid.bs.carousel', function (event) {
   carousel.to('2') // Will slide to the slide 2 as soon as the transition to slide 1 is finished
 })
 
@@ -208,8 +208,8 @@ var myDefaultAllowList = bootstrap.Tooltip.Default.allowList
 // To allow table elements
 myDefaultAllowList.table = []
 
-// To allow td elements and data-option attributes on td elements
-myDefaultAllowList.td = ['data-option']
+// To allow td elements and data-bs-option attributes on td elements
+myDefaultAllowList.td = ['data-bs-option']
 
 // You can push your custom regex to validate your attributes.
 // Be careful about your regular expressions being too lax

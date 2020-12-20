@@ -25,7 +25,7 @@ Set heights using classes like `.form-control-lg` and `.form-control-sm`.
 
 {{< example >}}
 <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
-<input class="form-control" type="text" placeholder="Default input" aria-label="deafult input example">
+<input class="form-control" type="text" placeholder="Default input" aria-label="default input example">
 <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example">
 {{< /example >}}
 
@@ -117,7 +117,7 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 
 Datalists allow you to create a group of `<option>`s that can be accessed (and autocompleted) from within an `<input>`. These are similar to `<select>` elements, but come with more menu styling limitations and differences. While most browsers and operating systems include some support for `<datalist>` elements, their styling is inconsistent at best.
 
-Learn more about [support for datalist elements](https://caniuse.com/#feat=datalist).
+Learn more about [support for datalist elements](https://caniuse.com/datalist).
 
 {{< example >}}
 <label for="exampleDataList" class="form-label">Datalist example</label>

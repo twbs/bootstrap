@@ -20,6 +20,9 @@
     $property-class: if(map-has-key($utility, class), map-get($utility, class), nth($properties, 1));
     $property-class: if($property-class == null, "", $property-class);
 
+    // State params to generate pseudo-classes
+    $state: if(map-has-key($utility, state), map-get($utility, state), ());
+
     $infix: if($property-class == "" and str-slice($infix, 1, 1) == "-", str-slice($infix, 2), $infix);
 
     // Don't prefix if value key is null (eg. with shadow class)
@@ -38,11 +41,27 @@
       }
     }
 
+    $is-rtl: map-get($utility, rtl);
+
     @if $value != null {
+      @if $is-rtl == false {
+        /* rtl:begin:remove */
+      }
       .#{$property-class + $infix + $property-class-modifier} {
         @each $property in $properties {
           #{$property}: $value if($enable-important-utilities, !important, null);
         }
+      }
+
+      @each $pseudo in $state {
+        .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
+          @each $property in $properties {
+            #{$property}: $value if($enable-important-utilities, !important, null);
+          }
+        }
+      }
+      @if $is-rtl == false {
+        /* rtl:end:remove */
       }
     }
   }

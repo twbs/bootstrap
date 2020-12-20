@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Ratios
-description: Use generated psuedo elements to make an element maintain the aspect ratio of your choosing. Perfect for responsively handling video or slideshow embeds based on the width of the parent.
+description: Use generated pseudo elements to make an element maintain the aspect ratio of your choosing. Perfect for responsively handling video or slideshow embeds based on the width of the parent.
 group: helpers
 toc: true
 ---

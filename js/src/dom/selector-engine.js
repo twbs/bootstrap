@@ -1,11 +1,9 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha2): dom/selector-engine.js
+ * Bootstrap (v5.0.0-beta1): dom/selector-engine.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
-
-import { find as findFn, findOne } from './polyfill'
 
 /**
  * ------------------------------------------------------------------------
@@ -16,22 +14,17 @@ import { find as findFn, findOne } from './polyfill'
 const NODE_TEXT = 3
 
 const SelectorEngine = {
-  matches(element, selector) {
-    return element.matches(selector)
-  },
-
   find(selector, element = document.documentElement) {
-    return [].concat(...findFn.call(element, selector))
+    return [].concat(...Element.prototype.querySelectorAll.call(element, selector))
   },
 
   findOne(selector, element = document.documentElement) {
-    return findOne.call(element, selector)
+    return Element.prototype.querySelector.call(element, selector)
   },
 
   children(element, selector) {
-    const children = [].concat(...element.children)
-
-    return children.filter(child => child.matches(selector))
+    return [].concat(...element.children)
+      .filter(child => child.matches(selector))
   },
 
   parents(element, selector) {
@@ -40,7 +33,7 @@ const SelectorEngine = {
     let ancestor = element.parentNode
 
     while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== NODE_TEXT) {
-      if (this.matches(ancestor, selector)) {
+      if (ancestor.matches(selector)) {
         parents.push(ancestor)
       }
 
@@ -68,7 +61,7 @@ const SelectorEngine = {
     let next = element.nextElementSibling
 
     while (next) {
-      if (this.matches(next, selector)) {
+      if (next.matches(selector)) {
         return [next]
       }
 

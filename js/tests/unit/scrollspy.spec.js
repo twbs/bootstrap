@@ -634,6 +634,16 @@ describe('ScrollSpy', () => {
   })
 
   describe('getInstance', () => {
+    it('should return scrollspy instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const scrollSpy = new ScrollSpy(div)
+
+      expect(ScrollSpy.getInstance(div)).toEqual(scrollSpy)
+      expect(ScrollSpy.getInstance(div)).toBeInstanceOf(ScrollSpy)
+    })
+
     it('should return null if there is no instance', () => {
       expect(ScrollSpy.getInstance(fixtureEl)).toEqual(null)
     })
@@ -641,7 +651,7 @@ describe('ScrollSpy', () => {
 
   describe('event handler', () => {
     it('should create scrollspy on window load event', () => {
-      fixtureEl.innerHTML = '<div data-spy="scroll"></div>'
+      fixtureEl.innerHTML = '<div data-bs-spy="scroll"></div>'
 
       const scrollSpyEl = fixtureEl.querySelector('div')
 

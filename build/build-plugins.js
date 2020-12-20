@@ -14,19 +14,19 @@ const rollup = require('rollup')
 const { babel } = require('@rollup/plugin-babel')
 const banner = require('./banner.js')
 
+const rootPath = path.resolve(__dirname, '../js/dist/')
 const plugins = [
   babel({
     // Only transpile our source code
     exclude: 'node_modules/**',
-    // Inline the required helpers in each file
-    babelHelpers: 'inline'
+    // Include the helpers in each file, at most one copy of each
+    babelHelpers: 'bundled'
   })
 ]
 const bsPlugins = {
   Data: path.resolve(__dirname, '../js/src/dom/data.js'),
   EventHandler: path.resolve(__dirname, '../js/src/dom/event-handler.js'),
   Manipulator: path.resolve(__dirname, '../js/src/dom/manipulator.js'),
-  Polyfill: path.resolve(__dirname, '../js/src/dom/polyfill.js'),
   SelectorEngine: path.resolve(__dirname, '../js/src/dom/selector-engine.js'),
   Alert: path.resolve(__dirname, '../js/src/alert.js'),
   Button: path.resolve(__dirname, '../js/src/button.js'),
@@ -40,7 +40,6 @@ const bsPlugins = {
   Toast: path.resolve(__dirname, '../js/src/toast.js'),
   Tooltip: path.resolve(__dirname, '../js/src/tooltip.js')
 }
-const rootPath = path.resolve(__dirname, '../js/dist/')
 
 const defaultPluginConfig = {
   external: [
@@ -60,16 +59,12 @@ const getConfigByPluginKey = pluginKey => {
     pluginKey === 'Data' ||
     pluginKey === 'Manipulator' ||
     pluginKey === 'EventHandler' ||
-    pluginKey === 'Polyfill' ||
     pluginKey === 'SelectorEngine' ||
     pluginKey === 'Util' ||
     pluginKey === 'Sanitizer'
   ) {
     return {
-      external: [bsPlugins.Polyfill],
-      globals: {
-        [bsPlugins.Polyfill]: 'Polyfill'
-      }
+      external: []
     }
   }
 
@@ -92,9 +87,9 @@ const getConfigByPluginKey = pluginKey => {
 
   if (pluginKey === 'Dropdown' || pluginKey === 'Tooltip') {
     const config = Object.assign(defaultPluginConfig)
-    config.external.push(bsPlugins.Manipulator, 'popper.js')
+    config.external.push(bsPlugins.Manipulator, '@popperjs/core')
     config.globals[bsPlugins.Manipulator] = 'Manipulator'
-    config.globals['popper.js'] = 'Popper'
+    config.globals['@popperjs/core'] = 'Popper'
     return config
   }
 
@@ -129,18 +124,17 @@ const getConfigByPluginKey = pluginKey => {
   }
 }
 
-const utilObjects = [
+const utilObjects = new Set([
   'Util',
   'Sanitizer'
-]
+])
 
-const domObjects = [
+const domObjects = new Set([
   'Data',
   'EventHandler',
   'Manipulator',
-  'Polyfill',
   'SelectorEngine'
-]
+])
 
 const build = async plugin => {
   console.log(`Building ${plugin} plugin...`)
@@ -149,11 +143,11 @@ const build = async plugin => {
   const pluginFilename = path.basename(bsPlugins[plugin])
   let pluginPath = rootPath
 
-  if (utilObjects.includes(plugin)) {
+  if (utilObjects.has(plugin)) {
     pluginPath = `${rootPath}/util/`
   }
 
-  if (domObjects.includes(plugin)) {
+  if (domObjects.has(plugin)) {
     pluginPath = `${rootPath}/dom/`
   }
 

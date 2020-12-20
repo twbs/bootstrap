@@ -9,6 +9,7 @@
     - title: Webpack
     - title: Accessibility
     - title: RFS
+    - title: RTL
 
 - title: Customize
   pages:
@@ -53,6 +54,7 @@
 
 - title: Components
   pages:
+    - title: Accordion
     - title: Alerts
     - title: Badge
     - title: Breadcrumb

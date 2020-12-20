@@ -11,9 +11,9 @@ toc: true
 Download ready-to-use compiled code for **Bootstrap v{{< param current_version >}}** to easily drop into your project, which includes:
 
 - Compiled and minified CSS bundles (see [CSS files comparison]({{< docsref "/getting-started/contents#css-files" >}}))
-- Compiled and minified JavaScript plugins
+- Compiled and minified JavaScript plugins (see [JS files comparison]({{< docsref "/getting-started/contents#js-files" >}}))
 
-This doesn't include documentation, source files, or any optional JavaScript dependencies like Popper.js.
+This doesn't include documentation, source files, or any optional JavaScript dependencies like Popper.
 
 <a href="{{< param "download.dist" >}}" class="btn btn-bd-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Bootstrap');">Download</a>
 
@@ -43,7 +43,7 @@ Skip the download with [jsDelivr](https://www.jsdelivr.com/) to deliver cached v
 <script src="{{< param "cdn.js_bundle" >}}" integrity="{{< param "cdn.js_bundle_hash" >}}" crossorigin="anonymous"></script>
 ```
 
-If you're using our compiled JavaScript and prefer to include Popper.js separately, add Popper.js before our JS, via a CDN preferably.
+If you're using our compiled JavaScript and prefer to include Popper separately, add Popper before our JS, via a CDN preferably.
 
 ```html
 <script src="{{< param "cdn.popper" >}}" integrity="{{< param "cdn.popper_hash" >}}" crossorigin="anonymous"></script>

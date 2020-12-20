@@ -5,25 +5,20 @@
 (function () {
   'use strict'
 
-  if (!window.docsearch) {
+  var inputElement = document.getElementById('search-input')
+
+  if (!window.docsearch || !inputElement) {
     return
   }
 
-  var inputElement = document.getElementById('search-input')
-  var siteDocsVersion = inputElement.getAttribute('data-docs-version')
+  var siteDocsVersion = inputElement.getAttribute('data-bd-docs-version')
 
-  function getOrigin() {
-    var location = window.location
-    var origin = location.origin
-
-    if (!origin) {
-      var port = location.port ? ':' + location.port : ''
-
-      origin = location.protocol + '//' + location.hostname + port
+  document.addEventListener('keydown', function (event) {
+    if (event.ctrlKey && event.key === '/') {
+      event.preventDefault()
+      inputElement.focus()
     }
-
-    return origin
-  }
+  })
 
   window.docsearch({
     apiKey: '5990ad008512000bba2cf951ccf0332f',
@@ -34,10 +29,9 @@
     },
     transformData: function (hits) {
       return hits.map(function (hit) {
-        var currentUrl = getOrigin()
         var liveUrl = 'https://getbootstrap.com/'
 
-        hit.url = currentUrl.lastIndexOf(liveUrl, 0) === 0 ?
+        hit.url = window.location.origin.startsWith(liveUrl) ?
           // On production, return the result as is
           hit.url :
           // On development or Netlify, replace `hit.url` with a trailing slash,
