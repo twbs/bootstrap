@@ -33,7 +33,7 @@ Horizontal direction sensitive variables, utilities and mixins are renamed with 
 
 ##### Components
 
-- Renamed `.dropleft` and `.dropright` to `.dropstart` and `dropend`.
+- Renamed `.dropleft` and `.dropright` to `.dropstart` and `.dropend`.
 - Renamed `.dropdown-menu-*-left` and `.dropdown-menu-*-right` to `.dropdown-menu-*-start` and `.dropdown-menu-*-end`.
 - Renamed `.bs-popover-left` and `.bs-popover-right` to `.bs-popover-start` and `.bs-popover-end`.
 - Renamed `.bs-tooltip-left` and `.bs-tooltip-right` to `.bs-tooltip-start` and `.bs-tooltip-end`.
