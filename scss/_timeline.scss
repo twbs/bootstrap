@@ -2,131 +2,130 @@
 // Vertical timeline
 //
 
-// The actual timeline (the vertical ruler) 
+// The actual timeline (the vertical ruler)
 .timeline {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
 }
 
-// The actual timeline (the vertical ruler) 
+// The actual timeline (the vertical ruler)
 .timeline::after {
-    content: '';
-    position: absolute;
-    width: 6px;
-    background-color: white;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    margin-left: -3px;
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: white;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
 }
 
-// Container around content 
+// Container around content
 .container {
-    padding: 10px 40px;
-    position: relative;
-    background-color: inherit;
-    width: 50%;
+      position: relative;
+      padding: 10px 40px;
+      width: 50%;
+      background-color: inherit;
+      
 }
-
-// The circles on the timeline 
+// The circles on the timeline
 .container::after {
-    content: '';
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    right: -17px;
-    background-color: white;
-    border: 4px solid #22c0e8;
-    top: 15px;
-    border-radius: 50%;
-    z-index: 1;
+      position: absolute;
+      content: "";
+      right: -17px;
+      width: 25px;
+      height: 25px; 
+      background-color: #fff;
+      top: 15px;
+      border: 4px solid #22c0e8;    
+      z-index: 1; 
+      border-radius: 50%;
 }
 
-// Place the container to the left 
+// Place the container to the left
 .left {
-    left: 0;
+      left: 0;
 }
 
-// Place the container to the right 
+// Place the container to the right
 .right {
-    left: 50%;
+      left: 50%;
 }
 
-// Add arrows to the left container (pointing right) 
+// Add arrows to the left container (pointing right)
 .left::before {
-    content: " ";
-    height: 0;
-    position: absolute;
-    top: 22px;
-    width: 0;
-    z-index: 1;
-    right: 30px;
-    border: medium solid white;
-    border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent white;
+      position: absolute;
+      height: 0;
+      content: " ";
+      right: 30px;
+      z-index: 1;
+      top: 22px;
+      width: 0;
+      border: medium solid #fff;
+      border-color: transparent transparent transparent #fff;
+      border-width: 10px 0 10px 10px;     
 }
 
-// Add arrows to the right container (pointing left) 
+// Add arrows to the right container (pointing left)
 .right::before {
-    content: " ";
-    height: 0;
-    position: absolute;
-    top: 22px;
-    width: 0;
-    z-index: 1;
-    left: 30px;
-    border: medium solid white;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent white transparent transparent;
+      position: absolute;
+      height: 0;
+      content: " "; 
+      top: 22px;
+      left: 30px;
+      z-index: 1;
+      width: 0;
+      border: medium solid #fff;
+      border-color: transparent #fff transparent transparent;
+      border-width: 10px 10px 10px 0;
 }
 
-// Fix the circle for containers on the right side 
+// Fix the circle for containers on the right side
 .right::after {
-    left: -16px;
+      left: -16px;
 }
 
-// The actual content 
+// The actual content
 .content {
-    padding: 20px 30px;
-    background-color: white;
-    position: relative;
-    border-radius: 6px;
+      padding: 20px 30px;
+      position: relative;
+      background-color: #fff;
 }
 
 .header{
-    color: #22c0e8;
+      color: #22c0e8;
 }
 
-// Media queries - Responsive timeline on screens less than 600px wide 
+// Media queries - Responsive timeline on screens less than 600px wide
 @media screen and (max-width: 600px) {
-  // Place the timelime to the left 
-    .timeline::after {
-        left: 31px;
+  // Place the timelime to the left
+        .timeline::after {
+          left: 31px;
     }
   
-  // Full-width containers 
-    .container {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
+  // Full-width containers
+        .container {
+          width: 100%;
+          padding-left: 70px;
+          padding-right: 25px;
     }
   
-  // Make sure that all arrows are pointing leftwards 
-    .container::before {
-        left: 60px;
-        border: medium solid white;
-        border-width: 10px 10px 10px 0;
-        border-color: transparent white transparent transparent;
+  // Make sure that all arrows are pointing leftwards
+        .container::before {
+              left: 60px;
+              border: medium solid #fff;
+              border-width: 10px 10px 10px 0;
+              border-color: transparent #fff transparent transparent;
     }
 
-  // Make sure all circles are at the same spot 
-    .left::after, .right::after {
-        left: 15px;
+  // Make sure all circles are at the same spot
+        .left::after, .right::after {
+              left: 15px;
     }
   
-  // Make all right containers behave like the left ones 
-    .right {
-        left: 0%;
+  // Make all right containers behave like the left ones
+        .right {
+              left: 0%;
     }
 }
