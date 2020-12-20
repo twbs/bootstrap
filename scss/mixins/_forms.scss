@@ -13,7 +13,14 @@
   }
 }
 
-@mixin form-validation-state($state, $color, $icon) {
+@mixin form-validation-state(
+  $state,
+  $color,
+  $icon,
+  $tooltip-color: color-contrast($color),
+  $tooltip-bg-color: rgba($color, $form-feedback-tooltip-opacity),
+  $focus-box-shadow: 0 0 0 $input-focus-width rgba($color, $input-btn-focus-color-opacity)
+) {
   .#{$state}-feedback {
     display: none;
     width: 100%;
@@ -33,8 +40,8 @@
     margin-top: .1rem;
     @include font-size($form-feedback-tooltip-font-size);
     line-height: $form-feedback-tooltip-line-height;
-    color: color-contrast($color);
-    background-color: rgba($color, $form-feedback-tooltip-opacity);
+    color: $tooltip-color;
+    background-color: $tooltip-bg-color;
     @include border-radius($form-feedback-tooltip-border-radius);
   }
 
@@ -59,7 +66,7 @@
 
       &:focus {
         border-color: $color;
-        box-shadow: 0 0 0 $input-focus-width rgba($color, $input-btn-focus-color-opacity);
+        box-shadow: $focus-box-shadow;
       }
     }
   }
@@ -87,7 +94,7 @@
 
       &:focus {
         border-color: $color;
-        box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+        box-shadow: $focus-box-shadow;
       }
     }
   }
@@ -101,7 +108,7 @@
       }
 
       &:focus {
-        box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+        box-shadow: $focus-box-shadow;
       }
 
       ~ .form-check-label {
