@@ -59,3 +59,69 @@
   }
   // stylelint-enable no-duplicate-selectors
 }
+
+// Large form-floating is exactly the same as default with larger dimmensions
+
+.form-floating-lg {
+  position: relative;
+
+  > .form-control,
+  > .form-select {
+    height: $form-floating-height-lg;
+    padding: $form-floating-padding-y-lg $form-floating-padding-x-lg;
+    font-size: $form-floating-font-size-lg;
+  }
+
+  > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%; // allow textareas
+    padding: $form-floating-padding-y-lg $form-floating-padding-x-lg;
+    font-size: $form-floating-font-size-lg;
+    pointer-events: none;
+    border: $input-border-width solid transparent; // Required for aligning label's text with the input as it affects inner box model
+    transform-origin: 0 0;
+    @include transition($form-floating-transition);
+  }
+
+  // stylelint-disable no-duplicate-selectors
+  > .form-control {
+    &::placeholder {
+      color: transparent;
+    }
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      padding-top: $form-floating-input-padding-t-lg;
+      padding-bottom: $form-floating-input-padding-b-lg;
+    }
+    // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
+    &:-webkit-autofill {
+      padding-top: $form-floating-input-padding-t-lg;
+      padding-bottom: $form-floating-input-padding-b-lg;
+    }
+  }
+
+  > .form-select {
+    padding-top: $form-floating-input-padding-t-lg;
+    padding-bottom: $form-floating-input-padding-b-lg;
+  }
+
+  > .form-control:focus,
+  > .form-control:not(:placeholder-shown),
+  > .form-select {
+    ~ label {
+      opacity: $form-floating-label-opacity;
+      transform: $form-floating-label-transform-lg;
+    }
+  }
+  // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
+  > .form-control:-webkit-autofill {
+    ~ label {
+      opacity: $form-floating-label-opacity;
+      transform: $form-floating-label-transform-lg;
+    }
+  }
+  // stylelint-enable no-duplicate-selectors
+}
