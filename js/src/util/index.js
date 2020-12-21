@@ -116,7 +116,7 @@ const typeCheckConfig = (componentName, config, configTypes) => {
       toType(value)
 
     if (!new RegExp(expectedTypes).test(valueType)) {
-      throw new Error(
+      throw new TypeError(
         `${componentName.toUpperCase()}: ` +
         `Option "${property}" provided type "${valueType}" ` +
         `but expected type "${expectedTypes}".`)
