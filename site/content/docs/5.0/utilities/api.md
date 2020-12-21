@@ -254,7 +254,7 @@ $utilities: map-merge(
   (
     "cursor": (
       property: cursor,
-      class: cursor
+      class: cursor,
       responsive: true,
       values: auto pointer grab,
     )

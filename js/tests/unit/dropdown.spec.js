@@ -367,6 +367,58 @@ describe('Dropdown', () => {
       dropdown.toggle()
     })
 
+    it('should toggle a dropdown with a valid virtual element reference', done => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle visually-hidden" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Secondary link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const virtualElement = {
+        getBoundingClientRect() {
+          return {
+            width: 0,
+            height: 0,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0
+          }
+        }
+      }
+
+      expect(() => new Dropdown(btnDropdown, {
+        reference: {}
+      })).toThrow()
+
+      expect(() => new Dropdown(btnDropdown, {
+        reference: {
+          getBoundingClientRect: 'not-a-function'
+        }
+      })).toThrow()
+
+      // use onFirstUpdate as Poppers internal update is executed async
+      const dropdown = new Dropdown(btnDropdown, {
+        reference: virtualElement,
+        popperConfig: {
+          onFirstUpdate() {
+            expect(virtualElement.getBoundingClientRect).toHaveBeenCalled()
+            expect(btnDropdown.classList.contains('show')).toEqual(true)
+            expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
+            done()
+          }
+        }
+      })
+
+      spyOn(virtualElement, 'getBoundingClientRect').and.callThrough()
+
+      dropdown.toggle()
+    })
+
     it('should not toggle a dropdown if the element is disabled', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
