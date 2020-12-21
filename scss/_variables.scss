@@ -818,6 +818,14 @@ $form-floating-input-padding-b-lg:  .875rem !default;
 $form-floating-label-transform-lg:  scale(.85) translateY(-.6875rem) translateX(.1875rem) !default;
 $form-floating-font-size-lg:        $form-select-font-size-lg !default;
 
+$form-floating-height-sm:           add(2.5rem, $input-height-border) !default;
+$form-floating-padding-x-sm:        $input-padding-x-sm !default;
+$form-floating-padding-y-sm:        .6875rem !default; // Sizes are calculated with fraction of 2.5/3.5 (see $display-font-sizes)
+$form-floating-input-padding-t-sm:  1.1875rem !default;
+$form-floating-input-padding-b-sm:  .4375rem !default;
+$form-floating-label-transform-sm:  scale(.85) translateY(-.375rem) translateX(.125rem) !default;
+$form-floating-font-size-sm:        $form-select-font-size-sm !default;
+
 // Form validation
 
 $form-feedback-margin-top:          $form-text-margin-top !default;
