@@ -36,7 +36,19 @@ const getSelector = element => {
   let selector = element.getAttribute('data-bs-target')
 
   if (!selector || selector === '#') {
-    const hrefAttr = element.getAttribute('href')
+    let hrefAttr = element.getAttribute('href')
+
+    // Afaik, the only valid selector in an href is an anchor/id starting with '#'
+    // If a 'real' url is used as the selector, document.querySelector will rightfully
+    // complain it is invalid.
+    if (!hrefAttr || !hrefAttr.includes('#')) {
+      return null
+    }
+
+    if (!hrefAttr.startsWith('#')) {
+      // just in case some cms put out a full url with the anchor appended
+      hrefAttr = '#' + hrefAttr.split('#')[1]
+    }
 
     selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null
   }
