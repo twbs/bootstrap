@@ -387,9 +387,9 @@ describe('Collapse', () => {
 
       spyOn(Event.prototype, 'preventDefault').and.callThrough()
 
-      triggerEl.addEventListener('click', ev => {
-        expect(ev.target.isEqualNode(nestedTriggerEl)).toEqual(true)
-        expect(ev.delegateTarget.isEqualNode(triggerEl)).toEqual(true)
+      triggerEl.addEventListener('click', event => {
+        expect(event.target.isEqualNode(nestedTriggerEl)).toEqual(true)
+        expect(event.delegateTarget.isEqualNode(triggerEl)).toEqual(true)
         expect(Event.prototype.preventDefault).toHaveBeenCalled()
         done()
       })
