@@ -59,7 +59,7 @@ const conf = {
   colors: true,
   autoWatch: false,
   singleRun: true,
-  concurrency: Infinity,
+  concurrency: Number.POSITIVE_INFINITY,
   client: {
     clearContext: false
   },
