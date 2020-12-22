@@ -124,7 +124,7 @@ Adding images to the `.navbar-brand` will likely always require custom styles or
 
 Navbar navigation links build on our `.nav` options with their own modifier class and require the use of [toggler classes](#toggler) for proper responsive styling. **Navigation in navbars will also grow to occupy as much horizontal space as possible** to keep your navbar contents securely aligned.
 
-Add `.active` class on `.nav-link` to indicate the current page.
+Add the `.active` class on `.nav-link` to indicate the current page.
 
 Please note that you should also add the `aria-current` attribute on the active `.nav-link`.
 
