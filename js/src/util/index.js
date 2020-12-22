@@ -38,14 +38,10 @@ const getSelector = element => {
   if (!selector || selector === '#') {
     let hrefAttr = element.getAttribute('href')
 
-    if (!hrefAttr) {
-      return null
-    }
-
     // The only valid content that could double as a selector are ids, so everything starting with . or #
     // If a 'real' url is used as the selector, document.querySelector will rightfully
     // complain it is invalid. (see twbs#32273)
-    if (!hrefAttr.includes('#') && !hrefAttr.startsWith('.')) {
+    if (!hrefAttr || (!hrefAttr.includes('#') && !hrefAttr.startsWith('.'))) {
       return null
     }
 
