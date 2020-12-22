@@ -38,15 +38,19 @@ const getSelector = element => {
   if (!selector || selector === '#') {
     let hrefAttr = element.getAttribute('href')
 
-    // Afaik, the only valid selector in an href is an anchor/id starting with '#'
-    // If a 'real' url is used as the selector, document.querySelector will rightfully
-    // complain it is invalid.
-    if (!hrefAttr || !hrefAttr.includes('#')) {
+    if (!hrefAttr) {
       return null
     }
 
-    if (!hrefAttr.startsWith('#')) {
-      // just in case some cms put out a full url with the anchor appended
+    // The only valid content that could double as a selector are ids, so everything starting with . or #
+    // If a 'real' url is used as the selector, document.querySelector will rightfully
+    // complain it is invalid. (see twbs#32273)
+    if (!hrefAttr.includes('#') && !hrefAttr.startsWith('.')) {
+      return null
+    }
+
+    // just in case some cms put out a full url with the anchor appended
+    if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
       hrefAttr = '#' + hrefAttr.split('#')[1]
     }
 

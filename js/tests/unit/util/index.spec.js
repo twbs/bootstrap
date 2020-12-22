@@ -57,6 +57,28 @@ describe('Util', () => {
       expect(Util.getSelectorFromElement(testEl)).toEqual('.target')
     })
 
+    it('should return null if a selector from a href is an url without an anchor', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" data-bs-target="#" href="foo/bar.html"></a>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getSelectorFromElement(testEl)).toBeNull()
+    })
+
+    it('should return the anchor if a selector from a href is an url', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" data-bs-target="#" href="foo/bar.html#target"></a>',
+        '<div id="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getSelectorFromElement(testEl)).toEqual('#target')
+    })
+
     it('should return null if selector not found', () => {
       fixtureEl.innerHTML = '<a id="test" href=".target"></a>'
 
