@@ -27,6 +27,28 @@
 }
 
 //
+// Border with grid breakpoints
+//
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+  @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+    .border#{$infix}         { border: $border-width solid $border-color !important; }
+    .border#{$infix}-top     { border-top: $border-width solid $border-color !important; }
+    .border#{$infix}-right   { border-right: $border-width solid $border-color !important; }
+    .border#{$infix}-bottom  { border-bottom: $border-width solid $border-color !important; }
+    .border#{$infix}-left    { border-left: $border-width solid $border-color !important; }
+
+    .border#{$infix}-0        { border: 0 !important; }
+    .border#{$infix}-top-0    { border-top: 0 !important; }
+    .border#{$infix}-right-0  { border-right: 0 !important; }
+    .border#{$infix}-bottom-0 { border-bottom: 0 !important; }
+    .border#{$infix}-left-0   { border-left: 0 !important; }
+  }
+}
+
+//
 // Border-radius
 //
 
