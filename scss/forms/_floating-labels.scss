@@ -10,7 +10,7 @@
   > label {
     position: absolute;
     top: 0;
-    left: 0;
+    left: auto;
     height: 100%; // allow textareas
     padding: $form-floating-padding-y $form-floating-padding-x;
     pointer-events: none;
