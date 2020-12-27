@@ -43,6 +43,7 @@
 
   .nav-link {
     margin-bottom: -$nav-tabs-border-width;
+    background: none;
     border: $nav-tabs-border-width solid transparent;
     @include border-top-radius($nav-tabs-border-radius);
 
@@ -80,6 +81,8 @@
 
 .nav-pills {
   .nav-link {
+    background: none;
+    border: 0;
     @include border-radius($nav-pills-border-radius);
   }
 
