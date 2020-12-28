@@ -208,10 +208,10 @@ Add `data-bs-interval=""` to a `.carousel-item` to change the amount of time to 
 
 ### Suppressing touch swiping
 
-By default, carousels support swiping left/right on touchscreen devices to move between slides. This can be explicitly suppressed using the `data-bs-touch` attribute. The example below also does not include the `data-bs-ride` attribute, meaning that it won't autoplay.
+By default, carousels support swiping left/right on touchscreen devices to move between slides. This can be explicitly suppressed using the `data-bs-touch` attribute. The example below also does not include the `data-bs-ride` attribute nor the `.slide` class, meaning that it won't autoplay.
 
 {{< example >}}
-<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
+<div id="carouselExampleControlsNoTouching" class="carousel" data-bs-touch="false">
   <div class="carousel-inner">
     <div class="carousel-item active">
       {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" >}}
@@ -333,7 +333,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td><code>slide</code></td>
       <td>string | boolean</td>
       <td><code>false</code></td>
-      <td>Autoplays the carousel after the user manually cycles the first item. If "carousel", autoplays the carousel on load.</td>
+      <td>Autoplays the carousel after the user manually cycles the first item. If <code>data-bs-ride="carousel"</code> is present, autoplays the carousel on load.</td>
     </tr>
     <tr>
       <td><code>wrap</code></td>
