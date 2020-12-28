@@ -210,10 +210,10 @@ Add `data-interval=""` to a `.carousel-item` to change the amount of time to del
 
 ### Suppressing touch swiping
 
-By default, carousels support swiping left/right on touchscreen devices to move between slides. This can be explicitly suppressed using the `data-touch` attribute. The example below also does not include the `data-ride` attribute nor the `.slide` class, meaning that it won't autoplay.
+By default, carousels support swiping left/right on touchscreen devices to move between slides. This can be explicitly suppressed using the `data-touch` attribute. The example below also does not include the `data-ride`, meaning that it won't autoplay.
 
 {{< example >}}
-<div id="carouselExampleControlsNoTouching" class="carousel" data-touch="false">
+<div id="carouselExampleControlsNoTouching" class="carousel slide" data-touch="false">
   <div class="carousel-inner">
     <div class="carousel-item active">
       {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" >}}
@@ -286,10 +286,10 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <p>On touch-enabled devices, when set to <code>"hover"</code>, cycling will pause on <code>touchend</code> (once the user finished interacting with the carousel) for two intervals, before automatically resuming. Note that this is in addition to the above mouse behavior.</p></td>
     </tr>
     <tr>
-      <td>slide</td>
+      <td>ride</td>
       <td>string</td>
       <td>false</td>
-      <td>Autoplays the carousel after the user manually cycles the first item. If <code>data-ride="carousel"</code> is present, autoplays the carousel on load.</td>
+      <td>Autoplays the carousel after the user manually cycles the first item. If set to <code>carousel</code>, autoplays the carousel on load.</td>
     </tr>
     <tr>
       <td>wrap</td>
