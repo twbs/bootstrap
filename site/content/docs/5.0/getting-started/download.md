@@ -63,7 +63,7 @@ npm install bootstrap@next
 ```
 
 `const bootstrap = require('bootstrap')` or `import bootstrap from 'bootstrap'` will load all of Bootstrap's plugins onto a `bootstrap` object.
-The `bootstrap` [module](https://getbootstrap.com/docs/5.0/getting-started/javascript/#using-bootstrap-as-a-module) itself exports all of our plugins. You can manually load Bootstrap's plugins individually by loading the `/js/dist/*.js` files under the package's top-level directory.
+The `bootstrap` [module]({{< docsref "getting-started/javascript#using-bootstrap-as-a-module" >}}) itself exports all of our plugins. You can manually load Bootstrap's plugins individually by loading the `/js/dist/*.js` files under the package's top-level directory.
 
 Bootstrap's `package.json` contains some additional metadata under the following keys:
 
