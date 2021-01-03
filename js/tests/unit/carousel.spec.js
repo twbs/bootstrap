@@ -659,11 +659,11 @@ describe('Carousel', () => {
     it('should update indicators if present', done => {
       fixtureEl.innerHTML = [
         '<div id="myCarousel" class="carousel slide">',
-        '  <ol class="carousel-indicators">',
-        '    <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>',
-        '    <li id="secondIndicator" data-bs-target="#myCarousel" data-bs-slide-to="1"></li>',
-        '    <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>',
-        '  </ol>',
+        '  <div class="carousel-indicators">',
+        '    <button type="button" id="firstIndicator" data-bs-target="myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>',
+        '    <button type="button" id="secondIndicator" data-bs-target="myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>',
+        '    <button type="button" data-bs-target="myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>',
+        '  </div>',
         '  <div class="carousel-inner">',
         '    <div class="carousel-item active">item 1</div>',
         '    <div class="carousel-item" data-bs-interval="7">item 2</div>',
@@ -673,11 +673,15 @@ describe('Carousel', () => {
       ].join('')
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
+      const firstIndicator = fixtureEl.querySelector('#firstIndicator')
       const secondIndicator = fixtureEl.querySelector('#secondIndicator')
       const carousel = new Carousel(carouselEl)
 
       carouselEl.addEventListener('slid.bs.carousel', () => {
+        expect(firstIndicator.classList.contains('active')).toEqual(false)
+        expect(firstIndicator.hasAttribute('aria-current')).toEqual(false)
         expect(secondIndicator.classList.contains('active')).toEqual(true)
+        expect(secondIndicator.getAttribute('aria-current')).toEqual('true')
         done()
       })
 
