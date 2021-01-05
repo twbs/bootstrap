@@ -301,55 +301,6 @@ describe('Tab', () => {
 
       firstTab.show()
     })
-
-    it('should handle removed tabs', done => {
-      fixtureEl.innerHTML = [
-        '<ul class="nav nav-tabs" role="tablist">',
-        '  <li class="nav-item" role="presentation">',
-        '    <button type="button" class="nav-link nav-tab" data-bs-target="#profile" role="tab" data-bs-toggle="tab">',
-        '      <button class="btn-close" aria-label="Close"></button>',
-        '    </button>',
-        '  </li>',
-        '  <li class="nav-item" role="presentation">',
-        '    <button type="button" id="secondNav" class="nav-link nav-tab" data-bs-target="#buzz" role="tab" data-bs-toggle="tab">',
-        '      <button class="btn-close" aria-label="Close"></button>',
-        '    </button>',
-        '  </li>',
-        '  <li class="nav-item" role="presentation">',
-        '    <button type="button" class="nav-link nav-tab" data-bs-target="#references" role="tab" data-bs-toggle="tab">',
-        '      <button id="btnClose" class="btn-close" aria-label="Close"></button>',
-        '    </button>',
-        '  </li>',
-        '</ul>',
-        '<div class="tab-content">',
-        '  <div role="tabpanel" class="tab-pane fade show active" id="profile">test 1</div>',
-        '  <div role="tabpanel" class="tab-pane fade" id="buzz">test 2</div>',
-        '  <div role="tabpanel" class="tab-pane fade" id="references">test 3</div>',
-        '</div>'
-      ].join('')
-
-      const secondNavEl = fixtureEl.querySelector('#secondNav')
-      const btnCloseEl = fixtureEl.querySelector('#btnClose')
-      const secondNavTab = new Tab(secondNavEl)
-
-      secondNavEl.addEventListener('shown.bs.tab', () => {
-        expect(fixtureEl.querySelectorAll('.nav-tab').length).toEqual(2)
-        done()
-      })
-
-      btnCloseEl.addEventListener('click', () => {
-        const tabEl = btnCloseEl.parentNode
-        const liEl = tabEl.parentNode
-        const tabId = tabEl.getAttribute('data-bs-target')
-        const tabIdEl = fixtureEl.querySelector(tabId)
-
-        liEl.parentNode.removeChild(liEl)
-        tabIdEl.parentNode.removeChild(tabIdEl)
-        secondNavTab.show()
-      })
-
-      btnCloseEl.click()
-    })
   })
 
   describe('dispose', () => {
