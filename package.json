@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "start": "npm-run-all --parallel watch docs-serve",
-    "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
+    "bundlewatch": "npx bundlewatch --config .bundlewatch.config.json",
     "css": "npm-run-all css-compile css-prefix css-rtl css-minify",
     "css-compile": "sass --style expanded --source-map --embed-sources --no-error-css scss/:dist/css/",
     "css-rtl": "cross-env NODE_ENV=RTL postcss --config build/postcss.config.js --dir \"dist/css\" --ext \".rtl.css\" \"dist/css/*.css\" \"!dist/css/*.min.css\" \"!dist/css/*.rtl.css\"",
@@ -109,7 +109,6 @@
     "@rollup/plugin-node-resolve": "^13.1.1",
     "@rollup/plugin-replace": "^3.0.0",
     "autoprefixer": "^10.4.0",
-    "bundlewatch": "^0.3.2",
     "clean-css-cli": "^5.5.0",
     "cross-env": "^7.0.3",
     "cspell": "^5.13.4",
