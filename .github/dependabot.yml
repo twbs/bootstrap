@@ -22,4 +22,3 @@ updates:
       day: tuesday
       time: "12:00"
       timezone: Europe/Athens
-      rebase-strategy: disabled
