@@ -224,13 +224,13 @@ describe('Tab', () => {
       const secondTab = new Tab(secondTabTrigger)
 
       secondTabTrigger.addEventListener('show.bs.tab', ev => {
-        expect(ev.relatedTarget.hash).toEqual('#home')
+        expect(ev.relatedTarget).toEqual(fixtureEl.querySelector('#home'))
       })
 
       secondTabTrigger.addEventListener('shown.bs.tab', ev => {
-        expect(ev.relatedTarget.hash).toEqual('#home')
+        expect(ev.relatedTarget).toEqual(fixtureEl.querySelector('#home'))
         expect(secondTabTrigger.getAttribute('aria-selected')).toEqual('true')
-        expect(fixtureEl.querySelector('a:not(.active)').getAttribute('aria-selected')).toEqual('false')
+        expect(fixtureEl.querySelector('button:not(.active)').getAttribute('aria-selected')).toEqual('false')
         done()
       })
 
@@ -245,7 +245,7 @@ describe('Tab', () => {
         '</ul>'
       ].join('')
 
-      const triggerList = fixtureEl.querySelectorAll('a')
+      const triggerList = fixtureEl.querySelectorAll('button')
       const firstTab = new Tab(triggerList[0])
       const secondTab = new Tab(triggerList[1])
 
@@ -256,12 +256,12 @@ describe('Tab', () => {
 
       triggerList[0].addEventListener('hide.bs.tab', ev => {
         hideCalled = true
-        expect(ev.relatedTarget.hash).toEqual('#profile')
+        expect(ev.relatedTarget).toEqual(fixtureEl.querySelector('#profile'))
       })
 
       triggerList[0].addEventListener('hidden.bs.tab', ev => {
         expect(hideCalled).toEqual(true)
-        expect(ev.relatedTarget.hash).toEqual('#profile')
+        expect(ev.relatedTarget).toEqual(fixtureEl.querySelector('#profile'))
         done()
       })
 
@@ -276,7 +276,7 @@ describe('Tab', () => {
         '</ul>'
       ].join('')
 
-      const triggerList = fixtureEl.querySelectorAll('a')
+      const triggerList = fixtureEl.querySelectorAll('button')
       const firstTab = new Tab(triggerList[0])
       const secondTab = new Tab(triggerList[1])
       const expectDone = () => {
@@ -340,7 +340,7 @@ describe('Tab', () => {
       btnCloseEl.addEventListener('click', () => {
         const linkEl = btnCloseEl.parentNode
         const liEl = linkEl.parentNode
-        const tabId = linkEl.getAttribute('href')
+        const tabId = linkEl.getAttribute('data-bs-target')
         const tabIdEl = fixtureEl.querySelector(tabId)
 
         liEl.parentNode.removeChild(liEl)
