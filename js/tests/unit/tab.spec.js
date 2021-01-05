@@ -168,7 +168,7 @@ describe('Tab', () => {
         '</div>'
       ].join('')
 
-      const triggerActive = fixtureEl.querySelector('a.active')
+      const triggerActive = fixtureEl.querySelector('button.active')
       const tab = new Tab(triggerActive)
 
       triggerActive.addEventListener('shown.bs.tab', () => {
@@ -338,9 +338,9 @@ describe('Tab', () => {
       })
 
       btnCloseEl.addEventListener('click', () => {
-        const linkEl = btnCloseEl.parentNode
-        const liEl = linkEl.parentNode
-        const tabId = linkEl.getAttribute('data-bs-target')
+        const tabEl = btnCloseEl.parentNode
+        const liEl = tabEl.parentNode
+        const tabId = tabEl.getAttribute('data-bs-target')
         const tabIdEl = fixtureEl.querySelector(tabId)
 
         liEl.parentNode.removeChild(liEl)
