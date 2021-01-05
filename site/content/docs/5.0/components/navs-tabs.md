@@ -657,7 +657,7 @@ If no tab was already active, then the `hide.bs.tab` and `hidden.bs.tab` events 
 </table>
 
 ```js
-var tabEl = document.querySelector('a[data-bs-toggle="tab"]')
+var tabEl = document.querySelector('button[data-bs-toggle="tab"]')
 tabEl.addEventListener('shown.bs.tab', function (event) {
   event.target // newly activated tab
   event.relatedTarget // previous active tab
