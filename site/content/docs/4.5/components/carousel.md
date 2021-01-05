@@ -208,7 +208,7 @@ Add `data-interval=""` to a `.carousel-item` to change the amount of time to del
 </div>
 {{< /example >}}
 
-### Suppressing touch swiping
+### Disable touch swiping
 
 By default, carousels support swiping left/right on touchscreen devices to move between slides. This can be explicitly suppressed using the `data-touch` attribute. The example below also does not include the `data-ride`, and has `data-interval="false"`, meaning that it won't autoplay.
 
