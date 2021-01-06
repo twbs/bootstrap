@@ -9,7 +9,8 @@ import {
   defineJQueryPlugin,
   getElementFromSelector,
   getSelectorFromElement,
-  getTransitionDurationFromElement
+  getTransitionDurationFromElement,
+  isVisible
 } from './util/index'
 import { getScrollBarWidth, resetScrollbar, setScrollbar } from './util/scrollbar'
 import Data from './dom/data'
@@ -97,6 +98,8 @@ class OffCanvas extends BaseComponent {
     }
 
     this._element.removeAttribute('aria-hidden')
+    this._element.setAttribute('aria-modal', true)
+    this._element.setAttribute('role', 'dialog')
     this._element.classList.add(CLASS_NAME_SHOW)
     this.hidden = false
 
@@ -129,18 +132,20 @@ class OffCanvas extends BaseComponent {
       document.body.classList.remove(CLASS_NAME_BACKDROP_BODY)
     }
 
-    if (this._bodyOptions !== 'scroll') {
-      document.body.classList.remove(CLASS_NAME_STOP_OVERFLOW)
-      resetScrollbar()
-    }
-
     document.body.classList.add(CLASS_NAME_TOGGLING)
     this._element.classList.remove(CLASS_NAME_SHOW)
 
     const completeCallback = () => {
       document.body.classList.remove(CLASS_NAME_TOGGLING)
       this._element.setAttribute('aria-hidden', true)
+      this._element.removeAttribute('aria-modal')
+      this._element.removeAttribute('role')
       this.hidden = true
+
+      if (this._bodyOptions !== 'scroll') {
+        document.body.classList.remove(CLASS_NAME_STOP_OVERFLOW)
+        resetScrollbar()
+      }
 
       EventHandler.trigger(this._element, EVENT_HIDDEN)
     }
@@ -210,6 +215,13 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   if (this.disabled || this.classList.contains(CLASS_NAME_DISABLED)) {
     return
   }
+
+  EventHandler.one(target, EVENT_HIDDEN, () => {
+    // focus on trigger when it is closed
+    if (isVisible(this)) {
+      this.focus()
+    }
+  })
 
   const data = Data.getData(target, DATA_KEY) || new OffCanvas(target)
   data.toggle(this)
