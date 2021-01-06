@@ -227,6 +227,19 @@ const EventHandler = {
     addHandler(element, event, handler, delegationFn, true)
   },
 
+  oneForMany(elements, event, handler, delegationFn) {
+    let handled = 0
+
+    elements.forEach(element => {
+      addHandler(element, event, () => {
+        handled++
+        if (handled === elements.length) {
+          handler()
+        }
+      }, delegationFn, true)
+    })
+  },
+
   off(element, originalTypeEvent, handler, delegationFn) {
     if (typeof originalTypeEvent !== 'string' || !element) {
       return

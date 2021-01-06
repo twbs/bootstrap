@@ -8,7 +8,7 @@
 import {
   defineJQueryPlugin,
   emulateTransitionEnd,
-  getElementFromSelector,
+  getAllElementsFromSelector,
   getTransitionDurationFromElement,
   reflow
 } from './util/index'
@@ -72,7 +72,7 @@ class Tab extends BaseComponent {
     }
 
     let previous
-    const target = getElementFromSelector(this._element)
+    const targets = getAllElementsFromSelector(this._element)
     const listElement = this._element.closest(SELECTOR_NAV_LIST_GROUP)
 
     if (listElement) {
@@ -95,7 +95,7 @@ class Tab extends BaseComponent {
       return
     }
 
-    this._activate(this._element, listElement)
+    this._activate([this._element], listElement)
 
     const complete = () => {
       EventHandler.trigger(previous, EVENT_HIDDEN, {
@@ -106,8 +106,8 @@ class Tab extends BaseComponent {
       })
     }
 
-    if (target) {
-      this._activate(target, target.parentNode, complete)
+    if (targets && targets.length > 0) {
+      this._activate(targets, targets[0].parentNode, complete)
     } else {
       complete()
     }
@@ -115,63 +115,72 @@ class Tab extends BaseComponent {
 
   // Private
 
-  _activate(element, container, callback) {
+  _activate(elements, container, callback) {
     const activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL') ?
       SelectorEngine.find(SELECTOR_ACTIVE_UL, container) :
       SelectorEngine.children(container, SELECTOR_ACTIVE)
 
-    const active = activeElements[0]
-    const isTransitioning = callback && (active && active.classList.contains(CLASS_NAME_FADE))
+    const hasActive = Boolean(activeElements) && activeElements.length > 0
+    const isTransitioning = Boolean(callback) && activeElements.some(active => {
+      return (active && active.classList.contains(CLASS_NAME_FADE))
+    })
 
-    const complete = () => this._transitionComplete(element, active, callback)
+    const complete = () => this._transitionComplete(elements, activeElements, callback)
 
-    if (active && isTransitioning) {
-      const transitionDuration = getTransitionDurationFromElement(active)
-      active.classList.remove(CLASS_NAME_SHOW)
+    if (hasActive && isTransitioning) {
+      EventHandler.oneForMany(activeElements, 'transitionend', complete)
 
-      EventHandler.one(active, 'transitionend', complete)
-      emulateTransitionEnd(active, transitionDuration)
+      activeElements.forEach(active => {
+        const transitionDuration = getTransitionDurationFromElement(active)
+        active.classList.remove(CLASS_NAME_SHOW)
+
+        emulateTransitionEnd(active, transitionDuration)
+      })
     } else {
       complete()
     }
   }
 
-  _transitionComplete(element, active, callback) {
-    if (active) {
-      active.classList.remove(CLASS_NAME_ACTIVE)
+  _transitionComplete(elements, activeElements, callback) {
+    if (activeElements) {
+      activeElements.forEach(active => {
+        active.classList.remove(CLASS_NAME_ACTIVE)
 
-      const dropdownChild = SelectorEngine.findOne(SELECTOR_DROPDOWN_ACTIVE_CHILD, active.parentNode)
+        const dropdownChild = SelectorEngine.findOne(SELECTOR_DROPDOWN_ACTIVE_CHILD, active.parentNode)
 
-      if (dropdownChild) {
-        dropdownChild.classList.remove(CLASS_NAME_ACTIVE)
+        if (dropdownChild) {
+          dropdownChild.classList.remove(CLASS_NAME_ACTIVE)
+        }
+
+        if (active.getAttribute('role') === 'tab') {
+          active.setAttribute('aria-selected', false)
+        }
+      })
+    }
+
+    elements.forEach(element => {
+      element.classList.add(CLASS_NAME_ACTIVE)
+      if (element.getAttribute('role') === 'tab') {
+        element.setAttribute('aria-selected', true)
       }
 
-      if (active.getAttribute('role') === 'tab') {
-        active.setAttribute('aria-selected', false)
-      }
-    }
+      reflow(element)
 
-    element.classList.add(CLASS_NAME_ACTIVE)
-    if (element.getAttribute('role') === 'tab') {
-      element.setAttribute('aria-selected', true)
-    }
-
-    reflow(element)
-
-    if (element.classList.contains(CLASS_NAME_FADE)) {
-      element.classList.add(CLASS_NAME_SHOW)
-    }
-
-    if (element.parentNode && element.parentNode.classList.contains(CLASS_NAME_DROPDOWN_MENU)) {
-      const dropdownElement = element.closest(SELECTOR_DROPDOWN)
-
-      if (dropdownElement) {
-        SelectorEngine.find(SELECTOR_DROPDOWN_TOGGLE)
-          .forEach(dropdown => dropdown.classList.add(CLASS_NAME_ACTIVE))
+      if (element.classList.contains(CLASS_NAME_FADE)) {
+        element.classList.add(CLASS_NAME_SHOW)
       }
 
-      element.setAttribute('aria-expanded', true)
-    }
+      if (element.parentNode && element.parentNode.classList.contains(CLASS_NAME_DROPDOWN_MENU)) {
+        const dropdownElement = element.closest(SELECTOR_DROPDOWN)
+
+        if (dropdownElement) {
+          SelectorEngine.find(SELECTOR_DROPDOWN_TOGGLE)
+            .forEach(dropdown => dropdown.classList.add(CLASS_NAME_ACTIVE))
+        }
+
+        element.setAttribute('aria-expanded', true)
+      }
+    })
 
     if (callback) {
       callback()

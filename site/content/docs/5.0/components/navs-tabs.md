@@ -553,6 +553,30 @@ To make tabs fade in, add `.fade` to each `.tab-pane`. The first tab pane must a
 </div>
 ```
 
+### Multiple content targets
+
+You can show multiple content panes with one tab by using the `data-bs-target` attribute with a multi element selector.
+
+{{< callout warning >}}
+While this is possible it is currently **not** supported by the [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel).
+{{< /callout >}}
+
+```html
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a href="#home" data-bs-toggle="tab" role="tab" class="nav-link active">Home</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a data-bs-target="#profile,#profile2" data-bs-toggle="tab" role="tab" class="nav-link">Profile</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="home" role="tabpanel">...</div>
+  <div class="tab-pane fade" id="profile" role="tabpanel">...</div>
+  <div class="tab-pane fade" id="profile2" role="tabpanel">...</div>
+</div>
+```
+
 ### Methods
 
 {{< callout danger >}}

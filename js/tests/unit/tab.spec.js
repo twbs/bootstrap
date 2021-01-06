@@ -326,6 +326,37 @@ describe('Tab', () => {
 
       btnCloseEl.click()
     })
+
+    it('should activate multiple content targets', done => {
+      fixtureEl.innerHTML = `
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a href="#home" data-bs-toggle="tab" role="tab" class="nav-link active">Home</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a id="triggerProfile" href="#profile" data-bs-target="#profile,#profile2"
+               data-bs-toggle="tab" role="tab" class="nav-link"
+            >Profile</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="home" role="tabpanel"></div>
+          <div class="tab-pane fade" id="profile" role="tabpanel"></div>
+          <div class="tab-pane fade" id="profile2" role="tabpanel"></div>
+        </div>
+      `
+
+      const profileTriggerEl = fixtureEl.querySelector('#triggerProfile')
+      const tab = new Tab(profileTriggerEl)
+
+      profileTriggerEl.addEventListener('shown.bs.tab', () => {
+        expect(fixtureEl.querySelector('#profile').classList.contains('active')).toEqual(true)
+        expect(fixtureEl.querySelector('#profile2').classList.contains('active')).toEqual(true)
+        done()
+      })
+
+      tab.show()
+    })
   })
 
   describe('dispose', () => {
