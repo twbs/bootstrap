@@ -121,6 +121,7 @@ class OffCanvas extends BaseComponent {
       return
     }
 
+    EventHandler.off(document, EVENT_FOCUSIN)
     this._element.blur()
     this._isShown = false
 
