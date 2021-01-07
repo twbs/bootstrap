@@ -76,7 +76,7 @@ class ScrollSpy extends BaseComponent {
     this._activeTarget = null
     this._scrollHeight = 0
 
-    EventHandler.on(this._scrollElement, EVENT_SCROLL, event => this._process(event))
+    EventHandler.on(this._scrollElement, EVENT_SCROLL, () => this._process())
 
     this.refresh()
     this._process()
