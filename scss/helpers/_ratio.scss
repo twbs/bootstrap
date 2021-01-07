@@ -6,7 +6,7 @@
 
   &::before {
     display: block;
-    padding-top: var(--aspect-ratio);
+    padding-top: var(--#{$variable-prefix}aspect-ratio);
     content: "";
   }
 
@@ -21,6 +21,6 @@
 
 @each $key, $ratio in $aspect-ratios {
   .ratio-#{$key} {
-    --aspect-ratio: #{$ratio};
+    --#{$variable-prefix}aspect-ratio: #{$ratio};
   }
 }
