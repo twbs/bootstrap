@@ -22,7 +22,7 @@ Please be aware that nested carousels are not supported, and carousels are gener
 
 Carousels don't automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content. While carousels support previous/next controls and indicators, they're not explicitly required. Add and customize as you see fit.
 
-**The `.active` class needs to be added to one of the slides** otherwise the carousel will not be visible. Also be sure to set a unique id on the `.carousel` for optional controls, especially if you're using multiple carousels on a single page. Control and indicator elements must have a `data-bs-target` attribute (or `href` for links) that matches the id of the `.carousel` element.
+**The `.active` class needs to be added to one of the slides** otherwise the carousel will not be visible. Also be sure to set a unique `id` on the `.carousel` for optional controls, especially if you're using multiple carousels on a single page. Control and indicator elements must have a `data-bs-target` attribute (or `href` for links) that matches the `id` of the `.carousel` element.
 
 ### Slides only
 
@@ -46,7 +46,7 @@ Here's a carousel with slides only. Note the presence of the `.d-block` and `.w-
 
 ### With controls
 
-Adding in the previous and next controls:
+Adding in the previous and next controls. We recommend using `<button>` elements, but you can also use `<a>` link elements–though in that case, you should also add `role="button"` attributes to the links.
 
 {{< example >}}
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
