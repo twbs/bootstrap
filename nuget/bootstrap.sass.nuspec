@@ -14,7 +14,7 @@
     <projectUrl>https://getbootstrap.com/</projectUrl>
     <icon>bootstrap.png</icon>
     <license type="file">LICENSE.txt</license>
-    <copyright>Copyright 2017-2020</copyright>
+    <copyright>Copyright 2017-2021</copyright>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <dependencies>
       <dependency id="jQuery" version="[3.0.0,4)" />
