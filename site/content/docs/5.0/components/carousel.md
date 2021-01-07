@@ -206,9 +206,9 @@ Add `data-bs-interval=""` to a `.carousel-item` to change the amount of time to 
 </div>
 {{< /example >}}
 
-### Suppressing touch swiping
+### Disable touch swiping
 
-By default, carousels support swiping left/right on touchscreen devices to move between slides. This can be explicitly suppressed using the `data-bs-touch` attribute. The example below also does not include the `data-bs-ride` attribute, and has `data-bs-interval="false"`, meaning that it won't autoplay.
+Carousels support swiping left/right on touchscreen devices to move between slides. This can be disabled using the `data-bs-touch` attribute. The example below also does not include the `data-bs-ride` attribute and has `data-bs-interval="false"` so it doesn't autoplay.
 
 {{< example >}}
 <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
