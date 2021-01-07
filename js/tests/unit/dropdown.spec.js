@@ -393,13 +393,13 @@ describe('Dropdown', () => {
 
       expect(() => new Dropdown(btnDropdown, {
         reference: {}
-      })).toThrow()
+      })).toThrowError(TypeError, 'DROPDOWN: Option "reference" provided type "object" without a required "getBoundingClientRect" method.')
 
       expect(() => new Dropdown(btnDropdown, {
         reference: {
           getBoundingClientRect: 'not-a-function'
         }
-      })).toThrow()
+      })).toThrowError(TypeError, 'DROPDOWN: Option "reference" provided type "object" without a required "getBoundingClientRect" method.')
 
       // use onFirstUpdate as Poppers internal update is executed async
       const dropdown = new Dropdown(btnDropdown, {
