@@ -1,0 +1,28 @@
+name: Issue Labeled
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  replay-help:
+    runs-on: ubuntu-latest
+    steps:
+      - name: help wanted
+        if: github.event.label.name == 'help wanted'
+        uses: actions-cool/issues-helper@v1.8
+        with:
+          actions: 'create-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Hello @${{ github.event.issue.user.login }}. We totally like your proposal/feedback, welcome to send us a Pull Request for it. We appreciate your effort in advance and looking forward to your contribution!
+
+      - name: awaiting reply
+        if: github.event.label.name == 'awaiting-reply'
+        uses: actions-cool/issues-helper@v1.8
+        with:
+          actions: 'create-comment'
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Hello @${{ github.event.issue.user.login }}. Bug reports must include a live demo of the issue. Per our [contributing guidelines](https://github.com/twbs/bootstrap/blob/main/.github/CONTRIBUTING.md), please create a reduced test case via [CodePen](https://codepen.io/) or [JS Bin](https://jsbin.com/) and report back with your link, Bootstrap version, and specific browser and Operating System details.
