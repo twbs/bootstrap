@@ -27,3 +27,8 @@
   code: ko
   description: Bootstrap 4 한국어 문서
   url: https://getbootstrap.kr/
+
+- name: Russian
+  code: ru
+  description: Bootstrap 4 на русском
+  url: https://v4.getbootstrap.su/
