@@ -86,7 +86,7 @@ if (bundle) {
   conf.browserStack = {
     username: process.env.BROWSER_STACK_USERNAME,
     accessKey: process.env.BROWSER_STACK_ACCESS_KEY,
-    build: `bootstrap-${new Date().toISOString()}`,
+    build: `bootstrap-v4-${new Date().toISOString()}`,
     project: 'Bootstrap',
     retryLimit: 2
   }
