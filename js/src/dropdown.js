@@ -463,17 +463,17 @@ class Dropdown extends BaseComponent {
     const parent = Dropdown.getParentFromElement(this)
     const isActive = this.classList.contains(CLASS_NAME_SHOW)
 
-    if (!isActive || isActive && (event.key === ESCAPE_KEY || event.key === SPACE_KEY)) {
+    if (!isActive || (isActive && (event.key === ESCAPE_KEY || event.key === SPACE_KEY))) {
       const button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
       if (event.key === ESCAPE_KEY) {
         button.focus()
         Dropdown.clearMenus()
         return
       }
+
       button.click()
       return
     }
-
 
     if (!isActive || event.key === SPACE_KEY) {
       Dropdown.clearMenus()
