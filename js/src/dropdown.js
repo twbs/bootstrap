@@ -447,6 +447,7 @@ class Dropdown extends BaseComponent {
       const button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
       button.focus()
       Dropdown.clearMenus()
+      event.stopPropagation()
       return
     }
 
