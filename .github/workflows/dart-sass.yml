@@ -7,7 +7,6 @@ on:
   pull_request:
 
 env:
-  CI: true
   FORCE_COLOR: 2
   NODE: 14.x
 
