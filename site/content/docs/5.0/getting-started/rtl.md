@@ -136,6 +136,41 @@ $font-family-sans-serif:
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 ```
 
+### LTR and RTL at the same time
+
+Need both LTR and RTL on the same page? Thanks to [RTLCSS String Maps](https://rtlcss.com/learn/usage-guide/string-map/), this is pretty straightforward. Wrap your `@import`s with a class, and set a custom rename rule for RTLCSS:
+
+```scss
+/* rtl:begin:options: {
+  "autoRename": true,
+  "stringMap":[
+    "name": "ltr-rtl",
+    "priority": 100,
+    "search": ["ltr"],
+    "replace": ["rtl"],
+    "options": {
+      "scope": "*",
+      "ignoreCase": false
+    }
+  ]
+} */
+.ltr {
+  @import "../node_modules/bootstrap/scss/bootstrap";
+}
+/*rtl:end:options*/
+```
+
+After running Sass then RTLCSS, each selector in your CSS files will be prepended by `.ltr`, and `.rtl` for RTL files. Now you're able to use both files on the same page, and simply use `.ltr` or `.rtl` on your components wrappers to use one or the other direction.
+
+{{< callout warning >}}
+#### Performance and accessibility concerns
+
+While this approach is understandable, please pay attention to the following:
+
+1. when switching `.ltr` and `.rtl`, make sure you add `dir` and `lang` attributes accordingly.
+2. loading both files can be a real performance bottleneck: consider some [optimization]({{< docsref "/customize/optimize" >}}), and maybe try to [load one of those files asynchronously](https://www.filamentgroup.com/lab/load-css-simpler/).
+{{< /callout >}}
+
 ## The breadcrumb case
 
 The [breadcrumb separator]({{< docsref "/components/breadcrumb" >}}/#changing-the-separator) is the only case requiring its own brand new variable— namely `$breadcrumb-divider-flipped` —defaulting to `$breadcrumb-divider`.
