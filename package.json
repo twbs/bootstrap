@@ -45,7 +45,7 @@
     "js-test-karma-bundle": "cross-env BUNDLE=true npm run js-test-karma",
     "js-test-karma-bundle-old": "cross-env BUNDLE=true USE_OLD_JQUERY=true npm run js-test-karma",
     "js-test-integration": "rollup --config js/tests/integration/rollup.bundle.js",
-    "js-test-cloud": "cross-env BROWSER=true npm run js-test-karma",
+    "js-test-cloud": "cross-env BROWSERSTACK=true npm run js-test-karma",
     "lint": "npm-run-all --parallel js-lint css-lint lockfile-lint",
     "docs": "npm-run-all docs-build docs-lint",
     "docs-build": "hugo --cleanDestinationDir",
