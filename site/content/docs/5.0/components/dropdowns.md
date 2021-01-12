@@ -1117,3 +1117,19 @@ myDropdown.addEventListener('show.bs.dropdown', function () {
   // do something...
 })
 ```
+
+## Sass
+
+### Variables
+
+Variables for all dropdowns:
+
+{{< scss-docs name="dropdown-variables" file="scss/_variables.scss" >}}
+
+Variables for the [dark dropdown](#dark-dropdowns):
+
+{{< scss-docs name="dropdown-dark-variables" file="scss/_variables.scss" >}}
+
+### Mixins
+
+There are no mixins for dropdowns.

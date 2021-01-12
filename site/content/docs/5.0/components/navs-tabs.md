@@ -663,3 +663,13 @@ tabEl.addEventListener('shown.bs.tab', function (event) {
   event.relatedTarget // previous active tab
 })
 ```
+
+## Sass
+
+### Variables
+
+{{< scss-docs name="nav-variables" file="scss/_variables.scss" >}}
+
+### Mixins
+
+There are no mixins for navigations and tabs.

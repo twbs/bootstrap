@@ -79,7 +79,7 @@ When an alert is dismissed, the element is completely removed from the page stru
 
 ### Variant mixin
 
-Used to create modifier classes for our alerts.
+Used in combination with `$theme-colors` to create contextual modifier classes for our alerts.
 
 {{< scss-docs name="alert-variant-mixin" file="scss/mixins/_alert.scss" >}}
 

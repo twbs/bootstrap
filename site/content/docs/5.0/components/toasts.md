@@ -420,3 +420,13 @@ myToastEl.addEventListener('hidden.bs.toast', function () {
   // do something...
 })
 ```
+
+## Sass
+
+### Variables
+
+{{< scss-docs name="toast-variables" file="scss/_variables.scss" >}}
+
+### Mixins
+
+There are no mixins for toasts.

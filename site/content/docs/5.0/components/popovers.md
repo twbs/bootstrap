@@ -426,3 +426,13 @@ myPopoverTrigger.addEventListener('hidden.bs.popover', function () {
   // do something...
 })
 ```
+
+## Sass
+
+### Variables
+
+{{< scss-docs name="popover-variables" file="scss/_variables.scss" >}}
+
+### Mixins
+
+There are no mixins for popovers.

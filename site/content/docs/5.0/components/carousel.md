@@ -450,3 +450,13 @@ myCarousel.addEventListener('slide.bs.carousel', function () {
 ### Change transition duration
 
 The transition duration of `.carousel-item` can be changed with the `$carousel-transition-duration` Sass variable before compiling or custom styles if you're using the compiled CSS. If multiple transitions are applied, make sure the transform transition is defined first (eg. `transition: transform 2s ease, opacity .5s ease-out`).
+
+## Sass
+
+### Variables
+
+{{< scss-docs name="carousel-variables" file="scss/_variables.scss" >}}
+
+### Mixins
+
+There are no mixins for carousels.
