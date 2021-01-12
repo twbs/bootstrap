@@ -126,7 +126,7 @@ Breakpoints specific variants are consequently renamed too (eg. `.text-md-start`
   - Renamed `.font-style-*` utilities as `.fst-*` for brevity and consistency.
 - Added `.d-grid` to display utilities
 - Added new `gap` utilities (`.gap`) for CSS Grid layouts
- - Removed `.rounded-sm` and `rounded-lg` and introduced `.rounded-0` to `.rounded-3`. [See #31687](https://github.com/twbs/bootstrap/pull/31687)
+- Removed `.rounded-sm` and `rounded-lg`, and introduced `.rounded-0` to `.rounded-3`. [See #31687](https://github.com/twbs/bootstrap/pull/31687).
 
 ## v5.0.0-alpha2
 
