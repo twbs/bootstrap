@@ -67,7 +67,7 @@ Our [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/packag
 
 ## Sass
 
-Bootstrap uses Sass—specifically, [Dart Sass](https://sass-lang.com/dart-sass)—to compile our source `.scss` files. Compatibility with other Sass compilers is not guaranteed, including the deprecated Lib Sass.
+Bootstrap uses Sass—specifically, [Dart Sass](https://sass-lang.com/dart-sass)—to compile our source `.scss` files. Compatibility with other Sass compilers is not guaranteed, including the [deprecated LibSass](https://sass-lang.com/blog/libsass-is-deprecated).
 
 ## Autoprefixer
 
