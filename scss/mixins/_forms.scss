@@ -1,5 +1,7 @@
 // This mixin uses an `if()` technique to be compatible with Dart Sass
 // See https://github.com/sass/sass/issues/1873#issuecomment-152293725 for more details
+
+// scss-docs-start form-validation-mixins
 @mixin form-validation-state-selector($state) {
   @if ($state == "valid" or $state == "invalid") {
     .was-validated #{if(&, "&", "")}:#{$state},
@@ -122,3 +124,4 @@
     }
   }
 }
+// scss-docs-end form-validation-mixins

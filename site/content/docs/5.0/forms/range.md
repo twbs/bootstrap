@@ -41,3 +41,13 @@ By default, range inputs "snap" to integer values. To change this, you can speci
 <label for="customRange3" class="form-label">Example range</label>
 <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
 {{< /example >}}
+
+## Sass
+
+### Variables
+
+{{< scss-docs name="form-range-variables" file="scss/_variables.scss" >}}
+
+### Mixins
+
+There are no mixins for range inputs.

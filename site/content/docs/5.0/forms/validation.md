@@ -349,18 +349,34 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
 </form>
 {{< /example >}}
 
-## Customizing
+## Sass
 
-Validation states can be customized via Sass with the `$form-validation-states` map. Located in our `_variables.scss` file, this Sass map is how we generate the default `valid`/`invalid` validation states. Included is a nested map for customizing each state's color, icon, tooltip color, and focus shadow. While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.
+### Variables
 
-Please note that we do not recommend customizing these values without also modifying the `form-validation-state` mixin.
+{{< scss-docs name="form-feedback-variables" file="scss/_variables.scss" >}}
 
-This is the Sass map from `_variables.scss`. Override this and recompile your Sass to generate different states:
+### Mixins
+
+Two mixins are combined together, through our [loop](#loop), to generate our form validation feedback styles.
+
+{{< scss-docs name="form-validation-mixins" file="scss/mixins/_forms.scss" >}}
+
+### Map
+
+This is the validation Sass map from `_variables.scss`. Override or extend this to generate different or additional states.
 
 {{< scss-docs name="form-validation-states" file="scss/_variables.scss" >}}
 
 Maps of `$form-validation-states` can contain three optional parameters to override tooltips and focus styles.
 
-This is the loop from `forms/_validation.scss`. Any modifications to the above Sass map will be reflected in your compiled CSS via this loop:
+### Loop
+
+Used to iterate over `$form-validation-states` map values to generate our validation styles. Any modifications to the above Sass map will be reflected in your compiled CSS via this loop.
 
 {{< scss-docs name="form-validation-states-loop" file="scss/forms/_validation.scss" >}}
+
+### Customizing
+
+Validation states can be customized via Sass with the `$form-validation-states` map. Located in our `_variables.scss` file, this Sass map is how we generate the default `valid`/`invalid` validation states. Included is a nested map for customizing each state's color, icon, tooltip color, and focus shadow. While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.
+
+Please note that we do not recommend customizing `$form-validation-states` values without also modifying the `form-validation-state` mixin.

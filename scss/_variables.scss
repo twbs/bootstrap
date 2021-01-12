@@ -450,12 +450,14 @@ $font-sizes: (
 ) !default;
 // scss-docs-end font-sizes
 
+// scss-docs-start headings-variables
 $headings-margin-bottom:      $spacer / 2 !default;
 $headings-font-family:        null !default;
 $headings-font-style:         null !default;
 $headings-font-weight:        500 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              null !default;
+// scss-docs-end headings-variables
 
 // scss-docs-start display-headings
 $display-font-sizes: (
@@ -471,6 +473,7 @@ $display-font-weight: 300 !default;
 $display-line-height: $headings-line-height !default;
 // scss-docs-end display-headings
 
+// scss-docs-start type-variables
 $lead-font-size:              $font-size-base * 1.25 !default;
 $lead-font-weight:            300 !default;
 
@@ -505,6 +508,7 @@ $nested-kbd-font-weight:      $font-weight-bold !default;
 $list-inline-padding:         .5rem !default;
 
 $mark-bg:                     #fcf8e3 !default;
+// scss-docs-end type-variables
 
 
 // Tables
@@ -547,7 +551,9 @@ $table-group-separator-color: currentColor !default;
 $table-caption-color:         $text-muted !default;
 
 $table-bg-scale:              -80% !default;
+// scss-docs-end table-variables
 
+// scss-docs-start table-loop
 $table-variants: (
   "primary":    shift-color($primary, $table-bg-scale),
   "secondary":  shift-color($secondary, $table-bg-scale),
@@ -558,13 +564,14 @@ $table-variants: (
   "light":      $light,
   "dark":       $dark,
 ) !default;
-// scss-docs-end table-variables
+// scss-docs-end table-loop
 
 
 // Buttons + Forms
 //
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
+// scss-docs-start input-btn-variables
 $input-btn-padding-y:         .375rem !default;
 $input-btn-padding-x:         .75rem !default;
 $input-btn-font-family:       null !default;
@@ -585,6 +592,7 @@ $input-btn-padding-x-lg:      1rem !default;
 $input-btn-font-size-lg:      $font-size-lg !default;
 
 $input-btn-border-width:      $border-width !default;
+// scss-docs-end input-btn-variables
 
 
 // Buttons
@@ -640,18 +648,23 @@ $btn-active-border-tint-amount:   10% !default;
 
 // Forms
 
+// scss-docs-start form-text-variables
 $form-text-margin-top:                  .25rem !default;
 $form-text-font-size:                   $small-font-size !default;
 $form-text-font-style:                  null !default;
 $form-text-font-weight:                 null !default;
 $form-text-color:                       $text-muted !default;
+// scss-docs-end form-text-variables
 
+// scss-docs-start form-label-variables
 $form-label-margin-bottom:              .5rem !default;
 $form-label-font-size:                  null !default;
 $form-label-font-style:                 null !default;
 $form-label-font-weight:                null !default;
 $form-label-color:                      null !default;
+// scss-docs-end form-label-variables
 
+// scss-docs-start form-input-variables
 $input-padding-y:                       $input-btn-padding-y !default;
 $input-padding-x:                       $input-btn-padding-x !default;
 $input-font-family:                     $input-btn-font-family !default;
@@ -700,8 +713,9 @@ $input-height-sm:                       add($input-line-height * 1em, add($input
 $input-height-lg:                       add($input-line-height * 1em, add($input-padding-y-lg * 2, $input-height-border, false)) !default;
 
 $input-transition:                      border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+// scss-docs-end form-input-variables
 
-
+// scss-docs-start form-check-variables
 $form-check-input-width:                  1em !default;
 $form-check-min-height:                   $font-size-base * $line-height-base !default;
 $form-check-padding-start:                $form-check-input-width + .5em !default;
@@ -734,6 +748,10 @@ $form-check-input-disabled-opacity:        .5 !default;
 $form-check-label-disabled-opacity:        $form-check-input-disabled-opacity !default;
 $form-check-btn-check-disabled-opacity:    $btn-disabled-opacity !default;
 
+$form-check-inline-margin-end:    1rem !default;
+// scss-docs-end form-check-variables
+
+// scss-docs-start form-switch-variables
 $form-switch-color:               rgba(0, 0, 0, .25) !default;
 $form-switch-width:               2em !default;
 $form-switch-padding-start:       $form-switch-width + .5em !default;
@@ -747,16 +765,18 @@ $form-switch-focus-bg-image:      url("data:image/svg+xml,<svg xmlns='http://www
 $form-switch-checked-color:       $component-active-color !default;
 $form-switch-checked-bg-image:    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-checked-color}'/></svg>") !default;
 $form-switch-checked-bg-position: right center !default;
+// scss-docs-end form-switch-variables
 
-$form-check-inline-margin-end:    1rem !default;
-
+// scss-docs-start input-group-variables
 $input-group-addon-padding-y:           $input-padding-y !default;
 $input-group-addon-padding-x:           $input-padding-x !default;
 $input-group-addon-font-weight:         $input-font-weight !default;
 $input-group-addon-color:               $input-color !default;
 $input-group-addon-bg:                  $gray-200 !default;
 $input-group-addon-border-color:        $input-border-color !default;
+// scss-docs-end input-group-variables
 
+// scss-docs-start form-select-variables
 $form-select-padding-y:             $input-padding-y !default;
 $form-select-padding-x:             $input-padding-x !default;
 $form-select-font-family:           $input-font-family !default;
@@ -794,7 +814,9 @@ $form-select-font-size-sm:        $input-font-size-sm !default;
 $form-select-padding-y-lg:        $input-padding-y-lg !default;
 $form-select-padding-x-lg:        $input-padding-x-lg !default;
 $form-select-font-size-lg:        $input-font-size-lg !default;
+// scss-docs-end form-select-variables
 
+// scss-docs-start form-range-variables
 $form-range-track-width:          100% !default;
 $form-range-track-height:         .5rem !default;
 $form-range-track-cursor:         pointer !default;
@@ -813,11 +835,15 @@ $form-range-thumb-focus-box-shadow-width:  $input-focus-width !default; // For f
 $form-range-thumb-active-bg:               tint-color($component-active-bg, 70%) !default;
 $form-range-thumb-disabled-bg:             $gray-500 !default;
 $form-range-thumb-transition:              background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+// scss-docs-end form-range-variables
 
+// scss-docs-start form-file-variables
 $form-file-button-color:          $input-color !default;
 $form-file-button-bg:             $input-group-addon-bg !default;
 $form-file-button-hover-bg:       shade-color($form-file-button-bg, 5%) !default;
+// scss-docs-end form-file-variables
 
+// scss-docs-start form-floating-variables
 $form-floating-height:            add(3.5rem, $input-height-border) !default;
 $form-floating-padding-x:         $input-padding-x !default;
 $form-floating-padding-y:         1rem !default;
@@ -826,9 +852,11 @@ $form-floating-input-padding-b:   .625rem !default;
 $form-floating-label-opacity:     .65 !default;
 $form-floating-label-transform:   scale(.85) translateY(-.5rem) translateX(.15rem) !default;
 $form-floating-transition:        opacity .1s ease-in-out, transform .1s ease-in-out !default;
+// scss-docs-end form-floating-variables
 
 // Form validation
 
+// scss-docs-start form-feedback-variables
 $form-feedback-margin-top:          $form-text-margin-top !default;
 $form-feedback-font-size:           $form-text-font-size !default;
 $form-feedback-font-style:          $form-text-font-style !default;
@@ -839,6 +867,7 @@ $form-feedback-icon-valid-color:    $form-feedback-valid-color !default;
 $form-feedback-icon-valid:          url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-valid-color}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>") !default;
 $form-feedback-icon-invalid-color:  $form-feedback-invalid-color !default;
 $form-feedback-icon-invalid:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{$form-feedback-icon-invalid-color}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$form-feedback-icon-invalid-color}' stroke='none'/></svg>") !default;
+// scss-docs-end form-feedback-variables
 
 // scss-docs-start form-validation-states
 $form-validation-states: (
@@ -1300,8 +1329,10 @@ $thumbnail-box-shadow:              $box-shadow-sm !default;
 
 // Figures
 
+// scss-docs-start figure-variables
 $figure-caption-font-size:          $small-font-size !default;
 $figure-caption-color:              $gray-600 !default;
+// scss-docs-end figure-variables
 
 
 // Breadcrumbs
