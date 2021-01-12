@@ -12,7 +12,6 @@ toc: true
 ### Sass
 
 #### Utilities
-- Removed `.rounded-sm` and `rounded-lg` and introduced `.rounded-0` to `.rounded-3`.
 - Renamed `--aspect-ratio` to `--bs-aspect-ratio` to be consistent with other custom properties.
 - Extended the `.visually-hidden-focusable` helper to also work on containers, using `:focus-within`.
 - `bootstrap-utilities.css` now also includes our helpers. Helpers don't need to be imported in custom builds anymore.
@@ -123,6 +122,7 @@ Breakpoints specific variants are consequently renamed too (eg. `.text-md-start`
 
 - **Text utilities:**
   - Added `.fs-*` utilities for `font-size` utilities (with RFS enabled). These use the same scale as HTML's default headings (1-6, large to small), and can be modified via Sass map.
+  - Removed `.rounded-sm` and `rounded-lg` and introduced `.rounded-0` to `.rounded-3`.
   - Renamed `.font-weight-*` utilities as `.fw-*` for brevity and consistency.
   - Renamed `.font-style-*` utilities as `.fst-*` for brevity and consistency.
 - Added `.d-grid` to display utilities
