@@ -122,11 +122,11 @@ Breakpoints specific variants are consequently renamed too (eg. `.text-md-start`
 
 - **Text utilities:**
   - Added `.fs-*` utilities for `font-size` utilities (with RFS enabled). These use the same scale as HTML's default headings (1-6, large to small), and can be modified via Sass map.
-  - Removed `.rounded-sm` and `rounded-lg` and introduced `.rounded-0` to `.rounded-3`.
   - Renamed `.font-weight-*` utilities as `.fw-*` for brevity and consistency.
   - Renamed `.font-style-*` utilities as `.fst-*` for brevity and consistency.
 - Added `.d-grid` to display utilities
 - Added new `gap` utilities (`.gap`) for CSS Grid layouts
+ - Removed `.rounded-sm` and `rounded-lg` and introduced `.rounded-0` to `.rounded-3`.
 
 ## v5.0.0-alpha2
 
