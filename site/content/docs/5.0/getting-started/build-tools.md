@@ -65,6 +65,10 @@ Our [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/packag
   </tbody>
 </table>
 
+## Sass
+
+Bootstrap uses Sass—specifically, [Dart Sass](https://sass-lang.com/dart-sass)—to compile our source `.scss` files. Compatibility with other Sass compilers is not guaranteed, including the deprecated Lib Sass.
+
 ## Autoprefixer
 
 Bootstrap uses [Autoprefixer][autoprefixer] (included in our build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.
