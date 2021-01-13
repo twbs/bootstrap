@@ -163,12 +163,13 @@ Need both LTR and RTL on the same page? Thanks to [RTLCSS String Maps](https://r
 After running Sass then RTLCSS, each selector in your CSS files will be prepended by `.ltr`, and `.rtl` for RTL files. Now you're able to use both files on the same page, and simply use `.ltr` or `.rtl` on your components wrappers to use one or the other direction.
 
 {{< callout warning >}}
-#### Performance and accessibility concerns
+#### Edge cases and known limitations
 
 While this approach is understandable, please pay attention to the following:
 
-1. when switching `.ltr` and `.rtl`, make sure you add `dir` and `lang` attributes accordingly.
-2. loading both files can be a real performance bottleneck: consider some [optimization]({{< docsref "/customize/optimize" >}}), and maybe try to [load one of those files asynchronously](https://www.filamentgroup.com/lab/load-css-simpler/).
+1. When switching `.ltr` and `.rtl`, make sure you add `dir` and `lang` attributes accordingly.
+2. Loading both files can be a real performance bottleneck: consider some [optimization]({{< docsref "/customize/optimize" >}}), and maybe try to [load one of those files asynchronously](https://www.filamentgroup.com/lab/load-css-simpler/).
+3. Nesting styles this way will prevent our `form-validation-state()` mixin from working as intended, thus require you tweak it a bit by yourself. [See #31223](https://github.com/twbs/bootstrap/issues/31223).
 {{< /callout >}}
 
 ## The breadcrumb case
