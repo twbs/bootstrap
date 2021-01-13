@@ -112,6 +112,7 @@ function bootstrapDelegationHandler(element, selector, fn) {
           event.delegateTarget = target
 
           if (handler.oneOff) {
+            // eslint-disable-next-line unicorn/consistent-destructuring
             EventHandler.off(element, event.type, fn)
           }
 
