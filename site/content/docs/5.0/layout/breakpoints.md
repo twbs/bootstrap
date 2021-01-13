@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Breakpoints
-description: Breakpoints are the triggers in Bootstrap for how your layout responsive changes across device or viewport sizes.
+description: Breakpoints are customizable widths that determine how your responsive layout behaves across device or viewport sizes in Bootstrap.
 group: layout
 aliases: "/docs/5.0/layout/"
 toc: true

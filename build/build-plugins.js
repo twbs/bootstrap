@@ -2,8 +2,8 @@
 
 /*!
  * Script to build our plugins to use them separately.
- * Copyright 2020 The Bootstrap Authors
- * Copyright 2020 Twitter, Inc.
+ * Copyright 2020-2021 The Bootstrap Authors
+ * Copyright 2020-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
