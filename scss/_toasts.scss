@@ -47,5 +47,5 @@
 
 .toast-body {
   padding: $toast-padding-x; // apply to both vertical and horizontal
-  word-break: break-all;
+  word-wrap: break-word;
 }
