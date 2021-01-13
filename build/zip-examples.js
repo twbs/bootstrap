@@ -3,7 +3,7 @@
 /*!
  * Script to create the built examples zip archive;
  * requires the `zip` command to be present!
- * Copyright 2020 The Bootstrap Authors
+ * Copyright 2020-2021 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
@@ -12,9 +12,10 @@
 const path = require('path')
 const sh = require('shelljs')
 
-const { version, version_short: versionShort } = require('../package.json')
+const pkg = require('../package.json')
 
-const folderName = `bootstrap-${version}-examples`
+const versionShort = pkg.config.version_short
+const folderName = `bootstrap-${pkg.version}-examples`
 
 sh.config.fatal = true
 
