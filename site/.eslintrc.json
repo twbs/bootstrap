@@ -35,8 +35,8 @@
     "strict": "error",
     "unicorn/no-for-loop": "off",
     "unicorn/no-null": "off",
-    "unicorn/prefer-dataset": "off",
-    "unicorn/prefer-node-append": "off",
+    "unicorn/prefer-dom-node-append": "off",
+    "unicorn/prefer-dom-node-dataset": "off",
     "unicorn/prefer-query-selector": "off",
     "unicorn/prevent-abbreviations": "off"
   }

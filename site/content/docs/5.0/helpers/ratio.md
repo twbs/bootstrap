@@ -49,10 +49,10 @@ Aspect ratios can be customized with modifier classes. By default the following 
 
 Each `.ratio-*` class includes a CSS custom property (or CSS variable) in the selector. You can override this CSS variable to create custom aspect ratios on the fly with some quick math on your part.
 
-For example, to create a 2x1 aspect ratio, set `--aspect-ratio: 50%` on the `.ratio`.
+For example, to create a 2x1 aspect ratio, set `--bs-aspect-ratio: 50%` on the `.ratio`.
 
 {{< example class="bd-example-ratios" >}}
-<div class="ratio" style="--aspect-ratio: 50%;">
+<div class="ratio" style="--bs-aspect-ratio: 50%;">
   <div>2x1</div>
 </div>
 {{< /example >}}
@@ -62,7 +62,7 @@ This CSS variable makes it easy to modify the aspect ratio across breakpoints. T
 ```scss
 .ratio-4x3 {
   @include media-breakpoint-up(md) {
-    --aspect-ratio: 50%; // 2x1
+    --bs-aspect-ratio: 50%; // 2x1
   }
 }
 ```
