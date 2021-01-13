@@ -6,7 +6,7 @@ group: customize
 toc: true
 ---
 
-Utilize our source Sass files to take advantage of variables, maps, mixins, and more. In our build we've increased the Sass rounding precision to 6 (by default it's 5) to prevent issues with browser rounding.
+Utilize our source Sass files to take advantage of variables, maps, mixins, and more.
 
 ## File structure
 
