@@ -570,7 +570,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     data = new Modal(target, config)
   }
 
-  data.show(this)
+  data.toggle(this)
 })
 
 /**

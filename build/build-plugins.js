@@ -2,8 +2,8 @@
 
 /*!
  * Script to build our plugins to use them separately.
- * Copyright 2020 The Bootstrap Authors
- * Copyright 2020 Twitter, Inc.
+ * Copyright 2020-2021 The Bootstrap Authors
+ * Copyright 2020-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
@@ -29,6 +29,7 @@ const bsPlugins = {
   Manipulator: path.resolve(__dirname, '../js/src/dom/manipulator.js'),
   SelectorEngine: path.resolve(__dirname, '../js/src/dom/selector-engine.js'),
   Alert: path.resolve(__dirname, '../js/src/alert.js'),
+  Base: path.resolve(__dirname, '../js/src/base-component.js'),
   Button: path.resolve(__dirname, '../js/src/button.js'),
   Carousel: path.resolve(__dirname, '../js/src/carousel.js'),
   Collapse: path.resolve(__dirname, '../js/src/collapse.js'),
@@ -44,11 +45,13 @@ const bsPlugins = {
 const defaultPluginConfig = {
   external: [
     bsPlugins.Data,
+    bsPlugins.Base,
     bsPlugins.EventHandler,
     bsPlugins.SelectorEngine
   ],
   globals: {
     [bsPlugins.Data]: 'Data',
+    [bsPlugins.Base]: 'Base',
     [bsPlugins.EventHandler]: 'EventHandler',
     [bsPlugins.SelectorEngine]: 'SelectorEngine'
   }
@@ -73,6 +76,7 @@ const getConfigByPluginKey = pluginKey => {
   }
 
   if (
+    pluginKey === 'Base' ||
     pluginKey === 'Button' ||
     pluginKey === 'Carousel' ||
     pluginKey === 'Collapse' ||
@@ -112,11 +116,13 @@ const getConfigByPluginKey = pluginKey => {
     return {
       external: [
         bsPlugins.Data,
+        bsPlugins.Base,
         bsPlugins.EventHandler,
         bsPlugins.Manipulator
       ],
       globals: {
         [bsPlugins.Data]: 'Data',
+        [bsPlugins.Base]: 'Base',
         [bsPlugins.EventHandler]: 'EventHandler',
         [bsPlugins.Manipulator]: 'Manipulator'
       }

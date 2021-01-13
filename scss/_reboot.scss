@@ -411,6 +411,15 @@ button {
   border-radius: 0;
 }
 
+// Explicitly remove focus outline in Chromium when it shouldn't be
+// visible (e.g. as result of mouse click or touch tap). It already
+// should be doing this automatically, but seems to currently be
+// confused and applies its very visible two-tone outline anyway.
+
+button:focus:not(:focus-visible) {
+  outline: 0;
+}
+
 // 1. Remove the margin in Firefox and Safari
 
 input,
