@@ -214,7 +214,7 @@ buttons.forEach(function (button) {
 
 ### Mixins
 
-There are three mixins for buttons: button and button outline variant mixins (both based on `$theme-colors), plus a button size mixin.
+There are three mixins for buttons: button and button outline variant mixins (both based on `$theme-colors`), plus a button size mixin.
 
 {{< scss-docs name="btn-variant-mixin" file="scss/mixins/_buttons.scss" >}}
 
