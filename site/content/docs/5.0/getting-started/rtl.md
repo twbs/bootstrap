@@ -169,7 +169,7 @@ While this approach is understandable, please pay attention to the following:
 
 1. When switching `.ltr` and `.rtl`, make sure you add `dir` and `lang` attributes accordingly.
 2. Loading both files can be a real performance bottleneck: consider some [optimization]({{< docsref "/customize/optimize" >}}), and maybe try to [load one of those files asynchronously](https://www.filamentgroup.com/lab/load-css-simpler/).
-3. Nesting styles this way will prevent our `form-validation-state()` mixin from working as intended, thus require you tweak it a bit by yourself. [See #31223](https://github.com/twbs/bootstrap/issues/31223).
+3. Nesting styles this way will prevent our `form-validation-state()` mixin from working as intended, thus require you tweak it a bit by yourself. See {{< gh "issue 31223" >}}.
 {{< /callout >}}
 
 ## The breadcrumb case
