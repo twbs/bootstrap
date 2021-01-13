@@ -1070,11 +1070,9 @@ describe('Modal', () => {
       jQueryMock.fn.modal = Modal.jQueryInterface
       jQueryMock.elements = [div]
 
-      try {
+      expect(() => {
         jQueryMock.fn.modal.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
+      }).toThrowError(TypeError, `No method named "${action}"`)
     })
 
     it('should call show method', () => {
