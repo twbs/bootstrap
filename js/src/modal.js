@@ -450,7 +450,7 @@ class Modal extends BaseComponent {
 
   _checkScrollbar() {
     const rect = document.body.getBoundingClientRect()
-    this._isBodyOverflowing = Math.round(rect.left + rect.right) < window.innerWidth
+    this._isBodyOverflowing = Math.round(rect.left + rect.right) < Math.round(window.visualViewport.width)
     this._scrollbarWidth = this._getScrollbarWidth()
   }
 
