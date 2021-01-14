@@ -41,7 +41,6 @@
 // 1. Remove the margin in all browsers.
 // 2. As a best practice, apply a default `background-color`.
 // 3. Prevent adjustments of font size after orientation changes in iOS.
-// 4. Change the default tap highlight to be completely transparent in iOS.
 
 body {
   margin: 0; // 1
@@ -53,7 +52,6 @@ body {
   text-align: $body-text-align;
   background-color: $body-bg; // 2
   -webkit-text-size-adjust: 100%; // 3
-  -webkit-tap-highlight-color: rgba($black, 0); // 4
 }
 
 
