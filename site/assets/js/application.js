@@ -4,8 +4,8 @@
 
 /*!
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
@@ -27,6 +27,17 @@
     .forEach(function (popover) {
       new bootstrap.Popover(popover)
     })
+
+  var toastPlacement = document.getElementById('toastPlacement')
+  if (toastPlacement) {
+    document.getElementById('selectToastPlacement').addEventListener('change', function () {
+      if (!toastPlacement.dataset.originalClass) {
+        toastPlacement.dataset.originalClass = toastPlacement.className
+      }
+
+      toastPlacement.className = toastPlacement.dataset.originalClass + ' ' + this.value
+    })
+  }
 
   document.querySelectorAll('.toast')
     .forEach(function (toastNode) {

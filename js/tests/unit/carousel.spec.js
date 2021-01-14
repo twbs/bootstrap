@@ -905,7 +905,7 @@ describe('Carousel', () => {
   })
 
   describe('to', () => {
-    it('should go directement to the provided index', done => {
+    it('should go directly to the provided index', done => {
       fixtureEl.innerHTML = [
         '<div id="myCarousel" class="carousel slide">',
         '  <div class="carousel-inner">',
@@ -1062,6 +1062,26 @@ describe('Carousel', () => {
     })
   })
 
+  describe('getInstance', () => {
+    it('should return carousel instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const carousel = new Carousel(div)
+
+      expect(Carousel.getInstance(div)).toEqual(carousel)
+      expect(Carousel.getInstance(div)).toBeInstanceOf(Carousel)
+    })
+
+    it('should return null when there is no carousel instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Carousel.getInstance(div)).toEqual(null)
+    })
+  })
+
   describe('jQueryInterface', () => {
     it('should create a carousel', () => {
       fixtureEl.innerHTML = '<div></div>'
@@ -1116,11 +1136,9 @@ describe('Carousel', () => {
       jQueryMock.fn.carousel = Carousel.jQueryInterface
       jQueryMock.elements = [div]
 
-      try {
+      expect(() => {
         jQueryMock.fn.carousel.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
+      }).toThrowError(TypeError, `No method named "${action}"`)
     })
   })
 

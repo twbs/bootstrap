@@ -41,7 +41,12 @@
       }
     }
 
+    $is-rtl: map-get($utility, rtl);
+
     @if $value != null {
+      @if $is-rtl == false {
+        /* rtl:begin:remove */
+      }
       .#{$property-class + $infix + $property-class-modifier} {
         @each $property in $properties {
           #{$property}: $value if($enable-important-utilities, !important, null);
@@ -54,6 +59,9 @@
             #{$property}: $value if($enable-important-utilities, !important, null);
           }
         }
+      }
+      @if $is-rtl == false {
+        /* rtl:end:remove */
       }
     }
   }

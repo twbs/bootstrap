@@ -397,11 +397,9 @@ describe('Tab', () => {
       jQueryMock.fn.tab = Tab.jQueryInterface
       jQueryMock.elements = [div]
 
-      try {
+      expect(() => {
         jQueryMock.fn.tab.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
+      }).toThrowError(TypeError, `No method named "${action}"`)
     })
   })
 
@@ -417,6 +415,7 @@ describe('Tab', () => {
       const tab = new Tab(divEl)
 
       expect(Tab.getInstance(divEl)).toEqual(tab)
+      expect(Tab.getInstance(divEl)).toBeInstanceOf(Tab)
     })
   })
 

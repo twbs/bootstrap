@@ -65,11 +65,21 @@ Our [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/packag
   </tbody>
 </table>
 
+## Sass
+
+Bootstrap uses [Dart Sass](https://sass-lang.com/dart-sass) for compiling our Sass source files into CSS files (included in our build process), and we recommend you do the same if you're compiling Sass using your own asset pipeline. We previously used Node Sass for Bootstrap v4, but LibSass and packages built on top of it, including Node Sass, are now [deprecated](https://sass-lang.com/blog/libsass-is-deprecated).
+
+Dart Sass uses a rounding precision of 10 and for efficiency reasons does not allow adjustment of this value. We don't lower this precision during further processing of our generated CSS, such as during minification, but if you chose to do so we recommend maintaining a precision of at least 6 to prevent issues with browser rounding.
+
 ## Autoprefixer
 
 Bootstrap uses [Autoprefixer][autoprefixer] (included in our build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.
 
 We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [.browserslistrc]({{< param repo >}}/blob/v{{< param current_version >}}/.browserslistrc) for details.
+
+## RTLCSS
+
+Bootstrap uses [RTLCSS](https://rtlcss.com/) to process compiled CSS and convert them to RTL – basically replacing horizontal direction aware properties (eg. `padding-left`) with their opposite. It allows us only write our CSS a single time and make minor tweaks using RTLCSS [control](https://rtlcss.com/learn/usage-guide/control-directives/) and [value](https://rtlcss.com/learn/usage-guide/value-directives/) directives.
 
 ## Local documentation
 

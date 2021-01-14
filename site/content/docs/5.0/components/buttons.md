@@ -109,7 +109,7 @@ Create responsive stacks of full-width, "block buttons" like those in Bootstrap 
 </div>
 {{< /example >}}
 
-Here we create a responsive variation, starting with vertically stacked buttons until the `md` breakpoing, where `.d-md-block` replaces the `.d-grid` class, thus nullifying the `gap-2` utility. Resize your browser to see them change.
+Here we create a responsive variation, starting with vertically stacked buttons until the `md` breakpoint, where `.d-md-block` replaces the `.d-grid` class, thus nullifying the `gap-2` utility. Resize your browser to see them change.
 
 {{< example >}}
 <div class="d-grid gap-2 d-md-block">
@@ -131,7 +131,7 @@ Additional utilities can be used to adjust the alignment of buttons when horizon
 
 {{< example >}}
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  <button class="btn btn-primary mr-md-2" type="button">Button</button>
+  <button class="btn btn-primary me-md-2" type="button">Button</button>
   <button class="btn btn-primary" type="button">Button</button>
 </div>
 {{< /example >}}

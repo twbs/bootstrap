@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Reboot v5.0.0-alpha3 (https://getbootstrap.com/)
+ * Bootstrap Reboot v5.0.0-beta1 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
@@ -102,7 +102,7 @@ p {
 }
 
 abbr[title],
-abbr[data-original-title] {
+abbr[data-bs-original-title] {
   text-decoration: underline;
   -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted;
@@ -198,6 +198,8 @@ kbd,
 samp {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 1em;
+  direction: ltr /* rtl:ignore */;
+  unicode-bidi: bidi-override;
 }
 
 pre {
@@ -378,6 +380,14 @@ legend + * {
   -webkit-appearance: textfield;
 }
 
+/* rtl:raw:
+[type="tel"],
+[type="url"],
+[type="email"],
+[type="number"] {
+  direction: ltr;
+}
+*/
 ::-webkit-search-decoration {
   -webkit-appearance: none;
 }
