@@ -42,6 +42,8 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 // Option A: Include all of Bootstrap
 
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+// Add custom code after this
 ```
 
 ```scss
@@ -52,6 +54,8 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/mixins";
+
+// Include custom variable default overrides here
 
 // Optional
 @import "../node_modules/bootstrap/scss/root";
@@ -70,17 +74,27 @@ Every Sass variable in Bootstrap includes the `!default` flag allowing you to ov
 
 You will find the complete list of Bootstrap's variables in `scss/_variables.scss`. Some variables are set to `null`, these variables don't output the property unless they are overridden in your configuration.
 
-Variable overrides within the same Sass file can come before or after the default variables. However, when overriding across Sass files, your overrides must come before you import Bootstrap's Sass files.
+Variable overrides must come after our functions, variables, and mixins are imported, but before the rest of the imports.
 
 Here's an example that changes the `background-color` and `color` for the `<body>` when importing and compiling Bootstrap via npm:
 
 ```scss
+// Required
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
 // Your variable overrides
 $body-bg: #000;
 $body-color: #111;
 
 // Bootstrap and its default variables
-@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Optional
+@import "../node_modules/bootstrap/scss/root";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+// etc
 ```
 
 Repeat as necessary for any variable in Bootstrap, including the global options below.
@@ -139,7 +153,7 @@ $theme-colors: map-remove($theme-colors, "info", "light", "dark");
 @import "../node_modules/bootstrap/scss/root";
 @import "../node_modules/bootstrap/scss/reboot";
 @import "../node_modules/bootstrap/scss/type";
-...
+// etc
 ```
 
 ## Required keys
