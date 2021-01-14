@@ -1,0 +1,31 @@
+// Select
+//
+// Replaces the browser default select with a custom one, mostly pulled from
+.form-select {
+  @include font-size($form-select-font-size);
+  @include border-radius($form-select-border-radius, 0);
+  @include box-shadow($form-select-box-shadow);
+  &:focus {
+    @if $enable-shadows {
+      @include box-shadow($form-select-box-shadow, $form-select-focus-box-shadow);
+    } @else {
+      // Avoid using mixin so we can pass custom focus shadow properly
+    }
+  }
+  &[multiple],
+  &[size]:not([size="1"]) {
+    padding-left: $form-select-padding-x;
+  }
+  &:disabled {
+  }
+  // Remove outline from select box in FF
+  }
+}
+.form-select-sm {
+  padding-right: $form-select-padding-x-sm;
+  @include font-size($form-select-font-size-sm);
+}
+.form-select-lg {
+  padding-right: $form-select-padding-x-lg;
+  @include font-size($form-select-font-size-lg);
+}

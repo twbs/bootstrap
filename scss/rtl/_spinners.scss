@@ -1,0 +1,32 @@
+//
+// Rotating border
+//
+@keyframes spinner-border {
+  to { transform: rotate(360deg) #{"/* rtl:ignore */"}; }
+}
+.spinner-border {
+  border-left-color: transparent;
+  // stylelint-disable-next-line property-disallowed-list
+}
+.spinner-border-sm {
+}
+//
+// Growing circle
+//
+@keyframes spinner-grow {
+  0% {
+  }
+  50% {
+  }
+}
+.spinner-grow {
+  // stylelint-disable-next-line property-disallowed-list
+}
+.spinner-grow-sm {
+}
+@if $enable-reduced-motion {
+    .spinner-border,
+    .spinner-grow {
+    }
+  }
+}

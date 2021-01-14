@@ -1,0 +1,71 @@
+//
+// Base styles
+//
+.accordion-button {
+  @include font-size($font-size-base);
+  @include border-radius(0);
+  @include transition($accordion-transition);
+  &.collapsed {
+  }
+  &:not(.collapsed) {
+    &::after {
+    }
+  }
+  // Accordion icon
+  &::after {
+    margin-right: auto;
+    @include transition($accordion-icon-transition);
+  }
+  &:hover {
+  }
+  &:focus {
+  }
+}
+.accordion-header {
+}
+.accordion-item {
+  &:first-of-type {
+    .accordion-button {
+      @include border-top-radius($accordion-border-radius);
+    }
+  }
+  &:last-of-type {
+    .accordion-button {
+      // Only set a border-radius on the last item if the accordion is collapsed
+      &.collapsed {
+        @include border-bottom-radius($accordion-border-radius);
+      }
+    }
+    .accordion-collapse {
+      @include border-bottom-radius($accordion-border-radius);
+    }
+  }
+}
+.accordion-collapse {
+}
+.accordion-body {
+}
+// Flush accordion items
+//
+// Remove borders and border-radius to keep accordion items edge-to-edge.
+.accordion-flush {
+  .accordion-button {
+    border-left: 0;
+    border-right: 0;
+    @include border-radius(0);
+  }
+  .accordion-collapse {
+  }
+  .accordion-item {
+    &:first-of-type {
+      .accordion-button {
+        @include border-top-radius(0);
+      }
+    }
+    &:last-of-type {
+      .accordion-button.collapsed {
+        @include border-bottom-radius(0);
+      }
+    }
+  }
+}

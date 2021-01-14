@@ -1,0 +1,17 @@
+//
+// Labels
+//
+.form-label {
+  @include font-size($form-label-font-size);
+}
+// For use with horizontal and inline forms, when you need the label (or legend)
+// text to align with the form controls.
+.col-form-label {
+  @include font-size(inherit); // Override the `<legend>` default
+}
+.col-form-label-lg {
+  @include font-size($input-font-size-lg);
+}
+.col-form-label-sm {
+  @include font-size($input-font-size-sm);
+}

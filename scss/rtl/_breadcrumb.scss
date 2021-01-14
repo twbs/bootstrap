@@ -1,0 +1,15 @@
+.breadcrumb {
+  @include font-size($breadcrumb-font-size);
+  @include border-radius($breadcrumb-border-radius);
+}
+.breadcrumb-item {
+  + .breadcrumb-item {
+    padding-right: $breadcrumb-item-padding-x;
+    &::before {
+      float: right; // Suppress inline spacings and underlining of the separator
+      padding-left: $breadcrumb-item-padding-x;
+    }
+  }
+  &.active {
+  }
+}

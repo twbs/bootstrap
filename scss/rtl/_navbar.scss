@@ -1,0 +1,169 @@
+// Contents
+//
+// Navbar
+// Navbar brand
+// Navbar nav
+// Navbar text
+// Responsive navbar
+// Navbar position
+// Navbar themes
+// Navbar
+//
+// Provide a static navbar from which we expand to create full-width, fixed, and
+// other navbar variations.
+.navbar {
+  padding-left: $navbar-padding-x; // default: null
+  padding-right: $navbar-padding-x; // default: null
+  @include gradient-bg();
+  // Because flex properties aren't inherited, we need to redeclare these first
+  // few properties so that content nested within behave properly.
+  // The `flex-wrap` property is inherited to simplify the expanded navbars
+  %container-flex-properties {
+  }
+  > .container,
+  > .container-fluid {
+    @extend %container-flex-properties;
+  }
+  @each $breakpoint, $container-max-width in $container-max-widths {
+    > .container#{breakpoint-infix($breakpoint, $container-max-widths)} {
+      @extend %container-flex-properties;
+    }
+  }
+}
+// Navbar brand
+//
+// Used for brand, project, or site names.
+.navbar-brand {
+  margin-left: $navbar-brand-margin-end;
+  @include font-size($navbar-brand-font-size);
+  &:hover,
+  &:focus {
+  }
+}
+// Navbar nav
+//
+// Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
+.navbar-nav {
+  padding-right: 0;
+  .nav-link {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .dropdown-menu {
+  }
+}
+// Navbar text
+//
+//
+.navbar-text {
+}
+// Responsive navbar
+//
+// Custom styles for responsive collapsing and toggling of navbar contents.
+// Powered by the collapse Bootstrap JavaScript plugin.
+// When collapsed, prevent the toggleable navbar contents from appearing in
+// on the `.navbar` parent.
+.navbar-collapse {
+  // For always expanded or extra full navbars, ensure content aligns itself
+  // properly vertically. Can be easily overridden with flex utilities.
+}
+// Button for toggling the navbar when in its collapsed state
+.navbar-toggler {
+  @include font-size($navbar-toggler-font-size);
+  @include border-radius($navbar-toggler-border-radius);
+  @include transition($navbar-toggler-transition);
+  &:hover {
+  }
+  &:focus {
+  }
+}
+// Keep as a separate element so folks can easily override it with another icon
+// or image file as needed.
+.navbar-toggler-icon {
+}
+// Generate series of `.navbar-expand-*` responsive classes for configuring
+// where your navbar collapses.
+.navbar-expand {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    // stylelint-disable-next-line scss/selector-no-union-class-name
+    &#{$infix} {
+      @include media-breakpoint-up($next) {
+        .navbar-nav {
+          .dropdown-menu {
+          }
+          .nav-link {
+            padding-left: $navbar-nav-link-padding-x;
+            padding-right: $navbar-nav-link-padding-x;
+          }
+        }
+        .navbar-collapse {
+        }
+        .navbar-toggler {
+        }
+      }
+    }
+  }
+}
+// Navbar themes
+//
+// Styles for switching between navbars with light or dark background.
+// Dark links against a light background
+.navbar-light {
+  .navbar-brand {
+    &:hover,
+    &:focus {
+    }
+  }
+  .navbar-nav {
+    .nav-link {
+      &:hover,
+      &:focus {
+      }
+      &.disabled {
+      }
+    }
+    .show > .nav-link,
+    .nav-link.active {
+    }
+  }
+  .navbar-toggler {
+  }
+  .navbar-toggler-icon {
+  }
+  .navbar-text {
+    a,
+    a:hover,
+    a:focus  {
+    }
+  }
+}
+// White links against a dark background
+.navbar-dark {
+  .navbar-brand {
+    &:hover,
+    &:focus {
+    }
+  }
+  .navbar-nav {
+    .nav-link {
+      &:hover,
+      &:focus {
+      }
+      &.disabled {
+      }
+    }
+    .show > .nav-link,
+    .nav-link.active {
+    }
+  }
+  .navbar-toggler {
+  }
+  .navbar-toggler-icon {
+  }
+  .navbar-text {
+    a,
+    a:hover,
+    a:focus {
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.form-floating {
+  > .form-control,
+  > .form-select {
+  }
+  > label {
+    right: 0;
+    @include transition($form-floating-transition);
+  }
+  // stylelint-disable no-duplicate-selectors
+  > .form-control {
+    &::placeholder {
+    }
+    &:focus,
+    &:not(:placeholder-shown) {
+    }
+    }
+  }
+  > .form-select {
+  }
+  > .form-control:focus,
+  > .form-control:not(:placeholder-shown),
+  > .form-select {
+    ~ label {
+    }
+  }
+    ~ label {
+    }
+  }
+  // stylelint-enable no-duplicate-selectors
+}

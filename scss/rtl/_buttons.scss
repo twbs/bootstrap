@@ -1,0 +1,62 @@
+//
+// Base styles
+//
+.btn {
+  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-border-radius);
+  @include transition($btn-transition);
+  &:hover {
+  }
+  .btn-check:focus + &,
+  &:focus {
+  }
+  .btn-check:checked + &,
+  .btn-check:active + &,
+  &:active,
+  &.active {
+    @include box-shadow($btn-active-box-shadow);
+    &:focus {
+      @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+    }
+  }
+  &:disabled,
+  &.disabled,
+  fieldset:disabled & {
+    @include box-shadow(none);
+  }
+}
+//
+// Alternate buttons
+//
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant($value, $value);
+  }
+}
+@each $color, $value in $theme-colors {
+  .btn-outline-#{$color} {
+    @include button-outline-variant($value);
+  }
+}
+//
+// Link buttons
+//
+// Make a button look and behave like a link
+.btn-link {
+  &:hover {
+  }
+  &:focus {
+  }
+  &:disabled,
+  &.disabled {
+  }
+  // No need for an active state here
+}
+//
+// Button Sizes
+//
+.btn-lg {
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
+}
+.btn-sm {
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+}

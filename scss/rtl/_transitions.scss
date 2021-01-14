@@ -1,0 +1,12 @@
+.fade {
+  @include transition($transition-fade);
+  &:not(.show) {
+  }
+}
+.collapse {
+  &:not(.show) {
+  }
+}
+.collapsing {
+  @include transition($transition-collapse);
+}

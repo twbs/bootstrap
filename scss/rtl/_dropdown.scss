@@ -1,0 +1,132 @@
+// The dropdown wrapper (`<div>`)
+.dropup,
+.dropend,
+.dropdown,
+.dropstart {
+}
+.dropdown-toggle {
+  // Generate the caret automatically
+  @include caret();
+}
+// The dropdown menu
+.dropdown-menu {
+  right: 0;
+  @include font-size($dropdown-font-size);
+  text-align: right; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+  @include border-radius($dropdown-border-radius);
+  @include box-shadow($dropdown-box-shadow);
+  // Reset positioning when positioned with Popper
+  &[style] {
+    left: auto#{"/* rtl:ignore */"} !important; // stylelint-disable-line declaration-no-important
+  }
+}
+// scss-docs-start responsive-breakpoints
+// We deliberately hardcode the `bs-` prefix because we check
+// this custom property in JS to determine Popper's positioning
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    .dropdown-menu#{$infix}-start {
+      left: auto #{"/* rtl:ignore */"};
+      right: 0 #{"/* rtl:ignore */"};
+    }
+    .dropdown-menu#{$infix}-end {
+      left: 0 #{"/* rtl:ignore */"};
+      right: auto #{"/* rtl:ignore */"};
+    }
+  }
+}
+// scss-docs-end responsive-breakpoints
+// Allow for dropdowns to go bottom up (aka, dropup-menu)
+// Just add .dropup after the standard .dropdown class and you're set.
+.dropup {
+  .dropdown-menu {
+  }
+  .dropdown-toggle {
+    @include caret(up);
+  }
+}
+.dropend {
+  .dropdown-menu {
+    left: auto;
+    right: 100%;
+    margin-right: $dropdown-spacer;
+  }
+  .dropdown-toggle {
+    @include caret(end);
+    &::after {
+    }
+  }
+}
+.dropstart {
+  .dropdown-menu {
+    left: 100%;
+    right: auto;
+    margin-left: $dropdown-spacer;
+  }
+  .dropdown-toggle {
+    @include caret(start);
+    &::before {
+    }
+  }
+}
+// Dividers (basically an `<hr>`) within the dropdown
+.dropdown-divider {
+}
+// Links, buttons, and more within the dropdown menu
+//
+// `<button>`-specific styles are denoted with `// For <button>s`
+.dropdown-item {
+  // Prevent dropdown overflow if there's no padding
+  @if $dropdown-padding-y == 0 {
+    &:first-child {
+      @include border-top-radius($dropdown-inner-border-radius);
+    }
+    &:last-child {
+      @include border-bottom-radius($dropdown-inner-border-radius);
+    }
+  }
+  &:hover,
+  &:focus {
+    @include gradient-bg($dropdown-link-hover-bg);
+  }
+  &.active,
+  &:active {
+    @include gradient-bg($dropdown-link-active-bg);
+  }
+  &.disabled,
+  &:disabled {
+    // Remove CSS gradients if they're enabled
+  }
+}
+.dropdown-menu.show {
+}
+// Dropdown section headers
+.dropdown-header {
+  @include font-size($font-size-sm);
+}
+// Dropdown text
+.dropdown-item-text {
+}
+// Dark dropdowns
+.dropdown-menu-dark {
+  @include box-shadow($dropdown-dark-box-shadow);
+  .dropdown-item {
+    &:hover,
+    &:focus {
+      @include gradient-bg($dropdown-dark-link-hover-bg);
+    }
+    &.active,
+    &:active {
+      @include gradient-bg($dropdown-dark-link-active-bg);
+    }
+    &.disabled,
+    &:disabled {
+    }
+  }
+  .dropdown-divider {
+  }
+  .dropdown-item-text {
+  }
+  .dropdown-header {
+  }
+}

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rtlscss", "rtlscss\rtlscss.csproj", "{B793E783-1F1E-4915-8C7A-FFBECCE4A131}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B793E783-1F1E-4915-8C7A-FFBECCE4A131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B793E783-1F1E-4915-8C7A-FFBECCE4A131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B793E783-1F1E-4915-8C7A-FFBECCE4A131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B793E783-1F1E-4915-8C7A-FFBECCE4A131}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4EF652C-5B78-48F4-8DA1-9CCB7A43762F}
+	EndGlobalSection
+EndGlobal

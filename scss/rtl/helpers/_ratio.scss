@@ -1,0 +1,11 @@
+.ratio {
+  &::before {
+  }
+  > * {
+    right: 0;
+  }
+}
+@each $key, $ratio in $aspect-ratios {
+  .ratio-#{$key} {
+  }
+}

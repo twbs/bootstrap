@@ -1,0 +1,21 @@
+.toast {
+  @include font-size($toast-font-size);
+  @include border-radius($toast-border-radius);
+  &:not(.showing):not(.show) {
+  }
+  &.hide {
+  }
+}
+.toast-container {
+  > :not(:last-child) {
+  }
+}
+.toast-header {
+  @include border-top-radius(subtract($toast-border-radius, $toast-border-width));
+  .btn-close {
+    margin-left: $toast-padding-x / -2;
+    margin-right: $toast-padding-x;
+  }
+}
+.toast-body {
+}

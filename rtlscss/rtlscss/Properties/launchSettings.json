@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "rtlscss": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\omori\\source\\repos\\bootstrap\\dist\\css\\bootstrap.css\" \"C:\\Users\\omori\\source\\repos\\bootstrap\\dist\\css\\bootstrap.rtl.css\" \"C:\\Users\\omori\\source\\repos\\bootstrap\\dist\\css\\bootstrap_rtl_helper.css\" \"C:\\Users\\omori\\source\\repos\\bootstrap\\dist\\css\\bootstrap_rtl.css"
+    }
+  }
+}

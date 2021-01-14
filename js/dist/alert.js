@@ -1,6 +1,6 @@
 /*!
   * Bootstrap alert.js v5.0.0-beta1 (https://getbootstrap.com/)
-  * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -13,6 +13,28 @@
 
   var Data__default = /*#__PURE__*/_interopDefaultLegacy(Data);
   var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
+
+  function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    return Constructor;
+  }
+
+  function _inheritsLoose(subClass, superClass) {
+    subClass.prototype = Object.create(superClass.prototype);
+    subClass.prototype.constructor = subClass;
+    subClass.__proto__ = superClass;
+  }
 
   /**
    * --------------------------------------------------------------------------
@@ -105,9 +127,24 @@
 
   var isRTL = document.documentElement.dir === 'rtl';
 
-  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+  var defineJQueryPlugin = function defineJQueryPlugin(name, plugin) {
+    onDOMContentLoaded(function () {
+      var $ = getjQuery();
+      /* istanbul ignore if */
 
-  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+      if ($) {
+        var JQUERY_NO_CONFLICT = $.fn[name];
+        $.fn[name] = plugin.jQueryInterface;
+        $.fn[name].Constructor = plugin;
+
+        $.fn[name].noConflict = function () {
+          $.fn[name] = JQUERY_NO_CONFLICT;
+          return plugin.jQueryInterface;
+        };
+      }
+    });
+  };
+
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -149,11 +186,6 @@
     return BaseComponent;
   }();
 
-  function _defineProperties$1(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass$1(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$1(Constructor.prototype, protoProps); if (staticProps) _defineProperties$1(Constructor, staticProps); return Constructor; }
-
-  function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -168,9 +200,9 @@
   var EVENT_CLOSE = "close" + EVENT_KEY;
   var EVENT_CLOSED = "closed" + EVENT_KEY;
   var EVENT_CLICK_DATA_API = "click" + EVENT_KEY + DATA_API_KEY;
-  var CLASSNAME_ALERT = 'alert';
-  var CLASSNAME_FADE = 'fade';
-  var CLASSNAME_SHOW = 'show';
+  var CLASS_NAME_ALERT = 'alert';
+  var CLASS_NAME_FADE = 'fade';
+  var CLASS_NAME_SHOW = 'show';
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -201,7 +233,7 @@
     ;
 
     _proto._getRootElement = function _getRootElement(element) {
-      return getElementFromSelector(element) || element.closest("." + CLASSNAME_ALERT);
+      return getElementFromSelector(element) || element.closest("." + CLASS_NAME_ALERT);
     };
 
     _proto._triggerCloseEvent = function _triggerCloseEvent(element) {
@@ -211,16 +243,16 @@
     _proto._removeElement = function _removeElement(element) {
       var _this = this;
 
-      element.classList.remove(CLASSNAME_SHOW);
+      element.classList.remove(CLASS_NAME_SHOW);
 
-      if (!element.classList.contains(CLASSNAME_FADE)) {
+      if (!element.classList.contains(CLASS_NAME_FADE)) {
         this._destroyElement(element);
 
         return;
       }
 
       var transitionDuration = getTransitionDurationFromElement(element);
-      EventHandler__default['default'].one(element, TRANSITION_END, function () {
+      EventHandler__default['default'].one(element, 'transitionend', function () {
         return _this._destroyElement(element);
       });
       emulateTransitionEnd(element, transitionDuration);
@@ -259,7 +291,7 @@
       };
     };
 
-    _createClass$1(Alert, null, [{
+    _createClass(Alert, null, [{
       key: "DATA_KEY",
       // Getters
       get: function get() {
@@ -284,21 +316,7 @@
    * add .Alert to jQuery only if jQuery is present
    */
 
-  onDOMContentLoaded(function () {
-    var $ = getjQuery();
-    /* istanbul ignore if */
-
-    if ($) {
-      var JQUERY_NO_CONFLICT = $.fn[NAME];
-      $.fn[NAME] = Alert.jQueryInterface;
-      $.fn[NAME].Constructor = Alert;
-
-      $.fn[NAME].noConflict = function () {
-        $.fn[NAME] = JQUERY_NO_CONFLICT;
-        return Alert.jQueryInterface;
-      };
-    }
-  });
+  defineJQueryPlugin(NAME, Alert);
 
   return Alert;
 

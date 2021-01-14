@@ -1,0 +1,52 @@
+// stylelint-disable property-disallowed-list
+// Single side border-radius
+// Helper function to replace negative values with 0
+@function valid-radius($radius) {
+  @each $value in $radius {
+    @if type-of($value) == number {
+    } @else {
+    }
+  }
+  @return $return;
+}
+  @if $enable-rounded {
+  }
+  @else if $fallback-border-radius != false {
+  }
+}
+  @if $enable-rounded {
+    border-top-right-radius: valid-radius($radius);
+    border-top-left-radius: valid-radius($radius);
+  }
+}
+  @if $enable-rounded {
+    border-top-left-radius: valid-radius($radius);
+    border-bottom-left-radius: valid-radius($radius);
+  }
+}
+  @if $enable-rounded {
+    border-bottom-left-radius: valid-radius($radius);
+    border-bottom-right-radius: valid-radius($radius);
+  }
+}
+  @if $enable-rounded {
+    border-top-right-radius: valid-radius($radius);
+    border-bottom-right-radius: valid-radius($radius);
+  }
+}
+  @if $enable-rounded {
+    border-top-right-radius: valid-radius($radius);
+  }
+}
+  @if $enable-rounded {
+    border-top-left-radius: valid-radius($radius);
+  }
+}
+  @if $enable-rounded {
+    border-bottom-left-radius: valid-radius($radius);
+  }
+}
+  @if $enable-rounded {
+    border-bottom-right-radius: valid-radius($radius);
+  }
+}

@@ -1,0 +1,13 @@
+C:\Users\omori\source\repos\rtlscss\rtlscss\bin\Debug\netcoreapp3.1\rtlscss.exe
+C:\Users\omori\source\repos\rtlscss\rtlscss\bin\Debug\netcoreapp3.1\rtlscss.deps.json
+C:\Users\omori\source\repos\rtlscss\rtlscss\bin\Debug\netcoreapp3.1\rtlscss.runtimeconfig.json
+C:\Users\omori\source\repos\rtlscss\rtlscss\bin\Debug\netcoreapp3.1\rtlscss.runtimeconfig.dev.json
+C:\Users\omori\source\repos\rtlscss\rtlscss\bin\Debug\netcoreapp3.1\rtlscss.dll
+C:\Users\omori\source\repos\rtlscss\rtlscss\bin\Debug\netcoreapp3.1\rtlscss.pdb
+C:\Users\omori\source\repos\rtlscss\rtlscss\obj\Debug\netcoreapp3.1\rtlscss.csprojAssemblyReference.cache
+C:\Users\omori\source\repos\rtlscss\rtlscss\obj\Debug\netcoreapp3.1\rtlscss.AssemblyInfoInputs.cache
+C:\Users\omori\source\repos\rtlscss\rtlscss\obj\Debug\netcoreapp3.1\rtlscss.AssemblyInfo.cs
+C:\Users\omori\source\repos\rtlscss\rtlscss\obj\Debug\netcoreapp3.1\rtlscss.csproj.CoreCompileInputs.cache
+C:\Users\omori\source\repos\rtlscss\rtlscss\obj\Debug\netcoreapp3.1\rtlscss.dll
+C:\Users\omori\source\repos\rtlscss\rtlscss\obj\Debug\netcoreapp3.1\rtlscss.pdb
+C:\Users\omori\source\repos\rtlscss\rtlscss\obj\Debug\netcoreapp3.1\rtlscss.genruntimeconfig.cache

@@ -1,6 +1,6 @@
 /*!
   * Bootstrap modal.js v5.0.0-beta1 (https://getbootstrap.com/)
-  * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -15,6 +15,46 @@
   var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
   var Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
   var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
+
+  function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    return Constructor;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  function _inheritsLoose(subClass, superClass) {
+    subClass.prototype = Object.create(superClass.prototype);
+    subClass.prototype.constructor = subClass;
+    subClass.__proto__ = superClass;
+  }
 
   /**
    * --------------------------------------------------------------------------
@@ -149,9 +189,24 @@
 
   var isRTL = document.documentElement.dir === 'rtl';
 
-  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+  var defineJQueryPlugin = function defineJQueryPlugin(name, plugin) {
+    onDOMContentLoaded(function () {
+      var $ = getjQuery();
+      /* istanbul ignore if */
 
-  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+      if ($) {
+        var JQUERY_NO_CONFLICT = $.fn[name];
+        $.fn[name] = plugin.jQueryInterface;
+        $.fn[name].Constructor = plugin;
+
+        $.fn[name].noConflict = function () {
+          $.fn[name] = JQUERY_NO_CONFLICT;
+          return plugin.jQueryInterface;
+        };
+      }
+    });
+  };
+
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -193,13 +248,6 @@
     return BaseComponent;
   }();
 
-  function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-  function _defineProperties$1(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass$1(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$1(Constructor.prototype, protoProps); if (staticProps) _defineProperties$1(Constructor, staticProps); return Constructor; }
-
-  function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -362,7 +410,7 @@
 
       if (transition) {
         var transitionDuration = getTransitionDurationFromElement(this._element);
-        EventHandler__default['default'].one(this._element, TRANSITION_END, function (event) {
+        EventHandler__default['default'].one(this._element, 'transitionend', function (event) {
           return _this3._hideModal(event);
         });
         emulateTransitionEnd(this._element, transitionDuration);
@@ -455,7 +503,7 @@
 
       if (transition) {
         var transitionDuration = getTransitionDurationFromElement(this._dialog);
-        EventHandler__default['default'].one(this._dialog, TRANSITION_END, transitionComplete);
+        EventHandler__default['default'].one(this._dialog, 'transitionend', transitionComplete);
         emulateTransitionEnd(this._dialog, transitionDuration);
       } else {
         transitionComplete();
@@ -577,7 +625,7 @@
         }
 
         var backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop);
-        EventHandler__default['default'].one(this._backdrop, TRANSITION_END, callback);
+        EventHandler__default['default'].one(this._backdrop, 'transitionend', callback);
         emulateTransitionEnd(this._backdrop, backdropTransitionDuration);
       } else if (!this._isShown && this._backdrop) {
         this._backdrop.classList.remove(CLASS_NAME_SHOW);
@@ -591,7 +639,7 @@
         if (this._element.classList.contains(CLASS_NAME_FADE)) {
           var _backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop);
 
-          EventHandler__default['default'].one(this._backdrop, TRANSITION_END, callbackRemove);
+          EventHandler__default['default'].one(this._backdrop, 'transitionend', callbackRemove);
           emulateTransitionEnd(this._backdrop, _backdropTransitionDuration);
         } else {
           callbackRemove();
@@ -619,12 +667,12 @@
       this._element.classList.add(CLASS_NAME_STATIC);
 
       var modalTransitionDuration = getTransitionDurationFromElement(this._dialog);
-      EventHandler__default['default'].off(this._element, TRANSITION_END);
-      EventHandler__default['default'].one(this._element, TRANSITION_END, function () {
+      EventHandler__default['default'].off(this._element, 'transitionend');
+      EventHandler__default['default'].one(this._element, 'transitionend', function () {
         _this10._element.classList.remove(CLASS_NAME_STATIC);
 
         if (!isModalOverflowing) {
-          EventHandler__default['default'].one(_this10._element, TRANSITION_END, function () {
+          EventHandler__default['default'].one(_this10._element, 'transitionend', function () {
             _this10._element.style.overflowY = '';
           });
           emulateTransitionEnd(_this10._element, modalTransitionDuration);
@@ -752,7 +800,7 @@
       });
     };
 
-    _createClass$1(Modal, null, [{
+    _createClass(Modal, null, [{
       key: "Default",
       get: function get() {
         return Default;
@@ -811,21 +859,7 @@
    * add .Modal to jQuery only if jQuery is present
    */
 
-  onDOMContentLoaded(function () {
-    var $ = getjQuery();
-    /* istanbul ignore if */
-
-    if ($) {
-      var JQUERY_NO_CONFLICT = $.fn[NAME];
-      $.fn[NAME] = Modal.jQueryInterface;
-      $.fn[NAME].Constructor = Modal;
-
-      $.fn[NAME].noConflict = function () {
-        $.fn[NAME] = JQUERY_NO_CONFLICT;
-        return Modal.jQueryInterface;
-      };
-    }
-  });
+  defineJQueryPlugin(NAME, Modal);
 
   return Modal;
 

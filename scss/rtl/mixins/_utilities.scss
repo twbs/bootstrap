@@ -1,0 +1,39 @@
+// Utility generator
+// Used to generate utilities & print utilities
+  // If the values are a list or string, convert it into a map
+  @if type-of($values) == "string" or type-of(nth($values, 1)) != "list" {
+  }
+  @each $key, $value in $values {
+    // Multiple properties are possible, for example with vertical or horizontal margins or paddings
+    @if type-of($properties) == "string" {
+    }
+    // Use custom class if present
+    // State params to generate pseudo-classes
+    // Don't prefix if value key is null (eg. with shadow class)
+    @if map-get($utility, rfs) {
+      // Inside the media query
+      @if $is-rfs-media-query {
+        // Do not render anything if fluid and non fluid values are the same
+      }
+      @else {
+      }
+    }
+    @if $value != null {
+      @if $is-rtl == false {
+        /* rtl:begin:remove */
+      }
+      .#{$property-class + $infix + $property-class-modifier} {
+        @each $property in $properties {
+        }
+      }
+      @each $pseudo in $state {
+          @each $property in $properties {
+          }
+        }
+      }
+      @if $is-rtl == false {
+        /* rtl:end:remove */
+      }
+    }
+  }
+}

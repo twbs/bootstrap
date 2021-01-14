@@ -1,0 +1,9 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\omori\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\omori\\.nuget\\packages",
+      "C:\\Program Files (x86)\\ComponentOne\\WinForms Edition\\bin\\v5"
+    ]
+  }
+}

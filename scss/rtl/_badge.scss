@@ -1,0 +1,15 @@
+// Base class
+//
+// Requires one of the contextual, color modifier classes for `color` and
+// `background-color`.
+.badge {
+  @include font-size($badge-font-size);
+  @include border-radius($badge-border-radius);
+  @include gradient-bg();
+  // Empty badges collapse automatically
+  &:empty {
+  }
+}
+// Quick fix for badges in buttons
+.btn .badge {
+}

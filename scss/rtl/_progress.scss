@@ -1,0 +1,23 @@
+// Disable animation if transitions are disabled
+@if $enable-transitions {
+  @keyframes progress-bar-stripes {
+  }
+}
+.progress {
+  @include font-size($progress-font-size);
+  @include border-radius($progress-border-radius);
+  @include box-shadow($progress-box-shadow);
+}
+.progress-bar {
+  @include transition($progress-bar-transition);
+}
+.progress-bar-striped {
+  @include gradient-striped();
+}
+@if $enable-transitions {
+  .progress-bar-animated {
+    @if $enable-reduced-motion {
+      }
+    }
+  }
+}

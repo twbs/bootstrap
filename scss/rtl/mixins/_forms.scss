@@ -1,0 +1,73 @@
+// This mixin uses an `if()` technique to be compatible with Dart Sass
+@mixin form-validation-state-selector($state) {
+  @if ($state == "valid" or $state == "invalid") {
+    #{if(&, "&", "")}.is-#{$state} {
+      @content;
+    }
+  } @else {
+    #{if(&, "&", "")}.is-#{$state} {
+      @content;
+    }
+  }
+}
+@mixin form-validation-state(
+  $state,
+  $color,
+  $icon,
+) {
+  .#{$state}-feedback {
+    @include font-size($form-feedback-font-size);
+  }
+  .#{$state}-tooltip {
+    @include font-size($form-feedback-tooltip-font-size);
+    @include border-radius($form-feedback-tooltip-border-radius);
+  }
+  @include form-validation-state-selector($state) {
+    ~ .#{$state}-feedback,
+    ~ .#{$state}-tooltip {
+    }
+  }
+  .form-control {
+    @include form-validation-state-selector($state) {
+      @if $enable-validation-icons {
+        padding-left: $input-height-inner;
+        background-position: left $input-height-inner-quarter center;
+      }
+      &:focus {
+      }
+    }
+  }
+  // stylelint-disable-next-line selector-no-qualifying-type
+  textarea.form-control {
+    @include form-validation-state-selector($state) {
+      @if $enable-validation-icons {
+        padding-left: $input-height-inner;
+        background-position: top $input-height-inner-quarter left $input-height-inner-quarter;
+      }
+    }
+  }
+  .form-select {
+    @include form-validation-state-selector($state) {
+      @if $enable-validation-icons {
+        padding-left: $form-select-feedback-icon-padding-end;
+      }
+      &:focus {
+      }
+    }
+  }
+  .form-check-input {
+    @include form-validation-state-selector($state) {
+      &:checked {
+      }
+      &:focus {
+      }
+      ~ .form-check-label {
+      }
+    }
+  }
+  .form-check-inline .form-check-input {
+    ~ .#{$state}-feedback {
+      margin-right: .5em;
+    }
+  }
+}

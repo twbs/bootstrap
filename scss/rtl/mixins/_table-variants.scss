@@ -1,0 +1,6 @@
+// scss-docs-start table-variant
+@mixin table-variant($state, $background) {
+  .table-#{$state} {
+  }
+}
+// scss-docs-end table-variant

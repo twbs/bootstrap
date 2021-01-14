@@ -1,0 +1,9 @@
+//
+// Stretched link
+//
+.stretched-link {
+  &::#{$stretched-link-pseudo-element} {
+    left: 0;
+    right: 0;
+  }
+}

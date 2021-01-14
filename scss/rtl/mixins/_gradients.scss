@@ -1,0 +1,19 @@
+// Gradients
+  @if $enable-gradients {
+  }
+}
+// Horizontal gradient, from right to left
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+  background-image: linear-gradient(to left, $start-color $start-percent, $end-color $end-percent);
+}
+// Vertical gradient, from top to bottom
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+}
+}
+  background-image: linear-gradient(to left, $start-color, $mid-color $color-stop, $end-color);
+}
+}
+}
+}

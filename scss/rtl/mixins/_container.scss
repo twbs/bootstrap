@@ -1,0 +1,6 @@
+// Container mixins
+  padding-left: var(--#{$variable-prefix}gutter-x, #{$gutter});
+  padding-right: var(--#{$variable-prefix}gutter-x, #{$gutter});
+  margin-left: auto;
+  margin-right: auto;
+}

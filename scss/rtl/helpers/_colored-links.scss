@@ -1,0 +1,9 @@
+@each $color, $value in $theme-colors {
+  .link-#{$color} {
+    @if $link-shade-percentage != 0 {
+      &:hover,
+      &:focus {
+      }
+    }
+  }
+}
