@@ -456,11 +456,8 @@ class Modal extends BaseComponent {
 
   _setScrollbar() {
     if (this._isBodyOverflowing) {
-      // Adjust fixed content padding
       this._setElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight', calculatedValue => calculatedValue + this._scrollbarWidth)
-      // Adjust sticky content margin
       this._setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - this._scrollbarWidth)
-      // Adjust body padding
       this._setElementAttributes('body', 'paddingRight', calculatedValue => calculatedValue + this._scrollbarWidth)
     }
 
@@ -477,13 +474,9 @@ class Modal extends BaseComponent {
       })
   }
 
-  // Reset changed values
   _resetScrollbar() {
-    // Restore fixed content padding
     this._resetElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight')
-    // Restore sticky content and navbar-toggler margin
     this._resetElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight')
-    // Restore body padding
     this._resetElementAttributes('body', 'paddingRight')
   }
 
