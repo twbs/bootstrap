@@ -44,8 +44,8 @@ if (!sh.test('-d', rootDocsDir)) {
 // switch to the root dir
 sh.cd(path.join(__dirname, '..'))
 
-// remove any previously created folder with the same name
-sh.rm('-rf', distFolder)
+// remove any previously created folder/zip with the same name
+sh.rm('-rf', [distFolder, `${distFolder}.zip`])
 
 // create any folders so that `cp` works
 sh.mkdir('-p', [
