@@ -1,8 +1,0 @@
-:root {
-  // Custom variable values only support SassScript inside `#{}`.
-  @each $color, $value in $colors {
-  }
-  @each $color, $value in $theme-colors {
-  }
-  // Use `inspect` for lists so that quoted items keep the quotes.
-}

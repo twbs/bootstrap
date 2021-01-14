@@ -1,9 +1,0 @@
-/*!
- * Copyleft 2011-2020 The Bootstrap Authors
- * Copyleft 2011-2020 Twitter, Inc.
- */
-@import "functions";
-@import "variables";
-// Prevent the usage of custom properties since we don't add them to `:root` in reboot
-@import "mixins";
-@import "reboot";
