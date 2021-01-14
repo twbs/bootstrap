@@ -38,7 +38,7 @@ Run `npm run` to see all the npm scripts.
 
 Bootstrap v4 uses [Node Sass](https://github.com/sass/node-sass) for compiling our Sass source files into CSS files (included in our build process). In order to end up with the same generated CSS when compiling Sass using your own asset pipeline, you'll need to use a Sass compiler that supports at least the features that Node Sass does. This is important to note because as of October 26, 2020, LibSass and packages built on top of it—including Node Sass—are [deprecated](https://sass-lang.com/blog/libsass-is-deprecated).
 
-If you require newer Sass features or compatibility with newer CSS standards, [Dart Sass](https://sass-lang.com/dart-sass) is now the primary implementation of Sass and supports a JavaScript API that's fully compatible with Node Sass (with a few exceptions listed on both the project's [GitHub](https://github.com/sass/dart-sass#javascript-api) or [npm](https://www.npmjs.com/package/sass#user-content-api) pages).
+If you require newer Sass features or compatibility with newer CSS standards, [Dart Sass](https://sass-lang.com/dart-sass) is now the primary implementation of Sass and supports a JavaScript API that's fully compatible with Node Sass (with a few exceptions listed on Dart Sass's [GitHub](https://github.com/sass/dart-sass) and [npm](https://www.npmjs.com/package/sass) pages).
 
 We increase the Sass rounding precision to 6 (by default, it's 5 in Node Sass) to prevent issues with browser rounding. If you use Dart Sass this won't be something you need to adjust, as that compiler uses a rounding precision of 10 and for efficiency reasons does not allow it to be adjusted.
 
