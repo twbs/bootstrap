@@ -655,10 +655,6 @@ When you do this, we recommend including additional JavaScript to move the focus
 
 {{< scss-docs name="navbar-theme-variables" file="scss/_variables.scss" >}}
 
-### Mixins
-
-There are no mixins for navbars.
-
 ### Loop
 
 [Responsive navbar expand/collapse classes](#responsive-behaviors) (e.g., `.navbar-expand-lg`) are combined with the `$breakpoints` map and generated through a loop in `scss/_navbar.scss`.

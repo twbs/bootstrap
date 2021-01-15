@@ -94,7 +94,3 @@ For more information, see the [WAI-ARIA Authoring Practices for the breadcrumb p
 ### Variables
 
 {{< scss-docs name="breadcrumb-variables" file="scss/_variables.scss" >}}
-
-### Mixins
-
-There are no mixins for breadcrumbs.

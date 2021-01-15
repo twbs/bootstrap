@@ -177,13 +177,9 @@ Use spinners within buttons to indicate an action is currently processing or tak
 
 {{< scss-docs name="spinner-variables" file="scss/_variables.scss" >}}
 
-### Mixins
-
-There are no mixins for spinners.
-
 ### Keyframes
 
-Used for creating the CSS animations for our spinners. Included in the `scss/_spinners.scss` stylesheet.
+Used for creating the CSS animations for our spinners. Included in `scss/_spinners.scss`.
 
 {{< scss-docs name="spinner-border-keyframes" file="scss/_spinners.scss" >}}
 

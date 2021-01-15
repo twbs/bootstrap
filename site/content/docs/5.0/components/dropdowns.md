@@ -1129,7 +1129,3 @@ Variables for all dropdowns:
 Variables for the [dark dropdown](#dark-dropdowns):
 
 {{< scss-docs name="dropdown-dark-variables" file="scss/_variables.scss" >}}
-
-### Mixins
-
-There are no mixins for dropdowns.

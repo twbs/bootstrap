@@ -69,7 +69,3 @@ Use the `.rounded-pill` utility class to make badges more rounded with a larger 
 ### Variables
 
 {{< scss-docs name="badge-variables" file="scss/_variables.scss" >}}
-
-### Mixins
-
-There are no mixins for badges.

@@ -456,7 +456,3 @@ The transition duration of `.carousel-item` can be changed with the `$carousel-t
 ### Variables
 
 {{< scss-docs name="carousel-variables" file="scss/_variables.scss" >}}
-
-### Mixins
-
-There are no mixins for carousels.

@@ -727,7 +727,3 @@ In `v4` we used a CSS-only technique to mimic the behavior of [Masonry](https://
 ### Variables
 
 {{< scss-docs name="card-variables" file="scss/_variables.scss" >}}
-
-### Mixins
-
-There are no mixins for cards.

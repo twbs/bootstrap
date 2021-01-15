@@ -110,7 +110,3 @@ Please read the [collapse accessibility section]({{< docsref "/components/collap
 ### Variables
 
 {{< scss-docs name="accordion-variables" file="scss/_variables.scss" >}}
-
-### Mixins
-
-There are no mixins for accordions.

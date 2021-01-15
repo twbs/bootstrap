@@ -460,7 +460,3 @@ tooltip.hide()
 ### Variables
 
 {{< scss-docs name="tooltip-variables" file="scss/_variables.scss" >}}
-
-### Mixins
-
-There are no mixins for tooltips.

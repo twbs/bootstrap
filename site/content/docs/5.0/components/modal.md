@@ -961,10 +961,6 @@ myModalEl.addEventListener('hidden.bs.modal', function (event) {
 
 {{< scss-docs name="modal-variables" file="scss/_variables.scss" >}}
 
-### Mixins
-
-There are no mixins for modals.
-
 ### Loop
 
 [Responsive fullscreen modals](#fullscreen-modal) are generated via the `$breakpoints` map and a loop in `scss/_modal.scss`.
