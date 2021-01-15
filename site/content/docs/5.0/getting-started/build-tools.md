@@ -65,6 +65,10 @@ Our [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/packag
   </tbody>
 </table>
 
+{{< callout info >}}
+{{< partial "callout-info-npm-starter.md" >}}
+{{< /callout >}}
+
 ## Sass
 
 Bootstrap uses [Dart Sass](https://sass-lang.com/dart-sass) for compiling our Sass source files into CSS files (included in our build process), and we recommend you do the same if you're compiling Sass using your own asset pipeline. We previously used Node Sass for Bootstrap v4, but LibSass and packages built on top of it, including Node Sass, are now [deprecated](https://sass-lang.com/blog/libsass-is-deprecated).
