@@ -5,7 +5,7 @@ on:
 
 env:
   FORCE_COLOR: 2
-  NODE: 14.x
+  NODE: 14
 
 jobs:
   browserstack:
