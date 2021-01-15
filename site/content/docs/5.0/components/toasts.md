@@ -96,11 +96,13 @@ You can stack toasts by wrapping them in a toast container, which will verticall
 Customize your toasts by removing sub-components, tweaking with [utilities]({{< docsref "/utilities/api" >}}), or adding your own markup. Here we've created a simpler toast by removing the default `.toast-header`, adding a custom hide icon from [Bootstrap Icons]({{< param icons >}}), and using some [flexbox utilities]({{< docsref "/utilities/flex" >}}) to adjust the layout.
 
 {{< example class="bg-light" >}}
-<div class="toast d-flex align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-body">
+<div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="d-flex">
+    <div class="toast-body">
     Hello, world! This is a toast message.
+   </div>
+    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
-  <button type="button" class="btn-close ms-auto me-2" data-bs-dismiss="toast" aria-label="Close"></button>
 </div>
 {{< /example >}}
 
@@ -123,11 +125,13 @@ Alternatively, you can also add additional controls and components to toasts.
 Building on the above example, you can create different toast color schemes with our [color utilities]({{< docsref "/utilities/colors" >}}). Here we've added `.bg-primary` and `.text-white` to the `.toast`, and then added `.btn-close-white` to our close button. For a crisp edge, we remove the default border with `.border-0`.
 
 {{< example class="bg-light" >}}
-<div class="toast d-flex align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-body">
-    Hello, world! This is a toast message.
+<div class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="d-flex">
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
-  <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast" aria-label="Close"></button>
 </div>
 {{< /example >}}
 
