@@ -80,7 +80,6 @@
   $active-color: color-contrast($active-background)
 ) {
   color: $color;
-  background-color: red;
   border-color: $color;
 
   &:hover {

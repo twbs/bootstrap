@@ -53,7 +53,7 @@ body {
   text-align: $body-text-align;
   background-color: $body-bg; // 2
   -webkit-text-size-adjust: 100%; // 3
-  -webkit-tap-highlight-color: rgba($black, 0); // 4
+  -webkit-tap-highlight-color: rgba($black, 0.01); // 4
 }
 
 
