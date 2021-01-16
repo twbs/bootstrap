@@ -1,0 +1,25 @@
+.input-s {
+    width: 300px;
+    height: 20px;
+    font-size: 90%;
+}
+.input-m {
+    width: 500px;
+    height: 25px;
+    font-size: 120%;
+}
+.input-l {
+    width: 700px;
+    height: 30px;
+    font-size: 170%;
+}
+.input-xl {
+    width: 900px;
+    height: 35px;
+    font-size: 200%;
+}
+.input-xxl {
+    width: 1200px;
+    height: 45px;
+    font-size: 250%;
+}
