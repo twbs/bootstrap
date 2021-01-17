@@ -84,7 +84,7 @@ const DefaultType = {
   offset: '(number|string|function)',
   flip: 'boolean',
   boundary: '(string|element)',
-  reference: '(string|element)',
+  reference: '(string|element|object)',
   display: 'string',
   popperConfig: '(null|object)'
 }
@@ -172,6 +172,8 @@ class Dropdown extends BaseComponent {
         if (typeof this._config.reference.jquery !== 'undefined') {
           referenceElement = this._config.reference[0]
         }
+      } else if (typeof this._config.reference === 'object') {
+        referenceElement = this._config.reference
       }
 
       this._popper = Popper.createPopper(referenceElement, this._menu, this._getPopperConfig())
@@ -256,6 +258,13 @@ class Dropdown extends BaseComponent {
     }
 
     typeCheckConfig(NAME, config, this.constructor.DefaultType)
+
+    if (typeof config.reference === 'object' && !isElement(config.reference) &&
+      typeof config.reference.getBoundingClientRect !== 'function'
+    ) {
+      // Popper virtual elements require a getBoundingClientRect method
+      throw new TypeError(`${NAME.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`)
+    }
 
     return config
   }
