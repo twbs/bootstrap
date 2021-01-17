@@ -393,13 +393,13 @@ describe('Dropdown', () => {
 
       expect(() => new Dropdown(btnDropdown, {
         reference: {}
-      })).toThrow()
+      })).toThrowError(TypeError, 'DROPDOWN: Option "reference" provided type "object" without a required "getBoundingClientRect" method.')
 
       expect(() => new Dropdown(btnDropdown, {
         reference: {
           getBoundingClientRect: 'not-a-function'
         }
-      })).toThrow()
+      })).toThrowError(TypeError, 'DROPDOWN: Option "reference" provided type "object" without a required "getBoundingClientRect" method.')
 
       // use onFirstUpdate as Poppers internal update is executed async
       const dropdown = new Dropdown(btnDropdown, {
@@ -1557,11 +1557,9 @@ describe('Dropdown', () => {
       jQueryMock.fn.dropdown = Dropdown.jQueryInterface
       jQueryMock.elements = [div]
 
-      try {
+      expect(() => {
         jQueryMock.fn.dropdown.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
+      }).toThrowError(TypeError, `No method named "${action}"`)
     })
   })
 
