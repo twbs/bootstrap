@@ -1,14 +1,14 @@
 // scss-docs-start clearfix
 @mixin clearfix() {
   &::after {
-    content: "";
     display: block;
+    content: "";
     clear: both;
   }
   @supports (display: flow-root) {
     &::after {
-      content: none;
       display: none;
+      content: none;
       clear: none;
     }
     display: flow-root;
