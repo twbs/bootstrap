@@ -1,9 +1,17 @@
 // scss-docs-start clearfix
 @mixin clearfix() {
   &::after {
+    content: "";
     display: block;
     clear: both;
-    content: "";
+  }
+  @supports (display: flow-root) {
+    &::after {
+      content: none;
+      display: none;
+      clear: none;
+    }
+    display: flow-root;
   }
 }
 // scss-docs-end clearfix
