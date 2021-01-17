@@ -1630,4 +1630,31 @@ describe('Dropdown', () => {
       expect(Dropdown.getInstance(div)).toEqual(null)
     })
   })
+
+  it('should open dropdown when pressing keydown or keyup', done => {
+    fixtureEl.innerHTML = [
+      '<div class="dropdown">',
+      '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+      '  <div class="dropdown-menu">',
+      '    <a class="dropdown-item disabled" href="#sub1">Submenu 1</a>',
+      '    <button class="dropdown-item" type="button" disabled>Disabled button</button>',
+      '    <a id="item1" class="dropdown-item" href="#">Another link</a>',
+      '  </div>',
+      '</div>'
+    ].join('')
+
+    const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+    const dropdown = fixtureEl.querySelector('.dropdown')
+
+    const keydown = createEvent('keydown')
+    keydown.key = 'ArrowDown'
+
+    dropdown.addEventListener('shown.bs.dropdown', () => {
+      expect(triggerDropdown.classList.contains('show')).toEqual(true)
+      expect(triggerDropdown.getAttribute('aria-expanded')).toEqual('true')
+      done()
+    })
+
+    triggerDropdown.dispatchEvent(keydown)
+  })
 })
