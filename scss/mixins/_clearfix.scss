@@ -2,14 +2,14 @@
 @mixin clearfix() {
   &::after {
     display: block;
-    content: "";
     clear: both;
+    content: "";
   }
   @supports (display: flow-root) {
     &::after {
       display: none;
-      content: none;
       clear: none;
+      content: none;
     }
     display: flow-root;
   }
