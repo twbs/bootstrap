@@ -113,6 +113,7 @@
     background-image: escape-svg($form-switch-bg-image);
     background-position: left center;
     @include border-radius($form-switch-border-radius);
+    @include transition($form-switch-transition);
 
     &:focus {
       background-image: escape-svg($form-switch-focus-bg-image);

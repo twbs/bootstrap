@@ -76,3 +76,11 @@ Specifically regarding custom CSS, utilities can help combat increasing file siz
 ## Flexible HTML
 
 While not always possible, we strive to avoid being overly dogmatic in our HTML requirements for components. Thus, we focus on single classes in our CSS selectors and try to avoid immediate children selectors (`>`). This gives you more flexibility in your implementation and helps keep our CSS simpler and less specific.
+
+## Code conventions
+
+[Code Guide](https://codeguide.co/) (from Bootstrap co-creator, @mdo) documents how we write our HTML and CSS across Bootstrap. It specifices guidelines for general formatting, common sense defaults, property and attribute orders, and more.
+
+We use [Stylelint](https://stylelint.io/) to enforce these standards and more in our Sass/CSS. [Our custom Stylelint config](https://github.com/twbs/stylelint-config-twbs-bootstrap) is open source and available for others to use and extend.
+
+We use [vnu-jar](https://www.npmjs.com/package/vnu-jar) to enforce standard and semantic HTML, as well as detecting common errors.

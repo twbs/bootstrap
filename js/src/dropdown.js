@@ -263,7 +263,7 @@ class Dropdown extends BaseComponent {
       typeof config.reference.getBoundingClientRect !== 'function'
     ) {
       // Popper virtual elements require a getBoundingClientRect method
-      throw new Error(`${NAME}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`)
+      throw new TypeError(`${NAME.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`)
     }
 
     return config
