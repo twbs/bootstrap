@@ -84,6 +84,7 @@
     &:focus {
       color: $nav-pills-link-hover-color;
       text-decoration: if($link-hover-decoration == underline, none, null);
+      outline: $nav-pills-link-focus-outline;
       box-shadow: $nav-pills-link-focus-box-shadow;
     }
   }
