@@ -239,82 +239,84 @@ class Tooltip extends BaseComponent {
       throw new Error('Please use show on visible elements')
     }
 
-    if (this.isWithContent() && this._isEnabled) {
-      const showEvent = EventHandler.trigger(this._element, this.constructor.Event.SHOW)
-      const shadowRoot = findShadowRoot(this._element)
-      const isInTheDom = shadowRoot === null ?
-        this._element.ownerDocument.documentElement.contains(this._element) :
-        shadowRoot.contains(this._element)
+    if (!(this.isWithContent() && this._isEnabled)) {
+      return
+    }
 
-      if (showEvent.defaultPrevented || !isInTheDom) {
-        return
+    const showEvent = EventHandler.trigger(this._element, this.constructor.Event.SHOW)
+    const shadowRoot = findShadowRoot(this._element)
+    const isInTheDom = shadowRoot === null ?
+      this._element.ownerDocument.documentElement.contains(this._element) :
+      shadowRoot.contains(this._element)
+
+    if (showEvent.defaultPrevented || !isInTheDom) {
+      return
+    }
+
+    const tip = this.getTipElement()
+    const tipId = getUID(this.constructor.NAME)
+
+    tip.setAttribute('id', tipId)
+    this._element.setAttribute('aria-describedby', tipId)
+
+    this.setContent()
+
+    if (this.config.animation) {
+      tip.classList.add(CLASS_NAME_FADE)
+    }
+
+    const placement = typeof this.config.placement === 'function' ?
+      this.config.placement.call(this, tip, this._element) :
+      this.config.placement
+
+    const attachment = this._getAttachment(placement)
+    this._addAttachmentClass(attachment)
+
+    const container = this._getContainer()
+    Data.setData(tip, this.constructor.DATA_KEY, this)
+
+    if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
+      container.appendChild(tip)
+    }
+
+    EventHandler.trigger(this._element, this.constructor.Event.INSERTED)
+
+    this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
+
+    tip.classList.add(CLASS_NAME_SHOW)
+
+    const customClass = typeof this.config.customClass === 'function' ? this.config.customClass() : this.config.customClass
+    if (customClass) {
+      tip.classList.add(...customClass.split(' '))
+    }
+
+    // If this is a touch-enabled device we add extra
+    // empty mouseover listeners to the body's immediate children;
+    // only needed because of broken event delegation on iOS
+    // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+    if ('ontouchstart' in document.documentElement) {
+      [].concat(...document.body.children).forEach(element => {
+        EventHandler.on(element, 'mouseover', noop())
+      })
+    }
+
+    const complete = () => {
+      const prevHoverState = this._hoverState
+
+      this._hoverState = null
+      EventHandler.trigger(this._element, this.constructor.Event.SHOWN)
+
+      if (prevHoverState === HOVER_STATE_OUT) {
+        this._leave(null, this)
       }
+    }
 
-      const tip = this.getTipElement()
-      const tipId = getUID(this.constructor.NAME)
-
-      tip.setAttribute('id', tipId)
-      this._element.setAttribute('aria-describedby', tipId)
-
-      this.setContent()
-
-      if (this.config.animation) {
-        tip.classList.add(CLASS_NAME_FADE)
-      }
-
-      const placement = typeof this.config.placement === 'function' ?
-        this.config.placement.call(this, tip, this._element) :
-        this.config.placement
-
-      const attachment = this._getAttachment(placement)
-      this._addAttachmentClass(attachment)
-
-      const container = this._getContainer()
-      Data.setData(tip, this.constructor.DATA_KEY, this)
-
-      if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
-        container.appendChild(tip)
-      }
-
-      EventHandler.trigger(this._element, this.constructor.Event.INSERTED)
-
-      this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
-
-      tip.classList.add(CLASS_NAME_SHOW)
-
-      const customClass = typeof this.config.customClass === 'function' ? this.config.customClass() : this.config.customClass
-      if (customClass) {
-        tip.classList.add(...customClass.split(' '))
-      }
-
-      // If this is a touch-enabled device we add extra
-      // empty mouseover listeners to the body's immediate children;
-      // only needed because of broken event delegation on iOS
-      // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
-      if ('ontouchstart' in document.documentElement) {
-        [].concat(...document.body.children).forEach(element => {
-          EventHandler.on(element, 'mouseover', noop())
-        })
-      }
-
-      const complete = () => {
-        const prevHoverState = this._hoverState
-
-        this._hoverState = null
-        EventHandler.trigger(this._element, this.constructor.Event.SHOWN)
-
-        if (prevHoverState === HOVER_STATE_OUT) {
-          this._leave(null, this)
-        }
-      }
-
-      if (this.tip.classList.contains(CLASS_NAME_FADE)) {
-        const transitionDuration = getTransitionDurationFromElement(this.tip)
-        EventHandler.one(this.tip, 'transitionend', complete)
-        emulateTransitionEnd(this.tip, transitionDuration)
-      } else {
-        complete()
-      }
+    if (this.tip.classList.contains(CLASS_NAME_FADE)) {
+      const transitionDuration = getTransitionDurationFromElement(this.tip)
+      EventHandler.one(this.tip, 'transitionend', complete)
+      emulateTransitionEnd(this.tip, transitionDuration)
+    } else {
+      complete()
     }
   }
 
