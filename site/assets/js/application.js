@@ -24,11 +24,16 @@
 
     $('[data-toggle="popover"]').popover()
 
-    $('.toast')
+    $('.bd-example .toast')
       .toast({
         autohide: false
       })
       .toast('show')
+
+    // Live toast demo
+    $('#liveToastBtn').click(function () {
+      $('#liveToast').toast('show')
+    })
 
     // Demos within modals
     $('.tooltip-test').tooltip()
