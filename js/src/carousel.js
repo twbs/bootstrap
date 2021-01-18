@@ -406,12 +406,10 @@ class Carousel extends BaseComponent {
 
   _setActiveIndicatorElement(element) {
     if (this._indicatorsElement) {
-      const activeIndicators = SelectorEngine.find(SELECTOR_ACTIVE, this._indicatorsElement)
+      const activeIndicator = SelectorEngine.findOne(SELECTOR_ACTIVE, this._indicatorsElement)
 
-      for (let i = 0; i < activeIndicators.length; i++) {
-        activeIndicators[i].classList.remove(CLASS_NAME_ACTIVE)
-        activeIndicators[i].removeAttribute('aria-current')
-      }
+      activeIndicator.classList.remove(CLASS_NAME_ACTIVE)
+      activeIndicator.removeAttribute('aria-current')
 
       const indicators = SelectorEngine.find(SELECTOR_INDICATOR, this._indicatorsElement)
 
