@@ -1,14 +1,12 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): collapse.js
+ * Bootstrap (v5.0.0-beta1): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
-  TRANSITION_END,
+  defineJQueryPlugin,
   emulateTransitionEnd,
   getSelectorFromElement,
   getElementFromSelector,
@@ -204,7 +202,7 @@ class Collapse extends BaseComponent {
     const scrollSize = `scroll${capitalizedDimension}`
     const transitionDuration = getTransitionDurationFromElement(this._element)
 
-    EventHandler.one(this._element, TRANSITION_END, complete)
+    EventHandler.one(this._element, 'transitionend', complete)
 
     emulateTransitionEnd(this._element, transitionDuration)
     this._element.style[dimension] = `${this._element[scrollSize]}px`
@@ -254,7 +252,7 @@ class Collapse extends BaseComponent {
     this._element.style[dimension] = ''
     const transitionDuration = getTransitionDurationFromElement(this._element)
 
-    EventHandler.one(this._element, TRANSITION_END, complete)
+    EventHandler.one(this._element, 'transitionend', complete)
     emulateTransitionEnd(this._element, transitionDuration)
   }
 
@@ -373,7 +371,7 @@ class Collapse extends BaseComponent {
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
-  if (event.target.tagName === 'A') {
+  if (event.target.tagName === 'A' || (event.delegateTarget && event.delegateTarget.tagName === 'A')) {
     event.preventDefault()
   }
 
@@ -407,18 +405,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Collapse to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Collapse.jQueryInterface
-    $.fn[NAME].Constructor = Collapse
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Collapse.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Collapse)
 
 export default Collapse

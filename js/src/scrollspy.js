@@ -1,13 +1,12 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): scrollspy.js
+ * Bootstrap (v5.0.0-beta1): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
+  defineJQueryPlugin,
   getSelectorFromElement,
   getUID,
   isElement,
@@ -77,7 +76,7 @@ class ScrollSpy extends BaseComponent {
     this._activeTarget = null
     this._scrollHeight = 0
 
-    EventHandler.on(this._scrollElement, EVENT_SCROLL, event => this._process(event))
+    EventHandler.on(this._scrollElement, EVENT_SCROLL, () => this._process())
 
     this.refresh()
     this._process()
@@ -315,18 +314,6 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  * add .ScrollSpy to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = ScrollSpy.jQueryInterface
-    $.fn[NAME].Constructor = ScrollSpy
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return ScrollSpy.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, ScrollSpy)
 
 export default ScrollSpy

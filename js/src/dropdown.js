@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): dropdown.js
+ * Bootstrap (v5.0.0-beta1): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -8,8 +8,7 @@
 import * as Popper from '@popperjs/core'
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
+  defineJQueryPlugin,
   getElementFromSelector,
   isElement,
   isVisible,
@@ -85,7 +84,7 @@ const DefaultType = {
   offset: '(number|string|function)',
   flip: 'boolean',
   boundary: '(string|element)',
-  reference: '(string|element)',
+  reference: '(string|element|object)',
   display: 'string',
   popperConfig: '(null|object)'
 }
@@ -173,6 +172,8 @@ class Dropdown extends BaseComponent {
         if (typeof this._config.reference.jquery !== 'undefined') {
           referenceElement = this._config.reference[0]
         }
+      } else if (typeof this._config.reference === 'object') {
+        referenceElement = this._config.reference
       }
 
       this._popper = Popper.createPopper(referenceElement, this._menu, this._getPopperConfig())
@@ -258,6 +259,13 @@ class Dropdown extends BaseComponent {
 
     typeCheckConfig(NAME, config, this.constructor.DefaultType)
 
+    if (typeof config.reference === 'object' && !isElement(config.reference) &&
+      typeof config.reference.getBoundingClientRect !== 'function'
+    ) {
+      // Popper virtual elements require a getBoundingClientRect method
+      throw new TypeError(`${NAME.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`)
+    }
+
     return config
   }
 
@@ -298,6 +306,12 @@ class Dropdown extends BaseComponent {
         options: {
           altBoundary: this._config.flip,
           rootBoundary: this._config.boundary
+        }
+      },
+      {
+        name: 'flip',
+        options: {
+          fallbackPlacements: ['top', 'right', 'bottom', 'left']
         }
       }]
     }
@@ -490,18 +504,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stop
  * add .Dropdown to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Dropdown.jQueryInterface
-    $.fn[NAME].Constructor = Dropdown
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Dropdown.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Dropdown)
 
 export default Dropdown

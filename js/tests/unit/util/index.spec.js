@@ -212,7 +212,7 @@ describe('Util', () => {
 
       expect(() => {
         Util.typeCheckConfig(namePlugin, config, defaultType)
-      }).toThrow(new Error('COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".'))
+      }).toThrowError(TypeError, 'COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".')
     })
 
     it('should return null stringified when null is passed', () => {
@@ -411,6 +411,31 @@ describe('Util', () => {
       const spy = jasmine.createSpy()
       Util.onDOMContentLoaded(spy)
       expect(spy).toHaveBeenCalled()
+    })
+  })
+
+  describe('defineJQueryPlugin', () => {
+    const fakejQuery = { fn: {} }
+
+    beforeEach(() => {
+      Object.defineProperty(window, 'jQuery', {
+        value: fakejQuery,
+        writable: true
+      })
+    })
+
+    afterEach(() => {
+      window.jQuery = undefined
+    })
+
+    it('should define a plugin on the jQuery instance', () => {
+      const pluginMock = function () {}
+      pluginMock.jQueryInterface = function () {}
+
+      Util.defineJQueryPlugin('test', pluginMock)
+      expect(fakejQuery.fn.test).toBe(pluginMock.jQueryInterface)
+      expect(fakejQuery.fn.test.Constructor).toBe(pluginMock)
+      expect(typeof fakejQuery.fn.test.noConflict).toEqual('function')
     })
   })
 })

@@ -29,7 +29,8 @@
   border: 1px solid;
   @include border-radius();
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: $white;
     background-color: $primary;
   }

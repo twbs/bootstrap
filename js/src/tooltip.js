@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): tooltip.js
+ * Bootstrap (v5.0.0-beta1): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -8,9 +8,7 @@
 import * as Popper from '@popperjs/core'
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
-  TRANSITION_END,
+  defineJQueryPlugin,
   emulateTransitionEnd,
   findShadowRoot,
   getTransitionDurationFromElement,
@@ -53,7 +51,7 @@ const DefaultType = {
   selector: '(string|boolean)',
   placement: '(string|function)',
   container: '(string|element|boolean)',
-  fallbackPlacements: '(null|array)',
+  fallbackPlacements: 'array',
   boundary: '(string|element)',
   customClass: '(string|function)',
   sanitize: 'boolean',
@@ -83,7 +81,7 @@ const Default = {
   selector: false,
   placement: 'top',
   container: false,
-  fallbackPlacements: null,
+  fallbackPlacements: ['top', 'right', 'bottom', 'left'],
   boundary: 'clippingParents',
   customClass: '',
   sanitize: true,
@@ -224,7 +222,7 @@ class Tooltip extends BaseComponent {
     EventHandler.off(this._element, this.constructor.EVENT_KEY)
     EventHandler.off(this._element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler)
 
-    if (this.tip) {
+    if (this.tip && this.tip.parentNode) {
       this.tip.parentNode.removeChild(this.tip)
     }
 
@@ -318,7 +316,7 @@ class Tooltip extends BaseComponent {
 
       if (this.tip.classList.contains(CLASS_NAME_FADE)) {
         const transitionDuration = getTransitionDurationFromElement(this.tip)
-        EventHandler.one(this.tip, TRANSITION_END, complete)
+        EventHandler.one(this.tip, 'transitionend', complete)
         emulateTransitionEnd(this.tip, transitionDuration)
       } else {
         complete()
@@ -368,7 +366,7 @@ class Tooltip extends BaseComponent {
     if (this.tip.classList.contains(CLASS_NAME_FADE)) {
       const transitionDuration = getTransitionDurationFromElement(tip)
 
-      EventHandler.one(tip, TRANSITION_END, complete)
+      EventHandler.one(tip, 'transitionend', complete)
       emulateTransitionEnd(tip, transitionDuration)
     } else {
       complete()
@@ -468,21 +466,16 @@ class Tooltip extends BaseComponent {
   // Private
 
   _getPopperConfig(attachment) {
-    const flipModifier = {
-      name: 'flip',
-      options: {
-        altBoundary: true
-      }
-    }
-
-    if (this.config.fallbackPlacements) {
-      flipModifier.options.fallbackPlacements = this.config.fallbackPlacements
-    }
-
     const defaultBsConfig = {
       placement: attachment,
       modifiers: [
-        flipModifier,
+        {
+          name: 'flip',
+          options: {
+            altBoundary: true,
+            fallbackPlacements: this.config.fallbackPlacements
+          }
+        },
         {
           name: 'preventOverflow',
           options: {
@@ -786,18 +779,6 @@ class Tooltip extends BaseComponent {
  * add .Tooltip to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Tooltip.jQueryInterface
-    $.fn[NAME].Constructor = Tooltip
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Tooltip.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Tooltip)
 
 export default Tooltip

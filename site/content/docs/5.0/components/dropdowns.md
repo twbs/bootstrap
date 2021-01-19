@@ -886,9 +886,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </tr>
     <tr>
       <td><code>reference</code></td>
-      <td>string | element</td>
+      <td>string | element | object</td>
       <td><code>'toggle'</code></td>
-      <td>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, or an HTMLElement reference. For more information refer to Popper's <a href="https://popper.js.org/docs/v2/constructors/#createpopper">constructor docs</a>.</td>
+      <td>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, an HTMLElement reference or an object providing <code>getBoundingClientRect</code>. For more information refer to Popper's <a href="https://popper.js.org/docs/v2/constructors/#createpopper">constructor docs</a> and <a href="https://popper.js.org/docs/v2/virtual-elements/">virtual element docs</a>.</td>
     </tr>
     <tr>
       <td><code>display</code></td>
@@ -900,7 +900,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td><code>popperConfig</code></td>
       <td>null | object</td>
       <td><code>null</code></td>
-      <td>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper's configuration</a></td>
+      <td>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v2/constructors/#options">Popper's configuration</a></td>
     </tr>
   </tbody>
 </table>

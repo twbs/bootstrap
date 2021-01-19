@@ -4,8 +4,8 @@
 
 /*!
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
@@ -39,7 +39,7 @@
     })
   }
 
-  document.querySelectorAll('.toast')
+  document.querySelectorAll('.bd-example .toast')
     .forEach(function (toastNode) {
       var toast = new bootstrap.Toast(toastNode, {
         autohide: false
@@ -47,6 +47,16 @@
 
       toast.show()
     })
+
+  var toastTrigger = document.getElementById('liveToastBtn')
+  var toastLiveExample = document.getElementById('liveToast')
+  if (toastTrigger) {
+    toastTrigger.addEventListener('click', function () {
+      var toast = new bootstrap.Toast(toastLiveExample)
+
+      toast.show()
+    })
+  }
 
   // Demos within modals
   document.querySelectorAll('.tooltip-test')

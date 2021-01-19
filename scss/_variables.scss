@@ -612,6 +612,15 @@ $btn-border-radius-lg:        $border-radius-lg !default;
 
 $btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
+$btn-hover-bg-shade-amount:       15% !default;
+$btn-hover-bg-tint-amount:        15% !default;
+$btn-hover-border-shade-amount:   20% !default;
+$btn-hover-border-tint-amount:    10% !default;
+$btn-active-bg-shade-amount:      20% !default;
+$btn-active-bg-tint-amount:       20% !default;
+$btn-active-border-shade-amount:  25% !default;
+$btn-active-border-tint-amount:   10% !default;
+
 
 // Forms
 
@@ -683,11 +692,11 @@ $form-check-padding-start:                $form-check-input-width + .5em !defaul
 $form-check-margin-bottom:                .125rem !default;
 $form-check-label-color:                  null !default;
 $form-check-label-cursor:                 null !default;
-$form-check-transition:                   background-color .15s ease-in-out, background-position .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+$form-check-transition:                   null !default;
 
 $form-check-input-active-filter:          brightness(90%) !default;
 
-$form-check-input-bg:                     $body-bg !default;
+$form-check-input-bg:                     $input-bg !default;
 $form-check-input-border:                 1px solid rgba(0, 0, 0, .25) !default;
 $form-check-input-border-radius:          .25em !default;
 $form-check-radio-border-radius:          50% !default;
@@ -714,6 +723,7 @@ $form-switch-width:               2em !default;
 $form-switch-padding-start:       $form-switch-width + .5em !default;
 $form-switch-bg-image:            url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color}'/></svg>") !default;
 $form-switch-border-radius:       $form-switch-width !default;
+$form-switch-transition:          background-position .15s ease-in-out !default;
 
 $form-switch-focus-color:         $input-focus-border-color !default;
 $form-switch-focus-bg-image:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-focus-color}'/></svg>") !default;
@@ -735,7 +745,7 @@ $form-select-padding-y:             $input-padding-y !default;
 $form-select-padding-x:             $input-padding-x !default;
 $form-select-font-family:           $input-font-family !default;
 $form-select-font-size:             $input-font-size !default;
-$form-select-indicator-padding:     1rem !default; // Extra padding to account for the presence of the background-image based indicator
+$form-select-indicator-padding:     $form-select-padding-x * 3 !default; // Extra padding for background-image
 $form-select-font-weight:           $input-font-weight !default;
 $form-select-line-height:           $input-line-height !default;
 $form-select-color:                 $input-color !default;
@@ -748,8 +758,8 @@ $form-select-bg-size:               16px 12px !default; // In pixels because ima
 $form-select-indicator-color:       $gray-800 !default;
 $form-select-indicator:             url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-select-indicator-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>") !default;
 
-$form-select-feedback-icon-padding-end: add(1em * .75, (2 * $form-select-padding-y * .75) + $form-select-padding-x + $form-select-indicator-padding) !default;
-$form-select-feedback-icon-position:    center right ($form-select-padding-x + $form-select-indicator-padding) !default;
+$form-select-feedback-icon-padding-end: $form-select-padding-x * 2.5 + $form-select-indicator-padding !default;
+$form-select-feedback-icon-position:    center right $form-select-indicator-padding !default;
 $form-select-feedback-icon-size:        $input-height-inner-half $input-height-inner-half !default;
 
 $form-select-border-width:        $input-border-width !default;
@@ -929,12 +939,12 @@ $dropdown-box-shadow:               $box-shadow !default;
 
 $dropdown-link-color:               $gray-900 !default;
 $dropdown-link-hover-color:         shade-color($gray-900, 10%) !default;
-$dropdown-link-hover-bg:            $gray-100 !default;
+$dropdown-link-hover-bg:            $gray-200 !default;
 
 $dropdown-link-active-color:        $component-active-color !default;
 $dropdown-link-active-bg:           $component-active-bg !default;
 
-$dropdown-link-disabled-color:      $gray-600 !default;
+$dropdown-link-disabled-color:      $gray-500 !default;
 
 $dropdown-item-padding-y:           $spacer / 4 !default;
 $dropdown-item-padding-x:           $spacer !default;
@@ -990,6 +1000,9 @@ $pagination-disabled-bg:            $white !default;
 $pagination-disabled-border-color:  $gray-300 !default;
 
 $pagination-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+
+$pagination-border-radius-sm:       $border-radius-sm !default;
+$pagination-border-radius-lg:       $border-radius-lg !default;
 
 // Cards
 
