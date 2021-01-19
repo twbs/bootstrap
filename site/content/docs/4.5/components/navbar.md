@@ -440,11 +440,11 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 
 ## Scrolling
 
-Add `.navbar-nav-scroll` to a `.navbar-collapse` (or other navbar sub-component) to enable vertical scrolling within the toggleable contents of a collapsed navbar. By default, scrolling kicks in at `75vh` (or 75% of the viewport height), but you can override that with the local CSS custom property `--bs-navbar-height` or custom styles. At larger viewports when the navbar is expanded, content will appear as it does in a default navbar.
+Add `.navbar-nav-scroll` to a `.navbar-collapse` (or other navbar sub-component) to enable vertical scrolling within the toggleable contents of a collapsed navbar. By default, scrolling kicks in at `75vh` (or 75% of the viewport height), but you can override that with inline or custom styles. At larger viewports when the navbar is expanded, content will appear as it does in a default navbar.
 
 Please note that this behavior comes with a potential drawback of `overflow`—when setting `overflow-y: auto` (required to scroll the content here), `overflow-x` is the equivalent of `auto`, which will crop some horizontal content.
 
-Here's an example navbar using `.navbar-nav-scroll` with `style="--bs-scroll-height: 100px;"`, with some extra margin utilities for optimum spacing.
+Here's an example navbar using `.navbar-nav-scroll` with `style="max-height: 100px;"`, with some extra margin utilities for optimum spacing.
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -453,7 +453,7 @@ Here's an example navbar using `.navbar-nav-scroll` with `style="--bs-scroll-hei
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarScroll">
-    <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+    <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
