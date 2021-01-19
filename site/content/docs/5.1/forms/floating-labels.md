@@ -75,6 +75,22 @@ Other than `.form-control`, floating labels are only available on `.form-select`
 </div>
 {{< /example >}}
 
+## Readonly plain text
+
+You can also use floating labels with the `.form-control-plaintext` class to remove the default form field styling and preserve the correct margin and padding.
+
+{{< example >}}
+<div class="form-floating mb-3">
+  <input type="email" readonly class="form-control-plaintext" id="floatingEmptyPlaintextInput" placeholder="name@example.com">
+  <label for="floatingEmptyPlaintextInput">Empty input</label>
+</div>
+<div class="form-floating mb-3">
+  <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="name@example.com" value="name@example.com">
+  <label for="floatingPlaintextInput">Input with value</label>
+</div>
+{{< /example >}}
+
+
 ## Layout
 
 When working with the Bootstrap grid system, be sure to place form elements within column classes.
