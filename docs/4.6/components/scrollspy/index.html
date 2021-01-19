@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="generator" content="Hugo 0.80.0">
+
+<meta name="docsearch:language" content="en">
+<meta name="docsearch:version" content="4.6">
+
+<title>Scrollspy · Bootstrap v4.6</title>
+
+<link rel="canonical" href="https://getbootstrap.com/docs/4.6/components/scrollspy/">
+
+
+
+<!-- Bootstrap core CSS -->
+<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+<!-- Documentation extras -->
+<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+
+<link href="/docs/4.6/assets/css/docs.css" rel="stylesheet">
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/4.6/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/4.6/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/4.6/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/4.6/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/4.6/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+<link rel="icon" href="/docs/4.6/assets/img/favicons/favicon.ico">
+<meta name="msapplication-config" content="/docs/4.6/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#563d7c">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@getbootstrap">
+<meta name="twitter:creator" content="@getbootstrap">
+<meta name="twitter:title" content="Scrollspy">
+<meta name="twitter:description" content="Automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.">
+<meta name="twitter:image" content="https://getbootstrap.com/docs/4.6/assets/brand/bootstrap-social-logo.png">
+
+<!-- Facebook -->
+<meta property="og:url" content="https://getbootstrap.com/docs/4.6/components/scrollspy/">
+<meta property="og:title" content="Scrollspy">
+<meta property="og:description" content="Automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://getbootstrap.com/docs/4.6/assets/brand/bootstrap-social.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-146052-10', 'getbootstrap.com');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
+  </head>
+  <body>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a>
+    <a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a>
+  </div>
+</div>
+
+
+    <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+  <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="Bootstrap">
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" class="d-block" viewBox="0 0 612 612" role="img" focusable="false"><title>Bootstrap</title><path fill="currentColor" d="M510 8a94.3 94.3 0 0 1 94 94v408a94.3 94.3 0 0 1-94 94H102a94.3 94.3 0 0 1-94-94V102a94.3 94.3 0 0 1 94-94h408m0-8H102C45.9 0 0 45.9 0 102v408c0 56.1 45.9 102 102 102h408c56.1 0 102-45.9 102-102V102C612 45.9 566.1 0 510 0z"/><path fill="currentColor" d="M196.77 471.5V154.43h124.15c54.27 0 91 31.64 91 79.1 0 33-24.17 63.72-54.71 69.21v1.76c43.07 5.49 70.75 35.82 70.75 78 0 55.81-40 89-107.45 89zm39.55-180.4h63.28c46.8 0 72.29-18.68 72.29-53 0-31.42-21.53-48.78-60-48.78h-75.57zm78.22 145.46c47.68 0 72.73-19.34 72.73-56s-25.93-55.37-76.46-55.37h-74.49v111.4z"/></svg>
+  </a>
+
+  <div class="navbar-nav-scroll">
+    <ul class="navbar-nav bd-navbar-nav flex-row">
+      <li class="nav-item">
+        <a class="nav-link" href="/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/docs/4.6/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/docs/4.6/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://icons.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');" target="_blank" rel="noopener">Icons</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://themes.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');" target="_blank" rel="noopener">Themes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://expo.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');" target="_blank" rel="noopener">Expo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://blog.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');" target="_blank" rel="noopener">Blog</a>
+      </li>
+    </ul>
+  </div>
+
+  <ul class="navbar-nav ml-md-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        v4.6
+      </a>
+      <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
+        <a class="dropdown-item active" href="/docs/4.6/">Latest (4.6.x)</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.0/">5.0.x</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/3.4/">v3.4.1</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/docs/versions/">All versions</a>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link pl-2 pr-1 mx-1 py-3 my-n2" href="https://github.com/twbs" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg" viewBox="0 0 512 499.36" role="img" focusable="false"><title>GitHub</title><path fill="currentColor" fill-rule="evenodd" d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z"/></svg>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link px-1 mx-1 py-3 my-n2" href="https://twitter.com/getbootstrap" target="_blank" rel="noopener" aria-label="Twitter">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg" viewBox="0 0 512 416.32" role="img" focusable="false"><title>Twitter</title><path fill="currentColor" d="M160.83 416.32c193.2 0 298.92-160.22 298.92-298.92 0-4.51 0-9-.2-13.52A214 214 0 0 0 512 49.38a212.93 212.93 0 0 1-60.44 16.6 105.7 105.7 0 0 0 46.3-58.19 209 209 0 0 1-66.79 25.37 105.09 105.09 0 0 0-181.73 71.91 116.12 116.12 0 0 0 2.66 24c-87.28-4.3-164.73-46.3-216.56-109.82A105.48 105.48 0 0 0 68 159.6a106.27 106.27 0 0 1-47.53-13.11v1.43a105.28 105.28 0 0 0 84.21 103.06 105.67 105.67 0 0 1-47.33 1.84 105.06 105.06 0 0 0 98.14 72.94A210.72 210.72 0 0 1 25 370.84a202.17 202.17 0 0 1-25-1.43 298.85 298.85 0 0 0 160.83 46.92"/></svg>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link px-1 mx-1 py-3 my-n2" href="https://bootstrap-slack.herokuapp.com/" target="_blank" rel="noopener" aria-label="Slack">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg" viewBox="0 0 512 512" role="img" focusable="false"><title>Slack</title><path fill="currentColor" d="M210.787 234.832l68.31-22.883 22.1 65.977-68.309 22.882z"/><path fill="currentColor" d="M490.54 185.6C437.7 9.59 361.6-31.34 185.6 21.46S-31.3 150.4 21.46 326.4 150.4 543.3 326.4 490.54 543.34 361.6 490.54 185.6zM401.7 299.8l-33.15 11.05 11.46 34.38c4.5 13.92-2.87 29.06-16.78 33.56-2.87.82-6.14 1.64-9 1.23a27.32 27.32 0 0 1-24.56-18l-11.46-34.38-68.36 22.92 11.46 34.38c4.5 13.92-2.87 29.06-16.78 33.56-2.87.82-6.14 1.64-9 1.23a27.32 27.32 0 0 1-24.56-18l-11.46-34.43-33.15 11.05c-2.87.82-6.14 1.64-9 1.23a27.32 27.32 0 0 1-24.56-18c-4.5-13.92 2.87-29.06 16.78-33.56l33.12-11.03-22.1-65.9-33.15 11.05c-2.87.82-6.14 1.64-9 1.23a27.32 27.32 0 0 1-24.56-18c-4.48-13.93 2.89-29.07 16.81-33.58l33.15-11.05-11.46-34.38c-4.5-13.92 2.87-29.06 16.78-33.56s29.06 2.87 33.56 16.78l11.46 34.38 68.36-22.92-11.46-34.38c-4.5-13.92 2.87-29.06 16.78-33.56s29.06 2.87 33.56 16.78l11.47 34.42 33.15-11.05c13.92-4.5 29.06 2.87 33.56 16.78s-2.87 29.06-16.78 33.56L329.7 194.6l22.1 65.9 33.15-11.05c13.92-4.5 29.06 2.87 33.56 16.78s-2.88 29.07-16.81 33.57z"/></svg>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link px-1 mx-1 py-3 my-n2" href="https://opencollective.com/bootstrap/" target="_blank" rel="noopener" aria-label="Open Collective">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" fill-rule="evenodd" class="navbar-nav-svg" viewBox="0 0 40 41" role="img" focusable="false"><title>Open Collective</title><path fill-opacity=".4" d="M32.8 21c0 2.4-.8 4.9-2 6.9l5.1 5.1c2.5-3.4 4.1-7.6 4.1-12 0-4.6-1.6-8.8-4-12.2L30.7 14c1.2 2 2 4.3 2 7z"/><path d="M20 33.7a12.8 12.8 0 0 1 0-25.6c2.6 0 5 .7 7 2.1L32 5a20 20 0 1 0 .1 31.9l-5-5.2a13 13 0 0 1-7 2z"/></svg>
+      </a>
+    </li>
+  </ul>
+
+  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/docs/4.6/getting-started/download/">Download</a>
+</header>
+
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+        <div class="col-md-3 col-xl-2 bd-sidebar">
+          <form role="search" class="bd-search d-flex align-items-center">
+  <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off" data-docs-version="4.6">
+  <button class="btn bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/></svg>
+  </button>
+</form>
+
+<div class="collapse d-md-block row" id="bd-docs-nav">
+  <nav class="bd-links" aria-label="Main navigation">
+
+      <div class="bd-toc-item">
+        <a class="bd-toc-link" href="/docs/4.6/getting-started/introduction/">
+          Getting started
+        </a>
+      </div>
+
+      <div class="bd-toc-item">
+        <a class="bd-toc-link" href="/docs/4.6/layout/overview/">
+          Layout
+        </a>
+      </div>
+
+      <div class="bd-toc-item">
+        <a class="bd-toc-link" href="/docs/4.6/content/reboot/">
+          Content
+        </a>
+      </div>
+
+      <div class="bd-toc-item active">
+        <a class="bd-toc-link" href="/docs/4.6/components/alerts/">
+          Components
+        </a>
+        <ul class="nav bd-sidenav">
+            <li>
+              <a href="/docs/4.6/components/alerts/">Alerts</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/badge/">Badge</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/breadcrumb/">Breadcrumb</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/buttons/">Buttons</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/button-group/">Button group</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/card/">Card</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/carousel/">Carousel</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/collapse/">Collapse</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/dropdowns/">Dropdowns</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/forms/">Forms</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/input-group/">Input group</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/jumbotron/">Jumbotron</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/list-group/">List group</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/media-object/">Media object</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/modal/">Modal</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/navs/">Navs</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/navbar/">Navbar</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/pagination/">Pagination</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/popovers/">Popovers</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/progress/">Progress</a>
+            </li>
+            <li class="active bd-sidenav-active">
+              <a href="/docs/4.6/components/scrollspy/">Scrollspy</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/spinners/">Spinners</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/toasts/">Toasts</a>
+            </li>
+            <li>
+              <a href="/docs/4.6/components/tooltips/">Tooltips</a>
+            </li>
+        </ul>
+      </div>
+
+      <div class="bd-toc-item">
+        <a class="bd-toc-link" href="/docs/4.6/utilities/borders/">
+          Utilities
+        </a>
+      </div>
+
+      <div class="bd-toc-item">
+        <a class="bd-toc-link" href="/docs/4.6/extend/approach/">
+          Extend
+        </a>
+      </div>
+
+      <div class="bd-toc-item">
+        <a class="bd-toc-link" href="/docs/4.6/migration/">
+          Migration
+        </a>
+      </div>
+
+      <div class="bd-toc-item">
+        <a class="bd-toc-link" href="/docs/4.6/about/overview/">
+          About
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+
+        
+          <nav class="d-none d-xl-block col-xl-2 bd-toc" aria-label="Secondary navigation">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#how-it-works">How it works</a></li>
+    <li><a href="#example-in-navbar">Example in navbar</a></li>
+    <li><a href="#example-with-nested-nav">Example with nested nav</a></li>
+    <li><a href="#example-with-list-group">Example with list-group</a></li>
+    <li><a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#via-data-attributes">Via data attributes</a></li>
+        <li><a href="#via-javascript">Via JavaScript</a></li>
+        <li><a href="#methods">Methods</a>
+          <ul>
+            <li><a href="#scrollspyrefresh"><code>.scrollspy('refresh')</code></a></li>
+            <li><a href="#scrollspydispose"><code>.scrollspy('dispose')</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#options">Options</a></li>
+        <li><a href="#events">Events</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+          </nav>
+        
+
+        <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/blob/v4-dev/site/content/docs/4.6/components/scrollspy.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Scrollspy</h1>
+          </div>
+          <p class="bd-lead">Automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.</p>
+          <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
+
+          <h2 id="how-it-works">How it works</h2>
+<p>Scrollspy has a few requirements to function properly:</p>
+<ul>
+<li>If you&rsquo;re building our JavaScript from source, it <a href="/docs/4.6/getting-started/javascript/#util">requires <code>util.js</code></a>.</li>
+<li>It must be used on a Bootstrap <a href="/docs/4.6/components/navs/">nav component</a> or <a href="/docs/4.6/components/list-group/">list group</a>.</li>
+<li>Scrollspy requires <code>position: relative;</code> on the element you&rsquo;re spying on, usually the <code>&lt;body&gt;</code>.</li>
+<li>When spying on elements other than the <code>&lt;body&gt;</code>, be sure to have a <code>height</code> set and <code>overflow-y: scroll;</code> applied.</li>
+<li>Anchors (<code>&lt;a&gt;</code>) are required and must point to an element with that <code>id</code>.</li>
+</ul>
+<p>When successfully implemented, your nav or list group will update accordingly, moving the <code>.active</code> class from one item to the next based on their associated targets.</p>
+<h2 id="example-in-navbar">Example in navbar</h2>
+<p>Scroll the area below the navbar and watch the active class change. The dropdown items will be highlighted as well.</p>
+<div class="bd-example">
+  <nav id="navbar-example2" class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" href="#fat">@fat</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#mdo">@mdo</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#one">one</a>
+          <a class="dropdown-item" href="#two">two</a>
+          <div role="separator" class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#three">three</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example">
+    <h4 id="fat">@fat</h4>
+    <p>Placeholder content for the scrollspy example. You got the finest architecture. Passport stamps, she's cosmopolitan. Fine, fresh, fierce, we got it on lock. Never planned that one day I'd be losing you. She eats your heart out. Your kiss is cosmic, every move is magic. I mean the ones, I mean like she's the one. Greetings loved ones let's take a journey. Just own the night like the 4th of July! But you'd rather get wasted.</p>
+    <h4 id="mdo">@mdo</h4>
+    <p>Placeholder content for the scrollspy example. 'Cause she's the muse and the artist. (This is how we do) So you wanna play with magic. So just be sure before you give it all to me. I'm walking, I'm walking on air (tonight). Skip the talk, heard it all, time to walk the walk.</p>
+    <h4 id="one">one</h4>
+    <p>Placeholder content for the scrollspy example. Takes you miles high, so high, 'cause she’s got that one international smile. There's a stranger in my bed, there's a pounding in my head. Oh, no. In another life I would make you stay. ‘Cause I, I’m capable of anything. Suiting up for my crowning battle. Used to steal your parents' liquor and climb to the roof. Tone, tan fit and ready, turn it up cause its gettin' heavy. Her love is like a drug. I guess that I forgot I had a choice.</p>
+    <h4 id="two">two</h4>
+    <p>Placeholder content for the scrollspy example. It's time to bring out the big balloons. I'm walking, I'm walking on air (tonight). Yeah, we maxed our credit cards and got kicked out of the bar. Yo, shout out to all you kids, buying bottle service, with your rent money. I'm ma get your heart racing in my skin-tight jeans. If you get the chance you better keep her. Yo, shout out to all you kids, buying bottle service, with your rent money.</p>
+    <h4 id="three">three</h4>
+    <p>Placeholder content for the scrollspy example. If you wanna dance, if you want it all, you know that I'm the girl that you should call. Walk through the storm I would. So let me get you in your birthday suit. The one that got away. Last Friday night, yeah I think we broke the law, always say we're gonna stop. 'Cause she's a little bit of Yoko, And she's a little bit of 'Oh no'. I want the jaw droppin', eye poppin', head turnin', body shockin'. Yeah, we maxed our credit cards and got kicked out of the bar.</p>
+    <p>And some more placeholder content, for good measure.</p>
+  </div>
+</div>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;navbar-example2&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Navbar<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav nav-pills&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-item&#34;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#fat&#34;</span><span class="p">&gt;</span>@fat<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-item&#34;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#mdo&#34;</span><span class="p">&gt;</span>@mdo<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-item dropdown&#34;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link dropdown-toggle&#34;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&#34;dropdown&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">aria-haspopup</span><span class="o">=</span><span class="s">&#34;true&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>Dropdown<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-menu&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-item&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#one&#34;</span><span class="p">&gt;</span>one<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-item&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#two&#34;</span><span class="p">&gt;</span>two<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;separator&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-divider&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-item&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#three&#34;</span><span class="p">&gt;</span>three<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">data-spy</span><span class="o">=</span><span class="s">&#34;scroll&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#navbar-example2&#34;</span> <span class="na">data-offset</span><span class="o">=</span><span class="s">&#34;0&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h4</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;fat&#34;</span><span class="p">&gt;</span>@fat<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h4</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;mdo&#34;</span><span class="p">&gt;</span>@mdo<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h4</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;one&#34;</span><span class="p">&gt;</span>one<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h4</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;two&#34;</span><span class="p">&gt;</span>two<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h4</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;three&#34;</span><span class="p">&gt;</span>three<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div><h2 id="example-with-nested-nav">Example with nested nav</h2>
+<p>Scrollspy also works with nested <code>.nav</code>s. If a nested <code>.nav</code> is <code>.active</code>, its parents will also be <code>.active</code>. Scroll the area next to the navbar and watch the active class change.</p>
+<div class="bd-example">
+  <div class="row">
+    <div class="col-4">
+      <nav id="navbar-example3" class="navbar navbar-light bg-light flex-column">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <nav class="nav nav-pills flex-column">
+          <a class="nav-link" href="#item-1">Item 1</a>
+          <nav class="nav nav-pills flex-column">
+            <a class="nav-link ml-3 my-1" href="#item-1-1">Item 1-1</a>
+            <a class="nav-link ml-3 my-1" href="#item-1-2">Item 1-2</a>
+          </nav>
+          <a class="nav-link" href="#item-2">Item 2</a>
+          <a class="nav-link" href="#item-3">Item 3</a>
+          <nav class="nav nav-pills flex-column">
+            <a class="nav-link ml-3 my-1" href="#item-3-1">Item 3-1</a>
+            <a class="nav-link ml-3 my-1" href="#item-3-2">Item 3-2</a>
+          </nav>
+        </nav>
+      </nav>
+    </div>
+    <div class="col-8">
+      <div data-spy="scroll" data-target="#navbar-example3" data-offset="0" class="scrollspy-example-2">
+        <h4 id="item-1">Item 1</h4>
+        <p>Placeholder content for the scrollspy example. This one relates to item 1. Takes you miles high, so high, 'cause she’s got that one international smile. There's a stranger in my bed, there's a pounding in my head. Oh, no. In another life I would make you stay. ‘Cause I, I’m capable of anything. Suiting up for my crowning battle. Used to steal your parents' liquor and climb to the roof. Tone, tan fit and ready, turn it up cause its gettin' heavy. Her love is like a drug. I guess that I forgot I had a choice.</p>
+        <h5 id="item-1-1">Item 1-1</h5>
+        <p>Placeholder content for the scrollspy example. This one relates to the item 1-1. You got the finest architecture. Passport stamps, she's cosmopolitan. Fine, fresh, fierce, we got it on lock. Never planned that one day I'd be losing you. She eats your heart out. Your kiss is cosmic, every move is magic. I mean the ones, I mean like she's the one. Greetings loved ones let's take a journey. Just own the night like the 4th of July! But you'd rather get wasted.</p>
+        <h5 id="item-1-2">Item 1-2</h5>
+        <p>Placeholder content for the scrollspy example. This one relates to the item 1-2. Her love is like a drug. All my girls vintage Chanel baby. Got a motel and built a fort out of sheets. 'Cause she's the muse and the artist. (This is how we do) So you wanna play with magic. So just be sure before you give it all to me. I'm walking, I'm walking on air (tonight). Skip the talk, heard it all, time to walk the walk. Catch her if you can. Stinging like a bee I earned my stripes.</p>
+        <h4 id="item-2">Item 2</h4>
+        <p>Placeholder content for the scrollspy example. This one relates to item 2. Don't need apologies. There is no fear now, let go and just be free, I will love you unconditionally. Last Friday night. Don't be a shy kinda guy I'll bet it's beautiful. Summer after high school when we first met. 'Cause she's the muse and the artist. What? Wait. No, no, no, no. Thought that I was the exception.</p>
+        <h4 id="item-3">Item 3</h4>
+        <p>Placeholder content for the scrollspy example. This one relates to item 3. Word on the street, you got somethin' to show me, me. All this money can't buy me a time machine. Make it like your birthday everyday. So we hit the boulevard. You make me feel like I'm livin' a teenage dream, the way you turn me on Skip the talk, heard it all, time to walk the walk. Word on the street, you got somethin' to show me, me. It's no big deal, it's no big deal, it's no big deal.</p>
+        <h5 id="item-3-1">Item 3-1</h5>
+        <p>Placeholder content for the scrollspy example. This one relates to item 3-1. Baby do you dare to do this? This is no big deal. Yeah, you're lucky if you're on her plane. Just own the night like the 4th of July! Standing on the frontline when the bombs start to fall. So just be sure before you give it all to me.</p>
+        <h5 id="item-3-2">Item 3-2</h5>
+        <p>Placeholder content for the scrollspy example. This one relates to item 3-2. You're original, cannot be replaced. All night they're playing, your song. California girls we're undeniable. Like a bird without a cage. There is no fear now, let go and just be free, I will love you unconditionally. I can see the writing on the wall. You could travel the world but nothing comes close to the golden coast.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;navbar-example3&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Navbar<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav nav-pills flex-column&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#item-1&#34;</span><span class="p">&gt;</span>Item 1<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav nav-pills flex-column&#34;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link ml-3 my-1&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#item-1-1&#34;</span><span class="p">&gt;</span>Item 1-1<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link ml-3 my-1&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#item-1-2&#34;</span><span class="p">&gt;</span>Item 1-2<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#item-2&#34;</span><span class="p">&gt;</span>Item 2<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#item-3&#34;</span><span class="p">&gt;</span>Item 3<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav nav-pills flex-column&#34;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link ml-3 my-1&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#item-3-1&#34;</span><span class="p">&gt;</span>Item 3-1<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link ml-3 my-1&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#item-3-2&#34;</span><span class="p">&gt;</span>Item 3-2<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">data-spy</span><span class="o">=</span><span class="s">&#34;scroll&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#navbar-example3&#34;</span> <span class="na">data-offset</span><span class="o">=</span><span class="s">&#34;0&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h4</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;item-1&#34;</span><span class="p">&gt;</span>Item 1<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h5</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;item-1-1&#34;</span><span class="p">&gt;</span>Item 1-1<span class="p">&lt;/</span><span class="nt">h5</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h5</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;item-1-2&#34;</span><span class="p">&gt;</span>Item 1-2<span class="p">&lt;/</span><span class="nt">h5</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h4</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;item-2&#34;</span><span class="p">&gt;</span>Item 2<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h4</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;item-3&#34;</span><span class="p">&gt;</span>Item 3<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h5</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;item-3-1&#34;</span><span class="p">&gt;</span>Item 3-1<span class="p">&lt;/</span><span class="nt">h5</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h5</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;item-3-2&#34;</span><span class="p">&gt;</span>Item 3-2<span class="p">&lt;/</span><span class="nt">h5</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div><h2 id="example-with-list-group">Example with list-group</h2>
+<p>Scrollspy also works with <code>.list-group</code>s. Scroll the area next to the list group and watch the active class change.</p>
+<div class="bd-example">
+  <div class="row">
+    <div class="col-4">
+      <div id="list-example" class="list-group">
+        <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+      </div>
+    </div>
+    <div class="col-8">
+      <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+        <h4 id="list-item-1">Item 1</h4>
+        <p>Placeholder content for the scrollspy list-group example. This one relates to item 1. Don't need apologies. There is no fear now, let go and just be free, I will love you unconditionally. Last Friday night. Don't be a shy kinda guy I'll bet it's beautiful. Summer after high school when we first met. 'Cause she's the muse and the artist. What? Wait. Thought that I was the exception.</p>
+        <h4 id="list-item-2">Item 2</h4>
+        <p>Placeholder content for the scrollspy list-group example. This one relates to item 2. Yeah, she dances to her own beat. Oh, no. You could've been the greatest. 'Cause, baby, you're a firework. Maybe a reason why all the doors are closed. Open up your heart and just let it begin. So très chic, yeah, she's a classic.</p>
+        <h4 id="list-item-3">Item 3</h4>
+        <p>Placeholder content for the scrollspy list-group example. This one relates to item 3. We go higher and higher. Never one without the other, we made a pact. I'm walking on air. Someone said you had your tattoo removed. Now I’m floating like a butterfly. Tone, tan fit and ready, turn it up cause its gettin' heavy. Cause once you’re mine, once you’re mine. You just gotta ignite the light and let it shine! So we hit the boulevard. Do you ever feel, feel so paper thin. I see it all, I see it now.</p>
+        <h4 id="list-item-4">Item 4</h4>
+        <p>Placeholder content for the scrollspy list-group example. This one relates to item 4. Summer after high school when we first met. There is no fear now, let go and just be free, I will love you unconditionally. Sun-kissed skin so hot we'll melt your popsicle. This love will make you levitate.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;list-example&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;list-group&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;list-group-item list-group-item-action&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#list-item-1&#34;</span><span class="p">&gt;</span>Item 1<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;list-group-item list-group-item-action&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#list-item-2&#34;</span><span class="p">&gt;</span>Item 2<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;list-group-item list-group-item-action&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#list-item-3&#34;</span><span class="p">&gt;</span>Item 3<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;list-group-item list-group-item-action&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#list-item-4&#34;</span><span class="p">&gt;</span>Item 4<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">data-spy</span><span class="o">=</span><span class="s">&#34;scroll&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#list-example&#34;</span> <span class="na">data-offset</span><span class="o">=</span><span class="s">&#34;0&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;scrollspy-example&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h4</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;list-item-1&#34;</span><span class="p">&gt;</span>Item 1<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h4</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;list-item-2&#34;</span><span class="p">&gt;</span>Item 2<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h4</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;list-item-3&#34;</span><span class="p">&gt;</span>Item 3<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h4</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;list-item-4&#34;</span><span class="p">&gt;</span>Item 4<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div><h2 id="usage">Usage</h2>
+<h3 id="via-data-attributes">Via data attributes</h3>
+<p>To easily add scrollspy behavior to your topbar navigation, add <code>data-spy=&quot;scroll&quot;</code> to the element you want to spy on (most typically this would be the <code>&lt;body&gt;</code>). Then add the <code>data-target</code> attribute with the ID or class of the parent element of any Bootstrap <code>.nav</code> component.</p>
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">body</span> <span class="p">{</span>
+  <span class="k">position</span><span class="p">:</span> <span class="kc">relative</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">body</span> <span class="na">data-spy</span><span class="o">=</span><span class="s">&#34;scroll&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#navbar-example&#34;</span><span class="p">&gt;</span>
+  ...
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;navbar-example&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav nav-tabs&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;tablist&#34;</span><span class="p">&gt;</span>
+      ...
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  ...
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</code></pre></div><h3 id="via-javascript">Via JavaScript</h3>
+<p>After adding <code>position: relative;</code> in your CSS, call the scrollspy via JavaScript:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">scrollspy</span><span class="p">({</span> <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;#navbar-example&#39;</span> <span class="p">})</span>
+</code></pre></div><div class="bd-callout bd-callout-danger">
+<h4 id="resolvable-id-targets-required">Resolvable ID targets required</h4>
+<p>Navbar links must have resolvable id targets. For example, a <code>&lt;a href=&quot;#home&quot;&gt;home&lt;/a&gt;</code> must correspond to something in the DOM like <code>&lt;div id=&quot;home&quot;&gt;&lt;/div&gt;</code>.
+</div>
+
+<div class="bd-callout bd-callout-info">
+<h4 id="non-visible-target-elements-ignored">Non-<code>:visible</code> target elements ignored</h4>
+<p>Target elements that are not <a href="https://api.jquery.com/visible-selector/"><code>:visible</code> according to jQuery</a> will be ignored and their corresponding nav items will never be highlighted.
+</div>
+
+<h3 id="methods">Methods</h3>
+<h4 id="scrollspyrefresh"><code>.scrollspy('refresh')</code></h4>
+<p>When using scrollspy in conjunction with adding or removing of elements from the DOM, you&rsquo;ll need to call the refresh method like so:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;[data-spy=&#34;scroll&#34;]&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">$spy</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">scrollspy</span><span class="p">(</span><span class="s1">&#39;refresh&#39;</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div><h4 id="scrollspydispose"><code>.scrollspy('dispose')</code></h4>
+<p>Destroys an element&rsquo;s scrollspy.</p>
+<h3 id="options">Options</h3>
+<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset=&quot;&quot;</code>.</p>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th style="width: 100px;">Name</th>
+      <th style="width: 100px;">Type</th>
+      <th style="width: 50px;">Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>offset</td>
+      <td>number</td>
+      <td>10</td>
+      <td>Pixels to offset from top when calculating position of scroll.</td>
+    </tr>
+    <tr>
+      <td>method</td>
+      <td>string</td>
+      <td>auto</td>
+      <td>Finds which section the spied element is in. <code>auto</code> will choose the best method to get scroll coordinates. <code>offset</code> will use jQuery offset method to get scroll coordinates. <code>position</code> will use jQuery position method to get scroll coordinates.</td>
+    </tr>
+    <tr>
+      <td>target</td>
+      <td>string | jQuery object | DOM element</td>
+      <td></td>
+      <td>Specifies element to apply Scrollspy plugin.</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="events">Events</h3>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th style="width: 150px;">Event Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>activate.bs.scrollspy</td>
+      <td>This event fires on the scroll element whenever a new item becomes activated by the scrollspy.</td>
+    </tr>
+  </tbody>
+</table>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;[data-spy=&#34;scroll&#34;]&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;activate.bs.scrollspy&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// do something...
+</span><span class="c1"></span><span class="p">})</span>
+</code></pre></div>
+        </main>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.6/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+
+<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+
+<script src="/docs/4.6/assets/js/docs.min.js"></script>
+
+  </body>
+</html>
