@@ -7,9 +7,8 @@ on:
   pull_request:
 
 env:
-  CI: true
   FORCE_COLOR: 2
-  NODE: 14.x
+  NODE: 14
 
 jobs:
   docs:
@@ -32,8 +31,8 @@ jobs:
           path: ~/.npm
           key: ${{ runner.os }}-node-v${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
           restore-keys: |
-            ${{ runner.OS }}-node-v${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
-            ${{ runner.OS }}-node-v${{ env.NODE }}-
+            ${{ runner.os }}-node-v${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
+            ${{ runner.os }}-node-v${{ env.NODE }}-
 
       - name: Install npm dependencies
         run: npm ci
