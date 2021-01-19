@@ -12,36 +12,67 @@
 const path = require('path')
 const sh = require('shelljs')
 
-const { version, version_short: versionShort } = require('../package.json')
+const pkg = require('../package.json')
 
-const folderName = `bootstrap-${version}-examples`
+const versionShort = pkg.config.version_short
+const distFolder = `bootstrap-${pkg.version}-examples`
+const rootDocsDir = '_gh_pages'
+const docsDir = `${rootDocsDir}/docs/${versionShort}/`
+
+// these are the files we need in the examples
+const cssFiles = [
+  'bootstrap.min.css',
+  'bootstrap.min.css.map',
+  'bootstrap.rtl.min.css',
+  'bootstrap.rtl.min.css.map'
+]
+const jsFiles = [
+  'bootstrap.bundle.min.js',
+  'bootstrap.bundle.min.js.map'
+]
+const imgFiles = [
+  'bootstrap-logo.svg',
+  'bootstrap-logo-white.svg'
+]
 
 sh.config.fatal = true
 
-if (!sh.test('-d', '_gh_pages')) {
-  throw new Error('The "_gh_pages" folder does not exist, did you forget building the docs?')
+if (!sh.test('-d', rootDocsDir)) {
+  throw new Error(`The "${rootDocsDir}" folder does not exist, did you forget building the docs?`)
 }
 
 // switch to the root dir
 sh.cd(path.join(__dirname, '..'))
 
-// remove any previously created folder with the same name
-sh.rm('-rf', folderName)
-// create any folders so that `cp` works
-sh.mkdir('-p', folderName)
-sh.mkdir('-p', `${folderName}/assets/brand/`)
+// remove any previously created folder/zip with the same name
+sh.rm('-rf', [distFolder, `${distFolder}.zip`])
 
-sh.cp('-Rf', `_gh_pages/docs/${versionShort}/examples/*`, folderName)
-sh.cp('-Rf', `_gh_pages/docs/${versionShort}/dist/`, `${folderName}/assets/`)
-// also copy the two brand images we use in the examples
-sh.cp('-f', [
-  `_gh_pages/docs/${versionShort}/assets/brand/bootstrap-logo.svg`,
-  `_gh_pages/docs/${versionShort}/assets/brand/bootstrap-logo-white.svg`
-], `${folderName}/assets/brand/`)
-sh.rm(`${folderName}/index.html`)
+// create any folders so that `cp` works
+sh.mkdir('-p', [
+  distFolder,
+  `${distFolder}/assets/brand/`,
+  `${distFolder}/assets/dist/css/`,
+  `${distFolder}/assets/dist/js/`
+])
+
+sh.cp('-Rf', `${docsDir}/examples/*`, distFolder)
+
+cssFiles.forEach(file => {
+  sh.cp('-f', `${docsDir}/dist/css/${file}`, `${distFolder}/assets/dist/css/`)
+})
+
+jsFiles.forEach(file => {
+  sh.cp('-f', `${docsDir}/dist/js/${file}`, `${distFolder}/assets/dist/js/`)
+})
+
+imgFiles.forEach(file => {
+  sh.cp('-f', `${docsDir}/assets/brand/${file}`, `${distFolder}/assets/brand/`)
+})
+
+sh.rm(`${distFolder}/index.html`)
 
 // get all examples' HTML files
-sh.find(`${folderName}/**/*.html`).forEach(file => {
+sh.find(`${distFolder}/**/*.html`).forEach(file => {
   const fileContents = sh.cat(file)
     .toString()
     .replace(new RegExp(`"/docs/${versionShort}/`, 'g'), '"../')
@@ -53,7 +84,7 @@ sh.find(`${folderName}/**/*.html`).forEach(file => {
 })
 
 // create the zip file
-sh.exec(`zip -r9 "${folderName}.zip" "${folderName}"`, { fatal: true })
+sh.exec(`zip -r9 "${distFolder}.zip" "${distFolder}"`)
 
 // remove the folder we created
-sh.rm('-rf', folderName)
+sh.rm('-rf', distFolder)
