@@ -5,7 +5,7 @@ description: Provide contextual feedback messages for typical user actions with 
 group: components
 aliases:
   - "/components/"
-  - "/docs/4.5/components/"
+  - "/docs/4.6/components/"
 toc: true
 ---
 

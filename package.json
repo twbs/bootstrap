@@ -1,9 +1,9 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "4.5.3",
+  "version": "4.6.0",
   "config": {
-    "version_short": "4.5"
+    "version_short": "4.6"
   },
   "keywords": [
     "css",
