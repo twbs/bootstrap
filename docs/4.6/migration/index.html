@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Bootstrap 4 is a major rewrite of the entire project. The most notable changes are summarized below, followed by more specific changes to relevant components.">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="generator" content="Hugo 0.80.0">
+
+<meta name="docsearch:language" content="en">
+<meta name="docsearch:version" content="4.6">
+
+<title>Migrating to v4 · Bootstrap v4.6</title>
+
+<link rel="canonical" href="https://getbootstrap.com/docs/4.6/migration/">
+
+
+
+<!-- Bootstrap core CSS -->
+<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+<!-- Documentation extras -->
+<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+
+<link href="/docs/4.6/assets/css/docs.css" rel="stylesheet">
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/4.6/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/4.6/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/4.6/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/4.6/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/4.6/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+<link rel="icon" href="/docs/4.6/assets/img/favicons/favicon.ico">
+<meta name="msapplication-config" content="/docs/4.6/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#563d7c">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@getbootstrap">
+<meta name="twitter:creator" content="@getbootstrap">
+<meta name="twitter:title" content="Migrating to v4">
+<meta name="twitter:description" content="Bootstrap 4 is a major rewrite of the entire project. The most notable changes are summarized below, followed by more specific changes to relevant components.">
+<meta name="twitter:image" content="https://getbootstrap.com/docs/4.6/assets/brand/bootstrap-social-logo.png">
+
+<!-- Facebook -->
+<meta property="og:url" content="https://getbootstrap.com/docs/4.6/migration/">
+<meta property="og:title" content="Migrating to v4">
+<meta property="og:description" content="Bootstrap 4 is a major rewrite of the entire project. The most notable changes are summarized below, followed by more specific changes to relevant components.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://getbootstrap.com/docs/4.6/assets/brand/bootstrap-social.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-146052-10', 'getbootstrap.com');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
+  </head>
+  <body>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a>
+    <a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a>
+  </div>
+</div>
+
+
+    <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+  <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="Bootstrap">
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" class="d-block" viewBox="0 0 612 612" role="img" focusable="false"><title>Bootstrap</title><path fill="currentColor" d="M510 8a94.3 94.3 0 0 1 94 94v408a94.3 94.3 0 0 1-94 94H102a94.3 94.3 0 0 1-94-94V102a94.3 94.3 0 0 1 94-94h408m0-8H102C45.9 0 0 45.9 0 102v408c0 56.1 45.9 102 102 102h408c56.1 0 102-45.9 102-102V102C612 45.9 566.1 0 510 0z"/><path fill="currentColor" d="M196.77 471.5V154.43h124.15c54.27 0 91 31.64 91 79.1 0 33-24.17 63.72-54.71 69.21v1.76c43.07 5.49 70.75 35.82 70.75 78 0 55.81-40 89-107.45 89zm39.55-180.4h63.28c46.8 0 72.29-18.68 72.29-53 0-31.42-21.53-48.78-60-48.78h-75.57zm78.22 145.46c47.68 0 72.73-19.34 72.73-56s-25.93-55.37-76.46-55.37h-74.49v111.4z"/></svg>
+  </a>
+
+  <div class="navbar-nav-scroll">
+    <ul class="navbar-nav bd-navbar-nav flex-row">
+      <li class="nav-item">
+        <a class="nav-link" href="/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/docs/4.6/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/docs/4.6/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://icons.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');" target="_blank" rel="noopener">Icons</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://themes.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');" target="_blank" rel="noopener">Themes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://expo.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');" target="_blank" rel="noopener">Expo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://blog.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');" target="_blank" rel="noopener">Blog</a>
+      </li>
+    </ul>
+  </div>
+
+  <ul class="navbar-nav ml-md-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        v4.6
+      </a>
+      <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
+        <a class="dropdown-item active" href="/docs/4.6/">Latest (4.6.x)</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.0/">5.0.x</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/3.4/">v3.4.1</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/docs/versions/">All versions</a>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link pl-2 pr-1 mx-1 py-3 my-n2" href="https://github.com/twbs" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg" viewBox="0 0 512 499.36" role="img" focusable="false"><title>GitHub</title><path fill="currentColor" fill-rule="evenodd" d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z"/></svg>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link px-1 mx-1 py-3 my-n2" href="https://twitter.com/getbootstrap" target="_blank" rel="noopener" aria-label="Twitter">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg" viewBox="0 0 512 416.32" role="img" focusable="false"><title>Twitter</title><path fill="currentColor" d="M160.83 416.32c193.2 0 298.92-160.22 298.92-298.92 0-4.51 0-9-.2-13.52A214 214 0 0 0 512 49.38a212.93 212.93 0 0 1-60.44 16.6 105.7 105.7 0 0 0 46.3-58.19 209 209 0 0 1-66.79 25.37 105.09 105.09 0 0 0-181.73 71.91 116.12 116.12 0 0 0 2.66 24c-87.28-4.3-164.73-46.3-216.56-109.82A105.48 105.48 0 0 0 68 159.6a106.27 106.27 0 0 1-47.53-13.11v1.43a105.28 105.28 0 0 0 84.21 103.06 105.67 105.67 0 0 1-47.33 1.84 105.06 105.06 0 0 0 98.14 72.94A210.72 210.72 0 0 1 25 370.84a202.17 202.17 0 0 1-25-1.43 298.85 298.85 0 0 0 160.83 46.92"/></svg>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link px-1 mx-1 py-3 my-n2" href="https://bootstrap-slack.herokuapp.com/" target="_blank" rel="noopener" aria-label="Slack">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg" viewBox="0 0 512 512" role="img" focusable="false"><title>Slack</title><path fill="currentColor" d="M210.787 234.832l68.31-22.883 22.1 65.977-68.309 22.882z"/><path fill="currentColor" d="M490.54 185.6C437.7 9.59 361.6-31.34 185.6 21.46S-31.3 150.4 21.46 326.4 150.4 543.3 326.4 490.54 543.34 361.6 490.54 185.6zM401.7 299.8l-33.15 11.05 11.46 34.38c4.5 13.92-2.87 29.06-16.78 33.56-2.87.82-6.14 1.64-9 1.23a27.32 27.32 0 0 1-24.56-18l-11.46-34.38-68.36 22.92 11.46 34.38c4.5 13.92-2.87 29.06-16.78 33.56-2.87.82-6.14 1.64-9 1.23a27.32 27.32 0 0 1-24.56-18l-11.46-34.43-33.15 11.05c-2.87.82-6.14 1.64-9 1.23a27.32 27.32 0 0 1-24.56-18c-4.5-13.92 2.87-29.06 16.78-33.56l33.12-11.03-22.1-65.9-33.15 11.05c-2.87.82-6.14 1.64-9 1.23a27.32 27.32 0 0 1-24.56-18c-4.48-13.93 2.89-29.07 16.81-33.58l33.15-11.05-11.46-34.38c-4.5-13.92 2.87-29.06 16.78-33.56s29.06 2.87 33.56 16.78l11.46 34.38 68.36-22.92-11.46-34.38c-4.5-13.92 2.87-29.06 16.78-33.56s29.06 2.87 33.56 16.78l11.47 34.42 33.15-11.05c13.92-4.5 29.06 2.87 33.56 16.78s-2.87 29.06-16.78 33.56L329.7 194.6l22.1 65.9 33.15-11.05c13.92-4.5 29.06 2.87 33.56 16.78s-2.88 29.07-16.81 33.57z"/></svg>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link px-1 mx-1 py-3 my-n2" href="https://opencollective.com/bootstrap/" target="_blank" rel="noopener" aria-label="Open Collective">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" fill-rule="evenodd" class="navbar-nav-svg" viewBox="0 0 40 41" role="img" focusable="false"><title>Open Collective</title><path fill-opacity=".4" d="M32.8 21c0 2.4-.8 4.9-2 6.9l5.1 5.1c2.5-3.4 4.1-7.6 4.1-12 0-4.6-1.6-8.8-4-12.2L30.7 14c1.2 2 2 4.3 2 7z"/><path d="M20 33.7a12.8 12.8 0 0 1 0-25.6c2.6 0 5 .7 7 2.1L32 5a20 20 0 1 0 .1 31.9l-5-5.2a13 13 0 0 1-7 2z"/></svg>
+      </a>
+    </li>
+  </ul>
+
+  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/docs/4.6/getting-started/download/">Download</a>
+</header>
+
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+        <div class="col-md-3 col-xl-2 bd-sidebar">
+          <form role="search" class="bd-search d-flex align-items-center">
+  <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off" data-docs-version="4.6">
+  <button class="btn bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/></svg>
+  </button>
+</form>
+
+<div class="collapse d-md-block row" id="bd-docs-nav">
+  <nav class="bd-links" aria-label="Main navigation">
+
+      <div class="bd-toc-item">
+        <a class="bd-toc-link" href="/docs/4.6/getting-started/introduction/">
+          Getting started
+        </a>
+      </div>
+
+      <div class="bd-toc-item">
+        <a class="bd-toc-link" href="/docs/4.6/layout/overview/">
+          Layout
+        </a>
+      </div>
+
+      <div class="bd-toc-item">
+        <a class="bd-toc-link" href="/docs/4.6/content/reboot/">
+          Content
+        </a>
+      </div>
+
+      <div class="bd-toc-item">
+        <a class="bd-toc-link" href="/docs/4.6/components/alerts/">
+          Components
+        </a>
+      </div>
+
+      <div class="bd-toc-item">
+        <a class="bd-toc-link" href="/docs/4.6/utilities/borders/">
+          Utilities
+        </a>
+      </div>
+
+      <div class="bd-toc-item">
+        <a class="bd-toc-link" href="/docs/4.6/extend/approach/">
+          Extend
+        </a>
+      </div>
+
+      <div class="bd-toc-item active">
+        <a class="bd-toc-link" href="/docs/4.6/migration/">
+          Migration
+        </a>
+      </div>
+
+      <div class="bd-toc-item">
+        <a class="bd-toc-link" href="/docs/4.6/about/overview/">
+          About
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+
+        
+          <nav class="d-none d-xl-block col-xl-2 bd-toc" aria-label="Secondary navigation">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#stable-changes">Stable changes</a>
+      <ul>
+        <li><a href="#printing">Printing</a></li>
+      </ul>
+    </li>
+    <li><a href="#beta-3-changes">Beta 3 changes</a>
+      <ul>
+        <li><a href="#miscellaneous">Miscellaneous</a></li>
+        <li><a href="#forms">Forms</a></li>
+        <li><a href="#input-groups">Input groups</a></li>
+      </ul>
+    </li>
+    <li><a href="#beta-2-changes">Beta 2 changes</a>
+      <ul>
+        <li><a href="#breaking">Breaking</a></li>
+        <li><a href="#highlights">Highlights</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a>
+      <ul>
+        <li><a href="#browser-support">Browser support</a></li>
+        <li><a href="#global-changes">Global changes</a></li>
+        <li><a href="#grid-system">Grid system</a></li>
+        <li><a href="#components">Components</a></li>
+      </ul>
+    </li>
+    <li><a href="#by-component">By component</a>
+      <ul>
+        <li><a href="#reboot">Reboot</a></li>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#images">Images</a></li>
+        <li><a href="#tables">Tables</a></li>
+        <li><a href="#forms-1">Forms</a></li>
+        <li><a href="#buttons">Buttons</a></li>
+        <li><a href="#button-group">Button group</a></li>
+        <li><a href="#dropdowns">Dropdowns</a></li>
+        <li><a href="#grid-system-1">Grid system</a></li>
+        <li><a href="#list-groups">List groups</a></li>
+        <li><a href="#modal">Modal</a></li>
+        <li><a href="#navs">Navs</a></li>
+        <li><a href="#navbar">Navbar</a></li>
+        <li><a href="#pagination">Pagination</a></li>
+        <li><a href="#breadcrumbs">Breadcrumbs</a></li>
+        <li><a href="#labels-and-badges">Labels and badges</a></li>
+        <li><a href="#panels-thumbnails-and-wells">Panels, thumbnails, and wells</a></li>
+        <li><a href="#panels">Panels</a></li>
+        <li><a href="#progress">Progress</a></li>
+        <li><a href="#carousel">Carousel</a></li>
+        <li><a href="#tables-1">Tables</a></li>
+        <li><a href="#utilities">Utilities</a></li>
+        <li><a href="#vendor-prefix-mixins">Vendor prefix mixins</a></li>
+      </ul>
+    </li>
+    <li><a href="#documentation">Documentation</a>
+      <ul>
+        <li><a href="#responsive-utilities">Responsive utilities</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+          </nav>
+        
+
+        <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/blob/v4-dev/site/content/docs/4.6/migration.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Migrating to v4</h1>
+          </div>
+          <p class="bd-lead">Bootstrap 4 is a major rewrite of the entire project. The most notable changes are summarized below, followed by more specific changes to relevant components.</p>
+          <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
+
+          <h2 id="stable-changes">Stable changes</h2>
+<p>Moving from Beta 3 to our stable v4.x release, there are no breaking changes, but there are some notable changes.</p>
+<h3 id="printing">Printing</h3>
+<ul>
+<li>
+<p>Fixed broken print utilities. Previously, using a <code>.d-print-*</code> class would unexpectedly overrule any other <code>.d-*</code> class. Now, they match our other display utilities and only apply to that media (<code>@media print</code>).</p>
+</li>
+<li>
+<p>Expanded available print display utilities to match other utilities. Beta 3 and older only had <code>block</code>, <code>inline-block</code>, <code>inline</code>, and <code>none</code>. Stable v4 added <code>flex</code>, <code>inline-flex</code>, <code>table</code>, <code>table-row</code>, and <code>table-cell</code>.</p>
+</li>
+<li>
+<p>Fixed print preview rendering across browsers with new print styles that specify <code>@page</code> <code>size</code>.</p>
+</li>
+</ul>
+<h2 id="beta-3-changes">Beta 3 changes</h2>
+<p>While Beta 2 saw the bulk of our breaking changes during the beta phase, but we still have a few that needed to be addressed in the Beta 3 release. These changes apply if you&rsquo;re updating to Beta 3 from Beta 2 or any older version of Bootstrap.</p>
+<h3 id="miscellaneous">Miscellaneous</h3>
+<ul>
+<li>Removed the unused <code>$thumbnail-transition</code> variable. We weren&rsquo;t transitioning anything, so it was just extra code.</li>
+<li>The npm package no longer includes any files other than our source and dist files; if you relied on them and were running our scripts via the <code>node_modules</code> folder, you should adapt your workflow.</li>
+</ul>
+<h3 id="forms">Forms</h3>
+<ul>
+<li>
+<p>Rewrote both custom and default checkboxes and radios. Now, both have matching HTML structure (outer <code>&lt;div&gt;</code> with sibling <code>&lt;input&gt;</code> and <code>&lt;label&gt;</code>) and the same layout styles (stacked default, inline with modifier class). This allows us to style the label based on the input&rsquo;s state, simplifying support for the <code>disabled</code> attribute (previously requiring a parent class) and better supporting our form validation.</p>
+<p>As part of this, we&rsquo;ve changed the CSS for managing multiple <code>background-image</code>s on custom form checkboxes and radios. Previously, the now removed <code>.custom-control-indicator</code> element had the background color, gradient, and SVG icon. Customizing the background gradient meant replacing all of those every time you needed to change just one. Now, we have <code>.custom-control-label::before</code> for the fill and gradient and <code>.custom-control-label::after</code> handles the icon.</p>
+<p>To make a custom check inline, add <code>.custom-control-inline</code>.</p>
+</li>
+<li>
+<p>Updated selector for input-based button groups. Instead of <code>[data-toggle=&quot;buttons&quot;] { }</code> for style and behavior, we use the <code>data</code> attribute just for JS behaviors and rely on a new <code>.btn-group-toggle</code> class for styling.</p>
+</li>
+<li>
+<p>Removed <code>.col-form-legend</code> in favor of a slightly improved <code>.col-form-label</code>. This way <code>.col-form-label-sm</code> and <code>.col-form-label-lg</code> can be used on <code>&lt;legend&gt;</code> elements with ease.</p>
+</li>
+<li>
+<p>Custom file inputs received a change to their <code>$custom-file-text</code> Sass variable. It&rsquo;s no longer a nested Sass map and now only powers one string—the <code>Browse</code> button as that is now the only pseudo-element generated from our Sass. The <code>Choose file</code> text now comes from the <code>.custom-file-label</code>.</p>
+</li>
+</ul>
+<h3 id="input-groups">Input groups</h3>
+<ul>
+<li>
+<p>Input group addons are now specific to their placement relative to an input. We&rsquo;ve dropped <code>.input-group-addon</code> and <code>.input-group-btn</code> for two new classes, <code>.input-group-prepend</code> and <code>.input-group-append</code>. You must explicitly use an append or a prepend now, simplifying much of our CSS. Within an append or prepend, place your buttons as they would exist anywhere else, but wrap text in <code>.input-group-text</code>.</p>
+</li>
+<li>
+<p>Validation styles are now supported, as are multiple inputs (though you can only validate one input per group).</p>
+</li>
+<li>
+<p>Sizing classes must be on the parent <code>.input-group</code> and not the individual form elements.</p>
+</li>
+</ul>
+<h2 id="beta-2-changes">Beta 2 changes</h2>
+<p>While in beta, we aim to have no breaking changes. However, things don&rsquo;t always go as planned. Below are the breaking changes to bear in mind when moving from Beta 1 to Beta 2.</p>
+<h3 id="breaking">Breaking</h3>
+<ul>
+<li>Removed <code>$badge-color</code> variable and its usage on <code>.badge</code>. We use a color contrast function to pick a <code>color</code> based on the <code>background-color</code>, so the variable is unnecessary.</li>
+<li>Renamed <code>grayscale()</code> function to <code>gray()</code> to avoid breaking conflict with the CSS native <code>grayscale</code> filter.</li>
+<li>Renamed <code>.table-inverse</code>, <code>.thead-inverse</code>, and <code>.thead-default</code> to <code>.*-dark</code> and <code>.*-light</code>, matching our color schemes used elsewhere.</li>
+<li>Responsive tables now generate classes for each grid breakpoint. This breaks from Beta 1 in that the <code>.table-responsive</code> you&rsquo;ve been using is more like <code>.table-responsive-md</code>. You may now use <code>.table-responsive</code> or <code>.table-responsive-{sm,md,lg,xl}</code> as needed.</li>
+<li>Dropped Bower support as the package manager has been deprecated for alternatives (e.g., Yarn or npm). <a href="https://github.com/bower/bower/issues/2298">See bower/bower#2298</a> for details.</li>
+<li>Bootstrap still requires jQuery 1.9.1 or higher, but you&rsquo;re advised to use version 3.x since v3.x&rsquo;s supported browsers are the ones Bootstrap supports plus v3.x has some security fixes.</li>
+<li>Removed the unused <code>.form-control-label</code> class. If you did make use of this class, it was duplicate of the <code>.col-form-label</code> class that vertically centered a <code>&lt;label&gt;</code> with it&rsquo;s associated input in horizontal form layouts.</li>
+<li>Changed the <code>color-yiq</code> from a mixin that included the <code>color</code> property to a function that returns a value, allowing you to use it for any CSS property. For example, instead of <code>color-yiq(#000)</code>, you&rsquo;d write <code>color: color-yiq(#000);</code>.</li>
+</ul>
+<h3 id="highlights">Highlights</h3>
+<ul>
+<li>Introduced new <code>pointer-events</code> usage on modals. The outer <code>.modal-dialog</code> passes through events with <code>pointer-events: none</code> for custom click handling (making it possible to just listen on the <code>.modal-backdrop</code> for any clicks), and then counteracts it for the actual <code>.modal-content</code> with <code>pointer-events: auto</code>.</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>Here are the big ticket items you&rsquo;ll want to be aware of when moving from v3 to v4.</p>
+<h3 id="browser-support">Browser support</h3>
+<ul>
+<li>Dropped IE8, IE9, and iOS 6 support. v4 is now only IE10+ and iOS 7+. For sites needing either of those, use v3.</li>
+<li>Added official support for Android v5.0 Lollipop&rsquo;s Browser and WebView. Earlier versions of the Android Browser and WebView remain only unofficially supported.</li>
+</ul>
+<h3 id="global-changes">Global changes</h3>
+<ul>
+<li><strong>Flexbox is enabled by default.</strong> In general this means a move away from floats and more across our components.</li>
+<li>Switched from <a href="http://lesscss.org/">Less</a> to <a href="https://sass-lang.com/">Sass</a> for our source CSS files.</li>
+<li>Switched from <code>px</code> to <code>rem</code> as our primary CSS unit, though pixels are still used for media queries and grid behavior as device viewports are not affected by type size.</li>
+<li>Global font-size increased from <code>14px</code> to <code>16px</code>.</li>
+<li>Revamped grid tiers to add a fifth option (addressing smaller devices at <code>576px</code> and below) and removed the <code>-xs</code> infix from those classes. Example: <code>.col-6.col-sm-4.col-md-3</code>.</li>
+<li>Replaced the separate optional theme with configurable options via SCSS variables (e.g., <code>$enable-gradients: true</code>).</li>
+<li>Build system overhauled to use a series of npm scripts instead of Grunt. See <code>package.json</code> for all scripts, or our project readme for local development needs.</li>
+<li>Non-responsive usage of Bootstrap is no longer supported.</li>
+<li>Dropped the online Customizer in favor of more extensive setup documentation and customized builds.</li>
+<li>Added dozens of new <a href="/docs/4.6/utilities/">utility classes</a> for common CSS property-value pairs and margin/padding spacing shortcuts.</li>
+</ul>
+<h3 id="grid-system">Grid system</h3>
+<ul>
+<li><strong>Moved to flexbox.</strong>
+<ul>
+<li>Added support for flexbox in the grid mixins and predefined classes.</li>
+<li>As part of flexbox, included support for vertical and horizontal alignment classes.</li>
+</ul>
+</li>
+<li><strong>Updated grid class names and a new grid tier.</strong>
+<ul>
+<li>Added a new <code>sm</code> grid tier below <code>768px</code> for more granular control. We now have <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>. This also means every tier has been bumped up one level (so <code>.col-md-6</code> in v3 is now <code>.col-lg-6</code> in v4).</li>
+<li><code>xs</code> grid classes have been modified to not require the infix to more accurately represent that they start applying styles at <code>min-width: 0</code> and not a set pixel value. Instead of <code>.col-xs-6</code>, it&rsquo;s now <code>.col-6</code>. All other grid tiers require the infix (e.g., <code>sm</code>).</li>
+</ul>
+</li>
+<li><strong>Updated grid sizes, mixins, and variables.</strong>
+<ul>
+<li>Grid gutters now have a Sass map so you can specify specific gutter widths at each breakpoint.</li>
+<li>Updated grid mixins to utilize a <code>make-col-ready</code> prep mixin and a <code>make-col</code> to set the <code>flex</code> and <code>max-width</code> for individual column sizing.</li>
+<li>Changed grid system media query breakpoints and container widths to account for new grid tier and ensure columns are evenly divisible by <code>12</code> at their max width.</li>
+<li>Grid breakpoints and container widths are now handled via Sass maps (<code>$grid-breakpoints</code> and <code>$container-max-widths</code>) instead of a handful of separate variables. These replace the <code>@screen-*</code> variables entirely and allow you to fully customize the grid tiers.</li>
+<li>Media queries have also changed. Instead of repeating our media query declarations with the same value each time, we now have <code>@include media-breakpoint-up/down/only</code>. Now, instead of writing <code>@media (min-width: @screen-sm-min) { ... }</code>, you can write <code>@include media-breakpoint-up(sm) { ... }</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="components">Components</h3>
+<ul>
+<li><strong>Dropped panels, thumbnails, and wells</strong> for a new all-encompassing component, <a href="/docs/4.6/components/card/">cards</a>.</li>
+<li><strong>Dropped the Glyphicons icon font.</strong> If you need icons, some options are:
+<ul>
+<li>the upstream version of <a href="https://www.glyphicons.com/">Glyphicons</a></li>
+<li><a href="https://octicons.github.com/">Octicons</a></li>
+<li><a href="https://fontawesome.com/">Font Awesome</a></li>
+<li>See the <a href="/docs/4.6/extend/icons/">Extend page</a> for a list of alternatives. Have additional suggestions? Please open an issue or PR.</li>
+</ul>
+</li>
+<li><strong>Dropped the Affix jQuery plugin.</strong>
+<ul>
+<li>We recommend using <code>position: sticky</code> instead. <a href="https://html5please.com/#sticky">See the HTML5 Please entry</a> for details and specific polyfill recommendations. One suggestion is to use an <code>@supports</code> rule for implementing it (e.g., <code>@supports (position: sticky) { ... }</code>)</li>
+<li>If you were using Affix to apply additional, non-<code>position</code> styles, the polyfills might not support your use case. One option for such uses is the third-party <a href="https://github.com/acch/scrollpos-styler">ScrollPos-Styler</a> library.</li>
+</ul>
+</li>
+<li><strong>Dropped the pager component</strong> as it was essentially slightly customized buttons.</li>
+<li><strong>Refactored nearly all components</strong> to use more un-nested class selectors instead of over-specific children selectors.</li>
+</ul>
+<h2 id="by-component">By component</h2>
+<p>This list highlights key changes by component between v3.x.x and v4.0.0.</p>
+<h3 id="reboot">Reboot</h3>
+<p>New to Bootstrap 4 is the <a href="/docs/4.6/content/reboot/">Reboot</a>, a new stylesheet that builds on Normalize with our own somewhat opinionated reset styles. Selectors appearing in this file only use elements—there are no classes here. This isolates our reset styles from our component styles for a more modular approach. Some of the most important resets this includes are the <code>box-sizing: border-box</code> change, moving from <code>em</code> to <code>rem</code> units on many elements, link styles, and many form element resets.</p>
+<h3 id="typography">Typography</h3>
+<ul>
+<li>Moved all <code>.text-</code> utilities to the <code>_utilities.scss</code> file.</li>
+<li>Dropped <code>.page-header</code> as its styles can be applied via utilities.</li>
+<li><code>.dl-horizontal</code> has been dropped. Instead, use <code>.row</code> on <code>&lt;dl&gt;</code> and use grid column classes (or mixins) on its <code>&lt;dt&gt;</code> and <code>&lt;dd&gt;</code> children.</li>
+<li>Redesigned blockquotes, moving their styles from the <code>&lt;blockquote&gt;</code> element to a single class, <code>.blockquote</code>. Dropped the <code>.blockquote-reverse</code> modifier for text utilities.</li>
+<li><code>.list-inline</code> now requires that its children list items have the new <code>.list-inline-item</code> class applied to them.</li>
+</ul>
+<h3 id="images">Images</h3>
+<ul>
+<li>Renamed <code>.img-responsive</code> to <code>.img-fluid</code>.</li>
+<li>Renamed <code>.img-rounded</code> to <code>.rounded</code></li>
+<li>Renamed <code>.img-circle</code> to <code>.rounded-circle</code></li>
+</ul>
+<h3 id="tables">Tables</h3>
+<ul>
+<li>Nearly all instances of the <code>&gt;</code> selector have been removed, meaning nested tables will now automatically inherit styles from their parents. This greatly simplifies our selectors and potential customizations.</li>
+<li>Renamed <code>.table-condensed</code> to <code>.table-sm</code> for consistency.</li>
+<li>Added a new <code>.table-inverse</code> option.</li>
+<li>Added table header modifiers: <code>.thead-default</code> and <code>.thead-inverse</code>.</li>
+<li>Renamed contextual classes to have a <code>.table-</code>-prefix. Hence <code>.active</code>, <code>.success</code>, <code>.warning</code>, <code>.danger</code> and <code>.info</code> to <code>.table-active</code>, <code>.table-success</code>, <code>.table-warning</code>, <code>.table-danger</code> and <code>.table-info</code>.</li>
+</ul>
+<h3 id="forms-1">Forms</h3>
+<ul>
+<li>Moved element resets to the <code>_reboot.scss</code> file.</li>
+<li>Renamed <code>.control-label</code> to <code>.col-form-label</code>.</li>
+<li>Renamed <code>.input-lg</code> and <code>.input-sm</code> to <code>.form-control-lg</code> and <code>.form-control-sm</code>, respectively.</li>
+<li>Dropped <code>.form-group-*</code> classes for simplicity&rsquo;s sake. Use <code>.form-control-*</code> classes instead now.</li>
+<li>Dropped <code>.help-block</code> and replaced it with <code>.form-text</code> for block-level help text. For inline help text and other flexible options, use utility classes like <code>.text-muted</code>.</li>
+<li>Dropped <code>.radio-inline</code> and <code>.checkbox-inline</code>.</li>
+<li>Consolidated <code>.checkbox</code> and <code>.radio</code> into <code>.form-check</code> and the various <code>.form-check-*</code> classes.</li>
+<li>Horizontal forms overhauled:
+<ul>
+<li>Dropped the <code>.form-horizontal</code> class requirement.</li>
+<li><code>.form-group</code> no longer applies styles from the <code>.row</code> via mixin, so <code>.row</code> is now required for horizontal grid layouts (e.g., <code>&lt;div class=&quot;form-group row&quot;&gt;</code>).</li>
+<li>Added new <code>.col-form-label</code> class to vertically center labels with <code>.form-control</code>s.</li>
+<li>Added new <code>.form-row</code> for compact form layouts with the grid classes (swap your <code>.row</code> for a <code>.form-row</code> and go).</li>
+</ul>
+</li>
+<li>Added custom forms support (for checkboxes, radios, selects, and file inputs).</li>
+<li>Replaced <code>.has-error</code>, <code>.has-warning</code>, and <code>.has-success</code> classes with HTML5 form validation via CSS&rsquo;s <code>:invalid</code> and <code>:valid</code> pseudo-classes.</li>
+<li>Renamed <code>.form-control-static</code> to <code>.form-control-plaintext</code>.</li>
+</ul>
+<h3 id="buttons">Buttons</h3>
+<ul>
+<li>Renamed <code>.btn-default</code> to <code>.btn-secondary</code>.</li>
+<li>Dropped the <code>.btn-xs</code> class entirely as <code>.btn-sm</code> is proportionally much smaller than v3&rsquo;s.</li>
+<li>The <a href="https://getbootstrap.com/docs/3.3/javascript/#buttons-stateful">stateful button</a> feature of the <code>button.js</code> jQuery plugin has been dropped. This includes the <code>$().button(string)</code> and <code>$().button('reset')</code> methods. We advise using a tiny bit of custom JavaScript instead, which will have the benefit of behaving exactly the way you want it to.
+<ul>
+<li>Note that the other features of the plugin (button checkboxes, button radios, single-toggle buttons) have been retained in v4.</li>
+</ul>
+</li>
+<li>Change buttons' <code>[disabled]</code> to <code>:disabled</code> as IE9+ supports <code>:disabled</code>. However <code>fieldset[disabled]</code> is still necessary because <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#Browser_compatibility">native disabled fieldsets are still buggy in IE11</a>.</li>
+</ul>
+<h3 id="button-group">Button group</h3>
+<ul>
+<li>Rewrote component with flexbox.</li>
+<li>Removed <code>.btn-group-justified</code>. As a replacement you can use <code>&lt;div class=&quot;btn-group d-flex&quot; role=&quot;group&quot;&gt;&lt;/div&gt;</code> as a wrapper around elements with <code>.w-100</code>.</li>
+<li>Dropped the <code>.btn-group-xs</code> class entirely given removal of <code>.btn-xs</code>.</li>
+<li>Removed explicit spacing between button groups in button toolbars; use margin utilities now.</li>
+<li>Improved documentation for use with other components.</li>
+</ul>
+<h3 id="dropdowns">Dropdowns</h3>
+<ul>
+<li>Switched from parent selectors to singular classes for all components, modifiers, etc.</li>
+<li>Simplified dropdown styles to no longer ship with upward or downward facing arrows attached to the dropdown menu.</li>
+<li>Dropdowns can be built with <code>&lt;div&gt;</code>s or <code>&lt;ul&gt;</code>s now.</li>
+<li>Rebuilt dropdown styles and markup to provide easy, built-in support for <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> based dropdown items.</li>
+<li>Renamed <code>.divider</code> to <code>.dropdown-divider</code>.</li>
+<li>Dropdown items now require <code>.dropdown-item</code>.</li>
+<li>Dropdown toggles no longer require an explicit <code>&lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;</code>; this is now provided automatically via CSS&rsquo;s <code>::after</code> on <code>.dropdown-toggle</code>.</li>
+</ul>
+<h3 id="grid-system-1">Grid system</h3>
+<ul>
+<li>Added a new <code>576px</code> grid breakpoint as <code>sm</code>, meaning there are now five total tiers (<code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>).</li>
+<li>Renamed the responsive grid modifier classes from <code>.col-{breakpoint}-{modifier}-{size}</code> to <code>.{modifier}-{breakpoint}-{size}</code> for simpler grid classes.</li>
+<li>Dropped push and pull modifier classes for the new flexbox-powered <code>order</code> classes. For example, instead of <code>.col-8.push-4</code> and <code>.col-4.pull-8</code>, you&rsquo;d use <code>.col-8.order-2</code> and <code>.col-4.order-1</code>.</li>
+<li>Added flexbox utility classes for grid system and components.</li>
+</ul>
+<h3 id="list-groups">List groups</h3>
+<ul>
+<li>Rewrote component with flexbox.</li>
+<li>Replaced <code>a.list-group-item</code> with an explicit class, <code>.list-group-item-action</code>, for styling link and button versions of list group items.</li>
+<li>Added <code>.list-group-flush</code> class for use with cards.</li>
+</ul>
+<h3 id="modal">Modal</h3>
+<ul>
+<li>Rewrote component with flexbox.</li>
+<li>Given the move to flexbox, alignment of dismiss icons in the header is likely broken as we&rsquo;re no longer using floats. Floated content comes first, but with flexbox that&rsquo;s no longer the case. Update your dismiss icons to come after modal titles to fix.</li>
+<li>The <code>remote</code> option (which could be used to automatically load and inject external content into a modal) and the corresponding <code>loaded.bs.modal</code> event were removed. We recommend instead using client-side templating or a data binding framework, or calling <a href="https://api.jquery.com/load/">jQuery.load</a> yourself.</li>
+</ul>
+<h3 id="navs">Navs</h3>
+<ul>
+<li>Rewrote component with flexbox.</li>
+<li>Dropped nearly all <code>&gt;</code> selectors for simpler styling via un-nested classes.</li>
+<li>Instead of HTML-specific selectors like <code>.nav &gt; li &gt; a</code>, we use separate classes for <code>.nav</code>s, <code>.nav-item</code>s, and <code>.nav-link</code>s. This makes your HTML more flexible while bringing along increased extensibility.</li>
+</ul>
+<h3 id="navbar">Navbar</h3>
+<p>The navbar has been entirely rewritten in flexbox with improved support for alignment, responsiveness, and customization.</p>
+<ul>
+<li>Responsive navbar behaviors are now applied to the <code>.navbar</code> class via the <strong>required</strong> <code>.navbar-expand-{breakpoint}</code> where you choose where to collapse the navbar. Previously this was a Less variable modification and required recompiling.</li>
+<li><code>.navbar-default</code> is now <code>.navbar-light</code>, though <code>.navbar-dark</code> remains the same. <strong>One of these is required on each navbar.</strong> However, these classes no longer set <code>background-color</code>s; instead they essentially only affect <code>color</code>.</li>
+<li>Navbars now require a background declaration of some kind. Choose from our background utilities (<code>.bg-*</code>) or set your own with the light/inverse classes above <a href="/docs/4.6/components/navbar/#color-schemes">for mad customization</a>.</li>
+<li>Given flexbox styles, navbars can now use flexbox utilities for easy alignment options.</li>
+<li><code>.navbar-toggle</code> is now <code>.navbar-toggler</code> and has different styles and inner markup (no more three <code>&lt;span&gt;</code>s).</li>
+<li>Dropped the <code>.navbar-form</code> class entirely. It&rsquo;s no longer necessary; instead, just use <code>.form-inline</code> and apply margin utilities as necessary.</li>
+<li>Navbars no longer include <code>margin-bottom</code> or <code>border-radius</code> by default. Use utilities as necessary.</li>
+<li>All examples featuring navbars have been updated to include new markup.</li>
+</ul>
+<h3 id="pagination">Pagination</h3>
+<ul>
+<li>Rewrote component with flexbox.</li>
+<li>Explicit classes (<code>.page-item</code>, <code>.page-link</code>) are now required on the descendants of <code>.pagination</code>s</li>
+<li>Dropped the <code>.pager</code> component entirely as it was little more than customized outline buttons.</li>
+</ul>
+<h3 id="breadcrumbs">Breadcrumbs</h3>
+<ul>
+<li>An explicit class, <code>.breadcrumb-item</code>, is now required on the descendants of <code>.breadcrumb</code>s</li>
+</ul>
+<h3 id="labels-and-badges">Labels and badges</h3>
+<ul>
+<li>Consolidated <code>.label</code> and <code>.badge</code> to disambiguate from the <code>&lt;label&gt;</code> element and simplify related components.</li>
+<li>Added <code>.badge-pill</code> as modifier for rounded &ldquo;pill&rdquo; look.</li>
+<li>Badges are no longer floated automatically in list groups and other components. Utility classes are now required for that.</li>
+<li><code>.badge-default</code> has been dropped and <code>.badge-secondary</code> added to match component modifier classes used elsewhere.</li>
+</ul>
+<h3 id="panels-thumbnails-and-wells">Panels, thumbnails, and wells</h3>
+<p>Dropped entirely for the new card component.</p>
+<h3 id="panels">Panels</h3>
+<ul>
+<li><code>.panel</code> to <code>.card</code>, now built with flexbox.</li>
+<li><code>.panel-default</code> removed and no replacement.</li>
+<li><code>.panel-group</code> removed and no replacement. <code>.card-group</code> is not a replacement, it is different.</li>
+<li><code>.panel-heading</code> to <code>.card-header</code></li>
+<li><code>.panel-title</code> to <code>.card-title</code>. Depending on the desired look, you may also want to use <a href="/docs/4.6/content/typography/#headings">heading elements or classes</a> (e.g. <code>&lt;h3&gt;</code>, <code>.h3</code>) or bold elements or classes (e.g. <code>&lt;strong&gt;</code>, <code>&lt;b&gt;</code>, <a href="/docs/4.6/utilities/text/#font-weight-and-italics"><code>.font-weight-bold</code></a>). Note that <code>.card-title</code>, while similarly named, produces a different look than <code>.panel-title</code>.</li>
+<li><code>.panel-body</code> to <code>.card-body</code></li>
+<li><code>.panel-footer</code> to <code>.card-footer</code></li>
+<li><code>.panel-primary</code>, <code>.panel-success</code>, <code>.panel-info</code>, <code>.panel-warning</code>, and <code>.panel-danger</code> have been dropped for <code>.bg-</code>, <code>.text-</code>, and <code>.border</code> utilities generated from our <code>$theme-colors</code> Sass map.</li>
+</ul>
+<h3 id="progress">Progress</h3>
+<ul>
+<li>Replaced contextual <code>.progress-bar-*</code> classes with <code>.bg-*</code> utilities. For example, <code>class=&quot;progress-bar progress-bar-danger&quot;</code> becomes <code>class=&quot;progress-bar bg-danger&quot;</code>.</li>
+<li>Replaced <code>.active</code> for animated progress bars with <code>.progress-bar-animated</code>.</li>
+</ul>
+<h3 id="carousel">Carousel</h3>
+<ul>
+<li>Overhauled the entire component to simplify design and styling. We have fewer styles for you to override, new indicators, and new icons.</li>
+<li>All CSS has been un-nested and renamed, ensuring each class is prefixed with <code>.carousel-</code>.
+<ul>
+<li>For carousel items, <code>.next</code>, <code>.prev</code>, <code>.left</code>, and <code>.right</code> are now <code>.carousel-item-next</code>, <code>.carousel-item-prev</code>, <code>.carousel-item-left</code>, and <code>.carousel-item-right</code>.</li>
+<li><code>.item</code> is also now <code>.carousel-item</code>.</li>
+<li>For prev/next controls, <code>.carousel-control.right</code> and <code>.carousel-control.left</code> are now <code>.carousel-control-next</code> and <code>.carousel-control-prev</code>, meaning they no longer require a specific base class.</li>
+</ul>
+</li>
+<li>Removed all responsive styling, deferring to utilities (e.g., showing captions on certain viewports) and custom styles as needed.</li>
+<li>Removed image overrides for images in carousel items, deferring to utilities.</li>
+<li>Tweaked the Carousel example to include the new markup and styles.</li>
+</ul>
+<h3 id="tables-1">Tables</h3>
+<ul>
+<li>Removed support for styled nested tables. All table styles are now inherited in v4 for simpler selectors.</li>
+<li>Added inverse table variant.</li>
+</ul>
+<h3 id="utilities">Utilities</h3>
+<ul>
+<li><strong>Display, hidden, and more:</strong>
+<ul>
+<li>Made display utilities responsive (e.g., <code>.d-none</code> and <code>d-{sm,md,lg,xl}-none</code>).</li>
+<li>Dropped the bulk of <code>.hidden-*</code> utilities for new <a href="/docs/4.6/utilities/display/">display utilities</a>. For example, instead of <code>.hidden-sm-up</code>, use <code>.d-sm-none</code>. Renamed the <code>.hidden-print</code> utilities to use the display utility naming scheme. More info under the <a href="#responsive-utilities">Responsive utilities</a> section of this page.</li>
+<li>Added <code>.float-{sm,md,lg,xl}-{left,right,none}</code> classes for responsive floats and removed <code>.pull-left</code> and <code>.pull-right</code> since they&rsquo;re redundant to <code>.float-left</code> and <code>.float-right</code>.</li>
+</ul>
+</li>
+<li><strong>Type:</strong>
+<ul>
+<li>Added responsive variations to our text alignment classes <code>.text-{sm,md,lg,xl}-{left,center,right}</code>.</li>
+</ul>
+</li>
+<li><strong>Alignment and spacing:</strong>
+<ul>
+<li>Added new <a href="/docs/4.6/utilities/spacing/">responsive margin and padding utilities</a> for all sides, plus vertical and horizontal shorthands.</li>
+<li>Added boatload of <a href="/docs/4.6/utilities/flex/">flexbox utilities</a>.</li>
+<li>Dropped <code>.center-block</code> for the new <code>.mx-auto</code> class.</li>
+</ul>
+</li>
+<li>Clearfix updated to drop support for older browser versions.</li>
+</ul>
+<h3 id="vendor-prefix-mixins">Vendor prefix mixins</h3>
+<p>Bootstrap 3&rsquo;s <a href="https://www.lifewire.com/css-vendor-prefixes-3466867">vendor prefix</a> mixins, which were deprecated in v3.2.0, have been removed in Bootstrap 4. Since we use <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, they&rsquo;re no longer necessary.</p>
+<p>Removed the following mixins: <code>animation</code>, <code>animation-delay</code>, <code>animation-direction</code>, <code>animation-duration</code>, <code>animation-fill-mode</code>, <code>animation-iteration-count</code>, <code>animation-name</code>, <code>animation-timing-function</code>, <code>backface-visibility</code>, <code>box-sizing</code>, <code>content-columns</code>, <code>hyphens</code>, <code>opacity</code>, <code>perspective</code>, <code>perspective-origin</code>, <code>rotate</code>, <code>rotateX</code>, <code>rotateY</code>, <code>scale</code>, <code>scaleX</code>, <code>scaleY</code>, <code>skew</code>, <code>transform-origin</code>, <code>transition-delay</code>, <code>transition-duration</code>, <code>transition-property</code>, <code>transition-timing-function</code>, <code>transition-transform</code>, <code>translate</code>, <code>translate3d</code>, <code>user-select</code></p>
+<h2 id="documentation">Documentation</h2>
+<p>Our documentation received an upgrade across the board as well. Here&rsquo;s the low down:</p>
+<ul>
+<li>We&rsquo;re still using Jekyll, but we have plugins in the mix:
+<ul>
+<li><code>bugify.rb</code> is used to efficiently list out the entries on our <a href="/docs/4.6/browser-bugs/">browser bugs</a> page.</li>
+<li><code>example.rb</code> is a custom fork of the default <code>highlight.rb</code> plugin, allowing for easier example-code handling.</li>
+<li><code>callout.rb</code> is a similar custom fork of that, but designed for our special docs callouts.</li>
+<li><a href="https://github.com/toshimaru/jekyll-toc">jekyll-toc</a> is used to generate our table of contents.</li>
+</ul>
+</li>
+<li>All docs content has been rewritten in Markdown (instead of HTML) for easier editing.</li>
+<li>Pages have been reorganized for simpler content and a more approachable hierarchy.</li>
+<li>We moved from regular CSS to SCSS to take full advantage of Bootstrap&rsquo;s variables, mixins, and more.</li>
+</ul>
+<h3 id="responsive-utilities">Responsive utilities</h3>
+<p>All <code>@screen-</code> variables have been removed in v4.0.0. Use the <code>media-breakpoint-up()</code>, <code>media-breakpoint-down()</code>, or <code>media-breakpoint-only()</code> Sass mixins or the <code>$grid-breakpoints</code> Sass map instead.</p>
+<p>Our responsive utility classes have largely been removed in favor of explicit <code>display</code> utilities.</p>
+<ul>
+<li>The <code>.hidden</code> and <code>.show</code> classes have been removed because they conflicted with jQuery&rsquo;s <code>$(...).hide()</code> and <code>$(...).show()</code> methods. Instead, try toggling the <code>[hidden]</code> attribute or use inline styles like <code>style=&quot;display: none;&quot;</code> and <code>style=&quot;display: block;&quot;</code>.</li>
+<li>All <code>.hidden-</code> classes have been removed, save for the print utilities which have been renamed.
+<ul>
+<li>Removed from v3: <code>.hidden-xs</code> <code>.hidden-sm</code> <code>.hidden-md</code> <code>.hidden-lg</code> <code>.visible-xs-block</code> <code>.visible-xs-inline</code> <code>.visible-xs-inline-block</code> <code>.visible-sm-block</code> <code>.visible-sm-inline</code> <code>.visible-sm-inline-block</code> <code>.visible-md-block</code> <code>.visible-md-inline</code> <code>.visible-md-inline-block</code> <code>.visible-lg-block</code> <code>.visible-lg-inline</code> <code>.visible-lg-inline-block</code></li>
+<li>Removed from v4 alphas: <code>.hidden-xs-up</code> <code>.hidden-xs-down</code> <code>.hidden-sm-up</code> <code>.hidden-sm-down</code> <code>.hidden-md-up</code> <code>.hidden-md-down</code> <code>.hidden-lg-up</code> <code>.hidden-lg-down</code></li>
+</ul>
+</li>
+<li>Print utilities no longer start with <code>.hidden-</code> or <code>.visible-</code>, but with <code>.d-print-</code>.
+<ul>
+<li>Old names: <code>.visible-print-block</code>, <code>.visible-print-inline</code>, <code>.visible-print-inline-block</code>, <code>.hidden-print</code></li>
+<li>New classes: <code>.d-print-block</code>, <code>.d-print-inline</code>, <code>.d-print-inline-block</code>, <code>.d-print-none</code></li>
+</ul>
+</li>
+</ul>
+<p>Rather than using explicit <code>.visible-*</code> classes, you make an element visible by simply not hiding it at that screen size. You can combine one <code>.d-*-none</code> class with one <code>.d-*-block</code> class to show an element only on a given interval of screen sizes (e.g. <code>.d-none.d-md-block.d-xl-none</code> shows the element only on medium and large devices).</p>
+<p>Note that the changes to the grid breakpoints in v4 means that you&rsquo;ll need to go one breakpoint larger to achieve the same results. The new responsive utility classes don&rsquo;t attempt to accommodate less common cases where an element&rsquo;s visibility can&rsquo;t be expressed as a single contiguous range of viewport sizes; you will instead need to use custom CSS in such cases.</p>
+
+        </main>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.6/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+
+<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+
+<script src="/docs/4.6/assets/js/docs.min.js"></script>
+
+  </body>
+</html>
