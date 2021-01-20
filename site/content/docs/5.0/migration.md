@@ -50,7 +50,9 @@ Horizontal direction sensitive variables, utilities and mixins are renamed with 
 - Renamed `.pl-*` and `.pr-*` to `.ps-*` and `.pe-*`.
 - Renamed `.text-left` and `.text-right` to `.text-start` and `.text-end`.
 
-Breakpoints specific variants are consequently renamed too (eg. `.text-md-start` replaces `.text-md-left`).
+Breakpoints specific variants are consequently renamed too (e.g. `.text-md-start` replaces `.text-md-left`).
+
+**Note**: if you used v4 to make RTL pages, ensure to reverse changes mentioned above: e.g. use `.*-start` were you used `.*-right`.
 
 ##### Mixins
 
@@ -127,6 +129,7 @@ Breakpoints specific variants are consequently renamed too (eg. `.text-md-start`
   - Renamed `.font-style-*` utilities as `.fst-*` for brevity and consistency.
 - Added `.d-grid` to display utilities
 - Added new `gap` utilities (`.gap`) for CSS Grid layouts
+- Removed `.rounded-sm` and `rounded-lg`, and introduced `.rounded-0` to `.rounded-3`. [See #31687](https://github.com/twbs/bootstrap/pull/31687).
 
 ## v5.0.0-alpha2
 
