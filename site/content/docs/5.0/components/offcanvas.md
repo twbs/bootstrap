@@ -29,9 +29,9 @@ You can use a link with the `href` attribute, or a button with the `data-bs-targ
   Button with data-bs-target
 </button>
 
-<div class="offcanvas offcanvas-left" tabindex="-1" id="offcanvasExample">
+<div class="offcanvas offcanvas-left" tabindex="-1" id="offcanvasExample" aria-labelledby="exampleOffCanvasLiveLabel">
   <div class="offcanvas-header">
-    <div>Offcanvas</div>
+    <h5 class="modal-title" id="exampleOffCanvasLiveLabel">offcanvas</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
     </button>
   </div>
@@ -82,9 +82,9 @@ Change the placement of an offcanvas element with modifier classes:
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample2" aria-expanded="false" aria-controls="offcanvasExample2">Toggle right offcanvas</button>
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample3" aria-expanded="false" aria-controls="offcanvasExample3">Toggle bottom offcanvas</button>
 
-<div class="offcanvas offcanvas-right" tabindex="-1" id="offcanvasExample2">
+<div class="offcanvas offcanvas-right" tabindex="-1" id="offcanvasExample2" aria-labelledby="exampleOffCanvasLiveLabel0">
   <div class="offcanvas-header">
-    <div>Offcanvas right</div>
+    <h5 id="exampleOffCanvasLiveLabel0">Offcanvas right</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
     </button>
   </div>
@@ -101,9 +101,9 @@ Change the placement of an offcanvas element with modifier classes:
     <p>Proin rhoncus tortor ac dictum varius. Praesent congue condimentum tempus. Ut nec purus ut orci feugiat tristique sit amet sit amet mi. Etiam malesuada nibh sed porta faucibus. Aliquam dolor orci, gravida vel augue in, auctor eleifend lectus. Fusce viverra varius elementum. Nam quis ipsum eu ante venenatis vehicula. Duis eu nibh eget nulla interdum condimentum.</p>
   </div>
 </div>
-<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasExample3">
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasExample3" aria-labelledby="exampleOffCanvasLiveLabel1">
   <div class="offcanvas-header">
-    <div>Offcanvas bottom</div>
+    <h5 class="modal-title" id="exampleOffCanvasLiveLabel1">Offcanvas bottom</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
     </button>
   </div>
@@ -124,9 +124,9 @@ Easily style an offcanvas element with a different `background-color` or `color`
 {{< example >}}
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasColored" aria-expanded="false" aria-controls="offcanvasColored">Colored offcanvas</button>
 
-<div class="offcanvas offcanvas-left bg-dark text-white" data-bs-body="scroll" tabindex="-1" id="offcanvasColored">
+<div class="offcanvas offcanvas-left bg-dark text-white" data-bs-body="scroll" tabindex="-1" id="offcanvasColored" aria-labelledby="exampleOffCanvasLiveLabel2">
   <div class="offcanvas-header">
-    Colored offcanvas
+    <h5 class="modal-title" id="exampleOffCanvasLiveLabel2">Colored offcanvas</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
     </button>
   </div>
@@ -159,17 +159,17 @@ By default, when an offcanvas is visible, the `<body>` of your page cannot be sc
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample4" aria-expanded="false" aria-controls="offcanvasExample4">Enable body scrolling </button>
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample5" aria-expanded="false" aria-controls="offcanvasExample5">Body backdrop</button>
 
-<div class="offcanvas offcanvas-left" data-bs-body="scroll" tabindex="-1" id="offcanvasExample4">
+<div class="offcanvas offcanvas-left" data-bs-body="scroll" tabindex="-1" id="offcanvasExample4" aria-labelledby="exampleOffCanvasLiveLabel3">
   <div class="offcanvas-header">
-    Offcanvas with scrolling
+    <h5 class="modal-title" id="exampleOffCanvasLiveLabel3">Colored with scrolling</h5>
   </div>
   <div class="offcanvas-body">
     <p>Try scrolling the rest of the page to see this option in action.</p>
   </div>
 </div>
-<div class="offcanvas offcanvas-left" data-bs-body="backdrop" tabindex="-1" id="offcanvasExample5">
+<div class="offcanvas offcanvas-left" data-bs-body="backdrop" tabindex="-1" id="offcanvasExample5" aria-labelledby="exampleOffCanvasLiveLabel4">
   <div class="offcanvas-header">
-    Offcanvas with backdrop
+    <h5 class="modal-title" id="exampleOffCanvasLiveLabel4">Colored with backdrop</h5>
   </div>
   <div class="offcanvas-body">
     <p>Try clicking on the page's content to toggle the offcanvas.</p>
