@@ -22,64 +22,37 @@ const getScrollBarWidth = () => { // thx d.walsh
 }
 
 const setScrollbar = width => {
-  // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
-  //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
+  _setElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight', calculatedValue => calculatedValue + width)
+  _setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - width)
+  _setElementAttributes('body', 'paddingRight', calculatedValue => calculatedValue + width)
+}
 
-  // Adjust fixed content padding
-  SelectorEngine.find(SELECTOR_FIXED_CONTENT)
+const _setElementAttributes = (selector, styleProp, callback) => {
+  SelectorEngine.find(selector)
     .forEach(element => {
-      const actualPadding = element.style.paddingRight
-      const calculatedPadding = window.getComputedStyle(element)['padding-right']
-      Manipulator.setDataAttribute(element, 'padding-right', actualPadding)
-      element.style.paddingRight = `${Number.parseFloat(calculatedPadding) + width}px`
+      const actualValue = element.style[styleProp]
+      const calculatedValue = window.getComputedStyle(element)[styleProp]
+      Manipulator.setDataAttribute(element, styleProp, actualValue)
+      element.style[styleProp] = callback(Number.parseFloat(calculatedValue)) + 'px'
     })
-
-  // Adjust sticky content margin
-  SelectorEngine.find(SELECTOR_STICKY_CONTENT)
-    .forEach(element => {
-      const actualMargin = element.style.marginRight
-      const calculatedMargin = window.getComputedStyle(element)['margin-right']
-      Manipulator.setDataAttribute(element, 'margin-right', actualMargin)
-      element.style.marginRight = `${Number.parseFloat(calculatedMargin) - width}px`
-    })
-
-  // Adjust body padding
-  const actualPadding = document.body.style.paddingRight
-  const calculatedPadding = window.getComputedStyle(document.body)['padding-right']
-
-  Manipulator.setDataAttribute(document.body, 'padding-right', actualPadding)
-  document.body.style.paddingRight = `${Number.parseFloat(calculatedPadding) + width}px`
 }
 
 const resetScrollbar = () => {
-  // Restore fixed content padding
-  SelectorEngine.find(SELECTOR_FIXED_CONTENT)
-    .forEach(element => {
-      const padding = Manipulator.getDataAttribute(element, 'padding-right')
-      if (typeof padding !== 'undefined') {
-        Manipulator.removeDataAttribute(element, 'padding-right')
-        element.style.paddingRight = padding
-      }
-    })
+  _resetElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight')
+  _resetElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight')
+  _resetElementAttributes('body', 'paddingRight')
+}
 
-  // Restore sticky content and navbar-toggler margin
-  SelectorEngine.find(`${SELECTOR_STICKY_CONTENT}`)
-    .forEach(element => {
-      const margin = Manipulator.getDataAttribute(element, 'margin-right')
-      if (typeof margin !== 'undefined') {
-        Manipulator.removeDataAttribute(element, 'margin-right')
-        element.style.marginRight = margin
-      }
-    })
-
-  // Restore body padding
-  const padding = Manipulator.getDataAttribute(document.body, 'padding-right')
-  if (typeof padding === 'undefined') {
-    document.body.style.paddingRight = ''
-  } else {
-    Manipulator.removeDataAttribute(document.body, 'padding-right')
-    document.body.style.paddingRight = padding
-  }
+const _resetElementAttributes = (selector, styleProp) => {
+  SelectorEngine.find(selector).forEach(element => {
+    const value = Manipulator.getDataAttribute(element, styleProp)
+    if (typeof value === 'undefined' && element === document.body) {
+      element.style[styleProp] = ''
+    } else {
+      Manipulator.removeDataAttribute(element, styleProp)
+      element.style[styleProp] = value
+    }
+  })
 }
 
 export {
