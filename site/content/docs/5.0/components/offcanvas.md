@@ -38,15 +38,15 @@ You can use a link with the `href` attribute, or a button with the `data-bs-targ
   <div class="offcanvas-body">
     <div class="list-group ">
       <a href="#" class="list-group-item list-group-item-action active">
-        Cras justo odio
+        A list item anchor inside the offcanvas element
       </a>
-      <a href="#" class="list-group-item lis`t-group-item-action">Dapibus ac facilisis in</a>
-      <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-      <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-      <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
+      <a href="#" class="list-group-item list-group-item-action">A list item</a>
+      <a href="#" class="list-group-item list-group-item-action">A second list item</a>
+      <a href="#" class="list-group-item list-group-item-action">A third list item</a>
+      <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">A disabled list item</a>
     </div>
     <div class="mt-3 card card-body text-dark ">
-      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+      Some text as placeholder. In real life you can have the elements you have chossen. Like, text, images, lists etc
     </div>
 
     <div class="dropdown mt-3">
@@ -60,11 +60,11 @@ You can use a link with the `href` attribute, or a button with the `data-bs-targ
       </ul>
     </div>
     <div class="mt-3">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam bibendum ante ac est viverra tincidunt. Suspendisse lobortis lorem nec est congue, sed scelerisque mauris iaculis. Phasellus enim lorem, sagittis a eros at, feugiat tempor leo. Nunc in massa nibh. Vivamus vestibulum orci sem, et consectetur velit laoreet eget.</p>
-      <p>Curabitur et suscipit justo, sed pretium enim. Vivamus lobortis dapibus purus, eget pharetra nibh tincidunt in. Integer accumsan elit nisi, eget commodo magna vehicula ut. Cras nec pellentesque diam. Donec porta posuere urna in pellentesque. Nulla facilisi. Aliquam erat volutpat.</p>
-      <p>Donec lobortis eget tortor ac mattis. Maecenas sit amet sollicitudin libero. Quisque sodales pulvinar ipsum, vel fermentum enim convallis a. Proin rutrum orci scelerisque, accumsan quam vel, hendrerit erat. Cras vitae mauris vel massa sollicitudin scelerisque posuere sed lorem. Aenean volutpat libero non urna elementum aliquet.</p>
-      <p>Phasellus eros ex, efficitur in ex et, maximus lobortis magna. Suspendisse convallis, neque a varius tempor, nisi tellus blandit velit, at dignissim nibh ligula et leo. Mauris vel elit sit amet sem blandit congue. Pellentesque vulputate, nibh quis semper pharetra, tellus nunc pretium mi, et volutpat purus turpis porttitor lectus.</p>
-      <p>Proin rhoncus tortor ac dictum varius. Praesent congue condimentum tempus. Ut nec purus ut orci feugiat tristique sit amet sit amet mi. Etiam malesuada nibh sed porta faucibus. Aliquam dolor orci, gravida vel augue in, auctor eleifend lectus. Fusce viverra varius elementum. Nam quis ipsum eu ante venenatis vehicula. Duis eu nibh eget nulla interdum condimentum.</p>
+      <p>Some random text as placeholder in place of another lorem ipsum. Possible procured her trifling laughter thoughts property she met way. Companions shy had solicitude favourable own. Which could saw guest man now heard but. Lasted my coming uneasy marked so should. Gravity letters it amongst herself dearest an windows by.</p>
+      <p>Folly words widow one downs few age every seven. If miss part by fact he park just shew. Discovered had get considered projection who favourable. Necessary up knowledge it tolerably. Unwilling departure education is be dashwoods or an. Use off agreeable law unwilling sir deficient curiosity instantly. Easy mind life fact with see has bore ten.</p>
+      <p>Another journey chamber way yet females man. Way extensive and dejection get delivered deficient sincerity gentleman age. Too end instrument possession contrasted motionless. Calling offence six joy feeling. Coming merits and was talent enough far. Sir joy northward sportsmen education.</p>
+      <p>Village did removed enjoyed explain nor ham saw calling talking. Securing as informed declared or margaret. Joy horrible moreover man feelings own shy. Request norland neither mistake for yet. Between the for morning assured country believe. On even feet time have an no at. Relation so in confined smallest children unpacked delicate. Why sir end believe uncivil respect.</p>
+      <p>In it except to so temper mutual tastes mother. Interested cultivated its continuing now yet are. Out interested acceptance our partiality affronting unpleasant why add. Esteem garden men yet shy course. Consulted up my tolerably sometimes perpetual oh. Expression acceptance imprudence particular had eat unsatiable.</p>
     </div>
   </div>
 </div>
@@ -89,16 +89,14 @@ Change the placement of an offcanvas element with modifier classes:
     </button>
   </div>
   <div class="offcanvas-body small">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam bibendum ante ac est viverra tincidunt. Suspendisse lobortis lorem nec est congue, sed scelerisque mauris iaculis. Phasellus enim lorem, sagittis a eros at, feugiat tempor leo. Nunc in massa nibh. Vivamus vestibulum orci sem, et consectetur velit laoreet eget.</p>
-    <p>Curabitur et suscipit justo, sed pretium enim. Vivamus lobortis dapibus purus, eget pharetra nibh tincidunt in. Integer accumsan elit nisi, eget commodo magna vehicula ut. Cras nec pellentesque diam. Donec porta posuere urna in pellentesque. Nulla facilisi. Aliquam erat volutpat.</p>
-    <p>Donec lobortis eget tortor ac mattis. Maecenas sit amet sollicitudin libero. Quisque sodales pulvinar ipsum, vel fermentum enim convallis a. Proin rutrum orci scelerisque, accumsan quam vel, hendrerit erat. Cras vitae mauris vel massa sollicitudin scelerisque posuere sed lorem. Aenean volutpat libero non urna elementum aliquet.</p>
-    <p>Phasellus eros ex, efficitur in ex et, maximus lobortis magna. Suspendisse convallis, neque a varius tempor, nisi tellus blandit velit, at dignissim nibh ligula et leo. Mauris vel elit sit amet sem blandit congue. Pellentesque vulputate, nibh quis semper pharetra, tellus nunc pretium mi, et volutpat purus turpis porttitor lectus.</p>
-    <p>Proin rhoncus tortor ac dictum varius. Praesent congue condimentum tempus. Ut nec purus ut orci feugiat tristique sit amet sit amet mi. Etiam malesuada nibh sed porta faucibus. Aliquam dolor orci, gravida vel augue in, auctor eleifend lectus. Fusce viverra varius elementum. Nam quis ipsum eu ante venenatis vehicula. Duis eu nibh eget nulla interdum condimentum.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam bibendum ante ac est viverra tincidunt. Suspendisse lobortis lorem nec est congue, sed scelerisque mauris iaculis. Phasellus enim lorem, sagittis a eros at, feugiat tempor leo. Nunc in massa nibh. Vivamus vestibulum orci sem, et consectetur velit laoreet eget.</p>
-    <p>Curabitur et suscipit justo, sed pretium enim. Vivamus lobortis dapibus purus, eget pharetra nibh tincidunt in. Integer accumsan elit nisi, eget commodo magna vehicula ut. Cras nec pellentesque diam. Donec porta posuere urna in pellentesque. Nulla facilisi. Aliquam erat volutpat.</p>
-    <p>Donec lobortis eget tortor ac mattis. Maecenas sit amet sollicitudin libero. Quisque sodales pulvinar ipsum, vel fermentum enim convallis a. Proin rutrum orci scelerisque, accumsan quam vel, hendrerit erat. Cras vitae mauris vel massa sollicitudin scelerisque posuere sed lorem. Aenean volutpat libero non urna elementum aliquet.</p>
-    <p>Phasellus eros ex, efficitur in ex et, maximus lobortis magna. Suspendisse convallis, neque a varius tempor, nisi tellus blandit velit, at dignissim nibh ligula et leo. Mauris vel elit sit amet sem blandit congue. Pellentesque vulputate, nibh quis semper pharetra, tellus nunc pretium mi, et volutpat purus turpis porttitor lectus.</p>
-    <p>Proin rhoncus tortor ac dictum varius. Praesent congue condimentum tempus. Ut nec purus ut orci feugiat tristique sit amet sit amet mi. Etiam malesuada nibh sed porta faucibus. Aliquam dolor orci, gravida vel augue in, auctor eleifend lectus. Fusce viverra varius elementum. Nam quis ipsum eu ante venenatis vehicula. Duis eu nibh eget nulla interdum condimentum.</p>
+    <p>Powering more than 18 million websites, Bootstrap is the go-to toolkit for many front-end developers. There are a few factors driving Bootstrap’s popularity. First and foremost, it’s open-source and therefore free to download and use. It’s also fully customizable, and compatible with all modern browsers. This is true of many CSS frameworks, however. </p>
+    <p>What sets Bootstrap apart from other development toolkits is that it was developed mobile-first. Meaning, the code was optimized for mobile devices (i.e. the smallest screen size) first and then scaled up to display on larger screens. As a result, building with Bootstrap CSS ensures that your site supports proper rendering and touch zooming for all devices.</p>
+    <p>Another reason Bootstrap is so popular is that it’s easy to use. It comes bundled with templates for typography, forms, buttons, drop-down menus, navigation, and other interface components. Using these pre-styled templates, you can add features that enrich the user experience  on your site without having to code them from scratch.</p>
+    <p>Building a responsive site is much easier using Bootstrap than doing so from scratch. Bootstrap comes with responsive styles, like containers and media queries, to ensure your site adjusts to the viewport. That means you don’t have to worry about whether your visitors are using desktops, tablets, or mobile devices.</p>
+    <p>You can build your site quickly with Bootstrap. Once you download the framework, you can get started with a basic template and then add the components you need. These components are fundamental HTML elements, like tables, forms, buttons, images, and icons, that are styled with a base class and extended with modifier classes. Using these pre-designed components significantly limits the amount of custom CSS you have to write.</p>
+    <p>If you have multiple collaborators working on a site, then consistency is important. You don’t want buttons on your homepage to look different from buttons on your landing page, or to use a different website typography  on your blog than anywhere else on your site — and so on. Using Bootstrap and its default settings, utility classes, and component elements can help ensure the front end of your site looks consistent.</p>
+    <p>Since Bootstrap comes with pre-styled content, components, and templates, Bootstrap sites tend to look the same out-of-the-box. In fact, Bootstrap has been blamed for why websites today all look the same. You can customize a Bootstrap site, but it’ll take time. Plus, if you have to override too much of the default styling, then it might make more sense to create your own stylesheet in the first place.</p>
+    <p>Bootstrap is considered an easy to use platform. It offers extensive documentation for every part of its framework, from its layout to content to components and more. That means virtually anyone can learn Bootstrap, but it also means it will take time to read through the documentation and learn the framework. If you are looking to build a website as quickly as possible, then Bootstrap might not be as ideal as other solutions, like website builders. </p>
   </div>
 </div>
 <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasExample3" aria-labelledby="exampleOffCanvasLiveLabel1">
@@ -108,11 +106,11 @@ Change the placement of an offcanvas element with modifier classes:
     </button>
   </div>
   <div class="offcanvas-body small">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam bibendum ante ac est viverra tincidunt. Suspendisse lobortis lorem nec est congue, sed scelerisque mauris iaculis. Phasellus enim lorem, sagittis a eros at, feugiat tempor leo. Nunc in massa nibh. Vivamus vestibulum orci sem, et consectetur velit laoreet eget.</p>
-    <p>Curabitur et suscipit justo, sed pretium enim. Vivamus lobortis dapibus purus, eget pharetra nibh tincidunt in. Integer accumsan elit nisi, eget commodo magna vehicula ut. Cras nec pellentesque diam. Donec porta posuere urna in pellentesque. Nulla facilisi. Aliquam erat volutpat.</p>
-    <p>Donec lobortis eget tortor ac mattis. Maecenas sit amet sollicitudin libero. Quisque sodales pulvinar ipsum, vel fermentum enim convallis a. Proin rutrum orci scelerisque, accumsan quam vel, hendrerit erat. Cras vitae mauris vel massa sollicitudin scelerisque posuere sed lorem. Aenean volutpat libero non urna elementum aliquet.</p>
-    <p>Phasellus eros ex, efficitur in ex et, maximus lobortis magna. Suspendisse convallis, neque a varius tempor, nisi tellus blandit velit, at dignissim nibh ligula et leo. Mauris vel elit sit amet sem blandit congue. Pellentesque vulputate, nibh quis semper pharetra, tellus nunc pretium mi, et volutpat purus turpis porttitor lectus.</p>
-    <p>Proin rhoncus tortor ac dictum varius. Praesent congue condimentum tempus. Ut nec purus ut orci feugiat tristique sit amet sit amet mi. Etiam malesuada nibh sed porta faucibus. Aliquam dolor orci, gravida vel augue in, auctor eleifend lectus. Fusce viverra varius elementum. Nam quis ipsum eu ante venenatis vehicula. Duis eu nibh eget nulla interdum condimentum.</p>
+      <p>Some random text as placeholder in place of another lorem ipsum. Possible procured her trifling laughter thoughts property she met way. Companions shy had solicitude favourable own. Which could saw guest man now heard but. Lasted my coming uneasy marked so should. Gravity letters it amongst herself dearest an windows by.</p>
+      <p>Folly words widow one downs few age every seven. If miss part by fact he park just shew. Discovered had get considered projection who favourable. Necessary up knowledge it tolerably. Unwilling departure education is be dashwoods or an. Use off agreeable law unwilling sir deficient curiosity instantly. Easy mind life fact with see has bore ten.</p>
+      <p>Another journey chamber way yet females man. Way extensive and dejection get delivered deficient sincerity gentleman age. Too end instrument possession contrasted motionless. Calling offence six joy feeling. Coming merits and was talent enough far. Sir joy northward sportsmen education.</p>
+      <p>Village did removed enjoyed explain nor ham saw calling talking. Securing as informed declared or margaret. Joy horrible moreover man feelings own shy. Request norland neither mistake for yet. Between the for morning assured country believe. On even feet time have an no at. Relation so in confined smallest children unpacked delicate. Why sir end believe uncivil respect.</p>
+      <p>In it except to so temper mutual tastes mother. Interested cultivated its continuing now yet are. Out interested acceptance our partiality affronting unpleasant why add. Esteem garden men yet shy course. Consulted up my tolerably sometimes perpetual oh. Expression acceptance imprudence particular had eat unsatiable.</p>
   </div>
 </div>
 {{< /example >}}
@@ -132,16 +130,16 @@ Easily style an offcanvas element with a different `background-color` or `color`
   </div>
   <div class="offcanvas-body">
     <p>
-      Maecenas sed diam eget risus varius blandit sit amet non magna. Duis mollis,
-      est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+      Bootstrap is an open source and intuitive CSS framework, which is used primarily for mobile first front-end website development.
+      It was discovered by Mark Otto and Jacob Thornton at Twitter, and it was formerly named as ‘Twitter Blueprint’.
     </p>
     <p>
-      Aenean lacinia bibendum nulla sed consectetur. Maecenas faucibus mollis interdum.
-      Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+      CSS is principally used, but HTML templates are also a part of it.  Besides HTML and CSS templates,
+      it also depends closely on JavaScript components, mostly in the type of jQuery plugins.
     </p>
     <p>
-      fermentum massa justo sit amet risus. Nullam quis risus eget urna mollis ornare
-      vel eu leo. Curabitur blandit tempus porttitor.
+      Bootstrap also has widespread support and vast coding documentation with extensive online resources and assistance from the community of developers.
+      This, in turn, makes it easier to understand this framework better and how to employ it.
     </p>
   </div>
 </div>
