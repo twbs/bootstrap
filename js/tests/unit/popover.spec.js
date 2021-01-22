@@ -116,6 +116,22 @@ describe('Popover', () => {
 
       popover.show()
     })
+
+    it('should show a popover with provided custom class', done => {
+      fixtureEl.innerHTML = '<a href="#" title="Popover" data-bs-content="https://twitter.com/getbootstrap" data-bs-custom-class="custom-class">BS twitter</a>'
+
+      const popoverEl = fixtureEl.querySelector('a')
+      const popover = new Popover(popoverEl)
+
+      popoverEl.addEventListener('shown.bs.popover', () => {
+        const tip = document.querySelector('.popover')
+        expect(tip).toBeDefined()
+        expect(tip.classList.contains('custom-class')).toBeTrue()
+        done()
+      })
+
+      popover.show()
+    })
   })
 
   describe('hide', () => {
@@ -190,11 +206,9 @@ describe('Popover', () => {
       jQueryMock.fn.popover = Popover.jQueryInterface
       jQueryMock.elements = [popoverEl]
 
-      try {
+      expect(() => {
         jQueryMock.fn.popover.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
+      }).toThrowError(TypeError, `No method named "${action}"`)
     })
 
     it('should should call show method', () => {
@@ -237,6 +251,7 @@ describe('Popover', () => {
       const popover = new Popover(popoverEl)
 
       expect(Popover.getInstance(popoverEl)).toEqual(popover)
+      expect(Popover.getInstance(popoverEl)).toBeInstanceOf(Popover)
     })
 
     it('should return null when there is no popover instance', () => {

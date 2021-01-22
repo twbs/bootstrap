@@ -46,7 +46,7 @@ describe('Toast', () => {
     it('should close toast when close element with data-bs-dismiss attribute is set', done => {
       fixtureEl.innerHTML = [
         '<div class="toast" data-bs-delay="1" data-bs-autohide="false" data-bs-animation="false">',
-        '  <button type="button" class="ml-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
+        '  <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
         '</div>'
       ].join('')
 
@@ -78,7 +78,7 @@ describe('Toast', () => {
 
       fixtureEl.innerHTML = [
         '<div class="toast" data-bs-autohide="false" data-bs-animation="false">',
-        '  <button type="button" class="ml-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
+        '  <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
         '</div>'
       ].join('')
 
@@ -368,11 +368,9 @@ describe('Toast', () => {
       jQueryMock.fn.toast = Toast.jQueryInterface
       jQueryMock.elements = [div]
 
-      try {
+      expect(() => {
         jQueryMock.fn.toast.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
+      }).toThrowError(TypeError, `No method named "${action}"`)
     })
   })
 
@@ -384,6 +382,7 @@ describe('Toast', () => {
       const toast = new Toast(div)
 
       expect(Toast.getInstance(div)).toEqual(toast)
+      expect(Toast.getInstance(div)).toBeInstanceOf(Toast)
     })
 
     it('should return null when there is no toast instance', () => {

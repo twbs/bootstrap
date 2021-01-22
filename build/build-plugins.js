@@ -2,8 +2,8 @@
 
 /*!
  * Script to build our plugins to use them separately.
- * Copyright 2020 The Bootstrap Authors
- * Copyright 2020 Twitter, Inc.
+ * Copyright 2020-2021 The Bootstrap Authors
+ * Copyright 2020-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
@@ -14,12 +14,13 @@ const rollup = require('rollup')
 const { babel } = require('@rollup/plugin-babel')
 const banner = require('./banner.js')
 
+const rootPath = path.resolve(__dirname, '../js/dist/')
 const plugins = [
   babel({
     // Only transpile our source code
     exclude: 'node_modules/**',
-    // Inline the required helpers in each file
-    babelHelpers: 'inline'
+    // Include the helpers in each file, at most one copy of each
+    babelHelpers: 'bundled'
   })
 ]
 const bsPlugins = {
@@ -28,6 +29,7 @@ const bsPlugins = {
   Manipulator: path.resolve(__dirname, '../js/src/dom/manipulator.js'),
   SelectorEngine: path.resolve(__dirname, '../js/src/dom/selector-engine.js'),
   Alert: path.resolve(__dirname, '../js/src/alert.js'),
+  Base: path.resolve(__dirname, '../js/src/base-component.js'),
   Button: path.resolve(__dirname, '../js/src/button.js'),
   Carousel: path.resolve(__dirname, '../js/src/carousel.js'),
   Collapse: path.resolve(__dirname, '../js/src/collapse.js'),
@@ -39,16 +41,17 @@ const bsPlugins = {
   Toast: path.resolve(__dirname, '../js/src/toast.js'),
   Tooltip: path.resolve(__dirname, '../js/src/tooltip.js')
 }
-const rootPath = path.resolve(__dirname, '../js/dist/')
 
 const defaultPluginConfig = {
   external: [
     bsPlugins.Data,
+    bsPlugins.Base,
     bsPlugins.EventHandler,
     bsPlugins.SelectorEngine
   ],
   globals: {
     [bsPlugins.Data]: 'Data',
+    [bsPlugins.Base]: 'Base',
     [bsPlugins.EventHandler]: 'EventHandler',
     [bsPlugins.SelectorEngine]: 'SelectorEngine'
   }
@@ -59,7 +62,6 @@ const getConfigByPluginKey = pluginKey => {
     pluginKey === 'Data' ||
     pluginKey === 'Manipulator' ||
     pluginKey === 'EventHandler' ||
-    pluginKey === 'Polyfill' ||
     pluginKey === 'SelectorEngine' ||
     pluginKey === 'Util' ||
     pluginKey === 'Sanitizer'
@@ -74,6 +76,7 @@ const getConfigByPluginKey = pluginKey => {
   }
 
   if (
+    pluginKey === 'Base' ||
     pluginKey === 'Button' ||
     pluginKey === 'Carousel' ||
     pluginKey === 'Collapse' ||
@@ -88,9 +91,9 @@ const getConfigByPluginKey = pluginKey => {
 
   if (pluginKey === 'Dropdown' || pluginKey === 'Tooltip') {
     const config = Object.assign(defaultPluginConfig)
-    config.external.push(bsPlugins.Manipulator, 'popper.js')
+    config.external.push(bsPlugins.Manipulator, '@popperjs/core')
     config.globals[bsPlugins.Manipulator] = 'Manipulator'
-    config.globals['popper.js'] = 'Popper'
+    config.globals['@popperjs/core'] = 'Popper'
     return config
   }
 
@@ -113,11 +116,13 @@ const getConfigByPluginKey = pluginKey => {
     return {
       external: [
         bsPlugins.Data,
+        bsPlugins.Base,
         bsPlugins.EventHandler,
         bsPlugins.Manipulator
       ],
       globals: {
         [bsPlugins.Data]: 'Data',
+        [bsPlugins.Base]: 'Base',
         [bsPlugins.EventHandler]: 'EventHandler',
         [bsPlugins.Manipulator]: 'Manipulator'
       }
@@ -125,17 +130,17 @@ const getConfigByPluginKey = pluginKey => {
   }
 }
 
-const utilObjects = [
+const utilObjects = new Set([
   'Util',
   'Sanitizer'
-]
+])
 
-const domObjects = [
+const domObjects = new Set([
   'Data',
   'EventHandler',
   'Manipulator',
   'SelectorEngine'
-]
+])
 
 const build = async plugin => {
   console.log(`Building ${plugin} plugin...`)
@@ -144,11 +149,11 @@ const build = async plugin => {
   const pluginFilename = path.basename(bsPlugins[plugin])
   let pluginPath = rootPath
 
-  if (utilObjects.includes(plugin)) {
+  if (utilObjects.has(plugin)) {
     pluginPath = `${rootPath}/util/`
   }
 
-  if (domObjects.includes(plugin)) {
+  if (domObjects.has(plugin)) {
     pluginPath = `${rootPath}/dom/`
   }
 

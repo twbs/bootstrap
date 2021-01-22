@@ -187,7 +187,7 @@
     width: 16rem;
 
     @include media-breakpoint-up(md) {
-      --aspect-ratio: 50%; // 2x1
+      --bs-aspect-ratio: 50%; // 2x1
     }
   }
 }
@@ -263,6 +263,11 @@
   &::after {
     content: none;
   }
+}
+
+// Toasts
+.bd-example-toasts {
+  min-height: 240px;
 }
 
 //

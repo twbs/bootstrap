@@ -68,7 +68,7 @@ describe('ScrollSpy', () => {
       fixtureEl.innerHTML = [
         '<nav id="navigation" class="navbar">',
         '  <ul class="navbar-nav">',
-        '    <li class="nav-item active"><a class="nav-link" id="one-link" href="#">One</a></li>',
+        '    <li class="nav-item"><a class="nav-link active" id="one-link" href="#">One</a></li>',
         '    <li class="nav-item"><a class="nav-link" id="two-link" href="#two">Two</a></li>',
         '    <li class="nav-item"><a class="nav-link" id="three-link" href="#three">Three</a></li>',
         '  </ul>',
@@ -177,7 +177,7 @@ describe('ScrollSpy', () => {
         '<div id="header" style="height: 500px;"></div>',
         '<nav id="navigation" class="navbar">',
         ' <ul class="navbar-nav">',
-        '   <li class="nav-item active"><a class="nav-link" id="one-link" href="#one">One</a></li>',
+        '   <li class="nav-item"><a class="nav-link active" id="one-link" href="#one">One</a></li>',
         '   <li class="nav-item"><a class="nav-link" id="two-link" href="#two">Two</a></li>',
         '   <li class="nav-item"><a class="nav-link" id="three-link" href="#three">Three</a></li>',
         ' </ul>',
@@ -625,15 +625,23 @@ describe('ScrollSpy', () => {
       jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
       jQueryMock.elements = [div]
 
-      try {
+      expect(() => {
         jQueryMock.fn.scrollspy.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
+      }).toThrowError(TypeError, `No method named "${action}"`)
     })
   })
 
   describe('getInstance', () => {
+    it('should return scrollspy instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const scrollSpy = new ScrollSpy(div)
+
+      expect(ScrollSpy.getInstance(div)).toEqual(scrollSpy)
+      expect(ScrollSpy.getInstance(div)).toBeInstanceOf(ScrollSpy)
+    })
+
     it('should return null if there is no instance', () => {
       expect(ScrollSpy.getInstance(fixtureEl)).toEqual(null)
     })

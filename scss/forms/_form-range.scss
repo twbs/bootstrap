@@ -12,7 +12,7 @@
   appearance: none;
 
   &:focus {
-    outline: none;
+    outline: 0;
 
     // Pseudo-elements must be split across multiple rulesets to have an effect.
     // No box-shadow() mixin for focus accessibility.

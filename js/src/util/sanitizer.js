@@ -1,11 +1,11 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): util/sanitizer.js
+ * Bootstrap (v5.0.0-beta1): util/sanitizer.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-const uriAttrs = [
+const uriAttrs = new Set([
   'background',
   'cite',
   'href',
@@ -14,7 +14,7 @@ const uriAttrs = [
   'poster',
   'src',
   'xlink:href'
-]
+])
 
 const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i
 
@@ -35,9 +35,9 @@ const DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|vid
 const allowedAttribute = (attr, allowedAttributeList) => {
   const attrName = attr.nodeName.toLowerCase()
 
-  if (allowedAttributeList.indexOf(attrName) !== -1) {
-    if (uriAttrs.indexOf(attrName) !== -1) {
-      return Boolean(attr.nodeValue.match(SAFE_URL_PATTERN) || attr.nodeValue.match(DATA_URL_PATTERN))
+  if (allowedAttributeList.includes(attrName)) {
+    if (uriAttrs.has(attrName)) {
+      return Boolean(SAFE_URL_PATTERN.test(attr.nodeValue) || DATA_URL_PATTERN.test(attr.nodeValue))
     }
 
     return true
@@ -47,7 +47,7 @@ const allowedAttribute = (attr, allowedAttributeList) => {
 
   // Check if a regular expression validates the attribute.
   for (let i = 0, len = regExp.length; i < len; i++) {
-    if (attrName.match(regExp[i])) {
+    if (regExp[i].test(attrName)) {
       return true
     }
   }
@@ -107,7 +107,7 @@ export function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
     const el = elements[i]
     const elName = el.nodeName.toLowerCase()
 
-    if (allowlistKeys.indexOf(elName) === -1) {
+    if (!allowlistKeys.includes(elName)) {
       el.parentNode.removeChild(el)
 
       continue

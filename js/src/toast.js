@@ -1,14 +1,12 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): toast.js
+ * Bootstrap (v5.0.0-beta1): toast.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
-  TRANSITION_END,
+  defineJQueryPlugin,
   emulateTransitionEnd,
   getTransitionDurationFromElement,
   reflow,
@@ -17,6 +15,7 @@ import {
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
+import BaseComponent from './base-component'
 
 /**
  * ------------------------------------------------------------------------
@@ -25,7 +24,6 @@ import Manipulator from './dom/manipulator'
  */
 
 const NAME = 'toast'
-const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.toast'
 const EVENT_KEY = `.${DATA_KEY}`
 
@@ -60,20 +58,16 @@ const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="toast"]'
  * ------------------------------------------------------------------------
  */
 
-class Toast {
+class Toast extends BaseComponent {
   constructor(element, config) {
-    this._element = element
+    super(element)
+
     this._config = this._getConfig(config)
     this._timeout = null
     this._setListeners()
-    Data.setData(element, DATA_KEY, this)
   }
 
   // Getters
-
-  static get VERSION() {
-    return VERSION
-  }
 
   static get DefaultType() {
     return DefaultType
@@ -81,6 +75,10 @@ class Toast {
 
   static get Default() {
     return Default
+  }
+
+  static get DATA_KEY() {
+    return DATA_KEY
   }
 
   // Public
@@ -117,7 +115,7 @@ class Toast {
     if (this._config.animation) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
-      EventHandler.one(this._element, TRANSITION_END, complete)
+      EventHandler.one(this._element, 'transitionend', complete)
       emulateTransitionEnd(this._element, transitionDuration)
     } else {
       complete()
@@ -144,7 +142,7 @@ class Toast {
     if (this._config.animation) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
-      EventHandler.one(this._element, TRANSITION_END, complete)
+      EventHandler.one(this._element, 'transitionend', complete)
       emulateTransitionEnd(this._element, transitionDuration)
     } else {
       complete()
@@ -159,9 +157,8 @@ class Toast {
     }
 
     EventHandler.off(this._element, EVENT_CLICK_DISMISS)
-    Data.removeData(this._element, DATA_KEY)
 
-    this._element = null
+    super.dispose()
     this._config = null
   }
 
@@ -208,10 +205,6 @@ class Toast {
       }
     })
   }
-
-  static getInstance(element) {
-    return Data.getData(element, DATA_KEY)
-  }
 }
 
 /**
@@ -221,18 +214,6 @@ class Toast {
  * add .Toast to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Toast.jQueryInterface
-    $.fn[NAME].Constructor = Toast
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Toast.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Toast)
 
 export default Toast
