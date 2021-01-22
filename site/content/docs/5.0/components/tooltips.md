@@ -304,9 +304,12 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
     </tr>
     <tr>
       <td><code>popperConfig</code></td>
-      <td>null | object</td>
+      <td>null | object | function</td>
       <td><code>null</code></td>
-      <td>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v2/constructors/#options">Popper's configuration</a></td>
+      <td>
+        <p>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v2/constructors/#options">Popper's configuration</a>.</p>
+        <p>When a function is used to create the configuration for Popper, it is called with an object that contains the Bootstrap's default configuration for Popper. It helps you use/merge the Bootstrap's default configuration with your own configuration. The function must return a configuration object for Popper</p>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -316,6 +319,18 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
 
 Options for individual tooltips can alternatively be specified through the use of data attributes, as explained above.
 {{< /callout >}}
+
+#### Using function with `popperConfig`
+
+```js
+var tooltip = new bootstrap.Tooltip(element, {
+  popperConfig: function (defaultBsPopperConfig) {
+    // var newPopperConfig = {...}
+    // use defaultBsPopperConfig if needed...
+    // return newPopperConfig
+  }
+})
+```
 
 ### Methods
 

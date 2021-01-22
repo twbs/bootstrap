@@ -993,12 +993,27 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </tr>
     <tr>
       <td><code>popperConfig</code></td>
-      <td>null | object</td>
+      <td>null | object | function</td>
       <td><code>null</code></td>
-      <td>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v2/constructors/#options">Popper's configuration</a></td>
+      <td>
+        <p>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v2/constructors/#options">Popper's configuration</a>.</p>
+        <p>When a function is used to create the configuration for Popper, it is called with an object that contains the Bootstrap's default configuration for Popper. It helps you use/merge the Bootstrap's default configuration with your own configuration. The function must return a configuration object for Popper</p>
+      </td>
     </tr>
   </tbody>
 </table>
+
+#### Using function with `popperConfig`
+
+```js
+var dropdown = new bootstrap.Dropdown(element, {
+  popperConfig: function (defaultBsPopperConfig) {
+    // var newPopperConfig = {...}
+    // use defaultBsPopperConfig if needed...
+    // return newPopperConfig
+  }
+})
+```
 
 ### Methods
 
