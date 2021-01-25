@@ -46,7 +46,7 @@ Here's a carousel with slides only. Note the presence of the `.d-block` and `.w-
 
 ### With controls
 
-Adding in the previous and next controls. We recommend using `<button>` elements, but you can also use `<a>` link elements–though in that case, you should also add `role="button"` attributes to the links.
+Adding in the previous and next controls. We recommend using `<button>` elements, but you can also use `<a>` elements with `role="button"`.
 
 {{< example >}}
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
