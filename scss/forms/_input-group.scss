@@ -119,3 +119,7 @@
     @include border-start-radius(0);
   }
 }
+
+.input-group-text .form-check-input {
+  margin-top: 0;
+}
