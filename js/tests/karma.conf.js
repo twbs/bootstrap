@@ -77,10 +77,9 @@ if (BUNDLE) {
   )
   conf.customLaunchers = customLaunchers
   conf.detectBrowsers = detectBrowsers
-  files = files.concat([
+  files = [...files,
     JQUERY_FILE,
-    'dist/js/bootstrap.js'
-  ])
+    'dist/js/bootstrap.js']
 } else if (BROWSERSTACK) {
   conf.hostname = ip.address()
   conf.browserStack = {
@@ -94,13 +93,12 @@ if (BUNDLE) {
   conf.customLaunchers = browsers
   conf.browsers = browsersKeys
   reporters.push('BrowserStack')
-  files = files.concat([
+  files = [...files,
     'node_modules/jquery/dist/jquery.slim.min.js',
     'js/dist/util.js',
     'js/dist/tooltip.js',
     // include all of our js/dist files except util.js, index.js and tooltip.js
-    'js/dist/!(util|index|tooltip).js'
-  ])
+    'js/dist/!(util|index|tooltip).js']
 } else {
   frameworks.push('detectBrowsers')
   plugins.push(
@@ -108,13 +106,12 @@ if (BUNDLE) {
     'karma-firefox-launcher',
     'karma-detect-browsers'
   )
-  files = files.concat([
+  files = [...files,
     JQUERY_FILE,
     'js/coverage/dist/util.js',
     'js/coverage/dist/tooltip.js',
     // include all of our js/dist files except util.js, index.js and tooltip.js
-    'js/coverage/dist/!(util|index|tooltip).js'
-  ])
+    'js/coverage/dist/!(util|index|tooltip).js']
   conf.customLaunchers = customLaunchers
   conf.detectBrowsers = detectBrowsers
   if (!USE_OLD_JQUERY) {
