@@ -68,7 +68,7 @@ select.form-control {
     color: transparent;
     text-shadow: 0 0 0 $input-color;
   }
-  
+
   &:focus::-ms-value {
     // Suppress the nested default white text on blue background highlight given to
     // the selected option text when the (still closed) <select> receives focus
