@@ -25,7 +25,8 @@
     "no-var": "off",
     "object-shorthand": "off",
     "prefer-arrow-callback": "off",
+    "prefer-rest-params": "off",
     "prefer-template": "off",
-    "prefer-rest-params": "off"
+    "unicorn/prefer-spread": "off"
   }
 }
