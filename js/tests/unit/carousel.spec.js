@@ -1154,7 +1154,7 @@ describe('Carousel', () => {
       expect(Carousel.getInstance(carouselEl)).toBeDefined()
     })
 
-    it('should create carousel and go to the next slide on click', done => {
+    it('should create carousel and go to the next slide on click (with real button controls)', done => {
       fixtureEl.innerHTML = [
         '<div id="myCarousel" class="carousel slide">',
         '  <div class="carousel-inner">',
@@ -1162,8 +1162,32 @@ describe('Carousel', () => {
         '    <div id="item2" class="carousel-item">item 2</div>',
         '    <div class="carousel-item">item 3</div>',
         '  </div>',
-        '  <div class="carousel-control-prev" data-bs-target="#myCarousel" role="button" data-bs-slide="prev"></div>',
-        '  <div id="next" class="carousel-control-next" data-bs-target="#myCarousel" role="button" data-bs-slide="next"></div>',
+        '  <button class="carousel-control-prev" data-bs-target="#myCarousel" type="button" data-bs-slide="prev"></button>',
+        '  <button id="next" class="carousel-control-next" data-bs-target="#myCarousel" type="button" data-bs-slide="next"></div>',
+        '</div>'
+      ].join('')
+
+      const next = fixtureEl.querySelector('#next')
+      const item2 = fixtureEl.querySelector('#item2')
+
+      next.click()
+
+      setTimeout(() => {
+        expect(item2.classList.contains('active')).toEqual(true)
+        done()
+      }, 10)
+    })
+
+    it('should create carousel and go to the next slide on click (using links as controls)', done => {
+      fixtureEl.innerHTML = [
+        '<div id="myCarousel" class="carousel slide">',
+        '  <div class="carousel-inner">',
+        '    <div class="carousel-item active">item 1</div>',
+        '    <div id="item2" class="carousel-item">item 2</div>',
+        '    <div class="carousel-item">item 3</div>',
+        '  </div>',
+        '  <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev"></button>',
+        '  <a id="next" class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next"></div>',
         '</div>'
       ].join('')
 
@@ -1209,8 +1233,8 @@ describe('Carousel', () => {
         '    <div class="carousel-item">item 2</div>',
         '    <div class="carousel-item">item 3</div>',
         '  </div>',
-        '  <div class="carousel-control-prev" data-bs-target="#myCarousel" role="button" data-bs-slide="prev"></div>',
-        '  <div id="next" class="carousel-control-next" role="button" data-bs-slide="next"></div>',
+        '  <button class="carousel-control-prev" data-bs-target="#myCarousel" type="button" data-bs-slide="prev"></button>',
+        '  <button id="next" class="carousel-control-next" type="button" data-bs-slide="next"></button>',
         '</div>'
       ].join('')
 
@@ -1229,8 +1253,8 @@ describe('Carousel', () => {
         '    <div id="item2" class="carousel-item">item 2</div>',
         '    <div class="carousel-item">item 3</div>',
         '  </div>',
-        '  <div class="carousel-control-prev" data-bs-target="#myCarousel" role="button" data-bs-slide="prev"></div>',
-        '  <div id="next" class="carousel-control-next" data-bs-target="#myCarousel" role="button" data-bs-slide="next"></div>',
+        '  <button class="carousel-control-prev" data-bs-target="#myCarousel" type="button" data-bs-slide="prev"></div>',
+        '  <button id="next" class="carousel-control-next" data-bs-target="#myCarousel" type="button" data-bs-slide="next"></div>',
         '</div>'
       ].join('')
 
