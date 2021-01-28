@@ -10,8 +10,8 @@ import {
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
-  isVisible,
   isRTL,
+  isVisible,
   reflow,
   triggerTransitionEnd,
   typeCheckConfig
@@ -56,8 +56,8 @@ const DefaultType = {
   touch: 'boolean'
 }
 
-const DIRECTION_NEXT = 'next'
-const DIRECTION_PREV = 'prev'
+const ORDER_NEXT = 'next'
+const ORDER_PREV = 'prev'
 const DIRECTION_LEFT = 'left'
 const DIRECTION_RIGHT = 'right'
 
@@ -137,7 +137,7 @@ class Carousel extends BaseComponent {
 
   next() {
     if (!this._isSliding) {
-      this._slide(DIRECTION_NEXT)
+      this._slide(ORDER_NEXT)
     }
   }
 
@@ -151,7 +151,7 @@ class Carousel extends BaseComponent {
 
   prev() {
     if (!this._isSliding) {
-      this._slide(DIRECTION_PREV)
+      this._slide(ORDER_PREV)
     }
   }
 
@@ -208,11 +208,11 @@ class Carousel extends BaseComponent {
       return
     }
 
-    const direction = index > activeIndex ?
-      DIRECTION_NEXT :
-      DIRECTION_PREV
+    const order = index > activeIndex ?
+      ORDER_NEXT :
+      ORDER_PREV
 
-    this._slide(direction, this._items[index])
+    this._slide(order, this._items[index])
   }
 
   dispose() {
@@ -251,23 +251,11 @@ class Carousel extends BaseComponent {
 
     this.touchDeltaX = 0
 
-    // swipe left
-    if (direction > 0) {
-      if (isRTL()) {
-        this.next()
-      } else {
-        this.prev()
-      }
+    if (!direction) {
+      return
     }
 
-    // swipe right
-    if (direction < 0) {
-      if (isRTL()) {
-        this.prev()
-      } else {
-        this.next()
-      }
-    }
+    this._slide(direction > 0 ? DIRECTION_RIGHT : DIRECTION_LEFT)
   }
 
   _addEventListeners() {
@@ -350,18 +338,10 @@ class Carousel extends BaseComponent {
 
     if (event.key === ARROW_LEFT_KEY) {
       event.preventDefault()
-      if (isRTL()) {
-        this.next()
-      } else {
-        this.prev()
-      }
+      this._slide(DIRECTION_LEFT)
     } else if (event.key === ARROW_RIGHT_KEY) {
       event.preventDefault()
-      if (isRTL()) {
-        this.prev()
-      } else {
-        this.next()
-      }
+      this._slide(DIRECTION_RIGHT)
     }
   }
 
@@ -373,19 +353,19 @@ class Carousel extends BaseComponent {
     return this._items.indexOf(element)
   }
 
-  _getItemByDirection(direction, activeElement) {
-    const isNextDirection = direction === DIRECTION_NEXT
-    const isPrevDirection = direction === DIRECTION_PREV
+  _getItemByOrder(order, activeElement) {
+    const isNext = order === ORDER_NEXT
+    const isPrev = order === ORDER_PREV
     const activeIndex = this._getItemIndex(activeElement)
     const lastItemIndex = this._items.length - 1
-    const isGoingToWrap = (isPrevDirection && activeIndex === 0) ||
-                            (isNextDirection && activeIndex === lastItemIndex)
+    const isGoingToWrap = (isPrev && activeIndex === 0) ||
+      (isNext && activeIndex === lastItemIndex)
 
     if (isGoingToWrap && !this._config.wrap) {
       return activeElement
     }
 
-    const delta = direction === DIRECTION_PREV ? -1 : 1
+    const delta = isPrev ? -1 : 1
     const itemIndex = (activeIndex + delta) % this._items.length
 
     return itemIndex === -1 ?
@@ -407,12 +387,7 @@ class Carousel extends BaseComponent {
 
   _setActiveIndicatorElement(element) {
     if (this._indicatorsElement) {
-      const activeIndicator = SelectorEngine.findOne(SELECTOR_ACTIVE, this._indicatorsElement)
-
-      activeIndicator.classList.remove(CLASS_NAME_ACTIVE)
-      activeIndicator.removeAttribute('aria-current')
-
-      const indicators = SelectorEngine.find(SELECTOR_INDICATOR, this._indicatorsElement)
+      const indicators = SelectorEngine.find(SELECTOR_ACTIVE, this._indicatorsElement)
 
       for (let i = 0; i < indicators.length; i++) {
         if (Number.parseInt(indicators[i].getAttribute('data-bs-slide-to'), 10) === this._getItemIndex(element)) {
@@ -442,16 +417,18 @@ class Carousel extends BaseComponent {
   }
 
   _slide(direction, element) {
+    const order = this._directionToOrder(direction)
     const activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
     const activeElementIndex = this._getItemIndex(activeElement)
-    const nextElement = element || (activeElement && this._getItemByDirection(direction, activeElement))
+    const nextElement = element || this._getItemByOrder(order, activeElement)
 
     const nextElementIndex = this._getItemIndex(nextElement)
     const isCycling = Boolean(this._interval)
 
-    const directionalClassName = direction === DIRECTION_NEXT ? CLASS_NAME_START : CLASS_NAME_END
-    const orderClassName = direction === DIRECTION_NEXT ? CLASS_NAME_NEXT : CLASS_NAME_PREV
-    const eventDirectionName = direction === DIRECTION_NEXT ? DIRECTION_LEFT : DIRECTION_RIGHT
+    const isNext = order === ORDER_NEXT
+    const directionalClassName = isNext ? CLASS_NAME_START : CLASS_NAME_END
+    const orderClassName = isNext ? CLASS_NAME_NEXT : CLASS_NAME_PREV
+    const eventDirectionName = isNext ? DIRECTION_LEFT : DIRECTION_RIGHT
 
     if (nextElement && nextElement.classList.contains(CLASS_NAME_ACTIVE)) {
       this._isSliding = false
@@ -522,6 +499,22 @@ class Carousel extends BaseComponent {
     if (isCycling) {
       this.cycle()
     }
+  }
+
+  _directionToOrder(direction) {
+    if (![DIRECTION_RIGHT, DIRECTION_LEFT].includes(direction)) {
+      return direction
+    }
+
+    if (!this._isRtl()) {
+      return direction === DIRECTION_RIGHT ? ORDER_NEXT : ORDER_PREV
+    }
+
+    return direction === DIRECTION_RIGHT ? ORDER_PREV : ORDER_NEXT
+  }
+
+  _isRtl() {
+    return isRTL
   }
 
   // Static
