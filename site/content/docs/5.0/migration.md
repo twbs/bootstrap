@@ -13,12 +13,14 @@ toc: true
 
 #### Utilities
 
+- Renamed `--aspect-ratio` to `--bs-aspect-ratio` to be consistent with other custom properties.
 - Extended the `.visually-hidden-focusable` helper to also work on containers, using `:focus-within`.
 - `bootstrap-utilities.css` now also includes our helpers. Helpers don't need to be imported in custom builds anymore.
 - Extended form validation states customization capabilities. Added three new optional parameters to the `form-validation-state` mixin: `tooltip-color`, `tooltip-bg-color`, `focus-box-shadow`. These parameters can be set in the `$form-validation-states` map. [See #31757](https://github.com/twbs/bootstrap/pull/31757).
 
 ### JavaScript
 
+- Restored `offset` option for Dropdown, Popover and Tooltip plugins.
 - The default value for the `fallbackPlacements` is changed to `['top', 'right', 'bottom', 'left']` for better placement of popper elements.
 
 ## v5.0.0-beta1
@@ -49,7 +51,9 @@ Horizontal direction sensitive variables, utilities and mixins are renamed with 
 - Renamed `.pl-*` and `.pr-*` to `.ps-*` and `.pe-*`.
 - Renamed `.text-left` and `.text-right` to `.text-start` and `.text-end`.
 
-Breakpoints specific variants are consequently renamed too (eg. `.text-md-start` replaces `.text-md-left`).
+Breakpoints specific variants are consequently renamed too (e.g. `.text-md-start` replaces `.text-md-left`).
+
+**Note**: if you used v4 to make RTL pages, ensure to reverse changes mentioned above: e.g. use `.*-start` were you used `.*-right`.
 
 ##### Mixins
 
@@ -126,6 +130,7 @@ Breakpoints specific variants are consequently renamed too (eg. `.text-md-start`
   - Renamed `.font-style-*` utilities as `.fst-*` for brevity and consistency.
 - Added `.d-grid` to display utilities
 - Added new `gap` utilities (`.gap`) for CSS Grid layouts
+- Removed `.rounded-sm` and `rounded-lg`, and introduced `.rounded-0` to `.rounded-3`. [See #31687](https://github.com/twbs/bootstrap/pull/31687).
 
 ## v5.0.0-alpha2
 
@@ -370,6 +375,7 @@ Changes to Reboot, typography, tables, and more.
 - Dropped support for `.form-control-plaintext` inside `.input-group`s.
 - Dropped `.input-group-append` and `.input-group-prepend`. You can now just add buttons and `.input-group-text` as direct children of the input groups.
 - Form labels now require the `.form-label` class. Sass variables are now available to style form labels to your needs. [See #30476](https://github.com/twbs/bootstrap/pull/30476)
+- `.form-text` no longer sets `display`, but does set `color` and `font-size`. So instead of `<small class="form-text text-muted">` you should now use `<div class="form-text">`.
 
 ### Components
 

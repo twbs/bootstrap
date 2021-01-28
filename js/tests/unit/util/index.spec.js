@@ -234,7 +234,7 @@ describe('Util', () => {
 
       expect(() => {
         Util.typeCheckConfig(namePlugin, config, defaultType)
-      }).toThrow(new Error('COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".'))
+      }).toThrowError(TypeError, 'COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".')
     })
 
     it('should return null stringified when null is passed', () => {

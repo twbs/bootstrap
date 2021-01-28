@@ -72,7 +72,7 @@ const PLACEMENT_RIGHT = isRTL ? 'left-start' : 'right-start'
 const PLACEMENT_LEFT = isRTL ? 'right-start' : 'left-start'
 
 const Default = {
-  offset: 0,
+  offset: [0, 0],
   flip: true,
   boundary: 'clippingParents',
   reference: 'toggle',
@@ -81,7 +81,7 @@ const Default = {
 }
 
 const DefaultType = {
-  offset: '(number|string|function)',
+  offset: '(array|string|function)',
   flip: 'boolean',
   boundary: '(string|element)',
   reference: '(string|element|object)',
@@ -263,7 +263,7 @@ class Dropdown extends BaseComponent {
       typeof config.reference.getBoundingClientRect !== 'function'
     ) {
       // Popper virtual elements require a getBoundingClientRect method
-      throw new Error(`${NAME}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`)
+      throw new TypeError(`${NAME.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`)
     }
 
     return config
@@ -298,6 +298,20 @@ class Dropdown extends BaseComponent {
     return this._element.closest(`.${CLASS_NAME_NAVBAR}`) !== null
   }
 
+  _getOffset() {
+    const { offset } = this._config
+
+    if (typeof offset === 'string') {
+      return offset.split(',').map(val => Number.parseInt(val, 10))
+    }
+
+    if (typeof offset === 'function') {
+      return popperData => offset(popperData, this._element)
+    }
+
+    return offset
+  }
+
   _getPopperConfig() {
     const popperConfig = {
       placement: this._getPlacement(),
@@ -312,6 +326,12 @@ class Dropdown extends BaseComponent {
         name: 'flip',
         options: {
           fallbackPlacements: ['top', 'right', 'bottom', 'left']
+        }
+      },
+      {
+        name: 'offset',
+        options: {
+          offset: this._getOffset()
         }
       }]
     }

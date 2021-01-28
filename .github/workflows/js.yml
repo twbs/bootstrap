@@ -7,7 +7,6 @@ on:
   pull_request:
 
 env:
-  CI: true
   FORCE_COLOR: 2
 
 jobs:
@@ -25,7 +24,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
 
@@ -35,8 +34,8 @@ jobs:
           path: ~/.npm
           key: ${{ runner.os }}-node-v${{ matrix.node }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}}
           restore-keys: |
-            ${{ runner.OS }}-node-v${{ matrix.node }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
-            ${{ runner.OS }}-node-v${{ matrix.node }}-
+            ${{ runner.os }}-node-v${{ matrix.node }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
+            ${{ runner.os }}-node-v${{ matrix.node }}-
 
       - name: Install npm dependencies
         run: npm ci
@@ -48,7 +47,7 @@ jobs:
         run: npm run js-test
 
       - name: Run Coveralls
-        uses: coverallsapp/github-action@master
+        uses: coverallsapp/github-action@v1.1.2
         if: matrix.node == 14
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
