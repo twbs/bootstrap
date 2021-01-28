@@ -9,7 +9,9 @@ const { browsers, browsersKeys } = require('./browsers')
 const USE_OLD_JQUERY = Boolean(process.env.USE_OLD_JQUERY)
 const BUNDLE = Boolean(process.env.BUNDLE)
 const BROWSERSTACK = Boolean(process.env.BROWSERSTACK)
-const JQUERY_FILE = USE_OLD_JQUERY ? 'https://code.jquery.com/jquery-1.9.1.min.js' : 'node_modules/jquery/dist/jquery.slim.min.js'
+const JQUERY_FILE = USE_OLD_JQUERY ?
+  'https://cdn.jsdelivr.net/npm/jquery@1.9.1/jquery.min.js' :
+  'node_modules/jquery/dist/jquery.slim.min.js'
 
 const frameworks = [
   'qunit',
