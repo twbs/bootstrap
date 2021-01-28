@@ -90,7 +90,7 @@ function main(args) {
     '.git',
     '_gh_pages',
     'node_modules',
-    'vendor'
+    'resources'
   ])
   const INCLUDED_EXTENSIONS = new Set([
     // This extension whitelist is how we avoid modifying binary files
