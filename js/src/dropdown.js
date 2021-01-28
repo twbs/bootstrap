@@ -482,7 +482,7 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, parent).filter(isVisible)
+    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, parent).filter(item => isVisible(item))
 
     if (!items.length) {
       return
