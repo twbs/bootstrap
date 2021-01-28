@@ -20,6 +20,7 @@ toc: true
 
 ### JavaScript
 
+- Restored `offset` option for Dropdown, Popover and Tooltip plugins.
 - The default value for the `fallbackPlacements` is changed to `['top', 'right', 'bottom', 'left']` for better placement of popper elements.
 
 ## v5.0.0-beta1
