@@ -47,7 +47,7 @@ jobs:
         run: npm run js-test
 
       - name: Run Coveralls
-        uses: coverallsapp/github-action@master
+        uses: coverallsapp/github-action@v1.1.2
         if: matrix.node == 14
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"

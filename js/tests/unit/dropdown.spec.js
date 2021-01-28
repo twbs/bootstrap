@@ -54,6 +54,54 @@ describe('Dropdown', () => {
       expect(dropdown.toggle).toHaveBeenCalled()
     })
 
+    it('should create offset modifier correctly when offset option is a function', done => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Secondary link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const getOffset = jasmine.createSpy('getOffset').and.returnValue([10, 20])
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdown = new Dropdown(btnDropdown, {
+        offset: getOffset,
+        popperConfig: {
+          onFirstUpdate: state => {
+            expect(getOffset).toHaveBeenCalledWith({
+              popper: state.rects.popper,
+              reference: state.rects.reference,
+              placement: state.placement
+            }, btnDropdown)
+            done()
+          }
+        }
+      })
+      const offset = dropdown._getOffset()
+
+      expect(typeof offset).toEqual('function')
+
+      dropdown.show()
+    })
+
+    it('should create offset modifier correctly when offset option is a string into data attribute', () => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-offset="10,20">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Secondary link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdown = new Dropdown(btnDropdown)
+
+      expect(dropdown._getOffset()).toEqual([10, 20])
+    })
+
     it('should allow to pass config to Popper with `popperConfig`', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
