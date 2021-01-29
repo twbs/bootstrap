@@ -3,6 +3,8 @@
 // Variables should follow the `$component-state-property-size` formula for
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
+$default-color-scheme: light !default;
+
 // Color system
 
 $white:    #fff !default;
@@ -55,6 +57,7 @@ $colors: (
   "teal":       $teal,
   "cyan":       $cyan,
   "white":      $white,
+  "black":      $black,
   "gray":       $gray-600,
   "gray-dark":  $gray-800
 ) !default;
@@ -219,6 +222,7 @@ $enable-validation-icons:     true !default;
 $enable-negative-margins:     false !default;
 $enable-deprecation-messages: true !default;
 $enable-important-utilities:  true !default;
+$enable-color-schemes:        false !default;  // requires `@import "variables-alt";`
 
 // Prefix for :root CSS variables
 
