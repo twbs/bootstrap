@@ -20,6 +20,7 @@ toc: true
 
 ### JavaScript
 
+- Restored `offset` option for Dropdown, Popover and Tooltip plugins.
 - The default value for the `fallbackPlacements` is changed to `['top', 'right', 'bottom', 'left']` for better placement of popper elements.
 
 ## v5.0.0-beta1
@@ -374,6 +375,7 @@ Changes to Reboot, typography, tables, and more.
 - Dropped support for `.form-control-plaintext` inside `.input-group`s.
 - Dropped `.input-group-append` and `.input-group-prepend`. You can now just add buttons and `.input-group-text` as direct children of the input groups.
 - Form labels now require the `.form-label` class. Sass variables are now available to style form labels to your needs. [See #30476](https://github.com/twbs/bootstrap/pull/30476)
+- `.form-text` no longer sets `display`, but does set `color` and `font-size`. So instead of `<small class="form-text text-muted">` you should now use `<div class="form-text">`.
 
 ### Components
 

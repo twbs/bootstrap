@@ -39,7 +39,7 @@
     })
   }
 
-  document.querySelectorAll('.toast')
+  document.querySelectorAll('.bd-example .toast')
     .forEach(function (toastNode) {
       var toast = new bootstrap.Toast(toastNode, {
         autohide: false
@@ -47,6 +47,16 @@
 
       toast.show()
     })
+
+  var toastTrigger = document.getElementById('liveToastBtn')
+  var toastLiveExample = document.getElementById('liveToast')
+  if (toastTrigger) {
+    toastTrigger.addEventListener('click', function () {
+      var toast = new bootstrap.Toast(toastLiveExample)
+
+      toast.show()
+    })
+  }
 
   // Demos within modals
   document.querySelectorAll('.tooltip-test')
