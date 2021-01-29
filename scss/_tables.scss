@@ -169,6 +169,11 @@
 
       color: $table-color-alt;
       border-color: $table-border-color-alt;
+
+      // Highlight border color between thead, tbody and tfoot.
+      > :not(:last-child) > :last-child > * {
+        border-bottom-color: $table-group-separator-color-alt;
+      }
     }
 
 
