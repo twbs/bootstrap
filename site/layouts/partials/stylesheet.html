@@ -1,12 +1,21 @@
 {{- "<!-- Bootstrap core CSS -->" | safeHTML }}
 {{ if eq hugo.Environment "production" -}}
-{{ if eq .Page.Params.direction "rtl" -}}
-<link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap.rtl.min.css" rel="stylesheet" {{ printf "integrity=%q" .Site.Params.cdn.css_rtl_hash | safeHTMLAttr }} crossorigin="anonymous">
+  {{ if eq .Page.Params.direction "rtl" -}}
+    <link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap.rtl.min.css" rel="stylesheet" {{ printf "integrity=%q" .Site.Params.cdn.css_rtl_hash | safeHTMLAttr }} crossorigin="anonymous">
+  {{- else -}}
+
+    {{ if eq .Page.Params.color_scheme "dark" -}}
+      <link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap-dark.min.css" rel="stylesheet" {{ printf "integrity=%q" .Site.Params.cdn.css_hash | safeHTMLAttr }} crossorigin="anonymous">
+    {{- else -}}
+      <link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap.min.css" rel="stylesheet" {{ printf "integrity=%q" .Site.Params.cdn.css_hash | safeHTMLAttr }} crossorigin="anonymous">
+    {{- end -}}
+  {{- end -}}
 {{- else -}}
-<link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap.min.css" rel="stylesheet" {{ printf "integrity=%q" .Site.Params.cdn.css_hash | safeHTMLAttr }} crossorigin="anonymous">
-{{- end -}}
-{{- else -}}
-<link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap{{ if eq .Page.Params.direction "rtl" }}.rtl{{ end }}.css" rel="stylesheet">
+  {{ if eq .Page.Params.color_scheme "dark" -}}
+    <link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap-dark.css" rel="stylesheet">
+  {{- else -}}
+    <link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap{{ if eq .Page.Params.direction "rtl" }}.rtl{{ end }}.css" rel="stylesheet">
+    {{- end }}
 {{- end }}
 
 {{- if (ne .Page.Layout "examples") }}

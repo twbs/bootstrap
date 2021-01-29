@@ -35,6 +35,8 @@
       description: "Kitchen sink of Bootstrap components."
     - name: Cheatsheet RTL
       description: "Kitchen sink of Bootstrap components, RTL."
+    - name: Cheatsheet Dark
+      description: "Kitchen sink of Bootstrap components, Dark Mode."
 
 - category: Navbars
   description: "Taking the default navbar component and showing how it can be moved, placed, and extended."
