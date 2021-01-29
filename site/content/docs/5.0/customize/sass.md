@@ -268,3 +268,25 @@ $border-width: 0;
   border-radius: subtract($border-radius, $border-width);
 }
 ```
+
+
+## Mixins
+
+Our `scss/mixins/` directory has a ton of mixins that power parts of Bootstrap and can also be used across your own project.
+
+### Color schemes
+
+A shorthand mixin for the `prefers-color-scheme` media query is available with support for `light`, `dark`, and custom color schemes.
+
+{{< scss-docs name="mixin-color-scheme" file="scss/mixins/_color-scheme.scss" >}}
+
+```scss
+.custom-element {
+  @include prefers-color-scheme(dark) {
+    // Insert dark mode styles here
+  }
+  @include prefers-color-scheme(".custom-class-name") {
+    // Insert custom color scheme styles here
+  }
+}
+```

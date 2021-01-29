@@ -9,12 +9,14 @@
       @content;
     }
   } @else {
-    // assume what gets passed here is not light or dark, thus is a CSS element, e.g. "body.dark"
+    // assume what gets passed here is not light or dark, thus is a CSS element,
+    // e.g. "body.dark", or "[data-theme-dark]"
     #{$scheme} {
       @content;
     }
   }
 }
+// scss-docs-end mixin-color-scheme
 
 @mixin color-scheme-property($scheme: light, $dual: false) {
   @if $dual {
@@ -41,4 +43,4 @@
     @return $scheme;
   }
 }
-// scss-docs-end mixin-color-scheme
+

@@ -18,6 +18,8 @@ sections:
     description: Use Bootstrap's CSS custom properties for fast and forward-looking design and development.
   - title: Optimize
     description: Keep your projects lean, responsive, and maintainable so you can deliver the best experience.
+  - title: Dark Mode
+    description: Use Bootstrap's dark mode to build OS dark mode aware sites.
 ---
 
 ## Overview
