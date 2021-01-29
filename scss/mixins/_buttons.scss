@@ -15,7 +15,8 @@
   $active-color: color-contrast($active-background),
   $disabled-background: $background,
   $disabled-border: $border,
-  $disabled-color: color-contrast($disabled-background)
+  $disabled-color: color-contrast($disabled-background),
+  $btn-box-shadow: $btn-box-shadow
 ) {
   color: $color;
   @include gradient-bg($background);
@@ -72,12 +73,46 @@
   }
 }
 
+// *** only used in dark-mode
+@mixin button-variant-alternative(
+  $background,
+  $border,
+  $color: color-contrast($background, $color-contrast-dark-alt, $color-contrast-light-alt, $min-contrast-ratio-alt),
+  $hover-background: if($color == $color-contrast-light-alt, shade-color($background, $btn-hover-bg-shade-amount-alt), tint-color($background, $btn-hover-bg-tint-amount-alt)),
+  $hover-border: if($color == $color-contrast-light-alt, shade-color($border, $btn-hover-border-shade-amount-alt), tint-color($border, $btn-hover-border-tint-amount-alt)),
+  $hover-color: color-contrast($hover-background, $color-contrast-dark-alt, $color-contrast-light-alt, $min-contrast-ratio-alt),
+  $active-background: if($color == $color-contrast-light-alt, shade-color($background, $btn-active-bg-shade-amount-alt), tint-color($background, $btn-active-bg-tint-amount-alt)),
+  $active-border: if($color == $color-contrast-light-alt, shade-color($border, $btn-active-border-shade-amount-alt), tint-color($border, $btn-active-border-tint-amount-alt)),
+  $active-color: color-contrast($active-background, $color-contrast-dark-alt, $color-contrast-light-alt, $min-contrast-ratio-alt),
+  $disabled-background: $background,
+  $disabled-border: $border,
+  $disabled-color: color-contrast($disabled-background, $color-contrast-dark-alt, $color-contrast-light-alt, $min-contrast-ratio-alt),
+  $btn-box-shadow: $btn-box-shadow-alt
+) {
+  @include button-variant(
+    $background,
+    $border,
+    $color,
+    $hover-background,
+    $hover-border,
+    $hover-color,
+    $active-background,
+    $active-border,
+    $active-color,
+    $disabled-background,
+    $disabled-border,
+    $disabled-color,
+    $btn-box-shadow
+  );
+}
+
 @mixin button-outline-variant(
   $color,
   $color-hover: color-contrast($color),
   $active-background: $color,
   $active-border: $color,
-  $active-color: color-contrast($active-background)
+  $active-color: color-contrast($active-background),
+  $btn-active-box-shadow: $btn-active-box-shadow
 ) {
   color: $color;
   border-color: $color;
@@ -117,6 +152,25 @@
     color: $color;
     background-color: transparent;
   }
+}
+
+// *** only used in dark mode
+@mixin button-outline-variant-alternative(
+  $color,
+  $color-hover: color-contrast($color),
+  $active-background: $color,
+  $active-border: $color,
+  $active-color: color-contrast($active-background),
+  $btn-active-box-shadow: $btn-active-box-shadow-alt
+) {
+  @include button-outline-variant(
+    $color,
+    $color-hover: color-contrast($color),
+    $active-background: $color,
+    $active-border: $color,
+    $active-color: color-contrast($active-background),
+    $btn-active-box-shadow: $btn-active-box-shadow-alt
+  );
 }
 
 // Button sizes

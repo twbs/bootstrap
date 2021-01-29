@@ -1,0 +1,44 @@
+// scss-docs-start mixin-color-scheme
+@mixin prefers-color-scheme($scheme: light) {
+  @if $scheme == dark {
+    @media (prefers-color-scheme: dark) {
+      @content;
+    }
+  } @else if $scheme == light {
+    @media (prefers-color-scheme: light) {
+      @content;
+    }
+  } @else {
+    // assume what gets passed here is not light or dark, thus is a CSS element, e.g. "body.dark"
+    #{$scheme} {
+      @content;
+    }
+  }
+}
+
+@mixin color-scheme-property($scheme: light, $dual: false) {
+  @if $dual {
+    @if $scheme == dark {
+      color-scheme: dark light;
+    } @else if $scheme == light {
+      color-scheme: light dark;
+    }  // else ignore
+  } @else {
+    @if $scheme == dark {
+      color-scheme: dark;
+    } @else if $scheme == light {
+      color-scheme: light;
+    }  // else ignore
+  }
+}
+
+@function alternative-color-scheme($scheme: light) {
+  @if $scheme == dark {
+    @return light;
+  } @else if $scheme == light {
+    @return dark;
+  } @else {
+    @return $scheme;
+  }
+}
+// scss-docs-end mixin-color-scheme

@@ -122,3 +122,70 @@
     }
   }
 }
+
+
+@mixin form-validation-state-alternative(
+  $state,
+  $color,
+  $icon,
+  $tooltip-color: color-contrast($color, $color-contrast-dark-alt, $color-contrast-light-alt, $min-contrast-ratio-alt),
+  $tooltip-bg-color: rgba($color, $form-feedback-tooltip-opacity-alt),
+  $focus-box-shadow: 0 0 0 $input-focus-width rgba($color, $input-btn-focus-color-opacity-alt)
+) {
+  .#{$state}-feedback {
+    color: $color;
+  }
+
+  .#{$state}-tooltip {
+    color: $tooltip-color;
+    background-color: $tooltip-bg-color;
+  }
+
+  .form-control {
+    @include form-validation-state-selector($state) {
+      border-color: $color;
+
+      @if $enable-validation-icons {
+        background-image: escape-svg($icon);
+      }
+
+      &:focus {
+        border-color: $color;
+        box-shadow: $focus-box-shadow;
+      }
+    }
+  }
+
+  .form-select {
+    @include form-validation-state-selector($state) {
+      border-color: $color;
+
+      @if $enable-validation-icons {
+        background-image: escape-svg($form-select-indicator-alt), escape-svg($icon);
+      }
+
+      &:focus {
+        border-color: $color;
+        box-shadow: $focus-box-shadow;
+      }
+    }
+  }
+
+  .form-check-input {
+    @include form-validation-state-selector($state) {
+      border-color: $color;
+
+      &:checked {
+        background-color: $color;
+      }
+
+      &:focus {
+        box-shadow: $focus-box-shadow;
+      }
+
+      ~ .form-check-label {
+        color: $color;
+      }
+    }
+  }
+}
