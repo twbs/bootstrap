@@ -1,0 +1,55 @@
+/*!
+ * Bootstrap Dark Mode v5.0.0-beta2 (https://getbootstrap.com/)
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+
+// Enable dark mode
+$enable-color-schemes: true;  // stylelint-disable-line
+// $default-color-scheme: dark;  // stylelint-disable-line  // to create a dark default, light alternative
+// $default-color-scheme: "body.dark";  // stylelint-disable-line  // to create a class based alternative, e.g. toggle button usecase
+
+// Configuration
+@import "functions";
+@import "variables";
+@import "variables-alt";  // required for alternative color scheme
+@import "mixins";
+@import "utilities";
+
+// Layout & components
+@import "root";
+@import "reboot";
+@import "type";
+@import "images";
+@import "containers";
+@import "grid";
+@import "tables";
+@import "forms";
+@import "buttons";
+@import "transitions";
+@import "dropdown";
+@import "button-group";
+@import "nav";
+@import "navbar";
+@import "card";
+@import "accordion";
+@import "breadcrumb";
+@import "pagination";
+@import "badge";
+@import "alert";
+@import "progress";
+@import "list-group";
+@import "close";
+@import "toasts";
+@import "modal";
+@import "tooltip";
+@import "popover";
+@import "carousel";
+@import "spinners";
+
+// Helpers
+@import "helpers";
+
+// Utilities
+@import "utilities/api";
