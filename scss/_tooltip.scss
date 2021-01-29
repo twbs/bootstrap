@@ -113,3 +113,73 @@
   background-color: $tooltip-bg;
   @include border-radius($tooltip-border-radius);
 }
+
+
+// Dark mode
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Base class
+    .tooltip {
+      opacity: 0;
+
+      &.show { opacity: $tooltip-opacity-alt; }
+    }
+
+    .bs-tooltip-top {
+      .tooltip-arrow {
+        &::before {
+          border-top-color: $tooltip-arrow-color-alt;
+        }
+      }
+    }
+
+    .bs-tooltip-end {
+      .tooltip-arrow {
+        &::before {
+          border-right-color: $tooltip-arrow-color-alt;
+        }
+      }
+    }
+
+    .bs-tooltip-bottom {
+      .tooltip-arrow {
+        &::before {
+          border-bottom-color: $tooltip-arrow-color-alt;
+        }
+      }
+    }
+
+    .bs-tooltip-start {
+      .tooltip-arrow {
+        &::before {
+          border-left-color: $tooltip-arrow-color-alt;
+        }
+      }
+    }
+
+    // DON'T REMOVE THESE
+    .bs-tooltip-auto {
+      &[data-popper-placement^="top"] {
+        @extend .bs-tooltip-top;
+      }
+      &[data-popper-placement^="right"] {
+        @extend .bs-tooltip-end;
+      }
+      &[data-popper-placement^="bottom"] {
+        @extend .bs-tooltip-bottom;
+      }
+      &[data-popper-placement^="left"] {
+        @extend .bs-tooltip-start;
+      }
+    }
+
+    // Wrapper for the tooltip content
+    .tooltip-inner {
+      color: $tooltip-color-alt;
+      background-color: $tooltip-bg-alt;
+    }
+
+  }
+}

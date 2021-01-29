@@ -10,3 +10,18 @@
   @include form-validation-state($state, $data...);
 }
 // scss-docs-end form-validation-states-loop
+
+
+// Dark mode
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Form validation
+
+    @each $state, $data in $form-validation-states-alt {
+      @include form-validation-state-alternative($state, $data...);
+    }
+
+  }
+}

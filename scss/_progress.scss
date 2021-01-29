@@ -43,3 +43,21 @@
     }
   }
 }
+
+// Dark Mode
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    .progress {
+      background-color: $progress-bg-alt;
+      @include box-shadow($progress-box-shadow-alt);
+    }
+
+    .progress-bar {
+      color: $progress-bar-color-alt;
+      background-color: $progress-bar-bg-alt;
+    }
+
+  }
+}

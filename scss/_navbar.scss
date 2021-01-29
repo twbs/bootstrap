@@ -7,6 +7,7 @@
 // Responsive navbar
 // Navbar position
 // Navbar themes
+// Dark Mode
 
 
 // Navbar
@@ -298,5 +299,122 @@
     a:focus {
       color: $navbar-dark-active-color;
     }
+  }
+}
+
+// Dark Mode
+//
+//
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Button for toggling the navbar when in its collapsed state
+    .navbar-toggler {
+      background-color: transparent; // remove default button style
+      border: $border-width solid transparent; // remove default button style
+    }
+
+    // Navbar themes
+    .navbar-light {
+      .navbar-brand {
+        color: $navbar-light-brand-color-alt;
+
+        &:hover,
+        &:focus {
+          color: $navbar-light-brand-hover-color-alt;
+        }
+      }
+
+      .navbar-nav {
+        .nav-link {
+          color: $navbar-light-color-alt;
+
+          &:hover,
+          &:focus {
+            color: $navbar-light-hover-color-alt;
+          }
+
+          &.disabled {
+            color: $navbar-light-disabled-color-alt;
+          }
+        }
+
+        .show > .nav-link,
+        .nav-link.active {
+          color: $navbar-light-active-color-alt;
+        }
+      }
+
+      .navbar-toggler {
+        color: $navbar-light-color-alt;
+        border-color: $navbar-light-toggler-border-color-alt;
+      }
+
+      .navbar-toggler-icon {
+        background-image: escape-svg($navbar-light-toggler-icon-bg-alt);
+      }
+
+      .navbar-text {
+        color: $navbar-light-color-alt;
+
+        a,
+        a:hover,
+        a:focus  {
+          color: $navbar-light-active-color-alt;
+        }
+      }
+    }
+
+    // White links against a dark background
+    .navbar-dark {
+      .navbar-brand {
+        color: $navbar-dark-brand-color-alt;
+
+        &:hover,
+        &:focus {
+          color: $navbar-dark-brand-hover-color-alt;
+        }
+      }
+
+      .navbar-nav {
+        .nav-link {
+          color: $navbar-dark-color-alt;
+
+          &:hover,
+          &:focus {
+            color: $navbar-dark-hover-color-alt;
+          }
+
+          &.disabled {
+            color: $navbar-dark-disabled-color-alt;
+          }
+        }
+
+        .show > .nav-link,
+        .nav-link.active {
+          color: $navbar-dark-active-color-alt;
+        }
+      }
+
+      .navbar-toggler {
+        color: $navbar-dark-color-alt;
+        border-color: $navbar-dark-toggler-border-color-alt;
+      }
+
+      .navbar-toggler-icon {
+        background-image: escape-svg($navbar-dark-toggler-icon-bg-alt);
+      }
+
+      .navbar-text {
+        color: $navbar-dark-color-alt;
+        a,
+        a:hover,
+        a:focus {
+          color: $navbar-dark-active-color-alt;
+        }
+      }
+    }
+
   }
 }

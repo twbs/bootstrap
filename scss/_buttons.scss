@@ -107,3 +107,81 @@
 .btn-sm {
   @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
 }
+
+
+//
+// --- Dark mode ---
+//
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Base styles
+
+    .btn {
+      color: $body-color-alt;
+      background-color: transparent;
+      border: $btn-border-width solid transparent;
+
+      &:hover {
+        color: $body-color-alt;
+      }
+
+      .btn-check:focus + &,
+      &:focus {
+        box-shadow: $btn-focus-box-shadow-alt;
+      }
+
+      .btn-check:checked + &,
+      .btn-check:active + &,
+      &:active,
+      &.active {
+        @include box-shadow($btn-active-box-shadow-alt);
+
+        &:focus {
+          @include box-shadow($btn-focus-box-shadow-alt, $btn-active-box-shadow-alt);
+        }
+      }
+
+      &:disabled,
+      &.disabled,
+      fieldset:disabled & {
+        opacity: $btn-disabled-opacity-alt;
+        @include box-shadow(none);
+      }
+    }
+
+
+    // Alternate buttons
+
+    @each $color, $value in $theme-colors-alt {
+      .btn-#{$color} {
+        @include button-variant-alternative($value, $value);
+      }
+    }
+
+    @each $color, $value in $theme-colors-alt {
+      .btn-outline-#{$color} {
+        @include button-outline-variant-alternative(
+          $value
+        );
+      }
+    }
+
+    // Link buttons
+
+    // Make a button look and behave like a link
+    .btn-link {
+      color: $btn-link-color-alt;
+
+      &:hover {
+        color: $btn-link-hover-color-alt;
+      }
+
+      &:disabled,
+      &.disabled {
+        color: $btn-link-disabled-color-alt;
+      }
+    }
+  }
+}

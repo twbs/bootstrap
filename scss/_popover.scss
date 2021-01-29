@@ -168,3 +168,105 @@
   padding: $popover-body-padding-y $popover-body-padding-x;
   color: $popover-body-color;
 }
+
+
+// dark mode
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    .popover {
+      background-color: $popover-bg-alt;
+      border: $popover-border-width solid $popover-border-color-alt;
+      @include box-shadow($popover-box-shadow-alt);
+
+      .popover-arrow {
+        &::before,
+        &::after {
+          border-color: transparent;
+          border-style: solid;
+        }
+      }
+    }
+
+    .bs-popover-top {
+      > .popover-arrow {
+        &::before {
+          border-top-color: $popover-arrow-outer-color-alt;
+        }
+
+        &::after {
+          border-top-color: $popover-arrow-color-alt;
+        }
+      }
+    }
+
+    .bs-popover-end {
+      > .popover-arrow {
+        &::before {
+          border-right-color: $popover-arrow-outer-color-alt;
+        }
+
+        &::after {
+          border-right-color: $popover-arrow-color-alt;
+        }
+      }
+    }
+
+    .bs-popover-bottom {
+      > .popover-arrow {
+        &::before {
+          border-bottom-color: $popover-arrow-outer-color-alt;
+        }
+
+        &::after {
+          border-bottom-color: $popover-arrow-color-alt;
+        }
+      }
+
+      .popover-header::before {
+        border-bottom: $popover-border-width solid $popover-header-bg-alt;
+      }
+    }
+
+    .bs-popover-start {
+      > .popover-arrow {
+        &::before {
+          border-left-color: $popover-arrow-outer-color-alt;
+        }
+
+        &::after {
+          border-left-color: $popover-arrow-color-alt;
+        }
+      }
+    }
+
+    // DON'T REMOVE THIS
+    .bs-popover-auto {
+      &[data-popper-placement^="top"] {
+        @extend .bs-popover-top;
+      }
+      &[data-popper-placement^="right"] {
+        @extend .bs-popover-end;
+      }
+      &[data-popper-placement^="bottom"] {
+        @extend .bs-popover-bottom;
+      }
+      &[data-popper-placement^="left"] {
+        @extend .bs-popover-start;
+      }
+    }
+
+    // Offset the popover to account for the popover arrow
+    .popover-header {
+      color: $popover-header-color-alt;
+      background-color: $popover-header-bg-alt;
+      border-bottom: $popover-border-width solid shade-color($popover-header-bg-alt, 10%);
+    }
+
+    .popover-body {
+      color: $popover-body-color-alt;
+    }
+
+  }
+}

@@ -233,3 +233,102 @@
     color: $dropdown-dark-header-color;
   }
 }
+
+// --- Dark mode ---
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // The dropdown menu
+    .dropdown-menu {
+      color: $dropdown-color-alt;
+      background-color: $dropdown-bg-alt;
+      border: $dropdown-border-width solid $dropdown-border-color-alt;
+      @include box-shadow($dropdown-box-shadow-alt);
+    }
+
+    // Dividers (basically an `<hr>`) within the dropdown
+    .dropdown-divider {
+      border-top: 1px solid $dropdown-divider-bg-alt;
+    }
+
+    // Links, buttons, and more within the dropdown menu
+    .dropdown-item {
+      color: $dropdown-link-color-alt;
+      background-color: transparent; // For `<button>`s
+      border: 0; // For `<button>`s
+
+      &:hover,
+      &:focus {
+        color: $dropdown-link-hover-color-alt;
+        @include gradient-bg($dropdown-link-hover-bg-alt);
+      }
+
+      &.active,
+      &:active {
+        color: $dropdown-link-active-color-alt;
+        @include gradient-bg($dropdown-link-active-bg-alt);
+      }
+
+      &.disabled,
+      &:disabled {
+        color: $dropdown-link-disabled-color-alt;
+        background-color: transparent;
+        // Remove CSS gradients if they're enabled
+        background-image: if($enable-gradients, none, null);
+      }
+    }
+
+    // Dropdown section headers
+    .dropdown-header {
+      color: $dropdown-header-color-alt;
+    }
+
+    // Dropdown text
+    .dropdown-item-text {
+      color: $dropdown-link-color-alt;
+    }
+
+    // Dark dropdowns
+    .dropdown-menu-dark {
+      color: $dropdown-dark-color-alt;
+      background-color: $dropdown-dark-bg-alt;
+      border-color: $dropdown-dark-border-color-alt;
+      @include box-shadow($dropdown-dark-box-shadow-alt);
+
+      .dropdown-item {
+        color: $dropdown-dark-link-color-alt;
+
+        &:hover,
+        &:focus {
+          color: $dropdown-dark-link-hover-color-alt;
+          @include gradient-bg($dropdown-dark-link-hover-bg-alt);
+        }
+
+        &.active,
+        &:active {
+          color: $dropdown-dark-link-active-color-alt;
+          @include gradient-bg($dropdown-dark-link-active-bg-alt);
+        }
+
+        &.disabled,
+        &:disabled {
+          color: $dropdown-dark-link-disabled-color-alt;
+        }
+      }
+
+      .dropdown-divider {
+        border-color: $dropdown-dark-divider-bg-alt;
+      }
+
+      .dropdown-item-text {
+        color: $dropdown-dark-link-color-alt;
+      }
+
+      .dropdown-header {
+        color: $dropdown-dark-header-color-alt;
+      }
+    }
+
+  }
+}

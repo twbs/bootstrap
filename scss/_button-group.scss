@@ -137,3 +137,22 @@
     @include border-top-radius(0);
   }
 }
+
+//
+// Dark Mode
+//
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    .btn-group.show .dropdown-toggle {
+      @include box-shadow($btn-active-box-shadow-alt);
+
+      // Show no shadow for `.btn-link` since it has no other button styles.
+      &.btn-link {
+        @include box-shadow(none);
+      }
+    }
+
+  }
+}

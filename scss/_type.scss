@@ -102,3 +102,48 @@
     content: "\2014\00A0"; // em dash, nbsp
   }
 }
+
+// --- Dark mode ---
+
+@if $default-color-scheme == dark {
+  ::selection {
+    color: $selection-color-dark-scheme;
+    background: $selection-bg-dark-scheme;
+  }
+
+  // stylelint-disable-next-line selector-no-vendor-prefix
+  ::-moz-selection {
+    color: $selection-color-dark-scheme;
+    background: $selection-bg-dark-scheme;
+  }
+}
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Misc
+
+    .blockquote-footer {
+      color: $blockquote-footer-color-alt;
+    }
+  }
+
+  @if $default-color-scheme == light {
+    // from Chris Coyier on Jul 26, 2016: https://css-tricks.com/overriding-the-default-text-selection-color-with-css/
+
+    // WebKit/Blink Browsers
+    ::selection {
+      color: $selection-color-dark-scheme;
+      background: $selection-bg-dark-scheme;
+    }
+
+    // Gecko Browsers
+    // (do not combine)
+    // stylelint-disable-next-line selector-no-vendor-prefix
+    ::-moz-selection {
+      color: $selection-color-dark-scheme;
+      background: $selection-bg-dark-scheme;
+    }
+  }
+
+}

@@ -213,3 +213,49 @@
     }
   }
 }
+
+//
+// Dark Mode
+//
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Base styles
+
+    .card {
+      background-color: $card-bg-alt;
+      border: $card-border-width solid $card-border-color-alt;
+    }
+
+    .card-body {
+      color: $card-color-alt;
+    }
+
+    // Optional textual caps
+
+    .card-header {
+      color: $card-cap-color-alt;
+      background-color: $card-cap-bg-alt;
+      border-bottom: $card-border-width solid $card-border-color-alt;
+    }
+
+    .card-footer {
+      color: $card-cap-color-alt;
+      background-color: $card-cap-bg-alt;
+      border-top: $card-border-width solid $card-border-color-alt;
+    }
+
+    // Header navs
+
+    .card-header-tabs {
+      @if $nav-tabs-link-active-bg != $card-bg {
+        .nav-link.active {
+          background-color: $card-bg-alt;
+          border-bottom-color: $card-bg-alt;
+        }
+      }
+    }
+
+  }
+}

@@ -123,3 +123,45 @@
     }
   }
 }
+
+
+//
+// Dark Mode
+//
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Base styles
+
+    .accordion-button {
+      color: $accordion-button-color-alt;
+      background-color: $accordion-button-bg-alt;
+      border: $accordion-border-width solid $accordion-border-color-alt;
+
+      &:not(.collapsed) {
+        color: $accordion-button-active-color-alt;
+        background-color: $accordion-button-active-bg-alt;
+
+        &::after {
+          background-image: escape-svg($accordion-button-active-icon-alt);
+        }
+      }
+
+      // Accordion icon
+      &::after {
+        background-image: escape-svg($accordion-button-icon-alt);
+      }
+
+      &:focus {
+        border-color: $accordion-button-focus-border-color-alt;
+        box-shadow: $accordion-button-focus-box-shadow-alt;
+      }
+    }
+
+    .accordion-collapse {
+      border: solid $accordion-border-color-alt;
+    }
+
+  }
+}

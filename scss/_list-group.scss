@@ -161,3 +161,65 @@
   @include list-group-item-variant($state, $list-group-background, $list-group-color);
 }
 // scss-docs-end list-group-modifiers
+
+
+// Dark Mode
+//
+// Support for alternative color mode
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Interactive list items
+
+    .list-group-item-action {
+      color: $list-group-action-color-alt;
+
+      // Hover state
+      &:hover,
+      &:focus {
+        color: $list-group-action-hover-color-alt;
+        background-color: $list-group-hover-bg-alt;
+      }
+
+      &:active {
+        color: $list-group-action-active-color-alt;
+        background-color: $list-group-action-active-bg-alt;
+      }
+    }
+
+    // Individual list items
+
+    .list-group-item {
+      color: $list-group-color-alt;
+      background-color: $list-group-bg-alt;
+      border: $list-group-border-width solid $list-group-border-color-alt;
+
+      &.disabled,
+      &:disabled {
+        color: $list-group-disabled-color-alt;
+        background-color: $list-group-disabled-bg-alt;
+      }
+
+      // Include both here for `<a>`s and `<button>`s
+      &.active {
+        color: $list-group-active-color-alt;
+        background-color: $list-group-active-bg-alt;
+        border-color: $list-group-active-border-color-alt;
+      }
+    }
+
+    // List group contextual variants
+
+    @each $state, $value in $theme-colors-alt {
+      $list-group-background: shift-color($value, $list-group-item-bg-scale-alt);
+      $list-group-color: shift-color($value, $list-group-item-color-scale-alt);
+      @if (contrast-ratio($list-group-background, $list-group-color) < $min-contrast-ratio-alt) {
+        $list-group-color: mix($value, color-contrast($list-group-background, $color-contrast-dark-alt, $color-contrast-light-alt, $min-contrast-ratio-alt), abs($alert-color-scale-alt));
+      }
+
+      @include list-group-item-variant($state, $list-group-background, $list-group-color);
+    }
+
+  }
+}

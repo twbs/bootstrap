@@ -119,3 +119,29 @@
     @include border-start-radius(0);
   }
 }
+
+
+// Dark mode
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Textual addons
+
+    .input-group-text {
+      color: $input-group-addon-color-alt;
+      background-color: $input-group-addon-bg-alt;
+      border: $input-border-width solid $input-group-addon-border-color-alt;
+    }
+
+    // Rounded corners
+
+    .input-group {
+      $validation-messages: "";
+      @each $state in map-keys($form-validation-states-alt) {
+        $validation-messages: $validation-messages + ":not(." + unquote($state) + "-tooltip)" + ":not(." + unquote($state) + "-feedback)";
+      }
+    }
+
+  }
+}

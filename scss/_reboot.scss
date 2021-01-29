@@ -633,3 +633,86 @@ progress {
 [hidden] {
   display: none !important;
 }
+
+// --- Dark mode ---
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Body
+
+    body {
+      color: $body-color-alt;
+      background-color: $body-bg-alt; // 2
+    }
+
+    // Content grouping
+
+    hr {
+      color: $hr-color-alt; // 1
+      // background-color: currentColor;
+      opacity: $hr-opacity-alt;
+    }
+
+    // Typography
+
+    %heading {
+      color: $headings-color-alt;
+    }
+
+    // Mark
+
+    mark {
+      background-color: $mark-bg-alt;
+    }
+
+    // Links
+
+    a {
+      color: $link-color-alt;
+
+      &:hover {
+        color: $link-hover-color-alt;
+      }
+    }
+
+    a:not([href]):not([class]) {
+      &,
+      &:hover {
+        color: inherit;
+      }
+    }
+
+    // Code
+
+    pre {
+      color: $pre-color-alt;
+
+      // Account for some code outputs that place code tags in pre tags
+      code {
+        color: inherit;
+      }
+    }
+
+    code {
+      color: $code-color-alt;
+
+      // Streamline the style when inside anchors to avoid broken underline and more
+      a > & {
+        color: inherit;
+      }
+    }
+
+    kbd {
+      color: $kbd-color-alt;
+      background-color: $kbd-bg-alt;
+    }
+
+    // Tables
+
+    caption {
+      color: $table-caption-color-alt;
+    }
+
+  }
+}

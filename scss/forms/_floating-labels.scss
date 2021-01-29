@@ -59,3 +59,29 @@
   }
   // stylelint-enable no-duplicate-selectors
 }
+
+
+// Dark mode
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    .form-floating {
+
+      > .form-control:focus,
+      > .form-control:not(:placeholder-shown),
+      > .form-select {
+        ~ label {
+          opacity: $form-floating-label-opacity-alt;
+        }
+      }
+      // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
+      > .form-control:-webkit-autofill {
+        ~ label {
+          opacity: $form-floating-label-opacity-alt;
+        }
+      }
+    }
+
+  }
+}

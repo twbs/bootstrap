@@ -211,7 +211,7 @@
   text-align: center;
 }
 
-// Dark mode carousel
+// Dark variant carousel
 
 .carousel-dark {
   .carousel-control-prev-icon,
@@ -225,5 +225,79 @@
 
   .carousel-caption {
     color: $carousel-dark-caption-color;
+  }
+}
+
+
+// color-scheme dark mode carousel
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Left/right controls for nav
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      color: $carousel-control-color-alt;
+      opacity: $carousel-control-opacity-alt;
+
+      // Hover/focus state
+      &:hover,
+      &:focus {
+        color: $carousel-control-color-alt;
+        opacity: $carousel-control-hover-opacity-alt;
+      }
+    }
+    .carousel-control-prev {
+      background-image: if($enable-gradients, linear-gradient(90deg, rgba($white-alt, .25), rgba($white-alt, .001)), null);
+    }
+    .carousel-control-next {
+      background-image: if($enable-gradients, linear-gradient(270deg, rgba($white, .25), rgba($white, .001)), null);
+    }
+
+    // Icons for within
+    .carousel-control-prev-icon {
+      background-image: escape-svg($carousel-control-prev-icon-bg-alt);
+    }
+    .carousel-control-next-icon {
+      background-image: escape-svg($carousel-control-next-icon-bg-alt);
+    }
+
+    // Optional indicator pips
+
+    .carousel-indicators {
+      [data-bs-target] {
+        background-color: $carousel-indicator-active-bg-alt;
+        opacity: $carousel-indicator-opacity-alt;
+      }
+
+      .active {
+        opacity: $carousel-indicator-active-opacity-alt;
+      }
+    }
+
+    // Optional captions
+
+    .carousel-caption {
+      color: $carousel-caption-color-alt;
+    }
+
+    // Dark variant carousel
+
+    .carousel-dark {
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        filter: $carousel-dark-control-icon-filter-alt;
+      }
+
+      .carousel-indicators [data-bs-target] {
+        background-color: $carousel-dark-indicator-active-bg-alt;
+      }
+
+      .carousel-caption {
+        color: $carousel-dark-caption-color-alt;
+      }
+    }
+
   }
 }

@@ -1,0 +1,653 @@
+// Alternate Variables (for use in Dark Mode variant)
+
+// Color system
+// ______________________________________
+
+$color-schemes: (
+  light,
+  dark
+  // no-preference  // don't think any browser exposes this.
+) !default;
+
+// items marked //** from https://bootswatch.com/darkly/
+// items marked //~~ from https://uxdesign.cc/dark-mode-ui-design-the-definitive-guide-part-1-color-53dcfaea5129
+
+$white-alt:    #fafafa !default;
+$gray-100-alt: #e1e1e1 !default;  //~~
+$gray-200-alt: #cfcfcf !default;  //~~
+$gray-300-alt: #b1b1b1 !default;  //~~
+$gray-400-alt: #9e9e9e !default;  //~~
+$gray-500-alt: #7e7e7e !default;  //~~
+$gray-600-alt: #626262 !default;  //~~
+$gray-700-alt: #515151 !default;  //~~
+$gray-800-alt: #3b3b3b !default;  //~~
+$gray-900-alt: #222 !default;  //~~
+$black-alt:    #111 !default;  //~~
+
+// fusv-disable
+$grays-alt: (
+  "100": $gray-100-alt,
+  "200": $gray-200-alt,
+  "300": $gray-300-alt,
+  "400": $gray-400-alt,
+  "500": $gray-500-alt,
+  "600": $gray-600-alt,
+  "700": $gray-700-alt,
+  "800": $gray-800-alt,
+  "900": $gray-900-alt
+) !default;
+// fusv-enable
+
+$blue-alt:    #375a7f !default;
+$indigo-alt:  #673ab7 !default;  //~~
+$purple-alt:  #654ea3 !default;  // Panatone CotY 2018
+$pink-alt:    #e83e8c !default;
+$red-alt:     #e74c3c !default;  //**
+$orange-alt:  #fd7e14 !default;
+$yellow-alt:  #f39c12 !default;  //**
+$green-alt:   #00bc8c !default;  //**
+$teal-alt:    #45b5aa !default;  // Panatone CotY 2010
+$cyan-alt:    #17a2b8 !default;
+
+$colors-alt: (
+  "blue":       $blue-alt,
+  "indigo":     $indigo-alt,
+  "purple":     $purple-alt,
+  "pink":       $pink-alt,
+  "red":        $red-alt,
+  "orange":     $orange-alt,
+  "yellow":     $yellow-alt,
+  "green":      $green-alt,
+  "teal":       $teal-alt,
+  "cyan":       $cyan-alt,
+  "white":      $white-alt,
+  "black":      $black-alt,
+  "gray":       #7e7e7e,  // $gray-600,
+  "gray-dark":  #121212  //$gray-800
+) !default;
+
+$primary-alt:       $blue-alt !default;
+$secondary-alt:     $gray-600-alt !default;
+$success-alt:       $green-alt !default;
+$info-alt:          $cyan-alt !default;
+$warning-alt:       $yellow-alt !default;
+$danger-alt:        $red-alt !default;
+$light-alt:         $gray-700-alt !default;
+$dark-alt:          $gray-900-alt !default;  // mix($gray-900-alt, $black-alt, 50%) !default;
+
+$theme-colors-alt: (
+  "primary":    $primary-alt,
+  "secondary":  $secondary-alt,
+  "success":    $success-alt,
+  "info":       $info-alt,
+  "warning":    $warning-alt,
+  "danger":     $danger-alt,
+  "light":      $light-alt,
+  "dark":       $dark-alt
+) !default;
+
+$min-contrast-ratio-alt:   2.5 !default;
+
+$color-contrast-dark-alt:      $black-alt !default;
+$color-contrast-light-alt:     $white-alt !default;
+
+
+// Gradient
+// ______________________________________
+// The gradient which is added to components if `$enable-gradients` is `true`
+// This gradient is also added to elements with `.bg-gradient`
+$gradient-alt: linear-gradient(180deg, rgba($black-alt, .15), rgba($black-alt, 0)) !default;
+
+
+// Body
+// ______________________________________
+// Settings for the `<body>` element.
+
+$body-bg-alt:                   $gray-900-alt !default;  // $white !default;
+$body-color-alt:                $gray-100-alt !default;  // $gray-900 !default;
+
+
+// Links
+// ______________________________________
+// Style anchor elements.
+
+$link-color-alt:                              shift-color($primary-alt, -15%) !default;
+$link-shade-percentage-alt:                   20% !default;  // TODO: should be -20%;
+$link-hover-color-alt:                        tint-color($link-color-alt, $link-shade-percentage-alt) !default;  // TODO: shift-color
+
+
+// Components
+// ______________________________________
+// Define common padding and border radius sizes and more.
+
+$border-color-alt:                $gray-700-alt !default;
+
+$box-shadow-alt:                  0 .5rem 1rem rgba($black-alt, .15) !default;
+$box-shadow-sm-alt:               0 .125rem .25rem rgba($black-alt, .075) !default;
+$box-shadow-lg-alt:               0 1rem 3rem rgba($black-alt, .175) !default;
+$box-shadow-inset-alt:            inset 0 1px 2px rgba($black-alt, .075) !default;
+
+$component-active-color-alt:      $white-alt !default;
+$component-active-bg-alt:         $primary-alt !default;
+
+
+// Typography
+// ______________________________________
+// Font, line-height, and color for body text, headings, and more.
+
+
+$headings-color-alt:              null !default;
+
+$text-muted-alt:                  $gray-400-alt !default;
+
+$blockquote-footer-color-alt:     $gray-600-alt !default;
+
+$hr-color-alt:                    $white-alt !default;
+$hr-opacity-alt:                  .1 !default;
+
+$mark-bg-alt:                     rgba($yellow-alt, .5) !default;
+
+
+// Tables
+// ______________________________________
+// Customizes the `.table` component with basic values, each used across all table variations.
+
+$table-color-alt:                 $body-color-alt !default;
+$table-bg-alt:                    transparent !default;
+
+$table-striped-color-alt:         $table-color-alt !default;
+$table-striped-bg-factor-alt:     .05 !default;
+$table-striped-bg-alt:            rgba($black-alt, $table-striped-bg-factor-alt) !default;
+
+$table-active-color-alt:          $table-color-alt !default;
+$table-active-bg-factor-alt:      .1 !default;
+$table-active-bg-alt:             rgba($black-alt, $table-active-bg-factor-alt) !default;
+
+$table-hover-color-alt:           $table-color-alt !default;
+$table-hover-bg-factor-alt:       .075 !default;
+$table-hover-bg-alt:              rgba($black-alt, $table-hover-bg-factor-alt) !default;
+
+$table-border-factor-alt:         .1 !default;
+$table-border-color-alt:          $border-color-alt !default;
+
+$table-group-separator-color-alt: currentColor !default;
+
+$table-caption-color-alt:         $text-muted-alt !default;
+
+$table-bg-scale-alt:              50% !default;
+
+$table-variants-alt: (
+  "primary":    shift-color($primary-alt, $table-bg-scale-alt),
+  "secondary":  shift-color($secondary-alt, $table-bg-scale-alt),
+  "success":    shift-color($success-alt, $table-bg-scale-alt),
+  "info":       shift-color($info-alt, $table-bg-scale-alt),
+  "warning":    shift-color($warning-alt, $table-bg-scale-alt),
+  "danger":     shift-color($danger-alt, $table-bg-scale-alt),
+  "light":      $light-alt,
+  "dark":       $dark-alt,
+) !default;
+
+
+// Buttons + Forms
+// ______________________________________
+// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
+
+$input-btn-focus-color-opacity-alt: .25 !default;
+$input-btn-focus-color-alt:         rgba($component-active-bg-alt, $input-btn-focus-color-opacity-alt) !default;
+$input-btn-focus-box-shadow-alt:    0 0 0 $input-btn-focus-width $input-btn-focus-color-alt !default;
+
+
+// Buttons
+// ______________________________________
+// For each of Bootstrap's buttons, define text, background, and border color.
+
+$btn-box-shadow-alt:              inset 0 1px 0 rgba($white-alt, .15), 0 1px 1px rgba($black-alt, .075) !default;
+$btn-focus-box-shadow-alt:        $input-btn-focus-box-shadow-alt !default;
+$btn-disabled-opacity-alt:        .65 !default;
+$btn-active-box-shadow-alt:       inset 0 3px 5px rgba($black-alt, .125) !default;
+
+$btn-link-color-alt:              $link-color-alt !default;
+$btn-link-hover-color-alt:        $link-hover-color-alt !default;
+$btn-link-disabled-color-alt:     $gray-600-alt !default;
+
+$btn-hover-bg-shade-amount-alt:       15% !default;
+$btn-hover-bg-tint-amount-alt:        15% !default;
+$btn-hover-border-shade-amount-alt:   20% !default;
+$btn-hover-border-tint-amount-alt:    10% !default;
+$btn-active-bg-shade-amount-alt:      20% !default;
+$btn-active-bg-tint-amount-alt:       20% !default;
+$btn-active-border-shade-amount-alt:  25% !default;
+$btn-active-border-tint-amount-alt:   10% !default;
+
+
+// Forms
+// ______________________________________
+
+$form-text-color-alt:                       $text-muted-alt !default;
+
+$form-label-color-alt:                      null !default;
+
+$input-bg-alt:                              $gray-800-alt !default;
+$input-disabled-bg-alt:                     $gray-900-alt !default;
+$input-disabled-border-color-alt:           null !default;
+
+$input-color-alt:                           $gray-300-alt !default;
+$input-border-color-alt:                    $gray-700-alt !default;
+$input-box-shadow-alt:                      $box-shadow-inset-alt !default;
+
+$input-focus-bg-alt:                        $input-bg-alt !default;
+$input-focus-border-color-alt:              tint-color($component-active-bg-alt, 50%) !default;
+$input-focus-color-alt:                     $input-color-alt !default;
+$input-focus-box-shadow-alt:                $input-btn-focus-box-shadow-alt !default;
+
+$input-placeholder-color-alt:               mix($gray-600-alt, $gray-700-alt, 50%) !default;
+$input-plaintext-color-alt:                 $body-color-alt !default;
+
+$form-check-label-color-alt:                  null !default;
+
+$form-check-input-active-filter-alt:          brightness(90%) !default;  // TODO: test
+
+$form-check-input-bg-alt:                     $body-bg-alt !default;
+$form-check-input-border-alt:                 1px solid rgba(255, 255, 255, .25) !default;
+$form-check-input-focus-border-alt:           $input-focus-border-color-alt !default;
+$form-check-input-focus-box-shadow-alt:       $input-btn-focus-box-shadow-alt !default;
+
+$form-check-input-checked-color-alt:          $component-active-color-alt !default;
+$form-check-input-checked-bg-color-alt:       $component-active-bg-alt !default;
+$form-check-input-checked-border-color-alt:   $form-check-input-checked-bg-color-alt !default;
+$form-check-input-checked-bg-image-alt:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-checked-color-alt}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/></svg>") !default;
+$form-check-radio-checked-bg-image-alt:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{$form-check-input-checked-color-alt}'/></svg>") !default;
+
+$form-check-input-indeterminate-color-alt:          $component-active-color-alt !default;
+$form-check-input-indeterminate-bg-color-alt:       $component-active-bg-alt !default;
+$form-check-input-indeterminate-border-color-alt:   $form-check-input-indeterminate-bg-color-alt !default;
+$form-check-input-indeterminate-bg-image-alt:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-indeterminate-color-alt}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>") !default;
+
+$form-check-input-disabled-opacity-alt:        .5 !default;
+$form-check-label-disabled-opacity-alt:        $form-check-input-disabled-opacity-alt !default;
+$form-check-btn-check-disabled-opacity-alt:    $btn-disabled-opacity-alt !default;
+
+$form-switch-color-alt:               rgba(255, 255, 255, .25) !default;
+$form-switch-bg-image-alt:            url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color-alt}'/></svg>") !default;
+
+$form-switch-focus-color-alt:         $input-focus-border-color-alt !default;
+$form-switch-focus-bg-image-alt:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-focus-color-alt}'/></svg>") !default;
+
+$form-switch-checked-color-alt:       $component-active-color-alt !default;
+$form-switch-checked-bg-image-alt:    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-checked-color-alt}'/></svg>") !default;
+
+$input-group-addon-color-alt:               $input-color-alt !default;
+$input-group-addon-bg-alt:                  $gray-800-alt !default;
+$input-group-addon-border-color-alt:        $input-border-color-alt !default;
+
+$form-select-color-alt:                 $input-color-alt !default;
+$form-select-disabled-color-alt:        $gray-400-alt !default;
+$form-select-bg-alt:                    $input-bg-alt !default;
+$form-select-disabled-bg-alt:           $gray-800-alt !default;
+$form-select-disabled-border-color-alt: $input-disabled-border-color-alt !default;
+$form-select-indicator-color-alt:       $gray-200-alt !default;
+$form-select-indicator-alt:             url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-select-indicator-color-alt}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>") !default;
+
+$form-select-border-color-alt:        $input-border-color-alt !default;
+$form-select-box-shadow-alt:          $box-shadow-inset-alt !default;
+
+$form-select-focus-border-color-alt:  $input-focus-border-color-alt !default;
+$form-select-focus-box-shadow-alt:    0 0 0 $form-select-focus-width $input-btn-focus-color-alt !default;
+
+$form-range-track-bg-alt:             $gray-700-alt !default;
+$form-range-track-box-shadow-alt:     $box-shadow-inset-alt !default;
+
+$form-range-thumb-bg-alt:                      $component-active-bg-alt !default;
+$form-range-thumb-border-alt:                  0 !default;
+$form-range-thumb-box-shadow-alt:              0 .1rem .25rem rgba($black-alt, .1) !default;
+$form-range-thumb-focus-box-shadow-alt:        0 0 0 1px $body-bg-alt, $input-focus-box-shadow-alt !default;
+$form-range-thumb-active-bg-alt:               tint-color($component-active-bg-alt, 70%) !default;
+$form-range-thumb-disabled-bg-alt:             $gray-500-alt !default;
+
+$form-file-button-color-alt:          $input-color-alt !default;
+$form-file-button-bg-alt:             $input-group-addon-bg-alt !default;
+$form-file-button-hover-bg-alt:       shade-color($form-file-button-bg-alt, 5%) !default;
+
+$form-floating-label-opacity-alt:     .65 !default;
+
+
+// Form validation
+// ______________________________________
+
+$form-feedback-valid-color-alt:         $success-alt !default;
+$form-feedback-invalid-color-alt:       $danger-alt !default;
+
+$form-feedback-icon-valid-color-alt:    $form-feedback-valid-color-alt !default;
+$form-feedback-icon-valid-alt:          url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-valid-color-alt}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>") !default;
+$form-feedback-icon-invalid-color-alt:  $form-feedback-invalid-color-alt !default;
+$form-feedback-icon-invalid-alt:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{$form-feedback-icon-invalid-color-alt}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$form-feedback-icon-invalid-color}' stroke='none'/></svg>") !default;
+
+$form-validation-states-alt: (
+  "valid": (
+    "color": $form-feedback-valid-color-alt,
+    "icon": $form-feedback-icon-valid-alt
+  ),
+  "invalid": (
+    "color": $form-feedback-invalid-color-alt,
+    "icon": $form-feedback-icon-invalid-alt
+  )
+) !default;
+
+
+// Navs
+// ______________________________________
+
+$nav-link-color-alt:                    null !default;
+$nav-link-hover-color-alt:              null !default;
+$nav-link-disabled-color-alt:           $gray-400-alt !default;
+
+$nav-tabs-border-color-alt:             $gray-700-alt !default;
+$nav-tabs-link-hover-border-color-alt:  $gray-800-alt $gray-800-alt $nav-tabs-border-color-alt !default;
+$nav-tabs-link-active-color-alt:        $gray-300-alt !default;
+$nav-tabs-link-active-bg-alt:           $body-bg-alt !default;
+$nav-tabs-link-active-border-color-alt: $gray-700-alt $gray-700-alt $nav-tabs-link-active-bg-alt !default;
+
+$nav-pills-link-active-color-alt:       $component-active-color-alt !default;
+$nav-pills-link-active-bg-alt:          $component-active-bg-alt !default;
+
+
+// Navbar
+// ______________________________________  // TODO: revisit colors
+
+$navbar-dark-color-alt:                 rgba($white-alt, .55) !default;
+$navbar-dark-hover-color-alt:           rgba($white-alt, .75) !default;
+$navbar-dark-active-color-alt:          $white-alt !default;
+$navbar-dark-disabled-color-alt:        rgba($white-alt, .25) !default;
+$navbar-dark-toggler-icon-bg-alt:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color-alt}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
+$navbar-dark-toggler-border-color-alt:  rgba($white-alt, .1) !default;
+
+$navbar-light-color-alt:                rgba($white-alt, .55) !default;
+$navbar-light-hover-color-alt:          rgba($white-alt, .7) !default;
+$navbar-light-active-color-alt:         rgba($white-alt, .9) !default;
+$navbar-light-disabled-color-alt:       rgba($white-alt, .3) !default;
+$navbar-light-toggler-icon-bg-alt:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-color-alt}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
+$navbar-light-toggler-border-color-alt: rgba($white-alt, .1) !default;
+
+$navbar-light-brand-color-alt:                $navbar-light-active-color-alt !default;
+$navbar-light-brand-hover-color-alt:          $navbar-light-active-color-alt !default;
+$navbar-dark-brand-color-alt:                 $navbar-dark-active-color-alt !default;
+$navbar-dark-brand-hover-color-alt:           $navbar-dark-active-color-alt !default;
+
+
+// Dropdowns
+// ______________________________________
+// Dropdown menu container and contents.
+
+$dropdown-color-alt:                    $body-color-alt !default;
+$dropdown-bg-alt:                       $black-alt !default;
+$dropdown-border-color-alt:             rgba($white-alt, .15) !default;
+$dropdown-divider-bg-alt:               $dropdown-border-color-alt !default;
+$dropdown-box-shadow-alt:               $box-shadow-alt !default;
+
+$dropdown-link-color-alt:               $gray-100 !default;
+$dropdown-link-hover-color-alt:         shade-color($gray-100, 10%) !default;
+$dropdown-link-hover-bg-alt:            $gray-900 !default;
+
+$dropdown-link-active-color-alt:        $component-active-color-alt !default;
+$dropdown-link-active-bg-alt:           $component-active-bg-alt !default;
+
+$dropdown-link-disabled-color-alt:      $gray-400-alt !default;
+
+$dropdown-header-color-alt:             $gray-400-alt !default;
+
+$dropdown-dark-color-alt:               $gray-700-alt !default;
+$dropdown-dark-bg-alt:                  $gray-200-alt !default;
+$dropdown-dark-border-color-alt:        $dropdown-border-color-alt !default;
+$dropdown-dark-divider-bg-alt:          $dropdown-divider-bg-alt !default;
+$dropdown-dark-box-shadow-alt:          null !default;
+$dropdown-dark-link-color-alt:          $dropdown-dark-color-alt !default;
+$dropdown-dark-link-hover-color-alt:    $black-alt !default;
+$dropdown-dark-link-hover-bg-alt:       rgba($black-alt, .15) !default;
+$dropdown-dark-link-active-color-alt:   $dropdown-link-active-color-alt !default;
+$dropdown-dark-link-active-bg-alt:      $dropdown-link-active-bg-alt !default;
+$dropdown-dark-link-disabled-color-alt: $gray-500-alt !default;
+$dropdown-dark-header-color-alt:        $gray-500-alt !default;
+
+
+// Pagination
+// ______________________________________
+
+$pagination-color-alt:                  $link-color-alt !default;
+$pagination-bg-alt:                     $gray-800-alt !default;
+$pagination-border-color-alt:           $gray-700-alt !default;
+
+$pagination-focus-color-alt:            $link-hover-color-alt !default;
+$pagination-focus-bg-alt:               $gray-800-alt !default;
+$pagination-focus-box-shadow-alt:       $input-btn-focus-box-shadow-alt !default;
+$pagination-focus-outline-alt:          0 !default;  // ???
+
+$pagination-hover-color-alt:            $link-hover-color-alt !default;
+$pagination-hover-bg-alt:               $gray-700-alt !default;
+$pagination-hover-border-color-alt:     mix($gray-700-alt, $gray-700-alt, 50%) !default;
+
+$pagination-active-color-alt:           $component-active-color-alt !default;
+$pagination-active-bg-alt:              $component-active-bg-alt !default;
+$pagination-active-border-color-alt:    $pagination-active-bg-alt !default;
+
+$pagination-disabled-color-alt:         mix($gray-600-alt, $gray-700-alt, 50%) !default;
+$pagination-disabled-bg-alt:            $gray-900-alt !default;
+$pagination-disabled-border-color-alt:  $gray-700-alt !default;
+
+
+// Cards
+// ______________________________________
+
+$card-border-color-alt: rgba($white-alt, .125) !default;
+$card-cap-bg-alt:       rgba($white-alt, .03) !default;
+$card-cap-color-alt:    null !default;
+$card-color-alt:        null !default;
+$card-bg-alt:           mix($gray-800-alt, $gray-900-alt, 50%) !default;
+
+
+// Accordion
+// ______________________________________
+
+$accordion-color-alt:                         $body-color-alt !default;
+$accordion-bg-alt:                            transparent !default;
+$accordion-border-color-alt:                  rgba($white-alt, .125) !default;
+
+$accordion-button-color-alt:                  $accordion-color-alt !default;
+$accordion-button-bg-alt:                     $accordion-bg-alt !default;
+$accordion-button-active-bg-alt:              shade-color($component-active-bg-alt, 50%) !default;
+$accordion-button-active-color-alt:           tint-color($primary-alt, 40%) !default;
+
+$accordion-button-focus-border-color-alt:     $input-focus-border-color-alt !default;
+$accordion-button-focus-box-shadow-alt:       $btn-focus-box-shadow-alt !default;
+
+$accordion-icon-color-alt:                    $accordion-color-alt !default;
+$accordion-icon-active-color-alt:             $accordion-button-active-color-alt !default;
+
+$accordion-button-icon-alt:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-color-alt}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+$accordion-button-active-icon-alt:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-active-color-alt}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+
+
+// Tooltips
+// ______________________________________
+
+$tooltip-color-alt:                     $black-alt !default;
+$tooltip-bg-alt:                        $white-alt !default;
+$tooltip-opacity-alt:                   .9 !default;
+
+$tooltip-arrow-color-alt:               $tooltip-bg-alt !default;
+
+$form-feedback-tooltip-opacity-alt:       $tooltip-opacity-alt !default;
+
+
+// Popovers
+// ______________________________________
+
+$popover-bg-alt:                        $black-alt !default;
+$popover-border-color-alt:              rgba($white-alt, .2) !default;
+$popover-box-shadow-alt:                $box-shadow-alt !default;
+
+$popover-header-bg-alt:                 tint-color($popover-bg-alt, 6%) !default;
+$popover-header-color-alt:              $headings-color-alt !default;
+
+$popover-body-color-alt:                $body-color-alt !default;
+
+$popover-arrow-color-alt:               $popover-bg-alt !default;
+
+$popover-arrow-outer-color-alt:         fade-in($popover-border-color-alt, .05) !default;
+
+
+// Toasts
+// ______________________________________
+
+$toast-color-alt:                       null !default;
+$toast-background-color-alt:            rgba($black-alt, .85) !default;
+$toast-border-color-alt:                rgba(255, 255, 255, .1) !default;
+$toast-box-shadow-alt:                  $box-shadow-alt !default;
+
+$toast-header-color-alt:                $gray-400-alt !default;
+$toast-header-background-color-alt:     rgba($black-alt, .85) !default;
+$toast-header-border-color-alt:         rgba(255, 255, 255, .05) !default;
+
+
+// Badges
+// ______________________________________
+
+$badge-color-alt:                       $white-alt !default;
+
+
+// Modals
+// ______________________________________
+
+$modal-content-color-alt:               null !default;
+$modal-content-bg-alt:                  mix($gray-800-alt, $gray-900-alt, 50%) !default;
+$modal-content-border-color-alt:        rgba($white-alt, .2) !default;
+$modal-content-box-shadow-xs-alt:       $box-shadow-sm-alt !default;
+$modal-content-box-shadow-sm-up-alt:    $box-shadow-alt !default;
+
+$modal-backdrop-bg-alt:                 $black-alt !default;
+$modal-backdrop-opacity-alt:            .85 !default;
+$modal-header-border-color-alt:         $border-color-alt !default;
+$modal-footer-border-color-alt:         $modal-header-border-color-alt !default;
+
+
+// Alerts
+// ______________________________________
+// Define alert colors, border radius, and padding.
+
+$alert-bg-scale-alt:                    50% !default;
+$alert-border-scale-alt:                40% !default;
+$alert-color-scale-alt:                 -30% !default;
+
+
+// Progress bars
+// ______________________________________
+
+$progress-bg-alt:                       $gray-800-alt !default;
+$progress-box-shadow-alt:               $box-shadow-inset-alt !default;
+$progress-bar-color-alt:                $black-alt !default;
+$progress-bar-bg-alt:                   $primary-alt !default;
+
+
+// List group
+// ______________________________________
+
+$list-group-color-alt:                  null !default;
+$list-group-bg-alt:                     $black-alt !default;
+$list-group-border-color-alt:           rgba($white-alt, .125) !default;
+
+$list-group-item-bg-scale-alt:          50% !default;
+$list-group-item-color-scale-alt:       -30% !default;
+
+$list-group-hover-bg-alt:               mix($gray-800-alt, $gray-900-alt, 50%) !default;
+$list-group-active-color-alt:           $component-active-color-alt !default;
+$list-group-active-bg-alt:              $component-active-bg-alt !default;
+$list-group-active-border-color-alt:    $list-group-active-bg-alt !default;
+
+$list-group-disabled-color-alt:         $gray-400-alt !default;
+$list-group-disabled-bg-alt:            $list-group-bg-alt !default;
+
+$list-group-action-color-alt:           $gray-300-alt !default;
+$list-group-action-hover-color-alt:     $list-group-action-color-alt !default;
+
+$list-group-action-active-color-alt:    $body-color-alt !default;
+$list-group-action-active-bg-alt:       $gray-800-alt !default;
+
+
+// Image thumbnails
+// ______________________________________
+
+$thumbnail-bg-alt:                      $body-bg-alt !default;
+$thumbnail-border-color-alt:            $gray-700-alt !default;
+$thumbnail-box-shadow-alt:              $box-shadow-sm-alt !default;
+
+
+// Figures
+// ______________________________________
+
+$figure-caption-color-alt:              $gray-400-alt !default;
+
+
+// Breadcrumbs
+// ______________________________________
+
+$breadcrumb-bg-alt:                     $gray-800-alt !default;  // null !default;
+$breadcrumb-divider-color-alt:          $gray-400-alt !default;
+$breadcrumb-active-color-alt:           $gray-400-alt !default;
+
+// Carousel
+// ______________________________________
+
+$carousel-control-color-alt:             $white-alt !default;
+$carousel-control-opacity-alt:           .5 !default;
+$carousel-control-hover-opacity-alt:     .9 !default;
+
+$carousel-indicator-opacity-alt:         .5 !default;
+$carousel-indicator-active-bg-alt:       $black-alt !default;
+$carousel-indicator-active-opacity-alt:  1 !default;
+
+$carousel-caption-color-alt:             $black-alt !default;
+
+$carousel-control-prev-icon-bg-alt:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$carousel-control-color-alt}'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/></svg>") !default;
+$carousel-control-next-icon-bg-alt:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$carousel-control-color-alt}'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/></svg>") !default;
+
+$carousel-dark-indicator-active-bg-alt:  $white-alt !default;
+$carousel-dark-caption-color-alt:        $white-alt !default;
+$carousel-dark-control-icon-filter-alt:  invert(1) grayscale(100) !default;
+
+
+// Spinners
+// ______________________________________
+
+// ...nada
+
+
+// Close
+// ______________________________________
+
+$btn-close-color-alt:            $white-alt !default;
+$btn-close-bg-alt:               url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color-alt}'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>") !default;
+$btn-close-focus-shadow-alt:     $input-btn-focus-box-shadow-alt !default;
+$btn-close-opacity-alt:          .5 !default;
+$btn-close-hover-opacity-alt:    .75 !default;
+$btn-close-focus-opacity-alt:    1 !default;
+$btn-close-disabled-opacity-alt: .25 !default;
+$btn-close-white-filter-alt:     invert(1) grayscale(100%) brightness(200%) !default;
+
+
+// Code
+// ______________________________________
+
+$code-color-alt:                        $teal-alt !default;
+
+$kbd-color-alt:                         $gray-100-alt !default;
+$kbd-bg-alt:                            $gray-800-alt !default;
+
+$pre-color-alt:                         $gray-100-alt !default;
+
+
+// Unique to Dark Mode
+//
+// Text Selection
+// ______________________________________
+
+$selection-color-dark-scheme: $gray-200-alt !default;
+$selection-bg-dark-scheme:    rgba($cyan-alt, .5) !default;

@@ -26,3 +26,29 @@
     color: $breadcrumb-active-color;
   }
 }
+
+// dark mode
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    .breadcrumb {
+      background-color: $breadcrumb-bg-alt;
+    }
+
+    .breadcrumb-item {
+      // The separator between breadcrumbs (by default, a forward-slash: "/")
+      + .breadcrumb-item {
+        padding-left: $breadcrumb-item-padding-x;
+
+        &::before {
+          color: $breadcrumb-divider-color-alt;
+        }
+      }
+
+      &.active {
+        color: $breadcrumb-active-color-alt;
+      }
+    }
+
+  }
+}

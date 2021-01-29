@@ -1,4 +1,8 @@
 :root {
+  // see https://web.dev/color-scheme/
+  @include color-scheme-property($default-color-scheme, $enable-color-schemes);
+
+
   // Custom variable values only support SassScript inside `#{}`.
   @each $color, $value in $colors {
     --#{$variable-prefix}#{$color}: #{$value};
@@ -13,4 +17,23 @@
   --#{$variable-prefix}font-sans-serif: #{inspect($font-family-sans-serif)};
   --#{$variable-prefix}font-monospace: #{inspect($font-family-monospace)};
   --#{$variable-prefix}gradient: #{$gradient};
+}
+
+// --- Dark mode ---
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+    :root {
+      // Custom variable values only support SassScript inside `#{}`.
+      @each $color, $value in $colors-alt {
+        --#{$variable-prefix}#{$color}: #{$value};
+      }
+
+      @each $color, $value in $theme-colors-alt {
+        --#{$variable-prefix}#{$color}: #{$value};
+      }
+
+      --#{$variable-prefix}gradient: #{$gradient-alt};
+    }
+  }
 }

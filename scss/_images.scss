@@ -40,3 +40,24 @@
   @include font-size($figure-caption-font-size);
   color: $figure-caption-color;
 }
+
+// --- Dark mode ---
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Image thumbnails
+
+    .img-thumbnail {
+      background-color: $thumbnail-bg-alt;
+      border: $thumbnail-border-width solid $thumbnail-border-color-alt;
+      @include box-shadow($thumbnail-box-shadow-alt);
+    }
+
+    // Figures
+
+    .figure-caption {
+      color: $figure-caption-color-alt;
+    }
+  }
+}

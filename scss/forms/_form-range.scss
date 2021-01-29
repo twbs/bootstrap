@@ -89,3 +89,69 @@
     }
   }
 }
+
+
+// Dark mode
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Range
+
+    .form-range {
+      // background-color: transparent;
+
+      &:focus {
+        &::-webkit-slider-thumb { box-shadow: $form-range-thumb-focus-box-shadow-alt; }
+        &::-moz-range-thumb     { box-shadow: $form-range-thumb-focus-box-shadow-alt; }
+      }
+
+      &::-webkit-slider-thumb {
+        @include gradient-bg($form-range-thumb-bg-alt);
+        border: $form-range-thumb-border-alt;
+        @include box-shadow($form-range-thumb-box-shadow-alt);
+
+        &:active {
+          @include gradient-bg($form-range-thumb-active-bg-alt);
+        }
+      }
+
+      &::-webkit-slider-runnable-track {
+        // color: transparent; // Why?
+        background-color: $form-range-track-bg-alt;
+        // border-color: transparent;
+        @include box-shadow($form-range-track-box-shadow-alt);
+      }
+
+      &::-moz-range-thumb {
+        @include gradient-bg($form-range-thumb-bg-alt);
+        border: $form-range-thumb-border-alt;
+        @include box-shadow($form-range-thumb-box-shadow-alt);
+
+        &:active {
+          @include gradient-bg($form-range-thumb-active-bg-alt);
+        }
+      }
+
+      &::-moz-range-track {
+        // color: transparent;
+        background-color: $form-range-track-bg-alt;
+        // border-color: transparent; // Firefox specific?
+        @include box-shadow($form-range-track-box-shadow-alt);
+      }
+
+      &:disabled {
+        pointer-events: none;
+
+        &::-webkit-slider-thumb {
+          background-color: $form-range-thumb-disabled-bg-alt;
+        }
+
+        &::-moz-range-thumb {
+          background-color: $form-range-thumb-disabled-bg-alt;
+        }
+      }
+    }
+
+  }
+}

@@ -10,3 +10,25 @@
     }
   }
 }
+
+
+// Dark Mode
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    @each $color, $value in $theme-colors-alt {
+      .link-#{$color} {
+        color: $value;
+
+        @if $link-shade-percentage != 0 {
+          &:hover,
+          &:focus {
+            color: if(color-contrast($value, $color-contrast-dark-alt, $color-contrast-light-alt, $min-contrast-ratio-alt) == $color-contrast-light-alt, shade-color($value, $link-shade-percentage-alt), tint-color($value, $link-shade-percentage-alt));
+          }
+        }
+      }
+    }
+
+  }
+}

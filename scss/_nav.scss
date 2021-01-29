@@ -125,3 +125,67 @@
     display: block;
   }
 }
+
+//
+// Dark Mode
+//
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Base class
+
+    .nav-link {
+      color: $nav-link-color-alt;
+
+      &:hover,
+      &:focus {
+        color: $nav-link-hover-color-alt;
+      }
+
+      // Disabled state lightens text
+      &.disabled {
+        color: $nav-link-disabled-color-alt;
+      }
+    }
+
+    // Tabs
+
+    .nav-tabs {
+      border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color-alt;
+
+      .nav-link {
+        border: $nav-tabs-border-width solid transparent;
+
+        &:hover,
+        &:focus {
+          border-color: $nav-tabs-link-hover-border-color-alt;
+        }
+
+        &.disabled {
+          color: $nav-link-disabled-color-alt;
+          background-color: transparent;
+          border-color: transparent;
+        }
+      }
+
+      .nav-link.active,
+      .nav-item.show .nav-link {
+        color: $nav-tabs-link-active-color-alt;
+        background-color: $nav-tabs-link-active-bg-alt;
+        border-color: $nav-tabs-link-active-border-color-alt;
+      }
+    }
+
+    // Pills
+
+    .nav-pills {
+      .nav-link.active,
+      .show > .nav-link {
+        color: $nav-pills-link-active-color-alt;
+        @include gradient-bg($nav-pills-link-active-bg-alt);
+      }
+    }
+
+  }
+}

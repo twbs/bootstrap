@@ -9,3 +9,18 @@
   font-weight: $form-text-font-weight;
   color: $form-text-color;
 }
+
+
+// Dark mode
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Form text
+
+    .form-text {
+      color: $form-text-color-alt;
+    }
+
+  }
+}

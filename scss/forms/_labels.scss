@@ -34,3 +34,22 @@
   padding-bottom: add($input-padding-y-sm, $input-border-width);
   @include font-size($input-font-size-sm);
 }
+
+
+// Dark mode
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Labels
+
+    .form-label {
+      color: $form-label-color-alt;
+    }
+
+    .col-form-label {
+      color: $form-label-color-alt;
+    }
+
+  }
+}

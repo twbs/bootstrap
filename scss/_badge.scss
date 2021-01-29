@@ -27,3 +27,19 @@
   position: relative;
   top: -1px;
 }
+
+
+// Dark mode
+//
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Base class
+
+    .badge {
+      color: $badge-color-alt;
+    }
+
+  }
+}

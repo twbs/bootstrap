@@ -150,3 +150,108 @@
     }
   }
 }
+
+
+//
+// Dark mode
+//
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Check/radio
+
+    .form-check-input {
+      background-color: $form-check-input-bg-alt;
+      border: $form-check-input-border-alt;
+
+      &:active {
+        filter: $form-check-input-active-filter-alt;
+      }
+
+      &:focus {
+        border-color: $form-check-input-focus-border-alt;
+        box-shadow: $form-check-input-focus-box-shadow-alt;
+      }
+
+      &:checked {
+        background-color: $form-check-input-checked-bg-color-alt;
+        border-color: $form-check-input-checked-border-color-alt;
+
+        &[type="checkbox"] {
+          @if $enable-gradients {
+            background-image: escape-svg($form-check-input-checked-bg-image-alt), var(--#{$variable-prefix}gradient);
+          } @else {
+            background-image: escape-svg($form-check-input-checked-bg-image-alt);
+          }
+        }
+
+        &[type="radio"] {
+          @if $enable-gradients {
+            background-image: escape-svg($form-check-radio-checked-bg-image-alt), var(--#{$variable-prefix}gradient);
+          } @else {
+            background-image: escape-svg($form-check-radio-checked-bg-image-alt);
+          }
+        }
+      }
+
+      &[type="checkbox"]:indeterminate {
+        background-color: $form-check-input-indeterminate-bg-color-alt;
+        border-color: $form-check-input-indeterminate-border-color-alt;
+
+        @if $enable-gradients {
+          background-image: escape-svg($form-check-input-indeterminate-bg-image-alt), var(--#{$variable-prefix}gradient);
+        } @else {
+          background-image: escape-svg($form-check-input-indeterminate-bg-image-alt);
+        }
+      }
+
+      &:disabled {
+        opacity: $form-check-input-disabled-opacity-alt;
+      }
+
+      // Use disabled attribute in addition of :disabled pseudo-class
+      &[disabled],
+      &:disabled {
+        ~ .form-check-label {
+          opacity: $form-check-label-disabled-opacity-alt;
+        }
+      }
+    }
+
+    .form-check-label {
+      color: $form-check-label-color-alt;
+    }
+
+    // Switch
+
+    .form-switch {
+
+      .form-check-input {
+        background-image: escape-svg($form-switch-bg-image-alt);
+
+        &:focus {
+          background-image: escape-svg($form-switch-focus-bg-image-alt);
+        }
+
+        &:checked {
+          @if $enable-gradients {
+            background-image: escape-svg($form-switch-checked-bg-image-alt), var(--#{$variable-prefix}gradient);
+          } @else {
+            background-image: escape-svg($form-switch-checked-bg-image-alt);
+          }
+        }
+      }
+    }
+
+    .btn-check {
+      &[disabled],
+      &:disabled {
+        + .btn {
+          opacity: $form-check-btn-check-disabled-opacity-alt;
+        }
+      }
+    }
+
+  }
+}

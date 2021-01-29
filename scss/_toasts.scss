@@ -49,3 +49,25 @@
   padding: $toast-padding-x; // apply to both vertical and horizontal
   word-wrap: break-word;
 }
+
+
+// dark mode
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    .toast {
+      color: $toast-color-alt;
+      background-color: $toast-background-color-alt;
+      border: $toast-border-width solid $toast-border-color-alt;
+      box-shadow: $toast-box-shadow-alt;
+    }
+
+    .toast-header {
+      color: $toast-header-color-alt;
+      background-color: $toast-header-background-color-alt;
+      border-bottom: $toast-border-width solid $toast-header-border-color-alt;
+    }
+
+  }
+}

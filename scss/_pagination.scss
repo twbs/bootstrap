@@ -62,3 +62,46 @@
 .pagination-sm {
   @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-sm, $pagination-border-radius-sm);
 }
+
+
+//
+// Dark mode
+//
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    .page-link {
+      color: $pagination-color-alt;
+      background-color: $pagination-bg-alt;
+      border: $pagination-border-width solid $pagination-border-color-alt;
+
+      &:hover {
+        color: $pagination-hover-color-alt;
+        background-color: $pagination-hover-bg-alt;
+        border-color: $pagination-hover-border-color-alt;
+      }
+
+      &:focus {
+        color: $pagination-focus-color-alt;
+        background-color: $pagination-focus-bg-alt;
+        outline: $pagination-focus-outline-alt;
+        box-shadow: $pagination-focus-box-shadow-alt;
+      }
+    }
+
+    .page-item {
+      &.active .page-link {
+        color: $pagination-active-color-alt;
+        @include gradient-bg($pagination-active-bg-alt);
+        border-color: $pagination-active-border-color-alt;
+      }
+
+      &.disabled .page-link {
+        color: $pagination-disabled-color-alt;
+        background-color: $pagination-disabled-bg-alt;
+        border-color: $pagination-disabled-border-color-alt;
+      }
+    }
+
+  }
+}

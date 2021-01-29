@@ -38,3 +38,37 @@
 .btn-close-white {
   filter: $btn-close-white-filter;
 }
+
+// Dark Mode
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    .btn-close {
+      color: $btn-close-color-alt;
+      background: transparent escape-svg($btn-close-bg-alt) center / $btn-close-width auto no-repeat; // include transparent for button elements
+      opacity: $btn-close-opacity-alt;
+
+      // Override <a>'s hover style
+      &:hover {
+        color: $btn-close-color-alt;
+        opacity: $btn-close-hover-opacity-alt;
+      }
+
+      &:focus {
+        box-shadow: $btn-close-focus-shadow-alt;
+        opacity: $btn-close-focus-opacity-alt;
+      }
+
+      &:disabled,
+      &.disabled {
+        opacity: $btn-close-disabled-opacity-alt;
+      }
+    }
+
+    .btn-close-white {
+      filter: $btn-close-white-filter-alt;
+    }
+
+  }
+}

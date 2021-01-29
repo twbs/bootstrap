@@ -558,3 +558,106 @@ $utilities: map-merge(
   ),
   $utilities
 );
+
+// Dark Mode
+
+$utilities-alt: () !default;
+
+@if $enable-color-schemes {
+
+  // Utilities
+
+  // stylelint-disable-next-line scss/dollar-variable-default
+  $utilities-alt: map-merge(
+    (
+      "shadow": (
+        property: box-shadow,
+        class: shadow,
+        values: (
+          null: $box-shadow-alt,
+          sm: $box-shadow-sm-alt,
+          lg: $box-shadow-lg-alt,
+        )
+      ),
+      "border": (
+        property: border,
+        values: (
+          null: $border-width solid $border-color-alt,
+        )
+      ),
+      "border-top": (
+        property: border-top,
+        values: (
+          null: $border-width solid $border-color-alt,
+        )
+      ),
+      "border-end": (
+        property: border-right,
+        class: border-end,
+        values: (
+          null: $border-width solid $border-color-alt,
+        )
+      ),
+      "border-bottom": (
+        property: border-bottom,
+        values: (
+          null: $border-width solid $border-color-alt,
+        )
+      ),
+      "border-start": (
+        property: border-left,
+        class: border-start,
+        values: (
+          null: $border-width solid $border-color-alt,
+        )
+      ),
+      "border-color": (
+        property: border-color,
+        class: border,
+        values: map-merge(
+          $theme-colors-alt,
+          (
+            "white": $white-alt,
+            "black": $black-alt
+          )
+        )
+      ),
+      // Text
+      // DONT NEED TO DARK, CSS VARS TAKES CARE OF THIS.
+      // "gradient": (
+      //   property: background-image,
+      //   class: bg,
+      //   values: (gradient: var(--#{$variable-prefix}gradient))
+      // )
+      "color": (
+        property: color,
+        class: text,
+        values: map-merge(
+          $theme-colors-alt,
+          (
+            "body": $body-color-alt,
+            "muted": $text-muted-alt,
+            "white": $white-alt,
+            "black": $black-alt,
+            "white-50": rgba($white-alt, .5),
+            "black-50": rgba($black-alt, .5)
+          )
+        )
+      ),
+      "background-color": (
+        property: background-color,
+        class: bg,
+        values: map-merge(
+          $theme-colors-alt,
+          (
+            "body": $body-bg-alt,
+            "white": $white-alt,
+            "black": $black-alt,
+          )
+        )
+      )
+    ),
+    $utilities-alt
+  );
+
+}

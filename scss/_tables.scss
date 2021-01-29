@@ -148,3 +148,41 @@
     }
   }
 }
+
+//
+// Dark Mode
+//
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // Basic Bootstrap table
+
+    .table {
+      --#{$variable-prefix}table-bg: #{$table-bg-alt};
+      --#{$variable-prefix}table-striped-color: #{$table-striped-color-alt};
+      --#{$variable-prefix}table-striped-bg: #{$table-striped-bg-alt};
+      --#{$variable-prefix}table-active-color: #{$table-active-color-alt};
+      --#{$variable-prefix}table-active-bg: #{$table-active-bg-alt};
+      --#{$variable-prefix}table-hover-color: #{$table-hover-color-alt};
+      --#{$variable-prefix}table-hover-bg: #{$table-hover-bg-alt};
+
+      color: $table-color-alt;
+      border-color: $table-border-color-alt;
+    }
+
+
+    // Table variants
+
+    @each $color, $value in $table-variants-alt {
+      @include table-variant(
+        $color,
+        $value,
+        $body-bg-alt,
+        $table-hover-bg-factor-alt,
+        $table-striped-bg-factor-alt,
+        $table-active-bg-factor-alt,
+        $table-border-factor-alt);
+    }
+  }
+}

@@ -221,3 +221,79 @@ textarea {
     @include border-radius($input-border-radius);
   }
 }
+
+
+//
+// Dark mode
+//
+
+@if $enable-color-schemes {
+  @include prefers-color-scheme(alternative-color-scheme($default-color-scheme)) {
+
+    // General form controls (plus a few specific high-level interventions)
+
+    .form-control {
+      color: $input-color-alt;
+      background-color: $input-bg-alt;
+      border: $input-border-width solid $input-border-color-alt;
+
+      @include box-shadow($input-box-shadow-alt);
+
+      // Customize the `:focus` state to imitate native WebKit styles.
+      &:focus {
+        color: $input-focus-color-alt;
+        background-color: $input-focus-bg-alt;
+        border-color: $input-focus-border-color-alt;
+        @if $enable-shadows {
+          @include box-shadow($input-box-shadow-alt, $input-focus-box-shadow-alt);
+        } @else {
+          box-shadow: $input-focus-box-shadow-alt;
+        }
+      }
+
+      // Placeholder
+      &::placeholder {
+        color: $input-placeholder-color-alt;
+      }
+
+      // Disabled and read-only inputs
+      &:disabled,
+      &[readonly] {
+        background-color: $input-disabled-bg-alt;
+        border-color: $input-disabled-border-color-alt;
+      }
+
+      // File input buttons theming
+      // stylelint-disable-next-line selector-pseudo-element-no-unknown
+      &::file-selector-button {
+        color: $form-file-button-color-alt;
+        @include gradient-bg($form-file-button-bg-alt);
+        border-color: inherit;
+      }
+
+      // stylelint-disable-next-line selector-pseudo-element-no-unknown
+      &:hover:not(:disabled):not([readonly])::file-selector-button {
+        background-color: $form-file-button-hover-bg-alt;
+      }
+
+      &::-webkit-file-upload-button {
+        color: $form-file-button-color-alt;
+        @include gradient-bg($form-file-button-bg-alt);
+        border-color: inherit;
+      }
+
+      &:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
+        background-color: $form-file-button-hover-bg-alt;
+      }
+    }
+
+    // Readonly controls as plain text
+
+    .form-control-plaintext {
+      color: $input-plaintext-color-alt;
+      background-color: transparent;
+      border: solid transparent;
+    }
+
+  }
+}
