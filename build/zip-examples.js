@@ -24,7 +24,9 @@ const cssFiles = [
   'bootstrap.min.css',
   'bootstrap.min.css.map',
   'bootstrap.rtl.min.css',
-  'bootstrap.rtl.min.css.map'
+  'bootstrap.rtl.min.css.map',
+  'bootstrap-dark.min.css',
+  'bootstrap-dark.min.css.map'
 ]
 const jsFiles = [
   'bootstrap.bundle.min.js',

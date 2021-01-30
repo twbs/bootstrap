@@ -34,6 +34,10 @@ const files = [
     configPropertyName: 'css_rtl_hash'
   },
   {
+    file: 'dist/css/bootstrap-dark.min.css',
+    configPropertyName: 'css_dark_hash'
+  },
+  {
     file: 'dist/js/bootstrap.min.js',
     configPropertyName: 'js_hash'
   },
