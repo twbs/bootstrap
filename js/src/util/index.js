@@ -38,14 +38,15 @@ const getSelector = element => {
   if (!selector || selector === '#') {
     let hrefAttr = element.getAttribute('href')
 
-    // The only valid content that could double as a selector are ids, so everything starting with . or #
-    // If a 'real' url is used as the selector, document.querySelector will rightfully
-    // complain it is invalid. (see twbs#32273)
+    // The only valid content that could double as a selector are IDs or classes,
+    // so everything starting with `.` or `#`. If a "real" URL is used as the selector,
+    // `document.querySelector` will rightfully complain it is invalid.
+    // See https://github.com/twbs/bootstrap/issues/32273
     if (!hrefAttr || (!hrefAttr.includes('#') && !hrefAttr.startsWith('.'))) {
       return null
     }
 
-    // just in case some cms put out a full url with the anchor appended
+    // Just in case some CMS puts out a full URL with the anchor appended
     if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
       hrefAttr = '#' + hrefAttr.split('#')[1]
     }
