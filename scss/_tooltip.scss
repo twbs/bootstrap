@@ -127,7 +127,8 @@
       &.show { opacity: $tooltip-opacity-alt; }
     }
 
-    .bs-tooltip-top {
+    .bs-tooltip-top,
+    .bs-tooltip-auto[data-popper-placement^="top"] {  // see "waiting on fix" note below
       .tooltip-arrow {
         &::before {
           border-top-color: $tooltip-arrow-color-alt;
@@ -135,7 +136,8 @@
       }
     }
 
-    .bs-tooltip-end {
+    .bs-tooltip-end,
+    .bs-tooltip-auto[data-popper-placement^="right"] {  // see "waiting on fix" note below
       .tooltip-arrow {
         &::before {
           border-right-color: $tooltip-arrow-color-alt;
@@ -143,7 +145,8 @@
       }
     }
 
-    .bs-tooltip-bottom {
+    .bs-tooltip-bottom,
+    .bs-tooltip-auto[data-popper-placement^="bottom"] {  // see "waiting on fix" note below
       .tooltip-arrow {
         &::before {
           border-bottom-color: $tooltip-arrow-color-alt;
@@ -151,7 +154,8 @@
       }
     }
 
-    .bs-tooltip-start {
+    .bs-tooltip-start,
+    .bs-tooltip-auto[data-popper-placement^="left"] {  // see "waiting on fix" note below
       .tooltip-arrow {
         &::before {
           border-left-color: $tooltip-arrow-color-alt;
@@ -159,21 +163,22 @@
       }
     }
 
-    // DON'T REMOVE THESE
-    .bs-tooltip-auto {
-      &[data-popper-placement^="top"] {
-        @extend .bs-tooltip-top;
-      }
-      &[data-popper-placement^="right"] {
-        @extend .bs-tooltip-end;
-      }
-      &[data-popper-placement^="bottom"] {
-        @extend .bs-tooltip-bottom;
-      }
-      &[data-popper-placement^="left"] {
-        @extend .bs-tooltip-start;
-      }
-    }
+    // DON'T REMOVE THESE - waiting on fix,
+    // see: https://stackoverflow.com/questions/14840918#answer-14841491
+    // .bs-tooltip-auto {
+    //   &[data-popper-placement^="top"] {
+    //     @extend .bs-tooltip-top;
+    //   }
+    //   &[data-popper-placement^="right"] {
+    //     @extend .bs-tooltip-end;
+    //   }
+    //   &[data-popper-placement^="bottom"] {
+    //     @extend .bs-tooltip-bottom;
+    //   }
+    //   &[data-popper-placement^="left"] {
+    //     @extend .bs-tooltip-start;
+    //   }
+    // }
 
     // Wrapper for the tooltip content
     .tooltip-inner {
