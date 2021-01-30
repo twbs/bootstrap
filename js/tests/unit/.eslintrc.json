@@ -1,16 +1,8 @@
 {
-  "root": true,
   "extends": [
     "../../../.eslintrc.json"
   ],
-  "overrides": [
-    {
-      "files": [
-        "**/*.spec.js"
-      ],
-      "env": {
-        "jasmine": true
-      }
-    }
-  ]
+  "env": {
+    "jasmine": true
+  }
 }
