@@ -1649,10 +1649,32 @@ describe('Dropdown', () => {
     const keydown = createEvent('keydown')
     keydown.key = 'ArrowDown'
 
-    dropdown.addEventListener('shown.bs.dropdown', () => {
+    const keyup = createEvent('keyup')
+    keyup.key = 'ArrowUp'
+
+    const handleArrowDown = () => {
       expect(triggerDropdown.classList.contains('show')).toEqual(true)
       expect(triggerDropdown.getAttribute('aria-expanded')).toEqual('true')
       done()
+      setTimeout(() => {
+        dropdown.hide()
+        keydown.key = 'ArrowUp'
+        triggerDropdown.dispatchEvent(keyup)
+      }, 20)
+    }
+
+    const handleArrowUp = () => {
+      expect(triggerDropdown.classList.contains('show')).toEqual(true)
+      expect(triggerDropdown.getAttribute('aria-expanded')).toEqual('true')
+      done()
+    }
+
+    dropdown.addEventListener('shown.bs.dropdown', event => {
+      if (event.target.key === 'ArrowDown') {
+        handleArrowDown()
+      } else {
+        handleArrowUp()
+      }
     })
 
     triggerDropdown.dispatchEvent(keydown)
