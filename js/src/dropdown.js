@@ -245,7 +245,6 @@ class Dropdown extends BaseComponent {
   _addEventListeners() {
     EventHandler.on(this._element, EVENT_CLICK, event => {
       event.preventDefault()
-      event.stopPropagation()
       this.toggle()
     })
   }
@@ -402,11 +401,17 @@ class Dropdown extends BaseComponent {
         continue
       }
 
-      if (event && ((event.type === 'click' &&
-          /input|textarea/i.test(event.target.tagName)) ||
-          (event.type === 'keyup' && event.key === TAB_KEY)) &&
-          dropdownMenu.contains(event.target)) {
-        continue
+      if (event) {
+        if (context._element === event.target) {
+          continue
+        }
+
+        if (((event.type === 'click' &&
+            /input|textarea/i.test(event.target.tagName)) ||
+            (event.type === 'keyup' && event.key === TAB_KEY)) &&
+            dropdownMenu.contains(event.target)) {
+          continue
+        }
       }
 
       const hideEvent = EventHandler.trigger(parent, EVENT_HIDE, relatedTarget)
@@ -512,7 +517,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   event.preventDefault()
-  Dropdown.dropdownInterface(this, 'toggle')
+  Dropdown.dropdownInterface(this)
 })
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stopPropagation())
 
