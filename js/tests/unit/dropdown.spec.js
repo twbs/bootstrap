@@ -1655,7 +1655,6 @@ describe('Dropdown', () => {
     const handleArrowDown = () => {
       expect(triggerDropdown.classList.contains('show')).toEqual(true)
       expect(triggerDropdown.getAttribute('aria-expanded')).toEqual('true')
-      done()
       setTimeout(() => {
         dropdown.hide()
         keydown.key = 'ArrowUp'
