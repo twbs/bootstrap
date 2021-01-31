@@ -255,7 +255,6 @@ class Dropdown extends BaseComponent {
   _addEventListeners() {
     EventHandler.on(this._element, EVENT_CLICK, event => {
       event.preventDefault()
-      event.stopPropagation()
       this.toggle()
     })
   }
@@ -518,12 +517,15 @@ class Dropdown extends BaseComponent {
 
 EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE, Dropdown.dataApiKeydownHandler)
 EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataApiKeydownHandler)
-EventHandler.on(document, EVENT_CLICK_DATA_API, Dropdown.clearMenus)
+EventHandler.on(document, EVENT_CLICK_DATA_API, event => {
+  if ((event.target.tagName !== 'BUTTON' && event.target.getAttribute('data-bs-toggle') !== 'dropdown') || (event.target.tagName !== 'A' && event.target.getAttribute('data-bs-toggle') !== 'dropdown')) {
+    Dropdown.clearMenus()
+  }
+})
 EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   event.preventDefault()
-  event.stopPropagation()
-  Dropdown.dropdownInterface(this, 'toggle')
+  Dropdown.dropdownInterface(this)
 })
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stopPropagation())
 
