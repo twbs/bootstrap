@@ -190,7 +190,7 @@
     }
 
     .bs-popover-top,
-    .bs-popover-auto[data-popper-placement^="top"] {  // see "waiting on fix" note below
+    .bs-popover-auto[data-popper-placement^="top"] {  // see note below
       > .popover-arrow {
         &::before {
           border-top-color: $popover-arrow-outer-color-alt;
@@ -203,7 +203,7 @@
     }
 
     .bs-popover-end,
-    .bs-popover-auto[data-popper-placement^="right"] {  // see "waiting on fix" note below
+    .bs-popover-auto[data-popper-placement^="right"] {  // see note below
       > .popover-arrow {
         &::before {
           border-right-color: $popover-arrow-outer-color-alt;
@@ -216,7 +216,7 @@
     }
 
     .bs-popover-bottom,
-    .bs-popover-auto[data-popper-placement^="bottom"] {  // see "waiting on fix" note below
+    .bs-popover-auto[data-popper-placement^="bottom"] {  // see note below
       > .popover-arrow {
         &::before {
           border-bottom-color: $popover-arrow-outer-color-alt;
@@ -233,7 +233,7 @@
     }
 
     .bs-popover-start,
-    .bs-popover-auto[data-popper-placement^="left"] { // see "waiting on fix" note below
+    .bs-popover-auto[data-popper-placement^="left"] { // see note below
       > .popover-arrow {
         &::before {
           border-left-color: $popover-arrow-outer-color-alt;
@@ -245,22 +245,7 @@
       }
     }
 
-    // DON'T REMOVE THESE - waiting on fix,
-    // see: https://stackoverflow.com/questions/14840918#answer-14841491
-    // .bs-popover-auto {
-    //   &[data-popper-placement^="top"] {
-    //     @extend .bs-popover-top;
-    //   }
-    //   &[data-popper-placement^="right"] {
-    //     @extend .bs-popover-end;
-    //   }
-    //   &[data-popper-placement^="bottom"] {
-    //     @extend .bs-popover-bottom;
-    //   }
-    //   &[data-popper-placement^="left"] {
-    //     @extend .bs-popover-start;
-    //   }
-    // }
+    // ***NOTE***: Do not use @extend as that would extend the base class and the dark class
 
     // Offset the popover to account for the popover arrow
     .popover-header {
