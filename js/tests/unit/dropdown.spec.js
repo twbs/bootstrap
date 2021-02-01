@@ -1203,6 +1203,42 @@ describe('Dropdown', () => {
       triggerDropdown.click()
     })
 
+    it('should bubble up the events to the parent elements', done => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#subMenu">Sub menu</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdownParent = fixtureEl.querySelector('.dropdown')
+      const dropdown = new Dropdown(triggerDropdown)
+
+      const showFunction = jasmine.createSpy('showFunction')
+      dropdownParent.addEventListener('show.bs.dropdown', showFunction)
+
+      const shownFunction = jasmine.createSpy('shownFunction')
+      dropdownParent.addEventListener('shown.bs.dropdown', () => {
+        shownFunction()
+        dropdown.hide()
+      })
+
+      const hideFunction = jasmine.createSpy('hideFunction')
+      dropdownParent.addEventListener('hide.bs.dropdown', hideFunction)
+
+      dropdownParent.addEventListener('hidden.bs.dropdown', () => {
+        expect(showFunction).toHaveBeenCalled()
+        expect(shownFunction).toHaveBeenCalled()
+        expect(hideFunction).toHaveBeenCalled()
+        done()
+      })
+
+      dropdown.show()
+    })
+
     it('should ignore keyboard events within <input>s and <textarea>s', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
