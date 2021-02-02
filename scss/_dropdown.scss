@@ -35,7 +35,7 @@
 
   // Reset positioning when positioned with Popper
   &[style] {
-    right: auto#{"/* rtl:ignore */"} !important; // stylelint-disable-line declaration-no-important
+    right: auto !important #{"/* rtl:ignore */"};
   }
 }
 
