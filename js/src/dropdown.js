@@ -194,7 +194,7 @@ class Dropdown extends BaseComponent {
 
     this._menu.classList.toggle(CLASS_NAME_SHOW)
     this._element.classList.toggle(CLASS_NAME_SHOW)
-    EventHandler.trigger(parent, EVENT_SHOWN, relatedTarget)
+    EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget)
   }
 
   hide() {
@@ -202,12 +202,11 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    const parent = Dropdown.getParentFromElement(this._element)
     const relatedTarget = {
       relatedTarget: this._element
     }
 
-    const hideEvent = EventHandler.trigger(parent, EVENT_HIDE, relatedTarget)
+    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE, relatedTarget)
 
     if (hideEvent.defaultPrevented) {
       return
@@ -219,7 +218,7 @@ class Dropdown extends BaseComponent {
 
     this._menu.classList.toggle(CLASS_NAME_SHOW)
     this._element.classList.toggle(CLASS_NAME_SHOW)
-    EventHandler.trigger(parent, EVENT_HIDDEN, relatedTarget)
+    EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
   }
 
   dispose() {
@@ -383,7 +382,6 @@ class Dropdown extends BaseComponent {
     const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
 
     for (let i = 0, len = toggles.length; i < len; i++) {
-      const parent = Dropdown.getParentFromElement(toggles[i])
       const context = Data.getData(toggles[i], DATA_KEY)
       const relatedTarget = {
         relatedTarget: toggles[i]
@@ -409,7 +407,7 @@ class Dropdown extends BaseComponent {
         continue
       }
 
-      const hideEvent = EventHandler.trigger(parent, EVENT_HIDE, relatedTarget)
+      const hideEvent = EventHandler.trigger(toggles[i], EVENT_HIDE, relatedTarget)
       if (hideEvent.defaultPrevented) {
         continue
       }
@@ -429,7 +427,7 @@ class Dropdown extends BaseComponent {
 
       dropdownMenu.classList.remove(CLASS_NAME_SHOW)
       toggles[i].classList.remove(CLASS_NAME_SHOW)
-      EventHandler.trigger(parent, EVENT_HIDDEN, relatedTarget)
+      EventHandler.trigger(toggles[i], EVENT_HIDDEN, relatedTarget)
     }
   }
 
