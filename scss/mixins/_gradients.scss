@@ -1,5 +1,6 @@
 // Gradients
 
+// scss-docs-start gradient-bg-mixin
 @mixin gradient-bg($color: null) {
   background-color: $color;
 
@@ -7,7 +8,9 @@
     background-image: var(--#{$variable-prefix}gradient);
   }
 }
+// scss-docs-end gradient-bg-mixin
 
+// scss-docs-start gradient-mixins
 // Horizontal gradient, from left to right
 //
 // Creates two color stops, start and end, by specifying a color and position for each color stop.
@@ -41,3 +44,4 @@
 @mixin gradient-striped($color: rgba($white, .15), $angle: 45deg) {
   background-image: linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
 }
+// scss-docs-end gradient-mixins

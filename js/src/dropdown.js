@@ -72,7 +72,7 @@ const PLACEMENT_RIGHT = isRTL ? 'left-start' : 'right-start'
 const PLACEMENT_LEFT = isRTL ? 'right-start' : 'left-start'
 
 const Default = {
-  offset: [0, 0],
+  offset: [0, 2],
   flip: true,
   boundary: 'clippingParents',
   reference: 'toggle',

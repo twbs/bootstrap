@@ -6,7 +6,7 @@ group: helpers
 toc: false
 ---
 
-You can use the `.link-*` classes to colorize links. Unlike the [`.text-*` classes]({{< docsref "/utilities/colors#colors" >}}), these classes have a `:hover` and `:focus` state.
+You can use the `.link-*` classes to colorize links. Unlike the [`.text-*` classes]({{< docsref "/utilities/colors" >}}), these classes have a `:hover` and `:focus` state.
 
 {{< example >}}
 {{< colored-links.inline >}}
