@@ -468,6 +468,12 @@ class Dropdown extends BaseComponent {
       return
     }
 
+    if (!isActive && (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY)) {
+      const button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
+      button.click()
+      return
+    }
+
     if (!isActive || event.key === SPACE_KEY) {
       Dropdown.clearMenus()
       return
