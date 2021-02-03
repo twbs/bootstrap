@@ -899,7 +899,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     <tr>
       <td><code>offset</code></td>
       <td>array | string | function</td>
-      <td><code>[0, 0]</code></td>
+      <td><code>[0, 2]</code></td>
       <td>
         <p>Offset of the dropdown relative to its target. You can pass a string in data attributes with comma separated values like: <code>data-bs-offset="10,20"</code></p>
         <p>When a function is used to determine the offset, it is called with an object containing the popper placement, the reference, and popper rects as its first argument. The triggering element DOM node is passed as the second argument. The function must return an array with two numbers: <code>[<a href="https://popper.js.org/docs/v2/modifiers/offset/#skidding-1">skidding</a>, <a href="https://popper.js.org/docs/v2/modifiers/offset/#distance-1">distance</a>]</code>.</p>
