@@ -318,7 +318,7 @@ class Dropdown extends BaseComponent {
         name: 'preventOverflow',
         options: {
           altBoundary: this._config.flip,
-          rootBoundary: this._config.boundary
+          boundary: this._config.boundary
         }
       },
       {
