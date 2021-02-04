@@ -74,7 +74,7 @@ Here's an example of all the sub-components included in a responsive light-theme
 </nav>
 {{< /example >}}
 
-This example uses [color]({{< docsref "/utilities/colors" >}}) (`bg-light`) and [spacing]({{< docsref "/utilities/spacing" >}}) (`my-2`, `my-lg-0`, `me-sm-0`, `my-sm-0`) utility classes.
+This example uses [background]({{< docsref "/utilities/background" >}}) (`bg-light`) and [spacing]({{< docsref "/utilities/spacing" >}}) (`my-2`, `my-lg-0`, `me-sm-0`, `my-sm-0`) utility classes.
 
 ### Brand
 
