@@ -417,7 +417,7 @@ Cards include various options for customizing their backgrounds, borders, and co
 
 ### Background and color
 
-Use [text and background utilities]({{< docsref "/utilities/colors" >}}) to change the appearance of a card.
+Use [text color]({{< docsref "/utilities/colors" >}}) and [background utilities]({{< docsref "/utilities/background" >}}) to change the appearance of a card.
 
 {{< example >}}
 {{< card.inline >}}
