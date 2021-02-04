@@ -509,7 +509,7 @@ class Tooltip extends BaseComponent {
         {
           name: 'preventOverflow',
           options: {
-            rootBoundary: this.config.boundary
+            boundary: this.config.boundary
           }
         },
         {
