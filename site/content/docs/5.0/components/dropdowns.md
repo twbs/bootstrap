@@ -881,7 +881,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     <tr>
       <td><code>boundary</code></td>
       <td>string | element</td>
-      <td><code>'scrollParent'</code></td>
+      <td><code>'clippingParents'</code></td>
       <td>Overflow constraint boundary of the dropdown menu. By default it's <code>'clippingParents'</code> and can accept an HTMLElement reference (JavaScript only). For more information refer to Popper's <a href="https://popper.js.org/docs/v2/utils/detect-overflow/#boundary">preventOverflow docs</a>.</td>
     </tr>
     <tr>
@@ -914,8 +914,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </tr>
   </tbody>
 </table>
-
-Note when `boundary` is set to any value other than `'scrollParent'`, the style `position: static` is applied to the `.dropdown` container.
 
 ### Methods
 
