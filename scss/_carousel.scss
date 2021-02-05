@@ -82,7 +82,19 @@
   }
 }
 
+// Vertical slide transition
 
+.carousel-vertical {
+  .carousel-item-next:not(.carousel-item-start),
+  .active.carousel-item-end {
+    transform: translate(0, 100%);
+  }
+
+  .carousel-item-prev:not(.carousel-item-end),
+  .active.carousel-item-start {
+    transform: translate(0, -100%);
+  }
+}
 //
 // Left/right controls for nav
 //
