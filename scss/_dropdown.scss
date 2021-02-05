@@ -32,11 +32,6 @@
   border: $dropdown-border-width solid $dropdown-border-color;
   @include border-radius($dropdown-border-radius);
   @include box-shadow($dropdown-box-shadow);
-
-  // Reset positioning when positioned with Popper
-  &[style] {
-    right: auto#{"/* rtl:ignore */"} !important; // stylelint-disable-line declaration-no-important
-  }
 }
 
 // scss-docs-start responsive-breakpoints
@@ -49,14 +44,20 @@
 
     .dropdown-menu#{$infix}-start {
       --bs-position: start;
-      right: auto #{"/* rtl:ignore */"};
-      left: 0 #{"/* rtl:ignore */"};
+
+      &[data-bs-popper] {
+        right: auto #{"/* rtl:ignore */"};
+        left: 0 #{"/* rtl:ignore */"};
+      }
     }
 
     .dropdown-menu#{$infix}-end {
       --bs-position: end;
-      right: 0 #{"/* rtl:ignore */"};
-      left: auto #{"/* rtl:ignore */"};
+
+      &[data-bs-popper] {
+        right: 0 #{"/* rtl:ignore */"};
+        left: auto #{"/* rtl:ignore */"};
+      }
     }
   }
 }
