@@ -55,7 +55,6 @@
 
 /* rtl:end:ignore */
 
-
 //
 // Alternate transitions
 //
@@ -82,6 +81,18 @@
   }
 }
 
+// Vertical slide transition
+.carousel-vertical {
+  .carousel-item-next:not(.carousel-item-start),
+  .active.carousel-item-end {
+    transform: translate(0,100%);
+  }
+
+  .carousel-item-prev:not(.carousel-item-end),
+  .active.carousel-item-start {
+    transform: translate(0,-100%);
+  }
+}
 
 //
 // Left/right controls for nav
@@ -117,11 +128,19 @@
 }
 .carousel-control-prev {
   left: 0;
-  background-image: if($enable-gradients, linear-gradient(90deg, rgba($black, .25), rgba($black, .001)), null);
+  background-image: if(
+    $enable-gradients,
+    linear-gradient(90deg, rgba($black, 0.25), rgba($black, 0.001)),
+    null
+  );
 }
 .carousel-control-next {
   right: 0;
-  background-image: if($enable-gradients, linear-gradient(270deg, rgba($black, .25), rgba($black, .001)), null);
+  background-image: if(
+    $enable-gradients,
+    linear-gradient(270deg, rgba($black, 0.25), rgba($black, 0.001)),
+    null
+  );
 }
 
 // Icons for within
@@ -194,7 +213,6 @@
     opacity: $carousel-indicator-active-opacity;
   }
 }
-
 
 // Optional captions
 //
