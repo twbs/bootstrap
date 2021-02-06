@@ -10,6 +10,7 @@
   padding: $accordion-button-padding-y $accordion-button-padding-x;
   @include font-size($font-size-base);
   color: $accordion-button-color;
+  text-align: left; // Reset button style
   background-color: $accordion-button-bg;
   border: $accordion-border-width solid $accordion-border-color;
   @include border-radius(0);

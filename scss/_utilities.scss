@@ -22,6 +22,7 @@ $utilities: map-merge(
       property: overflow,
       values: auto hidden visible scroll,
     ),
+    // scss-docs-start utils-display
     "display": (
       responsive: true,
       print: true,
@@ -29,6 +30,7 @@ $utilities: map-merge(
       class: d,
       values: inline inline-block block grid table table-row table-cell flex inline-flex none
     ),
+    // scss-docs-end utils-display
     "shadow": (
       property: box-shadow,
       class: shadow,
@@ -440,6 +442,7 @@ $utilities: map-merge(
         center: center,
       )
     ),
+    // scss-docs-start utils-color
     "color": (
       property: color,
       class: text,
@@ -455,6 +458,7 @@ $utilities: map-merge(
         )
       )
     ),
+    // scss-docs-end utils-color
     "line-height": (
       property: line-height,
       class: lh,
@@ -465,6 +469,7 @@ $utilities: map-merge(
         lg: $line-height-lg,
       )
     ),
+    // scss-docs-start utils-bg-color
     "background-color": (
       property: background-color,
       class: bg,
@@ -477,6 +482,7 @@ $utilities: map-merge(
         )
       )
     ),
+    // scss-docs-end utils-bg-color
     "gradient": (
       property: background-image,
       class: bg,
