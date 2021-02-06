@@ -316,12 +316,11 @@ class Tooltip extends BaseComponent {
       }
     }
 
-      if (this.tip.classList.contains(CLASS_NAME_FADE)) {
-        const transitionDuration = getTransitionDurationFromElement(this.tip)
-        promiseTimeout(transitionDuration).then(complete)
-      } else {
-        complete()
-      }
+    if (this.tip.classList.contains(CLASS_NAME_FADE)) {
+      const transitionDuration = getTransitionDurationFromElement(this.tip)
+      promiseTimeout(transitionDuration).then(complete)
+    } else {
+      complete()
     }
   }
 
