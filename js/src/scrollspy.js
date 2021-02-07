@@ -76,10 +76,9 @@ class ScrollSpy extends BaseComponent {
     this._activeTarget = null
     this._scrollHeight = 0
 
-    EventHandler.on(this._scrollElement, EVENT_SCROLL, () => this._process())
 
-    this.refresh()
-    this._process()
+    this._visibleElements = []
+    this._observer = new IntersectionObserver(this._process, {root: this._scrollElement, rootMargin: "0px;", threshold: 0});
   }
 
   // Getters
@@ -139,7 +138,6 @@ class ScrollSpy extends BaseComponent {
 
   dispose() {
     super.dispose()
-    EventHandler.off(this._scrollElement, EVENT_KEY)
 
     this._scrollElement = null
     this._config = null
@@ -192,40 +190,24 @@ class ScrollSpy extends BaseComponent {
       this._scrollElement.getBoundingClientRect().height
   }
 
-  _process() {
-    const scrollTop = this._getScrollTop() + this._config.offset
-    const scrollHeight = this._getScrollHeight()
-    const maxScroll = this._config.offset + scrollHeight - this._getOffsetHeight()
+  _process(entries, _observer) {
 
-    if (this._scrollHeight !== scrollHeight) {
-      this.refresh()
-    }
-
-    if (scrollTop >= maxScroll) {
-      const target = this._targets[this._targets.length - 1]
-
-      if (this._activeTarget !== target) {
-        this._activate(target)
-      }
-
-      return
-    }
-
-    if (this._activeTarget && scrollTop < this._offsets[0] && this._offsets[0] > 0) {
-      this._activeTarget = null
-      this._clear()
-      return
-    }
-
-    for (let i = this._offsets.length; i--;) {
-      const isActiveTarget = this._activeTarget !== this._targets[i] &&
-          scrollTop >= this._offsets[i] &&
-          (typeof this._offsets[i + 1] === 'undefined' || scrollTop < this._offsets[i + 1])
-
-      if (isActiveTarget) {
-        this._activate(this._targets[i])
+    for (entry of entries) {
+      // Element is visible within the scrollspy area, add it to our "visible" targets
+      if (entry.isIntersecting) {
+        this._visibleElements.append(entry)
       }
     }
+
+    // No elements visible, reset everything
+    if (this._visibleElements.length == 0) {
+      this._clear();
+    }
+
+    // Only one element visible, so mark it as the active one
+    if (this._visibleElements.length == 1) {
+      this._activate(this._visibleElements[0])
+    } else if ()
   }
 
   _activate(target) {
