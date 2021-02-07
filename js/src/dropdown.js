@@ -466,21 +466,10 @@ class Dropdown extends BaseComponent {
 
     const parent = Dropdown.getParentFromElement(this)
     const isActive = this.classList.contains(CLASS_NAME_SHOW)
+    const button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
 
     if (event.key === ESCAPE_KEY) {
-      const button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
       button.focus()
-      Dropdown.clearMenus()
-      return
-    }
-
-    if (!isActive && (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY)) {
-      const button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
-      button.click()
-      return
-    }
-
-    if (!isActive || event.key === SPACE_KEY) {
       Dropdown.clearMenus()
       return
     }
@@ -493,20 +482,25 @@ class Dropdown extends BaseComponent {
 
     let index = items.indexOf(event.target)
 
-    // Up
-    if (event.key === ARROW_UP_KEY && index > 0) {
-      index--
+    if ((event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY)) {
+      if (!isActive) {
+        button.click()
+        return
+      }
+
+      index = (event.key === ARROW_UP_KEY && index > 0) ? --index : index
+      index = (event.key === ARROW_DOWN_KEY && index < items.length - 1) ? ++index : index
+
+      // index is -1 if the first keydown is an ArrowUp
+      index = index === -1 ? 0 : index
+
+      items[index].focus()
+      return
     }
 
-    // Down
-    if (event.key === ARROW_DOWN_KEY && index < items.length - 1) {
-      index++
+    if (!isActive || event.key === SPACE_KEY) {
+      Dropdown.clearMenus()
     }
-
-    // index is -1 if the first keydown is an ArrowUp
-    index = index === -1 ? 0 : index
-
-    items[index].focus()
   }
 }
 
