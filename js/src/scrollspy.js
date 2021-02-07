@@ -68,17 +68,41 @@ const METHOD_POSITION = 'position'
 class ScrollSpy extends BaseComponent {
   constructor(element, config) {
     super(element)
-    this._scrollElement = element.tagName === 'BODY' ? window : element
+    this._scrollElement = element.tagName === 'BODY' ? null : element
     this._config = this._getConfig(config)
     this._selector = `${this._config.target} ${SELECTOR_NAV_LINKS}, ${this._config.target} ${SELECTOR_LIST_ITEMS}, ${this._config.target} .${CLASS_NAME_DROPDOWN_ITEM}`
-    this._offsets = []
-    this._targets = []
+    // These are the "targeted" elements, meaning we will toggle them as active and inactive as we scroll
+    this._targets = SelectorEngine.find(this._selector)
+    // We use the information on these target elements to get the corresponding element itself
+    // These are the DOM elements we will actually watch as we scroll
+    this._observedElements = this._targets.map(element => {
+      const targetSelector = getSelectorFromElement(element)
+      // Not all targets point to another element, but we remove them in the chained filter method
+      if (targetSelector) {
+        return SelectorEngine.findOne(targetSelector)
+      }
+    }).filter(item => item)
+
     this._activeTarget = null
     this._scrollHeight = 0
 
 
     this._visibleElements = []
-    this._observer = new IntersectionObserver(this._process, {root: this._scrollElement, rootMargin: "0px;", threshold: 0});
+
+
+    let options = {
+      // null defaults to the viewport
+      root: this._scrollElement  === window ? null : this_scrollElement,
+      rootMargin: "0px", // placeholder
+      threshold: 0, // placeholder
+    }
+
+    this._observer = new IntersectionObserver(this._process.bind(this), options);
+
+    // Set up listeners for each of the targeted scrollspy elements
+    for (const observed of this._observedElements) {
+      this._observer.observe(observed)
+    }
   }
 
   // Getters
@@ -191,11 +215,13 @@ class ScrollSpy extends BaseComponent {
   }
 
   _process(entries, _observer) {
-
-    for (entry of entries) {
-      // Element is visible within the scrollspy area, add it to our "visible" targets
+    for (const entry of entries) {
+      // If this is true, then, the IntersectionObserverEntry describes a transition into a state of intersection
       if (entry.isIntersecting) {
-        this._visibleElements.append(entry)
+        this._visibleElements.push(entry)
+      } else {
+        // if it's false, then you know the transition is from intersecting to not-intersecting.
+        this._visibleElements = this._visibleElements.filter(item => item.target !== entry.target)
       }
     }
 
@@ -204,10 +230,32 @@ class ScrollSpy extends BaseComponent {
       this._clear();
     }
 
+    // If we're at the bottom, take the bottom-most visible element
+    debugger
+    if (Math.abs(this._scrollElement.scrollHeight - this._scrollElement.scrollTop) < 5.0) {
+      let len = this._visibleElements.length
+      this._activate(this._visibleElements[len - 1].target.id)
+    }
+
     // Only one element visible, so mark it as the active one
     if (this._visibleElements.length == 1) {
-      this._activate(this._visibleElements[0])
-    } else if ()
+      this._activate(this._visibleElements[0].target.id)
+    } else if (this._visibleElements.length == 2) {
+      // Take whichever one has the bigger ratio. This is a crude metric and could be vulnerable to edge cases but good enough for now
+      let first = this._visibleElements[0]
+      let second = this._visibleElements[1]
+      if (first.intersectionRatio > second.intersectionRatio) {
+        return first.target.id
+      } else {
+        return second.target.id
+      }
+    } else {
+      // just take the second to last element in the list
+      let len = this._visibleElements.length
+      this._activate(this._visibleElements[len - 2].target.id)
+    }
+
+    this._visibleElements.forEach(item => console.log(item.target))
   }
 
   _activate(target) {
@@ -216,7 +264,8 @@ class ScrollSpy extends BaseComponent {
     this._clear()
 
     const queries = this._selector.split(',')
-      .map(selector => `${selector}[data-bs-target="${target}"],${selector}[href="${target}"]`)
+      .map(selector => `${selector}[data-bs-target="#${target}"],${selector}[href="#${target}"]`)
+
 
     const link = SelectorEngine.findOne(queries.join(','))
 
