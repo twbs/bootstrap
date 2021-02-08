@@ -301,6 +301,55 @@ describe('Tab', () => {
 
       firstTab.show()
     })
+
+    it('should handle removed tabs', done => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav nav-tabs" role="tablist">',
+        '  <li class="nav-item" role="presentation">',
+        '    <a class="nav-link nav-tab" href="#profile" role="tab" data-bs-toggle="tab">',
+        '      <button class="btn-close" aria-label="Close"></button>',
+        '    </a>',
+        '  </li>',
+        '  <li class="nav-item" role="presentation">',
+        '    <a id="secondNav" class="nav-link nav-tab" href="#buzz" role="tab" data-bs-toggle="tab">',
+        '      <button class="btn-close" aria-label="Close"></button>',
+        '    </a>',
+        '  </li>',
+        '  <li class="nav-item" role="presentation">',
+        '    <a class="nav-link nav-tab" href="#references" role="tab" data-bs-toggle="tab">',
+        '      <button id="btnClose" class="btn-close" aria-label="Close"></button>',
+        '    </a>',
+        '  </li>',
+        '</ul>',
+        '<div class="tab-content">',
+        '  <div role="tabpanel" class="tab-pane fade show active" id="profile">test 1</div>',
+        '  <div role="tabpanel" class="tab-pane fade" id="buzz">test 2</div>',
+        '  <div role="tabpanel" class="tab-pane fade" id="references">test 3</div>',
+        '</div>'
+      ].join('')
+
+      const secondNavEl = fixtureEl.querySelector('#secondNav')
+      const btnCloseEl = fixtureEl.querySelector('#btnClose')
+      const secondNavTab = new Tab(secondNavEl)
+
+      secondNavEl.addEventListener('shown.bs.tab', () => {
+        expect(fixtureEl.querySelectorAll('.nav-tab').length).toEqual(2)
+        done()
+      })
+
+      btnCloseEl.addEventListener('click', () => {
+        const linkEl = btnCloseEl.parentNode
+        const liEl = linkEl.parentNode
+        const tabId = linkEl.getAttribute('href')
+        const tabIdEl = fixtureEl.querySelector(tabId)
+
+        liEl.parentNode.removeChild(liEl)
+        tabIdEl.parentNode.removeChild(tabIdEl)
+        secondNavTab.show()
+      })
+
+      btnCloseEl.click()
+    })
   })
 
   describe('dispose', () => {
@@ -416,6 +465,29 @@ describe('Tab', () => {
       })
 
       secondTabTrigger.click()
+    })
+
+    it('selected tab should deactivate previous selected link in dropdown', () => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav nav-tabs">',
+        '  <li class="nav-item"><a class="nav-link" href="#home" data-bs-toggle="tab">Home</a></li>',
+        '  <li class="nav-item"><a class="nav-link" href="#profile" data-bs-toggle="tab">Profile</a></li>',
+        '  <li class="nav-item dropdown">',
+        '    <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#">Dropdown</a>',
+        '    <div class="dropdown-menu">',
+        '      <a class="dropdown-item active" href="#dropdown1" id="dropdown1-tab" data-bs-toggle="tab">@fat</a>',
+        '      <a class="dropdown-item" href="#dropdown2" id="dropdown2-tab" data-bs-toggle="tab">@mdo</a>',
+        '    </div>',
+        '  </li>',
+        '</ul>'
+      ].join('')
+
+      const firstLiLinkEl = fixtureEl.querySelector('li:first-child a')
+
+      firstLiLinkEl.click()
+      expect(firstLiLinkEl.classList.contains('active')).toEqual(true)
+      expect(fixtureEl.querySelector('li:last-child a').classList.contains('active')).toEqual(false)
+      expect(fixtureEl.querySelector('li:last-child .dropdown-menu a:first-child').classList.contains('active')).toEqual(false)
     })
 
     it('should handle nested tabs', done => {
