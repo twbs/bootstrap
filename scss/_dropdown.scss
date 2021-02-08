@@ -17,7 +17,6 @@
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
   z-index: $zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
   min-width: $dropdown-min-width;
@@ -32,6 +31,10 @@
   border: $dropdown-border-width solid $dropdown-border-color;
   @include border-radius($dropdown-border-radius);
   @include box-shadow($dropdown-box-shadow);
+
+  &[data-bs-popper] {
+    left: 0;
+  }
 }
 
 // scss-docs-start responsive-breakpoints
