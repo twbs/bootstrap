@@ -27,10 +27,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-v${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-v${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
-            ${{ runner.os }}-node-v${{ env.NODE }}-
+            ${{ runner.os }}-node-${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
 
       - name: Install npm dependencies
         run: npm ci
