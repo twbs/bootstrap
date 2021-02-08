@@ -1,0 +1,88 @@
+@use "sass:map";
+
+@import "../functions";
+@import "../variables";
+@import "../mixins";
+@import "../utilities";
+
+$xs: map.get($grid-breakpoints, "xs");
+$sm: map.get($grid-breakpoints, "sm");
+$md: map.get($grid-breakpoints, "md");
+$lg: map.get($grid-breakpoints, "lg");
+$xl: map.get($grid-breakpoints, "xl");
+$xxl: map.get($grid-breakpoints, "xxl");
+
+div.vagabond-navbar {
+    display: flex;
+    order: 1;
+    color: darkgray;
+    background-color: black;
+    height: 64px;
+    flex-wrap: wrap;
+
+    a {
+        flex: 1;
+        margin: 10px;
+        padding: 10px;
+        max-width: 24px;
+        color: currentColor;
+        transition: ease-in-out 250ms;
+        transition-property: color;
+        border: none;
+        text-align: center;
+    }
+    a:hover {
+        color: red;
+    }
+}
+
+#container-root {
+    margin: 5px;
+    display: flex;
+    order: 2;
+}
+
+#sidebar-left {
+    flex: 1;
+    padding: 10px;
+}
+
+#container-center {
+    flex: 3;
+    padding: 10px;
+}
+
+#sidebar-right {
+    flex: 1 5;
+    padding: 10px;
+}
+
+@media only screen and (min-width: $xs) and (max-width: $lg - 1) {
+    #root {
+        display: block;
+    }
+
+    #container-root {
+        margin-bottom: 96px;
+        /*TODO: Less hacky method of making sure bottom navbar cant cover stuff*/
+    }
+
+    #sidebar-left {
+        display: none;
+    }
+
+    #sidebar-right {
+        display: none;
+    }
+
+    div.vagabond-navbar {
+        position: fixed;
+        align-content: space-between;
+        bottom: 0;
+        width: 100%;
+        a {
+            max-width: none;
+            width: 24px;
+        }
+    }
+}

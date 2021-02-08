@@ -1,0 +1,79 @@
+@use "sass:map";
+
+@import "../functions";
+@import "../variables";
+@import "../mixins";
+@import "../utilities";
+
+$xs: map.get($grid-breakpoints, "xs");
+$sm: map.get($grid-breakpoints, "sm");
+$md: map.get($grid-breakpoints, "md");
+$lg: map.get($grid-breakpoints, "lg");
+$xl: map.get($grid-breakpoints, "xl");
+$xxl: map.get($grid-breakpoints, "xxl");
+
+
+#compose-note {
+    display: flex;
+    flex-wrap: overflow;
+    flex-direction: row;
+    .note {
+      display: flex;
+      border-radius: 15px;
+      border: 1px solid $gray-500;
+      flex: 6;
+      .left {
+        display: flex;
+        flex-direction: column;
+        width: 32px;
+        justify-content: center;
+        color: $gray-600;
+        svg {
+          margin: 10px;
+          flex: 1 1 auto;
+          color: currentColor;
+        }
+      }
+      .textarea-container {
+        margin: 10px;
+        flex: 1;
+      }
+    }
+    .btn {
+      display: block;
+      margin: 5px 10px 5px 10px;
+      height: 100%;
+      flex: 1;
+    }
+    .buttons {
+      flex: 1;
+      flex-direction: column;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+
+  
+  @media only screen and (min-width: $xs) and (max-width: $lg - 1) {
+
+    #compose-note {
+      flex-direction: column;
+      .buttons {
+        margin: 10px 5px 10px 5px;
+        padding: 0px;
+        flex-direction: row;
+        align-items: stretch;
+        .post {
+          order: 2;
+          margin: 0px 0px 0px 5px;
+        }
+        .draft {
+          order: 1;
+          margin: 0px 5px 0px 0px;
+        }
+      }
+    }
+  
+  }
