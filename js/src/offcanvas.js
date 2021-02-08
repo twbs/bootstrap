@@ -85,6 +85,7 @@ class OffCanvas extends BaseComponent {
     }
 
     this._isShown = true
+    this._element.style.visibility = 'visible'
     document.body.classList.add(CLASS_NAME_TOGGLING)
 
     if (this._bodyOptions === 'backdrop') {
@@ -101,7 +102,6 @@ class OffCanvas extends BaseComponent {
     this._element.setAttribute('aria-modal', true)
     this._element.setAttribute('role', 'dialog')
     this._element.classList.add(CLASS_NAME_SHOW)
-    this.hidden = false
 
     const completeCallBack = () => {
       document.body.classList.add(CLASS_NAME_OPEN)
@@ -140,7 +140,7 @@ class OffCanvas extends BaseComponent {
       this._element.setAttribute('aria-hidden', true)
       this._element.removeAttribute('aria-modal')
       this._element.removeAttribute('role')
-      this.hidden = true
+      this._element.style.visibility = 'hidden'
 
       if (this._bodyOptions !== 'scroll') {
         document.body.classList.remove(CLASS_NAME_STOP_OVERFLOW)

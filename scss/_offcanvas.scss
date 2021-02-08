@@ -6,6 +6,7 @@
   flex-direction: column;
   max-width: 100%;
   color: $offcanvas-color;
+  visibility: hidden;
   background-color: $offcanvas-bg-color;
   // By using an outline, the "border" is always on the correct side
   outline: $offcanvas-border-width solid $offcanvas-border-color;

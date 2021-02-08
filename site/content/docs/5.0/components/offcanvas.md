@@ -160,6 +160,8 @@ By default, when an offcanvas is visible, the `<body>` of your page cannot be sc
 <div class="offcanvas offcanvas-left" data-bs-body="scroll" tabindex="-1" id="offcanvasExample4" aria-labelledby="exampleOffCanvasLiveLabel3">
   <div class="offcanvas-header">
     <h5 class="modal-title" id="exampleOffCanvasLiveLabel3">Colored with scrolling</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
+    </button>
   </div>
   <div class="offcanvas-body">
     <p>Try scrolling the rest of the page to see this option in action.</p>
@@ -168,6 +170,8 @@ By default, when an offcanvas is visible, the `<body>` of your page cannot be sc
 <div class="offcanvas offcanvas-left" data-bs-body="backdrop" tabindex="-1" id="offcanvasExample5" aria-labelledby="exampleOffCanvasLiveLabel4">
   <div class="offcanvas-header">
     <h5 class="modal-title" id="exampleOffCanvasLiveLabel4">Colored with backdrop</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
+    </button>
   </div>
   <div class="offcanvas-body">
     <p>Try clicking on the page's content to toggle the offcanvas.</p>
@@ -177,7 +181,7 @@ By default, when an offcanvas is visible, the `<body>` of your page cannot be sc
 
 ## Accessibility
 
-For more information refer to collapsible [accessibility docs]({{< docsref "/components/collapse#accessibility" >}}).
+Be sure to add aria-labelledby="...", referencing the modal title, to .offcanvas. Note that you don’t need to add role="dialog" since we already add it via JavaScript.
 
 ## Usage
 
