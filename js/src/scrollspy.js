@@ -68,7 +68,7 @@ const METHOD_POSITION = 'position'
 class ScrollSpy extends BaseComponent {
   constructor(element, config) {
     super(element)
-    this._scrollElement = element.tagName === 'BODY' ? null : element
+    this._scrollElement = element.tagName === 'BODY' ? window : element
     this._config = this._getConfig(config)
     this._selector = `${this._config.target} ${SELECTOR_NAV_LINKS}, ${this._config.target} ${SELECTOR_LIST_ITEMS}, ${this._config.target} .${CLASS_NAME_DROPDOWN_ITEM}`
     // These are the "targeted" elements, meaning we will toggle them as active and inactive as we scroll
@@ -92,7 +92,7 @@ class ScrollSpy extends BaseComponent {
 
     let options = {
       // null defaults to the viewport
-      root: this._scrollElement  === window ? null : this_scrollElement,
+      root: null, //this._scrollElement === window ? null : this._scrollElement,
       rootMargin: "0px", // placeholder
       threshold: 0, // placeholder
     }
@@ -117,48 +117,6 @@ class ScrollSpy extends BaseComponent {
 
   // Public
 
-  refresh() {
-    const autoMethod = this._scrollElement === this._scrollElement.window ?
-      METHOD_OFFSET :
-      METHOD_POSITION
-
-    const offsetMethod = this._config.method === 'auto' ?
-      autoMethod :
-      this._config.method
-
-    const offsetBase = offsetMethod === METHOD_POSITION ?
-      this._getScrollTop() :
-      0
-
-    this._offsets = []
-    this._targets = []
-    this._scrollHeight = this._getScrollHeight()
-
-    const targets = SelectorEngine.find(this._selector)
-
-    targets.map(element => {
-      const targetSelector = getSelectorFromElement(element)
-      const target = targetSelector ? SelectorEngine.findOne(targetSelector) : null
-
-      if (target) {
-        const targetBCR = target.getBoundingClientRect()
-        if (targetBCR.width || targetBCR.height) {
-          return [
-            Manipulator[offsetMethod](target).top + offsetBase,
-            targetSelector
-          ]
-        }
-      }
-
-      return null
-    })
-      .filter(item => item)
-      .sort((a, b) => a[0] - b[0])
-      .forEach(item => {
-        this._offsets.push(item[0])
-        this._targets.push(item[1])
-      })
-  }
 
   dispose() {
     super.dispose()
@@ -231,11 +189,10 @@ class ScrollSpy extends BaseComponent {
     }
 
     // If we're at the bottom, take the bottom-most visible element
-    debugger
-    if (Math.abs(this._scrollElement.scrollHeight - this._scrollElement.scrollTop) < 5.0) {
-      let len = this._visibleElements.length
-      this._activate(this._visibleElements[len - 1].target.id)
-    }
+    // if (Math.abs(this._scrollElement.scrollHeight - this._scrollElement.scrollTop) < 5.0) {
+    //   let len = this._visibleElements.length
+    //   this._activate(this._visibleElements[len - 1].target.id)
+    // }
 
     // Only one element visible, so mark it as the active one
     if (this._visibleElements.length == 1) {
@@ -244,10 +201,11 @@ class ScrollSpy extends BaseComponent {
       // Take whichever one has the bigger ratio. This is a crude metric and could be vulnerable to edge cases but good enough for now
       let first = this._visibleElements[0]
       let second = this._visibleElements[1]
-      if (first.intersectionRatio > second.intersectionRatio) {
-        return first.target.id
+
+      if (first.intersectionRect.height > second.intersectionRect.height) {
+        this._activate(first.target.id)
       } else {
-        return second.target.id
+        this._activate(second.target.id)
       }
     } else {
       // just take the second to last element in the list
@@ -255,7 +213,6 @@ class ScrollSpy extends BaseComponent {
       this._activate(this._visibleElements[len - 2].target.id)
     }
 
-    this._visibleElements.forEach(item => console.log(item.target))
   }
 
   _activate(target) {
