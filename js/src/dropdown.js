@@ -222,7 +222,6 @@ class Dropdown extends BaseComponent {
   }
 
   dispose() {
-    super.dispose()
     EventHandler.off(this._element, EVENT_KEY)
     this._menu = null
 
@@ -230,6 +229,8 @@ class Dropdown extends BaseComponent {
       this._popper.destroy()
       this._popper = null
     }
+
+    super.dispose()
   }
 
   update() {
