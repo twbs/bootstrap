@@ -17,7 +17,6 @@
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
   z-index: $zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
   min-width: $dropdown-min-width;
@@ -33,9 +32,8 @@
   @include border-radius($dropdown-border-radius);
   @include box-shadow($dropdown-box-shadow);
 
-  // Reset positioning when positioned with Popper
-  &[style] {
-    right: auto#{"/* rtl:ignore */"} !important; // stylelint-disable-line declaration-no-important
+  &[data-bs-popper] {
+    left: 0;
   }
 }
 
@@ -49,14 +47,20 @@
 
     .dropdown-menu#{$infix}-start {
       --bs-position: start;
-      right: auto #{"/* rtl:ignore */"};
-      left: 0 #{"/* rtl:ignore */"};
+
+      &[data-bs-popper] {
+        right: auto #{"/* rtl:ignore */"};
+        left: 0 #{"/* rtl:ignore */"};
+      }
     }
 
     .dropdown-menu#{$infix}-end {
       --bs-position: end;
-      right: 0 #{"/* rtl:ignore */"};
-      left: auto #{"/* rtl:ignore */"};
+
+      &[data-bs-popper] {
+        right: 0 #{"/* rtl:ignore */"};
+        left: auto #{"/* rtl:ignore */"};
+      }
     }
   }
 }
