@@ -150,3 +150,11 @@ The print and display classes can be combined.
 <div class="d-none d-print-block">Print Only (Hide on screen only)</div>
 <div class="d-none d-lg-block d-print-block">Hide up to large on screen, but always show on print</div>
 {{< /example >}}
+
+## Sass
+
+### Utilities API
+
+Display utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
+
+{{< scss-docs name="utils-display" file="scss/_utilities.scss" >}}
