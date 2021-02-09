@@ -220,8 +220,7 @@
     [data-bs-target] {
       width: 15px;
       height: 15px;
-      // stylelint-disable-next-line property-disallowed-list
-      border-radius: 50%;
+      @include border-radius($border-radius-pill);
     }
   }
   .carousel-control-prev,
