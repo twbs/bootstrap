@@ -105,4 +105,4 @@ Here's how you can use these in your Sass:
 }
 ```
 
-[Color utility classes]({{< docsref "/utilities/colors" >}}) are also available for setting `color` and `background-color` using the `500` color values.
+[Color]({{< docsref "/utilities/colors" >}}) and [background]({{< docsref "/utilities/background" >}}) utility classes are also available for setting `color` and `background-color` using the `500` color values.

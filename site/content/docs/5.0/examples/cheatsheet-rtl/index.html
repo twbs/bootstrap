@@ -70,7 +70,7 @@ direction: rtl
     </ul>
   </nav>
 </aside>
-<div class="bd-cheatsheet container-fluid bg-white">
+<div class="bd-cheatsheet container-fluid bg-body">
   <section id="content">
     <h2 class="sticky-xl-top fw-bold pt-3 pt-xl-5 pb-2 pb-xl-3">محتويات</h2>
 
@@ -862,11 +862,11 @@ direction: rtl
       <div>
         {{< example show_markup="false" >}}
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
-            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
-          </ol>
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
               {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="الشريحة الأولى" >}}
