@@ -156,6 +156,21 @@ describe('Tooltip', () => {
 
       expect(popperConfig.placement).toEqual('left')
     })
+
+    it('should allow to pass config to Popper with `popperConfig` as a function', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip">'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const getPopperConfig = jasmine.createSpy('getPopperConfig').and.returnValue({ placement: 'left' })
+      const tooltip = new Tooltip(tooltipEl, {
+        popperConfig: getPopperConfig
+      })
+
+      const popperConfig = tooltip._getPopperConfig('top')
+
+      expect(getPopperConfig).toHaveBeenCalled()
+      expect(popperConfig.placement).toEqual('left')
+    })
   })
 
   describe('enable', () => {
