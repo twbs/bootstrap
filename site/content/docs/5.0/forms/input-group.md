@@ -81,19 +81,19 @@ Add the relative form sizing classes to the `.input-group` itself and contents w
 
 ## Checkboxes and radios
 
-Place any checkbox or radio option within an input group's addon instead of text.
+Place any checkbox or radio option within an input group's addon instead of text. We recommend adding `.mt-0` to the `.form-check-input` when there's no visible text next to the input.
 
 {{< example >}}
 <div class="input-group mb-3">
   <div class="input-group-text">
-    <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+    <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
   </div>
   <input type="text" class="form-control" aria-label="Text input with checkbox">
 </div>
 
 <div class="input-group">
   <div class="input-group-text">
-    <input class="form-check-input" type="radio" value="" aria-label="Radio button for following text input">
+    <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
   </div>
   <input type="text" class="form-control" aria-label="Text input with radio button">
 </div>
@@ -173,7 +173,7 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 <div class="input-group mb-3">
   <input type="text" class="form-control" aria-label="Text input with dropdown button">
   <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-  <ul class="dropdown-menu dropdown-menu-right">
+  <ul class="dropdown-menu dropdown-menu-end">
     <li><a class="dropdown-item" href="#">Action</a></li>
     <li><a class="dropdown-item" href="#">Another action</a></li>
     <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -193,7 +193,7 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
   </ul>
   <input type="text" class="form-control" aria-label="Text input with 2 dropdown buttons">
   <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-  <ul class="dropdown-menu dropdown-menu-right">
+  <ul class="dropdown-menu dropdown-menu-end">
     <li><a class="dropdown-item" href="#">Action</a></li>
     <li><a class="dropdown-item" href="#">Another action</a></li>
     <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -227,7 +227,7 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
   <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="visually-hidden">Toggle Dropdown</span>
   </button>
-  <ul class="dropdown-menu dropdown-menu-right">
+  <ul class="dropdown-menu dropdown-menu-end">
     <li><a class="dropdown-item" href="#">Action</a></li>
     <li><a class="dropdown-item" href="#">Another action</a></li>
     <li><a class="dropdown-item" href="#">Something else here</a></li>

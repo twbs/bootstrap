@@ -870,7 +870,7 @@ describe('Modal', () => {
   })
 
   describe('data-api', () => {
-    it('should open modal', done => {
+    it('should toggle modal', done => {
       fixtureEl.innerHTML = [
         '<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>',
         '<div id="exampleModal" class="modal"><div class="modal-dialog"></div></div>'
@@ -885,6 +885,15 @@ describe('Modal', () => {
         expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
         expect(modalEl.style.display).toEqual('block')
         expect(document.querySelector('.modal-backdrop')).toBeDefined()
+        setTimeout(() => trigger.click(), 10)
+      })
+
+      modalEl.addEventListener('hidden.bs.modal', () => {
+        expect(modalEl.getAttribute('aria-modal')).toEqual(null)
+        expect(modalEl.getAttribute('role')).toEqual(null)
+        expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
+        expect(modalEl.style.display).toEqual('none')
+        expect(document.querySelector('.modal-backdrop')).toEqual(null)
         done()
       })
 
@@ -1061,11 +1070,9 @@ describe('Modal', () => {
       jQueryMock.fn.modal = Modal.jQueryInterface
       jQueryMock.elements = [div]
 
-      try {
+      expect(() => {
         jQueryMock.fn.modal.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
+      }).toThrowError(TypeError, `No method named "${action}"`)
     })
 
     it('should call show method', () => {
@@ -1108,6 +1115,7 @@ describe('Modal', () => {
       const modal = new Modal(div)
 
       expect(Modal.getInstance(div)).toEqual(modal)
+      expect(Modal.getInstance(div)).toBeInstanceOf(Modal)
     })
 
     it('should return null when there is no modal instance', () => {

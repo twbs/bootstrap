@@ -21,6 +21,10 @@ Things to know when using the tooltip plugin:
 - Tooltips can be triggered thanks to an element inside a shadow DOM.
 
 {{< callout info >}}
+{{< partial "callout-info-sanitizer.md" >}}
+{{< /callout >}}
+
+{{< callout info >}}
 {{< partial "callout-info-prefersreducedmotion.md" >}}
 {{< /callout >}}
 
@@ -42,11 +46,11 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 Hover over the links below to see tooltips:
 
 <div class="bd-example tooltip-demo">
-  <p class="muted">Tight pants next level keffiyeh <a href="#" data-bs-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-bs-toggle="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-bs-toggle="tooltip" title="Another one here too">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-bs-toggle="tooltip" title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.
+  <p class="muted">Placeholder text to demonstrate some <a href="#" data-bs-toggle="tooltip" title="Default tooltip">inline links</a> with tooltips. This is now just filler, no killer. Content placed here just to mimic the presence of <a href="#" data-bs-toggle="tooltip" title="Another tooltip">real text</a>. And all that just to give you an idea of how tooltips would look when used in real-world situations. So hopefully you've now seen how <a href="#" data-bs-toggle="tooltip" title="Another one here too">these tooltips on links</a> can work in practice, once you use them on <a href="#" data-bs-toggle="tooltip" title="The last tip!">your own</a> site or project.
   </p>
 </div>
 
-Hover over the buttons below to see the four tooltips directions: top, right, bottom, and left.
+Hover over the buttons below to see the four tooltips directions: top, right, bottom, and left. Directions are mirrored when using Bootstrap in RTL.
 
 <div class="bd-example tooltip-demo">
   <div class="bd-example-tooltips">
@@ -141,19 +145,19 @@ You should only add tooltips to HTML elements that are traditionally keyboard-fo
 
 ### Disabled elements
 
-Elements with the `disabled` attribute aren't interactive, meaning users cannot focus, hover, or click them to trigger a tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`, and override the `pointer-events` on the disabled element.
+Elements with the `disabled` attribute aren't interactive, meaning users cannot focus, hover, or click them to trigger a tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`.
 
 <div class="tooltip-demo">
 {{< example >}}
 <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Disabled tooltip">
-  <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button>
+  <button class="btn btn-primary" type="button" disabled>Disabled button</button>
 </span>
 {{< /example >}}
 </div>
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-animation=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-animation=""`. Make sure to change the case type of the option name from camelCase to kebab-case when passing via data attributes. For example: instead of using `data-bs-customClass="beautifier"`, use `data-bs-custom-class="beautifier"`.
 
 {{< callout warning >}}
 Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` options cannot be supplied using data attributes.
@@ -249,27 +253,17 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       </td>
     </tr>
     <tr>
-      <td><code>offset</code></td>
-      <td>number | string | function</td>
-      <td><code>0</code></td>
-      <td>
-        <p>Offset of the tooltip relative to its target.</p>
-        <p>When a function is used to determine the offset, it is called with an object containing the offset data as its first argument. The function must return an object with the same structure. The triggering element DOM node is passed as the second argument.</p>
-        <p>For more information refer to Popper's <a href="https://popper.js.org/docs/v1/#modifiers..offset.offset">offset docs</a>.</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code>fallbackPlacement</code></td>
-      <td>string | array</td>
-      <td><code>'flip'</code></td>
-      <td>Allow to specify which position Popper will use on fallback. For more information refer to
-      Popper's <a href="https://popper.js.org/docs/v1/#modifiers..flip.behavior">behavior docs</a></td>
+      <td><code>fallbackPlacements</code></td>
+      <td>array</td>
+      <td><code>['top', 'right', 'bottom', 'left']</code></td>
+      <td>Define fallback placements by providing a list of placements in array (in order of preference). For more information refer to
+      Popper's <a href="https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements">behavior docs</a></td>
     </tr>
     <tr>
       <td><code>boundary</code></td>
       <td>string | element</td>
-      <td><code>'scrollParent'</code></td>
-      <td>Overflow constraint boundary of the tooltip. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper's <a href="https://popper.js.org/docs/v1/#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
+      <td><code>'clippingParents'</code></td>
+      <td>Overflow constraint boundary of the tooltip. By default it's <code>'clippingParents'</code> and can accept an HTMLElement reference (JavaScript only). For more information refer to Popper's <a href="https://popper.js.org/docs/v2/utils/detect-overflow/#boundary">preventOverflow docs</a>.</td>
     </tr>
     <tr>
       <td><code>customClass</code></td>
@@ -284,7 +278,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       <td><code>sanitize</code></td>
       <td>boolean</td>
       <td><code>true</code></td>
-      <td>Enable or disable the sanitization. If activated <code>'template'</code> and <code>'title'</code> options will be sanitized.</td>
+      <td>Enable or disable the sanitization. If activated <code>'template'</code> and <code>'title'</code> options will be sanitized. See the <a href="{{< docsref "/getting-started/javascript#sanitizer" >}}">sanitizer section in our JavaScript documentation</a>.</td>
     </tr>
     <tr>
       <td><code>allowList</code></td>
@@ -299,10 +293,23 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       <td>Here you can supply your own sanitize function. This can be useful if you prefer to use a dedicated library to perform sanitization.</td>
     </tr>
     <tr>
+      <td><code>offset</code></td>
+      <td>array | string | function</td>
+      <td><code>[0, 0]</code></td>
+      <td>
+        <p>Offset of the tooltip relative to its target. You can pass a string in data attributes with comma separated values like: <code>data-bs-offset="10,20"</code></p>
+        <p>When a function is used to determine the offset, it is called with an object containing the popper placement, the reference, and popper rects as its first argument. The triggering element DOM node is passed as the second argument. The function must return an array with two numbers: <code>[<a href="https://popper.js.org/docs/v2/modifiers/offset/#skidding-1">skidding</a>, <a href="https://popper.js.org/docs/v2/modifiers/offset/#distance-1">distance</a>]</code>.</p>
+        <p>For more information refer to Popper's <a href="https://popper.js.org/docs/v2/modifiers/offset/#options">offset docs</a>.</p>
+      </td>
+    </tr>
+    <tr>
       <td><code>popperConfig</code></td>
-      <td>null | object</td>
+      <td>null | object | function</td>
       <td><code>null</code></td>
-      <td>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper's configuration</a></td>
+      <td>
+        <p>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v2/constructors/#options">Popper's configuration</a>.</p>
+        <p>When a function is used to create the Popper configuration, it's called with an object that contains the Bootstrap's default Popper configuration. It helps you use and merge the default with your own configuration. The function must return a configuration object for Popper.</p>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -312,6 +319,18 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
 
 Options for individual tooltips can alternatively be specified through the use of data attributes, as explained above.
 {{< /callout >}}
+
+#### Using function with `popperConfig`
+
+```js
+var tooltip = new bootstrap.Tooltip(element, {
+  popperConfig: function (defaultBsPopperConfig) {
+    // var newPopperConfig = {...}
+    // use defaultBsPopperConfig if needed...
+    // return newPopperConfig
+  }
+})
+```
 
 ### Methods
 

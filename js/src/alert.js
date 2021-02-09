@@ -1,20 +1,19 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): alert.js
+ * Bootstrap (v5.0.0-beta1): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
-  TRANSITION_END,
+  defineJQueryPlugin,
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
+import BaseComponent from './base-component'
 
 /**
  * ------------------------------------------------------------------------
@@ -23,7 +22,6 @@ import EventHandler from './dom/event-handler'
  */
 
 const NAME = 'alert'
-const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.alert'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -34,9 +32,9 @@ const EVENT_CLOSE = `close${EVENT_KEY}`
 const EVENT_CLOSED = `closed${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
-const CLASSNAME_ALERT = 'alert'
-const CLASSNAME_FADE = 'fade'
-const CLASSNAME_SHOW = 'show'
+const CLASS_NAME_ALERT = 'alert'
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_SHOW = 'show'
 
 /**
  * ------------------------------------------------------------------------
@@ -44,19 +42,11 @@ const CLASSNAME_SHOW = 'show'
  * ------------------------------------------------------------------------
  */
 
-class Alert {
-  constructor(element) {
-    this._element = element
-
-    if (this._element) {
-      Data.setData(element, DATA_KEY, this)
-    }
-  }
-
+class Alert extends BaseComponent {
   // Getters
 
-  static get VERSION() {
-    return VERSION
+  static get DATA_KEY() {
+    return DATA_KEY
   }
 
   // Public
@@ -72,15 +62,10 @@ class Alert {
     this._removeElement(rootElement)
   }
 
-  dispose() {
-    Data.removeData(this._element, DATA_KEY)
-    this._element = null
-  }
-
   // Private
 
   _getRootElement(element) {
-    return getElementFromSelector(element) || element.closest(`.${CLASSNAME_ALERT}`)
+    return getElementFromSelector(element) || element.closest(`.${CLASS_NAME_ALERT}`)
   }
 
   _triggerCloseEvent(element) {
@@ -88,16 +73,16 @@ class Alert {
   }
 
   _removeElement(element) {
-    element.classList.remove(CLASSNAME_SHOW)
+    element.classList.remove(CLASS_NAME_SHOW)
 
-    if (!element.classList.contains(CLASSNAME_FADE)) {
+    if (!element.classList.contains(CLASS_NAME_FADE)) {
       this._destroyElement(element)
       return
     }
 
     const transitionDuration = getTransitionDurationFromElement(element)
 
-    EventHandler.one(element, TRANSITION_END, () => this._destroyElement(element))
+    EventHandler.one(element, 'transitionend', () => this._destroyElement(element))
     emulateTransitionEnd(element, transitionDuration)
   }
 
@@ -134,10 +119,6 @@ class Alert {
       alertInstance.close(this)
     }
   }
-
-  static getInstance(element) {
-    return Data.getData(element, DATA_KEY)
-  }
 }
 
 /**
@@ -154,18 +135,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DISMISS, Alert.handleDi
  * add .Alert to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Alert.jQueryInterface
-    $.fn[NAME].Constructor = Alert
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Alert.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Alert)
 
 export default Alert

@@ -2,8 +2,8 @@
 
 /*!
  * Script to run vnu-jar if Java is available.
- * Copyright 2017-2020 The Bootstrap Authors
- * Copyright 2017-2020 Twitter, Inc.
+ * Copyright 2017-2021 The Bootstrap Authors
+ * Copyright 2017-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
@@ -42,7 +42,7 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
 
   const args = [
     '-jar',
-    vnu,
+    `"${vnu}"`,
     '--asciiquotes',
     '--skip-non-html',
     // Ignore the language code warnings

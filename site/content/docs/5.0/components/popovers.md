@@ -22,6 +22,10 @@ Things to know when using the popover plugin:
 - Popovers can be triggered thanks to an element inside a shadow DOM.
 
 {{< callout info >}}
+{{< partial "callout-info-sanitizer.md" >}}
+{{< /callout >}}
+
+{{< callout info >}}
 {{< partial "callout-info-prefersreducedmotion.md" >}}
 {{< /callout >}}
 
@@ -56,42 +60,22 @@ var popover = new bootstrap.Popover(document.querySelector('.example-popover'), 
 
 ### Four directions
 
-Four options are available: top, right, bottom, and left aligned.
+Four options are available: top, right, bottom, and left aligned. Directions are mirrored when using Bootstrap in RTL.
 
-<div class="bd-example popover-demo">
-  <div class="bd-example-popovers">
-    <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-      Popover on top
-    </button>
-    <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-      Popover on right
-    </button>
-    <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-      Popover on bottom
-    </button>
-    <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-      Popover on left
-    </button>
-  </div>
-</div>
-
-```html
-<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+{{< example >}}
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
   Popover on top
 </button>
-
-<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover">
   Popover on right
 </button>
-
-<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
   Popover on bottom
 </button>
-
-<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Left popover">
   Popover on left
 </button>
-```
+{{< /example >}}
 
 ### Dismiss on next click
 
@@ -115,13 +99,13 @@ var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), 
 
 ### Disabled elements
 
-Elements with the `disabled` attribute aren't interactive, meaning users cannot hover or click them to trigger a popover (or tooltip). As a workaround, you'll want to trigger the popover from a wrapper `<div>` or `<span>` and override the `pointer-events` on the disabled element.
+Elements with the `disabled` attribute aren't interactive, meaning users cannot hover or click them to trigger a popover (or tooltip). As a workaround, you'll want to trigger the popover from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`.
 
-For disabled popover triggers, you may also prefer `data-bs-trigger="hover"` so that the popover appears as immediate visual feedback to your users as they may not expect to _click_ on a disabled element.
+For disabled popover triggers, you may also prefer `data-bs-trigger="hover focus"` so that the popover appears as immediate visual feedback to your users as they may not expect to _click_ on a disabled element.
 
 {{< example >}}
-<span class="d-inline-block" data-bs-toggle="popover" data-bs-content="Disabled popover">
-  <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button>
+<span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
+  <button class="btn btn-primary" type="button" disabled>Disabled button</button>
 </span>
 {{< /example >}}
 
@@ -146,7 +130,7 @@ Additionally, while it is possible to also include interactive controls (such as
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-animation=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-animation=""`. Make sure to change the case type of the option name from camelCase to kebab-case when passing via data attributes. For example: instead of using `data-bs-customClass="beautifier"`, use `data-bs-custom-class="beautifier"`.
 
 {{< callout warning >}}
 Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` options cannot be supplied using data attributes.
@@ -244,23 +228,17 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. <code>manual</code> cannot be combined with any other trigger.</td>
     </tr>
     <tr>
-      <td><code>offset</code></td>
-      <td>number | string</td>
-      <td><code>0</code></td>
-      <td>Offset of the popover relative to its target. For more information refer to Popper's <a href="https://popper.js.org/docs/v1/#modifiers..offset.offset">offset docs</a>.</td>
-    </tr>
-    <tr>
-      <td><code>fallbackPlacement</code></td>
-      <td>string | array</td>
-      <td><code>'flip'</code></td>
-      <td>Allow to specify which position Popper will use on fallback. For more information refer to
-      Popper's <a href="https://popper.js.org/docs/v1/#modifiers..flip.behavior">behavior docs</a></td>
+      <td><code>fallbackPlacements</code></td>
+      <td>array</td>
+      <td><code>['top', 'right', 'bottom', 'left']</code></td>
+      <td>Define fallback placements by providing a list of placements in array (in order of preference). For more information refer to
+      Popper's <a href="https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements">behavior docs</a></td>
     </tr>
     <tr>
       <td><code>boundary</code></td>
       <td>string | element</td>
-      <td><code>'scrollParent'</code></td>
-      <td>Overflow constraint boundary of the popover. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper's <a href="https://popper.js.org/docs/v1/#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
+      <td><code>'clippingParents'</code></td>
+      <td>Overflow constraint boundary of the popover. By default it's <code>'clippingParents'</code> and can accept an HTMLElement reference (JavaScript only). For more information refer to Popper's <a href="https://popper.js.org/docs/v2/utils/detect-overflow/#boundary">preventOverflow docs</a>.</td>
     </tr>
     <tr>
       <td><code>customClass</code></td>
@@ -275,7 +253,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       <td><code>sanitize</code></td>
       <td>boolean</td>
       <td><code>true</code></td>
-      <td>Enable or disable the sanitization. If activated <code>'template'</code>, <code>'content'</code> and <code>'title'</code> options will be sanitized.</td>
+      <td>Enable or disable the sanitization. If activated <code>'template'</code>, <code>'content'</code> and <code>'title'</code> options will be sanitized. See the <a href="{{< docsref "/getting-started/javascript#sanitizer" >}}">sanitizer section in our JavaScript documentation</a>.</td>
     </tr>
     <tr>
       <td><code>allowList</code></td>
@@ -290,10 +268,23 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       <td>Here you can supply your own sanitize function. This can be useful if you prefer to use a dedicated library to perform sanitization.</td>
     </tr>
     <tr>
+      <td><code>offset</code></td>
+      <td>array | string | function</td>
+      <td><code>[0, 8]</code></td>
+      <td>
+        <p>Offset of the popover relative to its target. You can pass a string in data attributes with comma separated values like: <code>data-bs-offset="10,20"</code></p>
+        <p>When a function is used to determine the offset, it is called with an object containing the popper placement, the reference, and popper rects as its first argument. The triggering element DOM node is passed as the second argument. The function must return an array with two numbers: <code>[<a href="https://popper.js.org/docs/v2/modifiers/offset/#skidding-1">skidding</a>, <a href="https://popper.js.org/docs/v2/modifiers/offset/#distance-1">distance</a>]</code>.</p>
+        <p>For more information refer to Popper's <a href="https://popper.js.org/docs/v2/modifiers/offset/#options">offset docs</a>.</p>
+      </td>
+    </tr>
+    <tr>
       <td><code>popperConfig</code></td>
-      <td>null | object</td>
+      <td>null | object | function</td>
       <td><code>null</code></td>
-      <td>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper's configuration</a></td>
+      <td>
+        <p>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v2/constructors/#options">Popper's configuration</a>.</p>
+        <p>When a function is used to create the Popper configuration, it's called with an object that contains the Bootstrap's default Popper configuration. It helps you use and merge the default with your own configuration. The function must return a configuration object for Popper.</p>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -303,6 +294,18 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
 
 Options for individual popovers can alternatively be specified through the use of data attributes, as explained above.
 {{< /callout >}}
+
+#### Using function with `popperConfig`
+
+```js
+var popover = new bootstrap.Popover(element, {
+  popperConfig: function (defaultBsPopperConfig) {
+    // var newPopperConfig = {...}
+    // use defaultBsPopperConfig if needed...
+    // return newPopperConfig
+  }
+})
+```
 
 ### Methods
 

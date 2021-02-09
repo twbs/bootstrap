@@ -206,11 +206,9 @@ describe('Popover', () => {
       jQueryMock.fn.popover = Popover.jQueryInterface
       jQueryMock.elements = [popoverEl]
 
-      try {
+      expect(() => {
         jQueryMock.fn.popover.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
+      }).toThrowError(TypeError, `No method named "${action}"`)
     })
 
     it('should should call show method', () => {
@@ -253,6 +251,7 @@ describe('Popover', () => {
       const popover = new Popover(popoverEl)
 
       expect(Popover.getInstance(popoverEl)).toEqual(popover)
+      expect(Popover.getInstance(popoverEl)).toBeInstanceOf(Popover)
     })
 
     it('should return null when there is no popover instance', () => {
