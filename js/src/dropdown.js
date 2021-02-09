@@ -86,7 +86,7 @@ const DefaultType = {
   boundary: '(string|element)',
   reference: '(string|element|object)',
   display: 'string',
-  popperConfig: '(null|object)'
+  popperConfig: '(null|object|function)'
 }
 
 /**
@@ -181,11 +181,11 @@ class Dropdown extends BaseComponent {
       const popperConfig = this._getPopperConfig()
       const isDisplayStatic = popperConfig.modifiers.find(modifier => modifier.name === 'applyStyles' && modifier.enabled === false)
 
+      this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
+
       if (isDisplayStatic) {
         Manipulator.setDataAttribute(this._menu, 'popper', 'static')
       }
-
-      this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
     }
 
     // If this is a touch-enabled device we add extra
@@ -322,7 +322,7 @@ class Dropdown extends BaseComponent {
   }
 
   _getPopperConfig() {
-    const popperConfig = {
+    const defaultBsPopperConfig = {
       placement: this._getPlacement(),
       modifiers: [{
         name: 'preventOverflow',
@@ -341,15 +341,15 @@ class Dropdown extends BaseComponent {
 
     // Disable Popper if we have a static display
     if (this._config.display === 'static') {
-      popperConfig.modifiers = [{
+      defaultBsPopperConfig.modifiers = [{
         name: 'applyStyles',
         enabled: false
       }]
     }
 
     return {
-      ...popperConfig,
-      ...this._config.popperConfig
+      ...defaultBsPopperConfig,
+      ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig)
     }
   }
 
