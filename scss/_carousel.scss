@@ -82,19 +82,6 @@
   }
 }
 
-// Vertical slide transition
-
-.carousel-vertical {
-  .carousel-item-next:not(.carousel-item-start),
-  .active.carousel-item-end {
-    transform: translate(0, 100%);
-  }
-
-  .carousel-item-prev:not(.carousel-item-end),
-  .active.carousel-item-start {
-    transform: translate(0, -100%);
-  }
-}
 //
 // Left/right controls for nav
 //
@@ -207,6 +194,60 @@
   }
 }
 
+// Vertical slide transition
+// Writing below to override default indicators and control css
+.carousel-vertical {
+  .carousel-item-next:not(.carousel-item-start),
+  .active.carousel-item-end {
+    transform: translate(0, 100%);
+  }
+
+  .carousel-item-prev:not(.carousel-item-end),
+  .active.carousel-item-start {
+    transform: translate(0, -100%);
+  }
+
+  .carousel-indicators {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: unset;
+    flex-direction: column;
+    margin-right: 0;
+    margin-bottom: 0;
+
+    [data-bs-target] {
+      width: 15px;
+      height: 15px;
+      // stylelint-disable-next-line property-disallowed-list
+      border-radius: 50%;
+    }
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    right: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+    border: unset;
+  }
+
+  .carousel-control-prev {
+    top: 0;
+    bottom: unset;
+  }
+
+  .carousel-control-next {
+    top: unset;
+    bottom: 0;
+  }
+
+  .carousel-control-next-icon,
+  .carousel-control-prev-icon{
+    transform: rotate(90deg);
+  }
+}
 
 // Optional captions
 //

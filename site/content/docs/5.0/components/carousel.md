@@ -184,6 +184,11 @@ Add `.carousel-vertical` to your carousel to animate slides with a vertical slid
 
 {{< example >}}
 <div id="carouselExampleVertical" class="carousel slide carousel-vertical" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleVertical" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleVertical" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleVertical" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
       {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" >}}
@@ -205,6 +210,7 @@ Add `.carousel-vertical` to your carousel to animate slides with a vertical slid
   </button>
 </div>
 {{< /example >}}
+
 
 ### Individual `.carousel-item` interval
 
