@@ -181,11 +181,11 @@ class Dropdown extends BaseComponent {
       const popperConfig = this._getPopperConfig()
       const isDisplayStatic = popperConfig.modifiers.find(modifier => modifier.name === 'applyStyles' && modifier.enabled === false)
 
+      this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
+
       if (isDisplayStatic) {
         Manipulator.setDataAttribute(this._menu, 'popper', 'static')
       }
-
-      this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
     }
 
     // If this is a touch-enabled device we add extra
