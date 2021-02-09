@@ -95,7 +95,7 @@ If you'd like to get a particular plugin instance, each plugin exposes a `getIns
 
 ### CSS selectors in constructors
 
-You can also use a CSS selectors as the first argument instead of a DOM element to initialize the plugin. Currently the element for the plugin is found by `querySelector` method since the plugins support single element only.
+You can also use a CSS selectors as the first argument instead of a DOM element to initialize the plugin. Currently the element for the plugin is found by `querySelector` method since the plugins support a single element only.
 
 ```js
 var modal = new bootstrap.Modal('#myModal')
