@@ -322,12 +322,6 @@ class Dropdown extends BaseComponent {
         }
       },
       {
-        name: 'flip',
-        options: {
-          fallbackPlacements: ['top', 'right', 'bottom', 'left']
-        }
-      },
-      {
         name: 'offset',
         options: {
           offset: this._getOffset()
