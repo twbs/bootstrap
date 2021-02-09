@@ -41,7 +41,7 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
 
   const args = [
     '-jar',
-    vnu,
+    `"${vnu}"`,
     '--asciiquotes',
     '--skip-non-html',
     // Ignore the language code warnings
