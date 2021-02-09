@@ -23,7 +23,7 @@ jobs:
           node-version: "${{ env.NODE }}"
 
       - name: Set up npm cache
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
