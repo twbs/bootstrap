@@ -12,7 +12,7 @@ import {
   getTransitionDurationFromElement,
   isVisible
 } from './util/index'
-import { getScrollBarWidth, resetScrollbar, setScrollbar } from './util/scrollbar'
+import * as Scrollbar from './util/scrollbar'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import BaseComponent from './base-component'
@@ -62,7 +62,6 @@ class OffCanvas extends BaseComponent {
     this._isShown = element.classList.contains(CLASS_NAME_SHOW)
     this._bodyOptions = element.getAttribute(DATA_BODY_ACTIONS)
     this._isBodyOverflowing = null
-    this._scrollbarWidth = null
 
     this._handleClosing()
   }
@@ -88,13 +87,12 @@ class OffCanvas extends BaseComponent {
     this._element.style.visibility = 'visible'
     document.body.classList.add(CLASS_NAME_TOGGLING)
 
-    if (this._bodyOptions === 'backdrop') {
+    if (this._bodyOptionsHas('backdrop')) {
       document.body.classList.add(CLASS_NAME_BACKDROP_BODY)
     }
 
-    if (this._bodyOptions !== 'scroll') {
-      this._scrollbarWidth = getScrollBarWidth()
-      setScrollbar(this._scrollbarWidth)
+    if (!this._bodyOptionsHas('scroll')) {
+      Scrollbar.setCustom(Scrollbar.getWidth())
       document.body.classList.add(CLASS_NAME_STOP_OVERFLOW)
     }
 
@@ -106,7 +104,7 @@ class OffCanvas extends BaseComponent {
     const completeCallBack = () => {
       document.body.classList.add(CLASS_NAME_OPEN)
       document.body.classList.remove(CLASS_NAME_TOGGLING)
-      this._enforceFocus()
+      this._enforceFocusOnElement(this._element)
       EventHandler.trigger(this._element, EVENT_SHOWN, { relatedTarget })
     }
 
@@ -128,7 +126,7 @@ class OffCanvas extends BaseComponent {
     this._element.blur()
     this._isShown = false
 
-    if (this._bodyOptions === 'backdrop') {
+    if (this._bodyOptionsHas('backdrop')) {
       document.body.classList.remove(CLASS_NAME_BACKDROP_BODY)
     }
 
@@ -142,9 +140,9 @@ class OffCanvas extends BaseComponent {
       this._element.removeAttribute('role')
       this._element.style.visibility = 'hidden'
 
-      if (this._bodyOptions !== 'scroll') {
+      if (!this._bodyOptionsHas('scroll')) {
         document.body.classList.remove(CLASS_NAME_STOP_OVERFLOW)
-        resetScrollbar()
+        Scrollbar.reset()
       }
 
       EventHandler.trigger(this._element, EVENT_HIDDEN)
@@ -153,16 +151,20 @@ class OffCanvas extends BaseComponent {
     setTimeout(completeCallback, getTransitionDurationFromElement(this._element))
   }
 
-  _enforceFocus() {
+  _enforceFocusOnElement(element) {
     EventHandler.off(document, EVENT_FOCUSIN) // guard against infinite focus loop
     EventHandler.on(document, EVENT_FOCUSIN, event => {
       if (document !== event.target &&
-        this._element !== event.target &&
-        !this._element.contains(event.target)) {
-        this._element.focus()
+        element !== event.target &&
+        !element.contains(event.target)) {
+        element.focus()
       }
     })
-    this._element.focus()
+    element.focus()
+  }
+
+  _bodyOptionsHas(option) {
+    return this._bodyOptions === option
   }
 
   _handleClosing() {

@@ -12,7 +12,7 @@ const CLASS_NAME_SCROLLBAR_MEASURER = 'modal-scrollbar-measure'
 const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
 const SELECTOR_STICKY_CONTENT = '.sticky-top'
 
-const getScrollBarWidth = () => { // thx d.walsh
+const getWidth = () => { // thx d.walsh
   const scrollDiv = document.createElement('div')
   scrollDiv.className = CLASS_NAME_SCROLLBAR_MEASURER
   document.body.appendChild(scrollDiv)
@@ -21,7 +21,7 @@ const getScrollBarWidth = () => { // thx d.walsh
   return scrollbarWidth
 }
 
-const setScrollbar = width => {
+const setCustom = width => {
   _setElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight', calculatedValue => calculatedValue + width)
   _setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - width)
   _setElementAttributes('body', 'paddingRight', calculatedValue => calculatedValue + width)
@@ -37,7 +37,7 @@ const _setElementAttributes = (selector, styleProp, callback) => {
     })
 }
 
-const resetScrollbar = () => {
+const reset = () => {
   _resetElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight')
   _resetElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight')
   _resetElementAttributes('body', 'paddingRight')
@@ -56,7 +56,7 @@ const _resetElementAttributes = (selector, styleProp) => {
 }
 
 export {
-  getScrollBarWidth,
-  setScrollbar,
-  resetScrollbar
+  getWidth,
+  setCustom,
+  reset
 }
