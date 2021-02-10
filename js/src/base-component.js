@@ -36,6 +36,11 @@ class BaseComponent {
     return Data.getData(element, this.DATA_KEY)
   }
 
+  static get DATA_KEY() {
+    const className = this.name.toLowerCase()
+    return `bs.${className}`
+  }
+
   static get VERSION() {
     return VERSION
   }

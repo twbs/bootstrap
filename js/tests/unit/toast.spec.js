@@ -20,6 +20,12 @@ describe('Toast', () => {
     })
   })
 
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(Toast.DATA_KEY).toEqual('bs.toast')
+    })
+  })
+
   describe('constructor', () => {
     it('should allow to config in js', done => {
       fixtureEl.innerHTML = [

@@ -157,10 +157,6 @@ class Tooltip extends BaseComponent {
     return NAME
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
-  }
-
   static get Event() {
     return Event
   }

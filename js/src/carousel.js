@@ -129,10 +129,6 @@ class Carousel extends BaseComponent {
     return Default
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
-  }
-
   // Public
 
   next() {

@@ -33,6 +33,12 @@ describe('Dropdown', () => {
     })
   })
 
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(Dropdown.DATA_KEY).toEqual('bs.dropdown')
+    })
+  })
+
   describe('constructor', () => {
     it('should add a listener on trigger which do not have data-bs-toggle="dropdown"', () => {
       fixtureEl.innerHTML = [

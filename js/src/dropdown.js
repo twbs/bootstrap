@@ -117,10 +117,6 @@ class Dropdown extends BaseComponent {
     return DefaultType
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
-  }
-
   // Public
 
   toggle() {

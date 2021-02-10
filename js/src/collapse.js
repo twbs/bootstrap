@@ -107,10 +107,6 @@ class Collapse extends BaseComponent {
     return Default
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
-  }
-
   // Public
 
   toggle() {

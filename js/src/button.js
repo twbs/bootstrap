@@ -34,12 +34,6 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
  */
 
 class Button extends BaseComponent {
-  // Getters
-
-  static get DATA_KEY() {
-    return DATA_KEY
-  }
-
   // Public
 
   toggle() {

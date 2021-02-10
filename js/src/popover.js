@@ -76,10 +76,6 @@ class Popover extends Tooltip {
     return NAME
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
-  }
-
   static get Event() {
     return Event
   }

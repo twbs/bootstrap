@@ -48,6 +48,12 @@ describe('ScrollSpy', () => {
     })
   })
 
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(ScrollSpy.DATA_KEY).toEqual('bs.scrollspy')
+    })
+  })
+
   describe('constructor', () => {
     it('should generate an id when there is not one', () => {
       fixtureEl.innerHTML = [

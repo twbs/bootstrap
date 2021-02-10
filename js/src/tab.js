@@ -55,12 +55,6 @@ const SELECTOR_DROPDOWN_ACTIVE_CHILD = ':scope > .dropdown-menu .active'
  */
 
 class Tab extends BaseComponent {
-  // Getters
-
-  static get DATA_KEY() {
-    return DATA_KEY
-  }
-
   // Public
 
   show() {

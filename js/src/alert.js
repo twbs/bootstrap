@@ -43,12 +43,6 @@ const CLASS_NAME_SHOW = 'show'
  */
 
 class Alert extends BaseComponent {
-  // Getters
-
-  static get DATA_KEY() {
-    return DATA_KEY
-  }
-
   // Public
 
   close(element) {
