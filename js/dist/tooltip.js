@@ -1,13 +1,13 @@
 /*!
-  * Bootstrap tooltip.js v5.0.0-beta1 (https://getbootstrap.com/)
-  * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap tooltip.js v5.0.0-beta2 (https://getbootstrap.com/)
+  * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@popperjs/core'), require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js')) :
-  typeof define === 'function' && define.amd ? define(['@popperjs/core', './dom/data', './dom/event-handler', './dom/manipulator', './dom/selector-engine'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Tooltip = factory(global.Popper, global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine));
-}(this, (function (Popper, Data, EventHandler, Manipulator, SelectorEngine) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@popperjs/core'), require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js'), require('./base-component.js')) :
+  typeof define === 'function' && define.amd ? define(['@popperjs/core', './dom/data', './dom/event-handler', './dom/manipulator', './dom/selector-engine', './base-component'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Tooltip = factory(global.Popper, global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine, global.Base));
+}(this, (function (Popper, Data, EventHandler, Manipulator, SelectorEngine, BaseComponent) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -36,10 +36,61 @@
   var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
   var Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
   var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
+  var BaseComponent__default = /*#__PURE__*/_interopDefaultLegacy(BaseComponent);
+
+  function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    return Constructor;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  function _inheritsLoose(subClass, superClass) {
+    subClass.prototype = Object.create(superClass.prototype);
+    subClass.prototype.constructor = subClass;
+
+    _setPrototypeOf(subClass, superClass);
+  }
+
+  function _setPrototypeOf(o, p) {
+    _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+      o.__proto__ = p;
+      return o;
+    };
+
+    return _setPrototypeOf(o, p);
+  }
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-beta1): util/index.js
+   * Bootstrap (v5.0.0-beta2): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -125,7 +176,7 @@
       var valueType = value && isElement(value) ? 'element' : toType(value);
 
       if (!new RegExp(expectedTypes).test(valueType)) {
-        throw new Error(componentName.toUpperCase() + ": " + ("Option \"" + property + "\" provided type \"" + valueType + "\" ") + ("but expected type \"" + expectedTypes + "\"."));
+        throw new TypeError(componentName.toUpperCase() + ": " + ("Option \"" + property + "\" provided type \"" + valueType + "\" ") + ("but expected type \"" + expectedTypes + "\"."));
       }
     });
   };
@@ -178,9 +229,27 @@
 
   var isRTL = document.documentElement.dir === 'rtl';
 
+  var defineJQueryPlugin = function defineJQueryPlugin(name, plugin) {
+    onDOMContentLoaded(function () {
+      var $ = getjQuery();
+      /* istanbul ignore if */
+
+      if ($) {
+        var JQUERY_NO_CONFLICT = $.fn[name];
+        $.fn[name] = plugin.jQueryInterface;
+        $.fn[name].Constructor = plugin;
+
+        $.fn[name].noConflict = function () {
+          $.fn[name] = JQUERY_NO_CONFLICT;
+          return plugin.jQueryInterface;
+        };
+      }
+    });
+  };
+
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-beta1): util/sanitizer.js
+   * Bootstrap (v5.0.0-beta2): util/sanitizer.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -206,7 +275,7 @@
 
     if (allowedAttributeList.includes(attrName)) {
       if (uriAttrs.has(attrName)) {
-        return Boolean(attr.nodeValue.match(SAFE_URL_PATTERN) || attr.nodeValue.match(DATA_URL_PATTERN));
+        return Boolean(SAFE_URL_PATTERN.test(attr.nodeValue) || DATA_URL_PATTERN.test(attr.nodeValue));
       }
 
       return true;
@@ -217,7 +286,7 @@
     }); // Check if a regular expression validates the attribute.
 
     for (var i = 0, len = regExp.length; i < len; i++) {
-      if (attrName.match(regExp[i])) {
+      if (regExp[i].test(attrName)) {
         return true;
       }
     }
@@ -305,57 +374,6 @@
     return createdDocument.body.innerHTML;
   }
 
-  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
-
-  var VERSION = '5.0.0-beta1';
-
-  var BaseComponent = /*#__PURE__*/function () {
-    function BaseComponent(element) {
-      if (!element) {
-        return;
-      }
-
-      this._element = element;
-      Data__default['default'].setData(element, this.constructor.DATA_KEY, this);
-    }
-
-    var _proto = BaseComponent.prototype;
-
-    _proto.dispose = function dispose() {
-      Data__default['default'].removeData(this._element, this.constructor.DATA_KEY);
-      this._element = null;
-    }
-    /** Static */
-    ;
-
-    BaseComponent.getInstance = function getInstance(element) {
-      return Data__default['default'].getData(element, this.DATA_KEY);
-    };
-
-    _createClass(BaseComponent, null, [{
-      key: "VERSION",
-      get: function get() {
-        return VERSION;
-      }
-    }]);
-
-    return BaseComponent;
-  }();
-
-  function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-  function _defineProperties$1(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass$1(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$1(Constructor.prototype, protoProps); if (staticProps) _defineProperties$1(Constructor, staticProps); return Constructor; }
-
-  function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -377,14 +395,15 @@
     html: 'boolean',
     selector: '(string|boolean)',
     placement: '(string|function)',
+    offset: '(array|string|function)',
     container: '(string|element|boolean)',
-    fallbackPlacements: '(null|array)',
+    fallbackPlacements: 'array',
     boundary: '(string|element)',
     customClass: '(string|function)',
     sanitize: 'boolean',
     sanitizeFn: '(null|function)',
     allowList: 'object',
-    popperConfig: '(null|object)'
+    popperConfig: '(null|object|function)'
   };
   var AttachmentMap = {
     AUTO: 'auto',
@@ -402,8 +421,9 @@
     html: false,
     selector: false,
     placement: 'top',
+    offset: [0, 0],
     container: false,
-    fallbackPlacements: null,
+    fallbackPlacements: ['top', 'right', 'bottom', 'left'],
     boundary: 'clippingParents',
     customClass: '',
     sanitize: true,
@@ -487,13 +507,7 @@
       }
 
       if (event) {
-        var dataKey = this.constructor.DATA_KEY;
-        var context = Data__default['default'].getData(event.delegateTarget, dataKey);
-
-        if (!context) {
-          context = new this.constructor(event.delegateTarget, this._getDelegateConfig());
-          Data__default['default'].setData(event.delegateTarget, dataKey, context);
-        }
+        var context = this._initializeOnDelegatedTarget(event);
 
         context._activeTrigger.click = !context._activeTrigger.click;
 
@@ -518,7 +532,7 @@
       EventHandler__default['default'].off(this._element, this.constructor.EVENT_KEY);
       EventHandler__default['default'].off(this._element.closest("." + CLASS_NAME_MODAL), 'hide.bs.modal', this._hideModalHandler);
 
-      if (this.tip) {
+      if (this.tip && this.tip.parentNode) {
         this.tip.parentNode.removeChild(this.tip);
       }
 
@@ -545,81 +559,83 @@
         throw new Error('Please use show on visible elements');
       }
 
-      if (this.isWithContent() && this._isEnabled) {
-        var showEvent = EventHandler__default['default'].trigger(this._element, this.constructor.Event.SHOW);
-        var shadowRoot = findShadowRoot(this._element);
-        var isInTheDom = shadowRoot === null ? this._element.ownerDocument.documentElement.contains(this._element) : shadowRoot.contains(this._element);
+      if (!(this.isWithContent() && this._isEnabled)) {
+        return;
+      }
 
-        if (showEvent.defaultPrevented || !isInTheDom) {
-          return;
+      var showEvent = EventHandler__default['default'].trigger(this._element, this.constructor.Event.SHOW);
+      var shadowRoot = findShadowRoot(this._element);
+      var isInTheDom = shadowRoot === null ? this._element.ownerDocument.documentElement.contains(this._element) : shadowRoot.contains(this._element);
+
+      if (showEvent.defaultPrevented || !isInTheDom) {
+        return;
+      }
+
+      var tip = this.getTipElement();
+      var tipId = getUID(this.constructor.NAME);
+      tip.setAttribute('id', tipId);
+
+      this._element.setAttribute('aria-describedby', tipId);
+
+      this.setContent();
+
+      if (this.config.animation) {
+        tip.classList.add(CLASS_NAME_FADE);
+      }
+
+      var placement = typeof this.config.placement === 'function' ? this.config.placement.call(this, tip, this._element) : this.config.placement;
+
+      var attachment = this._getAttachment(placement);
+
+      this._addAttachmentClass(attachment);
+
+      var container = this._getContainer();
+
+      Data__default['default'].setData(tip, this.constructor.DATA_KEY, this);
+
+      if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
+        container.appendChild(tip);
+      }
+
+      EventHandler__default['default'].trigger(this._element, this.constructor.Event.INSERTED);
+      this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment));
+      tip.classList.add(CLASS_NAME_SHOW);
+      var customClass = typeof this.config.customClass === 'function' ? this.config.customClass() : this.config.customClass;
+
+      if (customClass) {
+        var _tip$classList;
+
+        (_tip$classList = tip.classList).add.apply(_tip$classList, customClass.split(' '));
+      } // If this is a touch-enabled device we add extra
+      // empty mouseover listeners to the body's immediate children;
+      // only needed because of broken event delegation on iOS
+      // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+
+
+      if ('ontouchstart' in document.documentElement) {
+        var _ref;
+
+        (_ref = []).concat.apply(_ref, document.body.children).forEach(function (element) {
+          EventHandler__default['default'].on(element, 'mouseover', noop());
+        });
+      }
+
+      var complete = function complete() {
+        var prevHoverState = _this2._hoverState;
+        _this2._hoverState = null;
+        EventHandler__default['default'].trigger(_this2._element, _this2.constructor.Event.SHOWN);
+
+        if (prevHoverState === HOVER_STATE_OUT) {
+          _this2._leave(null, _this2);
         }
+      };
 
-        var tip = this.getTipElement();
-        var tipId = getUID(this.constructor.NAME);
-        tip.setAttribute('id', tipId);
-
-        this._element.setAttribute('aria-describedby', tipId);
-
-        this.setContent();
-
-        if (this.config.animation) {
-          tip.classList.add(CLASS_NAME_FADE);
-        }
-
-        var placement = typeof this.config.placement === 'function' ? this.config.placement.call(this, tip, this._element) : this.config.placement;
-
-        var attachment = this._getAttachment(placement);
-
-        this._addAttachmentClass(attachment);
-
-        var container = this._getContainer();
-
-        Data__default['default'].setData(tip, this.constructor.DATA_KEY, this);
-
-        if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
-          container.appendChild(tip);
-        }
-
-        EventHandler__default['default'].trigger(this._element, this.constructor.Event.INSERTED);
-        this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment));
-        tip.classList.add(CLASS_NAME_SHOW);
-        var customClass = typeof this.config.customClass === 'function' ? this.config.customClass() : this.config.customClass;
-
-        if (customClass) {
-          var _tip$classList;
-
-          (_tip$classList = tip.classList).add.apply(_tip$classList, customClass.split(' '));
-        } // If this is a touch-enabled device we add extra
-        // empty mouseover listeners to the body's immediate children;
-        // only needed because of broken event delegation on iOS
-        // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
-
-
-        if ('ontouchstart' in document.documentElement) {
-          var _ref;
-
-          (_ref = []).concat.apply(_ref, document.body.children).forEach(function (element) {
-            EventHandler__default['default'].on(element, 'mouseover', noop());
-          });
-        }
-
-        var complete = function complete() {
-          var prevHoverState = _this2._hoverState;
-          _this2._hoverState = null;
-          EventHandler__default['default'].trigger(_this2._element, _this2.constructor.Event.SHOWN);
-
-          if (prevHoverState === HOVER_STATE_OUT) {
-            _this2._leave(null, _this2);
-          }
-        };
-
-        if (this.tip.classList.contains(CLASS_NAME_FADE)) {
-          var transitionDuration = getTransitionDurationFromElement(this.tip);
-          EventHandler__default['default'].one(this.tip, TRANSITION_END, complete);
-          emulateTransitionEnd(this.tip, transitionDuration);
-        } else {
-          complete();
-        }
+      if (this.tip.classList.contains(CLASS_NAME_FADE)) {
+        var transitionDuration = getTransitionDurationFromElement(this.tip);
+        EventHandler__default['default'].one(this.tip, 'transitionend', complete);
+        emulateTransitionEnd(this.tip, transitionDuration);
+      } else {
+        complete();
       }
     };
 
@@ -673,7 +689,7 @@
 
       if (this.tip.classList.contains(CLASS_NAME_FADE)) {
         var transitionDuration = getTransitionDurationFromElement(tip);
-        EventHandler__default['default'].one(tip, TRANSITION_END, complete);
+        EventHandler__default['default'].one(tip, 'transitionend', complete);
         emulateTransitionEnd(tip, transitionDuration);
       } else {
         complete();
@@ -767,26 +783,58 @@
     } // Private
     ;
 
-    _proto._getPopperConfig = function _getPopperConfig(attachment) {
-      var _this4 = this;
+    _proto._initializeOnDelegatedTarget = function _initializeOnDelegatedTarget(event, context) {
+      var dataKey = this.constructor.DATA_KEY;
+      context = context || Data__default['default'].getData(event.delegateTarget, dataKey);
 
-      var flipModifier = {
-        name: 'flip',
-        options: {
-          altBoundary: true
-        }
-      };
-
-      if (this.config.fallbackPlacements) {
-        flipModifier.options.fallbackPlacements = this.config.fallbackPlacements;
+      if (!context) {
+        context = new this.constructor(event.delegateTarget, this._getDelegateConfig());
+        Data__default['default'].setData(event.delegateTarget, dataKey, context);
       }
 
-      var defaultBsConfig = {
+      return context;
+    };
+
+    _proto._getOffset = function _getOffset() {
+      var _this4 = this;
+
+      var offset = this.config.offset;
+
+      if (typeof offset === 'string') {
+        return offset.split(',').map(function (val) {
+          return Number.parseInt(val, 10);
+        });
+      }
+
+      if (typeof offset === 'function') {
+        return function (popperData) {
+          return offset(popperData, _this4._element);
+        };
+      }
+
+      return offset;
+    };
+
+    _proto._getPopperConfig = function _getPopperConfig(attachment) {
+      var _this5 = this;
+
+      var defaultBsPopperConfig = {
         placement: attachment,
-        modifiers: [flipModifier, {
+        modifiers: [{
+          name: 'flip',
+          options: {
+            altBoundary: true,
+            fallbackPlacements: this.config.fallbackPlacements
+          }
+        }, {
+          name: 'offset',
+          options: {
+            offset: this._getOffset()
+          }
+        }, {
           name: 'preventOverflow',
           options: {
-            rootBoundary: this.config.boundary
+            boundary: this.config.boundary
           }
         }, {
           name: 'arrow',
@@ -798,16 +846,16 @@
           enabled: true,
           phase: 'afterWrite',
           fn: function fn(data) {
-            return _this4._handlePopperPlacementChange(data);
+            return _this5._handlePopperPlacementChange(data);
           }
         }],
         onFirstUpdate: function onFirstUpdate(data) {
           if (data.options.placement !== data.placement) {
-            _this4._handlePopperPlacementChange(data);
+            _this5._handlePopperPlacementChange(data);
           }
         }
       };
-      return _extends({}, defaultBsConfig, this.config.popperConfig);
+      return _extends({}, defaultBsPopperConfig, typeof this.config.popperConfig === 'function' ? this.config.popperConfig(defaultBsPopperConfig) : this.config.popperConfig);
     };
 
     _proto._addAttachmentClass = function _addAttachmentClass(attachment) {
@@ -831,29 +879,29 @@
     };
 
     _proto._setListeners = function _setListeners() {
-      var _this5 = this;
+      var _this6 = this;
 
       var triggers = this.config.trigger.split(' ');
       triggers.forEach(function (trigger) {
         if (trigger === 'click') {
-          EventHandler__default['default'].on(_this5._element, _this5.constructor.Event.CLICK, _this5.config.selector, function (event) {
-            return _this5.toggle(event);
+          EventHandler__default['default'].on(_this6._element, _this6.constructor.Event.CLICK, _this6.config.selector, function (event) {
+            return _this6.toggle(event);
           });
         } else if (trigger !== TRIGGER_MANUAL) {
-          var eventIn = trigger === TRIGGER_HOVER ? _this5.constructor.Event.MOUSEENTER : _this5.constructor.Event.FOCUSIN;
-          var eventOut = trigger === TRIGGER_HOVER ? _this5.constructor.Event.MOUSELEAVE : _this5.constructor.Event.FOCUSOUT;
-          EventHandler__default['default'].on(_this5._element, eventIn, _this5.config.selector, function (event) {
-            return _this5._enter(event);
+          var eventIn = trigger === TRIGGER_HOVER ? _this6.constructor.Event.MOUSEENTER : _this6.constructor.Event.FOCUSIN;
+          var eventOut = trigger === TRIGGER_HOVER ? _this6.constructor.Event.MOUSELEAVE : _this6.constructor.Event.FOCUSOUT;
+          EventHandler__default['default'].on(_this6._element, eventIn, _this6.config.selector, function (event) {
+            return _this6._enter(event);
           });
-          EventHandler__default['default'].on(_this5._element, eventOut, _this5.config.selector, function (event) {
-            return _this5._leave(event);
+          EventHandler__default['default'].on(_this6._element, eventOut, _this6.config.selector, function (event) {
+            return _this6._leave(event);
           });
         }
       });
 
       this._hideModalHandler = function () {
-        if (_this5._element) {
-          _this5.hide();
+        if (_this6._element) {
+          _this6.hide();
         }
       };
 
@@ -886,13 +934,7 @@
     };
 
     _proto._enter = function _enter(event, context) {
-      var dataKey = this.constructor.DATA_KEY;
-      context = context || Data__default['default'].getData(event.delegateTarget, dataKey);
-
-      if (!context) {
-        context = new this.constructor(event.delegateTarget, this._getDelegateConfig());
-        Data__default['default'].setData(event.delegateTarget, dataKey, context);
-      }
+      context = this._initializeOnDelegatedTarget(event, context);
 
       if (event) {
         context._activeTrigger[event.type === 'focusin' ? TRIGGER_FOCUS : TRIGGER_HOVER] = true;
@@ -919,13 +961,7 @@
     };
 
     _proto._leave = function _leave(event, context) {
-      var dataKey = this.constructor.DATA_KEY;
-      context = context || Data__default['default'].getData(event.delegateTarget, dataKey);
-
-      if (!context) {
-        context = new this.constructor(event.delegateTarget, this._getDelegateConfig());
-        Data__default['default'].setData(event.delegateTarget, dataKey, context);
-      }
+      context = this._initializeOnDelegatedTarget(event, context);
 
       if (event) {
         context._activeTrigger[event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER] = false;
@@ -1064,7 +1100,7 @@
       });
     };
 
-    _createClass$1(Tooltip, null, [{
+    _createClass(Tooltip, null, [{
       key: "Default",
       get: function get() {
         return Default;
@@ -1097,7 +1133,7 @@
     }]);
 
     return Tooltip;
-  }(BaseComponent);
+  }(BaseComponent__default['default']);
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -1106,21 +1142,7 @@
    */
 
 
-  onDOMContentLoaded(function () {
-    var $ = getjQuery();
-    /* istanbul ignore if */
-
-    if ($) {
-      var JQUERY_NO_CONFLICT = $.fn[NAME];
-      $.fn[NAME] = Tooltip.jQueryInterface;
-      $.fn[NAME].Constructor = Tooltip;
-
-      $.fn[NAME].noConflict = function () {
-        $.fn[NAME] = JQUERY_NO_CONFLICT;
-        return Tooltip.jQueryInterface;
-      };
-    }
-  });
+  defineJQueryPlugin(NAME, Tooltip);
 
   return Tooltip;
 
