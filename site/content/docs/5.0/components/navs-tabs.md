@@ -304,6 +304,12 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
 </ul>
 {{< /example >}}
 
+## Sass
+
+### Variables
+
+{{< scss-docs name="nav-variables" file="scss/_variables.scss" >}}
+
 ## JavaScript behavior
 
 Use the tab JavaScript plugin—include it individually or through the compiled `bootstrap.js` file—to extend our navigational tabs and pills to create tabbable panes of local content.
@@ -663,9 +669,3 @@ tabEl.addEventListener('shown.bs.tab', function (event) {
   event.relatedTarget // previous active tab
 })
 ```
-
-## Sass
-
-### Variables
-
-{{< scss-docs name="nav-variables" file="scss/_variables.scss" >}}

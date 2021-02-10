@@ -903,6 +903,28 @@ Use `data-bs-offset` or `data-bs-reference` to change the location of the dropdo
 </div>
 {{< /example >}}
 
+## Sass
+
+### Variables
+
+Variables for all dropdowns:
+
+{{< scss-docs name="dropdown-variables" file="scss/_variables.scss" >}}
+
+Variables for the [dark dropdown](#dark-dropdowns):
+
+{{< scss-docs name="dropdown-dark-variables" file="scss/_variables.scss" >}}
+
+Variables for the CSS-based carets that indicate a dropdown's interactivity:
+
+{{< scss-docs name="caret-variables" file="scss/_variables.scss" >}}
+
+### Mixins
+
+Mixins are used to generate the CSS-based carets and can be found in `scss/mixins/_caret.scss`.
+
+{{< scss-docs name="caret-mixins" file="scss/mixins/_caret.scss" >}}
+
 ## Usage
 
 Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the `.show` class on the parent `.dropdown-menu`. The `data-bs-toggle="dropdown"` attribute is relied on for closing dropdown menus at an application level, so it's a good idea to always use it.
@@ -1117,15 +1139,3 @@ myDropdown.addEventListener('show.bs.dropdown', function () {
   // do something...
 })
 ```
-
-## Sass
-
-### Variables
-
-Variables for all dropdowns:
-
-{{< scss-docs name="dropdown-variables" file="scss/_variables.scss" >}}
-
-Variables for the [dark dropdown](#dark-dropdowns):
-
-{{< scss-docs name="dropdown-dark-variables" file="scss/_variables.scss" >}}

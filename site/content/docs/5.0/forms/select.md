@@ -79,7 +79,3 @@ Add the `disabled` boolean attribute on a select to give it a grayed out appeara
 ### Variables
 
 {{< scss-docs name="form-select-variables" file="scss/_variables.scss" >}}
-
-### Mixins
-
-There are no mixins for select elements.

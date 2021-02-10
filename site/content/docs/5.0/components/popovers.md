@@ -109,6 +109,12 @@ For disabled popover triggers, you may also prefer `data-bs-trigger="hover focus
 </span>
 {{< /example >}}
 
+## Sass
+
+### Variables
+
+{{< scss-docs name="popover-variables" file="scss/_variables.scss" >}}
+
 ## Usage
 
 Enable popovers via JavaScript:
@@ -426,9 +432,3 @@ myPopoverTrigger.addEventListener('hidden.bs.popover', function () {
   // do something...
 })
 ```
-
-## Sass
-
-### Variables
-
-{{< scss-docs name="popover-variables" file="scss/_variables.scss" >}}

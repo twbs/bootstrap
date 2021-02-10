@@ -275,7 +275,3 @@ Different variants of `.btn`, such at the various outlined styles, are supported
 ### Variables
 
 {{< scss-docs name="form-check-variables" file="scss/_variables.scss" >}}
-
-### Mixins
-
-There are no mixins for checkboxes and radios.

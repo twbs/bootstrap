@@ -254,6 +254,23 @@ And if you want `<label>`s as the `.list-group-item` for large hit areas, you ca
 </div>
 {{< /example >}}
 
+## Sass
+
+### Variables
+
+{{< scss-docs name="list-group-variables" file="scss/_variables.scss" >}}
+
+### Mixins
+
+Used in combination with `$theme-colors` to generate the [contextual variant classes](#contextual-classes) for `.list-group-item`s.
+
+{{< scss-docs name="list-group-mixin" file="scss/mixins/_list-group.scss" >}}
+
+### Loop
+
+Loop that generates the modifier classes with the `list-group-item-variant()` mixin.
+
+{{< scss-docs name="list-group-modifiers" file="scss/_list-group.scss" >}}
 
 ## JavaScript behavior
 
@@ -470,21 +487,3 @@ tabEl.addEventListener('shown.bs.tab', function (event) {
   event.relatedTarget // previous active tab
 })
 ```
-
-## Sass
-
-### Variables
-
-{{< scss-docs name="list-group-variables" file="scss/_variables.scss" >}}
-
-### Mixins
-
-Used in combination with `$theme-colors` to generate the [contextual variant classes](#contextual-classes) for `.list-group-item`s.
-
-{{< scss-docs name="list-group-mixin" file="scss/mixins/_list-group.scss" >}}
-
-### Loop
-
-Loop that generates the modifier classes with the `list-group-item-variant()` mixin.
-
-{{< scss-docs name="list-group-modifiers" file="scss/_list-group.scss" >}}

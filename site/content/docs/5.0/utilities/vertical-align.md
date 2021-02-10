@@ -38,3 +38,11 @@ With table cells:
   </tbody>
 </table>
 {{< /example >}}
+
+## Sass
+
+### Utilities API
+
+Vertical align utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
+
+{{< scss-docs name="utils-vertical-align" file="scss/_utilities.scss" >}}

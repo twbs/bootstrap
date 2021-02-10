@@ -793,6 +793,18 @@ Another override is the option to pop up a modal that covers the user viewport, 
   </div>
 </div>
 
+## Sass
+
+### Variables
+
+{{< scss-docs name="modal-variables" file="scss/_variables.scss" >}}
+
+### Loop
+
+[Responsive fullscreen modals](#fullscreen-modal) are generated via the `$breakpoints` map and a loop in `scss/_modal.scss`.
+
+{{< scss-docs name="modal-fullscreen-loop" file="scss/_modal.scss" >}}
+
 ## Usage
 
 The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds `.modal-open` to the `<body>` to override default scrolling behavior and generates a `.modal-backdrop` to provide a click area for dismissing shown modals when clicking outside the modal.
@@ -954,15 +966,3 @@ myModalEl.addEventListener('hidden.bs.modal', function (event) {
   // do something...
 })
 ```
-
-## Sass
-
-### Variables
-
-{{< scss-docs name="modal-variables" file="scss/_variables.scss" >}}
-
-### Loop
-
-[Responsive fullscreen modals](#fullscreen-modal) are generated via the `$breakpoints` map and a loop in `scss/_modal.scss`.
-
-{{< scss-docs name="modal-fullscreen-loop" file="scss/_modal.scss" >}}

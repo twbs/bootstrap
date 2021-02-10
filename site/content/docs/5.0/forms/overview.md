@@ -149,8 +149,6 @@ Many form variables are set at a general level to be re-used and extended by ind
 
 ### Variables
 
-`$btn-input-*` variables are shared global variables between our buttons and our form components. You'll find these frequently reassigned as values to other component-specific variables.
+`$btn-input-*` variables are shared global variables between our [buttons]({{< docsref "/components/buttons" >}}) and our form components. You'll find these frequently reassigned as values to other component-specific variables.
 
 {{< scss-docs name="input-btn-variables" file="scss/_variables.scss" >}}
-
-### Mixins

@@ -246,6 +246,7 @@ $gradient: linear-gradient(180deg, rgba($white, .15), rgba($white, 0)) !default;
 // variables. Mostly focused on spacing.
 // You can add more entries to the $spacers map, should you need more variation.
 
+// scss-docs-start spacer-variables-maps
 $spacer: 1rem !default;
 $spacers: (
   0: 0,
@@ -257,17 +258,19 @@ $spacers: (
 ) !default;
 
 $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
+// scss-docs-end spacer-variables-maps
 
 // Position
 //
 // Define the edge positioning anchors of the position utilities.
 
+// scss-docs-start position-map
 $position-values: (
   0: 0,
   50: 50%,
   100: 100%
 ) !default;
-
+// scss-docs-end position-map
 
 // Body
 //
@@ -375,21 +378,27 @@ $border-radius-lg:            .3rem !default;
 $border-radius-pill:          50rem !default;
 // scss-docs-end border-radius-variables
 
+// scss-docs-start box-shadow-variables
 $box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
 $box-shadow-sm:               0 .125rem .25rem rgba($black, .075) !default;
 $box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
 $box-shadow-inset:            inset 0 1px 2px rgba($black, .075) !default;
+// scss-docs-end box-shadow-variables
 
 $component-active-color:      $white !default;
 $component-active-bg:         $primary !default;
 
+// scss-docs-start caret-variables
 $caret-width:                 .3em !default;
 $caret-vertical-align:        $caret-width * .85 !default;
 $caret-spacing:               $caret-width * .85 !default;
+// scss-docs-end caret-variables
 
 $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;
+// scss-docs-start collapse-transition
 $transition-collapse:         height .35s ease !default;
+// scss-docs-end collapse-transition
 
 // stylelint-disable function-disallowed-list
 // scss-docs-start aspect-ratios
@@ -406,6 +415,7 @@ $aspect-ratios: (
 //
 // Font, line-height, and color for body text, headings, and more.
 
+// scss-docs-start font-variables
 // stylelint-disable value-keyword-case
 $font-family-sans-serif:      system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
@@ -438,6 +448,7 @@ $h3-font-size:                $font-size-base * 1.75 !default;
 $h4-font-size:                $font-size-base * 1.5 !default;
 $h5-font-size:                $font-size-base * 1.25 !default;
 $h6-font-size:                $font-size-base !default;
+// scss-docs-end font-variables
 
 // scss-docs-start font-sizes
 $font-sizes: (

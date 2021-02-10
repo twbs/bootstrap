@@ -314,7 +314,3 @@ Input groups include support for custom selects and custom file inputs. Browser 
 ### Variables
 
 {{< scss-docs name="input-group-variables" file="scss/_variables.scss" >}}
-
-### Mixins
-
-There are no mixins for input groups.

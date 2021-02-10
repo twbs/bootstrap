@@ -379,4 +379,4 @@ Used to iterate over `$form-validation-states` map values to generate our valida
 
 Validation states can be customized via Sass with the `$form-validation-states` map. Located in our `_variables.scss` file, this Sass map is how we generate the default `valid`/`invalid` validation states. Included is a nested map for customizing each state's color, icon, tooltip color, and focus shadow. While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.
 
-Please note that we do not recommend customizing `$form-validation-states` values without also modifying the `form-validation-state` mixin.
+Please note that **we do not recommend customizing `$form-validation-states` values without also modifying the `form-validation-state` mixin**.

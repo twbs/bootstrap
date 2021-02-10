@@ -304,9 +304,13 @@ When using `autohide: false`, you must add a close button to allow users to dism
 </div>
 {{< /example >}}
 
-## JavaScript behavior
+## Sass
 
-### Usage
+### Variables
+
+{{< scss-docs name="toast-variables" file="scss/_variables.scss" >}}
+
+## Usage
 
 Initialize toasts via JavaScript:
 
@@ -420,9 +424,3 @@ myToastEl.addEventListener('hidden.bs.toast', function () {
   // do something...
 })
 ```
-
-## Sass
-
-### Variables
-
-{{< scss-docs name="toast-variables" file="scss/_variables.scss" >}}
