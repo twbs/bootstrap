@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Track and review changes to the Bootstrap source files, documentation, and components to help you migrate from v4 to v5.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.79.0">
+<meta name="generator" content="Hugo 0.80.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -59,10 +59,10 @@
 
   </head>
   <body>
-    <div class="skippy overflow-hidden">
+    <div class="skippy visually-hidden-focusable overflow-hidden">
   <div class="container-xl">
-    <a class="visually-hidden-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a>
-    <a class="visually-hidden-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a>
+    <a class="d-inline-flex p-2 m-1" href="#content">Skip to main content</a>
+    <a class="d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a>
   </div>
 </div>
 
@@ -74,9 +74,10 @@
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
-      <svg class="bi" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi" fill="currentColor" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+</svg>
+
     </button>
 
     <div class="collapse navbar-collapse" id="bdNavbar">
@@ -160,12 +161,12 @@
 
 
     <button class="btn bd-sidebar-toggle d-md-none py-0 px-1 ms-3 order-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-expand" viewBox="0 0 16 16">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-expand" fill="currentColor" viewBox="0 0 16 16">
   <title>Expand</title>
   <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zM7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708l2-2zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10z"/>
 </svg>
 
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-collapse" viewBox="0 0 16 16">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-collapse" fill="currentColor" viewBox="0 0 16 16">
   <title>Collapse</title>
   <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zm7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0zm-.5 11.707l-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0v-3.793z"/>
 </svg>
@@ -178,202 +179,202 @@
   <div class="container-xxl my-md-4 bd-layout">
     <aside class="bd-sidebar">
       <nav class="collapse bd-links" id="bd-docs-nav" aria-label="Docs navigation"><ul class="list-unstyled mb-0 py-3 pt-md-1">
+      <li class="mb-1">
+        <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#getting-started-collapse" aria-expanded="false">
+          Getting started
+        </button>
 
-    <li class="mb-1">
-      <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#getting-started-collapse" aria-expanded="false">
-        Getting started
-      </button>
-      <div class="collapse" id="getting-started-collapse">
-        <ul class="list-unstyled fw-normal pb-1 small">
-            <li><a href="/docs/5.0/getting-started/introduction/" class="d-inline-flex align-items-center rounded">Introduction</a></li>
-            <li><a href="/docs/5.0/getting-started/download/" class="d-inline-flex align-items-center rounded">Download</a></li>
-            <li><a href="/docs/5.0/getting-started/contents/" class="d-inline-flex align-items-center rounded">Contents</a></li>
-            <li><a href="/docs/5.0/getting-started/browsers-devices/" class="d-inline-flex align-items-center rounded">Browsers &amp; devices</a></li>
-            <li><a href="/docs/5.0/getting-started/javascript/" class="d-inline-flex align-items-center rounded">JavaScript</a></li>
-            <li><a href="/docs/5.0/getting-started/build-tools/" class="d-inline-flex align-items-center rounded">Build tools</a></li>
-            <li><a href="/docs/5.0/getting-started/webpack/" class="d-inline-flex align-items-center rounded">Webpack</a></li>
-            <li><a href="/docs/5.0/getting-started/accessibility/" class="d-inline-flex align-items-center rounded">Accessibility</a></li>
-            <li><a href="/docs/5.0/getting-started/rfs/" class="d-inline-flex align-items-center rounded">RFS</a></li>
-            <li><a href="/docs/5.0/getting-started/rtl/" class="d-inline-flex align-items-center rounded">RTL</a></li>
-        </ul>
-      </div>
-    </li>
+        <div class="collapse" id="getting-started-collapse">
+          <ul class="list-unstyled fw-normal pb-1 small">
+              <li><a href="/docs/5.0/getting-started/introduction/" class="d-inline-flex align-items-center rounded">Introduction</a></li>
+              <li><a href="/docs/5.0/getting-started/download/" class="d-inline-flex align-items-center rounded">Download</a></li>
+              <li><a href="/docs/5.0/getting-started/contents/" class="d-inline-flex align-items-center rounded">Contents</a></li>
+              <li><a href="/docs/5.0/getting-started/browsers-devices/" class="d-inline-flex align-items-center rounded">Browsers &amp; devices</a></li>
+              <li><a href="/docs/5.0/getting-started/javascript/" class="d-inline-flex align-items-center rounded">JavaScript</a></li>
+              <li><a href="/docs/5.0/getting-started/build-tools/" class="d-inline-flex align-items-center rounded">Build tools</a></li>
+              <li><a href="/docs/5.0/getting-started/webpack/" class="d-inline-flex align-items-center rounded">Webpack</a></li>
+              <li><a href="/docs/5.0/getting-started/accessibility/" class="d-inline-flex align-items-center rounded">Accessibility</a></li>
+              <li><a href="/docs/5.0/getting-started/rfs/" class="d-inline-flex align-items-center rounded">RFS</a></li>
+              <li><a href="/docs/5.0/getting-started/rtl/" class="d-inline-flex align-items-center rounded">RTL</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#customize-collapse" aria-expanded="false">
+          Customize
+        </button>
 
-    <li class="mb-1">
-      <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#customize-collapse" aria-expanded="false">
-        Customize
-      </button>
-      <div class="collapse" id="customize-collapse">
-        <ul class="list-unstyled fw-normal pb-1 small">
-            <li><a href="/docs/5.0/customize/overview/" class="d-inline-flex align-items-center rounded">Overview</a></li>
-            <li><a href="/docs/5.0/customize/sass/" class="d-inline-flex align-items-center rounded">Sass</a></li>
-            <li><a href="/docs/5.0/customize/options/" class="d-inline-flex align-items-center rounded">Options</a></li>
-            <li><a href="/docs/5.0/customize/color/" class="d-inline-flex align-items-center rounded">Color</a></li>
-            <li><a href="/docs/5.0/customize/components/" class="d-inline-flex align-items-center rounded">Components</a></li>
-            <li><a href="/docs/5.0/customize/css-variables/" class="d-inline-flex align-items-center rounded">CSS variables</a></li>
-            <li><a href="/docs/5.0/customize/optimize/" class="d-inline-flex align-items-center rounded">Optimize</a></li>
-        </ul>
-      </div>
-    </li>
+        <div class="collapse" id="customize-collapse">
+          <ul class="list-unstyled fw-normal pb-1 small">
+              <li><a href="/docs/5.0/customize/overview/" class="d-inline-flex align-items-center rounded">Overview</a></li>
+              <li><a href="/docs/5.0/customize/sass/" class="d-inline-flex align-items-center rounded">Sass</a></li>
+              <li><a href="/docs/5.0/customize/options/" class="d-inline-flex align-items-center rounded">Options</a></li>
+              <li><a href="/docs/5.0/customize/color/" class="d-inline-flex align-items-center rounded">Color</a></li>
+              <li><a href="/docs/5.0/customize/components/" class="d-inline-flex align-items-center rounded">Components</a></li>
+              <li><a href="/docs/5.0/customize/css-variables/" class="d-inline-flex align-items-center rounded">CSS variables</a></li>
+              <li><a href="/docs/5.0/customize/optimize/" class="d-inline-flex align-items-center rounded">Optimize</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#layout-collapse" aria-expanded="false">
+          Layout
+        </button>
 
-    <li class="mb-1">
-      <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#layout-collapse" aria-expanded="false">
-        Layout
-      </button>
-      <div class="collapse" id="layout-collapse">
-        <ul class="list-unstyled fw-normal pb-1 small">
-            <li><a href="/docs/5.0/layout/breakpoints/" class="d-inline-flex align-items-center rounded">Breakpoints</a></li>
-            <li><a href="/docs/5.0/layout/containers/" class="d-inline-flex align-items-center rounded">Containers</a></li>
-            <li><a href="/docs/5.0/layout/grid/" class="d-inline-flex align-items-center rounded">Grid</a></li>
-            <li><a href="/docs/5.0/layout/columns/" class="d-inline-flex align-items-center rounded">Columns</a></li>
-            <li><a href="/docs/5.0/layout/gutters/" class="d-inline-flex align-items-center rounded">Gutters</a></li>
-            <li><a href="/docs/5.0/layout/utilities/" class="d-inline-flex align-items-center rounded">Utilities</a></li>
-            <li><a href="/docs/5.0/layout/z-index/" class="d-inline-flex align-items-center rounded">Z-index</a></li>
-        </ul>
-      </div>
-    </li>
+        <div class="collapse" id="layout-collapse">
+          <ul class="list-unstyled fw-normal pb-1 small">
+              <li><a href="/docs/5.0/layout/breakpoints/" class="d-inline-flex align-items-center rounded">Breakpoints</a></li>
+              <li><a href="/docs/5.0/layout/containers/" class="d-inline-flex align-items-center rounded">Containers</a></li>
+              <li><a href="/docs/5.0/layout/grid/" class="d-inline-flex align-items-center rounded">Grid</a></li>
+              <li><a href="/docs/5.0/layout/columns/" class="d-inline-flex align-items-center rounded">Columns</a></li>
+              <li><a href="/docs/5.0/layout/gutters/" class="d-inline-flex align-items-center rounded">Gutters</a></li>
+              <li><a href="/docs/5.0/layout/utilities/" class="d-inline-flex align-items-center rounded">Utilities</a></li>
+              <li><a href="/docs/5.0/layout/z-index/" class="d-inline-flex align-items-center rounded">Z-index</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#content-collapse" aria-expanded="false">
+          Content
+        </button>
 
-    <li class="mb-1">
-      <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#content-collapse" aria-expanded="false">
-        Content
-      </button>
-      <div class="collapse" id="content-collapse">
-        <ul class="list-unstyled fw-normal pb-1 small">
-            <li><a href="/docs/5.0/content/reboot/" class="d-inline-flex align-items-center rounded">Reboot</a></li>
-            <li><a href="/docs/5.0/content/typography/" class="d-inline-flex align-items-center rounded">Typography</a></li>
-            <li><a href="/docs/5.0/content/images/" class="d-inline-flex align-items-center rounded">Images</a></li>
-            <li><a href="/docs/5.0/content/tables/" class="d-inline-flex align-items-center rounded">Tables</a></li>
-            <li><a href="/docs/5.0/content/figures/" class="d-inline-flex align-items-center rounded">Figures</a></li>
-        </ul>
-      </div>
-    </li>
+        <div class="collapse" id="content-collapse">
+          <ul class="list-unstyled fw-normal pb-1 small">
+              <li><a href="/docs/5.0/content/reboot/" class="d-inline-flex align-items-center rounded">Reboot</a></li>
+              <li><a href="/docs/5.0/content/typography/" class="d-inline-flex align-items-center rounded">Typography</a></li>
+              <li><a href="/docs/5.0/content/images/" class="d-inline-flex align-items-center rounded">Images</a></li>
+              <li><a href="/docs/5.0/content/tables/" class="d-inline-flex align-items-center rounded">Tables</a></li>
+              <li><a href="/docs/5.0/content/figures/" class="d-inline-flex align-items-center rounded">Figures</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#forms-collapse" aria-expanded="false">
+          Forms
+        </button>
 
-    <li class="mb-1">
-      <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#forms-collapse" aria-expanded="false">
-        Forms
-      </button>
-      <div class="collapse" id="forms-collapse">
-        <ul class="list-unstyled fw-normal pb-1 small">
-            <li><a href="/docs/5.0/forms/overview/" class="d-inline-flex align-items-center rounded">Overview</a></li>
-            <li><a href="/docs/5.0/forms/form-control/" class="d-inline-flex align-items-center rounded">Form control</a></li>
-            <li><a href="/docs/5.0/forms/select/" class="d-inline-flex align-items-center rounded">Select</a></li>
-            <li><a href="/docs/5.0/forms/checks-radios/" class="d-inline-flex align-items-center rounded">Checks &amp; radios</a></li>
-            <li><a href="/docs/5.0/forms/range/" class="d-inline-flex align-items-center rounded">Range</a></li>
-            <li><a href="/docs/5.0/forms/input-group/" class="d-inline-flex align-items-center rounded">Input group</a></li>
-            <li><a href="/docs/5.0/forms/floating-labels/" class="d-inline-flex align-items-center rounded">Floating labels</a></li>
-            <li><a href="/docs/5.0/forms/layout/" class="d-inline-flex align-items-center rounded">Layout</a></li>
-            <li><a href="/docs/5.0/forms/validation/" class="d-inline-flex align-items-center rounded">Validation</a></li>
-        </ul>
-      </div>
-    </li>
+        <div class="collapse" id="forms-collapse">
+          <ul class="list-unstyled fw-normal pb-1 small">
+              <li><a href="/docs/5.0/forms/overview/" class="d-inline-flex align-items-center rounded">Overview</a></li>
+              <li><a href="/docs/5.0/forms/form-control/" class="d-inline-flex align-items-center rounded">Form control</a></li>
+              <li><a href="/docs/5.0/forms/select/" class="d-inline-flex align-items-center rounded">Select</a></li>
+              <li><a href="/docs/5.0/forms/checks-radios/" class="d-inline-flex align-items-center rounded">Checks &amp; radios</a></li>
+              <li><a href="/docs/5.0/forms/range/" class="d-inline-flex align-items-center rounded">Range</a></li>
+              <li><a href="/docs/5.0/forms/input-group/" class="d-inline-flex align-items-center rounded">Input group</a></li>
+              <li><a href="/docs/5.0/forms/floating-labels/" class="d-inline-flex align-items-center rounded">Floating labels</a></li>
+              <li><a href="/docs/5.0/forms/layout/" class="d-inline-flex align-items-center rounded">Layout</a></li>
+              <li><a href="/docs/5.0/forms/validation/" class="d-inline-flex align-items-center rounded">Validation</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#components-collapse" aria-expanded="false">
+          Components
+        </button>
 
-    <li class="mb-1">
-      <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#components-collapse" aria-expanded="false">
-        Components
-      </button>
-      <div class="collapse" id="components-collapse">
-        <ul class="list-unstyled fw-normal pb-1 small">
-            <li><a href="/docs/5.0/components/accordion/" class="d-inline-flex align-items-center rounded">Accordion</a></li>
-            <li><a href="/docs/5.0/components/alerts/" class="d-inline-flex align-items-center rounded">Alerts</a></li>
-            <li><a href="/docs/5.0/components/badge/" class="d-inline-flex align-items-center rounded">Badge</a></li>
-            <li><a href="/docs/5.0/components/breadcrumb/" class="d-inline-flex align-items-center rounded">Breadcrumb</a></li>
-            <li><a href="/docs/5.0/components/buttons/" class="d-inline-flex align-items-center rounded">Buttons</a></li>
-            <li><a href="/docs/5.0/components/button-group/" class="d-inline-flex align-items-center rounded">Button group</a></li>
-            <li><a href="/docs/5.0/components/card/" class="d-inline-flex align-items-center rounded">Card</a></li>
-            <li><a href="/docs/5.0/components/carousel/" class="d-inline-flex align-items-center rounded">Carousel</a></li>
-            <li><a href="/docs/5.0/components/close-button/" class="d-inline-flex align-items-center rounded">Close button</a></li>
-            <li><a href="/docs/5.0/components/collapse/" class="d-inline-flex align-items-center rounded">Collapse</a></li>
-            <li><a href="/docs/5.0/components/dropdowns/" class="d-inline-flex align-items-center rounded">Dropdowns</a></li>
-            <li><a href="/docs/5.0/components/list-group/" class="d-inline-flex align-items-center rounded">List group</a></li>
-            <li><a href="/docs/5.0/components/modal/" class="d-inline-flex align-items-center rounded">Modal</a></li>
-            <li><a href="/docs/5.0/components/navs-tabs/" class="d-inline-flex align-items-center rounded">Navs &amp; tabs</a></li>
-            <li><a href="/docs/5.0/components/navbar/" class="d-inline-flex align-items-center rounded">Navbar</a></li>
-            <li><a href="/docs/5.0/components/pagination/" class="d-inline-flex align-items-center rounded">Pagination</a></li>
-            <li><a href="/docs/5.0/components/popovers/" class="d-inline-flex align-items-center rounded">Popovers</a></li>
-            <li><a href="/docs/5.0/components/progress/" class="d-inline-flex align-items-center rounded">Progress</a></li>
-            <li><a href="/docs/5.0/components/scrollspy/" class="d-inline-flex align-items-center rounded">Scrollspy</a></li>
-            <li><a href="/docs/5.0/components/spinners/" class="d-inline-flex align-items-center rounded">Spinners</a></li>
-            <li><a href="/docs/5.0/components/toasts/" class="d-inline-flex align-items-center rounded">Toasts</a></li>
-            <li><a href="/docs/5.0/components/tooltips/" class="d-inline-flex align-items-center rounded">Tooltips</a></li>
-        </ul>
-      </div>
-    </li>
+        <div class="collapse" id="components-collapse">
+          <ul class="list-unstyled fw-normal pb-1 small">
+              <li><a href="/docs/5.0/components/accordion/" class="d-inline-flex align-items-center rounded">Accordion</a></li>
+              <li><a href="/docs/5.0/components/alerts/" class="d-inline-flex align-items-center rounded">Alerts</a></li>
+              <li><a href="/docs/5.0/components/badge/" class="d-inline-flex align-items-center rounded">Badge</a></li>
+              <li><a href="/docs/5.0/components/breadcrumb/" class="d-inline-flex align-items-center rounded">Breadcrumb</a></li>
+              <li><a href="/docs/5.0/components/buttons/" class="d-inline-flex align-items-center rounded">Buttons</a></li>
+              <li><a href="/docs/5.0/components/button-group/" class="d-inline-flex align-items-center rounded">Button group</a></li>
+              <li><a href="/docs/5.0/components/card/" class="d-inline-flex align-items-center rounded">Card</a></li>
+              <li><a href="/docs/5.0/components/carousel/" class="d-inline-flex align-items-center rounded">Carousel</a></li>
+              <li><a href="/docs/5.0/components/close-button/" class="d-inline-flex align-items-center rounded">Close button</a></li>
+              <li><a href="/docs/5.0/components/collapse/" class="d-inline-flex align-items-center rounded">Collapse</a></li>
+              <li><a href="/docs/5.0/components/dropdowns/" class="d-inline-flex align-items-center rounded">Dropdowns</a></li>
+              <li><a href="/docs/5.0/components/list-group/" class="d-inline-flex align-items-center rounded">List group</a></li>
+              <li><a href="/docs/5.0/components/modal/" class="d-inline-flex align-items-center rounded">Modal</a></li>
+              <li><a href="/docs/5.0/components/navs-tabs/" class="d-inline-flex align-items-center rounded">Navs &amp; tabs</a></li>
+              <li><a href="/docs/5.0/components/navbar/" class="d-inline-flex align-items-center rounded">Navbar</a></li>
+              <li><a href="/docs/5.0/components/pagination/" class="d-inline-flex align-items-center rounded">Pagination</a></li>
+              <li><a href="/docs/5.0/components/popovers/" class="d-inline-flex align-items-center rounded">Popovers</a></li>
+              <li><a href="/docs/5.0/components/progress/" class="d-inline-flex align-items-center rounded">Progress</a></li>
+              <li><a href="/docs/5.0/components/scrollspy/" class="d-inline-flex align-items-center rounded">Scrollspy</a></li>
+              <li><a href="/docs/5.0/components/spinners/" class="d-inline-flex align-items-center rounded">Spinners</a></li>
+              <li><a href="/docs/5.0/components/toasts/" class="d-inline-flex align-items-center rounded">Toasts</a></li>
+              <li><a href="/docs/5.0/components/tooltips/" class="d-inline-flex align-items-center rounded">Tooltips</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#helpers-collapse" aria-expanded="false">
+          Helpers
+        </button>
 
-    <li class="mb-1">
-      <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#helpers-collapse" aria-expanded="false">
-        Helpers
-      </button>
-      <div class="collapse" id="helpers-collapse">
-        <ul class="list-unstyled fw-normal pb-1 small">
-            <li><a href="/docs/5.0/helpers/clearfix/" class="d-inline-flex align-items-center rounded">Clearfix</a></li>
-            <li><a href="/docs/5.0/helpers/colored-links/" class="d-inline-flex align-items-center rounded">Colored links</a></li>
-            <li><a href="/docs/5.0/helpers/ratio/" class="d-inline-flex align-items-center rounded">Ratio</a></li>
-            <li><a href="/docs/5.0/helpers/position/" class="d-inline-flex align-items-center rounded">Position</a></li>
-            <li><a href="/docs/5.0/helpers/visually-hidden/" class="d-inline-flex align-items-center rounded">Visually hidden</a></li>
-            <li><a href="/docs/5.0/helpers/stretched-link/" class="d-inline-flex align-items-center rounded">Stretched link</a></li>
-            <li><a href="/docs/5.0/helpers/text-truncation/" class="d-inline-flex align-items-center rounded">Text truncation</a></li>
-        </ul>
-      </div>
-    </li>
+        <div class="collapse" id="helpers-collapse">
+          <ul class="list-unstyled fw-normal pb-1 small">
+              <li><a href="/docs/5.0/helpers/clearfix/" class="d-inline-flex align-items-center rounded">Clearfix</a></li>
+              <li><a href="/docs/5.0/helpers/colored-links/" class="d-inline-flex align-items-center rounded">Colored links</a></li>
+              <li><a href="/docs/5.0/helpers/ratio/" class="d-inline-flex align-items-center rounded">Ratio</a></li>
+              <li><a href="/docs/5.0/helpers/position/" class="d-inline-flex align-items-center rounded">Position</a></li>
+              <li><a href="/docs/5.0/helpers/visually-hidden/" class="d-inline-flex align-items-center rounded">Visually hidden</a></li>
+              <li><a href="/docs/5.0/helpers/stretched-link/" class="d-inline-flex align-items-center rounded">Stretched link</a></li>
+              <li><a href="/docs/5.0/helpers/text-truncation/" class="d-inline-flex align-items-center rounded">Text truncation</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#utilities-collapse" aria-expanded="false">
+          Utilities
+        </button>
 
-    <li class="mb-1">
-      <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#utilities-collapse" aria-expanded="false">
-        Utilities
-      </button>
-      <div class="collapse" id="utilities-collapse">
-        <ul class="list-unstyled fw-normal pb-1 small">
-            <li><a href="/docs/5.0/utilities/api/" class="d-inline-flex align-items-center rounded">API</a></li>
-            <li><a href="/docs/5.0/utilities/borders/" class="d-inline-flex align-items-center rounded">Borders</a></li>
-            <li><a href="/docs/5.0/utilities/colors/" class="d-inline-flex align-items-center rounded">Colors</a></li>
-            <li><a href="/docs/5.0/utilities/display/" class="d-inline-flex align-items-center rounded">Display</a></li>
-            <li><a href="/docs/5.0/utilities/flex/" class="d-inline-flex align-items-center rounded">Flex</a></li>
-            <li><a href="/docs/5.0/utilities/float/" class="d-inline-flex align-items-center rounded">Float</a></li>
-            <li><a href="/docs/5.0/utilities/interactions/" class="d-inline-flex align-items-center rounded">Interactions</a></li>
-            <li><a href="/docs/5.0/utilities/overflow/" class="d-inline-flex align-items-center rounded">Overflow</a></li>
-            <li><a href="/docs/5.0/utilities/position/" class="d-inline-flex align-items-center rounded">Position</a></li>
-            <li><a href="/docs/5.0/utilities/shadows/" class="d-inline-flex align-items-center rounded">Shadows</a></li>
-            <li><a href="/docs/5.0/utilities/sizing/" class="d-inline-flex align-items-center rounded">Sizing</a></li>
-            <li><a href="/docs/5.0/utilities/spacing/" class="d-inline-flex align-items-center rounded">Spacing</a></li>
-            <li><a href="/docs/5.0/utilities/text/" class="d-inline-flex align-items-center rounded">Text</a></li>
-            <li><a href="/docs/5.0/utilities/vertical-align/" class="d-inline-flex align-items-center rounded">Vertical align</a></li>
-            <li><a href="/docs/5.0/utilities/visibility/" class="d-inline-flex align-items-center rounded">Visibility</a></li>
-        </ul>
-      </div>
-    </li>
+        <div class="collapse" id="utilities-collapse">
+          <ul class="list-unstyled fw-normal pb-1 small">
+              <li><a href="/docs/5.0/utilities/api/" class="d-inline-flex align-items-center rounded">API</a></li>
+              <li><a href="/docs/5.0/utilities/background/" class="d-inline-flex align-items-center rounded">Background</a></li>
+              <li><a href="/docs/5.0/utilities/borders/" class="d-inline-flex align-items-center rounded">Borders</a></li>
+              <li><a href="/docs/5.0/utilities/colors/" class="d-inline-flex align-items-center rounded">Colors</a></li>
+              <li><a href="/docs/5.0/utilities/display/" class="d-inline-flex align-items-center rounded">Display</a></li>
+              <li><a href="/docs/5.0/utilities/flex/" class="d-inline-flex align-items-center rounded">Flex</a></li>
+              <li><a href="/docs/5.0/utilities/float/" class="d-inline-flex align-items-center rounded">Float</a></li>
+              <li><a href="/docs/5.0/utilities/interactions/" class="d-inline-flex align-items-center rounded">Interactions</a></li>
+              <li><a href="/docs/5.0/utilities/overflow/" class="d-inline-flex align-items-center rounded">Overflow</a></li>
+              <li><a href="/docs/5.0/utilities/position/" class="d-inline-flex align-items-center rounded">Position</a></li>
+              <li><a href="/docs/5.0/utilities/shadows/" class="d-inline-flex align-items-center rounded">Shadows</a></li>
+              <li><a href="/docs/5.0/utilities/sizing/" class="d-inline-flex align-items-center rounded">Sizing</a></li>
+              <li><a href="/docs/5.0/utilities/spacing/" class="d-inline-flex align-items-center rounded">Spacing</a></li>
+              <li><a href="/docs/5.0/utilities/text/" class="d-inline-flex align-items-center rounded">Text</a></li>
+              <li><a href="/docs/5.0/utilities/vertical-align/" class="d-inline-flex align-items-center rounded">Vertical align</a></li>
+              <li><a href="/docs/5.0/utilities/visibility/" class="d-inline-flex align-items-center rounded">Visibility</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#extend-collapse" aria-expanded="false">
+          Extend
+        </button>
 
-    <li class="mb-1">
-      <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#extend-collapse" aria-expanded="false">
-        Extend
-      </button>
-      <div class="collapse" id="extend-collapse">
-        <ul class="list-unstyled fw-normal pb-1 small">
-            <li><a href="/docs/5.0/extend/approach/" class="d-inline-flex align-items-center rounded">Approach</a></li>
-            <li><a href="/docs/5.0/extend/icons/" class="d-inline-flex align-items-center rounded">Icons</a></li>
-        </ul>
-      </div>
-    </li>
+        <div class="collapse" id="extend-collapse">
+          <ul class="list-unstyled fw-normal pb-1 small">
+              <li><a href="/docs/5.0/extend/approach/" class="d-inline-flex align-items-center rounded">Approach</a></li>
+              <li><a href="/docs/5.0/extend/icons/" class="d-inline-flex align-items-center rounded">Icons</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#about-collapse" aria-expanded="false">
+          About
+        </button>
 
-    <li class="mb-1">
-      <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#about-collapse" aria-expanded="false">
-        About
-      </button>
-      <div class="collapse" id="about-collapse">
-        <ul class="list-unstyled fw-normal pb-1 small">
-            <li><a href="/docs/5.0/about/overview/" class="d-inline-flex align-items-center rounded">Overview</a></li>
-            <li><a href="/docs/5.0/about/team/" class="d-inline-flex align-items-center rounded">Team</a></li>
-            <li><a href="/docs/5.0/about/brand/" class="d-inline-flex align-items-center rounded">Brand</a></li>
-            <li><a href="/docs/5.0/about/license/" class="d-inline-flex align-items-center rounded">License</a></li>
-            <li><a href="/docs/5.0/about/translations/" class="d-inline-flex align-items-center rounded">Translations</a></li>
-        </ul>
-      </div>
-    </li>
-
-    <li class="my-3 mx-4 border-top"></li>
-    <li class="active">
-      <a href="/docs/5.0/migration/" class="d-inline-flex align-items-center rounded">
-        Migration
-      </a>
-    </li>
+        <div class="collapse" id="about-collapse">
+          <ul class="list-unstyled fw-normal pb-1 small">
+              <li><a href="/docs/5.0/about/overview/" class="d-inline-flex align-items-center rounded">Overview</a></li>
+              <li><a href="/docs/5.0/about/team/" class="d-inline-flex align-items-center rounded">Team</a></li>
+              <li><a href="/docs/5.0/about/brand/" class="d-inline-flex align-items-center rounded">Brand</a></li>
+              <li><a href="/docs/5.0/about/license/" class="d-inline-flex align-items-center rounded">License</a></li>
+              <li><a href="/docs/5.0/about/translations/" class="d-inline-flex align-items-center rounded">Translations</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="my-3 mx-4 border-top"></li>
+      <li>
+        <a href="/docs/5.0/migration/" class="d-inline-flex align-items-center rounded active" aria-current="page">
+          Migration
+        </a>
+      </li>
   </ul>
 </nav>
 
@@ -395,23 +396,33 @@
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
   <ul>
+    <li><a href="#v500-beta2">v5.0.0-beta2</a>
+      <ul>
+        <li><a href="#sass">Sass</a>
+          <ul>
+            <li><a href="#utilities">Utilities</a></li>
+          </ul>
+        </li>
+        <li><a href="#javascript">JavaScript</a></li>
+      </ul>
+    </li>
     <li><a href="#v500-beta1">v5.0.0-beta1</a>
       <ul>
         <li><a href="#rtl">RTL</a>
           <ul>
-            <li><a href="#sass">Sass</a>
+            <li><a href="#sass-1">Sass</a>
               <ul>
                 <li><a href="#components">Components</a></li>
-                <li><a href="#utilities">Utilities</a></li>
+                <li><a href="#utilities-1">Utilities</a></li>
                 <li><a href="#mixins">Mixins</a></li>
                 <li><a href="#variables">Variables</a></li>
               </ul>
             </li>
           </ul>
         </li>
-        <li><a href="#javascript">JavaScript</a></li>
-        <li><a href="#sass-1">Sass</a></li>
-        <li><a href="#utilities-1">Utilities</a></li>
+        <li><a href="#javascript-1">JavaScript</a></li>
+        <li><a href="#sass-2">Sass</a></li>
+        <li><a href="#utilities-2">Utilities</a></li>
         <li><a href="#components-1">Components</a>
           <ul>
             <li><a href="#breadcrumbs">Breadcrumbs</a></li>
@@ -423,16 +434,16 @@
     <li><a href="#v500-alpha3">v5.0.0-alpha3</a>
       <ul>
         <li><a href="#browser-support">Browser support</a></li>
-        <li><a href="#sass-2">Sass</a></li>
+        <li><a href="#sass-3">Sass</a></li>
         <li><a href="#reboot">Reboot</a></li>
         <li><a href="#buttons">Buttons</a></li>
         <li><a href="#forms">Forms</a></li>
-        <li><a href="#utilities-2">Utilities</a></li>
+        <li><a href="#utilities-3">Utilities</a></li>
       </ul>
     </li>
     <li><a href="#v500-alpha2">v5.0.0-alpha2</a>
       <ul>
-        <li><a href="#sass-3">Sass</a></li>
+        <li><a href="#sass-4">Sass</a></li>
         <li><a href="#docs">Docs</a></li>
         <li><a href="#layout">Layout</a></li>
         <li><a href="#reboot-1">Reboot</a></li>
@@ -454,14 +465,14 @@
           </ul>
         </li>
         <li><a href="#helpers">Helpers</a></li>
-        <li><a href="#utilities-3">Utilities</a></li>
+        <li><a href="#utilities-4">Utilities</a></li>
       </ul>
     </li>
     <li><a href="#v500-alpha1">v5.0.0-alpha1</a>
       <ul>
         <li><a href="#browser-support-1">Browser support</a></li>
-        <li><a href="#sass-4">Sass</a></li>
-        <li><a href="#javascript-1">JavaScript</a></li>
+        <li><a href="#sass-5">Sass</a></li>
+        <li><a href="#javascript-2">JavaScript</a></li>
         <li><a href="#color-system">Color system</a></li>
         <li><a href="#grid-and-layout">Grid and layout</a></li>
         <li><a href="#content-reboot-etc">Content, Reboot, etc</a></li>
@@ -482,7 +493,7 @@
           </ul>
         </li>
         <li><a href="#accessibility">Accessibility</a></li>
-        <li><a href="#utilities-4">Utilities</a></li>
+        <li><a href="#utilities-5">Utilities</a></li>
         <li><a href="#grid">Grid</a></li>
         <li><a href="#misc">Misc</a></li>
         <li><a href="#docs-1">Docs</a></li>
@@ -497,20 +508,37 @@
       <div class="bd-content ps-lg-4">
         
 
-        <h2 id="v500-beta1">v5.0.0-beta1</h2>
+        <h2 id="v500-beta2">v5.0.0-beta2</h2>
+<h3 id="sass">Sass</h3>
+<h4 id="utilities">Utilities</h4>
+<ul>
+<li>Renamed <code>--aspect-ratio</code> to <code>--bs-aspect-ratio</code> to be consistent with other custom properties.</li>
+<li>Extended the <code>.visually-hidden-focusable</code> helper to also work on containers, using <code>:focus-within</code>.</li>
+<li><code>bootstrap-utilities.css</code> now also includes our helpers. Helpers don&rsquo;t need to be imported in custom builds anymore.</li>
+<li>Extended form validation states customization capabilities. Added three new optional parameters to the <code>form-validation-state</code> mixin: <code>tooltip-color</code>, <code>tooltip-bg-color</code>, <code>focus-box-shadow</code>. These parameters can be set in the <code>$form-validation-states</code> map. <a href="https://github.com/twbs/bootstrap/pull/31757">See #31757</a>.</li>
+</ul>
+<h3 id="javascript">JavaScript</h3>
+<ul>
+<li>Restored <code>offset</code> option for Dropdown, Popover and Tooltip plugins.</li>
+<li>The default value for the <code>fallbackPlacements</code> is changed to <code>['top', 'right', 'bottom', 'left']</code> for better placement of popper elements.</li>
+<li>All the events for the dropdown are now triggered on the dropdown toggle button and then bubbled up to the parent element.</li>
+<li>Dropdown menus now have a <code>data-bs-popper=&quot;static&quot;</code> attribute set when the positioning of the dropdown is static and <code>data-bs-popper=&quot;none&quot;</code> when dropdown is in the navbar. This is added by our JavaScript and helps us use custom position styles without interfering with Popper&rsquo;s positioning.</li>
+<li><code>popperConfig</code> can be passed as a function that accepts the Bootstrap&rsquo;s default Popper config as an argument, so that you can merge this default configuration in your way.</li>
+</ul>
+<h2 id="v500-beta1">v5.0.0-beta1</h2>
 <h3 id="rtl">RTL</h3>
 <p><strong>The RTL feature is still experimental and will probably evolve according to user feedback.</strong> Spotted something or have an improvement to suggest? <a href="https://github.com/twbs/bootstrap/issues/new">Open an issue</a>, we&rsquo;d love to get your insights.</p>
-<h4 id="sass">Sass</h4>
+<h4 id="sass-1">Sass</h4>
 <p>Horizontal direction sensitive variables, utilities and mixins are renamed with more logical names — <code>start</code> and <code>end</code> in lieu of <code>left</code> and <code>right</code>.</p>
 <h5 id="components">Components</h5>
 <ul>
-<li>Renamed <code>.dropleft</code> and <code>.dropright</code> to <code>.dropstart</code> and <code>dropend</code>.</li>
+<li>Renamed <code>.dropleft</code> and <code>.dropright</code> to <code>.dropstart</code> and <code>.dropend</code>.</li>
 <li>Renamed <code>.dropdown-menu-*-left</code> and <code>.dropdown-menu-*-right</code> to <code>.dropdown-menu-*-start</code> and <code>.dropdown-menu-*-end</code>.</li>
 <li>Renamed <code>.bs-popover-left</code> and <code>.bs-popover-right</code> to <code>.bs-popover-start</code> and <code>.bs-popover-end</code>.</li>
 <li>Renamed <code>.bs-tooltip-left</code> and <code>.bs-tooltip-right</code> to <code>.bs-tooltip-start</code> and <code>.bs-tooltip-end</code>.</li>
 <li>Renamed <code>.carousel-item-left</code> and <code>.carousel-item-right</code> to <code>.carousel-item-start</code> and <code>.carousel-item-end</code>.</li>
 </ul>
-<h5 id="utilities">Utilities</h5>
+<h5 id="utilities-1">Utilities</h5>
 <ul>
 <li>Renamed <code>.left-*</code> and <code>.right-*</code> to <code>.start-*</code> and <code>.end-*</code>.</li>
 <li>Renamed <code>.float-left</code> and <code>.float-right</code> to <code>.float-start</code> and <code>.float-end</code>.</li>
@@ -520,7 +548,8 @@
 <li>Renamed <code>.pl-*</code> and <code>.pr-*</code> to <code>.ps-*</code> and <code>.pe-*</code>.</li>
 <li>Renamed <code>.text-left</code> and <code>.text-right</code> to <code>.text-start</code> and <code>.text-end</code>.</li>
 </ul>
-<p>Breakpoints specific variants are consequently renamed too (eg. <code>.text-md-start</code> replaces <code>.text-md-left</code>).</p>
+<p>Breakpoints specific variants are consequently renamed too (e.g. <code>.text-md-start</code> replaces <code>.text-md-left</code>).</p>
+<p><strong>Note</strong>: if you used v4 to make RTL pages, ensure to reverse changes mentioned above: e.g. use <code>.*-start</code> were you used <code>.*-right</code>.</p>
 <h5 id="mixins">Mixins</h5>
 <ul>
 <li>Renamed <code>border-left-radius()</code> and <code>border-right-radius()</code> to <code>border-start-radius()</code> and <code>border-end-radius()</code> — as well as their corner relative variants (eg. <code>.border-bottom-left-radius</code> became <code>.border-bottom-start-radius</code>).</li>
@@ -536,7 +565,7 @@
 <li>Renamed <code>$form-check-inline-margin-right</code> to <code>$form-check-inline-margin-end</code>.</li>
 <li>Renamed <code>$form-select-feedback-icon-padding-right</code> to <code>$form-select-feedback-icon-padding-end</code>.</li>
 </ul>
-<h3 id="javascript">JavaScript</h3>
+<h3 id="javascript-1">JavaScript</h3>
 <ul>
 <li>Data attributes for all JavaScript plugins are now namespaced to help distinguish Bootstrap functionality from third parties and your own code. For example, we use <code>data-bs-toggle</code> instead of <code>data-toggle</code>.</li>
 <li>Updated Popper to v2.x:
@@ -546,11 +575,11 @@
 </ul>
 </li>
 </ul>
-<h3 id="sass-1">Sass</h3>
+<h3 id="sass-2">Sass</h3>
 <ul>
 <li>Renamed <code>scale-color()</code> function to <code>shift-color()</code> to avoid collision with Sass&rsquo;s own color scaling function.</li>
 </ul>
-<h3 id="utilities-1">Utilities</h3>
+<h3 id="utilities-2">Utilities</h3>
 <ul>
 <li>Added new <code>.translate-middle-x</code> &amp; <code>.translate-middle-y</code> utilities to horizontally or vertically center absolute/fixed positioned elements.</li>
 </ul>
@@ -569,7 +598,7 @@
 <ul>
 <li>Dropped support for Microsoft Edge Legacy. See <a href="#browser-support-1">here</a> for the previous browser support changes.</li>
 </ul>
-<h3 id="sass-2">Sass</h3>
+<h3 id="sass-3">Sass</h3>
 <ul>
 <li>The color system which worked with <code>color-level()</code> and <code>$theme-color-interval</code> was removed in favor of a new color system. All <code>lighten()</code> and <code>darken()</code> functions in our codebase are replaced by <code>tint-color()</code> and <code>shade-color()</code>. These functions will mix the color with either white or black instead of changing its lightness by a fixed amount. The <code>scale-color()</code> (changed to <code>shift-color()</code> in Beta 1) will either tint or shade a color depending on whether its weight parameter is positive or negative. <a href="https://github.com/twbs/bootstrap/pull/30622">See #30622</a> for more details.</li>
 <li>Spinners now honor <code>prefers-reduced-motion: reduce</code> by slowing down animations. <a href="https://github.com/twbs/bootstrap/pull/31882">See #31882</a>.</li>
@@ -589,7 +618,7 @@
 <li>File inputs now use the <code>.form-control</code> class and don&rsquo;t require JavaScript, additional HTML, or additional classes. <a href="https://github.com/twbs/bootstrap/pull/31955">See #31955</a>.</li>
 <li>Added <code>cursor:pointer</code> to <code>.form-control-color</code> color inputs.</li>
 </ul>
-<h3 id="utilities-2">Utilities</h3>
+<h3 id="utilities-3">Utilities</h3>
 <ul>
 <li><strong>Text utilities:</strong>
 <ul>
@@ -600,9 +629,10 @@
 </li>
 <li>Added <code>.d-grid</code> to display utilities</li>
 <li>Added new <code>gap</code> utilities (<code>.gap</code>) for CSS Grid layouts</li>
+<li>Removed <code>.rounded-sm</code> and <code>rounded-lg</code>, and introduced <code>.rounded-0</code> to <code>.rounded-3</code>. <a href="https://github.com/twbs/bootstrap/pull/31687">See #31687</a>.</li>
 </ul>
 <h2 id="v500-alpha2">v5.0.0-alpha2</h2>
-<h3 id="sass-3">Sass</h3>
+<h3 id="sass-4">Sass</h3>
 <ul>
 <li>Added default parameters to each <code>border-radius</code> mixin. <a href="https://github.com/twbs/bootstrap/pull/31571">See #31571</a>.</li>
 <li>Updated the next breakpoint when targeting only the <code>xs</code> breakpoint. <a href="https://github.com/twbs/bootstrap/pull/31500">See #31500</a>.</li>
@@ -711,7 +741,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="utilities-3">Utilities</h3>
+<h3 id="utilities-4">Utilities</h3>
 <ul>
 <li><a href="https://github.com/twbs/bootstrap/pull/31280">#31280</a>: Added new <a href="/docs/5.0/utilities/position/#arrange-elements">position utilities</a> for <code>top</code>, <code>right</code>, <code>bottom</code>, and <code>left</code>. Values include <code>0</code>, <code>50%</code>, and <code>100%</code> for each property.
 <ul>
@@ -738,7 +768,7 @@
 <li>Dropped support for Chrome &lt; 60</li>
 <li>Dropped support for Android &lt; 6</li>
 </ul>
-<h3 id="sass-4">Sass</h3>
+<h3 id="sass-5">Sass</h3>
 <p>Changes to our source Sass files and compiled CSS.</p>
 <ul>
 <li>Removed <code>hover</code>, <code>hover-focus</code>, <code>plain-hover-focus</code>, and <code>hover-focus-active</code> mixins. Use regular CSS syntax for these moving forward. <a href="https://github.com/twbs/bootstrap/pull/28267">See #28267</a>.</li>
@@ -776,7 +806,7 @@
 <li>The <code>box-shadow()</code> mixin now better supports <code>none</code> and <code>null</code> with multiple arguments. Now you can pass multiple arguments with either value and get the expected output. <a href="https://github.com/twbs/bootstrap/pull/30394">See #30394</a>.</li>
 <li>Each <code>border-radius()</code> mixin now has a default value. You can now call these mixins without specifying a border radius value and the <code>$border-radius</code> variable will be used. <a href="https://github.com/twbs/bootstrap/pull/31571">See #31571</a></li>
 </ul>
-<h3 id="javascript-1">JavaScript</h3>
+<h3 id="javascript-2">JavaScript</h3>
 <p>Changes to our source and compiled JavaScript files.</p>
 <ul>
 <li>Dropped jQuery dependency and rewrote plugins to be in regular JavaScript.</li>
@@ -864,6 +894,7 @@
 <li>Dropped support for <code>.form-control-plaintext</code> inside <code>.input-group</code>s.</li>
 <li>Dropped <code>.input-group-append</code> and <code>.input-group-prepend</code>. You can now just add buttons and <code>.input-group-text</code> as direct children of the input groups.</li>
 <li>Form labels now require the <code>.form-label</code> class. Sass variables are now available to style form labels to your needs. <a href="https://github.com/twbs/bootstrap/pull/30476">See #30476</a></li>
+<li><code>.form-text</code> no longer sets <code>display</code>, but does set <code>color</code> and <code>font-size</code>. So instead of <code>&lt;small class=&quot;form-text text-muted&quot;&gt;</code> you should now use <code>&lt;div class=&quot;form-text&quot;&gt;</code>.</li>
 </ul>
 <h3 id="components-3">Components</h3>
 <ul>
@@ -917,7 +948,7 @@
 <ul>
 <li>Unlike the old <code>.sr-only-focusable</code>, which only worked in combination with <code>.sr-only</code>, <code>.sr-only-focusable</code> can be used as a standalone class without <code>.sr-only</code>. <a href="https://github.com/twbs/bootstrap/pull/28720">See #28720</a>.</li>
 </ul>
-<h3 id="utilities-4">Utilities</h3>
+<h3 id="utilities-5">Utilities</h3>
 <h3 id="grid">Grid</h3>
 <ul>
 <li>Decreased the number of responsive order utilities per breakpoint. The highest order utility with a number now is <code>.order-5</code> instead of <code>.order-12</code>. <a href="https://github.com/twbs/bootstrap/pull/28874">See #28874</a>.</li>
@@ -952,11 +983,11 @@
       <li class="d-inline-block ms-3"><a href="/docs/5.0/about/overview/">About</a></li>
     </ul>
     <p class="mb-0">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
-    <p class="mb-0">Currently v5.0.0-beta1. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
+    <p class="mb-0">Currently v5.0.0-beta2. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
