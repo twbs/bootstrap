@@ -30,3 +30,11 @@ Adjust the `overflow` property on the fly with four default values and classes. 
 ```
 
 Using Sass variables, you may customize the overflow utilities by changing the `$overflows` variable in `_variables.scss`.
+
+## Sass
+
+### Utilities API
+
+Overflow utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
+
+{{< scss-docs name="utils-overflow" file="scss/_utilities.scss" >}}

@@ -1,6 +1,6 @@
 /*!
-  * Bootstrap selector-engine.js v5.0.0-beta1 (https://getbootstrap.com/)
-  * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap selector-engine.js v5.0.0-beta2 (https://getbootstrap.com/)
+  * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -11,7 +11,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-beta1): dom/selector-engine.js
+   * Bootstrap (v5.0.0-beta2): dom/selector-engine.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -23,9 +23,6 @@
    */
   var NODE_TEXT = 3;
   var SelectorEngine = {
-    matches: function matches(element, selector) {
-      return element.matches(selector);
-    },
     find: function find(selector, element) {
       var _ref;
 
@@ -45,9 +42,7 @@
     children: function children(element, selector) {
       var _ref2;
 
-      var children = (_ref2 = []).concat.apply(_ref2, element.children);
-
-      return children.filter(function (child) {
+      return (_ref2 = []).concat.apply(_ref2, element.children).filter(function (child) {
         return child.matches(selector);
       });
     },
@@ -56,7 +51,7 @@
       var ancestor = element.parentNode;
 
       while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== NODE_TEXT) {
-        if (this.matches(ancestor, selector)) {
+        if (ancestor.matches(selector)) {
           parents.push(ancestor);
         }
 
@@ -82,7 +77,7 @@
       var next = element.nextElementSibling;
 
       while (next) {
-        if (this.matches(next, selector)) {
+        if (next.matches(selector)) {
           return [next];
         }
 
