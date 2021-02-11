@@ -302,3 +302,19 @@ Align terms and descriptions horizontally by using our grid system's predefined 
 ## Responsive font sizes
 
 In Bootstrap 5, we've enabled responsive font sizes by default, allowing text to scale more naturally across device and viewport sizes. Have a look at the [RFS page]({{< docsref "/getting-started/rfs" >}}) to find out how this works.
+
+## Sass
+
+### Variables
+
+Headings have some dedicated variables for sizing and spacing.
+
+{{< scss-docs name="headings-variables" file="scss/_variables.scss" >}}
+
+Miscellaneous typography elements covered here and in [Reboot]({{< docsref "/content/reboot" >}}) also have dedicated variables.
+
+{{< scss-docs name="type-variables" file="scss/_variables.scss" >}}
+
+### Mixins
+
+There are no dedicated mixins for typography, but Bootstrap does use [Responsive Font Sizing (RFS)]({{< docsref "/getting-started/rfs" >}}).

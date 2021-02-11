@@ -115,3 +115,16 @@ You can use these classes with existing components to create new ones. Remember 
 </div>
 {{< /example >}}
 
+## Sass
+
+### Maps
+
+Default position utility values are declared in a Sass map, then used to generate our utilities.
+
+{{< scss-docs name="position-map" file="scss/_variables.scss" >}}
+
+### Utilities API
+
+Position utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
+
+{{< scss-docs name="utils-position" file="scss/_utilities.scss" >}}
