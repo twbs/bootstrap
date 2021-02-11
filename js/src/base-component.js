@@ -37,8 +37,7 @@ class BaseComponent {
   }
 
   static get DATA_KEY() {
-    const className = this.name.toLowerCase()
-    return `bs.${className}`
+    return `bs.${this.name.toLowerCase()}`
   }
 
   static get VERSION() {
