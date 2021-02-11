@@ -1,13 +1,13 @@
 /*!
-  * Bootstrap modal.js v5.0.0-beta1 (https://getbootstrap.com/)
-  * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap modal.js v5.0.0-beta2 (https://getbootstrap.com/)
+  * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js')) :
-  typeof define === 'function' && define.amd ? define(['./dom/data', './dom/event-handler', './dom/manipulator', './dom/selector-engine'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Modal = factory(global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine));
-}(this, (function (Data, EventHandler, Manipulator, SelectorEngine) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js'), require('./base-component.js')) :
+  typeof define === 'function' && define.amd ? define(['./dom/data', './dom/event-handler', './dom/manipulator', './dom/selector-engine', './base-component'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Modal = factory(global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine, global.Base));
+}(this, (function (Data, EventHandler, Manipulator, SelectorEngine, BaseComponent) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -15,10 +15,51 @@
   var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
   var Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
   var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
+  var BaseComponent__default = /*#__PURE__*/_interopDefaultLegacy(BaseComponent);
+
+  function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    return Constructor;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  function _inheritsLoose(subClass, superClass) {
+    subClass.prototype = Object.create(superClass.prototype);
+    subClass.prototype.constructor = subClass;
+    subClass.__proto__ = superClass;
+  }
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-beta1): util/index.js
+   * Bootstrap (v5.0.0-beta2): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -37,7 +78,20 @@
     var selector = element.getAttribute('data-bs-target');
 
     if (!selector || selector === '#') {
-      var hrefAttr = element.getAttribute('href');
+      var hrefAttr = element.getAttribute('href'); // The only valid content that could double as a selector are IDs or classes,
+      // so everything starting with `#` or `.`. If a "real" URL is used as the selector,
+      // `document.querySelector` will rightfully complain it is invalid.
+      // See https://github.com/twbs/bootstrap/issues/32273
+
+      if (!hrefAttr || !hrefAttr.includes('#') && !hrefAttr.startsWith('.')) {
+        return null;
+      } // Just in case some CMS puts out a full URL with the anchor appended
+
+
+      if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
+        hrefAttr = '#' + hrefAttr.split('#')[1];
+      }
+
       selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
     }
 
@@ -105,7 +159,7 @@
       var valueType = value && isElement(value) ? 'element' : toType(value);
 
       if (!new RegExp(expectedTypes).test(valueType)) {
-        throw new Error(componentName.toUpperCase() + ": " + ("Option \"" + property + "\" provided type \"" + valueType + "\" ") + ("but expected type \"" + expectedTypes + "\"."));
+        throw new TypeError(componentName.toUpperCase() + ": " + ("Option \"" + property + "\" provided type \"" + valueType + "\" ") + ("but expected type \"" + expectedTypes + "\"."));
       }
     });
   };
@@ -149,57 +203,24 @@
 
   var isRTL = document.documentElement.dir === 'rtl';
 
-  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+  var defineJQueryPlugin = function defineJQueryPlugin(name, plugin) {
+    onDOMContentLoaded(function () {
+      var $ = getjQuery();
+      /* istanbul ignore if */
 
-  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
+      if ($) {
+        var JQUERY_NO_CONFLICT = $.fn[name];
+        $.fn[name] = plugin.jQueryInterface;
+        $.fn[name].Constructor = plugin;
 
-  var VERSION = '5.0.0-beta1';
-
-  var BaseComponent = /*#__PURE__*/function () {
-    function BaseComponent(element) {
-      if (!element) {
-        return;
+        $.fn[name].noConflict = function () {
+          $.fn[name] = JQUERY_NO_CONFLICT;
+          return plugin.jQueryInterface;
+        };
       }
+    });
+  };
 
-      this._element = element;
-      Data__default['default'].setData(element, this.constructor.DATA_KEY, this);
-    }
-
-    var _proto = BaseComponent.prototype;
-
-    _proto.dispose = function dispose() {
-      Data__default['default'].removeData(this._element, this.constructor.DATA_KEY);
-      this._element = null;
-    }
-    /** Static */
-    ;
-
-    BaseComponent.getInstance = function getInstance(element) {
-      return Data__default['default'].getData(element, this.DATA_KEY);
-    };
-
-    _createClass(BaseComponent, null, [{
-      key: "VERSION",
-      get: function get() {
-        return VERSION;
-      }
-    }]);
-
-    return BaseComponent;
-  }();
-
-  function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-  function _defineProperties$1(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass$1(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$1(Constructor.prototype, protoProps); if (staticProps) _defineProperties$1(Constructor, staticProps); return Constructor; }
-
-  function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -362,7 +383,7 @@
 
       if (transition) {
         var transitionDuration = getTransitionDurationFromElement(this._element);
-        EventHandler__default['default'].one(this._element, TRANSITION_END, function (event) {
+        EventHandler__default['default'].one(this._element, 'transitionend', function (event) {
           return _this3._hideModal(event);
         });
         emulateTransitionEnd(this._element, transitionDuration);
@@ -455,7 +476,7 @@
 
       if (transition) {
         var transitionDuration = getTransitionDurationFromElement(this._dialog);
-        EventHandler__default['default'].one(this._dialog, TRANSITION_END, transitionComplete);
+        EventHandler__default['default'].one(this._dialog, 'transitionend', transitionComplete);
         emulateTransitionEnd(this._dialog, transitionDuration);
       } else {
         transitionComplete();
@@ -577,7 +598,7 @@
         }
 
         var backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop);
-        EventHandler__default['default'].one(this._backdrop, TRANSITION_END, callback);
+        EventHandler__default['default'].one(this._backdrop, 'transitionend', callback);
         emulateTransitionEnd(this._backdrop, backdropTransitionDuration);
       } else if (!this._isShown && this._backdrop) {
         this._backdrop.classList.remove(CLASS_NAME_SHOW);
@@ -591,7 +612,7 @@
         if (this._element.classList.contains(CLASS_NAME_FADE)) {
           var _backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop);
 
-          EventHandler__default['default'].one(this._backdrop, TRANSITION_END, callbackRemove);
+          EventHandler__default['default'].one(this._backdrop, 'transitionend', callbackRemove);
           emulateTransitionEnd(this._backdrop, _backdropTransitionDuration);
         } else {
           callbackRemove();
@@ -619,12 +640,12 @@
       this._element.classList.add(CLASS_NAME_STATIC);
 
       var modalTransitionDuration = getTransitionDurationFromElement(this._dialog);
-      EventHandler__default['default'].off(this._element, TRANSITION_END);
-      EventHandler__default['default'].one(this._element, TRANSITION_END, function () {
+      EventHandler__default['default'].off(this._element, 'transitionend');
+      EventHandler__default['default'].one(this._element, 'transitionend', function () {
         _this10._element.classList.remove(CLASS_NAME_STATIC);
 
         if (!isModalOverflowing) {
-          EventHandler__default['default'].one(_this10._element, TRANSITION_END, function () {
+          EventHandler__default['default'].one(_this10._element, 'transitionend', function () {
             _this10._element.style.overflowY = '';
           });
           emulateTransitionEnd(_this10._element, modalTransitionDuration);
@@ -665,60 +686,50 @@
       var _this11 = this;
 
       if (this._isBodyOverflowing) {
-        // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
-        //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
-        // Adjust fixed content padding
-        SelectorEngine__default['default'].find(SELECTOR_FIXED_CONTENT).forEach(function (element) {
-          var actualPadding = element.style.paddingRight;
-          var calculatedPadding = window.getComputedStyle(element)['padding-right'];
-          Manipulator__default['default'].setDataAttribute(element, 'padding-right', actualPadding);
-          element.style.paddingRight = Number.parseFloat(calculatedPadding) + _this11._scrollbarWidth + "px";
-        }); // Adjust sticky content margin
+        this._setElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight', function (calculatedValue) {
+          return calculatedValue + _this11._scrollbarWidth;
+        });
 
-        SelectorEngine__default['default'].find(SELECTOR_STICKY_CONTENT).forEach(function (element) {
-          var actualMargin = element.style.marginRight;
-          var calculatedMargin = window.getComputedStyle(element)['margin-right'];
-          Manipulator__default['default'].setDataAttribute(element, 'margin-right', actualMargin);
-          element.style.marginRight = Number.parseFloat(calculatedMargin) - _this11._scrollbarWidth + "px";
-        }); // Adjust body padding
+        this._setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', function (calculatedValue) {
+          return calculatedValue - _this11._scrollbarWidth;
+        });
 
-        var actualPadding = document.body.style.paddingRight;
-        var calculatedPadding = window.getComputedStyle(document.body)['padding-right'];
-        Manipulator__default['default'].setDataAttribute(document.body, 'padding-right', actualPadding);
-        document.body.style.paddingRight = Number.parseFloat(calculatedPadding) + this._scrollbarWidth + "px";
+        this._setElementAttributes('body', 'paddingRight', function (calculatedValue) {
+          return calculatedValue + _this11._scrollbarWidth;
+        });
       }
 
       document.body.classList.add(CLASS_NAME_OPEN);
     };
 
+    _proto._setElementAttributes = function _setElementAttributes(selector, styleProp, callback) {
+      SelectorEngine__default['default'].find(selector).forEach(function (element) {
+        var actualValue = element.style[styleProp];
+        var calculatedValue = window.getComputedStyle(element)[styleProp];
+        Manipulator__default['default'].setDataAttribute(element, styleProp, actualValue);
+        element.style[styleProp] = callback(Number.parseFloat(calculatedValue)) + 'px';
+      });
+    };
+
     _proto._resetScrollbar = function _resetScrollbar() {
-      // Restore fixed content padding
-      SelectorEngine__default['default'].find(SELECTOR_FIXED_CONTENT).forEach(function (element) {
-        var padding = Manipulator__default['default'].getDataAttribute(element, 'padding-right');
+      this._resetElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight');
 
-        if (typeof padding !== 'undefined') {
-          Manipulator__default['default'].removeDataAttribute(element, 'padding-right');
-          element.style.paddingRight = padding;
+      this._resetElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight');
+
+      this._resetElementAttributes('body', 'paddingRight');
+    };
+
+    _proto._resetElementAttributes = function _resetElementAttributes(selector, styleProp) {
+      SelectorEngine__default['default'].find(selector).forEach(function (element) {
+        var value = Manipulator__default['default'].getDataAttribute(element, styleProp);
+
+        if (typeof value === 'undefined' && element === document.body) {
+          element.style[styleProp] = '';
+        } else {
+          Manipulator__default['default'].removeDataAttribute(element, styleProp);
+          element.style[styleProp] = value;
         }
-      }); // Restore sticky content and navbar-toggler margin
-
-      SelectorEngine__default['default'].find("" + SELECTOR_STICKY_CONTENT).forEach(function (element) {
-        var margin = Manipulator__default['default'].getDataAttribute(element, 'margin-right');
-
-        if (typeof margin !== 'undefined') {
-          Manipulator__default['default'].removeDataAttribute(element, 'margin-right');
-          element.style.marginRight = margin;
-        }
-      }); // Restore body padding
-
-      var padding = Manipulator__default['default'].getDataAttribute(document.body, 'padding-right');
-
-      if (typeof padding === 'undefined') {
-        document.body.style.paddingRight = '';
-      } else {
-        Manipulator__default['default'].removeDataAttribute(document.body, 'padding-right');
-        document.body.style.paddingRight = padding;
-      }
+      });
     };
 
     _proto._getScrollbarWidth = function _getScrollbarWidth() {
@@ -752,7 +763,7 @@
       });
     };
 
-    _createClass$1(Modal, null, [{
+    _createClass(Modal, null, [{
       key: "Default",
       get: function get() {
         return Default;
@@ -765,7 +776,7 @@
     }]);
 
     return Modal;
-  }(BaseComponent);
+  }(BaseComponent__default['default']);
   /**
    * ------------------------------------------------------------------------
    * Data Api implementation
@@ -802,7 +813,7 @@
       data = new Modal(target, config);
     }
 
-    data.show(this);
+    data.toggle(this);
   });
   /**
    * ------------------------------------------------------------------------
@@ -811,21 +822,7 @@
    * add .Modal to jQuery only if jQuery is present
    */
 
-  onDOMContentLoaded(function () {
-    var $ = getjQuery();
-    /* istanbul ignore if */
-
-    if ($) {
-      var JQUERY_NO_CONFLICT = $.fn[NAME];
-      $.fn[NAME] = Modal.jQueryInterface;
-      $.fn[NAME].Constructor = Modal;
-
-      $.fn[NAME].noConflict = function () {
-        $.fn[NAME] = JQUERY_NO_CONFLICT;
-        return Modal.jQueryInterface;
-      };
-    }
-  });
+  defineJQueryPlugin(NAME, Modal);
 
   return Modal;
 

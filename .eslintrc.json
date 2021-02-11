@@ -36,7 +36,6 @@
       "error",
       "always"
     ],
-    "prefer-named-capture-group": "off",
     "semi": [
       "error",
       "never"
@@ -44,6 +43,7 @@
     "unicorn/consistent-function-scoping": "off",
     "unicorn/explicit-length-check": "off",
     "unicorn/no-array-callback-reference": "off",
+    "unicorn/no-array-for-each": "off",
     "unicorn/no-for-loop": "off",
     "unicorn/no-null": "off",
     "unicorn/no-unused-properties": "error",
@@ -51,8 +51,8 @@
     "unicorn/prefer-dom-node-append": "off",
     "unicorn/prefer-dom-node-dataset": "off",
     "unicorn/prefer-dom-node-remove": "off",
-    "unicorn/prefer-optional-catch-binding": "off",
     "unicorn/prefer-query-selector": "off",
+    "unicorn/prefer-spread": "off",
     "unicorn/prevent-abbreviations": "off"
   }
 }
