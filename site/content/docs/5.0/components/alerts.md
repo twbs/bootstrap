@@ -71,6 +71,24 @@ You can see this in action with a live demo:
 When an alert is dismissed, the element is completely removed from the page structure. If a keyboard user dismisses the alert using the close button, their focus will suddenly be lost and, depending on the browser, reset to the start of the page/document. For this reason, we recommend including additional JavaScript that listens for the `closed.bs.alert` event and programmatically sets `focus()` to the most appropriate location in the page. If you're planning to move focus to a non-interactive element that normally does not receive focus, make sure to add `tabindex="-1"` to the element.
 {{< /callout >}}
 
+## Sass
+
+### Variables
+
+{{< scss-docs name="alert-variables" file="scss/_variables.scss" >}}
+
+### Variant mixin
+
+Used in combination with `$theme-colors` to create contextual modifier classes for our alerts.
+
+{{< scss-docs name="alert-variant-mixin" file="scss/mixins/_alert.scss" >}}
+
+### Loop
+
+Loop that generates the modifier classes with the `alert-variant()` mixin.
+
+{{< scss-docs name="alert-modifiers" file="scss/_alert.scss" >}}
+
 ## JavaScript behavior
 
 ### Triggers
