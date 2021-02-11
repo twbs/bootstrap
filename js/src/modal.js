@@ -113,7 +113,7 @@ class Modal extends BaseComponent {
       return
     }
 
-    if (this._element.classList.contains(CLASS_NAME_FADE)) {
+    if (this._isAnimated()) {
       this._isTransitioning = true
     }
 
@@ -164,7 +164,7 @@ class Modal extends BaseComponent {
     }
 
     this._isShown = false
-    const transition = this._element.classList.contains(CLASS_NAME_FADE)
+    const transition = this._isAnimated()
 
     if (transition) {
       this._isTransitioning = true
@@ -229,7 +229,6 @@ class Modal extends BaseComponent {
   }
 
   _showElement(relatedTarget) {
-    const transition = this._element.classList.contains(CLASS_NAME_FADE)
     const modalBody = SelectorEngine.findOne(SELECTOR_MODAL_BODY, this._dialog)
 
     if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
@@ -247,7 +246,7 @@ class Modal extends BaseComponent {
       modalBody.scrollTop = 0
     }
 
-    if (transition) {
+    if (this._isAnimated()) {
       reflow(this._element)
     }
 
@@ -268,7 +267,7 @@ class Modal extends BaseComponent {
       })
     }
 
-    if (transition) {
+    if (this._isAnimated()) {
       const transitionDuration = getTransitionDurationFromElement(this._dialog)
 
       EventHandler.one(this._dialog, 'transitionend', transitionComplete)
@@ -332,16 +331,12 @@ class Modal extends BaseComponent {
   }
 
   _showBackdrop(callback) {
-    const animate = this._element.classList.contains(CLASS_NAME_FADE) ?
-      CLASS_NAME_FADE :
-      ''
-
     if (this._isShown && this._config.backdrop) {
       this._backdrop = document.createElement('div')
       this._backdrop.className = CLASS_NAME_BACKDROP
 
-      if (animate) {
-        this._backdrop.classList.add(animate)
+      if (this._isAnimated()) {
+        this._backdrop.classList.add(CLASS_NAME_FADE)
       }
 
       document.body.appendChild(this._backdrop)
@@ -363,13 +358,13 @@ class Modal extends BaseComponent {
         }
       })
 
-      if (animate) {
+      if (this._isAnimated()) {
         reflow(this._backdrop)
       }
 
       this._backdrop.classList.add(CLASS_NAME_SHOW)
 
-      if (!animate) {
+      if (!this._isAnimated()) {
         callback()
         return
       }
@@ -386,7 +381,7 @@ class Modal extends BaseComponent {
         callback()
       }
 
-      if (this._element.classList.contains(CLASS_NAME_FADE)) {
+      if (this._isAnimated()) {
         const backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop)
         EventHandler.one(this._backdrop, 'transitionend', callbackRemove)
         emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
@@ -396,6 +391,10 @@ class Modal extends BaseComponent {
     } else {
       callback()
     }
+  }
+
+  _isAnimated() {
+    return this._element.classList.contains(CLASS_NAME_FADE)
   }
 
   _triggerBackdropTransition() {
