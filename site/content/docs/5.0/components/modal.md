@@ -876,7 +876,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
 
 ## Usage
 
-The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds `.modal-open` to the `<body>` to override default scrolling behavior and generates a `.backdrop` to provide a click area for dismissing shown modals when clicking outside the modal.
+The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds `.modal-open` to the `<body>` to override default scrolling behavior and generates a `.modal-backdrop` to provide a click area for dismissing shown modals when clicking outside the modal.
 
 ### Via data attributes
 
@@ -912,7 +912,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td><code>backdrop</code></td>
       <td>boolean or the string <code>'static'</code></td>
       <td><code>true</code></td>
-      <td>Includes a backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.</td>
+      <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.</td>
     </tr>
     <tr>
       <td><code>keyboard</code></td>

@@ -19,7 +19,7 @@ describe('Modal', () => {
     document.body.removeAttribute('style')
     document.body.removeAttribute('data-bs-padding-right')
 
-    document.querySelectorAll('.backdrop')
+    document.querySelectorAll('.modal-backdrop')
       .forEach(backdrop => {
         document.body.removeChild(backdrop)
       })
@@ -251,7 +251,7 @@ describe('Modal', () => {
         expect(modalEl.getAttribute('role')).toEqual('dialog')
         expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
         expect(modalEl.style.display).toEqual('block')
-        expect(document.querySelector('.backdrop')).toBeDefined()
+        expect(document.querySelector('.modal-backdrop')).toBeDefined()
         done()
       })
 
@@ -275,7 +275,7 @@ describe('Modal', () => {
         expect(modalEl.getAttribute('role')).toEqual('dialog')
         expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
         expect(modalEl.style.display).toEqual('block')
-        expect(document.querySelector('.backdrop')).toBeNull()
+        expect(document.querySelector('.modal-backdrop')).toBeNull()
         done()
       })
 
@@ -771,7 +771,7 @@ describe('Modal', () => {
         expect(modalEl.getAttribute('role')).toEqual(null)
         expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
         expect(modalEl.style.display).toEqual('none')
-        expect(document.querySelector('.backdrop')).toBeNull()
+        expect(document.querySelector('.modal-backdrop')).toBeNull()
         done()
       })
 
@@ -793,7 +793,7 @@ describe('Modal', () => {
         expect(modalEl.getAttribute('role')).toEqual(null)
         expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
         expect(modalEl.style.display).toEqual('none')
-        expect(document.querySelector('.backdrop')).toBeNull()
+        expect(document.querySelector('.modal-backdrop')).toBeNull()
         done()
       })
 
@@ -901,7 +901,7 @@ describe('Modal', () => {
         expect(modalEl.getAttribute('role')).toEqual('dialog')
         expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
         expect(modalEl.style.display).toEqual('block')
-        expect(document.querySelector('.backdrop')).toBeDefined()
+        expect(document.querySelector('.modal-backdrop')).toBeDefined()
         setTimeout(() => trigger.click(), 10)
       })
 
@@ -910,7 +910,7 @@ describe('Modal', () => {
         expect(modalEl.getAttribute('role')).toEqual(null)
         expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
         expect(modalEl.style.display).toEqual('none')
-        expect(document.querySelector('.backdrop')).toEqual(null)
+        expect(document.querySelector('.modal-backdrop')).toEqual(null)
         done()
       })
 
@@ -953,7 +953,7 @@ describe('Modal', () => {
         expect(modalEl.getAttribute('role')).toEqual('dialog')
         expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
         expect(modalEl.style.display).toEqual('block')
-        expect(document.querySelector('.backdrop')).toBeDefined()
+        expect(document.querySelector('.modal-backdrop')).toBeDefined()
         expect(Event.prototype.preventDefault).toHaveBeenCalled()
         done()
       })

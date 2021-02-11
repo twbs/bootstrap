@@ -211,13 +211,13 @@ class Modal extends BaseComponent {
     this._adjustDialog()
   }
 
+  // Private
+
   _initializeBackDrop() {
     const isAnimated = this._isAnimated()
 
     return new Backdrop((this._config.backdrop), isAnimated)
   }
-
-  // Private
 
   _getConfig(config) {
     config = {

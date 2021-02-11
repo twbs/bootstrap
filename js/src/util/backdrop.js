@@ -6,9 +6,9 @@
  */
 
 import EventHandler from '../dom/event-handler'
-import { execute, getTransitionDurationFromElement, promiseTimeout, reflow } from './index'
+import { execute, getTransitionDurationFromElement, reflow } from './index'
 
-const CLASS_NAME_BACKDROP = 'backdrop'
+const CLASS_NAME_BACKDROP = 'modal-backdrop'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 
@@ -106,7 +106,7 @@ class Backdrop {
     }
 
     const backdropTransitionDuration = getTransitionDurationFromElement(this._get())
-    promiseTimeout(backdropTransitionDuration).then(() => execute(callback))
+    setTimeout(() => execute(callback), backdropTransitionDuration + 5)
   }
 }
 

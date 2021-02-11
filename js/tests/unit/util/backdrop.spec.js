@@ -1,7 +1,7 @@
 import Backdrop from '../../../src/util/backdrop'
 import { getTransitionDurationFromElement } from '../../../src/util/index'
 
-const CLASS_BACKDROP = '.backdrop'
+const CLASS_BACKDROP = '.modal-backdrop'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 

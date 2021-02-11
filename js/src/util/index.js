@@ -102,15 +102,6 @@ const triggerTransitionEnd = element => {
 
 const isElement = obj => (obj[0] || obj).nodeType
 
-const promiseTimeout = duration => {
-  const durationPadding = 5
-  const emulatedDuration = (duration || 0) + durationPadding
-
-  return new Promise(resolve => {
-    setTimeout(resolve, emulatedDuration)
-  })
-}
-
 const emulateTransitionEnd = (element, duration) => {
   let called = false
   const durationPadding = 5
@@ -263,6 +254,5 @@ export {
   onDOMContentLoaded,
   isRTL,
   defineJQueryPlugin,
-  promiseTimeout,
   execute
 }
