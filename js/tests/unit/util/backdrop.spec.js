@@ -86,6 +86,23 @@ describe('Backdrop', () => {
     })
   })
 
+  it('if it is not "shown", should not try to remove Node on remove method', done => {
+    const instance = new Backdrop(false, true)
+    const elems = () => document.querySelectorAll(CLASS_BACKDROP)
+    const spy = spyOn(instance, '_remove').and.callThrough()
+
+    expect(elems().length).toEqual(0)
+    expect(instance._isAppended).toEqual(false)
+    instance.show(() => {
+      instance.hide(() => {
+        expect(elems().length).toEqual(0)
+        expect(spy).not.toHaveBeenCalled()
+        expect(instance._isAppended).toEqual(false)
+        done()
+      })
+    })
+  })
+
   describe('click callback', () => {
     it('it should execute callback on click', done => {
       const spy = jasmine.createSpy('spy')
