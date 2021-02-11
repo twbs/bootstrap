@@ -1,6 +1,6 @@
 ---
 layout: examples
-title: مثال الخروج
+title: مثال إتمام الشراء
 direction: rtl
 extra_css:
   - "../checkout/form-validation.css"
@@ -13,14 +13,14 @@ body_class: "bg-light"
   <main>
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-      <h2>نموذج الخروج</h2>
+      <h2>نموذج إتمام الشراء</h2>
       <p class="lead">فيما يلي مثال على نموذج تم إنشاؤه بالكامل باستخدام عناصر تحكم النموذج في Bootstrap. لكل مجموعة نماذج مطلوبة حالة تحقق يمكن تشغيلها بمحاولة إرسال النموذج دون استكماله.</p>
     </div>
 
     <div class="row g-3">
       <div class="col-md-5 col-lg-4 order-md-last">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-muted">عربتك</span>
+          <span class="text-muted">عربة التسوق</span>
           <span class="badge bg-secondary rounded-pill">3</span>
         </h4>
         <ul class="list-group mb-3">
@@ -61,27 +61,27 @@ body_class: "bg-light"
         <form class="card p-2">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="رمز ترويجي">
-            <button type="submit" class="btn btn-secondary">افتدى</button>
+            <button type="submit" class="btn btn-secondary">تحقق</button>
           </div>
         </form>
       </div>
       <div class="col-md-7 col-lg-8">
-        <h4 class="mb-3">عنوان وصول الفواتير</h4>
+        <h4 class="mb-3">عنوان الفوترة</h4>
         <form class="needs-validation" novalidate>
           <div class="row g-3">
             <div class="col-sm-6">
-              <label for="firstName" class="form-label">الاسم الاول</label>
+              <label for="firstName" class="form-label">الاسم الأول</label>
               <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
               <div class="invalid-feedback">
-                مطلوب الاسم الأول صالح.
+                يرجى إدخال اسم أول صحيح.
               </div>
             </div>
 
             <div class="col-sm-6">
-              <label for="lastName" class="form-label">الكنية</label>
+              <label for="lastName" class="form-label">اسم العائلة</label>
               <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
               <div class="invalid-feedback">
-                مطلوب اسم أخير صالح.
+                يرجى إدخال اسم عائلة صحيح.
               </div>
             </div>
 
@@ -97,45 +97,45 @@ body_class: "bg-light"
             </div>
 
             <div class="col-12">
-              <label for="email" class="form-label"><span class="text-muted">(اختياري)</span>البريد الإلكتروني </label>
+              <label for="email" class="form-label">البريد الإلكتروني <span class="text-muted">(اختياري)</span></label>
               <input type="email" class="form-control" id="email" placeholder="you@example.com">
               <div class="invalid-feedback">
-                يرجى إدخال عنوان بريد إلكتروني صالح لتحديثات الشحن.
+                يرجى إدخال عنوان بريد إلكتروني صحيح لتصلكم تحديثات الشحن.
               </div>
             </div>
 
             <div class="col-12">
-              <label for="address" class="form-label">عنوان</label>
-              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+              <label for="address" class="form-label">العنوان</label>
+              <input type="text" class="form-control" id="address" placeholder="1234 الشارع الأول" required>
               <div class="invalid-feedback">
                 يرجى إدخال عنوان الشحن الخاص بك.
               </div>
             </div>
 
             <div class="col-12">
-              <label for="address2" class="form-label"><span class="text-muted">(اختياري)</span>عنوان 2 </label>
-              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+              <label for="address2" class="form-label">عنوان 2 <span class="text-muted">(اختياري)</span></label>
+              <input type="text" class="form-control" id="address2" placeholder="شقة 24">
             </div>
 
             <div class="col-md-5">
-              <label for="country" class="form-label">بلد</label>
+              <label for="country" class="form-label">البلد</label>
               <select class="form-select" id="country" required>
-                <option value="">أختر...</option>
+                <option value="">اختر...</option>
                 <option>الولايات المتحدة الأمريكية</option>
               </select>
               <div class="invalid-feedback">
-                يرجى تحديد بلد صالح.
+                يرجى اختيار بلد صحيح.
               </div>
             </div>
 
             <div class="col-md-4">
-              <label for="state" class="form-label">حالة</label>
+              <label for="state" class="form-label">المنطقة</label>
               <select class="form-select" id="state" required>
-                <option value="">أختر...</option>
+                <option value="">اختر...</option>
                 <option>كاليفورنيا</option>
               </select>
               <div class="invalid-feedback">
-                يرجى تقديم حالة صالحة.
+                يرجى اختيار اسم منطقة صحيح.
               </div>
             </div>
 
@@ -152,7 +152,7 @@ body_class: "bg-light"
 
           <div class="form-check">
             <input type="checkbox" class="form-check-input" id="same-address">
-            <label class="form-check-label" for="same-address">عنوان الشحن هو نفس عنوان الفاتورة الخاص بي</label>
+            <label class="form-check-label" for="same-address">عنوان الشحن هو نفس عنوان الفوترة الخاص بي</label>
           </div>
 
           <div class="form-check">
@@ -162,16 +162,16 @@ body_class: "bg-light"
 
           <hr class="my-4">
 
-          <h4 class="mb-3">دفع</h4>
+          <h4 class="mb-3">طريقة الدفع</h4>
 
           <div class="my-3">
             <div class="form-check">
               <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-              <label class="form-check-label" for="credit">بطاقة الائتمان</label>
+              <label class="form-check-label" for="credit">بطاقة ائتمان</label>
             </div>
             <div class="form-check">
-              <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-              <label class="form-check-label" for="debit">بطاقة ائتمان</label>
+              <input id="cash" name="paymentMethod" type="radio" class="form-check-input" required>
+              <label class="form-check-label" for="cash">نقد</label>
             </div>
             <div class="form-check">
               <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
@@ -190,7 +190,7 @@ body_class: "bg-light"
             </div>
 
             <div class="col-md-6">
-              <label for="cc-number" class="form-label">رقم بطاقه الائتمان</label>
+              <label for="cc-number" class="form-label">رقم البطاقة</label>
               <input type="text" class="form-control" id="cc-number" placeholder="" required>
               <div class="invalid-feedback">
                 رقم بطاقة الائتمان مطلوب
@@ -198,7 +198,7 @@ body_class: "bg-light"
             </div>
 
             <div class="col-md-3">
-              <label for="cc-expiration" class="form-label">انتهاء الصلاحية</label>
+              <label for="cc-expiration" class="form-label">تاريخ انتهاء الصلاحية</label>
               <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
               <div class="invalid-feedback">
                 تاريخ انتهاء الصلاحية مطلوب
@@ -206,7 +206,7 @@ body_class: "bg-light"
             </div>
 
             <div class="col-md-3">
-              <label for="cc-cvv" class="form-label">CVV</label>
+              <label for="cc-cvv" class="form-label">الرمز الثلاثي (CVV)</label>
               <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
               <div class="invalid-feedback">
                 رمز الحماية مطلوب
@@ -216,7 +216,7 @@ body_class: "bg-light"
 
           <hr class="my-4">
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit">الاستمرار في الخروج</button>
+          <button class="w-100 btn btn-primary btn-lg" type="submit">الاستمرار بالدفع</button>
         </form>
       </div>
     </div>
@@ -224,9 +224,9 @@ body_class: "bg-light"
   <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; {{< year >}}-2017 اسم الشركة</p>
     <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">خصوصية</a></li>
-      <li class="list-inline-item"><a href="#">شروط</a></li>
-      <li class="list-inline-item"><a href="#">الدعم</a></li>
+      <li class="list-inline-item"><a href="#">سياسة الخصوصية</a></li>
+      <li class="list-inline-item"><a href="#">اتفاقية الاستخدام</a></li>
+      <li class="list-inline-item"><a href="#">الدعم الفني</a></li>
     </ul>
   </footer>
 </div>
