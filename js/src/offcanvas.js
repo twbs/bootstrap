@@ -12,7 +12,7 @@ import {
   getTransitionDurationFromElement,
   isVisible
 } from './util/index'
-import * as Scrollbar from './util/scrollbar'
+import { reset as scrollBarReset, hide as scrollBarHide } from './util/scrollbar'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import BaseComponent from './base-component'
@@ -36,7 +36,6 @@ const CLASS_NAME_DISABLED = 'disabled'
 const CLASS_NAME_OPEN = 'offcanvas-open'
 const CLASS_NAME_TOGGLING = 'offcanvas-toggling'
 const CLASS_NAME_SHOW = 'show'
-const CLASS_NAME_STOP_OVERFLOW = 'offcanvas-freeze'
 
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
@@ -61,8 +60,6 @@ class OffCanvas extends BaseComponent {
 
     this._isShown = element.classList.contains(CLASS_NAME_SHOW)
     this._bodyOptions = element.getAttribute(DATA_BODY_ACTIONS)
-    this._isBodyOverflowing = null
-
     this._handleClosing()
   }
 
@@ -92,8 +89,7 @@ class OffCanvas extends BaseComponent {
     }
 
     if (!this._bodyOptionsHas('scroll')) {
-      Scrollbar.setCustom(Scrollbar.getWidth())
-      document.body.classList.add(CLASS_NAME_STOP_OVERFLOW)
+      scrollBarHide()
     }
 
     this._element.removeAttribute('aria-hidden')
@@ -141,8 +137,7 @@ class OffCanvas extends BaseComponent {
       this._element.style.visibility = 'hidden'
 
       if (!this._bodyOptionsHas('scroll')) {
-        document.body.classList.remove(CLASS_NAME_STOP_OVERFLOW)
-        Scrollbar.reset()
+        scrollBarReset()
       }
 
       EventHandler.trigger(this._element, EVENT_HIDDEN)

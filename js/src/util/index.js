@@ -216,11 +216,6 @@ const defineJQueryPlugin = (name, plugin) => {
   })
 }
 
-const isBodyOverflowing = () => {
-  const rect = document.body.getBoundingClientRect()
-  return Math.round(rect.left + rect.right) < window.innerWidth
-}
-
 export {
   getUID,
   getSelectorFromElement,
@@ -237,6 +232,5 @@ export {
   getjQuery,
   onDOMContentLoaded,
   isRTL,
-  defineJQueryPlugin,
-  isBodyOverflowing
+  defineJQueryPlugin
 }

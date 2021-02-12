@@ -8,20 +8,16 @@
 import SelectorEngine from '../dom/selector-engine'
 import Manipulator from '../dom/manipulator'
 
-const CLASS_NAME_SCROLLBAR_MEASURER = 'modal-scrollbar-measure'
 const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
 const SELECTOR_STICKY_CONTENT = '.sticky-top'
 
-const getWidth = () => { // thx d.walsh
-  const scrollDiv = document.createElement('div')
-  scrollDiv.className = CLASS_NAME_SCROLLBAR_MEASURER
-  document.body.appendChild(scrollDiv)
-  const scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth
-  document.body.removeChild(scrollDiv)
-  return scrollbarWidth
+const getWidth = () => {
+  // https://muffinman.io/blog/get-scrollbar-width-in-javascript/
+  return Math.abs(window.innerWidth - document.documentElement.clientWidth)
 }
 
-const setCustom = width => {
+const hide = (width = getWidth()) => {
+  document.body.style.overflow = 'hidden'
   _setElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight', calculatedValue => calculatedValue + width)
   _setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - width)
   _setElementAttributes('body', 'paddingRight', calculatedValue => calculatedValue + width)
@@ -38,6 +34,7 @@ const _setElementAttributes = (selector, styleProp, callback) => {
 }
 
 const reset = () => {
+  document.body.style.overflow = 'auto'
   _resetElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight')
   _resetElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight')
   _resetElementAttributes('body', 'paddingRight')
@@ -55,8 +52,15 @@ const _resetElementAttributes = (selector, styleProp) => {
   })
 }
 
+const isBodyOverflowing = () => {
+  // maybe getWidth > 0
+  const rect = document.body.getBoundingClientRect()
+  return Math.round(rect.left + rect.right) < window.innerWidth
+}
+
 export {
   getWidth,
-  setCustom,
+  hide,
+  isBodyOverflowing,
   reset
 }
