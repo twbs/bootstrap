@@ -4,7 +4,7 @@ title: Introduction
 description: Get started with Bootstrap, the world's most popular framework for building responsive, mobile-first sites, with jsDelivr and a template starter page.
 group: getting-started
 aliases:
-  - "/docs/4.5/getting-started/"
+  - "/docs/4.6/getting-started/"
   - "/docs/getting-started/"
   - "/getting-started/"
 toc: true
@@ -160,3 +160,17 @@ Stay up to date on the development of Bootstrap and reach out to the community w
 - Developers should use the keyword `bootstrap` on packages which modify or add to the functionality of Bootstrap when distributing through [npm](https://www.npmjs.com/search?q=keywords:bootstrap) or similar delivery mechanisms for maximum discoverability.
 
 You can also follow [@getbootstrap on Twitter](https://twitter.com/{{< param twitter >}}) for the latest gossip and awesome music videos.
+
+## CSPs and embedded SVGs
+
+Several Bootstrap components include embedded SVGs in our CSS to style components consistently and easily across browsers and devices. **For organizations with more strict <abbr title="Content Security Policy">CSP</abbr> configurations**, we've documented all instances of our embedded SVGs (all of which are applied via `background-image`) so you can more thoroughly review your options.
+
+- [Close button]({{< docsref "/utilities/close-icon" >}}) (used in alerts and modals)
+- [Custom checkboxes and radio buttons]({{< docsref "/components/forms#custom-forms" >}})
+- [Form switches]({{< docsref "/components/forms#switches" >}})
+- [Form validation icons]({{< docsref "/components/forms#validation" >}})
+- [Custom select menus]({{< docsref "/components/forms#select-menu" >}})
+- [Carousel controls]({{< docsref "/components/carousel#with-controls" >}})
+- [Navbar toggle buttons]({{< docsref "/components/navbar#responsive-behaviors" >}})
+
+Based on [community conversation](https://github.com/twbs/bootstrap/issues/25394), some options for addressing this in your own codebase include replacing the URLs with locally hosted assets, removing the images and using inline images (not possible in all components), and modifying your CSP. Our recommendation is to carefully review your own security policies and decide on a best path forward, if necessary.
