@@ -1071,8 +1071,16 @@ describe('Carousel', () => {
         ['keydown', jasmine.any(Function), jasmine.any(Boolean)],
         ['mouseover', jasmine.any(Function), jasmine.any(Boolean)],
         ['mouseout', jasmine.any(Function), jasmine.any(Boolean)],
-        ['pointerdown', jasmine.any(Function), jasmine.any(Boolean)],
-        ['pointerup', jasmine.any(Function), jasmine.any(Boolean)]
+        ...(carousel._pointerEvent ?
+          [
+            ['pointerdown', jasmine.any(Function), jasmine.any(Boolean)],
+            ['pointerup', jasmine.any(Function), jasmine.any(Boolean)]
+          ] :
+          [
+            ['touchstart', jasmine.any(Function), jasmine.any(Boolean)],
+            ['touchmove', jasmine.any(Function), jasmine.any(Boolean)],
+            ['touchend', jasmine.any(Function), jasmine.any(Boolean)]
+          ])
       ]
 
       expect(addEventSpy.calls.allArgs()).toEqual(expectedArgs)
