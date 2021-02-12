@@ -12,6 +12,19 @@
   @include border-radius($list-group-border-radius);
 }
 
+// stylelint-disable selector-no-qualifying-type
+ol.list-group {
+  list-style-type: none;
+  counter-reset: section;
+
+  > li::before {
+    // Increments only this instance of the section counter
+    content: counters(section, ".") ". ";
+    counter-increment: section;
+  }
+}
+// stylelint-enable selector-no-qualifying-type
+
 
 // Interactive list items
 //
