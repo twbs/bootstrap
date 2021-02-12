@@ -485,7 +485,6 @@ class Dropdown extends BaseComponent {
     if ((event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY)) {
       if (!isActive) {
         button.click()
-        return
       }
 
       index = (event.key === ARROW_UP_KEY && index > 0) ? --index : index
