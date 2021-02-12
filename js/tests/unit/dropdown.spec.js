@@ -1719,7 +1719,9 @@ describe('Dropdown', () => {
       '  <div class="dropdown-menu">',
       '    <a class="dropdown-item disabled" href="#sub1">Submenu 1</a>',
       '    <button class="dropdown-item" type="button" disabled>Disabled button</button>',
-      '    <a id="item1" class="dropdown-item" href="#">Another link</a>'
+      '    <a id="item1" class="dropdown-item" href="#">Another link</a>',
+      '  </div>',
+      '</div>'
     ].join('')
 
     const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
@@ -1784,4 +1786,3 @@ describe('Dropdown', () => {
     triggerDropdown.click()
   })
 })
-
