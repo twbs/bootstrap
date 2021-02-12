@@ -1756,6 +1756,7 @@ describe('Dropdown', () => {
         handleArrowUp()
       }
     })
+
     triggerDropdown.dispatchEvent(keydown)
   })
 
@@ -1770,6 +1771,7 @@ describe('Dropdown', () => {
       '  </div>',
       '</div>'
     ].join('')
+
     const container = fixtureEl.querySelector('.container')
     const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
     const dropdown = new Dropdown(triggerDropdown)
