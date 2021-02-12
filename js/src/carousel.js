@@ -216,7 +216,6 @@ class Carousel extends BaseComponent {
   }
 
   dispose() {
-    super.dispose()
     EventHandler.off(this._element, EVENT_KEY)
 
     this._items = null
@@ -226,6 +225,8 @@ class Carousel extends BaseComponent {
     this._isSliding = null
     this._activeElement = null
     this._indicatorsElement = null
+
+    super.dispose()
   }
 
   // Private

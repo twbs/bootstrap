@@ -1,6 +1,5 @@
 import ScrollSpy from '../../src/scrollspy'
 import Manipulator from '../../src/dom/manipulator'
-import EventHandler from '../../src/dom/event-handler'
 
 /** Test helpers */
 import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
@@ -560,14 +559,18 @@ describe('ScrollSpy', () => {
 
   describe('dispose', () => {
     it('should dispose a scrollspy', () => {
-      spyOn(EventHandler, 'off')
       fixtureEl.innerHTML = '<div style="display: none;"></div>'
 
       const divEl = fixtureEl.querySelector('div')
+      spyOn(divEl, 'addEventListener').and.callThrough()
+      spyOn(divEl, 'removeEventListener').and.callThrough()
+
       const scrollSpy = new ScrollSpy(divEl)
+      expect(divEl.addEventListener).toHaveBeenCalledWith('scroll', jasmine.any(Function), jasmine.any(Boolean))
 
       scrollSpy.dispose()
-      expect(EventHandler.off).toHaveBeenCalledWith(divEl, '.bs.scrollspy')
+
+      expect(divEl.removeEventListener).toHaveBeenCalledWith('scroll', jasmine.any(Function), jasmine.any(Boolean))
     })
   })
 
