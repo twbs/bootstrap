@@ -1720,8 +1720,6 @@ describe('Dropdown', () => {
       '    <a class="dropdown-item disabled" href="#sub1">Submenu 1</a>',
       '    <button class="dropdown-item" type="button" disabled>Disabled button</button>',
       '    <a id="item1" class="dropdown-item" href="#">Another link</a>',
-      '  </div>',
-      '</div>'
     ].join('')
 
     const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
@@ -1756,7 +1754,34 @@ describe('Dropdown', () => {
         handleArrowUp()
       }
     })
-
     triggerDropdown.dispatchEvent(keydown)
   })
+
+    it('should bubble up the event from dropdown toggle to the parent elements', done => {
+      fixtureEl.innerHTML = [
+        '<div class="container">',
+        '  <div class="dropdown">',
+        '    <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+        '    <div class="dropdown-menu">',
+        '      <a class="dropdown-item" href="#subMenu">Sub menu</a>',
+        '    </div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+    const container = fixtureEl.querySelector('.container')
+    const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+    const dropdown = new Dropdown(triggerDropdown)
+
+    spyOn(dropdown, 'show').and.callThrough()
+
+    container.addEventListener('click', event => {
+      expect(triggerDropdown.classList.contains('show')).toEqual(true)
+      expect(dropdown.show).toHaveBeenCalled()
+      expect(event.target).toEqual(triggerDropdown)
+      done()
+    })
+
+    triggerDropdown.click()
+  })
 })
+
