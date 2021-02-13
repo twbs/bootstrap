@@ -12,7 +12,7 @@ import {
   getTransitionDurationFromElement,
   isVisible
 } from './util/index'
-import { reset as scrollBarReset, hide as scrollBarHide } from './util/scrollbar'
+import { hide as scrollBarHide, reset as scrollBarReset } from './util/scrollbar'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import BaseComponent from './base-component'
@@ -84,11 +84,8 @@ class OffCanvas extends BaseComponent {
     this._element.style.visibility = 'visible'
     document.body.classList.add(CLASS_NAME_TOGGLING)
 
-    if (this._bodyOptionsHas('backdrop')) {
-      document.body.classList.add(CLASS_NAME_BACKDROP_BODY)
-    }
-
     if (!this._bodyOptionsHas('scroll')) {
+      document.body.classList.add(CLASS_NAME_BACKDROP_BODY)
       scrollBarHide()
     }
 
@@ -122,10 +119,6 @@ class OffCanvas extends BaseComponent {
     this._element.blur()
     this._isShown = false
 
-    if (this._bodyOptionsHas('backdrop')) {
-      document.body.classList.remove(CLASS_NAME_BACKDROP_BODY)
-    }
-
     document.body.classList.add(CLASS_NAME_TOGGLING)
     this._element.classList.remove(CLASS_NAME_SHOW)
 
@@ -138,6 +131,7 @@ class OffCanvas extends BaseComponent {
 
       if (!this._bodyOptionsHas('scroll')) {
         scrollBarReset()
+        document.body.classList.remove(CLASS_NAME_BACKDROP_BODY)
       }
 
       EventHandler.trigger(this._element, EVENT_HIDDEN)
