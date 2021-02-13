@@ -137,7 +137,11 @@ class Carousel extends BaseComponent {
 
   next() {
     if (!this._isSliding) {
-      this._slide(DIRECTION_NEXT)
+      if (isRTL) {
+        this._slide(DIRECTION_PREV)
+      } else {
+        this._slide(DIRECTION_NEXT)
+      }
     }
   }
 
@@ -151,7 +155,11 @@ class Carousel extends BaseComponent {
 
   prev() {
     if (!this._isSliding) {
-      this._slide(DIRECTION_PREV)
+      if (isRTL) {
+        this._slide(DIRECTION_NEXT)
+      } else {
+        this._slide(DIRECTION_PREV)
+      }
     }
   }
 
