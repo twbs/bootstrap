@@ -315,7 +315,7 @@ direction: rtl
   </section>
 
   <section id="forms">
-    <h2 class="sticky-xl-top fw-bold pt-3 pt-xl-5 pb-2 pb-xl-3">الاستبانات</h2>
+    <h2 class="sticky-xl-top fw-bold pt-3 pt-xl-5 pb-2 pb-xl-3">النماذج</h2>
 
     <article class="my-3" id="overview">
       <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
@@ -327,12 +327,12 @@ direction: rtl
         {{< example show_markup="false" >}}
         <form>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">عنوان البريد الالكترونى</label>
+            <label for="exampleInputEmail1" class="form-label">البريد الإلكتروني</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">لن نشارك بريدك الإلكتروني مع أي شخص آخر.</div>
+            <div id="emailHelp" class="form-text">لن نقوم بمشاركة بريدك الإلكتروني مع أي شخص آخر.</div>
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">كلمه السر</label>
+            <label for="exampleInputPassword1" class="form-label">كلمة السر</label>
             <input type="password" class="form-control" id="exampleInputPassword1">
           </div>
           <div class="mb-3 form-check">
@@ -340,14 +340,14 @@ direction: rtl
             <label class="form-check-label" for="exampleCheck1">تفقدني</label>
           </div>
           <fieldset class="mb-3">
-            <legend>أزرار الراديو</legend>
+            <legend>أزرار الاختيار الأحادي</legend>
             <div class="form-check">
-              <input type="radio" name="radios" class="form-check-input" id="exampleRadio1">
-              <label class="form-check-label" for="exampleRadio1">الراديو الافتراضي</label>
+              <input type="radio" name="radios" class="form-check-input" id="exampleRadio1" checked>
+              <label class="form-check-label" for="exampleRadio1">الخيار الافتراضي</label>
             </div>
             <div class="mb-3 form-check">
               <input type="radio" name="radios" class="form-check-input" id="exampleRadio2">
-              <label class="form-check-label" for="exampleRadio2">راديو آخر</label>
+              <label class="form-check-label" for="exampleRadio2">خيار آخر</label>
             </div>
           </fieldset>
           <div class="mb-3">
@@ -356,10 +356,10 @@ direction: rtl
           </div>
           <div class="mb-3 form-check form-switch">
             <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-            <label class="form-check-label" for="flexSwitchCheckChecked">تم تحديد إدخال خانة الاختيار التبديل</label>
+            <label class="form-check-label" for="flexSwitchCheckChecked">زر على شكل مفتاح اختيار.</label>
           </div>
           <div class="mb-3">
-            <label for="customRange3" class="form-label">نطاق المثال</label>
+            <label for="customRange3" class="form-label">مثال على حقل اختيار نطاقي</label>
             <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
           </div>
           <button type="submit" class="btn btn-primary">إرسال</button>
@@ -369,7 +369,7 @@ direction: rtl
     </article>
     <article class="my-3" id="disabled-forms">
       <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
-        <h3>أشكال المعطلين</h3>
+        <h3>الحقول المعطلة</h3>
         <a class="d-flex align-items-center" hreflang="en" href="{{< docsref "/forms/overview" >}}#disabled-forms">توثيق</a>
       </div>
 
@@ -378,44 +378,44 @@ direction: rtl
         <form>
           <fieldset disabled aria-label="مثال على مجموعة الحقول المعطلة">
             <div class="mb-3">
-              <label for="disabledTextInput" class="form-label">إدخال معطل</label>
-              <input type="text" id="disabledTextInput" class="form-control" placeholder="إدخال معطل">
+              <label for="disabledTextInput" class="form-label">حقل إدخال معطل</label>
+              <input type="text" id="disabledTextInput" class="form-control" placeholder="حقل إدخال معطل">
             </div>
             <div class="mb-3">
-              <label for="disabledSelect" class="form-label">حدد القائمة معطل</label>
+              <label for="disabledSelect" class="form-label">قائمة اختيار معطلة</label>
               <select id="disabledSelect" class="form-select">
-                <option>حدد معطل</option>
+                <option>خيار معطل</option>
               </select>
             </div>
             <div class="mb-3">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" disabled>
                 <label class="form-check-label" for="disabledFieldsetCheck">
-                  لا يمكن التحقق من هذا
+                  زر اختيار معطل
                 </label>
               </div>
             </div>
             <fieldset class="mb-3">
-              <legend>أزرار اختيار المعوقين</legend>
+              <legend>أزرار اختيار أحادي معطلين</legend>
               <div class="form-check">
                 <input type="radio" name="radios" class="form-check-input" id="disabledRadio1" disabled>
-                <label class="form-check-label" for="disabledRadio1">راديو معطل</label>
+                <label class="form-check-label" for="disabledRadio1">خيار معطل</label>
               </div>
               <div class="mb-3 form-check">
                 <input type="radio" name="radios" class="form-check-input" id="disabledRadio2" disabled>
-                <label class="form-check-label" for="disabledRadio2">راديو آخر</label>
+                <label class="form-check-label" for="disabledRadio2">خيار آخر معطل</label>
               </div>
             </fieldset>
             <div class="mb-3">
-              <label class="form-label" for="disabledCustomFile">تحميل معطل</label>
+              <label class="form-label" for="disabledCustomFile">رفع معطل</label>
               <input type="file" class="form-control" id="disabledCustomFile" disabled>
             </div>
             <div class="mb-3 form-check form-switch">
               <input class="form-check-input" type="checkbox" id="disabledSwitchCheckChecked" checked disabled>
-              <label class="form-check-label" for="disabledSwitchCheckChecked">تم تعطيل إدخال خانة الاختيار التبديل</label>
+              <label class="form-check-label" for="disabledSwitchCheckChecked">زر معطل على شكل مفتاح اختيار.</label>
             </div>
             <div class="mb-3">
-              <label for="disabledRange" class="form-label">نطاق المعوقين</label>
+              <label for="disabledRange" class="form-label">حقل اختيار نطاقي معطل</label>
               <input type="range" class="form-range" min="0" max="5" step="0.5" id="disabledRange">
             </div>
             <button type="submit" class="btn btn-primary">إرسال</button>
@@ -433,11 +433,11 @@ direction: rtl
       <div>
         {{< example show_markup="false" >}}
         <div class="mb-3">
-          <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg مثال">
+          <input class="form-control form-control-lg" type="text" placeholder="حقل إدخال كبير" aria-label=".form-control-lg مثال">
         </div>
         <div class="mb-3">
           <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg مثال">
-            <option selected>افتح قائمة التحديد هذه</option>
+            <option selected>افتح قائمة الاختيار هذه</option>
             <option value="1">واحد</option>
             <option value="2">اثنان</option>
             <option value="3">ثلاثة</option>
@@ -450,11 +450,11 @@ direction: rtl
 
         {{< example show_markup="false" >}}
         <div class="mb-3">
-          <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm مثال">
+          <input class="form-control form-control-sm" type="text" placeholder="حقل إدخال صغير" aria-label=".form-control-sm مثال">
         </div>
         <div class="mb-3">
           <select class="form-select form-select-sm" aria-label=".form-select-sm مثال">
-            <option selected>افتح قائمة التحديد هذه</option>
+            <option selected>افتح قائمة الاختيار هذه</option>
             <option value="1">واحد</option>
             <option value="2">اثنان</option>
             <option value="3">ثلاثة</option>
