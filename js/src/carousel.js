@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta1): carousel.js
+ * Bootstrap (v5.0.0-beta2): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -216,7 +216,6 @@ class Carousel extends BaseComponent {
   }
 
   dispose() {
-    super.dispose()
     EventHandler.off(this._element, EVENT_KEY)
 
     this._items = null
@@ -226,6 +225,8 @@ class Carousel extends BaseComponent {
     this._isSliding = null
     this._activeElement = null
     this._indicatorsElement = null
+
+    super.dispose()
   }
 
   // Private

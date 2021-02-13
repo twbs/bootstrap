@@ -3,6 +3,7 @@ layout: docs
 title: Figures
 description: Documentation and examples for displaying related images and text with the figure component in Bootstrap.
 group: content
+toc: true
 ---
 
 Anytime you need to display a piece of content—like an image with an optional caption, consider using a `<figure>`.
@@ -24,3 +25,9 @@ Aligning the figure's caption is easy with our [text utilities]({{< docsref "/ut
   <figcaption class="figure-caption text-end">A caption for the above image.</figcaption>
 </figure>
 {{< /example >}}
+
+## Sass
+
+### Variables
+
+{{< scss-docs name="figure-variables" file="scss/_variables.scss" >}}

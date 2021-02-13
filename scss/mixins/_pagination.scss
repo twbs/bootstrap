@@ -1,5 +1,6 @@
 // Pagination
 
+// scss-docs-start pagination-mixin
 @mixin pagination-size($padding-y, $padding-x, $font-size, $border-radius) {
   .page-link {
     padding: $padding-y $padding-x;
@@ -27,3 +28,4 @@
     }
   }
 }
+// scss-docs-end pagination-mixin

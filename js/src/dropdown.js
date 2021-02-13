@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta1): dropdown.js
+ * Bootstrap (v5.0.0-beta2): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -232,7 +232,6 @@ class Dropdown extends BaseComponent {
   }
 
   dispose() {
-    super.dispose()
     EventHandler.off(this._element, EVENT_KEY)
     this._menu = null
 
@@ -240,6 +239,8 @@ class Dropdown extends BaseComponent {
       this._popper.destroy()
       this._popper = null
     }
+
+    super.dispose()
   }
 
   update() {

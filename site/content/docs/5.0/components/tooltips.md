@@ -96,6 +96,12 @@ With an SVG:
   </a>
 </div>
 
+## Sass
+
+### Variables
+
+{{< scss-docs name="tooltip-variables" file="scss/_variables.scss" >}}
+
 ## Usage
 
 The tooltip plugin generates content and markup on demand, and by default places tooltips after their trigger element.
