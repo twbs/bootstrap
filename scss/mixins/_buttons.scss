@@ -106,6 +106,7 @@
   );
 }
 
+// scss-docs-start btn-outline-variant-mixin
 @mixin button-outline-variant(
   $color,
   $color-hover: color-contrast($color),
@@ -174,6 +175,8 @@
 }
 
 // Button sizes
+
+// scss-docs-start btn-size-mixin
 @mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
   padding: $padding-y $padding-x;
   @include font-size($font-size);
