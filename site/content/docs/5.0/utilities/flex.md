@@ -627,3 +627,11 @@ Responsive variations also exist for `align-content`.
 {{- end -}}
 {{< /flex.inline >}}
 {{< /markdown >}}
+
+## Sass
+
+### Utilities API
+
+Flexbox utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
+
+{{< scss-docs name="utils-flex" file="scss/_utilities.scss" >}}
