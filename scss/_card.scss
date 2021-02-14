@@ -34,6 +34,12 @@
     }
   }
 
+  // If a background-color is set on the card element, allow the
+  // list-group-item to inherit the card background-color.
+  .list-group-item {
+    background-color: inherit;
+  }
+
   // Due to specificity of the above selector (`.card > .list-group`), we must
   // use a child selector here to prevent double borders.
   > .card-header + .list-group,
