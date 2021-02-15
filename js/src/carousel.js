@@ -387,7 +387,12 @@ class Carousel extends BaseComponent {
 
   _setActiveIndicatorElement(element) {
     if (this._indicatorsElement) {
-      const indicators = SelectorEngine.find(SELECTOR_ACTIVE, this._indicatorsElement)
+      const activeIndicator = SelectorEngine.findOne(SELECTOR_ACTIVE, this._indicatorsElement)
+
+      activeIndicator.classList.remove(CLASS_NAME_ACTIVE)
+      activeIndicator.removeAttribute('aria-current')
+
+      const indicators = SelectorEngine.find(SELECTOR_INDICATOR, this._indicatorsElement)
 
       for (let i = 0; i < indicators.length; i++) {
         if (Number.parseInt(indicators[i].getAttribute('data-bs-slide-to'), 10) === this._getItemIndex(element)) {
@@ -416,8 +421,8 @@ class Carousel extends BaseComponent {
     }
   }
 
-  _slide(direction, element) {
-    const order = this._directionToOrder(direction)
+  _slide(directionOrOrder, element) {
+    const order = this._directionToOrder(directionOrOrder)
     const activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
     const activeElementIndex = this._getItemIndex(activeElement)
     const nextElement = element || this._getItemByOrder(order, activeElement)
@@ -428,7 +433,7 @@ class Carousel extends BaseComponent {
     const isNext = order === ORDER_NEXT
     const directionalClassName = isNext ? CLASS_NAME_START : CLASS_NAME_END
     const orderClassName = isNext ? CLASS_NAME_NEXT : CLASS_NAME_PREV
-    const eventDirectionName = isNext ? DIRECTION_LEFT : DIRECTION_RIGHT
+    const eventDirectionName = this._orderToDirection(order)
 
     if (nextElement && nextElement.classList.contains(CLASS_NAME_ACTIVE)) {
       this._isSliding = false
@@ -506,15 +511,23 @@ class Carousel extends BaseComponent {
       return direction
     }
 
-    if (!this._isRtl()) {
-      return direction === DIRECTION_RIGHT ? ORDER_NEXT : ORDER_PREV
+    if (isRTL()) {
+      return direction === DIRECTION_RIGHT ? ORDER_PREV : ORDER_NEXT
     }
 
-    return direction === DIRECTION_RIGHT ? ORDER_PREV : ORDER_NEXT
+    return direction === DIRECTION_RIGHT ? ORDER_NEXT : ORDER_PREV
   }
 
-  _isRtl() {
-    return isRTL
+  _orderToDirection(order) {
+    if (![ORDER_NEXT, ORDER_PREV].includes(order)) {
+      return order
+    }
+
+    if (isRTL()) {
+      return order === ORDER_NEXT ? DIRECTION_LEFT : DIRECTION_RIGHT
+    }
+
+    return order === ORDER_NEXT ? DIRECTION_RIGHT : DIRECTION_LEFT
   }
 
   // Static
