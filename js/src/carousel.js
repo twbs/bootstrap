@@ -139,11 +139,6 @@ class Carousel extends BaseComponent {
   next() {
     if (!this._isSliding) {
       this._slide(DIRECTION_NEXT)
-      // if (this.isRTL) {
-      //   this._slide(DIRECTION_PREV)
-      // } else {
-      //   this._slide(DIRECTION_NEXT)
-      // }
     }
   }
 
@@ -158,11 +153,6 @@ class Carousel extends BaseComponent {
   prev() {
     if (!this._isSliding) {
       this._slide(DIRECTION_PREV)
-      // if (this.isRTL) {
-      //   this._slide(DIRECTION_NEXT)
-      // } else {
-      //   this._slide(DIRECTION_PREV)
-      // }
     }
   }
 
@@ -252,13 +242,13 @@ class Carousel extends BaseComponent {
   }
 
   _handleSwipe() {
-    const absDeltax = Math.abs(this.touchDeltaX)
+    const absDeltaX = Math.abs(this.touchDeltaX)
 
-    if (absDeltax <= SWIPE_THRESHOLD) {
+    if (absDeltaX <= SWIPE_THRESHOLD) {
       return
     }
 
-    const direction = absDeltax / this.touchDeltaX
+    const direction = absDeltaX / this.touchDeltaX
 
     this.touchDeltaX = 0
 
