@@ -56,10 +56,12 @@ const modal = new Modal(document.getElementById('myModal'))
 Bootstrap depends on Autoprefixer to automatically add browser prefixes to certain CSS properties. Prefixes are dictated by our `.browserslistrc` file, found in the root of the Bootstrap repo. Customizing this list of browsers and recompiling the Sass will automatically remove some CSS from your compiled CSS, if there are vendor prefixes unique to that browser or version.
 
 ## Unused CSS
-
-_Help wanted with this section, please consider opening a PR. Thanks!_
-
-While we don't have a prebuilt example for using [PurgeCSS](https://github.com/FullHuman/purgecss) with Bootstrap, there are some helpful articles and walkthroughs that the community has written. Here are some options:
+PurgeCSS is a tool to remove css which isn't featured in your HTML.
+Installation:
+```npm i -g purgecss```
+Purge css scans your HTML/JS files and balances it with your CSS-selectors, than outputs a minified file:
+``` purgecss --css /cssfile.css --content input.html --output output.css```
+This is just a very, very small example of [PurgeCSS](https://github.com/FullHuman/purgecss)'s abilities, if you want to use it more efficiently, there are some helpful articles and walkthroughs that the community has written. Here are some options:
 
 - <https://medium.com/dwarves-foundation/remove-unused-css-styles-from-bootstrap-using-purgecss-88395a2c5772>
 - <https://lukelowrey.com/automatically-removeunused-css-from-bootstrap-or-other-frameworks/>
