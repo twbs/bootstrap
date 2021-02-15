@@ -884,16 +884,21 @@ describe('Dropdown', () => {
       ].join('')
 
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      spyOn(btnDropdown, 'addEventListener').and.callThrough()
+      spyOn(btnDropdown, 'removeEventListener').and.callThrough()
+
       const dropdown = new Dropdown(btnDropdown)
 
       expect(dropdown._popper).toBeNull()
       expect(dropdown._menu).toBeDefined()
       expect(dropdown._element).toBeDefined()
+      expect(btnDropdown.addEventListener).toHaveBeenCalledWith('click', jasmine.any(Function), jasmine.any(Boolean))
 
       dropdown.dispose()
 
       expect(dropdown._menu).toBeNull()
       expect(dropdown._element).toBeNull()
+      expect(btnDropdown.removeEventListener).toHaveBeenCalledWith('click', jasmine.any(Function), jasmine.any(Boolean))
     })
 
     it('should dispose dropdown with Popper', () => {
