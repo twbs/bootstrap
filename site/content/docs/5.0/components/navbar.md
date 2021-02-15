@@ -74,7 +74,7 @@ Here's an example of all the sub-components included in a responsive light-theme
 </nav>
 {{< /example >}}
 
-This example uses [color]({{< docsref "/utilities/colors" >}}) (`bg-light`) and [spacing]({{< docsref "/utilities/spacing" >}}) (`my-2`, `my-lg-0`, `me-sm-0`, `my-sm-0`) utility classes.
+This example uses [background]({{< docsref "/utilities/background" >}}) (`bg-light`) and [spacing]({{< docsref "/utilities/spacing" >}}) (`my-2`, `my-lg-0`, `me-sm-0`, `my-sm-0`) utility classes.
 
 ### Brand
 
@@ -646,3 +646,17 @@ Sometimes you want to use the collapse plugin to trigger a container element for
 {{< /example >}}
 
 When you do this, we recommend including additional JavaScript to move the focus programmatically to the container when it is opened. Otherwise, keyboard users and users of assistive technologies will likely have a hard time finding the newly revealed content - particularly if the container that was opened comes *before* the toggler in the document's structure. We also recommend making sure that the toggler has the `aria-controls` attribute, pointing to the `id` of the content container. In theory, this allows assistive technology users to jump directly from the toggler to the container it controls–but support for this is currently quite patchy.
+
+## Sass
+
+### Variables
+
+{{< scss-docs name="navbar-variables" file="scss/_variables.scss" >}}
+
+{{< scss-docs name="navbar-theme-variables" file="scss/_variables.scss" >}}
+
+### Loop
+
+[Responsive navbar expand/collapse classes](#responsive-behaviors) (e.g., `.navbar-expand-lg`) are combined with the `$breakpoints` map and generated through a loop in `scss/_navbar.scss`.
+
+{{< scss-docs name="navbar-expand-loop" file="scss/_navbar.scss" >}}

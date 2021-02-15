@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta1): dropdown.js
+ * Bootstrap (v5.0.0-beta2): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -72,7 +72,7 @@ const PLACEMENT_RIGHT = isRTL ? 'left-start' : 'right-start'
 const PLACEMENT_LEFT = isRTL ? 'right-start' : 'left-start'
 
 const Default = {
-  offset: [0, 0],
+  offset: [0, 2],
   flip: true,
   boundary: 'clippingParents',
   reference: 'toggle',
@@ -86,7 +86,7 @@ const DefaultType = {
   boundary: '(string|element)',
   reference: '(string|element|object)',
   display: 'string',
-  popperConfig: '(null|object)'
+  popperConfig: '(null|object|function)'
 }
 
 /**
@@ -156,7 +156,9 @@ class Dropdown extends BaseComponent {
     }
 
     // Totally disable Popper for Dropdowns in Navbar
-    if (!this._inNavbar) {
+    if (this._inNavbar) {
+      Manipulator.setDataAttribute(this._menu, 'popper', 'none')
+    } else {
       if (typeof Popper === 'undefined') {
         throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)')
       }
@@ -176,7 +178,14 @@ class Dropdown extends BaseComponent {
         referenceElement = this._config.reference
       }
 
-      this._popper = Popper.createPopper(referenceElement, this._menu, this._getPopperConfig())
+      const popperConfig = this._getPopperConfig()
+      const isDisplayStatic = popperConfig.modifiers.find(modifier => modifier.name === 'applyStyles' && modifier.enabled === false)
+
+      this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
+
+      if (isDisplayStatic) {
+        Manipulator.setDataAttribute(this._menu, 'popper', 'static')
+      }
     }
 
     // If this is a touch-enabled device we add extra
@@ -194,7 +203,7 @@ class Dropdown extends BaseComponent {
 
     this._menu.classList.toggle(CLASS_NAME_SHOW)
     this._element.classList.toggle(CLASS_NAME_SHOW)
-    EventHandler.trigger(parent, EVENT_SHOWN, relatedTarget)
+    EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget)
   }
 
   hide() {
@@ -202,12 +211,11 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    const parent = Dropdown.getParentFromElement(this._element)
     const relatedTarget = {
       relatedTarget: this._element
     }
 
-    const hideEvent = EventHandler.trigger(parent, EVENT_HIDE, relatedTarget)
+    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE, relatedTarget)
 
     if (hideEvent.defaultPrevented) {
       return
@@ -219,11 +227,11 @@ class Dropdown extends BaseComponent {
 
     this._menu.classList.toggle(CLASS_NAME_SHOW)
     this._element.classList.toggle(CLASS_NAME_SHOW)
-    EventHandler.trigger(parent, EVENT_HIDDEN, relatedTarget)
+    Manipulator.removeDataAttribute(this._menu, 'popper')
+    EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
   }
 
   dispose() {
-    super.dispose()
     EventHandler.off(this._element, EVENT_KEY)
     this._menu = null
 
@@ -231,6 +239,8 @@ class Dropdown extends BaseComponent {
       this._popper.destroy()
       this._popper = null
     }
+
+    super.dispose()
   }
 
   update() {
@@ -313,19 +323,13 @@ class Dropdown extends BaseComponent {
   }
 
   _getPopperConfig() {
-    const popperConfig = {
+    const defaultBsPopperConfig = {
       placement: this._getPlacement(),
       modifiers: [{
         name: 'preventOverflow',
         options: {
           altBoundary: this._config.flip,
-          rootBoundary: this._config.boundary
-        }
-      },
-      {
-        name: 'flip',
-        options: {
-          fallbackPlacements: ['top', 'right', 'bottom', 'left']
+          boundary: this._config.boundary
         }
       },
       {
@@ -338,15 +342,15 @@ class Dropdown extends BaseComponent {
 
     // Disable Popper if we have a static display
     if (this._config.display === 'static') {
-      popperConfig.modifiers = [{
+      defaultBsPopperConfig.modifiers = [{
         name: 'applyStyles',
         enabled: false
       }]
     }
 
     return {
-      ...popperConfig,
-      ...this._config.popperConfig
+      ...defaultBsPopperConfig,
+      ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig)
     }
   }
 
@@ -383,7 +387,6 @@ class Dropdown extends BaseComponent {
     const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
 
     for (let i = 0, len = toggles.length; i < len; i++) {
-      const parent = Dropdown.getParentFromElement(toggles[i])
       const context = Data.getData(toggles[i], DATA_KEY)
       const relatedTarget = {
         relatedTarget: toggles[i]
@@ -409,7 +412,7 @@ class Dropdown extends BaseComponent {
         continue
       }
 
-      const hideEvent = EventHandler.trigger(parent, EVENT_HIDE, relatedTarget)
+      const hideEvent = EventHandler.trigger(toggles[i], EVENT_HIDE, relatedTarget)
       if (hideEvent.defaultPrevented) {
         continue
       }
@@ -429,7 +432,8 @@ class Dropdown extends BaseComponent {
 
       dropdownMenu.classList.remove(CLASS_NAME_SHOW)
       toggles[i].classList.remove(CLASS_NAME_SHOW)
-      EventHandler.trigger(parent, EVENT_HIDDEN, relatedTarget)
+      Manipulator.removeDataAttribute(dropdownMenu, 'popper')
+      EventHandler.trigger(toggles[i], EVENT_HIDDEN, relatedTarget)
     }
   }
 
@@ -467,6 +471,12 @@ class Dropdown extends BaseComponent {
       const button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
       button.focus()
       Dropdown.clearMenus()
+      return
+    }
+
+    if (!isActive && (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY)) {
+      const button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
+      button.click()
       return
     }
 

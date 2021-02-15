@@ -13,7 +13,7 @@
 {{- $strip_default := .Get "strip-default" | default "true" -}}
 
 {{- $start := printf "// scss-docs-start %s\n" $name -}}
-{{- $end := printf "\n// scss-docs-end %s" $name -}}
+{{- $end := printf "// scss-docs-end %s" $name -}}
 {{- $regex := printf "%s(.|\n)*%s" $start $end -}}
 
 {{- $css := readFile $file -}}

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta1): popover.js
+ * Bootstrap (v5.0.0-beta2): popover.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -25,6 +25,7 @@ const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 const Default = {
   ...Tooltip.Default,
   placement: 'right',
+  offset: [0, 8],
   trigger: 'click',
   content: '',
   template: '<div class="popover" role="tooltip">' +

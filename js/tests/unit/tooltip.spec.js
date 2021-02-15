@@ -156,6 +156,21 @@ describe('Tooltip', () => {
 
       expect(popperConfig.placement).toEqual('left')
     })
+
+    it('should allow to pass config to Popper with `popperConfig` as a function', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip">'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const getPopperConfig = jasmine.createSpy('getPopperConfig').and.returnValue({ placement: 'left' })
+      const tooltip = new Tooltip(tooltipEl, {
+        popperConfig: getPopperConfig
+      })
+
+      const popperConfig = tooltip._getPopperConfig('top')
+
+      expect(getPopperConfig).toHaveBeenCalled()
+      expect(popperConfig.placement).toEqual('left')
+    })
   })
 
   describe('enable', () => {
@@ -312,13 +327,26 @@ describe('Tooltip', () => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
 
       const tooltipEl = fixtureEl.querySelector('a')
+      const addEventSpy = spyOn(tooltipEl, 'addEventListener').and.callThrough()
+      const removeEventSpy = spyOn(tooltipEl, 'removeEventListener').and.callThrough()
+
       const tooltip = new Tooltip(tooltipEl)
 
       expect(Tooltip.getInstance(tooltipEl)).toEqual(tooltip)
 
+      const expectedArgs = [
+        ['mouseover', jasmine.any(Function), jasmine.any(Boolean)],
+        ['mouseout', jasmine.any(Function), jasmine.any(Boolean)],
+        ['focusin', jasmine.any(Function), jasmine.any(Boolean)],
+        ['focusout', jasmine.any(Function), jasmine.any(Boolean)]
+      ]
+
+      expect(addEventSpy.calls.allArgs()).toEqual(expectedArgs)
+
       tooltip.dispose()
 
       expect(Tooltip.getInstance(tooltipEl)).toEqual(null)
+      expect(removeEventSpy.calls.allArgs()).toEqual(expectedArgs)
     })
 
     it('should destroy a tooltip after it is shown and hidden', done => {

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta1): tooltip.js
+ * Bootstrap (v5.0.0-beta2): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -58,7 +58,7 @@ const DefaultType = {
   sanitize: 'boolean',
   sanitizeFn: '(null|function)',
   allowList: 'object',
-  popperConfig: '(null|object)'
+  popperConfig: '(null|object|function)'
 }
 
 const AttachmentMap = {
@@ -490,7 +490,7 @@ class Tooltip extends BaseComponent {
   }
 
   _getPopperConfig(attachment) {
-    const defaultBsConfig = {
+    const defaultBsPopperConfig = {
       placement: attachment,
       modifiers: [
         {
@@ -509,7 +509,7 @@ class Tooltip extends BaseComponent {
         {
           name: 'preventOverflow',
           options: {
-            rootBoundary: this.config.boundary
+            boundary: this.config.boundary
           }
         },
         {
@@ -533,8 +533,8 @@ class Tooltip extends BaseComponent {
     }
 
     return {
-      ...defaultBsConfig,
-      ...this.config.popperConfig
+      ...defaultBsPopperConfig,
+      ...(typeof this.config.popperConfig === 'function' ? this.config.popperConfig(defaultBsPopperConfig) : this.config.popperConfig)
     }
   }
 
