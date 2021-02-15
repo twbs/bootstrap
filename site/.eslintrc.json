@@ -33,6 +33,7 @@
       "never"
     ],
     "strict": "error",
+    "unicorn/no-array-for-each": "off",
     "unicorn/no-for-loop": "off",
     "unicorn/no-null": "off",
     "unicorn/prefer-dom-node-append": "off",

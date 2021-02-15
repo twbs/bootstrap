@@ -109,10 +109,11 @@
 // the default flexbox row orientation. Requires the use of `flex-wrap: wrap`
 // on the `.navbar` parent.
 .navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 1;
   // For always expanded or extra full navbars, ensure content aligns itself
   // properly vertically. Can be easily overridden with flex utilities.
   align-items: center;
-  width: 100%;
 }
 
 // Button for toggling the navbar when in its collapsed state
@@ -148,6 +149,12 @@
   background-size: 100%;
 }
 
+.navbar-nav-scroll {
+  max-height: var(--#{$variable-prefix}scroll-height, 75vh);
+  overflow-y: auto;
+}
+
+// scss-docs-start navbar-expand-loop
 // Generate series of `.navbar-expand-*` responsive classes for configuring
 // where your navbar collapses.
 .navbar-expand {
@@ -174,8 +181,13 @@
           }
         }
 
+        .navbar-nav-scroll {
+          overflow: visible;
+        }
+
         .navbar-collapse {
           display: flex !important; // stylelint-disable-line declaration-no-important
+          flex-basis: auto;
         }
 
         .navbar-toggler {
@@ -185,6 +197,7 @@
     }
   }
 }
+// scss-docs-end navbar-expand-loop
 
 
 // Navbar themes

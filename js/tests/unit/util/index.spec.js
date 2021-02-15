@@ -57,6 +57,28 @@ describe('Util', () => {
       expect(Util.getSelectorFromElement(testEl)).toEqual('.target')
     })
 
+    it('should return null if a selector from a href is a url without an anchor', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" data-bs-target="#" href="foo/bar.html"></a>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getSelectorFromElement(testEl)).toBeNull()
+    })
+
+    it('should return the anchor if a selector from a href is a url', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" data-bs-target="#" href="foo/bar.html#target"></a>',
+        '<div id="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getSelectorFromElement(testEl)).toEqual('#target')
+    })
+
     it('should return null if selector not found', () => {
       fixtureEl.innerHTML = '<a id="test" href=".target"></a>'
 
@@ -212,7 +234,7 @@ describe('Util', () => {
 
       expect(() => {
         Util.typeCheckConfig(namePlugin, config, defaultType)
-      }).toThrow(new Error('COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".'))
+      }).toThrowError(TypeError, 'COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".')
     })
 
     it('should return null stringified when null is passed', () => {

@@ -20,7 +20,11 @@ toc: true
 
 ### JavaScript
 
+- Restored `offset` option for Dropdown, Popover and Tooltip plugins.
 - The default value for the `fallbackPlacements` is changed to `['top', 'right', 'bottom', 'left']` for better placement of popper elements.
+- All the events for the dropdown are now triggered on the dropdown toggle button and then bubbled up to the parent element.
+- Dropdown menus now have a `data-bs-popper="static"` attribute set when the positioning of the dropdown is static and `data-bs-popper="none"` when dropdown is in the navbar. This is added by our JavaScript and helps us use custom position styles without interfering with Popper's positioning.
+- `popperConfig` can be passed as a function that accepts the Bootstrap's default Popper config as an argument, so that you can merge this default configuration in your way.
 
 ## v5.0.0-beta1
 
@@ -50,7 +54,9 @@ Horizontal direction sensitive variables, utilities and mixins are renamed with 
 - Renamed `.pl-*` and `.pr-*` to `.ps-*` and `.pe-*`.
 - Renamed `.text-left` and `.text-right` to `.text-start` and `.text-end`.
 
-Breakpoints specific variants are consequently renamed too (eg. `.text-md-start` replaces `.text-md-left`).
+Breakpoints specific variants are consequently renamed too (e.g. `.text-md-start` replaces `.text-md-left`).
+
+**Note**: if you used v4 to make RTL pages, ensure to reverse changes mentioned above: e.g. use `.*-start` were you used `.*-right`.
 
 ##### Mixins
 
@@ -127,6 +133,7 @@ Breakpoints specific variants are consequently renamed too (eg. `.text-md-start`
   - Renamed `.font-style-*` utilities as `.fst-*` for brevity and consistency.
 - Added `.d-grid` to display utilities
 - Added new `gap` utilities (`.gap`) for CSS Grid layouts
+- Removed `.rounded-sm` and `rounded-lg`, and introduced `.rounded-0` to `.rounded-3`. [See #31687](https://github.com/twbs/bootstrap/pull/31687).
 
 ## v5.0.0-alpha2
 
@@ -371,6 +378,7 @@ Changes to Reboot, typography, tables, and more.
 - Dropped support for `.form-control-plaintext` inside `.input-group`s.
 - Dropped `.input-group-append` and `.input-group-prepend`. You can now just add buttons and `.input-group-text` as direct children of the input groups.
 - Form labels now require the `.form-label` class. Sass variables are now available to style form labels to your needs. [See #30476](https://github.com/twbs/bootstrap/pull/30476)
+- `.form-text` no longer sets `display`, but does set `color` and `font-size`. So instead of `<small class="form-text text-muted">` you should now use `<div class="form-text">`.
 
 ### Components
 

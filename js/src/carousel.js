@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta1): carousel.js
+ * Bootstrap (v5.0.0-beta2): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -90,6 +90,7 @@ const SELECTOR_ITEM = '.carousel-item'
 const SELECTOR_ITEM_IMG = '.carousel-item img'
 const SELECTOR_NEXT_PREV = '.carousel-item-next, .carousel-item-prev'
 const SELECTOR_INDICATORS = '.carousel-indicators'
+const SELECTOR_INDICATOR = '[data-bs-target]'
 const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]'
 const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]'
 
@@ -215,7 +216,6 @@ class Carousel extends BaseComponent {
   }
 
   dispose() {
-    super.dispose()
     EventHandler.off(this._element, EVENT_KEY)
 
     this._items = null
@@ -225,6 +225,8 @@ class Carousel extends BaseComponent {
     this._isSliding = null
     this._activeElement = null
     this._indicatorsElement = null
+
+    super.dispose()
   }
 
   // Private
@@ -405,18 +407,19 @@ class Carousel extends BaseComponent {
 
   _setActiveIndicatorElement(element) {
     if (this._indicatorsElement) {
-      const indicators = SelectorEngine.find(SELECTOR_ACTIVE, this._indicatorsElement)
+      const activeIndicator = SelectorEngine.findOne(SELECTOR_ACTIVE, this._indicatorsElement)
+
+      activeIndicator.classList.remove(CLASS_NAME_ACTIVE)
+      activeIndicator.removeAttribute('aria-current')
+
+      const indicators = SelectorEngine.find(SELECTOR_INDICATOR, this._indicatorsElement)
 
       for (let i = 0; i < indicators.length; i++) {
-        indicators[i].classList.remove(CLASS_NAME_ACTIVE)
-      }
-
-      const nextIndicator = this._indicatorsElement.children[
-        this._getItemIndex(element)
-      ]
-
-      if (nextIndicator) {
-        nextIndicator.classList.add(CLASS_NAME_ACTIVE)
+        if (Number.parseInt(indicators[i].getAttribute('data-bs-slide-to'), 10) === this._getItemIndex(element)) {
+          indicators[i].classList.add(CLASS_NAME_ACTIVE)
+          indicators[i].setAttribute('aria-current', 'true')
+          break
+        }
       }
     }
   }

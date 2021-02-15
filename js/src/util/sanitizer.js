@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta1): util/sanitizer.js
+ * Bootstrap (v5.0.0-beta2): util/sanitizer.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -37,7 +37,7 @@ const allowedAttribute = (attr, allowedAttributeList) => {
 
   if (allowedAttributeList.includes(attrName)) {
     if (uriAttrs.has(attrName)) {
-      return Boolean(attr.nodeValue.match(SAFE_URL_PATTERN) || attr.nodeValue.match(DATA_URL_PATTERN))
+      return Boolean(SAFE_URL_PATTERN.test(attr.nodeValue) || DATA_URL_PATTERN.test(attr.nodeValue))
     }
 
     return true
@@ -47,7 +47,7 @@ const allowedAttribute = (attr, allowedAttributeList) => {
 
   // Check if a regular expression validates the attribute.
   for (let i = 0, len = regExp.length; i < len; i++) {
-    if (attrName.match(regExp[i])) {
+    if (regExp[i].test(attrName)) {
       return true
     }
   }

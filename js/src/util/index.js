@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta1): util/index.js
+ * Bootstrap (v5.0.0-beta2): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -36,7 +36,20 @@ const getSelector = element => {
   let selector = element.getAttribute('data-bs-target')
 
   if (!selector || selector === '#') {
-    const hrefAttr = element.getAttribute('href')
+    let hrefAttr = element.getAttribute('href')
+
+    // The only valid content that could double as a selector are IDs or classes,
+    // so everything starting with `#` or `.`. If a "real" URL is used as the selector,
+    // `document.querySelector` will rightfully complain it is invalid.
+    // See https://github.com/twbs/bootstrap/issues/32273
+    if (!hrefAttr || (!hrefAttr.includes('#') && !hrefAttr.startsWith('.'))) {
+      return null
+    }
+
+    // Just in case some CMS puts out a full URL with the anchor appended
+    if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
+      hrefAttr = '#' + hrefAttr.split('#')[1]
+    }
 
     selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null
   }
@@ -111,15 +124,14 @@ const typeCheckConfig = (componentName, config, configTypes) => {
   Object.keys(configTypes).forEach(property => {
     const expectedTypes = configTypes[property]
     const value = config[property]
-    const valueType = value && isElement(value) ?
-      'element' :
-      toType(value)
+    const valueType = value && isElement(value) ? 'element' : toType(value)
 
     if (!new RegExp(expectedTypes).test(valueType)) {
-      throw new Error(
+      throw new TypeError(
         `${componentName.toUpperCase()}: ` +
         `Option "${property}" provided type "${valueType}" ` +
-        `but expected type "${expectedTypes}".`)
+        `but expected type "${expectedTypes}".`
+      )
     }
   })
 }
