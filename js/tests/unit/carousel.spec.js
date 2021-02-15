@@ -45,6 +45,12 @@ describe('Carousel', () => {
     })
   })
 
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(Carousel.DATA_KEY).toEqual('bs.carousel')
+    })
+  })
+
   describe('constructor', () => {
     it('should go to next item if right arrow key is pressed', done => {
       fixtureEl.innerHTML = [

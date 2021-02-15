@@ -19,6 +19,12 @@ describe('Alert', () => {
     expect(typeof Alert.VERSION).toEqual('string')
   })
 
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(Alert.DATA_KEY).toEqual('bs.alert')
+    })
+  })
+
   describe('data-api', () => {
     it('should close an alert without instantiating it manually', () => {
       fixtureEl.innerHTML = [

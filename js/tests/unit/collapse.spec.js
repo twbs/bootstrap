@@ -27,6 +27,12 @@ describe('Collapse', () => {
     })
   })
 
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(Collapse.DATA_KEY).toEqual('bs.collapse')
+    })
+  })
+
   describe('constructor', () => {
     it('should allow jquery object in parent config', () => {
       fixtureEl.innerHTML = [
