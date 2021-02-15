@@ -68,7 +68,17 @@
   function _inheritsLoose(subClass, superClass) {
     subClass.prototype = Object.create(superClass.prototype);
     subClass.prototype.constructor = subClass;
-    subClass.__proto__ = superClass;
+
+    _setPrototypeOf(subClass, superClass);
+  }
+
+  function _setPrototypeOf(o, p) {
+    _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+      o.__proto__ = p;
+      return o;
+    };
+
+    return _setPrototypeOf(o, p);
   }
 
   /**
@@ -778,8 +788,8 @@
 
     _createClass(Alert, null, [{
       key: "DATA_KEY",
-      // Getters
-      get: function get() {
+      get: // Getters
+      function get() {
         return DATA_KEY;
       }
     }]);
@@ -854,8 +864,8 @@
 
     _createClass(Button, null, [{
       key: "DATA_KEY",
-      // Getters
-      get: function get() {
+      get: // Getters
+      function get() {
         return DATA_KEY$1;
       }
     }]);
@@ -4173,8 +4183,8 @@
 
     _createClass(Popover, null, [{
       key: "Default",
-      // Getters
-      get: function get() {
+      get: // Getters
+      function get() {
         return Default$5;
       }
     }, {
@@ -4674,8 +4684,8 @@
 
     _createClass(Tab, null, [{
       key: "DATA_KEY",
-      // Getters
-      get: function get() {
+      get: // Getters
+      function get() {
         return DATA_KEY$9;
       }
     }]);

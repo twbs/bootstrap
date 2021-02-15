@@ -1130,10 +1130,6 @@
   padding-left: 3rem !important;
 }
 
-.font-monospace {
-  font-family: var(--bs-font-monospace) !important;
-}
-
 .fs-1 {
   font-size: calc(1.375rem + 1.5vw) !important;
 }
@@ -1186,20 +1182,16 @@
   font-weight: bolder !important;
 }
 
-.lh-1 {
-  line-height: 1 !important;
+.text-lowercase {
+  text-transform: lowercase !important;
 }
 
-.lh-sm {
-  line-height: 1.25 !important;
+.text-uppercase {
+  text-transform: uppercase !important;
 }
 
-.lh-base {
-  line-height: 1.5 !important;
-}
-
-.lh-lg {
-  line-height: 2 !important;
+.text-capitalize {
+  text-transform: capitalize !important;
 }
 
 .text-start {
@@ -1214,45 +1206,6 @@
   text-align: center !important;
 }
 
-.text-decoration-none {
-  text-decoration: none !important;
-}
-
-.text-decoration-underline {
-  text-decoration: underline !important;
-}
-
-.text-decoration-line-through {
-  text-decoration: line-through !important;
-}
-
-.text-lowercase {
-  text-transform: lowercase !important;
-}
-
-.text-uppercase {
-  text-transform: uppercase !important;
-}
-
-.text-capitalize {
-  text-transform: capitalize !important;
-}
-
-.text-wrap {
-  white-space: normal !important;
-}
-
-.text-nowrap {
-  white-space: nowrap !important;
-}
-
-/* rtl:begin:remove */
-.text-break {
-  word-wrap: break-word !important;
-  word-break: break-word !important;
-}
-
-/* rtl:end:remove */
 .text-primary {
   color: #0d6efd !important;
 }
@@ -1309,6 +1262,22 @@
   color: inherit !important;
 }
 
+.lh-1 {
+  line-height: 1 !important;
+}
+
+.lh-sm {
+  line-height: 1.25 !important;
+}
+
+.lh-base {
+  line-height: 1.5 !important;
+}
+
+.lh-lg {
+  line-height: 2 !important;
+}
+
 .bg-primary {
   background-color: #0d6efd !important;
 }
@@ -1355,6 +1324,37 @@
 
 .bg-gradient {
   background-image: var(--bs-gradient) !important;
+}
+
+.text-wrap {
+  white-space: normal !important;
+}
+
+.text-nowrap {
+  white-space: nowrap !important;
+}
+
+.text-decoration-none {
+  text-decoration: none !important;
+}
+
+.text-decoration-underline {
+  text-decoration: underline !important;
+}
+
+.text-decoration-line-through {
+  text-decoration: line-through !important;
+}
+
+/* rtl:begin:remove */
+.text-break {
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+}
+
+/* rtl:end:remove */
+.font-monospace {
+  font-family: var(--bs-font-monospace) !important;
 }
 
 .user-select-all {
