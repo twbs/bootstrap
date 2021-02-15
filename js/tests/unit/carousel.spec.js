@@ -689,6 +689,76 @@ describe('Carousel', () => {
 
       carousel.next()
     })
+
+    it('RTL should fire slide event with: direction, relatedTarget, from and to', done => {
+      fixtureEl.innerHTML = [
+        '<div dir="rtl" id="myCarousel" class="carousel slide">',
+        '  <div class="carousel-inner">',
+        '    <div class="carousel-item active">item 1</div>',
+        '    <div id="secondItem" class="carousel-item">item 2</div>',
+        '    <div class="carousel-item">item 3</div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const carouselEl = fixtureEl.querySelector('#myCarousel')
+      const carousel = new Carousel(carouselEl, {})
+
+      const onSlide = e => {
+        expect(e.direction).toEqual('right')
+        expect(e.relatedTarget.classList.contains('carousel-item')).toEqual(true)
+        expect(e.from).toEqual(0)
+        expect(e.to).toEqual(1)
+
+        carouselEl.removeEventListener('slide.bs.carousel', onSlide)
+        carouselEl.addEventListener('slide.bs.carousel', onSlide2)
+
+        carousel.prev()
+      }
+
+      const onSlide2 = e => {
+        expect(e.direction).toEqual('left')
+        done()
+      }
+
+      carouselEl.addEventListener('slide.bs.carousel', onSlide)
+      carousel.next()
+    })
+
+    it('RTL should fire slid event with: direction, relatedTarget, from and to', done => {
+      fixtureEl.innerHTML = [
+        '<div dir="rtl" id="myCarousel" class="carousel slide">',
+        '  <div class="carousel-inner">',
+        '    <div class="carousel-item active">item 1</div>',
+        '    <div id="secondItem" class="carousel-item">item 2</div>',
+        '    <div class="carousel-item">item 3</div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const carouselEl = fixtureEl.querySelector('#myCarousel')
+      const carousel = new Carousel(carouselEl, {})
+
+      const onSlid = e => {
+        expect(e.direction).toEqual('right')
+        expect(e.relatedTarget.classList.contains('carousel-item')).toEqual(true)
+        expect(e.from).toEqual(0)
+        expect(e.to).toEqual(1)
+
+        carouselEl.removeEventListener('slid.bs.carousel', onSlid)
+        carouselEl.addEventListener('slid.bs.carousel', onSlid2)
+
+        carousel.prev()
+      }
+
+      const onSlid2 = e => {
+        expect(e.direction).toEqual('left')
+        done()
+      }
+
+      carouselEl.addEventListener('slid.bs.carousel', onSlid)
+      carousel.next()
+    })
   })
 
   describe('nextWhenVisible', () => {

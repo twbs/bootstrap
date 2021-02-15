@@ -120,6 +120,7 @@ class Carousel extends BaseComponent {
     this._touchSupported = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
     this._pointerEvent = Boolean(window.PointerEvent)
 
+    this.isRTL = this._element.dir === 'rtl' || isRTL
     this._addEventListeners()
   }
 
@@ -137,11 +138,12 @@ class Carousel extends BaseComponent {
 
   next() {
     if (!this._isSliding) {
-      if (isRTL) {
-        this._slide(DIRECTION_PREV)
-      } else {
-        this._slide(DIRECTION_NEXT)
-      }
+      this._slide(DIRECTION_NEXT)
+      // if (this.isRTL) {
+      //   this._slide(DIRECTION_PREV)
+      // } else {
+      //   this._slide(DIRECTION_NEXT)
+      // }
     }
   }
 
@@ -155,11 +157,12 @@ class Carousel extends BaseComponent {
 
   prev() {
     if (!this._isSliding) {
-      if (isRTL) {
-        this._slide(DIRECTION_NEXT)
-      } else {
-        this._slide(DIRECTION_PREV)
-      }
+      this._slide(DIRECTION_PREV)
+      // if (this.isRTL) {
+      //   this._slide(DIRECTION_NEXT)
+      // } else {
+      //   this._slide(DIRECTION_PREV)
+      // }
     }
   }
 
@@ -261,7 +264,7 @@ class Carousel extends BaseComponent {
 
     // swipe left
     if (direction > 0) {
-      if (isRTL) {
+      if (this.isRTL) {
         this.next()
       } else {
         this.prev()
@@ -270,7 +273,7 @@ class Carousel extends BaseComponent {
 
     // swipe right
     if (direction < 0) {
-      if (isRTL) {
+      if (this.isRTL) {
         this.prev()
       } else {
         this.next()
@@ -358,14 +361,14 @@ class Carousel extends BaseComponent {
 
     if (event.key === ARROW_LEFT_KEY) {
       event.preventDefault()
-      if (isRTL) {
+      if (this.isRTL) {
         this.next()
       } else {
         this.prev()
       }
     } else if (event.key === ARROW_RIGHT_KEY) {
       event.preventDefault()
-      if (isRTL) {
+      if (this.isRTL) {
         this.prev()
       } else {
         this.next()
@@ -457,9 +460,20 @@ class Carousel extends BaseComponent {
     const nextElementIndex = this._getItemIndex(nextElement)
     const isCycling = Boolean(this._interval)
 
-    const directionalClassName = direction === DIRECTION_NEXT ? CLASS_NAME_START : CLASS_NAME_END
-    const orderClassName = direction === DIRECTION_NEXT ? CLASS_NAME_NEXT : CLASS_NAME_PREV
-    const eventDirectionName = direction === DIRECTION_NEXT ? DIRECTION_LEFT : DIRECTION_RIGHT
+    // the logic behind the next three constants is a shorthand for:
+    // if (this.isRTL) return direction === DIRECTION_NEXT ? option 2 : option 1
+    // else return direction === DIRECTION_NEXT ? option 1 : option 2
+    // +-------+------------------------------+----------+
+    // | isRTL | direction === DIRECTION_NEXT |          |
+    // +-------+------------------------------+----------+
+    // | T     | T                            | Option 2 |
+    // | T     | F                            | Option 1 |
+    // | F     | T                            | Option 1 |
+    // | F     | F                            | Option 2 |
+    // +-------+------------------------------+----------+
+    const directionalClassName = this.isRTL === (direction === DIRECTION_NEXT) ? CLASS_NAME_END : CLASS_NAME_START
+    const orderClassName = this.isRTL === (direction === DIRECTION_NEXT) ? CLASS_NAME_PREV : CLASS_NAME_NEXT
+    const eventDirectionName = this.isRTL === (direction === DIRECTION_NEXT) ? DIRECTION_RIGHT : DIRECTION_LEFT
 
     if (nextElement && nextElement.classList.contains(CLASS_NAME_ACTIVE)) {
       this._isSliding = false
