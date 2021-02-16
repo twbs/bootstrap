@@ -22,10 +22,10 @@ Click the buttons below to show and hide an offcanvas element via class changes:
 You can use a link with the `href` attribute, or a button with the `data-bs-target` attribute. In both cases, the `data-bs-toggle="offcanvas"` is required.
 
 {{< example >}}
-<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-expanded="false" aria-controls="offcanvasExample">
+<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
   Link with href
 </a>
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-expanded="false" aria-controls="offcanvasExample">
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
   Button with data-bs-target
 </button>
 
@@ -50,7 +50,7 @@ You can use a link with the `href` attribute, or a button with the `data-bs-targ
     </div>
 
     <div class="dropdown mt-3">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
         Dropdown button
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -78,9 +78,8 @@ Change the placement of an offcanvas element with modifier classes:
 - `.offcanvas-bottom` places offcanvas on the bottom of the viewport
 
 {{< example >}}
-
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample2" aria-expanded="false" aria-controls="offcanvasExample2">Toggle right offcanvas</button>
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample3" aria-expanded="false" aria-controls="offcanvasExample3">Toggle bottom offcanvas</button>
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample2" aria-controls="offcanvasExample2">Toggle right offcanvas</button>
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample3" aria-controls="offcanvasExample3">Toggle bottom offcanvas</button>
 
 <div class="offcanvas offcanvas-right" tabindex="-1" id="offcanvasExample2" aria-labelledby="exampleOffCanvasLiveLabel0">
   <div class="offcanvas-header">
@@ -120,7 +119,7 @@ Change the placement of an offcanvas element with modifier classes:
 Easily style an offcanvas element with a different `background-color` or `color` with our [color utilities]({{< docsref "/utilities/colors" >}}).
 
 {{< example >}}
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasColored" aria-expanded="false" aria-controls="offcanvasColored">Colored offcanvas</button>
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasColored" aria-controls="offcanvasColored">Colored offcanvas</button>
 
 <div class="offcanvas offcanvas-left bg-dark text-white" tabindex="-1" id="offcanvasColored" aria-labelledby="exampleOffCanvasLiveLabel2">
   <div class="offcanvas-header">
@@ -153,7 +152,7 @@ By default, when an offcanvas is visible, the `<body>` of your page cannot be sc
 - `data-bs-body="scroll"` enables scrolling on the `<body>` when offcanvas is open
 
 {{< example >}}
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample4" aria-expanded="false" aria-controls="offcanvasExample4">Enable body scrolling </button>
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample4" aria-controls="offcanvasExample4">Enable body scrolling </button>
 
 <div class="offcanvas offcanvas-left" data-bs-body="scroll" tabindex="-1" id="offcanvasExample4" aria-labelledby="exampleOffCanvasLiveLabel3">
   <div class="offcanvas-header">
@@ -169,7 +168,7 @@ By default, when an offcanvas is visible, the `<body>` of your page cannot be sc
 
 ## Accessibility
 
-Be sure to add aria-labelledby="...", referencing the modal title, to .offcanvas. Note that you don’t need to add role="dialog" since we already add it via JavaScript.
+Be sure to add `aria-labelledby="..."`, referencing the modal title, to `.offcanvas`. Note that you don’t need to add `role="dialog"` since we already add it via JavaScript.
 
 ## Usage
 
@@ -191,12 +190,12 @@ Add `data-bs-toggle="offcanvas"` and a `data-bs-target` or `href` to the element
 
 Enable manually with:
 
-{{< highlight js >}}
+```js
 var offcanvasElementList = [].slice.call(document.querySelectorAll('.offcanvas'))
 var offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
   return new bootstrap.Offcanvas(offcanvasEl)
 })
-{{< /highlight >}}
+```
 
 ### Methods
 
@@ -208,10 +207,10 @@ Activates your content as an offcanvas element. Accepts an optional options `obj
 
 You can create an offcanvas instance with the constructor, for example:
 
-{{< highlight js >}}
+```js
 var myOffcanvas = document.getElementById('myOffcanvas')
 var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
-{{< /highlight >}}
+```
 
 | Method | Description |
 | --- | --- |
@@ -251,9 +250,9 @@ Bootstrap's offcanvas class exposes a few events for hooking into offcanvas func
   </tbody>
 </table>
 
-{{< highlight js >}}
+```js
 var myOffcanvas = document.getElementById('myOffcanvas')
 myOffcanvas.addEventListener('hidden.bs.offcanvas', function () {
   // do something...
 })
-{{< /highlight >}}
+```
