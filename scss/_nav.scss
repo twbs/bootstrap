@@ -28,6 +28,8 @@
   font-weight: var(--#{$prefix}nav-link-font-weight);
   color: var(--#{$prefix}nav-link-color);
   text-decoration: if($link-decoration == none, null, none);
+  background: none;
+  border: 0;
   @include transition($nav-link-transition);
 
   &:hover,
@@ -63,7 +65,6 @@
 
   .nav-link {
     margin-bottom: calc(-1 * var(--#{$prefix}nav-tabs-border-width)); // stylelint-disable-line function-disallowed-list
-    background: none;
     border: var(--#{$prefix}nav-tabs-border-width) solid transparent;
     @include border-top-radius(var(--#{$prefix}nav-tabs-border-radius));
 
@@ -110,8 +111,6 @@
   // scss-docs-end nav-pills-css-vars
 
   .nav-link {
-    background: none;
-    border: 0;
     @include border-radius(var(--#{$prefix}nav-pills-border-radius));
 
     &:disabled {
@@ -125,6 +124,24 @@
   .show > .nav-link {
     color: var(--#{$prefix}nav-pills-link-active-color);
     @include gradient-bg(var(--#{$prefix}nav-pills-link-active-bg));
+  }
+}
+
+
+//
+// Underline
+//
+
+.nav-underline {
+  .nav-link {
+    border-bottom: .125rem solid transparent;
+  }
+
+  .nav-link.active,
+  .show > .nav-link {
+    font-weight: $font-weight-bold;
+    color: $dark;
+    border-bottom-color: $dark;
   }
 }
 
