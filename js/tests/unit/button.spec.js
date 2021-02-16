@@ -24,6 +24,12 @@ describe('Button', () => {
     })
   })
 
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(Button.DATA_KEY).toEqual('bs.button')
+    })
+  })
+
   describe('data-api', () => {
     it('should toggle active class on click', () => {
       fixtureEl.innerHTML = [
