@@ -64,14 +64,12 @@ const SELECTOR_MENU = '.dropdown-menu'
 const SELECTOR_NAVBAR_NAV = '.navbar-nav'
 const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
 
-const IS_RTL = isRTL()
-
-const PLACEMENT_TOP = IS_RTL ? 'top-end' : 'top-start'
-const PLACEMENT_TOPEND = IS_RTL ? 'top-start' : 'top-end'
-const PLACEMENT_BOTTOM = IS_RTL ? 'bottom-end' : 'bottom-start'
-const PLACEMENT_BOTTOMEND = IS_RTL ? 'bottom-start' : 'bottom-end'
-const PLACEMENT_RIGHT = IS_RTL ? 'left-start' : 'right-start'
-const PLACEMENT_LEFT = IS_RTL ? 'right-start' : 'left-start'
+const PLACEMENT_TOP = isRTL() ? 'top-end' : 'top-start'
+const PLACEMENT_TOPEND = isRTL() ? 'top-start' : 'top-end'
+const PLACEMENT_BOTTOM = isRTL() ? 'bottom-end' : 'bottom-start'
+const PLACEMENT_BOTTOMEND = isRTL() ? 'bottom-start' : 'bottom-end'
+const PLACEMENT_RIGHT = isRTL() ? 'left-start' : 'right-start'
+const PLACEMENT_LEFT = isRTL() ? 'right-start' : 'left-start'
 
 const Default = {
   offset: [0, 2],

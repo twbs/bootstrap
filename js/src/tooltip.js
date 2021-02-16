@@ -40,7 +40,6 @@ const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'bs-tooltip'
 const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn'])
-const IS_RTL = isRTL()
 
 const DefaultType = {
   animation: 'boolean',
@@ -65,9 +64,9 @@ const DefaultType = {
 const AttachmentMap = {
   AUTO: 'auto',
   TOP: 'top',
-  RIGHT: IS_RTL ? 'left' : 'right',
+  RIGHT: isRTL() ? 'left' : 'right',
   BOTTOM: 'bottom',
-  LEFT: IS_RTL ? 'right' : 'left'
+  LEFT: isRTL() ? 'right' : 'left'
 }
 
 const Default = {
