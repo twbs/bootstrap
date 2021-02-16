@@ -7,11 +7,15 @@ aliases: "/migration/"
 toc: true
 ---
 
+## v5.0.0-beta3
+
+### Utilities
+
+- Dropped the `0` entry in `$border-widths` map to remove the duplicated `.border-0` class.
+
 ## v5.0.0-beta2
 
-### Sass
-
-#### Utilities
+### Utilities
 
 - Renamed `--aspect-ratio` to `--bs-aspect-ratio` to be consistent with other custom properties.
 - Extended the `.visually-hidden-focusable` helper to also work on containers, using `:focus-within`.
