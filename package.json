@@ -106,7 +106,7 @@
     "@popperjs/core": "^2.6.0",
     "@rollup/plugin-babel": "^5.2.3",
     "@rollup/plugin-commonjs": "^17.1.0",
-    "@rollup/plugin-node-resolve": "^11.1.1",
+    "@rollup/plugin-node-resolve": "^11.2.0",
     "@rollup/plugin-replace": "^2.3.4",
     "autoprefixer": "^10.2.4",
     "bundlewatch": "^0.3.2",
