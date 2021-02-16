@@ -3,6 +3,7 @@
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
+// scss-docs-start btn-variant-mixin
 @mixin button-variant(
   $background,
   $border,
@@ -16,12 +17,12 @@
   $disabled-background: $background,
   $disabled-border: $border,
   $disabled-color: color-contrast($disabled-background),
-  $btn-box-shadow: $btn-box-shadow
+  $box-shadow: $btn-box-shadow
 ) {
   color: $color;
   @include gradient-bg($background);
   border-color: $border;
-  @include box-shadow($btn-box-shadow);
+  @include box-shadow($box-shadow);
 
   &:hover {
     color: $hover-color;
@@ -35,7 +36,7 @@
     @include gradient-bg($hover-background);
     border-color: $hover-border;
     @if $enable-shadows {
-      @include box-shadow($btn-box-shadow, 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5));
+      @include box-shadow($box-shadow, 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5));
     } @else {
       // Avoid using mixin so we can pass custom focus shadow properly
       box-shadow: 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
@@ -72,39 +73,7 @@
     border-color: $disabled-border;
   }
 }
-
-// *** only used in dark-mode
-@mixin button-variant-alternative(
-  $background,
-  $border,
-  $color: color-contrast($background, $color-contrast-dark-alt, $color-contrast-light-alt, $min-contrast-ratio-alt),
-  $hover-background: if($color == $color-contrast-light-alt, shade-color($background, $btn-hover-bg-shade-amount-alt), tint-color($background, $btn-hover-bg-tint-amount-alt)),
-  $hover-border: if($color == $color-contrast-light-alt, shade-color($border, $btn-hover-border-shade-amount-alt), tint-color($border, $btn-hover-border-tint-amount-alt)),
-  $hover-color: color-contrast($hover-background, $color-contrast-dark-alt, $color-contrast-light-alt, $min-contrast-ratio-alt),
-  $active-background: if($color == $color-contrast-light-alt, shade-color($background, $btn-active-bg-shade-amount-alt), tint-color($background, $btn-active-bg-tint-amount-alt)),
-  $active-border: if($color == $color-contrast-light-alt, shade-color($border, $btn-active-border-shade-amount-alt), tint-color($border, $btn-active-border-tint-amount-alt)),
-  $active-color: color-contrast($active-background, $color-contrast-dark-alt, $color-contrast-light-alt, $min-contrast-ratio-alt),
-  $disabled-background: $background,
-  $disabled-border: $border,
-  $disabled-color: color-contrast($disabled-background, $color-contrast-dark-alt, $color-contrast-light-alt, $min-contrast-ratio-alt),
-  $btn-box-shadow: $btn-box-shadow-alt
-) {
-  @include button-variant(
-    $background,
-    $border,
-    $color,
-    $hover-background,
-    $hover-border,
-    $hover-color,
-    $active-background,
-    $active-border,
-    $active-color,
-    $disabled-background,
-    $disabled-border,
-    $disabled-color,
-    $btn-box-shadow
-  );
-}
+// scss-docs-end btn-variant-mixin
 
 // scss-docs-start btn-outline-variant-mixin
 @mixin button-outline-variant(
@@ -154,6 +123,51 @@
     background-color: transparent;
   }
 }
+// scss-docs-end btn-outline-variant-mixin
+
+// scss-docs-start btn-size-mixin
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
+  padding: $padding-y $padding-x;
+  @include font-size($font-size);
+  // Manually declare to provide an override to the browser default
+  @include border-radius($border-radius, 0);
+}
+// scss-docs-end btn-size-mixin
+
+// ----- Dark Mode -----
+
+// *** only used in dark-mode
+@mixin button-variant-alternative(
+  $background,
+  $border,
+  $color: color-contrast($background, $color-contrast-dark-alt, $color-contrast-light-alt, $min-contrast-ratio-alt),
+  $hover-background: if($color == $color-contrast-light-alt, shade-color($background, $btn-hover-bg-shade-amount-alt), tint-color($background, $btn-hover-bg-tint-amount-alt)),
+  $hover-border: if($color == $color-contrast-light-alt, shade-color($border, $btn-hover-border-shade-amount-alt), tint-color($border, $btn-hover-border-tint-amount-alt)),
+  $hover-color: color-contrast($hover-background, $color-contrast-dark-alt, $color-contrast-light-alt, $min-contrast-ratio-alt),
+  $active-background: if($color == $color-contrast-light-alt, shade-color($background, $btn-active-bg-shade-amount-alt), tint-color($background, $btn-active-bg-tint-amount-alt)),
+  $active-border: if($color == $color-contrast-light-alt, shade-color($border, $btn-active-border-shade-amount-alt), tint-color($border, $btn-active-border-tint-amount-alt)),
+  $active-color: color-contrast($active-background, $color-contrast-dark-alt, $color-contrast-light-alt, $min-contrast-ratio-alt),
+  $disabled-background: $background,
+  $disabled-border: $border,
+  $disabled-color: color-contrast($disabled-background, $color-contrast-dark-alt, $color-contrast-light-alt, $min-contrast-ratio-alt),
+  $box-shadow: $btn-box-shadow-alt
+) {
+  @include button-variant(
+    $background,
+    $border,
+    $color,
+    $hover-background,
+    $hover-border,
+    $hover-color,
+    $active-background,
+    $active-border,
+    $active-color,
+    $disabled-background,
+    $disabled-border,
+    $disabled-color,
+    $box-shadow
+  );
+}
 
 // *** only used in dark mode
 @mixin button-outline-variant-alternative(
@@ -172,14 +186,4 @@
     $active-color: color-contrast($active-background),
     $btn-active-box-shadow: $btn-active-box-shadow-alt
   );
-}
-
-// Button sizes
-
-// scss-docs-start btn-size-mixin
-@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
-  padding: $padding-y $padding-x;
-  @include font-size($font-size);
-  // Manually declare to provide an override to the browser default
-  @include border-radius($border-radius, 0);
 }
