@@ -7,17 +7,20 @@ aliases: "/migration/"
 toc: true
 ---
 
+## v5.0.0-beta3
+
+### Utilities
+
+- Dropped the `0` entry in `$border-widths` map to remove the duplicated `.border-0` class.
+
 ## v5.0.0-beta2
 
-### Sass
-
-#### Utilities
+### Utilities
 
 - Renamed `--aspect-ratio` to `--bs-aspect-ratio` to be consistent with other custom properties.
 - Extended the `.visually-hidden-focusable` helper to also work on containers, using `:focus-within`.
 - `bootstrap-utilities.css` now also includes our helpers. Helpers don't need to be imported in custom builds anymore.
 - Extended form validation states customization capabilities. Added three new optional parameters to the `form-validation-state` mixin: `tooltip-color`, `tooltip-bg-color`, `focus-box-shadow`. These parameters can be set in the `$form-validation-states` map. [See #31757](https://github.com/twbs/bootstrap/pull/31757).
-- Dropped the `0` entry in `$border-widths` map to remove duplicated class.
 
 ### JavaScript
 
