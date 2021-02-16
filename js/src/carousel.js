@@ -253,7 +253,7 @@ class Carousel extends BaseComponent {
 
     // swipe left
     if (direction > 0) {
-      if (isRTL) {
+      if (isRTL()) {
         this.next()
       } else {
         this.prev()
@@ -262,7 +262,7 @@ class Carousel extends BaseComponent {
 
     // swipe right
     if (direction < 0) {
-      if (isRTL) {
+      if (isRTL()) {
         this.prev()
       } else {
         this.next()
@@ -350,14 +350,14 @@ class Carousel extends BaseComponent {
 
     if (event.key === ARROW_LEFT_KEY) {
       event.preventDefault()
-      if (isRTL) {
+      if (isRTL()) {
         this.next()
       } else {
         this.prev()
       }
     } else if (event.key === ARROW_RIGHT_KEY) {
       event.preventDefault()
-      if (isRTL) {
+      if (isRTL()) {
         this.prev()
       } else {
         this.next()
