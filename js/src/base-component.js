@@ -6,7 +6,12 @@
  */
 
 import Data from './dom/data'
-import { executeAfterTransition, getElement } from './util/index'
+import {
+  executeAfterTransition,
+  getElement,
+  getWindow,
+  getDocument
+} from './util/index'
 import EventHandler from './dom/event-handler'
 import Config from './util/config'
 
@@ -30,6 +35,8 @@ class BaseComponent extends Config {
     }
 
     this._element = element
+    this._window = getWindow()
+    this._document = getDocument()
     this._config = this._getConfig(config)
 
     Data.set(this._element, this.constructor.DATA_KEY, this)

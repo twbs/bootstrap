@@ -12,7 +12,9 @@ import {
   isRTL,
   isVisible,
   reflow,
-  triggerTransitionEnd
+  triggerTransitionEnd,
+  getDocument,
+  getWindow
 } from './util/index'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
@@ -129,7 +131,7 @@ class Carousel extends BaseComponent {
     // FIXME TODO use `document.visibilityState`
     // Don't call next when the page isn't visible
     // or the carousel or its parent isn't visible
-    if (!document.hidden && isVisible(this._element)) {
+    if (!this._document.hidden && isVisible(this._element)) {
       this.next()
     }
   }
@@ -505,9 +507,9 @@ class Carousel extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler)
+EventHandler.on(getDocument(), EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler)
 
-EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+EventHandler.on(getWindow(), EVENT_LOAD_DATA_API, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
 
   for (const carousel of carousels) {
