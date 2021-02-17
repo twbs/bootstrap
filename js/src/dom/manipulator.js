@@ -5,6 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
+import { getWindow } from '../util/index'
+
 function normalizeData(val) {
   if (val === 'true') {
     return true
@@ -61,10 +63,11 @@ const Manipulator = {
 
   offset(element) {
     const rect = element.getBoundingClientRect()
+    const windowRef = getWindow()
 
     return {
-      top: rect.top + window.pageYOffset,
-      left: rect.left + window.pageXOffset
+      top: rect.top + windowRef.pageYOffset,
+      left: rect.left + windowRef.pageXOffset
     }
   },
 

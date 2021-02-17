@@ -7,7 +7,7 @@
 
 import SelectorEngine from '../dom/selector-engine'
 import Manipulator from '../dom/manipulator'
-import { isElement } from './index'
+import { isElement, getDocument } from './index'
 
 /**
  * Constants
@@ -22,7 +22,7 @@ const SELECTOR_STICKY_CONTENT = '.sticky-top'
 
 class ScrollBarHelper {
   constructor() {
-    this._element = document.body
+    this._element = getDocument().body
   }
 
   // Public

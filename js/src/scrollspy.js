@@ -9,7 +9,8 @@ import {
   defineJQueryPlugin,
   getElement,
   getSelectorFromElement,
-  typeCheckConfig
+  typeCheckConfig,
+  getWindow
 } from './util/index'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
@@ -63,7 +64,7 @@ const DefaultType = {
 class ScrollSpy extends BaseComponent {
   constructor(element, config) {
     super(element)
-    this._scrollElement = this._element.tagName === 'BODY' ? window : this._element
+    this._scrollElement = this._element.tagName === 'BODY' ? this._window : this._element
     this._config = this._getConfig(config)
     this._offsets = []
     this._targets = []
@@ -157,14 +158,14 @@ class ScrollSpy extends BaseComponent {
 
   _getScrollHeight() {
     return this._scrollElement.scrollHeight || Math.max(
-      document.body.scrollHeight,
-      document.documentElement.scrollHeight
+      this._document.body.scrollHeight,
+      this._document.documentElement.scrollHeight
     )
   }
 
   _getOffsetHeight() {
     return this._scrollElement === window ?
-      window.innerHeight :
+      this._window.innerHeight :
       this._scrollElement.getBoundingClientRect().height
   }
 
@@ -271,7 +272,7 @@ class ScrollSpy extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+EventHandler.on(getWindow(), EVENT_LOAD_DATA_API, () => {
   for (const spy of SelectorEngine.find(SELECTOR_DATA_SPY)) {
     new ScrollSpy(spy) // eslint-disable-line no-new
   }
