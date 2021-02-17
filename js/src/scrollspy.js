@@ -9,6 +9,7 @@ import {
   defineJQueryPlugin,
   getSelectorFromElement,
   getUID,
+  getWindow,
   isElement,
   typeCheckConfig
 } from './util/index'
@@ -68,7 +69,7 @@ const METHOD_POSITION = 'position'
 class ScrollSpy extends BaseComponent {
   constructor(element, config) {
     super(element)
-    this._scrollElement = this._element.tagName === 'BODY' ? window : this._element
+    this._scrollElement = this._element.tagName === 'BODY' ? this._window : this._element
     this._config = this._getConfig(config)
     this._selector = `${this._config.target} ${SELECTOR_NAV_LINKS}, ${this._config.target} ${SELECTOR_LIST_ITEMS}, ${this._config.target} .${CLASS_NAME_DROPDOWN_ITEM}`
     this._offsets = []
@@ -181,14 +182,14 @@ class ScrollSpy extends BaseComponent {
 
   _getScrollHeight() {
     return this._scrollElement.scrollHeight || Math.max(
-      document.body.scrollHeight,
-      document.documentElement.scrollHeight
+      this._document.body.scrollHeight,
+      this._document.documentElement.scrollHeight
     )
   }
 
   _getOffsetHeight() {
     return this._scrollElement === window ?
-      window.innerHeight :
+      this._window.innerHeight :
       this._scrollElement.getBoundingClientRect().height
   }
 
@@ -302,7 +303,7 @@ class ScrollSpy extends BaseComponent {
  * ------------------------------------------------------------------------
  */
 
-EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+EventHandler.on(getWindow(), EVENT_LOAD_DATA_API, () => {
   SelectorEngine.find(SELECTOR_DATA_SPY)
     .forEach(spy => new ScrollSpy(spy, Manipulator.getDataAttributes(spy)))
 })

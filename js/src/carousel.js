@@ -8,8 +8,10 @@
 import {
   defineJQueryPlugin,
   emulateTransitionEnd,
+  getDocument,
   getElementFromSelector,
   getTransitionDurationFromElement,
+  getWindow,
   isRTL,
   isVisible,
   reflow,
@@ -117,8 +119,8 @@ class Carousel extends BaseComponent {
 
     this._config = this._getConfig(config)
     this._indicatorsElement = SelectorEngine.findOne(SELECTOR_INDICATORS, this._element)
-    this._touchSupported = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
-    this._pointerEvent = Boolean(window.PointerEvent)
+    this._touchSupported = 'ontouchstart' in this._document.documentElement || this._window.navigator.maxTouchPoints > 0
+    this._pointerEvent = Boolean(this._window.PointerEvent)
 
     this._addEventListeners()
   }
@@ -144,7 +146,7 @@ class Carousel extends BaseComponent {
   nextWhenVisible() {
     // Don't call next when the page isn't visible
     // or the carousel or its parent isn't visible
-    if (!document.hidden && isVisible(this._element)) {
+    if (!this._document.hidden && isVisible(this._element)) {
       this.next()
     }
   }
@@ -183,7 +185,7 @@ class Carousel extends BaseComponent {
       this._updateInterval()
 
       this._interval = setInterval(
-        (document.visibilityState ? this.nextWhenVisible : this.next).bind(this),
+        (this._document.visibilityState ? this.nextWhenVisible : this.next).bind(this),
         this._config.interval
       )
     }
@@ -604,9 +606,9 @@ class Carousel extends BaseComponent {
  * ------------------------------------------------------------------------
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler)
+EventHandler.on(getDocument(), EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler)
 
-EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+EventHandler.on(getWindow(), EVENT_LOAD_DATA_API, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
 
   for (let i = 0, len = carousels.length; i < len; i++) {

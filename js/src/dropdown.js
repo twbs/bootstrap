@@ -9,6 +9,7 @@ import * as Popper from '@popperjs/core'
 
 import {
   defineJQueryPlugin,
+  getDocument,
   getElementFromSelector,
   isElement,
   isVisible,
@@ -190,9 +191,9 @@ class Dropdown extends BaseComponent {
     // empty mouseover listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
-    if ('ontouchstart' in document.documentElement &&
+    if ('ontouchstart' in this._document.documentElement &&
       !parent.closest(SELECTOR_NAVBAR_NAV)) {
-      [].concat(...document.body.children)
+      [].concat(...this._document.body.children)
         .forEach(elem => EventHandler.on(elem, 'mouseover', null, noop()))
     }
 
@@ -414,10 +415,12 @@ class Dropdown extends BaseComponent {
         continue
       }
 
+      const documentRef = getDocument()
+
       // If this is a touch-enabled device we remove the extra
       // empty mouseover listeners we added for iOS support
-      if ('ontouchstart' in document.documentElement) {
-        [].concat(...document.body.children)
+      if ('ontouchstart' in documentRef.documentElement) {
+        [].concat(...documentRef.body.children)
           .forEach(elem => EventHandler.off(elem, 'mouseover', null, noop()))
       }
 
@@ -513,16 +516,18 @@ class Dropdown extends BaseComponent {
  * ------------------------------------------------------------------------
  */
 
-EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE, Dropdown.dataApiKeydownHandler)
-EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataApiKeydownHandler)
-EventHandler.on(document, EVENT_CLICK_DATA_API, Dropdown.clearMenus)
-EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus)
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+const documentRef = getDocument()
+
+EventHandler.on(documentRef, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE, Dropdown.dataApiKeydownHandler)
+EventHandler.on(documentRef, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataApiKeydownHandler)
+EventHandler.on(documentRef, EVENT_CLICK_DATA_API, Dropdown.clearMenus)
+EventHandler.on(documentRef, EVENT_KEYUP_DATA_API, Dropdown.clearMenus)
+EventHandler.on(documentRef, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   event.preventDefault()
   event.stopPropagation()
   Dropdown.dropdownInterface(this, 'toggle')
 })
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stopPropagation())
+EventHandler.on(documentRef, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stopPropagation())
 
 /**
  * ------------------------------------------------------------------------

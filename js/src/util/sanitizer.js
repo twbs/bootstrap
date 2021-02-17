@@ -5,6 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
+import { getWindow } from './index'
+
 const uriAttrs = new Set([
   'background',
   'cite',
@@ -98,7 +100,8 @@ export function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
     return sanitizeFn(unsafeHtml)
   }
 
-  const domParser = new window.DOMParser()
+  const windowRef = getWindow()
+  const domParser = new windowRef.DOMParser()
   const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html')
   const allowlistKeys = Object.keys(allowList)
   const elements = [].concat(...createdDocument.body.querySelectorAll('*'))

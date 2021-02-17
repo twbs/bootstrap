@@ -8,6 +8,7 @@
 import {
   defineJQueryPlugin,
   emulateTransitionEnd,
+  getDocument,
   getElementFromSelector,
   getTransitionDurationFromElement,
   isDisabled,
@@ -201,7 +202,7 @@ class Tab extends BaseComponent {
  * ------------------------------------------------------------------------
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+EventHandler.on(getDocument(), EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   event.preventDefault()
 
   const data = Data.get(this, DATA_KEY) || new Tab(this)

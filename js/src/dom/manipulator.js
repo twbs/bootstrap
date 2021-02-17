@@ -5,6 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
+import { getDocument } from '../util/index'
+
 function normalizeData(val) {
   if (val === 'true') {
     return true
@@ -62,6 +64,7 @@ const Manipulator = {
 
   offset(element) {
     const rect = element.getBoundingClientRect()
+    const document = getDocument()
 
     return {
       top: rect.top + document.body.scrollTop,

@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { getjQuery } from '../util/index'
+import { getDocument, getjQuery } from '../util/index'
 
 /**
  * ------------------------------------------------------------------------
@@ -292,7 +292,7 @@ const EventHandler = {
     }
 
     if (isNative) {
-      evt = document.createEvent('HTMLEvents')
+      evt = getDocument().createEvent('HTMLEvents')
       evt.initEvent(typeEvent, bubbles, true)
     } else {
       evt = new CustomEvent(event, {

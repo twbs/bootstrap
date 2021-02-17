@@ -299,8 +299,8 @@ class Tooltip extends BaseComponent {
     // empty mouseover listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
-    if ('ontouchstart' in document.documentElement) {
-      [].concat(...document.body.children).forEach(element => {
+    if ('ontouchstart' in this._document.documentElement) {
+      [].concat(...this._document.body.children).forEach(element => {
         EventHandler.on(element, 'mouseover', noop())
       })
     }
@@ -359,8 +359,8 @@ class Tooltip extends BaseComponent {
 
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
-    if ('ontouchstart' in document.documentElement) {
-      [].concat(...document.body.children)
+    if ('ontouchstart' in this._document.documentElement) {
+      [].concat(...this._document.body.children)
         .forEach(element => EventHandler.off(element, 'mouseover', noop))
     }
 
@@ -397,7 +397,7 @@ class Tooltip extends BaseComponent {
       return this.tip
     }
 
-    const element = document.createElement('div')
+    const element = this._document.createElement('div')
     element.innerHTML = this.config.template
 
     this.tip = element.children[0]
@@ -551,7 +551,7 @@ class Tooltip extends BaseComponent {
 
   _getContainer() {
     if (this.config.container === false) {
-      return document.body
+      return this._document.body
     }
 
     if (isElement(this.config.container)) {

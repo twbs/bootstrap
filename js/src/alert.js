@@ -8,6 +8,7 @@
 import {
   defineJQueryPlugin,
   emulateTransitionEnd,
+  getDocument,
   getElementFromSelector,
   getTransitionDurationFromElement
 } from './util/index'
@@ -127,7 +128,7 @@ class Alert extends BaseComponent {
  * ------------------------------------------------------------------------
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DISMISS, Alert.handleDismiss(new Alert()))
+EventHandler.on(getDocument(), EVENT_CLICK_DATA_API, SELECTOR_DISMISS, Alert.handleDismiss(new Alert()))
 
 /**
  * ------------------------------------------------------------------------
