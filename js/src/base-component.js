@@ -8,7 +8,9 @@
 import Data from './dom/data'
 import {
   executeAfterTransition,
-  getElement
+  getElement,
+  getWindow,
+  getDocument
 } from './util/index'
 import EventHandler from './dom/event-handler'
 
@@ -31,6 +33,8 @@ class BaseComponent {
     }
 
     this._element = element
+    this._window = getWindow()
+    this._document = getDocument()
     Data.set(this._element, this.constructor.DATA_KEY, this)
   }
 

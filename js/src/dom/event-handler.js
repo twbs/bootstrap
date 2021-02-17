@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { getjQuery } from '../util/index'
+import { getjQuery, getDocument } from '../util/index'
 
 /**
  * Constants
@@ -302,7 +302,7 @@ const EventHandler = {
     }
 
     if (isNative) {
-      evt = document.createEvent('HTMLEvents')
+      evt = getDocument().createEvent('HTMLEvents')
       evt.initEvent(typeEvent, bubbles, true)
     } else {
       evt = new CustomEvent(event, { bubbles, cancelable: true })

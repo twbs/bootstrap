@@ -13,7 +13,9 @@ import {
   isVisible,
   reflow,
   triggerTransitionEnd,
-  typeCheckConfig
+  typeCheckConfig,
+  getDocument,
+  getWindow
 } from './util/index'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
@@ -127,7 +129,7 @@ class Carousel extends BaseComponent {
   nextWhenVisible() {
     // Don't call next when the page isn't visible
     // or the carousel or its parent isn't visible
-    if (!document.hidden && isVisible(this._element)) {
+    if (!this._document.hidden && isVisible(this._element)) {
       this.next()
     }
   }
@@ -164,7 +166,7 @@ class Carousel extends BaseComponent {
       this._updateInterval()
 
       this._interval = setInterval(
-        (document.visibilityState ? this.nextWhenVisible : this.next).bind(this),
+        (this._document.visibilityState ? this.nextWhenVisible : this.next).bind(this),
         this._config.interval
       )
     }
@@ -509,9 +511,9 @@ class Carousel extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler)
+EventHandler.on(getDocument(), EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler)
 
-EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+EventHandler.on(getWindow(), EVENT_LOAD_DATA_API, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
 
   for (const carousel of carousels) {

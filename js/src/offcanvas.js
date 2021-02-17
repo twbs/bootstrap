@@ -10,7 +10,9 @@ import {
   getElementFromSelector,
   isDisabled,
   isVisible,
-  typeCheckConfig
+  typeCheckConfig,
+  getDocument,
+  getWindow
 } from './util/index'
 import ScrollBarHelper from './util/scrollbar'
 import EventHandler from './dom/event-handler'
@@ -218,7 +220,7 @@ class Offcanvas extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+EventHandler.on(getDocument(), EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   const target = getElementFromSelector(this)
 
   if (['A', 'AREA'].includes(this.tagName)) {
@@ -246,7 +248,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   data.toggle(this)
 })
 
-EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+EventHandler.on(getWindow(), EVENT_LOAD_DATA_API, () => {
   for (const el of SelectorEngine.find(OPEN_SELECTOR)) {
     Offcanvas.getOrCreateInstance(el).show()
   }
