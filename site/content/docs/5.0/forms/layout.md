@@ -296,7 +296,7 @@ Use the `.col-auto` class to create horizontal layouts. By adding [gutter modifi
 
 {{< example >}}
 <form class="row row-cols-lg-auto g-3 align-items-center">
-  <div class="col-12">
+  <div class="col-auto">
     <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
     <div class="input-group">
       <div class="input-group-text">@</div>
@@ -304,7 +304,7 @@ Use the `.col-auto` class to create horizontal layouts. By adding [gutter modifi
     </div>
   </div>
 
-  <div class="col-12">
+  <div class="col-auto">
     <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
     <select class="form-select" id="inlineFormSelectPref">
       <option selected>Choose...</option>
@@ -314,7 +314,7 @@ Use the `.col-auto` class to create horizontal layouts. By adding [gutter modifi
     </select>
   </div>
 
-  <div class="col-12">
+  <div class="col-auto">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" id="inlineFormCheck">
       <label class="form-check-label" for="inlineFormCheck">
@@ -323,7 +323,7 @@ Use the `.col-auto` class to create horizontal layouts. By adding [gutter modifi
     </div>
   </div>
 
-  <div class="col-12">
+  <div class="col-auto">
     <button type="submit" class="btn btn-primary">Submit</button>
   </div>
 </form>
