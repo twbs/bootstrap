@@ -66,5 +66,15 @@ describe('Sanitizer', () => {
       expect(result).toEqual(template)
       expect(DOMParser.prototype.parseFromString).not.toHaveBeenCalled()
     })
+
+    it('should allow multiple sanitation passes of the same template', () => {
+      const template = '<img src="test.jpg">';
+    
+      const firstResult = sanitizeHtml(template, DefaultAllowlist, null);
+      const secondResult = sanitizeHtml(template, DefaultAllowlist, null);
+    
+      expect(firstResult).toContain('src');
+      expect(secondResult).toContain('src');
+    })
   })
 })
