@@ -5,6 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
+import { getWindow } from '../util/index'
+
 function normalizeData(value) {
   if (value === 'true') {
     return true

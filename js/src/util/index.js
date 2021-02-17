@@ -25,7 +25,7 @@ const toType = object => {
 const getUID = prefix => {
   do {
     prefix += Math.floor(Math.random() * MAX_UID)
-  } while (document.getElementById(prefix))
+  } while (getDocument().getElementById(prefix))
 
   return prefix
 }
@@ -59,7 +59,7 @@ const getSelectorFromElement = element => {
   const selector = getSelector(element)
 
   if (selector) {
-    return document.querySelector(selector) ? selector : null
+    return getDocument().querySelector(selector) ? selector : null
   }
 
   return null
@@ -68,7 +68,7 @@ const getSelectorFromElement = element => {
 const getElementFromSelector = element => {
   const selector = getSelector(element)
 
-  return selector ? document.querySelector(selector) : null
+  return selector ? getDocument().querySelector(selector) : null
 }
 
 const getTransitionDurationFromElement = element => {
@@ -77,7 +77,7 @@ const getTransitionDurationFromElement = element => {
   }
 
   // Get transition-duration of the element
-  let { transitionDuration, transitionDelay } = window.getComputedStyle(element)
+  let { transitionDuration, transitionDelay } = getWindow().getComputedStyle(element)
 
   const floatTransitionDuration = Number.parseFloat(transitionDuration)
   const floatTransitionDelay = Number.parseFloat(transitionDelay)
@@ -167,7 +167,7 @@ const isDisabled = element => {
 }
 
 const findShadowRoot = element => {
-  if (!document.documentElement.attachShadow) {
+  if (!getDocument().documentElement.attachShadow) {
     return null
   }
 
@@ -200,11 +200,12 @@ const noop = () => {}
  * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
  */
 const reflow = element => {
-  element.offsetHeight // eslint-disable-line no-unused-expressions
+  // eslint-disable-next-line no-unused-expressions
+  element.offsetHeight
 }
 
 const getjQuery = () => {
-  if (window.jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
+  if (getWindow().jQuery && !getDocument().body.hasAttribute('data-bs-no-jquery')) {
     return window.jQuery
   }
 
@@ -214,10 +215,11 @@ const getjQuery = () => {
 const DOMContentLoadedCallbacks = []
 
 const onDOMContentLoaded = callback => {
-  if (document.readyState === 'loading') {
+  const documentRef = getDocument()
+  if (documentRef.readyState === 'loading') {
     // add listener on the first call when the document is in loading state
     if (!DOMContentLoadedCallbacks.length) {
-      document.addEventListener('DOMContentLoaded', () => {
+      documentRef.addEventListener('DOMContentLoaded', () => {
         for (const callback of DOMContentLoadedCallbacks) {
           callback()
         }
@@ -230,7 +232,7 @@ const onDOMContentLoaded = callback => {
   }
 }
 
-const isRTL = () => document.documentElement.dir === 'rtl'
+const isRTL = () => getDocument().documentElement.dir === 'rtl'
 
 const defineJQueryPlugin = plugin => {
   onDOMContentLoaded(() => {
@@ -312,11 +314,26 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
   return list[Math.max(0, Math.min(index, listLength - 1))]
 }
 
+/**
+ * @return {window|{}} The proper element
+ */
+const getWindow = () => {
+  return typeof window !== 'undefined' ? window : {}
+}
+
+/**
+ * @return {document|{}} The proper element
+ */
+const getDocument = () => {
+  return typeof document !== 'undefined' ? document : {}
+}
+
 export {
   defineJQueryPlugin,
   execute,
   executeAfterTransition,
   findShadowRoot,
+  getDocument,
   getElement,
   getElementFromSelector,
   getjQuery,
@@ -324,6 +341,7 @@ export {
   getSelectorFromElement,
   getTransitionDurationFromElement,
   getUID,
+  getWindow,
   isDisabled,
   isElement,
   isRTL,
