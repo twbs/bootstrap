@@ -137,7 +137,7 @@ By default, we disable scrolling on the `<body>` when an offcanvas is visible. U
 
 ## Accessibility
 
-Be sure to add `aria-labelledby="..."`, referencing the offcanvas header, to `.offcanvas`. Note that you don’t need to add `role="dialog"` since we already add it via JavaScript.
+Be sure to add `aria-labelledby="..."`, referencing the offcanvas title, to `.offcanvas`. Note that you don’t need to add `role="dialog"` since we already add it via JavaScript.
 
 ## Sass
 
