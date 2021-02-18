@@ -8,8 +8,8 @@
   color: $offcanvas-color;
   visibility: hidden;
   background-color: $offcanvas-bg-color;
-  // By using an outline, the "border" is always on the correct side
-  outline: $offcanvas-border-width solid $offcanvas-border-color;
+  background-clip: padding-box;
+  outline: 0;
   @include transition(transform $offcanvas-transition-duration ease-in-out);
 }
 
@@ -33,6 +33,7 @@
   top: 0;
   left: 0;
   width: $offcanvas-horizontal-width;
+  border-right: $offcanvas-border-width solid $offcanvas-border-color;
   transform: translateX(-100%);
 }
 
@@ -40,6 +41,7 @@
   top: 0;
   right: 0;
   width: $offcanvas-horizontal-width;
+  border-left: $offcanvas-border-width solid $offcanvas-border-color;
   transform: translateX(100%);
 }
 
@@ -48,6 +50,7 @@
   left: 0;
   height: $offcanvas-vertical-height;
   max-height: 100%;
+  border-top: $offcanvas-border-width solid $offcanvas-border-color;
   transform: translateY(100%);
 }
 
