@@ -8,15 +8,42 @@ toc: true
 
 ## How it works
 
-The offcanvas JavaScript plugin shows and hides sidebar on the left, right, or bottom of your viewport. Buttons or anchors are used as triggers that are attached to specific elements you toggle.
+Offcanvas is a sidebar component that can be toggled via JavaScript to appear from the left, right, or bottom edge of the viewport. Buttons or anchors are used as triggers that are attached to specific elements you toggle, and `data` attributes are used to invoke our JavaScript.
 
-Given how CSS handles animations, you cannot use `margin` or `translate` on a `.offcanvas` element. Instead, use the class as an independent wrapping element.
+- Offcanvas shares some of the same JavaScript code as modals. Conceptually, they are quite similar, but they are separate plugins.
+- Similarly, [source Sass](#sass) variables for offcanvas's styles and dimensions are inherited from the modal's variables.
+- When shown, offcanvas includes a default backdrop that can be clicked to hide the offcanvas.
+- Similar to modals, only one offcanvas can be shown at a time.
 
-## Example
+**Heads up!** Given how CSS handles animations, you cannot use `margin` or `translate` on an `.offcanvas` element. Instead, use the class as an independent wrapping element.
 
-Click the buttons below to show and hide an offcanvas element via class changes:
+{{< callout info >}}
+{{< partial "callout-info-prefersreducedmotion.md" >}}
+{{< /callout >}}
 
-- `.offcanvas` hides content
+## Examples
+
+### Offcanvas components
+
+Below is a _static_ offcanvas example (meaning its `position`, `display`, `visibility`, and more have been overridden). Offcanvas includes support for a header with close button and an optional body class for some initial `padding`. We ask that you include offcanvas headers with dismiss actions whenever possible, or provide another explicit dismiss action.
+
+{{< example class="bd-example-offcanvas p-0 bg-light" >}}
+<div class="offcanvas offcanvas-left" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="modal-title" id="offcanvasLabel">Offcanvas</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    Content for the offcanvas goes here. You can place just about any Bootstrap component or custom elements here.
+  </div>
+</div>
+{{< /example >}}
+
+### Live demo
+
+Use the buttons below to show and hide an offcanvas element via JavaScript that toggles the `.show` class on an element with the `.offcanvas` class.
+
+- `.offcanvas` hides content (default)
 - `.offcanvas.show` shows content
 
 You can use a link with the `href` attribute, or a button with the `data-bs-target` attribute. In both cases, the `data-bs-toggle="offcanvas"` is required.
@@ -29,26 +56,15 @@ You can use a link with the `href` attribute, or a button with the `data-bs-targ
   Button with data-bs-target
 </button>
 
-<div class="offcanvas offcanvas-left" tabindex="-1" id="offcanvasExample" aria-labelledby="exampleOffCanvasLiveLabel">
+<div class="offcanvas offcanvas-left" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
-    <h5 class="modal-title" id="exampleOffCanvasLiveLabel">offcanvas</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
-    </button>
+    <h5 class="modal-title" id="offcanvasExampleLabel">Offcanvas</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    <div class="list-group ">
-      <a href="#" class="list-group-item list-group-item-action active">
-        A list item anchor inside the offcanvas element
-      </a>
-      <a href="#" class="list-group-item list-group-item-action">A list item</a>
-      <a href="#" class="list-group-item list-group-item-action">A second list item</a>
-      <a href="#" class="list-group-item list-group-item-action">A third list item</a>
-      <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">A disabled list item</a>
+    <div class="">
+      Some text as placeholder. In real life you can have the elements you have chossen. Like, text, images, lists, etc.
     </div>
-    <div class="mt-3 card card-body text-dark ">
-      Some text as placeholder. In real life you can have the elements you have chossen. Like, text, images, lists etc
-    </div>
-
     <div class="dropdown mt-3">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
         Dropdown button
@@ -59,106 +75,59 @@ You can use a link with the `href` attribute, or a button with the `data-bs-targ
         <li><a class="dropdown-item" href="#">Something else here</a></li>
       </ul>
     </div>
-    <div class="mt-3">
-      <p>Some random text as placeholder in place of another lorem ipsum. Possible procured her trifling laughter thoughts property she met way. Companions shy had solicitude favourable own. Which could saw guest man now heard but. Lasted my coming uneasy marked so should. Gravity letters it amongst herself dearest an windows by.</p>
-      <p>Folly words widow one downs few age every seven. If miss part by fact he park just shew. Discovered had get considered projection who favourable. Necessary up knowledge it tolerably. Unwilling departure education is be dashwoods or an. Use off agreeable law unwilling sir deficient curiosity instantly. Easy mind life fact with see has bore ten.</p>
-      <p>Another journey chamber way yet females man. Way extensive and dejection get delivered deficient sincerity gentleman age. Too end instrument possession contrasted motionless. Calling offence six joy feeling. Coming merits and was talent enough far. Sir joy northward sportsmen education.</p>
-      <p>Village did removed enjoyed explain nor ham saw calling talking. Securing as informed declared or margaret. Joy horrible moreover man feelings own shy. Request norland neither mistake for yet. Between the for morning assured country believe. On even feet time have an no at. Relation so in confined smallest children unpacked delicate. Why sir end believe uncivil respect.</p>
-      <p>In it except to so temper mutual tastes mother. Interested cultivated its continuing now yet are. Out interested acceptance our partiality affronting unpleasant why add. Esteem garden men yet shy course. Consulted up my tolerably sometimes perpetual oh. Expression acceptance imprudence particular had eat unsatiable.</p>
-    </div>
   </div>
 </div>
 {{< /example >}}
 
-## Position
+## Placement
 
-Change the placement of an offcanvas element with modifier classes:
+There's no default placement for offcanvas components, so you'll always have to declare one by adding one of the modifier classes below.
 
+- `.offcanvas-left` places offcanvas on the left of the viewport (shown above)
 - `.offcanvas-right` places offcanvas on the right of the viewport
 - `.offcanvas-bottom` places offcanvas on the bottom of the viewport
 
-{{< example >}}
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample2" aria-controls="offcanvasExample2">Toggle right offcanvas</button>
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample3" aria-controls="offcanvasExample3">Toggle bottom offcanvas</button>
+Try the right and bottom options out below.
 
-<div class="offcanvas offcanvas-right" tabindex="-1" id="offcanvasExample2" aria-labelledby="exampleOffCanvasLiveLabel0">
+{{< example >}}
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
+
+<div class="offcanvas offcanvas-right" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
   <div class="offcanvas-header">
-    <h5 id="exampleOffCanvasLiveLabel0">Offcanvas right</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
-    </button>
+    <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body small">
-    <p>Powering more than 18 million websites, Bootstrap is the go-to toolkit for many front-end developers. There are a few factors driving Bootstrap’s popularity. First and foremost, it’s open-source and therefore free to download and use. It’s also fully customizable, and compatible with all modern browsers. This is true of many CSS frameworks, however. </p>
-    <p>What sets Bootstrap apart from other development toolkits is that it was developed mobile-first. Meaning, the code was optimized for mobile devices (i.e. the smallest screen size) first and then scaled up to display on larger screens. As a result, building with Bootstrap CSS ensures that your site supports proper rendering and touch zooming for all devices.</p>
-    <p>Another reason Bootstrap is so popular is that it’s easy to use. It comes bundled with templates for typography, forms, buttons, drop-down menus, navigation, and other interface components. Using these pre-styled templates, you can add features that enrich the user experience  on your site without having to code them from scratch.</p>
-    <p>Building a responsive site is much easier using Bootstrap than doing so from scratch. Bootstrap comes with responsive styles, like containers and media queries, to ensure your site adjusts to the viewport. That means you don’t have to worry about whether your visitors are using desktops, tablets, or mobile devices.</p>
-    <p>You can build your site quickly with Bootstrap. Once you download the framework, you can get started with a basic template and then add the components you need. These components are fundamental HTML elements, like tables, forms, buttons, images, and icons, that are styled with a base class and extended with modifier classes. Using these pre-designed components significantly limits the amount of custom CSS you have to write.</p>
-    <p>If you have multiple collaborators working on a site, then consistency is important. You don’t want buttons on your homepage to look different from buttons on your landing page, or to use a different website typography  on your blog than anywhere else on your site — and so on. Using Bootstrap and its default settings, utility classes, and component elements can help ensure the front end of your site looks consistent.</p>
-    <p>Since Bootstrap comes with pre-styled content, components, and templates, Bootstrap sites tend to look the same out-of-the-box. In fact, Bootstrap has been blamed for why websites today all look the same. You can customize a Bootstrap site, but it’ll take time. Plus, if you have to override too much of the default styling, then it might make more sense to create your own stylesheet in the first place.</p>
-    <p>Bootstrap is considered an easy to use platform. It offers extensive documentation for every part of its framework, from its layout to content to components and more. That means virtually anyone can learn Bootstrap, but it also means it will take time to read through the documentation and learn the framework. If you are looking to build a website as quickly as possible, then Bootstrap might not be as ideal as other solutions, like website builders. </p>
-  </div>
-</div>
-<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasExample3" aria-labelledby="exampleOffCanvasLiveLabel1">
-  <div class="offcanvas-header">
-    <h5 class="modal-title" id="exampleOffCanvasLiveLabel1">Offcanvas bottom</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
-    </button>
-  </div>
-  <div class="offcanvas-body small">
-      <p>Some random text as placeholder in place of another lorem ipsum. Possible procured her trifling laughter thoughts property she met way. Companions shy had solicitude favourable own. Which could saw guest man now heard but. Lasted my coming uneasy marked so should. Gravity letters it amongst herself dearest an windows by.</p>
-      <p>Folly words widow one downs few age every seven. If miss part by fact he park just shew. Discovered had get considered projection who favourable. Necessary up knowledge it tolerably. Unwilling departure education is be dashwoods or an. Use off agreeable law unwilling sir deficient curiosity instantly. Easy mind life fact with see has bore ten.</p>
-      <p>Another journey chamber way yet females man. Way extensive and dejection get delivered deficient sincerity gentleman age. Too end instrument possession contrasted motionless. Calling offence six joy feeling. Coming merits and was talent enough far. Sir joy northward sportsmen education.</p>
-      <p>Village did removed enjoyed explain nor ham saw calling talking. Securing as informed declared or margaret. Joy horrible moreover man feelings own shy. Request norland neither mistake for yet. Between the for morning assured country believe. On even feet time have an no at. Relation so in confined smallest children unpacked delicate. Why sir end believe uncivil respect.</p>
-      <p>In it except to so temper mutual tastes mother. Interested cultivated its continuing now yet are. Out interested acceptance our partiality affronting unpleasant why add. Esteem garden men yet shy course. Consulted up my tolerably sometimes perpetual oh. Expression acceptance imprudence particular had eat unsatiable.</p>
+  <div class="offcanvas-body">
+    ...
   </div>
 </div>
 {{< /example >}}
 
-## Color schemes
-
-Easily style an offcanvas element with a different `background-color` or `color` with our [color utilities]({{< docsref "/utilities/colors" >}}).
-
 {{< example >}}
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasColored" aria-controls="offcanvasColored">Colored offcanvas</button>
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Toggle bottom offcanvas</button>
 
-<div class="offcanvas offcanvas-left bg-dark text-white" tabindex="-1" id="offcanvasColored" aria-labelledby="exampleOffCanvasLiveLabel2">
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
   <div class="offcanvas-header">
-    <h5 class="modal-title" id="exampleOffCanvasLiveLabel2">Colored offcanvas</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
-    </button>
+    <h5 class="modal-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body">
-    <p>
-      Bootstrap is an open source and intuitive CSS framework, which is used primarily for mobile first front-end website development.
-      It was discovered by Mark Otto and Jacob Thornton at Twitter, and it was formerly named as ‘Twitter Blueprint’.
-    </p>
-    <p>
-      CSS is principally used, but HTML templates are also a part of it.  Besides HTML and CSS templates,
-      it also depends closely on JavaScript components, mostly in the type of jQuery plugins.
-    </p>
-    <p>
-      Bootstrap also has widespread support and vast coding documentation with extensive online resources and assistance from the community of developers.
-      This, in turn, makes it easier to understand this framework better and how to employ it.
-    </p>
+  <div class="offcanvas-body small">
+    ...
   </div>
 </div>
-
 {{< /example >}}
 
 ## Options
 
-By default, when an offcanvas is visible, the `<body>` of your page cannot be scrolled. You can use the following data-options to change this behavior:
-
-- `data-bs-body="scroll"` enables scrolling on the `<body>` when offcanvas is open
+By default, we disable scrolling on the `<body>` when an offcanvas is visible. Use the `data-bs-body` attribute to enable `<body>` scrolling.
 
 {{< example >}}
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample4" aria-controls="offcanvasExample4">Enable body scrolling </button>
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable body scrolling</button>
 
-<div class="offcanvas offcanvas-left" data-bs-body="scroll" tabindex="-1" id="offcanvasExample4" aria-labelledby="exampleOffCanvasLiveLabel3">
+<div class="offcanvas offcanvas-left" data-bs-body="scroll" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
   <div class="offcanvas-header">
-    <h5 class="modal-title" id="exampleOffCanvasLiveLabel3">Colored with scrolling</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
-    </button>
+    <h5 class="modal-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
     <p>Try scrolling the rest of the page to see this option in action.</p>
@@ -169,6 +138,12 @@ By default, when an offcanvas is visible, the `<body>` of your page cannot be sc
 ## Accessibility
 
 Be sure to add `aria-labelledby="..."`, referencing the modal title, to `.offcanvas`. Note that you don’t need to add `role="dialog"` since we already add it via JavaScript.
+
+## Sass
+
+### Variables
+
+{{< scss-docs name="offcanvas-variables" file="scss/_variables.scss" >}}
 
 ## Usage
 
