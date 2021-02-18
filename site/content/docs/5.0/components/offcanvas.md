@@ -30,7 +30,7 @@ Below is a _static_ offcanvas example (meaning its `position`, `display`, `visib
 {{< example class="bd-example-offcanvas p-0 bg-light" >}}
 <div class="offcanvas offcanvas-left" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
   <div class="offcanvas-header">
-    <h5 class="modal-title" id="offcanvasLabel">Offcanvas</h5>
+    <h5 class="offcanvas-title" id="offcanvasLabel">Offcanvas</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
@@ -58,7 +58,7 @@ You can use a link with the `href` attribute, or a button with the `data-bs-targ
 
 <div class="offcanvas offcanvas-left" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
-    <h5 class="modal-title" id="offcanvasExampleLabel">Offcanvas</h5>
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
@@ -108,7 +108,7 @@ Try the right and bottom options out below.
 
 <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
   <div class="offcanvas-header">
-    <h5 class="modal-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body small">
@@ -126,7 +126,7 @@ By default, we disable scrolling on the `<body>` when an offcanvas is visible. U
 
 <div class="offcanvas offcanvas-left" data-bs-body="scroll" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
   <div class="offcanvas-header">
-    <h5 class="modal-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
@@ -137,7 +137,7 @@ By default, we disable scrolling on the `<body>` when an offcanvas is visible. U
 
 ## Accessibility
 
-Be sure to add `aria-labelledby="..."`, referencing the modal title, to `.offcanvas`. Note that you don’t need to add `role="dialog"` since we already add it via JavaScript.
+Be sure to add `aria-labelledby="..."`, referencing the offcanvas header, to `.offcanvas`. Note that you don’t need to add `role="dialog"` since we already add it via JavaScript.
 
 ## Sass
 

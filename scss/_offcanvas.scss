@@ -24,6 +24,11 @@
   }
 }
 
+.offcanvas-title {
+  margin-bottom: 0;
+  line-height: $offcanvas-title-line-height;
+}
+
 .offcanvas-body {
   padding: $offcanvas-padding-y $offcanvas-padding-x;
   overflow-y: auto;
