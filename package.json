@@ -52,7 +52,7 @@
     "docs": "npm-run-all docs-build docs-lint",
     "docs-build": "hugo --cleanDestinationDir",
     "docs-compile": "npm run docs-build",
-    "docs-linkinator": "linkinator _gh_pages --recurse --silent --skip \"^(?!http://localhost)\"",
+    "docs-linkinator": "linkinator _gh_pages --recurse --skip \"^(?!http://localhost)\" --verbosity error",
     "docs-vnu": "node build/vnu-jar.js",
     "docs-lint": "npm-run-all --parallel docs-vnu docs-linkinator",
     "docs-serve": "hugo server --port 9001 --disableFastRender",
