@@ -25,7 +25,7 @@ Offcanvas is a sidebar component that can be toggled via JavaScript to appear fr
 
 ### Offcanvas components
 
-Below is a _static_ offcanvas example (meaning its `position`, `display`, `visibility`, and more have been overridden). Offcanvas includes support for a header with close button and an optional body class for some initial `padding`. We ask that you include offcanvas headers with dismiss actions whenever possible, or provide another explicit dismiss action.
+Below is a _static_ offcanvas example (meaning its `position`, `display`, `visibility`, and more have been overridden). Offcanvas includes support for a header with a close button and an optional body class for some initial `padding`. We ask that you include offcanvas headers with dismiss actions whenever possible, or provide another explicit dismiss action.
 
 {{< example class="bd-example-offcanvas p-0 bg-light" >}}
 <div class="offcanvas offcanvas-left" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
@@ -63,7 +63,7 @@ You can use a link with the `href` attribute, or a button with the `data-bs-targ
   </div>
   <div class="offcanvas-body">
     <div class="">
-      Some text as placeholder. In real life you can have the elements you have chossen. Like, text, images, lists, etc.
+      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
     </div>
     <div class="dropdown mt-3">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
