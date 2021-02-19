@@ -58,7 +58,7 @@ class OffCanvas extends BaseComponent {
     super(element)
 
     this._isShown = element.classList.contains(CLASS_NAME_SHOW)
-    this._bodyOptions = element.getAttribute(DATA_BODY_ACTIONS)
+    this._bodyOptions = element.getAttribute(DATA_BODY_ACTIONS) || ''
     this._handleClosing()
   }
 
@@ -81,10 +81,12 @@ class OffCanvas extends BaseComponent {
 
     this._isShown = true
     this._element.style.visibility = 'visible'
-    document.body.classList.add(CLASS_NAME_TOGGLING)
+
+    if (this._bodyOptionsHas('backdrop') || !this._bodyOptions.length) {
+      document.body.classList.add(CLASS_NAME_BACKDROP_BODY)
+    }
 
     if (!this._bodyOptionsHas('scroll')) {
-      document.body.classList.add(CLASS_NAME_BACKDROP_BODY)
       scrollBarHide()
     }
 
@@ -123,9 +125,9 @@ class OffCanvas extends BaseComponent {
       this._element.removeAttribute('role')
       this._element.style.visibility = 'hidden'
 
+      document.body.classList.remove(CLASS_NAME_BACKDROP_BODY)
       if (!this._bodyOptionsHas('scroll')) {
         scrollBarReset()
-        document.body.classList.remove(CLASS_NAME_BACKDROP_BODY)
       }
 
       EventHandler.trigger(this._element, EVENT_HIDDEN)
@@ -147,7 +149,7 @@ class OffCanvas extends BaseComponent {
   }
 
   _bodyOptionsHas(option) {
-    return this._bodyOptions === option
+    return this._bodyOptions.split('|').includes(option)
   }
 
   _handleClosing() {
