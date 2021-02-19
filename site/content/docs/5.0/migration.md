@@ -11,12 +11,12 @@ toc: true
 
 ### JavaScript
 
-- All plugins can now accept a CSS selector as the first argument. You can either pass a DOM element or any valid CSS selector to create a new instance of the plugin.
+- All plugins can now accept a CSS selector as the first argument. You can either pass a DOM element or any valid CSS selector to create a new instance of the plugin:
 
-```js
-var modal = new bootstrap.Modal('#myModal')
-var dropdown = new bootstrap.Dropdown('[data-bs-toggle="dropdown"]')
-```
+  ```js
+  var modal = new bootstrap.Modal('#myModal')
+  var dropdown = new bootstrap.Dropdown('[data-bs-toggle="dropdown"]')
+  ```
 
 ## v5.0.0-beta2
 
