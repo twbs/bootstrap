@@ -34,6 +34,7 @@ const DATA_BODY_ACTIONS = 'data-bs-body'
 const CLASS_NAME_BACKDROP_BODY = 'offcanvas-backdrop'
 const CLASS_NAME_DISABLED = 'disabled'
 const CLASS_NAME_SHOW = 'show'
+const OPEN_SELECTOR = '.offcanvas.show'
 
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
@@ -206,6 +207,12 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
       this.focus()
     }
   })
+
+  // avoid conflict when clicking a toggler of an offcanvas, while another is open
+  const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
+  if (allReadyOpen && allReadyOpen !== target) {
+    return
+  }
 
   const data = Data.getData(target, DATA_KEY) || new OffCanvas(target)
   data.toggle(this)
