@@ -33,8 +33,6 @@ const DATA_BODY_ACTIONS = 'data-bs-body'
 
 const CLASS_NAME_BACKDROP_BODY = 'offcanvas-backdrop'
 const CLASS_NAME_DISABLED = 'disabled'
-const CLASS_NAME_OPEN = 'offcanvas-open'
-const CLASS_NAME_TOGGLING = 'offcanvas-toggling'
 const CLASS_NAME_SHOW = 'show'
 
 const EVENT_SHOW = `show${EVENT_KEY}`
@@ -95,8 +93,6 @@ class OffCanvas extends BaseComponent {
     this._element.classList.add(CLASS_NAME_SHOW)
 
     const completeCallBack = () => {
-      document.body.classList.add(CLASS_NAME_OPEN)
-      document.body.classList.remove(CLASS_NAME_TOGGLING)
       this._enforceFocusOnElement(this._element)
       EventHandler.trigger(this._element, EVENT_SHOWN, { relatedTarget })
     }
@@ -118,12 +114,9 @@ class OffCanvas extends BaseComponent {
     EventHandler.off(document, EVENT_FOCUSIN)
     this._element.blur()
     this._isShown = false
-
-    document.body.classList.add(CLASS_NAME_TOGGLING)
     this._element.classList.remove(CLASS_NAME_SHOW)
 
     const completeCallback = () => {
-      document.body.classList.remove(CLASS_NAME_TOGGLING)
       this._element.setAttribute('aria-hidden', true)
       this._element.removeAttribute('aria-modal')
       this._element.removeAttribute('role')
