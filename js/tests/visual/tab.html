@@ -19,16 +19,16 @@
 
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Home</a>
+          <button type="button" class="nav-link active" data-toggle="tab" data-target="#home" role="tab" aria-selected="true">Home</button>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a>
+          <button type="button" class="nav-link" data-toggle="tab" data-target="#profile" role="tab">Profile</button>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" data-toggle="tab" href="#fat" role="tab">@fat</a>
+          <button type="button" class="nav-link" data-toggle="tab" data-target="#fat" role="tab">@fat</button>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" data-toggle="tab" href="#mdo" role="tab">@mdo</a>
+          <button type="button" class="nav-link" data-toggle="tab" data-target="#mdo" role="tab">@mdo</button>
         </li>
       </ul>
 
@@ -55,16 +55,16 @@
 
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" data-toggle="tab" href="#home2" role="tab">Home</a>
+          <button type="button" class="nav-link active" data-toggle="tab" data-target="#home2" role="tab" aria-selected="true">Home</button>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" data-toggle="tab" href="#profile2" role="tab">Profile</a>
+          <button type="button" class="nav-link" data-toggle="tab" data-target="#profile2" role="tab">Profile</button>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" data-toggle="tab" href="#fat2" role="tab">@fat</a>
+          <button type="button" class="nav-link" data-toggle="tab" data-target="#fat2" role="tab">@fat</button>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" data-toggle="tab" href="#mdo2" role="tab">@mdo</a>
+          <button type="button" class="nav-link" data-toggle="tab" data-target="#mdo2" role="tab">@mdo</button>
         </li>
       </ul>
 
@@ -91,16 +91,16 @@
 
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link" data-toggle="tab" href="#home3" role="tab">Home</a>
+          <button type="button" class="nav-link" data-toggle="tab" data-target="#home3" role="tab">Home</button>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" data-toggle="tab" href="#profile3" role="tab">Profile</a>
+          <button type="button" class="nav-link" data-toggle="tab" data-target="#profile3" role="tab">Profile</button>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" data-toggle="tab" href="#fat3" role="tab">@fat</a>
+          <button type="button" class="nav-link" data-toggle="tab" data-target="#fat3" role="tab">@fat</button>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" data-toggle="tab" href="#mdo3" role="tab">@mdo</a>
+          <button type="button" class="nav-link" data-toggle="tab" data-target="#mdo3" role="tab">@mdo</button>
         </li>
       </ul>
 
@@ -159,26 +159,23 @@
         </div>
       </div>
 
-      <h4>Tabs with nav (with fade)</h4>
-      <nav class="nav nav-pills">
-        <a class="nav-link nav-item active" data-toggle="tab" href="#home5">Home</a>
-        <a class="nav-link nav-item" data-toggle="tab" href="#profile5">Profile</a>
-        <div class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown5">
-            <a class="dropdown-item" data-toggle="tab" href="#fat5">@fat</a>
-            <a class="dropdown-item" data-toggle="tab" href="#mdo5">@mdo</a>
-          </div>
+      <h4>Tabs with nav and using links (with fade)</h4>
+      <nav>
+        <div class="nav nav-pills" id="nav-tab" role="tablist">
+          <a class="nav-link nav-item active" role="tab" data-toggle="tab" href="#home5">Home</a>
+          <a class="nav-link nav-item" role="tab" data-toggle="tab" href="#profile5">Profile</a>
+          <a class="nav-link nav-item" role="tab" data-toggle="tab" href="#fat5">@fat</a>
+          <a class="nav-link nav-item" role="tab" data-toggle="tab" href="#mdo5">@mdo</a>
+          <a class="nav-link nav-item disabled" role="tab" href="#">Disabled</a>
         </div>
-        <a class="nav-link nav-item disabled" href="#">Disabled</a>
       </nav>
 
-      <div class="tab-content" role="tabpanel">
-        <div role="tabpanel" class="tab-pane fade show active" id="home5">
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="home5" role="tabpanel">
           <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
           <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
         </div>
-        <div role="tabpanel" class="tab-pane fade" id="profile5">
+        <div class="tab-pane fade" id="profile5" role="tabpanel">
           <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
           <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
         </div>
@@ -196,10 +193,10 @@
       <div class="row">
         <div class="col-4">
           <div class="list-group" id="list-tab" role="tablist">
-            <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="tab" href="#list-home" role="tab" aria-controls="list-home">Home</a>
-            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="tab" href="#list-profile" role="tab" aria-controls="list-profile">Profile</a>
-            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="tab" href="#list-messages" role="tab" aria-controls="list-messages">Messages</a>
-            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="tab" href="#list-settings" role="tab" aria-controls="list-settings">Settings</a>
+            <button type="button" class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="tab" data-target="#list-home" role="tab" aria-controls="list-home" aria-selected="true">Home</button>
+            <button type="button"  class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="tab" data-target="#list-profile" role="tab" aria-controls="list-profile">Profile</button>
+            <button type="button"  class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="tab" data-target="#list-messages" role="tab" aria-controls="list-messages">Messages</button>
+            <button type="button"  class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="tab" data-target="#list-settings" role="tab" aria-controls="list-settings">Settings</button>
           </div>
         </div>
         <div class="col-8">
