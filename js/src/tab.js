@@ -64,7 +64,8 @@ class Tab {
     if (this._element.parentNode &&
         this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
         $(this._element).hasClass(CLASS_NAME_ACTIVE) ||
-        $(this._element).hasClass(CLASS_NAME_DISABLED)) {
+        $(this._element).hasClass(CLASS_NAME_DISABLED) ||
+        this._element.hasAttribute('disabled')) {
       return
     }
 
