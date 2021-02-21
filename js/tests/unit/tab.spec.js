@@ -160,7 +160,7 @@ describe('Tab', () => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
         '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#home" class="nav-link active" role="tab" aria-selected="true">Home</button></li>',
-        '  <li class="nav-item" role="presentation"><button type="button" href="#profile" class="nav-link" role="tab">Profile</button></li>',
+        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#profile" class="nav-link" role="tab">Profile</button></li>',
         '</ul>',
         '<div class="tab-content">',
         '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
