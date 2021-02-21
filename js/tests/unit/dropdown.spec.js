@@ -1766,7 +1766,7 @@ describe('Dropdown', () => {
     triggerDropdown.dispatchEvent(keydown)
   })
 
-  it('should allow click events to bubble', () => {
+  it('should allow `data-bs-toggle="dropdown"` click events to bubble up', () => {
     fixtureEl.innerHTML = [
       '<div class="dropdown">',
       '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -1787,5 +1787,39 @@ describe('Dropdown', () => {
 
     expect(clickListener).toHaveBeenCalled()
     expect(delegatedClickListener).toHaveBeenCalled()
+  })
+
+  it('should open the dropdown when clicking the child element inside `data-bs-toggle="dropdown"`', done => {
+    fixtureEl.innerHTML = [
+      '<div class="container">',
+      '  <div class="dropdown">',
+      '    <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><span id="childElement">Dropdown</span></button>',
+      '    <div class="dropdown-menu">',
+      '      <a class="dropdown-item" href="#subMenu">Sub menu</a>',
+      '    </div>',
+      '  </div>',
+      '</div>'
+    ].join('')
+
+    const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+    const childElement = fixtureEl.querySelector('#childElement')
+
+    spyOn(Dropdown, 'clearMenus').and.callThrough()
+    spyOn(triggerDropdown.classList, 'remove')
+
+    triggerDropdown.addEventListener('shown.bs.dropdown', () => {
+      setTimeout(() => {
+        expect(Dropdown.clearMenus).toHaveBeenCalledTimes(1)
+        expect(triggerDropdown.classList.remove).not.toHaveBeenCalled()
+        expect(triggerDropdown.classList.contains('show')).toEqual(true)
+        done()
+      }, 20)
+    })
+
+    triggerDropdown.addEventListener('hidden.bs.dropdown', () => {
+      throw new Error('should not throw hidden.bs.dropdown event')
+    })
+
+    childElement.click()
   })
 })

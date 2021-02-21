@@ -405,7 +405,7 @@ class Dropdown extends BaseComponent {
       }
 
       if (event) {
-        if (context._element === event.target) {
+        if (context._element === SelectorEngine.parents(event.target, SELECTOR_DATA_TOGGLE)[0]) {
           continue
         }
 
