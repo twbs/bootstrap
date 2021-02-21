@@ -56,6 +56,12 @@ describe('Modal', () => {
     })
   })
 
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(Modal.DATA_KEY).toEqual('bs.modal')
+    })
+  })
+
   describe('toggle', () => {
     it('should toggle a modal', done => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
