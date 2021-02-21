@@ -10,29 +10,26 @@ describe('ScrollBar', () => {
 
   afterEach(() => {
     clearFixture()
-    document.body.style.overflowY = 'auto'
+    document.body.style.removeProperty('overflow')
+    document.body.removeAttribute('style')
   })
 
   describe('isBodyOverflowing', () => {
     it('should return true if body is overflowing', () => {
-      fixtureEl.innerHTML = [
-        '<div style="height: 110vh">' +
-        '<div style="width: 100%; height: 80px"></div>' +
-        '</div>'
-      ].join('')
       document.body.style.overflowY = 'scroll'
+      fixtureEl.innerHTML = [
+        '<div style="height: 110vh; width: 100%"></div>'
+      ].join('')
       const result = Scrollbar.isBodyOverflowing()
 
       expect(result).toEqual(true)
     })
 
     it('should return false if body is overflowing', () => {
-      fixtureEl.innerHTML = [
-        '<div style="height: 90vh">' +
-        '<div style="width: 100%; height: 80px"></div>' +
-        '</div>'
-      ].join('')
       document.body.style.overflowY = 'hidden'
+      fixtureEl.innerHTML = [
+        '<div style="height: 110vh; width: 100%"></div>'
+      ].join('')
 
       const result = Scrollbar.isBodyOverflowing()
 
@@ -41,25 +38,21 @@ describe('ScrollBar', () => {
   })
 
   describe('getWidth', () => {
-    it('should return an integer if body is overflowing', () => {
-      fixtureEl.innerHTML = [
-        '<div style="height: 110vh">' +
-        '<div style="width: 100%; height: 80px"></div>' +
-        '</div>'
-      ].join('')
+    it('should return an integer greater than zero, if body is overflowing', () => {
       document.body.style.overflowY = 'scroll'
+      fixtureEl.innerHTML = [
+        '<div style="height: 110vh; width: 100%"></div>'
+      ].join('')
       const result = Scrollbar.getWidth()
 
       expect(result).toBeGreaterThan(1)
     })
 
-    it('should return 0 if body is overflowing', () => {
-      fixtureEl.innerHTML = [
-        '<div style="height: 90vh">' +
-        '<div style="width: 100%; height: 80px"></div>' +
-        '</div>'
-      ].join('')
+    it('should return 0 if body is hot overflowing', () => {
       document.body.style.overflowY = 'hidden'
+      fixtureEl.innerHTML = [
+        '<div style="height: 110vh; width: 100%"></div>'
+      ].join('')
 
       const result = Scrollbar.getWidth()
 
@@ -70,7 +63,7 @@ describe('ScrollBar', () => {
   describe('hide - reset', () => {
     it('should adjust the inline padding of fixed elements', done => {
       fixtureEl.innerHTML = [
-        '<div style="height: 110vh">' +
+        '<div style="height: 110vh; width: 100%">' +
         '<div class="fixed-top" style="padding-right: 0px"></div>',
         '</div>'
       ].join('')

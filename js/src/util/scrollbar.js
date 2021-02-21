@@ -13,7 +13,9 @@ const SELECTOR_STICKY_CONTENT = '.sticky-top'
 
 const getWidth = () => {
   // https://muffinman.io/blog/get-scrollbar-width-in-javascript/
-  return Math.abs(window.innerWidth - document.documentElement.clientWidth)
+  const documentWidth = document.documentElement.clientWidth
+  // const documentWidth = document.body.getBoundingClientRect().width
+  return Math.abs(window.innerWidth - documentWidth)
 }
 
 const hide = (width = getWidth()) => {
@@ -53,9 +55,7 @@ const _resetElementAttributes = (selector, styleProp) => {
 }
 
 const isBodyOverflowing = () => {
-  // maybe getWidth > 0
-  const rect = document.body.getBoundingClientRect()
-  return Math.round(rect.left + rect.right) < window.innerWidth
+  return getWidth() > 0
 }
 
 export {
