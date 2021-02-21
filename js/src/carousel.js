@@ -77,6 +77,7 @@ const SELECTOR_ITEM = '.carousel-item'
 const SELECTOR_ITEM_IMG = '.carousel-item img'
 const SELECTOR_NEXT_PREV = '.carousel-item-next, .carousel-item-prev'
 const SELECTOR_INDICATORS = '.carousel-indicators'
+const SELECTOR_INDICATOR = '[data-target]'
 const SELECTOR_DATA_SLIDE = '[data-slide], [data-slide-to]'
 const SELECTOR_DATA_RIDE = '[data-ride="carousel"]'
 
@@ -388,15 +389,18 @@ class Carousel {
 
   _setActiveIndicatorElement(element) {
     if (this._indicatorsElement) {
-      const indicators = [].slice.call(this._indicatorsElement.querySelectorAll(SELECTOR_ACTIVE))
-      $(indicators).removeClass(CLASS_NAME_ACTIVE)
+      const activeIndicator = this._indicatorsElement.querySelector(SELECTOR_ACTIVE)
+      $(activeIndicator).removeClass(CLASS_NAME_ACTIVE)
+      $(activeIndicator).removeAttr('aria-current')
 
-      const nextIndicator = this._indicatorsElement.children[
-        this._getItemIndex(element)
-      ]
+      const indicators = this._indicatorsElement.querySelectorAll(SELECTOR_INDICATOR)
 
-      if (nextIndicator) {
-        $(nextIndicator).addClass(CLASS_NAME_ACTIVE)
+      for (let i = 0; i < indicators.length; i++) {
+        if (parseInt(indicators[i].getAttribute('data-slide-to'), 10) === this._getItemIndex(element)) {
+          $(indicators[i]).addClass(CLASS_NAME_ACTIVE)
+          $(indicators[i]).attr('aria-current', 'true')
+          break
+        }
       }
     }
   }
