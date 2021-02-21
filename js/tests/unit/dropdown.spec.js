@@ -74,15 +74,8 @@ describe('Dropdown', () => {
       const clickListener = jasmine.createSpy('clickListener')
       const delegatedClickListener = jasmine.createSpy('delegatedClickListener')
 
-      btnDropdown.addEventListener('click', () => clickListener())
-
-      document.addEventListener('click', event => {
-        if (!event.target.matches('[data-bs-toggle="dropdown"]')) {
-          return
-        }
-
-        delegatedClickListener()
-      }, false)
+      btnDropdown.addEventListener('click', clickListener)
+      document.addEventListener('click', delegatedClickListener)
 
       btnDropdown.click()
 
