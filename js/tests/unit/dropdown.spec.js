@@ -60,29 +60,6 @@ describe('Dropdown', () => {
       expect(dropdown.toggle).toHaveBeenCalled()
     })
 
-    it('should allow click events to bubble', () => {
-      fixtureEl.innerHTML = [
-        '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
-        '  <div class="dropdown-menu">',
-        '    <a class="dropdown-item" href="#">Secondary link</a>',
-        '  </div>',
-        '</div>'
-      ].join('')
-
-      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
-      const clickListener = jasmine.createSpy('clickListener')
-      const delegatedClickListener = jasmine.createSpy('delegatedClickListener')
-
-      btnDropdown.addEventListener('click', clickListener)
-      document.addEventListener('click', delegatedClickListener)
-
-      btnDropdown.click()
-
-      expect(clickListener).toHaveBeenCalled()
-      expect(delegatedClickListener).toHaveBeenCalled()
-    })
-
     it('should create offset modifier correctly when offset option is a function', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
@@ -1787,5 +1764,28 @@ describe('Dropdown', () => {
     })
 
     triggerDropdown.dispatchEvent(keydown)
+  })
+
+  it('should allow click events to bubble', () => {
+    fixtureEl.innerHTML = [
+      '<div class="dropdown">',
+      '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+      '  <div class="dropdown-menu">',
+      '    <a class="dropdown-item" href="#">Secondary link</a>',
+      '  </div>',
+      '</div>'
+    ].join('')
+
+    const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+    const clickListener = jasmine.createSpy('clickListener')
+    const delegatedClickListener = jasmine.createSpy('delegatedClickListener')
+
+    btnDropdown.addEventListener('click', clickListener)
+    document.addEventListener('click', delegatedClickListener)
+
+    btnDropdown.click()
+
+    expect(clickListener).toHaveBeenCalled()
+    expect(delegatedClickListener).toHaveBeenCalled()
   })
 })
