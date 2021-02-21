@@ -34,7 +34,8 @@ const DATA_BODY_ACTIONS = 'data-bs-body'
 const CLASS_NAME_BACKDROP_BODY = 'offcanvas-backdrop'
 const CLASS_NAME_DISABLED = 'disabled'
 const CLASS_NAME_SHOW = 'show'
-const OPEN_SELECTOR = '.offcanvas.show'
+const CLASS_NAME_TOGGLING = 'offcanvas-toggling'
+const ACTIVE_SELECTOR = `.offcanvas.show, .${CLASS_NAME_TOGGLING}`
 
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
@@ -90,14 +91,16 @@ class OffCanvas extends BaseComponent {
       scrollBarHide()
     }
 
+    this._element.classList.add(CLASS_NAME_TOGGLING)
     this._element.removeAttribute('aria-hidden')
     this._element.setAttribute('aria-modal', true)
     this._element.setAttribute('role', 'dialog')
     this._element.classList.add(CLASS_NAME_SHOW)
 
     const completeCallBack = () => {
-      this._enforceFocusOnElement(this._element)
+      this._element.classList.remove(CLASS_NAME_TOGGLING)
       EventHandler.trigger(this._element, EVENT_SHOWN, { relatedTarget })
+      this._enforceFocusOnElement(this._element)
     }
 
     setTimeout(completeCallBack, getTransitionDurationFromElement(this._element))
@@ -114,6 +117,7 @@ class OffCanvas extends BaseComponent {
       return
     }
 
+    this._element.classList.add(CLASS_NAME_TOGGLING)
     EventHandler.off(document, EVENT_FOCUSIN)
     this._element.blur()
     this._isShown = false
@@ -125,12 +129,16 @@ class OffCanvas extends BaseComponent {
       this._element.removeAttribute('role')
       this._element.style.visibility = 'hidden'
 
-      document.body.classList.remove(CLASS_NAME_BACKDROP_BODY)
+      if (this._bodyOptionsHas('backdrop') || !this._bodyOptions.length) {
+        document.body.classList.remove(CLASS_NAME_BACKDROP_BODY)
+      }
+
       if (!this._bodyOptionsHas('scroll')) {
         scrollBarReset()
       }
 
       EventHandler.trigger(this._element, EVENT_HIDDEN)
+      this._element.classList.remove(CLASS_NAME_TOGGLING)
     }
 
     setTimeout(completeCallback, getTransitionDurationFromElement(this._element))
@@ -211,7 +219,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   })
 
   // avoid conflict when clicking a toggler of an offcanvas, while another is open
-  const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
+  const allReadyOpen = SelectorEngine.findOne(ACTIVE_SELECTOR)
   if (allReadyOpen && allReadyOpen !== target) {
     return
   }
