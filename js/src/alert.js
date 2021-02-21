@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta1): alert.js
+ * Bootstrap (v5.0.0-beta2): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -126,6 +126,7 @@ class Alert extends BaseComponent {
  * Data Api implementation
  * ------------------------------------------------------------------------
  */
+
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DISMISS, Alert.handleDismiss(new Alert()))
 
 /**

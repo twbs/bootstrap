@@ -45,6 +45,12 @@ describe('Carousel', () => {
     })
   })
 
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(Carousel.DATA_KEY).toEqual('bs.carousel')
+    })
+  })
+
   describe('constructor', () => {
     it('should go to next item if right arrow key is pressed', done => {
       fixtureEl.innerHTML = [
@@ -295,6 +301,8 @@ describe('Carousel', () => {
 
       spyOn(Carousel.prototype, '_addTouchEventListeners')
 
+      // Headless browser does not support touch events, so need to fake it
+      // to test that touch events are add properly.
       document.documentElement.ontouchstart = () => {}
       const carousel = new Carousel(carouselEl)
 
@@ -1056,13 +1064,38 @@ describe('Carousel', () => {
       ].join('')
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
+      const addEventSpy = spyOn(carouselEl, 'addEventListener').and.callThrough()
+      const removeEventSpy = spyOn(carouselEl, 'removeEventListener').and.callThrough()
+
+      // Headless browser does not support touch events, so need to fake it
+      // to test that touch events are add/removed properly.
+      document.documentElement.ontouchstart = () => {}
+
       const carousel = new Carousel(carouselEl)
 
-      spyOn(EventHandler, 'off').and.callThrough()
+      const expectedArgs = [
+        ['keydown', jasmine.any(Function), jasmine.any(Boolean)],
+        ['mouseover', jasmine.any(Function), jasmine.any(Boolean)],
+        ['mouseout', jasmine.any(Function), jasmine.any(Boolean)],
+        ...(carousel._pointerEvent ?
+          [
+            ['pointerdown', jasmine.any(Function), jasmine.any(Boolean)],
+            ['pointerup', jasmine.any(Function), jasmine.any(Boolean)]
+          ] :
+          [
+            ['touchstart', jasmine.any(Function), jasmine.any(Boolean)],
+            ['touchmove', jasmine.any(Function), jasmine.any(Boolean)],
+            ['touchend', jasmine.any(Function), jasmine.any(Boolean)]
+          ])
+      ]
+
+      expect(addEventSpy.calls.allArgs()).toEqual(expectedArgs)
 
       carousel.dispose()
 
-      expect(EventHandler.off).toHaveBeenCalled()
+      expect(removeEventSpy.calls.allArgs()).toEqual(expectedArgs)
+
+      delete document.documentElement.ontouchstart
     })
   })
 

@@ -38,3 +38,11 @@ Here are all the support classes:
 {{- end -}}
 {{< /float.inline >}}
 {{< /markdown >}}
+
+## Sass
+
+### Utilities API
+
+Float utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
+
+{{< scss-docs name="utils-float" file="scss/_utilities.scss" >}}

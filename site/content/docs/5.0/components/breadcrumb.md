@@ -88,3 +88,9 @@ $breadcrumb-divider: none;
 Since breadcrumbs provide a navigation, it's a good idea to add a meaningful label such as `aria-label="breadcrumb"` to describe the type of navigation provided in the `<nav>` element, as well as applying an `aria-current="page"` to the last item of the set to indicate that it represents the current page.
 
 For more information, see the [WAI-ARIA Authoring Practices for the breadcrumb pattern](https://www.w3.org/TR/wai-aria-practices/#breadcrumb).
+
+## Sass
+
+### Variables
+
+{{< scss-docs name="breadcrumb-variables" file="scss/_variables.scss" >}}

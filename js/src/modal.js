@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta1): modal.js
+ * Bootstrap (v5.0.0-beta2): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -431,14 +431,13 @@ class Modal extends BaseComponent {
   // ----------------------------------------------------------------------
 
   _adjustDialog() {
-    const isModalOverflowing =
-      this._element.scrollHeight > document.documentElement.clientHeight
+    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
 
-    if ((!this._isBodyOverflowing && isModalOverflowing && !isRTL) || (this._isBodyOverflowing && !isModalOverflowing && isRTL)) {
+    if ((!this._isBodyOverflowing && isModalOverflowing && !isRTL()) || (this._isBodyOverflowing && !isModalOverflowing && isRTL())) {
       this._element.style.paddingLeft = `${this._scrollbarWidth}px`
     }
 
-    if ((this._isBodyOverflowing && !isModalOverflowing && !isRTL) || (!this._isBodyOverflowing && isModalOverflowing && isRTL)) {
+    if ((this._isBodyOverflowing && !isModalOverflowing && !isRTL()) || (!this._isBodyOverflowing && isModalOverflowing && isRTL())) {
       this._element.style.paddingRight = `${this._scrollbarWidth}px`
     }
   }

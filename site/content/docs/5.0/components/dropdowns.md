@@ -30,10 +30,10 @@ Any single `.btn` can be turned into a dropdown toggle with some markup changes.
 
 {{< example >}}
 <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
     Dropdown button
   </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <li><a class="dropdown-item" href="#">Action</a></li>
     <li><a class="dropdown-item" href="#">Another action</a></li>
     <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -635,10 +635,12 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 
 ## Menu alignment
 
-By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. Add `.dropdown-menu-end` to a `.dropdown-menu` to right align the dropdown menu. Directions are mirrored when using Bootstrap in RTL, meaning `.dropdown-menu-end` will appear on the left side.
+By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. You can change this with the directional `.drop*` classes, but you can also control them with additional modifier classes.
+
+Add `.dropdown-menu-end` to a `.dropdown-menu` to right align the dropdown menu. Directions are mirrored when using Bootstrap in RTL, meaning `.dropdown-menu-end` will appear on the left side.
 
 {{< callout info >}}
-**Heads up!** Dropdowns are positioned thanks to Popper (except when they are contained in a navbar).
+**Heads up!** Dropdowns are positioned thanks to Popper except when they are contained in a navbar.
 {{< /callout >}}
 
 {{< example >}}
@@ -689,6 +691,89 @@ To align **left** the dropdown menu with the given breakpoint or larger, add `.d
 {{< /example >}}
 
 Note that you don't need to add a `data-bs-display="static"` attribute to dropdown buttons in navbars, since Popper isn't used in navbars.
+
+### Alignment options
+
+Taking most of the options shown above, here's a small kitchen sink demo of various dropdown alignment options in one place.
+
+{{< example >}}
+<div class="btn-group">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+  </ul>
+</div>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    Right-aligned menu
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+  </ul>
+</div>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+    Left-aligned, right-aligned lg
+  </button>
+  <ul class="dropdown-menu dropdown-menu-lg-end">
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+  </ul>
+</div>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+    Right-aligned, left-aligned lg
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+  </ul>
+</div>
+
+<div class="btn-group dropstart">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropstart
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+  </ul>
+</div>
+
+<div class="btn-group dropend">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropend
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+  </ul>
+</div>
+
+<div class="btn-group dropup">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropup
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+    <li><a class="dropdown-item" href="#">Menu item</a></li>
+  </ul>
+</div>
+{{< /example >}}
 
 ## Menu content
 
@@ -818,6 +903,28 @@ Use `data-bs-offset` or `data-bs-reference` to change the location of the dropdo
 </div>
 {{< /example >}}
 
+## Sass
+
+### Variables
+
+Variables for all dropdowns:
+
+{{< scss-docs name="dropdown-variables" file="scss/_variables.scss" >}}
+
+Variables for the [dark dropdown](#dark-dropdowns):
+
+{{< scss-docs name="dropdown-dark-variables" file="scss/_variables.scss" >}}
+
+Variables for the CSS-based carets that indicate a dropdown's interactivity:
+
+{{< scss-docs name="caret-variables" file="scss/_variables.scss" >}}
+
+### Mixins
+
+Mixins are used to generate the CSS-based carets and can be found in `scss/mixins/_caret.scss`.
+
+{{< scss-docs name="caret-mixins" file="scss/mixins/_caret.scss" >}}
+
 ## Usage
 
 Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the `.show` class on the parent `.dropdown-menu`. The `data-bs-toggle="dropdown"` attribute is relied on for closing dropdown menus at an application level, so it's a good idea to always use it.
@@ -908,12 +1015,27 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </tr>
     <tr>
       <td><code>popperConfig</code></td>
-      <td>null | object</td>
+      <td>null | object | function</td>
       <td><code>null</code></td>
-      <td>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v2/constructors/#options">Popper's configuration</a></td>
+      <td>
+        <p>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v2/constructors/#options">Popper's configuration</a>.</p>
+        <p>When a function is used to create the Popper configuration, it's called with an object that contains the Bootstrap's default Popper configuration. It helps you use and merge the default with your own configuration. The function must return a configuration object for Popper.</p>
+      </td>
     </tr>
   </tbody>
 </table>
+
+#### Using function with `popperConfig`
+
+```js
+var dropdown = new bootstrap.Dropdown(element, {
+  popperConfig: function (defaultBsPopperConfig) {
+    // var newPopperConfig = {...}
+    // use defaultBsPopperConfig if needed...
+    // return newPopperConfig
+  }
+})
+```
 
 ### Methods
 

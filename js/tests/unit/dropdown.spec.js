@@ -33,6 +33,12 @@ describe('Dropdown', () => {
     })
   })
 
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(Dropdown.DATA_KEY).toEqual('bs.dropdown')
+    })
+  })
+
   describe('constructor', () => {
     it('should add a listener on trigger which do not have data-bs-toggle="dropdown"', () => {
       fixtureEl.innerHTML = [
@@ -151,6 +157,28 @@ describe('Dropdown', () => {
 
       const popperConfig = dropdown._getPopperConfig()
 
+      expect(popperConfig.placement).toEqual('left')
+    })
+
+    it('should allow to pass config to Popper with `popperConfig` as a function', () => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-placement="right" >Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Secondary link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const getPopperConfig = jasmine.createSpy('getPopperConfig').and.returnValue({ placement: 'left' })
+      const dropdown = new Dropdown(btnDropdown, {
+        popperConfig: getPopperConfig
+      })
+
+      const popperConfig = dropdown._getPopperConfig()
+
+      expect(getPopperConfig).toHaveBeenCalled()
       expect(popperConfig.placement).toEqual('left')
     })
   })
@@ -892,16 +920,21 @@ describe('Dropdown', () => {
       ].join('')
 
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      spyOn(btnDropdown, 'addEventListener').and.callThrough()
+      spyOn(btnDropdown, 'removeEventListener').and.callThrough()
+
       const dropdown = new Dropdown(btnDropdown)
 
       expect(dropdown._popper).toBeNull()
       expect(dropdown._menu).toBeDefined()
       expect(dropdown._element).toBeDefined()
+      expect(btnDropdown.addEventListener).toHaveBeenCalledWith('click', jasmine.any(Function), jasmine.any(Boolean))
 
       dropdown.dispose()
 
       expect(dropdown._menu).toBeNull()
       expect(dropdown._element).toBeNull()
+      expect(btnDropdown.removeEventListener).toHaveBeenCalledWith('click', jasmine.any(Function), jasmine.any(Boolean))
     })
 
     it('should dispose dropdown with Popper', () => {
@@ -1036,13 +1069,44 @@ describe('Dropdown', () => {
 
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
+      const dropdown = new Dropdown(btnDropdown)
 
       btnDropdown.addEventListener('shown.bs.dropdown', () => {
+        expect(dropdown._popper).toBeNull()
         expect(dropdownMenu.getAttribute('style')).toEqual(null, 'no inline style applied by Popper')
         done()
       })
 
-      btnDropdown.click()
+      dropdown.show()
+    })
+
+    it('should manage bs attribute `data-bs-popper`="none" when dropdown is in navbar', done => {
+      fixtureEl.innerHTML = [
+        '<nav class="navbar navbar-expand-md navbar-light bg-light">',
+        '  <div class="dropdown">',
+        '    <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '    <div class="dropdown-menu">',
+        '      <a class="dropdown-item" href="#">Secondary link</a>',
+        '    </div>',
+        '  </div>',
+        '</nav>'
+      ].join('')
+
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
+      const dropdown = new Dropdown(btnDropdown)
+
+      btnDropdown.addEventListener('shown.bs.dropdown', () => {
+        expect(dropdownMenu.getAttribute('data-bs-popper')).toEqual('none')
+        dropdown.hide()
+      })
+
+      btnDropdown.addEventListener('hidden.bs.dropdown', () => {
+        expect(dropdownMenu.getAttribute('data-bs-popper')).toBeNull()
+        done()
+      })
+
+      dropdown.show()
     })
 
     it('should not use Popper if display set to static', done => {
@@ -1065,6 +1129,33 @@ describe('Dropdown', () => {
       })
 
       btnDropdown.click()
+    })
+
+    it('should manage bs attribute `data-bs-popper`="static" when display set to static', done => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Secondary link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
+      const dropdown = new Dropdown(btnDropdown)
+
+      btnDropdown.addEventListener('shown.bs.dropdown', () => {
+        expect(dropdownMenu.getAttribute('data-bs-popper')).toEqual('static')
+        dropdown.hide()
+      })
+
+      btnDropdown.addEventListener('hidden.bs.dropdown', () => {
+        expect(dropdownMenu.getAttribute('data-bs-popper')).toBeNull()
+        done()
+      })
+
+      dropdown.show()
     })
 
     it('should remove "show" class if tabbing outside of menu', done => {
