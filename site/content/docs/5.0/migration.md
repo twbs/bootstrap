@@ -18,8 +18,6 @@ toc: true
   var dropdown = new bootstrap.Dropdown('[data-bs-toggle="dropdown"]')
   ```
 
-## v5.0.0-beta2
-
 ### Utilities
 
 - Dropped the `0` entry in `$border-widths` map to remove the duplicated `.border-0` class.
