@@ -83,7 +83,7 @@ class Modal extends BaseComponent {
     super(element)
 
     this._config = this._getConfig(config)
-    this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, element)
+    this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element)
     this._backdrop = null
     this._isShown = false
     this._isBodyOverflowing = false
