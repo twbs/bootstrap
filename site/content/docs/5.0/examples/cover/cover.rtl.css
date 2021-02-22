@@ -3,6 +3,39 @@
  */
 
 
+ /* temp, until https://www.fontface.me/ combines these fonts into one family. */
+ @font-face {
+	font-family: 'dubai';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+	src: url('https://www.fontstatic.com/fonts/dubai-bold/dubai-bold.eot?#iefix') format('eot'), url('https://www.fontstatic.com/fonts/dubai-bold/dubai-bold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'dubai';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+	src: url('https://www.fontstatic.com/fonts/dubai-medium/dubai-medium.eot?#iefix') format('eot'), url('https://www.fontstatic.com/fonts/dubai-medium/dubai-medium.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'dubai';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+	src: url('https://www.fontstatic.com/fonts/dubai-light/dubai-light.eot?#iefix') format('eot'), url('https://www.fontstatic.com/fonts/dubai-light/dubai-light.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'dubai';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+	src: url('https://www.fontstatic.com/fonts/dubai/dubai.eot?#iefix') format('eot'), url('https://www.fontstatic.com/fonts/dubai/dubai.woff') format('woff');
+}
+
 /* Custom default button */
 .btn-secondary,
 .btn-secondary:hover,
@@ -36,6 +69,7 @@ body {
   color: rgba(255, 255, 255, .5);
   background-color: transparent;
   border-bottom: .25rem solid transparent;
+  letter-spacing: 0.07em;
 }
 
 .nav-masthead .nav-link:hover,
@@ -57,5 +91,9 @@ h1, h2, h3, h4, h5, h6, .nav-link {
 }
 
 p {
-  font-family: "Markazi Text", Georgia, "Times New Roman", serif;
+  font-family: "dubai", Georgia, "Times New Roman", serif;
+}
+
+footer {
+  letter-spacing: 0.06em;
 }
