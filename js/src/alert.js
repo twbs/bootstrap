@@ -126,6 +126,7 @@ class Alert extends BaseComponent {
  * Data Api implementation
  * ------------------------------------------------------------------------
  */
+
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DISMISS, Alert.handleDismiss(new Alert()))
 
 /**
