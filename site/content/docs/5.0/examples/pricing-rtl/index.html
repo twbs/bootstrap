@@ -1,0 +1,119 @@
+---
+layout: examples
+title: مثال قائمة الأسعار
+direction: rtl
+extra_css:
+  - "https://fonts.googleapis.com/css2?family=Tajawal&display=swap"
+  - "../pricing/pricing.rtl.css"
+include_js: false
+---
+
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-body border-bottom shadow-sm">
+  <p class="h5 my-0 me-md-auto fw-normal">اسم الشركة</p>
+  <nav class="my-2 my-md-0 me-md-3">
+    <a class="p-2 text-dark" href="#">المزايا</a>
+    <a class="p-2 text-dark" href="#">خدمات الأعمال</a>
+    <a class="p-2 text-dark" href="#">الدعم الفني</a>
+    <a class="p-2 text-dark" href="#">الأسعار</a>
+  </nav>
+  <a class="btn btn-outline-primary" href="#">إنشاء حساب</a>
+</header>
+
+<main class="container">
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">التسعيرة</h1>
+    <p class="lead">يمكنك، وفي وقت قصير، من خلال هذا المثال المقدم من Bootstrap إنشاء جدول أسعار فعال لعملائك المحتملين. هذا المثال مصمم باستخدام مكونات وأدوات Bootstrap وبتعديلات طفيفة.</p>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    <div class="col">
+      <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 fw-normal">مجاني</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ شهر</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>10 مستخدمين</li>
+          <li>2 جيجابايت مساحة تخزين</li>
+          <li>دعم فني عبر البريد الإلكتروني</li>
+          <li>وصول لمركز الدعم</li>
+        </ul>
+        <button type="button" class="w-100 btn btn-lg btn-outline-primary">أنشئ حسابك مجانا</button>
+      </div>
+    </div>
+    </div>
+    <div class="col">
+      <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 fw-normal">متقدم</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ شهر</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>20 مستخدم</li>
+          <li>10 جيجابايت مساحة تخزين</li>
+          <li>أولوية في الدعم الفني عبر البريد الإلكتروني</li>
+          <li>وصول لمركز الدعم</li>
+        </ul>
+        <button type="button" class="w-100 btn btn-lg btn-primary">إبدأ الآن</button>
+      </div>
+    </div>
+    </div>
+    <div class="col">
+      <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 fw-normal">احترافي</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ شهر</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>30 مستخدم</li>
+          <li>15 جيجابايت مساحة تخزين</li>
+          <li>دعم فني عبر الهاتف والبريد الإلكتروني</li>
+          <li>وصول لمركز الدعم</li>
+        </ul>
+        <button type="button" class="w-100 btn btn-lg btn-primary">تواصل معنا</button>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+        <img class="mb-2" src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="" width="24" height="19">
+        <small class="d-block mb-3 text-muted">&copy; 2017–{{< year >}}</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>المميزات</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary" href="#">أشياء رهيبة</a></li>
+          <li><a class="link-secondary" href="#">خاصية عشوائية</a></li>
+          <li><a class="link-secondary" href="#">خاصية للفريق</a></li>
+          <li><a class="link-secondary" href="#">أشياء للمطورين</a></li>
+          <li><a class="link-secondary" href="#">شيء آخر</a></li>
+          <li><a class="link-secondary" href="#">إنتهينا</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>المصادر</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary" href="#">مصدر</a></li>
+          <li><a class="link-secondary" href="#">مصدر آخر</a></li>
+          <li><a class="link-secondary" href="#">مصدر ثالث</a></li>
+          <li><a class="link-secondary" href="#">مصدر أخير</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>عنّا</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary" href="#">الفريق</a></li>
+          <li><a class="link-secondary" href="#">الفروع</a></li>
+          <li><a class="link-secondary" href="#">سياسة الخصوصية</a></li>
+          <li><a class="link-secondary" href="#">إتفاقية الإستخدام</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</main>

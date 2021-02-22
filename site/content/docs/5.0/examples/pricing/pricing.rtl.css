@@ -1,0 +1,37 @@
+@font-face {
+  font-family: Dubai;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("https://www.fontstatic.com/fonts/dubai-light/dubai-light.eot?#iefix") format("eot"), url("https://www.fontstatic.com/fonts/dubai-light/dubai-light.woff") format("woff");
+}
+
+@font-face {
+  font-family: Dubai;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("https://www.fontstatic.com/fonts/dubai/dubai.eot?#iefix") format("eot"), url("https://www.fontstatic.com/fonts/dubai/dubai.woff") format("woff");
+}
+
+.container {
+  max-width: 960px;
+}
+
+.pricing-header {
+  max-width: 700px;
+}
+
+body {
+  font-family: Dubai, Georgia, "Times New Roman", serif;
+}
+
+header,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Tajawal, Georgia, "Times New Roman", serif;
+}
