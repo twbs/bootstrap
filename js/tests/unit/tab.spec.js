@@ -20,6 +20,22 @@ describe('Tab', () => {
     })
   })
 
+  describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav"><li><a href="#home" role="tab">Home</a></li></ul>',
+        '<ul><li id="home"></li></ul>'
+      ].join('')
+
+      const tabEl = fixtureEl.querySelector('[href="#home"]')
+      const tabBySelector = new Tab('[href="#home"]')
+      const tabByElement = new Tab(tabEl)
+
+      expect(tabBySelector._element).toEqual(tabEl)
+      expect(tabByElement._element).toEqual(tabEl)
+    })
+  })
+
   describe('show', () => {
     it('should activate element by tab id (using buttons, the preferred semantic way)', done => {
       fixtureEl.innerHTML = [
@@ -160,7 +176,7 @@ describe('Tab', () => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
         '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#home" class="nav-link active" role="tab" aria-selected="true">Home</button></li>',
-        '  <li class="nav-item" role="presentation"><button type="button" href="#profile" class="nav-link" role="tab">Profile</button></li>',
+        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#profile" class="nav-link" role="tab">Profile</button></li>',
         '</ul>',
         '<div class="tab-content">',
         '  <div class="tab-pane active" id="home" role="tabpanel"></div>',

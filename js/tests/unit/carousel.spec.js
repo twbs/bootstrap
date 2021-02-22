@@ -52,6 +52,17 @@ describe('Carousel', () => {
   })
 
   describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = '<div id="myCarousel" class="carousel slide"></div>'
+
+      const carouselEl = fixtureEl.querySelector('#myCarousel')
+      const carouselBySelector = new Carousel('#myCarousel')
+      const carouselByElement = new Carousel(carouselEl)
+
+      expect(carouselBySelector._element).toEqual(carouselEl)
+      expect(carouselByElement._element).toEqual(carouselEl)
+    })
+
     it('should go to next item if right arrow key is pressed', done => {
       fixtureEl.innerHTML = [
         '<div id="myCarousel" class="carousel slide">',

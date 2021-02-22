@@ -62,6 +62,19 @@ describe('Modal', () => {
     })
   })
 
+  describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modalBySelector = new Modal('.modal')
+      const modalByElement = new Modal(modalEl)
+
+      expect(modalBySelector._element).toEqual(modalEl)
+      expect(modalByElement._element).toEqual(modalEl)
+    })
+  })
+
   describe('toggle', () => {
     it('should toggle a modal', done => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
