@@ -40,6 +40,24 @@ describe('Dropdown', () => {
   })
 
   describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdownBySelector = new Dropdown('[data-bs-toggle="dropdown"]')
+      const dropdownByElement = new Dropdown(btnDropdown)
+
+      expect(dropdownBySelector._element).toEqual(btnDropdown)
+      expect(dropdownByElement._element).toEqual(btnDropdown)
+    })
+
     it('should add a listener on trigger which do not have data-bs-toggle="dropdown"', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
