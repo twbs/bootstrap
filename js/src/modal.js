@@ -466,6 +466,10 @@ class Modal extends BaseComponent {
   _setElementAttributes(selector, styleProp, callback) {
     SelectorEngine.find(selector)
       .forEach(element => {
+        if (element !== document.body && window.innerWidth > element.clientWidth + this._scrollbarWidth) {
+          return
+        }
+
         const actualValue = element.style[styleProp]
         const calculatedValue = window.getComputedStyle(element)[styleProp]
         Manipulator.setDataAttribute(element, styleProp, actualValue)
