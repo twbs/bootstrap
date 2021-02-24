@@ -40,15 +40,17 @@ export default {
   },
 
   remove(element, key) {
-    if (elementMap.has(element)) {
-      const instanceMap = elementMap.get(element)
+    if (!elementMap.has(element)) {
+      return
+    }
 
-      instanceMap.delete(key)
+    const instanceMap = elementMap.get(element)
 
-      // free up element references if there are no instances left for an element
-      if (instanceMap.size === 0) {
-        elementMap.delete(element)
-      }
+    instanceMap.delete(key)
+
+    // free up element references if there are no instances left for an element
+    if (instanceMap.size === 0) {
+      elementMap.delete(element)
     }
   }
 }
