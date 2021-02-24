@@ -111,5 +111,25 @@ describe('ScrollBar', () => {
       expect(currentMargin).toEqual(originalMargin, 'sticky element margin should be reset after closing')
       done()
     })
+
+    it('should not adjust the inline margin and padding of sticky and fixed elements when element do not have full width', () => {
+      fixtureEl.innerHTML = [
+        '<div class="sticky-top" style="margin-right: 0px; padding-right: 0px; width: calc(100vw - 50%)"></div>'
+      ].join('')
+
+      const stickyTopEl = fixtureEl.querySelector('.sticky-top')
+      const originalMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+      const originalPadding = Number.parseInt(window.getComputedStyle(stickyTopEl).paddingRight, 10)
+
+      Scrollbar.hide()
+
+      const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+      const currentPadding = Number.parseInt(window.getComputedStyle(stickyTopEl).paddingRight, 10)
+
+      expect(currentMargin).toEqual(originalMargin, 'sticky element\'s margin should not be adjusted while opening')
+      expect(currentPadding).toEqual(originalPadding, 'sticky element\'s padding should not be adjusted while opening')
+
+      Scrollbar.reset()
+    })
   })
 })
