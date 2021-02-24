@@ -10,13 +10,18 @@ describe('ScrollBar', () => {
 
   afterEach(() => {
     clearFixture()
-    document.body.style.removeProperty('overflow')
+    document.documentElement.removeAttribute('style')
+    document.body.removeAttribute('style')
+  })
+
+  beforeEach(() => {
+    document.documentElement.removeAttribute('style')
     document.body.removeAttribute('style')
   })
 
   describe('isBodyOverflowing', () => {
     it('should return true if body is overflowing', () => {
-      document.body.style.overflowY = 'scroll'
+      document.documentElement.style.overflowY = 'scroll'
       fixtureEl.innerHTML = [
         '<div style="height: 110vh; width: 100%"></div>'
       ].join('')
@@ -26,7 +31,7 @@ describe('ScrollBar', () => {
     })
 
     it('should return false if body is overflowing', () => {
-      document.body.style.overflowY = 'hidden'
+      document.documentElement.style.overflowY = 'hidden'
       fixtureEl.innerHTML = [
         '<div style="height: 110vh; width: 100%"></div>'
       ].join('')
@@ -39,6 +44,7 @@ describe('ScrollBar', () => {
 
   describe('getWidth', () => {
     it('should return an integer greater than zero, if body is overflowing', () => {
+      document.documentElement.style.overflowY = 'scroll'
       document.body.style.overflowY = 'scroll'
       fixtureEl.innerHTML = [
         '<div style="height: 110vh; width: 100%"></div>'
@@ -49,6 +55,7 @@ describe('ScrollBar', () => {
     })
 
     it('should return 0 if body is hot overflowing', () => {
+      document.documentElement.style.overflowY = 'hidden'
       document.body.style.overflowY = 'hidden'
       fixtureEl.innerHTML = [
         '<div style="height: 110vh; width: 100%"></div>'
@@ -67,7 +74,7 @@ describe('ScrollBar', () => {
         '<div class="fixed-top" style="padding-right: 0px"></div>',
         '</div>'
       ].join('')
-      document.body.style.overflowY = 'scroll'
+      document.documentElement.style.overflowY = 'scroll'
 
       const fixedEl = fixtureEl.querySelector('.fixed-top')
       const originalPadding = Number.parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
@@ -86,13 +93,13 @@ describe('ScrollBar', () => {
       done()
     })
 
-    it('should adjust the inline padding of sticky elements', done => {
+    it('should adjust the inline margin of sticky elements', done => {
       fixtureEl.innerHTML = [
         '<div style="height: 110vh">' +
         '<div class="sticky-top" style="margin-right: 0px;"></div>',
         '</div>'
       ].join('')
-      document.body.style.overflowY = 'scroll'
+      document.documentElement.style.overflowY = 'scroll'
 
       const stickyTopEl = fixtureEl.querySelector('.sticky-top')
       const originalMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
