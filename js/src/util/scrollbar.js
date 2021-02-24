@@ -12,9 +12,8 @@ const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-to
 const SELECTOR_STICKY_CONTENT = '.sticky-top'
 
 const getWidth = () => {
-  // https://muffinman.io/blog/get-scrollbar-width-in-javascript/
-  const documentWidth = Math.max(document.documentElement.clientWidth, document.body.clientWidth)
-  // const documentWidth = document.body.getBoundingClientRect().width
+  // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
+  const documentWidth = document.documentElement.clientWidth
   return Math.abs(window.innerWidth - documentWidth)
 }
 

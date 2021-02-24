@@ -3,6 +3,16 @@ import { clearFixture, getFixture } from '../../helpers/fixture'
 
 describe('ScrollBar', () => {
   let fixtureEl
+  // const windowCalculations = () => {
+  //   return {
+  //     htmlClient: document.documentElement.clientWidth,
+  //     docClient: document.body.clientWidth,
+  //     htmlBound: document.documentElement.getBoundingClientRect().width,
+  //     bodyBound: document.body.getBoundingClientRect().width,
+  //     window: window.innerWidth,
+  //     width: Math.abs(window.innerWidth - document.documentElement.clientWidth)
+  //   }
+  // }
 
   beforeAll(() => {
     fixtureEl = getFixture()
@@ -11,12 +21,10 @@ describe('ScrollBar', () => {
   afterEach(() => {
     clearFixture()
     document.documentElement.removeAttribute('style')
-    document.body.removeAttribute('style')
   })
 
   beforeEach(() => {
     document.documentElement.removeAttribute('style')
-    document.body.removeAttribute('style')
   })
 
   describe('isBodyOverflowing', () => {
@@ -54,7 +62,7 @@ describe('ScrollBar', () => {
       expect(result).toBeGreaterThan(1)
     })
 
-    it('should return 0 if body is hot overflowing', () => {
+    it('should return 0 if body is not overflowing', () => {
       document.documentElement.style.overflowY = 'hidden'
       document.body.style.overflowY = 'hidden'
       fixtureEl.innerHTML = [
