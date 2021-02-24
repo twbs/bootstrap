@@ -101,6 +101,6 @@ describe('Data', () => {
     Data.set(div, UNKNOWN_KEY, copy)
 
     expect(console.error).toHaveBeenCalled()
-    expect(Data.get(div, UNKNOWN_KEY)).toBe(copy)
+    expect(Data.get(div, UNKNOWN_KEY)).toBe(null)
   })
 })

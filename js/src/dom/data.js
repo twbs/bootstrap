@@ -26,6 +26,7 @@ export default {
     if (!instanceMap.has(key) && instanceMap.size !== 0) {
       // eslint-disable-next-line no-console
       console.error(`Notice: The design of Bootstrap currently discourages to use more than one instance per element. Bound instance(s): ${Array.from(instanceMap.keys()).join(', ')}.`)
+      return
     }
 
     instanceMap.set(key, instance)
