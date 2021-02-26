@@ -123,5 +123,12 @@
       margin-left: .5em;
     }
   }
+
+  .input-group .form-control,
+  .input-group .form-select {
+    @include form-validation-state-selector($state) {
+      z-index: 3;
+    }
+  }
 }
 // scss-docs-end form-validation-mixins
