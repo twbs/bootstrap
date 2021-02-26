@@ -100,6 +100,16 @@
   }
 
   // stylelint-disable-next-line selector-no-qualifying-type
+  select.form-control {
+    @include form-validation-state-selector($state) {
+      @if $enable-validation-icons {
+        padding-right: $input-padding-x * 4 !important; // stylelint-disable-line declaration-no-important
+        background-position: right $input-padding-x * 2 center;
+      }
+    }
+  }
+
+  // stylelint-disable-next-line selector-no-qualifying-type
   textarea.form-control {
     @include form-validation-state-selector($state) {
       @if $enable-validation-icons {
