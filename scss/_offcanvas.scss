@@ -36,7 +36,7 @@
   overflow-y: auto;
 }
 
-.offcanvas-left {
+.offcanvas-start {
   top: 0;
   left: 0;
   width: $offcanvas-horizontal-width;
@@ -44,7 +44,7 @@
   transform: translateX(-100%);
 }
 
-.offcanvas-right {
+.offcanvas-end {
   top: 0;
   right: 0;
   width: $offcanvas-horizontal-width;

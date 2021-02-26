@@ -11,7 +11,7 @@ toc: true
 Offcanvas is a sidebar component that can be toggled via JavaScript to appear from the left, right, or bottom edge of the viewport. Buttons or anchors are used as triggers that are attached to specific elements you toggle, and `data` attributes are used to invoke our JavaScript.
 
 - Offcanvas shares some of the same JavaScript code as modals. Conceptually, they are quite similar, but they are separate plugins.
-- Similarly, [source Sass](#sass) variables for offcanvas's styles and dimensions are inherited from the modal's variables.
+- Similarly, some [source Sass](#sass) variables for offcanvas's styles and dimensions are inherited from the modal's variables.
 - When shown, offcanvas includes a default backdrop that can be clicked to hide the offcanvas.
 - Similar to modals, only one offcanvas can be shown at a time.
 
@@ -25,10 +25,10 @@ Offcanvas is a sidebar component that can be toggled via JavaScript to appear fr
 
 ### Offcanvas components
 
-Below is a _static_ offcanvas example (meaning its `position`, `display`, `visibility`, and more have been overridden). Offcanvas includes support for a header with a close button and an optional body class for some initial `padding`. We ask that you include offcanvas headers with dismiss actions whenever possible, or provide another explicit dismiss action.
+Below is a _static_ offcanvas example (meaning its `position`, `display`, and `visibility` have been overridden). Offcanvas includes support for a header with a close button and an optional body class for some initial `padding`. We suggest that you include offcanvas headers with dismiss actions whenever possible, or provide an explicit dismiss action.
 
 {{< example class="bd-example-offcanvas p-0 bg-light" >}}
-<div class="offcanvas offcanvas-left" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasLabel">Offcanvas</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -56,7 +56,7 @@ You can use a link with the `href` attribute, or a button with the `data-bs-targ
   Button with data-bs-target
 </button>
 
-<div class="offcanvas offcanvas-left" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -81,18 +81,18 @@ You can use a link with the `href` attribute, or a button with the `data-bs-targ
 
 ## Placement
 
-There's no default placement for offcanvas components, so you'll always have to declare one by adding one of the modifier classes below.
+There's no default placement for offcanvas components, so you must add one of the modifier classes below;
 
-- `.offcanvas-left` places offcanvas on the left of the viewport (shown above)
-- `.offcanvas-right` places offcanvas on the right of the viewport
+- `.offcanvas-start` places offcanvas on the left of the viewport (shown above)
+- `.offcanvas-end` places offcanvas on the right of the viewport
 - `.offcanvas-bottom` places offcanvas on the bottom of the viewport
 
-Try the right and bottom options out below.
+Try the right and bottom examples out below.
 
 {{< example >}}
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
 
-<div class="offcanvas offcanvas-right" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
   <div class="offcanvas-header">
     <h5 id="offcanvasRightLabel">Offcanvas right</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -126,7 +126,7 @@ By default, we disable scrolling on the `<body>` when an offcanvas is visible an
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop">Enable backdrop (default)</button>
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Enable both scrolling & backdrop</button>
 
-<div class="offcanvas offcanvas-left" data-bs-body="scroll" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+<div class="offcanvas offcanvas-start" data-bs-body="scroll" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -135,7 +135,7 @@ By default, we disable scrolling on the `<body>` when an offcanvas is visible an
     <p>Try scrolling the rest of the page to see this option in action.</p>
   </div>
 </div>
-<div class="offcanvas offcanvas-left" data-bs-body="backdrop" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
+<div class="offcanvas offcanvas-start" data-bs-body="backdrop" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Offcanvas with backdrop</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -144,7 +144,7 @@ By default, we disable scrolling on the `<body>` when an offcanvas is visible an
     <p>.....</p>
   </div>
 </div>
-<div class="offcanvas offcanvas-left" data-bs-body="scroll|backdrop" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+<div class="offcanvas offcanvas-start" data-bs-body="scroll|backdrop" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdroped with scrolling</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -157,7 +157,7 @@ By default, we disable scrolling on the `<body>` when an offcanvas is visible an
 
 ## Accessibility
 
-The off-canvas panel is, conceptually, a modal dialog. So, be sure to add `aria-labelledby="..."`, referencing the offcanvas title, to `.offcanvas`. Note that you don’t need to add `role="dialog"` since we already add it via JavaScript.
+Since the offcanvas panel is conceptually a modal dialog, be sure to add `aria-labelledby="..."`—referencing the offcanvas title—to `.offcanvas`. Note that you don’t need to add `role="dialog"` since we already add it via JavaScript.
 
 ## Sass
 
@@ -171,11 +171,12 @@ The offcanvas plugin utilizes a few classes and attributes to handle the heavy l
 
 - `.offcanvas` hides the content
 - `.offcanvas.show` shows the content
-- `.offcanvas-right` hides the offcanvas on the right
+- `.offcanvas-start` hides the offcanvas on the left
+- `.offcanvas-end` hides the offcanvas on the right
 - `.offcanvas-bottom` hides the offcanvas on the bottom
 - `data-bs-body="scroll"` enables `<body>` scrolling when offcanvas is open
 - `data-bs-body="backdrop"` disables scrolling and creates a backdrop over the `<body>` when offcanvas is open `(default)`
-- `data-bs-body="backdrop|scroll"` is a combination of the above, enables `<body>` scrolling and creates a backdrop over the `<body>` when offcanvas is open
+- `data-bs-body="backdrop|scroll"` combines both options to enable `<body>` scrolling and create a backdrop over the `<body>` when offcanvas is open
 
 Add a dismiss button with the `data-bs-dismiss="offcanvas"` attribute, which triggers the JavaScript functionality. Be sure to use the `<button>` element with it for proper behavior across all devices.
 
