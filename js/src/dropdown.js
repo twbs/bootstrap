@@ -59,7 +59,6 @@ const CLASS_NAME_DROPSTART = 'dropstart'
 const CLASS_NAME_NAVBAR = 'navbar'
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]'
-const SELECTOR_FORM_CHILD = '.dropdown form'
 const SELECTOR_MENU = '.dropdown-menu'
 const SELECTOR_NAVBAR_NAV = '.navbar-nav'
 const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
@@ -405,7 +404,9 @@ class Dropdown extends BaseComponent {
       }
 
       if (event) {
-        if (event.composedPath().includes(context._element)) {
+        const dropdownForm = dropdownMenu.querySelector('form')
+
+        if ([context._element, dropdownForm].some(element => event.composedPath().includes(element))) {
           continue
         }
 
@@ -529,7 +530,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   event.preventDefault()
   Dropdown.dropdownInterface(this)
 })
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stopPropagation())
 
 /**
  * ------------------------------------------------------------------------
