@@ -1075,3 +1075,19 @@ h1 {
 .conditionals-table tbody > tr:nth-child(4n+2) { background-color: @list-group-stipe; }
 .conditionals-table tbody > tr:nth-child(4n+3) { background-color: @list-group-bg; }
 .conditionals-table tbody > tr:nth-child(4n+4) { background-color: @list-group-bg; }
+
+
+// Make bordered tables only have row borders
+.table-bordered {
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      border: 1px solid @table-border-color;
+      > th,
+      > td {
+        border: 0px none transparent;
+      }
+    }
+  }
+}
