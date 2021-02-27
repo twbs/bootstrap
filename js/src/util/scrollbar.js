@@ -8,7 +8,7 @@
 import SelectorEngine from '../dom/selector-engine'
 import Manipulator from '../dom/manipulator'
 
-const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
+const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed'
 const SELECTOR_STICKY_CONTENT = '.sticky-top'
 
 const getWidth = () => {
@@ -50,7 +50,7 @@ const _resetElementAttributes = (selector, styleProp) => {
   SelectorEngine.find(selector).forEach(element => {
     const value = Manipulator.getDataAttribute(element, styleProp)
     if (typeof value === 'undefined' && element === document.body) {
-      element.style[styleProp] = ''
+      element.style.removeProperty(styleProp)
     } else {
       Manipulator.removeDataAttribute(element, styleProp)
       element.style[styleProp] = value
