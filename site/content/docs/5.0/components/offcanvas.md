@@ -144,7 +144,7 @@ By default, we disable scrolling on the `<body>` when an offcanvas is visible an
     <p>.....</p>
   </div>
 </div>
-<div class="offcanvas offcanvas-start" data-bs-body="scroll|backdrop" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+<div class="offcanvas offcanvas-start" data-bs-body="scroll,backdrop" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdroped with scrolling</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -176,7 +176,7 @@ The offcanvas plugin utilizes a few classes and attributes to handle the heavy l
 - `.offcanvas-bottom` hides the offcanvas on the bottom
 - `data-bs-body="scroll"` enables `<body>` scrolling when offcanvas is open
 - `data-bs-body="backdrop"` disables scrolling and creates a backdrop over the `<body>` when offcanvas is open `(default)`
-- `data-bs-body="backdrop|scroll"` combines both options to enable `<body>` scrolling and create a backdrop over the `<body>` when offcanvas is open
+- `data-bs-body="backdrop,scroll"` combines both options to enable `<body>` scrolling and create a backdrop over the `<body>` when offcanvas is open
 
 Add a dismiss button with the `data-bs-dismiss="offcanvas"` attribute, which triggers the JavaScript functionality. Be sure to use the `<button>` element with it for proper behavior across all devices.
 

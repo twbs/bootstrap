@@ -157,7 +157,7 @@ class OffCanvas extends BaseComponent {
   }
 
   _bodyOptionsHas(option) {
-    return this._bodyOptions.split('|').includes(option)
+    return this._bodyOptions.split(',').includes(option)
   }
 
   _addEventListeners() {
