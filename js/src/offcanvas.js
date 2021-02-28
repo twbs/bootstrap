@@ -60,7 +60,7 @@ class OffCanvas extends BaseComponent {
 
     this._isShown = element.classList.contains(CLASS_NAME_SHOW)
     this._bodyOptions = element.getAttribute(DATA_BODY_ACTIONS) || ''
-    this._handleClosing()
+    this._addEventListeners()
   }
 
   // Public
@@ -160,7 +160,7 @@ class OffCanvas extends BaseComponent {
     return this._bodyOptions.split('|').includes(option)
   }
 
-  _handleClosing() {
+  _addEventListeners() {
     EventHandler.on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, () => this.hide())
 
     EventHandler.on(document, 'keydown', event => {
