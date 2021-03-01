@@ -275,13 +275,9 @@
 //
 
 .highlight {
-  padding: 1rem;
+  padding: 1.5rem;
   margin-bottom: 1rem;
   background-color: $gray-100;
-
-  @include media-breakpoint-up(sm) {
-    padding: 1rem 1.5rem;
-  }
 
   pre {
     padding: 0;
