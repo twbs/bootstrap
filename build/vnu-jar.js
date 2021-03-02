@@ -49,7 +49,7 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
     '--no-langdetect',
     '--Werror',
     `--filterpattern "${ignores}"`,
-    '_gh_pages/',
+    '_site/',
     'js/tests/'
   ]
 

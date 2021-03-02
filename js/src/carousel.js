@@ -527,7 +527,7 @@ class Carousel extends BaseComponent {
   // Static
 
   static carouselInterface(element, config) {
-    let data = Data.getData(element, DATA_KEY)
+    let data = Data.get(element, DATA_KEY)
     let _config = {
       ...Default,
       ...Manipulator.getDataAttributes(element)
@@ -586,7 +586,7 @@ class Carousel extends BaseComponent {
     Carousel.carouselInterface(target, config)
 
     if (slideIndex) {
-      Data.getData(target, DATA_KEY).to(slideIndex)
+      Data.get(target, DATA_KEY).to(slideIndex)
     }
 
     event.preventDefault()
@@ -605,7 +605,7 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
 
   for (let i = 0, len = carousels.length; i < len; i++) {
-    Carousel.carouselInterface(carousels[i], Data.getData(carousels[i], DATA_KEY))
+    Carousel.carouselInterface(carousels[i], Data.get(carousels[i], DATA_KEY))
   }
 })
 

@@ -335,7 +335,7 @@ We've updated the color system that powers Bootstrap to improve color contrast a
 
 Changes to any layout tools and our grid system.
 
-- Dropped the `.media` component as it can be built with utility classes. [See #28265](https://github.com/twbs/bootstrap/pull/28265).
+- Dropped the `.media` component as it can be built with utility classes. [See #28265](https://github.com/twbs/bootstrap/pull/28265) and the [flex utilities page for an example]({{< docsref "/utilities/flex#media-object" >}}).
 - Remove `position: relative` from grid columns.
 - The horizontal padding is added to the direct children in a row instead of the columns themselves.
   - This simplifies our codebase.

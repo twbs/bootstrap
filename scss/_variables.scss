@@ -796,8 +796,8 @@ $form-select-indicator-padding:     $form-select-padding-x * 3 !default; // Extr
 $form-select-font-weight:           $input-font-weight !default;
 $form-select-line-height:           $input-line-height !default;
 $form-select-color:                 $input-color !default;
-$form-select-disabled-color:        $gray-600 !default;
 $form-select-bg:                    $input-bg !default;
+$form-select-disabled-color:        null !default;
 $form-select-disabled-bg:           $gray-200 !default;
 $form-select-disabled-border-color: $input-disabled-border-color !default;
 $form-select-bg-position:           right $form-select-padding-x center !default;
@@ -1299,7 +1299,7 @@ $progress-bar-transition:           width .6s ease !default;
 // List group
 
 // scss-docs-start list-group-variables
-$list-group-color:                  null !default;
+$list-group-color:                  $gray-900 !default;
 $list-group-bg:                     $white !default;
 $list-group-border-color:           rgba($black, .125) !default;
 $list-group-border-width:           $border-width !default;

@@ -20,7 +20,7 @@ enableRobotsTXT:        true
 metaDataFormat:         "yaml"
 disableKinds:           ["404", "taxonomy", "taxonomyTerm", "RSS"]
 
-publishDir:             "_gh_pages"
+publishDir:             "_site"
 
 module:
   mounts:
@@ -75,5 +75,5 @@ params:
     js_hash:          "sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
     js_bundle:        "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
     js_bundle_hash:   "sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-    popper:           "https://cdn.jsdelivr.net/npm/@popperjs/core@2.8.3/dist/umd/popper.min.js"
-    popper_hash:      "sha384-D8aLIxp6qLqvQh0D4yGj2qF2cky5eZAuOorvNT3yYzJDqgLUHGqrsxnowBX1ke9p"
+    popper:           "https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.0/dist/umd/popper.min.js"
+    popper_hash:      "sha384-EOlc5FUOsy7obkrpNXqD9DtrephzQpK7DXijDIKexeJT0qfn4dZ7GDid8suWuQHq"

@@ -57,11 +57,11 @@
     "docs": "npm-run-all docs-build docs-lint",
     "docs-build": "hugo --cleanDestinationDir",
     "docs-compile": "npm run docs-build",
-    "docs-linkinator": "linkinator _gh_pages --recurse --skip \"^(?!http://localhost)\" --verbosity error",
+    "docs-linkinator": "linkinator _site --recurse --skip \"^(?!http://localhost)\" --verbosity error",
     "docs-vnu": "node build/vnu-jar.js",
     "docs-lint": "npm-run-all --parallel docs-vnu docs-linkinator",
     "docs-serve": "hugo server --port 9001 --disableFastRender",
-    "docs-serve-only": "npx sirv-cli _gh_pages --port 9001",
+    "docs-serve-only": "npx sirv-cli _site --port 9001",
     "lockfile-lint": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",
     "update-deps": "ncu -u -x karma-browserstack-launcher,terser && npm update && echo Manually update site/assets/js/vendor",
     "release": "npm-run-all dist release-sri docs-build release-zip*",
@@ -97,13 +97,13 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "@popperjs/core": "^2.8.3"
+    "@popperjs/core": "^2.9.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.17",
-    "@babel/core": "^7.12.17",
-    "@babel/preset-env": "^7.12.17",
-    "@popperjs/core": "^2.8.3",
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.9",
+    "@popperjs/core": "^2.9.0",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-node-resolve": "^11.2.0",
@@ -112,7 +112,7 @@
     "bundlewatch": "^0.3.2",
     "clean-css-cli": "^5.2.0",
     "cross-env": "^7.0.3",
-    "eslint": "^7.20.0",
+    "eslint": "^7.21.0",
     "eslint-config-xo": "^0.35.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-unicorn": "^28.0.2",
@@ -130,14 +130,14 @@
     "karma-firefox-launcher": "^2.1.0",
     "karma-jasmine": "^4.0.1",
     "karma-jasmine-html-reporter": "^1.5.4",
-    "karma-rollup-preprocessor": "^7.0.5",
+    "karma-rollup-preprocessor": "^7.0.6",
     "linkinator": "^2.13.6",
-    "lockfile-lint": "^4.6.1",
+    "lockfile-lint": "^4.6.2",
     "nodemon": "^2.0.7",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.2.6",
     "postcss-cli": "^8.3.1",
-    "rollup": "^2.39.1",
+    "rollup": "^2.40.0",
     "rollup-plugin-istanbul": "^3.0.0",
     "rtlcss": "^3.1.2",
     "sass": "^1.32.8",
@@ -170,7 +170,7 @@
     },
     "dependencies": {},
     "peerDependencies": {
-      "@popperjs/core": "^2.8.3"
+      "@popperjs/core": "^2.9.0"
     }
   }
 }

@@ -147,7 +147,7 @@ class Collapse extends BaseComponent {
     const container = SelectorEngine.findOne(this._selector)
     if (actives) {
       const tempActiveData = actives.find(elem => container !== elem)
-      activesData = tempActiveData ? Data.getData(tempActiveData, DATA_KEY) : null
+      activesData = tempActiveData ? Data.get(tempActiveData, DATA_KEY) : null
 
       if (activesData && activesData._isTransitioning) {
         return
@@ -166,7 +166,7 @@ class Collapse extends BaseComponent {
         }
 
         if (!activesData) {
-          Data.setData(elemActive, DATA_KEY, null)
+          Data.set(elemActive, DATA_KEY, null)
         }
       })
     }
@@ -332,7 +332,7 @@ class Collapse extends BaseComponent {
   // Static
 
   static collapseInterface(element, config) {
-    let data = Data.getData(element, DATA_KEY)
+    let data = Data.get(element, DATA_KEY)
     const _config = {
       ...Default,
       ...Manipulator.getDataAttributes(element),
@@ -380,7 +380,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   const selectorElements = SelectorEngine.find(selector)
 
   selectorElements.forEach(element => {
-    const data = Data.getData(element, DATA_KEY)
+    const data = Data.get(element, DATA_KEY)
     let config
     if (data) {
       // update parent attribute
