@@ -77,10 +77,64 @@ describe('EventHandler', () => {
 
       div.click()
     })
+
+    it('should handle mouseenter/mouseleave like the native counterpart', done => {
+      fixtureEl.innerHTML = [
+        '<div class="outer">',
+        '<div class="inner">',
+        '<div class="nested">',
+        '<div class="deep"></div>',
+        '</div>',
+        '</div>',
+        '</div>'
+      ]
+
+      const outer = fixtureEl.querySelector('.outer')
+      const inner = fixtureEl.querySelector('.inner')
+      const nested = fixtureEl.querySelector('.nested')
+      const deep = fixtureEl.querySelector('.deep')
+
+      const enterSpy = jasmine.createSpy('mouseenter')
+      const leaveSpy = jasmine.createSpy('mouseleave')
+      const delegateEnterSpy = jasmine.createSpy('mouseenter')
+      const delegateLeaveSpy = jasmine.createSpy('mouseleave')
+
+      EventHandler.on(inner, 'mouseenter', enterSpy)
+      EventHandler.on(inner, 'mouseleave', leaveSpy)
+      EventHandler.on(outer, 'mouseenter', '.inner', delegateEnterSpy)
+      EventHandler.on(outer, 'mouseleave', '.inner', delegateLeaveSpy)
+
+      const moveMouse = (from, to) => {
+        from.dispatchEvent(new MouseEvent('mouseout', {
+          bubbles: true,
+          relatedTarget: to
+        }))
+
+        to.dispatchEvent(new MouseEvent('mouseover', {
+          bubbles: true,
+          relatedTarget: from
+        }))
+      }
+
+      moveMouse(outer, inner)
+      moveMouse(inner, nested)
+      moveMouse(nested, deep)
+      moveMouse(deep, nested)
+      moveMouse(nested, inner)
+      moveMouse(inner, outer)
+
+      setTimeout(() => {
+        expect(enterSpy.calls.count()).toBe(1)
+        expect(leaveSpy.calls.count()).toBe(1)
+        expect(delegateEnterSpy.calls.count()).toBe(1)
+        expect(delegateLeaveSpy.calls.count()).toBe(1)
+        done()
+      }, 20)
+    })
   })
 
   describe('one', () => {
-    it('should call listener just one', done => {
+    it('should call listener just once', done => {
       fixtureEl.innerHTML = '<div></div>'
 
       let called = 0
@@ -92,6 +146,28 @@ describe('EventHandler', () => {
       }
 
       EventHandler.one(div, 'bootstrap', obj.oneListener)
+
+      EventHandler.trigger(div, 'bootstrap')
+      EventHandler.trigger(div, 'bootstrap')
+
+      setTimeout(() => {
+        expect(called).toEqual(1)
+        done()
+      }, 20)
+    })
+
+    it('should call delegated listener just once', done => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      let called = 0
+      const div = fixtureEl.querySelector('div')
+      const obj = {
+        oneListener() {
+          called++
+        }
+      }
+
+      EventHandler.one(fixtureEl, 'bootstrap', 'div', obj.oneListener)
 
       EventHandler.trigger(div, 'bootstrap')
       EventHandler.trigger(div, 'bootstrap')
