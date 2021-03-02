@@ -72,7 +72,18 @@ Whenever possible, be sure to compress all the code you serve to your visitors. 
 
 ## Nonblocking files
 
-_Help wanted with this section, please consider opening a PR. Thanks!_
+While minifying and using compression might seem like enough, making your files nonblocking ones is also a big step in making your site well-optimized and fast enough.
+
+If you are using a [Lighthouse](https://developers.google.com/web/tools/lighthouse/) plugin in Google Chrome, you may have stumbled over FCP. [The First Contentful Paint](https://web.dev/fcp/) metric measures the time from when the page starts loading to when any part of the page's content is rendered on the screen.
+
+You can improve FCP by deferring non-critical JavaScript or CSS. What does that mean? Simply, JavaScript or stylesheets that don't need to be present on the first paint of your page should be marked with `async` or `defer` attributes.
+
+This ensures that the less important resources are loaded later and not blocking the first paint. On the other hand, critical resources can be included as inline scripts or styles.
+
+If you want to learn more about this, there are already a lot of great articles about it:
+
+- <https://web.dev/render-blocking-resources/>
+- <https://web.dev/defer-non-critical-css/>
 
 ## Always use HTTPS
 
