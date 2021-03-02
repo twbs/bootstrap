@@ -100,9 +100,9 @@
     "@popperjs/core": "^2.8.3"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.17",
-    "@babel/core": "^7.12.17",
-    "@babel/preset-env": "^7.12.17",
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.9",
     "@popperjs/core": "^2.8.3",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^17.1.0",
@@ -112,7 +112,7 @@
     "bundlewatch": "^0.3.2",
     "clean-css-cli": "^5.2.0",
     "cross-env": "^7.0.3",
-    "eslint": "^7.20.0",
+    "eslint": "^7.21.0",
     "eslint-config-xo": "^0.35.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-unicorn": "^28.0.2",
