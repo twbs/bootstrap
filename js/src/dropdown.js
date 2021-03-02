@@ -482,13 +482,13 @@ class Dropdown extends BaseComponent {
 
     let index = items.indexOf(event.target)
 
-    if ((event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY)) {
+    if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY) {
       if (!isActive) {
         button.click()
       }
 
-      index = (event.key === ARROW_UP_KEY && index > 0) ? --index : index
-      index = (event.key === ARROW_DOWN_KEY && index < items.length - 1) ? ++index : index
+      index = event.key === ARROW_UP_KEY && index > 0 ? --index : index
+      index = event.key === ARROW_DOWN_KEY && index < items.length - 1 ? ++index : index
 
       // index is -1 if the first keydown is an ArrowUp
       index = index === -1 ? 0 : index
