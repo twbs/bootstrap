@@ -119,14 +119,14 @@ Try the right and bottom examples out below.
 
 ## Options
 
-By default, we disable scrolling on the `<body>` when an offcanvas is visible and use a gray backdrop. Use the `data-bs-body` attribute to enable `<body>` scrolling, or a combination of both options
+By default, we disable scrolling on the `<body>` when an offcanvas is visible and use a gray backdrop. Use the `data-bs-scroll` attribute to enable/disable `<body>` scrolling, and `data-bs-backdrop` attribute to enable/disable backdrop usage.
 
 {{< example >}}
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable body scrolling</button>
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop">Enable backdrop (default)</button>
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Enable both scrolling & backdrop</button>
 
-<div class="offcanvas offcanvas-start" data-bs-body="scroll" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -135,7 +135,7 @@ By default, we disable scrolling on the `<body>` when an offcanvas is visible an
     <p>Try scrolling the rest of the page to see this option in action.</p>
   </div>
 </div>
-<div class="offcanvas offcanvas-start" data-bs-body="backdrop" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Offcanvas with backdrop</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -144,7 +144,7 @@ By default, we disable scrolling on the `<body>` when an offcanvas is visible an
     <p>.....</p>
   </div>
 </div>
-<div class="offcanvas offcanvas-start" data-bs-body="scroll,backdrop" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdroped with scrolling</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -174,9 +174,6 @@ The offcanvas plugin utilizes a few classes and attributes to handle the heavy l
 - `.offcanvas-start` hides the offcanvas on the left
 - `.offcanvas-end` hides the offcanvas on the right
 - `.offcanvas-bottom` hides the offcanvas on the bottom
-- `data-bs-body="scroll"` enables `<body>` scrolling when offcanvas is open
-- `data-bs-body="backdrop"` disables scrolling and creates a backdrop over the `<body>` when offcanvas is open `(default)`
-- `data-bs-body="backdrop,scroll"` combines both options to enable `<body>` scrolling and create a backdrop over the `<body>` when offcanvas is open
 
 Add a dismiss button with the `data-bs-dismiss="offcanvas"` attribute, which triggers the JavaScript functionality. Be sure to use the `<button>` element with it for proper behavior across all devices.
 
@@ -194,6 +191,42 @@ var offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
   return new bootstrap.Offcanvas(offcanvasEl)
 })
 ```
+
+### Options
+
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-backdrop=""`.
+
+<table class="table">
+  <thead>
+    <tr>
+      <th style="width: 100px;">Name</th>
+      <th style="width: 50px;">Type</th>
+      <th style="width: 50px;">Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>backdrop</code></td>
+      <td>boolean</td>
+      <td><code>true</code></td>
+      <td>Apply a backdrop on body while offcanvas is open</td>
+    </tr>
+    <tr>
+      <td><code>keyboard</code></td>
+      <td>boolean</td>
+      <td><code>true</code></td>
+      <td>Closes the offcanvas when escape key is pressed</td>
+    </tr>
+    <tr>
+      <td><code>scroll</code></td>
+      <td>boolean</td>
+      <td><code>false</code></td>
+      <td>Allow body scrolling while offcanvas is open</td>
+    </tr>
+  </tbody>
+</table>
+
 
 ### Methods
 
