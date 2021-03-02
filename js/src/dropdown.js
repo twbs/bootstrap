@@ -357,7 +357,7 @@ class Dropdown extends BaseComponent {
   // Static
 
   static dropdownInterface(element, config) {
-    let data = Data.getData(element, DATA_KEY)
+    let data = Data.get(element, DATA_KEY)
     const _config = typeof config === 'object' ? config : null
 
     if (!data) {
@@ -387,7 +387,7 @@ class Dropdown extends BaseComponent {
     const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
 
     for (let i = 0, len = toggles.length; i < len; i++) {
-      const context = Data.getData(toggles[i], DATA_KEY)
+      const context = Data.get(toggles[i], DATA_KEY)
       const relatedTarget = {
         relatedTarget: toggles[i]
       }
