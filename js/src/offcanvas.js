@@ -181,7 +181,7 @@ class OffCanvas extends BaseComponent {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      const data = Data.getData(this, DATA_KEY) || new OffCanvas(this)
+      const data = Data.get(this, DATA_KEY) || new OffCanvas(this)
 
       if (typeof config === 'string') {
         if (typeof data[config] === 'undefined') {
@@ -224,7 +224,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     return
   }
 
-  const data = Data.getData(target, DATA_KEY) || new OffCanvas(target)
+  const data = Data.get(target, DATA_KEY) || new OffCanvas(target)
   data.toggle(this)
 })
 
