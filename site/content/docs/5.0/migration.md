@@ -18,6 +18,8 @@ toc: true
   var dropdown = new bootstrap.Dropdown('[data-bs-toggle="dropdown"]')
   ```
 
+- Dropped `flip` option for dropdown plugin in favor of native popper configuration. You can now disable the flipping behavior by passing an empty array for [`fallbackPlacements`](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements) option in [flip](https://popper.js.org/docs/v2/modifiers/flip/) modifier.
+
 ### Utilities
 
 - Dropped the `0` entry in `$border-widths` map to remove the duplicated `.border-0` class.

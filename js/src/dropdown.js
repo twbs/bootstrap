@@ -73,7 +73,6 @@ const PLACEMENT_LEFT = isRTL() ? 'right-start' : 'left-start'
 
 const Default = {
   offset: [0, 2],
-  flip: true,
   boundary: 'clippingParents',
   reference: 'toggle',
   display: 'dynamic',
@@ -82,7 +81,6 @@ const Default = {
 
 const DefaultType = {
   offset: '(array|string|function)',
-  flip: 'boolean',
   boundary: '(string|element)',
   reference: '(string|element|object)',
   display: 'string',
@@ -328,7 +326,6 @@ class Dropdown extends BaseComponent {
       modifiers: [{
         name: 'preventOverflow',
         options: {
-          altBoundary: this._config.flip,
           boundary: this._config.boundary
         }
       },
