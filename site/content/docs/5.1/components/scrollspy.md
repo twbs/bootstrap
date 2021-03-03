@@ -10,8 +10,7 @@ toc: true
 
 Scrollspy has a few requirements to function properly:
 
-- It must be used on a Bootstrap [nav component]({{< docsref "/components/navs-tabs" >}}) or [list group]({{< docsref "/components/list-group" >}}).
-- Scrollspy requires `position: relative;` on the element you're spying on, usually the `<body>`.
+- It toggles `.active` class on anchor elements, so is handy to be used on a Bootstrap [nav component]({{< docsref "/components/navs-tabs" >}}) or [list group]({{< docsref "/components/list-group" >}}).
 - Anchors (`<a>`) are required and must point to an element with that `id`.
 
 When successfully implemented, your nav or list group will update accordingly, moving the `.active` class from one item to the next based on their associated targets.
@@ -225,17 +224,60 @@ Scrollspy also works with `.list-group`s. Scroll the area next to the list group
 </div>
 ```
 
+
+## Example with simple anchors
+
+Scrollspy also works with `anchor` elements. Scroll the area and watch the active class change.
+
+<div class="bd-example">
+  <div class="row">
+    <div class="col-4">
+      <div id="simple-list-example" class="d-flex flex-column simple-list-example-scrollspy">
+        <a href="#simple-list-item-1">Item 1</a>
+        <a href="#simple-list-item-2">Item 2</a>
+        <a href="#simple-list-item-3">Item 3</a>
+        <a href="#simple-list-item-4">Item 4</a>
+      </div>
+    </div>
+    <div class="col-8">
+      <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+        <h4 id="simple-list-item-1">Item 1</h4>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+        <h4 id="simple-list-item-2">Item 2</h4>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+        <h4 id="simple-list-item-3">Item 3</h4>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+        <h4 id="simple-list-item-4">Item 4</h4>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+```html
+<div id="list-example" class="d-flex flex-column">
+  <a href="#item-1">Item 1</a>
+  <a href="#item-2">Item 2</a>
+  <a href="#item-3">Item 3</a>
+  <a href="#item-4">Item 4</a>
+</div>
+<div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+  <h4 id="item-1">Item 1</h4>
+  <p>...</p>
+  <h4 id="item-2">Item 2</h4>
+  <p>...</p>
+  <h4 id="item-3">Item 3</h4>
+  <p>...</p>
+  <h4 id="item-4">Item 4</h4>
+  <p>...</p>
+</div>
+```
+
 ## Usage
 
 ### Via data attributes
 
 To easily add scrollspy behavior to your topbar navigation, add `data-bs-spy="scroll"` to the element you want to spy on (most typically this would be the `<body>`). Then add the `data-bs-target` attribute with the ID or class of the parent element of any Bootstrap `.nav` component.
-
-```css
-body {
-  position: relative;
-}
-```
 
 ```html
 <body data-bs-spy="scroll" data-bs-target="#navbar-example">
@@ -251,8 +293,6 @@ body {
 
 ### Via JavaScript
 
-After adding `position: relative;` in your CSS, call the scrollspy via JavaScript:
-
 ```js
 var scrollSpy = new bootstrap.ScrollSpy(document.body, {
   target: '#navbar-example'
@@ -262,7 +302,7 @@ var scrollSpy = new bootstrap.ScrollSpy(document.body, {
 {{< callout danger >}}
 #### Resolvable ID targets required
 
-Navbar links must have resolvable id targets. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`.
+Navbar links must have resolvable id targets, else they are being ignored. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`
 {{< /callout >}}
 
 {{< callout info >}}
@@ -271,17 +311,24 @@ Navbar links must have resolvable id targets. For example, a `<a href="#home">ho
 Target elements that are not visible will be ignored and their corresponding nav items will never be highlighted.
 {{< /callout >}}
 
+
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-offset=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-root-margin=""`.
 
 {{< bs-table "table" >}}
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `offset` | number | `10` | Pixels to offset from top when calculating position of scroll. |
-| `method` | string | `auto` | Finds which section the spied element is in. `auto` will choose the best method to get scroll coordinates. `offset` will use the [`Element.getBoundingClientRect()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) method to get scroll coordinates. `position` will use the [`HTMLElement.offsetTop`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop) and [`HTMLElement.offsetLeft`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetLeft) properties to get scroll coordinates.` |
-| `target` | string, jQuery object, DOM element |  | Specifies element to apply Scrollspy plugin. |
+| `rootMargin` | string | `0px 0px -40%` | Intersection Observer [rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin) valid units, when calculating position of scroll. |
+| `target` | string \| jQuery object \| DOM element |  | Specifies element to apply Scrollspy plugin. |
 {{< /bs-table >}}
+
+{{< callout warning >}}
+**Deprecated Options**
+
+Since 5.1 we [were using](https://getbootstrap.com/docs/5.1/components/scrollspy/#options) `offset` & `method` options, that are now deprecated, and replaced by `rootMargin`.
+To keep compatibility of them, we will continue parse, given `offset` to `rootMargin`, till **v6**
+{{< /callout >}}
 
 ### Methods
 
