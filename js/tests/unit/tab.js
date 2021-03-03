@@ -303,11 +303,11 @@ $(function () {
       .bootstrapTab('show')
   })
 
-  QUnit.test('selected tab should have aria-selected', function (assert) {
+  QUnit.test('selected tab should have correct aria-selected', function (assert) {
     assert.expect(8)
     var tabsHTML = '<ul class="nav nav-tabs" role="tablist">' +
-        '<li><button type="button" data-target="#home" role="tab">Home</button></li>' +
-        '<li><button type="button" data-target="#profile" role="tab">Profile</button></li>' +
+        '<li><button type="button" data-target="#home" role="tab" aria-selected="false">Home</button></li>' +
+        '<li><button type="button" data-target="#profile" role="tab" aria-selected="false">Profile</button></li>' +
         '</ul>'
     var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
 
