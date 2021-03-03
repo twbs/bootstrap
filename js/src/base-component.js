@@ -17,23 +17,25 @@ const VERSION = '5.0.0-beta2'
 
 class BaseComponent {
   constructor(element) {
+    element = typeof element === 'string' ? document.querySelector(element) : element
+
     if (!element) {
       return
     }
 
     this._element = element
-    Data.setData(element, this.constructor.DATA_KEY, this)
+    Data.set(this._element, this.constructor.DATA_KEY, this)
   }
 
   dispose() {
-    Data.removeData(this._element, this.constructor.DATA_KEY)
+    Data.remove(this._element, this.constructor.DATA_KEY)
     this._element = null
   }
 
   /** Static */
 
   static getInstance(element) {
-    return Data.getData(element, this.DATA_KEY)
+    return Data.get(element, this.DATA_KEY)
   }
 
   static get VERSION() {

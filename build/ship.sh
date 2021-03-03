@@ -47,7 +47,7 @@ npm run release
 printf "\n%s=======================================================%s" "$magenta" "$end"
 printf "\n%sCopy it over...%s" "$magenta" "$end"
 printf "\n%s=======================================================\n%s" "$magenta" "$end"
-cp -rf _gh_pages/. ../bs-docs/
+cp -rf _site/. ../bs-docs/
 printf "\nDone!\n"
 
 printf "\n%s=======================================================%s" "$green" "$end"
