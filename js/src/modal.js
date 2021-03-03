@@ -10,12 +10,11 @@ import {
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
-  isVisible,
   isRTL,
+  isVisible,
   reflow,
   typeCheckConfig
 } from './util/index'
-import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
@@ -222,6 +221,7 @@ class Modal extends BaseComponent {
   _getConfig(config) {
     config = {
       ...Default,
+      ...Manipulator.getDataAttributes(this._element),
       ...config
     }
     typeCheckConfig(NAME, config, DefaultType)
@@ -509,24 +509,17 @@ class Modal extends BaseComponent {
 
   static jQueryInterface(config, relatedTarget) {
     return this.each(function () {
-      let data = Data.get(this, DATA_KEY)
-      const _config = {
-        ...Default,
-        ...Manipulator.getDataAttributes(this),
-        ...(typeof config === 'object' && config ? config : {})
+      const data = Modal.getInstance(this) || new Modal(this, typeof config === 'object' ? config : {})
+
+      if (typeof config !== 'string') {
+        return
       }
 
-      if (!data) {
-        data = new Modal(this, _config)
+      if (typeof data[config] === 'undefined') {
+        throw new TypeError(`No method named "${config}"`)
       }
 
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-
-        data[config](relatedTarget)
-      }
+      data[config](relatedTarget)
     })
   }
 }
@@ -540,7 +533,7 @@ class Modal extends BaseComponent {
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   const target = getElementFromSelector(this)
 
-  if (this.tagName === 'A' || this.tagName === 'AREA') {
+  if (['A', 'AREA'].includes(this.tagName)) {
     event.preventDefault()
   }
 
@@ -557,15 +550,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     })
   })
 
-  let data = Data.get(target, DATA_KEY)
-  if (!data) {
-    const config = {
-      ...Manipulator.getDataAttributes(target),
-      ...Manipulator.getDataAttributes(this)
-    }
-
-    data = new Modal(target, config)
-  }
+  const data = Modal.getInstance(target) || new Modal(target, Manipulator.getDataAttributes(this))
 
   data.toggle(this)
 })
