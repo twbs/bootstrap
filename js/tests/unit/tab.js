@@ -194,6 +194,32 @@ $(function () {
       .bootstrapTab('show')
   })
 
+  QUnit.test('show and shown events should reference correct relatedTarget', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    var tabsHTML =
+        '<ul class="nav nav-tabs" role="tablist">' +
+        '  <li class="nav-item" role="presentation"><button type="button" data-target="#home" class="nav-link active" role="tab" aria-selected="true">Home</button></li>' +
+        '  <li class="nav-item" role="presentation"><button type="button" data-target="#profile" class="nav-link" role="tab" aria-selected="false">Profile</button></li>' +
+        '</ul>' +
+        '<div class="tab-content">' +
+        '  <div class="tab-pane active" id="home" role="tabpanel"></div>' +
+        '  <div class="tab-pane" id="profile" role="tabpanel"></div>' +
+        '</div>'
+
+    $(tabsHTML)
+      .find('ul > li:last-child button')
+      .on('show.bs.tab', function (e) {
+        assert.strictEqual(e.relatedTarget.getAttribute('data-target'), '#home', 'references correct element as relatedTarget')
+      })
+      .on('shown.bs.tab', function (e) {
+        assert.strictEqual(e.relatedTarget.getAttribute('data-target'), '#home', 'references correct element as relatedTarget')
+        done()
+      })
+      .bootstrapTab('show')
+  })
+
   QUnit.test('should fire hide and hidden events', function (assert) {
     assert.expect(2)
     var done = assert.async()
