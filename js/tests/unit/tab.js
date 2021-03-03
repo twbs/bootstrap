@@ -179,7 +179,7 @@ $(function () {
     assert.expect(0)
     var tabsHTML = '<ul class="nav nav-tabs" role="tablist">' +
       '<li class="nav-item"><button type="button" data-target="#home" class="nav-link active" role="tab" aria-selected="true">Home</button></li>' +
-      '<li class="nav-item"><button type="button" data-target="#profile" class="nav-link disabled" role="tab">Profile</button></li>' +
+      '<li class="nav-item"><button type="button" data-target="#profile" class="nav-link" disabled role="tab">Profile</button></li>' +
       '</ul>' +
       '<div class="tab-content">' +
       '<div class="tab-pane active" id="home" role="tabpanel"></div>' +
@@ -187,7 +187,7 @@ $(function () {
       '</div>'
 
     $(tabsHTML)
-      .find('button.disabled')
+      .find('button[disabled]')
       .on('shown.bs.tab', function () {
         assert.ok(true, 'shown event fired')
       })
