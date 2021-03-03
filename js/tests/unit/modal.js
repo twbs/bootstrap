@@ -986,7 +986,7 @@ $(function () {
       setTimeout(function () {
         assert.ok($modal.hasClass('modal-static'), 'has modal-static class')
         done()
-      }, 0)
+      }, 20)
     })
       .bootstrapModal({
         backdrop: 'static'
