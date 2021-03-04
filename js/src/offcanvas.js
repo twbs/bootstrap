@@ -54,7 +54,7 @@ const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="offcanvas"]'
  * ------------------------------------------------------------------------
  */
 
-class OffCanvas extends BaseComponent {
+class Offcanvas extends BaseComponent {
   constructor(element) {
     super(element)
 
@@ -181,7 +181,7 @@ class OffCanvas extends BaseComponent {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      const data = Data.get(this, DATA_KEY) || new OffCanvas(this)
+      const data = Data.get(this, DATA_KEY) || new Offcanvas(this)
 
       if (typeof config === 'string') {
         if (typeof data[config] === 'undefined') {
@@ -224,7 +224,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     return
   }
 
-  const data = Data.get(target, DATA_KEY) || new OffCanvas(target)
+  const data = Data.get(target, DATA_KEY) || new Offcanvas(target)
   data.toggle(this)
 })
 
@@ -234,6 +234,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * ------------------------------------------------------------------------
  */
 
-defineJQueryPlugin(NAME, OffCanvas)
+defineJQueryPlugin(NAME, Offcanvas)
 
-export default OffCanvas
+export default Offcanvas
