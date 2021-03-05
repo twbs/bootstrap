@@ -64,16 +64,15 @@ const SELECTOR_MENU = '.dropdown-menu'
 const SELECTOR_NAVBAR_NAV = '.navbar-nav'
 const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
 
-const PLACEMENT_TOP = isRTL ? 'top-end' : 'top-start'
-const PLACEMENT_TOPEND = isRTL ? 'top-start' : 'top-end'
-const PLACEMENT_BOTTOM = isRTL ? 'bottom-end' : 'bottom-start'
-const PLACEMENT_BOTTOMEND = isRTL ? 'bottom-start' : 'bottom-end'
-const PLACEMENT_RIGHT = isRTL ? 'left-start' : 'right-start'
-const PLACEMENT_LEFT = isRTL ? 'right-start' : 'left-start'
+const PLACEMENT_TOP = isRTL() ? 'top-end' : 'top-start'
+const PLACEMENT_TOPEND = isRTL() ? 'top-start' : 'top-end'
+const PLACEMENT_BOTTOM = isRTL() ? 'bottom-end' : 'bottom-start'
+const PLACEMENT_BOTTOMEND = isRTL() ? 'bottom-start' : 'bottom-end'
+const PLACEMENT_RIGHT = isRTL() ? 'left-start' : 'right-start'
+const PLACEMENT_LEFT = isRTL() ? 'right-start' : 'left-start'
 
 const Default = {
   offset: [0, 2],
-  flip: true,
   boundary: 'clippingParents',
   reference: 'toggle',
   display: 'dynamic',
@@ -82,7 +81,6 @@ const Default = {
 
 const DefaultType = {
   offset: '(array|string|function)',
-  flip: 'boolean',
   boundary: '(string|element)',
   reference: '(string|element|object)',
   display: 'string',
@@ -232,7 +230,6 @@ class Dropdown extends BaseComponent {
   }
 
   dispose() {
-    super.dispose()
     EventHandler.off(this._element, EVENT_KEY)
     this._menu = null
 
@@ -240,6 +237,8 @@ class Dropdown extends BaseComponent {
       this._popper.destroy()
       this._popper = null
     }
+
+    super.dispose()
   }
 
   update() {
@@ -327,7 +326,6 @@ class Dropdown extends BaseComponent {
       modifiers: [{
         name: 'preventOverflow',
         options: {
-          altBoundary: this._config.flip,
           boundary: this._config.boundary
         }
       },
@@ -356,7 +354,7 @@ class Dropdown extends BaseComponent {
   // Static
 
   static dropdownInterface(element, config) {
-    let data = Data.getData(element, DATA_KEY)
+    let data = Data.get(element, DATA_KEY)
     const _config = typeof config === 'object' ? config : null
 
     if (!data) {
@@ -386,7 +384,7 @@ class Dropdown extends BaseComponent {
     const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
 
     for (let i = 0, len = toggles.length; i < len; i++) {
-      const context = Data.getData(toggles[i], DATA_KEY)
+      const context = Data.get(toggles[i], DATA_KEY)
       const relatedTarget = {
         relatedTarget: toggles[i]
       }

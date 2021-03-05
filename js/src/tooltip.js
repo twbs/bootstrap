@@ -64,9 +64,9 @@ const DefaultType = {
 const AttachmentMap = {
   AUTO: 'auto',
   TOP: 'top',
-  RIGHT: isRTL ? 'left' : 'right',
+  RIGHT: isRTL() ? 'left' : 'right',
   BOTTOM: 'bottom',
-  LEFT: isRTL ? 'right' : 'left'
+  LEFT: isRTL() ? 'right' : 'left'
 }
 
 const Default = {
@@ -275,7 +275,7 @@ class Tooltip extends BaseComponent {
     this._addAttachmentClass(attachment)
 
     const container = this._getContainer()
-    Data.setData(tip, this.constructor.DATA_KEY, this)
+    Data.set(tip, this.constructor.DATA_KEY, this)
 
     if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
       container.appendChild(tip)
@@ -465,11 +465,11 @@ class Tooltip extends BaseComponent {
 
   _initializeOnDelegatedTarget(event, context) {
     const dataKey = this.constructor.DATA_KEY
-    context = context || Data.getData(event.delegateTarget, dataKey)
+    context = context || Data.get(event.delegateTarget, dataKey)
 
     if (!context) {
       context = new this.constructor(event.delegateTarget, this._getDelegateConfig())
-      Data.setData(event.delegateTarget, dataKey, context)
+      Data.set(event.delegateTarget, dataKey, context)
     }
 
     return context
@@ -563,8 +563,7 @@ class Tooltip extends BaseComponent {
 
     triggers.forEach(trigger => {
       if (trigger === 'click') {
-        EventHandler.on(this._element, this.constructor.Event.CLICK, this.config.selector, event => this.toggle(event)
-        )
+        EventHandler.on(this._element, this.constructor.Event.CLICK, this.config.selector, event => this.toggle(event))
       } else if (trigger !== TRIGGER_MANUAL) {
         const eventIn = trigger === TRIGGER_HOVER ?
           this.constructor.Event.MOUSEENTER :
@@ -762,7 +761,7 @@ class Tooltip extends BaseComponent {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      let data = Data.getData(this, DATA_KEY)
+      let data = Data.get(this, DATA_KEY)
       const _config = typeof config === 'object' && config
 
       if (!data && /dispose|hide/.test(config)) {

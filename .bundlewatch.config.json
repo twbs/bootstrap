@@ -26,35 +26,35 @@
     },
     {
       "path": "./dist/css/bootstrap.css",
-      "maxSize": "24 kB"
+      "maxSize": "24.25 kB"
     },
     {
       "path": "./dist/css/bootstrap.min.css",
-      "maxSize": "22 kB"
+      "maxSize": "22.25 kB"
     },
     {
       "path": "./dist/js/bootstrap.bundle.js",
-      "maxSize": "42 kB"
+      "maxSize": "43 kB"
     },
     {
       "path": "./dist/js/bootstrap.bundle.min.js",
-      "maxSize": "21.5 kB"
+      "maxSize": "22.5 kB"
     },
     {
       "path": "./dist/js/bootstrap.esm.js",
-      "maxSize": "27 kB"
+      "maxSize": "28.5 kB"
     },
     {
       "path": "./dist/js/bootstrap.esm.min.js",
-      "maxSize": "18 kB"
+      "maxSize": "19 kB"
     },
     {
       "path": "./dist/js/bootstrap.js",
-      "maxSize": "28 kB"
+      "maxSize": "29 kB"
     },
     {
       "path": "./dist/js/bootstrap.min.js",
-      "maxSize": "15.5 kB"
+      "maxSize": "16.25 kB"
     }
   ],
   "ci": {

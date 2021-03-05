@@ -83,7 +83,7 @@ class Modal extends BaseComponent {
     super(element)
 
     this._config = this._getConfig(config)
-    this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, element)
+    this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element)
     this._backdrop = null
     this._isShown = false
     this._isBodyOverflowing = false
@@ -431,14 +431,13 @@ class Modal extends BaseComponent {
   // ----------------------------------------------------------------------
 
   _adjustDialog() {
-    const isModalOverflowing =
-      this._element.scrollHeight > document.documentElement.clientHeight
+    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
 
-    if ((!this._isBodyOverflowing && isModalOverflowing && !isRTL) || (this._isBodyOverflowing && !isModalOverflowing && isRTL)) {
+    if ((!this._isBodyOverflowing && isModalOverflowing && !isRTL()) || (this._isBodyOverflowing && !isModalOverflowing && isRTL())) {
       this._element.style.paddingLeft = `${this._scrollbarWidth}px`
     }
 
-    if ((this._isBodyOverflowing && !isModalOverflowing && !isRTL) || (!this._isBodyOverflowing && isModalOverflowing && isRTL)) {
+    if ((this._isBodyOverflowing && !isModalOverflowing && !isRTL()) || (!this._isBodyOverflowing && isModalOverflowing && isRTL())) {
       this._element.style.paddingRight = `${this._scrollbarWidth}px`
     }
   }
@@ -467,6 +466,10 @@ class Modal extends BaseComponent {
   _setElementAttributes(selector, styleProp, callback) {
     SelectorEngine.find(selector)
       .forEach(element => {
+        if (element !== document.body && window.innerWidth > element.clientWidth + this._scrollbarWidth) {
+          return
+        }
+
         const actualValue = element.style[styleProp]
         const calculatedValue = window.getComputedStyle(element)[styleProp]
         Manipulator.setDataAttribute(element, styleProp, actualValue)
@@ -505,7 +508,7 @@ class Modal extends BaseComponent {
 
   static jQueryInterface(config, relatedTarget) {
     return this.each(function () {
-      let data = Data.getData(this, DATA_KEY)
+      let data = Data.get(this, DATA_KEY)
       const _config = {
         ...Default,
         ...Manipulator.getDataAttributes(this),
@@ -553,7 +556,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     })
   })
 
-  let data = Data.getData(target, DATA_KEY)
+  let data = Data.get(target, DATA_KEY)
   if (!data) {
     const config = {
       ...Manipulator.getDataAttributes(target),
