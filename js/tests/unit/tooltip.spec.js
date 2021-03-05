@@ -3,7 +3,7 @@ import EventHandler from '../../src/dom/event-handler'
 import { noop } from '../../src/util/index'
 
 /** Test helpers */
-import { getFixture, clearFixture, jQueryMock, createEvent } from '../helpers/fixture'
+import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Tooltip', () => {
   let fixtureEl
@@ -1303,6 +1303,60 @@ describe('Tooltip', () => {
       })
 
       tooltip.show()
+    })
+  })
+
+  describe('getOrCreateInstance', () => {
+    it('should return tooltip instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const tooltip = new Tooltip(div)
+
+      expect(Tooltip.getOrCreateInstance(div)).toEqual(tooltip)
+      expect(Tooltip.getInstance(div)).toEqual(Tooltip.getOrCreateInstance(div, {}))
+      expect(Tooltip.getOrCreateInstance(div)).toBeInstanceOf(Tooltip)
+    })
+
+    it('should return new instance when there is no tooltip instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Tooltip.getInstance(div)).toEqual(null)
+      expect(Tooltip.getOrCreateInstance(div)).toBeInstanceOf(Tooltip)
+    })
+
+    it('should return new instance when there is no tooltip instance with given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Tooltip.getInstance(div)).toEqual(null)
+      const tooltip = Tooltip.getOrCreateInstance(div, {
+        title: () => 'test'
+      })
+      expect(tooltip).toBeInstanceOf(Tooltip)
+
+      expect(tooltip.getTitle()).toEqual('test')
+    })
+
+    it('should return the instance when exists without given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const tooltip = new Tooltip(div, {
+        title: () => 'nothing'
+      })
+      expect(Tooltip.getInstance(div)).toEqual(tooltip)
+
+      const tooltip2 = Tooltip.getOrCreateInstance(div, {
+        title: () => 'test'
+      })
+      expect(tooltip).toBeInstanceOf(Tooltip)
+      expect(tooltip2).toEqual(tooltip)
+
+      expect(tooltip2.getTitle()).toEqual('nothing')
     })
   })
 

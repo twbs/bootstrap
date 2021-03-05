@@ -620,38 +620,6 @@ describe('Offcanvas', () => {
       }).toThrowError(TypeError, `No method named "${action}"`)
     })
 
-    it('should throw error on protected method', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const action = '_getConfig'
-
-      jQueryMock.fn.offcanvas = Offcanvas.jQueryInterface
-      jQueryMock.elements = [div]
-
-      try {
-        jQueryMock.fn.offcanvas.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
-    })
-
-    it('should throw error if method "constructor" is being called', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const action = 'constructor'
-
-      jQueryMock.fn.offcanvas = Offcanvas.jQueryInterface
-      jQueryMock.elements = [div]
-
-      try {
-        jQueryMock.fn.offcanvas.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
-    })
-
     it('should call offcanvas method', () => {
       fixtureEl.innerHTML = '<div></div>'
 
@@ -675,8 +643,6 @@ describe('Offcanvas', () => {
       jQueryMock.elements = [div]
 
       jQueryMock.fn.offcanvas.call(jQueryMock, { scroll: true })
-      spyOn(Offcanvas.prototype, 'constructor')
-      expect(Offcanvas.prototype.constructor).not.toHaveBeenCalledWith(div, { scroll: true })
 
       const offcanvas = Offcanvas.getInstance(div)
       expect(offcanvas).not.toBeNull()
@@ -701,6 +667,60 @@ describe('Offcanvas', () => {
       const div = fixtureEl.querySelector('div')
 
       expect(Offcanvas.getInstance(div)).toBeNull()
+    })
+  })
+
+  describe('getOrCreateInstance', () => {
+    it('should return offcanvas instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const offcanvas = new Offcanvas(div)
+
+      expect(Offcanvas.getOrCreateInstance(div)).toEqual(offcanvas)
+      expect(Offcanvas.getInstance(div)).toEqual(Offcanvas.getOrCreateInstance(div, {}))
+      expect(Offcanvas.getOrCreateInstance(div)).toBeInstanceOf(Offcanvas)
+    })
+
+    it('should return new instance when there is no Offcanvas instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Offcanvas.getInstance(div)).toEqual(null)
+      expect(Offcanvas.getOrCreateInstance(div)).toBeInstanceOf(Offcanvas)
+    })
+
+    it('should return new instance when there is no offcanvas instance with given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Offcanvas.getInstance(div)).toEqual(null)
+      const offcanvas = Offcanvas.getOrCreateInstance(div, {
+        scroll: true
+      })
+      expect(offcanvas).toBeInstanceOf(Offcanvas)
+
+      expect(offcanvas._config.scroll).toEqual(true)
+    })
+
+    it('should return the instance when exists without given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const offcanvas = new Offcanvas(div, {
+        scroll: true
+      })
+      expect(Offcanvas.getInstance(div)).toEqual(offcanvas)
+
+      const offcanvas2 = Offcanvas.getOrCreateInstance(div, {
+        scroll: false
+      })
+      expect(offcanvas).toBeInstanceOf(Offcanvas)
+      expect(offcanvas2).toEqual(offcanvas)
+
+      expect(offcanvas2._config.scroll).toEqual(true)
     })
   })
 })

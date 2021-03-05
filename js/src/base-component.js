@@ -61,6 +61,12 @@ class BaseComponent {
     return Data.get(element, this.DATA_KEY)
   }
 
+  static getOrCreateInstance(element, config = {}) {
+    const _config = typeof config === 'object' ? config : null
+
+    return this.getInstance(element) || new this(element, _config)
+  }
+
   static get VERSION() {
     return VERSION
   }
