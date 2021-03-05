@@ -550,7 +550,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     })
   })
 
-  const data = Modal.getInstance(target) || new Modal(target, Manipulator.getDataAttributes(this))
+  const data = Modal.getInstance(target) || new Modal(target)
 
   data.toggle(this)
 })
