@@ -8,7 +8,7 @@
 import SelectorEngine from '../dom/selector-engine'
 import Manipulator from '../dom/manipulator'
 
-const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed'
+const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
 const SELECTOR_STICKY_CONTENT = '.sticky-top'
 
 const getWidth = () => {
