@@ -708,8 +708,9 @@ describe('Tooltip', () => {
       tooltipEl.dispatchEvent(createEvent('mouseover'))
     })
 
-    it('should not hide tooltip if leave event occurs and enter event occurs during hide transition', done => {
-      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+    it('should properly maintain tooltip state if leave event occurs and enter event occurs during hide transition', done => {
+      // Style this tooltip to give it plenty of room for popper to do what it wants
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip" data-bs-placement="top" style="position:fixed;left:50%;top:50%;">Trigger</a>'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
@@ -721,6 +722,7 @@ describe('Tooltip', () => {
 
       setTimeout(() => {
         expect(tooltip._popper).not.toBeNull()
+        expect(tooltip.getTipElement().getAttribute('data-popper-placement')).toBe('top')
         tooltipEl.dispatchEvent(createEvent('mouseout'))
 
         setTimeout(() => {
@@ -730,6 +732,7 @@ describe('Tooltip', () => {
 
         setTimeout(() => {
           expect(tooltip._popper).not.toBeNull()
+          expect(tooltip.getTipElement().getAttribute('data-popper-placement')).toBe('top')
           done()
         }, 200)
       }, 0)
