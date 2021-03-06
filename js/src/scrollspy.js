@@ -17,6 +17,7 @@ import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
+import { isObject, isString, isUndefined } from './util/types-check'
 
 /**
  * ------------------------------------------------------------------------
@@ -155,10 +156,10 @@ class ScrollSpy extends BaseComponent {
   _getConfig(config) {
     config = {
       ...Default,
-      ...(typeof config === 'object' && config ? config : {})
+      ...(isObject(config) && config ? config : {})
     }
 
-    if (typeof config.target !== 'string' && isElement(config.target)) {
+    if (!isString(config.target) && isElement(config.target)) {
       let { id } = config.target
       if (!id) {
         id = getUID(NAME)
@@ -220,7 +221,7 @@ class ScrollSpy extends BaseComponent {
     for (let i = this._offsets.length; i--;) {
       const isActiveTarget = this._activeTarget !== this._targets[i] &&
           scrollTop >= this._offsets[i] &&
-          (typeof this._offsets[i + 1] === 'undefined' || scrollTop < this._offsets[i + 1])
+          (isUndefined(this._offsets[i + 1]) || scrollTop < this._offsets[i + 1])
 
       if (isActiveTarget) {
         this._activate(this._targets[i])
@@ -279,14 +280,14 @@ class ScrollSpy extends BaseComponent {
   static jQueryInterface(config) {
     return this.each(function () {
       let data = Data.get(this, DATA_KEY)
-      const _config = typeof config === 'object' && config
+      const _config = isObject(config) && config
 
       if (!data) {
         data = new ScrollSpy(this, _config)
       }
 
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
+      if (isString(config)) {
+        if (isUndefined(data[config])) {
           throw new TypeError(`No method named "${config}"`)
         }
 

@@ -1,3 +1,5 @@
+import { isFunction } from './types-check'
+
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v5.0.0-beta2): util/sanitizer.js
@@ -94,7 +96,7 @@ export function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
     return unsafeHtml
   }
 
-  if (sanitizeFn && typeof sanitizeFn === 'function') {
+  if (sanitizeFn && isFunction(sanitizeFn)) {
     return sanitizeFn(unsafeHtml)
   }
 

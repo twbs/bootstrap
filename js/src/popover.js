@@ -9,6 +9,7 @@ import { defineJQueryPlugin } from './util/index'
 import Data from './dom/data'
 import SelectorEngine from './dom/selector-engine'
 import Tooltip from './tooltip'
+import { isFunction, isObject, isString, isUndefined } from './util/types-check'
 
 /**
  * ------------------------------------------------------------------------
@@ -104,7 +105,7 @@ class Popover extends Tooltip {
     // we use append for html objects to maintain js events
     this.setElementContent(SelectorEngine.findOne(SELECTOR_TITLE, tip), this.getTitle())
     let content = this._getContent()
-    if (typeof content === 'function') {
+    if (isFunction(content)) {
       content = content.call(this._element)
     }
 
@@ -137,7 +138,7 @@ class Popover extends Tooltip {
   static jQueryInterface(config) {
     return this.each(function () {
       let data = Data.get(this, DATA_KEY)
-      const _config = typeof config === 'object' ? config : null
+      const _config = isObject(config) ? config : null
 
       if (!data && /dispose|hide/.test(config)) {
         return
@@ -148,8 +149,8 @@ class Popover extends Tooltip {
         Data.set(this, DATA_KEY, data)
       }
 
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
+      if (isString(config)) {
+        if (isUndefined(data[config])) {
           throw new TypeError(`No method named "${config}"`)
         }
 

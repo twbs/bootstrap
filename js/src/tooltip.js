@@ -27,6 +27,7 @@ import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
+import { isFunction, isNumber, isObject, isString, isUndefined } from './util/types-check'
 
 /**
  * ------------------------------------------------------------------------
@@ -127,7 +128,7 @@ const TRIGGER_MANUAL = 'manual'
 
 class Tooltip extends BaseComponent {
   constructor(element, config) {
-    if (typeof Popper === 'undefined') {
+    if (isUndefined(Popper)) {
       throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)')
     }
 
@@ -267,7 +268,7 @@ class Tooltip extends BaseComponent {
       tip.classList.add(CLASS_NAME_FADE)
     }
 
-    const placement = typeof this.config.placement === 'function' ?
+    const placement = isFunction(this.config.placement) ?
       this.config.placement.call(this, tip, this._element) :
       this.config.placement
 
@@ -287,7 +288,7 @@ class Tooltip extends BaseComponent {
 
     tip.classList.add(CLASS_NAME_SHOW)
 
-    const customClass = typeof this.config.customClass === 'function' ? this.config.customClass() : this.config.customClass
+    const customClass = isFunction(this.config.customClass) ? this.config.customClass() : this.config.customClass
     if (customClass) {
       tip.classList.add(...customClass.split(' '))
     }
@@ -408,7 +409,7 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    if (typeof content === 'object' && isElement(content)) {
+    if (isObject(content) && isElement(content)) {
       if (content.jquery) {
         content = content[0]
       }
@@ -441,7 +442,7 @@ class Tooltip extends BaseComponent {
     let title = this._element.getAttribute('data-bs-original-title')
 
     if (!title) {
-      title = typeof this.config.title === 'function' ?
+      title = isFunction(this.config.title) ?
         this.config.title.call(this._element) :
         this.config.title
     }
@@ -478,11 +479,11 @@ class Tooltip extends BaseComponent {
   _getOffset() {
     const { offset } = this.config
 
-    if (typeof offset === 'string') {
+    if (isString(offset)) {
       return offset.split(',').map(val => Number.parseInt(val, 10))
     }
 
-    if (typeof offset === 'function') {
+    if (isFunction(offset)) {
       return popperData => offset(popperData, this._element)
     }
 
@@ -534,7 +535,7 @@ class Tooltip extends BaseComponent {
 
     return {
       ...defaultBsPopperConfig,
-      ...(typeof this.config.popperConfig === 'function' ? this.config.popperConfig(defaultBsPopperConfig) : this.config.popperConfig)
+      ...(isFunction(this.config.popperConfig) ? this.config.popperConfig(defaultBsPopperConfig) : this.config.popperConfig)
     }
   }
 
@@ -600,7 +601,7 @@ class Tooltip extends BaseComponent {
     const title = this._element.getAttribute('title')
     const originalTitleType = typeof this._element.getAttribute('data-bs-original-title')
 
-    if (title || originalTitleType !== 'string') {
+    if (title || !isString(originalTitleType)) {
       this._element.setAttribute('data-bs-original-title', title || '')
       if (title && !this._element.getAttribute('aria-label') && !this._element.textContent) {
         this._element.setAttribute('aria-label', title)
@@ -688,28 +689,28 @@ class Tooltip extends BaseComponent {
       }
     })
 
-    if (config && typeof config.container === 'object' && config.container.jquery) {
+    if (config && isObject(config.container) && config.container.jquery) {
       config.container = config.container[0]
     }
 
     config = {
       ...this.constructor.Default,
       ...dataAttributes,
-      ...(typeof config === 'object' && config ? config : {})
+      ...(isObject(config) && config ? config : {})
     }
 
-    if (typeof config.delay === 'number') {
+    if (isNumber(config.delay)) {
       config.delay = {
         show: config.delay,
         hide: config.delay
       }
     }
 
-    if (typeof config.title === 'number') {
+    if (isNumber(config.title)) {
       config.title = config.title.toString()
     }
 
-    if (typeof config.content === 'number') {
+    if (isNumber(config.content)) {
       config.content = config.content.toString()
     }
 
@@ -762,7 +763,7 @@ class Tooltip extends BaseComponent {
   static jQueryInterface(config) {
     return this.each(function () {
       let data = Data.get(this, DATA_KEY)
-      const _config = typeof config === 'object' && config
+      const _config = isObject(config) && config
 
       if (!data && /dispose|hide/.test(config)) {
         return
@@ -772,8 +773,8 @@ class Tooltip extends BaseComponent {
         data = new Tooltip(this, _config)
       }
 
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
+      if (isString(config)) {
+        if (isUndefined(data[config])) {
           throw new TypeError(`No method named "${config}"`)
         }
 

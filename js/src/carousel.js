@@ -21,6 +21,7 @@ import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
+import { isNumber, isObject, isString, isUndefined } from './util/types-check'
 
 /**
  * ------------------------------------------------------------------------
@@ -533,23 +534,23 @@ class Carousel extends BaseComponent {
       ...Manipulator.getDataAttributes(element)
     }
 
-    if (typeof config === 'object') {
+    if (isObject(config)) {
       _config = {
         ..._config,
         ...config
       }
     }
 
-    const action = typeof config === 'string' ? config : _config.slide
+    const action = isString(config) ? config : _config.slide
 
     if (!data) {
       data = new Carousel(element, _config)
     }
 
-    if (typeof config === 'number') {
+    if (isNumber(config)) {
       data.to(config)
-    } else if (typeof action === 'string') {
-      if (typeof data[action] === 'undefined') {
+    } else if (isString(action)) {
+      if (isUndefined(data[action])) {
         throw new TypeError(`No method named "${action}"`)
       }
 

@@ -21,6 +21,7 @@ import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
+import { isFunction, isObject, isString, isUndefined } from './util/types-check'
 
 /**
  * ------------------------------------------------------------------------
@@ -157,7 +158,7 @@ class Dropdown extends BaseComponent {
     if (this._inNavbar) {
       Manipulator.setDataAttribute(this._menu, 'popper', 'none')
     } else {
-      if (typeof Popper === 'undefined') {
+      if (isUndefined(Popper)) {
         throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)')
       }
 
@@ -169,10 +170,10 @@ class Dropdown extends BaseComponent {
         referenceElement = this._config.reference
 
         // Check if it's jQuery element
-        if (typeof this._config.reference.jquery !== 'undefined') {
+        if (!isUndefined(this._config.reference.jquery)) {
           referenceElement = this._config.reference[0]
         }
-      } else if (typeof this._config.reference === 'object') {
+      } else if (isObject(this._config.reference)) {
         referenceElement = this._config.reference
       }
 
@@ -267,8 +268,8 @@ class Dropdown extends BaseComponent {
 
     typeCheckConfig(NAME, config, this.constructor.DefaultType)
 
-    if (typeof config.reference === 'object' && !isElement(config.reference) &&
-      typeof config.reference.getBoundingClientRect !== 'function'
+    if (isObject(config.reference) && !isElement(config.reference) &&
+      !isFunction(config.reference.getBoundingClientRect)
     ) {
       // Popper virtual elements require a getBoundingClientRect method
       throw new TypeError(`${NAME.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`)
@@ -309,11 +310,11 @@ class Dropdown extends BaseComponent {
   _getOffset() {
     const { offset } = this._config
 
-    if (typeof offset === 'string') {
+    if (isString(offset)) {
       return offset.split(',').map(val => Number.parseInt(val, 10))
     }
 
-    if (typeof offset === 'function') {
+    if (isFunction(offset)) {
       return popperData => offset(popperData, this._element)
     }
 
@@ -347,7 +348,7 @@ class Dropdown extends BaseComponent {
 
     return {
       ...defaultBsPopperConfig,
-      ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig)
+      ...(isFunction(this._config.popperConfig) ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig)
     }
   }
 
@@ -355,14 +356,14 @@ class Dropdown extends BaseComponent {
 
   static dropdownInterface(element, config) {
     let data = Data.get(element, DATA_KEY)
-    const _config = typeof config === 'object' ? config : null
+    const _config = isObject(config) ? config : null
 
     if (!data) {
       data = new Dropdown(element, _config)
     }
 
-    if (typeof config === 'string') {
-      if (typeof data[config] === 'undefined') {
+    if (isString(config)) {
+      if (isUndefined(data[config])) {
         throw new TypeError(`No method named "${config}"`)
       }
 

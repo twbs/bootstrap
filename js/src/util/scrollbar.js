@@ -7,6 +7,7 @@
 
 import SelectorEngine from '../dom/selector-engine'
 import Manipulator from '../dom/manipulator'
+import { isUndefined } from './types-check'
 
 const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed'
 const SELECTOR_STICKY_CONTENT = '.sticky-top'
@@ -49,7 +50,7 @@ const reset = () => {
 const _resetElementAttributes = (selector, styleProp) => {
   SelectorEngine.find(selector).forEach(element => {
     const value = Manipulator.getDataAttribute(element, styleProp)
-    if (typeof value === 'undefined' && element === document.body) {
+    if (isUndefined(value) && element === document.body) {
       element.style.removeProperty(styleProp)
     } else {
       Manipulator.removeDataAttribute(element, styleProp)

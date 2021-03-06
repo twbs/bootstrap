@@ -20,6 +20,7 @@ import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
+import { isObject, isString, isUndefined } from './util/types-check'
 
 /**
  * ------------------------------------------------------------------------
@@ -132,7 +133,7 @@ class Collapse extends BaseComponent {
     if (this._parent) {
       actives = SelectorEngine.find(SELECTOR_ACTIVES, this._parent)
         .filter(elem => {
-          if (typeof this._config.parent === 'string') {
+          if (isString(this._config.parent)) {
             return elem.getAttribute('data-bs-parent') === this._config.parent
           }
 
@@ -289,7 +290,7 @@ class Collapse extends BaseComponent {
 
     if (isElement(parent)) {
       // it's a jQuery object
-      if (typeof parent.jquery !== 'undefined' || typeof parent[0] !== 'undefined') {
+      if (!isUndefined(parent.jquery) || !isUndefined(parent[0])) {
         parent = parent[0]
       }
     } else {
@@ -336,10 +337,10 @@ class Collapse extends BaseComponent {
     const _config = {
       ...Default,
       ...Manipulator.getDataAttributes(element),
-      ...(typeof config === 'object' && config ? config : {})
+      ...(isObject(config) && config ? config : {})
     }
 
-    if (!data && _config.toggle && typeof config === 'string' && /show|hide/.test(config)) {
+    if (!data && _config.toggle && isString(config) && /show|hide/.test(config)) {
       _config.toggle = false
     }
 
@@ -347,8 +348,8 @@ class Collapse extends BaseComponent {
       data = new Collapse(element, _config)
     }
 
-    if (typeof config === 'string') {
-      if (typeof data[config] === 'undefined') {
+    if (isString(config)) {
+      if (isUndefined(data[config])) {
         throw new TypeError(`No method named "${config}"`)
       }
 
@@ -384,7 +385,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     let config
     if (data) {
       // update parent attribute
-      if (data._parent === null && typeof triggerData.parent === 'string') {
+      if (data._parent === null && isString(triggerData.parent)) {
         data._config.parent = triggerData.parent
         data._parent = data._getParent()
       }

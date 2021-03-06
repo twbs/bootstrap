@@ -6,6 +6,7 @@
  */
 
 import { getjQuery } from '../util/index'
+import { isString, isUndefined } from '../util/types-check'
 
 /**
  * ------------------------------------------------------------------------
@@ -141,7 +142,7 @@ function findHandler(events, handler, delegationSelector = null) {
 }
 
 function normalizeParams(originalTypeEvent, handler, delegationFn) {
-  const delegation = typeof handler === 'string'
+  const delegation = isString(handler)
   const originalHandler = delegation ? delegationFn : handler
 
   // allow to get the native events from namespaced events ('click.bs.button' --> 'click')
@@ -162,7 +163,7 @@ function normalizeParams(originalTypeEvent, handler, delegationFn) {
 }
 
 function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
-  if (typeof originalTypeEvent !== 'string' || !element) {
+  if (!isString(originalTypeEvent) || !element) {
     return
   }
 
@@ -229,7 +230,7 @@ const EventHandler = {
   },
 
   off(element, originalTypeEvent, handler, delegationFn) {
-    if (typeof originalTypeEvent !== 'string' || !element) {
+    if (!isString(originalTypeEvent) || !element) {
       return
     }
 
@@ -238,7 +239,7 @@ const EventHandler = {
     const events = getEvent(element)
     const isNamespace = originalTypeEvent.startsWith('.')
 
-    if (typeof originalHandler !== 'undefined') {
+    if (!isUndefined(originalHandler)) {
       // Simplest case: handler is passed, remove that listener ONLY.
       if (!events || !events[typeEvent]) {
         return
@@ -267,7 +268,7 @@ const EventHandler = {
   },
 
   trigger(element, event, args) {
-    if (typeof event !== 'string' || !element) {
+    if (!isString(event) || !element) {
       return null
     }
 
@@ -302,7 +303,7 @@ const EventHandler = {
     }
 
     // merge custom information in our event
-    if (typeof args !== 'undefined') {
+    if (!isUndefined(args)) {
       Object.keys(args).forEach(key => {
         Object.defineProperty(evt, key, {
           get() {

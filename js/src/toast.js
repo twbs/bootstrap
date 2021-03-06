@@ -16,6 +16,7 @@ import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import BaseComponent from './base-component'
+import { isObject, isString, isUndefined } from './util/types-check'
 
 /**
  * ------------------------------------------------------------------------
@@ -168,7 +169,7 @@ class Toast extends BaseComponent {
     config = {
       ...Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' && config ? config : {})
+      ...(isObject(config) && config ? config : {})
     }
 
     typeCheckConfig(NAME, config, this.constructor.DefaultType)
@@ -190,14 +191,14 @@ class Toast extends BaseComponent {
   static jQueryInterface(config) {
     return this.each(function () {
       let data = Data.get(this, DATA_KEY)
-      const _config = typeof config === 'object' && config
+      const _config = isObject(config) && config
 
       if (!data) {
         data = new Toast(this, _config)
       }
 
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
+      if (isString(config)) {
+        if (isUndefined(data[config])) {
           throw new TypeError(`No method named "${config}"`)
         }
 

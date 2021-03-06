@@ -20,6 +20,7 @@ import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
+import { isObject, isString, isUndefined } from './util/types-check'
 
 /**
  * ------------------------------------------------------------------------
@@ -486,7 +487,7 @@ class Modal extends BaseComponent {
   _resetElementAttributes(selector, styleProp) {
     SelectorEngine.find(selector).forEach(element => {
       const value = Manipulator.getDataAttribute(element, styleProp)
-      if (typeof value === 'undefined' && element === document.body) {
+      if (isUndefined(value) && element === document.body) {
         element.style[styleProp] = ''
       } else {
         Manipulator.removeDataAttribute(element, styleProp)
@@ -512,15 +513,15 @@ class Modal extends BaseComponent {
       const _config = {
         ...Default,
         ...Manipulator.getDataAttributes(this),
-        ...(typeof config === 'object' && config ? config : {})
+        ...(isObject(config) && config ? config : {})
       }
 
       if (!data) {
         data = new Modal(this, _config)
       }
 
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
+      if (isString(config)) {
+        if (isUndefined(data[config])) {
           throw new TypeError(`No method named "${config}"`)
         }
 

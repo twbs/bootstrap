@@ -1,3 +1,5 @@
+import { isFunction } from './types-check'
+
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v5.0.0-beta2): util/index.js
@@ -159,7 +161,7 @@ const findShadowRoot = element => {
   }
 
   // Can find the shadow root otherwise it'll return the document
-  if (typeof element.getRootNode === 'function') {
+  if (isFunction(element.getRootNode)) {
     const root = element.getRootNode()
     return root instanceof ShadowRoot ? root : null
   }

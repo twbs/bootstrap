@@ -17,6 +17,7 @@ import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import BaseComponent from './base-component'
 import SelectorEngine from './dom/selector-engine'
+import { isString, isUndefined } from './util/types-check'
 
 /**
  * ------------------------------------------------------------------------
@@ -183,8 +184,8 @@ class OffCanvas extends BaseComponent {
     return this.each(function () {
       const data = Data.get(this, DATA_KEY) || new OffCanvas(this)
 
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
+      if (isString(config)) {
+        if (isUndefined(data[config])) {
           throw new TypeError(`No method named "${config}"`)
         }
 
