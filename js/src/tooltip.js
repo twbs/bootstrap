@@ -283,6 +283,10 @@ class Tooltip extends BaseComponent {
 
     EventHandler.trigger(this._element, this.constructor.Event.INSERTED)
 
+    if (this._popper) {
+      this._popper.destroy()
+    }
+
     this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
 
     tip.classList.add(CLASS_NAME_SHOW)
@@ -650,7 +654,7 @@ class Tooltip extends BaseComponent {
     if (event) {
       context._activeTrigger[
         event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER
-      ] = false
+      ] = context._element.contains(event.relatedTarget)
     }
 
     if (context._isWithActiveTrigger()) {
