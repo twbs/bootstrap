@@ -708,6 +708,35 @@ describe('Tooltip', () => {
       tooltipEl.dispatchEvent(createEvent('mouseover'))
     })
 
+    it('should not hide tooltip if leave event occurs and enter event occurs during hide transition', done => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      spyOn(window, 'getComputedStyle').and.returnValue({
+        transitionDuration: '0.15s',
+        transitionDelay: '0s'
+      })
+
+      setTimeout(() => {
+        expect(tooltip._popper).not.toBeNull()
+        tooltipEl.dispatchEvent(createEvent('mouseout'))
+
+        setTimeout(() => {
+          expect(tooltip.getTipElement().classList.contains('show')).toEqual(false)
+          tooltipEl.dispatchEvent(createEvent('mouseover'))
+        }, 100)
+
+        setTimeout(() => {
+          expect(tooltip._popper).not.toBeNull()
+          done()
+        }, 200)
+      }, 0)
+
+      tooltipEl.dispatchEvent(createEvent('mouseover'))
+    })
+
     it('should show a tooltip with custom class provided in data attributes', done => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip" data-bs-custom-class="custom-class">'
 

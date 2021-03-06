@@ -329,6 +329,10 @@ class Tooltip extends BaseComponent {
 
     const tip = this.getTipElement()
     const complete = () => {
+      if (this._isWithActiveTrigger()) {
+        return
+      }
+
       if (this._hoverState !== HOVER_STATE_SHOW && tip.parentNode) {
         tip.parentNode.removeChild(tip)
       }
