@@ -194,7 +194,7 @@ describe('Tooltip', () => {
       tooltip.enable()
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
-        expect(document.querySelector('.tooltip')).toBeDefined()
+        expect(document.querySelector('.tooltip')).not.toBeNull()
         done()
       })
 
@@ -267,7 +267,7 @@ describe('Tooltip', () => {
       const tooltip = new Tooltip(tooltipEl)
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
-        expect(document.querySelector('.tooltip')).toBeDefined()
+        expect(document.querySelector('.tooltip')).not.toBeNull()
         done()
       })
 
@@ -386,7 +386,7 @@ describe('Tooltip', () => {
       const tooltip = new Tooltip(tooltipEl)
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
-        expect(document.querySelector('.tooltip')).toBeDefined()
+        expect(document.querySelector('.tooltip')).not.toBeNull()
 
         tooltip.dispose()
 
@@ -408,7 +408,7 @@ describe('Tooltip', () => {
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
         const tooltipShown = document.querySelector('.tooltip')
 
-        expect(tooltipShown).toBeDefined()
+        expect(tooltipShown).not.toBeNull()
         expect(tooltipEl.getAttribute('aria-describedby')).toEqual(tooltipShown.getAttribute('id'))
         expect(tooltipShown.getAttribute('id')).toContain('tooltip')
         done()
@@ -516,7 +516,7 @@ describe('Tooltip', () => {
       })
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
-        expect(fixtureEl.querySelector('.tooltip')).toBeDefined()
+        expect(fixtureEl.querySelector('.tooltip')).not.toBeNull()
         done()
       })
 
@@ -535,7 +535,7 @@ describe('Tooltip', () => {
       })
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
-        expect(fixtureEl.querySelector('.tooltip')).toBeDefined()
+        expect(fixtureEl.querySelector('.tooltip')).not.toBeNull()
         done()
       })
 
@@ -551,7 +551,7 @@ describe('Tooltip', () => {
       })
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
-        expect(fixtureEl.querySelector('.tooltip')).toBeDefined()
+        expect(fixtureEl.querySelector('.tooltip')).not.toBeNull()
         done()
       })
 
@@ -568,7 +568,7 @@ describe('Tooltip', () => {
       })
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
-        expect(document.querySelector('.tooltip')).toBeDefined()
+        expect(document.querySelector('.tooltip')).not.toBeNull()
         expect(spy).toHaveBeenCalled()
         done()
       })
@@ -587,7 +587,7 @@ describe('Tooltip', () => {
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
         const tip = document.querySelector('.tooltip')
 
-        expect(tip).toBeDefined()
+        expect(tip).not.toBeNull()
         expect(tip.classList.contains('fade')).toEqual(false)
         done()
       })
@@ -810,7 +810,7 @@ describe('Tooltip', () => {
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
         const tip = document.querySelector('.tooltip')
-        expect(tip).toBeDefined()
+        expect(tip).not.toBeNull()
         expect(tip.classList.contains('custom-class')).toBeTrue()
         done()
       })
@@ -828,7 +828,7 @@ describe('Tooltip', () => {
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
         const tip = document.querySelector('.tooltip')
-        expect(tip).toBeDefined()
+        expect(tip).not.toBeNull()
         expect(tip.classList.contains('custom-class')).toBeTrue()
         expect(tip.classList.contains('custom-class-2')).toBeTrue()
         done()
@@ -848,7 +848,7 @@ describe('Tooltip', () => {
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
         const tip = document.querySelector('.tooltip')
-        expect(tip).toBeDefined()
+        expect(tip).not.toBeNull()
         expect(spy).toHaveBeenCalled()
         expect(tip.classList.contains('custom-class')).toBeTrue()
         done()
@@ -1263,7 +1263,7 @@ describe('Tooltip', () => {
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
         const tooltipShown = document.querySelector('.tooltip')
 
-        expect(tooltipShown).toBeDefined()
+        expect(tooltipShown).not.toBeNull()
         expect(tooltipEl.getAttribute('aria-label')).toEqual('Another tooltip')
         done()
       })
@@ -1280,7 +1280,7 @@ describe('Tooltip', () => {
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
         const tooltipShown = document.querySelector('.tooltip')
 
-        expect(tooltipShown).toBeDefined()
+        expect(tooltipShown).not.toBeNull()
         expect(tooltipEl.getAttribute('aria-label')).toEqual('Different label')
         done()
       })
@@ -1297,7 +1297,7 @@ describe('Tooltip', () => {
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
         const tooltipShown = document.querySelector('.tooltip')
 
-        expect(tooltipShown).toBeDefined()
+        expect(tooltipShown).not.toBeNull()
         expect(tooltipEl.getAttribute('aria-label')).toBeNull()
         done()
       })

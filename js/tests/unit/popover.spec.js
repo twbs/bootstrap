@@ -70,7 +70,7 @@ describe('Popover', () => {
       const popover = new Popover(popoverEl)
 
       popoverEl.addEventListener('shown.bs.popover', () => {
-        expect(document.querySelector('.popover')).toBeDefined()
+        expect(document.querySelector('.popover')).not.toBeNull()
         done()
       })
 
@@ -89,7 +89,7 @@ describe('Popover', () => {
       popoverEl.addEventListener('shown.bs.popover', () => {
         const popoverDisplayed = document.querySelector('.popover')
 
-        expect(popoverDisplayed).toBeDefined()
+        expect(popoverDisplayed).not.toBeNull()
         expect(popoverDisplayed.querySelector('.popover-header').textContent).toEqual('Bootstrap')
         expect(popoverDisplayed.querySelector('.popover-body').textContent).toEqual('loves writing tests （╯°□°）╯︵ ┻━┻')
         done()
@@ -109,7 +109,7 @@ describe('Popover', () => {
       popoverEl.addEventListener('shown.bs.popover', () => {
         const popoverDisplayed = document.querySelector('.popover')
 
-        expect(popoverDisplayed).toBeDefined()
+        expect(popoverDisplayed).not.toBeNull()
         expect(popoverDisplayed.querySelector('.popover-body').textContent).toEqual('Popover content')
         done()
       })
@@ -125,7 +125,7 @@ describe('Popover', () => {
 
       popoverEl.addEventListener('shown.bs.popover', () => {
         const tip = document.querySelector('.popover')
-        expect(tip).toBeDefined()
+        expect(tip).not.toBeNull()
         expect(tip.classList.contains('custom-class')).toBeTrue()
         done()
       })
