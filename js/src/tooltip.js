@@ -279,9 +279,8 @@ class Tooltip extends BaseComponent {
 
     if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
       container.appendChild(tip)
+      EventHandler.trigger(this._element, this.constructor.Event.INSERTED)
     }
-
-    EventHandler.trigger(this._element, this.constructor.Event.INSERTED)
 
     if (this._popper) {
       this._popper.update()
