@@ -892,6 +892,13 @@ Manually opens a modal. **Returns to the caller before the modal has actually be
 myModal.show()
 ```
 
+Also, you can pass related target:
+
+```js
+var relatedTarget = document.getElementById('toggleMyModal')
+myModal.show(relatedTarget)
+```
+
 #### hide
 
 Manually hides a modal. **Returns to the caller before the modal has actually been hidden** (i.e. before the `hidden.bs.modal` event occurs).
