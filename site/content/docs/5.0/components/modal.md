@@ -509,6 +509,34 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
 })
 ```
 
+### Toggle dialogs
+
+~~~html
+<div aria-hidden="true" aria-labelledby="modal-title" class="modal fade" id="modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <!-- ... -->
+        <div class="modal-content">
+            <div class="modal-footer">
+                <a  role="button">Open #modal2</a>
+                <button class="btn btn-primary" data-bs-target="#modal2" data-bs-toggle="modal" data-bs-dismiss="modal">Open #modal2</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div aria-hidden="true" aria-labelledby="modal-title" class="modal fade" id="modal2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <!-- ... -->
+        <div class="modal-content">
+            <a class="btn btn-primary" href="#modal" data-bs-toggle="modal" data-bs-dismiss="modal" role="button">Open #modal</a>
+        </div>
+    </div>    
+</div>
+
+<a class="btn btn-primary" data-bs-toggle="modal" href="#modal" role="button">Open #modal</a>
+~~~
+
+
 ### Change animation
 
 The `$modal-fade-transform` variable determines the transform state of `.modal-dialog` before the modal fade-in animation, the `$modal-show-transform` variable determines the transform of `.modal-dialog` at the end of the modal fade-in animation.
