@@ -3,7 +3,7 @@
   <metadata>
     <id>bootstrap.sass</id>
     <!-- pulled from package.json -->
-    <version>4</version>
+    <version>5</version>
     <title>Bootstrap Sass</title>
     <authors>The Bootstrap Authors, Twitter Inc.</authors>
     <owners>bootstrap</owners>
@@ -14,11 +14,8 @@
     <projectUrl>https://getbootstrap.com/</projectUrl>
     <icon>bootstrap.png</icon>
     <license type="file">LICENSE.txt</license>
-    <copyright>Copyright 2017-2020</copyright>
+    <copyright>Copyright 2017-2021</copyright>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <dependencies>
-      <dependency id="popper.js" version="[1.16.1,2)" />
-    </dependencies>
     <tags>css sass mobile-first responsive front-end framework web</tags>
     <contentFiles>
       <files include="**/*" buildAction="Content" />

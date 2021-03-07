@@ -109,7 +109,7 @@ Create responsive stacks of full-width, "block buttons" like those in Bootstrap 
 </div>
 {{< /example >}}
 
-Here we create a responsive variation, starting with vertically stacked buttons until the `md` breakpoing, where `.d-md-block` replaces the `.d-grid` class, thus nullifying the `gap-2` utility. Resize your browser to see them change.
+Here we create a responsive variation, starting with vertically stacked buttons until the `md` breakpoint, where `.d-md-block` replaces the `.d-grid` class, thus nullifying the `gap-2` utility. Resize your browser to see them change.
 
 {{< example >}}
 <div class="d-grid gap-2 d-md-block">
@@ -131,7 +131,7 @@ Additional utilities can be used to adjust the alignment of buttons when horizon
 
 {{< example >}}
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  <button class="btn btn-primary mr-md-2" type="button">Button</button>
+  <button class="btn btn-primary me-md-2" type="button">Button</button>
   <button class="btn btn-primary" type="button">Button</button>
 </div>
 {{< /example >}}
@@ -205,3 +205,25 @@ buttons.forEach(function (button) {
   button.toggle()
 })
 ```
+
+## Sass
+
+### Variables
+
+{{< scss-docs name="btn-variables" file="scss/_variables.scss" >}}
+
+### Mixins
+
+There are three mixins for buttons: button and button outline variant mixins (both based on `$theme-colors`), plus a button size mixin.
+
+{{< scss-docs name="btn-variant-mixin" file="scss/mixins/_buttons.scss" >}}
+
+{{< scss-docs name="btn-outline-variant-mixin" file="scss/mixins/_buttons.scss" >}}
+
+{{< scss-docs name="btn-size-mixin" file="scss/mixins/_buttons.scss" >}}
+
+### Loops
+
+Button variants (for regular and outline buttons) use their respective mixins with our `$theme-colors` map to generate the modifier classes in `scss/_buttons.scss`.
+
+{{< scss-docs name="btn-variant-loops" file="scss/_buttons.scss" >}}

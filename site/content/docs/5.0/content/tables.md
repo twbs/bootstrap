@@ -213,7 +213,7 @@ Highlight a table row or cell by adding a `.table-active` class.
 For the accented tables ([striped rows](#striped-rows), [hoverable rows](#hoverable-rows), and [active tables](#active-tables)), we used some techniques to make these effects work for all our [table variants](#variants):
 
 - We start by setting the background of a table cell with the `--bs-table-bg` custom property. All table variants then set that custom property to colorize the table cells. This way, we don't get into trouble if semi-transparent colors are used as table backgrounds.
-- Then we add a gradient on the table cells with `background-image: linear-gradient(var(--bs-table-accent-bg), var(--bs-table-accent-bg));` to layer on top of any specified `background-color`. Since `--bs-table-accent-bg` is transparent by default, we have an invisible transparent linear gradient by default.
+- Then we add an inset box shadow on the table cells with `box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);` to layer on top of any specified `background-color`. Because we use a huge spread and no blur, the color will be monotone. Since `--bs-table-accent-bg` is unset by default, we don't have a default box shadow.
 - When either `.table-striped`, `.table-hover` or `.table-active` classes are added, the `--bs-table-accent-bg` is set to a semitransparent color to colorize the background.
 - For each table variant, we generate a `--bs-table-accent-bg` color with the highest contrast depending on that color. For example, the accent color for `.table-primary` is darker while `.table-dark` has a lighter accent color.
 - Text and border colors are generated the same way, and their colors are inherited by default.
@@ -270,19 +270,19 @@ Table cells of `<thead>` are always vertical aligned to the bottom. Table cells 
           <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
           <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
           <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
-          <td>Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.</td>
+          <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
         </tr>
         <tr class="align-bottom">
           <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
           <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
           <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
-          <td>Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.</td>
+          <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
         </tr>
         <tr>
           <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
           <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
           <td class="align-top">This cell is aligned to the top.</td>
-          <td>Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.</td>
+          <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
         </tr>
       </tbody>
     </table>
@@ -496,7 +496,6 @@ Similar to tables and dark tables, use the modifier classes `.table-light` or `.
   </tbody>
 </table>
 ```
-
 
 ### Table foot
 
@@ -776,9 +775,17 @@ Use `.table-responsive{-sm|-md|-lg|-xl|-xxl}` as needed to create responsive tab
 {{< /tables.inline >}}
 {{< /highlight >}}
 
-## Customizing in Sass
+## Sass
+
+### Variables
+
+{{< scss-docs name="table-variables" file="scss/_variables.scss" >}}
+
+### Loop
+
+{{< scss-docs name="table-loop" file="scss/_variables.scss" >}}
+
+### Customizing
 
 - The factor variables (`$table-striped-bg-factor`, `$table-active-bg-factor` & `$table-hover-bg-factor`) are used to determine the contrast in table variants.
 - Apart from the light & dark table variants, theme colors are lightened by the `$table-bg-level` variable.
-
-{{< scss-docs name="table-variables" file="scss/_variables.scss" >}}

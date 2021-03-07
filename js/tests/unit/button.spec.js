@@ -18,9 +18,25 @@ describe('Button', () => {
     clearFixture()
   })
 
+  it('should take care of element either passed as a CSS selector or DOM element', () => {
+    fixtureEl.innerHTML = '<button data-bs-toggle="button">Placeholder</button>'
+    const buttonEl = fixtureEl.querySelector('[data-bs-toggle="button"]')
+    const buttonBySelector = new Button('[data-bs-toggle="button"]')
+    const buttonByElement = new Button(buttonEl)
+
+    expect(buttonBySelector._element).toEqual(buttonEl)
+    expect(buttonByElement._element).toEqual(buttonEl)
+  })
+
   describe('VERSION', () => {
     it('should return plugin version', () => {
       expect(Button.VERSION).toEqual(jasmine.any(String))
+    })
+  })
+
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(Button.DATA_KEY).toEqual('bs.button')
     })
   })
 
@@ -126,6 +142,26 @@ describe('Button', () => {
 
       expect(Button.getInstance(btnEl)).toBeDefined()
       expect(btnEl.classList.contains('active')).toEqual(false)
+    })
+  })
+
+  describe('getInstance', () => {
+    it('should return button instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const button = new Button(div)
+
+      expect(Button.getInstance(div)).toEqual(button)
+      expect(Button.getInstance(div)).toBeInstanceOf(Button)
+    })
+
+    it('should return null when there is no button instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Button.getInstance(div)).toEqual(null)
     })
   })
 })

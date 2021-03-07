@@ -1,20 +1,7 @@
-// stylelint-disable declaration-no-important
-
 .skippy {
   background-color: $bd-purple;
 
   a {
     color: $white;
-  }
-
-  &:focus-within a {
-    position: static !important;
-    width: auto !important;
-    height: auto !important;
-    padding: $spacer / 2 !important;
-    margin: $spacer / 4 !important;
-    overflow: visible !important;
-    clip: auto !important;
-    white-space: normal !important;
   }
 }

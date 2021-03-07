@@ -15,9 +15,9 @@ Use border utilities to add or remove an element's borders. Choose from all bord
 {{< example class="bd-example-border-utils" >}}
 <span class="border"></span>
 <span class="border-top"></span>
-<span class="border-right"></span>
+<span class="border-end"></span>
 <span class="border-bottom"></span>
-<span class="border-left"></span>
+<span class="border-start"></span>
 {{< /example >}}
 
 ### Subtractive
@@ -25,9 +25,9 @@ Use border utilities to add or remove an element's borders. Choose from all bord
 {{< example class="bd-example-border-utils bd-example-border-utils-0" >}}
 <span class="border-0"></span>
 <span class="border-top-0"></span>
-<span class="border-right-0"></span>
+<span class="border-end-0"></span>
 <span class="border-bottom-0"></span>
-<span class="border-left-0"></span>
+<span class="border-start-0"></span>
 {{< /example >}}
 
 ## Border color
@@ -60,9 +60,9 @@ Add classes to an element to easily round its corners.
 {{< example class="bd-example-rounded-utils" >}}
 {{< placeholder width="75" height="75" class="rounded" title="Example rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-top" title="Example top rounded image" >}}
-{{< placeholder width="75" height="75" class="rounded-right" title="Example right rounded image" >}}
+{{< placeholder width="75" height="75" class="rounded-end" title="Example right rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-bottom" title="Example bottom rounded image" >}}
-{{< placeholder width="75" height="75" class="rounded-left" title="Example left rounded image" >}}
+{{< placeholder width="75" height="75" class="rounded-start" title="Example left rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-circle" title="Completely round image" >}}
 {{< placeholder width="150" height="75" class="rounded-pill" title="Rounded pill image" >}}
 {{< /example >}}
@@ -77,3 +77,23 @@ Use the scaling classes for larger or smaller rounded corners. Sizes range from 
 {{< placeholder width="75" height="75" class="rounded-2" title="Example default rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-3" title="Example large rounded image" >}}
 {{< /example >}}
+
+## Sass
+
+### Variables
+
+{{< scss-docs name="border-variables" file="scss/_variables.scss" >}}
+
+{{< scss-docs name="border-radius-variables" file="scss/_variables.scss" >}}
+
+### Mixins
+
+{{< scss-docs name="border-radius-mixins" file="scss/mixins/_border-radius.scss" >}}
+
+### Utilities
+
+Border utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
+
+{{< scss-docs name="utils-borders" file="scss/_utilities.scss" >}}
+
+{{< scss-docs name="utils-border-radius" file="scss/_utilities.scss" >}}

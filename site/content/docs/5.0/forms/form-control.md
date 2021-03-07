@@ -25,7 +25,7 @@ Set heights using classes like `.form-control-lg` and `.form-control-sm`.
 
 {{< example >}}
 <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
-<input class="form-control" type="text" placeholder="Default input" aria-label="deafult input example">
+<input class="form-control" type="text" placeholder="Default input" aria-label="default input example">
 <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example">
 {{< /example >}}
 
@@ -130,3 +130,17 @@ Learn more about [support for datalist elements](https://caniuse.com/datalist).
   <option value="Chicago">
 </datalist>
 {{< /example >}}
+
+## Sass
+
+### Variables
+
+`$input-*` are shared across most of our form controls (and not buttons).
+
+{{< scss-docs name="form-input-variables" file="scss/_variables.scss" >}}
+
+`$form-label-*` and `$form-text-*` are for our `<label>`s and `.form-text` component.
+
+{{< scss-docs name="form-label-variables" file="scss/_variables.scss" >}}
+
+{{< scss-docs name="form-text-variables" file="scss/_variables.scss" >}}

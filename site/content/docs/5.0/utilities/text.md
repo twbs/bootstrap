@@ -8,17 +8,17 @@ toc: true
 
 ## Text alignment
 
-Easily realign text to components with text alignment classes. For left, right, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.
+Easily realign text to components with text alignment classes. For start, end, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.
 
 {{< example >}}
-<p class="text-left">Left aligned text on all viewport sizes.</p>
+<p class="text-start">Start aligned text on all viewport sizes.</p>
 <p class="text-center">Center aligned text on all viewport sizes.</p>
-<p class="text-right">Right aligned text on all viewport sizes.</p>
+<p class="text-end">End aligned text on all viewport sizes.</p>
 
-<p class="text-sm-left">Left aligned text on viewports sized SM (small) or wider.</p>
-<p class="text-md-left">Left aligned text on viewports sized MD (medium) or wider.</p>
-<p class="text-lg-left">Left aligned text on viewports sized LG (large) or wider.</p>
-<p class="text-xl-left">Left aligned text on viewports sized XL (extra-large) or wider.</p>
+<p class="text-sm-start">Start aligned text on viewports sized SM (small) or wider.</p>
+<p class="text-md-start">Start aligned text on viewports sized MD (medium) or wider.</p>
+<p class="text-lg-start">Start aligned text on viewports sized LG (large) or wider.</p>
+<p class="text-xl-start">Start aligned text on viewports sized XL (extra-large) or wider.</p>
 {{< /example >}}
 
 {{< callout info >}}
@@ -51,6 +51,10 @@ Prevent long strings of text from breaking your components' layout by using `.te
 <p class="text-break">mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
 {{< /example >}}
 
+{{< callout warning >}}
+Note that [breaking words isn't possible in Arabic](https://rtlstyling.com/posts/rtl-styling#3.-line-break), which is the most used RTL language. Therefore `.text-break` is removed from our RTL compiled CSS.
+{{< /callout >}}
+
 ## Text transform
 
 Transform text in components with text capitalization classes.
@@ -78,8 +82,6 @@ Quickly change the `font-size` of text. While our heading classes (e.g., `.h1`�
 
 Customize your available `font-size`s by modifying the `$font-sizes` Sass map.
 
-{{< scss-docs name="font-sizes" file="scss/_variables.scss" >}}
-
 ## Font weight and italics
 
 Quickly change the `font-weight` or `font-style` of text with these utilities. `font-style` utilities are abbreviated as `.fst-*` and `font-weight` utilities are abbreviated as `.fw-*`.
@@ -99,10 +101,10 @@ Quickly change the `font-weight` or `font-style` of text with these utilities. `
 Change the line height with `.lh-*` utilities.
 
 {{< example >}}
-<p class="lh-1">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec sed odio dui. Cras mattis pannenkoek purus sit amet fermentum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum.</p>
-<p class="lh-sm">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec sed odio dui. Cras mattis pannenkoek purus sit amet fermentum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum.</p>
-<p class="lh-base">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec sed odio dui. Cras mattis pannenkoek purus sit amet fermentum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum.</p>
-<p class="lh-lg">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec sed odio dui. Cras mattis pannenkoek purus sit amet fermentum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum.</p>
+<p class="lh-1">Some placeholder content to show off the line height utilities. Happy birthday. You could've been the greatest. She ride me like a roller coaster. I messed around and got addicted. You just gotta ignite the light and let it shine! I'm intrigued, for a peek, heard it's fascinating. Catch her if you can. I should've told you what you meant to me 'Cause now I pay the price. Do you ever feel, feel so paper thin.</p>
+<p class="lh-sm">But you better choose carefully. Yo, shout out to all you kids, buying bottle service, with your rent money. She's sweet as pie but if you break her heart. Just own the night like the 4th of July! In another life I would be your girl. Playing ping pong all night long, everything's all neon and hazy. Shorty so bad, I’m sprung and I don’t care.</p>
+<p class="lh-base">I can feel a phoenix inside of me. Maybe a reason why all the doors are closed. We go higher and higher. Passport stamps, she's cosmopolitan. Someone said you had your tattoo removed. All my girls vintage Chanel baby. Someone said you had your tattoo removed.</p>
+<p class="lh-lg">But I will get there. This is real so take a chance and don't ever look back, don't ever look back. You could travel the world but nothing comes close to the golden coast. Of anything and everything. Venice beach and Palm Springs, summertime is everything. Do you ever feel already buried deep six feet under? It's time to bring out the big balloons. So cover your eyes, I have a surprise. So I don't have to say you were the one that got away.</p>
 {{< /example >}}
 
 ## Monospace
@@ -132,3 +134,21 @@ Decorate text in components with text decoration classes.
 <p class="text-decoration-line-through">This text has a line going through it.</p>
 <a href="#" class="text-decoration-none">This link has its text decoration removed</a>
 {{< /example >}}
+
+## Sass
+
+### Variables
+
+{{< scss-docs name="font-variables" file="scss/_variables.scss" >}}
+
+### Maps
+
+Font-size utilities are generated from this map, in combination with our utilities API.
+
+{{< scss-docs name="font-sizes" file="scss/_variables.scss" >}}
+
+### Utilities API
+
+Font and text utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
+
+{{< scss-docs name="utils-text" file="scss/_utilities.scss" >}}

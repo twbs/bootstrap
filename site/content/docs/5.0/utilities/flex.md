@@ -301,7 +301,7 @@ Responsive variations also exist for `flex-grow` and `flex-shrink`.
 
 ## Auto margins
 
-Flexbox can do some pretty awesome things when you mix flex alignments with auto margins. Shown below are three examples of controlling flex items via auto margins: default (no auto margin), pushing two items to the right (`.mr-auto`), and pushing two items to the left (`.ml-auto`).
+Flexbox can do some pretty awesome things when you mix flex alignments with auto margins. Shown below are three examples of controlling flex items via auto margins: default (no auto margin), pushing two items to the right (`.me-auto`), and pushing two items to the left (`.ms-auto`).
 
 {{< example >}}
 <div class="d-flex bd-highlight mb-3">
@@ -311,7 +311,7 @@ Flexbox can do some pretty awesome things when you mix flex alignments with auto
 </div>
 
 <div class="d-flex bd-highlight mb-3">
-  <div class="mr-auto p-2 bd-highlight">Flex item</div>
+  <div class="me-auto p-2 bd-highlight">Flex item</div>
   <div class="p-2 bd-highlight">Flex item</div>
   <div class="p-2 bd-highlight">Flex item</div>
 </div>
@@ -319,7 +319,7 @@ Flexbox can do some pretty awesome things when you mix flex alignments with auto
 <div class="d-flex bd-highlight mb-3">
   <div class="p-2 bd-highlight">Flex item</div>
   <div class="p-2 bd-highlight">Flex item</div>
-  <div class="ml-auto p-2 bd-highlight">Flex item</div>
+  <div class="ms-auto p-2 bd-highlight">Flex item</div>
 </div>
 {{< /example >}}
 
@@ -627,3 +627,39 @@ Responsive variations also exist for `align-content`.
 {{- end -}}
 {{< /flex.inline >}}
 {{< /markdown >}}
+
+## Media object
+
+Looking to replicate the [media object component](https://getbootstrap.com/docs/4.6/components/media-object/) from Bootstrap 4? Recreate it in no time with a few flex utilities that allow even more flexibility and customization than before.
+
+{{< example >}}
+<div class="d-flex">
+  <div class="flex-shrink-0">
+    {{< placeholder width="100" height="100" color="#999" background="#e5e5e5" text="Image" >}}
+  </div>
+  <div class="flex-grow-1 ms-3">
+    This is some content from a media component. You can replace this with any content and adjust it as needed.
+  </div>
+</div>
+{{< /example >}}
+
+And say you want to vertically center the content next to the image:
+
+{{< example >}}
+<div class="d-flex align-items-center">
+  <div class="flex-shrink-0">
+    {{< placeholder width="100" height="100" color="#999" background="#e5e5e5" text="Image" >}}
+  </div>
+  <div class="flex-grow-1 ms-3">
+    This is some content from a media component. You can replace this with any content and adjust it as needed.
+  </div>
+</div>
+{{< /example >}}
+
+## Sass
+
+### Utilities API
+
+Flexbox utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
+
+{{< scss-docs name="utils-flex" file="scss/_utilities.scss" >}}

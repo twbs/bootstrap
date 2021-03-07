@@ -1,20 +1,24 @@
 /* eslint-env node */
 
+'use strict'
+
 const path = require('path')
 const ip = require('ip')
 const { babel } = require('@rollup/plugin-babel')
 const istanbul = require('rollup-plugin-istanbul')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
+const replace = require('@rollup/plugin-replace')
 
 const {
   browsers,
   browsersKeys
 } = require('./browsers')
 
-const { env } = process
-const browserStack = env.BROWSER === 'true'
-const debug = env.DEBUG === 'true'
-const jQueryTest = env.JQUERY === 'true'
+const ENV = process.env
+const BROWSERSTACK = Boolean(ENV.BROWSERSTACK)
+const DEBUG = Boolean(ENV.DEBUG)
+const JQUERY_TEST = Boolean(ENV.JQUERY)
+
 const frameworks = [
   'jasmine'
 ]
@@ -29,26 +33,24 @@ const reporters = ['dots']
 const detectBrowsers = {
   usePhantomJS: false,
   postDetection(availableBrowser) {
-    if (env.CI === true || availableBrowser.includes('Chrome')) {
-      return debug ? ['Chrome'] : ['ChromeHeadless']
+    // On CI just use Chrome
+    if (ENV.CI === true) {
+      return ['ChromeHeadless']
+    }
+
+    if (availableBrowser.includes('Chrome')) {
+      return DEBUG ? ['Chrome'] : ['ChromeHeadless']
     }
 
     if (availableBrowser.includes('Chromium')) {
-      return debug ? ['Chromium'] : ['ChromiumHeadless']
+      return DEBUG ? ['Chromium'] : ['ChromiumHeadless']
     }
 
     if (availableBrowser.includes('Firefox')) {
-      return debug ? ['Firefox'] : ['FirefoxHeadless']
+      return DEBUG ? ['Firefox'] : ['FirefoxHeadless']
     }
 
     throw new Error('Please install Chrome, Chromium or Firefox')
-  }
-}
-
-const customLaunchers = {
-  FirefoxHeadless: {
-    base: 'Firefox',
-    flags: ['-headless']
   }
 }
 
@@ -58,7 +60,7 @@ const conf = {
   colors: true,
   autoWatch: false,
   singleRun: true,
-  concurrency: Infinity,
+  concurrency: Number.POSITIVE_INFINITY,
   client: {
     clearContext: false
   },
@@ -66,7 +68,7 @@ const conf = {
     'node_modules/hammer-simulator/index.js',
     {
       pattern: 'js/tests/unit/**/!(jquery).spec.js',
-      watched: !browserStack
+      watched: !BROWSERSTACK
     }
   ],
   preprocessors: {
@@ -74,6 +76,9 @@ const conf = {
   },
   rollupPreprocessor: {
     plugins: [
+      replace({
+        'process.env.NODE_ENV': '"dev"'
+      }),
       istanbul({
         exclude: [
           'node_modules/**',
@@ -97,11 +102,11 @@ const conf = {
   }
 }
 
-if (browserStack) {
+if (BROWSERSTACK) {
   conf.hostname = ip.address()
   conf.browserStack = {
-    username: env.BROWSER_STACK_USERNAME,
-    accessKey: env.BROWSER_STACK_ACCESS_KEY,
+    username: ENV.BROWSER_STACK_USERNAME,
+    accessKey: ENV.BROWSER_STACK_ACCESS_KEY,
     build: `bootstrap-${new Date().toISOString()}`,
     project: 'Bootstrap',
     retryLimit: 2
@@ -110,14 +115,13 @@ if (browserStack) {
   conf.customLaunchers = browsers
   conf.browsers = browsersKeys
   reporters.push('BrowserStack', 'kjhtml')
-} else if (jQueryTest) {
+} else if (JQUERY_TEST) {
   frameworks.push('detectBrowsers')
   plugins.push(
     'karma-chrome-launcher',
     'karma-firefox-launcher',
     'karma-detect-browsers'
   )
-  conf.customLaunchers = customLaunchers
   conf.detectBrowsers = detectBrowsers
   conf.files = [
     'node_modules/jquery/dist/jquery.slim.min.js',
@@ -135,7 +139,6 @@ if (browserStack) {
     'karma-coverage-istanbul-reporter'
   )
   reporters.push('coverage-istanbul')
-  conf.customLaunchers = customLaunchers
   conf.detectBrowsers = detectBrowsers
   conf.coverageIstanbulReporter = {
     dir: path.resolve(__dirname, '../coverage/'),
@@ -151,7 +154,7 @@ if (browserStack) {
     }
   }
 
-  if (debug) {
+  if (DEBUG) {
     conf.hostname = ip.address()
     plugins.push('karma-jasmine-html-reporter')
     reporters.push('kjhtml')
@@ -165,7 +168,6 @@ conf.plugins = plugins
 conf.reporters = reporters
 
 module.exports = karmaConfig => {
-  // possible values: karmaConfig.LOG_DISABLE || karmaConfig.LOG_ERROR || karmaConfig.LOG_WARN || karmaConfig.LOG_INFO || karmaConfig.LOG_DEBUG
-  conf.logLevel = karmaConfig.LOG_ERROR || karmaConfig.LOG_WARN
+  conf.logLevel = karmaConfig.LOG_ERROR
   karmaConfig.set(conf)
 }

@@ -1,14 +1,12 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): tab.js
+ * Bootstrap (v5.0.0-beta2): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
-  TRANSITION_END,
+  defineJQueryPlugin,
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
@@ -17,6 +15,7 @@ import {
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import SelectorEngine from './dom/selector-engine'
+import BaseComponent from './base-component'
 
 /**
  * ------------------------------------------------------------------------
@@ -25,7 +24,6 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'tab'
-const VERSION = '5.0.0-alpha3'
 const DATA_KEY = 'bs.tab'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -56,17 +54,11 @@ const SELECTOR_DROPDOWN_ACTIVE_CHILD = ':scope > .dropdown-menu .active'
  * ------------------------------------------------------------------------
  */
 
-class Tab {
-  constructor(element) {
-    this._element = element
-
-    Data.setData(this._element, DATA_KEY, this)
-  }
-
+class Tab extends BaseComponent {
   // Getters
 
-  static get VERSION() {
-    return VERSION
+  static get DATA_KEY() {
+    return DATA_KEY
   }
 
   // Public
@@ -89,27 +81,21 @@ class Tab {
       previous = previous[previous.length - 1]
     }
 
-    let hideEvent = null
-
-    if (previous) {
-      hideEvent = EventHandler.trigger(previous, EVENT_HIDE, {
+    const hideEvent = previous ?
+      EventHandler.trigger(previous, EVENT_HIDE, {
         relatedTarget: this._element
-      })
-    }
+      }) :
+      null
 
     const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
       relatedTarget: previous
     })
 
-    if (showEvent.defaultPrevented ||
-      (hideEvent !== null && hideEvent.defaultPrevented)) {
+    if (showEvent.defaultPrevented || (hideEvent !== null && hideEvent.defaultPrevented)) {
       return
     }
 
-    this._activate(
-      this._element,
-      listElement
-    )
+    this._activate(this._element, listElement)
 
     const complete = () => {
       EventHandler.trigger(previous, EVENT_HIDDEN, {
@@ -127,11 +113,6 @@ class Tab {
     }
   }
 
-  dispose() {
-    Data.removeData(this._element, DATA_KEY)
-    this._element = null
-  }
-
   // Private
 
   _activate(element, container, callback) {
@@ -140,20 +121,15 @@ class Tab {
       SelectorEngine.children(container, SELECTOR_ACTIVE)
 
     const active = activeElements[0]
-    const isTransitioning = callback &&
-      (active && active.classList.contains(CLASS_NAME_FADE))
+    const isTransitioning = callback && (active && active.classList.contains(CLASS_NAME_FADE))
 
-    const complete = () => this._transitionComplete(
-      element,
-      active,
-      callback
-    )
+    const complete = () => this._transitionComplete(element, active, callback)
 
     if (active && isTransitioning) {
       const transitionDuration = getTransitionDurationFromElement(active)
       active.classList.remove(CLASS_NAME_SHOW)
 
-      EventHandler.one(active, TRANSITION_END, complete)
+      EventHandler.one(active, 'transitionend', complete)
       emulateTransitionEnd(active, transitionDuration)
     } else {
       complete()
@@ -206,7 +182,7 @@ class Tab {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      const data = Data.getData(this, DATA_KEY) || new Tab(this)
+      const data = Data.get(this, DATA_KEY) || new Tab(this)
 
       if (typeof config === 'string') {
         if (typeof data[config] === 'undefined') {
@@ -216,10 +192,6 @@ class Tab {
         data[config]()
       }
     })
-  }
-
-  static getInstance(element) {
-    return Data.getData(element, DATA_KEY)
   }
 }
 
@@ -232,7 +204,7 @@ class Tab {
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   event.preventDefault()
 
-  const data = Data.getData(this, DATA_KEY) || new Tab(this)
+  const data = Data.get(this, DATA_KEY) || new Tab(this)
   data.show()
 })
 
@@ -243,18 +215,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Tab to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Tab.jQueryInterface
-    $.fn[NAME].Constructor = Tab
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Tab.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Tab)
 
 export default Tab

@@ -27,8 +27,8 @@ Where *sides* is one of:
 
 - `t` - for classes that set `margin-top` or `padding-top`
 - `b` - for classes that set `margin-bottom` or `padding-bottom`
-- `l` - for classes that set `margin-left` or `padding-left`
-- `r` - for classes that set `margin-right` or `padding-right`
+- `s` - for classes that set `margin-left` or `padding-left` in LTR, `margin-right` or `padding-right` in RTL
+- `e` - for classes that set `margin-right` or `padding-right` in LTR, `margin-left` or `padding-left` in RTL
 - `x` - for classes that set both `*-left` and `*-right`
 - `y` - for classes that set both `*-top` and `*-bottom`
 - blank - for classes that set a `margin` or `padding` on all 4 sides of the element
@@ -54,7 +54,7 @@ Here are some representative examples of these classes:
   margin-top: 0 !important;
 }
 
-.ml-1 {
+.ms-1 {
   margin-left: ($spacer * .25) !important;
 }
 
@@ -109,3 +109,17 @@ When using `display: grid`, you can make use of `gap` utilities on the parent gr
 {{< /example >}}
 
 Support includes responsive options for all of Bootstrap's grid breakpoints, as well as six sizes from the `$spacers` map (`0`–`5`). There is no `.gap-auto` utility class as it's effectively the same as `.gap-0`.
+
+## Sass
+
+### Maps
+
+Spacing utilities are declared via Sass map and then generated with our utilities API.
+
+{{< scss-docs name="spacer-variables-maps" file="scss/_variables.scss" >}}
+
+### Utilities API
+
+Spacing utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
+
+{{< scss-docs name="utils-spacing" file="scss/_utilities.scss" >}}

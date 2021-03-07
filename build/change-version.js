@@ -2,8 +2,8 @@
 
 /*!
  * Script to update version number references in the project.
- * Copyright 2017-2020 The Bootstrap Authors
- * Copyright 2017-2020 Twitter, Inc.
+ * Copyright 2017-2021 The Bootstrap Authors
+ * Copyright 2017-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
@@ -90,9 +90,9 @@ function main(args) {
   const newVersion = args[1]
   const EXCLUDED_DIRS = new Set([
     '.git',
-    '_gh_pages',
+    '_site',
     'node_modules',
-    'vendor'
+    'resources'
   ])
   const INCLUDED_EXTENSIONS = new Set([
     // This extension allowlist is how we avoid modifying binary files

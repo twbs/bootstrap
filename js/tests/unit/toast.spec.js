@@ -20,7 +20,24 @@ describe('Toast', () => {
     })
   })
 
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(Toast.DATA_KEY).toEqual('bs.toast')
+    })
+  })
+
   describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = '<div class="toast"></div>'
+
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toastBySelector = new Toast('.toast')
+      const toastByElement = new Toast(toastEl)
+
+      expect(toastBySelector._element).toEqual(toastEl)
+      expect(toastByElement._element).toEqual(toastEl)
+    })
+
     it('should allow to config in js', done => {
       fixtureEl.innerHTML = [
         '<div class="toast">',
@@ -46,7 +63,7 @@ describe('Toast', () => {
     it('should close toast when close element with data-bs-dismiss attribute is set', done => {
       fixtureEl.innerHTML = [
         '<div class="toast" data-bs-delay="1" data-bs-autohide="false" data-bs-animation="false">',
-        '  <button type="button" class="ml-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
+        '  <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
         '</div>'
       ].join('')
 
@@ -78,7 +95,7 @@ describe('Toast', () => {
 
       fixtureEl.innerHTML = [
         '<div class="toast" data-bs-autohide="false" data-bs-animation="false">',
-        '  <button type="button" class="ml-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
+        '  <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
         '</div>'
       ].join('')
 
@@ -274,13 +291,18 @@ describe('Toast', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const toastEl = fixtureEl.querySelector('div')
+      spyOn(toastEl, 'addEventListener').and.callThrough()
+      spyOn(toastEl, 'removeEventListener').and.callThrough()
+
       const toast = new Toast(toastEl)
 
       expect(Toast.getInstance(toastEl)).toBeDefined()
+      expect(toastEl.addEventListener).toHaveBeenCalledWith('click', jasmine.any(Function), jasmine.any(Boolean))
 
       toast.dispose()
 
       expect(Toast.getInstance(toastEl)).toBeNull()
+      expect(toastEl.removeEventListener).toHaveBeenCalledWith('click', jasmine.any(Function), jasmine.any(Boolean))
     })
 
     it('should allow to destroy toast and hide it before that', done => {
@@ -368,11 +390,9 @@ describe('Toast', () => {
       jQueryMock.fn.toast = Toast.jQueryInterface
       jQueryMock.elements = [div]
 
-      try {
+      expect(() => {
         jQueryMock.fn.toast.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
+      }).toThrowError(TypeError, `No method named "${action}"`)
     })
   })
 
@@ -384,6 +404,7 @@ describe('Toast', () => {
       const toast = new Toast(div)
 
       expect(Toast.getInstance(div)).toEqual(toast)
+      expect(Toast.getInstance(div)).toBeInstanceOf(Toast)
     })
 
     it('should return null when there is no toast instance', () => {
