@@ -284,10 +284,10 @@ class Tooltip extends BaseComponent {
     EventHandler.trigger(this._element, this.constructor.Event.INSERTED)
 
     if (this._popper) {
-      this._popper.destroy()
+      this._popper.update()
+    } else {
+      this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
     }
-
-    this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
 
     tip.classList.add(CLASS_NAME_SHOW)
 
