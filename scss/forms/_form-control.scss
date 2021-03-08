@@ -73,7 +73,6 @@
   }
 
   // File input buttons theming
-  // stylelint-disable-next-line selector-pseudo-element-no-unknown
   &::file-selector-button {
     padding: $input-padding-y $input-padding-x;
     margin: (-$input-padding-y) (-$input-padding-x);
@@ -89,7 +88,6 @@
     @include transition($btn-transition);
   }
 
-  // stylelint-disable-next-line selector-pseudo-element-no-unknown
   &:hover:not(:disabled):not([readonly])::file-selector-button {
     background-color: $form-file-button-hover-bg;
   }
@@ -150,7 +148,6 @@
   @include font-size($input-font-size-sm);
   @include border-radius($input-border-radius-sm);
 
-  // stylelint-disable-next-line selector-pseudo-element-no-unknown
   &::file-selector-button {
     padding: $input-padding-y-sm $input-padding-x-sm;
     margin: (-$input-padding-y-sm) (-$input-padding-x-sm);
@@ -170,7 +167,6 @@
   @include font-size($input-font-size-lg);
   @include border-radius($input-border-radius-lg);
 
-  // stylelint-disable-next-line selector-pseudo-element-no-unknown
   &::file-selector-button {
     padding: $input-padding-y-lg $input-padding-x-lg;
     margin: (-$input-padding-y-lg) (-$input-padding-x-lg);
