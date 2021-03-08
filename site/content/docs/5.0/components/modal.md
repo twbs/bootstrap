@@ -512,24 +512,24 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
 ### Toggle dialogs
 
 ~~~html
-<div aria-hidden="true" aria-labelledby="modal-title" class="modal fade" id="modal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <!-- ... -->
-        <div class="modal-content">
-            <div class="modal-footer">
-                <button class="btn btn-primary" data-bs-target="#modal2" data-bs-toggle="modal" data-bs-dismiss="modal">Open #modal2</button>
-            </div>
-        </div>
+<div aria-hidden="true" aria-labelledby="..." class="modal fade" id="modal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    ...
+    <div class="modal-content">
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#modal2" data-bs-toggle="modal" data-bs-dismiss="modal">Open #modal2</button>
+      </div>
     </div>
+  </div>
 </div>
 
-<div aria-hidden="true" aria-labelledby="modal-title" class="modal fade" id="modal2" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <!-- ... -->
-        <div class="modal-content">
-            <a class="btn btn-primary" href="#modal" data-bs-toggle="modal" data-bs-dismiss="modal" role="button">Open #modal</a>
-        </div>
-    </div>    
+<div aria-hidden="true" aria-labelledby="..." class="modal fade" id="modal2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    ...
+    <div class="modal-content">
+      <a class="btn btn-primary" href="#modal" data-bs-toggle="modal" data-bs-dismiss="modal" role="button">Open #modal</a>
+    </div>
+  </div>
 </div>
 
 <a class="btn btn-primary" data-bs-toggle="modal" href="#modal" role="button">Open #modal</a>
