@@ -892,11 +892,11 @@ Manually opens a modal. **Returns to the caller before the modal has actually be
 myModal.show()
 ```
 
-Also, please mention that the DOM element passed as the first argument can be received in the modal events (as the `relatedTarget` property):
+Also, you can pass a DOM element as an argument that can be received in the modal events (as the `relatedTarget` property):
 
 ```js
-var relatedTarget = document.getElementById('toggleMyModal')
-myModal.show(relatedTarget)
+var modalToggle = document.getElementById('toggleMyModal') // relatedTarget
+myModal.show(modalToggle)
 ```
 
 #### hide
