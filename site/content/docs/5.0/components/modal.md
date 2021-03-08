@@ -517,7 +517,6 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
         <!-- ... -->
         <div class="modal-content">
             <div class="modal-footer">
-                <a  role="button">Open #modal2</a>
                 <button class="btn btn-primary" data-bs-target="#modal2" data-bs-toggle="modal" data-bs-dismiss="modal">Open #modal2</button>
             </div>
         </div>
