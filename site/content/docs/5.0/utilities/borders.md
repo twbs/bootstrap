@@ -30,6 +30,16 @@ Use border utilities to add or remove an element's borders. Choose from all bord
 <span class="border-start-0"></span>
 {{< /example >}}
 
+## Border style
+
+{{< example class="bd-example-border-utils" >}}
+<span class="border border-solid"></span>
+<span class="border border-dashed"></span>
+<span class="border border-dotted"></span>
+<span class="border border-double"></span>
+<span class="border border-none"></span>
+{{< /example >}}
+
 ## Border color
 
 Change the border color using utilities built on our theme colors.

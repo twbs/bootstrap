@@ -122,15 +122,20 @@ $utilities: map-merge(
         0: 0,
       )
     ),
-    "border-color": (
-      property: border-color,
-      class: border,
-      values: map-merge($theme-colors, ("white": $white))
-    ),
     "border-width": (
       property: border-width,
       class: border,
       values: $border-widths
+    ),
+    "border-style": (
+      property: border-style,
+      class: border,
+      values: solid dashed dotted double none
+    ),
+    "border-color": (
+      property: border-color,
+      class: border,
+      values: map-merge($theme-colors, ("white": $white))
     ),
     // scss-docs-end utils-borders
     // Sizing utilities
