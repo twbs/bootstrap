@@ -1,7 +1,7 @@
 import * as Util from '../../../src/util/index'
 
 /** Test helpers */
-import { getFixture, clearFixture } from '../../helpers/fixture'
+import { clearFixture, getFixture } from '../../helpers/fixture'
 
 describe('Util', () => {
   let fixtureEl
@@ -171,24 +171,58 @@ describe('Util', () => {
   })
 
   describe('isElement', () => {
-    it('should detect if the parameter is an element or not', () => {
-      fixtureEl.innerHTML = '<div></div>'
+    it('should detect if the parameter is an element or not and return Boolean', () => {
+      fixtureEl.innerHTML =
+        [
+          '<div id="foo" class="test"></div>',
+          '<div id="bar" class="test"></div>'
+        ].join('')
 
-      const el = document.querySelector('div')
+      const el = fixtureEl.querySelector('#foo')
 
-      expect(Util.isElement(el)).toEqual(el.nodeType)
-      expect(Util.isElement({})).toEqual(undefined)
+      expect(Util.isElement(el)).toEqual(true)
+      expect(Util.isElement({})).toEqual(false)
+      expect(Util.isElement(fixtureEl.querySelectorAll('.test'))).toEqual(false)
     })
 
     it('should detect jQuery element', () => {
       fixtureEl.innerHTML = '<div></div>'
 
-      const el = document.querySelector('div')
+      const el = fixtureEl.querySelector('div')
       const fakejQuery = {
-        0: el
+        0: el,
+        jquery: 'foo'
       }
 
-      expect(Util.isElement(fakejQuery)).toEqual(el.nodeType)
+      expect(Util.isElement(fakejQuery)).toEqual(true)
+    })
+  })
+
+  describe('getElement', () => {
+    it('should try to parse element', () => {
+      fixtureEl.innerHTML =
+        [
+          '<div id="foo" class="test"></div>',
+          '<div id="bar" class="test"></div>'
+        ].join('')
+
+      const el = fixtureEl.querySelector('div')
+
+      expect(Util.getElement(el)).toEqual(el)
+      expect(Util.getElement('#foo')).toEqual(el)
+      expect(Util.getElement('#fail')).toBeNull()
+      expect(Util.getElement({})).toBeNull()
+      expect(Util.getElement([])).toBeNull()
+      expect(Util.getElement()).toBeNull()
+      expect(Util.getElement(null)).toBeNull()
+      expect(Util.getElement(fixtureEl.querySelectorAll('.test'))).toBeNull()
+
+      const fakejQueryObject = {
+        0: el,
+        jquery: 'foo'
+      }
+
+      expect(Util.getElement(fakejQueryObject)).toEqual(el)
     })
   })
 

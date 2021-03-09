@@ -3,7 +3,7 @@ import EventHandler from '../../src/dom/event-handler'
 import { noop } from '../../src/util'
 
 /** Test helpers */
-import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
+import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Dropdown', () => {
   let fixtureEl
@@ -467,6 +467,7 @@ describe('Dropdown', () => {
 
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const virtualElement = {
+        nodeType: 1,
         getBoundingClientRect() {
           return {
             width: 0,

@@ -1,3 +1,5 @@
+import SelectorEngine from '../dom/selector-engine'
+
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v5.0.0): util/index.js
@@ -100,7 +102,29 @@ const triggerTransitionEnd = element => {
   element.dispatchEvent(new Event(TRANSITION_END))
 }
 
-const isElement = obj => (obj[0] || obj).nodeType
+const isElement = obj => {
+  if (!obj || typeof obj !== 'object') {
+    return false
+  }
+
+  if (typeof obj.jquery !== 'undefined') {
+    obj = obj[0]
+  }
+
+  return typeof obj.nodeType !== 'undefined'
+}
+
+const getElement = obj => {
+  if (isElement(obj)) { // it's a jQuery object or a node element
+    return obj.jquery ? obj[0] : obj
+  }
+
+  if (typeof obj === 'string' && obj.length > 0) {
+    return SelectorEngine.findOne(obj)
+  }
+
+  return null
+}
 
 const emulateTransitionEnd = (element, duration) => {
   let called = false
@@ -238,6 +262,7 @@ const execute = callback => {
 }
 
 export {
+  getElement,
   getUID,
   getSelectorFromElement,
   getElementFromSelector,
