@@ -511,7 +511,7 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
 
 ### Toggle dialogs
 
-~~~html
+```html
 <!-- First modal dialog -->
 <div class="modal fade" id="modal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
@@ -538,7 +538,7 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
 </div>
 <!-- Open first dialog -->
 <a class="btn btn-primary" data-bs-toggle="modal" href="#modal" role="button">Open #modal</a>
-~~~
+```
 
 ### Change animation
 
