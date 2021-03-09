@@ -1060,7 +1060,7 @@ describe('Modal', () => {
 
       jQueryMock.fn.modal.call(jQueryMock)
 
-      expect(Modal.getInstance(div)).toBeDefined()
+      expect(Modal.getInstance(div)).not.toBeNull()
     })
 
     it('should create a modal with given config', () => {

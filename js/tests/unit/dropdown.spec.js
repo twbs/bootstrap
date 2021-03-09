@@ -1752,7 +1752,7 @@ describe('Dropdown', () => {
 
       jQueryMock.fn.dropdown.call(jQueryMock)
 
-      expect(Dropdown.getInstance(div)).toBeDefined()
+      expect(Dropdown.getInstance(div)).not.toBeNull()
     })
 
     it('should not re create a dropdown', () => {

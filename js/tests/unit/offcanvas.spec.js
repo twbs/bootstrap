@@ -444,7 +444,7 @@ describe('Offcanvas', () => {
 
       jQueryMock.fn.offcanvas.call(jQueryMock)
 
-      expect(Offcanvas.getInstance(div)).toBeDefined()
+      expect(Offcanvas.getInstance(div)).not.toBeNull()
     })
 
     it('should not re create an offcanvas', () => {

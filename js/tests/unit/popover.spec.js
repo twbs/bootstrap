@@ -165,7 +165,7 @@ describe('Popover', () => {
 
       jQueryMock.fn.popover.call(jQueryMock)
 
-      expect(Popover.getInstance(popoverEl)).toBeDefined()
+      expect(Popover.getInstance(popoverEl)).not.toBeNull()
     })
 
     it('should create a popover with a config object', () => {
@@ -180,7 +180,7 @@ describe('Popover', () => {
         content: 'Popover content'
       })
 
-      expect(Popover.getInstance(popoverEl)).toBeDefined()
+      expect(Popover.getInstance(popoverEl)).not.toBeNull()
     })
 
     it('should not re create a popover', () => {

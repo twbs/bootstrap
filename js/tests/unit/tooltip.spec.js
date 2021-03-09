@@ -1317,7 +1317,7 @@ describe('Tooltip', () => {
 
       jQueryMock.fn.tooltip.call(jQueryMock)
 
-      expect(Tooltip.getInstance(div)).toBeDefined()
+      expect(Tooltip.getInstance(div)).not.toBeNull()
     })
 
     it('should not re create a tooltip', () => {
