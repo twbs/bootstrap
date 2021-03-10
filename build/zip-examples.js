@@ -16,7 +16,7 @@ const pkg = require('../package.json')
 
 const versionShort = pkg.config.version_short
 const distFolder = `bootstrap-${pkg.version}-examples`
-const rootDocsDir = '_gh_pages'
+const rootDocsDir = '_site'
 const docsDir = `${rootDocsDir}/docs/${versionShort}/`
 
 // these are the files we need in the examples

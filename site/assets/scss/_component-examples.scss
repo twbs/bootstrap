@@ -201,6 +201,18 @@
   }
 }
 
+.bd-example-offcanvas {
+  @include border-start-radius(0);
+
+  .offcanvas {
+    position: static;
+    display: block;
+    height: 200px;
+    visibility: visible;
+    transform: translateX(0);
+  }
+}
+
 // Tooltips
 .tooltip-demo a {
   white-space: nowrap;

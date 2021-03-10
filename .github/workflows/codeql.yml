@@ -11,6 +11,7 @@ on:
     branches:
       - main
       - v4-dev
+      - "!dependabot/**"
   schedule:
     - cron: "0 2 * * 5"
 
