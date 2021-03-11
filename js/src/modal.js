@@ -468,7 +468,7 @@ class Modal extends BaseComponent {
   _setElementAttributes(selector, styleProp, callback) {
     SelectorEngine.find(selector)
       .forEach(element => {
-        if (element !== document.body && window.innerWidth > element.clientWidth + this._scrollbarWidth) {
+        if (element !== this._document.body && this._window.innerWidth > element.clientWidth + this._scrollbarWidth) {
           return
         }
 

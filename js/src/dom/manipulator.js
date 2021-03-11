@@ -64,11 +64,11 @@ const Manipulator = {
 
   offset(element) {
     const rect = element.getBoundingClientRect()
-    const document = getDocument()
+    const documentRef = getDocument()
 
     return {
-      top: rect.top + document.body.scrollTop,
-      left: rect.left + document.body.scrollLeft
+      top: rect.top + documentRef.body.scrollTop,
+      left: rect.left + documentRef.body.scrollLeft
     }
   },
 

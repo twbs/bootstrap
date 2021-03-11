@@ -18,7 +18,7 @@ const VERSION = '5.0.0-beta2'
 
 class BaseComponent {
   constructor(element) {
-    element = typeof element === 'string' ? document.querySelector(element) : element
+    element = typeof element === 'string' ? getDocument().querySelector(element) : element
 
     if (!element) {
       return

@@ -7,6 +7,7 @@
 
 import {
   defineJQueryPlugin,
+  getDocument,
   getElementFromSelector,
   getSelectorFromElement,
   getTransitionDurationFromElement,
@@ -107,7 +108,7 @@ class Offcanvas extends BaseComponent {
     this._element.style.visibility = 'visible'
 
     if (this._config.backdrop) {
-      document.body.classList.add(CLASS_NAME_BACKDROP_BODY)
+      this._document.body.classList.add(CLASS_NAME_BACKDROP_BODY)
     }
 
     if (!this._config.scroll) {
@@ -153,7 +154,7 @@ class Offcanvas extends BaseComponent {
       this._element.style.visibility = 'hidden'
 
       if (this._config.backdrop) {
-        document.body.classList.remove(CLASS_NAME_BACKDROP_BODY)
+        this._document.body.classList.remove(CLASS_NAME_BACKDROP_BODY)
       }
 
       if (!this._config.scroll) {
@@ -233,7 +234,7 @@ class Offcanvas extends BaseComponent {
  * ------------------------------------------------------------------------
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+EventHandler.on(getDocument(), EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   const target = getElementFromSelector(this)
 
   if (['A', 'AREA'].includes(this.tagName)) {
