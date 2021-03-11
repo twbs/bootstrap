@@ -343,6 +343,7 @@ Changes to any layout tools and our grid system.
 - The responsive gutter classes can be used to control the gutter width in horizontal, vertical or both directions.
 - The gutter width is now set in `rem` and decreased from `30px` to `1.5rem` (24px).
 - `bootstrap-grid.css` now only applies `box-sizing: border-box` to the column instead of resetting the global box-sizing. This way the grid system can be used, even if `box-sizing: border-box` is not applied to each element.
+- Removed `.no-gutters` in favor of gutter utility classes. Use `.g-0` instead.
 
 ### Content, Reboot, etc
 
