@@ -9,6 +9,10 @@ toc: true
 
 ## v5.0.0-beta3
 
+### Components
+
+- Added new [`.list-group-numbered` modifier]({{< docsref "/components/list-group#numbered" >}}) to list groups.
+
 ### JavaScript
 
 - All plugins can now accept a CSS selector as the first argument. You can either pass a DOM element or any valid CSS selector to create a new instance of the plugin:
