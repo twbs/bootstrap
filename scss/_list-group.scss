@@ -12,6 +12,17 @@
   @include border-radius($list-group-border-radius);
 }
 
+.list-group-numbered {
+  list-style-type: none;
+  counter-reset: section;
+
+  > li::before {
+    // Increments only this instance of the section counter
+    content: counters(section, ".") ". ";
+    counter-increment: section;
+  }
+}
+
 
 // Interactive list items
 //

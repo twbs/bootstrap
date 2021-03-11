@@ -34,6 +34,17 @@ describe('Collapse', () => {
   })
 
   describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = '<div class="my-collapse"></div>'
+
+      const collapseEl = fixtureEl.querySelector('div.my-collapse')
+      const collapseBySelector = new Collapse('div.my-collapse')
+      const collapseByElement = new Collapse(collapseEl)
+
+      expect(collapseBySelector._element).toEqual(collapseEl)
+      expect(collapseByElement._element).toEqual(collapseEl)
+    })
+
     it('should allow jquery object in parent config', () => {
       fixtureEl.innerHTML = [
         '<div class="my-collapse">',
