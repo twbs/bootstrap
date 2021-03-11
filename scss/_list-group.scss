@@ -12,8 +12,7 @@
   @include border-radius($list-group-border-radius);
 }
 
-// stylelint-disable selector-no-qualifying-type
-ol.list-group {
+.list-group-numbered {
   list-style-type: none;
   counter-reset: section;
 
@@ -23,7 +22,6 @@ ol.list-group {
     counter-increment: section;
   }
 }
-// stylelint-enable selector-no-qualifying-type
 
 
 // Interactive list items
