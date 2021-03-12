@@ -980,12 +980,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </thead>
   <tbody>
     <tr>
-      <td><code>flip</code></td>
-      <td>boolean</td>
-      <td><code>true</code></td>
-      <td>Allow Dropdown to flip in case of an overlapping on the reference element. For more information refer to Popper's <a href="https://popper.js.org/docs/v2/modifiers/flip/">flip docs</a>.</td>
-    </tr>
-    <tr>
       <td><code>boundary</code></td>
       <td>string | element</td>
       <td><code>'clippingParents'</code></td>

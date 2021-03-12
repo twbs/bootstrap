@@ -9,6 +9,10 @@ toc: true
 
 ## v5.0.0-beta3
 
+### Components
+
+- Added new [`.list-group-numbered` modifier]({{< docsref "/components/list-group#numbered" >}}) to list groups.
+
 ### JavaScript
 
 - All plugins can now accept a CSS selector as the first argument. You can either pass a DOM element or any valid CSS selector to create a new instance of the plugin:
@@ -17,6 +21,8 @@ toc: true
   var modal = new bootstrap.Modal('#myModal')
   var dropdown = new bootstrap.Dropdown('[data-bs-toggle="dropdown"]')
   ```
+
+- Dropped `flip` option for dropdown plugin in favor of native popper configuration. You can now disable the flipping behavior by passing an empty array for [`fallbackPlacements`](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements) option in [flip](https://popper.js.org/docs/v2/modifiers/flip/) modifier.
 
 ### Utilities
 
@@ -333,7 +339,7 @@ We've updated the color system that powers Bootstrap to improve color contrast a
 
 Changes to any layout tools and our grid system.
 
-- Dropped the `.media` component as it can be built with utility classes. [See #28265](https://github.com/twbs/bootstrap/pull/28265).
+- Dropped the `.media` component as it can be built with utility classes. [See #28265](https://github.com/twbs/bootstrap/pull/28265) and the [flex utilities page for an example]({{< docsref "/utilities/flex#media-object" >}}).
 - Remove `position: relative` from grid columns.
 - The horizontal padding is added to the direct children in a row instead of the columns themselves.
   - This simplifies our codebase.
@@ -341,6 +347,7 @@ Changes to any layout tools and our grid system.
 - The responsive gutter classes can be used to control the gutter width in horizontal, vertical or both directions.
 - The gutter width is now set in `rem` and decreased from `30px` to `1.5rem` (24px).
 - `bootstrap-grid.css` now only applies `box-sizing: border-box` to the column instead of resetting the global box-sizing. This way the grid system can be used, even if `box-sizing: border-box` is not applied to each element.
+- Removed `.no-gutters` in favor of new gutter spacing classes. Use `.g-0` instead. [Read the gutter docs for more details.]({{< docsref "/layout/gutters" >}})
 
 ### Content, Reboot, etc
 

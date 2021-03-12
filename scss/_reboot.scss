@@ -142,7 +142,6 @@ p {
 
 abbr[title],
 abbr[data-bs-original-title] { // 1
-  text-decoration: underline; // 2
   text-decoration: underline dotted; // 2
   cursor: help; // 3
   text-decoration-skip-ink: none; // 4
@@ -420,12 +419,10 @@ textarea {
 }
 
 // Remove the inheritance of text transform in Firefox
-
 button,
 select {
   text-transform: none;
 }
-
 // Set the cursor for non-`<button>` buttons
 //
 // Details at https://github.com/twbs/bootstrap/pull/30562
@@ -433,11 +430,15 @@ select {
   cursor: pointer;
 }
 
-// Remove the inheritance of word-wrap in Safari.
-// See https://github.com/twbs/bootstrap/issues/24990
-
 select {
+  // Remove the inheritance of word-wrap in Safari.
+  // See https://github.com/twbs/bootstrap/issues/24990
   word-wrap: normal;
+
+  // Undo the opacity change from Chrome
+  &:disabled {
+    opacity: 1;
+  }
 }
 
 // Remove the dropdown arrow in Chrome from inputs built with datalists.
@@ -568,7 +569,6 @@ legend {
 
 // Inherit font family and line height for file input buttons
 
-// stylelint-disable-next-line selector-pseudo-element-no-unknown
 ::file-selector-button {
   font: inherit;
 }

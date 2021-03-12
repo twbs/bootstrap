@@ -11,6 +11,7 @@ import Carousel from './src/carousel'
 import Collapse from './src/collapse'
 import Dropdown from './src/dropdown'
 import Modal from './src/modal'
+import OffCanvas from './src/offcanvas'
 import Popover from './src/popover'
 import ScrollSpy from './src/scrollspy'
 import Tab from './src/tab'
@@ -24,6 +25,7 @@ export default {
   Collapse,
   Dropdown,
   Modal,
+  OffCanvas,
   Popover,
   ScrollSpy,
   Tab,

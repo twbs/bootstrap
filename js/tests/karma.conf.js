@@ -77,7 +77,8 @@ const conf = {
   rollupPreprocessor: {
     plugins: [
       replace({
-        'process.env.NODE_ENV': '"dev"'
+        'process.env.NODE_ENV': '"dev"',
+        preventAssignment: true
       }),
       istanbul({
         exclude: [
