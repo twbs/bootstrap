@@ -69,6 +69,30 @@ Multiple `<button>` or `<a>` can show and hide an element if they each reference
 </div>
 {{< /example >}}
 
+## Accordion-like group management
+
+The [accordion component]({{< docsref "/components/accordion" >}}) uses the collapse component internally to make it collapsible. To create accordion-like groups without accordion styling, use the `data-bs-parent` attribute.
+
+{{< example >}}
+<div id="accordion-like-group">
+  <div aria-expanded="true" class="collapse show" data-bs-parent="#accordion-like-group" id="accordion-like-group-panel-1" role="tabpanel">
+    <p><strong>This is the first panel in the group.</strong> It is shown by default. When switching to another panel, if that panel specifies `data-bs-parent`, all of the collapsible children of the selector specified in `data-bs-parent` will be collapsed.</p>
+    <button aria-controls="accordion-like-group-panel-2" class="btn btn-primary" data-bs-target="#accordion-like-group-panel-2" data-bs-toggle="collapse">Switch to the second panel</button>
+    <button aria-controls="accordion-like-group-panel-3" class="btn btn-primary" data-bs-target="#accordion-like-group-panel-3" data-bs-toggle="collapse">Switch to the third panel</button>
+  </div>
+  <div aria-expanded="false" class="collapse" data-bs-parent="#accordion-like-group" id="accordion-like-group-panel-2" role="tabpanel">
+    <p><strong>This is the second panel in the group.</strong> It is hidden by default.</p>
+    <button aria-controls="accordion-like-group-panel-1" class="btn btn-primary" data-bs-target="#accordion-like-group-panel-1" data-bs-toggle="collapse">Switch to the first panel</button>
+    <button aria-controls="accordion-like-group-panel-3" class="btn btn-primary" data-bs-target="#accordion-like-group-panel-3" data-bs-toggle="collapse">Switch to the third panel</button>
+  </div>
+  <div aria-expanded="false" class="collapse" data-bs-parent="#accordion-like-group" id="accordion-like-group-panel-3" role="tabpanel">
+    <p><strong>This is the third panel in the group.</strong> It is hidden by default.</p>
+    <button aria-controls="accordion-like-group-panel-1" class="btn btn-primary" data-bs-target="#accordion-like-group-panel-1" data-bs-toggle="collapse">Switch to the first panel</button>
+    <button aria-controls="accordion-like-group-panel-2" class="btn btn-primary" data-bs-target="#accordion-like-group-panel-2" data-bs-toggle="collapse">Switch to the second panel</button>
+  </div>
+</div>
+{{< /example >}}
+
 ## Accessibility
 
 Be sure to add `aria-expanded` to the control element. This attribute explicitly conveys the current state of the collapsible element tied to the control to screen readers and similar assistive technologies. If the collapsible element is closed by default, the attribute on the control element should have a value of `aria-expanded="false"`. If you've set the collapsible element to be open by default using the `show` class, set `aria-expanded="true"` on the control instead. The plugin will automatically toggle this attribute on the control based on whether or not the collapsible element has been opened or closed (via JavaScript, or because the user triggered another control element also tied to the same collapsible element). If the control element's HTML element is not a button (e.g., an `<a>` or `<div>`), the attribute `role="button"` should be added to the element.
