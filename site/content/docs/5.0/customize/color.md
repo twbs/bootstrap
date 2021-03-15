@@ -8,7 +8,7 @@ toc: true
 
 ## Theme colors
 
-We use a subset of all colors to create a smaller color palette for generating color schemes, also available as Sass variables and a Sass map in Bootstrap's `scss/_variables.scss` file.
+We use a subset of all colors to create a smaller color palette for generating color schemes, also available as Sass variables and a Sass map in Bootstrap's `scss/_colors.scss` file.
 
 <div class="row">
   {{< theme-colors.inline >}}
@@ -22,7 +22,7 @@ We use a subset of all colors to create a smaller color palette for generating c
 
 All these colors are available as a Sass map, `$theme-colors`.
 
-{{< scss-docs name="theme-colors-map" file="scss/_variables.scss" >}}
+{{< scss-docs name="theme-colors-map" file="scss/_colors.scss" >}}
 
 Check out [our Sass maps and loops docs]({{< docsref "/customize/sass#maps-and-loops" >}}) for how to modify these colors.
 
@@ -89,7 +89,7 @@ Bootstrap's source Sass files include three maps to help you quickly and easily 
 
 Within `scss/_variables.scss`, you'll find Bootstrap's color variables and Sass map. Here's an example of the `$colors` Sass map:
 
-{{< scss-docs name="colors-map" file="scss/_variables.scss" >}}
+{{< scss-docs name="colors-map" file="scss/_colors.scss" >}}
 
 Add, remove, or modify values within the map to update how they're used in many other components. Unfortunately at this time, not _every_ component utilizes this Sass map. Future updates will strive to improve upon this. Until then, plan on making use of the `${color}` variables and this Sass map.
 
