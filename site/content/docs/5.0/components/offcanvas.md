@@ -117,9 +117,9 @@ Try the right and bottom examples out below.
 </div>
 {{< /example >}}
 
-## Options
+## Backdrop
 
-By default, we disable scrolling on the `<body>` when an offcanvas is visible and use a gray backdrop. Use the `data-bs-scroll` attribute to enable/disable `<body>` scrolling, and `data-bs-backdrop` attribute to enable/disable backdrop usage.
+Scrolling the `<body>` element is disabled when an offcanvas and its backdrop are visible. Use the `data-bs-scroll` attribute to toggle `<body>` scrolling and `data-bs-backdrop` to toggle the backdrop.
 
 {{< example >}}
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable body scrolling</button>
@@ -196,37 +196,13 @@ var offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-backdrop=""`.
 
-<table class="table">
-  <thead>
-    <tr>
-      <th style="width: 100px;">Name</th>
-      <th style="width: 50px;">Type</th>
-      <th style="width: 50px;">Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>backdrop</code></td>
-      <td>boolean</td>
-      <td><code>true</code></td>
-      <td>Apply a backdrop on body while offcanvas is open</td>
-    </tr>
-    <tr>
-      <td><code>keyboard</code></td>
-      <td>boolean</td>
-      <td><code>true</code></td>
-      <td>Closes the offcanvas when escape key is pressed</td>
-    </tr>
-    <tr>
-      <td><code>scroll</code></td>
-      <td>boolean</td>
-      <td><code>false</code></td>
-      <td>Allow body scrolling while offcanvas is open</td>
-    </tr>
-  </tbody>
-</table>
-
+{{< bs-table "table" >}}
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `backdrop` | boolean | `true` | Apply a backdrop on body while offcanvas is open |
+| `keyboard` | boolean | `true` | Closes the offcanvas when escape key is pressed |
+| `scroll` | boolean | `false` | Allow body scrolling while offcanvas is open |
+{{< /bs-table >}}
 
 ### Methods
 
@@ -243,43 +219,27 @@ var myOffcanvas = document.getElementById('myOffcanvas')
 var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
 ```
 
+{{< bs-table "table" >}}
 | Method | Description |
 | --- | --- |
 | `toggle` | Toggles an offcanvas element to shown or hidden. **Returns to the caller before the offcanvas element has actually been shown or hidden** (i.e. before the `shown.bs.offcanvas` or `hidden.bs.offcanvas` event occurs). |
 | `show` | Shows an offcanvas element. **Returns to the caller before the offcanvas element has actually been shown** (i.e. before the `shown.bs.offcanvas` event occurs).|
 | `hide` | Hides an offcanvas element. **Returns to the caller before the offcanvas element has actually been hidden** (i.e. before the `hidden.bs.offcanvas` event occurs).|
 | `_getInstance` | *Static* method which allows you to get the offcanvas instance associated with a DOM element |
+{{< /bs-table >}}
 
 ### Events
 
 Bootstrap's offcanvas class exposes a few events for hooking into offcanvas functionality.
 
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th style="width: 150px;">Event Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>show.bs.offcanvas</td>
-      <td>This event fires immediately when the <code>show</code> instance method is called.</td>
-    </tr>
-    <tr>
-      <td>shown.bs.offcanvas</td>
-      <td>This event is fired when an offcanvas element has been made visible to the user (will wait for CSS transitions to complete).</td>
-    </tr>
-    <tr>
-      <td>hide.bs.offcanvas</td>
-      <td>This event is fired immediately when the <code>hide</code> method has been called.</td>
-    </tr>
-    <tr>
-      <td>hidden.bs.offcanvas</td>
-      <td>This event is fired when an offcanvas element has been hidden from the user (will wait for CSS transitions to complete).</td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table "table" >}}
+| Event type | Description |
+| --- | --- |
+| `show.bs.offcanvas` | This event fires immediately when the `show` instance method is called. |
+| `shown.bs.offcanvas` | This event is fired when an offcanvas element has been made visible to the user (will wait for CSS transitions to complete). |
+| `hide.bs.offcanvas` | This event is fired immediately when the `hide` method has been called. |
+| `hidden.bs.offcanvas` | This event is fired when an offcanvas element has been hidden from the user (will wait for CSS transitions to complete). |
+{{< /bs-table >}}
 
 ```js
 var myOffcanvas = document.getElementById('myOffcanvas')
