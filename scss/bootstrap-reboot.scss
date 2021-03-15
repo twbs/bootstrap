@@ -7,6 +7,7 @@
  */
 
 @import "functions";
+@import "colors";
 @import "variables";
 // Prevent the usage of custom properties since we don't add them to `:root` in reboot
 $font-family-base: $font-family-sans-serif; // stylelint-disable-line scss/dollar-variable-default
