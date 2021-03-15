@@ -23,6 +23,8 @@
       description: "Attach a footer to the bottom of the viewport when page content is short."
     - name: Sticky footer navbar
       description: "Attach a footer to the bottom of the viewport with a fixed top navbar."
+    - name: Jumbotron
+      description: "Use utilities to recreate and enhance Bootstrap 4's jumbotron."
 
 - category: Framework
   description: "Examples that focus on implementing uses of built-in components provided by Bootstrap."
