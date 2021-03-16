@@ -347,16 +347,19 @@ describe('Util', () => {
       expect(Util.isDisabled(div2)).toEqual(true)
     })
 
-    it('should return false if the element has disabled attribute with "false" value', () => {
+    it('should return false if the element has disabled attribute with "false" value, or doesn\'t has attribute', () => {
       fixtureEl.innerHTML = [
         '<div>',
         '  <div id="element" disabled="false"></div>',
+        '  <div id="element1" ></div>',
         '</div>'
       ].join('')
 
       const div = fixtureEl.querySelector('#element')
+      const div1 = fixtureEl.querySelector('#element1')
 
       expect(Util.isDisabled(div)).toEqual(false)
+      expect(Util.isDisabled(div1)).toEqual(false)
     })
 
     it('should return false if the element is not disabled ', () => {
