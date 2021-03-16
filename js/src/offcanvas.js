@@ -31,6 +31,7 @@ const NAME = 'offcanvas'
 const DATA_KEY = 'bs.offcanvas'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
+const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 const ESCAPE_KEY = 'Escape'
 
 const Default = {
@@ -48,7 +49,8 @@ const DefaultType = {
 const CLASS_NAME_BACKDROP_BODY = 'offcanvas-backdrop'
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_TOGGLING = 'offcanvas-toggling'
-const ACTIVE_SELECTOR = `.offcanvas.show, .${CLASS_NAME_TOGGLING}`
+const OPEN_SELECTOR = '.offcanvas.show'
+const ACTIVE_SELECTOR = `${OPEN_SELECTOR}, .${CLASS_NAME_TOGGLING}`
 
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
@@ -72,7 +74,7 @@ class Offcanvas extends BaseComponent {
     super(element)
 
     this._config = this._getConfig(config)
-    this._isShown = element.classList.contains(CLASS_NAME_SHOW)
+    this._isShown = false
     this._addEventListeners()
   }
 
@@ -260,6 +262,10 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   const data = Data.get(target, DATA_KEY) || new Offcanvas(target)
 
   data.toggle(this)
+})
+
+EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+  SelectorEngine.find(OPEN_SELECTOR).forEach(el => new Offcanvas(el).show())
 })
 
 /**
