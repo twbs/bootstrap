@@ -1073,6 +1073,9 @@ describe('Carousel', () => {
       expect(carousel._directionToOrder('prev')).toEqual('prev')
       expect(carousel._directionToOrder('right')).toEqual('next')
       expect(carousel._directionToOrder('next')).toEqual('next')
+
+      expect(carousel._orderToDirection('next')).toEqual('right')
+      expect(carousel._orderToDirection('prev')).toEqual('left')
     })
 
     it('rtl left has to return "next" order', () => {
@@ -1087,6 +1090,9 @@ describe('Carousel', () => {
       expect(carousel._directionToOrder('prev')).toEqual('prev')
       expect(carousel._directionToOrder('right')).toEqual('prev')
       expect(carousel._directionToOrder('next')).toEqual('next')
+
+      expect(carousel._orderToDirection('next')).toEqual('left')
+      expect(carousel._orderToDirection('prev')).toEqual('right')
       document.documentElement.dir = 'ltl'
     })
 
@@ -1096,12 +1102,15 @@ describe('Carousel', () => {
       const carouselEl = fixtureEl.querySelector('div')
       const carousel = new Carousel(carouselEl, {})
       const spy = spyOn(carousel, '_directionToOrder').and.callThrough()
+      const spy2 = spyOn(carousel, '_orderToDirection').and.callThrough()
 
       carousel._slide('left')
       expect(spy).toHaveBeenCalledWith('left')
+      expect(spy2).toHaveBeenCalledWith('prev')
 
       carousel._slide('right')
       expect(spy).toHaveBeenCalledWith('right')
+      expect(spy2).toHaveBeenCalledWith('next')
     })
   })
 
