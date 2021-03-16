@@ -1063,7 +1063,7 @@ describe('Carousel', () => {
     })
   })
   describe('rtl function', () => {
-    it('right has to return "next" order ', () => {
+    it('"_directionToOrder" and "_orderToDirection" must return the right results', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const carouselEl = fixtureEl.querySelector('div')
@@ -1078,7 +1078,7 @@ describe('Carousel', () => {
       expect(carousel._orderToDirection('prev')).toEqual('left')
     })
 
-    it('rtl left has to return "next" order', () => {
+    it('"_directionToOrder" and "_orderToDirection" must return the right results when rtl=true', () => {
       document.documentElement.dir = 'rtl'
       fixtureEl.innerHTML = '<div></div>'
 
@@ -1096,7 +1096,7 @@ describe('Carousel', () => {
       document.documentElement.dir = 'ltl'
     })
 
-    it('rtl "_slide" has to call _directionToOrder', () => {
+    it('"_slide" has to call _directionToOrder and "_orderToDirection"', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const carouselEl = fixtureEl.querySelector('div')
@@ -1111,6 +1111,26 @@ describe('Carousel', () => {
       carousel._slide('right')
       expect(spy).toHaveBeenCalledWith('right')
       expect(spy2).toHaveBeenCalledWith('next')
+    })
+
+    it('"_slide" has to call "_directionToOrder" and "_orderToDirection" when rtl=true', () => {
+      document.documentElement.dir = 'rtl'
+      fixtureEl.innerHTML = '<div></div>'
+
+      const carouselEl = fixtureEl.querySelector('div')
+      const carousel = new Carousel(carouselEl, {})
+      const spy = spyOn(carousel, '_directionToOrder').and.callThrough()
+      const spy2 = spyOn(carousel, '_orderToDirection').and.callThrough()
+
+      carousel._slide('left')
+      expect(spy).toHaveBeenCalledWith('left')
+      expect(spy2).toHaveBeenCalledWith('next')
+
+      carousel._slide('right')
+      expect(spy).toHaveBeenCalledWith('right')
+      expect(spy2).toHaveBeenCalledWith('prev')
+
+      document.documentElement.dir = 'ltl'
     })
   })
 
