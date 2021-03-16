@@ -1095,15 +1095,12 @@ describe('Carousel', () => {
 
       const carouselEl = fixtureEl.querySelector('div')
       const carousel = new Carousel(carouselEl, {})
-
       const spy = spyOn(carousel, '_directionToOrder').and.callThrough()
 
       carousel._slide('left')
-
       expect(spy).toHaveBeenCalledWith('left')
 
       carousel._slide('right')
-
       expect(spy).toHaveBeenCalledWith('right')
     })
   })
