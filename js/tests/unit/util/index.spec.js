@@ -347,7 +347,7 @@ describe('Util', () => {
       expect(Util.isDisabled(div2)).toEqual(true)
     })
 
-    it('should return false if the element has disabled attribute with "false" value, or doesn\'t has attribute', () => {
+    it('should return false if the element has disabled attribute with "false" value, or doesn\'t have attribute', () => {
       fixtureEl.innerHTML = [
         '<div>',
         '  <div id="element" disabled="false"></div>',
