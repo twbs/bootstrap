@@ -101,7 +101,7 @@ Use `justify-content` utilities on flexbox containers to change the alignment of
     <div class="p-2 bd-highlight">Flex item</div>
     <div class="p-2 bd-highlight">Flex item</div>
   </div>
-  <div class="d-flex justify-content-around bd-highlight">
+  <div class="d-flex justify-content-around bd-highlight mb-3">
     <div class="p-2 bd-highlight">Flex item</div>
     <div class="p-2 bd-highlight">Flex item</div>
     <div class="p-2 bd-highlight">Flex item</div>
