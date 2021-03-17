@@ -230,6 +230,23 @@ describe('Offcanvas', () => {
 
       offCanvas.show()
     })
+
+    it('on window load, should make visible an offcanvas element, if its markup contains class "show"', done => {
+      fixtureEl.innerHTML = '<div class="offcanvas show"></div>'
+
+      const offCanvasEl = fixtureEl.querySelector('div')
+      spyOn(Offcanvas.prototype, 'show').and.callThrough()
+
+      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+        done()
+      })
+
+      window.dispatchEvent(createEvent('load'))
+
+      const instance = Offcanvas.getInstance(offCanvasEl)
+      expect(instance).not.toBeNull()
+      expect(Offcanvas.prototype.show).toHaveBeenCalled()
+    })
   })
 
   describe('hide', () => {
