@@ -166,7 +166,7 @@ const isDisabled = element => {
     return element.disabled
   }
 
-  return element.getAttribute('disabled') !== 'false'
+  return element.hasAttribute('disabled') && element.getAttribute('disabled') !== 'false'
 }
 
 const findShadowRoot = element => {
