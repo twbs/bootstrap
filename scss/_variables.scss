@@ -17,6 +17,7 @@ $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
+$dark:     #121212 !default;
 // scss-docs-end gray-color-variables
 
 // fusv-disable
@@ -37,6 +38,7 @@ $grays: (
 
 // scss-docs-start color-variables
 $blue:    #0d6efd !default;
+$blue-dark: #81d4fa !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #d63384 !default;
@@ -68,6 +70,7 @@ $colors: (
 
 // scss-docs-start theme-color-variables
 $primary:       $blue !default;
+$primary-dark:  $blue-dark !default;
 $secondary:     $gray-600 !default;
 $success:       $green !default;
 $info:          $cyan !default;
@@ -277,6 +280,8 @@ $position-values: (
 // Settings for the `<body>` element.
 
 $body-bg:                   $white !default;
+$body-bg-dark:              $dark !default;
+$body-color-dark:           $white !default;
 $body-color:                $gray-900 !default;
 $body-text-align:           null !default;
 
@@ -286,6 +291,7 @@ $body-text-align:           null !default;
 // Style anchor elements.
 
 $link-color:                              $primary !default;
+$link-color-dark:                         $primary-dark !default;
 $link-decoration:                         underline !default;
 $link-shade-percentage:                   20% !default;
 $link-hover-color:                        shift-color($link-color, $link-shade-percentage) !default;
@@ -534,6 +540,7 @@ $table-cell-padding-x-sm:     .25rem !default;
 $table-cell-vertical-align:   top !default;
 
 $table-color:                 $body-color !default;
+$table-color-dark:            $body-color-dark !default;
 $table-bg:                    transparent !default;
 
 $table-th-font-weight:        null !default;

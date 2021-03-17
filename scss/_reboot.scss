@@ -619,3 +619,14 @@ progress {
 [hidden] {
   display: none !important;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: $body-color-dark;
+    background-color: $body-bg-dark;
+  }
+
+  a {
+    color: $link-color-dark;
+  }
+}

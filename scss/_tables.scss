@@ -148,3 +148,9 @@
     }
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .table {
+    color: $table-color-dark;
+  }
+}
