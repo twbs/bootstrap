@@ -96,10 +96,11 @@ Loop that generates the modifier classes with the `alert-variant()` mixin.
 Enable dismissal of an alert via JavaScript:
 
 ```js
-var alertList = document.querySelectorAll('.alert')
+var alertList = document.querySelectorAll('[data-bs-dismiss="alert"]')
 alertList.forEach(function (alert) {
-  new bootstrap.Alert(alert)
+    new bootstrap.Alert(alert)
 })
+
 ```
 
 Or with `data` attributes on a button **within the alert**, as demonstrated above:
