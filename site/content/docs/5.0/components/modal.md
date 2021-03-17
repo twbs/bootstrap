@@ -509,9 +509,9 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
 })
 ```
 
-### Toggle between dialogs
+### Toggle between modals
 
-Toggle between modal dialogs with different values of `data-bs-target` attribute, `data-bs-toggle` and `data-bs-dismiss` attributes are required. It's only *switches visibility* of *existed* modal dialogs. For example, you could toggle a "Reset password" dialog from within an already open "Sign in" dialog.
+Toggle between multiple modals with some clever placement of the `data-bs-target` and `data-bs-toggle` attributes. For example, you could toggle a password reset modal from within an already open sign in modal. **Please note multiple modals cannot be open at the same time**—this method simply toggles between two separate modals.
 
 <div class="bd-example">
   <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
