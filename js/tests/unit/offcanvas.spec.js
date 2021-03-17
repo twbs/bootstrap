@@ -161,10 +161,12 @@ describe('Offcanvas', () => {
     })
 
     it('should call hide method if show class is present', () => {
-      fixtureEl.innerHTML = '<div class="offcanvas show"></div>'
+      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
-      const offCanvasEl = fixtureEl.querySelector('.show')
+      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl)
+      offCanvas.show()
+      expect(offCanvasEl.classList.contains('show')).toBe(true)
 
       spyOn(offCanvas, 'hide')
 
@@ -178,11 +180,13 @@ describe('Offcanvas', () => {
     it('should do nothing if already shown', () => {
       fixtureEl.innerHTML = '<div class="offcanvas show"></div>'
 
-      spyOn(EventHandler, 'trigger')
-
       const offCanvasEl = fixtureEl.querySelector('div')
       const offCanvas = new Offcanvas(offCanvasEl)
 
+      offCanvas.show()
+      expect(offCanvasEl.classList.contains('show')).toBe(true)
+
+      spyOn(EventHandler, 'trigger').and.callThrough()
       offCanvas.show()
 
       expect(EventHandler.trigger).not.toHaveBeenCalled()
@@ -232,7 +236,7 @@ describe('Offcanvas', () => {
     it('should do nothing if already shown', () => {
       fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
-      spyOn(EventHandler, 'trigger')
+      spyOn(EventHandler, 'trigger').and.callThrough()
 
       const offCanvasEl = fixtureEl.querySelector('div')
       const offCanvas = new Offcanvas(offCanvasEl)
@@ -243,10 +247,11 @@ describe('Offcanvas', () => {
     })
 
     it('should hide a shown element', done => {
-      fixtureEl.innerHTML = '<div class="offcanvas show"></div>'
+      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
       const offCanvasEl = fixtureEl.querySelector('div')
       const offCanvas = new Offcanvas(offCanvasEl)
+      offCanvas.show()
 
       offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
         expect(offCanvasEl.classList.contains('show')).toEqual(false)
@@ -257,10 +262,11 @@ describe('Offcanvas', () => {
     })
 
     it('should not fire hidden when hide is prevented', done => {
-      fixtureEl.innerHTML = '<div class="offcanvas show"></div>'
+      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
       const offCanvasEl = fixtureEl.querySelector('div')
       const offCanvas = new Offcanvas(offCanvasEl)
+      offCanvas.show()
 
       const expectEnd = () => {
         setTimeout(() => {
