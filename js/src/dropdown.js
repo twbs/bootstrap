@@ -375,8 +375,14 @@ class Dropdown extends BaseComponent {
   }
 
   static clearMenus(event) {
-    if (event && (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY))) {
-      return
+    if (event) {
+      if (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY)) {
+        return
+      }
+
+      if (/input|select|textarea|form/i.test(event.target.tagName)) {
+        return
+      }
     }
 
     const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
@@ -401,16 +407,13 @@ class Dropdown extends BaseComponent {
       }
 
       if (event) {
-        const dropdownForm = dropdownMenu.querySelector('form')
-
-        if ([context._element, dropdownForm].some(element => event.composedPath().includes(element))) {
+        // Don't close the menu if the clicked element or one of its parents is the dropdown button
+        if ([context._element].some(element => event.composedPath().includes(element))) {
           continue
         }
 
-        if (((event.type === 'click' &&
-            /input|textarea/i.test(event.target.tagName)) ||
-            (event.type === 'keyup' && event.key === TAB_KEY)) &&
-            dropdownMenu.contains(event.target)) {
+        // Tab navigation through the dropdown menu shouldn't close the menu
+        if (event.type === 'keyup' && event.key === TAB_KEY && dropdownMenu.contains(event.target)) {
           continue
         }
       }
