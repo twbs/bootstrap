@@ -211,7 +211,7 @@ While both ways to dismiss an offcanvas are supported, keep in mind that dismiss
 Enable manually with:
 
 ```js
-var offcanvasElementList = [].slice.call(document.querySelectorAll('.offcanvas'))
+var offcanvasElementList = Array.prototype.slice.call(document.querySelectorAll('.offcanvas'))
 var offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
   return new bootstrap.Offcanvas(offcanvasEl)
 })

@@ -92,7 +92,7 @@
         })
       }
 
-      [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
         .forEach(function (tooltip) {
           new Tooltip(tooltip)
         })

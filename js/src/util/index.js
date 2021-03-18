@@ -15,7 +15,7 @@ const toType = obj => {
     return `${obj}`
   }
 
-  return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
+  return Object.prototype.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
 }
 
 /**
