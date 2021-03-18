@@ -40,7 +40,7 @@
     <script src="../../dist/tooltip.js"></script>
     <script src="../../dist/popover.js"></script>
     <script>
-      [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+      Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
         .forEach(function (popover) {
           new Popover(popover)
         })

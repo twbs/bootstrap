@@ -60,7 +60,6 @@
     "unicorn/prefer-array-flat": "off",
     "unicorn/prefer-dom-node-dataset": "off",
     "unicorn/prefer-module": "off",
-    "unicorn/prefer-prototype-methods": "off",
     "unicorn/prefer-query-selector": "off",
     "unicorn/prefer-spread": "off",
     "unicorn/prevent-abbreviations": "off"

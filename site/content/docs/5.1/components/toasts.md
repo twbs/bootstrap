@@ -335,7 +335,7 @@ While technically it's possible to add focusable/actionable controls (such as ad
 Initialize toasts via JavaScript:
 
 ```js
-var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+var toastElList = Array.prototype.slice.call(document.querySelectorAll('.toast'))
 var toastList = toastElList.map(function (toastEl) {
   return new bootstrap.Toast(toastEl, option)
 })

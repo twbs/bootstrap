@@ -220,12 +220,12 @@
         }
       }
 
-      [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+      Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
         .forEach(function (popover) {
           new Popover(popover)
         })
 
-      var tooltipList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      var tooltipList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
       tooltipList.forEach(function (tooltip) {
         new Tooltip(tooltip)
       })
