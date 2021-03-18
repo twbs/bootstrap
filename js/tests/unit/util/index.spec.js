@@ -317,6 +317,114 @@ describe('Util', () => {
     })
   })
 
+  describe('isDisabled', () => {
+    it('should return true if the element is not defined', () => {
+      expect(Util.isDisabled(null)).toEqual(true)
+      expect(Util.isDisabled(undefined)).toEqual(true)
+      expect(Util.isDisabled()).toEqual(true)
+    })
+
+    it('should return true if the element provided is not a dom element', () => {
+      expect(Util.isDisabled({})).toEqual(true)
+      expect(Util.isDisabled('test')).toEqual(true)
+    })
+
+    it('should return true if the element has disabled attribute', () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '  <div id="element" disabled="disabled"></div>',
+        '  <div id="element1" disabled="true"></div>',
+        '  <div id="element2" disabled></div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('#element')
+      const div1 = fixtureEl.querySelector('#element1')
+      const div2 = fixtureEl.querySelector('#element2')
+
+      expect(Util.isDisabled(div)).toEqual(true)
+      expect(Util.isDisabled(div1)).toEqual(true)
+      expect(Util.isDisabled(div2)).toEqual(true)
+    })
+
+    it('should return false if the element has disabled attribute with "false" value, or doesn\'t have attribute', () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '  <div id="element" disabled="false"></div>',
+        '  <div id="element1" ></div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('#element')
+      const div1 = fixtureEl.querySelector('#element1')
+
+      expect(Util.isDisabled(div)).toEqual(false)
+      expect(Util.isDisabled(div1)).toEqual(false)
+    })
+
+    it('should return false if the element is not disabled ', () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '  <button id="button"></button>',
+        '  <select id="select"></select>',
+        '  <select id="input"></select>',
+        '</div>'
+      ].join('')
+
+      const el = selector => fixtureEl.querySelector(selector)
+
+      expect(Util.isDisabled(el('#button'))).toEqual(false)
+      expect(Util.isDisabled(el('#select'))).toEqual(false)
+      expect(Util.isDisabled(el('#input'))).toEqual(false)
+    })
+    it('should return true if the element has disabled attribute', () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '  <input id="input" disabled="disabled"/>',
+        '  <input id="input1" disabled="disabled"/>',
+        '  <button id="button" disabled="true"></button>',
+        '  <button id="button1" disabled="disabled"></button>',
+        '  <button id="button2" disabled></button>',
+        '  <select id="select" disabled></select>',
+        '  <select id="input" disabled></select>',
+        '</div>'
+      ].join('')
+
+      const el = selector => fixtureEl.querySelector(selector)
+
+      expect(Util.isDisabled(el('#input'))).toEqual(true)
+      expect(Util.isDisabled(el('#input1'))).toEqual(true)
+      expect(Util.isDisabled(el('#button'))).toEqual(true)
+      expect(Util.isDisabled(el('#button1'))).toEqual(true)
+      expect(Util.isDisabled(el('#button2'))).toEqual(true)
+      expect(Util.isDisabled(el('#input'))).toEqual(true)
+    })
+
+    it('should return true if the element has class "disabled"', () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '  <div id="element" class="disabled"></div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('#element')
+
+      expect(Util.isDisabled(div)).toEqual(true)
+    })
+
+    it('should return true if the element has class "disabled" but disabled attribute is false', () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '  <input id="input" class="disabled" disabled="false"/>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('#input')
+
+      expect(Util.isDisabled(div)).toEqual(true)
+    })
+  })
+
   describe('findShadowRoot', () => {
     it('should return null if shadow dom is not available', () => {
       // Only for newer browsers

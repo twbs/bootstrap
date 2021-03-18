@@ -1112,7 +1112,7 @@ describe('Dropdown', () => {
 
       btnDropdown.addEventListener('shown.bs.dropdown', () => {
         // Popper adds this attribute when we use it
-        expect(dropdownMenu.getAttribute('x-placement')).toEqual(null)
+        expect(dropdownMenu.getAttribute('data-popper-placement')).toEqual(null)
         done()
       })
 
