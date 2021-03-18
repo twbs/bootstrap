@@ -410,7 +410,6 @@ class Dropdown extends BaseComponent {
     })
   }
 
-  // eslint-disable-next-line complexity
   static clearMenus(event) {
     if (event) {
       if (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY)) {
