@@ -145,6 +145,44 @@ describe('Offcanvas', () => {
       expect(offCanvas._config.scroll).toEqual(false)
     })
   })
+  describe('options', () => {
+    it('if scroll is enabled, should allow body to scroll while offcanvas is open', done => {
+      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+
+      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+      const offCanvas = new Offcanvas(offCanvasEl, { scroll: true })
+      const initialOverFlow = document.body.style.overflow
+
+      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+        expect(document.body.style.overflow).toEqual(initialOverFlow)
+
+        offCanvas.hide()
+      })
+      offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+        expect(document.body.style.overflow).toEqual(initialOverFlow)
+        done()
+      })
+      offCanvas.show()
+    })
+
+    it('if scroll is disabled, should not allow body to scroll while offcanvas is open', done => {
+      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+
+      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+      const offCanvas = new Offcanvas(offCanvasEl, { scroll: false })
+
+      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+        expect(document.body.style.overflow).toEqual('hidden')
+
+        offCanvas.hide()
+      })
+      offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+        expect(document.body.style.overflow).toEqual('auto')
+        done()
+      })
+      offCanvas.show()
+    })
+  })
 
   describe('toggle', () => {
     it('should call show method if show class is not present', () => {
@@ -338,6 +376,52 @@ describe('Offcanvas', () => {
 
       expect(Offcanvas.prototype.toggle).not.toHaveBeenCalled()
     })
+
+    it('should not call toggle if another offcanvas is open', done => {
+      fixtureEl.innerHTML = [
+        '<button id="btn2" data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" ></button>',
+        '<div id="offcanvas1" class="offcanvas"></div>',
+        '<div id="offcanvas2" class="offcanvas"></div>'
+      ].join('')
+
+      const trigger2 = fixtureEl.querySelector('#btn2')
+      const offcanvasEl1 = document.querySelector('#offcanvas1')
+      const offcanvasEl2 = document.querySelector('#offcanvas2')
+      const offcanvas1 = new Offcanvas(offcanvasEl1)
+
+      offcanvasEl1.addEventListener('shown.bs.offcanvas', () => {
+        trigger2.click()
+      })
+      offcanvasEl1.addEventListener('hidden.bs.offcanvas', () => {
+        expect(Offcanvas.getInstance(offcanvasEl2)).toEqual(null)
+        done()
+      })
+      offcanvas1.show()
+    })
+
+    it('should focus on trigger element after closing offcanvas', done => {
+      fixtureEl.innerHTML = [
+        '<button id="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" ></button>',
+        '<div id="offcanvas" class="offcanvas"></div>'
+      ].join('')
+
+      const trigger = fixtureEl.querySelector('#btn')
+      const offcanvasEl = fixtureEl.querySelector('#offcanvas')
+      const offcanvas = new Offcanvas(offcanvasEl)
+      spyOn(trigger, 'focus')
+
+      offcanvasEl.addEventListener('shown.bs.offcanvas', () => {
+        offcanvas.hide()
+      })
+      offcanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+        setTimeout(() => {
+          expect(trigger.focus).toHaveBeenCalled()
+          done()
+        }, 5)
+      })
+
+      trigger.click()
+    })
   })
 
   describe('jQueryInterface', () => {
@@ -454,6 +538,23 @@ describe('Offcanvas', () => {
 
       jQueryMock.fn.offcanvas.call(jQueryMock, 'show')
       expect(Offcanvas.prototype.show).toHaveBeenCalled()
+    })
+
+    it('should create a offcanvas with given config', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      jQueryMock.fn.offcanvas = Offcanvas.jQueryInterface
+      jQueryMock.elements = [div]
+
+      jQueryMock.fn.offcanvas.call(jQueryMock, { scroll: true })
+      spyOn(Offcanvas.prototype, 'constructor')
+      expect(Offcanvas.prototype.constructor).not.toHaveBeenCalledWith(div, { scroll: true })
+
+      const offcanvas = Offcanvas.getInstance(div)
+      expect(offcanvas).toBeDefined()
+      expect(offcanvas._config.scroll).toBe(true)
     })
   })
 
