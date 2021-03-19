@@ -35,4 +35,10 @@
   @each $size, $value in $spacers {
     --#{$variable-prefix}spacer-#{$size}: #{$value};
   }
+
+  @each $breakpoint, $width in $grid-breakpoints {
+    @if $width > 0 {
+      --#{$variable-prefix}breakpoint-#{$breakpoint}: #{$width};
+    }
+  }
 }
