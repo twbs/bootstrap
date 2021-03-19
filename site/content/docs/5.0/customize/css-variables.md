@@ -6,7 +6,7 @@ group: customize
 toc: true
 ---
 
-Bootstrap includes around two dozen [CSS custom properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) in its compiled CSS, with dozens more on the way for improved customization on a per-component basis. These provide easy access to commonly used values like our theme colors, breakpoints, and primary font stacks when working in your browser's inspector, a code sandbox, or general prototyping.
+Bootstrap includes a slew of [CSS custom properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) in its compiled CSS for improved on-the-fly customization. These provide easy access to commonly used values like our theme colors, breakpoints, and primary font stacks when working in your browser's inspector, a code sandbox, or general prototyping. All without recompiling source Sass files.
 
 **All our custom properties are prefixed with `bs-`** to avoid conflicts with third party CSS.
 
@@ -14,7 +14,7 @@ Bootstrap includes around two dozen [CSS custom properties (variables)](https://
 
 Here are the variables we include (note that the `:root` is required) that can be accessed anywhere Bootstrap's CSS is loaded. They're located in our `_root.scss` file and included in our compiled dist files.
 
-```css
+```scss
 {{< root.inline >}}
 {{- $css := readFile "dist/css/bootstrap.css" -}}
 {{- $match := findRE ":root {([^}]*)}" $css 1 -}}
@@ -48,3 +48,7 @@ a {
   color: var(--bs-blue);
 }
 ```
+
+## Grid breakpoints
+
+While we include our grid breakpoints as variables (except for `xs`), but be aware that CSS variables do not work in media queries. This is by design in the CSS spec for variables, but may change in coming years with support for `env()` variables. Check out [this Stack Overflow answer](https://stackoverflow.com/a/47212942) for some helpful links.
