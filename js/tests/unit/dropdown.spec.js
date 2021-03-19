@@ -1807,39 +1807,6 @@ describe('Dropdown', () => {
     expect(delegatedClickListener).toHaveBeenCalled()
   })
 
-  it('should allow `.dropdown-menu form` click events to bubble up', () => {
-    fixtureEl.innerHTML = [
-      '<div class="dropdown">',
-      '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
-      '  <div class="dropdown-menu">',
-      '    <form>',
-      '      <input class="form-control" type="text">',
-      '    </form>',
-      '  </div>',
-      '</div>'
-    ].join('')
-
-    const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
-    const form = fixtureEl.querySelector('form')
-    const formInput = form.querySelector('input')
-    const formClickListener = jasmine.createSpy('formClickListener')
-
-    form.addEventListener('click', formClickListener)
-
-    btnDropdown.addEventListener('shown.bs.dropdown', () => {
-      formInput.click()
-      form.click()
-    })
-
-    btnDropdown.addEventListener('hidden.bs.dropdown', () => {
-      throw new Error('should not throw hidden.bs.dropdown event')
-    })
-
-    btnDropdown.click()
-
-    expect(formClickListener).toHaveBeenCalledTimes(2)
-  })
-
   it('should open the dropdown when clicking the child element inside `data-bs-toggle="dropdown"`', done => {
     fixtureEl.innerHTML = [
       '<div class="container">',
