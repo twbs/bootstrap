@@ -44,11 +44,11 @@ const browsers = {
     device: 'iPhone 7',
     real_mobile: true
   },
-  iphone11: {
+  iphone12: {
     base: 'BrowserStack',
     os: 'ios',
-    os_version: '13.0',
-    device: 'iPhone 11',
+    os_version: '14.0',
+    device: 'iPhone 12',
     real_mobile: true
   },
   pixel2: {
