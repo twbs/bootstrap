@@ -30,12 +30,13 @@
   --#{$variable-prefix}grid-gutter-width: #{$grid-gutter-width};
 
   // Spacing
-  // TODO: Ideally we'd size these values based on the CSS var instead of the Sass map, so they'd be live updating, but TBD on feasibility
+  // Ideally we'd size these values based on the CSS var instead of the Sass map, so they'd be live updating, but TBD on feasibility
   --#{$variable-prefix}spacer: #{$spacer};
   @each $size, $value in $spacers {
     --#{$variable-prefix}spacer-#{$size}: #{$value};
   }
 
+  // Breakpoints
   @each $breakpoint, $width in $grid-breakpoints {
     @if $width > 0 {
       --#{$variable-prefix}breakpoint-#{$breakpoint}: #{$width};
