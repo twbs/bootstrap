@@ -18,20 +18,21 @@
 
 .btn-clipboard {
   position: absolute;
-  top: .65rem;
-  right: .65rem;
+  top: .35rem;
+  right: .5rem;
   z-index: 10;
   display: block;
   padding: .25rem .5rem;
-  @include font-size(.65em);
-  color: $primary;
-  background-color: $white;
-  border: 1px solid;
+  @include font-size(.75em);
+  color: $gray-700;
+  user-select: none;
+  background-color: transparent;
+  border: 0;
   @include border-radius();
 
   &:hover,
   &:focus {
-    color: $white;
-    background-color: $primary;
+    color: $gray-900;
+    background-color: $gray-200;
   }
 }
