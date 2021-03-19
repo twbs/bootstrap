@@ -2,14 +2,18 @@
   // Custom variable values only support SassScript inside `#{}`.
   @each $color, $value in $colors {
     --#{$variable-prefix}#{$color}: #{$value};
+    --#{$variable-prefix}#{$color}-rgb: #{hex-to-rgb($value)};
   }
 
   @each $color, $value in $grays {
     --#{$variable-prefix}gray-#{$color}: #{$value};
+    --#{$variable-prefix}gray-#{$color}-rgb: #{hex-to-rgb($value)};
   }
 
   @each $color, $value in $theme-colors {
+    // --#{$variable-prefix}#{$color}: rgba(#{hex-to-rgb($value)}, var(--#{$variable-prefix}color-opacity, 1));
     --#{$variable-prefix}#{$color}: #{$value};
+    --#{$variable-prefix}#{$color}-rgb: #{hex-to-rgb($value)};
   }
 
   // Use `inspect` for lists so that quoted items keep the quotes.
