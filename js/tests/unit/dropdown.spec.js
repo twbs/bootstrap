@@ -1020,13 +1020,13 @@ describe('Dropdown', () => {
         showEventTriggered = true
       })
 
-      btnDropdown.addEventListener('shown.bs.dropdown', e => setTimeout(() => {
+      btnDropdown.addEventListener('shown.bs.dropdown', e => {
         expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         expect(showEventTriggered).toEqual(true)
         expect(e.relatedTarget).toEqual(btnDropdown)
         document.body.click()
-      }))
+      })
 
       btnDropdown.addEventListener('hide.bs.dropdown', () => {
         hideEventTriggered = true
@@ -1822,11 +1822,11 @@ describe('Dropdown', () => {
     const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
     const childElement = fixtureEl.querySelector('#childElement')
 
-    btnDropdown.addEventListener('shown.bs.dropdown', () => setTimeout(() => {
+    btnDropdown.addEventListener('shown.bs.dropdown', () => {
       expect(btnDropdown.classList.contains('show')).toEqual(true)
       expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
       done()
-    }))
+    })
 
     childElement.click()
   })
