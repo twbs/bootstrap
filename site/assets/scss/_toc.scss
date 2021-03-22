@@ -1,4 +1,5 @@
 // stylelint-disable selector-max-type
+// stylelint-disable selector-no-qualifying-type
 
 .bd-toc {
   @include media-breakpoint-up(lg) {
@@ -29,10 +30,18 @@
     }
 
     a {
+      padding: .1rem .2rem;
       color: inherit;
+      text-decoration: none;
+      @include border-radius(.2rem);
 
-      &:not(:hover) {
-        text-decoration: none;
+      &:hover,
+      &.active {
+        color: $bd-purple;
+        background-color: $bd-purple-light;
+      }
+      &.active {
+        font-weight: 500;
       }
 
       code {
