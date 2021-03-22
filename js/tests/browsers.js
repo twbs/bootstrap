@@ -40,7 +40,7 @@ const browsers = {
   iphone7: {
     base: 'BrowserStack',
     os: 'ios',
-    os_version: '10.0',
+    os_version: '12.0',
     device: 'iPhone 7',
     real_mobile: true
   },
