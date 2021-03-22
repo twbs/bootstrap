@@ -156,8 +156,6 @@ class Toast extends BaseComponent {
       this._element.classList.remove(CLASS_NAME_SHOW)
     }
 
-    EventHandler.off(this._element, EVENT_CLICK_DISMISS)
-
     super.dispose()
     this._config = null
   }

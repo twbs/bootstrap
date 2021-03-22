@@ -216,8 +216,6 @@ class Carousel extends BaseComponent {
   }
 
   dispose() {
-    EventHandler.off(this._element, EVENT_KEY)
-
     this._items = null
     this._config = null
     this._interval = null
