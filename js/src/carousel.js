@@ -284,11 +284,9 @@ class Carousel extends BaseComponent {
 
     const move = event => {
       // ensure swiping with one touch and not pinching
-      if (event.touches && event.touches.length > 1) {
-        this.touchDeltaX = 0
-      } else {
-        this.touchDeltaX = event.touches[0].clientX - this.touchStartX
-      }
+      this.touchDeltaX = event.touches && event.touches.length > 1 ?
+        0 :
+        event.touches[0].clientX - this.touchStartX
     }
 
     const end = event => {
