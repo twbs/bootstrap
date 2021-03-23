@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap selector-engine.js v5.0.0-beta2 (https://getbootstrap.com/)
+  * Bootstrap selector-engine.js v5.0.0-beta3 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -11,7 +11,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-beta2): dom/selector-engine.js
+   * Bootstrap (v5.0.0-beta3): dom/selector-engine.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -21,34 +21,23 @@
    * Constants
    * ------------------------------------------------------------------------
    */
-  var NODE_TEXT = 3;
-  var SelectorEngine = {
-    find: function find(selector, element) {
-      var _ref;
-
-      if (element === void 0) {
-        element = document.documentElement;
-      }
-
-      return (_ref = []).concat.apply(_ref, Element.prototype.querySelectorAll.call(element, selector));
+  const NODE_TEXT = 3;
+  const SelectorEngine = {
+    find(selector, element = document.documentElement) {
+      return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
     },
-    findOne: function findOne(selector, element) {
-      if (element === void 0) {
-        element = document.documentElement;
-      }
 
+    findOne(selector, element = document.documentElement) {
       return Element.prototype.querySelector.call(element, selector);
     },
-    children: function children(element, selector) {
-      var _ref2;
 
-      return (_ref2 = []).concat.apply(_ref2, element.children).filter(function (child) {
-        return child.matches(selector);
-      });
+    children(element, selector) {
+      return [].concat(...element.children).filter(child => child.matches(selector));
     },
-    parents: function parents(element, selector) {
-      var parents = [];
-      var ancestor = element.parentNode;
+
+    parents(element, selector) {
+      const parents = [];
+      let ancestor = element.parentNode;
 
       while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== NODE_TEXT) {
         if (ancestor.matches(selector)) {
@@ -60,8 +49,9 @@
 
       return parents;
     },
-    prev: function prev(element, selector) {
-      var previous = element.previousElementSibling;
+
+    prev(element, selector) {
+      let previous = element.previousElementSibling;
 
       while (previous) {
         if (previous.matches(selector)) {
@@ -73,8 +63,9 @@
 
       return [];
     },
-    next: function next(element, selector) {
-      var next = element.nextElementSibling;
+
+    next(element, selector) {
+      let next = element.nextElementSibling;
 
       while (next) {
         if (next.matches(selector)) {
@@ -86,6 +77,7 @@
 
       return [];
     }
+
   };
 
   return SelectorEngine;
