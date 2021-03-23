@@ -224,6 +224,7 @@ class Dropdown extends BaseComponent {
 
     this._menu.classList.toggle(CLASS_NAME_SHOW)
     this._element.classList.toggle(CLASS_NAME_SHOW)
+    this._element.setAttribute('aria-expanded', 'false')
     Manipulator.removeDataAttribute(this._menu, 'popper')
     EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
   }
@@ -430,14 +431,13 @@ class Dropdown extends BaseComponent {
           .forEach(elem => EventHandler.off(elem, 'mouseover', null, noop()))
       }
 
-      toggles[i].setAttribute('aria-expanded', 'false')
-
       if (context._popper) {
         context._popper.destroy()
       }
 
       dropdownMenu.classList.remove(CLASS_NAME_SHOW)
       toggles[i].classList.remove(CLASS_NAME_SHOW)
+      toggles[i].setAttribute('aria-expanded', 'false')
       Manipulator.removeDataAttribute(dropdownMenu, 'popper')
       EventHandler.trigger(toggles[i], EVENT_HIDDEN, relatedTarget)
     }
