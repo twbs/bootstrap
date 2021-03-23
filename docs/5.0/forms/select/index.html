@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Customize the native &lt;select&gt;s with custom CSS that changes the element&rsquo;s initial appearance.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.80.0">
+<meta name="generator" content="Hugo 0.82.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -193,6 +193,7 @@
               <li><a href="/docs/5.0/getting-started/javascript/" class="d-inline-flex align-items-center rounded">JavaScript</a></li>
               <li><a href="/docs/5.0/getting-started/build-tools/" class="d-inline-flex align-items-center rounded">Build tools</a></li>
               <li><a href="/docs/5.0/getting-started/webpack/" class="d-inline-flex align-items-center rounded">Webpack</a></li>
+              <li><a href="/docs/5.0/getting-started/parcel/" class="d-inline-flex align-items-center rounded">Parcel</a></li>
               <li><a href="/docs/5.0/getting-started/accessibility/" class="d-inline-flex align-items-center rounded">Accessibility</a></li>
               <li><a href="/docs/5.0/getting-started/rfs/" class="d-inline-flex align-items-center rounded">RFS</a></li>
               <li><a href="/docs/5.0/getting-started/rtl/" class="d-inline-flex align-items-center rounded">RTL</a></li>
@@ -289,6 +290,7 @@
               <li><a href="/docs/5.0/components/modal/" class="d-inline-flex align-items-center rounded">Modal</a></li>
               <li><a href="/docs/5.0/components/navs-tabs/" class="d-inline-flex align-items-center rounded">Navs &amp; tabs</a></li>
               <li><a href="/docs/5.0/components/navbar/" class="d-inline-flex align-items-center rounded">Navbar</a></li>
+              <li><a href="/docs/5.0/components/offcanvas/" class="d-inline-flex align-items-center rounded">Offcanvas</a></li>
               <li><a href="/docs/5.0/components/pagination/" class="d-inline-flex align-items-center rounded">Pagination</a></li>
               <li><a href="/docs/5.0/components/popovers/" class="d-inline-flex align-items-center rounded">Popovers</a></li>
               <li><a href="/docs/5.0/components/progress/" class="d-inline-flex align-items-center rounded">Progress</a></li>
@@ -399,6 +401,11 @@
     <li><a href="#default">Default</a></li>
     <li><a href="#sizing">Sizing</a></li>
     <li><a href="#disabled">Disabled</a></li>
+    <li><a href="#sass">Sass</a>
+      <ul>
+        <li><a href="#variables">Variables</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
         </div>
@@ -494,6 +501,46 @@
   <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;2&#34;</span><span class="p">&gt;</span>Two<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;3&#34;</span><span class="p">&gt;</span>Three<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span></code></pre></div>
+<h2 id="sass">Sass</h2>
+<h3 id="variables">Variables</h3>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$form-select-padding-y</span><span class="o">:</span>             <span class="nv">$input-padding-y</span><span class="p">;</span>
+<span class="nv">$form-select-padding-x</span><span class="o">:</span>             <span class="nv">$input-padding-x</span><span class="p">;</span>
+<span class="nv">$form-select-font-family</span><span class="o">:</span>           <span class="nv">$input-font-family</span><span class="p">;</span>
+<span class="nv">$form-select-font-size</span><span class="o">:</span>             <span class="nv">$input-font-size</span><span class="p">;</span>
+<span class="nv">$form-select-indicator-padding</span><span class="o">:</span>     <span class="nv">$form-select-padding-x</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// Extra padding for background-image
+</span><span class="c1"></span><span class="nv">$form-select-font-weight</span><span class="o">:</span>           <span class="nv">$input-font-weight</span><span class="p">;</span>
+<span class="nv">$form-select-line-height</span><span class="o">:</span>           <span class="nv">$input-line-height</span><span class="p">;</span>
+<span class="nv">$form-select-color</span><span class="o">:</span>                 <span class="nv">$input-color</span><span class="p">;</span>
+<span class="nv">$form-select-bg</span><span class="o">:</span>                    <span class="nv">$input-bg</span><span class="p">;</span>
+<span class="nv">$form-select-disabled-color</span><span class="o">:</span>        <span class="n">null</span><span class="p">;</span>
+<span class="nv">$form-select-disabled-bg</span><span class="o">:</span>           <span class="nv">$gray-200</span><span class="p">;</span>
+<span class="nv">$form-select-disabled-border-color</span><span class="o">:</span> <span class="nv">$input-disabled-border-color</span><span class="p">;</span>
+<span class="nv">$form-select-bg-position</span><span class="o">:</span>           <span class="no">right</span> <span class="nv">$form-select-padding-x</span> <span class="no">center</span><span class="p">;</span>
+<span class="nv">$form-select-bg-size</span><span class="o">:</span>               <span class="mi">16</span><span class="kt">px</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span> <span class="c1">// In pixels because image dimensions
+</span><span class="c1"></span><span class="nv">$form-select-indicator-color</span><span class="o">:</span>       <span class="nv">$gray-800</span><span class="p">;</span>
+<span class="nv">$form-select-indicator</span><span class="o">:</span>             <span class="sx">url(&#34;data:image/svg+xml,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 16 16&#39;&gt;&lt;path fill=&#39;none&#39; stroke=&#39;</span><span class="si">#{</span><span class="nv">$form-select-indicator-color</span><span class="si">}</span><span class="sx">&#39; stroke-linecap=&#39;round&#39; stroke-linejoin=&#39;round&#39; stroke-width=&#39;2&#39; d=&#39;M2 5l6 6 6-6&#39;/&gt;&lt;/svg&gt;&#34;)</span><span class="p">;</span>
+
+<span class="nv">$form-select-feedback-icon-padding-end</span><span class="o">:</span> <span class="nv">$form-select-padding-x</span> <span class="o">*</span> <span class="mi">2</span><span class="mf">.5</span> <span class="o">+</span> <span class="nv">$form-select-indicator-padding</span><span class="p">;</span>
+<span class="nv">$form-select-feedback-icon-position</span><span class="o">:</span>    <span class="no">center</span> <span class="no">right</span> <span class="nv">$form-select-indicator-padding</span><span class="p">;</span>
+<span class="nv">$form-select-feedback-icon-size</span><span class="o">:</span>        <span class="nv">$input-height-inner-half</span> <span class="nv">$input-height-inner-half</span><span class="p">;</span>
+
+<span class="nv">$form-select-border-width</span><span class="o">:</span>        <span class="nv">$input-border-width</span><span class="p">;</span>
+<span class="nv">$form-select-border-color</span><span class="o">:</span>        <span class="nv">$input-border-color</span><span class="p">;</span>
+<span class="nv">$form-select-border-radius</span><span class="o">:</span>       <span class="nv">$border-radius</span><span class="p">;</span>
+<span class="nv">$form-select-box-shadow</span><span class="o">:</span>          <span class="nv">$box-shadow-inset</span><span class="p">;</span>
+
+<span class="nv">$form-select-focus-border-color</span><span class="o">:</span>  <span class="nv">$input-focus-border-color</span><span class="p">;</span>
+<span class="nv">$form-select-focus-width</span><span class="o">:</span>         <span class="nv">$input-focus-width</span><span class="p">;</span>
+<span class="nv">$form-select-focus-box-shadow</span><span class="o">:</span>    <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="nv">$form-select-focus-width</span> <span class="nv">$input-btn-focus-color</span><span class="p">;</span>
+
+<span class="nv">$form-select-padding-y-sm</span><span class="o">:</span>        <span class="nv">$input-padding-y-sm</span><span class="p">;</span>
+<span class="nv">$form-select-padding-x-sm</span><span class="o">:</span>        <span class="nv">$input-padding-x-sm</span><span class="p">;</span>
+<span class="nv">$form-select-font-size-sm</span><span class="o">:</span>        <span class="nv">$input-font-size-sm</span><span class="p">;</span>
+
+<span class="nv">$form-select-padding-y-lg</span><span class="o">:</span>        <span class="nv">$input-padding-y-lg</span><span class="p">;</span>
+<span class="nv">$form-select-padding-x-lg</span><span class="o">:</span>        <span class="nv">$input-padding-x-lg</span><span class="p">;</span>
+<span class="nv">$form-select-font-size-lg</span><span class="o">:</span>        <span class="nv">$input-font-size-lg</span><span class="p">;</span>
+</code></pre></div>
 
       </div>
     </main>
@@ -509,11 +556,11 @@
       <li class="d-inline-block ms-3"><a href="/docs/5.0/about/overview/">About</a></li>
     </ul>
     <p class="mb-0">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
-    <p class="mb-0">Currently v5.0.0-beta2. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
+    <p class="mb-0">Currently v5.0.0-beta3. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>

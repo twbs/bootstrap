@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Documentation and examples for how to use Bootstrap&rsquo;s included navigation components.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.80.0">
+<meta name="generator" content="Hugo 0.82.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -193,6 +193,7 @@
               <li><a href="/docs/5.0/getting-started/javascript/" class="d-inline-flex align-items-center rounded">JavaScript</a></li>
               <li><a href="/docs/5.0/getting-started/build-tools/" class="d-inline-flex align-items-center rounded">Build tools</a></li>
               <li><a href="/docs/5.0/getting-started/webpack/" class="d-inline-flex align-items-center rounded">Webpack</a></li>
+              <li><a href="/docs/5.0/getting-started/parcel/" class="d-inline-flex align-items-center rounded">Parcel</a></li>
               <li><a href="/docs/5.0/getting-started/accessibility/" class="d-inline-flex align-items-center rounded">Accessibility</a></li>
               <li><a href="/docs/5.0/getting-started/rfs/" class="d-inline-flex align-items-center rounded">RFS</a></li>
               <li><a href="/docs/5.0/getting-started/rtl/" class="d-inline-flex align-items-center rounded">RTL</a></li>
@@ -289,6 +290,7 @@
               <li><a href="/docs/5.0/components/modal/" class="d-inline-flex align-items-center rounded">Modal</a></li>
               <li><a href="/docs/5.0/components/navs-tabs/" class="d-inline-flex align-items-center rounded active" aria-current="page">Navs &amp; tabs</a></li>
               <li><a href="/docs/5.0/components/navbar/" class="d-inline-flex align-items-center rounded">Navbar</a></li>
+              <li><a href="/docs/5.0/components/offcanvas/" class="d-inline-flex align-items-center rounded">Offcanvas</a></li>
               <li><a href="/docs/5.0/components/pagination/" class="d-inline-flex align-items-center rounded">Pagination</a></li>
               <li><a href="/docs/5.0/components/popovers/" class="d-inline-flex align-items-center rounded">Popovers</a></li>
               <li><a href="/docs/5.0/components/progress/" class="d-inline-flex align-items-center rounded">Progress</a></li>
@@ -412,6 +414,11 @@
       <ul>
         <li><a href="#tabs-with-dropdowns">Tabs with dropdowns</a></li>
         <li><a href="#pills-with-dropdowns">Pills with dropdowns</a></li>
+      </ul>
+    </li>
+    <li><a href="#sass">Sass</a>
+      <ul>
+        <li><a href="#variables">Variables</a></li>
       </ul>
     </li>
     <li><a href="#javascript-behavior">JavaScript behavior</a>
@@ -859,6 +866,29 @@
     <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link disabled&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span> <span class="na">tabindex</span><span class="o">=</span><span class="s">&#34;-1&#34;</span> <span class="na">aria-disabled</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span></code></pre></div>
+<h2 id="sass">Sass</h2>
+<h3 id="variables">Variables</h3>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$nav-link-padding-y</span><span class="o">:</span>                <span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$nav-link-padding-x</span><span class="o">:</span>                <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$nav-link-font-size</span><span class="o">:</span>                <span class="n">null</span><span class="p">;</span>
+<span class="nv">$nav-link-font-weight</span><span class="o">:</span>              <span class="n">null</span><span class="p">;</span>
+<span class="nv">$nav-link-color</span><span class="o">:</span>                    <span class="n">null</span><span class="p">;</span>
+<span class="nv">$nav-link-hover-color</span><span class="o">:</span>              <span class="n">null</span><span class="p">;</span>
+<span class="nv">$nav-link-transition</span><span class="o">:</span>               <span class="no">color</span> <span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="o">,</span> <span class="no">background</span><span class="o">-</span><span class="no">color</span> <span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="o">,</span> <span class="no">border</span><span class="o">-</span><span class="no">color</span> <span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
+<span class="nv">$nav-link-disabled-color</span><span class="o">:</span>           <span class="nv">$gray-600</span><span class="p">;</span>
+
+<span class="nv">$nav-tabs-border-color</span><span class="o">:</span>             <span class="nv">$gray-300</span><span class="p">;</span>
+<span class="nv">$nav-tabs-border-width</span><span class="o">:</span>             <span class="nv">$border-width</span><span class="p">;</span>
+<span class="nv">$nav-tabs-border-radius</span><span class="o">:</span>            <span class="nv">$border-radius</span><span class="p">;</span>
+<span class="nv">$nav-tabs-link-hover-border-color</span><span class="o">:</span>  <span class="nv">$gray-200</span> <span class="nv">$gray-200</span> <span class="nv">$nav-tabs-border-color</span><span class="p">;</span>
+<span class="nv">$nav-tabs-link-active-color</span><span class="o">:</span>        <span class="nv">$gray-700</span><span class="p">;</span>
+<span class="nv">$nav-tabs-link-active-bg</span><span class="o">:</span>           <span class="nv">$body-bg</span><span class="p">;</span>
+<span class="nv">$nav-tabs-link-active-border-color</span><span class="o">:</span> <span class="nv">$gray-300</span> <span class="nv">$gray-300</span> <span class="nv">$nav-tabs-link-active-bg</span><span class="p">;</span>
+
+<span class="nv">$nav-pills-border-radius</span><span class="o">:</span>           <span class="nv">$border-radius</span><span class="p">;</span>
+<span class="nv">$nav-pills-link-active-color</span><span class="o">:</span>       <span class="nv">$component-active-color</span><span class="p">;</span>
+<span class="nv">$nav-pills-link-active-bg</span><span class="o">:</span>          <span class="nv">$component-active-bg</span><span class="p">;</span>
+</code></pre></div>
 <h2 id="javascript-behavior">JavaScript behavior</h2>
 <p>Use the tab JavaScript plugin—include it individually or through the compiled <code>bootstrap.js</code> file—to extend our navigational tabs and pills to create tabbable panes of local content.</p>
 <p>Dynamic tabbed interfaces, as described in the <a href="https://www.w3.org/TR/wai-aria-practices/#tabpanel"><abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices</a>, require <code>role=&quot;tablist&quot;</code>, <code>role=&quot;tab&quot;</code>, <code>role=&quot;tabpanel&quot;</code>, and additional <code>aria-</code> attributes in order to convey their structure, functionality and current state to users of assistive technologies (such as screen readers). As a best practice, we recommend using <code>&lt;button&gt;</code> elements for the tabs, as these are controls that trigger a dynamic change, rather than links that navigate to a new page or location.</p>
@@ -1005,7 +1035,7 @@
 <div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;d-flex align-items-start&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav flex-column nav-pills me-3&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;v-pills-tab&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;tablist&#34;</span> <span class="na">aria-orientation</span><span class="o">=</span><span class="s">&#34;vertical&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link active&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;v-pills-home-tab&#34;</span> <span class="na">data-bs-toggle</span><span class="o">=</span><span class="s">&#34;pill&#34;</span> <span class="na">data-bs-target</span><span class="o">=</span><span class="s">&#34;#v-pills-home&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;tab&#34;</span> <span class="na">aria-controls</span><span class="o">=</span><span class="s">&#34;v-pills-home&#34;</span> <span class="na">aria-selected</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;v-pills-profile-tab&#34;</span> <span class="na">data-bs-toggle</span><span class="o">=</span><span class="s">&#34;pill&#34;</span> <span class="na">data-bs-target</span><span class="o">=</span><span class="s">&#34;#v-pills-profile&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;tab&#34;</span> <span class="na">aria-controls</span><span class="o">=</span><span class="s">&#34;v-pills-profile&#34;</span> <span class="na">aria-selected</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>Profile<span class="p">&lt;/</span><span class="nt">buttona</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;v-pills-profile-tab&#34;</span> <span class="na">data-bs-toggle</span><span class="o">=</span><span class="s">&#34;pill&#34;</span> <span class="na">data-bs-target</span><span class="o">=</span><span class="s">&#34;#v-pills-profile&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;tab&#34;</span> <span class="na">aria-controls</span><span class="o">=</span><span class="s">&#34;v-pills-profile&#34;</span> <span class="na">aria-selected</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>Profile<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;v-pills-messages-tab&#34;</span> <span class="na">data-bs-toggle</span><span class="o">=</span><span class="s">&#34;pill&#34;</span> <span class="na">data-bs-target</span><span class="o">=</span><span class="s">&#34;#v-pills-messages&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;tab&#34;</span> <span class="na">aria-controls</span><span class="o">=</span><span class="s">&#34;v-pills-messages&#34;</span> <span class="na">aria-selected</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>Messages<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;v-pills-settings-tab&#34;</span> <span class="na">data-bs-toggle</span><span class="o">=</span><span class="s">&#34;pill&#34;</span> <span class="na">data-bs-target</span><span class="o">=</span><span class="s">&#34;#v-pills-settings&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;tab&#34;</span> <span class="na">aria-controls</span><span class="o">=</span><span class="s">&#34;v-pills-settings&#34;</span> <span class="na">aria-selected</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>Settings<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -1030,7 +1060,7 @@
     <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;messages-tab&#34;</span> <span class="na">data-bs-toggle</span><span class="o">=</span><span class="s">&#34;tab&#34;</span> <span class="na">data-bs-target</span><span class="o">=</span><span class="s">&#34;#messages&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;tab&#34;</span> <span class="na">aria-controls</span><span class="o">=</span><span class="s">&#34;messages&#34;</span> <span class="na">aria-selected</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>Messages<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-item&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;presentation&#34;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;settings-tab&#34;</span> <span class="na">data-bs-toggle</span><span class="o">=</span><span class="s">&#34;tab&#34;</span> <span class="na">hdata-bs-targetref</span><span class="o">=</span><span class="s">&#34;#settings&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;tab&#34;</span> <span class="na">aria-controls</span><span class="o">=</span><span class="s">&#34;settings&#34;</span> <span class="na">aria-selected</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>Settings<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;settings-tab&#34;</span> <span class="na">data-bs-toggle</span><span class="o">=</span><span class="s">&#34;tab&#34;</span> <span class="na">data-bs-target</span><span class="o">=</span><span class="s">&#34;#settings&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;tab&#34;</span> <span class="na">aria-controls</span><span class="o">=</span><span class="s">&#34;settings&#34;</span> <span class="na">aria-selected</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>Settings<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 
@@ -1171,11 +1201,11 @@
       <li class="d-inline-block ms-3"><a href="/docs/5.0/about/overview/">About</a></li>
     </ul>
     <p class="mb-0">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
-    <p class="mb-0">Currently v5.0.0-beta2. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
+    <p class="mb-0">Currently v5.0.0-beta3. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>

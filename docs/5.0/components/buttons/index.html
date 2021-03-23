@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Use Bootstrap&rsquo;s custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.80.0">
+<meta name="generator" content="Hugo 0.82.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -193,6 +193,7 @@
               <li><a href="/docs/5.0/getting-started/javascript/" class="d-inline-flex align-items-center rounded">JavaScript</a></li>
               <li><a href="/docs/5.0/getting-started/build-tools/" class="d-inline-flex align-items-center rounded">Build tools</a></li>
               <li><a href="/docs/5.0/getting-started/webpack/" class="d-inline-flex align-items-center rounded">Webpack</a></li>
+              <li><a href="/docs/5.0/getting-started/parcel/" class="d-inline-flex align-items-center rounded">Parcel</a></li>
               <li><a href="/docs/5.0/getting-started/accessibility/" class="d-inline-flex align-items-center rounded">Accessibility</a></li>
               <li><a href="/docs/5.0/getting-started/rfs/" class="d-inline-flex align-items-center rounded">RFS</a></li>
               <li><a href="/docs/5.0/getting-started/rtl/" class="d-inline-flex align-items-center rounded">RTL</a></li>
@@ -289,6 +290,7 @@
               <li><a href="/docs/5.0/components/modal/" class="d-inline-flex align-items-center rounded">Modal</a></li>
               <li><a href="/docs/5.0/components/navs-tabs/" class="d-inline-flex align-items-center rounded">Navs &amp; tabs</a></li>
               <li><a href="/docs/5.0/components/navbar/" class="d-inline-flex align-items-center rounded">Navbar</a></li>
+              <li><a href="/docs/5.0/components/offcanvas/" class="d-inline-flex align-items-center rounded">Offcanvas</a></li>
               <li><a href="/docs/5.0/components/pagination/" class="d-inline-flex align-items-center rounded">Pagination</a></li>
               <li><a href="/docs/5.0/components/popovers/" class="d-inline-flex align-items-center rounded">Popovers</a></li>
               <li><a href="/docs/5.0/components/progress/" class="d-inline-flex align-items-center rounded">Progress</a></li>
@@ -407,6 +409,13 @@
       <ul>
         <li><a href="#toggle-states">Toggle states</a></li>
         <li><a href="#methods">Methods</a></li>
+      </ul>
+    </li>
+    <li><a href="#sass">Sass</a>
+      <ul>
+        <li><a href="#variables">Variables</a></li>
+        <li><a href="#mixins">Mixins</a></li>
+        <li><a href="#loops">Loops</a></li>
       </ul>
     </li>
   </ul>
@@ -620,7 +629,192 @@ Visually, these toggle buttons are identical to the <a href="/docs/5.0/forms/che
   <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">bootstrap</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="nx">button</span><span class="p">)</span>
   <span class="nx">button</span><span class="p">.</span><span class="nx">toggle</span><span class="p">()</span>
 <span class="p">})</span>
+</code></pre></div><h2 id="sass">Sass</h2>
+<h3 id="variables">Variables</h3>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$btn-padding-y</span><span class="o">:</span>               <span class="nv">$input-btn-padding-y</span><span class="p">;</span>
+<span class="nv">$btn-padding-x</span><span class="o">:</span>               <span class="nv">$input-btn-padding-x</span><span class="p">;</span>
+<span class="nv">$btn-font-family</span><span class="o">:</span>             <span class="nv">$input-btn-font-family</span><span class="p">;</span>
+<span class="nv">$btn-font-size</span><span class="o">:</span>               <span class="nv">$input-btn-font-size</span><span class="p">;</span>
+<span class="nv">$btn-line-height</span><span class="o">:</span>             <span class="nv">$input-btn-line-height</span><span class="p">;</span>
+<span class="nv">$btn-white-space</span><span class="o">:</span>             <span class="n">null</span><span class="p">;</span> <span class="c1">// Set to `nowrap` to prevent text wrapping
+</span><span class="c1"></span>
+<span class="nv">$btn-padding-y-sm</span><span class="o">:</span>            <span class="nv">$input-btn-padding-y-sm</span><span class="p">;</span>
+<span class="nv">$btn-padding-x-sm</span><span class="o">:</span>            <span class="nv">$input-btn-padding-x-sm</span><span class="p">;</span>
+<span class="nv">$btn-font-size-sm</span><span class="o">:</span>            <span class="nv">$input-btn-font-size-sm</span><span class="p">;</span>
+
+<span class="nv">$btn-padding-y-lg</span><span class="o">:</span>            <span class="nv">$input-btn-padding-y-lg</span><span class="p">;</span>
+<span class="nv">$btn-padding-x-lg</span><span class="o">:</span>            <span class="nv">$input-btn-padding-x-lg</span><span class="p">;</span>
+<span class="nv">$btn-font-size-lg</span><span class="o">:</span>            <span class="nv">$input-btn-font-size-lg</span><span class="p">;</span>
+
+<span class="nv">$btn-border-width</span><span class="o">:</span>            <span class="nv">$input-btn-border-width</span><span class="p">;</span>
+
+<span class="nv">$btn-font-weight</span><span class="o">:</span>             <span class="nv">$font-weight-normal</span><span class="p">;</span>
+<span class="nv">$btn-box-shadow</span><span class="o">:</span>              <span class="no">inset</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$white</span><span class="o">,</span> <span class="mf">.15</span><span class="p">)</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">1</span><span class="kt">px</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$black</span><span class="o">,</span> <span class="mf">.075</span><span class="p">);</span>
+<span class="nv">$btn-focus-width</span><span class="o">:</span>             <span class="nv">$input-btn-focus-width</span><span class="p">;</span>
+<span class="nv">$btn-focus-box-shadow</span><span class="o">:</span>        <span class="nv">$input-btn-focus-box-shadow</span><span class="p">;</span>
+<span class="nv">$btn-disabled-opacity</span><span class="o">:</span>        <span class="mf">.65</span><span class="p">;</span>
+<span class="nv">$btn-active-box-shadow</span><span class="o">:</span>       <span class="no">inset</span> <span class="mi">0</span> <span class="mi">3</span><span class="kt">px</span> <span class="mi">5</span><span class="kt">px</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$black</span><span class="o">,</span> <span class="mf">.125</span><span class="p">);</span>
+
+<span class="nv">$btn-link-color</span><span class="o">:</span>              <span class="nv">$link-color</span><span class="p">;</span>
+<span class="nv">$btn-link-hover-color</span><span class="o">:</span>        <span class="nv">$link-hover-color</span><span class="p">;</span>
+<span class="nv">$btn-link-disabled-color</span><span class="o">:</span>     <span class="nv">$gray-600</span><span class="p">;</span>
+
+<span class="c1">// Allows for customizing button radius independently from global border radius
+</span><span class="c1"></span><span class="nv">$btn-border-radius</span><span class="o">:</span>           <span class="nv">$border-radius</span><span class="p">;</span>
+<span class="nv">$btn-border-radius-sm</span><span class="o">:</span>        <span class="nv">$border-radius-sm</span><span class="p">;</span>
+<span class="nv">$btn-border-radius-lg</span><span class="o">:</span>        <span class="nv">$border-radius-lg</span><span class="p">;</span>
+
+<span class="nv">$btn-transition</span><span class="o">:</span>              <span class="no">color</span> <span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="o">,</span> <span class="no">background</span><span class="o">-</span><span class="no">color</span> <span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="o">,</span> <span class="no">border</span><span class="o">-</span><span class="no">color</span> <span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="o">,</span> <span class="no">box-shadow</span> <span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
+
+<span class="nv">$btn-hover-bg-shade-amount</span><span class="o">:</span>       <span class="mi">15</span><span class="kt">%</span><span class="p">;</span>
+<span class="nv">$btn-hover-bg-tint-amount</span><span class="o">:</span>        <span class="mi">15</span><span class="kt">%</span><span class="p">;</span>
+<span class="nv">$btn-hover-border-shade-amount</span><span class="o">:</span>   <span class="mi">20</span><span class="kt">%</span><span class="p">;</span>
+<span class="nv">$btn-hover-border-tint-amount</span><span class="o">:</span>    <span class="mi">10</span><span class="kt">%</span><span class="p">;</span>
+<span class="nv">$btn-active-bg-shade-amount</span><span class="o">:</span>      <span class="mi">20</span><span class="kt">%</span><span class="p">;</span>
+<span class="nv">$btn-active-bg-tint-amount</span><span class="o">:</span>       <span class="mi">20</span><span class="kt">%</span><span class="p">;</span>
+<span class="nv">$btn-active-border-shade-amount</span><span class="o">:</span>  <span class="mi">25</span><span class="kt">%</span><span class="p">;</span>
+<span class="nv">$btn-active-border-tint-amount</span><span class="o">:</span>   <span class="mi">10</span><span class="kt">%</span><span class="p">;</span>
 </code></pre></div>
+<h3 id="mixins">Mixins</h3>
+<p>There are three mixins for buttons: button and button outline variant mixins (both based on <code>$theme-colors</code>), plus a button size mixin.</p>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@mixin</span><span class="nf"> button-variant</span><span class="p">(</span>
+  <span class="nv">$background</span><span class="o">,</span>
+  <span class="nv">$border</span><span class="o">,</span>
+  <span class="nv">$color</span><span class="o">:</span> <span class="nf">color-contrast</span><span class="p">(</span><span class="nv">$background</span><span class="p">)</span><span class="o">,</span>
+  <span class="nv">$hover-background</span><span class="o">:</span> <span class="nf">if</span><span class="p">(</span><span class="nv">$color</span> <span class="o">==</span> <span class="nv">$color-contrast-light</span><span class="o">,</span> <span class="nf">shade-color</span><span class="p">(</span><span class="nv">$background</span><span class="o">,</span> <span class="nv">$btn-hover-bg-shade-amount</span><span class="p">)</span><span class="o">,</span> <span class="nf">tint-color</span><span class="p">(</span><span class="nv">$background</span><span class="o">,</span> <span class="nv">$btn-hover-bg-tint-amount</span><span class="p">))</span><span class="o">,</span>
+  <span class="nv">$hover-border</span><span class="o">:</span> <span class="nf">if</span><span class="p">(</span><span class="nv">$color</span> <span class="o">==</span> <span class="nv">$color-contrast-light</span><span class="o">,</span> <span class="nf">shade-color</span><span class="p">(</span><span class="nv">$border</span><span class="o">,</span> <span class="nv">$btn-hover-border-shade-amount</span><span class="p">)</span><span class="o">,</span> <span class="nf">tint-color</span><span class="p">(</span><span class="nv">$border</span><span class="o">,</span> <span class="nv">$btn-hover-border-tint-amount</span><span class="p">))</span><span class="o">,</span>
+  <span class="nv">$hover-color</span><span class="o">:</span> <span class="nf">color-contrast</span><span class="p">(</span><span class="nv">$hover-background</span><span class="p">)</span><span class="o">,</span>
+  <span class="nv">$active-background</span><span class="o">:</span> <span class="nf">if</span><span class="p">(</span><span class="nv">$color</span> <span class="o">==</span> <span class="nv">$color-contrast-light</span><span class="o">,</span> <span class="nf">shade-color</span><span class="p">(</span><span class="nv">$background</span><span class="o">,</span><span class="nv">$btn-active-bg-shade-amount</span><span class="p">)</span><span class="o">,</span> <span class="nf">tint-color</span><span class="p">(</span><span class="nv">$background</span><span class="o">,</span> <span class="nv">$btn-active-bg-tint-amount</span><span class="p">))</span><span class="o">,</span>
+  <span class="nv">$active-border</span><span class="o">:</span> <span class="nf">if</span><span class="p">(</span><span class="nv">$color</span> <span class="o">==</span> <span class="nv">$color-contrast-light</span><span class="o">,</span> <span class="nf">shade-color</span><span class="p">(</span><span class="nv">$border</span><span class="o">,</span> <span class="nv">$btn-active-border-shade-amount</span><span class="p">)</span><span class="o">,</span> <span class="nf">tint-color</span><span class="p">(</span><span class="nv">$border</span><span class="o">,</span> <span class="nv">$btn-active-border-tint-amount</span><span class="p">))</span><span class="o">,</span>
+  <span class="nv">$active-color</span><span class="o">:</span> <span class="nf">color-contrast</span><span class="p">(</span><span class="nv">$active-background</span><span class="p">)</span><span class="o">,</span>
+  <span class="nv">$disabled-background</span><span class="o">:</span> <span class="nv">$background</span><span class="o">,</span>
+  <span class="nv">$disabled-border</span><span class="o">:</span> <span class="nv">$border</span><span class="o">,</span>
+  <span class="nv">$disabled-color</span><span class="o">:</span> <span class="nf">color-contrast</span><span class="p">(</span><span class="nv">$disabled-background</span><span class="p">)</span>
+<span class="p">)</span> <span class="p">{</span>
+  <span class="nt">color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">color</span><span class="p">;</span>
+  <span class="k">@include</span><span class="nd"> gradient-bg</span><span class="p">(</span><span class="nv">$background</span><span class="p">);</span>
+  <span class="nt">border-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">border</span><span class="p">;</span>
+  <span class="k">@include</span><span class="nd"> box-shadow</span><span class="p">(</span><span class="nv">$btn-box-shadow</span><span class="p">);</span>
+
+  <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
+    <span class="nt">color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">hover-color</span><span class="p">;</span>
+    <span class="k">@include</span><span class="nd"> gradient-bg</span><span class="p">(</span><span class="nv">$hover-background</span><span class="p">);</span>
+    <span class="nt">border-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">hover-border</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nc">.btn-check</span><span class="nd">:focus</span> <span class="o">+</span> <span class="k">&amp;</span><span class="o">,</span>
+  <span class="k">&amp;</span><span class="nd">:focus</span> <span class="p">{</span>
+    <span class="nt">color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">hover-color</span><span class="p">;</span>
+    <span class="k">@include</span><span class="nd"> gradient-bg</span><span class="p">(</span><span class="nv">$hover-background</span><span class="p">);</span>
+    <span class="nt">border-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">hover-border</span><span class="p">;</span>
+    <span class="k">@if</span> <span class="nv">$enable-shadows</span> <span class="p">{</span>
+      <span class="k">@include</span><span class="nd"> box-shadow</span><span class="p">(</span><span class="nv">$btn-box-shadow</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="nv">$btn-focus-width</span> <span class="nf">rgba</span><span class="p">(</span><span class="nf">mix</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="nv">$border</span><span class="o">,</span> <span class="mi">15</span><span class="kt">%</span><span class="p">)</span><span class="o">,</span> <span class="mf">.5</span><span class="p">));</span>
+    <span class="p">}</span> <span class="k">@else</span> <span class="p">{</span>
+      <span class="c1">// Avoid using mixin so we can pass custom focus shadow properly
+</span><span class="c1"></span>      <span class="nt">box-shadow</span><span class="nd">:</span> <span class="nt">0</span> <span class="nt">0</span> <span class="nt">0</span> <span class="err">$</span><span class="nt">btn-focus-width</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">mix</span><span class="o">(</span><span class="err">$</span><span class="nt">color</span><span class="o">,</span> <span class="err">$</span><span class="nt">border</span><span class="o">,</span> <span class="nt">15</span><span class="err">%</span><span class="o">),</span> <span class="nc">.5</span><span class="o">)</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nc">.btn-check</span><span class="nd">:checked</span> <span class="o">+</span> <span class="k">&amp;</span><span class="o">,</span>
+  <span class="nc">.btn-check</span><span class="nd">:active</span> <span class="o">+</span> <span class="k">&amp;</span><span class="o">,</span>
+  <span class="k">&amp;</span><span class="nd">:active</span><span class="o">,</span>
+  <span class="k">&amp;</span><span class="nc">.active</span><span class="o">,</span>
+  <span class="nc">.show</span> <span class="o">&gt;</span> <span class="k">&amp;</span><span class="nc">.dropdown-toggle</span> <span class="p">{</span>
+    <span class="nt">color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">active-color</span><span class="p">;</span>
+    <span class="nt">background-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">active-background</span><span class="p">;</span>
+    <span class="c1">// Remove CSS gradients if they&#39;re enabled
+</span><span class="c1"></span>    <span class="nt">background-image</span><span class="nd">:</span> <span class="nt">if</span><span class="o">(</span><span class="err">$</span><span class="nt">enable-gradients</span><span class="o">,</span> <span class="nt">none</span><span class="o">,</span> <span class="nt">null</span><span class="o">)</span><span class="p">;</span>
+    <span class="nt">border-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">active-border</span><span class="p">;</span>
+
+    <span class="k">&amp;</span><span class="nd">:focus</span> <span class="p">{</span>
+      <span class="k">@if</span> <span class="nv">$enable-shadows</span> <span class="p">{</span>
+        <span class="k">@include</span><span class="nd"> box-shadow</span><span class="p">(</span><span class="nv">$btn-active-box-shadow</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="nv">$btn-focus-width</span> <span class="nf">rgba</span><span class="p">(</span><span class="nf">mix</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="nv">$border</span><span class="o">,</span> <span class="mi">15</span><span class="kt">%</span><span class="p">)</span><span class="o">,</span> <span class="mf">.5</span><span class="p">));</span>
+      <span class="p">}</span> <span class="k">@else</span> <span class="p">{</span>
+        <span class="c1">// Avoid using mixin so we can pass custom focus shadow properly
+</span><span class="c1"></span>        <span class="nt">box-shadow</span><span class="nd">:</span> <span class="nt">0</span> <span class="nt">0</span> <span class="nt">0</span> <span class="err">$</span><span class="nt">btn-focus-width</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">mix</span><span class="o">(</span><span class="err">$</span><span class="nt">color</span><span class="o">,</span> <span class="err">$</span><span class="nt">border</span><span class="o">,</span> <span class="nt">15</span><span class="err">%</span><span class="o">),</span> <span class="nc">.5</span><span class="o">)</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">&amp;</span><span class="nd">:disabled</span><span class="o">,</span>
+  <span class="k">&amp;</span><span class="nc">.disabled</span> <span class="p">{</span>
+    <span class="nt">color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">disabled-color</span><span class="p">;</span>
+    <span class="nt">background-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">disabled-background</span><span class="p">;</span>
+    <span class="c1">// Remove CSS gradients if they&#39;re enabled
+</span><span class="c1"></span>    <span class="nt">background-image</span><span class="nd">:</span> <span class="nt">if</span><span class="o">(</span><span class="err">$</span><span class="nt">enable-gradients</span><span class="o">,</span> <span class="nt">none</span><span class="o">,</span> <span class="nt">null</span><span class="o">)</span><span class="p">;</span>
+    <span class="nt">border-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">disabled-border</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@mixin</span><span class="nf"> button-outline-variant</span><span class="p">(</span>
+  <span class="nv">$color</span><span class="o">,</span>
+  <span class="nv">$color-hover</span><span class="o">:</span> <span class="nf">color-contrast</span><span class="p">(</span><span class="nv">$color</span><span class="p">)</span><span class="o">,</span>
+  <span class="nv">$active-background</span><span class="o">:</span> <span class="nv">$color</span><span class="o">,</span>
+  <span class="nv">$active-border</span><span class="o">:</span> <span class="nv">$color</span><span class="o">,</span>
+  <span class="nv">$active-color</span><span class="o">:</span> <span class="nf">color-contrast</span><span class="p">(</span><span class="nv">$active-background</span><span class="p">)</span>
+<span class="p">)</span> <span class="p">{</span>
+  <span class="nt">color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">color</span><span class="p">;</span>
+  <span class="nt">border-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">color</span><span class="p">;</span>
+
+  <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
+    <span class="nt">color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">color-hover</span><span class="p">;</span>
+    <span class="nt">background-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">active-background</span><span class="p">;</span>
+    <span class="nt">border-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">active-border</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nc">.btn-check</span><span class="nd">:focus</span> <span class="o">+</span> <span class="k">&amp;</span><span class="o">,</span>
+  <span class="k">&amp;</span><span class="nd">:focus</span> <span class="p">{</span>
+    <span class="nt">box-shadow</span><span class="nd">:</span> <span class="nt">0</span> <span class="nt">0</span> <span class="nt">0</span> <span class="err">$</span><span class="nt">btn-focus-width</span> <span class="nt">rgba</span><span class="o">(</span><span class="err">$</span><span class="nt">color</span><span class="o">,</span> <span class="nc">.5</span><span class="o">)</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nc">.btn-check</span><span class="nd">:checked</span> <span class="o">+</span> <span class="k">&amp;</span><span class="o">,</span>
+  <span class="nc">.btn-check</span><span class="nd">:active</span> <span class="o">+</span> <span class="k">&amp;</span><span class="o">,</span>
+  <span class="k">&amp;</span><span class="nd">:active</span><span class="o">,</span>
+  <span class="k">&amp;</span><span class="nc">.active</span><span class="o">,</span>
+  <span class="k">&amp;</span><span class="nc">.dropdown-toggle.show</span> <span class="p">{</span>
+    <span class="nt">color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">active-color</span><span class="p">;</span>
+    <span class="nt">background-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">active-background</span><span class="p">;</span>
+    <span class="nt">border-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">active-border</span><span class="p">;</span>
+
+    <span class="k">&amp;</span><span class="nd">:focus</span> <span class="p">{</span>
+      <span class="k">@if</span> <span class="nv">$enable-shadows</span> <span class="p">{</span>
+        <span class="k">@include</span><span class="nd"> box-shadow</span><span class="p">(</span><span class="nv">$btn-active-box-shadow</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="nv">$btn-focus-width</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="mf">.5</span><span class="p">));</span>
+      <span class="p">}</span> <span class="k">@else</span> <span class="p">{</span>
+        <span class="c1">// Avoid using mixin so we can pass custom focus shadow properly
+</span><span class="c1"></span>        <span class="nt">box-shadow</span><span class="nd">:</span> <span class="nt">0</span> <span class="nt">0</span> <span class="nt">0</span> <span class="err">$</span><span class="nt">btn-focus-width</span> <span class="nt">rgba</span><span class="o">(</span><span class="err">$</span><span class="nt">color</span><span class="o">,</span> <span class="nc">.5</span><span class="o">)</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">&amp;</span><span class="nd">:disabled</span><span class="o">,</span>
+  <span class="k">&amp;</span><span class="nc">.disabled</span> <span class="p">{</span>
+    <span class="nt">color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">color</span><span class="p">;</span>
+    <span class="nt">background-color</span><span class="nd">:</span> <span class="nt">transparent</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@mixin</span><span class="nf"> button-size</span><span class="p">(</span><span class="nv">$padding-y</span><span class="o">,</span> <span class="nv">$padding-x</span><span class="o">,</span> <span class="nv">$font-size</span><span class="o">,</span> <span class="nv">$border-radius</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nt">padding</span><span class="nd">:</span> <span class="err">$</span><span class="nt">padding-y</span> <span class="err">$</span><span class="nt">padding-x</span><span class="p">;</span>
+  <span class="k">@include</span><span class="nd"> font-size</span><span class="p">(</span><span class="nv">$font-size</span><span class="p">);</span>
+  <span class="c1">// Manually declare to provide an override to the browser default
+</span><span class="c1"></span>  <span class="k">@include</span><span class="nd"> border-radius</span><span class="p">(</span><span class="nv">$border-radius</span><span class="o">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="loops">Loops</h3>
+<p>Button variants (for regular and outline buttons) use their respective mixins with our <code>$theme-colors</code> map to generate the modifier classes in <code>scss/_buttons.scss</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@each</span> <span class="err">$</span><span class="nt">color</span><span class="o">,</span> <span class="err">$</span><span class="nt">value</span> <span class="nt">in</span> <span class="err">$</span><span class="nt">theme-colors</span> <span class="p">{</span>
+  <span class="nc">.btn-</span><span class="si">#{</span><span class="nv">$color</span><span class="si">}</span> <span class="p">{</span>
+    <span class="k">@include</span><span class="nd"> button-variant</span><span class="p">(</span><span class="nv">$value</span><span class="o">,</span> <span class="nv">$value</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">@each</span> <span class="err">$</span><span class="nt">color</span><span class="o">,</span> <span class="err">$</span><span class="nt">value</span> <span class="nt">in</span> <span class="err">$</span><span class="nt">theme-colors</span> <span class="p">{</span>
+  <span class="nc">.btn-outline-</span><span class="si">#{</span><span class="nv">$color</span><span class="si">}</span> <span class="p">{</span>
+    <span class="k">@include</span><span class="nd"> button-outline-variant</span><span class="p">(</span><span class="nv">$value</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
       </div>
     </main>
   </div>
@@ -635,11 +829,11 @@ Visually, these toggle buttons are identical to the <a href="/docs/5.0/forms/che
       <li class="d-inline-block ms-3"><a href="/docs/5.0/about/overview/">About</a></li>
     </ul>
     <p class="mb-0">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
-    <p class="mb-0">Currently v5.0.0-beta2. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
+    <p class="mb-0">Currently v5.0.0-beta3. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>

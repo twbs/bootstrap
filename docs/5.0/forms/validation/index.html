@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Provide valuable, actionable feedback to your users with HTML5 form validation, via browser default behaviors or custom styles and JavaScript.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.80.0">
+<meta name="generator" content="Hugo 0.82.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -193,6 +193,7 @@
               <li><a href="/docs/5.0/getting-started/javascript/" class="d-inline-flex align-items-center rounded">JavaScript</a></li>
               <li><a href="/docs/5.0/getting-started/build-tools/" class="d-inline-flex align-items-center rounded">Build tools</a></li>
               <li><a href="/docs/5.0/getting-started/webpack/" class="d-inline-flex align-items-center rounded">Webpack</a></li>
+              <li><a href="/docs/5.0/getting-started/parcel/" class="d-inline-flex align-items-center rounded">Parcel</a></li>
               <li><a href="/docs/5.0/getting-started/accessibility/" class="d-inline-flex align-items-center rounded">Accessibility</a></li>
               <li><a href="/docs/5.0/getting-started/rfs/" class="d-inline-flex align-items-center rounded">RFS</a></li>
               <li><a href="/docs/5.0/getting-started/rtl/" class="d-inline-flex align-items-center rounded">RTL</a></li>
@@ -289,6 +290,7 @@
               <li><a href="/docs/5.0/components/modal/" class="d-inline-flex align-items-center rounded">Modal</a></li>
               <li><a href="/docs/5.0/components/navs-tabs/" class="d-inline-flex align-items-center rounded">Navs &amp; tabs</a></li>
               <li><a href="/docs/5.0/components/navbar/" class="d-inline-flex align-items-center rounded">Navbar</a></li>
+              <li><a href="/docs/5.0/components/offcanvas/" class="d-inline-flex align-items-center rounded">Offcanvas</a></li>
               <li><a href="/docs/5.0/components/pagination/" class="d-inline-flex align-items-center rounded">Pagination</a></li>
               <li><a href="/docs/5.0/components/popovers/" class="d-inline-flex align-items-center rounded">Popovers</a></li>
               <li><a href="/docs/5.0/components/progress/" class="d-inline-flex align-items-center rounded">Progress</a></li>
@@ -402,7 +404,15 @@
     <li><a href="#server-side">Server side</a></li>
     <li><a href="#supported-elements">Supported elements</a></li>
     <li><a href="#tooltips">Tooltips</a></li>
-    <li><a href="#customizing">Customizing</a></li>
+    <li><a href="#sass">Sass</a>
+      <ul>
+        <li><a href="#variables">Variables</a></li>
+        <li><a href="#mixins">Mixins</a></li>
+        <li><a href="#map">Map</a></li>
+        <li><a href="#loop">Loop</a></li>
+        <li><a href="#customizing">Customizing</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
         </div>
@@ -1009,10 +1019,153 @@ We are aware that currently the client-side custom validation styles and tooltip
     <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-primary&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;submit&#34;</span><span class="p">&gt;</span>Submit form<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span></code></pre></div>
-<h2 id="customizing">Customizing</h2>
-<p>Validation states can be customized via Sass with the <code>$form-validation-states</code> map. Located in our <code>_variables.scss</code> file, this Sass map is how we generate the default <code>valid</code>/<code>invalid</code> validation states. Included is a nested map for customizing each state&rsquo;s color, icon, tooltip color, and focus shadow. While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.</p>
-<p>Please note that we do not recommend customizing these values without also modifying the <code>form-validation-state</code> mixin.</p>
-<p>This is the Sass map from <code>_variables.scss</code>. Override this and recompile your Sass to generate different states:</p>
+<h2 id="sass">Sass</h2>
+<h3 id="variables">Variables</h3>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$form-feedback-margin-top</span><span class="o">:</span>          <span class="nv">$form-text-margin-top</span><span class="p">;</span>
+<span class="nv">$form-feedback-font-size</span><span class="o">:</span>           <span class="nv">$form-text-font-size</span><span class="p">;</span>
+<span class="nv">$form-feedback-font-style</span><span class="o">:</span>          <span class="nv">$form-text-font-style</span><span class="p">;</span>
+<span class="nv">$form-feedback-valid-color</span><span class="o">:</span>         <span class="nv">$success</span><span class="p">;</span>
+<span class="nv">$form-feedback-invalid-color</span><span class="o">:</span>       <span class="nv">$danger</span><span class="p">;</span>
+
+<span class="nv">$form-feedback-icon-valid-color</span><span class="o">:</span>    <span class="nv">$form-feedback-valid-color</span><span class="p">;</span>
+<span class="nv">$form-feedback-icon-valid</span><span class="o">:</span>          <span class="sx">url(&#34;data:image/svg+xml,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 8 8&#39;&gt;&lt;path fill=&#39;</span><span class="si">#{</span><span class="nv">$form-feedback-icon-valid-color</span><span class="si">}</span><span class="sx">&#39; d=&#39;M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z&#39;/&gt;&lt;/svg&gt;&#34;)</span><span class="p">;</span>
+<span class="nv">$form-feedback-icon-invalid-color</span><span class="o">:</span>  <span class="nv">$form-feedback-invalid-color</span><span class="p">;</span>
+<span class="nv">$form-feedback-icon-invalid</span><span class="o">:</span>        <span class="sx">url(&#34;data:image/svg+xml,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 12 12&#39; width=&#39;12&#39; height=&#39;12&#39; fill=&#39;none&#39; stroke=&#39;</span><span class="si">#{</span><span class="nv">$form-feedback-icon-invalid-color</span><span class="si">}</span><span class="sx">&#39;&gt;&lt;circle cx=&#39;6&#39; cy=&#39;6&#39; r=&#39;4.5&#39;/&gt;&lt;path stroke-linejoin=&#39;round&#39; d=&#39;M5.8 3.6h.4L6 6.5z&#39;/&gt;&lt;circle cx=&#39;6&#39; cy=&#39;8.2&#39; r=&#39;.6&#39; fill=&#39;</span><span class="si">#{</span><span class="nv">$form-feedback-icon-invalid-color</span><span class="si">}</span><span class="sx">&#39; stroke=&#39;none&#39;/&gt;&lt;/svg&gt;&#34;)</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="mixins">Mixins</h3>
+<p>Two mixins are combined together, through our <a href="#loop">loop</a>, to generate our form validation feedback styles.</p>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@mixin</span><span class="nf"> form-validation-state-selector</span><span class="p">(</span><span class="nv">$state</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">@if</span> <span class="p">(</span><span class="nv">$state</span> <span class="o">==</span> <span class="s2">&#34;valid&#34;</span> <span class="ow">or</span> <span class="nv">$state</span> <span class="o">==</span> <span class="s2">&#34;invalid&#34;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nc">.was-validated</span> <span class="nn">#</span><span class="p">{</span><span class="nt">if</span><span class="o">(</span><span class="k">&amp;</span><span class="o">,</span> <span class="s2">&#34;&amp;&#34;</span><span class="o">,</span> <span class="s2">&#34;&#34;</span><span class="o">)</span><span class="p">}</span><span class="nd">:</span><span class="si">#{</span><span class="nv">$state</span><span class="si">}</span><span class="o">,</span>
+    <span class="nn">#</span><span class="p">{</span><span class="nt">if</span><span class="o">(</span><span class="k">&amp;</span><span class="o">,</span> <span class="s2">&#34;&amp;&#34;</span><span class="o">,</span> <span class="s2">&#34;&#34;</span><span class="o">)</span><span class="p">}</span><span class="nc">.is-</span><span class="si">#{</span><span class="nv">$state</span><span class="si">}</span> <span class="p">{</span>
+      <span class="k">@content</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="k">@else</span> <span class="p">{</span>
+    <span class="nn">#</span><span class="p">{</span><span class="nt">if</span><span class="o">(</span><span class="k">&amp;</span><span class="o">,</span> <span class="s2">&#34;&amp;&#34;</span><span class="o">,</span> <span class="s2">&#34;&#34;</span><span class="o">)</span><span class="p">}</span><span class="nc">.is-</span><span class="si">#{</span><span class="nv">$state</span><span class="si">}</span> <span class="p">{</span>
+      <span class="k">@content</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">@mixin</span><span class="nf"> form-validation-state</span><span class="p">(</span>
+  <span class="nv">$state</span><span class="o">,</span>
+  <span class="nv">$color</span><span class="o">,</span>
+  <span class="nv">$icon</span><span class="o">,</span>
+  <span class="nv">$tooltip-color</span><span class="o">:</span> <span class="nf">color-contrast</span><span class="p">(</span><span class="nv">$color</span><span class="p">)</span><span class="o">,</span>
+  <span class="nv">$tooltip-bg-color</span><span class="o">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="nv">$form-feedback-tooltip-opacity</span><span class="p">)</span><span class="o">,</span>
+  <span class="nv">$focus-box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="nv">$input-btn-focus-blur</span> <span class="nv">$input-focus-width</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="nv">$input-btn-focus-color-opacity</span><span class="p">)</span>
+<span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.</span><span class="si">#{</span><span class="nv">$state</span><span class="si">}</span><span class="nc">-feedback</span> <span class="p">{</span>
+    <span class="nt">display</span><span class="nd">:</span> <span class="nt">none</span><span class="p">;</span>
+    <span class="nt">width</span><span class="nd">:</span> <span class="nt">100</span><span class="err">%</span><span class="p">;</span>
+    <span class="nt">margin-top</span><span class="nd">:</span> <span class="err">$</span><span class="nt">form-feedback-margin-top</span><span class="p">;</span>
+    <span class="k">@include</span><span class="nd"> font-size</span><span class="p">(</span><span class="nv">$form-feedback-font-size</span><span class="p">);</span>
+    <span class="nt">font-style</span><span class="nd">:</span> <span class="err">$</span><span class="nt">form-feedback-font-style</span><span class="p">;</span>
+    <span class="nt">color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">color</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nc">.</span><span class="si">#{</span><span class="nv">$state</span><span class="si">}</span><span class="nc">-tooltip</span> <span class="p">{</span>
+    <span class="nt">position</span><span class="nd">:</span> <span class="nt">absolute</span><span class="p">;</span>
+    <span class="nt">top</span><span class="nd">:</span> <span class="nt">100</span><span class="err">%</span><span class="p">;</span>
+    <span class="nt">z-index</span><span class="nd">:</span> <span class="nt">5</span><span class="p">;</span>
+    <span class="nt">display</span><span class="nd">:</span> <span class="nt">none</span><span class="p">;</span>
+    <span class="nt">max-width</span><span class="nd">:</span> <span class="nt">100</span><span class="err">%</span><span class="p">;</span> <span class="c1">// Contain to parent when possible
+</span><span class="c1"></span>    <span class="nt">padding</span><span class="nd">:</span> <span class="err">$</span><span class="nt">form-feedback-tooltip-padding-y</span> <span class="err">$</span><span class="nt">form-feedback-tooltip-padding-x</span><span class="p">;</span>
+    <span class="nt">margin-top</span><span class="nd">:</span> <span class="nc">.1rem</span><span class="p">;</span>
+    <span class="k">@include</span><span class="nd"> font-size</span><span class="p">(</span><span class="nv">$form-feedback-tooltip-font-size</span><span class="p">);</span>
+    <span class="nt">line-height</span><span class="nd">:</span> <span class="err">$</span><span class="nt">form-feedback-tooltip-line-height</span><span class="p">;</span>
+    <span class="nt">color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">tooltip-color</span><span class="p">;</span>
+    <span class="nt">background-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">tooltip-bg-color</span><span class="p">;</span>
+    <span class="k">@include</span><span class="nd"> border-radius</span><span class="p">(</span><span class="nv">$form-feedback-tooltip-border-radius</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">@include</span><span class="nd"> form-validation-state-selector</span><span class="p">(</span><span class="nv">$state</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">~</span> <span class="nc">.</span><span class="si">#{</span><span class="nv">$state</span><span class="si">}</span><span class="nc">-feedback</span><span class="o">,</span>
+    <span class="o">~</span> <span class="nc">.</span><span class="si">#{</span><span class="nv">$state</span><span class="si">}</span><span class="nc">-tooltip</span> <span class="p">{</span>
+      <span class="nt">display</span><span class="nd">:</span> <span class="nt">block</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nc">.form-control</span> <span class="p">{</span>
+    <span class="k">@include</span><span class="nd"> form-validation-state-selector</span><span class="p">(</span><span class="nv">$state</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nt">border-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">color</span><span class="p">;</span>
+
+      <span class="k">@if</span> <span class="nv">$enable-validation-icons</span> <span class="p">{</span>
+        <span class="nt">padding-right</span><span class="nd">:</span> <span class="err">$</span><span class="nt">input-height-inner</span><span class="p">;</span>
+        <span class="nt">background-image</span><span class="nd">:</span> <span class="nt">escape-svg</span><span class="o">(</span><span class="err">$</span><span class="nt">icon</span><span class="o">)</span><span class="p">;</span>
+        <span class="nt">background-repeat</span><span class="nd">:</span> <span class="nt">no-repeat</span><span class="p">;</span>
+        <span class="nt">background-position</span><span class="nd">:</span> <span class="nt">right</span> <span class="err">$</span><span class="nt">input-height-inner-quarter</span> <span class="nt">center</span><span class="p">;</span>
+        <span class="nt">background-size</span><span class="nd">:</span> <span class="err">$</span><span class="nt">input-height-inner-half</span> <span class="err">$</span><span class="nt">input-height-inner-half</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">&amp;</span><span class="nd">:focus</span> <span class="p">{</span>
+        <span class="nt">border-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">color</span><span class="p">;</span>
+        <span class="nt">box-shadow</span><span class="nd">:</span> <span class="err">$</span><span class="nt">focus-box-shadow</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// stylelint-disable-next-line selector-no-qualifying-type
+</span><span class="c1"></span>  <span class="nt">textarea</span><span class="nc">.form-control</span> <span class="p">{</span>
+    <span class="k">@include</span><span class="nd"> form-validation-state-selector</span><span class="p">(</span><span class="nv">$state</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">@if</span> <span class="nv">$enable-validation-icons</span> <span class="p">{</span>
+        <span class="nt">padding-right</span><span class="nd">:</span> <span class="err">$</span><span class="nt">input-height-inner</span><span class="p">;</span>
+        <span class="nt">background-position</span><span class="nd">:</span> <span class="nt">top</span> <span class="err">$</span><span class="nt">input-height-inner-quarter</span> <span class="nt">right</span> <span class="err">$</span><span class="nt">input-height-inner-quarter</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nc">.form-select</span> <span class="p">{</span>
+    <span class="k">@include</span><span class="nd"> form-validation-state-selector</span><span class="p">(</span><span class="nv">$state</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nt">border-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">color</span><span class="p">;</span>
+
+      <span class="k">@if</span> <span class="nv">$enable-validation-icons</span> <span class="p">{</span>
+        <span class="nt">padding-right</span><span class="nd">:</span> <span class="err">$</span><span class="nt">form-select-feedback-icon-padding-end</span><span class="p">;</span>
+        <span class="nt">background-image</span><span class="nd">:</span> <span class="nt">escape-svg</span><span class="o">(</span><span class="err">$</span><span class="nt">form-select-indicator</span><span class="o">),</span> <span class="nt">escape-svg</span><span class="o">(</span><span class="err">$</span><span class="nt">icon</span><span class="o">)</span><span class="p">;</span>
+        <span class="nt">background-position</span><span class="nd">:</span> <span class="err">$</span><span class="nt">form-select-bg-position</span><span class="o">,</span> <span class="err">$</span><span class="nt">form-select-feedback-icon-position</span><span class="p">;</span>
+        <span class="nt">background-size</span><span class="nd">:</span> <span class="err">$</span><span class="nt">form-select-bg-size</span><span class="o">,</span> <span class="err">$</span><span class="nt">form-select-feedback-icon-size</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">&amp;</span><span class="nd">:focus</span> <span class="p">{</span>
+        <span class="nt">border-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">color</span><span class="p">;</span>
+        <span class="nt">box-shadow</span><span class="nd">:</span> <span class="err">$</span><span class="nt">focus-box-shadow</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nc">.form-check-input</span> <span class="p">{</span>
+    <span class="k">@include</span><span class="nd"> form-validation-state-selector</span><span class="p">(</span><span class="nv">$state</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nt">border-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">color</span><span class="p">;</span>
+
+      <span class="k">&amp;</span><span class="nd">:checked</span> <span class="p">{</span>
+        <span class="nt">background-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">color</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">&amp;</span><span class="nd">:focus</span> <span class="p">{</span>
+        <span class="nt">box-shadow</span><span class="nd">:</span> <span class="err">$</span><span class="nt">focus-box-shadow</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="o">~</span> <span class="nc">.form-check-label</span> <span class="p">{</span>
+        <span class="nt">color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">color</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nc">.form-check-inline</span> <span class="nc">.form-check-input</span> <span class="p">{</span>
+    <span class="o">~</span> <span class="nc">.</span><span class="si">#{</span><span class="nv">$state</span><span class="si">}</span><span class="nc">-feedback</span> <span class="p">{</span>
+      <span class="nt">margin-left</span><span class="nd">:</span> <span class="nc">.5em</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nc">.input-group</span> <span class="nc">.form-control</span><span class="o">,</span>
+  <span class="nc">.input-group</span> <span class="nc">.form-select</span> <span class="p">{</span>
+    <span class="k">@include</span><span class="nd"> form-validation-state-selector</span><span class="p">(</span><span class="nv">$state</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nt">z-index</span><span class="nd">:</span> <span class="nt">3</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="map">Map</h3>
+<p>This is the validation Sass map from <code>_variables.scss</code>. Override or extend this to generate different or additional states.</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$form-validation-states</span><span class="o">:</span> <span class="p">(</span>
   <span class="s2">&#34;valid&#34;</span><span class="o">:</span> <span class="p">(</span>
     <span class="s2">&#34;color&#34;</span><span class="o">:</span> <span class="nv">$form-feedback-valid-color</span><span class="o">,</span>
@@ -1025,11 +1178,15 @@ We are aware that currently the client-side custom validation styles and tooltip
 <span class="p">);</span>
 </code></pre></div>
 <p>Maps of <code>$form-validation-states</code> can contain three optional parameters to override tooltips and focus styles.</p>
-<p>This is the loop from <code>forms/_validation.scss</code>. Any modifications to the above Sass map will be reflected in your compiled CSS via this loop:</p>
+<h3 id="loop">Loop</h3>
+<p>Used to iterate over <code>$form-validation-states</code> map values to generate our validation styles. Any modifications to the above Sass map will be reflected in your compiled CSS via this loop.</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@each</span> <span class="err">$</span><span class="nt">state</span><span class="o">,</span> <span class="err">$</span><span class="nt">data</span> <span class="nt">in</span> <span class="err">$</span><span class="nt">form-validation-states</span> <span class="p">{</span>
   <span class="k">@include</span><span class="nd"> form-validation-state</span><span class="p">(</span><span class="nv">$state</span><span class="o">,</span> <span class="nv">$data</span><span class="o">...</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
+<h3 id="customizing">Customizing</h3>
+<p>Validation states can be customized via Sass with the <code>$form-validation-states</code> map. Located in our <code>_variables.scss</code> file, this Sass map is how we generate the default <code>valid</code>/<code>invalid</code> validation states. Included is a nested map for customizing each state&rsquo;s color, icon, tooltip color, and focus shadow. While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.</p>
+<p>Please note that <strong>we do not recommend customizing <code>$form-validation-states</code> values without also modifying the <code>form-validation-state</code> mixin</strong>.</p>
 
       </div>
     </main>
@@ -1045,11 +1202,11 @@ We are aware that currently the client-side custom validation styles and tooltip
       <li class="d-inline-block ms-3"><a href="/docs/5.0/about/overview/">About</a></li>
     </ul>
     <p class="mb-0">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
-    <p class="mb-0">Currently v5.0.0-beta2. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
+    <p class="mb-0">Currently v5.0.0-beta3. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>

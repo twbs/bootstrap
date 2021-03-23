@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Documentation and examples for adding Bootstrap popovers, like those found in iOS, to any element on your site.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.80.0">
+<meta name="generator" content="Hugo 0.82.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -193,6 +193,7 @@
               <li><a href="/docs/5.0/getting-started/javascript/" class="d-inline-flex align-items-center rounded">JavaScript</a></li>
               <li><a href="/docs/5.0/getting-started/build-tools/" class="d-inline-flex align-items-center rounded">Build tools</a></li>
               <li><a href="/docs/5.0/getting-started/webpack/" class="d-inline-flex align-items-center rounded">Webpack</a></li>
+              <li><a href="/docs/5.0/getting-started/parcel/" class="d-inline-flex align-items-center rounded">Parcel</a></li>
               <li><a href="/docs/5.0/getting-started/accessibility/" class="d-inline-flex align-items-center rounded">Accessibility</a></li>
               <li><a href="/docs/5.0/getting-started/rfs/" class="d-inline-flex align-items-center rounded">RFS</a></li>
               <li><a href="/docs/5.0/getting-started/rtl/" class="d-inline-flex align-items-center rounded">RTL</a></li>
@@ -289,6 +290,7 @@
               <li><a href="/docs/5.0/components/modal/" class="d-inline-flex align-items-center rounded">Modal</a></li>
               <li><a href="/docs/5.0/components/navs-tabs/" class="d-inline-flex align-items-center rounded">Navs &amp; tabs</a></li>
               <li><a href="/docs/5.0/components/navbar/" class="d-inline-flex align-items-center rounded">Navbar</a></li>
+              <li><a href="/docs/5.0/components/offcanvas/" class="d-inline-flex align-items-center rounded">Offcanvas</a></li>
               <li><a href="/docs/5.0/components/pagination/" class="d-inline-flex align-items-center rounded">Pagination</a></li>
               <li><a href="/docs/5.0/components/popovers/" class="d-inline-flex align-items-center rounded active" aria-current="page">Popovers</a></li>
               <li><a href="/docs/5.0/components/progress/" class="d-inline-flex align-items-center rounded">Progress</a></li>
@@ -406,6 +408,11 @@
         <li><a href="#disabled-elements">Disabled elements</a></li>
       </ul>
     </li>
+    <li><a href="#sass">Sass</a>
+      <ul>
+        <li><a href="#variables">Variables</a></li>
+      </ul>
+    </li>
     <li><a href="#usage">Usage</a>
       <ul>
         <li><a href="#options">Options</a>
@@ -440,7 +447,7 @@
         <h2 id="overview">Overview</h2>
 <p>Things to know when using the popover plugin:</p>
 <ul>
-<li>Popovers rely on the 3rd party library <a href="https://popper.js.org/">Popper</a> for positioning. You must include <a href="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js">popper.min.js</a> before bootstrap.js or use <code>bootstrap.bundle.min.js</code> / <code>bootstrap.bundle.js</code> which contains Popper in order for popovers to work!</li>
+<li>Popovers rely on the 3rd party library <a href="https://popper.js.org/">Popper</a> for positioning. You must include <a href="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js">popper.min.js</a> before bootstrap.js or use <code>bootstrap.bundle.min.js</code> / <code>bootstrap.bundle.js</code> which contains Popper in order for popovers to work!</li>
 <li>Popovers require the <a href="/docs/5.0/components/tooltips/">tooltip plugin</a> as a dependency.</li>
 <li>Popovers are opt-in for performance reasons, so <strong>you must initialize them yourself</strong>.</li>
 <li>Zero-length <code>title</code> and <code>content</code> values will never show a popover.</li>
@@ -525,6 +532,32 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 </div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;d-inline-block&#34;</span> <span class="na">tabindex</span><span class="o">=</span><span class="s">&#34;0&#34;</span> <span class="na">data-bs-toggle</span><span class="o">=</span><span class="s">&#34;popover&#34;</span> <span class="na">data-bs-trigger</span><span class="o">=</span><span class="s">&#34;hover focus&#34;</span> <span class="na">data-bs-content</span><span class="o">=</span><span class="s">&#34;Disabled popover&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-primary&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">disabled</span><span class="p">&gt;</span>Disabled button<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span></code></pre></div>
+<h2 id="sass">Sass</h2>
+<h3 id="variables">Variables</h3>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$popover-font-size</span><span class="o">:</span>                 <span class="nv">$font-size-sm</span><span class="p">;</span>
+<span class="nv">$popover-bg</span><span class="o">:</span>                        <span class="nv">$white</span><span class="p">;</span>
+<span class="nv">$popover-max-width</span><span class="o">:</span>                 <span class="mi">276</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$popover-border-width</span><span class="o">:</span>              <span class="nv">$border-width</span><span class="p">;</span>
+<span class="nv">$popover-border-color</span><span class="o">:</span>              <span class="nf">rgba</span><span class="p">(</span><span class="nv">$black</span><span class="o">,</span> <span class="mf">.2</span><span class="p">);</span>
+<span class="nv">$popover-border-radius</span><span class="o">:</span>             <span class="nv">$border-radius-lg</span><span class="p">;</span>
+<span class="nv">$popover-inner-border-radius</span><span class="o">:</span>       <span class="nf">subtract</span><span class="p">(</span><span class="nv">$popover-border-radius</span><span class="o">,</span> <span class="nv">$popover-border-width</span><span class="p">);</span>
+<span class="nv">$popover-box-shadow</span><span class="o">:</span>                <span class="nv">$box-shadow</span><span class="p">;</span>
+
+<span class="nv">$popover-header-bg</span><span class="o">:</span>                 <span class="nf">shade-color</span><span class="p">(</span><span class="nv">$popover-bg</span><span class="o">,</span> <span class="mi">6</span><span class="kt">%</span><span class="p">);</span>
+<span class="nv">$popover-header-color</span><span class="o">:</span>              <span class="nv">$headings-color</span><span class="p">;</span>
+<span class="nv">$popover-header-padding-y</span><span class="o">:</span>          <span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$popover-header-padding-x</span><span class="o">:</span>          <span class="nv">$spacer</span><span class="p">;</span>
+
+<span class="nv">$popover-body-color</span><span class="o">:</span>                <span class="nv">$body-color</span><span class="p">;</span>
+<span class="nv">$popover-body-padding-y</span><span class="o">:</span>            <span class="nv">$spacer</span><span class="p">;</span>
+<span class="nv">$popover-body-padding-x</span><span class="o">:</span>            <span class="nv">$spacer</span><span class="p">;</span>
+
+<span class="nv">$popover-arrow-width</span><span class="o">:</span>               <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$popover-arrow-height</span><span class="o">:</span>              <span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$popover-arrow-color</span><span class="o">:</span>               <span class="nv">$popover-bg</span><span class="p">;</span>
+
+<span class="nv">$popover-arrow-outer-color</span><span class="o">:</span>         <span class="nf">fade-in</span><span class="p">(</span><span class="nv">$popover-border-color</span><span class="o">,</span> <span class="mf">.05</span><span class="p">);</span>
+</code></pre></div>
 <h2 id="usage">Usage</h2>
 <p>Enable popovers via JavaScript:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">exampleEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;example&#39;</span><span class="p">)</span>
@@ -794,11 +827,11 @@ Note that for security reasons the <code>sanitize</code>, <code>sanitizeFn</code
       <li class="d-inline-block ms-3"><a href="/docs/5.0/about/overview/">About</a></li>
     </ul>
     <p class="mb-0">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
-    <p class="mb-0">Currently v5.0.0-beta2. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
+    <p class="mb-0">Currently v5.0.0-beta3. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>

@@ -133,6 +133,9 @@
     <loc>https://getbootstrap.com/docs/5.0/examples/</loc>
   </url>
   <url>
+    <loc>https://getbootstrap.com/docs/5.0/examples/features/</loc>
+  </url>
+  <url>
     <loc>https://getbootstrap.com/docs/5.0/content/figures/</loc>
   </url>
   <url>
@@ -163,6 +166,12 @@
     <loc>https://getbootstrap.com/docs/5.0/layout/gutters/</loc>
   </url>
   <url>
+    <loc>https://getbootstrap.com/docs/5.0/examples/headers/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.0/examples/heroes/</loc>
+  </url>
+  <url>
     <loc>https://getbootstrap.com/docs/5.0/extend/icons/</loc>
   </url>
   <url>
@@ -179,6 +188,9 @@
   </url>
   <url>
     <loc>https://getbootstrap.com/docs/5.0/getting-started/javascript/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.0/examples/jumbotron/</loc>
   </url>
   <url>
     <loc>https://getbootstrap.com/docs/5.0/forms/layout/</loc>
@@ -208,7 +220,10 @@
     <loc>https://getbootstrap.com/docs/5.0/components/navs-tabs/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/offcanvas/</loc>
+    <loc>https://getbootstrap.com/docs/5.0/components/offcanvas/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.0/examples/offcanvas-navbar/</loc>
   </url>
   <url>
     <loc>https://getbootstrap.com/docs/5.0/customize/optimize/</loc>
@@ -221,6 +236,9 @@
   </url>
   <url>
     <loc>https://getbootstrap.com/docs/5.0/components/pagination/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.0/getting-started/parcel/</loc>
   </url>
   <url>
     <loc>https://getbootstrap.com/docs/5.0/components/popovers/</loc>
@@ -266,6 +284,9 @@
   </url>
   <url>
     <loc>https://getbootstrap.com/docs/5.0/utilities/shadows/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.0/examples/sidebars/</loc>
   </url>
   <url>
     <loc>https://getbootstrap.com/docs/5.0/examples/sign-in/</loc>

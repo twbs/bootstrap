@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.80.0">
+<meta name="generator" content="Hugo 0.82.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -193,6 +193,7 @@
               <li><a href="/docs/5.0/getting-started/javascript/" class="d-inline-flex align-items-center rounded">JavaScript</a></li>
               <li><a href="/docs/5.0/getting-started/build-tools/" class="d-inline-flex align-items-center rounded">Build tools</a></li>
               <li><a href="/docs/5.0/getting-started/webpack/" class="d-inline-flex align-items-center rounded">Webpack</a></li>
+              <li><a href="/docs/5.0/getting-started/parcel/" class="d-inline-flex align-items-center rounded">Parcel</a></li>
               <li><a href="/docs/5.0/getting-started/accessibility/" class="d-inline-flex align-items-center rounded">Accessibility</a></li>
               <li><a href="/docs/5.0/getting-started/rfs/" class="d-inline-flex align-items-center rounded">RFS</a></li>
               <li><a href="/docs/5.0/getting-started/rtl/" class="d-inline-flex align-items-center rounded">RTL</a></li>
@@ -289,6 +290,7 @@
               <li><a href="/docs/5.0/components/modal/" class="d-inline-flex align-items-center rounded">Modal</a></li>
               <li><a href="/docs/5.0/components/navs-tabs/" class="d-inline-flex align-items-center rounded">Navs &amp; tabs</a></li>
               <li><a href="/docs/5.0/components/navbar/" class="d-inline-flex align-items-center rounded">Navbar</a></li>
+              <li><a href="/docs/5.0/components/offcanvas/" class="d-inline-flex align-items-center rounded">Offcanvas</a></li>
               <li><a href="/docs/5.0/components/pagination/" class="d-inline-flex align-items-center rounded">Pagination</a></li>
               <li><a href="/docs/5.0/components/popovers/" class="d-inline-flex align-items-center rounded">Popovers</a></li>
               <li><a href="/docs/5.0/components/progress/" class="d-inline-flex align-items-center rounded">Progress</a></li>
@@ -434,6 +436,12 @@
       </ul>
     </li>
     <li><a href="#dropdown-options">Dropdown options</a></li>
+    <li><a href="#sass">Sass</a>
+      <ul>
+        <li><a href="#variables">Variables</a></li>
+        <li><a href="#mixins">Mixins</a></li>
+      </ul>
+    </li>
     <li><a href="#usage">Usage</a>
       <ul>
         <li><a href="#via-data-attributes">Via data attributes</a></li>
@@ -457,7 +465,7 @@
 
         <h2 id="overview">Overview</h2>
 <p>Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They&rsquo;re made interactive with the included Bootstrap dropdown JavaScript plugin. They&rsquo;re toggled by clicking, not by hovering; this is <a href="https://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/">an intentional design decision</a>.</p>
-<p>Dropdowns are built on a third party library, <a href="https://popper.js.org/">Popper</a>, which provides dynamic positioning and viewport detection. Be sure to include <a href="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js">popper.min.js</a> before Bootstrap&rsquo;s JavaScript or use <code>bootstrap.bundle.min.js</code> / <code>bootstrap.bundle.js</code> which contains Popper. Popper isn&rsquo;t used to position dropdowns in navbars though as dynamic positioning isn&rsquo;t required.</p>
+<p>Dropdowns are built on a third party library, <a href="https://popper.js.org/">Popper</a>, which provides dynamic positioning and viewport detection. Be sure to include <a href="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js">popper.min.js</a> before Bootstrap&rsquo;s JavaScript or use <code>bootstrap.bundle.min.js</code> / <code>bootstrap.bundle.js</code> which contains Popper. Popper isn&rsquo;t used to position dropdowns in navbars though as dynamic positioning isn&rsquo;t required.</p>
 <h2 id="accessibility">Accessibility</h2>
 <p>The <a href="https://www.w3.org/TR/wai-aria/"><abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr></a> standard defines an actual <a href="https://www.w3.org/WAI/PF/aria/roles#menu"><code>role=&quot;menu&quot;</code> widget</a>, but this is specific to application-like menus which trigger actions or functions. <abbr title="Accessible Rich Internet Applications">ARIA</abbr> menus can only contain menu items, checkbox menu items, radio button menu items, radio button groups, and sub-menus.</p>
 <p>Bootstrap&rsquo;s dropdowns, on the other hand, are designed to be generic and applicable to a variety of situations and markup structures. For instance, it is possible to create dropdowns that contain additional inputs and form controls, such as search fields or login forms. For this reason, Bootstrap does not expect (nor automatically add) any of the <code>role</code> and <code>aria-</code> attributes required for true <abbr title="Accessible Rich Internet Applications">ARIA</abbr> menus. Authors will have to include these more specific attributes themselves.</p>
@@ -1507,6 +1515,123 @@
     <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
+<h2 id="sass">Sass</h2>
+<h3 id="variables">Variables</h3>
+<p>Variables for all dropdowns:</p>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$dropdown-min-width</span><span class="o">:</span>                <span class="mi">10</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$dropdown-padding-x</span><span class="o">:</span>                <span class="mi">0</span><span class="p">;</span>
+<span class="nv">$dropdown-padding-y</span><span class="o">:</span>                <span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$dropdown-spacer</span><span class="o">:</span>                   <span class="mf">.125</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$dropdown-font-size</span><span class="o">:</span>                <span class="nv">$font-size-base</span><span class="p">;</span>
+<span class="nv">$dropdown-color</span><span class="o">:</span>                    <span class="nv">$body-color</span><span class="p">;</span>
+<span class="nv">$dropdown-bg</span><span class="o">:</span>                       <span class="nv">$white</span><span class="p">;</span>
+<span class="nv">$dropdown-border-color</span><span class="o">:</span>             <span class="nf">rgba</span><span class="p">(</span><span class="nv">$black</span><span class="o">,</span> <span class="mf">.15</span><span class="p">);</span>
+<span class="nv">$dropdown-border-radius</span><span class="o">:</span>            <span class="nv">$border-radius</span><span class="p">;</span>
+<span class="nv">$dropdown-border-width</span><span class="o">:</span>             <span class="nv">$border-width</span><span class="p">;</span>
+<span class="nv">$dropdown-inner-border-radius</span><span class="o">:</span>      <span class="nf">subtract</span><span class="p">(</span><span class="nv">$dropdown-border-radius</span><span class="o">,</span> <span class="nv">$dropdown-border-width</span><span class="p">);</span>
+<span class="nv">$dropdown-divider-bg</span><span class="o">:</span>               <span class="nv">$dropdown-border-color</span><span class="p">;</span>
+<span class="nv">$dropdown-divider-margin-y</span><span class="o">:</span>         <span class="nv">$spacer</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$dropdown-box-shadow</span><span class="o">:</span>               <span class="nv">$box-shadow</span><span class="p">;</span>
+
+<span class="nv">$dropdown-link-color</span><span class="o">:</span>               <span class="nv">$gray-900</span><span class="p">;</span>
+<span class="nv">$dropdown-link-hover-color</span><span class="o">:</span>         <span class="nf">shade-color</span><span class="p">(</span><span class="nv">$gray-900</span><span class="o">,</span> <span class="mi">10</span><span class="kt">%</span><span class="p">);</span>
+<span class="nv">$dropdown-link-hover-bg</span><span class="o">:</span>            <span class="nv">$gray-200</span><span class="p">;</span>
+
+<span class="nv">$dropdown-link-active-color</span><span class="o">:</span>        <span class="nv">$component-active-color</span><span class="p">;</span>
+<span class="nv">$dropdown-link-active-bg</span><span class="o">:</span>           <span class="nv">$component-active-bg</span><span class="p">;</span>
+
+<span class="nv">$dropdown-link-disabled-color</span><span class="o">:</span>      <span class="nv">$gray-500</span><span class="p">;</span>
+
+<span class="nv">$dropdown-item-padding-y</span><span class="o">:</span>           <span class="nv">$spacer</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>
+<span class="nv">$dropdown-item-padding-x</span><span class="o">:</span>           <span class="nv">$spacer</span><span class="p">;</span>
+
+<span class="nv">$dropdown-header-color</span><span class="o">:</span>             <span class="nv">$gray-600</span><span class="p">;</span>
+<span class="nv">$dropdown-header-padding</span><span class="o">:</span>           <span class="nv">$dropdown-padding-y</span> <span class="nv">$dropdown-item-padding-x</span><span class="p">;</span>
+</code></pre></div>
+<p>Variables for the <a href="#dark-dropdowns">dark dropdown</a>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$dropdown-dark-color</span><span class="o">:</span>               <span class="nv">$gray-300</span><span class="p">;</span>
+<span class="nv">$dropdown-dark-bg</span><span class="o">:</span>                  <span class="nv">$gray-800</span><span class="p">;</span>
+<span class="nv">$dropdown-dark-border-color</span><span class="o">:</span>        <span class="nv">$dropdown-border-color</span><span class="p">;</span>
+<span class="nv">$dropdown-dark-divider-bg</span><span class="o">:</span>          <span class="nv">$dropdown-divider-bg</span><span class="p">;</span>
+<span class="nv">$dropdown-dark-box-shadow</span><span class="o">:</span>          <span class="n">null</span><span class="p">;</span>
+<span class="nv">$dropdown-dark-link-color</span><span class="o">:</span>          <span class="nv">$dropdown-dark-color</span><span class="p">;</span>
+<span class="nv">$dropdown-dark-link-hover-color</span><span class="o">:</span>    <span class="nv">$white</span><span class="p">;</span>
+<span class="nv">$dropdown-dark-link-hover-bg</span><span class="o">:</span>       <span class="nf">rgba</span><span class="p">(</span><span class="nv">$white</span><span class="o">,</span> <span class="mf">.15</span><span class="p">);</span>
+<span class="nv">$dropdown-dark-link-active-color</span><span class="o">:</span>   <span class="nv">$dropdown-link-active-color</span><span class="p">;</span>
+<span class="nv">$dropdown-dark-link-active-bg</span><span class="o">:</span>      <span class="nv">$dropdown-link-active-bg</span><span class="p">;</span>
+<span class="nv">$dropdown-dark-link-disabled-color</span><span class="o">:</span> <span class="nv">$gray-500</span><span class="p">;</span>
+<span class="nv">$dropdown-dark-header-color</span><span class="o">:</span>        <span class="nv">$gray-500</span><span class="p">;</span>
+</code></pre></div>
+<p>Variables for the CSS-based carets that indicate a dropdown&rsquo;s interactivity:</p>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$caret-width</span><span class="o">:</span>                 <span class="mf">.3</span><span class="kt">em</span><span class="p">;</span>
+<span class="nv">$caret-vertical-align</span><span class="o">:</span>        <span class="nv">$caret-width</span> <span class="o">*</span> <span class="mf">.85</span><span class="p">;</span>
+<span class="nv">$caret-spacing</span><span class="o">:</span>               <span class="nv">$caret-width</span> <span class="o">*</span> <span class="mf">.85</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="mixins">Mixins</h3>
+<p>Mixins are used to generate the CSS-based carets and can be found in <code>scss/mixins/_caret.scss</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@mixin</span><span class="nf"> caret-down</span> <span class="p">{</span>
+  <span class="nt">border-top</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span><span class="p">;</span>
+  <span class="nt">border-right</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span> <span class="nt">transparent</span><span class="p">;</span>
+  <span class="nt">border-bottom</span><span class="nd">:</span> <span class="nt">0</span><span class="p">;</span>
+  <span class="nt">border-left</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span> <span class="nt">transparent</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@mixin</span><span class="nf"> caret-up</span> <span class="p">{</span>
+  <span class="nt">border-top</span><span class="nd">:</span> <span class="nt">0</span><span class="p">;</span>
+  <span class="nt">border-right</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span> <span class="nt">transparent</span><span class="p">;</span>
+  <span class="nt">border-bottom</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span><span class="p">;</span>
+  <span class="nt">border-left</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span> <span class="nt">transparent</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@mixin</span><span class="nf"> caret-end</span> <span class="p">{</span>
+  <span class="nt">border-top</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span> <span class="nt">transparent</span><span class="p">;</span>
+  <span class="nt">border-right</span><span class="nd">:</span> <span class="nt">0</span><span class="p">;</span>
+  <span class="nt">border-bottom</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span> <span class="nt">transparent</span><span class="p">;</span>
+  <span class="nt">border-left</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@mixin</span><span class="nf"> caret-start</span> <span class="p">{</span>
+  <span class="nt">border-top</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span> <span class="nt">transparent</span><span class="p">;</span>
+  <span class="nt">border-right</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span><span class="p">;</span>
+  <span class="nt">border-bottom</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span> <span class="nt">transparent</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@mixin</span><span class="nf"> caret</span><span class="p">(</span><span class="nv">$direction</span><span class="o">:</span> <span class="n">down</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">@if</span> <span class="nv">$enable-caret</span> <span class="p">{</span>
+    <span class="k">&amp;</span><span class="nd">::after</span> <span class="p">{</span>
+      <span class="nt">display</span><span class="nd">:</span> <span class="nt">inline-block</span><span class="p">;</span>
+      <span class="nt">margin-left</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-spacing</span><span class="p">;</span>
+      <span class="nt">vertical-align</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-vertical-align</span><span class="p">;</span>
+      <span class="nt">content</span><span class="nd">:</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+      <span class="k">@if</span> <span class="nv">$direction</span> <span class="o">==</span> <span class="n">down</span> <span class="p">{</span>
+        <span class="k">@include</span><span class="nd"> caret-down</span><span class="p">();</span>
+      <span class="p">}</span> <span class="k">@else</span> <span class="nt">if</span> <span class="err">$</span><span class="nt">direction</span> <span class="o">==</span> <span class="nt">up</span> <span class="p">{</span>
+        <span class="k">@include</span><span class="nd"> caret-up</span><span class="p">();</span>
+      <span class="p">}</span> <span class="k">@else</span> <span class="nt">if</span> <span class="err">$</span><span class="nt">direction</span> <span class="o">==</span> <span class="nt">end</span> <span class="p">{</span>
+        <span class="k">@include</span><span class="nd"> caret-end</span><span class="p">();</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">@if</span> <span class="nv">$direction</span> <span class="o">==</span> <span class="n">start</span> <span class="p">{</span>
+      <span class="k">&amp;</span><span class="nd">::after</span> <span class="p">{</span>
+        <span class="nt">display</span><span class="nd">:</span> <span class="nt">none</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">&amp;</span><span class="nd">::before</span> <span class="p">{</span>
+        <span class="nt">display</span><span class="nd">:</span> <span class="nt">inline-block</span><span class="p">;</span>
+        <span class="nt">margin-right</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-spacing</span><span class="p">;</span>
+        <span class="nt">vertical-align</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-vertical-align</span><span class="p">;</span>
+        <span class="nt">content</span><span class="nd">:</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+        <span class="k">@include</span><span class="nd"> caret-start</span><span class="p">();</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">&amp;</span><span class="nd">:empty::after</span> <span class="p">{</span>
+      <span class="nt">margin-left</span><span class="nd">:</span> <span class="nt">0</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="usage">Usage</h2>
 <p>Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the <code>.show</code> class on the parent <code>.dropdown-menu</code>. The <code>data-bs-toggle=&quot;dropdown&quot;</code> attribute is relied on for closing dropdown menus at an application level, so it&rsquo;s a good idea to always use it.</p>
 <div class="bd-callout bd-callout-info">
@@ -1546,12 +1671,6 @@ On touch-enabled devices, opening a dropdown adds empty <code>mouseover</code> h
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td><code>flip</code></td>
-      <td>boolean</td>
-      <td><code>true</code></td>
-      <td>Allow Dropdown to flip in case of an overlapping on the reference element. For more information refer to Popper's <a href="https://popper.js.org/docs/v2/modifiers/flip/">flip docs</a>.</td>
-    </tr>
     <tr>
       <td><code>boundary</code></td>
       <td>string | element</td>
@@ -1709,11 +1828,11 @@ On touch-enabled devices, opening a dropdown adds empty <code>mouseover</code> h
       <li class="d-inline-block ms-3"><a href="/docs/5.0/about/overview/">About</a></li>
     </ul>
     <p class="mb-0">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
-    <p class="mb-0">Currently v5.0.0-beta2. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
+    <p class="mb-0">Currently v5.0.0-beta3. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
