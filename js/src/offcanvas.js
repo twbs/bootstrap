@@ -36,12 +36,14 @@ const ESCAPE_KEY = 'Escape'
 
 const Default = {
   backdrop: true,
+  focus: true,
   keyboard: true,
   scroll: false
 }
 
 const DefaultType = {
   backdrop: 'boolean',
+  focus: 'boolean',
   keyboard: 'boolean',
   scroll: 'boolean'
 }
@@ -182,6 +184,10 @@ class Offcanvas extends BaseComponent {
   }
 
   _enforceFocusOnElement(element) {
+    if (!this._config.focus) {
+      return
+    }
+
     EventHandler.off(document, EVENT_FOCUSIN) // guard against infinite focus loop
     EventHandler.on(document, EVENT_FOCUSIN, event => {
       if (document !== event.target &&
