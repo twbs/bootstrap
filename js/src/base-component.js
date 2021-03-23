@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): base-component.js
+ * Bootstrap (v5.0.0-beta3): base-component.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -13,7 +13,7 @@ import Data from './dom/data'
  * ------------------------------------------------------------------------
  */
 
-const VERSION = '5.0.0-beta2'
+const VERSION = '5.0.0-beta3'
 
 class BaseComponent {
   constructor(element) {
