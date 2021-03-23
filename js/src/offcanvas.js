@@ -36,14 +36,12 @@ const ESCAPE_KEY = 'Escape'
 
 const Default = {
   backdrop: true,
-  focus: true,
   keyboard: true,
   scroll: false
 }
 
 const DefaultType = {
   backdrop: 'boolean',
-  focus: 'boolean',
   keyboard: 'boolean',
   scroll: 'boolean'
 }
@@ -184,7 +182,7 @@ class Offcanvas extends BaseComponent {
   }
 
   _enforceFocusOnElement(element) {
-    if (!this._config.focus) {
+    if (this._config.scroll) {
       return
     }
 
