@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Documentation and examples for Bootstrap&rsquo;s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.80.0">
+<meta name="generator" content="Hugo 0.82.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -193,6 +193,7 @@
               <li><a href="/docs/5.0/getting-started/javascript/" class="d-inline-flex align-items-center rounded">JavaScript</a></li>
               <li><a href="/docs/5.0/getting-started/build-tools/" class="d-inline-flex align-items-center rounded">Build tools</a></li>
               <li><a href="/docs/5.0/getting-started/webpack/" class="d-inline-flex align-items-center rounded">Webpack</a></li>
+              <li><a href="/docs/5.0/getting-started/parcel/" class="d-inline-flex align-items-center rounded">Parcel</a></li>
               <li><a href="/docs/5.0/getting-started/accessibility/" class="d-inline-flex align-items-center rounded">Accessibility</a></li>
               <li><a href="/docs/5.0/getting-started/rfs/" class="d-inline-flex align-items-center rounded">RFS</a></li>
               <li><a href="/docs/5.0/getting-started/rtl/" class="d-inline-flex align-items-center rounded">RTL</a></li>
@@ -289,6 +290,7 @@
               <li><a href="/docs/5.0/components/modal/" class="d-inline-flex align-items-center rounded">Modal</a></li>
               <li><a href="/docs/5.0/components/navs-tabs/" class="d-inline-flex align-items-center rounded">Navs &amp; tabs</a></li>
               <li><a href="/docs/5.0/components/navbar/" class="d-inline-flex align-items-center rounded active" aria-current="page">Navbar</a></li>
+              <li><a href="/docs/5.0/components/offcanvas/" class="d-inline-flex align-items-center rounded">Offcanvas</a></li>
               <li><a href="/docs/5.0/components/pagination/" class="d-inline-flex align-items-center rounded">Pagination</a></li>
               <li><a href="/docs/5.0/components/popovers/" class="d-inline-flex align-items-center rounded">Popovers</a></li>
               <li><a href="/docs/5.0/components/progress/" class="d-inline-flex align-items-center rounded">Progress</a></li>
@@ -399,10 +401,16 @@
     <li><a href="#how-it-works">How it works</a></li>
     <li><a href="#supported-content">Supported content</a>
       <ul>
-        <li><a href="#brand">Brand</a></li>
+        <li><a href="#brand">Brand</a>
+          <ul>
+            <li><a href="#text">Text</a></li>
+            <li><a href="#image">Image</a></li>
+            <li><a href="#image-and-text">Image and text</a></li>
+          </ul>
+        </li>
         <li><a href="#nav">Nav</a></li>
         <li><a href="#forms">Forms</a></li>
-        <li><a href="#text">Text</a></li>
+        <li><a href="#text-1">Text</a></li>
       </ul>
     </li>
     <li><a href="#color-schemes">Color schemes</a></li>
@@ -413,6 +421,12 @@
       <ul>
         <li><a href="#toggler">Toggler</a></li>
         <li><a href="#external-content">External content</a></li>
+      </ul>
+    </li>
+    <li><a href="#sass">Sass</a>
+      <ul>
+        <li><a href="#variables">Variables</a></li>
+        <li><a href="#loop">Loop</a></li>
       </ul>
     </li>
   </ul>
@@ -525,6 +539,8 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <p>This example uses <a href="/docs/5.0/utilities/background/">background</a> (<code>bg-light</code>) and <a href="/docs/5.0/utilities/spacing/">spacing</a> (<code>my-2</code>, <code>my-lg-0</code>, <code>me-sm-0</code>, <code>my-sm-0</code>) utility classes.</p>
 <h3 id="brand">Brand</h3>
 <p>The <code>.navbar-brand</code> can be applied to most elements, but an anchor works best, as some elements might require utility classes or custom styles.</p>
+<h4 id="text">Text</h4>
+<p>Add your text within an element with the <code>.navbar-brand</code> class.</p>
 <div class="bd-example">
 <!-- As a link -->
 <nav class="navbar navbar-light bg-light">
@@ -552,9 +568,9 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand mb-0 h1&#34;</span><span class="p">&gt;</span>Navbar<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span></code></pre></div>
-<p>Adding images to the <code>.navbar-brand</code> will likely always require custom styles or utilities to properly size. Here are some examples to demonstrate.</p>
+<h4 id="image">Image</h4>
+<p>You can replace the text within the <code>.navbar-brand</code> with an <code>&lt;img&gt;</code>.</p>
 <div class="bd-example">
-<!-- Just an image -->
 <nav class="navbar navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="#">
@@ -562,29 +578,28 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     </a>
   </div>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- Just an image --&gt;</span>
-<span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;container&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/docs/5.0/assets/brand/bootstrap-logo.svg&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;30&#34;</span> <span class="na">height</span><span class="o">=</span><span class="s">&#34;24&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span></code></pre></div>
+<h4 id="image-and-text">Image and text</h4>
+<p>You can also make use of some additional utilities to add an image and text at the same time. Note the addition of <code>.d-inline-block</code> and <code>.align-text-top</code> on the <code>&lt;img&gt;</code>.</p>
 <div class="bd-example">
-<!-- Image and text -->
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-top">
+      <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
       Bootstrap
     </a>
   </div>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- Image and text --&gt;</span>
-<span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;container-fluid&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/docs/5.0/assets/brand/bootstrap-logo.svg&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;30&#34;</span> <span class="na">height</span><span class="o">=</span><span class="s">&#34;24&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;d-inline-block align-top&#34;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/docs/5.0/assets/brand/bootstrap-logo.svg&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;30&#34;</span> <span class="na">height</span><span class="o">=</span><span class="s">&#34;24&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;d-inline-block align-text-top&#34;</span><span class="p">&gt;</span>
       Bootstrap
     <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -811,7 +826,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-sm btn-outline-secondary&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span><span class="p">&gt;</span>Smaller button<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span></code></pre></div>
-<h3 id="text">Text</h3>
+<h3 id="text-1">Text</h3>
 <p>Navbars may contain bits of text with the help of <code>.navbar-text</code>. This class adjusts vertical alignment and horizontal spacing for strings of text.</p>
 <div class="bd-example">
 <nav class="navbar navbar-light bg-light">
@@ -1321,6 +1336,91 @@ The animation effect of this component is dependent on the <code>prefers-reduced
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span></code></pre></div>
 <p>When you do this, we recommend including additional JavaScript to move the focus programmatically to the container when it is opened. Otherwise, keyboard users and users of assistive technologies will likely have a hard time finding the newly revealed content - particularly if the container that was opened comes <em>before</em> the toggler in the document&rsquo;s structure. We also recommend making sure that the toggler has the <code>aria-controls</code> attribute, pointing to the <code>id</code> of the content container. In theory, this allows assistive technology users to jump directly from the toggler to the container it controls–but support for this is currently quite patchy.</p>
+<h2 id="sass">Sass</h2>
+<h3 id="variables">Variables</h3>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$navbar-padding-y</span><span class="o">:</span>                  <span class="nv">$spacer</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$navbar-padding-x</span><span class="o">:</span>                  <span class="n">null</span><span class="p">;</span>
+
+<span class="nv">$navbar-nav-link-padding-x</span><span class="o">:</span>         <span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
+
+<span class="nv">$navbar-brand-font-size</span><span class="o">:</span>            <span class="nv">$font-size-lg</span><span class="p">;</span>
+<span class="c1">// Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
+</span><span class="c1"></span><span class="nv">$nav-link-height</span><span class="o">:</span>                   <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="nv">$line-height-base</span> <span class="o">+</span> <span class="nv">$nav-link-padding-y</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$navbar-brand-height</span><span class="o">:</span>               <span class="nv">$navbar-brand-font-size</span> <span class="o">*</span> <span class="nv">$line-height-base</span><span class="p">;</span>
+<span class="nv">$navbar-brand-padding-y</span><span class="o">:</span>            <span class="p">(</span><span class="nv">$nav-link-height</span> <span class="o">-</span> <span class="nv">$navbar-brand-height</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$navbar-brand-margin-end</span><span class="o">:</span>           <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+
+<span class="nv">$navbar-toggler-padding-y</span><span class="o">:</span>          <span class="mf">.25</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$navbar-toggler-padding-x</span><span class="o">:</span>          <span class="mf">.75</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$navbar-toggler-font-size</span><span class="o">:</span>          <span class="nv">$font-size-lg</span><span class="p">;</span>
+<span class="nv">$navbar-toggler-border-radius</span><span class="o">:</span>      <span class="nv">$btn-border-radius</span><span class="p">;</span>
+<span class="nv">$navbar-toggler-focus-width</span><span class="o">:</span>        <span class="nv">$btn-focus-width</span><span class="p">;</span>
+<span class="nv">$navbar-toggler-transition</span><span class="o">:</span>         <span class="no">box-shadow</span> <span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$navbar-dark-color</span><span class="o">:</span>                 <span class="nf">rgba</span><span class="p">(</span><span class="nv">$white</span><span class="o">,</span> <span class="mf">.55</span><span class="p">);</span>
+<span class="nv">$navbar-dark-hover-color</span><span class="o">:</span>           <span class="nf">rgba</span><span class="p">(</span><span class="nv">$white</span><span class="o">,</span> <span class="mf">.75</span><span class="p">);</span>
+<span class="nv">$navbar-dark-active-color</span><span class="o">:</span>          <span class="nv">$white</span><span class="p">;</span>
+<span class="nv">$navbar-dark-disabled-color</span><span class="o">:</span>        <span class="nf">rgba</span><span class="p">(</span><span class="nv">$white</span><span class="o">,</span> <span class="mf">.25</span><span class="p">);</span>
+<span class="nv">$navbar-dark-toggler-icon-bg</span><span class="o">:</span>       <span class="sx">url(&#34;data:image/svg+xml,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 30 30&#39;&gt;&lt;path stroke=&#39;</span><span class="si">#{</span><span class="nv">$navbar-dark-color</span><span class="si">}</span><span class="sx">&#39; stroke-linecap=&#39;round&#39; stroke-miterlimit=&#39;10&#39; stroke-width=&#39;2&#39; d=&#39;M4 7h22M4 15h22M4 23h22&#39;/&gt;&lt;/svg&gt;&#34;)</span><span class="p">;</span>
+<span class="nv">$navbar-dark-toggler-border-color</span><span class="o">:</span>  <span class="nf">rgba</span><span class="p">(</span><span class="nv">$white</span><span class="o">,</span> <span class="mf">.1</span><span class="p">);</span>
+
+<span class="nv">$navbar-light-color</span><span class="o">:</span>                <span class="nf">rgba</span><span class="p">(</span><span class="nv">$black</span><span class="o">,</span> <span class="mf">.55</span><span class="p">);</span>
+<span class="nv">$navbar-light-hover-color</span><span class="o">:</span>          <span class="nf">rgba</span><span class="p">(</span><span class="nv">$black</span><span class="o">,</span> <span class="mf">.7</span><span class="p">);</span>
+<span class="nv">$navbar-light-active-color</span><span class="o">:</span>         <span class="nf">rgba</span><span class="p">(</span><span class="nv">$black</span><span class="o">,</span> <span class="mf">.9</span><span class="p">);</span>
+<span class="nv">$navbar-light-disabled-color</span><span class="o">:</span>       <span class="nf">rgba</span><span class="p">(</span><span class="nv">$black</span><span class="o">,</span> <span class="mf">.3</span><span class="p">);</span>
+<span class="nv">$navbar-light-toggler-icon-bg</span><span class="o">:</span>      <span class="sx">url(&#34;data:image/svg+xml,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 30 30&#39;&gt;&lt;path stroke=&#39;</span><span class="si">#{</span><span class="nv">$navbar-light-color</span><span class="si">}</span><span class="sx">&#39; stroke-linecap=&#39;round&#39; stroke-miterlimit=&#39;10&#39; stroke-width=&#39;2&#39; d=&#39;M4 7h22M4 15h22M4 23h22&#39;/&gt;&lt;/svg&gt;&#34;)</span><span class="p">;</span>
+<span class="nv">$navbar-light-toggler-border-color</span><span class="o">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$black</span><span class="o">,</span> <span class="mf">.1</span><span class="p">);</span>
+
+<span class="nv">$navbar-light-brand-color</span><span class="o">:</span>                <span class="nv">$navbar-light-active-color</span><span class="p">;</span>
+<span class="nv">$navbar-light-brand-hover-color</span><span class="o">:</span>          <span class="nv">$navbar-light-active-color</span><span class="p">;</span>
+<span class="nv">$navbar-dark-brand-color</span><span class="o">:</span>                 <span class="nv">$navbar-dark-active-color</span><span class="p">;</span>
+<span class="nv">$navbar-dark-brand-hover-color</span><span class="o">:</span>           <span class="nv">$navbar-dark-active-color</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="loop">Loop</h3>
+<p><a href="#responsive-behaviors">Responsive navbar expand/collapse classes</a> (e.g., <code>.navbar-expand-lg</code>) are combined with the <code>$breakpoints</code> map and generated through a loop in <code>scss/_navbar.scss</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="c1">// Generate series of `.navbar-expand-*` responsive classes for configuring
+</span><span class="c1">// where your navbar collapses.
+</span><span class="c1"></span><span class="nc">.navbar-expand</span> <span class="p">{</span>
+  <span class="k">@each</span> <span class="err">$</span><span class="nt">breakpoint</span> <span class="nt">in</span> <span class="nt">map-keys</span><span class="o">(</span><span class="err">$</span><span class="nt">grid-breakpoints</span><span class="o">)</span> <span class="p">{</span>
+    <span class="nv">$next</span><span class="o">:</span> <span class="nf">breakpoint-next</span><span class="p">(</span><span class="nv">$breakpoint</span><span class="o">,</span> <span class="nv">$grid-breakpoints</span><span class="p">);</span>
+    <span class="nv">$infix</span><span class="o">:</span> <span class="nf">breakpoint-infix</span><span class="p">(</span><span class="nv">$next</span><span class="o">,</span> <span class="nv">$grid-breakpoints</span><span class="p">);</span>
+
+    <span class="c1">// stylelint-disable-next-line scss/selector-no-union-class-name
+</span><span class="c1"></span>    <span class="k">&amp;</span><span class="nn">#</span><span class="p">{</span><span class="err">$</span><span class="nt">infix</span><span class="p">}</span> <span class="p">{</span>
+      <span class="k">@include</span><span class="nd"> media-breakpoint-up</span><span class="p">(</span><span class="nv">$next</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nt">flex-wrap</span><span class="nd">:</span> <span class="nt">nowrap</span><span class="p">;</span>
+        <span class="nt">justify-content</span><span class="nd">:</span> <span class="nt">flex-start</span><span class="p">;</span>
+
+        <span class="nc">.navbar-nav</span> <span class="p">{</span>
+          <span class="nt">flex-direction</span><span class="nd">:</span> <span class="nt">row</span><span class="p">;</span>
+
+          <span class="nc">.dropdown-menu</span> <span class="p">{</span>
+            <span class="nt">position</span><span class="nd">:</span> <span class="nt">absolute</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="nc">.nav-link</span> <span class="p">{</span>
+            <span class="nt">padding-right</span><span class="nd">:</span> <span class="err">$</span><span class="nt">navbar-nav-link-padding-x</span><span class="p">;</span>
+            <span class="nt">padding-left</span><span class="nd">:</span> <span class="err">$</span><span class="nt">navbar-nav-link-padding-x</span><span class="p">;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="nc">.navbar-nav-scroll</span> <span class="p">{</span>
+          <span class="nt">overflow</span><span class="nd">:</span> <span class="nt">visible</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nc">.navbar-collapse</span> <span class="p">{</span>
+          <span class="nt">display</span><span class="nd">:</span> <span class="nt">flex</span> <span class="o">!</span><span class="nt">important</span><span class="p">;</span> <span class="c1">// stylelint-disable-line declaration-no-important
+</span><span class="c1"></span>          <span class="nt">flex-basis</span><span class="nd">:</span> <span class="nt">auto</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nc">.navbar-toggler</span> <span class="p">{</span>
+          <span class="nt">display</span><span class="nd">:</span> <span class="nt">none</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
       </div>
     </main>
@@ -1336,11 +1436,11 @@ The animation effect of this component is dependent on the <code>prefers-reduced
       <li class="d-inline-block ms-3"><a href="/docs/5.0/about/overview/">About</a></li>
     </ul>
     <p class="mb-0">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
-    <p class="mb-0">Currently v5.0.0-beta2. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
+    <p class="mb-0">Currently v5.0.0-beta3. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>

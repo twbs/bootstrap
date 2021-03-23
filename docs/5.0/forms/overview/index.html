@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.80.0">
+<meta name="generator" content="Hugo 0.82.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -193,6 +193,7 @@
               <li><a href="/docs/5.0/getting-started/javascript/" class="d-inline-flex align-items-center rounded">JavaScript</a></li>
               <li><a href="/docs/5.0/getting-started/build-tools/" class="d-inline-flex align-items-center rounded">Build tools</a></li>
               <li><a href="/docs/5.0/getting-started/webpack/" class="d-inline-flex align-items-center rounded">Webpack</a></li>
+              <li><a href="/docs/5.0/getting-started/parcel/" class="d-inline-flex align-items-center rounded">Parcel</a></li>
               <li><a href="/docs/5.0/getting-started/accessibility/" class="d-inline-flex align-items-center rounded">Accessibility</a></li>
               <li><a href="/docs/5.0/getting-started/rfs/" class="d-inline-flex align-items-center rounded">RFS</a></li>
               <li><a href="/docs/5.0/getting-started/rtl/" class="d-inline-flex align-items-center rounded">RTL</a></li>
@@ -289,6 +290,7 @@
               <li><a href="/docs/5.0/components/modal/" class="d-inline-flex align-items-center rounded">Modal</a></li>
               <li><a href="/docs/5.0/components/navs-tabs/" class="d-inline-flex align-items-center rounded">Navs &amp; tabs</a></li>
               <li><a href="/docs/5.0/components/navbar/" class="d-inline-flex align-items-center rounded">Navbar</a></li>
+              <li><a href="/docs/5.0/components/offcanvas/" class="d-inline-flex align-items-center rounded">Offcanvas</a></li>
               <li><a href="/docs/5.0/components/pagination/" class="d-inline-flex align-items-center rounded">Pagination</a></li>
               <li><a href="/docs/5.0/components/popovers/" class="d-inline-flex align-items-center rounded">Popovers</a></li>
               <li><a href="/docs/5.0/components/progress/" class="d-inline-flex align-items-center rounded">Progress</a></li>
@@ -400,6 +402,11 @@
     <li><a href="#form-text">Form text</a></li>
     <li><a href="#disabled-forms">Disabled forms</a></li>
     <li><a href="#accessibility">Accessibility</a></li>
+    <li><a href="#sass">Sass</a>
+      <ul>
+        <li><a href="#variables">Variables</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
         </div>
@@ -617,6 +624,32 @@
 </ul>
 <p>If none of these are present, assistive technologies may resort to using the <code>placeholder</code> attribute as a fallback for the accessible name on <code>&lt;input&gt;</code> and <code>&lt;textarea&gt;</code> elements. The examples in this section provide a few suggested, case-specific approaches.</p>
 <p>While using visually hidden content (<code>.visually-hidden</code>, <code>aria-label</code>, and even <code>placeholder</code> content, which disappears once a form field has content) will benefit assistive technology users, a lack of visible label text may still be problematic for certain users. Some form of visible label is generally the best approach, both for accessibility and usability.</p>
+<h2 id="sass">Sass</h2>
+<p>Many form variables are set at a general level to be re-used and extended by individual form components. You&rsquo;ll see these most often as <code>$btn-input-*</code> and <code>$input-*</code> variables.</p>
+<h3 id="variables">Variables</h3>
+<p><code>$btn-input-*</code> variables are shared global variables between our <a href="/docs/5.0/components/buttons/">buttons</a> and our form components. You&rsquo;ll find these frequently reassigned as values to other component-specific variables.</p>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$input-btn-padding-y</span><span class="o">:</span>         <span class="mf">.375</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$input-btn-padding-x</span><span class="o">:</span>         <span class="mf">.75</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$input-btn-font-family</span><span class="o">:</span>       <span class="n">null</span><span class="p">;</span>
+<span class="nv">$input-btn-font-size</span><span class="o">:</span>         <span class="nv">$font-size-base</span><span class="p">;</span>
+<span class="nv">$input-btn-line-height</span><span class="o">:</span>       <span class="nv">$line-height-base</span><span class="p">;</span>
+
+<span class="nv">$input-btn-focus-width</span><span class="o">:</span>         <span class="mf">.25</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$input-btn-focus-color-opacity</span><span class="o">:</span> <span class="mf">.25</span><span class="p">;</span>
+<span class="nv">$input-btn-focus-color</span><span class="o">:</span>         <span class="nf">rgba</span><span class="p">(</span><span class="nv">$component-active-bg</span><span class="o">,</span> <span class="nv">$input-btn-focus-color-opacity</span><span class="p">);</span>
+<span class="nv">$input-btn-focus-blur</span><span class="o">:</span>          <span class="mi">0</span><span class="p">;</span>
+<span class="nv">$input-btn-focus-box-shadow</span><span class="o">:</span>    <span class="mi">0</span> <span class="mi">0</span> <span class="nv">$input-btn-focus-blur</span> <span class="nv">$input-btn-focus-width</span> <span class="nv">$input-btn-focus-color</span><span class="p">;</span>
+
+<span class="nv">$input-btn-padding-y-sm</span><span class="o">:</span>      <span class="mf">.25</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$input-btn-padding-x-sm</span><span class="o">:</span>      <span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$input-btn-font-size-sm</span><span class="o">:</span>      <span class="nv">$font-size-sm</span><span class="p">;</span>
+
+<span class="nv">$input-btn-padding-y-lg</span><span class="o">:</span>      <span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$input-btn-padding-x-lg</span><span class="o">:</span>      <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$input-btn-font-size-lg</span><span class="o">:</span>      <span class="nv">$font-size-lg</span><span class="p">;</span>
+
+<span class="nv">$input-btn-border-width</span><span class="o">:</span>      <span class="nv">$border-width</span><span class="p">;</span>
+</code></pre></div>
 
       </div>
     </main>
@@ -632,11 +665,11 @@
       <li class="d-inline-block ms-3"><a href="/docs/5.0/about/overview/">About</a></li>
     </ul>
     <p class="mb-0">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
-    <p class="mb-0">Currently v5.0.0-beta2. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
+    <p class="mb-0">Currently v5.0.0-beta3. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>

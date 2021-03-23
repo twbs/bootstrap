@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Documentation and examples for Bootstrap typography, including global settings, headings, body text, lists, and more.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.80.0">
+<meta name="generator" content="Hugo 0.82.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -193,6 +193,7 @@
               <li><a href="/docs/5.0/getting-started/javascript/" class="d-inline-flex align-items-center rounded">JavaScript</a></li>
               <li><a href="/docs/5.0/getting-started/build-tools/" class="d-inline-flex align-items-center rounded">Build tools</a></li>
               <li><a href="/docs/5.0/getting-started/webpack/" class="d-inline-flex align-items-center rounded">Webpack</a></li>
+              <li><a href="/docs/5.0/getting-started/parcel/" class="d-inline-flex align-items-center rounded">Parcel</a></li>
               <li><a href="/docs/5.0/getting-started/accessibility/" class="d-inline-flex align-items-center rounded">Accessibility</a></li>
               <li><a href="/docs/5.0/getting-started/rfs/" class="d-inline-flex align-items-center rounded">RFS</a></li>
               <li><a href="/docs/5.0/getting-started/rtl/" class="d-inline-flex align-items-center rounded">RTL</a></li>
@@ -289,6 +290,7 @@
               <li><a href="/docs/5.0/components/modal/" class="d-inline-flex align-items-center rounded">Modal</a></li>
               <li><a href="/docs/5.0/components/navs-tabs/" class="d-inline-flex align-items-center rounded">Navs &amp; tabs</a></li>
               <li><a href="/docs/5.0/components/navbar/" class="d-inline-flex align-items-center rounded">Navbar</a></li>
+              <li><a href="/docs/5.0/components/offcanvas/" class="d-inline-flex align-items-center rounded">Offcanvas</a></li>
               <li><a href="/docs/5.0/components/pagination/" class="d-inline-flex align-items-center rounded">Pagination</a></li>
               <li><a href="/docs/5.0/components/popovers/" class="d-inline-flex align-items-center rounded">Popovers</a></li>
               <li><a href="/docs/5.0/components/progress/" class="d-inline-flex align-items-center rounded">Progress</a></li>
@@ -421,6 +423,12 @@
       </ul>
     </li>
     <li><a href="#responsive-font-sizes">Responsive font sizes</a></li>
+    <li><a href="#sass">Sass</a>
+      <ul>
+        <li><a href="#variables">Variables</a></li>
+        <li><a href="#mixins">Mixins</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
         </div>
@@ -762,6 +770,54 @@
 <span class="p">&lt;/</span><span class="nt">dl</span><span class="p">&gt;</span></code></pre></div>
 <h2 id="responsive-font-sizes">Responsive font sizes</h2>
 <p>In Bootstrap 5, we&rsquo;ve enabled responsive font sizes by default, allowing text to scale more naturally across device and viewport sizes. Have a look at the <a href="/docs/5.0/getting-started/rfs/">RFS page</a> to find out how this works.</p>
+<h2 id="sass">Sass</h2>
+<h3 id="variables">Variables</h3>
+<p>Headings have some dedicated variables for sizing and spacing.</p>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$headings-margin-bottom</span><span class="o">:</span>      <span class="nv">$spacer</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$headings-font-family</span><span class="o">:</span>        <span class="n">null</span><span class="p">;</span>
+<span class="nv">$headings-font-style</span><span class="o">:</span>         <span class="n">null</span><span class="p">;</span>
+<span class="nv">$headings-font-weight</span><span class="o">:</span>        <span class="mi">500</span><span class="p">;</span>
+<span class="nv">$headings-line-height</span><span class="o">:</span>        <span class="mi">1</span><span class="mf">.2</span><span class="p">;</span>
+<span class="nv">$headings-color</span><span class="o">:</span>              <span class="n">null</span><span class="p">;</span>
+</code></pre></div>
+<p>Miscellaneous typography elements covered here and in <a href="/docs/5.0/content/reboot/">Reboot</a> also have dedicated variables.</p>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$lead-font-size</span><span class="o">:</span>              <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.25</span><span class="p">;</span>
+<span class="nv">$lead-font-weight</span><span class="o">:</span>            <span class="mi">300</span><span class="p">;</span>
+
+<span class="nv">$small-font-size</span><span class="o">:</span>             <span class="mf">.875</span><span class="kt">em</span><span class="p">;</span>
+
+<span class="nv">$sub-sup-font-size</span><span class="o">:</span>           <span class="mf">.75</span><span class="kt">em</span><span class="p">;</span>
+
+<span class="nv">$text-muted</span><span class="o">:</span>                  <span class="nv">$gray-600</span><span class="p">;</span>
+
+<span class="nv">$initialism-font-size</span><span class="o">:</span>        <span class="nv">$small-font-size</span><span class="p">;</span>
+
+<span class="nv">$blockquote-margin-y</span><span class="o">:</span>         <span class="nv">$spacer</span><span class="p">;</span>
+<span class="nv">$blockquote-font-size</span><span class="o">:</span>        <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.25</span><span class="p">;</span>
+<span class="nv">$blockquote-footer-color</span><span class="o">:</span>     <span class="nv">$gray-600</span><span class="p">;</span>
+<span class="nv">$blockquote-footer-font-size</span><span class="o">:</span> <span class="nv">$small-font-size</span><span class="p">;</span>
+
+<span class="nv">$hr-margin-y</span><span class="o">:</span>                 <span class="nv">$spacer</span><span class="p">;</span>
+<span class="nv">$hr-color</span><span class="o">:</span>                    <span class="no">inherit</span><span class="p">;</span>
+<span class="nv">$hr-height</span><span class="o">:</span>                   <span class="nv">$border-width</span><span class="p">;</span>
+<span class="nv">$hr-opacity</span><span class="o">:</span>                  <span class="mf">.25</span><span class="p">;</span>
+
+<span class="nv">$legend-margin-bottom</span><span class="o">:</span>        <span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$legend-font-size</span><span class="o">:</span>            <span class="mi">1</span><span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
+<span class="nv">$legend-font-weight</span><span class="o">:</span>          <span class="n">null</span><span class="p">;</span>
+
+<span class="nv">$mark-padding</span><span class="o">:</span>                <span class="mf">.2</span><span class="kt">em</span><span class="p">;</span>
+
+<span class="nv">$dt-font-weight</span><span class="o">:</span>              <span class="nv">$font-weight-bold</span><span class="p">;</span>
+
+<span class="nv">$nested-kbd-font-weight</span><span class="o">:</span>      <span class="nv">$font-weight-bold</span><span class="p">;</span>
+
+<span class="nv">$list-inline-padding</span><span class="o">:</span>         <span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
+
+<span class="nv">$mark-bg</span><span class="o">:</span>                     <span class="mh">#fcf8e3</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="mixins">Mixins</h3>
+<p>There are no dedicated mixins for typography, but Bootstrap does use <a href="/docs/5.0/getting-started/rfs/">Responsive Font Sizing (RFS)</a>.</p>
 
       </div>
     </main>
@@ -777,11 +833,11 @@
       <li class="d-inline-block ms-3"><a href="/docs/5.0/about/overview/">About</a></li>
     </ul>
     <p class="mb-0">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
-    <p class="mb-0">Currently v5.0.0-beta2. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
+    <p class="mb-0">Currently v5.0.0-beta3. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
