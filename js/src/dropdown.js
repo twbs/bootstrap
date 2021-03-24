@@ -218,6 +218,13 @@ class Dropdown extends BaseComponent {
       return
     }
 
+    // If this is a touch-enabled device we remove the extra
+    // empty mouseover listeners we added for iOS support
+    if ('ontouchstart' in document.documentElement) {
+      [].concat(...document.body.children)
+        .forEach(elem => EventHandler.off(elem, 'mouseover', null, noop()))
+    }
+
     if (this._popper) {
       this._popper.destroy()
     }
