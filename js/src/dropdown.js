@@ -488,6 +488,12 @@ class Dropdown extends BaseComponent {
       return
     }
 
+    const isActive = this.classList.contains(CLASS_NAME_SHOW)
+
+    if (!isActive && event.key === ESCAPE_KEY) {
+      return
+    }
+
     event.preventDefault()
     event.stopPropagation()
 
@@ -495,18 +501,16 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    const isActive = this.classList.contains(CLASS_NAME_SHOW)
+    const getButton = () => this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
 
     if (event.key === ESCAPE_KEY) {
-      const button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
-      button.focus()
+      getButton().focus()
       Dropdown.clearMenus()
       return
     }
 
     if (!isActive && (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY)) {
-      const button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
-      button.click()
+      getButton().click()
       return
     }
 
