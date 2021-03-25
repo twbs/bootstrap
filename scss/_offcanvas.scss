@@ -36,6 +36,11 @@
   overflow-y: auto;
 }
 
+.offcanvas-footer {
+  padding: $offcanvas-padding-y $offcanvas-padding-x;
+  border-top: $offcanvas-border-width solid $offcanvas-border-color;
+}
+
 .offcanvas-start {
   top: 0;
   left: 0;
