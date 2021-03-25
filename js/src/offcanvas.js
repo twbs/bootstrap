@@ -8,7 +8,6 @@
 import {
   defineJQueryPlugin,
   getElementFromSelector,
-  getSelectorFromElement,
   getTransitionDurationFromElement,
   isDisabled,
   isVisible,
@@ -124,6 +123,7 @@ class Offcanvas extends BaseComponent {
 
     const completeCallBack = () => {
       this._element.classList.remove(CLASS_NAME_TOGGLING)
+      this._listenClicksOutsideElement()
       EventHandler.trigger(this._element, EVENT_SHOWN, { relatedTarget })
       this._enforceFocusOnElement(this._element)
     }
@@ -201,11 +201,15 @@ class Offcanvas extends BaseComponent {
         this.hide()
       }
     })
+  }
 
-    EventHandler.on(document, EVENT_CLICK_DATA_API, event => {
-      const target = SelectorEngine.findOne(getSelectorFromElement(event.target))
-      if (!this._element.contains(event.target) && target !== this._element) {
+  _listenClicksOutsideElement() {
+    // add click handler to close open offcanvas
+    EventHandler.one(document, EVENT_CLICK_DATA_API, event => {
+      if (!this._element.contains(event.target) && event.target !== this._element) {
         this.hide()
+      } else {
+        this._listenClicksOutsideElement()
       }
     })
   }

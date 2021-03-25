@@ -269,6 +269,33 @@ describe('Offcanvas', () => {
       offCanvas.show()
     })
 
+    it('should open an offcanvas if an image is inside toggle and hide it if click on an outside element', done => {
+      fixtureEl.innerHTML = [
+        '<div id="wrapper">' +
+        '  <button data-bs-toggle="offcanvas" data-bs-target="#offcanvas" >' +
+        '    <img src=""/>' +
+        '  </button>',
+        '  <div id="offcanvas" class="offcanvas"></div>' +
+        '</div>'
+      ].join('')
+
+      const offCanvasEl = fixtureEl.querySelector('#offcanvas')
+      const img = fixtureEl.querySelector('img')
+      const wrapper = fixtureEl.querySelector('#wrapper')
+
+      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+        expect(offCanvasEl.classList.contains('show')).toEqual(true)
+        wrapper.click()
+      })
+
+      offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+        expect(offCanvasEl.classList.contains('show')).toEqual(false)
+        done()
+      })
+
+      img.click()
+    })
+
     it('on window load, should make visible an offcanvas element, if its markup contains class "show"', done => {
       fixtureEl.innerHTML = '<div class="offcanvas show"></div>'
 
