@@ -16,6 +16,8 @@
 
 .offcanvas-header {
   display: flex;
+  flex-shrink: 0;
+  align-items: center;
   justify-content: space-between;
   padding: $offcanvas-padding-y $offcanvas-padding-x;
 
