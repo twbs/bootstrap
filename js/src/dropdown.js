@@ -443,6 +443,31 @@ class Dropdown extends BaseComponent {
     }
   }
 
+  static selectMenuItem(parent, event) {
+    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, parent).filter(isVisible)
+
+    if (!items.length) {
+      return
+    }
+
+    let index = items.indexOf(event.target)
+
+    // Up
+    if (event.key === ARROW_UP_KEY && index > 0) {
+      index--
+    }
+
+    // Down
+    if (event.key === ARROW_DOWN_KEY && index < items.length - 1) {
+      index++
+    }
+
+    // index is -1 if the first keydown is an ArrowUp
+    index = index === -1 ? 0 : index
+
+    items[index].focus()
+  }
+
   static getParentFromElement(element) {
     return getElementFromSelector(element) || element.parentNode
   }
@@ -470,7 +495,6 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    const parent = Dropdown.getParentFromElement(this)
     const isActive = this.classList.contains(CLASS_NAME_SHOW)
 
     if (event.key === ESCAPE_KEY) {
@@ -491,28 +515,7 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, parent).filter(isVisible)
-
-    if (!items.length) {
-      return
-    }
-
-    let index = items.indexOf(event.target)
-
-    // Up
-    if (event.key === ARROW_UP_KEY && index > 0) {
-      index--
-    }
-
-    // Down
-    if (event.key === ARROW_DOWN_KEY && index < items.length - 1) {
-      index++
-    }
-
-    // index is -1 if the first keydown is an ArrowUp
-    index = index === -1 ? 0 : index
-
-    items[index].focus()
+    Dropdown.selectMenuItem(Dropdown.getParentFromElement(this), event)
   }
 }
 
