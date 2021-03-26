@@ -8,6 +8,7 @@ on:
 jobs:
   update_release_draft:
     runs-on: ubuntu-latest
+    if: github.repository == 'twbs/bootstrap'
     steps:
       - uses: release-drafter/release-drafter@v5
         env:

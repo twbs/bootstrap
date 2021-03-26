@@ -7,11 +7,30 @@ aliases: "/migration/"
 toc: true
 ---
 
+## v5.0.0-beta3
+
+### Components
+
+- Added new [`.list-group-numbered` modifier]({{< docsref "/components/list-group#numbered" >}}) to list groups.
+
+### JavaScript
+
+- All plugins can now accept a CSS selector as the first argument. You can either pass a DOM element or any valid CSS selector to create a new instance of the plugin:
+
+  ```js
+  var modal = new bootstrap.Modal('#myModal')
+  var dropdown = new bootstrap.Dropdown('[data-bs-toggle="dropdown"]')
+  ```
+
+- Dropped `flip` option for dropdown plugin in favor of native popper configuration. You can now disable the flipping behavior by passing an empty array for [`fallbackPlacements`](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements) option in [flip](https://popper.js.org/docs/v2/modifiers/flip/) modifier.
+
+### Utilities
+
+- Dropped the `0` entry in `$border-widths` map to remove the duplicated `.border-0` class.
+
 ## v5.0.0-beta2
 
-### Sass
-
-#### Utilities
+### Utilities
 
 - Renamed `--aspect-ratio` to `--bs-aspect-ratio` to be consistent with other custom properties.
 - Extended the `.visually-hidden-focusable` helper to also work on containers, using `:focus-within`.
@@ -20,7 +39,11 @@ toc: true
 
 ### JavaScript
 
+- Restored `offset` option for Dropdown, Popover and Tooltip plugins.
 - The default value for the `fallbackPlacements` is changed to `['top', 'right', 'bottom', 'left']` for better placement of popper elements.
+- All the events for the dropdown are now triggered on the dropdown toggle button and then bubbled up to the parent element.
+- Dropdown menus now have a `data-bs-popper="static"` attribute set when the positioning of the dropdown is static and `data-bs-popper="none"` when dropdown is in the navbar. This is added by our JavaScript and helps us use custom position styles without interfering with Popper's positioning.
+- `popperConfig` can be passed as a function that accepts the Bootstrap's default Popper config as an argument, so that you can merge this default configuration in your way.
 
 ## v5.0.0-beta1
 
@@ -316,7 +339,7 @@ We've updated the color system that powers Bootstrap to improve color contrast a
 
 Changes to any layout tools and our grid system.
 
-- Dropped the `.media` component as it can be built with utility classes. [See #28265](https://github.com/twbs/bootstrap/pull/28265).
+- Dropped the `.media` component as it can be built with utility classes. [See #28265](https://github.com/twbs/bootstrap/pull/28265) and the [flex utilities page for an example]({{< docsref "/utilities/flex#media-object" >}}).
 - Remove `position: relative` from grid columns.
 - The horizontal padding is added to the direct children in a row instead of the columns themselves.
   - This simplifies our codebase.
@@ -324,6 +347,7 @@ Changes to any layout tools and our grid system.
 - The responsive gutter classes can be used to control the gutter width in horizontal, vertical or both directions.
 - The gutter width is now set in `rem` and decreased from `30px` to `1.5rem` (24px).
 - `bootstrap-grid.css` now only applies `box-sizing: border-box` to the column instead of resetting the global box-sizing. This way the grid system can be used, even if `box-sizing: border-box` is not applied to each element.
+- Removed `.no-gutters` in favor of new gutter spacing classes. Use `.g-0` instead. [Read the gutter docs for more details.]({{< docsref "/layout/gutters" >}})
 
 ### Content, Reboot, etc
 
@@ -374,6 +398,7 @@ Changes to Reboot, typography, tables, and more.
 - Dropped support for `.form-control-plaintext` inside `.input-group`s.
 - Dropped `.input-group-append` and `.input-group-prepend`. You can now just add buttons and `.input-group-text` as direct children of the input groups.
 - Form labels now require the `.form-label` class. Sass variables are now available to style form labels to your needs. [See #30476](https://github.com/twbs/bootstrap/pull/30476)
+- `.form-text` no longer sets `display`, but does set `color` and `font-size`. So instead of `<small class="form-text text-muted">` you should now use `<div class="form-text">`.
 
 ### Components
 
