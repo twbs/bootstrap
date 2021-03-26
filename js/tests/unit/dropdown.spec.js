@@ -33,7 +33,31 @@ describe('Dropdown', () => {
     })
   })
 
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(Dropdown.DATA_KEY).toEqual('bs.dropdown')
+    })
+  })
+
   describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdownBySelector = new Dropdown('[data-bs-toggle="dropdown"]')
+      const dropdownByElement = new Dropdown(btnDropdown)
+
+      expect(dropdownBySelector._element).toEqual(btnDropdown)
+      expect(dropdownByElement._element).toEqual(btnDropdown)
+    })
+
     it('should add a listener on trigger which do not have data-bs-toggle="dropdown"', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
@@ -121,6 +145,28 @@ describe('Dropdown', () => {
 
       const popperConfig = dropdown._getPopperConfig()
 
+      expect(popperConfig.placement).toEqual('left')
+    })
+
+    it('should allow to pass config to Popper with `popperConfig` as a function', () => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-placement="right" >Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Secondary link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const getPopperConfig = jasmine.createSpy('getPopperConfig').and.returnValue({ placement: 'left' })
+      const dropdown = new Dropdown(btnDropdown, {
+        popperConfig: getPopperConfig
+      })
+
+      const popperConfig = dropdown._getPopperConfig()
+
+      expect(getPopperConfig).toHaveBeenCalled()
       expect(popperConfig.placement).toEqual('left')
     })
   })
@@ -862,16 +908,21 @@ describe('Dropdown', () => {
       ].join('')
 
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      spyOn(btnDropdown, 'addEventListener').and.callThrough()
+      spyOn(btnDropdown, 'removeEventListener').and.callThrough()
+
       const dropdown = new Dropdown(btnDropdown)
 
       expect(dropdown._popper).toBeNull()
       expect(dropdown._menu).toBeDefined()
       expect(dropdown._element).toBeDefined()
+      expect(btnDropdown.addEventListener).toHaveBeenCalledWith('click', jasmine.any(Function), jasmine.any(Boolean))
 
       dropdown.dispose()
 
       expect(dropdown._menu).toBeNull()
       expect(dropdown._element).toBeNull()
+      expect(btnDropdown.removeEventListener).toHaveBeenCalledWith('click', jasmine.any(Function), jasmine.any(Boolean))
     })
 
     it('should dispose dropdown with Popper', () => {
@@ -969,13 +1020,13 @@ describe('Dropdown', () => {
         showEventTriggered = true
       })
 
-      btnDropdown.addEventListener('shown.bs.dropdown', e => {
+      btnDropdown.addEventListener('shown.bs.dropdown', e => setTimeout(() => {
         expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         expect(showEventTriggered).toEqual(true)
         expect(e.relatedTarget).toEqual(btnDropdown)
         document.body.click()
-      })
+      }))
 
       btnDropdown.addEventListener('hide.bs.dropdown', () => {
         hideEventTriggered = true
@@ -1061,7 +1112,7 @@ describe('Dropdown', () => {
 
       btnDropdown.addEventListener('shown.bs.dropdown', () => {
         // Popper adds this attribute when we use it
-        expect(dropdownMenu.getAttribute('x-placement')).toEqual(null)
+        expect(dropdownMenu.getAttribute('data-popper-placement')).toEqual(null)
         done()
       })
 
@@ -1731,5 +1782,52 @@ describe('Dropdown', () => {
     })
 
     triggerDropdown.dispatchEvent(keydown)
+  })
+
+  it('should allow `data-bs-toggle="dropdown"` click events to bubble up', () => {
+    fixtureEl.innerHTML = [
+      '<div class="dropdown">',
+      '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+      '  <div class="dropdown-menu">',
+      '    <a class="dropdown-item" href="#">Secondary link</a>',
+      '  </div>',
+      '</div>'
+    ].join('')
+
+    const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+    const clickListener = jasmine.createSpy('clickListener')
+    const delegatedClickListener = jasmine.createSpy('delegatedClickListener')
+
+    btnDropdown.addEventListener('click', clickListener)
+    document.addEventListener('click', delegatedClickListener)
+
+    btnDropdown.click()
+
+    expect(clickListener).toHaveBeenCalled()
+    expect(delegatedClickListener).toHaveBeenCalled()
+  })
+
+  it('should open the dropdown when clicking the child element inside `data-bs-toggle="dropdown"`', done => {
+    fixtureEl.innerHTML = [
+      '<div class="container">',
+      '  <div class="dropdown">',
+      '    <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><span id="childElement">Dropdown</span></button>',
+      '    <div class="dropdown-menu">',
+      '      <a class="dropdown-item" href="#subMenu">Sub menu</a>',
+      '    </div>',
+      '  </div>',
+      '</div>'
+    ].join('')
+
+    const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+    const childElement = fixtureEl.querySelector('#childElement')
+
+    btnDropdown.addEventListener('shown.bs.dropdown', () => setTimeout(() => {
+      expect(btnDropdown.classList.contains('show')).toEqual(true)
+      expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
+      done()
+    }))
+
+    childElement.click()
   })
 })

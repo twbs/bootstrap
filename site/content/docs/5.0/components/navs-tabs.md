@@ -304,6 +304,12 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
 </ul>
 {{< /example >}}
 
+## Sass
+
+### Variables
+
+{{< scss-docs name="nav-variables" file="scss/_variables.scss" >}}
+
 ## JavaScript behavior
 
 Use the tab JavaScript plugin—include it individually or through the compiled `bootstrap.js` file—to extend our navigational tabs and pills to create tabbable panes of local content.
@@ -471,7 +477,7 @@ And with vertical pills.
 <div class="d-flex align-items-start">
   <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
     <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
-    <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</buttona>
+    <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
     <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
     <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
   </div>
@@ -501,7 +507,7 @@ You can activate a tab or pill navigation without writing any JavaScript by simp
     <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">Messages</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="settings-tab" data-bs-toggle="tab" hdata-bs-targetref="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Settings</button>
+    <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Settings</button>
   </li>
 </ul>
 

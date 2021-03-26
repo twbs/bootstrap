@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta1): util/index.js
+ * Bootstrap (v5.0.0-beta3): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -153,6 +153,22 @@ const isVisible = element => {
   return false
 }
 
+const isDisabled = element => {
+  if (!element || element.nodeType !== Node.ELEMENT_NODE) {
+    return true
+  }
+
+  if (element.classList.contains('disabled')) {
+    return true
+  }
+
+  if (typeof element.disabled !== 'undefined') {
+    return element.disabled
+  }
+
+  return element.hasAttribute('disabled') && element.getAttribute('disabled') !== 'false'
+}
+
 const findShadowRoot = element => {
   if (!document.documentElement.attachShadow) {
     return null
@@ -198,7 +214,7 @@ const onDOMContentLoaded = callback => {
   }
 }
 
-const isRTL = document.documentElement.dir === 'rtl'
+const isRTL = () => document.documentElement.dir === 'rtl'
 
 const defineJQueryPlugin = (name, plugin) => {
   onDOMContentLoaded(() => {
@@ -226,6 +242,7 @@ export {
   emulateTransitionEnd,
   typeCheckConfig,
   isVisible,
+  isDisabled,
   findShadowRoot,
   noop,
   reflow,

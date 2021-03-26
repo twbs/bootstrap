@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta1): dropdown.js
+ * Bootstrap (v5.0.0-beta3): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -59,21 +59,19 @@ const CLASS_NAME_DROPSTART = 'dropstart'
 const CLASS_NAME_NAVBAR = 'navbar'
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]'
-const SELECTOR_FORM_CHILD = '.dropdown form'
 const SELECTOR_MENU = '.dropdown-menu'
 const SELECTOR_NAVBAR_NAV = '.navbar-nav'
 const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
 
-const PLACEMENT_TOP = isRTL ? 'top-end' : 'top-start'
-const PLACEMENT_TOPEND = isRTL ? 'top-start' : 'top-end'
-const PLACEMENT_BOTTOM = isRTL ? 'bottom-end' : 'bottom-start'
-const PLACEMENT_BOTTOMEND = isRTL ? 'bottom-start' : 'bottom-end'
-const PLACEMENT_RIGHT = isRTL ? 'left-start' : 'right-start'
-const PLACEMENT_LEFT = isRTL ? 'right-start' : 'left-start'
+const PLACEMENT_TOP = isRTL() ? 'top-end' : 'top-start'
+const PLACEMENT_TOPEND = isRTL() ? 'top-start' : 'top-end'
+const PLACEMENT_BOTTOM = isRTL() ? 'bottom-end' : 'bottom-start'
+const PLACEMENT_BOTTOMEND = isRTL() ? 'bottom-start' : 'bottom-end'
+const PLACEMENT_RIGHT = isRTL() ? 'left-start' : 'right-start'
+const PLACEMENT_LEFT = isRTL() ? 'right-start' : 'left-start'
 
 const Default = {
   offset: [0, 2],
-  flip: true,
   boundary: 'clippingParents',
   reference: 'toggle',
   display: 'dynamic',
@@ -82,11 +80,10 @@ const Default = {
 
 const DefaultType = {
   offset: '(array|string|function)',
-  flip: 'boolean',
   boundary: '(string|element)',
   reference: '(string|element|object)',
   display: 'string',
-  popperConfig: '(null|object)'
+  popperConfig: '(null|object|function)'
 }
 
 /**
@@ -181,11 +178,11 @@ class Dropdown extends BaseComponent {
       const popperConfig = this._getPopperConfig()
       const isDisplayStatic = popperConfig.modifiers.find(modifier => modifier.name === 'applyStyles' && modifier.enabled === false)
 
+      this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
+
       if (isDisplayStatic) {
         Manipulator.setDataAttribute(this._menu, 'popper', 'static')
       }
-
-      this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
     }
 
     // If this is a touch-enabled device we add extra
@@ -232,7 +229,6 @@ class Dropdown extends BaseComponent {
   }
 
   dispose() {
-    super.dispose()
     EventHandler.off(this._element, EVENT_KEY)
     this._menu = null
 
@@ -240,6 +236,8 @@ class Dropdown extends BaseComponent {
       this._popper.destroy()
       this._popper = null
     }
+
+    super.dispose()
   }
 
   update() {
@@ -254,7 +252,6 @@ class Dropdown extends BaseComponent {
   _addEventListeners() {
     EventHandler.on(this._element, EVENT_CLICK, event => {
       event.preventDefault()
-      event.stopPropagation()
       this.toggle()
     })
   }
@@ -322,12 +319,11 @@ class Dropdown extends BaseComponent {
   }
 
   _getPopperConfig() {
-    const popperConfig = {
+    const defaultBsPopperConfig = {
       placement: this._getPlacement(),
       modifiers: [{
         name: 'preventOverflow',
         options: {
-          altBoundary: this._config.flip,
           boundary: this._config.boundary
         }
       },
@@ -341,22 +337,22 @@ class Dropdown extends BaseComponent {
 
     // Disable Popper if we have a static display
     if (this._config.display === 'static') {
-      popperConfig.modifiers = [{
+      defaultBsPopperConfig.modifiers = [{
         name: 'applyStyles',
         enabled: false
       }]
     }
 
     return {
-      ...popperConfig,
-      ...this._config.popperConfig
+      ...defaultBsPopperConfig,
+      ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig)
     }
   }
 
   // Static
 
   static dropdownInterface(element, config) {
-    let data = Data.getData(element, DATA_KEY)
+    let data = Data.get(element, DATA_KEY)
     const _config = typeof config === 'object' ? config : null
 
     if (!data) {
@@ -379,14 +375,20 @@ class Dropdown extends BaseComponent {
   }
 
   static clearMenus(event) {
-    if (event && (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY))) {
-      return
+    if (event) {
+      if (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY)) {
+        return
+      }
+
+      if (/input|select|textarea|form/i.test(event.target.tagName)) {
+        return
+      }
     }
 
     const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
 
     for (let i = 0, len = toggles.length; i < len; i++) {
-      const context = Data.getData(toggles[i], DATA_KEY)
+      const context = Data.get(toggles[i], DATA_KEY)
       const relatedTarget = {
         relatedTarget: toggles[i]
       }
@@ -404,11 +406,16 @@ class Dropdown extends BaseComponent {
         continue
       }
 
-      if (event && ((event.type === 'click' &&
-          /input|textarea/i.test(event.target.tagName)) ||
-          (event.type === 'keyup' && event.key === TAB_KEY)) &&
-          dropdownMenu.contains(event.target)) {
-        continue
+      if (event) {
+        // Don't close the menu if the clicked element or one of its parents is the dropdown button
+        if ([context._element].some(element => event.composedPath().includes(element))) {
+          continue
+        }
+
+        // Tab navigation through the dropdown menu shouldn't close the menu
+        if (event.type === 'keyup' && event.key === TAB_KEY && dropdownMenu.contains(event.target)) {
+          continue
+        }
       }
 
       const hideEvent = EventHandler.trigger(toggles[i], EVENT_HIDE, relatedTarget)
@@ -521,10 +528,8 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   event.preventDefault()
-  event.stopPropagation()
-  Dropdown.dropdownInterface(this, 'toggle')
+  Dropdown.dropdownInterface(this)
 })
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stopPropagation())
 
 /**
  * ------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta1): index.umd.js
+ * Bootstrap (v5.0.0-beta3): index.umd.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -11,6 +11,7 @@ import Carousel from './src/carousel'
 import Collapse from './src/collapse'
 import Dropdown from './src/dropdown'
 import Modal from './src/modal'
+import Offcanvas from './src/offcanvas'
 import Popover from './src/popover'
 import ScrollSpy from './src/scrollspy'
 import Tab from './src/tab'
@@ -24,6 +25,7 @@ export default {
   Collapse,
   Dropdown,
   Modal,
+  Offcanvas,
   Popover,
   ScrollSpy,
   Tab,

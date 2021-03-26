@@ -77,6 +77,18 @@ If your control element is targeting a single collapsible element – i.e. the `
 
 Note that Bootstrap's current implementation does not cover the various *optional* keyboard interactions described in the [WAI-ARIA Authoring Practices 1.1 accordion pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion) - you will need to include these yourself with custom JavaScript.
 
+## Sass
+
+### Variables
+
+{{< scss-docs name="collapse-transition" file="scss/_variables.scss" >}}
+
+### Classes
+
+Collapse transition classes can be found in `scss/_transitions.scss` as these are shared across multiple components (collapse and accordion).
+
+{{< scss-docs name="collapse-classes" file="scss/_transitions.scss" >}}
+
 ## Usage
 
 The collapse plugin utilizes a few classes to handle the heavy lifting:

@@ -20,6 +20,22 @@ describe('Tab', () => {
     })
   })
 
+  describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav"><li><a href="#home" role="tab">Home</a></li></ul>',
+        '<ul><li id="home"></li></ul>'
+      ].join('')
+
+      const tabEl = fixtureEl.querySelector('[href="#home"]')
+      const tabBySelector = new Tab('[href="#home"]')
+      const tabByElement = new Tab(tabEl)
+
+      expect(tabBySelector._element).toEqual(tabEl)
+      expect(tabByElement._element).toEqual(tabEl)
+    })
+  })
+
   describe('show', () => {
     it('should activate element by tab id (using buttons, the preferred semantic way)', done => {
       fixtureEl.innerHTML = [
@@ -160,7 +176,7 @@ describe('Tab', () => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
         '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#home" class="nav-link active" role="tab" aria-selected="true">Home</button></li>',
-        '  <li class="nav-item" role="presentation"><button type="button" href="#profile" class="nav-link" role="tab">Profile</button></li>',
+        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#profile" class="nav-link" role="tab">Profile</button></li>',
         '</ul>',
         '<div class="tab-content">',
         '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
@@ -182,11 +198,11 @@ describe('Tab', () => {
       }, 30)
     })
 
-    it('should not fire shown when tab is disabled', done => {
+    it('should not fire shown when tab has disabled attribute', done => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
-        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#home" class="nav-link active" role="tab"  aria-selected="true">Home</button></li>',
-        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#profile" class="nav-link disabled" role="tab">Profile</button></li>',
+        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#home" class="nav-link active" role="tab" aria-selected="true">Home</button></li>',
+        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#profile" class="nav-link" disabled role="tab">Profile</button></li>',
         '</ul>',
         '<div class="tab-content">',
         '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
@@ -194,7 +210,33 @@ describe('Tab', () => {
         '</div>'
       ].join('')
 
-      const triggerDisabled = fixtureEl.querySelector('button.disabled')
+      const triggerDisabled = fixtureEl.querySelector('button[disabled]')
+      const tab = new Tab(triggerDisabled)
+
+      triggerDisabled.addEventListener('shown.bs.tab', () => {
+        throw new Error('should not trigger shown event')
+      })
+
+      tab.show()
+      setTimeout(() => {
+        expect().nothing()
+        done()
+      }, 30)
+    })
+
+    it('should not fire shown when tab has disabled class', done => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav nav-tabs" role="tablist">',
+        '  <li class="nav-item" role="presentation"><a href="#home" class="nav-link active" role="tab" aria-selected="true">Home</a></li>',
+        '  <li class="nav-item" role="presentation"><a href="#profile" class="nav-link disabled" role="tab">Profile</a></li>',
+        '</ul>',
+        '<div class="tab-content">',
+        '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
+        '  <div class="tab-pane" id="profile" role="tabpanel"></div>',
+        '</div>'
+      ].join('')
+
+      const triggerDisabled = fixtureEl.querySelector('a.disabled')
       const tab = new Tab(triggerDisabled)
 
       triggerDisabled.addEventListener('shown.bs.tab', () => {
