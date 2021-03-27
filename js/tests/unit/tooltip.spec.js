@@ -708,6 +708,100 @@ describe('Tooltip', () => {
       tooltipEl.dispatchEvent(createEvent('mouseover'))
     })
 
+    it('should not hide tooltip if leave event occurs and interaction remains inside trigger', done => {
+      fixtureEl.innerHTML = [
+        '<a href="#" rel="tooltip" title="Another tooltip">',
+        '<b>Trigger</b>',
+        'the tooltip',
+        '</a>'
+      ]
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+      const triggerChild = tooltipEl.querySelector('b')
+
+      spyOn(tooltip, 'hide').and.callThrough()
+
+      tooltipEl.addEventListener('mouseover', () => {
+        const moveMouseToChildEvent = createEvent('mouseout')
+        Object.defineProperty(moveMouseToChildEvent, 'relatedTarget', {
+          value: triggerChild
+        })
+
+        tooltipEl.dispatchEvent(moveMouseToChildEvent)
+      })
+
+      tooltipEl.addEventListener('mouseout', () => {
+        expect(tooltip.hide).not.toHaveBeenCalled()
+        done()
+      })
+
+      tooltipEl.dispatchEvent(createEvent('mouseover'))
+    })
+
+    it('should properly maintain tooltip state if leave event occurs and enter event occurs during hide transition', done => {
+      // Style this tooltip to give it plenty of room for popper to do what it wants
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip" data-bs-placement="top" style="position:fixed;left:50%;top:50%;">Trigger</a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      spyOn(window, 'getComputedStyle').and.returnValue({
+        transitionDuration: '0.15s',
+        transitionDelay: '0s'
+      })
+
+      setTimeout(() => {
+        expect(tooltip._popper).not.toBeNull()
+        expect(tooltip.getTipElement().getAttribute('data-popper-placement')).toBe('top')
+        tooltipEl.dispatchEvent(createEvent('mouseout'))
+
+        setTimeout(() => {
+          expect(tooltip.getTipElement().classList.contains('show')).toEqual(false)
+          tooltipEl.dispatchEvent(createEvent('mouseover'))
+        }, 100)
+
+        setTimeout(() => {
+          expect(tooltip._popper).not.toBeNull()
+          expect(tooltip.getTipElement().getAttribute('data-popper-placement')).toBe('top')
+          done()
+        }, 200)
+      }, 0)
+
+      tooltipEl.dispatchEvent(createEvent('mouseover'))
+    })
+
+    it('should only trigger inserted event if a new tooltip element was created', done => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      spyOn(window, 'getComputedStyle').and.returnValue({
+        transitionDuration: '0.15s',
+        transitionDelay: '0s'
+      })
+
+      const insertedFunc = jasmine.createSpy()
+      tooltipEl.addEventListener('inserted.bs.tooltip', insertedFunc)
+
+      setTimeout(() => {
+        expect(insertedFunc).toHaveBeenCalledTimes(1)
+        tooltip.hide()
+
+        setTimeout(() => {
+          tooltip.show()
+        }, 100)
+
+        setTimeout(() => {
+          expect(insertedFunc).toHaveBeenCalledTimes(1)
+          done()
+        }, 200)
+      }, 0)
+
+      tooltip.show()
+    })
+
     it('should show a tooltip with custom class provided in data attributes', done => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip" data-bs-custom-class="custom-class">'
 

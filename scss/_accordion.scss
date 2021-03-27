@@ -12,18 +12,15 @@
   color: $accordion-button-color;
   text-align: left; // Reset button style
   background-color: $accordion-button-bg;
-  border: $accordion-border-width solid $accordion-border-color;
+  border: 0;
   @include border-radius(0);
   overflow-anchor: none;
   @include transition($accordion-transition);
 
-  &.collapsed {
-    border-bottom-width: 0;
-  }
-
   &:not(.collapsed) {
     color: $accordion-button-active-color;
     background-color: $accordion-button-active-bg;
+    box-shadow: inset 0 ($accordion-border-width * -1) 0 $accordion-border-color;
 
     &::after {
       background-image: escape-svg($accordion-button-active-icon);
@@ -61,31 +58,33 @@
 }
 
 .accordion-item {
+  margin-bottom: -$accordion-border-width;
+  background-color: $accordion-bg;
+  border: $accordion-border-width solid $accordion-border-color;
+
   &:first-of-type {
+    @include border-top-radius($accordion-border-radius);
+
     .accordion-button {
-      @include border-top-radius($accordion-border-radius);
+      @include border-top-radius($accordion-inner-border-radius);
     }
   }
 
+  // Only set a border-radius on the last item if the accordion is collapsed
   &:last-of-type {
+    margin-bottom: 0;
+    @include border-bottom-radius($accordion-border-radius);
+
     .accordion-button {
-      // Only set a border-radius on the last item if the accordion is collapsed
       &.collapsed {
-        border-bottom-width: $accordion-border-width;
-        @include border-bottom-radius($accordion-border-radius);
+        @include border-bottom-radius($accordion-inner-border-radius);
       }
     }
 
     .accordion-collapse {
-      border-bottom-width: $accordion-border-width;
       @include border-bottom-radius($accordion-border-radius);
     }
   }
-}
-
-.accordion-collapse {
-  border: solid $accordion-border-color;
-  border-width: 0 $accordion-border-width;
 }
 
 .accordion-body {
@@ -98,29 +97,20 @@
 // Remove borders and border-radius to keep accordion items edge-to-edge.
 
 .accordion-flush {
-  .accordion-button {
-    border-right: 0;
-    border-left: 0;
-    @include border-radius(0);
-  }
-
   .accordion-collapse {
     border-width: 0;
   }
 
   .accordion-item {
-    &:first-of-type {
-      .accordion-button {
-        border-top-width: 0;
-        @include border-top-radius(0);
-      }
-    }
+    border-right: 0;
+    border-left: 0;
+    @include border-radius(0);
 
-    &:last-of-type {
-      .accordion-button.collapsed {
-        border-bottom-width: 0;
-        @include border-bottom-radius(0);
-      }
+    &:first-child { border-top: 0; }
+    &:last-child { border-bottom: 0; }
+
+    .accordion-button {
+      @include border-radius(0);
     }
   }
 }

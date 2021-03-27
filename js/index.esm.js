@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): index.esm.js
+ * Bootstrap (v5.0.0-beta3): index.esm.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -11,7 +11,7 @@ import Carousel from './src/carousel'
 import Collapse from './src/collapse'
 import Dropdown from './src/dropdown'
 import Modal from './src/modal'
-import OffCanvas from './src/offcanvas'
+import Offcanvas from './src/offcanvas'
 import Popover from './src/popover'
 import ScrollSpy from './src/scrollspy'
 import Tab from './src/tab'
@@ -25,7 +25,7 @@ export {
   Collapse,
   Dropdown,
   Modal,
-  OffCanvas,
+  Offcanvas,
   Popover,
   ScrollSpy,
   Tab,

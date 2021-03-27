@@ -198,11 +198,11 @@ describe('Tab', () => {
       }, 30)
     })
 
-    it('should not fire shown when tab is disabled', done => {
+    it('should not fire shown when tab has disabled attribute', done => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
-        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#home" class="nav-link active" role="tab"  aria-selected="true">Home</button></li>',
-        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#profile" class="nav-link disabled" role="tab">Profile</button></li>',
+        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#home" class="nav-link active" role="tab" aria-selected="true">Home</button></li>',
+        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#profile" class="nav-link" disabled role="tab">Profile</button></li>',
         '</ul>',
         '<div class="tab-content">',
         '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
@@ -210,7 +210,33 @@ describe('Tab', () => {
         '</div>'
       ].join('')
 
-      const triggerDisabled = fixtureEl.querySelector('button.disabled')
+      const triggerDisabled = fixtureEl.querySelector('button[disabled]')
+      const tab = new Tab(triggerDisabled)
+
+      triggerDisabled.addEventListener('shown.bs.tab', () => {
+        throw new Error('should not trigger shown event')
+      })
+
+      tab.show()
+      setTimeout(() => {
+        expect().nothing()
+        done()
+      }, 30)
+    })
+
+    it('should not fire shown when tab has disabled class', done => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav nav-tabs" role="tablist">',
+        '  <li class="nav-item" role="presentation"><a href="#home" class="nav-link active" role="tab" aria-selected="true">Home</a></li>',
+        '  <li class="nav-item" role="presentation"><a href="#profile" class="nav-link disabled" role="tab">Profile</a></li>',
+        '</ul>',
+        '<div class="tab-content">',
+        '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
+        '  <div class="tab-pane" id="profile" role="tabpanel"></div>',
+        '</div>'
+      ].join('')
+
+      const triggerDisabled = fixtureEl.querySelector('a.disabled')
       const tab = new Tab(triggerDisabled)
 
       triggerDisabled.addEventListener('shown.bs.tab', () => {
