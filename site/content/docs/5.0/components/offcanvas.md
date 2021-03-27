@@ -85,9 +85,10 @@ There's no default placement for offcanvas components, so you must add one of th
 
 - `.offcanvas-start` places offcanvas on the left of the viewport (shown above)
 - `.offcanvas-end` places offcanvas on the right of the viewport
+- `.offcanvas-top` places offcanvas on the top of the viewport
 - `.offcanvas-bottom` places offcanvas on the bottom of the viewport
 
-Try the right and bottom examples out below.
+Try the right & top and bottom examples out below.
 
 {{< example >}}
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
@@ -98,6 +99,20 @@ Try the right and bottom examples out below.
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
+    ...
+  </div>
+</div>
+{{< /example >}}
+
+{{< example >}}
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Toggle top offcanvas</button>
+
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasTopLabel">Offcanvas top</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body small">
     ...
   </div>
 </div>
@@ -173,6 +188,7 @@ The offcanvas plugin utilizes a few classes and attributes to handle the heavy l
 - `.offcanvas.show` shows the content
 - `.offcanvas-start` hides the offcanvas on the left
 - `.offcanvas-end` hides the offcanvas on the right
+- `.offcanvas-top` hides the offcanvas on the top
 - `.offcanvas-bottom` hides the offcanvas on the bottom
 
 Add a dismiss button with the `data-bs-dismiss="offcanvas"` attribute, which triggers the JavaScript functionality. Be sure to use the `<button>` element with it for proper behavior across all devices.
