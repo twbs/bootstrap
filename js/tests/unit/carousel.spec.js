@@ -349,8 +349,8 @@ describe('Carousel', () => {
 
       carouselEl.addEventListener('slid.bs.carousel', event => {
         expect(item.classList.contains('active')).toEqual(true)
-        expect(carousel._slide).toHaveBeenCalledWith('right')
-        expect(event.direction).toEqual('right')
+        expect(carousel._slide).toHaveBeenCalledWith('left')
+        expect(event.direction).toEqual('left')
         document.head.removeChild(stylesCarousel)
         delete document.documentElement.ontouchstart
         done()
@@ -394,8 +394,8 @@ describe('Carousel', () => {
 
       carouselEl.addEventListener('slid.bs.carousel', event => {
         expect(item.classList.contains('active')).toEqual(false)
-        expect(carousel._slide).toHaveBeenCalledWith('left')
-        expect(event.direction).toEqual('left')
+        expect(carousel._slide).toHaveBeenCalledWith('right')
+        expect(event.direction).toEqual('right')
         document.head.removeChild(stylesCarousel)
         delete document.documentElement.ontouchstart
         done()
@@ -434,8 +434,8 @@ describe('Carousel', () => {
 
       carouselEl.addEventListener('slid.bs.carousel', event => {
         expect(item.classList.contains('active')).toEqual(true)
-        expect(carousel._slide).toHaveBeenCalledWith('right')
-        expect(event.direction).toEqual('right')
+        expect(carousel._slide).toHaveBeenCalledWith('left')
+        expect(event.direction).toEqual('left')
         delete document.documentElement.ontouchstart
         restorePointerEvents()
         done()
@@ -473,8 +473,8 @@ describe('Carousel', () => {
 
       carouselEl.addEventListener('slid.bs.carousel', event => {
         expect(item.classList.contains('active')).toEqual(false)
-        expect(carousel._slide).toHaveBeenCalledWith('left')
-        expect(event.direction).toEqual('left')
+        expect(carousel._slide).toHaveBeenCalledWith('right')
+        expect(event.direction).toEqual('right')
         delete document.documentElement.ontouchstart
         restorePointerEvents()
         done()

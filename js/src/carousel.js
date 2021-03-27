@@ -255,7 +255,7 @@ class Carousel extends BaseComponent {
       return
     }
 
-    this._slide(direction > 0 ? DIRECTION_RIGHT : DIRECTION_LEFT)
+    this._slide(direction > 0 ? DIRECTION_LEFT : DIRECTION_RIGHT)
   }
 
   _addEventListeners() {
