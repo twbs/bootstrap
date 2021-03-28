@@ -317,7 +317,7 @@ describe('Carousel', () => {
       expect(carousel._addTouchEventListeners).toHaveBeenCalled()
     })
 
-    it('should allow swiperight and call _slide with pointer events', done => {
+    it('should allow swiperight and call _slide (prev) with pointer events', done => {
       if (!supportPointerEvent) {
         expect().nothing()
         done()
@@ -362,7 +362,7 @@ describe('Carousel', () => {
       })
     })
 
-    it('should allow swipeleft and call previous with pointer events', done => {
+    it('should allow swipeleft and call next with pointer events', done => {
       if (!supportPointerEvent) {
         expect().nothing()
         done()
@@ -408,7 +408,7 @@ describe('Carousel', () => {
       })
     })
 
-    it('should allow swiperight and call _slide with touch events', done => {
+    it('should allow swiperight and call _slide (prev) with touch events', done => {
       Simulator.setType('touch')
       clearPointerEvents()
       document.documentElement.ontouchstart = () => {}
@@ -447,7 +447,7 @@ describe('Carousel', () => {
       })
     })
 
-    it('should allow swipeleft and call _slide with touch events', done => {
+    it('should allow swipeleft and call _slide (next) with touch events', done => {
       Simulator.setType('touch')
       clearPointerEvents()
       document.documentElement.ontouchstart = () => {}
