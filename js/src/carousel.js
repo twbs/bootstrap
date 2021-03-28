@@ -255,7 +255,7 @@ class Carousel extends BaseComponent {
       return
     }
 
-    this._slide(direction > 0 ? DIRECTION_LEFT : DIRECTION_RIGHT)
+    this._slide(direction > 0 ? DIRECTION_RIGHT : DIRECTION_LEFT)
   }
 
   _addEventListeners() {
@@ -336,10 +336,10 @@ class Carousel extends BaseComponent {
 
     if (event.key === ARROW_LEFT_KEY) {
       event.preventDefault()
-      this._slide(DIRECTION_LEFT)
+      this._slide(DIRECTION_RIGHT)
     } else if (event.key === ARROW_RIGHT_KEY) {
       event.preventDefault()
-      this._slide(DIRECTION_RIGHT)
+      this._slide(DIRECTION_LEFT)
     }
   }
 
@@ -509,10 +509,10 @@ class Carousel extends BaseComponent {
     }
 
     if (isRTL()) {
-      return direction === DIRECTION_RIGHT ? ORDER_PREV : ORDER_NEXT
+      return direction === DIRECTION_LEFT ? ORDER_PREV : ORDER_NEXT
     }
 
-    return direction === DIRECTION_RIGHT ? ORDER_NEXT : ORDER_PREV
+    return direction === DIRECTION_LEFT ? ORDER_NEXT : ORDER_PREV
   }
 
   _orderToDirection(order) {
@@ -521,10 +521,10 @@ class Carousel extends BaseComponent {
     }
 
     if (isRTL()) {
-      return order === ORDER_NEXT ? DIRECTION_LEFT : DIRECTION_RIGHT
+      return order === ORDER_PREV ? DIRECTION_LEFT : DIRECTION_RIGHT
     }
 
-    return order === ORDER_NEXT ? DIRECTION_RIGHT : DIRECTION_LEFT
+    return order === ORDER_PREV ? DIRECTION_RIGHT : DIRECTION_LEFT
   }
 
   // Static
