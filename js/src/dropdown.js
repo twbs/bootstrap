@@ -10,6 +10,7 @@ import * as Popper from '@popperjs/core'
 import {
   defineJQueryPlugin,
   getElementFromSelector,
+  isDisabled,
   isElement,
   isVisible,
   isRTL,
@@ -51,7 +52,6 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY}${DATA_API_KEY}`
 
-const CLASS_NAME_DISABLED = 'disabled'
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_DROPUP = 'dropup'
 const CLASS_NAME_DROPEND = 'dropend'
@@ -121,7 +121,7 @@ class Dropdown extends BaseComponent {
   // Public
 
   toggle() {
-    if (this._element.disabled || this._element.classList.contains(CLASS_NAME_DISABLED)) {
+    if (isDisabled(this._element)) {
       return
     }
 
@@ -137,7 +137,7 @@ class Dropdown extends BaseComponent {
   }
 
   show() {
-    if (this._element.disabled || this._element.classList.contains(CLASS_NAME_DISABLED) || this._menu.classList.contains(CLASS_NAME_SHOW)) {
+    if (isDisabled(this._element) || this._menu.classList.contains(CLASS_NAME_SHOW)) {
       return
     }
 
@@ -204,7 +204,7 @@ class Dropdown extends BaseComponent {
   }
 
   hide() {
-    if (this._element.disabled || this._element.classList.contains(CLASS_NAME_DISABLED) || !this._menu.classList.contains(CLASS_NAME_SHOW)) {
+    if (isDisabled(this._element) || !this._menu.classList.contains(CLASS_NAME_SHOW)) {
       return
     }
 
@@ -466,7 +466,7 @@ class Dropdown extends BaseComponent {
     event.preventDefault()
     event.stopPropagation()
 
-    if (this.disabled || this.classList.contains(CLASS_NAME_DISABLED)) {
+    if (isDisabled(this)) {
       return
     }
 
