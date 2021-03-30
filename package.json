@@ -100,14 +100,14 @@
     "@popperjs/core": "^2.9.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.10",
-    "@babel/core": "^7.13.10",
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.14",
     "@babel/preset-env": "^7.13.12",
     "@popperjs/core": "^2.9.1",
     "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-commonjs": "^18.0.0",
     "@rollup/plugin-node-resolve": "^11.2.0",
-    "@rollup/plugin-replace": "^2.4.1",
+    "@rollup/plugin-replace": "^2.4.2",
     "autoprefixer": "^10.2.5",
     "bundlewatch": "^0.3.2",
     "clean-css-cli": "^5.2.2",
