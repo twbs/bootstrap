@@ -82,7 +82,7 @@ For Bootstrap to compile, make sure you install and use the required loaders: [s
 Alternatively, you may use Bootstrap's ready-to-use CSS by simply adding this line to your project's entry point:
 
 ```js
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.css';
 ```
 
 In this case you may use your existing rule for `css` without any special modifications to webpack config, except you don't need `sass-loader` just [style-loader](https://github.com/webpack-contrib/style-loader) and [css-loader](https://github.com/webpack-contrib/css-loader).
