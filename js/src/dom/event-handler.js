@@ -22,6 +22,7 @@ const customEvents = {
   mouseenter: 'mouseover',
   mouseleave: 'mouseout'
 }
+const customEventsRegex = /^(mouseenter|mouseleave)/i
 const nativeEvents = new Set([
   'click',
   'dblclick',
@@ -165,8 +166,8 @@ function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
   }
 
   // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM position
-  // this prevents the handler getting triggered the same way as mouseover or mouseout does
-  if (/^mouse(enter|leave)/i.test(originalTypeEvent)) {
+  // this prevents the handler from being dispatched the same way as mouseover or mouseout does
+  if (customEventsRegex.test(originalTypeEvent)) {
     const wrapFn = fn => {
       return function (event) {
         if (!event.relatedTarget || (event.relatedTarget !== event.delegateTarget && event.relatedTarget.contains(event.delegateTarget))) {
