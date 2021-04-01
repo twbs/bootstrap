@@ -443,54 +443,7 @@ class Dropdown extends BaseComponent {
     }
   }
 
-  static getParentFromElement(element) {
-    return getElementFromSelector(element) || element.parentNode
-  }
-
-  static dataApiKeydownHandler(event) {
-    // If not input/textarea:
-    //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
-    // If input/textarea:
-    //  - If space key => not a dropdown command
-    //  - If key is other than escape
-    //    - If key is not up or down => not a dropdown command
-    //    - If trigger inside the menu => not a dropdown command
-    if (/input|textarea/i.test(event.target.tagName) ?
-      event.key === SPACE_KEY || (event.key !== ESCAPE_KEY &&
-      ((event.key !== ARROW_DOWN_KEY && event.key !== ARROW_UP_KEY) ||
-        event.target.closest(SELECTOR_MENU))) :
-      !REGEXP_KEYDOWN.test(event.key)) {
-      return
-    }
-
-    event.preventDefault()
-    event.stopPropagation()
-
-    if (isDisabled(this)) {
-      return
-    }
-
-    const parent = Dropdown.getParentFromElement(this)
-    const isActive = this.classList.contains(CLASS_NAME_SHOW)
-
-    if (event.key === ESCAPE_KEY) {
-      const button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
-      button.focus()
-      Dropdown.clearMenus()
-      return
-    }
-
-    if (!isActive && (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY)) {
-      const button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
-      button.click()
-      return
-    }
-
-    if (!isActive || event.key === SPACE_KEY) {
-      Dropdown.clearMenus()
-      return
-    }
-
+  static selectMenuItem(parent, event) {
     const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, parent).filter(isVisible)
 
     if (!items.length) {
@@ -513,6 +466,60 @@ class Dropdown extends BaseComponent {
     index = index === -1 ? 0 : index
 
     items[index].focus()
+  }
+
+  static getParentFromElement(element) {
+    return getElementFromSelector(element) || element.parentNode
+  }
+
+  static dataApiKeydownHandler(event) {
+    // If not input/textarea:
+    //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
+    // If input/textarea:
+    //  - If space key => not a dropdown command
+    //  - If key is other than escape
+    //    - If key is not up or down => not a dropdown command
+    //    - If trigger inside the menu => not a dropdown command
+    if (/input|textarea/i.test(event.target.tagName) ?
+      event.key === SPACE_KEY || (event.key !== ESCAPE_KEY &&
+      ((event.key !== ARROW_DOWN_KEY && event.key !== ARROW_UP_KEY) ||
+        event.target.closest(SELECTOR_MENU))) :
+      !REGEXP_KEYDOWN.test(event.key)) {
+      return
+    }
+
+    const isActive = this.classList.contains(CLASS_NAME_SHOW)
+
+    if (!isActive && event.key === ESCAPE_KEY) {
+      return
+    }
+
+    event.preventDefault()
+    event.stopPropagation()
+
+    if (isDisabled(this)) {
+      return
+    }
+
+    const getToggleButton = () => this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
+
+    if (event.key === ESCAPE_KEY) {
+      getToggleButton().focus()
+      Dropdown.clearMenus()
+      return
+    }
+
+    if (!isActive && (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY)) {
+      getToggleButton().click()
+      return
+    }
+
+    if (!isActive || event.key === SPACE_KEY) {
+      Dropdown.clearMenus()
+      return
+    }
+
+    Dropdown.selectMenuItem(Dropdown.getParentFromElement(this), event)
   }
 }
 
