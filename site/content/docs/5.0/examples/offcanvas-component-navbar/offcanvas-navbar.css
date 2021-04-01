@@ -1,0 +1,175 @@
+body {
+    padding-top: 4.5rem;
+}
+
+.backdrop-overlay {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .5);
+    cursor: pointer;
+    display: none;
+}
+
+/* Expand-sm */
+@media (min-width: 576px) {
+
+    .navbar-expand-sm .offcanvas.navbar-end .offcanvas-header,
+    .navbar-expand-sm .offcanvas.navbar-start .offcanvas-header {
+        display: none;
+    }
+
+    .navbar-expand-sm .offcanvas.navbar-end,
+    .navbar-expand-sm .offcanvas.navbar-start {
+        position: inherit;
+        bottom: 0;
+        z-index: 1000;
+        flex-grow: 1;
+        visibility: visible !important;
+        background-color: transparent;
+        transition: none;
+        transform: none;
+        border-left: none;
+        border-right: none;
+    }
+
+    .navbar-expand-sm .offcanvas.navbar-end .offcanvas-body,
+    .navbar-expand-sm .offcanvas.navbar-start .offcanvas-body {
+        flex-grow: 0;
+        padding: 0;
+        overflow-y: visible;
+        display: flex;
+    }
+
+}
+
+/* Expand-md */
+@media (min-width: 768px) {
+
+    .navbar-expand-md .offcanvas.navbar-end .offcanvas-header,
+    .navbar-expand-md .offcanvas.navbar-start .offcanvas-header {
+        display: none;
+    }
+
+    .navbar-expand-md .offcanvas.navbar-end,
+    .navbar-expand-md .offcanvas.navbar-start {
+        position: inherit;
+        bottom: 0;
+        z-index: 1000;
+        flex-grow: 1;
+        visibility: visible !important;
+        background-color: transparent;
+        transition: none;
+        transform: none;
+        border-left: none;
+        border-right: none;
+    }
+
+    .navbar-expand-md .offcanvas.navbar-end .offcanvas-body,
+    .navbar-expand-md .offcanvas.navbar-start .offcanvas-body {
+        flex-grow: 0;
+        padding: 0;
+        overflow-y: visible;
+        display: flex;
+    }
+
+}
+
+/* Expand-lg */
+@media (min-width: 992px) {
+
+    .navbar-expand-lg .offcanvas.navbar-end .offcanvas-header,
+    .navbar-expand-lg .offcanvas.navbar-start .offcanvas-header {
+        display: none;
+    }
+
+    .navbar-expand-lg .offcanvas.navbar-end,
+    .navbar-expand-lg .offcanvas.navbar-start {
+        position: inherit;
+        bottom: 0;
+        z-index: 1000;
+        flex-grow: 1;
+        visibility: visible !important;
+        background-color: transparent;
+        transition: none;
+        transform: none;
+        border-left: none;
+        border-right: none;
+    }
+
+    .navbar-expand-lg .offcanvas.navbar-end .offcanvas-body,
+    .navbar-expand-lg .offcanvas.navbar-start .offcanvas-body {
+        flex-grow: 0;
+        padding: 0;
+        overflow-y: visible;
+        display: flex;
+    }
+
+}
+
+/* Expand-xl */
+@media (min-width: 1200px) {
+
+    .navbar-expand-xl .offcanvas.navbar-end .offcanvas-header,
+    .navbar-expand-xl .offcanvas.navbar-start .offcanvas-header {
+        display: none;
+    }
+
+    .navbar-expand-xl .offcanvas.navbar-end,
+    .navbar-expand-xl .offcanvas.navbar-start {
+        position: inherit;
+        bottom: 0;
+        z-index: 1000;
+        flex-grow: 1;
+        visibility: visible !important;
+        background-color: transparent;
+        transition: none;
+        transform: none;
+        border-left: none;
+        border-right: none;
+    }
+
+    .navbar-expand-xl .offcanvas.navbar-end .offcanvas-body,
+    .navbar-expand-xl .offcanvas.navbar-start .offcanvas-body {
+        flex-grow: 0;
+        padding: 0;
+        overflow-y: visible;
+        display: flex;
+    }
+
+}
+
+/* Expand-xxl */
+@media (min-width: 1400px) {
+
+    .navbar-expand-xxl .offcanvas.navbar-end .offcanvas-header,
+    .navbar-expand-xxl .offcanvas.navbar-start .offcanvas-header {
+        display: none;
+    }
+
+    .navbar-expand-xxl .offcanvas.navbar-end,
+    .navbar-expand-xxl .offcanvas.navbar-start {
+        position: inherit;
+        bottom: 0;
+        z-index: 1000;
+        flex-grow: 1;
+        visibility: visible !important;
+        background-color: transparent;
+        transition: none;
+        transform: none;
+        border-left: none;
+        border-right: none;
+    }
+
+    .navbar-expand-xxl .offcanvas.navbar-end .offcanvas-body,
+    .navbar-expand-xxl .offcanvas.navbar-start .offcanvas-body {
+        flex-grow: 0;
+        padding: 0;
+        overflow-y: visible;
+        display: flex;
+    }
+
+}
