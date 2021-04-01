@@ -218,12 +218,20 @@ class Dropdown extends BaseComponent {
       return
     }
 
+    // If this is a touch-enabled device we remove the extra
+    // empty mouseover listeners we added for iOS support
+    if ('ontouchstart' in document.documentElement) {
+      [].concat(...document.body.children)
+        .forEach(elem => EventHandler.off(elem, 'mouseover', null, noop()))
+    }
+
     if (this._popper) {
       this._popper.destroy()
     }
 
     this._menu.classList.toggle(CLASS_NAME_SHOW)
     this._element.classList.toggle(CLASS_NAME_SHOW)
+    this._element.setAttribute('aria-expanded', 'false')
     Manipulator.removeDataAttribute(this._menu, 'popper')
     EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
   }
@@ -430,14 +438,13 @@ class Dropdown extends BaseComponent {
           .forEach(elem => EventHandler.off(elem, 'mouseover', null, noop()))
       }
 
-      toggles[i].setAttribute('aria-expanded', 'false')
-
       if (context._popper) {
         context._popper.destroy()
       }
 
       dropdownMenu.classList.remove(CLASS_NAME_SHOW)
       toggles[i].classList.remove(CLASS_NAME_SHOW)
+      toggles[i].setAttribute('aria-expanded', 'false')
       Manipulator.removeDataAttribute(dropdownMenu, 'popper')
       EventHandler.trigger(toggles[i], EVENT_HIDDEN, relatedTarget)
     }
