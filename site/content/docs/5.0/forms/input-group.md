@@ -308,3 +308,9 @@ Input groups include support for custom selects and custom file inputs. Browser 
   <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
 </div>
 {{< /example >}}
+
+## Sass
+
+### Variables
+
+{{< scss-docs name="input-group-variables" file="scss/_variables.scss" >}}

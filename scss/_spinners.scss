@@ -2,9 +2,11 @@
 // Rotating border
 //
 
+// scss-docs-start spinner-border-keyframes
 @keyframes spinner-border {
   to { transform: rotate(360deg) #{"/* rtl:ignore */"}; }
 }
+// scss-docs-end spinner-border-keyframes
 
 .spinner-border {
   display: inline-block;
@@ -28,6 +30,7 @@
 // Growing circle
 //
 
+// scss-docs-start spinner-grow-keyframes
 @keyframes spinner-grow {
   0% {
     transform: scale(0);
@@ -37,6 +40,7 @@
     transform: none;
   }
 }
+// scss-docs-end spinner-grow-keyframes
 
 .spinner-grow {
   display: inline-block;

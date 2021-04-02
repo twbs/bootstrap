@@ -2,14 +2,14 @@
 // Bootstrap docs content theming
 //
 
-.bd-content {
-  // Offset for the sticky header
-  > [id] {
-    @include media-breakpoint-up(md) {
-      scroll-margin-top: 4rem;
-    }
+// Offset for the sticky header
+@include media-breakpoint-up(md) {
+  :root {
+    scroll-padding-top: 4rem;
   }
+}
 
+.bd-content {
   > h2:not(:first-child) {
     margin-top: 3rem;
   }
