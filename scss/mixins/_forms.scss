@@ -92,6 +92,14 @@
         background-image: escape-svg($form-select-indicator), escape-svg($icon);
         background-position: $form-select-bg-position, $form-select-feedback-icon-position;
         background-size: $form-select-bg-size, $form-select-feedback-icon-size;
+
+        &[multiple],
+        &[size]:not([size="1"]) {
+          padding-right: $input-height-inner;
+          background-image: escape-svg($icon);
+          background-position: top $input-height-inner-quarter right $input-height-inner-quarter;
+          background-size: $form-select-feedback-icon-size;
+        }
       }
 
       &:focus {
@@ -121,6 +129,13 @@
   .form-check-inline .form-check-input {
     ~ .#{$state}-feedback {
       margin-left: .5em;
+    }
+  }
+
+  .input-group .form-control,
+  .input-group .form-select {
+    @include form-validation-state-selector($state) {
+      z-index: 3;
     }
   }
 }

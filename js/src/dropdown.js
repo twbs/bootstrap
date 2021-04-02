@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): dropdown.js
+ * Bootstrap (v5.0.0-beta3): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -10,6 +10,7 @@ import * as Popper from '@popperjs/core'
 import {
   defineJQueryPlugin,
   getElementFromSelector,
+  isDisabled,
   isElement,
   isVisible,
   isRTL,
@@ -51,7 +52,6 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY}${DATA_API_KEY}`
 
-const CLASS_NAME_DISABLED = 'disabled'
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_DROPUP = 'dropup'
 const CLASS_NAME_DROPEND = 'dropend'
@@ -59,21 +59,19 @@ const CLASS_NAME_DROPSTART = 'dropstart'
 const CLASS_NAME_NAVBAR = 'navbar'
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]'
-const SELECTOR_FORM_CHILD = '.dropdown form'
 const SELECTOR_MENU = '.dropdown-menu'
 const SELECTOR_NAVBAR_NAV = '.navbar-nav'
 const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
 
-const PLACEMENT_TOP = isRTL ? 'top-end' : 'top-start'
-const PLACEMENT_TOPEND = isRTL ? 'top-start' : 'top-end'
-const PLACEMENT_BOTTOM = isRTL ? 'bottom-end' : 'bottom-start'
-const PLACEMENT_BOTTOMEND = isRTL ? 'bottom-start' : 'bottom-end'
-const PLACEMENT_RIGHT = isRTL ? 'left-start' : 'right-start'
-const PLACEMENT_LEFT = isRTL ? 'right-start' : 'left-start'
+const PLACEMENT_TOP = isRTL() ? 'top-end' : 'top-start'
+const PLACEMENT_TOPEND = isRTL() ? 'top-start' : 'top-end'
+const PLACEMENT_BOTTOM = isRTL() ? 'bottom-end' : 'bottom-start'
+const PLACEMENT_BOTTOMEND = isRTL() ? 'bottom-start' : 'bottom-end'
+const PLACEMENT_RIGHT = isRTL() ? 'left-start' : 'right-start'
+const PLACEMENT_LEFT = isRTL() ? 'right-start' : 'left-start'
 
 const Default = {
   offset: [0, 2],
-  flip: true,
   boundary: 'clippingParents',
   reference: 'toggle',
   display: 'dynamic',
@@ -82,7 +80,6 @@ const Default = {
 
 const DefaultType = {
   offset: '(array|string|function)',
-  flip: 'boolean',
   boundary: '(string|element)',
   reference: '(string|element|object)',
   display: 'string',
@@ -124,7 +121,7 @@ class Dropdown extends BaseComponent {
   // Public
 
   toggle() {
-    if (this._element.disabled || this._element.classList.contains(CLASS_NAME_DISABLED)) {
+    if (isDisabled(this._element)) {
       return
     }
 
@@ -140,7 +137,7 @@ class Dropdown extends BaseComponent {
   }
 
   show() {
-    if (this._element.disabled || this._element.classList.contains(CLASS_NAME_DISABLED) || this._menu.classList.contains(CLASS_NAME_SHOW)) {
+    if (isDisabled(this._element) || this._menu.classList.contains(CLASS_NAME_SHOW)) {
       return
     }
 
@@ -207,7 +204,7 @@ class Dropdown extends BaseComponent {
   }
 
   hide() {
-    if (this._element.disabled || this._element.classList.contains(CLASS_NAME_DISABLED) || !this._menu.classList.contains(CLASS_NAME_SHOW)) {
+    if (isDisabled(this._element) || !this._menu.classList.contains(CLASS_NAME_SHOW)) {
       return
     }
 
@@ -221,12 +218,20 @@ class Dropdown extends BaseComponent {
       return
     }
 
+    // If this is a touch-enabled device we remove the extra
+    // empty mouseover listeners we added for iOS support
+    if ('ontouchstart' in document.documentElement) {
+      [].concat(...document.body.children)
+        .forEach(elem => EventHandler.off(elem, 'mouseover', null, noop()))
+    }
+
     if (this._popper) {
       this._popper.destroy()
     }
 
     this._menu.classList.toggle(CLASS_NAME_SHOW)
     this._element.classList.toggle(CLASS_NAME_SHOW)
+    this._element.setAttribute('aria-expanded', 'false')
     Manipulator.removeDataAttribute(this._menu, 'popper')
     EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
   }
@@ -255,7 +260,6 @@ class Dropdown extends BaseComponent {
   _addEventListeners() {
     EventHandler.on(this._element, EVENT_CLICK, event => {
       event.preventDefault()
-      event.stopPropagation()
       this.toggle()
     })
   }
@@ -328,7 +332,6 @@ class Dropdown extends BaseComponent {
       modifiers: [{
         name: 'preventOverflow',
         options: {
-          altBoundary: this._config.flip,
           boundary: this._config.boundary
         }
       },
@@ -357,7 +360,7 @@ class Dropdown extends BaseComponent {
   // Static
 
   static dropdownInterface(element, config) {
-    let data = Data.getData(element, DATA_KEY)
+    let data = Data.get(element, DATA_KEY)
     const _config = typeof config === 'object' ? config : null
 
     if (!data) {
@@ -380,14 +383,20 @@ class Dropdown extends BaseComponent {
   }
 
   static clearMenus(event) {
-    if (event && (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY))) {
-      return
+    if (event) {
+      if (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY)) {
+        return
+      }
+
+      if (/input|select|textarea|form/i.test(event.target.tagName)) {
+        return
+      }
     }
 
     const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
 
     for (let i = 0, len = toggles.length; i < len; i++) {
-      const context = Data.getData(toggles[i], DATA_KEY)
+      const context = Data.get(toggles[i], DATA_KEY)
       const relatedTarget = {
         relatedTarget: toggles[i]
       }
@@ -405,11 +414,16 @@ class Dropdown extends BaseComponent {
         continue
       }
 
-      if (event && ((event.type === 'click' &&
-          /input|textarea/i.test(event.target.tagName)) ||
-          (event.type === 'keyup' && event.key === TAB_KEY)) &&
-          dropdownMenu.contains(event.target)) {
-        continue
+      if (event) {
+        // Don't close the menu if the clicked element or one of its parents is the dropdown button
+        if ([context._element].some(element => event.composedPath().includes(element))) {
+          continue
+        }
+
+        // Tab navigation through the dropdown menu shouldn't close the menu
+        if (event.type === 'keyup' && event.key === TAB_KEY && dropdownMenu.contains(event.target)) {
+          continue
+        }
       }
 
       const hideEvent = EventHandler.trigger(toggles[i], EVENT_HIDE, relatedTarget)
@@ -424,67 +438,19 @@ class Dropdown extends BaseComponent {
           .forEach(elem => EventHandler.off(elem, 'mouseover', null, noop()))
       }
 
-      toggles[i].setAttribute('aria-expanded', 'false')
-
       if (context._popper) {
         context._popper.destroy()
       }
 
       dropdownMenu.classList.remove(CLASS_NAME_SHOW)
       toggles[i].classList.remove(CLASS_NAME_SHOW)
+      toggles[i].setAttribute('aria-expanded', 'false')
       Manipulator.removeDataAttribute(dropdownMenu, 'popper')
       EventHandler.trigger(toggles[i], EVENT_HIDDEN, relatedTarget)
     }
   }
 
-  static getParentFromElement(element) {
-    return getElementFromSelector(element) || element.parentNode
-  }
-
-  static dataApiKeydownHandler(event) {
-    // If not input/textarea:
-    //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
-    // If input/textarea:
-    //  - If space key => not a dropdown command
-    //  - If key is other than escape
-    //    - If key is not up or down => not a dropdown command
-    //    - If trigger inside the menu => not a dropdown command
-    if (/input|textarea/i.test(event.target.tagName) ?
-      event.key === SPACE_KEY || (event.key !== ESCAPE_KEY &&
-      ((event.key !== ARROW_DOWN_KEY && event.key !== ARROW_UP_KEY) ||
-        event.target.closest(SELECTOR_MENU))) :
-      !REGEXP_KEYDOWN.test(event.key)) {
-      return
-    }
-
-    event.preventDefault()
-    event.stopPropagation()
-
-    if (this.disabled || this.classList.contains(CLASS_NAME_DISABLED)) {
-      return
-    }
-
-    const parent = Dropdown.getParentFromElement(this)
-    const isActive = this.classList.contains(CLASS_NAME_SHOW)
-
-    if (event.key === ESCAPE_KEY) {
-      const button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
-      button.focus()
-      Dropdown.clearMenus()
-      return
-    }
-
-    if (!isActive && (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY)) {
-      const button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
-      button.click()
-      return
-    }
-
-    if (!isActive || event.key === SPACE_KEY) {
-      Dropdown.clearMenus()
-      return
-    }
-
+  static selectMenuItem(parent, event) {
     const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, parent).filter(isVisible)
 
     if (!items.length) {
@@ -508,6 +474,60 @@ class Dropdown extends BaseComponent {
 
     items[index].focus()
   }
+
+  static getParentFromElement(element) {
+    return getElementFromSelector(element) || element.parentNode
+  }
+
+  static dataApiKeydownHandler(event) {
+    // If not input/textarea:
+    //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
+    // If input/textarea:
+    //  - If space key => not a dropdown command
+    //  - If key is other than escape
+    //    - If key is not up or down => not a dropdown command
+    //    - If trigger inside the menu => not a dropdown command
+    if (/input|textarea/i.test(event.target.tagName) ?
+      event.key === SPACE_KEY || (event.key !== ESCAPE_KEY &&
+      ((event.key !== ARROW_DOWN_KEY && event.key !== ARROW_UP_KEY) ||
+        event.target.closest(SELECTOR_MENU))) :
+      !REGEXP_KEYDOWN.test(event.key)) {
+      return
+    }
+
+    const isActive = this.classList.contains(CLASS_NAME_SHOW)
+
+    if (!isActive && event.key === ESCAPE_KEY) {
+      return
+    }
+
+    event.preventDefault()
+    event.stopPropagation()
+
+    if (isDisabled(this)) {
+      return
+    }
+
+    const getToggleButton = () => this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
+
+    if (event.key === ESCAPE_KEY) {
+      getToggleButton().focus()
+      Dropdown.clearMenus()
+      return
+    }
+
+    if (!isActive && (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY)) {
+      getToggleButton().click()
+      return
+    }
+
+    if (!isActive || event.key === SPACE_KEY) {
+      Dropdown.clearMenus()
+      return
+    }
+
+    Dropdown.selectMenuItem(Dropdown.getParentFromElement(this), event)
+  }
 }
 
 /**
@@ -522,10 +542,8 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   event.preventDefault()
-  event.stopPropagation()
-  Dropdown.dropdownInterface(this, 'toggle')
+  Dropdown.dropdownInterface(this)
 })
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stopPropagation())
 
 /**
  * ------------------------------------------------------------------------

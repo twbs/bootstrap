@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): scrollspy.js
+ * Bootstrap (v5.0.0-beta3): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -68,7 +68,7 @@ const METHOD_POSITION = 'position'
 class ScrollSpy extends BaseComponent {
   constructor(element, config) {
     super(element)
-    this._scrollElement = element.tagName === 'BODY' ? window : element
+    this._scrollElement = this._element.tagName === 'BODY' ? window : this._element
     this._config = this._getConfig(config)
     this._selector = `${this._config.target} ${SELECTOR_NAV_LINKS}, ${this._config.target} ${SELECTOR_LIST_ITEMS}, ${this._config.target} .${CLASS_NAME_DROPDOWN_ITEM}`
     this._offsets = []
@@ -278,7 +278,7 @@ class ScrollSpy extends BaseComponent {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      let data = Data.getData(this, DATA_KEY)
+      let data = Data.get(this, DATA_KEY)
       const _config = typeof config === 'object' && config
 
       if (!data) {

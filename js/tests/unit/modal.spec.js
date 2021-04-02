@@ -56,6 +56,25 @@ describe('Modal', () => {
     })
   })
 
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(Modal.DATA_KEY).toEqual('bs.modal')
+    })
+  })
+
+  describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modalBySelector = new Modal('.modal')
+      const modalByElement = new Modal(modalEl)
+
+      expect(modalBySelector._element).toEqual(modalEl)
+      expect(modalByElement._element).toEqual(modalEl)
+    })
+  })
+
   describe('toggle', () => {
     it('should toggle a modal', done => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
@@ -140,6 +159,30 @@ describe('Modal', () => {
       })
 
       modal.toggle()
+    })
+
+    it('should not adjust the inline margin and padding of sticky and fixed elements when element do not have full width', done => {
+      fixtureEl.innerHTML = [
+        '<div class="sticky-top" style="margin-right: 0px; padding-right: 0px; width: calc(100vw - 50%)"></div>',
+        '<div class="modal"><div class="modal-dialog"></div></div>'
+      ].join('')
+
+      const stickyTopEl = fixtureEl.querySelector('.sticky-top')
+      const originalMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+      const originalPadding = Number.parseInt(window.getComputedStyle(stickyTopEl).paddingRight, 10)
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+        const currentPadding = Number.parseInt(window.getComputedStyle(stickyTopEl).paddingRight, 10)
+
+        expect(currentMargin).toEqual(originalMargin, 'sticky element\'s margin should not be adjusted while opening')
+        expect(currentPadding).toEqual(originalPadding, 'sticky element\'s padding should not be adjusted while opening')
+        done()
+      })
+
+      modal.show()
     })
 
     it('should ignore values set via CSS when trying to restore body padding after closing', done => {

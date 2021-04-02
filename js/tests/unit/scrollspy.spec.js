@@ -47,7 +47,24 @@ describe('ScrollSpy', () => {
     })
   })
 
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(ScrollSpy.DATA_KEY).toEqual('bs.scrollspy')
+    })
+  })
+
   describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = '<nav id="navigation"></nav><div class="content"></div>'
+
+      const sSpyEl = fixtureEl.querySelector('#navigation')
+      const sSpyBySelector = new ScrollSpy('#navigation')
+      const sSpyByElement = new ScrollSpy(sSpyEl)
+
+      expect(sSpyBySelector._element).toEqual(sSpyEl)
+      expect(sSpyByElement._element).toEqual(sSpyEl)
+    })
+
     it('should generate an id when there is not one', () => {
       fixtureEl.innerHTML = [
         '<nav></nav>',

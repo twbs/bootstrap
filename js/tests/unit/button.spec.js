@@ -18,9 +18,25 @@ describe('Button', () => {
     clearFixture()
   })
 
+  it('should take care of element either passed as a CSS selector or DOM element', () => {
+    fixtureEl.innerHTML = '<button data-bs-toggle="button">Placeholder</button>'
+    const buttonEl = fixtureEl.querySelector('[data-bs-toggle="button"]')
+    const buttonBySelector = new Button('[data-bs-toggle="button"]')
+    const buttonByElement = new Button(buttonEl)
+
+    expect(buttonBySelector._element).toEqual(buttonEl)
+    expect(buttonByElement._element).toEqual(buttonEl)
+  })
+
   describe('VERSION', () => {
     it('should return plugin version', () => {
       expect(Button.VERSION).toEqual(jasmine.any(String))
+    })
+  })
+
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(Button.DATA_KEY).toEqual('bs.button')
     })
   })
 

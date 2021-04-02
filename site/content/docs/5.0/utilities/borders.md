@@ -90,7 +90,7 @@ Use the scaling classes for larger or smaller rounded corners. Sizes range from 
 
 {{< scss-docs name="border-radius-mixins" file="scss/mixins/_border-radius.scss" >}}
 
-### Utilities
+### Utilities API
 
 Border utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 

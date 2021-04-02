@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): toast.js
+ * Bootstrap (v5.0.0-beta3): toast.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -189,7 +189,7 @@ class Toast extends BaseComponent {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      let data = Data.getData(this, DATA_KEY)
+      let data = Data.get(this, DATA_KEY)
       const _config = typeof config === 'object' && config
 
       if (!data) {
