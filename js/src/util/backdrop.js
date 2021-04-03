@@ -1,52 +1,49 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): util/backdrop.js
+ * Bootstrap (v5.0.0-beta3): util/backdrop.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import EventHandler from '../dom/event-handler'
-import { execute, getTransitionDurationFromElement, reflow } from './index'
+import { emulateTransitionEnd, execute, getTransitionDurationFromElement, reflow, typeCheckConfig } from './index'
 
+const Default = {
+  isVisible: true, // if false, we use the backdrop helper without adding any element to the dom
+  isAnimated: false,
+  rootElement: document.body // give the choice to place backdrop under different elements
+}
+
+const DefaultType = {
+  isVisible: 'boolean',
+  isAnimated: 'boolean',
+  rootElement: 'element'
+}
+const NAME = 'backdrop'
 const CLASS_NAME_BACKDROP = 'modal-backdrop'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 
-const EVENT_MOUSEDOWN = 'mousedown.bs.backdrop'
-
 class Backdrop {
-  constructor(isVisible = true, isAnimated = false) {
-    this._isVisible = isVisible
-    this._isAnimated = isAnimated
+  constructor(config) {
+    this._config = this._getConfig(config)
     this._isAppended = false
-    this._elem = this._createElement()
-  }
-
-  _get() {
-    return this._elem
-  }
-
-  onClick(callback) {
-    this._clickCallback = callback
+    this._element = null
   }
 
   show(callback) {
-    if (!this._isVisible) {
+    if (!this._config.isVisible) {
       execute(callback)
       return
     }
 
-    if (this._isAnimated) {
-      this._get().classList.add(CLASS_NAME_FADE)
-    }
-
     this._append()
 
-    if (this._isAnimated) {
-      reflow(this._get())
+    if (this._config.isAnimated) {
+      reflow(this._getElement())
     }
 
-    this._get().classList.add(CLASS_NAME_SHOW)
+    this._getElement().classList.add(CLASS_NAME_SHOW)
 
     this._emulateAnimation(() => {
       execute(callback)
@@ -54,26 +51,42 @@ class Backdrop {
   }
 
   hide(callback) {
-    EventHandler.off(this._get(), EVENT_MOUSEDOWN)
-
-    if (!this._isVisible) {
+    if (!this._config.isVisible) {
       execute(callback)
       return
     }
 
-    this._get().classList.remove(CLASS_NAME_SHOW)
+    this._getElement().classList.remove(CLASS_NAME_SHOW)
 
     this._emulateAnimation(() => {
-      this._remove()
+      this.dispose()
       execute(callback)
     })
   }
 
-  _createElement() {
-    const backdrop = document.createElement('div')
-    backdrop.className = CLASS_NAME_BACKDROP
+  // Private
 
-    return backdrop
+  _getElement() {
+    if (!this._element) {
+      const backdrop = document.createElement('div')
+      backdrop.className = CLASS_NAME_BACKDROP
+      if (this._config.isAnimated) {
+        backdrop.classList.add(CLASS_NAME_FADE)
+      }
+
+      this._element = backdrop
+    }
+
+    return this._element
+  }
+
+  _getConfig(config) {
+    config = {
+      ...Default,
+      ...(typeof config === 'object' ? config : {})
+    }
+    typeCheckConfig(NAME, config, DefaultType)
+    return config
   }
 
   _append() {
@@ -81,32 +94,29 @@ class Backdrop {
       return
     }
 
-    document.body.appendChild(this._get())
-
-    EventHandler.on(this._get(), EVENT_MOUSEDOWN, () => {
-      execute(this._clickCallback)
-    })
+    this._config.rootElement.appendChild(this._getElement())
 
     this._isAppended = true
   }
 
-  _remove() {
+  dispose() {
     if (!this._isAppended) {
       return
     }
 
-    this._get().parentNode.removeChild(this._get())
+    this._getElement().parentNode.removeChild(this._element)
     this._isAppended = false
   }
 
   _emulateAnimation(callback) {
-    if (!this._isAnimated) {
+    if (!this._config.isAnimated) {
       execute(callback)
       return
     }
 
-    const backdropTransitionDuration = getTransitionDurationFromElement(this._get())
-    setTimeout(() => execute(callback), backdropTransitionDuration + 5)
+    const backdropTransitionDuration = getTransitionDurationFromElement(this._getElement())
+    EventHandler.one(this._getElement(), 'transitionend', () => execute(callback))
+    emulateTransitionEnd(this._getElement(), backdropTransitionDuration)
   }
 }
 

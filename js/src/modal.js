@@ -201,6 +201,7 @@ class Modal extends BaseComponent {
 
     this._config = null
     this._dialog = null
+    this._backdrop.dispose()
     this._backdrop = null
     this._isShown = null
     this._ignoreBackdropClick = null
@@ -214,9 +215,10 @@ class Modal extends BaseComponent {
   // Private
 
   _initializeBackDrop() {
-    const isAnimated = this._isAnimated()
-
-    return new Backdrop((this._config.backdrop), isAnimated)
+    return new Backdrop({
+      isVisible: Boolean(this._config.backdrop), // 'static' option want to translated as 'true', and booleans will keep their value
+      isAnimated: this._isAnimated()
+    })
   }
 
   _getConfig(config) {
@@ -340,7 +342,7 @@ class Modal extends BaseComponent {
 
       if (this._config.backdrop === true) {
         this.hide()
-      } else {
+      } else if (this._config.backdrop === 'static') {
         this._triggerBackdropTransition()
       }
     })
