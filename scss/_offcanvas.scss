@@ -53,6 +53,16 @@
   transform: translateX(100%);
 }
 
+.offcanvas-top {
+  top: 0;
+  right: 0;
+  left: 0;
+  height: $offcanvas-vertical-height;
+  max-height: 100%;
+  border-bottom: $offcanvas-border-width solid $offcanvas-border-color;
+  transform: translateY(-100%);
+}
+
 .offcanvas-bottom {
   right: 0;
   left: 0;
