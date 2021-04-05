@@ -283,11 +283,9 @@ class Carousel {
 
     const move = event => {
       // ensure swiping with one touch and not pinching
-      if (event.originalEvent.touches && event.originalEvent.touches.length > 1) {
-        this.touchDeltaX = 0
-      } else {
-        this.touchDeltaX = event.originalEvent.touches[0].clientX - this.touchStartX
-      }
+      this.touchDeltaX = event.originalEvent.touches && event.originalEvent.touches.length > 1 ?
+        0 :
+        event.originalEvent.touches[0].clientX - this.touchStartX
     }
 
     const end = event => {
