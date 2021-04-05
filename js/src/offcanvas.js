@@ -112,7 +112,7 @@ class Offcanvas extends BaseComponent {
       document.body.classList.add(CLASS_NAME_BACKDROP_BODY)
     }
 
-    if (!this._config.scroll) {
+    if (this._hideScrollbar) {
       scrollBarHide()
     }
 
@@ -158,7 +158,7 @@ class Offcanvas extends BaseComponent {
         document.body.classList.remove(CLASS_NAME_BACKDROP_BODY)
       }
 
-      if (!this._config.scroll) {
+      if (this._hideScrollbar) {
         scrollBarReset()
       }
 
@@ -193,12 +193,26 @@ class Offcanvas extends BaseComponent {
     element.focus()
   }
 
+  get _hideScrollbar() {
+    return !this._config.scroll || this._element.offsetWidth >= document.body.offsetWidth
+  }
+
   _addEventListeners() {
     EventHandler.on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, () => this.hide())
 
     EventHandler.on(document, 'keydown', event => {
       if (this._config.keyboard && event.key === ESCAPE_KEY) {
         this.hide()
+      }
+    })
+
+    EventHandler.on(window, 'resize', () => {
+      if (this._isShown) {
+        if (this._hideScrollbar) {
+          scrollBarHide()
+        } else {
+          scrollBarReset()
+        }
       }
     })
 
