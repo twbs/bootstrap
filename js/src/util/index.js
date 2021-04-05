@@ -1,5 +1,3 @@
-import Data from '../dom/data'
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v5.0.0-beta3): util/index.js
@@ -232,22 +230,6 @@ const defineJQueryPlugin = (name, plugin) => {
   })
 }
 
-const basicJQueryInterface = (jq, Plugin, config) => {
-  return jq.each(function () {
-    const data = Data.get(this, Plugin.DATA_KEY) || new Plugin(this, typeof config === 'object' ? config : {})
-
-    if (typeof config !== 'string') {
-      return
-    }
-
-    if (typeof data[config] === 'undefined') {
-      throw new TypeError(`No method named "${config}"`)
-    }
-
-    data[config]()
-  })
-}
-
 export {
   getUID,
   getSelectorFromElement,
@@ -265,6 +247,5 @@ export {
   getjQuery,
   onDOMContentLoaded,
   isRTL,
-  basicJQueryInterface,
   defineJQueryPlugin
 }

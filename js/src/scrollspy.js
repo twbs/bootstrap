@@ -6,7 +6,6 @@
  */
 
 import {
-  basicJQueryInterface,
   defineJQueryPlugin,
   getSelectorFromElement,
   getUID,
@@ -278,7 +277,19 @@ class ScrollSpy extends BaseComponent {
   // Static
 
   static jQueryInterface(config) {
-    return basicJQueryInterface(this, ScrollSpy, config)
+    return this.each(function () {
+      const data = ScrollSpy.getInstance(this) || new ScrollSpy(this, typeof config === 'object' ? config : {})
+
+      if (typeof config !== 'string') {
+        return
+      }
+
+      if (typeof data[config] === 'undefined') {
+        throw new TypeError(`No method named "${config}"`)
+      }
+
+      data[config]()
+    })
   }
 }
 
