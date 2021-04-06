@@ -56,6 +56,25 @@ describe('Modal', () => {
     })
   })
 
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(Modal.DATA_KEY).toEqual('bs.modal')
+    })
+  })
+
+  describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modalBySelector = new Modal('.modal')
+      const modalByElement = new Modal(modalEl)
+
+      expect(modalBySelector._element).toEqual(modalEl)
+      expect(modalByElement._element).toEqual(modalEl)
+    })
+  })
+
   describe('toggle', () => {
     it('should toggle a modal', done => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
@@ -140,6 +159,30 @@ describe('Modal', () => {
       })
 
       modal.toggle()
+    })
+
+    it('should not adjust the inline margin and padding of sticky and fixed elements when element do not have full width', done => {
+      fixtureEl.innerHTML = [
+        '<div class="sticky-top" style="margin-right: 0px; padding-right: 0px; width: calc(100vw - 50%)"></div>',
+        '<div class="modal"><div class="modal-dialog"></div></div>'
+      ].join('')
+
+      const stickyTopEl = fixtureEl.querySelector('.sticky-top')
+      const originalMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+      const originalPadding = Number.parseInt(window.getComputedStyle(stickyTopEl).paddingRight, 10)
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+        const currentPadding = Number.parseInt(window.getComputedStyle(stickyTopEl).paddingRight, 10)
+
+        expect(currentMargin).toEqual(originalMargin, 'sticky element\'s margin should not be adjusted while opening')
+        expect(currentPadding).toEqual(originalPadding, 'sticky element\'s padding should not be adjusted while opening')
+        done()
+      })
+
+      modal.show()
     })
 
     it('should ignore values set via CSS when trying to restore body padding after closing', done => {
@@ -870,7 +913,7 @@ describe('Modal', () => {
   })
 
   describe('data-api', () => {
-    it('should open modal', done => {
+    it('should toggle modal', done => {
       fixtureEl.innerHTML = [
         '<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>',
         '<div id="exampleModal" class="modal"><div class="modal-dialog"></div></div>'
@@ -885,6 +928,15 @@ describe('Modal', () => {
         expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
         expect(modalEl.style.display).toEqual('block')
         expect(document.querySelector('.modal-backdrop')).toBeDefined()
+        setTimeout(() => trigger.click(), 10)
+      })
+
+      modalEl.addEventListener('hidden.bs.modal', () => {
+        expect(modalEl.getAttribute('aria-modal')).toEqual(null)
+        expect(modalEl.getAttribute('role')).toEqual(null)
+        expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
+        expect(modalEl.style.display).toEqual('none')
+        expect(document.querySelector('.modal-backdrop')).toEqual(null)
         done()
       })
 
@@ -1061,11 +1113,9 @@ describe('Modal', () => {
       jQueryMock.fn.modal = Modal.jQueryInterface
       jQueryMock.elements = [div]
 
-      try {
+      expect(() => {
         jQueryMock.fn.modal.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
+      }).toThrowError(TypeError, `No method named "${action}"`)
     })
 
     it('should call show method', () => {

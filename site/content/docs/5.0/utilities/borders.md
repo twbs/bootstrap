@@ -77,3 +77,23 @@ Use the scaling classes for larger or smaller rounded corners. Sizes range from 
 {{< placeholder width="75" height="75" class="rounded-2" title="Example default rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-3" title="Example large rounded image" >}}
 {{< /example >}}
+
+## Sass
+
+### Variables
+
+{{< scss-docs name="border-variables" file="scss/_variables.scss" >}}
+
+{{< scss-docs name="border-radius-variables" file="scss/_variables.scss" >}}
+
+### Mixins
+
+{{< scss-docs name="border-radius-mixins" file="scss/mixins/_border-radius.scss" >}}
+
+### Utilities API
+
+Border utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
+
+{{< scss-docs name="utils-borders" file="scss/_utilities.scss" >}}
+
+{{< scss-docs name="utils-border-radius" file="scss/_utilities.scss" >}}

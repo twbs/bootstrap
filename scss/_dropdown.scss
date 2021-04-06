@@ -17,12 +17,11 @@
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
   z-index: $zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
   min-width: $dropdown-min-width;
   padding: $dropdown-padding-y $dropdown-padding-x;
-  margin: $dropdown-spacer 0 0; // override default ul
+  margin: 0; // Override default margin of ul
   @include font-size($dropdown-font-size);
   color: $dropdown-color;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
@@ -33,9 +32,9 @@
   @include border-radius($dropdown-border-radius);
   @include box-shadow($dropdown-box-shadow);
 
-  // Reset positioning when positioned with Popper
-  &[style] {
-    right: auto#{"/* rtl:ignore */"} !important; // stylelint-disable-line declaration-no-important
+  &[data-bs-popper] {
+    left: 0;
+    margin-top: $dropdown-spacer;
   }
 }
 
@@ -49,14 +48,20 @@
 
     .dropdown-menu#{$infix}-start {
       --bs-position: start;
-      right: auto #{"/* rtl:ignore */"};
-      left: 0 #{"/* rtl:ignore */"};
+
+      &[data-bs-popper] {
+        right: auto #{"/* rtl:ignore */"};
+        left: 0 #{"/* rtl:ignore */"};
+      }
     }
 
     .dropdown-menu#{$infix}-end {
       --bs-position: end;
-      right: 0 #{"/* rtl:ignore */"};
-      left: auto #{"/* rtl:ignore */"};
+
+      &[data-bs-popper] {
+        right: 0 #{"/* rtl:ignore */"};
+        left: auto #{"/* rtl:ignore */"};
+      }
     }
   }
 }
@@ -65,7 +70,7 @@
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 // Just add .dropup after the standard .dropdown class and you're set.
 .dropup {
-  .dropdown-menu {
+  .dropdown-menu[data-bs-popper] {
     top: auto;
     bottom: 100%;
     margin-top: 0;
@@ -82,8 +87,11 @@
     top: 0;
     right: auto;
     left: 100%;
-    margin-top: 0;
-    margin-left: $dropdown-spacer;
+
+    &[data-bs-popper] {
+      margin-top: 0;
+      margin-left: $dropdown-spacer;
+    }
   }
 
   .dropdown-toggle {
@@ -99,8 +107,11 @@
     top: 0;
     right: 100%;
     left: auto;
-    margin-top: 0;
-    margin-right: $dropdown-spacer;
+
+    &[data-bs-popper] {
+      margin-top: 0;
+      margin-right: $dropdown-spacer;
+    }
   }
 
   .dropdown-toggle {

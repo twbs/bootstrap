@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta1): dom/event-handler.js
+ * Bootstrap (v5.0.0-beta3): dom/event-handler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -112,6 +112,7 @@ function bootstrapDelegationHandler(element, selector, fn) {
           event.delegateTarget = target
 
           if (handler.oneOff) {
+            // eslint-disable-next-line unicorn/consistent-destructuring
             EventHandler.off(element, event.type, fn)
           }
 

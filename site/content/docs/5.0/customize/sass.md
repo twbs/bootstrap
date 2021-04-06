@@ -6,7 +6,7 @@ group: customize
 toc: true
 ---
 
-Utilize our source Sass files to take advantage of variables, maps, mixins, and more. In our build we've increased the Sass rounding precision to 6 (by default it's 5) to prevent issues with browser rounding.
+Utilize our source Sass files to take advantage of variables, maps, mixins, and more.
 
 ## File structure
 
@@ -41,25 +41,35 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 // Custom.scss
 // Option A: Include all of Bootstrap
 
+// Include any default variable overrides here (though functions won't be available)
+
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+// Then add additional custom code here
 ```
 
 ```scss
 // Custom.scss
 // Option B: Include parts of Bootstrap
 
-// Required
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "../node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+
+// 3. Include remainder of required Bootstrap stylesheets
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/mixins";
 
-// Optional
+// 4. Include any optional Bootstrap components as you like
 @import "../node_modules/bootstrap/scss/root";
 @import "../node_modules/bootstrap/scss/reboot";
 @import "../node_modules/bootstrap/scss/type";
 @import "../node_modules/bootstrap/scss/images";
 @import "../node_modules/bootstrap/scss/containers";
 @import "../node_modules/bootstrap/scss/grid";
+
+// 5. Add additional custom code here
 ```
 
 With that setup in place, you can begin to modify any of the Sass variables and maps in your `custom.scss`. You can also start to add parts of Bootstrap under the `// Optional` section as needed. We suggest using the full import stack from our `bootstrap.scss` file as your starting point.
@@ -70,20 +80,36 @@ Every Sass variable in Bootstrap includes the `!default` flag allowing you to ov
 
 You will find the complete list of Bootstrap's variables in `scss/_variables.scss`. Some variables are set to `null`, these variables don't output the property unless they are overridden in your configuration.
 
-Variable overrides within the same Sass file can come before or after the default variables. However, when overriding across Sass files, your overrides must come before you import Bootstrap's Sass files.
+Variable overrides must come after our functions, variables, and mixins are imported, but before the rest of the imports.
 
 Here's an example that changes the `background-color` and `color` for the `<body>` when importing and compiling Bootstrap via npm:
 
 ```scss
-// Your variable overrides
+// Required
+@import "../node_modules/bootstrap/scss/functions";
+
+// Default variable overrides
 $body-bg: #000;
 $body-color: #111;
 
+// Required
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
 // Bootstrap and its default variables
-@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Optional Bootstrap components here
+@import "../node_modules/bootstrap/scss/root";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+// etc
 ```
 
 Repeat as necessary for any variable in Bootstrap, including the global options below.
+
+{{< callout info >}}
+{{< partial "callout-info-npm-starter.md" >}}
+{{< /callout >}}
 
 ## Maps and loops
 
@@ -139,7 +165,7 @@ $theme-colors: map-remove($theme-colors, "info", "light", "dark");
 @import "../node_modules/bootstrap/scss/root";
 @import "../node_modules/bootstrap/scss/reboot";
 @import "../node_modules/bootstrap/scss/type";
-...
+// etc
 ```
 
 ## Required keys

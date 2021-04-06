@@ -2,15 +2,17 @@
 // Rotating border
 //
 
+// scss-docs-start spinner-border-keyframes
 @keyframes spinner-border {
   to { transform: rotate(360deg) #{"/* rtl:ignore */"}; }
 }
+// scss-docs-end spinner-border-keyframes
 
 .spinner-border {
   display: inline-block;
   width: $spinner-width;
   height: $spinner-height;
-  vertical-align: text-bottom;
+  vertical-align: $spinner-vertical-align;
   border: $spinner-border-width solid currentColor;
   border-right-color: transparent;
   // stylelint-disable-next-line property-disallowed-list
@@ -28,6 +30,7 @@
 // Growing circle
 //
 
+// scss-docs-start spinner-grow-keyframes
 @keyframes spinner-grow {
   0% {
     transform: scale(0);
@@ -37,12 +40,13 @@
     transform: none;
   }
 }
+// scss-docs-end spinner-grow-keyframes
 
 .spinner-grow {
   display: inline-block;
   width: $spinner-width;
   height: $spinner-height;
-  vertical-align: text-bottom;
+  vertical-align: $spinner-vertical-align;
   background-color: currentColor;
   // stylelint-disable-next-line property-disallowed-list
   border-radius: 50%;

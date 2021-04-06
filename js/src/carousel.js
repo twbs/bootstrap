@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta1): carousel.js
+ * Bootstrap (v5.0.0-beta3): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -10,8 +10,8 @@ import {
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
-  isVisible,
   isRTL,
+  isVisible,
   reflow,
   triggerTransitionEnd,
   typeCheckConfig
@@ -56,8 +56,8 @@ const DefaultType = {
   touch: 'boolean'
 }
 
-const DIRECTION_NEXT = 'next'
-const DIRECTION_PREV = 'prev'
+const ORDER_NEXT = 'next'
+const ORDER_PREV = 'prev'
 const DIRECTION_LEFT = 'left'
 const DIRECTION_RIGHT = 'right'
 
@@ -90,6 +90,7 @@ const SELECTOR_ITEM = '.carousel-item'
 const SELECTOR_ITEM_IMG = '.carousel-item img'
 const SELECTOR_NEXT_PREV = '.carousel-item-next, .carousel-item-prev'
 const SELECTOR_INDICATORS = '.carousel-indicators'
+const SELECTOR_INDICATOR = '[data-bs-target]'
 const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]'
 const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]'
 
@@ -136,7 +137,7 @@ class Carousel extends BaseComponent {
 
   next() {
     if (!this._isSliding) {
-      this._slide(DIRECTION_NEXT)
+      this._slide(ORDER_NEXT)
     }
   }
 
@@ -150,7 +151,7 @@ class Carousel extends BaseComponent {
 
   prev() {
     if (!this._isSliding) {
-      this._slide(DIRECTION_PREV)
+      this._slide(ORDER_PREV)
     }
   }
 
@@ -207,15 +208,14 @@ class Carousel extends BaseComponent {
       return
     }
 
-    const direction = index > activeIndex ?
-      DIRECTION_NEXT :
-      DIRECTION_PREV
+    const order = index > activeIndex ?
+      ORDER_NEXT :
+      ORDER_PREV
 
-    this._slide(direction, this._items[index])
+    this._slide(order, this._items[index])
   }
 
   dispose() {
-    super.dispose()
     EventHandler.off(this._element, EVENT_KEY)
 
     this._items = null
@@ -225,6 +225,8 @@ class Carousel extends BaseComponent {
     this._isSliding = null
     this._activeElement = null
     this._indicatorsElement = null
+
+    super.dispose()
   }
 
   // Private
@@ -249,23 +251,11 @@ class Carousel extends BaseComponent {
 
     this.touchDeltaX = 0
 
-    // swipe left
-    if (direction > 0) {
-      if (isRTL) {
-        this.next()
-      } else {
-        this.prev()
-      }
+    if (!direction) {
+      return
     }
 
-    // swipe right
-    if (direction < 0) {
-      if (isRTL) {
-        this.prev()
-      } else {
-        this.next()
-      }
-    }
+    this._slide(direction > 0 ? DIRECTION_RIGHT : DIRECTION_LEFT)
   }
 
   _addEventListeners() {
@@ -294,11 +284,9 @@ class Carousel extends BaseComponent {
 
     const move = event => {
       // ensure swiping with one touch and not pinching
-      if (event.touches && event.touches.length > 1) {
-        this.touchDeltaX = 0
-      } else {
-        this.touchDeltaX = event.touches[0].clientX - this.touchStartX
-      }
+      this.touchDeltaX = event.touches && event.touches.length > 1 ?
+        0 :
+        event.touches[0].clientX - this.touchStartX
     }
 
     const end = event => {
@@ -348,18 +336,10 @@ class Carousel extends BaseComponent {
 
     if (event.key === ARROW_LEFT_KEY) {
       event.preventDefault()
-      if (isRTL) {
-        this.next()
-      } else {
-        this.prev()
-      }
+      this._slide(DIRECTION_LEFT)
     } else if (event.key === ARROW_RIGHT_KEY) {
       event.preventDefault()
-      if (isRTL) {
-        this.prev()
-      } else {
-        this.next()
-      }
+      this._slide(DIRECTION_RIGHT)
     }
   }
 
@@ -371,19 +351,18 @@ class Carousel extends BaseComponent {
     return this._items.indexOf(element)
   }
 
-  _getItemByDirection(direction, activeElement) {
-    const isNextDirection = direction === DIRECTION_NEXT
-    const isPrevDirection = direction === DIRECTION_PREV
+  _getItemByOrder(order, activeElement) {
+    const isNext = order === ORDER_NEXT
+    const isPrev = order === ORDER_PREV
     const activeIndex = this._getItemIndex(activeElement)
     const lastItemIndex = this._items.length - 1
-    const isGoingToWrap = (isPrevDirection && activeIndex === 0) ||
-                            (isNextDirection && activeIndex === lastItemIndex)
+    const isGoingToWrap = (isPrev && activeIndex === 0) || (isNext && activeIndex === lastItemIndex)
 
     if (isGoingToWrap && !this._config.wrap) {
       return activeElement
     }
 
-    const delta = direction === DIRECTION_PREV ? -1 : 1
+    const delta = isPrev ? -1 : 1
     const itemIndex = (activeIndex + delta) % this._items.length
 
     return itemIndex === -1 ?
@@ -405,18 +384,19 @@ class Carousel extends BaseComponent {
 
   _setActiveIndicatorElement(element) {
     if (this._indicatorsElement) {
-      const indicators = SelectorEngine.find(SELECTOR_ACTIVE, this._indicatorsElement)
+      const activeIndicator = SelectorEngine.findOne(SELECTOR_ACTIVE, this._indicatorsElement)
+
+      activeIndicator.classList.remove(CLASS_NAME_ACTIVE)
+      activeIndicator.removeAttribute('aria-current')
+
+      const indicators = SelectorEngine.find(SELECTOR_INDICATOR, this._indicatorsElement)
 
       for (let i = 0; i < indicators.length; i++) {
-        indicators[i].classList.remove(CLASS_NAME_ACTIVE)
-      }
-
-      const nextIndicator = this._indicatorsElement.children[
-        this._getItemIndex(element)
-      ]
-
-      if (nextIndicator) {
-        nextIndicator.classList.add(CLASS_NAME_ACTIVE)
+        if (Number.parseInt(indicators[i].getAttribute('data-bs-slide-to'), 10) === this._getItemIndex(element)) {
+          indicators[i].classList.add(CLASS_NAME_ACTIVE)
+          indicators[i].setAttribute('aria-current', 'true')
+          break
+        }
       }
     }
   }
@@ -438,17 +418,19 @@ class Carousel extends BaseComponent {
     }
   }
 
-  _slide(direction, element) {
+  _slide(directionOrOrder, element) {
+    const order = this._directionToOrder(directionOrOrder)
     const activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
     const activeElementIndex = this._getItemIndex(activeElement)
-    const nextElement = element || (activeElement && this._getItemByDirection(direction, activeElement))
+    const nextElement = element || this._getItemByOrder(order, activeElement)
 
     const nextElementIndex = this._getItemIndex(nextElement)
     const isCycling = Boolean(this._interval)
 
-    const directionalClassName = direction === DIRECTION_NEXT ? CLASS_NAME_START : CLASS_NAME_END
-    const orderClassName = direction === DIRECTION_NEXT ? CLASS_NAME_NEXT : CLASS_NAME_PREV
-    const eventDirectionName = direction === DIRECTION_NEXT ? DIRECTION_LEFT : DIRECTION_RIGHT
+    const isNext = order === ORDER_NEXT
+    const directionalClassName = isNext ? CLASS_NAME_START : CLASS_NAME_END
+    const orderClassName = isNext ? CLASS_NAME_NEXT : CLASS_NAME_PREV
+    const eventDirectionName = this._orderToDirection(order)
 
     if (nextElement && nextElement.classList.contains(CLASS_NAME_ACTIVE)) {
       this._isSliding = false
@@ -521,10 +503,34 @@ class Carousel extends BaseComponent {
     }
   }
 
+  _directionToOrder(direction) {
+    if (![DIRECTION_RIGHT, DIRECTION_LEFT].includes(direction)) {
+      return direction
+    }
+
+    if (isRTL()) {
+      return direction === DIRECTION_RIGHT ? ORDER_PREV : ORDER_NEXT
+    }
+
+    return direction === DIRECTION_RIGHT ? ORDER_NEXT : ORDER_PREV
+  }
+
+  _orderToDirection(order) {
+    if (![ORDER_NEXT, ORDER_PREV].includes(order)) {
+      return order
+    }
+
+    if (isRTL()) {
+      return order === ORDER_NEXT ? DIRECTION_LEFT : DIRECTION_RIGHT
+    }
+
+    return order === ORDER_NEXT ? DIRECTION_RIGHT : DIRECTION_LEFT
+  }
+
   // Static
 
   static carouselInterface(element, config) {
-    let data = Data.getData(element, DATA_KEY)
+    let data = Data.get(element, DATA_KEY)
     let _config = {
       ...Default,
       ...Manipulator.getDataAttributes(element)
@@ -583,7 +589,7 @@ class Carousel extends BaseComponent {
     Carousel.carouselInterface(target, config)
 
     if (slideIndex) {
-      Data.getData(target, DATA_KEY).to(slideIndex)
+      Data.get(target, DATA_KEY).to(slideIndex)
     }
 
     event.preventDefault()
@@ -602,7 +608,7 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
 
   for (let i = 0, len = carousels.length; i < len; i++) {
-    Carousel.carouselInterface(carousels[i], Data.getData(carousels[i], DATA_KEY))
+    Carousel.carouselInterface(carousels[i], Data.get(carousels[i], DATA_KEY))
   }
 })
 
