@@ -605,6 +605,23 @@ describe('ScrollSpy', () => {
       expect(ScrollSpy.getInstance(div)).toBeDefined()
     })
 
+    it('should create a scrollspy with given config', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
+      jQueryMock.elements = [div]
+
+      jQueryMock.fn.scrollspy.call(jQueryMock, { offset: 15 })
+      spyOn(ScrollSpy.prototype, 'constructor')
+      expect(ScrollSpy.prototype.constructor).not.toHaveBeenCalledWith(div, { offset: 15 })
+
+      const scrollspy = ScrollSpy.getInstance(div)
+      expect(scrollspy).toBeDefined()
+      expect(scrollspy._config.offset).toBe(15)
+    })
+
     it('should not re create a scrollspy', () => {
       fixtureEl.innerHTML = '<div></div>'
 
