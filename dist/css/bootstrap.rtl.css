@@ -193,7 +193,7 @@ strong {
 }
 
 small, .small {
-  font-size: 0.875em;
+  font-size: 0.889rem;
 }
 
 mark, .mark {
@@ -465,14 +465,14 @@ progress {
 }
 
 .lead {
-  font-size: 1.25rem;
-  font-weight: 300;
+  font-size: 1.125rem;
+  font-weight: 400;
 }
 
 .display-1 {
   font-size: calc(1.6452rem + 4.7424vw);
   font-family: "Work Sans", sans-serif;
-  font-weight: 300;
+  font-weight: 700;
   line-height: 1.2;
 }
 @media (min-width: 1200px) {
@@ -484,7 +484,7 @@ progress {
 .display-2 {
   font-size: calc(1.5874rem + 4.0488vw);
   font-family: "Work Sans", sans-serif;
-  font-weight: 300;
+  font-weight: 700;
   line-height: 1.2;
 }
 @media (min-width: 1200px) {
@@ -496,7 +496,7 @@ progress {
 .display-3 {
   font-size: calc(1.536rem + 3.432vw);
   font-family: "Work Sans", sans-serif;
-  font-weight: 300;
+  font-weight: 700;
   line-height: 1.2;
 }
 @media (min-width: 1200px) {
@@ -508,7 +508,7 @@ progress {
 .display-4 {
   font-size: calc(1.4903rem + 2.8836vw);
   font-family: "Work Sans", sans-serif;
-  font-weight: 300;
+  font-weight: 700;
   line-height: 1.2;
 }
 @media (min-width: 1200px) {
@@ -518,26 +518,26 @@ progress {
 }
 
 .display-5 {
-  font-size: calc(1.536rem + 3.432vw);
+  font-size: calc(1.4497rem + 2.3964vw);
   font-family: "Work Sans", sans-serif;
-  font-weight: 300;
+  font-weight: 700;
   line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-5 {
-    font-size: 4.11rem;
+    font-size: 3.247rem;
   }
 }
 
 .display-6 {
-  font-size: calc(1.536rem + 3.432vw);
+  font-size: calc(1.4137rem + 1.9644vw);
   font-family: "Work Sans", sans-serif;
-  font-weight: 300;
+  font-weight: 700;
   line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-6 {
-    font-size: 4.11rem;
+    font-size: 2.887rem;
   }
 }
 
@@ -2549,7 +2549,7 @@ textarea.form-control-lg {
 }
 .was-validated .form-control:valid:focus, .form-control.is-valid:focus {
   border-color: #198754;
-  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+  box-shadow: 0 0 none 0.25rem rgba(25, 135, 84, 0.25);
 }
 
 .was-validated textarea.form-control:valid, textarea.form-control.is-valid {
@@ -2566,7 +2566,7 @@ textarea.form-control-lg {
 }
 .was-validated .form-select:valid:focus, .form-select.is-valid:focus {
   border-color: #198754;
-  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+  box-shadow: 0 0 none 0.25rem rgba(25, 135, 84, 0.25);
 }
 
 .was-validated .form-check-input:valid, .form-check-input.is-valid {
@@ -2576,7 +2576,7 @@ textarea.form-control-lg {
   background-color: #198754;
 }
 .was-validated .form-check-input:valid:focus, .form-check-input.is-valid:focus {
-  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+  box-shadow: 0 0 none 0.25rem rgba(25, 135, 84, 0.25);
 }
 .was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
   color: #198754;
@@ -2631,7 +2631,7 @@ textarea.form-control-lg {
 }
 .was-validated .form-control:invalid:focus, .form-control.is-invalid:focus {
   border-color: #dc3545;
-  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+  box-shadow: 0 0 none 0.25rem rgba(220, 53, 69, 0.25);
 }
 
 .was-validated textarea.form-control:invalid, textarea.form-control.is-invalid {
@@ -2648,7 +2648,7 @@ textarea.form-control-lg {
 }
 .was-validated .form-select:invalid:focus, .form-select.is-invalid:focus {
   border-color: #dc3545;
-  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+  box-shadow: 0 0 none 0.25rem rgba(220, 53, 69, 0.25);
 }
 
 .was-validated .form-check-input:invalid, .form-check-input.is-invalid {
@@ -2658,7 +2658,7 @@ textarea.form-control-lg {
   background-color: #dc3545;
 }
 .was-validated .form-check-input:invalid:focus, .form-check-input.is-invalid:focus {
-  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+  box-shadow: 0 0 none 0.25rem rgba(220, 53, 69, 0.25);
 }
 .was-validated .form-check-input:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label {
   color: #dc3545;

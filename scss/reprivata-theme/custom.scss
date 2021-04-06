@@ -71,15 +71,15 @@ $theme-colors: (
   "dark": $dark,
 );
 
-$scarlet-100: tint-color($scarlet, 80%);
-$scarlet-200: tint-color($scarlet, 60%);
-$scarlet-300: tint-color($scarlet, 40%);
-$scarlet-400: tint-color($scarlet, 20%);
-$scarlet-500: $scarlet;
-$scarlet-600: shade-color($scarlet, 20%);
-$scarlet-700: shade-color($scarlet, 40%);
-$scarlet-800: shade-color($scarlet, 60%);
-$scarlet-900: shade-color($scarlet, 80%);
+// $scarlet-100: tint-color($scarlet, 80%);
+// $scarlet-200: tint-color($scarlet, 60%);
+// $scarlet-300: tint-color($scarlet, 40%);
+// $scarlet-400: tint-color($scarlet, 20%);
+// $scarlet-500: $scarlet;
+// $scarlet-600: shade-color($scarlet, 20%);
+// $scarlet-700: shade-color($scarlet, 40%);
+// $scarlet-800: shade-color($scarlet, 60%);
+// $scarlet-900: shade-color($scarlet, 80%);
 
 // spacer
 $spacers: (
@@ -185,3 +185,24 @@ $display-font-family: $work-sans;
 $lead-font-size: $font-size-base * 1.125;
 $lead-font-weight: 400;
 $small-font-size: 0.889rem;
+
+// Buttons + Forms
+//
+// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
+
+// scss-docs-start input-btn-variables
+
+$input-btn-padding-y: 16px;
+$input-btn-padding-x: 8px;
+
+$input-btn-font-size: $small-font-size;
+
+$input-btn-focus-width: 2px;
+// $input-btn-focus-color-opacity: none;
+$input-btn-focus-color: $blue;
+$input-btn-focus-blur: none;
+// $input-btn-focus-box-shadow: 0;
+
+$input-btn-padding-y-sm: 8px;
+$input-btn-padding-x-sm: 4px;
+$input-btn-font-size-sm: $small-font-size;
