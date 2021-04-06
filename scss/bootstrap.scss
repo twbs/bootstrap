@@ -9,8 +9,12 @@
 // Configuration
 @import "functions";
 @import "variables";
+
 @import "mixins";
 @import "utilities";
+
+//Custom theme
+@import "./reprivata-theme/custom";
 
 // Layout & components
 @import "root";

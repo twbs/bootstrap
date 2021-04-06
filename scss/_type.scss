@@ -25,7 +25,6 @@
   @extend h6;
 }
 
-
 .lead {
   @include font-size($lead-font-size);
   font-weight: $lead-font-weight;
@@ -35,6 +34,7 @@
 @each $display, $font-size in $display-font-sizes {
   .display-#{$display} {
     @include font-size($font-size);
+    font-family: $display-font-family;
     font-weight: $display-font-weight;
     line-height: $display-line-height;
   }
@@ -70,7 +70,6 @@
     margin-right: $list-inline-padding;
   }
 }
-
 
 //
 // Misc

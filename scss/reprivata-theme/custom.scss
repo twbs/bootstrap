@@ -1,0 +1,187 @@
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212428;
+$black: #000;
+
+$grays: (
+  "100": $gray-100,
+  "200": $gray-200,
+  "300": $gray-300,
+  "400": $gray-400,
+  "500": $gray-500,
+  "600": $gray-600,
+  "700": $gray-700,
+  "800": $gray-800,
+  "900": $gray-900,
+);
+
+$blue: #00a2ea;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #d63384;
+$red: #bf0025;
+$scarlet: #ea002d;
+$orange: #fd7e14;
+$yellow: #eabd00;
+$green: #17d351;
+$teal: #20c997;
+$cyan: #0dcaf0;
+
+$colors: (
+  "blue": $blue,
+  "indigo": $indigo,
+  "purple": $purple,
+  "pink": $pink,
+  "red": $red,
+  "scarlet": $scarlet,
+  "orange": $orange,
+  "yellow": $yellow,
+  "green": $green,
+  "teal": $teal,
+  "cyan": $cyan,
+  "white": $white,
+  "gray": $gray-600,
+  "gray-dark": $gray-800,
+);
+
+$primary: $red;
+$secondary: $gray-900;
+$success: $green;
+$info: $blue;
+$warning: $yellow;
+$danger: $scarlet;
+$light: $gray-100;
+$dark: $gray-900;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+);
+
+$scarlet-100: tint-color($scarlet, 80%);
+$scarlet-200: tint-color($scarlet, 60%);
+$scarlet-300: tint-color($scarlet, 40%);
+$scarlet-400: tint-color($scarlet, 20%);
+$scarlet-500: $scarlet;
+$scarlet-600: shade-color($scarlet, 20%);
+$scarlet-700: shade-color($scarlet, 40%);
+$scarlet-800: shade-color($scarlet, 60%);
+$scarlet-900: shade-color($scarlet, 80%);
+
+// spacer
+$spacers: (
+  0: 0,
+  1: 2px,
+  2: 4px,
+  3: 6px,
+  4: 8px,
+  5: 10px,
+  6: 12px,
+  7: 14px,
+  8: 16px,
+  9: 18px,
+  10: 20px,
+  11: 22px,
+  12: 24px,
+  13: 26px,
+  14: 28px,
+  15: 30px,
+  16: 32px,
+  17: 34px,
+  18: 36px,
+  19: 38px,
+  20: 40px,
+  21: 42px,
+  22: 44px,
+  23: 46px,
+  24: 48px,
+  25: 49px,
+  26: 50px,
+  27: 52px,
+  28: 54px,
+  29: 56px,
+  30: 58px,
+  31: 60px,
+  32: 62px,
+  33: 64px,
+  34: 66px,
+  35: 68px,
+  36: 70px,
+  37: 72px,
+  38: 74px,
+  39: 76px,
+  41: 78px,
+  42: 80px,
+);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 600px,
+  md: 960px,
+  lg: 1280px,
+  xl: 1920px,
+);
+
+// scss-docs-start border-radius-variables
+$border-radius: 4px;
+$border-radius-sm: 2px;
+$border-radius-lg: 4px;
+$border-radius-pill: 50rem;
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Work+Sans:wght@700&display=swap");
+
+$open-sans: "Open Sans", sans-serif;
+$work-sans: "Work Sans", sans-serif;
+
+$font-family-sans-serif: $open-sans;
+
+$font-size-root: 16px;
+$font-size-base: 1rem;
+$font-size-sm: $font-size-base * 0.889;
+$font-size-lg: $font-size-base * 1.125;
+
+$h1-font-size: $font-size-base * 2.281;
+$h2-font-size: $font-size-base * 2.027;
+$h3-font-size: $font-size-base * 1.802;
+$h4-font-size: $font-size-base * 1.602;
+$h5-font-size: $font-size-base * 1.424;
+$h6-font-size: $font-size-base * 1.266;
+
+// scss-docs-start headings-variables
+$headings-font-family: $work-sans;
+$headings-font-weight: 700;
+$headings-line-height: 1.2;
+
+// scss-docs-start display-headings
+$display-font-sizes: (
+  1: 5.202rem,
+  2: 4.624rem,
+  3: 4.11rem,
+  4: 3.653rem,
+  5: 3.247rem,
+  6: 2.887rem,
+);
+
+$display-font-weight: 700;
+$display-font-family: $work-sans;
+
+// scss-docs-start type-variables
+$lead-font-size: $font-size-base * 1.125;
+$lead-font-weight: 400;
+$small-font-size: 0.889rem;
