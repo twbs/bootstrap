@@ -146,20 +146,20 @@ describe('Offcanvas', () => {
     })
   })
   describe('options', () => {
-    it('if scroll is enabled, should allow body to scroll while offcanvas is open', done => {
+    it('if scroll is enabled, should allow body to scroll while offcanvas is open, except when viewport is blocked', done => {
       fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl, { scroll: true })
-      const initialOverFlow = document.body.style.overflow
+      const hideScrollBar = fixtureEl.offsetWidth >= document.body.offsetWidth
 
       offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
-        expect(document.body.style.overflow).toEqual(initialOverFlow)
+        expect(document.body.style.overflow).toEqual(hideScrollBar ? 'hidden' : 'auto')
 
         offCanvas.hide()
       })
       offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
-        expect(document.body.style.overflow).toEqual(initialOverFlow)
+        expect(document.body.style.overflow).toEqual('auto')
         done()
       })
       offCanvas.show()
