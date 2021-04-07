@@ -35,7 +35,7 @@ const _setElementAttributes = (selector, styleProp, callback) => {
       const actualValue = element.style[styleProp]
       const calculatedValue = window.getComputedStyle(element)[styleProp]
       Manipulator.setDataAttribute(element, styleProp, actualValue)
-      element.style[styleProp] = callback(Number.parseFloat(calculatedValue)) + 'px'
+      element.style[styleProp] = `${callback(Number.parseFloat(calculatedValue))}px`
     })
 }
 
