@@ -2,7 +2,7 @@ import Modal from '../../src/modal'
 import EventHandler from '../../src/dom/event-handler'
 
 /** Test helpers */
-import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
+import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Modal', () => {
   let fixtureEl
@@ -1088,6 +1088,23 @@ describe('Modal', () => {
       jQueryMock.fn.modal.call(jQueryMock)
 
       expect(Modal.getInstance(div)).toBeDefined()
+    })
+
+    it('should create a modal with given config', () => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      jQueryMock.fn.modal = Modal.jQueryInterface
+      jQueryMock.elements = [div]
+
+      jQueryMock.fn.modal.call(jQueryMock, { keyboard: false })
+      spyOn(Modal.prototype, 'constructor')
+      expect(Modal.prototype.constructor).not.toHaveBeenCalledWith(div, { keyboard: false })
+
+      const modal = Modal.getInstance(div)
+      expect(modal).toBeDefined()
+      expect(modal._config.keyboard).toBe(false)
     })
 
     it('should not re create a modal', () => {
