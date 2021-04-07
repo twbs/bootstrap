@@ -28,14 +28,14 @@ describe('Backdrop', () => {
         isVisible: true,
         isAnimated: false
       })
-      const elems = () => document.querySelectorAll(CLASS_BACKDROP)
+      const getElements = () => document.querySelectorAll(CLASS_BACKDROP)
 
-      expect(elems().length).toEqual(0)
+      expect(getElements().length).toEqual(0)
 
       instance.show()
       instance.show(() => {
-        expect(elems().length).toEqual(1)
-        elems().forEach(el => {
+        expect(getElements().length).toEqual(1)
+        getElements().forEach(el => {
           expect(el.classList.contains(CLASS_NAME_SHOW)).toEqual(true)
         })
         done()
@@ -47,11 +47,11 @@ describe('Backdrop', () => {
         isVisible: false,
         isAnimated: true
       })
-      const elems = () => document.querySelectorAll(CLASS_BACKDROP)
+      const getElements = () => document.querySelectorAll(CLASS_BACKDROP)
 
-      expect(elems().length).toEqual(0)
+      expect(getElements().length).toEqual(0)
       instance.show(() => {
-        expect(elems().length).toEqual(0)
+        expect(getElements().length).toEqual(0)
         done()
       })
     })
@@ -61,13 +61,13 @@ describe('Backdrop', () => {
         isVisible: true,
         isAnimated: true
       })
-      const elems = () => document.querySelectorAll(CLASS_BACKDROP)
+      const getElements = () => document.querySelectorAll(CLASS_BACKDROP)
 
-      expect(elems().length).toEqual(0)
+      expect(getElements().length).toEqual(0)
 
       instance.show(() => {
-        expect(elems().length).toEqual(1)
-        elems().forEach(el => {
+        expect(getElements().length).toEqual(1)
+        getElements().forEach(el => {
           expect(el.classList.contains(CLASS_NAME_FADE)).toEqual(true)
         })
         done()
@@ -78,9 +78,9 @@ describe('Backdrop', () => {
       const instance = new Backdrop({
         isVisible: true
       })
-      const elem = () => document.querySelector(CLASS_BACKDROP)
+      const getElement = () => document.querySelector(CLASS_BACKDROP)
       instance.show(() => {
-        expect(elem().parentElement).toEqual(document.body)
+        expect(getElement().parentElement).toEqual(document.body)
         done()
       })
     })
@@ -96,9 +96,9 @@ describe('Backdrop', () => {
         isVisible: true,
         rootElement: wrapper
       })
-      const elem = () => document.querySelector(CLASS_BACKDROP)
+      const getElement = () => document.querySelector(CLASS_BACKDROP)
       instance.show(() => {
-        expect(elem().parentElement).toEqual(wrapper)
+        expect(getElement().parentElement).toEqual(wrapper)
         done()
       })
     })
@@ -111,13 +111,13 @@ describe('Backdrop', () => {
         isAnimated: true
       })
 
-      const elems = () => document.body.querySelectorAll(CLASS_BACKDROP)
+      const getElements = () => document.body.querySelectorAll(CLASS_BACKDROP)
 
-      expect(elems().length).toEqual(0)
+      expect(getElements().length).toEqual(0)
       instance.show(() => {
-        expect(elems().length).toEqual(1)
+        expect(getElements().length).toEqual(1)
         instance.hide(() => {
-          expect(elems().length).toEqual(0)
+          expect(getElements().length).toEqual(0)
           done()
         })
       })
@@ -142,14 +142,14 @@ describe('Backdrop', () => {
         isVisible: false,
         isAnimated: true
       })
-      const elems = () => document.querySelectorAll(CLASS_BACKDROP)
+      const getElements = () => document.querySelectorAll(CLASS_BACKDROP)
       const spy = spyOn(instance, 'dispose').and.callThrough()
 
-      expect(elems().length).toEqual(0)
+      expect(getElements().length).toEqual(0)
       expect(instance._isAppended).toEqual(false)
       instance.show(() => {
         instance.hide(() => {
-          expect(elems().length).toEqual(0)
+          expect(getElements().length).toEqual(0)
           expect(spy).not.toHaveBeenCalled()
           expect(instance._isAppended).toEqual(false)
           done()

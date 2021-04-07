@@ -216,7 +216,7 @@ class Modal extends BaseComponent {
 
   _initializeBackDrop() {
     return new Backdrop({
-      isVisible: Boolean(this._config.backdrop), // 'static' option want to translated as 'true', and booleans will keep their value
+      isVisible: Boolean(this._config.backdrop), // 'static' option will be translated to true, and booleans will keep their value
       isAnimated: this._isAnimated()
     })
   }
