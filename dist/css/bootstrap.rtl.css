@@ -2677,7 +2677,7 @@ textarea.form-control-lg {
 .btn {
   display: inline-block;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 14px;
   color: #212529;
   text-align: center;
   text-decoration: none;
@@ -2688,9 +2688,9 @@ textarea.form-control-lg {
   user-select: none;
   background-color: transparent;
   border: 1px solid transparent;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  border-radius: 0.25rem;
+  padding: 8px 16px;
+  font-size: 0.889rem;
+  border-radius: 4px;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2703,7 +2703,7 @@ textarea.form-control-lg {
 }
 .btn-check:focus + .btn, .btn:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: none;
 }
 .btn:disabled, .btn.disabled, fieldset:disabled .btn {
   pointer-events: none;
@@ -3165,13 +3165,13 @@ textarea.form-control-lg {
 .btn-lg, .btn-group-lg > .btn {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
-  border-radius: 0.3rem;
+  border-radius: 4px;
 }
 
 .btn-sm, .btn-group-sm > .btn {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
-  border-radius: 0.2rem;
+  border-radius: 4px;
 }
 
 .fade {
@@ -3546,8 +3546,8 @@ textarea.form-control-lg {
 }
 
 .dropdown-toggle-split {
-  padding-left: 0.5625rem;
-  padding-right: 0.5625rem;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 .dropdown-toggle-split::after, .dropup .dropdown-toggle-split::after, .dropend .dropdown-toggle-split::after {
   margin-right: 0;
@@ -9850,5 +9850,4 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-
 /*# sourceMappingURL=bootstrap.rtl.css.map */

@@ -135,6 +135,15 @@ $grid-breakpoints: (
   xl: 1920px,
 );
 
+$border-width: 1px;
+$border-widths: (
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px,
+);
+
 // scss-docs-start border-radius-variables
 $border-radius: 4px;
 $border-radius-sm: 2px;
@@ -192,11 +201,11 @@ $small-font-size: 0.889rem;
 
 // scss-docs-start input-btn-variables
 
-$input-btn-padding-y: 16px;
-$input-btn-padding-x: 8px;
-
+$input-btn-padding-y: 8px;
+$input-btn-padding-x: 16px;
+$input-btn-font-family: $open-sans;
 $input-btn-font-size: $small-font-size;
-
+$input-btn-line-height: 14px;
 $input-btn-focus-width: 2px;
 // $input-btn-focus-color-opacity: none;
 $input-btn-focus-color: $blue;
@@ -205,4 +214,17 @@ $input-btn-focus-blur: none;
 
 $input-btn-padding-y-sm: 8px;
 $input-btn-padding-x-sm: 4px;
-$input-btn-font-size-sm: $small-font-size;
+$input-btn-font-size-sm: $input-btn-font-size;
+
+$input-btn-border-width: $border-width;
+
+$btn-padding-y: $input-btn-padding-y;
+$btn-padding-x: $input-btn-padding-x;
+$btn-font-size: $small-font-size;
+$btn-line-height: $input-btn-line-height;
+//Button border radius
+$btn-border-radius: $border-radius;
+$btn-border-radius-sm: $border-radius;
+$btn-border-radius-lg: $border-radius;
+
+$btn-focus-box-shadow: none;
