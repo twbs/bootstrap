@@ -11,8 +11,7 @@ toc: true
 Here's what you need to know before getting started with the navbar:
 
 - Navbars require a wrapping `.navbar` with `.navbar-expand{-sm|-md|-lg|-xl|-xxl}` for responsive collapsing and [color scheme](#color-schemes) classes.
-- Navbars and their contents are fluid by default. Change the [container](#containers) to limit their horizontal width in different ways.
-- Use our [spacing]({{< docsref "/utilities/spacing" >}}) and [flex]({{< docsref "/utilities/flex" >}}) utility classes for controlling spacing and alignment within navbars.
+- Navbars now require a [container](#containers) within. This drastically simplifies [spacing]({{< docsref "/utilities/spacing" >}}) requirements and removes the need for [extensive]({{< docsref "/utilities/flex" >}}) CSS overrides we added for responsive containers in v4.
 - Navbars are responsive by default, but you can easily modify them to change that. Responsive behavior depends on our Collapse JavaScript plugin.
 - Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
 - Indicate the current item by using `aria-current="page"` for the current page or `aria-current="true"` for the current item in a set.
@@ -87,14 +86,14 @@ Add your text within an element with the `.navbar-brand` class.
 {{< example >}}
 <!-- As a link -->
 <nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="#">Navbar</a>
   </div>
 </nav>
 
 <!-- As a heading -->
 <nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <span class="navbar-brand mb-0 h1">Navbar</span>
   </div>
 </nav>
@@ -120,7 +119,7 @@ You can also make use of some additional utilities to add an image and text at t
 
 {{< example >}}
 <nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="#">
       <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
       Bootstrap
@@ -139,7 +138,7 @@ Please note that you should also add the `aria-current` attribute on the active 
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -168,7 +167,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -189,7 +188,7 @@ You can also use dropdowns in your navbar. Dropdown menus require a wrapping ele
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -227,7 +226,7 @@ Place various form controls and components within a navbar:
 
 {{< example >}}
 <nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <form class="d-flex">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
@@ -240,7 +239,7 @@ Immediate child elements of `.navbar` use flex layout and will default to `justi
 
 {{< example >}}
 <nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand">Navbar</a>
     <form class="d-flex">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -254,7 +253,7 @@ Input groups work, too. If your navbar is an entire form, or mostly a form, you 
 
 {{< example >}}
 <nav class="navbar navbar-light bg-light">
-  <form class="container-fluid">
+  <form class="container">
     <div class="input-group">
       <span class="input-group-text" id="basic-addon1">@</span>
       <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
@@ -280,7 +279,7 @@ Navbars may contain bits of text with the help of `.navbar-text`. This class adj
 
 {{< example >}}
 <nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <span class="navbar-text">
       Navbar text with an inline element
     </span>
@@ -292,7 +291,7 @@ Mix and match with other components and utilities as needed.
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="#">Navbar w/ text</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -323,7 +322,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
 
 <div class="bd-example">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
+    <div class="container">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -352,7 +351,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
   </nav>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
+    <div class="container">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -381,7 +380,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
   </nav>
 
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-    <div class="container-fluid">
+    <div class="container">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -426,14 +425,12 @@ Theming the navbar has never been easier thanks to the combination of theming cl
 
 ## Containers
 
-Although it's not required, you can wrap a navbar in a `.container` to center it on a page–though note that an inner container is still required. Or you can add a container inside the `.navbar` to only center the contents of a [fixed or static top navbar](#placement).
+All navbars require a `.container` within. You can also wrap a container inside the `.navbar` which doesn't require any overrides and works across all devices.
 
 {{< example >}}
 <div class="container">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
-    </div>
   </nav>
 </div>
 {{< /example >}}
@@ -456,7 +453,7 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 
 {{< example >}}
 <nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="#">Default</a>
   </div>
 </nav>
@@ -464,7 +461,7 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 
 {{< example >}}
 <nav class="navbar fixed-top navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="#">Fixed top</a>
   </div>
 </nav>
@@ -472,7 +469,7 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 
 {{< example >}}
 <nav class="navbar fixed-bottom navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="#">Fixed bottom</a>
   </div>
 </nav>
@@ -480,7 +477,7 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 
 {{< example >}}
 <nav class="navbar sticky-top navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="#">Sticky top</a>
   </div>
 </nav>
@@ -496,7 +493,7 @@ Here's an example navbar using `.navbar-nav-scroll` with `style="--bs-scroll-hei
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="#">Navbar scroll</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -547,7 +544,7 @@ With no `.navbar-brand` shown at the smallest breakpoint:
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -577,7 +574,7 @@ With a brand name shown on the left and toggler on the right:
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -607,7 +604,7 @@ With a toggler on the left and brand name on the right:
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -645,7 +642,7 @@ Sometimes you want to use the collapse plugin to trigger a container element for
   </div>
 </div>
 <nav class="navbar navbar-dark bg-dark">
-  <div class="container-fluid">
+  <div class="container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
