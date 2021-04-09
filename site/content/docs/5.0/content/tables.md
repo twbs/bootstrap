@@ -290,7 +290,7 @@ Table cells of `<thead>` are always vertical aligned to the bottom. Table cells 
 </div>
 
 ```html
-<table class="table table-sm table-dark">
+<table class="table table-sm">
   <div class="table-responsive">
     <table class="table align-middle">
       <thead>
