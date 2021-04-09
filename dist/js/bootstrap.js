@@ -78,7 +78,7 @@
 
 
       if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
-        hrefAttr = '#' + hrefAttr.split('#')[1];
+        hrefAttr = `#${hrefAttr.split('#')[1]}`;
       }
 
       selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
@@ -156,7 +156,7 @@
       const valueType = value && isElement(value) ? 'element' : toType(value);
 
       if (!new RegExp(expectedTypes).test(valueType)) {
-        throw new TypeError(`${componentName.toUpperCase()}: ` + `Option "${property}" provided type "${valueType}" ` + `but expected type "${expectedTypes}".`);
+        throw new TypeError(`${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`);
       }
     });
   };
@@ -1951,7 +1951,6 @@
   const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$7}${DATA_API_KEY$4}`;
   const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY$7}${DATA_API_KEY$4}`;
   const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY$7}${DATA_API_KEY$4}`;
-  const CLASS_NAME_DISABLED = 'disabled';
   const CLASS_NAME_SHOW$6 = 'show';
   const CLASS_NAME_DROPUP = 'dropup';
   const CLASS_NAME_DROPEND = 'dropend';
@@ -2013,7 +2012,7 @@
 
 
     toggle() {
-      if (this._element.disabled || this._element.classList.contains(CLASS_NAME_DISABLED)) {
+      if (isDisabled(this._element)) {
         return;
       }
 
@@ -2029,7 +2028,7 @@
     }
 
     show() {
-      if (this._element.disabled || this._element.classList.contains(CLASS_NAME_DISABLED) || this._menu.classList.contains(CLASS_NAME_SHOW$6)) {
+      if (isDisabled(this._element) || this._menu.classList.contains(CLASS_NAME_SHOW$6)) {
         return;
       }
 
@@ -2095,7 +2094,7 @@
     }
 
     hide() {
-      if (this._element.disabled || this._element.classList.contains(CLASS_NAME_DISABLED) || !this._menu.classList.contains(CLASS_NAME_SHOW$6)) {
+      if (isDisabled(this._element) || !this._menu.classList.contains(CLASS_NAME_SHOW$6)) {
         return;
       }
 
@@ -2351,7 +2350,7 @@
       event.preventDefault();
       event.stopPropagation();
 
-      if (this.disabled || this.classList.contains(CLASS_NAME_DISABLED)) {
+      if (isDisabled(this)) {
         return;
       }
 
@@ -2886,7 +2885,7 @@
         const actualValue = element.style[styleProp];
         const calculatedValue = window.getComputedStyle(element)[styleProp];
         Manipulator.setDataAttribute(element, styleProp, actualValue);
-        element.style[styleProp] = callback(Number.parseFloat(calculatedValue)) + 'px';
+        element.style[styleProp] = `${callback(Number.parseFloat(calculatedValue))}px`;
       });
     }
 
@@ -3026,7 +3025,7 @@
       const actualValue = element.style[styleProp];
       const calculatedValue = window.getComputedStyle(element)[styleProp];
       Manipulator.setDataAttribute(element, styleProp, actualValue);
-      element.style[styleProp] = callback(Number.parseFloat(calculatedValue)) + 'px';
+      element.style[styleProp] = `${callback(Number.parseFloat(calculatedValue))}px`;
     });
   };
 

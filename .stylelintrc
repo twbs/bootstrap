@@ -12,6 +12,8 @@
       "lighten",
       "darken"
     ],
+    "scss/operator-no-newline-after": null,
+    "number-leading-zero" : null,
     "property-disallowed-list": [
       "border-radius",
       "border-top-left-radius",
@@ -20,12 +22,7 @@
       "border-bottom-left-radius",
       "transition"
     ],
-    "scss/dollar-variable-default": [
-      true,
-      {
-        "ignore": "local"
-      }
-    ],
+    "scss/dollar-variable-default": null,
     "scss/selector-no-union-class-name": true
   }
 }

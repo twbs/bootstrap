@@ -52,7 +52,7 @@ const getSelector = element => {
 
 
     if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
-      hrefAttr = '#' + hrefAttr.split('#')[1];
+      hrefAttr = `#${hrefAttr.split('#')[1]}`;
     }
 
     selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
@@ -130,7 +130,7 @@ const typeCheckConfig = (componentName, config, configTypes) => {
     const valueType = value && isElement(value) ? 'element' : toType(value);
 
     if (!new RegExp(expectedTypes).test(valueType)) {
-      throw new TypeError(`${componentName.toUpperCase()}: ` + `Option "${property}" provided type "${valueType}" ` + `but expected type "${expectedTypes}".`);
+      throw new TypeError(`${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`);
     }
   });
 };
@@ -1925,7 +1925,6 @@ const EVENT_CLICK = `click${EVENT_KEY$7}`;
 const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$7}${DATA_API_KEY$4}`;
 const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY$7}${DATA_API_KEY$4}`;
 const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY$7}${DATA_API_KEY$4}`;
-const CLASS_NAME_DISABLED = 'disabled';
 const CLASS_NAME_SHOW$6 = 'show';
 const CLASS_NAME_DROPUP = 'dropup';
 const CLASS_NAME_DROPEND = 'dropend';
@@ -1987,7 +1986,7 @@ class Dropdown extends BaseComponent {
 
 
   toggle() {
-    if (this._element.disabled || this._element.classList.contains(CLASS_NAME_DISABLED)) {
+    if (isDisabled(this._element)) {
       return;
     }
 
@@ -2003,7 +2002,7 @@ class Dropdown extends BaseComponent {
   }
 
   show() {
-    if (this._element.disabled || this._element.classList.contains(CLASS_NAME_DISABLED) || this._menu.classList.contains(CLASS_NAME_SHOW$6)) {
+    if (isDisabled(this._element) || this._menu.classList.contains(CLASS_NAME_SHOW$6)) {
       return;
     }
 
@@ -2069,7 +2068,7 @@ class Dropdown extends BaseComponent {
   }
 
   hide() {
-    if (this._element.disabled || this._element.classList.contains(CLASS_NAME_DISABLED) || !this._menu.classList.contains(CLASS_NAME_SHOW$6)) {
+    if (isDisabled(this._element) || !this._menu.classList.contains(CLASS_NAME_SHOW$6)) {
       return;
     }
 
@@ -2325,7 +2324,7 @@ class Dropdown extends BaseComponent {
     event.preventDefault();
     event.stopPropagation();
 
-    if (this.disabled || this.classList.contains(CLASS_NAME_DISABLED)) {
+    if (isDisabled(this)) {
       return;
     }
 
@@ -2860,7 +2859,7 @@ class Modal extends BaseComponent {
       const actualValue = element.style[styleProp];
       const calculatedValue = window.getComputedStyle(element)[styleProp];
       Manipulator.setDataAttribute(element, styleProp, actualValue);
-      element.style[styleProp] = callback(Number.parseFloat(calculatedValue)) + 'px';
+      element.style[styleProp] = `${callback(Number.parseFloat(calculatedValue))}px`;
     });
   }
 
@@ -3000,7 +2999,7 @@ const _setElementAttributes = (selector, styleProp, callback) => {
     const actualValue = element.style[styleProp];
     const calculatedValue = window.getComputedStyle(element)[styleProp];
     Manipulator.setDataAttribute(element, styleProp, actualValue);
-    element.style[styleProp] = callback(Number.parseFloat(calculatedValue)) + 'px';
+    element.style[styleProp] = `${callback(Number.parseFloat(calculatedValue))}px`;
   });
 };
 
