@@ -357,6 +357,33 @@ class Dropdown extends BaseComponent {
     }
   }
 
+  _selectMenuItem(event) {
+    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu).filter(isVisible)
+
+    if (!items.length) {
+      return
+    }
+
+    let index = items.indexOf(event.target)
+
+    // Up
+    if (event.key === ARROW_UP_KEY && index > 0) {
+      index--
+    }
+
+    // Down
+    if (event.key === ARROW_DOWN_KEY && index < items.length - 1) {
+      index++
+    }
+
+    // index is -1 if the first keydown is an ArrowUp
+    if (index < 0) {
+      index = 0
+    }
+
+    items[index].focus()
+  }
+
   // Static
 
   static dropdownInterface(element, config) {
@@ -450,31 +477,6 @@ class Dropdown extends BaseComponent {
     }
   }
 
-  static selectMenuItem(parent, event) {
-    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, parent).filter(isVisible)
-
-    if (!items.length) {
-      return
-    }
-
-    let index = items.indexOf(event.target)
-
-    // Up
-    if (event.key === ARROW_UP_KEY && index > 0) {
-      index--
-    }
-
-    // Down
-    if (event.key === ARROW_DOWN_KEY && index < items.length - 1) {
-      index++
-    }
-
-    // index is -1 if the first keydown is an ArrowUp
-    index = index === -1 ? 0 : index
-
-    items[index].focus()
-  }
-
   static getParentFromElement(element) {
     return getElementFromSelector(element) || element.parentNode
   }
@@ -526,7 +528,7 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    Dropdown.selectMenuItem(Dropdown.getParentFromElement(this), event)
+    Dropdown.getInstance(getToggleButton())._selectMenuItem(event)
   }
 }
 
