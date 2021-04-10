@@ -5,6 +5,13 @@
  * --------------------------------------------------------------------------
  */
 
+/**
+ * Returns the val in the correct primitive type.
+ *
+ * @param {String} val A value of any primitive type as a String
+ * @return {(boolean|number|null|String)} The val in the correct primitive type
+ */
+
 function normalizeData(val) {
   if (val === 'true') {
     return true
