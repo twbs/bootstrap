@@ -377,9 +377,7 @@ class Dropdown extends BaseComponent {
     }
 
     // index is -1 if the first keydown is an ArrowUp
-    if (index < 0) {
-      index = 0
-    }
+    index = index === -1 ? 0 : index
 
     items[index].focus()
   }
