@@ -1,17 +1,7 @@
 // scss-docs-start mixin-color-scheme
 @mixin color-scheme($name) {
-  @if $name == dark {
-    @media (prefers-color-scheme: dark) {
-      @content;
-    }
-  } @else if $name == light {
-    @media (prefers-color-scheme: light) {
-      @content;
-    }
-  } @else {
-    @media (prefers-color-scheme: #{$name}) {
-      @content;
-    }
+  @media (prefers-color-scheme: #{$name}) {
+    @content;
   }
 }
 // scss-docs-end mixin-color-scheme
