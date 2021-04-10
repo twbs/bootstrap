@@ -9,9 +9,7 @@ import * as Popper from '@popperjs/core'
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
   findShadowRoot,
-  getTransitionDurationFromElement,
   getUID,
   isElement,
   isRTL,
@@ -315,13 +313,8 @@ class Tooltip extends BaseComponent {
       }
     }
 
-    if (this.tip.classList.contains(CLASS_NAME_FADE)) {
-      const transitionDuration = getTransitionDurationFromElement(this.tip)
-      EventHandler.one(this.tip, 'transitionend', complete)
-      emulateTransitionEnd(this.tip, transitionDuration)
-    } else {
-      complete()
-    }
+    const isAnimated = this.tip.classList.contains(CLASS_NAME_FADE)
+    this._queueCallback(complete, this.tip, isAnimated)
   }
 
   hide() {
@@ -367,15 +360,8 @@ class Tooltip extends BaseComponent {
     this._activeTrigger[TRIGGER_FOCUS] = false
     this._activeTrigger[TRIGGER_HOVER] = false
 
-    if (this.tip.classList.contains(CLASS_NAME_FADE)) {
-      const transitionDuration = getTransitionDurationFromElement(tip)
-
-      EventHandler.one(tip, 'transitionend', complete)
-      emulateTransitionEnd(tip, transitionDuration)
-    } else {
-      complete()
-    }
-
+    const isAnimated = this.tip.classList.contains(CLASS_NAME_FADE)
+    this._queueCallback(complete, this.tip, isAnimated)
     this._hoverState = ''
   }
 

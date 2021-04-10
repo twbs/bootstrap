@@ -7,10 +7,8 @@
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
   getSelectorFromElement,
   getElementFromSelector,
-  getTransitionDurationFromElement,
   isElement,
   reflow,
   typeCheckConfig
@@ -200,11 +198,8 @@ class Collapse extends BaseComponent {
 
     const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1)
     const scrollSize = `scroll${capitalizedDimension}`
-    const transitionDuration = getTransitionDurationFromElement(this._element)
 
-    EventHandler.one(this._element, 'transitionend', complete)
-
-    emulateTransitionEnd(this._element, transitionDuration)
+    this._queueCallback(complete, this._element, true)
     this._element.style[dimension] = `${this._element[scrollSize]}px`
   }
 
@@ -250,10 +245,8 @@ class Collapse extends BaseComponent {
     }
 
     this._element.style[dimension] = ''
-    const transitionDuration = getTransitionDurationFromElement(this._element)
 
-    EventHandler.one(this._element, 'transitionend', complete)
-    emulateTransitionEnd(this._element, transitionDuration)
+    this._queueCallback(complete, this._element, true)
   }
 
   setTransitioning(isTransitioning) {
