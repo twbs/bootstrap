@@ -743,7 +743,7 @@ describe('Dropdown', () => {
     it('should hide a dropdown', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true">Dropdown</button>',
         '  <div class="dropdown-menu show">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -756,6 +756,7 @@ describe('Dropdown', () => {
 
       btnDropdown.addEventListener('hidden.bs.dropdown', () => {
         expect(dropdownMenu.classList.contains('show')).toEqual(false)
+        expect(btnDropdown.getAttribute('aria-expanded')).toEqual('false')
         done()
       })
 
@@ -893,6 +894,39 @@ describe('Dropdown', () => {
         expect(dropdownMenu.classList.contains('show')).toEqual(true)
         done()
       })
+    })
+
+    it('should remove event listener on touch-enabled device that was added in show method', done => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Dropdwon item</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const defaultValueOnTouchStart = document.documentElement.ontouchstart
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdown = new Dropdown(btnDropdown)
+
+      document.documentElement.ontouchstart = () => {}
+      spyOn(EventHandler, 'off')
+
+      btnDropdown.addEventListener('shown.bs.dropdown', () => {
+        dropdown.hide()
+      })
+
+      btnDropdown.addEventListener('hidden.bs.dropdown', () => {
+        expect(btnDropdown.classList.contains('show')).toEqual(false)
+        expect(btnDropdown.getAttribute('aria-expanded')).toEqual('false')
+        expect(EventHandler.off).toHaveBeenCalled()
+
+        document.documentElement.ontouchstart = defaultValueOnTouchStart
+        done()
+      })
+
+      dropdown.show()
     })
   })
 
@@ -1670,6 +1704,39 @@ describe('Dropdown', () => {
         expect(triggerDropdown.classList.contains('show')).toEqual(false)
         done()
       }, 20)
+    })
+
+    it('should propagate escape key events if dropdown is closed', done => {
+      fixtureEl.innerHTML = [
+        '<div class="parent">',
+        '  <div class="dropdown">',
+        '    <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+        '    <div class="dropdown-menu">',
+        '      <a class="dropdown-item" href="#">Some Item</a>',
+        '   </div>',
+        '  </div>',
+        '</div>'
+      ]
+
+      const parent = fixtureEl.querySelector('.parent')
+      const toggle = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+
+      const parentKeyHandler = jasmine.createSpy('parentKeyHandler')
+
+      parent.addEventListener('keydown', parentKeyHandler)
+      parent.addEventListener('keyup', () => {
+        expect(parentKeyHandler).toHaveBeenCalled()
+        done()
+      })
+
+      const keydownEscape = createEvent('keydown', { bubbles: true })
+      keydownEscape.key = 'Escape'
+      const keyupEscape = createEvent('keyup', { bubbles: true })
+      keyupEscape.key = 'Escape'
+
+      toggle.focus()
+      toggle.dispatchEvent(keydownEscape)
+      toggle.dispatchEvent(keyupEscape)
     })
   })
 
