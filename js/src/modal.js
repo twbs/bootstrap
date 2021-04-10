@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): modal.js
+ * Bootstrap (v5.0.0-beta3): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -10,12 +10,11 @@ import {
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
-  isVisible,
   isRTL,
+  isVisible,
   reflow,
   typeCheckConfig
 } from './util/index'
-import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
@@ -83,7 +82,7 @@ class Modal extends BaseComponent {
     super(element)
 
     this._config = this._getConfig(config)
-    this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, element)
+    this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element)
     this._backdrop = null
     this._isShown = false
     this._isBodyOverflowing = false
@@ -113,7 +112,7 @@ class Modal extends BaseComponent {
       return
     }
 
-    if (this._element.classList.contains(CLASS_NAME_FADE)) {
+    if (this._isAnimated()) {
       this._isTransitioning = true
     }
 
@@ -164,9 +163,9 @@ class Modal extends BaseComponent {
     }
 
     this._isShown = false
-    const transition = this._element.classList.contains(CLASS_NAME_FADE)
+    const isAnimated = this._isAnimated()
 
-    if (transition) {
+    if (isAnimated) {
       this._isTransitioning = true
     }
 
@@ -180,7 +179,7 @@ class Modal extends BaseComponent {
     EventHandler.off(this._element, EVENT_CLICK_DISMISS)
     EventHandler.off(this._dialog, EVENT_MOUSEDOWN_DISMISS)
 
-    if (transition) {
+    if (isAnimated) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
       EventHandler.one(this._element, 'transitionend', event => this._hideModal(event))
@@ -222,6 +221,7 @@ class Modal extends BaseComponent {
   _getConfig(config) {
     config = {
       ...Default,
+      ...Manipulator.getDataAttributes(this._element),
       ...config
     }
     typeCheckConfig(NAME, config, DefaultType)
@@ -229,7 +229,7 @@ class Modal extends BaseComponent {
   }
 
   _showElement(relatedTarget) {
-    const transition = this._element.classList.contains(CLASS_NAME_FADE)
+    const isAnimated = this._isAnimated()
     const modalBody = SelectorEngine.findOne(SELECTOR_MODAL_BODY, this._dialog)
 
     if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
@@ -247,7 +247,7 @@ class Modal extends BaseComponent {
       modalBody.scrollTop = 0
     }
 
-    if (transition) {
+    if (isAnimated) {
       reflow(this._element)
     }
 
@@ -268,7 +268,7 @@ class Modal extends BaseComponent {
       })
     }
 
-    if (transition) {
+    if (isAnimated) {
       const transitionDuration = getTransitionDurationFromElement(this._dialog)
 
       EventHandler.one(this._dialog, 'transitionend', transitionComplete)
@@ -332,16 +332,13 @@ class Modal extends BaseComponent {
   }
 
   _showBackdrop(callback) {
-    const animate = this._element.classList.contains(CLASS_NAME_FADE) ?
-      CLASS_NAME_FADE :
-      ''
-
+    const isAnimated = this._isAnimated()
     if (this._isShown && this._config.backdrop) {
       this._backdrop = document.createElement('div')
       this._backdrop.className = CLASS_NAME_BACKDROP
 
-      if (animate) {
-        this._backdrop.classList.add(animate)
+      if (isAnimated) {
+        this._backdrop.classList.add(CLASS_NAME_FADE)
       }
 
       document.body.appendChild(this._backdrop)
@@ -363,13 +360,13 @@ class Modal extends BaseComponent {
         }
       })
 
-      if (animate) {
+      if (isAnimated) {
         reflow(this._backdrop)
       }
 
       this._backdrop.classList.add(CLASS_NAME_SHOW)
 
-      if (!animate) {
+      if (!isAnimated) {
         callback()
         return
       }
@@ -386,7 +383,7 @@ class Modal extends BaseComponent {
         callback()
       }
 
-      if (this._element.classList.contains(CLASS_NAME_FADE)) {
+      if (isAnimated) {
         const backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop)
         EventHandler.one(this._backdrop, 'transitionend', callbackRemove)
         emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
@@ -396,6 +393,10 @@ class Modal extends BaseComponent {
     } else {
       callback()
     }
+  }
+
+  _isAnimated() {
+    return this._element.classList.contains(CLASS_NAME_FADE)
   }
 
   _triggerBackdropTransition() {
@@ -431,14 +432,13 @@ class Modal extends BaseComponent {
   // ----------------------------------------------------------------------
 
   _adjustDialog() {
-    const isModalOverflowing =
-      this._element.scrollHeight > document.documentElement.clientHeight
+    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
 
-    if ((!this._isBodyOverflowing && isModalOverflowing && !isRTL) || (this._isBodyOverflowing && !isModalOverflowing && isRTL)) {
+    if ((!this._isBodyOverflowing && isModalOverflowing && !isRTL()) || (this._isBodyOverflowing && !isModalOverflowing && isRTL())) {
       this._element.style.paddingLeft = `${this._scrollbarWidth}px`
     }
 
-    if ((this._isBodyOverflowing && !isModalOverflowing && !isRTL) || (!this._isBodyOverflowing && isModalOverflowing && isRTL)) {
+    if ((this._isBodyOverflowing && !isModalOverflowing && !isRTL()) || (!this._isBodyOverflowing && isModalOverflowing && isRTL())) {
       this._element.style.paddingRight = `${this._scrollbarWidth}px`
     }
   }
@@ -467,10 +467,14 @@ class Modal extends BaseComponent {
   _setElementAttributes(selector, styleProp, callback) {
     SelectorEngine.find(selector)
       .forEach(element => {
+        if (element !== document.body && window.innerWidth > element.clientWidth + this._scrollbarWidth) {
+          return
+        }
+
         const actualValue = element.style[styleProp]
         const calculatedValue = window.getComputedStyle(element)[styleProp]
         Manipulator.setDataAttribute(element, styleProp, actualValue)
-        element.style[styleProp] = callback(Number.parseFloat(calculatedValue)) + 'px'
+        element.style[styleProp] = `${callback(Number.parseFloat(calculatedValue))}px`
       })
   }
 
@@ -505,24 +509,17 @@ class Modal extends BaseComponent {
 
   static jQueryInterface(config, relatedTarget) {
     return this.each(function () {
-      let data = Data.getData(this, DATA_KEY)
-      const _config = {
-        ...Default,
-        ...Manipulator.getDataAttributes(this),
-        ...(typeof config === 'object' && config ? config : {})
+      const data = Modal.getInstance(this) || new Modal(this, typeof config === 'object' ? config : {})
+
+      if (typeof config !== 'string') {
+        return
       }
 
-      if (!data) {
-        data = new Modal(this, _config)
+      if (typeof data[config] === 'undefined') {
+        throw new TypeError(`No method named "${config}"`)
       }
 
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-
-        data[config](relatedTarget)
-      }
+      data[config](relatedTarget)
     })
   }
 }
@@ -536,7 +533,7 @@ class Modal extends BaseComponent {
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   const target = getElementFromSelector(this)
 
-  if (this.tagName === 'A' || this.tagName === 'AREA') {
+  if (['A', 'AREA'].includes(this.tagName)) {
     event.preventDefault()
   }
 
@@ -553,15 +550,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     })
   })
 
-  let data = Data.getData(target, DATA_KEY)
-  if (!data) {
-    const config = {
-      ...Manipulator.getDataAttributes(target),
-      ...Manipulator.getDataAttributes(this)
-    }
-
-    data = new Modal(target, config)
-  }
+  const data = Modal.getInstance(target) || new Modal(target)
 
   data.toggle(this)
 })

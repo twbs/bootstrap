@@ -2,7 +2,7 @@ import Modal from '../../src/modal'
 import EventHandler from '../../src/dom/event-handler'
 
 /** Test helpers */
-import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
+import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Modal', () => {
   let fixtureEl
@@ -53,6 +53,25 @@ describe('Modal', () => {
   describe('Default', () => {
     it('should return plugin default config', () => {
       expect(Modal.Default).toEqual(jasmine.any(Object))
+    })
+  })
+
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(Modal.DATA_KEY).toEqual('bs.modal')
+    })
+  })
+
+  describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modalBySelector = new Modal('.modal')
+      const modalByElement = new Modal(modalEl)
+
+      expect(modalBySelector._element).toEqual(modalEl)
+      expect(modalByElement._element).toEqual(modalEl)
     })
   })
 
@@ -140,6 +159,30 @@ describe('Modal', () => {
       })
 
       modal.toggle()
+    })
+
+    it('should not adjust the inline margin and padding of sticky and fixed elements when element do not have full width', done => {
+      fixtureEl.innerHTML = [
+        '<div class="sticky-top" style="margin-right: 0px; padding-right: 0px; width: calc(100vw - 50%)"></div>',
+        '<div class="modal"><div class="modal-dialog"></div></div>'
+      ].join('')
+
+      const stickyTopEl = fixtureEl.querySelector('.sticky-top')
+      const originalMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+      const originalPadding = Number.parseInt(window.getComputedStyle(stickyTopEl).paddingRight, 10)
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+        const currentPadding = Number.parseInt(window.getComputedStyle(stickyTopEl).paddingRight, 10)
+
+        expect(currentMargin).toEqual(originalMargin, 'sticky element\'s margin should not be adjusted while opening')
+        expect(currentPadding).toEqual(originalPadding, 'sticky element\'s padding should not be adjusted while opening')
+        done()
+      })
+
+      modal.show()
     })
 
     it('should ignore values set via CSS when trying to restore body padding after closing', done => {
@@ -542,7 +585,7 @@ describe('Modal', () => {
     })
 
     it('should not close modal when clicking outside of modal-content if backdrop = static', done => {
-      fixtureEl.innerHTML = '<div class="modal" data-bs-backdrop="static" ><div class="modal-dialog"></div></div>'
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
@@ -569,7 +612,7 @@ describe('Modal', () => {
     })
 
     it('should close modal when escape key is pressed with keyboard = true and backdrop is static', done => {
-      fixtureEl.innerHTML = '<div class="modal" data-bs-backdrop="static"><div class="modal-dialog"></div></div>'
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
@@ -626,7 +669,7 @@ describe('Modal', () => {
     })
 
     it('should not overflow when clicking outside of modal-content if backdrop = static', done => {
-      fixtureEl.innerHTML = '<div class="modal" data-bs-backdrop="static"><div class="modal-dialog" style="transition-duration: 20ms;"></div></div>'
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog" style="transition-duration: 20ms;"></div></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
@@ -1045,6 +1088,23 @@ describe('Modal', () => {
       jQueryMock.fn.modal.call(jQueryMock)
 
       expect(Modal.getInstance(div)).toBeDefined()
+    })
+
+    it('should create a modal with given config', () => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      jQueryMock.fn.modal = Modal.jQueryInterface
+      jQueryMock.elements = [div]
+
+      jQueryMock.fn.modal.call(jQueryMock, { keyboard: false })
+      spyOn(Modal.prototype, 'constructor')
+      expect(Modal.prototype.constructor).not.toHaveBeenCalledWith(div, { keyboard: false })
+
+      const modal = Modal.getInstance(div)
+      expect(modal).toBeDefined()
+      expect(modal._config.keyboard).toBe(false)
     })
 
     it('should not re create a modal', () => {

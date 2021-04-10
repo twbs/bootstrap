@@ -117,6 +117,13 @@
   }
 }
 
+.nav-fill,
+.nav-justified {
+  .nav-item .nav-link {
+    width: 100%; // Make sure button will grow
+  }
+}
+
 
 // Tabbable tabs
 //
