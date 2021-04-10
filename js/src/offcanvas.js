@@ -37,13 +37,15 @@ const ESCAPE_KEY = 'Escape'
 const Default = {
   backdrop: true,
   keyboard: true,
-  scroll: false
+  scroll: false,
+  autoHide: true
 }
 
 const DefaultType = {
   backdrop: 'boolean',
   keyboard: 'boolean',
-  scroll: 'boolean'
+  scroll: 'boolean',
+  autoHide: 'boolean'
 }
 
 const CLASS_NAME_BACKDROP_BODY = 'offcanvas-backdrop'
@@ -204,7 +206,7 @@ class Offcanvas extends BaseComponent {
 
     EventHandler.on(document, EVENT_CLICK_DATA_API, event => {
       const target = SelectorEngine.findOne(getSelectorFromElement(event.target))
-      if (!this._element.contains(event.target) && target !== this._element) {
+      if (!this._element.contains(event.target) && target !== this._element && this._config.autoHide) {
         this.hide()
       }
     })
