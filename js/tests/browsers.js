@@ -65,6 +65,13 @@ const browsers = {
     device: 'iPhone X',
     real_mobile: true
   },
+  iphone12: {
+    base: 'BrowserStack',
+    os: 'ios',
+    os_version: '14.0',
+    device: 'iPhone 12',
+    real_mobile: true
+  },
   pixel2: {
     base: 'BrowserStack',
     os: 'android',
