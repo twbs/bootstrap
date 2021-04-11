@@ -190,7 +190,7 @@ const findShadowRoot = element => {
   return findShadowRoot(element.parentNode)
 }
 
-const noop = () => function () {}
+const noop = () => {}
 
 const reflow = element => element.offsetHeight
 

@@ -300,7 +300,7 @@ class Tooltip extends BaseComponent {
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
     if ('ontouchstart' in document.documentElement) {
       [].concat(...document.body.children).forEach(element => {
-        EventHandler.on(element, 'mouseover', noop())
+        EventHandler.on(element, 'mouseover', noop)
       })
     }
 

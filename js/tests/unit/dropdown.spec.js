@@ -1,5 +1,6 @@
 import Dropdown from '../../src/dropdown'
 import EventHandler from '../../src/dom/event-handler'
+import { noop } from '../../src/util'
 
 /** Test helpers */
 import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
@@ -252,7 +253,7 @@ describe('Dropdown', () => {
       btnDropdown.addEventListener('shown.bs.dropdown', () => {
         expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
-        expect(EventHandler.on).toHaveBeenCalled()
+        expect(EventHandler.on).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover', noop)
 
         dropdown.toggle()
       })
@@ -260,7 +261,7 @@ describe('Dropdown', () => {
       btnDropdown.addEventListener('hidden.bs.dropdown', () => {
         expect(btnDropdown.classList.contains('show')).toEqual(false)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('false')
-        expect(EventHandler.off).toHaveBeenCalled()
+        expect(EventHandler.off).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover', noop)
 
         document.documentElement.ontouchstart = defaultValueOnTouchStart
         done()
