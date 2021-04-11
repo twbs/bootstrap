@@ -192,7 +192,7 @@ class Dropdown extends BaseComponent {
     if ('ontouchstart' in document.documentElement &&
       !parent.closest(SELECTOR_NAVBAR_NAV)) {
       [].concat(...document.body.children)
-        .forEach(elem => EventHandler.on(elem, 'mouseover', null, noop()))
+        .forEach(elem => EventHandler.on(elem, 'mouseover', noop))
     }
 
     this._element.focus()
@@ -222,7 +222,7 @@ class Dropdown extends BaseComponent {
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
       [].concat(...document.body.children)
-        .forEach(elem => EventHandler.off(elem, 'mouseover', null, noop()))
+        .forEach(elem => EventHandler.off(elem, 'mouseover', noop))
     }
 
     if (this._popper) {
@@ -237,7 +237,6 @@ class Dropdown extends BaseComponent {
   }
 
   dispose() {
-    EventHandler.off(this._element, EVENT_KEY)
     this._menu = null
 
     if (this._popper) {
@@ -460,7 +459,7 @@ class Dropdown extends BaseComponent {
       // empty mouseover listeners we added for iOS support
       if ('ontouchstart' in document.documentElement) {
         [].concat(...document.body.children)
-          .forEach(elem => EventHandler.off(elem, 'mouseover', null, noop()))
+          .forEach(elem => EventHandler.off(elem, 'mouseover', noop))
       }
 
       if (context._popper) {
