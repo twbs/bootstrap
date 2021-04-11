@@ -16,6 +16,7 @@ describe('Modal', () => {
     clearFixture()
 
     document.body.classList.remove('modal-open')
+    document.documentElement.removeAttribute('style')
     document.body.removeAttribute('style')
     document.body.removeAttribute('data-bs-padding-right')
 
@@ -23,12 +24,12 @@ describe('Modal', () => {
       .forEach(backdrop => {
         document.body.removeChild(backdrop)
       })
-
-    document.body.style.removeProperty('paddingRight')
   })
 
-  afterAll(() => {
-    document.documentElement.style.removeProperty('paddingRight')
+  beforeEach(() => {
+    document.documentElement.removeAttribute('style')
+    document.body.removeAttribute('style')
+    document.body.removeAttribute('data-bs-padding-right')
   })
 
   describe('VERSION', () => {
@@ -104,7 +105,7 @@ describe('Modal', () => {
         const expectedPadding = originalPadding + getScrollBarWidth()
         const currentPadding = Number.parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
 
-        expect(fixedEl.getAttribute('data-bs-padding-right')).toEqual('0px', 'original fixed element padding should be stored in data-bs-padding-right')
+        expect(fixedEl.getAttribute('data-bs-padding-right')).toEqual(`${originalPadding}px`, 'original fixed element padding should be stored in data-bs-padding-right')
         expect(currentPadding).toEqual(expectedPadding, 'fixed element padding should be adjusted while opening')
         modal.toggle()
       })
@@ -112,7 +113,7 @@ describe('Modal', () => {
       modalEl.addEventListener('hidden.bs.modal', () => {
         const currentPadding = Number.parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
 
-        expect(fixedEl.getAttribute('data-bs-padding-right')).toEqual(null, 'data-bs-padding-right should be cleared after closing')
+        expect(fixedEl.hasAttribute('data-bs-padding-right')).toEqual(false, 'data-bs-padding-right should be cleared after closing')
         expect(currentPadding).toEqual(originalPadding, 'fixed element padding should be reset after closing')
         document.documentElement.style.overflowY = 'auto'
         done()
@@ -138,7 +139,7 @@ describe('Modal', () => {
         const expectedMargin = originalMargin - getScrollBarWidth()
         const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
 
-        expect(stickyTopEl.getAttribute('data-bs-margin-right')).toEqual('0px', 'original sticky element margin should be stored in data-bs-margin-right')
+        expect(stickyTopEl.getAttribute('data-bs-margin-right')).toEqual(`${originalMargin}px`, 'original sticky element margin should be stored in data-bs-margin-right')
         expect(currentMargin).toEqual(expectedMargin, 'sticky element margin should be adjusted while opening')
         modal.toggle()
       })
@@ -146,7 +147,7 @@ describe('Modal', () => {
       modalEl.addEventListener('hidden.bs.modal', () => {
         const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
 
-        expect(stickyTopEl.getAttribute('data-bs-margin-right')).toEqual(null, 'data-bs-margin-right should be cleared after closing')
+        expect(stickyTopEl.hasAttribute('data-bs-margin-right')).toEqual(false, 'data-bs-margin-right should be cleared after closing')
         expect(currentMargin).toEqual(originalMargin, 'sticky element margin should be reset after closing')
 
         document.documentElement.style.overflowY = 'auto'
@@ -679,7 +680,6 @@ describe('Modal', () => {
 
         // Restore scrollbars
         document.body.style.overflow = 'auto'
-        document.documentElement.style.paddingRight = '16px'
         done()
       })
 
@@ -711,7 +711,6 @@ describe('Modal', () => {
         // Restore overridden css
         document.body.style.removeProperty('margin')
         document.body.style.removeProperty('overflow')
-        document.documentElement.style.paddingRight = '16px'
         done()
       })
 
