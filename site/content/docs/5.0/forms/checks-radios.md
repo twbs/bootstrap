@@ -213,32 +213,36 @@ Omit the wrapping `.form-check` for checkboxes and radios that have no label tex
 
 ## Centering
 
-Omit the `.form-check` and `.form-check-inline` and use [spacing utilities]({{< docsref "/utilities/spacing" >}}) for the label to center the checkbox or radio.
+Omit the wrapping `.form-check` and `.form-check-inline` and use [spacing utilities]({{< docsref "/utilities/spacing" >}}) for the label to center the checkbox or radio.
 
 {{< example >}}
 <div class="text-center">
   <input class="form-check-input" type="checkbox" id="checkboxCenteredNoLabel" value="" aria-label="...">
 </div>
+
 <div class="text-center">
   <input class="form-check-input" type="radio" id="radioCenteredNoLabel" value="" aria-label="...">
 </div>
+
 <div class="text-center">
   <input class="form-check-input" type="checkbox" id="checkboxCenteredWithLabel" value="">
   <label for="checkboxCenteredWithLabel" class="ps-2">Label Text</label>
 </div>
+
 <div class="text-center">
   <input class="form-check-input" type="radio" id="radioCenteredWithLabel" value="">
   <label for="radioCenteredWithLabel" class="ps-2">Label Text</label>
 </div>
 {{< /example >}}
 
-Switches require the outer `<div>` with `.form-switch`.
+Switches require a container `<div>` with `.form-switch`.
 {{< example >}}
 <div class="text-center">
   <div class="form-switch">
     <input class="form-check-input" type="checkbox" id="switchCenteredNoLabel" value="" aria-label="...">
   </div>
 </div>
+
 <div class="text-center">
   <div class="form-switch">
     <input class="form-check-input" type="checkbox" id="switchCenteredWithLabel" value="">
