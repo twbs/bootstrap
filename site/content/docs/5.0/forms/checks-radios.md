@@ -236,6 +236,7 @@ Omit the wrapping `.form-check` and `.form-check-inline` and use [spacing utilit
 {{< /example >}}
 
 Switches require a container `<div>` with `.form-switch`.
+
 {{< example >}}
 <div class="text-center">
   <div class="form-switch">
