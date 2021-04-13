@@ -18,6 +18,7 @@ import {
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
+import { getWidth as getScrollBarWidth, hide as scrollBarHide, reset as scrollBarReset } from './util/scrollbar'
 import BaseComponent from './base-component'
 
 /**
@@ -57,7 +58,6 @@ const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY}`
 const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
-const CLASS_NAME_SCROLLBAR_MEASURER = 'modal-scrollbar-measure'
 const CLASS_NAME_BACKDROP = 'modal-backdrop'
 const CLASS_NAME_OPEN = 'modal-open'
 const CLASS_NAME_FADE = 'fade'
@@ -68,8 +68,6 @@ const SELECTOR_DIALOG = '.modal-dialog'
 const SELECTOR_MODAL_BODY = '.modal-body'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="modal"]'
 const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="modal"]'
-const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
-const SELECTOR_STICKY_CONTENT = '.sticky-top'
 
 /**
  * ------------------------------------------------------------------------
@@ -85,10 +83,8 @@ class Modal extends BaseComponent {
     this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element)
     this._backdrop = null
     this._isShown = false
-    this._isBodyOverflowing = false
     this._ignoreBackdropClick = false
     this._isTransitioning = false
-    this._scrollbarWidth = 0
   }
 
   // Getters
@@ -126,8 +122,9 @@ class Modal extends BaseComponent {
 
     this._isShown = true
 
-    this._checkScrollbar()
-    this._setScrollbar()
+    scrollBarHide()
+
+    document.body.classList.add(CLASS_NAME_OPEN)
 
     this._adjustDialog()
 
@@ -190,7 +187,7 @@ class Modal extends BaseComponent {
   }
 
   dispose() {
-    [window, this._element, this._dialog]
+    [window, this._dialog]
       .forEach(htmlElement => EventHandler.off(htmlElement, EVENT_KEY))
 
     super.dispose()
@@ -206,10 +203,8 @@ class Modal extends BaseComponent {
     this._dialog = null
     this._backdrop = null
     this._isShown = null
-    this._isBodyOverflowing = null
     this._ignoreBackdropClick = null
     this._isTransitioning = null
-    this._scrollbarWidth = null
   }
 
   handleUpdate() {
@@ -321,7 +316,7 @@ class Modal extends BaseComponent {
     this._showBackdrop(() => {
       document.body.classList.remove(CLASS_NAME_OPEN)
       this._resetAdjustments()
-      this._resetScrollbar()
+      scrollBarReset()
       EventHandler.trigger(this._element, EVENT_HIDDEN)
     })
   }
@@ -433,76 +428,21 @@ class Modal extends BaseComponent {
 
   _adjustDialog() {
     const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
+    const scrollbarWidth = getScrollBarWidth()
+    const isBodyOverflowing = scrollbarWidth > 0
 
-    if ((!this._isBodyOverflowing && isModalOverflowing && !isRTL()) || (this._isBodyOverflowing && !isModalOverflowing && isRTL())) {
-      this._element.style.paddingLeft = `${this._scrollbarWidth}px`
+    if ((!isBodyOverflowing && isModalOverflowing && !isRTL()) || (isBodyOverflowing && !isModalOverflowing && isRTL())) {
+      this._element.style.paddingLeft = `${scrollbarWidth}px`
     }
 
-    if ((this._isBodyOverflowing && !isModalOverflowing && !isRTL()) || (!this._isBodyOverflowing && isModalOverflowing && isRTL())) {
-      this._element.style.paddingRight = `${this._scrollbarWidth}px`
+    if ((isBodyOverflowing && !isModalOverflowing && !isRTL()) || (!isBodyOverflowing && isModalOverflowing && isRTL())) {
+      this._element.style.paddingRight = `${scrollbarWidth}px`
     }
   }
 
   _resetAdjustments() {
     this._element.style.paddingLeft = ''
     this._element.style.paddingRight = ''
-  }
-
-  _checkScrollbar() {
-    const rect = document.body.getBoundingClientRect()
-    this._isBodyOverflowing = Math.round(rect.left + rect.right) < window.innerWidth
-    this._scrollbarWidth = this._getScrollbarWidth()
-  }
-
-  _setScrollbar() {
-    if (this._isBodyOverflowing) {
-      this._setElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight', calculatedValue => calculatedValue + this._scrollbarWidth)
-      this._setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - this._scrollbarWidth)
-      this._setElementAttributes('body', 'paddingRight', calculatedValue => calculatedValue + this._scrollbarWidth)
-    }
-
-    document.body.classList.add(CLASS_NAME_OPEN)
-  }
-
-  _setElementAttributes(selector, styleProp, callback) {
-    SelectorEngine.find(selector)
-      .forEach(element => {
-        if (element !== document.body && window.innerWidth > element.clientWidth + this._scrollbarWidth) {
-          return
-        }
-
-        const actualValue = element.style[styleProp]
-        const calculatedValue = window.getComputedStyle(element)[styleProp]
-        Manipulator.setDataAttribute(element, styleProp, actualValue)
-        element.style[styleProp] = `${callback(Number.parseFloat(calculatedValue))}px`
-      })
-  }
-
-  _resetScrollbar() {
-    this._resetElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight')
-    this._resetElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight')
-    this._resetElementAttributes('body', 'paddingRight')
-  }
-
-  _resetElementAttributes(selector, styleProp) {
-    SelectorEngine.find(selector).forEach(element => {
-      const value = Manipulator.getDataAttribute(element, styleProp)
-      if (typeof value === 'undefined' && element === document.body) {
-        element.style[styleProp] = ''
-      } else {
-        Manipulator.removeDataAttribute(element, styleProp)
-        element.style[styleProp] = value
-      }
-    })
-  }
-
-  _getScrollbarWidth() { // thx d.walsh
-    const scrollDiv = document.createElement('div')
-    scrollDiv.className = CLASS_NAME_SCROLLBAR_MEASURER
-    document.body.appendChild(scrollDiv)
-    const scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth
-    document.body.removeChild(scrollDiv)
-    return scrollbarWidth
   }
 
   // Static

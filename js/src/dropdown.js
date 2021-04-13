@@ -192,7 +192,7 @@ class Dropdown extends BaseComponent {
     if ('ontouchstart' in document.documentElement &&
       !parent.closest(SELECTOR_NAVBAR_NAV)) {
       [].concat(...document.body.children)
-        .forEach(elem => EventHandler.on(elem, 'mouseover', null, noop()))
+        .forEach(elem => EventHandler.on(elem, 'mouseover', noop))
     }
 
     this._element.focus()
@@ -222,7 +222,7 @@ class Dropdown extends BaseComponent {
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
       [].concat(...document.body.children)
-        .forEach(elem => EventHandler.off(elem, 'mouseover', null, noop()))
+        .forEach(elem => EventHandler.off(elem, 'mouseover', noop))
     }
 
     if (this._popper) {
@@ -237,7 +237,6 @@ class Dropdown extends BaseComponent {
   }
 
   dispose() {
-    EventHandler.off(this._element, EVENT_KEY)
     this._menu = null
 
     if (this._popper) {
@@ -357,6 +356,31 @@ class Dropdown extends BaseComponent {
     }
   }
 
+  _selectMenuItem(event) {
+    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu).filter(isVisible)
+
+    if (!items.length) {
+      return
+    }
+
+    let index = items.indexOf(event.target)
+
+    // Up
+    if (event.key === ARROW_UP_KEY && index > 0) {
+      index--
+    }
+
+    // Down
+    if (event.key === ARROW_DOWN_KEY && index < items.length - 1) {
+      index++
+    }
+
+    // index is -1 if the first keydown is an ArrowUp
+    index = index === -1 ? 0 : index
+
+    items[index].focus()
+  }
+
   // Static
 
   static dropdownInterface(element, config) {
@@ -435,7 +459,7 @@ class Dropdown extends BaseComponent {
       // empty mouseover listeners we added for iOS support
       if ('ontouchstart' in document.documentElement) {
         [].concat(...document.body.children)
-          .forEach(elem => EventHandler.off(elem, 'mouseover', null, noop()))
+          .forEach(elem => EventHandler.off(elem, 'mouseover', noop))
       }
 
       if (context._popper) {
@@ -448,31 +472,6 @@ class Dropdown extends BaseComponent {
       Manipulator.removeDataAttribute(dropdownMenu, 'popper')
       EventHandler.trigger(toggles[i], EVENT_HIDDEN, relatedTarget)
     }
-  }
-
-  static selectMenuItem(parent, event) {
-    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, parent).filter(isVisible)
-
-    if (!items.length) {
-      return
-    }
-
-    let index = items.indexOf(event.target)
-
-    // Up
-    if (event.key === ARROW_UP_KEY && index > 0) {
-      index--
-    }
-
-    // Down
-    if (event.key === ARROW_DOWN_KEY && index < items.length - 1) {
-      index++
-    }
-
-    // index is -1 if the first keydown is an ArrowUp
-    index = index === -1 ? 0 : index
-
-    items[index].focus()
   }
 
   static getParentFromElement(element) {
@@ -526,7 +525,7 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    Dropdown.selectMenuItem(Dropdown.getParentFromElement(this), event)
+    Dropdown.getInstance(getToggleButton())._selectMenuItem(event)
   }
 }
 
