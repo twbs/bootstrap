@@ -1,0 +1,7 @@
+@each $color, $value in $theme-colors {
+  $btn-light-bg: shift-color($value, -80%);
+  $btn-light-border: shift-color($value, -80%);
+  .btn-light-#{$color} {
+    @include button-variant($btn-light-bg, $btn-light-border, shift-color($value, 50%));
+  }
+}
