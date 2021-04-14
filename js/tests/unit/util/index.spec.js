@@ -477,8 +477,8 @@ describe('Util', () => {
   })
 
   describe('noop', () => {
-    it('should return a function', () => {
-      expect(typeof Util.noop()).toEqual('function')
+    it('should be a function', () => {
+      expect(typeof Util.noop).toEqual('function')
     })
   })
 
@@ -566,6 +566,14 @@ describe('Util', () => {
       expect(fakejQuery.fn.test).toBe(pluginMock.jQueryInterface)
       expect(fakejQuery.fn.test.Constructor).toBe(pluginMock)
       expect(typeof fakejQuery.fn.test.noConflict).toEqual('function')
+    })
+  })
+
+  describe('execute', () => {
+    it('should execute if arg is function', () => {
+      const spy = jasmine.createSpy('spy')
+      Util.execute(spy)
+      expect(spy).toHaveBeenCalled()
     })
   })
 })

@@ -190,7 +190,7 @@ const findShadowRoot = element => {
   return findShadowRoot(element.parentNode)
 }
 
-const noop = () => function () {}
+const noop = () => {}
 
 const reflow = element => element.offsetHeight
 
@@ -230,6 +230,12 @@ const defineJQueryPlugin = (name, plugin) => {
   })
 }
 
+const execute = callback => {
+  if (typeof callback === 'function') {
+    callback()
+  }
+}
+
 export {
   getUID,
   getSelectorFromElement,
@@ -247,5 +253,6 @@ export {
   getjQuery,
   onDOMContentLoaded,
   isRTL,
-  defineJQueryPlugin
+  defineJQueryPlugin,
+  execute
 }

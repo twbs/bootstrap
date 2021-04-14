@@ -83,8 +83,6 @@
     @include border-top-radius(.25rem);
 
     + .bd-clipboard + .highlight {
-      border-top: 0;
-      @include border-top-radius(0);
       @include border-bottom-radius(.25rem);
     }
   }
@@ -289,20 +287,18 @@
 //
 
 .highlight {
-  position: relative;
-  padding: 3.5rem 1rem 0;
+  padding: 1rem;
   margin-bottom: 1rem;
-  overflow: auto;
   background-color: $gray-100;
-  border: 1px solid $gray-300;
 
   @include media-breakpoint-up(sm) {
-    @include border-radius(.25rem);
+    padding: 1rem 1.5rem;
   }
 
   pre {
-    padding: 0 0 1rem;
-    margin-bottom: .5rem;
+    padding: 0;
+    margin-top: .65rem;
+    margin-bottom: .65rem;
     white-space: pre;
     background-color: transparent;
     border: 0;
@@ -323,27 +319,4 @@
     margin-right: 0;
     margin-left: 0;
   }
-}
-
-.bd-example-multiple-langs + .bd-clipboard + .highlight {
-  margin-bottom: 0;
-  border-bottom: 0;
-  @include border-bottom-radius(0);
-}
-.highlight + .bd-clipboard + .highlight {
-  @include border-top-radius(0);
-}
-
-[data-lang]::before {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  padding: .5rem 1rem;
-  @include font-size(.875rem);
-  color: $gray-700;
-  text-transform: uppercase;
-  content: attr(data-lang);
-  user-select: none;
-  border-bottom: 1px solid $gray-300;
 }

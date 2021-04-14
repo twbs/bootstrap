@@ -14,6 +14,15 @@ describe('Offcanvas', () => {
   afterEach(() => {
     clearFixture()
     document.body.classList.remove('offcanvas-open')
+    document.documentElement.removeAttribute('style')
+    document.body.removeAttribute('style')
+    document.body.removeAttribute('data-bs-padding-right')
+  })
+
+  beforeEach(() => {
+    document.documentElement.removeAttribute('style')
+    document.body.removeAttribute('style')
+    document.body.removeAttribute('data-bs-padding-right')
   })
 
   describe('VERSION', () => {
@@ -177,7 +186,7 @@ describe('Offcanvas', () => {
         offCanvas.hide()
       })
       offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
-        expect(document.body.style.overflow).toEqual('auto')
+        expect(document.body.style.overflow).not.toEqual('hidden')
         done()
       })
       offCanvas.show()
