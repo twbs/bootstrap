@@ -101,9 +101,9 @@ Add `.accordion-flush` to remove the default `background-color`, some borders, a
 </div>
 {{< /example >}}
 
-### Panels stay open
+### Always open
 
-Omit the `data-bs-parent` attribute to make panels stay open when another panel is opened.
+Omit the `data-bs-parent` attribute on each `.accordion-collapse` to make accordion items stay open when another item is opened.
 
 {{< example >}}
 <div class="accordion" id="accordionPanelsStayOpenExample">
