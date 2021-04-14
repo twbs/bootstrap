@@ -428,13 +428,12 @@ class Dropdown extends BaseComponent {
         continue
       }
 
-      const dropdownMenu = context._menu
-      if (!toggles[i].classList.contains(CLASS_NAME_SHOW)) {
+      if (!context._element.classList.contains(CLASS_NAME_SHOW)) {
         continue
       }
 
       const relatedTarget = {
-        relatedTarget: toggles[i]
+        relatedTarget: context._element
       }
 
       if (event) {
@@ -444,7 +443,7 @@ class Dropdown extends BaseComponent {
         }
 
         // Tab navigation through the dropdown menu shouldn't close the menu
-        if (event.type === 'keyup' && event.key === TAB_KEY && dropdownMenu.contains(event.target)) {
+        if (event.type === 'keyup' && event.key === TAB_KEY && context._menu.contains(event.target)) {
           continue
         }
 
