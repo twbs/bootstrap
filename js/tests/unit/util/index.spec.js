@@ -477,8 +477,8 @@ describe('Util', () => {
   })
 
   describe('noop', () => {
-    it('should return a function', () => {
-      expect(typeof Util.noop()).toEqual('function')
+    it('should be a function', () => {
+      expect(typeof Util.noop).toEqual('function')
     })
   })
 
