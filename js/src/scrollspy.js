@@ -87,8 +87,8 @@ class ScrollSpy extends BaseComponent {
     return Default
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -303,6 +303,6 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  * add .ScrollSpy to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, ScrollSpy)
+defineJQueryPlugin(ScrollSpy)
 
 export default ScrollSpy
