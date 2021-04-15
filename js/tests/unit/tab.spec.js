@@ -574,10 +574,10 @@ describe('Tab', () => {
         '  <li class="nav-item"><a class="nav-link" href="#profile" data-bs-toggle="tab">Profile</a></li>',
         '  <li class="nav-item dropdown">',
         '    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>',
-        '    <div class="dropdown-menu">',
+        '    <ul class="dropdown-menu">',
         '      <li><a class="dropdown-item" href="#dropdown1" id="dropdown1-tab" data-bs-toggle="tab">@fat</a></li>',
         '      <li><a class="dropdown-item" href="#dropdown2" id="dropdown2-tab" data-bs-toggle="tab">@mdo</a></li>',
-        '    </div>',
+        '    </ul>',
         '  </li>',
         '</ul>'
       ].join('')
