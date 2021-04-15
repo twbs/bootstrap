@@ -20,6 +20,7 @@ import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
 import { getWidth as getScrollBarWidth, hide as scrollBarHide, reset as scrollBarReset } from './util/scrollbar'
 import BaseComponent from './base-component'
+import Backdrop from './util/backdrop'
 
 /**
  * ------------------------------------------------------------------------
@@ -58,7 +59,6 @@ const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY}`
 const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
-const CLASS_NAME_BACKDROP = 'modal-backdrop'
 const CLASS_NAME_OPEN = 'modal-open'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
@@ -81,7 +81,7 @@ class Modal extends BaseComponent {
 
     this._config = this._getConfig(config)
     this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element)
-    this._backdrop = null
+    this._backdrop = this._initializeBackDrop()
     this._isShown = false
     this._ignoreBackdropClick = false
     this._isTransitioning = false
@@ -201,6 +201,7 @@ class Modal extends BaseComponent {
 
     this._config = null
     this._dialog = null
+    this._backdrop.dispose()
     this._backdrop = null
     this._isShown = null
     this._ignoreBackdropClick = null
@@ -212,6 +213,13 @@ class Modal extends BaseComponent {
   }
 
   // Private
+
+  _initializeBackDrop() {
+    return new Backdrop({
+      isVisible: Boolean(this._config.backdrop), // 'static' option will be translated to true, and booleans will keep their value
+      isAnimated: this._isAnimated()
+    })
+  }
 
   _getConfig(config) {
     config = {
@@ -313,7 +321,7 @@ class Modal extends BaseComponent {
     this._element.removeAttribute('aria-modal')
     this._element.removeAttribute('role')
     this._isTransitioning = false
-    this._showBackdrop(() => {
+    this._backdrop.hide(() => {
       document.body.classList.remove(CLASS_NAME_OPEN)
       this._resetAdjustments()
       scrollBarReset()
@@ -321,73 +329,25 @@ class Modal extends BaseComponent {
     })
   }
 
-  _removeBackdrop() {
-    this._backdrop.parentNode.removeChild(this._backdrop)
-    this._backdrop = null
-  }
-
   _showBackdrop(callback) {
-    const isAnimated = this._isAnimated()
-    if (this._isShown && this._config.backdrop) {
-      this._backdrop = document.createElement('div')
-      this._backdrop.className = CLASS_NAME_BACKDROP
-
-      if (isAnimated) {
-        this._backdrop.classList.add(CLASS_NAME_FADE)
-      }
-
-      document.body.appendChild(this._backdrop)
-
-      EventHandler.on(this._element, EVENT_CLICK_DISMISS, event => {
-        if (this._ignoreBackdropClick) {
-          this._ignoreBackdropClick = false
-          return
-        }
-
-        if (event.target !== event.currentTarget) {
-          return
-        }
-
-        if (this._config.backdrop === 'static') {
-          this._triggerBackdropTransition()
-        } else {
-          this.hide()
-        }
-      })
-
-      if (isAnimated) {
-        reflow(this._backdrop)
-      }
-
-      this._backdrop.classList.add(CLASS_NAME_SHOW)
-
-      if (!isAnimated) {
-        callback()
+    EventHandler.on(this._element, EVENT_CLICK_DISMISS, event => {
+      if (this._ignoreBackdropClick) {
+        this._ignoreBackdropClick = false
         return
       }
 
-      const backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop)
-
-      EventHandler.one(this._backdrop, 'transitionend', callback)
-      emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
-    } else if (!this._isShown && this._backdrop) {
-      this._backdrop.classList.remove(CLASS_NAME_SHOW)
-
-      const callbackRemove = () => {
-        this._removeBackdrop()
-        callback()
+      if (event.target !== event.currentTarget) {
+        return
       }
 
-      if (isAnimated) {
-        const backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop)
-        EventHandler.one(this._backdrop, 'transitionend', callbackRemove)
-        emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
-      } else {
-        callbackRemove()
+      if (this._config.backdrop === true) {
+        this.hide()
+      } else if (this._config.backdrop === 'static') {
+        this._triggerBackdropTransition()
       }
-    } else {
-      callback()
-    }
+    })
+
+    this._backdrop.show(callback)
   }
 
   _isAnimated() {

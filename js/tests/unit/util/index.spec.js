@@ -568,4 +568,12 @@ describe('Util', () => {
       expect(typeof fakejQuery.fn.test.noConflict).toEqual('function')
     })
   })
+
+  describe('execute', () => {
+    it('should execute if arg is function', () => {
+      const spy = jasmine.createSpy('spy')
+      Util.execute(spy)
+      expect(spy).toHaveBeenCalled()
+    })
+  })
 })
