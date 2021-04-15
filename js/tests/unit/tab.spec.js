@@ -532,6 +532,41 @@ describe('Tab', () => {
       expect(fixtureEl.querySelector('li:last-child .dropdown-menu a:first-child').classList.contains('active')).toEqual(false)
     })
 
+    it('selecting a dropdown tab does not activate another', () => {
+      const nav1 = [
+        '<ul class="nav nav-tabs" id="nav1">',
+        '  <li class="nav-item active"><a class="nav-link" href="#home" data-bs-toggle="tab">Home</a></li>',
+        '  <li class="nav-item dropdown">',
+        '    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>',
+        '    <div class="dropdown-menu">',
+        '      <a class="dropdown-item" href="#dropdown1" id="dropdown1-tab" data-bs-toggle="tab">@fat</a>',
+        '    </div>',
+        '  </li>',
+        '</ul>'
+      ].join('')
+      const nav2 = [
+        '<ul class="nav nav-tabs" id="nav2">',
+        '  <li class="nav-item active"><a class="nav-link" href="#home" data-bs-toggle="tab">Home</a></li>',
+        '  <li class="nav-item dropdown">',
+        '    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>',
+        '    <div class="dropdown-menu">',
+        '      <a class="dropdown-item" href="#dropdown1" id="dropdown1-tab" data-bs-toggle="tab">@fat</a>',
+        '    </div>',
+        '  </li>',
+        '</ul>'
+      ].join('')
+
+      fixtureEl.innerHTML = nav1 + nav2
+
+      const firstDropItem = fixtureEl.querySelector('#nav1 .dropdown-item')
+
+      firstDropItem.click()
+      expect(firstDropItem.classList.contains('active')).toEqual(true)
+      expect(fixtureEl.querySelector('#nav1 .dropdown-toggle').classList.contains('active')).toEqual(true)
+      expect(fixtureEl.querySelector('#nav2 .dropdown-toggle').classList.contains('active')).toEqual(false)
+      expect(fixtureEl.querySelector('#nav2 .dropdown-item').classList.contains('active')).toEqual(false)
+    })
+
     it('should handle nested tabs', done => {
       fixtureEl.innerHTML = [
         '<nav class="nav nav-tabs" role="tablist">',
