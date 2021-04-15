@@ -412,7 +412,7 @@ class Dropdown extends BaseComponent {
         return
       }
 
-      if (/input|select|textarea|form/i.test(event.target.tagName)) {
+      if (/input|select|option|textarea|form/i.test(event.target.tagName)) {
         return
       }
     }
