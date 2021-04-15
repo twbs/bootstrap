@@ -28,17 +28,19 @@ describe('ScrollBar', () => {
 
   afterAll(() => {
     fixtureEl.remove()
-    document.documentElement.style.overflowY = 'auto'
-    document.body.style.overflowY = 'auto'
   })
 
   afterEach(() => {
     clearFixture()
     document.documentElement.removeAttribute('style')
+    document.body.removeAttribute('style')
+    document.body.removeAttribute('data-bs-padding-right')
   })
 
   beforeEach(() => {
     document.documentElement.removeAttribute('style')
+    document.body.removeAttribute('style')
+    document.body.removeAttribute('data-bs-padding-right')
   })
 
   describe('isBodyOverflowing', () => {
