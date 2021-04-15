@@ -129,7 +129,7 @@
 
   .input-group .form-control,
   .input-group .form-select {
-    @include form-validation-state-selector($state) {
+    @if ($state == "invalid") {
       z-index: 3;
     }
   }
