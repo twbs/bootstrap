@@ -1,18 +1,6 @@
-// .modal-open      - body class for killing the scroll
 // .modal           - container to scroll within
 // .modal-dialog    - positioning shell for the actual modal
 // .modal-content   - actual modal w/ bg and corners and stuff
-
-
-.modal-open {
-  // Kill the scroll on the body
-  overflow: hidden;
-
-  .modal {
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-}
 
 // Container that the modal scrolls within
 .modal {
@@ -23,7 +11,8 @@
   display: none;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;

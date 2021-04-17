@@ -18,7 +18,7 @@ import {
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
-import { getWidth as getScrollBarWidth, hide as scrollBarHide, reset as scrollBarReset } from './util/scrollbar'
+import ScrollBarHelper from './util/scrollbar'
 import BaseComponent from './base-component'
 import Backdrop from './util/backdrop'
 
@@ -59,7 +59,6 @@ const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY}`
 const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
-const CLASS_NAME_OPEN = 'modal-open'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_STATIC = 'modal-static'
@@ -85,6 +84,7 @@ class Modal extends BaseComponent {
     this._isShown = false
     this._ignoreBackdropClick = false
     this._isTransitioning = false
+    this._scrollBar = new ScrollBarHelper()
   }
 
   // Getters
@@ -122,9 +122,7 @@ class Modal extends BaseComponent {
 
     this._isShown = true
 
-    scrollBarHide()
-
-    document.body.classList.add(CLASS_NAME_OPEN)
+    this._scrollBar.hide()
 
     this._adjustDialog()
 
@@ -301,9 +299,8 @@ class Modal extends BaseComponent {
     this._element.removeAttribute('role')
     this._isTransitioning = false
     this._backdrop.hide(() => {
-      document.body.classList.remove(CLASS_NAME_OPEN)
       this._resetAdjustments()
-      scrollBarReset()
+      this._scrollBar.reset()
       EventHandler.trigger(this._element, EVENT_HIDDEN)
     })
   }
@@ -367,7 +364,7 @@ class Modal extends BaseComponent {
 
   _adjustDialog() {
     const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
-    const scrollbarWidth = getScrollBarWidth()
+    const scrollbarWidth = this._scrollBar.getWidth()
     const isBodyOverflowing = scrollbarWidth > 0
 
     if ((!isBodyOverflowing && isModalOverflowing && !isRTL()) || (isBodyOverflowing && !isModalOverflowing && isRTL())) {

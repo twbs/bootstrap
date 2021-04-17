@@ -1,13 +1,16 @@
-import * as Scrollbar from '../../../src/util/scrollbar'
 import { clearBodyAndDocument, clearFixture, getFixture } from '../../helpers/fixture'
 import Manipulator from '../../../src/dom/manipulator'
+import ScrollBarHelper from '../../../src/util/scrollbar'
 
 describe('ScrollBar', () => {
   let fixtureEl
+  const doc = document.documentElement
   const parseInt = arg => Number.parseInt(arg, 10)
-  const getRightPadding = el => parseInt(window.getComputedStyle(el).paddingRight)
+  const getPaddingX = el => parseInt(window.getComputedStyle(el).paddingRight)
+  const getMarginX = el => parseInt(window.getComputedStyle(el).marginRight)
   const getOverFlow = el => el.style.overflow
   const getPaddingAttr = el => Manipulator.getDataAttribute(el, 'padding-right')
+  const getMarginAttr = el => Manipulator.getDataAttribute(el, 'margin-right')
   const getOverFlowAttr = el => Manipulator.getDataAttribute(el, 'overflow')
   const windowCalculations = () => {
     return {
@@ -45,60 +48,118 @@ describe('ScrollBar', () => {
     clearBodyAndDocument()
   })
 
-  describe('isBodyOverflowing', () => {
-    it('should return true if body is overflowing', () => {
-      document.documentElement.style.overflowY = 'scroll'
-      document.body.style.overflowY = 'scroll'
-      fixtureEl.innerHTML = [
-        '<div style="height: 110vh; width: 100%"></div>'
-      ].join('')
-      const result = Scrollbar.isBodyOverflowing()
+  describe('isOverflowing', () => {
+    describe('Body', () => {
+      it('should return true if body is overflowing', () => {
+        fixtureEl.innerHTML = [
+          '<div style="height: 110vh; width: 100%">text</div>'
+        ].join('')
+        const result = new ScrollBarHelper().isOverflowing()
 
-      if (isScrollBarHidden()) {
-        expect(result).toEqual(false)
-      } else {
         expect(result).toEqual(true)
-      }
+      })
+
+      it('should return false if body is not overflowing', () => {
+        doc.style.height = '100vh'
+        document.body.style.height = '100vh'
+        fixtureEl.innerHTML = [
+          '<div style="height: 10vh; width: 100%"></div>'
+        ].join('')
+        const scrollBar = new ScrollBarHelper()
+        const result = scrollBar.isOverflowing()
+
+        expect(result).toEqual(false)
+        const result2 = scrollBar.isOverflowing(fixtureEl.querySelector('div'))
+        expect(result2).toEqual(false)
+      })
     })
+    describe('Element', () => {
+      it('should return true if wrapper element is overflowing', () => {
+        fixtureEl.innerHTML = [
+          '<div class="wrapper" style="height: 100px; width: 100% ;">' +
+          '   <div class="inner" style="height: 120px; width: 100%"></div>' +
+          '</div>'
+        ].join('')
+        const wrapper = fixtureEl.querySelector('.wrapper')
+        const innerElement = fixtureEl.querySelector('.inner')
+        const result = new ScrollBarHelper(wrapper).isOverflowing(innerElement)
 
-    it('should return false if body is overflowing', () => {
-      document.documentElement.style.overflowY = 'hidden'
-      document.body.style.overflowY = 'hidden'
-      fixtureEl.innerHTML = [
-        '<div style="height: 110vh; width: 100%"></div>'
-      ].join('')
-      const result = Scrollbar.isBodyOverflowing()
+        expect(result).toEqual(true)
+      })
 
-      expect(result).toEqual(false)
+      it('should return false if wrapper element is not overflowing', () => {
+        fixtureEl.innerHTML = [
+          '<div class="wrapper" style="height: 100px; width: 100%">' +
+          '   <div class="inner" style="height: 20px; width: 100%"></div>' +
+          '</div>'
+        ].join('')
+        const wrapper = fixtureEl.querySelector('.wrapper')
+        const innerElement = fixtureEl.querySelector('.inner')
+        const result = new ScrollBarHelper(wrapper).isOverflowing(innerElement)
+
+        expect(result).toEqual(false)
+      })
     })
   })
 
   describe('getWidth', () => {
-    it('should return an integer greater than zero, if body is overflowing', () => {
-      document.documentElement.style.overflowY = 'scroll'
-      document.body.style.overflowY = 'scroll'
-      fixtureEl.innerHTML = [
-        '<div style="height: 110vh; width: 100%"></div>'
-      ].join('')
-      const result = Scrollbar.getWidth()
+    describe('Body', () => {
+      it('should return an integer greater than zero, if body is overflowing', () => {
+        document.documentElement.style.overflowY = 'scroll'
+        document.body.style.overflowY = 'scroll'
+        fixtureEl.innerHTML = [
+          '<div style="height: 110vh; width: 100%"></div>'
+        ].join('')
+        const result = new ScrollBarHelper().getWidth()
 
-      if (isScrollBarHidden()) {
-        expect(result).toBe(0)
-      } else {
-        expect(result).toBeGreaterThan(1)
-      }
+        if (isScrollBarHidden()) {
+          expect(result).toBe(0)
+        } else {
+          expect(result).toBeGreaterThan(1)
+        }
+      })
+
+      it('should return 0 if body is not overflowing', () => {
+        document.documentElement.style.overflowY = 'hidden'
+        document.body.style.overflowY = 'hidden'
+        fixtureEl.innerHTML = [
+          '<div style="height: 110vh; width: 100%"></div>'
+        ].join('')
+
+        const result = new ScrollBarHelper().getWidth()
+
+        expect(result).toEqual(0)
+      })
     })
 
-    it('should return 0 if body is not overflowing', () => {
-      document.documentElement.style.overflowY = 'hidden'
-      document.body.style.overflowY = 'hidden'
-      fixtureEl.innerHTML = [
-        '<div style="height: 110vh; width: 100%"></div>'
-      ].join('')
+    describe('Element', () => {
+      it('should return an integer greater than zero, if wrapper element is overflowing', () => {
+        fixtureEl.innerHTML = [
+          '<div class="wrapper" style="height: 100px; width: 100%; overflow: scroll">' +
+          '   <div style="height: 120px; width: 100%"></div>' +
+          '</div>'
+        ].join('')
+        const wrapper = fixtureEl.querySelector('.wrapper')
+        const result = new ScrollBarHelper(wrapper).getWidth()
 
-      const result = Scrollbar.getWidth()
+        if (isScrollBarHidden()) {
+          expect(result).toBe(0)
+        } else {
+          expect(result).toBeGreaterThan(1)
+        }
+      })
 
-      expect(result).toEqual(0)
+      it('should return 0 if wrapper element is not overflowing', () => {
+        fixtureEl.innerHTML = [
+          '<div class="wrapper" style="height: 100px; width: 100%">' +
+          '   <div style="height: 20px; width: 100%"></div>' +
+          '</div>'
+        ].join('')
+        const wrapper = fixtureEl.querySelector('.wrapper')
+        const result = new ScrollBarHelper(wrapper).getWidth()
+
+        expect(result).toEqual(0)
+      })
     })
   })
 
@@ -106,7 +167,7 @@ describe('ScrollBar', () => {
     it('should adjust the inline padding of fixed elements which are full-width', done => {
       fixtureEl.innerHTML = [
         '<div style="height: 110vh; width: 100%">' +
-        '<div class="fixed-top" id="fixed1" style="padding-right: 0px; width: 100vw"></div>',
+        '<div class="fixed-top" id="fixed1" style="padding-right: 1px; width: 100vw"></div>',
         '<div class="fixed-top" id="fixed2" style="padding-right: 5px; width: 100vw"></div>',
         '</div>'
       ].join('')
@@ -114,52 +175,57 @@ describe('ScrollBar', () => {
 
       const fixedEl = fixtureEl.querySelector('#fixed1')
       const fixedEl2 = fixtureEl.querySelector('#fixed2')
-      const originalPadding = Number.parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
-      const originalPadding2 = Number.parseInt(window.getComputedStyle(fixedEl2).paddingRight, 10)
-      const expectedPadding = originalPadding + Scrollbar.getWidth()
-      const expectedPadding2 = originalPadding2 + Scrollbar.getWidth()
+      const originalPadding = getPaddingX(fixedEl)
+      const originalPadding2 = getPaddingX(fixedEl2)
+      const scrollBar = new ScrollBarHelper()
+      const expectedPadding = originalPadding + scrollBar.getWidth()
+      const expectedPadding2 = originalPadding2 + scrollBar.getWidth()
 
-      Scrollbar.hide()
+      scrollBar.hide()
 
-      let currentPadding = Number.parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
-      let currentPadding2 = Number.parseInt(window.getComputedStyle(fixedEl2).paddingRight, 10)
-      expect(fixedEl.getAttribute('data-bs-padding-right')).toEqual('0px', 'original fixed element padding should be stored in data-bs-padding-right')
-      expect(fixedEl2.getAttribute('data-bs-padding-right')).toEqual('5px', 'original fixed element padding should be stored in data-bs-padding-right')
+      let currentPadding = getPaddingX(fixedEl)
+      let currentPadding2 = getPaddingX(fixedEl2)
+      expect(getPaddingAttr(fixedEl)).toEqual(`${originalPadding}px`, 'original fixed element padding should be stored in data-bs-padding-right')
+      expect(getPaddingAttr(fixedEl2)).toEqual(`${originalPadding2}px`, 'original fixed element padding should be stored in data-bs-padding-right')
       expect(currentPadding).toEqual(expectedPadding, 'fixed element padding should be adjusted while opening')
       expect(currentPadding2).toEqual(expectedPadding2, 'fixed element padding should be adjusted while opening')
 
-      Scrollbar.reset()
-      currentPadding = Number.parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
-      currentPadding2 = Number.parseInt(window.getComputedStyle(fixedEl2).paddingRight, 10)
-      expect(fixedEl.getAttribute('data-bs-padding-right')).toEqual(null, 'data-bs-padding-right should be cleared after closing')
-      expect(fixedEl2.getAttribute('data-bs-padding-right')).toEqual(null, 'data-bs-padding-right should be cleared after closing')
+      scrollBar.reset()
+      currentPadding = getPaddingX(fixedEl)
+      currentPadding2 = getPaddingX(fixedEl2)
+      expect(getPaddingAttr(fixedEl)).toEqual(null, 'data-bs-padding-right should be cleared after closing')
+      expect(getPaddingAttr(fixedEl2)).toEqual(null, 'data-bs-padding-right should be cleared after closing')
       expect(currentPadding).toEqual(originalPadding, 'fixed element padding should be reset after closing')
       expect(currentPadding2).toEqual(originalPadding2, 'fixed element padding should be reset after closing')
       done()
     })
 
-    it('should adjust the inline margin of sticky elements', done => {
+    it('should adjust the inline margin and padding of sticky elements', done => {
       fixtureEl.innerHTML = [
         '<div style="height: 110vh">' +
-        '<div class="sticky-top" style="margin-right: 0px; width: 100vw; height: 10px"></div>',
+        '<div class="sticky-top" style="margin-right: 10px; padding-right: 20px; width: 100vw; height: 10px"></div>',
         '</div>'
       ].join('')
-      document.documentElement.style.overflowY = 'scroll'
+      doc.style.overflowY = 'scroll'
 
       const stickyTopEl = fixtureEl.querySelector('.sticky-top')
-      const originalMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
-      const expectedMargin = originalMargin - Scrollbar.getWidth()
-      Scrollbar.hide()
+      const originalMargin = getMarginX(stickyTopEl)
+      const originalPadding = getPaddingX(stickyTopEl)
+      const scrollBar = new ScrollBarHelper()
+      const expectedMargin = originalMargin - scrollBar.getWidth()
+      const expectedPadding = originalPadding + scrollBar.getWidth()
+      scrollBar.hide()
 
-      let currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
-      expect(stickyTopEl.getAttribute('data-bs-margin-right')).toEqual('0px', 'original sticky element margin should be stored in data-bs-margin-right')
-      expect(currentMargin).toEqual(expectedMargin, 'sticky element margin should be adjusted while opening')
+      expect(getMarginAttr(stickyTopEl)).toEqual(`${originalMargin}px`, 'original sticky element margin should be stored in data-bs-margin-right')
+      expect(getMarginX(stickyTopEl)).toEqual(expectedMargin, 'sticky element margin should be adjusted while opening')
+      expect(getPaddingAttr(stickyTopEl)).toEqual(`${originalPadding}px`, 'original sticky element margin should be stored in data-bs-margin-right')
+      expect(getPaddingX(stickyTopEl)).toEqual(expectedPadding, 'sticky element margin should be adjusted while opening')
 
-      Scrollbar.reset()
-      currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
-
-      expect(stickyTopEl.getAttribute('data-bs-margin-right')).toEqual(null, 'data-bs-margin-right should be cleared after closing')
-      expect(currentMargin).toEqual(originalMargin, 'sticky element margin should be reset after closing')
+      scrollBar.reset()
+      expect(getMarginAttr(stickyTopEl)).toEqual(null, 'data-bs-margin-right should be cleared after closing')
+      expect(getMarginX(stickyTopEl)).toEqual(originalMargin, 'sticky element margin should be reset after closing')
+      expect(getPaddingAttr(stickyTopEl)).toEqual(null, 'data-bs-margin-right should be cleared after closing')
+      expect(getPaddingX(stickyTopEl)).toEqual(originalPadding, 'sticky element margin should be reset after closing')
       done()
     })
 
@@ -169,18 +235,50 @@ describe('ScrollBar', () => {
       ].join('')
 
       const stickyTopEl = fixtureEl.querySelector('.sticky-top')
-      const originalMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
-      const originalPadding = Number.parseInt(window.getComputedStyle(stickyTopEl).paddingRight, 10)
+      const originalMargin = getMarginX(stickyTopEl)
+      const originalPadding = getPaddingX(stickyTopEl)
+      const scrollBar = new ScrollBarHelper()
 
-      Scrollbar.hide()
+      scrollBar.hide()
 
-      const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
-      const currentPadding = Number.parseInt(window.getComputedStyle(stickyTopEl).paddingRight, 10)
+      const currentMargin = getMarginX(stickyTopEl)
+      const currentPadding = getPaddingX(stickyTopEl)
 
       expect(currentMargin).toEqual(originalMargin, 'sticky element\'s margin should not be adjusted while opening')
       expect(currentPadding).toEqual(originalPadding, 'sticky element\'s padding should not be adjusted while opening')
 
-      Scrollbar.reset()
+      scrollBar.reset()
+    })
+
+    it('should not put data-attribute if element doesn\'t have the proper style property, should just remove style property if element didn\'t had one', () => {
+      fixtureEl.innerHTML = [
+        '<div style="height: 110vh; width: 100%">' +
+        '<div class="sticky-top" id="sticky" style="width: 100vw"></div>',
+        '</div>'
+      ].join('')
+
+      document.body.style.overflowY = 'scroll'
+
+      const hasPaddingAttr = el => el.hasAttribute('data-bs-padding-right')
+      const hasMarginAttr = el => el.hasAttribute('data-bs-margin-right')
+      const stickyEl = fixtureEl.querySelector('#sticky')
+      const originalPadding = getPaddingX(stickyEl)
+      const originalMargin = getMarginX(stickyEl)
+      const scrollBar = new ScrollBarHelper()
+      const scrollBarWidth = scrollBar.getWidth()
+
+      scrollBar.hide()
+
+      expect(getPaddingX(stickyEl)).toEqual(scrollBarWidth + originalPadding)
+      const expectedMargin = scrollBarWidth + originalMargin
+      expect(getMarginX(stickyEl)).toEqual(Math.abs(expectedMargin) === 0 ? expectedMargin : -expectedMargin)
+      expect(hasMarginAttr(stickyEl)).toBeFalse() // We do not have to keep css margin
+      expect(hasPaddingAttr(stickyEl)).toBeFalse() // We do not have to keep css padding
+
+      scrollBar.reset()
+
+      expect(getPaddingX(stickyEl)).toEqual(originalPadding)
+      expect(getPaddingX(stickyEl)).toEqual(originalPadding)
     })
 
     describe('Body Handling', () => {
@@ -198,15 +296,16 @@ describe('ScrollBar', () => {
         const inlineStylePadding = '10px'
         el.style.paddingRight = inlineStylePadding
 
-        const originalPadding = getRightPadding(el)
+        const originalPadding = getPaddingX(el)
         expect(originalPadding).toEqual(parseInt(inlineStylePadding)) // Respect only the inline style as it has prevails this of css
         const originalOverFlow = 'auto'
         el.style.overflow = originalOverFlow
-        const scrollBarWidth = Scrollbar.getWidth()
+        const scrollBar = new ScrollBarHelper()
+        const scrollBarWidth = scrollBar.getWidth()
 
-        Scrollbar.hide()
+        scrollBar.hide()
 
-        const currentPadding = getRightPadding(el)
+        const currentPadding = getPaddingX(el)
 
         expect(currentPadding).toEqual(scrollBarWidth + originalPadding)
         expect(currentPadding).toEqual(scrollBarWidth + parseInt(inlineStylePadding))
@@ -214,9 +313,9 @@ describe('ScrollBar', () => {
         expect(getOverFlow(el)).toEqual('hidden')
         expect(getOverFlowAttr(el)).toEqual(originalOverFlow)
 
-        Scrollbar.reset()
+        scrollBar.reset()
 
-        const currentPadding1 = getRightPadding(el)
+        const currentPadding1 = getPaddingX(el)
         expect(currentPadding1).toEqual(originalPadding)
         expect(getPaddingAttr(el)).toEqual(null)
         expect(getOverFlow(el)).toEqual(originalOverFlow)
@@ -233,14 +332,15 @@ describe('ScrollBar', () => {
           '</style>'
         ].join('')
         const el = document.body
-        const originalPadding = getRightPadding(el)
+        const originalPadding = getPaddingX(el)
         const originalOverFlow = 'scroll'
         el.style.overflow = originalOverFlow
-        const scrollBarWidth = Scrollbar.getWidth()
+        const scrollBar = new ScrollBarHelper()
+        const scrollBarWidth = scrollBar.getWidth()
 
-        Scrollbar.hide()
+        scrollBar.hide()
 
-        const currentPadding = getRightPadding(el)
+        const currentPadding = getPaddingX(el)
 
         expect(currentPadding).toEqual(scrollBarWidth + originalPadding)
         expect(currentPadding).toEqual(scrollBarWidth + parseInt(styleSheetPadding))
@@ -248,13 +348,51 @@ describe('ScrollBar', () => {
         expect(getOverFlow(el)).toEqual('hidden')
         expect(getOverFlowAttr(el)).toEqual(originalOverFlow)
 
-        Scrollbar.reset()
+        scrollBar.reset()
 
-        const currentPadding1 = getRightPadding(el)
+        const currentPadding1 = getPaddingX(el)
         expect(currentPadding1).toEqual(originalPadding)
         expect(getPaddingAttr(el)).toEqual(null)
         expect(getOverFlow(el)).toEqual(originalOverFlow)
         expect(getOverFlowAttr(el)).toEqual(null)
+      })
+
+      it('should not adjust the inline body padding when it does not overflow', () => {
+        const scrollBar = new ScrollBarHelper()
+        const originalPadding = getPaddingX(document.body)
+
+        // Hide scrollbars to prevent the body overflowing
+        doc.style.overflowY = 'hidden'
+        doc.style.paddingRight = '0px'
+
+        scrollBar.hide()
+        const currentPadding = getPaddingX(document.body)
+
+        expect(currentPadding).toEqual(originalPadding, 'body padding should not be adjusted')
+        scrollBar.reset()
+      })
+
+      it('should not adjust the inline body padding when it does not overflow, even on a scaled display', () => {
+        const scrollBar = new ScrollBarHelper()
+
+        const originalPadding = getPaddingX(document.body)
+        const doc = document.documentElement
+        // Remove body margins as would be done by Bootstrap css
+        document.body.style.margin = '0'
+
+        // Hide scrollbars to prevent the body overflowing
+        doc.style.overflowY = 'hidden'
+
+        // Simulate a discrepancy between exact, i.e. floating point body width, and rounded body width
+        // as it can occur when zooming or scaling the display to something else than 100%
+        doc.style.paddingRight = '.48px'
+        scrollBar.hide()
+
+        const currentPadding = getPaddingX(document.body)
+
+        expect(currentPadding).toEqual(originalPadding, 'body padding should not be adjusted')
+
+        scrollBar.reset()
       })
     })
   })
