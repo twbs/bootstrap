@@ -33,6 +33,7 @@
     @include border-radius($form-range-thumb-border-radius);
     @include box-shadow($form-range-thumb-box-shadow);
     @include transition($form-range-thumb-transition);
+    /* stylelint-disable-next-line property-no-vendor-prefix */
     -webkit-appearance: none;
     appearance: none;
 
@@ -60,6 +61,7 @@
     @include border-radius($form-range-thumb-border-radius);
     @include box-shadow($form-range-thumb-box-shadow);
     @include transition($form-range-thumb-transition);
+    /* stylelint-disable-next-line property-no-vendor-prefix */
     -moz-appearance: none;
     appearance: none;
 
