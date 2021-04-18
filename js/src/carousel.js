@@ -130,10 +130,11 @@ class Carousel {
 
   nextWhenVisible() {
     const $element = $(this._element)
+    const htmlElement = $element.get(0)
     // Don't call next when the page isn't visible
     // or the carousel or its parent isn't visible
     if (!document.hidden &&
-      ($element.is(':visible') && $element.css('visibility') !== 'hidden')) {
+      (htmlElement.offsetWidth || htmlElement.offsetHeight || htmlElement.getClientRects().length) && $element.css('visibility') !== 'hidden') {
       this.next()
     }
   }

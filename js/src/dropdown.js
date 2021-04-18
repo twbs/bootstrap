@@ -479,7 +479,7 @@ class Dropdown {
     }
 
     const items = [].slice.call(parent.querySelectorAll(SELECTOR_VISIBLE_ITEMS))
-      .filter(item => $(item).is(':visible'))
+      .filter(item => item.offsetWidth || item.offsetHeight || item.getClientRects().length)
 
     if (items.length === 0) {
       return

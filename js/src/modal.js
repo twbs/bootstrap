@@ -604,7 +604,8 @@ $(document).on(EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
     }
 
     $target.one(EVENT_HIDDEN, () => {
-      if ($(this).is(':visible')) {
+      const elem = $(this).get(0)
+      if (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length) {
         this.focus()
       }
     })
