@@ -11,18 +11,22 @@ import { emulateTransitionEnd, execute, getTransitionDurationFromElement, reflow
 const Default = {
   isVisible: true, // if false, we use the backdrop helper without adding any element to the dom
   isAnimated: false,
-  rootElement: document.body // give the choice to place backdrop under different elements
+  rootElement: document.body, // give the choice to place backdrop under different elements
+  clickCallback: null
 }
 
 const DefaultType = {
   isVisible: 'boolean',
   isAnimated: 'boolean',
-  rootElement: 'element'
+  rootElement: 'element',
+  clickCallback: '(function|null)'
 }
 const NAME = 'backdrop'
 const CLASS_NAME_BACKDROP = 'modal-backdrop'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
+
+const EVENT_MOUSEDOWN = `mousedown.bs.${NAME}`
 
 class Backdrop {
   constructor(config) {
@@ -96,6 +100,10 @@ class Backdrop {
 
     this._config.rootElement.appendChild(this._getElement())
 
+    EventHandler.on(this._getElement(), EVENT_MOUSEDOWN, () => {
+      execute(this._config.clickCallback)
+    })
+
     this._isAppended = true
   }
 
@@ -103,6 +111,8 @@ class Backdrop {
     if (!this._isAppended) {
       return
     }
+
+    EventHandler.off(this._element, EVENT_MOUSEDOWN)
 
     this._getElement().parentNode.removeChild(this._element)
     this._isAppended = false
