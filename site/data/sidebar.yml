@@ -5,123 +5,225 @@
   slug: getting-started
   pages:
     - title: مقدمة
+      slug: Introduction
     - title: تحميل
+      slug: download
     - title: محتويات
+      slug: contents
     - title: المتصفحات والأجهزة
+      slug: browsers-devices
     - title: JavaScript
+      slug:
     - title: أدوات البناء
+      slug:
     - title: حزمة الويب
+      slug:
     - title: قطعة
+      slug:
     - title: إمكانية الوصول
+      slug:
     - title: RFS
+      slug:
     - title: RTL
+      slug:
 
 - title: التخصيص
+  slug: 
   pages:
     - title: مخلص
+      slug:
     - title: Sass
+      slug:
     - title: خيارات
+      slug:
     - title: اللون
+      slug:
     - title: عناصر
+      slug:
     - title: متغيرات CSS
+      slug:
     - title: تحسين
+      slug:
 
 - title: تخطيط
+  slug: 
   pages:
     - title: نقاط التوقف
+      slug:
     - title: حاويات
+      slug:
     - title: شبكة
+      slug:
     - title: الأعمدة
+      slug:
     - title: Gutters
+      slug:
     - title: Utilities
+      slug:
     - title: Z-index
+      slug:
 
 - title: محتوى
+  slug: 
   pages:
     - title: Reboot
+      slug:
     - title: Typography
+      slug:
     - title: Images
+      slug:
     - title: Tables
+      slug:
     - title: Figures
+      slug:
 
 - title: نماذج
+  slug: 
   pages:
     - title: Overview
+      slug:
     - title: Form control
+      slug:
     - title: Select
+      slug:
     - title: Checks & radios
+      slug:
     - title: Range
+      slug:
     - title: Input group
+      slug:
     - title: Floating labels
+      slug:
     - title: Layout
+      slug:
     - title: Validation
+      slug:
 
 - title: عناصر
+  slug: 
   pages:
     - title: Accordion
+      slug:
     - title: Alerts
+      slug:
     - title: Badge
+      slug:
     - title: Breadcrumb
+      slug:
     - title: Buttons
+      slug:
     - title: Button group
+      slug:
     - title: Card
+      slug:
     - title: Carousel
+      slug:
     - title: Close button
+      slug:
     - title: Collapse
+      slug:
     - title: Dropdowns
+      slug:
     - title: List group
+      slug:
     - title: Modal
+      slug:
     - title: Navs & tabs
+      slug:
     - title: Navbar
+      slug:
     - title: Offcanvas
+      slug:
     - title: Pagination
+      slug:
     - title: Popovers
+      slug:
     - title: Progress
+      slug:
     - title: Scrollspy
+      slug:
     - title: Spinners
+      slug:
     - title: Toasts
+      slug:
     - title: Tooltips
+      slug:
 
 - title: مساعدين
+  slug: 
   pages:
     - title: Clearfix
+      slug:
     - title: Colored links
+      slug:
     - title: Ratio
+      slug:
     - title: Position
+      slug:
     - title: Visually hidden
+      slug:
     - title: Stretched link
+      slug:
     - title: Text truncation
+      slug:
 
 - title: خدمات
+  slug: 
   pages:
     - title: API
+      slug:
     - title: Background
+      slug:
     - title: Borders
+      slug:
     - title: Colors
+      slug:
     - title: Display
+      slug:
     - title: Flex
+      slug:
     - title: Float
+      slug:
     - title: Interactions
+      slug:
     - title: Overflow
+      slug:
     - title: Position
+      slug:
     - title: Shadows
+      slug:
     - title: Sizing
+      slug:
     - title: Spacing
+      slug:
     - title: Text
+      slug:
     - title: Vertical align
+      slug:
     - title: Visibility
+      slug:
 
 - title: بالإضافة إلى
+  slug: 
   pages:
     - title: Approach
+      slug:
     - title: Icons
+      slug:
 
 - title: حول
+  slug: 
   pages:
     - title: Overview
+      slug:
     - title: Team
+      slug:
     - title: Brand
+      slug:
     - title: License
+      slug:
     - title: Translations
+      slug:
 
 - title: الهجرة
+  slug: 
