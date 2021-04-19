@@ -364,7 +364,7 @@ $(function () {
 
     $tabs.find('.dropdown-item').trigger('click')
     assert.ok($tabs.find('.dropdown-item').hasClass('active'))
-    assert.notOk($tabs.find('.nav-link').hasClass('active'))
+    assert.notOk($tabs.find('.nav-link:not(.dropdown-toggle)').hasClass('active'))
   })
 
   QUnit.test('Nested tabs', function (assert) {
