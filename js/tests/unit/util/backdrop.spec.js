@@ -158,6 +158,31 @@ describe('Backdrop', () => {
     })
   })
 
+  describe('click callback', () => {
+    it('it should execute callback on click', done => {
+      const spy = jasmine.createSpy('spy')
+
+      const instance = new Backdrop({
+        isVisible: true,
+        isAnimated: false,
+        clickCallback: () => spy()
+      })
+      const endTest = () => {
+        setTimeout(() => {
+          expect(spy).toHaveBeenCalled()
+          done()
+        }, 10)
+      }
+
+      instance.show(() => {
+        const clickEvent = document.createEvent('MouseEvents')
+        clickEvent.initEvent('mousedown', true, true)
+        document.querySelector(CLASS_BACKDROP).dispatchEvent(clickEvent)
+        endTest()
+      })
+    })
+  })
+
   describe('animation callbacks', () => {
     it('if it is animated, should show and hide backdrop after counting transition duration', done => {
       const instance = new Backdrop({
