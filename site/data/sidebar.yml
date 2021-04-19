@@ -56,11 +56,11 @@
       slug: grid
     - title: الأعمدة
       slug: columns
-    - title: Gutters
+    - title: المزاريب
       slug: gutters
-    - title: Utilities
+    - title: خدمات
       slug: utilities
-    - title: Z-index
+    - title: مؤشر Z
       slug: z-index
 
 - title: محتوى
