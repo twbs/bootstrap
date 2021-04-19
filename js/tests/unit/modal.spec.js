@@ -100,10 +100,11 @@ describe('Modal', () => {
       const originalPadding = Number.parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
+      const scrollBarWidth = getScrollBarWidth()
 
       modalEl.addEventListener('shown.bs.modal', () => {
-        const expectedPadding = originalPadding + getScrollBarWidth()
-        const currentPadding = Number.parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
+        const expectedPadding = originalPadding + scrollBarWidth
+        const currentPadding = Number.parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
 
         expect(fixedEl.getAttribute('data-bs-padding-right')).toEqual(`${originalPadding}px`, 'original fixed element padding should be stored in data-bs-padding-right')
         expect(currentPadding).toEqual(expectedPadding, 'fixed element padding should be adjusted while opening')
@@ -111,7 +112,7 @@ describe('Modal', () => {
       })
 
       modalEl.addEventListener('hidden.bs.modal', () => {
-        const currentPadding = Number.parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
+        const currentPadding = Number.parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
 
         expect(fixedEl.hasAttribute('data-bs-padding-right')).toEqual(false, 'data-bs-padding-right should be cleared after closing')
         expect(currentPadding).toEqual(originalPadding, 'fixed element padding should be reset after closing')
@@ -134,9 +135,10 @@ describe('Modal', () => {
       const originalMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
+      const scrollBarWidth = getScrollBarWidth()
 
       modalEl.addEventListener('shown.bs.modal', () => {
-        const expectedMargin = originalMargin - getScrollBarWidth()
+        const expectedMargin = originalMargin - scrollBarWidth
         const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
 
         expect(stickyTopEl.getAttribute('data-bs-margin-right')).toEqual(`${originalMargin}px`, 'original sticky element margin should be stored in data-bs-margin-right')
