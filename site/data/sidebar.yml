@@ -13,217 +13,217 @@
     - title: المتصفحات والأجهزة
       slug: browsers-devices
     - title: JavaScript
-      slug:
+      slug: javascript
     - title: أدوات البناء
-      slug:
+      slug: build-tools
     - title: حزمة الويب
-      slug:
+      slug: webpack
     - title: قطعة
-      slug:
+      slug: parcel
     - title: إمكانية الوصول
-      slug:
+      slug: accessibility
     - title: RFS
-      slug:
+      slug: rfs
     - title: RTL
-      slug:
+      slug: rtl
 
 - title: التخصيص
-  slug: 
-  pages:
+  slug: customize
+  pages: overview
     - title: مخلص
-      slug:
+      slug: overview
     - title: Sass
-      slug:
+      slug: sass
     - title: خيارات
-      slug:
+      slug: options
     - title: اللون
-      slug:
+      slug: color
     - title: عناصر
-      slug:
+      slug: components
     - title: متغيرات CSS
-      slug:
+      slug: css-variables
     - title: تحسين
-      slug:
+      slug: optimize
 
 - title: تخطيط
-  slug: 
+  slug: layout
   pages:
     - title: نقاط التوقف
-      slug:
+      slug: breakpoints
     - title: حاويات
-      slug:
+      slug: containers
     - title: شبكة
-      slug:
+      slug: grid
     - title: الأعمدة
-      slug:
+      slug: columns
     - title: Gutters
-      slug:
+      slug: gutters
     - title: Utilities
-      slug:
+      slug: utilities
     - title: Z-index
-      slug:
+      slug: z-index
 
 - title: محتوى
-  slug: 
+  slug: content
   pages:
     - title: Reboot
-      slug:
+      slug: reboot
     - title: Typography
-      slug:
+      slug: typography
     - title: Images
-      slug:
+      slug: images
     - title: Tables
-      slug:
+      slug: tables
     - title: Figures
-      slug:
+      slug: figures
 
 - title: نماذج
-  slug: 
+  slug: forms
   pages:
     - title: Overview
-      slug:
+      slug: overview
     - title: Form control
-      slug:
+      slug: form-control
     - title: Select
-      slug:
+      slug: select
     - title: Checks & radios
-      slug:
+      slug: checks-radios
     - title: Range
-      slug:
+      slug: range
     - title: Input group
-      slug:
+      slug: input-group
     - title: Floating labels
-      slug:
+      slug: floating-labels
     - title: Layout
-      slug:
+      slug: layout
     - title: Validation
-      slug:
+      slug: validation
 
 - title: عناصر
-  slug: 
+  slug: components
   pages:
     - title: Accordion
-      slug:
+      slug: accordion
     - title: Alerts
-      slug:
+      slug: alerts
     - title: Badge
-      slug:
+      slug: badge
     - title: Breadcrumb
-      slug:
+      slug: breadcrumb
     - title: Buttons
-      slug:
+      slug: buttons
     - title: Button group
-      slug:
+      slug: button-group
     - title: Card
-      slug:
+      slug: card
     - title: Carousel
-      slug:
+      slug: carousel
     - title: Close button
-      slug:
+      slug: close-button
     - title: Collapse
-      slug:
+      slug: collapse
     - title: Dropdowns
-      slug:
+      slug: dropdowns
     - title: List group
-      slug:
+      slug: list-group
     - title: Modal
-      slug:
+      slug: modal
     - title: Navs & tabs
-      slug:
+      slug: navs-tabs
     - title: Navbar
-      slug:
+      slug: navbar
     - title: Offcanvas
-      slug:
+      slug: offcanvas
     - title: Pagination
-      slug:
+      slug: pagination
     - title: Popovers
-      slug:
+      slug: popovers
     - title: Progress
-      slug:
+      slug: progress
     - title: Scrollspy
-      slug:
+      slug: scrollspy
     - title: Spinners
-      slug:
+      slug: spinners
     - title: Toasts
-      slug:
+      slug: toasts
     - title: Tooltips
-      slug:
+      slug: tooltips
 
 - title: مساعدين
-  slug: 
+  slug: helpers
   pages:
     - title: Clearfix
-      slug:
+      slug: clearfix
     - title: Colored links
-      slug:
+      slug: colored-links
     - title: Ratio
-      slug:
+      slug: ratio
     - title: Position
-      slug:
+      slug: position
     - title: Visually hidden
-      slug:
+      slug: visually-hidden
     - title: Stretched link
-      slug:
+      slug: stretched-link
     - title: Text truncation
-      slug:
+      slug: text-truncation
 
 - title: خدمات
-  slug: 
+  slug: utilities
   pages:
     - title: API
-      slug:
+      slug: api
     - title: Background
-      slug:
+      slug: background
     - title: Borders
-      slug:
+      slug: borders
     - title: Colors
-      slug:
+      slug: colors
     - title: Display
-      slug:
+      slug: display
     - title: Flex
-      slug:
+      slug: flex
     - title: Float
-      slug:
+      slug: float
     - title: Interactions
-      slug:
+      slug: interactions
     - title: Overflow
-      slug:
+      slug: overflow
     - title: Position
-      slug:
+      slug: position
     - title: Shadows
-      slug:
+      slug: shadows
     - title: Sizing
-      slug:
+      slug: sizing
     - title: Spacing
-      slug:
+      slug: spacing
     - title: Text
-      slug:
+      slug: text
     - title: Vertical align
-      slug:
+      slug: vertical-align
     - title: Visibility
-      slug:
+      slug: visibility
 
 - title: بالإضافة إلى
-  slug: 
+  slug: extend
   pages:
     - title: Approach
-      slug:
+      slug: approach
     - title: Icons
-      slug:
+      slug: icons
 
 - title: حول
-  slug: 
+  slug: about
   pages:
     - title: Overview
-      slug:
+      slug: overview
     - title: Team
-      slug:
+      slug: team
     - title: Brand
-      slug:
+      slug: brand
     - title: License
-      slug:
+      slug: license
     - title: Translations
-      slug:
+      slug: translations
 
 - title: الهجرة
-  slug: 
+  slug: migration
