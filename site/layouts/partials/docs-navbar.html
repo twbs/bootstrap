@@ -11,22 +11,22 @@
     <div class="collapse navbar-collapse" id="bdNavbar">
       <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav pt-2 py-md-0">
         <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2{{ if .IsHome }} active" aria-current="page{{ end }}" href="/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Home</a>
+          <a class="nav-link p-2{{ if .IsHome }} active" aria-current="page{{ end }}" href="/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">الصفحة الرئيسية</a>
         </li>
         <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2{{ if eq .Page.Layout "docs" }} active" aria-current="true{{ end }}" href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Docs</a>
+          <a class="nav-link p-2{{ if eq .Page.Layout "docs" }} active" aria-current="true{{ end }}" href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">المستندات</a>
         </li>
         <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2{{ if eq .Page.Title "Examples" }} active" aria-current="true{{ end }}" href="/docs/{{ .Site.Params.docs_version }}/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
+          <a class="nav-link p-2{{ if eq .Page.Title "Examples" }} active" aria-current="true{{ end }}" href="/docs/{{ .Site.Params.docs_version }}/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">أمثلة</a>
         </li>
         <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2" href="{{ .Site.Params.icons }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');" target="_blank" rel="noopener">Icons</a>
+          <a class="nav-link p-2" href="{{ .Site.Params.icons }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');" target="_blank" rel="noopener">أيقونات</a>
         </li>
         <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2" href="{{ .Site.Params.themes }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');" target="_blank" rel="noopener">Themes</a>
+          <a class="nav-link p-2" href="{{ .Site.Params.themes }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');" target="_blank" rel="noopener">ثيمات</a>
         </li>
         <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2" href="{{ .Site.Params.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');" target="_blank" rel="noopener">Blog</a>
+          <a class="nav-link p-2" href="{{ .Site.Params.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');" target="_blank" rel="noopener">مدونة</a>
         </li>
       </ul>
 
@@ -59,7 +59,7 @@
         </li>
       </ul>
 
-      <a class="btn btn-bd-download d-lg-inline-block my-2 my-md-0 ms-md-3" href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/">Download</a>
+      <a class="btn btn-bd-download d-lg-inline-block my-2 my-md-0 ms-md-3" href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/">تحميل</a>
     </div>
   </nav>
 </header>
