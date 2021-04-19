@@ -2,7 +2,7 @@
 # المنطق الخاص بإنشاء الشريط الجانبي موجود في "site/layouts/partials/docs-sidebar.html".
 
 - title: البدء
-  href: getting-started
+  slug: getting-started
   pages:
     - title: مقدمة
     - title: تحميل
