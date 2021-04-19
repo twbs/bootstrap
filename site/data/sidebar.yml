@@ -1,7 +1,7 @@
-# This file holds all sidebar menu's entries.
-# The logic for the sidebar generation is in "site/layouts/partials/docs-sidebar.html".
+# يحتوي هذا الملف على جميع إدخالات الشريط الجانبي.
+# المنطق الخاص بإنشاء الشريط الجانبي موجود في "site/layouts/partials/docs-sidebar.html".
 
-- title: Getting started
+- title: البدء
   pages:
     - title: Introduction
     - title: Download
@@ -15,7 +15,7 @@
     - title: RFS
     - title: RTL
 
-- title: Customize
+- title: التخصيص
   pages:
     - title: Overview
     - title: Sass
@@ -25,7 +25,7 @@
     - title: CSS variables
     - title: Optimize
 
-- title: Layout
+- title: تخطيط
   pages:
     - title: Breakpoints
     - title: Containers
@@ -35,7 +35,7 @@
     - title: Utilities
     - title: Z-index
 
-- title: Content
+- title: محتوى
   pages:
     - title: Reboot
     - title: Typography
@@ -43,7 +43,7 @@
     - title: Tables
     - title: Figures
 
-- title: Forms
+- title: نماذج
   pages:
     - title: Overview
     - title: Form control
@@ -55,7 +55,7 @@
     - title: Layout
     - title: Validation
 
-- title: Components
+- title: عناصر
   pages:
     - title: Accordion
     - title: Alerts
@@ -81,7 +81,7 @@
     - title: Toasts
     - title: Tooltips
 
-- title: Helpers
+- title: مساعدين
   pages:
     - title: Clearfix
     - title: Colored links
@@ -91,7 +91,7 @@
     - title: Stretched link
     - title: Text truncation
 
-- title: Utilities
+- title: خدمات
   pages:
     - title: API
     - title: Background
@@ -110,12 +110,12 @@
     - title: Vertical align
     - title: Visibility
 
-- title: Extend
+- title: بالإضافة إلى
   pages:
     - title: Approach
     - title: Icons
 
-- title: About
+- title: حول
   pages:
     - title: Overview
     - title: Team
@@ -123,4 +123,4 @@
     - title: License
     - title: Translations
 
-- title: Migration
+- title: الهجرة
