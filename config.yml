@@ -1,4 +1,4 @@
-languageCode:           "en"
+languageCode:           "ar"
 title:                  "Bootstrap"
 baseURL:                "https://getbootstrap.com"
 enableInlineShortcodes: true
@@ -43,7 +43,7 @@ module:
 
 params:
   description:          "مكتبة HTML، CSS، و JS الأكثر شهرة في العالم."
-  authors:              "Mark Otto, Jacob Thornton, and Bootstrap contributors"
+  authors:              "Mark Otto، Jacob Thornton، Bootstrap مساهمات، وترجمة مصطفى مهدي"
   social_image_path:    /docs/5.0/assets/brand/bootstrap-social.png
   social_logo_path:     /docs/5.0/assets/brand/bootstrap-social-logo.png
 
