@@ -27,10 +27,10 @@
 
 - title: تخطيط
   pages:
-    - title: Breakpoints
-    - title: Containers
-    - title: Grid
-    - title: Columns
+    - title: نقاط التوقف
+    - title: حاويات
+    - title: شبكة
+    - title: الأعمدة
     - title: Gutters
     - title: Utilities
     - title: Z-index
