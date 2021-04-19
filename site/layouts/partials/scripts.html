@@ -1,7 +1,7 @@
 {{ if eq hugo.Environment "production" -}}
-  <script src="https://arbs.pages.dev/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.min.js" {{ printf "integrity=%q" .Site.Params.cdn.js_bundle_hash | safeHTMLAttr }} crossorigin="anonymous"></script>
+  <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.min.js" {{ printf "integrity=%q" .Site.Params.cdn.js_bundle_hash | safeHTMLAttr }} crossorigin="anonymous"></script>
 {{ else -}}
-  <script src="https://arbs.pages.dev/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
+  <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
 {{- end }}
 
 {{ if eq .Page.Layout "docs" -}}
@@ -17,4 +17,4 @@
   {{- $docsJs = $docsJs | resources.Minify -}}
 {{- end }}
 
-<script src="https://arbs.pages.dev{{ $docsJs.Permalink | relURL }}"></script>
+<script src="{{ $docsJs.Permalink | relURL }}"></script>
