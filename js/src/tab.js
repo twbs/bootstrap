@@ -66,8 +66,7 @@ class Tab extends BaseComponent {
   show() {
     if ((this._element.parentNode &&
       this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
-      this._element.classList.contains(CLASS_NAME_ACTIVE)) ||
-      isDisabled(this._element)) {
+      this._element.classList.contains(CLASS_NAME_ACTIVE))) {
       return
     }
 
