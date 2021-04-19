@@ -18,13 +18,13 @@ Bootstrap's grid system uses a series of containers, rows, and columns to layout
 <div class="container">
   <div class="row">
     <div class="col">
-      ⅓ column
+      Column
     </div>
     <div class="col">
-      ⅓ column
+      Column
     </div>
     <div class="col">
-      ⅓ column
+      Column
     </div>
   </div>
 </div>
