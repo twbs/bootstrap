@@ -3,27 +3,27 @@
 
 - title: البدء
   pages:
-    - title: Introduction
-    - title: Download
-    - title: Contents
-    - title: Browsers & devices
+    - title: مقدمة
+    - title: تحميل
+    - title: محتويات
+    - title: المتصفحات والأجهزة
     - title: JavaScript
-    - title: Build tools
-    - title: Webpack
-    - title: Parcel
-    - title: Accessibility
+    - title: أدوات البناء
+    - title: حزمة الويب
+    - title: قطعة
+    - title: إمكانية الوصول
     - title: RFS
     - title: RTL
 
 - title: التخصيص
   pages:
-    - title: Overview
+    - title: مخلص
     - title: Sass
-    - title: Options
-    - title: Color
-    - title: Components
-    - title: CSS variables
-    - title: Optimize
+    - title: خيارات
+    - title: اللون
+    - title: عناصر
+    - title: متغيرات CSS
+    - title: تحسين
 
 - title: تخطيط
   pages:
