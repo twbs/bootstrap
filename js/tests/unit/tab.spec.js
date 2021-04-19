@@ -198,6 +198,35 @@ describe('Tab', () => {
       }, 30)
     })
 
+    it('should not create instance when tab is disabled', done => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav nav-tabs">',
+        '  <li class="nav-item"><a href="#home" class="nav-link active" data-bs-toggle="tab">Home</a></li>',
+        '  <li class="nav-item"><a href="#profile" class="nav-link disabled" data-bs-toggle="tab">Profile</a></li>',
+        '</ul>',
+        '<div class="tab-content">',
+        '  <div class="tab-pane active" id="home"></div>',
+        '  <div class="tab-pane" id="profile"></div>',
+        '</div>'
+      ].join('')
+
+      const triggerDisabled = fixtureEl.querySelector('a.disabled')
+      const verify = fixtureEl.querySelector('a:not(.disabled)')
+
+      triggerDisabled.dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }))
+      verify.dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }))
+
+      setTimeout(() => {
+        expect(Tab.getInstance(triggerDisabled)).toBe(null)
+        expect(Tab.getInstance(verify) instanceof Tab).toBeTrue()
+        done()
+      }, 30)
+    })
+
     it('show and shown events should reference correct relatedTarget', done => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
@@ -339,6 +368,40 @@ describe('Tab', () => {
       })
 
       btnCloseEl.click()
+    })
+
+    it('should call preventDefault if target element is A or AREA', done => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav nav-tabs" role="tablist">',
+        '  <li class="nav-item"><a href="#" data-bs-target="#tab1" data-bs-toggle="tab">Tab1</a></li>',
+        '  <li class="nav-item"><map><area href="#" shape="rect" coords="0,0,100,100" alt="" data-bs-target="#tab2" data-bs-toggle="tab"/></map></li>',
+        '  <li class="nav-item"><button data-bs-target="#verify" data-bs-toggle="tab">Verify</button></li>',
+        '</ul>',
+        '<div class="tab-content">',
+        '  <div class="tab-pane fade" id="tab1"></div>',
+        '  <div class="tab-pane fade" id="tab2"></div>',
+        '  <div class="tab-pane fade" id="verify"></div>',
+        '</div>'
+      ].join('')
+
+      const elementsPrevented = new Set(['A', 'AREA'])
+
+      Array.from(fixtureEl.querySelectorAll('[data-bs-toggle]')).forEach((element, idx, elements) => {
+        const event = new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true
+        })
+
+        element.dispatchEvent(event)
+
+        setTimeout(() => {
+          expect(event.defaultPrevented).toBe(elementsPrevented.has(element.tagName))
+
+          if (idx === elements.length - 1) {
+            done()
+          }
+        }, 10)
+      })
     })
   })
 
