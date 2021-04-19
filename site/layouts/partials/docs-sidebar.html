@@ -4,12 +4,12 @@
 
 	<ul class="list-unstyled mb-0 py-3 pt-md-1">
 	{{- range $group := .Site.Data.sidebar -}}
-		{{- $link := $group.title -}}
+		{{- $link := $group.href -}}
 		{{- $link_slug := $link | urlize -}}
 
 		{{- if $group.pages -}}
 			{{- $link = index $group.pages 0 -}}
-			{{- $link_slug = $link.title | urlize -}}
+			{{- $link_slug = $link.href | urlize -}}
 		{{- end -}}
 
 		{{- $group_slug := $group.href | urlize -}}
