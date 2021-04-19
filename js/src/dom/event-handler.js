@@ -170,7 +170,7 @@ function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
   if (customEventsRegex.test(originalTypeEvent)) {
     const wrapFn = fn => {
       return function (event) {
-        if (!event.relatedTarget || (event.relatedTarget !== event.delegateTarget && event.relatedTarget.contains(event.delegateTarget))) {
+        if (!event.relatedTarget || (event.relatedTarget !== event.delegateTarget && !event.delegateTarget.contains(event.relatedTarget))) {
           return fn.call(this, event)
         }
       }
