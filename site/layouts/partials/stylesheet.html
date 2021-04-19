@@ -1,13 +1,5 @@
 {{- "<!-- Bootstrap core CSS -->" | safeHTML }}
-{{ if eq hugo.Environment "production" -}}
-{{ if eq .Page.Params.direction "rtl" -}}
 <link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap.rtl.min.css" rel="stylesheet" {{ printf "integrity=%q" .Site.Params.cdn.css_rtl_hash | safeHTMLAttr }} crossorigin="anonymous">
-{{- else -}}
-<link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap.min.css" rel="stylesheet" {{ printf "integrity=%q" .Site.Params.cdn.css_hash | safeHTMLAttr }} crossorigin="anonymous">
-{{- end -}}
-{{- else -}}
-<link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap{{ if eq .Page.Params.direction "rtl" }}.rtl{{ end }}.css" rel="stylesheet">
-{{- end }}
 
 {{- if (ne .Page.Layout "examples") }}
 {{- $targetDocsCssPath := printf "/docs/%s/assets/css/docs.css" .Site.Params.docs_version -}}
@@ -18,7 +10,7 @@
   {{- $sassOptions = merge $sassOptions (dict "outputStyle" "compressed") -}}
 {{- end -}}
 
-{{- $style := resources.Get "scss/docs.scss" | toCSS $sassOptions }}
+{{- $style := resources.Get "scss/docs.scss" | toCSS $sassOptions | postCSS $postcssOptions }}
 
 <link href="{{ $style.Permalink | relURL }}" rel="stylesheet">
 {{- end }}
