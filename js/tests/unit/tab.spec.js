@@ -198,35 +198,6 @@ describe('Tab', () => {
       }, 30)
     })
 
-    it('should not create instance when tab is disabled', done => {
-      fixtureEl.innerHTML = [
-        '<ul class="nav nav-tabs">',
-        '  <li class="nav-item"><a href="#home" class="nav-link active" data-bs-toggle="tab">Home</a></li>',
-        '  <li class="nav-item"><a href="#profile" class="nav-link disabled" data-bs-toggle="tab">Profile</a></li>',
-        '</ul>',
-        '<div class="tab-content">',
-        '  <div class="tab-pane active" id="home"></div>',
-        '  <div class="tab-pane" id="profile"></div>',
-        '</div>'
-      ].join('')
-
-      const triggerDisabled = fixtureEl.querySelector('a.disabled')
-      const verify = fixtureEl.querySelector('a:not(.disabled)')
-
-      triggerDisabled.dispatchEvent(new MouseEvent('click', {
-        bubbles: true
-      }))
-      verify.dispatchEvent(new MouseEvent('click', {
-        bubbles: true
-      }))
-
-      setTimeout(() => {
-        expect(Tab.getInstance(triggerDisabled)).toBe(null)
-        expect(Tab.getInstance(verify) instanceof Tab).toBeTrue()
-        done()
-      }, 30)
-    })
-
     it('show and shown events should reference correct relatedTarget', done => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
@@ -707,31 +678,45 @@ describe('Tab', () => {
       secondNavEl.click()
     })
 
-    it('should prevent default when the trigger is <a> or <area>', done => {
+    it('should call preventDefault if target element is is <a> or <area>', done => {
       fixtureEl.innerHTML = [
         '<ul class="nav" role="tablist">',
-        '  <li><a type="button" href="#test"  class="active" role="tab" data-bs-toggle="tab">Home</a></li>',
-        '  <li><a type="button" href="#test2" role="tab" data-bs-toggle="tab">Home</a></li>',
-        '</ul>'
+        '  <li><a type="button" href="#test" class="active" role="tab" data-bs-toggle="tab">Home</a></li>',
+        '  <li class="nav-item"><map><area href="#tab2" shape="rect" coords="0,0,100,100" alt=""  data-bs-toggle="tab"/></map></li>',
+        '  <li><a type="button" href="#tab3" role="tab">Home</a></li>',
+        '</ul>',
+        '<div class="tab-content">',
+        '  <div class="tab-pane" id="tab1"></div>',
+        '  <div class="tab-pane" id="tab2"></div>',
+        '  <div class="tab-pane" id="verify"></div>',
+        '</div>'
       ].join('')
 
-      const tabEl = fixtureEl.querySelector('[href="#test2"]')
-      spyOn(Event.prototype, 'preventDefault').and.callThrough()
+      const elementsPrevented = new Set(['A', 'AREA'])
 
-      tabEl.addEventListener('shown.bs.tab', () => {
-        expect(tabEl.classList.contains('active')).toEqual(true)
-        expect(Event.prototype.preventDefault).toHaveBeenCalled()
-        done()
+      const listElements = fixtureEl.querySelectorAll('[data-bs-toggle]')
+      Array.from(listElements).forEach((element, index, elements) => {
+        const clickEvent = new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true
+        })
+        element.dispatchEvent(clickEvent)
+
+        setTimeout(() => {
+          expect(clickEvent.defaultPrevented).toEqual(elementsPrevented.has(element.tagName))
+
+          if (index === elements.length - 1) {
+            done()
+          }
+        }, 10)
       })
-
-      tabEl.click()
     })
 
     it('should not fire shown when tab has disabled attribute', done => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
-        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#home" class="nav-link active" role="tab" aria-selected="true">Home</button></li>',
-        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#profile" class="nav-link" disabled role="tab">Profile</button></li>',
+        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#home" data-bs-toggle="tab" class="nav-link active" role="tab" aria-selected="true">Home</button></li>',
+        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#profile"  data-bs-toggle="tab" class="nav-link" disabled role="tab">Profile</button></li>',
         '</ul>',
         '<div class="tab-content">',
         '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
@@ -740,13 +725,23 @@ describe('Tab', () => {
       ].join('')
 
       const triggerDisabled = fixtureEl.querySelector('button[disabled]')
+      const verify = fixtureEl.querySelector('button:not([disabled])')
       triggerDisabled.addEventListener('shown.bs.tab', () => {
         throw new Error('should not trigger shown event')
       })
 
-      triggerDisabled.click()
+      triggerDisabled.dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }))
+      verify.dispatchEvent(new MouseEvent('click', {
+        bubbles: true
+      }))
       setTimeout(() => {
-        expect().nothing()
+
+        // eslint-disable-next-line no-console
+        console.log(verify)
+        expect(Tab.getInstance(triggerDisabled)).toBeNull()
+        expect(Tab.getInstance(verify)).toBeInstanceOf(Tab)
         done()
       }, 30)
     })
