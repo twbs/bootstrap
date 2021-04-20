@@ -1017,7 +1017,7 @@ Regardless of whether you call your dropdown via JavaScript or instead use the d
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-offset=""`. Make sure to change the case type of the option name from camelCase to kebab-case when passing via data attributes. For example: instead of using `data-bs-autoClose="false"`, use `data-bs-auto-close="false"`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-offset=""`. Make sure to change the case type of the option name from camelCase to kebab-case when passing the options via data attributes. For example, instead of using `data-bs-autoClose="false"`, use `data-bs-auto-close="false"`.
 
 <table class="table">
   <thead>
