@@ -75,7 +75,7 @@ Horizontal direction sensitive variables, utilities and mixins are renamed with 
 
 Breakpoints specific variants are consequently renamed too (e.g. `.text-md-start` replaces `.text-md-left`).
 
-**Note**: if you used v4 to make RTL pages, ensure to reverse changes mentioned above: e.g. use `.*-start` were you used `.*-right`.
+**Note**: if you used v4 to make RTL pages, ensure to reverse changes mentioned above: e.g. use `.*-start` where you used `.*-right`.
 
 ##### Mixins
 

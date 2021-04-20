@@ -66,8 +66,7 @@ class Tab extends BaseComponent {
   show() {
     if ((this._element.parentNode &&
       this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
-      this._element.classList.contains(CLASS_NAME_ACTIVE)) ||
-      isDisabled(this._element)) {
+      this._element.classList.contains(CLASS_NAME_ACTIVE))) {
       return
     }
 
@@ -202,7 +201,13 @@ class Tab extends BaseComponent {
  */
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
-  event.preventDefault()
+  if (['A', 'AREA'].includes(this.tagName)) {
+    event.preventDefault()
+  }
+
+  if (isDisabled(this)) {
+    return
+  }
 
   const data = Data.get(this, DATA_KEY) || new Tab(this)
   data.show()
