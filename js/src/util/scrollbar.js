@@ -18,11 +18,21 @@ const getWidth = () => {
 }
 
 const hide = (width = getWidth()) => {
-  document.body.style.overflow = 'hidden'
+  _disableOverFlow()
+  // give padding to element to balances the hidden scrollbar width
+  _setElementAttributes('body', 'paddingRight', calculatedValue => calculatedValue + width)
   // trick: We adjust positive paddingRight and negative marginRight to sticky-top elements, to keep shown fullwidth
   _setElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight', calculatedValue => calculatedValue + width)
   _setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - width)
-  _setElementAttributes('body', 'paddingRight', calculatedValue => calculatedValue + width)
+}
+
+const _disableOverFlow = () => {
+  const actualValue = document.body.style.overflow
+  if (actualValue) {
+    Manipulator.setDataAttribute(document.body, 'overflow', actualValue)
+  }
+
+  document.body.style.overflow = 'hidden'
 }
 
 const _setElementAttributes = (selector, styleProp, callback) => {
@@ -41,10 +51,10 @@ const _setElementAttributes = (selector, styleProp, callback) => {
 }
 
 const reset = () => {
-  document.body.style.overflow = 'auto'
+  _resetElementAttributes('body', 'overflow')
+  _resetElementAttributes('body', 'paddingRight')
   _resetElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight')
   _resetElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight')
-  _resetElementAttributes('body', 'paddingRight')
 }
 
 const _resetElementAttributes = (selector, styleProp) => {
