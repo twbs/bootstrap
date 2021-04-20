@@ -59,7 +59,6 @@ const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY}`
 const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
-const CLASS_NAME_OPEN = 'modal-open'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_STATIC = 'modal-static'
@@ -123,8 +122,6 @@ class Modal extends BaseComponent {
     this._isShown = true
 
     scrollBarHide()
-
-    document.body.classList.add(CLASS_NAME_OPEN)
 
     this._adjustDialog()
 
@@ -322,7 +319,6 @@ class Modal extends BaseComponent {
     this._element.removeAttribute('role')
     this._isTransitioning = false
     this._backdrop.hide(() => {
-      document.body.classList.remove(CLASS_NAME_OPEN)
       this._resetAdjustments()
       scrollBarReset()
       EventHandler.trigger(this._element, EVENT_HIDDEN)
