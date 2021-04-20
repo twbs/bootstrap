@@ -242,7 +242,14 @@ class Collapse extends BaseComponent {
 
     this.setTransitioning(true)
 
-    const complete = () => {
+    const complete = event => {
+      // if event is dispatched by a nested element reschedule the event handler
+      if (event.target !== this._element) {
+        EventHandler.one(this._element, 'transitionend', complete)
+        emulateTransitionEnd(this._element, transitionDuration)
+        return
+      }
+
       this.setTransitioning(false)
       this._element.classList.remove(CLASS_NAME_COLLAPSING)
       this._element.classList.add(CLASS_NAME_COLLAPSE)
