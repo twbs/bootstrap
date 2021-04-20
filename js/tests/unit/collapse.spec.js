@@ -371,6 +371,47 @@ describe('Collapse', () => {
 
       collapse.hide()
     })
+
+    it('should ignore transitionend events from nested elements', done => {
+      fixtureEl.innerHTML = [
+        '<div class="collapse show">',
+        '  <input type="text" class="form-control" />',
+        '</div>'
+      ].join('')
+
+      const collapseEl = fixtureEl.querySelector('div')
+      const inputEl = fixtureEl.querySelector('input')
+
+      spyOn(window, 'getComputedStyle').and.returnValue({
+        transitionDuration: '0.1s',
+        transitionDelay: '0s'
+      })
+
+      const eventSpy = jasmine.createSpy('transitionend dispatched')
+      const hiddenSpy = jasmine.createSpy('collapse is hidden')
+
+      const collapse = new Collapse(collapseEl, {
+        toggle: false
+      })
+
+      collapseEl.addEventListener('transitionend', eventSpy)
+      collapseEl.addEventListener('hidden.bs.collapse', hiddenSpy)
+
+      collapse.hide()
+      inputEl.dispatchEvent(new TransitionEvent('transitionend', {
+        bubbles: true
+      }))
+
+      setTimeout(() => {
+        expect(eventSpy).toHaveBeenCalled()
+        expect(hiddenSpy).not.toHaveBeenCalled()
+      }, 50)
+
+      setTimeout(() => {
+        expect(hiddenSpy).toHaveBeenCalled()
+        done()
+      }, 150)
+    })
   })
 
   describe('dispose', () => {
