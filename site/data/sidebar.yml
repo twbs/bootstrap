@@ -29,7 +29,7 @@
 
 - title: التخصيص
   slug: customize
-  pages: overview
+  pages:
     - title: مخلص
       slug: overview
     - title: Sass
