@@ -852,6 +852,21 @@ describe('Modal', () => {
 
       modal.show()
     })
+
+    it('should do nothing after the modal is disposed', () => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+      modal.dispose()
+      modal._isShown = true
+      modal._isTransitioning = false
+
+      modal.hide()
+      modal._hideModal()
+
+      expect().nothing()
+    })
   })
 
   describe('dispose', () => {

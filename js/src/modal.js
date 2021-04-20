@@ -149,7 +149,7 @@ class Modal extends BaseComponent {
       event.preventDefault()
     }
 
-    if (!this._isShown || this._isTransitioning) {
+    if (!this._element || !this._isShown || this._isTransitioning) {
       return
     }
 
@@ -316,6 +316,10 @@ class Modal extends BaseComponent {
   }
 
   _hideModal() {
+    if (!this._element) {
+      return
+    }
+
     this._element.style.display = 'none'
     this._element.setAttribute('aria-hidden', true)
     this._element.removeAttribute('aria-modal')
