@@ -515,6 +515,28 @@ describe('Tab', () => {
       expect(fixtureEl.querySelector('#nav2 .dropdown-item').classList.contains('active')).toEqual(false)
     })
 
+    it('should support li > .dropdown-item', () => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav nav-tabs">',
+        '  <li class="nav-item"><a class="nav-link active" href="#home" data-bs-toggle="tab">Home</a></li>',
+        '  <li class="nav-item"><a class="nav-link" href="#profile" data-bs-toggle="tab">Profile</a></li>',
+        '  <li class="nav-item dropdown">',
+        '    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>',
+        '    <ul class="dropdown-menu">',
+        '      <li><a class="dropdown-item" href="#dropdown1" id="dropdown1-tab" data-bs-toggle="tab">@fat</a></li>',
+        '      <li><a class="dropdown-item" href="#dropdown2" id="dropdown2-tab" data-bs-toggle="tab">@mdo</a></li>',
+        '    </ul>',
+        '  </li>',
+        '</ul>'
+      ].join('')
+
+      const firstDropItem = fixtureEl.querySelector('.dropdown-item')
+
+      firstDropItem.click()
+      expect(firstDropItem.classList.contains('active')).toEqual(true)
+      expect(fixtureEl.querySelector('.nav-link').classList.contains('active')).toEqual(false)
+    })
+
     it('should handle nested tabs', done => {
       fixtureEl.innerHTML = [
         '<nav class="nav nav-tabs" role="tablist">',
