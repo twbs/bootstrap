@@ -949,8 +949,8 @@ describe('Dropdown', () => {
       const dropdown = new Dropdown(btnDropdown)
 
       expect(dropdown._popper).toBeNull()
-      expect(dropdown._menu).toBeDefined()
-      expect(dropdown._element).toBeDefined()
+      expect(dropdown._menu).not.toBeNull()
+      expect(dropdown._element).not.toBeNull()
       expect(btnDropdown.addEventListener).toHaveBeenCalledWith('click', jasmine.any(Function), jasmine.any(Boolean))
 
       dropdown.dispose()
@@ -975,9 +975,9 @@ describe('Dropdown', () => {
 
       dropdown.toggle()
 
-      expect(dropdown._popper).toBeDefined()
-      expect(dropdown._menu).toBeDefined()
-      expect(dropdown._element).toBeDefined()
+      expect(dropdown._popper).not.toBeNull()
+      expect(dropdown._menu).not.toBeNull()
+      expect(dropdown._element).not.toBeNull()
 
       dropdown.dispose()
 
@@ -1003,7 +1003,7 @@ describe('Dropdown', () => {
 
       dropdown.toggle()
 
-      expect(dropdown._popper).toBeDefined()
+      expect(dropdown._popper).not.toBeNull()
 
       spyOn(dropdown._popper, 'update')
       spyOn(dropdown, '_detectNavbar')

@@ -1076,7 +1076,7 @@ describe('Modal', () => {
       expect(Modal.prototype.constructor).not.toHaveBeenCalledWith(div, { keyboard: false })
 
       const modal = Modal.getInstance(div)
-      expect(modal).toBeDefined()
+      expect(modal).not.toBeNull()
       expect(modal._config.keyboard).toBe(false)
     })
 
