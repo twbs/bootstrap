@@ -21,6 +21,8 @@
   opacity: 0;
   transform: rotate3d(1, 0, 0, 90deg);
   min-width: $dropdown-min-width;
+  max-height: 0px;
+  height: 0px;
   padding: $dropdown-padding-y $dropdown-padding-x;
   margin: 0; // Override default margin of ul
   @include font-size($dropdown-font-size);
@@ -184,6 +186,8 @@
   display: block;
   opacity: 1;
   transform: rotate3d(1, 0, 0, 0deg);
+  max-height: auto;
+  height: auto;
 }
 
 // Dropdown section headers
