@@ -162,9 +162,6 @@ class Offcanvas extends BaseComponent {
     this._backdrop.dispose()
     super.dispose()
     EventHandler.off(document, EVENT_FOCUSIN)
-
-    this._config = null
-    this._backdrop = null
   }
 
   // Private
