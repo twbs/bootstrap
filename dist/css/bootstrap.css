@@ -477,7 +477,9 @@ progress {
   }
 }
 
-.display-3 {
+.
+
+display-3 {
   font-size: calc(1.525rem + 3.3vw);
   font-weight: 300;
   line-height: 1.2;
@@ -3429,7 +3431,9 @@ textarea.form-control-lg {
   position: absolute;
   top: 100%;
   z-index: 1000;
-  display: none;
+  display: block;
+  opacity: 0;
+  transform: rotate3d(1, 0, 0, 90deg);
   min-width: 10rem;
   padding: 0.5rem 0;
   margin: 0;
@@ -3441,6 +3445,7 @@ textarea.form-control-lg {
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
+  transition-duration: 0.4s;
 }
 .dropdown-menu[data-bs-popper] {
   left: 0;
@@ -3665,6 +3670,8 @@ textarea.form-control-lg {
 
 .dropdown-menu.show {
   display: block;
+  opacity: 1;
+  transform: none;
 }
 
 .dropdown-header {
