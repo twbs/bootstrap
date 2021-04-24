@@ -17,7 +17,9 @@
 .dropdown-menu {
   position: absolute;
   z-index: $zindex-dropdown;
-  display: none; // none by default, but block on "open" of the menu
+  display: block; // always block, opacity change it
+  opacity: 0;
+  transform: rotate3d(1, 0, 0, 90deg);
   min-width: $dropdown-min-width;
   padding: $dropdown-padding-y $dropdown-padding-x;
   margin: 0; // Override default margin of ul
@@ -28,6 +30,7 @@
   background-color: $dropdown-bg;
   background-clip: padding-box;
   border: $dropdown-border-width solid $dropdown-border-color;
+  transition-duration: 0.4s;
   @include border-radius($dropdown-border-radius);
   @include box-shadow($dropdown-box-shadow);
 
@@ -179,6 +182,8 @@
 
 .dropdown-menu.show {
   display: block;
+  opacity: 1;
+  transform: rotate3d(1, 0, 0, 0deg);
 }
 
 // Dropdown section headers
