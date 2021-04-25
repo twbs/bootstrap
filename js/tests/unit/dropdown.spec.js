@@ -1102,6 +1102,47 @@ describe('Dropdown', () => {
       dropdown.show()
     })
 
+    it('should not collapse the dropdown when clicking a select option nested in the dropdown', done => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <select>',
+        '      <option selected>Open this select menu</option>',
+        '      <option value="1">One</option>',
+        '    </select>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
+      const dropdown = new Dropdown(btnDropdown)
+
+      const hideSpy = spyOn(dropdown, '_completeHide')
+
+      btnDropdown.addEventListener('shown.bs.dropdown', () => {
+        const clickEvent = new MouseEvent('click', {
+          bubbles: true
+        })
+
+        dropdownMenu.querySelector('option').dispatchEvent(clickEvent)
+      })
+
+      dropdownMenu.addEventListener('click', event => {
+        expect(event.target.tagName).toMatch(/select|option/i)
+
+        Dropdown.clearMenus(event)
+
+        setTimeout(() => {
+          expect(hideSpy).not.toHaveBeenCalled()
+          done()
+        }, 10)
+      })
+
+      dropdown.show()
+    })
+
     it('should manage bs attribute `data-bs-popper`="none" when dropdown is in navbar', done => {
       fixtureEl.innerHTML = [
         '<nav class="navbar navbar-expand-md navbar-light bg-light">',
