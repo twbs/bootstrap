@@ -69,6 +69,22 @@
 }
 // scss-docs-end btn-variant-loops
 
+// scss-docs-start btn-variant-loops-dark
+@include dark-mode () {
+  @each $color, $value in $theme-colors-dark {
+    .btn-#{$color} {
+      @include button-variant($value, $value);
+    }
+  }
+
+  @each $color, $value in $theme-colors-dark {
+    .btn-outline-#{$color} {
+      @include button-outline-variant($value);
+    }
+  }
+}
+// scss-docs-end btn-variant-loops-dark
+
 
 //
 // Link buttons

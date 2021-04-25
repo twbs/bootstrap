@@ -1,0 +1,88 @@
+// Variables for Dark PCS
+
+// Color system
+
+// fusv-disable
+// scss-docs-start gray-color-variables-dark
+$white-dark:    $white !default;
+$gray-100-dark: $gray-100 !default;
+$gray-200-dark: $gray-200 !default;
+$gray-300-dark: $gray-300 !default;
+$gray-400-dark: $gray-400 !default;
+$gray-500-dark: $gray-500 !default;
+$gray-600-dark: $gray-600 !default;
+$gray-700-dark: $gray-700 !default;
+$gray-800-dark: $gray-800 !default;
+$gray-900-dark: $gray-900 !default;
+$black-dark:    $black !default;
+// scss-docs-end gray-color-variables
+
+// scss-docs-start gray-colors-map-dark
+$grays-dark: (
+  "100": $gray-100-dark,
+  "200": $gray-200-dark,
+  "300": $gray-300-dark,
+  "400": $gray-400-dark,
+  "500": $gray-500-dark,
+  "600": $gray-600-dark,
+  "700": $gray-700-dark,
+  "800": $gray-800-dark,
+  "900": $gray-900-dark
+) !default;
+// scss-docs-end gray-colors-map-dark
+
+// scss-docs-start color-variables-dark
+$blue-dark:    #3f6791 !default;
+$indigo-dark:  #6610f2 !default;
+$purple-dark:  #6f42c1 !default;
+$pink-dark:    #e83e8c !default;
+$red-dark:     #e74c3c !default;
+$orange-dark:  #fd7e14 !default;
+$yellow-dark:  #f39c12 !default;
+$green-dark:   #00bc8c !default;
+$teal-dark:    #20c997 !default;
+$cyan-dark:    #3498db !default;
+// scss-docs-end color-variables-dark
+
+// scss-docs-start colors-map-dark
+$colors-dark: (
+  "blue":       $blue-dark,
+  "indigo":     $indigo-dark,
+  "purple":     $purple-dark,
+  "pink":       $pink-dark,
+  "red":        $red-dark,
+  "orange":     $orange-dark,
+  "yellow":     $yellow-dark,
+  "green":      $green-dark,
+  "teal":       $teal-dark,
+  "cyan":       $cyan-dark,
+  "white":      $white-dark,
+  "gray":       $gray-600-dark,
+  "gray-dark":  $gray-800-dark
+) !default;
+// scss-docs-end colors-map-dark
+
+// scss-docs-start theme-color-variables-dark
+$primary-dark:       $blue-dark !default;
+$secondary-dark:     $gray-600-dark !default;
+$success-dark:       $green-dark !default;
+$info-dark:          $cyan-dark !default;
+$warning-dark:       $yellow-dark !default;
+$danger-dark:        $red-dark !default;
+$light-dark:         $gray-100-dark !default;
+$dark-dark:          $gray-900-dark !default;
+// scss-docs-end theme-color-variables-dark
+
+// scss-docs-start theme-colors-map-dark
+$theme-colors-dark: (
+  "primary":    $primary-dark,
+  "secondary":  $secondary-dark,
+  "success":    $success-dark,
+  "info":       $info-dark,
+  "warning":    $warning-dark,
+  "danger":     $danger-dark,
+  "light":      $light-dark,
+  "dark":       $dark-dark
+) !default;
+// scss-docs-end theme-colors-map-dark
+// fusv-enable

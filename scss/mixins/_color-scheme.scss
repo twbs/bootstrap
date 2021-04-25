@@ -5,3 +5,13 @@
   }
 }
 // scss-docs-end mixin-color-scheme
+
+// scss-docs-start mixin-dark-mode
+@mixin dark-mode() {
+  @if $enable-dark-mode {
+    @include color-scheme(dark) {
+      @content;
+    }
+  }
+}
+// scss-docs-end mixin-dark-mode
