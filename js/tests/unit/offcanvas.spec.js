@@ -2,7 +2,7 @@ import Offcanvas from '../../src/offcanvas'
 import EventHandler from '../../src/dom/event-handler'
 
 /** Test helpers */
-import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
+import { clearBodyAndDocument, clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 import { isVisible } from '../../src/util'
 
 describe('Offcanvas', () => {
@@ -15,15 +15,11 @@ describe('Offcanvas', () => {
   afterEach(() => {
     clearFixture()
     document.body.classList.remove('offcanvas-open')
-    document.documentElement.removeAttribute('style')
-    document.body.removeAttribute('style')
-    document.body.removeAttribute('data-bs-padding-right')
+    clearBodyAndDocument()
   })
 
   beforeEach(() => {
-    document.documentElement.removeAttribute('style')
-    document.body.removeAttribute('style')
-    document.body.removeAttribute('data-bs-padding-right')
+    clearBodyAndDocument()
   })
 
   describe('VERSION', () => {
