@@ -8,7 +8,6 @@ body {
 }
 body > * {
   flex-shrink: 0;
-  min-height: -webkit-fill-available;
 }
 
 .b-example-divider {
