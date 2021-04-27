@@ -63,7 +63,7 @@
     "docs-serve": "hugo server --port 9001 --disableFastRender",
     "docs-serve-only": "npx sirv-cli _site --port 9001",
     "lockfile-lint": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",
-    "update-deps": "ncu -u -x karma-browserstack-launcher,terser && npm update && echo Manually update site/assets/js/vendor",
+    "update-deps": "ncu -u -x karma-browserstack-launcher && npm update && echo Manually update site/assets/js/vendor",
     "release": "npm-run-all dist release-sri docs-build release-zip*",
     "release-sri": "node build/generate-sri.js",
     "release-version": "node build/change-version.js",
@@ -145,7 +145,7 @@
     "shelljs": "^0.8.4",
     "stylelint": "^13.12.0",
     "stylelint-config-twbs-bootstrap": "^2.1.0",
-    "terser": "5.1.0",
+    "terser": "^5.7.0",
     "vnu-jar": "21.4.9"
   },
   "files": [
