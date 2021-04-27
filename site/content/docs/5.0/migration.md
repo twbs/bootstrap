@@ -7,6 +7,12 @@ aliases: "/migration/"
 toc: true
 ---
 
+## v5.0.0
+
+### JavaScript
+
+- Dropdowns now have one more option (`autoClose`) to handle the [auto close behavior]({{< docsref "/components/dropdowns#auto-close-behavior" >}}). You can use this option to accept the click inside or outside the dropdown menu to make it interactive.
+
 ## v5.0.0-beta3
 
 ### Components
