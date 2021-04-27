@@ -230,6 +230,9 @@ includes code changes) and under the terms of the
 
 Run `npm run test` before committing to ensure your changes follow our coding standards.
 
+## Contributor over time
+
+![Contributor over time](https://contributor-graph-api.apiseven.com/contributors-svg?repo=twbs/bootstrap)
 
 ## License
 
