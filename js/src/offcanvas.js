@@ -112,6 +112,7 @@ class Offcanvas extends BaseComponent {
 
     if (!this._config.scroll) {
       scrollBarHide()
+      this._enforceFocusOnElement(this._element)
     }
 
     this._element.removeAttribute('aria-hidden')
@@ -121,7 +122,6 @@ class Offcanvas extends BaseComponent {
 
     const completeCallBack = () => {
       EventHandler.trigger(this._element, EVENT_SHOWN, { relatedTarget })
-      this._enforceFocusOnElement(this._element)
     }
 
     const transitionDuration = getTransitionDurationFromElement(this._element)

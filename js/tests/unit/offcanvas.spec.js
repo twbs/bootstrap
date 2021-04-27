@@ -2,7 +2,7 @@ import Offcanvas from '../../src/offcanvas'
 import EventHandler from '../../src/dom/event-handler'
 
 /** Test helpers */
-import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
+import { clearBodyAndDocument, clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 import { isVisible } from '../../src/util'
 
 describe('Offcanvas', () => {
@@ -15,15 +15,11 @@ describe('Offcanvas', () => {
   afterEach(() => {
     clearFixture()
     document.body.classList.remove('offcanvas-open')
-    document.documentElement.removeAttribute('style')
-    document.body.removeAttribute('style')
-    document.body.removeAttribute('data-bs-padding-right')
+    clearBodyAndDocument()
   })
 
   beforeEach(() => {
-    document.documentElement.removeAttribute('style')
-    document.body.removeAttribute('style')
-    document.body.removeAttribute('data-bs-padding-right')
+    clearBodyAndDocument()
   })
 
   describe('VERSION', () => {
@@ -220,6 +216,24 @@ describe('Offcanvas', () => {
 
       offCanvas.show()
     })
+
+    it('should not enforce focus if focus scroll is allowed', done => {
+      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+
+      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+      const offCanvas = new Offcanvas(offCanvasEl, {
+        scroll: true
+      })
+
+      spyOn(offCanvas, '_enforceFocusOnElement')
+
+      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+        expect(offCanvas._enforceFocusOnElement).not.toHaveBeenCalled()
+        done()
+      })
+
+      offCanvas.show()
+    })
   })
 
   describe('toggle', () => {
@@ -327,6 +341,22 @@ describe('Offcanvas', () => {
       const instance = Offcanvas.getInstance(offCanvasEl)
       expect(instance).not.toBeNull()
       expect(Offcanvas.prototype.show).toHaveBeenCalled()
+    })
+
+    it('should enforce focus', done => {
+      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+
+      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+      const offCanvas = new Offcanvas(offCanvasEl)
+
+      spyOn(offCanvas, '_enforceFocusOnElement')
+
+      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+        expect(offCanvas._enforceFocusOnElement).toHaveBeenCalled()
+        done()
+      })
+
+      offCanvas.show()
     })
   })
 
