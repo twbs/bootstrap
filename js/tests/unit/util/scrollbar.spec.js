@@ -1,8 +1,14 @@
 import * as Scrollbar from '../../../src/util/scrollbar'
-import { clearFixture, getFixture } from '../../helpers/fixture'
+import { clearBodyAndDocument, clearFixture, getFixture } from '../../helpers/fixture'
+import Manipulator from '../../../src/dom/manipulator'
 
 describe('ScrollBar', () => {
   let fixtureEl
+  const parseInt = arg => Number.parseInt(arg, 10)
+  const getRightPadding = el => parseInt(window.getComputedStyle(el).paddingRight)
+  const getOverFlow = el => el.style.overflow
+  const getPaddingAttr = el => Manipulator.getDataAttribute(el, 'padding-right')
+  const getOverFlowAttr = el => Manipulator.getDataAttribute(el, 'overflow')
   const windowCalculations = () => {
     return {
       htmlClient: document.documentElement.clientWidth,
@@ -32,15 +38,11 @@ describe('ScrollBar', () => {
 
   afterEach(() => {
     clearFixture()
-    document.documentElement.removeAttribute('style')
-    document.body.removeAttribute('style')
-    document.body.removeAttribute('data-bs-padding-right')
+    clearBodyAndDocument()
   })
 
   beforeEach(() => {
-    document.documentElement.removeAttribute('style')
-    document.body.removeAttribute('style')
-    document.body.removeAttribute('data-bs-padding-right')
+    clearBodyAndDocument()
   })
 
   describe('isBodyOverflowing', () => {
@@ -179,6 +181,81 @@ describe('ScrollBar', () => {
       expect(currentPadding).toEqual(originalPadding, 'sticky element\'s padding should not be adjusted while opening')
 
       Scrollbar.reset()
+    })
+
+    describe('Body Handling', () => {
+      it('should hide scrollbar and reset it to its initial value', () => {
+        const styleSheetPadding = '7px'
+        fixtureEl.innerHTML = [
+          '<style>',
+          '  body {',
+          `       padding-right: ${styleSheetPadding} }`,
+          '  }',
+          '</style>'
+        ].join('')
+
+        const el = document.body
+        const inlineStylePadding = '10px'
+        el.style.paddingRight = inlineStylePadding
+
+        const originalPadding = getRightPadding(el)
+        expect(originalPadding).toEqual(parseInt(inlineStylePadding)) // Respect only the inline style as it has prevails this of css
+        const originalOverFlow = 'auto'
+        el.style.overflow = originalOverFlow
+        const scrollBarWidth = Scrollbar.getWidth()
+
+        Scrollbar.hide()
+
+        const currentPadding = getRightPadding(el)
+
+        expect(currentPadding).toEqual(scrollBarWidth + originalPadding)
+        expect(currentPadding).toEqual(scrollBarWidth + parseInt(inlineStylePadding))
+        expect(getPaddingAttr(el)).toEqual(inlineStylePadding)
+        expect(getOverFlow(el)).toEqual('hidden')
+        expect(getOverFlowAttr(el)).toEqual(originalOverFlow)
+
+        Scrollbar.reset()
+
+        const currentPadding1 = getRightPadding(el)
+        expect(currentPadding1).toEqual(originalPadding)
+        expect(getPaddingAttr(el)).toEqual(null)
+        expect(getOverFlow(el)).toEqual(originalOverFlow)
+        expect(getOverFlowAttr(el)).toEqual(null)
+      })
+
+      it('should hide scrollbar and reset it to its initial value - respecting css rules', () => {
+        const styleSheetPadding = '7px'
+        fixtureEl.innerHTML = [
+          '<style>',
+          '  body {',
+          `       padding-right: ${styleSheetPadding} }`,
+          '  }',
+          '</style>'
+        ].join('')
+        const el = document.body
+        const originalPadding = getRightPadding(el)
+        const originalOverFlow = 'scroll'
+        el.style.overflow = originalOverFlow
+        const scrollBarWidth = Scrollbar.getWidth()
+
+        Scrollbar.hide()
+
+        const currentPadding = getRightPadding(el)
+
+        expect(currentPadding).toEqual(scrollBarWidth + originalPadding)
+        expect(currentPadding).toEqual(scrollBarWidth + parseInt(styleSheetPadding))
+        expect(getPaddingAttr(el)).toBeNull() // We do not have to keep css padding
+        expect(getOverFlow(el)).toEqual('hidden')
+        expect(getOverFlowAttr(el)).toEqual(originalOverFlow)
+
+        Scrollbar.reset()
+
+        const currentPadding1 = getRightPadding(el)
+        expect(currentPadding1).toEqual(originalPadding)
+        expect(getPaddingAttr(el)).toEqual(null)
+        expect(getOverFlow(el)).toEqual(originalOverFlow)
+        expect(getOverFlowAttr(el)).toEqual(null)
+      })
     })
   })
 })

@@ -502,7 +502,6 @@ class Tooltip extends BaseComponent {
         {
           name: 'flip',
           options: {
-            altBoundary: true,
             fallbackPlacements: this.config.fallbackPlacements
           }
         },
