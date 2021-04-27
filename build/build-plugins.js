@@ -35,6 +35,7 @@ const bsPlugins = {
   Collapse: path.resolve(__dirname, '../js/src/collapse.js'),
   Dropdown: path.resolve(__dirname, '../js/src/dropdown.js'),
   Modal: path.resolve(__dirname, '../js/src/modal.js'),
+  Offcanvas: path.resolve(__dirname, '../js/src/offcanvas.js'),
   Popover: path.resolve(__dirname, '../js/src/popover.js'),
   ScrollSpy: path.resolve(__dirname, '../js/src/scrollspy.js'),
   Tab: path.resolve(__dirname, '../js/src/tab.js'),
@@ -64,14 +65,15 @@ const getConfigByPluginKey = pluginKey => {
     pluginKey === 'EventHandler' ||
     pluginKey === 'SelectorEngine' ||
     pluginKey === 'Util' ||
-    pluginKey === 'Sanitizer'
+    pluginKey === 'Sanitizer' ||
+    pluginKey === 'Backdrop'
   ) {
     return {
       external: []
     }
   }
 
-  if (pluginKey === 'Alert' || pluginKey === 'Tab') {
+  if (pluginKey === 'Alert' || pluginKey === 'Tab' || pluginKey === 'Offcanvas') {
     return defaultPluginConfig
   }
 
@@ -132,7 +134,8 @@ const getConfigByPluginKey = pluginKey => {
 
 const utilObjects = new Set([
   'Util',
-  'Sanitizer'
+  'Sanitizer',
+  'Backdrop'
 ])
 
 const domObjects = new Set([

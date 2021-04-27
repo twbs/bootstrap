@@ -28,7 +28,13 @@ if (BUNDLE) {
   // Remove last entry in external array to bundle Popper
   external.pop()
   delete globals['@popperjs/core']
-  plugins.push(replace({ 'process.env.NODE_ENV': '"production"' }), nodeResolve())
+  plugins.push(
+    replace({
+      'process.env.NODE_ENV': '"production"',
+      preventAssignment: true
+    }),
+    nodeResolve()
+  )
 }
 
 const rollupConfig = {

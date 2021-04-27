@@ -12,6 +12,17 @@
   @include border-radius($list-group-border-radius);
 }
 
+.list-group-numbered {
+  list-style-type: none;
+  counter-reset: section;
+
+  > li::before {
+    // Increments only this instance of the section counter
+    content: counters(section, ".") ". ";
+    counter-increment: section;
+  }
+}
+
 
 // Interactive list items
 //
@@ -155,7 +166,7 @@
   $list-group-background: shift-color($value, $list-group-item-bg-scale);
   $list-group-color: shift-color($value, $list-group-item-color-scale);
   @if (contrast-ratio($list-group-background, $list-group-color) < $min-contrast-ratio) {
-    $list-group-color: mix($value, color-contrast($list-group-background), abs($alert-color-scale));
+    $list-group-color: mix($value, color-contrast($list-group-background), abs($list-group-item-color-scale));
   }
 
   @include list-group-item-variant($state, $list-group-background, $list-group-color);
