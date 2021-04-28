@@ -187,7 +187,12 @@ class Tab {
       element.classList.add(CLASS_NAME_SHOW)
     }
 
-    if (element.parentNode && $(element.parentNode).hasClass(CLASS_NAME_DROPDOWN_MENU)) {
+    let parent = element.parentNode
+    if (parent && parent.nodeName === 'LI') {
+      parent = parent.parentNode
+    }
+
+    if (parent && $(parent).hasClass(CLASS_NAME_DROPDOWN_MENU)) {
       const dropdownElement = $(element).closest(SELECTOR_DROPDOWN)[0]
 
       if (dropdownElement) {
