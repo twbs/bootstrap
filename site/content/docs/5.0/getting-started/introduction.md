@@ -16,7 +16,7 @@ Looking to quickly add Bootstrap to your project? Use jsDelivr, a free open sour
 
 ### CSS
 
-Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets to load our CSS.
+Copy-paste the stylesheet (`<link>`) into your `<head>` tag, before all other stylesheets to load bootstrap CSS.
 
 ```html
 <link href="{{< param "cdn.css" >}}" rel="stylesheet" integrity="{{< param "cdn.css_hash" >}}" crossorigin="anonymous">
@@ -54,7 +54,7 @@ Curious which components explicitly require our JavaScript and Popper? Click the
 <details>
 <summary class="text-primary mb-3">Show components requiring JavaScript</summary>
 {{< markdown >}}
-- Alerts for dismissing
+- Alerts for dismissing (alerts including close button)
 - Buttons for toggling states and checkbox/radio functionality
 - Carousel for all slide behaviors, controls, and indicators
 - Collapse for toggling visibility of content
@@ -72,7 +72,7 @@ Curious which components explicitly require our JavaScript and Popper? Click the
 Be sure to have your pages set up with the latest design and development standards. That means using an HTML5 doctype and including a viewport meta tag for proper responsive behaviors. Put it all together and your pages should look like this:
 
 ```html
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -82,12 +82,12 @@ Be sure to have your pages set up with the latest design and development standar
     <!-- Bootstrap CSS -->
     <link href="{{< param "cdn.css" >}}" rel="stylesheet" integrity="{{< param "cdn.css_hash" >}}" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Example bootstrap page!</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <h1>Example bootstrap page!</h1>
 
-    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Optional JavaScript plugins; choose any one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="{{< param "cdn.js_bundle" >}}" integrity="{{< param "cdn.js_bundle_hash" >}}" crossorigin="anonymous"></script>
@@ -112,7 +112,7 @@ Bootstrap employs a handful of important global styles and settings that you'll 
 Bootstrap requires the use of the HTML5 doctype. Without it, you'll see some funky incomplete styling, but including it shouldn't cause any considerable hiccups.
 
 ```html
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   ...
 </html>
@@ -126,7 +126,7 @@ Bootstrap is developed *mobile first*, a strategy in which we optimize code for 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ```
 
-You can see an example of this in action in the [starter template](#starter-template).
+You can see an example of this in action in the [starter template given above](#starter-template).
 
 ### Box-sizing
 
