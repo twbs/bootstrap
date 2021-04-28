@@ -75,7 +75,8 @@ const Default = {
   boundary: 'clippingParents',
   reference: 'toggle',
   display: 'dynamic',
-  popperConfig: null
+  popperConfig: null,
+  autoClose: true
 }
 
 const DefaultType = {
@@ -83,7 +84,8 @@ const DefaultType = {
   boundary: '(string|element)',
   reference: '(string|element|object)',
   display: 'string',
-  popperConfig: '(null|object|function)'
+  popperConfig: '(null|object|function)',
+  autoClose: '(boolean|string)'
 }
 
 /**
@@ -127,9 +129,8 @@ class Dropdown extends BaseComponent {
 
     const isActive = this._element.classList.contains(CLASS_NAME_SHOW)
 
-    Dropdown.clearMenus()
-
     if (isActive) {
+      this.hide()
       return
     }
 
@@ -212,28 +213,7 @@ class Dropdown extends BaseComponent {
       relatedTarget: this._element
     }
 
-    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE, relatedTarget)
-
-    if (hideEvent.defaultPrevented) {
-      return
-    }
-
-    // If this is a touch-enabled device we remove the extra
-    // empty mouseover listeners we added for iOS support
-    if ('ontouchstart' in document.documentElement) {
-      [].concat(...document.body.children)
-        .forEach(elem => EventHandler.off(elem, 'mouseover', noop))
-    }
-
-    if (this._popper) {
-      this._popper.destroy()
-    }
-
-    this._menu.classList.toggle(CLASS_NAME_SHOW)
-    this._element.classList.toggle(CLASS_NAME_SHOW)
-    this._element.setAttribute('aria-expanded', 'false')
-    Manipulator.removeDataAttribute(this._menu, 'popper')
-    EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
+    this._completeHide(relatedTarget)
   }
 
   dispose() {
@@ -261,6 +241,30 @@ class Dropdown extends BaseComponent {
       event.preventDefault()
       this.toggle()
     })
+  }
+
+  _completeHide(relatedTarget) {
+    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE, relatedTarget)
+    if (hideEvent.defaultPrevented) {
+      return
+    }
+
+    // If this is a touch-enabled device we remove the extra
+    // empty mouseover listeners we added for iOS support
+    if ('ontouchstart' in document.documentElement) {
+      [].concat(...document.body.children)
+        .forEach(elem => EventHandler.off(elem, 'mouseover', noop))
+    }
+
+    if (this._popper) {
+      this._popper.destroy()
+    }
+
+    this._menu.classList.remove(CLASS_NAME_SHOW)
+    this._element.classList.remove(CLASS_NAME_SHOW)
+    this._element.setAttribute('aria-expanded', 'false')
+    Manipulator.removeDataAttribute(this._menu, 'popper')
+    EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
   }
 
   _getConfig(config) {
@@ -412,7 +416,7 @@ class Dropdown extends BaseComponent {
         return
       }
 
-      if (/input|select|textarea|form/i.test(event.target.tagName)) {
+      if (/input|select|option|textarea|form/i.test(event.target.tagName)) {
         return
       }
     }
@@ -421,56 +425,40 @@ class Dropdown extends BaseComponent {
 
     for (let i = 0, len = toggles.length; i < len; i++) {
       const context = Data.get(toggles[i], DATA_KEY)
+      if (!context || context._config.autoClose === false) {
+        continue
+      }
+
+      if (!context._element.classList.contains(CLASS_NAME_SHOW)) {
+        continue
+      }
+
       const relatedTarget = {
-        relatedTarget: toggles[i]
-      }
-
-      if (event && event.type === 'click') {
-        relatedTarget.clickEvent = event
-      }
-
-      if (!context) {
-        continue
-      }
-
-      const dropdownMenu = context._menu
-      if (!toggles[i].classList.contains(CLASS_NAME_SHOW)) {
-        continue
+        relatedTarget: context._element
       }
 
       if (event) {
-        // Don't close the menu if the clicked element or one of its parents is the dropdown button
-        if ([context._element].some(element => event.composedPath().includes(element))) {
+        const composedPath = event.composedPath()
+        const isMenuTarget = composedPath.includes(context._menu)
+        if (
+          composedPath.includes(context._element) ||
+          (context._config.autoClose === 'inside' && !isMenuTarget) ||
+          (context._config.autoClose === 'outside' && isMenuTarget)
+        ) {
           continue
         }
 
         // Tab navigation through the dropdown menu shouldn't close the menu
-        if (event.type === 'keyup' && event.key === TAB_KEY && dropdownMenu.contains(event.target)) {
+        if (event.type === 'keyup' && event.key === TAB_KEY && context._menu.contains(event.target)) {
           continue
+        }
+
+        if (event.type === 'click') {
+          relatedTarget.clickEvent = event
         }
       }
 
-      const hideEvent = EventHandler.trigger(toggles[i], EVENT_HIDE, relatedTarget)
-      if (hideEvent.defaultPrevented) {
-        continue
-      }
-
-      // If this is a touch-enabled device we remove the extra
-      // empty mouseover listeners we added for iOS support
-      if ('ontouchstart' in document.documentElement) {
-        [].concat(...document.body.children)
-          .forEach(elem => EventHandler.off(elem, 'mouseover', noop))
-      }
-
-      if (context._popper) {
-        context._popper.destroy()
-      }
-
-      dropdownMenu.classList.remove(CLASS_NAME_SHOW)
-      toggles[i].classList.remove(CLASS_NAME_SHOW)
-      toggles[i].setAttribute('aria-expanded', 'false')
-      Manipulator.removeDataAttribute(dropdownMenu, 'popper')
-      EventHandler.trigger(toggles[i], EVENT_HIDDEN, relatedTarget)
+      context._completeHide(relatedTarget)
     }
   }
 

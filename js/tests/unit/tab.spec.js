@@ -198,58 +198,6 @@ describe('Tab', () => {
       }, 30)
     })
 
-    it('should not fire shown when tab has disabled attribute', done => {
-      fixtureEl.innerHTML = [
-        '<ul class="nav nav-tabs" role="tablist">',
-        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#home" class="nav-link active" role="tab" aria-selected="true">Home</button></li>',
-        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#profile" class="nav-link" disabled role="tab">Profile</button></li>',
-        '</ul>',
-        '<div class="tab-content">',
-        '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
-        '  <div class="tab-pane" id="profile" role="tabpanel"></div>',
-        '</div>'
-      ].join('')
-
-      const triggerDisabled = fixtureEl.querySelector('button[disabled]')
-      const tab = new Tab(triggerDisabled)
-
-      triggerDisabled.addEventListener('shown.bs.tab', () => {
-        throw new Error('should not trigger shown event')
-      })
-
-      tab.show()
-      setTimeout(() => {
-        expect().nothing()
-        done()
-      }, 30)
-    })
-
-    it('should not fire shown when tab has disabled class', done => {
-      fixtureEl.innerHTML = [
-        '<ul class="nav nav-tabs" role="tablist">',
-        '  <li class="nav-item" role="presentation"><a href="#home" class="nav-link active" role="tab" aria-selected="true">Home</a></li>',
-        '  <li class="nav-item" role="presentation"><a href="#profile" class="nav-link disabled" role="tab">Profile</a></li>',
-        '</ul>',
-        '<div class="tab-content">',
-        '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
-        '  <div class="tab-pane" id="profile" role="tabpanel"></div>',
-        '</div>'
-      ].join('')
-
-      const triggerDisabled = fixtureEl.querySelector('a.disabled')
-      const tab = new Tab(triggerDisabled)
-
-      triggerDisabled.addEventListener('shown.bs.tab', () => {
-        throw new Error('should not trigger shown event')
-      })
-
-      tab.show()
-      setTimeout(() => {
-        expect().nothing()
-        done()
-      }, 30)
-    })
-
     it('show and shown events should reference correct relatedTarget', done => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
@@ -532,6 +480,63 @@ describe('Tab', () => {
       expect(fixtureEl.querySelector('li:last-child .dropdown-menu a:first-child').classList.contains('active')).toEqual(false)
     })
 
+    it('selecting a dropdown tab does not activate another', () => {
+      const nav1 = [
+        '<ul class="nav nav-tabs" id="nav1">',
+        '  <li class="nav-item active"><a class="nav-link" href="#home" data-bs-toggle="tab">Home</a></li>',
+        '  <li class="nav-item dropdown">',
+        '    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>',
+        '    <div class="dropdown-menu">',
+        '      <a class="dropdown-item" href="#dropdown1" id="dropdown1-tab" data-bs-toggle="tab">@fat</a>',
+        '    </div>',
+        '  </li>',
+        '</ul>'
+      ].join('')
+      const nav2 = [
+        '<ul class="nav nav-tabs" id="nav2">',
+        '  <li class="nav-item active"><a class="nav-link" href="#home" data-bs-toggle="tab">Home</a></li>',
+        '  <li class="nav-item dropdown">',
+        '    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>',
+        '    <div class="dropdown-menu">',
+        '      <a class="dropdown-item" href="#dropdown1" id="dropdown1-tab" data-bs-toggle="tab">@fat</a>',
+        '    </div>',
+        '  </li>',
+        '</ul>'
+      ].join('')
+
+      fixtureEl.innerHTML = nav1 + nav2
+
+      const firstDropItem = fixtureEl.querySelector('#nav1 .dropdown-item')
+
+      firstDropItem.click()
+      expect(firstDropItem.classList.contains('active')).toEqual(true)
+      expect(fixtureEl.querySelector('#nav1 .dropdown-toggle').classList.contains('active')).toEqual(true)
+      expect(fixtureEl.querySelector('#nav2 .dropdown-toggle').classList.contains('active')).toEqual(false)
+      expect(fixtureEl.querySelector('#nav2 .dropdown-item').classList.contains('active')).toEqual(false)
+    })
+
+    it('should support li > .dropdown-item', () => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav nav-tabs">',
+        '  <li class="nav-item"><a class="nav-link active" href="#home" data-bs-toggle="tab">Home</a></li>',
+        '  <li class="nav-item"><a class="nav-link" href="#profile" data-bs-toggle="tab">Profile</a></li>',
+        '  <li class="nav-item dropdown">',
+        '    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>',
+        '    <ul class="dropdown-menu">',
+        '      <li><a class="dropdown-item" href="#dropdown1" id="dropdown1-tab" data-bs-toggle="tab">@fat</a></li>',
+        '      <li><a class="dropdown-item" href="#dropdown2" id="dropdown2-tab" data-bs-toggle="tab">@mdo</a></li>',
+        '    </ul>',
+        '  </li>',
+        '</ul>'
+      ].join('')
+
+      const firstDropItem = fixtureEl.querySelector('.dropdown-item')
+
+      firstDropItem.click()
+      expect(firstDropItem.classList.contains('active')).toEqual(true)
+      expect(fixtureEl.querySelector('.nav-link').classList.contains('active')).toEqual(false)
+    })
+
     it('should handle nested tabs', done => {
       fixtureEl.innerHTML = [
         '<nav class="nav nav-tabs" role="tablist">',
@@ -659,6 +664,75 @@ describe('Tab', () => {
       })
 
       secondNavEl.click()
+    })
+
+    it('should prevent default when the trigger is <a> or <area>', done => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav" role="tablist">',
+        '  <li><a type="button" href="#test"  class="active" role="tab" data-bs-toggle="tab">Home</a></li>',
+        '  <li><a type="button" href="#test2" role="tab" data-bs-toggle="tab">Home</a></li>',
+        '</ul>'
+      ].join('')
+
+      const tabEl = fixtureEl.querySelector('[href="#test2"]')
+      spyOn(Event.prototype, 'preventDefault').and.callThrough()
+
+      tabEl.addEventListener('shown.bs.tab', () => {
+        expect(tabEl.classList.contains('active')).toEqual(true)
+        expect(Event.prototype.preventDefault).toHaveBeenCalled()
+        done()
+      })
+
+      tabEl.click()
+    })
+
+    it('should not fire shown when tab has disabled attribute', done => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav nav-tabs" role="tablist">',
+        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#home" class="nav-link active" role="tab" aria-selected="true">Home</button></li>',
+        '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#profile" class="nav-link" disabled role="tab">Profile</button></li>',
+        '</ul>',
+        '<div class="tab-content">',
+        '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
+        '  <div class="tab-pane" id="profile" role="tabpanel"></div>',
+        '</div>'
+      ].join('')
+
+      const triggerDisabled = fixtureEl.querySelector('button[disabled]')
+      triggerDisabled.addEventListener('shown.bs.tab', () => {
+        throw new Error('should not trigger shown event')
+      })
+
+      triggerDisabled.click()
+      setTimeout(() => {
+        expect().nothing()
+        done()
+      }, 30)
+    })
+
+    it('should not fire shown when tab has disabled class', done => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav nav-tabs" role="tablist">',
+        '  <li class="nav-item" role="presentation"><a href="#home" class="nav-link active" role="tab" aria-selected="true">Home</a></li>',
+        '  <li class="nav-item" role="presentation"><a href="#profile" class="nav-link disabled" role="tab">Profile</a></li>',
+        '</ul>',
+        '<div class="tab-content">',
+        '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
+        '  <div class="tab-pane" id="profile" role="tabpanel"></div>',
+        '</div>'
+      ].join('')
+
+      const triggerDisabled = fixtureEl.querySelector('a.disabled')
+
+      triggerDisabled.addEventListener('shown.bs.tab', () => {
+        throw new Error('should not trigger shown event')
+      })
+
+      triggerDisabled.click()
+      setTimeout(() => {
+        expect().nothing()
+        done()
+      }, 30)
     })
   })
 })

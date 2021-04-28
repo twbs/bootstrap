@@ -86,6 +86,7 @@ describe('EventHandler', () => {
         '<div class="deep"></div>',
         '</div>',
         '</div>',
+        '<div class="sibling"></div>',
         '</div>'
       ]
 
@@ -93,6 +94,7 @@ describe('EventHandler', () => {
       const inner = fixtureEl.querySelector('.inner')
       const nested = fixtureEl.querySelector('.nested')
       const deep = fixtureEl.querySelector('.deep')
+      const sibling = fixtureEl.querySelector('.sibling')
 
       const enterSpy = jasmine.createSpy('mouseenter')
       const leaveSpy = jasmine.createSpy('mouseleave')
@@ -103,6 +105,14 @@ describe('EventHandler', () => {
       EventHandler.on(inner, 'mouseleave', leaveSpy)
       EventHandler.on(outer, 'mouseenter', '.inner', delegateEnterSpy)
       EventHandler.on(outer, 'mouseleave', '.inner', delegateLeaveSpy)
+
+      EventHandler.on(sibling, 'mouseenter', () => {
+        expect(enterSpy.calls.count()).toBe(2)
+        expect(leaveSpy.calls.count()).toBe(2)
+        expect(delegateEnterSpy.calls.count()).toBe(2)
+        expect(delegateLeaveSpy.calls.count()).toBe(2)
+        done()
+      })
 
       const moveMouse = (from, to) => {
         from.dispatchEvent(new MouseEvent('mouseout', {
@@ -116,6 +126,7 @@ describe('EventHandler', () => {
         }))
       }
 
+      // from outer to deep and back to outer (nested)
       moveMouse(outer, inner)
       moveMouse(inner, nested)
       moveMouse(nested, deep)
@@ -128,7 +139,10 @@ describe('EventHandler', () => {
         expect(leaveSpy.calls.count()).toBe(1)
         expect(delegateEnterSpy.calls.count()).toBe(1)
         expect(delegateLeaveSpy.calls.count()).toBe(1)
-        done()
+
+        // from outer to inner to sibling (adjacent)
+        moveMouse(outer, inner)
+        moveMouse(inner, sibling)
       }, 20)
     })
   })
