@@ -22,29 +22,6 @@ Set the `opacity` of an element using <code>.opacity-{value}</code> utilities.
 <div class="opacity-50">...</div>
 <div class="opacity-25">...</div>
 ```
-
-Responsive variations also exist for `opacity`.
-
-{{< markdown >}}
-{{< opacity.inline >}}
-{{- range $.Site.Data.breakpoints }}
-- `.opacity{{ .abbr }}-0`
-{{- end -}}
-{{- range $.Site.Data.breakpoints }}
-- `.opacity{{ .abbr }}-25`
-{{- end -}}
-{{- range $.Site.Data.breakpoints }}
-- `.opacity{{ .abbr }}-50`
-{{- end -}}
-{{- range $.Site.Data.breakpoints }}
-- `.opacity{{ .abbr }}-75`
-{{- end -}}
-{{- range $.Site.Data.breakpoints }}
-- `.opacity{{ .abbr }}-100`
-{{- end -}}
-{{< /opacity.inline >}}
-{{< /markdown >}}
-
 ### Utilities API
 
 Opacity utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
