@@ -24,6 +24,20 @@ $utilities: map-merge(
       )
     ),
     // scss-docs-end utils-float
+    // Opacity utilities
+    // scss-docs-start utils-opacity
+    "opacity": (
+      property: opacity,
+      responsive: true,
+      values: (
+        0: 0,
+        25: .25,
+        50: .5,
+        75: .75,
+        100: 1,
+      )
+    ),
+    // scss-docs-end utils-opacity
     // scss-docs-start utils-overflow
     "overflow": (
       property: overflow,
