@@ -7,7 +7,7 @@ group: utilities
 
 The `opacity` property sets the opacity level for an element. The opacity level describes the transparency level, where 1 is not transparent at all, 0.5 is 50% visible, and 0 is completely transparent.
 
-Set the `opacity` of an element using <code>.opacity-{value}</code> utilities.
+Set the `opacity` of an element using `.opacity-{value}` utilities.
 
 <div class="bd-example d-sm-flex">
   <div class="opacity-100 p-3 m-2 bg-primary text-light fw-bold rounded">100%</div>
@@ -22,6 +22,7 @@ Set the `opacity` of an element using <code>.opacity-{value}</code> utilities.
 <div class="opacity-50">...</div>
 <div class="opacity-25">...</div>
 ```
+
 ### Utilities API
 
 Opacity utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
