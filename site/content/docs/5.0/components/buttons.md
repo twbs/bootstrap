@@ -16,7 +16,7 @@ Bootstrap includes several predefined button styles, each serving its own semant
 <button type="button" class="btn btn-{{ .name }}">{{ .name | title }}</button>
 {{- end -}}
 {{< /buttons.inline >}}
-
+<button type="button" class="btn btn-custom">Custom</button>
 <button type="button" class="btn btn-link">Link</button>
 {{< /example >}}
 
