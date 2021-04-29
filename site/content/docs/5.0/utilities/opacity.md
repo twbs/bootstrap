@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Opacity
-description: Control the opacity of elements, with opacity utilities.
+description: Control the opacity of elements.
 group: utilities
 ---
 
