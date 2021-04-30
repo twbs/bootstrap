@@ -16,6 +16,9 @@
 - name: alpadev
   user: alpadev
 
+- name: Gaël Poupard
+  user: ffoodd
+
 - name: Patrick H. Lauke
   user: patrickhlauke
 
@@ -24,9 +27,6 @@
 
 - name: Johann-S
   user: johann-s
-
-- name: Gaël Poupard
-  user: ffoodd
 
 - name: Gleb Mazovetskiy
   user: glebm
