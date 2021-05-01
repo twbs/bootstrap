@@ -1333,4 +1333,24 @@ $(function () {
     assert.strictEqual(tooltip.hasClass('a b'), true)
     assert.strictEqual(tooltip.hasClass('tooltip fade bs-tooltip-top show'), true)
   })
+
+  QUnit.test('HTML content can be passed through sanitation multiple times', function (assert) {
+    assert.expect(2)
+
+    // Add the same tooltip twice, so the template will be sanitized twice as well.
+    for (var i = 0; i <= 1; i++) {
+      $('<a href="#" rel="tooltip" data-trigger="click" title="<img src=\'test.jpg\'>" />')
+        .appendTo('#qunit-fixture')
+        .bootstrapTooltip({
+          html: true
+        })
+        .bootstrapTooltip('show')
+    }
+
+    var tooltip1Image = $('.tooltip:first img')
+    var tooltip2Image = $('.tooltip:last img')
+
+    assert.strictEqual(tooltip1Image.attr('src'), 'test.jpg')
+    assert.strictEqual(tooltip2Image.attr('src'), 'test.jpg')
+  })
 })
