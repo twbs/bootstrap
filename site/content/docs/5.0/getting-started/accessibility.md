@@ -59,3 +59,4 @@ On browsers that support `prefers-reduced-motion`, and where the user has *not* 
 - ["HTML Codesniffer" bookmarklet for identifying accessibility issues](https://github.com/squizlabs/HTML_CodeSniffer)
 - [Microsoft Accessibility Insights](https://accessibilityinsights.io/)
 - [Deque Axe testing tools](https://www.deque.com/axe/)
+- [Introduction to Web Accessibility](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
