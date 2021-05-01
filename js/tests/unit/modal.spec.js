@@ -3,7 +3,7 @@ import EventHandler from '../../src/dom/event-handler'
 import { getWidth as getScrollBarWidth } from '../../src/util/scrollbar'
 
 /** Test helpers */
-import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
+import { clearBodyAndDocument, clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Modal', () => {
   let fixtureEl
@@ -14,11 +14,8 @@ describe('Modal', () => {
 
   afterEach(() => {
     clearFixture()
-
+    clearBodyAndDocument()
     document.body.classList.remove('modal-open')
-    document.documentElement.removeAttribute('style')
-    document.body.removeAttribute('style')
-    document.body.removeAttribute('data-bs-padding-right')
 
     document.querySelectorAll('.modal-backdrop')
       .forEach(backdrop => {
@@ -27,9 +24,7 @@ describe('Modal', () => {
   })
 
   beforeEach(() => {
-    document.documentElement.removeAttribute('style')
-    document.body.removeAttribute('style')
-    document.body.removeAttribute('data-bs-padding-right')
+    clearBodyAndDocument()
   })
 
   describe('VERSION', () => {
