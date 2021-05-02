@@ -138,7 +138,47 @@ Additional utilities can be used to adjust the alignment of buttons when horizon
 
 ## Button plugin
 
-The button plugin allows you to create simple on/off toggle buttons.
+With this plugin you can add interaction to the buttons. For example, you can control button states or create groups of buttons.
+
+### Methods
+
+Some usefull methods for buttons plugin.
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>.button('toggle')</code>
+      </td>
+      <td>
+        Toggles the push state and gives the button the appearance that it has been activated.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>.button('loading')</code>
+      </td>
+      <td>
+        The button is disabled when it is loading. The text also changes to the data-loading-text atribute of the element.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>.button('reset')</code>
+      </td>
+      <td>
+        Resets button state and brings the original content back.
+      </td>
+    </tr>    
+  </tbody>
+</table>
+
 
 {{< callout info >}}
 Visually, these toggle buttons are identical to the [checkbox toggle buttons]({{< docsref "/forms/checks-radios#checkbox-toggle-buttons" >}}). However, they are conveyed differently by assistive technologies: the checkbox toggles will be announced by screen readers as "checked"/"not checked" (since, despite their appearance, they are fundamentally still checkboxes), whereas these toggle buttons will be announced as "button"/"button pressed". The choice between these two approaches will depend on the type of toggle you are creating, and whether or not the toggle will make sense to users when announced as a checkbox or as an actual button.
