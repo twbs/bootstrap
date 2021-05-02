@@ -43,7 +43,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 
 ### Live
 
-Click the button the below to show a toast (positioned with our utilities in the lower right corner) that has been hidden by default with `.hide`.
+Click the button below to show a toast (positioned with our utilities in the lower right corner) that has been hidden by default with `.hide`.
 
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
   <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
