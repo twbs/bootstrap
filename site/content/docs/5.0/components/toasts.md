@@ -83,7 +83,7 @@ Click the button below to show a toast (positioned with our utilities in the low
 
 ### Translucent
 
-Toasts are slightly translucent, so they blend over whatever they might appear over.
+Toasts are slightly translucent to blend in with what's below them.
 
 {{< example class="bg-dark" >}}
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
