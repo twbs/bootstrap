@@ -69,8 +69,8 @@ body {
 hr {
   margin: $hr-margin-y 0;
   color: $hr-color; // 1
-  background-color: currentColor;
-  border: 0;
+  background-color: $hr-bg-color;
+  border: $hr-border-width;
   opacity: $hr-opacity;
 }
 
