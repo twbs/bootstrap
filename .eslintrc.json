@@ -51,6 +51,7 @@
     "unicorn/prefer-dom-node-append": "off",
     "unicorn/prefer-dom-node-dataset": "off",
     "unicorn/prefer-dom-node-remove": "off",
+    "unicorn/prefer-module": "off",
     "unicorn/prefer-query-selector": "off",
     "unicorn/prefer-spread": "off",
     "unicorn/prevent-abbreviations": "off"
