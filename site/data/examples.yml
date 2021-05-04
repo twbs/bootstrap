@@ -1,3 +1,15 @@
+- category: Snippets
+  description: "Common patterns for building sites and apps that build on existing components and utilities with custom CSS and more."
+  examples:
+    - name: Headers
+      description: "Display your branding, navigation, search, and more with these header components"
+    - name: Heroes
+      description: "Set the stage on your homepage with heroes that feature clear calls to action."
+    - name: Features
+      description: "Explain the features, benefits, or other details in your marketing content."
+    - name: Sidebars
+      description: "Common navigation patterns ideal for offcanvas or multi-column layouts."
+
 - category: Custom Components
   description: "Brand new components and templates to help folks quickly get started with Bootstrap and demonstrate best practices for adding onto the framework."
   examples:
@@ -23,6 +35,8 @@
       description: "Attach a footer to the bottom of the viewport when page content is short."
     - name: Sticky footer navbar
       description: "Attach a footer to the bottom of the viewport with a fixed top navbar."
+    - name: Jumbotron
+      description: "Use utilities to recreate and enhance Bootstrap 4's jumbotron."
 
 - category: Framework
   description: "Examples that focus on implementing uses of built-in components provided by Bootstrap."
