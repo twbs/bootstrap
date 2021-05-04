@@ -5,21 +5,21 @@ const browsers = {
   safariMac: {
     base: 'BrowserStack',
     os: 'OS X',
-    os_version: 'High Sierra',
+    os_version: 'Catalina',
     browser: 'Safari',
     browser_version: 'latest'
   },
   chromeMac: {
     base: 'BrowserStack',
     os: 'OS X',
-    os_version: 'High Sierra',
+    os_version: 'Catalina',
     browser: 'Chrome',
     browser_version: 'latest'
   },
   firefoxMac: {
     base: 'BrowserStack',
     os: 'OS X',
-    os_version: 'High Sierra',
+    os_version: 'Catalina',
     browser: 'Firefox',
     browser_version: 'latest'
   },
@@ -40,15 +40,15 @@ const browsers = {
   iphone7: {
     base: 'BrowserStack',
     os: 'ios',
-    os_version: '10.0',
+    os_version: '12.0',
     device: 'iPhone 7',
     real_mobile: true
   },
-  iphone11: {
+  iphone12: {
     base: 'BrowserStack',
     os: 'ios',
-    os_version: '13.0',
-    device: 'iPhone 11',
+    os_version: '14.0',
+    device: 'iPhone 12',
     real_mobile: true
   },
   pixel2: {

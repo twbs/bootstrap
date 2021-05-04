@@ -132,7 +132,7 @@ Make a paragraph stand out by adding `.lead`.
 
 {{< example >}}
 <p class="lead">
-  Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
+  This is a lead paragraph. It stands out from regular paragraphs.
 </p>
 {{< /example >}}
 
@@ -188,7 +188,7 @@ For quoting blocks of content from another source within your document. Wrap `<b
 
 {{< example >}}
 <blockquote class="blockquote">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <p>A well-known quote, contained in a blockquote element.</p>
 </blockquote>
 {{< /example >}}
 
@@ -199,7 +199,7 @@ The HTML spec requires that blockquote attribution be placed outside the `<block
 {{< example >}}
 <figure>
   <blockquote class="blockquote">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <p>A well-known quote, contained in a blockquote element.</p>
   </blockquote>
   <figcaption class="blockquote-footer">
     Someone famous in <cite title="Source Title">Source Title</cite>
@@ -214,7 +214,7 @@ Use text utilities as needed to change the alignment of your blockquote.
 {{< example >}}
 <figure class="text-center">
   <blockquote class="blockquote">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <p>A well-known quote, contained in a blockquote element.</p>
   </blockquote>
   <figcaption class="blockquote-footer">
     Someone famous in <cite title="Source Title">Source Title</cite>
@@ -225,7 +225,7 @@ Use text utilities as needed to change the alignment of your blockquote.
 {{< example >}}
 <figure class="text-end">
   <blockquote class="blockquote">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <p>A well-known quote, contained in a blockquote element.</p>
   </blockquote>
   <figcaption class="blockquote-footer">
     Someone famous in <cite title="Source Title">Source Title</cite>
@@ -241,21 +241,18 @@ Remove the default `list-style` and left margin on list items (immediate childre
 
 {{< example >}}
 <ul class="list-unstyled">
-  <li>Lorem ipsum dolor sit amet</li>
-  <li>Consectetur adipiscing elit</li>
-  <li>Integer molestie lorem at massa</li>
-  <li>Facilisis in pretium nisl aliquet</li>
-  <li>Nulla volutpat aliquam velit
+  <li>This is a list.</li>
+  <li>It appears completely unstyled.</li>
+  <li>Structurally, it's still a list.</li>
+  <li>However, this style only applies to immediate child elements.</li>
+  <li>Nested lists:
     <ul>
-      <li>Phasellus iaculis neque</li>
-      <li>Purus sodales ultricies</li>
-      <li>Vestibulum laoreet porttitor sem</li>
-      <li>Ac tristique libero volutpat at</li>
+      <li>are unaffected by this style</li>
+      <li>will still show a bullet</li>
+      <li>and have appropriate left margin</li>
     </ul>
   </li>
-  <li>Faucibus porta lacus fringilla vel</li>
-  <li>Aenean sit amet erat nunc</li>
-  <li>Eget porttitor lorem</li>
+  <li>This may still come in handy in some situations.</li>
 </ul>
 {{< /example >}}
 
@@ -265,9 +262,9 @@ Remove a list's bullets and apply some light `margin` with a combination of two 
 
 {{< example >}}
 <ul class="list-inline">
-  <li class="list-inline-item">Lorem ipsum</li>
-  <li class="list-inline-item">Phasellus iaculis</li>
-  <li class="list-inline-item">Nulla volutpat</li>
+  <li class="list-inline-item">This is a list item.</li>
+  <li class="list-inline-item">And another one.</li>
+  <li class="list-inline-item">But they're displayed inline.</li>
 </ul>
 {{< /example >}}
 
@@ -280,23 +277,23 @@ Align terms and descriptions horizontally by using our grid system's predefined 
   <dt class="col-sm-3">Description lists</dt>
   <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
 
-  <dt class="col-sm-3">Euismod</dt>
+  <dt class="col-sm-3">Term</dt>
   <dd class="col-sm-9">
-    <p>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</p>
-    <p>Donec id elit non mi porta gravida at eget metus.</p>
+    <p>Definition for the term.</p>
+    <p>And some more placeholder definition text.</p>
   </dd>
 
-  <dt class="col-sm-3">Malesuada porta</dt>
-  <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
+  <dt class="col-sm-3">Another term</dt>
+  <dd class="col-sm-9">This definition is short, so no extra paragraphs or anything.</dd>
 
   <dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
-  <dd class="col-sm-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+  <dd class="col-sm-9">This can be useful when space is tight. Adds an ellipsis at the end.</dd>
 
   <dt class="col-sm-3">Nesting</dt>
   <dd class="col-sm-9">
     <dl class="row">
       <dt class="col-sm-4">Nested definition list</dt>
-      <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
+      <dd class="col-sm-8">I heard you like definition lists. Let me put a definition list inside your definition list.</dd>
     </dl>
   </dd>
 </dl>
@@ -305,3 +302,19 @@ Align terms and descriptions horizontally by using our grid system's predefined 
 ## Responsive font sizes
 
 In Bootstrap 5, we've enabled responsive font sizes by default, allowing text to scale more naturally across device and viewport sizes. Have a look at the [RFS page]({{< docsref "/getting-started/rfs" >}}) to find out how this works.
+
+## Sass
+
+### Variables
+
+Headings have some dedicated variables for sizing and spacing.
+
+{{< scss-docs name="headings-variables" file="scss/_variables.scss" >}}
+
+Miscellaneous typography elements covered here and in [Reboot]({{< docsref "/content/reboot" >}}) also have dedicated variables.
+
+{{< scss-docs name="type-variables" file="scss/_variables.scss" >}}
+
+### Mixins
+
+There are no dedicated mixins for typography, but Bootstrap does use [Responsive Font Sizing (RFS)]({{< docsref "/getting-started/rfs" >}}).

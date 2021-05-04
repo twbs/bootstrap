@@ -81,19 +81,19 @@ Add the relative form sizing classes to the `.input-group` itself and contents w
 
 ## Checkboxes and radios
 
-Place any checkbox or radio option within an input group's addon instead of text.
+Place any checkbox or radio option within an input group's addon instead of text. We recommend adding `.mt-0` to the `.form-check-input` when there's no visible text next to the input.
 
 {{< example >}}
 <div class="input-group mb-3">
   <div class="input-group-text">
-    <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+    <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
   </div>
   <input type="text" class="form-control" aria-label="Text input with checkbox">
 </div>
 
 <div class="input-group">
   <div class="input-group-text">
-    <input class="form-check-input" type="radio" value="" aria-label="Radio button for following text input">
+    <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
   </div>
   <input type="text" class="form-control" aria-label="Text input with radio button">
 </div>
@@ -308,3 +308,9 @@ Input groups include support for custom selects and custom file inputs. Browser 
   <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
 </div>
 {{< /example >}}
+
+## Sass
+
+### Variables
+
+{{< scss-docs name="input-group-variables" file="scss/_variables.scss" >}}

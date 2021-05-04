@@ -187,7 +187,7 @@
     width: 16rem;
 
     @include media-breakpoint-up(md) {
-      --aspect-ratio: 50%; // 2x1
+      --bs-aspect-ratio: 50%; // 2x1
     }
   }
 }
@@ -198,6 +198,18 @@
   .modal {
     position: static;
     display: block;
+  }
+}
+
+.bd-example-offcanvas {
+  @include border-start-radius(0);
+
+  .offcanvas {
+    position: static;
+    display: block;
+    height: 200px;
+    visibility: visible;
+    transform: translate(0);
   }
 }
 
@@ -263,6 +275,11 @@
   &::after {
     content: none;
   }
+}
+
+// Toasts
+.bd-example-toasts {
+  min-height: 240px;
 }
 
 //

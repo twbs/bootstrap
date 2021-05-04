@@ -22,7 +22,7 @@
   }
 
   &:focus {
-    outline: none;
+    outline: 0;
     box-shadow: $btn-close-focus-shadow;
     opacity: $btn-close-focus-opacity;
   }

@@ -6,13 +6,12 @@
 .form-select {
   display: block;
   width: 100%;
-  padding: $form-select-padding-y ($form-select-padding-x + $form-select-indicator-padding) $form-select-padding-y $form-select-padding-x;
+  padding: $form-select-padding-y $form-select-indicator-padding $form-select-padding-y $form-select-padding-x;
   font-family: $form-select-font-family;
   @include font-size($form-select-font-size);
   font-weight: $form-select-font-weight;
   line-height: $form-select-line-height;
   color: $form-select-color;
-  vertical-align: middle;
   background-color: $form-select-bg;
   background-image: escape-svg($form-select-indicator);
   background-repeat: no-repeat;

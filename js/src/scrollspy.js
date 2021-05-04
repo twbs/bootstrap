@@ -1,19 +1,17 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-alpha3): scrollspy.js
+ * Bootstrap (v5.0.0-beta3): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
+  defineJQueryPlugin,
   getSelectorFromElement,
   getUID,
   isElement,
   typeCheckConfig
 } from './util/index'
-import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
@@ -69,7 +67,7 @@ const METHOD_POSITION = 'position'
 class ScrollSpy extends BaseComponent {
   constructor(element, config) {
     super(element)
-    this._scrollElement = element.tagName === 'BODY' ? window : element
+    this._scrollElement = this._element.tagName === 'BODY' ? window : this._element
     this._config = this._getConfig(config)
     this._selector = `${this._config.target} ${SELECTOR_NAV_LINKS}, ${this._config.target} ${SELECTOR_LIST_ITEMS}, ${this._config.target} .${CLASS_NAME_DROPDOWN_ITEM}`
     this._offsets = []
@@ -77,7 +75,7 @@ class ScrollSpy extends BaseComponent {
     this._activeTarget = null
     this._scrollHeight = 0
 
-    EventHandler.on(this._scrollElement, EVENT_SCROLL, event => this._process(event))
+    EventHandler.on(this._scrollElement, EVENT_SCROLL, () => this._process())
 
     this.refresh()
     this._process()
@@ -156,6 +154,7 @@ class ScrollSpy extends BaseComponent {
   _getConfig(config) {
     config = {
       ...Default,
+      ...Manipulator.getDataAttributes(this._element),
       ...(typeof config === 'object' && config ? config : {})
     }
 
@@ -279,20 +278,17 @@ class ScrollSpy extends BaseComponent {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      let data = Data.getData(this, DATA_KEY)
-      const _config = typeof config === 'object' && config
+      const data = ScrollSpy.getInstance(this) || new ScrollSpy(this, typeof config === 'object' ? config : {})
 
-      if (!data) {
-        data = new ScrollSpy(this, _config)
+      if (typeof config !== 'string') {
+        return
       }
 
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-
-        data[config]()
+      if (typeof data[config] === 'undefined') {
+        throw new TypeError(`No method named "${config}"`)
       }
+
+      data[config]()
     })
   }
 }
@@ -305,7 +301,7 @@ class ScrollSpy extends BaseComponent {
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   SelectorEngine.find(SELECTOR_DATA_SPY)
-    .forEach(spy => new ScrollSpy(spy, Manipulator.getDataAttributes(spy)))
+    .forEach(spy => new ScrollSpy(spy))
 })
 
 /**
@@ -315,18 +311,6 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  * add .ScrollSpy to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = ScrollSpy.jQueryInterface
-    $.fn[NAME].Constructor = ScrollSpy
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return ScrollSpy.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, ScrollSpy)
 
 export default ScrollSpy

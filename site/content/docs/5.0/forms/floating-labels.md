@@ -61,7 +61,7 @@ To set a custom height on your `<textarea>`, do not use the `rows` attribute. In
 
 ## Selects
 
-Other than `.form-control`, floating labels are only available on `.form-select`s. They work in the same way, but unlike `<input>`s, they'll always show the `<label>` in its floated state.
+Other than `.form-control`, floating labels are only available on `.form-select`s. They work in the same way, but unlike `<input>`s, they'll always show the `<label>` in its floated state. **Selects with `size` and `multiple` are not supported.**
 
 {{< example >}}
 <div class="form-floating">
@@ -100,3 +100,9 @@ When working with the Bootstrap grid system, be sure to place form elements with
   </div>
 </div>
 {{< /example >}}
+
+## Sass
+
+### Variables
+
+{{< scss-docs name="form-floating-variables" file="scss/_variables.scss" >}}

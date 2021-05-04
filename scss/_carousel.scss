@@ -98,8 +98,11 @@
   align-items: center; // 2. vertically center contents
   justify-content: center; // 3. horizontally center contents
   width: $carousel-control-width;
+  padding: 0;
   color: $carousel-control-color;
   text-align: center;
+  background: none;
+  border: 0;
   opacity: $carousel-control-opacity;
   @include transition($carousel-control-transition);
 
@@ -147,10 +150,10 @@
   background-image: escape-svg($carousel-control-next-icon-bg);
 }
 
-// Optional indicator pips
+// Optional indicator pips/controls
 //
-// Add an ordered list with the following class and add a list item for each
-// slide your carousel holds.
+// Add a container (such as a list) with the following class and add an item (ideally a focusable control,
+// like a button) with data-bs-target for each slide your carousel holds.
 
 .carousel-indicators {
   position: absolute;
@@ -160,23 +163,26 @@
   z-index: 2;
   display: flex;
   justify-content: center;
-  padding-left: 0; // override <ol> default
+  padding: 0;
   // Use the .carousel-control's width as margin so we don't overlay those
   margin-right: $carousel-control-width;
+  margin-bottom: 1rem;
   margin-left: $carousel-control-width;
   list-style: none;
 
-  li {
+  [data-bs-target] {
     box-sizing: content-box;
     flex: 0 1 auto;
     width: $carousel-indicator-width;
     height: $carousel-indicator-height;
+    padding: 0;
     margin-right: $carousel-indicator-spacer;
     margin-left: $carousel-indicator-spacer;
     text-indent: -999px;
     cursor: pointer;
     background-color: $carousel-indicator-active-bg;
     background-clip: padding-box;
+    border: 0;
     // Use transparent borders to increase the hit area by 10px on top and bottom.
     border-top: $carousel-indicator-hit-area-height solid transparent;
     border-bottom: $carousel-indicator-hit-area-height solid transparent;
@@ -213,7 +219,7 @@
     filter: $carousel-dark-control-icon-filter;
   }
 
-  .carousel-indicators li {
+  .carousel-indicators [data-bs-target] {
     background-color: $carousel-dark-indicator-active-bg;
   }
 

@@ -5,8 +5,8 @@
  * Remember to use the same vendor files as the CDN ones,
  * otherwise the hashes won't match!
  *
- * Copyright 2017-2020 The Bootstrap Authors
- * Copyright 2017-2020 Twitter, Inc.
+ * Copyright 2017-2021 The Bootstrap Authors
+ * Copyright 2017-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
@@ -42,7 +42,7 @@ const files = [
     configPropertyName: 'js_bundle_hash'
   },
   {
-    file: 'node_modules/popper.js/dist/umd/popper.min.js',
+    file: 'node_modules/@popperjs/core/dist/umd/popper.min.js',
     configPropertyName: 'popper_hash'
   }
 ]

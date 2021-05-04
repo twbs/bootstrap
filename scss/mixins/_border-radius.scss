@@ -14,6 +14,7 @@
   @return $return;
 }
 
+// scss-docs-start border-radius-mixins
 @mixin border-radius($radius: $border-radius, $fallback-border-radius: false) {
   @if $enable-rounded {
     border-radius: valid-radius($radius);
@@ -74,3 +75,4 @@
     border-bottom-left-radius: valid-radius($radius);
   }
 }
+// scss-docs-end border-radius-mixins
