@@ -24,10 +24,14 @@
       "always-multiline"
     ],
     "no-new": "off",
+    "no-var": "off",
     "object-curly-spacing": [
       "error",
       "always"
     ],
+    "object-shorthand": "off",
+    "prefer-arrow-callback": "off",
+    "prefer-destructuring": "off",
     "semi": [
       "error",
       "never"
