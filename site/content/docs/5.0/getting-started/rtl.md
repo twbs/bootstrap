@@ -93,7 +93,7 @@ Using [RTLCSS value directives](https://rtlcss.com/learn/usage-guide/value-direc
 $font-weight-bold: 700 #{/* rtl:600 */} !default;
 ```
 
-Which would ouput to the following for our default CSS and RTL CSS:
+Which would output to the following for our default CSS and RTL CSS:
 
 ```css
 /* bootstrap.css */

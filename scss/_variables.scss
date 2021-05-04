@@ -738,7 +738,7 @@ $form-check-transition:                   null !default;
 $form-check-input-active-filter:          brightness(90%) !default;
 
 $form-check-input-bg:                     $input-bg !default;
-$form-check-input-border:                 1px solid rgba(0, 0, 0, .25) !default;
+$form-check-input-border:                 1px solid rgba($black, .25) !default;
 $form-check-input-border-radius:          .25em !default;
 $form-check-radio-border-radius:          50% !default;
 $form-check-input-focus-border:           $input-focus-border-color !default;
@@ -902,8 +902,8 @@ $form-validation-states: (
 $zindex-dropdown:                   1000 !default;
 $zindex-sticky:                     1020 !default;
 $zindex-fixed:                      1030 !default;
-$zindex-offcanvas:                  1040 !default;
-$zindex-modal-backdrop:             1050 !default;
+$zindex-modal-backdrop:             1040 !default;
+$zindex-offcanvas:                  1050 !default;
 $zindex-modal:                      1060 !default;
 $zindex-popover:                    1070 !default;
 $zindex-tooltip:                    1080 !default;
@@ -917,8 +917,8 @@ $nav-link-padding-y:                .5rem !default;
 $nav-link-padding-x:                1rem !default;
 $nav-link-font-size:                null !default;
 $nav-link-font-weight:              null !default;
-$nav-link-color:                    null !default;
-$nav-link-hover-color:              null !default;
+$nav-link-color:                    $link-color !default;
+$nav-link-hover-color:              $link-hover-color !default;
 $nav-link-transition:               color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
 $nav-link-disabled-color:           $gray-600 !default;
 
@@ -1125,7 +1125,7 @@ $accordion-icon-width:                    1.25rem !default;
 $accordion-icon-color:                    $accordion-color !default;
 $accordion-icon-active-color:             $accordion-button-active-color !default;
 $accordion-icon-transition:               transform .2s ease-in-out !default;
-$accordion-icon-transform:                rotate(180deg) !default;
+$accordion-icon-transform:                rotate(-180deg) !default;
 
 $accordion-button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-color}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
 $accordion-button-active-icon:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-active-color}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
@@ -1406,6 +1406,7 @@ $carousel-dark-control-icon-filter:  invert(1) grayscale(100) !default;
 // scss-docs-start spinner-variables
 $spinner-width:           2rem !default;
 $spinner-height:          $spinner-width !default;
+$spinner-vertical-align:  -.125em !default;
 $spinner-border-width:    .25em !default;
 $spinner-animation-speed: .75s !default;
 
@@ -1446,7 +1447,6 @@ $offcanvas-border-width:            $modal-content-border-width !default;
 $offcanvas-title-line-height:       $modal-title-line-height !default;
 $offcanvas-bg-color:                $modal-content-bg !default;
 $offcanvas-color:                   $modal-content-color !default;
-$offcanvas-body-backdrop-color:     rgba($modal-backdrop-bg, $modal-backdrop-opacity) !default;
 $offcanvas-box-shadow:              $modal-content-box-shadow-xs !default;
 // scss-docs-end offcanvas-variables
 
