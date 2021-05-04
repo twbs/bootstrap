@@ -83,7 +83,7 @@ Output:
 .o-100 { opacity: 1; }
 ```
 
-## States
+### States
 
 Use the `state` option to generate pseudo-class variations. Example pseudo-classes are `:hover` and `:focus`. When a list of states are provided, classnames are created for that pseudo-class. For example, to change opacity on hover, add `state: hover` and you'll get `.opacity-hover:hover` in your compiled CSS.
 

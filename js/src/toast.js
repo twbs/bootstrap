@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): toast.js
+ * Bootstrap (v5.0.0-beta3): toast.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -155,8 +155,6 @@ class Toast extends BaseComponent {
     if (this._element.classList.contains(CLASS_NAME_SHOW)) {
       this._element.classList.remove(CLASS_NAME_SHOW)
     }
-
-    EventHandler.off(this._element, EVENT_CLICK_DISMISS)
 
     super.dispose()
     this._config = null

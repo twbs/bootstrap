@@ -7,6 +7,12 @@ aliases: "/migration/"
 toc: true
 ---
 
+## v5.0.0
+
+### JavaScript
+
+- Dropdowns now have one more option (`autoClose`) to handle the [auto close behavior]({{< docsref "/components/dropdowns#auto-close-behavior" >}}). You can use this option to accept the click inside or outside the dropdown menu to make it interactive.
+
 ## v5.0.0-beta3
 
 ### Components
@@ -75,7 +81,7 @@ Horizontal direction sensitive variables, utilities and mixins are renamed with 
 
 Breakpoints specific variants are consequently renamed too (e.g. `.text-md-start` replaces `.text-md-left`).
 
-**Note**: if you used v4 to make RTL pages, ensure to reverse changes mentioned above: e.g. use `.*-start` were you used `.*-right`.
+**Note**: if you used v4 to make RTL pages, ensure to reverse changes mentioned above: e.g. use `.*-start` where you used `.*-right`.
 
 ##### Mixins
 

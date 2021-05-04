@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): tooltip.js
+ * Bootstrap (v5.0.0-beta3): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -215,7 +215,6 @@ class Tooltip extends BaseComponent {
   dispose() {
     clearTimeout(this._timeout)
 
-    EventHandler.off(this._element, this.constructor.EVENT_KEY)
     EventHandler.off(this._element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler)
 
     if (this.tip && this.tip.parentNode) {
@@ -279,11 +278,14 @@ class Tooltip extends BaseComponent {
 
     if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
       container.appendChild(tip)
+      EventHandler.trigger(this._element, this.constructor.Event.INSERTED)
     }
 
-    EventHandler.trigger(this._element, this.constructor.Event.INSERTED)
-
-    this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
+    if (this._popper) {
+      this._popper.update()
+    } else {
+      this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
+    }
 
     tip.classList.add(CLASS_NAME_SHOW)
 
@@ -298,7 +300,7 @@ class Tooltip extends BaseComponent {
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
     if ('ontouchstart' in document.documentElement) {
       [].concat(...document.body.children).forEach(element => {
-        EventHandler.on(element, 'mouseover', noop())
+        EventHandler.on(element, 'mouseover', noop)
       })
     }
 
@@ -329,6 +331,10 @@ class Tooltip extends BaseComponent {
 
     const tip = this.getTipElement()
     const complete = () => {
+      if (this._isWithActiveTrigger()) {
+        return
+      }
+
       if (this._hoverState !== HOVER_STATE_SHOW && tip.parentNode) {
         tip.parentNode.removeChild(tip)
       }
@@ -496,7 +502,6 @@ class Tooltip extends BaseComponent {
         {
           name: 'flip',
           options: {
-            altBoundary: true,
             fallbackPlacements: this.config.fallbackPlacements
           }
         },
@@ -646,7 +651,7 @@ class Tooltip extends BaseComponent {
     if (event) {
       context._activeTrigger[
         event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER
-      ] = false
+      ] = context._element.contains(event.relatedTarget)
     }
 
     if (context._isWithActiveTrigger()) {
