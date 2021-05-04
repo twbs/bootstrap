@@ -36,168 +36,138 @@ $grays: (
 // fusv-enable
 
 // scss-docs-start color-variables
-$blue:    #0d6efd !default;
-$indigo:  #6610f2 !default;
-$purple:  #6f42c1 !default;
-$pink:    #d63384 !default;
-$red:     #dc3545 !default;
-$orange:  #fd7e14 !default;
-$yellow:  #ffc107 !default;
-$green:   #198754 !default;
-$teal:    #20c997 !default;
-$cyan:    #0dcaf0 !default;
-// scss-docs-end color-variables
-
-// scss-docs-start colors-map
 $colors: (
-  "blue":       $blue,
-  "indigo":     $indigo,
-  "purple":     $purple,
-  "pink":       $pink,
-  "red":        $red,
-  "orange":     $orange,
-  "yellow":     $yellow,
-  "green":      $green,
-  "teal":       $teal,
-  "cyan":       $cyan,
-  "white":      $white,
-  "gray":       $gray-600,
-  "gray-dark":  $gray-800
-) !default;
-// scss-docs-end colors-map
+    "blue":#0d6efd,
+    "indigo":#661000f2,
+    "purple":#6f42c100,
+    "pink":#d63384,
+    "red":#dc3545,
+    "orange":#fd7e1004,
+    "yellow":#ffc10007,
+    "green":#10098754,
+    "teal":#20c997,
+    "cyan":#0dcaf0,
+);
 
-// scss-docs-start theme-color-variables
-$primary:       $blue !default;
-$secondary:     $gray-600 !default;
-$success:       $green !default;
-$info:          $cyan !default;
-$warning:       $yellow !default;
-$danger:        $red !default;
-$light:         $gray-100 !default;
-$dark:          $gray-900 !default;
-// scss-docs-end theme-color-variables
+$blue-tints: (
+    "blue-100": lighten(map-get($colors, "blue"), 80%),
+    "blue-200": lighten(map-get($colors, "blue"), 60%),
+    "blue-300": lighten(map-get($colors, "blue"), 40%),
+    "blue-400": lighten(map-get($colors, "blue"), 20%),
+    "blue-500": map-get($colors, "blue"),
+    "blue-600": darken(map-get($colors, "blue"), 20%),
+    "blue-700": darken(map-get($colors, "blue"), 40%),
+    "blue-800": darken(map-get($colors, "blue"), 60%),
+    "blue-900": darken(map-get($colors, "blue"), 80%),
+);
 
-// scss-docs-start theme-colors-map
-$theme-colors: (
-  "primary":    $primary,
-  "secondary":  $secondary,
-  "success":    $success,
-  "info":       $info,
-  "warning":    $warning,
-  "danger":     $danger,
-  "light":      $light,
-  "dark":       $dark
-) !default;
-// scss-docs-end theme-colors-map
+$indigo-tints: (
+    "indigo-100": lighten(map-get($colors, "indigo"), 80%),
+    "indigo-200": lighten(map-get($colors, "indigo"), 60%),
+    "indigo-300": lighten(map-get($colors, "indigo"), 40%),
+    "indigo-400": lighten(map-get($colors, "indigo"), 20%),
+    "indigo-500": map-get($colors, "indigo"),
+    "indigo-600": darken(map-get($colors, "indigo"), 20%),
+    "indigo-700": darken(map-get($colors, "indigo"), 40%),
+    "indigo-800": darken(map-get($colors, "indigo"), 60%),
+    "indigo-900": darken(map-get($colors, "indigo"), 80%),
+);
 
-// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
-// See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
-$min-contrast-ratio:   4.5 !default;
+$purple-tints: (
+    "purple-100": lighten(map-get($colors, "purple"), 80%),
+    "purple-200": lighten(map-get($colors, "purple"), 60%),
+    "purple-300": lighten(map-get($colors, "purple"), 40%),
+    "purple-400": lighten(map-get($colors, "purple"), 20%),
+    "purple-500": map-get($colors, "purple"),
+    "purple-600": darken(map-get($colors, "purple"), 20%),
+    "purple-700": darken(map-get($colors, "purple"), 40%),
+    "purple-800": darken(map-get($colors, "purple"), 60%),
+    "purple-900": darken(map-get($colors, "purple"), 80%),
+);
 
-// Customize the light and dark text colors for use in our color contrast function.
-$color-contrast-dark:      $black !default;
-$color-contrast-light:     $white !default;
+$pink-tints: (
+    "pink-100": lighten(map-get($colors, "pink"), 80%),
+    "pink-200": lighten(map-get($colors, "pink"), 60%),
+    "pink-300": lighten(map-get($colors, "pink"), 40%),
+    "pink-400": lighten(map-get($colors, "pink"), 20%),
+    "pink-500": map-get($colors, "pink"),
+    "pink-600": darken(map-get($colors, "pink"), 20%),
+    "pink-700": darken(map-get($colors, "pink"), 40%),
+    "pink-800": darken(map-get($colors, "pink"), 60%),
+    "pink-900": darken(map-get($colors, "pink"), 80%),
+);
 
-// fusv-disable
-$blue-100: tint-color($blue, 80%) !default;
-$blue-200: tint-color($blue, 60%) !default;
-$blue-300: tint-color($blue, 40%) !default;
-$blue-400: tint-color($blue, 20%) !default;
-$blue-500: $blue !default;
-$blue-600: shade-color($blue, 20%) !default;
-$blue-700: shade-color($blue, 40%) !default;
-$blue-800: shade-color($blue, 60%) !default;
-$blue-900: shade-color($blue, 80%) !default;
+$red-tints: (
+    "red-100": lighten(map-get($colors, "red"), 80%),
+    "red-200": lighten(map-get($colors, "red"), 60%),
+    "red-300": lighten(map-get($colors, "red"), 40%),
+    "red-400": lighten(map-get($colors, "red"), 20%),
+    "red-500": map-get($colors, "red"),
+    "red-600": darken(map-get($colors, "red"), 20%),
+    "red-700": darken(map-get($colors, "red"), 40%),
+    "red-800": darken(map-get($colors, "red"), 60%),
+    "red-900": darken(map-get($colors, "red"), 80%),
+);
 
-$indigo-100: tint-color($indigo, 80%) !default;
-$indigo-200: tint-color($indigo, 60%) !default;
-$indigo-300: tint-color($indigo, 40%) !default;
-$indigo-400: tint-color($indigo, 20%) !default;
-$indigo-500: $indigo !default;
-$indigo-600: shade-color($indigo, 20%) !default;
-$indigo-700: shade-color($indigo, 40%) !default;
-$indigo-800: shade-color($indigo, 60%) !default;
-$indigo-900: shade-color($indigo, 80%) !default;
+$orange-tints: (
+    "orange-100": lighten(map-get($colors, "orange"), 80%),
+    "orange-200": lighten(map-get($colors, "orange"), 60%),
+    "orange-300": lighten(map-get($colors, "orange"), 40%),
+    "orange-400": lighten(map-get($colors, "orange"), 20%),
+    "orange-500": map-get($colors, "orange"),
+    "orange-600": darken(map-get($colors, "orange"), 20%),
+    "orange-700": darken(map-get($colors, "orange"), 40%),
+    "orange-800": darken(map-get($colors, "orange"), 60%),
+    "orange-900": darken(map-get($colors, "orange"), 80%),
+);
 
-$purple-100: tint-color($purple, 80%) !default;
-$purple-200: tint-color($purple, 60%) !default;
-$purple-300: tint-color($purple, 40%) !default;
-$purple-400: tint-color($purple, 20%) !default;
-$purple-500: $purple !default;
-$purple-600: shade-color($purple, 20%) !default;
-$purple-700: shade-color($purple, 40%) !default;
-$purple-800: shade-color($purple, 60%) !default;
-$purple-900: shade-color($purple, 80%) !default;
+$yellow-tints: (
+    "yellow-100": lighten(map-get($colors, "yellow"), 80%),
+    "yellow-200": lighten(map-get($colors, "yellow"), 60%),
+    "yellow-300": lighten(map-get($colors, "yellow"), 40%),
+    "yellow-400": lighten(map-get($colors, "yellow"), 20%),
+    "yellow-500": map-get($colors, "yellow"),
+    "yellow-600": darken(map-get($colors, "yellow"), 20%),
+    "yellow-700": darken(map-get($colors, "yellow"), 40%),
+    "yellow-800": darken(map-get($colors, "yellow"), 60%),
+    "yellow-900": darken(map-get($colors, "yellow"), 80%),
+);
 
-$pink-100: tint-color($pink, 80%) !default;
-$pink-200: tint-color($pink, 60%) !default;
-$pink-300: tint-color($pink, 40%) !default;
-$pink-400: tint-color($pink, 20%) !default;
-$pink-500: $pink !default;
-$pink-600: shade-color($pink, 20%) !default;
-$pink-700: shade-color($pink, 40%) !default;
-$pink-800: shade-color($pink, 60%) !default;
-$pink-900: shade-color($pink, 80%) !default;
+$green-tints: (
+    "green-100": lighten(map-get($colors, "green"), 80%),
+    "green-200": lighten(map-get($colors, "green"), 60%),
+    "green-300": lighten(map-get($colors, "green"), 40%),
+    "green-400": lighten(map-get($colors, "green"), 20%),
+    "green-500": map-get($colors, "green"),
+    "green-600": darken(map-get($colors, "green"), 20%),
+    "green-700": darken(map-get($colors, "green"), 40%),
+    "green-800": darken(map-get($colors, "green"), 60%),
+    "green-900": darken(map-get($colors, "green"), 80%),
+);
 
-$red-100: tint-color($red, 80%) !default;
-$red-200: tint-color($red, 60%) !default;
-$red-300: tint-color($red, 40%) !default;
-$red-400: tint-color($red, 20%) !default;
-$red-500: $red !default;
-$red-600: shade-color($red, 20%) !default;
-$red-700: shade-color($red, 40%) !default;
-$red-800: shade-color($red, 60%) !default;
-$red-900: shade-color($red, 80%) !default;
+$teal-tints: (
+    "teal-100": lighten(map-get($colors, "teal"), 80%),
+    "teal-200": lighten(map-get($colors, "teal"), 60%),
+    "teal-300": lighten(map-get($colors, "teal"), 40%),
+    "teal-400": lighten(map-get($colors, "teal"), 20%),
+    "teal-500": map-get($colors, "teal"),
+    "teal-600": darken(map-get($colors, "teal"), 20%),
+    "teal-700": darken(map-get($colors, "teal"), 40%),
+    "teal-800": darken(map-get($colors, "teal"), 60%),
+    "teal-900": darken(map-get($colors, "teal"), 80%),
+);
 
-$orange-100: tint-color($orange, 80%) !default;
-$orange-200: tint-color($orange, 60%) !default;
-$orange-300: tint-color($orange, 40%) !default;
-$orange-400: tint-color($orange, 20%) !default;
-$orange-500: $orange !default;
-$orange-600: shade-color($orange, 20%) !default;
-$orange-700: shade-color($orange, 40%) !default;
-$orange-800: shade-color($orange, 60%) !default;
-$orange-900: shade-color($orange, 80%) !default;
-
-$yellow-100: tint-color($yellow, 80%) !default;
-$yellow-200: tint-color($yellow, 60%) !default;
-$yellow-300: tint-color($yellow, 40%) !default;
-$yellow-400: tint-color($yellow, 20%) !default;
-$yellow-500: $yellow !default;
-$yellow-600: shade-color($yellow, 20%) !default;
-$yellow-700: shade-color($yellow, 40%) !default;
-$yellow-800: shade-color($yellow, 60%) !default;
-$yellow-900: shade-color($yellow, 80%) !default;
-
-$green-100: tint-color($green, 80%) !default;
-$green-200: tint-color($green, 60%) !default;
-$green-300: tint-color($green, 40%) !default;
-$green-400: tint-color($green, 20%) !default;
-$green-500: $green !default;
-$green-600: shade-color($green, 20%) !default;
-$green-700: shade-color($green, 40%) !default;
-$green-800: shade-color($green, 60%) !default;
-$green-900: shade-color($green, 80%) !default;
-
-$teal-100: tint-color($teal, 80%) !default;
-$teal-200: tint-color($teal, 60%) !default;
-$teal-300: tint-color($teal, 40%) !default;
-$teal-400: tint-color($teal, 20%) !default;
-$teal-500: $teal !default;
-$teal-600: shade-color($teal, 20%) !default;
-$teal-700: shade-color($teal, 40%) !default;
-$teal-800: shade-color($teal, 60%) !default;
-$teal-900: shade-color($teal, 80%) !default;
-
-$cyan-100: tint-color($cyan, 80%) !default;
-$cyan-200: tint-color($cyan, 60%) !default;
-$cyan-300: tint-color($cyan, 40%) !default;
-$cyan-400: tint-color($cyan, 20%) !default;
-$cyan-500: $cyan !default;
-$cyan-600: shade-color($cyan, 20%) !default;
-$cyan-700: shade-color($cyan, 40%) !default;
-$cyan-800: shade-color($cyan, 60%) !default;
-$cyan-900: shade-color($cyan, 80%) !default;
+$cyan-tints: (
+    "cyan-100": lighten(map-get($colors, "cyan"), 80%),
+    "cyan-200": lighten(map-get($colors, "cyan"), 60%),
+    "cyan-300": lighten(map-get($colors, "cyan"), 40%),
+    "cyan-400": lighten(map-get($colors, "cyan"), 20%),
+    "cyan-500": map-get($colors, "cyan"),
+    "cyan-600": darken(map-get($colors, "cyan"), 20%),
+    "cyan-700": darken(map-get($colors, "cyan"), 40%),
+    "cyan-800": darken(map-get($colors, "cyan"), 60%),
+    "cyan-900": darken(map-get($colors, "cyan"), 80%),
+);
 // fusv-enable
 
 // Characters which are escaped by the escape-svg function
