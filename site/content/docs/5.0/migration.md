@@ -18,7 +18,7 @@ toc: true
 
 ### Forms
 
-- Validation icons are no longer applied to `<select>`s with `muliptle`.
+- Validation icons are no longer applied to `<select>`s with `multiple`.
 
 ### JavaScript
 
