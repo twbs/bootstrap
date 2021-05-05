@@ -1,4 +1,4 @@
-body {
+main {
   display: flex;
   flex-wrap: nowrap;
   height: 100vh;
@@ -6,7 +6,7 @@ body {
   overflow-x: auto;
   overflow-y: hidden;
 }
-body > * {
+main > * {
   flex-shrink: 0;
   min-height: -webkit-fill-available;
 }

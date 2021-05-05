@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Push notifications to your visitors with a toast, a lightweight and easily customizable alert message.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.82.0">
+<meta name="generator" content="Hugo 0.83.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -477,7 +477,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
 <h3 id="live">Live</h3>
-<p>Click the button the below to show as toast (positioning with our utilities in the lower right corner) that has been hidden by default with <code>.hide</code>.</p>
+<p>Click the button below to show a toast (positioned with our utilities in the lower right corner) that has been hidden by default with <code>.hide</code>.</p>
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
   <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
@@ -511,7 +511,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div><h3 id="translucent">Translucent</h3>
-<p>Toasts are slightly translucent, too, so they blend over whatever they might appear over.</p>
+<p>Toasts are slightly translucent to blend in with what&rsquo;s below them.</p>
 <div class="bd-example bg-dark">
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-header">
@@ -592,7 +592,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
 <h3 id="custom-content">Custom content</h3>
-<p>Customize your toasts by removing sub-components, tweaking with <a href="/docs/5.0/utilities/api/">utilities</a>, or adding your own markup. Here we&rsquo;ve created a simpler toast by removing the default <code>.toast-header</code>, adding a custom hide icon from <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>, and using some <a href="/docs/5.0/utilities/flex/">flexbox utilities</a> to adjust the layout.</p>
+<p>Customize your toasts by removing sub-components, tweaking them with <a href="/docs/5.0/utilities/api/">utilities</a>, or by adding your own markup. Here we&rsquo;ve created a simpler toast by removing the default <code>.toast-header</code>, adding a custom hide icon from <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>, and using some <a href="/docs/5.0/utilities/flex/">flexbox utilities</a> to adjust the layout.</p>
 <div class="bd-example bg-light">
 <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="d-flex">
@@ -821,10 +821,10 @@ The animation effect of this component is dependent on the <code>prefers-reduced
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
 <h2 id="accessibility">Accessibility</h2>
-<p>Toasts are intended to be small interruptions to your visitors or users, so to help those with screen readers and similar assistive technologies, you should wrap your toasts in an <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions"><code>aria-live</code> region</a>. Changes to live regions (such as injecting/updating a toast component) are automatically announced by screen readers without needing to move the user&rsquo;s focus or otherwise interrupt the user. Additionally, include <code>aria-atomic=&quot;true&quot;</code> to ensure that the entire toast is always announced as a single (atomic) unit, rather than announcing what was changed (which could lead to problems if you only update part of the toast&rsquo;s content, or if displaying the same toast content at a later point in time). If the information needed is important for the process, e.g. for a list of errors in a form, then use the <a href="/docs/5.0/components/alerts/">alert component</a> instead of toast.</p>
+<p>Toasts are intended to be small interruptions to your visitors or users, so to help those with screen readers and similar assistive technologies, you should wrap your toasts in an <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions"><code>aria-live</code> region</a>. Changes to live regions (such as injecting/updating a toast component) are automatically announced by screen readers without needing to move the user&rsquo;s focus or otherwise interrupt the user. Additionally, include <code>aria-atomic=&quot;true&quot;</code> to ensure that the entire toast is always announced as a single (atomic) unit, rather than just announcing what was changed (which could lead to problems if you only update part of the toast&rsquo;s content, or if displaying the same toast content at a later point in time). If the information needed is important for the process, e.g. for a list of errors in a form, then use the <a href="/docs/5.0/components/alerts/">alert component</a> instead of toast.</p>
 <p>Note that the live region needs to be present in the markup <em>before</em> the toast is generated or updated. If you dynamically generate both at the same time and inject them into the page, they will generally not be announced by assistive technologies.</p>
 <p>You also need to adapt the <code>role</code> and <code>aria-live</code> level depending on the content. If it&rsquo;s an important message like an error, use <code>role=&quot;alert&quot; aria-live=&quot;assertive&quot;</code>, otherwise use <code>role=&quot;status&quot; aria-live=&quot;polite&quot;</code> attributes.</p>
-<p>As the content you&rsquo;re displaying changes, be sure to update the <a href="#options"><code>delay</code> timeout</a> to ensure people have enough time to read the toast.</p>
+<p>As the content you&rsquo;re displaying changes, be sure to update the <a href="#options"><code>delay</code> timeout</a> so that users have enough time to read the toast.</p>
 <div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;toast&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;alert&#34;</span> <span class="na">aria-live</span><span class="o">=</span><span class="s">&#34;polite&#34;</span> <span class="na">aria-atomic</span><span class="o">=</span><span class="s">&#34;true&#34;</span> <span class="na">data-bs-delay</span><span class="o">=</span><span class="s">&#34;10000&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;alert&#34;</span> <span class="na">aria-live</span><span class="o">=</span><span class="s">&#34;assertive&#34;</span> <span class="na">aria-atomic</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -853,6 +853,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     Hello, world! This is a toast message.
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
+<p>While technically it&rsquo;s possible to add focusable/actionable controls (such as additional buttons or links) in your toast, you should avoid doing this for autohiding toasts. Even if you give the toast a long <a href="#options"><code>delay</code> timeout</a>, keyboard and assistive technology users may find it difficult to reach the toast in time to take action (since toasts don&rsquo;t receive focus when they are displayed). If you absolutely must have further controls, we recommend using a toast with <code>autohide: false</code>.</p>
 <h2 id="sass">Sass</h2>
 <h3 id="variables">Variables</h3>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$toast-max-width</span><span class="o">:</span>                   <span class="mi">350</span><span class="kt">px</span><span class="p">;</span>
@@ -966,20 +967,65 @@ You have to manually call this method, instead your toast won&rsquo;t show.</p>
   </div>
 
 
-    <footer class="bd-footer p-3 p-md-5 mt-5 bg-light text-center text-sm-start">
-  <div class="container">
-    <ul class="bd-footer-links ps-0 mb-3">
-      <li class="d-inline-block"><a href="https://github.com/twbs">GitHub</a></li>
-      <li class="d-inline-block ms-3"><a href="https://twitter.com/getbootstrap">Twitter</a></li>
-      <li class="d-inline-block ms-3"><a href="/docs/5.0/examples/">Examples</a></li>
-      <li class="d-inline-block ms-3"><a href="/docs/5.0/about/overview/">About</a></li>
-    </ul>
-    <p class="mb-0">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
-    <p class="mb-0">Currently v5.0.0-beta3. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
+    <footer class="bd-footer py-5 mt-5 bg-light">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-3 mb-3">
+        <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/" aria-label="Bootstrap">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="d-block me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"/></svg>
+          <span class="fs-5">Bootstrap</span>
+        </a>
+        <ul class="list-unstyled small text-muted">
+          <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
+          <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
+          <li class="mb-2">Currently v5.0.0.</li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2 offset-lg-1 mb-3">
+        <h5>Links</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="/">Home</a></li>
+          <li class="mb-2"><a href="/docs/5.0/">Docs</a></li>
+          <li class="mb-2"><a href="/docs/5.0/examples/">Examples</a></li>
+          <li class="mb-2"><a href="https://opencollective.com/bootstrap">Themes</a></li>
+          <li class="mb-2"><a href="https://blog.getbootstrap.com/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2 mb-3">
+        <h5>Guides</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="/docs/5.0/getting-started/">Getting started</a></li>
+          <li class="mb-2"><a href="/docs/5.0/examples/starter-template/">Starter template</a></li>
+          <li class="mb-2"><a href="/docs/5.0/getting-started/webpack/">Webpack</a></li>
+          <li class="mb-2"><a href="/docs/5.0/getting-started/parcel/">Parcel</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2 mb-3">
+        <h5>Projects</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="https://github.com/twbs/bootstrap">Bootstrap 5</a></li>
+          <li class="mb-2"><a href="https://github.com/twbs/bootstrap/tree/v4-dev">Bootstrap 4</a></li>
+          <li class="mb-2"><a href="https://github.com/twbs/icons">Icons</a></li>
+          <li class="mb-2"><a href="https://github.com/twbs/rfs">RFS</a></li>
+          <li class="mb-2"><a href="https://github.com/twbs/bootstrap-npm-starter">npm starter</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2 mb-3">
+        <h5>Community</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="https://github.com/twbs/bootstrap/issues">Issues</a></li>
+          <li class="mb-2"><a href="https://github.com/twbs/bootstrap/discussions">Discussions</a></li>
+          <li class="mb-2"><a href="https://github.com/sponsors/twbs">Corporate sponsors</a></li>
+          <li class="mb-2"><a href="https://opencollective.com/bootstrap">Open Collective</a></li>
+          <li class="mb-2"><a href="https://bootstrap-slack.herokuapp.com/">Slack</a></li>
+          <li class="mb-2"><a href="https://stackoverflow.com/questions/tagged/bootstrap-5">Stack Overflow</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>

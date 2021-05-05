@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Track and review changes to the Bootstrap source files, documentation, and components to help you migrate from v4 to v5.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.82.0">
+<meta name="generator" content="Hugo 0.83.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -398,113 +398,42 @@
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
   <ul>
-    <li><a href="#v500-beta3">v5.0.0-beta3</a>
+    <li><a href="#dependencies">Dependencies</a></li>
+    <li><a href="#browser-support">Browser support</a></li>
+    <li><a href="#documentation-changes">Documentation changes</a></li>
+    <li><a href="#sass">Sass</a></li>
+    <li><a href="#color-system">Color system</a></li>
+    <li><a href="#grid-updates">Grid updates</a></li>
+    <li><a href="#content-reboot-etc">Content, Reboot, etc</a></li>
+    <li><a href="#rtl">RTL</a></li>
+    <li><a href="#forms">Forms</a></li>
+    <li><a href="#components">Components</a>
       <ul>
-        <li><a href="#components">Components</a></li>
-        <li><a href="#javascript">JavaScript</a></li>
-        <li><a href="#utilities">Utilities</a></li>
-      </ul>
-    </li>
-    <li><a href="#v500-beta2">v5.0.0-beta2</a>
-      <ul>
-        <li><a href="#utilities-1">Utilities</a></li>
-        <li><a href="#javascript-1">JavaScript</a></li>
-      </ul>
-    </li>
-    <li><a href="#v500-beta1">v5.0.0-beta1</a>
-      <ul>
-        <li><a href="#rtl">RTL</a>
-          <ul>
-            <li><a href="#sass">Sass</a>
-              <ul>
-                <li><a href="#components-1">Components</a></li>
-                <li><a href="#utilities-2">Utilities</a></li>
-                <li><a href="#mixins">Mixins</a></li>
-                <li><a href="#variables">Variables</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="#javascript-2">JavaScript</a></li>
-        <li><a href="#sass-1">Sass</a></li>
-        <li><a href="#utilities-3">Utilities</a></li>
-        <li><a href="#components-2">Components</a>
-          <ul>
-            <li><a href="#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="#toasts">Toasts</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#v500-alpha3">v5.0.0-alpha3</a>
-      <ul>
-        <li><a href="#browser-support">Browser support</a></li>
-        <li><a href="#sass-2">Sass</a></li>
-        <li><a href="#reboot">Reboot</a></li>
+        <li><a href="#accordion">Accordion</a></li>
+        <li><a href="#alerts">Alerts</a></li>
+        <li><a href="#badges">Badges</a></li>
+        <li><a href="#breadcrumbs">Breadcrumbs</a></li>
         <li><a href="#buttons">Buttons</a></li>
-        <li><a href="#forms">Forms</a></li>
-        <li><a href="#utilities-4">Utilities</a></li>
+        <li><a href="#card">Card</a></li>
+        <li><a href="#carousel">Carousel</a></li>
+        <li><a href="#close-buttton">Close buttton</a></li>
+        <li><a href="#collapse">Collapse</a></li>
+        <li><a href="#dropdowns">Dropdowns</a></li>
+        <li><a href="#jumbotron">Jumbotron</a></li>
+        <li><a href="#list-group">List group</a></li>
+        <li><a href="#navs-and-tabs">Navs and tabs</a></li>
+        <li><a href="#navbars">Navbars</a></li>
+        <li><a href="#offcanvas">Offcanvas</a></li>
+        <li><a href="#pagination">Pagination</a></li>
+        <li><a href="#popovers">Popovers</a></li>
+        <li><a href="#spinners">Spinners</a></li>
+        <li><a href="#toasts">Toasts</a></li>
+        <li><a href="#tooltips">Tooltips</a></li>
       </ul>
     </li>
-    <li><a href="#v500-alpha2">v5.0.0-alpha2</a>
-      <ul>
-        <li><a href="#sass-3">Sass</a></li>
-        <li><a href="#docs">Docs</a></li>
-        <li><a href="#layout">Layout</a></li>
-        <li><a href="#reboot-1">Reboot</a></li>
-        <li><a href="#colors">Colors</a></li>
-        <li><a href="#forms-1">Forms</a></li>
-        <li><a href="#components-3">Components</a>
-          <ul>
-            <li><a href="#badges">Badges</a></li>
-            <li><a href="#buttons-1">Buttons</a></li>
-            <li><a href="#carousel">Carousel</a></li>
-            <li><a href="#close-button">Close button</a></li>
-            <li><a href="#collapse">Collapse</a></li>
-            <li><a href="#dropdowns">Dropdowns</a></li>
-            <li><a href="#navs">Navs</a></li>
-            <li><a href="#pagination">Pagination</a></li>
-            <li><a href="#popovers">Popovers</a></li>
-            <li><a href="#toasts-1">Toasts</a></li>
-            <li><a href="#tooltips">Tooltips</a></li>
-          </ul>
-        </li>
-        <li><a href="#helpers">Helpers</a></li>
-        <li><a href="#utilities-5">Utilities</a></li>
-      </ul>
-    </li>
-    <li><a href="#v500-alpha1">v5.0.0-alpha1</a>
-      <ul>
-        <li><a href="#browser-support-1">Browser support</a></li>
-        <li><a href="#sass-4">Sass</a></li>
-        <li><a href="#javascript-3">JavaScript</a></li>
-        <li><a href="#color-system">Color system</a></li>
-        <li><a href="#grid-and-layout">Grid and layout</a></li>
-        <li><a href="#content-reboot-etc">Content, Reboot, etc</a></li>
-        <li><a href="#typography">Typography</a></li>
-        <li><a href="#forms-2">Forms</a></li>
-        <li><a href="#components-4">Components</a>
-          <ul>
-            <li><a href="#disabled-states">Disabled states</a></li>
-            <li><a href="#alerts">Alerts</a></li>
-            <li><a href="#badges-1">Badges</a></li>
-            <li><a href="#buttons-2">Buttons</a></li>
-            <li><a href="#cards">Cards</a></li>
-            <li><a href="#jumbotron">Jumbotron</a></li>
-            <li><a href="#navbars">Navbars</a></li>
-            <li><a href="#pagination-1">Pagination</a></li>
-            <li><a href="#popovers-1">Popovers</a></li>
-            <li><a href="#tooltips-1">Tooltips</a></li>
-          </ul>
-        </li>
-        <li><a href="#accessibility">Accessibility</a></li>
-        <li><a href="#utilities-6">Utilities</a></li>
-        <li><a href="#grid">Grid</a></li>
-        <li><a href="#misc">Misc</a></li>
-        <li><a href="#docs-1">Docs</a></li>
-        <li><a href="#build-tools">Build tools</a></li>
-      </ul>
-    </li>
+    <li><a href="#utilities">Utilities</a></li>
+    <li><a href="#helpers">Helpers</a></li>
+    <li><a href="#javascript">JavaScript</a></li>
   </ul>
 </nav>
         </div>
@@ -513,291 +442,67 @@
       <div class="bd-content ps-lg-4">
         
 
-        <h2 id="v500-beta3">v5.0.0-beta3</h2>
-<h3 id="components">Components</h3>
+        <h2 id="dependencies">Dependencies</h2>
 <ul>
-<li>Added new <a href="/docs/5.0/components/list-group/#numbered"><code>.list-group-numbered</code> modifier</a> to list groups.</li>
+<li>Dropped jQuery.</li>
+<li>Upgraded from Popper v1.x to Popper v2.x.</li>
+<li>Replaced Libsass with Dart Sass as our Sass compiler given Libsass was deprecated.</li>
+<li>Migrated from Jekyll to Hugo for building our documentation</li>
 </ul>
-<h3 id="javascript">JavaScript</h3>
+<h2 id="browser-support">Browser support</h2>
+<ul>
+<li>Dropped Internet Explorer 10 and 11</li>
+<li>Dropped Microsoft Edge &lt; 16 (Legacy Edge)</li>
+<li>Dropped Firefox &lt; 60</li>
+<li>Dropped Safari &lt; 10</li>
+<li>Dropped iOS Safari &lt; 10</li>
+<li>Dropped Chrome &lt; 60</li>
+<li>Dropped Android &lt; 6</li>
+</ul>
+<hr class="my-5">
+<h2 id="documentation-changes">Documentation changes</h2>
+<ul>
+<li>Redesigned homepage, docs layout, and footer.</li>
+<li>Added <a href="https://getbootstrap.com/docs/5.0/getting-started/parcel/">new Parcel guide</a>.</li>
+<li>Added <a href="https://getbootstrap.com/docs/5.0/customize/overview/">new Customize section</a>, replacing <a href="https://getbootstrap.com/docs/4.6/getting-started/theming/">v4&rsquo;s Theming page</a>, with new details on Sass, global configuration options, color schemes, CSS variables, and more.</li>
+<li>Reorganized all form documentation into <a href="https://getbootstrap.com/docs/5.0/forms/overview/">new Forms section</a>, breaking apart the content into more focused pages.</li>
+<li>Similarly, updated <a href="https://getbootstrap.com/docs/5.0/layout/breakpoints/">the Layout section</a>, to flesh out grid content more clearly.</li>
+<li>Renamed &ldquo;Navs&rdquo; component page to &ldquo;Navs &amp; Tabs&rdquo;.</li>
+<li>Renamed &ldquo;Checks&rdquo; page to &ldquo;Checks &amp; radios&rdquo;.</li>
+<li>Redesigned the navbar and added a new subnav to make it easier to get around our sites and docs versions.</li>
+<li>Added new keyboard shortcut for the search field: <kbd>Ctrl + /</kbd>.</li>
+</ul>
+<h2 id="sass">Sass</h2>
 <ul>
 <li>
-<p>All plugins can now accept a CSS selector as the first argument. You can either pass a DOM element or any valid CSS selector to create a new instance of the plugin:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">modal</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">bootstrap</span><span class="p">.</span><span class="nx">Modal</span><span class="p">(</span><span class="s1">&#39;#myModal&#39;</span><span class="p">)</span>
-<span class="kd">var</span> <span class="nx">dropdown</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">bootstrap</span><span class="p">.</span><span class="nx">Dropdown</span><span class="p">(</span><span class="s1">&#39;[data-bs-toggle=&#34;dropdown&#34;]&#39;</span><span class="p">)</span>
-</code></pre></div></li>
+<p>We&rsquo;ve ditched the default Sass map merges to make it easier to remove redundant values. Keep in mind you now have to define all values in the Sass maps like <code>$theme-colors</code>. Check out how to deal with <a href="/docs/5.0/customize/sass/#maps-and-loops">Sass maps</a>.</p>
+</li>
 <li>
-<p>Dropped <code>flip</code> option for dropdown plugin in favor of native popper configuration. You can now disable the flipping behavior by passing an empty array for <a href="https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements"><code>fallbackPlacements</code></a> option in <a href="https://popper.js.org/docs/v2/modifiers/flip/">flip</a> modifier.</p>
-</li>
-</ul>
-<h3 id="utilities">Utilities</h3>
+<p><span class="badge bg-danger">Breaking</span> Renamed <code>color-yiq()</code> function and related variables to <code>color-contrast()</code> as it&rsquo;s no longer related to YIQ colorspace. <a href="https://github.com/twbs/bootstrap/pull/30168/">See #30168.</a></p>
 <ul>
-<li>Dropped the <code>0</code> entry in <code>$border-widths</code> map to remove the duplicated <code>.border-0</code> class.</li>
-</ul>
-<h2 id="v500-beta2">v5.0.0-beta2</h2>
-<h3 id="utilities-1">Utilities</h3>
-<ul>
-<li>Renamed <code>--aspect-ratio</code> to <code>--bs-aspect-ratio</code> to be consistent with other custom properties.</li>
-<li>Extended the <code>.visually-hidden-focusable</code> helper to also work on containers, using <code>:focus-within</code>.</li>
-<li><code>bootstrap-utilities.css</code> now also includes our helpers. Helpers don&rsquo;t need to be imported in custom builds anymore.</li>
-<li>Extended form validation states customization capabilities. Added three new optional parameters to the <code>form-validation-state</code> mixin: <code>tooltip-color</code>, <code>tooltip-bg-color</code>, <code>focus-box-shadow</code>. These parameters can be set in the <code>$form-validation-states</code> map. <a href="https://github.com/twbs/bootstrap/pull/31757">See #31757</a>.</li>
-</ul>
-<h3 id="javascript-1">JavaScript</h3>
-<ul>
-<li>Restored <code>offset</code> option for Dropdown, Popover and Tooltip plugins.</li>
-<li>The default value for the <code>fallbackPlacements</code> is changed to <code>['top', 'right', 'bottom', 'left']</code> for better placement of popper elements.</li>
-<li>All the events for the dropdown are now triggered on the dropdown toggle button and then bubbled up to the parent element.</li>
-<li>Dropdown menus now have a <code>data-bs-popper=&quot;static&quot;</code> attribute set when the positioning of the dropdown is static and <code>data-bs-popper=&quot;none&quot;</code> when dropdown is in the navbar. This is added by our JavaScript and helps us use custom position styles without interfering with Popper&rsquo;s positioning.</li>
-<li><code>popperConfig</code> can be passed as a function that accepts the Bootstrap&rsquo;s default Popper config as an argument, so that you can merge this default configuration in your way.</li>
-</ul>
-<h2 id="v500-beta1">v5.0.0-beta1</h2>
-<h3 id="rtl">RTL</h3>
-<p><strong>The RTL feature is still experimental and will probably evolve according to user feedback.</strong> Spotted something or have an improvement to suggest? <a href="https://github.com/twbs/bootstrap/issues/new">Open an issue</a>, we&rsquo;d love to get your insights.</p>
-<h4 id="sass">Sass</h4>
-<p>Horizontal direction sensitive variables, utilities and mixins are renamed with more logical names — <code>start</code> and <code>end</code> in lieu of <code>left</code> and <code>right</code>.</p>
-<h5 id="components-1">Components</h5>
-<ul>
-<li>Renamed <code>.dropleft</code> and <code>.dropright</code> to <code>.dropstart</code> and <code>.dropend</code>.</li>
-<li>Renamed <code>.dropdown-menu-*-left</code> and <code>.dropdown-menu-*-right</code> to <code>.dropdown-menu-*-start</code> and <code>.dropdown-menu-*-end</code>.</li>
-<li>Renamed <code>.bs-popover-left</code> and <code>.bs-popover-right</code> to <code>.bs-popover-start</code> and <code>.bs-popover-end</code>.</li>
-<li>Renamed <code>.bs-tooltip-left</code> and <code>.bs-tooltip-right</code> to <code>.bs-tooltip-start</code> and <code>.bs-tooltip-end</code>.</li>
-<li>Renamed <code>.carousel-item-left</code> and <code>.carousel-item-right</code> to <code>.carousel-item-start</code> and <code>.carousel-item-end</code>.</li>
-</ul>
-<h5 id="utilities-2">Utilities</h5>
-<ul>
-<li>Renamed <code>.left-*</code> and <code>.right-*</code> to <code>.start-*</code> and <code>.end-*</code>.</li>
-<li>Renamed <code>.float-left</code> and <code>.float-right</code> to <code>.float-start</code> and <code>.float-end</code>.</li>
-<li>Renamed <code>.border-left</code> and <code>.border-right</code> to <code>.border-start</code> and <code>.border-end</code>.</li>
-<li>Renamed <code>.rounded-left</code> and <code>.rounded-right</code> to <code>.rounded-start</code> and <code>.rounded-end</code>.</li>
-<li>Renamed <code>.ml-*</code> and <code>.mr-*</code> to <code>.ms-*</code> and <code>.me-*</code>.</li>
-<li>Renamed <code>.pl-*</code> and <code>.pr-*</code> to <code>.ps-*</code> and <code>.pe-*</code>.</li>
-<li>Renamed <code>.text-left</code> and <code>.text-right</code> to <code>.text-start</code> and <code>.text-end</code>.</li>
-</ul>
-<p>Breakpoints specific variants are consequently renamed too (e.g. <code>.text-md-start</code> replaces <code>.text-md-left</code>).</p>
-<p><strong>Note</strong>: if you used v4 to make RTL pages, ensure to reverse changes mentioned above: e.g. use <code>.*-start</code> were you used <code>.*-right</code>.</p>
-<h5 id="mixins">Mixins</h5>
-<ul>
-<li>Renamed <code>border-left-radius()</code> and <code>border-right-radius()</code> to <code>border-start-radius()</code> and <code>border-end-radius()</code> — as well as their corner relative variants (eg. <code>.border-bottom-left-radius</code> became <code>.border-bottom-start-radius</code>).</li>
-<li>Renamed <code>caret-left()</code> and <code>caret-right()</code> to <code>caret-start()</code> and <code>caret-end()</code> — subsequently, the <code>caret()</code> mixin now takes <code>start</code> and <code>end</code> as arguments instead of <code>left</code> and <code>right</code>.</li>
-</ul>
-<h5 id="variables">Variables</h5>
-<ul>
-<li>New <code>$breadcrumb-divider-flipped</code> if a different breadcrumb separator is needed in RTL.</li>
-<li>Renamed <code>$navbar-brand-margin-right</code> to <code>$navbar-brand-margin-end</code>.</li>
-<li>Renamed <code>$pagination-margin-left</code> to <code>$pagination-margin-start</code>.</li>
-<li>Renamed <code>$form-check-padding-left</code> to <code>$form-check-padding-start</code>.</li>
-<li>Renamed <code>$form-switch-padding-left</code> to <code>$form-switch-padding-start</code>.</li>
-<li>Renamed <code>$form-check-inline-margin-right</code> to <code>$form-check-inline-margin-end</code>.</li>
-<li>Renamed <code>$form-select-feedback-icon-padding-right</code> to <code>$form-select-feedback-icon-padding-end</code>.</li>
-</ul>
-<h3 id="javascript-2">JavaScript</h3>
-<ul>
-<li>Data attributes for all JavaScript plugins are now namespaced to help distinguish Bootstrap functionality from third parties and your own code. For example, we use <code>data-bs-toggle</code> instead of <code>data-toggle</code>.</li>
-<li>Updated Popper to v2.x:
-<ul>
-<li>Removed <code>offset</code> option from our Tooltip/Popover and Dropdown plugins; this can still be achieved using the <code>popperConfig</code> parameter.</li>
-<li>The <code>fallbackPlacement</code> option has become <code>fallbackPlacements</code>.</li>
+<li><code>$yiq-contrasted-threshold</code> is renamed to <code>$min-contrast-ratio</code>.</li>
+<li><code>$yiq-text-dark</code> and <code>$yiq-text-light</code> are respectively renamed to <code>$color-contrast-dark</code> and <code>$color-contrast-light</code>.</li>
 </ul>
 </li>
-</ul>
-<h3 id="sass-1">Sass</h3>
-<ul>
-<li>Renamed <code>scale-color()</code> function to <code>shift-color()</code> to avoid collision with Sass&rsquo;s own color scaling function.</li>
-</ul>
-<h3 id="utilities-3">Utilities</h3>
-<ul>
-<li>Added new <code>.translate-middle-x</code> &amp; <code>.translate-middle-y</code> utilities to horizontally or vertically center absolute/fixed positioned elements.</li>
-</ul>
-<h3 id="components-2">Components</h3>
-<h4 id="breadcrumbs">Breadcrumbs</h4>
-<ul>
-<li>Simplified the default appearance of breadcrumbs by removing <code>padding</code>, <code>background-color</code>, and <code>border-radius</code>.</li>
-<li>Added new CSS custom property <code>--bs-breadcrumb-divider</code> for easy customization without needing to recompile CSS.</li>
-</ul>
-<h4 id="toasts">Toasts</h4>
-<ul>
-<li>Toasts can now be <a href="/docs/5.0/components/toasts/#placement">positioned</a> in a <code>.toast-container</code> with the help of <a href="/docs/5.0/utilities/position/">positioning utilities</a>.</li>
-</ul>
-<h2 id="v500-alpha3">v5.0.0-alpha3</h2>
-<h3 id="browser-support">Browser support</h3>
-<ul>
-<li>Dropped support for Microsoft Edge Legacy. See <a href="#browser-support-1">here</a> for the previous browser support changes.</li>
-</ul>
-<h3 id="sass-2">Sass</h3>
-<ul>
-<li>The color system which worked with <code>color-level()</code> and <code>$theme-color-interval</code> was removed in favor of a new color system. All <code>lighten()</code> and <code>darken()</code> functions in our codebase are replaced by <code>tint-color()</code> and <code>shade-color()</code>. These functions will mix the color with either white or black instead of changing its lightness by a fixed amount. The <code>scale-color()</code> (changed to <code>shift-color()</code> in Beta 1) will either tint or shade a color depending on whether its weight parameter is positive or negative. <a href="https://github.com/twbs/bootstrap/pull/30622">See #30622</a> for more details.</li>
-<li>Spinners now honor <code>prefers-reduced-motion: reduce</code> by slowing down animations. <a href="https://github.com/twbs/bootstrap/pull/31882">See #31882</a>.</li>
-</ul>
-<h3 id="reboot">Reboot</h3>
-<ul>
-<li>Introduce <code>$enable-smooth-scroll</code>, which applies <code>scroll-behavior: smooth</code> globally—except for users asking for reduced motion through <code>prefers-reduced-motion</code> media query. <a href="https://github.com/twbs/bootstrap/pull/31877">See #31877</a></li>
-</ul>
-<h3 id="buttons">Buttons</h3>
-<ul>
-<li><a href="/docs/5.0/components/buttons/#block-buttons">Dropped <code>.btn-block</code> in favor of CSS grid utility classes.</a> Instead of applying <code>.btn-block</code> to individual buttons, a group of buttons now get wrapped in a parent <code>.d-grid</code> class and can use <code>.gap-*</code> utilities for spacing. For individual &ldquo;block buttons&rdquo;, add <code>.w-100</code>.</li>
-</ul>
-<h3 id="forms">Forms</h3>
-<ul>
-<li>The longstanding <a href="https://github.com/twbs/bootstrap/issues/25110">Missing border radius on input group with validation feedback bug</a> is finally fixed by adding an additional <code>.has-validation</code> class to input groups with validation.</li>
-<li>Promoted the Floating labels example to fully supported form component. <a href="/docs/5.0/forms/floating-labels/">See the new Floating labels page.</a></li>
-<li>File inputs now use the <code>.form-control</code> class and don&rsquo;t require JavaScript, additional HTML, or additional classes. <a href="https://github.com/twbs/bootstrap/pull/31955">See #31955</a>.</li>
-<li>Added <code>cursor:pointer</code> to <code>.form-control-color</code> color inputs.</li>
-</ul>
-<h3 id="utilities-4">Utilities</h3>
-<ul>
-<li><strong>Text utilities:</strong>
-<ul>
-<li>Added <code>.fs-*</code> utilities for <code>font-size</code> utilities (with RFS enabled). These use the same scale as HTML&rsquo;s default headings (1-6, large to small), and can be modified via Sass map.</li>
-<li>Renamed <code>.font-weight-*</code> utilities as <code>.fw-*</code> for brevity and consistency.</li>
-<li>Renamed <code>.font-style-*</code> utilities as <code>.fst-*</code> for brevity and consistency.</li>
-</ul>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Removed print styles and <code>$enable-print-styles</code> variable. Print display classes are still around. <a href="https://github.com/twbs/bootstrap/pull/28339">See #28339</a>.</p>
 </li>
-<li>Added <code>.d-grid</code> to display utilities</li>
-<li>Added new <code>gap</code> utilities (<code>.gap</code>) for CSS Grid layouts</li>
-<li>Removed <code>.rounded-sm</code> and <code>rounded-lg</code>, and introduced <code>.rounded-0</code> to <code>.rounded-3</code>. <a href="https://github.com/twbs/bootstrap/pull/31687">See #31687</a>.</li>
-</ul>
-<h2 id="v500-alpha2">v5.0.0-alpha2</h2>
-<h3 id="sass-3">Sass</h3>
-<ul>
-<li>Added default parameters to each <code>border-radius</code> mixin. <a href="https://github.com/twbs/bootstrap/pull/31571">See #31571</a>.</li>
-<li>Updated the next breakpoint when targeting only the <code>xs</code> breakpoint. <a href="https://github.com/twbs/bootstrap/pull/31500">See #31500</a>.</li>
-<li><code>box-shadow</code> mixins now allow <code>null</code> values and drop <code>none</code> from multiple arguments. <a href="https://github.com/twbs/bootstrap/pull/30394">See #30394</a>.</li>
-</ul>
-<h3 id="docs">Docs</h3>
-<ul>
-<li>Renamed &ldquo;Navs&rdquo; page to &ldquo;Navs &amp; Tabs&rdquo;</li>
-<li>Renamed &ldquo;Screen readers&rdquo; helper page to &ldquo;Visually hidden&rdquo;, and filename to <code>visually-hidden</code></li>
-<li>Renamed &ldquo;Checks&rdquo; page to &ldquo;Checks &amp; radios&rdquo;, and filename to <code>checks-radios</code></li>
-<li>Improved documentation of check/radio powered button groups</li>
-<li>Improved skip links in our docs.</li>
-<li>Redesigned docs navigation for larger tap targets on mobile and a streamlined subnav.</li>
-<li><a href="https://github.com/twbs/bootstrap/pull/31114">#31114</a>: Improved form documentation with regards to accessibility.</li>
-</ul>
-<h3 id="layout">Layout</h3>
-<ul>
-<li>Container horizontal padding updated to match the gutter size of <code>.row</code>s.</li>
-<li><a href="https://github.com/twbs/bootstrap/pull/31439">#31439</a>: Removed <code>flex: 1 0 100%</code> from rows due to regressions in grid behavior.</li>
-</ul>
-<h3 id="reboot-1">Reboot</h3>
-<ul>
-<li>Updated <code>th</code> styling to use a default <code>null</code> value for <code>font-weight</code> and inherit <code>text-align</code> instead of setting explicitly.</li>
-</ul>
-<h3 id="colors">Colors</h3>
-<ul>
-<li>Bumped color contrast ratio from 3:1 to 4.5:1.</li>
-<li>Set <code>$black</code> as color contrast color instead of <code>$gray-900</code>.</li>
-<li>Improved <code>$green</code> (and its theme alias <code>$success</code>) color to reach a new minimum color contrast (moving from <code>#28a745</code> to <code>#198754</code>).</li>
-<li>Improved <code>$cyan</code> (and its theme alias <code>$info</code>) color to be more vibrant (moving from <code>#17a2b8</code> to <code>#0dcaf0</code>).</li>
-</ul>
-<h3 id="forms-1">Forms</h3>
-<ul>
-<li><a href="https://github.com/twbs/bootstrap/pull/31383">#31383</a>: Resized checks and radios to be <code>1em</code> instead of <code>1.25em</code> in an effort to make them scale better with custom <code>$font-size-base</code> values and more.</li>
-</ul>
-<h3 id="components-3">Components</h3>
-<h4 id="badges">Badges</h4>
-<ul>
-<li><a href="https://github.com/twbs/bootstrap/pull/31132">#31132</a>: Increased default padding for badges from <code>.25em</code>/<code>.5em</code> to <code>.35em</code>/<code>.65em</code>.</li>
-</ul>
-<h4 id="buttons-1">Buttons</h4>
-<ul>
-<li><a href="https://github.com/twbs/bootstrap/pull/30639">#30639</a>: Disabled states of buttons are easier to customize thanks to additional arguments in the <code>button-variant()</code> mixin.</li>
-<li><a href="https://github.com/twbs/bootstrap/pull/30989">#30989</a>: Updated buttons to ensure increased contrast on hover and active states.</li>
-</ul>
-<h4 id="carousel">Carousel</h4>
-<ul>
-<li>Replaced chevron icons for carousel controls with new SVGs from <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>.</li>
-<li>Added new <a href="/docs/5.0/components/carousel/#dark-variant"><code>.carousel-dark</code> variant</a> for dark text, controls, and indicators (great for lighter backgrounds).</li>
-</ul>
-<h4 id="close-button">Close button</h4>
-<ul>
-<li>Renamed <code>.close</code> to <code>.btn-close</code> for a less generic name.</li>
-<li>Close buttons now use a <code>background-image</code> (embedded SVG) instead of a <code>&amp;times;</code> in the HTML, allowing for easier customization without the need to touch your markup.</li>
-<li>Added new variables to better control the customization.</li>
-<li>Added new <code>.btn-close-white</code> variant that uses <code>filter: invert(1)</code> to enable higher contrast dismiss icons against darker backgrounds.</li>
-</ul>
-<h4 id="collapse">Collapse</h4>
-<ul>
-<li><a href="https://github.com/twbs/bootstrap/pull/31346">#31346</a>: Removed scroll anchoring for accordions.</li>
-</ul>
-<h4 id="dropdowns">Dropdowns</h4>
-<ul>
-<li>Added new <code>.dropdown-menu-dark</code> variant and associated variables for on-demand dark dropdowns.</li>
-<li>Added new variable for <code>$dropdown-padding-x</code>.</li>
-<li>Darkened the dropdown divider for improved contrast.</li>
-</ul>
-<h4 id="navs">Navs</h4>
-<ul>
-<li><a href="https://github.com/twbs/bootstrap/pull/31035">#31035</a>: Added new <code>null</code> variables for <code>font-size</code>, <code>font-weight</code>, <code>color</code>, and <code>:hover</code> <code>color</code> to the <code>.nav-link</code> class.</li>
-</ul>
-<h4 id="pagination">Pagination</h4>
-<ul>
-<li>Added <code>transition</code>s to pagination links. <a href="https://github.com/twbs/bootstrap/pull/31396">See #31396</a>.</li>
-</ul>
-<h4 id="popovers">Popovers</h4>
-<ul>
-<li>Renamed <code>whiteList</code> option to <code>allowList</code>.</li>
-</ul>
-<h4 id="toasts-1">Toasts</h4>
-<ul>
-<li><a href="https://github.com/twbs/bootstrap/pull/31109">#31109</a>: Made default toast duration 5 seconds.</li>
-<li><a href="https://github.com/twbs/bootstrap/pull/31155">#31155</a>: Clear <code>timeout</code> before showing toasts.</li>
-<li><a href="https://github.com/twbs/bootstrap/pull/31381">#31381</a>: Removed <code>overflow: hidden</code> from toasts and replaced with proper <code>border-radius</code>s with <code>calc()</code> functions.</li>
-<li>Updated docs to include additional examples for how to customize and theme toasts.</li>
-</ul>
-<h4 id="tooltips">Tooltips</h4>
-<ul>
-<li>Renamed <code>whiteList</code> option to <code>allowList</code>.</li>
-</ul>
-<h3 id="helpers">Helpers</h3>
-<ul>
-<li>Responsive embed helpers have been renamed to <a href="/docs/5.0/helpers/ratio/">ratio helpers</a> with new class names and improved behaviors, as well as a helpful CSS variable.
-<ul>
-<li>Classes have been renamed to change <code>by</code> to <code>x</code> in the aspect ratio. For example, <code>.ratio-16by9</code> is now <code>.ratio-16x9</code>.</li>
-<li>We&rsquo;ve dropped the <code>.embed-responsive-item</code> and element group selector in favor of a simpler <code>.ratio &gt; *</code> selector. No more class is needed, and the ratio helper now works with any HTML element.</li>
-<li>The <code>$embed-responsive-aspect-ratios</code> Sass map has been renamed to <code>$aspect-ratios</code> and its values have been simplified to include the class name and the percentage as the <code>key: value</code> pair.</li>
-<li>CSS variables are now generated and included for each value in the Sass map. Modify the <code>--aspect-ratio</code> variable on the <code>.ratio</code> to create any <a href="/docs/5.0/helpers/ratio/#custom-ratios">custom aspect ratio</a>.</li>
-</ul>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Dropped <code>color()</code>, <code>theme-color()</code>, and <code>gray()</code> functions in favor of variables. <a href="https://github.com/twbs/bootstrap/pull/29083">See #29083</a>.</p>
 </li>
-<li>&ldquo;Screen reader&rdquo; classes are now <a href="/docs/5.0/helpers/visually-hidden/">&ldquo;visually hidden&rdquo; classes</a>.
-<ul>
-<li>Changed the Sass file from <code>scss/helpers/_screenreaders.scss</code> to <code>scss/helpers/_visually-hidden.scss</code></li>
-<li>Renamed <code>.sr-only</code> and <code>.sr-only-focusable</code> to <code>.visually-hidden</code> and <code>.visually-hidden-focusable</code></li>
-<li>Renamed <code>sr-only()</code> and <code>sr-only-focusable()</code> mixins to <code>visually-hidden()</code> and <code>visually-hidden-focusable()</code>.</li>
-</ul>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Renamed <code>theme-color-level()</code> function to <code>color-level()</code> and now accepts any color you want instead of only <code>$theme-color</code> colors. <a href="https://github.com/twbs/bootstrap/pull/29083">See #29083</a> <strong>Watch out:</strong> <code>color-level()</code> was later on dropped in <code>v5.0.0-alpha3</code>.</p>
 </li>
-</ul>
-<h3 id="utilities-5">Utilities</h3>
-<ul>
-<li><a href="https://github.com/twbs/bootstrap/pull/31280">#31280</a>: Added new <a href="/docs/5.0/utilities/position/#arrange-elements">position utilities</a> for <code>top</code>, <code>right</code>, <code>bottom</code>, and <code>left</code>. Values include <code>0</code>, <code>50%</code>, and <code>100%</code> for each property.
-<ul>
-<li>We also added new <code>translate</code> utilities to accompany those position utilities for centering elements when they&rsquo;re being positioned.</li>
-<li>Some great examples have been added to the docs to show these off.</li>
-</ul>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Renamed <code>$enable-prefers-reduced-motion-media-query</code> and <code>$enable-pointer-cursor-for-buttons</code> to <code>$enable-reduced-motion</code> and <code>$enable-button-pointers</code> for brevity.</p>
 </li>
-<li><a href="https://github.com/twbs/bootstrap/pull/31484">#31484</a>: Added new <a href="/docs/5.0/utilities/borders/#border-width"><code>border-width</code> utility</a>.</li>
-<li><a href="https://github.com/twbs/bootstrap/pull/31473">#31473</a>: The <code>.d-none</code> utility was moved in our CSS to give it more weight over other display utilities.</li>
-<li>Renamed <code>.text-monospace</code> to <code>.font-monospace</code>.</li>
-<li>Removed <code>.text-hide</code> as it&rsquo;s an antiquated method for hiding text that shouldn&rsquo;t be used anymore.</li>
-<li>New <code>line-height</code> utilities: <code>.lh-1</code>, <code>.lh-sm</code>, <code>.lh-base</code> and <code>.lh-lg</code>. See <a href="/docs/5.0/utilities/text/#line-height">here</a>.</li>
-</ul>
-<hr>
-<h2 id="v500-alpha1">v5.0.0-alpha1</h2>
-<h3 id="browser-support-1">Browser support</h3>
-<p>See the browser and devices page for details on what is currently supported in Bootstrap 5. Since v4, here&rsquo;s what&rsquo;s changed to our browser support:</p>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Removed the <code>bg-gradient-variant()</code> mixin. Use the <code>.bg-gradient</code> class to add gradients to elements instead of the generated <code>.bg-gradient-*</code> classes.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> <strong>Removed previously deprecated mixins:</strong></p>
 <ul>
-<li>Dropped support for Internet Explorer 10 and 11</li>
-<li>Dropped support for Microsoft Edge &lt; 16</li>
-<li>Dropped support for Firefox &lt; 60</li>
-<li>Dropped support for Safari &lt; 10</li>
-<li>Dropped support for iOS Safari &lt; 10</li>
-<li>Dropped support for Chrome &lt; 60</li>
-<li>Dropped support for Android &lt; 6</li>
-</ul>
-<h3 id="sass-4">Sass</h3>
-<p>Changes to our source Sass files and compiled CSS.</p>
-<ul>
-<li>Removed <code>hover</code>, <code>hover-focus</code>, <code>plain-hover-focus</code>, and <code>hover-focus-active</code> mixins. Use regular CSS syntax for these moving forward. <a href="https://github.com/twbs/bootstrap/pull/28267">See #28267</a>.</li>
-<li>Remove previously deprecated mixins
-<ul>
+<li><code>hover</code>, <code>hover-focus</code>, <code>plain-hover-focus</code>, and <code>hover-focus-active</code></li>
 <li><code>float()</code></li>
 <li><code>form-control-mixin()</code></li>
 <li><code>nav-divider()</code></li>
@@ -807,191 +512,449 @@
 <li><code>form-control-focus()</code></li>
 </ul>
 </li>
-<li>Rearranged forms source files under <code>scss/forms/</code>. <a href="#forms">See Forms section for more details.</a></li>
-<li>Removed print styles and <code>$enable-print-styles</code> variable. Print display classes, however, have remained intact. <a href="https://github.com/twbs/bootstrap/pull/28339">See #28339</a>.</li>
-<li>Dropped <code>color()</code>, <code>theme-color()</code> &amp; <code>gray()</code> functions in favor of variables. <a href="https://github.com/twbs/bootstrap/pull/29083">See #29083</a></li>
-<li>The <code>theme-color-level()</code> function is renamed to <code>color-level()</code> and now accepts any color you want instead of only <code>$theme-color</code> colors. <a href="https://github.com/twbs/bootstrap/pull/29083">See #29083</a> <strong>Watch out:</strong> <code>color-level()</code> was later on dropped in <code>v5.0.0-alpha3</code>.</li>
-<li><code>$enable-grid-classes</code> doesn&rsquo;t disable the generation of container classes anymore <a href="https://github.com/twbs/bootstrap/pull/29146">See #29146</a></li>
-<li>Renamed <code>$enable-prefers-reduced-motion-media-query</code> and <code>$enable-pointer-cursor-for-buttons</code> to <code>$enable-reduced-motion</code> and <code>$enable-button-pointers</code> for brevity.</li>
-<li>Line heights are dropped from several components to simplify our codebase. The <code>button-size()</code> and <code>pagination-size()</code> do not accept line height parameters anymore. <a href="https://github.com/twbs/bootstrap/pull/29271">See #29271</a></li>
-<li>The <code>button-variant()</code> mixin now accepts 3 optional color parameters, for each button state, to override the color provided by <code>color-contrast()</code>. By default, these parameters will find which color provides more contrast against the button state&rsquo;s background color with <code>color-contrast()</code>.</li>
-<li>The <code>button-outline-variant()</code> mixin now accepts an additional argument, <code>$active-color</code>, for setting the button&rsquo;s active state text color. By default, this parameter will find which color provides more contrast against the button&rsquo;s active background color with <code>color-contrast()</code>.</li>
-<li>Ditch the Sass map merges, which makes it easier to remove redundant values. Keep in mind you now have to define all values in the Sass maps like <code>$theme-colors</code>. Check out how to deal with <a href="/docs/5.0/customize/sass/#maps-and-loops">Sass maps</a>.</li>
-<li><code>color-yiq()</code> function and related variables are renamed to <code>color-contrast()</code> since it&rsquo;s not related to YIQ colorspace anymore. <a href="https://github.com/twbs/bootstrap/pull/30168/">See #30168.</a>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Renamed <code>scale-color()</code> function to <code>shift-color()</code> to avoid collision with Sass&rsquo;s own color scaling function.</p>
+</li>
+<li>
+<p><code>box-shadow</code> mixins now allow <code>null</code> values and drop <code>none</code> from multiple arguments. <a href="https://github.com/twbs/bootstrap/pull/30394">See #30394</a>.</p>
+</li>
+<li>
+<p>The <code>border-radius()</code> mixin now has a default value.</p>
+</li>
+</ul>
+<h2 id="color-system">Color system</h2>
 <ul>
-<li><code>$yiq-contrasted-threshold</code> is renamed to <code>$min-contrast-ratio</code>.</li>
-<li><code>$yiq-text-dark</code> and <code>$yiq-text-light</code> are respectively renamed to <code>$color-contrast-dark</code> and <code>$color-contrast-light</code>.</li>
+<li>
+<p>The color system which worked with <code>color-level()</code> and <code>$theme-color-interval</code> was removed in favor of a new color system. All <code>lighten()</code> and <code>darken()</code> functions in our codebase are replaced by <code>tint-color()</code> and <code>shade-color()</code>. These functions will mix the color with either white or black instead of changing its lightness by a fixed amount. The <code>shift-color()</code> will either tint or shade a color depending on whether its weight parameter is positive or negative. <a href="https://github.com/twbs/bootstrap/pull/30622">See #30622</a> for more details.</p>
+</li>
+<li>
+<p>Added new tints and shades for every color, providing nine separate colors for each base color, as new Sass variables.</p>
+</li>
+<li>
+<p>Improved color contrast. Bumped color contrast ratio from 3:1 to 4.5:1 and updated blue, green, cyan, and pink colors to ensure WCAG 2.1 AA contrast. Also changed our color contrast color from <code>$gray-900</code> to <code>$black</code>.</p>
+</li>
+<li>
+<p>To support our color system, we&rsquo;ve added new custom <code>tint-color()</code> and <code>shade-color()</code> functions to mix our colors appropriately.</p>
+</li>
+</ul>
+<h2 id="grid-updates">Grid updates</h2>
+<ul>
+<li>
+<p><strong>New breakpoint!</strong> Added new <code>xxl</code> breakpoint for <code>1400px</code> and up. No changes to all other breakpoints.</p>
+</li>
+<li>
+<p><strong>Improved gutters.</strong> Gutters are now set in rems, and are narrower than v4 (<code>1.5rem</code>, or about <code>24px</code>, down from <code>30px</code>). This aligns our grid system&rsquo;s gutters with our spacing utilities.</p>
+<ul>
+<li>Added new <a href="https://getbootstrap.com/docs/5.0/layout/gutters/">gutter class</a> (<code>.g-*</code>, <code>.gx-*</code>, and <code>.gy-*</code>) to control horizontal/vertical gutters, horizontal gutters, and vertical gutters.</li>
+<li><span class="badge bg-danger">Breaking</span> Renamed <code>.no-gutters</code> to <code>.g-0</code> to match new gutter utilities.</li>
 </ul>
 </li>
-<li>Linear gradients are simplified when gradients are enabled and therefore, <code>gradient-bg()</code> now only accepts an optional <code>$color</code> parameter.</li>
-<li>The <code>bg-gradient-variant()</code> mixin is removed since the <code>.bg-gradient</code> class can now be used to add gradients to elements instead of the <code>.bg-gradient-*</code> classes.</li>
-<li>The <code>media-breakpoint-down()</code> uses the breakpoint itself instead of the next breakpoint. Use <code>media-breakpoint-down(lg)</code> instead of <code>media-breakpoint-down(md)</code> to target viewports smaller than the <code>lg</code> breakpoint.</li>
-<li>The <code>media-breakpoint-between()</code> mixin&rsquo;s second parameter also uses the breakpoint itself instead of the next breakpoint. Use <code>media-between(sm, lg)</code> instead of <code>media-breakpoint-between(sm, md)</code> to target viewports between the <code>sm</code> and <code>lg</code> breakpoints.</li>
-<li>The <code>box-shadow()</code> mixin now better supports <code>none</code> and <code>null</code> with multiple arguments. Now you can pass multiple arguments with either value and get the expected output. <a href="https://github.com/twbs/bootstrap/pull/30394">See #30394</a>.</li>
-<li>Each <code>border-radius()</code> mixin now has a default value. You can now call these mixins without specifying a border radius value and the <code>$border-radius</code> variable will be used. <a href="https://github.com/twbs/bootstrap/pull/31571">See #31571</a></li>
+<li>
+<p>Columns no longer have <code>position: relative</code> applied, so you may have to add <code>.position-relative</code> to some elements to restore that behavior.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Dropped several <code>.order-*</code> classes that often went unused. We now only provide <code>.order-1</code> to <code>.order-5</code> out of the box.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Dropped the <code>.media</code> component as it can be easily replicated with utilities. <a href="https://github.com/twbs/bootstrap/pull/28265">See #28265</a> and the <a href="/docs/5.0/utilities/flex/#media-object">flex utilities page for an example</a>.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> <code>bootstrap-grid.css</code> now only applies <code>box-sizing: border-box</code> to the column instead of resetting the global box-sizing. This way, our grid styles can be used in more places without interference.</p>
+</li>
+<li>
+<p><code>$enable-grid-classes</code> no longer disables the generation of container classes anymore. <a href="https://github.com/twbs/bootstrap/pull/29146">See #29146.</a></p>
+</li>
+<li>
+<p>Updated the <code>make-col</code> mixin to default to equal columns without a specified size.</p>
+</li>
 </ul>
-<h3 id="javascript-3">JavaScript</h3>
-<p>Changes to our source and compiled JavaScript files.</p>
+<h2 id="content-reboot-etc">Content, Reboot, etc</h2>
 <ul>
-<li>Dropped jQuery dependency and rewrote plugins to be in regular JavaScript.</li>
-<li>Removed underscore from public static methods like <code>_getInstance()</code> → <code>getInstance()</code>.</li>
+<li>
+<p><strong><a href="/docs/5.0/getting-started/rfs/">RFS</a> is now enabled by default.</strong> Headings using the <code>font-size()</code> mixin will automatically adjust their <code>font-size</code> to scale with the viewport. <em>This feature was previously opt-in with v4.</em></p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Overhauled our display typography to replace our <code>$display-*</code> variables and with a <code>$display-font-sizes</code> Sass map. Also removed the individual <code>$display-*-weight</code> variables for a single <code>$display-font-weight</code> and adjusted <code>font-size</code>s.</p>
+</li>
+<li>
+<p>Added two new <code>.display-*</code> heading sizes, <code>.display-5</code> and <code>.display-6</code>.</p>
+</li>
+<li>
+<p><strong>Links are underlined by default</strong> (not just on hover), unless they&rsquo;re part of specific components.</p>
+</li>
+<li>
+<p><strong>Redesigned tables</strong> to refresh their styles and rebuild them with CSS variables for more control over styling.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Nested tables do not inherit styles anymore.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> <code>.thead-light</code> and <code>.thead-dark</code> are dropped in favor of the <code>.table-*</code> variant classes which can be used for all table elements (<code>thead</code>, <code>tbody</code>, <code>tfoot</code>, <code>tr</code>, <code>th</code> and <code>td</code>).</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> The <code>table-row-variant()</code> mixin is renamed to <code>table-variant()</code> and accepts only 2 parameters: <code>$color</code> (colon name) and <code>$value</code> (color code). The border color and accent colors are automatically calculated based on the table factor variables.</p>
+</li>
+<li>
+<p>Split table cell padding variables into <code>-y</code> and <code>-x</code>.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Dropped <code>.pre-scrollable</code> class. <a href="https://github.com/twbs/bootstrap/pull/29135">See #29135</a></p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> <code>.text-*</code> utilities do not add hover and focus states to links anymore. <code>.link-*</code> helper classes can be used instead. <a href="https://github.com/twbs/bootstrap/pull/29267">See #29267</a></p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Dropped <code>.text-justify</code> class. <a href="https://github.com/twbs/bootstrap/pull/29793">See #29793</a></p>
+</li>
+<li>
+<p>Reset default horizontal <code>padding-left</code> on <code>&lt;ul&gt;</code> and <code>&lt;ol&gt;</code> elements from browser default <code>40px</code> to <code>2rem</code>.</p>
+</li>
+<li>
+<p>Added <code>$enable-smooth-scroll</code>, which applies <code>scroll-behavior: smooth</code> globally—except for users asking for reduced motion through <code>prefers-reduced-motion</code> media query. <a href="https://github.com/twbs/bootstrap/pull/31877">See #31877</a></p>
+</li>
 </ul>
-<h3 id="color-system">Color system</h3>
-<p>We&rsquo;ve updated the color system that powers Bootstrap to improve color contrast and provide a much more extensive set of colors.</p>
+<h2 id="rtl">RTL</h2>
 <ul>
-<li>Updated blue and pink base colors (<code>-500</code>) to ensure WCAG 2.1 AA contrast.</li>
-<li>Added new tints and shades for every color, providing nine separate colors for each base color, as new Sass variables.</li>
-<li>To support our color system, we&rsquo;ve added new custom <code>tint-color()</code> and <code>shade-color()</code> functions to mix our colors appropriately.</li>
+<li>Horizontal direction specific variables, utilities, and mixins have all been renamed to use logical properties like those found in flexbox layouts—e.g., <code>start</code> and <code>end</code> in lieu of <code>left</code> and <code>right</code>.</li>
 </ul>
-<h3 id="grid-and-layout">Grid and layout</h3>
-<p>Changes to any layout tools and our grid system.</p>
+<h2 id="forms">Forms</h2>
 <ul>
-<li>Dropped the <code>.media</code> component as it can be built with utility classes. <a href="https://github.com/twbs/bootstrap/pull/28265">See #28265</a> and the <a href="/docs/5.0/utilities/flex/#media-object">flex utilities page for an example</a>.</li>
-<li>Remove <code>position: relative</code> from grid columns.</li>
-<li>The horizontal padding is added to the direct children in a row instead of the columns themselves.
+<li>
+<p><strong>Added new floating forms!</strong> We&rsquo;ve promoted the Floating labels example to fully supported form components. <a href="/docs/5.0/forms/floating-labels/">See the new Floating labels page.</a></p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> <strong>Consolidated native and custom form elements.</strong> Checkboxes, radios, selects, and other inputs that had native and custom classes in v4 have been consolidated. Now nearly all our form elements are entirely custom, most without the need for custom HTML.</p>
 <ul>
-<li>This simplifies our codebase.</li>
-<li>The column classes can now be used stand-alone. Whenever they are used outside a <code>.row</code>, horizontal padding won&rsquo;t be added.</li>
+<li><code>.custom-check</code> is now <code>.form-check</code>.</li>
+<li><code>.custom-check.custom-switch</code> is now <code>.form-check.form-switch</code>.</li>
+<li><code>.custom-select</code> is now <code>.form-select</code>.</li>
+<li><code>.custom-file</code> and <code>.form-file</code> have been replaced by custom styles on top of <code>.form-control</code>.</li>
+<li><code>.custom-range</code> is now <code>.form-range</code>.</li>
+<li>Dropped native <code>.form-control-file</code> and <code>.form-control-range</code>.</li>
 </ul>
 </li>
-<li>The responsive gutter classes can be used to control the gutter width in horizontal, vertical or both directions.</li>
-<li>The gutter width is now set in <code>rem</code> and decreased from <code>30px</code> to <code>1.5rem</code> (24px).</li>
-<li><code>bootstrap-grid.css</code> now only applies <code>box-sizing: border-box</code> to the column instead of resetting the global box-sizing. This way the grid system can be used, even if <code>box-sizing: border-box</code> is not applied to each element.</li>
-<li>Removed <code>.no-gutters</code> in favor of new gutter spacing classes. Use <code>.g-0</code> instead. <a href="/docs/5.0/layout/gutters/">Read the gutter docs for more details.</a></li>
-</ul>
-<h3 id="content-reboot-etc">Content, Reboot, etc</h3>
-<p>Changes to Reboot, typography, tables, and more.</p>
-<ul>
-<li><a href="/docs/5.0/getting-started/rfs/">RFS</a> enabled for automated font size rescaling. <a href="https://github.com/twbs/bootstrap/pull/29152">See #29152</a></li>
-<li>Reset default horizontal <code>padding-left</code> on <code>&lt;ul&gt;</code> and <code>&lt;ol&gt;</code> elements from browser default <code>40px</code> to <code>2rem</code>.</li>
-<li>Simplified table styles (no more odd top border) and tightened cell padding.</li>
-<li>Nested tables do not inherit styles anymore.</li>
-<li><code>.thead-light</code> and <code>.thead-dark</code> are dropped in favor of the <code>.table-*</code> variant classes which can be used for all table elements (<code>thead</code>, <code>tbody</code>, <code>tfoot</code>, <code>tr</code>, <code>th</code> and <code>td</code>).</li>
-<li>The <code>table-row-variant()</code> mixin is renamed to <code>table-variant()</code> and accepts only 2 parameters: <code>$color</code> (colon name) and <code>$value</code> (color code). The border color and accent colors are automatically calculated based on the table factor variables.</li>
-<li>Split table cell padding variables into <code>-y</code> and <code>-x</code>.</li>
-<li>Dropped <code>.pre-scrollable</code> class. <a href="https://github.com/twbs/bootstrap/pull/29135">See #29135</a></li>
-<li><code>.text-*</code> utilities do not add hover and focus states to links anymore. <code>.link-*</code> helper classes can be used instead. <a href="https://github.com/twbs/bootstrap/pull/29267">See #29267</a></li>
-<li>Drop <code>.text-justify</code> class. <a href="https://github.com/twbs/bootstrap/pull/29793">See #29793</a></li>
-</ul>
-<h3 id="typography">Typography</h3>
-<ul>
-<li>Removed <code>$display-*</code> variables for a new <code>$display-font-sizes</code> Sass map.</li>
-<li>Removed individual <code>$display-*-weight</code> variables for a single <code>$display-font-weight</code>.</li>
-<li>Added two new <code>.display-*</code> heading styles, <code>.display-5</code> and <code>.display-6</code>.</li>
-<li>Resized existing display headings for a slightly more consistent set of <code>font-size</code>s.</li>
-<li>Links are underlined by default (not just on hover), unless they&rsquo;re part of specific components.</li>
-</ul>
-<h3 id="forms-2">Forms</h3>
-<ul>
-<li>Rearranged form documentation under its own top-level section.
-<ul>
-<li>Split out old Forms page into several subpages</li>
-<li>Moved input groups docs under the new Forms section</li>
-</ul>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Dropped <code>.input-group-append</code> and <code>.input-group-prepend</code>. You can now just add buttons and <code>.input-group-text</code> as direct children of the input groups.</p>
 </li>
-<li>Rearranged source Sass files under <code>scss/forms/</code>, including moving over input group styles.</li>
-<li>Combined native and custom checkboxes and radios into a single <code>.form-check</code> class.
-<ul>
-<li>New checks support sizing via <code>em</code>/<code>font-size</code> or explicit modifier classes now.</li>
-<li>New checks now appear larger by default for improved usability.</li>
-<li>Dropped <code>.custom-control</code> and associated classes.</li>
-<li>Renamed most <code>$custom-control</code> variables to <code>$form-control</code> ones.</li>
-</ul>
+<li>
+<p>The longstanding <a href="https://github.com/twbs/bootstrap/issues/25110">Missing border radius on input group with validation feedback bug</a> is finally fixed by adding an additional <code>.has-validation</code> class to input groups with validation.</p>
 </li>
-<li>Combined native and custom selects into <code>.form-select</code>.
-<ul>
-<li>Dropped <code>.custom-select</code> and associated classes.</li>
-<li>Renamed most <code>$custom-select</code> variables to <code>$form-select</code> ones.</li>
-</ul>
+<li>
+<p><span class="badge bg-danger">Breaking</span> <strong>Dropped form-specific layout classes for our grid system.</strong> Use our grid and utilities instead of <code>.form-group</code>, <code>.form-row</code>, or <code>.form-inline</code>.</p>
 </li>
-<li>Updated file input component with the same overall design, but improved HTML.
-<ul>
-<li>Refactored <code>.form-file</code> markup to resolve some visual bugs while allowing translation and button text changes via HTML instead of CSS.</li>
-<li>Dropped native <code>.form-control-file</code> and <code>.form-control-range</code> components entirely.</li>
-<li>Renamed <code>.custom-file</code> to <code>.form-file</code> (including variables). <strong>Watch out:</strong> <code>.form-file</code> was later on dropped in <code>v5.0.0-alpha3</code>, now you can use <code>.form-control</code>.</li>
-<li>Added support for <code>:focus</code> and <code>:disabled</code> styles.</li>
-</ul>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Form labels now require <code>.form-label</code>.</p>
 </li>
-<li>Renamed <code>.custom-range</code> to <code>.form-range</code> (including variables).</li>
-<li>Dropped <code>.form-group</code> for margin utilities (we&rsquo;ve replaced our docs examples with <code>.mb-3</code>).</li>
-<li>Dropped <code>.form-row</code> for the more flexible grid gutters.</li>
-<li>Dropped <code>.form-inline</code> for the more flexible grid.</li>
-<li>Dropped support for <code>.form-control-plaintext</code> inside <code>.input-group</code>s.</li>
-<li>Dropped <code>.input-group-append</code> and <code>.input-group-prepend</code>. You can now just add buttons and <code>.input-group-text</code> as direct children of the input groups.</li>
-<li>Form labels now require the <code>.form-label</code> class. Sass variables are now available to style form labels to your needs. <a href="https://github.com/twbs/bootstrap/pull/30476">See #30476</a></li>
-<li><code>.form-text</code> no longer sets <code>display</code>, but does set <code>color</code> and <code>font-size</code>. So instead of <code>&lt;small class=&quot;form-text text-muted&quot;&gt;</code> you should now use <code>&lt;div class=&quot;form-text&quot;&gt;</code>.</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> <code>.form-text</code> no longer sets <code>display</code>, allowing you to create inline or block help text as you wish just by changing the HTML element.</p>
+</li>
+<li>
+<p>Validation icons are no longer applied to <code>&lt;select&gt;</code>s with <code>multiple</code>.</p>
+</li>
+<li>
+<p>Rearranged source Sass files under <code>scss/forms/</code>, including input group styles.</p>
+</li>
 </ul>
-<h3 id="components-4">Components</h3>
+<hr class="my-5">
+<h2 id="components">Components</h2>
 <ul>
 <li>Unified <code>padding</code> values for alerts, breadcrumbs, cards, dropdowns, list groups, modals, popovers, and tooltips to be based on our <code>$spacer</code> variable. <a href="https://github.com/twbs/bootstrap/pull/30564">See #30564</a>.</li>
 </ul>
-<h4 id="disabled-states">Disabled states</h4>
+<h3 id="accordion">Accordion</h3>
 <ul>
-<li>Disabled states of the buttons, close button, pagination link &amp; form range now have <code>pointer-events: none</code> added. This simplifies our codebase and makes it easier to override active states in CSS. <a href="https://github.com/twbs/bootstrap/pull/29296">#29296</a>.</li>
+<li>Added [new accordion component](/docs/5.0/components/accordion/!</li>
 </ul>
-<h4 id="alerts">Alerts</h4>
+<h3 id="alerts">Alerts</h3>
 <ul>
-<li>Removed auto-darkening of <code>&lt;hr&gt;</code> elements in <code>.alert-*</code> class variants. <code>&lt;hr&gt;</code>s use <code>rgba()</code> for their color, so these should naturally blend anyway.</li>
+<li>
+<p>Alerts now have <a href="/docs/5.0/components/alerts/#icons">examples with icons</a>.</p>
+</li>
+<li>
+<p>Removed custom styles for <code>&lt;hr&gt;</code>s in each alert since they already use <code>currentColor</code>.</p>
+</li>
 </ul>
-<h4 id="badges-1">Badges</h4>
-<p>Badges were overhauled to better differentiate themselves from buttons and to better utilize utility classes.</p>
+<h3 id="badges">Badges</h3>
 <ul>
-<li>Removed and replaced <code>.badge</code> modifier classes with background utility classes (e.g., use <code>.bg-primary</code> instead of <code>.badge-primary</code>)</li>
-<li>Removed <code>.badge-pill</code> for the <code>.rounded-pill</code> utility class</li>
-<li>Removed badge&rsquo;s hover and focus styles for <code>a.badge</code> and <code>button.badge</code>.</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Dropped all <code>.badge-*</code> color classes for background utilities (e.g., use <code>.bg-primary</code> instead of <code>.badge-primary</code>).</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Dropped <code>.badge-pill</code>—use the <code>.rounded-pill</code> utility instead.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Removed hover and focus styles for <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.</p>
+</li>
+<li>
+<p>Increased default padding for badges from <code>.25em</code>/<code>.5em</code> to <code>.35em</code>/<code>.65em</code>.</p>
+</li>
 </ul>
-<h4 id="buttons-2">Buttons</h4>
+<h3 id="breadcrumbs">Breadcrumbs</h3>
 <ul>
-<li>The checkbox/radio toggle is removed from the button plugin in favor of a CSS only solution, which is documented in the <a href="/docs/5.0/forms/checks-radios/#toggle-buttons">form checks and radios</a> docs. The <code>.btn-check</code> class can be added to inputs, any label with <code>.btn</code> and modifier class can be used to theme the labels. <a href="https://github.com/twbs/bootstrap/pull/30650">See #30650</a>.</li>
+<li>
+<p>Simplified the default appearance of breadcrumbs by removing <code>padding</code>, <code>background-color</code>, and <code>border-radius</code>.</p>
+</li>
+<li>
+<p>Added new CSS custom property <code>--bs-breadcrumb-divider</code> for easy customization without needing to recompile CSS.</p>
+</li>
 </ul>
-<h4 id="cards">Cards</h4>
+<h3 id="buttons">Buttons</h3>
 <ul>
-<li>Removed the card columns in favor of a Masonry grid <a href="https://github.com/twbs/bootstrap/pull/28922">See #28922</a>.</li>
-<li>Removed card decks in favor of the grid which adds more flexibility over responsive behavior.</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> <strong><a href="http://getbootstrap.com/docs/5.0/forms/checks-radios/#toggle-buttons">Toggle buttons</a>, with checkboxes or radios, no longer require JavaScript and have new markup.</strong> We no long require a wrapping element, add <code>.btn-check</code> to the <code>&lt;input&gt;</code>, and pair it with any <code>.btn</code> classes on the <code>&lt;label&gt;</code>. <a href="https://github.com/twbs/bootstrap/pull/30650">See #30650</a>. <em>The docs for this has moved from our Buttons page to the new Forms section.</em></p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> <strong>Dropped <code>.btn-block</code> for utilities.</strong> Instead of using <code>.btn-block</code> on the <code>.btn</code>, wrap your buttons with <code>.d-grid</code> and a <code>.gap-*</code> utility to space them as needed. Switch to responsive classes for even more control over them. <a href="http://getbootstrap.com/docs/5.0/components/buttons/#block-buttons">Read the docs for some examples.</a></p>
+</li>
+<li>
+<p>Updated our <code>button-variant()</code> and <code>button-outline-variant()</code> mixins to support additional parameters.</p>
+</li>
+<li>
+<p>Updated buttons to ensure increased contrast on hover and active states.</p>
+</li>
+<li>
+<p>Disabled buttons now have <code>pointer-events: none;</code>.</p>
+</li>
 </ul>
-<h4 id="jumbotron">Jumbotron</h4>
+<h3 id="card">Card</h3>
 <ul>
-<li>The jumbotron component is removed in favor of utility classes like <code>.bg-light</code> for the background color and <code>.p-*</code> classes to control padding.</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Dropped <code>.card-deck</code> in favor of our grid. Wrap your cards in column classes and add a parent <code>.row-cols-*</code> container to recreate card decks (but with more control over responsive alignment).</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Dropped <code>.card-columns</code> in favor of Masonry. <a href="https://github.com/twbs/bootstrap/pull/28922">See #28922</a>.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Replaced the <code>.card</code> based accordion with a <a href="/docs/5.0/components/accordion/">new Accordion component</a>.</p>
+</li>
 </ul>
-<h4 id="navbars">Navbars</h4>
+<h3 id="carousel">Carousel</h3>
 <ul>
-<li>All navbars now require a container within. This drastically simplifies spacing requirements and removes the need for extensive CSS overrides we added for responsive containers in v4.</li>
+<li>
+<p>Added new <a href="/docs/5.0/components/carousel/#dark-variant"><code>.carousel-dark</code> variant</a> for dark text, controls, and indicators (great for lighter backgrounds).</p>
+</li>
+<li>
+<p>Replaced chevron icons for carousel controls with new SVGs from <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>.</p>
+</li>
 </ul>
-<h4 id="pagination-1">Pagination</h4>
+<h3 id="close-buttton">Close buttton</h3>
 <ul>
-<li>Pagination links now have customizable <code>margin-left</code> that are dynamically rounded on all corners when separated from one another.</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Renamed <code>.close</code> to <code>.btn-close</code> for a less generic name.</p>
+</li>
+<li>
+<p>Close buttons now use a <code>background-image</code> (embedded SVG) instead of a <code>&amp;times;</code> in the HTML, allowing for easier customization without the need to touch your markup.</p>
+</li>
+<li>
+<p>Added new <code>.btn-close-white</code> variant that uses <code>filter: invert(1)</code> to enable higher contrast dismiss icons against darker backgrounds.</p>
+</li>
 </ul>
-<h4 id="popovers-1">Popovers</h4>
+<h3 id="collapse">Collapse</h3>
 <ul>
-<li>Renamed <code>.arrow</code> to <code>.popover-arrow</code></li>
+<li>Removed scroll anchoring for accordions.</li>
 </ul>
-<h4 id="tooltips-1">Tooltips</h4>
+<h3 id="dropdowns">Dropdowns</h3>
 <ul>
-<li>Renamed <code>.arrow</code> to <code>.tooltip-arrow</code></li>
+<li>
+<p>Added new <code>.dropdown-menu-dark</code> variant and associated variables for on-demand dark dropdowns.</p>
+</li>
+<li>
+<p>Added new variable for <code>$dropdown-padding-x</code>.</p>
+</li>
+<li>
+<p>Darkened the dropdown divider for improved contrast.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> All the events for the dropdown are now triggered on the dropdown toggle button and then bubbled up to the parent element.</p>
+</li>
+<li>
+<p>Dropdown menus now have a <code>data-bs-popper=&quot;static&quot;</code> attribute set when the positioning of the dropdown is static and <code>data-bs-popper=&quot;none&quot;</code> when dropdown is in the navbar. This is added by our JavaScript and helps us use custom position styles without interfering with Popper&rsquo;s positioning.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Dropped <code>flip</code> option for dropdown plugin in favor of native Popper configuration. You can now disable the flipping behavior by passing an empty array for <a href="https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements"><code>fallbackPlacements</code></a> option in <a href="https://popper.js.org/docs/v2/modifiers/flip/">flip</a> modifier.</p>
+</li>
+<li>
+<p>Dropdown menus can now be clickable with a new <code>autoClose</code> option to handle the <a href="/docs/5.0/components/dropdowns/#auto-close-behavior">auto close behavior</a>. You can use this option to accept the click inside or outside the dropdown menu to make it interactive.</p>
+</li>
+<li>
+<p>Dropdowns now support <code>.dropdown-item</code>s wrapped in <code>&lt;li&gt;</code>s.</p>
+</li>
 </ul>
-<h3 id="accessibility">Accessibility</h3>
+<h3 id="jumbotron">Jumbotron</h3>
 <ul>
-<li>Unlike the old <code>.sr-only-focusable</code>, which only worked in combination with <code>.sr-only</code>, <code>.sr-only-focusable</code> can be used as a standalone class without <code>.sr-only</code>. <a href="https://github.com/twbs/bootstrap/pull/28720">See #28720</a>.</li>
+<li><span class="badge bg-danger">Breaking</span> Dropped the jumbotron component as it can be replicated with utilities. <a href="https://getbootstrap.com/docs/5.0/examples/jumbotron/">See our new Jumbotron example for a demo.</a></li>
 </ul>
-<h3 id="utilities-6">Utilities</h3>
-<h3 id="grid">Grid</h3>
+<h3 id="list-group">List group</h3>
 <ul>
-<li>Decreased the number of responsive order utilities per breakpoint. The highest order utility with a number now is <code>.order-5</code> instead of <code>.order-12</code>. <a href="https://github.com/twbs/bootstrap/pull/28874">See #28874</a>.</li>
+<li>Added new <a href="/docs/5.0/components/list-group/#numbered"><code>.list-group-numbered</code> modifier</a> to list groups.</li>
 </ul>
-<h3 id="misc">Misc</h3>
+<h3 id="navs-and-tabs">Navs and tabs</h3>
 <ul>
-<li>Added <code>.bg-body</code> for quickly setting the <code>&lt;body&gt;</code>&rsquo;s background to additional elements.</li>
-<li>Negative margin utilities are disabled by default. You can re-enable them by setting <code>$enable-negative-margins: true</code>, but keep in mind this can increase the file size quite a lot.</li>
+<li>Added new <code>null</code> variables for <code>font-size</code>, <code>font-weight</code>, <code>color</code>, and <code>:hover</code> <code>color</code> to the <code>.nav-link</code> class.</li>
 </ul>
-<h3 id="docs-1">Docs</h3>
+<h3 id="navbars">Navbars</h3>
 <ul>
-<li>Removed &ldquo;Wall of browser bugs&rdquo; page because it has become obsolete</li>
-<li>Switched from Jekyll to Hugo</li>
+<li><span class="badge bg-danger">Breaking</span> Navbars now require a container within (to drastically simplify spacing requirements and CSS required).</li>
 </ul>
-<h3 id="build-tools">Build tools</h3>
+<h3 id="offcanvas">Offcanvas</h3>
 <ul>
-<li>Updated all devDependencies</li>
-<li>We support only the latest Node.js LTS releases which are 10 and 12 at the time of writing</li>
+<li>Added the new <a href="/docs/5.0/components/offcanvas/">offcanvas component</a>.</li>
+</ul>
+<h3 id="pagination">Pagination</h3>
+<ul>
+<li>
+<p>Pagination links now have customizable <code>margin-left</code> that are dynamically rounded on all corners when separated from one another.</p>
+</li>
+<li>
+<p>Added <code>transition</code>s to pagination links.</p>
+</li>
+</ul>
+<h3 id="popovers">Popovers</h3>
+<ul>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Renamed <code>.arrow</code> to <code>.popover-arrow</code> in our default popover template.</p>
+</li>
+<li>
+<p>Renamed <code>whiteList</code> option to <code>allowList</code>.</p>
+</li>
+</ul>
+<h3 id="spinners">Spinners</h3>
+<ul>
+<li>
+<p>Spinners now honor <code>prefers-reduced-motion: reduce</code> by slowing down animations. <a href="https://github.com/twbs/bootstrap/pull/31882">See #31882</a>.</p>
+</li>
+<li>
+<p>Improved spinner vertical alignment.</p>
+</li>
+</ul>
+<h3 id="toasts">Toasts</h3>
+<ul>
+<li>
+<p>Toasts can now be <a href="/docs/5.0/components/toasts/#placement">positioned</a> in a <code>.toast-container</code> with the help of <a href="/docs/5.0/utilities/position/">positioning utilities</a>.</p>
+</li>
+<li>
+<p>Changed default toast duration to 5 seconds.</p>
+</li>
+<li>
+<p>Removed <code>overflow: hidden</code> from toasts and replaced with proper <code>border-radius</code>s with <code>calc()</code> functions.</p>
+</li>
+</ul>
+<h3 id="tooltips">Tooltips</h3>
+<ul>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Renamed <code>.arrow</code> to <code>.tooltip-arrow</code> in our default tooltip template.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> The default value for the <code>fallbackPlacements</code> is changed to <code>['top', 'right', 'bottom', 'left']</code> for better placement of popper elements.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Renamed <code>whiteList</code> option to <code>allowList</code>.</p>
+</li>
+</ul>
+<h2 id="utilities">Utilities</h2>
+<ul>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Renamed several utilities to use logical property names instead of directoinal names with the addition of RTL support:</p>
+<ul>
+<li>Renamed <code>.left-*</code> and <code>.right-*</code> to <code>.start-*</code> and <code>.end-*</code>.</li>
+<li>Renamed <code>.float-left</code> and <code>.float-right</code> to <code>.float-start</code> and <code>.float-end</code>.</li>
+<li>Renamed <code>.border-left</code> and <code>.border-right</code> to <code>.border-start</code> and <code>.border-end</code>.</li>
+<li>Renamed <code>.rounded-left</code> and <code>.rounded-right</code> to <code>.rounded-start</code> and <code>.rounded-end</code>.</li>
+<li>Renamed <code>.ml-*</code> and <code>.mr-*</code> to <code>.ms-*</code> and <code>.me-*</code>.</li>
+<li>Renamed <code>.pl-*</code> and <code>.pr-*</code> to <code>.ps-*</code> and <code>.pe-*</code>.</li>
+<li>Renamed <code>.text-left</code> and <code>.text-right</code> to <code>.text-start</code> and <code>.text-end</code>.</li>
+</ul>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Disabled negative margins by default.</p>
+</li>
+<li>
+<p>Added new <code>.bg-body</code> class for quickly setting the <code>&lt;body&gt;</code>&rsquo;s background to additional elements.</p>
+</li>
+<li>
+<p>Added new <a href="/docs/5.0/utilities/position/#arrange-elements">position utilities</a> for <code>top</code>, <code>right</code>, <code>bottom</code>, and <code>left</code>. Values include <code>0</code>, <code>50%</code>, and <code>100%</code> for each property.</p>
+</li>
+<li>
+<p>Added new <code>.translate-middle-x</code> &amp; <code>.translate-middle-y</code> utilities to horizontally or vertically center absolute/fixed positioned elements.</p>
+</li>
+<li>
+<p>Added new <a href="/docs/5.0/utilities/borders/#border-width"><code>border-width</code> utilities</a>.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Renamed <code>.text-monospace</code> to <code>.font-monospace</code>.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Removed <code>.text-hide</code> as it&rsquo;s an antiquated method for hiding text that shouldn&rsquo;t be used anymore.</p>
+</li>
+<li>
+<p>Added <code>.fs-*</code> utilities for <code>font-size</code> utilities (with RFS enabled). These use the same scale as HTML&rsquo;s default headings (1-6, large to small), and can be modified via Sass map.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Renamed <code>.font-weight-*</code> utilities as <code>.fw-*</code> for brevity and consistency.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Renamed <code>.font-style-*</code> utilities as <code>.fst-*</code> for brevity and consistency.</p>
+</li>
+<li>
+<p>Added <code>.d-grid</code> to display utilities and new <code>gap</code> utilities (<code>.gap</code>) for CSS Grid and flexbox layouts.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Removed <code>.rounded-sm</code> and <code>rounded-lg</code>, and introduced a new scale of classes, <code>.rounded-0</code> to <code>.rounded-3</code>. <a href="https://github.com/twbs/bootstrap/pull/31687">See #31687</a>.</p>
+</li>
+<li>
+<p>Added new <code>line-height</code> utilities: <code>.lh-1</code>, <code>.lh-sm</code>, <code>.lh-base</code> and <code>.lh-lg</code>. See <a href="/docs/5.0/utilities/text/#line-height">here</a>.</p>
+</li>
+<li>
+<p>Moved the <code>.d-none</code> utility in our CSS to give it more weight over other display utilities.</p>
+</li>
+<li>
+<p>Extended the <code>.visually-hidden-focusable</code> helper to also work on containers, using <code>:focus-within</code>.</p>
+</li>
+</ul>
+<h2 id="helpers">Helpers</h2>
+<ul>
+<li>
+<p><span class="badge bg-danger">Breaking</span> <strong>Responsive embed helpers have been renamed to <a href="/docs/5.0/helpers/ratio/">ratio helpers</a></strong> with new class names and improved behaviors, as well as a helpful CSS variable.</p>
+<ul>
+<li>Classes have been renamed to change <code>by</code> to <code>x</code> in the aspect ratio. For example, <code>.ratio-16by9</code> is now <code>.ratio-16x9</code>.</li>
+<li>We&rsquo;ve dropped the <code>.embed-responsive-item</code> and element group selector in favor of a simpler <code>.ratio &gt; *</code> selector. No more class is needed, and the ratio helper now works with any HTML element.</li>
+<li>The <code>$embed-responsive-aspect-ratios</code> Sass map has been renamed to <code>$aspect-ratios</code> and its values have been simplified to include the class name and the percentage as the <code>key: value</code> pair.</li>
+<li>CSS variables are now generated and included for each value in the Sass map. Modify the <code>--bs-aspect-ratio</code> variable on the <code>.ratio</code> to create any <a href="/docs/5.0/helpers/ratio/#custom-ratios">custom aspect ratio</a>.</li>
+</ul>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> <strong>&ldquo;Screen reader&rdquo; classes are now <a href="/docs/5.0/helpers/visually-hidden/">&ldquo;visually hidden&rdquo; classes</a>.</strong></p>
+<ul>
+<li>Changed the Sass file from <code>scss/helpers/_screenreaders.scss</code> to <code>scss/helpers/_visually-hidden.scss</code></li>
+<li>Renamed <code>.sr-only</code> and <code>.sr-only-focusable</code> to <code>.visually-hidden</code> and <code>.visually-hidden-focusable</code></li>
+<li>Renamed <code>sr-only()</code> and <code>sr-only-focusable()</code> mixins to <code>visually-hidden()</code> and <code>visually-hidden-focusable()</code>.</li>
+</ul>
+</li>
+<li>
+<p><code>bootstrap-utilities.css</code> now also includes our helpers. Helpers don&rsquo;t need to be imported in custom builds anymore.</p>
+</li>
+</ul>
+<h2 id="javascript">JavaScript</h2>
+<ul>
+<li>
+<p><strong>Dropped jQuery dependency</strong> and rewrote plugins to be in regular JavaScript.</p>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Data attributes for all JavaScript plugins are now namespaced to help distinguish Bootstrap functionality from third parties and your own code. For example, we use <code>data-bs-toggle</code> instead of <code>data-toggle</code>.</p>
+</li>
+<li>
+<p><strong>All plugins can now accept a CSS selector as the first argument.</strong> You can either pass a DOM element or any valid CSS selector to create a new instance of the plugin:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">modal</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">bootstrap</span><span class="p">.</span><span class="nx">Modal</span><span class="p">(</span><span class="s1">&#39;#myModal&#39;</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">dropdown</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">bootstrap</span><span class="p">.</span><span class="nx">Dropdown</span><span class="p">(</span><span class="s1">&#39;[data-bs-toggle=&#34;dropdown&#34;]&#39;</span><span class="p">)</span>
+</code></pre></div></li>
+<li>
+<p><code>popperConfig</code> can be passed as a function that accepts the Bootstrap&rsquo;s default Popper config as an argument, so that you can merge this default configuration in your way. <strong>Applies to dropdowns, popovers, and tooltips.</strong></p>
+</li>
+<li>
+<p>The default value for the <code>fallbackPlacements</code> is changed to <code>['top', 'right', 'bottom', 'left']</code> for better placement of Popper elements. <strong>Applies to dropdowns, popovers, and tooltips.</strong></p>
+</li>
+<li>
+<p>Removed underscore from public static methods like <code>_getInstance()</code> → <code>getInstance()</code>.</p>
+</li>
 </ul>
 
       </div>
@@ -999,20 +962,65 @@
   </div>
 
 
-    <footer class="bd-footer p-3 p-md-5 mt-5 bg-light text-center text-sm-start">
-  <div class="container">
-    <ul class="bd-footer-links ps-0 mb-3">
-      <li class="d-inline-block"><a href="https://github.com/twbs">GitHub</a></li>
-      <li class="d-inline-block ms-3"><a href="https://twitter.com/getbootstrap">Twitter</a></li>
-      <li class="d-inline-block ms-3"><a href="/docs/5.0/examples/">Examples</a></li>
-      <li class="d-inline-block ms-3"><a href="/docs/5.0/about/overview/">About</a></li>
-    </ul>
-    <p class="mb-0">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
-    <p class="mb-0">Currently v5.0.0-beta3. Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</p>
+    <footer class="bd-footer py-5 mt-5 bg-light">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-3 mb-3">
+        <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/" aria-label="Bootstrap">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="d-block me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"/></svg>
+          <span class="fs-5">Bootstrap</span>
+        </a>
+        <ul class="list-unstyled small text-muted">
+          <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
+          <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
+          <li class="mb-2">Currently v5.0.0.</li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2 offset-lg-1 mb-3">
+        <h5>Links</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="/">Home</a></li>
+          <li class="mb-2"><a href="/docs/5.0/">Docs</a></li>
+          <li class="mb-2"><a href="/docs/5.0/examples/">Examples</a></li>
+          <li class="mb-2"><a href="https://opencollective.com/bootstrap">Themes</a></li>
+          <li class="mb-2"><a href="https://blog.getbootstrap.com/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2 mb-3">
+        <h5>Guides</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="/docs/5.0/getting-started/">Getting started</a></li>
+          <li class="mb-2"><a href="/docs/5.0/examples/starter-template/">Starter template</a></li>
+          <li class="mb-2"><a href="/docs/5.0/getting-started/webpack/">Webpack</a></li>
+          <li class="mb-2"><a href="/docs/5.0/getting-started/parcel/">Parcel</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2 mb-3">
+        <h5>Projects</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="https://github.com/twbs/bootstrap">Bootstrap 5</a></li>
+          <li class="mb-2"><a href="https://github.com/twbs/bootstrap/tree/v4-dev">Bootstrap 4</a></li>
+          <li class="mb-2"><a href="https://github.com/twbs/icons">Icons</a></li>
+          <li class="mb-2"><a href="https://github.com/twbs/rfs">RFS</a></li>
+          <li class="mb-2"><a href="https://github.com/twbs/bootstrap-npm-starter">npm starter</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2 mb-3">
+        <h5>Community</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="https://github.com/twbs/bootstrap/issues">Issues</a></li>
+          <li class="mb-2"><a href="https://github.com/twbs/bootstrap/discussions">Discussions</a></li>
+          <li class="mb-2"><a href="https://github.com/sponsors/twbs">Corporate sponsors</a></li>
+          <li class="mb-2"><a href="https://opencollective.com/bootstrap">Open Collective</a></li>
+          <li class="mb-2"><a href="https://bootstrap-slack.herokuapp.com/">Slack</a></li>
+          <li class="mb-2"><a href="https://stackoverflow.com/questions/tagged/bootstrap-5">Stack Overflow</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
