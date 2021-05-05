@@ -6,11 +6,7 @@ group: layout
 toc: true
 ---
 
-## Overview
-
-Bootstrap's default grid system represents the culmination of over a decade of CSS layout techniques, tried and tested by millions of people. But, it was also created without so many of the modern CSS features and techniques that we're seeing in browsers—features like the new CSS Grid.
-
-With Bootstrap 5, we've added the option to enable a separate grid system that's built on CSS Grid, but with a Bootstrap twist. You still get classes you can apply on a whim to build responsive layouts, but with a different approach under the hood.
+Bootstrap's default grid system represents the culmination of over a decade of CSS layout techniques, tried and tested by millions of people. But, it was also created without many of the modern CSS features and techniques we're seeing in browsers like the new CSS Grid.
 
 {{< callout info >}}
 **Heads up!** Since our CSS Grid system isn't enabled by default, we've included it in our documentation CSS. Keep reading to see how to enable it yourself.
@@ -18,20 +14,30 @@ With Bootstrap 5, we've added the option to enable a separate grid system that's
 
 ## How it works
 
-- CSS Grid is opt-in. Disable the default grid system by setting `$enable-grid-classes: false` and enable the CSS Grid by setting `$enable-cssgrid: true`. Then, recompile your Sass.
-- Replace instances of `.row` with `.grid`. The `.grid` class sets `display: grid` and creates a `grid-template` that you build on with your HTML.
-- The number of columns and the width of the gutters are set via CSS variables on the `.grid`, which means you can customize those values on the fly: `--columns` and `--gap`.
+With Bootstrap 5, we've added the option to enable a separate grid system that's built on CSS Grid, but with a Bootstrap twist. You still get classes you can apply on a whim to build responsive layouts, but with a different approach under the hood.
+
+- **CSS Grid is opt-in.** Disable the default grid system by setting `$enable-grid-classes: false` and enable the CSS Grid by setting `$enable-cssgrid: true`. Then, recompile your Sass.
+
+- **Replace instances of `.row` with `.grid`.** The `.grid` class sets `display: grid` and creates a `grid-template` that you build on with your HTML.
+
+- **Replace `.col-*` classes with `.g-col-*` classes.** This is because our CSS Grid columns use the `grid-column` property instead of `width`.
+
+- **Columns and gutter sizes are set via CSS variables.** Set these on the parent `.grid` and customize however you want, inline or in a stylesheet, with `--columns` and `--gap`.
+
+In the future, Bootstrap will likely shift to a hybrid solution as more the `gap` property is achieving nearly full browser support for flexbox.
 
 ## Key differences
 
 Compared to the default grid system:
 
-- Flex utilities won't affect grid columns. Note that columns can still be flex containers.
-- There's no `padding` on columns as gutters function more like margins.
-- Unlike `.row`s, `.grid`s have no negative margins.
-- Margin utilities cannot be used to change the grid gutters. See the [customizing section](#customizing).
-- Grid gutters are applied horizontally and vertically by default. See the [customizing section](#customizing).
+- Flex utilities don't affect the CSS Grid columns in the same way.
+
+- There's no `padding` on CSS Grid columns as gutters function more like margins via the `gap` property.
+
+- As such, unlike `.row`s, `.grid`s have no negative margins and margin utilities cannot be used to change the grid gutters. Grid gutters are applied horizontally and vertically by default. See the [customizing section](#customizing) for more details.
+
 - Inline and custom styles should be viewed as replacements for modifier classes (e.g., `style="--columns: 3;"` vs `class="row-cols-3"`).
+
 - Nesting works similarly, but may require you to reset your column counts on each instance of a nested `.grid`. See the [nesting section](#nesting) for details.
 
 ## Examples
