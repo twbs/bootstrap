@@ -21,6 +21,11 @@
   > ul li,
   > ol li {
     margin-bottom: .25rem;
+
+    > ul {
+      margin-top: -.5rem;
+      margin-bottom: 1rem;
+    }
   }
 
   // Override Bootstrap defaults
