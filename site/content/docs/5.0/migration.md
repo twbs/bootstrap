@@ -9,9 +9,28 @@ toc: true
 
 ## v5.0.0
 
+### Components
+
+- Added new `.offcanvas-top` modifier class to round out offcanvas placement options.
+- Offcanvas header elements are now vertically aligned with one another.
+- Alerts now have [examples with icons]({{< docsref "/components/alerts#icons" >}}).
+- Improved spinner vertical alignment.
+
+### Forms
+
+- Validation icons are no longer applied to `<select>`s with `muliptle`.
+
 ### JavaScript
 
-- Dropdowns now have one more option (`autoClose`) to handle the [auto close behavior]({{< docsref "/components/dropdowns#auto-close-behavior" >}}). You can use this option to accept the click inside or outside the dropdown menu to make it interactive.
+- Dropdown menus can now be clickable with a new `autoClose` option to handle the [auto close behavior]({{< docsref "/components/dropdowns#auto-close-behavior" >}}). You can use this option to accept the click inside or outside the dropdown menu to make it interactive.
+- Dropdowns now support `.dropdown-item`s wrapped in `<li>`s.
+- Fixed offcanvas focus issues when scrolling is allowed.
+- Fixed click handling on tabs.
+
+### Sass
+
+- Added new `color-scheme` mixin
+- Update the `make-col` mixin to default to equal widths without a specified size
 
 ## v5.0.0-beta3
 
