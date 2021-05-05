@@ -13,7 +13,7 @@ toc: true
 
 - Added new `.offcanvas-top` modifier class to round out offcanvas placement options.
 - Offcanvas header elements are now vertically aligned with one another.
-- Alerts now have [examples with icons]({{< docsref "/components/alerts/#icons" >}}).
+- Alerts now have [examples with icons]({{< docsref "/components/alerts#icons" >}}).
 - Improved spinner vertical alignment.
 
 ### Forms
