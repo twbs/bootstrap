@@ -142,7 +142,6 @@ p {
 
 abbr[title],
 abbr[data-bs-original-title] { // 1
-  text-decoration: underline; // 2
   text-decoration: underline dotted; // 2
   cursor: help; // 3
   text-decoration-skip-ink: none; // 4

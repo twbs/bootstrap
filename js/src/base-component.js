@@ -1,11 +1,12 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): base-component.js
+ * Bootstrap (v5.0.0-beta3): base-component.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import Data from './dom/data'
+import EventHandler from './dom/event-handler'
 
 /**
  * ------------------------------------------------------------------------
@@ -13,7 +14,7 @@ import Data from './dom/data'
  * ------------------------------------------------------------------------
  */
 
-const VERSION = '5.0.0-beta2'
+const VERSION = '5.0.0-beta3'
 
 class BaseComponent {
   constructor(element) {
@@ -29,6 +30,7 @@ class BaseComponent {
 
   dispose() {
     Data.remove(this._element, this.constructor.DATA_KEY)
+    EventHandler.off(this._element, `.${this.constructor.DATA_KEY}`)
     this._element = null
   }
 

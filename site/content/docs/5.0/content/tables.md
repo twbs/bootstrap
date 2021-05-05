@@ -290,31 +290,29 @@ Table cells of `<thead>` are always vertical aligned to the bottom. Table cells 
 </div>
 
 ```html
-<table class="table table-sm table-dark">
-  <div class="table-responsive">
-    <table class="table align-middle">
-      <thead>
-        <tr>
-          ...
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          ...
-        </tr>
-        <tr class="align-bottom">
-          ...
-        </tr>
-        <tr>
-          <td>...</td>
-          <td>...</td>
-          <td class="align-top">This cell is aligned to the top.</td>
-          <td>...</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</table>
+<div class="table-responsive">
+  <table class="table align-middle">
+    <thead>
+      <tr>
+        ...
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        ...
+      </tr>
+      <tr class="align-bottom">
+        ...
+      </tr>
+      <tr>
+        <td>...</td>
+        <td>...</td>
+        <td class="align-top">This cell is aligned to the top.</td>
+        <td>...</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 ```
 
 ## Nesting

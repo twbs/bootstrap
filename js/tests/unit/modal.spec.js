@@ -1,47 +1,30 @@
 import Modal from '../../src/modal'
 import EventHandler from '../../src/dom/event-handler'
+import { getWidth as getScrollBarWidth } from '../../src/util/scrollbar'
 
 /** Test helpers */
-import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
+import { clearBodyAndDocument, clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Modal', () => {
   let fixtureEl
-  let style
 
   beforeAll(() => {
     fixtureEl = getFixture()
-
-    // Enable the scrollbar measurer
-    const css = '.modal-scrollbar-measure { position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll; }'
-
-    style = document.createElement('style')
-    style.type = 'text/css'
-    style.appendChild(document.createTextNode(css))
-
-    document.head.appendChild(style)
-
-    // Simulate scrollbars
-    document.documentElement.style.paddingRight = '16px'
   })
 
   afterEach(() => {
     clearFixture()
-
+    clearBodyAndDocument()
     document.body.classList.remove('modal-open')
-    document.body.removeAttribute('style')
-    document.body.removeAttribute('data-bs-padding-right')
 
     document.querySelectorAll('.modal-backdrop')
       .forEach(backdrop => {
         document.body.removeChild(backdrop)
       })
-
-    document.body.style.paddingRight = '0px'
   })
 
-  afterAll(() => {
-    document.head.removeChild(style)
-    document.documentElement.style.paddingRight = '0px'
+  beforeEach(() => {
+    clearBodyAndDocument()
   })
 
   describe('VERSION', () => {
@@ -79,6 +62,7 @@ describe('Modal', () => {
     it('should toggle a modal', done => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
+      document.documentElement.style.overflowY = 'scroll'
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
       const originalPadding = '0px'
@@ -93,6 +77,7 @@ describe('Modal', () => {
       modalEl.addEventListener('hidden.bs.modal', () => {
         expect(document.body.getAttribute('data-bs-padding-right')).toBeNull()
         expect().nothing()
+        document.documentElement.style.overflowY = 'auto'
         done()
       })
 
@@ -105,25 +90,28 @@ describe('Modal', () => {
         '<div class="modal"><div class="modal-dialog"></div></div>'
       ].join('')
 
+      document.documentElement.style.overflowY = 'scroll'
       const fixedEl = fixtureEl.querySelector('.fixed-top')
       const originalPadding = Number.parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
+      const scrollBarWidth = getScrollBarWidth()
 
       modalEl.addEventListener('shown.bs.modal', () => {
-        const expectedPadding = originalPadding + modal._getScrollbarWidth()
-        const currentPadding = Number.parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
+        const expectedPadding = originalPadding + scrollBarWidth
+        const currentPadding = Number.parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
 
-        expect(fixedEl.getAttribute('data-bs-padding-right')).toEqual('0px', 'original fixed element padding should be stored in data-bs-padding-right')
+        expect(fixedEl.getAttribute('data-bs-padding-right')).toEqual(`${originalPadding}px`, 'original fixed element padding should be stored in data-bs-padding-right')
         expect(currentPadding).toEqual(expectedPadding, 'fixed element padding should be adjusted while opening')
         modal.toggle()
       })
 
       modalEl.addEventListener('hidden.bs.modal', () => {
-        const currentPadding = Number.parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
+        const currentPadding = Number.parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
 
-        expect(fixedEl.getAttribute('data-bs-padding-right')).toEqual(null, 'data-bs-padding-right should be cleared after closing')
+        expect(fixedEl.hasAttribute('data-bs-padding-right')).toEqual(false, 'data-bs-padding-right should be cleared after closing')
         expect(currentPadding).toEqual(originalPadding, 'fixed element padding should be reset after closing')
+        document.documentElement.style.overflowY = 'auto'
         done()
       })
 
@@ -136,16 +124,19 @@ describe('Modal', () => {
         '<div class="modal"><div class="modal-dialog"></div></div>'
       ].join('')
 
+      document.documentElement.style.overflowY = 'scroll'
+
       const stickyTopEl = fixtureEl.querySelector('.sticky-top')
       const originalMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
+      const scrollBarWidth = getScrollBarWidth()
 
       modalEl.addEventListener('shown.bs.modal', () => {
-        const expectedMargin = originalMargin - modal._getScrollbarWidth()
+        const expectedMargin = originalMargin - scrollBarWidth
         const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
 
-        expect(stickyTopEl.getAttribute('data-bs-margin-right')).toEqual('0px', 'original sticky element margin should be stored in data-bs-margin-right')
+        expect(stickyTopEl.getAttribute('data-bs-margin-right')).toEqual(`${originalMargin}px`, 'original sticky element margin should be stored in data-bs-margin-right')
         expect(currentMargin).toEqual(expectedMargin, 'sticky element margin should be adjusted while opening')
         modal.toggle()
       })
@@ -153,8 +144,10 @@ describe('Modal', () => {
       modalEl.addEventListener('hidden.bs.modal', () => {
         const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
 
-        expect(stickyTopEl.getAttribute('data-bs-margin-right')).toEqual(null, 'data-bs-margin-right should be cleared after closing')
+        expect(stickyTopEl.hasAttribute('data-bs-margin-right')).toEqual(false, 'data-bs-margin-right should be cleared after closing')
         expect(currentMargin).toEqual(originalMargin, 'sticky element margin should be reset after closing')
+
+        document.documentElement.style.overflowY = 'auto'
         done()
       })
 
@@ -232,27 +225,6 @@ describe('Modal', () => {
         expect(bodyPaddingRight === '0px' || bodyPaddingRight === '').toEqual(true, 'body does not have inline padding set')
         expect(document.body.style.color).toEqual('red', 'body still has other inline styles set')
         document.head.removeChild(styleTest)
-        document.body.removeAttribute('style')
-        done()
-      })
-
-      modal.toggle()
-    })
-
-    it('should properly restore non-pixel inline body padding after closing', done => {
-      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
-
-      document.body.style.paddingRight = '5%'
-
-      const modalEl = fixtureEl.querySelector('.modal')
-      const modal = new Modal(modalEl)
-
-      modalEl.addEventListener('shown.bs.modal', () => {
-        modal.toggle()
-      })
-
-      modalEl.addEventListener('hidden.bs.modal', () => {
-        expect(document.body.style.paddingRight).toEqual('5%')
         document.body.removeAttribute('style')
         done()
       })
@@ -585,7 +557,7 @@ describe('Modal', () => {
     })
 
     it('should not close modal when clicking outside of modal-content if backdrop = static', done => {
-      fixtureEl.innerHTML = '<div class="modal" data-bs-backdrop="static" ><div class="modal-dialog"></div></div>'
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
@@ -612,7 +584,7 @@ describe('Modal', () => {
     })
 
     it('should close modal when escape key is pressed with keyboard = true and backdrop is static', done => {
-      fixtureEl.innerHTML = '<div class="modal" data-bs-backdrop="static"><div class="modal-dialog"></div></div>'
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
@@ -669,7 +641,7 @@ describe('Modal', () => {
     })
 
     it('should not overflow when clicking outside of modal-content if backdrop = static', done => {
-      fixtureEl.innerHTML = '<div class="modal" data-bs-backdrop="static"><div class="modal-dialog" style="transition-duration: 20ms;"></div></div>'
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog" style="transition-duration: 20ms;"></div></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
@@ -705,7 +677,6 @@ describe('Modal', () => {
 
         // Restore scrollbars
         document.body.style.overflow = 'auto'
-        document.documentElement.style.paddingRight = '16px'
         done()
       })
 
@@ -737,7 +708,6 @@ describe('Modal', () => {
         // Restore overridden css
         document.body.style.removeProperty('margin')
         document.body.style.removeProperty('overflow')
-        document.documentElement.style.paddingRight = '16px'
         done()
       })
 
@@ -1088,6 +1058,23 @@ describe('Modal', () => {
       jQueryMock.fn.modal.call(jQueryMock)
 
       expect(Modal.getInstance(div)).toBeDefined()
+    })
+
+    it('should create a modal with given config', () => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      jQueryMock.fn.modal = Modal.jQueryInterface
+      jQueryMock.elements = [div]
+
+      jQueryMock.fn.modal.call(jQueryMock, { keyboard: false })
+      spyOn(Modal.prototype, 'constructor')
+      expect(Modal.prototype.constructor).not.toHaveBeenCalledWith(div, { keyboard: false })
+
+      const modal = Modal.getInstance(div)
+      expect(modal).toBeDefined()
+      expect(modal._config.keyboard).toBe(false)
     })
 
     it('should not re create a modal', () => {
