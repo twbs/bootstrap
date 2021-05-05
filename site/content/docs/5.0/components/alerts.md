@@ -51,7 +51,7 @@ Alerts can also contain additional HTML elements like headings, paragraphs and d
 
 ### Icons
 
-Similarly, you can use [flexbox utilities]({{< docsref "/utilities/flex" >}}) and [Bootstrap Icons]({{ .Site.Params.icons }}) to create alerts with icons. Depending on your icons and content, you may want to add more utilities or custom styles.
+Similarly, you can use [flexbox utilities]({{< docsref "/utilities/flex" >}}) and [Bootstrap Icons]({{< param icons >}}) to create alerts with icons. Depending on your icons and content, you may want to add more utilities or custom styles.
 
 {{< example >}}
 <div class="alert alert-primary d-flex align-items-center" role="alert">
