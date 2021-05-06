@@ -7,10 +7,8 @@
 
 import Data from './dom/data'
 import {
-  emulateTransitionEnd,
-  execute,
-  getElement,
-  getTransitionDurationFromElement
+  executeAfterTransition,
+  getElement
 } from './util/index'
 import EventHandler from './dom/event-handler'
 
@@ -44,15 +42,7 @@ class BaseComponent {
   }
 
   _queueCallback(callback, element, isAnimated = true) {
-    if (!isAnimated) {
-      execute(callback)
-      return
-    }
-
-    const transitionDuration = getTransitionDurationFromElement(element)
-    EventHandler.one(element, 'transitionend', () => execute(callback))
-
-    emulateTransitionEnd(element, transitionDuration)
+    executeAfterTransition(callback, element, isAnimated)
   }
 
   /** Static */
