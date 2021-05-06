@@ -17,7 +17,7 @@ categories:
       - 'fix'
       - 'bugfix'
       - 'bug'
-  - title: '⚡ Performance Improvements'
+  - title: '⚡ Performance improvements'
     labels:
       - 'performance'
   - title: '🎨 CSS'
@@ -29,6 +29,9 @@ categories:
   - title: '📖 Docs'
     labels:
       - 'docs'
+  - title: '🛠 Examples'
+    labels:
+      - 'examples'
   - title: '🌎 Accessibility'
     labels:
       - 'accessibility'
