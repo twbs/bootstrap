@@ -220,7 +220,7 @@ toc: true
 
 - Replaced chevron icons for carousel controls with new SVGs from [Bootstrap Icons]({{< param "icons" >}}).
 
-### Close buttton
+### Close button
 
 - <span class="badge bg-danger">Breaking</span> Renamed `.close` to `.btn-close` for a less generic name.
 
