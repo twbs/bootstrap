@@ -1,14 +1,16 @@
+html {
+  min-height: -webkit-fill-available;
+}
+
 main {
   display: flex;
   flex-wrap: nowrap;
   height: 100vh;
-  height: -webkit-fill-available;
   overflow-x: auto;
   overflow-y: hidden;
 }
 main > * {
   flex-shrink: 0;
-  min-height: -webkit-fill-available;
 }
 
 .b-example-divider {
