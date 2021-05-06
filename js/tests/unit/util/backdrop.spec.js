@@ -5,6 +5,8 @@ import { clearFixture, getFixture } from '../../helpers/fixture'
 const CLASS_BACKDROP = '.modal-backdrop'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
+const CLASS_NAME_PARENT = 'modal-parent'
+const CLASS_PARENT = '.modal-parent'
 
 describe('Backdrop', () => {
   let fixtureEl
@@ -15,8 +17,12 @@ describe('Backdrop', () => {
 
   afterEach(() => {
     clearFixture()
-    const list = document.querySelectorAll(CLASS_BACKDROP)
+    const parent = document.querySelectorAll(CLASS_PARENT)
+    parent.forEach(el => {
+      document.body.removeChild(el)
+    })
 
+    const list = document.querySelectorAll(CLASS_BACKDROP)
     list.forEach(el => {
       document.body.removeChild(el)
     })
@@ -234,6 +240,37 @@ describe('Backdrop', () => {
       instance.show()
       instance.hide(() => {
         expect(spy).not.toHaveBeenCalled()
+        done()
+      })
+    })
+  })
+
+  describe('initialization callbacks', () => {
+    it('Should default parent element to "document.body" when config value is null', done => {
+      const instance = new Backdrop({
+        isVisible: true,
+        rootElement: null
+      })
+      const getElement = () => document.querySelector(CLASS_BACKDROP)
+      instance.show(() => {
+        expect(getElement().parentElement).toEqual(document.body)
+        done()
+      })
+    })
+
+    it('Should use the custom parent element given in the config', done => {
+      const parent = document.createElement('div')
+      parent.className = CLASS_NAME_PARENT
+      document.body.appendChild(parent)
+
+      const instance = new Backdrop({
+        isVisible: true,
+        rootElement: parent
+      })
+
+      const getElement = () => document.querySelector(CLASS_BACKDROP)
+      instance.show(() => {
+        expect(getElement().parentElement).toEqual(parent)
         done()
       })
     })
