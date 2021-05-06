@@ -170,7 +170,7 @@ toc: true
 
 ### Accordion
 
-- Added [new accordion component]({{< docsref "/components/accordion" >}}!
+- Added [new accordion component]({{< docsref "/components/accordion" >}})!
 
 ### Alerts
 
