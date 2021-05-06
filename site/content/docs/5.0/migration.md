@@ -19,10 +19,9 @@ toc: true
 - Dropped Internet Explorer 10 and 11
 - Dropped Microsoft Edge < 16 (Legacy Edge)
 - Dropped Firefox < 60
-- Dropped Safari < 10
-- Dropped iOS Safari < 10
+- Dropped Safari < 12
+- Dropped iOS Safari < 12
 - Dropped Chrome < 60
-- Dropped Android < 6
 
 <hr class="my-5">
 
