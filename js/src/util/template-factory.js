@@ -6,8 +6,9 @@
  */
 
 import { DefaultAllowlist, sanitizeHtml } from './sanitizer'
-import { getElement, isElement, typeCheckConfig } from '../util/index'
+import { getElement, isElement } from '../util/index'
 import SelectorEngine from '../dom/selector-engine'
+import Config from './config'
 
 /**
  * Constants
@@ -44,8 +45,9 @@ const DefaultContentType = {
  * Class definition
  */
 
-class TemplateFactory {
+class TemplateFactory extends Config {
   constructor(config) {
+    super()
     this._config = this._getConfig(config)
   }
 
@@ -56,6 +58,10 @@ class TemplateFactory {
 
   static get Default() {
     return Default
+  }
+
+  static get DefaultType() {
+    return DefaultType
   }
 
   // Public
@@ -94,21 +100,14 @@ class TemplateFactory {
   }
 
   // Private
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...(typeof config === 'object' ? config : {})
-    }
-
-    typeCheckConfig(NAME, config, DefaultType)
+  _typeCheckConfig(config) {
+    super._typeCheckConfig(config)
     this._checkContent(config.content)
-
-    return config
   }
 
   _checkContent(arg) {
     for (const [selector, content] of Object.entries(arg)) {
-      typeCheckConfig(NAME, { selector, entry: content }, DefaultContentType)
+      super._typeCheckConfig({ selector, entry: content }, DefaultContentType)
     }
   }
 
