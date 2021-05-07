@@ -81,6 +81,20 @@ Click the button below to show a toast (positioned with our utilities in the low
 </div>
 ```
 
+We use the following JavaScript to trigger our live toast demo:
+
+```js
+var toastTrigger = document.getElementById('liveToastBtn')
+var toastLiveExample = document.getElementById('liveToast')
+if (toastTrigger) {
+  toastTrigger.addEventListener('click', function () {
+    var toast = new bootstrap.Toast(toastLiveExample)
+
+    toast.show()
+  })
+}
+```
+
 ### Translucent
 
 Toasts are slightly translucent to blend in with what's below them.
