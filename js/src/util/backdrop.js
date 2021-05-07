@@ -25,6 +25,7 @@ const NAME = 'backdrop'
 const CLASS_NAME_BACKDROP = 'modal-backdrop'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
+const CLASS_NAME_OPEN = 'modal-open'
 
 const EVENT_MOUSEDOWN = `mousedown.bs.${NAME}`
 
@@ -50,6 +51,7 @@ class Backdrop {
     this._getElement().classList.add(CLASS_NAME_SHOW)
 
     this._emulateAnimation(() => {
+      this._config.rootElement.classList.add(CLASS_NAME_OPEN)
       execute(callback)
     })
   }
@@ -63,6 +65,7 @@ class Backdrop {
     this._getElement().classList.remove(CLASS_NAME_SHOW)
 
     this._emulateAnimation(() => {
+      this._config.rootElement.classList.remove(CLASS_NAME_OPEN)
       this.dispose()
       execute(callback)
     })
