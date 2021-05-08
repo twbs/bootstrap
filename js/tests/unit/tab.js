@@ -27,7 +27,7 @@ $(function () {
 
   QUnit.test('should throw explicit error on undefined method', function (assert) {
     assert.expect(1)
-    var $el = $('<div></div>')
+    var $el = $('<div/>')
     $el.bootstrapTab()
     try {
       $el.bootstrapTab('noMethod')
@@ -38,7 +38,7 @@ $(function () {
 
   QUnit.test('should return jquery collection containing the element', function (assert) {
     assert.expect(2)
-    var $el = $('<div></div>')
+    var $el = $('<div/>')
     var $tab = $el.bootstrapTab()
     assert.ok($tab instanceof $, 'returns jquery collection')
     assert.strictEqual($tab[0], $el[0], 'collection contains element')
@@ -67,7 +67,7 @@ $(function () {
         '<li><a href="#profile" role="tab">Profile</a></li>' +
         '</ul>'
 
-    $('<ul><li id="home" role="tabpanel"></li><li id="profile" role="tabpanel"></li></ul>').appendTo('#qunit-fixture')
+    $('<ul><li id="home" role="tabpanel"/><li id="profile" role="tabpanel"/></ul>').appendTo('#qunit-fixture')
 
     $(tabsHTML).find('li:last-child a').bootstrapTab('show')
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile')
@@ -83,7 +83,7 @@ $(function () {
         '<li><a href="#profile">Profile</a></li>' +
         '</ul>'
 
-    $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture')
+    $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture')
 
     $(pillsHTML).find('li:last-child a').bootstrapTab('show')
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile')
@@ -99,7 +99,7 @@ $(function () {
         '<li><button type="button" href="#profile" role="tab">Profile</button></li>' +
         '</ol>'
 
-    $('<ol><li id="home" role="tabpanel"></li><li id="profile" role="tabpanel"></li></ol>').appendTo('#qunit-fixture')
+    $('<ol><li id="home" role="tabpanel"/><li id="profile" role="tabpanel"/></ol>').appendTo('#qunit-fixture')
 
     $(pillsHTML).find('li:last-child button').bootstrapTab('show')
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile')
@@ -115,7 +115,7 @@ $(function () {
                       '<button type="button" data-target="#profile" role="tab">Profile</a>' +
                     '</nav>'
 
-    $('<div><div id="home" role="tabpanel"></div><div id="profile" role="tabpanel"></div></div>').appendTo('#qunit-fixture')
+    $('<div><div id="home" role="tabpanel"/><div id="profile" role="tabpanel"/></div>').appendTo('#qunit-fixture')
 
     $(tabsHTML).find('button:last-child').bootstrapTab('show')
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile')
@@ -131,7 +131,7 @@ $(function () {
                       '<button type="button" data-target="#profile" role="tab">Profile</button>' +
                     '</div>'
 
-    $('<div><div id="home" role="tabpanel"></div><div id="profile" role="tabpanel"></div></div>').appendTo('#qunit-fixture')
+    $('<div><div id="home" role="tabpanel"/><div id="profile" role="tabpanel"/></div>').appendTo('#qunit-fixture')
 
     $(tabsHTML).find('button:last-child').bootstrapTab('show')
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile')
@@ -144,7 +144,7 @@ $(function () {
     assert.expect(1)
     var done = assert.async()
 
-    $('<div class="nav"></div>')
+    $('<div class="nav"/>')
       .on('show.bs.tab', function (e) {
         e.preventDefault()
         assert.ok(true, 'show event fired')
@@ -204,8 +204,8 @@ $(function () {
         '  <li class="nav-item" role="presentation"><button type="button" data-target="#profile" class="nav-link" role="tab" aria-selected="false">Profile</button></li>' +
         '</ul>' +
         '<div class="tab-content">' +
-        '  <div class="tab-pane active" id="home" role="tabpanel"></div>' +
-        '  <div class="tab-pane" id="profile" role="tabpanel"></div>' +
+        '  <div class="tab-pane active" id="home" role="tabpanel"/>' +
+        '  <div class="tab-pane" id="profile" role="tabpanel"/>' +
         '</div>'
 
     $(tabsHTML)
