@@ -209,7 +209,7 @@ $(function () {
         '</div>'
 
     $(tabsHTML)
-      .find('ul > li:last-child button')
+      .find('li:last-child button')
       .on('show.bs.tab', function (e) {
         assert.strictEqual(e.relatedTarget.getAttribute('data-target'), '#home', 'references correct element as relatedTarget')
       })
@@ -328,8 +328,8 @@ $(function () {
   QUnit.test('selected tab should deactivate previous selected tab', function (assert) {
     assert.expect(2)
     var tabsHTML = '<ul class="nav nav-tabs" role="tablist">' +
-        '<li class="nav-item"><button type="button" data-target="#home" role="tab">Home</button></li>' +
-        '<li class="nav-item"><button type="button" data-target="#profile" role="tab">Profile</button></li>' +
+        '<li class="nav-item"><button type="button" data-target="#home" role="tab" data-toggle="tab">Home</button></li>' +
+        '<li class="nav-item"><button type="button" data-target="#profile" role="tab" data-toggle="tab">Profile</button></li>' +
         '</ul>'
     var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
 
