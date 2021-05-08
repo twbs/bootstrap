@@ -11,14 +11,14 @@ import { emulateTransitionEnd, execute, getTransitionDurationFromElement, reflow
 const Default = {
   isVisible: true, // if false, we use the backdrop helper without adding any element to the dom
   isAnimated: false,
-  rootElement: document.body, // give the choice to place backdrop under different elements
+  rootElement: () => document.body, // give the choice to place backdrop under different elements
   clickCallback: null
 }
 
 const DefaultType = {
   isVisible: 'boolean',
   isAnimated: 'boolean',
-  rootElement: 'element',
+  rootElement: '(function|element)',
   clickCallback: '(function|null)'
 }
 const NAME = 'backdrop'
@@ -98,10 +98,16 @@ class Backdrop {
       return
     }
 
-    this._config.rootElement.appendChild(this._getElement())
+    let { rootElement, clickCallback } = this._config
+
+    if (typeof rootElement === 'function') {
+      rootElement = rootElement()
+    }
+
+    rootElement.appendChild(this._getElement())
 
     EventHandler.on(this._getElement(), EVENT_MOUSEDOWN, () => {
-      execute(this._config.clickCallback)
+      execute(clickCallback)
     })
 
     this._isAppended = true
