@@ -12,7 +12,7 @@
       <a class="btn btn-lg btn-outline-primary mb-3" href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/">Read installation docs</a>
     </div>
     <div class="col-md-7 ps-md-5">
-      {{ highlight "npm install bootstrap@next" "sh" "" }}
+      {{ highlight "npm install bootstrap" "sh" "" }}
       {{ highlight (printf ("gem install bootstrap -v %s") .Site.Params.current_ruby_version) "sh" "" }}
     </div>
   </section>

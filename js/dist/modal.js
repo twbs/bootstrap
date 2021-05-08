@@ -1,17 +1,16 @@
 /*!
-  * Bootstrap modal.js v5.0.0-beta3 (https://getbootstrap.com/)
+  * Bootstrap modal.js v5.0.0 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js'), require('./base-component.js')) :
-  typeof define === 'function' && define.amd ? define(['./dom/data', './dom/event-handler', './dom/manipulator', './dom/selector-engine', './base-component'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Modal = factory(global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine, global.Base));
-}(this, (function (Data, EventHandler, Manipulator, SelectorEngine, BaseComponent) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js'), require('./base-component.js')) :
+  typeof define === 'function' && define.amd ? define(['./dom/event-handler', './dom/manipulator', './dom/selector-engine', './base-component'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Modal = factory(global.EventHandler, global.Manipulator, global.SelectorEngine, global.Base));
+}(this, (function (EventHandler, Manipulator, SelectorEngine, BaseComponent) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-  var Data__default = /*#__PURE__*/_interopDefaultLegacy(Data);
   var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
   var Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
   var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
@@ -19,7 +18,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-beta3): util/index.js
+   * Bootstrap (v5.0.0): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -49,7 +48,7 @@
 
 
       if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
-        hrefAttr = '#' + hrefAttr.split('#')[1];
+        hrefAttr = `#${hrefAttr.split('#')[1]}`;
       }
 
       selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
@@ -117,7 +116,7 @@
       const valueType = value && isElement(value) ? 'element' : toType(value);
 
       if (!new RegExp(expectedTypes).test(valueType)) {
-        throw new TypeError(`${componentName.toUpperCase()}: ` + `Option "${property}" provided type "${valueType}" ` + `but expected type "${expectedTypes}".`);
+        throw new TypeError(`${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`);
       }
     });
   };
@@ -178,9 +177,217 @@
     });
   };
 
+  const execute = callback => {
+    if (typeof callback === 'function') {
+      callback();
+    }
+  };
+
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-beta3): modal.js
+   * Bootstrap (v5.0.0): util/scrollBar.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */
+  const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top';
+  const SELECTOR_STICKY_CONTENT = '.sticky-top';
+
+  const getWidth = () => {
+    // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
+    const documentWidth = document.documentElement.clientWidth;
+    return Math.abs(window.innerWidth - documentWidth);
+  };
+
+  const hide = (width = getWidth()) => {
+    _disableOverFlow(); // give padding to element to balances the hidden scrollbar width
+
+
+    _setElementAttributes('body', 'paddingRight', calculatedValue => calculatedValue + width); // trick: We adjust positive paddingRight and negative marginRight to sticky-top elements, to keep shown fullwidth
+
+
+    _setElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight', calculatedValue => calculatedValue + width);
+
+    _setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - width);
+  };
+
+  const _disableOverFlow = () => {
+    const actualValue = document.body.style.overflow;
+
+    if (actualValue) {
+      Manipulator__default['default'].setDataAttribute(document.body, 'overflow', actualValue);
+    }
+
+    document.body.style.overflow = 'hidden';
+  };
+
+  const _setElementAttributes = (selector, styleProp, callback) => {
+    const scrollbarWidth = getWidth();
+    SelectorEngine__default['default'].find(selector).forEach(element => {
+      if (element !== document.body && window.innerWidth > element.clientWidth + scrollbarWidth) {
+        return;
+      }
+
+      const actualValue = element.style[styleProp];
+      const calculatedValue = window.getComputedStyle(element)[styleProp];
+      Manipulator__default['default'].setDataAttribute(element, styleProp, actualValue);
+      element.style[styleProp] = `${callback(Number.parseFloat(calculatedValue))}px`;
+    });
+  };
+
+  const reset = () => {
+    _resetElementAttributes('body', 'overflow');
+
+    _resetElementAttributes('body', 'paddingRight');
+
+    _resetElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight');
+
+    _resetElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight');
+  };
+
+  const _resetElementAttributes = (selector, styleProp) => {
+    SelectorEngine__default['default'].find(selector).forEach(element => {
+      const value = Manipulator__default['default'].getDataAttribute(element, styleProp);
+
+      if (typeof value === 'undefined') {
+        element.style.removeProperty(styleProp);
+      } else {
+        Manipulator__default['default'].removeDataAttribute(element, styleProp);
+        element.style[styleProp] = value;
+      }
+    });
+  };
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap (v5.0.0): util/backdrop.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * --------------------------------------------------------------------------
+   */
+  const Default$1 = {
+    isVisible: true,
+    // if false, we use the backdrop helper without adding any element to the dom
+    isAnimated: false,
+    rootElement: document.body,
+    // give the choice to place backdrop under different elements
+    clickCallback: null
+  };
+  const DefaultType$1 = {
+    isVisible: 'boolean',
+    isAnimated: 'boolean',
+    rootElement: 'element',
+    clickCallback: '(function|null)'
+  };
+  const NAME$1 = 'backdrop';
+  const CLASS_NAME_BACKDROP = 'modal-backdrop';
+  const CLASS_NAME_FADE$1 = 'fade';
+  const CLASS_NAME_SHOW$1 = 'show';
+  const EVENT_MOUSEDOWN = `mousedown.bs.${NAME$1}`;
+
+  class Backdrop {
+    constructor(config) {
+      this._config = this._getConfig(config);
+      this._isAppended = false;
+      this._element = null;
+    }
+
+    show(callback) {
+      if (!this._config.isVisible) {
+        execute(callback);
+        return;
+      }
+
+      this._append();
+
+      if (this._config.isAnimated) {
+        reflow(this._getElement());
+      }
+
+      this._getElement().classList.add(CLASS_NAME_SHOW$1);
+
+      this._emulateAnimation(() => {
+        execute(callback);
+      });
+    }
+
+    hide(callback) {
+      if (!this._config.isVisible) {
+        execute(callback);
+        return;
+      }
+
+      this._getElement().classList.remove(CLASS_NAME_SHOW$1);
+
+      this._emulateAnimation(() => {
+        this.dispose();
+        execute(callback);
+      });
+    } // Private
+
+
+    _getElement() {
+      if (!this._element) {
+        const backdrop = document.createElement('div');
+        backdrop.className = CLASS_NAME_BACKDROP;
+
+        if (this._config.isAnimated) {
+          backdrop.classList.add(CLASS_NAME_FADE$1);
+        }
+
+        this._element = backdrop;
+      }
+
+      return this._element;
+    }
+
+    _getConfig(config) {
+      config = { ...Default$1,
+        ...(typeof config === 'object' ? config : {})
+      };
+      typeCheckConfig(NAME$1, config, DefaultType$1);
+      return config;
+    }
+
+    _append() {
+      if (this._isAppended) {
+        return;
+      }
+
+      this._config.rootElement.appendChild(this._getElement());
+
+      EventHandler__default['default'].on(this._getElement(), EVENT_MOUSEDOWN, () => {
+        execute(this._config.clickCallback);
+      });
+      this._isAppended = true;
+    }
+
+    dispose() {
+      if (!this._isAppended) {
+        return;
+      }
+
+      EventHandler__default['default'].off(this._element, EVENT_MOUSEDOWN);
+
+      this._getElement().parentNode.removeChild(this._element);
+
+      this._isAppended = false;
+    }
+
+    _emulateAnimation(callback) {
+      if (!this._config.isAnimated) {
+        execute(callback);
+        return;
+      }
+
+      const backdropTransitionDuration = getTransitionDurationFromElement(this._getElement());
+      EventHandler__default['default'].one(this._getElement(), 'transitionend', () => execute(callback));
+      emulateTransitionEnd(this._getElement(), backdropTransitionDuration);
+    }
+
+  }
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap (v5.0.0): modal.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -217,8 +424,6 @@
   const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY}`;
   const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`;
   const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
-  const CLASS_NAME_SCROLLBAR_MEASURER = 'modal-scrollbar-measure';
-  const CLASS_NAME_BACKDROP = 'modal-backdrop';
   const CLASS_NAME_OPEN = 'modal-open';
   const CLASS_NAME_FADE = 'fade';
   const CLASS_NAME_SHOW = 'show';
@@ -227,8 +432,6 @@
   const SELECTOR_MODAL_BODY = '.modal-body';
   const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="modal"]';
   const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="modal"]';
-  const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top';
-  const SELECTOR_STICKY_CONTENT = '.sticky-top';
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -240,12 +443,10 @@
       super(element);
       this._config = this._getConfig(config);
       this._dialog = SelectorEngine__default['default'].findOne(SELECTOR_DIALOG, this._element);
-      this._backdrop = null;
+      this._backdrop = this._initializeBackDrop();
       this._isShown = false;
-      this._isBodyOverflowing = false;
       this._ignoreBackdropClick = false;
       this._isTransitioning = false;
-      this._scrollbarWidth = 0;
     } // Getters
 
 
@@ -280,10 +481,8 @@
       }
 
       this._isShown = true;
-
-      this._checkScrollbar();
-
-      this._setScrollbar();
+      hide();
+      document.body.classList.add(CLASS_NAME_OPEN);
 
       this._adjustDialog();
 
@@ -347,7 +546,7 @@
     }
 
     dispose() {
-      [window, this._element, this._dialog].forEach(htmlElement => EventHandler__default['default'].off(htmlElement, EVENT_KEY));
+      [window, this._dialog].forEach(htmlElement => EventHandler__default['default'].off(htmlElement, EVENT_KEY));
       super.dispose();
       /**
        * `document` has 2 events `EVENT_FOCUSIN` and `EVENT_CLICK_DATA_API`
@@ -358,12 +557,13 @@
       EventHandler__default['default'].off(document, EVENT_FOCUSIN);
       this._config = null;
       this._dialog = null;
+
+      this._backdrop.dispose();
+
       this._backdrop = null;
       this._isShown = null;
-      this._isBodyOverflowing = null;
       this._ignoreBackdropClick = null;
       this._isTransitioning = null;
-      this._scrollbarWidth = null;
     }
 
     handleUpdate() {
@@ -371,8 +571,17 @@
     } // Private
 
 
+    _initializeBackDrop() {
+      return new Backdrop({
+        isVisible: Boolean(this._config.backdrop),
+        // 'static' option will be translated to true, and booleans will keep their value
+        isAnimated: this._isAnimated()
+      });
+    }
+
     _getConfig(config) {
       config = { ...Default,
+        ...Manipulator__default['default'].getDataAttributes(this._element),
         ...config
       };
       typeCheckConfig(NAME, config, DefaultType);
@@ -477,85 +686,35 @@
 
       this._isTransitioning = false;
 
-      this._showBackdrop(() => {
+      this._backdrop.hide(() => {
         document.body.classList.remove(CLASS_NAME_OPEN);
 
         this._resetAdjustments();
 
-        this._resetScrollbar();
-
+        reset();
         EventHandler__default['default'].trigger(this._element, EVENT_HIDDEN);
       });
     }
 
-    _removeBackdrop() {
-      this._backdrop.parentNode.removeChild(this._backdrop);
-
-      this._backdrop = null;
-    }
-
     _showBackdrop(callback) {
-      const isAnimated = this._isAnimated();
-
-      if (this._isShown && this._config.backdrop) {
-        this._backdrop = document.createElement('div');
-        this._backdrop.className = CLASS_NAME_BACKDROP;
-
-        if (isAnimated) {
-          this._backdrop.classList.add(CLASS_NAME_FADE);
-        }
-
-        document.body.appendChild(this._backdrop);
-        EventHandler__default['default'].on(this._element, EVENT_CLICK_DISMISS, event => {
-          if (this._ignoreBackdropClick) {
-            this._ignoreBackdropClick = false;
-            return;
-          }
-
-          if (event.target !== event.currentTarget) {
-            return;
-          }
-
-          if (this._config.backdrop === 'static') {
-            this._triggerBackdropTransition();
-          } else {
-            this.hide();
-          }
-        });
-
-        if (isAnimated) {
-          reflow(this._backdrop);
-        }
-
-        this._backdrop.classList.add(CLASS_NAME_SHOW);
-
-        if (!isAnimated) {
-          callback();
+      EventHandler__default['default'].on(this._element, EVENT_CLICK_DISMISS, event => {
+        if (this._ignoreBackdropClick) {
+          this._ignoreBackdropClick = false;
           return;
         }
 
-        const backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop);
-        EventHandler__default['default'].one(this._backdrop, 'transitionend', callback);
-        emulateTransitionEnd(this._backdrop, backdropTransitionDuration);
-      } else if (!this._isShown && this._backdrop) {
-        this._backdrop.classList.remove(CLASS_NAME_SHOW);
-
-        const callbackRemove = () => {
-          this._removeBackdrop();
-
-          callback();
-        };
-
-        if (isAnimated) {
-          const backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop);
-          EventHandler__default['default'].one(this._backdrop, 'transitionend', callbackRemove);
-          emulateTransitionEnd(this._backdrop, backdropTransitionDuration);
-        } else {
-          callbackRemove();
+        if (event.target !== event.currentTarget) {
+          return;
         }
-      } else {
-        callback();
-      }
+
+        if (this._config.backdrop === true) {
+          this.hide();
+        } else if (this._config.backdrop === 'static') {
+          this._triggerBackdropTransition();
+        }
+      });
+
+      this._backdrop.show(callback);
     }
 
     _isAnimated() {
@@ -599,103 +758,37 @@
 
     _adjustDialog() {
       const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
+      const scrollbarWidth = getWidth();
+      const isBodyOverflowing = scrollbarWidth > 0;
 
-      if (!this._isBodyOverflowing && isModalOverflowing && !isRTL() || this._isBodyOverflowing && !isModalOverflowing && isRTL()) {
-        this._element.style.paddingLeft = `${this._scrollbarWidth}px`;
+      if (!isBodyOverflowing && isModalOverflowing && !isRTL() || isBodyOverflowing && !isModalOverflowing && isRTL()) {
+        this._element.style.paddingLeft = `${scrollbarWidth}px`;
       }
 
-      if (this._isBodyOverflowing && !isModalOverflowing && !isRTL() || !this._isBodyOverflowing && isModalOverflowing && isRTL()) {
-        this._element.style.paddingRight = `${this._scrollbarWidth}px`;
+      if (isBodyOverflowing && !isModalOverflowing && !isRTL() || !isBodyOverflowing && isModalOverflowing && isRTL()) {
+        this._element.style.paddingRight = `${scrollbarWidth}px`;
       }
     }
 
     _resetAdjustments() {
       this._element.style.paddingLeft = '';
       this._element.style.paddingRight = '';
-    }
-
-    _checkScrollbar() {
-      const rect = document.body.getBoundingClientRect();
-      this._isBodyOverflowing = Math.round(rect.left + rect.right) < window.innerWidth;
-      this._scrollbarWidth = this._getScrollbarWidth();
-    }
-
-    _setScrollbar() {
-      if (this._isBodyOverflowing) {
-        this._setElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight', calculatedValue => calculatedValue + this._scrollbarWidth);
-
-        this._setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - this._scrollbarWidth);
-
-        this._setElementAttributes('body', 'paddingRight', calculatedValue => calculatedValue + this._scrollbarWidth);
-      }
-
-      document.body.classList.add(CLASS_NAME_OPEN);
-    }
-
-    _setElementAttributes(selector, styleProp, callback) {
-      SelectorEngine__default['default'].find(selector).forEach(element => {
-        if (element !== document.body && window.innerWidth > element.clientWidth + this._scrollbarWidth) {
-          return;
-        }
-
-        const actualValue = element.style[styleProp];
-        const calculatedValue = window.getComputedStyle(element)[styleProp];
-        Manipulator__default['default'].setDataAttribute(element, styleProp, actualValue);
-        element.style[styleProp] = callback(Number.parseFloat(calculatedValue)) + 'px';
-      });
-    }
-
-    _resetScrollbar() {
-      this._resetElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight');
-
-      this._resetElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight');
-
-      this._resetElementAttributes('body', 'paddingRight');
-    }
-
-    _resetElementAttributes(selector, styleProp) {
-      SelectorEngine__default['default'].find(selector).forEach(element => {
-        const value = Manipulator__default['default'].getDataAttribute(element, styleProp);
-
-        if (typeof value === 'undefined' && element === document.body) {
-          element.style[styleProp] = '';
-        } else {
-          Manipulator__default['default'].removeDataAttribute(element, styleProp);
-          element.style[styleProp] = value;
-        }
-      });
-    }
-
-    _getScrollbarWidth() {
-      // thx d.walsh
-      const scrollDiv = document.createElement('div');
-      scrollDiv.className = CLASS_NAME_SCROLLBAR_MEASURER;
-      document.body.appendChild(scrollDiv);
-      const scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
-      document.body.removeChild(scrollDiv);
-      return scrollbarWidth;
     } // Static
 
 
     static jQueryInterface(config, relatedTarget) {
       return this.each(function () {
-        let data = Data__default['default'].get(this, DATA_KEY);
-        const _config = { ...Default,
-          ...Manipulator__default['default'].getDataAttributes(this),
-          ...(typeof config === 'object' && config ? config : {})
-        };
+        const data = Modal.getInstance(this) || new Modal(this, typeof config === 'object' ? config : {});
 
-        if (!data) {
-          data = new Modal(this, _config);
+        if (typeof config !== 'string') {
+          return;
         }
 
-        if (typeof config === 'string') {
-          if (typeof data[config] === 'undefined') {
-            throw new TypeError(`No method named "${config}"`);
-          }
-
-          data[config](relatedTarget);
+        if (typeof data[config] === 'undefined') {
+          throw new TypeError(`No method named "${config}"`);
         }
+
+        data[config](relatedTarget);
       });
     }
 
@@ -710,7 +803,7 @@
   EventHandler__default['default'].on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
     const target = getElementFromSelector(this);
 
-    if (this.tagName === 'A' || this.tagName === 'AREA') {
+    if (['A', 'AREA'].includes(this.tagName)) {
       event.preventDefault();
     }
 
@@ -726,15 +819,7 @@
         }
       });
     });
-    let data = Data__default['default'].get(target, DATA_KEY);
-
-    if (!data) {
-      const config = { ...Manipulator__default['default'].getDataAttributes(target),
-        ...Manipulator__default['default'].getDataAttributes(this)
-      };
-      data = new Modal(target, config);
-    }
-
+    const data = Modal.getInstance(target) || new Modal(target);
     data.toggle(this);
   });
   /**
