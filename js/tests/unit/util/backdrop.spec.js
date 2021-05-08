@@ -102,6 +102,24 @@ describe('Backdrop', () => {
         done()
       })
     })
+
+    it('should allow rootElement to be defined as a function', done => {
+      fixtureEl.innerHTML = [
+        '<div id="wrapper">',
+        '</div>'
+      ].join('')
+
+      const wrapper = fixtureEl.querySelector('#wrapper')
+      const instance = new Backdrop({
+        isVisible: true,
+        rootElement: () => wrapper
+      })
+      const getElement = () => document.querySelector(CLASS_BACKDROP)
+      instance.show(() => {
+        expect(getElement().parentElement).toEqual(wrapper)
+        done()
+      })
+    })
   })
 
   describe('hide', () => {
