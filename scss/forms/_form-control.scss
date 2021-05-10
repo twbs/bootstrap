@@ -25,7 +25,7 @@
   &[type="file"] {
     overflow: hidden; // prevent pseudo element button overlap
 
-    &:not(:disabled):not(:read-only) {
+    &:not(:disabled) {
       cursor: pointer;
     }
   }
@@ -88,7 +88,7 @@
     @include transition($btn-transition);
   }
 
-  &:hover:not(:disabled):not(:read-only)::file-selector-button {
+  &:hover:not(:disabled)::file-selector-button {
     background-color: $form-file-button-hover-bg;
   }
 
@@ -107,7 +107,7 @@
     @include transition($btn-transition);
   }
 
-  &:hover:not(:disabled):not(:read-only)::-webkit-file-upload-button {
+  &:hover:not(:disabled)::-webkit-file-upload-button {
     background-color: $form-file-button-hover-bg;
   }
 }
@@ -203,7 +203,7 @@ textarea {
   height: auto; // Override fixed browser height
   padding: $input-padding-y;
 
-  &:not(:disabled):not(:read-only) {
+  &:not(:disabled) {
     cursor: pointer;
   }
 
