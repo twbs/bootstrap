@@ -180,6 +180,7 @@ describe('Offcanvas', () => {
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl, { scroll: false })
+      const initialOverFlow = document.body.style.overflow
 
       offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
         expect(document.body.style.overflow).toEqual('hidden')
@@ -187,7 +188,7 @@ describe('Offcanvas', () => {
         offCanvas.hide()
       })
       offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
-        expect(document.body.style.overflow).not.toEqual('hidden')
+        expect(document.body.style.overflow).toEqual(initialOverFlow)
         done()
       })
       offCanvas.show()
