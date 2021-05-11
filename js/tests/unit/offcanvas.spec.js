@@ -560,7 +560,7 @@ describe('Offcanvas', () => {
 
       jQueryMock.fn.offcanvas.call(jQueryMock)
 
-      expect(Offcanvas.getInstance(div)).toBeDefined()
+      expect(Offcanvas.getInstance(div)).not.toBeNull()
     })
 
     it('should not re create an offcanvas', () => {
@@ -678,7 +678,7 @@ describe('Offcanvas', () => {
       expect(Offcanvas.prototype.constructor).not.toHaveBeenCalledWith(div, { scroll: true })
 
       const offcanvas = Offcanvas.getInstance(div)
-      expect(offcanvas).toBeDefined()
+      expect(offcanvas).not.toBeNull()
       expect(offcanvas._config.scroll).toBe(true)
     })
   })
@@ -699,7 +699,7 @@ describe('Offcanvas', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Offcanvas.getInstance(div)).toEqual(null)
+      expect(Offcanvas.getInstance(div)).toBeNull()
     })
   })
 })

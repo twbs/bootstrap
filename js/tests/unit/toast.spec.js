@@ -472,7 +472,7 @@ describe('Toast', () => {
 
       const toast = new Toast(toastEl)
 
-      expect(Toast.getInstance(toastEl)).toBeDefined()
+      expect(Toast.getInstance(toastEl)).not.toBeNull()
       expect(toastEl.addEventListener).toHaveBeenCalledWith('click', jasmine.any(Function), jasmine.any(Boolean))
 
       toast.dispose()
@@ -494,7 +494,7 @@ describe('Toast', () => {
       const toast = new Toast(toastEl)
       const expected = () => {
         expect(toastEl.classList.contains('show')).toEqual(true)
-        expect(Toast.getInstance(toastEl)).toBeDefined()
+        expect(Toast.getInstance(toastEl)).not.toBeNull()
 
         toast.dispose()
 
@@ -523,7 +523,7 @@ describe('Toast', () => {
 
       jQueryMock.fn.toast.call(jQueryMock)
 
-      expect(Toast.getInstance(div)).toBeDefined()
+      expect(Toast.getInstance(div)).not.toBeNull()
     })
 
     it('should not re create a toast', () => {

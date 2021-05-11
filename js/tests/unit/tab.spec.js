@@ -368,7 +368,7 @@ describe('Tab', () => {
 
       jQueryMock.fn.tab.call(jQueryMock)
 
-      expect(Tab.getInstance(div)).toBeDefined()
+      expect(Tab.getInstance(div)).not.toBeNull()
     })
 
     it('should not re create a tab', () => {
