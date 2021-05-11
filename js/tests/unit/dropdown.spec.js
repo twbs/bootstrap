@@ -1587,7 +1587,7 @@ describe('Dropdown', () => {
       triggerDropdown.click()
     })
 
-    it('should not close the dropdown if the user clicks on a text field', done => {
+    it('should not close the dropdown if the user clicks on a text field within dropdown-menu', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -1613,7 +1613,7 @@ describe('Dropdown', () => {
       triggerDropdown.click()
     })
 
-    it('should not close the dropdown if the user clicks on a textarea', done => {
+    it('should not close the dropdown if the user clicks on a textarea within dropdown-menu', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -1634,6 +1634,32 @@ describe('Dropdown', () => {
       triggerDropdown.addEventListener('shown.bs.dropdown', () => {
         expect(triggerDropdown.classList.contains('show')).toEqual(true, 'dropdown menu is shown')
         textarea.dispatchEvent(createEvent('click'))
+      })
+
+      triggerDropdown.click()
+    })
+
+    it('should close the dropdown if the user clicks on a text field that is not contained within dropdown-menu', done => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '  </div>',
+        '</div>',
+        '<input type="text">'
+      ]
+
+      const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const input = fixtureEl.querySelector('input')
+
+      triggerDropdown.addEventListener('hidden.bs.dropdown', () => {
+        done()
+      })
+
+      triggerDropdown.addEventListener('shown.bs.dropdown', () => {
+        input.dispatchEvent(createEvent('click', {
+          bubbles: true
+        }))
       })
 
       triggerDropdown.click()
