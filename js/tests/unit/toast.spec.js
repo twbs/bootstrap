@@ -1,7 +1,7 @@
 import Toast from '../../src/toast'
 
 /** Test helpers */
-import { getFixture, clearFixture, jQueryMock } from '../helpers/fixture'
+import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
 
 describe('Toast', () => {
   let fixtureEl
@@ -207,6 +207,182 @@ describe('Toast', () => {
       }, toast._config.delay / 2)
 
       spyOn(toast, '_clearTimeout').and.callThrough()
+
+      toast.show()
+    })
+
+    it('should clear timeout if toast is interacted with mouse', done => {
+      fixtureEl.innerHTML = [
+        '<div class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toast = new Toast(toastEl)
+      const spy = spyOn(toast, '_clearTimeout').and.callThrough()
+
+      setTimeout(() => {
+        spy.calls.reset()
+
+        toastEl.addEventListener('mouseover', () => {
+          expect(toast._clearTimeout).toHaveBeenCalledTimes(1)
+          expect(toast._timeout).toBeNull()
+          done()
+        })
+
+        const mouseOverEvent = createEvent('mouseover')
+        toastEl.dispatchEvent(mouseOverEvent)
+      }, toast._config.delay / 2)
+
+      toast.show()
+    })
+
+    it('should clear timeout if toast is interacted with keyboard', done => {
+      fixtureEl.innerHTML = [
+        '<button id="outside-focusable">outside focusable</button>',
+        '<div class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '    <button>with a button</button>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toast = new Toast(toastEl)
+      const spy = spyOn(toast, '_clearTimeout').and.callThrough()
+
+      setTimeout(() => {
+        spy.calls.reset()
+
+        toastEl.addEventListener('focusin', () => {
+          expect(toast._clearTimeout).toHaveBeenCalledTimes(1)
+          expect(toast._timeout).toBeNull()
+          done()
+        })
+
+        const insideFocusable = toastEl.querySelector('button')
+        insideFocusable.focus()
+      }, toast._config.delay / 2)
+
+      toast.show()
+    })
+
+    it('should still auto hide after being interacted with mouse and keyboard', done => {
+      fixtureEl.innerHTML = [
+        '<button id="outside-focusable">outside focusable</button>',
+        '<div class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '    <button>with a button</button>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toast = new Toast(toastEl)
+
+      setTimeout(() => {
+        toastEl.addEventListener('mouseover', () => {
+          const insideFocusable = toastEl.querySelector('button')
+          insideFocusable.focus()
+        })
+
+        toastEl.addEventListener('focusin', () => {
+          const mouseOutEvent = createEvent('mouseout')
+          toastEl.dispatchEvent(mouseOutEvent)
+        })
+
+        toastEl.addEventListener('mouseout', () => {
+          const outsideFocusable = document.getElementById('outside-focusable')
+          outsideFocusable.focus()
+        })
+
+        toastEl.addEventListener('focusout', () => {
+          expect(toast._timeout).not.toBeNull()
+          done()
+        })
+
+        const mouseOverEvent = createEvent('mouseover')
+        toastEl.dispatchEvent(mouseOverEvent)
+      }, toast._config.delay / 2)
+
+      toast.show()
+    })
+
+    it('should not auto hide if focus leaves but mouse pointer remains inside', done => {
+      fixtureEl.innerHTML = [
+        '<button id="outside-focusable">outside focusable</button>',
+        '<div class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '    <button>with a button</button>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toast = new Toast(toastEl)
+
+      setTimeout(() => {
+        toastEl.addEventListener('mouseover', () => {
+          const insideFocusable = toastEl.querySelector('button')
+          insideFocusable.focus()
+        })
+
+        toastEl.addEventListener('focusin', () => {
+          const outsideFocusable = document.getElementById('outside-focusable')
+          outsideFocusable.focus()
+        })
+
+        toastEl.addEventListener('focusout', () => {
+          expect(toast._timeout).toBeNull()
+          done()
+        })
+
+        const mouseOverEvent = createEvent('mouseover')
+        toastEl.dispatchEvent(mouseOverEvent)
+      }, toast._config.delay / 2)
+
+      toast.show()
+    })
+
+    it('should not auto hide if mouse pointer leaves but focus remains inside', done => {
+      fixtureEl.innerHTML = [
+        '<button id="outside-focusable">outside focusable</button>',
+        '<div class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '    <button>with a button</button>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toast = new Toast(toastEl)
+
+      setTimeout(() => {
+        toastEl.addEventListener('mouseover', () => {
+          const insideFocusable = toastEl.querySelector('button')
+          insideFocusable.focus()
+        })
+
+        toastEl.addEventListener('focusin', () => {
+          const mouseOutEvent = createEvent('mouseout')
+          toastEl.dispatchEvent(mouseOutEvent)
+        })
+
+        toastEl.addEventListener('mouseout', () => {
+          expect(toast._timeout).toBeNull()
+          done()
+        })
+
+        const mouseOverEvent = createEvent('mouseover')
+        toastEl.dispatchEvent(mouseOverEvent)
+      }, toast._config.delay / 2)
 
       toast.show()
     })
