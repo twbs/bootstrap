@@ -93,8 +93,8 @@ class Modal extends BaseComponent {
     return Default
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -183,6 +183,7 @@ class Modal extends BaseComponent {
     [window, this._dialog]
       .forEach(htmlElement => EventHandler.off(htmlElement, EVENT_KEY))
 
+    this._backdrop.dispose()
     super.dispose()
 
     /**
@@ -191,14 +192,6 @@ class Modal extends BaseComponent {
      * It will remove `EVENT_CLICK_DATA_API` event that should remain
      */
     EventHandler.off(document, EVENT_FOCUSIN)
-
-    this._config = null
-    this._dialog = null
-    this._backdrop.dispose()
-    this._backdrop = null
-    this._isShown = null
-    this._ignoreBackdropClick = null
-    this._isTransitioning = null
   }
 
   handleUpdate() {
@@ -448,6 +441,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Modal to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Modal)
+defineJQueryPlugin(Modal)
 
 export default Modal

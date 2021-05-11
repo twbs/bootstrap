@@ -127,8 +127,8 @@ class Carousel extends BaseComponent {
     return Default
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -211,18 +211,6 @@ class Carousel extends BaseComponent {
       ORDER_PREV
 
     this._slide(order, this._items[index])
-  }
-
-  dispose() {
-    this._items = null
-    this._config = null
-    this._interval = null
-    this._isPaused = null
-    this._isSliding = null
-    this._activeElement = null
-    this._indicatorsElement = null
-
-    super.dispose()
   }
 
   // Private
@@ -610,6 +598,6 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  * add .Carousel to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Carousel)
+defineJQueryPlugin(Carousel)
 
 export default Carousel

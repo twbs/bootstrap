@@ -155,16 +155,8 @@ class Tooltip extends BaseComponent {
     return NAME
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
-  }
-
   static get Event() {
     return Event
-  }
-
-  static get EVENT_KEY() {
-    return EVENT_KEY
   }
 
   static get DefaultType() {
@@ -219,17 +211,10 @@ class Tooltip extends BaseComponent {
       this.tip.parentNode.removeChild(this.tip)
     }
 
-    this._isEnabled = null
-    this._timeout = null
-    this._hoverState = null
-    this._activeTrigger = null
     if (this._popper) {
       this._popper.destroy()
     }
 
-    this._popper = null
-    this.config = null
-    this.tip = null
     super.dispose()
   }
 
@@ -781,6 +766,6 @@ class Tooltip extends BaseComponent {
  * add .Tooltip to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Tooltip)
+defineJQueryPlugin(Tooltip)
 
 export default Tooltip

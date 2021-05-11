@@ -105,8 +105,8 @@ class Collapse extends BaseComponent {
     return Default
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -253,14 +253,6 @@ class Collapse extends BaseComponent {
     this._isTransitioning = isTransitioning
   }
 
-  dispose() {
-    super.dispose()
-    this._config = null
-    this._parent = null
-    this._triggerArray = null
-    this._isTransitioning = null
-  }
-
   // Private
 
   _getConfig(config) {
@@ -398,6 +390,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Collapse to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Collapse)
+defineJQueryPlugin(Collapse)
 
 export default Collapse

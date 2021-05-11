@@ -78,12 +78,12 @@ class Offcanvas extends BaseComponent {
 
   // Getters
 
-  static get Default() {
-    return Default
+  static get NAME() {
+    return NAME
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get Default() {
+    return Default
   }
 
   // Public
@@ -162,9 +162,6 @@ class Offcanvas extends BaseComponent {
     this._backdrop.dispose()
     super.dispose()
     EventHandler.off(document, EVENT_FOCUSIN)
-
-    this._config = null
-    this._backdrop = null
   }
 
   // Private
@@ -274,6 +271,6 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  * ------------------------------------------------------------------------
  */
 
-defineJQueryPlugin(NAME, Offcanvas)
+defineJQueryPlugin(Offcanvas)
 
 export default Offcanvas
