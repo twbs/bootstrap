@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): modal.js
+ * Bootstrap (v5.0.0): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -176,14 +176,7 @@ class Modal extends BaseComponent {
     EventHandler.off(this._element, EVENT_CLICK_DISMISS)
     EventHandler.off(this._dialog, EVENT_MOUSEDOWN_DISMISS)
 
-    if (isAnimated) {
-      const transitionDuration = getTransitionDurationFromElement(this._element)
-
-      EventHandler.one(this._element, 'transitionend', event => this._hideModal(event))
-      emulateTransitionEnd(this._element, transitionDuration)
-    } else {
-      this._hideModal()
-    }
+    this._queueCallback(() => this._hideModal(), this._element, isAnimated)
   }
 
   dispose() {
@@ -271,14 +264,7 @@ class Modal extends BaseComponent {
       })
     }
 
-    if (isAnimated) {
-      const transitionDuration = getTransitionDurationFromElement(this._dialog)
-
-      EventHandler.one(this._dialog, 'transitionend', transitionComplete)
-      emulateTransitionEnd(this._dialog, transitionDuration)
-    } else {
-      transitionComplete()
-    }
+    this._queueCallback(transitionComplete, this._dialog, isAnimated)
   }
 
   _enforceFocus() {

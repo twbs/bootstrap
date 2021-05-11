@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): dropdown.js
+ * Bootstrap (v5.0.0): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -75,7 +75,8 @@ const Default = {
   boundary: 'clippingParents',
   reference: 'toggle',
   display: 'dynamic',
-  popperConfig: null
+  popperConfig: null,
+  autoClose: true
 }
 
 const DefaultType = {
@@ -83,7 +84,8 @@ const DefaultType = {
   boundary: '(string|element)',
   reference: '(string|element|object)',
   display: 'string',
-  popperConfig: '(null|object|function)'
+  popperConfig: '(null|object|function)',
+  autoClose: '(boolean|string)'
 }
 
 /**
@@ -127,9 +129,8 @@ class Dropdown extends BaseComponent {
 
     const isActive = this._element.classList.contains(CLASS_NAME_SHOW)
 
-    Dropdown.clearMenus()
-
     if (isActive) {
+      this.hide()
       return
     }
 
@@ -424,7 +425,7 @@ class Dropdown extends BaseComponent {
 
     for (let i = 0, len = toggles.length; i < len; i++) {
       const context = Data.get(toggles[i], DATA_KEY)
-      if (!context) {
+      if (!context || context._config.autoClose === false) {
         continue
       }
 
@@ -437,8 +438,13 @@ class Dropdown extends BaseComponent {
       }
 
       if (event) {
-        // Don't close the menu if the clicked element or one of its parents is the dropdown button
-        if ([context._element].some(element => event.composedPath().includes(element))) {
+        const composedPath = event.composedPath()
+        const isMenuTarget = composedPath.includes(context._menu)
+        if (
+          composedPath.includes(context._element) ||
+          (context._config.autoClose === 'inside' && !isMenuTarget) ||
+          (context._config.autoClose === 'outside' && isMenuTarget)
+        ) {
           continue
         }
 

@@ -216,18 +216,17 @@ describe('Dropdown', () => {
       const firstDropdownEl = fixtureEl.querySelector('.first')
       const secondDropdownEl = fixtureEl.querySelector('.second')
       const dropdown1 = new Dropdown(btnDropdown1)
-      const dropdown2 = new Dropdown(btnDropdown2)
 
       firstDropdownEl.addEventListener('shown.bs.dropdown', () => {
         expect(btnDropdown1.classList.contains('show')).toEqual(true)
         spyOn(dropdown1._popper, 'destroy')
-        dropdown2.toggle()
+        btnDropdown2.click()
       })
 
-      secondDropdownEl.addEventListener('shown.bs.dropdown', () => {
+      secondDropdownEl.addEventListener('shown.bs.dropdown', () => setTimeout(() => {
         expect(dropdown1._popper.destroy).toHaveBeenCalled()
         done()
-      })
+      }))
 
       dropdown1.toggle()
     })
@@ -1103,6 +1102,47 @@ describe('Dropdown', () => {
       dropdown.show()
     })
 
+    it('should not collapse the dropdown when clicking a select option nested in the dropdown', done => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <select>',
+        '      <option selected>Open this select menu</option>',
+        '      <option value="1">One</option>',
+        '    </select>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
+      const dropdown = new Dropdown(btnDropdown)
+
+      const hideSpy = spyOn(dropdown, '_completeHide')
+
+      btnDropdown.addEventListener('shown.bs.dropdown', () => {
+        const clickEvent = new MouseEvent('click', {
+          bubbles: true
+        })
+
+        dropdownMenu.querySelector('option').dispatchEvent(clickEvent)
+      })
+
+      dropdownMenu.addEventListener('click', event => {
+        expect(event.target.tagName).toMatch(/select|option/i)
+
+        Dropdown.clearMenus(event)
+
+        setTimeout(() => {
+          expect(hideSpy).not.toHaveBeenCalled()
+          done()
+        }, 10)
+      })
+
+      dropdown.show()
+    })
+
     it('should manage bs attribute `data-bs-popper`="none" when dropdown is in navbar', done => {
       fixtureEl.innerHTML = [
         '<nav class="navbar navbar-expand-md navbar-light bg-light">',
@@ -1738,6 +1778,100 @@ describe('Dropdown', () => {
       toggle.focus()
       toggle.dispatchEvent(keydownEscape)
       toggle.dispatchEvent(keyupEscape)
+    })
+
+    it('should close dropdown (only) by clicking inside the dropdown menu when it has data-attribute `data-bs-auto-close="inside"`', done => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="inside">Dropdown toggle</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Dropdown item</a>',
+        ' </div>',
+        '</div>'
+      ]
+
+      const dropdownToggle = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
+
+      const expectDropdownToBeOpened = () => setTimeout(() => {
+        expect(dropdownToggle.classList.contains('show')).toEqual(true)
+        dropdownMenu.click()
+      }, 150)
+
+      dropdownToggle.addEventListener('shown.bs.dropdown', () => {
+        document.documentElement.click()
+        expectDropdownToBeOpened()
+      })
+
+      dropdownToggle.addEventListener('hidden.bs.dropdown', () => setTimeout(() => {
+        expect(dropdownToggle.classList.contains('show')).toEqual(false)
+        done()
+      }))
+
+      dropdownToggle.click()
+    })
+
+    it('should close dropdown (only) by clicking outside the dropdown menu when it has data-attribute `data-bs-auto-close="outside"`', done => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">Dropdown toggle</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Dropdown item</a>',
+        ' </div>',
+        '</div>'
+      ]
+
+      const dropdownToggle = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
+
+      const expectDropdownToBeOpened = () => setTimeout(() => {
+        expect(dropdownToggle.classList.contains('show')).toEqual(true)
+        document.documentElement.click()
+      }, 150)
+
+      dropdownToggle.addEventListener('shown.bs.dropdown', () => {
+        dropdownMenu.click()
+        expectDropdownToBeOpened()
+      })
+
+      dropdownToggle.addEventListener('hidden.bs.dropdown', () => {
+        expect(dropdownToggle.classList.contains('show')).toEqual(false)
+        done()
+      })
+
+      dropdownToggle.click()
+    })
+
+    it('should not close dropdown by clicking inside or outside the dropdown menu when it has data-attribute `data-bs-auto-close="false"`', done => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false">Dropdown toggle</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Dropdown item</a>',
+        ' </div>',
+        '</div>'
+      ]
+
+      const dropdownToggle = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
+
+      const expectDropdownToBeOpened = (shouldTriggerClick = true) => setTimeout(() => {
+        expect(dropdownToggle.classList.contains('show')).toEqual(true)
+        if (shouldTriggerClick) {
+          document.documentElement.click()
+        } else {
+          done()
+        }
+
+        expectDropdownToBeOpened(false)
+      }, 150)
+
+      dropdownToggle.addEventListener('shown.bs.dropdown', () => {
+        dropdownMenu.click()
+        expectDropdownToBeOpened()
+      })
+
+      dropdownToggle.click()
     })
   })
 

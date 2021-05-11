@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): dom/event-handler.js
+ * Bootstrap (v5.0.0): dom/event-handler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -170,7 +170,7 @@ function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
   if (customEventsRegex.test(originalTypeEvent)) {
     const wrapFn = fn => {
       return function (event) {
-        if (!event.relatedTarget || (event.relatedTarget !== event.delegateTarget && event.relatedTarget.contains(event.delegateTarget))) {
+        if (!event.relatedTarget || (event.relatedTarget !== event.delegateTarget && !event.delegateTarget.contains(event.relatedTarget))) {
           return fn.call(this, event)
         }
       }
