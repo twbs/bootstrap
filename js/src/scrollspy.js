@@ -137,16 +137,8 @@ class ScrollSpy extends BaseComponent {
   }
 
   dispose() {
-    super.dispose()
     EventHandler.off(this._scrollElement, EVENT_KEY)
-
-    this._scrollElement = null
-    this._config = null
-    this._selector = null
-    this._offsets = null
-    this._targets = null
-    this._activeTarget = null
-    this._scrollHeight = null
+    super.dispose()
   }
 
   // Private

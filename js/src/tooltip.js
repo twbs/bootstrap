@@ -219,17 +219,10 @@ class Tooltip extends BaseComponent {
       this.tip.parentNode.removeChild(this.tip)
     }
 
-    this._isEnabled = null
-    this._timeout = null
-    this._hoverState = null
-    this._activeTrigger = null
     if (this._popper) {
       this._popper.destroy()
     }
 
-    this._popper = null
-    this.config = null
-    this.tip = null
     super.dispose()
   }
 

@@ -213,18 +213,6 @@ class Carousel extends BaseComponent {
     this._slide(order, this._items[index])
   }
 
-  dispose() {
-    this._items = null
-    this._config = null
-    this._interval = null
-    this._isPaused = null
-    this._isSliding = null
-    this._activeElement = null
-    this._indicatorsElement = null
-
-    super.dispose()
-  }
-
   // Private
 
   _getConfig(config) {

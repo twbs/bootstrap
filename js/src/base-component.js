@@ -36,7 +36,10 @@ class BaseComponent {
   dispose() {
     Data.remove(this._element, this.constructor.DATA_KEY)
     EventHandler.off(this._element, `.${this.constructor.DATA_KEY}`)
-    this._element = null
+
+    Object.getOwnPropertyNames(this).forEach(propertyName => {
+      this[propertyName] = null
+    })
   }
 
   _queueCallback(callback, element, isAnimated = true) {
