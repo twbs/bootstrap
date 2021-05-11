@@ -7,9 +7,7 @@
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
   getElementFromSelector,
-  getTransitionDurationFromElement,
   isDisabled,
   isVisible,
   typeCheckConfig
@@ -124,9 +122,7 @@ class Offcanvas extends BaseComponent {
       EventHandler.trigger(this._element, EVENT_SHOWN, { relatedTarget })
     }
 
-    const transitionDuration = getTransitionDurationFromElement(this._element)
-    EventHandler.one(this._element, 'transitionend', completeCallBack)
-    emulateTransitionEnd(this._element, transitionDuration)
+    this._queueCallback(completeCallBack, this._element, true)
   }
 
   hide() {
@@ -159,9 +155,7 @@ class Offcanvas extends BaseComponent {
       EventHandler.trigger(this._element, EVENT_HIDDEN)
     }
 
-    const transitionDuration = getTransitionDurationFromElement(this._element)
-    EventHandler.one(this._element, 'transitionend', completeCallback)
-    emulateTransitionEnd(this._element, transitionDuration)
+    this._queueCallback(completeCallback, this._element, true)
   }
 
   dispose() {

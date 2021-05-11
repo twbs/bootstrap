@@ -7,9 +7,7 @@
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
-  getElementFromSelector,
-  getTransitionDurationFromElement
+  getElementFromSelector
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
@@ -75,15 +73,8 @@ class Alert extends BaseComponent {
   _removeElement(element) {
     element.classList.remove(CLASS_NAME_SHOW)
 
-    if (!element.classList.contains(CLASS_NAME_FADE)) {
-      this._destroyElement(element)
-      return
-    }
-
-    const transitionDuration = getTransitionDurationFromElement(element)
-
-    EventHandler.one(element, 'transitionend', () => this._destroyElement(element))
-    emulateTransitionEnd(element, transitionDuration)
+    const isAnimated = element.classList.contains(CLASS_NAME_FADE)
+    this._queueCallback(() => this._destroyElement(element), element, isAnimated)
   }
 
   _destroyElement(element) {

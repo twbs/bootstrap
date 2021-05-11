@@ -143,7 +143,7 @@ Need both LTR and RTL on the same page? Thanks to [RTLCSS String Maps](https://r
 ```scss
 /* rtl:begin:options: {
   "autoRename": true,
-  "stringMap":[
+  "stringMap":[ {
     "name": "ltr-rtl",
     "priority": 100,
     "search": ["ltr"],
@@ -152,7 +152,7 @@ Need both LTR and RTL on the same page? Thanks to [RTLCSS String Maps](https://r
       "scope": "*",
       "ignoreCase": false
     }
-  ]
+  } ]
 } */
 .ltr {
   @import "../node_modules/bootstrap/scss/bootstrap";
