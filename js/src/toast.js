@@ -7,8 +7,6 @@
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
-  getTransitionDurationFromElement,
   reflow,
   typeCheckConfig
 } from './util/index'
@@ -112,14 +110,8 @@ class Toast extends BaseComponent {
     this._element.classList.remove(CLASS_NAME_HIDE)
     reflow(this._element)
     this._element.classList.add(CLASS_NAME_SHOWING)
-    if (this._config.animation) {
-      const transitionDuration = getTransitionDurationFromElement(this._element)
 
-      EventHandler.one(this._element, 'transitionend', complete)
-      emulateTransitionEnd(this._element, transitionDuration)
-    } else {
-      complete()
-    }
+    this._queueCallback(complete, this._element, this._config.animation)
   }
 
   hide() {
@@ -139,14 +131,7 @@ class Toast extends BaseComponent {
     }
 
     this._element.classList.remove(CLASS_NAME_SHOW)
-    if (this._config.animation) {
-      const transitionDuration = getTransitionDurationFromElement(this._element)
-
-      EventHandler.one(this._element, 'transitionend', complete)
-      emulateTransitionEnd(this._element, transitionDuration)
-    } else {
-      complete()
-    }
+    this._queueCallback(complete, this._element, this._config.animation)
   }
 
   dispose() {

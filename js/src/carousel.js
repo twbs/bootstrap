@@ -7,9 +7,7 @@
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
   getElementFromSelector,
-  getTransitionDurationFromElement,
   isRTL,
   isVisible,
   reflow,
@@ -454,6 +452,15 @@ class Carousel extends BaseComponent {
     this._setActiveIndicatorElement(nextElement)
     this._activeElement = nextElement
 
+    const triggerSlidEvent = () => {
+      EventHandler.trigger(this._element, EVENT_SLID, {
+        relatedTarget: nextElement,
+        direction: eventDirectionName,
+        from: activeElementIndex,
+        to: nextElementIndex
+      })
+    }
+
     if (this._element.classList.contains(CLASS_NAME_SLIDE)) {
       nextElement.classList.add(orderClassName)
 
@@ -462,9 +469,7 @@ class Carousel extends BaseComponent {
       activeElement.classList.add(directionalClassName)
       nextElement.classList.add(directionalClassName)
 
-      const transitionDuration = getTransitionDurationFromElement(activeElement)
-
-      EventHandler.one(activeElement, 'transitionend', () => {
+      const completeCallBack = () => {
         nextElement.classList.remove(directionalClassName, orderClassName)
         nextElement.classList.add(CLASS_NAME_ACTIVE)
 
@@ -472,28 +477,16 @@ class Carousel extends BaseComponent {
 
         this._isSliding = false
 
-        setTimeout(() => {
-          EventHandler.trigger(this._element, EVENT_SLID, {
-            relatedTarget: nextElement,
-            direction: eventDirectionName,
-            from: activeElementIndex,
-            to: nextElementIndex
-          })
-        }, 0)
-      })
+        setTimeout(triggerSlidEvent, 0)
+      }
 
-      emulateTransitionEnd(activeElement, transitionDuration)
+      this._queueCallback(completeCallBack, activeElement, true)
     } else {
       activeElement.classList.remove(CLASS_NAME_ACTIVE)
       nextElement.classList.add(CLASS_NAME_ACTIVE)
 
       this._isSliding = false
-      EventHandler.trigger(this._element, EVENT_SLID, {
-        relatedTarget: nextElement,
-        direction: eventDirectionName,
-        from: activeElementIndex,
-        to: nextElementIndex
-      })
+      triggerSlidEvent()
     }
 
     if (isCycling) {
