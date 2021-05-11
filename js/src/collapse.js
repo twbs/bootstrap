@@ -253,14 +253,6 @@ class Collapse extends BaseComponent {
     this._isTransitioning = isTransitioning
   }
 
-  dispose() {
-    super.dispose()
-    this._config = null
-    this._parent = null
-    this._triggerArray = null
-    this._isTransitioning = null
-  }
-
   // Private
 
   _getConfig(config) {

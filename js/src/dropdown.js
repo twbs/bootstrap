@@ -217,11 +217,8 @@ class Dropdown extends BaseComponent {
   }
 
   dispose() {
-    this._menu = null
-
     if (this._popper) {
       this._popper.destroy()
-      this._popper = null
     }
 
     super.dispose()
