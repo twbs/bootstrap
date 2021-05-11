@@ -127,8 +127,8 @@ class Carousel extends BaseComponent {
     return Default
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -598,6 +598,6 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  * add .Carousel to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Carousel)
+defineJQueryPlugin(Carousel)
 
 export default Carousel

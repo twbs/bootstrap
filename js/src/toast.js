@@ -81,8 +81,8 @@ class Toast extends BaseComponent {
     return Default
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -243,6 +243,6 @@ class Toast extends BaseComponent {
  * add .Toast to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Toast)
+defineJQueryPlugin(Toast)
 
 export default Toast
