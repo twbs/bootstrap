@@ -7,9 +7,7 @@
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
   getElementFromSelector,
-  getTransitionDurationFromElement,
   isDisabled,
   reflow
 } from './util/index'
@@ -57,8 +55,8 @@ const SELECTOR_DROPDOWN_ACTIVE_CHILD = ':scope > .dropdown-menu .active'
 class Tab extends BaseComponent {
   // Getters
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -125,11 +123,8 @@ class Tab extends BaseComponent {
     const complete = () => this._transitionComplete(element, active, callback)
 
     if (active && isTransitioning) {
-      const transitionDuration = getTransitionDurationFromElement(active)
       active.classList.remove(CLASS_NAME_SHOW)
-
-      EventHandler.one(active, 'transitionend', complete)
-      emulateTransitionEnd(active, transitionDuration)
+      this._queueCallback(complete, element, true)
     } else {
       complete()
     }
@@ -225,6 +220,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Tab to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Tab)
+defineJQueryPlugin(Tab)
 
 export default Tab

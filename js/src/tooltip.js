@@ -9,9 +9,7 @@ import * as Popper from '@popperjs/core'
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
   findShadowRoot,
-  getTransitionDurationFromElement,
   getUID,
   isElement,
   isRTL,
@@ -157,16 +155,8 @@ class Tooltip extends BaseComponent {
     return NAME
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
-  }
-
   static get Event() {
     return Event
-  }
-
-  static get EVENT_KEY() {
-    return EVENT_KEY
   }
 
   static get DefaultType() {
@@ -221,17 +211,10 @@ class Tooltip extends BaseComponent {
       this.tip.parentNode.removeChild(this.tip)
     }
 
-    this._isEnabled = null
-    this._timeout = null
-    this._hoverState = null
-    this._activeTrigger = null
     if (this._popper) {
       this._popper.destroy()
     }
 
-    this._popper = null
-    this.config = null
-    this.tip = null
     super.dispose()
   }
 
@@ -315,13 +298,8 @@ class Tooltip extends BaseComponent {
       }
     }
 
-    if (this.tip.classList.contains(CLASS_NAME_FADE)) {
-      const transitionDuration = getTransitionDurationFromElement(this.tip)
-      EventHandler.one(this.tip, 'transitionend', complete)
-      emulateTransitionEnd(this.tip, transitionDuration)
-    } else {
-      complete()
-    }
+    const isAnimated = this.tip.classList.contains(CLASS_NAME_FADE)
+    this._queueCallback(complete, this.tip, isAnimated)
   }
 
   hide() {
@@ -367,15 +345,8 @@ class Tooltip extends BaseComponent {
     this._activeTrigger[TRIGGER_FOCUS] = false
     this._activeTrigger[TRIGGER_HOVER] = false
 
-    if (this.tip.classList.contains(CLASS_NAME_FADE)) {
-      const transitionDuration = getTransitionDurationFromElement(tip)
-
-      EventHandler.one(tip, 'transitionend', complete)
-      emulateTransitionEnd(tip, transitionDuration)
-    } else {
-      complete()
-    }
-
+    const isAnimated = this.tip.classList.contains(CLASS_NAME_FADE)
+    this._queueCallback(complete, this.tip, isAnimated)
     this._hoverState = ''
   }
 
@@ -795,6 +766,6 @@ class Tooltip extends BaseComponent {
  * add .Tooltip to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Tooltip)
+defineJQueryPlugin(Tooltip)
 
 export default Tooltip

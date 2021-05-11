@@ -169,7 +169,7 @@ toc: true
 
 ### Accordion
 
-- Added [new accordion component]({{< docsref "/components/accordion" >}})!
+- Added [new accordion component]({{< docsref "/components/accordion" >}}).
 
 ### Alerts
 
@@ -195,7 +195,7 @@ toc: true
 
 ### Buttons
 
-- <span class="badge bg-danger">Breaking</span> **[Toggle buttons](http://getbootstrap.com/docs/5.0/forms/checks-radios/#toggle-buttons), with checkboxes or radios, no longer require JavaScript and have new markup.** We no long require a wrapping element, add `.btn-check` to the `<input>`, and pair it with any `.btn` classes on the `<label>`. [See #30650](https://github.com/twbs/bootstrap/pull/30650). _The docs for this has moved from our Buttons page to the new Forms section._
+- <span class="badge bg-danger">Breaking</span> **[Toggle buttons](http://getbootstrap.com/docs/5.0/forms/checks-radios/#toggle-buttons), with checkboxes or radios, no longer require JavaScript and have new markup.** We no longer require a wrapping element, add `.btn-check` to the `<input>`, and pair it with any `.btn` classes on the `<label>`. [See #30650](https://github.com/twbs/bootstrap/pull/30650). _The docs for this has moved from our Buttons page to the new Forms section._
 
 - <span class="badge bg-danger">Breaking</span> **Dropped `.btn-block` for utilities.** Instead of using `.btn-block` on the `.btn`, wrap your buttons with `.d-grid` and a `.gap-*` utility to space them as needed. Switch to responsive classes for even more control over them. [Read the docs for some examples.](http://getbootstrap.com/docs/5.0/components/buttons/#block-buttons)
 
@@ -305,7 +305,7 @@ toc: true
 
 ## Utilities
 
-- <span class="badge bg-danger">Breaking</span> Renamed several utilities to use logical property names instead of directoinal names with the addition of RTL support:
+- <span class="badge bg-danger">Breaking</span> Renamed several utilities to use logical property names instead of directional names with the addition of RTL support:
   - Renamed `.left-*` and `.right-*` to `.start-*` and `.end-*`.
   - Renamed `.float-left` and `.float-right` to `.float-start` and `.float-end`.
   - Renamed `.border-left` and `.border-right` to `.border-start` and `.border-end`.

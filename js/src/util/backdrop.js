@@ -89,6 +89,8 @@ class Backdrop {
       ...Default,
       ...(typeof config === 'object' ? config : {})
     }
+
+    config.rootElement = config.rootElement || document.body
     typeCheckConfig(NAME, config, DefaultType)
     return config
   }

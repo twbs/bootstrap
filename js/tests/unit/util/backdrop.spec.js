@@ -73,35 +73,6 @@ describe('Backdrop', () => {
         done()
       })
     })
-
-    it('Should be appended on "document.body" by default', done => {
-      const instance = new Backdrop({
-        isVisible: true
-      })
-      const getElement = () => document.querySelector(CLASS_BACKDROP)
-      instance.show(() => {
-        expect(getElement().parentElement).toEqual(document.body)
-        done()
-      })
-    })
-
-    it('Should appended on any element given by the proper config', done => {
-      fixtureEl.innerHTML = [
-        '<div id="wrapper">',
-        '</div>'
-      ].join('')
-
-      const wrapper = fixtureEl.querySelector('#wrapper')
-      const instance = new Backdrop({
-        isVisible: true,
-        rootElement: wrapper
-      })
-      const getElement = () => document.querySelector(CLASS_BACKDROP)
-      instance.show(() => {
-        expect(getElement().parentElement).toEqual(wrapper)
-        done()
-      })
-    })
   })
 
   describe('hide', () => {
@@ -234,6 +205,49 @@ describe('Backdrop', () => {
       instance.show()
       instance.hide(() => {
         expect(spy).not.toHaveBeenCalled()
+        done()
+      })
+    })
+  })
+
+  describe('rootElement initialization', () => {
+    it('Should be appended on "document.body" by default', done => {
+      const instance = new Backdrop({
+        isVisible: true
+      })
+      const getElement = () => document.querySelector(CLASS_BACKDROP)
+      instance.show(() => {
+        expect(getElement().parentElement).toEqual(document.body)
+        done()
+      })
+    })
+
+    it('Should default parent element to "document.body" when config value is null', done => {
+      const instance = new Backdrop({
+        isVisible: true,
+        rootElement: null
+      })
+      const getElement = () => document.querySelector(CLASS_BACKDROP)
+      instance.show(() => {
+        expect(getElement().parentElement).toEqual(document.body)
+        done()
+      })
+    })
+
+    it('Should appended on any element given by the proper config', done => {
+      fixtureEl.innerHTML = [
+        '<div id="wrapper">',
+        '</div>'
+      ].join('')
+
+      const wrapper = fixtureEl.querySelector('#wrapper')
+      const instance = new Backdrop({
+        isVisible: true,
+        rootElement: wrapper
+      })
+      const getElement = () => document.querySelector(CLASS_BACKDROP)
+      instance.show(() => {
+        expect(getElement().parentElement).toEqual(wrapper)
         done()
       })
     })
