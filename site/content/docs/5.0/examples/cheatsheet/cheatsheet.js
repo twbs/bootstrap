@@ -41,6 +41,11 @@
     }
 
     var link = document.querySelector('.bd-aside a[href="' + hash + '"]')
+
+    if (!link) {
+      return
+    }
+
     var active = document.querySelector('.bd-aside .active')
     var parent = link.parentNode.parentNode.previousElementSibling
 
