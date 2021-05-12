@@ -1653,6 +1653,7 @@ describe('Dropdown', () => {
       const input = fixtureEl.querySelector('input')
 
       triggerDropdown.addEventListener('hidden.bs.dropdown', () => {
+        expect().nothing()
         done()
       })
 
