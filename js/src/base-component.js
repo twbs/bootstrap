@@ -9,6 +9,7 @@ import Data from './dom/data'
 import {
   emulateTransitionEnd,
   execute,
+  getElement,
   getTransitionDurationFromElement
 } from './util/index'
 import EventHandler from './dom/event-handler'
@@ -23,7 +24,7 @@ const VERSION = '5.0.0'
 
 class BaseComponent {
   constructor(element) {
-    element = typeof element === 'string' ? document.querySelector(element) : element
+    element = getElement(element)
 
     if (!element) {
       return

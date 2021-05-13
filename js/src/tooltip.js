@@ -10,6 +10,7 @@ import * as Popper from '@popperjs/core'
 import {
   defineJQueryPlugin,
   findShadowRoot,
+  getElement,
   getUID,
   isElement,
   isRTL,
@@ -256,7 +257,7 @@ class Tooltip extends BaseComponent {
     const attachment = this._getAttachment(placement)
     this._addAttachmentClass(attachment)
 
-    const container = this._getContainer()
+    const { container } = this._config
     Data.set(tip, this.constructor.DATA_KEY, this)
 
     if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
@@ -385,10 +386,8 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    if (typeof content === 'object' && isElement(content)) {
-      if (content.jquery) {
-        content = content[0]
-      }
+    if (isElement(content)) {
+      content = getElement(content)
 
       // content is a DOM node or a jQuery
       if (this._config.html) {
@@ -516,18 +515,6 @@ class Tooltip extends BaseComponent {
 
   _addAttachmentClass(attachment) {
     this.getTipElement().classList.add(`${CLASS_PREFIX}-${this.updateAttachment(attachment)}`)
-  }
-
-  _getContainer() {
-    if (this._config.container === false) {
-      return document.body
-    }
-
-    if (isElement(this._config.container)) {
-      return this._config.container
-    }
-
-    return SelectorEngine.findOne(this._config.container)
   }
 
   _getAttachment(placement) {
@@ -664,15 +651,13 @@ class Tooltip extends BaseComponent {
       }
     })
 
-    if (config && typeof config.container === 'object' && config.container.jquery) {
-      config.container = config.container[0]
-    }
-
     config = {
       ...this.constructor.Default,
       ...dataAttributes,
       ...(typeof config === 'object' && config ? config : {})
     }
+
+    config.container = config.container === false ? document.body : getElement(config.container)
 
     if (typeof config.delay === 'number') {
       config.delay = {

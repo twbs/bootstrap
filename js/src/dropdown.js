@@ -9,6 +9,7 @@ import * as Popper from '@popperjs/core'
 
 import {
   defineJQueryPlugin,
+  getElement,
   getElementFromSelector,
   isDisabled,
   isElement,
@@ -166,12 +167,7 @@ class Dropdown extends BaseComponent {
       if (this._config.reference === 'parent') {
         referenceElement = parent
       } else if (isElement(this._config.reference)) {
-        referenceElement = this._config.reference
-
-        // Check if it's jQuery element
-        if (typeof this._config.reference.jquery !== 'undefined') {
-          referenceElement = this._config.reference[0]
-        }
+        referenceElement = getElement(this._config.reference)
       } else if (typeof this._config.reference === 'object') {
         referenceElement = this._config.reference
       }
