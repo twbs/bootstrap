@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -55,7 +55,7 @@
   ga('send', 'pageview');
 </script>
 <script async src="https://www.google-analytics.com/analytics.js"></script>
-<script src="https://cdn.usefathom.com/script.js" data-site="TAXRUMOF" defer></script>
+<script defer src="https://cdn.usefathom.com/script.js" data-site="TAXRUMOF"></script>
 
 
   </head>
@@ -138,7 +138,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -394,7 +394,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -417,7 +417,7 @@
         <li><a href="#buttons">Buttons</a></li>
         <li><a href="#card">Card</a></li>
         <li><a href="#carousel">Carousel</a></li>
-        <li><a href="#close-buttton">Close buttton</a></li>
+        <li><a href="#close-button">Close button</a></li>
         <li><a href="#collapse">Collapse</a></li>
         <li><a href="#dropdowns">Dropdowns</a></li>
         <li><a href="#jumbotron">Jumbotron</a></li>
@@ -438,10 +438,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="dependencies">Dependencies</h2>
 <ul>
@@ -455,10 +455,9 @@
 <li>Dropped Internet Explorer 10 and 11</li>
 <li>Dropped Microsoft Edge &lt; 16 (Legacy Edge)</li>
 <li>Dropped Firefox &lt; 60</li>
-<li>Dropped Safari &lt; 10</li>
-<li>Dropped iOS Safari &lt; 10</li>
+<li>Dropped Safari &lt; 12</li>
+<li>Dropped iOS Safari &lt; 12</li>
 <li>Dropped Chrome &lt; 60</li>
-<li>Dropped Android &lt; 6</li>
 </ul>
 <hr class="my-5">
 <h2 id="documentation-changes">Documentation changes</h2>
@@ -663,7 +662,7 @@
 </ul>
 <h3 id="accordion">Accordion</h3>
 <ul>
-<li>Added [new accordion component](/docs/5.0/components/accordion/!</li>
+<li>Added <a href="/docs/5.0/components/accordion/">new accordion component</a>.</li>
 </ul>
 <h3 id="alerts">Alerts</h3>
 <ul>
@@ -701,7 +700,7 @@
 <h3 id="buttons">Buttons</h3>
 <ul>
 <li>
-<p><span class="badge bg-danger">Breaking</span> <strong><a href="http://getbootstrap.com/docs/5.0/forms/checks-radios/#toggle-buttons">Toggle buttons</a>, with checkboxes or radios, no longer require JavaScript and have new markup.</strong> We no long require a wrapping element, add <code>.btn-check</code> to the <code>&lt;input&gt;</code>, and pair it with any <code>.btn</code> classes on the <code>&lt;label&gt;</code>. <a href="https://github.com/twbs/bootstrap/pull/30650">See #30650</a>. <em>The docs for this has moved from our Buttons page to the new Forms section.</em></p>
+<p><span class="badge bg-danger">Breaking</span> <strong><a href="http://getbootstrap.com/docs/5.0/forms/checks-radios/#toggle-buttons">Toggle buttons</a>, with checkboxes or radios, no longer require JavaScript and have new markup.</strong> We no longer require a wrapping element, add <code>.btn-check</code> to the <code>&lt;input&gt;</code>, and pair it with any <code>.btn</code> classes on the <code>&lt;label&gt;</code>. <a href="https://github.com/twbs/bootstrap/pull/30650">See #30650</a>. <em>The docs for this has moved from our Buttons page to the new Forms section.</em></p>
 </li>
 <li>
 <p><span class="badge bg-danger">Breaking</span> <strong>Dropped <code>.btn-block</code> for utilities.</strong> Instead of using <code>.btn-block</code> on the <code>.btn</code>, wrap your buttons with <code>.d-grid</code> and a <code>.gap-*</code> utility to space them as needed. Switch to responsive classes for even more control over them. <a href="http://getbootstrap.com/docs/5.0/components/buttons/#block-buttons">Read the docs for some examples.</a></p>
@@ -737,7 +736,7 @@
 <p>Replaced chevron icons for carousel controls with new SVGs from <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>.</p>
 </li>
 </ul>
-<h3 id="close-buttton">Close buttton</h3>
+<h3 id="close-button">Close button</h3>
 <ul>
 <li>
 <p><span class="badge bg-danger">Breaking</span> Renamed <code>.close</code> to <code>.btn-close</code> for a less generic name.</p>
@@ -854,7 +853,7 @@
 <h2 id="utilities">Utilities</h2>
 <ul>
 <li>
-<p><span class="badge bg-danger">Breaking</span> Renamed several utilities to use logical property names instead of directoinal names with the addition of RTL support:</p>
+<p><span class="badge bg-danger">Breaking</span> Renamed several utilities to use logical property names instead of directional names with the addition of RTL support:</p>
 <ul>
 <li>Renamed <code>.left-*</code> and <code>.right-*</code> to <code>.start-*</code> and <code>.end-*</code>.</li>
 <li>Renamed <code>.float-left</code> and <code>.float-right</code> to <code>.float-start</code> and <code>.float-end</code>.</li>
@@ -974,7 +973,7 @@
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.0.</li>
+          <li class="mb-2">Currently v5.0.1.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1021,7 +1020,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -1029,7 +1028,7 @@
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>
