@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): dropdown.js
+ * Bootstrap (v5.0.0): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -75,7 +75,8 @@ const Default = {
   boundary: 'clippingParents',
   reference: 'toggle',
   display: 'dynamic',
-  popperConfig: null
+  popperConfig: null,
+  autoClose: true
 }
 
 const DefaultType = {
@@ -83,7 +84,8 @@ const DefaultType = {
   boundary: '(string|element)',
   reference: '(string|element|object)',
   display: 'string',
-  popperConfig: '(null|object|function)'
+  popperConfig: '(null|object|function)',
+  autoClose: '(boolean|string)'
 }
 
 /**
@@ -114,8 +116,8 @@ class Dropdown extends BaseComponent {
     return DefaultType
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -127,9 +129,8 @@ class Dropdown extends BaseComponent {
 
     const isActive = this._element.classList.contains(CLASS_NAME_SHOW)
 
-    Dropdown.clearMenus()
-
     if (isActive) {
+      this.hide()
       return
     }
 
@@ -216,11 +217,8 @@ class Dropdown extends BaseComponent {
   }
 
   dispose() {
-    this._menu = null
-
     if (this._popper) {
       this._popper.destroy()
-      this._popper = null
     }
 
     super.dispose()
@@ -410,21 +408,15 @@ class Dropdown extends BaseComponent {
   }
 
   static clearMenus(event) {
-    if (event) {
-      if (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY)) {
-        return
-      }
-
-      if (/input|select|option|textarea|form/i.test(event.target.tagName)) {
-        return
-      }
+    if (event && (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY))) {
+      return
     }
 
     const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
 
     for (let i = 0, len = toggles.length; i < len; i++) {
       const context = Data.get(toggles[i], DATA_KEY)
-      if (!context) {
+      if (!context || context._config.autoClose === false) {
         continue
       }
 
@@ -437,13 +429,18 @@ class Dropdown extends BaseComponent {
       }
 
       if (event) {
-        // Don't close the menu if the clicked element or one of its parents is the dropdown button
-        if ([context._element].some(element => event.composedPath().includes(element))) {
+        const composedPath = event.composedPath()
+        const isMenuTarget = composedPath.includes(context._menu)
+        if (
+          composedPath.includes(context._element) ||
+          (context._config.autoClose === 'inside' && !isMenuTarget) ||
+          (context._config.autoClose === 'outside' && isMenuTarget)
+        ) {
           continue
         }
 
-        // Tab navigation through the dropdown menu shouldn't close the menu
-        if (event.type === 'keyup' && event.key === TAB_KEY && context._menu.contains(event.target)) {
+        // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
+        if (context._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) || /input|select|option|textarea|form/i.test(event.target.tagName))) {
           continue
         }
 
@@ -533,6 +530,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Dropdown to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Dropdown)
+defineJQueryPlugin(Dropdown)
 
 export default Dropdown

@@ -58,7 +58,6 @@
 }
 
 .accordion-item {
-  margin-bottom: -$accordion-border-width;
   background-color: $accordion-bg;
   border: $accordion-border-width solid $accordion-border-color;
 
@@ -70,9 +69,12 @@
     }
   }
 
+  &:not(:first-of-type) {
+    border-top: 0;
+  }
+
   // Only set a border-radius on the last item if the accordion is collapsed
   &:last-of-type {
-    margin-bottom: 0;
     @include border-bottom-radius($accordion-border-radius);
 
     .accordion-button {

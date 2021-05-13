@@ -3,7 +3,7 @@ import EventHandler from '../../src/dom/event-handler'
 import { getWidth as getScrollBarWidth } from '../../src/util/scrollbar'
 
 /** Test helpers */
-import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
+import { clearBodyAndDocument, clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Modal', () => {
   let fixtureEl
@@ -14,11 +14,8 @@ describe('Modal', () => {
 
   afterEach(() => {
     clearFixture()
-
+    clearBodyAndDocument()
     document.body.classList.remove('modal-open')
-    document.documentElement.removeAttribute('style')
-    document.body.removeAttribute('style')
-    document.body.removeAttribute('data-bs-padding-right')
 
     document.querySelectorAll('.modal-backdrop')
       .forEach(backdrop => {
@@ -27,9 +24,7 @@ describe('Modal', () => {
   })
 
   beforeEach(() => {
-    document.documentElement.removeAttribute('style')
-    document.body.removeAttribute('style')
-    document.body.removeAttribute('data-bs-padding-right')
+    clearBodyAndDocument()
   })
 
   describe('VERSION', () => {
@@ -100,10 +95,11 @@ describe('Modal', () => {
       const originalPadding = Number.parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
+      const scrollBarWidth = getScrollBarWidth()
 
       modalEl.addEventListener('shown.bs.modal', () => {
-        const expectedPadding = originalPadding + getScrollBarWidth()
-        const currentPadding = Number.parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
+        const expectedPadding = originalPadding + scrollBarWidth
+        const currentPadding = Number.parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
 
         expect(fixedEl.getAttribute('data-bs-padding-right')).toEqual(`${originalPadding}px`, 'original fixed element padding should be stored in data-bs-padding-right')
         expect(currentPadding).toEqual(expectedPadding, 'fixed element padding should be adjusted while opening')
@@ -111,7 +107,7 @@ describe('Modal', () => {
       })
 
       modalEl.addEventListener('hidden.bs.modal', () => {
-        const currentPadding = Number.parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
+        const currentPadding = Number.parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
 
         expect(fixedEl.hasAttribute('data-bs-padding-right')).toEqual(false, 'data-bs-padding-right should be cleared after closing')
         expect(currentPadding).toEqual(originalPadding, 'fixed element padding should be reset after closing')
@@ -134,9 +130,10 @@ describe('Modal', () => {
       const originalMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
+      const scrollBarWidth = getScrollBarWidth()
 
       modalEl.addEventListener('shown.bs.modal', () => {
-        const expectedMargin = originalMargin - getScrollBarWidth()
+        const expectedMargin = originalMargin - scrollBarWidth
         const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
 
         expect(stickyTopEl.getAttribute('data-bs-margin-right')).toEqual(`${originalMargin}px`, 'original sticky element margin should be stored in data-bs-margin-right')
@@ -250,9 +247,9 @@ describe('Modal', () => {
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modalEl.getAttribute('aria-modal')).toEqual('true')
         expect(modalEl.getAttribute('role')).toEqual('dialog')
-        expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
+        expect(modalEl.getAttribute('aria-hidden')).toBeNull()
         expect(modalEl.style.display).toEqual('block')
-        expect(document.querySelector('.modal-backdrop')).toBeDefined()
+        expect(document.querySelector('.modal-backdrop')).not.toBeNull()
         done()
       })
 
@@ -274,7 +271,7 @@ describe('Modal', () => {
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modalEl.getAttribute('aria-modal')).toEqual('true')
         expect(modalEl.getAttribute('role')).toEqual('dialog')
-        expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
+        expect(modalEl.getAttribute('aria-hidden')).toBeNull()
         expect(modalEl.style.display).toEqual('block')
         expect(document.querySelector('.modal-backdrop')).toBeNull()
         done()
@@ -295,7 +292,7 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         const dynamicModal = document.getElementById(id)
-        expect(dynamicModal).toBeDefined()
+        expect(dynamicModal).not.toBeNull()
         dynamicModal.parentNode.removeChild(dynamicModal)
         done()
       })
@@ -766,8 +763,8 @@ describe('Modal', () => {
       })
 
       modalEl.addEventListener('hidden.bs.modal', () => {
-        expect(modalEl.getAttribute('aria-modal')).toEqual(null)
-        expect(modalEl.getAttribute('role')).toEqual(null)
+        expect(modalEl.getAttribute('aria-modal')).toBeNull()
+        expect(modalEl.getAttribute('role')).toBeNull()
         expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
         expect(modalEl.style.display).toEqual('none')
         expect(document.querySelector('.modal-backdrop')).toBeNull()
@@ -788,8 +785,8 @@ describe('Modal', () => {
       })
 
       modalEl.addEventListener('hidden.bs.modal', () => {
-        expect(modalEl.getAttribute('aria-modal')).toEqual(null)
-        expect(modalEl.getAttribute('role')).toEqual(null)
+        expect(modalEl.getAttribute('aria-modal')).toBeNull()
+        expect(modalEl.getAttribute('role')).toBeNull()
         expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
         expect(modalEl.style.display).toEqual('none')
         expect(document.querySelector('.modal-backdrop')).toBeNull()
@@ -865,7 +862,7 @@ describe('Modal', () => {
 
       modal.dispose()
 
-      expect(Modal.getInstance(modalEl)).toEqual(null)
+      expect(Modal.getInstance(modalEl)).toBeNull()
       expect(EventHandler.off).toHaveBeenCalledTimes(4)
     })
   })
@@ -898,18 +895,18 @@ describe('Modal', () => {
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modalEl.getAttribute('aria-modal')).toEqual('true')
         expect(modalEl.getAttribute('role')).toEqual('dialog')
-        expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
+        expect(modalEl.getAttribute('aria-hidden')).toBeNull()
         expect(modalEl.style.display).toEqual('block')
-        expect(document.querySelector('.modal-backdrop')).toBeDefined()
+        expect(document.querySelector('.modal-backdrop')).not.toBeNull()
         setTimeout(() => trigger.click(), 10)
       })
 
       modalEl.addEventListener('hidden.bs.modal', () => {
-        expect(modalEl.getAttribute('aria-modal')).toEqual(null)
-        expect(modalEl.getAttribute('role')).toEqual(null)
+        expect(modalEl.getAttribute('aria-modal')).toBeNull()
+        expect(modalEl.getAttribute('role')).toBeNull()
         expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
         expect(modalEl.style.display).toEqual('none')
-        expect(document.querySelector('.modal-backdrop')).toEqual(null)
+        expect(document.querySelector('.modal-backdrop')).toBeNull()
         done()
       })
 
@@ -950,9 +947,9 @@ describe('Modal', () => {
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modalEl.getAttribute('aria-modal')).toEqual('true')
         expect(modalEl.getAttribute('role')).toEqual('dialog')
-        expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
+        expect(modalEl.getAttribute('aria-hidden')).toBeNull()
         expect(modalEl.style.display).toEqual('block')
-        expect(document.querySelector('.modal-backdrop')).toBeDefined()
+        expect(document.querySelector('.modal-backdrop')).not.toBeNull()
         expect(Event.prototype.preventDefault).toHaveBeenCalled()
         done()
       })
@@ -1060,7 +1057,7 @@ describe('Modal', () => {
 
       jQueryMock.fn.modal.call(jQueryMock)
 
-      expect(Modal.getInstance(div)).toBeDefined()
+      expect(Modal.getInstance(div)).not.toBeNull()
     })
 
     it('should create a modal with given config', () => {
@@ -1076,7 +1073,7 @@ describe('Modal', () => {
       expect(Modal.prototype.constructor).not.toHaveBeenCalledWith(div, { keyboard: false })
 
       const modal = Modal.getInstance(div)
-      expect(modal).toBeDefined()
+      expect(modal).not.toBeNull()
       expect(modal._config.keyboard).toBe(false)
     })
 
@@ -1156,7 +1153,7 @@ describe('Modal', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Modal.getInstance(div)).toEqual(null)
+      expect(Modal.getInstance(div)).toBeNull()
     })
   })
 })

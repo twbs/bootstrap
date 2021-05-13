@@ -560,9 +560,10 @@ describe('Util', () => {
 
     it('should define a plugin on the jQuery instance', () => {
       const pluginMock = function () {}
+      pluginMock.NAME = 'test'
       pluginMock.jQueryInterface = function () {}
 
-      Util.defineJQueryPlugin('test', pluginMock)
+      Util.defineJQueryPlugin(pluginMock)
       expect(fakejQuery.fn.test).toBe(pluginMock.jQueryInterface)
       expect(fakejQuery.fn.test.Constructor).toBe(pluginMock)
       expect(typeof fakejQuery.fn.test.noConflict).toEqual('function')

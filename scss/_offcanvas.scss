@@ -75,14 +75,3 @@
 .offcanvas.show {
   transform: none;
 }
-
-.offcanvas-backdrop::before {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: $zindex-offcanvas - 1;
-  width: 100vw;
-  height: 100vh;
-  content: "";
-  background-color: $offcanvas-body-backdrop-color;
-}
