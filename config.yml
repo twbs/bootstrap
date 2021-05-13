@@ -47,8 +47,8 @@ params:
   social_image_path:    /docs/5.0/assets/brand/bootstrap-social.png
   social_logo_path:     /docs/5.0/assets/brand/bootstrap-social-logo.png
 
-  current_version:      "5.0.0"
-  current_ruby_version: "5.0.0"
+  current_version:      "5.0.1"
+  current_ruby_version: "5.0.1"
   docs_version:         "5.0"
   rfs_version:          "9.0.3"
   github_org:           "https://github.com/twbs"
@@ -61,19 +61,19 @@ params:
   icons:                "https://icons.getbootstrap.com/"
 
   download:
-    source:             "https://github.com/twbs/bootstrap/archive/v5.0.0.zip"
-    dist:               "https://github.com/twbs/bootstrap/releases/download/v5.0.0/bootstrap-5.0.0-dist.zip"
-    dist_examples:      "https://github.com/twbs/bootstrap/releases/download/v5.0.0/bootstrap-5.0.0-examples.zip"
+    source:             "https://github.com/twbs/bootstrap/archive/v5.0.1.zip"
+    dist:               "https://github.com/twbs/bootstrap/releases/download/v5.0.1/bootstrap-5.0.1-dist.zip"
+    dist_examples:      "https://github.com/twbs/bootstrap/releases/download/v5.0.1/bootstrap-5.0.1-examples.zip"
 
   cdn:
     # See https://www.srihash.org for info on how to generate the hashes
-    css:              "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
-    css_hash:         "sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
-    css_rtl:          "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.rtl.min.css"
-    css_rtl_hash:     "sha384-jHiSqEim4+W1UCvv8kTcMbtCZlRF8MxbgKdfpvncia8gdN1UImBnhTpKtufREzv7"
-    js:               "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"
-    js_hash:          "sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ"
-    js_bundle:        "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-    js_bundle_hash:   "sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+    css:              "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+    css_hash:         "sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+    css_rtl:          "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.rtl.min.css"
+    css_rtl_hash:     "sha384-LPvXVVAlyPoBSGkX8UddpctDks+1P4HG8MhT7/YwqHtJ40bstjzCqjj+VVVDhsCo"
+    js:               "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+    js_hash:          "sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+    js_bundle:        "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    js_bundle_hash:   "sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
     popper:           "https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
     popper_hash:      "sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
