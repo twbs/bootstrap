@@ -135,9 +135,9 @@ const typeCheckConfig = (componentName, config, configTypes) => {
 }
 
 const isVisible = element => {
-  const eligableElement = el => el && el.style
+  const eligibleElement = el => el && el.style
 
-  if (!eligableElement(element)) {
+  if (!eligibleElement(element)) {
     return false
   }
 
@@ -145,7 +145,7 @@ const isVisible = element => {
     return false
   }
 
-  while (eligableElement(element)) {
+  while (eligibleElement(element)) {
     const { display, visibility } = getComputedStyle(element)
     if (display === 'none' || visibility === 'hidden') {
       return false
