@@ -1,26 +1,19 @@
 /*!
-  * Bootstrap popover.js v5.0.0 (https://getbootstrap.com/)
+  * Bootstrap popover.js v5.0.1 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/selector-engine.js'), require('./tooltip.js')) :
-  typeof define === 'function' && define.amd ? define(['./dom/data', './dom/selector-engine', './tooltip'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Popover = factory(global.Data, global.SelectorEngine, global.Tooltip));
-}(this, (function (Data, SelectorEngine, Tooltip) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/selector-engine.js'), require('./dom/data.js'), require('./tooltip.js')) :
+  typeof define === 'function' && define.amd ? define(['./dom/selector-engine', './dom/data', './tooltip'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Popover = factory(global.SelectorEngine, global.Data, global.Tooltip));
+}(this, (function (SelectorEngine, Data, Tooltip) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-  var Data__default = /*#__PURE__*/_interopDefaultLegacy(Data);
   var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
+  var Data__default = /*#__PURE__*/_interopDefaultLegacy(Data);
   var Tooltip__default = /*#__PURE__*/_interopDefaultLegacy(Tooltip);
-
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): util/index.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */
 
   const getjQuery = () => {
     const {
@@ -42,12 +35,13 @@
     }
   };
 
-  const defineJQueryPlugin = (name, plugin) => {
+  const defineJQueryPlugin = plugin => {
     onDOMContentLoaded(() => {
       const $ = getjQuery();
       /* istanbul ignore if */
 
       if ($) {
+        const name = plugin.NAME;
         const JQUERY_NO_CONFLICT = $.fn[name];
         $.fn[name] = plugin.jQueryInterface;
         $.fn[name].Constructor = plugin;
@@ -62,7 +56,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): popover.js
+   * Bootstrap (v5.0.1): popover.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -119,16 +113,8 @@
       return NAME;
     }
 
-    static get DATA_KEY() {
-      return DATA_KEY;
-    }
-
     static get Event() {
       return Event;
-    }
-
-    static get EVENT_KEY() {
-      return EVENT_KEY;
     }
 
     static get DefaultType() {
@@ -161,7 +147,7 @@
     }
 
     _getContent() {
-      return this._element.getAttribute('data-bs-content') || this.config.content;
+      return this._element.getAttribute('data-bs-content') || this._config.content;
     }
 
     _cleanTipClass() {
@@ -208,7 +194,7 @@
    */
 
 
-  defineJQueryPlugin(NAME, Popover);
+  defineJQueryPlugin(Popover);
 
   return Popover;
 

@@ -1,26 +1,19 @@
 /*!
-  * Bootstrap button.js v5.0.0 (https://getbootstrap.com/)
+  * Bootstrap button.js v5.0.1 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./base-component.js')) :
-  typeof define === 'function' && define.amd ? define(['./dom/data', './dom/event-handler', './base-component'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Button = factory(global.Data, global.EventHandler, global.Base));
-}(this, (function (Data, EventHandler, BaseComponent) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/selector-engine.js'), require('./dom/data.js'), require('./dom/event-handler.js'), require('./base-component.js')) :
+  typeof define === 'function' && define.amd ? define(['./dom/selector-engine', './dom/data', './dom/event-handler', './base-component'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Button = factory(global.SelectorEngine, global.Data, global.EventHandler, global.Base));
+}(this, (function (SelectorEngine, Data, EventHandler, BaseComponent) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
   var Data__default = /*#__PURE__*/_interopDefaultLegacy(Data);
   var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
   var BaseComponent__default = /*#__PURE__*/_interopDefaultLegacy(BaseComponent);
-
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): util/index.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */
 
   const getjQuery = () => {
     const {
@@ -42,12 +35,13 @@
     }
   };
 
-  const defineJQueryPlugin = (name, plugin) => {
+  const defineJQueryPlugin = plugin => {
     onDOMContentLoaded(() => {
       const $ = getjQuery();
       /* istanbul ignore if */
 
       if ($) {
+        const name = plugin.NAME;
         const JQUERY_NO_CONFLICT = $.fn[name];
         $.fn[name] = plugin.jQueryInterface;
         $.fn[name].Constructor = plugin;
@@ -62,7 +56,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): button.js
+   * Bootstrap (v5.0.1): button.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -87,8 +81,8 @@
 
   class Button extends BaseComponent__default['default'] {
     // Getters
-    static get DATA_KEY() {
-      return DATA_KEY;
+    static get NAME() {
+      return NAME;
     } // Public
 
 
@@ -138,7 +132,7 @@
    * add .Button to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(NAME, Button);
+  defineJQueryPlugin(Button);
 
   return Button;
 
