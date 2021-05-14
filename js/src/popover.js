@@ -30,7 +30,7 @@ const Default = {
   content: '',
   template: '<div class="popover" role="tooltip">' +
               '<div class="popover-arrow"></div>' +
-                '<h3 class="popover-header"></h3>' +
+              '<h3 class="popover-header"></h3>' +
               '<div class="popover-body"></div>' +
             '</div>'
 }
@@ -88,6 +88,24 @@ class Popover extends Tooltip {
 
   isWithContent() {
     return this.getTitle() || this._getContent()
+  }
+
+  getTipElement() {
+    if (this.tip) {
+      return this.tip
+    }
+
+    this.tip = super.getTipElement()
+
+    if (!this.getTitle()) {
+      this.tip.removeChild(SelectorEngine.findOne(SELECTOR_TITLE, this.tip))
+    }
+
+    if (!this._getContent()) {
+      this.tip.removeChild(SelectorEngine.findOne(SELECTOR_CONTENT, this.tip))
+    }
+
+    return this.tip
   }
 
   setContent() {
