@@ -145,9 +145,16 @@ const isVisible = element => {
     return false
   }
 
+  let relevantVisibility
+
   while (eligibleElement(element)) {
     const { display, visibility } = getComputedStyle(element)
-    if (display === 'none' || visibility === 'hidden') {
+
+    if (!relevantVisibility && /visible|hidden/.test(visibility)) {
+      relevantVisibility = visibility
+    }
+
+    if (display === 'none' || relevantVisibility === 'hidden') {
       return false
     }
 
