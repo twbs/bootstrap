@@ -292,7 +292,7 @@ describe('Util', () => {
       expect(Util.isVisible(div)).toEqual(false)
     })
 
-    it('should return false if an anscestor element is display none', () => {
+    it('should return false if an ancestor element is display none', () => {
       fixtureEl.innerHTML = [
         '<div style="display: none;">',
         '  <div>',
@@ -308,7 +308,7 @@ describe('Util', () => {
       expect(Util.isVisible(div)).toEqual(false)
     })
 
-    it('should return false if an anscestor element is visibility hidden', () => {
+    it('should return false if an ancestor element is visibility hidden', () => {
       fixtureEl.innerHTML = [
         '<div style="visibility: hidden;">',
         '  <div>',
@@ -324,7 +324,7 @@ describe('Util', () => {
       expect(Util.isVisible(div)).toEqual(false)
     })
 
-    it('should return true if an anscestor element is visibility hidden, but reverted', () => {
+    it('should return true if an ancestor element is visibility hidden, but reverted', () => {
       fixtureEl.innerHTML = [
         '<div style="visibility: hidden;">',
         '  <div style="visibility: visible;">',
