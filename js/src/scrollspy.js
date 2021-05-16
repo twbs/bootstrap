@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): scrollspy.js
+ * Bootstrap (v5.0.1): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -87,8 +87,8 @@ class ScrollSpy extends BaseComponent {
     return Default
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -137,16 +137,8 @@ class ScrollSpy extends BaseComponent {
   }
 
   dispose() {
-    super.dispose()
     EventHandler.off(this._scrollElement, EVENT_KEY)
-
-    this._scrollElement = null
-    this._config = null
-    this._selector = null
-    this._offsets = null
-    this._targets = null
-    this._activeTarget = null
-    this._scrollHeight = null
+    super.dispose()
   }
 
   // Private
@@ -311,6 +303,6 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  * add .ScrollSpy to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, ScrollSpy)
+defineJQueryPlugin(ScrollSpy)
 
 export default ScrollSpy

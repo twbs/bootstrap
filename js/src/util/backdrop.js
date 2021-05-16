@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): util/backdrop.js
+ * Bootstrap (v5.0.1): util/backdrop.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -89,6 +89,8 @@ class Backdrop {
       ...Default,
       ...(typeof config === 'object' ? config : {})
     }
+
+    config.rootElement = config.rootElement || document.body
     typeCheckConfig(NAME, config, DefaultType)
     return config
   }
