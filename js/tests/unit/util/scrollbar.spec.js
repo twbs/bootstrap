@@ -65,7 +65,7 @@ describe('ScrollBar', () => {
     })
 
     it('should return false if body is not overflowing', () => {
-      document.documentElement.style.overflowY = 'hidden'
+      doc.style.overflowY = 'hidden'
       document.body.style.overflowY = 'hidden'
       fixtureEl.innerHTML = [
         '<div style="height: 110vh; width: 100%"></div>'
@@ -78,7 +78,7 @@ describe('ScrollBar', () => {
 
   describe('getWidth', () => {
     it('should return an integer greater than zero, if body is overflowing', () => {
-      document.documentElement.style.overflowY = 'scroll'
+      doc.style.overflowY = 'scroll'
       document.body.style.overflowY = 'scroll'
       fixtureEl.innerHTML = [
         '<div style="height: 110vh; width: 100%"></div>'
@@ -109,11 +109,11 @@ describe('ScrollBar', () => {
     it('should adjust the inline padding of fixed elements which are full-width', done => {
       fixtureEl.innerHTML = [
         '<div style="height: 110vh; width: 100%">' +
-        '<div class="fixed-top" id="fixed1" style="padding-right: 1px; width: 100vw"></div>',
+        '<div class="fixed-top" id="fixed1" style="padding-right: 0px; width: 100vw"></div>',
         '<div class="fixed-top" id="fixed2" style="padding-right: 5px; width: 100vw"></div>',
         '</div>'
       ].join('')
-      document.documentElement.style.overflowY = 'scroll'
+      doc.style.overflowY = 'scroll'
 
       const fixedEl = fixtureEl.querySelector('#fixed1')
       const fixedEl2 = fixtureEl.querySelector('#fixed2')
@@ -147,7 +147,7 @@ describe('ScrollBar', () => {
         '<div class="sticky-top" style="margin-right: 10px; padding-right: 20px; width: 100vw; height: 10px"></div>',
         '</div>'
       ].join('')
-      document.documentElement.style.overflowY = 'scroll'
+      doc.style.overflowY = 'scroll'
 
       const stickyTopEl = fixtureEl.querySelector('.sticky-top')
       const originalMargin = getMarginX(stickyTopEl)
@@ -210,7 +210,7 @@ describe('ScrollBar', () => {
 
       expect(getPaddingX(stickyEl)).toEqual(scrollBarWidth + originalPadding)
       const expectedMargin = scrollBarWidth + originalMargin
-      expect(getMarginX(stickyEl)).toEqual(Math.abs(expectedMargin) === 0 ? expectedMargin : -expectedMargin)
+      expect(getMarginX(stickyEl)).toEqual(expectedMargin === 0 ? expectedMargin : -expectedMargin)
       expect(hasMarginAttr(stickyEl)).toBeFalse() // We do not have to keep css margin
       expect(hasPaddingAttr(stickyEl)).toBeFalse() // We do not have to keep css padding
 
@@ -322,7 +322,6 @@ describe('ScrollBar', () => {
 
       it('should not adjust the inline body padding when it does not overflow, even on a scaled display', () => {
         const originalPadding = getPaddingX(document.body)
-        const doc = document.documentElement
         // Remove body margins as would be done by Bootstrap css
         document.body.style.margin = '0'
 
