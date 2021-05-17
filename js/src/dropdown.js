@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): dropdown.js
+ * Bootstrap (v5.0.1): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9,6 +9,7 @@ import * as Popper from '@popperjs/core'
 
 import {
   defineJQueryPlugin,
+  getElement,
   getElementFromSelector,
   isDisabled,
   isElement,
@@ -116,8 +117,8 @@ class Dropdown extends BaseComponent {
     return DefaultType
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -166,12 +167,7 @@ class Dropdown extends BaseComponent {
       if (this._config.reference === 'parent') {
         referenceElement = parent
       } else if (isElement(this._config.reference)) {
-        referenceElement = this._config.reference
-
-        // Check if it's jQuery element
-        if (typeof this._config.reference.jquery !== 'undefined') {
-          referenceElement = this._config.reference[0]
-        }
+        referenceElement = getElement(this._config.reference)
       } else if (typeof this._config.reference === 'object') {
         referenceElement = this._config.reference
       }
@@ -217,11 +213,8 @@ class Dropdown extends BaseComponent {
   }
 
   dispose() {
-    this._menu = null
-
     if (this._popper) {
       this._popper.destroy()
-      this._popper = null
     }
 
     super.dispose()
@@ -411,14 +404,8 @@ class Dropdown extends BaseComponent {
   }
 
   static clearMenus(event) {
-    if (event) {
-      if (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY)) {
-        return
-      }
-
-      if (/input|select|option|textarea|form/i.test(event.target.tagName)) {
-        return
-      }
+    if (event && (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY))) {
+      return
     }
 
     const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
@@ -448,8 +435,8 @@ class Dropdown extends BaseComponent {
           continue
         }
 
-        // Tab navigation through the dropdown menu shouldn't close the menu
-        if (event.type === 'keyup' && event.key === TAB_KEY && context._menu.contains(event.target)) {
+        // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
+        if (context._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) || /input|select|option|textarea|form/i.test(event.target.tagName))) {
           continue
         }
 
@@ -539,6 +526,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Dropdown to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Dropdown)
+defineJQueryPlugin(Dropdown)
 
 export default Dropdown

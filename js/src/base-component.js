@@ -1,11 +1,17 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): base-component.js
+ * Bootstrap (v5.0.1): base-component.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import Data from './dom/data'
+import {
+  emulateTransitionEnd,
+  execute,
+  getElement,
+  getTransitionDurationFromElement
+} from './util/index'
 import EventHandler from './dom/event-handler'
 
 /**
@@ -14,11 +20,11 @@ import EventHandler from './dom/event-handler'
  * ------------------------------------------------------------------------
  */
 
-const VERSION = '5.0.0-beta3'
+const VERSION = '5.0.1'
 
 class BaseComponent {
   constructor(element) {
-    element = typeof element === 'string' ? document.querySelector(element) : element
+    element = getElement(element)
 
     if (!element) {
       return
@@ -30,8 +36,23 @@ class BaseComponent {
 
   dispose() {
     Data.remove(this._element, this.constructor.DATA_KEY)
-    EventHandler.off(this._element, `.${this.constructor.DATA_KEY}`)
-    this._element = null
+    EventHandler.off(this._element, this.constructor.EVENT_KEY)
+
+    Object.getOwnPropertyNames(this).forEach(propertyName => {
+      this[propertyName] = null
+    })
+  }
+
+  _queueCallback(callback, element, isAnimated = true) {
+    if (!isAnimated) {
+      execute(callback)
+      return
+    }
+
+    const transitionDuration = getTransitionDurationFromElement(element)
+    EventHandler.one(element, 'transitionend', () => execute(callback))
+
+    emulateTransitionEnd(element, transitionDuration)
   }
 
   /** Static */
@@ -42,6 +63,18 @@ class BaseComponent {
 
   static get VERSION() {
     return VERSION
+  }
+
+  static get NAME() {
+    throw new Error('You have to implement the static method "NAME", for each component!')
+  }
+
+  static get DATA_KEY() {
+    return `bs.${this.NAME}`
+  }
+
+  static get EVENT_KEY() {
+    return `.${this.DATA_KEY}`
   }
 }
 
