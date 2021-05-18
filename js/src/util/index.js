@@ -261,6 +261,34 @@ const execute = callback => {
   }
 }
 
+/**
+ * Return the previous/next element of a list.
+ *
+ * @param {array} list    The list of elements
+ * @param activeElement   The active element
+ * @param shouldGetNext   Choose to get next or previous element
+ * @param isCycleAllowed
+ * @return {Element|elem} The proper element
+ */
+const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
+  let index = list.indexOf(activeElement)
+
+  // if the element does not exist in the list initialize it as the first element
+  if (index === -1) {
+    return list[0]
+  }
+
+  const listLength = list.length
+
+  index += shouldGetNext ? 1 : -1
+
+  if (isCycleAllowed) {
+    index = (index + listLength) % listLength
+  }
+
+  return list[Math.max(0, Math.min(index, listLength - 1))]
+}
+
 export {
   getElement,
   getUID,
@@ -275,6 +303,7 @@ export {
   isDisabled,
   findShadowRoot,
   noop,
+  getNextActiveElement,
   reflow,
   getjQuery,
   onDOMContentLoaded,
