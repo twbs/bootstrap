@@ -324,22 +324,6 @@ describe('Util', () => {
       expect(Util.isVisible(div)).toEqual(false)
     })
 
-    it('should return true if an ancestor element is visibility hidden, but reverted', () => {
-      fixtureEl.innerHTML = [
-        '<div style="visibility: hidden;">',
-        '  <div style="visibility: visible;">',
-        '    <div>',
-        '      <div class="content"></div>',
-        '    </div>',
-        '  </div>',
-        '</div>'
-      ].join('')
-
-      const div = fixtureEl.querySelector('.content')
-
-      expect(Util.isVisible(div)).toEqual(true)
-    })
-
     it('should return true if the element is visible', () => {
       fixtureEl.innerHTML = [
         '<div>',

@@ -135,33 +135,15 @@ const typeCheckConfig = (componentName, config, configTypes) => {
 }
 
 const isVisible = element => {
-  const eligibleElement = el => el && el.style
-
-  if (!eligibleElement(element)) {
+  if (
+    !element ||
+    !isElement(element) ||
+    element.getClientRects().length === 0
+  ) {
     return false
   }
 
-  if (element.tagName !== 'AREA' && element.getClientRects().length === 0) {
-    return false
-  }
-
-  let relevantVisibility
-
-  while (eligibleElement(element)) {
-    const { display, visibility } = getComputedStyle(element)
-
-    if (!relevantVisibility && /visible|hidden/.test(visibility)) {
-      relevantVisibility = visibility
-    }
-
-    if (display === 'none' || relevantVisibility === 'hidden') {
-      return false
-    }
-
-    element = element.parentNode
-  }
-
-  return true
+  return getComputedStyle(element).getPropertyValue('visibility') === 'visible'
 }
 
 const isDisabled = element => {
