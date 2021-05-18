@@ -988,6 +988,60 @@ describe('Modal', () => {
       trigger.click()
     })
 
+    it('should not prevent default when a click occurred on data-bs-dismiss="modal" where tagName is DIFFERENT than <a> or <area>', done => {
+      fixtureEl.innerHTML = [
+        '<div class="modal">',
+        '  <div class="modal-dialog">',
+        '    <button type="button" data-bs-dismiss="modal"></button>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const btnClose = fixtureEl.querySelector('button[data-bs-dismiss="modal"]')
+      const modal = new Modal(modalEl)
+
+      spyOn(Event.prototype, 'preventDefault').and.callThrough()
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        btnClose.click()
+      })
+
+      modalEl.addEventListener('hidden.bs.modal', () => {
+        expect(Event.prototype.preventDefault).not.toHaveBeenCalled()
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should prevent default when a click occurred on data-bs-dismiss="modal" where tagName is <a> or <area>', done => {
+      fixtureEl.innerHTML = [
+        '<div class="modal">',
+        '  <div class="modal-dialog">',
+        '    <a type="button" data-bs-dismiss="modal"></a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const btnClose = fixtureEl.querySelector('a[data-bs-dismiss="modal"]')
+      const modal = new Modal(modalEl)
+
+      spyOn(Event.prototype, 'preventDefault').and.callThrough()
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        btnClose.click()
+      })
+
+      modalEl.addEventListener('hidden.bs.modal', () => {
+        expect(Event.prototype.preventDefault).toHaveBeenCalled()
+        done()
+      })
+
+      modal.show()
+    })
+
     it('should not focus the trigger if the modal is not visible', done => {
       fixtureEl.innerHTML = [
         '<a data-bs-toggle="modal" href="#" data-bs-target="#exampleModal" style="display: none;"></a>',
