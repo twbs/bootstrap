@@ -611,4 +611,43 @@ describe('Util', () => {
       expect(spy).toHaveBeenCalled()
     })
   })
+
+  describe('getNextActiveElement', () => {
+    it('should return first element if active not exists or not given', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, '', true, true)).toEqual('a')
+      expect(Util.getNextActiveElement(array, 'g', true, true)).toEqual('a')
+    })
+
+    it('should return next element or same if is last', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, 'a', true, true)).toEqual('b')
+      expect(Util.getNextActiveElement(array, 'b', true, true)).toEqual('c')
+      expect(Util.getNextActiveElement(array, 'd', true, false)).toEqual('d')
+    })
+
+    it('should return next element or first, if is last and "isCycleAllowed = true"', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, 'c', true, true)).toEqual('d')
+      expect(Util.getNextActiveElement(array, 'd', true, true)).toEqual('a')
+    })
+
+    it('should return previous element or same if is first', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, 'b', false, true)).toEqual('a')
+      expect(Util.getNextActiveElement(array, 'd', false, true)).toEqual('c')
+      expect(Util.getNextActiveElement(array, 'a', false, false)).toEqual('a')
+    })
+
+    it('should return next element or first, if is last and "isCycleAllowed = true"', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, 'd', false, true)).toEqual('c')
+      expect(Util.getNextActiveElement(array, 'a', false, true)).toEqual('d')
+    })
+  })
 })
