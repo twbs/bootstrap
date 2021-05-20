@@ -53,7 +53,7 @@
           // Ensures decent contrast where possible
           @if "background-color" == $property and "transparent" != inspect($value) {
             color: color-contrast($value);
-          } @else if "color" == $property and "inherit" != inspect($value) and $accessible-orange != $value {
+          } @else if "color" == $property and "inherit" != inspect($value) {
             background-color: color-contrast($value);
           }
         }
