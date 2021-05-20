@@ -43,7 +43,7 @@ Add the `disabled` boolean attribute on an input to give it a grayed out appeara
 Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
 
 {{< example >}}
-<input class="form-control" type="text" placeholder="Readonly input here..." aria-label="readonly input example" readonly>
+<input class="form-control" type="text" value="Readonly input here..." aria-label="readonly input example" readonly>
 {{< /example >}}
 
 ## Readonly plain text
