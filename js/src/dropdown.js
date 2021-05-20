@@ -393,7 +393,7 @@ class Dropdown extends BaseComponent {
     const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
 
     for (let i = 0, len = toggles.length; i < len; i++) {
-      const context = Dropdown.getInstance(toggles[i], DATA_KEY)
+      const context = Dropdown.getInstance(toggles[i])
       if (!context || context._config.autoClose === false) {
         continue
       }
