@@ -159,11 +159,7 @@ const typeCheckConfig = (componentName, config, configTypes) => {
 }
 
 const isVisible = element => {
-  if (
-    !element ||
-    !isElement(element) ||
-    element.getClientRects().length === 0
-  ) {
+  if (!isElement(element) || element.getClientRects().length === 0) {
     return false
   }
 
