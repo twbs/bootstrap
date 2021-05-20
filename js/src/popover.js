@@ -149,10 +149,6 @@ class Popover extends Tooltip {
       let data = Data.get(this, DATA_KEY)
       const _config = typeof config === 'object' ? config : null
 
-      if (!data && /dispose|hide/.test(config)) {
-        return
-      }
-
       if (!data) {
         data = new Popover(this, _config)
         Data.set(this, DATA_KEY, data)

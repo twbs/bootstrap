@@ -725,10 +725,6 @@ class Tooltip extends BaseComponent {
       let data = Data.get(this, DATA_KEY)
       const _config = typeof config === 'object' && config
 
-      if (!data && /dispose|hide/.test(config)) {
-        return
-      }
-
       if (!data) {
         data = new Tooltip(this, _config)
       }
