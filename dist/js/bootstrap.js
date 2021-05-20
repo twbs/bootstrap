@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap v5.0.0 (https://getbootstrap.com/)
+  * Bootstrap v5.0.1 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -33,10 +33,82 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): util/index.js
+   * Bootstrap (v5.0.1): dom/selector-engine.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
+
+  /**
+   * ------------------------------------------------------------------------
+   * Constants
+   * ------------------------------------------------------------------------
+   */
+  const NODE_TEXT = 3;
+  const SelectorEngine = {
+    find(selector, element = document.documentElement) {
+      return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
+    },
+
+    findOne(selector, element = document.documentElement) {
+      return Element.prototype.querySelector.call(element, selector);
+    },
+
+    children(element, selector) {
+      return [].concat(...element.children).filter(child => child.matches(selector));
+    },
+
+    parents(element, selector) {
+      const parents = [];
+      let ancestor = element.parentNode;
+
+      while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== NODE_TEXT) {
+        if (ancestor.matches(selector)) {
+          parents.push(ancestor);
+        }
+
+        ancestor = ancestor.parentNode;
+      }
+
+      return parents;
+    },
+
+    prev(element, selector) {
+      let previous = element.previousElementSibling;
+
+      while (previous) {
+        if (previous.matches(selector)) {
+          return [previous];
+        }
+
+        previous = previous.previousElementSibling;
+      }
+
+      return [];
+    },
+
+    next(element, selector) {
+      let next = element.nextElementSibling;
+
+      while (next) {
+        if (next.matches(selector)) {
+          return [next];
+        }
+
+        next = next.nextElementSibling;
+      }
+
+      return [];
+    }
+
+  };
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap (v5.0.1): util/index.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */
+
   const MAX_UID = 1000000;
   const MILLISECONDS_MULTIPLIER = 1000;
   const TRANSITION_END = 'transitionend'; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
@@ -129,7 +201,30 @@
     element.dispatchEvent(new Event(TRANSITION_END));
   };
 
-  const isElement = obj => (obj[0] || obj).nodeType;
+  const isElement = obj => {
+    if (!obj || typeof obj !== 'object') {
+      return false;
+    }
+
+    if (typeof obj.jquery !== 'undefined') {
+      obj = obj[0];
+    }
+
+    return typeof obj.nodeType !== 'undefined';
+  };
+
+  const getElement = obj => {
+    if (isElement(obj)) {
+      // it's a jQuery object or a node element
+      return obj.jquery ? obj[0] : obj;
+    }
+
+    if (typeof obj === 'string' && obj.length > 0) {
+      return SelectorEngine.findOne(obj);
+    }
+
+    return null;
+  };
 
   const emulateTransitionEnd = (element, duration) => {
     let called = false;
@@ -240,12 +335,13 @@
 
   const isRTL = () => document.documentElement.dir === 'rtl';
 
-  const defineJQueryPlugin = (name, plugin) => {
+  const defineJQueryPlugin = plugin => {
     onDOMContentLoaded(() => {
       const $ = getjQuery();
       /* istanbul ignore if */
 
       if ($) {
+        const name = plugin.NAME;
         const JQUERY_NO_CONFLICT = $.fn[name];
         $.fn[name] = plugin.jQueryInterface;
         $.fn[name].Constructor = plugin;
@@ -266,7 +362,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): dom/data.js
+   * Bootstrap (v5.0.1): dom/data.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -320,7 +416,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): dom/event-handler.js
+   * Bootstrap (v5.0.1): dom/event-handler.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -609,7 +705,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): base-component.js
+   * Bootstrap (v5.0.1): base-component.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -619,11 +715,11 @@
    * ------------------------------------------------------------------------
    */
 
-  const VERSION = '5.0.0';
+  const VERSION = '5.0.1';
 
   class BaseComponent {
     constructor(element) {
-      element = typeof element === 'string' ? document.querySelector(element) : element;
+      element = getElement(element);
 
       if (!element) {
         return;
@@ -635,8 +731,21 @@
 
     dispose() {
       Data.remove(this._element, this.constructor.DATA_KEY);
-      EventHandler.off(this._element, `.${this.constructor.DATA_KEY}`);
-      this._element = null;
+      EventHandler.off(this._element, this.constructor.EVENT_KEY);
+      Object.getOwnPropertyNames(this).forEach(propertyName => {
+        this[propertyName] = null;
+      });
+    }
+
+    _queueCallback(callback, element, isAnimated = true) {
+      if (!isAnimated) {
+        execute(callback);
+        return;
+      }
+
+      const transitionDuration = getTransitionDurationFromElement(element);
+      EventHandler.one(element, 'transitionend', () => execute(callback));
+      emulateTransitionEnd(element, transitionDuration);
     }
     /** Static */
 
@@ -649,11 +758,23 @@
       return VERSION;
     }
 
+    static get NAME() {
+      throw new Error('You have to implement the static method "NAME", for each component!');
+    }
+
+    static get DATA_KEY() {
+      return `bs.${this.NAME}`;
+    }
+
+    static get EVENT_KEY() {
+      return `.${this.DATA_KEY}`;
+    }
+
   }
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): alert.js
+   * Bootstrap (v5.0.1): alert.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -682,8 +803,8 @@
 
   class Alert extends BaseComponent {
     // Getters
-    static get DATA_KEY() {
-      return DATA_KEY$b;
+    static get NAME() {
+      return NAME$c;
     } // Public
 
 
@@ -710,16 +831,9 @@
 
     _removeElement(element) {
       element.classList.remove(CLASS_NAME_SHOW$9);
+      const isAnimated = element.classList.contains(CLASS_NAME_FADE$6);
 
-      if (!element.classList.contains(CLASS_NAME_FADE$6)) {
-        this._destroyElement(element);
-
-        return;
-      }
-
-      const transitionDuration = getTransitionDurationFromElement(element);
-      EventHandler.one(element, 'transitionend', () => this._destroyElement(element));
-      emulateTransitionEnd(element, transitionDuration);
+      this._queueCallback(() => this._destroyElement(element), element, isAnimated);
     }
 
     _destroyElement(element) {
@@ -771,11 +885,11 @@
    * add .Alert to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(NAME$c, Alert);
+  defineJQueryPlugin(Alert);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): button.js
+   * Bootstrap (v5.0.1): button.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -800,8 +914,8 @@
 
   class Button extends BaseComponent {
     // Getters
-    static get DATA_KEY() {
-      return DATA_KEY$a;
+    static get NAME() {
+      return NAME$b;
     } // Public
 
 
@@ -851,11 +965,11 @@
    * add .Button to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(NAME$b, Button);
+  defineJQueryPlugin(Button);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): dom/manipulator.js
+   * Bootstrap (v5.0.1): dom/manipulator.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -929,78 +1043,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): dom/selector-engine.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
-  const NODE_TEXT = 3;
-  const SelectorEngine = {
-    find(selector, element = document.documentElement) {
-      return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
-    },
-
-    findOne(selector, element = document.documentElement) {
-      return Element.prototype.querySelector.call(element, selector);
-    },
-
-    children(element, selector) {
-      return [].concat(...element.children).filter(child => child.matches(selector));
-    },
-
-    parents(element, selector) {
-      const parents = [];
-      let ancestor = element.parentNode;
-
-      while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== NODE_TEXT) {
-        if (ancestor.matches(selector)) {
-          parents.push(ancestor);
-        }
-
-        ancestor = ancestor.parentNode;
-      }
-
-      return parents;
-    },
-
-    prev(element, selector) {
-      let previous = element.previousElementSibling;
-
-      while (previous) {
-        if (previous.matches(selector)) {
-          return [previous];
-        }
-
-        previous = previous.previousElementSibling;
-      }
-
-      return [];
-    },
-
-    next(element, selector) {
-      let next = element.nextElementSibling;
-
-      while (next) {
-        if (next.matches(selector)) {
-          return [next];
-        }
-
-        next = next.nextElementSibling;
-      }
-
-      return [];
-    }
-
-  };
-
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): carousel.js
+   * Bootstrap (v5.0.1): carousel.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -1101,8 +1144,8 @@
       return Default$9;
     }
 
-    static get DATA_KEY() {
-      return DATA_KEY$9;
+    static get NAME() {
+      return NAME$a;
     } // Public
 
 
@@ -1180,17 +1223,6 @@
       const order = index > activeIndex ? ORDER_NEXT : ORDER_PREV;
 
       this._slide(order, this._items[index]);
-    }
-
-    dispose() {
-      this._items = null;
-      this._config = null;
-      this._interval = null;
-      this._isPaused = null;
-      this._isSliding = null;
-      this._activeElement = null;
-      this._indicatorsElement = null;
-      super.dispose();
     } // Private
 
 
@@ -1419,37 +1451,35 @@
 
       this._activeElement = nextElement;
 
-      if (this._element.classList.contains(CLASS_NAME_SLIDE)) {
-        nextElement.classList.add(orderClassName);
-        reflow(nextElement);
-        activeElement.classList.add(directionalClassName);
-        nextElement.classList.add(directionalClassName);
-        const transitionDuration = getTransitionDurationFromElement(activeElement);
-        EventHandler.one(activeElement, 'transitionend', () => {
-          nextElement.classList.remove(directionalClassName, orderClassName);
-          nextElement.classList.add(CLASS_NAME_ACTIVE$2);
-          activeElement.classList.remove(CLASS_NAME_ACTIVE$2, orderClassName, directionalClassName);
-          this._isSliding = false;
-          setTimeout(() => {
-            EventHandler.trigger(this._element, EVENT_SLID, {
-              relatedTarget: nextElement,
-              direction: eventDirectionName,
-              from: activeElementIndex,
-              to: nextElementIndex
-            });
-          }, 0);
-        });
-        emulateTransitionEnd(activeElement, transitionDuration);
-      } else {
-        activeElement.classList.remove(CLASS_NAME_ACTIVE$2);
-        nextElement.classList.add(CLASS_NAME_ACTIVE$2);
-        this._isSliding = false;
+      const triggerSlidEvent = () => {
         EventHandler.trigger(this._element, EVENT_SLID, {
           relatedTarget: nextElement,
           direction: eventDirectionName,
           from: activeElementIndex,
           to: nextElementIndex
         });
+      };
+
+      if (this._element.classList.contains(CLASS_NAME_SLIDE)) {
+        nextElement.classList.add(orderClassName);
+        reflow(nextElement);
+        activeElement.classList.add(directionalClassName);
+        nextElement.classList.add(directionalClassName);
+
+        const completeCallBack = () => {
+          nextElement.classList.remove(directionalClassName, orderClassName);
+          nextElement.classList.add(CLASS_NAME_ACTIVE$2);
+          activeElement.classList.remove(CLASS_NAME_ACTIVE$2, orderClassName, directionalClassName);
+          this._isSliding = false;
+          setTimeout(triggerSlidEvent, 0);
+        };
+
+        this._queueCallback(completeCallBack, activeElement, true);
+      } else {
+        activeElement.classList.remove(CLASS_NAME_ACTIVE$2);
+        nextElement.classList.add(CLASS_NAME_ACTIVE$2);
+        this._isSliding = false;
+        triggerSlidEvent();
       }
 
       if (isCycling) {
@@ -1568,11 +1598,11 @@
    * add .Carousel to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(NAME$a, Carousel);
+  defineJQueryPlugin(Carousel);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): collapse.js
+   * Bootstrap (v5.0.1): collapse.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -1649,8 +1679,8 @@
       return Default$8;
     }
 
-    static get DATA_KEY() {
-      return DATA_KEY$8;
+    static get NAME() {
+      return NAME$9;
     } // Public
 
 
@@ -1742,9 +1772,9 @@
 
       const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
       const scrollSize = `scroll${capitalizedDimension}`;
-      const transitionDuration = getTransitionDurationFromElement(this._element);
-      EventHandler.one(this._element, 'transitionend', complete);
-      emulateTransitionEnd(this._element, transitionDuration);
+
+      this._queueCallback(complete, this._element, true);
+
       this._element.style[dimension] = `${this._element[scrollSize]}px`;
     }
 
@@ -1795,21 +1825,12 @@
       };
 
       this._element.style[dimension] = '';
-      const transitionDuration = getTransitionDurationFromElement(this._element);
-      EventHandler.one(this._element, 'transitionend', complete);
-      emulateTransitionEnd(this._element, transitionDuration);
+
+      this._queueCallback(complete, this._element, true);
     }
 
     setTransitioning(isTransitioning) {
       this._isTransitioning = isTransitioning;
-    }
-
-    dispose() {
-      super.dispose();
-      this._config = null;
-      this._parent = null;
-      this._triggerArray = null;
-      this._isTransitioning = null;
     } // Private
 
 
@@ -1831,16 +1852,7 @@
       let {
         parent
       } = this._config;
-
-      if (isElement(parent)) {
-        // it's a jQuery object
-        if (typeof parent.jquery !== 'undefined' || typeof parent[0] !== 'undefined') {
-          parent = parent[0];
-        }
-      } else {
-        parent = SelectorEngine.findOne(parent);
-      }
-
+      parent = getElement(parent);
       const selector = `${SELECTOR_DATA_TOGGLE$4}[data-bs-parent="${parent}"]`;
       SelectorEngine.find(selector, parent).forEach(element => {
         const selected = getElementFromSelector(element);
@@ -1941,11 +1953,11 @@
    * add .Collapse to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(NAME$9, Collapse);
+  defineJQueryPlugin(Collapse);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): dropdown.js
+   * Bootstrap (v5.0.1): dropdown.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -2032,8 +2044,8 @@
       return DefaultType$7;
     }
 
-    static get DATA_KEY() {
-      return DATA_KEY$7;
+    static get NAME() {
+      return NAME$8;
     } // Public
 
 
@@ -2080,11 +2092,7 @@
         if (this._config.reference === 'parent') {
           referenceElement = parent;
         } else if (isElement(this._config.reference)) {
-          referenceElement = this._config.reference; // Check if it's jQuery element
-
-          if (typeof this._config.reference.jquery !== 'undefined') {
-            referenceElement = this._config.reference[0];
-          }
+          referenceElement = getElement(this._config.reference);
         } else if (typeof this._config.reference === 'object') {
           referenceElement = this._config.reference;
         }
@@ -2131,12 +2139,8 @@
     }
 
     dispose() {
-      this._menu = null;
-
       if (this._popper) {
         this._popper.destroy();
-
-        this._popper = null;
       }
 
       super.dispose();
@@ -2322,14 +2326,8 @@
     }
 
     static clearMenus(event) {
-      if (event) {
-        if (event.button === RIGHT_MOUSE_BUTTON || event.type === 'keyup' && event.key !== TAB_KEY) {
-          return;
-        }
-
-        if (/input|select|option|textarea|form/i.test(event.target.tagName)) {
-          return;
-        }
+      if (event && (event.button === RIGHT_MOUSE_BUTTON || event.type === 'keyup' && event.key !== TAB_KEY)) {
+        return;
       }
 
       const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE$3);
@@ -2355,10 +2353,10 @@
 
           if (composedPath.includes(context._element) || context._config.autoClose === 'inside' && !isMenuTarget || context._config.autoClose === 'outside' && isMenuTarget) {
             continue;
-          } // Tab navigation through the dropdown menu shouldn't close the menu
+          } // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
 
 
-          if (event.type === 'keyup' && event.key === TAB_KEY && context._menu.contains(event.target)) {
+          if (context._menu.contains(event.target) && (event.type === 'keyup' && event.key === TAB_KEY || /input|select|option|textarea|form/i.test(event.target.tagName))) {
             continue;
           }
 
@@ -2444,11 +2442,11 @@
    * add .Dropdown to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(NAME$8, Dropdown);
+  defineJQueryPlugin(Dropdown);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): util/scrollBar.js
+   * Bootstrap (v5.0.1): util/scrollBar.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -2522,7 +2520,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): util/backdrop.js
+   * Bootstrap (v5.0.1): util/backdrop.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -2606,6 +2604,7 @@
       config = { ...Default$6,
         ...(typeof config === 'object' ? config : {})
       };
+      config.rootElement = config.rootElement || document.body;
       typeCheckConfig(NAME$7, config, DefaultType$6);
       return config;
     }
@@ -2650,7 +2649,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): modal.js
+   * Bootstrap (v5.0.1): modal.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -2680,7 +2679,7 @@
   const EVENT_HIDDEN$3 = `hidden${EVENT_KEY$6}`;
   const EVENT_SHOW$3 = `show${EVENT_KEY$6}`;
   const EVENT_SHOWN$3 = `shown${EVENT_KEY$6}`;
-  const EVENT_FOCUSIN$1 = `focusin${EVENT_KEY$6}`;
+  const EVENT_FOCUSIN$2 = `focusin${EVENT_KEY$6}`;
   const EVENT_RESIZE = `resize${EVENT_KEY$6}`;
   const EVENT_CLICK_DISMISS$2 = `click.dismiss${EVENT_KEY$6}`;
   const EVENT_KEYDOWN_DISMISS$1 = `keydown.dismiss${EVENT_KEY$6}`;
@@ -2717,8 +2716,8 @@
       return Default$5;
     }
 
-    static get DATA_KEY() {
-      return DATA_KEY$6;
+    static get NAME() {
+      return NAME$6;
     } // Public
 
 
@@ -2792,24 +2791,21 @@
 
       this._setResizeEvent();
 
-      EventHandler.off(document, EVENT_FOCUSIN$1);
+      EventHandler.off(document, EVENT_FOCUSIN$2);
 
       this._element.classList.remove(CLASS_NAME_SHOW$5);
 
       EventHandler.off(this._element, EVENT_CLICK_DISMISS$2);
       EventHandler.off(this._dialog, EVENT_MOUSEDOWN_DISMISS);
 
-      if (isAnimated) {
-        const transitionDuration = getTransitionDurationFromElement(this._element);
-        EventHandler.one(this._element, 'transitionend', event => this._hideModal(event));
-        emulateTransitionEnd(this._element, transitionDuration);
-      } else {
-        this._hideModal();
-      }
+      this._queueCallback(() => this._hideModal(), this._element, isAnimated);
     }
 
     dispose() {
       [window, this._dialog].forEach(htmlElement => EventHandler.off(htmlElement, EVENT_KEY$6));
+
+      this._backdrop.dispose();
+
       super.dispose();
       /**
        * `document` has 2 events `EVENT_FOCUSIN` and `EVENT_CLICK_DATA_API`
@@ -2817,16 +2813,7 @@
        * It will remove `EVENT_CLICK_DATA_API` event that should remain
        */
 
-      EventHandler.off(document, EVENT_FOCUSIN$1);
-      this._config = null;
-      this._dialog = null;
-
-      this._backdrop.dispose();
-
-      this._backdrop = null;
-      this._isShown = null;
-      this._ignoreBackdropClick = null;
-      this._isTransitioning = null;
+      EventHandler.off(document, EVENT_FOCUSIN$2);
     }
 
     handleUpdate() {
@@ -2896,19 +2883,13 @@
         });
       };
 
-      if (isAnimated) {
-        const transitionDuration = getTransitionDurationFromElement(this._dialog);
-        EventHandler.one(this._dialog, 'transitionend', transitionComplete);
-        emulateTransitionEnd(this._dialog, transitionDuration);
-      } else {
-        transitionComplete();
-      }
+      this._queueCallback(transitionComplete, this._dialog, isAnimated);
     }
 
     _enforceFocus() {
-      EventHandler.off(document, EVENT_FOCUSIN$1); // guard against infinite focus loop
+      EventHandler.off(document, EVENT_FOCUSIN$2); // guard against infinite focus loop
 
-      EventHandler.on(document, EVENT_FOCUSIN$1, event => {
+      EventHandler.on(document, EVENT_FOCUSIN$2, event => {
         if (document !== event.target && this._element !== event.target && !this._element.contains(event.target)) {
           this._element.focus();
         }
@@ -3092,11 +3073,11 @@
    * add .Modal to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(NAME$6, Modal);
+  defineJQueryPlugin(Modal);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): offcanvas.js
+   * Bootstrap (v5.0.1): offcanvas.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -3128,7 +3109,7 @@
   const EVENT_SHOWN$2 = `shown${EVENT_KEY$5}`;
   const EVENT_HIDE$2 = `hide${EVENT_KEY$5}`;
   const EVENT_HIDDEN$2 = `hidden${EVENT_KEY$5}`;
-  const EVENT_FOCUSIN = `focusin${EVENT_KEY$5}`;
+  const EVENT_FOCUSIN$1 = `focusin${EVENT_KEY$5}`;
   const EVENT_CLICK_DATA_API$1 = `click${EVENT_KEY$5}${DATA_API_KEY$2}`;
   const EVENT_CLICK_DISMISS$1 = `click.dismiss${EVENT_KEY$5}`;
   const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY$5}`;
@@ -3151,12 +3132,12 @@
     } // Getters
 
 
-    static get Default() {
-      return Default$4;
+    static get NAME() {
+      return NAME$5;
     }
 
-    static get DATA_KEY() {
-      return DATA_KEY$5;
+    static get Default() {
+      return Default$4;
     } // Public
 
 
@@ -3202,9 +3183,7 @@
         });
       };
 
-      const transitionDuration = getTransitionDurationFromElement(this._element);
-      EventHandler.one(this._element, 'transitionend', completeCallBack);
-      emulateTransitionEnd(this._element, transitionDuration);
+      this._queueCallback(completeCallBack, this._element, true);
     }
 
     hide() {
@@ -3218,7 +3197,7 @@
         return;
       }
 
-      EventHandler.off(document, EVENT_FOCUSIN);
+      EventHandler.off(document, EVENT_FOCUSIN$1);
 
       this._element.blur();
 
@@ -3244,18 +3223,14 @@
         EventHandler.trigger(this._element, EVENT_HIDDEN$2);
       };
 
-      const transitionDuration = getTransitionDurationFromElement(this._element);
-      EventHandler.one(this._element, 'transitionend', completeCallback);
-      emulateTransitionEnd(this._element, transitionDuration);
+      this._queueCallback(completeCallback, this._element, true);
     }
 
     dispose() {
       this._backdrop.dispose();
 
       super.dispose();
-      EventHandler.off(document, EVENT_FOCUSIN);
-      this._config = null;
-      this._backdrop = null;
+      EventHandler.off(document, EVENT_FOCUSIN$1);
     } // Private
 
 
@@ -3278,9 +3253,9 @@
     }
 
     _enforceFocusOnElement(element) {
-      EventHandler.off(document, EVENT_FOCUSIN); // guard against infinite focus loop
+      EventHandler.off(document, EVENT_FOCUSIN$1); // guard against infinite focus loop
 
-      EventHandler.on(document, EVENT_FOCUSIN, event => {
+      EventHandler.on(document, EVENT_FOCUSIN$1, event => {
         if (document !== event.target && element !== event.target && !element.contains(event.target)) {
           element.focus();
         }
@@ -3358,11 +3333,11 @@
    * ------------------------------------------------------------------------
    */
 
-  defineJQueryPlugin(NAME$5, Offcanvas);
+  defineJQueryPlugin(Offcanvas);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): util/sanitizer.js
+   * Bootstrap (v5.0.1): util/sanitizer.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -3475,7 +3450,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): tooltip.js
+   * Bootstrap (v5.0.1): tooltip.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -3578,7 +3553,7 @@
       this._activeTrigger = {};
       this._popper = null; // Protected
 
-      this.config = this._getConfig(config);
+      this._config = this._getConfig(config);
       this.tip = null;
 
       this._setListeners();
@@ -3593,16 +3568,8 @@
       return NAME$4;
     }
 
-    static get DATA_KEY() {
-      return DATA_KEY$4;
-    }
-
     static get Event() {
       return Event$2;
-    }
-
-    static get EVENT_KEY() {
-      return EVENT_KEY$4;
     }
 
     static get DefaultType() {
@@ -3656,18 +3623,10 @@
         this.tip.parentNode.removeChild(this.tip);
       }
 
-      this._isEnabled = null;
-      this._timeout = null;
-      this._hoverState = null;
-      this._activeTrigger = null;
-
       if (this._popper) {
         this._popper.destroy();
       }
 
-      this._popper = null;
-      this.config = null;
-      this.tip = null;
       super.dispose();
     }
 
@@ -3696,18 +3655,19 @@
 
       this.setContent();
 
-      if (this.config.animation) {
+      if (this._config.animation) {
         tip.classList.add(CLASS_NAME_FADE$3);
       }
 
-      const placement = typeof this.config.placement === 'function' ? this.config.placement.call(this, tip, this._element) : this.config.placement;
+      const placement = typeof this._config.placement === 'function' ? this._config.placement.call(this, tip, this._element) : this._config.placement;
 
       const attachment = this._getAttachment(placement);
 
       this._addAttachmentClass(attachment);
 
-      const container = this._getContainer();
-
+      const {
+        container
+      } = this._config;
       Data.set(tip, this.constructor.DATA_KEY, this);
 
       if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
@@ -3722,7 +3682,7 @@
       }
 
       tip.classList.add(CLASS_NAME_SHOW$3);
-      const customClass = typeof this.config.customClass === 'function' ? this.config.customClass() : this.config.customClass;
+      const customClass = typeof this._config.customClass === 'function' ? this._config.customClass() : this._config.customClass;
 
       if (customClass) {
         tip.classList.add(...customClass.split(' '));
@@ -3748,13 +3708,9 @@
         }
       };
 
-      if (this.tip.classList.contains(CLASS_NAME_FADE$3)) {
-        const transitionDuration = getTransitionDurationFromElement(this.tip);
-        EventHandler.one(this.tip, 'transitionend', complete);
-        emulateTransitionEnd(this.tip, transitionDuration);
-      } else {
-        complete();
-      }
+      const isAnimated = this.tip.classList.contains(CLASS_NAME_FADE$3);
+
+      this._queueCallback(complete, this.tip, isAnimated);
     }
 
     hide() {
@@ -3802,14 +3758,9 @@
       this._activeTrigger[TRIGGER_CLICK] = false;
       this._activeTrigger[TRIGGER_FOCUS] = false;
       this._activeTrigger[TRIGGER_HOVER] = false;
+      const isAnimated = this.tip.classList.contains(CLASS_NAME_FADE$3);
 
-      if (this.tip.classList.contains(CLASS_NAME_FADE$3)) {
-        const transitionDuration = getTransitionDurationFromElement(tip);
-        EventHandler.one(tip, 'transitionend', complete);
-        emulateTransitionEnd(tip, transitionDuration);
-      } else {
-        complete();
-      }
+      this._queueCallback(complete, this.tip, isAnimated);
 
       this._hoverState = '';
     }
@@ -3831,7 +3782,7 @@
       }
 
       const element = document.createElement('div');
-      element.innerHTML = this.config.template;
+      element.innerHTML = this._config.template;
       this.tip = element.children[0];
       return this.tip;
     }
@@ -3847,13 +3798,10 @@
         return;
       }
 
-      if (typeof content === 'object' && isElement(content)) {
-        if (content.jquery) {
-          content = content[0];
-        } // content is a DOM node or a jQuery
+      if (isElement(content)) {
+        content = getElement(content); // content is a DOM node or a jQuery
 
-
-        if (this.config.html) {
+        if (this._config.html) {
           if (content.parentNode !== element) {
             element.innerHTML = '';
             element.appendChild(content);
@@ -3865,9 +3813,9 @@
         return;
       }
 
-      if (this.config.html) {
-        if (this.config.sanitize) {
-          content = sanitizeHtml(content, this.config.allowList, this.config.sanitizeFn);
+      if (this._config.html) {
+        if (this._config.sanitize) {
+          content = sanitizeHtml(content, this._config.allowList, this._config.sanitizeFn);
         }
 
         element.innerHTML = content;
@@ -3880,7 +3828,7 @@
       let title = this._element.getAttribute('data-bs-original-title');
 
       if (!title) {
-        title = typeof this.config.title === 'function' ? this.config.title.call(this._element) : this.config.title;
+        title = typeof this._config.title === 'function' ? this._config.title.call(this._element) : this._config.title;
       }
 
       return title;
@@ -3914,7 +3862,7 @@
     _getOffset() {
       const {
         offset
-      } = this.config;
+      } = this._config;
 
       if (typeof offset === 'string') {
         return offset.split(',').map(val => Number.parseInt(val, 10));
@@ -3933,7 +3881,7 @@
         modifiers: [{
           name: 'flip',
           options: {
-            fallbackPlacements: this.config.fallbackPlacements
+            fallbackPlacements: this._config.fallbackPlacements
           }
         }, {
           name: 'offset',
@@ -3943,7 +3891,7 @@
         }, {
           name: 'preventOverflow',
           options: {
-            boundary: this.config.boundary
+            boundary: this._config.boundary
           }
         }, {
           name: 'arrow',
@@ -3963,7 +3911,7 @@
         }
       };
       return { ...defaultBsPopperConfig,
-        ...(typeof this.config.popperConfig === 'function' ? this.config.popperConfig(defaultBsPopperConfig) : this.config.popperConfig)
+        ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig)
       };
     }
 
@@ -3971,32 +3919,21 @@
       this.getTipElement().classList.add(`${CLASS_PREFIX$1}-${this.updateAttachment(attachment)}`);
     }
 
-    _getContainer() {
-      if (this.config.container === false) {
-        return document.body;
-      }
-
-      if (isElement(this.config.container)) {
-        return this.config.container;
-      }
-
-      return SelectorEngine.findOne(this.config.container);
-    }
-
     _getAttachment(placement) {
       return AttachmentMap[placement.toUpperCase()];
     }
 
     _setListeners() {
-      const triggers = this.config.trigger.split(' ');
+      const triggers = this._config.trigger.split(' ');
+
       triggers.forEach(trigger => {
         if (trigger === 'click') {
-          EventHandler.on(this._element, this.constructor.Event.CLICK, this.config.selector, event => this.toggle(event));
+          EventHandler.on(this._element, this.constructor.Event.CLICK, this._config.selector, event => this.toggle(event));
         } else if (trigger !== TRIGGER_MANUAL) {
           const eventIn = trigger === TRIGGER_HOVER ? this.constructor.Event.MOUSEENTER : this.constructor.Event.FOCUSIN;
           const eventOut = trigger === TRIGGER_HOVER ? this.constructor.Event.MOUSELEAVE : this.constructor.Event.FOCUSOUT;
-          EventHandler.on(this._element, eventIn, this.config.selector, event => this._enter(event));
-          EventHandler.on(this._element, eventOut, this.config.selector, event => this._leave(event));
+          EventHandler.on(this._element, eventIn, this._config.selector, event => this._enter(event));
+          EventHandler.on(this._element, eventOut, this._config.selector, event => this._leave(event));
         }
       });
 
@@ -4008,8 +3945,8 @@
 
       EventHandler.on(this._element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler);
 
-      if (this.config.selector) {
-        this.config = { ...this.config,
+      if (this._config.selector) {
+        this._config = { ...this._config,
           trigger: 'manual',
           selector: ''
         };
@@ -4049,7 +3986,7 @@
       clearTimeout(context._timeout);
       context._hoverState = HOVER_STATE_SHOW;
 
-      if (!context.config.delay || !context.config.delay.show) {
+      if (!context._config.delay || !context._config.delay.show) {
         context.show();
         return;
       }
@@ -4058,7 +3995,7 @@
         if (context._hoverState === HOVER_STATE_SHOW) {
           context.show();
         }
-      }, context.config.delay.show);
+      }, context._config.delay.show);
     }
 
     _leave(event, context) {
@@ -4075,7 +4012,7 @@
       clearTimeout(context._timeout);
       context._hoverState = HOVER_STATE_OUT;
 
-      if (!context.config.delay || !context.config.delay.hide) {
+      if (!context._config.delay || !context._config.delay.hide) {
         context.hide();
         return;
       }
@@ -4084,7 +4021,7 @@
         if (context._hoverState === HOVER_STATE_OUT) {
           context.hide();
         }
-      }, context.config.delay.hide);
+      }, context._config.delay.hide);
     }
 
     _isWithActiveTrigger() {
@@ -4104,15 +4041,11 @@
           delete dataAttributes[dataAttr];
         }
       });
-
-      if (config && typeof config.container === 'object' && config.container.jquery) {
-        config.container = config.container[0];
-      }
-
       config = { ...this.constructor.Default,
         ...dataAttributes,
         ...(typeof config === 'object' && config ? config : {})
       };
+      config.container = config.container === false ? document.body : getElement(config.container);
 
       if (typeof config.delay === 'number') {
         config.delay = {
@@ -4141,10 +4074,10 @@
     _getDelegateConfig() {
       const config = {};
 
-      if (this.config) {
-        for (const key in this.config) {
-          if (this.constructor.Default[key] !== this.config[key]) {
-            config[key] = this.config[key];
+      if (this._config) {
+        for (const key in this._config) {
+          if (this.constructor.Default[key] !== this._config[key]) {
+            config[key] = this._config[key];
           }
         }
       }
@@ -4211,11 +4144,11 @@
    */
 
 
-  defineJQueryPlugin(NAME$4, Tooltip);
+  defineJQueryPlugin(Tooltip);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): popover.js
+   * Bootstrap (v5.0.1): popover.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -4272,16 +4205,8 @@
       return NAME$3;
     }
 
-    static get DATA_KEY() {
-      return DATA_KEY$3;
-    }
-
     static get Event() {
       return Event$1;
-    }
-
-    static get EVENT_KEY() {
-      return EVENT_KEY$3;
     }
 
     static get DefaultType() {
@@ -4314,7 +4239,7 @@
     }
 
     _getContent() {
-      return this._element.getAttribute('data-bs-content') || this.config.content;
+      return this._element.getAttribute('data-bs-content') || this._config.content;
     }
 
     _cleanTipClass() {
@@ -4361,11 +4286,11 @@
    */
 
 
-  defineJQueryPlugin(NAME$3, Popover);
+  defineJQueryPlugin(Popover);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): scrollspy.js
+   * Bootstrap (v5.0.1): scrollspy.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -4430,8 +4355,8 @@
       return Default$1;
     }
 
-    static get DATA_KEY() {
-      return DATA_KEY$2;
+    static get NAME() {
+      return NAME$2;
     } // Public
 
 
@@ -4464,15 +4389,8 @@
     }
 
     dispose() {
-      super.dispose();
       EventHandler.off(this._scrollElement, EVENT_KEY$2);
-      this._scrollElement = null;
-      this._config = null;
-      this._selector = null;
-      this._offsets = null;
-      this._targets = null;
-      this._activeTarget = null;
-      this._scrollHeight = null;
+      super.dispose();
     } // Private
 
 
@@ -4619,11 +4537,11 @@
    * add .ScrollSpy to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(NAME$2, ScrollSpy);
+  defineJQueryPlugin(ScrollSpy);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): tab.js
+   * Bootstrap (v5.0.1): tab.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -4661,8 +4579,8 @@
 
   class Tab extends BaseComponent {
     // Getters
-    static get DATA_KEY() {
-      return DATA_KEY$1;
+    static get NAME() {
+      return NAME$1;
     } // Public
 
 
@@ -4720,10 +4638,9 @@
       const complete = () => this._transitionComplete(element, active, callback);
 
       if (active && isTransitioning) {
-        const transitionDuration = getTransitionDurationFromElement(active);
         active.classList.remove(CLASS_NAME_SHOW$1);
-        EventHandler.one(active, 'transitionend', complete);
-        emulateTransitionEnd(active, transitionDuration);
+
+        this._queueCallback(complete, element, true);
       } else {
         complete();
       }
@@ -4818,11 +4735,11 @@
    * add .Tab to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(NAME$1, Tab);
+  defineJQueryPlugin(Tab);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): toast.js
+   * Bootstrap (v5.0.1): toast.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -4836,6 +4753,10 @@
   const DATA_KEY = 'bs.toast';
   const EVENT_KEY = `.${DATA_KEY}`;
   const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`;
+  const EVENT_MOUSEOVER = `mouseover${EVENT_KEY}`;
+  const EVENT_MOUSEOUT = `mouseout${EVENT_KEY}`;
+  const EVENT_FOCUSIN = `focusin${EVENT_KEY}`;
+  const EVENT_FOCUSOUT = `focusout${EVENT_KEY}`;
   const EVENT_HIDE = `hide${EVENT_KEY}`;
   const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
   const EVENT_SHOW = `show${EVENT_KEY}`;
@@ -4866,6 +4787,8 @@
       super(element);
       this._config = this._getConfig(config);
       this._timeout = null;
+      this._hasMouseInteraction = false;
+      this._hasKeyboardInteraction = false;
 
       this._setListeners();
     } // Getters
@@ -4879,8 +4802,8 @@
       return Default;
     }
 
-    static get DATA_KEY() {
-      return DATA_KEY;
+    static get NAME() {
+      return NAME;
     } // Public
 
 
@@ -4904,11 +4827,7 @@
 
         EventHandler.trigger(this._element, EVENT_SHOWN);
 
-        if (this._config.autohide) {
-          this._timeout = setTimeout(() => {
-            this.hide();
-          }, this._config.delay);
-        }
+        this._maybeScheduleHide();
       };
 
       this._element.classList.remove(CLASS_NAME_HIDE);
@@ -4917,13 +4836,7 @@
 
       this._element.classList.add(CLASS_NAME_SHOWING);
 
-      if (this._config.animation) {
-        const transitionDuration = getTransitionDurationFromElement(this._element);
-        EventHandler.one(this._element, 'transitionend', complete);
-        emulateTransitionEnd(this._element, transitionDuration);
-      } else {
-        complete();
-      }
+      this._queueCallback(complete, this._element, this._config.animation);
     }
 
     hide() {
@@ -4945,13 +4858,7 @@
 
       this._element.classList.remove(CLASS_NAME_SHOW);
 
-      if (this._config.animation) {
-        const transitionDuration = getTransitionDurationFromElement(this._element);
-        EventHandler.one(this._element, 'transitionend', complete);
-        emulateTransitionEnd(this._element, transitionDuration);
-      } else {
-        complete();
-      }
+      this._queueCallback(complete, this._element, this._config.animation);
     }
 
     dispose() {
@@ -4962,7 +4869,6 @@
       }
 
       super.dispose();
-      this._config = null;
     } // Private
 
 
@@ -4975,8 +4881,54 @@
       return config;
     }
 
+    _maybeScheduleHide() {
+      if (!this._config.autohide) {
+        return;
+      }
+
+      if (this._hasMouseInteraction || this._hasKeyboardInteraction) {
+        return;
+      }
+
+      this._timeout = setTimeout(() => {
+        this.hide();
+      }, this._config.delay);
+    }
+
+    _onInteraction(event, isInteracting) {
+      switch (event.type) {
+        case 'mouseover':
+        case 'mouseout':
+          this._hasMouseInteraction = isInteracting;
+          break;
+
+        case 'focusin':
+        case 'focusout':
+          this._hasKeyboardInteraction = isInteracting;
+          break;
+      }
+
+      if (isInteracting) {
+        this._clearTimeout();
+
+        return;
+      }
+
+      const nextElement = event.relatedTarget;
+
+      if (this._element === nextElement || this._element.contains(nextElement)) {
+        return;
+      }
+
+      this._maybeScheduleHide();
+    }
+
     _setListeners() {
       EventHandler.on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, () => this.hide());
+      EventHandler.on(this._element, EVENT_MOUSEOVER, event => this._onInteraction(event, true));
+      EventHandler.on(this._element, EVENT_MOUSEOUT, event => this._onInteraction(event, false));
+      EventHandler.on(this._element, EVENT_FOCUSIN, event => this._onInteraction(event, true));
+      EventHandler.on(this._element, EVENT_FOCUSOUT, event => this._onInteraction(event, false));
     }
 
     _clearTimeout() {
@@ -5014,11 +4966,11 @@
    */
 
 
-  defineJQueryPlugin(NAME, Toast);
+  defineJQueryPlugin(Toast);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): index.umd.js
+   * Bootstrap (v5.0.1): index.umd.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */

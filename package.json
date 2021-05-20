@@ -1,7 +1,7 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "config": {
     "version_short": "5.0"
   },
@@ -100,9 +100,9 @@
     "@popperjs/core": "^2.9.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.16",
-    "@babel/core": "^7.14.0",
-    "@babel/preset-env": "^7.14.1",
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
     "@popperjs/core": "^2.9.2",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^19.0.0",
@@ -114,7 +114,7 @@
     "cross-env": "^7.0.3",
     "eslint": "^7.26.0",
     "eslint-config-xo": "^0.36.0",
-    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-import": "^2.23.2",
     "eslint-plugin-unicorn": "^31.0.0",
     "find-unused-sass-variables": "^3.1.0",
     "glob": "^7.1.7",
@@ -138,10 +138,10 @@
     "npm-run-all": "^4.1.5",
     "postcss": "^8.2.15",
     "postcss-cli": "^8.3.1",
-    "rollup": "^2.47.0",
+    "rollup": "^2.48.0",
     "rollup-plugin-istanbul": "^3.0.0",
     "rtlcss": "^3.1.2",
-    "sass": "^1.32.12",
+    "sass": "^1.32.13",
     "shelljs": "^0.8.4",
     "stylelint": "^13.13.1",
     "stylelint-config-twbs-bootstrap": "^2.2.0",

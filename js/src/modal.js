@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0): modal.js
+ * Bootstrap (v5.0.1): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -145,7 +145,7 @@ class Modal extends BaseComponent {
   }
 
   hide(event) {
-    if (event) {
+    if (event && ['A', 'AREA'].includes(event.target.tagName)) {
       event.preventDefault()
     }
 

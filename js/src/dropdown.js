@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0): dropdown.js
+ * Bootstrap (v5.0.1): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9,12 +9,14 @@ import * as Popper from '@popperjs/core'
 
 import {
   defineJQueryPlugin,
+  getElement,
   getElementFromSelector,
   isDisabled,
   isElement,
   isVisible,
   isRTL,
   noop,
+  getNextActiveElement,
   typeCheckConfig
 } from './util/index'
 import Data from './dom/data'
@@ -166,12 +168,7 @@ class Dropdown extends BaseComponent {
       if (this._config.reference === 'parent') {
         referenceElement = parent
       } else if (isElement(this._config.reference)) {
-        referenceElement = this._config.reference
-
-        // Check if it's jQuery element
-        if (typeof this._config.reference.jquery !== 'undefined') {
-          referenceElement = this._config.reference[0]
-        }
+        referenceElement = getElement(this._config.reference)
       } else if (typeof this._config.reference === 'object') {
         referenceElement = this._config.reference
       }
@@ -358,28 +355,17 @@ class Dropdown extends BaseComponent {
   }
 
   _selectMenuItem(event) {
+    if (![ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key)) {
+      return
+    }
+
     const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu).filter(isVisible)
 
     if (!items.length) {
       return
     }
 
-    let index = items.indexOf(event.target)
-
-    // Up
-    if (event.key === ARROW_UP_KEY && index > 0) {
-      index--
-    }
-
-    // Down
-    if (event.key === ARROW_DOWN_KEY && index < items.length - 1) {
-      index++
-    }
-
-    // index is -1 if the first keydown is an ArrowUp
-    index = index === -1 ? 0 : index
-
-    items[index].focus()
+    getNextActiveElement(items, event.target, event.key === ARROW_DOWN_KEY, false).focus()
   }
 
   // Static

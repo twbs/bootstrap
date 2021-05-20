@@ -1,15 +1,15 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0): collapse.js
+ * Bootstrap (v5.0.1): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
   defineJQueryPlugin,
+  getElement,
   getSelectorFromElement,
   getElementFromSelector,
-  isElement,
   reflow,
   typeCheckConfig
 } from './util/index'
@@ -272,14 +272,7 @@ class Collapse extends BaseComponent {
   _getParent() {
     let { parent } = this._config
 
-    if (isElement(parent)) {
-      // it's a jQuery object
-      if (typeof parent.jquery !== 'undefined' || typeof parent[0] !== 'undefined') {
-        parent = parent[0]
-      }
-    } else {
-      parent = SelectorEngine.findOne(parent)
-    }
+    parent = getElement(parent)
 
     const selector = `${SELECTOR_DATA_TOGGLE}[data-bs-parent="${parent}"]`
 
