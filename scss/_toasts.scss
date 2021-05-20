@@ -9,7 +9,6 @@
   border: $toast-border-width solid $toast-border-color;
   box-shadow: $toast-box-shadow;
   @include border-radius($toast-border-radius);
-  z-index: $zindex-toast;
 
   &:not(.showing):not(.show) {
     opacity: 0;
@@ -24,6 +23,7 @@
   width: max-content;
   max-width: 100%;
   pointer-events: none;
+  z-index: $zindex-toast;
 
   > :not(:last-child) {
     margin-bottom: $toast-spacing;
