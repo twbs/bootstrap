@@ -50,6 +50,12 @@
       .#{$property-class + $infix + $property-class-modifier} {
         @each $property in $properties {
           #{$property}: $value if($enable-important-utilities, !important, null);
+          // Ensures decent contrast where possible
+          @if "background-color" == $property and "transparent" != inspect($value) {
+            color: color-contrast($value);
+          } @else if "color" == $property and "inherit" != inspect($value) and $accessible-orange != $value {
+            background-color: color-contrast($value);
+          }
         }
       }
 
