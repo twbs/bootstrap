@@ -326,16 +326,52 @@ describe('Util', () => {
       expect(Util.isVisible(div)).toEqual(false)
     })
 
-    it('should return false if the parent element is not visible', () => {
+    it('should return false if an ancestor element is display none', () => {
       fixtureEl.innerHTML = [
         '<div style="display: none;">',
-        '  <div class="content"></div>',
+        '  <div>',
+        '    <div>',
+        '      <div class="content"></div>',
+        '    </div>',
+        '  </div>',
         '</div>'
       ].join('')
 
       const div = fixtureEl.querySelector('.content')
 
       expect(Util.isVisible(div)).toEqual(false)
+    })
+
+    it('should return false if an ancestor element is visibility hidden', () => {
+      fixtureEl.innerHTML = [
+        '<div style="visibility: hidden;">',
+        '  <div>',
+        '    <div>',
+        '      <div class="content"></div>',
+        '    </div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('.content')
+
+      expect(Util.isVisible(div)).toEqual(false)
+    })
+
+    it('should return true if an ancestor element is visibility hidden, but reverted', () => {
+      fixtureEl.innerHTML = [
+        '<div style="visibility: hidden;">',
+        '  <div style="visibility: visible;">',
+        '    <div>',
+        '      <div class="content"></div>',
+        '    </div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('.content')
+
+      expect(Util.isVisible(div)).toEqual(true)
     })
 
     it('should return true if the element is visible', () => {
@@ -348,6 +384,18 @@ describe('Util', () => {
       const div = fixtureEl.querySelector('#element')
 
       expect(Util.isVisible(div)).toEqual(true)
+    })
+
+    it('should return false if the element is hidden, but not via display or visibility', () => {
+      fixtureEl.innerHTML = [
+        '<details>',
+        '  <div id="element"></div>',
+        '</details>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('#element')
+
+      expect(Util.isVisible(div)).toEqual(false)
     })
   })
 
