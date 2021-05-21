@@ -129,6 +129,25 @@ describe('Backdrop', () => {
     })
   })
 
+  it('should not error if the backdrop no longer has a parent', done => {
+    const instance = new Backdrop({
+      isVisible: true,
+      isAnimated: true
+    })
+    const getElements = () => document.querySelectorAll(CLASS_BACKDROP)
+
+    instance.show(() => {
+      instance.hide(() => {
+        expect(getElements().length).toEqual(0)
+
+        // replace the fixture, which was just wiped out
+        fixtureEl = getFixture()
+        done()
+      })
+      document.body.innerHTML = 'changed'
+    })
+  })
+
   describe('click callback', () => {
     it('it should execute callback on click', done => {
       const spy = jasmine.createSpy('spy')
