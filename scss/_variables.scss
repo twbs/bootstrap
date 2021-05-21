@@ -280,6 +280,56 @@ $body-bg:                   $white !default;
 $body-color:                $gray-900 !default;
 $body-text-align:           null !default;
 
+// Utilities maps
+
+// scss-docs-start theme-colors-rgb
+$theme-colors-rgb: (
+  "primary":   to-rgb($primary),
+  "secondary": to-rgb($secondary),
+  "success":   to-rgb($success),
+  "info":      to-rgb($info),
+  "warning":   to-rgb($warning),
+  "danger":    to-rgb($danger),
+  "light":     to-rgb($light),
+  "dark":      to-rgb($dark),
+  "black":     to-rgb($black),
+  "white":     to-rgb($white),
+  "body":      to-rgb($body-color)
+) !default;
+// scss-docs-end theme-colors-rgb
+
+// scss-docs-start utilities-text-colors
+$utilities-text-colors: (
+  "primary":   rgba(var(--bs-primary-rgb), var(--bs-text-opacity, 1)),
+  "secondary": rgba(var(--bs-secondary-rgb), var(--bs-text-opacity, 1)),
+  "success":   rgba(var(--bs-success-rgb), var(--bs-text-opacity, 1)),
+  "info":      rgba(var(--bs-info-rgb), var(--bs-text-opacity, 1)),
+  "warning":   rgba(var(--bs-warning-rgb), var(--bs-text-opacity, 1)),
+  "danger":    rgba(var(--bs-danger-rgb), var(--bs-text-opacity, 1)),
+  "light":     rgba(var(--bs-light-rgb), var(--bs-text-opacity, 1)),
+  "dark":      rgba(var(--bs-dark-rgb), var(--bs-text-opacity, 1)),
+  "black":     rgba(var(--bs-black-rgb), var(--bs-text-opacity, 1)),
+  "white":     rgba(var(--bs-white-rgb), var(--bs-text-opacity, 1)),
+  "body":      rgba(var(--bs-body-color-rgb), var(--bs-text-opacity, 1))
+) !default;
+// scss-docs-end utilities-text-colors
+
+// scss-docs-start utilities-bg-colors
+$utilities-bg-colors: (
+  "primary":   rgba(var(--bs-primary-rgb), var(--bs-bg-opacity, 1)),
+  "secondary": rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity, 1)),
+  "success":   rgba(var(--bs-success-rgb), var(--bs-bg-opacity, 1)),
+  "info":      rgba(var(--bs-info-rgb), var(--bs-bg-opacity, 1)),
+  "warning":   rgba(var(--bs-warning-rgb), var(--bs-bg-opacity, 1)),
+  "danger":    rgba(var(--bs-danger-rgb), var(--bs-bg-opacity, 1)),
+  "light":     rgba(var(--bs-light-rgb), var(--bs-bg-opacity, 1)),
+  "dark":      rgba(var(--bs-dark-rgb), var(--bs-bg-opacity, 1)),
+  "black":     rgba(var(--bs-black-rgb), var(--bs-bg-opacity, 1)),
+  "white":     rgba(var(--bs-white-rgb), var(--bs-bg-opacity, 1)),
+  "body":      rgba(var(--bs-body-color-rgb), var(--bs-bg-opacity, 1))
+) !default;
+// scss-docs-end utilities-bg-colors
+
 
 // Links
 //

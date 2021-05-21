@@ -27,6 +27,40 @@ Colorize text with color utilities. If you want to colorize links, you can use t
 {{< partial "callout-warning-color-assistive-technologies.md" >}}
 {{< /callout >}}
 
+## Opacity
+
+<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.1.0</small>
+
+As of v5.1.0, text color utilities are generated with Sass using CSS variables. This allows for real-time color changes without compilation and dynamic alpha transparency changes.
+
+### How it works
+
+Consider our default `.text-primary` utility.
+
+```css
+.text-primary {
+  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity, 1)) !important;
+}
+```
+
+We use an RGB version of our `--bs-primary` (with the value of `13, 110, 253`) CSS variable and attached a second CSS variable, `--bs-text-opacity`, for the alpha transparency (with no default value, but a fallback of `1`). That means anytime you use `.text-primary` now, your computed `color` value is `rgba(13, 110, 253, 1)`.
+
+To change that opacity, override `--bs-text-opacity` via custom styles or inline styles.
+
+{{< example >}}
+<div class="text-primary">This is default primary text</div>
+<div class="text-primary" style="--bs-text-opacity: .5;">This is 50% opacity primary text</div>
+{{< /example >}}
+
+Or, choose from any of the `.text-opacity` utilities:
+
+{{< example >}}
+<div class="text-primary">This is default primary text</div>
+<div class="text-primary text-opacity-75">This is 75% opacity primary text</div>
+<div class="text-primary text-opacity-50">This is 50% opacity primary text</div>
+<div class="text-primary text-opacity-25">This is 25% opacity primary text</div>
+{{< /example >}}
+
 ## Specificity
 
 Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` or more semantic element with the desired class.
@@ -47,6 +81,8 @@ Grayscale colors are also available, but only a subset are used to generate any 
 
 {{< scss-docs name="gray-color-variables" file="scss/_variables.scss" >}}
 
+RGB colors are generated from a separate Sass map
+
 ### Map
 
 Theme colors are then put into a Sass map so we can loop over them to generate our utilities, component modifiers, and more.
@@ -56,6 +92,14 @@ Theme colors are then put into a Sass map so we can loop over them to generate o
 Grayscale colors are also available as a Sass map. **This map is not used to generate any utilities.**
 
 {{< scss-docs name="gray-colors-map" file="scss/_variables.scss" >}}
+
+RGB colors are generated from a separate Sass map:
+
+{{< scss-docs name="theme-colors-rgb" file="scss/_variables.scss" >}}
+
+And color opacities build on that with their own map that's consumed by the utilities API:
+
+{{< scss-docs name="utilities-text-colors" file="scss/_variables.scss" >}}
 
 ### Utilities API
 

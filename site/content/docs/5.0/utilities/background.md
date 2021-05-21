@@ -35,6 +35,41 @@ Do you need a gradient in your custom CSS? Just add `background-image: var(--bs-
 {{< /colors.inline >}}
 {{< /markdown >}}
 
+## Opacity
+
+<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.1.0</small>
+
+As of v5.1.0, `background-color` utilities are generated with Sass using CSS variables. This allows for real-time color changes without compilation and dynamic alpha transparency changes.
+
+### How it works
+
+Consider our default `.bg-success` utility.
+
+```css
+.bg-success {
+  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity, 1)) !important;
+}
+```
+
+We use an RGB version of our `--bs-succes` (with the value of `25, 135, 84`) CSS variable and attached a second CSS variable, `--bs-bg-opacity`, for the alpha transparency (with no default value, but a fallback of `1`). That means anytime you use `.bg-success` now, your computed `color` value is `rgba(25, 135, 84, 1)`.
+
+To change that opacity, override `--bs-bg-opacity` via custom styles or inline styles.
+
+{{< example >}}
+<div class="bg-success p-2 text-white">This is default success background</div>
+<div class="bg-success p-2 text-white" style="--bs-bg-opacity: .5;">This is 50% opacity success background</div>
+{{< /example >}}
+
+Or, choose from any of the `.bg-opacity` utilities:
+
+{{< example >}}
+<div class="bg-success p-2 text-white">This is default success background</div>
+<div class="bg-success p-2 text-white bg-opacity-75">This is 75% opacity success background</div>
+<div class="bg-success p-2 text-dark bg-opacity-50">This is 50% opacity success background</div>
+<div class="bg-success p-2 text-dark bg-opacity-25">This is 25% opacity success background</div>
+<div class="bg-success p-2 text-dark bg-opacity-10">This is 10% opacity success background</div>
+{{< /example >}}
+
 ## Sass
 
 In addition to the following Sass functionality, consider reading about our included [CSS custom properties]({{< docsref "/customize/css-variables" >}}) (aka CSS variables) for colors and more.
@@ -62,6 +97,14 @@ Theme colors are then put into a Sass map so we can loop over them to generate o
 Grayscale colors are also available as a Sass map. **This map is not used to generate any utilities.**
 
 {{< scss-docs name="gray-colors-map" file="scss/_variables.scss" >}}
+
+RGB colors are generated from a separate Sass map:
+
+{{< scss-docs name="theme-colors-rgb" file="scss/_variables.scss" >}}
+
+And background color opacities build on that with their own map that's consumed by the utilities API:
+
+{{< scss-docs name="utilities-bg-colors" file="scss/_variables.scss" >}}
 
 ### Mixins
 

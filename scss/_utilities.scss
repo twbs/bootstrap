@@ -502,15 +502,22 @@ $utilities: map-merge(
       property: color,
       class: text,
       values: map-merge(
-        $theme-colors,
+        $utilities-text-colors,
         (
-          "white": $white,
-          "body": $body-color,
           "muted": $text-muted,
           "black-50": rgba($black, .5),
           "white-50": rgba($white, .5),
           "reset": inherit,
         )
+      )
+    ),
+    "text-opacity": (
+      css-var: true,
+      class: text-opacity,
+      values: (
+        25: .25,
+        50: .5,
+        75: .75
       )
     ),
     // scss-docs-end utils-color
@@ -519,12 +526,20 @@ $utilities: map-merge(
       property: background-color,
       class: bg,
       values: map-merge(
-        $theme-colors,
+        $utilities-bg-colors,
         (
-          "body": $body-bg,
-          "white": $white,
           "transparent": transparent
         )
+      )
+    ),
+    "bg-opacity": (
+      css-var: true,
+      class: bg-opacity,
+      values: (
+        10: .1,
+        25: .25,
+        50: .5,
+        75: .75
       )
     ),
     // scss-docs-end utils-bg-color

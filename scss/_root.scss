@@ -8,6 +8,17 @@
     --#{$variable-prefix}#{$color}: #{$value};
   }
 
+  @each $color, $value in $theme-colors-rgb {
+    --#{$variable-prefix}#{$color}-rgb: #{$value};
+  }
+
+  // Root and body
+  --#{$variable-prefix}root-font-size: #{$font-size-root};
+  --#{$variable-prefix}body-font: #{$font-family-base};
+  --#{$variable-prefix}body-font-size: #{$font-size-base};
+  --#{$variable-prefix}body-color: #{$body-color};
+  --#{$variable-prefix}body-bg: #{$body-bg};
+
   // Use `inspect` for lists so that quoted items keep the quotes.
   // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
   --#{$variable-prefix}font-sans-serif: #{inspect($font-family-sans-serif)};
