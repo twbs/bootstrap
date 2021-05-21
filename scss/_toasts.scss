@@ -21,8 +21,8 @@
 
 .toast-container {
   width: max-content;
-  max-width: 100%;
   z-index: $zindex-toast;
+  max-width: 100%;
   pointer-events: none;
 
   > :not(:last-child) {
