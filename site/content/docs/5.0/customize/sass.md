@@ -52,13 +52,13 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 // Custom.scss
 // Option B: Include parts of Bootstrap
 
-// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+// 1. Include functions and variables first (so you can manipulate colors, SVGs, calc, etc)
 @import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
 
 // 2. Include any default variable overrides here
 
 // 3. Include remainder of required Bootstrap stylesheets
-@import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/mixins";
 
 // 4. Include any optional Bootstrap components as you like
