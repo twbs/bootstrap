@@ -209,6 +209,15 @@ This makes an alert listen for click events on descendant elements which have th
         Static method which allows you to get the alert instance associated to a DOM element, you can use it like this: <code>bootstrap.Alert.getInstance(alert)</code>
       </td>
     </tr>
+    <tr>
+      <td>
+        <code>getOrCreateInstance</code>
+      </td>
+      <td>
+        Static method which returns an alert instance associated to a DOM element or create a new one in case it wasn't initialised.
+        You can use it like this: <code>bootstrap.Alert.getOrCreateInstance(alert)</code>
+      </td>
+    </tr>
   </tbody>
 </table>
 

@@ -952,6 +952,15 @@ var myModalEl = document.getElementById('myModal')
 var modal = bootstrap.Modal.getInstance(myModalEl) // Returns a Bootstrap modal instance
 ```
 
+#### getOrCreateInstance
+
+*Static* method which allows you to get the modal instance associated with a DOM element, or create a new one in case it wasn't initialised
+
+```js
+var myModalEl = document.querySelector('#myModal')
+var modal = bootstrap.Modal.getOrCreateInstance(myModalEl) // Returns a Bootstrap modal instance
+```
+
 ### Events
 
 Bootstrap's modal class exposes a few events for hooking into modal functionality. All modal events are fired at the modal itself (i.e. at the `<div class="modal">`).
