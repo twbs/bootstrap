@@ -23,10 +23,14 @@
         "SwitchCase": 1
       }
     ],
+    "no-var": "off",
     "object-curly-spacing": [
       "error",
       "always"
     ],
+    "object-shorthand": "off",
+    "prefer-arrow-callback": "off",
+    "prefer-destructuring": "off",
     "semi": [
       "error",
       "never"
@@ -39,6 +43,7 @@
     "unicorn/prefer-dom-node-dataset": "off",
     "unicorn/prefer-includes": "off",
     "unicorn/prefer-number-properties": "off",
+    "unicorn/prefer-module": "off",
     "unicorn/prefer-query-selector": "off",
     "unicorn/prevent-abbreviations": "off"
   }

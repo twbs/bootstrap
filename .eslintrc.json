@@ -4,7 +4,7 @@
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:unicorn/recommended",
-    "xo/esnext",
+    "xo",
     "xo/browser"
   ],
   "rules": {
@@ -52,6 +52,7 @@
     "unicorn/prefer-dom-node-remove": "off",
     "unicorn/prefer-includes": "off",
     "unicorn/prefer-math-trunc": "off",
+    "unicorn/prefer-module": "off",
     "unicorn/prefer-number-properties": "off",
     "unicorn/prefer-optional-catch-binding": "off",
     "unicorn/prefer-query-selector": "off",
