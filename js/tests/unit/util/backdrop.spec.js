@@ -127,24 +127,26 @@ describe('Backdrop', () => {
         })
       })
     })
-  })
 
-  it('should not error if the backdrop no longer has a parent', done => {
-    const instance = new Backdrop({
-      isVisible: true,
-      isAnimated: true
-    })
-    const getElements = () => document.querySelectorAll(CLASS_BACKDROP)
+    it('should not error if the backdrop no longer has a parent', done => {
+      fixtureEl.innerHTML = '<div id="wrapper"></div>'
 
-    instance.show(() => {
-      instance.hide(() => {
-        expect(getElements().length).toEqual(0)
-
-        // replace the fixture, which was just wiped out
-        fixtureEl = getFixture()
-        done()
+      const wrapper = fixtureEl.querySelector('#wrapper')
+      const instance = new Backdrop({
+        isVisible: true,
+        isAnimated: true,
+        rootElement: wrapper
       })
-      document.body.innerHTML = 'changed'
+
+      const getElements = () => document.querySelectorAll(CLASS_BACKDROP)
+
+      instance.show(() => {
+        wrapper.parentNode.removeChild(wrapper)
+        instance.hide(() => {
+          expect(getElements().length).toEqual(0)
+          done()
+        })
+      })
     })
   })
 
