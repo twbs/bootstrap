@@ -62,9 +62,7 @@ class BaseComponent {
   }
 
   static getOrCreateInstance(element, config = {}) {
-    const _config = typeof config === 'object' ? config : null
-
-    return this.getInstance(element) || new this(element, _config)
+    return this.getInstance(element) || new this(element, typeof config === 'object' ? config : null)
   }
 
   static get VERSION() {
