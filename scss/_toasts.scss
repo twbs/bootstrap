@@ -22,8 +22,8 @@
 .toast-container {
   width: max-content;
   max-width: 100%;
-  pointer-events: none;
   z-index: $zindex-toast;
+  pointer-events: none;
 
   > :not(:last-child) {
     margin-bottom: $toast-spacing;
