@@ -34,11 +34,7 @@ class ScrollBarHelper {
   }
 
   _disableOverFlow() {
-    const actualValue = this._element.style.overflow
-    if (actualValue) {
-      Manipulator.setDataAttribute(this._element, 'overflow', actualValue)
-    }
-
+    this._saveInitialAttribute(this._element, 'overflow')
     this._element.style.overflow = 'hidden'
   }
 
@@ -49,11 +45,7 @@ class ScrollBarHelper {
         return
       }
 
-      const actualValue = element.style[styleProp]
-      if (actualValue) {
-        Manipulator.setDataAttribute(element, styleProp, actualValue)
-      }
-
+      this._saveInitialAttribute(element, styleProp)
       const calculatedValue = window.getComputedStyle(element)[styleProp]
       element.style[styleProp] = `${callback(Number.parseFloat(calculatedValue))}px`
     }
@@ -66,6 +58,13 @@ class ScrollBarHelper {
     this._resetElementAttributes(this._element, 'paddingRight')
     this._resetElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight')
     this._resetElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight')
+  }
+
+  _saveInitialAttribute(element, styleProp) {
+    const actualValue = element.style[styleProp]
+    if (actualValue) {
+      Manipulator.setDataAttribute(element, styleProp, actualValue)
+    }
   }
 
   _resetElementAttributes(selector, styleProp) {
