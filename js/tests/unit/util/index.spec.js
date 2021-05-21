@@ -661,11 +661,22 @@ describe('Util', () => {
   })
 
   describe('getNextActiveElement', () => {
-    it('should return first element if active not exists or not given', () => {
+    it('should return first element if active not exists or not given and shouldGetNext is either true, or false with cycling being disabled', () => {
       const array = ['a', 'b', 'c', 'd']
 
       expect(Util.getNextActiveElement(array, '', true, true)).toEqual('a')
       expect(Util.getNextActiveElement(array, 'g', true, true)).toEqual('a')
+      expect(Util.getNextActiveElement(array, '', true, false)).toEqual('a')
+      expect(Util.getNextActiveElement(array, 'g', true, false)).toEqual('a')
+      expect(Util.getNextActiveElement(array, '', false, false)).toEqual('a')
+      expect(Util.getNextActiveElement(array, 'g', false, false)).toEqual('a')
+    })
+
+    it('should return last element if active not exists or not given and shouldGetNext is false but cycling is enabled', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, '', false, true)).toEqual('d')
+      expect(Util.getNextActiveElement(array, 'g', false, true)).toEqual('d')
     })
 
     it('should return next element or same if is last', () => {
