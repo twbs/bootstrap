@@ -4,6 +4,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
+import { removeElement } from './index'
 
 const uriAttrs = new Set([
   'background',
@@ -108,7 +109,7 @@ export function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
     const elName = el.nodeName.toLowerCase()
 
     if (!allowlistKeys.includes(elName)) {
-      el.parentNode.removeChild(el)
+      removeElement(el)
 
       continue
     }

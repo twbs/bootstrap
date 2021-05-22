@@ -2,6 +2,7 @@ import * as Util from '../../../src/util/index'
 
 /** Test helpers */
 import { clearFixture, getFixture } from '../../helpers/fixture'
+import { removeElement } from '../../../src/util/index'
 
 describe('Util', () => {
   let fixtureEl
@@ -657,6 +658,29 @@ describe('Util', () => {
       const spy = jasmine.createSpy('spy')
       Util.execute(spy)
       expect(spy).toHaveBeenCalled()
+    })
+  })
+
+  describe('removeElement', () => {
+    it('should removeElement if arg is element and return true', () => {
+      fixtureEl.innerHTML = '<div></div>'
+      const div = fixtureEl.querySelector('div')
+
+      expect(removeElement(div)).toBe(true)
+      expect(fixtureEl.querySelectorAll('div').length).toBe(0)
+    })
+
+    it('should return false if no argument given', () => {
+      expect(removeElement()).toBe(false)
+      expect(removeElement({})).toBe(false)
+    })
+
+    it('should return false if argument is element but it is removed mefore execution', () => {
+      fixtureEl.innerHTML = '<div></div>'
+      const div = fixtureEl.querySelector('div')
+      div.parentElement.removeChild(div)
+
+      expect(removeElement(div)).toBe(false)
     })
   })
 

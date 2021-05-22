@@ -15,6 +15,7 @@ import {
   isElement,
   isRTL,
   noop,
+  removeElement,
   typeCheckConfig
 } from './util/index'
 import {
@@ -208,9 +209,7 @@ class Tooltip extends BaseComponent {
 
     EventHandler.off(this._element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler)
 
-    if (this.tip && this.tip.parentNode) {
-      this.tip.parentNode.removeChild(this.tip)
-    }
+    removeElement(this.tip)
 
     if (this._popper) {
       this._popper.destroy()
@@ -314,8 +313,8 @@ class Tooltip extends BaseComponent {
         return
       }
 
-      if (this._hoverState !== HOVER_STATE_SHOW && tip.parentNode) {
-        tip.parentNode.removeChild(tip)
+      if (this._hoverState !== HOVER_STATE_SHOW) {
+        removeElement(tip)
       }
 
       this._cleanTipClass()

@@ -246,6 +246,20 @@ const defineJQueryPlugin = plugin => {
   })
 }
 
+const removeElement = element => {
+  if (!element) {
+    return false
+  }
+
+  const { parentNode } = element
+  if (parentNode) {
+    parentNode.removeChild(element)
+    return true
+  }
+
+  return false
+}
+
 const execute = callback => {
   if (typeof callback === 'function') {
     callback()
@@ -296,6 +310,7 @@ export {
   noop,
   getNextActiveElement,
   reflow,
+  removeElement,
   getjQuery,
   onDOMContentLoaded,
   isRTL,
