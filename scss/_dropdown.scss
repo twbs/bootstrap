@@ -16,7 +16,6 @@
 // The dropdown menu
 .dropdown-menu {
   position: absolute;
-  top: 100%;
   z-index: $zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
   min-width: $dropdown-min-width;
@@ -33,6 +32,7 @@
   @include box-shadow($dropdown-box-shadow);
 
   &[data-bs-popper] {
+    top: 100%;
     left: 0;
     margin-top: $dropdown-spacer;
   }
@@ -70,14 +70,11 @@
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 // Just add .dropup after the standard .dropdown class and you're set.
 .dropup {
-  .dropdown-menu {
+  .dropdown-menu[data-bs-popper] {
     top: auto;
     bottom: 100%;
-
-    &[data-bs-popper] {
-      margin-top: 0;
-      margin-bottom: $dropdown-spacer;
-    }
+    margin-top: 0;
+    margin-bottom: $dropdown-spacer;
   }
 
   .dropdown-toggle {
@@ -86,15 +83,12 @@
 }
 
 .dropend {
-  .dropdown-menu {
+  .dropdown-menu[data-bs-popper] {
     top: 0;
     right: auto;
     left: 100%;
-
-    &[data-bs-popper] {
-      margin-top: 0;
-      margin-left: $dropdown-spacer;
-    }
+    margin-top: 0;
+    margin-left: $dropdown-spacer;
   }
 
   .dropdown-toggle {
@@ -106,15 +100,12 @@
 }
 
 .dropstart {
-  .dropdown-menu {
+  .dropdown-menu[data-bs-popper] {
     top: 0;
     right: 100%;
     left: auto;
-
-    &[data-bs-popper] {
-      margin-top: 0;
-      margin-right: $dropdown-spacer;
-    }
+    margin-top: 0;
+    margin-right: $dropdown-spacer;
   }
 
   .dropdown-toggle {

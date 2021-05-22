@@ -1,17 +1,15 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): collapse.js
+ * Bootstrap (v5.0.1): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
+  getElement,
   getSelectorFromElement,
   getElementFromSelector,
-  getTransitionDurationFromElement,
-  isElement,
   reflow,
   typeCheckConfig
 } from './util/index'
@@ -72,8 +70,8 @@ class Collapse extends BaseComponent {
     this._isTransitioning = false
     this._config = this._getConfig(config)
     this._triggerArray = SelectorEngine.find(
-      `${SELECTOR_DATA_TOGGLE}[href="#${element.id}"],` +
-      `${SELECTOR_DATA_TOGGLE}[data-bs-target="#${element.id}"]`
+      `${SELECTOR_DATA_TOGGLE}[href="#${this._element.id}"],` +
+      `${SELECTOR_DATA_TOGGLE}[data-bs-target="#${this._element.id}"]`
     )
 
     const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
@@ -82,7 +80,7 @@ class Collapse extends BaseComponent {
       const elem = toggleList[i]
       const selector = getSelectorFromElement(elem)
       const filterElement = SelectorEngine.find(selector)
-        .filter(foundElem => foundElem === element)
+        .filter(foundElem => foundElem === this._element)
 
       if (selector !== null && filterElement.length) {
         this._selector = selector
@@ -107,8 +105,8 @@ class Collapse extends BaseComponent {
     return Default
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -147,7 +145,7 @@ class Collapse extends BaseComponent {
     const container = SelectorEngine.findOne(this._selector)
     if (actives) {
       const tempActiveData = actives.find(elem => container !== elem)
-      activesData = tempActiveData ? Data.getData(tempActiveData, DATA_KEY) : null
+      activesData = tempActiveData ? Data.get(tempActiveData, DATA_KEY) : null
 
       if (activesData && activesData._isTransitioning) {
         return
@@ -166,7 +164,7 @@ class Collapse extends BaseComponent {
         }
 
         if (!activesData) {
-          Data.setData(elemActive, DATA_KEY, null)
+          Data.set(elemActive, DATA_KEY, null)
         }
       })
     }
@@ -200,11 +198,8 @@ class Collapse extends BaseComponent {
 
     const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1)
     const scrollSize = `scroll${capitalizedDimension}`
-    const transitionDuration = getTransitionDurationFromElement(this._element)
 
-    EventHandler.one(this._element, 'transitionend', complete)
-
-    emulateTransitionEnd(this._element, transitionDuration)
+    this._queueCallback(complete, this._element, true)
     this._element.style[dimension] = `${this._element[scrollSize]}px`
   }
 
@@ -250,22 +245,12 @@ class Collapse extends BaseComponent {
     }
 
     this._element.style[dimension] = ''
-    const transitionDuration = getTransitionDurationFromElement(this._element)
 
-    EventHandler.one(this._element, 'transitionend', complete)
-    emulateTransitionEnd(this._element, transitionDuration)
+    this._queueCallback(complete, this._element, true)
   }
 
   setTransitioning(isTransitioning) {
     this._isTransitioning = isTransitioning
-  }
-
-  dispose() {
-    super.dispose()
-    this._config = null
-    this._parent = null
-    this._triggerArray = null
-    this._isTransitioning = null
   }
 
   // Private
@@ -287,14 +272,7 @@ class Collapse extends BaseComponent {
   _getParent() {
     let { parent } = this._config
 
-    if (isElement(parent)) {
-      // it's a jQuery object
-      if (typeof parent.jquery !== 'undefined' || typeof parent[0] !== 'undefined') {
-        parent = parent[0]
-      }
-    } else {
-      parent = SelectorEngine.findOne(parent)
-    }
+    parent = getElement(parent)
 
     const selector = `${SELECTOR_DATA_TOGGLE}[data-bs-parent="${parent}"]`
 
@@ -332,7 +310,7 @@ class Collapse extends BaseComponent {
   // Static
 
   static collapseInterface(element, config) {
-    let data = Data.getData(element, DATA_KEY)
+    let data = Data.get(element, DATA_KEY)
     const _config = {
       ...Default,
       ...Manipulator.getDataAttributes(element),
@@ -380,7 +358,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   const selectorElements = SelectorEngine.find(selector)
 
   selectorElements.forEach(element => {
-    const data = Data.getData(element, DATA_KEY)
+    const data = Data.get(element, DATA_KEY)
     let config
     if (data) {
       // update parent attribute
@@ -405,6 +383,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Collapse to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Collapse)
+defineJQueryPlugin(Collapse)
 
 export default Collapse

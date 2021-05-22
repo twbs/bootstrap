@@ -1,15 +1,14 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): tab.js
+ * Bootstrap (v5.0.1): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
   getElementFromSelector,
-  getTransitionDurationFromElement,
+  isDisabled,
   reflow
 } from './util/index'
 import Data from './dom/data'
@@ -36,7 +35,6 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_DROPDOWN_MENU = 'dropdown-menu'
 const CLASS_NAME_ACTIVE = 'active'
-const CLASS_NAME_DISABLED = 'disabled'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 
@@ -57,8 +55,8 @@ const SELECTOR_DROPDOWN_ACTIVE_CHILD = ':scope > .dropdown-menu .active'
 class Tab extends BaseComponent {
   // Getters
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -66,8 +64,7 @@ class Tab extends BaseComponent {
   show() {
     if ((this._element.parentNode &&
       this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
-      this._element.classList.contains(CLASS_NAME_ACTIVE)) ||
-      this._element.classList.contains(CLASS_NAME_DISABLED)) {
+      this._element.classList.contains(CLASS_NAME_ACTIVE))) {
       return
     }
 
@@ -126,11 +123,8 @@ class Tab extends BaseComponent {
     const complete = () => this._transitionComplete(element, active, callback)
 
     if (active && isTransitioning) {
-      const transitionDuration = getTransitionDurationFromElement(active)
       active.classList.remove(CLASS_NAME_SHOW)
-
-      EventHandler.one(active, 'transitionend', complete)
-      emulateTransitionEnd(active, transitionDuration)
+      this._queueCallback(complete, element, true)
     } else {
       complete()
     }
@@ -162,11 +156,16 @@ class Tab extends BaseComponent {
       element.classList.add(CLASS_NAME_SHOW)
     }
 
-    if (element.parentNode && element.parentNode.classList.contains(CLASS_NAME_DROPDOWN_MENU)) {
+    let parent = element.parentNode
+    if (parent && parent.nodeName === 'LI') {
+      parent = parent.parentNode
+    }
+
+    if (parent && parent.classList.contains(CLASS_NAME_DROPDOWN_MENU)) {
       const dropdownElement = element.closest(SELECTOR_DROPDOWN)
 
       if (dropdownElement) {
-        SelectorEngine.find(SELECTOR_DROPDOWN_TOGGLE)
+        SelectorEngine.find(SELECTOR_DROPDOWN_TOGGLE, dropdownElement)
           .forEach(dropdown => dropdown.classList.add(CLASS_NAME_ACTIVE))
       }
 
@@ -182,7 +181,7 @@ class Tab extends BaseComponent {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      const data = Data.getData(this, DATA_KEY) || new Tab(this)
+      const data = Data.get(this, DATA_KEY) || new Tab(this)
 
       if (typeof config === 'string') {
         if (typeof data[config] === 'undefined') {
@@ -202,9 +201,15 @@ class Tab extends BaseComponent {
  */
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
-  event.preventDefault()
+  if (['A', 'AREA'].includes(this.tagName)) {
+    event.preventDefault()
+  }
 
-  const data = Data.getData(this, DATA_KEY) || new Tab(this)
+  if (isDisabled(this)) {
+    return
+  }
+
+  const data = Data.get(this, DATA_KEY) || new Tab(this)
   data.show()
 })
 
@@ -215,6 +220,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Tab to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Tab)
+defineJQueryPlugin(Tab)
 
 export default Tab

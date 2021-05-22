@@ -3,7 +3,7 @@
 (function () {
   'use strict'
 
-  feather.replace()
+  feather.replace({ 'aria-hidden': 'true' })
 
   // Graphs
   var ctx = document.getElementById('myChart')
@@ -17,8 +17,8 @@
         'الثلاثاء',
         'الأربعاء',
         'الخميس',
-        'يوم الجمعة',
-        'يوم السبت'
+        'الجمعة',
+        'السبت'
       ],
       datasets: [{
         data: [

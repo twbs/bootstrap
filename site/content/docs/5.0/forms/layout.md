@@ -292,7 +292,7 @@ You can then remix that once again with size-specific column classes.
 
 ## Inline forms
 
-Use the `.col-auto` class to create horizontal layouts. By adding [gutter modifier classes]({{< docsref "/layout/gutters" >}}), we'll have gutters in horizontal and vertical directions. The `.align-items-center` aligns the form elements to the middle, making the `.form-checkbox` align properly.
+Use the `.row-cols-*` classes to create responsive horizontal layouts. By adding [gutter modifier classes]({{< docsref "/layout/gutters" >}}), we'll have gutters in horizontal and vertical directions. On narrow mobile viewports, the `.col-12` helps stack the form controls and more. The `.align-items-center` aligns the form elements to the middle, making the `.form-checkbox` align properly.
 
 {{< example >}}
 <form class="row row-cols-lg-auto g-3 align-items-center">

@@ -54,6 +54,17 @@ describe('ScrollSpy', () => {
   })
 
   describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = '<nav id="navigation"></nav><div class="content"></div>'
+
+      const sSpyEl = fixtureEl.querySelector('#navigation')
+      const sSpyBySelector = new ScrollSpy('#navigation')
+      const sSpyByElement = new ScrollSpy(sSpyEl)
+
+      expect(sSpyBySelector._element).toEqual(sSpyEl)
+      expect(sSpyByElement._element).toEqual(sSpyEl)
+    })
+
     it('should generate an id when there is not one', () => {
       fixtureEl.innerHTML = [
         '<nav></nav>',
@@ -591,7 +602,24 @@ describe('ScrollSpy', () => {
 
       jQueryMock.fn.scrollspy.call(jQueryMock)
 
-      expect(ScrollSpy.getInstance(div)).toBeDefined()
+      expect(ScrollSpy.getInstance(div)).not.toBeNull()
+    })
+
+    it('should create a scrollspy with given config', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
+      jQueryMock.elements = [div]
+
+      jQueryMock.fn.scrollspy.call(jQueryMock, { offset: 15 })
+      spyOn(ScrollSpy.prototype, 'constructor')
+      expect(ScrollSpy.prototype.constructor).not.toHaveBeenCalledWith(div, { offset: 15 })
+
+      const scrollspy = ScrollSpy.getInstance(div)
+      expect(scrollspy).not.toBeNull()
+      expect(scrollspy._config.offset).toBe(15)
     })
 
     it('should not re create a scrollspy', () => {
