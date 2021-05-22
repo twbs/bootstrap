@@ -1,5 +1,7 @@
 // This mixin uses an `if()` technique to be compatible with Dart Sass
 // See https://github.com/sass/sass/issues/1873#issuecomment-152293725 for more details
+
+// scss-docs-start form-validation-mixins
 @mixin form-validation-state-selector($state) {
   @if ($state == "valid" or $state == "invalid") {
     .was-validated #{if(&, "&", "")}:#{$state},
@@ -19,7 +21,7 @@
   $icon,
   $tooltip-color: color-contrast($color),
   $tooltip-bg-color: rgba($color, $form-feedback-tooltip-opacity),
-  $focus-box-shadow: 0 0 0 $input-focus-width rgba($color, $input-btn-focus-color-opacity)
+  $focus-box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($color, $input-btn-focus-color-opacity)
 ) {
   .#{$state}-feedback {
     display: none;
@@ -86,10 +88,13 @@
       border-color: $color;
 
       @if $enable-validation-icons {
-        padding-right: $form-select-feedback-icon-padding-end;
-        background-image: escape-svg($form-select-indicator), escape-svg($icon);
-        background-position: $form-select-bg-position, $form-select-feedback-icon-position;
-        background-size: $form-select-bg-size, $form-select-feedback-icon-size;
+        &:not([multiple]):not([size]),
+        &:not([multiple])[size="1"] {
+          padding-right: $form-select-feedback-icon-padding-end;
+          background-image: escape-svg($form-select-indicator), escape-svg($icon);
+          background-position: $form-select-bg-position, $form-select-feedback-icon-position;
+          background-size: $form-select-bg-size, $form-select-feedback-icon-size;
+        }
       }
 
       &:focus {
@@ -121,4 +126,19 @@
       margin-left: .5em;
     }
   }
+
+  .input-group .form-control,
+  .input-group .form-select {
+    @include form-validation-state-selector($state) {
+      @if $state == "valid" {
+        z-index: 1;
+      } @else if $state == "invalid" {
+        z-index: 2;
+      }
+      &:focus {
+        z-index: 3;
+      }
+    }
+  }
 }
+// scss-docs-end form-validation-mixins

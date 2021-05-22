@@ -8,7 +8,7 @@ toc: true
 
 ## Overview
 
-Create custom `<input type="range">` controls with `.form-range`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only Edge Legacy and Firefox supports "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.
+Create custom `<input type="range">` controls with `.form-range`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only Firefox supports "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.
 
 {{< example >}}
 <label for="customRange1" class="form-label">Example range</label>
@@ -41,3 +41,9 @@ By default, range inputs "snap" to integer values. To change this, you can speci
 <label for="customRange3" class="form-label">Example range</label>
 <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
 {{< /example >}}
+
+## Sass
+
+### Variables
+
+{{< scss-docs name="form-range-variables" file="scss/_variables.scss" >}}

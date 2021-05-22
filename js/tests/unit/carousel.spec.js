@@ -2,7 +2,8 @@ import Carousel from '../../src/carousel'
 import EventHandler from '../../src/dom/event-handler'
 
 /** Test helpers */
-import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
+import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
+import * as util from '../../src/util'
 
 describe('Carousel', () => {
   const { Simulator, PointerEvent } = window
@@ -45,7 +46,24 @@ describe('Carousel', () => {
     })
   })
 
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(Carousel.DATA_KEY).toEqual('bs.carousel')
+    })
+  })
+
   describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = '<div id="myCarousel" class="carousel slide"></div>'
+
+      const carouselEl = fixtureEl.querySelector('#myCarousel')
+      const carouselBySelector = new Carousel('#myCarousel')
+      const carouselByElement = new Carousel(carouselEl)
+
+      expect(carouselBySelector._element).toEqual(carouselEl)
+      expect(carouselByElement._element).toEqual(carouselEl)
+    })
+
     it('should go to next item if right arrow key is pressed', done => {
       fixtureEl.innerHTML = [
         '<div id="myCarousel" class="carousel slide">',
@@ -158,8 +176,7 @@ describe('Carousel', () => {
       })
 
       const spyKeydown = spyOn(carousel, '_keydown').and.callThrough()
-      const spyPrev = spyOn(carousel, 'prev')
-      const spyNext = spyOn(carousel, 'next')
+      const spySlide = spyOn(carousel, '_slide')
 
       const keydown = createEvent('keydown', { bubbles: true, cancelable: true })
       keydown.key = 'ArrowRight'
@@ -172,12 +189,10 @@ describe('Carousel', () => {
       input.dispatchEvent(keydown)
 
       expect(spyKeydown).toHaveBeenCalled()
-      expect(spyPrev).not.toHaveBeenCalled()
-      expect(spyNext).not.toHaveBeenCalled()
+      expect(spySlide).not.toHaveBeenCalled()
 
       spyKeydown.calls.reset()
-      spyPrev.calls.reset()
-      spyNext.calls.reset()
+      spySlide.calls.reset()
 
       Object.defineProperty(keydown, 'target', {
         value: textarea
@@ -185,8 +200,7 @@ describe('Carousel', () => {
       textarea.dispatchEvent(keydown)
 
       expect(spyKeydown).toHaveBeenCalled()
-      expect(spyPrev).not.toHaveBeenCalled()
-      expect(spyNext).not.toHaveBeenCalled()
+      expect(spySlide).not.toHaveBeenCalled()
     })
 
     it('should wrap around from end to start when wrap option is true', done => {
@@ -295,13 +309,15 @@ describe('Carousel', () => {
 
       spyOn(Carousel.prototype, '_addTouchEventListeners')
 
+      // Headless browser does not support touch events, so need to fake it
+      // to test that touch events are add properly.
       document.documentElement.ontouchstart = () => {}
       const carousel = new Carousel(carouselEl)
 
       expect(carousel._addTouchEventListeners).toHaveBeenCalled()
     })
 
-    it('should allow swiperight and call prev with pointer events', done => {
+    it('should allow swiperight and call _slide (prev) with pointer events', done => {
       if (!supportPointerEvent) {
         expect().nothing()
         done()
@@ -329,11 +345,12 @@ describe('Carousel', () => {
       const item = fixtureEl.querySelector('#item')
       const carousel = new Carousel(carouselEl)
 
-      spyOn(carousel, 'prev').and.callThrough()
+      spyOn(carousel, '_slide').and.callThrough()
 
-      carouselEl.addEventListener('slid.bs.carousel', () => {
+      carouselEl.addEventListener('slid.bs.carousel', event => {
         expect(item.classList.contains('active')).toEqual(true)
-        expect(carousel.prev).toHaveBeenCalled()
+        expect(carousel._slide).toHaveBeenCalledWith('right')
+        expect(event.direction).toEqual('right')
         document.head.removeChild(stylesCarousel)
         delete document.documentElement.ontouchstart
         done()
@@ -373,11 +390,12 @@ describe('Carousel', () => {
       const item = fixtureEl.querySelector('#item')
       const carousel = new Carousel(carouselEl)
 
-      spyOn(carousel, 'next').and.callThrough()
+      spyOn(carousel, '_slide').and.callThrough()
 
-      carouselEl.addEventListener('slid.bs.carousel', () => {
+      carouselEl.addEventListener('slid.bs.carousel', event => {
         expect(item.classList.contains('active')).toEqual(false)
-        expect(carousel.next).toHaveBeenCalled()
+        expect(carousel._slide).toHaveBeenCalledWith('left')
+        expect(event.direction).toEqual('left')
         document.head.removeChild(stylesCarousel)
         delete document.documentElement.ontouchstart
         done()
@@ -390,7 +408,7 @@ describe('Carousel', () => {
       })
     })
 
-    it('should allow swiperight and call prev with touch events', done => {
+    it('should allow swiperight and call _slide (prev) with touch events', done => {
       Simulator.setType('touch')
       clearPointerEvents()
       document.documentElement.ontouchstart = () => {}
@@ -412,11 +430,12 @@ describe('Carousel', () => {
       const item = fixtureEl.querySelector('#item')
       const carousel = new Carousel(carouselEl)
 
-      spyOn(carousel, 'prev').and.callThrough()
+      spyOn(carousel, '_slide').and.callThrough()
 
-      carouselEl.addEventListener('slid.bs.carousel', () => {
+      carouselEl.addEventListener('slid.bs.carousel', event => {
         expect(item.classList.contains('active')).toEqual(true)
-        expect(carousel.prev).toHaveBeenCalled()
+        expect(carousel._slide).toHaveBeenCalledWith('right')
+        expect(event.direction).toEqual('right')
         delete document.documentElement.ontouchstart
         restorePointerEvents()
         done()
@@ -428,7 +447,7 @@ describe('Carousel', () => {
       })
     })
 
-    it('should allow swipeleft and call next with touch events', done => {
+    it('should allow swipeleft and call _slide (next) with touch events', done => {
       Simulator.setType('touch')
       clearPointerEvents()
       document.documentElement.ontouchstart = () => {}
@@ -450,11 +469,12 @@ describe('Carousel', () => {
       const item = fixtureEl.querySelector('#item')
       const carousel = new Carousel(carouselEl)
 
-      spyOn(carousel, 'next').and.callThrough()
+      spyOn(carousel, '_slide').and.callThrough()
 
-      carouselEl.addEventListener('slid.bs.carousel', () => {
+      carouselEl.addEventListener('slid.bs.carousel', event => {
         expect(item.classList.contains('active')).toEqual(false)
-        expect(carousel.next).toHaveBeenCalled()
+        expect(carousel._slide).toHaveBeenCalledWith('left')
+        expect(event.direction).toEqual('left')
         delete document.documentElement.ontouchstart
         restorePointerEvents()
         done()
@@ -659,11 +679,11 @@ describe('Carousel', () => {
     it('should update indicators if present', done => {
       fixtureEl.innerHTML = [
         '<div id="myCarousel" class="carousel slide">',
-        '  <ol class="carousel-indicators">',
-        '    <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>',
-        '    <li id="secondIndicator" data-bs-target="#myCarousel" data-bs-slide-to="1"></li>',
-        '    <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>',
-        '  </ol>',
+        '  <div class="carousel-indicators">',
+        '    <button type="button" id="firstIndicator" data-bs-target="myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>',
+        '    <button type="button" id="secondIndicator" data-bs-target="myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>',
+        '    <button type="button" data-bs-target="myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>',
+        '  </div>',
         '  <div class="carousel-inner">',
         '    <div class="carousel-item active">item 1</div>',
         '    <div class="carousel-item" data-bs-interval="7">item 2</div>',
@@ -673,11 +693,15 @@ describe('Carousel', () => {
       ].join('')
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
+      const firstIndicator = fixtureEl.querySelector('#firstIndicator')
       const secondIndicator = fixtureEl.querySelector('#secondIndicator')
       const carousel = new Carousel(carouselEl)
 
       carouselEl.addEventListener('slid.bs.carousel', () => {
+        expect(firstIndicator.classList.contains('active')).toEqual(false)
+        expect(firstIndicator.hasAttribute('aria-current')).toEqual(false)
         expect(secondIndicator.classList.contains('active')).toEqual(true)
+        expect(secondIndicator.getAttribute('aria-current')).toEqual('true')
         done()
       })
 
@@ -1038,6 +1062,77 @@ describe('Carousel', () => {
       })
     })
   })
+  describe('rtl function', () => {
+    it('"_directionToOrder" and "_orderToDirection" must return the right results', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const carouselEl = fixtureEl.querySelector('div')
+      const carousel = new Carousel(carouselEl, {})
+
+      expect(carousel._directionToOrder('left')).toEqual('next')
+      expect(carousel._directionToOrder('prev')).toEqual('prev')
+      expect(carousel._directionToOrder('right')).toEqual('prev')
+      expect(carousel._directionToOrder('next')).toEqual('next')
+
+      expect(carousel._orderToDirection('next')).toEqual('left')
+      expect(carousel._orderToDirection('prev')).toEqual('right')
+    })
+
+    it('"_directionToOrder" and "_orderToDirection" must return the right results when rtl=true', () => {
+      document.documentElement.dir = 'rtl'
+      fixtureEl.innerHTML = '<div></div>'
+
+      const carouselEl = fixtureEl.querySelector('div')
+      const carousel = new Carousel(carouselEl, {})
+      expect(util.isRTL()).toEqual(true, 'rtl has to be true')
+
+      expect(carousel._directionToOrder('left')).toEqual('prev')
+      expect(carousel._directionToOrder('prev')).toEqual('prev')
+      expect(carousel._directionToOrder('right')).toEqual('next')
+      expect(carousel._directionToOrder('next')).toEqual('next')
+
+      expect(carousel._orderToDirection('next')).toEqual('right')
+      expect(carousel._orderToDirection('prev')).toEqual('left')
+      document.documentElement.dir = 'ltl'
+    })
+
+    it('"_slide" has to call _directionToOrder and "_orderToDirection"', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const carouselEl = fixtureEl.querySelector('div')
+      const carousel = new Carousel(carouselEl, {})
+      const spy = spyOn(carousel, '_directionToOrder').and.callThrough()
+      const spy2 = spyOn(carousel, '_orderToDirection').and.callThrough()
+
+      carousel._slide('left')
+      expect(spy).toHaveBeenCalledWith('left')
+      expect(spy2).toHaveBeenCalledWith('next')
+
+      carousel._slide('right')
+      expect(spy).toHaveBeenCalledWith('right')
+      expect(spy2).toHaveBeenCalledWith('prev')
+    })
+
+    it('"_slide" has to call "_directionToOrder" and "_orderToDirection" when rtl=true', () => {
+      document.documentElement.dir = 'rtl'
+      fixtureEl.innerHTML = '<div></div>'
+
+      const carouselEl = fixtureEl.querySelector('div')
+      const carousel = new Carousel(carouselEl, {})
+      const spy = spyOn(carousel, '_directionToOrder').and.callThrough()
+      const spy2 = spyOn(carousel, '_orderToDirection').and.callThrough()
+
+      carousel._slide('left')
+      expect(spy).toHaveBeenCalledWith('left')
+      expect(spy2).toHaveBeenCalledWith('prev')
+
+      carousel._slide('right')
+      expect(spy).toHaveBeenCalledWith('right')
+      expect(spy2).toHaveBeenCalledWith('next')
+
+      document.documentElement.dir = 'ltl'
+    })
+  })
 
   describe('dispose', () => {
     it('should destroy a carousel', () => {
@@ -1052,13 +1147,38 @@ describe('Carousel', () => {
       ].join('')
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
+      const addEventSpy = spyOn(carouselEl, 'addEventListener').and.callThrough()
+      const removeEventSpy = spyOn(carouselEl, 'removeEventListener').and.callThrough()
+
+      // Headless browser does not support touch events, so need to fake it
+      // to test that touch events are add/removed properly.
+      document.documentElement.ontouchstart = () => {}
+
       const carousel = new Carousel(carouselEl)
 
-      spyOn(EventHandler, 'off').and.callThrough()
+      const expectedArgs = [
+        ['keydown', jasmine.any(Function), jasmine.any(Boolean)],
+        ['mouseover', jasmine.any(Function), jasmine.any(Boolean)],
+        ['mouseout', jasmine.any(Function), jasmine.any(Boolean)],
+        ...(carousel._pointerEvent ?
+          [
+            ['pointerdown', jasmine.any(Function), jasmine.any(Boolean)],
+            ['pointerup', jasmine.any(Function), jasmine.any(Boolean)]
+          ] :
+          [
+            ['touchstart', jasmine.any(Function), jasmine.any(Boolean)],
+            ['touchmove', jasmine.any(Function), jasmine.any(Boolean)],
+            ['touchend', jasmine.any(Function), jasmine.any(Boolean)]
+          ])
+      ]
+
+      expect(addEventSpy.calls.allArgs()).toEqual(expectedArgs)
 
       carousel.dispose()
 
-      expect(EventHandler.off).toHaveBeenCalled()
+      expect(removeEventSpy.calls.allArgs()).toEqual(expectedArgs)
+
+      delete document.documentElement.ontouchstart
     })
   })
 
@@ -1093,7 +1213,7 @@ describe('Carousel', () => {
 
       jQueryMock.fn.carousel.call(jQueryMock)
 
-      expect(Carousel.getInstance(div)).toBeDefined()
+      expect(Carousel.getInstance(div)).not.toBeNull()
     })
 
     it('should not re create a carousel', () => {
@@ -1136,11 +1256,9 @@ describe('Carousel', () => {
       jQueryMock.fn.carousel = Carousel.jQueryInterface
       jQueryMock.elements = [div]
 
-      try {
+      expect(() => {
         jQueryMock.fn.carousel.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
+      }).toThrowError(TypeError, `No method named "${action}"`)
     })
   })
 
@@ -1153,10 +1271,10 @@ describe('Carousel', () => {
 
       window.dispatchEvent(loadEvent)
 
-      expect(Carousel.getInstance(carouselEl)).toBeDefined()
+      expect(Carousel.getInstance(carouselEl)).not.toBeNull()
     })
 
-    it('should create carousel and go to the next slide on click', done => {
+    it('should create carousel and go to the next slide on click (with real button controls)', done => {
       fixtureEl.innerHTML = [
         '<div id="myCarousel" class="carousel slide">',
         '  <div class="carousel-inner">',
@@ -1164,8 +1282,32 @@ describe('Carousel', () => {
         '    <div id="item2" class="carousel-item">item 2</div>',
         '    <div class="carousel-item">item 3</div>',
         '  </div>',
-        '  <div class="carousel-control-prev" data-bs-target="#myCarousel" role="button" data-bs-slide="prev"></div>',
-        '  <div id="next" class="carousel-control-next" data-bs-target="#myCarousel" role="button" data-bs-slide="next"></div>',
+        '  <button class="carousel-control-prev" data-bs-target="#myCarousel" type="button" data-bs-slide="prev"></button>',
+        '  <button id="next" class="carousel-control-next" data-bs-target="#myCarousel" type="button" data-bs-slide="next"></div>',
+        '</div>'
+      ].join('')
+
+      const next = fixtureEl.querySelector('#next')
+      const item2 = fixtureEl.querySelector('#item2')
+
+      next.click()
+
+      setTimeout(() => {
+        expect(item2.classList.contains('active')).toEqual(true)
+        done()
+      }, 10)
+    })
+
+    it('should create carousel and go to the next slide on click (using links as controls)', done => {
+      fixtureEl.innerHTML = [
+        '<div id="myCarousel" class="carousel slide">',
+        '  <div class="carousel-inner">',
+        '    <div class="carousel-item active">item 1</div>',
+        '    <div id="item2" class="carousel-item">item 2</div>',
+        '    <div class="carousel-item">item 3</div>',
+        '  </div>',
+        '  <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev"></button>',
+        '  <a id="next" class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next"></div>',
         '</div>'
       ].join('')
 
@@ -1211,8 +1353,8 @@ describe('Carousel', () => {
         '    <div class="carousel-item">item 2</div>',
         '    <div class="carousel-item">item 3</div>',
         '  </div>',
-        '  <div class="carousel-control-prev" data-bs-target="#myCarousel" role="button" data-bs-slide="prev"></div>',
-        '  <div id="next" class="carousel-control-next" role="button" data-bs-slide="next"></div>',
+        '  <button class="carousel-control-prev" data-bs-target="#myCarousel" type="button" data-bs-slide="prev"></button>',
+        '  <button id="next" class="carousel-control-next" type="button" data-bs-slide="next"></button>',
         '</div>'
       ].join('')
 
@@ -1231,8 +1373,8 @@ describe('Carousel', () => {
         '    <div id="item2" class="carousel-item">item 2</div>',
         '    <div class="carousel-item">item 3</div>',
         '  </div>',
-        '  <div class="carousel-control-prev" data-bs-target="#myCarousel" role="button" data-bs-slide="prev"></div>',
-        '  <div id="next" class="carousel-control-next" data-bs-target="#myCarousel" role="button" data-bs-slide="next"></div>',
+        '  <button class="carousel-control-prev" data-bs-target="#myCarousel" type="button" data-bs-slide="prev"></div>',
+        '  <button id="next" class="carousel-control-next" data-bs-target="#myCarousel" type="button" data-bs-slide="next"></div>',
         '</div>'
       ].join('')
 

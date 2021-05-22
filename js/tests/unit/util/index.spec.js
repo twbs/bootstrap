@@ -1,7 +1,7 @@
 import * as Util from '../../../src/util/index'
 
 /** Test helpers */
-import { getFixture, clearFixture } from '../../helpers/fixture'
+import { clearFixture, getFixture } from '../../helpers/fixture'
 
 describe('Util', () => {
   let fixtureEl
@@ -55,6 +55,28 @@ describe('Util', () => {
       const testEl = fixtureEl.querySelector('#test')
 
       expect(Util.getSelectorFromElement(testEl)).toEqual('.target')
+    })
+
+    it('should return null if a selector from a href is a url without an anchor', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" data-bs-target="#" href="foo/bar.html"></a>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getSelectorFromElement(testEl)).toBeNull()
+    })
+
+    it('should return the anchor if a selector from a href is a url', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" data-bs-target="#" href="foo/bar.html#target"></a>',
+        '<div id="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getSelectorFromElement(testEl)).toEqual('#target')
     })
 
     it('should return null if selector not found', () => {
@@ -149,24 +171,58 @@ describe('Util', () => {
   })
 
   describe('isElement', () => {
-    it('should detect if the parameter is an element or not', () => {
-      fixtureEl.innerHTML = '<div></div>'
+    it('should detect if the parameter is an element or not and return Boolean', () => {
+      fixtureEl.innerHTML =
+        [
+          '<div id="foo" class="test"></div>',
+          '<div id="bar" class="test"></div>'
+        ].join('')
 
-      const el = document.querySelector('div')
+      const el = fixtureEl.querySelector('#foo')
 
-      expect(Util.isElement(el)).toEqual(el.nodeType)
-      expect(Util.isElement({})).toEqual(undefined)
+      expect(Util.isElement(el)).toEqual(true)
+      expect(Util.isElement({})).toEqual(false)
+      expect(Util.isElement(fixtureEl.querySelectorAll('.test'))).toEqual(false)
     })
 
     it('should detect jQuery element', () => {
       fixtureEl.innerHTML = '<div></div>'
 
-      const el = document.querySelector('div')
+      const el = fixtureEl.querySelector('div')
       const fakejQuery = {
-        0: el
+        0: el,
+        jquery: 'foo'
       }
 
-      expect(Util.isElement(fakejQuery)).toEqual(el.nodeType)
+      expect(Util.isElement(fakejQuery)).toEqual(true)
+    })
+  })
+
+  describe('getElement', () => {
+    it('should try to parse element', () => {
+      fixtureEl.innerHTML =
+        [
+          '<div id="foo" class="test"></div>',
+          '<div id="bar" class="test"></div>'
+        ].join('')
+
+      const el = fixtureEl.querySelector('div')
+
+      expect(Util.getElement(el)).toEqual(el)
+      expect(Util.getElement('#foo')).toEqual(el)
+      expect(Util.getElement('#fail')).toBeNull()
+      expect(Util.getElement({})).toBeNull()
+      expect(Util.getElement([])).toBeNull()
+      expect(Util.getElement()).toBeNull()
+      expect(Util.getElement(null)).toBeNull()
+      expect(Util.getElement(fixtureEl.querySelectorAll('.test'))).toBeNull()
+
+      const fakejQueryObject = {
+        0: el,
+        jquery: 'foo'
+      }
+
+      expect(Util.getElement(fakejQueryObject)).toEqual(el)
     })
   })
 
@@ -212,7 +268,7 @@ describe('Util', () => {
 
       expect(() => {
         Util.typeCheckConfig(namePlugin, config, defaultType)
-      }).toThrow(new Error('COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".'))
+      }).toThrowError(TypeError, 'COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".')
     })
 
     it('should return null stringified when null is passed', () => {
@@ -270,16 +326,52 @@ describe('Util', () => {
       expect(Util.isVisible(div)).toEqual(false)
     })
 
-    it('should return false if the parent element is not visible', () => {
+    it('should return false if an ancestor element is display none', () => {
       fixtureEl.innerHTML = [
         '<div style="display: none;">',
-        '  <div class="content"></div>',
+        '  <div>',
+        '    <div>',
+        '      <div class="content"></div>',
+        '    </div>',
+        '  </div>',
         '</div>'
       ].join('')
 
       const div = fixtureEl.querySelector('.content')
 
       expect(Util.isVisible(div)).toEqual(false)
+    })
+
+    it('should return false if an ancestor element is visibility hidden', () => {
+      fixtureEl.innerHTML = [
+        '<div style="visibility: hidden;">',
+        '  <div>',
+        '    <div>',
+        '      <div class="content"></div>',
+        '    </div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('.content')
+
+      expect(Util.isVisible(div)).toEqual(false)
+    })
+
+    it('should return true if an ancestor element is visibility hidden, but reverted', () => {
+      fixtureEl.innerHTML = [
+        '<div style="visibility: hidden;">',
+        '  <div style="visibility: visible;">',
+        '    <div>',
+        '      <div class="content"></div>',
+        '    </div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('.content')
+
+      expect(Util.isVisible(div)).toEqual(true)
     })
 
     it('should return true if the element is visible', () => {
@@ -292,6 +384,126 @@ describe('Util', () => {
       const div = fixtureEl.querySelector('#element')
 
       expect(Util.isVisible(div)).toEqual(true)
+    })
+
+    it('should return false if the element is hidden, but not via display or visibility', () => {
+      fixtureEl.innerHTML = [
+        '<details>',
+        '  <div id="element"></div>',
+        '</details>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('#element')
+
+      expect(Util.isVisible(div)).toEqual(false)
+    })
+  })
+
+  describe('isDisabled', () => {
+    it('should return true if the element is not defined', () => {
+      expect(Util.isDisabled(null)).toEqual(true)
+      expect(Util.isDisabled(undefined)).toEqual(true)
+      expect(Util.isDisabled()).toEqual(true)
+    })
+
+    it('should return true if the element provided is not a dom element', () => {
+      expect(Util.isDisabled({})).toEqual(true)
+      expect(Util.isDisabled('test')).toEqual(true)
+    })
+
+    it('should return true if the element has disabled attribute', () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '  <div id="element" disabled="disabled"></div>',
+        '  <div id="element1" disabled="true"></div>',
+        '  <div id="element2" disabled></div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('#element')
+      const div1 = fixtureEl.querySelector('#element1')
+      const div2 = fixtureEl.querySelector('#element2')
+
+      expect(Util.isDisabled(div)).toEqual(true)
+      expect(Util.isDisabled(div1)).toEqual(true)
+      expect(Util.isDisabled(div2)).toEqual(true)
+    })
+
+    it('should return false if the element has disabled attribute with "false" value, or doesn\'t have attribute', () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '  <div id="element" disabled="false"></div>',
+        '  <div id="element1" ></div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('#element')
+      const div1 = fixtureEl.querySelector('#element1')
+
+      expect(Util.isDisabled(div)).toEqual(false)
+      expect(Util.isDisabled(div1)).toEqual(false)
+    })
+
+    it('should return false if the element is not disabled ', () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '  <button id="button"></button>',
+        '  <select id="select"></select>',
+        '  <select id="input"></select>',
+        '</div>'
+      ].join('')
+
+      const el = selector => fixtureEl.querySelector(selector)
+
+      expect(Util.isDisabled(el('#button'))).toEqual(false)
+      expect(Util.isDisabled(el('#select'))).toEqual(false)
+      expect(Util.isDisabled(el('#input'))).toEqual(false)
+    })
+    it('should return true if the element has disabled attribute', () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '  <input id="input" disabled="disabled"/>',
+        '  <input id="input1" disabled="disabled"/>',
+        '  <button id="button" disabled="true"></button>',
+        '  <button id="button1" disabled="disabled"></button>',
+        '  <button id="button2" disabled></button>',
+        '  <select id="select" disabled></select>',
+        '  <select id="input" disabled></select>',
+        '</div>'
+      ].join('')
+
+      const el = selector => fixtureEl.querySelector(selector)
+
+      expect(Util.isDisabled(el('#input'))).toEqual(true)
+      expect(Util.isDisabled(el('#input1'))).toEqual(true)
+      expect(Util.isDisabled(el('#button'))).toEqual(true)
+      expect(Util.isDisabled(el('#button1'))).toEqual(true)
+      expect(Util.isDisabled(el('#button2'))).toEqual(true)
+      expect(Util.isDisabled(el('#input'))).toEqual(true)
+    })
+
+    it('should return true if the element has class "disabled"', () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '  <div id="element" class="disabled"></div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('#element')
+
+      expect(Util.isDisabled(div)).toEqual(true)
+    })
+
+    it('should return true if the element has class "disabled" but disabled attribute is false', () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '  <input id="input" class="disabled" disabled="false"/>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('#input')
+
+      expect(Util.isDisabled(div)).toEqual(true)
     })
   })
 
@@ -347,8 +559,8 @@ describe('Util', () => {
   })
 
   describe('noop', () => {
-    it('should return a function', () => {
-      expect(typeof Util.noop()).toEqual('function')
+    it('should be a function', () => {
+      expect(typeof Util.noop).toEqual('function')
     })
   })
 
@@ -430,12 +642,71 @@ describe('Util', () => {
 
     it('should define a plugin on the jQuery instance', () => {
       const pluginMock = function () {}
+      pluginMock.NAME = 'test'
       pluginMock.jQueryInterface = function () {}
 
-      Util.defineJQueryPlugin('test', pluginMock)
+      Util.defineJQueryPlugin(pluginMock)
       expect(fakejQuery.fn.test).toBe(pluginMock.jQueryInterface)
       expect(fakejQuery.fn.test.Constructor).toBe(pluginMock)
       expect(typeof fakejQuery.fn.test.noConflict).toEqual('function')
+    })
+  })
+
+  describe('execute', () => {
+    it('should execute if arg is function', () => {
+      const spy = jasmine.createSpy('spy')
+      Util.execute(spy)
+      expect(spy).toHaveBeenCalled()
+    })
+  })
+
+  describe('getNextActiveElement', () => {
+    it('should return first element if active not exists or not given and shouldGetNext is either true, or false with cycling being disabled', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, '', true, true)).toEqual('a')
+      expect(Util.getNextActiveElement(array, 'g', true, true)).toEqual('a')
+      expect(Util.getNextActiveElement(array, '', true, false)).toEqual('a')
+      expect(Util.getNextActiveElement(array, 'g', true, false)).toEqual('a')
+      expect(Util.getNextActiveElement(array, '', false, false)).toEqual('a')
+      expect(Util.getNextActiveElement(array, 'g', false, false)).toEqual('a')
+    })
+
+    it('should return last element if active not exists or not given and shouldGetNext is false but cycling is enabled', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, '', false, true)).toEqual('d')
+      expect(Util.getNextActiveElement(array, 'g', false, true)).toEqual('d')
+    })
+
+    it('should return next element or same if is last', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, 'a', true, true)).toEqual('b')
+      expect(Util.getNextActiveElement(array, 'b', true, true)).toEqual('c')
+      expect(Util.getNextActiveElement(array, 'd', true, false)).toEqual('d')
+    })
+
+    it('should return next element or first, if is last and "isCycleAllowed = true"', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, 'c', true, true)).toEqual('d')
+      expect(Util.getNextActiveElement(array, 'd', true, true)).toEqual('a')
+    })
+
+    it('should return previous element or same if is first', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, 'b', false, true)).toEqual('a')
+      expect(Util.getNextActiveElement(array, 'd', false, true)).toEqual('c')
+      expect(Util.getNextActiveElement(array, 'a', false, false)).toEqual('a')
+    })
+
+    it('should return next element or first, if is last and "isCycleAllowed = true"', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, 'd', false, true)).toEqual('c')
+      expect(Util.getNextActiveElement(array, 'a', false, true)).toEqual('d')
     })
   })
 })

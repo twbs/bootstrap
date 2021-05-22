@@ -4,16 +4,6 @@
 // .modal-content   - actual modal w/ bg and corners and stuff
 
 
-.modal-open {
-  // Kill the scroll on the body
-  overflow: hidden;
-
-  .modal {
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-}
-
 // Container that the modal scrolls within
 .modal {
   position: fixed;
@@ -23,7 +13,8 @@
   display: none;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
@@ -159,15 +150,6 @@
   }
 }
 
-// Measure scrollbar width for padding body during modal show/hide
-.modal-scrollbar-measure {
-  position: absolute;
-  top: -9999px;
-  width: 50px;
-  height: 50px;
-  overflow: scroll;
-}
-
 // Scale up the modal
 @include media-breakpoint-up(sm) {
   // Automatically set modal's width for larger viewports
@@ -202,6 +184,7 @@
   .modal-xl { max-width: $modal-xl; }
 }
 
+// scss-docs-start modal-fullscreen-loop
 @each $breakpoint in map-keys($grid-breakpoints) {
   $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
   $postfix: if($infix != "", $infix + "-down", "");
@@ -233,3 +216,4 @@
     }
   }
 }
+// scss-docs-end modal-fullscreen-loop

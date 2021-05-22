@@ -70,7 +70,7 @@ describe('Popover', () => {
       const popover = new Popover(popoverEl)
 
       popoverEl.addEventListener('shown.bs.popover', () => {
-        expect(document.querySelector('.popover')).toBeDefined()
+        expect(document.querySelector('.popover')).not.toBeNull()
         done()
       })
 
@@ -89,7 +89,7 @@ describe('Popover', () => {
       popoverEl.addEventListener('shown.bs.popover', () => {
         const popoverDisplayed = document.querySelector('.popover')
 
-        expect(popoverDisplayed).toBeDefined()
+        expect(popoverDisplayed).not.toBeNull()
         expect(popoverDisplayed.querySelector('.popover-header').textContent).toEqual('Bootstrap')
         expect(popoverDisplayed.querySelector('.popover-body').textContent).toEqual('loves writing tests （╯°□°）╯︵ ┻━┻')
         done()
@@ -109,8 +109,48 @@ describe('Popover', () => {
       popoverEl.addEventListener('shown.bs.popover', () => {
         const popoverDisplayed = document.querySelector('.popover')
 
-        expect(popoverDisplayed).toBeDefined()
+        expect(popoverDisplayed).not.toBeNull()
         expect(popoverDisplayed.querySelector('.popover-body').textContent).toEqual('Popover content')
+        done()
+      })
+
+      popover.show()
+    })
+
+    it('should show a popover with just content without having header', done => {
+      fixtureEl.innerHTML = '<a href="#">Nice link</a>'
+
+      const popoverEl = fixtureEl.querySelector('a')
+      const popover = new Popover(popoverEl, {
+        content: 'Some beautiful content :)'
+      })
+
+      popoverEl.addEventListener('shown.bs.popover', () => {
+        const popoverDisplayed = document.querySelector('.popover')
+
+        expect(popoverDisplayed).not.toBeNull()
+        expect(popoverDisplayed.querySelector('.popover-header')).toBeNull()
+        expect(popoverDisplayed.querySelector('.popover-body').textContent).toEqual('Some beautiful content :)')
+        done()
+      })
+
+      popover.show()
+    })
+
+    it('should show a popover with just title without having body', done => {
+      fixtureEl.innerHTML = '<a href="#">Nice link</a>'
+
+      const popoverEl = fixtureEl.querySelector('a')
+      const popover = new Popover(popoverEl, {
+        title: 'Title, which does not require content'
+      })
+
+      popoverEl.addEventListener('shown.bs.popover', () => {
+        const popoverDisplayed = document.querySelector('.popover')
+
+        expect(popoverDisplayed).not.toBeNull()
+        expect(popoverDisplayed.querySelector('.popover-body')).toBeNull()
+        expect(popoverDisplayed.querySelector('.popover-header').textContent).toEqual('Title, which does not require content')
         done()
       })
 
@@ -125,7 +165,7 @@ describe('Popover', () => {
 
       popoverEl.addEventListener('shown.bs.popover', () => {
         const tip = document.querySelector('.popover')
-        expect(tip).toBeDefined()
+        expect(tip).not.toBeNull()
         expect(tip.classList.contains('custom-class')).toBeTrue()
         done()
       })
@@ -165,7 +205,7 @@ describe('Popover', () => {
 
       jQueryMock.fn.popover.call(jQueryMock)
 
-      expect(Popover.getInstance(popoverEl)).toBeDefined()
+      expect(Popover.getInstance(popoverEl)).not.toBeNull()
     })
 
     it('should create a popover with a config object', () => {
@@ -180,7 +220,7 @@ describe('Popover', () => {
         content: 'Popover content'
       })
 
-      expect(Popover.getInstance(popoverEl)).toBeDefined()
+      expect(Popover.getInstance(popoverEl)).not.toBeNull()
     })
 
     it('should not re create a popover', () => {
@@ -206,11 +246,9 @@ describe('Popover', () => {
       jQueryMock.fn.popover = Popover.jQueryInterface
       jQueryMock.elements = [popoverEl]
 
-      try {
+      expect(() => {
         jQueryMock.fn.popover.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
+      }).toThrowError(TypeError, `No method named "${action}"`)
     })
 
     it('should should call show method', () => {
@@ -227,21 +265,6 @@ describe('Popover', () => {
       jQueryMock.fn.popover.call(jQueryMock, 'show')
 
       expect(popover.show).toHaveBeenCalled()
-    })
-
-    it('should do nothing if dipose is called when a popover do not exist', () => {
-      fixtureEl.innerHTML = '<a href="#" title="Popover" data-bs-content="https://twitter.com/getbootstrap">BS twitter</a>'
-
-      const popoverEl = fixtureEl.querySelector('a')
-
-      jQueryMock.fn.popover = Popover.jQueryInterface
-      jQueryMock.elements = [popoverEl]
-
-      spyOn(Popover.prototype, 'dispose')
-
-      jQueryMock.fn.popover.call(jQueryMock, 'dispose')
-
-      expect(Popover.prototype.dispose).not.toHaveBeenCalled()
     })
   })
 

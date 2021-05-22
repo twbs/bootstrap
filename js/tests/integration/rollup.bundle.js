@@ -12,7 +12,8 @@ module.exports = {
   },
   plugins: [
     replace({
-      'process.env.NODE_ENV': '"production"'
+      'process.env.NODE_ENV': '"production"',
+      preventAssignment: true
     }),
     nodeResolve(),
     babel({

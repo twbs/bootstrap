@@ -26,9 +26,14 @@
   margin-top: var(--#{$variable-prefix}gutter-y);
 }
 
-@mixin make-col($size, $columns: $grid-columns) {
-  flex: 0 0 auto;
-  width: percentage($size / $columns);
+@mixin make-col($size: false, $columns: $grid-columns) {
+  @if $size {
+    flex: 0 0 auto;
+    width: percentage($size / $columns);
+  } @else {
+    flex: 1 1 0;
+    max-width: 100%;
+  }
 }
 
 @mixin make-col-auto() {

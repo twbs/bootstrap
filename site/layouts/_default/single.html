@@ -1,15 +1,21 @@
 {{ define "main" }}
   <header class="py-5 border-bottom">
     <div class="container pt-md-1 pb-md-4">
-      <h1 class="bd-title mt-0">{{ .Title | markdownify }}</h1>
-      <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
-      {{ if eq .Title "Examples" }}
-      <div class="d-flex flex-column flex-sm-row">
-        <a href="{{ .Site.Params.download.dist_examples }}" class="btn btn-lg btn-bd-primary" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download Examples');">Download examples</a>
-        <a href="{{ .Site.Params.download.source }}" class="btn btn-lg btn-outline-secondary mt-3 mt-sm-0 ms-sm-3" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download');">Download source code</a>
+      <div class="row">
+        <div class="col-xl-8">
+          <h1 class="bd-title mt-0">{{ .Title | markdownify }}</h1>
+          <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
+          {{ if eq .Title "Examples" }}
+          <div class="d-flex flex-column flex-sm-row">
+            <a href="{{ .Site.Params.download.dist_examples }}" class="btn btn-lg btn-bd-primary" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download Examples');">Download examples</a>
+            <a href="{{ .Site.Params.download.source }}" class="btn btn-lg btn-outline-secondary mt-3 mt-sm-0 ms-sm-3" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download');">Download source code</a>
+          </div>
+          {{ end }}
+        </div>
+        <div class="col-xl-4 d-lg-flex justify-content-xl-end">
+          {{ partial "ads" . }}
+        </div>
       </div>
-      {{ end }}
-      {{ partial "ads" . }}
     </div>
   </header>
 

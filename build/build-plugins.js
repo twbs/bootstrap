@@ -2,8 +2,8 @@
 
 /*!
  * Script to build our plugins to use them separately.
- * Copyright 2020 The Bootstrap Authors
- * Copyright 2020 Twitter, Inc.
+ * Copyright 2020-2021 The Bootstrap Authors
+ * Copyright 2020-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
@@ -29,11 +29,13 @@ const bsPlugins = {
   Manipulator: path.resolve(__dirname, '../js/src/dom/manipulator.js'),
   SelectorEngine: path.resolve(__dirname, '../js/src/dom/selector-engine.js'),
   Alert: path.resolve(__dirname, '../js/src/alert.js'),
+  Base: path.resolve(__dirname, '../js/src/base-component.js'),
   Button: path.resolve(__dirname, '../js/src/button.js'),
   Carousel: path.resolve(__dirname, '../js/src/carousel.js'),
   Collapse: path.resolve(__dirname, '../js/src/collapse.js'),
   Dropdown: path.resolve(__dirname, '../js/src/dropdown.js'),
   Modal: path.resolve(__dirname, '../js/src/modal.js'),
+  Offcanvas: path.resolve(__dirname, '../js/src/offcanvas.js'),
   Popover: path.resolve(__dirname, '../js/src/popover.js'),
   ScrollSpy: path.resolve(__dirname, '../js/src/scrollspy.js'),
   Tab: path.resolve(__dirname, '../js/src/tab.js'),
@@ -44,11 +46,13 @@ const bsPlugins = {
 const defaultPluginConfig = {
   external: [
     bsPlugins.Data,
+    bsPlugins.Base,
     bsPlugins.EventHandler,
     bsPlugins.SelectorEngine
   ],
   globals: {
     [bsPlugins.Data]: 'Data',
+    [bsPlugins.Base]: 'Base',
     [bsPlugins.EventHandler]: 'EventHandler',
     [bsPlugins.SelectorEngine]: 'SelectorEngine'
   }
@@ -61,18 +65,20 @@ const getConfigByPluginKey = pluginKey => {
     pluginKey === 'EventHandler' ||
     pluginKey === 'SelectorEngine' ||
     pluginKey === 'Util' ||
-    pluginKey === 'Sanitizer'
+    pluginKey === 'Sanitizer' ||
+    pluginKey === 'Backdrop'
   ) {
     return {
       external: []
     }
   }
 
-  if (pluginKey === 'Alert' || pluginKey === 'Tab') {
+  if (pluginKey === 'Alert' || pluginKey === 'Tab' || pluginKey === 'Offcanvas') {
     return defaultPluginConfig
   }
 
   if (
+    pluginKey === 'Base' ||
     pluginKey === 'Button' ||
     pluginKey === 'Carousel' ||
     pluginKey === 'Collapse' ||
@@ -112,11 +118,13 @@ const getConfigByPluginKey = pluginKey => {
     return {
       external: [
         bsPlugins.Data,
+        bsPlugins.Base,
         bsPlugins.EventHandler,
         bsPlugins.Manipulator
       ],
       globals: {
         [bsPlugins.Data]: 'Data',
+        [bsPlugins.Base]: 'Base',
         [bsPlugins.EventHandler]: 'EventHandler',
         [bsPlugins.Manipulator]: 'Manipulator'
       }
@@ -126,7 +134,8 @@ const getConfigByPluginKey = pluginKey => {
 
 const utilObjects = new Set([
   'Util',
-  'Sanitizer'
+  'Sanitizer',
+  'Backdrop'
 ])
 
 const domObjects = new Set([

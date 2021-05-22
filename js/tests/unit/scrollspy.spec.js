@@ -1,6 +1,5 @@
 import ScrollSpy from '../../src/scrollspy'
 import Manipulator from '../../src/dom/manipulator'
-import EventHandler from '../../src/dom/event-handler'
 
 /** Test helpers */
 import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
@@ -48,7 +47,24 @@ describe('ScrollSpy', () => {
     })
   })
 
+  describe('DATA_KEY', () => {
+    it('should return plugin data key', () => {
+      expect(ScrollSpy.DATA_KEY).toEqual('bs.scrollspy')
+    })
+  })
+
   describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = '<nav id="navigation"></nav><div class="content"></div>'
+
+      const sSpyEl = fixtureEl.querySelector('#navigation')
+      const sSpyBySelector = new ScrollSpy('#navigation')
+      const sSpyByElement = new ScrollSpy(sSpyEl)
+
+      expect(sSpyBySelector._element).toEqual(sSpyEl)
+      expect(sSpyByElement._element).toEqual(sSpyEl)
+    })
+
     it('should generate an id when there is not one', () => {
       fixtureEl.innerHTML = [
         '<nav></nav>',
@@ -68,7 +84,7 @@ describe('ScrollSpy', () => {
       fixtureEl.innerHTML = [
         '<nav id="navigation" class="navbar">',
         '  <ul class="navbar-nav">',
-        '    <li class="nav-item active"><a class="nav-link" id="one-link" href="#">One</a></li>',
+        '    <li class="nav-item"><a class="nav-link active" id="one-link" href="#">One</a></li>',
         '    <li class="nav-item"><a class="nav-link" id="two-link" href="#two">Two</a></li>',
         '    <li class="nav-item"><a class="nav-link" id="three-link" href="#three">Three</a></li>',
         '  </ul>',
@@ -177,7 +193,7 @@ describe('ScrollSpy', () => {
         '<div id="header" style="height: 500px;"></div>',
         '<nav id="navigation" class="navbar">',
         ' <ul class="navbar-nav">',
-        '   <li class="nav-item active"><a class="nav-link" id="one-link" href="#one">One</a></li>',
+        '   <li class="nav-item"><a class="nav-link active" id="one-link" href="#one">One</a></li>',
         '   <li class="nav-item"><a class="nav-link" id="two-link" href="#two">Two</a></li>',
         '   <li class="nav-item"><a class="nav-link" id="three-link" href="#three">Three</a></li>',
         ' </ul>',
@@ -560,14 +576,18 @@ describe('ScrollSpy', () => {
 
   describe('dispose', () => {
     it('should dispose a scrollspy', () => {
-      spyOn(EventHandler, 'off')
       fixtureEl.innerHTML = '<div style="display: none;"></div>'
 
       const divEl = fixtureEl.querySelector('div')
+      spyOn(divEl, 'addEventListener').and.callThrough()
+      spyOn(divEl, 'removeEventListener').and.callThrough()
+
       const scrollSpy = new ScrollSpy(divEl)
+      expect(divEl.addEventListener).toHaveBeenCalledWith('scroll', jasmine.any(Function), jasmine.any(Boolean))
 
       scrollSpy.dispose()
-      expect(EventHandler.off).toHaveBeenCalledWith(divEl, '.bs.scrollspy')
+
+      expect(divEl.removeEventListener).toHaveBeenCalledWith('scroll', jasmine.any(Function), jasmine.any(Boolean))
     })
   })
 
@@ -582,7 +602,24 @@ describe('ScrollSpy', () => {
 
       jQueryMock.fn.scrollspy.call(jQueryMock)
 
-      expect(ScrollSpy.getInstance(div)).toBeDefined()
+      expect(ScrollSpy.getInstance(div)).not.toBeNull()
+    })
+
+    it('should create a scrollspy with given config', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
+      jQueryMock.elements = [div]
+
+      jQueryMock.fn.scrollspy.call(jQueryMock, { offset: 15 })
+      spyOn(ScrollSpy.prototype, 'constructor')
+      expect(ScrollSpy.prototype.constructor).not.toHaveBeenCalledWith(div, { offset: 15 })
+
+      const scrollspy = ScrollSpy.getInstance(div)
+      expect(scrollspy).not.toBeNull()
+      expect(scrollspy._config.offset).toBe(15)
     })
 
     it('should not re create a scrollspy', () => {
@@ -625,11 +662,9 @@ describe('ScrollSpy', () => {
       jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
       jQueryMock.elements = [div]
 
-      try {
+      expect(() => {
         jQueryMock.fn.scrollspy.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
+      }).toThrowError(TypeError, `No method named "${action}"`)
     })
   })
 
