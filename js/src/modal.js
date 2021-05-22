@@ -104,21 +104,21 @@ class Modal {
       return
     }
 
-    if ($(this._element).hasClass(CLASS_NAME_FADE)) {
-      this._isTransitioning = true
-    }
-
     const showEvent = $.Event(EVENT_SHOW, {
       relatedTarget
     })
 
     $(this._element).trigger(showEvent)
 
-    if (this._isShown || showEvent.isDefaultPrevented()) {
+    if (showEvent.isDefaultPrevented()) {
       return
     }
 
     this._isShown = true
+
+    if ($(this._element).hasClass(CLASS_NAME_FADE)) {
+      this._isTransitioning = true
+    }
 
     this._checkScrollbar()
     this._setScrollbar()
