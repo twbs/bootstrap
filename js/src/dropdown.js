@@ -355,7 +355,7 @@ class Dropdown extends BaseComponent {
   }
 
   _selectMenuItem({ key, target }) {
-    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu).filter(isVisible)
+    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu).filter(item => isVisible(item))
 
     if (!items.length) {
       return
