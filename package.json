@@ -114,7 +114,7 @@
     "cross-env": "^7.0.3",
     "eslint": "^7.26.0",
     "eslint-config-xo": "^0.36.0",
-    "eslint-plugin-import": "^2.23.2",
+    "eslint-plugin-import": "^2.23.3",
     "eslint-plugin-unicorn": "^31.0.0",
     "find-unused-sass-variables": "^3.1.0",
     "glob": "^7.1.7",
