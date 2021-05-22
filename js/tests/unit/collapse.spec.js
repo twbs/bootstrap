@@ -34,6 +34,17 @@ describe('Collapse', () => {
   })
 
   describe('constructor', () => {
+    it('should take care of element either passed as a CSS selector or DOM element', () => {
+      fixtureEl.innerHTML = '<div class="my-collapse"></div>'
+
+      const collapseEl = fixtureEl.querySelector('div.my-collapse')
+      const collapseBySelector = new Collapse('div.my-collapse')
+      const collapseByElement = new Collapse(collapseEl)
+
+      expect(collapseBySelector._element).toEqual(collapseEl)
+      expect(collapseByElement._element).toEqual(collapseEl)
+    })
+
     it('should allow jquery object in parent config', () => {
       fixtureEl.innerHTML = [
         '<div class="my-collapse">',
@@ -47,7 +58,8 @@ describe('Collapse', () => {
       const collapseEl = fixtureEl.querySelector('div.collapse')
       const myCollapseEl = fixtureEl.querySelector('.my-collapse')
       const fakejQueryObject = {
-        0: myCollapseEl
+        0: myCollapseEl,
+        jquery: 'foo'
       }
       const collapse = new Collapse(collapseEl, {
         parent: fakejQueryObject
@@ -799,7 +811,7 @@ describe('Collapse', () => {
 
       jQueryMock.fn.collapse.call(jQueryMock)
 
-      expect(Collapse.getInstance(div)).toBeDefined()
+      expect(Collapse.getInstance(div)).not.toBeNull()
     })
 
     it('should not re create a collapse', () => {

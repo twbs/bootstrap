@@ -15,6 +15,17 @@ describe('Alert', () => {
     clearFixture()
   })
 
+  it('should take care of element either passed as a CSS selector or DOM element', () => {
+    fixtureEl.innerHTML = '<div class="alert"></div>'
+
+    const alertEl = fixtureEl.querySelector('.alert')
+    const alertBySelector = new Alert('.alert')
+    const alertByElement = new Alert(alertEl)
+
+    expect(alertBySelector._element).toEqual(alertEl)
+    expect(alertByElement._element).toEqual(alertEl)
+  })
+
   it('should return version', () => {
     expect(typeof Alert.VERSION).toEqual('string')
   })
@@ -123,7 +134,7 @@ describe('Alert', () => {
       const alertEl = document.querySelector('.alert')
       const alert = new Alert(alertEl)
 
-      expect(Alert.getInstance(alertEl)).toBeDefined()
+      expect(Alert.getInstance(alertEl)).not.toBeNull()
 
       alert.dispose()
 
@@ -158,7 +169,7 @@ describe('Alert', () => {
 
       jQueryMock.fn.alert.call(jQueryMock, 'close')
 
-      expect(Alert.getInstance(alertEl)).toBeDefined()
+      expect(Alert.getInstance(alertEl)).not.toBeNull()
       expect(fixtureEl.querySelector('.alert')).toBeNull()
     })
 
@@ -172,7 +183,7 @@ describe('Alert', () => {
 
       jQueryMock.fn.alert.call(jQueryMock)
 
-      expect(Alert.getInstance(alertEl)).toBeDefined()
+      expect(Alert.getInstance(alertEl)).not.toBeNull()
       expect(fixtureEl.querySelector('.alert')).not.toBeNull()
     })
   })

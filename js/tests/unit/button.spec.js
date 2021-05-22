@@ -18,6 +18,16 @@ describe('Button', () => {
     clearFixture()
   })
 
+  it('should take care of element either passed as a CSS selector or DOM element', () => {
+    fixtureEl.innerHTML = '<button data-bs-toggle="button">Placeholder</button>'
+    const buttonEl = fixtureEl.querySelector('[data-bs-toggle="button"]')
+    const buttonBySelector = new Button('[data-bs-toggle="button"]')
+    const buttonByElement = new Button(buttonEl)
+
+    expect(buttonBySelector._element).toEqual(buttonEl)
+    expect(buttonByElement._element).toEqual(buttonEl)
+  })
+
   describe('VERSION', () => {
     it('should return plugin version', () => {
       expect(Button.VERSION).toEqual(jasmine.any(String))
@@ -81,7 +91,7 @@ describe('Button', () => {
       const btnEl = fixtureEl.querySelector('.btn')
       const button = new Button(btnEl)
 
-      expect(Button.getInstance(btnEl)).toBeDefined()
+      expect(Button.getInstance(btnEl)).not.toBeNull()
 
       button.dispose()
 
@@ -116,7 +126,7 @@ describe('Button', () => {
 
       jQueryMock.fn.button.call(jQueryMock, 'toggle')
 
-      expect(Button.getInstance(btnEl)).toBeDefined()
+      expect(Button.getInstance(btnEl)).not.toBeNull()
       expect(btnEl.classList.contains('active')).toEqual(true)
     })
 
@@ -130,7 +140,7 @@ describe('Button', () => {
 
       jQueryMock.fn.button.call(jQueryMock)
 
-      expect(Button.getInstance(btnEl)).toBeDefined()
+      expect(Button.getInstance(btnEl)).not.toBeNull()
       expect(btnEl.classList.contains('active')).toEqual(false)
     })
   })

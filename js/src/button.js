@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): button.js
+ * Bootstrap (v5.0.1): button.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -36,8 +36,8 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 class Button extends BaseComponent {
   // Getters
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -51,7 +51,7 @@ class Button extends BaseComponent {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      let data = Data.getData(this, DATA_KEY)
+      let data = Data.get(this, DATA_KEY)
 
       if (!data) {
         data = new Button(this)
@@ -75,7 +75,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, event => {
 
   const button = event.target.closest(SELECTOR_DATA_TOGGLE)
 
-  let data = Data.getData(button, DATA_KEY)
+  let data = Data.get(button, DATA_KEY)
   if (!data) {
     data = new Button(button)
   }
@@ -90,6 +90,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, event => {
  * add .Button to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Button)
+defineJQueryPlugin(Button)
 
 export default Button

@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap manipulator.js v5.0.0-beta2 (https://getbootstrap.com/)
+  * Bootstrap manipulator.js v5.0.1 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -11,7 +11,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-beta2): dom/manipulator.js
+   * Bootstrap (v5.0.1): dom/manipulator.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -36,49 +36,51 @@
   }
 
   function normalizeDataKey(key) {
-    return key.replace(/[A-Z]/g, function (chr) {
-      return "-" + chr.toLowerCase();
-    });
+    return key.replace(/[A-Z]/g, chr => `-${chr.toLowerCase()}`);
   }
 
-  var Manipulator = {
-    setDataAttribute: function setDataAttribute(element, key, value) {
-      element.setAttribute("data-bs-" + normalizeDataKey(key), value);
+  const Manipulator = {
+    setDataAttribute(element, key, value) {
+      element.setAttribute(`data-bs-${normalizeDataKey(key)}`, value);
     },
-    removeDataAttribute: function removeDataAttribute(element, key) {
-      element.removeAttribute("data-bs-" + normalizeDataKey(key));
+
+    removeDataAttribute(element, key) {
+      element.removeAttribute(`data-bs-${normalizeDataKey(key)}`);
     },
-    getDataAttributes: function getDataAttributes(element) {
+
+    getDataAttributes(element) {
       if (!element) {
         return {};
       }
 
-      var attributes = {};
-      Object.keys(element.dataset).filter(function (key) {
-        return key.startsWith('bs');
-      }).forEach(function (key) {
-        var pureKey = key.replace(/^bs/, '');
+      const attributes = {};
+      Object.keys(element.dataset).filter(key => key.startsWith('bs')).forEach(key => {
+        let pureKey = key.replace(/^bs/, '');
         pureKey = pureKey.charAt(0).toLowerCase() + pureKey.slice(1, pureKey.length);
         attributes[pureKey] = normalizeData(element.dataset[key]);
       });
       return attributes;
     },
-    getDataAttribute: function getDataAttribute(element, key) {
-      return normalizeData(element.getAttribute("data-bs-" + normalizeDataKey(key)));
+
+    getDataAttribute(element, key) {
+      return normalizeData(element.getAttribute(`data-bs-${normalizeDataKey(key)}`));
     },
-    offset: function offset(element) {
-      var rect = element.getBoundingClientRect();
+
+    offset(element) {
+      const rect = element.getBoundingClientRect();
       return {
         top: rect.top + document.body.scrollTop,
         left: rect.left + document.body.scrollLeft
       };
     },
-    position: function position(element) {
+
+    position(element) {
       return {
         top: element.offsetTop,
         left: element.offsetLeft
       };
     }
+
   };
 
   return Manipulator;

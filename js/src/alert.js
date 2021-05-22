@@ -1,15 +1,13 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): alert.js
+ * Bootstrap (v5.0.1): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
-  getElementFromSelector,
-  getTransitionDurationFromElement
+  getElementFromSelector
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
@@ -45,8 +43,8 @@ const CLASS_NAME_SHOW = 'show'
 class Alert extends BaseComponent {
   // Getters
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -75,15 +73,8 @@ class Alert extends BaseComponent {
   _removeElement(element) {
     element.classList.remove(CLASS_NAME_SHOW)
 
-    if (!element.classList.contains(CLASS_NAME_FADE)) {
-      this._destroyElement(element)
-      return
-    }
-
-    const transitionDuration = getTransitionDurationFromElement(element)
-
-    EventHandler.one(element, 'transitionend', () => this._destroyElement(element))
-    emulateTransitionEnd(element, transitionDuration)
+    const isAnimated = element.classList.contains(CLASS_NAME_FADE)
+    this._queueCallback(() => this._destroyElement(element), element, isAnimated)
   }
 
   _destroyElement(element) {
@@ -98,7 +89,7 @@ class Alert extends BaseComponent {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      let data = Data.getData(this, DATA_KEY)
+      let data = Data.get(this, DATA_KEY)
 
       if (!data) {
         data = new Alert(this)
@@ -126,6 +117,7 @@ class Alert extends BaseComponent {
  * Data Api implementation
  * ------------------------------------------------------------------------
  */
+
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DISMISS, Alert.handleDismiss(new Alert()))
 
 /**
@@ -135,6 +127,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DISMISS, Alert.handleDi
  * add .Alert to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Alert)
+defineJQueryPlugin(Alert)
 
 export default Alert
