@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): popover.js
+ * Bootstrap (v5.0.1): popover.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -30,7 +30,7 @@ const Default = {
   content: '',
   template: '<div class="popover" role="tooltip">' +
               '<div class="popover-arrow"></div>' +
-                '<h3 class="popover-header"></h3>' +
+              '<h3 class="popover-header"></h3>' +
               '<div class="popover-body"></div>' +
             '</div>'
 }
@@ -76,16 +76,8 @@ class Popover extends Tooltip {
     return NAME
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
-  }
-
   static get Event() {
     return Event
-  }
-
-  static get EVENT_KEY() {
-    return EVENT_KEY
   }
 
   static get DefaultType() {
@@ -96,6 +88,24 @@ class Popover extends Tooltip {
 
   isWithContent() {
     return this.getTitle() || this._getContent()
+  }
+
+  getTipElement() {
+    if (this.tip) {
+      return this.tip
+    }
+
+    this.tip = super.getTipElement()
+
+    if (!this.getTitle()) {
+      this.tip.removeChild(SelectorEngine.findOne(SELECTOR_TITLE, this.tip))
+    }
+
+    if (!this._getContent()) {
+      this.tip.removeChild(SelectorEngine.findOne(SELECTOR_CONTENT, this.tip))
+    }
+
+    return this.tip
   }
 
   setContent() {
@@ -120,7 +130,7 @@ class Popover extends Tooltip {
   }
 
   _getContent() {
-    return this._element.getAttribute('data-bs-content') || this.config.content
+    return this._element.getAttribute('data-bs-content') || this._config.content
   }
 
   _cleanTipClass() {
@@ -138,10 +148,6 @@ class Popover extends Tooltip {
     return this.each(function () {
       let data = Data.get(this, DATA_KEY)
       const _config = typeof config === 'object' ? config : null
-
-      if (!data && /dispose|hide/.test(config)) {
-        return
-      }
 
       if (!data) {
         data = new Popover(this, _config)
@@ -166,6 +172,6 @@ class Popover extends Tooltip {
  * add .Popover to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Popover)
+defineJQueryPlugin(Popover)
 
 export default Popover

@@ -88,17 +88,12 @@
       border-color: $color;
 
       @if $enable-validation-icons {
-        padding-right: $form-select-feedback-icon-padding-end;
-        background-image: escape-svg($form-select-indicator), escape-svg($icon);
-        background-position: $form-select-bg-position, $form-select-feedback-icon-position;
-        background-size: $form-select-bg-size, $form-select-feedback-icon-size;
-
-        &[multiple],
-        &[size]:not([size="1"]) {
-          padding-right: $input-height-inner;
-          background-image: escape-svg($icon);
-          background-position: top $input-height-inner-quarter right $input-height-inner-quarter;
-          background-size: $form-select-feedback-icon-size;
+        &:not([multiple]):not([size]),
+        &:not([multiple])[size="1"] {
+          padding-right: $form-select-feedback-icon-padding-end;
+          background-image: escape-svg($form-select-indicator), escape-svg($icon);
+          background-position: $form-select-bg-position, $form-select-feedback-icon-position;
+          background-size: $form-select-bg-size, $form-select-feedback-icon-size;
         }
       }
 
@@ -135,7 +130,14 @@
   .input-group .form-control,
   .input-group .form-select {
     @include form-validation-state-selector($state) {
-      z-index: 3;
+      @if $state == "valid" {
+        z-index: 1;
+      } @else if $state == "invalid" {
+        z-index: 2;
+      }
+      &:focus {
+        z-index: 3;
+      }
     }
   }
 }

@@ -61,7 +61,7 @@ it('should show a tooltip without the animation', done => {
   tooltipEl.addEventListener('shown.bs.tooltip', () => {
     const tip = document.querySelector('.tooltip')
 
-    expect(tip).toBeDefined()
+    expect(tip).not.toBeNull()
     expect(tip.classList.contains('fade')).toEqual(false)
     done()
   })

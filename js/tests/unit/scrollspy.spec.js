@@ -602,7 +602,7 @@ describe('ScrollSpy', () => {
 
       jQueryMock.fn.scrollspy.call(jQueryMock)
 
-      expect(ScrollSpy.getInstance(div)).toBeDefined()
+      expect(ScrollSpy.getInstance(div)).not.toBeNull()
     })
 
     it('should create a scrollspy with given config', () => {
@@ -618,7 +618,7 @@ describe('ScrollSpy', () => {
       expect(ScrollSpy.prototype.constructor).not.toHaveBeenCalledWith(div, { offset: 15 })
 
       const scrollspy = ScrollSpy.getInstance(div)
-      expect(scrollspy).toBeDefined()
+      expect(scrollspy).not.toBeNull()
       expect(scrollspy._config.offset).toBe(15)
     })
 

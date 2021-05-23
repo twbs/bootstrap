@@ -17,14 +17,14 @@ Bootstrap's grid system uses a series of containers, rows, and columns to layout
 {{< example class="bd-example-row" >}}
 <div class="container">
   <div class="row">
-    <div class="col-sm">
-      One of three columns
+    <div class="col">
+      Column
     </div>
-    <div class="col-sm">
-      One of three columns
+    <div class="col">
+      Column
     </div>
-    <div class="col-sm">
-      One of three columns
+    <div class="col">
+      Column
     </div>
   </div>
 </div>

@@ -1,28 +1,28 @@
 /*!
-  * Bootstrap scrollspy.js v5.0.0-beta3 (https://getbootstrap.com/)
+  * Bootstrap scrollspy.js v5.0.1 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js'), require('./base-component.js')) :
-  typeof define === 'function' && define.amd ? define(['./dom/data', './dom/event-handler', './dom/manipulator', './dom/selector-engine', './base-component'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ScrollSpy = factory(global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine, global.Base));
-}(this, (function (Data, EventHandler, Manipulator, SelectorEngine, BaseComponent) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/selector-engine.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./base-component.js')) :
+  typeof define === 'function' && define.amd ? define(['./dom/selector-engine', './dom/event-handler', './dom/manipulator', './base-component'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ScrollSpy = factory(global.SelectorEngine, global.EventHandler, global.Manipulator, global.Base));
+}(this, (function (SelectorEngine, EventHandler, Manipulator, BaseComponent) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-  var Data__default = /*#__PURE__*/_interopDefaultLegacy(Data);
+  var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
   var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
   var Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
-  var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
   var BaseComponent__default = /*#__PURE__*/_interopDefaultLegacy(BaseComponent);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-beta3): util/index.js
+   * Bootstrap (v5.0.1): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
+
   const MAX_UID = 1000000;
 
   const toType = obj => {
@@ -62,7 +62,7 @@
 
 
       if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
-        hrefAttr = '#' + hrefAttr.split('#')[1];
+        hrefAttr = `#${hrefAttr.split('#')[1]}`;
       }
 
       selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
@@ -81,7 +81,17 @@
     return null;
   };
 
-  const isElement = obj => (obj[0] || obj).nodeType;
+  const isElement = obj => {
+    if (!obj || typeof obj !== 'object') {
+      return false;
+    }
+
+    if (typeof obj.jquery !== 'undefined') {
+      obj = obj[0];
+    }
+
+    return typeof obj.nodeType !== 'undefined';
+  };
 
   const typeCheckConfig = (componentName, config, configTypes) => {
     Object.keys(configTypes).forEach(property => {
@@ -90,7 +100,7 @@
       const valueType = value && isElement(value) ? 'element' : toType(value);
 
       if (!new RegExp(expectedTypes).test(valueType)) {
-        throw new TypeError(`${componentName.toUpperCase()}: ` + `Option "${property}" provided type "${valueType}" ` + `but expected type "${expectedTypes}".`);
+        throw new TypeError(`${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`);
       }
     });
   };
@@ -115,12 +125,13 @@
     }
   };
 
-  const defineJQueryPlugin = (name, plugin) => {
+  const defineJQueryPlugin = plugin => {
     onDOMContentLoaded(() => {
       const $ = getjQuery();
       /* istanbul ignore if */
 
       if ($) {
+        const name = plugin.NAME;
         const JQUERY_NO_CONFLICT = $.fn[name];
         $.fn[name] = plugin.jQueryInterface;
         $.fn[name].Constructor = plugin;
@@ -135,7 +146,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-beta3): scrollspy.js
+   * Bootstrap (v5.0.1): scrollspy.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -200,8 +211,8 @@
       return Default;
     }
 
-    static get DATA_KEY() {
-      return DATA_KEY;
+    static get NAME() {
+      return NAME;
     } // Public
 
 
@@ -234,20 +245,14 @@
     }
 
     dispose() {
-      super.dispose();
       EventHandler__default['default'].off(this._scrollElement, EVENT_KEY);
-      this._scrollElement = null;
-      this._config = null;
-      this._selector = null;
-      this._offsets = null;
-      this._targets = null;
-      this._activeTarget = null;
-      this._scrollHeight = null;
+      super.dispose();
     } // Private
 
 
     _getConfig(config) {
       config = { ...Default,
+        ...Manipulator__default['default'].getDataAttributes(this._element),
         ...(typeof config === 'object' && config ? config : {})
       };
 
@@ -356,21 +361,17 @@
 
     static jQueryInterface(config) {
       return this.each(function () {
-        let data = Data__default['default'].get(this, DATA_KEY);
+        const data = ScrollSpy.getInstance(this) || new ScrollSpy(this, typeof config === 'object' ? config : {});
 
-        const _config = typeof config === 'object' && config;
-
-        if (!data) {
-          data = new ScrollSpy(this, _config);
+        if (typeof config !== 'string') {
+          return;
         }
 
-        if (typeof config === 'string') {
-          if (typeof data[config] === 'undefined') {
-            throw new TypeError(`No method named "${config}"`);
-          }
-
-          data[config]();
+        if (typeof data[config] === 'undefined') {
+          throw new TypeError(`No method named "${config}"`);
         }
+
+        data[config]();
       });
     }
 
@@ -383,7 +384,7 @@
 
 
   EventHandler__default['default'].on(window, EVENT_LOAD_DATA_API, () => {
-    SelectorEngine__default['default'].find(SELECTOR_DATA_SPY).forEach(spy => new ScrollSpy(spy, Manipulator__default['default'].getDataAttributes(spy)));
+    SelectorEngine__default['default'].find(SELECTOR_DATA_SPY).forEach(spy => new ScrollSpy(spy));
   });
   /**
    * ------------------------------------------------------------------------
@@ -392,7 +393,7 @@
    * add .ScrollSpy to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(NAME, ScrollSpy);
+  defineJQueryPlugin(ScrollSpy);
 
   return ScrollSpy;
 

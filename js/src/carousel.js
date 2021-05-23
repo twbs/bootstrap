@@ -1,17 +1,16 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): carousel.js
+ * Bootstrap (v5.0.1): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
   getElementFromSelector,
-  getTransitionDurationFromElement,
   isRTL,
   isVisible,
+  getNextActiveElement,
   reflow,
   triggerTransitionEnd,
   typeCheckConfig
@@ -129,8 +128,8 @@ class Carousel extends BaseComponent {
     return Default
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -213,20 +212,6 @@ class Carousel extends BaseComponent {
       ORDER_PREV
 
     this._slide(order, this._items[index])
-  }
-
-  dispose() {
-    EventHandler.off(this._element, EVENT_KEY)
-
-    this._items = null
-    this._config = null
-    this._interval = null
-    this._isPaused = null
-    this._isSliding = null
-    this._activeElement = null
-    this._indicatorsElement = null
-
-    super.dispose()
   }
 
   // Private
@@ -353,21 +338,7 @@ class Carousel extends BaseComponent {
 
   _getItemByOrder(order, activeElement) {
     const isNext = order === ORDER_NEXT
-    const isPrev = order === ORDER_PREV
-    const activeIndex = this._getItemIndex(activeElement)
-    const lastItemIndex = this._items.length - 1
-    const isGoingToWrap = (isPrev && activeIndex === 0) || (isNext && activeIndex === lastItemIndex)
-
-    if (isGoingToWrap && !this._config.wrap) {
-      return activeElement
-    }
-
-    const delta = isPrev ? -1 : 1
-    const itemIndex = (activeIndex + delta) % this._items.length
-
-    return itemIndex === -1 ?
-      this._items[this._items.length - 1] :
-      this._items[itemIndex]
+    return getNextActiveElement(this._items, activeElement, isNext, this._config.wrap)
   }
 
   _triggerSlideEvent(relatedTarget, eventDirectionName) {
@@ -456,6 +427,15 @@ class Carousel extends BaseComponent {
     this._setActiveIndicatorElement(nextElement)
     this._activeElement = nextElement
 
+    const triggerSlidEvent = () => {
+      EventHandler.trigger(this._element, EVENT_SLID, {
+        relatedTarget: nextElement,
+        direction: eventDirectionName,
+        from: activeElementIndex,
+        to: nextElementIndex
+      })
+    }
+
     if (this._element.classList.contains(CLASS_NAME_SLIDE)) {
       nextElement.classList.add(orderClassName)
 
@@ -464,9 +444,7 @@ class Carousel extends BaseComponent {
       activeElement.classList.add(directionalClassName)
       nextElement.classList.add(directionalClassName)
 
-      const transitionDuration = getTransitionDurationFromElement(activeElement)
-
-      EventHandler.one(activeElement, 'transitionend', () => {
+      const completeCallBack = () => {
         nextElement.classList.remove(directionalClassName, orderClassName)
         nextElement.classList.add(CLASS_NAME_ACTIVE)
 
@@ -474,28 +452,16 @@ class Carousel extends BaseComponent {
 
         this._isSliding = false
 
-        setTimeout(() => {
-          EventHandler.trigger(this._element, EVENT_SLID, {
-            relatedTarget: nextElement,
-            direction: eventDirectionName,
-            from: activeElementIndex,
-            to: nextElementIndex
-          })
-        }, 0)
-      })
+        setTimeout(triggerSlidEvent, 0)
+      }
 
-      emulateTransitionEnd(activeElement, transitionDuration)
+      this._queueCallback(completeCallBack, activeElement, true)
     } else {
       activeElement.classList.remove(CLASS_NAME_ACTIVE)
       nextElement.classList.add(CLASS_NAME_ACTIVE)
 
       this._isSliding = false
-      EventHandler.trigger(this._element, EVENT_SLID, {
-        relatedTarget: nextElement,
-        direction: eventDirectionName,
-        from: activeElementIndex,
-        to: nextElementIndex
-      })
+      triggerSlidEvent()
     }
 
     if (isCycling) {
@@ -619,6 +585,6 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  * add .Carousel to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Carousel)
+defineJQueryPlugin(Carousel)
 
 export default Carousel

@@ -83,7 +83,7 @@ Output:
 .o-100 { opacity: 1; }
 ```
 
-## States
+### States
 
 Use the `state` option to generate pseudo-class variations. Example pseudo-classes are `:hover` and `:focus`. When a list of states are provided, classnames are created for that pseudo-class. For example, to change opacity on hover, add `state: hover` and you'll get `.opacity-hover:hover` in your compiled CSS.
 
@@ -287,6 +287,57 @@ $utilities: map-merge(
     ),
   )
 );
+```
+
+#### Enable responsive
+
+You can enable responsive classes for an existing set of utilities that are not currently responsive by default. For example, to make the `border` classes responsive:
+
+```scss
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/utilities";
+
+$utilities: map-merge(
+  $utilities, (
+    "border": map-merge(
+      map-get($utilities, "border"),
+      ( responsive: true ),
+    ),
+  )
+);
+```
+
+This will now generate responsive variations of `.border` and `.border-0` for each breakpoint. Your generated CSS will look like this:
+
+```css
+.border { ... }
+.border-0 { ... }
+
+@media (min-width: 576px) {
+  .border-sm { ... }
+  .border-sm-0 { ... }
+}
+
+@media (min-width: 768px) {
+  .border-md { ... }
+  .border-md-0 { ... }
+}
+
+@media (min-width: 992px) {
+  .border-lg { ... }
+  .border-lg-0 { ... }
+}
+
+@media (min-width: 1200px) {
+  .border-xl { ... }
+  .border-xl-0 { ... }
+}
+
+@media (min-width: 1400px) {
+  .border-xxl { ... }
+  .border-xxl-0 { ... }
+}
 ```
 
 #### Rename utilities

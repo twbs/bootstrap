@@ -144,3 +144,7 @@ Learn more about [support for datalist elements](https://caniuse.com/datalist).
 {{< scss-docs name="form-label-variables" file="scss/_variables.scss" >}}
 
 {{< scss-docs name="form-text-variables" file="scss/_variables.scss" >}}
+
+`$form-file-*` are for file input.
+
+{{< scss-docs name="form-file-variables" file="scss/_variables.scss" >}}
