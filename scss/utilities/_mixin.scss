@@ -1,0 +1,24 @@
+
+$utilities-map: build-utilities-map(); // stylelint-disable-line scss/dollar-variable-default
+
+@mixin utl($class) {
+  @if map-has-key($utilities-map, $class) {
+    $definition: map-get($utilities-map, $class);
+    $breakpoint: map-get($definition, breakpoint);
+    @if $breakpoint != null {
+      @include media-breakpoint-up($breakpoint) {
+        @each $property in map-get($definition, properties) {
+          #{$property}: map-get($definition, value);
+        }
+      }
+    }
+    @else {
+      @each $property in map-get($definition, properties) {
+        #{$property}: map-get($definition, value);
+      }
+    }
+  }
+  @else {
+    @debug "Unknown utility class " + $class;
+  }
+}
