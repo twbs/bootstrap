@@ -345,6 +345,28 @@ $(function () {
     assert.notOk($tabs.find('li:last-child .dropdown-menu a:first-child').hasClass('active'))
   })
 
+  QUnit.test('should support li > .dropdown-item', function (assert) {
+    assert.expect(2)
+    var tabsHTML = [
+      '<ul class="nav nav-tabs">',
+      '  <li class="nav-item"><a class="nav-link active" href="#home" data-toggle="tab">Home</a></li>',
+      '  <li class="nav-item"><a class="nav-link" href="#profile" data-toggle="tab">Profile</a></li>',
+      '  <li class="nav-item dropdown">',
+      '    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>',
+      '    <ul class="dropdown-menu">',
+      '      <li><a class="dropdown-item" href="#dropdown1" id="dropdown1-tab" data-toggle="tab">@fat</a></li>',
+      '      <li><a class="dropdown-item" href="#dropdown2" id="dropdown2-tab" data-toggle="tab">@mdo</a></li>',
+      '    </ul>',
+      '  </li>',
+      '</ul>'
+    ].join('')
+    var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
+
+    $tabs.find('.dropdown-item').trigger('click')
+    assert.ok($tabs.find('.dropdown-item').hasClass('active'))
+    assert.notOk($tabs.find('.nav-link:not(.dropdown-toggle)').hasClass('active'))
+  })
+
   QUnit.test('Nested tabs', function (assert) {
     assert.expect(2)
     var done = assert.async()
