@@ -1,8 +1,8 @@
 import * as Util from '../../../src/util/index'
+import { removeElement } from '../../../src/util/index'
 
 /** Test helpers */
 import { clearFixture, getFixture } from '../../helpers/fixture'
-import { removeElement } from '../../../src/util/index'
 
 describe('Util', () => {
   let fixtureEl
@@ -662,25 +662,37 @@ describe('Util', () => {
   })
 
   describe('removeElement', () => {
-    it('should removeElement if arg is element and return true', () => {
+    it('should removeElement if arg is element', () => {
       fixtureEl.innerHTML = '<div></div>'
       const div = fixtureEl.querySelector('div')
 
-      expect(removeElement(div)).toBe(true)
+      removeElement(div)
+
       expect(fixtureEl.querySelectorAll('div').length).toBe(0)
     })
 
-    it('should return false if no argument given', () => {
-      expect(removeElement()).toBe(false)
-      expect(removeElement({})).toBe(false)
+    it('should removeElement if arg is valid selector', () => {
+      fixtureEl.innerHTML = '<div class="test"></div>'
+
+      removeElement('.test')
+
+      expect(fixtureEl.querySelectorAll('.test').length).toBe(0)
     })
 
-    it('should return false if argument is element but it is removed mefore execution', () => {
+    it('should not throw exception if no argument given', () => {
+      removeElement()
+      removeElement({})
+
+      expect().nothing()
+    })
+
+    it('should not throw exception if argument is element but it is removed before execution', () => {
       fixtureEl.innerHTML = '<div></div>'
       const div = fixtureEl.querySelector('div')
       div.parentElement.removeChild(div)
+      removeElement(div)
 
-      expect(removeElement(div)).toBe(false)
+      expect(fixtureEl.querySelectorAll('div').length).toBe(0)
     })
   })
 

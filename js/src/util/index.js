@@ -246,18 +246,11 @@ const defineJQueryPlugin = plugin => {
   })
 }
 
-const removeElement = element => {
-  if (!element) {
-    return false
+const removeElement = arg => {
+  const element = getElement(arg)
+  if (element) {
+    element.remove()
   }
-
-  const { parentNode } = element
-  if (parentNode) {
-    parentNode.removeChild(element)
-    return true
-  }
-
-  return false
 }
 
 const execute = callback => {
