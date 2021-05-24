@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): util/scrollBar.js
+ * Bootstrap (v5.0.1): util/scrollBar.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -44,8 +44,11 @@ const _setElementAttributes = (selector, styleProp, callback) => {
       }
 
       const actualValue = element.style[styleProp]
+      if (actualValue) {
+        Manipulator.setDataAttribute(element, styleProp, actualValue)
+      }
+
       const calculatedValue = window.getComputedStyle(element)[styleProp]
-      Manipulator.setDataAttribute(element, styleProp, actualValue)
       element.style[styleProp] = `${callback(Number.parseFloat(calculatedValue))}px`
     })
 }

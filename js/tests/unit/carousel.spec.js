@@ -1213,7 +1213,7 @@ describe('Carousel', () => {
 
       jQueryMock.fn.carousel.call(jQueryMock)
 
-      expect(Carousel.getInstance(div)).toBeDefined()
+      expect(Carousel.getInstance(div)).not.toBeNull()
     })
 
     it('should not re create a carousel', () => {
@@ -1271,7 +1271,7 @@ describe('Carousel', () => {
 
       window.dispatchEvent(loadEvent)
 
-      expect(Carousel.getInstance(carouselEl)).toBeDefined()
+      expect(Carousel.getInstance(carouselEl)).not.toBeNull()
     })
 
     it('should create carousel and go to the next slide on click (with real button controls)', done => {

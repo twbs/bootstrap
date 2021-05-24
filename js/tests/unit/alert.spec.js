@@ -134,7 +134,7 @@ describe('Alert', () => {
       const alertEl = document.querySelector('.alert')
       const alert = new Alert(alertEl)
 
-      expect(Alert.getInstance(alertEl)).toBeDefined()
+      expect(Alert.getInstance(alertEl)).not.toBeNull()
 
       alert.dispose()
 
@@ -169,7 +169,7 @@ describe('Alert', () => {
 
       jQueryMock.fn.alert.call(jQueryMock, 'close')
 
-      expect(Alert.getInstance(alertEl)).toBeDefined()
+      expect(Alert.getInstance(alertEl)).not.toBeNull()
       expect(fixtureEl.querySelector('.alert')).toBeNull()
     })
 
@@ -183,7 +183,7 @@ describe('Alert', () => {
 
       jQueryMock.fn.alert.call(jQueryMock)
 
-      expect(Alert.getInstance(alertEl)).toBeDefined()
+      expect(Alert.getInstance(alertEl)).not.toBeNull()
       expect(fixtureEl.querySelector('.alert')).not.toBeNull()
     })
   })

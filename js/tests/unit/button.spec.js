@@ -91,7 +91,7 @@ describe('Button', () => {
       const btnEl = fixtureEl.querySelector('.btn')
       const button = new Button(btnEl)
 
-      expect(Button.getInstance(btnEl)).toBeDefined()
+      expect(Button.getInstance(btnEl)).not.toBeNull()
 
       button.dispose()
 
@@ -126,7 +126,7 @@ describe('Button', () => {
 
       jQueryMock.fn.button.call(jQueryMock, 'toggle')
 
-      expect(Button.getInstance(btnEl)).toBeDefined()
+      expect(Button.getInstance(btnEl)).not.toBeNull()
       expect(btnEl.classList.contains('active')).toEqual(true)
     })
 
@@ -140,7 +140,7 @@ describe('Button', () => {
 
       jQueryMock.fn.button.call(jQueryMock)
 
-      expect(Button.getInstance(btnEl)).toBeDefined()
+      expect(Button.getInstance(btnEl)).not.toBeNull()
       expect(btnEl.classList.contains('active')).toEqual(false)
     })
   })
