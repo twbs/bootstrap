@@ -41,25 +41,46 @@
       }
     }
 
+    $is-css-var: map-get($utility, css-var);
+    $is-local-vars: map-get($utility, local-vars);
     $is-rtl: map-get($utility, rtl);
 
     @if $value != null {
       @if $is-rtl == false {
         /* rtl:begin:remove */
       }
-      .#{$property-class + $infix + $property-class-modifier} {
-        @each $property in $properties {
-          #{$property}: $value if($enable-important-utilities, !important, null);
-        }
-      }
 
-      @each $pseudo in $state {
-        .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
+      @if $is-css-var {
+        .#{$property-class + $infix + $property-class-modifier} {
+          --#{$variable-prefix}#{$property-class}: #{$value};
+        }
+
+        @each $pseudo in $state {
+          .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
+            --#{$variable-prefix}#{$property-class}: #{$value};
+          }
+        }
+      } @else {
+        .#{$property-class + $infix + $property-class-modifier} {
           @each $property in $properties {
+            @if $is-local-vars {
+              @each $local-var, $value in $is-local-vars {
+                --#{$variable-prefix}#{$local-var}: #{$value};
+              }
+            }
             #{$property}: $value if($enable-important-utilities, !important, null);
           }
         }
+
+        @each $pseudo in $state {
+          .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
+            @each $property in $properties {
+              #{$property}: $value if($enable-important-utilities, !important, null);
+            }
+          }
+        }
       }
+
       @if $is-rtl == false {
         /* rtl:end:remove */
       }
