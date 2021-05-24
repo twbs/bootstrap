@@ -74,7 +74,7 @@ class Alert extends BaseComponent {
     element.classList.remove(CLASS_NAME_SHOW)
 
     const isAnimated = element.classList.contains(CLASS_NAME_FADE)
-    this._queueCallback(() => this._destroyElement(element), element, isAnimated)
+    this._handleTransitionEndEvent(() => this._destroyElement(element), element, isAnimated)
   }
 
   _destroyElement(element) {

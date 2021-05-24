@@ -113,7 +113,7 @@ class Toast extends BaseComponent {
     reflow(this._element)
     this._element.classList.add(CLASS_NAME_SHOWING)
 
-    this._queueCallback(complete, this._element, this._config.animation)
+    this._handleTransitionEndEvent(complete, this._element, this._config.animation)
   }
 
   hide() {
@@ -133,7 +133,7 @@ class Toast extends BaseComponent {
     }
 
     this._element.classList.remove(CLASS_NAME_SHOW)
-    this._queueCallback(complete, this._element, this._config.animation)
+    this._handleTransitionEndEvent(complete, this._element, this._config.animation)
   }
 
   dispose() {

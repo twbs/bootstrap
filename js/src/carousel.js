@@ -455,7 +455,7 @@ class Carousel extends BaseComponent {
         setTimeout(triggerSlidEvent, 0)
       }
 
-      this._queueCallback(completeCallBack, activeElement, true)
+      this._handleTransitionEndEvent(completeCallBack, activeElement, true)
     } else {
       activeElement.classList.remove(CLASS_NAME_ACTIVE)
       nextElement.classList.add(CLASS_NAME_ACTIVE)

@@ -300,7 +300,7 @@ class Tooltip extends BaseComponent {
     }
 
     const isAnimated = this.tip.classList.contains(CLASS_NAME_FADE)
-    this._queueCallback(complete, this.tip, isAnimated)
+    this._handleTransitionEndEvent(complete, this.tip, isAnimated)
   }
 
   hide() {
@@ -347,7 +347,7 @@ class Tooltip extends BaseComponent {
     this._activeTrigger[TRIGGER_HOVER] = false
 
     const isAnimated = this.tip.classList.contains(CLASS_NAME_FADE)
-    this._queueCallback(complete, this.tip, isAnimated)
+    this._handleTransitionEndEvent(complete, this.tip, isAnimated)
     this._hoverState = ''
   }
 

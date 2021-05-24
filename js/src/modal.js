@@ -176,7 +176,7 @@ class Modal extends BaseComponent {
     EventHandler.off(this._element, EVENT_CLICK_DISMISS)
     EventHandler.off(this._dialog, EVENT_MOUSEDOWN_DISMISS)
 
-    this._queueCallback(() => this._hideModal(), this._element, isAnimated)
+    this._handleTransitionEndEvent(() => this._hideModal(), this._element, isAnimated)
   }
 
   dispose() {
@@ -257,7 +257,7 @@ class Modal extends BaseComponent {
       })
     }
 
-    this._queueCallback(transitionComplete, this._dialog, isAnimated)
+    this._handleTransitionEndEvent(transitionComplete, this._dialog, isAnimated)
   }
 
   _enforceFocus() {

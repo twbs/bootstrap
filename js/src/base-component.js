@@ -43,7 +43,7 @@ class BaseComponent {
     })
   }
 
-  _queueCallback(callback, element, isAnimated = true) {
+  _handleTransitionEndEvent(callback, element, isAnimated = true) {
     if (!isAnimated) {
       execute(callback)
       return
