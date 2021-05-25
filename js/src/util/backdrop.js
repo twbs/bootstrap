@@ -6,7 +6,7 @@
  */
 
 import EventHandler from '../dom/event-handler'
-import { emulateTransitionEnd, execute, getTransitionDurationFromElement, reflow, removeElement, typeCheckConfig } from './index'
+import { emulateTransitionEnd, execute, getTransitionDurationFromElement, reflow, typeCheckConfig } from './index'
 
 const Default = {
   isVisible: true, // if false, we use the backdrop helper without adding any element to the dom
@@ -116,7 +116,7 @@ class Backdrop {
 
     EventHandler.off(this._element, EVENT_MOUSEDOWN)
 
-    removeElement(this._element)
+    this._element.remove()
     this._isAppended = false
   }
 

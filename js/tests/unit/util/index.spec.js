@@ -1,5 +1,4 @@
 import * as Util from '../../../src/util/index'
-import { removeElement } from '../../../src/util/index'
 
 /** Test helpers */
 import { clearFixture, getFixture } from '../../helpers/fixture'
@@ -658,41 +657,6 @@ describe('Util', () => {
       const spy = jasmine.createSpy('spy')
       Util.execute(spy)
       expect(spy).toHaveBeenCalled()
-    })
-  })
-
-  describe('removeElement', () => {
-    it('should removeElement if arg is element', () => {
-      fixtureEl.innerHTML = '<div></div>'
-      const div = fixtureEl.querySelector('div')
-
-      removeElement(div)
-
-      expect(fixtureEl.querySelectorAll('div').length).toBe(0)
-    })
-
-    it('should removeElement if arg is valid selector', () => {
-      fixtureEl.innerHTML = '<div class="test"></div>'
-
-      removeElement('.test')
-
-      expect(fixtureEl.querySelectorAll('.test').length).toBe(0)
-    })
-
-    it('should not throw exception if no argument given', () => {
-      removeElement()
-      removeElement({})
-
-      expect().nothing()
-    })
-
-    it('should not throw exception if argument is element but it is removed before execution', () => {
-      fixtureEl.innerHTML = '<div></div>'
-      const div = fixtureEl.querySelector('div')
-      div.parentElement.removeChild(div)
-      removeElement(div)
-
-      expect(fixtureEl.querySelectorAll('div').length).toBe(0)
     })
   })
 

@@ -7,8 +7,7 @@
 
 import {
   defineJQueryPlugin,
-  getElementFromSelector,
-  removeElement
+  getElementFromSelector
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
@@ -79,7 +78,7 @@ class Alert extends BaseComponent {
   }
 
   _destroyElement(element) {
-    removeElement(element)
+    element.remove()
 
     EventHandler.trigger(element, EVENT_CLOSED)
   }

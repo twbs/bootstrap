@@ -5,10 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import {
-  defineJQueryPlugin,
-  removeElement
-} from './util/index'
+import { defineJQueryPlugin } from './util/index'
 import Data from './dom/data'
 import SelectorEngine from './dom/selector-engine'
 import Tooltip from './tooltip'
@@ -101,11 +98,11 @@ class Popover extends Tooltip {
     this.tip = super.getTipElement()
 
     if (!this.getTitle()) {
-      removeElement(SelectorEngine.findOne(SELECTOR_TITLE, this.tip))
+      SelectorEngine.findOne(SELECTOR_TITLE, this.tip).remove()
     }
 
     if (!this._getContent()) {
-      removeElement(SelectorEngine.findOne(SELECTOR_CONTENT, this.tip))
+      SelectorEngine.findOne(SELECTOR_CONTENT, this.tip).remove()
     }
 
     return this.tip

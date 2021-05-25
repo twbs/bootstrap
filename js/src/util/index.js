@@ -246,13 +246,6 @@ const defineJQueryPlugin = plugin => {
   })
 }
 
-const removeElement = arg => {
-  const element = getElement(arg)
-  if (element) {
-    element.remove()
-  }
-}
-
 const execute = callback => {
   if (typeof callback === 'function') {
     callback()
@@ -303,7 +296,6 @@ export {
   noop,
   getNextActiveElement,
   reflow,
-  removeElement,
   getjQuery,
   onDOMContentLoaded,
   isRTL,
