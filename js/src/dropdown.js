@@ -354,18 +354,16 @@ class Dropdown extends BaseComponent {
     }
   }
 
-  _selectMenuItem(event) {
-    if (![ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key)) {
-      return
-    }
-
+  _selectMenuItem({ key, target }) {
     const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu).filter(isVisible)
 
     if (!items.length) {
       return
     }
 
-    getNextActiveElement(items, event.target, event.key === ARROW_DOWN_KEY, false).focus()
+    // if target isn't included in items (e.g. when expanding the dropdown)
+    // allow cycling to get the last item in case key equals ARROW_UP_KEY
+    getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target)).focus()
   }
 
   // Static
@@ -480,17 +478,18 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    if (!isActive && (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY)) {
-      getToggleButton().click()
+    if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY) {
+      if (!isActive) {
+        getToggleButton().click()
+      }
+
+      Dropdown.getInstance(getToggleButton())._selectMenuItem(event)
       return
     }
 
     if (!isActive || event.key === SPACE_KEY) {
       Dropdown.clearMenus()
-      return
     }
-
-    Dropdown.getInstance(getToggleButton())._selectMenuItem(event)
   }
 }
 

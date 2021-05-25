@@ -264,9 +264,9 @@ const execute = callback => {
 const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
   let index = list.indexOf(activeElement)
 
-  // if the element does not exist in the list initialize it as the first element
+  // if the element does not exist in the list return an element depending on the direction and if cycle is allowed
   if (index === -1) {
-    return list[0]
+    return list[!shouldGetNext && isCycleAllowed ? list.length - 1 : 0]
   }
 
   const listLength = list.length
