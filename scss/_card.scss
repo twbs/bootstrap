@@ -55,7 +55,7 @@
 }
 
 .card-subtitle {
-  margin-top: -$card-title-spacer-y / 2;
+  margin-top: -math.div($card-title-spacer-y, 2);
   margin-bottom: 0;
 }
 
