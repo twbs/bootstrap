@@ -126,24 +126,6 @@
       return this.getTitle() || this._getContent();
     }
 
-    getTipElement() {
-      if (this.tip) {
-        return this.tip;
-      }
-
-      this.tip = super.getTipElement();
-
-      if (!this.getTitle()) {
-        this.tip.removeChild(SelectorEngine__default['default'].findOne(SELECTOR_TITLE, this.tip));
-      }
-
-      if (!this._getContent()) {
-        this.tip.removeChild(SelectorEngine__default['default'].findOne(SELECTOR_CONTENT, this.tip));
-      }
-
-      return this.tip;
-    }
-
     setContent() {
       const tip = this.getTipElement(); // we use append for html objects to maintain js events
 
@@ -183,6 +165,10 @@
         let data = Data__default['default'].get(this, DATA_KEY);
 
         const _config = typeof config === 'object' ? config : null;
+
+        if (!data && /dispose|hide/.test(config)) {
+          return;
+        }
 
         if (!data) {
           data = new Popover(this, _config);

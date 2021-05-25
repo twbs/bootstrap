@@ -113,11 +113,17 @@
   };
 
   const isVisible = element => {
-    if (!isElement(element) || element.getClientRects().length === 0) {
+    if (!element) {
       return false;
     }
 
-    return getComputedStyle(element).getPropertyValue('visibility') === 'visible';
+    if (element.style && element.parentNode && element.parentNode.style) {
+      const elementStyle = getComputedStyle(element);
+      const parentNodeStyle = getComputedStyle(element.parentNode);
+      return elementStyle.display !== 'none' && parentNodeStyle.display !== 'none' && elementStyle.visibility !== 'hidden';
+    }
+
+    return false;
   };
 
   const isDisabled = element => {
@@ -177,33 +183,6 @@
         };
       }
     });
-  };
-  /**
-   * Return the previous/next element of a list.
-   *
-   * @param {array} list    The list of elements
-   * @param activeElement   The active element
-   * @param shouldGetNext   Choose to get next or previous element
-   * @param isCycleAllowed
-   * @return {Element|elem} The proper element
-   */
-
-
-  const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
-    let index = list.indexOf(activeElement); // if the element does not exist in the list return an element depending on the direction and if cycle is allowed
-
-    if (index === -1) {
-      return list[!shouldGetNext && isCycleAllowed ? list.length - 1 : 0];
-    }
-
-    const listLength = list.length;
-    index += shouldGetNext ? 1 : -1;
-
-    if (isCycleAllowed) {
-      index = (index + listLength) % listLength;
-    }
-
-    return list[Math.max(0, Math.min(index, listLength - 1))];
   };
 
   /**
@@ -528,19 +507,27 @@
       };
     }
 
-    _selectMenuItem({
-      key,
-      target
-    }) {
+    _selectMenuItem(event) {
       const items = SelectorEngine__default['default'].find(SELECTOR_VISIBLE_ITEMS, this._menu).filter(isVisible);
 
       if (!items.length) {
         return;
-      } // if target isn't included in items (e.g. when expanding the dropdown)
-      // allow cycling to get the last item in case key equals ARROW_UP_KEY
+      }
+
+      let index = items.indexOf(event.target); // Up
+
+      if (event.key === ARROW_UP_KEY && index > 0) {
+        index--;
+      } // Down
 
 
-      getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target)).focus();
+      if (event.key === ARROW_DOWN_KEY && index < items.length - 1) {
+        index++;
+      } // index is -1 if the first keydown is an ArrowUp
+
+
+      index = index === -1 ? 0 : index;
+      items[index].focus();
     } // Static
 
 
@@ -649,19 +636,17 @@
         return;
       }
 
-      if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY) {
-        if (!isActive) {
-          getToggleButton().click();
-        }
-
-        Dropdown.getInstance(getToggleButton())._selectMenuItem(event);
-
+      if (!isActive && (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY)) {
+        getToggleButton().click();
         return;
       }
 
       if (!isActive || event.key === SPACE_KEY) {
         Dropdown.clearMenus();
+        return;
       }
+
+      Dropdown.getInstance(getToggleButton())._selectMenuItem(event);
     }
 
   }

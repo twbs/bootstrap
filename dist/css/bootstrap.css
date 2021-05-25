@@ -70,7 +70,7 @@ hr:not([size]) {
 
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
-  margin-bottom: expression(math.div($spacer, 2));
+  margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
 }
@@ -597,8 +597,8 @@ progress {
 .container-md,
 .container-sm {
   width: 100%;
-  padding-right: var(--bs-gutter-x, expression(math.div($grid-gutter-width, 2)));
-  padding-left: var(--bs-gutter-x, expression(math.div($grid-gutter-width, 2)));
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
   margin-right: auto;
   margin-left: auto;
 }
@@ -806,22 +806,22 @@ progress {
 
 .g-1,
 .gx-1 {
-  --bs-gutter-x: expression(math.div($spacer, 4));
+  --bs-gutter-x: 0.25rem;
 }
 
 .g-1,
 .gy-1 {
-  --bs-gutter-y: expression(math.div($spacer, 4));
+  --bs-gutter-y: 0.25rem;
 }
 
 .g-2,
 .gx-2 {
-  --bs-gutter-x: expression(math.div($spacer, 2));
+  --bs-gutter-x: 0.5rem;
 }
 
 .g-2,
 .gy-2 {
-  --bs-gutter-y: expression(math.div($spacer, 2));
+  --bs-gutter-y: 0.5rem;
 }
 
 .g-3,
@@ -1019,22 +1019,22 @@ progress {
 
   .g-sm-1,
 .gx-sm-1 {
-    --bs-gutter-x: expression(math.div($spacer, 4));
+    --bs-gutter-x: 0.25rem;
   }
 
   .g-sm-1,
 .gy-sm-1 {
-    --bs-gutter-y: expression(math.div($spacer, 4));
+    --bs-gutter-y: 0.25rem;
   }
 
   .g-sm-2,
 .gx-sm-2 {
-    --bs-gutter-x: expression(math.div($spacer, 2));
+    --bs-gutter-x: 0.5rem;
   }
 
   .g-sm-2,
 .gy-sm-2 {
-    --bs-gutter-y: expression(math.div($spacer, 2));
+    --bs-gutter-y: 0.5rem;
   }
 
   .g-sm-3,
@@ -1232,22 +1232,22 @@ progress {
 
   .g-md-1,
 .gx-md-1 {
-    --bs-gutter-x: expression(math.div($spacer, 4));
+    --bs-gutter-x: 0.25rem;
   }
 
   .g-md-1,
 .gy-md-1 {
-    --bs-gutter-y: expression(math.div($spacer, 4));
+    --bs-gutter-y: 0.25rem;
   }
 
   .g-md-2,
 .gx-md-2 {
-    --bs-gutter-x: expression(math.div($spacer, 2));
+    --bs-gutter-x: 0.5rem;
   }
 
   .g-md-2,
 .gy-md-2 {
-    --bs-gutter-y: expression(math.div($spacer, 2));
+    --bs-gutter-y: 0.5rem;
   }
 
   .g-md-3,
@@ -1445,22 +1445,22 @@ progress {
 
   .g-lg-1,
 .gx-lg-1 {
-    --bs-gutter-x: expression(math.div($spacer, 4));
+    --bs-gutter-x: 0.25rem;
   }
 
   .g-lg-1,
 .gy-lg-1 {
-    --bs-gutter-y: expression(math.div($spacer, 4));
+    --bs-gutter-y: 0.25rem;
   }
 
   .g-lg-2,
 .gx-lg-2 {
-    --bs-gutter-x: expression(math.div($spacer, 2));
+    --bs-gutter-x: 0.5rem;
   }
 
   .g-lg-2,
 .gy-lg-2 {
-    --bs-gutter-y: expression(math.div($spacer, 2));
+    --bs-gutter-y: 0.5rem;
   }
 
   .g-lg-3,
@@ -1658,22 +1658,22 @@ progress {
 
   .g-xl-1,
 .gx-xl-1 {
-    --bs-gutter-x: expression(math.div($spacer, 4));
+    --bs-gutter-x: 0.25rem;
   }
 
   .g-xl-1,
 .gy-xl-1 {
-    --bs-gutter-y: expression(math.div($spacer, 4));
+    --bs-gutter-y: 0.25rem;
   }
 
   .g-xl-2,
 .gx-xl-2 {
-    --bs-gutter-x: expression(math.div($spacer, 2));
+    --bs-gutter-x: 0.5rem;
   }
 
   .g-xl-2,
 .gy-xl-2 {
-    --bs-gutter-y: expression(math.div($spacer, 2));
+    --bs-gutter-y: 0.5rem;
   }
 
   .g-xl-3,
@@ -1871,22 +1871,22 @@ progress {
 
   .g-xxl-1,
 .gx-xxl-1 {
-    --bs-gutter-x: expression(math.div($spacer, 4));
+    --bs-gutter-x: 0.25rem;
   }
 
   .g-xxl-1,
 .gy-xxl-1 {
-    --bs-gutter-y: expression(math.div($spacer, 4));
+    --bs-gutter-y: 0.25rem;
   }
 
   .g-xxl-2,
 .gx-xxl-2 {
-    --bs-gutter-x: expression(math.div($spacer, 2));
+    --bs-gutter-x: 0.5rem;
   }
 
   .g-xxl-2,
 .gy-xxl-2 {
-    --bs-gutter-y: expression(math.div($spacer, 2));
+    --bs-gutter-y: 0.5rem;
   }
 
   .g-xxl-3,
@@ -2261,7 +2261,7 @@ progress {
 }
 
 .form-control-sm {
-  min-height: calc(1.5em + (0.5rem + 2px));
+  min-height: calc(1.5em + 0.5rem + 2px);
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   border-radius: 0.2rem;
@@ -2280,7 +2280,7 @@ progress {
 }
 
 .form-control-lg {
-  min-height: calc(1.5em + (1rem + 2px));
+  min-height: calc(1.5em + 1rem + 2px);
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   border-radius: 0.3rem;
@@ -2299,13 +2299,13 @@ progress {
 }
 
 textarea.form-control {
-  min-height: calc(1.5em + (0.75rem + 2px));
+  min-height: calc(1.5em + 0.75rem + 2px);
 }
 textarea.form-control-sm {
-  min-height: calc(1.5em + (0.5rem + 2px));
+  min-height: calc(1.5em + 0.5rem + 2px);
 }
 textarea.form-control-lg {
-  min-height: calc(1.5em + (1rem + 2px));
+  min-height: calc(1.5em + 1rem + 2px);
 }
 
 .form-control-color {
@@ -2329,7 +2329,6 @@ textarea.form-control-lg {
   display: block;
   width: 100%;
   padding: 0.375rem 2.25rem 0.375rem 0.75rem;
-  -moz-padding-start: calc(0.75rem - 3px);
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -2577,6 +2576,7 @@ textarea.form-control-lg {
 .form-floating > .form-control,
 .form-floating > .form-select {
   height: calc(3.5rem + 2px);
+  padding: 1rem 0.75rem;
 }
 .form-floating > label {
   position: absolute;
@@ -2593,9 +2593,6 @@ textarea.form-control-lg {
   .form-floating > label {
     transition: none;
   }
-}
-.form-floating > .form-control {
-  padding: 1rem 0.75rem;
 }
 .form-floating > .form-control::-moz-placeholder {
   color: transparent;
@@ -2748,7 +2745,7 @@ textarea.form-control-lg {
   padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
-  background-position: right calc(0.375em + (expression(math.div($input-padding-y, 2)))) center;
+  background-position: right calc(0.375em + 0.1875rem) center;
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 .was-validated .form-control:valid:focus, .form-control.is-valid:focus {
@@ -2758,7 +2755,7 @@ textarea.form-control-lg {
 
 .was-validated textarea.form-control:valid, textarea.form-control.is-valid {
   padding-right: calc(1.5em + 0.75rem);
-  background-position: top calc(0.375em + (expression(math.div($input-padding-y, 2)))) right calc(0.375em + (expression(math.div($input-padding-y, 2))));
+  background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
 }
 
 .was-validated .form-select:valid, .form-select.is-valid {
@@ -2837,7 +2834,7 @@ textarea.form-control-lg {
   padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
-  background-position: right calc(0.375em + (expression(math.div($input-padding-y, 2)))) center;
+  background-position: right calc(0.375em + 0.1875rem) center;
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 .was-validated .form-control:invalid:focus, .form-control.is-invalid:focus {
@@ -2847,7 +2844,7 @@ textarea.form-control-lg {
 
 .was-validated textarea.form-control:invalid, textarea.form-control.is-invalid {
   padding-right: calc(1.5em + 0.75rem);
-  background-position: top calc(0.375em + (expression(math.div($input-padding-y, 2)))) right calc(0.375em + (expression(math.div($input-padding-y, 2))));
+  background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
 }
 
 .was-validated .form-select:invalid, .form-select.is-invalid {
@@ -3923,8 +3920,8 @@ textarea.form-control-lg {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding-top: expression(math.div($spacer, 2));
-  padding-bottom: expression(math.div($spacer, 2));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 .navbar > .container,
 .navbar > .container-fluid,
@@ -5180,7 +5177,7 @@ textarea.form-control-lg {
   pointer-events: none;
 }
 .toast-container > :not(:last-child) {
-  margin-bottom: expression(math.div($grid-gutter-width, 2));
+  margin-bottom: 0.75rem;
 }
 
 .toast-header {
@@ -6159,15 +6156,15 @@ textarea.form-control-lg {
 }
 
 .ratio-4x3 {
-  --bs-aspect-ratio: calc(expression(math.div(3, 4)) * 100%);
+  --bs-aspect-ratio: calc(3 / 4 * 100%);
 }
 
 .ratio-16x9 {
-  --bs-aspect-ratio: calc(expression(math.div(9, 16)) * 100%);
+  --bs-aspect-ratio: calc(9 / 16 * 100%);
 }
 
 .ratio-21x9 {
-  --bs-aspect-ratio: calc(expression(math.div(9, 21)) * 100%);
+  --bs-aspect-ratio: calc(9 / 21 * 100%);
 }
 
 .fixed-top {
@@ -6664,11 +6661,11 @@ textarea.form-control-lg {
 }
 
 .gap-1 {
-  gap: expression(math.div($spacer, 4)) !important;
+  gap: 0.25rem !important;
 }
 
 .gap-2 {
-  gap: expression(math.div($spacer, 2)) !important;
+  gap: 0.5rem !important;
 }
 
 .gap-3 {
@@ -6812,11 +6809,11 @@ textarea.form-control-lg {
 }
 
 .m-1 {
-  margin: expression(math.div($spacer, 4)) !important;
+  margin: 0.25rem !important;
 }
 
 .m-2 {
-  margin: expression(math.div($spacer, 2)) !important;
+  margin: 0.5rem !important;
 }
 
 .m-3 {
@@ -6841,13 +6838,13 @@ textarea.form-control-lg {
 }
 
 .mx-1 {
-  margin-right: expression(math.div($spacer, 4)) !important;
-  margin-left: expression(math.div($spacer, 4)) !important;
+  margin-right: 0.25rem !important;
+  margin-left: 0.25rem !important;
 }
 
 .mx-2 {
-  margin-right: expression(math.div($spacer, 2)) !important;
-  margin-left: expression(math.div($spacer, 2)) !important;
+  margin-right: 0.5rem !important;
+  margin-left: 0.5rem !important;
 }
 
 .mx-3 {
@@ -6876,13 +6873,13 @@ textarea.form-control-lg {
 }
 
 .my-1 {
-  margin-top: expression(math.div($spacer, 4)) !important;
-  margin-bottom: expression(math.div($spacer, 4)) !important;
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.25rem !important;
 }
 
 .my-2 {
-  margin-top: expression(math.div($spacer, 2)) !important;
-  margin-bottom: expression(math.div($spacer, 2)) !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
 }
 
 .my-3 {
@@ -6910,11 +6907,11 @@ textarea.form-control-lg {
 }
 
 .mt-1 {
-  margin-top: expression(math.div($spacer, 4)) !important;
+  margin-top: 0.25rem !important;
 }
 
 .mt-2 {
-  margin-top: expression(math.div($spacer, 2)) !important;
+  margin-top: 0.5rem !important;
 }
 
 .mt-3 {
@@ -6938,11 +6935,11 @@ textarea.form-control-lg {
 }
 
 .me-1 {
-  margin-right: expression(math.div($spacer, 4)) !important;
+  margin-right: 0.25rem !important;
 }
 
 .me-2 {
-  margin-right: expression(math.div($spacer, 2)) !important;
+  margin-right: 0.5rem !important;
 }
 
 .me-3 {
@@ -6966,11 +6963,11 @@ textarea.form-control-lg {
 }
 
 .mb-1 {
-  margin-bottom: expression(math.div($spacer, 4)) !important;
+  margin-bottom: 0.25rem !important;
 }
 
 .mb-2 {
-  margin-bottom: expression(math.div($spacer, 2)) !important;
+  margin-bottom: 0.5rem !important;
 }
 
 .mb-3 {
@@ -6994,11 +6991,11 @@ textarea.form-control-lg {
 }
 
 .ms-1 {
-  margin-left: expression(math.div($spacer, 4)) !important;
+  margin-left: 0.25rem !important;
 }
 
 .ms-2 {
-  margin-left: expression(math.div($spacer, 2)) !important;
+  margin-left: 0.5rem !important;
 }
 
 .ms-3 {
@@ -7022,11 +7019,11 @@ textarea.form-control-lg {
 }
 
 .p-1 {
-  padding: expression(math.div($spacer, 4)) !important;
+  padding: 0.25rem !important;
 }
 
 .p-2 {
-  padding: expression(math.div($spacer, 2)) !important;
+  padding: 0.5rem !important;
 }
 
 .p-3 {
@@ -7047,13 +7044,13 @@ textarea.form-control-lg {
 }
 
 .px-1 {
-  padding-right: expression(math.div($spacer, 4)) !important;
-  padding-left: expression(math.div($spacer, 4)) !important;
+  padding-right: 0.25rem !important;
+  padding-left: 0.25rem !important;
 }
 
 .px-2 {
-  padding-right: expression(math.div($spacer, 2)) !important;
-  padding-left: expression(math.div($spacer, 2)) !important;
+  padding-right: 0.5rem !important;
+  padding-left: 0.5rem !important;
 }
 
 .px-3 {
@@ -7077,13 +7074,13 @@ textarea.form-control-lg {
 }
 
 .py-1 {
-  padding-top: expression(math.div($spacer, 4)) !important;
-  padding-bottom: expression(math.div($spacer, 4)) !important;
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
 }
 
 .py-2 {
-  padding-top: expression(math.div($spacer, 2)) !important;
-  padding-bottom: expression(math.div($spacer, 2)) !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
 }
 
 .py-3 {
@@ -7106,11 +7103,11 @@ textarea.form-control-lg {
 }
 
 .pt-1 {
-  padding-top: expression(math.div($spacer, 4)) !important;
+  padding-top: 0.25rem !important;
 }
 
 .pt-2 {
-  padding-top: expression(math.div($spacer, 2)) !important;
+  padding-top: 0.5rem !important;
 }
 
 .pt-3 {
@@ -7130,11 +7127,11 @@ textarea.form-control-lg {
 }
 
 .pe-1 {
-  padding-right: expression(math.div($spacer, 4)) !important;
+  padding-right: 0.25rem !important;
 }
 
 .pe-2 {
-  padding-right: expression(math.div($spacer, 2)) !important;
+  padding-right: 0.5rem !important;
 }
 
 .pe-3 {
@@ -7154,11 +7151,11 @@ textarea.form-control-lg {
 }
 
 .pb-1 {
-  padding-bottom: expression(math.div($spacer, 4)) !important;
+  padding-bottom: 0.25rem !important;
 }
 
 .pb-2 {
-  padding-bottom: expression(math.div($spacer, 2)) !important;
+  padding-bottom: 0.5rem !important;
 }
 
 .pb-3 {
@@ -7178,11 +7175,11 @@ textarea.form-control-lg {
 }
 
 .ps-1 {
-  padding-left: expression(math.div($spacer, 4)) !important;
+  padding-left: 0.25rem !important;
 }
 
 .ps-2 {
-  padding-left: expression(math.div($spacer, 2)) !important;
+  padding-left: 0.5rem !important;
 }
 
 .ps-3 {
@@ -7612,11 +7609,11 @@ textarea.form-control-lg {
   }
 
   .gap-sm-1 {
-    gap: expression(math.div($spacer, 4)) !important;
+    gap: 0.25rem !important;
   }
 
   .gap-sm-2 {
-    gap: expression(math.div($spacer, 2)) !important;
+    gap: 0.5rem !important;
   }
 
   .gap-sm-3 {
@@ -7760,11 +7757,11 @@ textarea.form-control-lg {
   }
 
   .m-sm-1 {
-    margin: expression(math.div($spacer, 4)) !important;
+    margin: 0.25rem !important;
   }
 
   .m-sm-2 {
-    margin: expression(math.div($spacer, 2)) !important;
+    margin: 0.5rem !important;
   }
 
   .m-sm-3 {
@@ -7789,13 +7786,13 @@ textarea.form-control-lg {
   }
 
   .mx-sm-1 {
-    margin-right: expression(math.div($spacer, 4)) !important;
-    margin-left: expression(math.div($spacer, 4)) !important;
+    margin-right: 0.25rem !important;
+    margin-left: 0.25rem !important;
   }
 
   .mx-sm-2 {
-    margin-right: expression(math.div($spacer, 2)) !important;
-    margin-left: expression(math.div($spacer, 2)) !important;
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important;
   }
 
   .mx-sm-3 {
@@ -7824,13 +7821,13 @@ textarea.form-control-lg {
   }
 
   .my-sm-1 {
-    margin-top: expression(math.div($spacer, 4)) !important;
-    margin-bottom: expression(math.div($spacer, 4)) !important;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important;
   }
 
   .my-sm-2 {
-    margin-top: expression(math.div($spacer, 2)) !important;
-    margin-bottom: expression(math.div($spacer, 2)) !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
   }
 
   .my-sm-3 {
@@ -7858,11 +7855,11 @@ textarea.form-control-lg {
   }
 
   .mt-sm-1 {
-    margin-top: expression(math.div($spacer, 4)) !important;
+    margin-top: 0.25rem !important;
   }
 
   .mt-sm-2 {
-    margin-top: expression(math.div($spacer, 2)) !important;
+    margin-top: 0.5rem !important;
   }
 
   .mt-sm-3 {
@@ -7886,11 +7883,11 @@ textarea.form-control-lg {
   }
 
   .me-sm-1 {
-    margin-right: expression(math.div($spacer, 4)) !important;
+    margin-right: 0.25rem !important;
   }
 
   .me-sm-2 {
-    margin-right: expression(math.div($spacer, 2)) !important;
+    margin-right: 0.5rem !important;
   }
 
   .me-sm-3 {
@@ -7914,11 +7911,11 @@ textarea.form-control-lg {
   }
 
   .mb-sm-1 {
-    margin-bottom: expression(math.div($spacer, 4)) !important;
+    margin-bottom: 0.25rem !important;
   }
 
   .mb-sm-2 {
-    margin-bottom: expression(math.div($spacer, 2)) !important;
+    margin-bottom: 0.5rem !important;
   }
 
   .mb-sm-3 {
@@ -7942,11 +7939,11 @@ textarea.form-control-lg {
   }
 
   .ms-sm-1 {
-    margin-left: expression(math.div($spacer, 4)) !important;
+    margin-left: 0.25rem !important;
   }
 
   .ms-sm-2 {
-    margin-left: expression(math.div($spacer, 2)) !important;
+    margin-left: 0.5rem !important;
   }
 
   .ms-sm-3 {
@@ -7970,11 +7967,11 @@ textarea.form-control-lg {
   }
 
   .p-sm-1 {
-    padding: expression(math.div($spacer, 4)) !important;
+    padding: 0.25rem !important;
   }
 
   .p-sm-2 {
-    padding: expression(math.div($spacer, 2)) !important;
+    padding: 0.5rem !important;
   }
 
   .p-sm-3 {
@@ -7995,13 +7992,13 @@ textarea.form-control-lg {
   }
 
   .px-sm-1 {
-    padding-right: expression(math.div($spacer, 4)) !important;
-    padding-left: expression(math.div($spacer, 4)) !important;
+    padding-right: 0.25rem !important;
+    padding-left: 0.25rem !important;
   }
 
   .px-sm-2 {
-    padding-right: expression(math.div($spacer, 2)) !important;
-    padding-left: expression(math.div($spacer, 2)) !important;
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important;
   }
 
   .px-sm-3 {
@@ -8025,13 +8022,13 @@ textarea.form-control-lg {
   }
 
   .py-sm-1 {
-    padding-top: expression(math.div($spacer, 4)) !important;
-    padding-bottom: expression(math.div($spacer, 4)) !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
   }
 
   .py-sm-2 {
-    padding-top: expression(math.div($spacer, 2)) !important;
-    padding-bottom: expression(math.div($spacer, 2)) !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
   }
 
   .py-sm-3 {
@@ -8054,11 +8051,11 @@ textarea.form-control-lg {
   }
 
   .pt-sm-1 {
-    padding-top: expression(math.div($spacer, 4)) !important;
+    padding-top: 0.25rem !important;
   }
 
   .pt-sm-2 {
-    padding-top: expression(math.div($spacer, 2)) !important;
+    padding-top: 0.5rem !important;
   }
 
   .pt-sm-3 {
@@ -8078,11 +8075,11 @@ textarea.form-control-lg {
   }
 
   .pe-sm-1 {
-    padding-right: expression(math.div($spacer, 4)) !important;
+    padding-right: 0.25rem !important;
   }
 
   .pe-sm-2 {
-    padding-right: expression(math.div($spacer, 2)) !important;
+    padding-right: 0.5rem !important;
   }
 
   .pe-sm-3 {
@@ -8102,11 +8099,11 @@ textarea.form-control-lg {
   }
 
   .pb-sm-1 {
-    padding-bottom: expression(math.div($spacer, 4)) !important;
+    padding-bottom: 0.25rem !important;
   }
 
   .pb-sm-2 {
-    padding-bottom: expression(math.div($spacer, 2)) !important;
+    padding-bottom: 0.5rem !important;
   }
 
   .pb-sm-3 {
@@ -8126,11 +8123,11 @@ textarea.form-control-lg {
   }
 
   .ps-sm-1 {
-    padding-left: expression(math.div($spacer, 4)) !important;
+    padding-left: 0.25rem !important;
   }
 
   .ps-sm-2 {
-    padding-left: expression(math.div($spacer, 2)) !important;
+    padding-left: 0.5rem !important;
   }
 
   .ps-sm-3 {
@@ -8263,11 +8260,11 @@ textarea.form-control-lg {
   }
 
   .gap-md-1 {
-    gap: expression(math.div($spacer, 4)) !important;
+    gap: 0.25rem !important;
   }
 
   .gap-md-2 {
-    gap: expression(math.div($spacer, 2)) !important;
+    gap: 0.5rem !important;
   }
 
   .gap-md-3 {
@@ -8411,11 +8408,11 @@ textarea.form-control-lg {
   }
 
   .m-md-1 {
-    margin: expression(math.div($spacer, 4)) !important;
+    margin: 0.25rem !important;
   }
 
   .m-md-2 {
-    margin: expression(math.div($spacer, 2)) !important;
+    margin: 0.5rem !important;
   }
 
   .m-md-3 {
@@ -8440,13 +8437,13 @@ textarea.form-control-lg {
   }
 
   .mx-md-1 {
-    margin-right: expression(math.div($spacer, 4)) !important;
-    margin-left: expression(math.div($spacer, 4)) !important;
+    margin-right: 0.25rem !important;
+    margin-left: 0.25rem !important;
   }
 
   .mx-md-2 {
-    margin-right: expression(math.div($spacer, 2)) !important;
-    margin-left: expression(math.div($spacer, 2)) !important;
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important;
   }
 
   .mx-md-3 {
@@ -8475,13 +8472,13 @@ textarea.form-control-lg {
   }
 
   .my-md-1 {
-    margin-top: expression(math.div($spacer, 4)) !important;
-    margin-bottom: expression(math.div($spacer, 4)) !important;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important;
   }
 
   .my-md-2 {
-    margin-top: expression(math.div($spacer, 2)) !important;
-    margin-bottom: expression(math.div($spacer, 2)) !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
   }
 
   .my-md-3 {
@@ -8509,11 +8506,11 @@ textarea.form-control-lg {
   }
 
   .mt-md-1 {
-    margin-top: expression(math.div($spacer, 4)) !important;
+    margin-top: 0.25rem !important;
   }
 
   .mt-md-2 {
-    margin-top: expression(math.div($spacer, 2)) !important;
+    margin-top: 0.5rem !important;
   }
 
   .mt-md-3 {
@@ -8537,11 +8534,11 @@ textarea.form-control-lg {
   }
 
   .me-md-1 {
-    margin-right: expression(math.div($spacer, 4)) !important;
+    margin-right: 0.25rem !important;
   }
 
   .me-md-2 {
-    margin-right: expression(math.div($spacer, 2)) !important;
+    margin-right: 0.5rem !important;
   }
 
   .me-md-3 {
@@ -8565,11 +8562,11 @@ textarea.form-control-lg {
   }
 
   .mb-md-1 {
-    margin-bottom: expression(math.div($spacer, 4)) !important;
+    margin-bottom: 0.25rem !important;
   }
 
   .mb-md-2 {
-    margin-bottom: expression(math.div($spacer, 2)) !important;
+    margin-bottom: 0.5rem !important;
   }
 
   .mb-md-3 {
@@ -8593,11 +8590,11 @@ textarea.form-control-lg {
   }
 
   .ms-md-1 {
-    margin-left: expression(math.div($spacer, 4)) !important;
+    margin-left: 0.25rem !important;
   }
 
   .ms-md-2 {
-    margin-left: expression(math.div($spacer, 2)) !important;
+    margin-left: 0.5rem !important;
   }
 
   .ms-md-3 {
@@ -8621,11 +8618,11 @@ textarea.form-control-lg {
   }
 
   .p-md-1 {
-    padding: expression(math.div($spacer, 4)) !important;
+    padding: 0.25rem !important;
   }
 
   .p-md-2 {
-    padding: expression(math.div($spacer, 2)) !important;
+    padding: 0.5rem !important;
   }
 
   .p-md-3 {
@@ -8646,13 +8643,13 @@ textarea.form-control-lg {
   }
 
   .px-md-1 {
-    padding-right: expression(math.div($spacer, 4)) !important;
-    padding-left: expression(math.div($spacer, 4)) !important;
+    padding-right: 0.25rem !important;
+    padding-left: 0.25rem !important;
   }
 
   .px-md-2 {
-    padding-right: expression(math.div($spacer, 2)) !important;
-    padding-left: expression(math.div($spacer, 2)) !important;
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important;
   }
 
   .px-md-3 {
@@ -8676,13 +8673,13 @@ textarea.form-control-lg {
   }
 
   .py-md-1 {
-    padding-top: expression(math.div($spacer, 4)) !important;
-    padding-bottom: expression(math.div($spacer, 4)) !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
   }
 
   .py-md-2 {
-    padding-top: expression(math.div($spacer, 2)) !important;
-    padding-bottom: expression(math.div($spacer, 2)) !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
   }
 
   .py-md-3 {
@@ -8705,11 +8702,11 @@ textarea.form-control-lg {
   }
 
   .pt-md-1 {
-    padding-top: expression(math.div($spacer, 4)) !important;
+    padding-top: 0.25rem !important;
   }
 
   .pt-md-2 {
-    padding-top: expression(math.div($spacer, 2)) !important;
+    padding-top: 0.5rem !important;
   }
 
   .pt-md-3 {
@@ -8729,11 +8726,11 @@ textarea.form-control-lg {
   }
 
   .pe-md-1 {
-    padding-right: expression(math.div($spacer, 4)) !important;
+    padding-right: 0.25rem !important;
   }
 
   .pe-md-2 {
-    padding-right: expression(math.div($spacer, 2)) !important;
+    padding-right: 0.5rem !important;
   }
 
   .pe-md-3 {
@@ -8753,11 +8750,11 @@ textarea.form-control-lg {
   }
 
   .pb-md-1 {
-    padding-bottom: expression(math.div($spacer, 4)) !important;
+    padding-bottom: 0.25rem !important;
   }
 
   .pb-md-2 {
-    padding-bottom: expression(math.div($spacer, 2)) !important;
+    padding-bottom: 0.5rem !important;
   }
 
   .pb-md-3 {
@@ -8777,11 +8774,11 @@ textarea.form-control-lg {
   }
 
   .ps-md-1 {
-    padding-left: expression(math.div($spacer, 4)) !important;
+    padding-left: 0.25rem !important;
   }
 
   .ps-md-2 {
-    padding-left: expression(math.div($spacer, 2)) !important;
+    padding-left: 0.5rem !important;
   }
 
   .ps-md-3 {
@@ -8914,11 +8911,11 @@ textarea.form-control-lg {
   }
 
   .gap-lg-1 {
-    gap: expression(math.div($spacer, 4)) !important;
+    gap: 0.25rem !important;
   }
 
   .gap-lg-2 {
-    gap: expression(math.div($spacer, 2)) !important;
+    gap: 0.5rem !important;
   }
 
   .gap-lg-3 {
@@ -9062,11 +9059,11 @@ textarea.form-control-lg {
   }
 
   .m-lg-1 {
-    margin: expression(math.div($spacer, 4)) !important;
+    margin: 0.25rem !important;
   }
 
   .m-lg-2 {
-    margin: expression(math.div($spacer, 2)) !important;
+    margin: 0.5rem !important;
   }
 
   .m-lg-3 {
@@ -9091,13 +9088,13 @@ textarea.form-control-lg {
   }
 
   .mx-lg-1 {
-    margin-right: expression(math.div($spacer, 4)) !important;
-    margin-left: expression(math.div($spacer, 4)) !important;
+    margin-right: 0.25rem !important;
+    margin-left: 0.25rem !important;
   }
 
   .mx-lg-2 {
-    margin-right: expression(math.div($spacer, 2)) !important;
-    margin-left: expression(math.div($spacer, 2)) !important;
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important;
   }
 
   .mx-lg-3 {
@@ -9126,13 +9123,13 @@ textarea.form-control-lg {
   }
 
   .my-lg-1 {
-    margin-top: expression(math.div($spacer, 4)) !important;
-    margin-bottom: expression(math.div($spacer, 4)) !important;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important;
   }
 
   .my-lg-2 {
-    margin-top: expression(math.div($spacer, 2)) !important;
-    margin-bottom: expression(math.div($spacer, 2)) !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
   }
 
   .my-lg-3 {
@@ -9160,11 +9157,11 @@ textarea.form-control-lg {
   }
 
   .mt-lg-1 {
-    margin-top: expression(math.div($spacer, 4)) !important;
+    margin-top: 0.25rem !important;
   }
 
   .mt-lg-2 {
-    margin-top: expression(math.div($spacer, 2)) !important;
+    margin-top: 0.5rem !important;
   }
 
   .mt-lg-3 {
@@ -9188,11 +9185,11 @@ textarea.form-control-lg {
   }
 
   .me-lg-1 {
-    margin-right: expression(math.div($spacer, 4)) !important;
+    margin-right: 0.25rem !important;
   }
 
   .me-lg-2 {
-    margin-right: expression(math.div($spacer, 2)) !important;
+    margin-right: 0.5rem !important;
   }
 
   .me-lg-3 {
@@ -9216,11 +9213,11 @@ textarea.form-control-lg {
   }
 
   .mb-lg-1 {
-    margin-bottom: expression(math.div($spacer, 4)) !important;
+    margin-bottom: 0.25rem !important;
   }
 
   .mb-lg-2 {
-    margin-bottom: expression(math.div($spacer, 2)) !important;
+    margin-bottom: 0.5rem !important;
   }
 
   .mb-lg-3 {
@@ -9244,11 +9241,11 @@ textarea.form-control-lg {
   }
 
   .ms-lg-1 {
-    margin-left: expression(math.div($spacer, 4)) !important;
+    margin-left: 0.25rem !important;
   }
 
   .ms-lg-2 {
-    margin-left: expression(math.div($spacer, 2)) !important;
+    margin-left: 0.5rem !important;
   }
 
   .ms-lg-3 {
@@ -9272,11 +9269,11 @@ textarea.form-control-lg {
   }
 
   .p-lg-1 {
-    padding: expression(math.div($spacer, 4)) !important;
+    padding: 0.25rem !important;
   }
 
   .p-lg-2 {
-    padding: expression(math.div($spacer, 2)) !important;
+    padding: 0.5rem !important;
   }
 
   .p-lg-3 {
@@ -9297,13 +9294,13 @@ textarea.form-control-lg {
   }
 
   .px-lg-1 {
-    padding-right: expression(math.div($spacer, 4)) !important;
-    padding-left: expression(math.div($spacer, 4)) !important;
+    padding-right: 0.25rem !important;
+    padding-left: 0.25rem !important;
   }
 
   .px-lg-2 {
-    padding-right: expression(math.div($spacer, 2)) !important;
-    padding-left: expression(math.div($spacer, 2)) !important;
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important;
   }
 
   .px-lg-3 {
@@ -9327,13 +9324,13 @@ textarea.form-control-lg {
   }
 
   .py-lg-1 {
-    padding-top: expression(math.div($spacer, 4)) !important;
-    padding-bottom: expression(math.div($spacer, 4)) !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
   }
 
   .py-lg-2 {
-    padding-top: expression(math.div($spacer, 2)) !important;
-    padding-bottom: expression(math.div($spacer, 2)) !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
   }
 
   .py-lg-3 {
@@ -9356,11 +9353,11 @@ textarea.form-control-lg {
   }
 
   .pt-lg-1 {
-    padding-top: expression(math.div($spacer, 4)) !important;
+    padding-top: 0.25rem !important;
   }
 
   .pt-lg-2 {
-    padding-top: expression(math.div($spacer, 2)) !important;
+    padding-top: 0.5rem !important;
   }
 
   .pt-lg-3 {
@@ -9380,11 +9377,11 @@ textarea.form-control-lg {
   }
 
   .pe-lg-1 {
-    padding-right: expression(math.div($spacer, 4)) !important;
+    padding-right: 0.25rem !important;
   }
 
   .pe-lg-2 {
-    padding-right: expression(math.div($spacer, 2)) !important;
+    padding-right: 0.5rem !important;
   }
 
   .pe-lg-3 {
@@ -9404,11 +9401,11 @@ textarea.form-control-lg {
   }
 
   .pb-lg-1 {
-    padding-bottom: expression(math.div($spacer, 4)) !important;
+    padding-bottom: 0.25rem !important;
   }
 
   .pb-lg-2 {
-    padding-bottom: expression(math.div($spacer, 2)) !important;
+    padding-bottom: 0.5rem !important;
   }
 
   .pb-lg-3 {
@@ -9428,11 +9425,11 @@ textarea.form-control-lg {
   }
 
   .ps-lg-1 {
-    padding-left: expression(math.div($spacer, 4)) !important;
+    padding-left: 0.25rem !important;
   }
 
   .ps-lg-2 {
-    padding-left: expression(math.div($spacer, 2)) !important;
+    padding-left: 0.5rem !important;
   }
 
   .ps-lg-3 {
@@ -9565,11 +9562,11 @@ textarea.form-control-lg {
   }
 
   .gap-xl-1 {
-    gap: expression(math.div($spacer, 4)) !important;
+    gap: 0.25rem !important;
   }
 
   .gap-xl-2 {
-    gap: expression(math.div($spacer, 2)) !important;
+    gap: 0.5rem !important;
   }
 
   .gap-xl-3 {
@@ -9713,11 +9710,11 @@ textarea.form-control-lg {
   }
 
   .m-xl-1 {
-    margin: expression(math.div($spacer, 4)) !important;
+    margin: 0.25rem !important;
   }
 
   .m-xl-2 {
-    margin: expression(math.div($spacer, 2)) !important;
+    margin: 0.5rem !important;
   }
 
   .m-xl-3 {
@@ -9742,13 +9739,13 @@ textarea.form-control-lg {
   }
 
   .mx-xl-1 {
-    margin-right: expression(math.div($spacer, 4)) !important;
-    margin-left: expression(math.div($spacer, 4)) !important;
+    margin-right: 0.25rem !important;
+    margin-left: 0.25rem !important;
   }
 
   .mx-xl-2 {
-    margin-right: expression(math.div($spacer, 2)) !important;
-    margin-left: expression(math.div($spacer, 2)) !important;
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important;
   }
 
   .mx-xl-3 {
@@ -9777,13 +9774,13 @@ textarea.form-control-lg {
   }
 
   .my-xl-1 {
-    margin-top: expression(math.div($spacer, 4)) !important;
-    margin-bottom: expression(math.div($spacer, 4)) !important;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important;
   }
 
   .my-xl-2 {
-    margin-top: expression(math.div($spacer, 2)) !important;
-    margin-bottom: expression(math.div($spacer, 2)) !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
   }
 
   .my-xl-3 {
@@ -9811,11 +9808,11 @@ textarea.form-control-lg {
   }
 
   .mt-xl-1 {
-    margin-top: expression(math.div($spacer, 4)) !important;
+    margin-top: 0.25rem !important;
   }
 
   .mt-xl-2 {
-    margin-top: expression(math.div($spacer, 2)) !important;
+    margin-top: 0.5rem !important;
   }
 
   .mt-xl-3 {
@@ -9839,11 +9836,11 @@ textarea.form-control-lg {
   }
 
   .me-xl-1 {
-    margin-right: expression(math.div($spacer, 4)) !important;
+    margin-right: 0.25rem !important;
   }
 
   .me-xl-2 {
-    margin-right: expression(math.div($spacer, 2)) !important;
+    margin-right: 0.5rem !important;
   }
 
   .me-xl-3 {
@@ -9867,11 +9864,11 @@ textarea.form-control-lg {
   }
 
   .mb-xl-1 {
-    margin-bottom: expression(math.div($spacer, 4)) !important;
+    margin-bottom: 0.25rem !important;
   }
 
   .mb-xl-2 {
-    margin-bottom: expression(math.div($spacer, 2)) !important;
+    margin-bottom: 0.5rem !important;
   }
 
   .mb-xl-3 {
@@ -9895,11 +9892,11 @@ textarea.form-control-lg {
   }
 
   .ms-xl-1 {
-    margin-left: expression(math.div($spacer, 4)) !important;
+    margin-left: 0.25rem !important;
   }
 
   .ms-xl-2 {
-    margin-left: expression(math.div($spacer, 2)) !important;
+    margin-left: 0.5rem !important;
   }
 
   .ms-xl-3 {
@@ -9923,11 +9920,11 @@ textarea.form-control-lg {
   }
 
   .p-xl-1 {
-    padding: expression(math.div($spacer, 4)) !important;
+    padding: 0.25rem !important;
   }
 
   .p-xl-2 {
-    padding: expression(math.div($spacer, 2)) !important;
+    padding: 0.5rem !important;
   }
 
   .p-xl-3 {
@@ -9948,13 +9945,13 @@ textarea.form-control-lg {
   }
 
   .px-xl-1 {
-    padding-right: expression(math.div($spacer, 4)) !important;
-    padding-left: expression(math.div($spacer, 4)) !important;
+    padding-right: 0.25rem !important;
+    padding-left: 0.25rem !important;
   }
 
   .px-xl-2 {
-    padding-right: expression(math.div($spacer, 2)) !important;
-    padding-left: expression(math.div($spacer, 2)) !important;
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important;
   }
 
   .px-xl-3 {
@@ -9978,13 +9975,13 @@ textarea.form-control-lg {
   }
 
   .py-xl-1 {
-    padding-top: expression(math.div($spacer, 4)) !important;
-    padding-bottom: expression(math.div($spacer, 4)) !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
   }
 
   .py-xl-2 {
-    padding-top: expression(math.div($spacer, 2)) !important;
-    padding-bottom: expression(math.div($spacer, 2)) !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
   }
 
   .py-xl-3 {
@@ -10007,11 +10004,11 @@ textarea.form-control-lg {
   }
 
   .pt-xl-1 {
-    padding-top: expression(math.div($spacer, 4)) !important;
+    padding-top: 0.25rem !important;
   }
 
   .pt-xl-2 {
-    padding-top: expression(math.div($spacer, 2)) !important;
+    padding-top: 0.5rem !important;
   }
 
   .pt-xl-3 {
@@ -10031,11 +10028,11 @@ textarea.form-control-lg {
   }
 
   .pe-xl-1 {
-    padding-right: expression(math.div($spacer, 4)) !important;
+    padding-right: 0.25rem !important;
   }
 
   .pe-xl-2 {
-    padding-right: expression(math.div($spacer, 2)) !important;
+    padding-right: 0.5rem !important;
   }
 
   .pe-xl-3 {
@@ -10055,11 +10052,11 @@ textarea.form-control-lg {
   }
 
   .pb-xl-1 {
-    padding-bottom: expression(math.div($spacer, 4)) !important;
+    padding-bottom: 0.25rem !important;
   }
 
   .pb-xl-2 {
-    padding-bottom: expression(math.div($spacer, 2)) !important;
+    padding-bottom: 0.5rem !important;
   }
 
   .pb-xl-3 {
@@ -10079,11 +10076,11 @@ textarea.form-control-lg {
   }
 
   .ps-xl-1 {
-    padding-left: expression(math.div($spacer, 4)) !important;
+    padding-left: 0.25rem !important;
   }
 
   .ps-xl-2 {
-    padding-left: expression(math.div($spacer, 2)) !important;
+    padding-left: 0.5rem !important;
   }
 
   .ps-xl-3 {
@@ -10216,11 +10213,11 @@ textarea.form-control-lg {
   }
 
   .gap-xxl-1 {
-    gap: expression(math.div($spacer, 4)) !important;
+    gap: 0.25rem !important;
   }
 
   .gap-xxl-2 {
-    gap: expression(math.div($spacer, 2)) !important;
+    gap: 0.5rem !important;
   }
 
   .gap-xxl-3 {
@@ -10364,11 +10361,11 @@ textarea.form-control-lg {
   }
 
   .m-xxl-1 {
-    margin: expression(math.div($spacer, 4)) !important;
+    margin: 0.25rem !important;
   }
 
   .m-xxl-2 {
-    margin: expression(math.div($spacer, 2)) !important;
+    margin: 0.5rem !important;
   }
 
   .m-xxl-3 {
@@ -10393,13 +10390,13 @@ textarea.form-control-lg {
   }
 
   .mx-xxl-1 {
-    margin-right: expression(math.div($spacer, 4)) !important;
-    margin-left: expression(math.div($spacer, 4)) !important;
+    margin-right: 0.25rem !important;
+    margin-left: 0.25rem !important;
   }
 
   .mx-xxl-2 {
-    margin-right: expression(math.div($spacer, 2)) !important;
-    margin-left: expression(math.div($spacer, 2)) !important;
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important;
   }
 
   .mx-xxl-3 {
@@ -10428,13 +10425,13 @@ textarea.form-control-lg {
   }
 
   .my-xxl-1 {
-    margin-top: expression(math.div($spacer, 4)) !important;
-    margin-bottom: expression(math.div($spacer, 4)) !important;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important;
   }
 
   .my-xxl-2 {
-    margin-top: expression(math.div($spacer, 2)) !important;
-    margin-bottom: expression(math.div($spacer, 2)) !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
   }
 
   .my-xxl-3 {
@@ -10462,11 +10459,11 @@ textarea.form-control-lg {
   }
 
   .mt-xxl-1 {
-    margin-top: expression(math.div($spacer, 4)) !important;
+    margin-top: 0.25rem !important;
   }
 
   .mt-xxl-2 {
-    margin-top: expression(math.div($spacer, 2)) !important;
+    margin-top: 0.5rem !important;
   }
 
   .mt-xxl-3 {
@@ -10490,11 +10487,11 @@ textarea.form-control-lg {
   }
 
   .me-xxl-1 {
-    margin-right: expression(math.div($spacer, 4)) !important;
+    margin-right: 0.25rem !important;
   }
 
   .me-xxl-2 {
-    margin-right: expression(math.div($spacer, 2)) !important;
+    margin-right: 0.5rem !important;
   }
 
   .me-xxl-3 {
@@ -10518,11 +10515,11 @@ textarea.form-control-lg {
   }
 
   .mb-xxl-1 {
-    margin-bottom: expression(math.div($spacer, 4)) !important;
+    margin-bottom: 0.25rem !important;
   }
 
   .mb-xxl-2 {
-    margin-bottom: expression(math.div($spacer, 2)) !important;
+    margin-bottom: 0.5rem !important;
   }
 
   .mb-xxl-3 {
@@ -10546,11 +10543,11 @@ textarea.form-control-lg {
   }
 
   .ms-xxl-1 {
-    margin-left: expression(math.div($spacer, 4)) !important;
+    margin-left: 0.25rem !important;
   }
 
   .ms-xxl-2 {
-    margin-left: expression(math.div($spacer, 2)) !important;
+    margin-left: 0.5rem !important;
   }
 
   .ms-xxl-3 {
@@ -10574,11 +10571,11 @@ textarea.form-control-lg {
   }
 
   .p-xxl-1 {
-    padding: expression(math.div($spacer, 4)) !important;
+    padding: 0.25rem !important;
   }
 
   .p-xxl-2 {
-    padding: expression(math.div($spacer, 2)) !important;
+    padding: 0.5rem !important;
   }
 
   .p-xxl-3 {
@@ -10599,13 +10596,13 @@ textarea.form-control-lg {
   }
 
   .px-xxl-1 {
-    padding-right: expression(math.div($spacer, 4)) !important;
-    padding-left: expression(math.div($spacer, 4)) !important;
+    padding-right: 0.25rem !important;
+    padding-left: 0.25rem !important;
   }
 
   .px-xxl-2 {
-    padding-right: expression(math.div($spacer, 2)) !important;
-    padding-left: expression(math.div($spacer, 2)) !important;
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important;
   }
 
   .px-xxl-3 {
@@ -10629,13 +10626,13 @@ textarea.form-control-lg {
   }
 
   .py-xxl-1 {
-    padding-top: expression(math.div($spacer, 4)) !important;
-    padding-bottom: expression(math.div($spacer, 4)) !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
   }
 
   .py-xxl-2 {
-    padding-top: expression(math.div($spacer, 2)) !important;
-    padding-bottom: expression(math.div($spacer, 2)) !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
   }
 
   .py-xxl-3 {
@@ -10658,11 +10655,11 @@ textarea.form-control-lg {
   }
 
   .pt-xxl-1 {
-    padding-top: expression(math.div($spacer, 4)) !important;
+    padding-top: 0.25rem !important;
   }
 
   .pt-xxl-2 {
-    padding-top: expression(math.div($spacer, 2)) !important;
+    padding-top: 0.5rem !important;
   }
 
   .pt-xxl-3 {
@@ -10682,11 +10679,11 @@ textarea.form-control-lg {
   }
 
   .pe-xxl-1 {
-    padding-right: expression(math.div($spacer, 4)) !important;
+    padding-right: 0.25rem !important;
   }
 
   .pe-xxl-2 {
-    padding-right: expression(math.div($spacer, 2)) !important;
+    padding-right: 0.5rem !important;
   }
 
   .pe-xxl-3 {
@@ -10706,11 +10703,11 @@ textarea.form-control-lg {
   }
 
   .pb-xxl-1 {
-    padding-bottom: expression(math.div($spacer, 4)) !important;
+    padding-bottom: 0.25rem !important;
   }
 
   .pb-xxl-2 {
-    padding-bottom: expression(math.div($spacer, 2)) !important;
+    padding-bottom: 0.5rem !important;
   }
 
   .pb-xxl-3 {
@@ -10730,11 +10727,11 @@ textarea.form-control-lg {
   }
 
   .ps-xxl-1 {
-    padding-left: expression(math.div($spacer, 4)) !important;
+    padding-left: 0.25rem !important;
   }
 
   .ps-xxl-2 {
-    padding-left: expression(math.div($spacer, 2)) !important;
+    padding-left: 0.5rem !important;
   }
 
   .ps-xxl-3 {
