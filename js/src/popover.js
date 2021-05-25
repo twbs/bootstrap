@@ -98,11 +98,11 @@ class Popover extends Tooltip {
     this.tip = super.getTipElement()
 
     if (!this.getTitle()) {
-      this.tip.removeChild(SelectorEngine.findOne(SELECTOR_TITLE, this.tip))
+      SelectorEngine.findOne(SELECTOR_TITLE, this.tip).remove()
     }
 
     if (!this._getContent()) {
-      this.tip.removeChild(SelectorEngine.findOne(SELECTOR_CONTENT, this.tip))
+      SelectorEngine.findOne(SELECTOR_CONTENT, this.tip).remove()
     }
 
     return this.tip
