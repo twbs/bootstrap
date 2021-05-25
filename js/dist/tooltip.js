@@ -954,10 +954,6 @@
 
         const _config = typeof config === 'object' && config;
 
-        if (!data && /dispose|hide/.test(config)) {
-          return;
-        }
-
         if (!data) {
           data = new Tooltip(this, _config);
         }

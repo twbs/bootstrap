@@ -88,15 +88,15 @@
 }
 
 .ratio-4x3 {
-  --bs-aspect-ratio: calc(3 / 4 * 100%);
+  --bs-aspect-ratio: calc(expression(math.div(3, 4)) * 100%);
 }
 
 .ratio-16x9 {
-  --bs-aspect-ratio: calc(9 / 16 * 100%);
+  --bs-aspect-ratio: calc(expression(math.div(9, 16)) * 100%);
 }
 
 .ratio-21x9 {
-  --bs-aspect-ratio: calc(9 / 21 * 100%);
+  --bs-aspect-ratio: calc(expression(math.div(9, 21)) * 100%);
 }
 
 .fixed-top {
@@ -593,11 +593,11 @@
 }
 
 .gap-1 {
-  gap: 0.25rem !important;
+  gap: expression(math.div($spacer, 4)) !important;
 }
 
 .gap-2 {
-  gap: 0.5rem !important;
+  gap: expression(math.div($spacer, 2)) !important;
 }
 
 .gap-3 {
@@ -741,11 +741,11 @@
 }
 
 .m-1 {
-  margin: 0.25rem !important;
+  margin: expression(math.div($spacer, 4)) !important;
 }
 
 .m-2 {
-  margin: 0.5rem !important;
+  margin: expression(math.div($spacer, 2)) !important;
 }
 
 .m-3 {
@@ -770,13 +770,13 @@
 }
 
 .mx-1 {
-  margin-left: 0.25rem !important;
-  margin-right: 0.25rem !important;
+  margin-left: expression(math.div($spacer, 4)) !important;
+  margin-right: expression(math.div($spacer, 4)) !important;
 }
 
 .mx-2 {
-  margin-left: 0.5rem !important;
-  margin-right: 0.5rem !important;
+  margin-left: expression(math.div($spacer, 2)) !important;
+  margin-right: expression(math.div($spacer, 2)) !important;
 }
 
 .mx-3 {
@@ -805,13 +805,13 @@
 }
 
 .my-1 {
-  margin-top: 0.25rem !important;
-  margin-bottom: 0.25rem !important;
+  margin-top: expression(math.div($spacer, 4)) !important;
+  margin-bottom: expression(math.div($spacer, 4)) !important;
 }
 
 .my-2 {
-  margin-top: 0.5rem !important;
-  margin-bottom: 0.5rem !important;
+  margin-top: expression(math.div($spacer, 2)) !important;
+  margin-bottom: expression(math.div($spacer, 2)) !important;
 }
 
 .my-3 {
@@ -839,11 +839,11 @@
 }
 
 .mt-1 {
-  margin-top: 0.25rem !important;
+  margin-top: expression(math.div($spacer, 4)) !important;
 }
 
 .mt-2 {
-  margin-top: 0.5rem !important;
+  margin-top: expression(math.div($spacer, 2)) !important;
 }
 
 .mt-3 {
@@ -867,11 +867,11 @@
 }
 
 .me-1 {
-  margin-left: 0.25rem !important;
+  margin-left: expression(math.div($spacer, 4)) !important;
 }
 
 .me-2 {
-  margin-left: 0.5rem !important;
+  margin-left: expression(math.div($spacer, 2)) !important;
 }
 
 .me-3 {
@@ -895,11 +895,11 @@
 }
 
 .mb-1 {
-  margin-bottom: 0.25rem !important;
+  margin-bottom: expression(math.div($spacer, 4)) !important;
 }
 
 .mb-2 {
-  margin-bottom: 0.5rem !important;
+  margin-bottom: expression(math.div($spacer, 2)) !important;
 }
 
 .mb-3 {
@@ -923,11 +923,11 @@
 }
 
 .ms-1 {
-  margin-right: 0.25rem !important;
+  margin-right: expression(math.div($spacer, 4)) !important;
 }
 
 .ms-2 {
-  margin-right: 0.5rem !important;
+  margin-right: expression(math.div($spacer, 2)) !important;
 }
 
 .ms-3 {
@@ -951,11 +951,11 @@
 }
 
 .p-1 {
-  padding: 0.25rem !important;
+  padding: expression(math.div($spacer, 4)) !important;
 }
 
 .p-2 {
-  padding: 0.5rem !important;
+  padding: expression(math.div($spacer, 2)) !important;
 }
 
 .p-3 {
@@ -976,13 +976,13 @@
 }
 
 .px-1 {
-  padding-left: 0.25rem !important;
-  padding-right: 0.25rem !important;
+  padding-left: expression(math.div($spacer, 4)) !important;
+  padding-right: expression(math.div($spacer, 4)) !important;
 }
 
 .px-2 {
-  padding-left: 0.5rem !important;
-  padding-right: 0.5rem !important;
+  padding-left: expression(math.div($spacer, 2)) !important;
+  padding-right: expression(math.div($spacer, 2)) !important;
 }
 
 .px-3 {
@@ -1006,13 +1006,13 @@
 }
 
 .py-1 {
-  padding-top: 0.25rem !important;
-  padding-bottom: 0.25rem !important;
+  padding-top: expression(math.div($spacer, 4)) !important;
+  padding-bottom: expression(math.div($spacer, 4)) !important;
 }
 
 .py-2 {
-  padding-top: 0.5rem !important;
-  padding-bottom: 0.5rem !important;
+  padding-top: expression(math.div($spacer, 2)) !important;
+  padding-bottom: expression(math.div($spacer, 2)) !important;
 }
 
 .py-3 {
@@ -1035,11 +1035,11 @@
 }
 
 .pt-1 {
-  padding-top: 0.25rem !important;
+  padding-top: expression(math.div($spacer, 4)) !important;
 }
 
 .pt-2 {
-  padding-top: 0.5rem !important;
+  padding-top: expression(math.div($spacer, 2)) !important;
 }
 
 .pt-3 {
@@ -1059,11 +1059,11 @@
 }
 
 .pe-1 {
-  padding-left: 0.25rem !important;
+  padding-left: expression(math.div($spacer, 4)) !important;
 }
 
 .pe-2 {
-  padding-left: 0.5rem !important;
+  padding-left: expression(math.div($spacer, 2)) !important;
 }
 
 .pe-3 {
@@ -1083,11 +1083,11 @@
 }
 
 .pb-1 {
-  padding-bottom: 0.25rem !important;
+  padding-bottom: expression(math.div($spacer, 4)) !important;
 }
 
 .pb-2 {
-  padding-bottom: 0.5rem !important;
+  padding-bottom: expression(math.div($spacer, 2)) !important;
 }
 
 .pb-3 {
@@ -1107,11 +1107,11 @@
 }
 
 .ps-1 {
-  padding-right: 0.25rem !important;
+  padding-right: expression(math.div($spacer, 4)) !important;
 }
 
 .ps-2 {
-  padding-right: 0.5rem !important;
+  padding-right: expression(math.div($spacer, 2)) !important;
 }
 
 .ps-3 {
@@ -1533,11 +1533,11 @@
   }
 
   .gap-sm-1 {
-    gap: 0.25rem !important;
+    gap: expression(math.div($spacer, 4)) !important;
   }
 
   .gap-sm-2 {
-    gap: 0.5rem !important;
+    gap: expression(math.div($spacer, 2)) !important;
   }
 
   .gap-sm-3 {
@@ -1681,11 +1681,11 @@
   }
 
   .m-sm-1 {
-    margin: 0.25rem !important;
+    margin: expression(math.div($spacer, 4)) !important;
   }
 
   .m-sm-2 {
-    margin: 0.5rem !important;
+    margin: expression(math.div($spacer, 2)) !important;
   }
 
   .m-sm-3 {
@@ -1710,13 +1710,13 @@
   }
 
   .mx-sm-1 {
-    margin-left: 0.25rem !important;
-    margin-right: 0.25rem !important;
+    margin-left: expression(math.div($spacer, 4)) !important;
+    margin-right: expression(math.div($spacer, 4)) !important;
   }
 
   .mx-sm-2 {
-    margin-left: 0.5rem !important;
-    margin-right: 0.5rem !important;
+    margin-left: expression(math.div($spacer, 2)) !important;
+    margin-right: expression(math.div($spacer, 2)) !important;
   }
 
   .mx-sm-3 {
@@ -1745,13 +1745,13 @@
   }
 
   .my-sm-1 {
-    margin-top: 0.25rem !important;
-    margin-bottom: 0.25rem !important;
+    margin-top: expression(math.div($spacer, 4)) !important;
+    margin-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .my-sm-2 {
-    margin-top: 0.5rem !important;
-    margin-bottom: 0.5rem !important;
+    margin-top: expression(math.div($spacer, 2)) !important;
+    margin-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .my-sm-3 {
@@ -1779,11 +1779,11 @@
   }
 
   .mt-sm-1 {
-    margin-top: 0.25rem !important;
+    margin-top: expression(math.div($spacer, 4)) !important;
   }
 
   .mt-sm-2 {
-    margin-top: 0.5rem !important;
+    margin-top: expression(math.div($spacer, 2)) !important;
   }
 
   .mt-sm-3 {
@@ -1807,11 +1807,11 @@
   }
 
   .me-sm-1 {
-    margin-left: 0.25rem !important;
+    margin-left: expression(math.div($spacer, 4)) !important;
   }
 
   .me-sm-2 {
-    margin-left: 0.5rem !important;
+    margin-left: expression(math.div($spacer, 2)) !important;
   }
 
   .me-sm-3 {
@@ -1835,11 +1835,11 @@
   }
 
   .mb-sm-1 {
-    margin-bottom: 0.25rem !important;
+    margin-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .mb-sm-2 {
-    margin-bottom: 0.5rem !important;
+    margin-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .mb-sm-3 {
@@ -1863,11 +1863,11 @@
   }
 
   .ms-sm-1 {
-    margin-right: 0.25rem !important;
+    margin-right: expression(math.div($spacer, 4)) !important;
   }
 
   .ms-sm-2 {
-    margin-right: 0.5rem !important;
+    margin-right: expression(math.div($spacer, 2)) !important;
   }
 
   .ms-sm-3 {
@@ -1891,11 +1891,11 @@
   }
 
   .p-sm-1 {
-    padding: 0.25rem !important;
+    padding: expression(math.div($spacer, 4)) !important;
   }
 
   .p-sm-2 {
-    padding: 0.5rem !important;
+    padding: expression(math.div($spacer, 2)) !important;
   }
 
   .p-sm-3 {
@@ -1916,13 +1916,13 @@
   }
 
   .px-sm-1 {
-    padding-left: 0.25rem !important;
-    padding-right: 0.25rem !important;
+    padding-left: expression(math.div($spacer, 4)) !important;
+    padding-right: expression(math.div($spacer, 4)) !important;
   }
 
   .px-sm-2 {
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    padding-left: expression(math.div($spacer, 2)) !important;
+    padding-right: expression(math.div($spacer, 2)) !important;
   }
 
   .px-sm-3 {
@@ -1946,13 +1946,13 @@
   }
 
   .py-sm-1 {
-    padding-top: 0.25rem !important;
-    padding-bottom: 0.25rem !important;
+    padding-top: expression(math.div($spacer, 4)) !important;
+    padding-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .py-sm-2 {
-    padding-top: 0.5rem !important;
-    padding-bottom: 0.5rem !important;
+    padding-top: expression(math.div($spacer, 2)) !important;
+    padding-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .py-sm-3 {
@@ -1975,11 +1975,11 @@
   }
 
   .pt-sm-1 {
-    padding-top: 0.25rem !important;
+    padding-top: expression(math.div($spacer, 4)) !important;
   }
 
   .pt-sm-2 {
-    padding-top: 0.5rem !important;
+    padding-top: expression(math.div($spacer, 2)) !important;
   }
 
   .pt-sm-3 {
@@ -1999,11 +1999,11 @@
   }
 
   .pe-sm-1 {
-    padding-left: 0.25rem !important;
+    padding-left: expression(math.div($spacer, 4)) !important;
   }
 
   .pe-sm-2 {
-    padding-left: 0.5rem !important;
+    padding-left: expression(math.div($spacer, 2)) !important;
   }
 
   .pe-sm-3 {
@@ -2023,11 +2023,11 @@
   }
 
   .pb-sm-1 {
-    padding-bottom: 0.25rem !important;
+    padding-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .pb-sm-2 {
-    padding-bottom: 0.5rem !important;
+    padding-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .pb-sm-3 {
@@ -2047,11 +2047,11 @@
   }
 
   .ps-sm-1 {
-    padding-right: 0.25rem !important;
+    padding-right: expression(math.div($spacer, 4)) !important;
   }
 
   .ps-sm-2 {
-    padding-right: 0.5rem !important;
+    padding-right: expression(math.div($spacer, 2)) !important;
   }
 
   .ps-sm-3 {
@@ -2184,11 +2184,11 @@
   }
 
   .gap-md-1 {
-    gap: 0.25rem !important;
+    gap: expression(math.div($spacer, 4)) !important;
   }
 
   .gap-md-2 {
-    gap: 0.5rem !important;
+    gap: expression(math.div($spacer, 2)) !important;
   }
 
   .gap-md-3 {
@@ -2332,11 +2332,11 @@
   }
 
   .m-md-1 {
-    margin: 0.25rem !important;
+    margin: expression(math.div($spacer, 4)) !important;
   }
 
   .m-md-2 {
-    margin: 0.5rem !important;
+    margin: expression(math.div($spacer, 2)) !important;
   }
 
   .m-md-3 {
@@ -2361,13 +2361,13 @@
   }
 
   .mx-md-1 {
-    margin-left: 0.25rem !important;
-    margin-right: 0.25rem !important;
+    margin-left: expression(math.div($spacer, 4)) !important;
+    margin-right: expression(math.div($spacer, 4)) !important;
   }
 
   .mx-md-2 {
-    margin-left: 0.5rem !important;
-    margin-right: 0.5rem !important;
+    margin-left: expression(math.div($spacer, 2)) !important;
+    margin-right: expression(math.div($spacer, 2)) !important;
   }
 
   .mx-md-3 {
@@ -2396,13 +2396,13 @@
   }
 
   .my-md-1 {
-    margin-top: 0.25rem !important;
-    margin-bottom: 0.25rem !important;
+    margin-top: expression(math.div($spacer, 4)) !important;
+    margin-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .my-md-2 {
-    margin-top: 0.5rem !important;
-    margin-bottom: 0.5rem !important;
+    margin-top: expression(math.div($spacer, 2)) !important;
+    margin-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .my-md-3 {
@@ -2430,11 +2430,11 @@
   }
 
   .mt-md-1 {
-    margin-top: 0.25rem !important;
+    margin-top: expression(math.div($spacer, 4)) !important;
   }
 
   .mt-md-2 {
-    margin-top: 0.5rem !important;
+    margin-top: expression(math.div($spacer, 2)) !important;
   }
 
   .mt-md-3 {
@@ -2458,11 +2458,11 @@
   }
 
   .me-md-1 {
-    margin-left: 0.25rem !important;
+    margin-left: expression(math.div($spacer, 4)) !important;
   }
 
   .me-md-2 {
-    margin-left: 0.5rem !important;
+    margin-left: expression(math.div($spacer, 2)) !important;
   }
 
   .me-md-3 {
@@ -2486,11 +2486,11 @@
   }
 
   .mb-md-1 {
-    margin-bottom: 0.25rem !important;
+    margin-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .mb-md-2 {
-    margin-bottom: 0.5rem !important;
+    margin-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .mb-md-3 {
@@ -2514,11 +2514,11 @@
   }
 
   .ms-md-1 {
-    margin-right: 0.25rem !important;
+    margin-right: expression(math.div($spacer, 4)) !important;
   }
 
   .ms-md-2 {
-    margin-right: 0.5rem !important;
+    margin-right: expression(math.div($spacer, 2)) !important;
   }
 
   .ms-md-3 {
@@ -2542,11 +2542,11 @@
   }
 
   .p-md-1 {
-    padding: 0.25rem !important;
+    padding: expression(math.div($spacer, 4)) !important;
   }
 
   .p-md-2 {
-    padding: 0.5rem !important;
+    padding: expression(math.div($spacer, 2)) !important;
   }
 
   .p-md-3 {
@@ -2567,13 +2567,13 @@
   }
 
   .px-md-1 {
-    padding-left: 0.25rem !important;
-    padding-right: 0.25rem !important;
+    padding-left: expression(math.div($spacer, 4)) !important;
+    padding-right: expression(math.div($spacer, 4)) !important;
   }
 
   .px-md-2 {
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    padding-left: expression(math.div($spacer, 2)) !important;
+    padding-right: expression(math.div($spacer, 2)) !important;
   }
 
   .px-md-3 {
@@ -2597,13 +2597,13 @@
   }
 
   .py-md-1 {
-    padding-top: 0.25rem !important;
-    padding-bottom: 0.25rem !important;
+    padding-top: expression(math.div($spacer, 4)) !important;
+    padding-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .py-md-2 {
-    padding-top: 0.5rem !important;
-    padding-bottom: 0.5rem !important;
+    padding-top: expression(math.div($spacer, 2)) !important;
+    padding-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .py-md-3 {
@@ -2626,11 +2626,11 @@
   }
 
   .pt-md-1 {
-    padding-top: 0.25rem !important;
+    padding-top: expression(math.div($spacer, 4)) !important;
   }
 
   .pt-md-2 {
-    padding-top: 0.5rem !important;
+    padding-top: expression(math.div($spacer, 2)) !important;
   }
 
   .pt-md-3 {
@@ -2650,11 +2650,11 @@
   }
 
   .pe-md-1 {
-    padding-left: 0.25rem !important;
+    padding-left: expression(math.div($spacer, 4)) !important;
   }
 
   .pe-md-2 {
-    padding-left: 0.5rem !important;
+    padding-left: expression(math.div($spacer, 2)) !important;
   }
 
   .pe-md-3 {
@@ -2674,11 +2674,11 @@
   }
 
   .pb-md-1 {
-    padding-bottom: 0.25rem !important;
+    padding-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .pb-md-2 {
-    padding-bottom: 0.5rem !important;
+    padding-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .pb-md-3 {
@@ -2698,11 +2698,11 @@
   }
 
   .ps-md-1 {
-    padding-right: 0.25rem !important;
+    padding-right: expression(math.div($spacer, 4)) !important;
   }
 
   .ps-md-2 {
-    padding-right: 0.5rem !important;
+    padding-right: expression(math.div($spacer, 2)) !important;
   }
 
   .ps-md-3 {
@@ -2835,11 +2835,11 @@
   }
 
   .gap-lg-1 {
-    gap: 0.25rem !important;
+    gap: expression(math.div($spacer, 4)) !important;
   }
 
   .gap-lg-2 {
-    gap: 0.5rem !important;
+    gap: expression(math.div($spacer, 2)) !important;
   }
 
   .gap-lg-3 {
@@ -2983,11 +2983,11 @@
   }
 
   .m-lg-1 {
-    margin: 0.25rem !important;
+    margin: expression(math.div($spacer, 4)) !important;
   }
 
   .m-lg-2 {
-    margin: 0.5rem !important;
+    margin: expression(math.div($spacer, 2)) !important;
   }
 
   .m-lg-3 {
@@ -3012,13 +3012,13 @@
   }
 
   .mx-lg-1 {
-    margin-left: 0.25rem !important;
-    margin-right: 0.25rem !important;
+    margin-left: expression(math.div($spacer, 4)) !important;
+    margin-right: expression(math.div($spacer, 4)) !important;
   }
 
   .mx-lg-2 {
-    margin-left: 0.5rem !important;
-    margin-right: 0.5rem !important;
+    margin-left: expression(math.div($spacer, 2)) !important;
+    margin-right: expression(math.div($spacer, 2)) !important;
   }
 
   .mx-lg-3 {
@@ -3047,13 +3047,13 @@
   }
 
   .my-lg-1 {
-    margin-top: 0.25rem !important;
-    margin-bottom: 0.25rem !important;
+    margin-top: expression(math.div($spacer, 4)) !important;
+    margin-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .my-lg-2 {
-    margin-top: 0.5rem !important;
-    margin-bottom: 0.5rem !important;
+    margin-top: expression(math.div($spacer, 2)) !important;
+    margin-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .my-lg-3 {
@@ -3081,11 +3081,11 @@
   }
 
   .mt-lg-1 {
-    margin-top: 0.25rem !important;
+    margin-top: expression(math.div($spacer, 4)) !important;
   }
 
   .mt-lg-2 {
-    margin-top: 0.5rem !important;
+    margin-top: expression(math.div($spacer, 2)) !important;
   }
 
   .mt-lg-3 {
@@ -3109,11 +3109,11 @@
   }
 
   .me-lg-1 {
-    margin-left: 0.25rem !important;
+    margin-left: expression(math.div($spacer, 4)) !important;
   }
 
   .me-lg-2 {
-    margin-left: 0.5rem !important;
+    margin-left: expression(math.div($spacer, 2)) !important;
   }
 
   .me-lg-3 {
@@ -3137,11 +3137,11 @@
   }
 
   .mb-lg-1 {
-    margin-bottom: 0.25rem !important;
+    margin-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .mb-lg-2 {
-    margin-bottom: 0.5rem !important;
+    margin-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .mb-lg-3 {
@@ -3165,11 +3165,11 @@
   }
 
   .ms-lg-1 {
-    margin-right: 0.25rem !important;
+    margin-right: expression(math.div($spacer, 4)) !important;
   }
 
   .ms-lg-2 {
-    margin-right: 0.5rem !important;
+    margin-right: expression(math.div($spacer, 2)) !important;
   }
 
   .ms-lg-3 {
@@ -3193,11 +3193,11 @@
   }
 
   .p-lg-1 {
-    padding: 0.25rem !important;
+    padding: expression(math.div($spacer, 4)) !important;
   }
 
   .p-lg-2 {
-    padding: 0.5rem !important;
+    padding: expression(math.div($spacer, 2)) !important;
   }
 
   .p-lg-3 {
@@ -3218,13 +3218,13 @@
   }
 
   .px-lg-1 {
-    padding-left: 0.25rem !important;
-    padding-right: 0.25rem !important;
+    padding-left: expression(math.div($spacer, 4)) !important;
+    padding-right: expression(math.div($spacer, 4)) !important;
   }
 
   .px-lg-2 {
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    padding-left: expression(math.div($spacer, 2)) !important;
+    padding-right: expression(math.div($spacer, 2)) !important;
   }
 
   .px-lg-3 {
@@ -3248,13 +3248,13 @@
   }
 
   .py-lg-1 {
-    padding-top: 0.25rem !important;
-    padding-bottom: 0.25rem !important;
+    padding-top: expression(math.div($spacer, 4)) !important;
+    padding-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .py-lg-2 {
-    padding-top: 0.5rem !important;
-    padding-bottom: 0.5rem !important;
+    padding-top: expression(math.div($spacer, 2)) !important;
+    padding-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .py-lg-3 {
@@ -3277,11 +3277,11 @@
   }
 
   .pt-lg-1 {
-    padding-top: 0.25rem !important;
+    padding-top: expression(math.div($spacer, 4)) !important;
   }
 
   .pt-lg-2 {
-    padding-top: 0.5rem !important;
+    padding-top: expression(math.div($spacer, 2)) !important;
   }
 
   .pt-lg-3 {
@@ -3301,11 +3301,11 @@
   }
 
   .pe-lg-1 {
-    padding-left: 0.25rem !important;
+    padding-left: expression(math.div($spacer, 4)) !important;
   }
 
   .pe-lg-2 {
-    padding-left: 0.5rem !important;
+    padding-left: expression(math.div($spacer, 2)) !important;
   }
 
   .pe-lg-3 {
@@ -3325,11 +3325,11 @@
   }
 
   .pb-lg-1 {
-    padding-bottom: 0.25rem !important;
+    padding-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .pb-lg-2 {
-    padding-bottom: 0.5rem !important;
+    padding-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .pb-lg-3 {
@@ -3349,11 +3349,11 @@
   }
 
   .ps-lg-1 {
-    padding-right: 0.25rem !important;
+    padding-right: expression(math.div($spacer, 4)) !important;
   }
 
   .ps-lg-2 {
-    padding-right: 0.5rem !important;
+    padding-right: expression(math.div($spacer, 2)) !important;
   }
 
   .ps-lg-3 {
@@ -3486,11 +3486,11 @@
   }
 
   .gap-xl-1 {
-    gap: 0.25rem !important;
+    gap: expression(math.div($spacer, 4)) !important;
   }
 
   .gap-xl-2 {
-    gap: 0.5rem !important;
+    gap: expression(math.div($spacer, 2)) !important;
   }
 
   .gap-xl-3 {
@@ -3634,11 +3634,11 @@
   }
 
   .m-xl-1 {
-    margin: 0.25rem !important;
+    margin: expression(math.div($spacer, 4)) !important;
   }
 
   .m-xl-2 {
-    margin: 0.5rem !important;
+    margin: expression(math.div($spacer, 2)) !important;
   }
 
   .m-xl-3 {
@@ -3663,13 +3663,13 @@
   }
 
   .mx-xl-1 {
-    margin-left: 0.25rem !important;
-    margin-right: 0.25rem !important;
+    margin-left: expression(math.div($spacer, 4)) !important;
+    margin-right: expression(math.div($spacer, 4)) !important;
   }
 
   .mx-xl-2 {
-    margin-left: 0.5rem !important;
-    margin-right: 0.5rem !important;
+    margin-left: expression(math.div($spacer, 2)) !important;
+    margin-right: expression(math.div($spacer, 2)) !important;
   }
 
   .mx-xl-3 {
@@ -3698,13 +3698,13 @@
   }
 
   .my-xl-1 {
-    margin-top: 0.25rem !important;
-    margin-bottom: 0.25rem !important;
+    margin-top: expression(math.div($spacer, 4)) !important;
+    margin-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .my-xl-2 {
-    margin-top: 0.5rem !important;
-    margin-bottom: 0.5rem !important;
+    margin-top: expression(math.div($spacer, 2)) !important;
+    margin-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .my-xl-3 {
@@ -3732,11 +3732,11 @@
   }
 
   .mt-xl-1 {
-    margin-top: 0.25rem !important;
+    margin-top: expression(math.div($spacer, 4)) !important;
   }
 
   .mt-xl-2 {
-    margin-top: 0.5rem !important;
+    margin-top: expression(math.div($spacer, 2)) !important;
   }
 
   .mt-xl-3 {
@@ -3760,11 +3760,11 @@
   }
 
   .me-xl-1 {
-    margin-left: 0.25rem !important;
+    margin-left: expression(math.div($spacer, 4)) !important;
   }
 
   .me-xl-2 {
-    margin-left: 0.5rem !important;
+    margin-left: expression(math.div($spacer, 2)) !important;
   }
 
   .me-xl-3 {
@@ -3788,11 +3788,11 @@
   }
 
   .mb-xl-1 {
-    margin-bottom: 0.25rem !important;
+    margin-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .mb-xl-2 {
-    margin-bottom: 0.5rem !important;
+    margin-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .mb-xl-3 {
@@ -3816,11 +3816,11 @@
   }
 
   .ms-xl-1 {
-    margin-right: 0.25rem !important;
+    margin-right: expression(math.div($spacer, 4)) !important;
   }
 
   .ms-xl-2 {
-    margin-right: 0.5rem !important;
+    margin-right: expression(math.div($spacer, 2)) !important;
   }
 
   .ms-xl-3 {
@@ -3844,11 +3844,11 @@
   }
 
   .p-xl-1 {
-    padding: 0.25rem !important;
+    padding: expression(math.div($spacer, 4)) !important;
   }
 
   .p-xl-2 {
-    padding: 0.5rem !important;
+    padding: expression(math.div($spacer, 2)) !important;
   }
 
   .p-xl-3 {
@@ -3869,13 +3869,13 @@
   }
 
   .px-xl-1 {
-    padding-left: 0.25rem !important;
-    padding-right: 0.25rem !important;
+    padding-left: expression(math.div($spacer, 4)) !important;
+    padding-right: expression(math.div($spacer, 4)) !important;
   }
 
   .px-xl-2 {
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    padding-left: expression(math.div($spacer, 2)) !important;
+    padding-right: expression(math.div($spacer, 2)) !important;
   }
 
   .px-xl-3 {
@@ -3899,13 +3899,13 @@
   }
 
   .py-xl-1 {
-    padding-top: 0.25rem !important;
-    padding-bottom: 0.25rem !important;
+    padding-top: expression(math.div($spacer, 4)) !important;
+    padding-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .py-xl-2 {
-    padding-top: 0.5rem !important;
-    padding-bottom: 0.5rem !important;
+    padding-top: expression(math.div($spacer, 2)) !important;
+    padding-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .py-xl-3 {
@@ -3928,11 +3928,11 @@
   }
 
   .pt-xl-1 {
-    padding-top: 0.25rem !important;
+    padding-top: expression(math.div($spacer, 4)) !important;
   }
 
   .pt-xl-2 {
-    padding-top: 0.5rem !important;
+    padding-top: expression(math.div($spacer, 2)) !important;
   }
 
   .pt-xl-3 {
@@ -3952,11 +3952,11 @@
   }
 
   .pe-xl-1 {
-    padding-left: 0.25rem !important;
+    padding-left: expression(math.div($spacer, 4)) !important;
   }
 
   .pe-xl-2 {
-    padding-left: 0.5rem !important;
+    padding-left: expression(math.div($spacer, 2)) !important;
   }
 
   .pe-xl-3 {
@@ -3976,11 +3976,11 @@
   }
 
   .pb-xl-1 {
-    padding-bottom: 0.25rem !important;
+    padding-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .pb-xl-2 {
-    padding-bottom: 0.5rem !important;
+    padding-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .pb-xl-3 {
@@ -4000,11 +4000,11 @@
   }
 
   .ps-xl-1 {
-    padding-right: 0.25rem !important;
+    padding-right: expression(math.div($spacer, 4)) !important;
   }
 
   .ps-xl-2 {
-    padding-right: 0.5rem !important;
+    padding-right: expression(math.div($spacer, 2)) !important;
   }
 
   .ps-xl-3 {
@@ -4137,11 +4137,11 @@
   }
 
   .gap-xxl-1 {
-    gap: 0.25rem !important;
+    gap: expression(math.div($spacer, 4)) !important;
   }
 
   .gap-xxl-2 {
-    gap: 0.5rem !important;
+    gap: expression(math.div($spacer, 2)) !important;
   }
 
   .gap-xxl-3 {
@@ -4285,11 +4285,11 @@
   }
 
   .m-xxl-1 {
-    margin: 0.25rem !important;
+    margin: expression(math.div($spacer, 4)) !important;
   }
 
   .m-xxl-2 {
-    margin: 0.5rem !important;
+    margin: expression(math.div($spacer, 2)) !important;
   }
 
   .m-xxl-3 {
@@ -4314,13 +4314,13 @@
   }
 
   .mx-xxl-1 {
-    margin-left: 0.25rem !important;
-    margin-right: 0.25rem !important;
+    margin-left: expression(math.div($spacer, 4)) !important;
+    margin-right: expression(math.div($spacer, 4)) !important;
   }
 
   .mx-xxl-2 {
-    margin-left: 0.5rem !important;
-    margin-right: 0.5rem !important;
+    margin-left: expression(math.div($spacer, 2)) !important;
+    margin-right: expression(math.div($spacer, 2)) !important;
   }
 
   .mx-xxl-3 {
@@ -4349,13 +4349,13 @@
   }
 
   .my-xxl-1 {
-    margin-top: 0.25rem !important;
-    margin-bottom: 0.25rem !important;
+    margin-top: expression(math.div($spacer, 4)) !important;
+    margin-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .my-xxl-2 {
-    margin-top: 0.5rem !important;
-    margin-bottom: 0.5rem !important;
+    margin-top: expression(math.div($spacer, 2)) !important;
+    margin-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .my-xxl-3 {
@@ -4383,11 +4383,11 @@
   }
 
   .mt-xxl-1 {
-    margin-top: 0.25rem !important;
+    margin-top: expression(math.div($spacer, 4)) !important;
   }
 
   .mt-xxl-2 {
-    margin-top: 0.5rem !important;
+    margin-top: expression(math.div($spacer, 2)) !important;
   }
 
   .mt-xxl-3 {
@@ -4411,11 +4411,11 @@
   }
 
   .me-xxl-1 {
-    margin-left: 0.25rem !important;
+    margin-left: expression(math.div($spacer, 4)) !important;
   }
 
   .me-xxl-2 {
-    margin-left: 0.5rem !important;
+    margin-left: expression(math.div($spacer, 2)) !important;
   }
 
   .me-xxl-3 {
@@ -4439,11 +4439,11 @@
   }
 
   .mb-xxl-1 {
-    margin-bottom: 0.25rem !important;
+    margin-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .mb-xxl-2 {
-    margin-bottom: 0.5rem !important;
+    margin-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .mb-xxl-3 {
@@ -4467,11 +4467,11 @@
   }
 
   .ms-xxl-1 {
-    margin-right: 0.25rem !important;
+    margin-right: expression(math.div($spacer, 4)) !important;
   }
 
   .ms-xxl-2 {
-    margin-right: 0.5rem !important;
+    margin-right: expression(math.div($spacer, 2)) !important;
   }
 
   .ms-xxl-3 {
@@ -4495,11 +4495,11 @@
   }
 
   .p-xxl-1 {
-    padding: 0.25rem !important;
+    padding: expression(math.div($spacer, 4)) !important;
   }
 
   .p-xxl-2 {
-    padding: 0.5rem !important;
+    padding: expression(math.div($spacer, 2)) !important;
   }
 
   .p-xxl-3 {
@@ -4520,13 +4520,13 @@
   }
 
   .px-xxl-1 {
-    padding-left: 0.25rem !important;
-    padding-right: 0.25rem !important;
+    padding-left: expression(math.div($spacer, 4)) !important;
+    padding-right: expression(math.div($spacer, 4)) !important;
   }
 
   .px-xxl-2 {
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    padding-left: expression(math.div($spacer, 2)) !important;
+    padding-right: expression(math.div($spacer, 2)) !important;
   }
 
   .px-xxl-3 {
@@ -4550,13 +4550,13 @@
   }
 
   .py-xxl-1 {
-    padding-top: 0.25rem !important;
-    padding-bottom: 0.25rem !important;
+    padding-top: expression(math.div($spacer, 4)) !important;
+    padding-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .py-xxl-2 {
-    padding-top: 0.5rem !important;
-    padding-bottom: 0.5rem !important;
+    padding-top: expression(math.div($spacer, 2)) !important;
+    padding-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .py-xxl-3 {
@@ -4579,11 +4579,11 @@
   }
 
   .pt-xxl-1 {
-    padding-top: 0.25rem !important;
+    padding-top: expression(math.div($spacer, 4)) !important;
   }
 
   .pt-xxl-2 {
-    padding-top: 0.5rem !important;
+    padding-top: expression(math.div($spacer, 2)) !important;
   }
 
   .pt-xxl-3 {
@@ -4603,11 +4603,11 @@
   }
 
   .pe-xxl-1 {
-    padding-left: 0.25rem !important;
+    padding-left: expression(math.div($spacer, 4)) !important;
   }
 
   .pe-xxl-2 {
-    padding-left: 0.5rem !important;
+    padding-left: expression(math.div($spacer, 2)) !important;
   }
 
   .pe-xxl-3 {
@@ -4627,11 +4627,11 @@
   }
 
   .pb-xxl-1 {
-    padding-bottom: 0.25rem !important;
+    padding-bottom: expression(math.div($spacer, 4)) !important;
   }
 
   .pb-xxl-2 {
-    padding-bottom: 0.5rem !important;
+    padding-bottom: expression(math.div($spacer, 2)) !important;
   }
 
   .pb-xxl-3 {
@@ -4651,11 +4651,11 @@
   }
 
   .ps-xxl-1 {
-    padding-right: 0.25rem !important;
+    padding-right: expression(math.div($spacer, 4)) !important;
   }
 
   .ps-xxl-2 {
-    padding-right: 0.5rem !important;
+    padding-right: expression(math.div($spacer, 2)) !important;
   }
 
   .ps-xxl-3 {

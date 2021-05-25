@@ -127,17 +127,11 @@
   };
 
   const isVisible = element => {
-    if (!element) {
+    if (!isElement(element) || element.getClientRects().length === 0) {
       return false;
     }
 
-    if (element.style && element.parentNode && element.parentNode.style) {
-      const elementStyle = getComputedStyle(element);
-      const parentNodeStyle = getComputedStyle(element.parentNode);
-      return elementStyle.display !== 'none' && parentNodeStyle.display !== 'none' && elementStyle.visibility !== 'hidden';
-    }
-
-    return false;
+    return getComputedStyle(element).getPropertyValue('visibility') === 'visible';
   };
 
   const isDisabled = element => {
@@ -248,8 +242,12 @@
       }
 
       const actualValue = element.style[styleProp];
+
+      if (actualValue) {
+        Manipulator__default['default'].setDataAttribute(element, styleProp, actualValue);
+      }
+
       const calculatedValue = window.getComputedStyle(element)[styleProp];
-      Manipulator__default['default'].setDataAttribute(element, styleProp, actualValue);
       element.style[styleProp] = `${callback(Number.parseFloat(calculatedValue))}px`;
     });
   };
@@ -388,7 +386,13 @@
 
       EventHandler__default['default'].off(this._element, EVENT_MOUSEDOWN);
 
-      this._getElement().parentNode.removeChild(this._element);
+      const {
+        parentNode
+      } = this._getElement();
+
+      if (parentNode) {
+        parentNode.removeChild(this._element);
+      }
 
       this._isAppended = false;
     }
