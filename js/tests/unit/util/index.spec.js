@@ -326,16 +326,52 @@ describe('Util', () => {
       expect(Util.isVisible(div)).toEqual(false)
     })
 
-    it('should return false if the parent element is not visible', () => {
+    it('should return false if an ancestor element is display none', () => {
       fixtureEl.innerHTML = [
         '<div style="display: none;">',
-        '  <div class="content"></div>',
+        '  <div>',
+        '    <div>',
+        '      <div class="content"></div>',
+        '    </div>',
+        '  </div>',
         '</div>'
       ].join('')
 
       const div = fixtureEl.querySelector('.content')
 
       expect(Util.isVisible(div)).toEqual(false)
+    })
+
+    it('should return false if an ancestor element is visibility hidden', () => {
+      fixtureEl.innerHTML = [
+        '<div style="visibility: hidden;">',
+        '  <div>',
+        '    <div>',
+        '      <div class="content"></div>',
+        '    </div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('.content')
+
+      expect(Util.isVisible(div)).toEqual(false)
+    })
+
+    it('should return true if an ancestor element is visibility hidden, but reverted', () => {
+      fixtureEl.innerHTML = [
+        '<div style="visibility: hidden;">',
+        '  <div style="visibility: visible;">',
+        '    <div>',
+        '      <div class="content"></div>',
+        '    </div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('.content')
+
+      expect(Util.isVisible(div)).toEqual(true)
     })
 
     it('should return true if the element is visible', () => {
@@ -348,6 +384,18 @@ describe('Util', () => {
       const div = fixtureEl.querySelector('#element')
 
       expect(Util.isVisible(div)).toEqual(true)
+    })
+
+    it('should return false if the element is hidden, but not via display or visibility', () => {
+      fixtureEl.innerHTML = [
+        '<details>',
+        '  <div id="element"></div>',
+        '</details>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('#element')
+
+      expect(Util.isVisible(div)).toEqual(false)
     })
   })
 
@@ -609,6 +657,56 @@ describe('Util', () => {
       const spy = jasmine.createSpy('spy')
       Util.execute(spy)
       expect(spy).toHaveBeenCalled()
+    })
+  })
+
+  describe('getNextActiveElement', () => {
+    it('should return first element if active not exists or not given and shouldGetNext is either true, or false with cycling being disabled', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, '', true, true)).toEqual('a')
+      expect(Util.getNextActiveElement(array, 'g', true, true)).toEqual('a')
+      expect(Util.getNextActiveElement(array, '', true, false)).toEqual('a')
+      expect(Util.getNextActiveElement(array, 'g', true, false)).toEqual('a')
+      expect(Util.getNextActiveElement(array, '', false, false)).toEqual('a')
+      expect(Util.getNextActiveElement(array, 'g', false, false)).toEqual('a')
+    })
+
+    it('should return last element if active not exists or not given and shouldGetNext is false but cycling is enabled', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, '', false, true)).toEqual('d')
+      expect(Util.getNextActiveElement(array, 'g', false, true)).toEqual('d')
+    })
+
+    it('should return next element or same if is last', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, 'a', true, true)).toEqual('b')
+      expect(Util.getNextActiveElement(array, 'b', true, true)).toEqual('c')
+      expect(Util.getNextActiveElement(array, 'd', true, false)).toEqual('d')
+    })
+
+    it('should return next element or first, if is last and "isCycleAllowed = true"', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, 'c', true, true)).toEqual('d')
+      expect(Util.getNextActiveElement(array, 'd', true, true)).toEqual('a')
+    })
+
+    it('should return previous element or same if is first', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, 'b', false, true)).toEqual('a')
+      expect(Util.getNextActiveElement(array, 'd', false, true)).toEqual('c')
+      expect(Util.getNextActiveElement(array, 'a', false, false)).toEqual('a')
+    })
+
+    it('should return next element or first, if is last and "isCycleAllowed = true"', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, 'd', false, true)).toEqual('c')
+      expect(Util.getNextActiveElement(array, 'a', false, true)).toEqual('d')
     })
   })
 })
