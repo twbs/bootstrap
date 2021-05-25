@@ -126,17 +126,11 @@
   };
 
   const isVisible = element => {
-    if (!element) {
+    if (!isElement(element) || element.getClientRects().length === 0) {
       return false;
     }
 
-    if (element.style && element.parentNode && element.parentNode.style) {
-      const elementStyle = getComputedStyle(element);
-      const parentNodeStyle = getComputedStyle(element.parentNode);
-      return elementStyle.display !== 'none' && parentNodeStyle.display !== 'none' && elementStyle.visibility !== 'hidden';
-    }
-
-    return false;
+    return getComputedStyle(element).getPropertyValue('visibility') === 'visible';
   };
 
   const reflow = element => element.offsetHeight;
@@ -233,8 +227,12 @@
       }
 
       const actualValue = element.style[styleProp];
+
+      if (actualValue) {
+        Manipulator__default['default'].setDataAttribute(element, styleProp, actualValue);
+      }
+
       const calculatedValue = window.getComputedStyle(element)[styleProp];
-      Manipulator__default['default'].setDataAttribute(element, styleProp, actualValue);
       element.style[styleProp] = `${callback(Number.parseFloat(calculatedValue))}px`;
     });
   };
@@ -373,7 +371,13 @@
 
       EventHandler__default['default'].off(this._element, EVENT_MOUSEDOWN);
 
-      this._getElement().parentNode.removeChild(this._element);
+      const {
+        parentNode
+      } = this._getElement();
+
+      if (parentNode) {
+        parentNode.removeChild(this._element);
+      }
 
       this._isAppended = false;
     }
@@ -474,19 +478,20 @@
         return;
       }
 
-      if (this._isAnimated()) {
-        this._isTransitioning = true;
-      }
-
       const showEvent = EventHandler__default['default'].trigger(this._element, EVENT_SHOW, {
         relatedTarget
       });
 
-      if (this._isShown || showEvent.defaultPrevented) {
+      if (showEvent.defaultPrevented) {
         return;
       }
 
       this._isShown = true;
+
+      if (this._isAnimated()) {
+        this._isTransitioning = true;
+      }
+
       hide();
       document.body.classList.add(CLASS_NAME_OPEN);
 
@@ -509,7 +514,7 @@
     }
 
     hide(event) {
-      if (event) {
+      if (event && ['A', 'AREA'].includes(event.target.tagName)) {
         event.preventDefault();
       }
 

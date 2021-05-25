@@ -85,17 +85,11 @@
   };
 
   const isVisible = element => {
-    if (!element) {
+    if (!isElement(element) || element.getClientRects().length === 0) {
       return false;
     }
 
-    if (element.style && element.parentNode && element.parentNode.style) {
-      const elementStyle = getComputedStyle(element);
-      const parentNodeStyle = getComputedStyle(element.parentNode);
-      return elementStyle.display !== 'none' && parentNodeStyle.display !== 'none' && elementStyle.visibility !== 'hidden';
-    }
-
-    return false;
+    return getComputedStyle(element).getPropertyValue('visibility') === 'visible';
   };
 
   const reflow = element => element.offsetHeight;
@@ -139,6 +133,33 @@
         };
       }
     });
+  };
+  /**
+   * Return the previous/next element of a list.
+   *
+   * @param {array} list    The list of elements
+   * @param activeElement   The active element
+   * @param shouldGetNext   Choose to get next or previous element
+   * @param isCycleAllowed
+   * @return {Element|elem} The proper element
+   */
+
+
+  const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
+    let index = list.indexOf(activeElement); // if the element does not exist in the list return an element depending on the direction and if cycle is allowed
+
+    if (index === -1) {
+      return list[!shouldGetNext && isCycleAllowed ? list.length - 1 : 0];
+    }
+
+    const listLength = list.length;
+    index += shouldGetNext ? 1 : -1;
+
+    if (isCycleAllowed) {
+      index = (index + listLength) % listLength;
+    }
+
+    return list[Math.max(0, Math.min(index, listLength - 1))];
   };
 
   /**
@@ -444,20 +465,7 @@
 
     _getItemByOrder(order, activeElement) {
       const isNext = order === ORDER_NEXT;
-      const isPrev = order === ORDER_PREV;
-
-      const activeIndex = this._getItemIndex(activeElement);
-
-      const lastItemIndex = this._items.length - 1;
-      const isGoingToWrap = isPrev && activeIndex === 0 || isNext && activeIndex === lastItemIndex;
-
-      if (isGoingToWrap && !this._config.wrap) {
-        return activeElement;
-      }
-
-      const delta = isPrev ? -1 : 1;
-      const itemIndex = (activeIndex + delta) % this._items.length;
-      return itemIndex === -1 ? this._items[this._items.length - 1] : this._items[itemIndex];
+      return getNextActiveElement(this._items, activeElement, isNext, this._config.wrap);
     }
 
     _triggerSlideEvent(relatedTarget, eventDirectionName) {
