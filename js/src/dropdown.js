@@ -8,7 +8,6 @@
 import * as Popper from '@popperjs/core'
 
 import {
-  defineJQueryPlugin,
   getElement,
   getElementFromSelector,
   isDisabled,
@@ -507,14 +506,5 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   event.preventDefault()
   Dropdown.dropdownInterface(this)
 })
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .Dropdown to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(Dropdown)
 
 export default Dropdown

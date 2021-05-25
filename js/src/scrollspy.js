@@ -6,7 +6,6 @@
  */
 
 import {
-  defineJQueryPlugin,
   getSelectorFromElement,
   getUID,
   isElement,
@@ -295,14 +294,5 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   SelectorEngine.find(SELECTOR_DATA_SPY)
     .forEach(spy => new ScrollSpy(spy))
 })
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .ScrollSpy to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(ScrollSpy)
 
 export default ScrollSpy

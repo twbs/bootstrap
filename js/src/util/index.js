@@ -229,19 +229,37 @@ const onDOMContentLoaded = callback => {
 
 const isRTL = () => document.documentElement.dir === 'rtl'
 
-const defineJQueryPlugin = plugin => {
+const defineJQueryPlugin = () => {
   onDOMContentLoaded(() => {
     const $ = getjQuery()
     /* istanbul ignore if */
     if ($) {
-      const name = plugin.NAME
-      const JQUERY_NO_CONFLICT = $.fn[name]
-      $.fn[name] = plugin.jQueryInterface
-      $.fn[name].Constructor = plugin
-      $.fn[name].noConflict = () => {
-        $.fn[name] = JQUERY_NO_CONFLICT
-        return plugin.jQueryInterface
-      }
+      [
+        'Alert',
+        'Button',
+        'Carousel',
+        'Collapse',
+        'Dropdown',
+        'Modal',
+        'Offcanvas',
+        'Popover',
+        'ScrollSpy',
+        'Tab',
+        'Toast',
+        'Tooltip'
+      ].forEach(pluginName => {
+        const plugin = window.bootstrap[pluginName]
+        if (plugin) {
+          const name = plugin.NAME
+          const JQUERY_NO_CONFLICT = $.fn[name]
+          $.fn[name] = plugin.jQueryInterface
+          $.fn[name].Constructor = plugin
+          $.fn[name].noConflict = () => {
+            $.fn[name] = JQUERY_NO_CONFLICT
+            return plugin.jQueryInterface
+          }
+        }
+      })
     }
   })
 }

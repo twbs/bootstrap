@@ -6,7 +6,6 @@
  */
 
 import {
-  defineJQueryPlugin,
   reflow,
   typeCheckConfig
 } from './util/index'
@@ -235,14 +234,5 @@ class Toast extends BaseComponent {
     })
   }
 }
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .Toast to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(Toast)
 
 export default Toast

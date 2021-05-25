@@ -6,7 +6,6 @@
  */
 
 import {
-  defineJQueryPlugin,
   getElementFromSelector,
   isRTL,
   isVisible,
@@ -577,14 +576,5 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
     Carousel.carouselInterface(carousels[i], Data.get(carousels[i], DATA_KEY))
   }
 })
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .Carousel to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(Carousel)
 
 export default Carousel

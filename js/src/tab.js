@@ -6,7 +6,6 @@
  */
 
 import {
-  defineJQueryPlugin,
   getElementFromSelector,
   isDisabled,
   reflow
@@ -212,14 +211,5 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   const data = Data.get(this, DATA_KEY) || new Tab(this)
   data.show()
 })
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .Tab to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(Tab)
 
 export default Tab

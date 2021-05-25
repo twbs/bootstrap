@@ -8,7 +8,6 @@
 import * as Popper from '@popperjs/core'
 
 import {
-  defineJQueryPlugin,
   findShadowRoot,
   getElement,
   getUID,
@@ -739,14 +738,5 @@ class Tooltip extends BaseComponent {
     })
   }
 }
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .Tooltip to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(Tooltip)
 
 export default Tooltip

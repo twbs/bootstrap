@@ -10,7 +10,8 @@ import {
   emulateTransitionEnd,
   execute,
   getElement,
-  getTransitionDurationFromElement
+  getTransitionDurationFromElement,
+  defineJQueryPlugin
 } from './util/index'
 import EventHandler from './dom/event-handler'
 
@@ -77,5 +78,7 @@ class BaseComponent {
     return `.${this.DATA_KEY}`
   }
 }
+
+defineJQueryPlugin()
 
 export default BaseComponent

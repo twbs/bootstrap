@@ -6,7 +6,6 @@
  */
 
 import {
-  defineJQueryPlugin,
   getElement,
   getSelectorFromElement,
   getElementFromSelector,
@@ -375,14 +374,5 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     Collapse.collapseInterface(element, config)
   })
 })
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .Collapse to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(Collapse)
 
 export default Collapse

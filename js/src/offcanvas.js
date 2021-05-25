@@ -6,7 +6,6 @@
  */
 
 import {
-  defineJQueryPlugin,
   getElementFromSelector,
   isDisabled,
   isVisible,
@@ -264,13 +263,5 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   SelectorEngine.find(OPEN_SELECTOR).forEach(el => (Data.get(el, DATA_KEY) || new Offcanvas(el)).show())
 })
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-defineJQueryPlugin(Offcanvas)
 
 export default Offcanvas
