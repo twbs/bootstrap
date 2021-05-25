@@ -116,11 +116,7 @@ class Backdrop {
 
     EventHandler.off(this._element, EVENT_MOUSEDOWN)
 
-    const { parentNode } = this._getElement()
-    if (parentNode) {
-      parentNode.removeChild(this._element)
-    }
-
+    this._element.remove()
     this._isAppended = false
   }
 
