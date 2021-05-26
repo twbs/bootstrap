@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // Responsive images (ensure images don't scale beyond their parents)
 //
 // This is purposefully opt-in via an explicit class rather than being the default for all `<img>`s.
@@ -32,7 +34,7 @@
 }
 
 .figure-img {
-  margin-bottom: $spacer / 2;
+  margin-bottom: math.div($spacer, 2);
   line-height: 1;
 }
 

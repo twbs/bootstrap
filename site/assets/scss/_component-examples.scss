@@ -1,3 +1,5 @@
+@use "sass:math";
+
 //
 // Grid examples
 //
@@ -70,7 +72,7 @@
 .bd-example {
   position: relative;
   padding: 1rem;
-  margin: 1rem (-$grid-gutter-width / 2) 0;
+  margin: 1rem math.div(-$grid-gutter-width, 2) 0;
   border: solid $gray-300;
   border-width: 1px 0 0;
   @include clearfix();
@@ -312,8 +314,8 @@
 }
 
 .bd-content .highlight {
-  margin-right: (-$grid-gutter-width / 2);
-  margin-left: (-$grid-gutter-width / 2);
+  margin-right: math.div(-$grid-gutter-width, 2);
+  margin-left: math.div(-$grid-gutter-width, 2);
 
   @include media-breakpoint-up(sm) {
     margin-right: 0;
