@@ -78,9 +78,7 @@ class Alert extends BaseComponent {
   }
 
   _destroyElement(element) {
-    if (element.parentNode) {
-      element.parentNode.removeChild(element)
-    }
+    element.remove()
 
     EventHandler.trigger(element, EVENT_CLOSED)
   }
