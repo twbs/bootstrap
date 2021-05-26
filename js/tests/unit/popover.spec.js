@@ -266,21 +266,6 @@ describe('Popover', () => {
 
       expect(popover.show).toHaveBeenCalled()
     })
-
-    it('should do nothing if dipose is called when a popover do not exist', () => {
-      fixtureEl.innerHTML = '<a href="#" title="Popover" data-bs-content="https://twitter.com/getbootstrap">BS twitter</a>'
-
-      const popoverEl = fixtureEl.querySelector('a')
-
-      jQueryMock.fn.popover = Popover.jQueryInterface
-      jQueryMock.elements = [popoverEl]
-
-      spyOn(Popover.prototype, 'dispose')
-
-      jQueryMock.fn.popover.call(jQueryMock, 'dispose')
-
-      expect(Popover.prototype.dispose).not.toHaveBeenCalled()
-    })
   })
 
   describe('getInstance', () => {
