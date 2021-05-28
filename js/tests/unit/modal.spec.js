@@ -203,6 +203,33 @@ describe('Modal', () => {
       modal.show()
     })
 
+    it('should be shown after the first call to show() has been prevented while fading is enabled ', done => {
+      fixtureEl.innerHTML = '<div class="modal fade"><div class="modal-dialog"></div></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      let prevented = false
+      modalEl.addEventListener('show.bs.modal', e => {
+        if (!prevented) {
+          e.preventDefault()
+          prevented = true
+
+          setTimeout(() => {
+            modal.show()
+          })
+        }
+      })
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(prevented).toBeTrue()
+        expect(modal._isAnimated()).toBeTrue()
+        done()
+      })
+
+      modal.show()
+    })
+
     it('should set is transitioning if fade class is present', done => {
       fixtureEl.innerHTML = '<div class="modal fade"><div class="modal-dialog"></div></div>'
 
@@ -210,7 +237,9 @@ describe('Modal', () => {
       const modal = new Modal(modalEl)
 
       modalEl.addEventListener('show.bs.modal', () => {
-        expect(modal._isTransitioning).toEqual(true)
+        setTimeout(() => {
+          expect(modal._isTransitioning).toEqual(true)
+        })
       })
 
       modalEl.addEventListener('shown.bs.modal', () => {
