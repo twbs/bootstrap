@@ -195,9 +195,9 @@ toc: true
 
 ### Buttons
 
-- <span class="badge bg-danger">Breaking</span> **[Toggle buttons](http://getbootstrap.com/docs/5.0/forms/checks-radios/#toggle-buttons), with checkboxes or radios, no longer require JavaScript and have new markup.** We no longer require a wrapping element, add `.btn-check` to the `<input>`, and pair it with any `.btn` classes on the `<label>`. [See #30650](https://github.com/twbs/bootstrap/pull/30650). _The docs for this has moved from our Buttons page to the new Forms section._
+- <span class="badge bg-danger">Breaking</span> **[Toggle buttons](https://getbootstrap.com/docs/5.0/forms/checks-radios/#toggle-buttons), with checkboxes or radios, no longer require JavaScript and have new markup.** We no longer require a wrapping element, add `.btn-check` to the `<input>`, and pair it with any `.btn` classes on the `<label>`. [See #30650](https://github.com/twbs/bootstrap/pull/30650). _The docs for this has moved from our Buttons page to the new Forms section._
 
-- <span class="badge bg-danger">Breaking</span> **Dropped `.btn-block` for utilities.** Instead of using `.btn-block` on the `.btn`, wrap your buttons with `.d-grid` and a `.gap-*` utility to space them as needed. Switch to responsive classes for even more control over them. [Read the docs for some examples.](http://getbootstrap.com/docs/5.0/components/buttons/#block-buttons)
+- <span class="badge bg-danger">Breaking</span> **Dropped `.btn-block` for utilities.** Instead of using `.btn-block` on the `.btn`, wrap your buttons with `.d-grid` and a `.gap-*` utility to space them as needed. Switch to responsive classes for even more control over them. [Read the docs for some examples.](https://getbootstrap.com/docs/5.0/components/buttons/#block-buttons)
 
 - Updated our `button-variant()` and `button-outline-variant()` mixins to support additional parameters.
 
