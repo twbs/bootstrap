@@ -108,19 +108,19 @@ class Modal extends BaseComponent {
       return
     }
 
-    if (this._isAnimated()) {
-      this._isTransitioning = true
-    }
-
     const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
       relatedTarget
     })
 
-    if (this._isShown || showEvent.defaultPrevented) {
+    if (showEvent.defaultPrevented) {
       return
     }
 
     this._isShown = true
+
+    if (this._isAnimated()) {
+      this._isTransitioning = true
+    }
 
     scrollBarHide()
 

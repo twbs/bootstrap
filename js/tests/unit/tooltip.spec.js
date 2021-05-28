@@ -1351,21 +1351,6 @@ describe('Tooltip', () => {
       expect(tooltip.show).toHaveBeenCalled()
     })
 
-    it('should do nothing when we call dispose or hide if there is no tooltip created', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-
-      spyOn(Tooltip.prototype, 'dispose')
-
-      jQueryMock.fn.tooltip = Tooltip.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.tooltip.call(jQueryMock, 'dispose')
-
-      expect(Tooltip.prototype.dispose).not.toHaveBeenCalled()
-    })
-
     it('should throw error on undefined method', () => {
       fixtureEl.innerHTML = '<div></div>'
 

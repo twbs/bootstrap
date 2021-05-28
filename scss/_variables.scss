@@ -535,6 +535,7 @@ $table-cell-vertical-align:   top !default;
 
 $table-color:                 $body-color !default;
 $table-bg:                    transparent !default;
+$table-accent-bg:             transparent !default;
 
 $table-th-font-weight:        null !default;
 
@@ -825,6 +826,8 @@ $form-select-font-size-sm:        $input-font-size-sm !default;
 $form-select-padding-y-lg:        $input-padding-y-lg !default;
 $form-select-padding-x-lg:        $input-padding-x-lg !default;
 $form-select-font-size-lg:        $input-font-size-lg !default;
+
+$form-select-transition:          $input-transition !default;
 // scss-docs-end form-select-variables
 
 // scss-docs-start form-range-variables
@@ -1157,7 +1160,7 @@ $form-feedback-tooltip-font-size:     $tooltip-font-size !default;
 $form-feedback-tooltip-line-height:   null !default;
 $form-feedback-tooltip-opacity:       $tooltip-opacity !default;
 $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
-// scss-docs-start tooltip-feedback-variables
+// scss-docs-end tooltip-feedback-variables
 
 
 // Popovers

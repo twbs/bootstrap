@@ -159,20 +159,11 @@ const typeCheckConfig = (componentName, config, configTypes) => {
 }
 
 const isVisible = element => {
-  if (!element) {
+  if (!isElement(element) || element.getClientRects().length === 0) {
     return false
   }
 
-  if (element.style && element.parentNode && element.parentNode.style) {
-    const elementStyle = getComputedStyle(element)
-    const parentNodeStyle = getComputedStyle(element.parentNode)
-
-    return elementStyle.display !== 'none' &&
-      parentNodeStyle.display !== 'none' &&
-      elementStyle.visibility !== 'hidden'
-  }
-
-  return false
+  return getComputedStyle(element).getPropertyValue('visibility') === 'visible'
 }
 
 const isDisabled = element => {
@@ -273,9 +264,9 @@ const execute = callback => {
 const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
   let index = list.indexOf(activeElement)
 
-  // if the element does not exist in the list initialize it as the first element
+  // if the element does not exist in the list return an element depending on the direction and if cycle is allowed
   if (index === -1) {
-    return list[0]
+    return list[!shouldGetNext && isCycleAllowed ? list.length - 1 : 0]
   }
 
   const listLength = list.length
