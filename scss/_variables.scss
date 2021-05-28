@@ -535,6 +535,7 @@ $table-cell-vertical-align:   top !default;
 
 $table-color:                 $body-color !default;
 $table-bg:                    transparent !default;
+$table-accent-bg:             transparent !default;
 
 $table-th-font-weight:        null !default;
 
@@ -1159,7 +1160,7 @@ $form-feedback-tooltip-font-size:     $tooltip-font-size !default;
 $form-feedback-tooltip-line-height:   null !default;
 $form-feedback-tooltip-opacity:       $tooltip-opacity !default;
 $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
-// scss-docs-start tooltip-feedback-variables
+// scss-docs-end tooltip-feedback-variables
 
 
 // Popovers
