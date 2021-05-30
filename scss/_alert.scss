@@ -32,8 +32,8 @@
   // Adjust close link position
   .btn-close {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 0.2;
+    right: 0.2;
     z-index: $stretched-link-z-index + 1;
     padding: $alert-padding-y * 1.25 $alert-padding-x;
   }
