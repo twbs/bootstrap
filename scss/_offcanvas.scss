@@ -14,6 +14,10 @@
   @include transition(transform $offcanvas-transition-duration ease-in-out);
 }
 
+.offcanvas-backdrop {
+  @extend .modal-backdrop;
+}
+
 .offcanvas-header {
   display: flex;
   align-items: center;

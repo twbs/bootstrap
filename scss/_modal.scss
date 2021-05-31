@@ -98,10 +98,6 @@
   &.show { opacity: $modal-backdrop-opacity; }
 }
 
-.offcanvas-backdrop {
-  @extend .modal-backdrop;
-}
-
 // Modal header
 // Top section of the modal w/ title and dismiss
 .modal-header {
