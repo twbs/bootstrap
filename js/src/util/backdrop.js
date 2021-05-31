@@ -22,7 +22,6 @@ const DefaultType = {
   clickCallback: '(function|null)'
 }
 const NAME = 'backdrop'
-const CLASS_NAME_BACKDROP = 'modal-backdrop'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 
@@ -73,7 +72,7 @@ class Backdrop {
   _getElement() {
     if (!this._element) {
       const backdrop = document.createElement('div')
-      backdrop.className = CLASS_NAME_BACKDROP
+      backdrop.className = this._config.backdropClassName
       if (this._config.isAnimated) {
         backdrop.classList.add(CLASS_NAME_FADE)
       }

@@ -45,6 +45,8 @@ const DefaultType = {
 }
 
 const CLASS_NAME_SHOW = 'show'
+const CLASS_NAME_BACKDROP = 'offcanvas-backdrop'
+
 const OPEN_SELECTOR = '.offcanvas.show'
 
 const EVENT_SHOW = `show${EVENT_KEY}`
@@ -180,6 +182,7 @@ class Offcanvas extends BaseComponent {
       isVisible: this._config.backdrop,
       isAnimated: true,
       rootElement: this._element.parentNode,
+      backdropClassName: CLASS_NAME_BACKDROP,
       clickCallback: () => this.hide()
     })
   }
