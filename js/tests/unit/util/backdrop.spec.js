@@ -243,10 +243,10 @@ describe('Backdrop', () => {
       })
     })
 
-    it('Should default parent element to "document.body" when config value is null', done => {
+    it('Should find the rootElement if passed as a string', done => {
       const instance = new Backdrop({
         isVisible: true,
-        rootElement: null
+        rootElement: 'body'
       })
       const getElement = () => document.querySelector(CLASS_BACKDROP)
       instance.show(() => {
