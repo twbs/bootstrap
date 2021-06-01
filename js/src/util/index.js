@@ -201,13 +201,24 @@ const getjQuery = () => {
   return null
 }
 
-const onDOMContentLoaded = callback => {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', callback)
-  } else {
-    callback()
+const onDOMContentLoaded = (() => {
+  const callbacks = []
+
+  return callback => {
+    if (document.readyState === 'loading') {
+      // add listener on the first call when the document is in loading state
+      if (!callbacks.length) {
+        document.addEventListener('DOMContentLoaded', () => {
+          callbacks.forEach(callback => callback())
+        })
+      }
+
+      callbacks.push(callback)
+    } else {
+      callback()
+    }
   }
-}
+})()
 
 const isRTL = () => document.documentElement.dir === 'rtl'
 
