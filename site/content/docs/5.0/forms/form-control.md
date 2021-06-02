@@ -35,7 +35,7 @@ Add the `disabled` boolean attribute on an input to give it a grayed out appeara
 
 {{< example >}}
 <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
-<input class="form-control" type="text" placeholder="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
+<input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
 {{< /example >}}
 
 ## Readonly
