@@ -259,9 +259,9 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   data.toggle(this)
 })
 
-EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+EventHandler.on(window, EVENT_LOAD_DATA_API, () =>
   SelectorEngine.find(OPEN_SELECTOR).forEach(el => (Offcanvas.getOrCreateInstance(el)).show())
-})
+)
 
 /**
  * ------------------------------------------------------------------------
