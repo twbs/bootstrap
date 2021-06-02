@@ -31,7 +31,7 @@ Note that depending on how they are used, badges may be confusing for users of s
 
 Unless the context is clear (as with the "Notifications" example, where it is understood that the "4" is the number of notifications), consider including additional context with a visually hidden piece of additional text.
 
-Additionally, we can style the badge to show a notification in a much nicer way. This method is traditionally seen in mobile apps.
+Additionally, we can style the badge to show a notification in a much nicer way. This method is tranditionally seen on websites with profiles. You will get a small dot on the profile, indicating an alert or notification. 
 
 {{< example >}}
 <button type="button" class="btn btn-primary position-relative">
