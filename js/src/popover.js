@@ -6,7 +6,6 @@
  */
 
 import { defineJQueryPlugin } from './util/index'
-import Data from './dom/data'
 import SelectorEngine from './dom/selector-engine'
 import Tooltip from './tooltip'
 
@@ -146,13 +145,7 @@ class Popover extends Tooltip {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      let data = Data.get(this, DATA_KEY)
-      const _config = typeof config === 'object' ? config : null
-
-      if (!data) {
-        data = new Popover(this, _config)
-        Data.set(this, DATA_KEY, data)
-      }
+      const data = Popover.getOrCreateInstance(this, config)
 
       if (typeof config === 'string') {
         if (typeof data[config] === 'undefined') {
