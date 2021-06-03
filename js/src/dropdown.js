@@ -19,7 +19,6 @@ import {
   getNextActiveElement,
   typeCheckConfig
 } from './util/index'
-import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
@@ -369,12 +368,7 @@ class Dropdown extends BaseComponent {
   // Static
 
   static dropdownInterface(element, config) {
-    let data = Data.get(element, DATA_KEY)
-    const _config = typeof config === 'object' ? config : null
-
-    if (!data) {
-      data = new Dropdown(element, _config)
-    }
+    const data = Dropdown.getOrCreateInstance(element, config)
 
     if (typeof config === 'string') {
       if (typeof data[config] === 'undefined') {
@@ -399,7 +393,7 @@ class Dropdown extends BaseComponent {
     const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
 
     for (let i = 0, len = toggles.length; i < len; i++) {
-      const context = Data.get(toggles[i], DATA_KEY)
+      const context = Dropdown.getInstance(toggles[i])
       if (!context || context._config.autoClose === false) {
         continue
       }
