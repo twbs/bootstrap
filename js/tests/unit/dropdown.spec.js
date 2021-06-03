@@ -1561,7 +1561,7 @@ describe('Dropdown', () => {
       triggerDropdown.click()
     })
 
-    it('should focus on the first element when using ArrowUp for the first time', done => {
+    it('should open the dropdown and focus on the last item when using ArrowUp for the first time', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -1573,19 +1573,44 @@ describe('Dropdown', () => {
       ].join('')
 
       const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
-      const item1 = fixtureEl.querySelector('#item1')
+      const lastItem = fixtureEl.querySelector('#item2')
 
       triggerDropdown.addEventListener('shown.bs.dropdown', () => {
-        const keydown = createEvent('keydown')
-        keydown.key = 'ArrowUp'
-
-        document.activeElement.dispatchEvent(keydown)
-        expect(document.activeElement).toEqual(item1, 'item1 is focused')
-
-        done()
+        setTimeout(() => {
+          expect(document.activeElement).toEqual(lastItem, 'item2 is focused')
+          done()
+        })
       })
 
-      triggerDropdown.click()
+      const keydown = createEvent('keydown')
+      keydown.key = 'ArrowUp'
+      triggerDropdown.dispatchEvent(keydown)
+    })
+
+    it('should open the dropdown and focus on the first item when using ArrowDown for the first time', done => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a id="item1" class="dropdown-item" href="#">A link</a>',
+        '    <a id="item2" class="dropdown-item" href="#">Another link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const firstItem = fixtureEl.querySelector('#item1')
+
+      triggerDropdown.addEventListener('shown.bs.dropdown', () => {
+        setTimeout(() => {
+          expect(document.activeElement).toEqual(firstItem, 'item1 is focused')
+          done()
+        })
+      })
+
+      const keydown = createEvent('keydown')
+      keydown.key = 'ArrowDown'
+      triggerDropdown.dispatchEvent(keydown)
     })
 
     it('should not close the dropdown if the user clicks on a text field within dropdown-menu', done => {
@@ -1963,6 +1988,60 @@ describe('Dropdown', () => {
       const div = fixtureEl.querySelector('div')
 
       expect(Dropdown.getInstance(div)).toEqual(null)
+    })
+  })
+
+  describe('getOrCreateInstance', () => {
+    it('should return dropdown instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const dropdown = new Dropdown(div)
+
+      expect(Dropdown.getOrCreateInstance(div)).toEqual(dropdown)
+      expect(Dropdown.getInstance(div)).toEqual(Dropdown.getOrCreateInstance(div, {}))
+      expect(Dropdown.getOrCreateInstance(div)).toBeInstanceOf(Dropdown)
+    })
+
+    it('should return new instance when there is no dropdown instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Dropdown.getInstance(div)).toEqual(null)
+      expect(Dropdown.getOrCreateInstance(div)).toBeInstanceOf(Dropdown)
+    })
+
+    it('should return new instance when there is no dropdown instance with given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Dropdown.getInstance(div)).toEqual(null)
+      const dropdown = Dropdown.getOrCreateInstance(div, {
+        display: 'dynamic'
+      })
+      expect(dropdown).toBeInstanceOf(Dropdown)
+
+      expect(dropdown._config.display).toEqual('dynamic')
+    })
+
+    it('should return the instance when exists without given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const dropdown = new Dropdown(div, {
+        display: 'dynamic'
+      })
+      expect(Dropdown.getInstance(div)).toEqual(dropdown)
+
+      const dropdown2 = Dropdown.getOrCreateInstance(div, {
+        display: 'static'
+      })
+      expect(dropdown).toBeInstanceOf(Dropdown)
+      expect(dropdown2).toEqual(dropdown)
+
+      expect(dropdown2._config.display).toEqual('dynamic')
     })
   })
 

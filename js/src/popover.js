@@ -6,7 +6,6 @@
  */
 
 import { defineJQueryPlugin } from './util/index'
-import Data from './dom/data'
 import SelectorEngine from './dom/selector-engine'
 import Tooltip from './tooltip'
 
@@ -30,7 +29,7 @@ const Default = {
   content: '',
   template: '<div class="popover" role="tooltip">' +
               '<div class="popover-arrow"></div>' +
-                '<h3 class="popover-header"></h3>' +
+              '<h3 class="popover-header"></h3>' +
               '<div class="popover-body"></div>' +
             '</div>'
 }
@@ -90,6 +89,24 @@ class Popover extends Tooltip {
     return this.getTitle() || this._getContent()
   }
 
+  getTipElement() {
+    if (this.tip) {
+      return this.tip
+    }
+
+    this.tip = super.getTipElement()
+
+    if (!this.getTitle()) {
+      SelectorEngine.findOne(SELECTOR_TITLE, this.tip).remove()
+    }
+
+    if (!this._getContent()) {
+      SelectorEngine.findOne(SELECTOR_CONTENT, this.tip).remove()
+    }
+
+    return this.tip
+  }
+
   setContent() {
     const tip = this.getTipElement()
 
@@ -128,17 +145,7 @@ class Popover extends Tooltip {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      let data = Data.get(this, DATA_KEY)
-      const _config = typeof config === 'object' ? config : null
-
-      if (!data && /dispose|hide/.test(config)) {
-        return
-      }
-
-      if (!data) {
-        data = new Popover(this, _config)
-        Data.set(this, DATA_KEY, data)
-      }
+      const data = Popover.getOrCreateInstance(this, config)
 
       if (typeof config === 'string') {
         if (typeof data[config] === 'undefined') {

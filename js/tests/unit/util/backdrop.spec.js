@@ -127,6 +127,27 @@ describe('Backdrop', () => {
         })
       })
     })
+
+    it('should not error if the backdrop no longer has a parent', done => {
+      fixtureEl.innerHTML = '<div id="wrapper"></div>'
+
+      const wrapper = fixtureEl.querySelector('#wrapper')
+      const instance = new Backdrop({
+        isVisible: true,
+        isAnimated: true,
+        rootElement: wrapper
+      })
+
+      const getElements = () => document.querySelectorAll(CLASS_BACKDROP)
+
+      instance.show(() => {
+        wrapper.parentNode.removeChild(wrapper)
+        instance.hide(() => {
+          expect(getElements().length).toEqual(0)
+          done()
+        })
+      })
+    })
   })
 
   describe('click callback', () => {
@@ -222,10 +243,10 @@ describe('Backdrop', () => {
       })
     })
 
-    it('Should default parent element to "document.body" when config value is null', done => {
+    it('Should find the rootElement if passed as a string', done => {
       const instance = new Backdrop({
         isVisible: true,
-        rootElement: null
+        rootElement: 'body'
       })
       const getElement = () => document.querySelector(CLASS_BACKDROP)
       instance.show(() => {

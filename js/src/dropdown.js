@@ -16,9 +16,9 @@ import {
   isVisible,
   isRTL,
   noop,
+  getNextActiveElement,
   typeCheckConfig
 } from './util/index'
-import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
@@ -353,40 +353,22 @@ class Dropdown extends BaseComponent {
     }
   }
 
-  _selectMenuItem(event) {
+  _selectMenuItem({ key, target }) {
     const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu).filter(isVisible)
 
     if (!items.length) {
       return
     }
 
-    let index = items.indexOf(event.target)
-
-    // Up
-    if (event.key === ARROW_UP_KEY && index > 0) {
-      index--
-    }
-
-    // Down
-    if (event.key === ARROW_DOWN_KEY && index < items.length - 1) {
-      index++
-    }
-
-    // index is -1 if the first keydown is an ArrowUp
-    index = index === -1 ? 0 : index
-
-    items[index].focus()
+    // if target isn't included in items (e.g. when expanding the dropdown)
+    // allow cycling to get the last item in case key equals ARROW_UP_KEY
+    getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target)).focus()
   }
 
   // Static
 
   static dropdownInterface(element, config) {
-    let data = Data.get(element, DATA_KEY)
-    const _config = typeof config === 'object' ? config : null
-
-    if (!data) {
-      data = new Dropdown(element, _config)
-    }
+    const data = Dropdown.getOrCreateInstance(element, config)
 
     if (typeof config === 'string') {
       if (typeof data[config] === 'undefined') {
@@ -411,7 +393,7 @@ class Dropdown extends BaseComponent {
     const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
 
     for (let i = 0, len = toggles.length; i < len; i++) {
-      const context = Data.get(toggles[i], DATA_KEY)
+      const context = Dropdown.getInstance(toggles[i])
       if (!context || context._config.autoClose === false) {
         continue
       }
@@ -490,17 +472,18 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    if (!isActive && (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY)) {
-      getToggleButton().click()
+    if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY) {
+      if (!isActive) {
+        getToggleButton().click()
+      }
+
+      Dropdown.getInstance(getToggleButton())._selectMenuItem(event)
       return
     }
 
     if (!isActive || event.key === SPACE_KEY) {
       Dropdown.clearMenus()
-      return
     }
-
-    Dropdown.getInstance(getToggleButton())._selectMenuItem(event)
   }
 }
 

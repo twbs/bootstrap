@@ -7,9 +7,7 @@
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
   getElementFromSelector,
-  getTransitionDurationFromElement,
   isRTL,
   isVisible,
   reflow,
@@ -108,19 +106,19 @@ class Modal extends BaseComponent {
       return
     }
 
-    if (this._isAnimated()) {
-      this._isTransitioning = true
-    }
-
     const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
       relatedTarget
     })
 
-    if (this._isShown || showEvent.defaultPrevented) {
+    if (showEvent.defaultPrevented) {
       return
     }
 
     this._isShown = true
+
+    if (this._isAnimated()) {
+      this._isTransitioning = true
+    }
 
     scrollBarHide()
 
@@ -145,7 +143,7 @@ class Modal extends BaseComponent {
   }
 
   hide(event) {
-    if (event) {
+    if (event && ['A', 'AREA'].includes(event.target.tagName)) {
       event.preventDefault()
     }
 
@@ -211,7 +209,7 @@ class Modal extends BaseComponent {
     config = {
       ...Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...config
+      ...(typeof config === 'object' ? config : {})
     }
     typeCheckConfig(NAME, config, DefaultType)
     return config
@@ -339,25 +337,28 @@ class Modal extends BaseComponent {
       return
     }
 
-    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
+    const { classList, scrollHeight, style } = this._element
+    const isModalOverflowing = scrollHeight > document.documentElement.clientHeight
 
-    if (!isModalOverflowing) {
-      this._element.style.overflowY = 'hidden'
+    // return if the following background transition hasn't yet completed
+    if ((!isModalOverflowing && style.overflowY === 'hidden') || classList.contains(CLASS_NAME_STATIC)) {
+      return
     }
 
-    this._element.classList.add(CLASS_NAME_STATIC)
-    const modalTransitionDuration = getTransitionDurationFromElement(this._dialog)
-    EventHandler.off(this._element, 'transitionend')
-    EventHandler.one(this._element, 'transitionend', () => {
-      this._element.classList.remove(CLASS_NAME_STATIC)
+    if (!isModalOverflowing) {
+      style.overflowY = 'hidden'
+    }
+
+    classList.add(CLASS_NAME_STATIC)
+    this._queueCallback(() => {
+      classList.remove(CLASS_NAME_STATIC)
       if (!isModalOverflowing) {
-        EventHandler.one(this._element, 'transitionend', () => {
-          this._element.style.overflowY = ''
-        })
-        emulateTransitionEnd(this._element, modalTransitionDuration)
+        this._queueCallback(() => {
+          style.overflowY = ''
+        }, this._dialog)
       }
-    })
-    emulateTransitionEnd(this._element, modalTransitionDuration)
+    }, this._dialog)
+
     this._element.focus()
   }
 
@@ -388,7 +389,7 @@ class Modal extends BaseComponent {
 
   static jQueryInterface(config, relatedTarget) {
     return this.each(function () {
-      const data = Modal.getInstance(this) || new Modal(this, typeof config === 'object' ? config : {})
+      const data = Modal.getOrCreateInstance(this, config)
 
       if (typeof config !== 'string') {
         return
@@ -429,7 +430,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     })
   })
 
-  const data = Modal.getInstance(target) || new Modal(target)
+  const data = Modal.getOrCreateInstance(target)
 
   data.toggle(this)
 })
