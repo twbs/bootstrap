@@ -539,6 +539,29 @@ describe('Modal', () => {
       modal.show()
     })
 
+    it('should not queue multiple callbacks when clicking outside of modal-content and backdrop = static', done => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog" style="transition-duration: 50ms;"></div></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl, {
+        backdrop: 'static'
+      })
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        const spy = spyOn(modal, '_queueCallback').and.callThrough()
+
+        modalEl.click()
+        modalEl.click()
+
+        setTimeout(() => {
+          expect(spy).toHaveBeenCalledTimes(1)
+          done()
+        }, 20)
+      })
+
+      modal.show()
+    })
+
     it('should enforce focus', done => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
