@@ -7,9 +7,7 @@
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
   getElementFromSelector,
-  getTransitionDurationFromElement,
   isRTL,
   isVisible,
   reflow,
@@ -339,25 +337,28 @@ class Modal extends BaseComponent {
       return
     }
 
-    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
+    const { classList, scrollHeight, style } = this._element
+    const isModalOverflowing = scrollHeight > document.documentElement.clientHeight
 
-    if (!isModalOverflowing) {
-      this._element.style.overflowY = 'hidden'
+    // return if the following background transition hasn't yet completed
+    if ((!isModalOverflowing && style.overflowY === 'hidden') || classList.contains(CLASS_NAME_STATIC)) {
+      return
     }
 
-    this._element.classList.add(CLASS_NAME_STATIC)
-    const modalTransitionDuration = getTransitionDurationFromElement(this._dialog)
-    EventHandler.off(this._element, 'transitionend')
-    EventHandler.one(this._element, 'transitionend', () => {
-      this._element.classList.remove(CLASS_NAME_STATIC)
+    if (!isModalOverflowing) {
+      style.overflowY = 'hidden'
+    }
+
+    classList.add(CLASS_NAME_STATIC)
+    this._queueCallback(() => {
+      classList.remove(CLASS_NAME_STATIC)
       if (!isModalOverflowing) {
-        EventHandler.one(this._element, 'transitionend', () => {
-          this._element.style.overflowY = ''
-        })
-        emulateTransitionEnd(this._element, modalTransitionDuration)
+        this._queueCallback(() => {
+          style.overflowY = ''
+        }, this._dialog)
       }
-    })
-    emulateTransitionEnd(this._element, modalTransitionDuration)
+    }, this._dialog)
+
     this._element.focus()
   }
 

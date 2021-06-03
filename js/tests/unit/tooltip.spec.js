@@ -446,7 +446,7 @@ describe('Tooltip', () => {
       const tooltip = new Tooltip(tooltipEl)
       document.documentElement.ontouchstart = noop
 
-      spyOn(EventHandler, 'on')
+      spyOn(EventHandler, 'on').and.callThrough()
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
         expect(document.querySelector('.tooltip')).not.toBeNull()
