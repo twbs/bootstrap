@@ -9,7 +9,6 @@ import {
   defineJQueryPlugin,
   getElementFromSelector
 } from './util/index'
-import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import BaseComponent from './base-component'
 
@@ -87,11 +86,7 @@ class Alert extends BaseComponent {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      let data = Data.get(this, DATA_KEY)
-
-      if (!data) {
-        data = new Alert(this)
-      }
+      const data = Alert.getOrCreateInstance(this)
 
       if (config === 'close') {
         data[config](this)

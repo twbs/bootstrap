@@ -15,7 +15,6 @@ import {
   triggerTransitionEnd,
   typeCheckConfig
 } from './util/index'
-import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
@@ -219,7 +218,8 @@ class Carousel extends BaseComponent {
   _getConfig(config) {
     config = {
       ...Default,
-      ...config
+      ...Manipulator.getDataAttributes(this._element),
+      ...(typeof config === 'object' ? config : {})
     }
     typeCheckConfig(NAME, config, DefaultType)
     return config
@@ -496,24 +496,10 @@ class Carousel extends BaseComponent {
   // Static
 
   static carouselInterface(element, config) {
-    let data = Data.get(element, DATA_KEY)
-    let _config = {
-      ...Default,
-      ...Manipulator.getDataAttributes(element)
-    }
+    const data = Carousel.getOrCreateInstance(element, config)
 
-    if (typeof config === 'object') {
-      _config = {
-        ..._config,
-        ...config
-      }
-    }
-
+    const { _config } = data
     const action = typeof config === 'string' ? config : _config.slide
-
-    if (!data) {
-      data = new Carousel(element, _config)
-    }
 
     if (typeof config === 'number') {
       data.to(config)
@@ -555,7 +541,7 @@ class Carousel extends BaseComponent {
     Carousel.carouselInterface(target, config)
 
     if (slideIndex) {
-      Data.get(target, DATA_KEY).to(slideIndex)
+      Carousel.getInstance(target).to(slideIndex)
     }
 
     event.preventDefault()
@@ -574,7 +560,7 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
 
   for (let i = 0, len = carousels.length; i < len; i++) {
-    Carousel.carouselInterface(carousels[i], Data.get(carousels[i], DATA_KEY))
+    Carousel.carouselInterface(carousels[i], Carousel.getInstance(carousels[i]))
   }
 })
 

@@ -1058,4 +1058,58 @@ describe('Modal', () => {
       expect(Modal.getInstance(div)).toBeNull()
     })
   })
+
+  describe('getOrCreateInstance', () => {
+    it('should return modal instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const modal = new Modal(div)
+
+      expect(Modal.getOrCreateInstance(div)).toEqual(modal)
+      expect(Modal.getInstance(div)).toEqual(Modal.getOrCreateInstance(div, {}))
+      expect(Modal.getOrCreateInstance(div)).toBeInstanceOf(Modal)
+    })
+
+    it('should return new instance when there is no modal instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Modal.getInstance(div)).toEqual(null)
+      expect(Modal.getOrCreateInstance(div)).toBeInstanceOf(Modal)
+    })
+
+    it('should return new instance when there is no modal instance with given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Modal.getInstance(div)).toEqual(null)
+      const modal = Modal.getOrCreateInstance(div, {
+        backdrop: true
+      })
+      expect(modal).toBeInstanceOf(Modal)
+
+      expect(modal._config.backdrop).toEqual(true)
+    })
+
+    it('should return the instance when exists without given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const modal = new Modal(div, {
+        backdrop: true
+      })
+      expect(Modal.getInstance(div)).toEqual(modal)
+
+      const modal2 = Modal.getOrCreateInstance(div, {
+        backdrop: false
+      })
+      expect(modal).toBeInstanceOf(Modal)
+      expect(modal2).toEqual(modal)
+
+      expect(modal2._config.backdrop).toEqual(true)
+    })
+  })
 })

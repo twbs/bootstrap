@@ -209,7 +209,7 @@ class Modal extends BaseComponent {
     config = {
       ...Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...config
+      ...(typeof config === 'object' ? config : {})
     }
     typeCheckConfig(NAME, config, DefaultType)
     return config
@@ -389,7 +389,7 @@ class Modal extends BaseComponent {
 
   static jQueryInterface(config, relatedTarget) {
     return this.each(function () {
-      const data = Modal.getInstance(this) || new Modal(this, typeof config === 'object' ? config : {})
+      const data = Modal.getOrCreateInstance(this, config)
 
       if (typeof config !== 'string') {
         return
@@ -430,7 +430,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     })
   })
 
-  const data = Modal.getInstance(target) || new Modal(target)
+  const data = Modal.getOrCreateInstance(target)
 
   data.toggle(this)
 })

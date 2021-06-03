@@ -287,4 +287,58 @@ describe('Popover', () => {
       expect(Popover.getInstance(popoverEl)).toEqual(null)
     })
   })
+
+  describe('getOrCreateInstance', () => {
+    it('should return popover instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const popover = new Popover(div)
+
+      expect(Popover.getOrCreateInstance(div)).toEqual(popover)
+      expect(Popover.getInstance(div)).toEqual(Popover.getOrCreateInstance(div, {}))
+      expect(Popover.getOrCreateInstance(div)).toBeInstanceOf(Popover)
+    })
+
+    it('should return new instance when there is no popover instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Popover.getInstance(div)).toEqual(null)
+      expect(Popover.getOrCreateInstance(div)).toBeInstanceOf(Popover)
+    })
+
+    it('should return new instance when there is no popover instance with given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Popover.getInstance(div)).toEqual(null)
+      const popover = Popover.getOrCreateInstance(div, {
+        placement: 'top'
+      })
+      expect(popover).toBeInstanceOf(Popover)
+
+      expect(popover._config.placement).toEqual('top')
+    })
+
+    it('should return the instance when exists without given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const popover = new Popover(div, {
+        placement: 'top'
+      })
+      expect(Popover.getInstance(div)).toEqual(popover)
+
+      const popover2 = Popover.getOrCreateInstance(div, {
+        placement: 'bottom'
+      })
+      expect(popover).toBeInstanceOf(Popover)
+      expect(popover2).toEqual(popover)
+
+      expect(popover2._config.placement).toEqual('top')
+    })
+  })
 })
