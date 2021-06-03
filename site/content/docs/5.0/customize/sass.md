@@ -126,7 +126,7 @@ $primary: #0074d9;
 $danger: #ff4136;
 ```
 
-Later on, theses variables are set in Bootstrap's `$theme-colors` map:
+Later on, these variables are set in Bootstrap's `$theme-colors` map:
 
 ```scss
 $theme-colors: (
