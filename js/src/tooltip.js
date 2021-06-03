@@ -722,12 +722,7 @@ class Tooltip extends BaseComponent {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      let data = Data.get(this, DATA_KEY)
-      const _config = typeof config === 'object' && config
-
-      if (!data) {
-        data = new Tooltip(this, _config)
-      }
+      const data = Tooltip.getOrCreateInstance(this, config)
 
       if (typeof config === 'string') {
         if (typeof data[config] === 'undefined') {
