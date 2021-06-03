@@ -433,6 +433,28 @@ describe('Tab', () => {
     })
   })
 
+  describe('getOrCreateInstance', () => {
+    it('should return tab instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const tab = new Tab(div)
+
+      expect(Tab.getOrCreateInstance(div)).toEqual(tab)
+      expect(Tab.getInstance(div)).toEqual(Tab.getOrCreateInstance(div, {}))
+      expect(Tab.getOrCreateInstance(div)).toBeInstanceOf(Tab)
+    })
+
+    it('should return new instance when there is no tab instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Tab.getInstance(div)).toEqual(null)
+      expect(Tab.getOrCreateInstance(div)).toBeInstanceOf(Tab)
+    })
+  })
+
   describe('data-api', () => {
     it('should create dynamically a tab', done => {
       fixtureEl.innerHTML = [
