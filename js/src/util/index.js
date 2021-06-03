@@ -201,24 +201,22 @@ const getjQuery = () => {
   return null
 }
 
-const onDOMContentLoaded = (() => {
-  const callbacks = []
+const DOMContentLoadedCallbacks = []
 
-  return callback => {
-    if (document.readyState === 'loading') {
-      // add listener on the first call when the document is in loading state
-      if (!callbacks.length) {
-        document.addEventListener('DOMContentLoaded', () => {
-          callbacks.forEach(callback => callback())
-        })
-      }
-
-      callbacks.push(callback)
-    } else {
-      callback()
+const onDOMContentLoaded = callback => {
+  if (document.readyState === 'loading') {
+    // add listener on the first call when the document is in loading state
+    if (!DOMContentLoadedCallbacks.length) {
+      document.addEventListener('DOMContentLoaded', () => {
+        DOMContentLoadedCallbacks.forEach(callback => callback())
+      })
     }
+
+    DOMContentLoadedCallbacks.push(callback)
+  } else {
+    callback()
   }
-})()
+}
 
 const isRTL = () => document.documentElement.dir === 'rtl'
 
