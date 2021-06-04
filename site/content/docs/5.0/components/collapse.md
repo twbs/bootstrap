@@ -76,7 +76,7 @@ The [accordion component]({{< docsref "/components/accordion" >}}) uses the coll
 {{< example >}}
 <div id="accordion-like-group">
   <div aria-expanded="true" class="collapse show" data-bs-parent="#accordion-like-group" id="accordion-like-group-panel-1" role="tabpanel">
-    <p><strong>This is the first panel in the group.</strong> It is shown by default. When switching to another panel, if that panel specifies `data-bs-parent`, all of the collapsible children of the selector specified in `data-bs-parent` will be collapsed.</p>
+    <p><strong>This is the first panel in the group.</strong> It is shown by default. When switching to another panel, if that panel specifies <code>data-bs-parent</code>, all of the collapsible children of the selector specified in <code>data-bs-parent</code> will be collapsed.</p>
     <button aria-controls="accordion-like-group-panel-2" class="btn btn-primary" data-bs-target="#accordion-like-group-panel-2" data-bs-toggle="collapse">Switch to the second panel</button>
     <button aria-controls="accordion-like-group-panel-3" class="btn btn-primary" data-bs-target="#accordion-like-group-panel-3" data-bs-toggle="collapse">Switch to the third panel</button>
   </div>
