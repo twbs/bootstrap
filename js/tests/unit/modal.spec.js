@@ -203,6 +203,33 @@ describe('Modal', () => {
       modal.show()
     })
 
+    it('should be shown after the first call to show() has been prevented while fading is enabled ', done => {
+      fixtureEl.innerHTML = '<div class="modal fade"><div class="modal-dialog"></div></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      let prevented = false
+      modalEl.addEventListener('show.bs.modal', e => {
+        if (!prevented) {
+          e.preventDefault()
+          prevented = true
+
+          setTimeout(() => {
+            modal.show()
+          })
+        }
+      })
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(prevented).toBeTrue()
+        expect(modal._isAnimated()).toBeTrue()
+        done()
+      })
+
+      modal.show()
+    })
+
     it('should set is transitioning if fade class is present', done => {
       fixtureEl.innerHTML = '<div class="modal fade"><div class="modal-dialog"></div></div>'
 
@@ -210,7 +237,9 @@ describe('Modal', () => {
       const modal = new Modal(modalEl)
 
       modalEl.addEventListener('show.bs.modal', () => {
-        expect(modal._isTransitioning).toEqual(true)
+        setTimeout(() => {
+          expect(modal._isTransitioning).toEqual(true)
+        })
       })
 
       modalEl.addEventListener('shown.bs.modal', () => {
@@ -503,6 +532,29 @@ describe('Modal', () => {
         modalEl.click()
         setTimeout(() => {
           expect(modalEl.clientHeight).toEqual(modalEl.scrollHeight)
+          done()
+        }, 20)
+      })
+
+      modal.show()
+    })
+
+    it('should not queue multiple callbacks when clicking outside of modal-content and backdrop = static', done => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog" style="transition-duration: 50ms;"></div></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl, {
+        backdrop: 'static'
+      })
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        const spy = spyOn(modal, '_queueCallback').and.callThrough()
+
+        modalEl.click()
+        modalEl.click()
+
+        setTimeout(() => {
+          expect(spy).toHaveBeenCalledTimes(1)
           done()
         }, 20)
       })
@@ -1004,6 +1056,60 @@ describe('Modal', () => {
       const div = fixtureEl.querySelector('div')
 
       expect(Modal.getInstance(div)).toBeNull()
+    })
+  })
+
+  describe('getOrCreateInstance', () => {
+    it('should return modal instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const modal = new Modal(div)
+
+      expect(Modal.getOrCreateInstance(div)).toEqual(modal)
+      expect(Modal.getInstance(div)).toEqual(Modal.getOrCreateInstance(div, {}))
+      expect(Modal.getOrCreateInstance(div)).toBeInstanceOf(Modal)
+    })
+
+    it('should return new instance when there is no modal instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Modal.getInstance(div)).toEqual(null)
+      expect(Modal.getOrCreateInstance(div)).toBeInstanceOf(Modal)
+    })
+
+    it('should return new instance when there is no modal instance with given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Modal.getInstance(div)).toEqual(null)
+      const modal = Modal.getOrCreateInstance(div, {
+        backdrop: true
+      })
+      expect(modal).toBeInstanceOf(Modal)
+
+      expect(modal._config.backdrop).toEqual(true)
+    })
+
+    it('should return the instance when exists without given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const modal = new Modal(div, {
+        backdrop: true
+      })
+      expect(Modal.getInstance(div)).toEqual(modal)
+
+      const modal2 = Modal.getOrCreateInstance(div, {
+        backdrop: false
+      })
+      expect(modal).toBeInstanceOf(Modal)
+      expect(modal2).toEqual(modal)
+
+      expect(modal2._config.backdrop).toEqual(true)
     })
   })
 })

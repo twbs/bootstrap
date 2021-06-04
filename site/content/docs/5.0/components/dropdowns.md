@@ -1136,9 +1136,20 @@ var dropdown = new bootstrap.Dropdown(element, {
       </td>
     </tr>
     <tr>
-      <td><code>getInstance</code></td>
       <td>
-        Static method which allows you to get the dropdown instance associated with a DOM element.
+        <code>getInstance</code>
+      </td>
+      <td>
+        Static method which allows you to get the dropdown instance associated to a DOM element, you can use it like this: <code>bootstrap.Dropdown.getInstance(element)</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>getOrCreateInstance</code>
+      </td>
+      <td>
+        Static method which returns a dropdown instance associated to a DOM element or create a new one in case it wasn't initialised.
+        You can use it like this: <code>bootstrap.Dropdown.getOrCreateInstance(element)</code>
       </td>
     </tr>
   </tbody>

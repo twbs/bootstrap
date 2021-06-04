@@ -126,24 +126,6 @@ const getElement = obj => {
   return null
 }
 
-const emulateTransitionEnd = (element, duration) => {
-  let called = false
-  const durationPadding = 5
-  const emulatedDuration = duration + durationPadding
-
-  function listener() {
-    called = true
-    element.removeEventListener(TRANSITION_END, listener)
-  }
-
-  element.addEventListener(TRANSITION_END, listener)
-  setTimeout(() => {
-    if (!called) {
-      triggerTransitionEnd(element)
-    }
-  }, emulatedDuration)
-}
-
 const typeCheckConfig = (componentName, config, configTypes) => {
   Object.keys(configTypes).forEach(property => {
     const expectedTypes = configTypes[property]
@@ -252,6 +234,35 @@ const execute = callback => {
   }
 }
 
+const executeAfterTransition = (callback, transitionElement, waitForTransition = true) => {
+  if (!waitForTransition) {
+    execute(callback)
+    return
+  }
+
+  const durationPadding = 5
+  const emulatedDuration = getTransitionDurationFromElement(transitionElement) + durationPadding
+
+  let called = false
+
+  const handler = ({ target }) => {
+    if (target !== transitionElement) {
+      return
+    }
+
+    called = true
+    transitionElement.removeEventListener(TRANSITION_END, handler)
+    execute(callback)
+  }
+
+  transitionElement.addEventListener(TRANSITION_END, handler)
+  setTimeout(() => {
+    if (!called) {
+      triggerTransitionEnd(transitionElement)
+    }
+  }, emulatedDuration)
+}
+
 /**
  * Return the previous/next element of a list.
  *
@@ -288,7 +299,6 @@ export {
   getTransitionDurationFromElement,
   triggerTransitionEnd,
   isElement,
-  emulateTransitionEnd,
   typeCheckConfig,
   isVisible,
   isDisabled,
@@ -300,5 +310,6 @@ export {
   onDOMContentLoaded,
   isRTL,
   defineJQueryPlugin,
-  execute
+  execute,
+  executeAfterTransition
 }
