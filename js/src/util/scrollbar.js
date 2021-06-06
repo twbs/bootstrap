@@ -26,9 +26,9 @@ class ScrollBarHelper {
   hide() {
     const width = this.getWidth()
     this._disableOverFlow()
-    // give padding to element to balances the hidden scrollbar width
+    // give padding to element to balance the hidden scrollbar width
     this._setElementAttributes(this._element, 'paddingRight', calculatedValue => calculatedValue + width)
-    // trick: We adjust positive paddingRight and negative marginRight to sticky-top elements, to keep shown fullwidth
+    // trick: We adjust positive paddingRight and negative marginRight to sticky-top elements to keep showing fullwidth
     this._setElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight', calculatedValue => calculatedValue + width)
     this._setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - width)
   }
