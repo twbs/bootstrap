@@ -583,7 +583,7 @@ Trigger dropdown menus at the left of the elements by adding `.dropstart` to the
 
 ## Menu items
 
-You can use `<a>`s or `<button>` elements as dropdown items.
+You can use `<a>` or `<button>` elements as dropdown items.
 
 {{< example >}}
 <div class="dropdown">
