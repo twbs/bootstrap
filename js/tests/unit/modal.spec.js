@@ -1,5 +1,6 @@
 import Modal from '../../src/modal'
 import EventHandler from '../../src/dom/event-handler'
+import ScrollBarHelper from '../../src/util/scrollbar'
 
 /** Test helpers */
 import { clearBodyAndDocument, clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
@@ -58,25 +59,23 @@ describe('Modal', () => {
   })
 
   describe('toggle', () => {
-    it('should toggle a modal', done => {
-      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+    it('should call ScrollBarHelper to handle scrollBar on body', done => {
+      fixtureEl.innerHTML = [
+        '<div class="modal"><div class="modal-dialog"></div></div>'
+      ].join('')
 
-      const initialOverFlow = document.body.style.overflow
+      spyOn(ScrollBarHelper.prototype, 'hide').and.callThrough()
+      spyOn(ScrollBarHelper.prototype, 'reset').and.callThrough()
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
-      const originalPadding = '10px'
-
-      document.body.style.paddingRight = originalPadding
 
       modalEl.addEventListener('shown.bs.modal', () => {
-        expect(document.body.getAttribute('data-bs-padding-right')).toEqual(originalPadding, 'original body padding should be stored in data-bs-padding-right')
-        expect(document.body.style.overflow).toEqual('hidden')
+        expect(ScrollBarHelper.prototype.hide).toHaveBeenCalled()
         modal.toggle()
       })
 
       modalEl.addEventListener('hidden.bs.modal', () => {
-        expect(document.body.getAttribute('data-bs-padding-right')).toBeNull()
-        expect(document.body.style.overflow).toEqual(initialOverFlow)
+        expect(ScrollBarHelper.prototype.reset).toHaveBeenCalled()
         done()
       })
 
