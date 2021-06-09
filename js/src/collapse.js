@@ -259,6 +259,7 @@ class Collapse extends BaseComponent {
   _getConfig(config) {
     config = {
       ...Default,
+      ...Manipulator.getDataAttributes(this._element),
       ...config
     }
     config.toggle = Boolean(config.toggle) // Coerce string values
@@ -311,20 +312,12 @@ class Collapse extends BaseComponent {
   // Static
 
   static collapseInterface(element, config) {
-    let data = Collapse.getInstance(element)
-    const _config = {
-      ...Default,
-      ...Manipulator.getDataAttributes(element),
-      ...(typeof config === 'object' && config ? config : {})
-    }
-
-    if (!data && _config.toggle && typeof config === 'string' && /show|hide/.test(config)) {
+    const _config = {}
+    if (typeof config === 'string' && /show|hide/.test(config)) {
       _config.toggle = false
     }
 
-    if (!data) {
-      data = new Collapse(element, _config)
-    }
+    const data = Collapse.getOrCreateInstance(element, _config)
 
     if (typeof config === 'string') {
       if (typeof data[config] === 'undefined') {
