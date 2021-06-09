@@ -322,12 +322,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   const selectorElements = SelectorEngine.find(selector)
 
   selectorElements.forEach(element => {
-    const data = Collapse.getInstance(element)
-    if (data) {
-      data.toggle()
-    } else {
-      Collapse.getOrCreateInstance(element)
-    }
+    Collapse.getOrCreateInstance(element, { toggle: false }).toggle()
   })
 })
 
