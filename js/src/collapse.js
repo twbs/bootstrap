@@ -125,7 +125,7 @@ class Collapse extends BaseComponent {
       return
     }
 
-    let actives
+    let actives = []
     let activesData
 
     if (this._parent) {
@@ -137,14 +137,10 @@ class Collapse extends BaseComponent {
 
           return elem.classList.contains(CLASS_NAME_COLLAPSE)
         })
-
-      if (actives.length === 0) {
-        actives = null
-      }
     }
 
     const container = SelectorEngine.findOne(this._selector)
-    if (actives) {
+    if (actives.length) {
       const tempActiveData = actives.find(elem => container !== elem)
       activesData = tempActiveData ? Collapse.getInstance(tempActiveData) : null
 
@@ -158,17 +154,15 @@ class Collapse extends BaseComponent {
       return
     }
 
-    if (actives) {
-      actives.forEach(elemActive => {
-        if (container !== elemActive) {
-          Collapse.collapseInterface(elemActive, 'hide')
-        }
+    actives.forEach(elemActive => {
+      if (container !== elemActive) {
+        Collapse.collapseInterface(elemActive, 'hide')
+      }
 
-        if (!activesData) {
-          Data.set(elemActive, DATA_KEY, null)
-        }
-      })
-    }
+      if (!activesData) {
+        Data.set(elemActive, DATA_KEY, null)
+      }
+    })
 
     const dimension = this._getDimension()
 
