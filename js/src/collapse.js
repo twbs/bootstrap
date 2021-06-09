@@ -347,26 +347,16 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     event.preventDefault()
   }
 
-  const triggerData = Manipulator.getDataAttributes(this)
   const selector = getSelectorFromElement(this)
   const selectorElements = SelectorEngine.find(selector)
 
   selectorElements.forEach(element => {
     const data = Collapse.getInstance(element)
-    let config
     if (data) {
-      // update parent attribute
-      if (data._parent === null && typeof triggerData.parent === 'string') {
-        data._config.parent = triggerData.parent
-        data._parent = data._getParent()
-      }
-
-      config = 'toggle'
+      data.toggle()
     } else {
-      config = triggerData
+      Collapse.getOrCreateInstance(element)
     }
-
-    Collapse.collapseInterface(element, config)
   })
 })
 
