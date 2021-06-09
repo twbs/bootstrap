@@ -92,7 +92,7 @@ class Collapse extends BaseComponent {
     this._parent = this._config.parent ? this._getParent() : null
 
     if (!this._config.parent) {
-      this._addAriaAndCollapsedClass(this._element, this._triggerArray)
+      this._addAriaAndCollapsedClass(this._triggerArray, this._isShown())
     }
 
     if (this._config.toggle) {
@@ -177,13 +177,7 @@ class Collapse extends BaseComponent {
 
     this._element.style[dimension] = 0
 
-    if (this._triggerArray.length) {
-      this._triggerArray.forEach(element => {
-        element.classList.remove(CLASS_NAME_COLLAPSED)
-        element.setAttribute('aria-expanded', true)
-      })
-    }
-
+    this._addAriaAndCollapsedClass(this._triggerArray, true)
     this._isTransitioning = true
 
     const complete = () => {
@@ -224,15 +218,12 @@ class Collapse extends BaseComponent {
     this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
 
     const triggerArrayLength = this._triggerArray.length
-    if (triggerArrayLength > 0) {
-      for (let i = 0; i < triggerArrayLength; i++) {
-        const trigger = this._triggerArray[i]
-        const elem = getElementFromSelector(trigger)
+    for (let i = 0; i < triggerArrayLength; i++) {
+      const trigger = this._triggerArray[i]
+      const elem = getElementFromSelector(trigger)
 
-        if (elem && !this._isShown(elem)) {
-          trigger.classList.add(CLASS_NAME_COLLAPSED)
-          trigger.setAttribute('aria-expanded', false)
-        }
+      if (elem && !this._isShown(elem)) {
+        this._addAriaAndCollapsedClass([trigger], false)
       }
     }
 
@@ -282,21 +273,18 @@ class Collapse extends BaseComponent {
       .forEach(element => {
         const selected = getElementFromSelector(element)
 
-        this._addAriaAndCollapsedClass(
-          selected,
-          [element]
-        )
+        if (selected) {
+          this._addAriaAndCollapsedClass([element], this._isShown(selected))
+        }
       })
 
     return parent
   }
 
-  _addAriaAndCollapsedClass(element, triggerArray) {
-    if (!element || !triggerArray.length) {
+  _addAriaAndCollapsedClass(triggerArray, isOpen) {
+    if (!triggerArray.length) {
       return
     }
-
-    const isOpen = this._isShown(element)
 
     triggerArray.forEach(elem => {
       if (isOpen) {
