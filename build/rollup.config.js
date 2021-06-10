@@ -10,7 +10,7 @@ const BUNDLE = process.env.BUNDLE === 'true'
 const ESM = process.env.ESM === 'true'
 
 let fileDest = `bootstrap${ESM ? '.esm' : ''}`
-const external = ['@popperjs/core']
+let external = ['@popperjs/core']
 const plugins = [
   babel({
     // Only transpile our source code
@@ -19,15 +19,15 @@ const plugins = [
     babelHelpers: 'bundled'
   })
 ]
-const globals = {
+let globals = {
   '@popperjs/core': 'Popper'
 }
 
 if (BUNDLE) {
   fileDest += '.bundle'
   // Remove last entry in external array to bundle Popper
-  external.pop()
-  delete globals['@popperjs/core']
+  external = []
+  globals = {}
   plugins.push(
     replace({
       'process.env.NODE_ENV': '"production"',
@@ -38,7 +38,7 @@ if (BUNDLE) {
 }
 
 const rollupConfig = {
-  input: path.resolve(__dirname, `../js/index.${ESM ? 'esm' : 'umd'}.js`),
+  input: path.resolve(__dirname, '../js/index.js'),
   output: {
     banner,
     file: path.resolve(__dirname, `../dist/js/${fileDest}.js`),
