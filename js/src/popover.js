@@ -51,9 +51,6 @@ const Event = {
   MOUSELEAVE: `mouseleave${EVENT_KEY}`
 }
 
-const CLASS_NAME_FADE = 'fade'
-const CLASS_NAME_SHOW = 'show'
-
 const SELECTOR_TITLE = '.popover-header'
 const SELECTOR_CONTENT = '.popover-body'
 
@@ -117,8 +114,6 @@ class Popover extends Tooltip {
     }
 
     this.setElementContent(SelectorEngine.findOne(SELECTOR_CONTENT, tip), content)
-
-    tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
   }
 
   // Private

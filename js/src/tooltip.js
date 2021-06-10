@@ -367,7 +367,10 @@ class Tooltip extends BaseComponent {
     const element = document.createElement('div')
     element.innerHTML = this._config.template
 
-    this.tip = element.children[0]
+    const tip = element.children[0]
+    tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
+
+    this.tip = tip
     return this.tip
   }
 
