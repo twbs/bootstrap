@@ -152,10 +152,11 @@ class Modal extends BaseComponent {
     if (event) {
       event.preventDefault()
     }
-
-    if (!this._isShown || this._isTransitioning) {
-      return
-    }
+    
+    // This block is unnecessary and prevents hiding Modal with "fade" class until animation is finished.
+    //if (!this._isShown || this._isTransitioning) {
+    //  return
+    //}
 
     const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE)
 
