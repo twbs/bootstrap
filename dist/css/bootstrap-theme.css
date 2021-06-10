@@ -1527,8 +1527,6 @@ fieldset[disabled] .btn-inverse.active {
 }
 .apim-nav-tabs > li {
   float: none;
-  padding-right: 2px;
-  padding-left: 2px;
   overflow-x: hidden;
   overflow-y: hidden;
   text-overflow: ellipsis;
@@ -1536,21 +1534,24 @@ fieldset[disabled] .btn-inverse.active {
 }
 .apim-nav-tabs > li > a {
   height: 39px;
-  margin-bottom: -2px;
+  margin-bottom: -1px;
   font-size: 14px;
   line-height: 1.42857143;
   color: #fff;
   text-align: center;
   background-color: #27283c;
   border: 0 solid transparent;
-  border-top: 3px solid #fff;
+  border-top: 1px solid #fff;
+  border-bottom: 3px solid #00b1ff;
+  border-left: 1px solid #fff;
   border-radius: 0;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
 }
 .apim-nav-tabs > li > a:hover,
 .apim-nav-tabs > li > a:focus {
   color: #fff;
   background-color: #121421;
-  border-bottom: 1px solid transparent;
 }
 .apim-nav-tabs > li.active > a,
 .apim-nav-tabs > li.active > a:hover,
@@ -1559,6 +1560,22 @@ fieldset[disabled] .btn-inverse.active {
   cursor: default;
   background-color: #1b1d30;
   border-top: 3px solid #00b1ff;
+  border-right: 3px solid #00b1ff;
+  border-bottom: 1px solid transparent;
+  border-left: 3px solid #00b1ff;
+}
+.apim-nav-tabs > li.active + :not(.active) > a,
+.apim-nav-tabs > li.active + :not(.active) > a:hover,
+.apim-nav-tabs > li.active + :not(.active) > a:focus {
+  border-left: 0 solid #fff;
+}
+.apim-nav-tabs > li:last-child > a {
+  border-right: 1px solid #fff;
+}
+.apim-nav-tabs > li:last-child.active > a,
+.apim-nav-tabs > li:last-child.active > a:hover,
+.apim-nav-tabs > li:last-child.active > a:focus {
+  border-right: 3px solid #00b1ff;
 }
 @media (min-width: 768px) {
   .apim-nav-tabs > li {
