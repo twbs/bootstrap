@@ -6,7 +6,6 @@
  */
 
 import { defineJQueryPlugin } from './util/index'
-import SelectorEngine from './dom/selector-engine'
 import Tooltip from './tooltip'
 
 /**
@@ -85,35 +84,11 @@ class Popover extends Tooltip {
     return this.getTitle() || this._getContent()
   }
 
-  getTipElement() {
-    if (this.tip) {
-      return this.tip
-    }
-
-    this.tip = super.getTipElement()
-
-    if (!this.getTitle()) {
-      SelectorEngine.findOne(SELECTOR_TITLE, this.tip).remove()
-    }
-
-    if (!this._getContent()) {
-      SelectorEngine.findOne(SELECTOR_CONTENT, this.tip).remove()
-    }
-
-    return this.tip
-  }
-
   setContent() {
     const tip = this.getTipElement()
 
-    // we use append for html objects to maintain js events
-    this.setElementContent(SelectorEngine.findOne(SELECTOR_TITLE, tip), this.getTitle())
-    let content = this._getContent()
-    if (typeof content === 'function') {
-      content = content.call(this._element)
-    }
-
-    this.setElementContent(SelectorEngine.findOne(SELECTOR_CONTENT, tip), content)
+    this._sanitizeAndSetContent(tip, this.getTitle(), SELECTOR_TITLE)
+    this._sanitizeAndSetContent(tip, this._getContent(), SELECTOR_CONTENT)
   }
 
   // Private
