@@ -376,8 +376,18 @@ class Tooltip extends BaseComponent {
 
   setContent() {
     const tip = this.getTipElement()
-    this.setElementContent(SelectorEngine.findOne(SELECTOR_TOOLTIP_INNER, tip), this.getTitle())
-    tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
+    this._sanitizeAndSetContent(tip, this.getTitle(), SELECTOR_TOOLTIP_INNER)
+  }
+
+  _sanitizeAndSetContent(template, content, selector) {
+    const templateElement = SelectorEngine.findOne(selector, template)
+    if (!content) {
+      templateElement.remove()
+      return
+    }
+
+    // we use append for html objects to maintain js events
+    this.setElementContent(templateElement, content)
   }
 
   setElementContent(element, content) {
