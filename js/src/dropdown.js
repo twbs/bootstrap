@@ -11,12 +11,12 @@ import {
   defineJQueryPlugin,
   getElement,
   getElementFromSelector,
+  getNextActiveElement,
   isDisabled,
   isElement,
-  isVisible,
   isRTL,
+  isVisible,
   noop,
-  getNextActiveElement,
   typeCheckConfig
 } from './util/index'
 import EventHandler from './dom/event-handler'
@@ -128,7 +128,7 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    const isActive = this._element.classList.contains(CLASS_NAME_SHOW)
+    const isActive = this._isShown()
 
     if (isActive) {
       this.hide()
@@ -139,7 +139,7 @@ class Dropdown extends BaseComponent {
   }
 
   show() {
-    if (isDisabled(this._element) || this._menu.classList.contains(CLASS_NAME_SHOW)) {
+    if (isDisabled(this._element) || this._isShown(this._menu)) {
       return
     }
 
@@ -201,7 +201,7 @@ class Dropdown extends BaseComponent {
   }
 
   hide() {
-    if (isDisabled(this._element) || !this._menu.classList.contains(CLASS_NAME_SHOW)) {
+    if (isDisabled(this._element) || !this._isShown(this._menu)) {
       return
     }
 
@@ -277,6 +277,10 @@ class Dropdown extends BaseComponent {
     }
 
     return config
+  }
+
+  _isShown(element = this._element) {
+    return element.classList.contains(CLASS_NAME_SHOW)
   }
 
   _getMenuElement() {
@@ -398,7 +402,7 @@ class Dropdown extends BaseComponent {
         continue
       }
 
-      if (!context._element.classList.contains(CLASS_NAME_SHOW)) {
+      if (!context._isShown()) {
         continue
       }
 
