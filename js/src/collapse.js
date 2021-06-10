@@ -147,7 +147,7 @@ class Collapse extends BaseComponent {
 
     actives.forEach(elemActive => {
       if (container !== elemActive) {
-        Collapse.collapseInterface(elemActive, 'hide')
+        Collapse.getOrCreateInstance(elemActive, { toggle: false }).hide()
       }
 
       if (!activesData) {
@@ -282,26 +282,22 @@ class Collapse extends BaseComponent {
 
   // Static
 
-  static collapseInterface(element, config) {
-    const _config = {}
-    if (typeof config === 'string' && /show|hide/.test(config)) {
-      _config.toggle = false
-    }
-
-    const data = Collapse.getOrCreateInstance(element, _config)
-
-    if (typeof config === 'string') {
-      if (typeof data[config] === 'undefined') {
-        throw new TypeError(`No method named "${config}"`)
-      }
-
-      data[config]()
-    }
-  }
-
   static jQueryInterface(config) {
     return this.each(function () {
-      Collapse.collapseInterface(this, config)
+      const _config = {}
+      if (typeof config === 'string' && /show|hide/.test(config)) {
+        _config.toggle = false
+      }
+
+      const data = Collapse.getOrCreateInstance(this, _config)
+
+      if (typeof config === 'string') {
+        if (typeof data[config] === 'undefined') {
+          throw new TypeError(`No method named "${config}"`)
+        }
+
+        data[config]()
+      }
     })
   }
 }
