@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Utilities v5.0.0-beta2 (https://getbootstrap.com/)
+ * Bootstrap Utilities v5.0.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
@@ -454,10 +454,6 @@
 
 .border-white {
   border-color: #fff !important;
-}
-
-.border-0 {
-  border-width: 0 !important;
 }
 
 .border-1 {
@@ -1130,6 +1126,10 @@
   padding-right: 3rem !important;
 }
 
+.font-monospace {
+  font-family: var(--bs-font-monospace) !important;
+}
+
 .fs-1 {
   font-size: calc(1.375rem + 1.5vw) !important;
 }
@@ -1182,16 +1182,20 @@
   font-weight: bolder !important;
 }
 
-.text-lowercase {
-  text-transform: lowercase !important;
+.lh-1 {
+  line-height: 1 !important;
 }
 
-.text-uppercase {
-  text-transform: uppercase !important;
+.lh-sm {
+  line-height: 1.25 !important;
 }
 
-.text-capitalize {
-  text-transform: capitalize !important;
+.lh-base {
+  line-height: 1.5 !important;
+}
+
+.lh-lg {
+  line-height: 2 !important;
 }
 
 .text-start {
@@ -1206,6 +1210,37 @@
   text-align: center !important;
 }
 
+.text-decoration-none {
+  text-decoration: none !important;
+}
+
+.text-decoration-underline {
+  text-decoration: underline !important;
+}
+
+.text-decoration-line-through {
+  text-decoration: line-through !important;
+}
+
+.text-lowercase {
+  text-transform: lowercase !important;
+}
+
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+
+.text-capitalize {
+  text-transform: capitalize !important;
+}
+
+.text-wrap {
+  white-space: normal !important;
+}
+
+.text-nowrap {
+  white-space: nowrap !important;
+}
 .text-primary {
   color: #0d6efd !important;
 }
@@ -1262,22 +1297,6 @@
   color: inherit !important;
 }
 
-.lh-1 {
-  line-height: 1 !important;
-}
-
-.lh-sm {
-  line-height: 1.25 !important;
-}
-
-.lh-base {
-  line-height: 1.5 !important;
-}
-
-.lh-lg {
-  line-height: 2 !important;
-}
-
 .bg-primary {
   background-color: #0d6efd !important;
 }
@@ -1324,29 +1343,6 @@
 
 .bg-gradient {
   background-image: var(--bs-gradient) !important;
-}
-
-.text-wrap {
-  white-space: normal !important;
-}
-
-.text-nowrap {
-  white-space: nowrap !important;
-}
-
-.text-decoration-none {
-  text-decoration: none !important;
-}
-
-.text-decoration-underline {
-  text-decoration: underline !important;
-}
-
-.text-decoration-line-through {
-  text-decoration: line-through !important;
-}
-.font-monospace {
-  font-family: var(--bs-font-monospace) !important;
 }
 
 .user-select-all {

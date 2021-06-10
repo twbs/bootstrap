@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): dom/event-handler.js
+ * Bootstrap (v5.0.1): dom/event-handler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -22,6 +22,7 @@ const customEvents = {
   mouseenter: 'mouseover',
   mouseleave: 'mouseout'
 }
+const customEventsRegex = /^(mouseenter|mouseleave)/i
 const nativeEvents = new Set([
   'click',
   'dblclick',
@@ -113,7 +114,7 @@ function bootstrapDelegationHandler(element, selector, fn) {
 
           if (handler.oneOff) {
             // eslint-disable-next-line unicorn/consistent-destructuring
-            EventHandler.off(element, event.type, fn)
+            EventHandler.off(element, event.type, selector, fn)
           }
 
           return fn.apply(target, [event])
@@ -144,14 +145,7 @@ function normalizeParams(originalTypeEvent, handler, delegationFn) {
   const delegation = typeof handler === 'string'
   const originalHandler = delegation ? delegationFn : handler
 
-  // allow to get the native events from namespaced events ('click.bs.button' --> 'click')
-  let typeEvent = originalTypeEvent.replace(stripNameRegex, '')
-  const custom = customEvents[typeEvent]
-
-  if (custom) {
-    typeEvent = custom
-  }
-
+  let typeEvent = getTypeEvent(originalTypeEvent)
   const isNative = nativeEvents.has(typeEvent)
 
   if (!isNative) {
@@ -169,6 +163,24 @@ function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
   if (!handler) {
     handler = delegationFn
     delegationFn = null
+  }
+
+  // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM position
+  // this prevents the handler from being dispatched the same way as mouseover or mouseout does
+  if (customEventsRegex.test(originalTypeEvent)) {
+    const wrapFn = fn => {
+      return function (event) {
+        if (!event.relatedTarget || (event.relatedTarget !== event.delegateTarget && !event.delegateTarget.contains(event.relatedTarget))) {
+          return fn.call(this, event)
+        }
+      }
+    }
+
+    if (delegationFn) {
+      delegationFn = wrapFn(delegationFn)
+    } else {
+      handler = wrapFn(handler)
+    }
   }
 
   const [delegation, originalHandler, typeEvent] = normalizeParams(originalTypeEvent, handler, delegationFn)
@@ -217,6 +229,12 @@ function removeNamespacedHandlers(element, events, typeEvent, namespace) {
       removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector)
     }
   })
+}
+
+function getTypeEvent(event) {
+  // allow to get the native events from namespaced events ('click.bs.button' --> 'click')
+  event = event.replace(stripNameRegex, '')
+  return customEvents[event] || event
 }
 
 const EventHandler = {
@@ -272,7 +290,7 @@ const EventHandler = {
     }
 
     const $ = getjQuery()
-    const typeEvent = event.replace(stripNameRegex, '')
+    const typeEvent = getTypeEvent(event)
     const inNamespace = event !== typeEvent
     const isNative = nativeEvents.has(typeEvent)
 

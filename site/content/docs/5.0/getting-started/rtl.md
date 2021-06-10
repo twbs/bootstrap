@@ -93,7 +93,7 @@ Using [RTLCSS value directives](https://rtlcss.com/learn/usage-guide/value-direc
 $font-weight-bold: 700 #{/* rtl:600 */} !default;
 ```
 
-Which would ouput to the following for our default CSS and RTL CSS:
+Which would output to the following for our default CSS and RTL CSS:
 
 ```css
 /* bootstrap.css */
@@ -143,7 +143,7 @@ Need both LTR and RTL on the same page? Thanks to [RTLCSS String Maps](https://r
 ```scss
 /* rtl:begin:options: {
   "autoRename": true,
-  "stringMap":[
+  "stringMap":[ {
     "name": "ltr-rtl",
     "priority": 100,
     "search": ["ltr"],
@@ -152,7 +152,7 @@ Need both LTR and RTL on the same page? Thanks to [RTLCSS String Maps](https://r
       "scope": "*",
       "ignoreCase": false
     }
-  ]
+  } ]
 } */
 .ltr {
   @import "../node_modules/bootstrap/scss/bootstrap";

@@ -26,9 +26,14 @@
   margin-top: var(--#{$variable-prefix}gutter-y);
 }
 
-@mixin make-col($size, $columns: $grid-columns) {
-  flex: 0 0 auto;
-  width: percentage($size / $columns);
+@mixin make-col($size: false, $columns: $grid-columns) {
+  @if $size {
+    flex: 0 0 auto;
+    width: percentage($size / $columns);
+  } @else {
+    flex: 1 1 0;
+    max-width: 100%;
+  }
 }
 
 @mixin make-col-auto() {
@@ -60,8 +65,8 @@
 
 @mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
   @each $breakpoint in map-keys($breakpoints) {
+    // .row-cols defaults must all appear before .col overrides so they can be overridden.
     $infix: breakpoint-infix($breakpoint, $breakpoints);
-
     @include media-breakpoint-up($breakpoint, $breakpoints) {
       // Provide basic `.col-{bp}` classes for equal-width flexbox columns
       .col#{$infix} {
@@ -79,7 +84,13 @@
           }
         }
       }
+    }
+  }
 
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
       .col#{$infix}-auto {
         @include make-col-auto();
       }

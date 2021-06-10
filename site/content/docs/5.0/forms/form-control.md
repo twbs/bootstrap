@@ -35,15 +35,15 @@ Add the `disabled` boolean attribute on an input to give it a grayed out appeara
 
 {{< example >}}
 <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
-<input class="form-control" type="text" placeholder="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
+<input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
 {{< /example >}}
 
 ## Readonly
 
-Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
+Add the `readonly` boolean attribute on an input to prevent modification of the input's value.
 
 {{< example >}}
-<input class="form-control" type="text" placeholder="Readonly input here..." aria-label="readonly input example" readonly>
+<input class="form-control" type="text" value="Readonly input here..." aria-label="readonly input example" readonly>
 {{< /example >}}
 
 ## Readonly plain text
@@ -144,3 +144,7 @@ Learn more about [support for datalist elements](https://caniuse.com/datalist).
 {{< scss-docs name="form-label-variables" file="scss/_variables.scss" >}}
 
 {{< scss-docs name="form-text-variables" file="scss/_variables.scss" >}}
+
+`$form-file-*` are for file input.
+
+{{< scss-docs name="form-file-variables" file="scss/_variables.scss" >}}

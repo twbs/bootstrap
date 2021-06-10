@@ -41,29 +41,35 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 // Custom.scss
 // Option A: Include all of Bootstrap
 
+// Include any default variable overrides here (though functions won't be available)
+
 @import "../node_modules/bootstrap/scss/bootstrap";
 
-// Add custom code after this
+// Then add additional custom code here
 ```
 
 ```scss
 // Custom.scss
 // Option B: Include parts of Bootstrap
 
-// Required
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "../node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+
+// 3. Include remainder of required Bootstrap stylesheets
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/mixins";
 
-// Include custom variable default overrides here
-
-// Optional
+// 4. Include any optional Bootstrap components as you like
 @import "../node_modules/bootstrap/scss/root";
 @import "../node_modules/bootstrap/scss/reboot";
 @import "../node_modules/bootstrap/scss/type";
 @import "../node_modules/bootstrap/scss/images";
 @import "../node_modules/bootstrap/scss/containers";
 @import "../node_modules/bootstrap/scss/grid";
+
+// 5. Add additional custom code here
 ```
 
 With that setup in place, you can begin to modify any of the Sass variables and maps in your `custom.scss`. You can also start to add parts of Bootstrap under the `// Optional` section as needed. We suggest using the full import stack from our `bootstrap.scss` file as your starting point.
@@ -74,23 +80,23 @@ Every Sass variable in Bootstrap includes the `!default` flag allowing you to ov
 
 You will find the complete list of Bootstrap's variables in `scss/_variables.scss`. Some variables are set to `null`, these variables don't output the property unless they are overridden in your configuration.
 
-Variable overrides must come after our functions, variables, and mixins are imported, but before the rest of the imports.
+Variable overrides must come after our functions are imported, but before the rest of the imports.
 
 Here's an example that changes the `background-color` and `color` for the `<body>` when importing and compiling Bootstrap via npm:
 
 ```scss
 // Required
 @import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
 
-// Your variable overrides
+// Default variable overrides
 $body-bg: #000;
 $body-color: #111;
 
-// Bootstrap and its default variables
+// Required
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
 
-// Optional
+// Optional Bootstrap components here
 @import "../node_modules/bootstrap/scss/root";
 @import "../node_modules/bootstrap/scss/reboot";
 @import "../node_modules/bootstrap/scss/type";
@@ -118,7 +124,7 @@ $primary: #0074d9;
 $danger: #ff4136;
 ```
 
-Later on, theses variables are set in Bootstrap's `$theme-colors` map:
+Later on, these variables are set in Bootstrap's `$theme-colors` map:
 
 ```scss
 $theme-colors: (
@@ -266,5 +272,27 @@ $border-width: 0;
 .element {
   // Output .25rem
   border-radius: subtract($border-radius, $border-width);
+}
+```
+
+## Mixins
+
+Our `scss/mixins/` directory has a ton of mixins that power parts of Bootstrap and can also be used across your own project.
+
+### Color schemes
+
+A shorthand mixin for the `prefers-color-scheme` media query is available with support for `light`, `dark`, and custom color schemes.
+
+{{< scss-docs name="mixin-color-scheme" file="scss/mixins/_color-scheme.scss" >}}
+
+```scss
+.custom-element {
+  @include color-scheme(dark) {
+    // Insert dark mode styles here
+  }
+
+  @include color-scheme(custom-named-scheme) {
+    // Insert custom color scheme styles here
+  }
 }
 ```
