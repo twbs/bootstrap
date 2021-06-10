@@ -17,10 +17,7 @@ import {
   noop,
   typeCheckConfig
 } from './util/index'
-import {
-  DefaultAllowlist,
-  sanitizeHtml
-} from './util/sanitizer'
+import { DefaultAllowlist, sanitizeHtml } from './util/sanitizer'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
@@ -272,7 +269,7 @@ class Tooltip extends BaseComponent {
 
     tip.classList.add(CLASS_NAME_SHOW)
 
-    const customClass = typeof this._config.customClass === 'function' ? this._config.customClass() : this._config.customClass
+    const customClass = this._resolvePossibleFunction(this._config.customClass)
     if (customClass) {
       tip.classList.add(...customClass.split(' '))
     }
@@ -413,15 +410,9 @@ class Tooltip extends BaseComponent {
   }
 
   getTitle() {
-    let title = this._element.getAttribute('data-bs-original-title')
+    const title = this._element.getAttribute('data-bs-original-title') || this._config.title
 
-    if (!title) {
-      title = typeof this._config.title === 'function' ?
-        this._config.title.call(this._element) :
-        this._config.title
-    }
-
-    return title
+    return this._resolvePossibleFunction(title)
   }
 
   updateAttachment(attachment) {
@@ -454,6 +445,10 @@ class Tooltip extends BaseComponent {
     }
 
     return offset
+  }
+
+  _resolvePossibleFunction(content) {
+    return typeof content === 'function' ? content.call(this._element) : content
   }
 
   _getPopperConfig(attachment) {

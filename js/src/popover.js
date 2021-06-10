@@ -124,7 +124,7 @@ class Popover extends Tooltip {
   // Private
 
   _getContent() {
-    return this._element.getAttribute('data-bs-content') || this._config.content
+    return this._resolvePossibleFunction(this._config.content)
   }
 
   _getBasicClassPrefix() {
