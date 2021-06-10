@@ -439,15 +439,7 @@ class Tooltip extends BaseComponent {
   // Private
 
   _initializeOnDelegatedTarget(event, context) {
-    const dataKey = this.constructor.DATA_KEY
-    context = context || Data.get(event.delegateTarget, dataKey)
-
-    if (!context) {
-      context = new this.constructor(event.delegateTarget, this._getDelegateConfig())
-      Data.set(event.delegateTarget, dataKey, context)
-    }
-
-    return context
+    return context || this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig())
   }
 
   _getOffset() {
