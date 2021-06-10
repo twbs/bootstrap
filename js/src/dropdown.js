@@ -371,21 +371,19 @@ class Dropdown extends BaseComponent {
 
   // Static
 
-  static dropdownInterface(element, config) {
-    const data = Dropdown.getOrCreateInstance(element, config)
+  static jQueryInterface(config) {
+    return this.each(function () {
+      const data = Dropdown.getOrCreateInstance(this, config)
 
-    if (typeof config === 'string') {
+      if (typeof config !== 'string') {
+        return
+      }
+
       if (typeof data[config] === 'undefined') {
         throw new TypeError(`No method named "${config}"`)
       }
 
       data[config]()
-    }
-  }
-
-  static jQueryInterface(config) {
-    return this.each(function () {
-      Dropdown.dropdownInterface(this, config)
     })
   }
 
@@ -503,7 +501,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   event.preventDefault()
-  Dropdown.dropdownInterface(this)
+  Dropdown.getOrCreateInstance(this)
 })
 
 /**
