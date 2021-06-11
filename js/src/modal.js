@@ -79,7 +79,7 @@ class Modal extends BaseComponent {
 
     this._config = this._getConfig(config)
     this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element)
-    this._backdrop = this._initializeBackDrop()
+    this._backdrop = this._initializeBackdrop()
     this._isShown = false
     this._ignoreBackdropClick = false
     this._isTransitioning = false
@@ -199,7 +199,7 @@ class Modal extends BaseComponent {
 
   // Private
 
-  _initializeBackDrop() {
+  _initializeBackdrop() {
     return new Backdrop({
       isVisible: Boolean(this._config.backdrop), // 'static' option will be translated to true, and booleans will keep their value
       isAnimated: this._isAnimated()
