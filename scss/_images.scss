@@ -5,6 +5,8 @@
 // and abandoned it in Bootstrap v3 because it breaks lots of third-party widgets (including Google Maps)
 // which weren't expecting the images within themselves to be involuntarily resized.
 // See also https://github.com/twbs/bootstrap/issues/18178
+@use "sass:math";
+
 .img-fluid {
   @include img-fluid();
 }
@@ -32,7 +34,7 @@
 }
 
 .figure-img {
-  margin-bottom: $spacer / 2;
+  margin-bottom: math.div($spacer, 2);
   line-height: 1;
 }
 

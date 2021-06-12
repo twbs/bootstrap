@@ -2,6 +2,8 @@
 // Base styles
 //
 
+@use "sass:math";
+
 .card {
   position: relative;
   display: flex;
@@ -55,7 +57,7 @@
 }
 
 .card-subtitle {
-  margin-top: -$card-title-spacer-y / 2;
+  margin-top: math.div(-$card-title-spacer-y, 2);
   margin-bottom: 0;
 }
 
@@ -106,9 +108,9 @@
 //
 
 .card-header-tabs {
-  margin-right: -$card-cap-padding-x / 2;
+  margin-right: math.div(-$card-cap-padding-x, 2);
   margin-bottom: -$card-cap-padding-y;
-  margin-left: -$card-cap-padding-x / 2;
+  margin-left: math.div(-$card-cap-padding-x, 2);
   border-bottom: 0;
 
   @if $nav-tabs-link-active-bg != $card-bg {
@@ -120,8 +122,8 @@
 }
 
 .card-header-pills {
-  margin-right: -$card-cap-padding-x / 2;
-  margin-left: -$card-cap-padding-x / 2;
+  margin-right: math.div(-$card-cap-padding-x, 2);
+  margin-left: math.div(-$card-cap-padding-x, 2);
 }
 
 // Card image
