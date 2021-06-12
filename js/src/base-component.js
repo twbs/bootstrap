@@ -24,9 +24,7 @@ class BaseComponent {
   constructor(element) {
     element = getElement(element)
 
-    if (!element) {
-      return
-    }
+    if (!element) { return }
 
     this._element = element
     Data.set(this._element, this.constructor.DATA_KEY, this)
