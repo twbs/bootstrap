@@ -71,7 +71,7 @@ class Offcanvas extends BaseComponent {
 
     this._config = this._getConfig(config)
     this._isShown = false
-    this._backdrop = this._initializeBackDrop()
+    this._backdrop = this._initializeBackdrop()
     this._addEventListeners()
   }
 
@@ -175,7 +175,7 @@ class Offcanvas extends BaseComponent {
     return config
   }
 
-  _initializeBackDrop() {
+  _initializeBackdrop() {
     return new Backdrop({
       isVisible: this._config.backdrop,
       isAnimated: true,
