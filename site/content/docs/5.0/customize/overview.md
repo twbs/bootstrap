@@ -48,4 +48,4 @@ Several Bootstrap components include embedded SVGs in our CSS to style component
 - [Carousel controls]({{< docsref "/components/carousel#with-controls" >}})
 - [Navbar toggle buttons]({{< docsref "/components/navbar#responsive-behaviors" >}})
 
-Based on [community conversation](https://github.com/twbs/bootstrap/issues/25394), some options for addressing this in your own codebase include replacing the URLs with locally hosted assets, removing the images and using inline images (not possible in all components), and modifying your CSP. Our recommendation is to carefully review your own security policies and decide on a best path forward, if necessary.
+Based on [community conversation](https://github.com/twbs/bootstrap/issues/25394), some options for addressing this in your own codebase include replacing the URLs with locally hosted assets, removing the images and using inline images (not possible in all components), and modifying your CSP. Our recommendation is to carefully review your own security policies and decide on the best path forward, if necessary.
