@@ -412,7 +412,7 @@ $aspect-ratios: (
 
 // Typography
 //
-// Font, line-height, and color for body text, headings, and more.
+// Font, line-height, color for body text, headings, and more.
 
 // scss-docs-start font-variables
 // stylelint-disable value-keyword-case
@@ -422,8 +422,8 @@ $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberati
 $font-family-base:            var(--#{$variable-prefix}font-sans-serif) !default;
 $font-family-code:            var(--#{$variable-prefix}font-monospace) !default;
 
-// $font-size-root effects the value of `rem`, which is used for as well font sizes, paddings and margins
-// $font-size-base effects the font size of the body text
+// $font-size-root affects the value of `rem`, which is used for font sizes, paddings, and margins
+// $font-size-base affects the font size of the body text
 $font-size-root:              null !default;
 $font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
 $font-size-sm:                $font-size-base * .875 !default;
