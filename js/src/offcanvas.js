@@ -12,7 +12,7 @@ import {
   isVisible,
   typeCheckConfig
 } from './util/index'
-import { hide as scrollBarHide, reset as scrollBarReset } from './util/scrollbar'
+import ScrollBarHelper from './util/scrollbar'
 import EventHandler from './dom/event-handler'
 import BaseComponent from './base-component'
 import SelectorEngine from './dom/selector-engine'
@@ -108,7 +108,7 @@ class Offcanvas extends BaseComponent {
     this._backdrop.show()
 
     if (!this._config.scroll) {
-      scrollBarHide()
+      new ScrollBarHelper().hide()
       this._enforceFocusOnElement(this._element)
     }
 
@@ -148,7 +148,7 @@ class Offcanvas extends BaseComponent {
       this._element.style.visibility = 'hidden'
 
       if (!this._config.scroll) {
-        scrollBarReset()
+        new ScrollBarHelper().reset()
       }
 
       EventHandler.trigger(this._element, EVENT_HIDDEN)
