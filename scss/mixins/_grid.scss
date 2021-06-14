@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /// Grid system
 //
 // Generate semantic grid columns with these mixins.
@@ -29,7 +31,8 @@
 @mixin make-col($size: false, $columns: $grid-columns) {
   @if $size {
     flex: 0 0 auto;
-    width: percentage($size / $columns);
+    width: percentage(divide($size, $columns));
+
   } @else {
     flex: 1 1 0;
     max-width: 100%;
