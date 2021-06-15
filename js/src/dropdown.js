@@ -353,11 +353,7 @@ class Dropdown extends BaseComponent {
     } else if (typeof popperConfigHolder === 'string') {
       try {
         const parsedJson = JSON.parse(popperConfigHolder)
-        if (typeof parsedJson === 'object') {
-          popperConfigHolder = parsedJson
-        } else {
-          popperConfigHolder = null
-        }
+        popperConfigHolder = (typeof parsedJson === 'object') ? parsedJson : null
       } catch {
         throw new TypeError('popperConfig JSON.parse error')
       }
