@@ -152,6 +152,14 @@ Please read the [collapse accessibility section]({{< docsref "/components/collap
 
 ## Sass
 
+### Dependencies
+
+- `_functions.scss`
+- `_variables.scss`
+- `mixins/_border-radius.scss`
+- `mixins/_transition.scss`
+- `vendor/_rfs.scss`
+
 ### Variables
 
 {{< scss-docs name="accordion-variables" file="scss/_variables.scss" >}}
