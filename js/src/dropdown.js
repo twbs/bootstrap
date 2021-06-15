@@ -85,7 +85,7 @@ const DefaultType = {
   boundary: '(string|element)',
   reference: '(string|element|object)',
   display: 'string',
-  popperConfig: '(null|object|function)',
+  popperConfig: '(null|string|object|function)',
   autoClose: '(boolean|string)'
 }
 
@@ -347,9 +347,25 @@ class Dropdown extends BaseComponent {
       }]
     }
 
+    let popperConfigHolder = this._config.popperConfig
+    if (typeof popperConfigHolder === 'function') {
+      popperConfigHolder = popperConfigHolder(defaultBsPopperConfig)
+    } else if (typeof popperConfigHolder === 'string') {
+      try {
+        const parsedJson = JSON.parse(popperConfigHolder)
+        if (typeof parsedJson === 'object') {
+          popperConfigHolder = parsedJson
+        }
+      } catch {
+        throw new TypeError('popperConfig JSON.parse error')
+      }
+    } else {
+      popperConfigHolder = null
+    }
+
     return {
       ...defaultBsPopperConfig,
-      ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig)
+      ...popperConfigHolder
     }
   }
 
