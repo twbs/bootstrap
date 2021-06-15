@@ -359,8 +359,6 @@ class Dropdown extends BaseComponent {
       } catch {
         throw new TypeError('popperConfig JSON.parse error')
       }
-    } else {
-      popperConfigHolder = null
     }
 
     return {
