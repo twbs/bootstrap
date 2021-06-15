@@ -7,20 +7,26 @@
 - name: XhmikosR
   user: xhmikosr
 
+- name: GeoSot
+  user: geosot
+
+- name: Rohit Sharma
+  user: rohit2sharma95
+
+- name: alpadev
+  user: alpadev
+
+- name: Gaël Poupard
+  user: ffoodd
+
 - name: Patrick H. Lauke
   user: patrickhlauke
-
-- name: Gleb Mazovetskiy
-  user: glebm
-
-- name: Johann-S
-  user: johann-s
 
 - name: Martijn Cuppens
   user: martijncuppens
 
-- name: Shohei Yoshida
-  user: ysds
+- name: Johann-S
+  user: johann-s
 
-- name: Gaël Poupard
-  user: ffoodd
+- name: Gleb Mazovetskiy
+  user: glebm

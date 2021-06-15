@@ -80,7 +80,7 @@ Every Sass variable in Bootstrap includes the `!default` flag allowing you to ov
 
 You will find the complete list of Bootstrap's variables in `scss/_variables.scss`. Some variables are set to `null`, these variables don't output the property unless they are overridden in your configuration.
 
-Variable overrides must come after our functions, variables, and mixins are imported, but before the rest of the imports.
+Variable overrides must come after our functions are imported, but before the rest of the imports.
 
 Here's an example that changes the `background-color` and `color` for the `<body>` when importing and compiling Bootstrap via npm:
 
@@ -95,8 +95,6 @@ $body-color: #111;
 // Required
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/mixins";
-
-// Bootstrap and its default variables
 
 // Optional Bootstrap components here
 @import "../node_modules/bootstrap/scss/root";
@@ -126,7 +124,7 @@ $primary: #0074d9;
 $danger: #ff4136;
 ```
 
-Later on, theses variables are set in Bootstrap's `$theme-colors` map:
+Later on, these variables are set in Bootstrap's `$theme-colors` map:
 
 ```scss
 $theme-colors: (
@@ -274,5 +272,27 @@ $border-width: 0;
 .element {
   // Output .25rem
   border-radius: subtract($border-radius, $border-width);
+}
+```
+
+## Mixins
+
+Our `scss/mixins/` directory has a ton of mixins that power parts of Bootstrap and can also be used across your own project.
+
+### Color schemes
+
+A shorthand mixin for the `prefers-color-scheme` media query is available with support for `light`, `dark`, and custom color schemes.
+
+{{< scss-docs name="mixin-color-scheme" file="scss/mixins/_color-scheme.scss" >}}
+
+```scss
+.custom-element {
+  @include color-scheme(dark) {
+    // Insert dark mode styles here
+  }
+
+  @include color-scheme(custom-named-scheme) {
+    // Insert custom color scheme styles here
+  }
 }
 ```
