@@ -707,6 +707,34 @@ describe('Carousel', () => {
 
       carousel.next()
     })
+
+    it('should call next()/prev() instance methods when clicking the respective direction buttons', () => {
+      fixtureEl.innerHTML = [
+        '<div id="carousel" class="carousel slide">',
+        '  <div class="carousel-inner">',
+        '    <div class="carousel-item active">item 1</div>',
+        '    <div class="carousel-item">item 2</div>',
+        '    <div class="carousel-item">item 3</div>',
+        '  </div>',
+        '  <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev"></button>',
+        '  <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next"></button>',
+        '</div>'
+      ].join('')
+
+      const carouselEl = fixtureEl.querySelector('#carousel')
+      const prevBtnEl = fixtureEl.querySelector('.carousel-control-prev')
+      const nextBtnEl = fixtureEl.querySelector('.carousel-control-next')
+
+      const carousel = new Carousel(carouselEl)
+      const nextSpy = spyOn(carousel, 'next')
+      const prevSpy = spyOn(carousel, 'prev')
+
+      nextBtnEl.click()
+      prevBtnEl.click()
+
+      expect(nextSpy).toHaveBeenCalled()
+      expect(prevSpy).toHaveBeenCalled()
+    })
   })
 
   describe('nextWhenVisible', () => {
