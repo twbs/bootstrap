@@ -86,7 +86,6 @@
   > tfoot > tr {
     border-width: $table-border-width 0;
 
-    // stylelint-disable-next-line selector-max-universal
     > * {
       border-width: 0 $table-border-width;
     }
