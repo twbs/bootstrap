@@ -498,7 +498,14 @@ class Carousel extends BaseComponent {
   static carouselInterface(element, config) {
     const data = Carousel.getOrCreateInstance(element, config)
 
-    const { _config } = data
+    let { _config } = data
+    if (typeof config === 'object') {
+      _config = {
+        ..._config,
+        ...config
+      }
+    }
+
     const action = typeof config === 'string' ? config : _config.slide
 
     if (typeof config === 'number') {
