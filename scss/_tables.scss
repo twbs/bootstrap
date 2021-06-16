@@ -24,7 +24,6 @@
   // We need the child combinator to prevent styles leaking to nested tables which doesn't have a `.table` class.
   // We use the universal selectors here to simplify the selector (else we would need 6 different selectors).
   // Another advantage is that this generates less code and makes the selector less specific making it easier to override.
-  // stylelint-disable-next-line selector-max-universal
   > tr > *,
   > thead > tr > *,
   > tbody > tr > *,
@@ -62,7 +61,6 @@
 //
 
 .table-sm {
-  // stylelint-disable-next-line selector-max-universal
   > tr > *,
   > thead > tr > *,
   > tbody > tr > *,
@@ -96,7 +94,6 @@
 }
 
 .table-borderless {
-  // stylelint-disable-next-line selector-max-universal
   > tr > *,
   > thead > tr > *,
   > tbody > tr > *,
