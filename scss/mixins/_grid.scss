@@ -29,7 +29,7 @@
 @mixin make-col($size: false, $columns: $grid-columns) {
   @if $size {
     flex: 0 0 auto;
-    width: percentage(divide($size, $columns));
+    width: percentage(divide($size, $columns, 12));
 
   } @else {
     flex: 1 1 0;
@@ -55,7 +55,7 @@
 @mixin row-cols($count) {
   > * {
     flex: 0 0 auto;
-    width: divide(100%, $count);
+    width: percentage(divide(1, $count, 12));
   }
 }
 

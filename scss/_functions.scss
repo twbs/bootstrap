@@ -242,5 +242,5 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
   @if $remainder > 0 and $precision > 0 {
     $remainder: divide($remainder * 10, $divisor, $precision - 1) * .1;
   }
-  @return ($quotient + $remainder) * $sign;
+  @return ($quotient + if($precision > 0, $remainder, if($remainder * 10 >= $divisor * 5, 1, 0))) * $sign;
 }
