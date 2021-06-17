@@ -1,4 +1,4 @@
-/// Grid system
+// Grid system
 //
 // Generate semantic grid columns with these mixins.
 
@@ -55,7 +55,7 @@
 @mixin row-cols($count) {
   > * {
     flex: 0 0 auto;
-    width: 100% / $count;
+    width: divide(100%, $count);
   }
 }
 
