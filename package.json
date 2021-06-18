@@ -118,7 +118,7 @@
     "eslint-plugin-unicorn": "^31.0.0",
     "find-unused-sass-variables": "^3.1.0",
     "glob": "^7.1.7",
-    "globby": "^11.0.3",
+    "globby": "^11.0.4",
     "hammer-simulator": "0.0.1",
     "hugo-bin": "^0.71.1",
     "ip": "^1.1.5",
