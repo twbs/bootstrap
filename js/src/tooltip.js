@@ -674,6 +674,14 @@ class Tooltip extends BaseComponent {
       config.content = config.content.toString()
     }
 
+    if (typeof config.popperConfig === 'string') {
+      try {
+        config.popperConfig = JSON.parse(config.popperConfig)
+      } catch {
+        // we swallow the JSON.parse error here, because it will be caught by the typeCheckConfig below
+      }
+    }
+
     typeCheckConfig(NAME, config, this.constructor.DefaultType)
 
     if (config.sanitize) {
