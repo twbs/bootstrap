@@ -9,8 +9,8 @@
 
   .navbar-nav {
     .nav-link {
-      padding-right: $spacer / 4;
-      padding-left: $spacer / 4;
+      padding-right: $spacer * .25;
+      padding-left: $spacer * .25;
       color: rgba($white, .85);
 
       &:hover,

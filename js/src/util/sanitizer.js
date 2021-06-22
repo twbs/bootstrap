@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): util/sanitizer.js
+ * Bootstrap (v5.0.2): util/sanitizer.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -108,7 +108,7 @@ export function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
     const elName = el.nodeName.toLowerCase()
 
     if (!allowlistKeys.includes(elName)) {
-      el.parentNode.removeChild(el)
+      el.remove()
 
       continue
     }

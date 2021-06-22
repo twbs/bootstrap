@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap tooltip.js v5.0.1 (https://getbootstrap.com/)
+  * Bootstrap tooltip.js v5.0.2 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -40,7 +40,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.1): util/index.js
+   * Bootstrap (v5.0.2): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -143,9 +143,18 @@
     return null;
   };
 
+  const DOMContentLoadedCallbacks = [];
+
   const onDOMContentLoaded = callback => {
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', callback);
+      // add listener on the first call when the document is in loading state
+      if (!DOMContentLoadedCallbacks.length) {
+        document.addEventListener('DOMContentLoaded', () => {
+          DOMContentLoadedCallbacks.forEach(callback => callback());
+        });
+      }
+
+      DOMContentLoadedCallbacks.push(callback);
     } else {
       callback();
     }
@@ -174,7 +183,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.1): util/sanitizer.js
+   * Bootstrap (v5.0.2): util/sanitizer.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -269,7 +278,7 @@
       const elName = el.nodeName.toLowerCase();
 
       if (!allowlistKeys.includes(elName)) {
-        el.parentNode.removeChild(el);
+        el.remove();
         continue;
       }
 
@@ -287,7 +296,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.1): tooltip.js
+   * Bootstrap (v5.0.2): tooltip.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -456,8 +465,8 @@
       clearTimeout(this._timeout);
       EventHandler__default['default'].off(this._element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler);
 
-      if (this.tip && this.tip.parentNode) {
-        this.tip.parentNode.removeChild(this.tip);
+      if (this.tip) {
+        this.tip.remove();
       }
 
       if (this._popper) {
@@ -562,8 +571,8 @@
           return;
         }
 
-        if (this._hoverState !== HOVER_STATE_SHOW && tip.parentNode) {
-          tip.parentNode.removeChild(tip);
+        if (this._hoverState !== HOVER_STATE_SHOW) {
+          tip.remove();
         }
 
         this._cleanTipClass();
@@ -950,17 +959,7 @@
 
     static jQueryInterface(config) {
       return this.each(function () {
-        let data = Data__default['default'].get(this, DATA_KEY);
-
-        const _config = typeof config === 'object' && config;
-
-        if (!data && /dispose|hide/.test(config)) {
-          return;
-        }
-
-        if (!data) {
-          data = new Tooltip(this, _config);
-        }
+        const data = Tooltip.getOrCreateInstance(this, config);
 
         if (typeof config === 'string') {
           if (typeof data[config] === 'undefined') {

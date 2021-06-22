@@ -1991,6 +1991,60 @@ describe('Dropdown', () => {
     })
   })
 
+  describe('getOrCreateInstance', () => {
+    it('should return dropdown instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const dropdown = new Dropdown(div)
+
+      expect(Dropdown.getOrCreateInstance(div)).toEqual(dropdown)
+      expect(Dropdown.getInstance(div)).toEqual(Dropdown.getOrCreateInstance(div, {}))
+      expect(Dropdown.getOrCreateInstance(div)).toBeInstanceOf(Dropdown)
+    })
+
+    it('should return new instance when there is no dropdown instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Dropdown.getInstance(div)).toEqual(null)
+      expect(Dropdown.getOrCreateInstance(div)).toBeInstanceOf(Dropdown)
+    })
+
+    it('should return new instance when there is no dropdown instance with given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Dropdown.getInstance(div)).toEqual(null)
+      const dropdown = Dropdown.getOrCreateInstance(div, {
+        display: 'dynamic'
+      })
+      expect(dropdown).toBeInstanceOf(Dropdown)
+
+      expect(dropdown._config.display).toEqual('dynamic')
+    })
+
+    it('should return the instance when exists without given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const dropdown = new Dropdown(div, {
+        display: 'dynamic'
+      })
+      expect(Dropdown.getInstance(div)).toEqual(dropdown)
+
+      const dropdown2 = Dropdown.getOrCreateInstance(div, {
+        display: 'static'
+      })
+      expect(dropdown).toBeInstanceOf(Dropdown)
+      expect(dropdown2).toEqual(dropdown)
+
+      expect(dropdown2._config.display).toEqual('dynamic')
+    })
+  })
+
   it('should open dropdown when pressing keydown or keyup', done => {
     fixtureEl.innerHTML = [
       '<div class="dropdown">',
