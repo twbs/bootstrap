@@ -104,6 +104,30 @@ describe('Base Component', () => {
         expect(DummyClass.getInstance(element)).toBeInstanceOf(DummyClass)
       })
 
+      it('should accept element, either passed as a CSS selector, jQuery element, or DOM element', () => {
+        fixtureEl.innerHTML = [
+          '<div id="foo"></div>',
+          '<div id="bar"></div>',
+          '<div id="fizz"></div>'
+        ].join('')
+
+        const el = fixtureEl.querySelector('#foo')
+        const selector = '#bar'
+        const elInstance = new DummyClass(el)
+        const selectorInstance = new DummyClass(selector)
+
+        const fakejQueryObject = {
+          0: fixtureEl.querySelector('#fizz'),
+          jquery: 'foo'
+        }
+
+        const jQueryInstance = new DummyClass(fakejQueryObject)
+
+        expect(DummyClass.getInstance(el)).toEqual(elInstance)
+        expect(DummyClass.getInstance(selector)).toEqual(selectorInstance)
+        expect(DummyClass.getInstance(fakejQueryObject)).toEqual(jQueryInstance)
+      })
+
       it('should return null when there is no instance', () => {
         fixtureEl.innerHTML = '<div></div>'
 

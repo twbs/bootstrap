@@ -48,7 +48,7 @@ class BaseComponent {
   /** Static */
 
   static getInstance(element) {
-    return Data.get(element, this.DATA_KEY)
+    return Data.get(getElement(element), this.DATA_KEY)
   }
 
   static getOrCreateInstance(element, config = {}) {
