@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -423,10 +423,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="examples">Examples</h2>
 <p>Alerts are available for any length of text, as well as an optional close button. For proper styling, use one of the eight <strong>required</strong> contextual classes (e.g., <code>.alert-success</code>). For inline dismissal, use the <a href="#dismissing">alerts JavaScript plugin</a>.</p>
@@ -675,20 +675,20 @@ When an alert is dismissed, the element is completely removed from the page stru
 <span class="nv">$alert-border-radius</span><span class="o">:</span>           <span class="nv">$border-radius</span><span class="p">;</span>
 <span class="nv">$alert-link-font-weight</span><span class="o">:</span>        <span class="nv">$font-weight-bold</span><span class="p">;</span>
 <span class="nv">$alert-border-width</span><span class="o">:</span>            <span class="nv">$border-width</span><span class="p">;</span>
-<span class="nv">$alert-bg-scale</span><span class="o">:</span>                <span class="mi">-80</span><span class="kt">%</span><span class="p">;</span>
-<span class="nv">$alert-border-scale</span><span class="o">:</span>            <span class="mi">-70</span><span class="kt">%</span><span class="p">;</span>
+<span class="nv">$alert-bg-scale</span><span class="o">:</span>                <span class="o">-</span><span class="mi">80</span><span class="kt">%</span><span class="p">;</span>
+<span class="nv">$alert-border-scale</span><span class="o">:</span>            <span class="o">-</span><span class="mi">70</span><span class="kt">%</span><span class="p">;</span>
 <span class="nv">$alert-color-scale</span><span class="o">:</span>             <span class="mi">40</span><span class="kt">%</span><span class="p">;</span>
 <span class="nv">$alert-dismissible-padding-r</span><span class="o">:</span>   <span class="nv">$alert-padding-x</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 3x covers width of x plus default padding on either side
 </span></code></pre></div>
 <h3 id="variant-mixin">Variant mixin</h3>
 <p>Used in combination with <code>$theme-colors</code> to create contextual modifier classes for our alerts.</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@mixin</span><span class="nf"> alert-variant</span><span class="p">(</span><span class="nv">$background</span><span class="o">,</span> <span class="nv">$border</span><span class="o">,</span> <span class="nv">$color</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nt">color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">color</span><span class="p">;</span>
+  <span class="na">color</span><span class="o">:</span> <span class="nv">$color</span><span class="p">;</span>
   <span class="k">@include</span><span class="nd"> gradient-bg</span><span class="p">(</span><span class="nv">$background</span><span class="p">);</span>
-  <span class="nt">border-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">border</span><span class="p">;</span>
+  <span class="na">border-color</span><span class="o">:</span> <span class="nv">$border</span><span class="p">;</span>
 
   <span class="nc">.alert-link</span> <span class="p">{</span>
-    <span class="nt">color</span><span class="nd">:</span> <span class="nt">shade-color</span><span class="o">(</span><span class="err">$</span><span class="nt">color</span><span class="o">,</span> <span class="nt">20</span><span class="err">%</span><span class="o">)</span><span class="p">;</span>
+    <span class="na">color</span><span class="o">:</span> <span class="nf">shade-color</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="mi">20</span><span class="kt">%</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -696,7 +696,7 @@ When an alert is dismissed, the element is completely removed from the page stru
 <p>Loop that generates the modifier classes with the <code>alert-variant()</code> mixin.</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="c1">// Generate contextual modifier classes for colorizing the alert.
 </span><span class="c1"></span>
-<span class="k">@each</span> <span class="err">$</span><span class="nt">state</span><span class="o">,</span> <span class="err">$</span><span class="nt">value</span> <span class="nt">in</span> <span class="err">$</span><span class="nt">theme-colors</span> <span class="p">{</span>
+<span class="k">@each</span> <span class="nv">$state</span><span class="o">,</span> <span class="nv">$value</span> <span class="ow">in</span> <span class="nv">$theme-colors</span> <span class="p">{</span>
   <span class="nv">$alert-background</span><span class="o">:</span> <span class="nf">shift-color</span><span class="p">(</span><span class="nv">$value</span><span class="o">,</span> <span class="nv">$alert-bg-scale</span><span class="p">);</span>
   <span class="nv">$alert-border</span><span class="o">:</span> <span class="nf">shift-color</span><span class="p">(</span><span class="nv">$value</span><span class="o">,</span> <span class="nv">$alert-border-scale</span><span class="p">);</span>
   <span class="nv">$alert-color</span><span class="o">:</span> <span class="nf">shift-color</span><span class="p">(</span><span class="nv">$value</span><span class="o">,</span> <span class="nv">$alert-color-scale</span><span class="p">);</span>
@@ -755,6 +755,15 @@ When an alert is dismissed, the element is completely removed from the page stru
         Static method which allows you to get the alert instance associated to a DOM element, you can use it like this: <code>bootstrap.Alert.getInstance(alert)</code>
       </td>
     </tr>
+    <tr>
+      <td>
+        <code>getOrCreateInstance</code>
+      </td>
+      <td>
+        Static method which returns an alert instance associated to a DOM element or create a new one in case it wasn't initialised.
+        You can use it like this: <code>bootstrap.Alert.getOrCreateInstance(element)</code>
+      </td>
+    </tr>
   </tbody>
 </table>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">alertNode</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.alert&#39;</span><span class="p">)</span>
@@ -807,7 +816,7 @@ When an alert is dismissed, the element is completely removed from the page stru
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -854,7 +863,7 @@ When an alert is dismissed, the element is completely removed from the page stru
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -862,7 +871,7 @@ When an alert is dismissed, the element is completely removed from the page stru
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

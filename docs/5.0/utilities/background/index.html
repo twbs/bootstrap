@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Convey meaning through background-color and add decoration with gradients.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -411,10 +411,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="background-color">Background color</h2>
 <p>Similar to the contextual text color classes, set the background of an element to any contextual class. Background utilities <strong>do not set <code>color</code></strong>, so in some cases you&rsquo;ll want to use <code>.text-*</code> <a href="/docs/5.0/utilities/colors/">color utilities</a>.</p>
@@ -522,10 +522,10 @@
 <h3 id="mixins">Mixins</h3>
 <p><strong>No mixins are used to generate our background utilities</strong>, but we do have some additional mixins for other situations where you&rsquo;d like to create your own gradients.</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@mixin</span><span class="nf"> gradient-bg</span><span class="p">(</span><span class="nv">$color</span><span class="o">:</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nt">background-color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">color</span><span class="p">;</span>
+  <span class="na">background-color</span><span class="o">:</span> <span class="nv">$color</span><span class="p">;</span>
 
   <span class="k">@if</span> <span class="nv">$enable-gradients</span> <span class="p">{</span>
-    <span class="nt">background-image</span><span class="nd">:</span> <span class="nt">var</span><span class="o">(</span><span class="nt">--</span><span class="nn">#</span><span class="p">{</span><span class="err">$</span><span class="nt">variable-prefix</span><span class="p">}</span><span class="nt">gradient</span><span class="o">)</span><span class="p">;</span>
+    <span class="na">background-image</span><span class="o">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="si">#{</span><span class="nv">$variable-prefix</span><span class="si">}</span><span class="n">gradient</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -533,34 +533,34 @@
 </span><span class="c1">//
 </span><span class="c1">// Creates two color stops, start and end, by specifying a color and position for each color stop.
 </span><span class="c1"></span><span class="k">@mixin</span><span class="nf"> gradient-x</span><span class="p">(</span><span class="nv">$start-color</span><span class="o">:</span> <span class="nv">$gray-700</span><span class="o">,</span> <span class="nv">$end-color</span><span class="o">:</span> <span class="nv">$gray-800</span><span class="o">,</span> <span class="nv">$start-percent</span><span class="o">:</span> <span class="mi">0</span><span class="kt">%</span><span class="o">,</span> <span class="nv">$end-percent</span><span class="o">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nt">background-image</span><span class="nd">:</span> <span class="nt">linear-gradient</span><span class="o">(</span><span class="nt">to</span> <span class="nt">right</span><span class="o">,</span> <span class="err">$</span><span class="nt">start-color</span> <span class="err">$</span><span class="nt">start-percent</span><span class="o">,</span> <span class="err">$</span><span class="nt">end-color</span> <span class="err">$</span><span class="nt">end-percent</span><span class="o">)</span><span class="p">;</span>
+  <span class="na">background-image</span><span class="o">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="n">to</span> <span class="ni">right</span><span class="o">,</span> <span class="nv">$start-color</span> <span class="nv">$start-percent</span><span class="o">,</span> <span class="nv">$end-color</span> <span class="nv">$end-percent</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="c1">// Vertical gradient, from top to bottom
 </span><span class="c1">//
 </span><span class="c1">// Creates two color stops, start and end, by specifying a color and position for each color stop.
 </span><span class="c1"></span><span class="k">@mixin</span><span class="nf"> gradient-y</span><span class="p">(</span><span class="nv">$start-color</span><span class="o">:</span> <span class="nv">$gray-700</span><span class="o">,</span> <span class="nv">$end-color</span><span class="o">:</span> <span class="nv">$gray-800</span><span class="o">,</span> <span class="nv">$start-percent</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$end-percent</span><span class="o">:</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nt">background-image</span><span class="nd">:</span> <span class="nt">linear-gradient</span><span class="o">(</span><span class="nt">to</span> <span class="nt">bottom</span><span class="o">,</span> <span class="err">$</span><span class="nt">start-color</span> <span class="err">$</span><span class="nt">start-percent</span><span class="o">,</span> <span class="err">$</span><span class="nt">end-color</span> <span class="err">$</span><span class="nt">end-percent</span><span class="o">)</span><span class="p">;</span>
+  <span class="na">background-image</span><span class="o">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="n">to</span> <span class="ni">bottom</span><span class="o">,</span> <span class="nv">$start-color</span> <span class="nv">$start-percent</span><span class="o">,</span> <span class="nv">$end-color</span> <span class="nv">$end-percent</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="k">@mixin</span><span class="nf"> gradient-directional</span><span class="p">(</span><span class="nv">$start-color</span><span class="o">:</span> <span class="nv">$gray-700</span><span class="o">,</span> <span class="nv">$end-color</span><span class="o">:</span> <span class="nv">$gray-800</span><span class="o">,</span> <span class="nv">$deg</span><span class="o">:</span> <span class="mi">45</span><span class="kt">deg</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nt">background-image</span><span class="nd">:</span> <span class="nt">linear-gradient</span><span class="o">(</span><span class="err">$</span><span class="nt">deg</span><span class="o">,</span> <span class="err">$</span><span class="nt">start-color</span><span class="o">,</span> <span class="err">$</span><span class="nt">end-color</span><span class="o">)</span><span class="p">;</span>
+  <span class="na">background-image</span><span class="o">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="nv">$deg</span><span class="o">,</span> <span class="nv">$start-color</span><span class="o">,</span> <span class="nv">$end-color</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="k">@mixin</span><span class="nf"> gradient-x-three-colors</span><span class="p">(</span><span class="nv">$start-color</span><span class="o">:</span> <span class="nv">$blue</span><span class="o">,</span> <span class="nv">$mid-color</span><span class="o">:</span> <span class="nv">$purple</span><span class="o">,</span> <span class="nv">$color-stop</span><span class="o">:</span> <span class="mi">50</span><span class="kt">%</span><span class="o">,</span> <span class="nv">$end-color</span><span class="o">:</span> <span class="nv">$red</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nt">background-image</span><span class="nd">:</span> <span class="nt">linear-gradient</span><span class="o">(</span><span class="nt">to</span> <span class="nt">right</span><span class="o">,</span> <span class="err">$</span><span class="nt">start-color</span><span class="o">,</span> <span class="err">$</span><span class="nt">mid-color</span> <span class="err">$</span><span class="nt">color-stop</span><span class="o">,</span> <span class="err">$</span><span class="nt">end-color</span><span class="o">)</span><span class="p">;</span>
+  <span class="na">background-image</span><span class="o">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="n">to</span> <span class="ni">right</span><span class="o">,</span> <span class="nv">$start-color</span><span class="o">,</span> <span class="nv">$mid-color</span> <span class="nv">$color-stop</span><span class="o">,</span> <span class="nv">$end-color</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="k">@mixin</span><span class="nf"> gradient-y-three-colors</span><span class="p">(</span><span class="nv">$start-color</span><span class="o">:</span> <span class="nv">$blue</span><span class="o">,</span> <span class="nv">$mid-color</span><span class="o">:</span> <span class="nv">$purple</span><span class="o">,</span> <span class="nv">$color-stop</span><span class="o">:</span> <span class="mi">50</span><span class="kt">%</span><span class="o">,</span> <span class="nv">$end-color</span><span class="o">:</span> <span class="nv">$red</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nt">background-image</span><span class="nd">:</span> <span class="nt">linear-gradient</span><span class="o">(</span><span class="err">$</span><span class="nt">start-color</span><span class="o">,</span> <span class="err">$</span><span class="nt">mid-color</span> <span class="err">$</span><span class="nt">color-stop</span><span class="o">,</span> <span class="err">$</span><span class="nt">end-color</span><span class="o">)</span><span class="p">;</span>
+  <span class="na">background-image</span><span class="o">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="nv">$start-color</span><span class="o">,</span> <span class="nv">$mid-color</span> <span class="nv">$color-stop</span><span class="o">,</span> <span class="nv">$end-color</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="k">@mixin</span><span class="nf"> gradient-radial</span><span class="p">(</span><span class="nv">$inner-color</span><span class="o">:</span> <span class="nv">$gray-700</span><span class="o">,</span> <span class="nv">$outer-color</span><span class="o">:</span> <span class="nv">$gray-800</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nt">background-image</span><span class="nd">:</span> <span class="nt">radial-gradient</span><span class="o">(</span><span class="nt">circle</span><span class="o">,</span> <span class="err">$</span><span class="nt">inner-color</span><span class="o">,</span> <span class="err">$</span><span class="nt">outer-color</span><span class="o">)</span><span class="p">;</span>
+  <span class="na">background-image</span><span class="o">:</span> <span class="nf">radial-gradient</span><span class="p">(</span><span class="ni">circle</span><span class="o">,</span> <span class="nv">$inner-color</span><span class="o">,</span> <span class="nv">$outer-color</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="k">@mixin</span><span class="nf"> gradient-striped</span><span class="p">(</span><span class="nv">$color</span><span class="o">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$white</span><span class="o">,</span> <span class="mf">.15</span><span class="p">)</span><span class="o">,</span> <span class="nv">$angle</span><span class="o">:</span> <span class="mi">45</span><span class="kt">deg</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nt">background-image</span><span class="nd">:</span> <span class="nt">linear-gradient</span><span class="o">(</span><span class="err">$</span><span class="nt">angle</span><span class="o">,</span> <span class="err">$</span><span class="nt">color</span> <span class="nt">25</span><span class="err">%</span><span class="o">,</span> <span class="nt">transparent</span> <span class="nt">25</span><span class="err">%</span><span class="o">,</span> <span class="nt">transparent</span> <span class="nt">50</span><span class="err">%</span><span class="o">,</span> <span class="err">$</span><span class="nt">color</span> <span class="nt">50</span><span class="err">%</span><span class="o">,</span> <span class="err">$</span><span class="nt">color</span> <span class="nt">75</span><span class="err">%</span><span class="o">,</span> <span class="nt">transparent</span> <span class="nt">75</span><span class="err">%</span><span class="o">,</span> <span class="nt">transparent</span><span class="o">)</span><span class="p">;</span>
+  <span class="na">background-image</span><span class="o">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="nv">$angle</span><span class="o">,</span> <span class="nv">$color</span> <span class="mi">25</span><span class="kt">%</span><span class="o">,</span> <span class="ni">transparent</span> <span class="mi">25</span><span class="kt">%</span><span class="o">,</span> <span class="ni">transparent</span> <span class="mi">50</span><span class="kt">%</span><span class="o">,</span> <span class="nv">$color</span> <span class="mi">50</span><span class="kt">%</span><span class="o">,</span> <span class="nv">$color</span> <span class="mi">75</span><span class="kt">%</span><span class="o">,</span> <span class="ni">transparent</span> <span class="mi">75</span><span class="kt">%</span><span class="o">,</span> <span class="ni">transparent</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="utilities-api">Utilities API</h3>
@@ -595,7 +595,7 @@
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -642,7 +642,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -650,7 +650,7 @@
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

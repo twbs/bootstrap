@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Use our powerful mobile-first flexbox grid to build layouts of all shapes and sizes thanks to a twelve column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined classes.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -433,10 +433,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="example">Example</h2>
 <p>Bootstrap&rsquo;s grid system uses a series of containers, rows, and columns to layout and align content. It&rsquo;s built with <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">flexbox</a> and is fully responsive. Below is an example and an in-depth explanation for how the grid system comes together.</p>
@@ -824,8 +824,8 @@
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
 <h3 id="row-columns">Row columns</h3>
-<p>Use the responsive <code>.row-cols-*</code> classes to quickly set the number of columns that best render your content and layout. Whereas normal <code>.col-*</code> classes apply to the individual columns (e.g., <code>.col-md-4</code>), the row columns classes are set on the parent <code>.row</code> as a shortcut. With <code>.row-cols-auto</code> you can give the columns their natural width.</p>
-<p>Use these row columns classes to quickly create basic grid layouts or to control your card layouts.</p>
+<p>Use the responsive <code>.row-cols-*</code> classes to quickly set the number of columns that best render your content and layout. Whereas normal <code>.col-*</code> classes apply to the individual columns (e.g., <code>.col-md-4</code>), the row columns classes are set on the parent <code>.row</code> as a default for contained columns. With <code>.row-cols-auto</code> you can give the columns their natural width.</p>
+<p>Use these row columns classes to quickly create basic grid layouts or to control your card layouts and override when needed at the column level.</p>
 <div class="bd-example bd-example-row">
 <div class="container">
   <div class="row row-cols-2">
@@ -928,6 +928,39 @@
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col&#34;</span><span class="p">&gt;</span>Column<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
+<div class="bd-example bd-example-row">
+<div class="container">
+  <div class="row row-cols-2 row-cols-lg-3">
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col-4 col-lg-2">Column</div>
+    <div class="col-4 col-lg-2">Column</div>
+    <div class="col-4 col-lg-2">Column</div>
+    <div class="col-4 col-lg-2">Column</div>
+    <div class="col-4 col-lg-2">Column</div>
+    <div class="col-4 col-lg-2">Column</div>
+  </div>
+</div>
+</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;container&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;row row-cols-2 row-cols-lg-3&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col&#34;</span><span class="p">&gt;</span>Column<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col&#34;</span><span class="p">&gt;</span>Column<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col&#34;</span><span class="p">&gt;</span>Column<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col&#34;</span><span class="p">&gt;</span>Column<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col&#34;</span><span class="p">&gt;</span>Column<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col&#34;</span><span class="p">&gt;</span>Column<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-4 col-lg-2&#34;</span><span class="p">&gt;</span>Column<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-4 col-lg-2&#34;</span><span class="p">&gt;</span>Column<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-4 col-lg-2&#34;</span><span class="p">&gt;</span>Column<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-4 col-lg-2&#34;</span><span class="p">&gt;</span>Column<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-4 col-lg-2&#34;</span><span class="p">&gt;</span>Column<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-4 col-lg-2&#34;</span><span class="p">&gt;</span>Column<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
 <p>You can also use the accompanying Sass mixin, <code>row-cols()</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nc">.element</span> <span class="p">{</span>
   <span class="c1">// Three columns to start
@@ -982,20 +1015,20 @@
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$grid-columns</span><span class="o">:</span>      <span class="mi">12</span><span class="p">;</span>
 <span class="nv">$grid-gutter-width</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
 </code></pre></div><div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$grid-breakpoints</span><span class="o">:</span> <span class="p">(</span>
-  <span class="n">xs</span><span class="o">:</span> <span class="mi">0</span><span class="o">,</span>
-  <span class="n">sm</span><span class="o">:</span> <span class="mi">576</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">md</span><span class="o">:</span> <span class="mi">768</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">lg</span><span class="o">:</span> <span class="mi">992</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">xl</span><span class="o">:</span> <span class="mi">1200</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">xxl</span><span class="o">:</span> <span class="mi">1400</span><span class="kt">px</span>
+  <span class="na">xs</span><span class="o">:</span> <span class="mi">0</span><span class="o">,</span>
+  <span class="na">sm</span><span class="o">:</span> <span class="mi">576</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">md</span><span class="o">:</span> <span class="mi">768</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">lg</span><span class="o">:</span> <span class="mi">992</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">xl</span><span class="o">:</span> <span class="mi">1200</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">xxl</span><span class="o">:</span> <span class="mi">1400</span><span class="kt">px</span>
 <span class="p">);</span>
 </code></pre></div>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$container-max-widths</span><span class="o">:</span> <span class="p">(</span>
-  <span class="n">sm</span><span class="o">:</span> <span class="mi">540</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">md</span><span class="o">:</span> <span class="mi">720</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">lg</span><span class="o">:</span> <span class="mi">960</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">xl</span><span class="o">:</span> <span class="mi">1140</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">xxl</span><span class="o">:</span> <span class="mi">1320</span><span class="kt">px</span>
+  <span class="na">sm</span><span class="o">:</span> <span class="mi">540</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">md</span><span class="o">:</span> <span class="mi">720</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">lg</span><span class="o">:</span> <span class="mi">960</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">xl</span><span class="o">:</span> <span class="mi">1140</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">xxl</span><span class="o">:</span> <span class="mi">1320</span><span class="kt">px</span>
 <span class="p">);</span>
 </code></pre></div>
 <h3 id="mixins">Mixins</h3>
@@ -1018,7 +1051,7 @@
   <span class="k">@include</span><span class="nd"> make-container</span><span class="p">();</span>
   <span class="c1">// Make sure to define this width after the mixin to override
 </span><span class="c1"></span>  <span class="c1">// `width: 100%` generated by `make-container()`
-</span><span class="c1"></span>  <span class="nt">width</span><span class="nd">:</span> <span class="nt">800px</span><span class="p">;</span>
+</span><span class="c1"></span>  <span class="na">width</span><span class="o">:</span> <span class="mi">800</span><span class="kt">px</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nc">.example-row</span> <span class="p">{</span>
@@ -1063,21 +1096,21 @@
 <p>Using our built-in grid Sass variables and maps, it&rsquo;s possible to completely customize the predefined grid classes. Change the number of tiers, the media query dimensions, and the container widths—then recompile.</p>
 <h3 id="columns-and-gutters">Columns and gutters</h3>
 <p>The number of grid columns can be modified via Sass variables. <code>$grid-columns</code> is used to generate the widths (in percent) of each individual column while <code>$grid-gutter-width</code> sets the width for the column gutters.</p>
-<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$grid-columns</span><span class="o">:</span> <span class="mi">12</span> <span class="nv">!default</span><span class="p">;</span>
-<span class="nv">$grid-gutter-width</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.5</span><span class="kt">rem</span> <span class="nv">!default</span><span class="p">;</span>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$grid-columns</span><span class="o">:</span> <span class="mi">12</span> <span class="k">!default</span><span class="p">;</span>
+<span class="nv">$grid-gutter-width</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.5</span><span class="kt">rem</span> <span class="k">!default</span><span class="p">;</span>
 </code></pre></div><h3 id="grid-tiers">Grid tiers</h3>
 <p>Moving beyond the columns themselves, you may also customize the number of grid tiers. If you wanted just four grid tiers, you&rsquo;d update the <code>$grid-breakpoints</code> and <code>$container-max-widths</code> to something like this:</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$grid-breakpoints</span><span class="o">:</span> <span class="p">(</span>
-  <span class="n">xs</span><span class="o">:</span> <span class="mi">0</span><span class="o">,</span>
-  <span class="n">sm</span><span class="o">:</span> <span class="mi">480</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">md</span><span class="o">:</span> <span class="mi">768</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">lg</span><span class="o">:</span> <span class="mi">1024</span><span class="kt">px</span>
+  <span class="na">xs</span><span class="o">:</span> <span class="mi">0</span><span class="o">,</span>
+  <span class="na">sm</span><span class="o">:</span> <span class="mi">480</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">md</span><span class="o">:</span> <span class="mi">768</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">lg</span><span class="o">:</span> <span class="mi">1024</span><span class="kt">px</span>
 <span class="p">);</span>
 
 <span class="nv">$container-max-widths</span><span class="o">:</span> <span class="p">(</span>
-  <span class="n">sm</span><span class="o">:</span> <span class="mi">420</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">md</span><span class="o">:</span> <span class="mi">720</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">lg</span><span class="o">:</span> <span class="mi">960</span><span class="kt">px</span>
+  <span class="na">sm</span><span class="o">:</span> <span class="mi">420</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">md</span><span class="o">:</span> <span class="mi">720</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">lg</span><span class="o">:</span> <span class="mi">960</span><span class="kt">px</span>
 <span class="p">);</span>
 </code></pre></div><p>When making any changes to the Sass variables or maps, you&rsquo;ll need to save your changes and recompile. Doing so will output a brand new set of predefined grid classes for column widths, offsets, and ordering. Responsive visibility utilities will also be updated to use the custom breakpoints. Make sure to set grid values in <code>px</code> (not <code>rem</code>, <code>em</code>, or <code>%</code>).</p>
 
@@ -1097,7 +1130,7 @@
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1144,7 +1177,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -1152,7 +1185,7 @@
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

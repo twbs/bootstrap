@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Bootstrap includes a wide range of shorthand responsive margin, padding, and gap utility classes to modify an element&rsquo;s appearance.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -416,10 +416,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="margin-and-padding">Margin and padding</h2>
 <p>Assign responsive-friendly <code>margin</code> or <code>padding</code> values to an element or a subset of its sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. Classes are built from a default Sass map ranging from <code>.25rem</code> to <code>3rem</code>.</p>
@@ -456,20 +456,20 @@
 <h3 id="examples">Examples</h3>
 <p>Here are some representative examples of these classes:</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nc">.mt-0</span> <span class="p">{</span>
-  <span class="nt">margin-top</span><span class="nd">:</span> <span class="nt">0</span> <span class="o">!</span><span class="nt">important</span><span class="p">;</span>
+  <span class="na">margin-top</span><span class="o">:</span> <span class="mi">0</span> <span class="k">!important</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nc">.ms-1</span> <span class="p">{</span>
-  <span class="nt">margin-left</span><span class="nd">:</span> <span class="o">(</span><span class="err">$</span><span class="nt">spacer</span> <span class="o">*</span> <span class="nc">.25</span><span class="o">)</span> <span class="o">!</span><span class="nt">important</span><span class="p">;</span>
+  <span class="na">margin-left</span><span class="o">:</span> <span class="p">(</span><span class="nv">$spacer</span> <span class="o">*</span> <span class="mf">.25</span><span class="p">)</span> <span class="k">!important</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nc">.px-2</span> <span class="p">{</span>
-  <span class="nt">padding-left</span><span class="nd">:</span> <span class="o">(</span><span class="err">$</span><span class="nt">spacer</span> <span class="o">*</span> <span class="nc">.5</span><span class="o">)</span> <span class="o">!</span><span class="nt">important</span><span class="p">;</span>
-  <span class="nt">padding-right</span><span class="nd">:</span> <span class="o">(</span><span class="err">$</span><span class="nt">spacer</span> <span class="o">*</span> <span class="nc">.5</span><span class="o">)</span> <span class="o">!</span><span class="nt">important</span><span class="p">;</span>
+  <span class="na">padding-left</span><span class="o">:</span> <span class="p">(</span><span class="nv">$spacer</span> <span class="o">*</span> <span class="mf">.5</span><span class="p">)</span> <span class="k">!important</span><span class="p">;</span>
+  <span class="na">padding-right</span><span class="o">:</span> <span class="p">(</span><span class="nv">$spacer</span> <span class="o">*</span> <span class="mf">.5</span><span class="p">)</span> <span class="k">!important</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nc">.p-3</span> <span class="p">{</span>
-  <span class="nt">padding</span><span class="nd">:</span> <span class="err">$</span><span class="nt">spacer</span> <span class="o">!</span><span class="nt">important</span><span class="p">;</span>
+  <span class="na">padding</span><span class="o">:</span> <span class="nv">$spacer</span> <span class="k">!important</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><h3 id="horizontal-centering">Horizontal centering</h3>
 <p>Additionally, Bootstrap also includes an <code>.mx-auto</code> class for horizontally centering fixed-width block level content—that is, content that has <code>display: block</code> and a <code>width</code> set—by setting the horizontal margins to <code>auto</code>.</p>
@@ -485,7 +485,7 @@
 <p>In CSS, <code>margin</code> properties can utilize negative values (<code>padding</code> cannot). These negative margins are <strong>disabled by default</strong>, but can be enabled in Sass by setting <code>$enable-negative-margins: true</code>.</p>
 <p>The syntax is nearly the same as the default, positive margin utilities, but with the addition of <code>n</code> before the requested size. Here&rsquo;s an example class that&rsquo;s the opposite of <code>.mt-1</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nc">.mt-n1</span> <span class="p">{</span>
-  <span class="nt">margin-top</span><span class="nd">:</span> <span class="nt">-0</span><span class="nc">.25rem</span> <span class="o">!</span><span class="nt">important</span><span class="p">;</span>
+  <span class="na">margin-top</span><span class="o">:</span> <span class="o">-</span><span class="mi">0</span><span class="mf">.25</span><span class="kt">rem</span> <span class="k">!important</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><h2 id="gap">Gap</h2>
 <p>When using <code>display: grid</code>, you can make use of <code>gap</code> utilities on the parent grid container. This can save on having to add margin utilities to individual grid items (children of a <code>display: grid</code> container). Gap utilities are responsive by default, and are generated via our utilities API, based on the <code>$spacers</code> Sass map.</p>
@@ -506,12 +506,12 @@
 <p>Spacing utilities are declared via Sass map and then generated with our utilities API.</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$spacer</span><span class="o">:</span> <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
 <span class="nv">$spacers</span><span class="o">:</span> <span class="p">(</span>
-  <span class="mi">0</span><span class="o">:</span> <span class="mi">0</span><span class="o">,</span>
-  <span class="mi">1</span><span class="o">:</span> <span class="nv">$spacer</span> <span class="o">/</span> <span class="mi">4</span><span class="o">,</span>
-  <span class="mi">2</span><span class="o">:</span> <span class="nv">$spacer</span> <span class="o">/</span> <span class="mi">2</span><span class="o">,</span>
-  <span class="mi">3</span><span class="o">:</span> <span class="nv">$spacer</span><span class="o">,</span>
-  <span class="mi">4</span><span class="o">:</span> <span class="nv">$spacer</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.5</span><span class="o">,</span>
-  <span class="mi">5</span><span class="o">:</span> <span class="nv">$spacer</span> <span class="o">*</span> <span class="mi">3</span><span class="o">,</span>
+  <span class="na">0</span><span class="o">:</span> <span class="mi">0</span><span class="o">,</span>
+  <span class="na">1</span><span class="o">:</span> <span class="nv">$spacer</span> <span class="o">*</span> <span class="mf">.25</span><span class="o">,</span>
+  <span class="na">2</span><span class="o">:</span> <span class="nv">$spacer</span> <span class="o">*</span> <span class="mf">.5</span><span class="o">,</span>
+  <span class="na">3</span><span class="o">:</span> <span class="nv">$spacer</span><span class="o">,</span>
+  <span class="na">4</span><span class="o">:</span> <span class="nv">$spacer</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.5</span><span class="o">,</span>
+  <span class="na">5</span><span class="o">:</span> <span class="nv">$spacer</span> <span class="o">*</span> <span class="mi">3</span><span class="o">,</span>
 <span class="p">);</span>
 
 <span class="nv">$negative-spacers</span><span class="o">:</span> <span class="nf">if</span><span class="p">(</span><span class="nv">$enable-negative-margins</span><span class="o">,</span> <span class="nf">negativify-map</span><span class="p">(</span><span class="nv">$spacers</span><span class="p">)</span><span class="o">,</span> <span class="n">null</span><span class="p">);</span>
@@ -664,7 +664,7 @@
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -711,7 +711,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -719,7 +719,7 @@
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

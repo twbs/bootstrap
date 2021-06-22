@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Reboot, a collection of element-specific CSS changes in a single file, kickstart Bootstrap to provide an elegant, consistent, and simple baseline to build upon.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -426,10 +426,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="approach">Approach</h2>
 <p>Reboot builds upon Normalize, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some <code>&lt;table&gt;</code> styles for a simpler baseline and later provide <code>.table</code>, <code>.table-bordered</code>, and more.</p>
@@ -455,11 +455,9 @@
 <p>Bootstrap utilizes a &ldquo;native font stack&rdquo; or &ldquo;system font stack&rdquo; for optimum text rendering on every device and OS. These system fonts have been designed specifically with today&rsquo;s devices in mind, with improved rendering on screens, variable font support, and more. Read more about <a href="https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/">native font stacks in this <em>Smashing Magazine</em> article</a>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$font-family-sans-serif</span><span class="o">:</span>
   <span class="c1">// Cross-platform generic font family (default user interface font)</span>
-  <span class="n">system-ui</span><span class="o">,</span>
+  <span class="ni">system-ui</span><span class="o">,</span>
   <span class="c1">// Safari for macOS and iOS (San Francisco)</span>
   <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span>
-  <span class="c1">// Chrome &lt; 56 for macOS (San Francisco)</span>
-  <span class="n">BlinkMacSystemFont</span><span class="o">,</span>
   <span class="c1">// Windows</span>
   <span class="s2">&#34;Segoe UI&#34;</span><span class="o">,</span>
   <span class="c1">// Android</span>
@@ -470,9 +468,9 @@
   <span class="s2">&#34;Noto Sans&#34;</span><span class="o">,</span>
   <span class="s2">&#34;Liberation Sans&#34;</span><span class="o">,</span>
   <span class="c1">// Sans serif fallback</span>
-  <span class="no">sans-serif</span><span class="o">,</span>
+  <span class="ni">sans-serif</span><span class="o">,</span>
   <span class="c1">// Emoji fonts</span>
-  <span class="s2">&#34;Apple Color Emoji&#34;</span><span class="o">,</span> <span class="s2">&#34;Segoe UI Emoji&#34;</span><span class="o">,</span> <span class="s2">&#34;Segoe UI Symbol&#34;</span><span class="o">,</span> <span class="s2">&#34;Noto Color Emoji&#34;</span> <span class="nv">!default</span><span class="p">;</span>
+  <span class="s2">&#34;Apple Color Emoji&#34;</span><span class="o">,</span> <span class="s2">&#34;Segoe UI Emoji&#34;</span><span class="o">,</span> <span class="s2">&#34;Segoe UI Symbol&#34;</span><span class="o">,</span> <span class="s2">&#34;Noto Color Emoji&#34;</span> <span class="k">!default</span><span class="p">;</span>
 </code></pre></div><p>Note that because the font stack includes emoji fonts, many common symbol/dingbat unicode characters will be rendered as multi-colored pictographs. Their appearance will vary, depending on the style used in the browser/platform&rsquo;s native emoji font, and they won&rsquo;t be affected by any CSS <code>color</code> styles.</p>
 <p>This <code>font-family</code> is applied to the <code>&lt;body&gt;</code> and automatically inherited globally throughout Bootstrap. To switch the global <code>font-family</code>, update <code>$font-family-base</code> and recompile Bootstrap.</p>
 <h2 id="headings-and-paragraphs">Headings and paragraphs</h2>
@@ -833,7 +831,7 @@ To edit settings, press <span class="p">&lt;</span><span class="nt">kbd</span><s
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -880,7 +878,7 @@ To edit settings, press <span class="p">&lt;</span><span class="nt">kbd</span><s
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -888,7 +886,7 @@ To edit settings, press <span class="p">&lt;</span><span class="nt">kbd</span><s
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

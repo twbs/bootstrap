@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Use Bootstrap&rsquo;s JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or completely custom content.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -439,6 +439,7 @@
             <li><a href="#handleupdate">handleUpdate</a></li>
             <li><a href="#dispose">dispose</a></li>
             <li><a href="#getinstance">getInstance</a></li>
+            <li><a href="#getorcreateinstance">getOrCreateInstance</a></li>
           </ul>
         </li>
         <li><a href="#events">Events</a></li>
@@ -447,10 +448,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="how-it-works">How it works</h2>
 <p>Before getting started with Bootstrap&rsquo;s modal component, be sure to read the following as our menu options have recently changed.</p>
@@ -1249,27 +1250,27 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <span class="nv">$modal-lg</span><span class="o">:</span>                          <span class="mi">800</span><span class="kt">px</span><span class="p">;</span>
 <span class="nv">$modal-xl</span><span class="o">:</span>                          <span class="mi">1140</span><span class="kt">px</span><span class="p">;</span>
 
-<span class="nv">$modal-fade-transform</span><span class="o">:</span>              <span class="nf">translate</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">-50</span><span class="kt">px</span><span class="p">);</span>
-<span class="nv">$modal-show-transform</span><span class="o">:</span>              <span class="no">none</span><span class="p">;</span>
-<span class="nv">$modal-transition</span><span class="o">:</span>                  <span class="no">transform</span> <span class="mf">.3</span><span class="kt">s</span> <span class="n">ease-out</span><span class="p">;</span>
+<span class="nv">$modal-fade-transform</span><span class="o">:</span>              <span class="nf">translate</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">50</span><span class="kt">px</span><span class="p">);</span>
+<span class="nv">$modal-show-transform</span><span class="o">:</span>              <span class="ni">none</span><span class="p">;</span>
+<span class="nv">$modal-transition</span><span class="o">:</span>                  <span class="ni">transform</span> <span class="mf">.3</span><span class="kt">s</span> <span class="ni">ease-out</span><span class="p">;</span>
 <span class="nv">$modal-scale-transform</span><span class="o">:</span>             <span class="nf">scale</span><span class="p">(</span><span class="mi">1</span><span class="mf">.02</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="loop">Loop</h3>
 <p><a href="#fullscreen-modal">Responsive fullscreen modals</a> are generated via the <code>$breakpoints</code> map and a loop in <code>scss/_modal.scss</code>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@each</span> <span class="err">$</span><span class="nt">breakpoint</span> <span class="nt">in</span> <span class="nt">map-keys</span><span class="o">(</span><span class="err">$</span><span class="nt">grid-breakpoints</span><span class="o">)</span> <span class="p">{</span>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@each</span> <span class="nv">$breakpoint</span> <span class="ow">in</span> <span class="nf">map-keys</span><span class="p">(</span><span class="nv">$grid-breakpoints</span><span class="p">)</span> <span class="p">{</span>
   <span class="nv">$infix</span><span class="o">:</span> <span class="nf">breakpoint-infix</span><span class="p">(</span><span class="nv">$breakpoint</span><span class="o">,</span> <span class="nv">$grid-breakpoints</span><span class="p">);</span>
   <span class="nv">$postfix</span><span class="o">:</span> <span class="nf">if</span><span class="p">(</span><span class="nv">$infix</span> <span class="o">!=</span> <span class="s2">&#34;&#34;</span><span class="o">,</span> <span class="nv">$infix</span> <span class="o">+</span> <span class="s2">&#34;-down&#34;</span><span class="o">,</span> <span class="s2">&#34;&#34;</span><span class="p">);</span>
 
   <span class="k">@include</span><span class="nd"> media-breakpoint-down</span><span class="p">(</span><span class="nv">$breakpoint</span><span class="p">)</span> <span class="p">{</span>
     <span class="nc">.modal-fullscreen</span><span class="si">#{</span><span class="nv">$postfix</span><span class="si">}</span> <span class="p">{</span>
-      <span class="nt">width</span><span class="nd">:</span> <span class="nt">100vw</span><span class="p">;</span>
-      <span class="nt">max-width</span><span class="nd">:</span> <span class="nt">none</span><span class="p">;</span>
-      <span class="nt">height</span><span class="nd">:</span> <span class="nt">100</span><span class="err">%</span><span class="p">;</span>
-      <span class="nt">margin</span><span class="nd">:</span> <span class="nt">0</span><span class="p">;</span>
+      <span class="na">width</span><span class="o">:</span> <span class="mi">100</span><span class="kt">vw</span><span class="p">;</span>
+      <span class="na">max-width</span><span class="o">:</span> <span class="ni">none</span><span class="p">;</span>
+      <span class="na">height</span><span class="o">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+      <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
 
       <span class="nc">.modal-content</span> <span class="p">{</span>
-        <span class="nt">height</span><span class="nd">:</span> <span class="nt">100</span><span class="err">%</span><span class="p">;</span>
-        <span class="nt">border</span><span class="nd">:</span> <span class="nt">0</span><span class="p">;</span>
+        <span class="na">height</span><span class="o">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+        <span class="na">border</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
         <span class="k">@include</span><span class="nd"> border-radius</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
       <span class="p">}</span>
 
@@ -1278,7 +1279,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
       <span class="p">}</span>
 
       <span class="nc">.modal-body</span> <span class="p">{</span>
-        <span class="nt">overflow-y</span><span class="nd">:</span> <span class="nt">auto</span><span class="p">;</span>
+        <span class="na">overflow-y</span><span class="o">:</span> <span class="ni">auto</span><span class="p">;</span>
       <span class="p">}</span>
 
       <span class="nc">.modal-footer</span> <span class="p">{</span>
@@ -1289,7 +1290,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="usage">Usage</h2>
-<p>The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds <code>.modal-open</code> to the <code>&lt;body&gt;</code> to override default scrolling behavior and generates a <code>.modal-backdrop</code> to provide a click area for dismissing shown modals when clicking outside the modal.</p>
+<p>The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also overrides default scrolling behavior and generates a <code>.modal-backdrop</code> to provide a click area for dismissing shown modals when clicking outside the modal.</p>
 <h3 id="via-data-attributes">Via data attributes</h3>
 <p>Activate a modal without writing JavaScript. Set <code>data-bs-toggle=&quot;modal&quot;</code> on a controller element, like a button, along with a <code>data-bs-target=&quot;#foo&quot;</code> or <code>href=&quot;#foo&quot;</code> to target a specific modal to toggle.</p>
 <div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-bs-toggle</span><span class="o">=</span><span class="s">&#34;modal&#34;</span> <span class="na">data-bs-target</span><span class="o">=</span><span class="s">&#34;#myModal&#34;</span><span class="p">&gt;</span>Launch modal<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
@@ -1363,6 +1364,10 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <p><em>Static</em> method which allows you to get the modal instance associated with a DOM element</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">myModalEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;myModal&#39;</span><span class="p">)</span>
 <span class="kd">var</span> <span class="nx">modal</span> <span class="o">=</span> <span class="nx">bootstrap</span><span class="p">.</span><span class="nx">Modal</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">(</span><span class="nx">myModalEl</span><span class="p">)</span> <span class="c1">// Returns a Bootstrap modal instance
+</span></code></pre></div><h4 id="getorcreateinstance">getOrCreateInstance</h4>
+<p><em>Static</em> method which allows you to get the modal instance associated with a DOM element, or create a new one in case it wasn&rsquo;t initialised</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">myModalEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#myModal&#39;</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">modal</span> <span class="o">=</span> <span class="nx">bootstrap</span><span class="p">.</span><span class="nx">Modal</span><span class="p">.</span><span class="nx">getOrCreateInstance</span><span class="p">(</span><span class="nx">myModalEl</span><span class="p">)</span> <span class="c1">// Returns a Bootstrap modal instance
 </span></code></pre></div><h3 id="events">Events</h3>
 <p>Bootstrap&rsquo;s modal class exposes a few events for hooking into modal functionality. All modal events are fired at the modal itself (i.e. at the <code>&lt;div class=&quot;modal&quot;&gt;</code>).</p>
 <table class="table">
@@ -1416,7 +1421,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1463,7 +1468,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -1471,7 +1476,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

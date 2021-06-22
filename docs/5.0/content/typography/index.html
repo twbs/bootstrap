@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Documentation and examples for Bootstrap typography, including global settings, headings, body text, lists, and more.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -432,10 +432,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="global-settings">Global settings</h2>
 <p>Bootstrap sets basic global display, typography, and link styles. When more control is needed, check out the <a href="/docs/5.0/utilities/text/">textual utility classes</a>.</p>
@@ -544,12 +544,12 @@
 <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;display-6&#34;</span><span class="p">&gt;</span>Display 6<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 </code></pre></div><p>Display headings are configured via the <code>$display-font-sizes</code> Sass map and two variables, <code>$display-font-weight</code> and <code>$display-line-height</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$display-font-sizes</span><span class="o">:</span> <span class="p">(</span>
-  <span class="mi">1</span><span class="o">:</span> <span class="mi">5</span><span class="kt">rem</span><span class="o">,</span>
-  <span class="mi">2</span><span class="o">:</span> <span class="mi">4</span><span class="mf">.5</span><span class="kt">rem</span><span class="o">,</span>
-  <span class="mi">3</span><span class="o">:</span> <span class="mi">4</span><span class="kt">rem</span><span class="o">,</span>
-  <span class="mi">4</span><span class="o">:</span> <span class="mi">3</span><span class="mf">.5</span><span class="kt">rem</span><span class="o">,</span>
-  <span class="mi">5</span><span class="o">:</span> <span class="mi">3</span><span class="kt">rem</span><span class="o">,</span>
-  <span class="mi">6</span><span class="o">:</span> <span class="mi">2</span><span class="mf">.5</span><span class="kt">rem</span>
+  <span class="na">1</span><span class="o">:</span> <span class="mi">5</span><span class="kt">rem</span><span class="o">,</span>
+  <span class="na">2</span><span class="o">:</span> <span class="mi">4</span><span class="mf">.5</span><span class="kt">rem</span><span class="o">,</span>
+  <span class="na">3</span><span class="o">:</span> <span class="mi">4</span><span class="kt">rem</span><span class="o">,</span>
+  <span class="na">4</span><span class="o">:</span> <span class="mi">3</span><span class="mf">.5</span><span class="kt">rem</span><span class="o">,</span>
+  <span class="na">5</span><span class="o">:</span> <span class="mi">3</span><span class="kt">rem</span><span class="o">,</span>
+  <span class="na">6</span><span class="o">:</span> <span class="mi">2</span><span class="mf">.5</span><span class="kt">rem</span>
 <span class="p">);</span>
 
 <span class="nv">$display-font-weight</span><span class="o">:</span> <span class="mi">300</span><span class="p">;</span>
@@ -773,7 +773,7 @@
 <h2 id="sass">Sass</h2>
 <h3 id="variables">Variables</h3>
 <p>Headings have some dedicated variables for sizing and spacing.</p>
-<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$headings-margin-bottom</span><span class="o">:</span>      <span class="nv">$spacer</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$headings-margin-bottom</span><span class="o">:</span>      <span class="nv">$spacer</span> <span class="o">*</span> <span class="mf">.5</span><span class="p">;</span>
 <span class="nv">$headings-font-family</span><span class="o">:</span>        <span class="n">null</span><span class="p">;</span>
 <span class="nv">$headings-font-style</span><span class="o">:</span>         <span class="n">null</span><span class="p">;</span>
 <span class="nv">$headings-font-weight</span><span class="o">:</span>        <span class="mi">500</span><span class="p">;</span>
@@ -798,7 +798,7 @@
 <span class="nv">$blockquote-footer-font-size</span><span class="o">:</span> <span class="nv">$small-font-size</span><span class="p">;</span>
 
 <span class="nv">$hr-margin-y</span><span class="o">:</span>                 <span class="nv">$spacer</span><span class="p">;</span>
-<span class="nv">$hr-color</span><span class="o">:</span>                    <span class="no">inherit</span><span class="p">;</span>
+<span class="nv">$hr-color</span><span class="o">:</span>                    <span class="ni">inherit</span><span class="p">;</span>
 <span class="nv">$hr-height</span><span class="o">:</span>                   <span class="nv">$border-width</span><span class="p">;</span>
 <span class="nv">$hr-opacity</span><span class="o">:</span>                  <span class="mf">.25</span><span class="p">;</span>
 
@@ -835,7 +835,7 @@
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -882,7 +882,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -890,7 +890,7 @@
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>
