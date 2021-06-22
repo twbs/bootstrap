@@ -24,6 +24,7 @@ const DefaultType = {
   clickCallback: '(function|null)'
 }
 const NAME = 'backdrop'
+const CLASS_NAME_BACKDROP_CUSTOM_ROOT = 'modal-backdrop-custom-root'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 
@@ -32,6 +33,7 @@ const EVENT_MOUSEDOWN = `mousedown.bs.${NAME}`
 class Backdrop {
   constructor(config) {
     this._config = this._getConfig(config)
+    this._isCustomRoot = Boolean(config && config.rootElement)
     this._isAppended = false
     this._element = null
   }
@@ -74,7 +76,9 @@ class Backdrop {
   _getElement() {
     if (!this._element) {
       const backdrop = document.createElement('div')
-      backdrop.className = this._config.className
+      backdrop.className = this._isCustomRoot ?
+        `${this._config.className} ${CLASS_NAME_BACKDROP_CUSTOM_ROOT}` :
+        this._config.className
       if (this._config.isAnimated) {
         backdrop.classList.add(CLASS_NAME_FADE)
       }

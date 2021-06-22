@@ -564,6 +564,38 @@ Be sure to add `aria-labelledby="..."`, referencing the modal title, to `.modal`
 
 Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. [See this helpful Stack Overflow post](https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal) for more information.
 
+### Configuring root element
+
+Currently this is only supported when using modals with JavaScript
+
+```js
+var modal = bootstrap.Modal(document.getElementById('modal'), {
+  rootElement: document.getElementById('another-element')
+});
+```
+{{< example >}}
+<!-- modal will appear within this element and not document.body -->
+<div id="another-element" class="position-relative border" style="height: 300px;">
+
+  <!-- modal -->
+  <div id="modal-root-example" class="modal fade" tabindex="-1" aria-labelledby="modal-root-example-title" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title h4" id="modal-root-example-title">Modal in a container</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button id="modal-root-example-btn" type="button" class="btn btn-primary mt-3" data-bs-target="#modal-root-example">
+  Show modal in another element
+</button>
+{{< /example >}}
 ## Optional sizes
 
 Modals have three optional sizes, available via modifier classes to be placed on a `.modal-dialog`. These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
@@ -876,6 +908,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>boolean</td>
       <td><code>true</code></td>
       <td>Puts the focus on the modal when initialized.</td>
+    </tr>
+    <tr>
+      <td><code>rootElement</code></td>
+      <td>string or element</td>
+      <td><code>document.body</code></td>
+      <td>Configure the container that the modal resides in.</td>
     </tr>
   </tbody>
 </table>

@@ -1,4 +1,3 @@
-// .modal-open      - body class for killing the scroll
 // .modal           - container to scroll within
 // .modal-dialog    - positioning shell for the actual modal
 // .modal-content   - actual modal w/ bg and corners and stuff
@@ -86,6 +85,13 @@
 // Modal background
 .modal-backdrop {
   @include overlay-backdrop($zindex-modal-backdrop, $modal-backdrop-bg, $modal-backdrop-opacity);
+}
+
+.modal-custom-root,
+.modal-backdrop-custom-root {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 // Modal header

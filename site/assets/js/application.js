@@ -117,6 +117,16 @@
     })
   }
 
+  var rootElementExample = document.getElementById('modal-root-example')
+  if (rootElementExample) {
+    var rootElementModal = new bootstrap.Modal(rootElementExample, {
+      rootElement: document.getElementById('another-element')
+    })
+    document.getElementById('modal-root-example-btn').addEventListener('click', function () {
+      rootElementModal.show()
+    })
+  }
+
   // Activate animated progress bar
   var btnToggleAnimatedProgress = document.getElementById('btnToggleAnimatedProgress')
   if (btnToggleAnimatedProgress) {

@@ -35,13 +35,15 @@ const ESCAPE_KEY = 'Escape'
 const Default = {
   backdrop: true,
   keyboard: true,
-  focus: true
+  focus: true,
+  rootElement: 'body'
 }
 
 const DefaultType = {
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
-  focus: 'boolean'
+  focus: 'boolean',
+  rootElement: '(element|string)'
 }
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
@@ -57,7 +59,7 @@ const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY}`
 const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
-const CLASS_NAME_OPEN = 'modal-open'
+const CLASS_NAME_MODAL_CUSTOM_ROOT = 'modal-custom-root'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_STATIC = 'modal-static'
@@ -80,6 +82,7 @@ class Modal extends BaseComponent {
     this._config = this._getConfig(config)
     this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element)
     this._backdrop = this._initializeBackDrop()
+    this._isCustomRoot = Boolean(config && config.rootElement)
     this._isShown = false
     this._ignoreBackdropClick = false
     this._isTransitioning = false
@@ -122,11 +125,7 @@ class Modal extends BaseComponent {
     }
 
     this._scrollBar.hide()
-
-    document.body.classList.add(CLASS_NAME_OPEN)
-
     this._adjustDialog()
-
     this._setEscapeEvent()
     this._setResizeEvent()
 
@@ -202,7 +201,8 @@ class Modal extends BaseComponent {
   _initializeBackDrop() {
     return new Backdrop({
       isVisible: Boolean(this._config.backdrop), // 'static' option will be translated to true, and booleans will keep their value
-      isAnimated: this._isAnimated()
+      isAnimated: this._isAnimated(),
+      rootElement: this._config.rootElement
     })
   }
 
@@ -240,6 +240,9 @@ class Modal extends BaseComponent {
     }
 
     this._element.classList.add(CLASS_NAME_SHOW)
+    if (this._isCustomRoot) {
+      this._element.classList.add(CLASS_NAME_MODAL_CUSTOM_ROOT)
+    }
 
     if (this._config.focus) {
       this._enforceFocus()
@@ -298,9 +301,14 @@ class Modal extends BaseComponent {
     this._element.setAttribute('aria-hidden', true)
     this._element.removeAttribute('aria-modal')
     this._element.removeAttribute('role')
+
+    if (this._isCustomRoot) {
+      this._element.classList.remove(CLASS_NAME_MODAL_CUSTOM_ROOT)
+    }
+
     this._isTransitioning = false
+
     this._backdrop.hide(() => {
-      document.body.classList.remove(CLASS_NAME_OPEN)
       this._resetAdjustments()
       this._scrollBar.reset()
       EventHandler.trigger(this._element, EVENT_HIDDEN)

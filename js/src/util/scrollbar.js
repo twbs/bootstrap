@@ -13,8 +13,8 @@ const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-to
 const SELECTOR_STICKY_CONTENT = '.sticky-top'
 
 class ScrollBarHelper {
-  constructor() {
-    this._element = document.body
+  constructor(rootElement) {
+    this._element = rootElement || document.body
   }
 
   getWidth() {
