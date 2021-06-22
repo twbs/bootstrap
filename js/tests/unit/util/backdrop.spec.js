@@ -3,7 +3,6 @@ import { getTransitionDurationFromElement } from '../../../src/util/index'
 import { clearFixture, getFixture } from '../../helpers/fixture'
 
 const CLASS_BACKDROP = '.modal-backdrop'
-const CLASS_NAME_BACKDROP = 'modal-backdrop'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 
@@ -27,8 +26,7 @@ describe('Backdrop', () => {
     it('if it is "shown", should append the backdrop html once, on show, and contain "show" class', done => {
       const instance = new Backdrop({
         isVisible: true,
-        isAnimated: false,
-        backdropClassName: CLASS_NAME_BACKDROP
+        isAnimated: false
       })
       const getElements = () => document.querySelectorAll(CLASS_BACKDROP)
 
@@ -47,8 +45,7 @@ describe('Backdrop', () => {
     it('if it is not "shown", should not append the backdrop html', done => {
       const instance = new Backdrop({
         isVisible: false,
-        isAnimated: true,
-        backdropClassName: CLASS_NAME_BACKDROP
+        isAnimated: true
       })
       const getElements = () => document.querySelectorAll(CLASS_BACKDROP)
 
@@ -62,8 +59,7 @@ describe('Backdrop', () => {
     it('if it is "shown" and "animated", should append the backdrop html once, and contain "fade" class', done => {
       const instance = new Backdrop({
         isVisible: true,
-        isAnimated: true,
-        backdropClassName: CLASS_NAME_BACKDROP
+        isAnimated: true
       })
       const getElements = () => document.querySelectorAll(CLASS_BACKDROP)
 
@@ -83,8 +79,7 @@ describe('Backdrop', () => {
     it('should remove the backdrop html', done => {
       const instance = new Backdrop({
         isVisible: true,
-        isAnimated: true,
-        backdropClassName: CLASS_NAME_BACKDROP
+        isAnimated: true
       })
 
       const getElements = () => document.body.querySelectorAll(CLASS_BACKDROP)
@@ -102,8 +97,7 @@ describe('Backdrop', () => {
     it('should remove "show" class', done => {
       const instance = new Backdrop({
         isVisible: true,
-        isAnimated: true,
-        backdropClassName: CLASS_NAME_BACKDROP
+        isAnimated: true
       })
       const elem = instance._getElement()
 
@@ -117,8 +111,7 @@ describe('Backdrop', () => {
     it('if it is not "shown", should not try to remove Node on remove method', done => {
       const instance = new Backdrop({
         isVisible: false,
-        isAnimated: true,
-        backdropClassName: CLASS_NAME_BACKDROP
+        isAnimated: true
       })
       const getElements = () => document.querySelectorAll(CLASS_BACKDROP)
       const spy = spyOn(instance, 'dispose').and.callThrough()
@@ -142,8 +135,7 @@ describe('Backdrop', () => {
       const instance = new Backdrop({
         isVisible: true,
         isAnimated: true,
-        rootElement: wrapper,
-        backdropClassName: CLASS_NAME_BACKDROP
+        rootElement: wrapper
       })
 
       const getElements = () => document.querySelectorAll(CLASS_BACKDROP)
@@ -165,7 +157,6 @@ describe('Backdrop', () => {
       const instance = new Backdrop({
         isVisible: true,
         isAnimated: false,
-        backdropClassName: CLASS_NAME_BACKDROP,
         clickCallback: () => spy()
       })
       const endTest = () => {
@@ -188,8 +179,7 @@ describe('Backdrop', () => {
     it('if it is animated, should show and hide backdrop after counting transition duration', done => {
       const instance = new Backdrop({
         isVisible: true,
-        isAnimated: true,
-        backdropClassName: CLASS_NAME_BACKDROP
+        isAnimated: true
       })
       const spy2 = jasmine.createSpy('spy2')
 
@@ -212,8 +202,7 @@ describe('Backdrop', () => {
       const spy = jasmine.createSpy('spy', getTransitionDurationFromElement)
       const instance = new Backdrop({
         isVisible: true,
-        isAnimated: false,
-        backdropClassName: CLASS_NAME_BACKDROP
+        isAnimated: false
       })
       const spy2 = jasmine.createSpy('spy2')
 
@@ -230,8 +219,7 @@ describe('Backdrop', () => {
     it('if it is not "shown", should not call delay callbacks', done => {
       const instance = new Backdrop({
         isVisible: false,
-        isAnimated: true,
-        backdropClassName: CLASS_NAME_BACKDROP
+        isAnimated: true
       })
       const spy = jasmine.createSpy('spy', getTransitionDurationFromElement)
 
@@ -242,49 +230,62 @@ describe('Backdrop', () => {
       })
     })
   })
-
-  describe('rootElement initialization', () => {
-    it('Should be appended on "document.body" by default', done => {
-      const instance = new Backdrop({
-        isVisible: true,
-        backdropClassName: CLASS_NAME_BACKDROP
+  describe('Config', () => {
+    describe('rootElement initialization', () => {
+      it('Should be appended on "document.body" by default', done => {
+        const instance = new Backdrop({
+          isVisible: true
+        })
+        const getElement = () => document.querySelector(CLASS_BACKDROP)
+        instance.show(() => {
+          expect(getElement().parentElement).toEqual(document.body)
+          done()
+        })
       })
-      const getElement = () => document.querySelector(CLASS_BACKDROP)
-      instance.show(() => {
-        expect(getElement().parentElement).toEqual(document.body)
-        done()
+
+      it('Should find the rootElement if passed as a string', done => {
+        const instance = new Backdrop({
+          isVisible: true,
+          rootElement: 'body'
+        })
+        const getElement = () => document.querySelector(CLASS_BACKDROP)
+        instance.show(() => {
+          expect(getElement().parentElement).toEqual(document.body)
+          done()
+        })
+      })
+
+      it('Should appended on any element given by the proper config', done => {
+        fixtureEl.innerHTML = [
+          '<div id="wrapper">',
+          '</div>'
+        ].join('')
+
+        const wrapper = fixtureEl.querySelector('#wrapper')
+        const instance = new Backdrop({
+          isVisible: true,
+          rootElement: wrapper
+        })
+        const getElement = () => document.querySelector(CLASS_BACKDROP)
+        instance.show(() => {
+          expect(getElement().parentElement).toEqual(wrapper)
+          done()
+        })
       })
     })
 
-    it('Should find the rootElement if passed as a string', done => {
-      const instance = new Backdrop({
-        isVisible: true,
-        rootElement: 'body',
-        backdropClassName: CLASS_NAME_BACKDROP
-      })
-      const getElement = () => document.querySelector(CLASS_BACKDROP)
-      instance.show(() => {
-        expect(getElement().parentElement).toEqual(document.body)
-        done()
-      })
-    })
-
-    it('Should appended on any element given by the proper config', done => {
-      fixtureEl.innerHTML = [
-        '<div id="wrapper">',
-        '</div>'
-      ].join('')
-
-      const wrapper = fixtureEl.querySelector('#wrapper')
-      const instance = new Backdrop({
-        isVisible: true,
-        rootElement: wrapper,
-        backdropClassName: CLASS_NAME_BACKDROP
-      })
-      const getElement = () => document.querySelector(CLASS_BACKDROP)
-      instance.show(() => {
-        expect(getElement().parentElement).toEqual(wrapper)
-        done()
+    describe('ClassName', () => {
+      it('Should be able to have different classNames than default', done => {
+        const instance = new Backdrop({
+          isVisible: true,
+          className: 'foo'
+        })
+        const getElement = () => document.querySelector('.foo')
+        instance.show(() => {
+          expect(getElement()).toEqual(instance._getElement())
+          instance.dispose()
+          done()
+        })
       })
     })
   })
