@@ -33,7 +33,6 @@ const EVENT_MOUSEDOWN = `mousedown.bs.${NAME}`
 class Backdrop {
   constructor(config) {
     this._config = this._getConfig(config)
-    this._isCustomRoot = Boolean(config && config.rootElement)
     this._isAppended = false
     this._element = null
   }
@@ -76,7 +75,7 @@ class Backdrop {
   _getElement() {
     if (!this._element) {
       const backdrop = document.createElement('div')
-      backdrop.className = this._isCustomRoot ?
+      backdrop.className = this._hasCustomRoot() ?
         `${this._config.className} ${CLASS_NAME_BACKDROP_CUSTOM_ROOT}` :
         this._config.className
       if (this._config.isAnimated) {
@@ -113,6 +112,10 @@ class Backdrop {
     })
 
     this._isAppended = true
+  }
+
+  _hasCustomRoot() {
+    return this._config.rootElement !== document.body
   }
 
   dispose() {

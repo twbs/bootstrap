@@ -7,6 +7,7 @@
 
 import {
   defineJQueryPlugin,
+  getElement,
   getElementFromSelector,
   isRTL,
   isVisible,
@@ -60,6 +61,7 @@ const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_MODAL_CUSTOM_ROOT = 'modal-custom-root'
+const CLASS_NAME_OPEN = 'modal-open'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_STATIC = 'modal-static'
@@ -82,7 +84,6 @@ class Modal extends BaseComponent {
     this._config = this._getConfig(config)
     this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element)
     this._backdrop = this._initializeBackDrop()
-    this._isCustomRoot = Boolean(config && config.rootElement)
     this._isShown = false
     this._ignoreBackdropClick = false
     this._isTransitioning = false
@@ -125,7 +126,11 @@ class Modal extends BaseComponent {
     }
 
     this._scrollBar.hide()
+
+    this._config.rootElement.classList.add(CLASS_NAME_OPEN)
+
     this._adjustDialog()
+
     this._setEscapeEvent()
     this._setResizeEvent()
 
@@ -212,6 +217,8 @@ class Modal extends BaseComponent {
       ...Manipulator.getDataAttributes(this._element),
       ...(typeof config === 'object' ? config : {})
     }
+
+    config.rootElement = getElement(config.rootElement)
     typeCheckConfig(NAME, config, DefaultType)
     return config
   }
@@ -222,7 +229,7 @@ class Modal extends BaseComponent {
 
     if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
       // Don't move modal's DOM position
-      document.body.appendChild(this._element)
+      this._config.rootElement.appendChild(this._element)
     }
 
     this._element.style.display = 'block'
@@ -240,7 +247,7 @@ class Modal extends BaseComponent {
     }
 
     this._element.classList.add(CLASS_NAME_SHOW)
-    if (this._isCustomRoot) {
+    if (this._hasCustomRoot()) {
       this._element.classList.add(CLASS_NAME_MODAL_CUSTOM_ROOT)
     }
 
@@ -302,13 +309,13 @@ class Modal extends BaseComponent {
     this._element.removeAttribute('aria-modal')
     this._element.removeAttribute('role')
 
-    if (this._isCustomRoot) {
+    if (this._hasCustomRoot()) {
       this._element.classList.remove(CLASS_NAME_MODAL_CUSTOM_ROOT)
     }
 
     this._isTransitioning = false
-
     this._backdrop.hide(() => {
+      this._config.rootElement.classList.remove(CLASS_NAME_OPEN)
       this._resetAdjustments()
       this._scrollBar.reset()
       EventHandler.trigger(this._element, EVENT_HIDDEN)
@@ -338,6 +345,10 @@ class Modal extends BaseComponent {
 
   _isAnimated() {
     return this._element.classList.contains(CLASS_NAME_FADE)
+  }
+
+  _hasCustomRoot() {
+    return this._config.rootElement !== document.body
   }
 
   _triggerBackdropTransition() {
