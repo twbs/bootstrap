@@ -1,17 +1,19 @@
 // Builds a map of utility classes.
 @function build-utilities-map($grid-breakpoints: $grid-breakpoints, $utilities: $utilities) {
-
   // Build a breakpoint map that does not include the zero breakpoint.
   $breakpoints-map: ();
   @each $name, $min in $grid-breakpoints {
     @if $min != 0 {
-      $breakpoints-map: map-merge($breakpoints-map, (
-        "-" + $name: $name,
-      ));
+      $breakpoints-map: map-merge(
+        $breakpoints-map,
+        (
+          "-" + $name: $name,
+        )
+      );
     }
   }
 
-  $utilities-map: ();
+  $utilities-map: () !default;
   @each $key, $utility in $utilities {
 
     @if type-of($utility) == "map" {
@@ -23,9 +25,10 @@
 
       // Use custom class if present
       $shortname: if(
-          map-has-key($utility, class),
-          map-get($utility, class),
-          nth($properties, 1));
+        map-has-key($utility, class),
+        map-get($utility, class),
+        nth($properties, 1)
+      );
       $shortname: if($shortname == null, "", $shortname);
 
       // Shortname with prepended dash, or empty string if empty.
@@ -43,30 +46,39 @@
         $dashkey: if($k, "-" + $k, "");
         $property-value-map: ();
         @each $property in $properties {
-          $property-value-map: map-merge($property-value-map, (
-            $property: $value,
-          ));
+          $property-value-map: map-merge(
+            $property-value-map,
+            (
+              $property: $value,
+            )
+          );
         }
         $dashclass: $dashname + $dashkey;
         $class: str-slice($dashclass, 2);
-        $utilities-map: map-merge($utilities-map, (
-          // Create a normalized version of the utility definition.
-          $class: (
-            breakpoint: null,
-            properties: $properties,
-            value: $value,
-          ),
-        ));
+        $utilities-map: map-merge(
+          $utilities-map,
+          (
+            // Create a normalized version of the utility definition.
+            $class: (
+              breakpoint: null,
+              properties: $properties,
+              value: $value,
+            ),
+          )
+        );
         @if map-get($utility, responsive) {
           @each $dashpoint, $breakpoint in $breakpoints-map {
             $class: str-slice($dashname + $dashpoint + $dashkey, 2);
-            $utilities-map: map-merge($utilities-map, (
-              $class: (
-                breakpoint: $breakpoint,
-                properties: $properties,
-                value: $value,
-              ),
-            ));
+            $utilities-map: map-merge(
+              $utilities-map,
+              (
+                $class: (
+                  breakpoint: $breakpoint,
+                  properties: $properties,
+                  value: $value,
+                )
+              )
+            );
           }
         }
       }

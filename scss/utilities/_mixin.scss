@@ -1,5 +1,5 @@
 
-$utilities-map: build-utilities-map();
+$utilities-map: build-utilities-map(); // stylelint-disable-line scss/dollar-variable-default
 
 @mixin utl($class) {
   @if map-has-key($utilities-map, $class) {
