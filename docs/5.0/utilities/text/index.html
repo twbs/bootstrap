@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Documentation and examples for common text utilities to control alignment, wrapping, weight, and more.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -418,10 +418,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="text-alignment">Text alignment</h2>
 <p>Easily realign text to components with text alignment classes. For start, end, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.</p>
@@ -552,24 +552,24 @@ Note that <a href="https://rtlstyling.com/posts/rtl-styling#3.-line-break">break
 <h2 id="sass">Sass</h2>
 <h3 id="variables">Variables</h3>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="c1">// stylelint-disable value-keyword-case
-</span><span class="c1"></span><span class="nv">$font-family-sans-serif</span><span class="o">:</span>      <span class="n">system-ui</span><span class="o">,</span> <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span> <span class="s2">&#34;Segoe UI&#34;</span><span class="o">,</span> <span class="n">Roboto</span><span class="o">,</span> <span class="s2">&#34;Helvetica Neue&#34;</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="s2">&#34;Noto Sans&#34;</span><span class="o">,</span> <span class="s2">&#34;Liberation Sans&#34;</span><span class="o">,</span> <span class="no">sans-serif</span><span class="o">,</span> <span class="s2">&#34;Apple Color Emoji&#34;</span><span class="o">,</span> <span class="s2">&#34;Segoe UI Emoji&#34;</span><span class="o">,</span> <span class="s2">&#34;Segoe UI Symbol&#34;</span><span class="o">,</span> <span class="s2">&#34;Noto Color Emoji&#34;</span><span class="p">;</span>
-<span class="nv">$font-family-monospace</span><span class="o">:</span>       <span class="n">SFMono-Regular</span><span class="o">,</span> <span class="n">Menlo</span><span class="o">,</span> <span class="n">Monaco</span><span class="o">,</span> <span class="n">Consolas</span><span class="o">,</span> <span class="s2">&#34;Liberation Mono&#34;</span><span class="o">,</span> <span class="s2">&#34;Courier New&#34;</span><span class="o">,</span> <span class="no">monospace</span><span class="p">;</span>
+</span><span class="c1"></span><span class="nv">$font-family-sans-serif</span><span class="o">:</span>      <span class="ni">system-ui</span><span class="o">,</span> <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span> <span class="s2">&#34;Segoe UI&#34;</span><span class="o">,</span> <span class="n">Roboto</span><span class="o">,</span> <span class="s2">&#34;Helvetica Neue&#34;</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="s2">&#34;Noto Sans&#34;</span><span class="o">,</span> <span class="s2">&#34;Liberation Sans&#34;</span><span class="o">,</span> <span class="ni">sans-serif</span><span class="o">,</span> <span class="s2">&#34;Apple Color Emoji&#34;</span><span class="o">,</span> <span class="s2">&#34;Segoe UI Emoji&#34;</span><span class="o">,</span> <span class="s2">&#34;Segoe UI Symbol&#34;</span><span class="o">,</span> <span class="s2">&#34;Noto Color Emoji&#34;</span><span class="p">;</span>
+<span class="nv">$font-family-monospace</span><span class="o">:</span>       <span class="n">SFMono-Regular</span><span class="o">,</span> <span class="n">Menlo</span><span class="o">,</span> <span class="n">Monaco</span><span class="o">,</span> <span class="n">Consolas</span><span class="o">,</span> <span class="s2">&#34;Liberation Mono&#34;</span><span class="o">,</span> <span class="s2">&#34;Courier New&#34;</span><span class="o">,</span> <span class="ni">monospace</span><span class="p">;</span>
 <span class="c1">// stylelint-enable value-keyword-case
-</span><span class="c1"></span><span class="nv">$font-family-base</span><span class="o">:</span>            <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="si">#{</span><span class="nv">$variable-prefix</span><span class="si">}</span><span class="no">font</span><span class="o">-</span><span class="no">sans-serif</span><span class="p">);</span>
-<span class="nv">$font-family-code</span><span class="o">:</span>            <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="si">#{</span><span class="nv">$variable-prefix</span><span class="si">}</span><span class="no">font</span><span class="o">-</span><span class="no">monospace</span><span class="p">);</span>
+</span><span class="c1"></span><span class="nv">$font-family-base</span><span class="o">:</span>            <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="si">#{</span><span class="nv">$variable-prefix</span><span class="si">}</span><span class="n">font-sans-serif</span><span class="p">);</span>
+<span class="nv">$font-family-code</span><span class="o">:</span>            <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="si">#{</span><span class="nv">$variable-prefix</span><span class="si">}</span><span class="n">font-monospace</span><span class="p">);</span>
 
-<span class="c1">// $font-size-root effects the value of `rem`, which is used for as well font sizes, paddings and margins
-</span><span class="c1">// $font-size-base effects the font size of the body text
+<span class="c1">// $font-size-root affects the value of `rem`, which is used for as well font sizes, paddings, and margins
+</span><span class="c1">// $font-size-base affects the font size of the body text
 </span><span class="c1"></span><span class="nv">$font-size-root</span><span class="o">:</span>              <span class="n">null</span><span class="p">;</span>
 <span class="nv">$font-size-base</span><span class="o">:</span>              <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span> <span class="c1">// Assumes the browser default, typically `16px`
 </span><span class="c1"></span><span class="nv">$font-size-sm</span><span class="o">:</span>                <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mf">.875</span><span class="p">;</span>
 <span class="nv">$font-size-lg</span><span class="o">:</span>                <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">.25</span><span class="p">;</span>
 
-<span class="nv">$font-weight-lighter</span><span class="o">:</span>         <span class="no">lighter</span><span class="p">;</span>
+<span class="nv">$font-weight-lighter</span><span class="o">:</span>         <span class="ni">lighter</span><span class="p">;</span>
 <span class="nv">$font-weight-light</span><span class="o">:</span>           <span class="mi">300</span><span class="p">;</span>
 <span class="nv">$font-weight-normal</span><span class="o">:</span>          <span class="mi">400</span><span class="p">;</span>
 <span class="nv">$font-weight-bold</span><span class="o">:</span>            <span class="mi">700</span><span class="p">;</span>
-<span class="nv">$font-weight-bolder</span><span class="o">:</span>          <span class="no">bolder</span><span class="p">;</span>
+<span class="nv">$font-weight-bolder</span><span class="o">:</span>          <span class="ni">bolder</span><span class="p">;</span>
 
 <span class="nv">$font-weight-base</span><span class="o">:</span>            <span class="nv">$font-weight-normal</span><span class="p">;</span>
 
@@ -587,12 +587,12 @@ Note that <a href="https://rtlstyling.com/posts/rtl-styling#3.-line-break">break
 <h3 id="maps">Maps</h3>
 <p>Font-size utilities are generated from this map, in combination with our utilities API.</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$font-sizes</span><span class="o">:</span> <span class="p">(</span>
-  <span class="mi">1</span><span class="o">:</span> <span class="nv">$h1-font-size</span><span class="o">,</span>
-  <span class="mi">2</span><span class="o">:</span> <span class="nv">$h2-font-size</span><span class="o">,</span>
-  <span class="mi">3</span><span class="o">:</span> <span class="nv">$h3-font-size</span><span class="o">,</span>
-  <span class="mi">4</span><span class="o">:</span> <span class="nv">$h4-font-size</span><span class="o">,</span>
-  <span class="mi">5</span><span class="o">:</span> <span class="nv">$h5-font-size</span><span class="o">,</span>
-  <span class="mi">6</span><span class="o">:</span> <span class="nv">$h6-font-size</span>
+  <span class="na">1</span><span class="o">:</span> <span class="nv">$h1-font-size</span><span class="o">,</span>
+  <span class="na">2</span><span class="o">:</span> <span class="nv">$h2-font-size</span><span class="o">,</span>
+  <span class="na">3</span><span class="o">:</span> <span class="nv">$h3-font-size</span><span class="o">,</span>
+  <span class="na">4</span><span class="o">:</span> <span class="nv">$h4-font-size</span><span class="o">,</span>
+  <span class="na">5</span><span class="o">:</span> <span class="nv">$h5-font-size</span><span class="o">,</span>
+  <span class="na">6</span><span class="o">:</span> <span class="nv">$h6-font-size</span>
 <span class="p">);</span>
 </code></pre></div>
 <h3 id="utilities-api">Utilities API</h3>
@@ -600,7 +600,7 @@ Note that <a href="https://rtlstyling.com/posts/rtl-styling#3.-line-break">break
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss">    <span class="s2">&#34;font-family&#34;</span><span class="nd">:</span> <span class="o">(</span>
       <span class="nt">property</span><span class="nd">:</span> <span class="nt">font-family</span><span class="o">,</span>
       <span class="nt">class</span><span class="nd">:</span> <span class="nt">font</span><span class="o">,</span>
-      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span><span class="nt">monospace</span><span class="nd">:</span> <span class="nt">var</span><span class="o">(</span><span class="nt">--</span><span class="nn">#</span><span class="p">{</span><span class="err">$</span><span class="nt">variable-prefix</span><span class="p">}</span><span class="nt">font-monospace</span><span class="o">))</span>
+      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span><span class="nt">monospace</span><span class="nd">:</span> <span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$variable-prefix</span><span class="si">}</span><span class="nt">font-monospace</span><span class="o">))</span>
     <span class="o">),</span>
     <span class="s2">&#34;font-size&#34;</span><span class="nd">:</span> <span class="o">(</span>
       <span class="nt">rfs</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
@@ -685,7 +685,7 @@ Note that <a href="https://rtlstyling.com/posts/rtl-styling#3.-line-break">break
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -732,7 +732,7 @@ Note that <a href="https://rtlstyling.com/posts/rtl-styling#3.-line-break">break
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -740,7 +740,7 @@ Note that <a href="https://rtlstyling.com/posts/rtl-styling#3.-line-break">break
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Learn how and why we build nearly all our components responsively and with base and modifier classes.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -405,10 +405,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="base-classes">Base classes</h2>
 <p>Bootstrap&rsquo;s components are largely built with a base-modifier nomenclature. We group as many shared properties as possible into a base class, like <code>.btn</code>, and then group individual styles for each variant into modifier classes, like <code>.btn-primary</code> or <code>.btn-success</code>.</p>
@@ -419,7 +419,7 @@
 <p>Here are two examples of how we loop over the <code>$theme-colors</code> map to generate modifiers to the <code>.alert</code> and <code>.list-group</code> components.</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="c1">// Generate contextual modifier classes for colorizing the alert.
 </span><span class="c1"></span>
-<span class="k">@each</span> <span class="err">$</span><span class="nt">state</span><span class="o">,</span> <span class="err">$</span><span class="nt">value</span> <span class="nt">in</span> <span class="err">$</span><span class="nt">theme-colors</span> <span class="p">{</span>
+<span class="k">@each</span> <span class="nv">$state</span><span class="o">,</span> <span class="nv">$value</span> <span class="ow">in</span> <span class="nv">$theme-colors</span> <span class="p">{</span>
   <span class="nv">$alert-background</span><span class="o">:</span> <span class="nf">shift-color</span><span class="p">(</span><span class="nv">$value</span><span class="o">,</span> <span class="nv">$alert-bg-scale</span><span class="p">);</span>
   <span class="nv">$alert-border</span><span class="o">:</span> <span class="nf">shift-color</span><span class="p">(</span><span class="nv">$value</span><span class="o">,</span> <span class="nv">$alert-border-scale</span><span class="p">);</span>
   <span class="nv">$alert-color</span><span class="o">:</span> <span class="nf">shift-color</span><span class="p">(</span><span class="nv">$value</span><span class="o">,</span> <span class="nv">$alert-color-scale</span><span class="p">);</span>
@@ -436,7 +436,7 @@
 </span><span class="c1">// Add modifier classes to change text and background color on individual items.
 </span><span class="c1">// Organizationally, this must come after the `:hover` states.
 </span><span class="c1"></span>
-<span class="k">@each</span> <span class="err">$</span><span class="nt">state</span><span class="o">,</span> <span class="err">$</span><span class="nt">value</span> <span class="nt">in</span> <span class="err">$</span><span class="nt">theme-colors</span> <span class="p">{</span>
+<span class="k">@each</span> <span class="nv">$state</span><span class="o">,</span> <span class="nv">$value</span> <span class="ow">in</span> <span class="nv">$theme-colors</span> <span class="p">{</span>
   <span class="nv">$list-group-variant-bg</span><span class="o">:</span> <span class="nf">shift-color</span><span class="p">(</span><span class="nv">$value</span><span class="o">,</span> <span class="nv">$list-group-item-bg-scale</span><span class="p">);</span>
   <span class="nv">$list-group-variant-color</span><span class="o">:</span> <span class="nf">shift-color</span><span class="p">(</span><span class="nv">$value</span><span class="o">,</span> <span class="nv">$list-group-item-color-scale</span><span class="p">);</span>
   <span class="k">@if</span> <span class="p">(</span><span class="nf">contrast-ratio</span><span class="p">(</span><span class="nv">$list-group-variant-bg</span><span class="o">,</span> <span class="nv">$list-group-variant-color</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nv">$min-contrast-ratio</span><span class="p">)</span> <span class="p">{</span>
@@ -451,25 +451,25 @@
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="c1">// We deliberately hardcode the `bs-` prefix because we check
 </span><span class="c1">// this custom property in JS to determine Popper&#39;s positioning
 </span><span class="c1"></span>
-<span class="k">@each</span> <span class="err">$</span><span class="nt">breakpoint</span> <span class="nt">in</span> <span class="nt">map-keys</span><span class="o">(</span><span class="err">$</span><span class="nt">grid-breakpoints</span><span class="o">)</span> <span class="p">{</span>
+<span class="k">@each</span> <span class="nv">$breakpoint</span> <span class="ow">in</span> <span class="nf">map-keys</span><span class="p">(</span><span class="nv">$grid-breakpoints</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">@include</span><span class="nd"> media-breakpoint-up</span><span class="p">(</span><span class="nv">$breakpoint</span><span class="p">)</span> <span class="p">{</span>
     <span class="nv">$infix</span><span class="o">:</span> <span class="nf">breakpoint-infix</span><span class="p">(</span><span class="nv">$breakpoint</span><span class="o">,</span> <span class="nv">$grid-breakpoints</span><span class="p">);</span>
 
     <span class="nc">.dropdown-menu</span><span class="si">#{</span><span class="nv">$infix</span><span class="si">}</span><span class="nc">-start</span> <span class="p">{</span>
-      <span class="nt">--bs-position</span><span class="nd">:</span> <span class="nt">start</span><span class="p">;</span>
+      <span class="na">--bs-position</span><span class="o">:</span> <span class="ni">start</span><span class="p">;</span>
 
       <span class="k">&amp;</span><span class="o">[</span><span class="nt">data-bs-popper</span><span class="o">]</span> <span class="p">{</span>
-        <span class="nt">right</span><span class="nd">:</span> <span class="nt">auto</span> <span class="nn">#</span><span class="p">{</span><span class="s2">&#34;/* rtl:ignore */&#34;</span><span class="p">};</span>
-        <span class="nt">left</span><span class="nd">:</span> <span class="nt">0</span> <span class="nn">#</span><span class="p">{</span><span class="s2">&#34;/* rtl:ignore */&#34;</span><span class="p">};</span>
+        <span class="na">right</span><span class="o">:</span> <span class="ni">auto</span><span class="p">;</span>
+        <span class="na">left</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
       <span class="p">}</span>
     <span class="p">}</span>
 
     <span class="nc">.dropdown-menu</span><span class="si">#{</span><span class="nv">$infix</span><span class="si">}</span><span class="nc">-end</span> <span class="p">{</span>
-      <span class="nt">--bs-position</span><span class="nd">:</span> <span class="nt">end</span><span class="p">;</span>
+      <span class="na">--bs-position</span><span class="o">:</span> <span class="ni">end</span><span class="p">;</span>
 
       <span class="k">&amp;</span><span class="o">[</span><span class="nt">data-bs-popper</span><span class="o">]</span> <span class="p">{</span>
-        <span class="nt">right</span><span class="nd">:</span> <span class="nt">0</span> <span class="nn">#</span><span class="p">{</span><span class="s2">&#34;/* rtl:ignore */&#34;</span><span class="p">};</span>
-        <span class="nt">left</span><span class="nd">:</span> <span class="nt">auto</span> <span class="nn">#</span><span class="p">{</span><span class="s2">&#34;/* rtl:ignore */&#34;</span><span class="p">};</span>
+        <span class="na">right</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="na">left</span><span class="o">:</span> <span class="ni">auto</span><span class="p">;</span>
       <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">}</span>
@@ -477,12 +477,12 @@
 </code></pre></div>
 <p>Should you modify your <code>$grid-breakpoints</code>, your changes will apply to all the loops iterating over that map.</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$grid-breakpoints</span><span class="o">:</span> <span class="p">(</span>
-  <span class="n">xs</span><span class="o">:</span> <span class="mi">0</span><span class="o">,</span>
-  <span class="n">sm</span><span class="o">:</span> <span class="mi">576</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">md</span><span class="o">:</span> <span class="mi">768</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">lg</span><span class="o">:</span> <span class="mi">992</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">xl</span><span class="o">:</span> <span class="mi">1200</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">xxl</span><span class="o">:</span> <span class="mi">1400</span><span class="kt">px</span>
+  <span class="na">xs</span><span class="o">:</span> <span class="mi">0</span><span class="o">,</span>
+  <span class="na">sm</span><span class="o">:</span> <span class="mi">576</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">md</span><span class="o">:</span> <span class="mi">768</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">lg</span><span class="o">:</span> <span class="mi">992</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">xl</span><span class="o">:</span> <span class="mi">1200</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">xxl</span><span class="o">:</span> <span class="mi">1400</span><span class="kt">px</span>
 <span class="p">);</span>
 </code></pre></div>
 <p>For more information and examples on how to modify our Sass maps and variables, please refer to <a href="/docs/5.0/layout/grid/#sass">the Sass section of the Grid documentation</a>.</p>
@@ -532,7 +532,7 @@
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -579,7 +579,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -587,7 +587,7 @@
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

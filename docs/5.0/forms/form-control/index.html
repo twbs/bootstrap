@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Give textual form controls like &lt;input&gt;s and &lt;textarea&gt;s an upgrade with custom styles, sizing, focus states, and more.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -414,10 +414,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="example">Example</h2>
 <div class="bd-example">
@@ -450,14 +450,14 @@
 <p>Add the <code>disabled</code> boolean attribute on an input to give it a grayed out appearance and remove pointer events.</p>
 <div class="bd-example">
 <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
-<input class="form-control" type="text" placeholder="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
+<input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
 </div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-control&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;Disabled input&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Disabled input example&#34;</span> <span class="na">disabled</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">input</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-control&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;Disabled readonly input&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Disabled input example&#34;</span> <span class="na">disabled</span> <span class="na">readonly</span><span class="p">&gt;</span></code></pre></div>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-control&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;Disabled readonly input&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Disabled input example&#34;</span> <span class="na">disabled</span> <span class="na">readonly</span><span class="p">&gt;</span></code></pre></div>
 <h2 id="readonly">Readonly</h2>
-<p>Add the <code>readonly</code> boolean attribute on an input to prevent modification of the input&rsquo;s value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.</p>
+<p>Add the <code>readonly</code> boolean attribute on an input to prevent modification of the input&rsquo;s value.</p>
 <div class="bd-example">
-<input class="form-control" type="text" placeholder="Readonly input here..." aria-label="readonly input example" readonly>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-control&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;Readonly input here...&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;readonly input example&#34;</span> <span class="na">readonly</span><span class="p">&gt;</span></code></pre></div>
+<input class="form-control" type="text" value="Readonly input here..." aria-label="readonly input example" readonly>
+</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-control&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;Readonly input here...&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;readonly input example&#34;</span> <span class="na">readonly</span><span class="p">&gt;</span></code></pre></div>
 <h2 id="readonly-plain-text">Readonly plain text</h2>
 <p>If you want to have <code>&lt;input readonly&gt;</code> elements in your form styled as plain text, use the <code>.form-control-plaintext</code> class to remove the default form field styling and preserve the correct margin and padding.</p>
 <div class="bd-example">
@@ -626,13 +626,13 @@
 
 <span class="nv">$input-height-inner</span><span class="o">:</span>                    <span class="nf">add</span><span class="p">(</span><span class="nv">$input-line-height</span> <span class="o">*</span> <span class="mi">1</span><span class="kt">em</span><span class="o">,</span> <span class="nv">$input-padding-y</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
 <span class="nv">$input-height-inner-half</span><span class="o">:</span>               <span class="nf">add</span><span class="p">(</span><span class="nv">$input-line-height</span> <span class="o">*</span> <span class="mf">.5</span><span class="kt">em</span><span class="o">,</span> <span class="nv">$input-padding-y</span><span class="p">);</span>
-<span class="nv">$input-height-inner-quarter</span><span class="o">:</span>            <span class="nf">add</span><span class="p">(</span><span class="nv">$input-line-height</span> <span class="o">*</span> <span class="mf">.25</span><span class="kt">em</span><span class="o">,</span> <span class="nv">$input-padding-y</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nv">$input-height-inner-quarter</span><span class="o">:</span>            <span class="nf">add</span><span class="p">(</span><span class="nv">$input-line-height</span> <span class="o">*</span> <span class="mf">.25</span><span class="kt">em</span><span class="o">,</span> <span class="nv">$input-padding-y</span> <span class="o">*</span> <span class="mf">.5</span><span class="p">);</span>
 
 <span class="nv">$input-height</span><span class="o">:</span>                          <span class="nf">add</span><span class="p">(</span><span class="nv">$input-line-height</span> <span class="o">*</span> <span class="mi">1</span><span class="kt">em</span><span class="o">,</span> <span class="nf">add</span><span class="p">(</span><span class="nv">$input-padding-y</span> <span class="o">*</span> <span class="mi">2</span><span class="o">,</span> <span class="nv">$input-height-border</span><span class="o">,</span> <span class="n">false</span><span class="p">));</span>
 <span class="nv">$input-height-sm</span><span class="o">:</span>                       <span class="nf">add</span><span class="p">(</span><span class="nv">$input-line-height</span> <span class="o">*</span> <span class="mi">1</span><span class="kt">em</span><span class="o">,</span> <span class="nf">add</span><span class="p">(</span><span class="nv">$input-padding-y-sm</span> <span class="o">*</span> <span class="mi">2</span><span class="o">,</span> <span class="nv">$input-height-border</span><span class="o">,</span> <span class="n">false</span><span class="p">));</span>
 <span class="nv">$input-height-lg</span><span class="o">:</span>                       <span class="nf">add</span><span class="p">(</span><span class="nv">$input-line-height</span> <span class="o">*</span> <span class="mi">1</span><span class="kt">em</span><span class="o">,</span> <span class="nf">add</span><span class="p">(</span><span class="nv">$input-padding-y-lg</span> <span class="o">*</span> <span class="mi">2</span><span class="o">,</span> <span class="nv">$input-height-border</span><span class="o">,</span> <span class="n">false</span><span class="p">));</span>
 
-<span class="nv">$input-transition</span><span class="o">:</span>                      <span class="no">border</span><span class="o">-</span><span class="no">color</span> <span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="o">,</span> <span class="no">box-shadow</span> <span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
+<span class="nv">$input-transition</span><span class="o">:</span>                      <span class="n">border-color</span> <span class="mf">.15</span><span class="kt">s</span> <span class="ni">ease-in-out</span><span class="o">,</span> <span class="n">box-shadow</span> <span class="mf">.15</span><span class="kt">s</span> <span class="ni">ease-in-out</span><span class="p">;</span>
 </code></pre></div>
 <p><code>$form-label-*</code> and <code>$form-text-*</code> are for our <code>&lt;label&gt;</code>s and <code>.form-text</code> component.</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$form-label-margin-bottom</span><span class="o">:</span>              <span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
@@ -669,7 +669,7 @@
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -716,7 +716,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -724,7 +724,7 @@
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -462,10 +462,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="overview">Overview</h2>
 <p>Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They&rsquo;re made interactive with the included Bootstrap dropdown JavaScript plugin. They&rsquo;re toggled by clicking, not by hovering; this is <a href="https://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/">an intentional design decision</a>.</p>
@@ -1034,7 +1034,7 @@
   <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div><h2 id="menu-items">Menu items</h2>
-<p>Historically dropdown menu contents <em>had</em> to be links, but that&rsquo;s no longer the case with v4. Now you can optionally use <code>&lt;button&gt;</code> elements in your dropdowns instead of just <code>&lt;a&gt;</code>s.</p>
+<p>You can use <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements as dropdown items.</p>
 <div class="bd-example">
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -1623,7 +1623,7 @@
 <span class="nv">$dropdown-border-width</span><span class="o">:</span>             <span class="nv">$border-width</span><span class="p">;</span>
 <span class="nv">$dropdown-inner-border-radius</span><span class="o">:</span>      <span class="nf">subtract</span><span class="p">(</span><span class="nv">$dropdown-border-radius</span><span class="o">,</span> <span class="nv">$dropdown-border-width</span><span class="p">);</span>
 <span class="nv">$dropdown-divider-bg</span><span class="o">:</span>               <span class="nv">$dropdown-border-color</span><span class="p">;</span>
-<span class="nv">$dropdown-divider-margin-y</span><span class="o">:</span>         <span class="nv">$spacer</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$dropdown-divider-margin-y</span><span class="o">:</span>         <span class="nv">$spacer</span> <span class="o">*</span> <span class="mf">.5</span><span class="p">;</span>
 <span class="nv">$dropdown-box-shadow</span><span class="o">:</span>               <span class="nv">$box-shadow</span><span class="p">;</span>
 
 <span class="nv">$dropdown-link-color</span><span class="o">:</span>               <span class="nv">$gray-900</span><span class="p">;</span>
@@ -1635,7 +1635,7 @@
 
 <span class="nv">$dropdown-link-disabled-color</span><span class="o">:</span>      <span class="nv">$gray-500</span><span class="p">;</span>
 
-<span class="nv">$dropdown-item-padding-y</span><span class="o">:</span>           <span class="nv">$spacer</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>
+<span class="nv">$dropdown-item-padding-y</span><span class="o">:</span>           <span class="nv">$spacer</span> <span class="o">*</span> <span class="mf">.25</span><span class="p">;</span>
 <span class="nv">$dropdown-item-padding-x</span><span class="o">:</span>           <span class="nv">$spacer</span><span class="p">;</span>
 
 <span class="nv">$dropdown-header-color</span><span class="o">:</span>             <span class="nv">$gray-600</span><span class="p">;</span>
@@ -1663,64 +1663,64 @@
 <h3 id="mixins">Mixins</h3>
 <p>Mixins are used to generate the CSS-based carets and can be found in <code>scss/mixins/_caret.scss</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@mixin</span><span class="nf"> caret-down</span> <span class="p">{</span>
-  <span class="nt">border-top</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span><span class="p">;</span>
-  <span class="nt">border-right</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span> <span class="nt">transparent</span><span class="p">;</span>
-  <span class="nt">border-bottom</span><span class="nd">:</span> <span class="nt">0</span><span class="p">;</span>
-  <span class="nt">border-left</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span> <span class="nt">transparent</span><span class="p">;</span>
+  <span class="na">border-top</span><span class="o">:</span> <span class="nv">$caret-width</span> <span class="ni">solid</span><span class="p">;</span>
+  <span class="na">border-right</span><span class="o">:</span> <span class="nv">$caret-width</span> <span class="ni">solid</span> <span class="ni">transparent</span><span class="p">;</span>
+  <span class="na">border-bottom</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="na">border-left</span><span class="o">:</span> <span class="nv">$caret-width</span> <span class="ni">solid</span> <span class="ni">transparent</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="k">@mixin</span><span class="nf"> caret-up</span> <span class="p">{</span>
-  <span class="nt">border-top</span><span class="nd">:</span> <span class="nt">0</span><span class="p">;</span>
-  <span class="nt">border-right</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span> <span class="nt">transparent</span><span class="p">;</span>
-  <span class="nt">border-bottom</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span><span class="p">;</span>
-  <span class="nt">border-left</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span> <span class="nt">transparent</span><span class="p">;</span>
+  <span class="na">border-top</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="na">border-right</span><span class="o">:</span> <span class="nv">$caret-width</span> <span class="ni">solid</span> <span class="ni">transparent</span><span class="p">;</span>
+  <span class="na">border-bottom</span><span class="o">:</span> <span class="nv">$caret-width</span> <span class="ni">solid</span><span class="p">;</span>
+  <span class="na">border-left</span><span class="o">:</span> <span class="nv">$caret-width</span> <span class="ni">solid</span> <span class="ni">transparent</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="k">@mixin</span><span class="nf"> caret-end</span> <span class="p">{</span>
-  <span class="nt">border-top</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span> <span class="nt">transparent</span><span class="p">;</span>
-  <span class="nt">border-right</span><span class="nd">:</span> <span class="nt">0</span><span class="p">;</span>
-  <span class="nt">border-bottom</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span> <span class="nt">transparent</span><span class="p">;</span>
-  <span class="nt">border-left</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span><span class="p">;</span>
+  <span class="na">border-top</span><span class="o">:</span> <span class="nv">$caret-width</span> <span class="ni">solid</span> <span class="ni">transparent</span><span class="p">;</span>
+  <span class="na">border-right</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="na">border-bottom</span><span class="o">:</span> <span class="nv">$caret-width</span> <span class="ni">solid</span> <span class="ni">transparent</span><span class="p">;</span>
+  <span class="na">border-left</span><span class="o">:</span> <span class="nv">$caret-width</span> <span class="ni">solid</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="k">@mixin</span><span class="nf"> caret-start</span> <span class="p">{</span>
-  <span class="nt">border-top</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span> <span class="nt">transparent</span><span class="p">;</span>
-  <span class="nt">border-right</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span><span class="p">;</span>
-  <span class="nt">border-bottom</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-width</span> <span class="nt">solid</span> <span class="nt">transparent</span><span class="p">;</span>
+  <span class="na">border-top</span><span class="o">:</span> <span class="nv">$caret-width</span> <span class="ni">solid</span> <span class="ni">transparent</span><span class="p">;</span>
+  <span class="na">border-right</span><span class="o">:</span> <span class="nv">$caret-width</span> <span class="ni">solid</span><span class="p">;</span>
+  <span class="na">border-bottom</span><span class="o">:</span> <span class="nv">$caret-width</span> <span class="ni">solid</span> <span class="ni">transparent</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="k">@mixin</span><span class="nf"> caret</span><span class="p">(</span><span class="nv">$direction</span><span class="o">:</span> <span class="n">down</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">@if</span> <span class="nv">$enable-caret</span> <span class="p">{</span>
     <span class="k">&amp;</span><span class="nd">::after</span> <span class="p">{</span>
-      <span class="nt">display</span><span class="nd">:</span> <span class="nt">inline-block</span><span class="p">;</span>
-      <span class="nt">margin-left</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-spacing</span><span class="p">;</span>
-      <span class="nt">vertical-align</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-vertical-align</span><span class="p">;</span>
-      <span class="nt">content</span><span class="nd">:</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+      <span class="na">display</span><span class="o">:</span> <span class="ni">inline-block</span><span class="p">;</span>
+      <span class="na">margin-left</span><span class="o">:</span> <span class="nv">$caret-spacing</span><span class="p">;</span>
+      <span class="na">vertical-align</span><span class="o">:</span> <span class="nv">$caret-vertical-align</span><span class="p">;</span>
+      <span class="na">content</span><span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
       <span class="k">@if</span> <span class="nv">$direction</span> <span class="o">==</span> <span class="n">down</span> <span class="p">{</span>
         <span class="k">@include</span><span class="nd"> caret-down</span><span class="p">();</span>
-      <span class="p">}</span> <span class="k">@else</span> <span class="nt">if</span> <span class="err">$</span><span class="nt">direction</span> <span class="o">==</span> <span class="nt">up</span> <span class="p">{</span>
+      <span class="p">}</span> <span class="k">@else if</span> <span class="nv">$direction</span> <span class="o">==</span> <span class="n">up</span> <span class="p">{</span>
         <span class="k">@include</span><span class="nd"> caret-up</span><span class="p">();</span>
-      <span class="p">}</span> <span class="k">@else</span> <span class="nt">if</span> <span class="err">$</span><span class="nt">direction</span> <span class="o">==</span> <span class="nt">end</span> <span class="p">{</span>
+      <span class="p">}</span> <span class="k">@else if</span> <span class="nv">$direction</span> <span class="o">==</span> <span class="ni">end</span> <span class="p">{</span>
         <span class="k">@include</span><span class="nd"> caret-end</span><span class="p">();</span>
       <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="k">@if</span> <span class="nv">$direction</span> <span class="o">==</span> <span class="n">start</span> <span class="p">{</span>
+    <span class="k">@if</span> <span class="nv">$direction</span> <span class="o">==</span> <span class="ni">start</span> <span class="p">{</span>
       <span class="k">&amp;</span><span class="nd">::after</span> <span class="p">{</span>
-        <span class="nt">display</span><span class="nd">:</span> <span class="nt">none</span><span class="p">;</span>
+        <span class="na">display</span><span class="o">:</span> <span class="ni">none</span><span class="p">;</span>
       <span class="p">}</span>
 
       <span class="k">&amp;</span><span class="nd">::before</span> <span class="p">{</span>
-        <span class="nt">display</span><span class="nd">:</span> <span class="nt">inline-block</span><span class="p">;</span>
-        <span class="nt">margin-right</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-spacing</span><span class="p">;</span>
-        <span class="nt">vertical-align</span><span class="nd">:</span> <span class="err">$</span><span class="nt">caret-vertical-align</span><span class="p">;</span>
-        <span class="nt">content</span><span class="nd">:</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+        <span class="na">display</span><span class="o">:</span> <span class="ni">inline-block</span><span class="p">;</span>
+        <span class="na">margin-right</span><span class="o">:</span> <span class="nv">$caret-spacing</span><span class="p">;</span>
+        <span class="na">vertical-align</span><span class="o">:</span> <span class="nv">$caret-vertical-align</span><span class="p">;</span>
+        <span class="na">content</span><span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
         <span class="k">@include</span><span class="nd"> caret-start</span><span class="p">();</span>
       <span class="p">}</span>
     <span class="p">}</span>
 
     <span class="k">&amp;</span><span class="nd">:empty::after</span> <span class="p">{</span>
-      <span class="nt">margin-left</span><span class="nd">:</span> <span class="nt">0</span><span class="p">;</span>
+      <span class="na">margin-left</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -1865,9 +1865,20 @@ On touch-enabled devices, opening a dropdown adds empty <code>mouseover</code> h
       </td>
     </tr>
     <tr>
-      <td><code>getInstance</code></td>
       <td>
-        Static method which allows you to get the dropdown instance associated with a DOM element.
+        <code>getInstance</code>
+      </td>
+      <td>
+        Static method which allows you to get the dropdown instance associated to a DOM element, you can use it like this: <code>bootstrap.Dropdown.getInstance(element)</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>getOrCreateInstance</code>
+      </td>
+      <td>
+        Static method which returns a dropdown instance associated to a DOM element or create a new one in case it wasn't initialised.
+        You can use it like this: <code>bootstrap.Dropdown.getOrCreateInstance(element)</code>
       </td>
     </tr>
   </tbody>
@@ -1937,7 +1948,7 @@ On touch-enabled devices, opening a dropdown adds empty <code>mouseover</code> h
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1984,7 +1995,7 @@ On touch-enabled devices, opening a dropdown adds empty <code>mouseover</code> h
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -1992,7 +2003,7 @@ On touch-enabled devices, opening a dropdown adds empty <code>mouseover</code> h
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

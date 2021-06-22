@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Use our custom range inputs for consistent cross-browser styling and built-in customization.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -410,10 +410,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="overview">Overview</h2>
 <p>Create custom <code>&lt;input type=&quot;range&quot;&gt;</code> controls with <code>.form-range</code>. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only Firefox supports &ldquo;filling&rdquo; their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.</p>
@@ -447,7 +447,7 @@
 <h3 id="variables">Variables</h3>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$form-range-track-width</span><span class="o">:</span>          <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
 <span class="nv">$form-range-track-height</span><span class="o">:</span>         <span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
-<span class="nv">$form-range-track-cursor</span><span class="o">:</span>         <span class="no">pointer</span><span class="p">;</span>
+<span class="nv">$form-range-track-cursor</span><span class="o">:</span>         <span class="ni">pointer</span><span class="p">;</span>
 <span class="nv">$form-range-track-bg</span><span class="o">:</span>             <span class="nv">$gray-300</span><span class="p">;</span>
 <span class="nv">$form-range-track-border-radius</span><span class="o">:</span>  <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
 <span class="nv">$form-range-track-box-shadow</span><span class="o">:</span>     <span class="nv">$box-shadow-inset</span><span class="p">;</span>
@@ -462,7 +462,7 @@
 <span class="nv">$form-range-thumb-focus-box-shadow-width</span><span class="o">:</span>  <span class="nv">$input-focus-width</span><span class="p">;</span> <span class="c1">// For focus box shadow issue in Edge
 </span><span class="c1"></span><span class="nv">$form-range-thumb-active-bg</span><span class="o">:</span>               <span class="nf">tint-color</span><span class="p">(</span><span class="nv">$component-active-bg</span><span class="o">,</span> <span class="mi">70</span><span class="kt">%</span><span class="p">);</span>
 <span class="nv">$form-range-thumb-disabled-bg</span><span class="o">:</span>             <span class="nv">$gray-500</span><span class="p">;</span>
-<span class="nv">$form-range-thumb-transition</span><span class="o">:</span>              <span class="no">background</span><span class="o">-</span><span class="no">color</span> <span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="o">,</span> <span class="no">border</span><span class="o">-</span><span class="no">color</span> <span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="o">,</span> <span class="no">box-shadow</span> <span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
+<span class="nv">$form-range-thumb-transition</span><span class="o">:</span>              <span class="n">background-color</span> <span class="mf">.15</span><span class="kt">s</span> <span class="ni">ease-in-out</span><span class="o">,</span> <span class="n">border-color</span> <span class="mf">.15</span><span class="kt">s</span> <span class="ni">ease-in-out</span><span class="o">,</span> <span class="n">box-shadow</span> <span class="mf">.15</span><span class="kt">s</span> <span class="ni">ease-in-out</span><span class="p">;</span>
 </code></pre></div>
 
       </div>
@@ -481,7 +481,7 @@
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -528,7 +528,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -536,7 +536,7 @@
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

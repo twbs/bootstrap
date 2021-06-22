@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Documentation and examples for opt-in styling of tables (given their prevalent use in JavaScript plugins) with Bootstrap.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -441,10 +441,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="overview">Overview</h2>
 <p>Due to the widespread use of <code>&lt;table&gt;</code> elements across third-party widgets like calendars and date pickers, Bootstrap&rsquo;s tables are <strong>opt-in</strong>. Add the base class <code>.table</code> to any <code>&lt;table&gt;</code>, then extend with our optional modifier classes or custom styles. All table styles are not inherited in Bootstrap, meaning any nested tables can be styled independent from the parent.</p>
@@ -526,7 +526,7 @@
         <td>Cell</td>
         <td>Cell</td>
       </tr>
-
+      
         <tr class="table-primary">
           <th scope="row">Primary</th>
           <td>Cell</td>
@@ -934,16 +934,16 @@
     <span class="nv">$striped-bg</span><span class="o">:</span> <span class="nf">mix</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="nv">$background</span><span class="o">,</span> <span class="nf">percentage</span><span class="p">(</span><span class="nv">$table-striped-bg-factor</span><span class="p">));</span>
     <span class="nv">$active-bg</span><span class="o">:</span> <span class="nf">mix</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="nv">$background</span><span class="o">,</span> <span class="nf">percentage</span><span class="p">(</span><span class="nv">$table-active-bg-factor</span><span class="p">));</span>
 
-    <span class="nt">--</span><span class="nn">#</span><span class="p">{</span><span class="err">$</span><span class="nt">variable-prefix</span><span class="p">}</span><span class="nt">table-bg</span><span class="nd">:</span> <span class="nn">#</span><span class="p">{</span><span class="err">$</span><span class="nt">background</span><span class="p">};</span>
-    <span class="nt">--</span><span class="nn">#</span><span class="p">{</span><span class="err">$</span><span class="nt">variable-prefix</span><span class="p">}</span><span class="nt">table-striped-bg</span><span class="nd">:</span> <span class="nn">#</span><span class="p">{</span><span class="err">$</span><span class="nt">striped-bg</span><span class="p">};</span>
-    <span class="nt">--</span><span class="nn">#</span><span class="p">{</span><span class="err">$</span><span class="nt">variable-prefix</span><span class="p">}</span><span class="nt">table-striped-color</span><span class="nd">:</span> <span class="nn">#</span><span class="p">{</span><span class="nt">color-contrast</span><span class="o">(</span><span class="err">$</span><span class="nt">striped-bg</span><span class="o">)</span><span class="p">};</span>
-    <span class="nt">--</span><span class="nn">#</span><span class="p">{</span><span class="err">$</span><span class="nt">variable-prefix</span><span class="p">}</span><span class="nt">table-active-bg</span><span class="nd">:</span> <span class="nn">#</span><span class="p">{</span><span class="err">$</span><span class="nt">active-bg</span><span class="p">};</span>
-    <span class="nt">--</span><span class="nn">#</span><span class="p">{</span><span class="err">$</span><span class="nt">variable-prefix</span><span class="p">}</span><span class="nt">table-active-color</span><span class="nd">:</span> <span class="nn">#</span><span class="p">{</span><span class="nt">color-contrast</span><span class="o">(</span><span class="err">$</span><span class="nt">active-bg</span><span class="o">)</span><span class="p">};</span>
-    <span class="nt">--</span><span class="nn">#</span><span class="p">{</span><span class="err">$</span><span class="nt">variable-prefix</span><span class="p">}</span><span class="nt">table-hover-bg</span><span class="nd">:</span> <span class="nn">#</span><span class="p">{</span><span class="err">$</span><span class="nt">hover-bg</span><span class="p">};</span>
-    <span class="nt">--</span><span class="nn">#</span><span class="p">{</span><span class="err">$</span><span class="nt">variable-prefix</span><span class="p">}</span><span class="nt">table-hover-color</span><span class="nd">:</span> <span class="nn">#</span><span class="p">{</span><span class="nt">color-contrast</span><span class="o">(</span><span class="err">$</span><span class="nt">hover-bg</span><span class="o">)</span><span class="p">};</span>
+    <span class="na">--#{$variable-prefix}table-bg</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$background</span><span class="si">}</span><span class="p">;</span>
+    <span class="na">--#{$variable-prefix}table-striped-bg</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$striped-bg</span><span class="si">}</span><span class="p">;</span>
+    <span class="na">--#{$variable-prefix}table-striped-color</span><span class="o">:</span> <span class="si">#{</span><span class="nf">color-contrast</span><span class="p">(</span><span class="nv">$striped-bg</span><span class="p">)</span><span class="si">}</span><span class="p">;</span>
+    <span class="na">--#{$variable-prefix}table-active-bg</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$active-bg</span><span class="si">}</span><span class="p">;</span>
+    <span class="na">--#{$variable-prefix}table-active-color</span><span class="o">:</span> <span class="si">#{</span><span class="nf">color-contrast</span><span class="p">(</span><span class="nv">$active-bg</span><span class="p">)</span><span class="si">}</span><span class="p">;</span>
+    <span class="na">--#{$variable-prefix}table-hover-bg</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$hover-bg</span><span class="si">}</span><span class="p">;</span>
+    <span class="na">--#{$variable-prefix}table-hover-color</span><span class="o">:</span> <span class="si">#{</span><span class="nf">color-contrast</span><span class="p">(</span><span class="nv">$hover-bg</span><span class="p">)</span><span class="si">}</span><span class="p">;</span>
 
-    <span class="nt">color</span><span class="nd">:</span> <span class="err">$</span><span class="nt">color</span><span class="p">;</span>
-    <span class="nt">border-color</span><span class="nd">:</span> <span class="nt">mix</span><span class="o">(</span><span class="err">$</span><span class="nt">color</span><span class="o">,</span> <span class="err">$</span><span class="nt">background</span><span class="o">,</span> <span class="nt">percentage</span><span class="o">(</span><span class="err">$</span><span class="nt">table-border-factor</span><span class="o">))</span><span class="p">;</span>
+    <span class="na">color</span><span class="o">:</span> <span class="nv">$color</span><span class="p">;</span>
+    <span class="na">border-color</span><span class="o">:</span> <span class="nf">mix</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="nv">$background</span><span class="o">,</span> <span class="nf">percentage</span><span class="p">(</span><span class="nv">$table-border-factor</span><span class="p">));</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -1994,10 +1994,11 @@
 <span class="nv">$table-cell-padding-y-sm</span><span class="o">:</span>     <span class="mf">.25</span><span class="kt">rem</span><span class="p">;</span>
 <span class="nv">$table-cell-padding-x-sm</span><span class="o">:</span>     <span class="mf">.25</span><span class="kt">rem</span><span class="p">;</span>
 
-<span class="nv">$table-cell-vertical-align</span><span class="o">:</span>   <span class="no">top</span><span class="p">;</span>
+<span class="nv">$table-cell-vertical-align</span><span class="o">:</span>   <span class="ni">top</span><span class="p">;</span>
 
 <span class="nv">$table-color</span><span class="o">:</span>                 <span class="nv">$body-color</span><span class="p">;</span>
-<span class="nv">$table-bg</span><span class="o">:</span>                    <span class="no">transparent</span><span class="p">;</span>
+<span class="nv">$table-bg</span><span class="o">:</span>                    <span class="ni">transparent</span><span class="p">;</span>
+<span class="nv">$table-accent-bg</span><span class="o">:</span>             <span class="ni">transparent</span><span class="p">;</span>
 
 <span class="nv">$table-th-font-weight</span><span class="o">:</span>        <span class="n">null</span><span class="p">;</span>
 
@@ -2019,11 +2020,11 @@
 
 <span class="nv">$table-striped-order</span><span class="o">:</span>         <span class="n">odd</span><span class="p">;</span>
 
-<span class="nv">$table-group-separator-color</span><span class="o">:</span> <span class="n">currentColor</span><span class="p">;</span>
+<span class="nv">$table-group-separator-color</span><span class="o">:</span> <span class="ni">currentColor</span><span class="p">;</span>
 
 <span class="nv">$table-caption-color</span><span class="o">:</span>         <span class="nv">$text-muted</span><span class="p">;</span>
 
-<span class="nv">$table-bg-scale</span><span class="o">:</span>              <span class="mi">-80</span><span class="kt">%</span><span class="p">;</span>
+<span class="nv">$table-bg-scale</span><span class="o">:</span>              <span class="o">-</span><span class="mi">80</span><span class="kt">%</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="loop">Loop</h3>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$table-variants</span><span class="o">:</span> <span class="p">(</span>
@@ -2059,7 +2060,7 @@
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -2106,7 +2107,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -2114,7 +2115,7 @@
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

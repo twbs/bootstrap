@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Customize the native &lt;select&gt;s with custom CSS that changes the element&rsquo;s initial appearance.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -409,10 +409,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="default">Default</h2>
 <p>Custom <code>&lt;select&gt;</code> menus need only a custom class, <code>.form-select</code> to trigger the custom styles. Custom styles are limited to the <code>&lt;select&gt;</code>&rsquo;s initial appearance and cannot modify the <code>&lt;option&gt;</code>s due to browser limitations.</p>
@@ -515,13 +515,13 @@
 <span class="nv">$form-select-disabled-color</span><span class="o">:</span>        <span class="n">null</span><span class="p">;</span>
 <span class="nv">$form-select-disabled-bg</span><span class="o">:</span>           <span class="nv">$gray-200</span><span class="p">;</span>
 <span class="nv">$form-select-disabled-border-color</span><span class="o">:</span> <span class="nv">$input-disabled-border-color</span><span class="p">;</span>
-<span class="nv">$form-select-bg-position</span><span class="o">:</span>           <span class="no">right</span> <span class="nv">$form-select-padding-x</span> <span class="no">center</span><span class="p">;</span>
+<span class="nv">$form-select-bg-position</span><span class="o">:</span>           <span class="ni">right</span> <span class="nv">$form-select-padding-x</span> <span class="ni">center</span><span class="p">;</span>
 <span class="nv">$form-select-bg-size</span><span class="o">:</span>               <span class="mi">16</span><span class="kt">px</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span> <span class="c1">// In pixels because image dimensions
 </span><span class="c1"></span><span class="nv">$form-select-indicator-color</span><span class="o">:</span>       <span class="nv">$gray-800</span><span class="p">;</span>
 <span class="nv">$form-select-indicator</span><span class="o">:</span>             <span class="sx">url(&#34;data:image/svg+xml,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 16 16&#39;&gt;&lt;path fill=&#39;none&#39; stroke=&#39;</span><span class="si">#{</span><span class="nv">$form-select-indicator-color</span><span class="si">}</span><span class="sx">&#39; stroke-linecap=&#39;round&#39; stroke-linejoin=&#39;round&#39; stroke-width=&#39;2&#39; d=&#39;M2 5l6 6 6-6&#39;/&gt;&lt;/svg&gt;&#34;)</span><span class="p">;</span>
 
 <span class="nv">$form-select-feedback-icon-padding-end</span><span class="o">:</span> <span class="nv">$form-select-padding-x</span> <span class="o">*</span> <span class="mi">2</span><span class="mf">.5</span> <span class="o">+</span> <span class="nv">$form-select-indicator-padding</span><span class="p">;</span>
-<span class="nv">$form-select-feedback-icon-position</span><span class="o">:</span>    <span class="no">center</span> <span class="no">right</span> <span class="nv">$form-select-indicator-padding</span><span class="p">;</span>
+<span class="nv">$form-select-feedback-icon-position</span><span class="o">:</span>    <span class="ni">center</span> <span class="ni">right</span> <span class="nv">$form-select-indicator-padding</span><span class="p">;</span>
 <span class="nv">$form-select-feedback-icon-size</span><span class="o">:</span>        <span class="nv">$input-height-inner-half</span> <span class="nv">$input-height-inner-half</span><span class="p">;</span>
 
 <span class="nv">$form-select-border-width</span><span class="o">:</span>        <span class="nv">$input-border-width</span><span class="p">;</span>
@@ -540,6 +540,8 @@
 <span class="nv">$form-select-padding-y-lg</span><span class="o">:</span>        <span class="nv">$input-padding-y-lg</span><span class="p">;</span>
 <span class="nv">$form-select-padding-x-lg</span><span class="o">:</span>        <span class="nv">$input-padding-x-lg</span><span class="p">;</span>
 <span class="nv">$form-select-font-size-lg</span><span class="o">:</span>        <span class="nv">$input-font-size-lg</span><span class="p">;</span>
+
+<span class="nv">$form-select-transition</span><span class="o">:</span>          <span class="nv">$input-transition</span><span class="p">;</span>
 </code></pre></div>
 
       </div>
@@ -558,7 +560,7 @@
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -605,7 +607,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -613,7 +615,7 @@
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

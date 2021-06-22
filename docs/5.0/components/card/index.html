@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Bootstrap&rsquo;s cards provide a flexible and extensible content container with multiple variants and options.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -448,10 +448,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="about">About</h2>
 <p>A <strong>card</strong> is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. If you&rsquo;re familiar with Bootstrap 3, cards replace our old panels, wells, and thumbnails. Similar functionality to those components is available as modifier classes for cards.</p>
@@ -1012,7 +1012,7 @@ Note that content should not be larger than the height of the image. If content 
 <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text></svg>
+      <svg class="bd-placeholder-img img-fluid rounded-start" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text></svg>
 
     </div>
     <div class="col-md-8">
@@ -1027,7 +1027,7 @@ Note that content should not be larger than the height of the image. If content 
 </div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;card mb-3&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;max-width: 540px;&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;row g-0&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-md-4&#34;</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;...&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;...&#34;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;...&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;img-fluid rounded-start&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;...&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-md-8&#34;</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;card-body&#34;</span><span class="p">&gt;</span>
@@ -1759,12 +1759,12 @@ Note that content should not be larger than the height of the image. If content 
 <h3 id="variables">Variables</h3>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$card-spacer-y</span><span class="o">:</span>                     <span class="nv">$spacer</span><span class="p">;</span>
 <span class="nv">$card-spacer-x</span><span class="o">:</span>                     <span class="nv">$spacer</span><span class="p">;</span>
-<span class="nv">$card-title-spacer-y</span><span class="o">:</span>               <span class="nv">$spacer</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$card-title-spacer-y</span><span class="o">:</span>               <span class="nv">$spacer</span> <span class="o">*</span> <span class="mf">.5</span><span class="p">;</span>
 <span class="nv">$card-border-width</span><span class="o">:</span>                 <span class="nv">$border-width</span><span class="p">;</span>
 <span class="nv">$card-border-radius</span><span class="o">:</span>                <span class="nv">$border-radius</span><span class="p">;</span>
 <span class="nv">$card-border-color</span><span class="o">:</span>                 <span class="nf">rgba</span><span class="p">(</span><span class="nv">$black</span><span class="o">,</span> <span class="mf">.125</span><span class="p">);</span>
 <span class="nv">$card-inner-border-radius</span><span class="o">:</span>          <span class="nf">subtract</span><span class="p">(</span><span class="nv">$card-border-radius</span><span class="o">,</span> <span class="nv">$card-border-width</span><span class="p">);</span>
-<span class="nv">$card-cap-padding-y</span><span class="o">:</span>                <span class="nv">$card-spacer-y</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$card-cap-padding-y</span><span class="o">:</span>                <span class="nv">$card-spacer-y</span> <span class="o">*</span> <span class="mf">.5</span><span class="p">;</span>
 <span class="nv">$card-cap-padding-x</span><span class="o">:</span>                <span class="nv">$card-spacer-x</span><span class="p">;</span>
 <span class="nv">$card-cap-bg</span><span class="o">:</span>                       <span class="nf">rgba</span><span class="p">(</span><span class="nv">$black</span><span class="o">,</span> <span class="mf">.03</span><span class="p">);</span>
 <span class="nv">$card-cap-color</span><span class="o">:</span>                    <span class="n">null</span><span class="p">;</span>
@@ -1772,7 +1772,7 @@ Note that content should not be larger than the height of the image. If content 
 <span class="nv">$card-color</span><span class="o">:</span>                        <span class="n">null</span><span class="p">;</span>
 <span class="nv">$card-bg</span><span class="o">:</span>                           <span class="nv">$white</span><span class="p">;</span>
 <span class="nv">$card-img-overlay-padding</span><span class="o">:</span>          <span class="nv">$spacer</span><span class="p">;</span>
-<span class="nv">$card-group-margin</span><span class="o">:</span>                 <span class="nv">$grid-gutter-width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$card-group-margin</span><span class="o">:</span>                 <span class="nv">$grid-gutter-width</span> <span class="o">*</span> <span class="mf">.5</span><span class="p">;</span>
 </code></pre></div>
 
       </div>
@@ -1791,7 +1791,7 @@ Note that content should not be larger than the height of the image. If content 
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1838,7 +1838,7 @@ Note that content should not be larger than the height of the image. If content 
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -1846,7 +1846,7 @@ Note that content should not be larger than the height of the image. If content 
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Documentation and examples for Bootstrap&rsquo;s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -432,10 +432,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="how-it-works">How it works</h2>
 <p>Here&rsquo;s what you need to know before getting started with the navbar:</p>
@@ -1338,7 +1338,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <p>When you do this, we recommend including additional JavaScript to move the focus programmatically to the container when it is opened. Otherwise, keyboard users and users of assistive technologies will likely have a hard time finding the newly revealed content - particularly if the container that was opened comes <em>before</em> the toggler in the document&rsquo;s structure. We also recommend making sure that the toggler has the <code>aria-controls</code> attribute, pointing to the <code>id</code> of the content container. In theory, this allows assistive technology users to jump directly from the toggler to the container it controls–but support for this is currently quite patchy.</p>
 <h2 id="sass">Sass</h2>
 <h3 id="variables">Variables</h3>
-<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$navbar-padding-y</span><span class="o">:</span>                  <span class="nv">$spacer</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$navbar-padding-y</span><span class="o">:</span>                  <span class="nv">$spacer</span> <span class="o">*</span> <span class="mf">.5</span><span class="p">;</span>
 <span class="nv">$navbar-padding-x</span><span class="o">:</span>                  <span class="n">null</span><span class="p">;</span>
 
 <span class="nv">$navbar-nav-link-padding-x</span><span class="o">:</span>         <span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
@@ -1347,7 +1347,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <span class="c1">// Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
 </span><span class="c1"></span><span class="nv">$nav-link-height</span><span class="o">:</span>                   <span class="nv">$font-size-base</span> <span class="o">*</span> <span class="nv">$line-height-base</span> <span class="o">+</span> <span class="nv">$nav-link-padding-y</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
 <span class="nv">$navbar-brand-height</span><span class="o">:</span>               <span class="nv">$navbar-brand-font-size</span> <span class="o">*</span> <span class="nv">$line-height-base</span><span class="p">;</span>
-<span class="nv">$navbar-brand-padding-y</span><span class="o">:</span>            <span class="p">(</span><span class="nv">$nav-link-height</span> <span class="o">-</span> <span class="nv">$navbar-brand-height</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$navbar-brand-padding-y</span><span class="o">:</span>            <span class="p">(</span><span class="nv">$nav-link-height</span> <span class="o">-</span> <span class="nv">$navbar-brand-height</span><span class="p">)</span> <span class="o">*</span> <span class="mf">.5</span><span class="p">;</span>
 <span class="nv">$navbar-brand-margin-end</span><span class="o">:</span>           <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
 
 <span class="nv">$navbar-toggler-padding-y</span><span class="o">:</span>          <span class="mf">.25</span><span class="kt">rem</span><span class="p">;</span>
@@ -1355,7 +1355,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <span class="nv">$navbar-toggler-font-size</span><span class="o">:</span>          <span class="nv">$font-size-lg</span><span class="p">;</span>
 <span class="nv">$navbar-toggler-border-radius</span><span class="o">:</span>      <span class="nv">$btn-border-radius</span><span class="p">;</span>
 <span class="nv">$navbar-toggler-focus-width</span><span class="o">:</span>        <span class="nv">$btn-focus-width</span><span class="p">;</span>
-<span class="nv">$navbar-toggler-transition</span><span class="o">:</span>         <span class="no">box-shadow</span> <span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
+<span class="nv">$navbar-toggler-transition</span><span class="o">:</span>         <span class="n">box-shadow</span> <span class="mf">.15</span><span class="kt">s</span> <span class="ni">ease-in-out</span><span class="p">;</span>
 </code></pre></div>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$navbar-dark-color</span><span class="o">:</span>                 <span class="nf">rgba</span><span class="p">(</span><span class="nv">$white</span><span class="o">,</span> <span class="mf">.55</span><span class="p">);</span>
 <span class="nv">$navbar-dark-hover-color</span><span class="o">:</span>           <span class="nf">rgba</span><span class="p">(</span><span class="nv">$white</span><span class="o">,</span> <span class="mf">.75</span><span class="p">);</span>
@@ -1381,40 +1381,40 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="c1">// Generate series of `.navbar-expand-*` responsive classes for configuring
 </span><span class="c1">// where your navbar collapses.
 </span><span class="c1"></span><span class="nc">.navbar-expand</span> <span class="p">{</span>
-  <span class="k">@each</span> <span class="err">$</span><span class="nt">breakpoint</span> <span class="nt">in</span> <span class="nt">map-keys</span><span class="o">(</span><span class="err">$</span><span class="nt">grid-breakpoints</span><span class="o">)</span> <span class="p">{</span>
+  <span class="k">@each</span> <span class="nv">$breakpoint</span> <span class="ow">in</span> <span class="nf">map-keys</span><span class="p">(</span><span class="nv">$grid-breakpoints</span><span class="p">)</span> <span class="p">{</span>
     <span class="nv">$next</span><span class="o">:</span> <span class="nf">breakpoint-next</span><span class="p">(</span><span class="nv">$breakpoint</span><span class="o">,</span> <span class="nv">$grid-breakpoints</span><span class="p">);</span>
     <span class="nv">$infix</span><span class="o">:</span> <span class="nf">breakpoint-infix</span><span class="p">(</span><span class="nv">$next</span><span class="o">,</span> <span class="nv">$grid-breakpoints</span><span class="p">);</span>
 
     <span class="c1">// stylelint-disable-next-line scss/selector-no-union-class-name
-</span><span class="c1"></span>    <span class="k">&amp;</span><span class="nn">#</span><span class="p">{</span><span class="err">$</span><span class="nt">infix</span><span class="p">}</span> <span class="p">{</span>
+</span><span class="c1"></span>    <span class="k">&amp;</span><span class="si">#{</span><span class="nv">$infix</span><span class="si">}</span> <span class="p">{</span>
       <span class="k">@include</span><span class="nd"> media-breakpoint-up</span><span class="p">(</span><span class="nv">$next</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nt">flex-wrap</span><span class="nd">:</span> <span class="nt">nowrap</span><span class="p">;</span>
-        <span class="nt">justify-content</span><span class="nd">:</span> <span class="nt">flex-start</span><span class="p">;</span>
+        <span class="na">flex-wrap</span><span class="o">:</span> <span class="ni">nowrap</span><span class="p">;</span>
+        <span class="na">justify-content</span><span class="o">:</span> <span class="ni">flex-start</span><span class="p">;</span>
 
         <span class="nc">.navbar-nav</span> <span class="p">{</span>
-          <span class="nt">flex-direction</span><span class="nd">:</span> <span class="nt">row</span><span class="p">;</span>
+          <span class="na">flex-direction</span><span class="o">:</span> <span class="ni">row</span><span class="p">;</span>
 
           <span class="nc">.dropdown-menu</span> <span class="p">{</span>
-            <span class="nt">position</span><span class="nd">:</span> <span class="nt">absolute</span><span class="p">;</span>
+            <span class="na">position</span><span class="o">:</span> <span class="ni">absolute</span><span class="p">;</span>
           <span class="p">}</span>
 
           <span class="nc">.nav-link</span> <span class="p">{</span>
-            <span class="nt">padding-right</span><span class="nd">:</span> <span class="err">$</span><span class="nt">navbar-nav-link-padding-x</span><span class="p">;</span>
-            <span class="nt">padding-left</span><span class="nd">:</span> <span class="err">$</span><span class="nt">navbar-nav-link-padding-x</span><span class="p">;</span>
+            <span class="na">padding-right</span><span class="o">:</span> <span class="nv">$navbar-nav-link-padding-x</span><span class="p">;</span>
+            <span class="na">padding-left</span><span class="o">:</span> <span class="nv">$navbar-nav-link-padding-x</span><span class="p">;</span>
           <span class="p">}</span>
         <span class="p">}</span>
 
         <span class="nc">.navbar-nav-scroll</span> <span class="p">{</span>
-          <span class="nt">overflow</span><span class="nd">:</span> <span class="nt">visible</span><span class="p">;</span>
+          <span class="na">overflow</span><span class="o">:</span> <span class="ni">visible</span><span class="p">;</span>
         <span class="p">}</span>
 
         <span class="nc">.navbar-collapse</span> <span class="p">{</span>
-          <span class="nt">display</span><span class="nd">:</span> <span class="nt">flex</span> <span class="o">!</span><span class="nt">important</span><span class="p">;</span> <span class="c1">// stylelint-disable-line declaration-no-important
-</span><span class="c1"></span>          <span class="nt">flex-basis</span><span class="nd">:</span> <span class="nt">auto</span><span class="p">;</span>
+          <span class="na">display</span><span class="o">:</span> <span class="ni">flex</span> <span class="k">!important</span><span class="p">;</span> <span class="c1">// stylelint-disable-line declaration-no-important
+</span><span class="c1"></span>          <span class="na">flex-basis</span><span class="o">:</span> <span class="ni">auto</span><span class="p">;</span>
         <span class="p">}</span>
 
         <span class="nc">.navbar-toggler</span> <span class="p">{</span>
-          <span class="nt">display</span><span class="nd">:</span> <span class="nt">none</span><span class="p">;</span>
+          <span class="na">display</span><span class="o">:</span> <span class="ni">none</span><span class="p">;</span>
         <span class="p">}</span>
       <span class="p">}</span>
     <span class="p">}</span>
@@ -1438,7 +1438,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1485,7 +1485,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -1493,7 +1493,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

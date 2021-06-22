@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Documentation and examples for adding custom Bootstrap tooltips with CSS and JavaScript using CSS3 for animations and data-bs-attributes for local title storage.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -426,6 +426,7 @@
             <li><a href="#toggleenabled">toggleEnabled</a></li>
             <li><a href="#update">update</a></li>
             <li><a href="#getinstance">getInstance</a></li>
+            <li><a href="#getorcreateinstance">getOrCreateInstance</a></li>
           </ul>
         </li>
         <li><a href="#events">Events</a></li>
@@ -434,10 +435,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="overview">Overview</h2>
 <p>Things to know when using the tooltip plugin:</p>
@@ -516,8 +517,8 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <span class="nv">$tooltip-bg</span><span class="o">:</span>                        <span class="nv">$black</span><span class="p">;</span>
 <span class="nv">$tooltip-border-radius</span><span class="o">:</span>             <span class="nv">$border-radius</span><span class="p">;</span>
 <span class="nv">$tooltip-opacity</span><span class="o">:</span>                   <span class="mf">.9</span><span class="p">;</span>
-<span class="nv">$tooltip-padding-y</span><span class="o">:</span>                 <span class="nv">$spacer</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>
-<span class="nv">$tooltip-padding-x</span><span class="o">:</span>                 <span class="nv">$spacer</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$tooltip-padding-y</span><span class="o">:</span>                 <span class="nv">$spacer</span> <span class="o">*</span> <span class="mf">.25</span><span class="p">;</span>
+<span class="nv">$tooltip-padding-x</span><span class="o">:</span>                 <span class="nv">$spacer</span> <span class="o">*</span> <span class="mf">.5</span><span class="p">;</span>
 <span class="nv">$tooltip-margin</span><span class="o">:</span>                    <span class="mi">0</span><span class="p">;</span>
 
 <span class="nv">$tooltip-arrow-width</span><span class="o">:</span>               <span class="mf">.8</span><span class="kt">rem</span><span class="p">;</span>
@@ -658,7 +659,7 @@ Note that for security reasons the <code>sanitize</code>, <code>sanitizeFn</code
       <td><code>'hover focus'</code></td>
       <td>
         <p>How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space.</p>
-        <p><code>'manual'</code> indicates that the tooltip will be triggered programmatically via the <code>.tooltip('show')</code>, <code>.tooltip('hide')</code> and <code>.tooltip('toggle')</code> methods; this value cannot be combined with any other trigger.</p>
+        <p><code>'manual'</code> indicates that the tooltip will be triggered programmatically via the <code>.show()</code>, <code>.hide()</code> and <code>.toggle()</code> methods; this value cannot be combined with any other trigger.</p>
         <p><code>'hover'</code> on its own will result in tooltips that cannot be triggered via the keyboard, and should only be used if alternative methods for conveying the same information for keyboard users is present.</p>
       </td>
     </tr>
@@ -772,6 +773,10 @@ Note that for security reasons the <code>sanitize</code>, <code>sanitizeFn</code
 <p><em>Static</em> method which allows you to get the tooltip instance associated with a DOM element</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">exampleTriggerEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;example&#39;</span><span class="p">)</span>
 <span class="kd">var</span> <span class="nx">tooltip</span> <span class="o">=</span> <span class="nx">bootstrap</span><span class="p">.</span><span class="nx">Tooltip</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">(</span><span class="nx">exampleTriggerEl</span><span class="p">)</span> <span class="c1">// Returns a Bootstrap tooltip instance
+</span></code></pre></div><h4 id="getorcreateinstance">getOrCreateInstance</h4>
+<p><em>Static</em> method which allows you to get the tooltip instance associated with a DOM element, or create a new one in case it wasn&rsquo;t initialised</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">exampleTriggerEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;example&#39;</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">tooltip</span> <span class="o">=</span> <span class="nx">bootstrap</span><span class="p">.</span><span class="nx">Tooltip</span><span class="p">.</span><span class="nx">getOrCreateInstance</span><span class="p">(</span><span class="nx">exampleTriggerEl</span><span class="p">)</span> <span class="c1">// Returns a Bootstrap tooltip instance
 </span></code></pre></div><h3 id="events">Events</h3>
 <table class="table">
   <thead>
@@ -828,7 +833,7 @@ Note that for security reasons the <code>sanitize</code>, <code>sanitizeFn</code
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -875,7 +880,7 @@ Note that for security reasons the <code>sanitize</code>, <code>sanitizeFn</code
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -883,7 +888,7 @@ Note that for security reasons the <code>sanitize</code>, <code>sanitizeFn</code
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

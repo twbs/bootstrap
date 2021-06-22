@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Breakpoints are customizable widths that determine how your responsive layout behaves across device or viewport sizes in Bootstrap.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -411,10 +411,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="core-concepts">Core concepts</h2>
 <ul>
@@ -474,12 +474,12 @@
 <p>Each breakpoint was chosen to comfortably hold containers whose widths are multiples of 12. Breakpoints are also representative of a subset of common device sizes and viewport dimensions—they don&rsquo;t specifically target every use case or device. Instead, the ranges provide a strong and consistent foundation to build on for nearly any device.</p>
 <p>These breakpoints are customizable via Sass—you&rsquo;ll find them in a Sass map in our <code>_variables.scss</code> stylesheet.</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$grid-breakpoints</span><span class="o">:</span> <span class="p">(</span>
-  <span class="n">xs</span><span class="o">:</span> <span class="mi">0</span><span class="o">,</span>
-  <span class="n">sm</span><span class="o">:</span> <span class="mi">576</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">md</span><span class="o">:</span> <span class="mi">768</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">lg</span><span class="o">:</span> <span class="mi">992</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">xl</span><span class="o">:</span> <span class="mi">1200</span><span class="kt">px</span><span class="o">,</span>
-  <span class="n">xxl</span><span class="o">:</span> <span class="mi">1400</span><span class="kt">px</span>
+  <span class="na">xs</span><span class="o">:</span> <span class="mi">0</span><span class="o">,</span>
+  <span class="na">sm</span><span class="o">:</span> <span class="mi">576</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">md</span><span class="o">:</span> <span class="mi">768</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">lg</span><span class="o">:</span> <span class="mi">992</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">xl</span><span class="o">:</span> <span class="mi">1200</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">xxl</span><span class="o">:</span> <span class="mi">1400</span><span class="kt">px</span>
 <span class="p">);</span>
 </code></pre></div>
 <p>For more information and examples on how to modify our Sass maps and variables, please refer to <a href="/docs/5.0/layout/grid/#sass">the Sass section of the Grid documentation</a>.</p>
@@ -500,11 +500,11 @@
 </span><span class="c1"></span>
 <span class="c1">// Example: Hide starting at `min-width: 0`, and then show at the `sm` breakpoint
 </span><span class="c1"></span><span class="nc">.custom-class</span> <span class="p">{</span>
-  <span class="nt">display</span><span class="nd">:</span> <span class="nt">none</span><span class="p">;</span>
+  <span class="na">display</span><span class="o">:</span> <span class="ni">none</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="k">@include</span><span class="nd"> media-breakpoint-up</span><span class="p">(</span><span class="n">sm</span><span class="p">)</span> <span class="p">{</span>
   <span class="nc">.custom-class</span> <span class="p">{</span>
-    <span class="nt">display</span><span class="nd">:</span> <span class="nt">block</span><span class="p">;</span>
+    <span class="na">display</span><span class="o">:</span> <span class="ni">block</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div><p>These Sass mixins translate in our compiled CSS using the values declared in our Sass variables. For example:</p>
@@ -512,19 +512,19 @@
 </span><span class="c1">// No media query for `xs` since this is the default in Bootstrap
 </span><span class="c1"></span>
 <span class="c1">// Small devices (landscape phones, 576px and up)
-</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="no">min-width</span><span class="o">:</span> <span class="mi">576</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
+</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="na">min-width</span><span class="o">:</span> <span class="mi">576</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 
 <span class="c1">// Medium devices (tablets, 768px and up)
-</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="no">min-width</span><span class="o">:</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
+</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="na">min-width</span><span class="o">:</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 
 <span class="c1">// Large devices (desktops, 992px and up)
-</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="no">min-width</span><span class="o">:</span> <span class="mi">992</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
+</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="na">min-width</span><span class="o">:</span> <span class="mi">992</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 
 <span class="c1">// X-Large devices (large desktops, 1200px and up)
-</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="no">min-width</span><span class="o">:</span> <span class="mi">1200</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
+</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="na">min-width</span><span class="o">:</span> <span class="mi">1200</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 
 <span class="c1">// XX-Large devices (larger desktops, 1400px and up)
-</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="no">min-width</span><span class="o">:</span> <span class="mi">1400</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
+</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="na">min-width</span><span class="o">:</span> <span class="mi">1400</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 </code></pre></div><h3 id="max-width">Max-width</h3>
 <p>We occasionally use media queries that go in the other direction (the given screen size <em>or smaller</em>):</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="c1">// No media query necessary for xs breakpoint as it&#39;s effectively `@media (max-width: 0) { ... }`
@@ -537,24 +537,24 @@
 <span class="c1">// Example: Style from medium breakpoint and down
 </span><span class="c1"></span><span class="k">@include</span><span class="nd"> media-breakpoint-down</span><span class="p">(</span><span class="n">md</span><span class="p">)</span> <span class="p">{</span>
   <span class="nc">.custom-class</span> <span class="p">{</span>
-    <span class="nt">display</span><span class="nd">:</span> <span class="nt">block</span><span class="p">;</span>
+    <span class="na">display</span><span class="o">:</span> <span class="ni">block</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div><p>These mixins take those declared breakpoints, subtract <code>.02px</code> from them, and use them as our <code>max-width</code> values. For example:</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="c1">// X-Small devices (portrait phones, less than 576px)
-</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="no">max-width</span><span class="o">:</span> <span class="mi">575</span><span class="mf">.98</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
+</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="na">max-width</span><span class="o">:</span> <span class="mi">575</span><span class="mf">.98</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 
 <span class="c1">// Small devices (landscape phones, less than 768px)
-</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="no">max-width</span><span class="o">:</span> <span class="mi">767</span><span class="mf">.98</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
+</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="na">max-width</span><span class="o">:</span> <span class="mi">767</span><span class="mf">.98</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 
 <span class="c1">// Medium devices (tablets, less than 992px)
-</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="no">max-width</span><span class="o">:</span> <span class="mi">991</span><span class="mf">.98</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
+</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="na">max-width</span><span class="o">:</span> <span class="mi">991</span><span class="mf">.98</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 
 <span class="c1">// Large devices (desktops, less than 1200px)
-</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="no">max-width</span><span class="o">:</span> <span class="mi">1199</span><span class="mf">.98</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
+</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="na">max-width</span><span class="o">:</span> <span class="mi">1199</span><span class="mf">.98</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 
 <span class="c1">// X-Large devices (large desktops, less than 1400px)
-</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="no">max-width</span><span class="o">:</span> <span class="mi">1399</span><span class="mf">.98</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
+</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="na">max-width</span><span class="o">:</span> <span class="mi">1399</span><span class="mf">.98</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 
 <span class="c1">// XX-Large devices (larger desktops)
 </span><span class="c1">// No media query since the xxl breakpoint has no upper bound on its width
@@ -571,14 +571,14 @@
 <span class="k">@include</span><span class="nd"> media-breakpoint-only</span><span class="p">(</span><span class="n">xl</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 <span class="k">@include</span><span class="nd"> media-breakpoint-only</span><span class="p">(</span><span class="n">xxl</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 </code></pre></div><p>For example the <code>@include media-breakpoint-only(md) { ... }</code> will result in :</p>
-<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@media</span> <span class="p">(</span><span class="no">min-width</span><span class="o">:</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="no">max-width</span><span class="o">:</span> <span class="mi">991</span><span class="mf">.98</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
+<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@media</span> <span class="p">(</span><span class="na">min-width</span><span class="o">:</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="na">max-width</span><span class="o">:</span> <span class="mi">991</span><span class="mf">.98</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 </code></pre></div><h3 id="between-breakpoints">Between breakpoints</h3>
 <p>Similarly, media queries may span multiple breakpoint widths:</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@include</span><span class="nd"> media-breakpoint-between</span><span class="p">(</span><span class="n">md</span><span class="o">,</span> <span class="n">xl</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 </code></pre></div><p>Which results in:</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="c1">// Example
 </span><span class="c1">// Apply styles starting from medium devices and up to extra large devices
-</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="no">min-width</span><span class="o">:</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="no">max-width</span><span class="o">:</span> <span class="mi">1199</span><span class="mf">.98</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
+</span><span class="c1"></span><span class="k">@media</span> <span class="p">(</span><span class="na">min-width</span><span class="o">:</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="na">max-width</span><span class="o">:</span> <span class="mi">1199</span><span class="mf">.98</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 </code></pre></div>
       </div>
     </main>
@@ -596,7 +596,7 @@
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -643,7 +643,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -651,7 +651,7 @@
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

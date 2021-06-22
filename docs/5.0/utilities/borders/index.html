@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Use border utilities to quickly style the border and border-radius of an element. Great for images, buttons, or any other element.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -421,10 +421,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="border">Border</h2>
 <p>Use border utilities to add or remove an element&rsquo;s borders. Choose from all borders or one at a time.</p>
@@ -529,11 +529,11 @@
 <h3 id="variables">Variables</h3>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$border-width</span><span class="o">:</span>                <span class="mi">1</span><span class="kt">px</span><span class="p">;</span>
 <span class="nv">$border-widths</span><span class="o">:</span> <span class="p">(</span>
-  <span class="mi">1</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span><span class="o">,</span>
-  <span class="mi">2</span><span class="o">:</span> <span class="mi">2</span><span class="kt">px</span><span class="o">,</span>
-  <span class="mi">3</span><span class="o">:</span> <span class="mi">3</span><span class="kt">px</span><span class="o">,</span>
-  <span class="mi">4</span><span class="o">:</span> <span class="mi">4</span><span class="kt">px</span><span class="o">,</span>
-  <span class="mi">5</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span>
+  <span class="na">1</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">2</span><span class="o">:</span> <span class="mi">2</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">3</span><span class="o">:</span> <span class="mi">3</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">4</span><span class="o">:</span> <span class="mi">4</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">5</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span>
 <span class="p">);</span>
 
 <span class="nv">$border-color</span><span class="o">:</span>                <span class="nv">$gray-300</span><span class="p">;</span>
@@ -546,62 +546,62 @@
 <h3 id="mixins">Mixins</h3>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@mixin</span><span class="nf"> border-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="o">:</span> <span class="nv">$border-radius</span><span class="o">,</span> <span class="nv">$fallback-border-radius</span><span class="o">:</span> <span class="n">false</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">@if</span> <span class="nv">$enable-rounded</span> <span class="p">{</span>
-    <span class="nt">border-radius</span><span class="nd">:</span> <span class="nt">valid-radius</span><span class="o">(</span><span class="err">$</span><span class="nt">radius</span><span class="o">)</span><span class="p">;</span>
+    <span class="na">border-radius</span><span class="o">:</span> <span class="nf">valid-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="p">);</span>
   <span class="p">}</span>
-  <span class="k">@else</span> <span class="nt">if</span> <span class="err">$</span><span class="nt">fallback-border-radius</span> <span class="o">!=</span> <span class="nt">false</span> <span class="p">{</span>
-    <span class="nt">border-radius</span><span class="nd">:</span> <span class="err">$</span><span class="nt">fallback-border-radius</span><span class="p">;</span>
+  <span class="k">@else if</span> <span class="nv">$fallback-border-radius</span> <span class="o">!=</span> <span class="n">false</span> <span class="p">{</span>
+    <span class="na">border-radius</span><span class="o">:</span> <span class="nv">$fallback-border-radius</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="k">@mixin</span><span class="nf"> border-top-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="o">:</span> <span class="nv">$border-radius</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">@if</span> <span class="nv">$enable-rounded</span> <span class="p">{</span>
-    <span class="nt">border-top-left-radius</span><span class="nd">:</span> <span class="nt">valid-radius</span><span class="o">(</span><span class="err">$</span><span class="nt">radius</span><span class="o">)</span><span class="p">;</span>
-    <span class="nt">border-top-right-radius</span><span class="nd">:</span> <span class="nt">valid-radius</span><span class="o">(</span><span class="err">$</span><span class="nt">radius</span><span class="o">)</span><span class="p">;</span>
+    <span class="na">border-top-left-radius</span><span class="o">:</span> <span class="nf">valid-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="p">);</span>
+    <span class="na">border-top-right-radius</span><span class="o">:</span> <span class="nf">valid-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="k">@mixin</span><span class="nf"> border-end-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="o">:</span> <span class="nv">$border-radius</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">@if</span> <span class="nv">$enable-rounded</span> <span class="p">{</span>
-    <span class="nt">border-top-right-radius</span><span class="nd">:</span> <span class="nt">valid-radius</span><span class="o">(</span><span class="err">$</span><span class="nt">radius</span><span class="o">)</span><span class="p">;</span>
-    <span class="nt">border-bottom-right-radius</span><span class="nd">:</span> <span class="nt">valid-radius</span><span class="o">(</span><span class="err">$</span><span class="nt">radius</span><span class="o">)</span><span class="p">;</span>
+    <span class="na">border-top-right-radius</span><span class="o">:</span> <span class="nf">valid-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="p">);</span>
+    <span class="na">border-bottom-right-radius</span><span class="o">:</span> <span class="nf">valid-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="k">@mixin</span><span class="nf"> border-bottom-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="o">:</span> <span class="nv">$border-radius</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">@if</span> <span class="nv">$enable-rounded</span> <span class="p">{</span>
-    <span class="nt">border-bottom-right-radius</span><span class="nd">:</span> <span class="nt">valid-radius</span><span class="o">(</span><span class="err">$</span><span class="nt">radius</span><span class="o">)</span><span class="p">;</span>
-    <span class="nt">border-bottom-left-radius</span><span class="nd">:</span> <span class="nt">valid-radius</span><span class="o">(</span><span class="err">$</span><span class="nt">radius</span><span class="o">)</span><span class="p">;</span>
+    <span class="na">border-bottom-right-radius</span><span class="o">:</span> <span class="nf">valid-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="p">);</span>
+    <span class="na">border-bottom-left-radius</span><span class="o">:</span> <span class="nf">valid-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="k">@mixin</span><span class="nf"> border-start-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="o">:</span> <span class="nv">$border-radius</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">@if</span> <span class="nv">$enable-rounded</span> <span class="p">{</span>
-    <span class="nt">border-top-left-radius</span><span class="nd">:</span> <span class="nt">valid-radius</span><span class="o">(</span><span class="err">$</span><span class="nt">radius</span><span class="o">)</span><span class="p">;</span>
-    <span class="nt">border-bottom-left-radius</span><span class="nd">:</span> <span class="nt">valid-radius</span><span class="o">(</span><span class="err">$</span><span class="nt">radius</span><span class="o">)</span><span class="p">;</span>
+    <span class="na">border-top-left-radius</span><span class="o">:</span> <span class="nf">valid-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="p">);</span>
+    <span class="na">border-bottom-left-radius</span><span class="o">:</span> <span class="nf">valid-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="k">@mixin</span><span class="nf"> border-top-start-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="o">:</span> <span class="nv">$border-radius</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">@if</span> <span class="nv">$enable-rounded</span> <span class="p">{</span>
-    <span class="nt">border-top-left-radius</span><span class="nd">:</span> <span class="nt">valid-radius</span><span class="o">(</span><span class="err">$</span><span class="nt">radius</span><span class="o">)</span><span class="p">;</span>
+    <span class="na">border-top-left-radius</span><span class="o">:</span> <span class="nf">valid-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="k">@mixin</span><span class="nf"> border-top-end-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="o">:</span> <span class="nv">$border-radius</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">@if</span> <span class="nv">$enable-rounded</span> <span class="p">{</span>
-    <span class="nt">border-top-right-radius</span><span class="nd">:</span> <span class="nt">valid-radius</span><span class="o">(</span><span class="err">$</span><span class="nt">radius</span><span class="o">)</span><span class="p">;</span>
+    <span class="na">border-top-right-radius</span><span class="o">:</span> <span class="nf">valid-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="k">@mixin</span><span class="nf"> border-bottom-end-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="o">:</span> <span class="nv">$border-radius</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">@if</span> <span class="nv">$enable-rounded</span> <span class="p">{</span>
-    <span class="nt">border-bottom-right-radius</span><span class="nd">:</span> <span class="nt">valid-radius</span><span class="o">(</span><span class="err">$</span><span class="nt">radius</span><span class="o">)</span><span class="p">;</span>
+    <span class="na">border-bottom-right-radius</span><span class="o">:</span> <span class="nf">valid-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="k">@mixin</span><span class="nf"> border-bottom-start-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="o">:</span> <span class="nv">$border-radius</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">@if</span> <span class="nv">$enable-rounded</span> <span class="p">{</span>
-    <span class="nt">border-bottom-left-radius</span><span class="nd">:</span> <span class="nt">valid-radius</span><span class="o">(</span><span class="err">$</span><span class="nt">radius</span><span class="o">)</span><span class="p">;</span>
+    <span class="na">border-bottom-left-radius</span><span class="o">:</span> <span class="nf">valid-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -706,7 +706,7 @@
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -753,7 +753,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -761,7 +761,7 @@
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>

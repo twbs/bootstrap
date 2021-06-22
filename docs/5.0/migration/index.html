@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Track and review changes to the Bootstrap source files, documentation, and components to help you migrate from v4 to v5.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
+<meta name="generator" content="Hugo 0.84.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.0">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link href="/docs/5.0/assets/css/docs.css" rel="stylesheet">
 
@@ -137,7 +137,7 @@
 </header>
 
 
-
+    
   <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <form class="bd-search position-relative me-auto">
@@ -393,7 +393,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
           <nav id="TableOfContents">
@@ -437,10 +437,10 @@
   </ul>
 </nav>
         </div>
-
+      
 
       <div class="bd-content ps-lg-4">
-
+        
 
         <h2 id="dependencies">Dependencies</h2>
 <ul>
@@ -481,6 +481,13 @@
 <ul>
 <li><code>$yiq-contrasted-threshold</code> is renamed to <code>$min-contrast-ratio</code>.</li>
 <li><code>$yiq-text-dark</code> and <code>$yiq-text-light</code> are respectively renamed to <code>$color-contrast-dark</code> and <code>$color-contrast-light</code>.</li>
+</ul>
+</li>
+<li>
+<p><span class="badge bg-danger">Breaking</span> Media query mixins parameters have changed for a more logical approach.</p>
+<ul>
+<li><code>media-breakpoint-down()</code> uses the breakpoint itself instead of the next breakpoint (e.g., <code>media-breakpoint-down(lg)</code> instead of <code>media-breakpoint-down(md)</code> targets viewports smaller than <code>lg</code>).</li>
+<li>Similarly, the second parameter in <code>media-breakpoint-between()</code> also uses the breakpoint itself instead of the next breakpoint (e.g., <code>media-between(sm, lg)</code> instead of <code>media-breakpoint-between(sm, md)</code> targets viewports between <code>sm</code> and <code>lg</code>).</li>
 </ul>
 </li>
 <li>
@@ -591,7 +598,7 @@
 <p><span class="badge bg-danger">Breaking</span> <code>.thead-light</code> and <code>.thead-dark</code> are dropped in favor of the <code>.table-*</code> variant classes which can be used for all table elements (<code>thead</code>, <code>tbody</code>, <code>tfoot</code>, <code>tr</code>, <code>th</code> and <code>td</code>).</p>
 </li>
 <li>
-<p><span class="badge bg-danger">Breaking</span> The <code>table-row-variant()</code> mixin is renamed to <code>table-variant()</code> and accepts only 2 parameters: <code>$color</code> (colon name) and <code>$value</code> (color code). The border color and accent colors are automatically calculated based on the table factor variables.</p>
+<p><span class="badge bg-danger">Breaking</span> The <code>table-row-variant()</code> mixin is renamed to <code>table-variant()</code> and accepts only 2 parameters: <code>$color</code> (color name) and <code>$value</code> (color code). The border color and accent colors are automatically calculated based on the table factor variables.</p>
 </li>
 <li>
 <p>Split table cell padding variables into <code>-y</code> and <code>-x</code>.</p>
@@ -699,10 +706,10 @@
 <h3 id="buttons">Buttons</h3>
 <ul>
 <li>
-<p><span class="badge bg-danger">Breaking</span> <strong><a href="http://getbootstrap.com/docs/5.0/forms/checks-radios/#toggle-buttons">Toggle buttons</a>, with checkboxes or radios, no longer require JavaScript and have new markup.</strong> We no longer require a wrapping element, add <code>.btn-check</code> to the <code>&lt;input&gt;</code>, and pair it with any <code>.btn</code> classes on the <code>&lt;label&gt;</code>. <a href="https://github.com/twbs/bootstrap/pull/30650">See #30650</a>. <em>The docs for this has moved from our Buttons page to the new Forms section.</em></p>
+<p><span class="badge bg-danger">Breaking</span> <strong><a href="https://getbootstrap.com/docs/5.0/forms/checks-radios/#toggle-buttons">Toggle buttons</a>, with checkboxes or radios, no longer require JavaScript and have new markup.</strong> We no longer require a wrapping element, add <code>.btn-check</code> to the <code>&lt;input&gt;</code>, and pair it with any <code>.btn</code> classes on the <code>&lt;label&gt;</code>. <a href="https://github.com/twbs/bootstrap/pull/30650">See #30650</a>. <em>The docs for this has moved from our Buttons page to the new Forms section.</em></p>
 </li>
 <li>
-<p><span class="badge bg-danger">Breaking</span> <strong>Dropped <code>.btn-block</code> for utilities.</strong> Instead of using <code>.btn-block</code> on the <code>.btn</code>, wrap your buttons with <code>.d-grid</code> and a <code>.gap-*</code> utility to space them as needed. Switch to responsive classes for even more control over them. <a href="http://getbootstrap.com/docs/5.0/components/buttons/#block-buttons">Read the docs for some examples.</a></p>
+<p><span class="badge bg-danger">Breaking</span> <strong>Dropped <code>.btn-block</code> for utilities.</strong> Instead of using <code>.btn-block</code> on the <code>.btn</code>, wrap your buttons with <code>.d-grid</code> and a <code>.gap-*</code> utility to space them as needed. Switch to responsive classes for even more control over them. <a href="https://getbootstrap.com/docs/5.0/components/buttons/#block-buttons">Read the docs for some examples.</a></p>
 </li>
 <li>
 <p>Updated our <code>button-variant()</code> and <code>button-outline-variant()</code> mixins to support additional parameters.</p>
@@ -972,7 +979,7 @@
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.0.1.</li>
+          <li class="mb-2">Currently v5.0.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1019,7 +1026,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -1027,7 +1034,7 @@
 <script src="/docs/5.0/assets/js/docs.min.js"></script>
 
 
-
-
+    
+  
   </body>
 </html>
