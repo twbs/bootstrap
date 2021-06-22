@@ -201,9 +201,18 @@ const getjQuery = () => {
   return null
 }
 
+const DOMContentLoadedCallbacks = []
+
 const onDOMContentLoaded = callback => {
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', callback)
+    // add listener on the first call when the document is in loading state
+    if (!DOMContentLoadedCallbacks.length) {
+      document.addEventListener('DOMContentLoaded', () => {
+        DOMContentLoadedCallbacks.forEach(callback => callback())
+      })
+    }
+
+    DOMContentLoadedCallbacks.push(callback)
   } else {
     callback()
   }
