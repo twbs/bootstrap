@@ -254,7 +254,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       <td><code>'hover focus'</code></td>
       <td>
         <p>How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space.</p>
-        <p><code>'manual'</code> indicates that the tooltip will be triggered programmatically via the <code>.tooltip('show')</code>, <code>.tooltip('hide')</code> and <code>.tooltip('toggle')</code> methods; this value cannot be combined with any other trigger.</p>
+        <p><code>'manual'</code> indicates that the tooltip will be triggered programmatically via the <code>.show()</code>, <code>.hide()</code> and <code>.toggle()</code> methods; this value cannot be combined with any other trigger.</p>
         <p><code>'hover'</code> on its own will result in tooltips that cannot be triggered via the keyboard, and should only be used if alternative methods for conveying the same information for keyboard users is present.</p>
       </td>
     </tr>

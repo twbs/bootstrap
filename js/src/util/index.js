@@ -2,7 +2,7 @@ import SelectorEngine from '../dom/selector-engine'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): util/index.js
+ * Bootstrap (v5.0.2): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -201,9 +201,18 @@ const getjQuery = () => {
   return null
 }
 
+const DOMContentLoadedCallbacks = []
+
 const onDOMContentLoaded = callback => {
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', callback)
+    // add listener on the first call when the document is in loading state
+    if (!DOMContentLoadedCallbacks.length) {
+      document.addEventListener('DOMContentLoaded', () => {
+        DOMContentLoadedCallbacks.forEach(callback => callback())
+      })
+    }
+
+    DOMContentLoadedCallbacks.push(callback)
   } else {
     callback()
   }

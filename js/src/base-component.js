@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): base-component.js
+ * Bootstrap (v5.0.2): base-component.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ import EventHandler from './dom/event-handler'
  * ------------------------------------------------------------------------
  */
 
-const VERSION = '5.0.1'
+const VERSION = '5.0.2'
 
 class BaseComponent {
   constructor(element) {
