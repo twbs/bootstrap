@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): toast.js
+ * Bootstrap (v5.0.2): toast.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -10,7 +10,6 @@ import {
   reflow,
   typeCheckConfig
 } from './util/index'
-import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import BaseComponent from './base-component'
@@ -218,12 +217,7 @@ class Toast extends BaseComponent {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      let data = Data.get(this, DATA_KEY)
-      const _config = typeof config === 'object' && config
-
-      if (!data) {
-        data = new Toast(this, _config)
-      }
+      const data = Toast.getOrCreateInstance(this, config)
 
       if (typeof config === 'string') {
         if (typeof data[config] === 'undefined') {

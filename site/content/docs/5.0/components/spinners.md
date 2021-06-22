@@ -192,4 +192,4 @@ Used for creating the CSS animations for our spinners. Included in `scss/_spinne
 [float]:   {{< docsref "/utilities/float" >}}
 [margin]:  {{< docsref "/utilities/spacing" >}}
 [sizing]:  {{< docsref "/utilities/sizing" >}}
-[text]:    {{< docsref "/content/typography" >}}
+[text]:    {{< docsref "/utilities/text" >}}

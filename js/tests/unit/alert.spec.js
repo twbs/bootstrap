@@ -207,4 +207,26 @@ describe('Alert', () => {
       expect(Alert.getInstance(div)).toEqual(null)
     })
   })
+
+  describe('getOrCreateInstance', () => {
+    it('should return alert instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const alert = new Alert(div)
+
+      expect(Alert.getOrCreateInstance(div)).toEqual(alert)
+      expect(Alert.getInstance(div)).toEqual(Alert.getOrCreateInstance(div, {}))
+      expect(Alert.getOrCreateInstance(div)).toBeInstanceOf(Alert)
+    })
+
+    it('should return new instance when there is no alert instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Alert.getInstance(div)).toEqual(null)
+      expect(Alert.getOrCreateInstance(div)).toBeInstanceOf(Alert)
+    })
+  })
 })

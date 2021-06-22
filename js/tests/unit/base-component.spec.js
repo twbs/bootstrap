@@ -112,5 +112,22 @@ describe('Base Component', () => {
         expect(DummyClass.getInstance(div)).toEqual(null)
       })
     })
+    describe('getOrCreateInstance', () => {
+      it('should return an instance', () => {
+        createInstance()
+
+        expect(DummyClass.getOrCreateInstance(element)).toEqual(instance)
+        expect(DummyClass.getInstance(element)).toEqual(DummyClass.getOrCreateInstance(element, {}))
+        expect(DummyClass.getOrCreateInstance(element)).toBeInstanceOf(DummyClass)
+      })
+
+      it('should return new instance when there is no alert instance', () => {
+        fixtureEl.innerHTML = '<div id="foo"></div>'
+        element = fixtureEl.querySelector('#foo')
+
+        expect(DummyClass.getInstance(element)).toEqual(null)
+        expect(DummyClass.getOrCreateInstance(element)).toBeInstanceOf(DummyClass)
+      })
+    })
   })
 })

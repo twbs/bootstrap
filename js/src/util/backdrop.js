@@ -1,24 +1,24 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): util/backdrop.js
+ * Bootstrap (v5.0.2): util/backdrop.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import EventHandler from '../dom/event-handler'
-import { emulateTransitionEnd, execute, getTransitionDurationFromElement, reflow, typeCheckConfig } from './index'
+import { execute, executeAfterTransition, getElement, reflow, typeCheckConfig } from './index'
 
 const Default = {
   isVisible: true, // if false, we use the backdrop helper without adding any element to the dom
   isAnimated: false,
-  rootElement: document.body, // give the choice to place backdrop under different elements
+  rootElement: 'body', // give the choice to place backdrop under different elements
   clickCallback: null
 }
 
 const DefaultType = {
   isVisible: 'boolean',
   isAnimated: 'boolean',
-  rootElement: 'element',
+  rootElement: '(element|string)',
   clickCallback: '(function|null)'
 }
 const NAME = 'backdrop'
@@ -90,7 +90,8 @@ class Backdrop {
       ...(typeof config === 'object' ? config : {})
     }
 
-    config.rootElement = config.rootElement || document.body
+    // use getElement() with the default "body" to get a fresh Element on each instantiation
+    config.rootElement = getElement(config.rootElement)
     typeCheckConfig(NAME, config, DefaultType)
     return config
   }
@@ -116,23 +117,12 @@ class Backdrop {
 
     EventHandler.off(this._element, EVENT_MOUSEDOWN)
 
-    const { parentNode } = this._getElement()
-    if (parentNode) {
-      parentNode.removeChild(this._element)
-    }
-
+    this._element.remove()
     this._isAppended = false
   }
 
   _emulateAnimation(callback) {
-    if (!this._config.isAnimated) {
-      execute(callback)
-      return
-    }
-
-    const backdropTransitionDuration = getTransitionDurationFromElement(this._getElement())
-    EventHandler.one(this._getElement(), 'transitionend', () => execute(callback))
-    emulateTransitionEnd(this._getElement(), backdropTransitionDuration)
+    executeAfterTransition(callback, this._getElement(), this._config.isAnimated)
   }
 }
 

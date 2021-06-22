@@ -1,16 +1,14 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): base-component.js
+ * Bootstrap (v5.0.2): base-component.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import Data from './dom/data'
 import {
-  emulateTransitionEnd,
-  execute,
-  getElement,
-  getTransitionDurationFromElement
+  executeAfterTransition,
+  getElement
 } from './util/index'
 import EventHandler from './dom/event-handler'
 
@@ -20,7 +18,7 @@ import EventHandler from './dom/event-handler'
  * ------------------------------------------------------------------------
  */
 
-const VERSION = '5.0.1'
+const VERSION = '5.0.2'
 
 class BaseComponent {
   constructor(element) {
@@ -44,21 +42,17 @@ class BaseComponent {
   }
 
   _queueCallback(callback, element, isAnimated = true) {
-    if (!isAnimated) {
-      execute(callback)
-      return
-    }
-
-    const transitionDuration = getTransitionDurationFromElement(element)
-    EventHandler.one(element, 'transitionend', () => execute(callback))
-
-    emulateTransitionEnd(element, transitionDuration)
+    executeAfterTransition(callback, element, isAnimated)
   }
 
   /** Static */
 
   static getInstance(element) {
     return Data.get(element, this.DATA_KEY)
+  }
+
+  static getOrCreateInstance(element, config = {}) {
+    return this.getInstance(element) || new this(element, typeof config === 'object' ? config : null)
   }
 
   static get VERSION() {
