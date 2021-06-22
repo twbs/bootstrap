@@ -8,8 +8,8 @@ toc: true
 
 Bootstrap's default grid system represents the culmination of over a decade of CSS layout techniques, tried and tested by millions of people. But, it was also created without many of the modern CSS features and techniques we're seeing in browsers like the new CSS Grid.
 
-{{< callout info >}}
-**Heads up!** Since our CSS Grid system isn't enabled by default, we've included it in our documentation CSS. Keep reading to see how to enable it yourself.
+{{< callout warning >}}
+**Heads up—our CSS Grid system is experimental and opt-in for v5.1.0!** We included it in our documentation's CSS to demonstrate it for you, but it's disabled by default. Keep reading to learn how to enable it in your projects.
 {{< /callout >}}
 
 ## How it works
@@ -22,9 +22,9 @@ With Bootstrap 5, we've added the option to enable a separate grid system that's
 
 - **Replace `.col-*` classes with `.g-col-*` classes.** This is because our CSS Grid columns use the `grid-column` property instead of `width`.
 
-- **Columns and gutter sizes are set via CSS variables.** Set these on the parent `.grid` and customize however you want, inline or in a stylesheet, with `--columns` and `--gap`.
+- **Columns and gutter sizes are set via CSS variables.** Set these on the parent `.grid` and customize however you want, inline or in a stylesheet, with `--bs-columns` and `--bs-gap`.
 
-In the future, Bootstrap will likely shift to a hybrid solution as more the `gap` property is achieving nearly full browser support for flexbox.
+In the future, Bootstrap will likely shift to a hybrid solution as the `gap` property has achieved nearly full browser support for flexbox.
 
 ## Key differences
 
@@ -32,11 +32,11 @@ Compared to the default grid system:
 
 - Flex utilities don't affect the CSS Grid columns in the same way.
 
-- There's no `padding` on CSS Grid columns as gutters function more like margins via the `gap` property.
+- Gaps replaces gutters. The `gap` property replaces the horizontal `padding` from our default grid system and functions more like `margin`.
 
-- As such, unlike `.row`s, `.grid`s have no negative margins and margin utilities cannot be used to change the grid gutters. Grid gutters are applied horizontally and vertically by default. See the [customizing section](#customizing) for more details.
+- As such, unlike `.row`s, `.grid`s have no negative margins and margin utilities cannot be used to change the grid gutters. Grid gaps are applied horizontally and vertically by default. See the [customizing section](#customizing) for more details.
 
-- Inline and custom styles should be viewed as replacements for modifier classes (e.g., `style="--columns: 3;"` vs `class="row-cols-3"`).
+- Inline and custom styles should be viewed as replacements for modifier classes (e.g., `style="--bs-columns: 3;"` vs `class="row-cols-3"`).
 
 - Nesting works similarly, but may require you to reset your column counts on each instance of a nested `.grid`. See the [nesting section](#nesting) for details.
 
@@ -77,7 +77,7 @@ Compare that to this two column layout at all viewports.
 
 ## Wrapping
 
-Grid items automatically wrap to the next line when there's no more room horizontally. Note that the `grid-gap` applies to horizontal and vertical gutters between grid items.
+Grid items automatically wrap to the next line when there's no more room horizontally. Note that the `gap` applies to horizontal and vertical gaps between grid items.
 
 {{< example class="bd-example-cssgrid" >}}
 <div class="grid">
@@ -169,7 +169,7 @@ In practice this allows for more complex and custom layouts when compared to our
 
 ## Customizing
 
-Customize the number of columns, the number of rows, and the width of the gutters with local CSS variables.
+Customize the number of columns, the number of rows, and the width of the gaps with local CSS variables.
 
 {{< bs-table "table" >}}
 | Variable | Fallback value | Description |
@@ -193,9 +193,9 @@ Immediate children elements of `.grid` are grid items, so they'll be sized witho
 </div>
 {{< /example >}}
 
-### Columns and gutters
+### Columns and gaps
 
-Adjust the number of columns and the gap (gutters).
+Adjust the number of columns and the gap.
 
 {{< example class="bd-example-cssgrid" >}}
 <div class="grid" style="--bs-columns: 4; --bs-gap: 5rem;">
@@ -223,12 +223,12 @@ Adding more rows and changing the placement of columns:
 </div>
 {{< /example >}}
 
-### Gutters
+### Gaps
 
-Change the vertical gutters only by modifying the `grid-row-gap`. Note that we use `grid-gap` on `.grid`s, but `grid-row-gap` and `grid-col-gap` can be modified as needed.
+Change the vertical gaps only by modifying the `row-gap`. Note that we use `gap` on `.grid`s, but `row-gap` and `column-gap` can be modified as needed.
 
 {{< example class="bd-example-cssgrid" >}}
-<div class="grid" style="grid-row-gap: 0;">
+<div class="grid" style="row-gap: 0;">
   <div class="g-col-6">.g-col-6</div>
   <div class="g-col-6">.g-col-6</div>
 
@@ -237,10 +237,10 @@ Change the vertical gutters only by modifying the `grid-row-gap`. Note that we u
 </div>
 {{< /example >}}
 
-Because of that, you can have different vertical and horizontal gutters with `grid-gap`, which can take a single value (all sides) or a pair of values (vertical and horizontal).
+Because of that, you can have different vertical and horizontal `gap`s, which can take a single value (all sides) or a pair of values (vertical and horizontal). This can be applied with an inline style for `gap`, or with our `--bs-gap` CSS variable.
 
 {{< example class="bd-example-cssgrid" >}}
-<div class="grid" style="grid-gap: .25rem 1rem;">
+<div class="grid" style="--bs-gap: .25rem 1rem;">
   <div class="g-col-6">.g-col-6</div>
   <div class="g-col-6">.g-col-6</div>
 
@@ -251,12 +251,12 @@ Because of that, you can have different vertical and horizontal gutters with `gr
 
 ## Sass
 
-One limitation of the CSS Grid is that our default classes are still generated by two Sass variables, `$grid-columns` and `$grid-gutter-width`. You have two options here:
+One limitation of the CSS Grid is that our default classes are still generated by two Sass variables, `$grid-columns` and `$grid-gutter-width`. This effectively predetermines the number of classes generated in our compiled CSS. You have two options here:
 
 - Modify those default Sass variables and recompile your CSS.
-- Or, use inline or custom styles to augment the provided classes.
+- Use inline or custom styles to augment the provided classes.
 
-For example, you can customize the column count and gutter, and then size your "columns" with inline styles.
+For example, you can increase the column count and change the gap size, and then size your "columns" with a mix of inline styles and predefined CSS Grid column classes (e.g., `.g-col-4`).
 
 {{< example class="bd-example-cssgrid" >}}
 <div class="grid" style="--bs-columns: 18; --bs-gap: .5rem;">
