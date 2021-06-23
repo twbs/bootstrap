@@ -1,15 +1,14 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): scrollspy.js
+ * Bootstrap (v5.0.2): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
   defineJQueryPlugin,
+  getElement,
   getSelectorFromElement,
-  getUID,
-  isElement,
   typeCheckConfig
 } from './util/index'
 import EventHandler from './dom/event-handler'
@@ -52,6 +51,7 @@ const SELECTOR_NAV_LIST_GROUP = '.nav, .list-group'
 const SELECTOR_NAV_LINKS = '.nav-link'
 const SELECTOR_NAV_ITEMS = '.nav-item'
 const SELECTOR_LIST_ITEMS = '.list-group-item'
+const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}, .${CLASS_NAME_DROPDOWN_ITEM}`
 const SELECTOR_DROPDOWN = '.dropdown'
 const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 
@@ -69,7 +69,6 @@ class ScrollSpy extends BaseComponent {
     super(element)
     this._scrollElement = this._element.tagName === 'BODY' ? window : this._element
     this._config = this._getConfig(config)
-    this._selector = `${this._config.target} ${SELECTOR_NAV_LINKS}, ${this._config.target} ${SELECTOR_LIST_ITEMS}, ${this._config.target} .${CLASS_NAME_DROPDOWN_ITEM}`
     this._offsets = []
     this._targets = []
     this._activeTarget = null
@@ -110,7 +109,7 @@ class ScrollSpy extends BaseComponent {
     this._targets = []
     this._scrollHeight = this._getScrollHeight()
 
-    const targets = SelectorEngine.find(this._selector)
+    const targets = SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target)
 
     targets.map(element => {
       const targetSelector = getSelectorFromElement(element)
@@ -150,15 +149,7 @@ class ScrollSpy extends BaseComponent {
       ...(typeof config === 'object' && config ? config : {})
     }
 
-    if (typeof config.target !== 'string' && isElement(config.target)) {
-      let { id } = config.target
-      if (!id) {
-        id = getUID(NAME)
-        config.target.id = id
-      }
-
-      config.target = `#${id}`
-    }
+    config.target = getElement(config.target) || document.documentElement
 
     typeCheckConfig(NAME, config, DefaultType)
 
@@ -225,20 +216,16 @@ class ScrollSpy extends BaseComponent {
 
     this._clear()
 
-    const queries = this._selector.split(',')
+    const queries = SELECTOR_LINK_ITEMS.split(',')
       .map(selector => `${selector}[data-bs-target="${target}"],${selector}[href="${target}"]`)
 
-    const link = SelectorEngine.findOne(queries.join(','))
+    const link = SelectorEngine.findOne(queries.join(','), this._config.target)
 
+    link.classList.add(CLASS_NAME_ACTIVE)
     if (link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
       SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE, link.closest(SELECTOR_DROPDOWN))
         .classList.add(CLASS_NAME_ACTIVE)
-
-      link.classList.add(CLASS_NAME_ACTIVE)
     } else {
-      // Set triggered link as active
-      link.classList.add(CLASS_NAME_ACTIVE)
-
       SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP)
         .forEach(listGroup => {
           // Set triggered links parents as active
@@ -261,7 +248,7 @@ class ScrollSpy extends BaseComponent {
   }
 
   _clear() {
-    SelectorEngine.find(this._selector)
+    SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target)
       .filter(node => node.classList.contains(CLASS_NAME_ACTIVE))
       .forEach(node => node.classList.remove(CLASS_NAME_ACTIVE))
   }
