@@ -13,12 +13,3 @@
   align-self: stretch;
 }
 // scss-docs-end stacks
-
-.vr {
-  display: inline-block;
-  align-self: stretch;
-  width: 1px;
-  min-height: 1em;
-  background-color: currentColor;
-  opacity: $hr-opacity;
-}
