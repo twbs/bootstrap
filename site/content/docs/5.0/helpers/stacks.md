@@ -42,9 +42,7 @@ Using horizontal margin utilities like `.ms-auto` as spacers:
 </div>
 {{< /example >}}
 
-<div class="d-flex" style="height: 200px;">
-<div class="vr"></div>
-</div>
+And with [vertical rules]({{< docsref "/helpers/vertical-rule" >}}):
 
 {{< example >}}
 <div class="hstack gap-3">
