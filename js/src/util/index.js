@@ -2,7 +2,7 @@ import SelectorEngine from '../dom/selector-engine'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): util/index.js
+ * Bootstrap (v5.0.2): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -126,24 +126,6 @@ const getElement = obj => {
   return null
 }
 
-const emulateTransitionEnd = (element, duration) => {
-  let called = false
-  const durationPadding = 5
-  const emulatedDuration = duration + durationPadding
-
-  function listener() {
-    called = true
-    element.removeEventListener(TRANSITION_END, listener)
-  }
-
-  element.addEventListener(TRANSITION_END, listener)
-  setTimeout(() => {
-    if (!called) {
-      triggerTransitionEnd(element)
-    }
-  }, emulatedDuration)
-}
-
 const typeCheckConfig = (componentName, config, configTypes) => {
   Object.keys(configTypes).forEach(property => {
     const expectedTypes = configTypes[property]
@@ -219,9 +201,18 @@ const getjQuery = () => {
   return null
 }
 
+const DOMContentLoadedCallbacks = []
+
 const onDOMContentLoaded = callback => {
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', callback)
+    // add listener on the first call when the document is in loading state
+    if (!DOMContentLoadedCallbacks.length) {
+      document.addEventListener('DOMContentLoaded', () => {
+        DOMContentLoadedCallbacks.forEach(callback => callback())
+      })
+    }
+
+    DOMContentLoadedCallbacks.push(callback)
   } else {
     callback()
   }
@@ -250,6 +241,35 @@ const execute = callback => {
   if (typeof callback === 'function') {
     callback()
   }
+}
+
+const executeAfterTransition = (callback, transitionElement, waitForTransition = true) => {
+  if (!waitForTransition) {
+    execute(callback)
+    return
+  }
+
+  const durationPadding = 5
+  const emulatedDuration = getTransitionDurationFromElement(transitionElement) + durationPadding
+
+  let called = false
+
+  const handler = ({ target }) => {
+    if (target !== transitionElement) {
+      return
+    }
+
+    called = true
+    transitionElement.removeEventListener(TRANSITION_END, handler)
+    execute(callback)
+  }
+
+  transitionElement.addEventListener(TRANSITION_END, handler)
+  setTimeout(() => {
+    if (!called) {
+      triggerTransitionEnd(transitionElement)
+    }
+  }, emulatedDuration)
 }
 
 /**
@@ -288,7 +308,6 @@ export {
   getTransitionDurationFromElement,
   triggerTransitionEnd,
   isElement,
-  emulateTransitionEnd,
   typeCheckConfig,
   isVisible,
   isDisabled,
@@ -300,5 +319,6 @@ export {
   onDOMContentLoaded,
   isRTL,
   defineJQueryPlugin,
-  execute
+  execute,
+  executeAfterTransition
 }

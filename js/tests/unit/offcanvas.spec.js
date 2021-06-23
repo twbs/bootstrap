@@ -4,6 +4,7 @@ import EventHandler from '../../src/dom/event-handler'
 /** Test helpers */
 import { clearBodyAndDocument, clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 import { isVisible } from '../../src/util'
+import ScrollBarHelper from '../../src/util/scrollbar'
 
 describe('Offcanvas', () => {
   let fixtureEl
@@ -159,36 +160,36 @@ describe('Offcanvas', () => {
     it('if scroll is enabled, should allow body to scroll while offcanvas is open', done => {
       fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
+      spyOn(ScrollBarHelper.prototype, 'hide').and.callThrough()
+      spyOn(ScrollBarHelper.prototype, 'reset').and.callThrough()
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl, { scroll: true })
-      const initialOverFlow = document.body.style.overflow
 
       offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
-        expect(document.body.style.overflow).toEqual(initialOverFlow)
-
+        expect(ScrollBarHelper.prototype.hide).not.toHaveBeenCalled()
         offCanvas.hide()
       })
       offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
-        expect(document.body.style.overflow).toEqual(initialOverFlow)
+        expect(ScrollBarHelper.prototype.reset).not.toHaveBeenCalled()
         done()
       })
       offCanvas.show()
     })
 
-    it('if scroll is disabled, should not allow body to scroll while offcanvas is open', done => {
+    it('if scroll is disabled, should call ScrollBarHelper to handle scrollBar on body', done => {
       fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
+      spyOn(ScrollBarHelper.prototype, 'hide').and.callThrough()
+      spyOn(ScrollBarHelper.prototype, 'reset').and.callThrough()
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl, { scroll: false })
-      const initialOverFlow = document.body.style.overflow
 
       offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
-        expect(document.body.style.overflow).toEqual('hidden')
-
+        expect(ScrollBarHelper.prototype.hide).toHaveBeenCalled()
         offCanvas.hide()
       })
       offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
-        expect(document.body.style.overflow).toEqual(initialOverFlow)
+        expect(ScrollBarHelper.prototype.reset).toHaveBeenCalled()
         done()
       })
       offCanvas.show()
@@ -620,38 +621,6 @@ describe('Offcanvas', () => {
       }).toThrowError(TypeError, `No method named "${action}"`)
     })
 
-    it('should throw error on protected method', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const action = '_getConfig'
-
-      jQueryMock.fn.offcanvas = Offcanvas.jQueryInterface
-      jQueryMock.elements = [div]
-
-      try {
-        jQueryMock.fn.offcanvas.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
-    })
-
-    it('should throw error if method "constructor" is being called', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const action = 'constructor'
-
-      jQueryMock.fn.offcanvas = Offcanvas.jQueryInterface
-      jQueryMock.elements = [div]
-
-      try {
-        jQueryMock.fn.offcanvas.call(jQueryMock, action)
-      } catch (error) {
-        expect(error.message).toEqual(`No method named "${action}"`)
-      }
-    })
-
     it('should call offcanvas method', () => {
       fixtureEl.innerHTML = '<div></div>'
 
@@ -675,8 +644,6 @@ describe('Offcanvas', () => {
       jQueryMock.elements = [div]
 
       jQueryMock.fn.offcanvas.call(jQueryMock, { scroll: true })
-      spyOn(Offcanvas.prototype, 'constructor')
-      expect(Offcanvas.prototype.constructor).not.toHaveBeenCalledWith(div, { scroll: true })
 
       const offcanvas = Offcanvas.getInstance(div)
       expect(offcanvas).not.toBeNull()
@@ -701,6 +668,60 @@ describe('Offcanvas', () => {
       const div = fixtureEl.querySelector('div')
 
       expect(Offcanvas.getInstance(div)).toBeNull()
+    })
+  })
+
+  describe('getOrCreateInstance', () => {
+    it('should return offcanvas instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const offcanvas = new Offcanvas(div)
+
+      expect(Offcanvas.getOrCreateInstance(div)).toEqual(offcanvas)
+      expect(Offcanvas.getInstance(div)).toEqual(Offcanvas.getOrCreateInstance(div, {}))
+      expect(Offcanvas.getOrCreateInstance(div)).toBeInstanceOf(Offcanvas)
+    })
+
+    it('should return new instance when there is no Offcanvas instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Offcanvas.getInstance(div)).toEqual(null)
+      expect(Offcanvas.getOrCreateInstance(div)).toBeInstanceOf(Offcanvas)
+    })
+
+    it('should return new instance when there is no offcanvas instance with given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Offcanvas.getInstance(div)).toEqual(null)
+      const offcanvas = Offcanvas.getOrCreateInstance(div, {
+        scroll: true
+      })
+      expect(offcanvas).toBeInstanceOf(Offcanvas)
+
+      expect(offcanvas._config.scroll).toEqual(true)
+    })
+
+    it('should return the instance when exists without given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const offcanvas = new Offcanvas(div, {
+        scroll: true
+      })
+      expect(Offcanvas.getInstance(div)).toEqual(offcanvas)
+
+      const offcanvas2 = Offcanvas.getOrCreateInstance(div, {
+        scroll: false
+      })
+      expect(offcanvas).toBeInstanceOf(Offcanvas)
+      expect(offcanvas2).toEqual(offcanvas)
+
+      expect(offcanvas2._config.scroll).toEqual(true)
     })
   })
 })
