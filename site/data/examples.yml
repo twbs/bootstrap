@@ -9,6 +9,14 @@
       description: "Explain the features, benefits, or other details in your marketing content."
     - name: Sidebars
       description: "Common navigation patterns ideal for offcanvas or multi-column layouts."
+    - name: Footers
+      description: "Finish every page strong with an awesome footer, big or small."
+    - name: Dropdowns
+      description: "Enhance your dropdowns with filters, icons, custom styles, and more."
+    - name: List groups
+      description: "Extend list groups with utilities and custom styles for any content."
+    - name: Modals
+      description: "Transform modals to serve any purpose, from feature tours to dialogs."
 
 - category: Custom Components
   description: "Brand new components and templates to help folks quickly get started with Bootstrap and demonstrate best practices for adding onto the framework."
