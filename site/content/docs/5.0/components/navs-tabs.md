@@ -617,7 +617,7 @@ Destroys an element's tab.
 
 #### getInstance
 
-*Static* method which allows you to get the tab instance associated with a DOM element
+*Static* method which allows you to get the tab instance associated with a CSS selector, DOM element, or jQuery object
 
 ```js
 var triggerEl = document.querySelector('#trigger')
@@ -626,7 +626,7 @@ var tab = bootstrap.Tab.getInstance(triggerEl) // Returns a Bootstrap tab instan
 
 #### getOrCreateInstance
 
-*Static* method which allows you to get the tab instance associated with a DOM element, or create a new one in case it wasn't initialised
+*Static* method which allows you to get the tab instance associated with a CSS selector, DOM element, or jQuery object, or create a new one in case it wasn't initialised
 
 ```js
 var triggerEl = document.querySelector('#trigger')

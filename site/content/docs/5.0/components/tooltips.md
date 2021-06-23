@@ -410,7 +410,7 @@ tooltip.update()
 
 #### getInstance
 
-*Static* method which allows you to get the tooltip instance associated with a DOM element
+*Static* method which allows you to get the tooltip instance associated with a CSS selector, DOM element, or jQuery object
 
 ```js
 var exampleTriggerEl = document.getElementById('example')
@@ -419,7 +419,7 @@ var tooltip = bootstrap.Tooltip.getInstance(exampleTriggerEl) // Returns a Boots
 
 #### getOrCreateInstance
 
-*Static* method which allows you to get the tooltip instance associated with a DOM element, or create a new one in case it wasn't initialised
+*Static* method which allows you to get the tooltip instance associated with a CSS selector, DOM element, or jQuery object, or create a new one in case it wasn't initialised
 
 ```js
 var exampleTriggerEl = document.getElementById('example')
