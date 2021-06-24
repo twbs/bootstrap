@@ -206,7 +206,7 @@ This makes an alert listen for click events on descendant elements which have th
         <code>getInstance</code>
       </td>
       <td>
-        Static method which allows you to get the alert instance associated to a CSS selector, DOM element, or jQuery object, you can use it like this: <code>bootstrap.Alert.getInstance(alert)</code>
+        Static method which allows you to get the alert instance associated to a DOM element, you can use it like this: <code>bootstrap.Alert.getInstance(alert)</code>
       </td>
     </tr>
     <tr>
@@ -214,7 +214,7 @@ This makes an alert listen for click events on descendant elements which have th
         <code>getOrCreateInstance</code>
       </td>
       <td>
-        Static method which returns an alert instance associated to a CSS selector, DOM element, or jQuery object or create a new one in case it wasn't initialised.
+        Static method which returns an alert instance associated to a DOM element or create a new one in case it wasn't initialised.
         You can use it like this: <code>bootstrap.Alert.getOrCreateInstance(element)</code>
       </td>
     </tr>

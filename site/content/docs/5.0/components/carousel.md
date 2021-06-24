@@ -417,7 +417,7 @@ var carousel = new bootstrap.Carousel(myCarousel, {
         <code>getInstance</code>
       </td>
       <td>
-        Static method which allows you to get the carousel instance associated to a CSS selector, DOM element, or jQuery object, you can use it like this: <code>bootstrap.Carousel.getInstance(element)</code>
+        Static method which allows you to get the carousel instance associated to a DOM element, you can use it like this: <code>bootstrap.Carousel.getInstance(element)</code>
       </td>
     </tr>
     <tr>
@@ -425,7 +425,7 @@ var carousel = new bootstrap.Carousel(myCarousel, {
         <code>getOrCreateInstance</code>
       </td>
       <td>
-        Static method which returns a carousel instance associated to a CSS selector, DOM element, or jQuery object or create a new one in case it wasn't initialised.
+        Static method which returns a carousel instance associated to a DOM element or create a new one in case it wasn't initialised.
         You can use it like this: <code>bootstrap.Carousel.getOrCreateInstance(element)</code>
       </td>
     </tr>

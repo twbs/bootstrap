@@ -240,8 +240,8 @@ var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
 | `toggle` | Toggles an offcanvas element to shown or hidden. **Returns to the caller before the offcanvas element has actually been shown or hidden** (i.e. before the `shown.bs.offcanvas` or `hidden.bs.offcanvas` event occurs). |
 | `show` | Shows an offcanvas element. **Returns to the caller before the offcanvas element has actually been shown** (i.e. before the `shown.bs.offcanvas` event occurs).|
 | `hide` | Hides an offcanvas element. **Returns to the caller before the offcanvas element has actually been hidden** (i.e. before the `hidden.bs.offcanvas` event occurs).|
-| `getInstance` | *Static* method which allows you to get the offcanvas instance associated with a CSS selector, DOM element, or jQuery object |
-| `getOrCreateInstance` | *Static* method which allows you to get the offcanvas instance associated with a CSS selector, DOM element, or jQuery object, or create a new one in case it wasn't initialised |
+| `getInstance` | *Static* method which allows you to get the offcanvas instance associated with a DOM element |
+| `getOrCreateInstance` | *Static* method which allows you to get the offcanvas instance associated with a DOM element, or create a new one in case it wasn't initialised |
 {{< /bs-table >}}
 
 ### Events

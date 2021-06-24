@@ -291,7 +291,7 @@ Destroys an element's scrollspy. (Removes stored data on the DOM element)
 
 #### getInstance
 
-*Static* method which allows you to get the scrollspy instance associated with a CSS selector, DOM element, or jQuery object
+*Static* method which allows you to get the scrollspy instance associated with a DOM element
 
 ```js
 var scrollSpyContentEl = document.getElementById('content')
@@ -300,7 +300,7 @@ var scrollSpy = bootstrap.ScrollSpy.getInstance(scrollSpyContentEl) // Returns a
 
 #### getOrCreateInstance
 
-*Static* method which allows you to get the scrollspy instance associated with a CSS selector, DOM element, or jQuery object, or create a new one in case it wasn't initialised
+*Static* method which allows you to get the scrollspy instance associated with a DOM element, or create a new one in case it wasn't initialised
 
 ```js
 var scrollSpyContentEl = document.getElementById('content')
