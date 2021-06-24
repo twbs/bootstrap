@@ -109,20 +109,23 @@ Here's how you can use these in your Sass:
 
 ## Generating utilities
 
-Bootstrap doesn't include `color` and `background-color` utilities for every individual color, but you can generate these yourself with our [utility API]({{< docsref "/utilities/api" >}}).
+<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.1.0</small>
+
+Bootstrap doesn't include `color` and `background-color` utilities for every color variable, but you can generate these yourself with our [utility API]({{< docsref "/utilities/api" >}}) and our extended Sass maps added in v5.1.0.
 
 1. To start, make sure you've imported our functions, variables, mixins, and utilities.
-2. Include `utilities/_color-extended.scss` to access all our color Sass maps.
-3. Use our `combo-map()` function to quickly merge multiple Sass maps together in a new map.
-4. Merge this new combined map to extend any utility with a `{color}-{level}` class name.
+2. Use our `combo-map()` function to quickly merge multiple Sass maps together in a new map.
+3. Merge this new combined map to extend any utility with a `{color}-{level}` class name.
 
 Here's an example that generates text color utilities (e.g., `.text-purple-500`) using the above steps.
 
 ```scss
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
-@import "utilities/color-extended";
 
-$all-colors: combo-map($grays, $blues, $indigos, $purples, $pinks, $reds, $oranges, $yellows, $greens, $teals, $cyans);
+$all-colors: map-merge-multiple($blues, $indigos, $purples, $pinks, $reds, $oranges, $yellows, $greens, $teals, $cyans);
 
 $utilities: map-merge(
   $utilities,
@@ -131,7 +134,7 @@ $utilities: map-merge(
       map-get($utilities, "color"),
       (
         values: map-merge(
-          map-get(map-get($utilities, "width"), "values"),
+          map-get(map-get($utilities, "color"), "values"),
           (
             $all-colors
           ),
@@ -140,6 +143,8 @@ $utilities: map-merge(
     ),
   )
 );
+
+@import "bootstrap/scss/utilities/api";
 ```
 
 This will generate new `.text-{color}-{level}` utilities for every color and level. You can do the same for any other utility and property as well.
