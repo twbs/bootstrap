@@ -41,7 +41,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 </div>
 {{< /example >}}
 
-### Live
+### Live example
 
 Click the button below to show a toast (positioned with our utilities in the lower right corner) that has been hidden by default with `.hide`.
 
