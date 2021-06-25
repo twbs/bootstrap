@@ -470,7 +470,9 @@ class Dropdown extends BaseComponent {
       getToggleButton.focus()
       Dropdown.clearMenus()
       return
-    } else if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY) {
+    }
+
+    if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY) {
       if (!isActive) {
         getToggleButton.click()
       }
