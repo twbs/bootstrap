@@ -467,14 +467,14 @@ class Dropdown extends BaseComponent {
     const getToggleButton = () => this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
 
     if (event.key === ESCAPE_KEY) {
-      getToggleButton().focus()
+      getToggleButton()?.focus()
       Dropdown.clearMenus()
       return
     }
 
     if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY) {
       if (!isActive) {
-        getToggleButton().click()
+        getToggleButton()?.click()
       }
 
       Dropdown.getInstance(getToggleButton())?._selectMenuItem(event)
