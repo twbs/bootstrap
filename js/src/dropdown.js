@@ -477,7 +477,7 @@ class Dropdown extends BaseComponent {
         getToggleButton().click()
       }
 
-      Dropdown.getInstance(getToggleButton())._selectMenuItem(event)
+      Dropdown.getInstance(getToggleButton())?._selectMenuItem(event)
       return
     }
 
