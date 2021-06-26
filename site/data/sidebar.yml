@@ -34,6 +34,7 @@
     - title: Gutters
     - title: Utilities
     - title: Z-index
+    - title: CSS Grid
 
 - title: Content
   pages:
@@ -101,6 +102,7 @@
     - title: Flex
     - title: Float
     - title: Interactions
+    - title: Opacity
     - title: Overflow
     - title: Position
     - title: Shadows
