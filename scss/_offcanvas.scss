@@ -14,6 +14,10 @@
   @include transition(transform $offcanvas-transition-duration ease-in-out);
 }
 
+.offcanvas-backdrop {
+  @include overlay-backdrop($zindex-offcanvas-backdrop, $offcanvas-backdrop-bg, $offcanvas-backdrop-opacity);
+}
+
 .offcanvas-header {
   display: flex;
   align-items: center;
