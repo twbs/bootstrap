@@ -18,7 +18,7 @@
 
   document.querySelectorAll('.toast')
     .forEach(function (toastNode) {
-      var toast = new bootstrap.Toast(toastNode, {
+      const toast = new bootstrap.Toast(toastNode, { 
         autohide: false
       })
 
@@ -34,20 +34,20 @@
     })
 
   function setActiveItem() {
-    var hash = window.location.hash
+    const hash = window.location.hash
 
     if (hash === '') {
       return
     }
 
-    var link = document.querySelector('.bd-aside a[href="' + hash + '"]')
+    const link = document.querySelector('.bd-aside a[href="' + hash + '"]')
 
     if (!link) {
       return
     }
 
-    var active = document.querySelector('.bd-aside .active')
-    var parent = link.parentNode.parentNode.previousElementSibling
+    const active = document.querySelector('.bd-aside .active')
+    const parent = link.parentNode.parentNode.previousElementSibling
 
     link.classList.add('active')
 
@@ -59,7 +59,7 @@
       return
     }
 
-    var expanded = active.parentNode.parentNode.previousElementSibling
+    const expanded = active.parentNode.parentNode.previousElementSibling
 
     active.classList.remove('active')
 

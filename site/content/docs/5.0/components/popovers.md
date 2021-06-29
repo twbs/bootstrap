@@ -36,8 +36,8 @@ Keep reading to see how popovers work with some examples.
 One way to initialize all popovers on a page would be to select them by their `data-bs-toggle` attribute:
 
 ```js
-var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   return new bootstrap.Popover(popoverTriggerEl)
 })
 ```
@@ -47,7 +47,7 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 When you have some styles on a parent element that interfere with a popover, you'll want to specify a custom `container` so that the popover's HTML appears within that element instead.
 
 ```js
-var popover = new bootstrap.Popover(document.querySelector('.example-popover'), {
+const popover = new bootstrap.Popover(document.querySelector('.example-popover'), {
   container: 'body'
 })
 ```
@@ -92,7 +92,7 @@ For proper cross-browser and cross-platform behavior, you must use the `<a>` tag
 {{< /example >}}
 
 ```js
-var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
+const popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
   trigger: 'focus'
 })
 ```
@@ -120,8 +120,8 @@ For disabled popover triggers, you may also prefer `data-bs-trigger="hover focus
 Enable popovers via JavaScript:
 
 ```js
-var exampleEl = document.getElementById('example')
-var popover = new bootstrap.Popover(exampleEl, options)
+const exampleEl = document.getElementById('example')
+const popover = new bootstrap.Popover(exampleEl, options)
 ```
 
 {{< callout warning >}}
@@ -304,9 +304,9 @@ Options for individual popovers can alternatively be specified through the use o
 #### Using function with `popperConfig`
 
 ```js
-var popover = new bootstrap.Popover(element, {
+const popover = new bootstrap.Popover(element, {
   popperConfig: function (defaultBsPopperConfig) {
-    // var newPopperConfig = {...}
+    // const newPopperConfig = {...}
     // use defaultBsPopperConfig if needed...
     // return newPopperConfig
   }
@@ -389,8 +389,8 @@ myPopover.update()
 *Static* method which allows you to get the popover instance associated with a DOM element
 
 ```js
-var exampleTriggerEl = document.getElementById('example')
-var popover = bootstrap.Popover.getInstance(exampleTriggerEl) // Returns a Bootstrap popover instance
+const exampleTriggerEl = document.getElementById('example')
+const popover = bootstrap.Popover.getInstance(exampleTriggerEl) // Returns a Bootstrap popover instance
 ```
 
 #### getOrCreateInstance
@@ -398,8 +398,8 @@ var popover = bootstrap.Popover.getInstance(exampleTriggerEl) // Returns a Boots
 *Static* method which allows you to get the popover instance associated with a DOM element, or create a new one in case it wasn't initialised
 
 ```js
-var exampleTriggerEl = document.getElementById('example')
-var popover = bootstrap.Popover.getOrCreateInstance(exampleTriggerEl) // Returns a Bootstrap popover instance
+const exampleTriggerEl = document.getElementById('example')
+const popover = bootstrap.Popover.getOrCreateInstance(exampleTriggerEl) // Returns a Bootstrap popover instance
 ```
 
 ### Events
@@ -436,7 +436,7 @@ var popover = bootstrap.Popover.getOrCreateInstance(exampleTriggerEl) // Returns
 </table>
 
 ```js
-var myPopoverTrigger = document.getElementById('myPopover')
+const myPopoverTrigger = document.getElementById('myPopover')
 myPopoverTrigger.addEventListener('hidden.bs.popover', function () {
   // do something...
 })

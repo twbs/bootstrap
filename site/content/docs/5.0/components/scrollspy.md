@@ -254,7 +254,7 @@ body {
 After adding `position: relative;` in your CSS, call the scrollspy via JavaScript:
 
 ```js
-var scrollSpy = new bootstrap.ScrollSpy(document.body, {
+const scrollSpy = new bootstrap.ScrollSpy(document.body, {
   target: '#navbar-example'
 })
 ```
@@ -278,7 +278,7 @@ Target elements that are not visible will be ignored and their corresponding nav
 When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:
 
 ```js
-var dataSpyList = [].slice.call(document.querySelectorAll('[data-bs-spy="scroll"]'))
+const dataSpyList = [].slice.call(document.querySelectorAll('[data-bs-spy="scroll"]'))
 dataSpyList.forEach(function (dataSpyEl) {
   bootstrap.ScrollSpy.getInstance(dataSpyEl)
     .refresh()
@@ -294,8 +294,8 @@ Destroys an element's scrollspy. (Removes stored data on the DOM element)
 *Static* method which allows you to get the scrollspy instance associated with a DOM element
 
 ```js
-var scrollSpyContentEl = document.getElementById('content')
-var scrollSpy = bootstrap.ScrollSpy.getInstance(scrollSpyContentEl) // Returns a Bootstrap scrollspy instance
+const scrollSpyContentEl = document.getElementById('content')
+const scrollSpy = bootstrap.ScrollSpy.getInstance(scrollSpyContentEl) // Returns a Bootstrap scrollspy instance
 ```
 
 #### getOrCreateInstance
@@ -303,8 +303,8 @@ var scrollSpy = bootstrap.ScrollSpy.getInstance(scrollSpyContentEl) // Returns a
 *Static* method which allows you to get the scrollspy instance associated with a DOM element, or create a new one in case it wasn't initialised
 
 ```js
-var scrollSpyContentEl = document.getElementById('content')
-var scrollSpy = bootstrap.ScrollSpy.getOrCreateInstance(scrollSpyContentEl) // Returns a Bootstrap scrollspy instance
+const scrollSpyContentEl = document.getElementById('content')
+const scrollSpy = bootstrap.ScrollSpy.getOrCreateInstance(scrollSpyContentEl) // Returns a Bootstrap scrollspy instance
 ```
 
 ### Options
@@ -360,7 +360,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 </table>
 
 ```js
-var firstScrollSpyEl = document.querySelector('[data-bs-spy="scroll"]')
+const firstScrollSpyEl = document.querySelector('[data-bs-spy="scroll"]')
 firstScrollSpyEl.addEventListener('activate.bs.scrollspy', function () {
   // do something...
 })

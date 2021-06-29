@@ -191,8 +191,8 @@ Loop that generates the modifier classes with the `alert-variant()` mixin.
 Initialize elements as alerts
 
 ```js
-var alertList = document.querySelectorAll('.alert')
-var alerts =  [].slice.call(alertList).map(function (element) {
+const alertList = document.querySelectorAll('.alert')
+const alerts =  [].slice.call(alertList).map(function (element) {
   return new bootstrap.Alert(element)
 })
 ```
@@ -265,8 +265,8 @@ or on a button **outside the alert** using the `data-bs-target` as demonstrated 
 </table>
 
 ```js
-var alertNode = document.querySelector('.alert')
-var alert = bootstrap.Alert.getInstance(alertNode)
+const alertNode = document.querySelector('.alert')
+const alert = bootstrap.Alert.getInstance(alertNode)
 alert.close()
 ```
 
@@ -298,7 +298,7 @@ Bootstrap's alert plugin exposes a few events for hooking into alert functionali
 </table>
 
 ```js
-var myAlert = document.getElementById('myAlert')
+const myAlert = document.getElementById('myAlert')
 myAlert.addEventListener('closed.bs.alert', function () {
   // do something, for instance, explicitly move focus to the most appropriate element,
   // so it doesn't get lost/reset to the start of the page

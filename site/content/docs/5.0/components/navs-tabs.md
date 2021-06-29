@@ -525,9 +525,9 @@ You can activate a tab or pill navigation without writing any JavaScript by simp
 Enable tabbable tabs via JavaScript (each tab needs to be activated individually):
 
 ```js
-var triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
+const triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
 triggerTabList.forEach(function (triggerEl) {
-  var tabTrigger = new bootstrap.Tab(triggerEl)
+  const tabTrigger = new bootstrap.Tab(triggerEl)
 
   triggerEl.addEventListener('click', function (event) {
     event.preventDefault()
@@ -539,10 +539,10 @@ triggerTabList.forEach(function (triggerEl) {
 You can activate individual tabs in several ways:
 
 ```js
-var triggerEl = document.querySelector('#myTab a[href="#profile"]')
+const triggerEl = document.querySelector('#myTab a[href="#profile"]')
 bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
 
-var triggerFirstTabEl = document.querySelector('#myTab li:first-child a')
+const triggerFirstTabEl = document.querySelector('#myTab li:first-child a')
 bootstrap.Tab.getInstance(triggerFirstTabEl).show() // Select first tab
 ```
 
@@ -593,8 +593,8 @@ Activates a tab element and content container. Tab should have either a `data-bs
 </div>
 
 <script>
-  var firstTabEl = document.querySelector('#myTab li:last-child a')
-  var firstTab = new bootstrap.Tab(firstTabEl)
+  const firstTabEl = document.querySelector('#myTab li:last-child a')
+  const firstTab = new bootstrap.Tab(firstTabEl)
 
   firstTab.show()
 </script>
@@ -605,8 +605,8 @@ Activates a tab element and content container. Tab should have either a `data-bs
 Selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden. **Returns to the caller before the tab pane has actually been shown** (i.e. before the `shown.bs.tab` event occurs).
 
 ```js
-  var someTabTriggerEl = document.querySelector('#someTabTrigger')
-  var tab = new bootstrap.Tab(someTabTriggerEl)
+  const someTabTriggerEl = document.querySelector('#someTabTrigger')
+  const tab = new bootstrap.Tab(someTabTriggerEl)
 
   tab.show()
 ```
@@ -620,8 +620,8 @@ Destroys an element's tab.
 *Static* method which allows you to get the tab instance associated with a DOM element
 
 ```js
-var triggerEl = document.querySelector('#trigger')
-var tab = bootstrap.Tab.getInstance(triggerEl) // Returns a Bootstrap tab instance
+const triggerEl = document.querySelector('#trigger')
+const tab = bootstrap.Tab.getInstance(triggerEl) // Returns a Bootstrap tab instance
 ```
 
 #### getOrCreateInstance
@@ -629,8 +629,8 @@ var tab = bootstrap.Tab.getInstance(triggerEl) // Returns a Bootstrap tab instan
 *Static* method which allows you to get the tab instance associated with a DOM element, or create a new one in case it wasn't initialised
 
 ```js
-var triggerEl = document.querySelector('#trigger')
-var tab = bootstrap.Tab.getOrCreateInstance(triggerEl) // Returns a Bootstrap tab instance
+const triggerEl = document.querySelector('#trigger')
+const tab = bootstrap.Tab.getOrCreateInstance(triggerEl) // Returns a Bootstrap tab instance
 ```
 
 ### Events
@@ -672,7 +672,7 @@ If no tab was already active, then the `hide.bs.tab` and `hidden.bs.tab` events 
 </table>
 
 ```js
-var tabEl = document.querySelector('button[data-bs-toggle="tab"]')
+const tabEl = document.querySelector('button[data-bs-toggle="tab"]')
 tabEl.addEventListener('shown.bs.tab', function (event) {
   event.target // newly activated tab
   event.relatedTarget // previous active tab
