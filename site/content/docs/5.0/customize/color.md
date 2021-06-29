@@ -114,7 +114,7 @@ Here's how you can use these in your Sass:
 Bootstrap doesn't include `color` and `background-color` utilities for every color variable, but you can generate these yourself with our [utility API]({{< docsref "/utilities/api" >}}) and our extended Sass maps added in v5.1.0.
 
 1. To start, make sure you've imported our functions, variables, mixins, and utilities.
-2. Use our `combo-map()` function to quickly merge multiple Sass maps together in a new map.
+2. Use our `map-merge-multiple()` function to quickly merge multiple Sass maps together in a new map.
 3. Merge this new combined map to extend any utility with a `{color}-{level}` class name.
 
 Here's an example that generates text color utilities (e.g., `.text-purple-500`) using the above steps.
