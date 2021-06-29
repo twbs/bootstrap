@@ -41,7 +41,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 </div>
 {{< /example >}}
 
-### Live
+### Live example
 
 Click the button below to show a toast (positioned with our utilities in the lower right corner) that has been hidden by default with `.hide`.
 
@@ -79,6 +79,20 @@ Click the button below to show a toast (positioned with our utilities in the low
     </div>
   </div>
 </div>
+```
+
+We use the following JavaScript to trigger our live toast demo:
+
+```js
+var toastTrigger = document.getElementById('liveToastBtn')
+var toastLiveExample = document.getElementById('liveToast')
+if (toastTrigger) {
+  toastTrigger.addEventListener('click', function () {
+    var toast = new bootstrap.Toast(toastLiveExample)
+
+    toast.show()
+  })
+}
 ```
 
 ### Translucent
