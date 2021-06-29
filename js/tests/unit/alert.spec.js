@@ -2,7 +2,7 @@ import Alert from '../../src/alert'
 import { getTransitionDurationFromElement } from '../../src/util/index'
 
 /** Test helpers */
-import { getFixture, clearFixture, jQueryMock } from '../helpers/fixture'
+import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Alert', () => {
   let fixtureEl
@@ -102,25 +102,20 @@ describe('Alert', () => {
     it('should not remove alert if close event is prevented', done => {
       fixtureEl.innerHTML = '<div class="alert"></div>'
 
-      const alertEl = document.querySelector('.alert')
+      const getAlert = () => document.querySelector('.alert')
+      const alertEl = getAlert()
       const alert = new Alert(alertEl)
-
-      const endTest = () => {
-        setTimeout(() => {
-          expect(alert._removeElement).not.toHaveBeenCalled()
-          done()
-        }, 10)
-      }
-
-      spyOn(alert, '_removeElement')
 
       alertEl.addEventListener('close.bs.alert', event => {
         event.preventDefault()
-        endTest()
+        setTimeout(() => {
+          expect(getAlert()).not.toBeNull()
+          done()
+        }, 10)
       })
 
       alertEl.addEventListener('closed.bs.alert', () => {
-        endTest()
+        throw new Error('should not fire closed event')
       })
 
       alert.close()
@@ -167,9 +162,9 @@ describe('Alert', () => {
       jQueryMock.fn.alert = Alert.jQueryInterface
       jQueryMock.elements = [alertEl]
 
+      expect(Alert.getInstance(alertEl)).toBeNull()
       jQueryMock.fn.alert.call(jQueryMock, 'close')
 
-      expect(Alert.getInstance(alertEl)).not.toBeNull()
       expect(fixtureEl.querySelector('.alert')).toBeNull()
     })
 

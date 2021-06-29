@@ -9,6 +9,7 @@ import EventHandler from '../dom/event-handler'
 import { execute, executeAfterTransition, getElement, reflow, typeCheckConfig } from './index'
 
 const Default = {
+  className: 'modal-backdrop',
   isVisible: true, // if false, we use the backdrop helper without adding any element to the dom
   isAnimated: false,
   rootElement: 'body', // give the choice to place backdrop under different elements
@@ -16,13 +17,13 @@ const Default = {
 }
 
 const DefaultType = {
+  className: 'string',
   isVisible: 'boolean',
   isAnimated: 'boolean',
   rootElement: '(element|string)',
   clickCallback: '(function|null)'
 }
 const NAME = 'backdrop'
-const CLASS_NAME_BACKDROP = 'modal-backdrop'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 
@@ -73,7 +74,7 @@ class Backdrop {
   _getElement() {
     if (!this._element) {
       const backdrop = document.createElement('div')
-      backdrop.className = CLASS_NAME_BACKDROP
+      backdrop.className = this._config.className
       if (this._config.isAnimated) {
         backdrop.classList.add(CLASS_NAME_FADE)
       }
