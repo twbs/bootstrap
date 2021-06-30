@@ -23,6 +23,45 @@ Alerts are available for any length of text, as well as an optional close button
 {{< partial "callout-warning-color-assistive-technologies.md" >}}
 {{< /callout >}}
 
+### Live example
+
+Click the button below to show an alert (hidden with inline styles to start), then dismiss (and destroy) it with the built-in close button.
+
+<div id="liveAlertPlaceholder"></div>
+
+<div class="bd-example">
+  <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
+</div>
+
+```html
+<button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
+
+<div class="alert alert-primary alert-dismissible" role="alert" id="liveAlert">
+  <strong>Nice!</strong> You've triggered this alert.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+```
+
+We use the following JavaScript to trigger our live alert demo:
+
+```js
+var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+var alertTrigger = document.getElementById('liveAlertBtn')
+
+function alert(message, type) {
+  var wrapper = document.createElement('div')
+  wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+
+  alertPlaceholder.append(wrapper)
+}
+
+if (alertTrigger) {
+  alertTrigger.addEventListener('click', function () {
+    alert('Nice, you triggered this alert message!', 'success')
+  })
+}
+```
+
 ### Link color
 
 Use the `.alert-link` utility class to quickly provide matching colored links within any alert.
@@ -147,35 +186,39 @@ Loop that generates the modifier classes with the `alert-variant()` mixin.
 
 ## JavaScript behavior
 
-### Triggers
+### Initialize
 
-Enable dismissal of an alert via JavaScript:
+Initialize elements as alerts
 
 ```js
 var alertList = document.querySelectorAll('.alert')
-alertList.forEach(function (alert) {
-  new bootstrap.Alert(alert)
+var alerts =  [].slice.call(alertList).map(function (element) {
+  return new bootstrap.Alert(element)
 })
 ```
+{{< callout info >}}
+For the sole purpose of dismissing an alert, it isn't necessary to initialize the component manually via the JS API. By making use of `data-bs-dismiss="alert"`, the component will be initialized automatically and properly dismissed.
 
-Or with `data` attributes on a button **within the alert**, as demonstrated above:
+See the [triggers](#triggers) section for more details.
+{{< /callout >}}
+
+### Triggers
+
+Dismissal can be achieved with `data` attributes on a button **within the alert** as demonstrated above:
 
 ```html
 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 ```
 
-Note that closing an alert will remove it from the DOM.
+or on a button **outside the alert** using the `data-bs-target` as demonstrated above:
 
-### Methods
-
-You can create an alert instance with the alert constructor, for example:
-
-```js
-var myAlert = document.getElementById('myAlert')
-var bsAlert = new bootstrap.Alert(myAlert)
+```html
+<button type="button" class="btn-close" data-bs-dismiss="alert" data-bs-target="#my-alert" aria-label="Close"></button>
 ```
 
-This makes an alert listen for click events on descendant elements which have the `data-bs-dismiss="alert"` attribute. (Not necessary when using the data-api's auto-initialization.)
+**Note that closing an alert will remove it from the DOM.**
+
+### Methods
 
 <table class="table">
   <thead>

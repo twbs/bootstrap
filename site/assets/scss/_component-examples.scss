@@ -23,6 +23,21 @@
   background-color: rgba(255, 0, 0, .1);
 }
 
+.bd-example-cssgrid {
+  text-align: center;
+
+  .grid + .grid {
+    margin-top: 1rem;
+  }
+
+  .grid > * {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background-color: rgba(255, 0, 255, .1);
+    border: 1px solid rgba(255, 0, 255, .25);
+  }
+}
+
 .bd-highlight {
   background-color: rgba($bd-purple, .15);
   border: 1px solid rgba($bd-purple, .15);

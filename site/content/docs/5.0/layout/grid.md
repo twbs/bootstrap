@@ -458,7 +458,7 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 @include make-col();
 @include make-col($size, $columns: $grid-columns);
 
-// Get fancy by offsetting, or changing the sort order
+// Offset with margins
 @include make-col-offset($size, $columns: $grid-columns);
 ```
 
