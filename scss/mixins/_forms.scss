@@ -10,7 +10,6 @@
 //
 // Example usage: change the default blue border and shadow to white for better
 // contrast against a dark gray background.
-@use "sass:math";
 
 @mixin form-control-focus($ignore-warning: false) {
   &:focus {

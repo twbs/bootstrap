@@ -2,7 +2,6 @@
 //
 // Generate semantic grid columns with these mixins.
 
-@use "sass:math";
 
 @mixin make-container($gutter: $grid-gutter-width) {
   width: 100%;
