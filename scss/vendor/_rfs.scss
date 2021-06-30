@@ -47,7 +47,7 @@ $rfs-base-font-size-unit: unit($rfs-base-font-size);
   $rfs-base-font-size: divide($rfs-base-font-size, $rfs-base-font-size * 0 + 1);
 }
 @else if $rfs-base-font-size-unit == "rem" {
-  $rfs-base-font-size: divide($rfs-base-font-size, $rfs-base-font-size * 0 + 1 / $rfs-rem-value);
+  $rfs-base-font-size: divide($rfs-base-font-size, $rfs-base-font-size * 0 + divide(1, $rfs-rem-value));
 }
 
 // Cache $rfs-breakpoint unit to prevent multiple calls
@@ -58,7 +58,7 @@ $rfs-breakpoint-unit-cache: unit($rfs-breakpoint);
   $rfs-breakpoint: divide($rfs-breakpoint, $rfs-breakpoint * 0 + 1);
 }
 @else if $rfs-breakpoint-unit-cache == "rem" or $rfs-breakpoint-unit-cache == "em" {
-  $rfs-breakpoint: divide($rfs-breakpoint, $rfs-breakpoint * 0 + 1 / $rfs-rem-value);
+  $rfs-breakpoint: divide($rfs-breakpoint, $rfs-breakpoint * 0 + divide(1, $rfs-rem-value));
 }
 
 // Responsive font-size mixin
@@ -83,7 +83,7 @@ $rfs-breakpoint-unit-cache: unit($rfs-breakpoint);
       $fs: divide($fs, $fs * 0 + 1);
     }
     @else if $fs-unit == "rem" {
-      $fs: divide($fs, $fs * 0 + 1 / $rfs-rem-value);
+      $fs: divide($fs, $fs * 0 + divide(1, $rfs-rem-value));
     }
 
     // Set default font-size
