@@ -10,6 +10,8 @@
 //
 // Example usage: change the default blue border and shadow to white for better
 // contrast against a dark gray background.
+@use "sass:math";
+
 @mixin form-control-focus($ignore-warning: false) {
   &:focus {
     color: $input-focus-color;
@@ -69,7 +71,7 @@
     // Align tooltip to form elements
     .form-row > .col > &,
     .form-row > [class*="col-"] > & {
-      left: $form-grid-gutter-width / 2;
+      left: $form-grid-gutter-width * 0.5;
     }
   }
 
@@ -125,7 +127,7 @@
 
       @if $enable-validation-icons {
         padding-right: $custom-select-feedback-icon-padding-right !important; // stylelint-disable-line declaration-no-important
-        background: $custom-select-background, $custom-select-bg escape-svg($icon) $custom-select-feedback-icon-position / $custom-select-feedback-icon-size no-repeat;
+        background: $custom-select-background, $custom-select-bg escape-svg($icon) math.div($custom-select-feedback-icon-position, $custom-select-feedback-icon-size) no-repeat;
       }
 
       &:focus {
