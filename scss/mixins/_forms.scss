@@ -126,7 +126,7 @@
 
       @if $enable-validation-icons {
         padding-right: $custom-select-feedback-icon-padding-right !important; // stylelint-disable-line declaration-no-important
-        background: $custom-select-background, $custom-select-bg escape-svg($icon) divide($custom-select-feedback-icon-position, $custom-select-feedback-icon-size) no-repeat;
+        background: $custom-select-background, $custom-select-bg escape-svg($icon) $custom-select-feedback-icon-position / $custom-select-feedback-icon-size no-repeat;
       }
 
       &:focus {
