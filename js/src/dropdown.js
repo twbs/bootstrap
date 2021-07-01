@@ -498,7 +498,6 @@ EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataAp
 EventHandler.on(document, EVENT_CLICK_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
-  event.preventDefault()
   Dropdown.dropdownInterface(this)
 })
 
