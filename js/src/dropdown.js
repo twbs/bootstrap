@@ -231,7 +231,6 @@ class Dropdown extends BaseComponent {
 
   _addEventListeners() {
     EventHandler.on(this._element, EVENT_CLICK, event => {
-      event.preventDefault()
       this.toggle()
     })
   }
