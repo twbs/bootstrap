@@ -120,7 +120,7 @@
     "glob": "^7.1.7",
     "globby": "^11.0.4",
     "hammer-simulator": "0.0.1",
-    "hugo-bin": "^0.72.4",
+    "hugo-bin": "^0.72.5",
     "ip": "^1.1.5",
     "jquery": "^3.6.0",
     "karma": "^6.3.4",
