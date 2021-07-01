@@ -230,7 +230,7 @@ class Dropdown extends BaseComponent {
   // Private
 
   _addEventListeners() {
-    EventHandler.on(this._element, EVENT_CLICK, event => {
+    EventHandler.on(this._element, EVENT_CLICK, () => {
       this.toggle()
     })
   }
