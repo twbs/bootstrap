@@ -34,6 +34,19 @@ const getUID = prefix => {
   return prefix
 }
 
+const getTargetIdFromElement = element => {
+  const selector = element.getAttribute('data-bs-target') || element.getAttribute('href')
+
+  if (selector)
+    // a valid HTML5 id is any string without whitespace
+    const match = selector.match(/#(\S+)/)
+    const id = match ? match[1] : null
+    return document.getElementById(id) ? id : null
+  }
+
+  return null
+}
+
 const getSelector = element => {
   let selector = element.getAttribute('data-bs-target')
 
@@ -303,6 +316,7 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
 export {
   getElement,
   getUID,
+  getTargetIdFromElement,
   getSelectorFromElement,
   getElementFromSelector,
   getTransitionDurationFromElement,
