@@ -44,7 +44,7 @@ const DefaultType = {
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
   focus: 'boolean',
-  rootElement: '(element|string)'
+  rootElement: 'element'
 }
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
