@@ -63,7 +63,11 @@ const getSelectorFromElement = element => {
   const selector = getSelector(element)
 
   if (selector) {
-    return document.querySelector(selector) ? selector : null
+    try {
+      return document.querySelector(selector) ? selector : null
+    } catch {
+      return null
+    }
   }
 
   return null
@@ -72,7 +76,11 @@ const getSelectorFromElement = element => {
 const getElementFromSelector = element => {
   const selector = getSelector(element)
 
-  return selector ? document.querySelector(selector) : null
+  try {
+    return selector ? document.querySelector(selector) : null
+  } catch {
+    return null
+  }
 }
 
 const getTransitionDurationFromElement = element => {
