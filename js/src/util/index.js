@@ -37,7 +37,7 @@ const getUID = prefix => {
 const getTargetIdFromElement = element => {
   const selector = element.getAttribute('data-bs-target') || element.getAttribute('href')
 
-  if (selector)
+  if (selector) {
     // a valid HTML5 id is any string without whitespace
     const match = selector.match(/#(\S+)/)
     const id = match ? match[1] : null
