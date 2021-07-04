@@ -128,6 +128,6 @@
   padding: $padding-y $padding-x;
   @include font-size($font-size);
   // Manually declare to provide an override to the browser default
-  @include border-radius($border-radius, 0);
+  @include border-radius($border-radius);
 }
 // scss-docs-end btn-size-mixin
