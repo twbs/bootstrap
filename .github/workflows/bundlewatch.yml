@@ -21,16 +21,6 @@ jobs:
           node-version: "${{ env.NODE }}"
           cache: npm
 
-      - name: Set up npm cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key:
-            ${{ runner.os }}-node-${{ env.NODE }}-${{ hashFiles('package.json') }}-${{
-            hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
-
       - name: Install npm dependencies
         run: npm ci
 
