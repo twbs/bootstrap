@@ -28,16 +28,6 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: npm
 
-      - name: Set up npm cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key:
-            ${{ runner.os }}-node-${{ matrix.node }}-${{ hashFiles('package.json')
-            }}-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-${{ matrix.node }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
-
       - name: Install npm dependencies
         run: npm ci
 
