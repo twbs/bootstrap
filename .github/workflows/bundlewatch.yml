@@ -1,8 +1,8 @@
 name: Bundlewatch
 
 on:
-  push: null
-  pull_request: null
+  push:
+  pull_request:
 env:
   FORCE_COLOR: 2
   NODE: 14

@@ -1,7 +1,7 @@
 name: BrowserStack
 
 on:
-  push: null
+  push:
 env:
   FORCE_COLOR: 2
   NODE: 14

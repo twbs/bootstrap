@@ -4,7 +4,7 @@ on:
   push:
     branches-ignore:
       - "dependabot/**"
-  pull_request: null
+  pull_request:
 env:
   FORCE_COLOR: 2
 
