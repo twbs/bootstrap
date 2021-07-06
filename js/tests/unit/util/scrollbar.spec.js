@@ -75,6 +75,21 @@ describe('ScrollBar', () => {
 
       expect(result).toEqual(false)
     })
+
+    it('allows rootElement to be set', () => {
+      fixtureEl.innerHTML = [
+        '<div id="another-root" style="height: 100vh; width: 100%"><div style="height: 110vh; width: 100%"></div></div>'
+      ].join('')
+      const anotherRootElement = document.querySelector('#another-root')
+      anotherRootElement.style.overflowY = 'scroll'
+      const result = new ScrollBarHelper(anotherRootElement).isOverflowing()
+
+      if (isScrollBarHidden()) {
+        expect(result).toEqual(false)
+      } else {
+        expect(result).toEqual(true)
+      }
+    })
   })
 
   describe('getWidth', () => {

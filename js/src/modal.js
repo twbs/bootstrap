@@ -86,7 +86,7 @@ class Modal extends BaseComponent {
     this._isShown = false
     this._ignoreBackdropClick = false
     this._isTransitioning = false
-    this._scrollBar = new ScrollBarHelper()
+    this._scrollBar = new ScrollBarHelper(this._config.rootElement)
   }
 
   // Getters
