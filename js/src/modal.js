@@ -60,7 +60,6 @@ const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY}`
 const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
-const CLASS_NAME_MODAL_CUSTOM_ROOT = 'modal-custom-root'
 const CLASS_NAME_OPEN = 'modal-open'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
@@ -247,9 +246,6 @@ class Modal extends BaseComponent {
     }
 
     this._element.classList.add(CLASS_NAME_SHOW)
-    if (this._hasCustomRoot()) {
-      this._element.classList.add(CLASS_NAME_MODAL_CUSTOM_ROOT)
-    }
 
     if (this._config.focus) {
       this._enforceFocus()
@@ -308,11 +304,6 @@ class Modal extends BaseComponent {
     this._element.setAttribute('aria-hidden', true)
     this._element.removeAttribute('aria-modal')
     this._element.removeAttribute('role')
-
-    if (this._hasCustomRoot()) {
-      this._element.classList.remove(CLASS_NAME_MODAL_CUSTOM_ROOT)
-    }
-
     this._isTransitioning = false
     this._backdrop.hide(() => {
       this._config.rootElement.classList.remove(CLASS_NAME_OPEN)
@@ -345,10 +336,6 @@ class Modal extends BaseComponent {
 
   _isAnimated() {
     return this._element.classList.contains(CLASS_NAME_FADE)
-  }
-
-  _hasCustomRoot() {
-    return this._config.rootElement !== document.body
   }
 
   _triggerBackdropTransition() {

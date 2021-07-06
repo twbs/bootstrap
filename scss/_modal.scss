@@ -88,11 +88,14 @@
   @include overlay-backdrop($zindex-modal-backdrop, $modal-backdrop-bg, $modal-backdrop-opacity);
 }
 
-.modal-custom-root,
-.modal-backdrop-custom-root {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+// custom root specified
+.modal-open:not(body) {
+  .modal,
+  .modal-backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 // Modal header

@@ -566,7 +566,13 @@ Embedding YouTube videos in modals requires additional JavaScript not in Bootstr
 
 ### Configuring root element
 
-Currently this is only supported when using modals with JavaScript
+Specify `data-bs-root-element` attribute
+```html
+<div id="another-element" class="position-relative">
+<div class="modal ..." data-bs-root-element="#another-element" tabindex="-1" aria-hidden="true">
+```
+
+Or pass it in the config via JavaScript
 
 ```js
 var modal = bootstrap.Modal(document.getElementById('modal'), {
@@ -578,7 +584,7 @@ var modal = bootstrap.Modal(document.getElementById('modal'), {
 <div id="another-element" class="position-relative border" style="height: 300px;">
 
   <!-- modal -->
-  <div id="modal-root-example" class="modal fade" tabindex="-1" aria-labelledby="modal-root-example-title" aria-hidden="true">
+  <div id="modal-root-example" class="modal fade" tabindex="-1" aria-labelledby="modal-root-example-title" aria-hidden="true" data-bs-root-element="#another-element">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -592,7 +598,7 @@ var modal = bootstrap.Modal(document.getElementById('modal'), {
     </div>
   </div>
 </div>
-<button id="modal-root-example-btn" type="button" class="btn btn-primary mt-3" data-bs-target="#modal-root-example">
+<button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#modal-root-example">
   Show modal in another element
 </button>
 {{< /example >}}
