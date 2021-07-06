@@ -518,6 +518,7 @@ $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;
 // scss-docs-start collapse-transition
 $transition-collapse:         height .35s ease !default;
+$transition-collapse-width:   width .35s ease !default;
 // scss-docs-end collapse-transition
 
 // stylelint-disable function-disallowed-list

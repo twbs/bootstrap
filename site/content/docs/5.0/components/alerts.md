@@ -23,6 +23,45 @@ Alerts are available for any length of text, as well as an optional close button
 {{< partial "callout-warning-color-assistive-technologies.md" >}}
 {{< /callout >}}
 
+### Live example
+
+Click the button below to show an alert (hidden with inline styles to start), then dismiss (and destroy) it with the built-in close button.
+
+<div id="liveAlertPlaceholder"></div>
+
+<div class="bd-example">
+  <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
+</div>
+
+```html
+<button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
+
+<div class="alert alert-primary alert-dismissible" role="alert" id="liveAlert">
+  <strong>Nice!</strong> You've triggered this alert.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+```
+
+We use the following JavaScript to trigger our live alert demo:
+
+```js
+var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+var alertTrigger = document.getElementById('liveAlertBtn')
+
+function alert(message, type) {
+  var wrapper = document.createElement('div')
+  wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+
+  alertPlaceholder.append(wrapper)
+}
+
+if (alertTrigger) {
+  alertTrigger.addEventListener('click', function () {
+    alert('Nice, you triggered this alert message!', 'success')
+  })
+}
+```
+
 ### Link color
 
 Use the `.alert-link` utility class to quickly provide matching colored links within any alert.
