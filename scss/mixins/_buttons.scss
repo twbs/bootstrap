@@ -16,7 +16,8 @@
   $active-color: color-contrast($active-background),
   $disabled-background: $background,
   $disabled-border: $border,
-  $disabled-color: color-contrast($disabled-background)
+  $disabled-color: color-contrast($disabled-background),
+  $box-shadow-color: rgba(mix($color, $border, 15%), .5)
 ) {
   color: $color;
   @include gradient-bg($background);
@@ -35,10 +36,10 @@
     @include gradient-bg($hover-background);
     border-color: $hover-border;
     @if $enable-shadows {
-      @include box-shadow($btn-box-shadow, 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5));
+      @include box-shadow($btn-box-shadow, 0 0 0 $btn-focus-width $box-shadow-color);
     } @else {
       // Avoid using mixin so we can pass custom focus shadow properly
-      box-shadow: 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
+      box-shadow: 0 0 0 $btn-focus-width $box-shadow-color;
     }
   }
 
@@ -55,10 +56,10 @@
 
     &:focus {
       @if $enable-shadows {
-        @include box-shadow($btn-active-box-shadow, 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5));
+        @include box-shadow($btn-active-box-shadow, 0 0 0 $btn-focus-width $box-shadow-color);
       } @else {
         // Avoid using mixin so we can pass custom focus shadow properly
-        box-shadow: 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
+        box-shadow: 0 0 0 $btn-focus-width $box-shadow-color;
       }
     }
   }
