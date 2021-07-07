@@ -173,7 +173,7 @@ class Carousel extends BaseComponent {
   }
 
   to(index) {
-    this._activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
+    this._activeElement = this._getActive()
     const activeIndex = this._getItemIndex(this._activeElement)
 
     if (index > this._items.length - 1 || index < 0) {
@@ -282,7 +282,7 @@ class Carousel extends BaseComponent {
 
   _triggerSlideEvent(relatedTarget, eventDirectionName) {
     const targetIndex = this._getItemIndex(relatedTarget)
-    const fromIndex = this._getItemIndex(SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element))
+    const fromIndex = this._getItemIndex(this._getActive())
 
     return EventHandler.trigger(this._element, EVENT_SLIDE, {
       relatedTarget,
@@ -312,7 +312,7 @@ class Carousel extends BaseComponent {
   }
 
   _updateInterval() {
-    const element = this._activeElement || SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
+    const element = this._activeElement || this._getActive()
 
     if (!element) {
       return
@@ -330,7 +330,7 @@ class Carousel extends BaseComponent {
 
   _slide(directionOrOrder, element) {
     const order = this._directionToOrder(directionOrOrder)
-    const activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
+    const activeElement = this._getActive()
     const activeElementIndex = this._getItemIndex(activeElement)
     const nextElement = element || this._getItemByOrder(order, activeElement)
 
@@ -410,6 +410,10 @@ class Carousel extends BaseComponent {
     if (isCycling) {
       this.cycle()
     }
+  }
+
+  _getActive() {
+    return SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
   }
 
   _directionToOrder(direction) {
