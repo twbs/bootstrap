@@ -40,9 +40,10 @@ const SPACE_KEY = 'Space'
 const TAB_KEY = 'Tab'
 const ARROW_UP_KEY = 'ArrowUp'
 const ARROW_DOWN_KEY = 'ArrowDown'
+const ARROW_RIGHT_KEY = 'ArrowRight'
 const RIGHT_MOUSE_BUTTON = 2 // MouseEvent.button value for the secondary button, usually the right button
 
-const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEY}|${ARROW_DOWN_KEY}|${ESCAPE_KEY}`)
+const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEY}|${ARROW_RIGHT_KEY}|${ARROW_DOWN_KEY}|${ESCAPE_KEY}|${SPACE_KEY}`)
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
@@ -472,7 +473,7 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY) {
+    if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY || event.key === ARROW_RIGHT_KEY || event.key === SPACE_KEY) {
       if (!isActive) {
         getToggleButton().click()
       }
@@ -481,7 +482,7 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    if (!isActive || event.key === SPACE_KEY) {
+    if (!isActive) {
       Dropdown.clearMenus()
     }
   }

@@ -341,6 +341,7 @@
    * --------------------------------------------------------------------------
    */
   const Default$1 = {
+    className: 'modal-backdrop',
     isVisible: true,
     // if false, we use the backdrop helper without adding any element to the dom
     isAnimated: false,
@@ -349,13 +350,13 @@
     clickCallback: null
   };
   const DefaultType$1 = {
+    className: 'string',
     isVisible: 'boolean',
     isAnimated: 'boolean',
     rootElement: '(element|string)',
     clickCallback: '(function|null)'
   };
   const NAME$1 = 'backdrop';
-  const CLASS_NAME_BACKDROP = 'modal-backdrop';
   const CLASS_NAME_FADE = 'fade';
   const CLASS_NAME_SHOW$1 = 'show';
   const EVENT_MOUSEDOWN = `mousedown.bs.${NAME$1}`;
@@ -404,7 +405,7 @@
     _getElement() {
       if (!this._element) {
         const backdrop = document.createElement('div');
-        backdrop.className = CLASS_NAME_BACKDROP;
+        backdrop.className = this._config.className;
 
         if (this._config.isAnimated) {
           backdrop.classList.add(CLASS_NAME_FADE);
@@ -486,6 +487,7 @@
     scroll: 'boolean'
   };
   const CLASS_NAME_SHOW = 'show';
+  const CLASS_NAME_BACKDROP = 'offcanvas-backdrop';
   const OPEN_SELECTOR = '.offcanvas.show';
   const EVENT_SHOW = `show${EVENT_KEY}`;
   const EVENT_SHOWN = `shown${EVENT_KEY}`;
@@ -627,6 +629,7 @@
 
     _initializeBackDrop() {
       return new Backdrop({
+        className: CLASS_NAME_BACKDROP,
         isVisible: this._config.backdrop,
         isAnimated: true,
         rootElement: this._element.parentNode,
