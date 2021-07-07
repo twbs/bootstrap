@@ -717,8 +717,9 @@ describe('Modal', () => {
   describe('config rootElement', () => {
     it('should append backdrop to root element', done => {
       fixtureEl.innerHTML = [
-        '<div id="modal-root"></div>',
-        '<div class="modal"><div class="modal-dialog"></div></div>'
+        '<div id="modal-root">',
+        '   <div class="modal"><div class="modal-dialog"></div></div>',
+        '</div>'
       ].join('')
 
       const modalEl = fixtureEl.querySelector('.modal')
@@ -726,6 +727,7 @@ describe('Modal', () => {
       const modal = new Modal(modalEl, { rootElement })
 
       modalEl.addEventListener('shown.bs.modal', () => {
+        expect(fixtureEl.querySelector('.modal-open')).toEqual(rootElement)
         expect(rootElement.querySelector('.modal-backdrop')).not.toBeNull()
         done()
       })

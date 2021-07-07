@@ -48,76 +48,64 @@ describe('ScrollBar', () => {
     clearBodyAndDocument()
   })
 
-  describe('isBodyOverflowing', () => {
-    it('should return true if body is overflowing', () => {
-      document.documentElement.style.overflowY = 'scroll'
-      document.body.style.overflowY = 'scroll'
-      fixtureEl.innerHTML = [
-        '<div style="height: 110vh; width: 100%"></div>'
-      ].join('')
-      const result = new ScrollBarHelper().isOverflowing()
-
-      if (isScrollBarHidden()) {
-        expect(result).toEqual(false)
-      } else {
-        expect(result).toEqual(true)
-      }
-    })
-
-    it('should return false if body is not overflowing', () => {
-      doc.style.overflowY = 'hidden'
-      document.body.style.overflowY = 'hidden'
-      fixtureEl.innerHTML = [
-        '<div style="height: 110vh; width: 100%"></div>'
-      ].join('')
-      const scrollBar = new ScrollBarHelper()
-      const result = scrollBar.isOverflowing()
-
-      expect(result).toEqual(false)
-    })
-
-    it('allows rootElement to be set', () => {
-      fixtureEl.innerHTML = [
-        '<div id="another-root" style="height: 100vh; width: 100%"><div style="height: 110vh; width: 100%"></div></div>'
-      ].join('')
-      const anotherRootElement = document.querySelector('#another-root')
-      anotherRootElement.style.overflowY = 'scroll'
-      const result = new ScrollBarHelper(anotherRootElement).isOverflowing()
-
-      if (isScrollBarHidden()) {
-        expect(result).toEqual(false)
-      } else {
-        expect(result).toEqual(true)
-      }
-    })
-  })
-
   describe('getWidth', () => {
-    it('should return an integer greater than zero, if body is overflowing', () => {
-      doc.style.overflowY = 'scroll'
-      document.body.style.overflowY = 'scroll'
-      fixtureEl.innerHTML = [
-        '<div style="height: 110vh; width: 100%"></div>'
-      ].join('')
-      const result = new ScrollBarHelper().getWidth()
+    describe('Body', () => {
+      it('should return an integer greater than zero, if body is overflowing', () => {
+        doc.style.overflowY = 'scroll'
+        document.body.style.overflowY = 'scroll'
+        fixtureEl.innerHTML = [
+          '<div style="height: 110vh; width: 100%"></div>'
+        ].join('')
+        const result = new ScrollBarHelper().getWidth()
 
-      if (isScrollBarHidden()) {
-        expect(result).toBe(0)
-      } else {
-        expect(result).toBeGreaterThan(1)
-      }
+        if (isScrollBarHidden()) {
+          expect(result).toBe(0)
+        } else {
+          expect(result).toBeGreaterThan(1)
+        }
+      })
+
+      it('should return 0 if body is not overflowing', () => {
+        document.documentElement.style.overflowY = 'hidden'
+        document.body.style.overflowY = 'hidden'
+        fixtureEl.innerHTML = [
+          '<div style="height: 110vh; width: 100%"></div>'
+        ].join('')
+
+        const result = new ScrollBarHelper().getWidth()
+
+        expect(result).toEqual(0)
+      })
     })
 
-    it('should return 0 if body is not overflowing', () => {
-      document.documentElement.style.overflowY = 'hidden'
-      document.body.style.overflowY = 'hidden'
-      fixtureEl.innerHTML = [
-        '<div style="height: 110vh; width: 100%"></div>'
-      ].join('')
+    describe('Element', () => {
+      it('should return an integer greater than zero, if wrapper element is overflowing', () => {
+        fixtureEl.innerHTML = [
+          '<div class="wrapper" style="height: 100px; width: 100%; overflow: scroll">' +
+          '   <div style="height: 120px; width: 100%"></div>' +
+          '</div>'
+        ].join('')
+        const wrapper = fixtureEl.querySelector('.wrapper')
+        const result = new ScrollBarHelper(wrapper).getWidth()
 
-      const result = new ScrollBarHelper().getWidth()
+        if (isScrollBarHidden()) {
+          expect(result).toBe(0)
+        } else {
+          expect(result).toBeGreaterThan(1)
+        }
+      })
 
-      expect(result).toEqual(0)
+      it('should return 0 if wrapper element is not overflowing', () => {
+        fixtureEl.innerHTML = [
+          '<div class="wrapper" style="height: 100px; width: 100%">' +
+          '   <div style="height: 20px; width: 100%"></div>' +
+          '</div>'
+        ].join('')
+        const wrapper = fixtureEl.querySelector('.wrapper')
+        const result = new ScrollBarHelper(wrapper).getWidth()
+
+        expect(result).toEqual(0)
+      })
     })
   })
 

@@ -13,14 +13,20 @@ const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-to
 const SELECTOR_STICKY_CONTENT = '.sticky-top'
 
 class ScrollBarHelper {
-  constructor(rootElement) {
-    this._element = rootElement || document.body
+  constructor(element = document.body) {
+    this._isBody = [document.body, document.documentElement].includes(element)
+
+    this._element = this._isBody ? document.body : element
   }
 
   getWidth() {
-    // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
-    const documentWidth = document.documentElement.clientWidth
-    return Math.abs(window.innerWidth - documentWidth)
+    if (this._isBody) {
+      // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
+      const documentWidth = document.documentElement.clientWidth
+      return Math.abs(window.innerWidth - documentWidth)
+    }
+
+    return Math.abs(this._element.offsetWidth - this._element.clientWidth)
   }
 
   hide() {
@@ -87,10 +93,6 @@ class ScrollBarHelper {
     } else {
       SelectorEngine.find(selector, this._element).forEach(callBack)
     }
-  }
-
-  isOverflowing() {
-    return this.getWidth() > 0
   }
 }
 
