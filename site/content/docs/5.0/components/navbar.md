@@ -719,15 +719,23 @@ For an offcanvas navbar that is always collapsed across all breakpoints, omit th
 </nav>
 ```
 
-## Sass
+## CSS
 
 ### Variables
+
+<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.2.0</small>
+
+As part of Bootstrap's evolving CSS variables approach, navbars now use local CSS variables on `.navbar` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+{{< scss-docs name="navbar-css-vars" file="scss/_navbar.scss" >}}
+
+### Sass variables
 
 {{< scss-docs name="navbar-variables" file="scss/_variables.scss" >}}
 
 {{< scss-docs name="navbar-theme-variables" file="scss/_variables.scss" >}}
 
-### Loop
+### Sass loop
 
 [Responsive navbar expand/collapse classes](#responsive-behaviors) (e.g., `.navbar-expand-lg`) are combined with the `$breakpoints` map and generated through a loop in `scss/_navbar.scss`.
 
