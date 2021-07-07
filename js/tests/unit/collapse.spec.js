@@ -225,7 +225,7 @@ describe('Collapse', () => {
     })
 
     it('should show a collapsed element on width', done => {
-      fixtureEl.innerHTML = '<div class="collapse width" style="width: 0px;"></div>'
+      fixtureEl.innerHTML = '<div class="collapse collapse-horizontal" style="width: 0px;"></div>'
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
