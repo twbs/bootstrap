@@ -124,18 +124,7 @@ class Dropdown extends BaseComponent {
   // Public
 
   toggle() {
-    if (isDisabled(this._element)) {
-      return
-    }
-
-    const isActive = this._isShown()
-
-    if (isActive) {
-      this.hide()
-      return
-    }
-
-    this.show()
+    return this._isShown() ? this.hide() : this.show()
   }
 
   show() {
