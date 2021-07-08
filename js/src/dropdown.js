@@ -184,8 +184,8 @@ class Dropdown extends BaseComponent {
     this._element.focus()
     this._element.setAttribute('aria-expanded', true)
 
-    this._menu.classList.toggle(CLASS_NAME_SHOW)
-    this._element.classList.toggle(CLASS_NAME_SHOW)
+    this._menu.classList.add(CLASS_NAME_SHOW)
+    this._element.classList.add(CLASS_NAME_SHOW)
     EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget)
   }
 
