@@ -65,21 +65,6 @@ describe('ScrollSpy', () => {
       expect(sSpyByElement._element).toEqual(sSpyEl)
     })
 
-    it('should generate an id when there is not one', () => {
-      fixtureEl.innerHTML = [
-        '<nav></nav>',
-        '<div class="content"></div>'
-      ].join('')
-
-      const navEl = fixtureEl.querySelector('nav')
-      const scrollSpy = new ScrollSpy(fixtureEl.querySelector('.content'), {
-        target: navEl
-      })
-
-      expect(scrollSpy).toBeDefined()
-      expect(navEl.getAttribute('id')).not.toEqual(null)
-    })
-
     it('should not process element without target', () => {
       fixtureEl.innerHTML = [
         '<nav id="navigation" class="navbar">',
@@ -602,7 +587,7 @@ describe('ScrollSpy', () => {
 
       jQueryMock.fn.scrollspy.call(jQueryMock)
 
-      expect(ScrollSpy.getInstance(div)).toBeDefined()
+      expect(ScrollSpy.getInstance(div)).not.toBeNull()
     })
 
     it('should create a scrollspy with given config', () => {
@@ -618,7 +603,7 @@ describe('ScrollSpy', () => {
       expect(ScrollSpy.prototype.constructor).not.toHaveBeenCalledWith(div, { offset: 15 })
 
       const scrollspy = ScrollSpy.getInstance(div)
-      expect(scrollspy).toBeDefined()
+      expect(scrollspy).not.toBeNull()
       expect(scrollspy._config.offset).toBe(15)
     })
 
@@ -681,6 +666,60 @@ describe('ScrollSpy', () => {
 
     it('should return null if there is no instance', () => {
       expect(ScrollSpy.getInstance(fixtureEl)).toEqual(null)
+    })
+  })
+
+  describe('getOrCreateInstance', () => {
+    it('should return scrollspy instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const scrollspy = new ScrollSpy(div)
+
+      expect(ScrollSpy.getOrCreateInstance(div)).toEqual(scrollspy)
+      expect(ScrollSpy.getInstance(div)).toEqual(ScrollSpy.getOrCreateInstance(div, {}))
+      expect(ScrollSpy.getOrCreateInstance(div)).toBeInstanceOf(ScrollSpy)
+    })
+
+    it('should return new instance when there is no scrollspy instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(ScrollSpy.getInstance(div)).toEqual(null)
+      expect(ScrollSpy.getOrCreateInstance(div)).toBeInstanceOf(ScrollSpy)
+    })
+
+    it('should return new instance when there is no scrollspy instance with given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(ScrollSpy.getInstance(div)).toEqual(null)
+      const scrollspy = ScrollSpy.getOrCreateInstance(div, {
+        offset: 1
+      })
+      expect(scrollspy).toBeInstanceOf(ScrollSpy)
+
+      expect(scrollspy._config.offset).toEqual(1)
+    })
+
+    it('should return the instance when exists without given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const scrollspy = new ScrollSpy(div, {
+        offset: 1
+      })
+      expect(ScrollSpy.getInstance(div)).toEqual(scrollspy)
+
+      const scrollspy2 = ScrollSpy.getOrCreateInstance(div, {
+        offset: 2
+      })
+      expect(scrollspy).toBeInstanceOf(ScrollSpy)
+      expect(scrollspy2).toEqual(scrollspy)
+
+      expect(scrollspy2._config.offset).toEqual(1)
     })
   })
 

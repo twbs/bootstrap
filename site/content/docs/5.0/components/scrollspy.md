@@ -52,7 +52,7 @@ Scroll the area below the navbar and watch the active class change. The dropdown
     <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
     <h4 id="scrollspyHeading2">Second heading</h4>
     <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-    <h4 id="scrollspyHeading3">Thidd heading</h4>
+    <h4 id="scrollspyHeading3">Third heading</h4>
     <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
     <h4 id="scrollspyHeading4">Fourth heading</h4>
     <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
@@ -87,7 +87,7 @@ Scroll the area below the navbar and watch the active class change. The dropdown
   <p>...</p>
   <h4 id="scrollspyHeading2">Second heading</h4>
   <p>...</p>
-  <h4 id="scrollspyHeading3">Thidd heading</h4>
+  <h4 id="scrollspyHeading3">Third heading</h4>
   <p>...</p>
   <h4 id="scrollspyHeading4">Fourth heading</h4>
   <p>...</p>
@@ -296,6 +296,15 @@ Destroys an element's scrollspy. (Removes stored data on the DOM element)
 ```js
 var scrollSpyContentEl = document.getElementById('content')
 var scrollSpy = bootstrap.ScrollSpy.getInstance(scrollSpyContentEl) // Returns a Bootstrap scrollspy instance
+```
+
+#### getOrCreateInstance
+
+*Static* method which allows you to get the scrollspy instance associated with a DOM element, or create a new one in case it wasn't initialised
+
+```js
+var scrollSpyContentEl = document.getElementById('content')
+var scrollSpy = bootstrap.ScrollSpy.getOrCreateInstance(scrollSpyContentEl) // Returns a Bootstrap scrollspy instance
 ```
 
 ### Options

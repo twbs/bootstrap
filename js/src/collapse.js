@@ -1,17 +1,15 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): collapse.js
+ * Bootstrap (v5.0.2): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
+  getElement,
   getSelectorFromElement,
   getElementFromSelector,
-  getTransitionDurationFromElement,
-  isElement,
   reflow,
   typeCheckConfig
 } from './util/index'
@@ -52,6 +50,7 @@ const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_COLLAPSE = 'collapse'
 const CLASS_NAME_COLLAPSING = 'collapsing'
 const CLASS_NAME_COLLAPSED = 'collapsed'
+const CLASS_NAME_HORIZONTAL = 'collapse-horizontal'
 
 const WIDTH = 'width'
 const HEIGHT = 'height'
@@ -107,8 +106,8 @@ class Collapse extends BaseComponent {
     return Default
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -147,7 +146,7 @@ class Collapse extends BaseComponent {
     const container = SelectorEngine.findOne(this._selector)
     if (actives) {
       const tempActiveData = actives.find(elem => container !== elem)
-      activesData = tempActiveData ? Data.get(tempActiveData, DATA_KEY) : null
+      activesData = tempActiveData ? Collapse.getInstance(tempActiveData) : null
 
       if (activesData && activesData._isTransitioning) {
         return
@@ -200,11 +199,8 @@ class Collapse extends BaseComponent {
 
     const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1)
     const scrollSize = `scroll${capitalizedDimension}`
-    const transitionDuration = getTransitionDurationFromElement(this._element)
 
-    EventHandler.one(this._element, 'transitionend', complete)
-
-    emulateTransitionEnd(this._element, transitionDuration)
+    this._queueCallback(complete, this._element, true)
     this._element.style[dimension] = `${this._element[scrollSize]}px`
   }
 
@@ -250,22 +246,12 @@ class Collapse extends BaseComponent {
     }
 
     this._element.style[dimension] = ''
-    const transitionDuration = getTransitionDurationFromElement(this._element)
 
-    EventHandler.one(this._element, 'transitionend', complete)
-    emulateTransitionEnd(this._element, transitionDuration)
+    this._queueCallback(complete, this._element, true)
   }
 
   setTransitioning(isTransitioning) {
     this._isTransitioning = isTransitioning
-  }
-
-  dispose() {
-    super.dispose()
-    this._config = null
-    this._parent = null
-    this._triggerArray = null
-    this._isTransitioning = null
   }
 
   // Private
@@ -281,20 +267,13 @@ class Collapse extends BaseComponent {
   }
 
   _getDimension() {
-    return this._element.classList.contains(WIDTH) ? WIDTH : HEIGHT
+    return this._element.classList.contains(CLASS_NAME_HORIZONTAL) ? WIDTH : HEIGHT
   }
 
   _getParent() {
     let { parent } = this._config
 
-    if (isElement(parent)) {
-      // it's a jQuery object
-      if (typeof parent.jquery !== 'undefined' || typeof parent[0] !== 'undefined') {
-        parent = parent[0]
-      }
-    } else {
-      parent = SelectorEngine.findOne(parent)
-    }
+    parent = getElement(parent)
 
     const selector = `${SELECTOR_DATA_TOGGLE}[data-bs-parent="${parent}"]`
 
@@ -332,7 +311,7 @@ class Collapse extends BaseComponent {
   // Static
 
   static collapseInterface(element, config) {
-    let data = Data.get(element, DATA_KEY)
+    let data = Collapse.getInstance(element)
     const _config = {
       ...Default,
       ...Manipulator.getDataAttributes(element),
@@ -380,7 +359,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   const selectorElements = SelectorEngine.find(selector)
 
   selectorElements.forEach(element => {
-    const data = Data.get(element, DATA_KEY)
+    const data = Collapse.getInstance(element)
     let config
     if (data) {
       // update parent attribute
@@ -405,6 +384,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Collapse to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Collapse)
+defineJQueryPlugin(Collapse)
 
 export default Collapse

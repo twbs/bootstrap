@@ -1,6 +1,8 @@
+import SelectorEngine from '../dom/selector-engine'
+
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): util/index.js
+ * Bootstrap (v5.0.2): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -100,24 +102,28 @@ const triggerTransitionEnd = element => {
   element.dispatchEvent(new Event(TRANSITION_END))
 }
 
-const isElement = obj => (obj[0] || obj).nodeType
-
-const emulateTransitionEnd = (element, duration) => {
-  let called = false
-  const durationPadding = 5
-  const emulatedDuration = duration + durationPadding
-
-  function listener() {
-    called = true
-    element.removeEventListener(TRANSITION_END, listener)
+const isElement = obj => {
+  if (!obj || typeof obj !== 'object') {
+    return false
   }
 
-  element.addEventListener(TRANSITION_END, listener)
-  setTimeout(() => {
-    if (!called) {
-      triggerTransitionEnd(element)
-    }
-  }, emulatedDuration)
+  if (typeof obj.jquery !== 'undefined') {
+    obj = obj[0]
+  }
+
+  return typeof obj.nodeType !== 'undefined'
+}
+
+const getElement = obj => {
+  if (isElement(obj)) { // it's a jQuery object or a node element
+    return obj.jquery ? obj[0] : obj
+  }
+
+  if (typeof obj === 'string' && obj.length > 0) {
+    return SelectorEngine.findOne(obj)
+  }
+
+  return null
 }
 
 const typeCheckConfig = (componentName, config, configTypes) => {
@@ -135,20 +141,11 @@ const typeCheckConfig = (componentName, config, configTypes) => {
 }
 
 const isVisible = element => {
-  if (!element) {
+  if (!isElement(element) || element.getClientRects().length === 0) {
     return false
   }
 
-  if (element.style && element.parentNode && element.parentNode.style) {
-    const elementStyle = getComputedStyle(element)
-    const parentNodeStyle = getComputedStyle(element.parentNode)
-
-    return elementStyle.display !== 'none' &&
-      parentNodeStyle.display !== 'none' &&
-      elementStyle.visibility !== 'hidden'
-  }
-
-  return false
+  return getComputedStyle(element).getPropertyValue('visibility') === 'visible'
 }
 
 const isDisabled = element => {
@@ -204,9 +201,18 @@ const getjQuery = () => {
   return null
 }
 
+const DOMContentLoadedCallbacks = []
+
 const onDOMContentLoaded = callback => {
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', callback)
+    // add listener on the first call when the document is in loading state
+    if (!DOMContentLoadedCallbacks.length) {
+      document.addEventListener('DOMContentLoaded', () => {
+        DOMContentLoadedCallbacks.forEach(callback => callback())
+      })
+    }
+
+    DOMContentLoadedCallbacks.push(callback)
   } else {
     callback()
   }
@@ -214,11 +220,12 @@ const onDOMContentLoaded = callback => {
 
 const isRTL = () => document.documentElement.dir === 'rtl'
 
-const defineJQueryPlugin = (name, plugin) => {
+const defineJQueryPlugin = plugin => {
   onDOMContentLoaded(() => {
     const $ = getjQuery()
     /* istanbul ignore if */
     if ($) {
+      const name = plugin.NAME
       const JQUERY_NO_CONFLICT = $.fn[name]
       $.fn[name] = plugin.jQueryInterface
       $.fn[name].Constructor = plugin
@@ -236,23 +243,82 @@ const execute = callback => {
   }
 }
 
+const executeAfterTransition = (callback, transitionElement, waitForTransition = true) => {
+  if (!waitForTransition) {
+    execute(callback)
+    return
+  }
+
+  const durationPadding = 5
+  const emulatedDuration = getTransitionDurationFromElement(transitionElement) + durationPadding
+
+  let called = false
+
+  const handler = ({ target }) => {
+    if (target !== transitionElement) {
+      return
+    }
+
+    called = true
+    transitionElement.removeEventListener(TRANSITION_END, handler)
+    execute(callback)
+  }
+
+  transitionElement.addEventListener(TRANSITION_END, handler)
+  setTimeout(() => {
+    if (!called) {
+      triggerTransitionEnd(transitionElement)
+    }
+  }, emulatedDuration)
+}
+
+/**
+ * Return the previous/next element of a list.
+ *
+ * @param {array} list    The list of elements
+ * @param activeElement   The active element
+ * @param shouldGetNext   Choose to get next or previous element
+ * @param isCycleAllowed
+ * @return {Element|elem} The proper element
+ */
+const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
+  let index = list.indexOf(activeElement)
+
+  // if the element does not exist in the list return an element depending on the direction and if cycle is allowed
+  if (index === -1) {
+    return list[!shouldGetNext && isCycleAllowed ? list.length - 1 : 0]
+  }
+
+  const listLength = list.length
+
+  index += shouldGetNext ? 1 : -1
+
+  if (isCycleAllowed) {
+    index = (index + listLength) % listLength
+  }
+
+  return list[Math.max(0, Math.min(index, listLength - 1))]
+}
+
 export {
+  getElement,
   getUID,
   getSelectorFromElement,
   getElementFromSelector,
   getTransitionDurationFromElement,
   triggerTransitionEnd,
   isElement,
-  emulateTransitionEnd,
   typeCheckConfig,
   isVisible,
   isDisabled,
   findShadowRoot,
   noop,
+  getNextActiveElement,
   reflow,
   getjQuery,
   onDOMContentLoaded,
   isRTL,
   defineJQueryPlugin,
-  execute
+  execute,
+  executeAfterTransition
 }

@@ -23,6 +23,45 @@ Alerts are available for any length of text, as well as an optional close button
 {{< partial "callout-warning-color-assistive-technologies.md" >}}
 {{< /callout >}}
 
+### Live example
+
+Click the button below to show an alert (hidden with inline styles to start), then dismiss (and destroy) it with the built-in close button.
+
+<div id="liveAlertPlaceholder"></div>
+
+<div class="bd-example">
+  <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
+</div>
+
+```html
+<button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
+
+<div class="alert alert-primary alert-dismissible" role="alert" id="liveAlert">
+  <strong>Nice!</strong> You've triggered this alert.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+```
+
+We use the following JavaScript to trigger our live alert demo:
+
+```js
+var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+var alertTrigger = document.getElementById('liveAlertBtn')
+
+function alert(message, type) {
+  var wrapper = document.createElement('div')
+  wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+
+  alertPlaceholder.append(wrapper)
+}
+
+if (alertTrigger) {
+  alertTrigger.addEventListener('click', function () {
+    alert('Nice, you triggered this alert message!', 'success')
+  })
+}
+```
+
 ### Link color
 
 Use the `.alert-link` utility class to quickly provide matching colored links within any alert.
@@ -51,11 +90,11 @@ Alerts can also contain additional HTML elements like headings, paragraphs and d
 
 ### Icons
 
-Similarly, you can use [flexbox utilities]({{< docsref "/utilities/flex" >}}) and [Bootstrap Icons]({{ .Site.Params.icons }}) to create alerts with icons. Depending on your icons and content, you may want to add more utilities or custom styles.
+Similarly, you can use [flexbox utilities]({{< docsref "/utilities/flex" >}}) and [Bootstrap Icons]({{< param icons >}}) to create alerts with icons. Depending on your icons and content, you may want to add more utilities or custom styles.
 
 {{< example >}}
 <div class="alert alert-primary d-flex align-items-center" role="alert">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
     <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
   </svg>
   <div>
@@ -80,25 +119,25 @@ Need more than one icon for your alerts? Consider using more Bootstrap Icons and
 </svg>
 
 <div class="alert alert-primary d-flex align-items-center" role="alert">
-  <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#info-fill"/></svg>
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
   <div>
     An example alert with an icon
   </div>
 </div>
 <div class="alert alert-success d-flex align-items-center" role="alert">
-  <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#check-circle-fill"/></svg>
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
   <div>
     An example success alert with an icon
   </div>
 </div>
 <div class="alert alert-warning d-flex align-items-center" role="alert">
-  <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#exclamation-triangle-fill"/></svg>
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
   <div>
     An example warning alert with an icon
   </div>
 </div>
 <div class="alert alert-danger d-flex align-items-center" role="alert">
-  <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#exclamation-triangle-fill"/></svg>
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
   <div>
     An example danger alert with an icon
   </div>
@@ -147,35 +186,39 @@ Loop that generates the modifier classes with the `alert-variant()` mixin.
 
 ## JavaScript behavior
 
-### Triggers
+### Initialize
 
-Enable dismissal of an alert via JavaScript:
+Initialize elements as alerts
 
 ```js
 var alertList = document.querySelectorAll('.alert')
-alertList.forEach(function (alert) {
-  new bootstrap.Alert(alert)
+var alerts =  [].slice.call(alertList).map(function (element) {
+  return new bootstrap.Alert(element)
 })
 ```
+{{< callout info >}}
+For the sole purpose of dismissing an alert, it isn't necessary to initialize the component manually via the JS API. By making use of `data-bs-dismiss="alert"`, the component will be initialized automatically and properly dismissed.
 
-Or with `data` attributes on a button **within the alert**, as demonstrated above:
+See the [triggers](#triggers) section for more details.
+{{< /callout >}}
+
+### Triggers
+
+Dismissal can be achieved with `data` attributes on a button **within the alert** as demonstrated above:
 
 ```html
 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 ```
 
-Note that closing an alert will remove it from the DOM.
+or on a button **outside the alert** using the `data-bs-target` as demonstrated above:
 
-### Methods
-
-You can create an alert instance with the alert constructor, for example:
-
-```js
-var myAlert = document.getElementById('myAlert')
-var bsAlert = new bootstrap.Alert(myAlert)
+```html
+<button type="button" class="btn-close" data-bs-dismiss="alert" data-bs-target="#my-alert" aria-label="Close"></button>
 ```
 
-This makes an alert listen for click events on descendant elements which have the `data-bs-dismiss="alert"` attribute. (Not necessary when using the data-api's auto-initialization.)
+**Note that closing an alert will remove it from the DOM.**
+
+### Methods
 
 <table class="table">
   <thead>
@@ -207,6 +250,15 @@ This makes an alert listen for click events on descendant elements which have th
       </td>
       <td>
         Static method which allows you to get the alert instance associated to a DOM element, you can use it like this: <code>bootstrap.Alert.getInstance(alert)</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>getOrCreateInstance</code>
+      </td>
+      <td>
+        Static method which returns an alert instance associated to a DOM element or create a new one in case it wasn't initialised.
+        You can use it like this: <code>bootstrap.Alert.getOrCreateInstance(element)</code>
       </td>
     </tr>
   </tbody>

@@ -25,7 +25,7 @@
   &[type="file"] {
     overflow: hidden; // prevent pseudo element button overlap
 
-    &:not(:disabled):not(:read-only) {
+    &:not(:disabled):not([readonly]) {
       cursor: pointer;
     }
   }
@@ -65,7 +65,7 @@
   // disabled if the fieldset is disabled. Due to implementation difficulty, we
   // don't honor that edge case; we style them as disabled anyway.
   &:disabled,
-  &:read-only {
+  &[readonly] {
     background-color: $input-disabled-bg;
     border-color: $input-disabled-border-color;
     // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
@@ -88,7 +88,7 @@
     @include transition($btn-transition);
   }
 
-  &:hover:not(:disabled):not(:read-only)::file-selector-button {
+  &:hover:not(:disabled):not([readonly])::file-selector-button {
     background-color: $form-file-button-hover-bg;
   }
 
@@ -107,7 +107,7 @@
     @include transition($btn-transition);
   }
 
-  &:hover:not(:disabled):not(:read-only)::-webkit-file-upload-button {
+  &:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
     background-color: $form-file-button-hover-bg;
   }
 }
@@ -203,7 +203,7 @@ textarea {
   height: auto; // Override fixed browser height
   padding: $input-padding-y;
 
-  &:not(:disabled):not(:read-only) {
+  &:not(:disabled):not([readonly]) {
     cursor: pointer;
   }
 

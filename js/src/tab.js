@@ -1,19 +1,16 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): tab.js
+ * Bootstrap (v5.0.2): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
   getElementFromSelector,
-  getTransitionDurationFromElement,
   isDisabled,
   reflow
 } from './util/index'
-import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
@@ -57,8 +54,8 @@ const SELECTOR_DROPDOWN_ACTIVE_CHILD = ':scope > .dropdown-menu .active'
 class Tab extends BaseComponent {
   // Getters
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -125,11 +122,8 @@ class Tab extends BaseComponent {
     const complete = () => this._transitionComplete(element, active, callback)
 
     if (active && isTransitioning) {
-      const transitionDuration = getTransitionDurationFromElement(active)
       active.classList.remove(CLASS_NAME_SHOW)
-
-      EventHandler.one(active, 'transitionend', complete)
-      emulateTransitionEnd(active, transitionDuration)
+      this._queueCallback(complete, element, true)
     } else {
       complete()
     }
@@ -186,7 +180,7 @@ class Tab extends BaseComponent {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      const data = Data.get(this, DATA_KEY) || new Tab(this)
+      const data = Tab.getOrCreateInstance(this)
 
       if (typeof config === 'string') {
         if (typeof data[config] === 'undefined') {
@@ -214,7 +208,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     return
   }
 
-  const data = Data.get(this, DATA_KEY) || new Tab(this)
+  const data = Tab.getOrCreateInstance(this)
   data.show()
 })
 
@@ -225,6 +219,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Tab to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Tab)
+defineJQueryPlugin(Tab)
 
 export default Tab

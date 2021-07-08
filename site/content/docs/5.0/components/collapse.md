@@ -40,6 +40,29 @@ Generally, we recommend using a button with the `data-bs-target` attribute. Whil
 </div>
 {{< /example >}}
 
+## Horizontal
+
+The collapse plugin also supports horizontal collapsing. Add the `.collapse-horizontal` modifier class to transition the `width` instead of `height` and set a `width` on the immediate child element. Feel free to write your own custom Sass, use inline styles, or use our [width utilities]({{< docsref "/utilities/sizing" >}}).
+
+{{< callout info >}}
+Please note that while the example below has a `min-height` set to avoid excessive repaints in our docs, this is not explicitly required. **Only the `width` on the child element is required.**
+{{< /callout >}}
+
+{{< example >}}
+<p>
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+    Toggle width collapse
+  </button>
+</p>
+<div style="min-height: 120px;">
+  <div class="collapse collapse-horizontal" id="collapseWidthExample">
+    <div class="card card-body" style="width: 300px;">
+      This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+    </div>
+  </div>
+</div>
+{{< /example >}}
+
 ## Multiple targets
 
 A `<button>` or `<a>` can show and hide multiple elements by referencing them with a selector in its `href` or `data-bs-target` attribute.
@@ -187,8 +210,21 @@ var bsCollapse = new bootstrap.Collapse(myCollapse, {
       <td>Destroys an element's collapse. (Removes stored data on the DOM element)</td>
     </tr>
     <tr>
-      <td><code>getInstance</code></td>
-      <td>Static method which allows you to get the collapse instance associated with a DOM element.</td>
+      <td>
+        <code>getInstance</code>
+      </td>
+      <td>
+        Static method which allows you to get the collapse instance associated to a DOM element, you can use it like this: <code>bootstrap.Collapse.getInstance(element)</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>getOrCreateInstance</code>
+      </td>
+      <td>
+        Static method which returns a collapse instance associated to a DOM element or create a new one in case it wasn't initialised.
+        You can use it like this: <code>bootstrap.Collapse.getOrCreateInstance(element)</code>
+      </td>
     </tr>
   </tbody>
 </table>
