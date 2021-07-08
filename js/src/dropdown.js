@@ -48,7 +48,6 @@ const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
-const EVENT_CLICK = `click${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY}${DATA_API_KEY}`
@@ -103,8 +102,6 @@ class Dropdown extends BaseComponent {
     this._config = this._getConfig(config)
     this._menu = this._getMenuElement()
     this._inNavbar = this._detectNavbar()
-
-    this._addEventListeners()
   }
 
   // Getters
@@ -217,13 +214,6 @@ class Dropdown extends BaseComponent {
   }
 
   // Private
-
-  _addEventListeners() {
-    EventHandler.on(this._element, EVENT_CLICK, event => {
-      event.preventDefault()
-      this.toggle()
-    })
-  }
 
   _completeHide(relatedTarget) {
     const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE, relatedTarget)
@@ -490,7 +480,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   event.preventDefault()
-  Dropdown.getOrCreateInstance(this)
+  Dropdown.getOrCreateInstance(this).toggle()
 })
 
 /**
