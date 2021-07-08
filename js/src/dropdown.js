@@ -129,7 +129,6 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    const parent = Dropdown.getParentFromElement(this._element)
     const relatedTarget = {
       relatedTarget: this._element
     }
@@ -140,32 +139,12 @@ class Dropdown extends BaseComponent {
       return
     }
 
+    const parent = Dropdown.getParentFromElement(this._element)
     // Totally disable Popper for Dropdowns in Navbar
     if (this._inNavbar) {
       Manipulator.setDataAttribute(this._menu, 'popper', 'none')
     } else {
-      if (typeof Popper === 'undefined') {
-        throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)')
-      }
-
-      let referenceElement = this._element
-
-      if (this._config.reference === 'parent') {
-        referenceElement = parent
-      } else if (isElement(this._config.reference)) {
-        referenceElement = getElement(this._config.reference)
-      } else if (typeof this._config.reference === 'object') {
-        referenceElement = this._config.reference
-      }
-
-      const popperConfig = this._getPopperConfig()
-      const isDisplayStatic = popperConfig.modifiers.find(modifier => modifier.name === 'applyStyles' && modifier.enabled === false)
-
-      this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
-
-      if (isDisplayStatic) {
-        Manipulator.setDataAttribute(this._menu, 'popper', 'static')
-      }
+      this._createPopper(parent)
     }
 
     // If this is a touch-enabled device we add extra
@@ -256,6 +235,31 @@ class Dropdown extends BaseComponent {
     }
 
     return config
+  }
+
+  _createPopper(parent) {
+    if (typeof Popper === 'undefined') {
+      throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)')
+    }
+
+    let referenceElement = this._element
+
+    if (this._config.reference === 'parent') {
+      referenceElement = parent
+    } else if (isElement(this._config.reference)) {
+      referenceElement = getElement(this._config.reference)
+    } else if (typeof this._config.reference === 'object') {
+      referenceElement = this._config.reference
+    }
+
+    const popperConfig = this._getPopperConfig()
+    const isDisplayStatic = popperConfig.modifiers.find(modifier => modifier.name === 'applyStyles' && modifier.enabled === false)
+
+    this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
+
+    if (isDisplayStatic) {
+      Manipulator.setDataAttribute(this._menu, 'popper', 'static')
+    }
   }
 
   _isShown(element = this._element) {
