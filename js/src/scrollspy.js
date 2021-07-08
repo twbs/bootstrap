@@ -120,7 +120,7 @@ class ScrollSpy extends BaseComponent {
         if (targetBCR.width || targetBCR.height) {
           return [
             Manipulator[offsetMethod](target).top + offsetBase,
-            "#" + targetId
+            '#' + targetId
           ]
         }
       }
