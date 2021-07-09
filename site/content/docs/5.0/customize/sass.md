@@ -43,7 +43,7 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 
 // Include any default variable overrides here (though functions won't be available)
 
-@import "../node_modules/bootstrap/scss/bootstrap";
+@use "../node_modules/bootstrap/scss/bootstrap";
 
 // Then add additional custom code here
 ```
@@ -53,21 +53,21 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 // Option B: Include parts of Bootstrap
 
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
-@import "../node_modules/bootstrap/scss/functions";
+@use "../node_modules/bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
 
 // 3. Include remainder of required Bootstrap stylesheets
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
+@use "../node_modules/bootstrap/scss/variables";
+@use "../node_modules/bootstrap/scss/mixins";
 
 // 4. Include any optional Bootstrap components as you like
-@import "../node_modules/bootstrap/scss/root";
-@import "../node_modules/bootstrap/scss/reboot";
-@import "../node_modules/bootstrap/scss/type";
-@import "../node_modules/bootstrap/scss/images";
-@import "../node_modules/bootstrap/scss/containers";
-@import "../node_modules/bootstrap/scss/grid";
+@use "../node_modules/bootstrap/scss/root";
+@use "../node_modules/bootstrap/scss/reboot";
+@use "../node_modules/bootstrap/scss/type";
+@use "../node_modules/bootstrap/scss/images";
+@use "../node_modules/bootstrap/scss/containers";
+@use "../node_modules/bootstrap/scss/grid";
 
 // 5. Add additional custom code here
 ```
@@ -86,20 +86,20 @@ Here's an example that changes the `background-color` and `color` for the `<body
 
 ```scss
 // Required
-@import "../node_modules/bootstrap/scss/functions";
+@use "../node_modules/bootstrap/scss/functions";
 
 // Default variable overrides
 $body-bg: #000;
 $body-color: #111;
 
 // Required
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
+@use "../node_modules/bootstrap/scss/variables";
+@use "../node_modules/bootstrap/scss/mixins";
 
 // Optional Bootstrap components here
-@import "../node_modules/bootstrap/scss/root";
-@import "../node_modules/bootstrap/scss/reboot";
-@import "../node_modules/bootstrap/scss/type";
+@use "../node_modules/bootstrap/scss/root";
+@use "../node_modules/bootstrap/scss/reboot";
+@use "../node_modules/bootstrap/scss/type";
 // etc
 ```
 
@@ -153,16 +153,16 @@ To remove colors from `$theme-colors`, or any other map, use `map-remove`. Be aw
 
 ```scss
 // Required
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
+@use "../node_modules/bootstrap/scss/functions";
+@use "../node_modules/bootstrap/scss/variables";
+@use "../node_modules/bootstrap/scss/mixins";
 
 $theme-colors: map-remove($theme-colors, "info", "light", "dark");
 
 // Optional
-@import "../node_modules/bootstrap/scss/root";
-@import "../node_modules/bootstrap/scss/reboot";
-@import "../node_modules/bootstrap/scss/type";
+@use "../node_modules/bootstrap/scss/root";
+@use "../node_modules/bootstrap/scss/reboot";
+@use "../node_modules/bootstrap/scss/type";
 // etc
 ```
 
