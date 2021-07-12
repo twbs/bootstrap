@@ -77,7 +77,9 @@
 // scss-docs-start btn-outline-variant-mixin
 @mixin button-outline-variant(
   $color,
-  $color-hover: color-contrast($color),
+  $hover-background: rgba($color, .1),
+  $hover-border: color-level($color, 2),
+  $hover-color: color-level($color, 2),
   $active-background: $color,
   $active-border: $color,
   $active-color: color-contrast($active-background)
@@ -86,9 +88,9 @@
   border-color: $color;
 
   &:hover {
-    color: $color-hover;
-    background-color: $active-background;
-    border-color: $active-border;
+    color: $hover-color;
+    background-color: $hover-background;
+    border-color: $hover-border;
   }
 
   .btn-check:focus + &,
