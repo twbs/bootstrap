@@ -13,6 +13,7 @@
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
+  border: 1px solid transparent;
   @include border-radius($badge-border-radius);
   @include gradient-bg();
 
