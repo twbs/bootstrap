@@ -211,6 +211,47 @@ Omit the wrapping `.form-check` for checkboxes and radios that have no label tex
 </div>
 {{< /example >}}
 
+## Centering
+
+Use your preferred content-centering method and omit the wrapping `.form-check` and `.form-check-inline`. You will also need to utilize [spacing utilities]({{< docsref "/utilities/spacing" >}}) for spacing between the label and input.
+
+{{< example >}}
+<div class="text-center">
+  <input class="form-check-input" type="checkbox" id="checkboxCenteredNoLabel" value="" aria-label="...">
+</div>
+
+<div class="d-flex justify-content-center">
+  <input class="form-check-input" type="radio" id="radioCenteredNoLabel" value="" aria-label="...">
+</div>
+
+<div class="text-center">
+  <input class="form-check-input" type="checkbox" id="checkboxCenteredWithLabel" value="">
+  <label for="checkboxCenteredWithLabel" class="ps-2">Label Text</label>
+</div>
+
+<div class="d-flex justify-content-center">
+  <input class="form-check-input" type="radio" id="radioCenteredWithLabel" value="">
+  <label for="radioCenteredWithLabel" class="ps-2">Label Text</label>
+</div>
+{{< /example >}}
+
+Switches require a container `<div>` with `.form-switch`.
+
+{{< example >}}
+<div class="d-flex justify-content-center">
+  <div class="form-switch">
+    <input class="form-check-input" type="checkbox" id="switchCenteredNoLabel" value="" aria-label="...">
+  </div>
+</div>
+
+<div class="text-center">
+  <div class="form-switch">
+    <input class="form-check-input" type="checkbox" id="switchCenteredWithLabel" value="">
+    <label for="switchCenteredWithLabel" class="ps-2">Label Text</label>
+  </div>
+</div>
+{{< /example >}}
+
 ## Toggle buttons
 
 Create button-like checkboxes and radio buttons by using `.btn` styles rather than `.form-check-label` on the `<label>` elements. These toggle buttons can further be grouped in a [button group]({{< docsref "/components/button-group" >}}) if needed.
