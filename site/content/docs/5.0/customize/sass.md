@@ -57,11 +57,15 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 
 // 2. Include any default variable overrides here
 
-// 3. Include remainder of required Bootstrap stylesheets
+// 3. Include the default variables
 @import "../node_modules/bootstrap/scss/variables";
+
+// 4. Include any map modifications here
+
+// 5. Include the last required Bootstrap stylesheet
 @import "../node_modules/bootstrap/scss/mixins";
 
-// 4. Include any optional Bootstrap components as you like
+// 6. Include any optional Bootstrap components as you like
 @import "../node_modules/bootstrap/scss/root";
 @import "../node_modules/bootstrap/scss/reboot";
 @import "../node_modules/bootstrap/scss/type";
@@ -69,7 +73,7 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 @import "../node_modules/bootstrap/scss/containers";
 @import "../node_modules/bootstrap/scss/grid";
 
-// 5. Add additional custom code here
+// 7. Add additional custom code here
 ```
 
 With that setup in place, you can begin to modify any of the Sass variables and maps in your `custom.scss`. You can also start to add parts of Bootstrap under the `// Optional` section as needed. We suggest using the full import stack from our `bootstrap.scss` file as your starting point.
@@ -138,6 +142,10 @@ $theme-colors: (
 Add new colors to `$theme-colors`, or any other map, by creating a new Sass map with your custom values and merging it with the original map. In this case, we'll create a new `$custom-colors` map and merge it with `$theme-colors`.
 
 ```scss
+// Required
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
 // Create your own map
 $custom-colors: (
   "custom-color": #900
@@ -145,6 +153,9 @@ $custom-colors: (
 
 // Merge the maps
 $theme-colors: map-merge($theme-colors, $custom-colors);
+
+// Required
+@import "../node_modules/bootstrap/scss/mixins";
 ```
 
 ### Remove from map
