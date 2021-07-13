@@ -8,8 +8,6 @@
   // So reset our font and text properties to avoid inheriting weird values.
   @include reset-text();
   @include font-size($tooltip-font-size);
-  // Allow breaking very long words so they don't overflow the tooltip's bounds
-  word-wrap: break-word;
   opacity: 0;
 
   &.show { opacity: $tooltip-opacity; }

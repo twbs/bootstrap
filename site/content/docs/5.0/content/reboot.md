@@ -26,6 +26,7 @@ The `<html>` and `<body>` elements are updated to provide better page-wide defau
   - No base `font-size` is declared on the `<html>`, but `16px` is assumed (the browser default). `font-size: 1rem` is applied on the `<body>` for easy responsive type-scaling via media queries while respecting user preferences and ensuring a more accessible approach. This browser default can be overridden by modifying the `$font-size-root` variable.
 - The `<body>` also sets a global `font-family`, `font-weight`, `line-height`, and `color`. This is inherited later by some form elements to prevent font inconsistencies.
 - For safety, the `<body>` has a declared `background-color`, defaulting to `#fff`.
+- The `word-wrap` and `word-break` are set to `break-word` to prevent long strings of text from breaking your components' layout. We use `word-wrap` instead of the more common `overflow-wrap` for wider browser support, and add the deprecated `word-break: break-word` to avoid issues with flex containers.
 
 ## Native font stack
 
