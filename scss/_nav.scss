@@ -86,6 +86,13 @@
     background: none;
     border: 0;
     @include border-radius($nav-pills-border-radius);
+
+    &:focus {
+      color: $nav-pills-link-hover-color;
+      text-decoration: if($link-hover-decoration == underline, none, null);
+      outline: $nav-pills-link-focus-outline;
+      box-shadow: $nav-pills-link-focus-box-shadow;
+    }
   }
 
   .nav-link.active,

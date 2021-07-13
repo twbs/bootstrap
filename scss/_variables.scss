@@ -1062,6 +1062,12 @@ $nav-pills-link-active-color:       $component-active-color !default;
 $nav-pills-link-active-bg:          $component-active-bg !default;
 // scss-docs-end nav-variables
 
+$nav-pills-link-hover-color:              null !default;
+$nav-pills-link-focus-width:             .25rem !default;
+$nav-pills-link-focus-color-opacity:     .25 !default;
+$nav-pills-link-focus-color:             rgba($component-active-bg, $nav-pills-link-focus-color-opacity) !default;
+$nav-pills-link-focus-box-shadow:        0 0 0 $nav-pills-link-focus-width $nav-pills-link-focus-color !default;
+$nav-pills-link-focus-outline:           0 !default;
 
 // Navbar
 
