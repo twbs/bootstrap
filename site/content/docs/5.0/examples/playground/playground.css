@@ -1,0 +1,86 @@
+/* stylelint-disable declaration-no-important */
+
+body > div {
+  max-width: 40rem;
+}
+
+.btn-group {
+  /* margin-bottom: -50%; */
+}
+
+.btn-group > .btn {
+  flex: 0;
+}
+
+.btn-outline-primary:not(:hover) {
+  background-color: #fff;
+}
+
+
+.carousel-indicators {
+  position: static;
+}
+
+.carousel-indicators li {
+  width: .5rem;
+  height: .5rem;
+  background-color: currentColor;
+  border-radius: 50%;
+}
+
+.carousel-indicators li:last-child {
+  margin-right: 0;
+}
+
+
+.modal-sheet {
+  position: absolute;
+  /* display: block; */
+  overflow: hidden;
+}
+
+.modal-sheet .modal-dialog {
+  position: absolute;
+  right: .5rem;
+  bottom: -100%;
+  left: .5rem;
+  margin-bottom: .5rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .25);
+  transition: bottom .75s ease-in-out;
+}
+
+.modal-sheet.show .modal-dialog {
+  bottom: 0;
+}
+
+
+.modal-sheet .modal-content {
+  border-radius: 1rem;
+}
+
+.modal-sheet .modal-footer {
+  padding-bottom: 2rem;
+}
+
+/* Hack for now */
+.modal-backdrop { display: none !important; }
+
+
+.button-group {
+  display: flex;
+  padding: .1em;
+  background-color: rgba(0, 0, 0, .1);
+  border: 1px solid rgba(0, 0, 0, .1);
+  border-radius: 4rem;
+}
+.button-group-item {
+  flex: 1 1 0;
+  padding: .375rem .75rem;
+  background: none;
+  border: 0;
+}
+.button-group-item.active {
+  background-color: #fff;
+  border-radius: 3.9rem;
+  box-shadow: 0 .1em .2em rgba(0, 0, 0, .1);
+}
