@@ -74,6 +74,7 @@ const PLACEMENT_LEFT = isRTL() ? 'right-start' : 'left-start'
 const Default = {
   offset: [0, 2],
   boundary: 'clippingParents',
+  strategy: 'absolute',
   reference: 'toggle',
   display: 'dynamic',
   popperConfig: null,
@@ -83,6 +84,7 @@ const Default = {
 const DefaultType = {
   offset: '(array|string|function)',
   boundary: '(string|element)',
+  strategy: 'string',
   reference: '(string|element|object)',
   display: 'string',
   popperConfig: '(null|object|function)',
@@ -336,7 +338,8 @@ class Dropdown extends BaseComponent {
         options: {
           offset: this._getOffset()
         }
-      }]
+      }],
+      strategy: this._config.strategy
     }
 
     // Disable Popper if we have a static display

@@ -53,6 +53,7 @@ const DefaultType = {
   container: '(string|element|boolean)',
   fallbackPlacements: 'array',
   boundary: '(string|element)',
+  strategy: 'string',
   customClass: '(string|function)',
   sanitize: 'boolean',
   sanitizeFn: '(null|function)',
@@ -84,6 +85,7 @@ const Default = {
   container: false,
   fallbackPlacements: ['top', 'right', 'bottom', 'left'],
   boundary: 'clippingParents',
+  strategy: 'absolute',
   customClass: '',
   sanitize: true,
   sanitizeFn: null,
@@ -504,7 +506,8 @@ class Tooltip extends BaseComponent {
         if (data.options.placement !== data.placement) {
           this._handlePopperPlacementChange(data)
         }
-      }
+      },
+      strategy: this._config.strategy
     }
 
     return {
