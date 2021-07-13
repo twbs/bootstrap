@@ -227,6 +227,26 @@
   float: none !important;
 }
 
+.opacity-0 {
+  opacity: 0 !important;
+}
+
+.opacity-25 {
+  opacity: 0.25 !important;
+}
+
+.opacity-50 {
+  opacity: 0.5 !important;
+}
+
+.opacity-75 {
+  opacity: 0.75 !important;
+}
+
+.opacity-100 {
+  opacity: 1 !important;
+}
+
 .overflow-auto {
   overflow: auto !important;
 }
@@ -4740,4 +4760,5 @@
     display: none !important;
   }
 }
+
 /*# sourceMappingURL=bootstrap-utilities.rtl.css.map */

@@ -8,6 +8,7 @@
     "xo/browser"
   ],
   "rules": {
+    "complexity": "off",
     "capitalized-comments": "off",
     "indent": [
       "error",
@@ -31,7 +32,7 @@
         "properties": false
       }
     ],
-    "no-console": "error",
+    "no-console": "warn",
     "object-curly-spacing": [
       "error",
       "always"

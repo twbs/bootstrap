@@ -2376,6 +2376,7 @@
       //    - If key is not up or down => not a dropdown command
       //    - If trigger inside the menu => not a dropdown command
       if (/input|textarea/i.test(event.target.tagName) ? event.key === SPACE_KEY || event.key !== ESCAPE_KEY$2 && (event.key !== ARROW_DOWN_KEY && event.key !== ARROW_UP_KEY || event.target.closest(SELECTOR_MENU)) : !REGEXP_KEYDOWN.test(event.key)) {
+        console.log('test');
         return;
       }
 
@@ -2398,14 +2399,88 @@
         getToggleButton().focus();
         Dropdown.clearMenus();
         return;
-      }
+      } // event.target.parentNode.nextElementSibling.children[0].focus()
+      // if (event.target.parentNode.nextElementSibling &&
+      // event.target.parentNode.nextElementSibling.tagName.toLowerCase() === 'li' &&
+      // event.target.parentNode.nextElementSibling.children[0]) {
+      //   console.log(event.target.parentNode.nextElementSibling.children[0])
+      //   event.target.parentNode.nextElementSibling.children[0].focus()
+      // }
+
 
       if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY || event.key === ARROW_RIGHT_KEY || event.key === SPACE_KEY) {
-        if (!isActive) {
-          getToggleButton().click();
+        // console.log('keydown')
+        // console.log(event.target.parentNode.parentNode.parentNode)
+        const isTopLevel = element => element.parentNode.parentNode.parentNode.tagName.toLowerCase() === 'nav';
+
+        const hasSubMenu = element => element.nextElementSibling && element.nextElementSibling.tagName.toLowerCase() === 'ul';
+
+        const hasNextMenuItem = element => element.parentNode.nextElementSibling && element.parentNode.nextElementSibling.tagName.toLowerCase() === 'li' && element.parentNode.nextElementSibling.children[0];
+
+        const hasPreviousMenuItem = element => element.parentNode.previousElementSibling && element.parentNode.previousElementSibling.tagName.toLowerCase() === 'li' && element.parentNode.previousElementSibling.children[0];
+
+        const hasFirstMenuItem = element => element.parentNode.tagName.toLowerCase() === 'li' && element.parentNode.parentNode.tagName.toLowerCase() === 'ul' && element.parentNode.parentNode.children[0].tagName.toLowerCase() === 'li' && element.parentNode.parentNode.children[0].children[0];
+
+        const hasLastMenuItem = element => element.parentNode.tagName.toLowerCase() === 'li' && element.parentNode.parentNode.tagName.toLowerCase() === 'ul' && element.parentNode.parentNode.lastElementChild.tagName.toLowerCase() === 'li' && element.parentNode.parentNode.lastElementChild.children[0];
+
+        const getFirstMenuItem = element => element.parentNode.parentNode.children[0].children[0];
+
+        const getFirstSubMenu = element => element.nextElementSibling.children[0].children[0];
+
+        const getLastMenuItem = element => element.parentNode.parentNode.lastElementChild.children[0];
+
+        const getLastSubMenu = element => element.nextElementSibling.lastElementChild.children[0];
+
+        const getNextMenuItem = element => element.parentNode.nextElementSibling.children[0];
+
+        const getPreviousMenuItem = element => element.parentNode.previousElementSibling.children[0];
+
+        const goToNextMenuItem = element => {
+          if (hasNextMenuItem(element)) {
+            getNextMenuItem(element).focus();
+          } else if (hasFirstMenuItem(element)) {
+            getFirstMenuItem(element).focus();
+          }
+        };
+
+        const goToPreviousMenuItem = element => {
+          if (hasPreviousMenuItem(element)) {
+            getPreviousMenuItem(element).focus();
+          } else if (hasLastMenuItem(element)) {
+            getLastMenuItem(element).focus();
+          }
+        };
+
+        if (event.key === ARROW_DOWN_KEY) {
+          if (!isActive && isTopLevel(event.target) && hasSubMenu(event.target)) {
+            event.target.click();
+            getFirstSubMenu(event.target).focus();
+          } else {
+            goToNextMenuItem(event.target);
+          }
         }
 
-        Dropdown.getInstance(getToggleButton())._selectMenuItem(event);
+        if (event.key === ARROW_UP_KEY) {
+          if (!isActive && isTopLevel(event.target) && hasSubMenu(event.target)) {
+            event.target.click();
+            getLastSubMenu(event.target).focus();
+          } else {
+            goToPreviousMenuItem(event.target);
+          }
+        }
+
+        if (event.key === ARROW_RIGHT_KEY) {
+          if (isTopLevel(event.target)) {
+            goToNextMenuItem(event.target);
+          } else if (hasSubMenu(event.target)) {
+            console.log(event.target);
+            event.target.click();
+            getFirstSubMenu(event.target).focus();
+            return;
+          }
+        } // console.log(event.target.nextElementSibling.children[0].children[0])
+        // Dropdown.getInstance(getToggleButton())._selectMenuItem(event)
+
 
         return;
       }
