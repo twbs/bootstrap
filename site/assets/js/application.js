@@ -12,25 +12,25 @@
 
 /* global ClipboardJS: false, anchors: false, bootstrap: false */
 
-(function () {
+(() => {
   'use strict'
 
   // Tooltip and popover demos
   document.querySelectorAll('.tooltip-demo')
-    .forEach(function (tooltip) {
+    .forEach(tooltip => {
       new bootstrap.Tooltip(tooltip, {
         selector: '[data-bs-toggle="tooltip"]'
       })
     })
 
   document.querySelectorAll('[data-bs-toggle="popover"]')
-    .forEach(function (popover) {
+    .forEach(popover => {
       new bootstrap.Popover(popover)
     })
 
-  var toastPlacement = document.getElementById('toastPlacement')
+  const toastPlacement = document.getElementById('toastPlacement')
   if (toastPlacement) {
-    document.getElementById('selectToastPlacement').addEventListener('change', function () {
+    document.getElementById('selectToastPlacement').addEventListener('change', () => {
       if (!toastPlacement.dataset.originalClass) {
         toastPlacement.dataset.originalClass = toastPlacement.className
       }
@@ -40,19 +40,19 @@
   }
 
   document.querySelectorAll('.bd-example .toast')
-    .forEach(function (toastNode) {
-      var toast = new bootstrap.Toast(toastNode, {
+    .forEach(toastNode => {
+      const toast = new bootstrap.Toast(toastNode, {
         autohide: false
       })
 
       toast.show()
     })
 
-  var toastTrigger = document.getElementById('liveToastBtn')
-  var toastLiveExample = document.getElementById('liveToast')
+  const toastTrigger = document.getElementById('liveToastBtn')
+  const toastLiveExample = document.getElementById('liveToast')
   if (toastTrigger) {
-    toastTrigger.addEventListener('click', function () {
-      var toast = new bootstrap.Toast(toastLiveExample)
+    toastTrigger.addEventListener('click', () => {
+      const toast = new bootstrap.Toast(toastLiveExample)
 
       toast.show()
     })
@@ -76,51 +76,51 @@
 
   // Demos within modals
   document.querySelectorAll('.tooltip-test')
-    .forEach(function (tooltip) {
+    .forEach(tooltip => {
       new bootstrap.Tooltip(tooltip)
     })
 
   document.querySelectorAll('.popover-test')
-    .forEach(function (popover) {
+    .forEach(popover => {
       new bootstrap.Popover(popover)
     })
 
   // Indeterminate checkbox example
   document.querySelectorAll('.bd-example-indeterminate [type="checkbox"]')
-    .forEach(function (checkbox) {
+    .forEach(checkbox => {
       checkbox.indeterminate = true
     })
 
   // Disable empty links in docs examples
   document.querySelectorAll('.bd-content [href="#"]')
-    .forEach(function (link) {
-      link.addEventListener('click', function (e) {
+    .forEach(link => {
+      link.addEventListener('click', e => {
         e.preventDefault()
       })
     })
 
   // Modal relatedTarget demo
-  var exampleModal = document.getElementById('exampleModal')
+  const exampleModal = document.getElementById('exampleModal')
   if (exampleModal) {
-    exampleModal.addEventListener('show.bs.modal', function (event) {
+    exampleModal.addEventListener('show.bs.modal', event => {
       // Button that triggered the modal
-      var button = event.relatedTarget
+      const button = event.relatedTarget
       // Extract info from data-bs-* attributes
-      var recipient = button.getAttribute('data-bs-whatever')
+      const recipient = button.getAttribute('data-bs-whatever')
 
       // Update the modal's content.
-      var modalTitle = exampleModal.querySelector('.modal-title')
-      var modalBodyInput = exampleModal.querySelector('.modal-body input')
+      const modalTitle = exampleModal.querySelector('.modal-title')
+      const modalBodyInput = exampleModal.querySelector('.modal-body input')
 
-      modalTitle.textContent = 'New message to ' + recipient
+      modalTitle.textContent = `New message to ${recipient}`
       modalBodyInput.value = recipient
     })
   }
 
   // Activate animated progress bar
-  var btnToggleAnimatedProgress = document.getElementById('btnToggleAnimatedProgress')
+  const btnToggleAnimatedProgress = document.getElementById('btnToggleAnimatedProgress')
   if (btnToggleAnimatedProgress) {
-    btnToggleAnimatedProgress.addEventListener('click', function () {
+    btnToggleAnimatedProgress.addEventListener('click', () => {
       btnToggleAnimatedProgress.parentNode
         .querySelector('.progress-bar-striped')
         .classList
@@ -129,17 +129,17 @@
   }
 
   // Insert copy to clipboard button before .highlight
-  var btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
+  const btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
   document.querySelectorAll('div.highlight')
-    .forEach(function (element) {
+    .forEach(element => {
       element.insertAdjacentHTML('beforebegin', btnHtml)
     })
 
   document.querySelectorAll('.btn-clipboard')
-    .forEach(function (btn) {
-      var tooltipBtn = new bootstrap.Tooltip(btn)
+    .forEach(btn => {
+      const tooltipBtn = new bootstrap.Tooltip(btn)
 
-      btn.addEventListener('mouseleave', function () {
+      btn.addEventListener('mouseleave', () => {
         // Explicitly hide tooltip, since after clicking it remains
         // focused (as it's a button), so tooltip would otherwise
         // remain visible until focus is moved away
@@ -147,14 +147,12 @@
       })
     })
 
-  var clipboard = new ClipboardJS('.btn-clipboard', {
-    target: function (trigger) {
-      return trigger.parentNode.nextElementSibling
-    }
+  const clipboard = new ClipboardJS('.btn-clipboard', {
+    target: trigger => trigger.parentNode.nextElementSibling
   })
 
-  clipboard.on('success', function (e) {
-    var tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
+  clipboard.on('success', e => {
+    const tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
 
     e.trigger.setAttribute('data-bs-original-title', 'Copied!')
     tooltipBtn.show()
@@ -163,10 +161,10 @@
     e.clearSelection()
   })
 
-  clipboard.on('error', function (e) {
-    var modifierKey = /mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
-    var fallbackMsg = 'Press ' + modifierKey + 'C to copy'
-    var tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
+  clipboard.on('error', e => {
+    const modifierKey = /mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
+    const fallbackMsg = `Press ${modifierKey}C to copy`
+    const tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
 
     e.trigger.setAttribute('data-bs-original-title', fallbackMsg)
     tooltipBtn.show()
