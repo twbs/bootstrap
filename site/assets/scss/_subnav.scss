@@ -1,4 +1,7 @@
 .bd-subnavbar {
+  --bs-gutter-x: 1.25rem;
+  --bs-gutter-y: 1.25rem;
+
   // The position and z-index are needed for the dropdown to stay on top of the content
   position: relative;
   z-index: $zindex-sticky;
@@ -31,16 +34,16 @@
     position: absolute;
     top: .4rem;
     right: .4rem;
+    bottom: .4rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 1.5rem;
-    padding-right: .25rem;
-    padding-left: .25rem;
+    padding-right: .3125rem;
+    padding-left: .3125rem;
     @include font-size(.75rem);
     color: $gray-600;
     content: "Ctrl + /";
-    border: $border-width solid $border-color;
+    background-color: $gray-100;
     @include border-radius(.125rem);
   }
 

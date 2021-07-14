@@ -1,4 +1,7 @@
 .bd-navbar {
+  --bs-gutter-x: 1.25rem;
+  --bs-gutter-y: 1.25rem;
+
   padding: .75rem 0;
   background-color: $bd-purple-bright;
 
@@ -28,5 +31,14 @@
   .navbar-nav-svg {
     width: 1rem;
     height: 1rem;
+  }
+
+  .offcanvas {
+    background-color: $bd-purple-bright;
+    border-left: 0;
+
+    @include media-breakpoint-down(md) {
+      box-shadow: $box-shadow-lg;
+    }
   }
 }
