@@ -37,7 +37,6 @@ const NAME = 'tooltip'
 const DATA_KEY = 'bs.tooltip'
 const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'bs-tooltip'
-const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn'])
 
 const DefaultType = {
@@ -273,7 +272,7 @@ class Tooltip extends BaseComponent {
 
     tip.classList.add(CLASS_NAME_SHOW)
 
-    const customClass = typeof this._config.customClass === 'function' ? this._config.customClass() : this._config.customClass
+    const customClass = this._parseMaybeFunction(this._config.customClass)
     if (customClass) {
       tip.classList.add(...customClass.split(' '))
     }
@@ -371,14 +370,27 @@ class Tooltip extends BaseComponent {
     const element = document.createElement('div')
     element.innerHTML = this._config.template
 
-    this.tip = element.children[0]
+    const tip = element.children[0]
+    tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
+
+    this.tip = tip
     return this.tip
   }
 
   setContent() {
     const tip = this.getTipElement()
-    this.setElementContent(SelectorEngine.findOne(SELECTOR_TOOLTIP_INNER, tip), this.getTitle())
-    tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
+    this._sanitizeAndSetContent(tip, this.getTitle(), SELECTOR_TOOLTIP_INNER)
+  }
+
+  _sanitizeAndSetContent(template, content, selector) {
+    const templateElement = SelectorEngine.findOne(selector, template)
+    if (!content) {
+      templateElement.remove()
+      return
+    }
+
+    // we use append for html objects to maintain js events
+    this.setElementContent(templateElement, content)
   }
 
   setElementContent(element, content) {
@@ -402,11 +414,11 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    if (this._config.html) {
-      if (this._config.sanitize) {
-        content = sanitizeHtml(content, this._config.allowList, this._config.sanitizeFn)
-      }
+    if (this._config.sanitize) {
+      content = sanitizeHtml(content, this._config.allowList, this._config.sanitizeFn)
+    }
 
+    if (this._config.html) {
       element.innerHTML = content
     } else {
       element.textContent = content
@@ -414,15 +426,9 @@ class Tooltip extends BaseComponent {
   }
 
   getTitle() {
-    let title = this._element.getAttribute('data-bs-original-title')
+    const title = this._element.getAttribute('data-bs-original-title') || this._config.title
 
-    if (!title) {
-      title = typeof this._config.title === 'function' ?
-        this._config.title.call(this._element) :
-        this._config.title
-    }
-
-    return title
+    return this._parseMaybeFunction(title)
   }
 
   updateAttachment(attachment) {
@@ -440,15 +446,7 @@ class Tooltip extends BaseComponent {
   // Private
 
   _initializeOnDelegatedTarget(event, context) {
-    const dataKey = this.constructor.DATA_KEY
-    context = context || Data.get(event.delegateTarget, dataKey)
-
-    if (!context) {
-      context = new this.constructor(event.delegateTarget, this._getDelegateConfig())
-      Data.set(event.delegateTarget, dataKey, context)
-    }
-
-    return context
+    return context || this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig())
   }
 
   _getOffset() {
@@ -463,6 +461,10 @@ class Tooltip extends BaseComponent {
     }
 
     return offset
+  }
+
+  _parseMaybeFunction(content) {
+    return typeof content === 'function' ? content.call(this._element) : content
   }
 
   _getPopperConfig(attachment) {
@@ -514,7 +516,7 @@ class Tooltip extends BaseComponent {
   }
 
   _addAttachmentClass(attachment) {
-    this.getTipElement().classList.add(`${CLASS_PREFIX}-${this.updateAttachment(attachment)}`)
+    this.getTipElement().classList.add(`${this._getBasicClassPrefix()}-${this.updateAttachment(attachment)}`)
   }
 
   _getAttachment(placement) {
@@ -684,26 +686,23 @@ class Tooltip extends BaseComponent {
   }
 
   _getDelegateConfig() {
-    const config = {}
+    const keysWithDifferentValues = Object.entries(this._config).filter(entry => this.constructor.Default[entry[0]] !== this._config[entry[0]])
 
-    if (this._config) {
-      for (const key in this._config) {
-        if (this.constructor.Default[key] !== this._config[key]) {
-          config[key] = this._config[key]
-        }
-      }
-    }
-
-    return config
+    return Object.fromEntries(keysWithDifferentValues)
   }
 
   _cleanTipClass() {
     const tip = this.getTipElement()
-    const tabClass = tip.getAttribute('class').match(BSCLS_PREFIX_REGEX)
+    const basicClassPrefixRegex = new RegExp(`(^|\\s)${this._getBasicClassPrefix()}\\S+`, 'g')
+    const tabClass = tip.getAttribute('class').match(basicClassPrefixRegex)
     if (tabClass !== null && tabClass.length > 0) {
       tabClass.map(token => token.trim())
         .forEach(tClass => tip.classList.remove(tClass))
     }
+  }
+
+  _getBasicClassPrefix() {
+    return CLASS_PREFIX
   }
 
   _handlePopperPlacementChange(popperData) {
