@@ -1,3 +1,4 @@
+{{ define "body_override" }}<body data-bs-spy="scroll" data-bs-offset="30" tabindex="0" data-bs-target="#TableOfContents">{{ end }}
 {{ define "main" }}
   {{ partial "docs-subnav" . }}
 
@@ -19,7 +20,7 @@
       {{ if (eq .Page.Params.toc true) }}
         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
-          {{ .TableOfContents }}
+          {{ .Page.TableOfContents  | replaceRE "(<li>)" "<li class=\"nav-item\">"  | replaceRE "(<ul>)" "<ul class=\"nav nav-pills flex-column\">" | replaceRE "(?s:href)" "class=\"nav-link\" href" |  safeHTML }}
         </div>
       {{ end }}
 

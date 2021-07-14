@@ -1,5 +1,3 @@
-// stylelint-disable selector-max-type
-
 .bd-toc {
   @include media-breakpoint-up(lg) {
     position: sticky;
@@ -10,29 +8,34 @@
     overflow-y: auto;
   }
 
-  nav {
+  .nav {
     @include font-size(.875rem);
 
     ul {
-      padding-left: 0;
-      list-style: none;
-
-      ul {
-        padding-left: 1rem;
-        margin-top: .25rem;
-      }
+      padding-left: 1rem;
     }
 
-    li {
-      margin-bottom: .25rem;
+    .nav-link {
+      padding: .125rem 0 .125rem .9rem;
+      margin-left: -1rem;
+      border-left: .1rem solid transparent;
+      @include border-radius(0);
+
+      &:hover,
+      &.active {
+        font-weight: 500;
+        color: $bd-purple;
+        background-color: transparent;
+        border-left-color: $bd-purple-light;
+      }
+      &.active {
+        padding-left: .8em;
+        border-left-width: .2em;
+      }
     }
 
     a {
       color: inherit;
-
-      &:not(:hover) {
-        text-decoration: none;
-      }
 
       code {
         font: inherit;
