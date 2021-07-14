@@ -42,7 +42,7 @@ module:
       target:           static/favicon.ico
 
 params:
-  description:          "The most popular HTML, CSS, and JS library in the world."
+  description:          "The most popular HTML, CSS, and JS framework in the world."
   authors:              "Mark Otto, Jacob Thornton, and Bootstrap contributors"
   social_image_path:    /docs/5.0/assets/brand/bootstrap-social.png
   social_logo_path:     /docs/5.0/assets/brand/bootstrap-social-logo.png
