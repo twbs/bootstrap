@@ -88,9 +88,11 @@
     - title: Colored links
     - title: Ratio
     - title: Position
+    - title: Stacks
     - title: Visually hidden
     - title: Stretched link
     - title: Text truncation
+    - title: Vertical rule
 
 - title: Utilities
   pages:
