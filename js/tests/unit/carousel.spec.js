@@ -303,23 +303,26 @@ describe('Carousel', () => {
       })
 
       expect(carousel._addTouchEventListeners).not.toHaveBeenCalled()
+      expect(carousel._swipeHelper).toBeNull()
     })
 
     it('should not add touch event listeners if touch supported = false', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const carouselEl = fixtureEl.querySelector('div')
+      delete document.documentElement.ontouchstart
+      Object.defineProperty(window.navigator, 'maxTouchPoints', () => 0)
 
       const carousel = new Carousel(carouselEl)
 
-      EventHandler.off(carouselEl, '.bs-carousel')
-      carousel._touchSupported = false
+      EventHandler.off(carouselEl, Carousel.EVENT_KEY)
 
       spyOn(carousel, '_addTouchEventListeners')
 
       carousel._addEventListeners()
 
       expect(carousel._addTouchEventListeners).not.toHaveBeenCalled()
+      expect(carousel._swipeHelper).toBeNull()
     })
 
     it('should add touch event listeners by default', () => {
@@ -568,7 +571,7 @@ describe('Carousel', () => {
       }, () => {
         restorePointerEvents()
         delete document.documentElement.ontouchstart
-        expect(carousel.touchDeltaX).toEqual(0)
+        expect(carousel._swipeHelper._xDown).toEqual(0)
         done()
       })
     })
@@ -1239,19 +1242,20 @@ describe('Carousel', () => {
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
       const addEventSpy = spyOn(carouselEl, 'addEventListener').and.callThrough()
-      const removeEventSpy = spyOn(carouselEl, 'removeEventListener').and.callThrough()
+      const removeEventSpy = spyOn(EventHandler, 'off').and.callThrough()
 
       // Headless browser does not support touch events, so need to fake it
       // to test that touch events are add/removed properly.
       document.documentElement.ontouchstart = () => {}
 
       const carousel = new Carousel(carouselEl)
+      const swipeHelperSpy= spyOn(carousel._swipeHelper, 'dispose').and.callThrough()
 
       const expectedArgs = [
         ['keydown', jasmine.any(Function), jasmine.any(Boolean)],
         ['mouseover', jasmine.any(Function), jasmine.any(Boolean)],
         ['mouseout', jasmine.any(Function), jasmine.any(Boolean)],
-        ...(carousel._pointerEvent ?
+        ...(carousel._swipeHelper._supportPointerEvents ?
           [
             ['pointerdown', jasmine.any(Function), jasmine.any(Boolean)],
             ['pointerup', jasmine.any(Function), jasmine.any(Boolean)]
@@ -1267,7 +1271,8 @@ describe('Carousel', () => {
 
       carousel.dispose()
 
-      expect(removeEventSpy.calls.allArgs()).toEqual(expectedArgs)
+      expect(removeEventSpy).toHaveBeenCalledWith(carouselEl, Carousel.EVENT_KEY)
+      expect(swipeHelperSpy).toHaveBeenCalled()
 
       delete document.documentElement.ontouchstart
     })
