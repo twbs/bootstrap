@@ -130,7 +130,7 @@
     "karma-detect-browsers": "^2.3.3",
     "karma-firefox-launcher": "^2.1.1",
     "karma-jasmine": "^4.0.1",
-    "karma-jasmine-html-reporter": "^1.6.0",
+    "karma-jasmine-html-reporter": "^1.7.0",
     "karma-rollup-preprocessor": "^7.0.7",
     "linkinator": "^2.14.0",
     "lockfile-lint": "^4.6.2",
