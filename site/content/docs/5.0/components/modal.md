@@ -18,8 +18,8 @@ Before getting started with Bootstrap's modal component, be sure to read the fol
 - Due to how HTML5 defines its semantics, [the `autofocus` HTML attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autofocus) has no effect in Bootstrap modals. To achieve the same effect, use some custom JavaScript:
 
 ```js
-var myModal = document.getElementById('myModal')
-var myInput = document.getElementById('myInput')
+const myModal = document.getElementById('myModal')
+const myInput = document.getElementById('myInput')
 
 myModal.addEventListener('shown.bs.modal', function () {
   myInput.focus()
@@ -478,18 +478,18 @@ Below is a live demo followed by example HTML and JavaScript. For more informati
 {{< /example >}}
 
 ```js
-var exampleModal = document.getElementById('exampleModal')
+const exampleModal = document.getElementById('exampleModal')
 exampleModal.addEventListener('show.bs.modal', function (event) {
   // Button that triggered the modal
-  var button = event.relatedTarget
+  const button = event.relatedTarget
   // Extract info from data-bs-* attributes
-  var recipient = button.getAttribute('data-bs-whatever')
+  const recipient = button.getAttribute('data-bs-whatever')
   // If necessary, you could initiate an AJAX request here
   // and then do the updating in a callback.
   //
   // Update the modal's content.
-  var modalTitle = exampleModal.querySelector('.modal-title')
-  var modalBodyInput = exampleModal.querySelector('.modal-body input')
+  const modalTitle = exampleModal.querySelector('.modal-title')
+  const modalBodyInput = exampleModal.querySelector('.modal-body input')
 
   modalTitle.textContent = 'New message to ' + recipient
   modalBodyInput.value = recipient
@@ -891,7 +891,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 Activates your content as a modal. Accepts an optional options `object`.
 
 ```js
-var myModal = new bootstrap.Modal(document.getElementById('myModal'), {
+const myModal = new bootstrap.Modal(document.getElementById('myModal'), {
   keyboard: false
 })
 ```
@@ -915,7 +915,7 @@ myModal.show()
 Also, you can pass a DOM element as an argument that can be received in the modal events (as the `relatedTarget` property).
 
 ```js
-var modalToggle = document.getElementById('toggleMyModal') // relatedTarget
+const modalToggle = document.getElementById('toggleMyModal') // relatedTarget
 myModal.show(modalToggle)
 ```
 
@@ -948,8 +948,8 @@ myModal.dispose()
 *Static* method which allows you to get the modal instance associated with a DOM element
 
 ```js
-var myModalEl = document.getElementById('myModal')
-var modal = bootstrap.Modal.getInstance(myModalEl) // Returns a Bootstrap modal instance
+const myModalEl = document.getElementById('myModal')
+const modal = bootstrap.Modal.getInstance(myModalEl) // Returns a Bootstrap modal instance
 ```
 
 #### getOrCreateInstance
@@ -957,8 +957,8 @@ var modal = bootstrap.Modal.getInstance(myModalEl) // Returns a Bootstrap modal 
 *Static* method which allows you to get the modal instance associated with a DOM element, or create a new one in case it wasn't initialised
 
 ```js
-var myModalEl = document.querySelector('#myModal')
-var modal = bootstrap.Modal.getOrCreateInstance(myModalEl) // Returns a Bootstrap modal instance
+const myModalEl = document.querySelector('#myModal')
+const modal = bootstrap.Modal.getOrCreateInstance(myModalEl) // Returns a Bootstrap modal instance
 ```
 
 ### Events
@@ -997,7 +997,7 @@ Bootstrap's modal class exposes a few events for hooking into modal functionalit
 </table>
 
 ```js
-var myModalEl = document.getElementById('myModal')
+const myModalEl = document.getElementById('myModal')
 myModalEl.addEventListener('hidden.bs.modal', function (event) {
   // do something...
 })

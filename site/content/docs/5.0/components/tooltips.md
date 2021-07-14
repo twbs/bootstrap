@@ -35,8 +35,8 @@ Got all that? Great, let's see how they work with some examples.
 One way to initialize all tooltips on a page would be to select them by their `data-bs-toggle` attribute:
 
 ```js
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 ```
@@ -109,8 +109,8 @@ The tooltip plugin generates content and markup on demand, and by default places
 Trigger the tooltip via JavaScript:
 
 ```js
-var exampleEl = document.getElementById('example')
-var tooltip = new bootstrap.Tooltip(exampleEl, options)
+const exampleEl = document.getElementById('example')
+const tooltip = new bootstrap.Tooltip(exampleEl, options)
 ```
 
 {{< callout warning >}}
@@ -119,8 +119,8 @@ var tooltip = new bootstrap.Tooltip(exampleEl, options)
 Tooltip position attempts to automatically change when a **parent container** has `overflow: auto` or `overflow: scroll` like our `.table-responsive`, but still keeps the original placement's positioning. To resolve this, set the [`boundary` option](https://popper.js.org/docs/v2/modifiers/flip/#boundary) (for the flip modifier using the `popperConfig` option) to any HTMLElement to override the default value, `'clippingParents'`, such as `document.body`:
 
 ```js
-var exampleEl = document.getElementById('example')
-var tooltip = new bootstrap.Tooltip(exampleEl, {
+const exampleEl = document.getElementById('example')
+const tooltip = new bootstrap.Tooltip(exampleEl, {
   boundary: document.body // or document.querySelector('#boundary')
 })
 ```
@@ -329,9 +329,9 @@ Options for individual tooltips can alternatively be specified through the use o
 #### Using function with `popperConfig`
 
 ```js
-var tooltip = new bootstrap.Tooltip(element, {
+const tooltip = new bootstrap.Tooltip(element, {
   popperConfig: function (defaultBsPopperConfig) {
-    // var newPopperConfig = {...}
+    // const newPopperConfig = {...}
     // use defaultBsPopperConfig if needed...
     // return newPopperConfig
   }
@@ -413,8 +413,8 @@ tooltip.update()
 *Static* method which allows you to get the tooltip instance associated with a DOM element
 
 ```js
-var exampleTriggerEl = document.getElementById('example')
-var tooltip = bootstrap.Tooltip.getInstance(exampleTriggerEl) // Returns a Bootstrap tooltip instance
+const exampleTriggerEl = document.getElementById('example')
+const tooltip = bootstrap.Tooltip.getInstance(exampleTriggerEl) // Returns a Bootstrap tooltip instance
 ```
 
 #### getOrCreateInstance
@@ -422,8 +422,8 @@ var tooltip = bootstrap.Tooltip.getInstance(exampleTriggerEl) // Returns a Boots
 *Static* method which allows you to get the tooltip instance associated with a DOM element, or create a new one in case it wasn't initialised
 
 ```js
-var exampleTriggerEl = document.getElementById('example')
-var tooltip = bootstrap.Tooltip.getOrCreateInstance(exampleTriggerEl) // Returns a Bootstrap tooltip instance
+const exampleTriggerEl = document.getElementById('example')
+const tooltip = bootstrap.Tooltip.getOrCreateInstance(exampleTriggerEl) // Returns a Bootstrap tooltip instance
 ```
 
 ### Events
@@ -460,8 +460,8 @@ var tooltip = bootstrap.Tooltip.getOrCreateInstance(exampleTriggerEl) // Returns
 </table>
 
 ```js
-var myTooltipEl = document.getElementById('myTooltip')
-var tooltip = new bootstrap.Tooltip(myTooltipEl)
+const myTooltipEl = document.getElementById('myTooltip')
+const tooltip = new bootstrap.Tooltip(myTooltipEl)
 
 myTooltipEl.addEventListener('hidden.bs.tooltip', function () {
   // do something...

@@ -201,8 +201,8 @@ Add `data-bs-toggle="offcanvas"` and a `data-bs-target` or `href` to the element
 Enable manually with:
 
 ```js
-var offcanvasElementList = [].slice.call(document.querySelectorAll('.offcanvas'))
-var offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
+const offcanvasElementList = [].slice.call(document.querySelectorAll('.offcanvas'))
+const offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
   return new bootstrap.Offcanvas(offcanvasEl)
 })
 ```
@@ -230,8 +230,8 @@ Activates your content as an offcanvas element. Accepts an optional options `obj
 You can create an offcanvas instance with the constructor, for example:
 
 ```js
-var myOffcanvas = document.getElementById('myOffcanvas')
-var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
+const myOffcanvas = document.getElementById('myOffcanvas')
+const bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
 ```
 
 {{< bs-table "table" >}}
@@ -258,7 +258,7 @@ Bootstrap's offcanvas class exposes a few events for hooking into offcanvas func
 {{< /bs-table >}}
 
 ```js
-var myOffcanvas = document.getElementById('myOffcanvas')
+const myOffcanvas = document.getElementById('myOffcanvas')
 myOffcanvas.addEventListener('hidden.bs.offcanvas', function () {
   // do something...
 })
