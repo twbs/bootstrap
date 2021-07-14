@@ -20,7 +20,7 @@ const DefaultType = {
   className: 'string',
   isVisible: 'boolean',
   isAnimated: 'boolean',
-  rootElement: '(element|string)',
+  rootElement: 'element',
   clickCallback: '(function|null)'
 }
 const NAME = 'backdrop'

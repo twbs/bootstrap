@@ -714,6 +714,28 @@ describe('Modal', () => {
     })
   })
 
+  describe('config rootElement', () => {
+    it('should append backdrop to root element', done => {
+      fixtureEl.innerHTML = [
+        '<div id="modal-root">',
+        '   <div class="modal"><div class="modal-dialog"></div></div>',
+        '</div>'
+      ].join('')
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const rootElement = fixtureEl.querySelector('#modal-root')
+      const modal = new Modal(modalEl, { rootElement })
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(fixtureEl.querySelector('.modal-open')).toEqual(rootElement)
+        expect(rootElement.querySelector('.modal-backdrop')).not.toBeNull()
+        done()
+      })
+
+      modal.show()
+    })
+  })
+
   describe('handleUpdate', () => {
     it('should call adjust dialog', () => {
       fixtureEl.innerHTML = '<div id="exampleModal" class="modal"><div class="modal-dialog"></div></div>'
