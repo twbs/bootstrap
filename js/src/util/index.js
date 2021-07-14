@@ -299,7 +299,26 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
   return list[Math.max(0, Math.min(index, listLength - 1))]
 }
 
+const focusableChildren = element => {
+  const focusables = [
+    'a',
+    'button',
+    'input',
+    'textarea',
+    'area',
+    'select',
+    'details',
+    '[tabindex]',
+    '[contenteditable="true"]'
+  ].map(selector => `${selector}:not([tabindex^="-"])`).join(', ')
+
+  return SelectorEngine.find(focusables, element).filter(el => {
+    return !isDisabled(el) && isVisible(el)
+  })
+}
+
 export {
+  focusableChildren,
   getElement,
   getUID,
   getSelectorFromElement,
