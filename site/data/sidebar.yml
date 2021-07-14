@@ -75,6 +75,7 @@
     - title: Navbar
     - title: Offcanvas
     - title: Pagination
+    - title: Placeholders
     - title: Popovers
     - title: Progress
     - title: Scrollspy
