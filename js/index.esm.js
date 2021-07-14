@@ -17,6 +17,7 @@ import ScrollSpy from './src/scrollspy'
 import Tab from './src/tab'
 import Toast from './src/toast'
 import Tooltip from './src/tooltip'
+import * as domUtils from './src/dom/index'
 
 export {
   Alert,
@@ -30,5 +31,6 @@ export {
   ScrollSpy,
   Tab,
   Toast,
-  Tooltip
+  Tooltip,
+  domUtils
 }
