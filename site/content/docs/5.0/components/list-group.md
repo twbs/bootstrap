@@ -504,32 +504,14 @@ When showing a new tab, the events fire in the following order:
 
 If no tab was already active, the `hide.bs.tab` and `hidden.bs.tab` events will not be fired.
 
-<table class="table">
-  <thead>
-    <tr>
-      <th style="width: 150px;">Event type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>show.bs.tab</code></td>
-      <td>This event fires on tab show, but before the new tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
-    </tr>
-    <tr>
-      <td><code>shown.bs.tab</code></td>
-      <td>This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
-    </tr>
-    <tr>
-      <td><code>hide.bs.tab</code></td>
-      <td>This event fires when a new tab is to be shown (and thus the previous active tab is to be hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the current active tab and the new soon-to-be-active tab, respectively.</td>
-    </tr>
-    <tr>
-      <td><code>hidden.bs.tab</code></td>
-      <td>This event fires after a new tab is shown (and thus the previous active tab is hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the previous active tab and the new active tab, respectively.</td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table >}}
+| Event type | Description |
+| --- | --- |
+| `show.bs.tab` | This event fires on tab show, but before the new tab has been shown. Use `event.target` and `event.relatedTarget` to target the active tab and the previous active tab (if available) respectively. |
+| `shown.bs.tab` | This event fires on tab show after a tab has been shown. Use `event.target` and `event.relatedTarget` to target the active tab and the previous active tab (if available) respectively. |
+| `hide.bs.tab` | This event fires when a new tab is to be shown (and thus the previous active tab is to be hidden). Use `event.target` and `event.relatedTarget` to target the current active tab and the new soon-to-be-active tab, respectively. |
+| `hidden.bs.tab` | This event fires after a new tab is shown (and thus the previous active tab is hidden). Use `event.target` and `event.relatedTarget` to target the previous active tab and the new active tab, respectively. |
+{{< /bs-table >}}
 
 ```js
 var tabElms = document.querySelectorAll('a[data-bs-toggle="list"]')

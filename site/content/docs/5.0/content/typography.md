@@ -22,52 +22,16 @@ These styles can be found within `_reboot.scss`, and the global variables are de
 
 All HTML headings, `<h1>` through `<h6>`, are available.
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Heading</th>
-      <th>Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        {{< markdown >}}`<h1></h1>`{{< /markdown >}}
-      </td>
-      <td><span class="h1">h1. Bootstrap heading</span></td>
-    </tr>
-    <tr>
-      <td>
-        {{< markdown >}}`<h2></h2>`{{< /markdown >}}
-      </td>
-      <td><span class="h2">h2. Bootstrap heading</span></td>
-    </tr>
-    <tr>
-      <td>
-        {{< markdown >}}`<h3></h3>`{{< /markdown >}}
-      </td>
-      <td><span class="h3">h3. Bootstrap heading</span></td>
-    </tr>
-    <tr>
-      <td>
-        {{< markdown >}}`<h4></h4>`{{< /markdown >}}
-      </td>
-      <td><span class="h4">h4. Bootstrap heading</span></td>
-    </tr>
-    <tr>
-      <td>
-        {{< markdown >}}`<h5></h5>`{{< /markdown >}}
-      </td>
-      <td><span class="h5">h5. Bootstrap heading</span></td>
-    </tr>
-    <tr>
-      <td>
-        {{< markdown >}}`<h6></h6>`{{< /markdown >}}
-      </td>
-      <td><span class="h6">h6. Bootstrap heading</span></td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table >}}
+| Heading | Example |
+| --- | --- |
+| `<h1></h1>` | <span class="h1">h1. Bootstrap heading</span> |
+| `<h2></h2>` | <span class="h2">h2. Bootstrap heading</span> |
+| `<h3></h3>` | <span class="h3">h3. Bootstrap heading</span> |
+| `<h4></h4>` | <span class="h4">h4. Bootstrap heading</span> |
+| `<h5></h5>` | <span class="h5">h5. Bootstrap heading</span> |
+| `<h6></h6>` | <span class="h6">h6. Bootstrap heading</span> |
+{{< /bs-table >}}
 
 ```html
 <h1>h1. Bootstrap heading</h1>

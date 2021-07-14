@@ -660,40 +660,16 @@ Our default modal without modifier class constitutes the "medium" size modal.
 
 Another override is the option to pop up a modal that covers the user viewport, available via modifier classes that are placed on a `.modal-dialog`.
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Class</th>
-      <th>Availability</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>.modal-fullscreen</code></td>
-      <td>Always</td>
-    </tr>
-    <tr>
-      <td><code>.modal-fullscreen-sm-down</code></td>
-      <td>Below <code>576px</code></td>
-    </tr>
-    <tr>
-      <td><code>.modal-fullscreen-md-down</code></td>
-      <td>Below <code>768px</code></td>
-    </tr>
-    <tr>
-      <td><code>.modal-fullscreen-lg-down</code></td>
-      <td>Below <code>992px</code></td>
-    </tr>
-    <tr>
-      <td><code>.modal-fullscreen-xl-down</code></td>
-      <td>Below <code>1200px</code></td>
-    </tr>
-    <tr>
-      <td><code>.modal-fullscreen-xxl-down</code></td>
-      <td>Below <code>1400px</code></td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table >}}
+| Class | Availability |
+| --- | --- | --- |
+| `.modal-fullscreen` | Always |
+| `.modal-fullscreen-sm-down` | `576px` |
+| `.modal-fullscreen-md-down` | `768px` |
+| `.modal-fullscreen-lg-down` | `992px` |
+| `.modal-fullscreen-xl-down` | `1200px` |
+| `.modal-fullscreen-xxl-down` | `1400px` |
+{{< /bs-table >}}
 
 <div class="bd-example">
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen">Full screen</button>
@@ -849,36 +825,13 @@ var myModal = new bootstrap.Modal(document.getElementById('myModal'), options)
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-backdrop=""`.
 
-<table class="table">
-  <thead>
-    <tr>
-      <th style="width: 100px;">Name</th>
-      <th style="width: 50px;">Type</th>
-      <th style="width: 50px;">Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>backdrop</code></td>
-      <td>boolean or the string <code>'static'</code></td>
-      <td><code>true</code></td>
-      <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.</td>
-    </tr>
-    <tr>
-      <td><code>keyboard</code></td>
-      <td>boolean</td>
-      <td><code>true</code></td>
-      <td>Closes the modal when escape key is pressed</td>
-    </tr>
-    <tr>
-      <td><code>focus</code></td>
-      <td>boolean</td>
-      <td><code>true</code></td>
-      <td>Puts the focus on the modal when initialized.</td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table "table bs-js-table" >}}
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `backdrop` | boolean, `'static'` | `true` | Includes a modal-backdrop element. Alternatively, specify `static` for a backdrop which doesn't close the modal on click. |
+| `keyboard` | boolean | `true` | Closes the modal when escape key is pressed. |
+| `focus` | boolean | `true` | Puts the focus on the modal when initialized. |
+{{< /bs-table >}}
 
 ### Methods
 
@@ -896,105 +849,31 @@ var myModal = new bootstrap.Modal(document.getElementById('myModal'), {
 })
 ```
 
-#### toggle
-
-Manually toggles a modal. **Returns to the caller before the modal has actually been shown or hidden** (i.e. before the `shown.bs.modal` or `hidden.bs.modal` event occurs).
-
-```js
-myModal.toggle()
-```
-
-#### show
-
-Manually opens a modal. **Returns to the caller before the modal has actually been shown** (i.e. before the `shown.bs.modal` event occurs).
-
-```js
-myModal.show()
-```
-
-Also, you can pass a DOM element as an argument that can be received in the modal events (as the `relatedTarget` property).
-
-```js
-var modalToggle = document.getElementById('toggleMyModal') // relatedTarget
-myModal.show(modalToggle)
-```
-
-#### hide
-
-Manually hides a modal. **Returns to the caller before the modal has actually been hidden** (i.e. before the `hidden.bs.modal` event occurs).
-
-```js
-myModal.hide()
-```
-
-#### handleUpdate
-
-Manually readjust the modal's position if the height of a modal changes while it is open (i.e. in case a scrollbar appears).
-
-```js
-myModal.handleUpdate()
-```
-
-#### dispose
-
-Destroys an element's modal. (Removes stored data on the DOM element)
-
-```js
-myModal.dispose()
-```
-
-#### getInstance
-
-*Static* method which allows you to get the modal instance associated with a DOM element
-
-```js
-var myModalEl = document.getElementById('myModal')
-var modal = bootstrap.Modal.getInstance(myModalEl) // Returns a Bootstrap modal instance
-```
-
-#### getOrCreateInstance
-
-*Static* method which allows you to get the modal instance associated with a DOM element, or create a new one in case it wasn't initialised
-
-```js
-var myModalEl = document.querySelector('#myModal')
-var modal = bootstrap.Modal.getOrCreateInstance(myModalEl) // Returns a Bootstrap modal instance
-```
+{{< bs-table "table bs-js-table" >}}
+| Method | Description |
+| --- | --- |
+| `toggle` | Manually toggles a modal. **Returns to the caller before the modal has actually been shown or hidden** (i.e. before the `shown.bs.modal` or `hidden.bs.modal` event occurs). |
+| `show` | Manually opens a modal. **Returns to the caller before the modal has actually been shown** (i.e. before the `shown.bs.modal` event occurs). Also, you can pass a DOM element as an argument that can be received in the modal events (as the `relatedTarget` property). (i.e. `var modalToggle = document.getElementById('toggleMyModal'); myModal.show(modalToggle)` |
+| `hide` | Manually hides a modal. **Returns to the caller before the modal has actually been hidden** (i.e. before the `hidden.bs.modal` event occurs). |
+| `handleUpdate` | Manually readjust the modal's position if the height of a modal changes while it is open (i.e. in case a scrollbar appears). |
+| `dispose` | Destroys an element's modal. (Removes stored data on the DOM element) |
+| `getInstance` | *Static* method which allows you to get the modal instance associated with a DOM element. |
+| `getOrCreateInstance` | *Static* method which allows you to get the modal instance associated with a DOM element, or create a new one in case it wasn't initialised. |
+{{< /bs-table >}}
 
 ### Events
 
 Bootstrap's modal class exposes a few events for hooking into modal functionality. All modal events are fired at the modal itself (i.e. at the `<div class="modal">`).
 
-<table class="table">
-  <thead>
-    <tr>
-      <th style="width: 150px;">Event type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>show.bs.modal</code></td>
-      <td>This event fires immediately when the <code>show</code> instance method is called. If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
-    </tr>
-    <tr>
-      <td><code>shown.bs.modal</code></td>
-      <td>This event is fired when the modal has been made visible to the user (will wait for CSS transitions to complete). If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
-    </tr>
-    <tr>
-      <td><code>hide.bs.modal</code></td>
-      <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
-    </tr>
-    <tr>
-      <td><code>hidden.bs.modal</code></td>
-      <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
-    </tr>
-    <tr>
-      <td><code>hidePrevented.bs.modal</code></td>
-      <td>This event is fired when the modal is shown, its backdrop is <code>static</code> and a click outside the modal or an escape key press is performed with the keyboard option or <code>data-bs-keyboard</code> set to <code>false</code>.</td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table >}}
+| Event | Description |
+| --- | --- |
+| `show.bs.modal` | This event fires immediately when the `show` instance method is called. If caused by a click, the clicked element is available as the `relatedTarget` property of the event. |
+| `shown.bs.modal` | This event is fired when the modal has been made visible to the user (will wait for CSS transitions to complete). If caused by a click, the clicked element is available as the `relatedTarget` property of the event. |
+| `hide.bs.modal` | This event is fired immediately when the `hide` instance method has been called. |
+| `hidden.bs.modal` | This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete). |
+| `hidePrevented.bs.modal` | This event is fired when the modal is shown, its backdrop is `static` and a click outside the modal or an escape key press is performed with the keyboard option or `data-bs-keyboard` set to `false`. |
+{{< /bs-table >}}
 
 ```js
 var myModalEl = document.getElementById('myModal')
