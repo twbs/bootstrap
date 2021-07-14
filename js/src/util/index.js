@@ -1,4 +1,3 @@
-import SelectorEngine from '../dom/selector-engine'
 
 /**
  * --------------------------------------------------------------------------
@@ -120,7 +119,7 @@ const getElement = obj => {
   }
 
   if (typeof obj === 'string' && obj.length > 0) {
-    return SelectorEngine.findOne(obj)
+    return document.querySelector(obj)
   }
 
   return null
