@@ -69,11 +69,6 @@
     // .row-cols defaults must all appear before .col overrides so they can be overridden.
     $infix: breakpoint-infix($breakpoint, $breakpoints);
     @include media-breakpoint-up($breakpoint, $breakpoints) {
-      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
-      .col#{$infix} {
-        flex: 1 0 0%; // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
-      }
-
       .row-cols#{$infix}-auto > * {
         @include make-col-auto();
       }
@@ -92,6 +87,11 @@
     $infix: breakpoint-infix($breakpoint, $breakpoints);
 
     @include media-breakpoint-up($breakpoint, $breakpoints) {
+      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+      .col#{$infix} {
+        flex: 1 0 0%; // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+      }
+
       .col#{$infix}-auto {
         @include make-col-auto();
       }
