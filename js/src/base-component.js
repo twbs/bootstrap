@@ -45,6 +45,18 @@ class BaseComponent {
     executeAfterTransition(callback, element, isAnimated)
   }
 
+  on(event, handler) {
+    this._element.addEventListener(`${event}.${this.constructor.DATA_KEY}`, handler)
+
+    return this
+  }
+
+  off(event, handler) {
+    this._element.removeEventListener(`${event}.${this.constructor.DATA_KEY}`, handler)
+
+    return this
+  }
+
   /** Static */
 
   static getInstance(element) {
