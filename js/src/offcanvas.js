@@ -18,6 +18,7 @@ import BaseComponent from './base-component'
 import SelectorEngine from './dom/selector-engine'
 import Manipulator from './dom/manipulator'
 import Backdrop from './util/backdrop'
+import { enableDismissTrigger } from './util/component-functions'
 
 /**
  * ------------------------------------------------------------------------
@@ -54,10 +55,8 @@ const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_FOCUSIN = `focusin${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
-const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
 const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
 
-const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="offcanvas"]'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="offcanvas"]'
 
 /**
@@ -199,8 +198,6 @@ class Offcanvas extends BaseComponent {
   }
 
   _addEventListeners() {
-    EventHandler.on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, () => this.hide())
-
     EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS, event => {
       if (this._config.keyboard && event.key === ESCAPE_KEY) {
         this.hide()
@@ -265,6 +262,7 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () =>
   SelectorEngine.find(OPEN_SELECTOR).forEach(el => Offcanvas.getOrCreateInstance(el).show())
 )
 
+enableDismissTrigger(Offcanvas)
 /**
  * ------------------------------------------------------------------------
  * jQuery
