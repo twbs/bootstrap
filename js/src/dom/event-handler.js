@@ -26,6 +26,7 @@ const customEventsRegex = /^(mouseenter|mouseleave)/i
 const nativeEvents = new Set([
   'click',
   'dblclick',
+  'input',
   'mouseup',
   'mousedown',
   'contextmenu',

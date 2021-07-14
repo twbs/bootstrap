@@ -9,6 +9,7 @@ import Alert from './src/alert'
 import Button from './src/button'
 import Carousel from './src/carousel'
 import Collapse from './src/collapse'
+import FormValidation from './src/forms/form-validation'
 import Dropdown from './src/dropdown'
 import Modal from './src/modal'
 import Offcanvas from './src/offcanvas'
@@ -24,6 +25,7 @@ export {
   Carousel,
   Collapse,
   Dropdown,
+  FormValidation,
   Modal,
   Offcanvas,
   Popover,
