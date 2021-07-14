@@ -12,16 +12,18 @@ Bootstrap utilities are generated with our utility API and can be used to modify
 The `$utilities` map contains all our utilities and is later merged with your custom `$utilities` map, if present. The utility map contains a keyed list of utility groups which accept the following options:
 
 {{< bs-table "table text-start" >}}
-| Option | Type | Description |
-| --- | --- | --- |
-| `property` | **Required** | Name of the property, this can be a string or an array of strings (e.g., horizontal paddings or margins). |
-| `values` | **Required** | List of values, or a map if you don't want the class name to be the same as the value. If `null` is used as map key, it isn't compiled. |
-| `class` | Optional | Variable for the class name if you don't want it to be the same as the property. In case you don't provide the `class` key and `property` key is an array of strings, the class name will be the first element of the `property` array. |
-| `state` | Optional | List of pseudo-class variants like `:hover` or `:focus` to generate for the utility. No default value. |
-| `responsive` | Optional | Boolean indicating if responsive classes need to be generated. `false` by default. |
-| `rfs` | Optional | Boolean to enable fluid rescaling. Have a look at the [RFS]({{< docsref "/getting-started/rfs" >}}) page to find out how this works. `false` by default. |
-| `print` | Optional | Boolean indicating if print classes need to be generated. `false` by default. |
-| `rtl` | Optional | Boolean indicating if utility should be kept in RTL. `true` by default. |
+| Option | Type | Default&nbsp;value | Description |
+| --- | --- | --- | --- |
+| [`property`](#property) | **Required** | – | Name of the property, this can be a string or an array of strings (e.g., horizontal paddings or margins). |
+| [`values`](#values) | **Required** | – | List of values, or a map if you don't want the class name to be the same as the value. If `null` is used as map key, it isn't compiled. |
+| [`class`](#class) | Optional | null | Name of the generated class. If not provided and `property` is an array of strings, `class` will default to the first element of the `property` array. |
+| [`css-var`](#css-variable-utilities) | Optional | `false` | Boolean to generate CSS variables instead of CSS rules. |
+| [`local-vars`](#local-css-variables) | Optional | null | Map of local CSS variables to generate in addition to the CSS rules. |
+| [`state`](#states) | Optional | null | List of pseudo-class variants (e.g., `:hover` or `:focus`) to generate. |
+| [`responsive`](#responsive) | Optional | `false` | Boolean indicating if responsive classes should be generated. |
+| `rfs` | Optional | `false` | Boolean to enable [fluid rescaling with RFS]({{< docsref "/getting-started/rfs" >}}). |
+| [`print`](#print) | Optional | `false` | Boolean indicating if print classes need to be generated. |
+| `rtl` | Optional | `true` | Boolean indicating if utility should be kept in RTL. |
 {{< /bs-table >}}
 
 ## API explained
@@ -40,7 +42,7 @@ $utilities: (
       100: 1,
     )
   )
- );
+);
 ```
 
 Which outputs the following:
@@ -53,9 +55,58 @@ Which outputs the following:
 .opacity-100 { opacity: 1; }
 ```
 
-### Custom class prefix
+### Property
 
-Use the `class` option to change the class prefix used in the compiled CSS:
+The required `property` key must be set for any utility, and it must contain a valid CSS property. This property is used in the generated utility's ruleset. When the `class` key is omitted, it also serves as the default class name. Consider the `text-decoration` utility:
+
+```scss
+$utilities: (
+  "text-decoration": (
+    property: text-decoration,
+    values: none underline line-through
+  )
+);
+```
+
+Output:
+
+```css
+.text-decoration-none { text-decoration: none !important; }
+.text-decoration-underline { text-decoration: underline !important; }
+.text-decoration-line-through { text-decoration: line-through !important; }
+```
+
+### Values
+
+Use the `values` key to specify which values for the specified `property` should be used in the generated class names and rules. Can be a list or map (set in the utilities or in a Sass variable).
+
+As a list, like with [`text-decoration` utilities]({{< docsref "/utilities/text#text-decoration" >}}):
+
+```scss
+values: none underline line-through
+```
+
+As a map, like with [`opacity` utilities]({{< docsref "/utilities/opacity" >}}):
+
+```scss
+values: (
+  0: 0,
+  25: .25,
+  50: .5,
+  75: .75,
+  100: 1,
+)
+```
+
+As a Sass variable that sets the list or map, as in our [`position` utilities]({{< docsref "/utilities/position" >}}):
+
+```scss
+values: $position-values
+```
+
+### Class
+
+Use the `class` option to change the class prefix used in the compiled CSS. For example, to change from `.opacity-*` to `.o-*`:
 
 ```scss
 $utilities: (
@@ -70,17 +121,76 @@ $utilities: (
       100: 1,
     )
   )
- );
+);
 ```
 
 Output:
 
 ```css
-.o-0 { opacity: 0; }
-.o-25 { opacity: .25; }
-.o-50 { opacity: .5; }
-.o-75 { opacity: .75; }
-.o-100 { opacity: 1; }
+.o-0 { opacity: 0 !important; }
+.o-25 { opacity: .25 !important; }
+.o-50 { opacity: .5 !important; }
+.o-75 { opacity: .75 !important; }
+.o-100 { opacity: 1 !important; }
+```
+
+### CSS variable utilities
+
+Set the `css-var` boolean option to `true` and the API will generate local CSS variables for the given selector instead of the usual `property: value` rules. Consider our `.text-opacity-*` utilities:
+
+```scss
+$utilities: (
+  "text-opacity": (
+    css-var: true,
+    class: text-opacity,
+    values: (
+      25: .25,
+      50: .5,
+      75: .75,
+      100: 1
+    )
+  ),
+);
+```
+
+Output:
+
+```css
+.text-opacity-25 { --bs-text-opacity: .25; }
+.text-opacity-50 { --bs-text-opacity: .5; }
+.text-opacity-75 { --bs-text-opacity: .75; }
+.text-opacity-100 { --bs-text-opacity: 1; }
+```
+
+### Local CSS variables
+
+Use the `local-vars` option to specify a Sass map that will generate local CSS variables within the utility class's ruleset. Please note that it may require additional work to consume those local CSS variables in the generated CSS rules. For example, consider our `.bg-*` utilities:
+
+```scss
+$utilities: (
+  "background-color": (
+    property: background-color,
+    class: bg,
+    local-vars: (
+      "bg-opacity": 1
+    ),
+    values: map-merge(
+      $utilities-bg-colors,
+      (
+        "transparent": transparent
+      )
+    )
+  )
+);
+```
+
+Output:
+
+```css
+.bg-primary {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
+}
 ```
 
 ### States
@@ -116,7 +226,7 @@ Output:
 .opacity-100-hover:hover { opacity: 1 !important; }
 ```
 
-### Responsive utilities
+### Responsive
 
 Add the `responsive` boolean to generate responsive utilities (e.g., `.opacity-md-25`) across [all breakpoints]({{< docsref "/layout/breakpoints" >}}).
 
@@ -133,7 +243,7 @@ $utilities: (
       100: 1,
     )
   )
- );
+);
 ```
 
 Output:
@@ -186,21 +296,7 @@ Output:
 }
 ```
 
-### Changing utilities
-
-Override existing utilities by using the same key. For example, if you want additional responsive overflow utility classes, you can do this:
-
-```scss
-$utilities: (
-  "overflow": (
-    responsive: true,
-    property: overflow,
-    values: visible hidden scroll auto,
-  ),
-);
-```
-
-### Print utilities
+### Print
 
 Enabling the `print` option will **also** generate utility classes for print, which are only applied within the `@media print { ... }` media query.
 
@@ -217,7 +313,7 @@ $utilities: (
       100: 1,
     )
   )
- );
+);
 ```
 
 Output:
@@ -245,6 +341,20 @@ All utilities generated by the API include `!important` to ensure they override 
 ## Using the API
 
 Now that you're familiar with how the utilities API works, learn how to add your own custom classes and modify our default utilities.
+
+### Override utilities
+
+Override existing utilities by using the same key. For example, if you want additional responsive overflow utility classes, you can do this:
+
+```scss
+$utilities: (
+  "overflow": (
+    responsive: true,
+    property: overflow,
+    values: visible hidden scroll auto,
+  ),
+);
+```
 
 ### Add utilities
 
