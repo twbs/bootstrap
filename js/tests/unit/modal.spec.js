@@ -249,13 +249,40 @@ describe('Modal', () => {
       modal.show()
     })
 
-    it('should close modal when a click occurred on data-bs-dismiss="modal"', done => {
+    it('should close modal when a click occurred on data-bs-dismiss="modal" inside modal', done => {
       fixtureEl.innerHTML = [
         '<div class="modal fade">',
         '  <div class="modal-dialog">',
         '    <div class="modal-header">',
         '      <button type="button" data-bs-dismiss="modal"></button>',
         '    </div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const btnClose = fixtureEl.querySelector('[data-bs-dismiss="modal"]')
+      const modal = new Modal(modalEl)
+
+      spyOn(modal, 'hide').and.callThrough()
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        btnClose.click()
+      })
+
+      modalEl.addEventListener('hidden.bs.modal', () => {
+        expect(modal.hide).toHaveBeenCalled()
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should close modal when a click occurred on a data-bs-dismiss="modal" with "bs-target" outside of modal element', done => {
+      fixtureEl.innerHTML = [
+        '<button type="button" data-bs-dismiss="modal" data-bs-target="#modal1"></button>',
+        '<div id="modal1" class="modal fade">',
+        '  <div class="modal-dialog">',
         '  </div>',
         '</div>'
       ].join('')
