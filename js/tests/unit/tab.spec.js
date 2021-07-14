@@ -1,7 +1,7 @@
 import Tab from '../../src/tab'
 
 /** Test helpers */
-import { getFixture, clearFixture, jQueryMock } from '../helpers/fixture'
+import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Tab', () => {
   let fixtureEl
@@ -33,6 +33,20 @@ describe('Tab', () => {
 
       expect(tabBySelector._element).toEqual(tabEl)
       expect(tabByElement._element).toEqual(tabEl)
+    })
+  })
+
+  describe('constructor', () => {
+    it('Throw exception if not parent', () => {
+      fixtureEl.innerHTML = [
+        fixtureEl.innerHTML = '<div class=""><div class="nav-link"></div></div>'
+      ].join('')
+      const navEl = fixtureEl.querySelector('.nav-link')
+
+      expect(() => {
+        // eslint-disable-next-line no-new
+        new Tab(navEl)
+      }).toThrowError(TypeError)
     })
   })
 
@@ -149,9 +163,9 @@ describe('Tab', () => {
     })
 
     it('should not fire shown when show is prevented', done => {
-      fixtureEl.innerHTML = '<div class="nav"></div>'
+      fixtureEl.innerHTML = '<div class="nav"><div class="nav-link"></div></div>'
 
-      const navEl = fixtureEl.querySelector('div')
+      const navEl = fixtureEl.querySelector('.nav > div')
       const tab = new Tab(navEl)
       const expectDone = () => {
         setTimeout(() => {
@@ -231,7 +245,7 @@ describe('Tab', () => {
       fixtureEl.innerHTML = [
         '<ul class="nav" role="tablist">',
         '  <li><button type="button" data-bs-target="#home" role="tab">Home</button></li>',
-        '  <li><button type="button" data-bs-target="#profile">Profile</button></li>',
+        '  <li><button type="button" data-bs-target="#profile" role="tab">Profile</button></li>',
         '</ul>'
       ].join('')
 
@@ -344,10 +358,10 @@ describe('Tab', () => {
 
   describe('dispose', () => {
     it('should dispose a tab', () => {
-      fixtureEl.innerHTML = '<div></div>'
+      fixtureEl.innerHTML = '<div class="nav"><div class="nav-link"></div></div>'
 
-      const el = fixtureEl.querySelector('div')
-      const tab = new Tab(fixtureEl.querySelector('div'))
+      const el = fixtureEl.querySelector('.nav > div')
+      const tab = new Tab(fixtureEl.querySelector('.nav > div'))
 
       expect(Tab.getInstance(el)).not.toBeNull()
 
@@ -357,11 +371,122 @@ describe('Tab', () => {
     })
   })
 
+  describe('_activate', () => {
+    it('should not be called if element argument is null', () => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav" role="tablist">',
+        '  <li class="nav-link"></li>',
+        '</ul>'
+      ].join('')
+
+      const tabEl = fixtureEl.querySelector('.nav-link')
+      const tab = new Tab(tabEl)
+      const spy = jasmine.createSpy('spy')
+
+      spyOn(tab, '_queueCallback')
+      tab._activate(null, spy)
+      expect(tab._queueCallback).not.toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('_setInitialAttributes', () => {
+    it('should put aria attributes', () => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav">',
+        '  <li class="nav-link" data-bs-target="#test"></li>',
+        '</ul>',
+        '<div id="test"></div>'
+      ].join('')
+
+      const tabEl = fixtureEl.querySelector('.nav-link')
+      const parent = fixtureEl.querySelector('.nav')
+      const children = fixtureEl.querySelectorAll('.nav-link')
+      const tabPanel = fixtureEl.querySelector('#test')
+
+      expect(parent.getAttribute('role')).toEqual(null)
+      expect(tabEl.getAttribute('role')).toEqual(null)
+      expect(tabPanel.getAttribute('role')).toEqual(null)
+      const tab = new Tab(tabEl)
+      tab._setInitialAttributes(parent, children)
+
+      expect(parent.getAttribute('role')).toEqual('tablist')
+      expect(tabEl.getAttribute('role')).toEqual('tab')
+      expect(tabPanel.getAttribute('role')).toEqual('tabpanel')
+    })
+  })
+
+  describe('_keydown', () => {
+    it('if event is not one of left/right arrow, ignore it', () => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav">',
+        '  <li class="nav-link" data-bs-toggle="tab"></li>',
+        '</ul>'
+      ].join('')
+
+      const tabEl = fixtureEl.querySelector('.nav-link')
+      const tab = new Tab(tabEl)
+
+      const keydown = createEvent('keydown')
+      keydown.key = 'Enter'
+      spyOn(keydown, 'preventDefault')
+      spyOn(tab, '_keydown')
+
+      tabEl.dispatchEvent(keydown)
+      expect(tab._keydown).toHaveBeenCalled()
+      expect(keydown.preventDefault).not.toHaveBeenCalled()
+    })
+
+    it('if keydown event is right arrow, handle it', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav">',
+        '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab2" class="nav-link" data-bs-toggle="tab"></span>',
+        '</div>'
+      ].join('')
+
+      const tabEl = fixtureEl.querySelector('#tab1')
+      const tabEl2 = fixtureEl.querySelector('#tab2')
+      // eslint-disable-next-line no-unused-vars
+      const tab = new Tab(tabEl)
+      const tab2 = new Tab(tabEl2)
+      spyOn(tab2, 'show')
+
+      const keydown = createEvent('keydown')
+      keydown.key = 'ArrowRight'
+
+      tabEl.dispatchEvent(keydown)
+      expect(tab2.show).toHaveBeenCalled()
+    })
+
+    it('if keydown event is left arrow, handle it', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav">',
+        '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab2" class="nav-link" data-bs-toggle="tab"></span>',
+        '</div>'
+      ].join('')
+
+      const tabEl = fixtureEl.querySelector('#tab1')
+      const tabEl2 = fixtureEl.querySelector('#tab2')
+      const tab = new Tab(tabEl)
+      // eslint-disable-next-line no-unused-vars
+      const tab2 = new Tab(tabEl2)
+      spyOn(tab, 'show')
+
+      const keydown = createEvent('keydown')
+      keydown.key = 'ArrowLeft'
+
+      tabEl2.dispatchEvent(keydown)
+      expect(tab.show).toHaveBeenCalled()
+    })
+  })
+
   describe('jQueryInterface', () => {
     it('should create a tab', () => {
-      fixtureEl.innerHTML = '<div></div>'
+      fixtureEl.innerHTML = '<div class="nav"><div class="nav-link"></div></div>'
 
-      const div = fixtureEl.querySelector('div')
+      const div = fixtureEl.querySelector('.nav > div')
 
       jQueryMock.fn.tab = Tab.jQueryInterface
       jQueryMock.elements = [div]
@@ -372,9 +497,9 @@ describe('Tab', () => {
     })
 
     it('should not re create a tab', () => {
-      fixtureEl.innerHTML = '<div></div>'
+      fixtureEl.innerHTML = '<div class="nav"><div class="nav-link"></div></div>'
 
-      const div = fixtureEl.querySelector('div')
+      const div = fixtureEl.querySelector('.nav > div')
       const tab = new Tab(div)
 
       jQueryMock.fn.tab = Tab.jQueryInterface
@@ -386,9 +511,9 @@ describe('Tab', () => {
     })
 
     it('should call a tab method', () => {
-      fixtureEl.innerHTML = '<div></div>'
+      fixtureEl.innerHTML = '<div class="nav"><div class="nav-link"></div></div>'
 
-      const div = fixtureEl.querySelector('div')
+      const div = fixtureEl.querySelector('.nav > div')
       const tab = new Tab(div)
 
       spyOn(tab, 'show')
@@ -403,9 +528,9 @@ describe('Tab', () => {
     })
 
     it('should throw error on undefined method', () => {
-      fixtureEl.innerHTML = '<div></div>'
+      fixtureEl.innerHTML = '<div class="nav"><div class="nav-link"></div></div>'
 
-      const div = fixtureEl.querySelector('div')
+      const div = fixtureEl.querySelector('.nav > div')
       const action = 'undefinedMethod'
 
       jQueryMock.fn.tab = Tab.jQueryInterface
@@ -423,9 +548,9 @@ describe('Tab', () => {
     })
 
     it('should return this instance', () => {
-      fixtureEl.innerHTML = '<div></div>'
+      fixtureEl.innerHTML = '<div class="nav"><div class="nav-link"></div></div>'
 
-      const divEl = fixtureEl.querySelector('div')
+      const divEl = fixtureEl.querySelector('.nav > div')
       const tab = new Tab(divEl)
 
       expect(Tab.getInstance(divEl)).toEqual(tab)
@@ -435,7 +560,7 @@ describe('Tab', () => {
 
   describe('getOrCreateInstance', () => {
     it('should return tab instance', () => {
-      fixtureEl.innerHTML = '<div></div>'
+      fixtureEl.innerHTML = '<div class="nav"><div class="nav-link"></div></div>'
 
       const div = fixtureEl.querySelector('div')
       const tab = new Tab(div)
@@ -446,7 +571,7 @@ describe('Tab', () => {
     })
 
     it('should return new instance when there is no tab instance', () => {
-      fixtureEl.innerHTML = '<div></div>'
+      fixtureEl.innerHTML = '<div class="nav"><div class="nav-link"></div></div>'
 
       const div = fixtureEl.querySelector('div')
 
