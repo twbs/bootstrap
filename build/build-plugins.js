@@ -11,10 +11,25 @@
 
 const path = require('path')
 const rollup = require('rollup')
+const glob = require('glob')
 const { babel } = require('@rollup/plugin-babel')
 const banner = require('./banner.js')
 
-const rootPath = path.resolve(__dirname, '../js/dist/')
+const srcPath = path.resolve(__dirname, '../js/src/')
+
+const paths = glob.sync(srcPath + '/**/*.js')
+
+const filenameToEntity = filename => filename.replace(/(?:^|-)[a-z]/g, char => char.slice(-1).toUpperCase())
+
+const resolved = {}
+for (const filePath of paths) {
+  resolved[filenameToEntity(path.basename(filePath, '.js'))] = {
+    src: filePath.replace('.js', ''),
+    dist: filePath.replace('src', 'dist'),
+    name: filePath.replace(`${srcPath}/`, '')
+  }
+}
+
 const plugins = [
   babel({
     // Only transpile our source code
@@ -23,159 +38,56 @@ const plugins = [
     babelHelpers: 'bundled'
   })
 ]
-const bsPlugins = {
-  Data: path.resolve(__dirname, '../js/src/dom/data.js'),
-  EventHandler: path.resolve(__dirname, '../js/src/dom/event-handler.js'),
-  Manipulator: path.resolve(__dirname, '../js/src/dom/manipulator.js'),
-  SelectorEngine: path.resolve(__dirname, '../js/src/dom/selector-engine.js'),
-  Alert: path.resolve(__dirname, '../js/src/alert.js'),
-  Base: path.resolve(__dirname, '../js/src/base-component.js'),
-  Button: path.resolve(__dirname, '../js/src/button.js'),
-  Carousel: path.resolve(__dirname, '../js/src/carousel.js'),
-  Collapse: path.resolve(__dirname, '../js/src/collapse.js'),
-  Dropdown: path.resolve(__dirname, '../js/src/dropdown.js'),
-  Modal: path.resolve(__dirname, '../js/src/modal.js'),
-  Offcanvas: path.resolve(__dirname, '../js/src/offcanvas.js'),
-  Popover: path.resolve(__dirname, '../js/src/popover.js'),
-  ScrollSpy: path.resolve(__dirname, '../js/src/scrollspy.js'),
-  Tab: path.resolve(__dirname, '../js/src/tab.js'),
-  Toast: path.resolve(__dirname, '../js/src/toast.js'),
-  Tooltip: path.resolve(__dirname, '../js/src/tooltip.js')
-}
 
-const defaultPluginConfig = {
-  external: [
-    bsPlugins.Data,
-    bsPlugins.Base,
-    bsPlugins.EventHandler,
-    bsPlugins.SelectorEngine
-  ],
-  globals: {
-    [bsPlugins.Data]: 'Data',
-    [bsPlugins.Base]: 'Base',
-    [bsPlugins.EventHandler]: 'EventHandler',
-    [bsPlugins.SelectorEngine]: 'SelectorEngine'
-  }
-}
+const build = async pluginKey => {
+  console.log(`Building ${pluginKey} plugin...`)
+  const plugin = resolved[pluginKey]
 
-const getConfigByPluginKey = pluginKey => {
-  switch (pluginKey) {
-    case 'Alert':
-    case 'Offcanvas':
-    case 'Tab':
-      return defaultPluginConfig
-
-    case 'Base':
-    case 'Button':
-    case 'Carousel':
-    case 'Collapse':
-    case 'Modal':
-    case 'ScrollSpy': {
-      const config = Object.assign(defaultPluginConfig)
-      config.external.push(bsPlugins.Manipulator)
-      config.globals[bsPlugins.Manipulator] = 'Manipulator'
-      return config
-    }
-
-    case 'Dropdown':
-    case 'Tooltip': {
-      const config = Object.assign(defaultPluginConfig)
-      config.external.push(bsPlugins.Manipulator, '@popperjs/core')
-      config.globals[bsPlugins.Manipulator] = 'Manipulator'
-      config.globals['@popperjs/core'] = 'Popper'
-      return config
-    }
-
-    case 'Popover':
-      return {
-        external: [
-          bsPlugins.Data,
-          bsPlugins.SelectorEngine,
-          bsPlugins.Tooltip
-        ],
-        globals: {
-          [bsPlugins.Data]: 'Data',
-          [bsPlugins.SelectorEngine]: 'SelectorEngine',
-          [bsPlugins.Tooltip]: 'Tooltip'
-        }
-      }
-
-    case 'Toast':
-      return {
-        external: [
-          bsPlugins.Data,
-          bsPlugins.Base,
-          bsPlugins.EventHandler,
-          bsPlugins.Manipulator
-        ],
-        globals: {
-          [bsPlugins.Data]: 'Data',
-          [bsPlugins.Base]: 'Base',
-          [bsPlugins.EventHandler]: 'EventHandler',
-          [bsPlugins.Manipulator]: 'Manipulator'
-        }
-      }
-
-    default:
-      return {
-        external: []
-      }
-  }
-}
-
-const utilObjects = new Set([
-  'Util',
-  'Sanitizer',
-  'Backdrop'
-])
-
-const domObjects = new Set([
-  'Data',
-  'EventHandler',
-  'Manipulator',
-  'SelectorEngine'
-])
-
-const build = async plugin => {
-  console.log(`Building ${plugin} plugin...`)
-
-  const { external, globals } = getConfigByPluginKey(plugin)
-  const pluginFilename = path.basename(bsPlugins[plugin])
-  let pluginPath = rootPath
-
-  if (utilObjects.has(plugin)) {
-    pluginPath = `${rootPath}/util/`
-  }
-
-  if (domObjects.has(plugin)) {
-    pluginPath = `${rootPath}/dom/`
-  }
-
+  const globals = {}
   const bundle = await rollup.rollup({
-    input: bsPlugins[plugin],
+    input: plugin.src,
     plugins,
-    external
+    external: source => {
+      const pattern = /^(\.+)\// // replace starting with ./ or ../
+
+      if (!pattern.test(source)) { // is probably a node plugin
+        globals[source] = source
+        return true
+      }
+
+      // eslint-disable-next-line no-unused-vars
+      const usedPlugin = Object.entries(resolved).find(([key, path]) => {
+        return path.src.includes(source.replace(pattern, ''))
+      })
+
+      if (!usedPlugin) {
+        console.warn(`Source ${source} is not mapped`)
+        return false
+      }
+
+      globals[usedPlugin[1].src] = usedPlugin[0]
+      return true
+    }
   })
 
   await bundle.write({
-    banner: banner(pluginFilename),
+    banner: banner(plugin.name),
     format: 'umd',
-    name: plugin,
+    name: pluginKey,
     sourcemap: true,
     globals,
     generatedCode: 'es2015',
-    file: path.resolve(__dirname, `${pluginPath}/${pluginFilename}`)
+    file: plugin.dist
   })
 
-  console.log(`Building ${plugin} plugin... Done!`)
+  console.log(`Building ${pluginKey} plugin... Done!`)
 }
 
-const main = async () => {
+const main = () => {
   try {
-    await Promise.all(Object.keys(bsPlugins).map(plugin => build(plugin)))
+    Promise.all(Object.keys(resolved).map(plugin => build(plugin)))
   } catch (error) {
     console.error(error)
-
     process.exit(1)
   }
 }
