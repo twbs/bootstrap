@@ -1,3 +1,12 @@
+@keyframes scale-x-frames {
+  0% {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 .toast {
   // scss-docs-start toast-css-vars
   --#{$prefix}toast-zindex: #{$zindex-toast};
@@ -35,6 +44,29 @@
   &:not(.show) {
     display: none;
   }
+
+  $toast-progress-height: 5px;
+  $toast-progress-bg-color: #add555;
+  $toast-progress-elapsed-bg-color: rgba(255, 255, 255, .7);
+  $toast-progress-transform-origin: right;
+  .toast-progress {
+    position: relative;
+    height: $toast-progress-height;
+    background-color: $toast-progress-bg-color;
+
+    &.animated::after {
+      position: absolute;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      content: "";
+      background-color: $toast-progress-elapsed-bg-color;
+      transform-origin: $toast-progress-transform-origin;
+      animation: scale-x-frames linear 1 forwards;
+      animation-duration: inherit;
+    }
+  }
+
 }
 
 .toast-container {
