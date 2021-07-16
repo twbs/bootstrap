@@ -8,7 +8,7 @@ toc: true
 
 ## Lean Sass imports
 
-When using Sass in your asset pipeline, make sure you optimize Bootstrap by only `@import`ing the components you need. Your largest optimizations will likely come from the `Layout & Components` section of our `bootstrap.scss`.
+When using Sass in your asset pipeline, make sure you optimize Bootstrap by only `@import` the components you need. Your largest optimizations will likely come from the `Layout & Components` section of our `bootstrap.scss`.
 
 {{< scss-docs name="import-stack" file="scss/bootstrap.scss" >}}
 
