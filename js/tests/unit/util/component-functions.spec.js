@@ -1,4 +1,5 @@
-/** Test helpers */
+/* Test helpers */
+
 import { clearFixture, createEvent, getFixture } from '../../helpers/fixture'
 import { enableDismissTrigger } from '../../../src/util/component-functions'
 import BaseComponent from '../../../src/base-component'
