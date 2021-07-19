@@ -56,6 +56,26 @@ Note that because the font stack includes emoji fonts, many common symbol/dingba
 
 This `font-family` is applied to the `<body>` and automatically inherited globally throughout Bootstrap. To switch the global `font-family`, update `$font-family-base` and recompile Bootstrap.
 
+## CSS variables
+
+As Bootstrap 5 continues to mature, more and more styles will be built with [CSS variables]({{< docsref "/customize/css-variables" >}}) as a means to provide more real-time customization without the need to always recompile Sass. Our approach is to take our source Sass variables and transform them into CSS variables. That way, even if you don't use CSS variables, you still have all the power of Sass. **This is still in-progress and will take time to fully implement.**
+
+For example, consider these `:root` CSS variables for common `<body>` styles:
+
+{{< scss-docs name="root-body-variables" file="scss/_root.scss" >}}
+
+In practice, those variables are then applied in Reboot like so:
+
+{{< scss-docs name="reboot-body-rules" file="scss/_reboot.scss" >}}
+
+Which allows you to make real-time customizations however you like:
+
+```html
+<body style="--bs-body-color: #333;">
+  <!-- ... -->
+</body>
+```
+
 ## Headings and paragraphs
 
 All heading elements—e.g., `<h1>`—and `<p>` are reset to have their `margin-top` removed. Headings have `margin-bottom: .5rem` added and paragraphs `margin-bottom: 1rem` for easy spacing.
