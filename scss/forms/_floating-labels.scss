@@ -1,5 +1,9 @@
 .form-floating {
   position: relative;
+  
+  &:focus-within {
+    z-index: 3;
+  }
 
   > .form-control,
   > .form-control-plaintext,
