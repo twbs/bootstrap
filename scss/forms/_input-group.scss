@@ -99,7 +99,7 @@
   &:not(.has-validation) {
     > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
     > .dropdown-toggle:nth-last-child(n + 3),
-    > .form-floating:not(:last-child)>:not(.dropdown-toggle):not(.dropdown-menu) {
+    > .form-floating:not(:last-child) > :not(.dropdown-toggle):not(.dropdown-menu) {
       @include border-end-radius(0);
     }
   }
@@ -107,7 +107,7 @@
   &.has-validation {
     > :nth-last-child(n + 3):not(.dropdown-toggle):not(.dropdown-menu),
     > .dropdown-toggle:nth-last-child(n + 4),
-    > .form-floating:nth-last-child(n + 3)>:not(.dropdown-toggle):not(.dropdown-menu) {
+    > .form-floating:nth-last-child(n + 3) > :not(.dropdown-toggle):not(.dropdown-menu) {
       @include border-end-radius(0);
     }
   }
@@ -118,7 +118,7 @@
   }
     
   > :not(:first-child):not(.dropdown-menu)#{$validation-messages},
-  > .form-floating:not(:first-child)>:not(.dropdown-menu)#{$validation-messages} {
+  > .form-floating:not(:first-child) > :not(.dropdown-menu)#{$validation-messages} {
     margin-left: -$input-border-width;
     @include border-start-radius(0);
   }
