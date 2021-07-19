@@ -1,7 +1,16 @@
 :root {
-  // Custom variable values only support SassScript inside `#{}`.
+  // Note: Custom variable values only support SassScript inside `#{}`.
+
+  // Colors
+  //
+  // Generate palettes for full colors, grays, and theme colors.
+
   @each $color, $value in $colors {
     --#{$variable-prefix}#{$color}: #{$value};
+  }
+
+  @each $color, $value in $grays {
+    --#{$variable-prefix}gray-#{$color}: #{$value};
   }
 
   @each $color, $value in $theme-colors {
@@ -16,9 +25,29 @@
   --#{$variable-prefix}black-rgb: #{to-rgb($black)};
   --#{$variable-prefix}body-rgb: #{to-rgb($body-color)};
 
-  // Use `inspect` for lists so that quoted items keep the quotes.
+  // Fonts
+
+  // Note: Use `inspect` for lists so that quoted items keep the quotes.
   // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
   --#{$variable-prefix}font-sans-serif: #{inspect($font-family-sans-serif)};
   --#{$variable-prefix}font-monospace: #{inspect($font-family-monospace)};
   --#{$variable-prefix}gradient: #{$gradient};
+
+  // Root and body
+  // stylelint-disable custom-property-empty-line-before
+  // scss-docs-start root-body-variables
+  @if $font-size-root != null {
+    --#{$variable-prefix}root-font-size: #{$font-size-root};
+  }
+  --#{$variable-prefix}body-font-family: #{$font-family-base};
+  --#{$variable-prefix}body-font-size: #{$font-size-base};
+  --#{$variable-prefix}body-font-weight: #{$font-weight-base};
+  --#{$variable-prefix}body-line-height: #{$line-height-base};
+  --#{$variable-prefix}body-color: #{$body-color};
+  @if $body-text-align != null {
+    --#{$variable-prefix}body-text-align: #{$body-text-align};
+  }
+  --#{$variable-prefix}body-bg: #{$body-bg};
+  // scss-docs-end root-body-variables
+  // stylelint-enable custom-property-empty-line-before
 }
