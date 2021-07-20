@@ -188,6 +188,14 @@ const findShadowRoot = element => {
 
 const noop = () => {}
 
+/**
+ * Trick to trigger restart to element animations
+ *
+ * @param {HTMLElement} element
+ * @return number // suggest to not use it
+ *
+ * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
+ */
 const reflow = element => element.offsetHeight
 
 const getjQuery = () => {
