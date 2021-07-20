@@ -111,6 +111,7 @@ When using `display: grid`, you can make use of `gap` utilities on the parent gr
 Support includes responsive options for all of Bootstrap's grid breakpoints, as well as six sizes from the `$spacers` map (`0`–`5`). There is no `.gap-auto` utility class as it's effectively the same as `.gap-0`.
 
 Also, you can use `.row-gap-*` and `.column-gap-*` to specify gaps for rows and columns separately.
+
 {{< example html >}}
 <div class="d-grid row-gap-2 column-gap-3" style="grid-template-columns: 1fr 2fr;">
   <div class="p-2 bg-light border">Grid item 1</div>
