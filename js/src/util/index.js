@@ -189,7 +189,7 @@ const findShadowRoot = element => {
 const noop = () => {}
 
 /**
- * Trick to trigger a restart of an element's animations
+ * Trick to restart an element's animation
  *
  * @param {HTMLElement} element
  * @return number   // Don't use it!
