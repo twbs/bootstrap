@@ -301,8 +301,8 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
   @return $result;
 }
 
-@mixin validate-utilities-field($utility, $utility-name, $field) {
+@mixin _validate-utilities-field($utility, $utility-name, $field) {
   @if (not map-has-key($utility, $field)) {
-    @warn "Required field «#{$field}» is empty. Check the field name for the «#{$utility-name}» utility";
+    @warn "Missing '#{$field}' for '#{$utility-name}' utility";
   }
 }

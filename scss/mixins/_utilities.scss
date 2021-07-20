@@ -1,15 +1,16 @@
 // Utility generator
 // Used to generate utilities & print utilities
-@mixin generate-utility($utility, $utility-name, $infix, $is-rfs-media-query: false) {
+@mixin generate-utility($utility, $infix, $is-rfs-media-query: false, $utility-name: null) {
   // Check Requires Fields
+  @if ($utility-name) {
+    $required-fields: (
+      "property",
+      "values",
+    );
 
-  $required-fields: (
-    "property",
-    "values",
-  );
-
-  @each $field in $required-fields {
-    @include validate-utilities-field($utility, $utility-name, $field);
+    @each $field in $required-fields {
+      @include _validate-utilities-field($utility, $utility-name, $field);
+    }
   }
 
   // End Check Requires Fields
