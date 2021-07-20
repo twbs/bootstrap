@@ -1077,7 +1077,7 @@
   const DATA_KEY$9 = 'bs.carousel';
   const EVENT_KEY$9 = `.${DATA_KEY$9}`;
   const DATA_API_KEY$6 = '.data-api';
-  const ARROW_LEFT_KEY = 'ArrowLeft';
+  const ARROW_LEFT_KEY$1 = 'ArrowLeft';
   const ARROW_RIGHT_KEY$1 = 'ArrowRight';
   const TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
 
@@ -1103,7 +1103,7 @@
   const DIRECTION_LEFT = 'left';
   const DIRECTION_RIGHT = 'right';
   const KEY_TO_DIRECTION = {
-    [ARROW_LEFT_KEY]: DIRECTION_RIGHT,
+    [ARROW_LEFT_KEY$1]: DIRECTION_RIGHT,
     [ARROW_RIGHT_KEY$1]: DIRECTION_LEFT
   };
   const EVENT_SLIDE = `slide${EVENT_KEY$9}`;
@@ -1984,9 +1984,10 @@
   const ARROW_UP_KEY = 'ArrowUp';
   const ARROW_DOWN_KEY = 'ArrowDown';
   const ARROW_RIGHT_KEY = 'ArrowRight';
+  const ARROW_LEFT_KEY = 'ArrowLeft';
   const RIGHT_MOUSE_BUTTON = 2; // MouseEvent.button value for the secondary button, usually the right button
 
-  const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEY}|${ARROW_RIGHT_KEY}|${ARROW_DOWN_KEY}|${ESCAPE_KEY$2}|${SPACE_KEY}`);
+  const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEY}|${ARROW_RIGHT_KEY}|${ARROW_DOWN_KEY}|${ESCAPE_KEY$2}|${SPACE_KEY}|${ARROW_LEFT_KEY}`);
   const EVENT_HIDE$4 = `hide${EVENT_KEY$7}`;
   const EVENT_HIDDEN$4 = `hidden${EVENT_KEY$7}`;
   const EVENT_SHOW$4 = `show${EVENT_KEY$7}`;
@@ -2026,11 +2027,60 @@
     popperConfig: '(null|object|function)',
     autoClose: '(boolean|string)'
   };
+
+  const isTopLevel = element => element.parentNode && element.parentNode.parentNode && element.parentNode.parentNode.parentNode && element.parentNode.parentNode.parentNode.tagName.toLowerCase() === 'nav';
+
+  const hasSubMenu = element => element.nextElementSibling && element.nextElementSibling.tagName.toLowerCase() === 'ul';
+
+  const hasNextMenuItem = element => {
+    return element.parentNode.nextElementSibling && element.parentNode.nextElementSibling.tagName.toLowerCase() === 'li' && element.parentNode.nextElementSibling.children.length > 0;
+  };
+
+  const hasPreviousMenuItem = element => element.parentNode.previousElementSibling && element.parentNode.previousElementSibling.tagName.toLowerCase() === 'li' && element.parentNode.previousElementSibling.children.length > 0;
+
+  const getFirstMenuItem = element => element.parentNode.parentNode.children[0].children[0];
+
+  const getFirstSubMenu = element => element.nextElementSibling.children[0].children[0];
+
+  const getLastMenuItem = element => element.parentNode.parentNode.lastElementChild.children[0];
+
+  const getLastSubMenu = element => element.nextElementSibling.lastElementChild.children[0];
+
+  const getNextMenuItem = element => element.parentNode.nextElementSibling.children[0];
+
+  const getPreviousMenuItem = element => element.parentNode.previousElementSibling.children[0];
+
+  const goToNextMenuItem = element => {
+    if (hasNextMenuItem(element)) {
+      getNextMenuItem(element).focus();
+    } else {
+      getFirstMenuItem(element).focus();
+    }
+  };
+
+  const goToPreviousMenuItem = element => {
+    if (hasPreviousMenuItem(element)) {
+      getPreviousMenuItem(element).focus();
+    } else {
+      getLastMenuItem(element).focus();
+    }
+  }; // const getSubMenuButton = element => {
+  //   console.log(element.parentNode.parentNode.lastElementChild.firstElementChild)
+  //   return element.parentNode.parentNode.lastElementChild.firstElementChild
+  // }
+  // const closeThisSubMenu = function (element) {
+  //   const thisDropdown = Dropdown.getOrCreateInstance(getSubMenuButton(element))
+  //   console.log(thisDropdown)
+  //   thisDropdown.hide()
+  //   getSubMenuButton(element).focus()
+  // }
+
   /**
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
    */
+
 
   class Dropdown extends BaseComponent {
     constructor(element, config) {
@@ -2321,6 +2371,24 @@
 
     static clearMenus(event) {
       if (event && (event.button === RIGHT_MOUSE_BUTTON || event.type === 'keyup' && event.key !== TAB_KEY)) {
+        console.log('test 15');
+
+        if (isTopLevel(event.target) && event.key === ARROW_RIGHT_KEY) {
+          if (event.target.parentNode.nextElementSibling && event.target.parentNode.nextElementSibling.firstElementChild) {
+            event.target.parentNode.nextElementSibling.firstElementChild.focus();
+          } else {
+            event.target.parentNode.parentNode.firstElementChild.firstElementChild.focus();
+          }
+        }
+
+        if (isTopLevel(event.target) && event.key === ARROW_LEFT_KEY) {
+          if (event.target.parentNode.previousElementSibling && event.target.parentNode.previousElementSibling.firstElementChild) {
+            event.target.parentNode.previousElementSibling.firstElementChild.focus();
+          } else {
+            event.target.parentNode.parentNode.lastElementChild.firstElementChild.focus();
+          }
+        }
+
         return;
       }
 
@@ -2330,10 +2398,12 @@
         const context = Dropdown.getInstance(toggles[i]);
 
         if (!context || context._config.autoClose === false) {
+          console.log('test2');
           continue;
         }
 
         if (!context._element.classList.contains(CLASS_NAME_SHOW$7)) {
+          console.log('test3');
           continue;
         }
 
@@ -2342,22 +2412,28 @@
         };
 
         if (event) {
+          console.log('test5');
           const composedPath = event.composedPath();
           const isMenuTarget = composedPath.includes(context._menu);
 
           if (composedPath.includes(context._element) || context._config.autoClose === 'inside' && !isMenuTarget || context._config.autoClose === 'outside' && isMenuTarget) {
+            console.log('test6');
             continue;
           } // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
 
 
           if (context._menu.contains(event.target) && (event.type === 'keyup' && event.key === TAB_KEY || /input|select|option|textarea|form/i.test(event.target.tagName))) {
+            console.log('test7');
             continue;
           }
 
           if (event.type === 'click') {
+            console.log('test8');
             relatedTarget.clickEvent = event;
           }
         }
+
+        console.log('test9');
 
         context._completeHide(relatedTarget);
       }
@@ -2368,13 +2444,15 @@
     }
 
     static dataApiKeydownHandler(event) {
-      // If not input/textarea:
+      console.log('test 11');
+      console.log(event.target); // If not input/textarea:
       //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
       // If input/textarea:
       //  - If space key => not a dropdown command
       //  - If key is other than escape
       //    - If key is not up or down => not a dropdown command
       //    - If trigger inside the menu => not a dropdown command
+
       if (/input|textarea/i.test(event.target.tagName) ? event.key === SPACE_KEY || event.key !== ESCAPE_KEY$2 && (event.key !== ARROW_DOWN_KEY && event.key !== ARROW_UP_KEY || event.target.closest(SELECTOR_MENU)) : !REGEXP_KEYDOWN.test(event.key)) {
         console.log('test');
         return;
@@ -2383,6 +2461,7 @@
       const isActive = this.classList.contains(CLASS_NAME_SHOW$7);
 
       if (!isActive && event.key === ESCAPE_KEY$2) {
+        console.log('test 13');
         return;
       }
 
@@ -2390,70 +2469,39 @@
       event.stopPropagation();
 
       if (isDisabled(this)) {
+        console.log('test 12');
         return;
       }
 
       const getToggleButton = () => this.matches(SELECTOR_DATA_TOGGLE$3) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE$3)[0];
 
       if (event.key === ESCAPE_KEY$2) {
-        getToggleButton().focus();
-        Dropdown.clearMenus();
+        console.log('testo');
+
+        if (isTopLevel(event.target)) {
+          console.log('testor');
+          getToggleButton().focus();
+          Dropdown.clearMenus();
+        } else {
+          const thisDropdown = Dropdown.getOrCreateInstance(event.target.parentNode.parentNode.previousElementSibling);
+          thisDropdown.hide();
+          event.target.parentNode.parentNode.previousElementSibling.focus();
+        }
+
         return;
       } // event.target.parentNode.nextElementSibling.children[0].focus()
       // if (event.target.parentNode.nextElementSibling &&
       // event.target.parentNode.nextElementSibling.tagName.toLowerCase() === 'li' &&
       // event.target.parentNode.nextElementSibling.children[0]) {
-      //   console.log(event.target.parentNode.nextElementSibling.children[0])
       //   event.target.parentNode.nextElementSibling.children[0].focus()
       // }
 
 
-      if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY || event.key === ARROW_RIGHT_KEY || event.key === SPACE_KEY) {
-        // console.log('keydown')
-        // console.log(event.target.parentNode.parentNode.parentNode)
-        const isTopLevel = element => element.parentNode.parentNode.parentNode.tagName.toLowerCase() === 'nav';
-
-        const hasSubMenu = element => element.nextElementSibling && element.nextElementSibling.tagName.toLowerCase() === 'ul';
-
-        const hasNextMenuItem = element => element.parentNode.nextElementSibling && element.parentNode.nextElementSibling.tagName.toLowerCase() === 'li' && element.parentNode.nextElementSibling.children[0];
-
-        const hasPreviousMenuItem = element => element.parentNode.previousElementSibling && element.parentNode.previousElementSibling.tagName.toLowerCase() === 'li' && element.parentNode.previousElementSibling.children[0];
-
-        const hasFirstMenuItem = element => element.parentNode.tagName.toLowerCase() === 'li' && element.parentNode.parentNode.tagName.toLowerCase() === 'ul' && element.parentNode.parentNode.children[0].tagName.toLowerCase() === 'li' && element.parentNode.parentNode.children[0].children[0];
-
-        const hasLastMenuItem = element => element.parentNode.tagName.toLowerCase() === 'li' && element.parentNode.parentNode.tagName.toLowerCase() === 'ul' && element.parentNode.parentNode.lastElementChild.tagName.toLowerCase() === 'li' && element.parentNode.parentNode.lastElementChild.children[0];
-
-        const getFirstMenuItem = element => element.parentNode.parentNode.children[0].children[0];
-
-        const getFirstSubMenu = element => element.nextElementSibling.children[0].children[0];
-
-        const getLastMenuItem = element => element.parentNode.parentNode.lastElementChild.children[0];
-
-        const getLastSubMenu = element => element.nextElementSibling.lastElementChild.children[0];
-
-        const getNextMenuItem = element => element.parentNode.nextElementSibling.children[0];
-
-        const getPreviousMenuItem = element => element.parentNode.previousElementSibling.children[0];
-
-        const goToNextMenuItem = element => {
-          if (hasNextMenuItem(element)) {
-            getNextMenuItem(element).focus();
-          } else if (hasFirstMenuItem(element)) {
-            getFirstMenuItem(element).focus();
-          }
-        };
-
-        const goToPreviousMenuItem = element => {
-          if (hasPreviousMenuItem(element)) {
-            getPreviousMenuItem(element).focus();
-          } else if (hasLastMenuItem(element)) {
-            getLastMenuItem(element).focus();
-          }
-        };
-
+      if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY || event.key === ARROW_RIGHT_KEY || event.key === SPACE_KEY || event.key === ARROW_LEFT_KEY) {
         if (event.key === ARROW_DOWN_KEY) {
           if (!isActive && isTopLevel(event.target) && hasSubMenu(event.target)) {
-            event.target.click();
+            const thisDropdown = Dropdown.getOrCreateInstance(event.target);
+            thisDropdown.show();
             getFirstSubMenu(event.target).focus();
           } else {
             goToNextMenuItem(event.target);
@@ -2462,7 +2510,8 @@
 
         if (event.key === ARROW_UP_KEY) {
           if (!isActive && isTopLevel(event.target) && hasSubMenu(event.target)) {
-            event.target.click();
+            const thisDropdown = Dropdown.getOrCreateInstance(event.target);
+            thisDropdown.show();
             getLastSubMenu(event.target).focus();
           } else {
             goToPreviousMenuItem(event.target);
@@ -2470,22 +2519,27 @@
         }
 
         if (event.key === ARROW_RIGHT_KEY) {
-          if (isTopLevel(event.target)) {
-            goToNextMenuItem(event.target);
-          } else if (hasSubMenu(event.target)) {
-            console.log(event.target);
-            event.target.click();
+          if (!isTopLevel(event.target) && hasSubMenu(event.target)) {
+            const thisDropdown = Dropdown.getOrCreateInstance(event.target);
+            thisDropdown.show();
             getFirstSubMenu(event.target).focus();
-            return;
+          } else {
+            console.log('test 14');
           }
-        } // console.log(event.target.nextElementSibling.children[0].children[0])
-        // Dropdown.getInstance(getToggleButton())._selectMenuItem(event)
+        }
+
+        if (event.key === ARROW_LEFT_KEY && !isTopLevel(event.target)) {
+          const thisDropdown = Dropdown.getOrCreateInstance(event.target.parentNode.parentNode.previousElementSibling);
+          thisDropdown.hide();
+          event.target.parentNode.parentNode.previousElementSibling.focus();
+        } // Dropdown.getInstance(getToggleButton())._selectMenuItem(event)
 
 
         return;
       }
 
       if (!isActive) {
+        console.log('test10');
         Dropdown.clearMenus();
       }
     }

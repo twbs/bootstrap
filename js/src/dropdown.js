@@ -41,9 +41,10 @@ const TAB_KEY = 'Tab'
 const ARROW_UP_KEY = 'ArrowUp'
 const ARROW_DOWN_KEY = 'ArrowDown'
 const ARROW_RIGHT_KEY = 'ArrowRight'
+const ARROW_LEFT_KEY = 'ArrowLeft'
 const RIGHT_MOUSE_BUTTON = 2 // MouseEvent.button value for the secondary button, usually the right button
 
-const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEY}|${ARROW_RIGHT_KEY}|${ARROW_DOWN_KEY}|${ESCAPE_KEY}|${SPACE_KEY}`)
+const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEY}|${ARROW_RIGHT_KEY}|${ARROW_DOWN_KEY}|${ESCAPE_KEY}|${SPACE_KEY}|${ARROW_LEFT_KEY}`)
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
@@ -88,6 +89,58 @@ const DefaultType = {
   display: 'string',
   popperConfig: '(null|object|function)',
   autoClose: '(boolean|string)'
+}
+
+const isTopLevel = element =>
+  element.parentNode && element.parentNode.parentNode && element.parentNode.parentNode.parentNode && element.parentNode.parentNode.parentNode.tagName.toLowerCase() === 'nav'
+
+const hasSubMenu = element =>
+  element.nextElementSibling && element.nextElementSibling.tagName.toLowerCase() === 'ul'
+
+const hasNextMenuItem = element => {
+  return (
+    element.parentNode.nextElementSibling &&
+    element.parentNode.nextElementSibling.tagName.toLowerCase() === 'li' &&
+    element.parentNode.nextElementSibling.children.length > 0)
+}
+
+const hasPreviousMenuItem = element =>
+  element.parentNode.previousElementSibling &&
+  element.parentNode.previousElementSibling.tagName.toLowerCase() === 'li' &&
+  element.parentNode.previousElementSibling.children.length > 0
+
+const getFirstMenuItem = element =>
+  element.parentNode.parentNode.children[0].children[0]
+
+const getFirstSubMenu = element =>
+  element.nextElementSibling.children[0].children[0]
+
+const getLastMenuItem = element =>
+  element.parentNode.parentNode.lastElementChild.children[0]
+
+const getLastSubMenu = element =>
+  element.nextElementSibling.lastElementChild.children[0]
+
+const getNextMenuItem = element =>
+  element.parentNode.nextElementSibling.children[0]
+
+const getPreviousMenuItem = element =>
+  element.parentNode.previousElementSibling.children[0]
+
+const goToNextMenuItem = element => {
+  if (hasNextMenuItem(element)) {
+    getNextMenuItem(element).focus()
+  } else {
+    getFirstMenuItem(element).focus()
+  }
+}
+
+const goToPreviousMenuItem = element => {
+  if (hasPreviousMenuItem(element)) {
+    getPreviousMenuItem(element).focus()
+  } else {
+    getLastMenuItem(element).focus()
+  }
 }
 
 /**
@@ -388,6 +441,27 @@ class Dropdown extends BaseComponent {
 
   static clearMenus(event) {
     if (event && (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY))) {
+      console.log('test 15')
+      if (isTopLevel(event.target) &&
+          event.key === ARROW_RIGHT_KEY) {
+        if (event.target.parentNode.nextElementSibling &&
+          event.target.parentNode.nextElementSibling.firstElementChild) {
+          event.target.parentNode.nextElementSibling.firstElementChild.focus()
+        } else {
+          event.target.parentNode.parentNode.firstElementChild.firstElementChild.focus()
+        }
+      }
+
+      if (isTopLevel(event.target) &&
+        event.key === ARROW_LEFT_KEY) {
+        if (event.target.parentNode.previousElementSibling &&
+          event.target.parentNode.previousElementSibling.firstElementChild) {
+          event.target.parentNode.previousElementSibling.firstElementChild.focus()
+        } else {
+          event.target.parentNode.parentNode.lastElementChild.firstElementChild.focus()
+        }
+      }
+
       return
     }
 
@@ -396,10 +470,12 @@ class Dropdown extends BaseComponent {
     for (let i = 0, len = toggles.length; i < len; i++) {
       const context = Dropdown.getInstance(toggles[i])
       if (!context || context._config.autoClose === false) {
+        console.log('test2')
         continue
       }
 
       if (!context._element.classList.contains(CLASS_NAME_SHOW)) {
+        console.log('test3')
         continue
       }
 
@@ -408,6 +484,7 @@ class Dropdown extends BaseComponent {
       }
 
       if (event) {
+        console.log('test5')
         const composedPath = event.composedPath()
         const isMenuTarget = composedPath.includes(context._menu)
         if (
@@ -415,18 +492,23 @@ class Dropdown extends BaseComponent {
           (context._config.autoClose === 'inside' && !isMenuTarget) ||
           (context._config.autoClose === 'outside' && isMenuTarget)
         ) {
+          console.log('test6')
           continue
         }
 
         // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
         if (context._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) || /input|select|option|textarea|form/i.test(event.target.tagName))) {
+          console.log('test7')
           continue
         }
 
         if (event.type === 'click') {
+          console.log('test8')
           relatedTarget.clickEvent = event
         }
       }
+
+      console.log('test9')
 
       context._completeHide(relatedTarget)
     }
@@ -437,6 +519,9 @@ class Dropdown extends BaseComponent {
   }
 
   static dataApiKeydownHandler(event) {
+    console.log('test 11')
+
+    console.log(event.target)
     // If not input/textarea:
     //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
     // If input/textarea:
@@ -456,6 +541,7 @@ class Dropdown extends BaseComponent {
     const isActive = this.classList.contains(CLASS_NAME_SHOW)
 
     if (!isActive && event.key === ESCAPE_KEY) {
+      console.log('test 13')
       return
     }
 
@@ -463,14 +549,24 @@ class Dropdown extends BaseComponent {
     event.stopPropagation()
 
     if (isDisabled(this)) {
+      console.log('test 12')
       return
     }
 
     const getToggleButton = () => this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
 
     if (event.key === ESCAPE_KEY) {
-      getToggleButton().focus()
-      Dropdown.clearMenus()
+      console.log('testo')
+      if (isTopLevel(event.target)) {
+        console.log('testor')
+        getToggleButton().focus()
+        Dropdown.clearMenus()
+      } else {
+        const thisDropdown = Dropdown.getOrCreateInstance(event.target.parentNode.parentNode.previousElementSibling)
+        thisDropdown.hide()
+        event.target.parentNode.parentNode.previousElementSibling.focus()
+      }
+
       return
     }
 
@@ -479,81 +575,16 @@ class Dropdown extends BaseComponent {
     // if (event.target.parentNode.nextElementSibling &&
     // event.target.parentNode.nextElementSibling.tagName.toLowerCase() === 'li' &&
     // event.target.parentNode.nextElementSibling.children[0]) {
-    //   console.log(event.target.parentNode.nextElementSibling.children[0])
     //   event.target.parentNode.nextElementSibling.children[0].focus()
     // }
 
-    if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY || event.key === ARROW_RIGHT_KEY || event.key === SPACE_KEY) {
-      // console.log('keydown')
-      // console.log(event.target.parentNode.parentNode.parentNode)
-
-      const isTopLevel = element =>
-        element.parentNode.parentNode.parentNode.tagName.toLowerCase() === 'nav'
-
-      const hasSubMenu = element =>
-        element.nextElementSibling && element.nextElementSibling.tagName.toLowerCase() === 'ul'
-
-      const hasNextMenuItem = element =>
-        element.parentNode.nextElementSibling &&
-        element.parentNode.nextElementSibling.tagName.toLowerCase() === 'li' &&
-        element.parentNode.nextElementSibling.children[0]
-
-      const hasPreviousMenuItem = element =>
-        element.parentNode.previousElementSibling &&
-        element.parentNode.previousElementSibling.tagName.toLowerCase() === 'li' &&
-        element.parentNode.previousElementSibling.children[0]
-
-      const hasFirstMenuItem = element =>
-        element.parentNode.tagName.toLowerCase() === 'li' &&
-        element.parentNode.parentNode.tagName.toLowerCase() === 'ul' &&
-        element.parentNode.parentNode.children[0].tagName.toLowerCase() === 'li' &&
-        element.parentNode.parentNode.children[0].children[0]
-
-      const hasLastMenuItem = element =>
-        element.parentNode.tagName.toLowerCase() === 'li' &&
-        element.parentNode.parentNode.tagName.toLowerCase() === 'ul' &&
-        element.parentNode.parentNode.lastElementChild.tagName.toLowerCase() === 'li' &&
-        element.parentNode.parentNode.lastElementChild.children[0]
-
-      const getFirstMenuItem = element =>
-        element.parentNode.parentNode.children[0].children[0]
-
-      const getFirstSubMenu = element =>
-        element.nextElementSibling.children[0].children[0]
-
-      const getLastMenuItem = element =>
-        element.parentNode.parentNode.lastElementChild.children[0]
-
-      const getLastSubMenu = element =>
-        element.nextElementSibling.lastElementChild.children[0]
-
-      const getNextMenuItem = element =>
-        element.parentNode.nextElementSibling.children[0]
-
-      const getPreviousMenuItem = element =>
-        element.parentNode.previousElementSibling.children[0]
-
-      const goToNextMenuItem = element => {
-        if (hasNextMenuItem(element)) {
-          getNextMenuItem(element).focus()
-        } else if (hasFirstMenuItem(element)) {
-          getFirstMenuItem(element).focus()
-        }
-      }
-
-      const goToPreviousMenuItem = element => {
-        if (hasPreviousMenuItem(element)) {
-          getPreviousMenuItem(element).focus()
-        } else if (hasLastMenuItem(element)) {
-          getLastMenuItem(element).focus()
-        }
-      }
-
+    if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY || event.key === ARROW_RIGHT_KEY || event.key === SPACE_KEY || event.key === ARROW_LEFT_KEY) {
       if (event.key === ARROW_DOWN_KEY) {
         if (!isActive &&
         isTopLevel(event.target) &&
         hasSubMenu(event.target)) {
-          event.target.click()
+          const thisDropdown = Dropdown.getOrCreateInstance(event.target)
+          thisDropdown.show()
           getFirstSubMenu(event.target).focus()
         } else {
           goToNextMenuItem(event.target)
@@ -564,7 +595,8 @@ class Dropdown extends BaseComponent {
         if (!isActive &&
         isTopLevel(event.target) &&
         hasSubMenu(event.target)) {
-          event.target.click()
+          const thisDropdown = Dropdown.getOrCreateInstance(event.target)
+          thisDropdown.show()
           getLastSubMenu(event.target).focus()
         } else {
           goToPreviousMenuItem(event.target)
@@ -572,17 +604,20 @@ class Dropdown extends BaseComponent {
       }
 
       if (event.key === ARROW_RIGHT_KEY) {
-        if (isTopLevel(event.target)) {
-          goToNextMenuItem(event.target)
-        } else if (hasSubMenu(event.target)) {
-          console.log(event.target)
-          event.target.click()
+        if (!isTopLevel(event.target) && hasSubMenu(event.target)) {
+          const thisDropdown = Dropdown.getOrCreateInstance(event.target)
+          thisDropdown.show()
           getFirstSubMenu(event.target).focus()
-          return
+        } else {
+          console.log('test 14')
         }
       }
 
-      // console.log(event.target.nextElementSibling.children[0].children[0])
+      if (event.key === ARROW_LEFT_KEY && !isTopLevel(event.target)) {
+        const thisDropdown = Dropdown.getOrCreateInstance(event.target.parentNode.parentNode.previousElementSibling)
+        thisDropdown.hide()
+        event.target.parentNode.parentNode.previousElementSibling.focus()
+      }
 
       // Dropdown.getInstance(getToggleButton())._selectMenuItem(event)
 
@@ -590,6 +625,7 @@ class Dropdown extends BaseComponent {
     }
 
     if (!isActive) {
+      console.log('test10')
       Dropdown.clearMenus()
     }
   }
