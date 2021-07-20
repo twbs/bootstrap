@@ -274,6 +274,10 @@
 //
 // Styles for switching between navbars with light or dark background.
 
+.navbar-light {
+  @include deprecate("`.navbar-light`", "v5.2.0", "v6.0.0");
+}
+
 .navbar-dark {
   --#{$variable-prefix}navbar-color: #{$navbar-dark-color};
   --#{$variable-prefix}navbar-hover-color: #{$navbar-dark-hover-color};
