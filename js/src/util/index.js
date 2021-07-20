@@ -192,11 +192,14 @@ const noop = () => {}
  * Trick to restart an element's animation
  *
  * @param {HTMLElement} element
- * @return number   // Don't use it!
+ * @return void
  *
  * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
  */
-const reflow = element => element.offsetHeight
+const reflow = element => {
+  // eslint-disable-next-line no-unused-expressions
+  element.offsetHeight
+}
 
 const getjQuery = () => {
   const { jQuery } = window
