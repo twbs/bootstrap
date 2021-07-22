@@ -1,4 +1,3 @@
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v5.0.2): util/index.js
@@ -188,7 +187,18 @@ const findShadowRoot = element => {
 
 const noop = () => {}
 
-const reflow = element => element.offsetHeight
+/**
+ * Trick to restart an element's animation
+ *
+ * @param {HTMLElement} element
+ * @return void
+ *
+ * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
+ */
+const reflow = element => {
+  // eslint-disable-next-line no-unused-expressions
+  element.offsetHeight
+}
 
 const getjQuery = () => {
   const { jQuery } = window
