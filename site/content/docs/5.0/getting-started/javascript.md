@@ -109,7 +109,7 @@ All programmatic API methods are **asynchronous** and return to the caller once 
 In order to execute an action once the transition is complete, you can listen to the corresponding event.
 
 ```js
-var myCollapseEl = document.getElementById('#myCollapse')
+var myCollapseEl = document.getElementById('myCollapse')
 
 myCollapseEl.addEventListener('shown.bs.collapse', function (event) {
   // Action to execute once the collapsible area is expanded

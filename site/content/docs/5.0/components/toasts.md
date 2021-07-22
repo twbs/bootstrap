@@ -41,12 +41,16 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 </div>
 {{< /example >}}
 
-### Live
+{{< callout warning >}}
+Previously, our scripts dynamically added the `.hide` class to completely hide a toast (with `display:none`, rather than just with `opacity:0`). This is now not necessary anymore. However, for backwards compatibility, our script will continue to toggle the class (even though there is no practical need for it) until the next major version.
+{{< /callout >}}
 
-Click the button below to show a toast (positioned with our utilities in the lower right corner) that has been hidden by default with `.hide`.
+### Live example
+
+Click the button below to show a toast (positioned with our utilities in the lower right corner) that has been hidden by default.
 
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       {{< placeholder width="20" height="20" background="#007aff" class="rounded me-2" text="false" title="false" >}}
       <strong class="me-auto">Bootstrap</strong>
@@ -67,7 +71,7 @@ Click the button below to show a toast (positioned with our utilities in the low
 <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
 
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <img src="..." class="rounded me-2" alt="...">
       <strong class="me-auto">Bootstrap</strong>
@@ -79,6 +83,20 @@ Click the button below to show a toast (positioned with our utilities in the low
     </div>
   </div>
 </div>
+```
+
+We use the following JavaScript to trigger our live toast demo:
+
+```js
+var toastTrigger = document.getElementById('liveToastBtn')
+var toastLiveExample = document.getElementById('liveToast')
+if (toastTrigger) {
+  toastTrigger.addEventListener('click', function () {
+    var toast = new bootstrap.Toast(toastLiveExample)
+
+    toast.show()
+  })
+}
 ```
 
 ### Translucent

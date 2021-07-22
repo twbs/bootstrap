@@ -34,6 +34,7 @@
     - title: Gutters
     - title: Utilities
     - title: Z-index
+    - title: CSS Grid
 
 - title: Content
   pages:
@@ -87,9 +88,11 @@
     - title: Colored links
     - title: Ratio
     - title: Position
+    - title: Stacks
     - title: Visually hidden
     - title: Stretched link
     - title: Text truncation
+    - title: Vertical rule
 
 - title: Utilities
   pages:
@@ -101,6 +104,7 @@
     - title: Flex
     - title: Float
     - title: Interactions
+    - title: Opacity
     - title: Overflow
     - title: Position
     - title: Shadows

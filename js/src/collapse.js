@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): collapse.js
+ * Bootstrap (v5.0.2): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -50,6 +50,7 @@ const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_COLLAPSE = 'collapse'
 const CLASS_NAME_COLLAPSING = 'collapsing'
 const CLASS_NAME_COLLAPSED = 'collapsed'
+const CLASS_NAME_HORIZONTAL = 'collapse-horizontal'
 
 const WIDTH = 'width'
 const HEIGHT = 'height'
@@ -266,7 +267,7 @@ class Collapse extends BaseComponent {
   }
 
   _getDimension() {
-    return this._element.classList.contains(WIDTH) ? WIDTH : HEIGHT
+    return this._element.classList.contains(CLASS_NAME_HORIZONTAL) ? WIDTH : HEIGHT
   }
 
   _getParent() {

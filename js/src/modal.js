@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): modal.js
+ * Bootstrap (v5.0.2): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -62,6 +62,7 @@ const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_STATIC = 'modal-static'
 
+const SELECTOR = '.modal'
 const SELECTOR_DIALOG = '.modal-dialog'
 const SELECTOR_MODAL_BODY = '.modal-body'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="modal"]'
@@ -129,8 +130,6 @@ class Modal extends BaseComponent {
 
     this._setEscapeEvent()
     this._setResizeEvent()
-
-    EventHandler.on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, event => this.hide(event))
 
     EventHandler.on(this._dialog, EVENT_MOUSEDOWN_DISMISS, () => {
       EventHandler.one(this._element, EVENT_MOUSEUP_DISMISS, event => {
@@ -434,6 +433,13 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   const data = Modal.getOrCreateInstance(target)
 
   data.toggle(this)
+})
+
+EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_DISMISS, function (event) {
+  const target = getElementFromSelector(this) || this.closest(SELECTOR)
+  const modal = Modal.getOrCreateInstance(target)
+
+  modal.hide(event)
 })
 
 /**

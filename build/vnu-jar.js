@@ -26,10 +26,7 @@ execFile('java', ['-version'], (error, stdout, stderr) => {
     // "autocomplete" is included in <button> and checkboxes and radio <input>s due to
     // Firefox's non-standard autocomplete behavior - see https://bugzilla.mozilla.org/show_bug.cgi?id=654072
     'Attribute “autocomplete” is only allowed when the input type is.*',
-    'Attribute “autocomplete” not allowed on element “button” at this point.',
-    // Content → Reboot uses various date/time inputs as a visual example.
-    // Documentation does not rely on them being usable.
-    'The “(?:date|week|month|color|datetime-local|time)” input type is not supported in all browsers.*'
+    'Attribute “autocomplete” not allowed on element “button” at this point.'
   ].join('|')
 
   const args = [

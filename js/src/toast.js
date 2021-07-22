@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): toast.js
+ * Bootstrap (v5.0.2): toast.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -35,7 +35,7 @@ const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
 
 const CLASS_NAME_FADE = 'fade'
-const CLASS_NAME_HIDE = 'hide'
+const CLASS_NAME_HIDE = 'hide' // @deprecated - kept here only for backwards compatibility
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_SHOWING = 'showing'
 
@@ -101,15 +101,14 @@ class Toast extends BaseComponent {
 
     const complete = () => {
       this._element.classList.remove(CLASS_NAME_SHOWING)
-      this._element.classList.add(CLASS_NAME_SHOW)
-
       EventHandler.trigger(this._element, EVENT_SHOWN)
 
       this._maybeScheduleHide()
     }
 
-    this._element.classList.remove(CLASS_NAME_HIDE)
+    this._element.classList.remove(CLASS_NAME_HIDE) // @deprecated
     reflow(this._element)
+    this._element.classList.add(CLASS_NAME_SHOW)
     this._element.classList.add(CLASS_NAME_SHOWING)
 
     this._queueCallback(complete, this._element, this._config.animation)
@@ -127,11 +126,13 @@ class Toast extends BaseComponent {
     }
 
     const complete = () => {
-      this._element.classList.add(CLASS_NAME_HIDE)
+      this._element.classList.add(CLASS_NAME_HIDE) // @deprecated
+      this._element.classList.remove(CLASS_NAME_SHOWING)
+      this._element.classList.remove(CLASS_NAME_SHOW)
       EventHandler.trigger(this._element, EVENT_HIDDEN)
     }
 
-    this._element.classList.remove(CLASS_NAME_SHOW)
+    this._element.classList.add(CLASS_NAME_SHOWING)
     this._queueCallback(complete, this._element, this._config.animation)
   }
 

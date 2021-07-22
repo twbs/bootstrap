@@ -65,21 +65,6 @@ describe('ScrollSpy', () => {
       expect(sSpyByElement._element).toEqual(sSpyEl)
     })
 
-    it('should generate an id when there is not one', () => {
-      fixtureEl.innerHTML = [
-        '<nav></nav>',
-        '<div class="content"></div>'
-      ].join('')
-
-      const navEl = fixtureEl.querySelector('nav')
-      const scrollSpy = new ScrollSpy(fixtureEl.querySelector('.content'), {
-        target: navEl
-      })
-
-      expect(scrollSpy).toBeDefined()
-      expect(navEl.getAttribute('id')).not.toEqual(null)
-    })
-
     it('should not process element without target', () => {
       fixtureEl.innerHTML = [
         '<nav id="navigation" class="navbar">',
