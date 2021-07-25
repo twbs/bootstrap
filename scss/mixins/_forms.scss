@@ -69,7 +69,7 @@
     // Align tooltip to form elements
     .form-row > .col > &,
     .form-row > [class*="col-"] > & {
-      left: $form-grid-gutter-width / 2;
+      left: $form-grid-gutter-width * .5;
     }
   }
 
