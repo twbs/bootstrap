@@ -299,7 +299,7 @@ $h4-font-size:                $font-size-base * 1.5 !default;
 $h5-font-size:                $font-size-base * 1.25 !default;
 $h6-font-size:                $font-size-base !default;
 
-$headings-margin-bottom:      $spacer / 2 !default;
+$headings-margin-bottom:      $spacer * .5 !default;
 $headings-font-family:        null !default;
 $headings-font-weight:        500 !default;
 $headings-line-height:        1.2 !default;
@@ -495,7 +495,7 @@ $input-height-border:                   $input-border-width * 2 !default;
 
 $input-height-inner:                    add($input-line-height * 1em, $input-padding-y * 2) !default;
 $input-height-inner-half:               add($input-line-height * .5em, $input-padding-y) !default;
-$input-height-inner-quarter:            add($input-line-height * .25em, $input-padding-y / 2) !default;
+$input-height-inner-quarter:            add($input-line-height * .25em, $input-padding-y * .5) !default;
 
 $input-height:                          add($input-line-height * 1em, add($input-padding-y * 2, $input-height-border, false)) !default;
 $input-height-sm:                       add($input-line-height-sm * 1em, add($input-padding-y-sm * 2, $input-height-border, false)) !default;
@@ -565,7 +565,7 @@ $custom-radio-indicator-border-radius:          50% !default;
 $custom-radio-indicator-icon-checked:           url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='-4 -4 8 8'><circle r='3' fill='#{$custom-control-indicator-checked-color}'/></svg>") !default;
 
 $custom-switch-width:                           $custom-control-indicator-size * 1.75 !default;
-$custom-switch-indicator-border-radius:         $custom-control-indicator-size / 2 !default;
+$custom-switch-indicator-border-radius:         $custom-control-indicator-size * .5 !default;
 $custom-switch-indicator-size:                  subtract($custom-control-indicator-size, $custom-control-indicator-border-width * 4) !default;
 
 $custom-select-padding-y:           $input-padding-y !default;
@@ -710,12 +710,12 @@ $nav-pills-link-active-color:       $component-active-color !default;
 $nav-pills-link-active-bg:          $component-active-bg !default;
 
 $nav-divider-color:                 $gray-200 !default;
-$nav-divider-margin-y:              $spacer / 2 !default;
+$nav-divider-margin-y:              $spacer * .5 !default;
 
 
 // Navbar
 
-$navbar-padding-y:                  $spacer / 2 !default;
+$navbar-padding-y:                  $spacer * .5 !default;
 $navbar-padding-x:                  $spacer !default;
 
 $navbar-nav-link-padding-x:         .5rem !default;
@@ -724,7 +724,7 @@ $navbar-brand-font-size:            $font-size-lg !default;
 // Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
 $nav-link-height:                   $font-size-base * $line-height-base + $nav-link-padding-y * 2 !default;
 $navbar-brand-height:               $navbar-brand-font-size * $line-height-base !default;
-$navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) / 2 !default;
+$navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) * .5 !default;
 
 $navbar-toggler-padding-y:          .25rem !default;
 $navbar-toggler-padding-x:          .75rem !default;
@@ -845,7 +845,7 @@ $card-bg:                           $white !default;
 
 $card-img-overlay-padding:          1.25rem !default;
 
-$card-group-margin:                 $grid-gutter-width / 2 !default;
+$card-group-margin:                 $grid-gutter-width * .5 !default;
 $card-deck-margin:                  $card-group-margin !default;
 
 $card-columns-count:                3 !default;
