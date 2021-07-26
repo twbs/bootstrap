@@ -94,8 +94,15 @@ describe('FocusTrap', () => {
       const outside = document.getElementById('outside')
 
       spyOn(SelectorEngine, 'focusableChildren').and.callFake(() => [first, inside, last])
+      spyOn(first, 'focus').and.callThrough()
 
-      first.addEventListener('focusin', done)
+      const focusInListener = () => {
+        expect(first.focus).toHaveBeenCalled()
+        first.removeEventListener('focusin', focusInListener)
+        done()
+      }
+
+      first.addEventListener('focusin', focusInListener)
 
       const keydown = createEvent('keydown')
       keydown.key = 'Tab'
@@ -124,8 +131,15 @@ describe('FocusTrap', () => {
       const outside = document.getElementById('outside')
 
       spyOn(SelectorEngine, 'focusableChildren').and.callFake(() => [first, inside, last])
+      spyOn(last, 'focus').and.callThrough()
 
-      last.addEventListener('focusin', done)
+      const focusInListener = () => {
+        expect(last.focus).toHaveBeenCalled()
+        last.removeEventListener('focusin', focusInListener)
+        done()
+      }
+
+      last.addEventListener('focusin', focusInListener)
 
       const keydown = createEvent('keydown')
       keydown.key = 'Tab'
