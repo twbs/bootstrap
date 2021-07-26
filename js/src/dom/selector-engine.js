@@ -79,7 +79,6 @@ const SelectorEngine = {
       'button',
       'input',
       'textarea',
-      'area',
       'select',
       'details',
       '[tabindex]',

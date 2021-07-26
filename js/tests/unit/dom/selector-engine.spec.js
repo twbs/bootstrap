@@ -166,7 +166,6 @@ describe('SelectorEngine', () => {
         '<button>lorem</button>',
         '<input />',
         '<textarea></textarea>',
-        '<map><area></area></map>',
         '<select></select>',
         '<details>lorem</details>'
       ].join('')
@@ -176,7 +175,6 @@ describe('SelectorEngine', () => {
         fixtureEl.querySelector('button'),
         fixtureEl.querySelector('input'),
         fixtureEl.querySelector('textarea'),
-        fixtureEl.querySelector('area'),
         fixtureEl.querySelector('select'),
         fixtureEl.querySelector('details')
       ]
