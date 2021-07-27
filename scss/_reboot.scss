@@ -566,13 +566,6 @@ legend {
   padding: 0;
 }
 
-
-// Inherit font family and line height for file input buttons
-
-::file-selector-button {
-  font: inherit;
-}
-
 // 1. Change font properties to `inherit`
 // 2. Correct the inability to style clickable types in iOS and Safari.
 
