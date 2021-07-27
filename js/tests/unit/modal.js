@@ -102,6 +102,32 @@ $(function () {
       .bootstrapModal('show')
   })
 
+  QUnit.test('should be shown after the first call to show() has been prevented while fading is enabled', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    var $el = $('<div class="modal fade"><div class="modal-dialog" style="transition-duration: 20ms;"/></div>').appendTo('#qunit-fixture')
+
+    var prevented = false
+    $el
+      .on('show.bs.modal', function (e) {
+        if (!prevented) {
+          e.preventDefault()
+          prevented = true
+
+          setTimeout(function () {
+            $el.bootstrapModal('show')
+          })
+        }
+      })
+      .on('shown.bs.modal', function () {
+        assert.ok(prevented, 'show prevented')
+        assert.ok($el.hasClass('fade'))
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
   QUnit.test('should hide modal when hide is called', function (assert) {
     assert.expect(3)
     var done = assert.async()
