@@ -1,9 +1,10 @@
 ---
 layout: docs
-title: Build tools
-description: Contribute to Bootstrap with our documentation build scripts and tests.
+title: Contribute
+description: Help develop Bootstrap with our documentation build scripts and tests.
 group: getting-started
 toc: true
+aliases: "/docs/5.0/getting-started/build-tools/"
 ---
 
 ## Tooling setup
