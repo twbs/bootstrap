@@ -345,7 +345,7 @@ describe('Modal', () => {
       modal.show()
     })
 
-    it('should not enforce focus if focus equal to false', done => {
+    it('should not trap focus if focus equal to false', done => {
       fixtureEl.innerHTML = '<div class="modal fade"><div class="modal-dialog"></div></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
@@ -353,10 +353,10 @@ describe('Modal', () => {
         focus: false
       })
 
-      spyOn(modal, '_enforceFocus')
+      spyOn(modal._focustrap, 'activate').and.callThrough()
 
       modalEl.addEventListener('shown.bs.modal', () => {
-        expect(modal._enforceFocus).not.toHaveBeenCalled()
+        expect(modal._focustrap.activate).not.toHaveBeenCalled()
         done()
       })
 
@@ -588,33 +588,17 @@ describe('Modal', () => {
       modal.show()
     })
 
-    it('should enforce focus', done => {
+    it('should trap focus', done => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
 
-      spyOn(modal, '_enforceFocus').and.callThrough()
-
-      const focusInListener = () => {
-        expect(modal._element.focus).toHaveBeenCalled()
-        document.removeEventListener('focusin', focusInListener)
-        done()
-      }
+      spyOn(modal._focustrap, 'activate').and.callThrough()
 
       modalEl.addEventListener('shown.bs.modal', () => {
-        expect(modal._enforceFocus).toHaveBeenCalled()
-
-        spyOn(modal._element, 'focus')
-
-        document.addEventListener('focusin', focusInListener)
-
-        const focusInEvent = createEvent('focusin', { bubbles: true })
-        Object.defineProperty(focusInEvent, 'target', {
-          value: fixtureEl
-        })
-
-        document.dispatchEvent(focusInEvent)
+        expect(modal._focustrap.activate).toHaveBeenCalled()
+        done()
       })
 
       modal.show()
@@ -721,6 +705,25 @@ describe('Modal', () => {
 
       modal.show()
     })
+
+    it('should release focus trap', done => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+      spyOn(modal._focustrap, 'deactivate').and.callThrough()
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        modal.hide()
+      })
+
+      modalEl.addEventListener('hidden.bs.modal', () => {
+        expect(modal._focustrap.deactivate).toHaveBeenCalled()
+        done()
+      })
+
+      modal.show()
+    })
   })
 
   describe('dispose', () => {
@@ -729,6 +732,8 @@ describe('Modal', () => {
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
+      const focustrap = modal._focustrap
+      spyOn(focustrap, 'deactivate').and.callThrough()
 
       expect(Modal.getInstance(modalEl)).toEqual(modal)
 
@@ -737,7 +742,8 @@ describe('Modal', () => {
       modal.dispose()
 
       expect(Modal.getInstance(modalEl)).toBeNull()
-      expect(EventHandler.off).toHaveBeenCalledTimes(4)
+      expect(EventHandler.off).toHaveBeenCalledTimes(3)
+      expect(focustrap.deactivate).toHaveBeenCalled()
     })
   })
 

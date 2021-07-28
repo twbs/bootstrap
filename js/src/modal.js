@@ -19,6 +19,8 @@ import SelectorEngine from './dom/selector-engine'
 import ScrollBarHelper from './util/scrollbar'
 import BaseComponent from './base-component'
 import Backdrop from './util/backdrop'
+import FocusTrap from './util/focustrap'
+import { enableDismissTrigger } from './util/component-functions'
 
 /**
  * ------------------------------------------------------------------------
@@ -49,7 +51,6 @@ const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
-const EVENT_FOCUSIN = `focusin${EVENT_KEY}`
 const EVENT_RESIZE = `resize${EVENT_KEY}`
 const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
 const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
@@ -62,11 +63,9 @@ const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_STATIC = 'modal-static'
 
-const SELECTOR = '.modal'
 const SELECTOR_DIALOG = '.modal-dialog'
 const SELECTOR_MODAL_BODY = '.modal-body'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="modal"]'
-const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="modal"]'
 
 /**
  * ------------------------------------------------------------------------
@@ -81,6 +80,7 @@ class Modal extends BaseComponent {
     this._config = this._getConfig(config)
     this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element)
     this._backdrop = this._initializeBackDrop()
+    this._focustrap = this._initializeFocusTrap()
     this._isShown = false
     this._ignoreBackdropClick = false
     this._isTransitioning = false
@@ -142,11 +142,7 @@ class Modal extends BaseComponent {
     this._showBackdrop(() => this._showElement(relatedTarget))
   }
 
-  hide(event) {
-    if (event && ['A', 'AREA'].includes(event.target.tagName)) {
-      event.preventDefault()
-    }
-
+  hide() {
     if (!this._isShown || this._isTransitioning) {
       return
     }
@@ -167,7 +163,7 @@ class Modal extends BaseComponent {
     this._setEscapeEvent()
     this._setResizeEvent()
 
-    EventHandler.off(document, EVENT_FOCUSIN)
+    this._focustrap.deactivate()
 
     this._element.classList.remove(CLASS_NAME_SHOW)
 
@@ -182,14 +178,8 @@ class Modal extends BaseComponent {
       .forEach(htmlElement => EventHandler.off(htmlElement, EVENT_KEY))
 
     this._backdrop.dispose()
+    this._focustrap.deactivate()
     super.dispose()
-
-    /**
-     * `document` has 2 events `EVENT_FOCUSIN` and `EVENT_CLICK_DATA_API`
-     * Do not move `document` in `htmlElements` array
-     * It will remove `EVENT_CLICK_DATA_API` event that should remain
-     */
-    EventHandler.off(document, EVENT_FOCUSIN)
   }
 
   handleUpdate() {
@@ -202,6 +192,12 @@ class Modal extends BaseComponent {
     return new Backdrop({
       isVisible: Boolean(this._config.backdrop), // 'static' option will be translated to true, and booleans will keep their value
       isAnimated: this._isAnimated()
+    })
+  }
+
+  _initializeFocusTrap() {
+    return new FocusTrap({
+      trapElement: this._element
     })
   }
 
@@ -240,13 +236,9 @@ class Modal extends BaseComponent {
 
     this._element.classList.add(CLASS_NAME_SHOW)
 
-    if (this._config.focus) {
-      this._enforceFocus()
-    }
-
     const transitionComplete = () => {
       if (this._config.focus) {
-        this._element.focus()
+        this._focustrap.activate()
       }
 
       this._isTransitioning = false
@@ -256,17 +248,6 @@ class Modal extends BaseComponent {
     }
 
     this._queueCallback(transitionComplete, this._dialog, isAnimated)
-  }
-
-  _enforceFocus() {
-    EventHandler.off(document, EVENT_FOCUSIN) // guard against infinite focus loop
-    EventHandler.on(document, EVENT_FOCUSIN, event => {
-      if (document !== event.target &&
-          this._element !== event.target &&
-          !this._element.contains(event.target)) {
-        this._element.focus()
-      }
-    })
   }
 
   _setEscapeEvent() {
@@ -435,12 +416,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   data.toggle(this)
 })
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_DISMISS, function (event) {
-  const target = getElementFromSelector(this) || this.closest(SELECTOR)
-  const modal = Modal.getOrCreateInstance(target)
-
-  modal.hide(event)
-})
+enableDismissTrigger(Modal)
 
 /**
  * ------------------------------------------------------------------------
