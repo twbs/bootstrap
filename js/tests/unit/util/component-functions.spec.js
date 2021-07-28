@@ -49,6 +49,7 @@ describe('Plugin functions', () => {
       expect(DummyClass2.getOrCreateInstance).toHaveBeenCalledWith(componentWrapper)
       expect(DummyClass2.prototype.testMethod).toHaveBeenCalled()
     })
+
     it('if data-bs-dismiss="PluginName" hasn\'t got "data-bs-target", "getOrCreateInstance" has to be initialized by closest "plugin.Name" class', () => {
       fixtureEl.innerHTML = [
         '<div id="foo" class="test">',
@@ -105,4 +106,3 @@ describe('Plugin functions', () => {
     })
   })
 })
-
