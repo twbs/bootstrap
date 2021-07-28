@@ -341,6 +341,10 @@ var toastList = toastElList.map(function (toastEl) {
 })
 ```
 
+### Triggers
+
+{{% js-dismiss "toast" %}}
+
 ### Options
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-animation=""`.

@@ -20,6 +20,7 @@ import ScrollBarHelper from './util/scrollbar'
 import BaseComponent from './base-component'
 import Backdrop from './util/backdrop'
 import FocusTrap from './util/focustrap'
+import { enableDismissTrigger } from './util/component-functions'
 
 /**
  * ------------------------------------------------------------------------
@@ -62,11 +63,9 @@ const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_STATIC = 'modal-static'
 
-const SELECTOR = '.modal'
 const SELECTOR_DIALOG = '.modal-dialog'
 const SELECTOR_MODAL_BODY = '.modal-body'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="modal"]'
-const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="modal"]'
 
 /**
  * ------------------------------------------------------------------------
@@ -143,11 +142,7 @@ class Modal extends BaseComponent {
     this._showBackdrop(() => this._showElement(relatedTarget))
   }
 
-  hide(event) {
-    if (event && ['A', 'AREA'].includes(event.target.tagName)) {
-      event.preventDefault()
-    }
-
+  hide() {
     if (!this._isShown || this._isTransitioning) {
       return
     }
@@ -421,12 +416,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   data.toggle(this)
 })
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_DISMISS, function (event) {
-  const target = getElementFromSelector(this) || this.closest(SELECTOR)
-  const modal = Modal.getOrCreateInstance(target)
-
-  modal.hide(event)
-})
+enableDismissTrigger(Modal)
 
 /**
  * ------------------------------------------------------------------------
