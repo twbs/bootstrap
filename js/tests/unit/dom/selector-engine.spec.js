@@ -156,5 +156,87 @@ describe('SelectorEngine', () => {
       expect(SelectorEngine.next(divTest, '.btn')).toEqual([btn])
     })
   })
+
+  describe('focusableChildren', () => {
+    it('should return only elements with specific tag names', () => {
+      fixtureEl.innerHTML = [
+        '<div>lorem</div>',
+        '<span>lorem</span>',
+        '<a>lorem</a>',
+        '<button>lorem</button>',
+        '<input />',
+        '<textarea></textarea>',
+        '<select></select>',
+        '<details>lorem</details>'
+      ].join('')
+
+      const expectedElements = [
+        fixtureEl.querySelector('a'),
+        fixtureEl.querySelector('button'),
+        fixtureEl.querySelector('input'),
+        fixtureEl.querySelector('textarea'),
+        fixtureEl.querySelector('select'),
+        fixtureEl.querySelector('details')
+      ]
+
+      expect(SelectorEngine.focusableChildren(fixtureEl)).toEqual(expectedElements)
+    })
+
+    it('should return any element with non negative tab index', () => {
+      fixtureEl.innerHTML = [
+        '<div tabindex>lorem</div>',
+        '<div tabindex="0">lorem</div>',
+        '<div tabindex="10">lorem</div>'
+      ].join('')
+
+      const expectedElements = [
+        fixtureEl.querySelector('[tabindex]'),
+        fixtureEl.querySelector('[tabindex="0"]'),
+        fixtureEl.querySelector('[tabindex="10"]')
+      ]
+
+      expect(SelectorEngine.focusableChildren(fixtureEl)).toEqual(expectedElements)
+    })
+
+    it('should return not return elements with negative tab index', () => {
+      fixtureEl.innerHTML = [
+        '<button tabindex="-1">lorem</button>'
+      ].join('')
+
+      const expectedElements = []
+
+      expect(SelectorEngine.focusableChildren(fixtureEl)).toEqual(expectedElements)
+    })
+
+    it('should return contenteditable elements', () => {
+      fixtureEl.innerHTML = [
+        '<div contenteditable="true">lorem</div>'
+      ].join('')
+
+      const expectedElements = [fixtureEl.querySelector('[contenteditable="true"]')]
+
+      expect(SelectorEngine.focusableChildren(fixtureEl)).toEqual(expectedElements)
+    })
+
+    it('should not return disabled elements', () => {
+      fixtureEl.innerHTML = [
+        '<button disabled="true">lorem</button>'
+      ].join('')
+
+      const expectedElements = []
+
+      expect(SelectorEngine.focusableChildren(fixtureEl)).toEqual(expectedElements)
+    })
+
+    it('should not return invisible elements', () => {
+      fixtureEl.innerHTML = [
+        '<button style="display:none;">lorem</button>'
+      ].join('')
+
+      const expectedElements = []
+
+      expect(SelectorEngine.focusableChildren(fixtureEl)).toEqual(expectedElements)
+    })
+  })
 })
 
