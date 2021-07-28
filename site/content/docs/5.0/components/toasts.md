@@ -411,7 +411,7 @@ toast.dispose()
 
 #### getInstance
 
-*Static* method which allows you to get the scrollspy instance associated with a DOM element
+*Static* method which allows you to get the toast instance associated with a DOM element
 
 ```js
 var myToastEl = document.getElementById('myToastEl')
@@ -420,7 +420,7 @@ var myToast = bootstrap.Toast.getInstance(myToastEl) // Returns a Bootstrap toas
 
 #### getOrCreateInstance
 
-*Static* method which allows you to get the scrollspy instance associated with a DOM element, or create a new one in case it wasn't initialised
+*Static* method which allows you to get the toast instance associated with a DOM element, or create a new one in case it wasn't initialised
 
 ```js
 var myToastEl = document.getElementById('myToastEl')
