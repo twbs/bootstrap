@@ -2,6 +2,7 @@
 //
 // Custom buttons for the docs.
 
+// scss-docs-start btn-css-vars-example
 .btn-bd-primary {
   font-weight: 600;
   color: $white;
@@ -19,6 +20,7 @@
     box-shadow: 0 0 0 3px rgba($bd-purple-bright, .25);
   }
 }
+// scss-docs-end btn-css-vars-example
 
 .btn-bd-download {
   font-weight: 600;
