@@ -316,13 +316,13 @@ $utilities: map-merge(
     ),
     "margin-x": (
       responsive: true,
-      property: margin-right margin-left,
+      property: margin-inline,
       class: mx,
       values: map-merge($spacers, (auto: auto))
     ),
     "margin-y": (
       responsive: true,
-      property: margin-top margin-bottom,
+      property: margin-block,
       class: my,
       values: map-merge($spacers, (auto: auto))
     ),
@@ -359,13 +359,13 @@ $utilities: map-merge(
     ),
     "negative-margin-x": (
       responsive: true,
-      property: margin-right margin-left,
+      property: margin-inline,
       class: mx,
       values: $negative-spacers
     ),
     "negative-margin-y": (
       responsive: true,
-      property: margin-top margin-bottom,
+      property: margin-block,
       class: my,
       values: $negative-spacers
     ),
@@ -402,13 +402,13 @@ $utilities: map-merge(
     ),
     "padding-x": (
       responsive: true,
-      property: padding-right padding-left,
+      property: padding-inline,
       class: px,
       values: $spacers
     ),
     "padding-y": (
       responsive: true,
-      property: padding-top padding-bottom,
+      property: padding-block,
       class: py,
       values: $spacers
     ),

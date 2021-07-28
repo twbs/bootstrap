@@ -29,8 +29,8 @@ Where *sides* is one of:
 - `b` - for classes that set `margin-bottom` or `padding-bottom`
 - `s` - (start) for classes that set `margin-left` or `padding-left` in LTR, `margin-right` or `padding-right` in RTL
 - `e` - (end) for classes that set `margin-right` or `padding-right` in LTR, `margin-left` or `padding-left` in RTL
-- `x` - for classes that set both `*-left` and `*-right`
-- `y` - for classes that set both `*-top` and `*-bottom`
+- `x` - for classes that set `*-inline`, the logical property equivalent of `*-left` and `*-right`
+- `y` - for classes that set `*-block`, the logical property equivalent of `*-top` and `*-bottom`
 - blank - for classes that set a `margin` or `padding` on all 4 sides of the element
 
 Where *size* is one of:
@@ -58,9 +58,12 @@ Here are some representative examples of these classes:
   margin-left: ($spacer * .25) !important;
 }
 
+.my-2 {
+  margin-block: ($spacer * .5) !important;
+}
+
 .px-2 {
-  padding-left: ($spacer * .5) !important;
-  padding-right: ($spacer * .5) !important;
+  padding-inline: ($spacer * .5) !important;
 }
 
 .p-3 {
