@@ -1,3 +1,5 @@
+// stylelint-disable custom-property-empty-line-before
+
 // Button variants
 //
 // Easily pump out default styles, as well as :hover, :focus, :active,
@@ -18,59 +20,20 @@
   $disabled-border: $border,
   $disabled-color: color-contrast($disabled-background)
 ) {
-  color: $color;
-  @include gradient-bg($background);
-  border-color: $border;
-  @include box-shadow($btn-box-shadow);
-
-  &:hover {
-    color: $hover-color;
-    @include gradient-bg($hover-background);
-    border-color: $hover-border;
-  }
-
-  .btn-check:focus + &,
-  &:focus {
-    color: $hover-color;
-    @include gradient-bg($hover-background);
-    border-color: $hover-border;
-    @if $enable-shadows {
-      @include box-shadow($btn-box-shadow, 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5));
-    } @else {
-      // Avoid using mixin so we can pass custom focus shadow properly
-      box-shadow: 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
-    }
-  }
-
-  .btn-check:checked + &,
-  .btn-check:active + &,
-  &:active,
-  &.active,
-  .show > &.dropdown-toggle {
-    color: $active-color;
-    background-color: $active-background;
-    // Remove CSS gradients if they're enabled
-    background-image: if($enable-gradients, none, null);
-    border-color: $active-border;
-
-    &:focus {
-      @if $enable-shadows {
-        @include box-shadow($btn-active-box-shadow, 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5));
-      } @else {
-        // Avoid using mixin so we can pass custom focus shadow properly
-        box-shadow: 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
-      }
-    }
-  }
-
-  &:disabled,
-  &.disabled {
-    color: $disabled-color;
-    background-color: $disabled-background;
-    // Remove CSS gradients if they're enabled
-    background-image: if($enable-gradients, none, null);
-    border-color: $disabled-border;
-  }
+  --#{$variable-prefix}btn-color: #{$color};
+  --#{$variable-prefix}btn-bg: #{$background};
+  --#{$variable-prefix}btn-border-color: #{$border};
+  --#{$variable-prefix}btn-hover-color: #{$hover-color};
+  --#{$variable-prefix}btn-hover-bg: #{$hover-background};
+  --#{$variable-prefix}btn-hover-border-color: #{$hover-border};
+  --#{$variable-prefix}btn-focus-shadow-rgb: #{to-rgb(mix($color, $border, 15%))};
+  --#{$variable-prefix}btn-active-color: #{$active-color};
+  --#{$variable-prefix}btn-active-bg: #{$active-background};
+  --#{$variable-prefix}btn-active-border-color: #{$active-border};
+  --#{$variable-prefix}btn-active-shadow: #{$btn-active-box-shadow};
+  --#{$variable-prefix}btn-disabled-color: #{$disabled-color};
+  --#{$variable-prefix}btn-disabled-bg: #{$disabled-background};
+  --#{$variable-prefix}btn-disabled-border-color: #{$disabled-border};
 }
 // scss-docs-end btn-variant-mixin
 
@@ -82,52 +45,26 @@
   $active-border: $color,
   $active-color: color-contrast($active-background)
 ) {
-  color: $color;
-  border-color: $color;
-
-  &:hover {
-    color: $color-hover;
-    background-color: $active-background;
-    border-color: $active-border;
-  }
-
-  .btn-check:focus + &,
-  &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
-  }
-
-  .btn-check:checked + &,
-  .btn-check:active + &,
-  &:active,
-  &.active,
-  &.dropdown-toggle.show {
-    color: $active-color;
-    background-color: $active-background;
-    border-color: $active-border;
-
-    &:focus {
-      @if $enable-shadows {
-        @include box-shadow($btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($color, .5));
-      } @else {
-        // Avoid using mixin so we can pass custom focus shadow properly
-        box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
-      }
-    }
-  }
-
-  &:disabled,
-  &.disabled {
-    color: $color;
-    background-color: transparent;
-  }
+  --#{$variable-prefix}btn-color: #{$color};
+  --#{$variable-prefix}btn-border-color: #{$color};
+  --#{$variable-prefix}btn-hover-color: #{$color-hover};
+  --#{$variable-prefix}btn-hover-bg: #{$active-background};
+  --#{$variable-prefix}btn-hover-border-color: #{$active-border};
+  --#{$variable-prefix}btn-focus-shadow-rgb: #{to-rgb($color)};
+  --#{$variable-prefix}btn-active-color: #{$active-color};
+  --#{$variable-prefix}btn-active-bg: #{$active-background};
+  --#{$variable-prefix}btn-active-border-color: #{$active-border};
+  --#{$variable-prefix}btn-active-shadow: #{$btn-active-box-shadow};
+  --#{$variable-prefix}btn-disabled-color: #{$color};
+  --#{$variable-prefix}btn-disabled-bg: transparent;
+  --#{$variable-prefix}gradient: none;
 }
 // scss-docs-end btn-outline-variant-mixin
 
 // scss-docs-start btn-size-mixin
 @mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
-  padding: $padding-y $padding-x;
-  @include font-size($font-size);
-  // Manually declare to provide an override to the browser default
-  @include border-radius($border-radius, 0);
+  --#{$variable-prefix}btn-padding: #{$padding-y} #{$padding-x};
+  @include rfs($font-size, --#{$variable-prefix}btn-font-size);
+  --#{$variable-prefix}btn-radius: #{$border-radius};
 }
 // scss-docs-end btn-size-mixin
