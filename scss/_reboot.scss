@@ -55,8 +55,8 @@ body {
   line-height: $line-height-base;
   color: $body-color;
   text-align: $body-text-align;
-  word-wrap: break-word; // 2
   word-break: break-word; // 2
+  word-wrap: break-word; // 2
   background-color: $body-bg; // 3
   -webkit-text-size-adjust: 100%; // 4
   -webkit-tap-highlight-color: rgba($black, 0); // 5
