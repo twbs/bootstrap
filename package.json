@@ -1,5 +1,5 @@
 {
-  "name": "bootstrap",
+  "name": "@fluffyporkbuns/bootstrap-accessible",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
   "version": "5.0.2",
   "config": {
