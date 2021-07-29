@@ -50,6 +50,29 @@ Hover over the links below to see tooltips:
   </p>
 </div>
 
+### Custom tooltips
+
+<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.2.0</small>
+
+You can customize the appearance of tooltips using [CSS variables](#variables). We set a custom class with `data-bs-custom-class="custom-tooltip"` to scope our custom appearance and use it to override a local CSS variable.
+
+```scss
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-primary);
+}
+```
+
+{{< example class="tooltip-demo" >}}
+<button type="button" class="btn btn-secondary"
+        data-bs-toggle="tooltip" data-bs-placement="top"
+        data-bs-custom-class="custom-tooltip"
+        title="This top tooltip is themed via CSS variables.">
+  Custom tooltip
+</button>
+{{< /example >}}
+
+### Directions
+
 Hover over the buttons below to see the four tooltips directions: top, right, bottom, and left. Directions are mirrored when using Bootstrap in RTL.
 
 <div class="bd-example tooltip-demo">

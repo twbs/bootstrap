@@ -233,6 +233,10 @@
   white-space: nowrap;
 }
 
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-primary);
+}
+
 // Scrollspy demo on fixed height div
 .scrollspy-example {
   position: relative;
