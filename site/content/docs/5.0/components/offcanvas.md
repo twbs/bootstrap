@@ -194,7 +194,17 @@ Add a dismiss button with the `data-bs-dismiss="offcanvas"` attribute, which tri
 
 ### Via data attributes
 
+#### Toggle
+
 Add `data-bs-toggle="offcanvas"` and a `data-bs-target` or `href` to the element to automatically assign control of one offcanvas element. The `data-bs-target` attribute accepts a CSS selector to apply the offcanvas to. Be sure to add the class `offcanvas` to the offcanvas element. If you'd like it to default open, add the additional class `show`.
+
+#### Dismiss
+
+{{% js-dismiss "offcanvas" %}}
+
+{{< callout warning >}}
+While both ways to dismiss an offcanvas are supported, keep in mind that dismissing from outside an offcanvas does not match [the WAI-ARIA modal dialog design pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal). Do this at your own risk.
+{{< /callout >}}
 
 ### Via JavaScript
 

@@ -60,19 +60,19 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
 
 // 4. Include any optional Bootstrap CSS as needed
-@import "../node_modules/bootstrap/utilities";
-@import "../node_modules/bootstrap/scss/root";
+@import "../node_modules/bootstrap/scss/utilities";
 @import "../node_modules/bootstrap/scss/reboot";
 @import "../node_modules/bootstrap/scss/type";
 @import "../node_modules/bootstrap/scss/images";
 @import "../node_modules/bootstrap/scss/containers";
 @import "../node_modules/bootstrap/scss/grid";
-@import "../node_modules/bootstrap/helpers";
+@import "../node_modules/bootstrap/scss/helpers";
 
 // 5. Optionally include utilities API last to generate classes based on the Sass map in `_utililies.scss`
-@import "../node_modules/bootstrap/utilities/api";
+@import "../node_modules/bootstrap/scss/utilities/api";
 
 // 6. Add additional custom code here
 ```
@@ -100,9 +100,9 @@ $body-color: #111;
 // Required
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
 
 // Optional Bootstrap components here
-@import "../node_modules/bootstrap/scss/root";
 @import "../node_modules/bootstrap/scss/reboot";
 @import "../node_modules/bootstrap/scss/type";
 // etc
@@ -161,11 +161,11 @@ To remove colors from `$theme-colors`, or any other map, use `map-remove`. Be aw
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
 
 $theme-colors: map-remove($theme-colors, "info", "light", "dark");
 
 // Optional
-@import "../node_modules/bootstrap/scss/root";
 @import "../node_modules/bootstrap/scss/reboot";
 @import "../node_modules/bootstrap/scss/type";
 // etc
