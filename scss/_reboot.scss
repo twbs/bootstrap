@@ -39,13 +39,13 @@
 // Body
 //
 // 1. Remove the margin in all browsers.
-// 2. As a best practice, apply a default `background-color`.
-// 3. Prevent adjustments of font size after orientation changes in iOS.
-// 4. Change the default tap highlight to be completely transparent in iOS.
-// 5. Prevent long strings of text from breaking your components' layout.
+// 2. Prevent long strings of text from breaking your components' layout.
 //    We use `word-wrap` instead of the more common `overflow-wrap` for wider
 //    browser support, and add the deprecated `word-break: break-word` to
 //    avoid issues with flex containers.
+// 3. As a best practice, apply a default `background-color`.
+// 4. Prevent adjustments of font size after orientation changes in iOS.
+// 5. Change the default tap highlight to be completely transparent in iOS.
 
 body {
   margin: 0; // 1
@@ -55,12 +55,13 @@ body {
   line-height: $line-height-base;
   color: $body-color;
   text-align: $body-text-align;
-  background-color: $body-bg; // 2
-  -webkit-text-size-adjust: 100%; // 3
-  -webkit-tap-highlight-color: rgba($black, 0); // 4
-  word-wrap: break-word; // 5
-  word-break: break-word; // 5
+  word-wrap: break-word; // 2
+  word-break: break-word; // 2
+  background-color: $body-bg; // 3
+  -webkit-text-size-adjust: 100%; // 4
+  -webkit-tap-highlight-color: rgba($black, 0); // 5
 }
+
 
 // Content grouping
 //
