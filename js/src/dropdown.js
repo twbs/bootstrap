@@ -36,7 +36,7 @@ const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
 const ESCAPE_KEY = 'Escape'
-const SPACE_KEY = 'Space'
+const SPACE_KEY = ' '
 const TAB_KEY = 'Tab'
 const ARROW_UP_KEY = 'ArrowUp'
 const ARROW_DOWN_KEY = 'ArrowDown'
@@ -44,7 +44,7 @@ const ARROW_RIGHT_KEY = 'ArrowRight'
 const ARROW_LEFT_KEY = 'ArrowLeft'
 const RIGHT_MOUSE_BUTTON = 2 // MouseEvent.button value for the secondary button, usually the right button
 
-const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEY}|${ARROW_RIGHT_KEY}|${ARROW_DOWN_KEY}|${ESCAPE_KEY}|${SPACE_KEY}|${ARROW_LEFT_KEY}`)
+const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEY}|${ARROW_RIGHT_KEY}|${ARROW_DOWN_KEY}|${ESCAPE_KEY}|${SPACE_KEY}|${ARROW_LEFT_KEY}|${SPACE_KEY}`)
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
@@ -441,7 +441,6 @@ class Dropdown extends BaseComponent {
 
   static clearMenus(event) {
     if (event && (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY))) {
-      console.log('test 15')
       if (isTopLevel(event.target) &&
           event.key === ARROW_RIGHT_KEY) {
         if (event.target.parentNode.nextElementSibling &&
@@ -470,12 +469,10 @@ class Dropdown extends BaseComponent {
     for (let i = 0, len = toggles.length; i < len; i++) {
       const context = Dropdown.getInstance(toggles[i])
       if (!context || context._config.autoClose === false) {
-        console.log('test2')
         continue
       }
 
       if (!context._element.classList.contains(CLASS_NAME_SHOW)) {
-        console.log('test3')
         continue
       }
 
@@ -484,7 +481,6 @@ class Dropdown extends BaseComponent {
       }
 
       if (event) {
-        console.log('test5')
         const composedPath = event.composedPath()
         const isMenuTarget = composedPath.includes(context._menu)
         if (
@@ -492,23 +488,18 @@ class Dropdown extends BaseComponent {
           (context._config.autoClose === 'inside' && !isMenuTarget) ||
           (context._config.autoClose === 'outside' && isMenuTarget)
         ) {
-          console.log('test6')
           continue
         }
 
         // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
         if (context._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) || /input|select|option|textarea|form/i.test(event.target.tagName))) {
-          console.log('test7')
           continue
         }
 
         if (event.type === 'click') {
-          console.log('test8')
           relatedTarget.clickEvent = event
         }
       }
-
-      console.log('test9')
 
       context._completeHide(relatedTarget)
     }
@@ -519,29 +510,23 @@ class Dropdown extends BaseComponent {
   }
 
   static dataApiKeydownHandler(event) {
-    console.log('test 11')
-
-    console.log(event.target)
     // If not input/textarea:
     //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
     // If input/textarea:
-    //  - If space key => not a dropdown command
     //  - If key is other than escape
     //    - If key is not up or down => not a dropdown command
     //    - If trigger inside the menu => not a dropdown command
     if (/input|textarea/i.test(event.target.tagName) ?
-      event.key === SPACE_KEY || (event.key !== ESCAPE_KEY &&
+      (event.key !== ESCAPE_KEY && event.key !== SPACE_KEY &&
       ((event.key !== ARROW_DOWN_KEY && event.key !== ARROW_UP_KEY) ||
         event.target.closest(SELECTOR_MENU))) :
       !REGEXP_KEYDOWN.test(event.key)) {
-      console.log('test')
       return
     }
 
     const isActive = this.classList.contains(CLASS_NAME_SHOW)
 
     if (!isActive && event.key === ESCAPE_KEY) {
-      console.log('test 13')
       return
     }
 
@@ -549,16 +534,13 @@ class Dropdown extends BaseComponent {
     event.stopPropagation()
 
     if (isDisabled(this)) {
-      console.log('test 12')
       return
     }
 
     const getToggleButton = () => this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
 
     if (event.key === ESCAPE_KEY) {
-      console.log('testo')
       if (isTopLevel(event.target)) {
-        console.log('testor')
         getToggleButton().focus()
         Dropdown.clearMenus()
       } else {
@@ -578,7 +560,7 @@ class Dropdown extends BaseComponent {
     //   event.target.parentNode.nextElementSibling.children[0].focus()
     // }
 
-    if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY || event.key === ARROW_RIGHT_KEY || event.key === SPACE_KEY || event.key === ARROW_LEFT_KEY) {
+    if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY || event.key === ARROW_RIGHT_KEY || event.key === SPACE_KEY || event.key === ARROW_LEFT_KEY || event.key === SPACE_KEY) {
       if (event.key === ARROW_DOWN_KEY) {
         if (!isActive &&
         isTopLevel(event.target) &&
@@ -603,14 +585,10 @@ class Dropdown extends BaseComponent {
         }
       }
 
-      if (event.key === ARROW_RIGHT_KEY) {
-        if (!isTopLevel(event.target) && hasSubMenu(event.target)) {
-          const thisDropdown = Dropdown.getOrCreateInstance(event.target)
-          thisDropdown.show()
-          getFirstSubMenu(event.target).focus()
-        } else {
-          console.log('test 14')
-        }
+      if (event.key === ARROW_RIGHT_KEY && !isTopLevel(event.target) && hasSubMenu(event.target)) {
+        const thisDropdown = Dropdown.getOrCreateInstance(event.target)
+        thisDropdown.show()
+        getFirstSubMenu(event.target).focus()
       }
 
       if (event.key === ARROW_LEFT_KEY && !isTopLevel(event.target)) {
@@ -619,13 +597,28 @@ class Dropdown extends BaseComponent {
         event.target.parentNode.parentNode.previousElementSibling.focus()
       }
 
+      if (event.key === SPACE_KEY) {
+        if (!isActive &&
+          isTopLevel(event.target) &&
+          hasSubMenu(event.target)) {
+          const thisDropdown = Dropdown.getOrCreateInstance(event.target)
+          thisDropdown.show()
+          getFirstSubMenu(event.target).focus()
+        } else if (!isTopLevel(event.target) && hasSubMenu(event.target)) {
+          const thisDropdown = Dropdown.getOrCreateInstance(event.target)
+          thisDropdown.show()
+          getFirstSubMenu(event.target).focus()
+        } else {
+          event.target.click()
+        }
+      }
+
       // Dropdown.getInstance(getToggleButton())._selectMenuItem(event)
 
       return
     }
 
     if (!isActive) {
-      console.log('test10')
       Dropdown.clearMenus()
     }
   }
