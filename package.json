@@ -1,7 +1,7 @@
 {
   "name": "@fluffyporkbuns/bootstrap-accessible",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "config": {
     "version_short": "5.0"
   },
@@ -85,10 +85,10 @@
   "module": "dist/js/bootstrap.esm.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/twbs/bootstrap.git"
+    "url": "git+https://github.com/FluffyPorkBuns/bootstrap.git"
   },
   "bugs": {
-    "url": "https://github.com/twbs/bootstrap/issues"
+    "url": "https://github.com/FluffyPorkBuns/issues"
   },
   "license": "MIT",
   "funding": {
