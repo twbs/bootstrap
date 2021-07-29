@@ -102,7 +102,7 @@ class Backdrop {
       return
     }
 
-    this._config.rootElement.appendChild(this._getElement())
+    this._config.rootElement.append(this._getElement())
 
     EventHandler.on(this._getElement(), EVENT_MOUSEDOWN, () => {
       execute(this._config.clickCallback)
