@@ -196,6 +196,7 @@ var alerts =  [].slice.call(alertList).map(function (element) {
   return new bootstrap.Alert(element)
 })
 ```
+
 {{< callout info >}}
 For the sole purpose of dismissing an alert, it isn't necessary to initialize the component manually via the JS API. By making use of `data-bs-dismiss="alert"`, the component will be initialized automatically and properly dismissed.
 
