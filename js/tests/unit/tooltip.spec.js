@@ -15,9 +15,9 @@ describe('Tooltip', () => {
   afterEach(() => {
     clearFixture()
 
-    document.querySelectorAll('.tooltip').forEach(tooltipEl => {
+    for (const tooltipEl of document.querySelectorAll('.tooltip')) {
       tooltipEl.remove()
-    })
+    }
   })
 
   describe('VERSION', () => {

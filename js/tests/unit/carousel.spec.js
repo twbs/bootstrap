@@ -211,14 +211,14 @@ describe('Carousel', () => {
 
       spyOn(carousel, '_triggerSlideEvent')
 
-      carousel._isSliding = true;
+      carousel._isSliding = true
 
-      ['ArrowLeft', 'ArrowRight'].forEach(key => {
+      for (const key of ['ArrowLeft', 'ArrowRight']) {
         const keydown = createEvent('keydown')
         keydown.key = key
 
         carouselEl.dispatchEvent(keydown)
-      })
+      }
 
       expect(carousel._triggerSlideEvent).not.toHaveBeenCalled()
     })

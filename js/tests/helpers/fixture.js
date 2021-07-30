@@ -34,17 +34,17 @@ export const jQueryMock = {
   elements: undefined,
   fn: {},
   each(fn) {
-    this.elements.forEach(el => {
+    for (const el of this.elements) {
       fn.call(el)
-    })
+    }
   }
 }
 
 export const clearBodyAndDocument = () => {
   const attributes = ['data-bs-padding-right', 'style']
 
-  attributes.forEach(attr => {
+  for (const attr of attributes) {
     document.documentElement.removeAttribute(attr)
     document.body.removeAttribute(attr)
-  })
+  }
 }
