@@ -23,7 +23,6 @@
   --#{$prefix}popover-arrow-border: var(--#{$prefix}popover-border-color);
   // scss-docs-end popover-css-vars
 
-  position: absolute;
   top: 0;
   left: 0 #{"/* rtl:ignore */"};
   z-index: var(--#{$prefix}popover-zindex);
@@ -42,7 +41,6 @@
   @include box-shadow(var(--#{$prefix}popover-box-shadow));
 
   .popover-arrow {
-    position: absolute;
     display: block;
     width: var(--#{$prefix}popover-arrow-width);
     height: var(--#{$prefix}popover-arrow-height);
