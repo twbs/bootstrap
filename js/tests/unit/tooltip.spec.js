@@ -1045,9 +1045,9 @@ describe('Tooltip', () => {
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
 
-      tooltip.setContent()
-
       const tip = tooltip.getTipElement()
+
+      tooltip.setContent(tip)
 
       expect(tip.classList.contains('show')).toEqual(false)
       expect(tip.classList.contains('fade')).toEqual(false)
