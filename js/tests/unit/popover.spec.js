@@ -157,7 +157,7 @@ describe('Popover', () => {
       popover.show()
     })
 
-    it('should call setContent Once', done => {
+    it('should call setContent once', done => {
       fixtureEl.innerHTML = '<a href="#">BS twitter</a>'
 
       const popoverEl = fixtureEl.querySelector('a')
@@ -171,6 +171,7 @@ describe('Popover', () => {
       popoverEl.addEventListener('hidden.bs.popover', () => {
         popover.show()
       })
+
       popoverEl.addEventListener('shown.bs.popover', () => {
         const popoverDisplayed = document.querySelector('.popover')
 
