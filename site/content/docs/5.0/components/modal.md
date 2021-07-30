@@ -838,6 +838,7 @@ Activate a modal without writing JavaScript. Set `data-bs-toggle="modal"` on a c
 ```html
 <button type="button" data-bs-toggle="modal" data-bs-target="#myModal">Launch modal</button>
 ```
+
 #### Dismiss
 
 {{% js-dismiss "modal" %}}
