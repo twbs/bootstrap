@@ -125,7 +125,7 @@ const getElement = obj => {
 }
 
 const typeCheckConfig = (componentName, config, configTypes) => {
-  Object.keys(configTypes).forEach(property => {
+  for (const property of Object.keys(configTypes)) {
     const expectedTypes = configTypes[property]
     const value = config[property]
     const valueType = value && isElement(value) ? 'element' : toType(value)
@@ -135,7 +135,7 @@ const typeCheckConfig = (componentName, config, configTypes) => {
         `${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`
       )
     }
-  })
+  }
 }
 
 const isVisible = element => {
@@ -217,7 +217,9 @@ const onDOMContentLoaded = callback => {
     // add listener on the first call when the document is in loading state
     if (!DOMContentLoadedCallbacks.length) {
       document.addEventListener('DOMContentLoaded', () => {
-        DOMContentLoadedCallbacks.forEach(callback => callback())
+        for (const callback of DOMContentLoadedCallbacks) {
+          callback()
+        }
       })
     }
 

@@ -36,9 +36,9 @@ class BaseComponent {
     Data.remove(this._element, this.constructor.DATA_KEY)
     EventHandler.off(this._element, this.constructor.EVENT_KEY)
 
-    Object.getOwnPropertyNames(this).forEach(propertyName => {
+    for (const propertyName of Object.getOwnPropertyNames(this)) {
       this[propertyName] = null
-    })
+    }
   }
 
   _queueCallback(callback, element, isAnimated = true) {

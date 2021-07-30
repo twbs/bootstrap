@@ -285,9 +285,9 @@ class Tooltip extends BaseComponent {
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
     if ('ontouchstart' in document.documentElement) {
-      [].concat(...document.body.children).forEach(element => {
+      for (const element of [].concat(...document.body.children)) {
         EventHandler.on(element, 'mouseover', noop)
-      })
+      }
     }
 
     const complete = () => {
@@ -337,8 +337,9 @@ class Tooltip extends BaseComponent {
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
-      [].concat(...document.body.children)
-        .forEach(element => EventHandler.off(element, 'mouseover', noop))
+      for (const element of [].concat(...document.body.children)) {
+        EventHandler.off(element, 'mouseover', noop)
+      }
     }
 
     this._activeTrigger[TRIGGER_CLICK] = false
@@ -527,7 +528,7 @@ class Tooltip extends BaseComponent {
   _setListeners() {
     const triggers = this._config.trigger.split(' ')
 
-    triggers.forEach(trigger => {
+    for (const trigger of triggers) {
       if (trigger === 'click') {
         EventHandler.on(this._element, this.constructor.Event.CLICK, this._config.selector, event => this.toggle(event))
       } else if (trigger !== TRIGGER_MANUAL) {
@@ -541,7 +542,7 @@ class Tooltip extends BaseComponent {
         EventHandler.on(this._element, eventIn, this._config.selector, event => this._enter(event))
         EventHandler.on(this._element, eventOut, this._config.selector, event => this._leave(event))
       }
-    })
+    }
 
     this._hideModalHandler = () => {
       if (this._element) {
@@ -648,11 +649,11 @@ class Tooltip extends BaseComponent {
   _getConfig(config) {
     const dataAttributes = Manipulator.getDataAttributes(this._element)
 
-    Object.keys(dataAttributes).forEach(dataAttr => {
+    for (const dataAttr of Object.keys(dataAttributes)) {
       if (DISALLOWED_ATTRIBUTES.has(dataAttr)) {
         delete dataAttributes[dataAttr]
       }
-    })
+    }
 
     config = {
       ...this.constructor.Default,
@@ -706,8 +707,9 @@ class Tooltip extends BaseComponent {
     const basicClassPrefixRegex = new RegExp(`(^|\\s)${this._getBasicClassPrefix()}\\S+`, 'g')
     const tabClass = tip.getAttribute('class').match(basicClassPrefixRegex)
     if (tabClass !== null && tabClass.length > 0) {
-      tabClass.map(token => token.trim())
-        .forEach(tClass => tip.classList.remove(tClass))
+      for (const tClass of tabClass.map(token => token.trim())) {
+        tip.classList.remove(tClass)
+      }
     }
   }
 
