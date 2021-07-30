@@ -384,6 +384,10 @@ class Tooltip extends BaseComponent {
 
   _sanitizeAndSetContent(template, content, selector) {
     const templateElement = SelectorEngine.findOne(selector, template)
+    if (!templateElement) {
+      return
+    }
+
     if (!content) {
       templateElement.remove()
       return
