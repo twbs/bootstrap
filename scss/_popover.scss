@@ -23,8 +23,6 @@
   --#{$prefix}popover-arrow-border: var(--#{$prefix}popover-border-color);
   // scss-docs-end popover-css-vars
 
-  top: 0;
-  left: 0 #{"/* rtl:ignore */"};
   z-index: var(--#{$prefix}popover-zindex);
   display: block;
   max-width: var(--#{$prefix}popover-max-width);
