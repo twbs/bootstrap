@@ -60,7 +60,7 @@ Click the button below to show a toast (positioned with our utilities in the low
     <div class="toast-body">
       Hello, world! This is a toast message.
     </div>
-  <div class="toast-progress"></div>
+    <div class="toast-progress"></div>
   </div>
 </div>
 

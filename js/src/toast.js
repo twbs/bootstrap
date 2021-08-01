@@ -199,7 +199,24 @@ class Toast extends BaseComponent {
     this._timeout = null
   }
 
+  _toggleProgressBar(time) {
+    const progressBarElement = SelectorEngine.findOne(CLASS_PROGRESS_BAR, this._element)
+    if (!progressBarElement) {
+      return
+    }
+
+    if (time) {
+      progressBarElement.classList.add('animated')
+      progressBarElement.style.animationDuration = `${time}ms`
+      return
+    }
+
+    progressBarElement.classList.remove('animated')
+    reflow(progressBarElement)
+  }
+
   // Static
+
   static jQueryInterface(config) {
     return this.each(function () {
       const data = Toast.getOrCreateInstance(this, config)
@@ -212,23 +229,6 @@ class Toast extends BaseComponent {
         data[config](this)
       }
     })
-  }
-
-  _toggleProgressBar(time) {
-    const progressBarElement = SelectorEngine.findOne(CLASS_PROGRESS_BAR, this._element)
-    if (!progressBarElement) {
-      return
-    }
-
-    if (time) {
-      progressBarElement.classList.add('animated')
-      progressBarElement.style.animationDuration = `${time}ms`
-      // reflow(progressBarElement)
-      return
-    }
-
-    progressBarElement.classList.remove('animated')
-    reflow(progressBarElement)
   }
 }
 
