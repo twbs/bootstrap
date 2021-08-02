@@ -196,6 +196,7 @@ var alerts =  [].slice.call(alertList).map(function (element) {
   return new bootstrap.Alert(element)
 })
 ```
+
 {{< callout info >}}
 For the sole purpose of dismissing an alert, it isn't necessary to initialize the component manually via the JS API. By making use of `data-bs-dismiss="alert"`, the component will be initialized automatically and properly dismissed.
 
@@ -204,17 +205,7 @@ See the [triggers](#triggers) section for more details.
 
 ### Triggers
 
-Dismissal can be achieved with `data` attributes on a button **within the alert** as demonstrated above:
-
-```html
-<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-```
-
-or on a button **outside the alert** using the `data-bs-target` as demonstrated above:
-
-```html
-<button type="button" class="btn-close" data-bs-dismiss="alert" data-bs-target="#my-alert" aria-label="Close"></button>
-```
+{{% js-dismiss "alert" %}}
 
 **Note that closing an alert will remove it from the DOM.**
 

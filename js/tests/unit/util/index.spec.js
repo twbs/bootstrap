@@ -543,8 +543,9 @@ describe('Util', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
-
-      expect(Util.reflow(div)).toEqual(0)
+      const spy = spyOnProperty(div, 'offsetHeight')
+      Util.reflow(div)
+      expect(spy).toHaveBeenCalled()
     })
   })
 

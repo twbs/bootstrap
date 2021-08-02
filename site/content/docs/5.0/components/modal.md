@@ -831,11 +831,21 @@ The modal plugin toggles your hidden content on demand, via data attributes or J
 
 ### Via data attributes
 
+#### Toggle
+
 Activate a modal without writing JavaScript. Set `data-bs-toggle="modal"` on a controller element, like a button, along with a `data-bs-target="#foo"` or `href="#foo"` to target a specific modal to toggle.
 
 ```html
 <button type="button" data-bs-toggle="modal" data-bs-target="#myModal">Launch modal</button>
 ```
+
+#### Dismiss
+
+{{% js-dismiss "modal" %}}
+
+{{< callout warning >}}
+While both ways to dismiss a modal are supported, keep in mind that dismissing from outside a modal does not match [the WAI-ARIA modal dialog design pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal). Do this at your own risk.
+{{< /callout >}}
 
 ### Via JavaScript
 
