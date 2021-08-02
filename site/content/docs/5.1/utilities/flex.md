@@ -82,34 +82,34 @@ Use `justify-content` utilities on flexbox containers to change the alignment of
 
 <div class="bd-example">
   <div class="d-flex justify-content-start bd-highlight mb-3">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">Start</div>
   </div>
   <div class="d-flex justify-content-end bd-highlight mb-3">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">End</div>
   </div>
   <div class="d-flex justify-content-center bd-highlight mb-3">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">Center</div>
   </div>
   <div class="d-flex justify-content-between bd-highlight mb-3">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">Between</div>
   </div>
   <div class="d-flex justify-content-around bd-highlight mb-3">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">Around</div>
   </div>
   <div class="d-flex justify-content-evenly bd-highlight">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">Evenly</div>
   </div>
 </div>
 
