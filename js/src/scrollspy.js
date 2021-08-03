@@ -223,7 +223,6 @@ class ScrollSpy extends BaseComponent {
 
     if (!link) {
       console.warn(`Couldn't find target '${target}' while activating scrollspy. Please ensure all targeted elements exist.`)
-
     }
 
     link.classList.add(CLASS_NAME_ACTIVE)
