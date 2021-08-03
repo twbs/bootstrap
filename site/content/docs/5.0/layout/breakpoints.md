@@ -145,23 +145,23 @@ We occasionally use media queries that go in the other direction (the given scre
 These mixins take those declared breakpoints, subtract `.02px` from them, and use them as our `max-width` values. For example:
 
 ```scss
-// X-Small devices (portrait phones, less than 576px)
+// `xs` returns only a ruleset and no media query
+// ... { ... }
+
+// `sm` applies to x-small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) { ... }
 
-// Small devices (landscape phones, less than 768px)
+// `md` applies to small devices (landscape phones, less than 768px)
 @media (max-width: 767.98px) { ... }
 
-// Medium devices (tablets, less than 992px)
+// `lg` applies to medium devices (tablets, less than 992px)
 @media (max-width: 991.98px) { ... }
 
-// Large devices (desktops, less than 1200px)
+// `xl` applies to large devices (desktops, less than 1200px)
 @media (max-width: 1199.98px) { ... }
 
-// X-Large devices (large desktops, less than 1400px)
+// `xxl` applies to x-large devices (large desktops, less than 1400px)
 @media (max-width: 1399.98px) { ... }
-
-// XX-Large devices (larger desktops)
-// No media query since the xxl breakpoint has no upper bound on its width
 ```
 
 {{< callout warning >}}
