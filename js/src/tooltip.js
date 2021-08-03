@@ -243,8 +243,6 @@ class Tooltip extends BaseComponent {
     tip.setAttribute('id', tipId)
     this._element.setAttribute('aria-describedby', tipId)
 
-    this.setContent()
-
     if (this._config.animation) {
       tip.classList.add(CLASS_NAME_FADE)
     }
@@ -371,20 +369,21 @@ class Tooltip extends BaseComponent {
     element.innerHTML = this._config.template
 
     const tip = element.children[0]
+    this.setContent(tip)
     tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
 
     this.tip = tip
     return this.tip
   }
 
-  setContent() {
-    const tip = this.getTipElement()
+  setContent(tip) {
     this._sanitizeAndSetContent(tip, this.getTitle(), SELECTOR_TOOLTIP_INNER)
   }
 
   _sanitizeAndSetContent(template, content, selector) {
     const templateElement = SelectorEngine.findOne(selector, template)
-    if (!content) {
+
+    if (!content && templateElement) {
       templateElement.remove()
       return
     }
