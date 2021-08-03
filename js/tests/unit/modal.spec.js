@@ -19,7 +19,7 @@ describe('Modal', () => {
 
     document.querySelectorAll('.modal-backdrop')
       .forEach(backdrop => {
-        document.body.removeChild(backdrop)
+        backdrop.remove()
       })
   })
 
@@ -143,7 +143,7 @@ describe('Modal', () => {
       modalEl.addEventListener('shown.bs.modal', () => {
         const dynamicModal = document.getElementById(id)
         expect(dynamicModal).not.toBeNull()
-        dynamicModal.parentNode.removeChild(dynamicModal)
+        dynamicModal.remove()
         done()
       })
 
