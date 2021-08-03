@@ -148,19 +148,19 @@ These mixins take those declared breakpoints, subtract `.02px` from them, and us
 // `xs` returns only a ruleset and no media query
 // ... { ... }
 
-// `sm` applies to X-Small devices (portrait phones, less than 576px)
+// `sm` applies to x-small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) { ... }
 
-// `md` applies to Small devices (landscape phones, less than 768px)
+// `md` applies to small devices (landscape phones, less than 768px)
 @media (max-width: 767.98px) { ... }
 
-// `lg` applies to Medium devices (tablets, less than 992px)
+// `lg` applies to medium devices (tablets, less than 992px)
 @media (max-width: 991.98px) { ... }
 
-// `xl` applies to Large devices (desktops, less than 1200px)
+// `xl` applies to large devices (desktops, less than 1200px)
 @media (max-width: 1199.98px) { ... }
 
-// `xxl` applies to X-Large devices (large desktops, less than 1400px)
+// `xxl` applies to x-large devices (large desktops, less than 1400px)
 @media (max-width: 1399.98px) { ... }
 ```
 
