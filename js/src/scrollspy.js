@@ -221,35 +221,36 @@ class ScrollSpy extends BaseComponent {
 
     const link = SelectorEngine.findOne(queries.join(','), this._config.target)
 
-    if (link) {
-      link.classList.add(CLASS_NAME_ACTIVE)
-
-      if (link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
-        SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE, link.closest(SELECTOR_DROPDOWN))
-          .classList.add(CLASS_NAME_ACTIVE)
-      } else {
-        SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP)
-          .forEach(listGroup => {
-            // Set triggered links parents as active
-            // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
-            SelectorEngine.prev(listGroup, `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`)
-              .forEach(item => item.classList.add(CLASS_NAME_ACTIVE))
-
-            // Handle special case when .nav-link is inside .nav-item
-            SelectorEngine.prev(listGroup, SELECTOR_NAV_ITEMS)
-              .forEach(navItem => {
-                SelectorEngine.children(navItem, SELECTOR_NAV_LINKS)
-                  .forEach(item => item.classList.add(CLASS_NAME_ACTIVE))
-              })
-          })
-      }
-
-      EventHandler.trigger(this._scrollElement, EVENT_ACTIVATE, {
-        relatedTarget: target
-      })
-    } else {
+    if (!link) {
       console.warn(`Couldn't find target '${target}' while activating scrollspy. Please ensure all targeted elements exist.`)
+
     }
+
+    link.classList.add(CLASS_NAME_ACTIVE)
+
+    if (link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
+      SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE, link.closest(SELECTOR_DROPDOWN))
+        .classList.add(CLASS_NAME_ACTIVE)
+    } else {
+      SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP)
+        .forEach(listGroup => {
+          // Set triggered links parents as active
+          // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
+          SelectorEngine.prev(listGroup, `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`)
+            .forEach(item => item.classList.add(CLASS_NAME_ACTIVE))
+
+          // Handle special case when .nav-link is inside .nav-item
+          SelectorEngine.prev(listGroup, SELECTOR_NAV_ITEMS)
+            .forEach(navItem => {
+              SelectorEngine.children(navItem, SELECTOR_NAV_LINKS)
+                .forEach(item => item.classList.add(CLASS_NAME_ACTIVE))
+            })
+        })
+    }
+
+    EventHandler.trigger(this._scrollElement, EVENT_ACTIVATE, {
+      relatedTarget: target
+    }) 
   }
 
   _clear() {
