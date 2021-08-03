@@ -221,7 +221,7 @@ class ScrollSpy extends BaseComponent {
 
     const link = SelectorEngine.findOne(queries.join(','), this._config.target)
 
-    if (link !== undefined && link !== null) {
+    if (link) {
       link.classList.add(CLASS_NAME_ACTIVE)
 
       if (link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
