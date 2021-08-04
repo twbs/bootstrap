@@ -11,7 +11,7 @@ export const getFixture = () => {
     fixtureEl.style.left = '-10000px'
     fixtureEl.style.width = '10000px'
     fixtureEl.style.height = '10000px'
-    document.body.appendChild(fixtureEl)
+    document.body.append(fixtureEl)
   }
 
   return fixtureEl
@@ -38,4 +38,13 @@ export const jQueryMock = {
       fn.call(el)
     })
   }
+}
+
+export const clearBodyAndDocument = () => {
+  const attributes = ['data-bs-padding-right', 'style']
+
+  attributes.forEach(attr => {
+    document.documentElement.removeAttribute(attr)
+    document.body.removeAttribute(attr)
+  })
 }

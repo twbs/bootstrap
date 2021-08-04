@@ -1,47 +1,30 @@
 import Modal from '../../src/modal'
 import EventHandler from '../../src/dom/event-handler'
+import ScrollBarHelper from '../../src/util/scrollbar'
 
 /** Test helpers */
-import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
+import { clearBodyAndDocument, clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Modal', () => {
   let fixtureEl
-  let style
 
   beforeAll(() => {
     fixtureEl = getFixture()
-
-    // Enable the scrollbar measurer
-    const css = '.modal-scrollbar-measure { position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll; }'
-
-    style = document.createElement('style')
-    style.type = 'text/css'
-    style.appendChild(document.createTextNode(css))
-
-    document.head.appendChild(style)
-
-    // Simulate scrollbars
-    document.documentElement.style.paddingRight = '16px'
   })
 
   afterEach(() => {
     clearFixture()
-
+    clearBodyAndDocument()
     document.body.classList.remove('modal-open')
-    document.body.removeAttribute('style')
-    document.body.removeAttribute('data-bs-padding-right')
 
     document.querySelectorAll('.modal-backdrop')
       .forEach(backdrop => {
-        document.body.removeChild(backdrop)
+        backdrop.remove()
       })
-
-    document.body.style.paddingRight = '0px'
   })
 
-  afterAll(() => {
-    document.head.removeChild(style)
-    document.documentElement.style.paddingRight = '0px'
+  beforeEach(() => {
+    clearBodyAndDocument()
   })
 
   describe('VERSION', () => {
@@ -76,184 +59,23 @@ describe('Modal', () => {
   })
 
   describe('toggle', () => {
-    it('should toggle a modal', done => {
-      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
-
-      const modalEl = fixtureEl.querySelector('.modal')
-      const modal = new Modal(modalEl)
-      const originalPadding = '0px'
-
-      document.body.style.paddingRight = originalPadding
-
-      modalEl.addEventListener('shown.bs.modal', () => {
-        expect(document.body.getAttribute('data-bs-padding-right')).toEqual(originalPadding, 'original body padding should be stored in data-bs-padding-right')
-        modal.toggle()
-      })
-
-      modalEl.addEventListener('hidden.bs.modal', () => {
-        expect(document.body.getAttribute('data-bs-padding-right')).toBeNull()
-        expect().nothing()
-        done()
-      })
-
-      modal.toggle()
-    })
-
-    it('should adjust the inline padding of fixed elements when opening and restore when closing', done => {
+    it('should call ScrollBarHelper to handle scrollBar on body', done => {
       fixtureEl.innerHTML = [
-        '<div class="fixed-top" style="padding-right: 0px"></div>',
         '<div class="modal"><div class="modal-dialog"></div></div>'
       ].join('')
 
-      const fixedEl = fixtureEl.querySelector('.fixed-top')
-      const originalPadding = Number.parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
+      spyOn(ScrollBarHelper.prototype, 'hide').and.callThrough()
+      spyOn(ScrollBarHelper.prototype, 'reset').and.callThrough()
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
 
       modalEl.addEventListener('shown.bs.modal', () => {
-        const expectedPadding = originalPadding + modal._getScrollbarWidth()
-        const currentPadding = Number.parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
-
-        expect(fixedEl.getAttribute('data-bs-padding-right')).toEqual('0px', 'original fixed element padding should be stored in data-bs-padding-right')
-        expect(currentPadding).toEqual(expectedPadding, 'fixed element padding should be adjusted while opening')
+        expect(ScrollBarHelper.prototype.hide).toHaveBeenCalled()
         modal.toggle()
       })
 
       modalEl.addEventListener('hidden.bs.modal', () => {
-        const currentPadding = Number.parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
-
-        expect(fixedEl.getAttribute('data-bs-padding-right')).toEqual(null, 'data-bs-padding-right should be cleared after closing')
-        expect(currentPadding).toEqual(originalPadding, 'fixed element padding should be reset after closing')
-        done()
-      })
-
-      modal.toggle()
-    })
-
-    it('should adjust the inline margin of sticky elements when opening and restore when closing', done => {
-      fixtureEl.innerHTML = [
-        '<div class="sticky-top" style="margin-right: 0px;"></div>',
-        '<div class="modal"><div class="modal-dialog"></div></div>'
-      ].join('')
-
-      const stickyTopEl = fixtureEl.querySelector('.sticky-top')
-      const originalMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
-      const modalEl = fixtureEl.querySelector('.modal')
-      const modal = new Modal(modalEl)
-
-      modalEl.addEventListener('shown.bs.modal', () => {
-        const expectedMargin = originalMargin - modal._getScrollbarWidth()
-        const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
-
-        expect(stickyTopEl.getAttribute('data-bs-margin-right')).toEqual('0px', 'original sticky element margin should be stored in data-bs-margin-right')
-        expect(currentMargin).toEqual(expectedMargin, 'sticky element margin should be adjusted while opening')
-        modal.toggle()
-      })
-
-      modalEl.addEventListener('hidden.bs.modal', () => {
-        const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
-
-        expect(stickyTopEl.getAttribute('data-bs-margin-right')).toEqual(null, 'data-bs-margin-right should be cleared after closing')
-        expect(currentMargin).toEqual(originalMargin, 'sticky element margin should be reset after closing')
-        done()
-      })
-
-      modal.toggle()
-    })
-
-    it('should not adjust the inline margin and padding of sticky and fixed elements when element do not have full width', done => {
-      fixtureEl.innerHTML = [
-        '<div class="sticky-top" style="margin-right: 0px; padding-right: 0px; width: calc(100vw - 50%)"></div>',
-        '<div class="modal"><div class="modal-dialog"></div></div>'
-      ].join('')
-
-      const stickyTopEl = fixtureEl.querySelector('.sticky-top')
-      const originalMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
-      const originalPadding = Number.parseInt(window.getComputedStyle(stickyTopEl).paddingRight, 10)
-      const modalEl = fixtureEl.querySelector('.modal')
-      const modal = new Modal(modalEl)
-
-      modalEl.addEventListener('shown.bs.modal', () => {
-        const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
-        const currentPadding = Number.parseInt(window.getComputedStyle(stickyTopEl).paddingRight, 10)
-
-        expect(currentMargin).toEqual(originalMargin, 'sticky element\'s margin should not be adjusted while opening')
-        expect(currentPadding).toEqual(originalPadding, 'sticky element\'s padding should not be adjusted while opening')
-        done()
-      })
-
-      modal.show()
-    })
-
-    it('should ignore values set via CSS when trying to restore body padding after closing', done => {
-      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
-      const styleTest = document.createElement('style')
-
-      styleTest.type = 'text/css'
-      styleTest.appendChild(document.createTextNode('body { padding-right: 7px; }'))
-      document.head.appendChild(styleTest)
-
-      const modalEl = fixtureEl.querySelector('.modal')
-      const modal = new Modal(modalEl)
-
-      modalEl.addEventListener('shown.bs.modal', () => {
-        modal.toggle()
-      })
-
-      modalEl.addEventListener('hidden.bs.modal', () => {
-        expect(window.getComputedStyle(document.body).paddingLeft).toEqual('0px', 'body does not have inline padding set')
-        document.head.removeChild(styleTest)
-        done()
-      })
-
-      modal.toggle()
-    })
-
-    it('should ignore other inline styles when trying to restore body padding after closing', done => {
-      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
-      const styleTest = document.createElement('style')
-
-      styleTest.type = 'text/css'
-      styleTest.appendChild(document.createTextNode('body { padding-right: 7px; }'))
-
-      document.head.appendChild(styleTest)
-      document.body.style.color = 'red'
-
-      const modalEl = fixtureEl.querySelector('.modal')
-      const modal = new Modal(modalEl)
-
-      modalEl.addEventListener('shown.bs.modal', () => {
-        modal.toggle()
-      })
-
-      modalEl.addEventListener('hidden.bs.modal', () => {
-        const bodyPaddingRight = document.body.style.paddingRight
-
-        expect(bodyPaddingRight === '0px' || bodyPaddingRight === '').toEqual(true, 'body does not have inline padding set')
-        expect(document.body.style.color).toEqual('red', 'body still has other inline styles set')
-        document.head.removeChild(styleTest)
-        document.body.removeAttribute('style')
-        done()
-      })
-
-      modal.toggle()
-    })
-
-    it('should properly restore non-pixel inline body padding after closing', done => {
-      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
-
-      document.body.style.paddingRight = '5%'
-
-      const modalEl = fixtureEl.querySelector('.modal')
-      const modal = new Modal(modalEl)
-
-      modalEl.addEventListener('shown.bs.modal', () => {
-        modal.toggle()
-      })
-
-      modalEl.addEventListener('hidden.bs.modal', () => {
-        expect(document.body.style.paddingRight).toEqual('5%')
-        document.body.removeAttribute('style')
+        expect(ScrollBarHelper.prototype.reset).toHaveBeenCalled()
         done()
       })
 
@@ -275,9 +97,9 @@ describe('Modal', () => {
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modalEl.getAttribute('aria-modal')).toEqual('true')
         expect(modalEl.getAttribute('role')).toEqual('dialog')
-        expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
+        expect(modalEl.getAttribute('aria-hidden')).toBeNull()
         expect(modalEl.style.display).toEqual('block')
-        expect(document.querySelector('.modal-backdrop')).toBeDefined()
+        expect(document.querySelector('.modal-backdrop')).not.toBeNull()
         done()
       })
 
@@ -299,7 +121,7 @@ describe('Modal', () => {
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modalEl.getAttribute('aria-modal')).toEqual('true')
         expect(modalEl.getAttribute('role')).toEqual('dialog')
-        expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
+        expect(modalEl.getAttribute('aria-hidden')).toBeNull()
         expect(modalEl.style.display).toEqual('block')
         expect(document.querySelector('.modal-backdrop')).toBeNull()
         done()
@@ -320,8 +142,8 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         const dynamicModal = document.getElementById(id)
-        expect(dynamicModal).toBeDefined()
-        dynamicModal.parentNode.removeChild(dynamicModal)
+        expect(dynamicModal).not.toBeNull()
+        dynamicModal.remove()
         done()
       })
 
@@ -380,6 +202,33 @@ describe('Modal', () => {
       modal.show()
     })
 
+    it('should be shown after the first call to show() has been prevented while fading is enabled ', done => {
+      fixtureEl.innerHTML = '<div class="modal fade"><div class="modal-dialog"></div></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      let prevented = false
+      modalEl.addEventListener('show.bs.modal', e => {
+        if (!prevented) {
+          e.preventDefault()
+          prevented = true
+
+          setTimeout(() => {
+            modal.show()
+          })
+        }
+      })
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(prevented).toBeTrue()
+        expect(modal._isAnimated()).toBeTrue()
+        done()
+      })
+
+      modal.show()
+    })
+
     it('should set is transitioning if fade class is present', done => {
       fixtureEl.innerHTML = '<div class="modal fade"><div class="modal-dialog"></div></div>'
 
@@ -387,7 +236,9 @@ describe('Modal', () => {
       const modal = new Modal(modalEl)
 
       modalEl.addEventListener('show.bs.modal', () => {
-        expect(modal._isTransitioning).toEqual(true)
+        setTimeout(() => {
+          expect(modal._isTransitioning).toEqual(true)
+        })
       })
 
       modalEl.addEventListener('shown.bs.modal', () => {
@@ -398,13 +249,40 @@ describe('Modal', () => {
       modal.show()
     })
 
-    it('should close modal when a click occurred on data-bs-dismiss="modal"', done => {
+    it('should close modal when a click occurred on data-bs-dismiss="modal" inside modal', done => {
       fixtureEl.innerHTML = [
         '<div class="modal fade">',
         '  <div class="modal-dialog">',
         '    <div class="modal-header">',
         '      <button type="button" data-bs-dismiss="modal"></button>',
         '    </div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const btnClose = fixtureEl.querySelector('[data-bs-dismiss="modal"]')
+      const modal = new Modal(modalEl)
+
+      spyOn(modal, 'hide').and.callThrough()
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        btnClose.click()
+      })
+
+      modalEl.addEventListener('hidden.bs.modal', () => {
+        expect(modal.hide).toHaveBeenCalled()
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should close modal when a click occurred on a data-bs-dismiss="modal" with "bs-target" outside of modal element', done => {
+      fixtureEl.innerHTML = [
+        '<button type="button" data-bs-dismiss="modal" data-bs-target="#modal1"></button>',
+        '<div id="modal1" class="modal fade">',
+        '  <div class="modal-dialog">',
         '  </div>',
         '</div>'
       ].join('')
@@ -467,7 +345,7 @@ describe('Modal', () => {
       modal.show()
     })
 
-    it('should not enforce focus if focus equal to false', done => {
+    it('should not trap focus if focus equal to false', done => {
       fixtureEl.innerHTML = '<div class="modal fade"><div class="modal-dialog"></div></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
@@ -475,10 +353,10 @@ describe('Modal', () => {
         focus: false
       })
 
-      spyOn(modal, '_enforceFocus')
+      spyOn(modal._focustrap, 'activate').and.callThrough()
 
       modalEl.addEventListener('shown.bs.modal', () => {
-        expect(modal._enforceFocus).not.toHaveBeenCalled()
+        expect(modal._focustrap.activate).not.toHaveBeenCalled()
         done()
       })
 
@@ -585,7 +463,7 @@ describe('Modal', () => {
     })
 
     it('should not close modal when clicking outside of modal-content if backdrop = static', done => {
-      fixtureEl.innerHTML = '<div class="modal" data-bs-backdrop="static" ><div class="modal-dialog"></div></div>'
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
@@ -612,7 +490,7 @@ describe('Modal', () => {
     })
 
     it('should close modal when escape key is pressed with keyboard = true and backdrop is static', done => {
-      fixtureEl.innerHTML = '<div class="modal" data-bs-backdrop="static"><div class="modal-dialog"></div></div>'
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
@@ -669,7 +547,7 @@ describe('Modal', () => {
     })
 
     it('should not overflow when clicking outside of modal-content if backdrop = static', done => {
-      fixtureEl.innerHTML = '<div class="modal" data-bs-backdrop="static"><div class="modal-dialog" style="transition-duration: 20ms;"></div></div>'
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog" style="transition-duration: 20ms;"></div></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
@@ -687,90 +565,40 @@ describe('Modal', () => {
       modal.show()
     })
 
-    it('should not adjust the inline body padding when it does not overflow', done => {
-      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+    it('should not queue multiple callbacks when clicking outside of modal-content and backdrop = static', done => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog" style="transition-duration: 50ms;"></div></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
-      const modal = new Modal(modalEl)
-      const originalPadding = window.getComputedStyle(document.body).paddingRight
-
-      // Hide scrollbars to prevent the body overflowing
-      document.body.style.overflow = 'hidden'
-      document.documentElement.style.paddingRight = '0px'
+      const modal = new Modal(modalEl, {
+        backdrop: 'static'
+      })
 
       modalEl.addEventListener('shown.bs.modal', () => {
-        const currentPadding = window.getComputedStyle(document.body).paddingRight
+        const spy = spyOn(modal, '_queueCallback').and.callThrough()
 
-        expect(currentPadding).toEqual(originalPadding, 'body padding should not be adjusted')
+        modalEl.click()
+        modalEl.click()
 
-        // Restore scrollbars
-        document.body.style.overflow = 'auto'
-        document.documentElement.style.paddingRight = '16px'
-        done()
+        setTimeout(() => {
+          expect(spy).toHaveBeenCalledTimes(1)
+          done()
+        }, 20)
       })
 
       modal.show()
     })
 
-    it('should not adjust the inline body padding when it does not overflow, even on a scaled display', done => {
-      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
-
-      const modalEl = fixtureEl.querySelector('.modal')
-      const modal = new Modal(modalEl)
-      const originalPadding = window.getComputedStyle(document.body).paddingRight
-
-      // Remove body margins as would be done by Bootstrap css
-      document.body.style.margin = '0'
-
-      // Hide scrollbars to prevent the body overflowing
-      document.body.style.overflow = 'hidden'
-
-      // Simulate a discrepancy between exact, i.e. floating point body width, and rounded body width
-      // as it can occur when zooming or scaling the display to something else than 100%
-      document.documentElement.style.paddingRight = '.48px'
-
-      modalEl.addEventListener('shown.bs.modal', () => {
-        const currentPadding = window.getComputedStyle(document.body).paddingRight
-
-        expect(currentPadding).toEqual(originalPadding, 'body padding should not be adjusted')
-
-        // Restore overridden css
-        document.body.style.removeProperty('margin')
-        document.body.style.removeProperty('overflow')
-        document.documentElement.style.paddingRight = '16px'
-        done()
-      })
-
-      modal.show()
-    })
-
-    it('should enforce focus', done => {
+    it('should trap focus', done => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
 
-      spyOn(modal, '_enforceFocus').and.callThrough()
-
-      const focusInListener = () => {
-        expect(modal._element.focus).toHaveBeenCalled()
-        document.removeEventListener('focusin', focusInListener)
-        done()
-      }
+      spyOn(modal._focustrap, 'activate').and.callThrough()
 
       modalEl.addEventListener('shown.bs.modal', () => {
-        expect(modal._enforceFocus).toHaveBeenCalled()
-
-        spyOn(modal._element, 'focus')
-
-        document.addEventListener('focusin', focusInListener)
-
-        const focusInEvent = createEvent('focusin', { bubbles: true })
-        Object.defineProperty(focusInEvent, 'target', {
-          value: fixtureEl
-        })
-
-        document.dispatchEvent(focusInEvent)
+        expect(modal._focustrap.activate).toHaveBeenCalled()
+        done()
       })
 
       modal.show()
@@ -793,8 +621,8 @@ describe('Modal', () => {
       })
 
       modalEl.addEventListener('hidden.bs.modal', () => {
-        expect(modalEl.getAttribute('aria-modal')).toEqual(null)
-        expect(modalEl.getAttribute('role')).toEqual(null)
+        expect(modalEl.getAttribute('aria-modal')).toBeNull()
+        expect(modalEl.getAttribute('role')).toBeNull()
         expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
         expect(modalEl.style.display).toEqual('none')
         expect(document.querySelector('.modal-backdrop')).toBeNull()
@@ -815,8 +643,8 @@ describe('Modal', () => {
       })
 
       modalEl.addEventListener('hidden.bs.modal', () => {
-        expect(modalEl.getAttribute('aria-modal')).toEqual(null)
-        expect(modalEl.getAttribute('role')).toEqual(null)
+        expect(modalEl.getAttribute('aria-modal')).toBeNull()
+        expect(modalEl.getAttribute('role')).toBeNull()
         expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
         expect(modalEl.style.display).toEqual('none')
         expect(document.querySelector('.modal-backdrop')).toBeNull()
@@ -877,6 +705,25 @@ describe('Modal', () => {
 
       modal.show()
     })
+
+    it('should release focus trap', done => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+      spyOn(modal._focustrap, 'deactivate').and.callThrough()
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        modal.hide()
+      })
+
+      modalEl.addEventListener('hidden.bs.modal', () => {
+        expect(modal._focustrap.deactivate).toHaveBeenCalled()
+        done()
+      })
+
+      modal.show()
+    })
   })
 
   describe('dispose', () => {
@@ -885,6 +732,8 @@ describe('Modal', () => {
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
+      const focustrap = modal._focustrap
+      spyOn(focustrap, 'deactivate').and.callThrough()
 
       expect(Modal.getInstance(modalEl)).toEqual(modal)
 
@@ -892,8 +741,9 @@ describe('Modal', () => {
 
       modal.dispose()
 
-      expect(Modal.getInstance(modalEl)).toEqual(null)
-      expect(EventHandler.off).toHaveBeenCalledTimes(4)
+      expect(Modal.getInstance(modalEl)).toBeNull()
+      expect(EventHandler.off).toHaveBeenCalledTimes(3)
+      expect(focustrap.deactivate).toHaveBeenCalled()
     })
   })
 
@@ -925,18 +775,18 @@ describe('Modal', () => {
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modalEl.getAttribute('aria-modal')).toEqual('true')
         expect(modalEl.getAttribute('role')).toEqual('dialog')
-        expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
+        expect(modalEl.getAttribute('aria-hidden')).toBeNull()
         expect(modalEl.style.display).toEqual('block')
-        expect(document.querySelector('.modal-backdrop')).toBeDefined()
+        expect(document.querySelector('.modal-backdrop')).not.toBeNull()
         setTimeout(() => trigger.click(), 10)
       })
 
       modalEl.addEventListener('hidden.bs.modal', () => {
-        expect(modalEl.getAttribute('aria-modal')).toEqual(null)
-        expect(modalEl.getAttribute('role')).toEqual(null)
+        expect(modalEl.getAttribute('aria-modal')).toBeNull()
+        expect(modalEl.getAttribute('role')).toBeNull()
         expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
         expect(modalEl.style.display).toEqual('none')
-        expect(document.querySelector('.modal-backdrop')).toEqual(null)
+        expect(document.querySelector('.modal-backdrop')).toBeNull()
         done()
       })
 
@@ -977,9 +827,9 @@ describe('Modal', () => {
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modalEl.getAttribute('aria-modal')).toEqual('true')
         expect(modalEl.getAttribute('role')).toEqual('dialog')
-        expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
+        expect(modalEl.getAttribute('aria-hidden')).toBeNull()
         expect(modalEl.style.display).toEqual('block')
-        expect(document.querySelector('.modal-backdrop')).toBeDefined()
+        expect(document.querySelector('.modal-backdrop')).not.toBeNull()
         expect(Event.prototype.preventDefault).toHaveBeenCalled()
         done()
       })
@@ -1016,6 +866,60 @@ describe('Modal', () => {
       })
 
       trigger.click()
+    })
+
+    it('should not prevent default when a click occurred on data-bs-dismiss="modal" where tagName is DIFFERENT than <a> or <area>', done => {
+      fixtureEl.innerHTML = [
+        '<div class="modal">',
+        '  <div class="modal-dialog">',
+        '    <button type="button" data-bs-dismiss="modal"></button>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const btnClose = fixtureEl.querySelector('button[data-bs-dismiss="modal"]')
+      const modal = new Modal(modalEl)
+
+      spyOn(Event.prototype, 'preventDefault').and.callThrough()
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        btnClose.click()
+      })
+
+      modalEl.addEventListener('hidden.bs.modal', () => {
+        expect(Event.prototype.preventDefault).not.toHaveBeenCalled()
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should prevent default when a click occurred on data-bs-dismiss="modal" where tagName is <a> or <area>', done => {
+      fixtureEl.innerHTML = [
+        '<div class="modal">',
+        '  <div class="modal-dialog">',
+        '    <a type="button" data-bs-dismiss="modal"></a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const btnClose = fixtureEl.querySelector('a[data-bs-dismiss="modal"]')
+      const modal = new Modal(modalEl)
+
+      spyOn(Event.prototype, 'preventDefault').and.callThrough()
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        btnClose.click()
+      })
+
+      modalEl.addEventListener('hidden.bs.modal', () => {
+        expect(Event.prototype.preventDefault).toHaveBeenCalled()
+        done()
+      })
+
+      modal.show()
     })
 
     it('should not focus the trigger if the modal is not visible', done => {
@@ -1087,7 +991,24 @@ describe('Modal', () => {
 
       jQueryMock.fn.modal.call(jQueryMock)
 
-      expect(Modal.getInstance(div)).toBeDefined()
+      expect(Modal.getInstance(div)).not.toBeNull()
+    })
+
+    it('should create a modal with given config', () => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      jQueryMock.fn.modal = Modal.jQueryInterface
+      jQueryMock.elements = [div]
+
+      jQueryMock.fn.modal.call(jQueryMock, { keyboard: false })
+      spyOn(Modal.prototype, 'constructor')
+      expect(Modal.prototype.constructor).not.toHaveBeenCalledWith(div, { keyboard: false })
+
+      const modal = Modal.getInstance(div)
+      expect(modal).not.toBeNull()
+      expect(modal._config.keyboard).toBe(false)
     })
 
     it('should not re create a modal', () => {
@@ -1166,7 +1087,61 @@ describe('Modal', () => {
 
       const div = fixtureEl.querySelector('div')
 
+      expect(Modal.getInstance(div)).toBeNull()
+    })
+  })
+
+  describe('getOrCreateInstance', () => {
+    it('should return modal instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const modal = new Modal(div)
+
+      expect(Modal.getOrCreateInstance(div)).toEqual(modal)
+      expect(Modal.getInstance(div)).toEqual(Modal.getOrCreateInstance(div, {}))
+      expect(Modal.getOrCreateInstance(div)).toBeInstanceOf(Modal)
+    })
+
+    it('should return new instance when there is no modal instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
       expect(Modal.getInstance(div)).toEqual(null)
+      expect(Modal.getOrCreateInstance(div)).toBeInstanceOf(Modal)
+    })
+
+    it('should return new instance when there is no modal instance with given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Modal.getInstance(div)).toEqual(null)
+      const modal = Modal.getOrCreateInstance(div, {
+        backdrop: true
+      })
+      expect(modal).toBeInstanceOf(Modal)
+
+      expect(modal._config.backdrop).toEqual(true)
+    })
+
+    it('should return the instance when exists without given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const modal = new Modal(div, {
+        backdrop: true
+      })
+      expect(Modal.getInstance(div)).toEqual(modal)
+
+      const modal2 = Modal.getOrCreateInstance(div, {
+        backdrop: false
+      })
+      expect(modal).toBeInstanceOf(Modal)
+      expect(modal2).toEqual(modal)
+
+      expect(modal2._config.backdrop).toEqual(true)
     })
   })
 })
