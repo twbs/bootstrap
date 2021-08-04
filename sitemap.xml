@@ -1,387 +1,414 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/about/overview/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/about/overview/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/getting-started/accessibility/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/getting-started/accessibility/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/accordion/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/accordion/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/album/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/album/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/alerts/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/alerts/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/extend/approach/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/extend/approach/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/utilities/background/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/utilities/background/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/badge/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/badge/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/getting-started/best-practices/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/getting-started/best-practices/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/blog/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/blog/</loc>
   </url>
   <url>
     <loc>https://getbootstrap.com/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/utilities/borders/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/utilities/borders/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/navbar-bottom/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/navbar-bottom/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/about/brand/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/about/brand/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/breadcrumb/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/breadcrumb/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/layout/breakpoints/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/layout/breakpoints/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/getting-started/browsers-devices/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/getting-started/browsers-devices/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/getting-started/build-tools/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/button-group/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/button-group/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/buttons/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/buttons/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/card/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/card/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/carousel/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/carousel/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/carousel/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/carousel/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/cheatsheet/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/cheatsheet/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/checkout/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/checkout/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/forms/checks-radios/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/forms/checks-radios/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/helpers/clearfix/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/helpers/clearfix/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/close-button/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/close-button/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/collapse/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/collapse/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/customize/color/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/customize/color/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/helpers/colored-links/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/helpers/colored-links/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/utilities/colors/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/utilities/colors/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/layout/columns/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/layout/columns/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/customize/components/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/customize/components/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/layout/containers/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/layout/containers/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/getting-started/contents/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/getting-started/contents/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/getting-started/contribute/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/cover/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/cover/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/customize/css-variables/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/layout/css-grid/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/customize/overview/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/customize/css-variables/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/dashboard/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/customize/overview/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/utilities/display/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/dashboard/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/getting-started/download/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/utilities/display/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/dropdowns/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/getting-started/download/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/dropdowns/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/features/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/dropdowns/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/content/figures/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/navbar-fixed/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/features/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/utilities/flex/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/content/figures/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/utilities/float/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/navbar-fixed/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/forms/floating-labels/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/utilities/flex/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/forms/form-control/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/utilities/float/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/forms/overview/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/forms/floating-labels/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/layout/grid/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/footers/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/grid/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/forms/form-control/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/layout/gutters/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/forms/overview/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/headers/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/layout/grid/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/heroes/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/grid/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/extend/icons/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/layout/gutters/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/content/images/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/headers/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/forms/input-group/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/heroes/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/utilities/interactions/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/extend/icons/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/getting-started/introduction/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/content/images/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/getting-started/javascript/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/forms/input-group/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/jumbotron/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/utilities/interactions/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/forms/layout/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/getting-started/introduction/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/about/license/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/getting-started/javascript/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/list-group/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/jumbotron/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/masonry/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/forms/layout/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/migration/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/about/license/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/modal/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/list-group/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/navbar/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/list-groups/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/navbars/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/masonry/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/navs-tabs/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/migration/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/offcanvas/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/modal/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/offcanvas-navbar/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/modals/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/customize/optimize/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/navbar/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/customize/options/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/navbars/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/utilities/overflow/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/navs-tabs/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/pagination/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/offcanvas/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/getting-started/parcel/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/offcanvas-navbar/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/popovers/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/utilities/opacity/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/helpers/position/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/customize/optimize/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/utilities/position/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/customize/options/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/pricing/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/utilities/overflow/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/product/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/pagination/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/progress/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/getting-started/parcel/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/forms/range/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/placeholders/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/helpers/ratio/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/popovers/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/content/reboot/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/helpers/position/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/getting-started/rfs/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/utilities/position/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/getting-started/rtl/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/pricing/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/customize/sass/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/product/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/scrollspy/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/progress/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/forms/select/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/forms/range/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/utilities/shadows/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/helpers/ratio/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/sidebars/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/content/reboot/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/sign-in/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/getting-started/rfs/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/utilities/sizing/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/getting-started/rtl/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/utilities/spacing/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/customize/sass/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/spinners/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/scrollspy/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/starter-template/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/forms/select/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/utilities/shadows/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/sticky-footer/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/sidebars/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/helpers/stretched-link/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/sign-in/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/content/tables/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/utilities/sizing/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/about/team/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/utilities/spacing/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/utilities/text/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/components/spinners/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/helpers/text-truncation/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/helpers/stacks/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/toasts/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/starter-template/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/components/tooltips/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/sticky-footer-navbar/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/navbar-static/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/sticky-footer/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/about/translations/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/helpers/stretched-link/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/content/typography/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/content/tables/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/layout/utilities/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/about/team/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/utilities/api/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/utilities/text/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/forms/validation/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/helpers/text-truncation/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.1/components/toasts/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.1/components/tooltips/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.1/examples/navbar-static/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.1/about/translations/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.1/content/typography/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.1/layout/utilities/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.1/utilities/api/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.1/forms/validation/</loc>
   </url>
   <url>
     <loc>https://getbootstrap.com/docs/versions/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/utilities/vertical-align/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/utilities/vertical-align/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/utilities/visibility/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/helpers/vertical-rule/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/helpers/visually-hidden/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/utilities/visibility/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/getting-started/webpack/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/helpers/visually-hidden/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/layout/z-index/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/getting-started/webpack/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/carousel-rtl/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/layout/z-index/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/blog-rtl/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/carousel-rtl/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/dashboard-rtl/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/blog-rtl/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/checkout-rtl/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/dashboard-rtl/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/album-rtl/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/checkout-rtl/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.0/examples/cheatsheet-rtl/</loc>
+    <loc>https://getbootstrap.com/docs/5.1/examples/album-rtl/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.1/examples/cheatsheet-rtl/</loc>
   </url>
 </urlset>
