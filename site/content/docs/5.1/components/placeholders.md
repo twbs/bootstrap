@@ -125,7 +125,7 @@ The size of `.placeholder`s are based on the typographic style of the parent ele
 
 ### Animation
 
-Animate placehodlers with `.placeholder-glow` or `.placeholder-wave` to better convey the perception of something being _actively_ loaded.
+Animate placeholders with `.placeholder-glow` or `.placeholder-wave` to better convey the perception of something being _actively_ loaded.
 
 {{< example >}}
 <p class="placeholder-glow">
