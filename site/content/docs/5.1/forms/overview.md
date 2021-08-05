@@ -75,9 +75,9 @@ Inline text can use any typical inline HTML element (be it a `<span>`, `<small>`
 
 {{< example >}}
 <div class="row g-3 align-items-center">
-  <div class="col-auto">
-    <label for="inputPassword6" class="col-form-label">Password</label>
-  </div>
+  <label for="inputPassword6" class="col-auto col-form-label">
+    Password
+  </label>
   <div class="col-auto">
     <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
   </div>
