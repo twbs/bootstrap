@@ -292,11 +292,11 @@ You can then remix that once again with size-specific column classes.
 
 ## Inline forms
 
-Use the `.row-cols-*` classes to create responsive horizontal layouts. By adding [gutter modifier classes]({{< docsref "/layout/gutters" >}}), we'll have gutters in horizontal and vertical directions. On narrow mobile viewports, the `.col-12` helps stack the form controls and more. The `.align-items-center` aligns the form elements to the middle, making the `.form-checkbox` align properly.
+Use the `.row-cols-*` classes to create responsive horizontal layouts. By adding [gutter modifier classes]({{< docsref "/layout/gutters" >}}), we'll have gutters in horizontal and vertical directions. On narrow mobile viewports, the `.row-cols-1` helps stack the form controls. The `.align-items-center` aligns the form elements to the middle, making the `.form-checkbox` align properly.
 
 {{< example >}}
-<form class="row row-cols-lg-auto g-3 align-items-center">
-  <div class="col-12">
+<form class="row row-cols-1 row-cols-lg-auto g-3 align-items-center">
+  <div class="col">
     <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
     <div class="input-group">
       <div class="input-group-text">@</div>
@@ -304,7 +304,7 @@ Use the `.row-cols-*` classes to create responsive horizontal layouts. By adding
     </div>
   </div>
 
-  <div class="col-12">
+  <div class="col">
     <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
     <select class="form-select" id="inlineFormSelectPref">
       <option selected>Choose...</option>
@@ -314,7 +314,7 @@ Use the `.row-cols-*` classes to create responsive horizontal layouts. By adding
     </select>
   </div>
 
-  <div class="col-12">
+  <div class="col">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" id="inlineFormCheck">
       <label class="form-check-label" for="inlineFormCheck">
