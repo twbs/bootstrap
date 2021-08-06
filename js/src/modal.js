@@ -63,6 +63,7 @@ const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_STATIC = 'modal-static'
 
+const OPEN_SELECTOR = '.modal.show'
 const SELECTOR_DIALOG = '.modal-dialog'
 const SELECTOR_MODAL_BODY = '.modal-body'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="modal"]'
@@ -410,6 +411,12 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
       }
     })
   })
+
+  // avoid conflict when clicking a toggler of an modal, while another is open
+  const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
+  if (allReadyOpen) {
+    Modal.getInstance(allReadyOpen).hide()
+  }
 
   const data = Modal.getOrCreateInstance(target)
 
