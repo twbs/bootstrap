@@ -4,7 +4,7 @@
     <id>bootstrap</id>
     <!-- pulled from package.json -->
     <version>5</version>
-    <title>Bootstrap CSS</title>
+    <title>Bootstrap CSS Nuget</title>
     <authors>The Bootstrap Authors, Twitter Inc.</authors>
     <owners>bootstrap</owners>
     <description>The most popular front-end framework for developing responsive, mobile first projects on the web.</description>
@@ -34,3 +34,4 @@
     <file src="dist\js\bootstrap*.js.map" target="contentFiles\any\any\wwwroot\js" />
   </files>
 </package>
+
