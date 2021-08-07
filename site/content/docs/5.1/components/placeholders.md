@@ -30,7 +30,7 @@ In the example below, we take a typical card component and recreate it with plac
     <div class="h5 card-title placeholder-glow">
       <span class="placeholder col-6"></span>
     </div>
-    <p class="card-text placeholder-glow">
+    <p class="card-text placeholder-glow"> 
       <span class="placeholder col-7"></span>
       <span class="placeholder col-4"></span>
       <span class="placeholder col-4"></span>
