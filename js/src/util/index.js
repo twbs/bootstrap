@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-const MAX_UID = 1000000
+const MAX_UID = 1_000_000
 const MILLISECONDS_MULTIPLIER = 1000
 const TRANSITION_END = 'transitionend'
 

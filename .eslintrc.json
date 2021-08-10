@@ -54,7 +54,6 @@
     "unicorn/no-array-method-this-argument": "off",
     "unicorn/no-null": "off",
     "unicorn/no-unused-properties": "error",
-    "unicorn/numeric-separators-style": "off",
     "unicorn/prefer-array-flat": "off",
     "unicorn/prefer-dom-node-dataset": "off",
     "unicorn/prefer-module": "off",
