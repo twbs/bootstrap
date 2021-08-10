@@ -37,11 +37,17 @@
   @return red($value), green($value), blue($value);
 }
 
+// stylelint-disable scss/dollar-variable-pattern
 @function rgba-css-var($identifier, $target) {
-  @return rgba(var(--#{$variable-prefix}#{$identifier}-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+  @if $identifier == "body" and $target == "bg" {
+    @return rgba(var(--#{$variable-prefix}#{$identifier}-bg-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+  } @if $identifier == "body" and $target == "text" {
+    @return rgba(var(--#{$variable-prefix}#{$identifier}-color-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+  } @else {
+    @return rgba(var(--#{$variable-prefix}#{$identifier}-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+  }
 }
 
-// stylelint-disable scss/dollar-variable-pattern
 @function map-loop($map, $func, $args...) {
   $_map: ();
 
