@@ -75,8 +75,7 @@ class Collapse extends BaseComponent {
 
     const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
 
-    for (let i = 0, len = toggleList.length; i < len; i++) {
-      const elem = toggleList[i]
+    for (const elem of toggleList) {
       const selector = getSelectorFromElement(elem)
       const filterElement = SelectorEngine.find(selector)
         .filter(foundElem => foundElem === this._element)
@@ -203,9 +202,7 @@ class Collapse extends BaseComponent {
     this._element.classList.add(CLASS_NAME_COLLAPSING)
     this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
 
-    const triggerArrayLength = this._triggerArray.length
-    for (let i = 0; i < triggerArrayLength; i++) {
-      const trigger = this._triggerArray[i]
+    for (const trigger of this._triggerArray) {
       const elem = getElementFromSelector(trigger)
 
       if (elem && !this._isShown(elem)) {
