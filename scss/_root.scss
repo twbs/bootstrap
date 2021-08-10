@@ -23,7 +23,8 @@
 
   --#{$variable-prefix}white-rgb: #{to-rgb($white)};
   --#{$variable-prefix}black-rgb: #{to-rgb($black)};
-  --#{$variable-prefix}body-rgb: #{to-rgb($body-color)};
+  --#{$variable-prefix}body-color-rgb: #{to-rgb($body-color)};
+  --#{$variable-prefix}body-bg-rgb: #{to-rgb($body-bg)};
 
   // Fonts
 
