@@ -951,7 +951,7 @@ describe('Tooltip', () => {
       try {
         tooltip.hide()
         expect().nothing()
-      } catch {
+      } catch (e) {
         throw new Error('should not throw error')
       }
     })
