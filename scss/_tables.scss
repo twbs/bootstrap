@@ -34,6 +34,10 @@
     vertical-align: inherit;
   }
 
+  tbody + tbody {
+    border-top: (1.1 * $table-border-width) solid;
+  }
+
   > thead {
     vertical-align: bottom;
   }
