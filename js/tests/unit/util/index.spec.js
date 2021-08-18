@@ -1,7 +1,7 @@
 import * as Util from '../../../src/util/index'
 
 /** Test helpers */
-import { getFixture, clearFixture } from '../../helpers/fixture'
+import { clearFixture, getFixture } from '../../helpers/fixture'
 
 describe('Util', () => {
   let fixtureEl
@@ -157,12 +157,13 @@ describe('Util', () => {
 
   describe('triggerTransitionEnd', () => {
     it('should trigger transitionend event', done => {
-      fixtureEl.innerHTML = '<div style="transition: all 300ms ease-out;"></div>'
+      fixtureEl.innerHTML = '<div></div>'
 
       const el = fixtureEl.querySelector('div')
+      const spy = spyOn(el, 'dispatchEvent').and.callThrough()
 
       el.addEventListener('transitionend', () => {
-        expect().nothing()
+        expect(spy).toHaveBeenCalled()
         done()
       })
 
@@ -171,51 +172,58 @@ describe('Util', () => {
   })
 
   describe('isElement', () => {
-    it('should detect if the parameter is an element or not', () => {
-      fixtureEl.innerHTML = '<div></div>'
+    it('should detect if the parameter is an element or not and return Boolean', () => {
+      fixtureEl.innerHTML =
+        [
+          '<div id="foo" class="test"></div>',
+          '<div id="bar" class="test"></div>'
+        ].join('')
 
-      const el = document.querySelector('div')
+      const el = fixtureEl.querySelector('#foo')
 
-      expect(Util.isElement(el)).toEqual(el.nodeType)
-      expect(Util.isElement({})).toEqual(undefined)
+      expect(Util.isElement(el)).toEqual(true)
+      expect(Util.isElement({})).toEqual(false)
+      expect(Util.isElement(fixtureEl.querySelectorAll('.test'))).toEqual(false)
     })
 
     it('should detect jQuery element', () => {
       fixtureEl.innerHTML = '<div></div>'
 
-      const el = document.querySelector('div')
+      const el = fixtureEl.querySelector('div')
       const fakejQuery = {
-        0: el
+        0: el,
+        jquery: 'foo'
       }
 
-      expect(Util.isElement(fakejQuery)).toEqual(el.nodeType)
+      expect(Util.isElement(fakejQuery)).toEqual(true)
     })
   })
 
-  describe('emulateTransitionEnd', () => {
-    it('should emulate transition end', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const el = document.querySelector('div')
-      const spy = spyOn(window, 'setTimeout')
-
-      Util.emulateTransitionEnd(el, 10)
-      expect(spy).toHaveBeenCalled()
-    })
-
-    it('should not emulate transition end if already triggered', done => {
-      fixtureEl.innerHTML = '<div></div>'
+  describe('getElement', () => {
+    it('should try to parse element', () => {
+      fixtureEl.innerHTML =
+        [
+          '<div id="foo" class="test"></div>',
+          '<div id="bar" class="test"></div>'
+        ].join('')
 
       const el = fixtureEl.querySelector('div')
-      const spy = spyOn(el, 'removeEventListener')
 
-      Util.emulateTransitionEnd(el, 10)
-      Util.triggerTransitionEnd(el)
+      expect(Util.getElement(el)).toEqual(el)
+      expect(Util.getElement('#foo')).toEqual(el)
+      expect(Util.getElement('#fail')).toBeNull()
+      expect(Util.getElement({})).toBeNull()
+      expect(Util.getElement([])).toBeNull()
+      expect(Util.getElement()).toBeNull()
+      expect(Util.getElement(null)).toBeNull()
+      expect(Util.getElement(fixtureEl.querySelectorAll('.test'))).toBeNull()
 
-      setTimeout(() => {
-        expect(spy).toHaveBeenCalled()
-        done()
-      }, 20)
+      const fakejQueryObject = {
+        0: el,
+        jquery: 'foo'
+      }
+
+      expect(Util.getElement(fakejQueryObject)).toEqual(el)
     })
   })
 
@@ -292,16 +300,52 @@ describe('Util', () => {
       expect(Util.isVisible(div)).toEqual(false)
     })
 
-    it('should return false if the parent element is not visible', () => {
+    it('should return false if an ancestor element is display none', () => {
       fixtureEl.innerHTML = [
         '<div style="display: none;">',
-        '  <div class="content"></div>',
+        '  <div>',
+        '    <div>',
+        '      <div class="content"></div>',
+        '    </div>',
+        '  </div>',
         '</div>'
       ].join('')
 
       const div = fixtureEl.querySelector('.content')
 
       expect(Util.isVisible(div)).toEqual(false)
+    })
+
+    it('should return false if an ancestor element is visibility hidden', () => {
+      fixtureEl.innerHTML = [
+        '<div style="visibility: hidden;">',
+        '  <div>',
+        '    <div>',
+        '      <div class="content"></div>',
+        '    </div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('.content')
+
+      expect(Util.isVisible(div)).toEqual(false)
+    })
+
+    it('should return true if an ancestor element is visibility hidden, but reverted', () => {
+      fixtureEl.innerHTML = [
+        '<div style="visibility: hidden;">',
+        '  <div style="visibility: visible;">',
+        '    <div>',
+        '      <div class="content"></div>',
+        '    </div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('.content')
+
+      expect(Util.isVisible(div)).toEqual(true)
     })
 
     it('should return true if the element is visible', () => {
@@ -314,6 +358,18 @@ describe('Util', () => {
       const div = fixtureEl.querySelector('#element')
 
       expect(Util.isVisible(div)).toEqual(true)
+    })
+
+    it('should return false if the element is hidden, but not via display or visibility', () => {
+      fixtureEl.innerHTML = [
+        '<details>',
+        '  <div id="element"></div>',
+        '</details>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('#element')
+
+      expect(Util.isVisible(div)).toEqual(false)
     })
   })
 
@@ -487,8 +543,9 @@ describe('Util', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
-
-      expect(Util.reflow(div)).toEqual(0)
+      const spy = spyOnProperty(div, 'offsetHeight')
+      Util.reflow(div)
+      expect(spy).toHaveBeenCalled()
     })
   })
 
@@ -526,15 +583,24 @@ describe('Util', () => {
   })
 
   describe('onDOMContentLoaded', () => {
-    it('should execute callback when DOMContentLoaded is fired', () => {
+    it('should execute callbacks when DOMContentLoaded is fired and should not add more than one listener', () => {
       const spy = jasmine.createSpy()
+      const spy2 = jasmine.createSpy()
+
+      spyOn(document, 'addEventListener').and.callThrough()
       spyOnProperty(document, 'readyState').and.returnValue('loading')
+
       Util.onDOMContentLoaded(spy)
-      window.document.dispatchEvent(new Event('DOMContentLoaded', {
+      Util.onDOMContentLoaded(spy2)
+
+      document.dispatchEvent(new Event('DOMContentLoaded', {
         bubbles: true,
         cancelable: true
       }))
+
       expect(spy).toHaveBeenCalled()
+      expect(spy2).toHaveBeenCalled()
+      expect(document.addEventListener).toHaveBeenCalledTimes(1)
     })
 
     it('should execute callback if readyState is not "loading"', () => {
@@ -560,9 +626,10 @@ describe('Util', () => {
 
     it('should define a plugin on the jQuery instance', () => {
       const pluginMock = function () {}
+      pluginMock.NAME = 'test'
       pluginMock.jQueryInterface = function () {}
 
-      Util.defineJQueryPlugin('test', pluginMock)
+      Util.defineJQueryPlugin(pluginMock)
       expect(fakejQuery.fn.test).toBe(pluginMock.jQueryInterface)
       expect(fakejQuery.fn.test.Constructor).toBe(pluginMock)
       expect(typeof fakejQuery.fn.test.noConflict).toEqual('function')
@@ -574,6 +641,177 @@ describe('Util', () => {
       const spy = jasmine.createSpy('spy')
       Util.execute(spy)
       expect(spy).toHaveBeenCalled()
+    })
+  })
+
+  describe('executeAfterTransition', () => {
+    it('should immediately execute a function when waitForTransition parameter is false', () => {
+      const el = document.createElement('div')
+      const callbackSpy = jasmine.createSpy('callback spy')
+      const eventListenerSpy = spyOn(el, 'addEventListener')
+
+      Util.executeAfterTransition(callbackSpy, el, false)
+
+      expect(callbackSpy).toHaveBeenCalled()
+      expect(eventListenerSpy).not.toHaveBeenCalled()
+    })
+
+    it('should execute a function when a transitionend event is dispatched', () => {
+      const el = document.createElement('div')
+      const callbackSpy = jasmine.createSpy('callback spy')
+
+      spyOn(window, 'getComputedStyle').and.returnValue({
+        transitionDuration: '0.05s',
+        transitionDelay: '0s'
+      })
+
+      Util.executeAfterTransition(callbackSpy, el)
+
+      el.dispatchEvent(new TransitionEvent('transitionend'))
+
+      expect(callbackSpy).toHaveBeenCalled()
+    })
+
+    it('should execute a function after a computed CSS transition duration and there was no transitionend event dispatched', done => {
+      const el = document.createElement('div')
+      const callbackSpy = jasmine.createSpy('callback spy')
+
+      spyOn(window, 'getComputedStyle').and.returnValue({
+        transitionDuration: '0.05s',
+        transitionDelay: '0s'
+      })
+
+      Util.executeAfterTransition(callbackSpy, el)
+
+      setTimeout(() => {
+        expect(callbackSpy).toHaveBeenCalled()
+        done()
+      }, 70)
+    })
+
+    it('should not execute a function a second time after a computed CSS transition duration and if a transitionend event has already been dispatched', done => {
+      const el = document.createElement('div')
+      const callbackSpy = jasmine.createSpy('callback spy')
+
+      spyOn(window, 'getComputedStyle').and.returnValue({
+        transitionDuration: '0.05s',
+        transitionDelay: '0s'
+      })
+
+      Util.executeAfterTransition(callbackSpy, el)
+
+      setTimeout(() => {
+        el.dispatchEvent(new TransitionEvent('transitionend'))
+      }, 50)
+
+      setTimeout(() => {
+        expect(callbackSpy).toHaveBeenCalledTimes(1)
+        done()
+      }, 70)
+    })
+
+    it('should not trigger a transitionend event if another transitionend event had already happened', done => {
+      const el = document.createElement('div')
+
+      spyOn(window, 'getComputedStyle').and.returnValue({
+        transitionDuration: '0.05s',
+        transitionDelay: '0s'
+      })
+
+      Util.executeAfterTransition(() => {}, el)
+
+      // simulate a event dispatched by the browser
+      el.dispatchEvent(new TransitionEvent('transitionend'))
+
+      const dispatchSpy = spyOn(el, 'dispatchEvent').and.callThrough()
+
+      setTimeout(() => {
+        // setTimeout should not have triggered another transitionend event.
+        expect(dispatchSpy).not.toHaveBeenCalled()
+        done()
+      }, 70)
+    })
+
+    it('should ignore transitionend events from nested elements', done => {
+      fixtureEl.innerHTML = [
+        '<div class="outer">',
+        '  <div class="nested"></div>',
+        '</div>'
+      ].join('')
+
+      const outer = fixtureEl.querySelector('.outer')
+      const nested = fixtureEl.querySelector('.nested')
+      const callbackSpy = jasmine.createSpy('callback spy')
+
+      spyOn(window, 'getComputedStyle').and.returnValue({
+        transitionDuration: '0.05s',
+        transitionDelay: '0s'
+      })
+
+      Util.executeAfterTransition(callbackSpy, outer)
+
+      nested.dispatchEvent(new TransitionEvent('transitionend', {
+        bubbles: true
+      }))
+
+      setTimeout(() => {
+        expect(callbackSpy).not.toHaveBeenCalled()
+      }, 20)
+
+      setTimeout(() => {
+        expect(callbackSpy).toHaveBeenCalled()
+        done()
+      }, 70)
+    })
+  })
+
+  describe('getNextActiveElement', () => {
+    it('should return first element if active not exists or not given and shouldGetNext is either true, or false with cycling being disabled', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, '', true, true)).toEqual('a')
+      expect(Util.getNextActiveElement(array, 'g', true, true)).toEqual('a')
+      expect(Util.getNextActiveElement(array, '', true, false)).toEqual('a')
+      expect(Util.getNextActiveElement(array, 'g', true, false)).toEqual('a')
+      expect(Util.getNextActiveElement(array, '', false, false)).toEqual('a')
+      expect(Util.getNextActiveElement(array, 'g', false, false)).toEqual('a')
+    })
+
+    it('should return last element if active not exists or not given and shouldGetNext is false but cycling is enabled', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, '', false, true)).toEqual('d')
+      expect(Util.getNextActiveElement(array, 'g', false, true)).toEqual('d')
+    })
+
+    it('should return next element or same if is last', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, 'a', true, true)).toEqual('b')
+      expect(Util.getNextActiveElement(array, 'b', true, true)).toEqual('c')
+      expect(Util.getNextActiveElement(array, 'd', true, false)).toEqual('d')
+    })
+
+    it('should return next element or first, if is last and "isCycleAllowed = true"', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, 'c', true, true)).toEqual('d')
+      expect(Util.getNextActiveElement(array, 'd', true, true)).toEqual('a')
+    })
+
+    it('should return previous element or same if is first', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, 'b', false, true)).toEqual('a')
+      expect(Util.getNextActiveElement(array, 'd', false, true)).toEqual('c')
+      expect(Util.getNextActiveElement(array, 'a', false, false)).toEqual('a')
+    })
+
+    it('should return next element or first, if is last and "isCycleAllowed = true"', () => {
+      const array = ['a', 'b', 'c', 'd']
+
+      expect(Util.getNextActiveElement(array, 'd', false, true)).toEqual('c')
+      expect(Util.getNextActiveElement(array, 'a', false, true)).toEqual('d')
     })
   })
 })

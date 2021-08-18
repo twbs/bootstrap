@@ -59,76 +59,67 @@ const defaultPluginConfig = {
 }
 
 const getConfigByPluginKey = pluginKey => {
-  if (
-    pluginKey === 'Data' ||
-    pluginKey === 'Manipulator' ||
-    pluginKey === 'EventHandler' ||
-    pluginKey === 'SelectorEngine' ||
-    pluginKey === 'Util' ||
-    pluginKey === 'Sanitizer' ||
-    pluginKey === 'Backdrop'
-  ) {
-    return {
-      external: []
+  switch (pluginKey) {
+    case 'Alert':
+    case 'Offcanvas':
+    case 'Tab':
+      return defaultPluginConfig
+
+    case 'Base':
+    case 'Button':
+    case 'Carousel':
+    case 'Collapse':
+    case 'Modal':
+    case 'ScrollSpy': {
+      const config = Object.assign(defaultPluginConfig)
+      config.external.push(bsPlugins.Manipulator)
+      config.globals[bsPlugins.Manipulator] = 'Manipulator'
+      return config
     }
-  }
 
-  if (pluginKey === 'Alert' || pluginKey === 'Tab' || pluginKey === 'Offcanvas') {
-    return defaultPluginConfig
-  }
+    case 'Dropdown':
+    case 'Tooltip': {
+      const config = Object.assign(defaultPluginConfig)
+      config.external.push(bsPlugins.Manipulator, '@popperjs/core')
+      config.globals[bsPlugins.Manipulator] = 'Manipulator'
+      config.globals['@popperjs/core'] = 'Popper'
+      return config
+    }
 
-  if (
-    pluginKey === 'Base' ||
-    pluginKey === 'Button' ||
-    pluginKey === 'Carousel' ||
-    pluginKey === 'Collapse' ||
-    pluginKey === 'Modal' ||
-    pluginKey === 'ScrollSpy'
-  ) {
-    const config = Object.assign(defaultPluginConfig)
-    config.external.push(bsPlugins.Manipulator)
-    config.globals[bsPlugins.Manipulator] = 'Manipulator'
-    return config
-  }
-
-  if (pluginKey === 'Dropdown' || pluginKey === 'Tooltip') {
-    const config = Object.assign(defaultPluginConfig)
-    config.external.push(bsPlugins.Manipulator, '@popperjs/core')
-    config.globals[bsPlugins.Manipulator] = 'Manipulator'
-    config.globals['@popperjs/core'] = 'Popper'
-    return config
-  }
-
-  if (pluginKey === 'Popover') {
-    return {
-      external: [
-        bsPlugins.Data,
-        bsPlugins.SelectorEngine,
-        bsPlugins.Tooltip
-      ],
-      globals: {
-        [bsPlugins.Data]: 'Data',
-        [bsPlugins.SelectorEngine]: 'SelectorEngine',
-        [bsPlugins.Tooltip]: 'Tooltip'
+    case 'Popover':
+      return {
+        external: [
+          bsPlugins.Data,
+          bsPlugins.SelectorEngine,
+          bsPlugins.Tooltip
+        ],
+        globals: {
+          [bsPlugins.Data]: 'Data',
+          [bsPlugins.SelectorEngine]: 'SelectorEngine',
+          [bsPlugins.Tooltip]: 'Tooltip'
+        }
       }
-    }
-  }
 
-  if (pluginKey === 'Toast') {
-    return {
-      external: [
-        bsPlugins.Data,
-        bsPlugins.Base,
-        bsPlugins.EventHandler,
-        bsPlugins.Manipulator
-      ],
-      globals: {
-        [bsPlugins.Data]: 'Data',
-        [bsPlugins.Base]: 'Base',
-        [bsPlugins.EventHandler]: 'EventHandler',
-        [bsPlugins.Manipulator]: 'Manipulator'
+    case 'Toast':
+      return {
+        external: [
+          bsPlugins.Data,
+          bsPlugins.Base,
+          bsPlugins.EventHandler,
+          bsPlugins.Manipulator
+        ],
+        globals: {
+          [bsPlugins.Data]: 'Data',
+          [bsPlugins.Base]: 'Base',
+          [bsPlugins.EventHandler]: 'EventHandler',
+          [bsPlugins.Manipulator]: 'Manipulator'
+        }
       }
-    }
+
+    default:
+      return {
+        external: []
+      }
   }
 }
 

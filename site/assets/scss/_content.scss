@@ -21,6 +21,13 @@
   > ul li,
   > ol li {
     margin-bottom: .25rem;
+
+    // stylelint-disable selector-max-type, selector-max-compound-selectors
+    > p ~ ul {
+      margin-top: -.5rem;
+      margin-bottom: 1rem;
+    }
+    // stylelint-enable selector-max-type, selector-max-compound-selectors
   }
 
   // Override Bootstrap defaults

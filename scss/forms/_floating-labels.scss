@@ -4,7 +4,7 @@
   > .form-control,
   > .form-select {
     height: $form-floating-height;
-    padding: $form-floating-padding-y $form-floating-padding-x;
+    line-height: $form-floating-line-height;
   }
 
   > label {
@@ -21,6 +21,8 @@
 
   // stylelint-disable no-duplicate-selectors
   > .form-control {
+    padding: $form-floating-padding-y $form-floating-padding-x;
+
     &::placeholder {
       color: transparent;
     }
