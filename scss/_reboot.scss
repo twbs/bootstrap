@@ -27,7 +27,7 @@
 
 :root {
   @if $font-size-root != null {
-    font-size: var(--#{$variable-prefix}root-font-size);
+    font-size: var(--#{$variable-prefix}root-font-size, $font-size-root);
   }
 
   @if $enable-smooth-scroll {
@@ -48,13 +48,15 @@
 // scss-docs-start reboot-body-rules
 body {
   margin: 0; // 1
-  font-family: var(--#{$variable-prefix}body-font-family);
-  @include font-size(var(--#{$variable-prefix}body-font-size));
-  font-weight: var(--#{$variable-prefix}body-font-weight);
-  line-height: var(--#{$variable-prefix}body-line-height);
-  color: var(--#{$variable-prefix}body-color);
-  text-align: var(--#{$variable-prefix}body-text-align);
-  background-color: var(--#{$variable-prefix}body-bg); // 2
+  font-family: var(--#{$variable-prefix}body-font-family, $font-family-base);
+  @include font-size(var(--#{$variable-prefix}body-font-size, $font-size-base));
+  font-weight: var(--#{$variable-prefix}body-font-weight, $font-weight-base);
+  line-height: var(--#{$variable-prefix}body-line-height, $line-height-base);
+  color: var(--#{$variable-prefix}body-color, $body-color);
+  @if $body-text-align != null {
+    text-align: var(--#{$variable-prefix}body-text-align, $body-text-align);
+  }
+  background-color: var(--#{$variable-prefix}body-bg, $body-bg); // 2
   -webkit-text-size-adjust: 100%; // 3
   -webkit-tap-highlight-color: rgba($black, 0); // 4
 }
