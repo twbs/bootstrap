@@ -10,11 +10,11 @@
     },
     {
       "path": "./dist/css/bootstrap-reboot.css",
-      "maxSize": "2 kB"
+      "maxSize": "2.5 kB"
     },
     {
       "path": "./dist/css/bootstrap-reboot.min.css",
-      "maxSize": "2 kB"
+      "maxSize": "2.35 kB"
     },
     {
       "path": "./dist/css/bootstrap-utilities.css",
