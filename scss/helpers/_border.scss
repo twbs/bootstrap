@@ -1,0 +1,34 @@
+@function brd-width($name, $widths: $border-widths) {
+  @return if(map-has-key($widths, $name), map-get($widths, $name), "");
+}
+
+@function brd-color($name, $colors: $border-colors) {
+  @return if(map-has-key($colors, $name), map-get($colors, $name), "");
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @each $nature in $border-natures {
+      $bdr-color: brd-color($nature, $border-colors);
+
+      @each $width in map-keys($border-widths) {
+        $bwidth: brd-width($width, $border-widths);
+        @each $direction in $border-directions {
+          .border#{$infix}-#{$direction}-#{$nature}-#{$width} {
+            border-#{$direction}: #{$bwidth} solid #{$bdr-color};
+          }
+          .border#{$infix}-x-#{$nature}-#{$width} {
+            border-right: #{$bwidth} solid #{$bdr-color};
+            border-left: #{$bwidth} solid #{$bdr-color};
+          }
+          .border#{$infix}-y-#{$nature}-#{$width} {
+            border-top: #{$bwidth} solid #{$bdr-color};
+            border-bottom: #{$bwidth} solid #{$bdr-color};
+          }
+        }
+      }
+    }
+  }
+}

@@ -524,7 +524,18 @@ $border-widths: (
   5: 5px
 ) !default;
 
-$border-color:                $gray-300 !default;
+// Border directions
+$border-directions:            "right", "left", "top", "bottom" !default;
+
+// Border nature
+$border-natures:               "primary", "secondary" !default;
+
+// Border colors
+$border-color:                 $gray-300 !default;
+$border-colors: (
+  "primary": $gray-300,
+  "secondary": $gray-900
+) !default;
 // scss-docs-end border-variables
 
 // scss-docs-start border-radius-variables

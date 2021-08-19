@@ -394,6 +394,14 @@ legend + * {
   padding: 0;
 }
 
+::-webkit-file-upload-button {
+  font: inherit;
+}
+
+::file-selector-button {
+  font: inherit;
+}
+
 ::file-selector-button {
   font: inherit;
 }

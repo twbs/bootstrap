@@ -415,8 +415,12 @@
     }
 
     _addTouchEventListeners() {
+      const hasPointerPenTouch = event => {
+        return this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH);
+      };
+
       const start = event => {
-        if (this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)) {
+        if (hasPointerPenTouch(event)) {
           this.touchStartX = event.clientX;
         } else if (!this._pointerEvent) {
           this.touchStartX = event.touches[0].clientX;
@@ -429,7 +433,7 @@
       };
 
       const end = event => {
-        if (this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)) {
+        if (hasPointerPenTouch(event)) {
           this.touchDeltaX = event.clientX - this.touchStartX;
         }
 
