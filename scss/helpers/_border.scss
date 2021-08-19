@@ -6,6 +6,35 @@
   @return if(map-has-key($colors, $name), map-get($colors, $name), "");
 }
 
+// > 0 width helpers
+// @each $breakpoint in map-keys($grid-breakpoints) {
+//   @include media-breakpoint-up($breakpoint) {
+//     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+//     @each $nature in $border-natures {
+//       $bdr-color: brd-color($nature, $border-colors);
+
+//       @each $width in map-keys($border-widths) {
+//         $bwidth: brd-width($width, $border-widths);
+//         @each $border-side in $border-sides {
+//           .border#{$infix}-#{$border-side}-#{$nature}-#{$width} {
+//             border-#{$border-side}: #{$bwidth} solid #{$bdr-color};
+//           }
+//           .border#{$infix}-x-#{$nature}-#{$width} {
+//             border-right: #{$bwidth} solid #{$bdr-color};
+//             border-left: #{$bwidth} solid #{$bdr-color};
+//           }
+//           .border#{$infix}-y-#{$nature}-#{$width} {
+//             border-top: #{$bwidth} solid #{$bdr-color};
+//             border-bottom: #{$bwidth} solid #{$bdr-color};
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// 0 width helpers
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
@@ -13,20 +42,29 @@
     @each $nature in $border-natures {
       $bdr-color: brd-color($nature, $border-colors);
 
-      @each $width in map-keys($border-widths) {
-        $bwidth: brd-width($width, $border-widths);
-        @each $direction in $border-directions {
-          .border#{$infix}-#{$direction}-#{$nature}-#{$width} {
-            border-#{$direction}: #{$bwidth} solid #{$bdr-color};
-          }
-          .border#{$infix}-x-#{$nature}-#{$width} {
-            border-right: #{$bwidth} solid #{$bdr-color};
-            border-left: #{$bwidth} solid #{$bdr-color};
-          }
-          .border#{$infix}-y-#{$nature}-#{$width} {
-            border-top: #{$bwidth} solid #{$bdr-color};
-            border-bottom: #{$bwidth} solid #{$bdr-color};
-          }
+      @each $border-side in $border-sides {
+        .border#{$infix}-#{$border-side}-#{$nature}-1 {
+          border-#{$border-side}: 1px solid #{$bdr-color};
+        }
+        .border#{$infix}-x-#{$nature}-1 {
+          border-right: 1px solid #{$bdr-color};
+          border-left: 1px solid #{$bdr-color};
+        }
+        .border#{$infix}-y-#{$nature}-1 {
+          border-top: 1px solid #{$bdr-color};
+          border-bottom: 1px solid #{$bdr-color};
+        }
+
+        .border#{$infix}-#{$border-side}-#{$nature}-0 {
+          border-#{$border-side}: 0 solid #{$bdr-color} !important;
+        }
+        .border#{$infix}-x-#{$nature}-0 {
+          border-right: 0 solid #{$bdr-color} !important;
+          border-left: 0 solid #{$bdr-color} !important;
+        }
+        .border#{$infix}-y-#{$nature}-0 {
+          border-top: 0 solid #{$bdr-color} !important;
+          border-bottom: 0 solid #{$bdr-color} !important;
         }
       }
     }

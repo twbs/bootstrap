@@ -525,7 +525,7 @@ $border-widths: (
 ) !default;
 
 // Border directions
-$border-directions:            "right", "left", "top", "bottom" !default;
+$border-sides:            "right", "left", "top", "bottom" !default;
 
 // Border nature
 $border-natures:               "primary", "secondary" !default;
