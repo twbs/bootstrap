@@ -337,7 +337,7 @@ Initialize toasts via JavaScript:
 ```js
 var toastElList = [].slice.call(document.querySelectorAll('.toast'))
 var toastList = toastElList.map(function (toastEl) {
-  return new bootstrap.Toast(toastEl, {animation: true, autohide: true, delay: 500})
+  return new bootstrap.Toast(toastEl, { animation: true, autohide: true, delay: 500 })
 })
 ```
 
