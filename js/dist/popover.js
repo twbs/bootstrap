@@ -1,18 +1,24 @@
 /*!
-  * Bootstrap popover.js v5.0.2 (https://getbootstrap.com/)
+  * Bootstrap popover.js v5.1.0 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/selector-engine.js'), require('./tooltip.js')) :
-  typeof define === 'function' && define.amd ? define(['./dom/selector-engine', './tooltip'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Popover = factory(global.SelectorEngine, global.Tooltip));
-}(this, (function (SelectorEngine, Tooltip) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./tooltip.js')) :
+  typeof define === 'function' && define.amd ? define(['./tooltip'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Popover = factory(global.Tooltip));
+}(this, (function (Tooltip) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-  var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
   var Tooltip__default = /*#__PURE__*/_interopDefaultLegacy(Tooltip);
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap (v5.1.0): util/index.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */
 
   const getjQuery = () => {
     const {
@@ -64,7 +70,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.2): popover.js
+   * Bootstrap (v5.1.0): popover.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -78,7 +84,6 @@
   const DATA_KEY = 'bs.popover';
   const EVENT_KEY = `.${DATA_KEY}`;
   const CLASS_PREFIX = 'bs-popover';
-  const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g');
   const Default = { ...Tooltip__default['default'].Default,
     placement: 'right',
     offset: [0, 8],
@@ -101,8 +106,6 @@
     MOUSEENTER: `mouseenter${EVENT_KEY}`,
     MOUSELEAVE: `mouseleave${EVENT_KEY}`
   };
-  const CLASS_NAME_FADE = 'fade';
-  const CLASS_NAME_SHOW = 'show';
   const SELECTOR_TITLE = '.popover-header';
   const SELECTOR_CONTENT = '.popover-body';
   /**
@@ -134,55 +137,19 @@
       return this.getTitle() || this._getContent();
     }
 
-    getTipElement() {
-      if (this.tip) {
-        return this.tip;
-      }
+    setContent(tip) {
+      this._sanitizeAndSetContent(tip, this.getTitle(), SELECTOR_TITLE);
 
-      this.tip = super.getTipElement();
-
-      if (!this.getTitle()) {
-        SelectorEngine__default['default'].findOne(SELECTOR_TITLE, this.tip).remove();
-      }
-
-      if (!this._getContent()) {
-        SelectorEngine__default['default'].findOne(SELECTOR_CONTENT, this.tip).remove();
-      }
-
-      return this.tip;
-    }
-
-    setContent() {
-      const tip = this.getTipElement(); // we use append for html objects to maintain js events
-
-      this.setElementContent(SelectorEngine__default['default'].findOne(SELECTOR_TITLE, tip), this.getTitle());
-
-      let content = this._getContent();
-
-      if (typeof content === 'function') {
-        content = content.call(this._element);
-      }
-
-      this.setElementContent(SelectorEngine__default['default'].findOne(SELECTOR_CONTENT, tip), content);
-      tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW);
+      this._sanitizeAndSetContent(tip, this._getContent(), SELECTOR_CONTENT);
     } // Private
 
 
-    _addAttachmentClass(attachment) {
-      this.getTipElement().classList.add(`${CLASS_PREFIX}-${this.updateAttachment(attachment)}`);
-    }
-
     _getContent() {
-      return this._element.getAttribute('data-bs-content') || this._config.content;
+      return this._resolvePossibleFunction(this._config.content);
     }
 
-    _cleanTipClass() {
-      const tip = this.getTipElement();
-      const tabClass = tip.getAttribute('class').match(BSCLS_PREFIX_REGEX);
-
-      if (tabClass !== null && tabClass.length > 0) {
-        tabClass.map(token => token.trim()).forEach(tClass => tip.classList.remove(tClass));
-      }
+    _getBasicClassPrefix() {
+      return CLASS_PREFIX;
     } // Static
 
 

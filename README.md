@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://getbootstrap.com/">
-    <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo-shadow.png" alt="Bootstrap logo" width="200" height="165">
+    <img src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo-shadow.png" alt="Bootstrap logo" width="200" height="165">
   </a>
 </p>
 
@@ -9,7 +9,7 @@
 <p align="center">
   Sleek, intuitive, and powerful front-end framework for faster and easier web development.
   <br>
-  <a href="https://getbootstrap.com/docs/5.0/"><strong>Explore Bootstrap docs »</strong></a>
+  <a href="https://getbootstrap.com/docs/5.1/"><strong>Explore Bootstrap docs »</strong></a>
   <br>
   <br>
   <a href="https://github.com/twbs/bootstrap/issues/new?template=bug_report.md">Report bug</a>
@@ -46,14 +46,14 @@ Our default branch is for development of our Bootstrap 5 release. Head to the [`
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.0.2.zip)
+- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.1.0.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
 - Install with [npm](https://www.npmjs.com/): `npm install bootstrap`
 - Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap`
-- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.0.2`
+- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.1.0`
 - Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap` Sass: `Install-Package bootstrap.sass`
 
-Read the [Getting started page](https://getbootstrap.com/docs/5.0/getting-started/introduction/) for information on the framework contents, templates and examples, and more.
+Read the [Getting started page](https://getbootstrap.com/docs/5.1/getting-started/introduction/) for information on the framework contents, templates and examples, and more.
 
 
 ## Status

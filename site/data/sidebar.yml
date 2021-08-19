@@ -8,12 +8,12 @@
     - title: Contents
     - title: Browsers & devices
     - title: JavaScript
-    - title: Build tools
     - title: Webpack
     - title: Parcel
     - title: Accessibility
     - title: RFS
     - title: RTL
+    - title: Contribute
 
 - title: Customize
   pages:
@@ -75,6 +75,7 @@
     - title: Navbar
     - title: Offcanvas
     - title: Pagination
+    - title: Placeholders
     - title: Popovers
     - title: Progress
     - title: Scrollspy

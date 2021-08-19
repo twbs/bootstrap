@@ -203,7 +203,7 @@
           bottom: 0;
           z-index: 1000;
           flex-grow: 1;
-          visibility: visible !important; /* stylelint-disable-line declaration-no-important */
+          visibility: visible !important; // stylelint-disable-line declaration-no-important
           background-color: transparent;
           border-right: 0;
           border-left: 0;
