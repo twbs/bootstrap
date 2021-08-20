@@ -79,7 +79,7 @@ While not always possible, we strive to avoid being overly dogmatic in our HTML 
 
 ## Code conventions
 
-[Code Guide](https://codeguide.co/) (from Bootstrap co-creator, @mdo) documents how we write our HTML and CSS across Bootstrap. It specifices guidelines for general formatting, common sense defaults, property and attribute orders, and more.
+[Code Guide](https://codeguide.co/) (from Bootstrap co-creator, @mdo) documents how we write our HTML and CSS across Bootstrap. It specifies guidelines for general formatting, common sense defaults, property and attribute orders, and more.
 
 We use [Stylelint](https://stylelint.io/) to enforce these standards and more in our Sass/CSS. [Our custom Stylelint config](https://github.com/twbs/stylelint-config-twbs-bootstrap) is open source and available for others to use and extend.
 

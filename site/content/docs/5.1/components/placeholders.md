@@ -101,7 +101,7 @@ You can change the `width` through grid column classes, width utilities, or inli
 
 ### Color
 
-By default, the `placeholder` uses `currentColor`. This can be overriden with a custom color or utility class.
+By default, the `placeholder` uses `currentColor`. This can be overridden with a custom color or utility class.
 
 {{< example >}}
 <span class="placeholder col-12"></span>
