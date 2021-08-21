@@ -117,17 +117,6 @@
     })
   }
 
-  // Activate animated progress bar
-  var btnToggleAnimatedProgress = document.getElementById('btnToggleAnimatedProgress')
-  if (btnToggleAnimatedProgress) {
-    btnToggleAnimatedProgress.addEventListener('click', function () {
-      btnToggleAnimatedProgress.parentNode
-        .querySelector('.progress-bar-striped')
-        .classList
-        .toggle('progress-bar-animated')
-    })
-  }
-
   // Insert copy to clipboard button before .highlight
   var btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
   document.querySelectorAll('div.highlight')
