@@ -63,7 +63,6 @@ const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_STATIC = 'modal-static'
 
-const OPEN_SELECTOR = '.modal.show'
 const SELECTOR_DIALOG = '.modal-dialog'
 const SELECTOR_MODAL_BODY = '.modal-body'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="modal"]'
@@ -107,6 +106,12 @@ class Modal extends BaseComponent {
   show(relatedTarget) {
     if (this._isShown || this._isTransitioning) {
       return
+    }
+
+    // close opened modal
+    const openedModal = SelectorEngine.findOne('.' + CLASS_NAME_SHOW + '[aria-modal]');
+    if (openedModal !== null) {
+      Modal.getInstance(openedModal).hide()
     }
 
     const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
@@ -411,12 +416,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
       }
     })
   })
-
-  // avoid conflict when clicking moddal toggler while another one is open
-  const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
-  if (allReadyOpen) {
-    Modal.getInstance(allReadyOpen).hide()
-  }
 
   const data = Modal.getOrCreateInstance(target)
 
