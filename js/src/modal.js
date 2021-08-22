@@ -109,7 +109,7 @@ class Modal extends BaseComponent {
     }
 
     // close opened modal
-    const openedModal = SelectorEngine.findOne('.' + CLASS_NAME_SHOW + '[aria-modal]');
+    const openedModal = SelectorEngine.findOne('.' + CLASS_NAME_SHOW + '[aria-modal]')
     if (openedModal !== null) {
       Modal.getInstance(openedModal).hide()
     }
