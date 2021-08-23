@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap toast.js v5.0.2 (https://getbootstrap.com/)
+  * Bootstrap toast.js v5.1.0 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -15,12 +15,48 @@
   var Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
   var BaseComponent__default = /*#__PURE__*/_interopDefaultLegacy(BaseComponent);
 
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap (v5.1.0): util/index.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */
+
   const toType = obj => {
     if (obj === null || obj === undefined) {
       return `${obj}`;
     }
 
     return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
+  };
+
+  const getSelector = element => {
+    let selector = element.getAttribute('data-bs-target');
+
+    if (!selector || selector === '#') {
+      let hrefAttr = element.getAttribute('href'); // The only valid content that could double as a selector are IDs or classes,
+      // so everything starting with `#` or `.`. If a "real" URL is used as the selector,
+      // `document.querySelector` will rightfully complain it is invalid.
+      // See https://github.com/twbs/bootstrap/issues/32273
+
+      if (!hrefAttr || !hrefAttr.includes('#') && !hrefAttr.startsWith('.')) {
+        return null;
+      } // Just in case some CMS puts out a full URL with the anchor appended
+
+
+      if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
+        hrefAttr = `#${hrefAttr.split('#')[1]}`;
+      }
+
+      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
+    }
+
+    return selector;
+  };
+
+  const getElementFromSelector = element => {
+    const selector = getSelector(element);
+    return selector ? document.querySelector(selector) : null;
   };
 
   const isElement = obj => {
@@ -47,7 +83,35 @@
     });
   };
 
-  const reflow = element => element.offsetHeight;
+  const isDisabled = element => {
+    if (!element || element.nodeType !== Node.ELEMENT_NODE) {
+      return true;
+    }
+
+    if (element.classList.contains('disabled')) {
+      return true;
+    }
+
+    if (typeof element.disabled !== 'undefined') {
+      return element.disabled;
+    }
+
+    return element.hasAttribute('disabled') && element.getAttribute('disabled') !== 'false';
+  };
+  /**
+   * Trick to restart an element's animation
+   *
+   * @param {HTMLElement} element
+   * @return void
+   *
+   * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
+   */
+
+
+  const reflow = element => {
+    // eslint-disable-next-line no-unused-expressions
+    element.offsetHeight;
+  };
 
   const getjQuery = () => {
     const {
@@ -99,7 +163,33 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.2): toast.js
+   * Bootstrap (v5.1.0): util/component-functions.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */
+
+  const enableDismissTrigger = (component, method = 'hide') => {
+    const clickEvent = `click.dismiss${component.EVENT_KEY}`;
+    const name = component.NAME;
+    EventHandler__default['default'].on(document, clickEvent, `[data-bs-dismiss="${name}"]`, function (event) {
+      if (['A', 'AREA'].includes(this.tagName)) {
+        event.preventDefault();
+      }
+
+      if (isDisabled(this)) {
+        return;
+      }
+
+      const target = getElementFromSelector(this) || this.closest(`.${name}`);
+      const instance = component.getOrCreateInstance(target); // Method argument is left, for Alert and only, as it doesn't implement the 'hide' method
+
+      instance[method]();
+    });
+  };
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap (v5.1.0): toast.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -112,7 +202,6 @@
   const NAME = 'toast';
   const DATA_KEY = 'bs.toast';
   const EVENT_KEY = `.${DATA_KEY}`;
-  const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`;
   const EVENT_MOUSEOVER = `mouseover${EVENT_KEY}`;
   const EVENT_MOUSEOUT = `mouseout${EVENT_KEY}`;
   const EVENT_FOCUSIN = `focusin${EVENT_KEY}`;
@@ -122,7 +211,8 @@
   const EVENT_SHOW = `show${EVENT_KEY}`;
   const EVENT_SHOWN = `shown${EVENT_KEY}`;
   const CLASS_NAME_FADE = 'fade';
-  const CLASS_NAME_HIDE = 'hide';
+  const CLASS_NAME_HIDE = 'hide'; // @deprecated - kept here only for backwards compatibility
+
   const CLASS_NAME_SHOW = 'show';
   const CLASS_NAME_SHOWING = 'showing';
   const DefaultType = {
@@ -135,7 +225,6 @@
     autohide: true,
     delay: 5000
   };
-  const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="toast"]';
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -183,16 +272,17 @@
       const complete = () => {
         this._element.classList.remove(CLASS_NAME_SHOWING);
 
-        this._element.classList.add(CLASS_NAME_SHOW);
-
         EventHandler__default['default'].trigger(this._element, EVENT_SHOWN);
 
         this._maybeScheduleHide();
       };
 
-      this._element.classList.remove(CLASS_NAME_HIDE);
+      this._element.classList.remove(CLASS_NAME_HIDE); // @deprecated
+
 
       reflow(this._element);
+
+      this._element.classList.add(CLASS_NAME_SHOW);
 
       this._element.classList.add(CLASS_NAME_SHOWING);
 
@@ -211,12 +301,17 @@
       }
 
       const complete = () => {
-        this._element.classList.add(CLASS_NAME_HIDE);
+        this._element.classList.add(CLASS_NAME_HIDE); // @deprecated
+
+
+        this._element.classList.remove(CLASS_NAME_SHOWING);
+
+        this._element.classList.remove(CLASS_NAME_SHOW);
 
         EventHandler__default['default'].trigger(this._element, EVENT_HIDDEN);
       };
 
-      this._element.classList.remove(CLASS_NAME_SHOW);
+      this._element.classList.add(CLASS_NAME_SHOWING);
 
       this._queueCallback(complete, this._element, this._config.animation);
     }
@@ -284,7 +379,6 @@
     }
 
     _setListeners() {
-      EventHandler__default['default'].on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, () => this.hide());
       EventHandler__default['default'].on(this._element, EVENT_MOUSEOVER, event => this._onInteraction(event, true));
       EventHandler__default['default'].on(this._element, EVENT_MOUSEOUT, event => this._onInteraction(event, false));
       EventHandler__default['default'].on(this._element, EVENT_FOCUSIN, event => this._onInteraction(event, true));
@@ -312,13 +406,14 @@
     }
 
   }
+
+  enableDismissTrigger(Toast);
   /**
    * ------------------------------------------------------------------------
    * jQuery
    * ------------------------------------------------------------------------
    * add .Toast to jQuery only if jQuery is present
    */
-
 
   defineJQueryPlugin(Toast);
 

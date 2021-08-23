@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.2): dom/selector-engine.js
+ * Bootstrap (v5.1.0): dom/selector-engine.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -10,6 +10,8 @@
  * Constants
  * ------------------------------------------------------------------------
  */
+
+import { isDisabled, isVisible } from '../util/index'
 
 const NODE_TEXT = 3
 
@@ -69,6 +71,21 @@ const SelectorEngine = {
     }
 
     return []
+  },
+
+  focusableChildren(element) {
+    const focusables = [
+      'a',
+      'button',
+      'input',
+      'textarea',
+      'select',
+      'details',
+      '[tabindex]',
+      '[contenteditable="true"]'
+    ].map(selector => `${selector}:not([tabindex^="-"])`).join(', ')
+
+    return this.find(focusables, element).filter(el => !isDisabled(el) && isVisible(el))
   }
 }
 

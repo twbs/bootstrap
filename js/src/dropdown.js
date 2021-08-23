@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.2): dropdown.js
+ * Bootstrap (v5.1.0): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -11,12 +11,12 @@ import {
   defineJQueryPlugin,
   getElement,
   getElementFromSelector,
+  getNextActiveElement,
   isDisabled,
   isElement,
-  isVisible,
   isRTL,
+  isVisible,
   noop,
-  getNextActiveElement,
   typeCheckConfig
 } from './util/index'
 import EventHandler from './dom/event-handler'
@@ -48,7 +48,6 @@ const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
-const EVENT_CLICK = `click${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY}${DATA_API_KEY}`
@@ -103,8 +102,6 @@ class Dropdown extends BaseComponent {
     this._config = this._getConfig(config)
     this._menu = this._getMenuElement()
     this._inNavbar = this._detectNavbar()
-
-    this._addEventListeners()
   }
 
   // Getters
@@ -124,26 +121,14 @@ class Dropdown extends BaseComponent {
   // Public
 
   toggle() {
-    if (isDisabled(this._element)) {
-      return
-    }
-
-    const isActive = this._element.classList.contains(CLASS_NAME_SHOW)
-
-    if (isActive) {
-      this.hide()
-      return
-    }
-
-    this.show()
+    return this._isShown() ? this.hide() : this.show()
   }
 
   show() {
-    if (isDisabled(this._element) || this._menu.classList.contains(CLASS_NAME_SHOW)) {
+    if (isDisabled(this._element) || this._isShown(this._menu)) {
       return
     }
 
-    const parent = Dropdown.getParentFromElement(this._element)
     const relatedTarget = {
       relatedTarget: this._element
     }
@@ -154,32 +139,12 @@ class Dropdown extends BaseComponent {
       return
     }
 
+    const parent = Dropdown.getParentFromElement(this._element)
     // Totally disable Popper for Dropdowns in Navbar
     if (this._inNavbar) {
       Manipulator.setDataAttribute(this._menu, 'popper', 'none')
     } else {
-      if (typeof Popper === 'undefined') {
-        throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)')
-      }
-
-      let referenceElement = this._element
-
-      if (this._config.reference === 'parent') {
-        referenceElement = parent
-      } else if (isElement(this._config.reference)) {
-        referenceElement = getElement(this._config.reference)
-      } else if (typeof this._config.reference === 'object') {
-        referenceElement = this._config.reference
-      }
-
-      const popperConfig = this._getPopperConfig()
-      const isDisplayStatic = popperConfig.modifiers.find(modifier => modifier.name === 'applyStyles' && modifier.enabled === false)
-
-      this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
-
-      if (isDisplayStatic) {
-        Manipulator.setDataAttribute(this._menu, 'popper', 'static')
-      }
+      this._createPopper(parent)
     }
 
     // If this is a touch-enabled device we add extra
@@ -195,13 +160,13 @@ class Dropdown extends BaseComponent {
     this._element.focus()
     this._element.setAttribute('aria-expanded', true)
 
-    this._menu.classList.toggle(CLASS_NAME_SHOW)
-    this._element.classList.toggle(CLASS_NAME_SHOW)
+    this._menu.classList.add(CLASS_NAME_SHOW)
+    this._element.classList.add(CLASS_NAME_SHOW)
     EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget)
   }
 
   hide() {
-    if (isDisabled(this._element) || !this._menu.classList.contains(CLASS_NAME_SHOW)) {
+    if (isDisabled(this._element) || !this._isShown(this._menu)) {
       return
     }
 
@@ -228,13 +193,6 @@ class Dropdown extends BaseComponent {
   }
 
   // Private
-
-  _addEventListeners() {
-    EventHandler.on(this._element, EVENT_CLICK, event => {
-      event.preventDefault()
-      this.toggle()
-    })
-  }
 
   _completeHide(relatedTarget) {
     const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE, relatedTarget)
@@ -277,6 +235,35 @@ class Dropdown extends BaseComponent {
     }
 
     return config
+  }
+
+  _createPopper(parent) {
+    if (typeof Popper === 'undefined') {
+      throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)')
+    }
+
+    let referenceElement = this._element
+
+    if (this._config.reference === 'parent') {
+      referenceElement = parent
+    } else if (isElement(this._config.reference)) {
+      referenceElement = getElement(this._config.reference)
+    } else if (typeof this._config.reference === 'object') {
+      referenceElement = this._config.reference
+    }
+
+    const popperConfig = this._getPopperConfig()
+    const isDisplayStatic = popperConfig.modifiers.find(modifier => modifier.name === 'applyStyles' && modifier.enabled === false)
+
+    this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
+
+    if (isDisplayStatic) {
+      Manipulator.setDataAttribute(this._menu, 'popper', 'static')
+    }
+  }
+
+  _isShown(element = this._element) {
+    return element.classList.contains(CLASS_NAME_SHOW)
   }
 
   _getMenuElement() {
@@ -367,21 +354,19 @@ class Dropdown extends BaseComponent {
 
   // Static
 
-  static dropdownInterface(element, config) {
-    const data = Dropdown.getOrCreateInstance(element, config)
+  static jQueryInterface(config) {
+    return this.each(function () {
+      const data = Dropdown.getOrCreateInstance(this, config)
 
-    if (typeof config === 'string') {
+      if (typeof config !== 'string') {
+        return
+      }
+
       if (typeof data[config] === 'undefined') {
         throw new TypeError(`No method named "${config}"`)
       }
 
       data[config]()
-    }
-  }
-
-  static jQueryInterface(config) {
-    return this.each(function () {
-      Dropdown.dropdownInterface(this, config)
     })
   }
 
@@ -398,7 +383,7 @@ class Dropdown extends BaseComponent {
         continue
       }
 
-      if (!context._element.classList.contains(CLASS_NAME_SHOW)) {
+      if (!context._isShown()) {
         continue
       }
 
@@ -464,20 +449,20 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    const getToggleButton = () => this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
+    const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
+    const instance = Dropdown.getOrCreateInstance(getToggleButton)
 
     if (event.key === ESCAPE_KEY) {
-      getToggleButton().focus()
-      Dropdown.clearMenus()
+      instance.hide()
       return
     }
 
     if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY) {
       if (!isActive) {
-        getToggleButton().click()
+        instance.show()
       }
 
-      Dropdown.getInstance(getToggleButton())._selectMenuItem(event)
+      instance._selectMenuItem(event)
       return
     }
 
@@ -499,7 +484,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   event.preventDefault()
-  Dropdown.dropdownInterface(this)
+  Dropdown.getOrCreateInstance(this).toggle()
 })
 
 /**
