@@ -250,7 +250,7 @@ class ScrollSpy extends BaseComponent {
 
     EventHandler.trigger(this._scrollElement, EVENT_ACTIVATE, {
       relatedTarget: target
-    }) 
+    })
   }
 
   _clear() {
