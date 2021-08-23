@@ -1,6 +1,4 @@
-@use "sass:math";
-
-/// Grid system
+// Grid system
 //
 // Generate semantic grid columns with these mixins.
 
@@ -45,7 +43,7 @@
 }
 
 @mixin make-col-offset($size, $columns: $grid-columns) {
-  $num: $size / $columns;
+  $num: divide($size, $columns);
   margin-left: if($num == 0, 0, percentage($num));
 }
 
@@ -57,7 +55,7 @@
 @mixin row-cols($count) {
   > * {
     flex: 0 0 auto;
-    width: 100% / $count;
+    width: divide(100%, $count);
   }
 }
 
@@ -68,8 +66,8 @@
 
 @mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
   @each $breakpoint in map-keys($breakpoints) {
-    // .row-cols defaults must all appear before .col overrides so they can be overridden.
     $infix: breakpoint-infix($breakpoint, $breakpoints);
+
     @include media-breakpoint-up($breakpoint, $breakpoints) {
       // Provide basic `.col-{bp}` classes for equal-width flexbox columns
       .col#{$infix} {
@@ -87,13 +85,7 @@
           }
         }
       }
-    }
-  }
 
-  @each $breakpoint in map-keys($breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $breakpoints);
-
-    @include media-breakpoint-up($breakpoint, $breakpoints) {
       .col#{$infix}-auto {
         @include make-col-auto();
       }
@@ -127,6 +119,30 @@
         .g#{$infix}-#{$key},
         .gy#{$infix}-#{$key} {
           --#{$variable-prefix}gutter-y: #{$value};
+        }
+      }
+    }
+  }
+}
+
+@mixin make-cssgrid($columns: $grid-columns, $breakpoints: $grid-breakpoints) {
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      @if $columns > 0 {
+        @for $i from 1 through $columns {
+          .g-col#{$infix}-#{$i} {
+            grid-column: auto / span $i;
+          }
+        }
+
+        // Start with `1` because `0` is and invalid value.
+        // Ends with `$columns - 1` because offsetting by the width of an entire row isn't possible.
+        @for $i from 1 through ($columns - 1) {
+          .g-start#{$infix}-#{$i} {
+            grid-column-start: $i;
+          }
         }
       }
     }

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): carousel.js
+ * Bootstrap (v5.1.0): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -58,6 +58,11 @@ const ORDER_NEXT = 'next'
 const ORDER_PREV = 'prev'
 const DIRECTION_LEFT = 'left'
 const DIRECTION_RIGHT = 'right'
+
+const KEY_TO_DIRECTION = {
+  [ARROW_LEFT_KEY]: DIRECTION_RIGHT,
+  [ARROW_RIGHT_KEY]: DIRECTION_LEFT
+}
 
 const EVENT_SLIDE = `slide${EVENT_KEY}`
 const EVENT_SLID = `slid${EVENT_KEY}`
@@ -134,9 +139,7 @@ class Carousel extends BaseComponent {
   // Public
 
   next() {
-    if (!this._isSliding) {
-      this._slide(ORDER_NEXT)
-    }
+    this._slide(ORDER_NEXT)
   }
 
   nextWhenVisible() {
@@ -148,9 +151,7 @@ class Carousel extends BaseComponent {
   }
 
   prev() {
-    if (!this._isSliding) {
-      this._slide(ORDER_PREV)
-    }
+    this._slide(ORDER_PREV)
   }
 
   pause(event) {
@@ -259,8 +260,13 @@ class Carousel extends BaseComponent {
   }
 
   _addTouchEventListeners() {
+    const hasPointerPenTouch = event => {
+      return this._pointerEvent &&
+        (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)
+    }
+
     const start = event => {
-      if (this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)) {
+      if (hasPointerPenTouch(event)) {
         this.touchStartX = event.clientX
       } else if (!this._pointerEvent) {
         this.touchStartX = event.touches[0].clientX
@@ -275,7 +281,7 @@ class Carousel extends BaseComponent {
     }
 
     const end = event => {
-      if (this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)) {
+      if (hasPointerPenTouch(event)) {
         this.touchDeltaX = event.clientX - this.touchStartX
       }
 
@@ -319,12 +325,10 @@ class Carousel extends BaseComponent {
       return
     }
 
-    if (event.key === ARROW_LEFT_KEY) {
+    const direction = KEY_TO_DIRECTION[event.key]
+    if (direction) {
       event.preventDefault()
-      this._slide(DIRECTION_RIGHT)
-    } else if (event.key === ARROW_RIGHT_KEY) {
-      event.preventDefault()
-      this._slide(DIRECTION_LEFT)
+      this._slide(direction)
     }
   }
 
@@ -405,6 +409,10 @@ class Carousel extends BaseComponent {
 
     if (nextElement && nextElement.classList.contains(CLASS_NAME_ACTIVE)) {
       this._isSliding = false
+      return
+    }
+
+    if (this._isSliding) {
       return
     }
 
@@ -498,7 +506,14 @@ class Carousel extends BaseComponent {
   static carouselInterface(element, config) {
     const data = Carousel.getOrCreateInstance(element, config)
 
-    const { _config } = data
+    let { _config } = data
+    if (typeof config === 'object') {
+      _config = {
+        ..._config,
+        ...config
+      }
+    }
+
     const action = typeof config === 'string' ? config : _config.slide
 
     if (typeof config === 'number') {

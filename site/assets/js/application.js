@@ -58,6 +58,22 @@
     })
   }
 
+  var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+  var alertTrigger = document.getElementById('liveAlertBtn')
+
+  function alert(message, type) {
+    var wrapper = document.createElement('div')
+    wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+
+    alertPlaceholder.append(wrapper)
+  }
+
+  if (alertTrigger) {
+    alertTrigger.addEventListener('click', function () {
+      alert('Nice, you triggered this alert message!', 'success')
+    })
+  }
+
   // Demos within modals
   document.querySelectorAll('.tooltip-test')
     .forEach(function (tooltip) {
@@ -98,17 +114,6 @@
 
       modalTitle.textContent = 'New message to ' + recipient
       modalBodyInput.value = recipient
-    })
-  }
-
-  // Activate animated progress bar
-  var btnToggleAnimatedProgress = document.getElementById('btnToggleAnimatedProgress')
-  if (btnToggleAnimatedProgress) {
-    btnToggleAnimatedProgress.addEventListener('click', function () {
-      btnToggleAnimatedProgress.parentNode
-        .querySelector('.progress-bar-striped')
-        .classList
-        .toggle('progress-bar-animated')
     })
   }
 

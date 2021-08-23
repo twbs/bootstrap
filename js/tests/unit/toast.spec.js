@@ -467,18 +467,14 @@ describe('Toast', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const toastEl = fixtureEl.querySelector('div')
-      spyOn(toastEl, 'addEventListener').and.callThrough()
-      spyOn(toastEl, 'removeEventListener').and.callThrough()
 
       const toast = new Toast(toastEl)
 
       expect(Toast.getInstance(toastEl)).not.toBeNull()
-      expect(toastEl.addEventListener).toHaveBeenCalledWith('click', jasmine.any(Function), jasmine.any(Boolean))
 
       toast.dispose()
 
       expect(Toast.getInstance(toastEl)).toBeNull()
-      expect(toastEl.removeEventListener).toHaveBeenCalledWith('click', jasmine.any(Function), jasmine.any(Boolean))
     })
 
     it('should allow to destroy toast and hide it before that', done => {

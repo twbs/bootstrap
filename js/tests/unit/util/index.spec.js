@@ -543,8 +543,9 @@ describe('Util', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
-
-      expect(Util.reflow(div)).toEqual(0)
+      const spy = spyOnProperty(div, 'offsetHeight')
+      Util.reflow(div)
+      expect(spy).toHaveBeenCalled()
     })
   })
 
@@ -582,15 +583,24 @@ describe('Util', () => {
   })
 
   describe('onDOMContentLoaded', () => {
-    it('should execute callback when DOMContentLoaded is fired', () => {
+    it('should execute callbacks when DOMContentLoaded is fired and should not add more than one listener', () => {
       const spy = jasmine.createSpy()
+      const spy2 = jasmine.createSpy()
+
+      spyOn(document, 'addEventListener').and.callThrough()
       spyOnProperty(document, 'readyState').and.returnValue('loading')
+
       Util.onDOMContentLoaded(spy)
-      window.document.dispatchEvent(new Event('DOMContentLoaded', {
+      Util.onDOMContentLoaded(spy2)
+
+      document.dispatchEvent(new Event('DOMContentLoaded', {
         bubbles: true,
         cancelable: true
       }))
+
       expect(spy).toHaveBeenCalled()
+      expect(spy2).toHaveBeenCalled()
+      expect(document.addEventListener).toHaveBeenCalledTimes(1)
     })
 
     it('should execute callback if readyState is not "loading"', () => {

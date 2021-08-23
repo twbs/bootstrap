@@ -65,8 +65,7 @@ describe('Collapse', () => {
         parent: fakejQueryObject
       })
 
-      expect(collapse._config.parent).toEqual(fakejQueryObject)
-      expect(collapse._getParent()).toEqual(myCollapseEl)
+      expect(collapse._config.parent).toEqual(myCollapseEl)
     })
 
     it('should allow non jquery object in parent config', () => {
@@ -104,8 +103,7 @@ describe('Collapse', () => {
         parent: 'div.my-collapse'
       })
 
-      expect(collapse._config.parent).toEqual('div.my-collapse')
-      expect(collapse._getParent()).toEqual(myCollapseEl)
+      expect(collapse._config.parent).toEqual(myCollapseEl)
     })
   })
 
@@ -225,7 +223,7 @@ describe('Collapse', () => {
     })
 
     it('should show a collapsed element on width', done => {
-      fixtureEl.innerHTML = '<div class="collapse width" style="width: 0px;"></div>'
+      fixtureEl.innerHTML = '<div class="collapse collapse-horizontal" style="width: 0px;"></div>'
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
