@@ -108,7 +108,7 @@
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
     "@rollup/plugin-replace": "^3.0.0",
-    "autoprefixer": "^10.2.6",
+    "autoprefixer": "^10.3.2",
     "bundlewatch": "^0.3.2",
     "clean-css-cli": "^5.3.3",
     "cross-env": "^7.0.3",
