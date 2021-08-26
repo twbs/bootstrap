@@ -9,6 +9,7 @@
 'use strict'
 
 const { execFile, spawn } = require('node:child_process')
+const process = require('node:process')
 const vnu = require('vnu-jar')
 
 execFile('java', ['-version'], (error, stdout, stderr) => {

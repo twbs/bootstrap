@@ -1,8 +1,8 @@
-import ScrollSpy from '../../src/scrollspy'
+import ScrollSpy from '../../src/scrollspy.js'
 
 /** Test helpers */
-import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
-import EventHandler from '../../src/dom/event-handler'
+import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture.js'
+import EventHandler from '../../src/dom/event-handler.js'
 
 describe('ScrollSpy', () => {
   let fixtureEl

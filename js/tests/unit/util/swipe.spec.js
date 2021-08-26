@@ -1,7 +1,7 @@
-import { clearFixture, getFixture } from '../../helpers/fixture'
-import EventHandler from '../../../src/dom/event-handler'
-import Swipe from '../../../src/util/swipe'
-import { noop } from '../../../src/util'
+import { clearFixture, getFixture } from '../../helpers/fixture.js'
+import EventHandler from '../../../src/dom/event-handler.js'
+import Swipe from '../../../src/util/swipe.js'
+import { noop } from '../../../src/util/index.js'
 
 describe('Swipe', () => {
   const { Simulator, PointerEvent } = window

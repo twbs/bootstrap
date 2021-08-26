@@ -2,9 +2,9 @@
 
 'use strict'
 
-const { runSass } = require('sass-true')
 const fs = require('node:fs')
 const path = require('node:path')
+const { runSass } = require('sass-true')
 
 module.exports = (filename, { describe, it }) => {
   const data = fs.readFileSync(filename, 'utf8')
