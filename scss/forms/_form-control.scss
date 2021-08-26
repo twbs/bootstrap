@@ -91,25 +91,6 @@
   &:hover:not(:disabled):not([readonly])::file-selector-button {
     background-color: $form-file-button-hover-bg;
   }
-
-  &::-webkit-file-upload-button {
-    padding: $input-padding-y $input-padding-x;
-    margin: (-$input-padding-y) (-$input-padding-x);
-    margin-inline-end: $input-padding-x;
-    color: $form-file-button-color;
-    @include gradient-bg($form-file-button-bg);
-    pointer-events: none;
-    border-color: inherit;
-    border-style: solid;
-    border-width: 0;
-    border-inline-end-width: $input-border-width;
-    border-radius: 0; // stylelint-disable-line property-disallowed-list
-    @include transition($btn-transition);
-  }
-
-  &:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
-    background-color: $form-file-button-hover-bg;
-  }
 }
 
 // Readonly controls as plain text
@@ -153,12 +134,6 @@
     margin: (-$input-padding-y-sm) (-$input-padding-x-sm);
     margin-inline-end: $input-padding-x-sm;
   }
-
-  &::-webkit-file-upload-button {
-    padding: $input-padding-y-sm $input-padding-x-sm;
-    margin: (-$input-padding-y-sm) (-$input-padding-x-sm);
-    margin-inline-end: $input-padding-x-sm;
-  }
 }
 
 .form-control-lg {
@@ -168,12 +143,6 @@
   @include border-radius($input-border-radius-lg);
 
   &::file-selector-button {
-    padding: $input-padding-y-lg $input-padding-x-lg;
-    margin: (-$input-padding-y-lg) (-$input-padding-x-lg);
-    margin-inline-end: $input-padding-x-lg;
-  }
-
-  &::-webkit-file-upload-button {
     padding: $input-padding-y-lg $input-padding-x-lg;
     margin: (-$input-padding-y-lg) (-$input-padding-x-lg);
     margin-inline-end: $input-padding-x-lg;
