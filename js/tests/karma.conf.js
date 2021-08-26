@@ -3,6 +3,7 @@
 'use strict'
 
 const path = require('path')
+const process = require('process')
 const ip = require('ip')
 const { babel } = require('@rollup/plugin-babel')
 const istanbul = require('rollup-plugin-istanbul')

@@ -10,6 +10,7 @@
 'use strict'
 
 const path = require('path')
+const process = require('process')
 const rollup = require('rollup')
 const { babel } = require('@rollup/plugin-babel')
 const banner = require('./banner.js')

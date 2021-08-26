@@ -90,8 +90,8 @@ describe('Data', () => {
     expect(Data.get(div, TEST_KEY)).toBeNull()
   })
 
+  /* eslint-disable no-console */
   it('should console.error a message if called with multiple keys', () => {
-    /* eslint-disable no-console */
     console.error = jasmine.createSpy('console.error')
 
     const data = { ...TEST_DATA }
@@ -103,4 +103,5 @@ describe('Data', () => {
     expect(console.error).toHaveBeenCalled()
     expect(Data.get(div, UNKNOWN_KEY)).toBe(null)
   })
+  /* eslint-enable no-console */
 })

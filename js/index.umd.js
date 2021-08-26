@@ -18,6 +18,7 @@ import Tab from './src/tab'
 import Toast from './src/toast'
 import Tooltip from './src/tooltip'
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   Alert,
   Button,
