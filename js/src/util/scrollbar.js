@@ -5,9 +5,9 @@
  * --------------------------------------------------------------------------
  */
 
-import SelectorEngine from '../dom/selector-engine'
-import Manipulator from '../dom/manipulator'
-import { isElement } from './index'
+import SelectorEngine from '../dom/selector-engine.js'
+import Manipulator from '../dom/manipulator.js'
+import { isElement } from './index.js'
 
 const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
 const SELECTOR_STICKY_CONTENT = '.sticky-top'

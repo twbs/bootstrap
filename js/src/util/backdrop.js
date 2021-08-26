@@ -5,8 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
-import EventHandler from '../dom/event-handler'
-import { execute, executeAfterTransition, getElement, reflow, typeCheckConfig } from './index'
+import EventHandler from '../dom/event-handler.js'
+import { execute, executeAfterTransition, getElement, reflow, typeCheckConfig } from './index.js'
 
 const Default = {
   className: 'modal-backdrop',

@@ -1,7 +1,5 @@
-import EventHandler from '../../../src/dom/event-handler'
-
-/** Test helpers */
-import { getFixture, clearFixture } from '../../helpers/fixture'
+import EventHandler from '../../../src/dom/event-handler.js'
+import { getFixture, clearFixture } from '../../helpers/fixture.js'
 
 describe('EventHandler', () => {
   let fixtureEl

@@ -1,7 +1,5 @@
-import Manipulator from '../../../src/dom/manipulator'
-
-/** Test helpers */
-import { getFixture, clearFixture } from '../../helpers/fixture'
+import Manipulator from '../../../src/dom/manipulator.js'
+import { getFixture, clearFixture } from '../../helpers/fixture.js'
 
 describe('Manipulator', () => {
   let fixtureEl

@@ -9,11 +9,11 @@ import {
   defineJQueryPlugin,
   reflow,
   typeCheckConfig
-} from './util/index'
-import EventHandler from './dom/event-handler'
-import Manipulator from './dom/manipulator'
-import BaseComponent from './base-component'
-import { enableDismissTrigger } from './util/component-functions'
+} from './util/index.js'
+import EventHandler from './dom/event-handler.js'
+import Manipulator from './dom/manipulator.js'
+import BaseComponent from './base-component.js'
+import { enableDismissTrigger } from './util/component-functions.js'
 
 /**
  * ------------------------------------------------------------------------

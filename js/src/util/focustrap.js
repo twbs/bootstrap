@@ -5,9 +5,9 @@
  * --------------------------------------------------------------------------
  */
 
-import EventHandler from '../dom/event-handler'
-import SelectorEngine from '../dom/selector-engine'
-import { typeCheckConfig } from './index'
+import EventHandler from '../dom/event-handler.js'
+import SelectorEngine from '../dom/selector-engine.js'
+import { typeCheckConfig } from './index.js'
 
 const Default = {
   trapElement: null, // The element to trap focus inside of

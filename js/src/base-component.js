@@ -5,12 +5,12 @@
  * --------------------------------------------------------------------------
  */
 
-import Data from './dom/data'
+import Data from './dom/data.js'
 import {
   executeAfterTransition,
   getElement
-} from './util/index'
-import EventHandler from './dom/event-handler'
+} from './util/index.js'
+import EventHandler from './dom/event-handler.js'
 
 /**
  * ------------------------------------------------------------------------

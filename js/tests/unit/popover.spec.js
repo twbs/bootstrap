@@ -1,7 +1,5 @@
-import Popover from '../../src/popover'
-
-/** Test helpers */
-import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture'
+import Popover from '../../src/popover.js'
+import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture.js'
 
 describe('Popover', () => {
   let fixtureEl

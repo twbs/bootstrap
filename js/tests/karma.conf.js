@@ -13,7 +13,7 @@ const replace = require('@rollup/plugin-replace')
 const {
   browsers,
   browsersKeys
-} = require('./browsers')
+} = require('./browsers.js')
 
 const ENV = process.env
 const BROWSERSTACK = Boolean(ENV.BROWSERSTACK)

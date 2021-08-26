@@ -1,7 +1,5 @@
-import Tab from '../../src/tab'
-
-/** Test helpers */
-import { getFixture, clearFixture, jQueryMock } from '../helpers/fixture'
+import Tab from '../../src/tab.js'
+import { getFixture, clearFixture, jQueryMock } from '../helpers/fixture.js'
 
 describe('Tab', () => {
   let fixtureEl

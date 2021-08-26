@@ -191,7 +191,6 @@
         "error",
         "never"
       ],
-      "import/extensions": "off",
       "max-params": [
         "warn",
         5
@@ -203,7 +202,6 @@
         }
       ],
       "no-console": "error",
-      "node/file-extension-in-import": "off",
       "object-curly-spacing": [
         "error",
         "always"

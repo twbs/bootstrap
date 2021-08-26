@@ -1,7 +1,5 @@
-import Data from '../../../src/dom/data'
-
-/** Test helpers */
-import { getFixture, clearFixture } from '../../helpers/fixture'
+import Data from '../../../src/dom/data.js'
+import { getFixture, clearFixture } from '../../helpers/fixture.js'
 
 describe('Data', () => {
   const TEST_KEY = 'bs.test'
