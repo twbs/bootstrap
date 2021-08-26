@@ -1,0 +1,566 @@
+$color_1: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.87);
+$color_2: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.6);
+$color_3: var(--matter-helper-theme);
+$color_4: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.38);
+
+$background-color_1: transparent;
+$border-color_1: transparent var(--matter-helper-safari2) var(--matter-helper-safari2);
+$border-color_2: transparent var(--matter-helper-safari3) var(--matter-helper-safari3);
+$border-color_3: var(--matter-helper-safari3);
+$border-color_4: transparent var(--matter-helper-theme) var(--matter-helper-theme);
+$border-color_5: transparent var(--matter-helper-safari1) var(--matter-helper-safari1);
+$border-top-color_1: var(--matter-helper-safari2);
+$border-top-color_2: transparent;
+$border-top-color_3: var(--matter-helper-safari3);
+$border-top-color_4: var(--matter-helper-theme);
+$border-top-color_5: var(--matter-helper-safari1);
+
+/* Input, Textarea */
+/* label */
+/* Corners */
+/* Hover */
+/* Focus */
+/* Disabled */
+/* Faster transition in Safari for less noticable fractional font-size issue */
+.floating-label {
+  --matter-helper-theme: rgb(var(--matter-theme-rgb, var(--matter-primary-rgb, 33, 150, 243)));
+  --matter-helper-safari1: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.38);
+  --matter-helper-safari2: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.6);
+  --matter-helper-safari3: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.87);
+  position: relative;
+  display: inline-block;
+  padding-top: 6px;
+  font-size: 16px;
+  line-height: 1.5;
+
+  > input {
+    box-sizing: border-box;
+    margin: 0;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $border-color_1;
+    border-radius: 4px;
+    padding: 15px 13px 15px;
+    width: 100%;
+    height: inherit;
+    color: $color_1;
+    -webkit-text-fill-color: currentColor;
+    background-color: $background-color_1;
+    box-shadow: inset 1px 0 transparent, inset -1px 0 transparent, inset 0 -1px transparent;
+    font-size: inherit;
+    line-height: inherit;
+    caret-color: var(--matter-helper-theme);
+    transition: border 0.2s, box-shadow 0.2s;
+
+    &:not(:focus) {
+      &:placeholder-shown {
+        border-top-color: $border-top-color_1;
+
+        + {
+          label {
+            font-size: inherit;
+            line-height: 68px;
+
+            &::before {
+              border-top-color: $border-top-color_2;
+            }
+
+            &::after {
+              border-top-color: $border-top-color_2;
+            }
+          }
+        }
+      }
+    }
+
+    + {
+      label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        width: 100%;
+        max-height: 100%;
+        color: $color_2;
+        font-size: 75%;
+        line-height: 15px;
+        cursor: text;
+        transition: color 0.2s, font-size 0.2s, line-height 0.2s;
+
+        &::before {
+          content: "";
+          display: block;
+          box-sizing: border-box;
+          margin-top: 6px;
+          border-top: solid 1px var(--matter-helper-safari2);
+          min-width: 10px;
+          height: 8px;
+          pointer-events: none;
+          box-shadow: inset 0 1px transparent;
+          transition: border 0.2s, box-shadow 0.2s;
+          margin-right: 4px;
+          border-left: solid 1px transparent;
+          border-radius: 4px 0;
+        }
+
+        &::after {
+          content: "";
+          display: block;
+          box-sizing: border-box;
+          margin-top: 6px;
+          border-top: solid 1px var(--matter-helper-safari2);
+          min-width: 10px;
+          height: 8px;
+          pointer-events: none;
+          box-shadow: inset 0 1px transparent;
+          transition: border 0.2s, box-shadow 0.2s;
+          flex-grow: 1;
+          margin-left: 4px;
+          border-right: solid 1px transparent;
+          border-radius: 0 4px;
+        }
+      }
+    }
+
+    &:focus {
+      border-color: $border-color_4;
+      box-shadow: inset 1px 0 var(--matter-helper-theme), inset -1px 0 var(--matter-helper-theme), inset 0 -1px var(--matter-helper-theme);
+      outline: none;
+
+      + {
+        label {
+          color: $color_3;
+
+          &::before {
+            border-top-color: $border-top-color_4 !important;
+            box-shadow: inset 0 1px var(--matter-helper-theme);
+          }
+
+          &::after {
+            border-top-color: $border-top-color_4 !important;
+            box-shadow: inset 0 1px var(--matter-helper-theme);
+          }
+        }
+      }
+    }
+
+    &:disabled {
+      border-color: $border-color_5 !important;
+      color: $color_4;
+      pointer-events: none;
+
+      + {
+        label {
+          border-color: $border-color_5 !important;
+          color: $color_4;
+          pointer-events: none;
+
+          &::before {
+            border-top-color: $border-top-color_5 !important;
+          }
+
+          &::after {
+            border-top-color: $border-top-color_5 !important;
+          }
+        }
+      }
+
+      &:placeholder-shown {
+        border-top-color: $border-top-color_5 !important;
+
+        + {
+          label {
+            border-top-color: $border-top-color_5 !important;
+
+            &::before {
+              border-top-color: $border-top-color_2 !important;
+            }
+
+            &::after {
+              border-top-color: $border-top-color_2 !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  > textarea {
+    box-sizing: border-box;
+    margin: 0;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $border-color_1;
+    border-radius: 4px;
+    padding: 15px 13px 15px;
+    width: 100%;
+    height: inherit;
+    color: $color_1;
+    -webkit-text-fill-color: currentColor;
+    background-color: $background-color_1;
+    box-shadow: inset 1px 0 transparent, inset -1px 0 transparent, inset 0 -1px transparent;
+    font-size: inherit;
+    line-height: inherit;
+    caret-color: var(--matter-helper-theme);
+    transition: border 0.2s, box-shadow 0.2s;
+
+    &:not(:focus) {
+      &:placeholder-shown {
+        border-top-color: $border-top-color_1;
+
+        + {
+          label {
+            font-size: inherit;
+            line-height: 68px;
+
+            &::before {
+              border-top-color: $border-top-color_2;
+            }
+
+            &::after {
+              border-top-color: $border-top-color_2;
+            }
+          }
+        }
+      }
+    }
+
+    + {
+      label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        width: 100%;
+        max-height: 100%;
+        color: $color_2;
+        font-size: 75%;
+        line-height: 15px;
+        cursor: text;
+        transition: color 0.2s, font-size 0.2s, line-height 0.2s;
+
+        &::before {
+          content: "";
+          display: block;
+          box-sizing: border-box;
+          margin-top: 6px;
+          border-top: solid 1px var(--matter-helper-safari2);
+          min-width: 10px;
+          height: 8px;
+          pointer-events: none;
+          box-shadow: inset 0 1px transparent;
+          transition: border 0.2s, box-shadow 0.2s;
+          margin-right: 4px;
+          border-left: solid 1px transparent;
+          border-radius: 4px 0;
+        }
+
+        &::after {
+          content: "";
+          display: block;
+          box-sizing: border-box;
+          margin-top: 6px;
+          border-top: solid 1px var(--matter-helper-safari2);
+          min-width: 10px;
+          height: 8px;
+          pointer-events: none;
+          box-shadow: inset 0 1px transparent;
+          transition: border 0.2s, box-shadow 0.2s;
+          flex-grow: 1;
+          margin-left: 4px;
+          border-right: solid 1px transparent;
+          border-radius: 0 4px;
+        }
+      }
+    }
+
+    &:focus {
+      border-color: $border-color_4;
+      box-shadow: inset 1px 0 var(--matter-helper-theme), inset -1px 0 var(--matter-helper-theme), inset 0 -1px var(--matter-helper-theme);
+      outline: none;
+
+      + {
+        label {
+          color: $color_3;
+
+          &::before {
+            border-top-color: $border-top-color_4 !important;
+            box-shadow: inset 0 1px var(--matter-helper-theme);
+          }
+
+          &::after {
+            border-top-color: $border-top-color_4 !important;
+            box-shadow: inset 0 1px var(--matter-helper-theme);
+          }
+        }
+      }
+    }
+
+    &:disabled {
+      border-color: $border-color_5 !important;
+      color: $color_4;
+      pointer-events: none;
+
+      + {
+        label {
+          border-color: $border-color_5 !important;
+          color: $color_4;
+          pointer-events: none;
+
+          &::before {
+            border-top-color: $border-top-color_5 !important;
+          }
+
+          &::after {
+            border-top-color: $border-top-color_5 !important;
+          }
+        }
+      }
+
+      &:placeholder-shown {
+        border-top-color: $border-top-color_5 !important;
+
+        + {
+          label {
+            border-top-color: $border-top-color_5 !important;
+
+            &::before {
+              border-top-color: $border-top-color_2 !important;
+            }
+
+            &::after {
+              border-top-color: $border-top-color_2 !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &:hover {
+    > input {
+      border-color: $border-color_2;
+
+      + {
+        label {
+          &::before {
+            border-top-color: $border-top-color_3;
+          }
+
+          &::after {
+            border-top-color: $border-top-color_3;
+          }
+        }
+      }
+
+      &:not(:focus) {
+        &:placeholder-shown {
+          border-color: $border-color_3;
+        }
+      }
+    }
+
+    > textarea {
+      border-color: $border-color_2;
+
+      + {
+        label {
+          &::before {
+            border-top-color: $border-top-color_3;
+          }
+
+          &::after {
+            border-top-color: $border-top-color_3;
+          }
+        }
+      }
+
+      &:not(:focus) {
+        &:placeholder-shown {
+          border-color: $border-color_3;
+        }
+      }
+    }
+  }
+}
+
+//@media not all and (min-resolution: .001dpcm) {
+//  @supports () {
+//  (-webkit-appearance:none) {
+//    .floating-label > input, .floating-label > input + label, .floating-label > textarea, .floating-label > textarea + label, .floating-label > input + label: :before, .floating-label > input + label::after, .floating-label > textarea + label::before, .floating-label > textarea + label::after {
+//      transition-duration: 0.1s;
+//    }
+//  }
+//}
+
+//
+//
+//
+//  .floating-label {
+//  //--matter-helper-theme: rgb(var(--matter-theme-rgb, var(--matter-primary-rgb, 33, 150, 243)));
+//  //--matter-helper-safari1: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.38);
+//  //--matter-helper-safari2: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.6);
+//  //--matter-helper-safari3: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.87);
+//  position: relative;
+//  display: inline-block;
+//  padding-top: 6px;
+//  font-size: 16px;
+//  line-height: 1.5;
+//}
+//
+///* Input, Textarea */
+//.floating-label > input,
+//.floating-label > textarea {
+//  box-sizing: border-box;
+//  margin: 0;
+//  border-style: solid;
+//  border-width: 1px;
+//  border-color: transparent var($input-border-color) var($input-border-color);
+//  border-radius: 4px;
+//  padding: 15px 13px 15px;
+//  width: 100%;
+//  height: inherit;
+//  color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.87);
+//  -webkit-text-fill-color: currentColor; /* Safari */
+//  background-color: transparent;
+//  box-shadow: inset 1px 0 transparent, inset -1px 0 transparent, inset 0 -1px transparent;
+//  font-family: inherit;
+//  font-size: inherit;
+//  line-height: inherit;
+//  caret-color: var(--matter-helper-theme);
+//  transition: border 0.2s, box-shadow 0.2s;
+//}
+//
+//.floating-label > input:not(:focus):placeholder-shown,
+//.floating-label > textarea:not(:focus):placeholder-shown {
+//  border-top-color: $input-border-color;
+//}
+//
+///* label */
+//.floating-label > input + label,
+//.floating-label > textarea + label {
+//  position: absolute;
+//  top: 0;
+//  left: 0;
+//  display: flex;
+//  width: 100%;
+//  max-height: 100%;
+//  color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.6);
+//  font-size: 75%;
+//  line-height: 15px;
+//  cursor: text;
+//  transition: color 0.2s, font-size 0.2s, line-height 0.2s;
+//}
+//
+//.floating-label > input:not(:focus):placeholder-shown + label,
+//.floating-label > textarea:not(:focus):placeholder-shown + label {
+//  font-size: inherit;
+//  line-height: 68px;
+//}
+//
+///* Corners */
+//.floating-label > input + label::before,
+//.floating-label > input + label::after,
+//.floating-label > textarea + label::before,
+//.floating-label > textarea + label::after {
+//  content: "";
+//  display: block;
+//  box-sizing: border-box;
+//  margin-top: 6px;
+//  border-top: solid 1px $input-border-color;
+//  min-width: 10px;
+//  height: 8px;
+//  pointer-events: none;
+//  box-shadow: inset 0 1px transparent;
+//  transition: border 0.2s, box-shadow 0.2s;
+//}
+//
+//.floating-label > input + label::before,
+//.floating-label > textarea + label::before {
+//  margin-right: 4px;
+//  border-left: solid 1px transparent;
+//  border-radius: 4px 0;
+//}
+//
+//.floating-label > input + label::after,
+//.floating-label > textarea + label::after {
+//  flex-grow: 1;
+//  margin-left: 4px;
+//  border-right: solid 1px transparent;
+//  border-radius: 0 4px;
+//}
+//
+//.floating-label > input:not(:focus):placeholder-shown + label::before,
+//.floating-label > textarea:not(:focus):placeholder-shown + label::before,
+//.floating-label > input:not(:focus):placeholder-shown + label::after,
+//.floating-label > textarea:not(:focus):placeholder-shown + label::after {
+//  border-top-color: transparent;
+//}
+//
+///* Focus */
+//.floating-label > input:focus,
+//.floating-label > textarea:focus {
+//  border-color: transparent var($input-focus-box-shadow) var($input-focus-box-shadow);
+//  box-shadow: inset 1px 0 var($input-focus-box-shadow), inset -1px 0 var($input-focus-box-shadow), inset 0 -1px var($input-focus-box-shadow);
+//  outline: none;
+//}
+//
+//.floating-label > input:focus + label,
+//.floating-label > textarea:focus + label {
+//  color: $input-focus-color;
+//}
+//
+//.floating-label > input:focus + label::before,
+//.floating-label > input:focus + label::after,
+//.floating-label > textarea:focus + label::before,
+//.floating-label > textarea:focus + label::after {
+//  border-top-color: var(--matter-helper-theme) !important;
+//  box-shadow: inset 0 1px $input-focus-box-shadow;
+//}
+//
+///* Disabled */
+////.floating-label > input:disabled,
+////.floating-label > input:disabled + label,
+////.floating-label > textarea:disabled,
+////.floating-label > textarea:disabled + label {
+////  border-color: transparent var(--matter-helper-safari1) var(--matter-helper-safari1) !important;
+////  color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.38);
+////  pointer-events: none;
+////}
+//
+////.floating-label > input:disabled + label::before,
+////.floating-label > input:disabled + label::after,
+////.floating-label > textarea:disabled + label::before,
+////.floating-label > textarea:disabled + label::after {
+////  border-top-color: var(--matter-helper-safari1) !important;
+////}
+////
+////.floating-label > input:disabled:placeholder-shown,
+////.floating-label > input:disabled:placeholder-shown + label,
+////.floating-label > textarea:disabled:placeholder-shown,
+////.floating-label > textarea:disabled:placeholder-shown + label {
+////  border-top-color: var(--matter-helper-safari1) !important;
+////}
+//
+//.floating-label > input:disabled:placeholder-shown + label::before,
+//.floating-label > input:disabled:placeholder-shown + label::after,
+//.floating-label > textarea:disabled:placeholder-shown + label::before,
+//.floating-label > textarea:disabled:placeholder-shown + label::after {
+//  border-top-color: transparent !important;
+//}
+//
+///* Faster transition in Safari for less noticable fractional font-size issue */
+//@media not all and (min-resolution:.001dpcm) {
+//  @supports (-webkit-appearance:none) {
+//    .floating-label > input,
+//    .floating-label > input + label,
+//    .floating-label > textarea,
+//    .floating-label > textarea + label,
+//    .floating-label > input + label::before,
+//    .floating-label > input + label::after,
+//    .floating-label > textarea + label::before,
+//    .floating-label > textarea + label::after {
+//      transition-duration: 0.1s;
+//    }
+//  }
+//}
