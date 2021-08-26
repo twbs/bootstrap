@@ -4,6 +4,7 @@ const mapConfig = {
   sourcesContent: true
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default context => {
   return {
     map: context.file.dirname.includes('examples') ? false : mapConfig,

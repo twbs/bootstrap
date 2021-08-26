@@ -7,6 +7,7 @@
  */
 
 import path from 'node:path'
+import process from 'node:process'
 import { fileURLToPath } from 'node:url'
 import { babel } from '@rollup/plugin-babel'
 import { globby } from 'globby'

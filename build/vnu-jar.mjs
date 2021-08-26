@@ -7,6 +7,7 @@
  */
 
 import { execFile, spawn } from 'node:child_process'
+import process from 'node:process'
 import vnu from 'vnu-jar'
 
 execFile('java', ['-version'], (error, stdout, stderr) => {
