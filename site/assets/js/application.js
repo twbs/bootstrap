@@ -145,10 +145,10 @@
   clipboard.on('success', function (event) {
     var tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
 
-    event.trigger.setAttribute('data-bs-original-title', 'Copied!')
-    tooltipBtn.show()
-
-    event.trigger.setAttribute('data-bs-original-title', 'Copy to clipboard')
+    tooltipBtn.setContent({ '.tooltip-inner': 'Copied!' })
+    event.trigger.addEventListener('hidden.bs.tooltip', function () {
+      tooltipBtn.setContent({ '.tooltip-inner': 'Copy to clipboard' })
+    }, { once: true })
     event.clearSelection()
   })
 
@@ -157,10 +157,10 @@
     var fallbackMsg = 'Press ' + modifierKey + 'C to copy'
     var tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
 
-    event.trigger.setAttribute('data-bs-original-title', fallbackMsg)
-    tooltipBtn.show()
-
-    event.trigger.setAttribute('data-bs-original-title', 'Copy to clipboard')
+    tooltipBtn.setContent({ '.tooltip-inner': fallbackMsg })
+    event.trigger.addEventListener('hidden.bs.tooltip', function () {
+      tooltipBtn.setContent({ '.tooltip-inner': 'Copy to clipboard' })
+    }, { once: true })
   })
 
   anchors.options = {
