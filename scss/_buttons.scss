@@ -4,6 +4,10 @@
 
 .btn {
   display: inline-block;
+  
+  //button size not respected when direct child of div with d-flex #34833
+  align-self: center;
+  
   font-family: $btn-font-family;
   font-weight: $btn-font-weight;
   line-height: $btn-line-height;
