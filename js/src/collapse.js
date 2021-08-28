@@ -55,7 +55,7 @@ const CLASS_NAME_HORIZONTAL = 'collapse-horizontal'
 const WIDTH = 'width'
 const HEIGHT = 'height'
 
-const SELECTOR_ACTIVES = '.show, .collapsing'
+const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]'
 
 /**
