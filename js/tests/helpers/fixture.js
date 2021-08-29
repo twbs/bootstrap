@@ -11,7 +11,7 @@ export const getFixture = () => {
     fixtureEl.style.left = '-10000px'
     fixtureEl.style.width = '10000px'
     fixtureEl.style.height = '10000px'
-    document.body.appendChild(fixtureEl)
+    document.body.append(fixtureEl)
   }
 
   return fixtureEl

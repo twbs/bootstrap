@@ -1,17 +1,16 @@
 /*!
-  * Bootstrap scrollspy.js v5.0.0-beta3 (https://getbootstrap.com/)
+  * Bootstrap scrollspy.js v5.1.0 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js'), require('./base-component.js')) :
-  typeof define === 'function' && define.amd ? define(['./dom/data', './dom/event-handler', './dom/manipulator', './dom/selector-engine', './base-component'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ScrollSpy = factory(global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine, global.Base));
-}(this, (function (Data, EventHandler, Manipulator, SelectorEngine, BaseComponent) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js'), require('./base-component.js')) :
+  typeof define === 'function' && define.amd ? define(['./dom/event-handler', './dom/manipulator', './dom/selector-engine', './base-component'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ScrollSpy = factory(global.EventHandler, global.Manipulator, global.SelectorEngine, global.Base));
+}(this, (function (EventHandler, Manipulator, SelectorEngine, BaseComponent) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-  var Data__default = /*#__PURE__*/_interopDefaultLegacy(Data);
   var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
   var Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
   var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
@@ -19,11 +18,10 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-beta3): util/index.js
+   * Bootstrap (v5.1.0): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
-  const MAX_UID = 1000000;
 
   const toType = obj => {
     if (obj === null || obj === undefined) {
@@ -31,20 +29,6 @@
     }
 
     return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
-  };
-  /**
-   * --------------------------------------------------------------------------
-   * Public Util Api
-   * --------------------------------------------------------------------------
-   */
-
-
-  const getUID = prefix => {
-    do {
-      prefix += Math.floor(Math.random() * MAX_UID);
-    } while (document.getElementById(prefix));
-
-    return prefix;
   };
 
   const getSelector = element => {
@@ -62,7 +46,7 @@
 
 
       if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
-        hrefAttr = '#' + hrefAttr.split('#')[1];
+        hrefAttr = `#${hrefAttr.split('#')[1]}`;
       }
 
       selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
@@ -81,7 +65,30 @@
     return null;
   };
 
-  const isElement = obj => (obj[0] || obj).nodeType;
+  const isElement = obj => {
+    if (!obj || typeof obj !== 'object') {
+      return false;
+    }
+
+    if (typeof obj.jquery !== 'undefined') {
+      obj = obj[0];
+    }
+
+    return typeof obj.nodeType !== 'undefined';
+  };
+
+  const getElement = obj => {
+    if (isElement(obj)) {
+      // it's a jQuery object or a node element
+      return obj.jquery ? obj[0] : obj;
+    }
+
+    if (typeof obj === 'string' && obj.length > 0) {
+      return document.querySelector(obj);
+    }
+
+    return null;
+  };
 
   const typeCheckConfig = (componentName, config, configTypes) => {
     Object.keys(configTypes).forEach(property => {
@@ -90,7 +97,7 @@
       const valueType = value && isElement(value) ? 'element' : toType(value);
 
       if (!new RegExp(expectedTypes).test(valueType)) {
-        throw new TypeError(`${componentName.toUpperCase()}: ` + `Option "${property}" provided type "${valueType}" ` + `but expected type "${expectedTypes}".`);
+        throw new TypeError(`${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`);
       }
     });
   };
@@ -107,20 +114,30 @@
     return null;
   };
 
+  const DOMContentLoadedCallbacks = [];
+
   const onDOMContentLoaded = callback => {
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', callback);
+      // add listener on the first call when the document is in loading state
+      if (!DOMContentLoadedCallbacks.length) {
+        document.addEventListener('DOMContentLoaded', () => {
+          DOMContentLoadedCallbacks.forEach(callback => callback());
+        });
+      }
+
+      DOMContentLoadedCallbacks.push(callback);
     } else {
       callback();
     }
   };
 
-  const defineJQueryPlugin = (name, plugin) => {
+  const defineJQueryPlugin = plugin => {
     onDOMContentLoaded(() => {
       const $ = getjQuery();
       /* istanbul ignore if */
 
       if ($) {
+        const name = plugin.NAME;
         const JQUERY_NO_CONFLICT = $.fn[name];
         $.fn[name] = plugin.jQueryInterface;
         $.fn[name].Constructor = plugin;
@@ -135,7 +152,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-beta3): scrollspy.js
+   * Bootstrap (v5.1.0): scrollspy.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -169,6 +186,7 @@
   const SELECTOR_NAV_LINKS = '.nav-link';
   const SELECTOR_NAV_ITEMS = '.nav-item';
   const SELECTOR_LIST_ITEMS = '.list-group-item';
+  const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}, .${CLASS_NAME_DROPDOWN_ITEM}`;
   const SELECTOR_DROPDOWN = '.dropdown';
   const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle';
   const METHOD_OFFSET = 'offset';
@@ -184,7 +202,6 @@
       super(element);
       this._scrollElement = this._element.tagName === 'BODY' ? window : this._element;
       this._config = this._getConfig(config);
-      this._selector = `${this._config.target} ${SELECTOR_NAV_LINKS}, ${this._config.target} ${SELECTOR_LIST_ITEMS}, ${this._config.target} .${CLASS_NAME_DROPDOWN_ITEM}`;
       this._offsets = [];
       this._targets = [];
       this._activeTarget = null;
@@ -200,8 +217,8 @@
       return Default;
     }
 
-    static get DATA_KEY() {
-      return DATA_KEY;
+    static get NAME() {
+      return NAME;
     } // Public
 
 
@@ -212,7 +229,7 @@
       this._offsets = [];
       this._targets = [];
       this._scrollHeight = this._getScrollHeight();
-      const targets = SelectorEngine__default['default'].find(this._selector);
+      const targets = SelectorEngine__default['default'].find(SELECTOR_LINK_ITEMS, this._config.target);
       targets.map(element => {
         const targetSelector = getSelectorFromElement(element);
         const target = targetSelector ? SelectorEngine__default['default'].findOne(targetSelector) : null;
@@ -234,36 +251,17 @@
     }
 
     dispose() {
-      super.dispose();
       EventHandler__default['default'].off(this._scrollElement, EVENT_KEY);
-      this._scrollElement = null;
-      this._config = null;
-      this._selector = null;
-      this._offsets = null;
-      this._targets = null;
-      this._activeTarget = null;
-      this._scrollHeight = null;
+      super.dispose();
     } // Private
 
 
     _getConfig(config) {
       config = { ...Default,
+        ...Manipulator__default['default'].getDataAttributes(this._element),
         ...(typeof config === 'object' && config ? config : {})
       };
-
-      if (typeof config.target !== 'string' && isElement(config.target)) {
-        let {
-          id
-        } = config.target;
-
-        if (!id) {
-          id = getUID(NAME);
-          config.target.id = id;
-        }
-
-        config.target = `#${id}`;
-      }
-
+      config.target = getElement(config.target) || document.documentElement;
       typeCheckConfig(NAME, config, DefaultType);
       return config;
     }
@@ -323,16 +321,13 @@
 
       this._clear();
 
-      const queries = this._selector.split(',').map(selector => `${selector}[data-bs-target="${target}"],${selector}[href="${target}"]`);
-
-      const link = SelectorEngine__default['default'].findOne(queries.join(','));
+      const queries = SELECTOR_LINK_ITEMS.split(',').map(selector => `${selector}[data-bs-target="${target}"],${selector}[href="${target}"]`);
+      const link = SelectorEngine__default['default'].findOne(queries.join(','), this._config.target);
+      link.classList.add(CLASS_NAME_ACTIVE);
 
       if (link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
         SelectorEngine__default['default'].findOne(SELECTOR_DROPDOWN_TOGGLE, link.closest(SELECTOR_DROPDOWN)).classList.add(CLASS_NAME_ACTIVE);
-        link.classList.add(CLASS_NAME_ACTIVE);
       } else {
-        // Set triggered link as active
-        link.classList.add(CLASS_NAME_ACTIVE);
         SelectorEngine__default['default'].parents(link, SELECTOR_NAV_LIST_GROUP).forEach(listGroup => {
           // Set triggered links parents as active
           // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
@@ -350,27 +345,23 @@
     }
 
     _clear() {
-      SelectorEngine__default['default'].find(this._selector).filter(node => node.classList.contains(CLASS_NAME_ACTIVE)).forEach(node => node.classList.remove(CLASS_NAME_ACTIVE));
+      SelectorEngine__default['default'].find(SELECTOR_LINK_ITEMS, this._config.target).filter(node => node.classList.contains(CLASS_NAME_ACTIVE)).forEach(node => node.classList.remove(CLASS_NAME_ACTIVE));
     } // Static
 
 
     static jQueryInterface(config) {
       return this.each(function () {
-        let data = Data__default['default'].get(this, DATA_KEY);
+        const data = ScrollSpy.getOrCreateInstance(this, config);
 
-        const _config = typeof config === 'object' && config;
-
-        if (!data) {
-          data = new ScrollSpy(this, _config);
+        if (typeof config !== 'string') {
+          return;
         }
 
-        if (typeof config === 'string') {
-          if (typeof data[config] === 'undefined') {
-            throw new TypeError(`No method named "${config}"`);
-          }
-
-          data[config]();
+        if (typeof data[config] === 'undefined') {
+          throw new TypeError(`No method named "${config}"`);
         }
+
+        data[config]();
       });
     }
 
@@ -383,7 +374,7 @@
 
 
   EventHandler__default['default'].on(window, EVENT_LOAD_DATA_API, () => {
-    SelectorEngine__default['default'].find(SELECTOR_DATA_SPY).forEach(spy => new ScrollSpy(spy, Manipulator__default['default'].getDataAttributes(spy)));
+    SelectorEngine__default['default'].find(SELECTOR_DATA_SPY).forEach(spy => new ScrollSpy(spy));
   });
   /**
    * ------------------------------------------------------------------------
@@ -392,7 +383,7 @@
    * add .ScrollSpy to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(NAME, ScrollSpy);
+  defineJQueryPlugin(ScrollSpy);
 
   return ScrollSpy;
 

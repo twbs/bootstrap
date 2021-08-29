@@ -45,9 +45,6 @@
       </div>
       <div class="row">
         <p>
-          <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip with XSS" data-bs-container="<img src=1 onerror=alert(123)>">
-            Tooltip with XSS
-          </button>
           <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip with container (selector)" data-bs-container="#customContainer">
             Tooltip with container (selector)
           </button>
@@ -56,6 +53,9 @@
           </button>
           <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
             Tooltip with HTML
+          </button>
+          <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip with XSS" data-bs-container="<img src=1 onerror=alert(123)>">
+            Tooltip with XSS
           </button>
         </p>
       </div>

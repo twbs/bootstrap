@@ -24,6 +24,19 @@ $utilities: map-merge(
       )
     ),
     // scss-docs-end utils-float
+    // Opacity utilities
+    // scss-docs-start utils-opacity
+    "opacity": (
+      property: opacity,
+      values: (
+        0: 0,
+        25: .25,
+        50: .5,
+        75: .75,
+        100: 1,
+      )
+    ),
+    // scss-docs-end utils-opacity
     // scss-docs-start utils-overflow
     "overflow": (
       property: overflow,
@@ -501,16 +514,27 @@ $utilities: map-merge(
     "color": (
       property: color,
       class: text,
+      local-vars: (
+        "text-opacity": 1
+      ),
       values: map-merge(
-        $theme-colors,
+        $utilities-text-colors,
         (
-          "white": $white,
-          "body": $body-color,
           "muted": $text-muted,
-          "black-50": rgba($black, .5),
-          "white-50": rgba($white, .5),
+          "black-50": rgba($black, .5), // deprecated
+          "white-50": rgba($white, .5), // deprecated
           "reset": inherit,
         )
+      )
+    ),
+    "text-opacity": (
+      css-var: true,
+      class: text-opacity,
+      values: (
+        25: .25,
+        50: .5,
+        75: .75,
+        100: 1
       )
     ),
     // scss-docs-end utils-color
@@ -518,13 +542,25 @@ $utilities: map-merge(
     "background-color": (
       property: background-color,
       class: bg,
+      local-vars: (
+        "bg-opacity": 1
+      ),
       values: map-merge(
-        $theme-colors,
+        $utilities-bg-colors,
         (
-          "body": $body-bg,
-          "white": $white,
           "transparent": transparent
         )
+      )
+    ),
+    "bg-opacity": (
+      css-var: true,
+      class: bg-opacity,
+      values: (
+        10: .1,
+        25: .25,
+        50: .5,
+        75: .75,
+        100: 1
       )
     ),
     // scss-docs-end utils-bg-color

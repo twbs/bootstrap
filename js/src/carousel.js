@@ -1,22 +1,20 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): carousel.js
+ * Bootstrap (v5.1.0): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
   defineJQueryPlugin,
-  emulateTransitionEnd,
   getElementFromSelector,
-  getTransitionDurationFromElement,
   isRTL,
   isVisible,
+  getNextActiveElement,
   reflow,
   triggerTransitionEnd,
   typeCheckConfig
 } from './util/index'
-import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
@@ -60,6 +58,11 @@ const ORDER_NEXT = 'next'
 const ORDER_PREV = 'prev'
 const DIRECTION_LEFT = 'left'
 const DIRECTION_RIGHT = 'right'
+
+const KEY_TO_DIRECTION = {
+  [ARROW_LEFT_KEY]: DIRECTION_RIGHT,
+  [ARROW_RIGHT_KEY]: DIRECTION_LEFT
+}
 
 const EVENT_SLIDE = `slide${EVENT_KEY}`
 const EVENT_SLID = `slid${EVENT_KEY}`
@@ -129,16 +132,14 @@ class Carousel extends BaseComponent {
     return Default
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get NAME() {
+    return NAME
   }
 
   // Public
 
   next() {
-    if (!this._isSliding) {
-      this._slide(ORDER_NEXT)
-    }
+    this._slide(ORDER_NEXT)
   }
 
   nextWhenVisible() {
@@ -150,9 +151,7 @@ class Carousel extends BaseComponent {
   }
 
   prev() {
-    if (!this._isSliding) {
-      this._slide(ORDER_PREV)
-    }
+    this._slide(ORDER_PREV)
   }
 
   pause(event) {
@@ -215,24 +214,13 @@ class Carousel extends BaseComponent {
     this._slide(order, this._items[index])
   }
 
-  dispose() {
-    this._items = null
-    this._config = null
-    this._interval = null
-    this._isPaused = null
-    this._isSliding = null
-    this._activeElement = null
-    this._indicatorsElement = null
-
-    super.dispose()
-  }
-
   // Private
 
   _getConfig(config) {
     config = {
       ...Default,
-      ...config
+      ...Manipulator.getDataAttributes(this._element),
+      ...(typeof config === 'object' ? config : {})
     }
     typeCheckConfig(NAME, config, DefaultType)
     return config
@@ -272,8 +260,13 @@ class Carousel extends BaseComponent {
   }
 
   _addTouchEventListeners() {
+    const hasPointerPenTouch = event => {
+      return this._pointerEvent &&
+        (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)
+    }
+
     const start = event => {
-      if (this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)) {
+      if (hasPointerPenTouch(event)) {
         this.touchStartX = event.clientX
       } else if (!this._pointerEvent) {
         this.touchStartX = event.touches[0].clientX
@@ -288,7 +281,7 @@ class Carousel extends BaseComponent {
     }
 
     const end = event => {
-      if (this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)) {
+      if (hasPointerPenTouch(event)) {
         this.touchDeltaX = event.clientX - this.touchStartX
       }
 
@@ -332,12 +325,10 @@ class Carousel extends BaseComponent {
       return
     }
 
-    if (event.key === ARROW_LEFT_KEY) {
+    const direction = KEY_TO_DIRECTION[event.key]
+    if (direction) {
       event.preventDefault()
-      this._slide(DIRECTION_RIGHT)
-    } else if (event.key === ARROW_RIGHT_KEY) {
-      event.preventDefault()
-      this._slide(DIRECTION_LEFT)
+      this._slide(direction)
     }
   }
 
@@ -351,21 +342,7 @@ class Carousel extends BaseComponent {
 
   _getItemByOrder(order, activeElement) {
     const isNext = order === ORDER_NEXT
-    const isPrev = order === ORDER_PREV
-    const activeIndex = this._getItemIndex(activeElement)
-    const lastItemIndex = this._items.length - 1
-    const isGoingToWrap = (isPrev && activeIndex === 0) || (isNext && activeIndex === lastItemIndex)
-
-    if (isGoingToWrap && !this._config.wrap) {
-      return activeElement
-    }
-
-    const delta = isPrev ? -1 : 1
-    const itemIndex = (activeIndex + delta) % this._items.length
-
-    return itemIndex === -1 ?
-      this._items[this._items.length - 1] :
-      this._items[itemIndex]
+    return getNextActiveElement(this._items, activeElement, isNext, this._config.wrap)
   }
 
   _triggerSlideEvent(relatedTarget, eventDirectionName) {
@@ -435,6 +412,10 @@ class Carousel extends BaseComponent {
       return
     }
 
+    if (this._isSliding) {
+      return
+    }
+
     const slideEvent = this._triggerSlideEvent(nextElement, eventDirectionName)
     if (slideEvent.defaultPrevented) {
       return
@@ -454,6 +435,15 @@ class Carousel extends BaseComponent {
     this._setActiveIndicatorElement(nextElement)
     this._activeElement = nextElement
 
+    const triggerSlidEvent = () => {
+      EventHandler.trigger(this._element, EVENT_SLID, {
+        relatedTarget: nextElement,
+        direction: eventDirectionName,
+        from: activeElementIndex,
+        to: nextElementIndex
+      })
+    }
+
     if (this._element.classList.contains(CLASS_NAME_SLIDE)) {
       nextElement.classList.add(orderClassName)
 
@@ -462,9 +452,7 @@ class Carousel extends BaseComponent {
       activeElement.classList.add(directionalClassName)
       nextElement.classList.add(directionalClassName)
 
-      const transitionDuration = getTransitionDurationFromElement(activeElement)
-
-      EventHandler.one(activeElement, 'transitionend', () => {
+      const completeCallBack = () => {
         nextElement.classList.remove(directionalClassName, orderClassName)
         nextElement.classList.add(CLASS_NAME_ACTIVE)
 
@@ -472,28 +460,16 @@ class Carousel extends BaseComponent {
 
         this._isSliding = false
 
-        setTimeout(() => {
-          EventHandler.trigger(this._element, EVENT_SLID, {
-            relatedTarget: nextElement,
-            direction: eventDirectionName,
-            from: activeElementIndex,
-            to: nextElementIndex
-          })
-        }, 0)
-      })
+        setTimeout(triggerSlidEvent, 0)
+      }
 
-      emulateTransitionEnd(activeElement, transitionDuration)
+      this._queueCallback(completeCallBack, activeElement, true)
     } else {
       activeElement.classList.remove(CLASS_NAME_ACTIVE)
       nextElement.classList.add(CLASS_NAME_ACTIVE)
 
       this._isSliding = false
-      EventHandler.trigger(this._element, EVENT_SLID, {
-        relatedTarget: nextElement,
-        direction: eventDirectionName,
-        from: activeElementIndex,
-        to: nextElementIndex
-      })
+      triggerSlidEvent()
     }
 
     if (isCycling) {
@@ -528,12 +504,9 @@ class Carousel extends BaseComponent {
   // Static
 
   static carouselInterface(element, config) {
-    let data = Data.get(element, DATA_KEY)
-    let _config = {
-      ...Default,
-      ...Manipulator.getDataAttributes(element)
-    }
+    const data = Carousel.getOrCreateInstance(element, config)
 
+    let { _config } = data
     if (typeof config === 'object') {
       _config = {
         ..._config,
@@ -542,10 +515,6 @@ class Carousel extends BaseComponent {
     }
 
     const action = typeof config === 'string' ? config : _config.slide
-
-    if (!data) {
-      data = new Carousel(element, _config)
-    }
 
     if (typeof config === 'number') {
       data.to(config)
@@ -587,7 +556,7 @@ class Carousel extends BaseComponent {
     Carousel.carouselInterface(target, config)
 
     if (slideIndex) {
-      Data.get(target, DATA_KEY).to(slideIndex)
+      Carousel.getInstance(target).to(slideIndex)
     }
 
     event.preventDefault()
@@ -606,7 +575,7 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
 
   for (let i = 0, len = carousels.length; i < len; i++) {
-    Carousel.carouselInterface(carousels[i], Data.get(carousels[i], DATA_KEY))
+    Carousel.carouselInterface(carousels[i], Carousel.getInstance(carousels[i]))
   }
 })
 
@@ -617,6 +586,6 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  * add .Carousel to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Carousel)
+defineJQueryPlugin(Carousel)
 
 export default Carousel
