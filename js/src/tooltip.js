@@ -211,10 +211,7 @@ class Tooltip extends BaseComponent {
       this.tip.remove()
     }
 
-    if (this._popper) {
-      this._popper.destroy()
-    }
-
+    this._disposePopper()
     super.dispose()
   }
 
@@ -235,6 +232,14 @@ class Tooltip extends BaseComponent {
 
     if (showEvent.defaultPrevented || !isInTheDom) {
       return
+    }
+
+    // Trick to recreate tooltip in case of new title given by NOT documented 'data-bs-original-title'
+    // Trick will be removed on a following version, in favor of a 'setContent', method
+    if (this.constructor.NAME === 'tooltip' && this.tip && this.getTitle() !== this.tip.querySelector(SELECTOR_TOOLTIP_INNER).innerHTML) {
+      this._disposePopper()
+      this.tip.remove()
+      this.tip = null
     }
 
     const tip = this.getTipElement()
@@ -319,10 +324,7 @@ class Tooltip extends BaseComponent {
       this._element.removeAttribute('aria-describedby')
       EventHandler.trigger(this._element, this.constructor.Event.HIDDEN)
 
-      if (this._popper) {
-        this._popper.destroy()
-        this._popper = null
-      }
+      this._disposePopper()
     }
 
     const hideEvent = EventHandler.trigger(this._element, this.constructor.Event.HIDE)
@@ -723,6 +725,13 @@ class Tooltip extends BaseComponent {
     this.tip = state.elements.popper
     this._cleanTipClass()
     this._addAttachmentClass(this._getAttachment(state.placement))
+  }
+
+  _disposePopper() {
+    if (this._popper) {
+      this._popper.destroy()
+      this._popper = null
+    }
   }
 
   // Static
