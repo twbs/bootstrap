@@ -15,7 +15,9 @@ toc: true
 Import [Bootstrap's JavaScript]({{< docsref "/getting-started/javascript" >}}) by adding this line to your app's entry point (usually `index.js` or `app.js`):
 
 ```js
-// You can specify which plugins you need
+import 'bootstrap';
+
+// or, specify which plugins you need:
 import { Tooltip, Toast, Popover } from 'bootstrap';
 ```
 
