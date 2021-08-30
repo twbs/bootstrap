@@ -333,8 +333,8 @@ describe('Tab', () => {
         const tabId = linkEl.getAttribute('href')
         const tabIdEl = fixtureEl.querySelector(tabId)
 
-        liEl.parentNode.removeChild(liEl)
-        tabIdEl.parentNode.removeChild(tabIdEl)
+        liEl.remove()
+        tabIdEl.remove()
         secondNavTab.show()
       })
 

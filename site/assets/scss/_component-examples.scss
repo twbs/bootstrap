@@ -23,6 +23,21 @@
   background-color: rgba(255, 0, 0, .1);
 }
 
+.bd-example-cssgrid {
+  text-align: center;
+
+  .grid + .grid {
+    margin-top: 1rem;
+  }
+
+  .grid > * {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background-color: rgba(255, 0, 255, .1);
+    border: 1px solid rgba(255, 0, 255, .25);
+  }
+}
+
 .bd-highlight {
   background-color: rgba($bd-purple, .15);
   border: 1px solid rgba($bd-purple, .15);
@@ -70,7 +85,7 @@
 .bd-example {
   position: relative;
   padding: 1rem;
-  margin: 1rem (-$grid-gutter-width / 2) 0;
+  margin: 1rem (-$grid-gutter-width * .5) 0;
   border: solid $gray-300;
   border-width: 1px 0 0;
   @include clearfix();
@@ -277,6 +292,17 @@
   }
 }
 
+// Placeholders
+.bd-example-placeholder-cards {
+  &::after {
+    display: none;
+  }
+
+  .card {
+    width: 18rem;
+  }
+}
+
 // Toasts
 .bd-example-toasts {
   min-height: 240px;
@@ -312,8 +338,8 @@
 }
 
 .bd-content .highlight {
-  margin-right: (-$grid-gutter-width / 2);
-  margin-left: (-$grid-gutter-width / 2);
+  margin-right: (-$grid-gutter-width * .5);
+  margin-left: (-$grid-gutter-width * .5);
 
   @include media-breakpoint-up(sm) {
     margin-right: 0;

@@ -85,17 +85,7 @@
 
 // Modal background
 .modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: $zindex-modal-backdrop;
-  width: 100vw;
-  height: 100vh;
-  background-color: $modal-backdrop-bg;
-
-  // Fade for backdrop
-  &.fade { opacity: 0; }
-  &.show { opacity: $modal-backdrop-opacity; }
+  @include overlay-backdrop($zindex-modal-backdrop, $modal-backdrop-bg, $modal-backdrop-opacity);
 }
 
 // Modal header
@@ -110,8 +100,8 @@
   @include border-top-radius($modal-content-inner-border-radius);
 
   .btn-close {
-    padding: ($modal-header-padding-y / 2) ($modal-header-padding-x / 2);
-    margin: ($modal-header-padding-y / -2) ($modal-header-padding-x / -2) ($modal-header-padding-y / -2) auto;
+    padding: ($modal-header-padding-y * .5) ($modal-header-padding-x * .5);
+    margin: ($modal-header-padding-y * -.5) ($modal-header-padding-x * -.5) ($modal-header-padding-y * -.5) auto;
   }
 }
 
@@ -138,7 +128,7 @@
   flex-shrink: 0;
   align-items: center; // vertically center
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
-  padding: $modal-inner-padding - $modal-footer-margin-between / 2;
+  padding: $modal-inner-padding - $modal-footer-margin-between * .5;
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
   @include border-bottom-radius($modal-content-inner-border-radius);
 
@@ -146,7 +136,7 @@
   // This solution is far from ideal because of the universal selector usage,
   // but is needed to fix https://github.com/twbs/bootstrap/issues/24800
   > * {
-    margin: $modal-footer-margin-between / 2;
+    margin: $modal-footer-margin-between * .5;
   }
 }
 

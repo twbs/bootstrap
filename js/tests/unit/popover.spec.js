@@ -1,7 +1,7 @@
 import Popover from '../../src/popover'
 
 /** Test helpers */
-import { getFixture, clearFixture, jQueryMock } from '../helpers/fixture'
+import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Popover', () => {
   let fixtureEl
@@ -16,7 +16,7 @@ describe('Popover', () => {
     const popoverList = document.querySelectorAll('.popover')
 
     popoverList.forEach(popoverEl => {
-      document.body.removeChild(popoverEl)
+      popoverEl.remove()
     })
   })
 
@@ -154,6 +154,37 @@ describe('Popover', () => {
         done()
       })
 
+      popover.show()
+    })
+
+    it('should call setContent once', done => {
+      fixtureEl.innerHTML = '<a href="#">BS twitter</a>'
+
+      const popoverEl = fixtureEl.querySelector('a')
+      const popover = new Popover(popoverEl, {
+        content: 'Popover content'
+      })
+
+      const spy = spyOn(popover, 'setContent').and.callThrough()
+      let times = 1
+
+      popoverEl.addEventListener('hidden.bs.popover', () => {
+        popover.show()
+      })
+
+      popoverEl.addEventListener('shown.bs.popover', () => {
+        const popoverDisplayed = document.querySelector('.popover')
+
+        expect(popoverDisplayed).not.toBeNull()
+        expect(popoverDisplayed.querySelector('.popover-body').textContent).toEqual('Popover content')
+        expect(spy).toHaveBeenCalledTimes(1)
+        if (times > 1) {
+          done()
+        }
+
+        times++
+        popover.hide()
+      })
       popover.show()
     })
 

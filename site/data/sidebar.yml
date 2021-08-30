@@ -8,12 +8,12 @@
     - title: Contents
     - title: Browsers & devices
     - title: JavaScript
-    - title: Build tools
     - title: Webpack
     - title: Parcel
     - title: Accessibility
     - title: RFS
     - title: RTL
+    - title: Contribute
 
 - title: Customize
   pages:
@@ -34,6 +34,7 @@
     - title: Gutters
     - title: Utilities
     - title: Z-index
+    - title: CSS Grid
 
 - title: Content
   pages:
@@ -74,6 +75,7 @@
     - title: Navbar
     - title: Offcanvas
     - title: Pagination
+    - title: Placeholders
     - title: Popovers
     - title: Progress
     - title: Scrollspy
@@ -87,9 +89,11 @@
     - title: Colored links
     - title: Ratio
     - title: Position
+    - title: Stacks
     - title: Visually hidden
     - title: Stretched link
     - title: Text truncation
+    - title: Vertical rule
 
 - title: Utilities
   pages:
@@ -101,6 +105,7 @@
     - title: Flex
     - title: Float
     - title: Interactions
+    - title: Opacity
     - title: Overflow
     - title: Position
     - title: Shadows
