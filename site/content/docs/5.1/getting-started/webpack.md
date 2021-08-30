@@ -17,15 +17,17 @@ Import [Bootstrap's JavaScript]({{< docsref "/getting-started/javascript" >}}) b
 ```js
 import 'bootstrap';
 
-// or, specify which plugins you need:
-import { Tooltip, Toast, Popover } from 'bootstrap';
+// or get all of the named exports for further usage
+import * as bootstrap from 'bootstrap';
 ```
 
 Alternatively, if you only need just a few of our plugins, you may **import plugins individually** as needed:
 
 ```js
 import Alert from 'bootstrap/js/dist/alert';
-...
+
+// or, specify which plugins you need:
+import { Tooltip, Toast, Popover } from 'bootstrap';
 ```
 
 Bootstrap depends on [Popper](https://popper.js.org/), which is specified in the `peerDependencies` property.
