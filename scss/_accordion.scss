@@ -64,7 +64,7 @@
   &:first-of-type {
     @include border-top-radius($accordion-border-radius);
 
-    .accordion-button {
+    > * > .accordion-button {
       @include border-top-radius($accordion-inner-border-radius);
     }
   }
@@ -77,7 +77,7 @@
   &:last-of-type {
     @include border-bottom-radius($accordion-border-radius);
 
-    .accordion-button {
+    > * > .accordion-button {
       &.collapsed {
         @include border-bottom-radius($accordion-inner-border-radius);
       }
