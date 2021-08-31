@@ -234,8 +234,8 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    // Trick to recreate tooltip in case of new title given by NOT documented 'data-bs-original-title'
-    // Trick will be removed on a following version, in favor of a 'setContent', method
+    // A trick to recreate a tooltip in case a new title is given by using the NOT documented `data-bs-original-title`
+    // This will be removed later in favor of a `setContent` method
     if (this.constructor.NAME === 'tooltip' && this.tip && this.getTitle() !== this.tip.querySelector(SELECTOR_TOOLTIP_INNER).innerHTML) {
       this._disposePopper()
       this.tip.remove()
