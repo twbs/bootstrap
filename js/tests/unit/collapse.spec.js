@@ -65,8 +65,7 @@ describe('Collapse', () => {
         parent: fakejQueryObject
       })
 
-      expect(collapse._config.parent).toEqual(fakejQueryObject)
-      expect(collapse._getParent()).toEqual(myCollapseEl)
+      expect(collapse._config.parent).toEqual(myCollapseEl)
     })
 
     it('should allow non jquery object in parent config', () => {
@@ -104,8 +103,7 @@ describe('Collapse', () => {
         parent: 'div.my-collapse'
       })
 
-      expect(collapse._config.parent).toEqual('div.my-collapse')
-      expect(collapse._getParent()).toEqual(myCollapseEl)
+      expect(collapse._config.parent).toEqual(myCollapseEl)
     })
   })
 
@@ -264,6 +262,56 @@ describe('Collapse', () => {
         expect(el1.classList.contains('show')).toEqual(true)
         expect(el2.classList.contains('show')).toEqual(true)
         done()
+      })
+
+      collapse.show()
+    })
+
+    it('should not change tab tabpanels descendants on accordion', done => {
+      fixtureEl.innerHTML = [
+        '<div class="accordion" id="accordionExample">',
+        '      <div class="accordion-item">',
+        '        <h2 class="accordion-header" id="headingOne">',
+        '          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">',
+        '            Accordion Item #1',
+        '          </button>',
+        '        </h2>',
+        '        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">',
+        '          <div class="accordion-body">',
+        '            <nav>',
+        '              <div class="nav nav-tabs" id="nav-tab" role="tablist">',
+        '                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>',
+        '                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>',
+        '              </div>',
+        '            </nav>',
+        '            <div class="tab-content" id="nav-tabContent">',
+        '              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">Home</div>',
+        '              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Profile</div>',
+        '            </div>',
+        '          </div>',
+        '        </div>',
+        '      </div>',
+        '    </div>'
+      ].join('')
+
+      // const btn = fixtureEl.querySelector('[data-bs-target="#collapseOne"]')
+      const el = fixtureEl.querySelector('#collapseOne')
+      const activeTabPane = fixtureEl.querySelector('#nav-home')
+      const collapse = new Collapse(el)
+      let times = 1
+
+      el.addEventListener('hidden.bs.collapse', () => {
+        setTimeout(() => collapse.show(), 10)
+      })
+
+      el.addEventListener('shown.bs.collapse', () => {
+        expect(activeTabPane.classList.contains('show')).toEqual(true)
+        times++
+        if (times === 2) {
+          done()
+        }
+
+        collapse.hide()
       })
 
       collapse.show()

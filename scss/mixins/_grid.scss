@@ -66,8 +66,8 @@
 
 @mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
   @each $breakpoint in map-keys($breakpoints) {
-    // .row-cols defaults must all appear before .col overrides so they can be overridden.
     $infix: breakpoint-infix($breakpoint, $breakpoints);
+
     @include media-breakpoint-up($breakpoint, $breakpoints) {
       // Provide basic `.col-{bp}` classes for equal-width flexbox columns
       .col#{$infix} {
@@ -85,13 +85,7 @@
           }
         }
       }
-    }
-  }
 
-  @each $breakpoint in map-keys($breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $breakpoints);
-
-    @include media-breakpoint-up($breakpoint, $breakpoints) {
       .col#{$infix}-auto {
         @include make-col-auto();
       }

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.2): tooltip.js
+ * Bootstrap (v5.1.0): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -108,6 +108,9 @@ const HOVER_STATE_SHOW = 'show'
 const HOVER_STATE_OUT = 'out'
 
 const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
+const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`
+
+const EVENT_MODAL_HIDE = 'hide.bs.modal'
 
 const TRIGGER_HOVER = 'hover'
 const TRIGGER_FOCUS = 'focus'
@@ -202,16 +205,13 @@ class Tooltip extends BaseComponent {
   dispose() {
     clearTimeout(this._timeout)
 
-    EventHandler.off(this._element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler)
+    EventHandler.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler)
 
     if (this.tip) {
       this.tip.remove()
     }
 
-    if (this._popper) {
-      this._popper.destroy()
-    }
-
+    this._disposePopper()
     super.dispose()
   }
 
@@ -234,13 +234,19 @@ class Tooltip extends BaseComponent {
       return
     }
 
+    // A trick to recreate a tooltip in case a new title is given by using the NOT documented `data-bs-original-title`
+    // This will be removed later in favor of a `setContent` method
+    if (this.constructor.NAME === 'tooltip' && this.tip && this.getTitle() !== this.tip.querySelector(SELECTOR_TOOLTIP_INNER).innerHTML) {
+      this._disposePopper()
+      this.tip.remove()
+      this.tip = null
+    }
+
     const tip = this.getTipElement()
     const tipId = getUID(this.constructor.NAME)
 
     tip.setAttribute('id', tipId)
     this._element.setAttribute('aria-describedby', tipId)
-
-    this.setContent()
 
     if (this._config.animation) {
       tip.classList.add(CLASS_NAME_FADE)
@@ -257,7 +263,7 @@ class Tooltip extends BaseComponent {
     Data.set(tip, this.constructor.DATA_KEY, this)
 
     if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
-      container.appendChild(tip)
+      container.append(tip)
       EventHandler.trigger(this._element, this.constructor.Event.INSERTED)
     }
 
@@ -318,10 +324,7 @@ class Tooltip extends BaseComponent {
       this._element.removeAttribute('aria-describedby')
       EventHandler.trigger(this._element, this.constructor.Event.HIDDEN)
 
-      if (this._popper) {
-        this._popper.destroy()
-        this._popper = null
-      }
+      this._disposePopper()
     }
 
     const hideEvent = EventHandler.trigger(this._element, this.constructor.Event.HIDE)
@@ -368,20 +371,21 @@ class Tooltip extends BaseComponent {
     element.innerHTML = this._config.template
 
     const tip = element.children[0]
+    this.setContent(tip)
     tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
 
     this.tip = tip
     return this.tip
   }
 
-  setContent() {
-    const tip = this.getTipElement()
+  setContent(tip) {
     this._sanitizeAndSetContent(tip, this.getTitle(), SELECTOR_TOOLTIP_INNER)
   }
 
   _sanitizeAndSetContent(template, content, selector) {
     const templateElement = SelectorEngine.findOne(selector, template)
-    if (!content) {
+
+    if (!content && templateElement) {
       templateElement.remove()
       return
     }
@@ -402,7 +406,7 @@ class Tooltip extends BaseComponent {
       if (this._config.html) {
         if (content.parentNode !== element) {
           element.innerHTML = ''
-          element.appendChild(content)
+          element.append(content)
         }
       } else {
         element.textContent = content.textContent
@@ -545,7 +549,7 @@ class Tooltip extends BaseComponent {
       }
     }
 
-    EventHandler.on(this._element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler)
+    EventHandler.on(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler)
 
     if (this._config.selector) {
       this._config = {
@@ -721,6 +725,13 @@ class Tooltip extends BaseComponent {
     this.tip = state.elements.popper
     this._cleanTipClass()
     this._addAttachmentClass(this._getAttachment(state.placement))
+  }
+
+  _disposePopper() {
+    if (this._popper) {
+      this._popper.destroy()
+      this._popper = null
+    }
   }
 
   // Static

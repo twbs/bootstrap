@@ -18,7 +18,7 @@ describe('Backdrop', () => {
     const list = document.querySelectorAll(CLASS_BACKDROP)
 
     list.forEach(el => {
-      document.body.removeChild(el)
+      el.remove()
     })
   })
 
@@ -141,7 +141,7 @@ describe('Backdrop', () => {
       const getElements = () => document.querySelectorAll(CLASS_BACKDROP)
 
       instance.show(() => {
-        wrapper.parentNode.removeChild(wrapper)
+        wrapper.remove()
         instance.hide(() => {
           expect(getElements().length).toEqual(0)
           done()

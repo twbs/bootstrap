@@ -151,7 +151,7 @@ describe('Manipulator', () => {
       const { defaultView: win, body } = fixtureEl.ownerDocument
       const forceScrollBars = document.createElement('div')
       forceScrollBars.style.cssText = 'position:absolute;top:5000px;left:5000px;width:1px;height:1px'
-      body.appendChild(forceScrollBars)
+      body.append(forceScrollBars)
 
       const scrollHandler = () => {
         expect(window.pageYOffset).toBe(scrollY)
@@ -165,7 +165,7 @@ describe('Manipulator', () => {
         })
 
         win.removeEventListener('scroll', scrollHandler)
-        body.removeChild(forceScrollBars)
+        forceScrollBars.remove()
         win.scrollTo(0, 0)
         done()
       }
