@@ -732,3 +732,7 @@ To create an offcanvas navbar that expands into a normal navbar at a specific br
 [Responsive navbar expand/collapse classes](#responsive-behaviors) (e.g., `.navbar-expand-lg`) are combined with the `$breakpoints` map and generated through a loop in `scss/_navbar.scss`.
 
 {{< scss-docs name="navbar-expand-loop" file="scss/_navbar.scss" >}}
+
+## Events
+To see how expose custom events through javascript, please see the [collapse component documentation](https://getbootstrap.com/docs/5.1/components/collapse/#events)
+
