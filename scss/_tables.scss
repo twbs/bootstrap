@@ -39,7 +39,7 @@
   }
 
   // Highlight border color between thead, tbody and tfoot.
-  > * + * > :first-child > * {
+  > :not(:first-child) > :first-child > * {
     border-top-color: $table-group-separator-color;
   }
 }
