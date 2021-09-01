@@ -27,7 +27,7 @@
 
 :root {
   @if $font-size-root != null {
-    font-size: var(--#{$variable-prefix}-root-font-size);
+    font-size: var(--#{$variable-prefix}root-font-size);
   }
 
   @if $enable-smooth-scroll {

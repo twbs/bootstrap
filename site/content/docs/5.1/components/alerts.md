@@ -27,20 +27,10 @@ Alerts are available for any length of text, as well as an optional close button
 
 Click the button below to show an alert (hidden with inline styles to start), then dismiss (and destroy) it with the built-in close button.
 
+{{< example >}}
 <div id="liveAlertPlaceholder"></div>
-
-<div class="bd-example">
-  <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
-</div>
-
-```html
 <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
-
-<div class="alert alert-primary alert-dismissible" role="alert" id="liveAlert">
-  <strong>Nice!</strong> You've triggered this alert.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-```
+{{< /example >}}
 
 We use the following JavaScript to trigger our live alert demo:
 

@@ -73,7 +73,7 @@ In the example below, we take a typical card component and recreate it with plac
 
 ## How it works
 
-Create placeholders with the `.placeholder` class and a grid column class (e.g., `.col-6`) to set the `width`. They can replace the text inside an element or as be added as a modifier class to an existing component.
+Create placeholders with the `.placeholder` class and a grid column class (e.g., `.col-6`) to set the `width`. They can replace the text inside an element or be added as a modifier class to an existing component.
 
 We apply additional styling to `.btn`s via `::before` to ensure the `height` is respected. You may extend this pattern for other situations as needed, or add a `&nbsp;` within the element to reflect the height when actual text is rendered in its place.
 
@@ -101,7 +101,7 @@ You can change the `width` through grid column classes, width utilities, or inli
 
 ### Color
 
-By default, the `placeholder` uses `currentColor`. This can be overriden with a custom color or utility class.
+By default, the `placeholder` uses `currentColor`. This can be overridden with a custom color or utility class.
 
 {{< example >}}
 <span class="placeholder col-12"></span>
@@ -125,7 +125,7 @@ The size of `.placeholder`s are based on the typographic style of the parent ele
 
 ### Animation
 
-Animate placehodlers with `.placeholder-glow` or `.placeholder-wave` to better convey the perception of something being _actively_ loaded.
+Animate placeholders with `.placeholder-glow` or `.placeholder-wave` to better convey the perception of something being _actively_ loaded.
 
 {{< example >}}
 <p class="placeholder-glow">

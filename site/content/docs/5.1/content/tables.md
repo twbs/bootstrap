@@ -559,7 +559,7 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
 <div class="bd-example">
   <table class="table">
     <caption>List of users</caption>
-    {{< partial "table-content.html" >}}
+    {{< partial "table-content" >}}
   </table>
 </div>
 

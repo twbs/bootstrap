@@ -86,6 +86,7 @@ class Alert extends BaseComponent {
  */
 
 enableDismissTrigger(Alert, 'close')
+
 /**
  * ------------------------------------------------------------------------
  * jQuery

@@ -978,6 +978,29 @@ describe('Modal', () => {
 
       trigger.click()
     })
+
+    it('should call hide first, if another modal is open', done => {
+      fixtureEl.innerHTML = [
+        '<button data-bs-toggle="modal"  data-bs-target="#modal2"></button>',
+        '<div id="modal1" class="modal fade"><div class="modal-dialog"></div></div>',
+        '<div id="modal2" class="modal"><div class="modal-dialog"></div></div>'
+      ].join('')
+
+      const trigger2 = fixtureEl.querySelector('button')
+      const modalEl1 = document.querySelector('#modal1')
+      const modalEl2 = document.querySelector('#modal2')
+      const modal1 = new Modal(modalEl1)
+
+      modalEl1.addEventListener('shown.bs.modal', () => {
+        trigger2.click()
+      })
+      modalEl1.addEventListener('hidden.bs.modal', () => {
+        expect(Modal.getInstance(modalEl2)).not.toBeNull()
+        expect(modalEl2.classList.contains('show')).toBeTrue()
+        done()
+      })
+      modal1.show()
+    })
   })
 
   describe('jQueryInterface', () => {
