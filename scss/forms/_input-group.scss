@@ -20,7 +20,8 @@
 
   // Bring the "active" form control to the top of surrounding elements
   > .form-control:focus,
-  > .form-select:focus {
+  > .form-select:focus,
+  > .form-floating:focus-within {
     z-index: 3;
   }
 
