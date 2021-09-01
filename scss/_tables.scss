@@ -91,6 +91,10 @@
   > :not(caption) > * > * {
     border-bottom-width: 0;
   }
+  
+  > :not(:first-child) {
+    border-top-width: 0;
+  }
 }
 
 // Zebra-striping
