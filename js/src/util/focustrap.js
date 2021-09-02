@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): util/focustrap.js
+ * Bootstrap (v5.1.1): util/focustrap.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
