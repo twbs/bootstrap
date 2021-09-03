@@ -69,11 +69,7 @@ class FocusTrap {
     const { target } = event
     const { trapElement } = this._config
 
-    if (
-      target === document ||
-      target === trapElement ||
-      trapElement.contains(target)
-    ) {
+    if (target === document || target === trapElement || trapElement.contains(target)) {
       return
     }
 
