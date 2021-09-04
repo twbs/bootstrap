@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Components
-description: Learn how and why we build nearly all our components responsively and with base and modifier classes.
+description: Learn how and why we build nearly all our components responsively with base and modifier classes.
 group: customize
 toc: true
 ---
