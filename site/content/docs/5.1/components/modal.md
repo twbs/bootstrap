@@ -964,7 +964,7 @@ var modal = bootstrap.Modal.getInstance(myModalEl) // Returns a Bootstrap modal 
 
 #### getOrCreateInstance
 
-*Static* method which allows you to get the modal instance associated with a DOM element, or create a new one in case it wasn't initialised
+*Static* method which allows you to get the modal instance associated with a DOM element, or create a new one in case it wasn't initialized
 
 ```js
 var myModalEl = document.querySelector('#myModal')
