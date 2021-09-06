@@ -8,6 +8,10 @@ toc: true
 
 Stacks offer a shortcut for applying a number of flexbox properties to quickly and easily create layouts in Bootstrap. All credit for the concept and implementation goes to the open source [Pylon project](https://almonk.github.io/pylon/).
 
+{{< callout warning >}}
+{{< partial "callout-warning-flexbox-gap.md" >}}
+{{< /callout >}}
+
 ## Vertical
 
 Use `.vstack` to create vertical layouts. Stacked items are full-width by default. Use `.gap-*` utilities to add space between items.
