@@ -68,7 +68,7 @@ Create an inline form with `.hstack`:
 
 {{< example >}}
 <div class="hstack gap-3">
-  <input class="form-control me-auto" type="text" placeholder="Add your item here...">
+  <input class="form-control me-auto" type="text" placeholder="Add your item here..." aria-label="Add your item here...">
   <button type="button" class="btn btn-secondary">Submit</button>
   <div class="vr"></div>
   <button type="button" class="btn btn-outline-danger">Reset</button>
