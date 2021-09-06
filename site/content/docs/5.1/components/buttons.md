@@ -93,8 +93,7 @@ Disabled buttons using the `<a>` element behave a bit different:
 <a class="btn btn-secondary btn-lg disabled" role="button" aria-disabled="true">Link</a>
 {{< /example >}}
 
-{{< callout warning >}}
-##### Link functionality caveat
+### Link functionality caveat
 
 To cover cases where you have to keep the `href` attribute on a disabled link, the `.disabled` class uses `pointer-events: none` to try to disable the link functionality of `<a>`s. Note that this CSS property is not yet standardized for HTML, but all modern browsers support it. In addition, even in browsers that do support `pointer-events: none`, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links. So to be safe, in addition to `aria-disabled="true"`, also include a `tabindex="-1"` attribute on these links to prevent them from receiving keyboard focus, and use custom JavaScript to disable their functionality altogether.
 
@@ -102,8 +101,6 @@ To cover cases where you have to keep the `href` attribute on a disabled link, t
 <a href="#" class="btn btn-primary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">Primary link</a>
 <a href="#" class="btn btn-secondary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">Link</a>
 {{< /example >}}
-
-{{< /callout >}}
 
 ## Block buttons
 
