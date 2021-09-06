@@ -62,7 +62,7 @@ Be sure to **not use the standard `.btn` classes here**.
   <a href="#" class="list-group-item list-group-item-action">A second link item</a>
   <a href="#" class="list-group-item list-group-item-action">A third link item</a>
   <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
-  <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">A disabled link item</a>
+  <a class="list-group-item list-group-item-action disabled">A disabled link item</a>
 </div>
 {{< /example >}}
 
