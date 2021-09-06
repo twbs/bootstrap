@@ -86,7 +86,7 @@ Disabled buttons using the `<a>` element behave a bit different:
 - `<a>`s don't support the `disabled` attribute, so you must add the `.disabled` class to make it visually appear disabled.
 - Some future-friendly styles are included to disable all `pointer-events` on anchor buttons.
 - Disabled buttons using `<a>` should include the `aria-disabled="true"` attribute to indicate the state of the element to assistive technologies.
-- Disabled buttons using `<a>` <em>should not</em> include the `href` attribute.
+- Disabled buttons using `<a>` *should not* include the `href` attribute.
 
 {{< example >}}
 <a class="btn btn-primary btn-lg disabled" role="button" aria-disabled="true">Primary link</a>
