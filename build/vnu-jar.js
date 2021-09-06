@@ -26,7 +26,8 @@ execFile('java', ['-version'], (error, stdout, stderr) => {
     // "autocomplete" is included in <button> and checkboxes and radio <input>s due to
     // Firefox's non-standard autocomplete behavior - see https://bugzilla.mozilla.org/show_bug.cgi?id=654072
     'Attribute “autocomplete” is only allowed when the input type is.*',
-    'Attribute “autocomplete” not allowed on element “button” at this point.'
+    'Attribute “autocomplete” not allowed on element “button” at this point.',
+    'An “aria-disabled” attribute whose value is “true” should not be specified on an “a” element that has an “href” attribute.'
   ].join('|')
 
   const args = [
