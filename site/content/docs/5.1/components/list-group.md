@@ -486,7 +486,7 @@ var tab = bootstrap.Tab.getInstance(triggerEl) // Returns a Bootstrap tab instan
 
 #### getOrCreateInstance
 
-*Static* method which allows you to get the tab instance associated with a DOM element, or create a new one in case it wasn't initialised
+*Static* method which allows you to get the tab instance associated with a DOM element, or create a new one in case it wasn't initialized
 
 ```js
 var triggerEl = document.querySelector('#trigger')
