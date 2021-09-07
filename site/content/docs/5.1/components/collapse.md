@@ -222,7 +222,7 @@ var bsCollapse = new bootstrap.Collapse(myCollapse, {
         <code>getOrCreateInstance</code>
       </td>
       <td>
-        Static method which returns a collapse instance associated to a DOM element or create a new one in case it wasn't initialised.
+        Static method which returns a collapse instance associated to a DOM element or create a new one in case it wasn't initialized.
         You can use it like this: <code>bootstrap.Collapse.getOrCreateInstance(element)</code>
       </td>
     </tr>
