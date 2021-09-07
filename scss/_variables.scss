@@ -90,6 +90,10 @@ $theme-colors: (
 ) !default;
 // scss-docs-end theme-colors-map
 
+// scss-docs-start theme-colors-rgb
+$theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value") !default;
+// scss-docs-end theme-colors-rgb
+
 // The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
 // See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
 $min-contrast-ratio:   4.5 !default;
@@ -401,6 +405,38 @@ $body-bg:                   $white !default;
 $body-color:                $gray-900 !default;
 $body-text-align:           null !default;
 
+// Utilities maps
+//
+// Extends the default `$theme-colors` maps to help create our utilities.
+
+// Come v6, we'll de-dupe these variables. Until then, for backward compatibility, we keep them to reassign.
+// scss-docs-start utilities-colors
+$utilities-colors: $theme-colors-rgb !default;
+// scss-docs-end utilities-colors
+
+// scss-docs-start utilities-text-colors
+$utilities-text: map-merge(
+  $utilities-colors,
+  (
+    "black": to-rgb($black),
+    "white": to-rgb($white),
+    "body": to-rgb($body-color)
+  )
+) !default;
+$utilities-text-colors: map-loop($utilities-text, rgba-css-var, "$key", "text") !default;
+// scss-docs-end utilities-text-colors
+
+// scss-docs-start utilities-bg-colors
+$utilities-bg: map-merge(
+  $utilities-colors,
+  (
+    "black": to-rgb($black),
+    "white": to-rgb($white),
+    "body": to-rgb($body-bg)
+  )
+) !default;
+$utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg") !default;
+// scss-docs-end utilities-bg-colors
 
 // Links
 //
@@ -814,7 +850,7 @@ $input-padding-y-lg:                    $input-btn-padding-y-lg !default;
 $input-padding-x-lg:                    $input-btn-padding-x-lg !default;
 $input-font-size-lg:                    $input-btn-font-size-lg !default;
 
-$input-bg:                              $white !default;
+$input-bg:                              $body-bg !default;
 $input-disabled-bg:                     $gray-200 !default;
 $input-disabled-border-color:           null !default;
 
@@ -1131,7 +1167,7 @@ $dropdown-divider-margin-y:         $spacer * .5 !default;
 $dropdown-box-shadow:               $box-shadow !default;
 
 $dropdown-link-color:               $gray-900 !default;
-$dropdown-link-hover-color:         shade-color($gray-900, 10%) !default;
+$dropdown-link-hover-color:         shade-color($dropdown-link-color, 10%) !default;
 $dropdown-link-hover-bg:            $gray-200 !default;
 
 $dropdown-link-active-color:        $component-active-color !default;
@@ -1202,6 +1238,13 @@ $pagination-border-radius-sm:       $border-radius-sm !default;
 $pagination-border-radius-lg:       $border-radius-lg !default;
 // scss-docs-end pagination-variables
 
+
+// Placeholders
+
+// scss-docs-start placeholders
+$placeholder-opacity-max:           .5 !default;
+$placeholder-opacity-min:           .2 !default;
+// scss-docs-end placeholders
 
 // Cards
 
