@@ -419,7 +419,7 @@ var tooltip = bootstrap.Tooltip.getInstance(exampleTriggerEl) // Returns a Boots
 
 #### getOrCreateInstance
 
-*Static* method which allows you to get the tooltip instance associated with a DOM element, or create a new one in case it wasn't initialised
+*Static* method which allows you to get the tooltip instance associated with a DOM element, or create a new one in case it wasn't initialized
 
 ```js
 var exampleTriggerEl = document.getElementById('example')
