@@ -10,7 +10,7 @@ toc: true
 
 Things to know when using the tooltip plugin:
 
-- Tooltips rely on the 3rd party library [Popper](https://popper.js.org/) for positioning. You must include [popper.min.js]({{< param "cdn.popper" >}}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper in order for tooltips to work!
+- Tooltips rely on the third party library [Popper](https://popper.js.org/) for positioning. You must include [popper.min.js]({{< param "cdn.popper" >}}) before `bootstrap.js`, or use one `bootstrap.bundle.min.js` which contains Popper.
 - Tooltips are opt-in for performance reasons, so **you must initialize them yourself**.
 - Tooltips with zero-length titles are never displayed.
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
@@ -20,6 +20,8 @@ Things to know when using the tooltip plugin:
 - Tooltips must be hidden before their corresponding elements have been removed from the DOM.
 - Tooltips can be triggered thanks to an element inside a shadow DOM.
 
+Got all that? Great, let's see how they work with some examples.
+
 {{< callout info >}}
 {{< partial "callout-info-sanitizer.md" >}}
 {{< /callout >}}
@@ -28,11 +30,11 @@ Things to know when using the tooltip plugin:
 {{< partial "callout-info-prefersreducedmotion.md" >}}
 {{< /callout >}}
 
-Got all that? Great, let's see how they work with some examples.
+## Examples
 
-## Example: Enable tooltips everywhere
+### Enable tooltips
 
-One way to initialize all tooltips on a page would be to select them by their `data-bs-toggle` attribute:
+As mentioned above, you must initialize tooltips before they can be used. One way to initialize all tooltips on a page would be to select them by their `data-bs-toggle` attribute, like so:
 
 ```js
 var tooltipTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -41,7 +43,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 })
 ```
 
-## Examples
+### Tooltips on links
 
 Hover over the links below to see tooltips:
 
@@ -119,9 +121,17 @@ With an SVG:
   </a>
 </div>
 
-## Sass
+## CSS
 
 ### Variables
+
+<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.2.0</small>
+
+As part of Bootstrap’s evolving CSS variables approach, tooltips now use local CSS variables on `.tooltip` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+{{< scss-docs name="tooltip-css-vars" file="scss/_tooltip.scss" >}}
+
+### Sass variables
 
 {{< scss-docs name="tooltip-variables" file="scss/_variables.scss" >}}
 

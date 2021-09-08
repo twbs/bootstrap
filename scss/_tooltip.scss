@@ -13,6 +13,7 @@
   --#{$variable-prefix}tooltip-opacity: #{$tooltip-opacity};
   --#{$variable-prefix}tooltip-arrow-width: #{$tooltip-arrow-width};
   --#{$variable-prefix}tooltip-arrow-height: #{$tooltip-arrow-height};
+  // scss-docs-end tooltip-css-vars
 
   $tooltip-arrow-color: null;
 
