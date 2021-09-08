@@ -98,7 +98,7 @@
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 
 .table-striped {
-  > tbody > tr:nth-of-type(#{$table-striped-order}) {
+  > tbody > tr:nth-of-type(#{$table-striped-order}) > * {
     --#{$variable-prefix}table-accent-bg: var(--#{$variable-prefix}table-striped-bg);
     color: var(--#{$variable-prefix}table-striped-color);
   }
@@ -118,7 +118,7 @@
 // Placed here since it has to come after the potential zebra striping
 
 .table-hover {
-  > tbody > tr:hover {
+  > tbody > tr:hover > * {
     --#{$variable-prefix}table-accent-bg: var(--#{$variable-prefix}table-hover-bg);
     color: var(--#{$variable-prefix}table-hover-color);
   }
