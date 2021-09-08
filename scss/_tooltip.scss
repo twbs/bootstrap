@@ -15,8 +15,6 @@
   --#{$variable-prefix}tooltip-arrow-height: #{$tooltip-arrow-height};
   // scss-docs-end tooltip-css-vars
 
-  $tooltip-arrow-color: null;
-
   position: absolute;
   z-index: var(--#{$variable-prefix}tooltip-zindex);
   display: block;
