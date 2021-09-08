@@ -60,6 +60,7 @@
   padding-bottom: $form-select-padding-y-sm;
   padding-left: $form-select-padding-x-sm;
   @include font-size($form-select-font-size-sm);
+  @include border-radius($form-select-border-radius-sm);
 }
 
 .form-select-lg {
@@ -67,4 +68,5 @@
   padding-bottom: $form-select-padding-y-lg;
   padding-left: $form-select-padding-x-lg;
   @include font-size($form-select-font-size-lg);
+  @include border-radius($form-select-border-radius-lg);
 }
