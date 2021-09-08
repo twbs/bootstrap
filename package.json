@@ -1,7 +1,7 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "config": {
     "version_short": "5.1"
   },
@@ -101,7 +101,7 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.15.4",
-    "@babel/core": "^7.15.4",
+    "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.4",
     "@popperjs/core": "^2.10.1",
     "@rollup/plugin-babel": "^5.3.0",
@@ -120,7 +120,7 @@
     "glob": "^7.1.7",
     "globby": "^11.0.4",
     "hammer-simulator": "0.0.1",
-    "hugo-bin": "^0.76.0",
+    "hugo-bin": "^0.76.1",
     "ip": "^1.1.5",
     "jquery": "^3.6.0",
     "karma": "^6.3.4",
@@ -146,7 +146,7 @@
     "stylelint": "^13.13.1",
     "stylelint-config-twbs-bootstrap": "^2.2.3",
     "terser": "5.1.0",
-    "vnu-jar": "21.6.11"
+    "vnu-jar": "21.9.2"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
