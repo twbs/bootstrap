@@ -1324,7 +1324,9 @@ $tooltip-margin:                    0 !default;
 
 $tooltip-arrow-width:               .8rem !default;
 $tooltip-arrow-height:              .4rem !default;
-$tooltip-arrow-color:               $tooltip-bg !default;
+// fusv-disable
+$tooltip-arrow-color:               null !default; // Deprecated in v5.2.0 for CSS variables
+// fusv-enable
 // scss-docs-end tooltip-variables
 
 // Form tooltips must come after regular tooltips
