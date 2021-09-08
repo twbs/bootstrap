@@ -62,7 +62,7 @@ Be sure to **not use the standard `.btn` classes here**.
   <a href="#" class="list-group-item list-group-item-action">A second link item</a>
   <a href="#" class="list-group-item list-group-item-action">A third link item</a>
   <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
-  <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">A disabled link item</a>
+  <a class="list-group-item list-group-item-action disabled">A disabled link item</a>
 </div>
 {{< /example >}}
 
@@ -486,7 +486,7 @@ var tab = bootstrap.Tab.getInstance(triggerEl) // Returns a Bootstrap tab instan
 
 #### getOrCreateInstance
 
-*Static* method which allows you to get the tab instance associated with a DOM element, or create a new one in case it wasn't initialised
+*Static* method which allows you to get the tab instance associated with a DOM element, or create a new one in case it wasn't initialized
 
 ```js
 var triggerEl = document.querySelector('#trigger')
