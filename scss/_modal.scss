@@ -175,7 +175,7 @@
   flex-wrap: wrap;
   align-items: center; // vertically center
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
-  padding: $modal-inner-padding - $modal-footer-margin-between / 2;
+  padding: $modal-inner-padding - $modal-footer-margin-between * .5;
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
   @include border-bottom-radius($modal-content-inner-border-radius);
 
@@ -183,7 +183,7 @@
   // This solution is far from ideal because of the universal selector usage,
   // but is needed to fix https://github.com/twbs/bootstrap/issues/24800
   > * {
-    margin: $modal-footer-margin-between / 2;
+    margin: $modal-footer-margin-between * .5;
   }
 }
 

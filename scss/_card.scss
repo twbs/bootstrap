@@ -58,7 +58,7 @@
 }
 
 .card-subtitle {
-  margin-top: -$card-spacer-y / 2;
+  margin-top: -$card-spacer-y * .5;
   margin-bottom: 0;
 }
 
@@ -109,15 +109,15 @@
 //
 
 .card-header-tabs {
-  margin-right: -$card-spacer-x / 2;
+  margin-right: -$card-spacer-x * .5;
   margin-bottom: -$card-spacer-y;
-  margin-left: -$card-spacer-x / 2;
+  margin-left: -$card-spacer-x * .5;
   border-bottom: 0;
 }
 
 .card-header-pills {
-  margin-right: -$card-spacer-x / 2;
-  margin-left: -$card-spacer-x / 2;
+  margin-right: -$card-spacer-x * .5;
+  margin-left: -$card-spacer-x * .5;
 }
 
 // Card image
