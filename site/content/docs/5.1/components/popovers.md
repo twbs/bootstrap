@@ -10,7 +10,7 @@ toc: true
 
 Things to know when using the popover plugin:
 
-- Popovers rely on the 3rd party library [Popper](https://popper.js.org/) for positioning. You must include [popper.min.js]({{< param "cdn.popper" >}}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper in order for popovers to work!
+- Popovers rely on the third party library [Popper](https://popper.js.org/) for positioning. You must include [popper.min.js]({{< param "cdn.popper" >}}) before `bootstrap.js`, or use one `bootstrap.bundle.min.js` which contains Popper.
 - Popovers require the [tooltip plugin]({{< docsref "/components/tooltips" >}}) as a dependency.
 - Popovers are opt-in for performance reasons, so **you must initialize them yourself**.
 - Zero-length `title` and `content` values will never show a popover.
@@ -31,9 +31,11 @@ Things to know when using the popover plugin:
 
 Keep reading to see how popovers work with some examples.
 
-## Example: Enable popovers everywhere
+## Examples
 
-One way to initialize all popovers on a page would be to select them by their `data-bs-toggle` attribute:
+### Enable popovers
+
+As mentioned above, you must initialize popovers before they can be used. One way to initialize all popovers on a page would be to select them by their `data-bs-toggle` attribute, like so:
 
 ```js
 var popoverTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
@@ -42,17 +44,9 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 })
 ```
 
-## Example: Using the `container` option
+### Live demo
 
-When you have some styles on a parent element that interfere with a popover, you'll want to specify a custom `container` so that the popover's HTML appears within that element instead.
-
-```js
-var popover = new bootstrap.Popover(document.querySelector('.example-popover'), {
-  container: 'body'
-})
-```
-
-## Example
+We use JavaScript similar to the snippet above to render the following live popover. Titles are set via `title` attribute and body content is set via `data-bs-content`.
 
 {{< example >}}
 <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
@@ -60,7 +54,7 @@ var popover = new bootstrap.Popover(document.querySelector('.example-popover'), 
 
 ### Four directions
 
-Four options are available: top, right, bottom, and left aligned. Directions are mirrored when using Bootstrap in RTL.
+Four options are available: top, right, bottom, and left. Directions are mirrored when using Bootstrap in RTL. Set `data-bs-placement` to change the direction.
 
 {{< example >}}
 <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
@@ -74,6 +68,42 @@ Four options are available: top, right, bottom, and left aligned. Directions are
 </button>
 <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Left popover">
   Popover on left
+</button>
+{{< /example >}}
+
+### Custom `container`
+
+When you have some styles on a parent element that interfere with a popover, you'll want to specify a custom `container` so that the popover's HTML appears within that element instead. This is common in responsive tables, input groups, and the like.
+
+```js
+var popover = new bootstrap.Popover(document.querySelector('.example-popover'), {
+  container: 'body'
+})
+```
+
+### Custom popovers
+
+<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.2.0</small>
+
+You can customize the appearance of popovers using [CSS variables](#variables). We set a custom class with `data-bs-custom-class="custom-popover"` to scope our custom appearance and use it to override some of the local CSS variables.
+
+```css
+.custom-popover {
+  --bs-popover-max-width: 200px;
+  --bs-popover-border-color: var(--bs-primary);
+  --bs-popover-header-bg: var(--bs-primary);
+  --bs-popover-header-color: var(--bs-white);
+  --bs-popover-body-padding: .5rem 1rem;
+}
+```
+
+{{< example class="custom-popover-demo" >}}
+<button type="button" class="btn btn-secondary"
+        data-bs-toggle="popover" data-bs-placement="right"
+        data-bs-custom-class="custom-popover"
+        title="Custom popover"
+        data-bs-content="This popover is themed via CSS variables.">
+  Custom popover
 </button>
 {{< /example >}}
 
@@ -109,9 +139,17 @@ For disabled popover triggers, you may also prefer `data-bs-trigger="hover focus
 </span>
 {{< /example >}}
 
-## Sass
+## CSS
 
 ### Variables
+
+<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.2.0</small>
+
+As part of Bootstrap’s evolving CSS variables approach, popovers now use local CSS variables on `.popover` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+{{< scss-docs name="popover-css-vars" file="scss/_popover.scss" >}}
+
+### Sass variables
 
 {{< scss-docs name="popover-variables" file="scss/_variables.scss" >}}
 

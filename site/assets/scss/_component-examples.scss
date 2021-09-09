@@ -237,6 +237,14 @@
   --bs-tooltip-bg: var(--bs-primary);
 }
 
+.custom-popover {
+  --bs-popover-max-width: 200px;
+  --bs-popover-border-color: var(--bs-primary);
+  --bs-popover-header-bg: var(--bs-primary);
+  --bs-popover-header-color: var(--bs-white);
+  --bs-popover-body-padding: .5rem 1rem;
+}
+
 // Scrollspy demo on fixed height div
 .scrollspy-example {
   position: relative;
