@@ -126,6 +126,7 @@ class Carousel extends BaseComponent {
   }
 
   nextWhenVisible() {
+    // FIXME TODO use `document.visibilityState`
     // Don't call next when the page isn't visible
     // or the carousel or its parent isn't visible
     if (!document.hidden && isVisible(this._element)) {
@@ -164,10 +165,7 @@ class Carousel extends BaseComponent {
     if (this._config.interval && !this._isPaused) {
       this._updateInterval()
 
-      this._interval = setInterval(
-        (document.visibilityState ? this.nextWhenVisible : this.next).bind(this),
-        this._config.interval
-      )
+      this._interval = setInterval(() => this.nextWhenVisible(), this._config.interval)
     }
   }
 
