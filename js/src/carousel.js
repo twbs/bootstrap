@@ -161,7 +161,7 @@ class Carousel extends BaseComponent {
       this._interval = null
     }
 
-    if (this._config && this._config.interval && !this._isPaused) {
+    if (this._config.interval && !this._isPaused) {
       this._updateInterval()
 
       this._interval = setInterval(
@@ -206,6 +206,11 @@ class Carousel extends BaseComponent {
   }
 
   // Private
+  _configAfterMerge(config) {
+    config.defaultInterval = config.interval
+    return config
+  }
+
   _addEventListeners() {
     if (this._config.keyboard) {
       EventHandler.on(this._element, EVENT_KEYDOWN, event => this._keydown(event))
@@ -318,12 +323,7 @@ class Carousel extends BaseComponent {
 
     const elementInterval = Number.parseInt(element.getAttribute('data-bs-interval'), 10)
 
-    if (elementInterval) {
-      this._config.defaultInterval = this._config.defaultInterval || this._config.interval
-      this._config.interval = elementInterval
-    } else {
-      this._config.interval = this._config.defaultInterval || this._config.interval
-    }
+    this._config.interval = elementInterval || this._config.defaultInterval
   }
 
   _slide(directionOrOrder, element) {
