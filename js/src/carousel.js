@@ -61,7 +61,6 @@ const SELECTOR_ITEM = '.carousel-item'
 const SELECTOR_ITEM_IMG = '.carousel-item img'
 const SELECTOR_NEXT_PREV = '.carousel-item-next, .carousel-item-prev'
 const SELECTOR_INDICATORS = '.carousel-indicators'
-const SELECTOR_INDICATOR = '[data-bs-target]'
 const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]'
 const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]'
 
@@ -293,21 +292,20 @@ class Carousel extends BaseComponent {
   }
 
   _setActiveIndicatorElement(element) {
-    if (this._indicatorsElement) {
-      const activeIndicator = SelectorEngine.findOne(SELECTOR_ACTIVE, this._indicatorsElement)
+    if (!this._indicatorsElement) {
+      return
+    }
 
-      activeIndicator.classList.remove(CLASS_NAME_ACTIVE)
-      activeIndicator.removeAttribute('aria-current')
+    const activeIndicator = SelectorEngine.findOne(SELECTOR_ACTIVE, this._indicatorsElement)
 
-      const indicators = SelectorEngine.find(SELECTOR_INDICATOR, this._indicatorsElement)
+    activeIndicator.classList.remove(CLASS_NAME_ACTIVE)
+    activeIndicator.removeAttribute('aria-current')
 
-      for (const indicator of indicators) {
-        if (Number.parseInt(indicator.getAttribute('data-bs-slide-to'), 10) === this._getItemIndex(element)) {
-          indicator.classList.add(CLASS_NAME_ACTIVE)
-          indicator.setAttribute('aria-current', 'true')
-          break
-        }
-      }
+    const newActiveIndicator = SelectorEngine.findOne(`[data-bs-slide-to="${this._getItemIndex(element)}"]`, this._indicatorsElement)
+
+    if (newActiveIndicator) {
+      newActiveIndicator.classList.add(CLASS_NAME_ACTIVE)
+      newActiveIndicator.setAttribute('aria-current', 'true')
     }
   }
 
