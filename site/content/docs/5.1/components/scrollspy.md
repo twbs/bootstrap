@@ -300,7 +300,7 @@ var scrollSpy = bootstrap.ScrollSpy.getInstance(scrollSpyContentEl) // Returns a
 
 #### getOrCreateInstance
 
-*Static* method which allows you to get the scrollspy instance associated with a DOM element, or create a new one in case it wasn't initialised
+*Static* method which allows you to get the scrollspy instance associated with a DOM element, or create a new one in case it wasn't initialized
 
 ```js
 var scrollSpyContentEl = document.getElementById('content')

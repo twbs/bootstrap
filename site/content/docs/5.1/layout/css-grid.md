@@ -9,7 +9,7 @@ toc: true
 Bootstrap's default grid system represents the culmination of over a decade of CSS layout techniques, tried and tested by millions of people. But, it was also created without many of the modern CSS features and techniques we're seeing in browsers like the new CSS Grid.
 
 {{< callout warning >}}
-**Heads up—our CSS Grid system is experimental and opt-in for v5.1.0!** We included it in our documentation's CSS to demonstrate it for you, but it's disabled by default. Keep reading to learn how to enable it in your projects.
+**Heads up—our CSS Grid system is experimental and opt-in as of v5.1.0!** We included it in our documentation's CSS to demonstrate it for you, but it's disabled by default. Keep reading to learn how to enable it in your projects.
 {{< /callout >}}
 
 ## How it works

@@ -74,7 +74,7 @@ describe('FocusTrap', () => {
       document.dispatchEvent(focusInEvent)
     })
 
-    it('should wrap focus around foward on tab', done => {
+    it('should wrap focus around forward on tab', done => {
       fixtureEl.innerHTML = [
         '<a href="#" id="outside">outside</a>',
         '<div id="focustrap" tabindex="-1">',
