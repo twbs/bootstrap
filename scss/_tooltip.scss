@@ -1,3 +1,5 @@
+// stylelint-disable custom-property-empty-line-before
+
 // Base class
 .tooltip {
   // scss-docs-start tooltip-css-vars
@@ -6,7 +8,7 @@
   --#{$variable-prefix}tooltip-padding-x: #{$tooltip-padding-x};
   --#{$variable-prefix}tooltip-padding-y: #{$tooltip-padding-y};
   --#{$variable-prefix}tooltip-margin: #{$tooltip-margin};
-  --#{$variable-prefix}tooltip-font-size: #{$tooltip-font-size};
+  @include rfs($tooltip-font-size, --#{$variable-prefix}tooltip-font-size);
   --#{$variable-prefix}tooltip-color: #{$tooltip-color};
   --#{$variable-prefix}tooltip-bg: #{$tooltip-bg};
   --#{$variable-prefix}tooltip-border-radius: #{$tooltip-border-radius};
