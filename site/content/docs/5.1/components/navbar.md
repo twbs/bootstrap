@@ -62,7 +62,7 @@ Here's an example of all the sub-components included in a responsive light-theme
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
       <form class="d-flex">
@@ -156,7 +156,7 @@ Please note that you should also add the `aria-current` attribute on the active 
           <a class="nav-link" href="#">Pricing</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
         <a class="nav-link active" aria-current="page" href="#">Home</a>
         <a class="nav-link" href="#">Features</a>
         <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link disabled">Disabled</a>
       </div>
     </div>
   </div>
@@ -521,7 +521,7 @@ Here's an example navbar using `.navbar-nav-scroll` with `style="--bs-scroll-hei
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Link</a>
+          <a class="nav-link disabled">Link</a>
         </li>
       </ul>
       <form class="d-flex">
@@ -561,7 +561,7 @@ With no `.navbar-brand` shown at the smallest breakpoint:
           <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
       <form class="d-flex">
@@ -591,7 +591,7 @@ With a brand name shown on the left and toggler on the right:
           <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
       <form class="d-flex">
@@ -621,7 +621,7 @@ With a toggler on the left and brand name on the right:
           <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
       <form class="d-flex">
