@@ -279,9 +279,8 @@ class Carousel extends BaseComponent {
     return getNextActiveElement(this._items, activeElement, isNext, this._config.wrap)
   }
 
-  _triggerSlideEvent(relatedTarget, eventDirectionName) {
+  _triggerSlideEvent(relatedTarget, fromIndex, eventDirectionName) {
     const targetIndex = this._getItemIndex(relatedTarget)
-    const fromIndex = this._getItemIndex(this._getActive())
 
     return EventHandler.trigger(this._element, EVENT_SLIDE, {
       relatedTarget,
@@ -344,7 +343,7 @@ class Carousel extends BaseComponent {
       return
     }
 
-    const slideEvent = this._triggerSlideEvent(nextElement, eventDirectionName)
+    const slideEvent = this._triggerSlideEvent(nextElement, activeElementIndex, eventDirectionName)
     if (slideEvent.defaultPrevented) {
       return
     }
