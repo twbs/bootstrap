@@ -291,7 +291,7 @@ class Carousel extends BaseComponent {
     })
   }
 
-  _setActiveIndicatorElement(element) {
+  _setActiveIndicatorElement(index) {
     if (!this._indicatorsElement) {
       return
     }
@@ -301,7 +301,7 @@ class Carousel extends BaseComponent {
     activeIndicator.classList.remove(CLASS_NAME_ACTIVE)
     activeIndicator.removeAttribute('aria-current')
 
-    const newActiveIndicator = SelectorEngine.findOne(`[data-bs-slide-to="${this._getItemIndex(element)}"]`, this._indicatorsElement)
+    const newActiveIndicator = SelectorEngine.findOne(`[data-bs-slide-to="${index}"]`, this._indicatorsElement)
 
     if (newActiveIndicator) {
       newActiveIndicator.classList.add(CLASS_NAME_ACTIVE)
@@ -360,7 +360,7 @@ class Carousel extends BaseComponent {
       this.pause()
     }
 
-    this._setActiveIndicatorElement(nextElement)
+    this._setActiveIndicatorElement(nextElementIndex)
     this._activeElement = nextElement
 
     nextElement.classList.add(orderClassName)
