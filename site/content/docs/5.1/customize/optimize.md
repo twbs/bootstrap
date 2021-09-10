@@ -73,7 +73,7 @@ Whenever possible, be sure to compress all the code you serve to your visitors. 
 
 ## Non-blocking files
 
-While minifying and using compression might seem like enough, making your files nonblocking ones is also a big step in making your site well-optimized and fast enough.
+While minifying and using compression might seem like enough, making your files non-blocking ones is also a big step in making your site well-optimized and fast enough.
 
 If you are using a [Lighthouse](https://developers.google.com/web/tools/lighthouse/) plugin in Google Chrome, you may have stumbled over FCP. [The First Contentful Paint](https://web.dev/fcp/) metric measures the time from when the page starts loading to when any part of the page's content is rendered on the screen.
 
