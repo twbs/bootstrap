@@ -178,23 +178,23 @@ For Offcanvas that never collapse, wrap the Offcanvas with the `.offcanvas-expan
 
 {{< example >}}
 <div class="offcanvas-expand-md">
-    <button class="btn btn-primary d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCollapse" aria-controls="offcanvasCollapse">
-        Show Offcanvas
-    </button>
+  <button class="btn btn-primary d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCollapse" aria-controls="offcanvasCollapse">
+    Show Offcanvas
+  </button>
 
-    <div id="offcanvasCollapse" class="offcanvas offcanvas-end" aria-labelledby="offcanvasTitle">
-        <div class="offcanvas-header">
-            <h2 class="offcanvas-title" id="offcanvasTitle">Title</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-
-        <div class="offcanvas-body">
-            <ul>
-                <li>One</li>
-                <li>Two</li>
-            </ul>
-        </div>
+  <div id="offcanvasCollapse" class="offcanvas offcanvas-end" aria-labelledby="offcanvasTitle">
+    <div class="offcanvas-header">
+      <h2 class="offcanvas-title" id="offcanvasTitle">Title</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
+
+    <div class="offcanvas-body">
+      <ul>
+        <li>One</li>
+        <li>Two</li>
+      </ul>
+    </div>
+  </div>
 </div>
 {{< /example >}}
 
