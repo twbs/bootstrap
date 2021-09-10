@@ -198,7 +198,6 @@ For Offcanvas that never collapse, wrap the Offcanvas with the `.offcanvas-expan
 </div>
 {{< /example >}}
 
-
 ## Accessibility
 
 Since the offcanvas panel is conceptually a modal dialog, be sure to add `aria-labelledby="..."`—referencing the offcanvas title—to `.offcanvas`. Note that you don’t need to add `role="dialog"` since we already add it via JavaScript.
