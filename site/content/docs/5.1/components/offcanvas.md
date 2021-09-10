@@ -170,6 +170,35 @@ Scrolling the `<body>` element is disabled when an offcanvas and its backdrop ar
 </div>
 {{< /example >}}
 
+## Responsive behaviors
+
+Offcanvas can be wrapped in an `.offcanvas-expand{-sm|-md|-lg|-xl|-xxl}` class to determine when it's content collapses behind a button. In combination with other utilities, you can easily choose when to show or hide particular elements.
+
+For Offcanvas that never collapse, wrap the Offcanvas with the `.offcanvas-expand` class. For Offcanvas that always collapse, don't wrap with any `.offcanvas-expand` class.
+
+{{< example >}}
+<div class="offcanvas-expand-md">
+    <button class="btn btn-primary d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCollapse" aria-controls="offcanvasCollapse">
+        Show Offcanvas
+    </button>
+
+    <div id="offcanvasCollapse" class="offcanvas offcanvas-end" aria-labelledby="offcanvasTitle">
+        <div class="offcanvas-header">
+            <h2 class="offcanvas-title" id="offcanvasTitle">Title</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body">
+            <ul>
+                <li>One</li>
+                <li>Two</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{{< /example >}}
+
+
 ## Accessibility
 
 Since the offcanvas panel is conceptually a modal dialog, be sure to add `aria-labelledby="..."`—referencing the offcanvas title—to `.offcanvas`. Note that you don’t need to add `role="dialog"` since we already add it via JavaScript.
