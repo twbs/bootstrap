@@ -90,7 +90,6 @@ You can also use floating labels with the `.form-control-plaintext` class to rem
 </div>
 {{< /example >}}
 
-
 ## Layout
 
 When working with the Bootstrap grid system, be sure to place form elements within column classes.
