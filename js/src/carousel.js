@@ -510,7 +510,7 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
 
   for (const carousel of carousels) {
-    Carousel.carouselInterface(carousel, Carousel.getInstance(carousel))
+    Carousel.getOrCreateInstance(carousel)
   }
 })
 
