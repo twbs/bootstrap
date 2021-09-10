@@ -38,7 +38,7 @@
       @include box-shadow($btn-box-shadow, 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5));
     } @else {
       // Avoid using mixin so we can pass custom focus shadow properly
-      box-shadow: 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
+      box-shadow: 0 0 $btn-focus-blur $btn-focus-width rgba(mix($color, $border, 15%), .5);
     }
   }
 
@@ -58,7 +58,7 @@
         @include box-shadow($btn-active-box-shadow, 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5));
       } @else {
         // Avoid using mixin so we can pass custom focus shadow properly
-        box-shadow: 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
+        box-shadow: 0 0 $btn-focus-blur $btn-focus-width rgba(mix($color, $border, 15%), .5);
       }
     }
   }
