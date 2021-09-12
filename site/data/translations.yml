@@ -3,22 +3,17 @@
   description: Bootstrap 5 باللغة العربية
   url: https://bootstrap.mahdi.style/
 
-- name: Chinese
-  code: zh
-  description: Bootstrap 5 · 全球最流行的 HTML、CSS 和 JS 工具库。
-  url: https://code.z01.com/bootstrap/
-
-- name: Japanese
+- name: 日本語
   code: ja
   description: Bootstrap 5 日本語リファレンス
   url: https://getbootstrap.jp/
 
-- name: Russian
+- name: Русский
   code: ru
   description: Bootstrap 5 на русском
   url: https://getbootstrap.su/
 
-- name: Korean
+- name: 한국어
   code: ko
   description: Bootstrap 5 한국어 문서
   url: https://getbootstrap.kr/
