@@ -13,16 +13,6 @@
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
-        <h5>Links</h5>
-        <ul class="list-unstyled">
-          <li class="mb-2"><a href="/">Home</a></li>
-          <li class="mb-2"><a href="/docs/{{ .Site.Params.docs_version }}/">Docs</a></li>
-          <li class="mb-2"><a href="/docs/{{ .Site.Params.docs_version }}/examples/">Examples</a></li>
-          <li class="mb-2"><a href="{{ .Site.Params.themes }}">Themes</a></li>
-          <li class="mb-2"><a href="{{ .Site.Params.blog }}">Blog</a></li>
-        </ul>
-      </div>
-      <div class="col-6 col-lg-2 mb-3">
         <h5>Guides</h5>
         <ul class="list-unstyled">
           <li class="mb-2"><a href="/docs/{{ .Site.Params.docs_version }}/getting-started/">Getting started</a></li>
@@ -50,6 +40,14 @@
           <li class="mb-2"><a href="{{ .Site.Params.opencollective }}">Open Collective</a></li>
           <li class="mb-2"><a href="{{ .Site.Params.slack }}">Slack</a></li>
           <li class="mb-2"><a href="https://stackoverflow.com/questions/tagged/bootstrap-5">Stack Overflow</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2 mb-3">
+        <h5>번역</h5>
+        <ul class="list-unstyled">
+          {{- range $lang := .Site.Data.translations -}}
+            <li class="mb-2"><a href="{{ $lang.url }}">{{ $lang.name }}</a></li>
+          {{- end }}
         </ul>
       </div>
     </div>
