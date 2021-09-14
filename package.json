@@ -115,7 +115,7 @@
     "eslint": "^7.32.0",
     "eslint-config-xo": "^0.38.0",
     "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-unicorn": "^35.0.0",
+    "eslint-plugin-unicorn": "^36.0.0",
     "find-unused-sass-variables": "^3.1.0",
     "glob": "^7.1.7",
     "globby": "^11.0.4",
