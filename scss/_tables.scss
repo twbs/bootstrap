@@ -39,8 +39,8 @@
   }
 
   // Highlight border color between thead, tbody and tfoot.
-  > :not(:last-child) > :last-child > * {
-    border-bottom-color: $table-group-separator-color;
+  > :not(:first-child) {
+    border-top: (2 * $table-border-width) solid $table-group-separator-color;
   }
 }
 
@@ -90,6 +90,10 @@
   // stylelint-disable-next-line selector-max-universal
   > :not(caption) > * > * {
     border-bottom-width: 0;
+  }
+
+  > :not(:first-child) {
+    border-top-width: 0;
   }
 }
 
