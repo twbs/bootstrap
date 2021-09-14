@@ -29,7 +29,11 @@ execFile('java', ['-version'], (error, stdout, stderr) => {
     'Attribute “autocomplete” not allowed on element “button” at this point.',
     // IE11 doesn't recognise <main> / give the element an implicit "main" landmark.
     // Explicit role="main" is redundant for other modern browsers, but still valid.
-    'The “main” role is unnecessary for element “main”.'
+    'The “main” role is unnecessary for element “main”.',
+    // Per https://www.w3.org/TR/html-aria/#docconformance having "aria-disabled" on a link is
+    // NOT RECOMMENDED, but it's still valid - we explain in the docs that it's not ideal,
+    // and offer more robust alternatives, but also need to show a less-than-ideal example
+    'An “aria-disabled” attribute whose value is “true” should not be specified on an “a” element that has an “href” attribute.'
   ].join('|')
 
   const args = [

@@ -27,6 +27,7 @@
     "prefer-arrow-callback": "off",
     "prefer-rest-params": "off",
     "prefer-template": "off",
+    "unicorn/prefer-add-event-listener": "off",
     "unicorn/prefer-spread": "off"
   }
 }
