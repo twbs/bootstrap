@@ -96,7 +96,7 @@
           position: inherit;
           z-index: 1;
           width: 100%;
-          visibility: visible;
+          visibility: visible!important; // stylelint-disable-line declaration-no-important;
           background-color: transparent;
           inset: unset;
           @include transition(none);
