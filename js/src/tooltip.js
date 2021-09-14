@@ -476,7 +476,7 @@ class Tooltip {
       offset.fn = data => {
         data.offsets = {
           ...data.offsets,
-          ...(this.config.offset(data.offsets, this.element) || {})
+          ...this.config.offset(data.offsets, this.element)
         }
 
         return data
