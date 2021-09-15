@@ -316,8 +316,8 @@ describe('Offcanvas', () => {
         }, 10)
       }
 
-      offCanvasEl.addEventListener('show.bs.offcanvas', e => {
-        e.preventDefault()
+      offCanvasEl.addEventListener('show.bs.offcanvas', event => {
+        event.preventDefault()
         expectEnd()
       })
 
@@ -410,8 +410,8 @@ describe('Offcanvas', () => {
         }, 10)
       }
 
-      offCanvasEl.addEventListener('hide.bs.offcanvas', e => {
-        e.preventDefault()
+      offCanvasEl.addEventListener('hide.bs.offcanvas', event => {
+        event.preventDefault()
         expectEnd()
       })
 

@@ -2,7 +2,7 @@ import Collapse from '../../src/collapse'
 import EventHandler from '../../src/dom/event-handler'
 
 /** Test helpers */
-import { getFixture, clearFixture, jQueryMock } from '../helpers/fixture'
+import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Collapse', () => {
   let fixtureEl
@@ -351,14 +351,13 @@ describe('Collapse', () => {
         '    </div>'
       ].join('')
 
-      // const btn = fixtureEl.querySelector('[data-bs-target="#collapseOne"]')
       const el = fixtureEl.querySelector('#collapseOne')
       const activeTabPane = fixtureEl.querySelector('#nav-home')
       const collapse = new Collapse(el)
       let times = 1
 
       el.addEventListener('hidden.bs.collapse', () => {
-        setTimeout(() => collapse.show(), 10)
+        collapse.show()
       })
 
       el.addEventListener('shown.bs.collapse', () => {
@@ -389,8 +388,8 @@ describe('Collapse', () => {
         }, 10)
       }
 
-      collapseEl.addEventListener('show.bs.collapse', e => {
-        e.preventDefault()
+      collapseEl.addEventListener('show.bs.collapse', event => {
+        event.preventDefault()
         expectEnd()
       })
 
@@ -466,8 +465,8 @@ describe('Collapse', () => {
         }, 10)
       }
 
-      collapseEl.addEventListener('hide.bs.collapse', e => {
-        e.preventDefault()
+      collapseEl.addEventListener('hide.bs.collapse', event => {
+        event.preventDefault()
         expectEnd()
       })
 
