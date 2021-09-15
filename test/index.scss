@@ -1,0 +1,130 @@
+// stylelint-disable scss/dollar-variable-default
+
+@use "sass:map";
+
+// Configuration
+@import "../scss/functions";
+
+$primary: #800080;
+$spacer: 2rem;
+
+$custom-color: #df711b;
+
+$custom-theme-colors: (
+  "custom": $custom-color
+);
+
+// Rest of the required Bootstrap imports
+@import "../scss/variables";
+
+$theme-colors: map-merge($theme-colors, $custom-theme-colors);
+
+$spacers: map-merge(
+  $spacers,
+  (
+    6: $spacer * 4
+  )
+);
+
+// Test
+//
+// Primary should be purple instead of #0d6efd (blue).
+
+@if map.get($theme-colors, "primary") != purple {
+  @warn "The primary variable and key in $theme-colors should be purple.";
+  @debug "Output:";
+  @debug "Primary is " + map.get($theme-colors, "primary");
+}
+
+// Test
+//
+// `custom` should be in all three specified maps.
+
+$expected-theme-colors: (
+  "primary": "",
+  "secondary": "",
+  "success": "",
+  "info": "",
+  "warning": "",
+  "danger": "",
+  "light": "",
+  "dark": "",
+  "custom": ""
+);
+
+@if map.keys($theme-colors) != map.keys($expected-theme-colors) {
+  @if $debug == true {
+    @debug "Expected: " + map.keys($expected-theme-colors);
+    @debug "Actual:   " + map.keys($theme-colors);
+  }
+  @warn "Keys in $theme-colors don't match expected output.";
+}
+@if map.keys($theme-colors-rgb) != map.keys($expected-theme-colors) {
+  @debug "Expected: " + map.keys($expected-theme-colors);
+  @debug "Actual:   " + map.keys($theme-colors-rgb);
+  @warn "Keys in $theme-colors-rgb don't match expected output.";
+}
+@if map.keys($utilities-colors) != map.keys($expected-theme-colors) {
+  @debug "Expected: " + map.keys($expected-theme-colors);
+  @debug "Actual:   " + map.keys($utilities-colors);
+  @warn "Keys in $utilities-colors don't match expected output.";
+}
+
+
+// Test
+//
+// Utilities maps should include custom, black, white, and body.
+
+$expected-utility-colors: (
+  "primary": "",
+  "secondary": "",
+  "success": "",
+  "info": "",
+  "warning": "",
+  "danger": "",
+  "light": "",
+  "dark": "",
+  "custom": "",
+  "custom2": "",
+  "black": "",
+  "white": "",
+  "body": ""
+);
+
+@if map.keys($utilities-text-colors) != map.keys($expected-utility-colors) {
+  @debug "Expected: " + map.keys($expected-utility-colors);
+  @debug "Actual:   " + map.keys($utilities-text-colors);
+  @warn "Keys in $utilities-text-colors don't match expected output.";
+}
+@if map.keys($utilities-bg-colors) != map.keys($expected-utility-colors) {
+  @debug "Expected: " + map.keys($expected-utility-colors);
+  @debug "Actual:   " + map.keys($utilities-bg-colors);
+  @warn "Keys in $utilities-bg-colors don't match expected output.";
+}
+
+
+// Test
+//
+// Spacers should be doubled and include a 6th spacer. $spacers should also match $gutters.
+
+$expected-spacers: (
+  0: 0,
+  1: .5rem,
+  2: 1rem,
+  3: 2rem,
+  4: 3rem,
+  5: 6rem,
+  6: 8rem
+);
+
+@if map.keys($spacers) != map.keys($expected-spacers) {
+  @debug "Expected: " + map.values($expected-spacers);
+  @debug "Actual:   " + map.values($spacers);
+  @warn "Values in $spacers don't match expected output.";
+}
+
+@if map.keys($spacers) != map.keys($gutters) {
+  @debug "Spacers: " + map.values($spacers);
+  @debug "Gutters: " + map.values($gutters);
+  @warn "Keys in $spacers and $gutters don't match.";
+}

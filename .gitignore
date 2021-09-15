@@ -1,5 +1,8 @@
 # Ignore docs files
 /_site/
+# Ignore Sass tests
+/test/output.css
+/test/output.css.map
 # Hugo resources folder
 /resources/
 
