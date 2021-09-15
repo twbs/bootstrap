@@ -94,8 +94,8 @@
   // Disable empty links in docs examples
   document.querySelectorAll('.bd-content [href="#"]')
     .forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        e.preventDefault()
+      link.addEventListener('click', function (event) {
+        event.preventDefault()
       })
     })
 
@@ -142,25 +142,25 @@
     }
   })
 
-  clipboard.on('success', function (e) {
-    var tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
+  clipboard.on('success', function (event) {
+    var tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
 
-    e.trigger.setAttribute('data-bs-original-title', 'Copied!')
+    event.trigger.setAttribute('data-bs-original-title', 'Copied!')
     tooltipBtn.show()
 
-    e.trigger.setAttribute('data-bs-original-title', 'Copy to clipboard')
-    e.clearSelection()
+    event.trigger.setAttribute('data-bs-original-title', 'Copy to clipboard')
+    event.clearSelection()
   })
 
-  clipboard.on('error', function (e) {
+  clipboard.on('error', function (event) {
     var modifierKey = /mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
     var fallbackMsg = 'Press ' + modifierKey + 'C to copy'
-    var tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
+    var tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
 
-    e.trigger.setAttribute('data-bs-original-title', fallbackMsg)
+    event.trigger.setAttribute('data-bs-original-title', fallbackMsg)
     tooltipBtn.show()
 
-    e.trigger.setAttribute('data-bs-original-title', 'Copy to clipboard')
+    event.trigger.setAttribute('data-bs-original-title', 'Copy to clipboard')
   })
 
   anchors.options = {
