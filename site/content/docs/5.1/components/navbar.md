@@ -463,7 +463,7 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 {{< /example >}}
 
 {{< example >}}
-<nav class="navbar fixed-top navbar-light bg-light">
+<nav class="navbar navbar-static-top navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Fixed top</a>
   </div>
@@ -662,7 +662,7 @@ Transform your expanding and collapsing navbar into an offcanvas drawer with the
 In the example below, to create an offcanvas navbar that is always collapsed across all breakpoints, omit the `.navbar-expand-*` class entirely.
 
 {{< example >}}
-<nav class="navbar navbar-light bg-light fixed-top">
+<nav class="navbar navbar-light bg-light navbar-static-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Offcanvas navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -708,7 +708,7 @@ In the example below, to create an offcanvas navbar that is always collapsed acr
 To create an offcanvas navbar that expands into a normal navbar at a specific breakpoint like `lg`, use `.navbar-expand-lg`.
 
 ```html
-<nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top">
+<nav class="navbar navbar-light navbar-expand-lg bg-light navbar-static-top">
   <a class="navbar-brand" href="#">Offcanvas navbar</a>
   <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg">
     <span class="navbar-toggler-icon"></span>
