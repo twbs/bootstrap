@@ -25,6 +25,9 @@ const GLOBBY_OPTIONS = {
   gitignore: true
 }
 
+// Avoid modifying documentation content and dependencies in package*.json files matching the newVersion
+const EXCLUDE_FILES_PATTERN = '^(site/content/docs/|package.json|package-lock.json)'
+
 // Blame TC39... https://github.com/benjamingr/RegExp.escape/issues/37
 function regExpQuote(string) {
   return string.replace(/[$()*+-.?[\\\]^{|}]/g, '\\$&')
@@ -34,11 +37,14 @@ function regExpQuoteReplacement(string) {
   return string.replace(/\$/g, '$$')
 }
 
-async function replaceRecursively(file, oldVersion, newVersion) {
+async function replaceRecursively(file, oldVersion, newVersion, onlyFirstMatch = false) {
   const originalString = await fs.readFile(file, 'utf8')
-  const newString = originalString.replace(
-    new RegExp(regExpQuote(oldVersion), 'g'), regExpQuoteReplacement(newVersion)
-  )
+
+  const newString = onlyFirstMatch ?
+    originalString.replace(oldVersion, newVersion) :
+    originalString.replace(
+      new RegExp(regExpQuote(oldVersion), 'g', regExpQuoteReplacement(newVersion))
+    )
 
   // No need to move any further if the strings are identical
   if (originalString === newString) {
@@ -68,8 +74,14 @@ async function main(args) {
   // Strip any leading `v` from arguments because otherwise we will end up with duplicate `v`s
   [oldVersion, newVersion] = [oldVersion, newVersion].map(arg => arg.startsWith('v') ? arg.slice(1) : arg)
 
+  // Modify specifically package*.json files to avoid modifying other dependencies versions
+  const oldVersionJSONString = '"version": "' + oldVersion + '"'
+  const newVersionJSONString = '"version": "' + newVersion + '"'
+  replaceRecursively('package.json', oldVersionJSONString, newVersionJSONString, true)
+  replaceRecursively('package-lock.json', oldVersionJSONString, newVersionJSONString, true)
+
   try {
-    const files = await globby(GLOB, GLOBBY_OPTIONS)
+    const files = (await globby(GLOB, GLOBBY_OPTIONS)).filter(file => !(new RegExp(EXCLUDE_FILES_PATTERN).test(file)))
 
     await Promise.all(files.map(file => replaceRecursively(file, oldVersion, newVersion)))
   } catch (error) {
