@@ -5,8 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin } from './util/index'
-import Tooltip from './tooltip'
+import { defineJQueryPlugin } from "./util/index";
+import Tooltip from "./tooltip";
 
 /**
  * ------------------------------------------------------------------------
@@ -14,28 +14,29 @@ import Tooltip from './tooltip'
  * ------------------------------------------------------------------------
  */
 
-const NAME = 'popover'
-const DATA_KEY = 'bs.popover'
-const EVENT_KEY = `.${DATA_KEY}`
-const CLASS_PREFIX = 'bs-popover'
+const NAME = "popover";
+const DATA_KEY = "bs.popover";
+const EVENT_KEY = `.${DATA_KEY}`;
+const CLASS_PREFIX = "bs-popover";
 
 const Default = {
   ...Tooltip.Default,
-  placement: 'right',
+  placement: "right",
   offset: [0, 8],
-  trigger: 'click',
-  content: '',
-  template: '<div class="popover" role="tooltip">' +
-              '<div class="popover-arrow"></div>' +
-              '<h3 class="popover-header"></h3>' +
-              '<div class="popover-body"></div>' +
-            '</div>'
-}
+  trigger: "click",
+  content: "",
+  template:
+    '<div class="popover" role="tooltip">' +
+    '<div class="popover-arrow"></div>' +
+    '<h3 class="popover-header"></h3>' +
+    '<div class="popover-body"></div>' +
+    "</div>",
+};
 
 const DefaultType = {
   ...Tooltip.DefaultType,
-  content: '(string|element|function)'
-}
+  content: "(string|element|function)",
+};
 
 const Event = {
   HIDE: `hide${EVENT_KEY}`,
@@ -47,11 +48,11 @@ const Event = {
   FOCUSIN: `focusin${EVENT_KEY}`,
   FOCUSOUT: `focusout${EVENT_KEY}`,
   MOUSEENTER: `mouseenter${EVENT_KEY}`,
-  MOUSELEAVE: `mouseleave${EVENT_KEY}`
-}
+  MOUSELEAVE: `mouseleave${EVENT_KEY}`,
+};
 
-const SELECTOR_TITLE = '.popover-header'
-const SELECTOR_CONTENT = '.popover-body'
+const SELECTOR_TITLE = ".popover-header";
+const SELECTOR_CONTENT = ".popover-body";
 
 /**
  * ------------------------------------------------------------------------
@@ -63,56 +64,56 @@ class Popover extends Tooltip {
   // Getters
 
   static get Default() {
-    return Default
+    return Default;
   }
 
   static get NAME() {
-    return NAME
+    return NAME;
   }
 
   static get Event() {
-    return Event
+    return Event;
   }
 
   static get DefaultType() {
-    return DefaultType
+    return DefaultType;
   }
 
   // Overrides
 
   isWithContent() {
-    return this.getTitle() || this._getContent()
+    return this.getTitle() || this._getContent();
   }
 
   setContent(tip) {
-    this._sanitizeAndSetContent(tip, this.getTitle(), SELECTOR_TITLE)
-    this._sanitizeAndSetContent(tip, this._getContent(), SELECTOR_CONTENT)
+    this._sanitizeAndSetContent(tip, this.getTitle(), SELECTOR_TITLE);
+    this._sanitizeAndSetContent(tip, this._getContent(), SELECTOR_CONTENT);
   }
 
   // Private
 
   _getContent() {
-    return this._resolvePossibleFunction(this._config.content)
+    return this._resolvePossibleFunction(this._config.content);
   }
 
   _getBasicClassPrefix() {
-    return CLASS_PREFIX
+    return CLASS_PREFIX;
   }
 
   // Static
 
   static jQueryInterface(config) {
     return this.each(function () {
-      const data = Popover.getOrCreateInstance(this, config)
+      const data = Popover.getOrCreateInstance(this, config);
 
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
+      if (typeof config === "string") {
+        if (typeof data[config] === "undefined") {
+          throw new TypeError(`No named methods "${config}"`);
         }
 
-        data[config]()
+        data[config]();
       }
-    })
+    });
   }
 }
 
@@ -123,6 +124,6 @@ class Popover extends Tooltip {
  * add .Popover to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(Popover)
+defineJQueryPlugin(Popover);
 
-export default Popover
+export default Popover;
