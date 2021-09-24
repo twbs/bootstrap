@@ -388,8 +388,8 @@ describe('Collapse', () => {
         }, 10)
       }
 
-      collapseEl.addEventListener('show.bs.collapse', event => {
-        event.preventDefault()
+      collapseEl.addEventListener('show.bs.collapse', e => {
+        e.preventDefault()
         expectEnd()
       })
 
@@ -465,8 +465,8 @@ describe('Collapse', () => {
         }, 10)
       }
 
-      collapseEl.addEventListener('hide.bs.collapse', event => {
-        event.preventDefault()
+      collapseEl.addEventListener('hide.bs.collapse', e => {
+        e.preventDefault()
         expectEnd()
       })
 
