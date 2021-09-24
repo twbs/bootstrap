@@ -24,10 +24,10 @@ export const clearFixture = () => {
 }
 
 export const createEvent = (eventName, params = {}) => {
-  const event = document.createEvent('Event')
+  const e = document.createEvent('Event')
 
-  event.initEvent(eventName, Boolean(params.bubbles), Boolean(params.cancelable))
-  return event
+  e.initEvent(eventName, Boolean(params.bubbles), Boolean(params.cancelable))
+  return e
 }
 
 export const jQueryMock = {
