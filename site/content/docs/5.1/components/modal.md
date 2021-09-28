@@ -512,7 +512,7 @@ Toggle between multiple modals with some clever placement of the `data-bs-target
         Show a second modal and hide this one with the button below.
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Open second modal</button>
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
       </div>
     </div>
   </div>
