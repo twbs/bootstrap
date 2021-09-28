@@ -100,7 +100,7 @@
     "@popperjs/core": "^2.10.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.15.4",
+    "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.6",
     "@popperjs/core": "^2.10.1",
@@ -141,7 +141,7 @@
     "rollup": "^2.56.3",
     "rollup-plugin-istanbul": "^3.0.0",
     "rtlcss": "^3.3.0",
-    "sass": "^1.41.0",
+    "sass": "^1.42.0",
     "shelljs": "^0.8.4",
     "stylelint": "^13.13.1",
     "stylelint-config-twbs-bootstrap": "^2.2.3",
