@@ -98,7 +98,8 @@ const conf = {
     output: {
       format: 'iife',
       name: 'bootstrapTest',
-      sourcemap: 'inline'
+      sourcemap: 'inline',
+      generatedCode: 'es2015'
     }
   }
 }
