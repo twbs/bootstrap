@@ -20,7 +20,6 @@ body:
     attributes:
       label: Describe the issue
       description: Provide a summary of the issue and what you expected to happen, including specific steps to reproduce.
-      placeholder: ""
     validations:
       required: true
   - type: textarea
