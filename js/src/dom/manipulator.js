@@ -22,7 +22,15 @@ function normalizeData(value) {
     return null
   }
 
-  return value
+  if (typeof value !== 'string') {
+    return value
+  }
+
+  try {
+    return JSON.parse(decodeURIComponent(val))
+  } catch {
+    return value
+  }
 }
 
 function normalizeDataKey(key) {
