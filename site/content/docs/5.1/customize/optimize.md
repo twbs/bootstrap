@@ -71,9 +71,9 @@ Lastly, this [CSS Tricks article on unused CSS](https://css-tricks.com/how-do-yo
 
 Whenever possible, be sure to compress all the code you serve to your visitors. If you're using Bootstrap dist files, try to stick to the minified versions (indicated by the `.min.css` and `.min.js` extensions). If you're building Bootstrap from the source with your own build system, be sure to implement your own minifiers for HTML, CSS, and JS.
 
-## Nonblocking files
+## Non-blocking files
 
-While minifying and using compression might seem like enough, making your files nonblocking ones is also a big step in making your site well-optimized and fast enough.
+While minifying and using compression might seem like enough, making your files non-blocking ones is also a big step in making your site well-optimized and fast enough.
 
 If you are using a [Lighthouse](https://developers.google.com/web/tools/lighthouse/) plugin in Google Chrome, you may have stumbled over FCP. [The First Contentful Paint](https://web.dev/fcp/) metric measures the time from when the page starts loading to when any part of the page's content is rendered on the screen.
 

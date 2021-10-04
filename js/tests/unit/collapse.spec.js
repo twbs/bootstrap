@@ -2,7 +2,7 @@ import Collapse from '../../src/collapse'
 import EventHandler from '../../src/dom/event-handler'
 
 /** Test helpers */
-import { getFixture, clearFixture, jQueryMock } from '../helpers/fixture'
+import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Collapse', () => {
   let fixtureEl
@@ -267,6 +267,63 @@ describe('Collapse', () => {
       collapse.show()
     })
 
+    it('should be able to handle toggling of other children siblings', done => {
+      fixtureEl.innerHTML = [
+        '<div id="parentGroup" class="accordion">',
+        '   <div id="parentHeader" class="accordion-header">',
+        '      <button data-bs-target="#parentContent" data-bs-toggle="collapse" role="button" class="accordion-toggle">Parent</button>',
+        '   </div>',
+        '   <div id="parentContent" class="accordion-collapse collapse" aria-labelledby="parentHeader" data-bs-parent="#parentGroup">',
+        '      <div class="accordion-body">',
+        '         <div id="childGroup" class="accordion">',
+        '            <div class="accordion-item">',
+        '               <div id="childHeader1" class="accordion-header">',
+        '                  <button data-bs-target="#childContent1" data-bs-toggle="collapse" role="button" class="accordion-toggle">Child 1</button>',
+        '               </div>',
+        '               <div id="childContent1" class="accordion-collapse collapse" aria-labelledby="childHeader1" data-bs-parent="#childGroup">',
+        '                  <div>content</div>',
+        '               </div>',
+        '            </div>',
+        '            <div class="accordion-item">',
+        '               <div id="childHeader2" class="accordion-header">',
+        '                  <button data-bs-target="#childContent2" data-bs-toggle="collapse" role="button" class="accordion-toggle">Child 2</button>',
+        '               </div>',
+        '               <div id="childContent2" class="accordion-collapse collapse" aria-labelledby="childHeader2" data-bs-parent="#childGroup">',
+        '                  <div>content</div>',
+        '               </div>',
+        '            </div>',
+        '         </div>',
+        '      </div>',
+        '   </div>',
+        '</div>'
+      ].join('')
+
+      const el = selector => fixtureEl.querySelector(selector)
+
+      const parentBtn = el('[data-bs-target="#parentContent"]')
+      const childBtn1 = el('[data-bs-target="#childContent1"]')
+      const childBtn2 = el('[data-bs-target="#childContent2"]')
+
+      const parentCollapseEl = el('#parentContent')
+      const childCollapseEl1 = el('#childContent1')
+      const childCollapseEl2 = el('#childContent2')
+
+      parentCollapseEl.addEventListener('shown.bs.collapse', () => {
+        expect(parentCollapseEl.classList.contains('show')).toEqual(true)
+        childBtn1.click()
+      })
+      childCollapseEl1.addEventListener('shown.bs.collapse', () => {
+        expect(childCollapseEl1.classList.contains('show')).toEqual(true)
+        childBtn2.click()
+      })
+      childCollapseEl2.addEventListener('shown.bs.collapse', () => {
+        expect(childCollapseEl2.classList.contains('show')).toEqual(true)
+        expect(childCollapseEl1.classList.contains('show')).toEqual(false)
+        done()
+      })
+
+      parentBtn.click()
+    })
     it('should not change tab tabpanels descendants on accordion', done => {
       fixtureEl.innerHTML = [
         '<div class="accordion" id="accordionExample">',
@@ -294,14 +351,13 @@ describe('Collapse', () => {
         '    </div>'
       ].join('')
 
-      // const btn = fixtureEl.querySelector('[data-bs-target="#collapseOne"]')
       const el = fixtureEl.querySelector('#collapseOne')
       const activeTabPane = fixtureEl.querySelector('#nav-home')
       const collapse = new Collapse(el)
       let times = 1
 
       el.addEventListener('hidden.bs.collapse', () => {
-        setTimeout(() => collapse.show(), 10)
+        collapse.show()
       })
 
       el.addEventListener('shown.bs.collapse', () => {
@@ -332,8 +388,8 @@ describe('Collapse', () => {
         }, 10)
       }
 
-      collapseEl.addEventListener('show.bs.collapse', e => {
-        e.preventDefault()
+      collapseEl.addEventListener('show.bs.collapse', event => {
+        event.preventDefault()
         expectEnd()
       })
 
@@ -409,8 +465,8 @@ describe('Collapse', () => {
         }, 10)
       }
 
-      collapseEl.addEventListener('hide.bs.collapse', e => {
-        e.preventDefault()
+      collapseEl.addEventListener('hide.bs.collapse', event => {
+        event.preventDefault()
         expectEnd()
       })
 

@@ -433,7 +433,7 @@ The default `margin` on blockquotes is `1em 40px`, so we reset that to `0 0 1rem
 The `<abbr>` element receives basic styling to make it stand out amongst paragraph text.
 
 <div class="bd-example">
-  Nulla <abbr title="attribute">attr</abbr> vitae elit libero, a pharetra augue.
+  The <abbr title="HyperText Markup Language">HTML</abbr> abbreviation element.
 </div>
 
 ### Summary
