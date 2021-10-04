@@ -34,6 +34,10 @@
   margin-right: -100%;
   backface-visibility: hidden;
   @include transition($carousel-transition);
+
+  img {
+    user-select: none;
+  }
 }
 
 .carousel-item.active,

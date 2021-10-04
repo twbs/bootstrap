@@ -74,7 +74,6 @@ const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY}`
 const EVENT_TOUCHEND = `touchend${EVENT_KEY}`
 const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY}`
 const EVENT_POINTERUP = `pointerup${EVENT_KEY}`
-const EVENT_DRAG_START = `dragstart${EVENT_KEY}`
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
@@ -90,7 +89,6 @@ const CLASS_NAME_POINTER_EVENT = 'pointer-event'
 const SELECTOR_ACTIVE = '.active'
 const SELECTOR_ACTIVE_ITEM = '.active.carousel-item'
 const SELECTOR_ITEM = '.carousel-item'
-const SELECTOR_ITEM_IMG = '.carousel-item img'
 const SELECTOR_NEXT_PREV = '.carousel-item-next, .carousel-item-prev'
 const SELECTOR_INDICATORS = '.carousel-indicators'
 const SELECTOR_INDICATOR = '[data-bs-target]'
@@ -302,10 +300,6 @@ class Carousel extends BaseComponent {
 
         this.touchTimeout = setTimeout(event => this.cycle(event), TOUCHEVENT_COMPAT_WAIT + this._config.interval)
       }
-    }
-
-    for (const itemImg of SelectorEngine.find(SELECTOR_ITEM_IMG, this._element)) {
-      EventHandler.on(itemImg, EVENT_DRAG_START, event => event.preventDefault())
     }
 
     if (this._pointerEvent) {
