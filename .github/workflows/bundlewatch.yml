@@ -2,6 +2,8 @@ name: Bundlewatch
 
 on:
   push:
+    branches-ignore:
+      - "dependabot/**"
   pull_request:
 
 env:
