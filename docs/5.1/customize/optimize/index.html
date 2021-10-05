@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 
 <link href="/docs/5.1/assets/css/docs.css" rel="stylesheet">
 
@@ -408,7 +408,7 @@
     <li><a href="#autoprefixer-browserslistrc">Autoprefixer .browserslistrc</a></li>
     <li><a href="#unused-css">Unused CSS</a></li>
     <li><a href="#minify-and-gzip">Minify and gzip</a></li>
-    <li><a href="#nonblocking-files">Nonblocking files</a></li>
+    <li><a href="#non-blocking-files">Non-blocking files</a></li>
     <li><a href="#always-use-https">Always use HTTPS</a></li>
   </ul>
 </nav>
@@ -505,8 +505,8 @@
 <p>Lastly, this <a href="https://css-tricks.com/how-do-you-remove-unused-css-from-a-site/">CSS Tricks article on unused CSS</a> shows how to use PurgeCSS and other similar tools.</p>
 <h2 id="minify-and-gzip">Minify and gzip</h2>
 <p>Whenever possible, be sure to compress all the code you serve to your visitors. If you&rsquo;re using Bootstrap dist files, try to stick to the minified versions (indicated by the <code>.min.css</code> and <code>.min.js</code> extensions). If you&rsquo;re building Bootstrap from the source with your own build system, be sure to implement your own minifiers for HTML, CSS, and JS.</p>
-<h2 id="nonblocking-files">Nonblocking files</h2>
-<p>While minifying and using compression might seem like enough, making your files nonblocking ones is also a big step in making your site well-optimized and fast enough.</p>
+<h2 id="non-blocking-files">Non-blocking files</h2>
+<p>While minifying and using compression might seem like enough, making your files non-blocking ones is also a big step in making your site well-optimized and fast enough.</p>
 <p>If you are using a <a href="https://developers.google.com/web/tools/lighthouse/">Lighthouse</a> plugin in Google Chrome, you may have stumbled over FCP. <a href="https://web.dev/fcp/">The First Contentful Paint</a> metric measures the time from when the page starts loading to when any part of the page&rsquo;s content is rendered on the screen.</p>
 <p>You can improve FCP by deferring non-critical JavaScript or CSS. What does that mean? Simply, JavaScript or stylesheets that don&rsquo;t need to be present on the first paint of your page should be marked with <code>async</code> or <code>defer</code> attributes.</p>
 <p>This ensures that the less important resources are loaded later and not blocking the first paint. On the other hand, critical resources can be included as inline scripts or styles.</p>
@@ -535,7 +535,7 @@
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.1/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.1.1.</li>
+          <li class="mb-2">Currently v5.1.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -582,7 +582,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
