@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.1): collapse.js
+ * Bootstrap (v5.1.2): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -50,6 +50,7 @@ const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_COLLAPSE = 'collapse'
 const CLASS_NAME_COLLAPSING = 'collapsing'
 const CLASS_NAME_COLLAPSED = 'collapsed'
+const CLASS_NAME_DEEPER_CHILDREN = `:scope .${CLASS_NAME_COLLAPSE} .${CLASS_NAME_COLLAPSE}`
 const CLASS_NAME_HORIZONTAL = 'collapse-horizontal'
 
 const WIDTH = 'width'
@@ -74,8 +75,7 @@ class Collapse extends BaseComponent {
 
     const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
 
-    for (let i = 0, len = toggleList.length; i < len; i++) {
-      const elem = toggleList[i]
+    for (const elem of toggleList) {
       const selector = getSelectorFromElement(elem)
       const filterElement = SelectorEngine.find(selector)
         .filter(foundElem => foundElem === this._element)
@@ -126,8 +126,9 @@ class Collapse extends BaseComponent {
     let activesData
 
     if (this._config.parent) {
-      const children = SelectorEngine.find(`.${CLASS_NAME_COLLAPSE} .${CLASS_NAME_COLLAPSE}`, this._config.parent)
-      actives = SelectorEngine.find(SELECTOR_ACTIVES, this._config.parent).filter(elem => !children.includes(elem)) // remove children if greater depth
+      const children = SelectorEngine.find(CLASS_NAME_DEEPER_CHILDREN, this._config.parent)
+      // remove children if greater depth
+      actives = SelectorEngine.find(SELECTOR_ACTIVES, this._config.parent).filter(elem => !children.includes(elem))
     }
 
     const container = SelectorEngine.findOne(this._selector)
@@ -145,7 +146,7 @@ class Collapse extends BaseComponent {
       return
     }
 
-    actives.forEach(elemActive => {
+    for (const elemActive of actives) {
       if (container !== elemActive) {
         Collapse.getOrCreateInstance(elemActive, { toggle: false }).hide()
       }
@@ -153,7 +154,7 @@ class Collapse extends BaseComponent {
       if (!activesData) {
         Data.set(elemActive, DATA_KEY, null)
       }
-    })
+    }
 
     const dimension = this._getDimension()
 
@@ -202,9 +203,7 @@ class Collapse extends BaseComponent {
     this._element.classList.add(CLASS_NAME_COLLAPSING)
     this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
 
-    const triggerArrayLength = this._triggerArray.length
-    for (let i = 0; i < triggerArrayLength; i++) {
-      const trigger = this._triggerArray[i]
+    for (const trigger of this._triggerArray) {
       const elem = getElementFromSelector(trigger)
 
       if (elem && !this._isShown(elem)) {
@@ -253,15 +252,16 @@ class Collapse extends BaseComponent {
       return
     }
 
-    const children = SelectorEngine.find(`.${CLASS_NAME_COLLAPSE} .${CLASS_NAME_COLLAPSE}`, this._config.parent)
-    SelectorEngine.find(SELECTOR_DATA_TOGGLE, this._config.parent).filter(elem => !children.includes(elem))
-      .forEach(element => {
-        const selected = getElementFromSelector(element)
+    const children = SelectorEngine.find(CLASS_NAME_DEEPER_CHILDREN, this._config.parent)
+    const elements = SelectorEngine.find(SELECTOR_DATA_TOGGLE, this._config.parent).filter(elem => !children.includes(elem))
 
-        if (selected) {
-          this._addAriaAndCollapsedClass([element], this._isShown(selected))
-        }
-      })
+    for (const element of elements) {
+      const selected = getElementFromSelector(element)
+
+      if (selected) {
+        this._addAriaAndCollapsedClass([element], this._isShown(selected))
+      }
+    }
   }
 
   _addAriaAndCollapsedClass(triggerArray, isOpen) {
@@ -269,7 +269,7 @@ class Collapse extends BaseComponent {
       return
     }
 
-    triggerArray.forEach(elem => {
+    for (const elem of triggerArray) {
       if (isOpen) {
         elem.classList.remove(CLASS_NAME_COLLAPSED)
       } else {
@@ -277,7 +277,7 @@ class Collapse extends BaseComponent {
       }
 
       elem.setAttribute('aria-expanded', isOpen)
-    })
+    }
   }
 
   // Static
@@ -317,9 +317,9 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   const selector = getSelectorFromElement(this)
   const selectorElements = SelectorEngine.find(selector)
 
-  selectorElements.forEach(element => {
+  for (const element of selectorElements) {
     Collapse.getOrCreateInstance(element, { toggle: false }).toggle()
-  })
+  }
 })
 
 /**

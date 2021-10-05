@@ -1,11 +1,11 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.1): util/index.js
+ * Bootstrap (v5.1.2): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-const MAX_UID = 1000000
+const MAX_UID = 1_000_000
 const MILLISECONDS_MULTIPLIER = 1000
 const TRANSITION_END = 'transitionend'
 
@@ -15,7 +15,7 @@ const toType = obj => {
     return `${obj}`
   }
 
-  return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
+  return Object.prototype.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
 }
 
 /**
@@ -125,7 +125,7 @@ const getElement = obj => {
 }
 
 const typeCheckConfig = (componentName, config, configTypes) => {
-  Object.keys(configTypes).forEach(property => {
+  for (const property of Object.keys(configTypes)) {
     const expectedTypes = configTypes[property]
     const value = config[property]
     const valueType = value && isElement(value) ? 'element' : toType(value)
@@ -135,7 +135,7 @@ const typeCheckConfig = (componentName, config, configTypes) => {
         `${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`
       )
     }
-  })
+  }
 }
 
 const isVisible = element => {
@@ -217,7 +217,9 @@ const onDOMContentLoaded = callback => {
     // add listener on the first call when the document is in loading state
     if (!DOMContentLoadedCallbacks.length) {
       document.addEventListener('DOMContentLoaded', () => {
-        DOMContentLoadedCallbacks.forEach(callback => callback())
+        for (const callback of DOMContentLoadedCallbacks) {
+          callback()
+        }
       })
     }
 

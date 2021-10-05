@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.1): base-component.js
+ * Bootstrap (v5.1.2): base-component.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ import EventHandler from './dom/event-handler'
  * ------------------------------------------------------------------------
  */
 
-const VERSION = '5.1.1'
+const VERSION = '5.1.2'
 
 class BaseComponent {
   constructor(element) {
@@ -36,9 +36,9 @@ class BaseComponent {
     Data.remove(this._element, this.constructor.DATA_KEY)
     EventHandler.off(this._element, this.constructor.EVENT_KEY)
 
-    Object.getOwnPropertyNames(this).forEach(propertyName => {
+    for (const propertyName of Object.getOwnPropertyNames(this)) {
       this[propertyName] = null
-    })
+    }
   }
 
   _queueCallback(callback, element, isAnimated = true) {
