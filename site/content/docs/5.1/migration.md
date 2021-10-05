@@ -11,6 +11,8 @@ toc: true
 
 - **Introduced new `$enable-container-classes` option.** Now when opting into the experimental CSS Grid layout, `.container-*` classes will still be compiled, unless this option is set to `false`.
 
+- **Popovers and tooltips now use CSS variables.** Both components have been updated to use CSS variables on their base classes, `.popover` and `.tooltip`. Some CSS variables have been updated from their Sass counterparts to reduce the number of variables. As a result, three variables have been deprecated in this release: `$popover-arrow-color`, `$popover-arrow-outer-color`, and `$tooltip-arrow-color`.
+
 ## Dependencies
 
 - Dropped jQuery.
