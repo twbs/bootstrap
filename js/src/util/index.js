@@ -311,19 +311,11 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
 }
 
 const getWindow = () => {
-  if (typeof window !== 'undefined') {
-    return window
-  }
-
-  return {}
+  return typeof window !== 'undefined' ? window : {}
 }
 
 const getDocument = () => {
-  if (typeof document !== 'undefined') {
-    return document
-  }
-
-  return {}
+  return typeof document !== 'undefined' ? document : {}
 }
 
 export {
