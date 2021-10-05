@@ -7,6 +7,7 @@
   --#{$variable-prefix}gutter-y: 0;
   display: flex;
   flex-wrap: wrap;
+  // TODO: Revisit calc order after https://github.com/react-bootstrap/react-bootstrap/issues/6039 is fixed
   margin-top: calc(-1 * var(--#{$variable-prefix}gutter-y)); // stylelint-disable-line function-disallowed-list
   margin-right: calc(-.5 * var(--#{$variable-prefix}gutter-x)); // stylelint-disable-line function-disallowed-list
   margin-left: calc(-.5 * var(--#{$variable-prefix}gutter-x)); // stylelint-disable-line function-disallowed-list
