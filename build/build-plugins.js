@@ -163,6 +163,7 @@ const build = async plugin => {
     name: plugin,
     sourcemap: true,
     globals,
+    generatedCode: 'es2015',
     file: path.resolve(__dirname, `${pluginPath}/${pluginFilename}`)
   })
 
