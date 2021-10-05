@@ -18,9 +18,9 @@ buildFuture:            true
 
 enableRobotsTXT:        true
 metaDataFormat:         "yaml"
-disableKinds:           ["404", "taxonomy", "taxonomyTerm", "RSS"]
+disableKinds:           ["404", "taxonomy", "term", "RSS"]
 
-publishDir:             "_gh_pages"
+publishDir:             "_site"
 
 module:
   mounts:
@@ -50,6 +50,7 @@ params:
   current_version:      "4.6.0"
   current_ruby_version: "4.6.0"
   docs_version:         "4.6"
+  rfs_version:          "v8.1.0"
   github_org:           "https://github.com/twbs"
   repo:                 "https://github.com/twbs/bootstrap"
   twitter:              "getbootstrap"

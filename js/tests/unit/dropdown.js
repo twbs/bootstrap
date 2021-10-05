@@ -40,7 +40,7 @@ $(function () {
     assert.expect(2)
     var $el = $('<div/>')
     var $dropdown = $el.bootstrapDropdown()
-    assert.ok($dropdown instanceof $, 'returns jquery collection')
+    assert.true($dropdown instanceof $, 'returns jquery collection')
     assert.strictEqual($dropdown[0], $el[0], 'collection contains element')
   })
 
@@ -61,7 +61,7 @@ $(function () {
     $(dropdownHTML).appendTo('#qunit-fixture')
     var $dropdown = $('#qunit-fixture').find('[data-toggle="dropdown"]').bootstrapDropdown()
     $dropdown.on('click', function () {
-      assert.ok(!$dropdown.parent('.dropdown').hasClass('show'))
+      assert.false($dropdown.parent('.dropdown').hasClass('show'))
       done()
     })
     $dropdown.trigger($.Event('click'))
@@ -88,7 +88,7 @@ $(function () {
     $button.trigger('focus').trigger($.Event('keydown', {
       which: 27
     }))
-    assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown after escape pressed')
+    assert.false($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown after escape pressed')
     done()
   })
 
@@ -108,7 +108,7 @@ $(function () {
     $dropdown
       .parent('.dropdown')
       .on('shown.bs.dropdown', function () {
-        assert.ok(!$dropdown.parent('.dropdown').hasClass('position-static'), '"position-static" class not added')
+        assert.false($dropdown.parent('.dropdown').hasClass('position-static'), '"position-static" class not added')
         done()
       })
     $dropdown.trigger('click')
@@ -130,7 +130,7 @@ $(function () {
     $dropdown
       .parent('.dropdown')
       .on('shown.bs.dropdown', function () {
-        assert.ok($dropdown.parent('.dropdown').hasClass('position-static'), '"position-static" class added')
+        assert.true($dropdown.parent('.dropdown').hasClass('position-static'), '"position-static" class added')
         done()
       })
     $dropdown.trigger('click')
@@ -211,7 +211,7 @@ $(function () {
     $(dropdownHTML).appendTo('#qunit-fixture')
     var $dropdown = $('#qunit-fixture').find('[data-toggle="dropdown"]').bootstrapDropdown()
     $dropdown.on('click', function () {
-      assert.ok(!$dropdown.parent('.dropdown').hasClass('show'))
+      assert.false($dropdown.parent('.dropdown').hasClass('show'))
       done()
     })
     $dropdown.trigger($.Event('click'))
@@ -235,7 +235,7 @@ $(function () {
     $dropdown
       .parent('.dropdown')
       .on('shown.bs.dropdown', function () {
-        assert.ok($dropdown.parent('.dropdown').hasClass('show'), '"show" class added on click')
+        assert.true($dropdown.parent('.dropdown').hasClass('show'), '"show" class added on click')
         done()
       })
     $dropdown.trigger('click')
@@ -263,10 +263,10 @@ $(function () {
     $dropdown
       .parent('.dropdown')
       .on('shown.bs.dropdown', function () {
-        assert.ok($dropdown.parent('.dropdown').hasClass('show'), '"show" class added on click')
+        assert.true($dropdown.parent('.dropdown').hasClass('show'), '"show" class added on click')
         $(document.body).trigger('click')
       }).on('hidden.bs.dropdown', function () {
-        assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), '"show" class removed')
+        assert.false($dropdown.parent('.dropdown').hasClass('show'), '"show" class removed')
         done()
       })
     $dropdown.trigger('click')
@@ -293,12 +293,12 @@ $(function () {
     $dropdown
       .parent('.dropdown')
       .on('shown.bs.dropdown', function () {
-        assert.ok($dropdown.parent('.dropdown').hasClass('show'), '"show" class added on click')
+        assert.true($dropdown.parent('.dropdown').hasClass('show'), '"show" class added on click')
         var e = $.Event('keyup')
         e.which = 9 // Tab
         $(document.body).trigger(e)
       }).on('hidden.bs.dropdown', function () {
-        assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), '"show" class removed')
+        assert.false($dropdown.parent('.dropdown').hasClass('show'), '"show" class removed')
         done()
       })
     $dropdown.trigger('click')
@@ -520,10 +520,10 @@ $(function () {
 
     $dropdown.parent('.dropdown')
       .on('hide.bs.dropdown', function (e) {
-        assert.ok(e.clickEvent)
+        assert.notStrictEqual(e.clickEvent, 'undefined')
       })
       .on('hidden.bs.dropdown', function (e) {
-        assert.ok(e.clickEvent)
+        assert.notStrictEqual(e.clickEvent, 'undefined')
       })
       .on('shown.bs.dropdown', function () {
         assert.ok(true, 'shown was fired')
@@ -553,10 +553,10 @@ $(function () {
 
     $dropdown.parent('.dropdown')
       .on('hide.bs.dropdown', function (e) {
-        assert.notOk(e.clickEvent)
+        assert.strictEqual(typeof e.clickEvent, 'undefined')
       })
       .on('hidden.bs.dropdown', function (e) {
-        assert.notOk(e.clickEvent)
+        assert.strictEqual(typeof e.clickEvent, 'undefined')
       })
       .on('shown.bs.dropdown', function () {
         assert.ok(true, 'shown was fired')
@@ -601,12 +601,12 @@ $(function () {
         $input.trigger('focus').trigger($.Event('keydown', {
           which: 38
         }))
-        assert.ok($(document.activeElement).is($input), 'input still focused')
+        assert.true($(document.activeElement).is($input), 'input still focused')
 
         $textarea.trigger('focus').trigger($.Event('keydown', {
           which: 38
         }))
-        assert.ok($(document.activeElement).is($textarea), 'textarea still focused')
+        assert.true($(document.activeElement).is($textarea), 'textarea still focused')
 
         done()
       })
@@ -642,8 +642,8 @@ $(function () {
         $dropdown.trigger($.Event('keydown', {
           which: 40
         }))
-        assert.ok(!$(document.activeElement).is('.disabled'), '.disabled is not focused')
-        assert.ok(!$(document.activeElement).is(':disabled'), ':disabled is not focused')
+        assert.false($(document.activeElement).is('.disabled'), '.disabled is not focused')
+        assert.false($(document.activeElement).is(':disabled'), ':disabled is not focused')
         done()
       })
     $dropdown.trigger('click')
@@ -673,17 +673,17 @@ $(function () {
         $dropdown.trigger($.Event('keydown', {
           which: 40
         }))
-        assert.ok($(document.activeElement).is($('#item1')), 'item1 is focused')
+        assert.true($(document.activeElement).is($('#item1')), 'item1 is focused')
 
         $(document.activeElement).trigger($.Event('keydown', {
           which: 40
         }))
-        assert.ok($(document.activeElement).is($('#item2')), 'item2 is focused')
+        assert.true($(document.activeElement).is($('#item2')), 'item2 is focused')
 
         $(document.activeElement).trigger($.Event('keydown', {
           which: 38
         }))
-        assert.ok($(document.activeElement).is($('#item1')), 'item1 is focused')
+        assert.true($(document.activeElement).is($('#item1')), 'item1 is focused')
         done()
       })
     $dropdown.trigger('click')
@@ -705,14 +705,14 @@ $(function () {
 
     var $textfield = $('#textField')
     $textfield.on('click', function () {
-      assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
+      assert.true($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
       done()
     })
 
     $dropdown
       .parent('.dropdown')
       .on('shown.bs.dropdown', function () {
-        assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
+        assert.true($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
         $textfield.trigger($.Event('click'))
       })
     $dropdown.trigger('click')
@@ -734,14 +734,14 @@ $(function () {
 
     var $textarea = $('#textArea')
     $textarea.on('click', function () {
-      assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
+      assert.true($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
       done()
     })
 
     $dropdown
       .parent('.dropdown')
       .on('shown.bs.dropdown', function () {
-        assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
+        assert.true($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
         $textarea.trigger($.Event('click'))
       })
     $dropdown.trigger('click')
@@ -752,7 +752,7 @@ $(function () {
     var done = assert.async()
     var html = '<nav class="navbar navbar-expand-md navbar-light bg-light">' +
         '<div class="dropdown">' +
-        '  <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>' +
+        '  <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-expanded="false">Dropdown</a>' +
         '  <div class="dropdown-menu" aria-labelledby="dropdown">' +
         '    <a class="dropdown-item" href="#">Action</a>' +
         '    <a class="dropdown-item" href="#">Another action</a>' +
@@ -770,7 +770,7 @@ $(function () {
     $triggerDropdown
       .parent('.dropdown')
       .on('shown.bs.dropdown', function () {
-        assert.ok(typeof $dropdownMenu.attr('style') === 'undefined', 'No inline style applied by Popper')
+        assert.strictEqual(typeof $dropdownMenu.attr('style'), 'undefined', 'No inline style applied by Popper')
         done()
       })
     $triggerDropdown.trigger($.Event('click'))
@@ -800,15 +800,15 @@ $(function () {
       .on('shown.bs.dropdown', function () {
         // Forcibly focus first item
         $item[0].focus()
-        assert.ok($(document.activeElement)[0] === $item[0], 'menu item initial focus set')
+        assert.strictEqual($(document.activeElement)[0], $item[0], 'menu item initial focus set')
 
         // Key escape
         $item.trigger('focus').trigger($.Event('keydown', {
           which: 27
         }))
 
-        assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu was closed after escape')
-        assert.ok($(document.activeElement)[0] === $toggle[0], 'toggle has focus again once menu was closed after escape')
+        assert.false($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu was closed after escape')
+        assert.strictEqual($(document.activeElement)[0], $toggle[0], 'toggle has focus again once menu was closed after escape')
         done()
       })
 
@@ -847,37 +847,37 @@ $(function () {
         $input.trigger('focus').trigger($.Event('keydown', {
           which: 32
         }))
-        assert.ok($(document.activeElement)[0] === $input[0], 'input still focused')
+        assert.strictEqual($(document.activeElement)[0], $input[0], 'input still focused')
         $textarea.trigger('focus').trigger($.Event('keydown', {
           which: 32
         }))
-        assert.ok($(document.activeElement)[0] === $textarea[0], 'textarea still focused')
+        assert.strictEqual($(document.activeElement)[0], $textarea[0], 'textarea still focused')
 
         // Key up
         $input.trigger('focus').trigger($.Event('keydown', {
           which: 38
         }))
-        assert.ok($(document.activeElement)[0] === $input[0], 'input still focused')
+        assert.strictEqual($(document.activeElement)[0], $input[0], 'input still focused')
         $textarea.trigger('focus').trigger($.Event('keydown', {
           which: 38
         }))
-        assert.ok($(document.activeElement)[0] === $textarea[0], 'textarea still focused')
+        assert.strictEqual($(document.activeElement)[0], $textarea[0], 'textarea still focused')
 
         // Key down
         $input.trigger('focus').trigger($.Event('keydown', {
           which: 40
         }))
-        assert.ok($(document.activeElement)[0] === $input[0], 'input still focused')
+        assert.strictEqual($(document.activeElement)[0], $input[0], 'input still focused')
         $textarea.trigger('focus').trigger($.Event('keydown', {
           which: 40
         }))
-        assert.ok($(document.activeElement)[0] === $textarea[0], 'textarea still focused')
+        assert.strictEqual($(document.activeElement)[0], $textarea[0], 'textarea still focused')
 
         // Key escape
         $input.trigger('focus').trigger($.Event('keydown', {
           which: 27
         }))
-        assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown')
+        assert.false($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown')
         done()
       })
 
@@ -917,14 +917,14 @@ $(function () {
         $input.trigger('focus').trigger($.Event('keydown', {
           which: 32
         }))
-        assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
-        assert.ok($(document.activeElement).is($input), 'input is still focused')
+        assert.true($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
+        assert.true($(document.activeElement).is($input), 'input is still focused')
 
         // Key escape
         $input.trigger('focus').trigger($.Event('keydown', {
           which: 27
         }))
-        assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown')
+        assert.false($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown')
 
         $dropdown
           .parent('.dropdown')
@@ -933,7 +933,7 @@ $(function () {
             $input.trigger('focus').trigger($.Event('keydown', {
               which: 40
             }))
-            assert.ok(document.activeElement === $('#item1')[0], 'item1 is focused')
+            assert.strictEqual(document.activeElement, $('#item1')[0], 'item1 is focused')
 
             $dropdown
               .parent('.dropdown')
@@ -942,7 +942,7 @@ $(function () {
                 $input.trigger('focus').trigger($.Event('keydown', {
                   which: 38
                 }))
-                assert.ok(document.activeElement === $('#item1')[0], 'item1 is focused')
+                assert.strictEqual(document.activeElement, $('#item1')[0], 'item1 is focused')
                 done()
               }).bootstrapDropdown('toggle')
             $input.trigger('click')
@@ -985,14 +985,14 @@ $(function () {
         $textarea.trigger('focus').trigger($.Event('keydown', {
           which: 32
         }))
-        assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
-        assert.ok($(document.activeElement).is($textarea), 'textarea is still focused')
+        assert.true($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
+        assert.true($(document.activeElement).is($textarea), 'textarea is still focused')
 
         // Key escape
         $textarea.trigger('focus').trigger($.Event('keydown', {
           which: 27
         }))
-        assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown')
+        assert.false($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown')
 
         $dropdown
           .parent('.dropdown')
@@ -1001,7 +1001,7 @@ $(function () {
             $textarea.trigger('focus').trigger($.Event('keydown', {
               which: 40
             }))
-            assert.ok(document.activeElement === $('#item1')[0], 'item1 is focused')
+            assert.strictEqual(document.activeElement, $('#item1')[0], 'item1 is focused')
 
             $dropdown
               .parent('.dropdown')
@@ -1010,7 +1010,7 @@ $(function () {
                 $textarea.trigger('focus').trigger($.Event('keydown', {
                   which: 38
                 }))
-                assert.ok(document.activeElement === $('#item1')[0], 'item1 is focused')
+                assert.strictEqual(document.activeElement, $('#item1')[0], 'item1 is focused')
                 done()
               }).bootstrapDropdown('toggle')
             $textarea.trigger('click')
@@ -1048,7 +1048,7 @@ $(function () {
       which: 27
     }))
 
-    assert.ok($body.hasClass('event-handled'), 'ESC key event was propagated')
+    assert.true($body.hasClass('event-handled'), 'ESC key event was propagated')
     done()
   })
 
@@ -1080,7 +1080,7 @@ $(function () {
       which: 27
     }))
 
-    assert.ok($body.hasClass('event-handled'), 'ESC key event was propagated')
+    assert.true($body.hasClass('event-handled'), 'ESC key event was propagated')
     done()
   })
 
@@ -1132,14 +1132,14 @@ $(function () {
 
     var dropdown = $dropdown.data('bs.dropdown')
     dropdown.toggle()
-    assert.ok(dropdown._popper)
+    assert.notStrictEqual(dropdown._popper, null)
 
     var spyPopper = sinon.spy(dropdown._popper, 'scheduleUpdate')
     var spyDetectNavbar = sinon.spy(dropdown, '_detectNavbar')
     dropdown.update()
 
-    assert.ok(spyPopper.called)
-    assert.ok(spyDetectNavbar.called)
+    assert.true(spyPopper.called)
+    assert.true(spyDetectNavbar.called)
   })
 
   QUnit.test('should just detect navbar on update', function (assert) {
@@ -1163,8 +1163,8 @@ $(function () {
 
     dropdown.update()
 
-    assert.notOk(dropdown._popper)
-    assert.ok(spyDetectNavbar.called)
+    assert.strictEqual(dropdown._popper, null)
+    assert.true(spyDetectNavbar.called)
   })
 
   QUnit.test('should dispose dropdown with Popper', function (assert) {
@@ -1186,16 +1186,16 @@ $(function () {
     var dropdown = $dropdown.data('bs.dropdown')
     dropdown.toggle()
 
-    assert.ok(dropdown._popper)
-    assert.ok(dropdown._menu !== null)
-    assert.ok(dropdown._element !== null)
+    assert.notStrictEqual(dropdown._popper, null)
+    assert.notStrictEqual(dropdown._menu, null)
+    assert.notStrictEqual(dropdown._element, null)
     var spyDestroy = sinon.spy(dropdown._popper, 'destroy')
 
     dropdown.dispose()
 
-    assert.ok(spyDestroy.called)
-    assert.ok(dropdown._menu === null)
-    assert.ok(dropdown._element === null)
+    assert.true(spyDestroy.called)
+    assert.strictEqual(dropdown._menu, null)
+    assert.strictEqual(dropdown._element, null)
   })
 
   QUnit.test('should dispose dropdown', function (assert) {
@@ -1216,18 +1216,18 @@ $(function () {
 
     var dropdown = $dropdown.data('bs.dropdown')
 
-    assert.notOk(dropdown._popper)
-    assert.ok(dropdown._menu !== null)
-    assert.ok(dropdown._element !== null)
+    assert.strictEqual(dropdown._popper, null)
+    assert.notStrictEqual(dropdown._menu, null)
+    assert.notStrictEqual(dropdown._element, null)
 
     dropdown.dispose()
 
-    assert.ok(dropdown._menu === null)
-    assert.ok(dropdown._element === null)
+    assert.strictEqual(dropdown._menu, null)
+    assert.strictEqual(dropdown._element, null)
   })
 
   QUnit.test('should show dropdown', function (assert) {
-    assert.expect(2)
+    assert.expect(3)
 
     var dropdownHTML =
       '<div class="dropdown">' +
@@ -1248,10 +1248,11 @@ $(function () {
     $dropdown
       .parent('.dropdown')
       .on('show.bs.dropdown', function () {
+        assert.strictEqual(dropdown._popper, null)
         assert.ok(true, 'show was fired')
       })
       .on('shown.bs.dropdown', function () {
-        assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
+        assert.true($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
         done()
       })
 
@@ -1284,7 +1285,7 @@ $(function () {
         assert.ok(true, 'hide was fired')
       })
       .on('hidden.bs.dropdown', function () {
-        assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is hidden')
+        assert.false($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is hidden')
         done()
       })
 
@@ -1311,7 +1312,7 @@ $(function () {
     $dropdown.trigger('click')
     dropdown.show()
 
-    assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is still shown')
+    assert.true($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is still shown')
   })
 
   QUnit.test('should not show dropdown', function (assert) {
@@ -1332,40 +1333,7 @@ $(function () {
 
     var dropdown = $dropdown.data('bs.dropdown')
     dropdown.hide()
-    assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is still hidden')
-  })
-
-  QUnit.test('should show dropdown', function (assert) {
-    assert.expect(3)
-
-    var dropdownHTML =
-      '<div class="dropdown">' +
-      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
-      '  <div class="dropdown-menu">' +
-      '    <a class="dropdown-item" href="#">Another link</a>' +
-      '  </div>' +
-      '</div>'
-
-    var $dropdown = $(dropdownHTML)
-      .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
-      .bootstrapDropdown()
-
-    var dropdown = $dropdown.data('bs.dropdown')
-    var done = assert.async()
-
-    $dropdown
-      .parent('.dropdown')
-      .on('show.bs.dropdown', function () {
-        assert.ok(dropdown._popper === null)
-        assert.ok(true, 'show was fired')
-      })
-      .on('shown.bs.dropdown', function () {
-        assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
-        done()
-      })
-
-    dropdown.show()
+    assert.false($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is still hidden')
   })
 
   QUnit.test('should prevent default event on show method call', function (assert) {
@@ -1395,7 +1363,7 @@ $(function () {
       })
 
     dropdown.show()
-    assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is hidden')
+    assert.false($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is hidden')
   })
 
   QUnit.test('should prevent default event on hide method call', function (assert) {
@@ -1426,7 +1394,7 @@ $(function () {
       })
 
     dropdown.hide()
-    assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
+    assert.true($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
   })
 
   QUnit.test('should not open dropdown via show method if target is disabled via attribute', function (assert) {
@@ -1441,7 +1409,7 @@ $(function () {
     $(dropdownHTML).appendTo('#qunit-fixture')
     var $dropdown = $('#qunit-fixture').find('[data-toggle="dropdown"]').bootstrapDropdown()
     $dropdown.show()
-    assert.ok(!$dropdown.parent('.dropdown').hasClass('show'))
+    assert.false($dropdown.parent('.dropdown').hasClass('show'))
   })
 
   QUnit.test('should not open dropdown via show method if target is disabled via class', function (assert) {
@@ -1457,7 +1425,7 @@ $(function () {
     $(dropdownHTML).appendTo('#qunit-fixture')
     var $dropdown = $('#qunit-fixture').find('[data-toggle="dropdown"]').bootstrapDropdown()
     $dropdown.show()
-    assert.ok(!$dropdown.parent('.dropdown').hasClass('show'))
+    assert.false($dropdown.parent('.dropdown').hasClass('show'))
   })
 
   QUnit.test('should not hide dropdown via hide method if target is disabled via attribute', function (assert) {
@@ -1472,7 +1440,7 @@ $(function () {
     $(dropdownHTML).appendTo('#qunit-fixture')
     var $dropdown = $('#qunit-fixture').find('[data-toggle="dropdown"]').bootstrapDropdown()
     $dropdown.hide()
-    assert.ok($dropdown.parent('.dropdown').hasClass('show'))
+    assert.true($dropdown.parent('.dropdown').hasClass('show'))
   })
 
   QUnit.test('should not hide dropdown via hide method if target is disabled via class', function (assert) {
@@ -1488,7 +1456,7 @@ $(function () {
     $(dropdownHTML).appendTo('#qunit-fixture')
     var $dropdown = $('#qunit-fixture').find('[data-toggle="dropdown"]').bootstrapDropdown()
     $dropdown.hide()
-    assert.ok($dropdown.parent('.dropdown').hasClass('show'))
+    assert.true($dropdown.parent('.dropdown').hasClass('show'))
   })
 
   QUnit.test('should create offset modifier correctly when offset option is a function', function (assert) {
@@ -1516,8 +1484,8 @@ $(function () {
     var dropdown = $dropdown.data('bs.dropdown')
     var offset = dropdown._getOffset()
 
-    assert.ok(typeof offset.offset === 'undefined')
-    assert.ok(typeof offset.fn === 'function')
+    assert.strictEqual(typeof offset.offset, 'undefined')
+    assert.strictEqual(typeof offset.fn, 'function')
   })
 
   QUnit.test('should create offset modifier correctly when offset option is not a function', function (assert) {
@@ -1543,7 +1511,7 @@ $(function () {
     var offset = dropdown._getOffset()
 
     assert.strictEqual(offset.offset, myOffset)
-    assert.ok(typeof offset.fn === 'undefined')
+    assert.strictEqual(typeof offset.fn, 'undefined')
   })
 
   QUnit.test('should allow to pass config to Popper with `popperConfig`', function (assert) {
@@ -1602,14 +1570,14 @@ $(function () {
     var spyPopper
 
     $firstDropdownEl.one('shown.bs.dropdown', function () {
-      assert.strictEqual($firstDropdownEl.hasClass('show'), true)
+      assert.true($firstDropdownEl.hasClass('show'))
       spyPopper = sinon.spy(dropdown1._popper, 'destroy')
       dropdown2.toggle()
     })
 
     $secondDropdownEl.one('shown.bs.dropdown', function () {
-      assert.strictEqual($secondDropdownEl.hasClass('show'), true)
-      assert.ok(spyPopper.called)
+      assert.true($secondDropdownEl.hasClass('show'))
+      assert.true(spyPopper.called)
       done()
     })
 
@@ -1643,7 +1611,7 @@ $(function () {
     })
 
     $dropdownEl.one('hidden.bs.dropdown', function () {
-      assert.ok(spyPopper.called)
+      assert.true(spyPopper.called)
       done()
     })
 
@@ -1682,9 +1650,9 @@ $(function () {
         which: 40
       }))
 
-      assert.strictEqual($(document.activeElement).hasClass('d-none'), false, '.d-none not focused')
-      assert.strictEqual($(document.activeElement).css('display') === 'none', false, '"display: none" not focused')
-      assert.strictEqual(document.activeElement.style.visibility === 'hidden', false, '"visibility: hidden" not focused')
+      assert.false($(document.activeElement).hasClass('d-none'), '.d-none not focused')
+      assert.notStrictEqual($(document.activeElement).css('display'), 'none', '"display: none" not focused')
+      assert.notStrictEqual(document.activeElement.style.visibility, 'hidden', '"visibility: hidden" not focused')
       done()
     })
 

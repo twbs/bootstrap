@@ -9,11 +9,21 @@
 
 'use strict'
 
-const fs = require('fs')
+const fs = require('fs').promises
 const path = require('path')
-const sh = require('shelljs')
+const globby = require('globby')
 
-sh.config.fatal = true
+const VERBOSE = process.argv.includes('--verbose')
+const DRY_RUN = process.argv.includes('--dry') || process.argv.includes('--dry-run')
+
+// These are the filetypes we only care about replacing the version
+const GLOB = [
+  '**/*.{css,html,js,json,md,scss,txt,yml}'
+]
+const GLOBBY_OPTIONS = {
+  cwd: path.join(__dirname, '..'),
+  gitignore: true
+}
 
 // Blame TC39... https://github.com/benjamingr/RegExp.escape/issues/37
 function regExpQuote(string) {
@@ -24,87 +34,48 @@ function regExpQuoteReplacement(string) {
   return string.replace(/\$/g, '$$')
 }
 
-const DRY_RUN = false
+async function replaceRecursively(file, oldVersion, newVersion) {
+  const originalString = await fs.readFile(file, 'utf8')
+  const newString = originalString.replace(
+    new RegExp(regExpQuote(oldVersion), 'g'), regExpQuoteReplacement(newVersion)
+  )
 
-function walkAsync(directory, excludedDirectories, fileCallback, errback) {
-  if (excludedDirectories.has(path.parse(directory).base)) {
+  // No need to move any further if the strings are identical
+  if (originalString === newString) {
     return
   }
 
-  fs.readdir(directory, (err, names) => {
-    if (err) {
-      errback(err)
-      return
-    }
-
-    names.forEach(name => {
-      const filepath = path.join(directory, name)
-      fs.lstat(filepath, (err, stats) => {
-        if (err) {
-          process.nextTick(errback, err)
-          return
-        }
-
-        if (stats.isDirectory()) {
-          process.nextTick(walkAsync, filepath, excludedDirectories, fileCallback, errback)
-        } else if (stats.isFile()) {
-          process.nextTick(fileCallback, filepath)
-        }
-      })
-    })
-  })
-}
-
-function replaceRecursively(directory, excludedDirectories, allowedExtensions, original, replacement) {
-  original = new RegExp(regExpQuote(original), 'g')
-  replacement = regExpQuoteReplacement(replacement)
-  const updateFile = DRY_RUN ? filepath => {
-    if (allowedExtensions.has(path.parse(filepath).ext)) {
-      console.log(`FILE: ${filepath}`)
-    } else {
-      console.log(`EXCLUDED:${filepath}`)
-    }
-  } : filepath => {
-    if (allowedExtensions.has(path.parse(filepath).ext)) {
-      sh.sed('-i', original, replacement, filepath)
-    }
+  if (VERBOSE) {
+    console.log(`FILE: ${file}`)
   }
 
-  walkAsync(directory, excludedDirectories, updateFile, err => {
-    console.error('ERROR while traversing directory!:')
-    console.error(err)
-    process.exit(1)
-  })
+  if (DRY_RUN) {
+    return
+  }
+
+  await fs.writeFile(file, newString, 'utf8')
 }
 
-function main(args) {
-  if (args.length !== 2) {
-    console.error('USAGE: change-version old_version new_version')
+async function main(args) {
+  const [oldVersion, newVersion] = args
+
+  if (!oldVersion || !newVersion) {
+    console.error('USAGE: change-version old_version new_version [--verbose] [--dry[-run]]')
     console.error('Got arguments:', args)
     process.exit(1)
   }
 
-  const oldVersion = args[0]
-  const newVersion = args[1]
-  const EXCLUDED_DIRS = new Set([
-    '.git',
-    '_gh_pages',
-    'node_modules',
-    'vendor'
-  ])
-  const INCLUDED_EXTENSIONS = new Set([
-    // This extension whitelist is how we avoid modifying binary files
-    '',
-    '.css',
-    '.html',
-    '.js',
-    '.json',
-    '.md',
-    '.scss',
-    '.txt',
-    '.yml'
-  ])
-  replaceRecursively('.', EXCLUDED_DIRS, INCLUDED_EXTENSIONS, oldVersion, newVersion)
+  // Strip any leading `v` from arguments because otherwise we will end up with duplicate `v`s
+  [oldVersion, newVersion].map(arg => arg.startsWith('v') ? arg.slice(1) : arg)
+
+  try {
+    const files = await globby(GLOB, GLOBBY_OPTIONS)
+
+    await Promise.all(files.map(file => replaceRecursively(file, oldVersion, newVersion)))
+  } catch (error) {
+    console.error(error)
+    process.exit(1)
+  }
 }
 
 main(process.argv.slice(2))

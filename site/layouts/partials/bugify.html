@@ -1,12 +1,8 @@
-{{- $words := (split . " ") -}}
+{{- $words := split . " " -}}
 
 {{- range $word := $words -}}
-  {{- if (strings.Contains $word "#") -}}
-    {{- $separator := false -}}
-
-    {{- if (strings.Contains $word ",") -}}
-      {{- $separator = true -}}
-    {{- end -}}
+  {{- if (in $word "#") -}}
+    {{- $has_separator := cond (in $word ",") true false -}}
 
     {{- $data := split $word "#" -}}
     {{- $bug_cat := replace (index $data 0) "\n" "" -}}
@@ -32,7 +28,7 @@
     {{- else if (eq $bug_cat "Normalize") -}}
       <a href="https://github.com/necolas/normalize.css/issues/{{ $bug_id }}">Normalize #{{ $bug_id }}</a>
     {{- end -}}
-    {{- if (eq $separator true) }}, {{ end -}}
+    {{- if $has_separator }}, {{ end -}}
 
   {{- else -}}
     {{- $word -}}

@@ -49,23 +49,27 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 // Custom.scss
 // Option A: Include all of Bootstrap
 
+// Include any default variable overrides here (though functions won't be available)
+
 @import "../node_modules/bootstrap/scss/bootstrap";
 
-// Add custom code after this
+// Then add additional custom code here
 ```
 
 ```scss
 // Custom.scss
 // Option B: Include parts of Bootstrap
 
-// Required
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "../node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+
+// 3. Include remainder of required Bootstrap stylesheets
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/mixins";
 
-// Include custom variable default overrides here
-
-// Optional
+// 4. Include any optional Bootstrap components as you like
 @import "../node_modules/bootstrap/scss/reboot";
 @import "../node_modules/bootstrap/scss/type";
 @import "../node_modules/bootstrap/scss/images";
@@ -86,18 +90,17 @@ Variable overrides must come after our functions, variables, and mixins are impo
 Here's an example that changes the `background-color` and `color` for the `<body>` when importing and compiling Bootstrap via npm:
 
 ```scss
-// Required
 @import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
 
-// Your variable overrides
+// Default variable overrides
 $body-bg: #000;
 $body-color: #111;
 
-// Bootstrap and its default variables
+// Required
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
 
-// Optional
+// Optional Bootstrap components here
 @import "../node_modules/bootstrap/scss/root";
 @import "../node_modules/bootstrap/scss/reboot";
 @import "../node_modules/bootstrap/scss/type";
@@ -304,7 +307,7 @@ You can find and customize these variables for key global options in Bootstrap's
 | `$enable-print-styles`                       | `true` (default) or `false`        | Enables styles for optimizing printing. |
 | `$enable-responsive-font-sizes`              | `true` or `false` (default)        | Enables [responsive font sizes]({{< docsref "/content/typography#responsive-font-sizes" >}}). |
 | `$enable-validation-icons`                   | `true` (default) or `false`        | Enables `background-image` icons within textual inputs and some custom forms for validation states. |
-| `$enable-deprecation-messages`               | `true` or `false` (default)        | Set to `true` to show warnings when using any of the deprecated mixins and functions that are planned to be removed in `v5`. |
+| `$enable-deprecation-messages`               | `true` (default) or `false`        | Set to `false` to hide warnings when using any of the deprecated mixins and functions that are planned to be removed in `v5`. |
 
 ## Color
 

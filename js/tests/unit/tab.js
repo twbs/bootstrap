@@ -40,7 +40,7 @@ $(function () {
     assert.expect(2)
     var $el = $('<div/>')
     var $tab = $el.bootstrapTab()
-    assert.ok($tab instanceof $, 'returns jquery collection')
+    assert.true($tab instanceof $, 'returns jquery collection')
     assert.strictEqual($tab[0], $el[0], 'collection contains element')
   })
 
@@ -60,7 +60,7 @@ $(function () {
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
-  QUnit.test('should activate element by tab id', function (assert) {
+  QUnit.test('should activate element by tab id (.nav-pills)', function (assert) {
     assert.expect(2)
     var pillsHTML = '<ul class="nav nav-pills">' +
         '<li><a href="#home">Home</a></li>' +
@@ -321,8 +321,8 @@ $(function () {
     var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
 
     $tabs.find('li:last-child a').trigger('click')
-    assert.notOk($tabs.find('li:first-child a').hasClass('active'))
-    assert.ok($tabs.find('li:last-child a').hasClass('active'))
+    assert.false($tabs.find('li:first-child a').hasClass('active'))
+    assert.true($tabs.find('li:last-child a').hasClass('active'))
   })
 
   QUnit.test('selected tab should deactivate previous selected link in dropdown', function (assert) {
@@ -340,9 +340,31 @@ $(function () {
     var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
 
     $tabs.find('li:first-child a').trigger('click')
-    assert.ok($tabs.find('li:first-child a').hasClass('active'))
-    assert.notOk($tabs.find('li:last-child a').hasClass('active'))
-    assert.notOk($tabs.find('li:last-child .dropdown-menu a:first-child').hasClass('active'))
+    assert.true($tabs.find('li:first-child a').hasClass('active'))
+    assert.false($tabs.find('li:last-child a').hasClass('active'))
+    assert.false($tabs.find('li:last-child .dropdown-menu a:first-child').hasClass('active'))
+  })
+
+  QUnit.test('should support li > .dropdown-item', function (assert) {
+    assert.expect(2)
+    var tabsHTML = [
+      '<ul class="nav nav-tabs">',
+      '  <li class="nav-item"><a class="nav-link active" href="#home" data-toggle="tab">Home</a></li>',
+      '  <li class="nav-item"><a class="nav-link" href="#profile" data-toggle="tab">Profile</a></li>',
+      '  <li class="nav-item dropdown">',
+      '    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>',
+      '    <ul class="dropdown-menu">',
+      '      <li><a class="dropdown-item" href="#dropdown1" id="dropdown1-tab" data-toggle="tab">@fat</a></li>',
+      '      <li><a class="dropdown-item" href="#dropdown2" id="dropdown2-tab" data-toggle="tab">@mdo</a></li>',
+      '    </ul>',
+      '  </li>',
+      '</ul>'
+    ].join('')
+    var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
+
+    $tabs.find('.dropdown-item').trigger('click')
+    assert.true($tabs.find('.dropdown-item').hasClass('active'))
+    assert.false($tabs.find('.nav-link:not(.dropdown-toggle)').hasClass('active'))
   })
 
   QUnit.test('Nested tabs', function (assert) {
@@ -372,12 +394,12 @@ $(function () {
     $(tabsHTML).appendTo('#qunit-fixture')
 
     $('#tabNested2').on('shown.bs.tab', function () {
-      assert.ok($('#x-tab1').hasClass('active'))
+      assert.true($('#x-tab1').hasClass('active'))
       done()
     })
 
     $('#tab1').on('shown.bs.tab', function () {
-      assert.ok($('#x-tab1').hasClass('active'))
+      assert.true($('#x-tab1').hasClass('active'))
       $('#tabNested2').trigger($.Event('click'))
     })
       .trigger($.Event('click'))
@@ -398,15 +420,15 @@ $(function () {
     $(tabsHTML).appendTo('#qunit-fixture')
     $('#tab-profile')
       .on('shown.bs.tab', function () {
-        assert.ok($('#profile').hasClass('fade'))
-        assert.ok($('#profile').hasClass('show'))
+        assert.true($('#profile').hasClass('fade'))
+        assert.true($('#profile').hasClass('show'))
 
         $('#tab-home')
           .on('shown.bs.tab', function () {
-            assert.ok($('#profile').hasClass('fade'))
-            assert.notOk($('#profile').hasClass('show'))
-            assert.ok($('#home').hasClass('fade'))
-            assert.ok($('#home').hasClass('show'))
+            assert.true($('#profile').hasClass('fade'))
+            assert.false($('#profile').hasClass('show'))
+            assert.true($('#home').hasClass('fade'))
+            assert.true($('#home').hasClass('show'))
 
             done()
           })

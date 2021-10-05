@@ -4,29 +4,30 @@
 - name: Jacob Thornton
   user: fat
 
-- name: Chris Rebert
-  user: cvrebert
-
 - name: XhmikosR
   user: xhmikosr
+
+- name: GeoSot
+  user: geosot
+
+- name: Rohit Sharma
+  user: rohit2sharma95
+
+- name: alpadev
+  user: alpadev
+
+- name: Gaël Poupard
+  user: ffoodd
 
 - name: Patrick H. Lauke
   user: patrickhlauke
 
-- name: Gleb Mazovetskiy
-  user: glebm
+- name: Martijn Cuppens
+  user: martijncuppens
 
 - name: Johann-S
   user: johann-s
 
-- name: Andres Galante
-  user: andresgalante
-
-- name: Martijn Cuppens
-  user: martijncuppens
-
-- name: Shohei Yoshida
-  user: ysds
-
-- name: Gaël Poupard
-  user: ffoodd
+- name: Gleb Mazovetskiy
+  user: glebm
+  

@@ -40,7 +40,7 @@ $(function () {
     assert.expect(2)
     var $el = $('<div/>')
     var $collapse = $el.bootstrapCollapse()
-    assert.ok($collapse instanceof $, 'returns jquery collection')
+    assert.true($collapse instanceof $, 'returns jquery collection')
     assert.strictEqual($collapse[0], $el[0], 'collection contains element')
   })
 
@@ -50,8 +50,8 @@ $(function () {
     var $el = $('<div class="collapse"/>')
 
     $el.one('shown.bs.collapse', function () {
-      assert.ok($el.hasClass('show'), 'has class "show"')
-      assert.ok(!/height/i.test($el.attr('style')), 'has height reset')
+      assert.true($el.hasClass('show'), 'has class "show"')
+      assert.false(/height/i.test($el.attr('style')), 'has height reset')
       done()
     }).bootstrapCollapse('show')
   })
@@ -63,12 +63,12 @@ $(function () {
     var $el = $('<div class="collapse multi"/>').appendTo('#qunit-fixture')
     var $el2 = $('<div class="collapse multi"/>').appendTo('#qunit-fixture')
     $el.one('shown.bs.collapse', function () {
-      assert.ok($el.hasClass('show'), 'has class "show"')
-      assert.ok(!/height/i.test($el.attr('style')), 'has height reset')
+      assert.true($el.hasClass('show'), 'has class "show"')
+      assert.false(/height/i.test($el.attr('style')), 'has height reset')
     })
     $el2.one('shown.bs.collapse', function () {
-      assert.ok($el2.hasClass('show'), 'has class "show"')
-      assert.ok(!/height/i.test($el2.attr('style')), 'has height reset')
+      assert.true($el2.hasClass('show'), 'has class "show"')
+      assert.false(/height/i.test($el2.attr('style')), 'has height reset')
       done()
     })
     $target.trigger('click')
@@ -93,8 +93,8 @@ $(function () {
     var $el1 = $('#collapse1')
     var $el2 = $('#collapse2')
     $el1.one('shown.bs.collapse', function () {
-      assert.ok($el1.hasClass('show'))
-      assert.ok($el2.hasClass('show'))
+      assert.true($el1.hasClass('show'))
+      assert.true($el2.hasClass('show'))
       done()
     }).bootstrapCollapse('show')
   })
@@ -103,7 +103,7 @@ $(function () {
     assert.expect(1)
     var $el = $('<div class="collapse"/>').bootstrapCollapse('hide')
 
-    assert.ok(!$el.hasClass('show'), 'does not have class "show"')
+    assert.false($el.hasClass('show'), 'does not have class "show"')
   })
 
   QUnit.test('should not fire shown when show is prevented', function (assert) {
@@ -161,7 +161,7 @@ $(function () {
     $('<div id="test1"/>')
       .appendTo('#qunit-fixture')
       .on('shown.bs.collapse', function () {
-        assert.ok(!$target.hasClass('collapsed'), 'target does not have collapsed class')
+        assert.false($target.hasClass('collapsed'), 'target does not have collapsed class')
         done()
       })
 
@@ -177,7 +177,7 @@ $(function () {
     $('<div id="test1" class="show"/>')
       .appendTo('#qunit-fixture')
       .on('hidden.bs.collapse', function () {
-        assert.ok($target.hasClass('collapsed'), 'target has collapsed class')
+        assert.true($target.hasClass('collapsed'), 'target has collapsed class')
         done()
       })
 
@@ -194,8 +194,8 @@ $(function () {
     $('<div id="test1"/>')
       .appendTo('#qunit-fixture')
       .on('shown.bs.collapse', function () {
-        assert.ok(!$target.hasClass('collapsed'), 'target trigger does not have collapsed class')
-        assert.ok(!$alt.hasClass('collapsed'), 'alt trigger does not have collapsed class')
+        assert.false($target.hasClass('collapsed'), 'target trigger does not have collapsed class')
+        assert.false($alt.hasClass('collapsed'), 'alt trigger does not have collapsed class')
         done()
       })
 
@@ -212,14 +212,15 @@ $(function () {
     $('<div id="test1" class="show"/>')
       .appendTo('#qunit-fixture')
       .on('hidden.bs.collapse', function () {
-        assert.ok($target.hasClass('collapsed'), 'target has collapsed class')
-        assert.ok($alt.hasClass('collapsed'), 'alt trigger has collapsed class')
+        assert.true($target.hasClass('collapsed'), 'target has collapsed class')
+        assert.true($alt.hasClass('collapsed'), 'alt trigger has collapsed class')
         done()
       })
 
     $target.trigger('click')
   })
 
+  // eslint-disable-next-line qunit/resolve-async
   QUnit.test('should not close a collapse when initialized with "show" option if already shown', function (assert) {
     assert.expect(0)
     var done = assert.async()
@@ -235,6 +236,7 @@ $(function () {
     setTimeout(done, 0)
   })
 
+  // eslint-disable-next-line qunit/resolve-async
   QUnit.test('should open a collapse when initialized with "show" option if not already shown', function (assert) {
     assert.expect(1)
     var done = assert.async()
@@ -250,6 +252,7 @@ $(function () {
     setTimeout(done, 0)
   })
 
+  // eslint-disable-next-line qunit/resolve-async
   QUnit.test('should not show a collapse when initialized with "hide" option if already hidden', function (assert) {
     assert.expect(0)
     var done = assert.async()
@@ -264,6 +267,7 @@ $(function () {
     setTimeout(done, 0)
   })
 
+  // eslint-disable-next-line qunit/resolve-async
   QUnit.test('should hide a collapse when initialized with "hide" option if not already hidden', function (assert) {
     assert.expect(1)
     var done = assert.async()
@@ -302,9 +306,9 @@ $(function () {
     $('<div id="body3" data-parent="#accordion"/>')
       .appendTo($groups.eq(2))
       .on('shown.bs.collapse', function () {
-        assert.ok($target1.hasClass('collapsed'), 'inactive target 1 does have class "collapsed"')
-        assert.ok($target2.hasClass('collapsed'), 'inactive target 2 does have class "collapsed"')
-        assert.ok(!$target3.hasClass('collapsed'), 'active target 3 does not have class "collapsed"')
+        assert.true($target1.hasClass('collapsed'), 'inactive target 1 does have class "collapsed"')
+        assert.true($target2.hasClass('collapsed'), 'inactive target 2 does have class "collapsed"')
+        assert.false($target3.hasClass('collapsed'), 'active target 3 does not have class "collapsed"')
 
         done()
       })
@@ -336,9 +340,9 @@ $(function () {
     $('<div id="body3" data-parent=".accordion"/>')
       .appendTo($groups.eq(2))
       .on('shown.bs.collapse', function () {
-        assert.ok($target1.hasClass('collapsed'), 'inactive target 1 does have class "collapsed"')
-        assert.ok($target2.hasClass('collapsed'), 'inactive target 2 does have class "collapsed"')
-        assert.ok(!$target3.hasClass('collapsed'), 'active target 3 does not have class "collapsed"')
+        assert.true($target1.hasClass('collapsed'), 'inactive target 1 does have class "collapsed"')
+        assert.true($target2.hasClass('collapsed'), 'inactive target 2 does have class "collapsed"')
+        assert.false($target3.hasClass('collapsed'), 'active target 3 does not have class "collapsed"')
 
         done()
       })
@@ -479,7 +483,7 @@ $(function () {
     $target1.trigger('click')
 
     setTimeout(function () {
-      assert.ok(!showFired, 'show event did not fire')
+      assert.false(showFired, 'show event did not fire')
       done()
     }, 1)
   })
@@ -493,7 +497,7 @@ $(function () {
     $('<div id="test1" class="show"/>')
       .appendTo('#qunit-fixture')
       .on('hidden.bs.collapse', function () {
-        assert.ok($target.hasClass('collapsed'))
+        assert.true($target.hasClass('collapsed'))
         done()
       })
       .bootstrapCollapse('hide')
@@ -508,7 +512,7 @@ $(function () {
     $('<div id="test1"/>')
       .appendTo('#qunit-fixture')
       .on('shown.bs.collapse', function () {
-        assert.ok(!$target.hasClass('collapsed'))
+        assert.false($target.hasClass('collapsed'))
         done()
       })
       .bootstrapCollapse('show')
@@ -534,11 +538,11 @@ $(function () {
     var $collapseOne = $('#collapseOne')
     var $collapseTwo = $('#collapseTwo')
     $collapseOne.on('shown.bs.collapse', function () {
-      assert.ok($collapseOne.hasClass('show'), '#collapseOne is shown')
-      assert.ok(!$collapseTwo.hasClass('show'), '#collapseTwo is not shown')
+      assert.true($collapseOne.hasClass('show'), '#collapseOne is shown')
+      assert.false($collapseTwo.hasClass('show'), '#collapseTwo is not shown')
       $collapseTwo.on('shown.bs.collapse', function () {
-        assert.ok(!$collapseOne.hasClass('show'), '#collapseOne is not shown')
-        assert.ok($collapseTwo.hasClass('show'), '#collapseTwo is shown')
+        assert.false($collapseOne.hasClass('show'), '#collapseOne is not shown')
+        assert.true($collapseTwo.hasClass('show'), '#collapseTwo is shown')
         done()
       })
       $triggerTwo.trigger($.Event('click'))
@@ -572,11 +576,11 @@ $(function () {
     var $collapseOne = $('#collapseOne')
     var $collapseTwo = $('#collapseTwo')
     $collapseOne.on('shown.bs.collapse', function () {
-      assert.ok($collapseOne.hasClass('show'), '#collapseOne is shown')
-      assert.ok(!$collapseTwo.hasClass('show'), '#collapseTwo is not shown')
+      assert.true($collapseOne.hasClass('show'), '#collapseOne is shown')
+      assert.false($collapseTwo.hasClass('show'), '#collapseTwo is not shown')
       $collapseTwo.on('shown.bs.collapse', function () {
-        assert.ok(!$collapseOne.hasClass('show'), '#collapseOne is not shown')
-        assert.ok($collapseTwo.hasClass('show'), '#collapseTwo is shown')
+        assert.false($collapseOne.hasClass('show'), '#collapseOne is not shown')
+        assert.true($collapseTwo.hasClass('show'), '#collapseTwo is shown')
         done()
       })
       $triggerTwo.trigger($.Event('click'))
@@ -609,18 +613,18 @@ $(function () {
     }
 
     function firstTest() {
-      assert.ok($collapseOneOne.hasClass('show'), '#collapseOneOne is shown')
-      assert.ok($collapseOneTwo.hasClass('show'), '#collapseOneTwo is shown')
-      assert.ok(!$collapseTwoOne.hasClass('show'), '#collapseTwoOne is not shown')
-      assert.ok(!$collapseTwoTwo.hasClass('show'), '#collapseTwoTwo is not shown')
+      assert.true($collapseOneOne.hasClass('show'), '#collapseOneOne is shown')
+      assert.true($collapseOneTwo.hasClass('show'), '#collapseOneTwo is shown')
+      assert.false($collapseTwoOne.hasClass('show'), '#collapseTwoOne is not shown')
+      assert.false($collapseTwoTwo.hasClass('show'), '#collapseTwoTwo is not shown')
       $triggerTwo.trigger($.Event('click'))
     }
 
     function secondTest() {
-      assert.ok(!$collapseOneOne.hasClass('show'), '#collapseOneOne is not shown')
-      assert.ok(!$collapseOneTwo.hasClass('show'), '#collapseOneTwo is not shown')
-      assert.ok($collapseTwoOne.hasClass('show'), '#collapseTwoOne is shown')
-      assert.ok($collapseTwoTwo.hasClass('show'), '#collapseTwoTwo is shown')
+      assert.false($collapseOneOne.hasClass('show'), '#collapseOneOne is not shown')
+      assert.false($collapseOneTwo.hasClass('show'), '#collapseOneTwo is not shown')
+      assert.true($collapseTwoOne.hasClass('show'), '#collapseTwoOne is shown')
+      assert.true($collapseTwoTwo.hasClass('show'), '#collapseTwoTwo is shown')
       done()
     }
 
@@ -688,17 +692,17 @@ $(function () {
     var $nestedCollapseOne = $('#nestedCollapseOne')
 
     $collapseOne.one('shown.bs.collapse', function () {
-      assert.ok($collapseOne.hasClass('show'), '#collapseOne is shown')
-      assert.ok(!$collapseTwo.hasClass('show'), '#collapseTwo is not shown')
-      assert.ok(!$('#nestedCollapseOne').hasClass('show'), '#nestedCollapseOne is not shown')
+      assert.true($collapseOne.hasClass('show'), '#collapseOne is shown')
+      assert.false($collapseTwo.hasClass('show'), '#collapseTwo is not shown')
+      assert.false($('#nestedCollapseOne').hasClass('show'), '#nestedCollapseOne is not shown')
       $nestedCollapseOne.one('shown.bs.collapse', function () {
-        assert.ok($collapseOne.hasClass('show'), '#collapseOne is shown')
-        assert.ok(!$collapseTwo.hasClass('show'), '#collapseTwo is not shown')
-        assert.ok($nestedCollapseOne.hasClass('show'), '#nestedCollapseOne is shown')
+        assert.true($collapseOne.hasClass('show'), '#collapseOne is shown')
+        assert.false($collapseTwo.hasClass('show'), '#collapseTwo is not shown')
+        assert.true($nestedCollapseOne.hasClass('show'), '#nestedCollapseOne is shown')
         $collapseTwo.one('shown.bs.collapse', function () {
-          assert.ok(!$collapseOne.hasClass('show'), '#collapseOne is not shown')
-          assert.ok($collapseTwo.hasClass('show'), '#collapseTwo is shown')
-          assert.ok($nestedCollapseOne.hasClass('show'), '#nestedCollapseOne is shown')
+          assert.false($collapseOne.hasClass('show'), '#collapseOne is not shown')
+          assert.true($collapseTwo.hasClass('show'), '#collapseTwo is shown')
+          assert.true($nestedCollapseOne.hasClass('show'), '#nestedCollapseOne is shown')
           done()
         })
         $triggerTwo.trigger($.Event('click'))
@@ -716,9 +720,9 @@ $(function () {
     $('<div id="collapsediv1"/>')
       .appendTo('#qunit-fixture')
       .on('shown.bs.collapse', function () {
-        assert.ok($(this).hasClass('show'))
-        assert.ok($target.attr('aria-expanded') === 'true')
-        assert.ok($target.prop('checked'))
+        assert.true($(this).hasClass('show'))
+        assert.strictEqual($target.attr('aria-expanded'), 'true')
+        assert.true($target.prop('checked'))
         done()
       })
 
@@ -737,17 +741,17 @@ $(function () {
     var $target2 = $('<div id="test2" class="multi"/>').appendTo('#qunit-fixture')
 
     $target2.one('shown.bs.collapse', function () {
-      assert.ok(!$trigger1.hasClass('collapsed'), 'trigger1 does not have collapsed class')
-      assert.ok(!$trigger2.hasClass('collapsed'), 'trigger2 does not have collapsed class')
-      assert.ok(!$trigger3.hasClass('collapsed'), 'trigger3 does not have collapsed class')
+      assert.false($trigger1.hasClass('collapsed'), 'trigger1 does not have collapsed class')
+      assert.false($trigger2.hasClass('collapsed'), 'trigger2 does not have collapsed class')
+      assert.false($trigger3.hasClass('collapsed'), 'trigger3 does not have collapsed class')
       $target2.one('hidden.bs.collapse', function () {
-        assert.ok(!$trigger1.hasClass('collapsed'), 'trigger1 does not have collapsed class')
-        assert.ok($trigger2.hasClass('collapsed'), 'trigger2 has collapsed class')
-        assert.ok(!$trigger3.hasClass('collapsed'), 'trigger3 does not have collapsed class')
+        assert.false($trigger1.hasClass('collapsed'), 'trigger1 does not have collapsed class')
+        assert.true($trigger2.hasClass('collapsed'), 'trigger2 has collapsed class')
+        assert.false($trigger3.hasClass('collapsed'), 'trigger3 does not have collapsed class')
         $target1.one('hidden.bs.collapse', function () {
-          assert.ok($trigger1.hasClass('collapsed'), 'trigger1 has collapsed class')
-          assert.ok($trigger2.hasClass('collapsed'), 'trigger2 has collapsed class')
-          assert.ok($trigger3.hasClass('collapsed'), 'trigger3 has collapsed class')
+          assert.true($trigger1.hasClass('collapsed'), 'trigger1 has collapsed class')
+          assert.true($trigger2.hasClass('collapsed'), 'trigger2 has collapsed class')
+          assert.true($trigger3.hasClass('collapsed'), 'trigger3 has collapsed class')
           done()
         })
         $trigger1.trigger('click')
@@ -802,11 +806,11 @@ $(function () {
     $(htmlCollapse)
       .appendTo('#qunit-fixture')
       .on('shown.bs.collapse', function () {
-        assert.ok($target.prop('checked'), '$trigger is checked')
+        assert.true($target.prop('checked'), '$trigger is checked')
         var $testCheckbox = $('#testCheckbox')
         $testCheckbox.trigger($.Event('click'))
         setTimeout(function () {
-          assert.ok($testCheckbox.prop('checked'), '$testCheckbox is checked too')
+          assert.true($testCheckbox.prop('checked'), '$testCheckbox is checked too')
           done()
         }, 5)
       })
@@ -882,8 +886,8 @@ $(function () {
     })
 
     $collapse2.on('shown.bs.collapse', function () {
-      assert.ok($collapse2.hasClass('show'))
-      assert.ok(!$('#collapse1').hasClass('show'))
+      assert.true($collapse2.hasClass('show'))
+      assert.false($('#collapse1').hasClass('show'))
       done()
     })
 

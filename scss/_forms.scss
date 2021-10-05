@@ -30,12 +30,6 @@
     border: 0;
   }
 
-  // Remove select outline from select box in FF
-  &:-moz-focusring {
-    color: transparent;
-    text-shadow: 0 0 0 $input-color;
-  }
-
   // Customize the `:focus` state to imitate native WebKit styles.
   @include form-control-focus($ignore-warning: true);
 
@@ -69,6 +63,12 @@ input[type="month"] {
 }
 
 select.form-control {
+  // Remove select outline from select box in FF
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 $input-color;
+  }
+
   &:focus::-ms-value {
     // Suppress the nested default white text on blue background highlight given to
     // the selected option text when the (still closed) <select> receives focus
@@ -199,13 +199,13 @@ textarea.form-control {
 .form-row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -$form-grid-gutter-width / 2;
-  margin-left: -$form-grid-gutter-width / 2;
+  margin-right: -$form-grid-gutter-width * .5;
+  margin-left: -$form-grid-gutter-width * .5;
 
   > .col,
   > [class*="col-"] {
-    padding-right: $form-grid-gutter-width / 2;
-    padding-left: $form-grid-gutter-width / 2;
+    padding-right: $form-grid-gutter-width * .5;
+    padding-left: $form-grid-gutter-width * .5;
   }
 }
 

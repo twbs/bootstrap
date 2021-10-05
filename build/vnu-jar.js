@@ -9,10 +9,10 @@
 
 'use strict'
 
-const childProcess = require('child_process')
+const { execFile, spawn } = require('child_process')
 const vnu = require('vnu-jar')
 
-childProcess.exec('java -version', (error, stdout, stderr) => {
+execFile('java', ['-version'], (error, stdout, stderr) => {
   if (error) {
     console.error('Skipping vnu-jar test; Java is missing.')
     return
@@ -21,34 +21,29 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
   const is32bitJava = !/64-Bit/.test(stderr)
 
   // vnu-jar accepts multiple ignores joined with a `|`.
-  // Also note that the ignores are regular expressions.
+  // Also note that the ignores are string regular expressions.
   const ignores = [
     // "autocomplete" is included in <button> and checkboxes and radio <input>s due to
     // Firefox's non-standard autocomplete behavior - see https://bugzilla.mozilla.org/show_bug.cgi?id=654072
     'Attribute “autocomplete” is only allowed when the input type is.*',
     'Attribute “autocomplete” not allowed on element “button” at this point.',
-    // Markup used in Components → Forms → Layout → Form grid → Horizontal form is currently invalid,
-    // but used this way due to lack of support for flexbox layout on <fieldset> element in most browsers
-    'Element “legend” not allowed as child of element “div” in this context.*',
-    // Content → Reboot uses various date/time inputs as a visual example.
-    // Documentation does not rely on them being usable.
-    'The “date” input type is not supported in all browsers.*',
-    'The “time” input type is not supported in all browsers.*',
     // IE11 doesn't recognise <main> / give the element an implicit "main" landmark.
     // Explicit role="main" is redundant for other modern browsers, but still valid.
-    'The “main” role is unnecessary for element “main”.'
+    'The “main” role is unnecessary for element “main”.',
+    // Per https://www.w3.org/TR/html-aria/#docconformance having "aria-disabled" on a link is
+    // NOT RECOMMENDED, but it's still valid - we explain in the docs that it's not ideal,
+    // and offer more robust alternatives, but also need to show a less-than-ideal example
+    'An “aria-disabled” attribute whose value is “true” should not be specified on an “a” element that has an “href” attribute.'
   ].join('|')
 
   const args = [
     '-jar',
-    vnu,
+    `"${vnu}"`,
     '--asciiquotes',
     '--skip-non-html',
-    // Ignore the language code warnings
-    '--no-langdetect',
     '--Werror',
     `--filterpattern "${ignores}"`,
-    '_gh_pages/',
+    '_site/',
     'js/tests/'
   ]
 
@@ -57,7 +52,7 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
     args.splice(0, 0, '-Xss512k')
   }
 
-  return childProcess.spawn('java', args, {
+  return spawn('java', args, {
     shell: true,
     stdio: 'inherit'
   })

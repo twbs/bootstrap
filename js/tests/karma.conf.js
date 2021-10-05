@@ -28,7 +28,12 @@ const reporters = ['dots']
 const detectBrowsers = {
   usePhantomJS: false,
   postDetection(availableBrowser) {
-    if (process.env.CI === true || availableBrowser.includes('Chrome')) {
+    // On CI just use Chrome
+    if (process.env.CI === true) {
+      return ['ChromeHeadless']
+    }
+
+    if (availableBrowser.includes('Chrome')) {
       return ['ChromeHeadless']
     }
 
@@ -41,13 +46,6 @@ const detectBrowsers = {
     }
 
     throw new Error('Please install Chrome, Chromium or Firefox')
-  }
-}
-
-const customLaunchers = {
-  FirefoxHeadless: {
-    base: 'Firefox',
-    flags: ['-headless']
   }
 }
 
@@ -77,7 +75,6 @@ if (BUNDLE) {
     'karma-firefox-launcher',
     'karma-detect-browsers'
   )
-  conf.customLaunchers = customLaunchers
   conf.detectBrowsers = detectBrowsers
   files = [...files,
     JQUERY_FILE,
@@ -114,7 +111,6 @@ if (BUNDLE) {
     'js/coverage/dist/tooltip.js',
     // include all of our js/dist files except util.js, index.js and tooltip.js
     'js/coverage/dist/!(util|index|tooltip).js']
-  conf.customLaunchers = customLaunchers
   conf.detectBrowsers = detectBrowsers
   if (!USE_OLD_JQUERY) {
     plugins.push('karma-coverage-istanbul-reporter')

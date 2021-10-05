@@ -95,8 +95,11 @@
   align-items: center; // 2. vertically center contents
   justify-content: center; // 3. horizontally center contents
   width: $carousel-control-width;
+  padding: 0;
   color: $carousel-control-color;
   text-align: center;
+  background: none;
+  border: 0;
   opacity: $carousel-control-opacity;
   @include transition($carousel-control-transition);
 
@@ -186,9 +189,9 @@
 
 .carousel-caption {
   position: absolute;
-  right: (100% - $carousel-caption-width) / 2;
+  right: (100% - $carousel-caption-width) * .5;
   bottom: 20px;
-  left: (100% - $carousel-caption-width) / 2;
+  left: (100% - $carousel-caption-width) * .5;
   z-index: 10;
   padding-top: 20px;
   padding-bottom: 20px;

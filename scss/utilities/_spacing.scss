@@ -30,7 +30,7 @@
 
     // Negative margins (e.g., where `.mb-n1` is negative version of `.mb-1`)
     @each $size, $length in $spacers {
-      @if $size != 0 {
+      @if "#{$size}" != "0" {
         .m#{$infix}-n#{$size} { margin: -$length !important; }
         .mt#{$infix}-n#{$size},
         .my#{$infix}-n#{$size} {

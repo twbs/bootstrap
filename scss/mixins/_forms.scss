@@ -69,7 +69,7 @@
     // Align tooltip to form elements
     .form-row > .col > &,
     .form-row > [class*="col-"] > & {
-      left: $form-grid-gutter-width / 2;
+      left: $form-grid-gutter-width * .5;
     }
   }
 
@@ -85,7 +85,7 @@
       border-color: $color;
 
       @if $enable-validation-icons {
-        padding-right: $input-height-inner;
+        padding-right: $input-height-inner !important; // stylelint-disable-line declaration-no-important
         background-image: escape-svg($icon);
         background-repeat: no-repeat;
         background-position: right $input-height-inner-quarter center;
@@ -95,6 +95,16 @@
       &:focus {
         border-color: $color;
         box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+      }
+    }
+  }
+
+  // stylelint-disable-next-line selector-no-qualifying-type
+  select.form-control {
+    @include form-validation-state-selector($state) {
+      @if $enable-validation-icons {
+        padding-right: $input-padding-x * 4 !important; // stylelint-disable-line declaration-no-important
+        background-position: right $input-padding-x * 2 center;
       }
     }
   }
@@ -114,7 +124,7 @@
       border-color: $color;
 
       @if $enable-validation-icons {
-        padding-right: $custom-select-feedback-icon-padding-right;
+        padding-right: $custom-select-feedback-icon-padding-right !important; // stylelint-disable-line declaration-no-important
         background: $custom-select-background, $custom-select-bg escape-svg($icon) $custom-select-feedback-icon-position / $custom-select-feedback-icon-size no-repeat;
       }
 
