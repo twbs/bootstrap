@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.1): carousel.js
+ * Bootstrap (v5.1.2): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -304,9 +304,9 @@ class Carousel extends BaseComponent {
       }
     }
 
-    SelectorEngine.find(SELECTOR_ITEM_IMG, this._element).forEach(itemImg => {
+    for (const itemImg of SelectorEngine.find(SELECTOR_ITEM_IMG, this._element)) {
       EventHandler.on(itemImg, EVENT_DRAG_START, event => event.preventDefault())
-    })
+    }
 
     if (this._pointerEvent) {
       EventHandler.on(this._element, EVENT_POINTERDOWN, event => start(event))
@@ -366,10 +366,10 @@ class Carousel extends BaseComponent {
 
       const indicators = SelectorEngine.find(SELECTOR_INDICATOR, this._indicatorsElement)
 
-      for (let i = 0; i < indicators.length; i++) {
-        if (Number.parseInt(indicators[i].getAttribute('data-bs-slide-to'), 10) === this._getItemIndex(element)) {
-          indicators[i].classList.add(CLASS_NAME_ACTIVE)
-          indicators[i].setAttribute('aria-current', 'true')
+      for (const indicator of indicators) {
+        if (Number.parseInt(indicator.getAttribute('data-bs-slide-to'), 10) === this._getItemIndex(element)) {
+          indicator.classList.add(CLASS_NAME_ACTIVE)
+          indicator.setAttribute('aria-current', 'true')
           break
         }
       }
@@ -574,8 +574,8 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.da
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
 
-  for (let i = 0, len = carousels.length; i < len; i++) {
-    Carousel.carouselInterface(carousels[i], Carousel.getInstance(carousels[i]))
+  for (const carousel of carousels) {
+    Carousel.carouselInterface(carousel, Carousel.getInstance(carousel))
   }
 })
 

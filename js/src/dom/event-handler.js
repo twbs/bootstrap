@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.1): dom/event-handler.js
+ * Bootstrap (v5.1.2): dom/event-handler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -129,8 +129,8 @@ function bootstrapDelegationHandler(element, selector, fn) {
 function findHandler(events, handler, delegationSelector = null) {
   const uidEventList = Object.keys(events)
 
-  for (let i = 0, len = uidEventList.length; i < len; i++) {
-    const event = events[uidEventList[i]]
+  for (const uidEvent of uidEventList) {
+    const event = events[uidEvent]
 
     if (event.originalHandler === handler && event.delegationSelector === delegationSelector) {
       return event
@@ -221,13 +221,13 @@ function removeHandler(element, events, typeEvent, handler, delegationSelector) 
 function removeNamespacedHandlers(element, events, typeEvent, namespace) {
   const storeElementEvent = events[typeEvent] || {}
 
-  Object.keys(storeElementEvent).forEach(handlerKey => {
+  for (const handlerKey of Object.keys(storeElementEvent)) {
     if (handlerKey.includes(namespace)) {
       const event = storeElementEvent[handlerKey]
 
       removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector)
     }
-  })
+  }
 }
 
 function getTypeEvent(event) {
@@ -266,13 +266,13 @@ const EventHandler = {
     }
 
     if (isNamespace) {
-      Object.keys(events).forEach(elementEvent => {
+      for (const elementEvent of Object.keys(events)) {
         removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1))
-      })
+      }
     }
 
     const storeElementEvent = events[typeEvent] || {}
-    Object.keys(storeElementEvent).forEach(keyHandlers => {
+    for (const keyHandlers of Object.keys(storeElementEvent)) {
       const handlerKey = keyHandlers.replace(stripUidRegex, '')
 
       if (!inNamespace || originalTypeEvent.includes(handlerKey)) {
@@ -280,7 +280,7 @@ const EventHandler = {
 
         removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector)
       }
-    })
+    }
   },
 
   trigger(element, event, args) {
@@ -320,13 +320,13 @@ const EventHandler = {
 
     // merge custom information in our event
     if (typeof args !== 'undefined') {
-      Object.keys(args).forEach(key => {
+      for (const key of Object.keys(args)) {
         Object.defineProperty(evt, key, {
           get() {
             return args[key]
           }
         })
-      })
+      }
     }
 
     if (defaultPrevented) {

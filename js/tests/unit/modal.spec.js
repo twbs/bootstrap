@@ -17,10 +17,9 @@ describe('Modal', () => {
     clearBodyAndDocument()
     document.body.classList.remove('modal-open')
 
-    document.querySelectorAll('.modal-backdrop')
-      .forEach(backdrop => {
-        backdrop.remove()
-      })
+    for (const backdrop of document.querySelectorAll('.modal-backdrop')) {
+      backdrop.remove()
+    }
   })
 
   beforeEach(() => {

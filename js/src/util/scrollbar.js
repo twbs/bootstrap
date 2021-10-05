@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.1): util/scrollBar.js
+ * Bootstrap (v5.1.2): util/scrollBar.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -85,7 +85,9 @@ class ScrollBarHelper {
     if (isElement(selector)) {
       callBack(selector)
     } else {
-      SelectorEngine.find(selector, this._element).forEach(callBack)
+      for (const sel of SelectorEngine.find(selector, this._element)) {
+        callBack(sel)
+      }
     }
   }
 

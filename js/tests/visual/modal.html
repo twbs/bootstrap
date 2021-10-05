@@ -220,15 +220,14 @@
         }
       }
 
-      [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-        .forEach(function (popover) {
-          new Popover(popover)
-        })
-
-      var tooltipList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-      tooltipList.forEach(function (tooltip) {
-        new Tooltip(tooltip)
-      })
+      var popoverElements = document.querySelectorAll('[data-bs-toggle="popover"]')
+      for (const popoverEl of popoverElements) {
+        new Popover(popoverEl)
+      }
+      var tooltipElements = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      for (const tooltipEl of tooltipElements) {
+        new Tooltip(tooltipEl)
+      }
 
       var tallToggle = document.getElementById('tall-toggle')
       var tall = document.getElementById('tall')

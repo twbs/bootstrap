@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.1): util/sanitizer.js
+ * Bootstrap (v5.1.2): util/sanitizer.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -46,8 +46,8 @@ const allowedAttribute = (attribute, allowedAttributeList) => {
   const regExp = allowedAttributeList.filter(attributeRegex => attributeRegex instanceof RegExp)
 
   // Check if a regular expression validates the attribute.
-  for (let i = 0, len = regExp.length; i < len; i++) {
-    if (regExp[i].test(attributeName)) {
+  for (const element of regExp) {
+    if (element.test(attributeName)) {
       return true
     }
   }
@@ -102,8 +102,7 @@ export function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
   const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html')
   const elements = [].concat(...createdDocument.body.querySelectorAll('*'))
 
-  for (let i = 0, len = elements.length; i < len; i++) {
-    const element = elements[i]
+  for (const element of elements) {
     const elementName = element.nodeName.toLowerCase()
 
     if (!Object.keys(allowList).includes(elementName)) {
@@ -115,11 +114,11 @@ export function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
     const attributeList = [].concat(...element.attributes)
     const allowedAttributes = [].concat(allowList['*'] || [], allowList[elementName] || [])
 
-    attributeList.forEach(attribute => {
+    for (const attribute of attributeList) {
       if (!allowedAttribute(attribute, allowedAttributes)) {
         element.removeAttribute(attribute.nodeName)
       }
-    })
+    }
   }
 
   return createdDocument.body.innerHTML

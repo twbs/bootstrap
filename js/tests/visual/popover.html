@@ -40,10 +40,10 @@
     <script src="../../dist/tooltip.js"></script>
     <script src="../../dist/popover.js"></script>
     <script>
-      [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-        .forEach(function (popover) {
-          new Popover(popover)
-        })
+      var popoverElements = document.querySelectorAll('[data-bs-toggle="popover"]')
+      for (const popoverEl of popoverElements) {
+        new Popover(popoverEl)
+      }
     </script>
   </body>
 </html>
