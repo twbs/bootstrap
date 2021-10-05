@@ -1,0 +1,52 @@
+{
+  "JSON" : {
+    "ver" : "1.0.0",
+    "nam" : {
+      "fn" : "Caprio",
+      "fnt" : "CAPRIO",
+      "gn" : "Teresa",
+      "gnt" : "TERESA"
+    },
+    "dob" : "1977-06-16",
+    "t" : [ {
+      "tg" : "840539006",
+      "tt" : "LP6464-4",
+      "nm" : "Roche LightCycler qPCR",
+      "ma" : "1232",
+      "sc" : "2021-05-03T10:27:15Z",
+      "dr" : "2021-05-11T12:27:15Z",
+      "tr" : "260415000",
+      "tc" : "Policlinico Umberto I",
+      "co" : "IT",
+      "is" : "IT",
+      "ci" : "01IT053059F7676042D9BEE9F874C4901F9B#3"
+    } ]
+  },
+  "CBOR" : "",
+  "COSE" : "",
+  "COMPRESSED" : "",
+  "BASE45" : "",
+  "PREFIX" : "",
+  "2DCODE" : "",
+  "TESTCTX" : {
+    "VERSION" : 1,
+    "SCHEMA" : "1.0.0",
+    "CERTIFICATE" : "",
+    "VALIDATIONCLOCK" : "2021-05-21T12:33:46.293+02:00",
+    "DESCRIPTION" : "VALID: IT: ANTIGEN Test"
+  },
+  "EXPECTEDRESULTS" : {
+    "EXPECTEDVALIDOBJECT" : true,
+    "EXPECTEDSCHEMAVALIDATION" : true,
+    "EXPECTEDENCODE" : true,
+    "EXPECTEDDECODE" : true,
+    "EXPECTEDVERIFY" : true,
+    "EXPECTEDCOMPRESSION" : true,
+    "EXPECTEDKEYUSAGE" : true,
+    "EXPECTEDUNPREFIX" : true,
+    "EXPECTEDVALIDJSON" : true,
+    "EXPECTEDB45DECODE" : true,
+    "EXPECTEDPICTUREDECODE" : true,
+    "EXPECTEDEXPIRATIONCHECK" : true
+  }
+}
