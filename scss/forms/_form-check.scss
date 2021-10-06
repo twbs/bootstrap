@@ -118,6 +118,7 @@
     &.switch-off-#{$state} {
       .form-check-input {
         background-color: $value;
+        background-image: escape-svg($form-switch-bg-off-image);
         border-color: $value;
       }
     }
