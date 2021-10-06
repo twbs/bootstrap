@@ -153,23 +153,23 @@ and another when they are not checked.
 </div>
 <div class="form-check form-switch switch-off-secondary">
   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchOffCheckSecondary">
-  <label class="form-check-label" for="flexSwitchOffCheckSecondary">Check switch with secondary color</label>
+  <label class="form-check-label" for="flexSwitchOffCheckSecondary">Check switch off with secondary color</label>
 </div>
 <div class="form-check form-switch switch-off-success">
   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchOffCheckSuccess">
-  <label class="form-check-label" for="flexSwitchOffCheckSuccess">Check switch with success color</label>
+  <label class="form-check-label" for="flexSwitchOffCheckSuccess">Check switch off with success color</label>
 </div>
 <div class="form-check form-switch switch-off-danger">
   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchOffCheckDanger">
-  <label class="form-check-label" for="flexSwitchOffCheckDanger">Check switch with danger color</label>
+  <label class="form-check-label" for="flexSwitchOffCheckDanger">Check switch off with danger color</label>
 </div>
 <div class="form-check form-switch switch-off-warning">
   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchOffCheckWarning">
-  <label class="form-check-label" for="flexSwitchOffCheckWarning">Check switch with warning color</label>
+  <label class="form-check-label" for="flexSwitchOffCheckWarning">Check switch off with warning color</label>
 </div>
 <div class="form-check form-switch switch-off-info">
   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchOffCheckInfo">
-  <label class="form-check-label" for="flexSwitchOffCheckInfo">Check switch with info color</label>
+  <label class="form-check-label" for="flexSwitchOffCheckInfo">Check switch off with info color</label>
 </div>
 <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" checked disabled>
