@@ -345,6 +345,7 @@ $enable-transitions:          true !default;
 $enable-reduced-motion:       true !default;
 $enable-smooth-scroll:        true !default;
 $enable-grid-classes:         true !default;
+$enable-container-classes:    true !default;
 $enable-cssgrid:              false !default;
 $enable-button-pointers:      true !default;
 $enable-rfs:                  true !default;
@@ -660,6 +661,8 @@ $blockquote-footer-font-size: $small-font-size !default;
 
 $hr-margin-y:                 $spacer !default;
 $hr-color:                    inherit !default;
+$hr-bg-color:                 currentColor !default;
+$hr-border-width:             0 !default;
 $hr-height:                   $border-width !default;
 $hr-opacity:                  .25 !default;
 

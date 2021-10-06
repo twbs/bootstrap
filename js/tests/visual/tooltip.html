@@ -92,10 +92,10 @@
         })
       }
 
-      [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        .forEach(function (tooltip) {
-          new Tooltip(tooltip)
-        })
+      var tooltipElements = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      for (const tooltipEl of tooltipElements) {
+        new Tooltip(tooltipEl)
+      }
 
       var tooltipElement = document.getElementById('tooltipElement')
       var tooltipElementInstance = new Tooltip(tooltipElement, {

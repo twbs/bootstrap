@@ -133,7 +133,7 @@ To add accordion-like group management to a collapsible area, add the data attri
 Enable manually with:
 
 ```js
-var collapseElementList = [].slice.call(document.querySelectorAll('.collapse'))
+var collapseElementList = Array.prototype.slice.call(document.querySelectorAll('.collapse'))
 var collapseList = collapseElementList.map(function (collapseEl) {
   return new bootstrap.Collapse(collapseEl)
 })

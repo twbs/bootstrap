@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.1): modal.js
+ * Bootstrap (v5.1.2): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -175,8 +175,9 @@ class Modal extends BaseComponent {
   }
 
   dispose() {
-    [window, this._dialog]
-      .forEach(htmlElement => EventHandler.off(htmlElement, EVENT_KEY))
+    for (const htmlElement of [window, this._dialog]) {
+      EventHandler.off(htmlElement, EVENT_KEY)
+    }
 
     this._backdrop.dispose()
     this._focustrap.deactivate()
