@@ -107,6 +107,22 @@
 .form-switch {
   padding-left: $form-switch-padding-start;
 
+  @each $state, $value in $theme-colors {
+    &.switch-#{$state} {
+      .form-check-input:checked {
+        background-color: $value;
+        border-color: $value;
+      }
+    }
+
+    &.switch-off-#{$state} {
+      .form-check-input {
+        background-color: $value;
+        border-color: $value;
+      }
+    }
+  }
+
   .form-check-input {
     width: $form-switch-width;
     margin-left: $form-switch-padding-start * -1;
