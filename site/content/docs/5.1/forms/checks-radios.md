@@ -102,7 +102,13 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 ## Switches
 
-A switch has the markup of a custom checkbox but uses the `.form-switch` class to render a toggle switch. Consider using `role="switch"` to more accurately convey the nature of the control to assistive technologies that support this role. In older assistive technologies, it will simply be announced as a regular checkbox as a fallback. Switches also support the `disabled` attribute.
+A switch has the markup of a custom checkbox but uses the `.form-switch`
+class to render a toggle switch. Consider using `role="switch"` to more
+accurately convey the nature of the control to assistive technologies that
+support this role. In older assistive technologies, it will simply be
+announced as a regular checkbox as a fallback. Switches also support the
+`disabled` attribute. They also can be theme-colored when they are checked
+and another when they are not checked.
 
 {{< example >}}
 <div class="form-check form-switch">
@@ -116,6 +122,34 @@ A switch has the markup of a custom checkbox but uses the `.form-switch` class t
 <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabled" disabled>
   <label class="form-check-label" for="flexSwitchCheckDisabled">Disabled switch checkbox input</label>
+</div>
+<div class="form-check form-switch switch-primary">
+  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckPrimary">
+  <label class="form-check-label" for="flexSwitchCheckPrimary">Check switch with primary color</label>
+</div>
+<div class="form-check form-switch switch-secondary">
+  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckSecondary" checked>
+  <label class="form-check-label" for="flexSwitchCheckSecondary">Check switch with secondary color</label>
+</div>
+<div class="form-check form-switch switch-success">
+  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckSuccess" checked>
+  <label class="form-check-label" for="flexSwitchCheckSuccess">Check switch with success color</label>
+</div>
+<div class="form-check form-switch switch-danger">
+  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDanger" checked>
+  <label class="form-check-label" for="flexSwitchCheckDanger">Check switch with danger color</label>
+</div>
+<div class="form-check form-switch switch-warning">
+  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckWarning" checked>
+  <label class="form-check-label" for="flexSwitchCheckWarning">Check switch with warning color</label>
+</div>
+<div class="form-check form-switch switch-info">
+  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckInfo" checked>
+  <label class="form-check-label" for="flexSwitchCheckInfo">Check switch with info color</label>
+</div>
+<div class="form-check form-switch switch-success switch-off-danger">
+  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckSuccessDanger">
+  <label class="form-check-label" for="flexSwitchCheckSuccessDanger">Check switch with success color when checked and danger when not</label>
 </div>
 <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" checked disabled>
