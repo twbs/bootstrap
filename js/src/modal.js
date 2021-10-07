@@ -40,8 +40,6 @@ const EVENT_SHOWN = `shown${EVENT_KEY}`
 const EVENT_RESIZE = `resize${EVENT_KEY}`
 const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
 const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
-const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY}`
-const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_OPEN = 'modal-open'
@@ -79,7 +77,6 @@ class Modal extends BaseComponent {
     this._backdrop = this._initializeBackDrop()
     this._focustrap = this._initializeFocusTrap()
     this._isShown = false
-    this._ignoreBackdropClick = false
     this._isTransitioning = false
     this._scrollBar = new ScrollBarHelper()
   }
@@ -123,14 +120,6 @@ class Modal extends BaseComponent {
     this._toggleEscapeEventListener(true)
     this._toggleResizeEventListener(true)
 
-    EventHandler.on(this._dialog, EVENT_MOUSEDOWN_DISMISS, () => {
-      EventHandler.one(this._element, EVENT_MOUSEUP_DISMISS, event => {
-        if (event.target === this._element) {
-          this._ignoreBackdropClick = true
-        }
-      })
-    })
-
     this._showBackdrop(() => this._showElement(relatedTarget))
   }
 
@@ -154,9 +143,6 @@ class Modal extends BaseComponent {
     this._focustrap.deactivate()
 
     this._element.classList.remove(CLASS_NAME_SHOW)
-
-    EventHandler.off(this._element, EVENT_CLICK_DISMISS)
-    EventHandler.off(this._dialog, EVENT_MOUSEDOWN_DISMISS)
 
     this._queueCallback(() => this._hideModal(), this._element, this._isAnimated())
   }
@@ -281,11 +267,6 @@ class Modal extends BaseComponent {
 
   _showBackdrop(callback) {
     EventHandler.on(this._element, EVENT_CLICK_DISMISS, event => {
-      if (this._ignoreBackdropClick) {
-        this._ignoreBackdropClick = false
-        return
-      }
-
       if (event.target !== event.currentTarget) {
         return
       }
