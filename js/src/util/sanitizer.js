@@ -45,7 +45,7 @@ const allowedAttribute = (attribute, allowedAttributeList) => {
 
   // Check if a regular expression validates the attribute.
   return allowedAttributeList.filter(attributeRegex => attributeRegex instanceof RegExp)
-    .every(regex => regex.test(attributeName))
+    .some(regex => regex.test(attributeName))
 }
 
 export const DefaultAllowlist = {
