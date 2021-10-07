@@ -5,7 +5,7 @@
     @if $link-shade-percentage != 0 {
       &:hover,
       &:focus {
-        color: if(color-contrast($value) != $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage));
+        color: if(color-contrast($value) == $color-contrast-light, tint-color($value, $link-shade-percentage), shade-color($value, $link-shade-percentage));
       }
     }
   }
