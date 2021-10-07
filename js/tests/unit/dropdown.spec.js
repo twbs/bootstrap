@@ -1,8 +1,6 @@
 import Dropdown from '../../src/dropdown'
 import EventHandler from '../../src/dom/event-handler'
-import { noop } from '../../src/util'
-
-/** Test helpers */
+import { noop } from '../../src/util/index'
 import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Dropdown', () => {

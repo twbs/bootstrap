@@ -1,9 +1,7 @@
 import Carousel from '../../src/carousel'
 import EventHandler from '../../src/dom/event-handler'
-
-/** Test helpers */
 import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
-import * as util from '../../src/util'
+import { isRTL } from '../../src/util/index'
 
 describe('Carousel', () => {
   const { Simulator, PointerEvent } = window
@@ -1175,7 +1173,7 @@ describe('Carousel', () => {
 
       const carouselEl = fixtureEl.querySelector('div')
       const carousel = new Carousel(carouselEl, {})
-      expect(util.isRTL()).toEqual(true, 'rtl has to be true')
+      expect(isRTL()).toEqual(true, 'rtl has to be true')
 
       expect(carousel._directionToOrder('left')).toEqual('prev')
       expect(carousel._directionToOrder('prev')).toEqual('prev')
