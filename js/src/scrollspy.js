@@ -110,25 +110,26 @@ class ScrollSpy extends BaseComponent {
     this._scrollHeight = this._getScrollHeight()
 
     const targets = SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target)
+      .map(element => {
+        const targetSelector = getSelectorFromElement(element)
+        const target = targetSelector ? SelectorEngine.findOne(targetSelector) : null
 
-    for (const item of targets.map(element => {
-      const targetSelector = getSelectorFromElement(element)
-      const target = targetSelector ? SelectorEngine.findOne(targetSelector) : null
-
-      if (target) {
-        const targetBCR = target.getBoundingClientRect()
-        if (targetBCR.width || targetBCR.height) {
-          return [
-            Manipulator[offsetMethod](target).top + offsetBase,
-            targetSelector
-          ]
+        if (target) {
+          const targetBCR = target.getBoundingClientRect()
+          if (targetBCR.width || targetBCR.height) {
+            return [
+              Manipulator[offsetMethod](target).top + offsetBase,
+              targetSelector
+            ]
+          }
         }
-      }
 
-      return null
-    })
-      .filter(item => item)
-      .sort((a, b) => a[0] - b[0])) {
+        return null
+      })
+        .filter(item => item)
+        .sort((a, b) => a[0] - b[0])
+
+    for (const item of targets) {
       this._offsets.push(item[0])
       this._targets.push(item[1])
     }
