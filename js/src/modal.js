@@ -296,9 +296,9 @@ class Modal extends BaseComponent {
 
     const { classList, scrollHeight, style } = this._element
     const isModalOverflowing = scrollHeight > document.documentElement.clientHeight
-
+    const initialOverflowY = style.overflowY
     // return if the following background transition hasn't yet completed
-    if ((!isModalOverflowing && style.overflowY === 'hidden') || classList.contains(CLASS_NAME_STATIC)) {
+    if (initialOverflowY === 'hidden' || classList.contains(CLASS_NAME_STATIC)) {
       return
     }
 
@@ -309,11 +309,9 @@ class Modal extends BaseComponent {
     classList.add(CLASS_NAME_STATIC)
     this._queueCallback(() => {
       classList.remove(CLASS_NAME_STATIC)
-      if (!isModalOverflowing) {
-        this._queueCallback(() => {
-          style.overflowY = ''
-        }, this._dialog)
-      }
+      this._queueCallback(() => {
+        style.overflowY = initialOverflowY
+      }, this._dialog)
     }, this._dialog)
 
     this._element.focus()
