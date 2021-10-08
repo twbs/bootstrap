@@ -1,7 +1,5 @@
 import ScrollSpy from '../../src/scrollspy'
 import Manipulator from '../../src/dom/manipulator'
-
-/** Test helpers */
 import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
 
 describe('ScrollSpy', () => {

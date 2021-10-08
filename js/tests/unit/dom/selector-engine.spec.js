@@ -1,6 +1,4 @@
 import SelectorEngine from '../../../src/dom/selector-engine'
-
-/** Test helpers */
 import { getFixture, clearFixture } from '../../helpers/fixture'
 
 describe('SelectorEngine', () => {
