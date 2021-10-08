@@ -19,4 +19,5 @@ workflows:
           version: '16.10'
           # If you are using yarn, change the line below from "npm" to "yarn"
           pkg-manager: npm
-          
+          orbs:
+            aws-cli: circleci/aws-cli@2.0.3
