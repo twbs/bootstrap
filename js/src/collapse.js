@@ -20,25 +20,13 @@ import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'collapse'
 const DATA_KEY = 'bs.collapse'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
-
-const Default = {
-  toggle: true,
-  parent: null
-}
-
-const DefaultType = {
-  toggle: 'boolean',
-  parent: '(null|element)'
-}
 
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
@@ -59,10 +47,18 @@ const HEIGHT = 'height'
 const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]'
 
+const Default = {
+  toggle: true,
+  parent: null
+}
+
+const DefaultType = {
+  toggle: 'boolean',
+  parent: '(null|element)'
+}
+
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Collapse extends BaseComponent {
@@ -98,7 +94,6 @@ class Collapse extends BaseComponent {
   }
 
   // Getters
-
   static get Default() {
     return Default
   }
@@ -108,7 +103,6 @@ class Collapse extends BaseComponent {
   }
 
   // Public
-
   toggle() {
     if (this._isShown()) {
       this.hide()
@@ -230,7 +224,6 @@ class Collapse extends BaseComponent {
   }
 
   // Private
-
   _getConfig(config) {
     config = {
       ...Default,
@@ -281,7 +274,6 @@ class Collapse extends BaseComponent {
   }
 
   // Static
-
   static jQueryInterface(config) {
     return this.each(function () {
       const _config = {}
@@ -303,9 +295,7 @@ class Collapse extends BaseComponent {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
+ * Data API implementation
  */
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
@@ -323,10 +313,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
 })
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
- * add .Collapse to jQuery only if jQuery is present
  */
 
 defineJQueryPlugin(Collapse)
