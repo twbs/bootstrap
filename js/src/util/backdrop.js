@@ -68,11 +68,12 @@ class Backdrop extends Config {
 
     this._append()
 
+    const element = this._getElement()
     if (this._config.isAnimated) {
-      reflow(this._getElement())
+      reflow(element)
     }
 
-    this._getElement().classList.add(CLASS_NAME_SHOW)
+    element.classList.add(CLASS_NAME_SHOW)
 
     this._emulateAnimation(() => {
       execute(callback)
@@ -130,9 +131,10 @@ class Backdrop extends Config {
       return
     }
 
-    this._config.rootElement.append(this._getElement())
+    const element = this._getElement()
+    this._config.rootElement.append(element)
 
-    EventHandler.on(this._getElement(), EVENT_MOUSEDOWN, () => {
+    EventHandler.on(element, EVENT_MOUSEDOWN, () => {
       execute(this._config.clickCallback)
     })
 
