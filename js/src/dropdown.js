@@ -133,12 +133,8 @@ class Dropdown extends BaseComponent {
     }
 
     const parent = getElementFromSelector(this._element) || this._element.parentNode
-    // Totally disable Popper for Dropdowns in Navbar
-    if (this._inNavbar) {
-      Manipulator.setDataAttribute(this._menu, 'popper', 'none')
-    } else {
-      this._createPopper(parent)
-    }
+
+    this._createPopper(parent)
 
     // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
@@ -246,13 +242,7 @@ class Dropdown extends BaseComponent {
     }
 
     const popperConfig = this._getPopperConfig()
-    const isDisplayStatic = popperConfig.modifiers.find(modifier => modifier.name === 'applyStyles' && modifier.enabled === false)
-
     this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
-
-    if (isDisplayStatic) {
-      Manipulator.setDataAttribute(this._menu, 'popper', 'static')
-    }
   }
 
   _isShown(element = this._element) {
@@ -319,8 +309,9 @@ class Dropdown extends BaseComponent {
       }]
     }
 
-    // Disable Popper if we have a static display
-    if (this._config.display === 'static') {
+    // Disable Popper if we have a static display or Dropdown is in Navbar
+    if (this._inNavbar || this._config.display === 'static') {
+      Manipulator.setDataAttribute(this._menu, 'popper', 'static') // todo:v6 remove
       defaultBsPopperConfig.modifiers = [{
         name: 'applyStyles',
         enabled: false
