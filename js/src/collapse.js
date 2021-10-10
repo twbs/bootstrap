@@ -8,8 +8,8 @@
 import {
   defineJQueryPlugin,
   getElement,
-  getSelectorFromElement,
   getElementFromSelector,
+  getSelectorFromElement,
   reflow,
   typeCheckConfig
 } from './util/index'
@@ -120,9 +120,7 @@ class Collapse extends BaseComponent {
     let activesData
 
     if (this._config.parent) {
-      const children = SelectorEngine.find(CLASS_NAME_DEEPER_CHILDREN, this._config.parent)
-      // remove children if greater depth
-      actives = SelectorEngine.find(SELECTOR_ACTIVES, this._config.parent).filter(elem => !children.includes(elem))
+      actives = this._getFirstLevelChildren(SELECTOR_ACTIVES)
     }
 
     const container = SelectorEngine.findOne(this._selector)
@@ -245,16 +243,21 @@ class Collapse extends BaseComponent {
       return
     }
 
-    const children = SelectorEngine.find(CLASS_NAME_DEEPER_CHILDREN, this._config.parent)
-    const elements = SelectorEngine.find(SELECTOR_DATA_TOGGLE, this._config.parent).filter(elem => !children.includes(elem))
+    const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE)
 
-    for (const element of elements) {
+    for (const element of children) {
       const selected = getElementFromSelector(element)
 
       if (selected) {
         this._addAriaAndCollapsedClass([element], this._isShown(selected))
       }
     }
+  }
+
+  _getFirstLevelChildren(selector) {
+    const children = SelectorEngine.find(CLASS_NAME_DEEPER_CHILDREN, this._config.parent)
+    // remove children if greater depth
+    return SelectorEngine.find(selector, this._config.parent).filter(elem => !children.includes(elem))
   }
 
   _addAriaAndCollapsedClass(triggerArray, isOpen) {
