@@ -33,7 +33,6 @@ const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
 const ESCAPE_KEY = 'Escape'
-const SPACE_KEY = 'Space'
 const TAB_KEY = 'Tab'
 const ARROW_UP_KEY = 'ArrowUp'
 const ARROW_DOWN_KEY = 'ArrowDown'
@@ -399,11 +398,10 @@ class Dropdown extends BaseComponent {
 
   static dataApiKeydownHandler(event) {
     // If not input/textarea:
-    //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
+    //  - And not a key in UP | DOWN | ESCAPE => not a dropdown command
     // If input/textarea:
-    //  - If space key => not a dropdown command
-    //  - If key is other than escape
-    //    - If key is not up or down => not a dropdown command
+    //  - If key is other than ESCAPE
+    //    - If key is not UP or DOWN => not a dropdown command
     //    - If trigger inside the menu => not a dropdown command
 
     const isInput = /input|textarea/i.test(event.target.tagName)
@@ -413,10 +411,7 @@ class Dropdown extends BaseComponent {
     }
 
     if (isInput) {
-      if (eventKey === SPACE_KEY) {
-        return
-      }
-
+      // eslint-disable-next-line unicorn/no-lonely-if
       if (eventKey !== ESCAPE_KEY && (![ARROW_UP_KEY, ARROW_DOWN_KEY].includes(eventKey) || event.target.closest(SELECTOR_MENU))) {
         return
       }
@@ -446,11 +441,6 @@ class Dropdown extends BaseComponent {
     if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY) {
       instance.show()
       instance._selectMenuItem(event)
-      return
-    }
-
-    if (!isActive || event.key === SPACE_KEY) {
-      Dropdown.clearMenus()
     }
   }
 }
