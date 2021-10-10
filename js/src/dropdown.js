@@ -399,8 +399,7 @@ class Dropdown extends BaseComponent {
   static dataApiKeydownHandler(event) {
     // If not input/textarea:
     //  - And not a key in UP | DOWN | ESCAPE => not a dropdown command
-    // If input/textarea:
-    //  - If key is other than ESCAPE
+    // If input/textarea && If key is other than ESCAPE
     //    - If key is not UP or DOWN => not a dropdown command
     //    - If trigger inside the menu => not a dropdown command
 
@@ -412,9 +411,9 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    if (isInput) {
+    if (isInput && !isEscapeEvent) {
       // eslint-disable-next-line unicorn/no-lonely-if
-      if (!isEscapeEvent && (!isUpOrDownEvent || event.target.closest(SELECTOR_MENU))) {
+      if (!isUpOrDownEvent || event.target.closest(SELECTOR_MENU)) {
         return
       }
     }
