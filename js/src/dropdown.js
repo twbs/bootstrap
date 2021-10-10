@@ -405,21 +405,23 @@ class Dropdown extends BaseComponent {
     //    - If trigger inside the menu => not a dropdown command
 
     const isInput = /input|textarea/i.test(event.target.tagName)
-    const eventKey = event.key
-    if (!isInput && ![ARROW_UP_KEY, ARROW_DOWN_KEY, ESCAPE_KEY].includes(eventKey)) {
+    const isEscapeEvent = event.key === ESCAPE_KEY
+    const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key)
+
+    if (!isInput && !(isUpOrDownEvent || isEscapeEvent)) {
       return
     }
 
     if (isInput) {
       // eslint-disable-next-line unicorn/no-lonely-if
-      if (eventKey !== ESCAPE_KEY && (![ARROW_UP_KEY, ARROW_DOWN_KEY].includes(eventKey) || event.target.closest(SELECTOR_MENU))) {
+      if (!isEscapeEvent && (!isUpOrDownEvent || event.target.closest(SELECTOR_MENU))) {
         return
       }
     }
 
     const isActive = this.classList.contains(CLASS_NAME_SHOW)
 
-    if (!isActive && event.key === ESCAPE_KEY) {
+    if (!isActive && isEscapeEvent) {
       return
     }
 
@@ -433,12 +435,12 @@ class Dropdown extends BaseComponent {
     const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
     const instance = Dropdown.getOrCreateInstance(getToggleButton)
 
-    if (event.key === ESCAPE_KEY) {
+    if (isEscapeEvent) {
       instance.hide()
       return
     }
 
-    if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY) {
+    if (isUpOrDownEvent) {
       instance.show()
       instance._selectMenuItem(event)
     }
