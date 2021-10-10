@@ -437,10 +437,7 @@ class Dropdown extends BaseComponent {
     }
 
     if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY) {
-      if (!isActive) {
-        instance.show()
-      }
-
+      instance.show()
       instance._selectMenuItem(event)
       return
     }
