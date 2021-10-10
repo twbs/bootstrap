@@ -39,8 +39,6 @@ const ARROW_UP_KEY = 'ArrowUp'
 const ARROW_DOWN_KEY = 'ArrowDown'
 const RIGHT_MOUSE_BUTTON = 2 // MouseEvent.button value for the secondary button, usually the right button
 
-const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEY}|${ARROW_DOWN_KEY}|${ESCAPE_KEY}`)
-
 const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_SHOW = `show${EVENT_KEY}`
@@ -407,12 +405,21 @@ class Dropdown extends BaseComponent {
     //  - If key is other than escape
     //    - If key is not up or down => not a dropdown command
     //    - If trigger inside the menu => not a dropdown command
-    if (/input|textarea/i.test(event.target.tagName) ?
-      event.key === SPACE_KEY || (event.key !== ESCAPE_KEY &&
-      ((event.key !== ARROW_DOWN_KEY && event.key !== ARROW_UP_KEY) ||
-        event.target.closest(SELECTOR_MENU))) :
-      !REGEXP_KEYDOWN.test(event.key)) {
+
+    const isInput = /input|textarea/i.test(event.target.tagName)
+    const eventKey = event.key
+    if (!isInput && ![ARROW_UP_KEY, ARROW_DOWN_KEY, ESCAPE_KEY].includes(eventKey)) {
       return
+    }
+
+    if (isInput) {
+      if (eventKey === SPACE_KEY) {
+        return
+      }
+
+      if (eventKey !== ESCAPE_KEY && (![ARROW_UP_KEY, ARROW_DOWN_KEY].includes(eventKey) || event.target.closest(SELECTOR_MENU))) {
+        return
+      }
     }
 
     const isActive = this.classList.contains(CLASS_NAME_SHOW)
