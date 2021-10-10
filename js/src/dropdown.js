@@ -351,7 +351,7 @@ class Dropdown extends BaseComponent {
   }
 
   static clearMenus(event) {
-    if (event && (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY))) {
+    if (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY)) {
       return
     }
 
@@ -371,25 +371,23 @@ class Dropdown extends BaseComponent {
         relatedTarget: context._element
       }
 
-      if (event) {
-        const composedPath = event.composedPath()
-        const isMenuTarget = composedPath.includes(context._menu)
-        if (
-          composedPath.includes(context._element) ||
-          (context._config.autoClose === 'inside' && !isMenuTarget) ||
-          (context._config.autoClose === 'outside' && isMenuTarget)
-        ) {
-          continue
-        }
+      const composedPath = event.composedPath()
+      const isMenuTarget = composedPath.includes(context._menu)
+      if (
+        composedPath.includes(context._element) ||
+        (context._config.autoClose === 'inside' && !isMenuTarget) ||
+        (context._config.autoClose === 'outside' && isMenuTarget)
+      ) {
+        continue
+      }
 
-        // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
-        if (context._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) || /input|select|option|textarea|form/i.test(event.target.tagName))) {
-          continue
-        }
+      // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
+      if (context._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) || /input|select|option|textarea|form/i.test(event.target.tagName))) {
+        continue
+      }
 
-        if (event.type === 'click') {
-          relatedTarget.clickEvent = event
-        }
+      if (event.type === 'click') {
+        relatedTarget.clickEvent = event
       }
 
       context._completeHide(relatedTarget)
