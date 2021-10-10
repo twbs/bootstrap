@@ -53,10 +53,10 @@ const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_DROPUP = 'dropup'
 const CLASS_NAME_DROPEND = 'dropend'
 const CLASS_NAME_DROPSTART = 'dropstart'
-const CLASS_NAME_NAVBAR = 'navbar'
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]'
 const SELECTOR_MENU = '.dropdown-menu'
+const SELECTOR_NAVBAR = '.navbar'
 const SELECTOR_NAVBAR_NAV = '.navbar-nav'
 const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
 
@@ -275,7 +275,7 @@ class Dropdown extends BaseComponent {
   }
 
   _detectNavbar() {
-    return this._element.closest(`.${CLASS_NAME_NAVBAR}`) !== null
+    return this._element.closest(SELECTOR_NAVBAR) !== null
   }
 
   _getOffset() {
