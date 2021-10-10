@@ -1054,7 +1054,7 @@ describe('Dropdown', () => {
       btnDropdown.click()
     })
 
-    it('should not use Popper in navbar', done => {
+    it('should not use "static" Popper in navbar', done => {
       fixtureEl.innerHTML = [
         '<nav class="navbar navbar-expand-md navbar-light bg-light">',
         '  <div class="dropdown">',
@@ -1071,8 +1071,8 @@ describe('Dropdown', () => {
       const dropdown = new Dropdown(btnDropdown)
 
       btnDropdown.addEventListener('shown.bs.dropdown', () => {
-        expect(dropdown._popper).toBeNull()
-        expect(dropdownMenu.getAttribute('style')).toBeNull()
+        expect(dropdown._popper).not.toBeNull()
+        expect(dropdownMenu.getAttribute('data-bs-popper')).toEqual('static')
         done()
       })
 
@@ -1120,7 +1120,7 @@ describe('Dropdown', () => {
       dropdown.show()
     })
 
-    it('should manage bs attribute `data-bs-popper`="none" when dropdown is in navbar', done => {
+    it('should manage bs attribute `data-bs-popper`="static" when dropdown is in navbar', done => {
       fixtureEl.innerHTML = [
         '<nav class="navbar navbar-expand-md navbar-light bg-light">',
         '  <div class="dropdown">',
@@ -1137,7 +1137,7 @@ describe('Dropdown', () => {
       const dropdown = new Dropdown(btnDropdown)
 
       btnDropdown.addEventListener('shown.bs.dropdown', () => {
-        expect(dropdownMenu.getAttribute('data-bs-popper')).toEqual('none')
+        expect(dropdownMenu.getAttribute('data-bs-popper')).toEqual('static')
         dropdown.hide()
       })
 
