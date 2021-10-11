@@ -34,7 +34,7 @@ class Swipe {
     }
 
     this._config = this._getConfig(config)
-    this._xDown = 0
+    this._startX = 0
     this._supportPointerEvents = Boolean(window.PointerEvent)
     this._initEvents()
   }
@@ -45,19 +45,19 @@ class Swipe {
 
   _start(event) {
     if (!this._supportPointerEvents) {
-      this._xDown = event.touches[0].clientX
+      this._startX = event.touches[0].clientX
 
       return
     }
 
-    if (this._eventIsNotSwipe(event)) {
-      this._xDown = event.clientX
+    if (this._eventIsPointerPenTouch(event)) {
+      this._startX = event.clientX
     }
   }
 
   _end(event) {
-    if (this._eventIsNotSwipe(event)) {
-      this._xDown = event.clientX - this._xDown
+    if (this._eventIsPointerPenTouch(event)) {
+      this._startX = event.clientX - this._startX
     }
 
     this._handleSwipe()
@@ -65,21 +65,21 @@ class Swipe {
   }
 
   _move(event) {
-    this._xDown = event.touches && event.touches.length > 1 ?
+    this._startX = event.touches && event.touches.length > 1 ?
       0 :
-      event.touches[0].clientX - this._xDown
+      event.touches[0].clientX - this._startX
   }
 
   _handleSwipe() {
-    const absDeltaX = Math.abs(this._xDown)
+    const absDeltaX = Math.abs(this._startX)
 
     if (absDeltaX <= SWIPE_THRESHOLD) {
       return
     }
 
-    const direction = absDeltaX / this._xDown
+    const direction = absDeltaX / this._startX
 
-    this._xDown = 0
+    this._startX = 0
 
     if (!direction) {
       return
@@ -110,7 +110,7 @@ class Swipe {
     return config
   }
 
-  _eventIsNotSwipe(event) {
+  _eventIsPointerPenTouch(event) {
     return this._supportPointerEvents && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)
   }
 
