@@ -144,10 +144,11 @@
 
   clipboard.on('success', function (event) {
     var tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
+    var originalTitle = event.trigger.getAttribute('title')
 
     tooltipBtn.setContent({ '.tooltip-inner': 'Copied!' })
     event.trigger.addEventListener('hidden.bs.tooltip', function () {
-      tooltipBtn.setContent({ '.tooltip-inner': 'Copy to clipboard' })
+      tooltipBtn.setContent({ '.tooltip-inner': originalTitle })
     }, { once: true })
     event.clearSelection()
   })
@@ -156,10 +157,11 @@
     var modifierKey = /mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
     var fallbackMsg = 'Press ' + modifierKey + 'C to copy'
     var tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
+    var originalTitle = event.trigger.getAttribute('title')
 
     tooltipBtn.setContent({ '.tooltip-inner': fallbackMsg })
     event.trigger.addEventListener('hidden.bs.tooltip', function () {
-      tooltipBtn.setContent({ '.tooltip-inner': 'Copy to clipboard' })
+      tooltipBtn.setContent({ '.tooltip-inner': originalTitle })
     }, { once: true })
   })
 
