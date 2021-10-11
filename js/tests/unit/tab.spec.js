@@ -1,6 +1,4 @@
 import Tab from '../../src/tab'
-
-/** Test helpers */
 import { getFixture, clearFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Tab', () => {

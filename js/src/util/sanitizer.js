@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.2): util/sanitizer.js
+ * Bootstrap (v5.1.3): util/sanitizer.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -43,16 +43,9 @@ const allowedAttribute = (attribute, allowedAttributeList) => {
     return true
   }
 
-  const regExp = allowedAttributeList.filter(attributeRegex => attributeRegex instanceof RegExp)
-
   // Check if a regular expression validates the attribute.
-  for (const element of regExp) {
-    if (element.test(attributeName)) {
-      return true
-    }
-  }
-
-  return false
+  return allowedAttributeList.filter(attributeRegex => attributeRegex instanceof RegExp)
+    .some(regex => regex.test(attributeName))
 }
 
 export const DefaultAllowlist = {
