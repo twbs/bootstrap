@@ -18,8 +18,8 @@ describe('Swipe', () => {
     window.PointerEvent = originWinPointerEvent
   }
 
-  // Headless browser does not support touch events, so need to fake it
-  // to test that touch events are add properly.
+  // The headless browser does not support touch events, so we need to fake it
+  // in order to test that touch events are added properly
   const defineDocumentElementOntouchstart = () => {
     document.documentElement.ontouchstart = noop
   }
