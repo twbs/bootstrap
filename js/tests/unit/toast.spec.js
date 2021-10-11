@@ -1,6 +1,4 @@
 import Toast from '../../src/toast'
-
-/** Test helpers */
 import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
 
 describe('Toast', () => {

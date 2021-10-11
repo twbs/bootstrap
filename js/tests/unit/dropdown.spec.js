@@ -1,8 +1,6 @@
 import Dropdown from '../../src/dropdown'
 import EventHandler from '../../src/dom/event-handler'
-import { noop } from '../../src/util'
-
-/** Test helpers */
+import { noop } from '../../src/util/index'
 import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Dropdown', () => {
@@ -225,7 +223,7 @@ describe('Dropdown', () => {
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown)
 
-      document.documentElement.ontouchstart = () => {}
+      document.documentElement.ontouchstart = noop
       spyOn(EventHandler, 'on')
       spyOn(EventHandler, 'off')
 
@@ -891,7 +889,7 @@ describe('Dropdown', () => {
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown)
 
-      document.documentElement.ontouchstart = () => {}
+      document.documentElement.ontouchstart = noop
       spyOn(EventHandler, 'off')
 
       btnDropdown.addEventListener('shown.bs.dropdown', () => {

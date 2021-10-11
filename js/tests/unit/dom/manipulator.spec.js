@@ -1,6 +1,4 @@
 import Manipulator from '../../../src/dom/manipulator'
-
-/** Test helpers */
 import { getFixture, clearFixture } from '../../helpers/fixture'
 
 describe('Manipulator', () => {
