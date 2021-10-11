@@ -1,6 +1,7 @@
 import { clearFixture, getFixture } from '../../helpers/fixture'
 import EventHandler from '../../../src/dom/event-handler'
 import Swipe from '../../../src/util/swipe'
+import { noop } from '../../../src/util'
 
 describe('Swipe', () => {
   const { Simulator, PointerEvent } = window
@@ -20,7 +21,7 @@ describe('Swipe', () => {
   // Headless browser does not support touch events, so need to fake it
   // to test that touch events are add properly.
   const defineDocumentElementOntouchstart = () => {
-    document.documentElement.ontouchstart = () => {}
+    document.documentElement.ontouchstart = noop
   }
 
   const deleteDocumentElementOntouchstart = () => {
@@ -81,8 +82,8 @@ describe('Swipe', () => {
       const spyRight = jasmine.createSpy('spy')
       clearPointerEvents()
       defineDocumentElementOntouchstart()
-      // eslint-disable-next-line no-unused-vars
-      const swipe = new Swipe(swipeEl, {
+      // eslint-disable-next-line no-new
+      new Swipe(swipeEl, {
         leftCallback: () => {
           expect(spyRight).not.toHaveBeenCalled()
           restorePointerEvents()
@@ -101,8 +102,8 @@ describe('Swipe', () => {
       const spyLeft = jasmine.createSpy('spy')
       clearPointerEvents()
       defineDocumentElementOntouchstart()
-      // eslint-disable-next-line no-unused-vars
-      const swipe = new Swipe(swipeEl, {
+      // eslint-disable-next-line no-new
+      new Swipe(swipeEl, {
         rightCallback: () => {
           expect(spyLeft).not.toHaveBeenCalled()
           restorePointerEvents()
@@ -133,8 +134,8 @@ describe('Swipe', () => {
         done()
       }
 
-      // eslint-disable-next-line no-unused-vars
-      const swipe = new Swipe(swipeEl, {
+      // eslint-disable-next-line no-new
+      new Swipe(swipeEl, {
         endCallback: callback
       })
       mockSwipeGesture(swipeEl, {
