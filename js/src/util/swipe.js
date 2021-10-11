@@ -1,6 +1,7 @@
 import EventHandler from '../dom/event-handler'
 import { execute, typeCheckConfig } from './index'
 
+const NAME = 'swipe'
 const EVENT_KEY = '.bs.swipe'
 const EVENT_TOUCHSTART = `touchstart${EVENT_KEY}`
 const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY}`
@@ -11,7 +12,6 @@ const POINTER_TYPE_TOUCH = 'touch'
 const POINTER_TYPE_PEN = 'pen'
 const CLASS_NAME_POINTER_EVENT = 'pointer-event'
 const SWIPE_THRESHOLD = 40
-const NAME = 'swipe'
 
 const Default = {
   leftCallback: null,
