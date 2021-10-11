@@ -11,19 +11,19 @@ const POINTER_TYPE_TOUCH = 'touch'
 const POINTER_TYPE_PEN = 'pen'
 const CLASS_NAME_POINTER_EVENT = 'pointer-event'
 const SWIPE_THRESHOLD = 40
+const NAME = 'swipe'
 
 const Default = {
   leftCallback: null,
   rightCallback: null,
   endCallback: null
 }
+
 const DefaultType = {
   leftCallback: '(function|null)',
   rightCallback: '(function|null)',
   endCallback: '(function|null)'
 }
-
-const NAME = 'swipe'
 
 class Swipe {
   constructor(element, config) {
