@@ -1,8 +1,6 @@
 import Modal from '../../src/modal'
 import EventHandler from '../../src/dom/event-handler'
 import ScrollBarHelper from '../../src/util/scrollbar'
-
-/** Test helpers */
 import { clearBodyAndDocument, clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Modal', () => {

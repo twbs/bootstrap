@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.2): tooltip.js
+ * Bootstrap (v5.1.3): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -421,7 +421,7 @@ class Tooltip extends BaseComponent {
         content = sanitizeHtml(content, this._config.allowList, this._config.sanitizeFn)
       }
 
-      element.innerHTML = content
+      element.innerHTML = content // lgtm [js/xss-through-dom]
     } else {
       element.textContent = content
     }

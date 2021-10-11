@@ -28,6 +28,7 @@
       "error",
       "always-multiline"
     ],
+    "no-negated-condition": "off",
     "no-new": "off",
     "no-var": "off",
     "object-curly-spacing": [
