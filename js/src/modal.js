@@ -470,38 +470,37 @@ class Modal {
 
   _setScrollbar() {
     if (this._isBodyOverflowing) {
-      // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
-      //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
-      const fixedContent = [].slice.call(document.querySelectorAll(SELECTOR_FIXED_CONTENT))
-      const stickyContent = [].slice.call(document.querySelectorAll(SELECTOR_STICKY_CONTENT))
-
       // Adjust fixed content padding
-      $(fixedContent).each((index, element) => {
-        const actualPadding = element.style.paddingRight
-        const calculatedPadding = $(element).css('padding-right')
-        $(element)
-          .data('padding-right', actualPadding)
-          .css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
-      })
+      this._setElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight', 'padding-right', true)
 
       // Adjust sticky content margin
-      $(stickyContent).each((index, element) => {
-        const actualMargin = element.style.marginRight
-        const calculatedMargin = $(element).css('margin-right')
-        $(element)
-          .data('margin-right', actualMargin)
-          .css('margin-right', `${parseFloat(calculatedMargin) - this._scrollbarWidth}px`)
-      })
+      this._setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', 'margin-right', false)
 
       // Adjust body padding
-      const actualPadding = document.body.style.paddingRight
-      const calculatedPadding = $(document.body).css('padding-right')
-      $(document.body)
-        .data('padding-right', actualPadding)
-        .css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
+      this._setElementAttributes('body', 'paddingRight', 'padding-right', true)
     }
 
     $(document.body).addClass(CLASS_NAME_OPEN)
+  }
+
+  _setElementAttributes(selector, styleProp, jqCssProperty, add) {
+    // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
+    //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
+    const elements = [].slice.call(document.querySelectorAll(selector))
+
+    $(elements).each((index, element) => {
+      if (element !== document.body && window.innerWidth > element.clientWidth + this._scrollbarWidth) {
+        return
+      }
+
+      const actualValue = element.style[styleProp]
+      const calculatedValue = $(element).css(jqCssProperty)
+      const newValue = parseFloat(calculatedValue) + ((add ? 1 : -1) * this._scrollbarWidth)
+
+      $(element)
+        .data(jqCssProperty, actualValue)
+        .css(jqCssProperty, `${newValue}px`)
+    })
   }
 
   _resetScrollbar() {
