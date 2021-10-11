@@ -47,7 +47,6 @@ const CLASS_NAME_MENURIGHT = 'dropdown-menu-right'
 const CLASS_NAME_POSITION_STATIC = 'position-static'
 
 const SELECTOR_DATA_TOGGLE = '[data-toggle="dropdown"]'
-const SELECTOR_FORM_CHILD = '.dropdown form'
 const SELECTOR_MENU = '.dropdown-menu'
 const SELECTOR_NAVBAR_NAV = '.navbar-nav'
 const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
@@ -244,7 +243,6 @@ class Dropdown {
   _addEventListeners() {
     $(this._element).on(EVENT_CLICK, event => {
       event.preventDefault()
-      event.stopPropagation()
       this.toggle()
     })
   }
@@ -370,9 +368,14 @@ class Dropdown {
   }
 
   static _clearMenus(event) {
-    if (event && (event.which === RIGHT_MOUSE_BUTTON_WHICH ||
-      event.type === 'keyup' && event.which !== TAB_KEYCODE)) {
-      return
+    if (event) {
+      if (event.which === RIGHT_MOUSE_BUTTON_WHICH || event.type === 'keyup' && event.which !== TAB_KEYCODE) {
+        return
+      }
+
+      if (/input|select|textarea|form/i.test(event.target.tagName)) {
+        return
+      }
     }
 
     const toggles = [].slice.call(document.querySelectorAll(SELECTOR_DATA_TOGGLE))
@@ -397,10 +400,17 @@ class Dropdown {
         continue
       }
 
-      if (event && (event.type === 'click' &&
-          /input|textarea/i.test(event.target.tagName) || event.type === 'keyup' && event.which === TAB_KEYCODE) &&
-          $.contains(parent, event.target)) {
-        continue
+      if (event) {
+        // todo `composedPath` not supported on IE
+        // Don't close the menu if the clicked element or one of its parents is the dropdown button
+        if ([context._element].some(element => event.composedPath().includes(element))) {
+          continue
+        }
+
+        // Tab navigation through the dropdown menu shouldn't close the menu
+        if (event.type === 'keyup' && event.which === TAB_KEYCODE && dropdownMenu.contains(event.target)) {
+          continue
+        }
       }
 
       const hideEvent = $.Event(EVENT_HIDE, relatedTarget)
@@ -515,11 +525,7 @@ $(document)
   .on(`${EVENT_CLICK_DATA_API} ${EVENT_KEYUP_DATA_API}`, Dropdown._clearMenus)
   .on(EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
     event.preventDefault()
-    event.stopPropagation()
-    Dropdown._jQueryInterface.call($(this), 'toggle')
-  })
-  .on(EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => {
-    e.stopPropagation()
+    Dropdown._jQueryInterface.call($(this))
   })
 
 /**

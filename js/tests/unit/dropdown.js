@@ -1658,4 +1658,60 @@ $(function () {
 
     $dropdown.trigger('click')
   })
+
+  QUnit.test('should allow `data-bs-toggle="dropdown"` click events to bubble up', function (assert) {
+    assert.expect(2)
+    var fixtureHtml = [
+      '<div class="dropdown">',
+      '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+      '  <div class="dropdown-menu">',
+      '    <a class="dropdown-item" href="#">Secondary link</a>',
+      '  </div>',
+      '</div>'
+    ].join('')
+
+    $(fixtureHtml).appendTo('#qunit-fixture')
+    var btnDropdown = $('[data-bs-toggle="dropdown"]')
+    var clickListener = sinon.spy('clickListener')
+    var delegatedClickListener = sinon.spy('delegatedClickListener')
+
+    btnDropdown.addEventListener('click', clickListener)
+    document.addEventListener('click', delegatedClickListener)
+
+    btnDropdown.click()
+
+    sinon.assert.calledOnce(clickListener)
+    sinon.assert.calledOnce(delegatedClickListener)
+  })
+
+  QUnit.test('should open the dropdown when clicking the child element inside `data-bs-toggle="dropdown"`', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+    var fixtureHtml = [
+      '<div class="container">',
+      '  <div class="dropdown">',
+      '    <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><span id="childElement">Dropdown</span></button>',
+      '    <div class="dropdown-menu">',
+      '      <a class="dropdown-item" href="#subMenu">Sub menu</a>',
+      '    </div>',
+      '  </div>',
+      '</div>'
+    ].join('')
+
+    $(fixtureHtml).appendTo('#qunit-fixture')
+
+    var btnDropdown = $('[data-bs-toggle="dropdown"]')
+    var childElement = $('#childElement')
+
+    btnDropdown.addEventListener('shown.bs.dropdown', function () {
+      setTimeout(function () {
+        assert.true(btnDropdown.classList.contains('show'))
+        assert.true(btnDropdown.getAttribute('aria-expanded'))
+        done()
+      })
+    })
+
+
+    childElement.click()
+  })
 })
