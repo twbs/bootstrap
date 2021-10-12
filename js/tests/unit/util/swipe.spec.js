@@ -151,6 +151,25 @@ describe('Swipe', () => {
   })
 
   describe('Functionality on PointerEvents', () => {
+    it('should not allow pinch with touch events', () => {
+      Simulator.setType('touch')
+      clearPointerEvents()
+      deleteDocumentElementOntouchstart()
+
+      const swipe = new Swipe(swipeEl)
+      spyOn(swipe, '_handleSwipe')
+
+      mockSwipeGesture(swipeEl, {
+        pos: [300, 10],
+        deltaX: -300,
+        deltaY: 0,
+        touches: 2
+      })
+
+      restorePointerEvents()
+      expect(swipe._handleSwipe).not.toHaveBeenCalled()
+    })
+
     it('should allow swipeRight and call "rightCallback" with pointer events', done => {
       if (!supportPointerEvent) {
         expect().nothing()
