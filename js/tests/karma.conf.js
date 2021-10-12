@@ -7,11 +7,13 @@ const istanbul = require('rollup-plugin-istanbul')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
 const replace = require('@rollup/plugin-replace')
 const { browsers } = require('./browsers.js')
+const terser = require('@rollup/plugin-terser')
 
 const ENV = process.env
 const BROWSERSTACK = Boolean(ENV.BROWSERSTACK)
 const DEBUG = Boolean(ENV.DEBUG)
 const JQUERY_TEST = Boolean(ENV.JQUERY)
+const MINIFIED = Boolean(ENV.MINIFIED)
 
 const frameworks = [
   'jasmine'
@@ -87,7 +89,19 @@ const config = {
         // Inline the required helpers in each file
         babelHelpers: 'inline'
       }),
-      nodeResolve()
+      nodeResolve(),
+      MINIFIED ?
+        terser({
+          compress: {
+            passes: 2
+          },
+          mangle: {
+            properties: {
+              regex: /^_/
+            }
+          }
+        }) :
+        ''
     ],
     output: {
       format: 'iife',
