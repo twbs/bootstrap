@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { isDisabled, isVisible } from '../util/index'
+import { getDocument, isDisabled, isVisible } from '../util/index'
 
 /**
  * Constants

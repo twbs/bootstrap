@@ -6,7 +6,7 @@
  */
 
 import EventHandler from '../dom/event-handler'
-import { execute, typeCheckConfig } from './index'
+import { execute, getDocument, getWindow, typeCheckConfig } from './index'
 
 /**
  * Constants
@@ -50,7 +50,7 @@ class Swipe {
 
     this._config = this._getConfig(config)
     this._deltaX = 0
-    this._supportPointerEvents = Boolean(window.PointerEvent)
+    this._supportPointerEvents = Boolean(getWindow().PointerEvent)
     this._initEvents()
   }
 
@@ -133,7 +133,7 @@ class Swipe {
 
   // Static
   static isSupported() {
-    return 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
+    return 'ontouchstart' in getDocument().documentElement || navigator.maxTouchPoints > 0
   }
 }
 
