@@ -232,7 +232,7 @@ describe('Swipe', () => {
 
     it('should destroy', () => {
       const addEventSpy = spyOn(fixtureEl, 'addEventListener').and.callThrough()
-      const removeEventSpy = spyOn(fixtureEl, 'removeEventListener').and.callThrough()
+      const removeEventSpy = spyOn(EventHandler, 'off').and.callThrough()
       defineDocumentElementOntouchstart()
 
       const swipe = new Swipe(fixtureEl)
@@ -253,9 +253,8 @@ describe('Swipe', () => {
 
       swipe.dispose()
 
-      expect(removeEventSpy.calls.allArgs()).toEqual(expectedArgs)
-
-      delete document.documentElement.ontouchstart
+      expect(removeEventSpy).toHaveBeenCalledWith(fixtureEl, '.bs.swipe')
+      deleteDocumentElementOntouchstart()
     })
   })
 
