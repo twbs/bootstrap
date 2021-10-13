@@ -19,9 +19,7 @@ const toType = obj => {
 }
 
 /**
- * --------------------------------------------------------------------------
- * Public Util Api
- * --------------------------------------------------------------------------
+ * Public Util API
  */
 
 const getUID = prefix => {
@@ -113,7 +111,8 @@ const isElement = obj => {
 }
 
 const getElement = obj => {
-  if (isElement(obj)) { // it's a jQuery object or a node element
+  // it's a jQuery object or a node element
+  if (isElement(obj)) {
     return obj.jquery ? obj[0] : obj
   }
 
@@ -196,8 +195,7 @@ const noop = () => {}
  * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
  */
 const reflow = element => {
-  // eslint-disable-next-line no-unused-expressions
-  element.offsetHeight
+  element.offsetHeight // eslint-disable-line no-unused-expressions
 }
 
 const getjQuery = () => {
@@ -312,24 +310,24 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
 }
 
 export {
-  getElement,
-  getUID,
-  getSelectorFromElement,
-  getElementFromSelector,
-  getTransitionDurationFromElement,
-  triggerTransitionEnd,
-  isElement,
-  typeCheckConfig,
-  isVisible,
-  isDisabled,
-  findShadowRoot,
-  noop,
-  getNextActiveElement,
-  reflow,
-  getjQuery,
-  onDOMContentLoaded,
-  isRTL,
   defineJQueryPlugin,
   execute,
-  executeAfterTransition
+  executeAfterTransition,
+  findShadowRoot,
+  getElement,
+  getElementFromSelector,
+  getjQuery,
+  getNextActiveElement,
+  getSelectorFromElement,
+  getTransitionDurationFromElement,
+  getUID,
+  isDisabled,
+  isElement,
+  isRTL,
+  isVisible,
+  noop,
+  onDOMContentLoaded,
+  reflow,
+  triggerTransitionEnd,
+  typeCheckConfig
 }

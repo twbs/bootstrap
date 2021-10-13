@@ -22,9 +22,7 @@ import Swipe from './util/swipe'
 import BaseComponent from './base-component'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'carousel'
@@ -36,33 +34,10 @@ const ARROW_LEFT_KEY = 'ArrowLeft'
 const ARROW_RIGHT_KEY = 'ArrowRight'
 const TOUCHEVENT_COMPAT_WAIT = 500 // Time for mouse compat events to fire after touch
 
-const Default = {
-  interval: 5000,
-  keyboard: true,
-  slide: false,
-  pause: 'hover',
-  wrap: true,
-  touch: true
-}
-
-const DefaultType = {
-  interval: '(number|boolean)',
-  keyboard: 'boolean',
-  slide: '(boolean|string)',
-  pause: '(string|boolean)',
-  wrap: 'boolean',
-  touch: 'boolean'
-}
-
 const ORDER_NEXT = 'next'
 const ORDER_PREV = 'prev'
 const DIRECTION_LEFT = 'left'
 const DIRECTION_RIGHT = 'right'
-
-const KEY_TO_DIRECTION = {
-  [ARROW_LEFT_KEY]: DIRECTION_RIGHT,
-  [ARROW_RIGHT_KEY]: DIRECTION_LEFT
-}
 
 const EVENT_SLIDE = `slide${EVENT_KEY}`
 const EVENT_SLID = `slid${EVENT_KEY}`
@@ -91,11 +66,33 @@ const SELECTOR_INDICATOR = '[data-bs-target]'
 const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]'
 const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]'
 
+const KEY_TO_DIRECTION = {
+  [ARROW_LEFT_KEY]: DIRECTION_RIGHT,
+  [ARROW_RIGHT_KEY]: DIRECTION_LEFT
+}
+
+const Default = {
+  interval: 5000,
+  keyboard: true,
+  slide: false,
+  pause: 'hover',
+  wrap: true,
+  touch: true
+}
+
+const DefaultType = {
+  interval: '(number|boolean)',
+  keyboard: 'boolean',
+  slide: '(boolean|string)',
+  pause: '(string|boolean)',
+  wrap: 'boolean',
+  touch: 'boolean'
+}
+
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
+
 class Carousel extends BaseComponent {
   constructor(element, config) {
     super(element)
@@ -114,7 +111,6 @@ class Carousel extends BaseComponent {
   }
 
   // Getters
-
   static get Default() {
     return Default
   }
@@ -124,7 +120,6 @@ class Carousel extends BaseComponent {
   }
 
   // Public
-
   next() {
     this._slide(ORDER_NEXT)
   }
@@ -210,7 +205,6 @@ class Carousel extends BaseComponent {
   }
 
   // Private
-
   _getConfig(config) {
     config = {
       ...Default,
@@ -451,7 +445,6 @@ class Carousel extends BaseComponent {
   }
 
   // Static
-
   static carouselInterface(element, config) {
     const data = Carousel.getOrCreateInstance(element, config)
 
@@ -513,9 +506,7 @@ class Carousel extends BaseComponent {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
+ * Data API implementation
  */
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler)
@@ -529,10 +520,7 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
 })
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
- * add .Carousel to jQuery only if jQuery is present
  */
 
 defineJQueryPlugin(Carousel)

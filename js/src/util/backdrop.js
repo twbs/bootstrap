@@ -8,6 +8,15 @@
 import EventHandler from '../dom/event-handler'
 import { execute, executeAfterTransition, getElement, reflow, typeCheckConfig } from './index'
 
+/**
+ * Constants
+ */
+
+const NAME = 'backdrop'
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_SHOW = 'show'
+const EVENT_MOUSEDOWN = `mousedown.bs.${NAME}`
+
 const Default = {
   className: 'modal-backdrop',
   isVisible: true, // if false, we use the backdrop helper without adding any element to the dom
@@ -23,11 +32,10 @@ const DefaultType = {
   rootElement: '(element|string)',
   clickCallback: '(function|null)'
 }
-const NAME = 'backdrop'
-const CLASS_NAME_FADE = 'fade'
-const CLASS_NAME_SHOW = 'show'
 
-const EVENT_MOUSEDOWN = `mousedown.bs.${NAME}`
+/**
+ * Class definition
+ */
 
 class Backdrop {
   constructor(config) {
@@ -36,6 +44,7 @@ class Backdrop {
     this._element = null
   }
 
+  // Public
   show(callback) {
     if (!this._config.isVisible) {
       execute(callback)
@@ -69,8 +78,18 @@ class Backdrop {
     })
   }
 
-  // Private
+  dispose() {
+    if (!this._isAppended) {
+      return
+    }
 
+    EventHandler.off(this._element, EVENT_MOUSEDOWN)
+
+    this._element.remove()
+    this._isAppended = false
+  }
+
+  // Private
   _getElement() {
     if (!this._element) {
       const backdrop = document.createElement('div')
@@ -109,17 +128,6 @@ class Backdrop {
     })
 
     this._isAppended = true
-  }
-
-  dispose() {
-    if (!this._isAppended) {
-      return
-    }
-
-    EventHandler.off(this._element, EVENT_MOUSEDOWN)
-
-    this._element.remove()
-    this._isAppended = false
   }
 
   _emulateAnimation(callback) {
