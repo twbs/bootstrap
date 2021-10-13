@@ -64,7 +64,7 @@
     "docs-serve": "hugo server --port 9001 --disableFastRender",
     "docs-serve-only": "npx sirv-cli _site --port 9001",
     "lockfile-lint": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",
-    "update-deps": "ncu -u -x eslint,eslint-plugin-unicorn,globby,karma-browserstack-launcher && npm update && echo Manually update site/assets/js/vendor",
+    "update-deps": "ncu -u -x eslint,eslint-plugin-unicorn,globby,karma-browserstack-launcher && echo Manually update site/assets/js/vendor",
     "release": "npm-run-all dist release-sri docs-build release-zip*",
     "release-sri": "node build/generate-sri.js",
     "release-version": "node build/change-version.js",
@@ -96,7 +96,6 @@
     "type": "opencollective",
     "url": "https://opencollective.com/bootstrap"
   },
-  "dependencies": {},
   "peerDependencies": {
     "@popperjs/core": "^2.10.2"
   },
