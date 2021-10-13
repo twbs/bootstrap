@@ -18,21 +18,21 @@ const banner = require('./banner.js')
 const srcPath = path.resolve(__dirname, '../js/src/')
 const jsFiles = glob.sync(srcPath + '/**/*.js') // path.posix.normalize(srcPath)
 
-// Object which holds the resolved plugins
-const resolved = {}
+// Array which holds the resolved plugins
+const resolved = []
 
 const filenameToEntity = filename => filename.replace(/(?:^|-)[a-z]/g, char => char.slice(-1).toUpperCase())
 
 for (const file of jsFiles) {
-  resolved[filenameToEntity(path.basename(file, '.js'))] = {
+  resolved.push({
     src: file.replace('.js', ''),
     dist: file.replace('src', 'dist'),
-    name: path.relative(srcPath, file)
-  }
+    relativePath: path.relative(srcPath, file),
+    name: filenameToEntity(path.basename(file, '.js'))
+  })
 }
 
-const build = async pluginKey => {
-  const plugin = resolved[pluginKey]
+const build = async plugin => {
   const globals = {}
 
   const bundle = await rollup.rollup({
@@ -55,32 +55,30 @@ const build = async pluginKey => {
         return true
       }
 
-      // eslint-disable-next-line no-unused-vars
-      const usedPlugin = Object.entries(resolved).find(([key, pluginName]) => {
-        return pluginName.src.includes(source.replace(pattern, ''))
+      const usedPlugin = resolved.find(plugin => {
+        return plugin.src.includes(source.replace(pattern, ''))
       })
 
       if (!usedPlugin) {
-        console.warn(`Source ${source} is not mapped!`) // Shouldn't we throw here?
-        return false
+        throw new Error(`Source ${source} is not mapped!`)
       }
 
-      globals[path.normalize(usedPlugin[1].src)] = usedPlugin[0]
+      globals[path.normalize(usedPlugin.src)] = usedPlugin.name
       return true
     }
   })
 
   await bundle.write({
-    banner: banner(plugin.name),
+    banner: banner(plugin.relativePath),
     format: 'umd',
-    name: pluginKey,
+    name: plugin.name,
     sourcemap: true,
     globals,
     generatedCode: 'es2015',
     file: plugin.dist
   })
 
-  console.log(`Built ${pluginKey}`)
+  console.log(`Built ${plugin.name}`)
 }
 
 (async () => {
@@ -91,7 +89,7 @@ const build = async pluginKey => {
     console.log('Building individual plugins...')
     console.time(timeLabel)
 
-    await Promise.all(Object.keys(resolved).map(plugin => build(plugin)))
+    await Promise.all(Object.values(resolved).map(plugin => build(plugin)))
 
     console.timeEnd(timeLabel)
   } catch (error) {
