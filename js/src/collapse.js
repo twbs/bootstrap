@@ -8,12 +8,11 @@
 import {
   defineJQueryPlugin,
   getElement,
-  getSelectorFromElement,
   getElementFromSelector,
+  getSelectorFromElement,
   reflow,
   typeCheckConfig
 } from './util/index'
-import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
@@ -77,7 +76,6 @@ class Collapse extends BaseComponent {
         .filter(foundElem => foundElem === this._element)
 
       if (selector !== null && filterElement.length) {
-        this._selector = selector
         this._triggerArray.push(elem)
       }
     }
@@ -116,23 +114,17 @@ class Collapse extends BaseComponent {
       return
     }
 
-    let actives = []
-    let activesData
+    let activeChildren = []
 
+    // find active children
     if (this._config.parent) {
-      const children = SelectorEngine.find(CLASS_NAME_DEEPER_CHILDREN, this._config.parent)
-      // remove children if greater depth
-      actives = SelectorEngine.find(SELECTOR_ACTIVES, this._config.parent).filter(elem => !children.includes(elem))
+      activeChildren = this._getFirstLevelChildren(SELECTOR_ACTIVES)
+        .filter(element => element !== this._element)
+        .map(element => Collapse.getOrCreateInstance(element, { toggle: false }))
     }
 
-    const container = SelectorEngine.findOne(this._selector)
-    if (actives.length) {
-      const tempActiveData = actives.find(elem => container !== elem)
-      activesData = tempActiveData ? Collapse.getInstance(tempActiveData) : null
-
-      if (activesData && activesData._isTransitioning) {
-        return
-      }
+    if (activeChildren.length && activeChildren[0]._isTransitioning) {
+      return
     }
 
     const startEvent = EventHandler.trigger(this._element, EVENT_SHOW)
@@ -140,14 +132,8 @@ class Collapse extends BaseComponent {
       return
     }
 
-    for (const elemActive of actives) {
-      if (container !== elemActive) {
-        Collapse.getOrCreateInstance(elemActive, { toggle: false }).hide()
-      }
-
-      if (!activesData) {
-        Data.set(elemActive, DATA_KEY, null)
-      }
+    for (const activeInstance of activeChildren) {
+      activeInstance.hide()
     }
 
     const dimension = this._getDimension()
@@ -245,16 +231,21 @@ class Collapse extends BaseComponent {
       return
     }
 
-    const children = SelectorEngine.find(CLASS_NAME_DEEPER_CHILDREN, this._config.parent)
-    const elements = SelectorEngine.find(SELECTOR_DATA_TOGGLE, this._config.parent).filter(elem => !children.includes(elem))
+    const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE)
 
-    for (const element of elements) {
+    for (const element of children) {
       const selected = getElementFromSelector(element)
 
       if (selected) {
         this._addAriaAndCollapsedClass([element], this._isShown(selected))
       }
     }
+  }
+
+  _getFirstLevelChildren(selector) {
+    const children = SelectorEngine.find(CLASS_NAME_DEEPER_CHILDREN, this._config.parent)
+    // remove children if greater depth
+    return SelectorEngine.find(selector, this._config.parent).filter(elem => !children.includes(elem))
   }
 
   _addAriaAndCollapsedClass(triggerArray, isOpen) {
