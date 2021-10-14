@@ -8,9 +8,7 @@
 import $ from 'jquery'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'button'
@@ -24,6 +22,11 @@ const CLASS_NAME_ACTIVE = 'active'
 const CLASS_NAME_BUTTON = 'btn'
 const CLASS_NAME_FOCUS = 'focus'
 
+const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_FOCUS_BLUR_DATA_API = `focus${EVENT_KEY}${DATA_API_KEY} ` +
+                          `blur${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
+
 const SELECTOR_DATA_TOGGLE_CARROT = '[data-toggle^="button"]'
 const SELECTOR_DATA_TOGGLES = '[data-toggle="buttons"]'
 const SELECTOR_DATA_TOGGLE = '[data-toggle="button"]'
@@ -32,15 +35,8 @@ const SELECTOR_INPUT = 'input:not([type="hidden"])'
 const SELECTOR_ACTIVE = '.active'
 const SELECTOR_BUTTON = '.btn'
 
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
-const EVENT_FOCUS_BLUR_DATA_API = `focus${EVENT_KEY}${DATA_API_KEY} ` +
-                          `blur${EVENT_KEY}${DATA_API_KEY}`
-const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
-
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Button {
@@ -50,13 +46,11 @@ class Button {
   }
 
   // Getters
-
   static get VERSION() {
     return VERSION
   }
 
   // Public
-
   toggle() {
     let triggerChangeEvent = true
     let addAriaPressed = true
@@ -111,7 +105,6 @@ class Button {
   }
 
   // Static
-
   static _jQueryInterface(config, avoidTriggerChange) {
     return this.each(function () {
       const $element = $(this)
@@ -132,9 +125,7 @@ class Button {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
+ * Data API implementation
  */
 
 $(document)
@@ -194,9 +185,7 @@ $(window).on(EVENT_LOAD_DATA_API, () => {
 })
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
  */
 
 $.fn[NAME] = Button._jQueryInterface

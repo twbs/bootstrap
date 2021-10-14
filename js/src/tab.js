@@ -9,9 +9,7 @@ import $ from 'jquery'
 import Util from './util'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'tab'
@@ -21,17 +19,17 @@ const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 const JQUERY_NO_CONFLICT = $.fn[NAME]
 
-const EVENT_HIDE = `hide${EVENT_KEY}`
-const EVENT_HIDDEN = `hidden${EVENT_KEY}`
-const EVENT_SHOW = `show${EVENT_KEY}`
-const EVENT_SHOWN = `shown${EVENT_KEY}`
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
-
 const CLASS_NAME_DROPDOWN_MENU = 'dropdown-menu'
 const CLASS_NAME_ACTIVE = 'active'
 const CLASS_NAME_DISABLED = 'disabled'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
+
+const EVENT_HIDE = `hide${EVENT_KEY}`
+const EVENT_HIDDEN = `hidden${EVENT_KEY}`
+const EVENT_SHOW = `show${EVENT_KEY}`
+const EVENT_SHOWN = `shown${EVENT_KEY}`
+const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
 const SELECTOR_DROPDOWN = '.dropdown'
 const SELECTOR_NAV_LIST_GROUP = '.nav, .list-group'
@@ -42,9 +40,7 @@ const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 const SELECTOR_DROPDOWN_ACTIVE_CHILD = '> .dropdown-menu .active'
 
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Tab {
@@ -53,13 +49,11 @@ class Tab {
   }
 
   // Getters
-
   static get VERSION() {
     return VERSION
   }
 
   // Public
-
   show() {
     if (this._element.parentNode &&
         this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
@@ -133,7 +127,6 @@ class Tab {
   }
 
   // Private
-
   _activate(element, container, callback) {
     const activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL') ?
       $(container).find(SELECTOR_ACTIVE_UL) :
@@ -210,7 +203,6 @@ class Tab {
   }
 
   // Static
-
   static _jQueryInterface(config) {
     return this.each(function () {
       const $this = $(this)
@@ -233,9 +225,7 @@ class Tab {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
+ * Data API implementation
  */
 
 $(document)
@@ -245,9 +235,7 @@ $(document)
   })
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
  */
 
 $.fn[NAME] = Tab._jQueryInterface
