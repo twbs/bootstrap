@@ -51,7 +51,7 @@ describe('Toast', () => {
       })
 
       toastEl.addEventListener('shown.bs.toast', () => {
-        expect(toastEl.classList.contains('show')).toEqual(true)
+        expect(toastEl).toHaveClass('show')
         done()
       })
 
@@ -69,7 +69,7 @@ describe('Toast', () => {
       const toast = new Toast(toastEl)
 
       toastEl.addEventListener('shown.bs.toast', () => {
-        expect(toastEl.classList.contains('show')).toEqual(true)
+        expect(toastEl).toHaveClass('show')
 
         const button = toastEl.querySelector('.btn-close')
 
@@ -77,7 +77,7 @@ describe('Toast', () => {
       })
 
       toastEl.addEventListener('hidden.bs.toast', () => {
-        expect(toastEl.classList.contains('show')).toEqual(false)
+        expect(toastEl).not.toHaveClass('show')
         done()
       })
 
@@ -124,7 +124,7 @@ describe('Toast', () => {
       const toast = new Toast(toastEl)
 
       toastEl.addEventListener('hidden.bs.toast', () => {
-        expect(toastEl.classList.contains('show')).toEqual(false)
+        expect(toastEl).not.toHaveClass('show')
         done()
       })
 
@@ -144,7 +144,7 @@ describe('Toast', () => {
       const toast = new Toast(toastEl)
 
       toastEl.addEventListener('shown.bs.toast', () => {
-        expect(toastEl.classList.contains('fade')).toEqual(false)
+        expect(toastEl).not.toHaveClass('fade')
         done()
       })
 
@@ -165,7 +165,7 @@ describe('Toast', () => {
 
       const assertDone = () => {
         setTimeout(() => {
-          expect(toastEl.classList.contains('show')).toEqual(false)
+          expect(toastEl).not.toHaveClass('show')
           done()
         }, 20)
       }
@@ -404,7 +404,7 @@ describe('Toast', () => {
       })
 
       toastEl.addEventListener('hidden.bs.toast', () => {
-        expect(toastEl.classList.contains('show')).toEqual(false)
+        expect(toastEl).not.toHaveClass('show')
         done()
       })
 
@@ -438,7 +438,7 @@ describe('Toast', () => {
 
       const assertDone = () => {
         setTimeout(() => {
-          expect(toastEl.classList.contains('show')).toEqual(true)
+          expect(toastEl).toHaveClass('show')
           done()
         }, 20)
       }
@@ -487,13 +487,13 @@ describe('Toast', () => {
       const toastEl = fixtureEl.querySelector('div')
       const toast = new Toast(toastEl)
       const expected = () => {
-        expect(toastEl.classList.contains('show')).toEqual(true)
+        expect(toastEl).toHaveClass('show')
         expect(Toast.getInstance(toastEl)).not.toBeNull()
 
         toast.dispose()
 
         expect(Toast.getInstance(toastEl)).toBeNull()
-        expect(toastEl.classList.contains('show')).toEqual(false)
+        expect(toastEl).not.toHaveClass('show')
 
         done()
       }
@@ -582,7 +582,7 @@ describe('Toast', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Toast.getInstance(div)).toEqual(null)
+      expect(Toast.getInstance(div)).toBeNull()
     })
   })
 
@@ -603,7 +603,7 @@ describe('Toast', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Toast.getInstance(div)).toEqual(null)
+      expect(Toast.getInstance(div)).toBeNull()
       expect(Toast.getOrCreateInstance(div)).toBeInstanceOf(Toast)
     })
 
@@ -612,7 +612,7 @@ describe('Toast', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Toast.getInstance(div)).toEqual(null)
+      expect(Toast.getInstance(div)).toBeNull()
       const toast = Toast.getOrCreateInstance(div, {
         delay: 1
       })

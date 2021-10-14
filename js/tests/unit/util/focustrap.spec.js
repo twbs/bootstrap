@@ -182,10 +182,10 @@ describe('FocusTrap', () => {
     it('should flag itself as no longer active', () => {
       const focustrap = new FocusTrap({ trapElement: fixtureEl })
       focustrap.activate()
-      expect(focustrap._isActive).toBe(true)
+      expect(focustrap._isActive).toBeTrue()
 
       focustrap.deactivate()
-      expect(focustrap._isActive).toBe(false)
+      expect(focustrap._isActive).toBeFalse()
     })
 
     it('should remove all event listeners', () => {

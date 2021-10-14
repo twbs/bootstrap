@@ -73,7 +73,7 @@ describe('SelectorEngine', () => {
 
   describe('parents', () => {
     it('should return parents', () => {
-      expect(SelectorEngine.parents(fixtureEl, 'body').length).toEqual(1)
+      expect(SelectorEngine.parents(fixtureEl, 'body')).toHaveSize(1)
     })
   })
 

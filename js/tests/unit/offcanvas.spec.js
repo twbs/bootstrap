@@ -55,7 +55,7 @@ describe('Offcanvas', () => {
 
       closeEl.click()
 
-      expect(offCanvas._config.keyboard).toBe(true)
+      expect(offCanvas._config.keyboard).toBeTrue()
       expect(offCanvas.hide).toHaveBeenCalled()
     })
 
@@ -101,7 +101,7 @@ describe('Offcanvas', () => {
 
       document.dispatchEvent(keyDownEsc)
 
-      expect(offCanvas._config.keyboard).toBe(false)
+      expect(offCanvas._config.keyboard).toBeFalse()
       expect(offCanvas.hide).not.toHaveBeenCalled()
     })
   })
@@ -116,10 +116,10 @@ describe('Offcanvas', () => {
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl)
 
-      expect(offCanvas._config.backdrop).toEqual(true)
-      expect(offCanvas._backdrop._config.isVisible).toEqual(true)
-      expect(offCanvas._config.keyboard).toEqual(true)
-      expect(offCanvas._config.scroll).toEqual(false)
+      expect(offCanvas._config.backdrop).toBeTrue()
+      expect(offCanvas._backdrop._config.isVisible).toBeTrue()
+      expect(offCanvas._config.keyboard).toBeTrue()
+      expect(offCanvas._config.scroll).toBeFalse()
     })
 
     it('should read data attributes and override default config', () => {
@@ -131,10 +131,10 @@ describe('Offcanvas', () => {
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl)
 
-      expect(offCanvas._config.backdrop).toEqual(false)
-      expect(offCanvas._backdrop._config.isVisible).toEqual(false)
-      expect(offCanvas._config.keyboard).toEqual(false)
-      expect(offCanvas._config.scroll).toEqual(true)
+      expect(offCanvas._config.backdrop).toBeFalse()
+      expect(offCanvas._backdrop._config.isVisible).toBeFalse()
+      expect(offCanvas._config.keyboard).toBeFalse()
+      expect(offCanvas._config.scroll).toBeTrue()
     })
 
     it('given a config object must override data attributes', () => {
@@ -149,9 +149,9 @@ describe('Offcanvas', () => {
         keyboard: true,
         scroll: false
       })
-      expect(offCanvas._config.backdrop).toEqual(true)
-      expect(offCanvas._config.keyboard).toEqual(true)
-      expect(offCanvas._config.scroll).toEqual(false)
+      expect(offCanvas._config.backdrop).toBeTrue()
+      expect(offCanvas._config.keyboard).toBeTrue()
+      expect(offCanvas._config.scroll).toBeFalse()
     })
   })
   describe('options', () => {
@@ -204,7 +204,7 @@ describe('Offcanvas', () => {
       spyOn(offCanvas._backdrop._config, 'clickCallback').and.callThrough()
 
       offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
-        expect(typeof offCanvas._backdrop._config.clickCallback).toBe('function')
+        expect(offCanvas._backdrop._config.clickCallback).toEqual(jasmine.any(Function))
 
         offCanvas._backdrop._getElement().dispatchEvent(clickEvent)
       })
@@ -256,7 +256,7 @@ describe('Offcanvas', () => {
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl)
       offCanvas.show()
-      expect(offCanvasEl.classList.contains('show')).toBe(true)
+      expect(offCanvasEl).toHaveClass('show')
 
       spyOn(offCanvas, 'hide')
 
@@ -274,7 +274,7 @@ describe('Offcanvas', () => {
       const offCanvas = new Offcanvas(offCanvasEl)
       offCanvas.show()
 
-      expect(offCanvasEl.classList.contains('show')).toBe(true)
+      expect(offCanvasEl).toHaveClass('show')
 
       spyOn(offCanvas._backdrop, 'show').and.callThrough()
       spyOn(EventHandler, 'trigger').and.callThrough()
@@ -292,7 +292,7 @@ describe('Offcanvas', () => {
       spyOn(offCanvas._backdrop, 'show').and.callThrough()
 
       offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
-        expect(offCanvasEl.classList.contains('show')).toEqual(true)
+        expect(offCanvasEl).toHaveClass('show')
         expect(offCanvas._backdrop.show).toHaveBeenCalled()
         done()
       })
@@ -384,7 +384,7 @@ describe('Offcanvas', () => {
       offCanvas.show()
 
       offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
-        expect(offCanvasEl.classList.contains('show')).toEqual(false)
+        expect(offCanvasEl).not.toHaveClass('show')
         expect(offCanvas._backdrop.hide).toHaveBeenCalled()
         done()
       })
@@ -458,7 +458,7 @@ describe('Offcanvas', () => {
       expect(offCanvas._backdrop).toBeNull()
       expect(focustrap.deactivate).toHaveBeenCalled()
       expect(offCanvas._focustrap).toBeNull()
-      expect(Offcanvas.getInstance(offCanvasEl)).toEqual(null)
+      expect(Offcanvas.getInstance(offCanvasEl)).toBeNull()
     })
   })
 
@@ -473,8 +473,8 @@ describe('Offcanvas', () => {
       const offCanvasEl = fixtureEl.querySelector('#offcanvasdiv1')
 
       offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
-        expect(offCanvasEl.classList.contains('show')).toEqual(true)
-        expect(target.checked).toEqual(true)
+        expect(offCanvasEl).toHaveClass('show')
+        expect(target.checked).toBeTrue()
         done()
       })
 
@@ -559,7 +559,7 @@ describe('Offcanvas', () => {
       })
       offcanvasEl.addEventListener('hidden.bs.offcanvas', () => {
         setTimeout(() => {
-          expect(isVisible(trigger)).toBe(false)
+          expect(isVisible(trigger)).toBeFalse()
           expect(trigger.focus).not.toHaveBeenCalled()
           done()
         }, 5)
@@ -665,7 +665,7 @@ describe('Offcanvas', () => {
 
       const offcanvas = Offcanvas.getInstance(div)
       expect(offcanvas).not.toBeNull()
-      expect(offcanvas._config.scroll).toBe(true)
+      expect(offcanvas._config.scroll).toBeTrue()
     })
   })
 
@@ -706,7 +706,7 @@ describe('Offcanvas', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Offcanvas.getInstance(div)).toEqual(null)
+      expect(Offcanvas.getInstance(div)).toBeNull()
       expect(Offcanvas.getOrCreateInstance(div)).toBeInstanceOf(Offcanvas)
     })
 
@@ -715,13 +715,13 @@ describe('Offcanvas', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Offcanvas.getInstance(div)).toEqual(null)
+      expect(Offcanvas.getInstance(div)).toBeNull()
       const offcanvas = Offcanvas.getOrCreateInstance(div, {
         scroll: true
       })
       expect(offcanvas).toBeInstanceOf(Offcanvas)
 
-      expect(offcanvas._config.scroll).toEqual(true)
+      expect(offcanvas._config.scroll).toBeTrue()
     })
 
     it('should return the instance when exists without given configuration', () => {
@@ -739,7 +739,7 @@ describe('Offcanvas', () => {
       expect(offcanvas).toBeInstanceOf(Offcanvas)
       expect(offcanvas2).toEqual(offcanvas)
 
-      expect(offcanvas2._config.scroll).toEqual(true)
+      expect(offcanvas2._config.scroll).toBeTrue()
     })
   })
 })
