@@ -53,7 +53,10 @@
 
 .caption-top {
   caption-side: top;
-  border-bottom: (2 * $table-border-width) solid $table-group-separator-color;
+
+  > :first-child {
+    border-bottom: (2 * $table-border-width) solid $table-group-separator-color;
+  }
 }
 
 
