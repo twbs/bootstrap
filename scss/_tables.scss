@@ -41,7 +41,7 @@
   }
 
   // Highlight border color between thead, tbody and tfoot.
-  > :not(:first-child) {
+  > tbody:first-of-type {
     border-top: (2 * $table-border-width) solid $table-group-separator-color;
   }
 }
