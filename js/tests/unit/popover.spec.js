@@ -196,7 +196,7 @@ describe('Popover', () => {
       popoverEl.addEventListener('shown.bs.popover', () => {
         const tip = document.querySelector('.popover')
         expect(tip).not.toBeNull()
-        expect(tip.classList.contains('custom-class')).toBeTrue()
+        expect(tip).toHaveClass('custom-class')
         done()
       })
 
@@ -314,7 +314,7 @@ describe('Popover', () => {
 
       const popoverEl = fixtureEl.querySelector('a')
 
-      expect(Popover.getInstance(popoverEl)).toEqual(null)
+      expect(Popover.getInstance(popoverEl)).toBeNull()
     })
   })
 
@@ -335,7 +335,7 @@ describe('Popover', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Popover.getInstance(div)).toEqual(null)
+      expect(Popover.getInstance(div)).toBeNull()
       expect(Popover.getOrCreateInstance(div)).toBeInstanceOf(Popover)
     })
 
@@ -344,7 +344,7 @@ describe('Popover', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Popover.getInstance(div)).toEqual(null)
+      expect(Popover.getInstance(div)).toBeNull()
       const popover = Popover.getOrCreateInstance(div, {
         placement: 'top'
       })

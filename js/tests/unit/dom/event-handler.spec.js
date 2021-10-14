@@ -105,10 +105,10 @@ describe('EventHandler', () => {
       EventHandler.on(outer, 'mouseleave', '.inner', delegateLeaveSpy)
 
       EventHandler.on(sibling, 'mouseenter', () => {
-        expect(enterSpy.calls.count()).toBe(2)
-        expect(leaveSpy.calls.count()).toBe(2)
-        expect(delegateEnterSpy.calls.count()).toBe(2)
-        expect(delegateLeaveSpy.calls.count()).toBe(2)
+        expect(enterSpy.calls.count()).toEqual(2)
+        expect(leaveSpy.calls.count()).toEqual(2)
+        expect(delegateEnterSpy.calls.count()).toEqual(2)
+        expect(delegateLeaveSpy.calls.count()).toEqual(2)
         done()
       })
 
@@ -133,10 +133,10 @@ describe('EventHandler', () => {
       moveMouse(inner, outer)
 
       setTimeout(() => {
-        expect(enterSpy.calls.count()).toBe(1)
-        expect(leaveSpy.calls.count()).toBe(1)
-        expect(delegateEnterSpy.calls.count()).toBe(1)
-        expect(delegateLeaveSpy.calls.count()).toBe(1)
+        expect(enterSpy.calls.count()).toEqual(1)
+        expect(leaveSpy.calls.count()).toEqual(1)
+        expect(delegateEnterSpy.calls.count()).toEqual(1)
+        expect(delegateLeaveSpy.calls.count()).toEqual(1)
 
         // from outer to inner to sibling (adjacent)
         moveMouse(outer, inner)

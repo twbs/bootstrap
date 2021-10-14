@@ -14,7 +14,7 @@ describe('ScrollSpy', () => {
     const scrollHeight = Math.ceil(contentEl.scrollTop + Manipulator.position(target).top) + paddingTop
 
     function listener() {
-      expect(element.classList.contains('active')).toEqual(true)
+      expect(element).toHaveClass('active')
       contentEl.removeEventListener('scroll', listener)
       expect(scrollSpy._process).toHaveBeenCalled()
       spy.calls.reset()
@@ -82,7 +82,7 @@ describe('ScrollSpy', () => {
         target: '#navigation'
       })
 
-      expect(scrollSpy._targets.length).toEqual(2)
+      expect(scrollSpy._targets).toHaveSize(2)
     })
 
     it('should only switch "active" class on current target', done => {
@@ -120,7 +120,7 @@ describe('ScrollSpy', () => {
       spyOn(scrollSpy, '_process').and.callThrough()
 
       scrollSpyEl.addEventListener('scroll', () => {
-        expect(rootEl.classList.contains('active')).toEqual(true)
+        expect(rootEl).toHaveClass('active')
         expect(scrollSpy._process).toHaveBeenCalled()
         done()
       })
@@ -163,7 +163,7 @@ describe('ScrollSpy', () => {
       spyOn(scrollSpy, '_process').and.callThrough()
 
       scrollSpyEl.addEventListener('scroll', () => {
-        expect(rootEl.classList.contains('active')).toEqual(true)
+        expect(rootEl).toHaveClass('active')
         expect(scrollSpy._process).toHaveBeenCalled()
         done()
       })
@@ -197,9 +197,9 @@ describe('ScrollSpy', () => {
       spyOn(scrollSpy, '_process').and.callThrough()
 
       contentEl.addEventListener('scroll', () => {
-        expect(fixtureEl.querySelector('#one-link').classList.contains('active')).toEqual(false)
-        expect(fixtureEl.querySelector('#two-link').classList.contains('active')).toEqual(true)
-        expect(fixtureEl.querySelector('#three-link').classList.contains('active')).toEqual(false)
+        expect(fixtureEl.querySelector('#one-link')).not.toHaveClass('active')
+        expect(fixtureEl.querySelector('#two-link')).toHaveClass('active')
+        expect(fixtureEl.querySelector('#three-link')).not.toHaveClass('active')
         expect(scrollSpy._process).toHaveBeenCalled()
         done()
       })
@@ -361,7 +361,7 @@ describe('ScrollSpy', () => {
         expect(spy).toHaveBeenCalled()
         spy.calls.reset()
         if (firstTime) {
-          expect(fixtureEl.querySelectorAll('.active').length).toEqual(1)
+          expect(fixtureEl.querySelectorAll('.active')).toHaveSize(1)
           expect(active.getAttribute('id')).toEqual('two-link')
           firstTime = false
           contentEl.scrollTop = 0
@@ -409,12 +409,12 @@ describe('ScrollSpy', () => {
         expect(spy).toHaveBeenCalled()
         spy.calls.reset()
         if (firstTime) {
-          expect(fixtureEl.querySelectorAll('.active').length).toEqual(1)
+          expect(fixtureEl.querySelectorAll('.active')).toHaveSize(1)
           expect(active.getAttribute('id')).toEqual('two-link')
           firstTime = false
           contentEl.scrollTop = negativeHeight
         } else {
-          expect(fixtureEl.querySelectorAll('.active').length).toEqual(1)
+          expect(fixtureEl.querySelectorAll('.active')).toHaveSize(1)
           expect(active.getAttribute('id')).toEqual('one-link')
           done()
         }
@@ -602,7 +602,7 @@ describe('ScrollSpy', () => {
 
       const scrollspy = ScrollSpy.getInstance(div)
       expect(scrollspy).not.toBeNull()
-      expect(scrollspy._config.offset).toBe(15)
+      expect(scrollspy._config.offset).toEqual(15)
     })
 
     it('should not re create a scrollspy', () => {
@@ -663,7 +663,7 @@ describe('ScrollSpy', () => {
     })
 
     it('should return null if there is no instance', () => {
-      expect(ScrollSpy.getInstance(fixtureEl)).toEqual(null)
+      expect(ScrollSpy.getInstance(fixtureEl)).toBeNull()
     })
   })
 
@@ -684,7 +684,7 @@ describe('ScrollSpy', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(ScrollSpy.getInstance(div)).toEqual(null)
+      expect(ScrollSpy.getInstance(div)).toBeNull()
       expect(ScrollSpy.getOrCreateInstance(div)).toBeInstanceOf(ScrollSpy)
     })
 
@@ -693,7 +693,7 @@ describe('ScrollSpy', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(ScrollSpy.getInstance(div)).toEqual(null)
+      expect(ScrollSpy.getInstance(div)).toBeNull()
       const scrollspy = ScrollSpy.getOrCreateInstance(div, {
         offset: 1
       })
