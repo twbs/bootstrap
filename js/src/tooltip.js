@@ -229,14 +229,8 @@ class Tooltip extends BaseComponent {
     }
 
     const tip = this.getTipElement()
-    const tipId = getUID(this.constructor.NAME)
 
-    tip.setAttribute('id', tipId)
-    this._element.setAttribute('aria-describedby', tipId)
-
-    if (this._config.animation) {
-      tip.classList.add(CLASS_NAME_FADE)
-    }
+    this._element.setAttribute('aria-describedby', tip.getAttribute('id'))
 
     const placement = typeof this._config.placement === 'function' ?
       this._config.placement.call(this, tip, this._element) :
@@ -352,6 +346,14 @@ class Tooltip extends BaseComponent {
 
     const tip = templateFactory.toHtml()
     tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
+
+    const tipId = getUID(this.constructor.NAME).toString()
+
+    tip.setAttribute('id', tipId)
+
+    if (this._config.animation) {
+      tip.classList.add(CLASS_NAME_FADE)
+    }
 
     this.tip = tip
     return this.tip

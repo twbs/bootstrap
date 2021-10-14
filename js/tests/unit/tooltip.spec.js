@@ -1041,7 +1041,7 @@ describe('Tooltip', () => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
 
       const tooltipEl = fixtureEl.querySelector('a')
-      const tooltip = new Tooltip(tooltipEl)
+      const tooltip = new Tooltip(tooltipEl, { animation: false })
 
       const tip = tooltip.getTipElement()
 
