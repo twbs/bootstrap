@@ -53,6 +53,7 @@
 
 .caption-top {
   caption-side: top;
+  border-bottom: (2 * $table-border-width) solid $table-group-separator-color;
 }
 
 
@@ -94,7 +95,7 @@
     border-bottom-width: 0;
   }
 
-  > :not(:first-child) {
+  > tbody:first-of-type, tfoot:first-of-type {
     border-top-width: 0;
   }
 }
