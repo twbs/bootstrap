@@ -41,7 +41,7 @@
   }
 
   // Highlight border color between thead, tbody and tfoot.
-  > :not(:first-child) {
+  > :not(caption):not(colgroup) + * {
     border-top: (2 * $table-border-width) solid $table-group-separator-color;
   }
 }
