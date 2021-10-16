@@ -1,8 +1,6 @@
 import Dropdown from '../../src/dropdown'
 import EventHandler from '../../src/dom/event-handler'
-import { noop } from '../../src/util'
-
-/** Test helpers */
+import { noop } from '../../src/util/index'
 import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Dropdown', () => {
@@ -225,7 +223,7 @@ describe('Dropdown', () => {
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown)
 
-      document.documentElement.ontouchstart = () => {}
+      document.documentElement.ontouchstart = noop
       spyOn(EventHandler, 'on')
       spyOn(EventHandler, 'off')
 
@@ -576,8 +574,8 @@ describe('Dropdown', () => {
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown)
 
-      btnDropdown.addEventListener('show.bs.dropdown', e => {
-        e.preventDefault()
+      btnDropdown.addEventListener('show.bs.dropdown', event => {
+        event.preventDefault()
       })
 
       btnDropdown.addEventListener('shown.bs.dropdown', () => {
@@ -703,8 +701,8 @@ describe('Dropdown', () => {
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown)
 
-      btnDropdown.addEventListener('show.bs.dropdown', e => {
-        e.preventDefault()
+      btnDropdown.addEventListener('show.bs.dropdown', event => {
+        event.preventDefault()
       })
 
       btnDropdown.addEventListener('shown.bs.dropdown', () => {
@@ -861,8 +859,8 @@ describe('Dropdown', () => {
       const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
       const dropdown = new Dropdown(btnDropdown)
 
-      btnDropdown.addEventListener('hide.bs.dropdown', e => {
-        e.preventDefault()
+      btnDropdown.addEventListener('hide.bs.dropdown', event => {
+        event.preventDefault()
       })
 
       btnDropdown.addEventListener('hidden.bs.dropdown', () => {
@@ -891,7 +889,7 @@ describe('Dropdown', () => {
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown)
 
-      document.documentElement.ontouchstart = () => {}
+      document.documentElement.ontouchstart = noop
       spyOn(EventHandler, 'off')
 
       btnDropdown.addEventListener('shown.bs.dropdown', () => {
@@ -1033,11 +1031,11 @@ describe('Dropdown', () => {
         showEventTriggered = true
       })
 
-      btnDropdown.addEventListener('shown.bs.dropdown', e => setTimeout(() => {
+      btnDropdown.addEventListener('shown.bs.dropdown', event => setTimeout(() => {
         expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         expect(showEventTriggered).toEqual(true)
-        expect(e.relatedTarget).toEqual(btnDropdown)
+        expect(event.relatedTarget).toEqual(btnDropdown)
         document.body.click()
       }))
 
@@ -1045,11 +1043,11 @@ describe('Dropdown', () => {
         hideEventTriggered = true
       })
 
-      btnDropdown.addEventListener('hidden.bs.dropdown', e => {
+      btnDropdown.addEventListener('hidden.bs.dropdown', event => {
         expect(btnDropdown.classList.contains('show')).toEqual(false)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('false')
         expect(hideEventTriggered).toEqual(true)
-        expect(e.relatedTarget).toEqual(btnDropdown)
+        expect(event.relatedTarget).toEqual(btnDropdown)
         done()
       })
 
@@ -1347,12 +1345,12 @@ describe('Dropdown', () => {
 
       const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
 
-      triggerDropdown.addEventListener('hide.bs.dropdown', e => {
-        expect(e.clickEvent).toBeUndefined()
+      triggerDropdown.addEventListener('hide.bs.dropdown', event => {
+        expect(event.clickEvent).toBeUndefined()
       })
 
-      triggerDropdown.addEventListener('hidden.bs.dropdown', e => {
-        expect(e.clickEvent).toBeUndefined()
+      triggerDropdown.addEventListener('hidden.bs.dropdown', event => {
+        expect(event.clickEvent).toBeUndefined()
         done()
       })
 

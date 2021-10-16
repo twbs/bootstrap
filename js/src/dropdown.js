@@ -1,12 +1,11 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): dropdown.js
+ * Bootstrap (v5.1.3): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import * as Popper from '@popperjs/core'
-
 import {
   defineJQueryPlugin,
   getElement,
@@ -25,9 +24,7 @@ import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'dropdown'
@@ -89,9 +86,7 @@ const DefaultType = {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Dropdown extends BaseComponent {
@@ -105,7 +100,6 @@ class Dropdown extends BaseComponent {
   }
 
   // Getters
-
   static get Default() {
     return Default
   }
@@ -119,7 +113,6 @@ class Dropdown extends BaseComponent {
   }
 
   // Public
-
   toggle() {
     return this._isShown() ? this.hide() : this.show()
   }
@@ -151,10 +144,10 @@ class Dropdown extends BaseComponent {
     // empty mouseover listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
-    if ('ontouchstart' in document.documentElement &&
-      !parent.closest(SELECTOR_NAVBAR_NAV)) {
-      [].concat(...document.body.children)
-        .forEach(elem => EventHandler.on(elem, 'mouseover', noop))
+    if ('ontouchstart' in document.documentElement && !parent.closest(SELECTOR_NAVBAR_NAV)) {
+      for (const elem of [].concat(...document.body.children)) {
+        EventHandler.on(elem, 'mouseover', noop)
+      }
     }
 
     this._element.focus()
@@ -193,7 +186,6 @@ class Dropdown extends BaseComponent {
   }
 
   // Private
-
   _completeHide(relatedTarget) {
     const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE, relatedTarget)
     if (hideEvent.defaultPrevented) {
@@ -203,8 +195,9 @@ class Dropdown extends BaseComponent {
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
-      [].concat(...document.body.children)
-        .forEach(elem => EventHandler.off(elem, 'mouseover', noop))
+      for (const elem of [].concat(...document.body.children)) {
+        EventHandler.off(elem, 'mouseover', noop)
+      }
     }
 
     if (this._popper) {
@@ -341,7 +334,7 @@ class Dropdown extends BaseComponent {
   }
 
   _selectMenuItem({ key, target }) {
-    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu).filter(isVisible)
+    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu).filter(el => isVisible(el))
 
     if (!items.length) {
       return
@@ -353,7 +346,6 @@ class Dropdown extends BaseComponent {
   }
 
   // Static
-
   static jQueryInterface(config) {
     return this.each(function () {
       const data = Dropdown.getOrCreateInstance(this, config)
@@ -377,8 +369,8 @@ class Dropdown extends BaseComponent {
 
     const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
 
-    for (let i = 0, len = toggles.length; i < len; i++) {
-      const context = Dropdown.getInstance(toggles[i])
+    for (const toggle of toggles) {
+      const context = Dropdown.getInstance(toggle)
       if (!context || context._config.autoClose === false) {
         continue
       }
@@ -473,9 +465,7 @@ class Dropdown extends BaseComponent {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
+ * Data API implementation
  */
 
 EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE, Dropdown.dataApiKeydownHandler)
@@ -488,10 +478,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
 })
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
- * add .Dropdown to jQuery only if jQuery is present
  */
 
 defineJQueryPlugin(Dropdown)

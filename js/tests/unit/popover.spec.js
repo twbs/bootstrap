@@ -1,6 +1,4 @@
 import Popover from '../../src/popover'
-
-/** Test helpers */
 import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Popover', () => {
@@ -15,9 +13,9 @@ describe('Popover', () => {
 
     const popoverList = document.querySelectorAll('.popover')
 
-    popoverList.forEach(popoverEl => {
+    for (const popoverEl of popoverList) {
       popoverEl.remove()
-    })
+    }
   })
 
   describe('VERSION', () => {

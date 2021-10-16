@@ -7,6 +7,10 @@ aliases: "/migration/"
 toc: true
 ---
 
+## v5.2.0
+
+- **Introduced new `$enable-container-classes` option.** Now when opting into the experimental CSS Grid layout, `.container-*` classes will still be compiled, unless this option is set to `false`.
+
 ## Dependencies
 
 - Dropped jQuery.

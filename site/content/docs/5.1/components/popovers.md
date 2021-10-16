@@ -36,7 +36,7 @@ Keep reading to see how popovers work with some examples.
 One way to initialize all popovers on a page would be to select them by their `data-bs-toggle` attribute:
 
 ```js
-var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
 var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   return new bootstrap.Popover(popoverTriggerEl)
 })
@@ -395,7 +395,7 @@ var popover = bootstrap.Popover.getInstance(exampleTriggerEl) // Returns a Boots
 
 #### getOrCreateInstance
 
-*Static* method which allows you to get the popover instance associated with a DOM element, or create a new one in case it wasn't initialised
+*Static* method which allows you to get the popover instance associated with a DOM element, or create a new one in case it wasn't initialized
 
 ```js
 var exampleTriggerEl = document.getElementById('example')

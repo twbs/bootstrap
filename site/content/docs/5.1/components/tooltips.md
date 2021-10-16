@@ -35,7 +35,7 @@ Got all that? Great, let's see how they work with some examples.
 One way to initialize all tooltips on a page would be to select them by their `data-bs-toggle` attribute:
 
 ```js
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
@@ -419,7 +419,7 @@ var tooltip = bootstrap.Tooltip.getInstance(exampleTriggerEl) // Returns a Boots
 
 #### getOrCreateInstance
 
-*Static* method which allows you to get the tooltip instance associated with a DOM element, or create a new one in case it wasn't initialised
+*Static* method which allows you to get the tooltip instance associated with a DOM element, or create a new one in case it wasn't initialized
 
 ```js
 var exampleTriggerEl = document.getElementById('example')

@@ -1,8 +1,6 @@
 import Tooltip from '../../src/tooltip'
 import EventHandler from '../../src/dom/event-handler'
 import { noop } from '../../src/util/index'
-
-/** Test helpers */
 import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Tooltip', () => {
@@ -15,9 +13,9 @@ describe('Tooltip', () => {
   afterEach(() => {
     clearFixture()
 
-    document.querySelectorAll('.tooltip').forEach(tooltipEl => {
+    for (const tooltipEl of document.querySelectorAll('.tooltip')) {
       tooltipEl.remove()
-    })
+    }
   })
 
   describe('VERSION', () => {

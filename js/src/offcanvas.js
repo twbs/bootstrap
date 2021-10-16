@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): offcanvas.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Bootstrap (v5.1.3): offcanvas.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
@@ -22,9 +22,7 @@ import FocusTrap from './util/focustrap'
 import { enableDismissTrigger } from './util/component-functions'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'offcanvas'
@@ -33,18 +31,6 @@ const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 const ESCAPE_KEY = 'Escape'
-
-const Default = {
-  backdrop: true,
-  keyboard: true,
-  scroll: false
-}
-
-const DefaultType = {
-  backdrop: 'boolean',
-  keyboard: 'boolean',
-  scroll: 'boolean'
-}
 
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_BACKDROP = 'offcanvas-backdrop'
@@ -59,10 +45,20 @@ const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="offcanvas"]'
 
+const Default = {
+  backdrop: true,
+  keyboard: true,
+  scroll: false
+}
+
+const DefaultType = {
+  backdrop: 'boolean',
+  keyboard: 'boolean',
+  scroll: 'boolean'
+}
+
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Offcanvas extends BaseComponent {
@@ -77,7 +73,6 @@ class Offcanvas extends BaseComponent {
   }
 
   // Getters
-
   static get NAME() {
     return NAME
   }
@@ -87,7 +82,6 @@ class Offcanvas extends BaseComponent {
   }
 
   // Public
-
   toggle(relatedTarget) {
     return this._isShown ? this.hide() : this.show(relatedTarget)
   }
@@ -168,7 +162,6 @@ class Offcanvas extends BaseComponent {
   }
 
   // Private
-
   _getConfig(config) {
     config = {
       ...Default,
@@ -204,7 +197,6 @@ class Offcanvas extends BaseComponent {
   }
 
   // Static
-
   static jQueryInterface(config) {
     return this.each(function () {
       const data = Offcanvas.getOrCreateInstance(this, config)
@@ -223,9 +215,7 @@ class Offcanvas extends BaseComponent {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
+ * Data API implementation
  */
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
@@ -247,24 +237,25 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   })
 
   // avoid conflict when clicking a toggler of an offcanvas, while another is open
-  const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
-  if (allReadyOpen && allReadyOpen !== target) {
-    Offcanvas.getInstance(allReadyOpen).hide()
+  const alreadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
+  if (alreadyOpen && alreadyOpen !== target) {
+    Offcanvas.getInstance(alreadyOpen).hide()
   }
 
   const data = Offcanvas.getOrCreateInstance(target)
   data.toggle(this)
 })
 
-EventHandler.on(window, EVENT_LOAD_DATA_API, () =>
-  SelectorEngine.find(OPEN_SELECTOR).forEach(el => Offcanvas.getOrCreateInstance(el).show())
-)
+EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+  for (const el of SelectorEngine.find(OPEN_SELECTOR)) {
+    Offcanvas.getOrCreateInstance(el).show()
+  }
+})
 
 enableDismissTrigger(Offcanvas)
+
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
  */
 
 defineJQueryPlugin(Offcanvas)
