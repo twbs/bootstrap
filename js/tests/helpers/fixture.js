@@ -40,6 +40,12 @@ export const jQueryMock = {
   }
 }
 
+export const ObserveMock = function () {
+  this.observe = () => null
+  this.unobserve = () => null
+  this.disconnect = () => null // maybe not needed
+}
+
 export const clearBodyAndDocument = () => {
   const attributes = ['data-bs-padding-right', 'style']
 

@@ -1,5 +1,5 @@
 import Popover from '../../src/popover'
-import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture'
+import { clearFixture, getFixture, jQueryMock, ObserveMock } from '../helpers/fixture'
 
 describe('Popover', () => {
   let fixtureEl
@@ -8,11 +8,14 @@ describe('Popover', () => {
     fixtureEl = getFixture()
   })
 
+  beforeEach(() => {
+    window.IntersectionObserver = ObserveMock
+  })
+
   afterEach(() => {
     clearFixture()
 
     const popoverList = document.querySelectorAll('.popover')
-
     for (const popoverEl of popoverList) {
       popoverEl.remove()
     }

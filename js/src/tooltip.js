@@ -34,16 +34,12 @@ const CLASS_PREFIX = 'bs-tooltip'
 const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn'])
 
 const CLASS_NAME_FADE = 'fade'
-const CLASS_NAME_MODAL = 'modal'
 const CLASS_NAME_SHOW = 'show'
 
 const HOVER_STATE_SHOW = 'show'
 const HOVER_STATE_OUT = 'out'
 
 const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
-const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`
-
-const EVENT_MODAL_HIDE = 'hide.bs.modal'
 
 const TRIGGER_HOVER = 'hover'
 const TRIGGER_FOCUS = 'focus'
@@ -119,6 +115,7 @@ const Event = {
  */
 
 class Tooltip extends BaseComponent {
+  static _observer = null
   constructor(element, config) {
     if (typeof Popper === 'undefined') {
       throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)')
@@ -138,6 +135,20 @@ class Tooltip extends BaseComponent {
     this.tip = null
 
     this._setListeners()
+  }
+
+  static getObserver() {
+    // One static observer for all instances has better performance according to following  link
+    // https://www.bennadel.com/blog/3954-intersectionobserver-api-performance-many-vs-shared-in-angular-11-0-5.htm
+    this._observer ??= new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) {
+          this.getInstance(entry.target)?.hide()
+        }
+      }
+    })
+
+    return this._observer
   }
 
   // Getters
@@ -198,7 +209,7 @@ class Tooltip extends BaseComponent {
   dispose() {
     clearTimeout(this._timeout)
 
-    EventHandler.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler)
+    this.constructor.getObserver().unobserve(this._element)
 
     if (this.tip) {
       this.tip.remove()
@@ -535,13 +546,7 @@ class Tooltip extends BaseComponent {
       }
     }
 
-    this._hideModalHandler = () => {
-      if (this._element) {
-        this.hide()
-      }
-    }
-
-    EventHandler.on(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler)
+    this.constructor.getObserver().observe(this._element)
 
     if (this._config.selector) {
       this._config = {

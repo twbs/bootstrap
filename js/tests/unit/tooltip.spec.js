@@ -1,13 +1,17 @@
 import Tooltip from '../../src/tooltip'
 import EventHandler from '../../src/dom/event-handler'
 import { noop } from '../../src/util/index'
-import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
+import { clearFixture, createEvent, getFixture, jQueryMock, ObserveMock } from '../helpers/fixture'
 
 describe('Tooltip', () => {
   let fixtureEl
 
   beforeAll(() => {
     fixtureEl = getFixture()
+  })
+
+  beforeEach(() => {
+    window.IntersectionObserver = ObserveMock
   })
 
   afterEach(() => {
