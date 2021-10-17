@@ -321,20 +321,20 @@ Note that dynamic tabbed interfaces should <em>not</em> contain dropdown menus, 
 <div class="bd-example">
   <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+      <button class="nav-link active" id="home-tab-1" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+      <button class="nav-link" id="profile-tab-1" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
     </li>
     <li class="nav-item" role="presentation">
       <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button>
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab-1">
       <p><strong>This is some placeholder content the Home tab's associated content.</strong> Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
     </div>
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab-1">
       <p><strong>This is some placeholder content the Profile tab's associated content.</strong> Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
     </div>
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
@@ -346,18 +346,18 @@ Note that dynamic tabbed interfaces should <em>not</em> contain dropdown menus, 
 ```html
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+    <button class="nav-link active" id="home-tab-2" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+    <button class="nav-link" id="profile-tab-2" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
   </li>
   <li class="nav-item" role="presentation">
     <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button>
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab-2">...</div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab-2">...</div>
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
 </div>
 ```
@@ -397,6 +397,66 @@ To help fit your needs, this works with `<ul>`-based markup, as shown above, or 
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+</div>
+```
+
+You can also use dropdowns with the tabs plugin to group multiple links inside dropdown menu.
+
+<div class="bd-example">
+  <ul class="nav nav-tabs mb-3" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="profile-tab-3" data-bs-toggle="tab" href="#profile-content" role="tab" aria-controls="profile-content" aria-selected="true">Profile</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Settings</a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" id="general-settings-tab" data-bs-toggle="tab" href="#general-settings-content" role="tab" aria-controls="general-settings-content" aria-selected="false">General settings</a></li>
+        <li><a class="dropdown-item" id="advanced-settings-tab" data-bs-toggle="tab" href="#advanced-settings-content" role="tab" aria-controls="advanced-settings-content" aria-selected="false">Advanced settings</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="messages-tab-1" data-bs-toggle="tab" href="#messages-content" role="tab" aria-controls="messages-content" aria-selected="false">Messages</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="dropdown-tab-content">
+    <div class="tab-pane fade show active" id="profile-content" role="tabpanel" aria-labelledby="profile-tab-3">
+      <p><strong>This is some placeholder content for the Profile tab's associated content.</strong> Clicking another tab will toggle the visibility of this one for the clicked one. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+    </div>
+    <div class="tab-pane fade" id="general-settings-content" role="tabpanel" aria-labelledby="general-settings-tab">
+      <p><strong>This is some placeholder content for the General settings tab's associated content.</strong> Clicking another tab will toggle the visibility of this one for the clicked one. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+    </div>
+    <div class="tab-pane fade" id="advanced-settings-content" role="tabpanel" aria-labelledby="advanced-settings-tab">
+      <p><strong>This is some placeholder content for the Advanced settings tab's associated content.</strong> Clicking another tab will toggle the visibility of this one for the clicked one. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+    </div>
+    <div class="tab-pane fade" id="messages-content" role="tabpanel" aria-labelledby="messages-tab-1">
+      <p><strong>This is some placeholder content for the Messages tab's associated content.</strong> Clicking another tab will toggle the visibility of this one for the clicked one. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+    </div>
+  </div>
+</div>
+
+```html
+<div class="bd-example">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" id="profile-tab-with-dropdown" data-bs-toggle="tab" href="#profile-content" role="tab" aria-controls="profile-content" aria-selected="true">Profile</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Settings</a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" id="general-settings-tab" data-bs-toggle="tab" href="#general-settings-content" role="tab" aria-controls="general-settings-content" aria-selected="false">General settings</a></li>
+        <li><a class="dropdown-item" id="advanced-settings-tab" data-bs-toggle="tab" href="#advanced-settings-content" role="tab" aria-controls="advanced-settings-content" aria-selected="false">Advanced settings</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="messages-tab-2" data-bs-toggle="tab" href="#messages-content" role="tab" aria-controls="message-content" aria-selected="false">Messages</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="dropdown-tab-content">
+    <div class="tab-pane fade show active" id="profile-content" role="tabpanel" aria-labelledby="profile-tab-with-dropdown">Profile details ...</div>
+    <div class="tab-pane fade" id="general-settings-content" role="tabpanel" aria-labelledby="general-settings-tab">General settings ...</div>
+    <div class="tab-pane fade" id="advanced-settings-content" role="tabpanel" aria-labelledby="advanced-settings-tab">Advanced settings ...</div>
+    <div class="tab-pane fade" id="messages-content" role="tabpanel" aria-labelledby="messages-tab-2">Messages ...</div>
+  </div>
 </div>
 ```
 
@@ -498,25 +558,25 @@ You can activate a tab or pill navigation without writing any JavaScript by simp
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+    <button class="nav-link active" id="home-tab-3" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+    <button class="nav-link" id="profile-tab-4" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">Messages</button>
+    <button class="nav-link" id="messages-tab-3" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">Messages</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Settings</button>
+    <button class="nav-link" id="settings-tab-1" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Settings</button>
   </li>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
-  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">...</div>
-  <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">...</div>
+  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab-3">...</div>
+  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab-4">...</div>
+  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab-3">...</div>
+  <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab-1">...</div>
 </div>
 ```
 
@@ -572,24 +632,24 @@ Activates a tab element and content container. Tab should have either a `data-bs
 ```html
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+    <button class="nav-link active" id="home-tab-4" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+    <button class="nav-link" id="profile-tab-5" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">Messages</button>
+    <button class="nav-link" id="messages-tab-4" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">Messages</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Settings</button>
+    <button class="nav-link" id="settings-tab-2" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Settings</button>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">...</div>
-  <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">...</div>
+  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab-4">...</div>
+  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab-5">...</div>
+  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab-4">...</div>
+  <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab-2">...</div>
 </div>
 
 <script>
