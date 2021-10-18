@@ -3,7 +3,9 @@
 //
 
 .table {
+  --#{$variable-prefix}table-color: #{$table-color};
   --#{$variable-prefix}table-bg: #{$table-bg};
+  --#{$variable-prefix}table-border-color: #{$table-border-color};
   --#{$variable-prefix}table-accent-bg: #{$table-accent-bg};
   --#{$variable-prefix}table-striped-color: #{$table-striped-color};
   --#{$variable-prefix}table-striped-bg: #{$table-striped-bg};
@@ -14,9 +16,9 @@
 
   width: 100%;
   margin-bottom: $spacer;
-  color: $table-color;
+  color: var(--#{$variable-prefix}table-color);
   vertical-align: $table-cell-vertical-align;
-  border-color: $table-border-color;
+  border-color: var(--#{$variable-prefix}table-border-color);
 
   // Target th & td
   // We need the child combinator to prevent styles leaking to nested tables which doesn't have a `.table` class.
