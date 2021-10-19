@@ -65,7 +65,7 @@ Here's an example of all the sub-components included in a responsive light-theme
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex">
+      <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -228,7 +228,7 @@ Place various form controls and components within a navbar:
 {{< example >}}
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
-    <form class="d-flex">
+    <form class="d-flex" role="search">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
@@ -242,13 +242,19 @@ Immediate child elements of `.navbar` use flex layout and will default to `justi
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand">Navbar</a>
-    <form class="d-flex">
+    <form class="d-flex" role="search">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
   </div>
 </nav>
 {{< /example >}}
+
+{{< callout warning >}}
+#### Ensure correct search `role`
+
+In order for assistive technologies (such as screen readers) to identify a section of the page used to search content, the form should have a `role=search`.
+{{< /callout >}}
 
 Input groups work, too. If your navbar is an entire form, or mostly a form, you can use the `<form>` element as the container and save some HTML.
 
@@ -343,7 +349,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
             <a class="nav-link" href="#">About</a>
           </li>
         </ul>
-        <form class="d-flex">
+        <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-light" type="submit">Search</button>
         </form>
@@ -372,7 +378,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
             <a class="nav-link" href="#">About</a>
           </li>
         </ul>
-        <form class="d-flex">
+        <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-light" type="submit">Search</button>
         </form>
@@ -401,7 +407,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
             <a class="nav-link" href="#">About</a>
           </li>
         </ul>
-        <form class="d-flex">
+        <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
@@ -524,7 +530,7 @@ Here's an example navbar using `.navbar-nav-scroll` with `style="--bs-scroll-hei
           <a class="nav-link disabled">Link</a>
         </li>
       </ul>
-      <form class="d-flex">
+      <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -564,7 +570,7 @@ With no `.navbar-brand` shown at the smallest breakpoint:
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex">
+      <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -594,7 +600,7 @@ With a brand name shown on the left and toggler on the right:
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex">
+      <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -624,7 +630,7 @@ With a toggler on the left and brand name on the right:
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex">
+      <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -695,7 +701,7 @@ In the example below, to create an offcanvas navbar that is always collapsed acr
             </ul>
           </li>
         </ul>
-        <form class="d-flex">
+        <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
