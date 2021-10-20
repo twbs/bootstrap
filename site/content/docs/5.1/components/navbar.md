@@ -250,12 +250,6 @@ Immediate child elements of `.navbar` use flex layout and will default to `justi
 </nav>
 {{< /example >}}
 
-{{< callout warning >}}
-#### Ensure correct search `role`
-
-In order for assistive technologies (such as screen readers) to identify a section of the page used to search content, the form should have a `role="search"`.
-{{< /callout >}}
-
 Input groups work, too. If your navbar is an entire form, or mostly a form, you can use the `<form>` element as the container and save some HTML.
 
 {{< example >}}
