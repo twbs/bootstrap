@@ -113,7 +113,7 @@
     "clean-css-cli": "^5.4.2",
     "cross-env": "^7.0.3",
     "cspell": "^5.12.3",
-    "eslint": "^8.0.1",
+    "eslint": "^8.1.0",
     "eslint-config-xo": "^0.39.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-unicorn": "^37.0.1",
