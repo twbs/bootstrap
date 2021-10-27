@@ -6004,12 +6004,12 @@ textarea.form-control-lg {
 }
 .carousel-item-next:not(.carousel-item-start),
 .active.carousel-item-end {
-  transform: translateX(100%);
+  transform: translateX(-100%);
 }
 
 .carousel-item-prev:not(.carousel-item-end),
 .active.carousel-item-start {
-  transform: translateX(-100%);
+  transform: translateX(100%);
 }
 .carousel-fade .carousel-item {
   opacity: 0;
