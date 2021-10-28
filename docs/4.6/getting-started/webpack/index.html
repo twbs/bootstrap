@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Learn how to include Bootstrap in your project using Webpack.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.80.0">
+<meta name="generator" content="Hugo 0.88.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.6">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
 <!-- Documentation extras -->
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -104,13 +104,13 @@
 
   <ul class="navbar-nav ml-md-auto">
     <li class="nav-item dropdown">
-      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-expanded="false">
         v4.6
       </a>
       <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
         <a class="dropdown-item active" href="/docs/4.6/">Latest (4.6.x)</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.0/">5.0.x</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.1/">5.1.x</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="https://getbootstrap.com/docs/3.4/">v3.4.1</a>
         <a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a>
@@ -239,7 +239,7 @@
 
         </div>
 
-
+        
           <nav class="d-none d-xl-block col-xl-2 bd-toc" aria-label="Secondary navigation">
             <nav id="TableOfContents">
   <ul>
@@ -254,7 +254,7 @@
   </ul>
 </nav>
           </nav>
-
+        
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
           <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
@@ -268,9 +268,9 @@
 <p><a href="/docs/4.6/getting-started/download/#npm">Install bootstrap</a> as a Node.js module using npm.</p>
 <h2 id="importing-javascript">Importing JavaScript</h2>
 <p>Import <a href="/docs/4.6/getting-started/javascript/">Bootstrap&rsquo;s JavaScript</a> by adding this line to your app&rsquo;s entry point (usually <code>index.js</code> or <code>app.js</code>):</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="s1">&#39;bootstrap&#39;</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="s1">&#39;bootstrap&#39;</span><span class="p">;</span>
 </code></pre></div><p>Alternatively, you may <strong>import plugins individually</strong> as needed:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="s1">&#39;bootstrap/js/dist/util&#39;</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="s1">&#39;bootstrap/js/dist/util&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="s1">&#39;bootstrap/js/dist/alert&#39;</span><span class="p">;</span>
 <span class="p">...</span>
 </code></pre></div><p>Bootstrap depends on <a href="https://jquery.com/">jQuery</a> and <a href="https://popper.js.org/">Popper</a>,
@@ -280,10 +280,10 @@ to your <code>package.json</code> using <code>npm install --save jquery popper.j
 <h3 id="importing-precompiled-sass">Importing Precompiled Sass</h3>
 <p>To enjoy the full potential of Bootstrap and customize it to your needs, use the source files as a part of your project&rsquo;s bundling process.</p>
 <p>First, create your own <code>_custom.scss</code> and use it to override the <a href="/docs/4.6/getting-started/theming/">built-in custom variables</a>. Then, use your main Sass file to import your custom variables, followed by Bootstrap:</p>
-<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@import</span> <span class="s2">&#34;custom&#34;</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@import</span> <span class="s2">&#34;custom&#34;</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">&#34;~bootstrap/scss/bootstrap&#34;</span><span class="p">;</span>
 </code></pre></div><p>For Bootstrap to compile, make sure you install and use the required loaders: <a href="https://github.com/webpack-contrib/sass-loader">sass-loader</a>, <a href="https://github.com/webpack-contrib/postcss-loader">postcss-loader</a> with <a href="https://github.com/postcss/autoprefixer#webpack">Autoprefixer</a>. With minimal setup, your webpack config should include this rule or similar:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="p">...</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="p">...</span>
 <span class="p">{</span>
   <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.(scss)$/</span><span class="p">,</span>
   <span class="nx">use</span><span class="o">:</span> <span class="p">[{</span>
@@ -306,9 +306,9 @@ to your <code>package.json</code> using <code>npm install --save jquery popper.j
 <span class="p">...</span>
 </code></pre></div><h3 id="importing-compiled-css">Importing Compiled CSS</h3>
 <p>Alternatively, you may use Bootstrap&rsquo;s ready-to-use CSS by simply adding this line to your project&rsquo;s entry point:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="s1">&#39;bootstrap/dist/css/bootstrap.min.css&#39;</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="s1">&#39;bootstrap/dist/css/bootstrap.min.css&#39;</span><span class="p">;</span>
 </code></pre></div><p>In this case you may use your existing rule for <code>css</code> without any special modifications to webpack config, except you don&rsquo;t need <code>sass-loader</code> just <a href="https://github.com/webpack-contrib/style-loader">style-loader</a> and <a href="https://github.com/webpack-contrib/css-loader">css-loader</a>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="p">...</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="p">...</span>
 <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
   <span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
     <span class="p">{</span>
@@ -323,10 +323,10 @@ to your <code>package.json</code> using <code>npm install --save jquery popper.j
       </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/docs/4.6/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
 
-<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
