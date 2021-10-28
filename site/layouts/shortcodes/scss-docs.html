@@ -6,11 +6,13 @@
 
   Optional parameters:
     * strip-default: Remove the ` !default` flag from variable assignments - default: `true`
+    * unindent: Remove indentation by `n` spaces - default: `0`
 */ -}}
 
 {{- $name := .Get "name" -}}
 {{- $file := .Get "file" -}}
 {{- $strip_default := .Get "strip-default" | default "true" -}}
+{{- $unindent := .Get "unindent" | default 0 -}}
 
 {{- /* If any parameters are missing, print an error and exit */ -}}
 {{- if or (not $name) (not $file) -}}
@@ -39,5 +41,16 @@
     {{- $match = replace $match " !default" "" -}}
   {{- end -}}
 
-  {{- highlight $match "scss" "" -}}
+  {{- $output := "" -}}
+  {{- if (gt $unindent 0) -}}
+    {{- $prefix := (strings.Repeat $unindent " ") -}}
+    {{- range $line := split $match "\n" -}}
+      {{- $line = strings.TrimPrefix $prefix $line -}}
+      {{ $output = printf "%s%s\n" $output $line }}
+    {{- end -}}
+    {{- $output = chomp $output -}}
+  {{- else -}}
+    {{- $output = $match -}}
+  {{- end -}}
+  {{- highlight $output "scss" "" -}}
 {{- end -}}
