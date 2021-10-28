@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="A slideshow component for cycling through elements—images or slides of text—like a carousel.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.80.0">
+<meta name="generator" content="Hugo 0.88.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.6">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
 <!-- Documentation extras -->
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -104,13 +104,13 @@
 
   <ul class="navbar-nav ml-md-auto">
     <li class="nav-item dropdown">
-      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-expanded="false">
         v4.6
       </a>
       <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
         <a class="dropdown-item active" href="/docs/4.6/">Latest (4.6.x)</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.0/">5.0.x</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.1/">5.1.x</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="https://getbootstrap.com/docs/3.4/">v3.4.1</a>
         <a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a>
@@ -284,7 +284,7 @@
 
         </div>
 
-
+        
           <nav class="d-none d-xl-block col-xl-2 bd-toc" aria-label="Secondary navigation">
             <nav id="TableOfContents">
   <ul>
@@ -325,7 +325,7 @@
   </ul>
 </nav>
           </nav>
-
+        
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
           <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
@@ -346,7 +346,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <p>Lastly, if you&rsquo;re building our JavaScript from source, it <a href="/docs/4.6/getting-started/javascript/#util">requires <code>util.js</code></a>.</p>
 <h2 id="example">Example</h2>
 <p>Carousels don&rsquo;t automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content. While carousels support previous/next controls and indicators, they&rsquo;re not explicitly required. Add and customize as you see fit.</p>
-<p><strong>The <code>.active</code> class needs to be added to one of the slides</strong> otherwise the carousel will not be visible. Also be sure to set a unique id on the <code>.carousel</code> for optional controls, especially if you&rsquo;re using multiple carousels on a single page. Control and indicator elements must have a <code>data-target</code> attribute (or <code>href</code> for links) that matches the id of the <code>.carousel</code> element.</p>
+<p><strong>The <code>.active</code> class needs to be added to one of the slides</strong> otherwise the carousel will not be visible. Also be sure to set a unique <code>id</code> on the <code>.carousel</code> for optional controls, especially if you&rsquo;re using multiple carousels on a single page. Control and indicator elements must have a <code>data-target</code> attribute (or <code>href</code> for links) that matches the <code>id</code> of the <code>.carousel</code> element.</p>
 <h3 id="slides-only">Slides only</h3>
 <p>Here&rsquo;s a carousel with slides only. Note the presence of the <code>.d-block</code> and <code>.w-100</code> on carousel images to prevent browser default image alignment.</p>
 <div class="bd-example">
@@ -366,7 +366,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     </div>
   </div>
 </div>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;carouselExampleSlidesOnly&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel slide&#34;</span> <span class="na">data-ride</span><span class="o">=</span><span class="s">&#34;carousel&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;carouselExampleSlidesOnly&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel slide&#34;</span> <span class="na">data-ride</span><span class="o">=</span><span class="s">&#34;carousel&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-inner&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-item active&#34;</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;...&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;d-block w-100&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;...&#34;</span><span class="p">&gt;</span>
@@ -380,7 +380,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
 <h3 id="with-controls">With controls</h3>
-<p>Adding in the previous and next controls:</p>
+<p>Adding in the previous and next controls. We recommend using <code>&lt;button&gt;</code> elements, but you can also use <code>&lt;a&gt;</code> elements with <code>role=&quot;button&quot;</code>.</p>
 <div class="bd-example">
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
@@ -397,16 +397,16 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+ <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+  </button>
+  <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
-  </a>
+  </button>
 </div>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;carouselExampleControls&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel slide&#34;</span> <span class="na">data-ride</span><span class="o">=</span><span class="s">&#34;carousel&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;carouselExampleControls&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel slide&#34;</span> <span class="na">data-ride</span><span class="o">=</span><span class="s">&#34;carousel&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-inner&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-item active&#34;</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;...&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;d-block w-100&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;...&#34;</span><span class="p">&gt;</span>
@@ -418,14 +418,14 @@ The animation effect of this component is dependent on the <code>prefers-reduced
       <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;...&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;d-block w-100&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;...&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#carouselExampleControls&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;prev&#34;</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#carouselExampleControls&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;prev&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev-icon&#34;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;sr-only&#34;</span><span class="p">&gt;</span>Previous<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#carouselExampleControls&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;next&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#carouselExampleControls&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;next&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next-icon&#34;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;sr-only&#34;</span><span class="p">&gt;</span>Next<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
 <h3 id="with-indicators">With indicators</h3>
 <p>You can also add the indicators to the carousel, alongside the controls, too.</p>
@@ -450,16 +450,16 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+  <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+  </button>
+  <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
-  </a>
+  </button>
 </div>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;carouselExampleIndicators&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel slide&#34;</span> <span class="na">data-ride</span><span class="o">=</span><span class="s">&#34;carousel&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;carouselExampleIndicators&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel slide&#34;</span> <span class="na">data-ride</span><span class="o">=</span><span class="s">&#34;carousel&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">ol</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-indicators&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">li</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#carouselExampleIndicators&#34;</span> <span class="na">data-slide-to</span><span class="o">=</span><span class="s">&#34;0&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;active&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">li</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#carouselExampleIndicators&#34;</span> <span class="na">data-slide-to</span><span class="o">=</span><span class="s">&#34;1&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
@@ -476,14 +476,14 @@ The animation effect of this component is dependent on the <code>prefers-reduced
       <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;...&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;d-block w-100&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;...&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#carouselExampleIndicators&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;prev&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#carouselExampleIndicators&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;prev&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev-icon&#34;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;sr-only&#34;</span><span class="p">&gt;</span>Previous<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#carouselExampleIndicators&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;next&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#carouselExampleIndicators&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;next&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next-icon&#34;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;sr-only&#34;</span><span class="p">&gt;</span>Next<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
 <h3 id="with-captions">With captions</h3>
 <p>Add captions to your slides easily with the <code>.carousel-caption</code> element within any <code>.carousel-item</code>. They can be easily hidden on smaller viewports, as shown below, with optional <a href="/docs/4.6/utilities/display/">display utilities</a>. We hide them initially with <code>.d-none</code> and bring them back on medium-sized devices with <code>.d-md-block</code>.</p>
@@ -520,16 +520,16 @@ The animation effect of this component is dependent on the <code>prefers-reduced
       </div>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+  <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+  </button>
+  <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
-  </a>
+  </button>
 </div>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;carouselExampleCaptions&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel slide&#34;</span> <span class="na">data-ride</span><span class="o">=</span><span class="s">&#34;carousel&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;carouselExampleCaptions&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel slide&#34;</span> <span class="na">data-ride</span><span class="o">=</span><span class="s">&#34;carousel&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">ol</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-indicators&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">li</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#carouselExampleCaptions&#34;</span> <span class="na">data-slide-to</span><span class="o">=</span><span class="s">&#34;0&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;active&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">li</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#carouselExampleCaptions&#34;</span> <span class="na">data-slide-to</span><span class="o">=</span><span class="s">&#34;1&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
@@ -558,14 +558,14 @@ The animation effect of this component is dependent on the <code>prefers-reduced
       <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#carouselExampleCaptions&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;prev&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#carouselExampleCaptions&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;prev&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev-icon&#34;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;sr-only&#34;</span><span class="p">&gt;</span>Previous<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#carouselExampleCaptions&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;next&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#carouselExampleCaptions&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;next&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next-icon&#34;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;sr-only&#34;</span><span class="p">&gt;</span>Next<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
 <h3 id="crossfade">Crossfade</h3>
 <p>Add <code>.carousel-fade</code> to your carousel to animate slides with a fade transition instead of a slide.</p>
@@ -585,16 +585,16 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+  <button class="carousel-control-prev" type="button" data-target="#carouselExampleFade" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+  </button>
+  <button class="carousel-control-next" type="button" data-target="#carouselExampleFade" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
-  </a>
+  </button>
 </div>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;carouselExampleFade&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel slide carousel-fade&#34;</span> <span class="na">data-ride</span><span class="o">=</span><span class="s">&#34;carousel&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;carouselExampleFade&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel slide carousel-fade&#34;</span> <span class="na">data-ride</span><span class="o">=</span><span class="s">&#34;carousel&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-inner&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-item active&#34;</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;...&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;d-block w-100&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;...&#34;</span><span class="p">&gt;</span>
@@ -606,14 +606,14 @@ The animation effect of this component is dependent on the <code>prefers-reduced
       <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;...&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;d-block w-100&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;...&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#carouselExampleFade&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;prev&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#carouselExampleFade&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;prev&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev-icon&#34;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;sr-only&#34;</span><span class="p">&gt;</span>Previous<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#carouselExampleFade&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;next&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#carouselExampleFade&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;next&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next-icon&#34;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;sr-only&#34;</span><span class="p">&gt;</span>Next<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
 <h3 id="individual-carousel-item-interval">Individual <code>.carousel-item</code> interval</h3>
 <p>Add <code>data-interval=&quot;&quot;</code> to a <code>.carousel-item</code> to change the amount of time to delay between automatically cycling to the next item.</p>
@@ -633,16 +633,16 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+  <button class="carousel-control-prev" type="button" data-target="#carouselExampleInterval" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+  </button>
+  <button class="carousel-control-next" type="button" data-target="#carouselExampleInterval" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
-  </a>
+  </button>
 </div>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;carouselExampleInterval&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel slide&#34;</span> <span class="na">data-ride</span><span class="o">=</span><span class="s">&#34;carousel&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;carouselExampleInterval&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel slide&#34;</span> <span class="na">data-ride</span><span class="o">=</span><span class="s">&#34;carousel&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-inner&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-item active&#34;</span> <span class="na">data-interval</span><span class="o">=</span><span class="s">&#34;10000&#34;</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;...&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;d-block w-100&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;...&#34;</span><span class="p">&gt;</span>
@@ -654,14 +654,14 @@ The animation effect of this component is dependent on the <code>prefers-reduced
       <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;...&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;d-block w-100&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;...&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#carouselExampleInterval&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;prev&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#carouselExampleInterval&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;prev&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev-icon&#34;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;sr-only&#34;</span><span class="p">&gt;</span>Previous<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#carouselExampleInterval&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;next&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#carouselExampleInterval&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;next&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next-icon&#34;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;sr-only&#34;</span><span class="p">&gt;</span>Next<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
 <h3 id="disable-touch-swiping">Disable touch swiping</h3>
 <p>Carousels support swiping left/right on touchscreen devices to move between slides. This can be disabled using the <code>data-touch</code> attribute. The example below also does not include the <code>data-ride</code> attribute and has <code>data-interval=&quot;false&quot;</code> so it doesn&rsquo;t autoplay.</p>
@@ -681,16 +681,16 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleControlsNoTouching" role="button" data-slide="prev">
+  <button class="carousel-control-prev" type="button" data-target="#carouselExampleControlsNoTouching" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControlsNoTouching" role="button" data-slide="next">
+  </button>
+  <button class="carousel-control-next" type="button" data-target="#carouselExampleControlsNoTouching" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
-  </a>
+  </button>
 </div>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;carouselExampleControlsNoTouching&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel slide&#34;</span> <span class="na">data-touch</span><span class="o">=</span><span class="s">&#34;false&#34;</span> <span class="na">data-interval</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;carouselExampleControlsNoTouching&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel slide&#34;</span> <span class="na">data-touch</span><span class="o">=</span><span class="s">&#34;false&#34;</span> <span class="na">data-interval</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-inner&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-item active&#34;</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;...&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;d-block w-100&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;...&#34;</span><span class="p">&gt;</span>
@@ -702,14 +702,14 @@ The animation effect of this component is dependent on the <code>prefers-reduced
       <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;...&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;d-block w-100&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;...&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#carouselExampleControlsNoTouching&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;prev&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#carouselExampleControlsNoTouching&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;prev&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-prev-icon&#34;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;sr-only&#34;</span><span class="p">&gt;</span>Previous<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#carouselExampleControlsNoTouching&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;next&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#carouselExampleControlsNoTouching&#34;</span> <span class="na">data-slide</span><span class="o">=</span><span class="s">&#34;next&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;carousel-control-next-icon&#34;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;sr-only&#34;</span><span class="p">&gt;</span>Next<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
 <h2 id="usage">Usage</h2>
 <h3 id="via-data-attributes">Via data attributes</h3>
@@ -717,7 +717,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <p>The <code>data-ride=&quot;carousel&quot;</code> attribute is used to mark a carousel as animating starting at page load. If you don&rsquo;t use <code>data-ride=&quot;carousel&quot;</code> to initialize your carousel, you have to initialize it yourself. <strong>It cannot be used in combination with (redundant and unnecessary) explicit JavaScript initialization of the same carousel.</strong></p>
 <h3 id="via-javascript">Via JavaScript</h3>
 <p>Call carousel manually with:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.carousel&#39;</span><span class="p">).</span><span class="nx">carousel</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.carousel&#39;</span><span class="p">).</span><span class="nx">carousel</span><span class="p">()</span>
 </code></pre></div><h3 id="options">Options</h3>
 <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=&quot;&quot;</code>.</p>
 <table class="table table-bordered table-striped">
@@ -779,7 +779,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 
 <h4 id="carouseloptions"><code>.carousel(options)</code></h4>
 <p>Initializes the carousel with an optional options <code>object</code> and starts cycling through items.</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.carousel&#39;</span><span class="p">).</span><span class="nx">carousel</span><span class="p">({</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.carousel&#39;</span><span class="p">).</span><span class="nx">carousel</span><span class="p">({</span>
   <span class="nx">interval</span><span class="o">:</span> <span class="mi">2000</span>
 <span class="p">})</span>
 </code></pre></div><h4 id="carouselcycle"><code>.carousel('cycle')</code></h4>
@@ -825,7 +825,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     </tr>
   </tbody>
 </table>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myCarousel&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;slide.bs.carousel&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myCarousel&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;slide.bs.carousel&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="c1">// do something...
 </span><span class="c1"></span><span class="p">})</span>
 </code></pre></div><h3 id="change-transition-duration">Change transition duration</h3>
@@ -835,10 +835,10 @@ The animation effect of this component is dependent on the <code>prefers-reduced
       </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/docs/4.6/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
 
-<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>

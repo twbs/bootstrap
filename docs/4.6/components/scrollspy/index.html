@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.80.0">
+<meta name="generator" content="Hugo 0.88.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.6">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
 <!-- Documentation extras -->
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -104,13 +104,13 @@
 
   <ul class="navbar-nav ml-md-auto">
     <li class="nav-item dropdown">
-      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-expanded="false">
         v4.6
       </a>
       <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
         <a class="dropdown-item active" href="/docs/4.6/">Latest (4.6.x)</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.0/">5.0.x</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.1/">5.1.x</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="https://getbootstrap.com/docs/3.4/">v3.4.1</a>
         <a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a>
@@ -284,7 +284,7 @@
 
         </div>
 
-
+        
           <nav class="d-none d-xl-block col-xl-2 bd-toc" aria-label="Secondary navigation">
             <nav id="TableOfContents">
   <ul>
@@ -309,7 +309,7 @@
   </ul>
 </nav>
           </nav>
-
+        
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
           <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
@@ -342,7 +342,7 @@
         <a class="nav-link" href="#mdo">@mdo</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="#one">one</a>
           <a class="dropdown-item" href="#two">two</a>
@@ -366,7 +366,7 @@
     <p>And some more placeholder content, for good measure.</p>
   </div>
 </div>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;navbar-example2&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;navbar-example2&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Navbar<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav nav-pills&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-item&#34;</span><span class="p">&gt;</span>
@@ -376,7 +376,7 @@
       <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#mdo&#34;</span><span class="p">&gt;</span>@mdo<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-item dropdown&#34;</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link dropdown-toggle&#34;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&#34;dropdown&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">aria-haspopup</span><span class="o">=</span><span class="s">&#34;true&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>Dropdown<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link dropdown-toggle&#34;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&#34;dropdown&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>Dropdown<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-menu&#34;</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-item&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#one&#34;</span><span class="p">&gt;</span>one<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-item&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#two&#34;</span><span class="p">&gt;</span>two<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
@@ -440,7 +440,7 @@
     </div>
   </div>
 </div>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;navbar-example3&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;navbar-example3&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Navbar<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav nav-pills flex-column&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#item-1&#34;</span><span class="p">&gt;</span>Item 1<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
@@ -499,7 +499,7 @@
     </div>
   </div>
 </div>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;list-example&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;list-group&#34;</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;list-example&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;list-group&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;list-group-item list-group-item-action&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#list-item-1&#34;</span><span class="p">&gt;</span>Item 1<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;list-group-item list-group-item-action&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#list-item-2&#34;</span><span class="p">&gt;</span>Item 2<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;list-group-item list-group-item-action&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#list-item-3&#34;</span><span class="p">&gt;</span>Item 3<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
@@ -518,10 +518,10 @@
 </code></pre></div><h2 id="usage">Usage</h2>
 <h3 id="via-data-attributes">Via data attributes</h3>
 <p>To easily add scrollspy behavior to your topbar navigation, add <code>data-spy=&quot;scroll&quot;</code> to the element you want to spy on (most typically this would be the <code>&lt;body&gt;</code>). Then add the <code>data-target</code> attribute with the ID or class of the parent element of any Bootstrap <code>.nav</code> component.</p>
-<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">body</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="nt">body</span> <span class="p">{</span>
   <span class="k">position</span><span class="p">:</span> <span class="kc">relative</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">body</span> <span class="na">data-spy</span><span class="o">=</span><span class="s">&#34;scroll&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#navbar-example&#34;</span><span class="p">&gt;</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">body</span> <span class="na">data-spy</span><span class="o">=</span><span class="s">&#34;scroll&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#navbar-example&#34;</span><span class="p">&gt;</span>
   ...
   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;navbar-example&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav nav-tabs&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;tablist&#34;</span><span class="p">&gt;</span>
@@ -532,7 +532,7 @@
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </code></pre></div><h3 id="via-javascript">Via JavaScript</h3>
 <p>After adding <code>position: relative;</code> in your CSS, call the scrollspy via JavaScript:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">scrollspy</span><span class="p">({</span> <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;#navbar-example&#39;</span> <span class="p">})</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">scrollspy</span><span class="p">({</span> <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;#navbar-example&#39;</span> <span class="p">})</span>
 </code></pre></div><div class="bd-callout bd-callout-danger">
 <h4 id="resolvable-id-targets-required">Resolvable ID targets required</h4>
 <p>Navbar links must have resolvable id targets. For example, a <code>&lt;a href=&quot;#home&quot;&gt;home&lt;/a&gt;</code> must correspond to something in the DOM like <code>&lt;div id=&quot;home&quot;&gt;&lt;/div&gt;</code>.
@@ -546,7 +546,7 @@
 <h3 id="methods">Methods</h3>
 <h4 id="scrollspyrefresh"><code>.scrollspy('refresh')</code></h4>
 <p>When using scrollspy in conjunction with adding or removing of elements from the DOM, you&rsquo;ll need to call the refresh method like so:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;[data-spy=&#34;scroll&#34;]&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;[data-spy=&#34;scroll&#34;]&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">$spy</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">scrollspy</span><span class="p">(</span><span class="s1">&#39;refresh&#39;</span><span class="p">)</span>
 <span class="p">})</span>
 </code></pre></div><h4 id="scrollspydispose"><code>.scrollspy('dispose')</code></h4>
@@ -598,7 +598,7 @@
     </tr>
   </tbody>
 </table>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;[data-spy=&#34;scroll&#34;]&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;activate.bs.scrollspy&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;[data-spy=&#34;scroll&#34;]&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;activate.bs.scrollspy&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="c1">// do something...
 </span><span class="c1"></span><span class="p">})</span>
 </code></pre></div>
@@ -606,10 +606,10 @@
       </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/docs/4.6/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
 
-<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>

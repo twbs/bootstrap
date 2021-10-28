@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Indicate the current page&rsquo;s location within a navigational hierarchy that automatically adds separators via CSS.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.80.0">
+<meta name="generator" content="Hugo 0.88.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.6">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
 <!-- Documentation extras -->
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -104,13 +104,13 @@
 
   <ul class="navbar-nav ml-md-auto">
     <li class="nav-item dropdown">
-      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-expanded="false">
         v4.6
       </a>
       <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
         <a class="dropdown-item active" href="/docs/4.6/">Latest (4.6.x)</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.0/">5.0.x</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.1/">5.1.x</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="https://getbootstrap.com/docs/3.4/">v3.4.1</a>
         <a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a>
@@ -284,7 +284,7 @@
 
         </div>
 
-
+        
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
           <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
@@ -316,7 +316,7 @@
     <li class="breadcrumb-item active" aria-current="page">Data</li>
   </ol>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;breadcrumb&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;breadcrumb&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">ol</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;breadcrumb&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;breadcrumb-item active&#34;</span> <span class="na">aria-current</span><span class="o">=</span><span class="s">&#34;page&#34;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
@@ -338,11 +338,11 @@
 <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span></code></pre></div>
 <h2 id="changing-the-separator">Changing the separator</h2>
 <p>Separators are automatically added in CSS through <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::before"><code>::before</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/content"><code>content</code></a>. They can be changed by changing <code>$breadcrumb-divider</code>. The <a href="https://sass-lang.com/documentation/modules/string#quote">quote</a> function is needed to generate the quotes around a string, so if you want <code>&gt;</code> as separator, you can use this:</p>
-<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$breadcrumb-divider</span><span class="o">:</span> <span class="nf">quote</span><span class="p">(</span><span class="s2">&#34;&gt;&#34;</span><span class="p">);</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$breadcrumb-divider</span><span class="o">:</span> <span class="nf">quote</span><span class="p">(</span><span class="s2">&#34;&gt;&#34;</span><span class="p">);</span>
 </code></pre></div><p>It&rsquo;s also possible to use a <strong>base64 embedded SVG icon</strong>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$breadcrumb-divider</span><span class="o">:</span> <span class="sx">url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxwYXRoIGQ9Ik0yLjUgMEwxIDEuNSAzLjUgNCAxIDYuNSAyLjUgOGw0LTQtNC00eiIgZmlsbD0iY3VycmVudENvbG9yIi8+PC9zdmc+)</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$breadcrumb-divider</span><span class="o">:</span> <span class="sx">url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxwYXRoIGQ9Ik0yLjUgMEwxIDEuNSAzLjUgNCAxIDYuNSAyLjUgOGw0LTQtNC00eiIgZmlsbD0iY3VycmVudENvbG9yIi8+PC9zdmc+)</span><span class="p">;</span>
 </code></pre></div><p>The separator can be removed by setting <code>$breadcrumb-divider</code> to <code>none</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$breadcrumb-divider</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="nv">$breadcrumb-divider</span><span class="o">:</span> <span class="ni">none</span><span class="p">;</span>
 </code></pre></div><h2 id="accessibility">Accessibility</h2>
 <p>Since breadcrumbs provide a navigation, it&rsquo;s a good idea to add a meaningful label such as <code>aria-label=&quot;breadcrumb&quot;</code> to describe the type of navigation provided in the <code>&lt;nav&gt;</code> element, as well as applying an <code>aria-current=&quot;page&quot;</code> to the last item of the set to indicate that it represents the current page.</p>
 <p>For more information, see the <a href="https://www.w3.org/TR/wai-aria-practices/#breadcrumb">WAI-ARIA Authoring Practices for the breadcrumb pattern</a>.</p>
@@ -351,10 +351,10 @@
       </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/docs/4.6/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
 
-<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Learn how to use Bootstrap&rsquo;s included npm scripts to build our documentation, compile source code, run tests, and more.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.80.0">
+<meta name="generator" content="Hugo 0.88.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.6">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
 <!-- Documentation extras -->
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -104,13 +104,13 @@
 
   <ul class="navbar-nav ml-md-auto">
     <li class="nav-item dropdown">
-      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-expanded="false">
         v4.6
       </a>
       <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
         <a class="dropdown-item active" href="/docs/4.6/">Latest (4.6.x)</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.0/">5.0.x</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.1/">5.1.x</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="https://getbootstrap.com/docs/3.4/">v3.4.1</a>
         <a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a>
@@ -239,7 +239,7 @@
 
         </div>
 
-
+        
           <nav class="d-none d-xl-block col-xl-2 bd-toc" aria-label="Secondary navigation">
             <nav id="TableOfContents">
   <ul>
@@ -252,7 +252,7 @@
   </ul>
 </nav>
           </nav>
-
+        
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
           <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
@@ -263,16 +263,16 @@
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="tooling-setup">Tooling setup</h2>
-<p>Bootstrap uses <a href="https://docs.npmjs.com/misc/scripts/">npm scripts</a> for its build system. Our <a href="https://github.com/twbs/bootstrap/blob/v4.6.0/package.json">package.json</a> includes convenient methods for working with the framework, including compiling code, running tests, and more.</p>
+<p>Bootstrap uses <a href="https://docs.npmjs.com/misc/scripts/">npm scripts</a> for its build system. Our <a href="https://github.com/twbs/bootstrap/blob/v4.6.1/package.json">package.json</a> includes convenient methods for working with the framework, including compiling code, running tests, and more.</p>
 <p>To use our build system and run our documentation locally, you&rsquo;ll need a copy of Bootstrap&rsquo;s source files and Node. Follow these steps and you should be ready to rock:</p>
 <ol>
 <li><a href="https://nodejs.org/en/download/">Download and install Node.js</a>, which we use to manage our dependencies.</li>
-<li>Either <a href="https://github.com/twbs/bootstrap/archive/v4.6.0.zip">download Bootstrap&rsquo;s sources</a> or fork <a href="https://github.com/twbs/bootstrap">Bootstrap&rsquo;s repository</a>.</li>
-<li>Navigate to the root <code>/bootstrap</code> directory and run <code>npm install</code> to install our local dependencies listed in <a href="https://github.com/twbs/bootstrap/blob/v4.6.0/package.json">package.json</a>.</li>
+<li>Either <a href="https://github.com/twbs/bootstrap/archive/v4.6.1.zip">download Bootstrap&rsquo;s sources</a> or fork <a href="https://github.com/twbs/bootstrap">Bootstrap&rsquo;s repository</a>.</li>
+<li>Navigate to the root <code>/bootstrap</code> directory and run <code>npm install</code> to install our local dependencies listed in <a href="https://github.com/twbs/bootstrap/blob/v4.6.1/package.json">package.json</a>.</li>
 </ol>
 <p>When completed, you&rsquo;ll be able to run the various commands provided from the command line.</p>
 <h2 id="using-npm-scripts">Using npm scripts</h2>
-<p>Our <a href="https://github.com/twbs/bootstrap/blob/v4.6.0/package.json">package.json</a> includes the following commands and tasks:</p>
+<p>Our <a href="https://github.com/twbs/bootstrap/blob/v4.6.1/package.json">package.json</a> includes the following commands and tasks:</p>
 <table>
 <thead>
 <tr>
@@ -306,7 +306,7 @@
 <p>We increase the Sass rounding precision to 6 (by default, it&rsquo;s 5 in Node Sass) to prevent issues with browser rounding. If you use Dart Sass this won&rsquo;t be something you need to adjust, as that compiler uses a rounding precision of 10 and for efficiency reasons does not allow it to be adjusted.</p>
 <h2 id="autoprefixer">Autoprefixer</h2>
 <p>Bootstrap uses <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> (included in our build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.</p>
-<p>We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See <a href="https://github.com/twbs/bootstrap/blob/v4.6.0/.browserslistrc">.browserslistrc</a> for details.</p>
+<p>We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See <a href="https://github.com/twbs/bootstrap/blob/v4.6.1/.browserslistrc">.browserslistrc</a> for details.</p>
 <h2 id="local-documentation">Local documentation</h2>
 <p>Running our documentation locally requires the use of Hugo, which gets installed via the <a href="https://www.npmjs.com/package/hugo-bin">hugo-bin</a> npm package. Hugo is a blazingly fast and quite extensible static site generator that provides us: basic includes, Markdown-based files, templates, and more. Here&rsquo;s how to get it started:</p>
 <ol>
@@ -322,10 +322,10 @@
       </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/docs/4.6/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
 
-<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>

@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Documentation and examples for Bootstrap&rsquo;s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin.">
+<meta name="description" content="Documentation and examples for Bootstrap&rsquo;s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, collapse plugin, and more.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.80.0">
+<meta name="generator" content="Hugo 0.88.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.6">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
 <!-- Documentation extras -->
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -39,13 +39,13 @@
 <meta name="twitter:site" content="@getbootstrap">
 <meta name="twitter:creator" content="@getbootstrap">
 <meta name="twitter:title" content="Navbar">
-<meta name="twitter:description" content="Documentation and examples for Bootstrap&rsquo;s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin.">
+<meta name="twitter:description" content="Documentation and examples for Bootstrap&rsquo;s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, collapse plugin, and more.">
 <meta name="twitter:image" content="https://getbootstrap.com/docs/4.6/assets/brand/bootstrap-social-logo.png">
 
 <!-- Facebook -->
 <meta property="og:url" content="https://getbootstrap.com/docs/4.6/components/navbar/">
 <meta property="og:title" content="Navbar">
-<meta property="og:description" content="Documentation and examples for Bootstrap&rsquo;s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin.">
+<meta property="og:description" content="Documentation and examples for Bootstrap&rsquo;s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, collapse plugin, and more.">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://getbootstrap.com/docs/4.6/assets/brand/bootstrap-social.png">
 <meta property="og:image:type" content="image/png">
@@ -104,13 +104,13 @@
 
   <ul class="navbar-nav ml-md-auto">
     <li class="nav-item dropdown">
-      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-expanded="false">
         v4.6
       </a>
       <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
         <a class="dropdown-item active" href="/docs/4.6/">Latest (4.6.x)</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.0/">5.0.x</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.1/">5.1.x</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="https://getbootstrap.com/docs/3.4/">v3.4.1</a>
         <a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a>
@@ -284,7 +284,7 @@
 
         </div>
 
-
+        
           <nav class="d-none d-xl-block col-xl-2 bd-toc" aria-label="Secondary navigation">
             <nav id="TableOfContents">
   <ul>
@@ -310,14 +310,14 @@
   </ul>
 </nav>
           </nav>
-
+        
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
           <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
             <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/blob/v4-dev/site/content/docs/4.6/components/navbar.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
             <h1 class="bd-title" id="content">Navbar</h1>
           </div>
-          <p class="bd-lead">Documentation and examples for Bootstrap&rsquo;s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin.</p>
+          <p class="bd-lead">Documentation and examples for Bootstrap&rsquo;s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, collapse plugin, and more.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="how-it-works">How it works</h2>
@@ -361,7 +361,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         <a class="nav-link" href="#">Link</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
           Dropdown
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -372,7 +372,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link disabled">Disabled</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -381,7 +381,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     </form>
   </div>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Navbar<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&#34;collapse&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#navbarSupportedContent&#34;</span> <span class="na">aria-controls</span><span class="o">=</span><span class="s">&#34;navbarSupportedContent&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Toggle navigation&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler-icon&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
@@ -396,7 +396,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Link<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-item dropdown&#34;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link dropdown-toggle&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;navbarDropdown&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&#34;dropdown&#34;</span> <span class="na">aria-haspopup</span><span class="o">=</span><span class="s">&#34;true&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link dropdown-toggle&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;navbarDropdown&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&#34;dropdown&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>
           Dropdown
         <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-menu&#34;</span> <span class="na">aria-labelledby</span><span class="o">=</span><span class="s">&#34;navbarDropdown&#34;</span><span class="p">&gt;</span>
@@ -407,7 +407,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-item&#34;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link disabled&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span> <span class="na">tabindex</span><span class="o">=</span><span class="s">&#34;-1&#34;</span> <span class="na">aria-disabled</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link disabled&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">form</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-inline my-2 my-lg-0&#34;</span><span class="p">&gt;</span>
@@ -429,7 +429,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <nav class="navbar navbar-light bg-light">
   <span class="navbar-brand mb-0 h1">Navbar</span>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- As a link --&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- As a link --&gt;</span>
 <span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Navbar<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
@@ -446,7 +446,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     <img src="/docs/4.6/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
   </a>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- Just an image --&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- Just an image --&gt;</span>
 <span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/docs/4.6/assets/brand/bootstrap-solid.svg&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;30&#34;</span> <span class="na">height</span><span class="o">=</span><span class="s">&#34;30&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">&gt;</span>
@@ -460,7 +460,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     Bootstrap
   </a>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- Image and text --&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- Image and text --&gt;</span>
 <span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/docs/4.6/assets/brand/bootstrap-solid.svg&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;30&#34;</span> <span class="na">height</span><span class="o">=</span><span class="s">&#34;30&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;d-inline-block align-top&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">&gt;</span>
@@ -488,12 +488,12 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         <a class="nav-link" href="#">Pricing</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link disabled">Disabled</a>
       </li>
     </ul>
   </div>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Navbar<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&#34;collapse&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#navbarNav&#34;</span> <span class="na">aria-controls</span><span class="o">=</span><span class="s">&#34;navbarNav&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Toggle navigation&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler-icon&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
@@ -510,7 +510,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Pricing<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-item&#34;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link disabled&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span> <span class="na">tabindex</span><span class="o">=</span><span class="s">&#34;-1&#34;</span> <span class="na">aria-disabled</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link disabled&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -527,11 +527,11 @@ The animation effect of this component is dependent on the <code>prefers-reduced
       <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
       <a class="nav-link" href="#">Features</a>
       <a class="nav-link" href="#">Pricing</a>
-      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      <a class="nav-link disabled">Disabled</a>
     </div>
   </div>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Navbar<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&#34;collapse&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#navbarNavAltMarkup&#34;</span> <span class="na">aria-controls</span><span class="o">=</span><span class="s">&#34;navbarNavAltMarkup&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Toggle navigation&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler-icon&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
@@ -541,7 +541,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
       <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link active&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Home <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;sr-only&#34;</span><span class="p">&gt;</span>(current)<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Features<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Pricing<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link disabled&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span> <span class="na">tabindex</span><span class="o">=</span><span class="s">&#34;-1&#34;</span> <span class="na">aria-disabled</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link disabled&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span></code></pre></div>
@@ -564,7 +564,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         <a class="nav-link" href="#">Pricing</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
           Dropdown link
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -576,7 +576,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     </ul>
   </div>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Navbar<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&#34;collapse&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#navbarNavDropdown&#34;</span> <span class="na">aria-controls</span><span class="o">=</span><span class="s">&#34;navbarNavDropdown&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Toggle navigation&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler-icon&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
@@ -593,7 +593,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Pricing<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-item dropdown&#34;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link dropdown-toggle&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;navbarDropdownMenuLink&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&#34;dropdown&#34;</span> <span class="na">aria-haspopup</span><span class="o">=</span><span class="s">&#34;true&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link dropdown-toggle&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;navbarDropdownMenuLink&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&#34;dropdown&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>
           Dropdown link
         <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-menu&#34;</span> <span class="na">aria-labelledby</span><span class="o">=</span><span class="s">&#34;navbarDropdownMenuLink&#34;</span><span class="p">&gt;</span>
@@ -614,7 +614,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
   </form>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">form</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-inline&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">input</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-control mr-sm-2&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;search&#34;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;Search&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Search&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-outline-success my-2 my-sm-0&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;submit&#34;</span><span class="p">&gt;</span>Search<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
@@ -629,7 +629,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
   </form>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span><span class="p">&gt;</span>Navbar<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">form</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-inline&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">input</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-control mr-sm-2&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;search&#34;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;Search&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Search&#34;</span><span class="p">&gt;</span>
@@ -648,7 +648,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     </div>
   </form>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">form</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-inline&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;input-group&#34;</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;input-group-prepend&#34;</span><span class="p">&gt;</span>
@@ -666,7 +666,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     <button class="btn btn-sm btn-outline-secondary" type="button">Smaller button</button>
   </form>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">form</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-inline&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-outline-success&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span><span class="p">&gt;</span>Main button<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-sm btn-outline-secondary&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span><span class="p">&gt;</span>Smaller button<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
@@ -680,7 +680,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     Navbar text with an inline element
   </span>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-text&#34;</span><span class="p">&gt;</span>
     Navbar text with an inline element
   <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
@@ -709,7 +709,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     </span>
   </div>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Navbar w/ text<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&#34;collapse&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#navbarText&#34;</span> <span class="na">aria-controls</span><span class="o">=</span><span class="s">&#34;navbarText&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Toggle navigation&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler-icon&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
@@ -813,7 +813,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     </div>
   </nav>
 </div>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-dark bg-dark&#34;</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-dark bg-dark&#34;</span><span class="p">&gt;</span>
   <span class="c">&lt;!-- Navbar content --&gt;</span>
 <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
 
@@ -832,7 +832,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     <a class="navbar-brand" href="#">Navbar</a>
   </nav>
 </div>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;container&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;container&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Navbar<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
@@ -844,7 +844,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     <a class="navbar-brand" href="#">Navbar</a>
   </div>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;container&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Navbar<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -856,28 +856,28 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">Default</a>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Default<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span></code></pre></div>
 <div class="bd-example">
 <nav class="navbar fixed-top navbar-light bg-light">
   <a class="navbar-brand" href="#">Fixed top</a>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar fixed-top navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar fixed-top navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Fixed top<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span></code></pre></div>
 <div class="bd-example">
 <nav class="navbar fixed-bottom navbar-light bg-light">
   <a class="navbar-brand" href="#">Fixed bottom</a>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar fixed-bottom navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar fixed-bottom navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Fixed bottom<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span></code></pre></div>
 <div class="bd-example">
 <nav class="navbar sticky-top navbar-light bg-light">
   <a class="navbar-brand" href="#">Sticky top</a>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar sticky-top navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar sticky-top navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Sticky top<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span></code></pre></div>
 <h2 id="scrolling">Scrolling</h2>
@@ -910,7 +910,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         </ul>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Link</a>
+        <a class="nav-link disabled">Link</a>
       </li>
     </ul>
     <form class="d-flex">
@@ -919,7 +919,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     </form>
   </div>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Navbar scroll<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&#34;collapse&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#navbarScroll&#34;</span> <span class="na">aria-controls</span><span class="o">=</span><span class="s">&#34;navbarScroll&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Toggle navigation&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler-icon&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
@@ -944,7 +944,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-item&#34;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link disabled&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span> <span class="na">tabindex</span><span class="o">=</span><span class="s">&#34;-1&#34;</span> <span class="na">aria-disabled</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;</span>Link<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link disabled&#34;</span><span class="p">&gt;</span>Link<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">form</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;d-flex&#34;</span><span class="p">&gt;</span>
@@ -974,7 +974,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         <a class="nav-link" href="#">Link</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link disabled">Disabled</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -983,7 +983,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     </form>
   </div>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&#34;collapse&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#navbarTogglerDemo01&#34;</span> <span class="na">aria-controls</span><span class="o">=</span><span class="s">&#34;navbarTogglerDemo01&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Toggle navigation&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler-icon&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
@@ -997,7 +997,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Link<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-item&#34;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link disabled&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span> <span class="na">tabindex</span><span class="o">=</span><span class="s">&#34;-1&#34;</span> <span class="na">aria-disabled</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link disabled&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">form</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-inline my-2 my-lg-0&#34;</span><span class="p">&gt;</span>
@@ -1023,7 +1023,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         <a class="nav-link" href="#">Link</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link disabled">Disabled</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -1032,7 +1032,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     </form>
   </div>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-brand&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Navbar<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&#34;collapse&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#navbarTogglerDemo02&#34;</span> <span class="na">aria-controls</span><span class="o">=</span><span class="s">&#34;navbarTogglerDemo02&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Toggle navigation&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler-icon&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
@@ -1047,7 +1047,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Link<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-item&#34;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link disabled&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span> <span class="na">tabindex</span><span class="o">=</span><span class="s">&#34;-1&#34;</span> <span class="na">aria-disabled</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link disabled&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">form</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-inline my-2 my-lg-0&#34;</span><span class="p">&gt;</span>
@@ -1073,7 +1073,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         <a class="nav-link" href="#">Link</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link disabled">Disabled</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -1082,7 +1082,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     </form>
   </div>
 </nav>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar navbar-expand-lg navbar-light bg-light&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&#34;collapse&#34;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&#34;#navbarTogglerDemo03&#34;</span> <span class="na">aria-controls</span><span class="o">=</span><span class="s">&#34;navbarTogglerDemo03&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Toggle navigation&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;navbar-toggler-icon&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
@@ -1097,7 +1097,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Link<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-item&#34;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link disabled&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span> <span class="na">tabindex</span><span class="o">=</span><span class="s">&#34;-1&#34;</span> <span class="na">aria-disabled</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-link disabled&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">form</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-inline my-2 my-lg-0&#34;</span><span class="p">&gt;</span>
@@ -1122,7 +1122,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
     </button>
   </nav>
 </div>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;fixed-top&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;fixed-top&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;collapse&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;navbarToggleExternalContent&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;bg-dark p-4&#34;</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">h5</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;text-white h4&#34;</span><span class="p">&gt;</span>Collapsed content<span class="p">&lt;/</span><span class="nt">h5</span><span class="p">&gt;</span>
@@ -1141,10 +1141,10 @@ The animation effect of this component is dependent on the <code>prefers-reduced
       </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/docs/4.6/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
 
-<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>

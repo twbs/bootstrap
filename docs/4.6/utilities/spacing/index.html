@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Bootstrap includes a wide range of shorthand responsive margin and padding utility classes to modify an element&rsquo;s appearance.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.80.0">
+<meta name="generator" content="Hugo 0.88.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.6">
@@ -17,7 +17,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
 <!-- Documentation extras -->
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -104,13 +104,13 @@
 
   <ul class="navbar-nav ml-md-auto">
     <li class="nav-item dropdown">
-      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-expanded="false">
         v4.6
       </a>
       <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
         <a class="dropdown-item active" href="/docs/4.6/">Latest (4.6.x)</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.0/">5.0.x</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.1/">5.1.x</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="https://getbootstrap.com/docs/3.4/">v3.4.1</a>
         <a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a>
@@ -272,7 +272,7 @@
 
         </div>
 
-
+        
           <nav class="d-none d-xl-block col-xl-2 bd-toc" aria-label="Secondary navigation">
             <nav id="TableOfContents">
   <ul>
@@ -287,7 +287,7 @@
   </ul>
 </nav>
           </nav>
-
+        
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
           <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
@@ -330,21 +330,21 @@
 <p>(You can add more sizes by adding entries to the <code>$spacers</code> Sass map variable.)</p>
 <h2 id="examples">Examples</h2>
 <p>Here are some representative examples of these classes:</p>
-<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nc">.mt-0</span> <span class="p">{</span>
-  <span class="nt">margin-top</span><span class="nd">:</span> <span class="nt">0</span> <span class="o">!</span><span class="nt">important</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="nc">.mt-0</span> <span class="p">{</span>
+  <span class="na">margin-top</span><span class="o">:</span> <span class="mi">0</span> <span class="k">!important</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nc">.ml-1</span> <span class="p">{</span>
-  <span class="nt">margin-left</span><span class="nd">:</span> <span class="o">(</span><span class="err">$</span><span class="nt">spacer</span> <span class="o">*</span> <span class="nc">.25</span><span class="o">)</span> <span class="o">!</span><span class="nt">important</span><span class="p">;</span>
+  <span class="na">margin-left</span><span class="o">:</span> <span class="p">(</span><span class="nv">$spacer</span> <span class="o">*</span> <span class="mf">.25</span><span class="p">)</span> <span class="k">!important</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nc">.px-2</span> <span class="p">{</span>
-  <span class="nt">padding-left</span><span class="nd">:</span> <span class="o">(</span><span class="err">$</span><span class="nt">spacer</span> <span class="o">*</span> <span class="nc">.5</span><span class="o">)</span> <span class="o">!</span><span class="nt">important</span><span class="p">;</span>
-  <span class="nt">padding-right</span><span class="nd">:</span> <span class="o">(</span><span class="err">$</span><span class="nt">spacer</span> <span class="o">*</span> <span class="nc">.5</span><span class="o">)</span> <span class="o">!</span><span class="nt">important</span><span class="p">;</span>
+  <span class="na">padding-left</span><span class="o">:</span> <span class="p">(</span><span class="nv">$spacer</span> <span class="o">*</span> <span class="mf">.5</span><span class="p">)</span> <span class="k">!important</span><span class="p">;</span>
+  <span class="na">padding-right</span><span class="o">:</span> <span class="p">(</span><span class="nv">$spacer</span> <span class="o">*</span> <span class="mf">.5</span><span class="p">)</span> <span class="k">!important</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nc">.p-3</span> <span class="p">{</span>
-  <span class="nt">padding</span><span class="nd">:</span> <span class="err">$</span><span class="nt">spacer</span> <span class="o">!</span><span class="nt">important</span><span class="p">;</span>
+  <span class="na">padding</span><span class="o">:</span> <span class="nv">$spacer</span> <span class="k">!important</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><h3 id="horizontal-centering">Horizontal centering</h3>
 <p>Additionally, Bootstrap also includes an <code>.mx-auto</code> class for horizontally centering fixed-width block level content—that is, content that has <code>display: block</code> and a <code>width</code> set—by setting the horizontal margins to <code>auto</code>.</p>
@@ -353,14 +353,14 @@
     Centered element
   </div>
 </div>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;mx-auto&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 200px;&#34;</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;mx-auto&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 200px;&#34;</span><span class="p">&gt;</span>
   Centered element
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div><h3 id="negative-margin">Negative margin</h3>
 <p>In CSS, <code>margin</code> properties can utilize negative values (<code>padding</code> cannot). As of 4.2, we&rsquo;ve added negative margin utilities for every non-zero integer size listed above (e.g., <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>). These utilities are ideal for customizing grid column gutters across breakpoints.</p>
 <p>The syntax is nearly the same as the default, positive margin utilities, but with the addition of <code>n</code> before the requested size. Here&rsquo;s an example class that&rsquo;s the opposite of <code>.mt-1</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nc">.mt-n1</span> <span class="p">{</span>
-  <span class="nt">margin-top</span><span class="nd">:</span> <span class="nt">-0</span><span class="nc">.25rem</span> <span class="o">!</span><span class="nt">important</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="nc">.mt-n1</span> <span class="p">{</span>
+  <span class="na">margin-top</span><span class="o">:</span> <span class="o">-</span><span class="mi">0</span><span class="mf">.25</span><span class="kt">rem</span> <span class="k">!important</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><p>Here&rsquo;s an example of customizing the Bootstrap grid at the medium (<code>md</code>) breakpoint and above. We&rsquo;ve increased the <code>.col</code> padding with <code>.px-md-5</code> and then counteracted that with <code>.mx-md-n5</code> on the parent <code>.row</code>.</p>
 <div class="bd-example">
@@ -368,7 +368,7 @@
   <div class="col px-md-5"><div class="p-3 border bg-light">Custom column padding</div></div>
   <div class="col px-md-5"><div class="p-3 border bg-light">Custom column padding</div></div>
 </div>
-</div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;row mx-md-n5&#34;</span><span class="p">&gt;</span>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;row mx-md-n5&#34;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col px-md-5&#34;</span><span class="p">&gt;&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;p-3 border bg-light&#34;</span><span class="p">&gt;</span>Custom column padding<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col px-md-5&#34;</span><span class="p">&gt;&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;p-3 border bg-light&#34;</span><span class="p">&gt;</span>Custom column padding<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
@@ -377,10 +377,10 @@
       </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/docs/4.6/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
 
-<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
