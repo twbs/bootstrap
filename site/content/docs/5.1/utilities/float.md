@@ -45,4 +45,4 @@ Here are all the support classes:
 
 Float utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 
-{{< scss-docs name="utils-float" file="scss/_utilities.scss" >}}
+{{< scss-docs name="utils-float" file="scss/_utilities.scss" unindent=4 >}}
