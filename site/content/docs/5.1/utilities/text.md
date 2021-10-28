@@ -151,4 +151,4 @@ Font-size utilities are generated from this map, in combination with our utiliti
 
 Font and text utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 
-{{< scss-docs name="utils-text" file="scss/_utilities.scss" >}}
+{{< scss-docs name="utils-text" file="scss/_utilities.scss" unindent=4 >}}

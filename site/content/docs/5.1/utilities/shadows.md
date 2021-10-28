@@ -27,4 +27,4 @@ While shadows on components are disabled by default in Bootstrap and can be enab
 
 Shadow utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 
-{{< scss-docs name="utils-shadow" file="scss/_utilities.scss" >}}
+{{< scss-docs name="utils-shadow" file="scss/_utilities.scss" unindent=4 >}}

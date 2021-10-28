@@ -94,6 +94,6 @@ Use the scaling classes for larger or smaller rounded corners. Sizes range from 
 
 Border utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 
-{{< scss-docs name="utils-borders" file="scss/_utilities.scss" >}}
+{{< scss-docs name="utils-borders" file="scss/_utilities.scss" unindent=4 >}}
 
-{{< scss-docs name="utils-border-radius" file="scss/_utilities.scss" >}}
+{{< scss-docs name="utils-border-radius" file="scss/_utilities.scss" unindent=4 >}}
