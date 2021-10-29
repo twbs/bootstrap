@@ -48,9 +48,9 @@ const files = [
 ]
 
 for (const file of files) {
-  fs.readFile(file.file, 'utf8', (err, data) => {
-    if (err) {
-      throw err
+  fs.readFile(file.file, 'utf8', (error, data) => {
+    if (error) {
+      throw error
     }
 
     const algo = 'sha384'

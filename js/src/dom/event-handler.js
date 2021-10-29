@@ -134,9 +134,9 @@ function findHandler(events, handler, delegationSelector = null) {
   return null
 }
 
-function normalizeParams(originalTypeEvent, handler, delegationFn) {
+function normalizeParameters(originalTypeEvent, handler, delegationFunction) {
   const delegation = typeof handler === 'string'
-  const originalHandler = delegation ? delegationFn : handler
+  const originalHandler = delegation ? delegationFunction : handler
   let typeEvent = getTypeEvent(originalTypeEvent)
 
   if (!nativeEvents.has(typeEvent)) {
@@ -146,20 +146,20 @@ function normalizeParams(originalTypeEvent, handler, delegationFn) {
   return [delegation, originalHandler, typeEvent]
 }
 
-function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
+function addHandler(element, originalTypeEvent, handler, delegationFunction, oneOff) {
   if (typeof originalTypeEvent !== 'string' || !element) {
     return
   }
 
   if (!handler) {
-    handler = delegationFn
-    delegationFn = null
+    handler = delegationFunction
+    delegationFunction = null
   }
 
   // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM position
   // this prevents the handler from being dispatched the same way as mouseover or mouseout does
   if (customEventsRegex.test(originalTypeEvent)) {
-    const wrapFn = fn => {
+    const wrapFunction = fn => {
       return function (event) {
         if (!event.relatedTarget || (event.relatedTarget !== event.delegateTarget && !event.delegateTarget.contains(event.relatedTarget))) {
           return fn.call(this, event)
@@ -167,27 +167,27 @@ function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
       }
     }
 
-    if (delegationFn) {
-      delegationFn = wrapFn(delegationFn)
+    if (delegationFunction) {
+      delegationFunction = wrapFunction(delegationFunction)
     } else {
-      handler = wrapFn(handler)
+      handler = wrapFunction(handler)
     }
   }
 
-  const [delegation, originalHandler, typeEvent] = normalizeParams(originalTypeEvent, handler, delegationFn)
+  const [delegation, originalHandler, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction)
   const events = getEvent(element)
   const handlers = events[typeEvent] || (events[typeEvent] = {})
-  const previousFn = findHandler(handlers, originalHandler, delegation ? handler : null)
+  const previousFunction = findHandler(handlers, originalHandler, delegation ? handler : null)
 
-  if (previousFn) {
-    previousFn.oneOff = previousFn.oneOff && oneOff
+  if (previousFunction) {
+    previousFunction.oneOff = previousFunction.oneOff && oneOff
 
     return
   }
 
   const uid = getUidEvent(originalHandler, originalTypeEvent.replace(namespaceRegex, ''))
   const fn = delegation ?
-    bootstrapDelegationHandler(element, handler, delegationFn) :
+    bootstrapDelegationHandler(element, handler, delegationFunction) :
     bootstrapHandler(element, handler)
 
   fn.delegationSelector = delegation ? handler : null
@@ -228,20 +228,20 @@ function getTypeEvent(event) {
 }
 
 const EventHandler = {
-  on(element, event, handler, delegationFn) {
-    addHandler(element, event, handler, delegationFn, false)
+  on(element, event, handler, delegationFunction) {
+    addHandler(element, event, handler, delegationFunction, false)
   },
 
-  one(element, event, handler, delegationFn) {
-    addHandler(element, event, handler, delegationFn, true)
+  one(element, event, handler, delegationFunction) {
+    addHandler(element, event, handler, delegationFunction, true)
   },
 
-  off(element, originalTypeEvent, handler, delegationFn) {
+  off(element, originalTypeEvent, handler, delegationFunction) {
     if (typeof originalTypeEvent !== 'string' || !element) {
       return
     }
 
-    const [delegation, originalHandler, typeEvent] = normalizeParams(originalTypeEvent, handler, delegationFn)
+    const [delegation, originalHandler, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction)
     const inNamespace = typeEvent !== originalTypeEvent
     const events = getEvent(element)
     const isNamespace = originalTypeEvent.startsWith('.')
