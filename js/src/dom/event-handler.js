@@ -104,8 +104,8 @@ function bootstrapDelegationHandler(element, selector, fn) {
     const domElements = element.querySelectorAll(selector)
 
     for (let { target } = event; target && target !== this; target = target.parentNode) {
-      for (let i = domElements.length; i--;) {
-        if (domElements[i] === target) {
+      for (const domElement of domElements) {
+        if (domElement === target) {
           event.delegateTarget = target
 
           if (handler.oneOff) {
