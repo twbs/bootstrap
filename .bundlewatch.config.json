@@ -54,7 +54,7 @@
     },
     {
       "path": "./dist/js/bootstrap.min.js",
-      "maxSize": "16 kB"
+      "maxSize": "16.25 kB"
     }
   ],
   "ci": {

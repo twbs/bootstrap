@@ -9,15 +9,9 @@ import EventHandler from '../dom/event-handler'
 import SelectorEngine from '../dom/selector-engine'
 import { typeCheckConfig } from './index'
 
-const Default = {
-  trapElement: null, // The element to trap focus inside of
-  autofocus: true
-}
-
-const DefaultType = {
-  trapElement: 'element',
-  autofocus: 'boolean'
-}
+/**
+ * Constants
+ */
 
 const NAME = 'focustrap'
 const DATA_KEY = 'bs.focustrap'
@@ -29,6 +23,20 @@ const TAB_KEY = 'Tab'
 const TAB_NAV_FORWARD = 'forward'
 const TAB_NAV_BACKWARD = 'backward'
 
+const Default = {
+  trapElement: null, // The element to trap focus inside of
+  autofocus: true
+}
+
+const DefaultType = {
+  trapElement: 'element',
+  autofocus: 'boolean'
+}
+
+/**
+ * Class definition
+ */
+
 class FocusTrap {
   constructor(config) {
     this._config = this._getConfig(config)
@@ -36,6 +44,7 @@ class FocusTrap {
     this._lastTabNavDirection = null
   }
 
+  // Public
   activate() {
     const { trapElement, autofocus } = this._config
 
@@ -64,7 +73,6 @@ class FocusTrap {
   }
 
   // Private
-
   _handleFocusin(event) {
     const { target } = event
     const { trapElement } = this._config
