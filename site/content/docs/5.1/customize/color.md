@@ -32,6 +32,7 @@ All Bootstrap colors are available as Sass variables and a Sass map in `scss/_va
 
 Be sure to monitor contrast ratios as you customize colors. As shown below, we've added three contrast ratios to each of the main colors—one for the swatch's current colors, one for against white, and one for against black.
 
+```html
 <div class="row font-monospace">
   {{< theme-colors.inline >}}
   {{- range $color := $.Site.Data.colors }}
@@ -70,6 +71,7 @@ Be sure to monitor contrast ratios as you customize colors. As shown below, we'v
     </div>
   </div>
 </div>
+```
 
 ### Notes on Sass
 
