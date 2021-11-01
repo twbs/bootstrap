@@ -378,8 +378,6 @@ $spacers: (
   4: $spacer * 1.5,
   5: $spacer * 3,
 ) !default;
-
-$negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
 // scss-docs-end spacer-variables-maps
 
 // Position
@@ -466,8 +464,6 @@ $container-max-widths: (
 $grid-columns:                12 !default;
 $grid-gutter-width:           1.5rem !default;
 $grid-row-columns:            6 !default;
-
-$gutters: $spacers !default;
 
 // Container padding
 

@@ -11,11 +11,20 @@ toc: true
 
 ### New `_maps.scss`
 
-Bootstrap 5.2 introduced a new Sass file, `_maps.scss`, that pulled out several Sass maps from `_variables.scss` to fix an issue where updates to `$theme-colors` were not being applied to other maps that consume `$theme-colors`. In short, Sass has a limitation where once a default variable or map has been _used_, it cannot be updated.
+Bootstrap v5.2.0 introduced a new Sass file, `_maps.scss`, that pulled out several Sass maps from `_variables.scss` to fix an issue where updates to an original map were not applied to secondary maps that extend them. For example, updates to `$theme-colors` were not being applied to other theme maps that relied on `$theme-colors`, breaking key customization workflows. In short, Sass has a limitation where once a default variable or map has been _used_, it cannot be updated.
 
-This is why variable customizations in Bootstrap have to come after `@import "functions"` and before `@import "variables"` and the rest of our import stack. The same applies to Sass maps—you must override the defaults before the defaults get used.
+This is why variable customizations in Bootstrap have to come after `@import "functions"`, but before `@import "variables"` and the rest of our import stack. The same applies to Sass maps—you must override the defaults before the defaults get used. The following maps have been moved to the new `_maps.scss`:
 
-Your imports for custom Bootstrap builds should now look something like this:
+- `$theme-colors-rgb`
+- `$utilities-colors`
+- `$utilities-text`
+- `$utilities-text-colors`
+- `$utilities-bg`
+- `$utilities-bg-colors`
+- `$negative-spacers`
+- `$gutters`
+
+Your custom Bootstrap CSS builds should now look something like this with a separate maps import.
 
 ```diff
   // Functions come first
