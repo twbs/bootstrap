@@ -2,11 +2,13 @@ name: Bundlewatch
 
 on:
   push:
+    branches-ignore:
+      - "dependabot/**"
   pull_request:
 
 env:
   FORCE_COLOR: 2
-  NODE: 14
+  NODE: 16
 
 jobs:
   bundlewatch:

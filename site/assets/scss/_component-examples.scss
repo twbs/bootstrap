@@ -292,6 +292,17 @@
   }
 }
 
+// Placeholders
+.bd-example-placeholder-cards {
+  &::after {
+    display: none;
+  }
+
+  .card {
+    width: 18rem;
+  }
+}
+
 // Toasts
 .bd-example-toasts {
   min-height: 240px;

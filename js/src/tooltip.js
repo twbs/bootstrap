@@ -1,12 +1,11 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.2): tooltip.js
+ * Bootstrap (v5.1.3): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import * as Popper from '@popperjs/core'
-
 import {
   defineJQueryPlugin,
   findShadowRoot,
@@ -25,9 +24,7 @@ import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'tooltip'
@@ -36,25 +33,22 @@ const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'bs-tooltip'
 const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn'])
 
-const DefaultType = {
-  animation: 'boolean',
-  template: 'string',
-  title: '(string|element|function)',
-  trigger: 'string',
-  delay: '(number|object)',
-  html: 'boolean',
-  selector: '(string|boolean)',
-  placement: '(string|function)',
-  offset: '(array|string|function)',
-  container: '(string|element|boolean)',
-  fallbackPlacements: 'array',
-  boundary: '(string|element)',
-  customClass: '(string|function)',
-  sanitize: 'boolean',
-  sanitizeFn: '(null|function)',
-  allowList: 'object',
-  popperConfig: '(null|object|function)'
-}
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_MODAL = 'modal'
+const CLASS_NAME_SHOW = 'show'
+
+const HOVER_STATE_SHOW = 'show'
+const HOVER_STATE_OUT = 'out'
+
+const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
+const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`
+
+const EVENT_MODAL_HIDE = 'hide.bs.modal'
+
+const TRIGGER_HOVER = 'hover'
+const TRIGGER_FOCUS = 'focus'
+const TRIGGER_CLICK = 'click'
+const TRIGGER_MANUAL = 'manual'
 
 const AttachmentMap = {
   AUTO: 'auto',
@@ -87,6 +81,26 @@ const Default = {
   popperConfig: null
 }
 
+const DefaultType = {
+  animation: 'boolean',
+  template: 'string',
+  title: '(string|element|function)',
+  trigger: 'string',
+  delay: '(number|object)',
+  html: 'boolean',
+  selector: '(string|boolean)',
+  placement: '(string|function)',
+  offset: '(array|string|function)',
+  container: '(string|element|boolean)',
+  fallbackPlacements: 'array',
+  boundary: '(string|element)',
+  customClass: '(string|function)',
+  sanitize: 'boolean',
+  sanitizeFn: '(null|function)',
+  allowList: 'object',
+  popperConfig: '(null|object|function)'
+}
+
 const Event = {
   HIDE: `hide${EVENT_KEY}`,
   HIDDEN: `hidden${EVENT_KEY}`,
@@ -100,27 +114,8 @@ const Event = {
   MOUSELEAVE: `mouseleave${EVENT_KEY}`
 }
 
-const CLASS_NAME_FADE = 'fade'
-const CLASS_NAME_MODAL = 'modal'
-const CLASS_NAME_SHOW = 'show'
-
-const HOVER_STATE_SHOW = 'show'
-const HOVER_STATE_OUT = 'out'
-
-const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
-const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`
-
-const EVENT_MODAL_HIDE = 'hide.bs.modal'
-
-const TRIGGER_HOVER = 'hover'
-const TRIGGER_FOCUS = 'focus'
-const TRIGGER_CLICK = 'click'
-const TRIGGER_MANUAL = 'manual'
-
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Tooltip extends BaseComponent {
@@ -131,7 +126,7 @@ class Tooltip extends BaseComponent {
 
     super(element)
 
-    // private
+    // Private
     this._isEnabled = true
     this._timeout = 0
     this._hoverState = ''
@@ -146,7 +141,6 @@ class Tooltip extends BaseComponent {
   }
 
   // Getters
-
   static get Default() {
     return Default
   }
@@ -164,7 +158,6 @@ class Tooltip extends BaseComponent {
   }
 
   // Public
-
   enable() {
     this._isEnabled = true
   }
@@ -211,10 +204,7 @@ class Tooltip extends BaseComponent {
       this.tip.remove()
     }
 
-    if (this._popper) {
-      this._popper.destroy()
-    }
-
+    this._disposePopper()
     super.dispose()
   }
 
@@ -237,13 +227,19 @@ class Tooltip extends BaseComponent {
       return
     }
 
+    // A trick to recreate a tooltip in case a new title is given by using the NOT documented `data-bs-original-title`
+    // This will be removed later in favor of a `setContent` method
+    if (this.constructor.NAME === 'tooltip' && this.tip && this.getTitle() !== this.tip.querySelector(SELECTOR_TOOLTIP_INNER).innerHTML) {
+      this._disposePopper()
+      this.tip.remove()
+      this.tip = null
+    }
+
     const tip = this.getTipElement()
     const tipId = getUID(this.constructor.NAME)
 
     tip.setAttribute('id', tipId)
     this._element.setAttribute('aria-describedby', tipId)
-
-    this.setContent()
 
     if (this._config.animation) {
       tip.classList.add(CLASS_NAME_FADE)
@@ -282,9 +278,9 @@ class Tooltip extends BaseComponent {
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
     if ('ontouchstart' in document.documentElement) {
-      [].concat(...document.body.children).forEach(element => {
+      for (const element of [].concat(...document.body.children)) {
         EventHandler.on(element, 'mouseover', noop)
-      })
+      }
     }
 
     const complete = () => {
@@ -321,10 +317,7 @@ class Tooltip extends BaseComponent {
       this._element.removeAttribute('aria-describedby')
       EventHandler.trigger(this._element, this.constructor.Event.HIDDEN)
 
-      if (this._popper) {
-        this._popper.destroy()
-        this._popper = null
-      }
+      this._disposePopper()
     }
 
     const hideEvent = EventHandler.trigger(this._element, this.constructor.Event.HIDE)
@@ -337,8 +330,9 @@ class Tooltip extends BaseComponent {
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
-      [].concat(...document.body.children)
-        .forEach(element => EventHandler.off(element, 'mouseover', noop))
+      for (const element of [].concat(...document.body.children)) {
+        EventHandler.off(element, 'mouseover', noop)
+      }
     }
 
     this._activeTrigger[TRIGGER_CLICK] = false
@@ -357,7 +351,6 @@ class Tooltip extends BaseComponent {
   }
 
   // Protected
-
   isWithContent() {
     return Boolean(this.getTitle())
   }
@@ -371,20 +364,21 @@ class Tooltip extends BaseComponent {
     element.innerHTML = this._config.template
 
     const tip = element.children[0]
+    this.setContent(tip)
     tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
 
     this.tip = tip
     return this.tip
   }
 
-  setContent() {
-    const tip = this.getTipElement()
+  setContent(tip) {
     this._sanitizeAndSetContent(tip, this.getTitle(), SELECTOR_TOOLTIP_INNER)
   }
 
   _sanitizeAndSetContent(template, content, selector) {
     const templateElement = SelectorEngine.findOne(selector, template)
-    if (!content) {
+
+    if (!content && templateElement) {
       templateElement.remove()
       return
     }
@@ -419,7 +413,7 @@ class Tooltip extends BaseComponent {
         content = sanitizeHtml(content, this._config.allowList, this._config.sanitizeFn)
       }
 
-      element.innerHTML = content
+      element.innerHTML = content // lgtm [js/xss-through-dom]
     } else {
       element.textContent = content
     }
@@ -444,7 +438,6 @@ class Tooltip extends BaseComponent {
   }
 
   // Private
-
   _initializeOnDelegatedTarget(event, context) {
     return context || this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig())
   }
@@ -526,7 +519,7 @@ class Tooltip extends BaseComponent {
   _setListeners() {
     const triggers = this._config.trigger.split(' ')
 
-    triggers.forEach(trigger => {
+    for (const trigger of triggers) {
       if (trigger === 'click') {
         EventHandler.on(this._element, this.constructor.Event.CLICK, this._config.selector, event => this.toggle(event))
       } else if (trigger !== TRIGGER_MANUAL) {
@@ -540,7 +533,7 @@ class Tooltip extends BaseComponent {
         EventHandler.on(this._element, eventIn, this._config.selector, event => this._enter(event))
         EventHandler.on(this._element, eventOut, this._config.selector, event => this._leave(event))
       }
-    })
+    }
 
     this._hideModalHandler = () => {
       if (this._element) {
@@ -647,11 +640,11 @@ class Tooltip extends BaseComponent {
   _getConfig(config) {
     const dataAttributes = Manipulator.getDataAttributes(this._element)
 
-    Object.keys(dataAttributes).forEach(dataAttr => {
+    for (const dataAttr of Object.keys(dataAttributes)) {
       if (DISALLOWED_ATTRIBUTES.has(dataAttr)) {
         delete dataAttributes[dataAttr]
       }
-    })
+    }
 
     config = {
       ...this.constructor.Default,
@@ -705,8 +698,9 @@ class Tooltip extends BaseComponent {
     const basicClassPrefixRegex = new RegExp(`(^|\\s)${this._getBasicClassPrefix()}\\S+`, 'g')
     const tabClass = tip.getAttribute('class').match(basicClassPrefixRegex)
     if (tabClass !== null && tabClass.length > 0) {
-      tabClass.map(token => token.trim())
-        .forEach(tClass => tip.classList.remove(tClass))
+      for (const tClass of tabClass.map(token => token.trim())) {
+        tip.classList.remove(tClass)
+      }
     }
   }
 
@@ -724,6 +718,13 @@ class Tooltip extends BaseComponent {
     this.tip = state.elements.popper
     this._cleanTipClass()
     this._addAttachmentClass(this._getAttachment(state.placement))
+  }
+
+  _disposePopper() {
+    if (this._popper) {
+      this._popper.destroy()
+      this._popper = null
+    }
   }
 
   // Static
@@ -744,10 +745,7 @@ class Tooltip extends BaseComponent {
 }
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
- * add .Tooltip to jQuery only if jQuery is present
  */
 
 defineJQueryPlugin(Tooltip)

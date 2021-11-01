@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.2): util/scrollBar.js
+ * Bootstrap (v5.1.3): util/scrollBar.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9,14 +9,23 @@ import SelectorEngine from '../dom/selector-engine'
 import Manipulator from '../dom/manipulator'
 import { isElement } from './index'
 
+/**
+ * Constants
+ */
+
 const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
 const SELECTOR_STICKY_CONTENT = '.sticky-top'
+
+/**
+ * Class definition
+ */
 
 class ScrollBarHelper {
   constructor() {
     this._element = document.body
   }
 
+  // Public
   getWidth() {
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
     const documentWidth = document.documentElement.clientWidth
@@ -33,6 +42,18 @@ class ScrollBarHelper {
     this._setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - width)
   }
 
+  reset() {
+    this._resetElementAttributes(this._element, 'overflow')
+    this._resetElementAttributes(this._element, 'paddingRight')
+    this._resetElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight')
+    this._resetElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight')
+  }
+
+  isOverflowing() {
+    return this.getWidth() > 0
+  }
+
+  // Private
   _disableOverFlow() {
     this._saveInitialAttribute(this._element, 'overflow')
     this._element.style.overflow = 'hidden'
@@ -51,13 +72,6 @@ class ScrollBarHelper {
     }
 
     this._applyManipulationCallback(selector, manipulationCallBack)
-  }
-
-  reset() {
-    this._resetElementAttributes(this._element, 'overflow')
-    this._resetElementAttributes(this._element, 'paddingRight')
-    this._resetElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight')
-    this._resetElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight')
   }
 
   _saveInitialAttribute(element, styleProp) {
@@ -85,12 +99,10 @@ class ScrollBarHelper {
     if (isElement(selector)) {
       callBack(selector)
     } else {
-      SelectorEngine.find(selector, this._element).forEach(callBack)
+      for (const sel of SelectorEngine.find(selector, this._element)) {
+        callBack(sel)
+      }
     }
-  }
-
-  isOverflowing() {
-    return this.getWidth() > 0
   }
 }
 

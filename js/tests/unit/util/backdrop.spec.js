@@ -17,9 +17,9 @@ describe('Backdrop', () => {
     clearFixture()
     const list = document.querySelectorAll(CLASS_BACKDROP)
 
-    list.forEach(el => {
+    for (const el of list) {
       el.remove()
-    })
+    }
   })
 
   describe('show', () => {
@@ -35,9 +35,10 @@ describe('Backdrop', () => {
       instance.show()
       instance.show(() => {
         expect(getElements().length).toEqual(1)
-        getElements().forEach(el => {
+        for (const el of getElements()) {
           expect(el.classList.contains(CLASS_NAME_SHOW)).toEqual(true)
-        })
+        }
+
         done()
       })
     })
@@ -67,9 +68,10 @@ describe('Backdrop', () => {
 
       instance.show(() => {
         expect(getElements().length).toEqual(1)
-        getElements().forEach(el => {
+        for (const el of getElements()) {
           expect(el.classList.contains(CLASS_NAME_FADE)).toEqual(true)
-        })
+        }
+
         done()
       })
     })

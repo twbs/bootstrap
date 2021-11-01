@@ -1,11 +1,11 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.2): util/index.js
+ * Bootstrap (v5.1.3): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-const MAX_UID = 1000000
+const MAX_UID = 1_000_000
 const MILLISECONDS_MULTIPLIER = 1000
 const TRANSITION_END = 'transitionend'
 
@@ -15,13 +15,11 @@ const toType = obj => {
     return `${obj}`
   }
 
-  return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
+  return Object.prototype.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
 }
 
 /**
- * --------------------------------------------------------------------------
- * Public Util Api
- * --------------------------------------------------------------------------
+ * Public Util API
  */
 
 const getUID = prefix => {
@@ -113,7 +111,8 @@ const isElement = obj => {
 }
 
 const getElement = obj => {
-  if (isElement(obj)) { // it's a jQuery object or a node element
+  // it's a jQuery object or a node element
+  if (isElement(obj)) {
     return obj.jquery ? obj[0] : obj
   }
 
@@ -125,7 +124,7 @@ const getElement = obj => {
 }
 
 const typeCheckConfig = (componentName, config, configTypes) => {
-  Object.keys(configTypes).forEach(property => {
+  for (const property of Object.keys(configTypes)) {
     const expectedTypes = configTypes[property]
     const value = config[property]
     const valueType = value && isElement(value) ? 'element' : toType(value)
@@ -135,7 +134,7 @@ const typeCheckConfig = (componentName, config, configTypes) => {
         `${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`
       )
     }
-  })
+  }
 }
 
 const isVisible = element => {
@@ -196,8 +195,7 @@ const noop = () => {}
  * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
  */
 const reflow = element => {
-  // eslint-disable-next-line no-unused-expressions
-  element.offsetHeight
+  element.offsetHeight // eslint-disable-line no-unused-expressions
 }
 
 const getjQuery = () => {
@@ -217,7 +215,9 @@ const onDOMContentLoaded = callback => {
     // add listener on the first call when the document is in loading state
     if (!DOMContentLoadedCallbacks.length) {
       document.addEventListener('DOMContentLoaded', () => {
-        DOMContentLoadedCallbacks.forEach(callback => callback())
+        for (const callback of DOMContentLoadedCallbacks) {
+          callback()
+        }
       })
     }
 
@@ -310,24 +310,24 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
 }
 
 export {
-  getElement,
-  getUID,
-  getSelectorFromElement,
-  getElementFromSelector,
-  getTransitionDurationFromElement,
-  triggerTransitionEnd,
-  isElement,
-  typeCheckConfig,
-  isVisible,
-  isDisabled,
-  findShadowRoot,
-  noop,
-  getNextActiveElement,
-  reflow,
-  getjQuery,
-  onDOMContentLoaded,
-  isRTL,
   defineJQueryPlugin,
   execute,
-  executeAfterTransition
+  executeAfterTransition,
+  findShadowRoot,
+  getElement,
+  getElementFromSelector,
+  getjQuery,
+  getNextActiveElement,
+  getSelectorFromElement,
+  getTransitionDurationFromElement,
+  getUID,
+  isDisabled,
+  isElement,
+  isRTL,
+  isVisible,
+  noop,
+  onDOMContentLoaded,
+  reflow,
+  triggerTransitionEnd,
+  typeCheckConfig
 }

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.2): dom/event-handler.js
+ * Bootstrap (v5.1.3): dom/event-handler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -8,9 +8,7 @@
 import { getjQuery } from '../util/index'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const namespaceRegex = /[^.]*(?=\..*)\.|.*/
@@ -73,9 +71,7 @@ const nativeEvents = new Set([
 ])
 
 /**
- * ------------------------------------------------------------------------
  * Private methods
- * ------------------------------------------------------------------------
  */
 
 function getUidEvent(element, uid) {
@@ -113,7 +109,6 @@ function bootstrapDelegationHandler(element, selector, fn) {
           event.delegateTarget = target
 
           if (handler.oneOff) {
-            // eslint-disable-next-line unicorn/consistent-destructuring
             EventHandler.off(element, event.type, selector, fn)
           }
 
@@ -130,8 +125,8 @@ function bootstrapDelegationHandler(element, selector, fn) {
 function findHandler(events, handler, delegationSelector = null) {
   const uidEventList = Object.keys(events)
 
-  for (let i = 0, len = uidEventList.length; i < len; i++) {
-    const event = events[uidEventList[i]]
+  for (const uidEvent of uidEventList) {
+    const event = events[uidEvent]
 
     if (event.originalHandler === handler && event.delegationSelector === delegationSelector) {
       return event
@@ -144,7 +139,6 @@ function findHandler(events, handler, delegationSelector = null) {
 function normalizeParams(originalTypeEvent, handler, delegationFn) {
   const delegation = typeof handler === 'string'
   const originalHandler = delegation ? delegationFn : handler
-
   let typeEvent = getTypeEvent(originalTypeEvent)
   const isNative = nativeEvents.has(typeEvent)
 
@@ -222,13 +216,12 @@ function removeHandler(element, events, typeEvent, handler, delegationSelector) 
 function removeNamespacedHandlers(element, events, typeEvent, namespace) {
   const storeElementEvent = events[typeEvent] || {}
 
-  Object.keys(storeElementEvent).forEach(handlerKey => {
+  for (const handlerKey of Object.keys(storeElementEvent)) {
     if (handlerKey.includes(namespace)) {
       const event = storeElementEvent[handlerKey]
-
       removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector)
     }
-  })
+  }
 }
 
 function getTypeEvent(event) {
@@ -267,21 +260,20 @@ const EventHandler = {
     }
 
     if (isNamespace) {
-      Object.keys(events).forEach(elementEvent => {
+      for (const elementEvent of Object.keys(events)) {
         removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1))
-      })
+      }
     }
 
     const storeElementEvent = events[typeEvent] || {}
-    Object.keys(storeElementEvent).forEach(keyHandlers => {
+    for (const keyHandlers of Object.keys(storeElementEvent)) {
       const handlerKey = keyHandlers.replace(stripUidRegex, '')
 
       if (!inNamespace || originalTypeEvent.includes(handlerKey)) {
         const event = storeElementEvent[keyHandlers]
-
         removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector)
       }
-    })
+    }
   },
 
   trigger(element, event, args) {
@@ -313,21 +305,18 @@ const EventHandler = {
       evt = document.createEvent('HTMLEvents')
       evt.initEvent(typeEvent, bubbles, true)
     } else {
-      evt = new CustomEvent(event, {
-        bubbles,
-        cancelable: true
-      })
+      evt = new CustomEvent(event, { bubbles, cancelable: true })
     }
 
     // merge custom information in our event
     if (typeof args !== 'undefined') {
-      Object.keys(args).forEach(key => {
+      for (const key of Object.keys(args)) {
         Object.defineProperty(evt, key, {
           get() {
             return args[key]
           }
         })
-      })
+      }
     }
 
     if (defaultPrevented) {
