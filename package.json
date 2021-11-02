@@ -112,7 +112,7 @@
     "bundlewatch": "^0.3.2",
     "clean-css-cli": "^5.4.2",
     "cross-env": "^7.0.3",
-    "cspell": "^5.12.4",
+    "cspell": "^5.12.5",
     "eslint": "^8.1.0",
     "eslint-config-xo": "^0.39.0",
     "eslint-plugin-import": "^2.25.2",
