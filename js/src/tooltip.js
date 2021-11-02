@@ -6,7 +6,6 @@
  */
 
 import * as Popper from '@popperjs/core'
-
 import {
   defineJQueryPlugin,
   findShadowRoot,
@@ -25,9 +24,7 @@ import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'tooltip'
@@ -36,25 +33,22 @@ const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'bs-tooltip'
 const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn'])
 
-const DefaultType = {
-  animation: 'boolean',
-  template: 'string',
-  title: '(string|element|function)',
-  trigger: 'string',
-  delay: '(number|object)',
-  html: 'boolean',
-  selector: '(string|boolean)',
-  placement: '(string|function)',
-  offset: '(array|string|function)',
-  container: '(string|element|boolean)',
-  fallbackPlacements: 'array',
-  boundary: '(string|element)',
-  customClass: '(string|function)',
-  sanitize: 'boolean',
-  sanitizeFn: '(null|function)',
-  allowList: 'object',
-  popperConfig: '(null|object|function)'
-}
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_MODAL = 'modal'
+const CLASS_NAME_SHOW = 'show'
+
+const HOVER_STATE_SHOW = 'show'
+const HOVER_STATE_OUT = 'out'
+
+const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
+const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`
+
+const EVENT_MODAL_HIDE = 'hide.bs.modal'
+
+const TRIGGER_HOVER = 'hover'
+const TRIGGER_FOCUS = 'focus'
+const TRIGGER_CLICK = 'click'
+const TRIGGER_MANUAL = 'manual'
 
 const AttachmentMap = {
   AUTO: 'auto',
@@ -87,6 +81,26 @@ const Default = {
   popperConfig: null
 }
 
+const DefaultType = {
+  animation: 'boolean',
+  template: 'string',
+  title: '(string|element|function)',
+  trigger: 'string',
+  delay: '(number|object)',
+  html: 'boolean',
+  selector: '(string|boolean)',
+  placement: '(string|function)',
+  offset: '(array|string|function)',
+  container: '(string|element|boolean)',
+  fallbackPlacements: 'array',
+  boundary: '(string|element)',
+  customClass: '(string|function)',
+  sanitize: 'boolean',
+  sanitizeFn: '(null|function)',
+  allowList: 'object',
+  popperConfig: '(null|object|function)'
+}
+
 const Event = {
   HIDE: `hide${EVENT_KEY}`,
   HIDDEN: `hidden${EVENT_KEY}`,
@@ -100,27 +114,8 @@ const Event = {
   MOUSELEAVE: `mouseleave${EVENT_KEY}`
 }
 
-const CLASS_NAME_FADE = 'fade'
-const CLASS_NAME_MODAL = 'modal'
-const CLASS_NAME_SHOW = 'show'
-
-const HOVER_STATE_SHOW = 'show'
-const HOVER_STATE_OUT = 'out'
-
-const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
-const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`
-
-const EVENT_MODAL_HIDE = 'hide.bs.modal'
-
-const TRIGGER_HOVER = 'hover'
-const TRIGGER_FOCUS = 'focus'
-const TRIGGER_CLICK = 'click'
-const TRIGGER_MANUAL = 'manual'
-
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Tooltip extends BaseComponent {
@@ -131,7 +126,7 @@ class Tooltip extends BaseComponent {
 
     super(element)
 
-    // private
+    // Private
     this._isEnabled = true
     this._timeout = 0
     this._hoverState = ''
@@ -146,7 +141,6 @@ class Tooltip extends BaseComponent {
   }
 
   // Getters
-
   static get Default() {
     return Default
   }
@@ -164,7 +158,6 @@ class Tooltip extends BaseComponent {
   }
 
   // Public
-
   enable() {
     this._isEnabled = true
   }
@@ -358,7 +351,6 @@ class Tooltip extends BaseComponent {
   }
 
   // Protected
-
   isWithContent() {
     return Boolean(this.getTitle())
   }
@@ -421,7 +413,7 @@ class Tooltip extends BaseComponent {
         content = sanitizeHtml(content, this._config.allowList, this._config.sanitizeFn)
       }
 
-      element.innerHTML = content
+      element.innerHTML = content // lgtm [js/xss-through-dom]
     } else {
       element.textContent = content
     }
@@ -446,7 +438,6 @@ class Tooltip extends BaseComponent {
   }
 
   // Private
-
   _initializeOnDelegatedTarget(event, context) {
     return context || this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig())
   }
@@ -754,10 +745,7 @@ class Tooltip extends BaseComponent {
 }
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
- * add .Tooltip to jQuery only if jQuery is present
  */
 
 defineJQueryPlugin(Tooltip)

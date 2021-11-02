@@ -23,9 +23,7 @@ import FocusTrap from './util/focustrap'
 import { enableDismissTrigger } from './util/component-functions'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'modal'
@@ -33,18 +31,6 @@ const DATA_KEY = 'bs.modal'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 const ESCAPE_KEY = 'Escape'
-
-const Default = {
-  backdrop: true,
-  keyboard: true,
-  focus: true
-}
-
-const DefaultType = {
-  backdrop: '(boolean|string)',
-  keyboard: 'boolean',
-  focus: 'boolean'
-}
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY}`
@@ -68,10 +54,20 @@ const SELECTOR_DIALOG = '.modal-dialog'
 const SELECTOR_MODAL_BODY = '.modal-body'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="modal"]'
 
+const Default = {
+  backdrop: true,
+  keyboard: true,
+  focus: true
+}
+
+const DefaultType = {
+  backdrop: '(boolean|string)',
+  keyboard: 'boolean',
+  focus: 'boolean'
+}
+
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Modal extends BaseComponent {
@@ -89,7 +85,6 @@ class Modal extends BaseComponent {
   }
 
   // Getters
-
   static get Default() {
     return Default
   }
@@ -99,7 +94,6 @@ class Modal extends BaseComponent {
   }
 
   // Public
-
   toggle(relatedTarget) {
     return this._isShown ? this.hide() : this.show(relatedTarget)
   }
@@ -189,7 +183,6 @@ class Modal extends BaseComponent {
   }
 
   // Private
-
   _initializeBackDrop() {
     return new Backdrop({
       isVisible: Boolean(this._config.backdrop), // 'static' option will be translated to true, and booleans will keep their value
@@ -345,9 +338,9 @@ class Modal extends BaseComponent {
     this._element.focus()
   }
 
-  // ----------------------------------------------------------------------
-  // the following methods are used to handle overflowing modals
-  // ----------------------------------------------------------------------
+  /**
+   * The following methods are used to handle overflowing modals
+   */
 
   _adjustDialog() {
     const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
@@ -369,7 +362,6 @@ class Modal extends BaseComponent {
   }
 
   // Static
-
   static jQueryInterface(config, relatedTarget) {
     return this.each(function () {
       const data = Modal.getOrCreateInstance(this, config)
@@ -388,9 +380,7 @@ class Modal extends BaseComponent {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
+ * Data API implementation
  */
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
@@ -427,10 +417,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
 enableDismissTrigger(Modal)
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
- * add .Modal to jQuery only if jQuery is present
  */
 
 defineJQueryPlugin(Modal)

@@ -8,9 +8,7 @@
 import { getjQuery } from '../util/index'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const namespaceRegex = /[^.]*(?=\..*)\.|.*/
@@ -73,9 +71,7 @@ const nativeEvents = new Set([
 ])
 
 /**
- * ------------------------------------------------------------------------
  * Private methods
- * ------------------------------------------------------------------------
  */
 
 function getUidEvent(element, uid) {
@@ -143,7 +139,6 @@ function findHandler(events, handler, delegationSelector = null) {
 function normalizeParams(originalTypeEvent, handler, delegationFn) {
   const delegation = typeof handler === 'string'
   const originalHandler = delegation ? delegationFn : handler
-
   let typeEvent = getTypeEvent(originalTypeEvent)
   const isNative = nativeEvents.has(typeEvent)
 
@@ -224,7 +219,6 @@ function removeNamespacedHandlers(element, events, typeEvent, namespace) {
   for (const handlerKey of Object.keys(storeElementEvent)) {
     if (handlerKey.includes(namespace)) {
       const event = storeElementEvent[handlerKey]
-
       removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector)
     }
   }
@@ -277,7 +271,6 @@ const EventHandler = {
 
       if (!inNamespace || originalTypeEvent.includes(handlerKey)) {
         const event = storeElementEvent[keyHandlers]
-
         removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector)
       }
     }
@@ -312,10 +305,7 @@ const EventHandler = {
       evt = document.createEvent('HTMLEvents')
       evt.initEvent(typeEvent, bubbles, true)
     } else {
-      evt = new CustomEvent(event, {
-        bubbles,
-        cancelable: true
-      })
+      evt = new CustomEvent(event, { bubbles, cancelable: true })
     }
 
     // merge custom information in our event
