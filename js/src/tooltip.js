@@ -59,7 +59,7 @@ const AttachmentMap = {
 
 const Default = {
   animation: true,
-  template: '<div class="tooltip bs-tooltip-auto" role="tooltip">' +
+  template: '<div class="tooltip" role="tooltip">' +
               '<div class="tooltip-arrow"></div>' +
               '<div class="tooltip-inner"></div>' +
             '</div>',
@@ -341,6 +341,8 @@ class Tooltip extends BaseComponent {
 
     const tip = templateFactory.toHtml()
     tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
+    // todo on v6 the following can be done on css only
+    tip.classList.add(`bs-${this.constructor.NAME}-auto`)
 
     const tipId = getUID(this.constructor.NAME).toString()
 
