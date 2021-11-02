@@ -1,8 +1,10 @@
+// stylelint-disable custom-property-empty-line-before
+
 .popover {
   // scss-docs-start popover-css-vars
   --#{$variable-prefix}popover-zindex: #{$zindex-popover};
   --#{$variable-prefix}popover-max-width: #{$popover-max-width};
-  --#{$variable-prefix}popover-font-size: #{$popover-font-size};
+  @include rfs($popover-font-size, --#{$variable-prefix}popover-font-size);
   --#{$variable-prefix}popover-bg: #{$popover-bg};
   --#{$variable-prefix}popover-border-width: #{$popover-border-width};
   --#{$variable-prefix}popover-border-color: #{$popover-border-color};
