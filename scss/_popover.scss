@@ -21,7 +21,7 @@
   position: absolute;
   top: 0;
   left: 0 #{"/* rtl:ignore */"};
-  z-index: var();
+  z-index: var(--#{$variable-prefix}popover-zindex);
   display: block;
   max-width: var(--#{$variable-prefix}popover-max-width);
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
