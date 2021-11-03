@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.6.0): collapse.js
+ * Bootstrap (v4.6.1): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9,17 +9,32 @@ import $ from 'jquery'
 import Util from './util'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'collapse'
-const VERSION = '4.6.0'
+const VERSION = '4.6.1'
 const DATA_KEY = 'bs.collapse'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 const JQUERY_NO_CONFLICT = $.fn[NAME]
+
+const CLASS_NAME_SHOW = 'show'
+const CLASS_NAME_COLLAPSE = 'collapse'
+const CLASS_NAME_COLLAPSING = 'collapsing'
+const CLASS_NAME_COLLAPSED = 'collapsed'
+
+const DIMENSION_WIDTH = 'width'
+const DIMENSION_HEIGHT = 'height'
+
+const EVENT_SHOW = `show${EVENT_KEY}`
+const EVENT_SHOWN = `shown${EVENT_KEY}`
+const EVENT_HIDE = `hide${EVENT_KEY}`
+const EVENT_HIDDEN = `hidden${EVENT_KEY}`
+const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
+
+const SELECTOR_ACTIVES = '.show, .collapsing'
+const SELECTOR_DATA_TOGGLE = '[data-toggle="collapse"]'
 
 const Default = {
   toggle: true,
@@ -31,27 +46,8 @@ const DefaultType = {
   parent: '(string|element)'
 }
 
-const EVENT_SHOW = `show${EVENT_KEY}`
-const EVENT_SHOWN = `shown${EVENT_KEY}`
-const EVENT_HIDE = `hide${EVENT_KEY}`
-const EVENT_HIDDEN = `hidden${EVENT_KEY}`
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
-
-const CLASS_NAME_SHOW = 'show'
-const CLASS_NAME_COLLAPSE = 'collapse'
-const CLASS_NAME_COLLAPSING = 'collapsing'
-const CLASS_NAME_COLLAPSED = 'collapsed'
-
-const DIMENSION_WIDTH = 'width'
-const DIMENSION_HEIGHT = 'height'
-
-const SELECTOR_ACTIVES = '.show, .collapsing'
-const SELECTOR_DATA_TOGGLE = '[data-toggle="collapse"]'
-
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Collapse {
@@ -89,7 +85,6 @@ class Collapse {
   }
 
   // Getters
-
   static get VERSION() {
     return VERSION
   }
@@ -99,7 +94,6 @@ class Collapse {
   }
 
   // Public
-
   toggle() {
     if ($(this._element).hasClass(CLASS_NAME_SHOW)) {
       this.hide()
@@ -262,7 +256,6 @@ class Collapse {
   }
 
   // Private
-
   _getConfig(config) {
     config = {
       ...Default,
@@ -316,7 +309,6 @@ class Collapse {
   }
 
   // Static
-
   static _getTargetFromElement(element) {
     const selector = Util.getSelectorFromElement(element)
     return selector ? document.querySelector(selector) : null
@@ -353,9 +345,7 @@ class Collapse {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
+ * Data API implementation
  */
 
 $(document).on(EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
@@ -377,9 +367,7 @@ $(document).on(EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
 })
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
  */
 
 $.fn[NAME] = Collapse._jQueryInterface

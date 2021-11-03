@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.6.0): util.js
+ * Bootstrap (v4.6.1): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -8,9 +8,7 @@
 import $ from 'jquery'
 
 /**
- * ------------------------------------------------------------------------
  * Private TransitionEnd Helpers
- * ------------------------------------------------------------------------
  */
 
 const TRANSITION_END = 'transitionend'
@@ -62,9 +60,7 @@ function setTransitionEndSupport() {
 }
 
 /**
- * --------------------------------------------------------------------------
- * Public Util Api
- * --------------------------------------------------------------------------
+ * Public Util API
  */
 
 const Util = {
@@ -72,6 +68,7 @@ const Util = {
 
   getUID(prefix) {
     do {
+      // eslint-disable-next-line no-bitwise
       prefix += ~~(Math.random() * MAX_UID) // "~~" acts like a faster Math.floor() here
     } while (document.getElementById(prefix))
 
