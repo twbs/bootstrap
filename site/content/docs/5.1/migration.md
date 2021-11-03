@@ -118,6 +118,8 @@ Your custom Bootstrap CSS builds should now look something like this with a sepa
 
 - **Added new snippet examples based to show how to customize our components. —** Pull ready to use customized components and other common design patterns with our new [Snippets examples]({{< docsref "/examples#snippets" >}}). Includes [footers]({{< docsref "/examples/footers/" >}}), [dropdowns]({{< docsref "/examples/dropdowns/" >}}), [list groups]({{< docsref "/examples/list-groups/" >}}), and [modals]({{< docsref "/examples/modals/" >}}).
 
+- **Removed unused positioning styles from popovers and tooltips** as these are handled solely by Popper.js. `$tooltip-margin` has been deprecated and set to `null` in the process.
+
 Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.com/2021/08/04/bootstrap-5-1-0/)
 
 <hr class="my-5">
