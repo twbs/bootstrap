@@ -21,14 +21,15 @@ const jsFiles = glob.sync(srcPath + '/**/*.js') // path.posix.normalize(srcPath)
 // Array which holds the resolved plugins
 const resolved = []
 
-const filenameToEntity = filename => filename.replace(/(?:^|-)[a-z]/g, char => char.slice(-1).toUpperCase())
+const filenameToEntity = filename => filename.replace(/(?:^|-|\/)[a-z]/g, char => char.slice(-1).toUpperCase())
 
 for (const file of jsFiles) {
   resolved.push({
     src: file.replace('.js', ''),
     dist: file.replace('src', 'dist'),
     relativePath: path.relative(srcPath, file),
-    name: filenameToEntity(path.basename(file, '.js'))
+    name: filenameToEntity(path.basename(file, '.js')),
+    safeName: filenameToEntity(path.relative(srcPath, file)).replace('.js', '')
   })
 }
 
