@@ -16,20 +16,21 @@ const { babel } = require('@rollup/plugin-babel')
 const banner = require('./banner.js')
 
 const srcPath = path.resolve(__dirname, '../js/src/')
-const jsFiles = glob.sync(srcPath + '/**/*.js') // path.posix.normalize(srcPath)
+const jsFiles = glob.sync(srcPath + '/**/*.js')
 
 // Array which holds the resolved plugins
 const resolved = []
 
-const filenameToEntity = filename => filename.replace(/(?:^|-|\/)[a-z]/g, char => char.slice(-1).toUpperCase())
+// trims 'js' extension, and Uppercases => first letter, hyphens, backslashes & slashes
+const filenameToEntity = filename => filename.replace('.js', '').replace(/(?:^|-|\/|\\)[a-z]/g, char => char.slice(-1).toUpperCase())
 
 for (const file of jsFiles) {
   resolved.push({
     src: file.replace('.js', ''),
     dist: file.replace('src', 'dist'),
-    relativePath: path.relative(srcPath, file),
-    name: filenameToEntity(path.basename(file, '.js')),
-    safeName: filenameToEntity(path.relative(srcPath, file)).replace('.js', '')
+    fileName: path.basename(file),
+    className: filenameToEntity(path.basename(file)),
+    safeClassName: filenameToEntity(path.relative(srcPath, file))
   })
 }
 
@@ -64,22 +65,22 @@ const build = async plugin => {
         throw new Error(`Source ${source} is not mapped!`)
       }
 
-      globals[path.normalize(usedPlugin.src)] = usedPlugin.name
+      globals[path.normalize(usedPlugin.src)] = usedPlugin.className
       return true
     }
   })
 
   await bundle.write({
-    banner: banner(path.basename(plugin.relativePath)),
+    banner: banner(plugin.fileName),
     format: 'umd',
-    name: plugin.name,
+    name: plugin.className,
     sourcemap: true,
     globals,
     generatedCode: 'es2015',
     file: plugin.dist
   })
 
-  console.log(`Built ${plugin.name}`)
+  console.log(`Built ${plugin.className}`)
 }
 
 (async () => {
