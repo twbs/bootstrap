@@ -7,7 +7,7 @@
 
 import EventHandler from '../dom/event-handler'
 import SelectorEngine from '../dom/selector-engine'
-import { typeCheckConfig } from './index'
+import { getDocument, typeCheckConfig } from './index'
 
 /**
  * Constants
@@ -42,6 +42,7 @@ class FocusTrap {
     this._config = this._getConfig(config)
     this._isActive = false
     this._lastTabNavDirection = null
+    this._document = getDocument()
   }
 
   // Public
@@ -56,9 +57,9 @@ class FocusTrap {
       trapElement.focus()
     }
 
-    EventHandler.off(document, EVENT_KEY) // guard against infinite focus loop
-    EventHandler.on(document, EVENT_FOCUSIN, event => this._handleFocusin(event))
-    EventHandler.on(document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event))
+    EventHandler.off(this._document, EVENT_KEY) // guard against infinite focus loop
+    EventHandler.on(this._document, EVENT_FOCUSIN, event => this._handleFocusin(event))
+    EventHandler.on(this._document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event))
 
     this._isActive = true
   }
@@ -69,7 +70,7 @@ class FocusTrap {
     }
 
     this._isActive = false
-    EventHandler.off(document, EVENT_KEY)
+    EventHandler.off(this._document, EVENT_KEY)
   }
 
   // Private
@@ -77,7 +78,7 @@ class FocusTrap {
     const { target } = event
     const { trapElement } = this._config
 
-    if (target === document || target === trapElement || trapElement.contains(target)) {
+    if (target === this._document || target === trapElement || trapElement.contains(target)) {
       return
     }
 
