@@ -200,7 +200,7 @@ const reflow = element => {
 }
 
 const getjQuery = () => {
-  const { jQuery } = window
+  const { jQuery } = getWindow()
 
   if (jQuery && !getDocument().body.hasAttribute('data-bs-no-jquery')) {
     return jQuery
@@ -228,7 +228,7 @@ const onDOMContentLoaded = callback => {
   }
 }
 
-const isRTL = () => getDocument().documentElement.dir === 'rtl'
+const isRTL = () => getDocument().documentElement?.dir === 'rtl'
 
 const defineJQueryPlugin = plugin => {
   onDOMContentLoaded(() => {
