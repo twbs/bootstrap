@@ -108,17 +108,15 @@ class ScrollSpy extends BaseComponent {
         const targetSelector = getSelectorFromElement(element)
         const target = targetSelector ? SelectorEngine.findOne(targetSelector) : null
 
-        if (target) {
-          const targetBCR = target.getBoundingClientRect()
-          if (targetBCR.width || targetBCR.height) {
-            return [
-              Manipulator[offsetMethod](target).top + offsetBase,
-              targetSelector
-            ]
-          }
+        if (!target) {
+          return null
         }
 
-        return null
+        const targetBCR = target.getBoundingClientRect()
+
+        return targetBCR.width || targetBCR.height ?
+          [Manipulator[offsetMethod](target).top + offsetBase, targetSelector] :
+          null
       })
         .filter(item => item)
         .sort((a, b) => a[0] - b[0])

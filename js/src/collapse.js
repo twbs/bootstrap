@@ -114,14 +114,12 @@ class Collapse extends BaseComponent {
       return
     }
 
-    let activeChildren = []
-
     // find active children
-    if (this._config.parent) {
-      activeChildren = this._getFirstLevelChildren(SELECTOR_ACTIVES)
+    const activeChildren = this._config.parent ?
+      this._getFirstLevelChildren(SELECTOR_ACTIVES)
         .filter(element => element !== this._element)
-        .map(element => Collapse.getOrCreateInstance(element, { toggle: false }))
-    }
+        .map(element => Collapse.getOrCreateInstance(element, { toggle: false })) :
+      []
 
     if (activeChildren.length && activeChildren[0]._isTransitioning) {
       return
