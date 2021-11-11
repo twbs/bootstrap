@@ -252,7 +252,7 @@ Add `.table-sm` to make any `.table` more compact by cutting all cell `padding` 
 
 ## Vertical alignment
 
-Table cells of `<thead>` are always vertical aligned to the bottom. Table cells in `<tbody>` inherit their alignment from `<table>` and are aligned to the the top by default. Use the [vertical align]({{< docsref "/utilities/vertical-align" >}}) classes to re-align where needed.
+Table cells of `<thead>` are always vertical aligned to the bottom. Table cells in `<tbody>` inherit their alignment from `<table>` and are aligned to the top by default. Use the [vertical align]({{< docsref "/utilities/vertical-align" >}}) classes to re-align where needed.
 
 <div class="bd-example">
   <div class="table-responsive">
