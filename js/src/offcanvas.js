@@ -101,7 +101,25 @@ class Offcanvas extends BaseComponent {
     }
 
     this._isShown = true
-    this._backdrop.show()
+    if (this._element.closest('.offcanvas-slide')) {
+      if (this._element.classList.contains('offcanvas-start')) {
+        this._element.closest('.offcanvas-slide').querySelector('.slide-container').classList.add('slide-start')
+      }
+
+      if (this._element.classList.contains('offcanvas-end')) {
+        this._element.closest('.offcanvas-slide').querySelector('.slide-container').classList.add('slide-end')
+      }
+
+      if (this._element.classList.contains('offcanvas-top')) {
+        this._element.closest('.offcanvas-slide').querySelector('.slide-container').classList.add('slide-top')
+      }
+
+      if (this._element.classList.contains('offcanvas-bottom')) {
+        this._element.closest('.offcanvas-slide').querySelector('.slide-container').classList.add('slide-bottom')
+      }
+    } else {
+      this._backdrop.show()
+    }
 
     if (!this._config.scroll) {
       new ScrollBarHelper().hide()
@@ -140,6 +158,13 @@ class Offcanvas extends BaseComponent {
     this._isShown = false
     this._element.classList.add(CLASS_NAME_HIDING)
     this._backdrop.hide()
+
+    if (this._element.closest('.offcanvas-slide')) {
+      this._element.closest('.offcanvas-slide').querySelector('.slide-container').classList.remove('slide-start')
+      this._element.closest('.offcanvas-slide').querySelector('.slide-container').classList.remove('slide-end')
+      this._element.closest('.offcanvas-slide').querySelector('.slide-container').classList.remove('slide-top')
+      this._element.closest('.offcanvas-slide').querySelector('.slide-container').classList.remove('slide-bottom')
+    }
 
     const completeCallback = () => {
       this._element.classList.remove(CLASS_NAME_SHOW, CLASS_NAME_HIDING)
