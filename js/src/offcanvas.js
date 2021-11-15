@@ -101,6 +101,8 @@ class Offcanvas extends BaseComponent {
     }
 
     this._isShown = true
+    this._element.style.visibility = 'visible'
+
     if (this._element.closest('.offcanvas-slide')) {
       if (this._element.classList.contains('offcanvas-start')) {
         this._element.closest('.offcanvas-slide').querySelector('.slide-container').classList.add('slide-start')
