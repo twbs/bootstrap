@@ -28,6 +28,7 @@
       "error",
       "always-multiline"
     ],
+    "no-negated-condition": "off",
     "no-new": "off",
     "no-var": "off",
     "object-curly-spacing": [
@@ -54,7 +55,6 @@
     "unicorn/prefer-array-flat": "off",
     "unicorn/prefer-dom-node-dataset": "off",
     "unicorn/prefer-module": "off",
-    "unicorn/prefer-prototype-methods": "off",
     "unicorn/prefer-query-selector": "off",
     "unicorn/prevent-abbreviations": "off"
   }

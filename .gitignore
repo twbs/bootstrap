@@ -1,7 +1,8 @@
 # Ignore docs files
 /_site/
-# Hugo resources folder
+# Hugo files
 /resources/
+/.hugo_build.lock
 
 # Numerous always-ignore extensions
 *.diff
