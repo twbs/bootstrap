@@ -91,7 +91,7 @@ Click the button the below to show as toast (positioning with our utilities in t
 
 ### Translucent
 
-Toasts are slightly translucent, too, so they blend over whatever they might appear over. For browsers that support the `backdrop-filter` CSS property, we'll also attempt to blur the elements under a toast.
+Toasts are slightly translucent, too, so they blend over whatever they might appear over.
 
 {{< example class="bg-dark" >}}
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
