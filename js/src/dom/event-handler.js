@@ -102,8 +102,9 @@ function bootstrapHandler(element, fn) {
 function bootstrapDelegationHandler(element, selector, fn) {
   return function handler(event) {
     const domElements = element.querySelectorAll(selector)
+    let { target } = event
 
-    for (let { target } = event; target && target !== this; target = target.parentNode) {
+    while (target && target !== event) {
       for (const domElement of domElements) {
         if (domElement !== target) {
           continue
@@ -117,6 +118,8 @@ function bootstrapDelegationHandler(element, selector, fn) {
 
         return fn.apply(target, [event])
       }
+
+      target = target.parentNode
     }
 
     // To please ESLint
