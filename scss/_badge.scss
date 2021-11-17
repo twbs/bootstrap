@@ -1,19 +1,29 @@
+// stylelint-disable custom-property-empty-line-before
+
 // Base class
 //
 // Requires one of the contextual, color modifier classes for `color` and
 // `background-color`.
 
 .badge {
+  // scss-docs-start badge-css-vars
+  --#{$variable-prefix}badge-padding: #{$badge-padding-y $badge-padding-x};
+  @include rfs($badge-font-size, --#{$variable-prefix}badge-font-size);
+  --#{$variable-prefix}badge-font-weight: #{$badge-font-weight};
+  --#{$variable-prefix}badge-color: #{$badge-color};
+  --#{$variable-prefix}badge-border-radius: #{$badge-border-radius};
+  // scss-docs-end badge-css-vars
+
   display: inline-block;
-  padding: $badge-padding-y $badge-padding-x;
-  @include font-size($badge-font-size);
-  font-weight: $badge-font-weight;
+  padding: var(--#{$variable-prefix}badge-padding);
+  font-size: var(--#{$variable-prefix}badge-font-size);
+  font-weight: var(--#{$variable-prefix}badge-font-weight);
   line-height: 1;
-  color: $badge-color;
+  color: var(--#{$variable-prefix}badge-color);
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  @include border-radius($badge-border-radius);
+  border-radius: var(--#{$variable-prefix}badge-border-radius, 0); // stylelint-disable-line property-disallowed-list
   @include gradient-bg();
 
   // Empty badges collapse automatically
