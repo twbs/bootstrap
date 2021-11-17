@@ -1,13 +1,25 @@
+// stylelint-disable custom-property-empty-line-before
+
 //
 // Base styles
 //
 
 .alert {
+  // scss-docs-start alert-css-vars
+  --#{$variable-prefix}alert-bg: #{$};
+  --#{$variable-prefix}alert-padding: #{$alert-padding-y $alert-padding-x};
+  --#{$variable-prefix}alert-margin-bottom: #{$alert-margin-bottom};
+  --#{$variable-prefix}alert-color: #{$alert-padding-y $alert-padding-x};
+  --#{$variable-prefix}alert-border-color: transparent;
+  --#{$variable-prefix}alert-border: #{$alert-border-width} solid var(--#{$variable-prefix}alert-border-color);
+  --#{$variable-prefix}alert-border-radius: #{$alert-border-radius};
+  // scss-docs-end alert-css-vars
+
   position: relative;
-  padding: $alert-padding-y $alert-padding-x;
-  margin-bottom: $alert-margin-bottom;
-  border: $alert-border-width solid transparent;
-  @include border-radius($alert-border-radius);
+  padding: var(--#{$variable-prefix}alert-padding);
+  margin-bottom: var(--#{$variable-prefix}alert-margin-bottom);
+  border: var(--#{$variable-prefix}alert-border);
+  @include border-radius(var(--#{$variable-prefix}alert-border-radius));
 }
 
 // Headings for larger alerts
@@ -44,9 +56,14 @@
 // Generate contextual modifier classes for colorizing the alert.
 
 @each $state, $value in $theme-colors {
+  --#{$variable-prefix}alert-color: #{shift-color($value, $alert-color-scale)};
+  --#{$variable-prefix}alert-bg: #{shift-color($value, $alert-bg-scale)};
+  --#{$variable-prefix}alert-border-color: #{shift-color($value, $alert-border-scale)};
+
   $alert-background: shift-color($value, $alert-bg-scale);
   $alert-border: shift-color($value, $alert-border-scale);
   $alert-color: shift-color($value, $alert-color-scale);
+
   @if (contrast-ratio($alert-background, $alert-color) < $min-contrast-ratio) {
     $alert-color: mix($value, color-contrast($alert-background), abs($alert-color-scale));
   }
