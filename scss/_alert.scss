@@ -1,12 +1,10 @@
-// stylelint-disable custom-property-empty-line-before
-
 //
 // Base styles
 //
 
 .alert {
   // scss-docs-start alert-css-vars
-  --#{$variable-prefix}alert-bg: #{$};
+  --#{$variable-prefix}alert-bg: transparent;
   --#{$variable-prefix}alert-padding: #{$alert-padding-y $alert-padding-x};
   --#{$variable-prefix}alert-margin-bottom: #{$alert-margin-bottom};
   --#{$variable-prefix}alert-color: #{$alert-padding-y $alert-padding-x};
@@ -18,8 +16,9 @@
   position: relative;
   padding: var(--#{$variable-prefix}alert-padding);
   margin-bottom: var(--#{$variable-prefix}alert-margin-bottom);
+  background-color: var(--#{$variable-prefix}alert-bg);
   border: var(--#{$variable-prefix}alert-border);
-  @include border-radius(var(--#{$variable-prefix}alert-border-radius));
+  border-radius: var(--#{$variable-prefix}alert-border-radius, 0); // stylelint-disable-line property-disallowed-list
 }
 
 // Headings for larger alerts
@@ -56,10 +55,6 @@
 // Generate contextual modifier classes for colorizing the alert.
 
 @each $state, $value in $theme-colors {
-  --#{$variable-prefix}alert-color: #{shift-color($value, $alert-color-scale)};
-  --#{$variable-prefix}alert-bg: #{shift-color($value, $alert-bg-scale)};
-  --#{$variable-prefix}alert-border-color: #{shift-color($value, $alert-border-scale)};
-
   $alert-background: shift-color($value, $alert-bg-scale);
   $alert-border: shift-color($value, $alert-border-scale);
   $alert-color: shift-color($value, $alert-color-scale);
