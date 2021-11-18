@@ -118,9 +118,6 @@ function bootstrapDelegationHandler(element, selector, fn) {
         return fn.apply(target, [event])
       }
     }
-
-    // To please ESLint
-    return null
   }
 }
 
