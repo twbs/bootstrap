@@ -121,9 +121,6 @@ function bootstrapDelegationHandler(element, selector, fn) {
 
       target = target.parentNode
     }
-
-    // To please ESLint
-    return null
   }
 }
 
