@@ -1,28 +1,43 @@
+// stylelint-disable custom-property-empty-line-before
+
 .breadcrumb {
+  // scss-docs-start breadcrumb-css-vars
+  --#{$variable-prefix}breadcrumb-padding-x: #{$breadcrumb-padding-x};
+  --#{$variable-prefix}breadcrumb-padding-y: #{$breadcrumb-padding-y};
+  --#{$variable-prefix}breadcrumb-margin-bottom: #{$breadcrumb-margin-bottom};
+  @include rfs($breadcrumb-font-size, --#{$variable-prefix}breadcrumb-font-size);
+  --#{$variable-prefix}breadcrumb-bg: #{$breadcrumb-bg};
+  --#{$variable-prefix}breadcrumb-border-radius: #{$breadcrumb-border-radius};
+  --#{$variable-prefix}breadcrumb-divider-color: #{$breadcrumb-divider-color};
+  --#{$variable-prefix}breadcrumb-item-padding-x: #{$breadcrumb-item-padding-x};
+  --#{$variable-prefix}breadcrumb-item-active-color: #{$breadcrumb-active-color};
+  // scss-docs-end breadcrumb-css-vars
+
   display: flex;
   flex-wrap: wrap;
-  padding: $breadcrumb-padding-y $breadcrumb-padding-x;
-  margin-bottom: $breadcrumb-margin-bottom;
+  padding: var(--#{$variable-prefix}breadcrumb-padding-y) var(--#{$variable-prefix}breadcrumb-padding-x);
+  margin-bottom: var(--#{$variable-prefix}breadcrumb-margin-bottom);
   @include font-size($breadcrumb-font-size);
+  font-size: var(--#{$variable-prefix}breadcrumb-font-size);
   list-style: none;
-  background-color: $breadcrumb-bg;
-  @include border-radius($breadcrumb-border-radius);
+  background-color: var(--#{$variable-prefix}breadcrumb-bg);
+  @include border-radius(var(--#{$variable-prefix}breadcrumb-border-radius));
 }
 
 .breadcrumb-item {
   // The separator between breadcrumbs (by default, a forward-slash: "/")
   + .breadcrumb-item {
-    padding-left: $breadcrumb-item-padding-x;
+    padding-left: var(--#{$variable-prefix}breadcrumb-item-padding-x);
 
     &::before {
       float: left; // Suppress inline spacings and underlining of the separator
-      padding-right: $breadcrumb-item-padding-x;
-      color: $breadcrumb-divider-color;
+      padding-right: var(--#{$variable-prefix}breadcrumb-item-padding-x);
+      color: var(--#{$variable-prefix}breadcrumb-divider-color);
       content: var(--#{$variable-prefix}breadcrumb-divider, escape-svg($breadcrumb-divider)) #{"/* rtl:"} var(--#{$variable-prefix}breadcrumb-divider, escape-svg($breadcrumb-divider-flipped)) #{"*/"};
     }
   }
 
   &.active {
-    color: $breadcrumb-active-color;
+    color: var(--#{$variable-prefix}breadcrumb-item-active-color);
   }
 }
