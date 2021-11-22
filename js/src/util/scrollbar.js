@@ -15,8 +15,8 @@ import { isElement } from './index'
 
 const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
 const SELECTOR_STICKY_CONTENT = '.sticky-top'
-const PROPERTY_PADDING = 'paddingRight'
-const PROPERTY_MARGIN = 'marginRight'
+const PROPERTY_PADDING = 'padding-right'
+const PROPERTY_MARGIN = 'margin-right'
 
 /**
  * Class definition
@@ -69,15 +69,15 @@ class ScrollBarHelper {
       }
 
       this._saveInitialAttribute(element, styleProp)
-      const calculatedValue = window.getComputedStyle(element)[styleProp]
-      element.style[styleProp] = `${callback(Number.parseFloat(calculatedValue))}px`
+      const calculatedValue = window.getComputedStyle(element).getPropertyValue(styleProp)
+      element.style.setProperty(styleProp, `${callback(Number.parseFloat(calculatedValue))}px`)
     }
 
     this._applyManipulationCallback(selector, manipulationCallBack)
   }
 
   _saveInitialAttribute(element, styleProp) {
-    const actualValue = element.style[styleProp]
+    const actualValue = element.style.getPropertyValue(styleProp)
     if (actualValue) {
       Manipulator.setDataAttribute(element, styleProp, actualValue)
     }
@@ -86,13 +86,13 @@ class ScrollBarHelper {
   _resetElementAttributes(selector, styleProp) {
     const manipulationCallBack = element => {
       const value = Manipulator.getDataAttribute(element, styleProp)
-      if (typeof value === 'undefined') {
+      if (!value) {
         element.style.removeProperty(styleProp)
         return
       }
 
       Manipulator.removeDataAttribute(element, styleProp)
-      element.style[styleProp] = value
+      element.style.setProperty(styleProp, value)
     }
 
     this._applyManipulationCallback(selector, manipulationCallBack)
