@@ -114,6 +114,10 @@
           background-color: $value;
           border-color: $value;
         }
+        &:not(:checked) {
+          background-image: escape-svg(str-replace($form-switch-focus-bg-image, "#{$form-switch-focus-color}", $value));
+          border-color: $value;
+        }
 
         &:focus,
         &:active {
@@ -126,15 +130,17 @@
 
     &.switch-off-#{$state} {
       .form-check-input {
-        background-color: $value;
-        background-image: escape-svg($form-switch-bg-off-image);
-        border-color: $value;
-
-        &:focus,
-        &:active {
+        &:not(:checked) {
+          background-color: $value;
+          background-image: escape-svg($form-switch-bg-off-image);
           border-color: $value;
-          outline: 0;
-          box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width rgba($value, $input-btn-focus-color-opacity);
+
+          &:focus,
+          &:active {
+            border-color: $value;
+            outline: 0;
+            box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width rgba($value, $input-btn-focus-color-opacity);
+          }
         }
       }
     }
