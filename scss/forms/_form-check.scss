@@ -109,9 +109,18 @@
 
   @each $state, $value in $theme-colors {
     &.switch-#{$state} {
-      .form-check-input:checked {
-        background-color: $value;
-        border-color: $value;
+      .form-check-input {
+        &:checked {
+          background-color: $value;
+          border-color: $value;
+        }
+
+        &:focus,
+        &:active {
+          border-color: $value;
+          outline: 0;
+          box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width rgba($value, $input-btn-focus-color-opacity);
+        }
       }
     }
 
@@ -120,6 +129,13 @@
         background-color: $value;
         background-image: escape-svg($form-switch-bg-off-image);
         border-color: $value;
+
+        &:focus,
+        &:active {
+          border-color: $value;
+          outline: 0;
+          box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width rgba($value, $input-btn-focus-color-opacity);
+        }
       }
     }
   }
