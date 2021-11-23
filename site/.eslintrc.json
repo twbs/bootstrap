@@ -46,6 +46,7 @@
       "error",
       "never"
     ],
+    "spaced-comment": "off",
     "strict": "error",
     "unicorn/no-array-for-each": "off",
     "unicorn/no-array-method-this-argument": "off",

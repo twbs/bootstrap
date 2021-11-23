@@ -50,6 +50,7 @@
       "error",
       "never"
     ],
+    "spaced-comment": "off",
     "unicorn/explicit-length-check": "off",
     "unicorn/no-array-callback-reference": "off",
     "unicorn/no-array-method-this-argument": "off",
