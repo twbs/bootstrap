@@ -49,7 +49,7 @@ const build = async plugin => {
     ],
     external: source => {
       // Replace starting with ./ or ../
-      const pattern = /^(\.+)\//
+      const pattern = /^(\.{1,2})\//
 
       // It's probably a Node.js package
       if (!pattern.test(source)) {
