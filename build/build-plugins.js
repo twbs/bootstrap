@@ -21,16 +21,17 @@ const jsFiles = glob.sync(srcPath + '/**/*.js')
 // Array which holds the resolved plugins
 const resolved = []
 
-// trims 'js' extension, and Uppercases => first letter, hyphens, backslashes & slashes
-const filenameToEntity = filename => filename.replace('.js', '').replace(/(?:^|-|\/|\\)[a-z]/g, char => char.slice(-1).toUpperCase())
+// Trims the "js" extension and uppercases => first letter, hyphens, backslashes & slashes
+const filenameToEntity = filename => filename.replace('.js', '')
+  .replace(/(?:^|-|\/|\\)[a-z]/g, char => char.slice(-1).toUpperCase())
 
 for (const file of jsFiles) {
   resolved.push({
     src: file.replace('.js', ''),
     dist: file.replace('src', 'dist'),
     fileName: path.basename(file),
-    className: filenameToEntity(path.basename(file)),
-    safeClassName: filenameToEntity(path.relative(srcPath, file))
+    className: filenameToEntity(path.basename(file))
+    // safeClassName: filenameToEntity(path.relative(srcPath, file))
   })
 }
 
@@ -48,10 +49,10 @@ const build = async plugin => {
       })
     ],
     external: source => {
-      // Replace starting with ./ or ../
+      // Pattern to identify local files
       const pattern = /^(\.{1,2})\//
 
-      // It's probably a Node.js package
+      // It's not a local file, e.g a Node.js package
       if (!pattern.test(source)) {
         globals[source] = source
         return true
@@ -65,6 +66,8 @@ const build = async plugin => {
         throw new Error(`Source ${source} is not mapped!`)
       }
 
+      // We can change `Index` with `UtilIndex` etc if we use
+      // `safeClassName` instead of `className` everywhere
       globals[path.normalize(usedPlugin.src)] = usedPlugin.className
       return true
     }
