@@ -19,14 +19,14 @@ const srcPath = path.resolve(__dirname, '../js/src/')
 const jsFiles = glob.sync(srcPath + '/**/*.js')
 
 // Array which holds the resolved plugins
-const resolved = []
+const resolvedPlugins = []
 
 // Trims the "js" extension and uppercases => first letter, hyphens, backslashes & slashes
 const filenameToEntity = filename => filename.replace('.js', '')
-  .replace(/(?:^|-|\/|\\)[a-z]/g, char => char.slice(-1).toUpperCase())
+  .replace(/(?:^|-|\/|\\)[a-z]/g, str => str.slice(-1).toUpperCase())
 
 for (const file of jsFiles) {
-  resolved.push({
+  resolvedPlugins.push({
     src: file.replace('.js', ''),
     dist: file.replace('src', 'dist'),
     fileName: path.basename(file),
@@ -58,7 +58,7 @@ const build = async plugin => {
         return true
       }
 
-      const usedPlugin = resolved.find(plugin => {
+      const usedPlugin = resolvedPlugins.find(plugin => {
         return plugin.src.includes(source.replace(pattern, ''))
       })
 
@@ -94,7 +94,7 @@ const build = async plugin => {
     console.log('Building individual plugins...')
     console.time(timeLabel)
 
-    await Promise.all(Object.values(resolved).map(plugin => build(plugin)))
+    await Promise.all(Object.values(resolvedPlugins).map(plugin => build(plugin)))
 
     console.timeEnd(timeLabel)
   } catch (error) {
