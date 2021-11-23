@@ -398,7 +398,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
 
     EventHandler.one(target, EVENT_HIDDEN, () => {
       if (isVisible(this)) {
-        this.focus()
+        this.focus({ preventScroll: true })
       }
     })
   })
