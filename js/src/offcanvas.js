@@ -66,7 +66,12 @@ class Offcanvas extends BaseComponent {
     this._isShown = false
     this._backdrop = this._initializeBackDrop()
     this._focustrap = this._initializeFocusTrap()
-    this._addEventListeners()
+
+    EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS, event => {
+      if (this._config.keyboard && event.key === ESCAPE_KEY) {
+        this.hide()
+      }
+    })
   }
 
   // Getters
@@ -176,14 +181,6 @@ class Offcanvas extends BaseComponent {
   _initializeFocusTrap() {
     return new FocusTrap({
       trapElement: this._element
-    })
-  }
-
-  _addEventListeners() {
-    EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS, event => {
-      if (this._config.keyboard && event.key === ESCAPE_KEY) {
-        this.hide()
-      }
     })
   }
 

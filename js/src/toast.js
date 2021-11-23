@@ -55,7 +55,11 @@ class Toast extends BaseComponent {
     this._timeout = null
     this._hasMouseInteraction = false
     this._hasKeyboardInteraction = false
-    this._setListeners()
+
+    EventHandler.on(this._element, EVENT_MOUSEOVER, event => this._onInteraction(event, true))
+    EventHandler.on(this._element, EVENT_MOUSEOUT, event => this._onInteraction(event, false))
+    EventHandler.on(this._element, EVENT_FOCUSIN, event => this._onInteraction(event, true))
+    EventHandler.on(this._element, EVENT_FOCUSOUT, event => this._onInteraction(event, false))
   }
 
   // Getters
@@ -171,13 +175,6 @@ class Toast extends BaseComponent {
     }
 
     this._maybeScheduleHide()
-  }
-
-  _setListeners() {
-    EventHandler.on(this._element, EVENT_MOUSEOVER, event => this._onInteraction(event, true))
-    EventHandler.on(this._element, EVENT_MOUSEOUT, event => this._onInteraction(event, false))
-    EventHandler.on(this._element, EVENT_FOCUSIN, event => this._onInteraction(event, true))
-    EventHandler.on(this._element, EVENT_FOCUSOUT, event => this._onInteraction(event, false))
   }
 
   _clearTimeout() {
