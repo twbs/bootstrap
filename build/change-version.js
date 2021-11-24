@@ -57,7 +57,7 @@ async function replaceRecursively(file, oldVersion, newVersion) {
 }
 
 async function main(args) {
-  const [oldVersion, newVersion] = args
+  let [oldVersion, newVersion] = args
 
   if (!oldVersion || !newVersion) {
     console.error('USAGE: change-version old_version new_version [--verbose] [--dry[-run]]')
@@ -66,7 +66,7 @@ async function main(args) {
   }
 
   // Strip any leading `v` from arguments because otherwise we will end up with duplicate `v`s
-  [oldVersion, newVersion].map(arg => arg.startsWith('v') ? arg.slice(1) : arg)
+  [oldVersion, newVersion] = [oldVersion, newVersion].map(arg => arg.startsWith('v') ? arg.slice(1) : arg)
 
   try {
     const files = await globby(GLOB, GLOBBY_OPTIONS)
