@@ -39,8 +39,8 @@ const CLASS_NAME_SHOW = 'show'
 const HOVER_STATE_SHOW = 'show'
 const HOVER_STATE_OUT = 'out'
 
-const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
 const SELECTOR_TOOLTIP_ARROW = '.tooltip-arrow'
+const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
 const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`
 
 const EVENT_MODAL_HIDE = 'hide.bs.modal'
