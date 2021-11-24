@@ -56,7 +56,12 @@ async function replaceRecursively(file, oldVersion, newVersion) {
   await fs.writeFile(file, newString, 'utf8')
 }
 
-async function main(args) {
+// Strip any leading `v` from arguments because otherwise we will end up with duplicate `v`s
+function strip(string, prefix = 'v') {
+  return string.startsWith(prefix) ? string.slice(1) : string
+}
+
+async function main(args, str) {
   const [oldVersion, newVersion] = args
 
   if (!oldVersion || !newVersion) {
@@ -65,13 +70,10 @@ async function main(args) {
     process.exit(1)
   }
 
-  // Strip any leading `v` from arguments because otherwise we will end up with duplicate `v`s
-  [oldVersion, newVersion].map(arg => arg.startsWith('v') ? arg.slice(1) : arg)
-
   try {
     const files = await globby(GLOB, GLOBBY_OPTIONS)
 
-    await Promise.all(files.map(file => replaceRecursively(file, oldVersion, newVersion)))
+    await Promise.all(files.map(file => replaceRecursively(file, strip(oldVersion), strip(newVersion))))
   } catch (error) {
     console.error(error)
     process.exit(1)
