@@ -400,7 +400,7 @@ Gives a way to change the tooltip's content after its initialization.
 tooltip.setContent({ '.tooltip-inner': 'another title' })
 ```
 {{< callout info >}}
-The `setContent` method accepts an `object` argument, where each property-keys are a valid `string` selector within the tooltip template, and each related property-value can be `string` | `element` | `function` | `null`
+The `setContent` method accepts an `object` argument, where each property-key is a valid `string` selector within the popover template, and each related property-value can be `string` | `element` | `function` | `null`
 {{< /callout >}}
 
 #### toggleEnabled
