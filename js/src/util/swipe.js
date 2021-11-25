@@ -1,6 +1,18 @@
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap (v5.1.3): util/swipe.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
 import EventHandler from '../dom/event-handler'
 import { execute, typeCheckConfig } from './index'
 
+/**
+ * Constants
+ */
+
+const NAME = 'swipe'
 const EVENT_KEY = '.bs.swipe'
 const EVENT_TOUCHSTART = `touchstart${EVENT_KEY}`
 const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY}`
@@ -11,7 +23,6 @@ const POINTER_TYPE_TOUCH = 'touch'
 const POINTER_TYPE_PEN = 'pen'
 const CLASS_NAME_POINTER_EVENT = 'pointer-event'
 const SWIPE_THRESHOLD = 40
-const NAME = 'swipe'
 
 const Default = {
   leftCallback: null,
@@ -24,6 +35,10 @@ const DefaultType = {
   rightCallback: '(function|null)',
   endCallback: '(function|null)'
 }
+
+/**
+ * Class definition
+ */
 
 class Swipe {
   constructor(element, config) {
@@ -39,10 +54,12 @@ class Swipe {
     this._initEvents()
   }
 
+  // Public
   dispose() {
     EventHandler.off(this._element, EVENT_KEY)
   }
 
+  // Private
   _start(event) {
     if (!this._supportPointerEvents) {
       this._deltaX = event.touches[0].clientX
@@ -114,6 +131,7 @@ class Swipe {
     return this._supportPointerEvents && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)
   }
 
+  // Static
   static isSupported() {
     return 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
   }

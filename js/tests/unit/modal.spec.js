@@ -432,6 +432,38 @@ describe('Modal', () => {
       modal.show()
     })
 
+    it('should not close modal when clicking on modal-content', done => {
+      fixtureEl.innerHTML = [
+        '<div class="modal">',
+        '  <div class="modal-dialog">',
+        '    <div class="modal-content"></div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      const shownCallback = () => {
+        setTimeout(() => {
+          expect(modal._isShown).toEqual(true)
+          done()
+        }, 10)
+      }
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        fixtureEl.querySelector('.modal-dialog').click()
+        fixtureEl.querySelector('.modal-content').click()
+        shownCallback()
+      })
+
+      modalEl.addEventListener('hidden.bs.modal', () => {
+        throw new Error('Should not hide a modal')
+      })
+
+      modal.show()
+    })
+
     it('should not close modal when clicking outside of modal-content if backdrop = false', done => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
@@ -608,6 +640,7 @@ describe('Modal', () => {
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
+      const backdropSpy = spyOn(modal._backdrop, 'hide').and.callThrough()
 
       modalEl.addEventListener('shown.bs.modal', () => {
         modal.hide()
@@ -622,7 +655,7 @@ describe('Modal', () => {
         expect(modalEl.getAttribute('role')).toBeNull()
         expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
         expect(modalEl.style.display).toEqual('none')
-        expect(document.querySelector('.modal-backdrop')).toBeNull()
+        expect(backdropSpy).toHaveBeenCalled()
         done()
       })
 

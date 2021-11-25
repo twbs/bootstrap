@@ -46,7 +46,7 @@
     },
     {
       "path": "./dist/js/bootstrap.esm.min.js",
-      "maxSize": "18.25 kB"
+      "maxSize": "18.5 kB"
     },
     {
       "path": "./dist/js/bootstrap.js",
