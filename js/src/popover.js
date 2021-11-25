@@ -94,13 +94,15 @@ class Popover extends Tooltip {
     return this.each(function () {
       const data = Popover.getOrCreateInstance(this, config)
 
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-
-        data[config]()
+      if (typeof config !== 'string') {
+        return
       }
+
+      if (typeof data[config] === 'undefined') {
+        throw new TypeError(`No method named "${config}"`)
+      }
+
+      data[config]()
     })
   }
 }
