@@ -465,13 +465,12 @@ describe('Tooltip', () => {
       })
 
       tooltipEl.addEventListener('inserted.bs.tooltip', () => {
-        expect(tooltip.getTipElement().classList.contains('bs-tooltip-bottom')).toEqual(true)
+        expect(tooltip.getTipElement().classList.contains('bs-tooltip-auto')).toEqual(true)
       })
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
-        const tooltipShown = document.querySelector('.tooltip')
-
-        expect(tooltipShown.classList.contains('bs-tooltip-bottom')).toEqual(true)
+        expect(tooltip.getTipElement().classList.contains('bs-tooltip-auto')).toEqual(true)
+        expect(tooltip.getTipElement().getAttribute('data-popper-placement')).toEqual('bottom')
         done()
       })
 
@@ -699,6 +698,7 @@ describe('Tooltip', () => {
 
         setTimeout(() => {
           expect(tooltip.getTipElement().classList.contains('show')).toEqual(true)
+          expect(document.querySelectorAll('.tooltip').length).toEqual(1)
           done()
         }, 200)
       }, 0)
@@ -1041,7 +1041,7 @@ describe('Tooltip', () => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
 
       const tooltipEl = fixtureEl.querySelector('a')
-      const tooltip = new Tooltip(tooltipEl)
+      const tooltip = new Tooltip(tooltipEl, { animation: false })
 
       const tip = tooltip.getTipElement()
 
@@ -1050,6 +1050,35 @@ describe('Tooltip', () => {
       expect(tip.classList.contains('show')).toEqual(false)
       expect(tip.classList.contains('fade')).toEqual(false)
       expect(tip.querySelector('.tooltip-inner').textContent).toEqual('Another tooltip')
+    })
+
+    it('should re-show tip if it was already shown', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-bs-title="Another tooltip">'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+      tooltip.show()
+      const tip = () => tooltip.getTipElement()
+
+      expect(tip().classList.contains('show')).toEqual(true)
+      tooltip.setContent({ '.tooltip-inner': 'foo' })
+
+      expect(tip().classList.contains('show')).toEqual(true)
+      expect(tip().querySelector('.tooltip-inner').textContent).toEqual('foo')
+    })
+
+    it('should keep tip hidden, if it was already hidden before', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-bs-title="Another tooltip">'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+      const tip = () => tooltip.getTipElement()
+
+      expect(tip().classList.contains('show')).toEqual(false)
+      tooltip.setContent({ '.tooltip-inner': 'foo' })
+
+      expect(tip().classList.contains('show')).toEqual(false)
+      expect(tip().querySelector('.tooltip-inner').textContent).toEqual('foo')
     })
   })
 
@@ -1063,7 +1092,7 @@ describe('Tooltip', () => {
       })
 
       tooltipEl.addEventListener('inserted.bs.tooltip', () => {
-        expect(tooltip.getTipElement().classList.contains('bs-tooltip-end')).toEqual(true)
+        expect(tooltip.getTipElement().classList.contains('bs-tooltip-auto')).toEqual(true)
         done()
       })
 
@@ -1079,7 +1108,7 @@ describe('Tooltip', () => {
       })
 
       tooltipEl.addEventListener('inserted.bs.tooltip', () => {
-        expect(tooltip.getTipElement().classList.contains('bs-tooltip-start')).toEqual(true)
+        expect(tooltip.getTipElement().classList.contains('bs-tooltip-auto')).toEqual(true)
         done()
       })
 
@@ -1087,32 +1116,15 @@ describe('Tooltip', () => {
     })
   })
 
-  describe('setElementContent', () => {
+  describe('setContent', () => {
     it('should do nothing if the element is null', () => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
 
-      tooltip.setElementContent(null, null)
+      tooltip.setContent({ '.tooltip': null })
       expect().nothing()
-    })
-
-    it('should add the content as a child of the element', () => {
-      fixtureEl.innerHTML = [
-        '<a href="#" rel="tooltip" title="Another tooltip">',
-        '<div id="childContent"></div>'
-      ].join('')
-
-      const tooltipEl = fixtureEl.querySelector('a')
-      const childContent = fixtureEl.querySelector('div')
-      const tooltip = new Tooltip(tooltipEl, {
-        html: true
-      })
-
-      tooltip.setElementContent(tooltip.getTipElement(), childContent)
-
-      expect(childContent.parentNode).toEqual(tooltip.getTipElement())
     })
 
     it('should do nothing if the content is a child of the element', () => {
@@ -1128,7 +1140,7 @@ describe('Tooltip', () => {
       })
 
       tooltip.getTipElement().append(childContent)
-      tooltip.setElementContent(tooltip.getTipElement(), childContent)
+      tooltip.setContent({ '.tooltip': childContent })
 
       expect().nothing()
     })
@@ -1145,7 +1157,7 @@ describe('Tooltip', () => {
         html: true
       })
 
-      tooltip.setElementContent(tooltip.getTipElement(), { 0: childContent, jquery: 'jQuery' })
+      tooltip.setContent({ '.tooltip': { 0: childContent, jquery: 'jQuery' } })
 
       expect(childContent.parentNode).toEqual(tooltip.getTipElement())
     })
@@ -1160,7 +1172,7 @@ describe('Tooltip', () => {
       const childContent = fixtureEl.querySelector('div')
       const tooltip = new Tooltip(tooltipEl)
 
-      tooltip.setElementContent(tooltip.getTipElement(), childContent)
+      tooltip.setContent({ '.tooltip': childContent })
 
       expect(childContent.textContent).toEqual(tooltip.getTipElement().textContent)
     })
@@ -1174,7 +1186,7 @@ describe('Tooltip', () => {
         html: true
       })
 
-      tooltip.setElementContent(tooltip.getTipElement(), '<div id="childContent">Tooltip</div>')
+      tooltip.setContent({ '.tooltip': '<div id="childContent">Tooltip</div>' })
 
       expect(tooltip.getTipElement().querySelector('div').id).toEqual('childContent')
     })
@@ -1187,12 +1199,13 @@ describe('Tooltip', () => {
         html: true
       })
 
-      tooltip.setElementContent(tooltip.getTipElement(), [
+      const content = [
         '<div id="childContent">',
         ' <button type="button">test btn</button>',
         '</div>'
-      ].join(''))
+      ].join('')
 
+      tooltip.setContent({ '.tooltip': content })
       expect(tooltip.getTipElement().querySelector('div').id).toEqual('childContent')
       expect(tooltip.getTipElement().querySelector('button')).toEqual(null)
     })
@@ -1203,7 +1216,7 @@ describe('Tooltip', () => {
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
 
-      tooltip.setElementContent(tooltip.getTipElement(), 'test')
+      tooltip.setContent({ '.tooltip': 'test' })
 
       expect(tooltip.getTipElement().textContent).toEqual('test')
     })
