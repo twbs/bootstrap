@@ -78,12 +78,14 @@ class Popover extends Tooltip {
     return this.getTitle() || this._getContent()
   }
 
-  setContent(tip) {
-    this._sanitizeAndSetContent(tip, this.getTitle(), SELECTOR_TITLE)
-    this._sanitizeAndSetContent(tip, this._getContent(), SELECTOR_CONTENT)
+  // Private
+  _getContentForTemplate() {
+    return {
+      [SELECTOR_TITLE]: this.getTitle(),
+      [SELECTOR_CONTENT]: this._getContent()
+    }
   }
 
-  // Private
   _getContent() {
     return this._resolvePossibleFunction(this._config.content)
   }
