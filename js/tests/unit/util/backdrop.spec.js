@@ -23,7 +23,7 @@ describe('Backdrop', () => {
   })
 
   describe('show', () => {
-    it('if it is "shown", should append the backdrop html once, on show, and contain "show" class', done => {
+    it('should append the backdrop html once on show and include the "show" class if it is "shown"', done => {
       const instance = new Backdrop({
         isVisible: true,
         isAnimated: false
@@ -43,7 +43,7 @@ describe('Backdrop', () => {
       })
     })
 
-    it('if it is not "shown", should not append the backdrop html', done => {
+    it('should not append the backdrop html if it is not "shown"', done => {
       const instance = new Backdrop({
         isVisible: false,
         isAnimated: true
@@ -57,7 +57,7 @@ describe('Backdrop', () => {
       })
     })
 
-    it('if it is "shown" and "animated", should append the backdrop html once, and contain "fade" class', done => {
+    it('should append the backdrop html once and include the "fade" class if it is "shown" and "animated"', done => {
       const instance = new Backdrop({
         isVisible: true,
         isAnimated: true
@@ -96,7 +96,7 @@ describe('Backdrop', () => {
       })
     })
 
-    it('should remove "show" class', done => {
+    it('should remove the "show" class', done => {
       const instance = new Backdrop({
         isVisible: true,
         isAnimated: true
@@ -110,7 +110,7 @@ describe('Backdrop', () => {
       })
     })
 
-    it('if it is not "shown", should not try to remove Node on remove method', done => {
+    it('should not try to remove Node on remove method if it is not "shown"', done => {
       const instance = new Backdrop({
         isVisible: false,
         isAnimated: true
@@ -153,7 +153,7 @@ describe('Backdrop', () => {
   })
 
   describe('click callback', () => {
-    it('it should execute callback on click', done => {
+    it('should execute callback on click', done => {
       const spy = jasmine.createSpy('spy')
 
       const instance = new Backdrop({
@@ -178,7 +178,7 @@ describe('Backdrop', () => {
   })
 
   describe('animation callbacks', () => {
-    it('if it is animated, should show and hide backdrop after counting transition duration', done => {
+    it('should show and hide backdrop after counting transition duration if it is animated', done => {
       const instance = new Backdrop({
         isVisible: true,
         isAnimated: true
@@ -200,7 +200,7 @@ describe('Backdrop', () => {
       expect(spy2).not.toHaveBeenCalled()
     })
 
-    it('if it is not animated, should show and hide backdrop without delay', done => {
+    it('should show and hide backdrop without a delay if it is not animated', done => {
       const spy = jasmine.createSpy('spy', getTransitionDurationFromElement)
       const instance = new Backdrop({
         isVisible: true,
@@ -218,7 +218,7 @@ describe('Backdrop', () => {
       }, 10)
     })
 
-    it('if it is not "shown", should not call delay callbacks', done => {
+    it('should not call delay callbacks if it is not "shown"', done => {
       const instance = new Backdrop({
         isVisible: false,
         isAnimated: true
@@ -235,7 +235,7 @@ describe('Backdrop', () => {
 
   describe('Config', () => {
     describe('rootElement initialization', () => {
-      it('Should be appended on "document.body" by default', done => {
+      it('should be appended on "document.body" by default', done => {
         const instance = new Backdrop({
           isVisible: true
         })
@@ -246,7 +246,7 @@ describe('Backdrop', () => {
         })
       })
 
-      it('Should find the rootElement if passed as a string', done => {
+      it('should find the rootElement if passed as a string', done => {
         const instance = new Backdrop({
           isVisible: true,
           rootElement: 'body'
@@ -258,7 +258,7 @@ describe('Backdrop', () => {
         })
       })
 
-      it('Should appended on any element given by the proper config', done => {
+      it('should be appended on any element given by the proper config', done => {
         fixtureEl.innerHTML = '<div id="wrapper"></div>'
 
         const wrapper = fixtureEl.querySelector('#wrapper')
@@ -275,7 +275,7 @@ describe('Backdrop', () => {
     })
 
     describe('ClassName', () => {
-      it('Should be able to have different classNames than default', done => {
+      it('should allow configuring className', done => {
         const instance = new Backdrop({
           isVisible: true,
           className: 'foo'
