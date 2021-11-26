@@ -415,7 +415,7 @@ describe('Tooltip', () => {
       tooltip.show()
     })
 
-    it('should show a tooltip when hovering a children element', done => {
+    it('should show a tooltip when hovering a child element', done => {
       fixtureEl.innerHTML = [
         '<a href="#" rel="tooltip" title="Another tooltip">',
         '  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">',
