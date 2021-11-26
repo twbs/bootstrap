@@ -127,6 +127,17 @@
   @each $name, $value in $grid-breakpoints {
     --#{$prefix}breakpoint-#{$name}: #{$value};
   }
+
+  // Focus styles
+  // scss-docs-start root-focus-variables
+  --#{$variable-prefix}focus-ring-width: #{$focus-ring-width};
+  --#{$variable-prefix}focus-ring-opacity: #{$focus-ring-opacity};
+  --#{$variable-prefix}focus-ring-color: #{$focus-ring-color};
+  --#{$variable-prefix}focus-ring-blur: #{$focus-ring-blur};
+  // By default, there is no `--bs-focus-ring-offset-x` or `--bs-focus-ring-offset-y`, but we provide CSS variables with fallbacks to initial `0` values
+  --#{$variable-prefix}focus-ring-box-shadow: var(--#{$variable-prefix}focus-ring-offset-x, 0) var(--#{$variable-prefix}focus-ring-offset-y, 0) var(--#{$variable-prefix}focus-ring-blur) var(--#{$variable-prefix}focus-ring-width) var(--#{$variable-prefix}focus-ring-color);
+  // scss-docs-end root-focus-variables
+  // stylelint-enable custom-property-empty-line-before
 }
 
 @if $enable-dark-mode {
