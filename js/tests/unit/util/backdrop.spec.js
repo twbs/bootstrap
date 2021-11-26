@@ -232,6 +232,7 @@ describe('Backdrop', () => {
       })
     })
   })
+
   describe('Config', () => {
     describe('rootElement initialization', () => {
       it('Should be appended on "document.body" by default', done => {
@@ -258,10 +259,7 @@ describe('Backdrop', () => {
       })
 
       it('Should appended on any element given by the proper config', done => {
-        fixtureEl.innerHTML = [
-          '<div id="wrapper">',
-          '</div>'
-        ].join('')
+        fixtureEl.innerHTML = '<div id="wrapper"></div>'
 
         const wrapper = fixtureEl.querySelector('#wrapper')
         const instance = new Backdrop({

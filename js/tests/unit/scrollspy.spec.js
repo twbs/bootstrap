@@ -73,8 +73,8 @@ describe('ScrollSpy', () => {
         '  </ul>',
         '</nav>',
         '<div id="content" style="height: 200px; overflow-y: auto;">',
-        ' <div id="two" style="height: 300px;"></div>',
-        ' <div id="three" style="height: 10px;"></div>',
+        '  <div id="two" style="height: 300px;"></div>',
+        '  <div id="three" style="height: 10px;"></div>',
         '</div>'
       ].join('')
 
@@ -175,16 +175,16 @@ describe('ScrollSpy', () => {
       fixtureEl.innerHTML = [
         '<div id="header" style="height: 500px;"></div>',
         '<nav id="navigation" class="navbar">',
-        ' <ul class="navbar-nav">',
-        '   <li class="nav-item"><a class="nav-link active" id="one-link" href="#one">One</a></li>',
-        '   <li class="nav-item"><a class="nav-link" id="two-link" href="#two">Two</a></li>',
-        '   <li class="nav-item"><a class="nav-link" id="three-link" href="#three">Three</a></li>',
-        ' </ul>',
+        '  <ul class="navbar-nav">',
+        '    <li class="nav-item"><a class="nav-link active" id="one-link" href="#one">One</a></li>',
+        '    <li class="nav-item"><a class="nav-link" id="two-link" href="#two">Two</a></li>',
+        '    <li class="nav-item"><a class="nav-link" id="three-link" href="#three">Three</a></li>',
+        '  </ul>',
         '</nav>',
         '<div id="content" style="height: 200px; overflow-y: auto;">',
-        ' <div id="one" style="height: 500px;"></div>',
-        ' <div id="two" style="height: 300px;"></div>',
-        ' <div id="three" style="height: 10px;"></div>',
+        '  <div id="one" style="height: 500px;"></div>',
+        '  <div id="two" style="height: 300px;"></div>',
+        '  <div id="three" style="height: 10px;"></div>',
         '</div>'
       ].join('')
 

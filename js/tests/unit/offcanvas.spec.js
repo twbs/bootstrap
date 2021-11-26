@@ -108,10 +108,7 @@ describe('Offcanvas', () => {
 
   describe('config', () => {
     it('should have default values', () => {
-      fixtureEl.innerHTML = [
-        '<div class="offcanvas">',
-        '</div>'
-      ].join('')
+      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl)
@@ -123,10 +120,7 @@ describe('Offcanvas', () => {
     })
 
     it('should read data attributes and override default config', () => {
-      fixtureEl.innerHTML = [
-        '<div class="offcanvas" data-bs-scroll="true" data-bs-backdrop="false"  data-bs-keyboard="false">',
-        '</div>'
-      ].join('')
+      fixtureEl.innerHTML = '<div class="offcanvas" data-bs-scroll="true" data-bs-backdrop="false" data-bs-keyboard="false"></div>'
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl)
@@ -138,10 +132,7 @@ describe('Offcanvas', () => {
     })
 
     it('given a config object must override data attributes', () => {
-      fixtureEl.innerHTML = [
-        '<div class="offcanvas" data-bs-scroll="true" data-bs-backdrop="false"  data-bs-keyboard="false">',
-        '</div>'
-      ].join('')
+      fixtureEl.innerHTML = '<div class="offcanvas" data-bs-scroll="true" data-bs-backdrop="false" data-bs-keyboard="false"></div>'
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl, {
@@ -154,6 +145,7 @@ describe('Offcanvas', () => {
       expect(offCanvas._config.scroll).toBeFalse()
     })
   })
+
   describe('options', () => {
     it('if scroll is enabled, should allow body to scroll while offcanvas is open', done => {
       fixtureEl.innerHTML = '<div class="offcanvas"></div>'
