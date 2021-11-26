@@ -59,6 +59,20 @@ a {
 }
 ```
 
+## Focus variables
+
+<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.3.0</small>
+
+Bootstrap provides custom `:focus` styles using a combination of Sass and CSS variables that can be optionally added to specific components and elements. We do not yet globally override all `:focus ` styles.
+
+In our Sass, we set default values that can be customized pre-compiling.
+
+{{< scss-docs name="focus-ring-variables" file="scss/_variables.scss" >}}
+
+Those variables are then reassigned to `:root` level CSS variables that can be customized in real-time, including with options for `x` and `y` offsets (which default to their fallback value of `0`).
+
+{{< scss-docs name="root-focus-variables" file="scss/_root.scss" >}}
+
 ## Grid breakpoints
 
 While we include our grid breakpoints as CSS variables (except for `xs`), be aware that **CSS variables do not work in media queries**. This is by design in the CSS spec for variables, but may change in coming years with support for `env()` variables. Check out [this Stack Overflow answer](https://stackoverflow.com/a/47212942) for some helpful links. In the meantime, you can use these variables in other CSS situations, as well as in your JavaScript.

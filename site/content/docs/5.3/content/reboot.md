@@ -403,16 +403,6 @@ Reboot includes an enhancement for `role="button"` to change the default cursor 
 <span role="button" tabindex="0">Non-button element button</span>
 {{< /example >}}
 
-## Focus state
-
-<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.3.0</small>
-
-Bootstrap globally updates the styling for `:focus` styles using a combination of Sass and CSS variables. In our Sass, we set default values that can be customized pre-compiling. Those variables are then reassigned to `:root` level CSS variables that can be customized in real-time, including with options for `x` and `y` offsets (which default to their fallback value of `0`).
-
-{{< scss-docs name="focus-ring-variables" file="scss/_variables.scss" >}}
-
-{{< scss-docs name="root-focus-variables" file="scss/_root.scss" >}}
-
 ## Misc elements
 
 ### Address
