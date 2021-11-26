@@ -57,9 +57,7 @@ describe('Modal', () => {
 
   describe('toggle', () => {
     it('should call ScrollBarHelper to handle scrollBar on body', done => {
-      fixtureEl.innerHTML = [
-        '<div class="modal"><div class="modal-dialog"></div></div>'
-      ].join('')
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
       spyOn(ScrollBarHelper.prototype, 'hide').and.callThrough()
       spyOn(ScrollBarHelper.prototype, 'reset').and.callThrough()

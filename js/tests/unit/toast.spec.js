@@ -393,7 +393,7 @@ describe('Toast', () => {
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
-        '  </div>'
+        '</div>'
       ].join('')
 
       const toastEl = fixtureEl.querySelector('.toast')

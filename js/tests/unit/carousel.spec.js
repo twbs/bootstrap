@@ -235,9 +235,7 @@ describe('Carousel', () => {
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
       const carousel = new Carousel(carouselEl, { wrap: true })
-      const getActiveId = () => {
-        return carouselEl.querySelector('.carousel-item.active').getAttribute('id')
-      }
+      const getActiveId = () => carouselEl.querySelector('.carousel-item.active').getAttribute('id')
 
       carouselEl.addEventListener('slid.bs.carousel', event => {
         const activeId = getActiveId()
@@ -1153,6 +1151,7 @@ describe('Carousel', () => {
       })
     })
   })
+
   describe('rtl function', () => {
     it('"_directionToOrder" and "_orderToDirection" must return the right results', () => {
       fixtureEl.innerHTML = '<div></div>'

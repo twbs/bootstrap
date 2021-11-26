@@ -21,8 +21,12 @@ describe('Tab', () => {
   describe('constructor', () => {
     it('should take care of element either passed as a CSS selector or DOM element', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav"><li><a href="#home" role="tab">Home</a></li></ul>',
-        '<ul><li id="home"></li></ul>'
+        '<ul class="nav">',
+        '  <li><a href="#home" role="tab">Home</a></li>',
+        '</ul>',
+        '<ul>',
+        '  <li id="home"></li>',
+        '</ul>'
       ].join('')
 
       const tabEl = fixtureEl.querySelector('[href="#home"]')
@@ -112,7 +116,10 @@ describe('Tab', () => {
         '  <button type="button" data-bs-target="#home" role="tab">Home</button>',
         '  <button type="button" id="triggerProfile" data-bs-target="#profile" role="tab">Profile</a>',
         '</nav>',
-        '<div><div id="home" role="tabpanel"></div><div id="profile" role="tabpanel"></div></div>'
+        '<div>',
+        '  <div id="home" role="tabpanel"></div>',
+        '  <div id="profile" role="tabpanel"></div>',
+        '</div>'
       ].join('')
 
       const profileTriggerEl = fixtureEl.querySelector('#triggerProfile')
@@ -132,7 +139,10 @@ describe('Tab', () => {
         '  <button type="button" data-bs-target="#home" role="tab">Home</button>',
         '  <button type="button" id="triggerProfile" data-bs-target="#profile" role="tab">Profile</button>',
         '</div>',
-        '<div><div id="home" role="tabpanel"></div><div id="profile" role="tabpanel"></div></div>'
+        '<div>',
+        '  <div id="home" role="tabpanel"></div>',
+        '  <div id="profile" role="tabpanel"></div>',
+        '</div>'
       ].join('')
 
       const profileTriggerEl = fixtureEl.querySelector('#triggerProfile')

@@ -431,6 +431,7 @@ describe('Util', () => {
       expect(Util.isDisabled(el('#select'))).toBeFalse()
       expect(Util.isDisabled(el('#input'))).toBeFalse()
     })
+
     it('should return true if the element has disabled attribute', () => {
       fixtureEl.innerHTML = [
         '<div>',

@@ -66,6 +66,7 @@ describe('Base Component', () => {
       })
     })
   })
+
   describe('Public Methods', () => {
     describe('constructor', () => {
       it('should accept element, either passed as a CSS selector or DOM element', () => {
@@ -93,6 +94,7 @@ describe('Base Component', () => {
         expect(selectorInstance._element).not.toBeDefined()
       })
     })
+
     describe('dispose', () => {
       it('should dispose an component', () => {
         createInstance()
@@ -144,6 +146,7 @@ describe('Base Component', () => {
         expect(DummyClass.getInstance(div)).toBeNull()
       })
     })
+
     describe('getOrCreateInstance', () => {
       it('should return an instance', () => {
         createInstance()
