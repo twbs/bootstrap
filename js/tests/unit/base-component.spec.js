@@ -48,6 +48,13 @@ describe('Base Component', () => {
     })
 
     describe('NAME', () => {
+      it('should return Error if it is not initialized', () => {
+        expect(() => {
+          // eslint-disable-next-line no-unused-expressions
+          BaseComponent.NAME
+        }).toThrowError(Error)
+      })
+
       it('should return plugin NAME', () => {
         expect(DummyClass.NAME).toEqual(name)
       })
@@ -73,6 +80,17 @@ describe('Base Component', () => {
 
         expect(elInstance._element).toEqual(el)
         expect(selectorInstance._element).toEqual(fixtureEl.querySelector('#bar'))
+      })
+
+      it('should not initialize and add element record to Data (caching), if argument `element` is not an HTML-Element', () => {
+        fixtureEl.innerHTML = ''
+
+        const el = fixtureEl.querySelector('#foo')
+        const elInstance = new DummyClass(el)
+        const selectorInstance = new DummyClass('#bar')
+
+        expect(elInstance._element).not.toBeDefined()
+        expect(selectorInstance._element).not.toBeDefined()
       })
     })
     describe('dispose', () => {
