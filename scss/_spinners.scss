@@ -8,12 +8,25 @@
 }
 // scss-docs-end spinner-border-keyframes
 
+.spinner-border,
+.spinner-grow {
+  // scss-docs-start spinner-css-vars
+  --#{$variable-prefix}spinner-width: #{$spinner-width};
+  --#{$variable-prefix}spinner-height: #{$spinner-height};
+  --#{$variable-prefix}spinner-vertical-align: #{$spinner-vertical-align};
+  // scss-docs-end spinner-css-vars
+}
+
 .spinner-border {
+  // scss-docs-start spinner-border-css-vars
+  --#{$variable-prefix}spinner-border-width: #{$spinner-border-width};
+  // scss-docs-end spinner-border-css-vars
+
   display: inline-block;
-  width: $spinner-width;
-  height: $spinner-height;
-  vertical-align: $spinner-vertical-align;
-  border: $spinner-border-width solid currentColor;
+  width: var(--#{$variable-prefix}spinner-width);
+  height: var(--#{$variable-prefix}spinner-height);
+  vertical-align: var(--#{$variable-prefix}spinner-vertical-align);
+  border: var(--#{$variable-prefix}spinner-border-width) solid currentColor;
   border-right-color: transparent;
   // stylelint-disable-next-line property-disallowed-list
   border-radius: 50%;
@@ -21,9 +34,9 @@
 }
 
 .spinner-border-sm {
-  width: $spinner-width-sm;
-  height: $spinner-height-sm;
-  border-width: $spinner-border-width-sm;
+  --#{$variable-prefix}spinner-width: #{$spinner-width-sm};
+  --#{$variable-prefix}spinner-height: #{$spinner-height-sm};
+  --#{$variable-prefix}spinner-border-width: #{$spinner-border-width-sm};
 }
 
 //
@@ -44,9 +57,9 @@
 
 .spinner-grow {
   display: inline-block;
-  width: $spinner-width;
-  height: $spinner-height;
-  vertical-align: $spinner-vertical-align;
+  width: var(--#{$variable-prefix}spinner-width);
+  height: var(--#{$variable-prefix}spinner-height);
+  vertical-align: var(--#{$variable-prefix}spinner-vertical-align);
   background-color: currentColor;
   // stylelint-disable-next-line property-disallowed-list
   border-radius: 50%;
@@ -55,8 +68,8 @@
 }
 
 .spinner-grow-sm {
-  width: $spinner-width-sm;
-  height: $spinner-height-sm;
+  --#{$variable-prefix}spinner-width: #{$spinner-width-sm};
+  --#{$variable-prefix}spinner-height: #{$spinner-height-sm};
 }
 
 @if $enable-reduced-motion {
