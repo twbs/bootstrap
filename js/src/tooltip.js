@@ -179,17 +179,17 @@ class Tooltip extends BaseComponent {
       context._activeTrigger.click = !context._activeTrigger.click
 
       if (context._isWithActiveTrigger()) {
-        context._enter(null, context)
+        context._enter()
       } else {
-        context._leave(null, context)
+        context._leave()
       }
     } else {
       if (this.getTipElement().classList.contains(CLASS_NAME_SHOW)) {
-        this._leave(null, this)
+        this._leave()
         return
       }
 
-      this._enter(null, this)
+      this._enter()
     }
   }
 
@@ -265,7 +265,7 @@ class Tooltip extends BaseComponent {
       EventHandler.trigger(this._element, this.constructor.Event.SHOWN)
 
       if (prevHoverState === HOVER_STATE_OUT) {
-        this._leave(null, this)
+        this._leave()
       }
     }
 
@@ -401,8 +401,8 @@ class Tooltip extends BaseComponent {
   }
 
   // Private
-  _initializeOnDelegatedTarget(event, context) {
-    return context || this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig())
+  _initializeOnDelegatedTarget(event) {
+    return this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig())
   }
 
   _isAnimated() {
@@ -478,8 +478,18 @@ class Tooltip extends BaseComponent {
           this.constructor.Event.MOUSELEAVE :
           this.constructor.Event.FOCUSOUT
 
-        EventHandler.on(this._element, eventIn, this._config.selector, event => this._enter(event))
-        EventHandler.on(this._element, eventOut, this._config.selector, event => this._leave(event))
+        EventHandler.on(this._element, eventIn, this._config.selector, event => {
+          const context = this._initializeOnDelegatedTarget(event)
+          context._activeTrigger[event.type === 'focusin' ? TRIGGER_FOCUS : TRIGGER_HOVER] = true
+          context._enter()
+        })
+        EventHandler.on(this._element, eventOut, this._config.selector, event => {
+          const context = this._initializeOnDelegatedTarget(event)
+          context._activeTrigger[event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER] =
+            context._element.contains(event.relatedTarget)
+
+          context._leave()
+        })
       }
     }
 
@@ -510,63 +520,47 @@ class Tooltip extends BaseComponent {
     }
   }
 
-  _enter(event, context) {
-    context = this._initializeOnDelegatedTarget(event, context)
-
-    if (event) {
-      context._activeTrigger[
-        event.type === 'focusin' ? TRIGGER_FOCUS : TRIGGER_HOVER
-      ] = true
-    }
-
-    if (context.getTipElement().classList.contains(CLASS_NAME_SHOW) || context._hoverState === HOVER_STATE_SHOW) {
-      context._hoverState = HOVER_STATE_SHOW
+  _enter() {
+    if (this.getTipElement().classList.contains(CLASS_NAME_SHOW) || this._hoverState === HOVER_STATE_SHOW) {
+      this._hoverState = HOVER_STATE_SHOW
       return
     }
 
-    clearTimeout(context._timeout)
+    clearTimeout(this._timeout)
 
-    context._hoverState = HOVER_STATE_SHOW
+    this._hoverState = HOVER_STATE_SHOW
 
-    if (!context._config.delay.show) {
-      context.show()
+    if (!this._config.delay.show) {
+      this.show()
       return
     }
 
-    context._timeout = setTimeout(() => {
-      if (context._hoverState === HOVER_STATE_SHOW) {
-        context.show()
+    this._timeout = setTimeout(() => {
+      if (this._hoverState === HOVER_STATE_SHOW) {
+        this.show()
       }
-    }, context._config.delay.show)
+    }, this._config.delay.show)
   }
 
-  _leave(event, context) {
-    context = this._initializeOnDelegatedTarget(event, context)
-
-    if (event) {
-      context._activeTrigger[
-        event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER
-      ] = context._element.contains(event.relatedTarget)
-    }
-
-    if (context._isWithActiveTrigger()) {
+  _leave() {
+    if (this._isWithActiveTrigger()) {
       return
     }
 
-    clearTimeout(context._timeout)
+    clearTimeout(this._timeout)
 
-    context._hoverState = HOVER_STATE_OUT
+    this._hoverState = HOVER_STATE_OUT
 
-    if (!context._config.delay.hide) {
-      context.hide()
+    if (!this._config.delay.hide) {
+      this.hide()
       return
     }
 
-    context._timeout = setTimeout(() => {
-      if (context._hoverState === HOVER_STATE_OUT) {
-        context.hide()
+    this._timeout = setTimeout(() => {
+      if (this._hoverState === HOVER_STATE_OUT) {
+        this.hide()
       }
-    }, context._config.delay.hide)
+    }, this._config.delay.hide)
   }
 
   _isWithActiveTrigger() {
