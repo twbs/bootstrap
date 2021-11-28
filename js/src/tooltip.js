@@ -34,9 +34,6 @@ const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_MODAL = 'modal'
 const CLASS_NAME_SHOW = 'show'
 
-const HOVER_STATE_SHOW = 'show'
-const HOVER_STATE_OUT = 'out'
-
 const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
 const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`
 
@@ -126,7 +123,7 @@ class Tooltip extends BaseComponent {
     // Private
     this._isEnabled = true
     this._timeout = 0
-    this._hoverState = ''
+    this._isHovered = false
     this._activeTrigger = {}
     this._popper = null
     this._templateFactory = null
@@ -259,12 +256,12 @@ class Tooltip extends BaseComponent {
     }
 
     const complete = () => {
-      const prevHoverState = this._hoverState
+      const prevHoverState = this._isHovered
 
-      this._hoverState = null
+      this._isHovered = false
       EventHandler.trigger(this._element, this.constructor.Event.SHOWN)
 
-      if (prevHoverState === HOVER_STATE_OUT) {
+      if (prevHoverState) {
         this._leave()
       }
     }
@@ -283,7 +280,7 @@ class Tooltip extends BaseComponent {
         return
       }
 
-      if (this._hoverState !== HOVER_STATE_SHOW) {
+      if (!this._isHovered) {
         tip.remove()
       }
 
@@ -313,7 +310,7 @@ class Tooltip extends BaseComponent {
     this._activeTrigger[TRIGGER_HOVER] = false
 
     this._queueCallback(complete, this.tip, this._isAnimated())
-    this._hoverState = ''
+    this._isHovered = false
   }
 
   update() {
@@ -521,15 +518,15 @@ class Tooltip extends BaseComponent {
   }
 
   _enter() {
-    if (this.getTipElement().classList.contains(CLASS_NAME_SHOW) || this._hoverState === HOVER_STATE_SHOW) {
-      this._hoverState = HOVER_STATE_SHOW
+    if (this.getTipElement().classList.contains(CLASS_NAME_SHOW) || this._isHovered) {
+      this._isHovered = true
       return
     }
 
-    this._hoverState = HOVER_STATE_SHOW
+    this._isHovered = true
 
     this._setTimeout(() => {
-      if (this._hoverState === HOVER_STATE_SHOW) {
+      if (this._isHovered) {
         this.show()
       }
     }, this._config.delay.show)
@@ -540,10 +537,10 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    this._hoverState = HOVER_STATE_OUT
+    this._isHovered = false
 
     this._setTimeout(() => {
-      if (this._hoverState === HOVER_STATE_OUT) {
+      if (!this._isHovered) {
         this.hide()
       }
     }, this._config.delay.hide)
