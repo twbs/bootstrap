@@ -526,16 +526,9 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    clearTimeout(this._timeout)
-
     this._hoverState = HOVER_STATE_SHOW
 
-    if (!this._config.delay.show) {
-      this.show()
-      return
-    }
-
-    this._timeout = setTimeout(() => {
+    this._setTimeout(() => {
       if (this._hoverState === HOVER_STATE_SHOW) {
         this.show()
       }
@@ -547,20 +540,18 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    clearTimeout(this._timeout)
-
     this._hoverState = HOVER_STATE_OUT
 
-    if (!this._config.delay.hide) {
-      this.hide()
-      return
-    }
-
-    this._timeout = setTimeout(() => {
+    this._setTimeout(() => {
       if (this._hoverState === HOVER_STATE_OUT) {
         this.hide()
       }
     }, this._config.delay.hide)
+  }
+
+  _setTimeout(handler, timeout) {
+    clearTimeout(this._timeout)
+    this._timeout = setTimeout(handler, timeout)
   }
 
   _isWithActiveTrigger() {
