@@ -16,7 +16,6 @@ import {
   typeCheckConfig
 } from './util/index'
 import { DefaultAllowlist } from './util/sanitizer'
-import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import BaseComponent from './base-component'
@@ -231,7 +230,6 @@ class Tooltip extends BaseComponent {
     this._element.setAttribute('aria-describedby', tip.getAttribute('id'))
 
     const { container } = this._config
-    Data.set(tip, this.constructor.DATA_KEY, this)
 
     if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
       container.append(tip)
