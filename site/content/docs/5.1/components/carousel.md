@@ -155,7 +155,7 @@ Add captions to your slides easily with the `.carousel-caption` element within a
 Add `.carousel-fade` to your carousel to animate slides with a fade transition instead of a slide.
 
 {{< example >}}
-<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+<div id="carouselExampleFade" class="carousel carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
       {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" >}}
