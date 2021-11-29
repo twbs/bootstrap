@@ -48,7 +48,7 @@ describe('Base Component', () => {
     })
 
     describe('NAME', () => {
-      it('should return Error if it is not initialized', () => {
+      it('should throw an Error if it is not initialized', () => {
         expect(() => {
           // eslint-disable-next-line no-unused-expressions
           BaseComponent.NAME
@@ -82,7 +82,7 @@ describe('Base Component', () => {
         expect(selectorInstance._element).toEqual(fixtureEl.querySelector('#bar'))
       })
 
-      it('should not initialize and add element record to Data (caching), if argument `element` is not an HTML-Element', () => {
+      it('should not initialize and add element record to Data (caching), if argument `element` is not an HTML element', () => {
         fixtureEl.innerHTML = ''
 
         const el = fixtureEl.querySelector('#foo')
