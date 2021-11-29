@@ -162,7 +162,7 @@ describe('Popover', () => {
       const popover = new Popover(popoverEl)
 
       popover.setContent({ '.tooltip-inner': 'foo' })
-      const tip = popover.getTipElement()
+      const tip = popover._getTipElement()
 
       expect(tip).toHaveClass('popover')
       expect(tip).toHaveClass('bs-popover-auto')

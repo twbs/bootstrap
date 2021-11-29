@@ -181,7 +181,7 @@ class Tooltip extends BaseComponent {
         context._leave()
       }
     } else {
-      if (this.getTipElement().classList.contains(CLASS_NAME_SHOW)) {
+      if (this._getTipElement().classList.contains(CLASS_NAME_SHOW)) {
         this._leave()
         return
       }
@@ -208,7 +208,7 @@ class Tooltip extends BaseComponent {
       throw new Error('Please use show on visible elements')
     }
 
-    if (!(this.isWithContent() && this._isEnabled)) {
+    if (!(this._isWithContent() && this._isEnabled)) {
       return
     }
 
@@ -222,7 +222,7 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    const tip = this.getTipElement()
+    const tip = this._getTipElement()
 
     this._element.setAttribute('aria-describedby', tip.getAttribute('id'))
 
@@ -279,7 +279,7 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    const tip = this.getTipElement()
+    const tip = this._getTipElement()
     tip.classList.remove(CLASS_NAME_SHOW)
 
     // If this is a touch-enabled device we remove the extra
@@ -320,11 +320,11 @@ class Tooltip extends BaseComponent {
   }
 
   // Protected
-  isWithContent() {
-    return Boolean(this.getTitle())
+  _isWithContent() {
+    return Boolean(this._getTitle())
   }
 
-  getTipElement() {
+  _getTipElement() {
     if (!this.tip) {
       this.tip = this._createTipElement(this._getContentForTemplate())
     }
@@ -389,11 +389,11 @@ class Tooltip extends BaseComponent {
 
   _getContentForTemplate() {
     return {
-      [SELECTOR_TOOLTIP_INNER]: this.getTitle()
+      [SELECTOR_TOOLTIP_INNER]: this._getTitle()
     }
   }
 
-  getTitle() {
+  _getTitle() {
     return this._resolvePossibleFunction(this._config.title) || this._element.getAttribute('title')
   }
 
@@ -518,7 +518,7 @@ class Tooltip extends BaseComponent {
   }
 
   _enter() {
-    if (this.getTipElement().classList.contains(CLASS_NAME_SHOW) || this._isHovered) {
+    if (this._getTipElement().classList.contains(CLASS_NAME_SHOW) || this._isHovered) {
       this._isHovered = true
       return
     }
