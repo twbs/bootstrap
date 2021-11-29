@@ -274,7 +274,26 @@ class Tooltip extends BaseComponent {
       return
     }
 
+    const hideEvent = EventHandler.trigger(this._element, this.constructor.Event.HIDE)
+    if (hideEvent.defaultPrevented) {
+      return
+    }
+
     const tip = this.getTipElement()
+    tip.classList.remove(CLASS_NAME_SHOW)
+
+    // If this is a touch-enabled device we remove the extra
+    // empty mouseover listeners we added for iOS support
+    if ('ontouchstart' in document.documentElement) {
+      for (const element of [].concat(...document.body.children)) {
+        EventHandler.off(element, 'mouseover', noop)
+      }
+    }
+
+    this._activeTrigger[TRIGGER_CLICK] = false
+    this._activeTrigger[TRIGGER_FOCUS] = false
+    this._activeTrigger[TRIGGER_HOVER] = false
+
     const complete = () => {
       if (this._isWithActiveTrigger()) {
         return
@@ -289,25 +308,6 @@ class Tooltip extends BaseComponent {
 
       this._disposePopper()
     }
-
-    const hideEvent = EventHandler.trigger(this._element, this.constructor.Event.HIDE)
-    if (hideEvent.defaultPrevented) {
-      return
-    }
-
-    tip.classList.remove(CLASS_NAME_SHOW)
-
-    // If this is a touch-enabled device we remove the extra
-    // empty mouseover listeners we added for iOS support
-    if ('ontouchstart' in document.documentElement) {
-      for (const element of [].concat(...document.body.children)) {
-        EventHandler.off(element, 'mouseover', noop)
-      }
-    }
-
-    this._activeTrigger[TRIGGER_CLICK] = false
-    this._activeTrigger[TRIGGER_FOCUS] = false
-    this._activeTrigger[TRIGGER_HOVER] = false
 
     this._queueCallback(complete, this.tip, this._isAnimated())
     this._isHovered = false
