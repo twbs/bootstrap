@@ -180,7 +180,7 @@ describe('Alert', () => {
       expect(fixtureEl.querySelector('.alert')).not.toBeNull()
     })
 
-    it('should throw error on undefined method', () => {
+    it('should throw an error on undefined method', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
@@ -194,7 +194,7 @@ describe('Alert', () => {
       }).toThrowError(TypeError, `No method named "${action}"`)
     })
 
-    it('should throw error on protected method', () => {
+    it('should throw an error on protected method', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
