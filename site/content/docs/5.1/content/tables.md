@@ -786,4 +786,4 @@ Use `.table-responsive{-sm|-md|-lg|-xl|-xxl}` as needed to create responsive tab
 ### Customizing
 
 - The factor variables (`$table-striped-bg-factor`, `$table-active-bg-factor` & `$table-hover-bg-factor`) are used to determine the contrast in table variants.
-- Apart from the light & dark table variants, theme colors are lightened by the `$table-bg-level` variable.
+- Apart from the light & dark table variants, theme colors are lightened by the `$table-bg-scale` variable.
