@@ -1,3 +1,13 @@
+// Light badges
+@each $color, $value in $theme-colors {
+  $badge-light-bg: shift-color($value, -80%);
+  .badge-light-#{$color} {
+    background-color: $badge-light-bg;
+  }
+}
+
+
+// Light buttons
 @each $color, $value in $theme-colors {
   $btn-light-bg: shift-color($value, -80%);
   $btn-light-border: shift-color($value, -80%);

@@ -7,6 +7,24 @@ group: extend
 
 ## Components
 
+### Light badges
+
+{{< example >}}
+{{< badge.inline >}}
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge badge-light-{{ .name }} text-dark">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}
+{{< /example >}}
+
+```scss
+@each $color, $value in $theme-colors {
+  $badge-light-bg: shift-color($value, -80%);
+  .badge-light-#{$color} {
+    background-color: $badge-light-bg;
+  }
+}
+```
+
 ### Light buttons
 
 {{< example >}}
