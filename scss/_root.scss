@@ -50,5 +50,12 @@
   }
   --#{$variable-prefix}body-bg: #{$body-bg};
   // scss-docs-end root-body-variables
+
+  // scss-docs-start root-border-var
+  --#{$variable-prefix}border-width: #{$border-width};
+  --#{$variable-prefix}border-style: solid;
+  --#{$variable-prefix}border-color: #{$border-color};
+  --#{$variable-prefix}border-radius: #{$border-radius};
+  // scss-docs-end root-border-var
   // stylelint-enable custom-property-empty-line-before
 }
