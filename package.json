@@ -97,13 +97,13 @@
     "url": "https://opencollective.com/bootstrap"
   },
   "peerDependencies": {
-    "@popperjs/core": "^2.10.2"
+    "@popperjs/core": "^2.11.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
-    "@popperjs/core": "^2.10.2",
+    "@popperjs/core": "^2.11.0",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
@@ -112,7 +112,7 @@
     "bundlewatch": "^0.3.2",
     "clean-css-cli": "^5.4.2",
     "cross-env": "^7.0.3",
-    "cspell": "^5.13.0",
+    "cspell": "^5.13.1",
     "eslint": "^8.3.0",
     "eslint-config-xo": "^0.39.0",
     "eslint-plugin-import": "^2.25.3",
@@ -137,12 +137,12 @@
     "lockfile-lint": "^4.6.2",
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.3.11",
+    "postcss": "^8.4.4",
     "postcss-cli": "^9.0.2",
-    "rollup": "^2.60.1",
+    "rollup": "^2.60.2",
     "rollup-plugin-istanbul": "^3.0.0",
     "rtlcss": "^3.5.0",
-    "sass": "^1.43.4",
+    "sass": "^1.44.0",
     "shelljs": "^0.8.4",
     "stylelint": "^13.13.1",
     "stylelint-config-twbs-bootstrap": "^2.2.4",
@@ -172,7 +172,7 @@
     },
     "dependencies": {},
     "peerDependencies": {
-      "@popperjs/core": "^2.10.2"
+      "@popperjs/core": "^2.11.0"
     }
   }
 }
