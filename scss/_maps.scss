@@ -39,6 +39,16 @@ $utilities-bg: map-merge(
 $utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg") !default;
 // scss-docs-end utilities-bg-colors
 
+// scss-docs-start utilities-border-colors
+$utilities-border: map-merge(
+  $utilities-colors,
+  (
+    "white": to-rgb($white)
+  )
+) !default;
+$utilities-border-colors: map-loop($utilities-border, rgba-css-var, "$key", "border") !default;
+// scss-docs-end utilities-border-colors
+
 $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
 
 $gutters: $spacers !default;
