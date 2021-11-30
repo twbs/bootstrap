@@ -64,7 +64,7 @@ const conf = {
   client: {
     clearContext: false,
     jasmine: {
-      timeoutInterval: 10_000 // the default is 5000
+      timeoutInterval: 15_000 // the default is 5000
     }
   },
   files: [
