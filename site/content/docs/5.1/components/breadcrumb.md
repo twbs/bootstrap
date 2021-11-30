@@ -58,7 +58,7 @@ It's also possible to use an **embedded SVG icon**. Apply it via our CSS custom 
 {{< callout info >}}
 ### Using embedded SVG
 
-Inlining SVG as data URIs requires to URL escape a few characters, mostly `<`, `>` and `#`. That's why `$breadcrumb-divider` variable gets through [`escape-svg()` Sass function]({{< docsref "/customize/sass#escape-svg" >}}). When using the CSS custom property, you need to URL escape your SVG on your own. Read [Taylor Hunt's post "Optimizing SVGs in data URIs"](https://codepen.io/tigt/post/optimizing-svgs-in-data-uris) for detailed informations on what to escape.
+Inlining SVGs as data URIs requires to URL escape a few characters, mostly notably `<`, `>` and `#`. That's why the `$breadcrumb-divider` variable is passed through our [`escape-svg()` Sass function]({{< docsref "/customize/sass#escape-svg" >}}). When using the CSS custom property, you need to URL escape your SVG on your own. Read [Taylor Hunt's post "Optimizing SVGs in data URIs"](https://codepen.io/tigt/post/optimizing-svgs-in-data-uris) for detailed information on what to escape.
 {{< /callout >}}
 
 {{< example >}}
