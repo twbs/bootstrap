@@ -38,7 +38,6 @@ const CLASS_NAME_SHOW = 'show'
 const HOVER_STATE_SHOW = 'show'
 const HOVER_STATE_OUT = 'out'
 
-const SELECTOR_TOOLTIP_ARROW = '.tooltip-arrow'
 const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
 const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`
 
@@ -458,7 +457,7 @@ class Tooltip extends BaseComponent {
         {
           name: 'arrow',
           options: {
-            element: SELECTOR_TOOLTIP_ARROW
+            element: `.${this.constructor.NAME}-arrow`
           }
         }
       ]
