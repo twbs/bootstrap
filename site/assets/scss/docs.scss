@@ -27,6 +27,8 @@
 @import "../../../scss/functions";
 @import "../../../scss/variables";
 @import "../../../scss/mixins";
+@import "../../../scss/maps";
+@import "../../../scss/utilities";
 
 // fusv-disable
 $enable-grid-classes: false; // stylelint-disable-line scss/dollar-variable-default
@@ -59,3 +61,18 @@ $enable-cssgrid: true; // stylelint-disable-line scss/dollar-variable-default
 @import "syntax";
 @import "anchor";
 @import "algolia";
+
+// stylelint-disable scss/dollar-variable-default
+$utilities: map-merge(
+  $utilities,
+  (
+    "position": map-merge(
+      map-get($utilities, "position"),
+      (
+        responsive: true
+      ),
+    ),
+  )
+);
+
+@import "../../../scss/utilities/api";

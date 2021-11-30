@@ -276,13 +276,13 @@
   .position-relative {
     height: 200px;
     background-color: #f5f5f5;
-  }
 
-  .position-absolute {
-    width: 2em;
-    height: 2em;
-    background-color: $dark;
-    @include border-radius();
+    [class^="position-"] {
+      width: 2em;
+      height: 2em;
+      background-color: $dark;
+      @include border-radius();
+    }
   }
 }
 

@@ -3,6 +3,7 @@ layout: docs
 title: Snippets
 description: Extend Bootstrap with some common snippets of source code not included in the main project.
 group: extend
+toc: true
 ---
 
 ## Components
@@ -47,5 +48,74 @@ group: extend
 
 ## Utilities
 
-- Opacity
-- Expanded widths/heights
+### Responsive position
+
+```scss
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "position": map-merge(
+      map-get($utilities, "position"),
+      (
+        responsive: true
+      ),
+    ),
+  )
+);
+```
+
+### Responsive width
+
+```scss
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "width": map-merge(
+      map-get($utilities, "width"),
+      (
+        responsive: true
+      ),
+    ),
+  )
+);
+```
+
+### Additional height
+
+```scss
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "height": map-merge(
+      map-get($utilities, "height"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "height"), "values"),
+          (10: 10%),
+        ),
+      ),
+    ),
+  )
+);
+```
