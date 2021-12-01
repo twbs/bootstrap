@@ -27,7 +27,7 @@
 
 :root {
   @if $font-size-root != null {
-    font-size: var(--#{$variable-prefix}root-font-size);
+    font-size: get-var(root-font-size);
   }
 
   @if $enable-smooth-scroll {
@@ -48,13 +48,13 @@
 // scss-docs-start reboot-body-rules
 body {
   margin: 0; // 1
-  font-family: var(--#{$variable-prefix}body-font-family);
-  font-size: var(--#{$variable-prefix}body-font-size);
-  font-weight: var(--#{$variable-prefix}body-font-weight);
-  line-height: var(--#{$variable-prefix}body-line-height);
-  color: var(--#{$variable-prefix}body-color);
-  text-align: var(--#{$variable-prefix}body-text-align);
-  background-color: var(--#{$variable-prefix}body-bg); // 2
+  font-family: get-var(body-font-family);
+  font-size: get-var(body-font-size);
+  font-weight: get-var(body-font-weight);
+  line-height: get-var(body-line-height);
+  color: get-var(body-color);
+  text-align: get-var(body-text-align);
+  background-color: get-var(body-bg); // 2
   -webkit-text-size-adjust: 100%; // 3
   -webkit-tap-highlight-color: rgba($black, 0); // 4
 }

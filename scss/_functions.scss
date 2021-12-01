@@ -73,6 +73,14 @@
   @return $result;
 }
 
+@function get-var($name, $fallback: null) {
+  @if $fallback != null {
+    @return var(--#{$variable-prefix}#{$name}, #{$fallback});
+  } @else {
+    @return var(--#{$variable-prefix}#{$name});
+  }
+}
+
 // Internal Bootstrap function to turn maps into its negative variant.
 // It prefixes the keys with `n` and makes the value negative.
 @function negativify-map($map) {

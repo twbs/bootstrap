@@ -396,6 +396,8 @@ $position-values: (
 //
 // Settings for the `<body>` element.
 
+$root-vars:                 () !default;
+
 $body-bg:                   $white !default;
 $body-color:                $gray-900 !default;
 $body-text-align:           null !default;
@@ -537,8 +539,8 @@ $aspect-ratios: (
 $font-family-sans-serif:      system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 // stylelint-enable value-keyword-case
-$font-family-base:            var(--#{$variable-prefix}font-sans-serif) !default;
-$font-family-code:            var(--#{$variable-prefix}font-monospace) !default;
+$font-family-base:            get-var(font-sans-serif) !default;
+$font-family-code:            get-var(font-monospace) !default;
 
 // $font-size-root affects the value of `rem`, which is used for as well font sizes, paddings, and margins
 // $font-size-base affects the font size of the body text

@@ -6,49 +6,53 @@
   // Generate palettes for full colors, grays, and theme colors.
 
   @each $color, $value in $colors {
-    --#{$variable-prefix}#{$color}: #{$value};
+    @include root-var($color, $value);
   }
 
   @each $color, $value in $grays {
-    --#{$variable-prefix}gray-#{$color}: #{$value};
+    @include root-var("gray-" + $color, $value);
   }
 
   @each $color, $value in $theme-colors {
-    --#{$variable-prefix}#{$color}: #{$value};
+    @include root-var($color, $value);
   }
 
   @each $color, $value in $theme-colors-rgb {
-    --#{$variable-prefix}#{$color}-rgb: #{$value};
+    @include root-var($color + "-rgb", $value);
   }
 
-  --#{$variable-prefix}white-rgb: #{to-rgb($white)};
-  --#{$variable-prefix}black-rgb: #{to-rgb($black)};
-  --#{$variable-prefix}body-color-rgb: #{to-rgb($body-color)};
-  --#{$variable-prefix}body-bg-rgb: #{to-rgb($body-bg)};
+  @include root-var(white-rgb, to-rgb($white));
+  @include root-var(black-rgb, to-rgb($black));
+  @include root-var(body-color-rgb, to-rgb($body-color));
+  @include root-var(body-bg-rgb, to-rgb($body-bg));
 
   // Fonts
 
   // Note: Use `inspect` for lists so that quoted items keep the quotes.
   // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
-  --#{$variable-prefix}font-sans-serif: #{inspect($font-family-sans-serif)};
-  --#{$variable-prefix}font-monospace: #{inspect($font-family-monospace)};
-  --#{$variable-prefix}gradient: #{$gradient};
+  @include root-var(font-sans-serif, inspect($font-family-sans-serif));
+  @include root-var(font-monospace, inspect($font-family-monospace));
+  @include root-var(gradient, $gradient);
 
   // Root and body
   // stylelint-disable custom-property-empty-line-before
   // scss-docs-start root-body-variables
   @if $font-size-root != null {
-    --#{$variable-prefix}root-font-size: #{$font-size-root};
+    @include root-var(root-font-size, $font-size-root);
   }
-  --#{$variable-prefix}body-font-family: #{$font-family-base};
-  @include rfs($font-size-base, --#{$variable-prefix}body-font-size);
-  --#{$variable-prefix}body-font-weight: #{$font-weight-base};
-  --#{$variable-prefix}body-line-height: #{$line-height-base};
-  --#{$variable-prefix}body-color: #{$body-color};
+  @include root-var(body-font-family, $font-family-base);
+  @include root-var(body-font-weight, $font-weight-base);
+  @include root-var(body-line-height, $line-height-base);
+  @include root-var(body-color, $body-color);
   @if $body-text-align != null {
-    --#{$variable-prefix}body-text-align: #{$body-text-align};
+    @include root-var(body-text-align, $body-text-align);
   }
-  --#{$variable-prefix}body-bg: #{$body-bg};
+  @include root-var(body-bg, $body-bg);
+  @include rfs($font-size-base, --#{$variable-prefix}body-font-size);
   // scss-docs-end root-body-variables
+
+  @each $var, $value in $root-vars {
+    --#{$variable-prefix}#{$var}: #{$value};
+  }
   // stylelint-enable custom-property-empty-line-before
 }

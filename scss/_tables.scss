@@ -3,22 +3,22 @@
 //
 
 .table {
-  --#{$variable-prefix}table-color: #{$table-color};
-  --#{$variable-prefix}table-bg: #{$table-bg};
-  --#{$variable-prefix}table-border-color: #{$table-border-color};
-  --#{$variable-prefix}table-accent-bg: #{$table-accent-bg};
-  --#{$variable-prefix}table-striped-color: #{$table-striped-color};
-  --#{$variable-prefix}table-striped-bg: #{$table-striped-bg};
-  --#{$variable-prefix}table-active-color: #{$table-active-color};
-  --#{$variable-prefix}table-active-bg: #{$table-active-bg};
-  --#{$variable-prefix}table-hover-color: #{$table-hover-color};
-  --#{$variable-prefix}table-hover-bg: #{$table-hover-bg};
+  @include set-var(table-color, $table-color);
+  @include set-var(table-bg, $table-bg);
+  @include set-var(table-border-color, $table-border-color);
+  @include set-var(table-accent-bg, $table-accent-bg);
+  @include set-var(table-striped-color, $table-striped-color);
+  @include set-var(table-striped-bg, $table-striped-bg);
+  @include set-var(table-active-color, $table-active-color);
+  @include set-var(table-active-bg, $table-active-bg);
+  @include set-var(table-hover-color, $table-hover-color);
+  @include set-var(table-hover-bg, $table-hover-bg);
 
   width: 100%;
   margin-bottom: $spacer;
-  color: var(--#{$variable-prefix}table-color);
+  color: get-var(table-color);
   vertical-align: $table-cell-vertical-align;
-  border-color: var(--#{$variable-prefix}table-border-color);
+  border-color: get-var(table-border-color);
 
   // Target th & td
   // We need the child combinator to prevent styles leaking to nested tables which doesn't have a `.table` class.
@@ -27,9 +27,9 @@
   // stylelint-disable-next-line selector-max-universal
   > :not(caption) > * > * {
     padding: $table-cell-padding-y $table-cell-padding-x;
-    background-color: var(--#{$variable-prefix}table-bg);
+    background-color: get-var(table-bg);
     border-bottom-width: $table-border-width;
-    box-shadow: inset 0 0 0 9999px var(--#{$variable-prefix}table-accent-bg);
+    box-shadow: inset 0 0 0 9999px get-var(table-accent-bg);
   }
 
   > tbody {
@@ -105,8 +105,8 @@
 
 .table-striped {
   > tbody > tr:nth-of-type(#{$table-striped-order}) > * {
-    --#{$variable-prefix}table-accent-bg: var(--#{$variable-prefix}table-striped-bg);
-    color: var(--#{$variable-prefix}table-striped-color);
+    @include set-var(table-accent-bg, get-var(table-striped-bg));
+    color: get-var(table-striped-color);
   }
 }
 
@@ -115,8 +115,8 @@
 // The `.table-active` class can be added to highlight rows or cells
 
 .table-active {
-  --#{$variable-prefix}table-accent-bg: var(--#{$variable-prefix}table-active-bg);
-  color: var(--#{$variable-prefix}table-active-color);
+  @include set-var(table-accent-bg, get-var(table-active-bg));
+  color: get-var(table-active-color);
 }
 
 // Hover effect
@@ -125,8 +125,8 @@
 
 .table-hover {
   > tbody > tr:hover > * {
-    --#{$variable-prefix}table-accent-bg: var(--#{$variable-prefix}table-hover-bg);
-    color: var(--#{$variable-prefix}table-hover-color);
+    @include set-var(table-accent-bg, get-var(table-hover-bg));
+    color: get-var(table-hover-color);
   }
 }
 

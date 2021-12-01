@@ -11,6 +11,7 @@ $include-column-box-sizing: true !default;
 @import "variables";
 @import "maps";
 
+@import "mixins/vars";
 @import "mixins/lists";
 @import "mixins/breakpoints";
 @import "mixins/container";

@@ -7,18 +7,18 @@
     $active-bg: mix($color, $background, percentage($table-active-bg-factor));
     $border-color: mix($color, $background, percentage($table-border-factor));
 
-    --#{$variable-prefix}table-color: #{$color};
-    --#{$variable-prefix}table-bg: #{$background};
-    --#{$variable-prefix}table-border-color: #{$border-color};
-    --#{$variable-prefix}table-striped-bg: #{$striped-bg};
-    --#{$variable-prefix}table-striped-color: #{color-contrast($striped-bg)};
-    --#{$variable-prefix}table-active-bg: #{$active-bg};
-    --#{$variable-prefix}table-active-color: #{color-contrast($active-bg)};
-    --#{$variable-prefix}table-hover-bg: #{$hover-bg};
-    --#{$variable-prefix}table-hover-color: #{color-contrast($hover-bg)};
+    @include set-var(table-color, $color);
+    @include set-var(table-bg, $background);
+    @include set-var(table-border-color, $border-color);
+    @include set-var(table-striped-bg, $striped-bg);
+    @include set-var(table-striped-color, color-contrast($striped-bg));
+    @include set-var(table-active-bg, $active-bg);
+    @include set-var(table-active-color, color-contrast($active-bg));
+    @include set-var(table-hover-bg, $hover-bg);
+    @include set-var(table-hover-color, color-contrast($hover-bg));
 
-    color: var(--#{$variable-prefix}table-color);
-    border-color: var(--#{$variable-prefix}table-border-color);
+    color: get-var(table-color);
+    border-color: get-var(table-border-color);
   }
 }
 // scss-docs-end table-variant
