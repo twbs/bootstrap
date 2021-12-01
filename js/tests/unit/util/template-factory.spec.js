@@ -86,15 +86,15 @@ describe('TemplateFactory', () => {
         const factory = new TemplateFactory({
           extraClass: 'testClass'
         })
-        expect(factory.toHtml().classList.contains('testClass')).toBeTrue()
+        expect(factory.toHtml()).toHaveClass('testClass')
       })
 
       it('should add extra classes', () => {
         const factory = new TemplateFactory({
           extraClass: 'testClass testClass2'
         })
-        expect(factory.toHtml().classList.contains('testClass')).toBeTrue()
-        expect(factory.toHtml().classList.contains('testClass2')).toBeTrue()
+        expect(factory.toHtml()).toHaveClass('testClass')
+        expect(factory.toHtml()).toHaveClass('testClass2')
       })
 
       it('should resolve class if function is given', () => {
@@ -105,7 +105,7 @@ describe('TemplateFactory', () => {
           }
         })
 
-        expect(factory.toHtml().classList.contains('testClass')).toBeTrue()
+        expect(factory.toHtml()).toHaveClass('testClass')
       })
     })
   })
@@ -113,11 +113,11 @@ describe('TemplateFactory', () => {
   describe('Content', () => {
     it('add simple text content', () => {
       const template = [
-        '<div>' +
-        '<div class="foo"></div>' +
-        '<div class="foo2"></div>' +
+        '<div>',
+        '  <div class="foo"></div>',
+        '  <div class="foo2"></div>',
         '</div>'
-      ].join(' ')
+      ].join('')
 
       const factory = new TemplateFactory({
         template,
@@ -128,8 +128,8 @@ describe('TemplateFactory', () => {
       })
 
       const html = factory.toHtml()
-      expect(html.querySelector('.foo').textContent).toBe('bar')
-      expect(html.querySelector('.foo2').textContent).toBe('bar2')
+      expect(html.querySelector('.foo').textContent).toEqual('bar')
+      expect(html.querySelector('.foo2').textContent).toEqual('bar2')
     })
 
     it('should not fill template if selector not exists', () => {
@@ -140,7 +140,7 @@ describe('TemplateFactory', () => {
         content: { '#bar': 'test' }
       })
 
-      expect(factory.toHtml().outerHTML).toBe('<div id="foo"></div>')
+      expect(factory.toHtml().outerHTML).toEqual('<div id="foo"></div>')
     })
 
     it('should remove template selector, if content is null', () => {
@@ -151,7 +151,7 @@ describe('TemplateFactory', () => {
         content: { '#foo': null }
       })
 
-      expect(factory.toHtml().outerHTML).toBe('<div></div>')
+      expect(factory.toHtml().outerHTML).toEqual('<div></div>')
     })
 
     it('should resolve content if is function', () => {
@@ -162,7 +162,7 @@ describe('TemplateFactory', () => {
         content: { '#foo': () => null }
       })
 
-      expect(factory.toHtml().outerHTML).toBe('<div></div>')
+      expect(factory.toHtml().outerHTML).toEqual('<div></div>')
     })
 
     it('if content is element and "config.html=false", should put content\'s textContent', () => {
@@ -176,9 +176,9 @@ describe('TemplateFactory', () => {
       })
 
       const fooEl = factory.toHtml().querySelector('#foo')
-      expect(fooEl.innerHTML).not.toBe(contentElement.innerHTML)
-      expect(fooEl.textContent).toBe(contentElement.textContent)
-      expect(fooEl.textContent).toBe('foobar')
+      expect(fooEl.innerHTML).not.toEqual(contentElement.innerHTML)
+      expect(fooEl.textContent).toEqual(contentElement.textContent)
+      expect(fooEl.textContent).toEqual('foobar')
     })
 
     it('if content is element and "config.html=true", should put content\'s outerHtml as child', () => {
@@ -192,8 +192,8 @@ describe('TemplateFactory', () => {
       })
 
       const fooEl = factory.toHtml().querySelector('#foo')
-      expect(fooEl.innerHTML).toBe(contentElement.outerHTML)
-      expect(fooEl.textContent).toBe(contentElement.textContent)
+      expect(fooEl.innerHTML).toEqual(contentElement.outerHTML)
+      expect(fooEl.textContent).toEqual(contentElement.textContent)
     })
   })
 
@@ -245,14 +245,15 @@ describe('TemplateFactory', () => {
       expect(factory.hasContent()).toBeFalse()
     })
   })
+
   describe('changeContent', () => {
     it('should change Content', () => {
       const template = [
-        '<div>' +
-        '<div class="foo"></div>' +
-        '<div class="foo2"></div>' +
+        '<div>',
+        '  <div class="foo"></div>',
+        '  <div class="foo2"></div>',
         '</div>'
-      ].join(' ')
+      ].join('')
 
       const factory = new TemplateFactory({
         template,
@@ -276,11 +277,11 @@ describe('TemplateFactory', () => {
 
     it('should change only the given, content', () => {
       const template = [
-        '<div>' +
-        '<div class="foo"></div>' +
-        '<div class="foo2"></div>' +
+        '<div>',
+        '  <div class="foo"></div>',
+        '  <div class="foo2"></div>',
         '</div>'
-      ].join(' ')
+      ].join('')
 
       const factory = new TemplateFactory({
         template,
