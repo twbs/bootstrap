@@ -1081,39 +1081,20 @@ describe('Tooltip', () => {
       expect(tip()).not.toHaveClass('show')
       expect(tip().querySelector('.tooltip-inner').textContent).toEqual('foo')
     })
-  })
 
-  describe('updateAttachment', () => {
-    it('should use end class name when right placement specified', done => {
+    it('"setContent" should keep the initial template', () => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
 
       const tooltipEl = fixtureEl.querySelector('a')
-      const tooltip = new Tooltip(tooltipEl, {
-        placement: 'right'
-      })
+      const tooltip = new Tooltip(tooltipEl)
 
-      tooltipEl.addEventListener('inserted.bs.tooltip', () => {
-        expect(tooltip.getTipElement()).toHaveClass('bs-tooltip-auto')
-        done()
-      })
+      tooltip.setContent({ '.tooltip-inner': 'foo' })
+      const tip = tooltip.getTipElement()
 
-      tooltip.show()
-    })
-
-    it('should use start class name when left placement specified', done => {
-      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
-
-      const tooltipEl = fixtureEl.querySelector('a')
-      const tooltip = new Tooltip(tooltipEl, {
-        placement: 'left'
-      })
-
-      tooltipEl.addEventListener('inserted.bs.tooltip', () => {
-        expect(tooltip.getTipElement()).toHaveClass('bs-tooltip-auto')
-        done()
-      })
-
-      tooltip.show()
+      expect(tip).toHaveClass('tooltip')
+      expect(tip).toHaveClass('bs-tooltip-auto')
+      expect(tip.querySelector('.tooltip-arrow')).not.toBeNull()
+      expect(tip.querySelector('.tooltip-inner')).not.toBeNull()
     })
   })
 

@@ -155,6 +155,22 @@ describe('Popover', () => {
       popover.show()
     })
 
+    it('"setContent" should keep the initial template', () => {
+      fixtureEl.innerHTML = '<a href="#" title="Popover" data-bs-content="https://twitter.com/getbootstrap" data-bs-custom-class="custom-class">BS twitter</a>'
+
+      const popoverEl = fixtureEl.querySelector('a')
+      const popover = new Popover(popoverEl)
+
+      popover.setContent({ '.tooltip-inner': 'foo' })
+      const tip = popover.getTipElement()
+
+      expect(tip).toHaveClass('popover')
+      expect(tip).toHaveClass('bs-popover-auto')
+      expect(tip.querySelector('.popover-arrow')).not.toBeNull()
+      expect(tip.querySelector('.popover-header')).not.toBeNull()
+      expect(tip.querySelector('.popover-body')).not.toBeNull()
+    })
+
     it('should call setContent once', done => {
       fixtureEl.innerHTML = '<a href="#">BS twitter</a>'
 

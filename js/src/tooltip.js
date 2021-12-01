@@ -38,7 +38,6 @@ const CLASS_NAME_SHOW = 'show'
 const HOVER_STATE_SHOW = 'show'
 const HOVER_STATE_OUT = 'out'
 
-const SELECTOR_TOOLTIP_ARROW = '.tooltip-arrow'
 const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
 const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`
 
@@ -333,15 +332,23 @@ class Tooltip extends BaseComponent {
   }
 
   getTipElement() {
-    if (this.tip) {
-      return this.tip
+    if (!this.tip) {
+      this.tip = this._createTipElement(this._getContentForTemplate())
     }
 
-    const templateFactory = this._getTemplateFactory(this._getContentForTemplate())
+    return this.tip
+  }
 
-    const tip = templateFactory.toHtml()
+  _createTipElement(content) {
+    const tip = this._getTemplateFactory(content).toHtml()
+
+    // todo: remove this check on v6
+    if (!tip) {
+      return null
+    }
+
     tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
-    // todo on v6 the following can be done on css only
+    // todo: on v6 the following can be achieved with CSS only
     tip.classList.add(`bs-${this.constructor.NAME}-auto`)
 
     const tipId = getUID(this.constructor.NAME).toString()
@@ -352,8 +359,7 @@ class Tooltip extends BaseComponent {
       tip.classList.add(CLASS_NAME_FADE)
     }
 
-    this.tip = tip
-    return this.tip
+    return tip
   }
 
   setContent(content) {
@@ -361,11 +367,11 @@ class Tooltip extends BaseComponent {
     if (this.tip) {
       isShown = this.tip.classList.contains(CLASS_NAME_SHOW)
       this.tip.remove()
+      this.tip = null
     }
 
     this._disposePopper()
-
-    this.tip = this._getTemplateFactory(content).toHtml()
+    this.tip = this._createTipElement(content)
 
     if (isShown) {
       this.show()
@@ -396,18 +402,6 @@ class Tooltip extends BaseComponent {
 
   getTitle() {
     return this._resolvePossibleFunction(this._config.title) || this._element.getAttribute('title')
-  }
-
-  updateAttachment(attachment) {
-    if (attachment === 'right') {
-      return 'end'
-    }
-
-    if (attachment === 'left') {
-      return 'start'
-    }
-
-    return attachment
   }
 
   // Private
@@ -458,7 +452,7 @@ class Tooltip extends BaseComponent {
         {
           name: 'arrow',
           options: {
-            element: SELECTOR_TOOLTIP_ARROW
+            element: `.${this.constructor.NAME}-arrow`
           }
         }
       ]
