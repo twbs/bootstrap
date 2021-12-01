@@ -1082,7 +1082,7 @@ describe('Tooltip', () => {
       expect(tip().querySelector('.tooltip-inner').textContent).toEqual('foo')
     })
 
-    it('should keep the initial template', () => {
+    it('"setContent" should keep the initial template', () => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
 
       const tooltipEl = fixtureEl.querySelector('a')
