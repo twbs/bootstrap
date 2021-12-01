@@ -56,6 +56,8 @@ Your custom Bootstrap CSS builds should now look something like this with a sepa
 ### Key changes
 
 - **Introduced new `$enable-container-classes` option.** Now when opting into the experimental CSS Grid layout, `.container-*` classes will still be compiled, unless this option is set to `false`.
+- **Buttons, navbars, popovers, and tooltips are now built with CSS variables.** While Sass still underpins everything, each of these components have been updated to include several CSS variables on the component base classes (e.g., `.btn`), allowing for more real-time customization of Bootstrap.
+- **Updated our grid systems** so that containers now keep their gutter values, and enabling the experimental CSS Grid no longer removes container classes.
 
 ## Dependencies
 
