@@ -1684,51 +1684,32 @@ describe('Dropdown', () => {
       const input = fixtureEl.querySelector('input')
       const textarea = fixtureEl.querySelector('textarea')
 
-      const keydownSpace = createEvent('keydown')
-      keydownSpace.key = 'Space'
-
-      const keydownArrowUp = createEvent('keydown')
-      keydownArrowUp.key = 'ArrowUp'
-
-      const keydownArrowDown = createEvent('keydown')
-      keydownArrowDown.key = 'ArrowDown'
+      const test = (eventKey, elementToDispatch) => {
+        const event = createEvent('keydown')
+        event.key = eventKey
+        elementToDispatch.focus()
+        elementToDispatch.dispatchEvent(event)
+        expect(document.activeElement).toEqual(elementToDispatch, `${elementToDispatch.tagName} still focused`)
+      }
 
       const keydownEscape = createEvent('keydown')
       keydownEscape.key = 'Escape'
 
       triggerDropdown.addEventListener('shown.bs.dropdown', () => {
         // Key Space
-        input.focus()
-        input.dispatchEvent(keydownSpace)
+        test('Space', input)
 
-        expect(document.activeElement).toEqual(input, 'input still focused')
-
-        textarea.focus()
-        textarea.dispatchEvent(keydownSpace)
-
-        expect(document.activeElement).toEqual(textarea, 'textarea still focused')
+        test('Space', textarea)
 
         // Key ArrowUp
-        input.focus()
-        input.dispatchEvent(keydownArrowUp)
+        test('ArrowUp', input)
 
-        expect(document.activeElement).toEqual(input, 'input still focused')
-
-        textarea.focus()
-        textarea.dispatchEvent(keydownArrowUp)
-
-        expect(document.activeElement).toEqual(textarea, 'textarea still focused')
+        test('ArrowUp', textarea)
 
         // Key ArrowDown
-        input.focus()
-        input.dispatchEvent(keydownArrowDown)
+        test('ArrowDown', input)
 
-        expect(document.activeElement).toEqual(input, 'input still focused')
-
-        textarea.focus()
-        textarea.dispatchEvent(keydownArrowDown)
-
-        expect(document.activeElement).toEqual(textarea, 'textarea still focused')
+        test('ArrowDown', textarea)
 
         // Key Escape
         input.focus()
