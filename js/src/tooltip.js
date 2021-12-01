@@ -342,12 +342,13 @@ class Tooltip extends BaseComponent {
   _createTipElement(content) {
     const tip = this._getTemplateFactory(content).toHtml()
 
-    if (!tip) { // todo:v6 this check has to leave
+    // todo: remove this check on v6
+    if (!tip) { 
       return null
     }
 
     tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
-    // todo on v6 the following can be done on css only
+    // todo: on v6 the following can be achieved with CSS only
     tip.classList.add(`bs-${this.constructor.NAME}-auto`)
 
     const tipId = getUID(this.constructor.NAME).toString()
