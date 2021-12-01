@@ -403,18 +403,6 @@ class Tooltip extends BaseComponent {
     return this._resolvePossibleFunction(this._config.title) || this._element.getAttribute('title')
   }
 
-  updateAttachment(attachment) {
-    if (attachment === 'right') {
-      return 'end'
-    }
-
-    if (attachment === 'left') {
-      return 'start'
-    }
-
-    return attachment
-  }
-
   // Private
   _initializeOnDelegatedTarget(event, context) {
     return context || this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig())
