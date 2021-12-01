@@ -1081,6 +1081,21 @@ describe('Tooltip', () => {
       expect(tip()).not.toHaveClass('show')
       expect(tip().querySelector('.tooltip-inner').textContent).toEqual('foo')
     })
+
+    it('"setContent" should keep the initial template', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      tooltip.setContent({ '.tooltip-inner': 'foo' })
+      const tip = tooltip.getTipElement()
+
+      expect(tip).toHaveClass('tooltip')
+      expect(tip).toHaveClass('bs-tooltip-auto')
+      expect(tip.querySelector('.tooltip-arrow')).not.toBeNull()
+      expect(tip.querySelector('.tooltip-inner')).not.toBeNull()
+    })
   })
 
   describe('setContent', () => {
