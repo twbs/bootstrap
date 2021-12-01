@@ -343,7 +343,7 @@ class Tooltip extends BaseComponent {
     const tip = this._getTemplateFactory(content).toHtml()
 
     // todo: remove this check on v6
-    if (!tip) { 
+    if (!tip) {
       return null
     }
 
