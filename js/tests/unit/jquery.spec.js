@@ -49,7 +49,7 @@ describe('jQuery', () => {
 
     $(fixtureEl).find('.alert')
       .one('closed.bs.alert', () => {
-        expect($(fixtureEl).find('.alert').length).toEqual(0)
+        expect($(fixtureEl).find('.alert')).toHaveSize(0)
         done()
       })
 

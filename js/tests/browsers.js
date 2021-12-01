@@ -74,9 +74,6 @@ const browsers = {
   }
 }
 
-const browsersKeys = Object.keys(browsers)
-
 module.exports = {
-  browsers,
-  browsersKeys
+  browsers
 }
