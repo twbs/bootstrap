@@ -1112,7 +1112,8 @@ describe('Tooltip', () => {
     it('should do nothing if the content is a child of the element', () => {
       fixtureEl.innerHTML = [
         '<a href="#" rel="tooltip" title="Another tooltip">',
-        '<div id="childContent"></div>'
+        '  <div id="childContent"></div>',
+        '</a>'
       ].join('')
 
       const tooltipEl = fixtureEl.querySelector('a')
@@ -1130,7 +1131,8 @@ describe('Tooltip', () => {
     it('should add the content as a child of the element for jQuery elements', () => {
       fixtureEl.innerHTML = [
         '<a href="#" rel="tooltip" title="Another tooltip">',
-        '<div id="childContent"></div>'
+        '  <div id="childContent"></div>',
+        '</a>'
       ].join('')
 
       const tooltipEl = fixtureEl.querySelector('a')
@@ -1147,7 +1149,8 @@ describe('Tooltip', () => {
     it('should add the child text content in the element', () => {
       fixtureEl.innerHTML = [
         '<a href="#" rel="tooltip" title="Another tooltip">',
-        '<div id="childContent">Tooltip</div>'
+        '  <div id="childContent">Tooltip</div>',
+        '</a>'
       ].join('')
 
       const tooltipEl = fixtureEl.querySelector('a')
@@ -1160,7 +1163,7 @@ describe('Tooltip', () => {
     })
 
     it('should add html without sanitize it', () => {
-      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
@@ -1174,7 +1177,7 @@ describe('Tooltip', () => {
     })
 
     it('should add html sanitized', () => {
-      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
@@ -1193,7 +1196,7 @@ describe('Tooltip', () => {
     })
 
     it('should add text content', () => {
-      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
@@ -1206,7 +1209,7 @@ describe('Tooltip', () => {
 
   describe('_getTitle', () => {
     it('should return the title', () => {
-      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
