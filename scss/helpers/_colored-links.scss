@@ -1,4 +1,12 @@
 @each $color, $value in $theme-colors {
+  // --bs-link-color and --bs-link-color-hover variables
+  .links-#{$color} {
+    --#{$variable-prefix}link-color: #{$value};
+    @if $link-shade-percentage != 0 {
+      --#{$variable-prefix}link-hover-color: if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage));
+    }
+  }
+  
   .link-#{$color} {
     color: $value;
 
