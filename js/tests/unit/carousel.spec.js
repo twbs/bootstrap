@@ -1430,7 +1430,7 @@ describe('Carousel', () => {
         '    <div class="carousel-item">item 3</div>',
         '  </div>',
         '  <button class="carousel-control-prev" data-bs-target="#myCarousel" type="button" data-bs-slide="prev"></button>',
-        '  <button id="next" class="carousel-control-next" data-bs-target="#myCarousel" type="button" data-bs-slide="next"></div>',
+        '  <button id="next" class="carousel-control-next" data-bs-target="#myCarousel" type="button" data-bs-slide="next"></button>',
         '</div>'
       ].join('')
 
@@ -1453,8 +1453,8 @@ describe('Carousel', () => {
         '    <div id="item2" class="carousel-item">item 2</div>',
         '    <div class="carousel-item">item 3</div>',
         '  </div>',
-        '  <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev"></button>',
-        '  <a id="next" class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next"></div>',
+        '  <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev"></a>',
+        '  <a id="next" class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next"></a>',
         '</div>'
       ].join('')
 
@@ -1520,8 +1520,8 @@ describe('Carousel', () => {
         '    <div id="item2" class="carousel-item">item 2</div>',
         '    <div class="carousel-item">item 3</div>',
         '  </div>',
-        '  <button class="carousel-control-prev" data-bs-target="#myCarousel" type="button" data-bs-slide="prev"></div>',
-        '  <button id="next" class="carousel-control-next" data-bs-target="#myCarousel" type="button" data-bs-slide="next"></div>',
+        '  <button class="carousel-control-prev" data-bs-target="#myCarousel" type="button" data-bs-slide="prev"></button>',
+        '  <button id="next" class="carousel-control-next" data-bs-target="#myCarousel" type="button" data-bs-slide="next"></button>',
         '</div>'
       ].join('')
 
