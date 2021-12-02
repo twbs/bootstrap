@@ -6,7 +6,15 @@
  */
 
 import * as Popper from '@popperjs/core'
-import { defineJQueryPlugin, findShadowRoot, getElement, getUID, isRTL, noop, typeCheckConfig } from './util/index'
+import {
+  defineJQueryPlugin,
+  findShadowRoot,
+  getElement,
+  getUID,
+  isRTL,
+  noop,
+  typeCheckConfig
+} from './util/index'
 import { DefaultAllowlist } from './util/sanitizer'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
