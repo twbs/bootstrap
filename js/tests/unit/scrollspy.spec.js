@@ -2,6 +2,7 @@ import ScrollSpy from '../../src/scrollspy'
 
 /** Test helpers */
 import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
+import EventHandler from '../../src/dom/event-handler'
 
 describe('ScrollSpy', () => {
   let fixtureEl
@@ -728,6 +729,61 @@ describe('ScrollSpy', () => {
       window.dispatchEvent(createEvent('load'))
 
       expect(ScrollSpy.getInstance(scrollSpyEl)).not.toBeNull()
+    })
+  })
+
+  describe('SmoothScroll', () => {
+    it('should not enable smoothScroll', () => {
+      fixtureEl.innerHTML = getDummyFixture()
+      const offSpy = spyOn(EventHandler, 'off').and.callThrough()
+      const onSpy = spyOn(EventHandler, 'on').and.callThrough()
+
+      const div = fixtureEl.querySelector('.content')
+      const link = fixtureEl.querySelector('[href="#div-jsm-1"]')
+      // eslint-disable-next-line no-new
+      new ScrollSpy(div, {
+        offset: 1
+      })
+
+      expect(offSpy).not.toHaveBeenCalledWith(link, 'click.bs.scrollspy')
+      expect(onSpy).not.toHaveBeenCalledWith(link, 'click.bs.scrollspy')
+    })
+
+    it('should enable smoothScroll', () => {
+      fixtureEl.innerHTML = getDummyFixture()
+      const offSpy = spyOn(EventHandler, 'off').and.callThrough()
+      const onSpy = spyOn(EventHandler, 'on').and.callThrough()
+
+      const div = fixtureEl.querySelector('.content')
+      const link = fixtureEl.querySelector('[href="#div-jsm-1"]')
+      // eslint-disable-next-line no-new
+      new ScrollSpy(div, {
+        offset: 1,
+        smoothScroll: true
+      })
+
+      expect(offSpy).toHaveBeenCalledWith(link, 'click.bs.scrollspy')
+      expect(onSpy).toHaveBeenCalledWith(link, 'click.bs.scrollspy', jasmine.any(Function))
+    })
+
+    it('should smoothScroll to the proper observable element on anchor click', done => {
+      fixtureEl.innerHTML = getDummyFixture()
+
+      const div = fixtureEl.querySelector('.content')
+      const link = fixtureEl.querySelector('[href="#div-jsm-1"]')
+      const observable = fixtureEl.querySelector('#div-jsm-1')
+      const clickSpy = spyOn(div, 'scrollTo').and.callThrough()
+      // eslint-disable-next-line no-new
+      new ScrollSpy(div, {
+        offset: 1,
+        smoothScroll: true
+      })
+
+      setTimeout(() => {
+        expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop, behavior: 'smooth' })
+        done()
+      }, 100)
+      link.click()
     })
   })
 })

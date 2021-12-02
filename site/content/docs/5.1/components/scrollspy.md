@@ -320,6 +320,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `rootMargin` | string | `0px 0px -40%` | Intersection Observer [rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin) valid units, when calculating position of scroll. |
+| `smoothScroll` | boolean | `false` | Enables smooth scrolling when user clicks on a link that refers to ScrollSpy observables |
 | `target` | string \| jQuery object \| DOM element |  | Specifies element to apply Scrollspy plugin. |
 {{< /bs-table >}}
 
