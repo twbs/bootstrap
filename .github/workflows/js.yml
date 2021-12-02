@@ -8,16 +8,11 @@ on:
 
 env:
   FORCE_COLOR: 2
+  NODE: 16
 
 jobs:
   run:
-    name: Node ${{ matrix.node }}
     runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: false
-      matrix:
-        node: [12, 14, 16]
 
     steps:
       - name: Clone repository
@@ -26,7 +21,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node }}
+          node-version: ${{ env.NODE }}
           cache: npm
 
       - name: Install npm dependencies
@@ -40,7 +35,6 @@ jobs:
 
       - name: Run Coveralls
         uses: coverallsapp/github-action@1.1.3
-        if: matrix.node == 16
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           path-to-lcov: "./js/coverage/lcov.info"
