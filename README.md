@@ -77,9 +77,9 @@ Read the [Getting started page](https://getbootstrap.com/docs/5.1/getting-starte
 
 ## What's included
 
-Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
+Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations.
 
-<details><summary>File Contents</summary>
+<details><summary>Download contents</summary>
 
 ```text
 bootstrap/
@@ -130,8 +130,8 @@ bootstrap/
     ├── bootstrap.min.js
     └── bootstrap.min.js.map
 ```
-
 </details>
+
 We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). [Source maps](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Popper](https://popper.js.org/).
 
 
