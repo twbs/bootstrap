@@ -1,5 +1,6 @@
 import Button from '../../src/button'
 import { getFixture, clearFixture, jQueryMock } from '../helpers/fixture'
+import { getJqueryInterfaceForPlugin } from '../../src/util/jquery-stuff'
 
 describe('Button', () => {
   let fixtureEl
@@ -102,7 +103,7 @@ describe('Button', () => {
 
       spyOn(button, 'toggle')
 
-      jQueryMock.fn.button = Button.jQueryInterface
+      jQueryMock.fn.button = getJqueryInterfaceForPlugin(Button)
       jQueryMock.elements = [btnEl]
 
       jQueryMock.fn.button.call(jQueryMock, 'toggle')
@@ -115,7 +116,7 @@ describe('Button', () => {
 
       const btnEl = fixtureEl.querySelector('.btn')
 
-      jQueryMock.fn.button = Button.jQueryInterface
+      jQueryMock.fn.button = getJqueryInterfaceForPlugin(Button)
       jQueryMock.elements = [btnEl]
 
       jQueryMock.fn.button.call(jQueryMock, 'toggle')
@@ -129,7 +130,7 @@ describe('Button', () => {
 
       const btnEl = fixtureEl.querySelector('.btn')
 
-      jQueryMock.fn.button = Button.jQueryInterface
+      jQueryMock.fn.button = getJqueryInterfaceForPlugin(Button)
       jQueryMock.elements = [btnEl]
 
       jQueryMock.fn.button.call(jQueryMock)

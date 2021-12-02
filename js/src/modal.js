@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, getElementFromSelector, isRTL, isVisible, reflow } from './util/index'
+import { defineJQueryPlugin, getElementFromSelector, isRTL, isVisible, reflow, typeCheckConfig } from './util/index'
 import EventHandler from './dom/event-handler'
 import SelectorEngine from './dom/selector-engine'
 import ScrollBarHelper from './util/scrollbar'
@@ -30,6 +30,7 @@ const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
 const EVENT_RESIZE = `resize${EVENT_KEY}`
+const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
 const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
@@ -307,21 +308,6 @@ class Modal extends BaseComponent {
   }
 
   // Static
-  static jQueryInterface(config, relatedTarget) {
-    return this.each(function () {
-      const data = Modal.getOrCreateInstance(this, config)
-
-      if (typeof config !== 'string') {
-        return
-      }
-
-      if (typeof data[config] === 'undefined') {
-        throw new TypeError(`No method named "${config}"`)
-      }
-
-      data[config](relatedTarget)
-    })
-  }
 }
 
 /**

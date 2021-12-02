@@ -1,6 +1,7 @@
 import Alert from '../../src/alert'
 import { getTransitionDurationFromElement } from '../../src/util/index'
 import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture'
+import { getJqueryInterfaceForPlugin } from '../../src/util/jquery-stuff'
 
 describe('Alert', () => {
   let fixtureEl
@@ -150,7 +151,7 @@ describe('Alert', () => {
 
       spyOn(alert, 'close')
 
-      jQueryMock.fn.alert = Alert.jQueryInterface
+      jQueryMock.fn.alert = getJqueryInterfaceForPlugin(Alert)
       jQueryMock.elements = [alertEl]
 
       jQueryMock.fn.alert.call(jQueryMock, 'close')
@@ -163,7 +164,7 @@ describe('Alert', () => {
 
       const alertEl = fixtureEl.querySelector('.alert')
 
-      jQueryMock.fn.alert = Alert.jQueryInterface
+      jQueryMock.fn.alert = getJqueryInterfaceForPlugin(Alert)
       jQueryMock.elements = [alertEl]
 
       expect(Alert.getInstance(alertEl)).toBeNull()
@@ -177,7 +178,7 @@ describe('Alert', () => {
 
       const alertEl = fixtureEl.querySelector('.alert')
 
-      jQueryMock.fn.alert = Alert.jQueryInterface
+      jQueryMock.fn.alert = getJqueryInterfaceForPlugin(Alert)
       jQueryMock.elements = [alertEl]
 
       jQueryMock.fn.alert.call(jQueryMock)
@@ -192,7 +193,7 @@ describe('Alert', () => {
       const div = fixtureEl.querySelector('div')
       const action = 'undefinedMethod'
 
-      jQueryMock.fn.alert = Alert.jQueryInterface
+      jQueryMock.fn.alert = getJqueryInterfaceForPlugin(Alert)
       jQueryMock.elements = [div]
 
       expect(() => {
@@ -206,7 +207,7 @@ describe('Alert', () => {
       const div = fixtureEl.querySelector('div')
       const action = '_getConfig'
 
-      jQueryMock.fn.alert = Alert.jQueryInterface
+      jQueryMock.fn.alert = getJqueryInterfaceForPlugin(Alert)
       jQueryMock.elements = [div]
 
       expect(() => {

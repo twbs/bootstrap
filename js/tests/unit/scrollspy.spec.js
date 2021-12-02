@@ -1,8 +1,8 @@
 import ScrollSpy from '../../src/scrollspy'
-
+import EventHandler from '../../src/dom/event-handler'
+import { getJqueryInterfaceForPlugin } from '../../src/util/jquery-stuff'
 /** Test helpers */
 import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
-import EventHandler from '../../src/dom/event-handler'
 
 describe('ScrollSpy', () => {
   let fixtureEl
@@ -610,7 +610,7 @@ describe('ScrollSpy', () => {
 
       const div = fixtureEl.querySelector('.content')
 
-      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
+      jQueryMock.fn.scrollspy = getJqueryInterfaceForPlugin(ScrollSpy)
       jQueryMock.elements = [div]
 
       jQueryMock.fn.scrollspy.call(jQueryMock, { target: '#navBar' })
@@ -623,7 +623,7 @@ describe('ScrollSpy', () => {
 
       const div = fixtureEl.querySelector('.content')
 
-      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
+      jQueryMock.fn.scrollspy = getJqueryInterfaceForPlugin(ScrollSpy)
       jQueryMock.elements = [div]
 
       jQueryMock.fn.scrollspy.call(jQueryMock, { rootMargin: '100px' })
@@ -641,7 +641,7 @@ describe('ScrollSpy', () => {
       const div = fixtureEl.querySelector('.content')
       const scrollSpy = new ScrollSpy(div)
 
-      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
+      jQueryMock.fn.scrollspy = getJqueryInterfaceForPlugin(ScrollSpy)
       jQueryMock.elements = [div]
 
       jQueryMock.fn.scrollspy.call(jQueryMock)
@@ -657,7 +657,7 @@ describe('ScrollSpy', () => {
 
       spyOn(scrollSpy, 'refresh')
 
-      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
+      jQueryMock.fn.scrollspy = getJqueryInterfaceForPlugin(ScrollSpy)
       jQueryMock.elements = [div]
 
       jQueryMock.fn.scrollspy.call(jQueryMock, 'refresh')
@@ -672,7 +672,7 @@ describe('ScrollSpy', () => {
       const div = fixtureEl.querySelector('.content')
       const action = 'undefinedMethod'
 
-      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
+      jQueryMock.fn.scrollspy = getJqueryInterfaceForPlugin(ScrollSpy)
       jQueryMock.elements = [div]
 
       expect(() => {
@@ -686,7 +686,7 @@ describe('ScrollSpy', () => {
       const div = fixtureEl.querySelector('.content')
       const action = '_getConfig'
 
-      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
+      jQueryMock.fn.scrollspy = getJqueryInterfaceForPlugin(ScrollSpy)
       jQueryMock.elements = [div]
 
       expect(() => {
@@ -700,7 +700,7 @@ describe('ScrollSpy', () => {
       const div = fixtureEl.querySelector('.content')
       const action = 'constructor'
 
-      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
+      jQueryMock.fn.scrollspy = getJqueryInterfaceForPlugin(ScrollSpy)
       jQueryMock.elements = [div]
 
       expect(() => {

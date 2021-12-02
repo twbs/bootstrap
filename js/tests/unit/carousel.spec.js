@@ -3,6 +3,7 @@ import EventHandler from '../../src/dom/event-handler'
 import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 import { isRTL, noop } from '../../src/util/index'
 import Swipe from '../../src/util/swipe'
+import { getJqueryInterfaceForPlugin } from '../../src/util/jquery-stuff'
 
 describe('Carousel', () => {
   const { Simulator, PointerEvent } = window
@@ -1385,7 +1386,7 @@ describe('Carousel', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      jQueryMock.fn.carousel = Carousel.jQueryInterface
+      jQueryMock.fn.carousel = getJqueryInterfaceForPlugin(Carousel)
       jQueryMock.elements = [div]
 
       jQueryMock.fn.carousel.call(jQueryMock)
@@ -1399,7 +1400,7 @@ describe('Carousel', () => {
       const div = fixtureEl.querySelector('div')
       const carousel = new Carousel(div)
 
-      jQueryMock.fn.carousel = Carousel.jQueryInterface
+      jQueryMock.fn.carousel = getJqueryInterfaceForPlugin(Carousel)
       jQueryMock.elements = [div]
 
       jQueryMock.fn.carousel.call(jQueryMock)
@@ -1416,7 +1417,7 @@ describe('Carousel', () => {
 
       spyOn(carousel, 'to')
 
-      jQueryMock.fn.carousel = Carousel.jQueryInterface
+      jQueryMock.fn.carousel = getJqueryInterfaceForPlugin(Carousel)
       jQueryMock.elements = [div]
 
       jQueryMock.fn.carousel.call(jQueryMock, slideTo)
@@ -1430,7 +1431,7 @@ describe('Carousel', () => {
       const div = fixtureEl.querySelector('div')
       const action = 'undefinedMethod'
 
-      jQueryMock.fn.carousel = Carousel.jQueryInterface
+      jQueryMock.fn.carousel = getJqueryInterfaceForPlugin(Carousel)
       jQueryMock.elements = [div]
 
       expect(() => {

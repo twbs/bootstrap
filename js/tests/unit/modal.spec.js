@@ -2,6 +2,7 @@ import Modal from '../../src/modal'
 import EventHandler from '../../src/dom/event-handler'
 import ScrollBarHelper from '../../src/util/scrollbar'
 import { clearBodyAndDocument, clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
+import { getJqueryInterfaceForPlugin } from '../../src/util/jquery-stuff'
 
 describe('Modal', () => {
   let fixtureEl
@@ -1100,7 +1101,7 @@ describe('Modal', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      jQueryMock.fn.modal = Modal.jQueryInterface
+      jQueryMock.fn.modal = getJqueryInterfaceForPlugin(Modal)
       jQueryMock.elements = [div]
 
       jQueryMock.fn.modal.call(jQueryMock)
@@ -1113,7 +1114,7 @@ describe('Modal', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      jQueryMock.fn.modal = Modal.jQueryInterface
+      jQueryMock.fn.modal = getJqueryInterfaceForPlugin(Modal)
       jQueryMock.elements = [div]
 
       jQueryMock.fn.modal.call(jQueryMock, { keyboard: false })
@@ -1131,7 +1132,7 @@ describe('Modal', () => {
       const div = fixtureEl.querySelector('div')
       const modal = new Modal(div)
 
-      jQueryMock.fn.modal = Modal.jQueryInterface
+      jQueryMock.fn.modal = getJqueryInterfaceForPlugin(Modal)
       jQueryMock.elements = [div]
 
       jQueryMock.fn.modal.call(jQueryMock)
@@ -1145,7 +1146,7 @@ describe('Modal', () => {
       const div = fixtureEl.querySelector('div')
       const action = 'undefinedMethod'
 
-      jQueryMock.fn.modal = Modal.jQueryInterface
+      jQueryMock.fn.modal = getJqueryInterfaceForPlugin(Modal)
       jQueryMock.elements = [div]
 
       expect(() => {
@@ -1159,7 +1160,7 @@ describe('Modal', () => {
       const div = fixtureEl.querySelector('div')
       const modal = new Modal(div)
 
-      jQueryMock.fn.modal = Modal.jQueryInterface
+      jQueryMock.fn.modal = getJqueryInterfaceForPlugin(Modal)
       jQueryMock.elements = [div]
 
       spyOn(modal, 'show')
@@ -1174,7 +1175,7 @@ describe('Modal', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      jQueryMock.fn.modal = Modal.jQueryInterface
+      jQueryMock.fn.modal = getJqueryInterfaceForPlugin(Modal)
       jQueryMock.elements = [div]
 
       spyOn(Modal.prototype, 'show')

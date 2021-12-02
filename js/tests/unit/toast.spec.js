@@ -1,5 +1,6 @@
 import Toast from '../../src/toast'
-import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
+import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
+import { getJqueryInterfaceForPlugin } from '../../src/util/jquery-stuff'
 
 describe('Toast', () => {
   let fixtureEl
@@ -540,7 +541,7 @@ describe('Toast', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      jQueryMock.fn.toast = Toast.jQueryInterface
+      jQueryMock.fn.toast = getJqueryInterfaceForPlugin(Toast)
       jQueryMock.elements = [div]
 
       jQueryMock.fn.toast.call(jQueryMock)
@@ -554,7 +555,7 @@ describe('Toast', () => {
       const div = fixtureEl.querySelector('div')
       const toast = new Toast(div)
 
-      jQueryMock.fn.toast = Toast.jQueryInterface
+      jQueryMock.fn.toast = getJqueryInterfaceForPlugin(Toast)
       jQueryMock.elements = [div]
 
       jQueryMock.fn.toast.call(jQueryMock)
@@ -570,7 +571,7 @@ describe('Toast', () => {
 
       spyOn(toast, 'show')
 
-      jQueryMock.fn.toast = Toast.jQueryInterface
+      jQueryMock.fn.toast = getJqueryInterfaceForPlugin(Toast)
       jQueryMock.elements = [div]
 
       jQueryMock.fn.toast.call(jQueryMock, 'show')
@@ -585,7 +586,7 @@ describe('Toast', () => {
       const div = fixtureEl.querySelector('div')
       const action = 'undefinedMethod'
 
-      jQueryMock.fn.toast = Toast.jQueryInterface
+      jQueryMock.fn.toast = getJqueryInterfaceForPlugin(Toast)
       jQueryMock.elements = [div]
 
       expect(() => {
