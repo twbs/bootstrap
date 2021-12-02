@@ -1,6 +1,6 @@
 .bd-navbar {
-  --bs-gutter-x: 1.25rem;
-  --bs-gutter-y: 1.25rem;
+  --bs-gutter-x: $bd-gutter-x;
+  --bs-gutter-y: $bd-gutter-x;
 
   padding: .75rem 0;
   background-color: $bd-purple-bright;

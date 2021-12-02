@@ -85,7 +85,7 @@
 .bd-example {
   position: relative;
   padding: 1rem;
-  margin: 1rem -1.25rem 0;
+  margin: 1rem ($bd-gutter-x * -1) 0;
   border: solid $gray-300;
   border-width: 1px 0 0;
   @include clearfix();
@@ -313,7 +313,7 @@
 //
 
 .highlight {
-  padding: var(--bs-gutter-x) 1.25rem;
+  padding: var(--bs-gutter-x) $bd-gutter-x;
   margin-bottom: 1rem;
   background-color: $gray-100;
 
@@ -338,8 +338,8 @@
 }
 
 .bd-content .highlight {
-  margin-right: -1.25rem;
-  margin-left: -1.25rem;
+  margin-right: $bd-gutter-x * -1;
+  margin-left: $bd-gutter-x * -1;
 
   @include media-breakpoint-up(sm) {
     margin-right: 0;

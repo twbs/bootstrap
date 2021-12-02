@@ -1,6 +1,6 @@
 .bd-layout {
-  padding-right: 1.25rem;
-  padding-left: 1.25rem;
+  padding-right: $bd-gutter-x;
+  padding-left: $bd-gutter-x;
 
   @include media-breakpoint-up(md) {
     display: grid;
