@@ -277,8 +277,7 @@ describe('Modal', () => {
       fixtureEl.innerHTML = [
         '<button type="button" data-bs-dismiss="modal" data-bs-target="#modal1"></button>',
         '<div id="modal1" class="modal fade">',
-        '  <div class="modal-dialog">',
-        '  </div>',
+        '  <div class="modal-dialog"></div>',
         '</div>'
       ].join('')
 
@@ -303,8 +302,7 @@ describe('Modal', () => {
     it('should set .modal\'s scroll top to 0', done => {
       fixtureEl.innerHTML = [
         '<div class="modal fade">',
-        '  <div class="modal-dialog">',
-        '  </div>',
+        '  <div class="modal-dialog"></div>',
         '</div>'
       ].join('')
 
