@@ -6,15 +6,7 @@
  */
 
 import * as Popper from '@popperjs/core'
-import {
-  defineJQueryPlugin,
-  findShadowRoot,
-  getElement,
-  getUID,
-  isRTL,
-  noop,
-  typeCheckConfig
-} from './util/index'
+import { defineJQueryPlugin, findShadowRoot, getElement, getUID, isRTL, noop, typeCheckConfig } from './util/index'
 import { DefaultAllowlist } from './util/sanitizer'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
@@ -394,7 +386,7 @@ class Tooltip extends BaseComponent {
   }
 
   _getTitle() {
-    return this._resolvePossibleFunction(this._config.title) || this._element.getAttribute('title')
+    return this._config.title
   }
 
   // Private
@@ -510,11 +502,17 @@ class Tooltip extends BaseComponent {
   }
 
   _fixTitle() {
-    const title = this._element.getAttribute('title')
+    const title = this._config.originalTitle
 
-    if (title && !this._element.getAttribute('aria-label') && !this._element.textContent) {
+    if (!title) {
+      return
+    }
+
+    if (!this._element.getAttribute('aria-label') && !this._element.textContent) {
       this._element.setAttribute('aria-label', title)
     }
+
+    this._element.removeAttribute('title')
   }
 
   _enter() {
@@ -579,6 +577,8 @@ class Tooltip extends BaseComponent {
       }
     }
 
+    config.originalTitle = this._element.getAttribute('title') || ''
+    config.title = this._resolvePossibleFunction(config.title) || config.originalTitle
     if (typeof config.title === 'number') {
       config.title = config.title.toString()
     }

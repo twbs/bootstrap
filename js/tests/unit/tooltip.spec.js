@@ -180,6 +180,15 @@ describe('Tooltip', () => {
       expect(getPopperConfig).toHaveBeenCalled()
       expect(popperConfig.placement).toEqual('left')
     })
+
+    it('should use original title, if not "data-bs-title" is given', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      expect(tooltip._config.title).toEqual('Another tooltip')
+    })
   })
 
   describe('enable', () => {
@@ -853,6 +862,19 @@ describe('Tooltip', () => {
         done()
       })
 
+      tooltip.show()
+    })
+
+    it('should remove `title` attribute if exists', done => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      tooltipEl.addEventListener('shown.bs.tooltip', () => {
+        expect(tooltipEl.getAttribute('title')).toBeNull()
+        done()
+      })
       tooltip.show()
     })
   })
