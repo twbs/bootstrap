@@ -4,8 +4,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
-import { getjQuery, getJqueryInterfaceForPlugin } from './jquery-stuff'
-
 const MAX_UID = 1_000_000
 const MILLISECONDS_MULTIPLIER = 1000
 const TRANSITION_END = 'transitionend'
@@ -225,24 +223,6 @@ const onDOMContentLoaded = callback => {
 
 const isRTL = () => document.documentElement.dir === 'rtl'
 
-const defineJQueryPlugin = plugin => {
-  onDOMContentLoaded(() => {
-    const $ = getjQuery()
-    const callback = getJqueryInterfaceForPlugin(plugin)
-    /* istanbul ignore if */
-    if ($) {
-      const name = plugin.NAME
-      const JQUERY_NO_CONFLICT = $.fn[name]
-      $.fn[name] = callback
-      $.fn[name].Constructor = plugin
-      $.fn[name].noConflict = () => {
-        $.fn[name] = JQUERY_NO_CONFLICT
-        return callback
-      }
-    }
-  })
-}
-
 const execute = callback => {
   if (typeof callback === 'function') {
     callback()
@@ -307,7 +287,6 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
 }
 
 export {
-  defineJQueryPlugin,
   execute,
   executeAfterTransition,
   findShadowRoot,

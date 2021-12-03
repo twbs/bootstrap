@@ -6,7 +6,6 @@
  */
 
 import {
-  defineJQueryPlugin,
   getElementFromSelector,
   getNextActiveElement,
   isRTL,
@@ -19,6 +18,7 @@ import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
 import Swipe from './util/swipe'
 import BaseComponent from './base-component'
+import { defineJQueryPlugin } from './util/jquery-stuff'
 
 /**
  * Constants

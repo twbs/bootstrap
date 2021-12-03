@@ -4,6 +4,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
+import { onDOMContentLoaded } from './index'
 
 const getjQuery = () => {
   const { jQuery } = window
@@ -13,6 +14,24 @@ const getjQuery = () => {
   }
 
   return null
+}
+
+const defineJQueryPlugin = plugin => {
+  onDOMContentLoaded(() => {
+    const $ = getjQuery()
+    /* istanbul ignore if */
+    if ($) {
+      const callback = getJqueryInterfaceForPlugin(plugin)
+      const name = plugin.NAME
+      const JQUERY_NO_CONFLICT = $.fn[name]
+      $.fn[name] = callback
+      $.fn[name].Constructor = plugin
+      $.fn[name].noConflict = () => {
+        $.fn[name] = JQUERY_NO_CONFLICT
+        return callback
+      }
+    }
+  })
 }
 
 const defaultJQueryInterface = plugin => {
@@ -36,6 +55,7 @@ const defaultJQueryInterface = plugin => {
 const getJqueryInterfaceForPlugin = plugin => plugin.jQueryInterface || defaultJQueryInterface(plugin)
 
 export {
+  defineJQueryPlugin,
   getjQuery,
   getJqueryInterfaceForPlugin
 }

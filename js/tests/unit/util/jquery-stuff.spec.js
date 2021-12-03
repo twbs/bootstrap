@@ -1,4 +1,5 @@
 import * as jQueryUtil from '../../../src/util/jquery-stuff'
+import { noop } from '../../../src/util/index'
 
 describe('Jquery Stuff', () => {
   const fakejQuery = { fn: {} }
@@ -15,7 +16,9 @@ describe('Jquery Stuff', () => {
   })
 
   describe('getjQuery', () => {
-    const fakejQuery = { trigger() {} }
+    const fakejQuery = {
+      trigger: noop
+    }
 
     beforeEach(() => {
       Object.defineProperty(window, 'jQuery', {
@@ -47,20 +50,32 @@ describe('Jquery Stuff', () => {
     })
   })
 
+  describe('defineJQueryPlugin', () => {
+    it('should define a plugin on the jQuery instance', () => {
+      const pluginMock = noop
+      pluginMock.NAME = 'test'
+      pluginMock.jQueryInterface = noop
+
+      jQueryUtil.defineJQueryPlugin(pluginMock)
+      expect(fakejQuery.fn.test).toEqual(pluginMock.jQueryInterface)
+      expect(fakejQuery.fn.test.Constructor).toEqual(pluginMock)
+      expect(fakejQuery.fn.test.noConflict).toEqual(jasmine.any(Function))
+    })
+  })
+
   describe('getJqueryInterfaceForPlugin', () => {
     it('should return a plugin jQueryInterface if exists', () => {
-      const pluginMock = function () {}
+      const pluginMock = noop
       pluginMock.NAME = 'test'
-      pluginMock.jQueryInterface = function () {}
+      pluginMock.jQueryInterface = noop
 
       expect(jQueryUtil.getJqueryInterfaceForPlugin(pluginMock)).toEqual(pluginMock.jQueryInterface)
     })
 
     it('should return the default `defaultJQueryInterface`, if plugin jQueryInterface doesn\'t exists', () => {
-      const pluginMock = function () {}
+      const pluginMock = noop
       pluginMock.NAME = 'test'
 
-      expect(jQueryUtil.getJqueryInterfaceForPlugin(pluginMock)).not.toEqual(pluginMock.jQueryInterface)
       expect(jQueryUtil.getJqueryInterfaceForPlugin(pluginMock)).toEqual(jasmine.any(Function))
     })
   })
