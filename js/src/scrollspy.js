@@ -141,31 +141,35 @@ class ScrollSpy extends BaseComponent {
     this._activeTarget = target
 
     target.classList.add(CLASS_NAME_ACTIVE)
-
-    // Activate dropdown parents
-    if (target.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
-      SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE, target.closest(SELECTOR_DROPDOWN))
-        .classList.add(CLASS_NAME_ACTIVE)
-    } else {
-      for (const listGroup of SelectorEngine.parents(target, SELECTOR_NAV_LIST_GROUP)) {
-        // Set triggered links parents as active
-        // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
-        for (const item of SelectorEngine.prev(listGroup, `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`)) {
-          item.classList.add(CLASS_NAME_ACTIVE)
-        }
-
-        // Handle special case when .nav-link is inside .nav-item
-        for (const navItem of SelectorEngine.prev(listGroup, SELECTOR_NAV_ITEMS)) {
-          for (const item of SelectorEngine.children(navItem, SELECTOR_NAV_LINKS)) {
-            item.classList.add(CLASS_NAME_ACTIVE)
-          }
-        }
-      }
-    }
+    this._activateParents(target)
 
     EventHandler.trigger(this._element, EVENT_ACTIVATE, {
       relatedTarget: target
     })
+  }
+
+  _activateParents(target) {
+    // Activate dropdown parents
+    if (target.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
+      SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE, target.closest(SELECTOR_DROPDOWN))
+        .classList.add(CLASS_NAME_ACTIVE)
+      return
+    }
+
+    for (const listGroup of SelectorEngine.parents(target, SELECTOR_NAV_LIST_GROUP)) {
+      // Set triggered links parents as active
+      // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
+      for (const item of SelectorEngine.prev(listGroup, `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`)) {
+        item.classList.add(CLASS_NAME_ACTIVE)
+      }
+
+      // Handle special case when .nav-link is inside .nav-item
+      for (const navItem of SelectorEngine.prev(listGroup, SELECTOR_NAV_ITEMS)) {
+        for (const item of SelectorEngine.children(navItem, SELECTOR_NAV_LINKS)) {
+          item.classList.add(CLASS_NAME_ACTIVE)
+        }
+      }
+    }
   }
 
   _clearActiveClass(parent) {
