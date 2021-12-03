@@ -4,7 +4,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
-import { getJqueryInterfaceForPlugin } from './jquery-stuff'
+import { getjQuery, getJqueryInterfaceForPlugin } from './jquery-stuff'
 
 const MAX_UID = 1_000_000
 const MILLISECONDS_MULTIPLIER = 1000
@@ -204,14 +204,6 @@ const reflow = element => {
   element.offsetHeight // eslint-disable-line no-unused-expressions
 }
 
-const getjQuery = () => {
-  if (window.jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
-    return window.jQuery
-  }
-
-  return null
-}
-
 const DOMContentLoadedCallbacks = []
 
 const onDOMContentLoaded = callback => {
@@ -321,7 +313,6 @@ export {
   findShadowRoot,
   getElement,
   getElementFromSelector,
-  getjQuery,
   getNextActiveElement,
   getSelectorFromElement,
   getTransitionDurationFromElement,

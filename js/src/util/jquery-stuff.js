@@ -5,6 +5,16 @@
  * --------------------------------------------------------------------------
  */
 
+const getjQuery = () => {
+  const { jQuery } = window
+
+  if (jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
+    return jQuery
+  }
+
+  return null
+}
+
 const defaultJQueryInterface = plugin => {
   return function (config) {
     return this.each(function () {
@@ -26,5 +36,6 @@ const defaultJQueryInterface = plugin => {
 const getJqueryInterfaceForPlugin = plugin => plugin.jQueryInterface || defaultJQueryInterface(plugin)
 
 export {
+  getjQuery,
   getJqueryInterfaceForPlugin
 }
