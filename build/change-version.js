@@ -26,7 +26,7 @@ const GLOBBY_OPTIONS = {
 }
 
 // Avoid modifying documentation content and dependencies in package*.json files matching the newVersion
-const EXCLUDE_FILES_PATTERN = '^(site/content/docs/|package.json|package-lock.json)'
+const EXCLUDE_FILES_PATTERN = /^(site\/content\/docs\/|package\.json|package-lock\.json)/
 
 // Blame TC39... https://github.com/benjamingr/RegExp.escape/issues/37
 function regExpQuote(string) {
@@ -79,9 +79,10 @@ async function main(args) {
   replaceRecursively('package-lock.json', oldVersionJSONString, newVersionJSONString, true)
 
   try {
-    const files = (await globby(GLOB, GLOBBY_OPTIONS)).filter(file => !(new RegExp(EXCLUDE_FILES_PATTERN).test(file)))
+    const allFiles = await globby(GLOB, GLOBBY_OPTIONS)
+    const filteredFiles = allFiles.filter(file => !EXCLUDE_FILES_PATTERN.test(file))
 
-    await Promise.all(files.map(file => replaceRecursively(file, oldVersion, newVersion)))
+    await Promise.all(filteredFiles.map(file => replaceRecursively(file, oldVersion, newVersion)))
   } catch (error) {
     console.error(error)
     process.exit(1)
