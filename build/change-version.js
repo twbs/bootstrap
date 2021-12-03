@@ -72,15 +72,14 @@ async function main(args) {
   // Strip any leading `v` from arguments because otherwise we will end up with duplicate `v`s
   [oldVersion, newVersion] = [oldVersion, newVersion].map(arg => arg.startsWith('v') ? arg.slice(1) : arg)
 
-  // Modify specifically package*.json files to avoid modifying other dependencies versions
-  const oldVersionJSONString = '"version": "' + oldVersion + '"'
-  const newVersionJSONString = '"version": "' + newVersion + '"'
-  replaceRecursively('package.json', oldVersionJSONString, newVersionJSONString, true)
-  replaceRecursively('package-lock.json', oldVersionJSONString, newVersionJSONString, true)
-
   try {
     const allFiles = await globby(GLOB, GLOBBY_OPTIONS)
     const filteredFiles = allFiles.filter(file => !EXCLUDE_FILES_PATTERN.test(file))
+
+    // Modify specifically package*.json files to avoid modifying other dependencies versions
+    const oldVersionJSONString = `"version": "${oldVersion}"`
+    const newVersionJSONString = `"version": "${newVersion}"`
+    await Promise.all(['package.json', 'package-lock.json'].map(file => replaceRecursively(file, oldVersionJSONString, newVersionJSONString, true)))
 
     await Promise.all(filteredFiles.map(file => replaceRecursively(file, oldVersion, newVersion)))
   } catch (error) {
