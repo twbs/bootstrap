@@ -42,7 +42,7 @@ async function replaceRecursively(file, oldVersion, newVersion, onlyFirstMatch =
 
   const newString = onlyFirstMatch ?
     originalString.replace(oldVersion, newVersion) :
-    originalString.replace(new RegExp(regExpQuote(oldVersion), 'g', regExpQuoteReplacement(newVersion)))
+    originalString.replace(new RegExp(regExpQuote(oldVersion), 'g'), regExpQuoteReplacement(newVersion))
 
   // No need to move any further if the strings are identical
   if (originalString === newString) {
