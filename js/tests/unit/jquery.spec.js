@@ -12,11 +12,25 @@ import ScrollSpy from '../../src/scrollspy'
 import Tab from '../../src/tab'
 import Toast from '../../src/toast'
 import Tooltip from '../../src/tooltip'
-import { getFixture, clearFixture } from '../helpers/fixture'
+import { clearFixture, getFixture } from '../helpers/fixture'
 import { getJqueryInterfaceForPlugin } from '../../src/util/jquery-stuff'
 
 describe('jQuery', () => {
   let fixtureEl
+  const plugins = [
+    Alert,
+    Button,
+    Carousel,
+    Collapse,
+    Dropdown,
+    Modal,
+    Offcanvas,
+    Popover,
+    ScrollSpy,
+    Tab,
+    Toast,
+    Tooltip
+  ]
 
   beforeAll(() => {
     fixtureEl = getFixture()
@@ -27,18 +41,22 @@ describe('jQuery', () => {
   })
 
   it('should add all plugins in jQuery', () => {
-    expect(getJqueryInterfaceForPlugin(Alert)).toEqual(jQuery.fn.alert)
-    expect(getJqueryInterfaceForPlugin(Button)).toEqual(jQuery.fn.button)
-    expect(getJqueryInterfaceForPlugin(Carousel)).toEqual(jQuery.fn.carousel)
-    expect(getJqueryInterfaceForPlugin(Collapse)).toEqual(jQuery.fn.collapse)
-    expect(getJqueryInterfaceForPlugin(Dropdown)).toEqual(jQuery.fn.dropdown)
-    expect(getJqueryInterfaceForPlugin(Modal)).toEqual(jQuery.fn.modal)
-    expect(getJqueryInterfaceForPlugin(Offcanvas)).toEqual(jQuery.fn.offcanvas)
-    expect(getJqueryInterfaceForPlugin(Popover)).toEqual(jQuery.fn.popover)
-    expect(getJqueryInterfaceForPlugin(ScrollSpy)).toEqual(jQuery.fn.scrollspy)
-    expect(getJqueryInterfaceForPlugin(Tab)).toEqual(jQuery.fn.tab)
-    expect(getJqueryInterfaceForPlugin(Toast)).toEqual(jQuery.fn.toast)
-    expect(getJqueryInterfaceForPlugin(Tooltip)).toEqual(jQuery.fn.tooltip)
+    for (const plugin of plugins) {
+      getJqueryInterfaceForPlugin(plugin)
+    }
+
+    expect(jQuery.fn.alert).toBeDefined()
+    expect(jQuery.fn.button).toBeDefined()
+    expect(jQuery.fn.carousel).toBeDefined()
+    expect(jQuery.fn.collapse).toBeDefined()
+    expect(jQuery.fn.dropdown).toBeDefined()
+    expect(jQuery.fn.modal).toBeDefined()
+    expect(jQuery.fn.offcanvas).toBeDefined()
+    expect(jQuery.fn.popover).toBeDefined()
+    expect(jQuery.fn.scrollspy).toBeDefined()
+    expect(jQuery.fn.tab).toBeDefined()
+    expect(jQuery.fn.toast).toBeDefined()
+    expect(jQuery.fn.tooltip).toBeDefined()
   })
 
   it('should use jQuery event system', () => {
