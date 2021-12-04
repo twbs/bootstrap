@@ -14,8 +14,8 @@
   }
 
   $utilities-map: () !default;
-  @each $key, $utility in $utilities {
 
+  @each $key, $utility in $utilities {
     @if type-of($utility) == "map" {
       $properties: map-get($utility, property);
       // Some utilities set the value on more than one property.
