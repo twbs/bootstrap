@@ -35,6 +35,7 @@
 
 .btn-group {
   // Prevent double borders when buttons are next to each other
+  border-radius: $btn-border-radius;
   > .btn:not(:first-child),
   > .btn-group:not(:first-child) {
     margin-left: -$btn-border-width;
