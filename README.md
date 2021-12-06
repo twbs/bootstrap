@@ -7,7 +7,7 @@
 <h3 align="center">Bootstrap</h3>
 
 <p align="center">
-  Sleek, intuitive, and powerful front-end framework for faster and easier web development.
+  Sleek, intuitive, and powerful front-end framework for faster and easier web development
   <br>
   <a href="https://getbootstrap.com/docs/5.1/"><strong>Explore Bootstrap docs »</strong></a>
   <br>
