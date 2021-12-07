@@ -35,7 +35,7 @@ Currently we're aiming for at least 90% test coverage for our code. To ensure yo
 describe('getInstance', () => {
   it('should return null if there is no instance', () => {
     // Make assertion
-    expect(Tab.getInstance(fixtureEl)).toEqual(null)
+    expect(Tab.getInstance(fixtureEl)).toBeNull()
   })
 
   it('should return this instance', () => {

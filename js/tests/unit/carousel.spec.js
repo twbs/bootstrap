@@ -143,7 +143,7 @@ describe('Carousel', () => {
 
       carouselEl.addEventListener('keydown', event => {
         expect(carousel._keydown).toHaveBeenCalled()
-        expect(event.defaultPrevented).toEqual(false)
+        expect(event.defaultPrevented).toBeFalse()
         done()
       })
 
@@ -235,9 +235,7 @@ describe('Carousel', () => {
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
       const carousel = new Carousel(carouselEl, { wrap: true })
-      const getActiveId = () => {
-        return carouselEl.querySelector('.carousel-item.active').getAttribute('id')
-      }
+      const getActiveId = () => carouselEl.querySelector('.carousel-item.active').getAttribute('id')
 
       carouselEl.addEventListener('slid.bs.carousel', event => {
         const activeId = getActiveId()
@@ -285,7 +283,7 @@ describe('Carousel', () => {
       carousel.prev()
 
       setTimeout(() => {
-        expect(firstElement.classList.contains('active')).toEqual(true)
+        expect(firstElement).toHaveClass('active')
         done()
       }, 10)
     })
@@ -368,7 +366,7 @@ describe('Carousel', () => {
       spyOn(carousel, '_slide').and.callThrough()
 
       carouselEl.addEventListener('slid.bs.carousel', event => {
-        expect(item.classList.contains('active')).toEqual(true)
+        expect(item).toHaveClass('active')
         expect(carousel._slide).toHaveBeenCalledWith('right')
         expect(event.direction).toEqual('right')
         stylesCarousel.remove()
@@ -413,7 +411,7 @@ describe('Carousel', () => {
       spyOn(carousel, '_slide').and.callThrough()
 
       carouselEl.addEventListener('slid.bs.carousel', event => {
-        expect(item.classList.contains('active')).toEqual(false)
+        expect(item).not.toHaveClass('active')
         expect(carousel._slide).toHaveBeenCalledWith('left')
         expect(event.direction).toEqual('left')
         stylesCarousel.remove()
@@ -453,7 +451,7 @@ describe('Carousel', () => {
       spyOn(carousel, '_slide').and.callThrough()
 
       carouselEl.addEventListener('slid.bs.carousel', event => {
-        expect(item.classList.contains('active')).toEqual(true)
+        expect(item).toHaveClass('active')
         expect(carousel._slide).toHaveBeenCalledWith('right')
         expect(event.direction).toEqual('right')
         delete document.documentElement.ontouchstart
@@ -492,7 +490,7 @@ describe('Carousel', () => {
       spyOn(carousel, '_slide').and.callThrough()
 
       carouselEl.addEventListener('slid.bs.carousel', event => {
-        expect(item.classList.contains('active')).toEqual(false)
+        expect(item).not.toHaveClass('active')
         expect(carousel._slide).toHaveBeenCalledWith('left')
         expect(event.direction).toEqual('left')
         delete document.documentElement.ontouchstart
@@ -632,7 +630,7 @@ describe('Carousel', () => {
 
       const doneTest = () => {
         setTimeout(() => {
-          expect(slidEvent).toEqual(false)
+          expect(slidEvent).toBeFalse()
           done()
         }, 20)
       }
@@ -665,7 +663,7 @@ describe('Carousel', () => {
 
       const onSlide = event => {
         expect(event.direction).toEqual('left')
-        expect(event.relatedTarget.classList.contains('carousel-item')).toEqual(true)
+        expect(event.relatedTarget).toHaveClass('carousel-item')
         expect(event.from).toEqual(0)
         expect(event.to).toEqual(1)
 
@@ -700,7 +698,7 @@ describe('Carousel', () => {
 
       const onSlid = event => {
         expect(event.direction).toEqual('left')
-        expect(event.relatedTarget.classList.contains('carousel-item')).toEqual(true)
+        expect(event.relatedTarget).toHaveClass('carousel-item')
         expect(event.from).toEqual(0)
         expect(event.to).toEqual(1)
 
@@ -761,9 +759,9 @@ describe('Carousel', () => {
       const carousel = new Carousel(carouselEl)
 
       carouselEl.addEventListener('slid.bs.carousel', () => {
-        expect(firstIndicator.classList.contains('active')).toEqual(false)
-        expect(firstIndicator.hasAttribute('aria-current')).toEqual(false)
-        expect(secondIndicator.classList.contains('active')).toEqual(true)
+        expect(firstIndicator).not.toHaveClass('active')
+        expect(firstIndicator.hasAttribute('aria-current')).toBeFalse()
+        expect(secondIndicator).toHaveClass('active')
         expect(secondIndicator.getAttribute('aria-current')).toEqual('true')
         done()
       })
@@ -859,7 +857,7 @@ describe('Carousel', () => {
 
       expect(carousel.cycle).toHaveBeenCalledWith(true)
       expect(window.clearInterval).toHaveBeenCalled()
-      expect(carousel._isPaused).toEqual(true)
+      expect(carousel._isPaused).toBeTrue()
     })
 
     it('should not call cycle if nothing is in transition', () => {
@@ -885,7 +883,7 @@ describe('Carousel', () => {
 
       expect(carousel.cycle).not.toHaveBeenCalled()
       expect(window.clearInterval).toHaveBeenCalled()
-      expect(carousel._isPaused).toEqual(true)
+      expect(carousel._isPaused).toBeTrue()
     })
 
     it('should not set is paused at true if an event is passed', () => {
@@ -910,7 +908,7 @@ describe('Carousel', () => {
       carousel.pause(event)
 
       expect(window.clearInterval).toHaveBeenCalled()
-      expect(carousel._isPaused).toEqual(false)
+      expect(carousel._isPaused).toBeFalse()
     })
   })
 
@@ -1153,6 +1151,7 @@ describe('Carousel', () => {
       })
     })
   })
+
   describe('rtl function', () => {
     it('"_directionToOrder" and "_orderToDirection" must return the right results', () => {
       fixtureEl.innerHTML = '<div></div>'
@@ -1175,7 +1174,7 @@ describe('Carousel', () => {
 
       const carouselEl = fixtureEl.querySelector('div')
       const carousel = new Carousel(carouselEl, {})
-      expect(isRTL()).toEqual(true, 'rtl has to be true')
+      expect(isRTL()).toBeTrue()
 
       expect(carousel._directionToOrder('left')).toEqual('prev')
       expect(carousel._directionToOrder('prev')).toEqual('prev')
@@ -1292,7 +1291,7 @@ describe('Carousel', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Carousel.getInstance(div)).toEqual(null)
+      expect(Carousel.getInstance(div)).toBeNull()
     })
   })
 
@@ -1313,7 +1312,7 @@ describe('Carousel', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Carousel.getInstance(div)).toEqual(null)
+      expect(Carousel.getInstance(div)).toBeNull()
       expect(Carousel.getOrCreateInstance(div)).toBeInstanceOf(Carousel)
     })
 
@@ -1322,7 +1321,7 @@ describe('Carousel', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Carousel.getInstance(div)).toEqual(null)
+      expect(Carousel.getInstance(div)).toBeNull()
       const carousel = Carousel.getOrCreateInstance(div, {
         interval: 1
       })
@@ -1431,7 +1430,7 @@ describe('Carousel', () => {
         '    <div class="carousel-item">item 3</div>',
         '  </div>',
         '  <button class="carousel-control-prev" data-bs-target="#myCarousel" type="button" data-bs-slide="prev"></button>',
-        '  <button id="next" class="carousel-control-next" data-bs-target="#myCarousel" type="button" data-bs-slide="next"></div>',
+        '  <button id="next" class="carousel-control-next" data-bs-target="#myCarousel" type="button" data-bs-slide="next"></button>',
         '</div>'
       ].join('')
 
@@ -1441,7 +1440,7 @@ describe('Carousel', () => {
       next.click()
 
       setTimeout(() => {
-        expect(item2.classList.contains('active')).toEqual(true)
+        expect(item2).toHaveClass('active')
         done()
       }, 10)
     })
@@ -1454,8 +1453,8 @@ describe('Carousel', () => {
         '    <div id="item2" class="carousel-item">item 2</div>',
         '    <div class="carousel-item">item 3</div>',
         '  </div>',
-        '  <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev"></button>',
-        '  <a id="next" class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next"></div>',
+        '  <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev"></a>',
+        '  <a id="next" class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next"></a>',
         '</div>'
       ].join('')
 
@@ -1465,7 +1464,7 @@ describe('Carousel', () => {
       next.click()
 
       setTimeout(() => {
-        expect(item2.classList.contains('active')).toEqual(true)
+        expect(item2).toHaveClass('active')
         done()
       }, 10)
     })
@@ -1488,7 +1487,7 @@ describe('Carousel', () => {
       next.click()
 
       setTimeout(() => {
-        expect(item2.classList.contains('active')).toEqual(true)
+        expect(item2).toHaveClass('active')
         done()
       }, 10)
     })
@@ -1521,8 +1520,8 @@ describe('Carousel', () => {
         '    <div id="item2" class="carousel-item">item 2</div>',
         '    <div class="carousel-item">item 3</div>',
         '  </div>',
-        '  <button class="carousel-control-prev" data-bs-target="#myCarousel" type="button" data-bs-slide="prev"></div>',
-        '  <button id="next" class="carousel-control-next" data-bs-target="#myCarousel" type="button" data-bs-slide="next"></div>',
+        '  <button class="carousel-control-prev" data-bs-target="#myCarousel" type="button" data-bs-slide="prev"></button>',
+        '  <button id="next" class="carousel-control-next" data-bs-target="#myCarousel" type="button" data-bs-slide="next"></button>',
         '</div>'
       ].join('')
 

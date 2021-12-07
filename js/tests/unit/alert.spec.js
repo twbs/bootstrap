@@ -25,7 +25,7 @@ describe('Alert', () => {
   })
 
   it('should return version', () => {
-    expect(typeof Alert.VERSION).toEqual('string')
+    expect(Alert.VERSION).toEqual(jasmine.any(String))
   })
 
   describe('DATA_KEY', () => {
@@ -45,7 +45,7 @@ describe('Alert', () => {
       const button = document.querySelector('button')
 
       button.click()
-      expect(document.querySelectorAll('.alert').length).toEqual(0)
+      expect(document.querySelectorAll('.alert')).toHaveSize(0)
     })
 
     it('should close an alert without instantiating it manually with the parent selector', () => {
@@ -58,7 +58,7 @@ describe('Alert', () => {
       const button = document.querySelector('button')
 
       button.click()
-      expect(document.querySelectorAll('.alert').length).toEqual(0)
+      expect(document.querySelectorAll('.alert')).toHaveSize(0)
     })
   })
 
@@ -71,7 +71,7 @@ describe('Alert', () => {
       const alert = new Alert(alertEl)
 
       alertEl.addEventListener('closed.bs.alert', () => {
-        expect(document.querySelectorAll('.alert').length).toEqual(0)
+        expect(document.querySelectorAll('.alert')).toHaveSize(0)
         expect(spy).not.toHaveBeenCalled()
         done()
       })
@@ -90,7 +90,7 @@ describe('Alert', () => {
       })
 
       alertEl.addEventListener('closed.bs.alert', () => {
-        expect(document.querySelectorAll('.alert').length).toEqual(0)
+        expect(document.querySelectorAll('.alert')).toHaveSize(0)
         done()
       })
 
@@ -179,6 +179,34 @@ describe('Alert', () => {
       expect(Alert.getInstance(alertEl)).not.toBeNull()
       expect(fixtureEl.querySelector('.alert')).not.toBeNull()
     })
+
+    it('should throw an error on undefined method', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const action = 'undefinedMethod'
+
+      jQueryMock.fn.alert = Alert.jQueryInterface
+      jQueryMock.elements = [div]
+
+      expect(() => {
+        jQueryMock.fn.alert.call(jQueryMock, action)
+      }).toThrowError(TypeError, `No method named "${action}"`)
+    })
+
+    it('should throw an error on protected method', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const action = '_getConfig'
+
+      jQueryMock.fn.alert = Alert.jQueryInterface
+      jQueryMock.elements = [div]
+
+      expect(() => {
+        jQueryMock.fn.alert.call(jQueryMock, action)
+      }).toThrowError(TypeError, `No method named "${action}"`)
+    })
   })
 
   describe('getInstance', () => {
@@ -197,7 +225,7 @@ describe('Alert', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Alert.getInstance(div)).toEqual(null)
+      expect(Alert.getInstance(div)).toBeNull()
     })
   })
 
@@ -218,7 +246,7 @@ describe('Alert', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Alert.getInstance(div)).toEqual(null)
+      expect(Alert.getInstance(div)).toBeNull()
       expect(Alert.getOrCreateInstance(div)).toBeInstanceOf(Alert)
     })
   })

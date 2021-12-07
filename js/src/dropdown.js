@@ -33,13 +33,10 @@ const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
 const ESCAPE_KEY = 'Escape'
-const SPACE_KEY = 'Space'
 const TAB_KEY = 'Tab'
 const ARROW_UP_KEY = 'ArrowUp'
 const ARROW_DOWN_KEY = 'ArrowDown'
 const RIGHT_MOUSE_BUTTON = 2 // MouseEvent.button value for the secondary button, usually the right button
-
-const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEY}|${ARROW_DOWN_KEY}|${ESCAPE_KEY}`)
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
@@ -53,10 +50,10 @@ const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_DROPUP = 'dropup'
 const CLASS_NAME_DROPEND = 'dropend'
 const CLASS_NAME_DROPSTART = 'dropstart'
-const CLASS_NAME_NAVBAR = 'navbar'
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]'
 const SELECTOR_MENU = '.dropdown-menu'
+const SELECTOR_NAVBAR = '.navbar'
 const SELECTOR_NAVBAR_NAV = '.navbar-nav'
 const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
 
@@ -132,13 +129,9 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    const parent = Dropdown.getParentFromElement(this._element)
-    // Totally disable Popper for Dropdowns in Navbar
-    if (this._inNavbar) {
-      Manipulator.setDataAttribute(this._menu, 'popper', 'none')
-    } else {
-      this._createPopper(parent)
-    }
+    const parent = getElementFromSelector(this._element) || this._element.parentNode
+
+    this._createPopper(parent)
 
     // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
@@ -246,13 +239,7 @@ class Dropdown extends BaseComponent {
     }
 
     const popperConfig = this._getPopperConfig()
-    const isDisplayStatic = popperConfig.modifiers.find(modifier => modifier.name === 'applyStyles' && modifier.enabled === false)
-
     this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
-
-    if (isDisplayStatic) {
-      Manipulator.setDataAttribute(this._menu, 'popper', 'static')
-    }
   }
 
   _isShown(element = this._element) {
@@ -285,7 +272,7 @@ class Dropdown extends BaseComponent {
   }
 
   _detectNavbar() {
-    return this._element.closest(`.${CLASS_NAME_NAVBAR}`) !== null
+    return this._element.closest(SELECTOR_NAVBAR) !== null
   }
 
   _getOffset() {
@@ -319,8 +306,9 @@ class Dropdown extends BaseComponent {
       }]
     }
 
-    // Disable Popper if we have a static display
-    if (this._config.display === 'static') {
+    // Disable Popper if we have a static display or Dropdown is in Navbar
+    if (this._inNavbar || this._config.display === 'static') {
+      Manipulator.setDataAttribute(this._menu, 'popper', 'static') // todo:v6 remove
       defaultBsPopperConfig.modifiers = [{
         name: 'applyStyles',
         enabled: false
@@ -363,7 +351,7 @@ class Dropdown extends BaseComponent {
   }
 
   static clearMenus(event) {
-    if (event && (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY))) {
+    if (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY)) {
       return
     }
 
@@ -383,54 +371,54 @@ class Dropdown extends BaseComponent {
         relatedTarget: context._element
       }
 
-      if (event) {
-        const composedPath = event.composedPath()
-        const isMenuTarget = composedPath.includes(context._menu)
-        if (
-          composedPath.includes(context._element) ||
-          (context._config.autoClose === 'inside' && !isMenuTarget) ||
-          (context._config.autoClose === 'outside' && isMenuTarget)
-        ) {
-          continue
-        }
+      const composedPath = event.composedPath()
+      const isMenuTarget = composedPath.includes(context._menu)
+      if (
+        composedPath.includes(context._element) ||
+        (context._config.autoClose === 'inside' && !isMenuTarget) ||
+        (context._config.autoClose === 'outside' && isMenuTarget)
+      ) {
+        continue
+      }
 
-        // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
-        if (context._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) || /input|select|option|textarea|form/i.test(event.target.tagName))) {
-          continue
-        }
+      // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
+      if (context._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) || /input|select|option|textarea|form/i.test(event.target.tagName))) {
+        continue
+      }
 
-        if (event.type === 'click') {
-          relatedTarget.clickEvent = event
-        }
+      if (event.type === 'click') {
+        relatedTarget.clickEvent = event
       }
 
       context._completeHide(relatedTarget)
     }
   }
 
-  static getParentFromElement(element) {
-    return getElementFromSelector(element) || element.parentNode
-  }
-
   static dataApiKeydownHandler(event) {
     // If not input/textarea:
-    //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
-    // If input/textarea:
-    //  - If space key => not a dropdown command
-    //  - If key is other than escape
-    //    - If key is not up or down => not a dropdown command
+    //  - And not a key in UP | DOWN | ESCAPE => not a dropdown command
+    // If input/textarea && If key is other than ESCAPE
+    //    - If key is not UP or DOWN => not a dropdown command
     //    - If trigger inside the menu => not a dropdown command
-    if (/input|textarea/i.test(event.target.tagName) ?
-      event.key === SPACE_KEY || (event.key !== ESCAPE_KEY &&
-      ((event.key !== ARROW_DOWN_KEY && event.key !== ARROW_UP_KEY) ||
-        event.target.closest(SELECTOR_MENU))) :
-      !REGEXP_KEYDOWN.test(event.key)) {
+
+    const isInput = /input|textarea/i.test(event.target.tagName)
+    const isEscapeEvent = event.key === ESCAPE_KEY
+    const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key)
+
+    if (!isInput && !(isUpOrDownEvent || isEscapeEvent)) {
       return
+    }
+
+    if (isInput && !isEscapeEvent) {
+      // eslint-disable-next-line unicorn/no-lonely-if
+      if (!isUpOrDownEvent || event.target.closest(SELECTOR_MENU)) {
+        return
+      }
     }
 
     const isActive = this.classList.contains(CLASS_NAME_SHOW)
 
-    if (!isActive && event.key === ESCAPE_KEY) {
+    if (!isActive && isEscapeEvent) {
       return
     }
 
@@ -444,22 +432,14 @@ class Dropdown extends BaseComponent {
     const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
     const instance = Dropdown.getOrCreateInstance(getToggleButton)
 
-    if (event.key === ESCAPE_KEY) {
+    if (isEscapeEvent) {
       instance.hide()
       return
     }
 
-    if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY) {
-      if (!isActive) {
-        instance.show()
-      }
-
+    if (isUpOrDownEvent) {
+      instance.show()
       instance._selectMenuItem(event)
-      return
-    }
-
-    if (!isActive || event.key === SPACE_KEY) {
-      Dropdown.clearMenus()
     }
   }
 }
