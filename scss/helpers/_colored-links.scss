@@ -1,21 +1,11 @@
 @each $color, $value in $theme-colors {
-  // --bs-link-color and --bs-link-color-hover variables
-  .links-#{$color} {
-    --#{$variable-prefix}link-color: #{$value};
-    @if $link-shade-percentage != 0 {
-      --#{$variable-prefix}link-hover-color: if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage));
-    } @else {
-      --#{$variable-prefix}link-hover-color: #{$value};
-    }
-  }
-
   .link-#{$color} {
-    color: $value;
+    --#{$variable-prefix}link-color: #{$value};
 
     @if $link-shade-percentage != 0 {
       &:hover,
       &:focus {
-        color: if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage));
+        --#{$variable-prefix}link-hover-color: #{if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage))};
       }
     }
   }
