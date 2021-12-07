@@ -2,19 +2,19 @@
 
 .popover {
   // scss-docs-start popover-css-vars
-  --#{$variable-prefix}popover-zindex: #{$zindex-popover};
-  --#{$variable-prefix}popover-max-width: #{$popover-max-width};
+  // --#{$variable-prefix}popover-zindex: #{$zindex-popover};
+  // --#{$variable-prefix}popover-max-width: #{$popover-max-width};
   @include rfs($popover-font-size, --#{$variable-prefix}popover-font-size);
   --#{$variable-prefix}popover-bg: #{$popover-bg};
   --#{$variable-prefix}popover-border-width: #{$popover-border-width};
   --#{$variable-prefix}popover-border-color: #{$popover-border-color};
-  --#{$variable-prefix}popover-border-radius: #{$popover-border-radius};
-  --#{$variable-prefix}popover-box-shadow: #{$popover-box-shadow};
-  --#{$variable-prefix}popover-header-padding: #{$popover-header-padding-y $popover-header-padding-x};
-  --#{$variable-prefix}popover-header-color: #{$popover-header-color};
+  // --#{$variable-prefix}popover-border-radius: #{$popover-border-radius};
+  // --#{$variable-prefix}popover-box-shadow: #{$popover-box-shadow}; // Unused?
+  // --#{$variable-prefix}popover-header-padding: #{$popover-header-padding-y $popover-header-padding-x};
+  // --#{$variable-prefix}popover-header-color: #{$popover-header-color};
   --#{$variable-prefix}popover-header-bg: #{$popover-header-bg};
-  --#{$variable-prefix}popover-body-padding: #{$popover-body-padding-y $popover-body-padding-x};
-  --#{$variable-prefix}popover-body-color: #{$popover-body-color};
+  // --#{$variable-prefix}popover-body-padding: #{$popover-body-padding-y $popover-body-padding-x};
+  // --#{$variable-prefix}popover-body-color: #{$popover-body-color};
   --#{$variable-prefix}popover-arrow-width: #{$popover-arrow-width};
   --#{$variable-prefix}popover-arrow-height: #{$popover-arrow-height};
   --#{$variable-prefix}popover-arrow-border: var(--#{$variable-prefix}popover-border-color);
@@ -23,9 +23,9 @@
   position: absolute;
   top: 0;
   left: 0 #{"/* rtl:ignore */"};
-  z-index: var(--#{$variable-prefix}popover-zindex);
+  z-index: var(--#{$variable-prefix}popover-zindex, #{$zindex-popover});
   display: block;
-  max-width: var(--#{$variable-prefix}popover-max-width);
+  max-width: var(--#{$variable-prefix}popover-max-width, #{$popover-max-width});
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
   @include reset-text();
@@ -35,8 +35,8 @@
   background-color: var(--#{$variable-prefix}popover-bg);
   background-clip: padding-box;
   border: var(--#{$variable-prefix}popover-border-width) solid var(--#{$variable-prefix}popover-border-color);
-  // border-radius: var(--#{$variable-prefix}popover-border-radius);
-  @include border-radius(var(--#{$variable-prefix}popover-border-radius));
+  // border-radius: var(--#{$variable-prefix}popover-border-radius, #{$popover-border-radius});
+  @include border-radius(var(--#{$variable-prefix}popover-border-radius, #{$popover-border-radius}));
   @include box-shadow(var(--#{$variable-prefix}popover-bg));
 
   .popover-arrow {
@@ -171,10 +171,10 @@
 
 // Offset the popover to account for the popover arrow
 .popover-header {
-  padding: var(--#{$variable-prefix}popover-header-padding);
+  padding: var(--#{$variable-prefix}popover-header-padding, #{$popover-header-padding-y $popover-header-padding-x});
   margin-bottom: 0; // Reset the default from Reboot
   @include font-size($font-size-base);
-  color: var(--#{$variable-prefix}popover-header-color);
+  color: var(--#{$variable-prefix}popover-header-color), #{$popover-header-color};
   background-color: var(--#{$variable-prefix}popover-header-bg);
   border-bottom: var(--#{$variable-prefix}popover-border-width) solid var(--#{$variable-prefix}popover-border-color);
   @include border-top-radius($popover-inner-border-radius);
@@ -185,6 +185,6 @@
 }
 
 .popover-body {
-  padding: var(--#{$variable-prefix}popover-body-padding);
-  color: var(--#{$variable-prefix}popover-body-color);
+  padding: var(--#{$variable-prefix}popover-body-padding, #{$popover-body-padding-y $popover-body-padding-x});
+  color: var(--#{$variable-prefix}popover-body-color, #{$popover-body-color});
 }
