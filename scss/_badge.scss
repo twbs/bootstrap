@@ -18,7 +18,7 @@
 
   // Empty badges collapse automatically
   &:empty {
-    display: none;
+    display: $badge-display-empty;
   }
 }
 
