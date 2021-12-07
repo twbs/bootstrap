@@ -373,6 +373,58 @@ describe('Offcanvas', () => {
 
       offCanvas.show()
     })
+
+    it('should add class slide-start', done => {
+      fixtureEl.innerHTML = [
+        '<div id="offcanvas" class="offcanvas offcanvas-start offcanvas-slide" data-bs-target="#slide-container"></div>',
+        '<div id="slide-container"></div>'
+      ].join('')
+      const offCanvasEl1 = document.querySelector('#offcanvas')
+      const offCanvasEl2 = document.querySelector('#slide-container')
+      const offcanvas1 = new Offcanvas(offCanvasEl1)
+      offcanvas1.show()
+      expect(offCanvasEl2.classList.contains('slide-start')).toBe(true)
+      done()
+    })
+
+    it('should add class slide-end', done => {
+      fixtureEl.innerHTML = [
+        '<div id="offcanvas" class="offcanvas offcanvas-end offcanvas-slide" data-bs-target="#slide-container"></div>',
+        '<div id="slide-container"></div>'
+      ].join('')
+      const offCanvasEl1 = document.querySelector('#offcanvas')
+      const offCanvasEl2 = document.querySelector('#slide-container')
+      const offcanvas1 = new Offcanvas(offCanvasEl1)
+      offcanvas1.show()
+      expect(offCanvasEl2.classList.contains('slide-end')).toBe(true)
+      done()
+    })
+
+    it('should add class slide-top', done => {
+      fixtureEl.innerHTML = [
+        '<div id="offcanvas" class="offcanvas offcanvas-top offcanvas-slide" data-bs-target="#slide-container"></div>',
+        '<div id="slide-container"></div>'
+      ].join('')
+      const offCanvasEl1 = document.querySelector('#offcanvas')
+      const offCanvasEl2 = document.querySelector('#slide-container')
+      const offcanvas1 = new Offcanvas(offCanvasEl1)
+      offcanvas1.show()
+      expect(offCanvasEl2.classList.contains('slide-top')).toBe(true)
+      done()
+    })
+
+    it('should add class slide-bottom', done => {
+      fixtureEl.innerHTML = [
+        '<div id="offcanvas" class="offcanvas offcanvas-bottom offcanvas-slide" data-bs-target="#slide-container"></div>',
+        '<div id="slide-container"></div>'
+      ].join('')
+      const offCanvasEl1 = document.querySelector('#offcanvas')
+      const offCanvasEl2 = document.querySelector('#slide-container')
+      const offcanvas1 = new Offcanvas(offCanvasEl1)
+      offcanvas1.show()
+      expect(offCanvasEl2.classList.contains('slide-bottom')).toBe(true)
+      done()
+    })
   })
 
   describe('hide', () => {
@@ -473,6 +525,62 @@ describe('Offcanvas', () => {
       })
 
       offCanvas.hide()
+    })
+
+    it('should add class slide-start', done => {
+      fixtureEl.innerHTML = [
+        '<div id="offcanvas" class="offcanvas offcanvas-start offcanvas-slide" data-bs-target="#slide-container"></div>',
+        '<div id="slide-container"></div>'
+      ].join('')
+      const offCanvasEl1 = document.querySelector('#offcanvas')
+      const offCanvasEl2 = document.querySelector('#slide-container')
+      const offcanvas1 = new Offcanvas(offCanvasEl1)
+      offcanvas1.show()
+      offcanvas1.hide()
+      expect(offCanvasEl2.classList.contains('slide-start')).toBe(false)
+      done()
+    })
+
+    it('should add class slide-end', done => {
+      fixtureEl.innerHTML = [
+        '<div id="offcanvas" class="offcanvas offcanvas-end offcanvas-slide" data-bs-target="#slide-container"></div>',
+        '<div id="slide-container"></div>'
+      ].join('')
+      const offCanvasEl1 = document.querySelector('#offcanvas')
+      const offCanvasEl2 = document.querySelector('#slide-container')
+      const offcanvas1 = new Offcanvas(offCanvasEl1)
+      offcanvas1.show()
+      offcanvas1.hide()
+      expect(offCanvasEl2.classList.contains('slide-end')).toBe(false)
+      done()
+    })
+
+    it('should add class slide-top', done => {
+      fixtureEl.innerHTML = [
+        '<div id="offcanvas" class="offcanvas offcanvas-top offcanvas-slide" data-bs-target="#slide-container"></div>',
+        '<div id="slide-container"></div>'
+      ].join('')
+      const offCanvasEl1 = document.querySelector('#offcanvas')
+      const offCanvasEl2 = document.querySelector('#slide-container')
+      const offcanvas1 = new Offcanvas(offCanvasEl1)
+      offcanvas1.show()
+      offcanvas1.hide()
+      expect(offCanvasEl2.classList.contains('slide-top')).toBe(false)
+      done()
+    })
+
+    it('should add class slide-bottom', done => {
+      fixtureEl.innerHTML = [
+        '<div id="offcanvas" class="offcanvas offcanvas-bottom offcanvas-slide" data-bs-target="#slide-container"></div>',
+        '<div id="slide-container"></div>'
+      ].join('')
+      const offCanvasEl1 = document.querySelector('#offcanvas')
+      const offCanvasEl2 = document.querySelector('#slide-container')
+      const offcanvas1 = new Offcanvas(offCanvasEl1)
+      offcanvas1.show()
+      offcanvas1.hide()
+      expect(offCanvasEl2.classList.contains('slide-bottom')).toBe(false)
+      done()
     })
   })
 
