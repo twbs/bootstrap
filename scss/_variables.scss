@@ -620,7 +620,7 @@ $blockquote-footer-font-size: $small-font-size !default;
 
 $hr-margin-y:                 $spacer !default;
 $hr-color:                    inherit !default;
-$hr-border-color:             currentColor !default;
+$hr-border-color:             null !default;
 $hr-border-width:             1px !default;
 $hr-opacity:                  .25 !default;
 
