@@ -45,7 +45,7 @@ describe('FocusTrap', () => {
       fixtureEl.innerHTML = [
         '<a href="#" id="outside">outside</a>',
         '<div id="focustrap" tabindex="-1">',
-        '   <a href="#" id="inside">inside</a>',
+        '  <a href="#" id="inside">inside</a>',
         '</div>'
       ].join('')
 
@@ -78,9 +78,9 @@ describe('FocusTrap', () => {
       fixtureEl.innerHTML = [
         '<a href="#" id="outside">outside</a>',
         '<div id="focustrap" tabindex="-1">',
-        '   <a href="#" id="first">first</a>',
-        '   <a href="#" id="inside">inside</a>',
-        '   <a href="#" id="last">last</a>',
+        '  <a href="#" id="first">first</a>',
+        '  <a href="#" id="inside">inside</a>',
+        '  <a href="#" id="last">last</a>',
         '</div>'
       ].join('')
 
@@ -115,9 +115,9 @@ describe('FocusTrap', () => {
       fixtureEl.innerHTML = [
         '<a href="#" id="outside">outside</a>',
         '<div id="focustrap" tabindex="-1">',
-        '   <a href="#" id="first">first</a>',
-        '   <a href="#" id="inside">inside</a>',
-        '   <a href="#" id="last">last</a>',
+        '  <a href="#" id="first">first</a>',
+        '  <a href="#" id="inside">inside</a>',
+        '  <a href="#" id="last">last</a>',
         '</div>'
       ].join('')
 
@@ -182,10 +182,10 @@ describe('FocusTrap', () => {
     it('should flag itself as no longer active', () => {
       const focustrap = new FocusTrap({ trapElement: fixtureEl })
       focustrap.activate()
-      expect(focustrap._isActive).toBe(true)
+      expect(focustrap._isActive).toBeTrue()
 
       focustrap.deactivate()
-      expect(focustrap._isActive).toBe(false)
+      expect(focustrap._isActive).toBeFalse()
     })
 
     it('should remove all event listeners', () => {

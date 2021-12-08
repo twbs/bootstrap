@@ -15,7 +15,6 @@ import Tooltip from './tooltip'
 const NAME = 'popover'
 const DATA_KEY = 'bs.popover'
 const EVENT_KEY = `.${DATA_KEY}`
-const CLASS_PREFIX = 'bs-popover'
 
 const SELECTOR_TITLE = '.popover-header'
 const SELECTOR_CONTENT = '.popover-body'
@@ -74,22 +73,20 @@ class Popover extends Tooltip {
   }
 
   // Overrides
-  isWithContent() {
-    return this.getTitle() || this._getContent()
-  }
-
-  setContent(tip) {
-    this._sanitizeAndSetContent(tip, this.getTitle(), SELECTOR_TITLE)
-    this._sanitizeAndSetContent(tip, this._getContent(), SELECTOR_CONTENT)
+  _isWithContent() {
+    return this._getTitle() || this._getContent()
   }
 
   // Private
-  _getContent() {
-    return this._resolvePossibleFunction(this._config.content)
+  _getContentForTemplate() {
+    return {
+      [SELECTOR_TITLE]: this._getTitle(),
+      [SELECTOR_CONTENT]: this._getContent()
+    }
   }
 
-  _getBasicClassPrefix() {
-    return CLASS_PREFIX
+  _getContent() {
+    return this._resolvePossibleFunction(this._config.content)
   }
 
   // Static
@@ -97,13 +94,15 @@ class Popover extends Tooltip {
     return this.each(function () {
       const data = Popover.getOrCreateInstance(this, config)
 
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-
-        data[config]()
+      if (typeof config !== 'string') {
+        return
       }
+
+      if (typeof data[config] === 'undefined') {
+        throw new TypeError(`No method named "${config}"`)
+      }
+
+      data[config]()
     })
   }
 }
