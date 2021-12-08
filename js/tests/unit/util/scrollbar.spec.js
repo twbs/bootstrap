@@ -137,6 +137,27 @@ describe('ScrollBar', () => {
       done()
     })
 
+    it('should remove padding & margin if not existed before adjustment', done => {
+      fixtureEl.innerHTML = [
+        '<div style="height: 110vh; width: 100%">',
+        '   <div class="fixed" id="fixed" style="width: 100vw;"></div>',
+        '   <div class="sticky-top" id="sticky" style=" width: 100vw;"></div>',
+        '</div>'
+      ].join('')
+      doc.style.overflowY = 'scroll'
+
+      const fixedEl = fixtureEl.querySelector('#fixed')
+      const stickyEl = fixtureEl.querySelector('#sticky')
+      const scrollBar = new ScrollBarHelper()
+
+      scrollBar.hide()
+      scrollBar.reset()
+
+      expect(fixedEl.getAttribute('style').includes('padding-right')).toBeFalse()
+      expect(stickyEl.getAttribute('style').includes('margin-right')).toBeFalse()
+      done()
+    })
+
     it('should adjust the inline margin and padding of sticky elements', done => {
       fixtureEl.innerHTML = [
         '<div style="height: 110vh">',
