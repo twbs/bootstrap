@@ -4,6 +4,7 @@
 // `background-color`.
 
 .badge {
+  position: relative;
   display: inline-block;
   padding: $badge-padding-y $badge-padding-x;
   @include font-size($badge-font-size);
@@ -19,6 +20,19 @@
   // Empty badges collapse automatically
   &:empty {
     display: none;
+  }
+}
+
+.badge-dismissable {
+  padding-right: $badge-dismissible-padding-r;
+
+  // Adjust close link position
+  .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: $stretched-link-z-index + 1;
+    padding: $badge-padding-y $badge-padding-x * .77;
   }
 }
 

@@ -6,6 +6,7 @@
  */
 
 import Alert from './src/alert'
+import Badge from './src/badge'
 import Button from './src/button'
 import Carousel from './src/carousel'
 import Collapse from './src/collapse'
@@ -20,6 +21,7 @@ import Tooltip from './src/tooltip'
 
 export default {
   Alert,
+  Badge,
   Button,
   Carousel,
   Collapse,

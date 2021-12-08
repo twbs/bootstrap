@@ -1356,6 +1356,7 @@ $badge-color:                       $white !default;
 $badge-padding-y:                   .35em !default;
 $badge-padding-x:                   .65em !default;
 $badge-border-radius:               $border-radius !default;
+$badge-dismissible-padding-r:       $badge-padding-x * 3 !default; // 3x covers width of x plus default padding on either side
 // scss-docs-end badge-variables
 
 

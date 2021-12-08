@@ -6,6 +6,7 @@
  */
 
 export { default as Alert } from './src/alert'
+export { default as Badge } from './src/badge'
 export { default as Button } from './src/button'
 export { default as Carousel } from './src/carousel'
 export { default as Collapse } from './src/collapse'

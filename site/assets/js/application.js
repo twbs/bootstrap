@@ -23,6 +23,11 @@
       })
     })
 
+  document.querySelectorAll('.badge')
+    .forEach(function (badge) {
+      new bootstrap.Badge(badge)
+    })
+
   document.querySelectorAll('[data-bs-toggle="popover"]')
     .forEach(function (popover) {
       new bootstrap.Popover(popover)
