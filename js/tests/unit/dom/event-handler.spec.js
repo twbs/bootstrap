@@ -86,7 +86,7 @@ describe('EventHandler', () => {
         '</div>',
         '<div class="sibling"></div>',
         '</div>'
-      ]
+      ].join('')
 
       const outer = fixtureEl.querySelector('.outer')
       const inner = fixtureEl.querySelector('.inner')
