@@ -1798,7 +1798,7 @@ describe('Dropdown', () => {
         '    <a class="dropdown-item" href="#">Some Item</a>',
         '  </div>',
         '</div>'
-      ]
+      ].join('')
 
       const toggle = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
 
