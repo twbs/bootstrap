@@ -1,5 +1,6 @@
 import Popover from '../../src/popover'
 import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture'
+import EventHandler from '../../src/dom/event-handler'
 
 describe('Popover', () => {
   let fixtureEl
@@ -149,6 +150,40 @@ describe('Popover', () => {
         expect(popoverDisplayed).not.toBeNull()
         expect(popoverDisplayed.querySelector('.popover-body')).toBeNull()
         expect(popoverDisplayed.querySelector('.popover-header').textContent).toEqual('Title, which does not require content')
+        done()
+      })
+
+      popover.show()
+    })
+
+    it('should show a popover with just title without having body, using data-attribute to get config', done => {
+      fixtureEl.innerHTML = '<a href="#" data-bs-content="" title= "Title, which does not require content">Nice link</a>'
+
+      const popoverEl = fixtureEl.querySelector('a')
+      const popover = new Popover(popoverEl)
+
+      popoverEl.addEventListener('shown.bs.popover', () => {
+        const popoverDisplayed = document.querySelector('.popover')
+
+        expect(popoverDisplayed).not.toBeNull()
+        expect(popoverDisplayed.querySelector('.popover-body')).toBeNull()
+        expect(popoverDisplayed.querySelector('.popover-header').textContent).toEqual('Title, which does not require content')
+        done()
+      })
+
+      popover.show()
+    })
+
+    it('should NOT show a popover without `title` and `content`', done => {
+      fixtureEl.innerHTML = '<a href="#" data-bs-content="" title= "">Nice link</a>'
+
+      const popoverEl = fixtureEl.querySelector('a')
+      const popover = new Popover(popoverEl, { animation: false })
+      spyOn(EventHandler, 'trigger').and.callThrough()
+
+      setTimeout(() => {
+        expect(EventHandler.trigger).not.toHaveBeenCalled()
+        expect(document.querySelector('.popover')).toBeNull()
         done()
       })
 
