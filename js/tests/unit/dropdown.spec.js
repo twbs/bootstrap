@@ -1790,6 +1790,34 @@ describe('Dropdown', () => {
       toggle.dispatchEvent(keyupEscape)
     })
 
+    it('should close dropdown using `escape` button, and return focus to its trigger', done => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Some Item</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const toggle = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+
+      toggle.addEventListener('shown.bs.dropdown', () => {
+        const keydownEvent = createEvent('keydown', { bubbles: true })
+        keydownEvent.key = 'ArrowDown'
+        toggle.dispatchEvent(keydownEvent)
+        keydownEvent.key = 'Escape'
+        toggle.dispatchEvent(keydownEvent)
+      })
+
+      toggle.addEventListener('hidden.bs.dropdown', () => setTimeout(() => {
+        expect(document.activeElement).toEqual(toggle)
+        done()
+      }))
+
+      toggle.click()
+    })
+
     it('should close dropdown (only) by clicking inside the dropdown menu when it has data-attribute `data-bs-auto-close="inside"`', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
