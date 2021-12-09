@@ -44,7 +44,7 @@ $pink:    #d63384 !default;
 $red:     #ed6d6a !default;
 $orange:  #fd7e14 !default;
 $yellow:  #ffc107 !default;
-$green:   #198754 !default;
+$green:   #73d3b8 !default;
 $teal:    #20c997 !default;
 $cyan:    #0dcaf0 !default;
 // scss-docs-end color-variables
@@ -489,10 +489,11 @@ $border-color:                $gray-300 !default;
 // scss-docs-end border-variables
 
 // scss-docs-start border-radius-variables
-$border-radius:               50rem !default;
-$border-radius-sm:            50rem !default;
-$border-radius-lg:            50rem !default;
+$border-radius:               .25rem !default;
+$border-radius-sm:            .2rem !default;
+$border-radius-lg:            .3rem !default;
 $border-radius-pill:          50rem !default;
+$border-radius-button         50rem !default;
 // scss-docs-end border-radius-variables
 
 // scss-docs-start box-shadow-variables
@@ -762,9 +763,9 @@ $btn-link-hover-color:        $link-hover-color !default;
 $btn-link-disabled-color:     $gray-600 !default;
 
 // Allows for customizing button radius independently from global border radius
-$btn-border-radius:           $border-radius !default;
-$btn-border-radius-sm:        $border-radius-sm !default;
-$btn-border-radius-lg:        $border-radius-lg !default;
+$btn-border-radius:           $border-radius-button !default;
+$btn-border-radius-sm:        $border-radius-button !default;
+$btn-border-radius-lg:        $border-radius-button !default;
 
 $btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
