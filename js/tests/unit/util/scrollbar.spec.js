@@ -140,8 +140,8 @@ describe('ScrollBar', () => {
     it('should remove padding & margin if not existed before adjustment', done => {
       fixtureEl.innerHTML = [
         '<div style="height: 110vh; width: 100%">',
-        '   <div class="fixed" id="fixed" style="width: 100vw;"></div>',
-        '   <div class="sticky-top" id="sticky" style=" width: 100vw;"></div>',
+        '  <div class="fixed" id="fixed" style="width: 100vw;"></div>',
+        '  <div class="sticky-top" id="sticky" style=" width: 100vw;"></div>',
         '</div>'
       ].join('')
       doc.style.overflowY = 'scroll'
