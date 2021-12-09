@@ -1649,7 +1649,7 @@ describe('Dropdown', () => {
         '  </div>',
         '</div>',
         '<input type="text">'
-      ]
+      ].join('')
 
       const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const input = fixtureEl.querySelector('input')
@@ -1735,7 +1735,7 @@ describe('Dropdown', () => {
         '    </div>',
         '  </div>',
         '</div>'
-      ]
+      ].join('')
 
       const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(triggerDropdown)
@@ -1767,7 +1767,7 @@ describe('Dropdown', () => {
         '    </div>',
         '  </div>',
         '</div>'
-      ]
+      ].join('')
 
       const parent = fixtureEl.querySelector('.parent')
       const toggle = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
@@ -1826,7 +1826,7 @@ describe('Dropdown', () => {
         '    <a class="dropdown-item" href="#">Dropdown item</a>',
         ' </div>',
         '</div>'
-      ]
+      ].join('')
 
       const dropdownToggle = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
@@ -1857,7 +1857,7 @@ describe('Dropdown', () => {
         '    <a class="dropdown-item" href="#">Dropdown item</a>',
         ' </div>',
         '</div>'
-      ]
+      ].join('')
 
       const dropdownToggle = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
@@ -1888,7 +1888,7 @@ describe('Dropdown', () => {
         '    <a class="dropdown-item" href="#">Dropdown item</a>',
         ' </div>',
         '</div>'
-      ]
+      ].join('')
 
       const dropdownToggle = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
