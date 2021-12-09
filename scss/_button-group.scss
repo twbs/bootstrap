@@ -15,10 +15,15 @@
   > .btn-check:checked + .btn,
   > .btn-check:focus + .btn,
   > .btn:hover,
-  > .btn:focus,
   > .btn:active,
   > .btn.active {
     z-index: 1;
+  }
+
+  // Keep focused button in front of hover and active button when both 
+  // buttons directly beside each other
+  > .btn:focus {
+    z-index: 2;
   }
 }
 
