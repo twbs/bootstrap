@@ -180,6 +180,15 @@ describe('Tooltip', () => {
       expect(getPopperConfig).toHaveBeenCalled()
       expect(popperConfig.placement).toEqual('left')
     })
+
+    it('should use original title, if not "data-bs-title" is given', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      expect(tooltip._config.title).toEqual('Another tooltip')
+    })
   })
 
   describe('enable', () => {
@@ -855,6 +864,19 @@ describe('Tooltip', () => {
 
       tooltip.show()
     })
+
+    it('should remove `title` attribute if exists', done => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      tooltipEl.addEventListener('shown.bs.tooltip', () => {
+        expect(tooltipEl.getAttribute('title')).toBeNull()
+        done()
+      })
+      tooltip.show()
+    })
   })
 
   describe('hide', () => {
@@ -1112,7 +1134,8 @@ describe('Tooltip', () => {
     it('should do nothing if the content is a child of the element', () => {
       fixtureEl.innerHTML = [
         '<a href="#" rel="tooltip" title="Another tooltip">',
-        '<div id="childContent"></div>'
+        '  <div id="childContent"></div>',
+        '</a>'
       ].join('')
 
       const tooltipEl = fixtureEl.querySelector('a')
@@ -1130,7 +1153,8 @@ describe('Tooltip', () => {
     it('should add the content as a child of the element for jQuery elements', () => {
       fixtureEl.innerHTML = [
         '<a href="#" rel="tooltip" title="Another tooltip">',
-        '<div id="childContent"></div>'
+        '  <div id="childContent"></div>',
+        '</a>'
       ].join('')
 
       const tooltipEl = fixtureEl.querySelector('a')
@@ -1147,7 +1171,8 @@ describe('Tooltip', () => {
     it('should add the child text content in the element', () => {
       fixtureEl.innerHTML = [
         '<a href="#" rel="tooltip" title="Another tooltip">',
-        '<div id="childContent">Tooltip</div>'
+        '  <div id="childContent">Tooltip</div>',
+        '</a>'
       ].join('')
 
       const tooltipEl = fixtureEl.querySelector('a')
@@ -1160,7 +1185,7 @@ describe('Tooltip', () => {
     })
 
     it('should add html without sanitize it', () => {
-      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
@@ -1174,7 +1199,7 @@ describe('Tooltip', () => {
     })
 
     it('should add html sanitized', () => {
-      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
@@ -1193,7 +1218,7 @@ describe('Tooltip', () => {
     })
 
     it('should add text content', () => {
-      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
@@ -1206,7 +1231,7 @@ describe('Tooltip', () => {
 
   describe('_getTitle', () => {
     it('should return the title', () => {
-      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)

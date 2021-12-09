@@ -130,7 +130,7 @@ describe('Dropdown', () => {
     it('should allow to pass config to Popper with `popperConfig` as a function', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-placement="right" >Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-placement="right">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',

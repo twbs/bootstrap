@@ -1,6 +1,6 @@
 .bd-sidebar {
   @include media-breakpoint-down(md) {
-    margin: 0 -.75rem 1rem;
+    margin: 0 ($bd-gutter-x * -1) 1rem;
   }
 }
 

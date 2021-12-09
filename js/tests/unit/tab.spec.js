@@ -114,7 +114,7 @@ describe('Tab', () => {
       fixtureEl.innerHTML = [
         '<nav class="nav">',
         '  <button type="button" data-bs-target="#home" role="tab">Home</button>',
-        '  <button type="button" id="triggerProfile" data-bs-target="#profile" role="tab">Profile</a>',
+        '  <button type="button" id="triggerProfile" data-bs-target="#profile" role="tab">Profile</button>',
         '</nav>',
         '<div>',
         '  <div id="home" role="tabpanel"></div>',

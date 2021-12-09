@@ -490,7 +490,7 @@ describe('Offcanvas', () => {
 
     it('should call hide first, if another offcanvas is open', done => {
       fixtureEl.innerHTML = [
-        '<button id="btn2" data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" ></button>',
+        '<button id="btn2" data-bs-toggle="offcanvas" data-bs-target="#offcanvas2"></button>',
         '<div id="offcanvas1" class="offcanvas"></div>',
         '<div id="offcanvas2" class="offcanvas"></div>'
       ].join('')
@@ -512,7 +512,7 @@ describe('Offcanvas', () => {
 
     it('should focus on trigger element after closing offcanvas', done => {
       fixtureEl.innerHTML = [
-        '<button id="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" ></button>',
+        '<button id="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></button>',
         '<div id="offcanvas" class="offcanvas"></div>'
       ].join('')
 
@@ -536,7 +536,7 @@ describe('Offcanvas', () => {
 
     it('should not focus on trigger element after closing offcanvas, if it is not visible', done => {
       fixtureEl.innerHTML = [
-        '<button id="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" ></button>',
+        '<button id="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></button>',
         '<div id="offcanvas" class="offcanvas"></div>'
       ].join('')
 
