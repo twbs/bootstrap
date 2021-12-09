@@ -97,25 +97,6 @@ describe('Popover', () => {
       popover.show()
     })
 
-    it('should show a popover with just content', done => {
-      fixtureEl.innerHTML = '<a href="#">BS twitter</a>'
-
-      const popoverEl = fixtureEl.querySelector('a')
-      const popover = new Popover(popoverEl, {
-        content: 'Popover content'
-      })
-
-      popoverEl.addEventListener('shown.bs.popover', () => {
-        const popoverDisplayed = document.querySelector('.popover')
-
-        expect(popoverDisplayed).not.toBeNull()
-        expect(popoverDisplayed.querySelector('.popover-body').textContent).toEqual('Popover content')
-        done()
-      })
-
-      popover.show()
-    })
-
     it('should show a popover with just content without having header', done => {
       fixtureEl.innerHTML = '<a href="#">Nice link</a>'
 
