@@ -5,5 +5,8 @@
     @if $link-shade-percentage != 0 {
       --#{$variable-prefix}link-hover-color: #{if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage))};
     }
+    @else {
+      --#{$variable-prefix}link-hover-color: #{$value};
+    }
   }
 }
