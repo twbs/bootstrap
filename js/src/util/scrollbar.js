@@ -86,7 +86,8 @@ class ScrollBarHelper {
   _resetElementAttributes(selector, styleProp) {
     const manipulationCallBack = element => {
       const value = Manipulator.getDataAttribute(element, styleProp)
-      if (value === null) { // maybe it is zero
+      // We only want to remove the property if the value is `null`; the value can also be zero
+      if (value === null) {
         element.style.removeProperty(styleProp)
         return
       }
