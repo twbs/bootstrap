@@ -10,6 +10,7 @@ import {
   typeCheckConfig
 } from './util/index'
 import Manipulator from './dom/manipulator'
+import EventHandler from './dom/event-handler'
 import BaseComponent from './base-component'
 import Badge from './badge'
 
@@ -40,6 +41,13 @@ const COLOUR_VALUES = [
   'light',
   'dark'
 ]
+
+const DATA_KEY = 'bs.input-badges'
+const EVENT_KEY = `.${DATA_KEY}`
+
+const EVENT_BADGE_ADD = `add${EVENT_KEY}`
+const EVENT_BADGE_ADDED = `added${EVENT_KEY}`
+const EVENT_BADGE_REMOVED = `removed${EVENT_KEY}`
 
 /**
  * ------------------------------------------------------------------------
@@ -88,6 +96,7 @@ class InputBadges extends BaseComponent {
         Badge.getOrCreateInstance(existingBadges[existingBadges.length - 1]).close()
         // eslint-disable-next-line no-console
         console.log(this._element.value)
+        EventHandler.trigger(this._element, EVENT_BADGE_REMOVED)
       }
     })
 
@@ -102,6 +111,12 @@ class InputBadges extends BaseComponent {
 
       const existingValue = this._element.value.split(',').find(value => value === encodeURIComponent(visibleInput.value))
       if (existingValue) {
+        return
+      }
+
+      const addBadgeEvent = EventHandler.trigger(this._element, EVENT_BADGE_ADD)
+
+      if (addBadgeEvent.defaultPrevented) {
         return
       }
 
@@ -124,11 +139,13 @@ class InputBadges extends BaseComponent {
         this._element.value = this._element.value.replace(`${encodeURIComponent(newBadge.textContent)},`, '')
         // eslint-disable-next-line no-console
         console.log(this._element.value)
+        EventHandler.trigger(this._element, EVENT_BADGE_REMOVED)
       })
       visibleInput.value = ''
       visibleInput.before(newBadge)
       // eslint-disable-next-line no-console
       console.log(this._element.value)
+      EventHandler.trigger(this._element, EVENT_BADGE_ADDED)
     })
   }
 
