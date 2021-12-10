@@ -159,7 +159,8 @@
     margin: -1rem -1rem 1rem;
   }
 
-  .fixed-bottom {
+  .fixed-bottom,
+  .sticky-bottom {
     position: static;
     margin: 1rem -1rem -1rem;
   }
@@ -169,7 +170,8 @@
     .sticky-top {
       margin: -1.5rem -1.5rem 1rem;
     }
-    .fixed-bottom {
+    .fixed-bottom,
+    .sticky-bottom {
       margin: 1rem -1.5rem -1.5rem;
     }
   }
