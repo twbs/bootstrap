@@ -8,17 +8,22 @@
 import { isElement, toType } from './index'
 import Manipulator from '../dom/manipulator'
 
-class Config {
-  static get NAME() {
-    throw new Error('You have to implement the static method "NAME", for each component!')
-  }
+/**
+ * Class definition
+ */
 
+class Config {
+  // Getters
   static get Default() {
     return {}
   }
 
   static get DefaultType() {
     return {}
+  }
+
+  static get NAME() {
+    throw new Error('You have to implement the static method "NAME", for each component!')
   }
 
   _getConfig(config) {

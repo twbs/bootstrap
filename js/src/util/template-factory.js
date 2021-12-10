@@ -52,16 +52,16 @@ class TemplateFactory extends Config {
   }
 
   // Getters
-  static get NAME() {
-    return NAME
-  }
-
   static get Default() {
     return Default
   }
 
   static get DefaultType() {
     return DefaultType
+  }
+
+  static get NAME() {
+    return NAME
   }
 
   // Public

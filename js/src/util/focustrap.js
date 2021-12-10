@@ -45,16 +45,17 @@ class FocusTrap extends Config {
     this._lastTabNavDirection = null
   }
 
-  static get NAME() {
-    return NAME
-  }
-
+  // Getters
   static get Default() {
     return Default
   }
 
   static get DefaultType() {
     return DefaultType
+  }
+
+  static get NAME() {
+    return NAME
   }
 
   // Public

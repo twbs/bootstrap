@@ -139,16 +139,16 @@ class Tooltip extends BaseComponent {
     return Default
   }
 
+  static get DefaultType() {
+    return DefaultType
+  }
+
   static get NAME() {
     return NAME
   }
 
   static get Event() {
     return Event
-  }
-
-  static get DefaultType() {
-    return DefaultType
   }
 
   // Public

@@ -46,16 +46,17 @@ class Backdrop extends Config {
     this._element = null
   }
 
-  static get NAME() {
-    return NAME
-  }
-
+  // Getters
   static get Default() {
     return Default
   }
 
   static get DefaultType() {
     return DefaultType
+  }
+
+  static get NAME() {
+    return NAME
   }
 
   // Public

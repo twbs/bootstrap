@@ -59,12 +59,12 @@ class Toast extends BaseComponent {
   }
 
   // Getters
-  static get DefaultType() {
-    return DefaultType
-  }
-
   static get Default() {
     return Default
+  }
+
+  static get DefaultType() {
+    return DefaultType
   }
 
   static get NAME() {
