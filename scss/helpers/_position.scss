@@ -22,6 +22,10 @@
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
     .sticky#{$infix}-top {
+      // See https://sass-lang.com/documentation/at-rules/css#supports
+      @supports not (position: sticky) {
+        position: fixed;
+      }
       position: sticky;
       top: 0;
       z-index: $zindex-sticky;
