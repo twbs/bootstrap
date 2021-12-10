@@ -6,6 +6,7 @@
   right: 0;
   left: 0;
   z-index: $zindex-fixed;
+  will-change: transform;
 }
 
 .fixed-bottom {
@@ -14,6 +15,7 @@
   bottom: 0;
   left: 0;
   z-index: $zindex-fixed;
+  will-change: transform;
 }
 
 // Responsive sticky top
@@ -25,6 +27,7 @@
       position: sticky;
       top: 0;
       z-index: $zindex-sticky;
+      will-change: transform;
     }
   }
 }
