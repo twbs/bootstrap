@@ -34,14 +34,14 @@ const SELECTOR_DROPDOWN = '.dropdown'
 const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 
 const Default = {
-  offset: null, // @deprecated, keep it for backwards compatibility reasons
+  offset: null, // todo: v6 @deprecated, keep it for backwards compatibility reasons
   rootMargin: '0px 0px -40%',
   smoothScroll: false,
   target: null
 }
 
 const DefaultType = {
-  offset: '(number|null)', // @deprecated, keep it for backwards compatibility reasons
+  offset: '(number|null)', // todo v6 @deprecated, keep it for backwards compatibility reasons
   rootMargin: 'string',
   smoothScroll: 'boolean',
   target: 'element'
@@ -235,7 +235,7 @@ class ScrollSpy extends BaseComponent {
     return new IntersectionObserver(callback.bind(this), options)
   }
 
-  // Only for backwards compatibility reasons. Use rootMargin only
+  // todo : v6 Only for backwards compatibility reasons. Use rootMargin only
   _getRootMargin() {
     return this._config.offset ? `${this._config.offset}px 0px 0px` : this._config.rootMargin
   }
@@ -264,7 +264,7 @@ class ScrollSpy extends BaseComponent {
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   for (const spy of SelectorEngine.find(SELECTOR_DATA_SPY)) {
-    new ScrollSpy(spy) // eslint-disable-line no-new
+    ScrollSpy.getOrCreateInstance(spy)
   }
 })
 
