@@ -69,6 +69,7 @@
     - title: Close button
     - title: Collapse
     - title: Dropdowns
+    - title: Input Badges
     - title: List group
     - title: Modal
     - title: Navs & tabs
@@ -80,7 +81,6 @@
     - title: Progress
     - title: Scrollspy
     - title: Spinners
-    - title: Tags
     - title: Toasts
     - title: Tooltips
 

@@ -23,9 +23,9 @@
       })
     })
 
-  document.querySelectorAll('input[type="text"][data-bs-tags="tags"]')
-    .forEach(function (tag) {
-      new bootstrap.Tags(tag)
+  document.querySelectorAll('input[type="text"][data-bs-badges="input-badges"]')
+    .forEach(function (inputBadge) {
+      new bootstrap.InputBadges(inputBadge)
     })
 
   document.querySelectorAll('.badge')

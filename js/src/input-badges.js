@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): tags.js
+ * Bootstrap (v5.1.3): input-badges.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -19,7 +19,7 @@ import Badge from './badge'
  * ------------------------------------------------------------------------
  */
 
-const NAME = 'tags'
+const NAME = 'input-badges'
 const DefaultType = {
   rounded: 'boolean',
   colour: 'string'
@@ -47,7 +47,7 @@ const COLOUR_VALUES = [
  * ------------------------------------------------------------------------
  */
 
-class Tags extends BaseComponent {
+class InputBadges extends BaseComponent {
   constructor(element, config) {
     super(element)
 
@@ -168,7 +168,7 @@ class Tags extends BaseComponent {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      const data = Tags.getOrCreateInstance(this, config)
+      const data = InputBadges.getOrCreateInstance(this, config)
 
       if (typeof config === 'string') {
         if (typeof data[config] === 'undefined') {
@@ -185,9 +185,9 @@ class Tags extends BaseComponent {
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
- * add .tags to jQuery only if jQuery is present
+ * add .input-badges to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(Tags)
+defineJQueryPlugin(InputBadges)
 
-export default Tags
+export default InputBadges
