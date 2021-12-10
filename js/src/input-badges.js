@@ -94,8 +94,6 @@ class InputBadges extends BaseComponent {
 
       if (existingBadges.length > 0) {
         Badge.getOrCreateInstance(existingBadges[existingBadges.length - 1]).close()
-        // eslint-disable-next-line no-console
-        console.log(this._element.value)
         EventHandler.trigger(this._element, EVENT_BADGE_REMOVED)
       }
     })
@@ -137,14 +135,10 @@ class InputBadges extends BaseComponent {
       Badge.getOrCreateInstance(newBadge)
       newBadge.addEventListener('closed.bs.badge', () => {
         this._element.value = this._element.value.replace(`${encodeURIComponent(newBadge.textContent)},`, '')
-        // eslint-disable-next-line no-console
-        console.log(this._element.value)
         EventHandler.trigger(this._element, EVENT_BADGE_REMOVED)
       })
       visibleInput.value = ''
       visibleInput.before(newBadge)
-      // eslint-disable-next-line no-console
-      console.log(this._element.value)
       EventHandler.trigger(this._element, EVENT_BADGE_ADDED)
     })
   }
