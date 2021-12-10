@@ -6,6 +6,8 @@
   right: 0;
   left: 0;
   z-index: $zindex-fixed;
+  // To render the element in it's own layer, improving repaint speed and
+  // therefore improving performance and accessibility.
   will-change: transform;
 }
 
