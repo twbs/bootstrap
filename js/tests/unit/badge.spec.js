@@ -1,5 +1,4 @@
 import Badge from '../../src/badge'
-import { getTransitionDurationFromElement } from '../../src/util/index'
 import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Badge', () => {
