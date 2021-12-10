@@ -7,8 +7,6 @@
 
 import {
   defineJQueryPlugin,
-  getElementFromSelector,
-  isDisabled,
   isVisible
 } from './util/index'
 import ScrollBarHelper from './util/scrollbar'
@@ -17,7 +15,7 @@ import BaseComponent from './base-component'
 import SelectorEngine from './dom/selector-engine'
 import Backdrop from './util/backdrop'
 import FocusTrap from './util/focustrap'
-import { enableDismissTrigger } from './util/component-functions'
+import { enableDismissTrigger, eventActionOnPlugin } from './dom/magic-actions'
 
 /**
  * Constants
@@ -40,7 +38,6 @@ const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
 const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="offcanvas"]'
@@ -209,32 +206,19 @@ class Offcanvas extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
-  const target = getElementFromSelector(this)
-
-  if (['A', 'AREA'].includes(this.tagName)) {
-    event.preventDefault()
-  }
-
-  if (isDisabled(this)) {
-    return
-  }
-
-  EventHandler.one(target, EVENT_HIDDEN, () => {
+eventActionOnPlugin(Offcanvas, 'click', SELECTOR_DATA_TOGGLE, 'toggle', data => {
+  EventHandler.one(data.target, EVENT_HIDDEN, () => {
     // focus on trigger when it is closed
-    if (isVisible(this)) {
-      this.focus()
+    if (isVisible(data.event.target)) {
+      data.event.target.focus()
     }
   })
 
   // avoid conflict when clicking a toggler of an offcanvas, while another is open
   const alreadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
-  if (alreadyOpen && alreadyOpen !== target) {
+  if (alreadyOpen && alreadyOpen !== data.target) {
     Offcanvas.getInstance(alreadyOpen).hide()
   }
-
-  const data = Offcanvas.getOrCreateInstance(target)
-  data.toggle(this)
 })
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
