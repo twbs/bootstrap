@@ -12,8 +12,7 @@ import {
   getElement,
   getUID,
   isRTL,
-  noop,
-  typeCheckConfig
+  noop
 } from './util/index'
 import { DefaultAllowlist } from './util/sanitizer'
 import EventHandler from './dom/event-handler'
@@ -140,16 +139,16 @@ class Tooltip extends BaseComponent {
     return Default
   }
 
+  static get DefaultType() {
+    return DefaultType
+  }
+
   static get NAME() {
     return NAME
   }
 
   static get Event() {
     return Event
-  }
-
-  static get DefaultType() {
-    return DefaultType
   }
 
   // Public
@@ -571,11 +570,16 @@ class Tooltip extends BaseComponent {
     }
 
     config = {
-      ...this.constructor.Default,
       ...dataAttributes,
       ...(typeof config === 'object' && config ? config : {})
     }
+    config = this._mergeConfigObj(config)
+    config = this._configAfterMerge(config)
+    this._typeCheckConfig(config)
+    return config
+  }
 
+  _configAfterMerge(config) {
     config.container = config.container === false ? document.body : getElement(config.container)
 
     if (typeof config.delay === 'number') {
@@ -595,7 +599,6 @@ class Tooltip extends BaseComponent {
       config.content = config.content.toString()
     }
 
-    typeCheckConfig(NAME, config, this.constructor.DefaultType)
     return config
   }
 
