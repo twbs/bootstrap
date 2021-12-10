@@ -1,8 +1,8 @@
 /* Test helpers */
 
 import { clearFixture, createEvent, getFixture } from '../../helpers/fixture'
-import { enableDismissTrigger } from '../../../src/util/component-functions'
 import BaseComponent from '../../../src/base-component'
+import { enableDismissTrigger } from '../../../src/dom/magic-actions'
 
 class DummyClass2 extends BaseComponent {
   static get NAME() {
