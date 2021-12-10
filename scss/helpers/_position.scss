@@ -26,6 +26,8 @@
     .sticky#{$infix}-top {
       position: sticky;
       top: 0;
+      right: 0;
+      left: 0;
       z-index: $zindex-sticky;
       will-change: transform;
     }
