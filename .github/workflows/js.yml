@@ -13,6 +13,7 @@ env:
 
 jobs:
   run:
+    name: JS Tests
     runs-on: ubuntu-latest
 
     steps:
