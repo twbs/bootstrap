@@ -186,3 +186,9 @@ textarea {
     @include border-radius($input-border-radius);
   }
 }
+
+.form-control .badge {
+  margin-top: 2px;
+  margin-right: 2px;
+  vertical-align: top;
+}

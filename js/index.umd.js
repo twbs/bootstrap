@@ -16,6 +16,7 @@ import Offcanvas from './src/offcanvas'
 import Popover from './src/popover'
 import ScrollSpy from './src/scrollspy'
 import Tab from './src/tab'
+import Tags from './src/tags'
 import Toast from './src/toast'
 import Tooltip from './src/tooltip'
 
@@ -31,6 +32,7 @@ export default {
   Popover,
   ScrollSpy,
   Tab,
+  Tags,
   Toast,
   Tooltip
 }

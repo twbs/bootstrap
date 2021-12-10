@@ -23,6 +23,11 @@
       })
     })
 
+  document.querySelectorAll('input[type="text"][data-bs-tags="tags"]')
+    .forEach(function (tag) {
+      new bootstrap.Tags(tag)
+    })
+
   document.querySelectorAll('.badge')
     .forEach(function (badge) {
       new bootstrap.Badge(badge)
