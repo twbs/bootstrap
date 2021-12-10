@@ -171,11 +171,10 @@ describe('Util', () => {
 
   describe('isElement', () => {
     it('should detect if the parameter is an element or not and return Boolean', () => {
-      fixtureEl.innerHTML =
-        [
-          '<div id="foo" class="test"></div>',
-          '<div id="bar" class="test"></div>'
-        ].join('')
+      fixtureEl.innerHTML = [
+        '<div id="foo" class="test"></div>',
+        '<div id="bar" class="test"></div>'
+      ].join('')
 
       const el = fixtureEl.querySelector('#foo')
 
@@ -199,11 +198,10 @@ describe('Util', () => {
 
   describe('getElement', () => {
     it('should try to parse element', () => {
-      fixtureEl.innerHTML =
-        [
-          '<div id="foo" class="test"></div>',
-          '<div id="bar" class="test"></div>'
-        ].join('')
+      fixtureEl.innerHTML = [
+        '<div id="foo" class="test"></div>',
+        '<div id="bar" class="test"></div>'
+      ].join('')
 
       const el = fixtureEl.querySelector('div')
 

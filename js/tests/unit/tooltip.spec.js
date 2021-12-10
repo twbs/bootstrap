@@ -722,7 +722,7 @@ describe('Tooltip', () => {
         '<b>Trigger</b>',
         'the tooltip',
         '</a>'
-      ]
+      ].join('')
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
