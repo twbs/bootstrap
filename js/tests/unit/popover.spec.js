@@ -138,7 +138,7 @@ describe('Popover', () => {
     })
 
     it('should show a popover with just title without having body, using data-attribute to get config', done => {
-      fixtureEl.innerHTML = '<a href="#" data-bs-content="" title= "Title, which does not require content">Nice link</a>'
+      fixtureEl.innerHTML = '<a href="#" data-bs-content="" title="Title, which does not require content">Nice link</a>'
 
       const popoverEl = fixtureEl.querySelector('a')
       const popover = new Popover(popoverEl)
@@ -156,7 +156,7 @@ describe('Popover', () => {
     })
 
     it('should NOT show a popover without `title` and `content`', done => {
-      fixtureEl.innerHTML = '<a href="#" data-bs-content="" title= "">Nice link</a>'
+      fixtureEl.innerHTML = '<a href="#" data-bs-content="" title="">Nice link</a>'
 
       const popoverEl = fixtureEl.querySelector('a')
       const popover = new Popover(popoverEl, { animation: false })
