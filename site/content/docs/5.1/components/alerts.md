@@ -9,6 +9,8 @@ toc: true
 ## Examples
 
 
+<div class="alert alert-warning" data-bs-toggle="toggler" data-bs-value="alert-warning" data-bs-attribute="class">Toggler Example</div>
+<div class="alert alert-primary" data-bs-toggle="toggler" data-bs-value="test" data-bs-attribute="data-tost">Toggler Example</div>
 <div class="alert alert-primary" data-bs-act="click:alert:close">Working example. Click on it</div>
 <div class="alert alert-danger" data-bs-act="click:kalert:close">NOT working example. Click on it</div>
 Alerts are available for any length of text, as well as an optional close button. For proper styling, use one of the eight **required** contextual classes (e.g., `.alert-success`). For inline dismissal, use the [alerts JavaScript plugin](#dismissing).
