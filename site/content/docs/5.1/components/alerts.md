@@ -7,12 +7,15 @@ toc: true
 ---
 
 ## Examples
-
-
-<div class="alert alert-primary" data-bs-act="click:alert:close">Working example. Click on it</div>
-<div class="alert alert-danger" data-bs-act="click:kalert:close">NOT working example. Click on it</div>
+<hr>
+<button class="btn btn-outline-dark" data-bs-toggle="toggler" data-bs-target="#anotherTarget"> Toggle next element class</button>
+<div id="anotherTarget" class="alert alert-secondary" data-bs-value="alert-danger" data-bs-attribute="class">Toggler: Toggle Class, using above button</div>
+<div class="alert alert-primary" data-bs-toggle="toggler" data-bs-value="alert-warning" data-bs-attribute="class">Toggler: Toggles Class</div>
+<div class="alert alert-primary" data-bs-toggle="toggler" data-bs-value="test" data-bs-attribute="data-tost">Toggler: Toggles attribute</div>
+<div class="alert alert-secondary" data-bs-act="click:alert:close"> Remover: Working example. Click on it and it will be removed</div>
+<div class="alert alert-danger" data-bs-act="click:kalert:close">Remover: NOT working example. Click on it</div>
+<hr>
 Alerts are available for any length of text, as well as an optional close button. For proper styling, use one of the eight **required** contextual classes (e.g., `.alert-success`). For inline dismissal, use the [alerts JavaScript plugin](#dismissing).
-
 {{< example >}}
 {{< alerts.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
