@@ -57,11 +57,14 @@ class ScrollSpy extends BaseComponent {
     super(element, config)
 
     // this._element is the observablesContainer and config.target the menu-links wrapper
-
-    this._targetLinks = []
+    this._targetLinks = new Map()
+    this._observableSections = new Map()
     this._activeTarget = null
-    this._observableSections = []
     this._observer = null
+    this._previousScrollData = {
+      visibleEntryTop: 0,
+      parentScrollTop: 0
+    }
     this.refresh() // initialize
   }
 
@@ -80,14 +83,7 @@ class ScrollSpy extends BaseComponent {
 
   // Public
   refresh() {
-    this._targetLinks = SelectorEngine
-      .find('[href]', this._config.target) // `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}, .${CLASS_NAME_DROPDOWN_ITEM}`
-      .filter(el => el.hash.length > 0 || isDisabled(el)) // ensure that all have id and not disabled
-
-    this._observableSections = this._targetLinks
-      .map(el => SelectorEngine.findOne(el.hash, this._element))
-      .filter(Boolean)
-
+    this._initializeTargetsAndObservables()
     this._maybeEnableSmoothScroll()
 
     if (this._observer) {
@@ -96,7 +92,7 @@ class ScrollSpy extends BaseComponent {
       this._observer = this._getNewObserver()
     }
 
-    for (const section of this._observableSections) {
+    for (const section of this._observableSections.values()) {
       this._observer.observe(section)
     }
   }
@@ -125,11 +121,87 @@ class ScrollSpy extends BaseComponent {
 
     EventHandler.on(this._config.target, EVENT_CLICK, SELECTOR_TARGET_LINKS, event => {
       event.preventDefault()
-      const observableSection = this._observableSections.find(el => `#${el.id}` === event.target.hash)
+      const observableSection = this._observableSections.get(event.target.hash)
       if (observableSection) {
         this._element.scrollTop = observableSection.offsetTop - wrapperOffsetTop // chrome 60 doesn't support `scrollTo`
       }
     })
+  }
+
+  _getNewObserver() {
+    const options = {
+      root: this._element,
+      threshold: [0, 0.5],
+      rootMargin: this._getRootMargin()
+    }
+
+    return new IntersectionObserver(entries => this._observerCallback(entries), options)
+  }
+
+  _observerCallback(entries) {
+    const getTargetLink = entry => this._targetLinks.get(`#${entry.target.id}`)
+
+    const activate = entry => {
+      this._previousScrollData.visibleEntryTop = entry.target.offsetTop
+      const targetToActivate = getTargetLink(entry)
+      this._process(targetToActivate)
+    }
+
+    const parentScrollTop = this._element.scrollTop
+    let previousIntersectionRatio = 0
+
+    for (const entry of entries) {
+      if (entry.isIntersecting && previousIntersectionRatio < entry.intersectionRatio) {
+        const entryIsLowerThanPrevious = entry.target.offsetTop >= this._previousScrollData.visibleEntryTop
+        previousIntersectionRatio = entry.intersectionRatio
+
+        const userScrollsDown = parentScrollTop >= this._previousScrollData.parentScrollTop
+
+        // if we are scrolling down, pick the bigger offsetTop
+        if (userScrollsDown && entryIsLowerThanPrevious) {
+          activate(entry)
+          continue
+        }
+
+        // if we are scrolling up, pick the smallest offsetTop
+        if (!userScrollsDown && !entryIsLowerThanPrevious) {
+          activate(entry)
+        }
+
+        continue
+      }
+
+      const notVisibleElement = getTargetLink(entry)
+      this._clearActiveClass(notVisibleElement)
+    }
+
+    this._previousScrollData.parentScrollTop = parentScrollTop
+  }
+
+  // todo : v6 Only for backwards compatibility reasons. Use rootMargin only
+  _getRootMargin() {
+    return this._config.offset ? `${this._config.offset}px 0px 0px` : this._config.rootMargin
+  }
+
+  _initializeTargetsAndObservables() {
+    this._targetLinks = new Map()
+    this._observableSections = new Map()
+
+    const targetLinks = SelectorEngine.find(SELECTOR_TARGET_LINKS, this._config.target)
+
+    for (const anchor of targetLinks) {
+      // ensure that anchor has id and not disabled
+      if (!anchor.hash.length || isDisabled(anchor)) {
+        continue
+      }
+
+      const observableSection = SelectorEngine.findOne(anchor.hash, this._element)
+
+      if (observableSection) {
+        this._targetLinks.set(anchor.hash, anchor)
+        this._observableSections.set(anchor.hash, observableSection)
+      }
+    }
   }
 
   _process(target) {
@@ -184,64 +256,6 @@ class ScrollSpy extends BaseComponent {
     for (const node of SelectorEngine.find(`.${CLASS_NAME_ACTIVE}`, parent)) {
       node.classList.remove(CLASS_NAME_ACTIVE)
     }
-  }
-
-  _getNewObserver() {
-    let previousVisibleEntryTop = 0
-    let previousParentScrollTop = 0
-
-    const getTargetLink = entry => this._targetLinks.find(el => el.hash === `#${entry.target.id}`)
-
-    const activate = entry => {
-      previousVisibleEntryTop = entry.target.offsetTop
-      const targetToActivate = getTargetLink(entry)
-      this._process(targetToActivate)
-    }
-
-    const callback = entries => {
-      const parentScrollTop = this._element.scrollTop
-      let previousIntersectionRatio = 0
-
-      for (const entry of entries) {
-        if (entry.isIntersecting && previousIntersectionRatio < entry.intersectionRatio) {
-          const entryIsLowerThanPrevious = entry.target.offsetTop >= previousVisibleEntryTop
-          previousIntersectionRatio = entry.intersectionRatio
-
-          const userScrollsDown = parentScrollTop >= previousParentScrollTop
-
-          // if we are scrolling down, pick the bigger offsetTop
-          if (userScrollsDown && entryIsLowerThanPrevious) {
-            activate(entry)
-            continue
-          }
-
-          // if we are scrolling up, pick the smallest offsetTop
-          if (!userScrollsDown && !entryIsLowerThanPrevious) {
-            activate(entry)
-          }
-
-          continue
-        }
-
-        const notVisibleElement = getTargetLink(entry)
-        this._clearActiveClass(notVisibleElement)
-      }
-
-      previousParentScrollTop = parentScrollTop
-    }
-
-    const options = {
-      root: this._element,
-      threshold: [0, 0.5],
-      rootMargin: this._getRootMargin()
-    }
-
-    return new IntersectionObserver(callback.bind(this), options)
-  }
-
-  // todo : v6 Only for backwards compatibility reasons. Use rootMargin only
-  _getRootMargin() {
-    return this._config.offset ? `${this._config.offset}px 0px 0px` : this._config.rootMargin
   }
 
   // Static
