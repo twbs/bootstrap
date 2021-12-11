@@ -26,6 +26,7 @@ const CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item'
 const CLASS_NAME_ACTIVE = 'active'
 
 const SELECTOR_DATA_SPY = '[data-bs-spy="scroll"]'
+const SELECTOR_TARGET_LINKS = '[href]'
 const SELECTOR_NAV_LIST_GROUP = '.nav, .list-group'
 const SELECTOR_NAV_LINKS = '.nav-link'
 const SELECTOR_NAV_ITEMS = '.nav-item'
@@ -118,14 +119,17 @@ class ScrollSpy extends BaseComponent {
       return
     }
 
-    for (const anchor of this._targetLinks) {
-      EventHandler.off(anchor, EVENT_CLICK) // unregister any previous listeners
-      EventHandler.on(anchor, EVENT_CLICK, event => {
-        event.preventDefault()
-        const el = this._observableSections.find(el => `#${el.id}` === anchor.hash)
-        this._element.scrollTo({ top: el.offsetTop, behavior: 'smooth' })
-      })
-    }
+    const wrapperOffsetTop = this._element.offsetTop
+
+    EventHandler.off(this._config.target, EVENT_CLICK) // unregister any previous listeners
+
+    EventHandler.on(this._config.target, EVENT_CLICK, SELECTOR_TARGET_LINKS, event => {
+      event.preventDefault()
+      const observableSection = this._observableSections.find(el => `#${el.id}` === event.target.hash)
+      if (observableSection) {
+        this._element.scrollTop = observableSection.offsetTop - wrapperOffsetTop // chrome 60 doesn't support `scrollTo`
+      }
+    })
   }
 
   _process(target) {
