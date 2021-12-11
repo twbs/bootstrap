@@ -5,16 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
-import {
-  defineJQueryPlugin,
-  getElementFromSelector,
-  isRTL,
-  isVisible,
-  reflow,
-  typeCheckConfig
-} from './util/index'
+import { defineJQueryPlugin, getElementFromSelector, isRTL, isVisible, reflow } from './util/index'
 import EventHandler from './dom/event-handler'
-import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
 import ScrollBarHelper from './util/scrollbar'
 import BaseComponent from './base-component'
@@ -70,9 +62,8 @@ const DefaultType = {
 
 class Modal extends BaseComponent {
   constructor(element, config) {
-    super(element)
+    super(element, config)
 
-    this._config = this._getConfig(config)
     this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element)
     this._backdrop = this._initializeBackDrop()
     this._focustrap = this._initializeFocusTrap()
@@ -84,6 +75,10 @@ class Modal extends BaseComponent {
   // Getters
   static get Default() {
     return Default
+  }
+
+  static get DefaultType() {
+    return DefaultType
   }
 
   static get NAME() {
@@ -173,16 +168,6 @@ class Modal extends BaseComponent {
     return new FocusTrap({
       trapElement: this._element
     })
-  }
-
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' ? config : {})
-    }
-    typeCheckConfig(NAME, config, DefaultType)
-    return config
   }
 
   _showElement(relatedTarget) {
