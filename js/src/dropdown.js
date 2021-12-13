@@ -114,7 +114,7 @@ class Dropdown extends BaseComponent {
   }
 
   show() {
-    if (isDisabled(this._element) || this._isShown(this._menu)) {
+    if (isDisabled(this._element) || this._isShown()) {
       return
     }
 
@@ -149,7 +149,7 @@ class Dropdown extends BaseComponent {
   }
 
   hide() {
-    if (isDisabled(this._element) || !this._isShown(this._menu)) {
+    if (isDisabled(this._element) || !this._isShown()) {
       return
     }
 
@@ -233,8 +233,8 @@ class Dropdown extends BaseComponent {
     this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
   }
 
-  _isShown(element = this._element) {
-    return element.classList.contains(CLASS_NAME_SHOW)
+  _isShown() {
+    return this._menu.classList.contains(CLASS_NAME_SHOW)
   }
 
   _getPlacement() {
