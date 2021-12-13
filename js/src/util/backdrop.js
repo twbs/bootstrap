@@ -6,7 +6,8 @@
  */
 
 import EventHandler from '../dom/event-handler'
-import { execute, executeAfterTransition, getElement, reflow, typeCheckConfig } from './index'
+import { execute, executeAfterTransition, getElement, reflow } from './index'
+import Config from './config'
 
 /**
  * Constants
@@ -37,11 +38,25 @@ const DefaultType = {
  * Class definition
  */
 
-class Backdrop {
+class Backdrop extends Config {
   constructor(config) {
+    super()
     this._config = this._getConfig(config)
     this._isAppended = false
     this._element = null
+  }
+
+  // Getters
+  static get Default() {
+    return Default
+  }
+
+  static get DefaultType() {
+    return DefaultType
+  }
+
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -104,15 +119,9 @@ class Backdrop {
     return this._element
   }
 
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...(typeof config === 'object' ? config : {})
-    }
-
+  _configAfterMerge(config) {
     // use getElement() with the default "body" to get a fresh Element on each instantiation
     config.rootElement = getElement(config.rootElement)
-    typeCheckConfig(NAME, config, DefaultType)
     return config
   }
 
