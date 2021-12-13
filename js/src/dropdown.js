@@ -90,7 +90,8 @@ class Dropdown extends BaseComponent {
     super(element, config)
 
     this._popper = null
-    this._menu = this._getMenuElement()
+    this._parent = getElementFromSelector(this._element) || this._element.parentNode // dropdown wrapper
+    this._menu = SelectorEngine.findOne(SELECTOR_MENU, this._parent)
     this._inNavbar = this._detectNavbar()
   }
 
@@ -127,15 +128,13 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    const parent = getElementFromSelector(this._element) || this._element.parentNode
-
-    this._createPopper(parent)
+    this._createPopper()
 
     // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
-    if ('ontouchstart' in document.documentElement && !parent.closest(SELECTOR_NAVBAR_NAV)) {
+    if ('ontouchstart' in document.documentElement && !this._parent.closest(SELECTOR_NAVBAR_NAV)) {
       for (const element of [].concat(...document.body.children)) {
         EventHandler.on(element, 'mouseover', noop)
       }
@@ -215,7 +214,7 @@ class Dropdown extends BaseComponent {
     return config
   }
 
-  _createPopper(parent) {
+  _createPopper() {
     if (typeof Popper === 'undefined') {
       throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)')
     }
@@ -223,7 +222,7 @@ class Dropdown extends BaseComponent {
     let referenceElement = this._element
 
     if (this._config.reference === 'parent') {
-      referenceElement = parent
+      referenceElement = this._parent
     } else if (isElement(this._config.reference)) {
       referenceElement = getElement(this._config.reference)
     } else if (typeof this._config.reference === 'object') {
@@ -238,12 +237,8 @@ class Dropdown extends BaseComponent {
     return element.classList.contains(CLASS_NAME_SHOW)
   }
 
-  _getMenuElement() {
-    return SelectorEngine.next(this._element, SELECTOR_MENU)[0]
-  }
-
   _getPlacement() {
-    const parentDropdown = this._element.parentNode
+    const parentDropdown = this._parent
 
     if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
       return PLACEMENT_RIGHT
