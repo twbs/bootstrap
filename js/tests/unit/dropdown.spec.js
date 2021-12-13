@@ -177,7 +177,7 @@ describe('Dropdown', () => {
       })
     })
 
-    it('should destroy old popper references on toggle', () => {
+    it('should NOT destroy old popper references on toggle', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<div class="first dropdown">',
@@ -207,7 +207,7 @@ describe('Dropdown', () => {
         })
 
         secondDropdownEl.addEventListener('shown.bs.dropdown', () => setTimeout(() => {
-          expect(dropdown1._popper.destroy).toHaveBeenCalled()
+          expect(dropdown1._popper.destroy).not.toHaveBeenCalled()
           resolve()
         }))
 
@@ -788,7 +788,7 @@ describe('Dropdown', () => {
       })
     })
 
-    it('should hide a dropdown and destroy popper', () => {
+    it('should hide a dropdown and DO NOT destroy popper', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<div class="dropdown">',
@@ -808,7 +808,7 @@ describe('Dropdown', () => {
         })
 
         btnDropdown.addEventListener('hidden.bs.dropdown', () => {
-          expect(dropdown._popper.destroy).toHaveBeenCalled()
+          expect(dropdown._popper.destroy).not.toHaveBeenCalled()
           resolve()
         })
 
