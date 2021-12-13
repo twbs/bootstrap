@@ -197,7 +197,6 @@ class Dropdown extends BaseComponent {
     this._menu.classList.remove(CLASS_NAME_SHOW)
     this._element.classList.remove(CLASS_NAME_SHOW)
     this._element.setAttribute('aria-expanded', 'false')
-    Manipulator.removeDataAttribute(this._menu, 'popper')
     EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
   }
 
