@@ -234,11 +234,7 @@ class Tooltip extends BaseComponent {
     if (this._popper) {
       this._popper.update()
     } else {
-      const placement = typeof this._config.placement === 'function' ?
-        this._config.placement.call(this, tip, this._element) :
-        this._config.placement
-      const attachment = AttachmentMap[placement.toUpperCase()]
-      this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
+      this._createPopper(tip)
     }
 
     tip.classList.add(CLASS_NAME_SHOW)
@@ -406,6 +402,14 @@ class Tooltip extends BaseComponent {
 
   _isShown() {
     return this.tip && this.tip.classList.contains(CLASS_NAME_SHOW)
+  }
+
+  _createPopper(tip) {
+    const placement = typeof this._config.placement === 'function' ?
+      this._config.placement.call(this, tip, this._element) :
+      this._config.placement
+    const attachment = AttachmentMap[placement.toUpperCase()]
+    this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
   }
 
   _getOffset() {
