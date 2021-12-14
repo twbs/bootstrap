@@ -171,11 +171,10 @@ describe('Util', () => {
 
   describe('isElement', () => {
     it('should detect if the parameter is an element or not and return Boolean', () => {
-      fixtureEl.innerHTML =
-        [
-          '<div id="foo" class="test"></div>',
-          '<div id="bar" class="test"></div>'
-        ].join('')
+      fixtureEl.innerHTML = [
+        '<div id="foo" class="test"></div>',
+        '<div id="bar" class="test"></div>'
+      ].join('')
 
       const el = fixtureEl.querySelector('#foo')
 
@@ -199,11 +198,10 @@ describe('Util', () => {
 
   describe('getElement', () => {
     it('should try to parse element', () => {
-      fixtureEl.innerHTML =
-        [
-          '<div id="foo" class="test"></div>',
-          '<div id="bar" class="test"></div>'
-        ].join('')
+      fixtureEl.innerHTML = [
+        '<div id="foo" class="test"></div>',
+        '<div id="bar" class="test"></div>'
+      ].join('')
 
       const el = fixtureEl.querySelector('div')
 
@@ -222,53 +220,6 @@ describe('Util', () => {
       }
 
       expect(Util.getElement(fakejQueryObject)).toEqual(el)
-    })
-  })
-
-  describe('typeCheckConfig', () => {
-    const namePlugin = 'collapse'
-
-    it('should check type of the config object', () => {
-      const defaultType = {
-        toggle: 'boolean',
-        parent: '(string|element)'
-      }
-      const config = {
-        toggle: true,
-        parent: 777
-      }
-
-      expect(() => {
-        Util.typeCheckConfig(namePlugin, config, defaultType)
-      }).toThrowError(TypeError, 'COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".')
-    })
-
-    it('should return null stringified when null is passed', () => {
-      const defaultType = {
-        toggle: 'boolean',
-        parent: '(null|element)'
-      }
-      const config = {
-        toggle: true,
-        parent: null
-      }
-
-      Util.typeCheckConfig(namePlugin, config, defaultType)
-      expect().nothing()
-    })
-
-    it('should return undefined stringified when undefined is passed', () => {
-      const defaultType = {
-        toggle: 'boolean',
-        parent: '(undefined|element)'
-      }
-      const config = {
-        toggle: true,
-        parent: undefined
-      }
-
-      Util.typeCheckConfig(namePlugin, config, defaultType)
-      expect().nothing()
     })
   })
 
