@@ -178,14 +178,16 @@ class Tooltip extends BaseComponent {
       } else {
         context._leave()
       }
-    } else {
-      if (this._isShown()) {
-        this._leave()
-        return
-      }
 
-      this._enter()
+      return
     }
+
+    if (this._isShown()) {
+      this._leave()
+      return
+    }
+
+    this._enter()
   }
 
   dispose() {
