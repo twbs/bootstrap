@@ -122,7 +122,7 @@ describe('Popover', () => {
 
       const popoverEl = fixtureEl.querySelector('a')
       const popover = new Popover(popoverEl, {
-        title: 'Title, which does not require content'
+        title: 'Title which does not require content'
       })
 
       popoverEl.addEventListener('shown.bs.popover', () => {
@@ -130,15 +130,15 @@ describe('Popover', () => {
 
         expect(popoverDisplayed).not.toBeNull()
         expect(popoverDisplayed.querySelector('.popover-body')).toBeNull()
-        expect(popoverDisplayed.querySelector('.popover-header').textContent).toEqual('Title, which does not require content')
+        expect(popoverDisplayed.querySelector('.popover-header').textContent).toEqual('Title which does not require content')
         done()
       })
 
       popover.show()
     })
 
-    it('should show a popover with just title without having body, using data-attribute to get config', done => {
-      fixtureEl.innerHTML = '<a href="#" data-bs-content="" title="Title, which does not require content">Nice link</a>'
+    it('should show a popover with just title without having body using data-attribute to get config', done => {
+      fixtureEl.innerHTML = '<a href="#" data-bs-content="" title="Title which does not require content">Nice link</a>'
 
       const popoverEl = fixtureEl.querySelector('a')
       const popover = new Popover(popoverEl)
@@ -148,7 +148,7 @@ describe('Popover', () => {
 
         expect(popoverDisplayed).not.toBeNull()
         expect(popoverDisplayed.querySelector('.popover-body')).toBeNull()
-        expect(popoverDisplayed.querySelector('.popover-header').textContent).toEqual('Title, which does not require content')
+        expect(popoverDisplayed.querySelector('.popover-header').textContent).toEqual('Title which does not require content')
         done()
       })
 
