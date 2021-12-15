@@ -1,19 +1,19 @@
 'use strict'
 
-module.exports = ctx => {
+const mapConfig = {
+  inline: false,
+  annotation: true,
+  sourcesContent: true
+}
+
+module.exports = context => {
   return {
-    map: ctx.file.dirname.includes('examples') ?
-      false :
-      {
-        inline: false,
-        annotation: true,
-        sourcesContent: true
-      },
+    map: context.file.dirname.includes('examples') ? false : mapConfig,
     plugins: {
       autoprefixer: {
         cascade: false
       },
-      rtlcss: ctx.env === 'RTL' ? {} : false
+      rtlcss: context.env === 'RTL'
     }
   }
 }
