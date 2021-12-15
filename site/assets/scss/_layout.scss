@@ -4,9 +4,9 @@
 
   @include media-breakpoint-up(md) {
     display: grid;
-    gap: $grid-gutter-width;
     grid-template-areas: "sidebar main";
     grid-template-columns: 1fr 3fr;
+    gap: $grid-gutter-width;
   }
 
   @include media-breakpoint-up(lg) {
@@ -23,20 +23,20 @@
 
   @include media-breakpoint-up(md) {
     display: grid;
-    gap: inherit;
     grid-template-areas:
       "intro"
       "toc"
       "content";
     grid-template-rows: auto auto 1fr;
+    gap: inherit;
   }
 
   @include media-breakpoint-up(lg) {
     grid-template-areas:
       "intro   toc"
       "content toc";
-    grid-template-columns: 4fr 1fr;
     grid-template-rows: auto 1fr;
+    grid-template-columns: 4fr 1fr;
   }
 }
 
