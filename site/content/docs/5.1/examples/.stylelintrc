@@ -1,12 +1,12 @@
 {
   "extends": [
-    "stylelint-config-twbs-bootstrap/css"
+    "stylelint-config-twbs-bootstrap"
   ],
   "rules": {
     "at-rule-no-vendor-prefix": null,
     "comment-empty-line-before": null,
     "media-feature-name-no-vendor-prefix": null,
-    "property-blacklist": null,
+    "property-disallowed-list": null,
     "property-no-vendor-prefix": null,
     "selector-no-qualifying-type": null,
     "selector-no-vendor-prefix": null,
