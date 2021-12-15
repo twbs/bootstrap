@@ -7,7 +7,7 @@ module.exports = {
   defaults: {
     reporters: [
       'cli',
-      'pa11y-reporter-html'
+      ['json', { fileName: './pa11y-ci-results.json' }]
     ],
     runners: [
       'htmlcs'
