@@ -223,53 +223,6 @@ describe('Util', () => {
     })
   })
 
-  describe('typeCheckConfig', () => {
-    const namePlugin = 'collapse'
-
-    it('should check type of the config object', () => {
-      const defaultType = {
-        toggle: 'boolean',
-        parent: '(string|element)'
-      }
-      const config = {
-        toggle: true,
-        parent: 777
-      }
-
-      expect(() => {
-        Util.typeCheckConfig(namePlugin, config, defaultType)
-      }).toThrowError(TypeError, 'COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".')
-    })
-
-    it('should return null stringified when null is passed', () => {
-      const defaultType = {
-        toggle: 'boolean',
-        parent: '(null|element)'
-      }
-      const config = {
-        toggle: true,
-        parent: null
-      }
-
-      Util.typeCheckConfig(namePlugin, config, defaultType)
-      expect().nothing()
-    })
-
-    it('should return undefined stringified when undefined is passed', () => {
-      const defaultType = {
-        toggle: 'boolean',
-        parent: '(undefined|element)'
-      }
-      const config = {
-        toggle: true,
-        parent: undefined
-      }
-
-      Util.typeCheckConfig(namePlugin, config, defaultType)
-      expect().nothing()
-    })
-  })
-
   describe('isVisible', () => {
     it('should return false if the element is not defined', () => {
       expect(Util.isVisible(null)).toBeFalse()
