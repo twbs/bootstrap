@@ -642,8 +642,11 @@ describe('Modal', () => {
         modalEl.addEventListener('shown.bs.modal', () => {
           const spy = spyOn(modal, '_queueCallback').and.callThrough()
 
-          modalEl.click()
-          modalEl.click()
+          const mouseOverEvent = createEvent('mousedown')
+          const backdrop = document.querySelector('.modal-backdrop')
+
+          backdrop.dispatchEvent(mouseOverEvent)
+          backdrop.dispatchEvent(mouseOverEvent)
 
           setTimeout(() => {
             expect(spy).toHaveBeenCalledTimes(1)
@@ -710,9 +713,9 @@ describe('Modal', () => {
 
         const modalEl = fixtureEl.querySelector('.modal')
         const modal = new Modal(modalEl)
-
         modalEl.addEventListener('shown.bs.modal', () => {
-          modalEl.click()
+          const mouseOverEvent = createEvent('mousedown')
+          document.querySelector('.modal-backdrop').dispatchEvent(mouseOverEvent)
         })
 
         modalEl.addEventListener('hidden.bs.modal', () => {
