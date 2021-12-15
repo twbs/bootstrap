@@ -719,10 +719,6 @@ describe('Modal', () => {
         })
 
         modalEl.addEventListener('hidden.bs.modal', () => {
-          expect(modalEl.getAttribute('aria-modal')).toBeNull()
-          expect(modalEl.getAttribute('role')).toBeNull()
-          expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
-          expect(modalEl.style.display).toEqual('none')
           expect(document.querySelector('.modal-backdrop')).toBeNull()
           resolve()
         })
