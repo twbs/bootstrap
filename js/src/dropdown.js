@@ -397,14 +397,10 @@ class Dropdown extends BaseComponent {
       }
     }
 
-    const isActive = delegateTarget.classList.contains(CLASS_NAME_SHOW)
-
-    if (!isActive && isEscapeEvent) {
-      return
-    }
-
     event.preventDefault()
-    event.stopPropagation()
+    if (!isEscapeEvent) {
+      event.stopPropagation()
+    }
 
     const getToggleButton = SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, delegateTarget.parentNode)
     const instance = Dropdown.getOrCreateInstance(getToggleButton)
