@@ -5,30 +5,15 @@
  * --------------------------------------------------------------------------
  */
 
-import Alert from './src/alert'
-import Button from './src/button'
-import Carousel from './src/carousel'
-import Collapse from './src/collapse'
-import Dropdown from './src/dropdown'
-import Modal from './src/modal'
-import Popover from './src/popover'
-import Scrollspy from './src/scrollspy'
-import Tab from './src/tab'
-import Toast from './src/toast'
-import Tooltip from './src/tooltip'
-import Util from './src/util'
-
-export {
-  Util,
-  Alert,
-  Button,
-  Carousel,
-  Collapse,
-  Dropdown,
-  Modal,
-  Popover,
-  Scrollspy,
-  Tab,
-  Toast,
-  Tooltip
-}
+export { default as Alert } from './src/alert'
+export { default as Button } from './src/button'
+export { default as Carousel } from './src/carousel'
+export { default as Collapse } from './src/collapse'
+export { default as Dropdown } from './src/dropdown'
+export { default as Modal } from './src/modal'
+export { default as Popover } from './src/popover'
+export { default as Scrollspy } from './src/scrollspy'
+export { default as Tab } from './src/tab'
+export { default as Toast } from './src/toast'
+export { default as Tooltip } from './src/tooltip'
+export { default as Util } from './src/util'
