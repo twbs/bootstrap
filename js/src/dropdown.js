@@ -375,26 +375,20 @@ class Dropdown extends BaseComponent {
   }
 
   static dataApiKeydownHandler(event) {
-    // If not input/textarea:
-    //  - And not a key in UP | DOWN | ESCAPE => not a dropdown command
-    // If input/textarea && If key is other than ESCAPE
-    //    - If key is not UP or DOWN => not a dropdown command
-    //    - If trigger inside the menu => not a dropdown command
+    // If not input/textarea & not a key in UP | DOWN | ESCAPE => not a dropdown command
+    // If input/textarea && If key is other than ESCAPE  => not a dropdown command
 
     const { target, key, delegateTarget } = event
     const isInput = /input|textarea/i.test(target.tagName)
     const isEscapeEvent = key === ESCAPE_KEY
     const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(key)
 
-    if (!isInput && !(isUpOrDownEvent || isEscapeEvent)) {
+    if (!(isUpOrDownEvent || isEscapeEvent)) {
       return
     }
 
     if (isInput && !isEscapeEvent) {
-      // eslint-disable-next-line unicorn/no-lonely-if
-      if (!isUpOrDownEvent || target.closest(SELECTOR_MENU)) {
-        return
-      }
+      return
     }
 
     event.preventDefault()
