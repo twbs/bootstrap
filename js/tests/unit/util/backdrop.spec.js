@@ -169,8 +169,7 @@ describe('Backdrop', () => {
       }
 
       instance.show(() => {
-        const clickEvent = document.createEvent('MouseEvents')
-        clickEvent.initEvent('mousedown', true, true)
+        const clickEvent = new Event('mousedown', { bubbles: true, cancelable: true })
         document.querySelector(CLASS_BACKDROP).dispatchEvent(clickEvent)
         endTest()
       })

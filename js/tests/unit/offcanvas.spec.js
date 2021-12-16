@@ -191,8 +191,7 @@ describe('Offcanvas', () => {
       const offCanvasEl = fixtureEl.querySelector('div')
       const offCanvas = new Offcanvas(offCanvasEl, { backdrop: true })
 
-      const clickEvent = document.createEvent('MouseEvents')
-      clickEvent.initEvent('mousedown', true, true)
+      const clickEvent = new Event('mousedown', { bubbles: true, cancelable: true })
       spyOn(offCanvas._backdrop._config, 'clickCallback').and.callThrough()
 
       offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
