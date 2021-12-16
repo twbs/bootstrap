@@ -130,10 +130,10 @@ bootstrap/
 │   ├── css/
 │   └── js/
 ├── site/
-│   └──content/
-|      └── docs/
-|          └── {{< param docs_version >}}/
-|              └── examples/
+│   └── content/
+|       └── docs/
+|           └── {{< param docs_version >}}/
+|               └── examples/
 ├── js/
 └── scss/
 ```
