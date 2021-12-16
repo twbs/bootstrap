@@ -224,7 +224,6 @@ Scrollspy also works with `.list-group`s. Scroll the area next to the list group
 </div>
 ```
 
-
 ## Example with simple anchors
 
 Scrollspy also works with `anchor` elements. Scroll the area and watch the active class change.
@@ -327,8 +326,8 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 {{< callout warning >}}
 **Deprecated Options**
 
-Since 5.1 we [were using](https://getbootstrap.com/docs/5.1/components/scrollspy/#options) `offset` & `method` options, that are now deprecated, and replaced by `rootMargin`.
-To keep compatibility of them, we will continue parse, given `offset` to `rootMargin`, till **v6**
+Up until v5.1 we were using `offset` & `method` options, that are now deprecated and replaced by `rootMargin`.
+To keep backwards compatibility, we will continue to parse given `offset` to `rootMargin`, but this feature will be removed in **v6**.
 {{< /callout >}}
 
 ### Methods

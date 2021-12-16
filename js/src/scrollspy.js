@@ -56,7 +56,7 @@ class ScrollSpy extends BaseComponent {
   constructor(element, config) {
     super(element, config)
 
-    // this._element is the observablesContainer and config.target the menu-links wrapper
+    // this._element is the observablesContainer and config.target the menu links wrapper
     this._targetLinks = new Map()
     this._observableSections = new Map()
     this._activeTarget = null
@@ -103,7 +103,6 @@ class ScrollSpy extends BaseComponent {
   }
 
   // Private
-
   _configAfterMerge(config) {
     config.target = getElement(config.target)
 
@@ -178,7 +177,7 @@ class ScrollSpy extends BaseComponent {
     this._previousScrollData.parentScrollTop = parentScrollTop
   }
 
-  // todo : v6 Only for backwards compatibility reasons. Use rootMargin only
+  // todo: v6 Only for backwards compatibility reasons. Use rootMargin only
   _getRootMargin() {
     return this._config.offset ? `${this._config.offset}px 0px 0px` : this._config.rootMargin
   }
@@ -190,7 +189,7 @@ class ScrollSpy extends BaseComponent {
     const targetLinks = SelectorEngine.find(SELECTOR_TARGET_LINKS, this._config.target)
 
     for (const anchor of targetLinks) {
-      // ensure that anchor has id and not disabled
+      // ensure that the anchor has an id and is not disabled
       if (!anchor.hash.length || isDisabled(anchor)) {
         continue
       }
