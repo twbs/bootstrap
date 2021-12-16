@@ -132,7 +132,7 @@ bootstrap/
 ├── site/
 │   └──content/
 |      └──docs/
-|         └── 4.6/
+|         └── {{< param docs_version >}}/
 |             └── examples/
 ├── js/
 └── scss/
