@@ -284,7 +284,7 @@ const EventHandler = {
     const typeEvent = getTypeEvent(event)
     const inNamespace = event !== typeEvent
 
-    let jQueryEvent
+    let jQueryEvent = null
     let bubbles = true
     let nativeDispatch = true
     let defaultPrevented = false
@@ -319,7 +319,7 @@ const EventHandler = {
       element.dispatchEvent(evt)
     }
 
-    if (evt.defaultPrevented && typeof jQueryEvent !== 'undefined') {
+    if (evt.defaultPrevented && jQueryEvent) {
       jQueryEvent.preventDefault()
     }
 
