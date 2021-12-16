@@ -131,9 +131,9 @@ bootstrap/
 │   └── js/
 ├── site/
 │   └──content/
-|      └──docs/
-|         └── {{< param docs_version >}}/
-|             └── examples/
+|      └── docs/
+|          └── {{< param docs_version >}}/
+|              └── examples/
 ├── js/
 └── scss/
 ```
