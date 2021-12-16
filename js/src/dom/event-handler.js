@@ -285,11 +285,11 @@ const EventHandler = {
     const inNamespace = event !== typeEvent
     const isNative = nativeEvents.has(typeEvent)
 
-    let jQueryEvent
+    let evt = null
+    let jQueryEvent = null
     let bubbles = true
     let nativeDispatch = true
     let defaultPrevented = false
-    let evt = null
 
     if (inNamespace && $) {
       jQueryEvent = $.Event(event, args)
@@ -326,7 +326,7 @@ const EventHandler = {
       element.dispatchEvent(evt)
     }
 
-    if (evt.defaultPrevented && typeof jQueryEvent !== 'undefined') {
+    if (evt.defaultPrevented && jQueryEvent) {
       jQueryEvent.preventDefault()
     }
 
