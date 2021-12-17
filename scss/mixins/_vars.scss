@@ -1,7 +1,5 @@
 @mixin root-var($name, $value) {
-  $root-vars: map-merge($root-vars, (
-    #{$name}: $value
-  )) !global;
+  $root-vars: map-merge($root-vars, (#{$name}: $value)) !global;
 }
 
 @mixin set-var($name, $value) {
