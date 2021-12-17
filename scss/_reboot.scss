@@ -50,7 +50,7 @@ body {
   margin: 0; // 1
   font-family: get-var(body-font-family);
   font-size: get-var(body-font-size);
-  font-weight: get-var(body-font-weight);
+  font-weight: get-var(body-font-weight); // stylelint-disable-line font-weight-notation
   line-height: get-var(body-line-height);
   color: get-var(body-color);
   text-align: get-var(body-text-align);
