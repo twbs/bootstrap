@@ -1,43 +1,24 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): scrollspy.js
+ * Bootstrap (v5.1.3): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import {
-  defineJQueryPlugin,
-  getElement,
-  getSelectorFromElement,
-  typeCheckConfig
-} from './util/index'
+import { defineJQueryPlugin, getElement, getSelectorFromElement } from './util/index'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'scrollspy'
 const DATA_KEY = 'bs.scrollspy'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
-
-const Default = {
-  offset: 10,
-  method: 'auto',
-  target: ''
-}
-
-const DefaultType = {
-  offset: 'number',
-  method: 'string',
-  target: '(string|element)'
-}
 
 const EVENT_ACTIVATE = `activate${EVENT_KEY}`
 const EVENT_SCROLL = `scroll${EVENT_KEY}`
@@ -58,17 +39,26 @@ const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 const METHOD_OFFSET = 'offset'
 const METHOD_POSITION = 'position'
 
+const Default = {
+  offset: 10,
+  method: 'auto',
+  target: ''
+}
+
+const DefaultType = {
+  offset: 'number',
+  method: 'string',
+  target: '(string|element)'
+}
+
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class ScrollSpy extends BaseComponent {
   constructor(element, config) {
-    super(element)
+    super(element, config)
     this._scrollElement = this._element.tagName === 'BODY' ? window : this._element
-    this._config = this._getConfig(config)
     this._offsets = []
     this._targets = []
     this._activeTarget = null
@@ -81,9 +71,12 @@ class ScrollSpy extends BaseComponent {
   }
 
   // Getters
-
   static get Default() {
     return Default
+  }
+
+  static get DefaultType() {
+    return DefaultType
   }
 
   static get NAME() {
@@ -91,48 +84,36 @@ class ScrollSpy extends BaseComponent {
   }
 
   // Public
-
   refresh() {
-    const autoMethod = this._scrollElement === this._scrollElement.window ?
-      METHOD_OFFSET :
-      METHOD_POSITION
-
-    const offsetMethod = this._config.method === 'auto' ?
-      autoMethod :
-      this._config.method
-
-    const offsetBase = offsetMethod === METHOD_POSITION ?
-      this._getScrollTop() :
-      0
-
     this._offsets = []
     this._targets = []
     this._scrollHeight = this._getScrollHeight()
 
+    const autoMethod = this._scrollElement === this._scrollElement.window ? METHOD_OFFSET : METHOD_POSITION
+    const offsetMethod = this._config.method === 'auto' ? autoMethod : this._config.method
+    const offsetBase = offsetMethod === METHOD_POSITION ? this._getScrollTop() : 0
     const targets = SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target)
+      .map(element => {
+        const targetSelector = getSelectorFromElement(element)
+        const target = targetSelector ? SelectorEngine.findOne(targetSelector) : null
 
-    targets.map(element => {
-      const targetSelector = getSelectorFromElement(element)
-      const target = targetSelector ? SelectorEngine.findOne(targetSelector) : null
-
-      if (target) {
-        const targetBCR = target.getBoundingClientRect()
-        if (targetBCR.width || targetBCR.height) {
-          return [
-            Manipulator[offsetMethod](target).top + offsetBase,
-            targetSelector
-          ]
+        if (!target) {
+          return null
         }
-      }
 
-      return null
-    })
-      .filter(item => item)
-      .sort((a, b) => a[0] - b[0])
-      .forEach(item => {
-        this._offsets.push(item[0])
-        this._targets.push(item[1])
+        const targetBCR = target.getBoundingClientRect()
+
+        return targetBCR.width || targetBCR.height ?
+          [Manipulator[offsetMethod](target).top + offsetBase, targetSelector] :
+          null
       })
+        .filter(Boolean)
+        .sort((a, b) => a[0] - b[0])
+
+    for (const target of targets) {
+      this._offsets.push(target[0])
+      this._targets.push(target[1])
+    }
   }
 
   dispose() {
@@ -142,16 +123,8 @@ class ScrollSpy extends BaseComponent {
 
   // Private
 
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' && config ? config : {})
-    }
-
+  _configAfterMerge(config) {
     config.target = getElement(config.target) || document.documentElement
-
-    typeCheckConfig(NAME, config, DefaultType)
 
     return config
   }
@@ -200,7 +173,7 @@ class ScrollSpy extends BaseComponent {
       return
     }
 
-    for (let i = this._offsets.length; i--;) {
+    for (const i of this._offsets.keys()) {
       const isActiveTarget = this._activeTarget !== this._targets[i] &&
           scrollTop >= this._offsets[i] &&
           (typeof this._offsets[i + 1] === 'undefined' || scrollTop < this._offsets[i + 1])
@@ -226,20 +199,20 @@ class ScrollSpy extends BaseComponent {
       SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE, link.closest(SELECTOR_DROPDOWN))
         .classList.add(CLASS_NAME_ACTIVE)
     } else {
-      SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP)
-        .forEach(listGroup => {
-          // Set triggered links parents as active
-          // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
-          SelectorEngine.prev(listGroup, `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`)
-            .forEach(item => item.classList.add(CLASS_NAME_ACTIVE))
+      for (const listGroup of SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP)) {
+        // Set triggered links parents as active
+        // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
+        for (const item of SelectorEngine.prev(listGroup, `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`)) {
+          item.classList.add(CLASS_NAME_ACTIVE)
+        }
 
-          // Handle special case when .nav-link is inside .nav-item
-          SelectorEngine.prev(listGroup, SELECTOR_NAV_ITEMS)
-            .forEach(navItem => {
-              SelectorEngine.children(navItem, SELECTOR_NAV_LINKS)
-                .forEach(item => item.classList.add(CLASS_NAME_ACTIVE))
-            })
-        })
+        // Handle special case when .nav-link is inside .nav-item
+        for (const navItem of SelectorEngine.prev(listGroup, SELECTOR_NAV_ITEMS)) {
+          for (const item of SelectorEngine.children(navItem, SELECTOR_NAV_LINKS)) {
+            item.classList.add(CLASS_NAME_ACTIVE)
+          }
+        }
+      }
     }
 
     EventHandler.trigger(this._scrollElement, EVENT_ACTIVATE, {
@@ -248,13 +221,15 @@ class ScrollSpy extends BaseComponent {
   }
 
   _clear() {
-    SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target)
+    const activeNodes = SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target)
       .filter(node => node.classList.contains(CLASS_NAME_ACTIVE))
-      .forEach(node => node.classList.remove(CLASS_NAME_ACTIVE))
+
+    for (const node of activeNodes) {
+      node.classList.remove(CLASS_NAME_ACTIVE)
+    }
   }
 
   // Static
-
   static jQueryInterface(config) {
     return this.each(function () {
       const data = ScrollSpy.getOrCreateInstance(this, config)
@@ -273,21 +248,17 @@ class ScrollSpy extends BaseComponent {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
+ * Data API implementation
  */
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
-  SelectorEngine.find(SELECTOR_DATA_SPY)
-    .forEach(spy => new ScrollSpy(spy))
+  for (const spy of SelectorEngine.find(SELECTOR_DATA_SPY)) {
+    new ScrollSpy(spy) // eslint-disable-line no-new
+  }
 })
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
- * add .ScrollSpy to jQuery only if jQuery is present
  */
 
 defineJQueryPlugin(ScrollSpy)

@@ -335,7 +335,7 @@ While technically it's possible to add focusable/actionable controls (such as ad
 Initialize toasts via JavaScript:
 
 ```js
-var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+var toastElList = Array.prototype.slice.call(document.querySelectorAll('.toast'))
 var toastList = toastElList.map(function (toastEl) {
   return new bootstrap.Toast(toastEl, option)
 })
@@ -424,7 +424,7 @@ var myToast = bootstrap.Toast.getInstance(myToastEl) // Returns a Bootstrap toas
 
 #### getOrCreateInstance
 
-*Static* method which allows you to get the toast instance associated with a DOM element, or create a new one in case it wasn't initialised
+*Static* method which allows you to get the toast instance associated with a DOM element, or create a new one in case it wasn't initialized
 
 ```js
 var myToastEl = document.getElementById('myToastEl')

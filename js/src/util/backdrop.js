@@ -1,12 +1,22 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): util/backdrop.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Bootstrap (v5.1.3): util/backdrop.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import EventHandler from '../dom/event-handler'
-import { execute, executeAfterTransition, getElement, reflow, typeCheckConfig } from './index'
+import { execute, executeAfterTransition, getElement, reflow } from './index'
+import Config from './config'
+
+/**
+ * Constants
+ */
+
+const NAME = 'backdrop'
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_SHOW = 'show'
+const EVENT_MOUSEDOWN = `mousedown.bs.${NAME}`
 
 const Default = {
   className: 'modal-backdrop',
@@ -23,19 +33,33 @@ const DefaultType = {
   rootElement: '(element|string)',
   clickCallback: '(function|null)'
 }
-const NAME = 'backdrop'
-const CLASS_NAME_FADE = 'fade'
-const CLASS_NAME_SHOW = 'show'
 
-const EVENT_MOUSEDOWN = `mousedown.bs.${NAME}`
+/**
+ * Class definition
+ */
 
-class Backdrop {
+class Backdrop extends Config {
   constructor(config) {
+    super()
     this._config = this._getConfig(config)
     this._isAppended = false
     this._element = null
   }
 
+  // Getters
+  static get Default() {
+    return Default
+  }
+
+  static get DefaultType() {
+    return DefaultType
+  }
+
+  static get NAME() {
+    return NAME
+  }
+
+  // Public
   show(callback) {
     if (!this._config.isVisible) {
       execute(callback)
@@ -69,8 +93,18 @@ class Backdrop {
     })
   }
 
-  // Private
+  dispose() {
+    if (!this._isAppended) {
+      return
+    }
 
+    EventHandler.off(this._element, EVENT_MOUSEDOWN)
+
+    this._element.remove()
+    this._isAppended = false
+  }
+
+  // Private
   _getElement() {
     if (!this._element) {
       const backdrop = document.createElement('div')
@@ -85,15 +119,9 @@ class Backdrop {
     return this._element
   }
 
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...(typeof config === 'object' ? config : {})
-    }
-
+  _configAfterMerge(config) {
     // use getElement() with the default "body" to get a fresh Element on each instantiation
     config.rootElement = getElement(config.rootElement)
-    typeCheckConfig(NAME, config, DefaultType)
     return config
   }
 
@@ -109,17 +137,6 @@ class Backdrop {
     })
 
     this._isAppended = true
-  }
-
-  dispose() {
-    if (!this._isAppended) {
-      return
-    }
-
-    EventHandler.off(this._element, EVENT_MOUSEDOWN)
-
-    this._element.remove()
-    this._isAppended = false
   }
 
   _emulateAnimation(callback) {

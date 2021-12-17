@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap offcanvas.js v5.1.0 (https://getbootstrap.com/)
+  * Bootstrap offcanvas.js v5.1.3 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -7,18 +7,18 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/selector-engine.js'), require('./dom/manipulator.js'), require('./dom/event-handler.js'), require('./base-component.js')) :
   typeof define === 'function' && define.amd ? define(['./dom/selector-engine', './dom/manipulator', './dom/event-handler', './base-component'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Offcanvas = factory(global.SelectorEngine, global.Manipulator, global.EventHandler, global.Base));
-}(this, (function (SelectorEngine, Manipulator, EventHandler, BaseComponent) { 'use strict';
+})(this, (function (SelectorEngine, Manipulator, EventHandler, BaseComponent) { 'use strict';
 
-  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+  const _interopDefaultLegacy = e => e && typeof e === 'object' && 'default' in e ? e : { default: e };
 
-  var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
-  var Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
-  var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
-  var BaseComponent__default = /*#__PURE__*/_interopDefaultLegacy(BaseComponent);
+  const SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
+  const Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
+  const EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
+  const BaseComponent__default = /*#__PURE__*/_interopDefaultLegacy(BaseComponent);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.1.0): util/index.js
+   * Bootstrap (v5.1.3): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -250,7 +250,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.1.0): util/scrollBar.js
+   * Bootstrap (v5.1.3): util/scrollBar.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -319,18 +319,18 @@
       const actualValue = element.style[styleProp];
 
       if (actualValue) {
-        Manipulator__default['default'].setDataAttribute(element, styleProp, actualValue);
+        Manipulator__default.default.setDataAttribute(element, styleProp, actualValue);
       }
     }
 
     _resetElementAttributes(selector, styleProp) {
       const manipulationCallBack = element => {
-        const value = Manipulator__default['default'].getDataAttribute(element, styleProp);
+        const value = Manipulator__default.default.getDataAttribute(element, styleProp);
 
         if (typeof value === 'undefined') {
           element.style.removeProperty(styleProp);
         } else {
-          Manipulator__default['default'].removeDataAttribute(element, styleProp);
+          Manipulator__default.default.removeDataAttribute(element, styleProp);
           element.style[styleProp] = value;
         }
       };
@@ -342,7 +342,7 @@
       if (isElement(selector)) {
         callBack(selector);
       } else {
-        SelectorEngine__default['default'].find(selector, this._element).forEach(callBack);
+        SelectorEngine__default.default.find(selector, this._element).forEach(callBack);
       }
     }
 
@@ -354,8 +354,8 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.1.0): util/backdrop.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * Bootstrap (v5.1.3): util/backdrop.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   const Default$2 = {
@@ -452,7 +452,7 @@
 
       this._config.rootElement.append(this._getElement());
 
-      EventHandler__default['default'].on(this._getElement(), EVENT_MOUSEDOWN, () => {
+      EventHandler__default.default.on(this._getElement(), EVENT_MOUSEDOWN, () => {
         execute(this._config.clickCallback);
       });
       this._isAppended = true;
@@ -463,7 +463,7 @@
         return;
       }
 
-      EventHandler__default['default'].off(this._element, EVENT_MOUSEDOWN);
+      EventHandler__default.default.off(this._element, EVENT_MOUSEDOWN);
 
       this._element.remove();
 
@@ -478,8 +478,8 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.1.0): util/focustrap.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * Bootstrap (v5.1.3): util/focustrap.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   const Default$1 = {
@@ -521,10 +521,10 @@
         trapElement.focus();
       }
 
-      EventHandler__default['default'].off(document, EVENT_KEY$1); // guard against infinite focus loop
+      EventHandler__default.default.off(document, EVENT_KEY$1); // guard against infinite focus loop
 
-      EventHandler__default['default'].on(document, EVENT_FOCUSIN, event => this._handleFocusin(event));
-      EventHandler__default['default'].on(document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event));
+      EventHandler__default.default.on(document, EVENT_FOCUSIN, event => this._handleFocusin(event));
+      EventHandler__default.default.on(document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event));
       this._isActive = true;
     }
 
@@ -534,7 +534,7 @@
       }
 
       this._isActive = false;
-      EventHandler__default['default'].off(document, EVENT_KEY$1);
+      EventHandler__default.default.off(document, EVENT_KEY$1);
     } // Private
 
 
@@ -550,7 +550,7 @@
         return;
       }
 
-      const elements = SelectorEngine__default['default'].focusableChildren(trapElement);
+      const elements = SelectorEngine__default.default.focusableChildren(trapElement);
 
       if (elements.length === 0) {
         trapElement.focus();
@@ -581,7 +581,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.1.0): util/component-functions.js
+   * Bootstrap (v5.1.3): util/component-functions.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -589,7 +589,7 @@
   const enableDismissTrigger = (component, method = 'hide') => {
     const clickEvent = `click.dismiss${component.EVENT_KEY}`;
     const name = component.NAME;
-    EventHandler__default['default'].on(document, clickEvent, `[data-bs-dismiss="${name}"]`, function (event) {
+    EventHandler__default.default.on(document, clickEvent, `[data-bs-dismiss="${name}"]`, function (event) {
       if (['A', 'AREA'].includes(this.tagName)) {
         event.preventDefault();
       }
@@ -607,8 +607,8 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.1.0): offcanvas.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * Bootstrap (v5.1.3): offcanvas.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   /**
@@ -649,7 +649,7 @@
    * ------------------------------------------------------------------------
    */
 
-  class Offcanvas extends BaseComponent__default['default'] {
+  class Offcanvas extends BaseComponent__default.default {
     constructor(element, config) {
       super(element);
       this._config = this._getConfig(config);
@@ -679,7 +679,7 @@
         return;
       }
 
-      const showEvent = EventHandler__default['default'].trigger(this._element, EVENT_SHOW, {
+      const showEvent = EventHandler__default.default.trigger(this._element, EVENT_SHOW, {
         relatedTarget
       });
 
@@ -709,7 +709,7 @@
           this._focustrap.activate();
         }
 
-        EventHandler__default['default'].trigger(this._element, EVENT_SHOWN, {
+        EventHandler__default.default.trigger(this._element, EVENT_SHOWN, {
           relatedTarget
         });
       };
@@ -722,7 +722,7 @@
         return;
       }
 
-      const hideEvent = EventHandler__default['default'].trigger(this._element, EVENT_HIDE);
+      const hideEvent = EventHandler__default.default.trigger(this._element, EVENT_HIDE);
 
       if (hideEvent.defaultPrevented) {
         return;
@@ -751,7 +751,7 @@
           new ScrollBarHelper().reset();
         }
 
-        EventHandler__default['default'].trigger(this._element, EVENT_HIDDEN);
+        EventHandler__default.default.trigger(this._element, EVENT_HIDDEN);
       };
 
       this._queueCallback(completeCallback, this._element, true);
@@ -768,7 +768,7 @@
 
     _getConfig(config) {
       config = { ...Default,
-        ...Manipulator__default['default'].getDataAttributes(this._element),
+        ...Manipulator__default.default.getDataAttributes(this._element),
         ...(typeof config === 'object' ? config : {})
       };
       typeCheckConfig(NAME, config, DefaultType);
@@ -792,7 +792,7 @@
     }
 
     _addEventListeners() {
-      EventHandler__default['default'].on(this._element, EVENT_KEYDOWN_DISMISS, event => {
+      EventHandler__default.default.on(this._element, EVENT_KEYDOWN_DISMISS, event => {
         if (this._config.keyboard && event.key === ESCAPE_KEY) {
           this.hide();
         }
@@ -824,7 +824,7 @@
    */
 
 
-  EventHandler__default['default'].on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+  EventHandler__default.default.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
     const target = getElementFromSelector(this);
 
     if (['A', 'AREA'].includes(this.tagName)) {
@@ -835,14 +835,14 @@
       return;
     }
 
-    EventHandler__default['default'].one(target, EVENT_HIDDEN, () => {
+    EventHandler__default.default.one(target, EVENT_HIDDEN, () => {
       // focus on trigger when it is closed
       if (isVisible(this)) {
         this.focus();
       }
     }); // avoid conflict when clicking a toggler of an offcanvas, while another is open
 
-    const allReadyOpen = SelectorEngine__default['default'].findOne(OPEN_SELECTOR);
+    const allReadyOpen = SelectorEngine__default.default.findOne(OPEN_SELECTOR);
 
     if (allReadyOpen && allReadyOpen !== target) {
       Offcanvas.getInstance(allReadyOpen).hide();
@@ -851,7 +851,7 @@
     const data = Offcanvas.getOrCreateInstance(target);
     data.toggle(this);
   });
-  EventHandler__default['default'].on(window, EVENT_LOAD_DATA_API, () => SelectorEngine__default['default'].find(OPEN_SELECTOR).forEach(el => Offcanvas.getOrCreateInstance(el).show()));
+  EventHandler__default.default.on(window, EVENT_LOAD_DATA_API, () => SelectorEngine__default.default.find(OPEN_SELECTOR).forEach(el => Offcanvas.getOrCreateInstance(el).show()));
   enableDismissTrigger(Offcanvas);
   /**
    * ------------------------------------------------------------------------
@@ -863,5 +863,5 @@
 
   return Offcanvas;
 
-})));
+}));
 //# sourceMappingURL=offcanvas.js.map

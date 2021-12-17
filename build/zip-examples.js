@@ -57,22 +57,22 @@ sh.mkdir('-p', [
 
 sh.cp('-Rf', `${docsDir}/examples/*`, distFolder)
 
-cssFiles.forEach(file => {
+for (const file of cssFiles) {
   sh.cp('-f', `${docsDir}/dist/css/${file}`, `${distFolder}/assets/dist/css/`)
-})
+}
 
-jsFiles.forEach(file => {
+for (const file of jsFiles) {
   sh.cp('-f', `${docsDir}/dist/js/${file}`, `${distFolder}/assets/dist/js/`)
-})
+}
 
-imgFiles.forEach(file => {
+for (const file of imgFiles) {
   sh.cp('-f', `${docsDir}/assets/brand/${file}`, `${distFolder}/assets/brand/`)
-})
+}
 
 sh.rm(`${distFolder}/index.html`)
 
 // get all examples' HTML files
-sh.find(`${distFolder}/**/*.html`).forEach(file => {
+for (const file of sh.find(`${distFolder}/**/*.html`)) {
   const fileContents = sh.cat(file)
     .toString()
     .replace(new RegExp(`"/docs/${versionShort}/`, 'g'), '"../')
@@ -81,7 +81,7 @@ sh.find(`${distFolder}/**/*.html`).forEach(file => {
     .replace(/(<script src="\.\.\/.*) integrity=".*>/g, '$1></script>')
     .replace(/( +)<!-- favicons(.|\n)+<style>/i, '    <style>')
   new sh.ShellString(fileContents).to(file)
-})
+}
 
 // create the zip file
 sh.exec(`zip -r9 "${distFolder}.zip" "${distFolder}"`)

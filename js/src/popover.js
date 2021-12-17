@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): popover.js
+ * Bootstrap (v5.1.3): popover.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9,15 +9,15 @@ import { defineJQueryPlugin } from './util/index'
 import Tooltip from './tooltip'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'popover'
 const DATA_KEY = 'bs.popover'
 const EVENT_KEY = `.${DATA_KEY}`
-const CLASS_PREFIX = 'bs-popover'
+
+const SELECTOR_TITLE = '.popover-header'
+const SELECTOR_CONTENT = '.popover-body'
 
 const Default = {
   ...Tooltip.Default,
@@ -34,7 +34,7 @@ const Default = {
 
 const DefaultType = {
   ...Tooltip.DefaultType,
-  content: '(string|element|function)'
+  content: '(null|string|element|function)'
 }
 
 const Event = {
@@ -50,20 +50,18 @@ const Event = {
   MOUSELEAVE: `mouseleave${EVENT_KEY}`
 }
 
-const SELECTOR_TITLE = '.popover-header'
-const SELECTOR_CONTENT = '.popover-body'
-
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Popover extends Tooltip {
   // Getters
-
   static get Default() {
     return Default
+  }
+
+  static get DefaultType() {
+    return DefaultType
   }
 
   static get NAME() {
@@ -74,53 +72,43 @@ class Popover extends Tooltip {
     return Event
   }
 
-  static get DefaultType() {
-    return DefaultType
-  }
-
   // Overrides
-
-  isWithContent() {
-    return this.getTitle() || this._getContent()
-  }
-
-  setContent(tip) {
-    this._sanitizeAndSetContent(tip, this.getTitle(), SELECTOR_TITLE)
-    this._sanitizeAndSetContent(tip, this._getContent(), SELECTOR_CONTENT)
+  _isWithContent() {
+    return this._getTitle() || this._getContent()
   }
 
   // Private
+  _getContentForTemplate() {
+    return {
+      [SELECTOR_TITLE]: this._getTitle(),
+      [SELECTOR_CONTENT]: this._getContent()
+    }
+  }
 
   _getContent() {
     return this._resolvePossibleFunction(this._config.content)
   }
 
-  _getBasicClassPrefix() {
-    return CLASS_PREFIX
-  }
-
   // Static
-
   static jQueryInterface(config) {
     return this.each(function () {
       const data = Popover.getOrCreateInstance(this, config)
 
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-
-        data[config]()
+      if (typeof config !== 'string') {
+        return
       }
+
+      if (typeof data[config] === 'undefined') {
+        throw new TypeError(`No method named "${config}"`)
+      }
+
+      data[config]()
     })
   }
 }
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
- * add .Popover to jQuery only if jQuery is present
  */
 
 defineJQueryPlugin(Popover)

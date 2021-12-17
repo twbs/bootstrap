@@ -363,7 +363,10 @@ New utilities can be added to the default `$utilities` map with a `map-merge`. M
 ```scss
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities,
@@ -385,7 +388,10 @@ Modify existing utilities in the default `$utilities` map with `map-get` and `ma
 ```scss
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities,
@@ -410,7 +416,10 @@ You can enable responsive classes for an existing set of utilities that are not 
 ```scss
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities, (
@@ -461,7 +470,10 @@ Missing v4 utilities, or used to another naming convention? The utilities API ca
 ```scss
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities, (
@@ -480,7 +492,10 @@ Remove any of the default utilities by setting the group key to `null`. For exam
 ```scss
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities,

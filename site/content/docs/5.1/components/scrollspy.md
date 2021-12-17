@@ -278,7 +278,7 @@ Target elements that are not visible will be ignored and their corresponding nav
 When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:
 
 ```js
-var dataSpyList = [].slice.call(document.querySelectorAll('[data-bs-spy="scroll"]'))
+var dataSpyList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-spy="scroll"]'))
 dataSpyList.forEach(function (dataSpyEl) {
   bootstrap.ScrollSpy.getInstance(dataSpyEl)
     .refresh()
@@ -300,7 +300,7 @@ var scrollSpy = bootstrap.ScrollSpy.getInstance(scrollSpyContentEl) // Returns a
 
 #### getOrCreateInstance
 
-*Static* method which allows you to get the scrollspy instance associated with a DOM element, or create a new one in case it wasn't initialised
+*Static* method which allows you to get the scrollspy instance associated with a DOM element, or create a new one in case it wasn't initialized
 
 ```js
 var scrollSpyContentEl = document.getElementById('content')
