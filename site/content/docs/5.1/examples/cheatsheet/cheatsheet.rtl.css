@@ -96,9 +96,9 @@ body {
 @media (min-width: 1200px) {
   body {
     display: grid;
-    gap: 1rem;
-    grid-template-columns: 1fr 4fr 1fr;
     grid-template-rows: auto;
+    grid-template-columns: 1fr 4fr 1fr;
+    gap: 1rem;
   }
 
   .bd-header {
@@ -122,10 +122,10 @@ body {
   .bd-cheatsheet section,
   .bd-cheatsheet article {
     display: inherit; /* 1 */
-    gap: inherit; /* 1 */
+    grid-template-rows: auto;
     grid-template-columns: 1fr 4fr;
     grid-column: 1 / span 2;
-    grid-template-rows: auto;
+    gap: inherit; /* 1 */
   }
 
   .bd-aside {

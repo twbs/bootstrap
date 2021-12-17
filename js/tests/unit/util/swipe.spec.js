@@ -39,17 +39,17 @@ describe('Swipe', () => {
     fixtureEl = getFixture()
     const cssStyle = [
       '<style>',
-      '   #fixture .pointer-event {',
-      '     touch-action: pan-y;',
+      '  #fixture .pointer-event {',
+      '    touch-action: pan-y;',
       '  }',
-      '   #fixture div {',
-      '     width: 300px;',
-      '     height: 300px;',
+      '  #fixture div {',
+      '    width: 300px;',
+      '    height: 300px;',
       '  }',
       '</style>'
     ].join('')
 
-    fixtureEl.innerHTML = '<div id="swipeEl"></div>' + cssStyle
+    fixtureEl.innerHTML = `<div id="swipeEl"></div>${cssStyle}`
     swipeEl = fixtureEl.querySelector('div')
   })
 
@@ -266,7 +266,7 @@ describe('Swipe', () => {
       expect(Swipe.isSupported()).toBeTrue()
     })
 
-    it('should return "false" if "touchstart" not exists in document element and "navigator.maxTouchPoints" are  zero (0)', () => {
+    it('should return "false" if "touchstart" not exists in document element and "navigator.maxTouchPoints" are zero (0)', () => {
       Object.defineProperty(window.navigator, 'maxTouchPoints', () => 0)
       deleteDocumentElementOntouchstart()
 

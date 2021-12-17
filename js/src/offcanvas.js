@@ -9,14 +9,12 @@ import {
   defineJQueryPlugin,
   getElementFromSelector,
   isDisabled,
-  isVisible,
-  typeCheckConfig
+  isVisible
 } from './util/index'
 import ScrollBarHelper from './util/scrollbar'
 import EventHandler from './dom/event-handler'
 import BaseComponent from './base-component'
 import SelectorEngine from './dom/selector-engine'
-import Manipulator from './dom/manipulator'
 import Backdrop from './util/backdrop'
 import FocusTrap from './util/focustrap'
 import { enableDismissTrigger } from './util/component-functions'
@@ -63,9 +61,8 @@ const DefaultType = {
 
 class Offcanvas extends BaseComponent {
   constructor(element, config) {
-    super(element)
+    super(element, config)
 
-    this._config = this._getConfig(config)
     this._isShown = false
     this._backdrop = this._initializeBackDrop()
     this._focustrap = this._initializeFocusTrap()
@@ -73,12 +70,16 @@ class Offcanvas extends BaseComponent {
   }
 
   // Getters
-  static get NAME() {
-    return NAME
-  }
-
   static get Default() {
     return Default
+  }
+
+  static get DefaultType() {
+    return DefaultType
+  }
+
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -162,16 +163,6 @@ class Offcanvas extends BaseComponent {
   }
 
   // Private
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' ? config : {})
-    }
-    typeCheckConfig(NAME, config, DefaultType)
-    return config
-  }
-
   _initializeBackDrop() {
     return new Backdrop({
       className: CLASS_NAME_BACKDROP,
