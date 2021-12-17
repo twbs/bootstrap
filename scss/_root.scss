@@ -53,5 +53,4 @@
   @each $var, $value in $root-vars {
     --#{$variable-prefix}#{$var}: #{$value};
   }
-  // stylelint-enable custom-property-empty-line-before
 }
