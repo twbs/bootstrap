@@ -35,7 +35,6 @@
   @include root-var(gradient, $gradient);
 
   // Root and body
-  // stylelint-disable custom-property-empty-line-before
   // scss-docs-start root-body-variables
   @if $font-size-root != null {
     @include root-var(root-font-size, $font-size-root);
