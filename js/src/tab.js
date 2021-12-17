@@ -5,12 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import {
-  defineJQueryPlugin,
-  getElementFromSelector,
-  isDisabled,
-  reflow
-} from './util/index'
+import { defineJQueryPlugin, getElementFromSelector, isDisabled, reflow } from './util/index'
 import EventHandler from './dom/event-handler'
 import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
@@ -55,15 +50,15 @@ class Tab extends BaseComponent {
 
   // Public
   show() {
-    if ((this._element.parentNode &&
+    if (this._element.parentNode &&
       this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
-      this._element.classList.contains(CLASS_NAME_ACTIVE))) {
+      this._element.classList.contains(CLASS_NAME_ACTIVE)) {
       return
     }
 
-    let previous
     const target = getElementFromSelector(this._element)
     const listElement = this._element.closest(SELECTOR_NAV_LIST_GROUP)
+    let previous
 
     if (listElement) {
       const itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? SELECTOR_ACTIVE_UL : SELECTOR_ACTIVE
@@ -75,9 +70,7 @@ class Tab extends BaseComponent {
       EventHandler.trigger(previous, EVENT_HIDE, { relatedTarget: this._element }) :
       null
 
-    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
-      relatedTarget: previous
-    })
+    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, { relatedTarget: previous })
 
     if (showEvent.defaultPrevented || (hideEvent !== null && hideEvent.defaultPrevented)) {
       return

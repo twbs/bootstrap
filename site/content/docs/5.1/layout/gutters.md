@@ -137,7 +137,7 @@ Gutter classes can also be added to [row columns]({{< docsref "/layout/grid#row-
 
 The gutters between columns in our predefined grid classes can be removed with `.g-0`. This removes the negative `margin`s from `.row` and the horizontal `padding` from all immediate children columns.
 
-**Need an edge-to-edge design?** Drop the parent `.container` or `.container-fluid`.
+**Need an edge-to-edge design?** Drop the parent `.container` or `.container-fluid` and add `.mx-0` to the `.row` to prevent overflow.
 
 In practice, here's how it looks. Note you can continue to use this with all other predefined grid classes (including column widths, responsive tiers, reorders, and more).
 

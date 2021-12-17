@@ -24,7 +24,7 @@ Position an element at the bottom of the viewport, from edge to edge. Be sure yo
 
 ## Sticky top
 
-Position an element at the top of the viewport, from edge to edge, but only after you scroll past it. The `.sticky-top` utility uses CSS's `position: sticky`, which isn't fully supported in all browsers.
+Position an element at the top of the viewport, from edge to edge, but only after you scroll past it.
 
 ```html
 <div class="sticky-top">...</div>
@@ -39,4 +39,23 @@ Responsive variations also exist for `.sticky-top` utility.
 <div class="sticky-md-top">Stick to the top on viewports sized MD (medium) or wider</div>
 <div class="sticky-lg-top">Stick to the top on viewports sized LG (large) or wider</div>
 <div class="sticky-xl-top">Stick to the top on viewports sized XL (extra-large) or wider</div>
+```
+
+## Sticky bottom
+
+Position an element at the bottom of the viewport, from edge to edge, but only after you scroll past it.
+
+```html
+<div class="sticky-bottom">...</div>
+```
+
+## Responsive sticky bottom
+
+Responsive variations also exist for `.sticky-bottom` utility.
+
+```html
+<div class="sticky-sm-bottom">Stick to the bottom on viewports sized SM (small) or wider</div>
+<div class="sticky-md-bottom">Stick to the bottom on viewports sized MD (medium) or wider</div>
+<div class="sticky-lg-bottom">Stick to the bottom on viewports sized LG (large) or wider</div>
+<div class="sticky-xl-bottom">Stick to the bottom on viewports sized XL (extra-large) or wider</div>
 ```

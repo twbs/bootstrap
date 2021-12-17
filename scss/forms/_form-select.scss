@@ -7,7 +7,6 @@
   display: block;
   width: 100%;
   padding: $form-select-padding-y $form-select-indicator-padding $form-select-padding-y $form-select-padding-x;
-  // stylelint-disable-next-line property-no-vendor-prefix
   -moz-padding-start: subtract($form-select-padding-x, 3px); // See https://github.com/twbs/bootstrap/issues/32636
   font-family: $form-select-font-family;
   @include font-size($form-select-font-size);

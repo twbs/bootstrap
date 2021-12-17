@@ -34,7 +34,7 @@ const Default = {
 
 const DefaultType = {
   ...Tooltip.DefaultType,
-  content: '(string|element|function)'
+  content: '(null|string|element|function)'
 }
 
 const Event = {
@@ -60,6 +60,10 @@ class Popover extends Tooltip {
     return Default
   }
 
+  static get DefaultType() {
+    return DefaultType
+  }
+
   static get NAME() {
     return NAME
   }
@@ -68,19 +72,15 @@ class Popover extends Tooltip {
     return Event
   }
 
-  static get DefaultType() {
-    return DefaultType
-  }
-
   // Overrides
-  isWithContent() {
-    return this.getTitle() || this._getContent()
+  _isWithContent() {
+    return this._getTitle() || this._getContent()
   }
 
   // Private
   _getContentForTemplate() {
     return {
-      [SELECTOR_TITLE]: this.getTitle(),
+      [SELECTOR_TITLE]: this._getTitle(),
       [SELECTOR_CONTENT]: this._getContent()
     }
   }
@@ -94,13 +94,15 @@ class Popover extends Tooltip {
     return this.each(function () {
       const data = Popover.getOrCreateInstance(this, config)
 
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-
-        data[config]()
+      if (typeof config !== 'string') {
+        return
       }
+
+      if (typeof data[config] === 'undefined') {
+        throw new TypeError(`No method named "${config}"`)
+      }
+
+      data[config]()
     })
   }
 }
