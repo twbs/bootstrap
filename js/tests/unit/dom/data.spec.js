@@ -1,6 +1,4 @@
 import Data from '../../../src/dom/data'
-
-/** Test helpers */
 import { getFixture, clearFixture } from '../../helpers/fixture'
 
 describe('Data', () => {
@@ -52,7 +50,7 @@ describe('Data', () => {
 
     Data.set(div, TEST_KEY, data)
 
-    expect(Data.get(div, TEST_KEY)).toBe(data)
+    expect(Data.get(div, TEST_KEY)).toEqual(data)
   })
 
   it('should overwrite data if something is already stored', () => {
@@ -62,11 +60,12 @@ describe('Data', () => {
     Data.set(div, TEST_KEY, data)
     Data.set(div, TEST_KEY, copy)
 
+    // Using `toBe` since spread creates a shallow copy
     expect(Data.get(div, TEST_KEY)).not.toBe(data)
     expect(Data.get(div, TEST_KEY)).toBe(copy)
   })
 
-  it('should do nothing when an element have nothing stored', () => {
+  it('should do nothing when an element has nothing stored', () => {
     Data.remove(div, TEST_KEY)
 
     expect().nothing()
@@ -78,7 +77,7 @@ describe('Data', () => {
     Data.set(div, TEST_KEY, data)
     Data.remove(div, UNKNOWN_KEY)
 
-    expect(Data.get(div, TEST_KEY)).toBe(data)
+    expect(Data.get(div, TEST_KEY)).toEqual(data)
   })
 
   it('should remove data for a given key', () => {
@@ -90,8 +89,8 @@ describe('Data', () => {
     expect(Data.get(div, TEST_KEY)).toBeNull()
   })
 
+  /* eslint-disable no-console */
   it('should console.error a message if called with multiple keys', () => {
-    /* eslint-disable no-console */
     console.error = jasmine.createSpy('console.error')
 
     const data = { ...TEST_DATA }
@@ -101,6 +100,7 @@ describe('Data', () => {
     Data.set(div, UNKNOWN_KEY, copy)
 
     expect(console.error).toHaveBeenCalled()
-    expect(Data.get(div, UNKNOWN_KEY)).toBe(null)
+    expect(Data.get(div, UNKNOWN_KEY)).toBeNull()
   })
+  /* eslint-enable no-console */
 })

@@ -8,11 +8,7 @@ const { babel } = require('@rollup/plugin-babel')
 const istanbul = require('rollup-plugin-istanbul')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
 const replace = require('@rollup/plugin-replace')
-
-const {
-  browsers,
-  browsersKeys
-} = require('./browsers')
+const { browsers } = require('./browsers')
 
 const ENV = process.env
 const BROWSERSTACK = Boolean(ENV.BROWSERSTACK)
@@ -98,7 +94,8 @@ const conf = {
     output: {
       format: 'iife',
       name: 'bootstrapTest',
-      sourcemap: 'inline'
+      sourcemap: 'inline',
+      generatedCode: 'es2015'
     }
   }
 }
@@ -108,13 +105,13 @@ if (BROWSERSTACK) {
   conf.browserStack = {
     username: ENV.BROWSER_STACK_USERNAME,
     accessKey: ENV.BROWSER_STACK_ACCESS_KEY,
-    build: `bootstrap-${new Date().toISOString()}`,
+    build: `bootstrap-${ENV.GITHUB_SHA ? ENV.GITHUB_SHA.slice(0, 7) + '-' : ''}${new Date().toISOString()}`,
     project: 'Bootstrap',
     retryLimit: 2
   }
   plugins.push('karma-browserstack-launcher', 'karma-jasmine-html-reporter')
   conf.customLaunchers = browsers
-  conf.browsers = browsersKeys
+  conf.browsers = Object.keys(browsers)
   reporters.push('BrowserStack', 'kjhtml')
 } else if (JQUERY_TEST) {
   frameworks.push('detectBrowsers')

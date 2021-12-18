@@ -1,7 +1,6 @@
 import Popover from '../../src/popover'
-
-/** Test helpers */
-import { getFixture, clearFixture, jQueryMock } from '../helpers/fixture'
+import EventHandler from '../../src/dom/event-handler'
+import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Popover', () => {
   let fixtureEl
@@ -15,9 +14,9 @@ describe('Popover', () => {
 
     const popoverList = document.querySelectorAll('.popover')
 
-    popoverList.forEach(popoverEl => {
-      document.body.removeChild(popoverEl)
-    })
+    for (const popoverEl of popoverList) {
+      popoverEl.remove()
+    }
   })
 
   describe('VERSION', () => {
@@ -98,22 +97,125 @@ describe('Popover', () => {
       popover.show()
     })
 
-    it('should show a popover with just content', done => {
-      fixtureEl.innerHTML = '<a href="#">BS twitter</a>'
+    it('should show a popover with just content without having header', done => {
+      fixtureEl.innerHTML = '<a href="#">Nice link</a>'
 
       const popoverEl = fixtureEl.querySelector('a')
       const popover = new Popover(popoverEl, {
-        content: 'Popover content'
+        content: 'Some beautiful content :)'
       })
 
       popoverEl.addEventListener('shown.bs.popover', () => {
         const popoverDisplayed = document.querySelector('.popover')
 
         expect(popoverDisplayed).not.toBeNull()
-        expect(popoverDisplayed.querySelector('.popover-body').textContent).toEqual('Popover content')
+        expect(popoverDisplayed.querySelector('.popover-header')).toBeNull()
+        expect(popoverDisplayed.querySelector('.popover-body').textContent).toEqual('Some beautiful content :)')
         done()
       })
 
+      popover.show()
+    })
+
+    it('should show a popover with just title without having body', done => {
+      fixtureEl.innerHTML = '<a href="#">Nice link</a>'
+
+      const popoverEl = fixtureEl.querySelector('a')
+      const popover = new Popover(popoverEl, {
+        title: 'Title which does not require content'
+      })
+
+      popoverEl.addEventListener('shown.bs.popover', () => {
+        const popoverDisplayed = document.querySelector('.popover')
+
+        expect(popoverDisplayed).not.toBeNull()
+        expect(popoverDisplayed.querySelector('.popover-body')).toBeNull()
+        expect(popoverDisplayed.querySelector('.popover-header').textContent).toEqual('Title which does not require content')
+        done()
+      })
+
+      popover.show()
+    })
+
+    it('should show a popover with just title without having body using data-attribute to get config', done => {
+      fixtureEl.innerHTML = '<a href="#" data-bs-content="" title="Title which does not require content">Nice link</a>'
+
+      const popoverEl = fixtureEl.querySelector('a')
+      const popover = new Popover(popoverEl)
+
+      popoverEl.addEventListener('shown.bs.popover', () => {
+        const popoverDisplayed = document.querySelector('.popover')
+
+        expect(popoverDisplayed).not.toBeNull()
+        expect(popoverDisplayed.querySelector('.popover-body')).toBeNull()
+        expect(popoverDisplayed.querySelector('.popover-header').textContent).toEqual('Title which does not require content')
+        done()
+      })
+
+      popover.show()
+    })
+
+    it('should NOT show a popover without `title` and `content`', done => {
+      fixtureEl.innerHTML = '<a href="#" data-bs-content="" title="">Nice link</a>'
+
+      const popoverEl = fixtureEl.querySelector('a')
+      const popover = new Popover(popoverEl, { animation: false })
+      spyOn(EventHandler, 'trigger').and.callThrough()
+
+      setTimeout(() => {
+        expect(EventHandler.trigger).not.toHaveBeenCalled()
+        expect(document.querySelector('.popover')).toBeNull()
+        done()
+      })
+
+      popover.show()
+    })
+
+    it('"setContent" should keep the initial template', () => {
+      fixtureEl.innerHTML = '<a href="#" title="Popover" data-bs-content="https://twitter.com/getbootstrap" data-bs-custom-class="custom-class">BS twitter</a>'
+
+      const popoverEl = fixtureEl.querySelector('a')
+      const popover = new Popover(popoverEl)
+
+      popover.setContent({ '.tooltip-inner': 'foo' })
+      const tip = popover._getTipElement()
+
+      expect(tip).toHaveClass('popover')
+      expect(tip).toHaveClass('bs-popover-auto')
+      expect(tip.querySelector('.popover-arrow')).not.toBeNull()
+      expect(tip.querySelector('.popover-header')).not.toBeNull()
+      expect(tip.querySelector('.popover-body')).not.toBeNull()
+    })
+
+    it('should call setContent once', done => {
+      fixtureEl.innerHTML = '<a href="#">BS twitter</a>'
+
+      const popoverEl = fixtureEl.querySelector('a')
+      const popover = new Popover(popoverEl, {
+        content: 'Popover content'
+      })
+      expect(popover._templateFactory).toBeNull()
+      let spy = null
+      let times = 1
+
+      popoverEl.addEventListener('hidden.bs.popover', () => {
+        popover.show()
+      })
+
+      popoverEl.addEventListener('shown.bs.popover', () => {
+        spy = spy || spyOn(popover._templateFactory, 'constructor').and.callThrough()
+        const popoverDisplayed = document.querySelector('.popover')
+
+        expect(popoverDisplayed).not.toBeNull()
+        expect(popoverDisplayed.querySelector('.popover-body').textContent).toEqual('Popover content')
+        expect(spy).toHaveBeenCalledTimes(0)
+        if (times > 1) {
+          done()
+        }
+
+        times++
+        popover.hide()
+      })
       popover.show()
     })
 
@@ -126,7 +228,7 @@ describe('Popover', () => {
       popoverEl.addEventListener('shown.bs.popover', () => {
         const tip = document.querySelector('.popover')
         expect(tip).not.toBeNull()
-        expect(tip.classList.contains('custom-class')).toBeTrue()
+        expect(tip).toHaveClass('custom-class')
         done()
       })
 
@@ -226,21 +328,6 @@ describe('Popover', () => {
 
       expect(popover.show).toHaveBeenCalled()
     })
-
-    it('should do nothing if dipose is called when a popover do not exist', () => {
-      fixtureEl.innerHTML = '<a href="#" title="Popover" data-bs-content="https://twitter.com/getbootstrap">BS twitter</a>'
-
-      const popoverEl = fixtureEl.querySelector('a')
-
-      jQueryMock.fn.popover = Popover.jQueryInterface
-      jQueryMock.elements = [popoverEl]
-
-      spyOn(Popover.prototype, 'dispose')
-
-      jQueryMock.fn.popover.call(jQueryMock, 'dispose')
-
-      expect(Popover.prototype.dispose).not.toHaveBeenCalled()
-    })
   })
 
   describe('getInstance', () => {
@@ -259,7 +346,61 @@ describe('Popover', () => {
 
       const popoverEl = fixtureEl.querySelector('a')
 
-      expect(Popover.getInstance(popoverEl)).toEqual(null)
+      expect(Popover.getInstance(popoverEl)).toBeNull()
+    })
+  })
+
+  describe('getOrCreateInstance', () => {
+    it('should return popover instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const popover = new Popover(div)
+
+      expect(Popover.getOrCreateInstance(div)).toEqual(popover)
+      expect(Popover.getInstance(div)).toEqual(Popover.getOrCreateInstance(div, {}))
+      expect(Popover.getOrCreateInstance(div)).toBeInstanceOf(Popover)
+    })
+
+    it('should return new instance when there is no popover instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Popover.getInstance(div)).toBeNull()
+      expect(Popover.getOrCreateInstance(div)).toBeInstanceOf(Popover)
+    })
+
+    it('should return new instance when there is no popover instance with given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Popover.getInstance(div)).toBeNull()
+      const popover = Popover.getOrCreateInstance(div, {
+        placement: 'top'
+      })
+      expect(popover).toBeInstanceOf(Popover)
+
+      expect(popover._config.placement).toEqual('top')
+    })
+
+    it('should return the instance when exists without given configuration', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const popover = new Popover(div, {
+        placement: 'top'
+      })
+      expect(Popover.getInstance(div)).toEqual(popover)
+
+      const popover2 = Popover.getOrCreateInstance(div, {
+        placement: 'bottom'
+      })
+      expect(popover).toBeInstanceOf(Popover)
+      expect(popover2).toEqual(popover)
+
+      expect(popover2._config.placement).toEqual('top')
     })
   })
 })

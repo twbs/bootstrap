@@ -1,6 +1,4 @@
 import EventHandler from '../../../src/dom/event-handler'
-
-/** Test helpers */
 import { getFixture, clearFixture } from '../../helpers/fixture'
 
 describe('EventHandler', () => {
@@ -88,7 +86,7 @@ describe('EventHandler', () => {
         '</div>',
         '<div class="sibling"></div>',
         '</div>'
-      ]
+      ].join('')
 
       const outer = fixtureEl.querySelector('.outer')
       const inner = fixtureEl.querySelector('.inner')
@@ -107,10 +105,10 @@ describe('EventHandler', () => {
       EventHandler.on(outer, 'mouseleave', '.inner', delegateLeaveSpy)
 
       EventHandler.on(sibling, 'mouseenter', () => {
-        expect(enterSpy.calls.count()).toBe(2)
-        expect(leaveSpy.calls.count()).toBe(2)
-        expect(delegateEnterSpy.calls.count()).toBe(2)
-        expect(delegateLeaveSpy.calls.count()).toBe(2)
+        expect(enterSpy.calls.count()).toEqual(2)
+        expect(leaveSpy.calls.count()).toEqual(2)
+        expect(delegateEnterSpy.calls.count()).toEqual(2)
+        expect(delegateLeaveSpy.calls.count()).toEqual(2)
         done()
       })
 
@@ -135,10 +133,10 @@ describe('EventHandler', () => {
       moveMouse(inner, outer)
 
       setTimeout(() => {
-        expect(enterSpy.calls.count()).toBe(1)
-        expect(leaveSpy.calls.count()).toBe(1)
-        expect(delegateEnterSpy.calls.count()).toBe(1)
-        expect(delegateLeaveSpy.calls.count()).toBe(1)
+        expect(enterSpy.calls.count()).toEqual(1)
+        expect(leaveSpy.calls.count()).toEqual(1)
+        expect(delegateEnterSpy.calls.count()).toEqual(1)
+        expect(delegateLeaveSpy.calls.count()).toEqual(1)
 
         // from outer to inner to sibling (adjacent)
         moveMouse(outer, inner)
@@ -368,10 +366,10 @@ describe('EventHandler', () => {
     it('should remove the correct delegated event listener', () => {
       const element = document.createElement('div')
       const subelement = document.createElement('span')
-      element.appendChild(subelement)
+      element.append(subelement)
 
       const anchor = document.createElement('a')
-      element.appendChild(anchor)
+      element.append(anchor)
 
       let i = 0
       const handler = () => {
@@ -381,7 +379,7 @@ describe('EventHandler', () => {
       EventHandler.on(element, 'click', 'a', handler)
       EventHandler.on(element, 'click', 'span', handler)
 
-      fixtureEl.appendChild(element)
+      fixtureEl.append(element)
 
       EventHandler.trigger(anchor, 'click')
       EventHandler.trigger(subelement, 'click')

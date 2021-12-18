@@ -10,11 +10,11 @@
   box-shadow: $toast-box-shadow;
   @include border-radius($toast-border-radius);
 
-  &:not(.showing):not(.show) {
+  &.showing {
     opacity: 0;
   }
 
-  &.hide {
+  &:not(.show) {
     display: none;
   }
 }
@@ -40,7 +40,7 @@
   @include border-top-radius(subtract($toast-border-radius, $toast-border-width));
 
   .btn-close {
-    margin-right: $toast-padding-x / -2;
+    margin-right: $toast-padding-x * -.5;
     margin-left: $toast-padding-x;
   }
 }

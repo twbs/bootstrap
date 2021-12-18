@@ -43,7 +43,8 @@ const rollupConfig = {
     banner,
     file: path.resolve(__dirname, `../dist/js/${fileDest}.js`),
     format: ESM ? 'esm' : 'umd',
-    globals
+    globals,
+    generatedCode: 'es2015'
   },
   external,
   plugins

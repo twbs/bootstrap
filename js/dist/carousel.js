@@ -1,29 +1,27 @@
 /*!
-  * Bootstrap carousel.js v5.0.0 (https://getbootstrap.com/)
+  * Bootstrap carousel.js v5.1.3 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js'), require('./base-component.js')) :
-  typeof define === 'function' && define.amd ? define(['./dom/data', './dom/event-handler', './dom/manipulator', './dom/selector-engine', './base-component'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Carousel = factory(global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine, global.Base));
-}(this, (function (Data, EventHandler, Manipulator, SelectorEngine, BaseComponent) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js'), require('./base-component.js')) :
+  typeof define === 'function' && define.amd ? define(['./dom/event-handler', './dom/manipulator', './dom/selector-engine', './base-component'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Carousel = factory(global.EventHandler, global.Manipulator, global.SelectorEngine, global.Base));
+})(this, (function (EventHandler, Manipulator, SelectorEngine, BaseComponent) { 'use strict';
 
-  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+  const _interopDefaultLegacy = e => e && typeof e === 'object' && 'default' in e ? e : { default: e };
 
-  var Data__default = /*#__PURE__*/_interopDefaultLegacy(Data);
-  var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
-  var Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
-  var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
-  var BaseComponent__default = /*#__PURE__*/_interopDefaultLegacy(BaseComponent);
+  const EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
+  const Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
+  const SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
+  const BaseComponent__default = /*#__PURE__*/_interopDefaultLegacy(BaseComponent);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): util/index.js
+   * Bootstrap (v5.1.3): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
-  const MILLISECONDS_MULTIPLIER = 1000;
   const TRANSITION_END = 'transitionend'; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
   const toType = obj => {
@@ -63,51 +61,20 @@
     return selector ? document.querySelector(selector) : null;
   };
 
-  const getTransitionDurationFromElement = element => {
-    if (!element) {
-      return 0;
-    } // Get transition-duration of the element
-
-
-    let {
-      transitionDuration,
-      transitionDelay
-    } = window.getComputedStyle(element);
-    const floatTransitionDuration = Number.parseFloat(transitionDuration);
-    const floatTransitionDelay = Number.parseFloat(transitionDelay); // Return 0 if element or transition duration is not found
-
-    if (!floatTransitionDuration && !floatTransitionDelay) {
-      return 0;
-    } // If multiple durations are defined, take the first
-
-
-    transitionDuration = transitionDuration.split(',')[0];
-    transitionDelay = transitionDelay.split(',')[0];
-    return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER;
-  };
-
   const triggerTransitionEnd = element => {
     element.dispatchEvent(new Event(TRANSITION_END));
   };
 
-  const isElement = obj => (obj[0] || obj).nodeType;
-
-  const emulateTransitionEnd = (element, duration) => {
-    let called = false;
-    const durationPadding = 5;
-    const emulatedDuration = duration + durationPadding;
-
-    function listener() {
-      called = true;
-      element.removeEventListener(TRANSITION_END, listener);
+  const isElement = obj => {
+    if (!obj || typeof obj !== 'object') {
+      return false;
     }
 
-    element.addEventListener(TRANSITION_END, listener);
-    setTimeout(() => {
-      if (!called) {
-        triggerTransitionEnd(element);
-      }
-    }, emulatedDuration);
+    if (typeof obj.jquery !== 'undefined') {
+      obj = obj[0];
+    }
+
+    return typeof obj.nodeType !== 'undefined';
   };
 
   const typeCheckConfig = (componentName, config, configTypes) => {
@@ -123,20 +90,26 @@
   };
 
   const isVisible = element => {
-    if (!element) {
+    if (!isElement(element) || element.getClientRects().length === 0) {
       return false;
     }
 
-    if (element.style && element.parentNode && element.parentNode.style) {
-      const elementStyle = getComputedStyle(element);
-      const parentNodeStyle = getComputedStyle(element.parentNode);
-      return elementStyle.display !== 'none' && parentNodeStyle.display !== 'none' && elementStyle.visibility !== 'hidden';
-    }
-
-    return false;
+    return getComputedStyle(element).getPropertyValue('visibility') === 'visible';
   };
+  /**
+   * Trick to restart an element's animation
+   *
+   * @param {HTMLElement} element
+   * @return void
+   *
+   * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
+   */
 
-  const reflow = element => element.offsetHeight;
+
+  const reflow = element => {
+    // eslint-disable-next-line no-unused-expressions
+    element.offsetHeight;
+  };
 
   const getjQuery = () => {
     const {
@@ -150,9 +123,18 @@
     return null;
   };
 
+  const DOMContentLoadedCallbacks = [];
+
   const onDOMContentLoaded = callback => {
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', callback);
+      // add listener on the first call when the document is in loading state
+      if (!DOMContentLoadedCallbacks.length) {
+        document.addEventListener('DOMContentLoaded', () => {
+          DOMContentLoadedCallbacks.forEach(callback => callback());
+        });
+      }
+
+      DOMContentLoadedCallbacks.push(callback);
     } else {
       callback();
     }
@@ -160,12 +142,13 @@
 
   const isRTL = () => document.documentElement.dir === 'rtl';
 
-  const defineJQueryPlugin = (name, plugin) => {
+  const defineJQueryPlugin = plugin => {
     onDOMContentLoaded(() => {
       const $ = getjQuery();
       /* istanbul ignore if */
 
       if ($) {
+        const name = plugin.NAME;
         const JQUERY_NO_CONFLICT = $.fn[name];
         $.fn[name] = plugin.jQueryInterface;
         $.fn[name].Constructor = plugin;
@@ -177,10 +160,37 @@
       }
     });
   };
+  /**
+   * Return the previous/next element of a list.
+   *
+   * @param {array} list    The list of elements
+   * @param activeElement   The active element
+   * @param shouldGetNext   Choose to get next or previous element
+   * @param isCycleAllowed
+   * @return {Element|elem} The proper element
+   */
+
+
+  const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
+    let index = list.indexOf(activeElement); // if the element does not exist in the list return an element depending on the direction and if cycle is allowed
+
+    if (index === -1) {
+      return list[!shouldGetNext && isCycleAllowed ? list.length - 1 : 0];
+    }
+
+    const listLength = list.length;
+    index += shouldGetNext ? 1 : -1;
+
+    if (isCycleAllowed) {
+      index = (index + listLength) % listLength;
+    }
+
+    return list[Math.max(0, Math.min(index, listLength - 1))];
+  };
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0): carousel.js
+   * Bootstrap (v5.1.3): carousel.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -219,6 +229,10 @@
   const ORDER_PREV = 'prev';
   const DIRECTION_LEFT = 'left';
   const DIRECTION_RIGHT = 'right';
+  const KEY_TO_DIRECTION = {
+    [ARROW_LEFT_KEY]: DIRECTION_RIGHT,
+    [ARROW_RIGHT_KEY]: DIRECTION_LEFT
+  };
   const EVENT_SLIDE = `slide${EVENT_KEY}`;
   const EVENT_SLID = `slid${EVENT_KEY}`;
   const EVENT_KEYDOWN = `keydown${EVENT_KEY}`;
@@ -257,7 +271,7 @@
    * ------------------------------------------------------------------------
    */
 
-  class Carousel extends BaseComponent__default['default'] {
+  class Carousel extends BaseComponent__default.default {
     constructor(element, config) {
       super(element);
       this._items = null;
@@ -269,7 +283,7 @@
       this.touchStartX = 0;
       this.touchDeltaX = 0;
       this._config = this._getConfig(config);
-      this._indicatorsElement = SelectorEngine__default['default'].findOne(SELECTOR_INDICATORS, this._element);
+      this._indicatorsElement = SelectorEngine__default.default.findOne(SELECTOR_INDICATORS, this._element);
       this._touchSupported = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0;
       this._pointerEvent = Boolean(window.PointerEvent);
 
@@ -281,15 +295,13 @@
       return Default;
     }
 
-    static get DATA_KEY() {
-      return DATA_KEY;
+    static get NAME() {
+      return NAME;
     } // Public
 
 
     next() {
-      if (!this._isSliding) {
-        this._slide(ORDER_NEXT);
-      }
+      this._slide(ORDER_NEXT);
     }
 
     nextWhenVisible() {
@@ -301,9 +313,7 @@
     }
 
     prev() {
-      if (!this._isSliding) {
-        this._slide(ORDER_PREV);
-      }
+      this._slide(ORDER_PREV);
     }
 
     pause(event) {
@@ -311,7 +321,7 @@
         this._isPaused = true;
       }
 
-      if (SelectorEngine__default['default'].findOne(SELECTOR_NEXT_PREV, this._element)) {
+      if (SelectorEngine__default.default.findOne(SELECTOR_NEXT_PREV, this._element)) {
         triggerTransitionEnd(this._element);
         this.cycle(true);
       }
@@ -338,7 +348,7 @@
     }
 
     to(index) {
-      this._activeElement = SelectorEngine__default['default'].findOne(SELECTOR_ACTIVE_ITEM, this._element);
+      this._activeElement = SelectorEngine__default.default.findOne(SELECTOR_ACTIVE_ITEM, this._element);
 
       const activeIndex = this._getItemIndex(this._activeElement);
 
@@ -347,7 +357,7 @@
       }
 
       if (this._isSliding) {
-        EventHandler__default['default'].one(this._element, EVENT_SLID, () => this.to(index));
+        EventHandler__default.default.one(this._element, EVENT_SLID, () => this.to(index));
         return;
       }
 
@@ -360,23 +370,13 @@
       const order = index > activeIndex ? ORDER_NEXT : ORDER_PREV;
 
       this._slide(order, this._items[index]);
-    }
-
-    dispose() {
-      this._items = null;
-      this._config = null;
-      this._interval = null;
-      this._isPaused = null;
-      this._isSliding = null;
-      this._activeElement = null;
-      this._indicatorsElement = null;
-      super.dispose();
     } // Private
 
 
     _getConfig(config) {
       config = { ...Default,
-        ...config
+        ...Manipulator__default.default.getDataAttributes(this._element),
+        ...(typeof config === 'object' ? config : {})
       };
       typeCheckConfig(NAME, config, DefaultType);
       return config;
@@ -401,12 +401,12 @@
 
     _addEventListeners() {
       if (this._config.keyboard) {
-        EventHandler__default['default'].on(this._element, EVENT_KEYDOWN, event => this._keydown(event));
+        EventHandler__default.default.on(this._element, EVENT_KEYDOWN, event => this._keydown(event));
       }
 
       if (this._config.pause === 'hover') {
-        EventHandler__default['default'].on(this._element, EVENT_MOUSEENTER, event => this.pause(event));
-        EventHandler__default['default'].on(this._element, EVENT_MOUSELEAVE, event => this.cycle(event));
+        EventHandler__default.default.on(this._element, EVENT_MOUSEENTER, event => this.pause(event));
+        EventHandler__default.default.on(this._element, EVENT_MOUSELEAVE, event => this.cycle(event));
       }
 
       if (this._config.touch && this._touchSupported) {
@@ -415,8 +415,12 @@
     }
 
     _addTouchEventListeners() {
+      const hasPointerPenTouch = event => {
+        return this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH);
+      };
+
       const start = event => {
-        if (this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)) {
+        if (hasPointerPenTouch(event)) {
           this.touchStartX = event.clientX;
         } else if (!this._pointerEvent) {
           this.touchStartX = event.touches[0].clientX;
@@ -429,7 +433,7 @@
       };
 
       const end = event => {
-        if (this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)) {
+        if (hasPointerPenTouch(event)) {
           this.touchDeltaX = event.clientX - this.touchStartX;
         }
 
@@ -453,19 +457,19 @@
         }
       };
 
-      SelectorEngine__default['default'].find(SELECTOR_ITEM_IMG, this._element).forEach(itemImg => {
-        EventHandler__default['default'].on(itemImg, EVENT_DRAG_START, e => e.preventDefault());
+      SelectorEngine__default.default.find(SELECTOR_ITEM_IMG, this._element).forEach(itemImg => {
+        EventHandler__default.default.on(itemImg, EVENT_DRAG_START, event => event.preventDefault());
       });
 
       if (this._pointerEvent) {
-        EventHandler__default['default'].on(this._element, EVENT_POINTERDOWN, event => start(event));
-        EventHandler__default['default'].on(this._element, EVENT_POINTERUP, event => end(event));
+        EventHandler__default.default.on(this._element, EVENT_POINTERDOWN, event => start(event));
+        EventHandler__default.default.on(this._element, EVENT_POINTERUP, event => end(event));
 
         this._element.classList.add(CLASS_NAME_POINTER_EVENT);
       } else {
-        EventHandler__default['default'].on(this._element, EVENT_TOUCHSTART, event => start(event));
-        EventHandler__default['default'].on(this._element, EVENT_TOUCHMOVE, event => move(event));
-        EventHandler__default['default'].on(this._element, EVENT_TOUCHEND, event => end(event));
+        EventHandler__default.default.on(this._element, EVENT_TOUCHSTART, event => start(event));
+        EventHandler__default.default.on(this._element, EVENT_TOUCHMOVE, event => move(event));
+        EventHandler__default.default.on(this._element, EVENT_TOUCHEND, event => end(event));
       }
     }
 
@@ -474,46 +478,31 @@
         return;
       }
 
-      if (event.key === ARROW_LEFT_KEY) {
+      const direction = KEY_TO_DIRECTION[event.key];
+
+      if (direction) {
         event.preventDefault();
 
-        this._slide(DIRECTION_RIGHT);
-      } else if (event.key === ARROW_RIGHT_KEY) {
-        event.preventDefault();
-
-        this._slide(DIRECTION_LEFT);
+        this._slide(direction);
       }
     }
 
     _getItemIndex(element) {
-      this._items = element && element.parentNode ? SelectorEngine__default['default'].find(SELECTOR_ITEM, element.parentNode) : [];
+      this._items = element && element.parentNode ? SelectorEngine__default.default.find(SELECTOR_ITEM, element.parentNode) : [];
       return this._items.indexOf(element);
     }
 
     _getItemByOrder(order, activeElement) {
       const isNext = order === ORDER_NEXT;
-      const isPrev = order === ORDER_PREV;
-
-      const activeIndex = this._getItemIndex(activeElement);
-
-      const lastItemIndex = this._items.length - 1;
-      const isGoingToWrap = isPrev && activeIndex === 0 || isNext && activeIndex === lastItemIndex;
-
-      if (isGoingToWrap && !this._config.wrap) {
-        return activeElement;
-      }
-
-      const delta = isPrev ? -1 : 1;
-      const itemIndex = (activeIndex + delta) % this._items.length;
-      return itemIndex === -1 ? this._items[this._items.length - 1] : this._items[itemIndex];
+      return getNextActiveElement(this._items, activeElement, isNext, this._config.wrap);
     }
 
     _triggerSlideEvent(relatedTarget, eventDirectionName) {
       const targetIndex = this._getItemIndex(relatedTarget);
 
-      const fromIndex = this._getItemIndex(SelectorEngine__default['default'].findOne(SELECTOR_ACTIVE_ITEM, this._element));
+      const fromIndex = this._getItemIndex(SelectorEngine__default.default.findOne(SELECTOR_ACTIVE_ITEM, this._element));
 
-      return EventHandler__default['default'].trigger(this._element, EVENT_SLIDE, {
+      return EventHandler__default.default.trigger(this._element, EVENT_SLIDE, {
         relatedTarget,
         direction: eventDirectionName,
         from: fromIndex,
@@ -523,10 +512,10 @@
 
     _setActiveIndicatorElement(element) {
       if (this._indicatorsElement) {
-        const activeIndicator = SelectorEngine__default['default'].findOne(SELECTOR_ACTIVE, this._indicatorsElement);
+        const activeIndicator = SelectorEngine__default.default.findOne(SELECTOR_ACTIVE, this._indicatorsElement);
         activeIndicator.classList.remove(CLASS_NAME_ACTIVE);
         activeIndicator.removeAttribute('aria-current');
-        const indicators = SelectorEngine__default['default'].find(SELECTOR_INDICATOR, this._indicatorsElement);
+        const indicators = SelectorEngine__default.default.find(SELECTOR_INDICATOR, this._indicatorsElement);
 
         for (let i = 0; i < indicators.length; i++) {
           if (Number.parseInt(indicators[i].getAttribute('data-bs-slide-to'), 10) === this._getItemIndex(element)) {
@@ -539,7 +528,7 @@
     }
 
     _updateInterval() {
-      const element = this._activeElement || SelectorEngine__default['default'].findOne(SELECTOR_ACTIVE_ITEM, this._element);
+      const element = this._activeElement || SelectorEngine__default.default.findOne(SELECTOR_ACTIVE_ITEM, this._element);
 
       if (!element) {
         return;
@@ -558,7 +547,7 @@
     _slide(directionOrOrder, element) {
       const order = this._directionToOrder(directionOrOrder);
 
-      const activeElement = SelectorEngine__default['default'].findOne(SELECTOR_ACTIVE_ITEM, this._element);
+      const activeElement = SelectorEngine__default.default.findOne(SELECTOR_ACTIVE_ITEM, this._element);
 
       const activeElementIndex = this._getItemIndex(activeElement);
 
@@ -575,6 +564,10 @@
 
       if (nextElement && nextElement.classList.contains(CLASS_NAME_ACTIVE)) {
         this._isSliding = false;
+        return;
+      }
+
+      if (this._isSliding) {
         return;
       }
 
@@ -599,37 +592,35 @@
 
       this._activeElement = nextElement;
 
-      if (this._element.classList.contains(CLASS_NAME_SLIDE)) {
-        nextElement.classList.add(orderClassName);
-        reflow(nextElement);
-        activeElement.classList.add(directionalClassName);
-        nextElement.classList.add(directionalClassName);
-        const transitionDuration = getTransitionDurationFromElement(activeElement);
-        EventHandler__default['default'].one(activeElement, 'transitionend', () => {
-          nextElement.classList.remove(directionalClassName, orderClassName);
-          nextElement.classList.add(CLASS_NAME_ACTIVE);
-          activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName);
-          this._isSliding = false;
-          setTimeout(() => {
-            EventHandler__default['default'].trigger(this._element, EVENT_SLID, {
-              relatedTarget: nextElement,
-              direction: eventDirectionName,
-              from: activeElementIndex,
-              to: nextElementIndex
-            });
-          }, 0);
-        });
-        emulateTransitionEnd(activeElement, transitionDuration);
-      } else {
-        activeElement.classList.remove(CLASS_NAME_ACTIVE);
-        nextElement.classList.add(CLASS_NAME_ACTIVE);
-        this._isSliding = false;
-        EventHandler__default['default'].trigger(this._element, EVENT_SLID, {
+      const triggerSlidEvent = () => {
+        EventHandler__default.default.trigger(this._element, EVENT_SLID, {
           relatedTarget: nextElement,
           direction: eventDirectionName,
           from: activeElementIndex,
           to: nextElementIndex
         });
+      };
+
+      if (this._element.classList.contains(CLASS_NAME_SLIDE)) {
+        nextElement.classList.add(orderClassName);
+        reflow(nextElement);
+        activeElement.classList.add(directionalClassName);
+        nextElement.classList.add(directionalClassName);
+
+        const completeCallBack = () => {
+          nextElement.classList.remove(directionalClassName, orderClassName);
+          nextElement.classList.add(CLASS_NAME_ACTIVE);
+          activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName);
+          this._isSliding = false;
+          setTimeout(triggerSlidEvent, 0);
+        };
+
+        this._queueCallback(completeCallBack, activeElement, true);
+      } else {
+        activeElement.classList.remove(CLASS_NAME_ACTIVE);
+        nextElement.classList.add(CLASS_NAME_ACTIVE);
+        this._isSliding = false;
+        triggerSlidEvent();
       }
 
       if (isCycling) {
@@ -663,10 +654,10 @@
 
 
     static carouselInterface(element, config) {
-      let data = Data__default['default'].get(element, DATA_KEY);
-      let _config = { ...Default,
-        ...Manipulator__default['default'].getDataAttributes(element)
-      };
+      const data = Carousel.getOrCreateInstance(element, config);
+      let {
+        _config
+      } = data;
 
       if (typeof config === 'object') {
         _config = { ..._config,
@@ -675,10 +666,6 @@
       }
 
       const action = typeof config === 'string' ? config : _config.slide;
-
-      if (!data) {
-        data = new Carousel(element, _config);
-      }
 
       if (typeof config === 'number') {
         data.to(config);
@@ -707,8 +694,8 @@
         return;
       }
 
-      const config = { ...Manipulator__default['default'].getDataAttributes(target),
-        ...Manipulator__default['default'].getDataAttributes(this)
+      const config = { ...Manipulator__default.default.getDataAttributes(target),
+        ...Manipulator__default.default.getDataAttributes(this)
       };
       const slideIndex = this.getAttribute('data-bs-slide-to');
 
@@ -719,7 +706,7 @@
       Carousel.carouselInterface(target, config);
 
       if (slideIndex) {
-        Data__default['default'].get(target, DATA_KEY).to(slideIndex);
+        Carousel.getInstance(target).to(slideIndex);
       }
 
       event.preventDefault();
@@ -733,12 +720,12 @@
    */
 
 
-  EventHandler__default['default'].on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler);
-  EventHandler__default['default'].on(window, EVENT_LOAD_DATA_API, () => {
-    const carousels = SelectorEngine__default['default'].find(SELECTOR_DATA_RIDE);
+  EventHandler__default.default.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler);
+  EventHandler__default.default.on(window, EVENT_LOAD_DATA_API, () => {
+    const carousels = SelectorEngine__default.default.find(SELECTOR_DATA_RIDE);
 
     for (let i = 0, len = carousels.length; i < len; i++) {
-      Carousel.carouselInterface(carousels[i], Data__default['default'].get(carousels[i], DATA_KEY));
+      Carousel.carouselInterface(carousels[i], Carousel.getInstance(carousels[i]));
     }
   });
   /**
@@ -748,9 +735,9 @@
    * add .Carousel to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(NAME, Carousel);
+  defineJQueryPlugin(Carousel);
 
   return Carousel;
 
-})));
+}));
 //# sourceMappingURL=carousel.js.map

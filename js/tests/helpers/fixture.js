@@ -11,7 +11,7 @@ export const getFixture = () => {
     fixtureEl.style.left = '-10000px'
     fixtureEl.style.width = '10000px'
     fixtureEl.style.height = '10000px'
-    document.body.appendChild(fixtureEl)
+    document.body.append(fixtureEl)
   }
 
   return fixtureEl
@@ -24,27 +24,27 @@ export const clearFixture = () => {
 }
 
 export const createEvent = (eventName, params = {}) => {
-  const e = document.createEvent('Event')
+  const event = document.createEvent('Event')
 
-  e.initEvent(eventName, Boolean(params.bubbles), Boolean(params.cancelable))
-  return e
+  event.initEvent(eventName, Boolean(params.bubbles), Boolean(params.cancelable))
+  return event
 }
 
 export const jQueryMock = {
   elements: undefined,
   fn: {},
   each(fn) {
-    this.elements.forEach(el => {
+    for (const el of this.elements) {
       fn.call(el)
-    })
+    }
   }
 }
 
 export const clearBodyAndDocument = () => {
   const attributes = ['data-bs-padding-right', 'style']
 
-  attributes.forEach(attr => {
+  for (const attr of attributes) {
     document.documentElement.removeAttribute(attr)
     document.body.removeAttribute(attr)
-  })
+  }
 }

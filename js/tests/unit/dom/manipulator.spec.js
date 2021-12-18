@@ -1,6 +1,4 @@
 import Manipulator from '../../../src/dom/manipulator'
-
-/** Test helpers */
 import { getFixture, clearFixture } from '../../helpers/fixture'
 
 describe('Manipulator', () => {
@@ -98,10 +96,10 @@ describe('Manipulator', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Manipulator.getDataAttribute(div, 'test')).toEqual(false)
+      expect(Manipulator.getDataAttribute(div, 'test')).toBeFalse()
 
       div.setAttribute('data-bs-test', 'true')
-      expect(Manipulator.getDataAttribute(div, 'test')).toEqual(true)
+      expect(Manipulator.getDataAttribute(div, 'test')).toBeTrue()
 
       div.setAttribute('data-bs-test', '1')
       expect(Manipulator.getDataAttribute(div, 'test')).toEqual(1)
@@ -118,6 +116,60 @@ describe('Manipulator', () => {
       expect(offset).toBeDefined()
       expect(offset.top).toEqual(jasmine.any(Number))
       expect(offset.left).toEqual(jasmine.any(Number))
+    })
+
+    it('should return offset relative to attached element\'s offset', () => {
+      const top = 500
+      const left = 1000
+
+      fixtureEl.innerHTML = `<div style="position:absolute;top:${top}px;left:${left}px"></div>`
+
+      const div = fixtureEl.querySelector('div')
+      const offset = Manipulator.offset(div)
+      const fixtureOffset = Manipulator.offset(fixtureEl)
+
+      expect(offset).toEqual({
+        top: fixtureOffset.top + top,
+        left: fixtureOffset.left + left
+      })
+    })
+
+    it('should not change offset when viewport is scrolled', done => {
+      const top = 500
+      const left = 1000
+      const scrollY = 200
+      const scrollX = 400
+
+      fixtureEl.innerHTML = `<div style="position:absolute;top:${top}px;left:${left}px"></div>`
+
+      const div = fixtureEl.querySelector('div')
+      const offset = Manipulator.offset(div)
+
+      // append an element that forces scrollbars on the window so we can scroll
+      const { defaultView: win, body } = fixtureEl.ownerDocument
+      const forceScrollBars = document.createElement('div')
+      forceScrollBars.style.cssText = 'position:absolute;top:5000px;left:5000px;width:1px;height:1px'
+      body.append(forceScrollBars)
+
+      const scrollHandler = () => {
+        expect(window.pageYOffset).toEqual(scrollY)
+        expect(window.pageXOffset).toEqual(scrollX)
+
+        const newOffset = Manipulator.offset(div)
+
+        expect(newOffset).toEqual({
+          top: offset.top,
+          left: offset.left
+        })
+
+        win.removeEventListener('scroll', scrollHandler)
+        forceScrollBars.remove()
+        win.scrollTo(0, 0)
+        done()
+      }
+
+      win.addEventListener('scroll', scrollHandler)
+      win.scrollTo(scrollX, scrollY)
     })
   })
 

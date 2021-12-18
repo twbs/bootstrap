@@ -9,6 +9,8 @@ preferred:
 more:
   - name: Bytesize
     website: https://github.com/danklammer/bytesize-icons
+  - name: CoreUI Icons
+    website: https://icons.coreui.io/
   - name: Google Material icons
     website: https://material.io/resources/icons/
   - name: Ionicons
@@ -21,5 +23,5 @@ more:
     website: https://icons8.com/
   - name: icofont
     website: https://icofont.com/
-  - name: CoreUI Icons
-    website: https://icons.coreui.io/
+  - name: Octicons
+    website: https://primer.style/octicons/

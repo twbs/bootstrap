@@ -28,9 +28,23 @@ const browsers = {
     os: 'Windows',
     os_version: '10',
     browser: 'Chrome',
-    browser_version: 'latest'
+    browser_version: '60'
   },
   firefoxWin10: {
+    base: 'BrowserStack',
+    os: 'Windows',
+    os_version: '10',
+    browser: 'Firefox',
+    browser_version: '60'
+  },
+  chromeWin10Latest: {
+    base: 'BrowserStack',
+    os: 'Windows',
+    os_version: '10',
+    browser: 'Chrome',
+    browser_version: 'latest'
+  },
+  firefoxWin10Latest: {
     base: 'BrowserStack',
     os: 'Windows',
     os_version: '10',
@@ -60,9 +74,6 @@ const browsers = {
   }
 }
 
-const browsersKeys = Object.keys(browsers)
-
 module.exports = {
-  browsers,
-  browsersKeys
+  browsers
 }

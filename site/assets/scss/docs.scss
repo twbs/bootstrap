@@ -28,6 +28,12 @@
 @import "../../../scss/variables";
 @import "../../../scss/mixins";
 
+// fusv-disable
+$enable-grid-classes: false; // stylelint-disable-line scss/dollar-variable-default
+$enable-cssgrid: true; // stylelint-disable-line scss/dollar-variable-default
+// fusv-enable
+@import "../../../scss/grid";
+
 // Load docs components
 @import "variables";
 @import "navbar";

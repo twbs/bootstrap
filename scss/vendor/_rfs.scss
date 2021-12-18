@@ -4,7 +4,7 @@
 //
 // Automated responsive values for font sizes, paddings, margins and much more
 //
-// Licensed under MIT (https://github.com/twbs/rfs/blob/master/LICENSE)
+// Licensed under MIT (https://github.com/twbs/rfs/blob/main/LICENSE)
 
 // Configuration
 
@@ -52,12 +52,54 @@ $enable-rfs: true !default;
 // Cache $rfs-base-value unit
 $rfs-base-value-unit: unit($rfs-base-value);
 
+@function divide($dividend, $divisor, $precision: 10) {
+  $sign: if($dividend > 0 and $divisor > 0 or $dividend < 0 and $divisor < 0, 1, -1);
+  $dividend: abs($dividend);
+  $divisor: abs($divisor);
+  @if $dividend == 0 {
+    @return 0;
+  }
+  @if $divisor == 0 {
+    @error "Cannot divide by 0";
+  }
+  $remainder: $dividend;
+  $result: 0;
+  $factor: 10;
+  @while ($remainder > 0 and $precision >= 0) {
+    $quotient: 0;
+    @while ($remainder >= $divisor) {
+      $remainder: $remainder - $divisor;
+      $quotient: $quotient + 1;
+    }
+    $result: $result * 10 + $quotient;
+    $factor: $factor * .1;
+    $remainder: $remainder * 10;
+    $precision: $precision - 1;
+    @if ($precision < 0 and $remainder >= $divisor * 5) {
+      $result: $result + 1;
+    }
+  }
+  $result: $result * $factor * $sign;
+  $dividend-unit: unit($dividend);
+  $divisor-unit: unit($divisor);
+  $unit-map: (
+    "px": 1px,
+    "rem": 1rem,
+    "em": 1em,
+    "%": 1%
+  );
+  @if ($dividend-unit != $divisor-unit and map-has-key($unit-map, $dividend-unit)) {
+    $result: $result * map-get($unit-map, $dividend-unit);
+  }
+  @return $result;
+}
+
 // Remove px-unit from $rfs-base-value for calculations
 @if $rfs-base-value-unit == px {
-  $rfs-base-value: $rfs-base-value / ($rfs-base-value * 0 + 1);
+  $rfs-base-value: divide($rfs-base-value, $rfs-base-value * 0 + 1);
 }
 @else if $rfs-base-value-unit == rem {
-  $rfs-base-value: $rfs-base-value / ($rfs-base-value * 0 + 1 / $rfs-rem-value);
+  $rfs-base-value: divide($rfs-base-value, divide($rfs-base-value * 0 + 1, $rfs-rem-value));
 }
 
 // Cache $rfs-breakpoint unit to prevent multiple calls
@@ -65,14 +107,14 @@ $rfs-breakpoint-unit-cache: unit($rfs-breakpoint);
 
 // Remove unit from $rfs-breakpoint for calculations
 @if $rfs-breakpoint-unit-cache == px {
-  $rfs-breakpoint: $rfs-breakpoint / ($rfs-breakpoint * 0 + 1);
+  $rfs-breakpoint: divide($rfs-breakpoint, $rfs-breakpoint * 0 + 1);
 }
 @else if $rfs-breakpoint-unit-cache == rem or $rfs-breakpoint-unit-cache == "em" {
-  $rfs-breakpoint: $rfs-breakpoint / ($rfs-breakpoint * 0 + 1 / $rfs-rem-value);
+  $rfs-breakpoint: divide($rfs-breakpoint, divide($rfs-breakpoint * 0 + 1, $rfs-rem-value));
 }
 
 // Calculate the media query value
-$rfs-mq-value: if($rfs-breakpoint-unit == px, #{$rfs-breakpoint}px, #{$rfs-breakpoint / $rfs-rem-value}#{$rfs-breakpoint-unit});
+$rfs-mq-value: if($rfs-breakpoint-unit == px, #{$rfs-breakpoint}px, #{divide($rfs-breakpoint, $rfs-rem-value)}#{$rfs-breakpoint-unit});
 $rfs-mq-property-width: if($rfs-mode == max-media-query, max-width, min-width);
 $rfs-mq-property-height: if($rfs-mode == max-media-query, max-height, min-height);
 
@@ -164,11 +206,11 @@ $rfs-mq-property-height: if($rfs-mode == max-media-query, max-height, min-height
 
       @if $unit == px {
         // Convert to rem if needed
-        $val: $val + ' ' + if($rfs-unit == rem, #{$value / ($value * 0 + $rfs-rem-value)}rem, $value);
+        $val: $val + ' ' + if($rfs-unit == rem, #{divide($value, $value * 0 + $rfs-rem-value)}rem, $value);
       }
       @else if $unit == rem {
         // Convert to px if needed
-        $val: $val + ' ' + if($rfs-unit == px, #{$value / ($value * 0 + 1) * $rfs-rem-value}px, $value);
+        $val: $val + ' ' + if($rfs-unit == px, #{divide($value, $value * 0 + 1) * $rfs-rem-value}px, $value);
       }
       @else {
         // If $value isn't a number (like inherit) or $value has a unit (not px or rem, like 1.5em) or $ is 0, just print the value
@@ -205,21 +247,21 @@ $rfs-mq-property-height: if($rfs-mode == max-media-query, max-height, min-height
 
       @else {
         // Remove unit from $value for calculations
-        $value: $value / ($value * 0 + if($unit == px, 1, 1 / $rfs-rem-value));
+        $value: divide($value, $value * 0 + if($unit == px, 1, divide(1, $rfs-rem-value)));
 
         // Only add the media query if the value is greater than the minimum value
         @if abs($value) <= $rfs-base-value or not $enable-rfs {
-          $val: $val + ' ' +  if($rfs-unit == rem, #{$value / $rfs-rem-value}rem, #{$value}px);
+          $val: $val + ' ' +  if($rfs-unit == rem, #{divide($value, $rfs-rem-value)}rem, #{$value}px);
         }
         @else {
           // Calculate the minimum value
-          $value-min: $rfs-base-value + (abs($value) - $rfs-base-value) / $rfs-factor;
+          $value-min: $rfs-base-value + divide(abs($value) - $rfs-base-value, $rfs-factor);
 
           // Calculate difference between $value and the minimum value
           $value-diff: abs($value) - $value-min;
 
           // Base value formatting
-          $min-width: if($rfs-unit == rem, #{$value-min / $rfs-rem-value}rem, #{$value-min}px);
+          $min-width: if($rfs-unit == rem, #{divide($value-min, $rfs-rem-value)}rem, #{$value-min}px);
 
           // Use negative value if needed
           $min-width: if($value < 0, -$min-width, $min-width);
@@ -228,7 +270,7 @@ $rfs-mq-property-height: if($rfs-mode == max-media-query, max-height, min-height
           $variable-unit: if($rfs-two-dimensional, vmin, vw);
 
           // Calculate the variable width between 0 and $rfs-breakpoint
-          $variable-width: #{$value-diff * 100 / $rfs-breakpoint}#{$variable-unit};
+          $variable-width: #{divide($value-diff * 100, $rfs-breakpoint)}#{$variable-unit};
 
           // Return the calculated value
           $val: $val + ' calc(' + $min-width + if($value < 0, ' - ', ' + ') + $variable-width + ')';

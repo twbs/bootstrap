@@ -58,6 +58,7 @@
 }
 
 .accordion-item {
+  color: color-contrast($accordion-bg);
   background-color: $accordion-bg;
   border: $accordion-border-width solid $accordion-border-color;
 

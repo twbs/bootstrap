@@ -1,71 +1,72 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0): base-component.js
+ * Bootstrap (v5.1.3): base-component.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import Data from './dom/data'
-import {
-  emulateTransitionEnd,
-  execute,
-  getTransitionDurationFromElement
-} from './util/index'
+import { executeAfterTransition, getElement } from './util/index'
 import EventHandler from './dom/event-handler'
+import Config from './util/config'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
-const VERSION = '5.0.0'
+const VERSION = '5.1.3'
 
-class BaseComponent {
-  constructor(element) {
-    element = typeof element === 'string' ? document.querySelector(element) : element
+/**
+ * Class definition
+ */
 
+class BaseComponent extends Config {
+  constructor(element, config) {
+    super()
+
+    element = getElement(element)
     if (!element) {
       return
     }
 
     this._element = element
+    this._config = this._getConfig(config)
+
     Data.set(this._element, this.constructor.DATA_KEY, this)
   }
 
+  // Public
   dispose() {
     Data.remove(this._element, this.constructor.DATA_KEY)
     EventHandler.off(this._element, this.constructor.EVENT_KEY)
 
-    Object.getOwnPropertyNames(this).forEach(propertyName => {
+    for (const propertyName of Object.getOwnPropertyNames(this)) {
       this[propertyName] = null
-    })
+    }
   }
 
   _queueCallback(callback, element, isAnimated = true) {
-    if (!isAnimated) {
-      execute(callback)
-      return
-    }
-
-    const transitionDuration = getTransitionDurationFromElement(element)
-    EventHandler.one(element, 'transitionend', () => execute(callback))
-
-    emulateTransitionEnd(element, transitionDuration)
+    executeAfterTransition(callback, element, isAnimated)
   }
 
-  /** Static */
+  _getConfig(config) {
+    config = this._mergeConfigObj(config, this._element)
+    config = this._configAfterMerge(config)
+    this._typeCheckConfig(config)
+    return config
+  }
 
+  // Static
   static getInstance(element) {
-    return Data.get(element, this.DATA_KEY)
+    return Data.get(getElement(element), this.DATA_KEY)
+  }
+
+  static getOrCreateInstance(element, config = {}) {
+    return this.getInstance(element) || new this(element, typeof config === 'object' ? config : null)
   }
 
   static get VERSION() {
     return VERSION
-  }
-
-  static get NAME() {
-    throw new Error('You have to implement the static method "NAME", for each component!')
   }
 
   static get DATA_KEY() {
