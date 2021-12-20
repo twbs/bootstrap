@@ -156,19 +156,27 @@ You can see this in action with a live demo:
 When an alert is dismissed, the element is completely removed from the page structure. If a keyboard user dismisses the alert using the close button, their focus will suddenly be lost and, depending on the browser, reset to the start of the page/document. For this reason, we recommend including additional JavaScript that listens for the `closed.bs.alert` event and programmatically sets `focus()` to the most appropriate location in the page. If you're planning to move focus to a non-interactive element that normally does not receive focus, make sure to add `tabindex="-1"` to the element.
 {{< /callout >}}
 
-## Sass
+## CSS
 
 ### Variables
 
+<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.2.0</small>
+
+As part of Bootstrap's evolving CSS variables approach, buttons now use local CSS variables on `.alert` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+{{< scss-docs name="alert-css-vars" file="scss/_alert.scss" >}}
+
+### Sass variables
+
 {{< scss-docs name="alert-variables" file="scss/_variables.scss" >}}
 
-### Variant mixin
+### Sass mixin
 
 Used in combination with `$theme-colors` to create contextual modifier classes for our alerts.
 
 {{< scss-docs name="alert-variant-mixin" file="scss/mixins/_alert.scss" >}}
 
-### Loop
+### Sass loop
 
 Loop that generates the modifier classes with the `alert-variant()` mixin.
 

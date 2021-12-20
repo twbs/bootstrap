@@ -34,7 +34,7 @@ const Default = {
 
 const DefaultType = {
   ...Tooltip.DefaultType,
-  content: '(string|element|function)'
+  content: '(null|string|element|function)'
 }
 
 const Event = {

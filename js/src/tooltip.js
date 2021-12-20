@@ -117,7 +117,7 @@ class Tooltip extends BaseComponent {
       throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)')
     }
 
-    super(element)
+    super(element, config)
 
     // Private
     this._isEnabled = true
@@ -128,7 +128,6 @@ class Tooltip extends BaseComponent {
     this._templateFactory = null
 
     // Protected
-    this._config = this._getConfig(config)
     this.tip = null
 
     this._setListeners()
