@@ -5,11 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import {
-  defineJQueryPlugin,
-  getElement,
-  getSelectorFromElement
-} from './util/index'
+import { defineJQueryPlugin, getElement, getSelectorFromElement } from './util/index'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
@@ -89,45 +85,34 @@ class ScrollSpy extends BaseComponent {
 
   // Public
   refresh() {
-    const autoMethod = this._scrollElement === this._scrollElement.window ?
-      METHOD_OFFSET :
-      METHOD_POSITION
-
-    const offsetMethod = this._config.method === 'auto' ?
-      autoMethod :
-      this._config.method
-
-    const offsetBase = offsetMethod === METHOD_POSITION ?
-      this._getScrollTop() :
-      0
-
     this._offsets = []
     this._targets = []
     this._scrollHeight = this._getScrollHeight()
 
+    const autoMethod = this._scrollElement === this._scrollElement.window ? METHOD_OFFSET : METHOD_POSITION
+    const offsetMethod = this._config.method === 'auto' ? autoMethod : this._config.method
+    const offsetBase = offsetMethod === METHOD_POSITION ? this._getScrollTop() : 0
     const targets = SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target)
       .map(element => {
         const targetSelector = getSelectorFromElement(element)
         const target = targetSelector ? SelectorEngine.findOne(targetSelector) : null
 
-        if (target) {
-          const targetBCR = target.getBoundingClientRect()
-          if (targetBCR.width || targetBCR.height) {
-            return [
-              Manipulator[offsetMethod](target).top + offsetBase,
-              targetSelector
-            ]
-          }
+        if (!target) {
+          return null
         }
 
-        return null
+        const targetBCR = target.getBoundingClientRect()
+
+        return targetBCR.width || targetBCR.height ?
+          [Manipulator[offsetMethod](target).top + offsetBase, targetSelector] :
+          null
       })
-        .filter(item => item)
+        .filter(Boolean)
         .sort((a, b) => a[0] - b[0])
 
-    for (const item of targets) {
-      this._offsets.push(item[0])
-      this._targets.push(item[1])
+    for (const target of targets) {
+      this._offsets.push(target[0])
+      this._targets.push(target[1])
     }
   }
 
@@ -188,7 +173,7 @@ class ScrollSpy extends BaseComponent {
       return
     }
 
-    for (let i = this._offsets.length; i--;) {
+    for (const i of this._offsets.keys()) {
       const isActiveTarget = this._activeTarget !== this._targets[i] &&
           scrollTop >= this._offsets[i] &&
           (typeof this._offsets[i + 1] === 'undefined' || scrollTop < this._offsets[i + 1])
