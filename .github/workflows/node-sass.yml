@@ -2,8 +2,8 @@ name: CSS (node-sass)
 
 on:
   push:
-    branches-ignore:
-      - "dependabot/**"
+    branches:
+      - main
   pull_request:
   workflow_dispatch:
 
