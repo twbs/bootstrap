@@ -39,6 +39,7 @@ Responsive variations also exist for `.sticky-top` utility.
 <div class="sticky-md-top">Stick to the top on viewports sized MD (medium) or wider</div>
 <div class="sticky-lg-top">Stick to the top on viewports sized LG (large) or wider</div>
 <div class="sticky-xl-top">Stick to the top on viewports sized XL (extra-large) or wider</div>
+<div class="sticky-xxl-top">Stick to the top on viewports sized XXL (extra-extra-large) or wider</div>
 ```
 
 ## Sticky bottom
@@ -58,4 +59,5 @@ Responsive variations also exist for `.sticky-bottom` utility.
 <div class="sticky-md-bottom">Stick to the bottom on viewports sized MD (medium) or wider</div>
 <div class="sticky-lg-bottom">Stick to the bottom on viewports sized LG (large) or wider</div>
 <div class="sticky-xl-bottom">Stick to the bottom on viewports sized XL (extra-large) or wider</div>
+<div class="sticky-xxl-bottom">Stick to the bottom on viewports sized XXL (extra-extra-large) or wider</div>
 ```
