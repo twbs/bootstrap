@@ -372,7 +372,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   // avoid conflict when clicking modal toggler while another one is open
   const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
   if (allReadyOpen) {
-    Modal.getInstance(allReadyOpen).hide()
+    Modal.getInstance(allReadyOpen)?.hide()
   }
 
   const data = Modal.getOrCreateInstance(target)
