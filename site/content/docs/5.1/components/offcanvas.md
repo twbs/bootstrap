@@ -8,7 +8,7 @@ toc: true
 
 ## How it works
 
-Offcanvas is a sidebar component that can be toggled via JavaScript to appear from the left, right, or bottom edge of the viewport. Buttons or anchors are used as triggers that are attached to specific elements you toggle, and `data` attributes are used to invoke our JavaScript.
+Offcanvas is a sidebar component that can be toggled via JavaScript to appear from the left, right, top, or bottom edge of the viewport. Buttons or anchors are used as triggers that are attached to specific elements you toggle, and `data` attributes are used to invoke our JavaScript.
 
 - Offcanvas shares some of the same JavaScript code as modals. Conceptually, they are quite similar, but they are separate plugins.
 - Similarly, some [source Sass](#sass) variables for offcanvas's styles and dimensions are inherited from the modal's variables.
@@ -95,7 +95,7 @@ Try the top, right, and bottom examples out below.
 
 <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
   <div class="offcanvas-header">
-    <h5 id="offcanvasTopLabel">Offcanvas top</h5>
+    <h5 class="offcanvas-title" id="offcanvasTopLabel">Offcanvas top</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
@@ -109,7 +109,7 @@ Try the top, right, and bottom examples out below.
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
   <div class="offcanvas-header">
-    <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
@@ -188,6 +188,7 @@ The offcanvas plugin utilizes a few classes and attributes to handle the heavy l
 - `.offcanvas.show` shows the content
 - `.offcanvas-start` hides the offcanvas on the left
 - `.offcanvas-end` hides the offcanvas on the right
+- `.offcanvas-top` hides the offcanvas on the top
 - `.offcanvas-bottom` hides the offcanvas on the bottom
 
 Add a dismiss button with the `data-bs-dismiss="offcanvas"` attribute, which triggers the JavaScript functionality. Be sure to use the `<button>` element with it for proper behavior across all devices.

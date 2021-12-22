@@ -13,7 +13,7 @@
   margin-left: calc(-.5 * var(--#{$variable-prefix}gutter-x)); // stylelint-disable-line function-disallowed-list
 }
 
-@mixin make-col-ready($gutter: $grid-gutter-width) {
+@mixin make-col-ready() {
   // Add box sizing if only the grid is loaded
   box-sizing: if(variable-exists(include-column-box-sizing) and $include-column-box-sizing, border-box, null);
   // Prevent columns from becoming too narrow when at smaller grid tiers by

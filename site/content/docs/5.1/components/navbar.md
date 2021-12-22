@@ -65,7 +65,7 @@ Here's an example of all the sub-components included in a responsive light-theme
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex">
+      <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -74,7 +74,7 @@ Here's an example of all the sub-components included in a responsive light-theme
 </nav>
 {{< /example >}}
 
-This example uses [background]({{< docsref "/utilities/background" >}}) (`bg-light`) and [spacing]({{< docsref "/utilities/spacing" >}}) (`my-2`, `my-lg-0`, `me-sm-0`, `my-sm-0`) utility classes.
+This example uses [background]({{< docsref "/utilities/background" >}}) (`bg-light`) and [spacing]({{< docsref "/utilities/spacing" >}}) (`me-auto`, `mb-2`, `mb-lg-0`, `me-2`) utility classes.
 
 ### Brand
 
@@ -228,7 +228,7 @@ Place various form controls and components within a navbar:
 {{< example >}}
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
-    <form class="d-flex">
+    <form class="d-flex" role="search">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
@@ -242,7 +242,7 @@ Immediate child elements of `.navbar` use flex layout and will default to `justi
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand">Navbar</a>
-    <form class="d-flex">
+    <form class="d-flex" role="search">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
@@ -343,7 +343,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
             <a class="nav-link" href="#">About</a>
           </li>
         </ul>
-        <form class="d-flex">
+        <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-light" type="submit">Search</button>
         </form>
@@ -372,7 +372,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
             <a class="nav-link" href="#">About</a>
           </li>
         </ul>
-        <form class="d-flex">
+        <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-light" type="submit">Search</button>
         </form>
@@ -401,7 +401,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
             <a class="nav-link" href="#">About</a>
           </li>
         </ul>
-        <form class="d-flex">
+        <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
@@ -450,9 +450,9 @@ Use any of the responsive containers to change how wide the content in your navb
 
 ## Placement
 
-Use our [position utilities]({{< docsref "/utilities/position" >}}) to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, or stickied to the top (scrolls with the page until it reaches the top, then stays there). Fixed navbars use `position: fixed`, meaning they're pulled from the normal flow of the DOM and may require custom CSS (e.g., `padding-top` on the `<body>`) to prevent overlap with other elements.
+Use our [position utilities]({{< docsref "/utilities/position" >}}) to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, stickied to the top (scrolls with the page until it reaches the top, then stays there), or stickied to the bottom (scrolls with the page until it reaches the bottom, then stays there).
 
-Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully supported in every browser](https://caniuse.com/css-sticky)**.
+Fixed navbars use `position: fixed`, meaning they're pulled from the normal flow of the DOM and may require custom CSS (e.g., `padding-top` on the `<body>`) to prevent overlap with other elements.
 
 {{< example >}}
 <nav class="navbar navbar-light bg-light">
@@ -482,6 +482,14 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 <nav class="navbar sticky-top navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Sticky top</a>
+  </div>
+</nav>
+{{< /example >}}
+
+{{< example >}}
+<nav class="navbar sticky-bottom navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Sticky bottom</a>
   </div>
 </nav>
 {{< /example >}}
@@ -524,7 +532,7 @@ Here's an example navbar using `.navbar-nav-scroll` with `style="--bs-scroll-hei
           <a class="nav-link disabled">Link</a>
         </li>
       </ul>
-      <form class="d-flex">
+      <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -564,7 +572,7 @@ With no `.navbar-brand` shown at the smallest breakpoint:
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex">
+      <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -594,7 +602,7 @@ With a brand name shown on the left and toggler on the right:
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex">
+      <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -624,7 +632,7 @@ With a toggler on the left and brand name on the right:
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex">
+      <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -695,7 +703,7 @@ In the example below, to create an offcanvas navbar that is always collapsed acr
             </ul>
           </li>
         </ul>
-        <form class="d-flex">
+        <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
