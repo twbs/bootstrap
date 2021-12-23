@@ -108,27 +108,28 @@
   padding-left: $form-switch-padding-start;
 
   @each $state, $value in $theme-colors {
-    &.switch-#{$state} {
+    &.switch-on-#{$state} {
       .form-check-input {
         &:checked {
           background-color: $value;
           border-color: $value;
-        }
-        &:not(:checked) {
-          background-image: escape-svg(str-replace($form-switch-focus-bg-image, "#{$form-switch-focus-color}", $value));
-          border-color: $value;
-        }
-
-        &:focus,
-        &:active {
-          border-color: $value;
-          outline: 0;
-          box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width rgba($value, $input-btn-focus-color-opacity);
+          &:focus,
+          &:active {
+            border-color: $value;
+            outline: 0;
+            box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width rgba($value, $input-btn-focus-color-opacity);
+          }
         }
       }
     }
 
     &.switch-off-#{$state} {
+      &:not([class*="switch-on-"]) .form-check-input:checked {
+        background-color: $white;
+        background-image: escape-svg($form-switch-bg-image);
+        border-color: $form-switch-color;
+      }
+
       .form-check-input {
         &:not(:checked) {
           background-color: $value;
