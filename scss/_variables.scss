@@ -46,6 +46,8 @@ $yellow:  #ffc107 !default;
 $green:   #198754 !default;
 $teal:    #20c997 !default;
 $cyan:    #0dcaf0 !default;
+$jasmine: #f8de7e !default;
+
 // scss-docs-end color-variables
 
 // scss-docs-start colors-map
@@ -55,6 +57,7 @@ $colors: (
   "purple":     $purple,
   "pink":       $pink,
   "red":        $red,
+  "jasmine":    $jasmine,
   "orange":     $orange,
   "yellow":     $yellow,
   "green":      $green,
@@ -199,6 +202,16 @@ $cyan-700: shade-color($cyan, 40%) !default;
 $cyan-800: shade-color($cyan, 60%) !default;
 $cyan-900: shade-color($cyan, 80%) !default;
 
+$jasmine-100: tint-color($jasmine, 80%) !default;
+$jasmine-200: tint-color($jasmine, 60%) !default;
+$jasmine-300: tint-color($jasmine, 40%) !default;
+$jasmine-400: tint-color($jasmine, 20%) !default;
+$jasmine-500: $jasmine !default;
+$jasmine-600: shade-color($jasmine, 20%) !default;
+$jasmine-700: shade-color($jasmine, 40%) !default;
+$jasmine-800: shade-color($jasmine, 60%) !default;
+$jasmine-900: shade-color($jasmine, 80%) !default;
+
 $blues: (
   "blue-100": $blue-100,
   "blue-200": $blue-200,
@@ -318,6 +331,20 @@ $cyans: (
   "cyan-800": $cyan-800,
   "cyan-900": $cyan-900
 ) !default;
+
+$jasmines: (
+  "jasmine-100": $jasmine-100,
+  "jasmine-200": $jasmine-200,
+  "jasmine-300": $jasmine-300,
+  "jasmine-400": $jasmine-400,
+  "jasmine-500": $jasmine-500,
+  "jasmine-600": $jasmine-600,
+  "jasmine-700": $jasmine-700,
+  "jasmine-800": $jasmine-800,
+  "jasmine-900": $jasmine-900
+) !default;
+
+
 // fusv-enable
 
 // Characters which are escaped by the escape-svg function
