@@ -78,7 +78,13 @@
   transform: translateY(100%);
 }
 
-.offcanvas.show {
-  visibility: visible;
+.offcanvas.showing,
+.offcanvas.show:not(.hiding){
   transform: none;
+}
+
+.offcanvas.showing,
+.offcanvas.hiding,
+.offcanvas.show{
+  visibility: visible;
 }
