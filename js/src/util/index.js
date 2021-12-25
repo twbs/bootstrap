@@ -54,7 +54,7 @@ const getSelector = element => {
     selector = hrefAttribute && hrefAttribute !== '#' ? hrefAttribute.trim() : null
   }
 
-  if (selector !== null && selector.startsWith('#')) {
+  if (selector && selector.startsWith('#') && window.CSS && window.CSS.escape) {
     // document.querySelector needs escaping to handle IDs (html5+) containing for instance /
     selector = '#' + CSS.escape(selector.slice(1))
   }
