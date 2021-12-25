@@ -242,19 +242,23 @@ describe('Offcanvas', () => {
       expect(offCanvas.show).toHaveBeenCalled()
     })
 
-    it('should call hide method if show class is present', () => {
+    it('should call hide method if show class is present', done => {
       fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl)
+
+      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+        expect(offCanvasEl).toHaveClass('show')
+        spyOn(offCanvas, 'hide')
+
+        offCanvas.toggle()
+
+        expect(offCanvas.hide).toHaveBeenCalled()
+        done()
+      })
+
       offCanvas.show()
-      expect(offCanvasEl).toHaveClass('show')
-
-      spyOn(offCanvas, 'hide')
-
-      offCanvas.toggle()
-
-      expect(offCanvas.hide).toHaveBeenCalled()
     })
   })
 
