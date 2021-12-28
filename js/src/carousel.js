@@ -61,7 +61,6 @@ const SELECTOR_ITEM = '.carousel-item'
 const SELECTOR_ITEM_IMG = '.carousel-item img'
 const SELECTOR_NEXT_PREV = '.carousel-item-next, .carousel-item-prev'
 const SELECTOR_INDICATORS = '.carousel-indicators'
-const SELECTOR_INDICATOR = '[data-bs-target]'
 const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]'
 const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]'
 
@@ -127,6 +126,7 @@ class Carousel extends BaseComponent {
   }
 
   nextWhenVisible() {
+    // FIXME TODO use `document.visibilityState`
     // Don't call next when the page isn't visible
     // or the carousel or its parent isn't visible
     if (!document.hidden && isVisible(this._element)) {
@@ -148,8 +148,7 @@ class Carousel extends BaseComponent {
       this.cycle(true)
     }
 
-    clearInterval(this._interval)
-    this._interval = null
+    this._clearInterval()
   }
 
   cycle(event) {
@@ -157,23 +156,16 @@ class Carousel extends BaseComponent {
       this._isPaused = false
     }
 
-    if (this._interval) {
-      clearInterval(this._interval)
-      this._interval = null
-    }
-
-    if (this._config && this._config.interval && !this._isPaused) {
+    this._clearInterval()
+    if (this._config.interval && !this._isPaused) {
       this._updateInterval()
 
-      this._interval = setInterval(
-        (document.visibilityState ? this.nextWhenVisible : this.next).bind(this),
-        this._config.interval
-      )
+      this._interval = setInterval(() => this.nextWhenVisible(), this._config.interval)
     }
   }
 
   to(index) {
-    this._activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
+    this._activeElement = this._getActive()
     const activeIndex = this._getItemIndex(this._activeElement)
 
     if (index > this._items.length - 1 || index < 0) {
@@ -207,6 +199,11 @@ class Carousel extends BaseComponent {
   }
 
   // Private
+  _configAfterMerge(config) {
+    config.defaultInterval = config.interval
+    return config
+  }
+
   _addEventListeners() {
     if (this._config.keyboard) {
       EventHandler.on(this._element, EVENT_KEYDOWN, event => this._keydown(event))
@@ -282,7 +279,7 @@ class Carousel extends BaseComponent {
 
   _triggerSlideEvent(relatedTarget, eventDirectionName) {
     const targetIndex = this._getItemIndex(relatedTarget)
-    const fromIndex = this._getItemIndex(SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element))
+    const fromIndex = this._getItemIndex(this._getActive())
 
     return EventHandler.trigger(this._element, EVENT_SLIDE, {
       relatedTarget,
@@ -293,26 +290,25 @@ class Carousel extends BaseComponent {
   }
 
   _setActiveIndicatorElement(element) {
-    if (this._indicatorsElement) {
-      const activeIndicator = SelectorEngine.findOne(SELECTOR_ACTIVE, this._indicatorsElement)
+    if (!this._indicatorsElement) {
+      return
+    }
 
-      activeIndicator.classList.remove(CLASS_NAME_ACTIVE)
-      activeIndicator.removeAttribute('aria-current')
+    const activeIndicator = SelectorEngine.findOne(SELECTOR_ACTIVE, this._indicatorsElement)
 
-      const indicators = SelectorEngine.find(SELECTOR_INDICATOR, this._indicatorsElement)
+    activeIndicator.classList.remove(CLASS_NAME_ACTIVE)
+    activeIndicator.removeAttribute('aria-current')
 
-      for (const indicator of indicators) {
-        if (Number.parseInt(indicator.getAttribute('data-bs-slide-to'), 10) === this._getItemIndex(element)) {
-          indicator.classList.add(CLASS_NAME_ACTIVE)
-          indicator.setAttribute('aria-current', 'true')
-          break
-        }
-      }
+    const newActiveIndicator = SelectorEngine.findOne(`[data-bs-slide-to="${this._getItemIndex(element)}"]`, this._indicatorsElement)
+
+    if (newActiveIndicator) {
+      newActiveIndicator.classList.add(CLASS_NAME_ACTIVE)
+      newActiveIndicator.setAttribute('aria-current', 'true')
     }
   }
 
   _updateInterval() {
-    const element = this._activeElement || SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
+    const element = this._activeElement || this._getActive()
 
     if (!element) {
       return
@@ -320,17 +316,12 @@ class Carousel extends BaseComponent {
 
     const elementInterval = Number.parseInt(element.getAttribute('data-bs-interval'), 10)
 
-    if (elementInterval) {
-      this._config.defaultInterval = this._config.defaultInterval || this._config.interval
-      this._config.interval = elementInterval
-    } else {
-      this._config.interval = this._config.defaultInterval || this._config.interval
-    }
+    this._config.interval = elementInterval || this._config.defaultInterval
   }
 
   _slide(directionOrOrder, element) {
     const order = this._directionToOrder(directionOrOrder)
-    const activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
+    const activeElement = this._getActive()
     const activeElementIndex = this._getItemIndex(activeElement)
     const nextElement = element || this._getItemByOrder(order, activeElement)
 
@@ -409,6 +400,17 @@ class Carousel extends BaseComponent {
 
     if (isCycling) {
       this.cycle()
+    }
+  }
+
+  _getActive() {
+    return SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
+  }
+
+  _clearInterval() {
+    if (this._interval) {
+      clearInterval(this._interval)
+      this._interval = null
     }
   }
 
