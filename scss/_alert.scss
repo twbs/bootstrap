@@ -7,7 +7,7 @@
   --#{$variable-prefix}alert-bg: transparent;
   --#{$variable-prefix}alert-padding: #{$alert-padding-y $alert-padding-x};
   --#{$variable-prefix}alert-margin-bottom: #{$alert-margin-bottom};
-  --#{$variable-prefix}alert-color: #{$alert-padding-y $alert-padding-x};
+  --#{$variable-prefix}alert-color: inherit;
   --#{$variable-prefix}alert-border-color: transparent;
   --#{$variable-prefix}alert-border: #{$alert-border-width} solid var(--#{$variable-prefix}alert-border-color);
   --#{$variable-prefix}alert-border-radius: #{$alert-border-radius};
@@ -16,6 +16,7 @@
   position: relative;
   padding: var(--#{$variable-prefix}alert-padding);
   margin-bottom: var(--#{$variable-prefix}alert-margin-bottom);
+  color: var(--#{$variable-prefix}alert-color);
   background-color: var(--#{$variable-prefix}alert-bg);
   border: var(--#{$variable-prefix}alert-border);
   border-radius: var(--#{$variable-prefix}alert-border-radius, 0); // stylelint-disable-line property-disallowed-list
