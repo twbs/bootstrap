@@ -4,8 +4,8 @@
 
 /*!
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
- * Copyright 2011-2021 The Bootstrap Authors
- * Copyright 2011-2021 Twitter, Inc.
+ * Copyright 2011-2022 The Bootstrap Authors
+ * Copyright 2011-2022 Twitter, Inc.
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
@@ -169,4 +169,43 @@
     icon: '#'
   }
   anchors.add('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
+
+  // Open in StackBlitz logic
+  /*
+  const project = {
+  files: {
+    "index.ts": code,
+    "index.html": html
+  },
+  title: "Dynamically Generated Project",
+  description: "Created with <3 by the StackBlitz SDK!",
+  template: "typescript",
+  tags: ["stackblitz", "sdk"],
+  dependencies: {
+    moment: "*" // * = latest version
+  }
+};
+// Method to open project in new window
+window["openNewProject"] = () => {
+  sdk.openProject(project);
+};
+*/
+  document.querySelectorAll('.btn-edit')
+    .forEach(function (btn) {
+      var tooltipBtn = new bootstrap.Tooltip(btn)
+
+      btn.addEventListener('mouseleave', function () {
+        // Explicitly hide tooltip, since after clicking it remains
+        // focused (as it's a button), so tooltip would otherwise
+        // remain visible until focus is moved away
+        tooltipBtn.hide()
+      })
+
+      btn.addEventListener('click', function (e) {
+        var htmlSnippet = e.target.parentNode.nextElementSibling.nextElementSibling.textContent
+
+        // eslint-disable-next-line no-undef
+        StackBlitzSDK.openBootstrapSnippet(htmlSnippet)
+      })
+    })
 })()
