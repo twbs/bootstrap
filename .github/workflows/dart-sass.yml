@@ -5,6 +5,7 @@ on:
     branches-ignore:
       - "dependabot/**"
   pull_request:
+  workflow_dispatch:
 
 env:
   FORCE_COLOR: 2

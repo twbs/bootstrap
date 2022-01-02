@@ -606,6 +606,7 @@ Responsive variations also exist for `align-content`.
 - `.align-content{{ .abbr }}-start`
 - `.align-content{{ .abbr }}-end`
 - `.align-content{{ .abbr }}-center`
+- `.align-content{{ .abbr }}-between`
 - `.align-content{{ .abbr }}-around`
 - `.align-content{{ .abbr }}-stretch`
 {{- end -}}

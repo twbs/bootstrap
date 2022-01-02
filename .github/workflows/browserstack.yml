@@ -2,6 +2,7 @@ name: BrowserStack
 
 on:
   push:
+  workflow_dispatch:
 
 env:
   FORCE_COLOR: 2
