@@ -90,11 +90,14 @@ describe('Modal', () => {
       })
 
       modalEl.addEventListener('shown.bs.modal', () => {
+        const backdropEl = document.querySelector('.modal-backdrop')
+
         expect(modalEl.getAttribute('aria-modal')).toEqual('true')
         expect(modalEl.getAttribute('role')).toEqual('dialog')
         expect(modalEl.getAttribute('aria-hidden')).toBeNull()
         expect(modalEl.style.display).toEqual('block')
-        expect(document.querySelector('.modal-backdrop')).not.toBeNull()
+        expect(backdropEl).not.toBeNull()
+        expect(backdropEl.parentNode).toEqual(document.body)
         done()
       })
 
@@ -119,6 +122,28 @@ describe('Modal', () => {
         expect(modalEl.getAttribute('aria-hidden')).toBeNull()
         expect(modalEl.style.display).toEqual('block')
         expect(document.querySelector('.modal-backdrop')).toBeNull()
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should show a modal and backdrop to the specified element', done => {
+      fixtureEl.innerHTML = '<div id="rootModal"></div><div class="modal"><div class="modal-dialog"></div></div></div>'
+
+      const rootModalEl = fixtureEl.querySelector('#rootModal')
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl, { backdropParent: rootModalEl })
+
+      modalEl.addEventListener('show.bs.modal', event => {
+        expect(event).toBeDefined()
+      })
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        const backdropEl = document.querySelector('.modal-backdrop')
+
+        expect(backdropEl).not.toBeNull()
+        expect(backdropEl.parentNode).toEqual(rootModalEl)
         done()
       })
 

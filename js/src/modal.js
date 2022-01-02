@@ -45,12 +45,14 @@ const SELECTOR_MODAL_BODY = '.modal-body'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="modal"]'
 
 const Default = {
+  backdropParent: 'body',
   backdrop: true,
   keyboard: true,
   focus: true
 }
 
 const DefaultType = {
+  backdropParent: '(element|string)',
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
   focus: 'boolean'
@@ -160,7 +162,8 @@ class Modal extends BaseComponent {
   _initializeBackDrop() {
     return new Backdrop({
       isVisible: Boolean(this._config.backdrop), // 'static' option will be translated to true, and booleans will keep their value
-      isAnimated: this._isAnimated()
+      isAnimated: this._isAnimated(),
+      rootElement: this._config.backdropParent
     })
   }
 

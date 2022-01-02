@@ -870,6 +870,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </thead>
   <tbody>
     <tr>
+      <td><code>backdropParent</code></td>
+      <td>element or a string</td>
+      <td><code>'body'</code></td>
+      <td>The modal-backdrop element will be append at the end of this element.</td>
+    </tr>
+    <tr>
       <td><code>backdrop</code></td>
       <td>boolean or the string <code>'static'</code></td>
       <td><code>true</code></td>
