@@ -162,14 +162,17 @@ describe('Tab', () => {
         '  <a href="#home">Home</a>',
         '  <a id="triggerProfile" href="#profile">Profile</a>',
         '</div>',
-        '<nav><div id="home"></div><div id="profile"></div></nav>'
+        '<nav>',
+        '  <div id="home"></div>',
+        '  <div id="profile"></div>',
+        '</nav>'
       ].join('')
 
       const profileTriggerEl = fixtureEl.querySelector('#triggerProfile')
       const tab = new Tab(profileTriggerEl)
 
       profileTriggerEl.addEventListener('shown.bs.tab', () => {
-        expect(fixtureEl.querySelector('#profile').classList.contains('active')).toEqual(true)
+        expect(fixtureEl.querySelector('#profile')).toHaveClass('active')
         done()
       })
 
@@ -177,26 +180,30 @@ describe('Tab', () => {
     })
 
     it('should toggle active class on tab elements even when they are not siblings', done => {
-      fixtureEl.innerHTML = `
-        <div class="btn-toolbar">
-          <div class="btn-group">
-            <a id="triggerHome" class="active" href="#home">Home</a>
-            <a href="#profile">Profile</a>
-          </div>
-          <div class="btn-group">
-            <a id="triggerContact" href="#contact">Contact</a>
-          </div>
-        </div>
-        <nav><div id="home"></div><div id="profile"></div><div id="contact"></div></nav>
-      `
+      fixtureEl.innerHTML = [
+        '<div class="btn-toolbar">',
+        '  <div class="btn-group">',
+        '    <a id="triggerHome" class="active" href="#home">Home</a>',
+        '    <a href="#profile">Profile</a>',
+        '  </div>',
+        '  <div class="btn-group">',
+        '    <a id="triggerContact" href="#contact">Contact</a>',
+        '  </div>',
+        '</div>',
+        '<nav>',
+        '  <div id="home"></div>',
+        '  <div id="profile"></div>',
+        '  <div id="contact"></div>',
+        '</nav>'
+      ].join('')
 
       const triggerContactEl = fixtureEl.querySelector('#triggerContact')
       const tab = new Tab(triggerContactEl)
 
       triggerContactEl.addEventListener('shown.bs.tab', () => {
-        expect(fixtureEl.querySelector('#contact').classList.contains('active')).toEqual(true)
-        expect(fixtureEl.querySelector('#triggerHome').classList.contains('active')).toEqual(false)
-        expect(triggerContactEl.classList.contains('active')).toEqual(true)
+        expect(fixtureEl.querySelector('#contact')).toHaveClass('active')
+        expect(fixtureEl.querySelector('#triggerHome')).not.toHaveClass('active')
+        expect(triggerContactEl).toHaveClass('active')
         done()
       })
 
