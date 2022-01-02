@@ -22,6 +22,9 @@
 {{- end -}}
 
 {{- if eq $show_markup true -}}
+  <div class="bd-edit">
+    <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">Try it</button>
+  </div>
   {{- $content := replaceRE `<svg class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>\n` `<img src="..." class="$1" alt="...">` $input -}}
   {{- $content = replaceRE ` (class=" *?")` "" $content -}}
   {{- highlight (trim $content "\n") $lang "" -}}
