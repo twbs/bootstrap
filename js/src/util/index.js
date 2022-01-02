@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.2): util/index.js
+ * Bootstrap (v5.1.3): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -10,18 +10,16 @@ const MILLISECONDS_MULTIPLIER = 1000
 const TRANSITION_END = 'transitionend'
 
 // Shoutout AngusCroll (https://goo.gl/pxwQGp)
-const toType = obj => {
-  if (obj === null || obj === undefined) {
-    return `${obj}`
+const toType = object => {
+  if (object === null || object === undefined) {
+    return `${object}`
   }
 
-  return Object.prototype.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
+  return Object.prototype.toString.call(object).match(/\s([a-z]+)/i)[1].toLowerCase()
 }
 
 /**
- * --------------------------------------------------------------------------
- * Public Util Api
- * --------------------------------------------------------------------------
+ * Public Util API
  */
 
 const getUID = prefix => {
@@ -36,22 +34,22 @@ const getSelector = element => {
   let selector = element.getAttribute('data-bs-target')
 
   if (!selector || selector === '#') {
-    let hrefAttr = element.getAttribute('href')
+    let hrefAttribute = element.getAttribute('href')
 
     // The only valid content that could double as a selector are IDs or classes,
     // so everything starting with `#` or `.`. If a "real" URL is used as the selector,
     // `document.querySelector` will rightfully complain it is invalid.
     // See https://github.com/twbs/bootstrap/issues/32273
-    if (!hrefAttr || (!hrefAttr.includes('#') && !hrefAttr.startsWith('.'))) {
+    if (!hrefAttribute || (!hrefAttribute.includes('#') && !hrefAttribute.startsWith('.'))) {
       return null
     }
 
     // Just in case some CMS puts out a full URL with the anchor appended
-    if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
-      hrefAttr = `#${hrefAttr.split('#')[1]}`
+    if (hrefAttribute.includes('#') && !hrefAttribute.startsWith('#')) {
+      hrefAttribute = `#${hrefAttribute.split('#')[1]}`
     }
 
-    selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null
+    selector = hrefAttribute && hrefAttribute !== '#' ? hrefAttribute.trim() : null
   }
 
   return selector
@@ -100,42 +98,29 @@ const triggerTransitionEnd = element => {
   element.dispatchEvent(new Event(TRANSITION_END))
 }
 
-const isElement = obj => {
-  if (!obj || typeof obj !== 'object') {
+const isElement = object => {
+  if (!object || typeof object !== 'object') {
     return false
   }
 
-  if (typeof obj.jquery !== 'undefined') {
-    obj = obj[0]
+  if (typeof object.jquery !== 'undefined') {
+    object = object[0]
   }
 
-  return typeof obj.nodeType !== 'undefined'
+  return typeof object.nodeType !== 'undefined'
 }
 
-const getElement = obj => {
-  if (isElement(obj)) { // it's a jQuery object or a node element
-    return obj.jquery ? obj[0] : obj
+const getElement = object => {
+  // it's a jQuery object or a node element
+  if (isElement(object)) {
+    return object.jquery ? object[0] : object
   }
 
-  if (typeof obj === 'string' && obj.length > 0) {
-    return document.querySelector(obj)
+  if (typeof object === 'string' && object.length > 0) {
+    return document.querySelector(object)
   }
 
   return null
-}
-
-const typeCheckConfig = (componentName, config, configTypes) => {
-  for (const property of Object.keys(configTypes)) {
-    const expectedTypes = configTypes[property]
-    const value = config[property]
-    const valueType = value && isElement(value) ? 'element' : toType(value)
-
-    if (!new RegExp(expectedTypes).test(valueType)) {
-      throw new TypeError(
-        `${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`
-      )
-    }
-  }
 }
 
 const isVisible = element => {
@@ -196,15 +181,12 @@ const noop = () => {}
  * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
  */
 const reflow = element => {
-  // eslint-disable-next-line no-unused-expressions
-  element.offsetHeight
+  element.offsetHeight // eslint-disable-line no-unused-expressions
 }
 
 const getjQuery = () => {
-  const { jQuery } = window
-
-  if (jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
-    return jQuery
+  if (window.jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
+    return window.jQuery
   }
 
   return null
@@ -293,14 +275,14 @@ const executeAfterTransition = (callback, transitionElement, waitForTransition =
  * @return {Element|elem} The proper element
  */
 const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
+  const listLength = list.length
   let index = list.indexOf(activeElement)
 
-  // if the element does not exist in the list return an element depending on the direction and if cycle is allowed
+  // if the element does not exist in the list return an element
+  // depending on the direction and if cycle is allowed
   if (index === -1) {
-    return list[!shouldGetNext && isCycleAllowed ? list.length - 1 : 0]
+    return !shouldGetNext && isCycleAllowed ? list[listLength - 1] : list[0]
   }
-
-  const listLength = list.length
 
   index += shouldGetNext ? 1 : -1
 
@@ -312,24 +294,24 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
 }
 
 export {
-  getElement,
-  getUID,
-  getSelectorFromElement,
-  getElementFromSelector,
-  getTransitionDurationFromElement,
-  triggerTransitionEnd,
-  isElement,
-  typeCheckConfig,
-  isVisible,
-  isDisabled,
-  findShadowRoot,
-  noop,
-  getNextActiveElement,
-  reflow,
-  getjQuery,
-  onDOMContentLoaded,
-  isRTL,
   defineJQueryPlugin,
   execute,
-  executeAfterTransition
+  executeAfterTransition,
+  findShadowRoot,
+  getElement,
+  getElementFromSelector,
+  getjQuery,
+  getNextActiveElement,
+  getSelectorFromElement,
+  getTransitionDurationFromElement,
+  getUID,
+  isDisabled,
+  isElement,
+  isRTL,
+  isVisible,
+  noop,
+  onDOMContentLoaded,
+  reflow,
+  triggerTransitionEnd,
+  toType
 }

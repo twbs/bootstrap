@@ -201,12 +201,13 @@
         .offcanvas {
           position: inherit;
           bottom: 0;
-          z-index: 1000;
+          z-index: auto;
           flex-grow: 1;
           visibility: visible !important; // stylelint-disable-line declaration-no-important
           background-color: transparent;
           border-right: 0;
           border-left: 0;
+          @include box-shadow(none);
           @include transition(none);
           transform: none;
         }

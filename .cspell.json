@@ -24,6 +24,7 @@
     "Contentful",
     "Cpath",
     "Crossfade",
+    "crossfading",
     "cssgrid",
     "Csvg",
     "Datalists",
@@ -53,6 +54,7 @@
     "Jumpstart",
     "keyframes",
     "libera",
+    "libman",
     "Libsass",
     "lightboxes",
     "Lowercased",
@@ -111,7 +113,7 @@
     "Woohoo",
     "zindex",
     "بالعالم",
-    "مرحبا"
+    "مرحبًا"
   ],
   "language": "en,en-US",
   "ignorePaths": [

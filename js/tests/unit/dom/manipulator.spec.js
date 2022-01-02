@@ -1,6 +1,4 @@
 import Manipulator from '../../../src/dom/manipulator'
-
-/** Test helpers */
 import { getFixture, clearFixture } from '../../helpers/fixture'
 
 describe('Manipulator', () => {
@@ -98,10 +96,10 @@ describe('Manipulator', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Manipulator.getDataAttribute(div, 'test')).toEqual(false)
+      expect(Manipulator.getDataAttribute(div, 'test')).toBeFalse()
 
       div.setAttribute('data-bs-test', 'true')
-      expect(Manipulator.getDataAttribute(div, 'test')).toEqual(true)
+      expect(Manipulator.getDataAttribute(div, 'test')).toBeTrue()
 
       div.setAttribute('data-bs-test', '1')
       expect(Manipulator.getDataAttribute(div, 'test')).toEqual(1)
@@ -154,8 +152,8 @@ describe('Manipulator', () => {
       body.append(forceScrollBars)
 
       const scrollHandler = () => {
-        expect(window.pageYOffset).toBe(scrollY)
-        expect(window.pageXOffset).toBe(scrollX)
+        expect(window.pageYOffset).toEqual(scrollY)
+        expect(window.pageXOffset).toEqual(scrollX)
 
         const newOffset = Manipulator.offset(div)
 

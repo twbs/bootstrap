@@ -1,23 +1,17 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.2): util/focustrap.js
+ * Bootstrap (v5.1.3): util/focustrap.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import EventHandler from '../dom/event-handler'
 import SelectorEngine from '../dom/selector-engine'
-import { typeCheckConfig } from './index'
+import Config from './config'
 
-const Default = {
-  trapElement: null, // The element to trap focus inside of
-  autofocus: true
-}
-
-const DefaultType = {
-  trapElement: 'element',
-  autofocus: 'boolean'
-}
+/**
+ * Constants
+ */
 
 const NAME = 'focustrap'
 const DATA_KEY = 'bs.focustrap'
@@ -29,13 +23,42 @@ const TAB_KEY = 'Tab'
 const TAB_NAV_FORWARD = 'forward'
 const TAB_NAV_BACKWARD = 'backward'
 
-class FocusTrap {
+const Default = {
+  trapElement: null, // The element to trap focus inside of
+  autofocus: true
+}
+
+const DefaultType = {
+  trapElement: 'element',
+  autofocus: 'boolean'
+}
+
+/**
+ * Class definition
+ */
+
+class FocusTrap extends Config {
   constructor(config) {
+    super()
     this._config = this._getConfig(config)
     this._isActive = false
     this._lastTabNavDirection = null
   }
 
+  // Getters
+  static get Default() {
+    return Default
+  }
+
+  static get DefaultType() {
+    return DefaultType
+  }
+
+  static get NAME() {
+    return NAME
+  }
+
+  // Public
   activate() {
     const { trapElement, autofocus } = this._config
 
@@ -64,7 +87,6 @@ class FocusTrap {
   }
 
   // Private
-
   _handleFocusin(event) {
     const { target } = event
     const { trapElement } = this._config
@@ -90,15 +112,6 @@ class FocusTrap {
     }
 
     this._lastTabNavDirection = event.shiftKey ? TAB_NAV_BACKWARD : TAB_NAV_FORWARD
-  }
-
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...(typeof config === 'object' ? config : {})
-    }
-    typeCheckConfig(NAME, config, DefaultType)
-    return config
   }
 }
 

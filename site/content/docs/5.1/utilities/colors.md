@@ -100,11 +100,11 @@ Grayscale colors are also available as a Sass map. **This map is not used to gen
 
 RGB colors are generated from a separate Sass map:
 
-{{< scss-docs name="theme-colors-rgb" file="scss/_variables.scss" >}}
+{{< scss-docs name="theme-colors-rgb" file="scss/_maps.scss" >}}
 
 And color opacities build on that with their own map that's consumed by the utilities API:
 
-{{< scss-docs name="utilities-text-colors" file="scss/_variables.scss" >}}
+{{< scss-docs name="utilities-text-colors" file="scss/_maps.scss" >}}
 
 ### Utilities API
 

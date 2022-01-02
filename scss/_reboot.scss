@@ -49,7 +49,7 @@
 body {
   margin: 0; // 1
   font-family: var(--#{$variable-prefix}body-font-family);
-  @include font-size(var(--#{$variable-prefix}body-font-size));
+  font-size: var(--#{$variable-prefix}body-font-size);
   font-weight: var(--#{$variable-prefix}body-font-weight);
   line-height: var(--#{$variable-prefix}body-line-height);
   color: var(--#{$variable-prefix}body-color);
@@ -69,8 +69,8 @@ body {
 hr {
   margin: $hr-margin-y 0;
   color: $hr-color; // 1
-  background-color: currentColor;
-  border: 0;
+  background-color: $hr-bg-color;
+  border: $hr-border-width;
   opacity: $hr-opacity;
 }
 
@@ -279,8 +279,6 @@ kbd,
 samp {
   font-family: $font-family-code;
   @include font-size(1em); // Correct the odd `em` font sizing in all browsers.
-  direction: ltr #{"/* rtl:ignore */"};
-  unicode-bidi: bidi-override;
 }
 
 // 1. Remove browser default top margin
@@ -571,16 +569,10 @@ legend {
 }
 
 
-// Inherit font family and line height for file input buttons
-
-::file-selector-button {
-  font: inherit;
-}
-
-// 1. Change font properties to `inherit`
+// 1. Inherit font family and line height for file input buttons
 // 2. Correct the inability to style clickable types in iOS and Safari.
 
-::-webkit-file-upload-button {
+::file-selector-button {
   font: inherit; // 1
   -webkit-appearance: button; // 2
 }

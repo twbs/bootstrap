@@ -122,6 +122,7 @@ Here's an example that generates text color utilities (e.g., `.text-purple-500`)
 ```scss
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
 

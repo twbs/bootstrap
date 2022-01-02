@@ -1,7 +1,5 @@
 import Collapse from '../../src/collapse'
 import EventHandler from '../../src/dom/event-handler'
-
-/** Test helpers */
 import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Collapse', () => {
@@ -161,8 +159,8 @@ describe('Collapse', () => {
         }))
 
       collapseEl2.addEventListener('shown.bs.collapse', () => {
-        expect(collapseEl2.classList.contains('show')).toEqual(true)
-        expect(collapseEl1.classList.contains('show')).toEqual(false)
+        expect(collapseEl2).toHaveClass('show')
+        expect(collapseEl1).not.toHaveClass('show')
         done()
       })
 
@@ -214,7 +212,7 @@ describe('Collapse', () => {
         expect(collapseEl.style.height).toEqual('0px')
       })
       collapseEl.addEventListener('shown.bs.collapse', () => {
-        expect(collapseEl.classList.contains('show')).toEqual(true)
+        expect(collapseEl).toHaveClass('show')
         expect(collapseEl.style.height).toEqual('')
         done()
       })
@@ -234,7 +232,7 @@ describe('Collapse', () => {
         expect(collapseEl.style.width).toEqual('0px')
       })
       collapseEl.addEventListener('shown.bs.collapse', () => {
-        expect(collapseEl.classList.contains('show')).toEqual(true)
+        expect(collapseEl).toHaveClass('show')
         expect(collapseEl.style.width).toEqual('')
         done()
       })
@@ -259,8 +257,8 @@ describe('Collapse', () => {
       })
 
       el1.addEventListener('shown.bs.collapse', () => {
-        expect(el1.classList.contains('show')).toEqual(true)
-        expect(el2.classList.contains('show')).toEqual(true)
+        expect(el1).toHaveClass('show')
+        expect(el2).toHaveClass('show')
         done()
       })
 
@@ -270,31 +268,31 @@ describe('Collapse', () => {
     it('should be able to handle toggling of other children siblings', done => {
       fixtureEl.innerHTML = [
         '<div id="parentGroup" class="accordion">',
-        '   <div id="parentHeader" class="accordion-header">',
-        '      <button data-bs-target="#parentContent" data-bs-toggle="collapse" role="button" class="accordion-toggle">Parent</button>',
-        '   </div>',
-        '   <div id="parentContent" class="accordion-collapse collapse" aria-labelledby="parentHeader" data-bs-parent="#parentGroup">',
-        '      <div class="accordion-body">',
-        '         <div id="childGroup" class="accordion">',
-        '            <div class="accordion-item">',
-        '               <div id="childHeader1" class="accordion-header">',
-        '                  <button data-bs-target="#childContent1" data-bs-toggle="collapse" role="button" class="accordion-toggle">Child 1</button>',
-        '               </div>',
-        '               <div id="childContent1" class="accordion-collapse collapse" aria-labelledby="childHeader1" data-bs-parent="#childGroup">',
-        '                  <div>content</div>',
-        '               </div>',
-        '            </div>',
-        '            <div class="accordion-item">',
-        '               <div id="childHeader2" class="accordion-header">',
-        '                  <button data-bs-target="#childContent2" data-bs-toggle="collapse" role="button" class="accordion-toggle">Child 2</button>',
-        '               </div>',
-        '               <div id="childContent2" class="accordion-collapse collapse" aria-labelledby="childHeader2" data-bs-parent="#childGroup">',
-        '                  <div>content</div>',
-        '               </div>',
-        '            </div>',
-        '         </div>',
+        '  <div id="parentHeader" class="accordion-header">',
+        '    <button data-bs-target="#parentContent" data-bs-toggle="collapse" role="button" class="accordion-toggle">Parent</button>',
+        '  </div>',
+        '  <div id="parentContent" class="accordion-collapse collapse" aria-labelledby="parentHeader" data-bs-parent="#parentGroup">',
+        '    <div class="accordion-body">',
+        '      <div id="childGroup" class="accordion">',
+        '        <div class="accordion-item">',
+        '          <div id="childHeader1" class="accordion-header">',
+        '            <button data-bs-target="#childContent1" data-bs-toggle="collapse" role="button" class="accordion-toggle">Child 1</button>',
+        '          </div>',
+        '          <div id="childContent1" class="accordion-collapse collapse" aria-labelledby="childHeader1" data-bs-parent="#childGroup">',
+        '            <div>content</div>',
+        '          </div>',
+        '        </div>',
+        '        <div class="accordion-item">',
+        '          <div id="childHeader2" class="accordion-header">',
+        '            <button data-bs-target="#childContent2" data-bs-toggle="collapse" role="button" class="accordion-toggle">Child 2</button>',
+        '          </div>',
+        '          <div id="childContent2" class="accordion-collapse collapse" aria-labelledby="childHeader2" data-bs-parent="#childGroup">',
+        '            <div>content</div>',
+        '          </div>',
+        '        </div>',
         '      </div>',
-        '   </div>',
+        '    </div>',
+        '  </div>',
         '</div>'
       ].join('')
 
@@ -309,46 +307,47 @@ describe('Collapse', () => {
       const childCollapseEl2 = el('#childContent2')
 
       parentCollapseEl.addEventListener('shown.bs.collapse', () => {
-        expect(parentCollapseEl.classList.contains('show')).toEqual(true)
+        expect(parentCollapseEl).toHaveClass('show')
         childBtn1.click()
       })
       childCollapseEl1.addEventListener('shown.bs.collapse', () => {
-        expect(childCollapseEl1.classList.contains('show')).toEqual(true)
+        expect(childCollapseEl1).toHaveClass('show')
         childBtn2.click()
       })
       childCollapseEl2.addEventListener('shown.bs.collapse', () => {
-        expect(childCollapseEl2.classList.contains('show')).toEqual(true)
-        expect(childCollapseEl1.classList.contains('show')).toEqual(false)
+        expect(childCollapseEl2).toHaveClass('show')
+        expect(childCollapseEl1).not.toHaveClass('show')
         done()
       })
 
       parentBtn.click()
     })
+
     it('should not change tab tabpanels descendants on accordion', done => {
       fixtureEl.innerHTML = [
         '<div class="accordion" id="accordionExample">',
-        '      <div class="accordion-item">',
-        '        <h2 class="accordion-header" id="headingOne">',
-        '          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">',
-        '            Accordion Item #1',
-        '          </button>',
-        '        </h2>',
-        '        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">',
-        '          <div class="accordion-body">',
-        '            <nav>',
-        '              <div class="nav nav-tabs" id="nav-tab" role="tablist">',
-        '                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>',
-        '                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>',
-        '              </div>',
-        '            </nav>',
-        '            <div class="tab-content" id="nav-tabContent">',
-        '              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">Home</div>',
-        '              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Profile</div>',
-        '            </div>',
+        '  <div class="accordion-item">',
+        '    <h2 class="accordion-header" id="headingOne">',
+        '      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">',
+        '        Accordion Item #1',
+        '      </button>',
+        '    </h2>',
+        '    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">',
+        '      <div class="accordion-body">',
+        '        <nav>',
+        '          <div class="nav nav-tabs" id="nav-tab" role="tablist">',
+        '            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>',
+        '            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>',
         '          </div>',
+        '        </nav>',
+        '        <div class="tab-content" id="nav-tabContent">',
+        '          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">Home</div>',
+        '          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Profile</div>',
         '        </div>',
         '      </div>',
-        '    </div>'
+        '    </div>',
+        '  </div>',
+        '</div>'
       ].join('')
 
       const el = fixtureEl.querySelector('#collapseOne')
@@ -361,7 +360,7 @@ describe('Collapse', () => {
       })
 
       el.addEventListener('shown.bs.collapse', () => {
-        expect(activeTabPane.classList.contains('show')).toEqual(true)
+        expect(activeTabPane).toHaveClass('show')
         times++
         if (times === 2) {
           done()
@@ -442,7 +441,7 @@ describe('Collapse', () => {
       })
 
       collapseEl.addEventListener('hidden.bs.collapse', () => {
-        expect(collapseEl.classList.contains('show')).toEqual(false)
+        expect(collapseEl).not.toHaveClass('show')
         expect(collapseEl.style.height).toEqual('')
         done()
       })
@@ -491,7 +490,7 @@ describe('Collapse', () => {
 
       collapse.dispose()
 
-      expect(Collapse.getInstance(collapseEl)).toEqual(null)
+      expect(Collapse.getInstance(collapseEl)).toBeNull()
     })
   })
 
@@ -510,8 +509,8 @@ describe('Collapse', () => {
       spyOn(Event.prototype, 'preventDefault').and.callThrough()
 
       triggerEl.addEventListener('click', event => {
-        expect(event.target.isEqualNode(nestedTriggerEl)).toEqual(true)
-        expect(event.delegateTarget.isEqualNode(triggerEl)).toEqual(true)
+        expect(event.target.isEqualNode(nestedTriggerEl)).toBeTrue()
+        expect(event.delegateTarget.isEqualNode(triggerEl)).toBeTrue()
         expect(Event.prototype.preventDefault).toHaveBeenCalled()
         done()
       })
@@ -532,9 +531,9 @@ describe('Collapse', () => {
 
       collapse2.addEventListener('shown.bs.collapse', () => {
         expect(trigger.getAttribute('aria-expanded')).toEqual('true')
-        expect(trigger.classList.contains('collapsed')).toEqual(false)
-        expect(collapse1.classList.contains('show')).toEqual(true)
-        expect(collapse1.classList.contains('show')).toEqual(true)
+        expect(trigger).not.toHaveClass('collapsed')
+        expect(collapse1).toHaveClass('show')
+        expect(collapse1).toHaveClass('show')
         done()
       })
 
@@ -554,9 +553,9 @@ describe('Collapse', () => {
 
       collapse2.addEventListener('hidden.bs.collapse', () => {
         expect(trigger.getAttribute('aria-expanded')).toEqual('false')
-        expect(trigger.classList.contains('collapsed')).toEqual(true)
-        expect(collapse1.classList.contains('show')).toEqual(false)
-        expect(collapse1.classList.contains('show')).toEqual(false)
+        expect(trigger).toHaveClass('collapsed')
+        expect(collapse1).not.toHaveClass('show')
+        expect(collapse1).not.toHaveClass('show')
         done()
       })
 
@@ -577,8 +576,8 @@ describe('Collapse', () => {
       collapseTest1.addEventListener('shown.bs.collapse', () => {
         expect(link1.getAttribute('aria-expanded')).toEqual('true')
         expect(link2.getAttribute('aria-expanded')).toEqual('true')
-        expect(link1.classList.contains('collapsed')).toEqual(false)
-        expect(link2.classList.contains('collapsed')).toEqual(false)
+        expect(link1).not.toHaveClass('collapsed')
+        expect(link2).not.toHaveClass('collapsed')
         done()
       })
 
@@ -599,8 +598,8 @@ describe('Collapse', () => {
       collapseTest1.addEventListener('hidden.bs.collapse', () => {
         expect(link1.getAttribute('aria-expanded')).toEqual('false')
         expect(link2.getAttribute('aria-expanded')).toEqual('false')
-        expect(link1.classList.contains('collapsed')).toEqual(true)
-        expect(link2.classList.contains('collapsed')).toEqual(true)
+        expect(link1).toHaveClass('collapsed')
+        expect(link2).toHaveClass('collapsed')
         done()
       })
 
@@ -627,12 +626,12 @@ describe('Collapse', () => {
       const collapseTwo = fixtureEl.querySelector('#collapseTwo')
 
       collapseOne.addEventListener('shown.bs.collapse', () => {
-        expect(collapseOne.classList.contains('show')).toEqual(true)
-        expect(collapseTwo.classList.contains('show')).toEqual(false)
+        expect(collapseOne).toHaveClass('show')
+        expect(collapseTwo).not.toHaveClass('show')
 
         collapseTwo.addEventListener('shown.bs.collapse', () => {
-          expect(collapseOne.classList.contains('show')).toEqual(false)
-          expect(collapseTwo.classList.contains('show')).toEqual(true)
+          expect(collapseOne).not.toHaveClass('show')
+          expect(collapseTwo).toHaveClass('show')
           done()
         })
 
@@ -652,8 +651,8 @@ describe('Collapse', () => {
       const collapseEl = fixtureEl.querySelector('#collapsediv1')
 
       collapseEl.addEventListener('shown.bs.collapse', () => {
-        expect(collapseEl.classList.contains('show')).toEqual(true)
-        expect(target.checked).toEqual(true)
+        expect(collapseEl).toHaveClass('show')
+        expect(target.checked).toBeTrue()
         done()
       })
 
@@ -686,21 +685,21 @@ describe('Collapse', () => {
       const collapseTwoEl = fixtureEl.querySelector('#collapseTwo')
 
       collapseOneEl.addEventListener('shown.bs.collapse', () => {
-        expect(collapseOneEl.classList.contains('show')).toEqual(true)
-        expect(triggerEl.classList.contains('collapsed')).toEqual(false)
+        expect(collapseOneEl).toHaveClass('show')
+        expect(triggerEl).not.toHaveClass('collapsed')
         expect(triggerEl.getAttribute('aria-expanded')).toEqual('true')
 
-        expect(collapseTwoEl.classList.contains('show')).toEqual(false)
-        expect(triggerTwoEl.classList.contains('collapsed')).toEqual(true)
+        expect(collapseTwoEl).not.toHaveClass('show')
+        expect(triggerTwoEl).toHaveClass('collapsed')
         expect(triggerTwoEl.getAttribute('aria-expanded')).toEqual('false')
 
         collapseTwoEl.addEventListener('shown.bs.collapse', () => {
-          expect(collapseOneEl.classList.contains('show')).toEqual(false)
-          expect(triggerEl.classList.contains('collapsed')).toEqual(true)
+          expect(collapseOneEl).not.toHaveClass('show')
+          expect(triggerEl).toHaveClass('collapsed')
           expect(triggerEl.getAttribute('aria-expanded')).toEqual('false')
 
-          expect(collapseTwoEl.classList.contains('show')).toEqual(true)
-          expect(triggerTwoEl.classList.contains('collapsed')).toEqual(false)
+          expect(collapseTwoEl).toHaveClass('show')
+          expect(triggerTwoEl).not.toHaveClass('collapsed')
           expect(triggerTwoEl.getAttribute('aria-expanded')).toEqual('true')
           done()
         })
@@ -735,21 +734,21 @@ describe('Collapse', () => {
       }
 
       function firstTest() {
-        expect(collapseOneOne.classList.contains('show')).toEqual(true)
-        expect(collapseOneTwo.classList.contains('show')).toEqual(true)
+        expect(collapseOneOne).toHaveClass('show')
+        expect(collapseOneTwo).toHaveClass('show')
 
-        expect(collapseTwoOne.classList.contains('show')).toEqual(false)
-        expect(collapseTwoTwo.classList.contains('show')).toEqual(false)
+        expect(collapseTwoOne).not.toHaveClass('show')
+        expect(collapseTwoTwo).not.toHaveClass('show')
 
         triggerTwo.click()
       }
 
       function secondTest() {
-        expect(collapseOneOne.classList.contains('show')).toEqual(false)
-        expect(collapseOneTwo.classList.contains('show')).toEqual(false)
+        expect(collapseOneOne).not.toHaveClass('show')
+        expect(collapseOneTwo).not.toHaveClass('show')
 
-        expect(collapseTwoOne.classList.contains('show')).toEqual(true)
-        expect(collapseTwoTwo.classList.contains('show')).toEqual(true)
+        expect(collapseTwoOne).toHaveClass('show')
+        expect(collapseTwoTwo).toHaveClass('show')
         done()
       }
 
@@ -817,9 +816,9 @@ describe('Collapse', () => {
       const nestedCollapseOne = fixtureEl.querySelector('#nestedCollapseOne')
 
       function handlerCollapseOne() {
-        expect(collapseOne.classList.contains('show')).toEqual(true)
-        expect(collapseTwo.classList.contains('show')).toEqual(false)
-        expect(nestedCollapseOne.classList.contains('show')).toEqual(false)
+        expect(collapseOne).toHaveClass('show')
+        expect(collapseTwo).not.toHaveClass('show')
+        expect(nestedCollapseOne).not.toHaveClass('show')
 
         nestedCollapseOne.addEventListener('shown.bs.collapse', handlerNestedCollapseOne)
         nestedTrigger.click()
@@ -827,14 +826,14 @@ describe('Collapse', () => {
       }
 
       function handlerNestedCollapseOne() {
-        expect(collapseOne.classList.contains('show')).toEqual(true)
-        expect(collapseTwo.classList.contains('show')).toEqual(false)
-        expect(nestedCollapseOne.classList.contains('show')).toEqual(true)
+        expect(collapseOne).toHaveClass('show')
+        expect(collapseTwo).not.toHaveClass('show')
+        expect(nestedCollapseOne).toHaveClass('show')
 
         collapseTwo.addEventListener('shown.bs.collapse', () => {
-          expect(collapseOne.classList.contains('show')).toEqual(false)
-          expect(collapseTwo.classList.contains('show')).toEqual(true)
-          expect(nestedCollapseOne.classList.contains('show')).toEqual(true)
+          expect(collapseOne).not.toHaveClass('show')
+          expect(collapseTwo).toHaveClass('show')
+          expect(nestedCollapseOne).toHaveClass('show')
           done()
         })
 
@@ -862,33 +861,33 @@ describe('Collapse', () => {
       const target2 = fixtureEl.querySelector('#test2')
 
       const target2Shown = () => {
-        expect(trigger1.classList.contains('collapsed')).toEqual(false)
+        expect(trigger1).not.toHaveClass('collapsed')
         expect(trigger1.getAttribute('aria-expanded')).toEqual('true')
 
-        expect(trigger2.classList.contains('collapsed')).toEqual(false)
+        expect(trigger2).not.toHaveClass('collapsed')
         expect(trigger2.getAttribute('aria-expanded')).toEqual('true')
 
-        expect(trigger3.classList.contains('collapsed')).toEqual(false)
+        expect(trigger3).not.toHaveClass('collapsed')
         expect(trigger3.getAttribute('aria-expanded')).toEqual('true')
 
         target2.addEventListener('hidden.bs.collapse', () => {
-          expect(trigger1.classList.contains('collapsed')).toEqual(false)
+          expect(trigger1).not.toHaveClass('collapsed')
           expect(trigger1.getAttribute('aria-expanded')).toEqual('true')
 
-          expect(trigger2.classList.contains('collapsed')).toEqual(true)
+          expect(trigger2).toHaveClass('collapsed')
           expect(trigger2.getAttribute('aria-expanded')).toEqual('false')
 
-          expect(trigger3.classList.contains('collapsed')).toEqual(false)
+          expect(trigger3).not.toHaveClass('collapsed')
           expect(trigger3.getAttribute('aria-expanded')).toEqual('true')
 
           target1.addEventListener('hidden.bs.collapse', () => {
-            expect(trigger1.classList.contains('collapsed')).toEqual(true)
+            expect(trigger1).toHaveClass('collapsed')
             expect(trigger1.getAttribute('aria-expanded')).toEqual('false')
 
-            expect(trigger2.classList.contains('collapsed')).toEqual(true)
+            expect(trigger2).toHaveClass('collapsed')
             expect(trigger2.getAttribute('aria-expanded')).toEqual('false')
 
-            expect(trigger3.classList.contains('collapsed')).toEqual(true)
+            expect(trigger3).toHaveClass('collapsed')
             expect(trigger3.getAttribute('aria-expanded')).toEqual('false')
             done()
           })
@@ -963,7 +962,7 @@ describe('Collapse', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Collapse.getInstance(div)).toEqual(null)
+      expect(Collapse.getInstance(div)).toBeNull()
     })
   })
 
@@ -984,7 +983,7 @@ describe('Collapse', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Collapse.getInstance(div)).toEqual(null)
+      expect(Collapse.getInstance(div)).toBeNull()
       expect(Collapse.getOrCreateInstance(div)).toBeInstanceOf(Collapse)
     })
 
@@ -993,13 +992,13 @@ describe('Collapse', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Collapse.getInstance(div)).toEqual(null)
+      expect(Collapse.getInstance(div)).toBeNull()
       const collapse = Collapse.getOrCreateInstance(div, {
         toggle: false
       })
       expect(collapse).toBeInstanceOf(Collapse)
 
-      expect(collapse._config.toggle).toEqual(false)
+      expect(collapse._config.toggle).toBeFalse()
     })
 
     it('should return the instance when exists without given configuration', () => {
@@ -1017,7 +1016,7 @@ describe('Collapse', () => {
       expect(collapse).toBeInstanceOf(Collapse)
       expect(collapse2).toEqual(collapse)
 
-      expect(collapse2._config.toggle).toEqual(false)
+      expect(collapse2._config.toggle).toBeFalse()
     })
   })
 })

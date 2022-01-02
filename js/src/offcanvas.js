@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.2): offcanvas.js
+ * Bootstrap (v5.1.3): offcanvas.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9,22 +9,18 @@ import {
   defineJQueryPlugin,
   getElementFromSelector,
   isDisabled,
-  isVisible,
-  typeCheckConfig
+  isVisible
 } from './util/index'
 import ScrollBarHelper from './util/scrollbar'
 import EventHandler from './dom/event-handler'
 import BaseComponent from './base-component'
 import SelectorEngine from './dom/selector-engine'
-import Manipulator from './dom/manipulator'
 import Backdrop from './util/backdrop'
 import FocusTrap from './util/focustrap'
 import { enableDismissTrigger } from './util/component-functions'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'offcanvas'
@@ -33,18 +29,6 @@ const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 const ESCAPE_KEY = 'Escape'
-
-const Default = {
-  backdrop: true,
-  keyboard: true,
-  scroll: false
-}
-
-const DefaultType = {
-  backdrop: 'boolean',
-  keyboard: 'boolean',
-  scroll: 'boolean'
-}
 
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_BACKDROP = 'offcanvas-backdrop'
@@ -59,17 +43,26 @@ const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="offcanvas"]'
 
+const Default = {
+  backdrop: true,
+  keyboard: true,
+  scroll: false
+}
+
+const DefaultType = {
+  backdrop: 'boolean',
+  keyboard: 'boolean',
+  scroll: 'boolean'
+}
+
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Offcanvas extends BaseComponent {
   constructor(element, config) {
-    super(element)
+    super(element, config)
 
-    this._config = this._getConfig(config)
     this._isShown = false
     this._backdrop = this._initializeBackDrop()
     this._focustrap = this._initializeFocusTrap()
@@ -77,17 +70,19 @@ class Offcanvas extends BaseComponent {
   }
 
   // Getters
+  static get Default() {
+    return Default
+  }
+
+  static get DefaultType() {
+    return DefaultType
+  }
 
   static get NAME() {
     return NAME
   }
 
-  static get Default() {
-    return Default
-  }
-
   // Public
-
   toggle(relatedTarget) {
     return this._isShown ? this.hide() : this.show(relatedTarget)
   }
@@ -168,17 +163,6 @@ class Offcanvas extends BaseComponent {
   }
 
   // Private
-
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' ? config : {})
-    }
-    typeCheckConfig(NAME, config, DefaultType)
-    return config
-  }
-
   _initializeBackDrop() {
     return new Backdrop({
       className: CLASS_NAME_BACKDROP,
@@ -204,7 +188,6 @@ class Offcanvas extends BaseComponent {
   }
 
   // Static
-
   static jQueryInterface(config) {
     return this.each(function () {
       const data = Offcanvas.getOrCreateInstance(this, config)
@@ -223,9 +206,7 @@ class Offcanvas extends BaseComponent {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
+ * Data API implementation
  */
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
@@ -247,9 +228,9 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   })
 
   // avoid conflict when clicking a toggler of an offcanvas, while another is open
-  const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
-  if (allReadyOpen && allReadyOpen !== target) {
-    Offcanvas.getInstance(allReadyOpen).hide()
+  const alreadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
+  if (alreadyOpen && alreadyOpen !== target) {
+    Offcanvas.getInstance(alreadyOpen).hide()
   }
 
   const data = Offcanvas.getOrCreateInstance(target)
@@ -263,10 +244,9 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
 })
 
 enableDismissTrigger(Offcanvas)
+
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
  */
 
 defineJQueryPlugin(Offcanvas)

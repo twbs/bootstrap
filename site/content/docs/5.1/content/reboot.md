@@ -22,7 +22,23 @@ Here are our guidelines and reasons for choosing what to override in Reboot:
 
 <small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.1.1</small>
 
-With v5.1.1, we standardized our required `@import`s across all our CSS bundles (including `bootstrap.css`, `bootstrap-reboot.css`, and `bootstrap-grid.css` to include `_root.scss` . This adds `:root` level CSS variables to all bundles, regardless of how many of them are used in that bundle. Ultimately Bootstrap 5 will continue to see more CSS variables added over time.
+With v5.1.1, we standardized our required `@import`s across all our CSS bundles (including `bootstrap.css`, `bootstrap-reboot.css`, and `bootstrap-grid.css` to include `_root.scss`. This adds `:root` level CSS variables to all bundles, regardless of how many of them are used in that bundle. Ultimately Bootstrap 5 will continue to see more [CSS variables]({{< docsref "/customize/css-variables" >}}) added over time, in order to provide more real-time customization without the need to always recompile Sass. Our approach is to take our source Sass variables and transform them into CSS variables. That way, even if you don't use CSS variables, you still have all the power of Sass. **This is still in-progress and will take time to fully implement.**
+
+For example, consider these `:root` CSS variables for common `<body>` styles:
+
+{{< scss-docs name="root-body-variables" file="scss/_root.scss" >}}
+
+In practice, those variables are then applied in Reboot like so:
+
+{{< scss-docs name="reboot-body-rules" file="scss/_reboot.scss" >}}
+
+Which allows you to make real-time customizations however you like:
+
+```html
+<body style="--bs-body-color: #333;">
+  <!-- ... -->
+</body>
+```
 
 ## Page defaults
 
@@ -61,26 +77,6 @@ $font-family-sans-serif:
 Note that because the font stack includes emoji fonts, many common symbol/dingbat unicode characters will be rendered as multi-colored pictographs. Their appearance will vary, depending on the style used in the browser/platform's native emoji font, and they won't be affected by any CSS `color` styles.
 
 This `font-family` is applied to the `<body>` and automatically inherited globally throughout Bootstrap. To switch the global `font-family`, update `$font-family-base` and recompile Bootstrap.
-
-## CSS variables
-
-As Bootstrap 5 continues to mature, more and more styles will be built with [CSS variables]({{< docsref "/customize/css-variables" >}}) as a means to provide more real-time customization without the need to always recompile Sass. Our approach is to take our source Sass variables and transform them into CSS variables. That way, even if you don't use CSS variables, you still have all the power of Sass. **This is still in-progress and will take time to fully implement.**
-
-For example, consider these `:root` CSS variables for common `<body>` styles:
-
-{{< scss-docs name="root-body-variables" file="scss/_root.scss" >}}
-
-In practice, those variables are then applied in Reboot like so:
-
-{{< scss-docs name="reboot-body-rules" file="scss/_reboot.scss" >}}
-
-Which allows you to make real-time customizations however you like:
-
-```html
-<body style="--bs-body-color: #333;">
-  <!-- ... -->
-</body>
-```
 
 ## Headings and paragraphs
 

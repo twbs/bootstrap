@@ -1,4 +1,5 @@
 /* eslint-env jquery */
+
 import Alert from '../../src/alert'
 import Button from '../../src/button'
 import Carousel from '../../src/carousel'
@@ -11,8 +12,6 @@ import ScrollSpy from '../../src/scrollspy'
 import Tab from '../../src/tab'
 import Toast from '../../src/toast'
 import Tooltip from '../../src/tooltip'
-
-/** Test helpers */
 import { getFixture, clearFixture } from '../helpers/fixture'
 
 describe('jQuery', () => {
@@ -50,7 +49,7 @@ describe('jQuery', () => {
 
     $(fixtureEl).find('.alert')
       .one('closed.bs.alert', () => {
-        expect($(fixtureEl).find('.alert').length).toEqual(0)
+        expect($(fixtureEl).find('.alert')).toHaveSize(0)
         done()
       })
 

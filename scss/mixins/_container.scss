@@ -1,6 +1,8 @@
 // Container mixins
 
 @mixin make-container($gutter: $container-padding-x) {
+  --#{$variable-prefix}gutter-x: #{$gutter};
+  --#{$variable-prefix}gutter-y: 0;
   width: 100%;
   padding-right: var(--#{$variable-prefix}gutter-x, #{$gutter});
   padding-left: var(--#{$variable-prefix}gutter-x, #{$gutter});
