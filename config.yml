@@ -3,6 +3,13 @@ title:                  "Bootstrap"
 baseURL:                "https://getbootstrap.com"
 enableInlineShortcodes: true
 
+security:
+  enableInlineShortcodes: true
+  funcs:
+    getenv:
+      - ^HUGO_
+      - NETLIFY
+
 markup:
   goldmark:
     renderer:
