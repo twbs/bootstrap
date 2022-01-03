@@ -10,7 +10,7 @@
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global ClipboardJS: false, anchors: false, bootstrap: false */
+/* global ClipboardJS: false, anchors: false, bootstrap: false, StackBlitzSDK: false */
 
 (function () {
   'use strict'
@@ -201,10 +201,9 @@ window["openNewProject"] = () => {
         tooltipBtn.hide()
       })
 
-      btn.addEventListener('click', function (e) {
-        var htmlSnippet = e.target.parentNode.nextElementSibling.nextElementSibling.textContent
+      btn.addEventListener('click', function (event) {
+        var htmlSnippet = event.target.parentNode.nextElementSibling.nextElementSibling.textContent
 
-        // eslint-disable-next-line no-undef
         StackBlitzSDK.openBootstrapSnippet(htmlSnippet)
       })
     })
