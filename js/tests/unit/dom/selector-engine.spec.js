@@ -30,13 +30,15 @@ describe('SelectorEngine', () => {
     })
 
     it('should handle :scope selectors', () => {
-      fixtureEl.innerHTML = `<ul>
-        <li></li>
-        <li>
-          <a href="#" class="active">link</a>
-        </li>
-        <li></li>
-      </ul>`
+      fixtureEl.innerHTML = [
+        '<ul>',
+        '  <li></li>',
+        '  <li>',
+        '    <a href="#" class="active">link</a>',
+        '  </li>',
+        '  <li></li>',
+        '</ul>'
+      ].join('')
 
       const listEl = fixtureEl.querySelector('ul')
       const aActive = fixtureEl.querySelector('.active')
@@ -57,11 +59,13 @@ describe('SelectorEngine', () => {
 
   describe('children', () => {
     it('should find children', () => {
-      fixtureEl.innerHTML = `<ul>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>`
+      fixtureEl.innerHTML = [
+        '<ul>',
+        '  <li></li>',
+        '  <li></li>',
+        '  <li></li>',
+        '</ul>'
+      ].join('')
 
       const list = fixtureEl.querySelector('ul')
       const liList = [].concat(...fixtureEl.querySelectorAll('li'))
