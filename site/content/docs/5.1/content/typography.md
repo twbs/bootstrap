@@ -110,7 +110,7 @@ Traditional heading elements are designed to work best in the meat of your page 
   <div class="display-3 pb-3 mb-3 border-bottom">Display 3</div>
   <div class="display-4 pb-3 mb-3 border-bottom">Display 4</div>
   <div class="display-5 pb-3 mb-3 border-bottom">Display 5</div>
-  <div class="display-6">Display 6</div>
+  <div class="display-6 pb-3 mb-3 border-bottom">Display 6</div>
 </div>
 
 ```html
