@@ -19,10 +19,6 @@ main {
   overflow-y: hidden;
 }
 
-.bi {
-  pointer-events: none;
-}
-
 .dropdown-toggle { outline: 0; }
 
 .nav-flush .nav-link {
