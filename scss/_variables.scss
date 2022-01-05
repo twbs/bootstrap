@@ -36,22 +36,27 @@ $grays: (
 // fusv-enable
 
 // scss-docs-start color-variables
-$rain:    #bacff1 !default;
-$blue:    #3067d4 !default;
-$indigo:  #6610f2 !default;
-$purple:  #6f42c1 !default;
-$pink:    #d63384 !default;
-$red:     #ed6d6a !default;
-$orange:  #fd7e14 !default;
-$yellow:  #ffc107 !default;
-$green:   #73d3b8 !default;
-$teal:    #20c997 !default;
-$cyan:    #0dcaf0 !default;
+$rain:     #bacff1 !default;
+$blue:     #3067d4 !default;
+$nightsky: #1b2f4a !default;
+$sand:     #ddd2c5 !default;
+$indigo:   #6610f2 !default;
+$purple:   #6f42c1 !default;
+$pink:     #d63384 !default;
+$red:      #ed6d6a !default;
+$orange:   #fd7e14 !default;
+$yellow:   #ffc107 !default;
+$green:    #73d3b8 !default;
+$teal:     #20c997 !default;
+$cyan:     #0dcaf0 !default;
 // scss-docs-end color-variables
 
 // scss-docs-start colors-map
 $colors: (
+  "rain":       $rain,
   "blue":       $blue,
+  "nightsky":   $nightsky,
+  "sand":       $sand,
   "indigo":     $indigo,
   "purple":     $purple,
   "pink":       $pink,
@@ -72,19 +77,39 @@ $primary:       $blue !default;
 $secondary:     $rain !default;
 $success:       $green !default;
 $info:          $cyan !default;
-$warning:       $yellow !default;
+$warning:       $sand !default;
 $danger:        $red !default;
-$light:         $gray-100 !default;
+$light:         $gray-500 !default;
 $dark:          $gray-900 !default;
 // scss-docs-end theme-color-variables
+
+$rain-100: tint-color($rain, 80%) !default;
+$rain-200: tint-color($rain, 60%) !default;
+$rain-300: tint-color($rain, 40%) !default;
+$rain-400: tint-color($rain, 20%) !default;
+$rain-500: $rain !default;
+$rain-600: shade-color($rain, 20%) !default;
+$rain-700: shade-color($rain, 40%) !default;
+$rain-800: shade-color($rain, 60%) !default;
+$rain-900: shade-color($rain, 80%) !default;
+
+$sand-100: tint-color($sand, 80%) !default;
+$sand-200: tint-color($sand, 60%) !default;
+$sand-300: tint-color($sand, 40%) !default;
+$sand-400: tint-color($sand, 20%) !default;
+$sand-500: $sand !default;
+$sand-600: shade-color($sand, 20%) !default;
+$sand-700: shade-color($sand, 40%) !default;
+$sand-800: shade-color($sand, 60%) !default;
+$sand-900: shade-color($sand, 80%) !default;
 
 // scss-docs-start theme-colors-map
 $theme-colors: (
   "primary":    $primary,
-  "secondary":  $secondary,
+  "secondary":  $rain-600,
   "success":    $success,
   "info":       $info,
-  "warning":    $warning,
+  "warning":    $sand-600,
   "danger":     $danger,
   "light":      $light,
   "dark":       $dark
@@ -100,6 +125,7 @@ $color-contrast-dark:      $black !default;
 $color-contrast-light:     $white !default;
 
 // fusv-disable
+
 $blue-100: tint-color($blue, 80%) !default;
 $blue-200: tint-color($blue, 60%) !default;
 $blue-300: tint-color($blue, 40%) !default;
@@ -109,6 +135,17 @@ $blue-600: shade-color($blue, 20%) !default;
 $blue-700: shade-color($blue, 40%) !default;
 $blue-800: shade-color($blue, 60%) !default;
 $blue-900: shade-color($blue, 80%) !default;
+
+$nightsky-100: tint-color($nightsky, 80%) !default;
+$nightsky-200: tint-color($nightsky, 60%) !default;
+$nightsky-300: tint-color($nightsky, 40%) !default;
+$nightsky-400: tint-color($nightsky, 20%) !default;
+$nightsky-500: $nightsky !default;
+$nightsky-600: shade-color($nightsky, 20%) !default;
+$nightsky-700: shade-color($nightsky, 40%) !default;
+$nightsky-800: shade-color($nightsky, 60%) !default;
+$nightsky-900: shade-color($nightsky, 80%) !default;
+
 
 $indigo-100: tint-color($indigo, 80%) !default;
 $indigo-200: tint-color($indigo, 60%) !default;
@@ -588,7 +625,7 @@ $headings-font-family:        $font-family-serif !default;
 $headings-font-style:         null !default;
 $headings-font-weight:        500 !default;
 $headings-line-height:        1.2 !default;
-$headings-color:              null !default;
+$headings-color:              $nightsky !default;
 // scss-docs-end headings-variables
 
 // scss-docs-start display-headings
