@@ -13,14 +13,14 @@
   @include box-shadow($offcanvas-box-shadow);
   @include transition(transform $offcanvas-transition-duration ease-in-out);
 
-  .showing,
-  .show:not(.hiding) {
+  &.showing,
+  &.show:not(.hiding) {
     transform: none;
   }
 
-  .showing,
-  .hiding,
-  .show {
+  &.showing,
+  &.hiding,
+  &.show {
     visibility: visible;
   }
 }
