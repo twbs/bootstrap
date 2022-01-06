@@ -1,5 +1,6 @@
 import * as Util from '../../../src/util/index'
 import { clearFixture, getFixture } from '../../helpers/fixture'
+import { noop } from '../../../src/util/index'
 
 describe('Util', () => {
   let fixtureEl
@@ -154,18 +155,20 @@ describe('Util', () => {
   })
 
   describe('triggerTransitionEnd', () => {
-    it('should trigger transitionend event', done => {
-      fixtureEl.innerHTML = '<div></div>'
+    it('should trigger transitionend event', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div></div>'
 
-      const el = fixtureEl.querySelector('div')
-      const spy = spyOn(el, 'dispatchEvent').and.callThrough()
+        const el = fixtureEl.querySelector('div')
+        const spy = spyOn(el, 'dispatchEvent').and.callThrough()
 
-      el.addEventListener('transitionend', () => {
-        expect(spy).toHaveBeenCalled()
-        done()
+        el.addEventListener('transitionend', () => {
+          expect(spy).toHaveBeenCalled()
+          resolve()
+        })
+
+        Util.triggerTransitionEnd(el)
       })
-
-      Util.triggerTransitionEnd(el)
     })
   })
 
@@ -611,9 +614,9 @@ describe('Util', () => {
     })
 
     it('should define a plugin on the jQuery instance', () => {
-      const pluginMock = function () {}
+      const pluginMock = Util.noop
       pluginMock.NAME = 'test'
-      pluginMock.jQueryInterface = function () {}
+      pluginMock.jQueryInterface = Util.noop
 
       Util.defineJQueryPlugin(pluginMock)
       expect(fakejQuery.fn.test).toEqual(pluginMock.jQueryInterface)
@@ -658,96 +661,104 @@ describe('Util', () => {
       expect(callbackSpy).toHaveBeenCalled()
     })
 
-    it('should execute a function after a computed CSS transition duration and there was no transitionend event dispatched', done => {
-      const el = document.createElement('div')
-      const callbackSpy = jasmine.createSpy('callback spy')
+    it('should execute a function after a computed CSS transition duration and there was no transitionend event dispatched', () => {
+      return new Promise(resolve => {
+        const el = document.createElement('div')
+        const callbackSpy = jasmine.createSpy('callback spy')
 
-      spyOn(window, 'getComputedStyle').and.returnValue({
-        transitionDuration: '0.05s',
-        transitionDelay: '0s'
+        spyOn(window, 'getComputedStyle').and.returnValue({
+          transitionDuration: '0.05s',
+          transitionDelay: '0s'
+        })
+
+        Util.executeAfterTransition(callbackSpy, el)
+
+        setTimeout(() => {
+          expect(callbackSpy).toHaveBeenCalled()
+          resolve()
+        }, 70)
       })
-
-      Util.executeAfterTransition(callbackSpy, el)
-
-      setTimeout(() => {
-        expect(callbackSpy).toHaveBeenCalled()
-        done()
-      }, 70)
     })
 
-    it('should not execute a function a second time after a computed CSS transition duration and if a transitionend event has already been dispatched', done => {
-      const el = document.createElement('div')
-      const callbackSpy = jasmine.createSpy('callback spy')
+    it('should not execute a function a second time after a computed CSS transition duration and if a transitionend event has already been dispatched', () => {
+      return new Promise(resolve => {
+        const el = document.createElement('div')
+        const callbackSpy = jasmine.createSpy('callback spy')
 
-      spyOn(window, 'getComputedStyle').and.returnValue({
-        transitionDuration: '0.05s',
-        transitionDelay: '0s'
+        spyOn(window, 'getComputedStyle').and.returnValue({
+          transitionDuration: '0.05s',
+          transitionDelay: '0s'
+        })
+
+        Util.executeAfterTransition(callbackSpy, el)
+
+        setTimeout(() => {
+          el.dispatchEvent(new TransitionEvent('transitionend'))
+        }, 50)
+
+        setTimeout(() => {
+          expect(callbackSpy).toHaveBeenCalledTimes(1)
+          resolve()
+        }, 70)
       })
+    })
 
-      Util.executeAfterTransition(callbackSpy, el)
+    it('should not trigger a transitionend event if another transitionend event had already happened', () => {
+      return new Promise(resolve => {
+        const el = document.createElement('div')
 
-      setTimeout(() => {
+        spyOn(window, 'getComputedStyle').and.returnValue({
+          transitionDuration: '0.05s',
+          transitionDelay: '0s'
+        })
+
+        Util.executeAfterTransition(noop, el)
+
+        // simulate a event dispatched by the browser
         el.dispatchEvent(new TransitionEvent('transitionend'))
-      }, 50)
 
-      setTimeout(() => {
-        expect(callbackSpy).toHaveBeenCalledTimes(1)
-        done()
-      }, 70)
+        const dispatchSpy = spyOn(el, 'dispatchEvent').and.callThrough()
+
+        setTimeout(() => {
+          // setTimeout should not have triggered another transitionend event.
+          expect(dispatchSpy).not.toHaveBeenCalled()
+          resolve()
+        }, 70)
+      })
     })
 
-    it('should not trigger a transitionend event if another transitionend event had already happened', done => {
-      const el = document.createElement('div')
+    it('should ignore transitionend events from nested elements', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="outer">',
+          '  <div class="nested"></div>',
+          '</div>'
+        ].join('')
 
-      spyOn(window, 'getComputedStyle').and.returnValue({
-        transitionDuration: '0.05s',
-        transitionDelay: '0s'
+        const outer = fixtureEl.querySelector('.outer')
+        const nested = fixtureEl.querySelector('.nested')
+        const callbackSpy = jasmine.createSpy('callback spy')
+
+        spyOn(window, 'getComputedStyle').and.returnValue({
+          transitionDuration: '0.05s',
+          transitionDelay: '0s'
+        })
+
+        Util.executeAfterTransition(callbackSpy, outer)
+
+        nested.dispatchEvent(new TransitionEvent('transitionend', {
+          bubbles: true
+        }))
+
+        setTimeout(() => {
+          expect(callbackSpy).not.toHaveBeenCalled()
+        }, 20)
+
+        setTimeout(() => {
+          expect(callbackSpy).toHaveBeenCalled()
+          resolve()
+        }, 70)
       })
-
-      Util.executeAfterTransition(() => {}, el)
-
-      // simulate a event dispatched by the browser
-      el.dispatchEvent(new TransitionEvent('transitionend'))
-
-      const dispatchSpy = spyOn(el, 'dispatchEvent').and.callThrough()
-
-      setTimeout(() => {
-        // setTimeout should not have triggered another transitionend event.
-        expect(dispatchSpy).not.toHaveBeenCalled()
-        done()
-      }, 70)
-    })
-
-    it('should ignore transitionend events from nested elements', done => {
-      fixtureEl.innerHTML = [
-        '<div class="outer">',
-        '  <div class="nested"></div>',
-        '</div>'
-      ].join('')
-
-      const outer = fixtureEl.querySelector('.outer')
-      const nested = fixtureEl.querySelector('.nested')
-      const callbackSpy = jasmine.createSpy('callback spy')
-
-      spyOn(window, 'getComputedStyle').and.returnValue({
-        transitionDuration: '0.05s',
-        transitionDelay: '0s'
-      })
-
-      Util.executeAfterTransition(callbackSpy, outer)
-
-      nested.dispatchEvent(new TransitionEvent('transitionend', {
-        bubbles: true
-      }))
-
-      setTimeout(() => {
-        expect(callbackSpy).not.toHaveBeenCalled()
-      }, 20)
-
-      setTimeout(() => {
-        expect(callbackSpy).toHaveBeenCalled()
-        done()
-      }, 70)
     })
   })
 
