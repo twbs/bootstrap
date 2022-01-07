@@ -438,6 +438,28 @@ select {
   }
 }
 
+// Replace webkit datalist indicator with Bootstrap Icons
+[type="date"]::-webkit-calendar-picker-indicator,
+[type="datetime-local"]::-webkit-calendar-picker-indicator,
+[type="month"]::-webkit-calendar-picker-indicator,
+[type="week"]::-webkit-calendar-picker-indicator {
+  background-image: escape-svg($date-indicator);
+}
+
+[type="time"]::-webkit-calendar-picker-indicator {
+  background-image: escape-svg($time-indicator);
+}
+
+[list]:not([type="date"]):not([type="datetime-local"]):not([type="month"]):not([type="week"]):not([type="time"])::-webkit-calendar-picker-indicator {
+  display: inline-block !important;
+  width: 1rem;
+  height: 1rem;
+  background-image: escape-svg($form-select-indicator);
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-size: contain;
+}
+
 // 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
 //    controls in Android 4.
 // 2. Correct the inability to style clickable types in iOS and Safari.
