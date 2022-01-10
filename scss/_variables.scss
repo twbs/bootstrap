@@ -79,29 +79,12 @@ $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $sand !default;
 $danger:        $red !default;
-$light:         $gray-500 !default;
+$light:         $gray-100 !default;
 $dark:          $gray-900 !default;
 // scss-docs-end theme-color-variables
 
-$rain-100: tint-color($rain, 80%) !default;
-$rain-200: tint-color($rain, 60%) !default;
-$rain-300: tint-color($rain, 40%) !default;
-$rain-400: tint-color($rain, 20%) !default;
-$rain-500: $rain !default;
 $rain-600: shade-color($rain, 20%) !default;
-$rain-700: shade-color($rain, 40%) !default;
-$rain-800: shade-color($rain, 60%) !default;
-$rain-900: shade-color($rain, 80%) !default;
-
-$sand-100: tint-color($sand, 80%) !default;
-$sand-200: tint-color($sand, 60%) !default;
-$sand-300: tint-color($sand, 40%) !default;
-$sand-400: tint-color($sand, 20%) !default;
-$sand-500: $sand !default;
 $sand-600: shade-color($sand, 20%) !default;
-$sand-700: shade-color($sand, 40%) !default;
-$sand-800: shade-color($sand, 60%) !default;
-$sand-900: shade-color($sand, 80%) !default;
 
 // scss-docs-start theme-colors-map
 $theme-colors: (
@@ -593,7 +576,6 @@ $font-weight-light:           300 !default;
 $font-weight-normal:          400 !default;
 $font-weight-bold:            700 !default;
 $font-weight-bolder:          bolder !default;
-
 $font-weight-base:            $font-weight-normal !default;
 
 $line-height-base:            1.5 !default;
