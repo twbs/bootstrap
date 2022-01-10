@@ -242,23 +242,46 @@ describe('Offcanvas', () => {
       expect(offCanvas.show).toHaveBeenCalled()
     })
 
-    it('should call hide method if show class is present', () => {
+    it('should call hide method if show class is present', done => {
       fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl)
+
+      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+        expect(offCanvasEl).toHaveClass('show')
+        spyOn(offCanvas, 'hide')
+
+        offCanvas.toggle()
+
+        expect(offCanvas.hide).toHaveBeenCalled()
+        done()
+      })
+
       offCanvas.show()
-      expect(offCanvasEl).toHaveClass('show')
-
-      spyOn(offCanvas, 'hide')
-
-      offCanvas.toggle()
-
-      expect(offCanvas.hide).toHaveBeenCalled()
     })
   })
 
   describe('show', () => {
+    it('should add `showing` class during opening and `show` class on end', done => {
+      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+      const offCanvas = new Offcanvas(offCanvasEl)
+
+      offCanvasEl.addEventListener('show.bs.offcanvas', () => {
+        expect(offCanvasEl).not.toHaveClass('show')
+      })
+
+      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+        expect(offCanvasEl).not.toHaveClass('showing')
+        expect(offCanvasEl).toHaveClass('show')
+        done()
+      })
+
+      offCanvas.show()
+      expect(offCanvasEl).toHaveClass('showing')
+    })
+
     it('should do nothing if already shown', () => {
       fixtureEl.innerHTML = '<div class="offcanvas show"></div>'
 
@@ -353,6 +376,30 @@ describe('Offcanvas', () => {
   })
 
   describe('hide', () => {
+    it('should add `hiding` class during closing and remover `show` & `hiding` classes on end', done => {
+      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+      const offCanvas = new Offcanvas(offCanvasEl)
+
+      offCanvasEl.addEventListener('hide.bs.offcanvas', () => {
+        expect(offCanvasEl).not.toHaveClass('showing')
+        expect(offCanvasEl).toHaveClass('show')
+      })
+
+      offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+        expect(offCanvasEl).not.toHaveClass('hiding')
+        expect(offCanvasEl).not.toHaveClass('show')
+        done()
+      })
+
+      offCanvas.show()
+      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+        offCanvas.hide()
+        expect(offCanvasEl).not.toHaveClass('showing')
+        expect(offCanvasEl).toHaveClass('hiding')
+      })
+    })
+
     it('should do nothing if already shown', () => {
       fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
