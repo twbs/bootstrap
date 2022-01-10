@@ -2,9 +2,9 @@
 //
 // Generate semantic grid columns with these mixins.
 
-@mixin make-row($gutter: $grid-gutter-width) {
-  --#{$variable-prefix}gutter-x: #{$gutter};
-  --#{$variable-prefix}gutter-y: 0;
+@mixin make-row($gutter-x: $grid-gutter-width, $gutter-y: 0) {
+  --#{$variable-prefix}gutter-x: #{$gutter-x};
+  --#{$variable-prefix}gutter-y: #{$gutter-y};
   display: flex;
   flex-wrap: wrap;
   // TODO: Revisit calc order after https://github.com/react-bootstrap/react-bootstrap/issues/6039 is fixed
