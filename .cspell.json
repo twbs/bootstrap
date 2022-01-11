@@ -110,7 +110,7 @@
   "language": "en, en-US",
   "ignorePaths": [
     ".cspell.json",
-    "*.min.*",
-    "node_modules/**"
-  ]
+    "*.min.*"
+  ],
+  "useGitignore": true
 }
