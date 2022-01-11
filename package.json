@@ -58,7 +58,7 @@
     "docs-build": "hugo --cleanDestinationDir",
     "docs-compile": "npm run docs-build",
     "docs-linkinator": "linkinator _site --recurse --skip \"^(?!http://localhost)\" --verbosity error",
-    "docs-spellcheck": "cspell \"site/**/*.md\" --no-progress",
+    "docs-spellcheck": "cspell --no-progress",
     "docs-vnu": "node build/vnu-jar.js",
     "docs-lint": "npm-run-all --aggregate-output --parallel docs-vnu docs-linkinator docs-spellcheck",
     "docs-serve": "hugo server --port 9001 --disableFastRender",
