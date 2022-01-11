@@ -91,7 +91,7 @@ Your custom Bootstrap CSS builds should now look something like this with a sepa
 
 - We've ditched the default Sass map merges to make it easier to remove redundant values. Keep in mind you now have to define all values in the Sass maps like `$theme-colors`. Check out how to deal with [Sass maps]({{< docsref "/customize/sass#maps-and-loops" >}}).
 
-- <span class="badge bg-danger">Breaking</span> Renamed `color-yiq()` function and related variables to `color-contrast()` as it's no longer related to YIQ colorspace. [See #30168.](https://github.com/twbs/bootstrap/pull/30168/)
+- <span class="badge bg-danger">Breaking</span> Renamed `color-yiq()` function and related variables to `color-contrast()` as it's no longer related to YIQ color space. [See #30168.](https://github.com/twbs/bootstrap/pull/30168/)
   - `$yiq-contrasted-threshold` is renamed to `$min-contrast-ratio`.
   - `$yiq-text-dark` and `$yiq-text-light` are respectively renamed to `$color-contrast-dark` and `$color-contrast-light`.
 
