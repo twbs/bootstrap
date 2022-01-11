@@ -108,6 +108,9 @@
     "مرحبًا"
   ],
   "language": "en, en-US",
+  "files": [
+    "site/**/*.md"
+  ],
   "ignorePaths": [
     ".cspell.json",
     "*.min.*"
