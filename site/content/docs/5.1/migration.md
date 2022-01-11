@@ -196,8 +196,9 @@ Your custom Bootstrap CSS builds should now look something like this with a sepa
 - **Added new floating forms!** We've promoted the Floating labels example to fully supported form components. [See the new Floating labels page.]({{< docsref "/forms/floating-labels" >}})
 
 - <span class="badge bg-danger">Breaking</span> **Consolidated native and custom form elements.** Checkboxes, radios, selects, and other inputs that had native and custom classes in v4 have been consolidated. Now nearly all our form elements are entirely custom, most without the need for custom HTML.
-  - `.custom-check` is now `.form-check`.
-  - `.custom-check.custom-switch` is now `.form-check.form-switch`.
+  - `.custom-control.custom-checkbox` is now `.form-check`.
+  - `.custom-control.custom-custom-radio` is now `.form-check`.
+  - `.custom-control.custom-switch` is now `.form-check.form-switch`.
   - `.custom-select` is now `.form-select`.
   - `.custom-file` and `.form-file` have been replaced by custom styles on top of `.form-control`.
   - `.custom-range` is now `.form-range`.
