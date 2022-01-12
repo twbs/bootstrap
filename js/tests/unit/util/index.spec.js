@@ -320,6 +320,94 @@ describe('Util', () => {
 
       expect(Util.isVisible(div)).toBeFalse()
     })
+
+    it('should return true if its a closed details element', () => {
+      fixtureEl.innerHTML = '<details id="element"></details>'
+
+      const div = fixtureEl.querySelector('#element')
+
+      expect(Util.isVisible(div)).toBeTrue()
+    })
+
+    it('should return true if the element is visible inside an open details element', () => {
+      fixtureEl.innerHTML = [
+        '<details open>',
+        '  <div id="element"></div>',
+        '</details>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('#element')
+
+      expect(Util.isVisible(div)).toBeTrue()
+    })
+
+    it('should return true if the element is a visible summary in a closed details element', () => {
+      fixtureEl.innerHTML = [
+        '<details>',
+        '  <summary id="element-1">',
+        '    <span id="element-2"></span>',
+        '  </summary>',
+        '</details>'
+      ].join('')
+
+      const element1 = fixtureEl.querySelector('#element-1')
+      const element2 = fixtureEl.querySelector('#element-2')
+
+      expect(Util.isVisible(element1)).toBeTrue()
+      expect(Util.isVisible(element2)).toBeTrue()
+    })
+
+    it('should return true if the element is a visible summary in open, closed details element', () => {
+      fixtureEl.innerHTML = [
+        '<details open>',
+        '  <details>',
+        '    <summary id="element"></summary>',
+        '  </details>',
+        '</details>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('#element')
+
+      expect(Util.isVisible(div)).toBeTrue()
+    })
+
+    it('should return true if the element is a details element in an open details element', () => {
+      fixtureEl.innerHTML = [
+        '<details open>',
+        '  <details id="element"></details>',
+        '</details>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('#element')
+
+      expect(Util.isVisible(div)).toBeTrue()
+    })
+
+    it('should return false if the element is a summary in closed, closed details element', () => {
+      fixtureEl.innerHTML = [
+        '<details>',
+        '  <details>',
+        '    <summary id="element"></summary>',
+        '  </details>',
+        '</details>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('#element')
+
+      expect(Util.isVisible(div)).toBeFalse()
+    })
+
+    it('should return false if the element is an open details element in a closed details element', () => {
+      fixtureEl.innerHTML = [
+        '<details>',
+        '  <details id="element" open></details>',
+        '</details>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('#element')
+
+      expect(Util.isVisible(div)).toBeFalse()
+    })
   })
 
   describe('isDisabled', () => {

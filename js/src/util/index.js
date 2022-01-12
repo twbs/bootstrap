@@ -128,6 +128,23 @@ const isVisible = element => {
     return false
   }
 
+  const closedDetails = element.closest('details:not([open])')
+  const summary = element.closest('summary')
+
+  if (closedDetails && closedDetails !== element) {
+    if (summary && summary.parentNode !== closedDetails) {
+      return false
+    }
+
+    if (summary === null) {
+      return false
+    }
+  }
+
+  if (closedDetails && closedDetails.parentNode.closest('details:not([open])')) {
+    return false
+  }
+
   return getComputedStyle(element).getPropertyValue('visibility') === 'visible'
 }
 
