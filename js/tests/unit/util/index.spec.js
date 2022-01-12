@@ -356,30 +356,6 @@ describe('Util', () => {
       expect(Util.isVisible(element1)).toBeTrue()
       expect(Util.isVisible(element2)).toBeTrue()
     })
-
-    it('should return true if the element is a details element in an open details element', () => {
-      fixtureEl.innerHTML = [
-        '<details open>',
-        '  <details id="element"></details>',
-        '</details>'
-      ].join('')
-
-      const div = fixtureEl.querySelector('#element')
-
-      expect(Util.isVisible(div)).toBeTrue()
-    })
-
-    it('should return false if the element is an open details element in a closed details element', () => {
-      fixtureEl.innerHTML = [
-        '<details>',
-        '  <details id="element" open></details>',
-        '</details>'
-      ].join('')
-
-      const div = fixtureEl.querySelector('#element')
-
-      expect(Util.isVisible(div)).toBeFalse()
-    })
   })
 
   describe('isDisabled', () => {
