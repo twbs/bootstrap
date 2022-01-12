@@ -146,10 +146,6 @@ const isVisible = element => {
     }
   }
 
-  if (closedDetails.parentNode.closest('details:not([open])')) {
-    return false
-  }
-
   return elementIsVisible
 }
 
