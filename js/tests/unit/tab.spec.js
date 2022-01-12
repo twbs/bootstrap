@@ -177,7 +177,7 @@ describe('Tab', () => {
       })
     })
 
-    it('should work with tab id being an int (fix #31099)', done => {
+    it('should work with tab id being an int', done => {
       fixtureEl.innerHTML = [
         '<div class="card-header d-block d-inline-block">',
         '  <ul class="nav nav-tabs card-header-tabs" id="page_tabs">',
