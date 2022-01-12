@@ -128,10 +128,15 @@ const isVisible = element => {
     return false
   }
 
+  const elementIsVisible = getComputedStyle(element).getPropertyValue('visibility') === 'visible'
   const closedDetails = element.closest('details:not([open])')
-  const summary = element.closest('summary')
 
-  if (closedDetails && closedDetails !== element) {
+  if (!closedDetails) {
+    return elementIsVisible
+  }
+
+  if (closedDetails !== element) {
+    const summary = element.closest('summary')
     if (summary && summary.parentNode !== closedDetails) {
       return false
     }
@@ -141,11 +146,11 @@ const isVisible = element => {
     }
   }
 
-  if (closedDetails && closedDetails.parentNode.closest('details:not([open])')) {
+  if (closedDetails.parentNode.closest('details:not([open])')) {
     return false
   }
 
-  return getComputedStyle(element).getPropertyValue('visibility') === 'visible'
+  return elementIsVisible
 }
 
 const isDisabled = element => {
