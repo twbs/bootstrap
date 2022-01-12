@@ -129,6 +129,7 @@ const isVisible = element => {
   }
 
   const elementIsVisible = getComputedStyle(element).getPropertyValue('visibility') === 'visible'
+  // Handle `details` element as its content may falsie appear visible when it is closed
   const closedDetails = element.closest('details:not([open])')
 
   if (!closedDetails) {
