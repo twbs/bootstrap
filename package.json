@@ -118,7 +118,6 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-unicorn": "^40.0.0",
     "find-unused-sass-variables": "^3.1.0",
-    "glob": "^7.2.0",
     "globby": "^11.0.4",
     "hammer-simulator": "0.0.1",
     "hugo-bin": "^0.79.2",
