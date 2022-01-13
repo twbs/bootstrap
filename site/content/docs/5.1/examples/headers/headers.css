@@ -1,5 +1,3 @@
-@import "../examples.css";
-
 .form-control-dark {
   color: #fff;
   background-color: var(--bs-dark);
