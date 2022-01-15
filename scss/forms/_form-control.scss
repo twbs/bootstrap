@@ -117,10 +117,6 @@
   }
 }
 
-textarea.form-control-plaintext {
-  resize: none;
-}
-
 // Form control sizing
 //
 // Build on `.form-control` with modifier classes to decrease or increase the
@@ -168,6 +164,10 @@ textarea {
 
   &.form-control-lg {
     min-height: $input-height-lg;
+  }
+
+  &.form-control-plaintext {
+    resize: none;
   }
 }
 // stylelint-enable selector-no-qualifying-type
