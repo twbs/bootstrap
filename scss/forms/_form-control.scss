@@ -108,8 +108,8 @@
   background-color: transparent;
   border: solid transparent;
   border-width: $input-border-width 0;
-  appearance: none; // to hide select
-  resize: none; // fix for textarea
+  appearance: none; // Fix for select, textarea
+  resize: none; // Fix for textarea
 
   &.form-control-sm,
   &.form-control-lg {
