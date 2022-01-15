@@ -106,16 +106,19 @@
   line-height: $input-line-height;
   color: $input-plaintext-color;
   background-color: transparent;
-  appearance: none;
-  resize: none;
   border: solid transparent;
   border-width: $input-border-width 0;
+  appearance: none;
 
   &.form-control-sm,
   &.form-control-lg {
     padding-right: 0;
     padding-left: 0;
   }
+}
+
+textarea.form-control-plaintext {
+  resize: none;
 }
 
 // Form control sizing
