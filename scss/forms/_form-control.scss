@@ -106,10 +106,10 @@
   line-height: $input-line-height;
   color: $input-plaintext-color;
   background-color: transparent;
-  border: solid transparent;
-  border-width: $input-border-width 0;
   appearance: none;
   resize: none;
+  border: solid transparent;
+  border-width: $input-border-width 0;
 
   &.form-control-sm,
   &.form-control-lg {
