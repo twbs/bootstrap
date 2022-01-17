@@ -41,7 +41,7 @@ const CLASS_NAME_HORIZONTAL = 'collapse-horizontal'
 const WIDTH = 'width'
 const HEIGHT = 'height'
 
-const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing'
+const SELECTOR_ACTIVES = '.collapse.show, .collapsing'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]'
 
 const Default = {
@@ -124,7 +124,7 @@ class Collapse extends BaseComponent {
         .map(element => Collapse.getOrCreateInstance(element, { toggle: false }))
     }
 
-    if (activeChildren.length && activeChildren[0]._isTransitioning) {
+    if (activeChildren.some(instance => instance._isTransitioning)) {
       return
     }
 
