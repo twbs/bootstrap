@@ -41,7 +41,7 @@ const CLASS_NAME_HORIZONTAL = 'collapse-horizontal'
 const WIDTH = 'width'
 const HEIGHT = 'height'
 
-const SELECTOR_ACTIVES = '.collapse.show, .collapsing'
+const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]'
 
 const Default = {
@@ -139,7 +139,6 @@ class Collapse extends BaseComponent {
 
     const dimension = this._getDimension()
 
-    this._element.classList.remove(CLASS_NAME_COLLAPSE)
     this._element.classList.add(CLASS_NAME_COLLAPSING)
 
     this._element.style[dimension] = 0
@@ -151,7 +150,7 @@ class Collapse extends BaseComponent {
       this._isTransitioning = false
 
       this._element.classList.remove(CLASS_NAME_COLLAPSING)
-      this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
+      this._element.classList.add(CLASS_NAME_SHOW)
 
       this._element.style[dimension] = ''
 
@@ -182,7 +181,7 @@ class Collapse extends BaseComponent {
     reflow(this._element)
 
     this._element.classList.add(CLASS_NAME_COLLAPSING)
-    this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
+    this._element.classList.remove(CLASS_NAME_SHOW)
 
     for (const trigger of this._triggerArray) {
       const element = getElementFromSelector(trigger)
@@ -197,7 +196,6 @@ class Collapse extends BaseComponent {
     const complete = () => {
       this._isTransitioning = false
       this._element.classList.remove(CLASS_NAME_COLLAPSING)
-      this._element.classList.add(CLASS_NAME_COLLAPSE)
       EventHandler.trigger(this._element, EVENT_HIDDEN)
     }
 
