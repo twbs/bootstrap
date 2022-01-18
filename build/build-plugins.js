@@ -11,12 +11,12 @@
 
 const path = require('path')
 const rollup = require('rollup')
-const glob = require('glob')
+const globby = require('globby')
 const { babel } = require('@rollup/plugin-babel')
 const banner = require('./banner.js')
 
-const srcPath = path.resolve(__dirname, '../js/src/')
-const jsFiles = glob.sync(srcPath + '/**/*.js')
+const srcPath = path.resolve(__dirname, '../js/src/').replace(/\\/g, '/')
+const jsFiles = globby.sync(srcPath + '/**/*.js')
 
 // Array which holds the resolved plugins
 const resolvedPlugins = []
