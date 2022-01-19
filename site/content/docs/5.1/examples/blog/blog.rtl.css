@@ -51,11 +51,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: .875rem;
 }
 
-.card-img-right {
-  height: 100%;
-  border-radius: 3px 0 0 3px;
-}
-
 .flex-auto {
   flex: 0 0 auto;
 }
