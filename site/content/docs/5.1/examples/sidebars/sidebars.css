@@ -19,10 +19,6 @@ main {
 
 .dropdown-toggle { outline: 0; }
 
-.nav-flush .nav-link {
-  border-radius: 0;
-}
-
 .btn-toggle {
   display: inline-flex;
   align-items: center;

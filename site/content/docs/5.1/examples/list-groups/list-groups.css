@@ -23,7 +23,6 @@
 }
 .list-group-checkable .list-group-item {
   cursor: pointer;
-  border-radius: .5rem;
 }
 .list-group-item-check {
   position: absolute;

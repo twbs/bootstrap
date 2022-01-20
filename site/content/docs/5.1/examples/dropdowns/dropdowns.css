@@ -9,10 +9,6 @@
   display: grid;
   gap: .25rem;
   padding: .5rem;
-  border-radius: .5rem;
-}
-.dropdown-menu-macos .dropdown-item {
-  border-radius: .25rem;
 }
 
 .dropdown-item-danger {
@@ -30,7 +26,6 @@
 .btn-hover-light {
   text-align: left;
   background-color: var(--bs-white);
-  border-radius: .25rem;
 }
 .btn-hover-light:hover,
 .btn-hover-light:focus {

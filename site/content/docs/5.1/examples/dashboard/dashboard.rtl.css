@@ -81,7 +81,6 @@ body {
 .navbar .form-control {
   padding: .75rem 1rem;
   border-width: 0;
-  border-radius: 0;
 }
 
 .form-control-dark {
