@@ -2,6 +2,7 @@
 
 const pkg = require('../package.json')
 const year = new Date().getFullYear()
+const month = new Date().getMonth()
 
 function getBanner(pluginFilename) {
   return `/*!
