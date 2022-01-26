@@ -238,7 +238,7 @@ class Tooltip {
 
       const shadowRoot = Util.findShadowRoot(this.element)
       const isInTheDom = $.contains(
-        shadowRoot !== null ? shadowRoot : this.element.ownerDocument.documentElement,
+        shadowRoot || this.element.ownerDocument.documentElement,
         this.element
       )
 
