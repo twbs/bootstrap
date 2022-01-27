@@ -4,7 +4,7 @@ preferred:
   - name: Feather
     website: https://feathericons.com/
   - name: Octicons
-    website: https://octicons.github.com/
+    website: https://primer.style/octicons/
 
 more:
   - name: Bytesize
