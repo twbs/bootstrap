@@ -279,23 +279,22 @@ class Modal extends BaseComponent {
       return
     }
 
-    const { classList, scrollHeight, style } = this._element
-    const isModalOverflowing = scrollHeight > document.documentElement.clientHeight
-    const initialOverflowY = style.overflowY
+    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
+    const initialOverflowY = this._element.style.overflowY
     // return if the following background transition hasn't yet completed
-    if (initialOverflowY === 'hidden' || classList.contains(CLASS_NAME_STATIC)) {
+    if (initialOverflowY === 'hidden' || this._element.classList.contains(CLASS_NAME_STATIC)) {
       return
     }
 
     if (!isModalOverflowing) {
-      style.overflowY = 'hidden'
+      this._element.style.overflowY = 'hidden'
     }
 
-    classList.add(CLASS_NAME_STATIC)
+    this._element.classList.add(CLASS_NAME_STATIC)
     this._queueCallback(() => {
-      classList.remove(CLASS_NAME_STATIC)
+      this._element.classList.remove(CLASS_NAME_STATIC)
       this._queueCallback(() => {
-        style.overflowY = initialOverflowY
+        this._element.style.overflowY = initialOverflowY
       }, this._dialog)
     }, this._dialog)
 
@@ -370,9 +369,9 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   })
 
   // avoid conflict when clicking modal toggler while another one is open
-  const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
-  if (allReadyOpen) {
-    Modal.getInstance(allReadyOpen).hide()
+  const alreadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
+  if (alreadyOpen) {
+    Modal.getInstance(alreadyOpen).hide()
   }
 
   const data = Modal.getOrCreateInstance(target)
