@@ -1,0 +1,31 @@
++ umask 000
+
++ GIT_LFS_SKIP_SMUDGE=1 retry 6 git clone --branch="dependabot/npm_and_yarn/rollup-2.58.0" --depth 50 https://x-token-auth:$REPOSITORY_OAUTH_ACCESS_TOKEN@bitbucket.org/$BITBUCKET_REPO_FULL_NAME.git $BUILD_DIR
+Cloning into '/opt/atlassian/pipelines/agent/build'...
+
++ git reset --hard 20758902b330b11a3f04ce20067dcac6d87ee20d
+HEAD is now at 2075890 Initial Bitbucket Pipelines configuration
+
++ git config user.name bitbucket-pipelines
+
++ git config user.email commits-noreply@bitbucket.org
+
++ git config push.default current
+
++ git config http.${BITBUCKET_GIT_HTTP_ORIGIN}.proxy http://localhost:29418/
+
++ git remote set-url origin http://bitbucket.org/$BITBUCKET_REPO_FULL_NAME
+
++ git reflog expire --expire=all --all
+
++ echo ".bitbucket/pipelines/generated" >> .git/info/exclude
+
++ chmod 777 $BUILD_DIR
+
+Images used:
+    build : docker.io/algovisetechnologies/pipelinecontainer@sha256:edf4bd880adf9e7f7677094f7a1d944524c7f98e939550bc152523c5cf6080ff
++ echo "Your deployment to production script goes here..."
+Your deployment to production script goes here...
+Searching for test report files in directories named [test-results, failsafe-reports, test-reports, TestResults, surefire-reports] down to a depth of 4
+Finished scanning for test reports. Found 0 test report files.
+Merged test suites, total number tests is 0, with 0 failures and 0 errors.
