@@ -57,7 +57,6 @@
     "docs": "npm-run-all docs-build docs-lint",
     "docs-build": "hugo --cleanDestinationDir",
     "docs-compile": "npm run docs-build",
-    "docs-linkinator": "npx linkinator@3 _site --recurse --skip \"^(?!http://localhost)\" --verbosity error",
     "docs-spellcheck": "cspell --no-progress",
     "docs-vnu": "node build/vnu-jar.js",
     "docs-lint": "npm-run-all --aggregate-output --parallel docs-vnu docs-spellcheck",
