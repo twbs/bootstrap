@@ -1,32 +1,32 @@
 const fixtureId = 'fixture'
 
 export const getFixture = () => {
-  let fixtureEl = document.getElementById(fixtureId)
+  let fixtureElement = document.getElementById(fixtureId)
 
-  if (!fixtureEl) {
-    fixtureEl = document.createElement('div')
-    fixtureEl.setAttribute('id', fixtureId)
-    fixtureEl.style.position = 'absolute'
-    fixtureEl.style.top = '-10000px'
-    fixtureEl.style.left = '-10000px'
-    fixtureEl.style.width = '10000px'
-    fixtureEl.style.height = '10000px'
-    document.body.append(fixtureEl)
+  if (!fixtureElement) {
+    fixtureElement = document.createElement('div')
+    fixtureElement.setAttribute('id', fixtureId)
+    fixtureElement.style.position = 'absolute'
+    fixtureElement.style.top = '-10000px'
+    fixtureElement.style.left = '-10000px'
+    fixtureElement.style.width = '10000px'
+    fixtureElement.style.height = '10000px'
+    document.body.append(fixtureElement)
   }
 
-  return fixtureEl
+  return fixtureElement
 }
 
 export const clearFixture = () => {
-  const fixtureEl = getFixture()
+  const fixtureElement = getFixture()
 
-  fixtureEl.innerHTML = ''
+  fixtureElement.innerHTML = ''
 }
 
-export const createEvent = (eventName, params = {}) => {
+export const createEvent = (eventName, parameters = {}) => {
   const event = document.createEvent('Event')
 
-  event.initEvent(eventName, Boolean(params.bubbles), Boolean(params.cancelable))
+  event.initEvent(eventName, Boolean(parameters.bubbles), Boolean(parameters.cancelable))
   return event
 }
 
@@ -34,8 +34,8 @@ export const jQueryMock = {
   elements: undefined,
   fn: {},
   each(fn) {
-    for (const el of this.elements) {
-      fn.call(el)
+    for (const element of this.elements) {
+      fn.call(element)
     }
   }
 }
@@ -43,8 +43,8 @@ export const jQueryMock = {
 export const clearBodyAndDocument = () => {
   const attributes = ['data-bs-padding-right', 'style']
 
-  for (const attr of attributes) {
-    document.documentElement.removeAttribute(attr)
-    document.body.removeAttribute(attr)
+  for (const attribute of attributes) {
+    document.documentElement.removeAttribute(attribute)
+    document.body.removeAttribute(attribute)
   }
 }
