@@ -8,7 +8,6 @@ describe('ScrollSpy', () => {
   let fixtureEl
 
   const scrollTo = (el, height) => {
-    // el.scrollTo({ top: height })
     el.scrollTop = height
   }
 
