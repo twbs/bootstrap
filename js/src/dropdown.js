@@ -9,7 +9,6 @@ import * as Popper from '@popperjs/core'
 import {
   defineJQueryPlugin,
   getElement,
-  getElementFromSelector,
   getNextActiveElement,
   isDisabled,
   isElement,
@@ -90,7 +89,7 @@ class Dropdown extends BaseComponent {
     super(element, config)
 
     this._popper = null
-    this._parent = getElementFromSelector(this._element) || this._element.parentNode // dropdown wrapper
+    this._parent = this._element.parentNode // dropdown wrapper
     this._menu = SelectorEngine.findOne(SELECTOR_MENU, this._parent)
     this._inNavbar = this._detectNavbar()
   }
