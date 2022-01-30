@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, getElement, isDisabled } from './util/index'
+import { defineJQueryPlugin, getElement, isDisabled, isVisible } from './util/index'
 import EventHandler from './dom/event-handler'
 import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
@@ -35,14 +35,14 @@ const SELECTOR_DROPDOWN = '.dropdown'
 const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 
 const Default = {
-  offset: null, // todo: v6 @deprecated, keep it for backwards compatibility reasons
+  offset: null, // TODO: v6 @deprecated, keep it for backwards compatibility reasons
   rootMargin: '0px 0px -40%',
   smoothScroll: false,
   target: null
 }
 
 const DefaultType = {
-  offset: '(number|null)', // todo v6 @deprecated, keep it for backwards compatibility reasons
+  offset: '(number|null)', // TODO v6 @deprecated, keep it for backwards compatibility reasons
   rootMargin: 'string',
   smoothScroll: 'boolean',
   target: 'element'
@@ -104,7 +104,7 @@ class ScrollSpy extends BaseComponent {
 
   // Private
   _configAfterMerge(config) {
-    // todo: on v6 target should be given explicitly & remove the {target: 'ss-target'} case
+    // TODO: on v6 target should be given explicitly & remove the {target: 'ss-target'} case
     config.target = getElement(config.target) || document.body
 
     return config
@@ -115,15 +115,13 @@ class ScrollSpy extends BaseComponent {
       return
     }
 
-    const wrapperOffsetTop = this._element.offsetTop
-
     EventHandler.off(this._config.target, EVENT_CLICK) // unregister any previous listeners
 
     EventHandler.on(this._config.target, EVENT_CLICK, SELECTOR_TARGET_LINKS, event => {
-      event.preventDefault()
       const observableSection = this._observableSections.get(event.target.hash)
       if (observableSection) {
-        this._element.scrollTop = observableSection.offsetTop - wrapperOffsetTop // chrome 60 doesn't support `scrollTo`
+        event.preventDefault()
+        this._element.scrollTop = observableSection.offsetTop - this._element.offsetTop // chrome 60 doesn't support `scrollTo`
       }
     })
   }
@@ -138,7 +136,7 @@ class ScrollSpy extends BaseComponent {
     return new IntersectionObserver(entries => this._observerCallback(entries), options)
   }
 
-  _observerCallback(entries) {
+  _observerCallback(entries) { // The logic of selection
     const getTargetLink = entry => this._targetLinks.get(`#${entry.target.id}`)
 
     const activate = entry => {
@@ -178,7 +176,7 @@ class ScrollSpy extends BaseComponent {
     this._previousScrollData.parentScrollTop = parentScrollTop
   }
 
-  // todo: v6 Only for backwards compatibility reasons. Use rootMargin only
+  // TODO: v6 Only for backwards compatibility reasons. Use rootMargin only
   _getRootMargin() {
     return this._config.offset ? `${this._config.offset}px 0px 0px` : this._config.rootMargin
   }
@@ -197,7 +195,8 @@ class ScrollSpy extends BaseComponent {
 
       const observableSection = SelectorEngine.findOne(anchor.hash, this._element)
 
-      if (observableSection) {
+      // ensure that the observableSection exists & is visible
+      if (isVisible(observableSection)) {
         this._targetLinks.set(anchor.hash, anchor)
         this._observableSections.set(anchor.hash, observableSection)
       }
@@ -210,9 +209,6 @@ class ScrollSpy extends BaseComponent {
     }
 
     this._clearActiveClass(this._config.target)
-    if (!target) {
-      return
-    }
 
     this._activeTarget = target
 
@@ -249,9 +245,7 @@ class ScrollSpy extends BaseComponent {
   }
 
   _clearActiveClass(parent) {
-    if (parent !== this._config.target) {
-      parent.classList.remove(CLASS_NAME_ACTIVE)
-    }
+    parent.classList.remove(CLASS_NAME_ACTIVE)
 
     for (const node of SelectorEngine.find(`${SELECTOR_TARGET_LINKS}.${CLASS_NAME_ACTIVE}`, parent)) {
       node.classList.remove(CLASS_NAME_ACTIVE)
