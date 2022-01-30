@@ -178,14 +178,16 @@ class Tooltip extends BaseComponent {
       } else {
         context._leave()
       }
-    } else {
-      if (this._getTipElement().classList.contains(CLASS_NAME_SHOW)) {
-        this._leave()
-        return
-      }
 
-      this._enter()
+      return
     }
+
+    if (this._isShown()) {
+      this._leave()
+      return
+    }
+
+    this._enter()
   }
 
   dispose() {
@@ -234,11 +236,7 @@ class Tooltip extends BaseComponent {
     if (this._popper) {
       this._popper.update()
     } else {
-      const placement = typeof this._config.placement === 'function' ?
-        this._config.placement.call(this, tip, this._element) :
-        this._config.placement
-      const attachment = AttachmentMap[placement.toUpperCase()]
-      this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
+      this._createPopper(tip)
     }
 
     tip.classList.add(CLASS_NAME_SHOW)
@@ -268,7 +266,7 @@ class Tooltip extends BaseComponent {
   }
 
   hide() {
-    if (!this._popper) {
+    if (!this._isShown()) {
       return
     }
 
@@ -291,6 +289,7 @@ class Tooltip extends BaseComponent {
     this._activeTrigger[TRIGGER_CLICK] = false
     this._activeTrigger[TRIGGER_FOCUS] = false
     this._activeTrigger[TRIGGER_HOVER] = false
+    this._isHovered = false
 
     const complete = () => {
       if (this._isWithActiveTrigger()) {
@@ -308,7 +307,6 @@ class Tooltip extends BaseComponent {
     }
 
     this._queueCallback(complete, this.tip, this._isAnimated())
-    this._isHovered = false
   }
 
   update() {
@@ -356,7 +354,7 @@ class Tooltip extends BaseComponent {
   setContent(content) {
     let isShown = false
     if (this.tip) {
-      isShown = this.tip.classList.contains(CLASS_NAME_SHOW)
+      isShown = this._isShown()
       this.tip.remove()
       this.tip = null
     }
@@ -402,6 +400,18 @@ class Tooltip extends BaseComponent {
 
   _isAnimated() {
     return this._config.animation || (this.tip && this.tip.classList.contains(CLASS_NAME_FADE))
+  }
+
+  _isShown() {
+    return this.tip && this.tip.classList.contains(CLASS_NAME_SHOW)
+  }
+
+  _createPopper(tip) {
+    const placement = typeof this._config.placement === 'function' ?
+      this._config.placement.call(this, tip, this._element) :
+      this._config.placement
+    const attachment = AttachmentMap[placement.toUpperCase()]
+    this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
   }
 
   _getOffset() {
@@ -532,7 +542,7 @@ class Tooltip extends BaseComponent {
   }
 
   _enter() {
-    if (this._getTipElement().classList.contains(CLASS_NAME_SHOW) || this._isHovered) {
+    if (this._isShown() || this._isHovered) {
       this._isHovered = true
       return
     }
