@@ -30,7 +30,6 @@ const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
 const EVENT_RESIZE = `resize${EVENT_KEY}`
-const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
 const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
@@ -115,7 +114,7 @@ class Modal extends BaseComponent {
     this._toggleEscapeEventListener(true)
     this._toggleResizeEventListener(true)
 
-    this._showBackdrop(() => this._showElement(relatedTarget))
+    this._backdrop.show(() => this._showElement(relatedTarget))
   }
 
   hide() {
@@ -158,9 +157,22 @@ class Modal extends BaseComponent {
 
   // Private
   _initializeBackDrop() {
+    const clickCallback = () => {
+      if (this._config.backdrop === 'static') {
+        this._triggerBackdropTransition()
+        return
+      }
+
+      this.hide()
+    }
+
+    // 'static' option will be translated to true, and booleans will keep their value
+    const isVisible = Boolean(this._config.backdrop)
+
     return new Backdrop({
-      isVisible: Boolean(this._config.backdrop), // 'static' option will be translated to true, and booleans will keep their value
-      isAnimated: this._isAnimated()
+      isVisible,
+      isAnimated: this._isAnimated(),
+      clickCallback: isVisible ? clickCallback : null
     })
   }
 
@@ -248,25 +260,6 @@ class Modal extends BaseComponent {
       this._scrollBar.reset()
       EventHandler.trigger(this._element, EVENT_HIDDEN)
     })
-  }
-
-  _showBackdrop(callback) {
-    EventHandler.on(this._element, EVENT_CLICK_DISMISS, event => {
-      if (event.target !== event.currentTarget) {
-        return
-      }
-
-      if (this._config.backdrop === true) {
-        this.hide()
-        return
-      }
-
-      if (this._config.backdrop === 'static') {
-        this._triggerBackdropTransition()
-      }
-    })
-
-    this._backdrop.show(callback)
   }
 
   _isAnimated() {

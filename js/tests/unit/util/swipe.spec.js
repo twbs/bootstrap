@@ -78,74 +78,80 @@ describe('Swipe', () => {
   })
 
   describe('Config', () => {
-    it('Test leftCallback', done => {
-      const spyRight = jasmine.createSpy('spy')
-      clearPointerEvents()
-      defineDocumentElementOntouchstart()
-      // eslint-disable-next-line no-new
-      new Swipe(swipeEl, {
-        leftCallback: () => {
-          expect(spyRight).not.toHaveBeenCalled()
-          restorePointerEvents()
-          done()
-        },
-        rightCallback: spyRight
-      })
+    it('Test leftCallback', () => {
+      return new Promise(resolve => {
+        const spyRight = jasmine.createSpy('spy')
+        clearPointerEvents()
+        defineDocumentElementOntouchstart()
+        // eslint-disable-next-line no-new
+        new Swipe(swipeEl, {
+          leftCallback: () => {
+            expect(spyRight).not.toHaveBeenCalled()
+            restorePointerEvents()
+            resolve()
+          },
+          rightCallback: spyRight
+        })
 
-      mockSwipeGesture(swipeEl, {
-        pos: [300, 10],
-        deltaX: -300
-      })
-    })
-
-    it('Test rightCallback', done => {
-      const spyLeft = jasmine.createSpy('spy')
-      clearPointerEvents()
-      defineDocumentElementOntouchstart()
-      // eslint-disable-next-line no-new
-      new Swipe(swipeEl, {
-        rightCallback: () => {
-          expect(spyLeft).not.toHaveBeenCalled()
-          restorePointerEvents()
-          done()
-        },
-        leftCallback: spyLeft
-      })
-
-      mockSwipeGesture(swipeEl, {
-        pos: [10, 10],
-        deltaX: 300
+        mockSwipeGesture(swipeEl, {
+          pos: [300, 10],
+          deltaX: -300
+        })
       })
     })
 
-    it('Test endCallback', done => {
-      clearPointerEvents()
-      defineDocumentElementOntouchstart()
-      let isFirstTime = true
+    it('Test rightCallback', () => {
+      return new Promise(resolve => {
+        const spyLeft = jasmine.createSpy('spy')
+        clearPointerEvents()
+        defineDocumentElementOntouchstart()
+        // eslint-disable-next-line no-new
+        new Swipe(swipeEl, {
+          rightCallback: () => {
+            expect(spyLeft).not.toHaveBeenCalled()
+            restorePointerEvents()
+            resolve()
+          },
+          leftCallback: spyLeft
+        })
 
-      const callback = () => {
-        if (isFirstTime) {
-          isFirstTime = false
-          return
+        mockSwipeGesture(swipeEl, {
+          pos: [10, 10],
+          deltaX: 300
+        })
+      })
+    })
+
+    it('Test endCallback', () => {
+      return new Promise(resolve => {
+        clearPointerEvents()
+        defineDocumentElementOntouchstart()
+        let isFirstTime = true
+
+        const callback = () => {
+          if (isFirstTime) {
+            isFirstTime = false
+            return
+          }
+
+          expect().nothing()
+          restorePointerEvents()
+          resolve()
         }
 
-        expect().nothing()
-        restorePointerEvents()
-        done()
-      }
+        // eslint-disable-next-line no-new
+        new Swipe(swipeEl, {
+          endCallback: callback
+        })
+        mockSwipeGesture(swipeEl, {
+          pos: [10, 10],
+          deltaX: 300
+        })
 
-      // eslint-disable-next-line no-new
-      new Swipe(swipeEl, {
-        endCallback: callback
-      })
-      mockSwipeGesture(swipeEl, {
-        pos: [10, 10],
-        deltaX: 300
-      })
-
-      mockSwipeGesture(swipeEl, {
-        pos: [300, 10],
-        deltaX: -300
+        mockSwipeGesture(swipeEl, {
+          pos: [300, 10],
+          deltaX: -300
+        })
       })
     })
   })
@@ -170,53 +176,57 @@ describe('Swipe', () => {
       expect(swipe._handleSwipe).not.toHaveBeenCalled()
     })
 
-    it('should allow swipeRight and call "rightCallback" with pointer events', done => {
-      if (!supportPointerEvent) {
-        expect().nothing()
-        done()
-        return
-      }
-
-      const style = '#fixture .pointer-event { touch-action: none !important; }'
-      fixtureEl.innerHTML += style
-
-      defineDocumentElementOntouchstart()
-      // eslint-disable-next-line no-new
-      new Swipe(swipeEl, {
-        rightCallback: () => {
-          deleteDocumentElementOntouchstart()
+    it('should allow swipeRight and call "rightCallback" with pointer events', () => {
+      return new Promise(resolve => {
+        if (!supportPointerEvent) {
           expect().nothing()
-          done()
+          resolve()
+          return
         }
-      })
 
-      mockSwipeGesture(swipeEl, { deltaX: 300 }, 'pointer')
+        const style = '#fixture .pointer-event { touch-action: none !important; }'
+        fixtureEl.innerHTML += style
+
+        defineDocumentElementOntouchstart()
+        // eslint-disable-next-line no-new
+        new Swipe(swipeEl, {
+          rightCallback: () => {
+            deleteDocumentElementOntouchstart()
+            expect().nothing()
+            resolve()
+          }
+        })
+
+        mockSwipeGesture(swipeEl, { deltaX: 300 }, 'pointer')
+      })
     })
 
-    it('should allow swipeLeft and call "leftCallback" with pointer events', done => {
-      if (!supportPointerEvent) {
-        expect().nothing()
-        done()
-        return
-      }
-
-      const style = '#fixture .pointer-event { touch-action: none !important; }'
-      fixtureEl.innerHTML += style
-
-      defineDocumentElementOntouchstart()
-      // eslint-disable-next-line no-new
-      new Swipe(swipeEl, {
-        leftCallback: () => {
+    it('should allow swipeLeft and call "leftCallback" with pointer events', () => {
+      return new Promise(resolve => {
+        if (!supportPointerEvent) {
           expect().nothing()
-          deleteDocumentElementOntouchstart()
-          done()
+          resolve()
+          return
         }
-      })
 
-      mockSwipeGesture(swipeEl, {
-        pos: [300, 10],
-        deltaX: -300
-      }, 'pointer')
+        const style = '#fixture .pointer-event { touch-action: none !important; }'
+        fixtureEl.innerHTML += style
+
+        defineDocumentElementOntouchstart()
+        // eslint-disable-next-line no-new
+        new Swipe(swipeEl, {
+          leftCallback: () => {
+            expect().nothing()
+            deleteDocumentElementOntouchstart()
+            resolve()
+          }
+        })
+
+        mockSwipeGesture(swipeEl, {
+          pos: [300, 10],
+          deltaX: -300
+        }, 'pointer')
+      })
     })
   })
 
