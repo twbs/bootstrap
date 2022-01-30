@@ -231,15 +231,8 @@ class ScrollSpy extends BaseComponent {
     for (const listGroup of SelectorEngine.parents(target, SELECTOR_NAV_LIST_GROUP)) {
       // Set triggered links parents as active
       // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
-      for (const item of SelectorEngine.prev(listGroup, `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`)) {
+      for (const item of SelectorEngine.prev(listGroup, `${SELECTOR_NAV_LINKS}, ${SELECTOR_NAV_ITEMS}>${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`)) {
         item.classList.add(CLASS_NAME_ACTIVE)
-      }
-
-      // Handle special case when .nav-link is inside .nav-item
-      for (const navItem of SelectorEngine.prev(listGroup, SELECTOR_NAV_ITEMS)) {
-        for (const item of SelectorEngine.children(navItem, SELECTOR_NAV_LINKS)) {
-          item.classList.add(CLASS_NAME_ACTIVE)
-        }
       }
     }
   }
