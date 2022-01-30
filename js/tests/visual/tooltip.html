@@ -68,13 +68,7 @@
       <div id="customContainer"></div>
     </div>
 
-    <script src="../../../node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
-    <script src="../../dist/dom/selector-engine.js"></script>
-    <script src="../../dist/dom/event-handler.js"></script>
-    <script src="../../dist/dom/manipulator.js"></script>
-    <script src="../../dist/dom/data.js"></script>
-    <script src="../../dist/base-component.js"></script>
-    <script src="../../dist/tooltip.js"></script>
+    <script src="../../../dist/js/bootstrap.bundle.js"></script>
     <script>
       if (typeof document.body.attachShadow === 'function') {
         var shadowRoot = document.getElementById('shadow').attachShadow({ mode: 'open' })
@@ -86,24 +80,24 @@
           '  Tooltip on top in a shadow dom' +
           '</button>'
 
-        var firstChildTooltip = new Tooltip(shadowRoot.firstChild)
-        var secondChildTooltip = new Tooltip(shadowRoot.getElementById('secondTooltip'), {
+        var firstChildTooltip = new bootstrap.Tooltip(shadowRoot.firstChild)
+        var secondChildTooltip = new bootstrap.Tooltip(shadowRoot.getElementById('secondTooltip'), {
           container: shadowRoot
         })
       }
 
       var tooltipElements = document.querySelectorAll('[data-bs-toggle="tooltip"]')
       for (const tooltipEl of tooltipElements) {
-        new Tooltip(tooltipEl)
+        new bootstrap.Tooltip(tooltipEl)
       }
 
       var tooltipElement = document.getElementById('tooltipElement')
-      var tooltipElementInstance = new Tooltip(tooltipElement, {
+      var tooltipElementInstance = new bootstrap.Tooltip(tooltipElement, {
         container: document.getElementById('customContainer')
       })
 
       var target = document.getElementById('target')
-      var targetTooltip = new Tooltip(target, {
+      var targetTooltip = new bootstrap.Tooltip(target, {
         placement : 'top',
         trigger : 'manual'
       })
