@@ -283,13 +283,11 @@ const EventHandler = {
     const $ = getjQuery()
     const typeEvent = getTypeEvent(event)
     const inNamespace = event !== typeEvent
-    const isNative = nativeEvents.has(typeEvent)
 
     let jQueryEvent
     let bubbles = true
     let nativeDispatch = true
     let defaultPrevented = false
-    let evt = null
 
     if (inNamespace && $) {
       jQueryEvent = $.Event(event, args)
@@ -300,12 +298,7 @@ const EventHandler = {
       defaultPrevented = jQueryEvent.isDefaultPrevented()
     }
 
-    if (isNative) {
-      evt = document.createEvent('HTMLEvents')
-      evt.initEvent(typeEvent, bubbles, true)
-    } else {
-      evt = new CustomEvent(event, { bubbles, cancelable: true })
-    }
+    const evt = new Event(event, { bubbles, cancelable: true })
 
     // merge custom information in our event
     if (typeof args !== 'undefined') {
