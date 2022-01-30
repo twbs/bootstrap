@@ -2023,6 +2023,26 @@ describe('Dropdown', () => {
         dropdownToggle.click()
       })
     })
+
+    it('should be able to identify clicked dropdown, no matter the markup order', () => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Dropdown item</a>',
+        '  </div>',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown toggle</button>',
+        '</div>'
+      ].join('')
+
+      const dropdownToggle = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
+      const spy = spyOn(Dropdown, 'getOrCreateInstance').and.callThrough()
+
+      dropdownToggle.click()
+      expect(spy).toHaveBeenCalledWith(dropdownToggle)
+      dropdownMenu.click()
+      expect(spy).toHaveBeenCalledWith(dropdownToggle)
+    })
   })
 
   describe('jQueryInterface', () => {
