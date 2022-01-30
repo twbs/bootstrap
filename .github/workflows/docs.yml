@@ -30,5 +30,16 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
-      - name: Test docs
-        run: npm run docs
+      - name: Build docs
+        run: npm run docs-build
+
+      - name: Validate HTML
+        run: npm run docs-vnu
+
+      - name: Run linkinator
+        uses: JustinBeckwith/linkinator-action@v1
+        with:
+          paths: _site
+          recurse: true
+          verbosity: error
+          skip: "^(?!http://localhost)"
