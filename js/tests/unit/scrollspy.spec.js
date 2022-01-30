@@ -148,7 +148,7 @@ describe('ScrollSpy', () => {
         const scrollSpyEl = fixtureEl.querySelector('#scrollspy-example')
         const rootEl = fixtureEl.querySelector('#root')
         const scrollSpy = new ScrollSpy(scrollSpyEl, {
-          target: '#ss-target'
+          target: 'ss-target'
         })
 
         spyOn(scrollSpy, '_process').and.callThrough()

@@ -104,7 +104,8 @@ class ScrollSpy extends BaseComponent {
 
   // Private
   _configAfterMerge(config) {
-    config.target = getElement(config.target)
+    // todo: on v6 target should be given explicitly & remove the {target: 'ss-target'} case
+    config.target = getElement(config.target) || document.body
 
     return config
   }
@@ -190,7 +191,7 @@ class ScrollSpy extends BaseComponent {
 
     for (const anchor of targetLinks) {
       // ensure that the anchor has an id and is not disabled
-      if (!anchor.hash.length || isDisabled(anchor)) {
+      if (!anchor.hash || isDisabled(anchor)) {
         continue
       }
 
@@ -252,7 +253,7 @@ class ScrollSpy extends BaseComponent {
       parent.classList.remove(CLASS_NAME_ACTIVE)
     }
 
-    for (const node of SelectorEngine.find(`.${CLASS_NAME_ACTIVE}`, parent)) {
+    for (const node of SelectorEngine.find(`${SELECTOR_TARGET_LINKS}.${CLASS_NAME_ACTIVE}`, parent)) {
       node.classList.remove(CLASS_NAME_ACTIVE)
     }
   }
