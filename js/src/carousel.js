@@ -372,37 +372,33 @@ class Carousel extends BaseComponent {
       })
     }
 
-    if (this._element.classList.contains(CLASS_NAME_SLIDE)) {
-      nextElement.classList.add(orderClassName)
+    nextElement.classList.add(orderClassName)
 
-      reflow(nextElement)
+    reflow(nextElement)
 
-      activeElement.classList.add(directionalClassName)
-      nextElement.classList.add(directionalClassName)
+    activeElement.classList.add(directionalClassName)
+    nextElement.classList.add(directionalClassName)
 
-      const completeCallBack = () => {
-        nextElement.classList.remove(directionalClassName, orderClassName)
-        nextElement.classList.add(CLASS_NAME_ACTIVE)
-
-        activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
-
-        this._isSliding = false
-
-        setTimeout(triggerSlidEvent, 0)
-      }
-
-      this._queueCallback(completeCallBack, activeElement, true)
-    } else {
-      activeElement.classList.remove(CLASS_NAME_ACTIVE)
+    const completeCallBack = () => {
+      nextElement.classList.remove(directionalClassName, orderClassName)
       nextElement.classList.add(CLASS_NAME_ACTIVE)
 
+      activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
+
       this._isSliding = false
-      triggerSlidEvent()
+
+      setTimeout(triggerSlidEvent, 0)
     }
+
+    this._queueCallback(completeCallBack, activeElement, this._isAnimated())
 
     if (isCycling) {
       this.cycle()
     }
+  }
+
+  _isAnimated() {
+    return this._element.classList.contains(CLASS_NAME_SLIDE)
   }
 
   _getActive() {
