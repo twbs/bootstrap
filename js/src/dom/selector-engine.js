@@ -11,8 +11,6 @@ import { isDisabled, isVisible } from '../util/index'
  * Constants
  */
 
-const NODE_TEXT = 3
-
 const SelectorEngine = {
   find(selector, element = document.documentElement) {
     return [].concat(...Element.prototype.querySelectorAll.call(element, selector))
@@ -28,14 +26,11 @@ const SelectorEngine = {
 
   parents(element, selector) {
     const parents = []
-    let ancestor = element.parentNode
+    let ancestor = element.parentNode.closest(selector)
 
-    while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== NODE_TEXT) {
-      if (ancestor.matches(selector)) {
-        parents.push(ancestor)
-      }
-
-      ancestor = ancestor.parentNode
+    while (ancestor) {
+      parents.push(ancestor)
+      ancestor = ancestor.parentNode.closest(selector)
     }
 
     return parents
