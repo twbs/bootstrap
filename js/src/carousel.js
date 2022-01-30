@@ -363,15 +363,6 @@ class Carousel extends BaseComponent {
     this._setActiveIndicatorElement(nextElement)
     this._activeElement = nextElement
 
-    const triggerSlidEvent = () => {
-      EventHandler.trigger(this._element, EVENT_SLID, {
-        relatedTarget: nextElement,
-        direction: eventDirectionName,
-        from: activeElementIndex,
-        to: nextElementIndex
-      })
-    }
-
     nextElement.classList.add(orderClassName)
 
     reflow(nextElement)
@@ -387,7 +378,12 @@ class Carousel extends BaseComponent {
 
       this._isSliding = false
 
-      setTimeout(triggerSlidEvent, 0)
+      EventHandler.trigger(this._element, EVENT_SLID, {
+        relatedTarget: nextElement,
+        direction: eventDirectionName,
+        from: activeElementIndex,
+        to: nextElementIndex
+      })
     }
 
     this._queueCallback(completeCallBack, activeElement, this._isAnimated())
