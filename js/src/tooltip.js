@@ -292,11 +292,13 @@ class Tooltip extends BaseComponent {
     this._isHovered = false
 
     const complete = () => {
-      if (this._isWithActiveTrigger() || this._isHovered) {
+      if (this._isWithActiveTrigger()) {
         return
       }
 
-      tip.remove()
+      if (!this._isHovered) {
+        tip.remove()
+      }
 
       this._element.removeAttribute('aria-describedby')
       EventHandler.trigger(this._element, this.constructor.Event.HIDDEN)
