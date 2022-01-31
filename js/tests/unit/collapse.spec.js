@@ -887,17 +887,17 @@ describe('Collapse', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<a id="trigger1" role="button" data-bs-toggle="collapse" href="#test1"></a>',
-          '<a id="trigger2" role="button" data-bs-toggle="collapse" href="#test2"></a>',
+          '<a id="trigger2" role="button" data-bs-toggle="collapse" href="#0/my/id"></a>',
           '<a id="trigger3" role="button" data-bs-toggle="collapse" href=".multi"></a>',
           '<div id="test1" class="multi"></div>',
-          '<div id="test2" class="multi"></div>'
+          '<div id="0/my/id" class="multi"></div>'
         ].join('')
 
         const trigger1 = fixtureEl.querySelector('#trigger1')
         const trigger2 = fixtureEl.querySelector('#trigger2')
         const trigger3 = fixtureEl.querySelector('#trigger3')
         const target1 = fixtureEl.querySelector('#test1')
-        const target2 = fixtureEl.querySelector('#test2')
+        const target2 = fixtureEl.querySelector('#' + CSS.escape('0/my/id'))
 
         const target2Shown = () => {
           expect(trigger1).not.toHaveClass('collapsed')
