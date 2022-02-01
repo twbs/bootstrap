@@ -301,7 +301,7 @@ var scrollSpy = new bootstrap.ScrollSpy(document.body, {
 {{< callout danger >}}
 #### Resolvable ID targets required
 
-Navbar links must have resolvable id targets, else they are being ignored. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`
+Navbar links must have resolvable id targets, otherwise they are being ignored. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`
 {{< /callout >}}
 
 {{< callout info >}}
@@ -326,7 +326,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 {{< callout warning >}}
 **Deprecated Options**
 
-Up until v5.1 we were using `offset` & `method` options, that are now deprecated and replaced by `rootMargin`.
+Up until v5.1.3 we were using `offset` & `method` options, which are now deprecated and replaced by `rootMargin`.
 To keep backwards compatibility, we will continue to parse given `offset` to `rootMargin`, but this feature will be removed in **v6**.
 {{< /callout >}}
 
