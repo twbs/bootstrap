@@ -166,21 +166,16 @@ describe('Popover', () => {
     })
 
     it('should NOT show a popover without `title` and `content`', () => {
-      return new Promise(resolve => {
-        fixtureEl.innerHTML = '<a href="#" data-bs-content="" title="">Nice link</a>'
+      fixtureEl.innerHTML = '<a href="#" data-bs-content="" title="">Nice link</a>'
 
-        const popoverEl = fixtureEl.querySelector('a')
-        const popover = new Popover(popoverEl, { animation: false })
-        spyOn(EventHandler, 'trigger').and.callThrough()
+      const popoverEl = fixtureEl.querySelector('a')
+      const popover = new Popover(popoverEl, { animation: false })
+      spyOn(EventHandler, 'trigger').and.callThrough()
 
-        setTimeout(() => {
-          expect(EventHandler.trigger).not.toHaveBeenCalled()
-          expect(document.querySelector('.popover')).toBeNull()
-          resolve()
-        })
+      popover.show()
 
-        popover.show()
-      })
+      expect(EventHandler.trigger).not.toHaveBeenCalledWith(popoverEl, Popover.Event.SHOW)
+      expect(document.querySelector('.popover')).toBeNull()
     })
 
     it('"setContent" should keep the initial template', () => {
