@@ -5,24 +5,24 @@
  * --------------------------------------------------------------------------
  */
 
-function normalizeData(val) {
-  if (val === 'true') {
+function normalizeData(value) {
+  if (value === 'true') {
     return true
   }
 
-  if (val === 'false') {
+  if (value === 'false') {
     return false
   }
 
-  if (val === Number(val).toString()) {
-    return Number(val)
+  if (value === Number(value).toString()) {
+    return Number(value)
   }
 
-  if (val === '' || val === 'null') {
+  if (value === '' || value === 'null') {
     return null
   }
 
-  return val
+  return value
 }
 
 function normalizeDataKey(key) {

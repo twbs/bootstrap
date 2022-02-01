@@ -61,39 +61,39 @@ class ScrollBarHelper {
     this._element.style.overflow = 'hidden'
   }
 
-  _setElementAttributes(selector, styleProp, callback) {
+  _setElementAttributes(selector, styleProperty, callback) {
     const scrollbarWidth = this.getWidth()
     const manipulationCallBack = element => {
       if (element !== this._element && window.innerWidth > element.clientWidth + scrollbarWidth) {
         return
       }
 
-      this._saveInitialAttribute(element, styleProp)
-      const calculatedValue = window.getComputedStyle(element).getPropertyValue(styleProp)
-      element.style.setProperty(styleProp, `${callback(Number.parseFloat(calculatedValue))}px`)
+      this._saveInitialAttribute(element, styleProperty)
+      const calculatedValue = window.getComputedStyle(element).getPropertyValue(styleProperty)
+      element.style.setProperty(styleProperty, `${callback(Number.parseFloat(calculatedValue))}px`)
     }
 
     this._applyManipulationCallback(selector, manipulationCallBack)
   }
 
-  _saveInitialAttribute(element, styleProp) {
-    const actualValue = element.style.getPropertyValue(styleProp)
+  _saveInitialAttribute(element, styleProperty) {
+    const actualValue = element.style.getPropertyValue(styleProperty)
     if (actualValue) {
-      Manipulator.setDataAttribute(element, styleProp, actualValue)
+      Manipulator.setDataAttribute(element, styleProperty, actualValue)
     }
   }
 
-  _resetElementAttributes(selector, styleProp) {
+  _resetElementAttributes(selector, styleProperty) {
     const manipulationCallBack = element => {
-      const value = Manipulator.getDataAttribute(element, styleProp)
+      const value = Manipulator.getDataAttribute(element, styleProperty)
       // We only want to remove the property if the value is `null`; the value can also be zero
       if (value === null) {
-        element.style.removeProperty(styleProp)
+        element.style.removeProperty(styleProperty)
         return
       }
 
-      Manipulator.removeDataAttribute(element, styleProp)
-      element.style.setProperty(styleProp, value)
+      Manipulator.removeDataAttribute(element, styleProperty)
+      element.style.setProperty(styleProperty, value)
     }
 
     this._applyManipulationCallback(selector, manipulationCallBack)

@@ -153,9 +153,9 @@ Visually, these toggle buttons are identical to the [checkbox toggle buttons]({{
 Add `data-bs-toggle="button"` to toggle a button's `active` state. If you're pre-toggling a button, you must manually add the `.active` class **and** `aria-pressed="true"` to ensure that it is conveyed appropriately to assistive technologies.
 
 {{< example >}}
-<button type="button" class="btn btn-primary" data-bs-toggle="button" autocomplete="off">Toggle button</button>
-<button type="button" class="btn btn-primary active" data-bs-toggle="button" autocomplete="off" aria-pressed="true">Active toggle button</button>
-<button type="button" class="btn btn-primary" disabled data-bs-toggle="button" autocomplete="off">Disabled toggle button</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="button">Toggle button</button>
+<button type="button" class="btn btn-primary active" data-bs-toggle="button" aria-pressed="true">Active toggle button</button>
+<button type="button" class="btn btn-primary" disabled data-bs-toggle="button">Disabled toggle button</button>
 {{< /example >}}
 
 {{< example >}}
