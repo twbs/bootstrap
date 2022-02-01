@@ -8,12 +8,7 @@ toc: true
 
 ## How it works
 
-Scrollspy has a few requirements to function properly:
-
-- It toggles `.active` class on anchor elements, so is handy to be used on a Bootstrap [nav component]({{< docsref "/components/navs-tabs" >}}) or [list group]({{< docsref "/components/list-group" >}}).
-- Anchors (`<a>`) are required and must point to an element with that `id`.
-
-When successfully implemented, your nav or list group will update accordingly, moving the `.active` class from one item to the next based on their associated targets.
+Scrollspy toggles the `.active` class on anchor (`<a>`) elements when the element with the `id` referenced by the anchor's `href` is scrolled into view. Generally, it will be most useful in conjunction with a Bootstrap [nav component]({{< docsref "/components/navs-tabs" >}}) or [list group]({{< docsref "/components/list-group" >}}), but it will also work with any anchor elements in the current page.
 
 {{< callout >}}
 ### Scrollable containers and keyboard access
@@ -226,7 +221,7 @@ Scrollspy also works with `.list-group`s. Scroll the area next to the list group
 
 ## Example with simple anchors
 
-Scrollspy also works with `anchor` elements. Scroll the area and watch the active class change.
+Scrollspy is not limited to nav components and list groups, but will work on any `<a>` anchor elements in the current document. Scroll the area and watch the `.active` class change.
 
 <div class="bd-example">
   <div class="row">
@@ -276,7 +271,7 @@ Scrollspy also works with `anchor` elements. Scroll the area and watch the activ
 
 ### Via data attributes
 
-To easily add scrollspy behavior to your topbar navigation, add `data-bs-spy="scroll"` to the element you want to spy on (most typically this would be the `<body>`). Then add the `data-bs-target` attribute with the ID or class of the parent element of any Bootstrap `.nav` component.
+To easily add scrollspy behavior to your topbar navigation, add `data-bs-spy="scroll"` to the element you want to spy on (most typically this would be the `<body>`). Then add the `data-bs-target` attribute with the `id` or class name of the parent element of any Bootstrap `.nav` component.
 
 ```html
 <body data-bs-spy="scroll" data-bs-target="#navbar-example">
@@ -299,17 +294,16 @@ var scrollSpy = new bootstrap.ScrollSpy(document.body, {
 ```
 
 {{< callout danger >}}
-#### Resolvable ID targets required
+#### Requires resolvable `id` targets
 
-Navbar links must have resolvable id targets, otherwise they are being ignored. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`
+Links must have resolvable `id` targets, otherwise they are being ignored. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`
 {{< /callout >}}
 
 {{< callout info >}}
-#### Non-visible target elements ignored
+#### Non-visible target elements are ignored
 
 Target elements that are not visible will be ignored and their corresponding nav items will never be highlighted.
 {{< /callout >}}
-
 
 ### Options
 
@@ -318,8 +312,8 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 {{< bs-table "table" >}}
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `rootMargin` | string | `0px 0px -40%` | Intersection Observer [rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin) valid units, when calculating position of scroll. |
-| `smoothScroll` | boolean | `false` | Enables smooth scrolling when user clicks on a link that refers to ScrollSpy observables |
+| `rootMargin` | string | `0px 0px -40%` | Intersection Observer [rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin) valid units, when calculating scroll position. |
+| `smoothScroll` | boolean | `false` | Enables smooth scrolling when a user clicks on a link that refers to ScrollSpy observables. |
 | `target` | string \| jQuery object \| DOM element |  | Specifies element to apply Scrollspy plugin. |
 {{< /bs-table >}}
 
@@ -327,7 +321,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 **Deprecated Options**
 
 Up until v5.1.3 we were using `offset` & `method` options, which are now deprecated and replaced by `rootMargin`.
-To keep backwards compatibility, we will continue to parse given `offset` to `rootMargin`, but this feature will be removed in **v6**.
+To keep backwards compatibility, we will continue to parse a given `offset` to `rootMargin`, but this feature will be removed in **v6**.
 {{< /callout >}}
 
 ### Methods
@@ -335,10 +329,10 @@ To keep backwards compatibility, we will continue to parse given `offset` to `ro
 {{< bs-table "table" >}}
 | Method | Description |
 | --- | --- |
-| `refresh` | When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method. |
+| `refresh` | When adding or removing elements in the DOM, you'll need to call the refresh method. |
 | `dispose` | Destroys an element's scrollspy. (Removes stored data on the DOM element) |
-| `getInstance` | *Static* method which allows, to get the scrollspy instance associated with a DOM element |
-| `getOrCreateInstance` | *Static* method which allows, to get the scrollspy instance associated with a DOM element, or create a new one in case it wasn't initialized. |
+| `getInstance` | *Static* method to get the scrollspy instance associated with a DOM element |
+| `getOrCreateInstance` | *Static* method to get the scrollspy instance associated with a DOM element, or to create a new one in case it wasn't initialized. |
 {{< /bs-table >}}
 
 Here's an example using the refresh method:
@@ -356,7 +350,7 @@ dataSpyList.forEach(function (dataSpyEl) {
 {{< bs-table "table" >}}
 | Event | Description |
 | --- | --- |
-| `activate.bs.scrollspy` | This event fires on the scroll element whenever a new item becomes activated by the scrollspy. |
+| `activate.bs.scrollspy` | This event fires on the scroll element whenever an anchor is activated by the scrollspy. |
 {{< /bs-table >}}
 
 ```js
