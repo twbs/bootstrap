@@ -25,8 +25,8 @@ const GLOBBY_OPTIONS = {
   gitignore: true
 }
 
-// Avoid modifying documentation content and dependencies in package*.json files matching the newVersion
-const EXCLUDE_FILES_PATTERN = /^(site\/content\/docs\/|package\.json|package-lock\.json)/
+// Avoid modifying documentation content, **/dist files and dependencies in package*.json files matching the newVersion
+const EXCLUDE_FILES_PATTERN = /^(site\/content\/docs\/|package\.json|package-lock\.json|(.*\/)?dist\/)/
 
 // Blame TC39... https://github.com/benjamingr/RegExp.escape/issues/37
 function regExpQuote(string) {
@@ -37,12 +37,17 @@ function regExpQuoteReplacement(string) {
   return string.replace(/\$/g, '$$')
 }
 
-async function replaceRecursively(file, oldVersion, newVersion, onlyFirstMatch = false) {
+async function replaceRecursively(file, oldVersion, newVersion, limitNumberOfReplacements = 0) {
   const originalString = await fs.readFile(file, 'utf8')
+  let newString = originalString
 
-  const newString = onlyFirstMatch ?
-    originalString.replace(oldVersion, newVersion) :
-    originalString.replace(new RegExp(regExpQuote(oldVersion), 'g'), regExpQuoteReplacement(newVersion))
+  if (0 < limitNumberOfReplacements) {
+    for (var i = 0 ; i < limitNumberOfReplacements ; i++) {
+      newString = newString.replace(oldVersion, newVersion)
+    }
+  } else {
+    newString = newString.replace(new RegExp(regExpQuote(oldVersion), 'g'), regExpQuoteReplacement(newVersion))
+  }
 
   // No need to move any further if the strings are identical
   if (originalString === newString) {
@@ -79,7 +84,9 @@ async function main(args) {
     // Modify specifically package*.json files to avoid modifying other dependencies versions
     const oldVersionJSONString = `"version": "${oldVersion}"`
     const newVersionJSONString = `"version": "${newVersion}"`
-    await Promise.all(['package.json', 'package-lock.json'].map(file => replaceRecursively(file, oldVersionJSONString, newVersionJSONString, true)))
+
+    await replaceRecursively('package.json', oldVersionJSONString, newVersionJSONString, 1);
+    await replaceRecursively('package-lock.json', oldVersionJSONString, newVersionJSONString, 2);
 
     await Promise.all(filteredFiles.map(file => replaceRecursively(file, oldVersion, newVersion)))
   } catch (error) {
