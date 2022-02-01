@@ -167,7 +167,7 @@ describe('Tab', () => {
     })
 
     it('should not fire shown when show is prevented', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<div class="nav"></div>'
 
         const navEl = fixtureEl.querySelector('div')
@@ -185,7 +185,7 @@ describe('Tab', () => {
         })
 
         navEl.addEventListener('shown.bs.tab', () => {
-          throw new Error('should not trigger shown event')
+          reject(new Error('should not trigger shown event'))
         })
 
         tab.show()
@@ -193,7 +193,7 @@ describe('Tab', () => {
     })
 
     it('should not fire shown when tab is already active', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<ul class="nav nav-tabs" role="tablist">',
           '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#home" class="nav-link active" role="tab" aria-selected="true">Home</button></li>',
@@ -209,7 +209,7 @@ describe('Tab', () => {
         const tab = new Tab(triggerActive)
 
         triggerActive.addEventListener('shown.bs.tab', () => {
-          throw new Error('should not trigger shown event')
+          reject(new Error('should not trigger shown event'))
         })
 
         tab.show()
@@ -285,7 +285,7 @@ describe('Tab', () => {
     })
 
     it('should not fire hidden when hide is prevented', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<ul class="nav" role="tablist">',
           '  <li><button type="button" data-bs-target="#home" role="tab">Home</button></li>',
@@ -313,7 +313,7 @@ describe('Tab', () => {
         })
 
         triggerList[0].addEventListener('hidden.bs.tab', () => {
-          throw new Error('should not trigger hidden')
+          reject(new Error('should not trigger hidden'))
         })
 
         firstTab.show()
@@ -751,7 +751,7 @@ describe('Tab', () => {
     })
 
     it('should not fire shown when tab has disabled attribute', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<ul class="nav nav-tabs" role="tablist">',
           '  <li class="nav-item" role="presentation"><button type="button" data-bs-target="#home" class="nav-link active" role="tab" aria-selected="true">Home</button></li>',
@@ -765,7 +765,7 @@ describe('Tab', () => {
 
         const triggerDisabled = fixtureEl.querySelector('button[disabled]')
         triggerDisabled.addEventListener('shown.bs.tab', () => {
-          throw new Error('should not trigger shown event')
+          reject(new Error('should not trigger shown event'))
         })
 
         triggerDisabled.click()
@@ -777,7 +777,7 @@ describe('Tab', () => {
     })
 
     it('should not fire shown when tab has disabled class', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<ul class="nav nav-tabs" role="tablist">',
           '  <li class="nav-item" role="presentation"><a href="#home" class="nav-link active" role="tab" aria-selected="true">Home</a></li>',
@@ -792,7 +792,7 @@ describe('Tab', () => {
         const triggerDisabled = fixtureEl.querySelector('a.disabled')
 
         triggerDisabled.addEventListener('shown.bs.tab', () => {
-          throw new Error('should not trigger shown event')
+          reject(new Error('should not trigger shown event'))
         })
 
         triggerDisabled.click()
