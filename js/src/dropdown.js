@@ -9,7 +9,6 @@ import * as Popper from '@popperjs/core'
 import {
   defineJQueryPlugin,
   getElement,
-  getElementFromSelector,
   getNextActiveElement,
   isDisabled,
   isElement,
@@ -90,7 +89,7 @@ class Dropdown extends BaseComponent {
     super(element, config)
 
     this._popper = null
-    this._parent = getElementFromSelector(this._element) || this._element.parentNode // dropdown wrapper
+    this._parent = this._element.parentNode // dropdown wrapper
     this._menu = SelectorEngine.findOne(SELECTOR_MENU, this._parent)
     this._inNavbar = this._detectNavbar()
   }
@@ -386,9 +385,10 @@ class Dropdown extends BaseComponent {
     //    - If key is not UP or DOWN => not a dropdown command
     //    - If trigger inside the menu => not a dropdown command
 
-    const isInput = /input|textarea/i.test(event.target.tagName)
-    const isEscapeEvent = event.key === ESCAPE_KEY
-    const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key)
+    const { target, key, delegateTarget } = event
+    const isInput = /input|textarea/i.test(target.tagName)
+    const isEscapeEvent = key === ESCAPE_KEY
+    const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(key)
 
     if (!isInput && !(isUpOrDownEvent || isEscapeEvent)) {
       return
@@ -396,12 +396,12 @@ class Dropdown extends BaseComponent {
 
     if (isInput && !isEscapeEvent) {
       // eslint-disable-next-line unicorn/no-lonely-if
-      if (!isUpOrDownEvent || event.target.closest(SELECTOR_MENU)) {
+      if (!isUpOrDownEvent || target.closest(SELECTOR_MENU)) {
         return
       }
     }
 
-    const isActive = this.classList.contains(CLASS_NAME_SHOW)
+    const isActive = delegateTarget.classList.contains(CLASS_NAME_SHOW)
 
     if (!isActive && isEscapeEvent) {
       return
@@ -414,7 +414,7 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
+    const getToggleButton = SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, delegateTarget.parentNode)
     const instance = Dropdown.getOrCreateInstance(getToggleButton)
 
     if (isEscapeEvent) {
