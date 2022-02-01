@@ -41,8 +41,8 @@ async function replaceRecursively(file, oldVersion, newVersion, limitNumberOfRep
   const originalString = await fs.readFile(file, 'utf8')
   let newString = originalString
 
-  if (0 < limitNumberOfReplacements) {
-    for (var i = 0 ; i < limitNumberOfReplacements ; i++) {
+  if (limitNumberOfReplacements > 0) {
+    for (let i = 0; i < limitNumberOfReplacements; i++) {
       newString = newString.replace(oldVersion, newVersion)
     }
   } else {
@@ -85,8 +85,8 @@ async function main(args) {
     const oldVersionJSONString = `"version": "${oldVersion}"`
     const newVersionJSONString = `"version": "${newVersion}"`
 
-    await replaceRecursively('package.json', oldVersionJSONString, newVersionJSONString, 1);
-    await replaceRecursively('package-lock.json', oldVersionJSONString, newVersionJSONString, 2);
+    await replaceRecursively('package.json', oldVersionJSONString, newVersionJSONString, 1)
+    await replaceRecursively('package-lock.json', oldVersionJSONString, newVersionJSONString, 2)
 
     await Promise.all(filteredFiles.map(file => replaceRecursively(file, oldVersion, newVersion)))
   } catch (error) {
