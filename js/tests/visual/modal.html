@@ -199,16 +199,7 @@
       </button>
     </div>
 
-    <script src="../../../node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
-    <script src="../../dist/dom/event-handler.js"></script>
-    <script src="../../dist/dom/selector-engine.js"></script>
-    <script src="../../dist/dom/data.js"></script>
-    <script src="../../dist/dom/manipulator.js"></script>
-    <script src="../../dist/base-component.js"></script>
-    <script src="../../dist/modal.js"></script>
-    <script src="../../dist/collapse.js"></script>
-    <script src="../../dist/tooltip.js"></script>
-    <script src="../../dist/popover.js"></script>
+    <script src="../../../dist/js/bootstrap.bundle.js"></script>
     <script>
       var ffBugTestResult = document.getElementById('ff-bug-test-result')
       var firefoxTestDone = false
@@ -222,11 +213,11 @@
 
       var popoverElements = document.querySelectorAll('[data-bs-toggle="popover"]')
       for (const popoverEl of popoverElements) {
-        new Popover(popoverEl)
+        new bootstrap.Popover(popoverEl)
       }
       var tooltipElements = document.querySelectorAll('[data-bs-toggle="tooltip"]')
       for (const tooltipEl of tooltipElements) {
-        new Tooltip(tooltipEl)
+        new bootstrap.Tooltip(tooltipEl)
       }
 
       var tallToggle = document.getElementById('tall-toggle')
@@ -249,7 +240,7 @@
       ffBugInput.addEventListener('focus', handlerClickFfBugInput)
 
       var btnPreventModal = document.getElementById('btnPreventModal')
-      var modalFf = new Modal(firefoxModal)
+      var modalFf = new bootstrap.Modal(firefoxModal)
 
       btnPreventModal.addEventListener('click', function () {
         function shownFirefoxModal() {

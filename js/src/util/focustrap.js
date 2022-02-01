@@ -60,14 +60,12 @@ class FocusTrap extends Config {
 
   // Public
   activate() {
-    const { trapElement, autofocus } = this._config
-
     if (this._isActive) {
       return
     }
 
-    if (autofocus) {
-      trapElement.focus()
+    if (this._config.autofocus) {
+      this._config.trapElement.focus()
     }
 
     EventHandler.off(document, EVENT_KEY) // guard against infinite focus loop
@@ -88,10 +86,9 @@ class FocusTrap extends Config {
 
   // Private
   _handleFocusin(event) {
-    const { target } = event
     const { trapElement } = this._config
 
-    if (target === document || target === trapElement || trapElement.contains(target)) {
+    if (event.target === document || event.target === trapElement || trapElement.contains(event.target)) {
       return
     }
 
