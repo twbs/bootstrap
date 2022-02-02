@@ -32,6 +32,7 @@ const SELECTOR_NAV_LIST_GROUP = '.nav, .list-group'
 const SELECTOR_NAV_LINKS = '.nav-link'
 const SELECTOR_NAV_ITEMS = '.nav-item'
 const SELECTOR_LIST_ITEMS = '.list-group-item'
+const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_NAV_ITEMS} > ${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`
 const SELECTOR_DROPDOWN = '.dropdown'
 const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 
@@ -116,7 +117,8 @@ class ScrollSpy extends BaseComponent {
       return
     }
 
-    EventHandler.off(this._config.target, EVENT_CLICK) // unregister any previous listeners
+    // unregister any previous listeners
+    EventHandler.off(this._config.target, EVENT_CLICK)
 
     EventHandler.on(this._config.target, EVENT_CLICK, SELECTOR_TARGET_LINKS, event => {
       const observableSection = this._observableSections.get(event.target.hash)
@@ -138,7 +140,8 @@ class ScrollSpy extends BaseComponent {
     return new IntersectionObserver(entries => this._observerCallback(entries), options)
   }
 
-  _observerCallback(entries) { // The logic of selection
+  // The logic of selection
+  _observerCallback(entries) {
     const getTargetLink = entry => this._targetLinks.get(`#${entry.target.id}`)
 
     const activate = entry => {
@@ -215,9 +218,7 @@ class ScrollSpy extends BaseComponent {
     target.classList.add(CLASS_NAME_ACTIVE)
     this._activateParents(target)
 
-    EventHandler.trigger(this._element, EVENT_ACTIVATE, {
-      relatedTarget: target
-    })
+    EventHandler.trigger(this._element, EVENT_ACTIVATE, { relatedTarget: target })
   }
 
   _activateParents(target) {
@@ -231,7 +232,7 @@ class ScrollSpy extends BaseComponent {
     for (const listGroup of SelectorEngine.parents(target, SELECTOR_NAV_LIST_GROUP)) {
       // Set triggered links parents as active
       // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
-      for (const item of SelectorEngine.prev(listGroup, `${SELECTOR_NAV_LINKS}, ${SELECTOR_NAV_ITEMS}>${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`)) {
+      for (const item of SelectorEngine.prev(listGroup, SELECTOR_LINK_ITEMS)) {
         item.classList.add(CLASS_NAME_ACTIVE)
       }
     }
@@ -240,7 +241,8 @@ class ScrollSpy extends BaseComponent {
   _clearActiveClass(parent) {
     parent.classList.remove(CLASS_NAME_ACTIVE)
 
-    for (const node of SelectorEngine.find(`${SELECTOR_TARGET_LINKS}.${CLASS_NAME_ACTIVE}`, parent)) {
+    const activeNodes = SelectorEngine.find(`${SELECTOR_TARGET_LINKS}.${CLASS_NAME_ACTIVE}`, parent)
+    for (const node of activeNodes) {
       node.classList.remove(CLASS_NAME_ACTIVE)
     }
   }
