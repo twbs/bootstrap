@@ -621,8 +621,31 @@ $utilities: map-merge(
         visible: visible,
         invisible: hidden,
       )
-    )
+    ),
     // scss-docs-end utils-visibility
+    // scss-docs-start utils-orientation
+    "rotate": (
+      property: transform,
+      class: rotate,
+      values: (
+        45: rotate(45deg),
+        90: rotate(90deg),
+        135: rotate(135deg),
+        180: rotate(180deg),
+        225: rotate(225deg),
+        270: rotate(270deg),
+        315: rotate(315deg),
+      )
+    ),
+    "flip": (
+      property: transform,
+      class: flip,
+      values: (
+        horizontal: scaleX(-1),
+        vertical: scaleY(-1),
+      )
+    )
+    // scss-docs-end utils-orientation
   ),
   $utilities
 );
