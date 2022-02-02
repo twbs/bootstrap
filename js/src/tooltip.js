@@ -537,8 +537,6 @@ class Tooltip extends BaseComponent {
     if (!this._element.getAttribute('aria-label') && !this._element.textContent) {
       this._element.setAttribute('aria-label', title)
     }
-
-    this._element.removeAttribute('title')
   }
 
   _enter() {
