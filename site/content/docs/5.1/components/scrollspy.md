@@ -226,15 +226,16 @@ Scrollspy is not limited to nav components and list groups, but will work on any
 <div class="bd-example">
   <div class="row">
     <div class="col-4">
-      <div id="simple-list-example" class="d-flex flex-column simple-list-example-scrollspy">
+      <div id="simple-list-example" class="d-flex flex-column simple-list-example-scrollspy text-center">
         <a href="#simple-list-item-1">Item 1</a>
         <a href="#simple-list-item-2">Item 2</a>
         <a href="#simple-list-item-3">Item 3</a>
         <a href="#simple-list-item-4">Item 4</a>
+        <a href="#simple-list-item-5">Item 5</a>
       </div>
     </div>
     <div class="col-8">
-      <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+      <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-offset="0" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
         <h4 id="simple-list-item-1">Item 1</h4>
         <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
         <h4 id="simple-list-item-2">Item 2</h4>
@@ -242,6 +243,8 @@ Scrollspy is not limited to nav components and list groups, but will work on any
         <h4 id="simple-list-item-3">Item 3</h4>
         <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
         <h4 id="simple-list-item-4">Item 4</h4>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+        <h4 id="simple-list-item-5">Item 5</h4>
         <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
       </div>
     </div>
@@ -255,7 +258,7 @@ Scrollspy is not limited to nav components and list groups, but will work on any
   <a href="#item-3">Item 3</a>
   <a href="#item-4">Item 4</a>
 </div>
-<div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+<div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
   <h4 id="item-1">Item 1</h4>
   <p>...</p>
   <h4 id="item-2">Item 2</h4>
