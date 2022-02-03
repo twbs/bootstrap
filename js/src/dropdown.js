@@ -9,7 +9,6 @@ import * as Popper from '@popperjs/core'
 import {
   defineJQueryPlugin,
   getElement,
-  getElementFromSelector,
   getNextActiveElement,
   isDisabled,
   isElement,
@@ -90,7 +89,8 @@ class Dropdown extends BaseComponent {
     super(element, config)
 
     this._popper = null
-    this._menu = this._getMenuElement()
+    this._parent = this._element.parentNode // dropdown wrapper
+    this._menu = SelectorEngine.findOne(SELECTOR_MENU, this._parent)
     this._inNavbar = this._detectNavbar()
   }
 
@@ -113,7 +113,7 @@ class Dropdown extends BaseComponent {
   }
 
   show() {
-    if (isDisabled(this._element) || this._isShown(this._menu)) {
+    if (isDisabled(this._element) || this._isShown()) {
       return
     }
 
@@ -127,17 +127,15 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    const parent = getElementFromSelector(this._element) || this._element.parentNode
-
-    this._createPopper(parent)
+    this._createPopper()
 
     // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
-    if ('ontouchstart' in document.documentElement && !parent.closest(SELECTOR_NAVBAR_NAV)) {
-      for (const elem of [].concat(...document.body.children)) {
-        EventHandler.on(elem, 'mouseover', noop)
+    if ('ontouchstart' in document.documentElement && !this._parent.closest(SELECTOR_NAVBAR_NAV)) {
+      for (const element of [].concat(...document.body.children)) {
+        EventHandler.on(element, 'mouseover', noop)
       }
     }
 
@@ -150,7 +148,7 @@ class Dropdown extends BaseComponent {
   }
 
   hide() {
-    if (isDisabled(this._element) || !this._isShown(this._menu)) {
+    if (isDisabled(this._element) || !this._isShown()) {
       return
     }
 
@@ -186,8 +184,8 @@ class Dropdown extends BaseComponent {
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
-      for (const elem of [].concat(...document.body.children)) {
-        EventHandler.off(elem, 'mouseover', noop)
+      for (const element of [].concat(...document.body.children)) {
+        EventHandler.off(element, 'mouseover', noop)
       }
     }
 
@@ -215,7 +213,7 @@ class Dropdown extends BaseComponent {
     return config
   }
 
-  _createPopper(parent) {
+  _createPopper() {
     if (typeof Popper === 'undefined') {
       throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)')
     }
@@ -223,7 +221,7 @@ class Dropdown extends BaseComponent {
     let referenceElement = this._element
 
     if (this._config.reference === 'parent') {
-      referenceElement = parent
+      referenceElement = this._parent
     } else if (isElement(this._config.reference)) {
       referenceElement = getElement(this._config.reference)
     } else if (typeof this._config.reference === 'object') {
@@ -234,16 +232,12 @@ class Dropdown extends BaseComponent {
     this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
   }
 
-  _isShown(element = this._element) {
-    return element.classList.contains(CLASS_NAME_SHOW)
-  }
-
-  _getMenuElement() {
-    return SelectorEngine.next(this._element, SELECTOR_MENU)[0]
+  _isShown() {
+    return this._menu.classList.contains(CLASS_NAME_SHOW)
   }
 
   _getPlacement() {
-    const parentDropdown = this._element.parentNode
+    const parentDropdown = this._parent
 
     if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
       return PLACEMENT_RIGHT
@@ -271,7 +265,7 @@ class Dropdown extends BaseComponent {
     const { offset } = this._config
 
     if (typeof offset === 'string') {
-      return offset.split(',').map(val => Number.parseInt(val, 10))
+      return offset.split(',').map(value => Number.parseInt(value, 10))
     }
 
     if (typeof offset === 'function') {
@@ -314,7 +308,7 @@ class Dropdown extends BaseComponent {
   }
 
   _selectMenuItem({ key, target }) {
-    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu).filter(el => isVisible(el))
+    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu).filter(element => isVisible(element))
 
     if (!items.length) {
       return
@@ -359,10 +353,6 @@ class Dropdown extends BaseComponent {
         continue
       }
 
-      const relatedTarget = {
-        relatedTarget: context._element
-      }
-
       const composedPath = event.composedPath()
       const isMenuTarget = composedPath.includes(context._menu)
       if (
@@ -377,6 +367,8 @@ class Dropdown extends BaseComponent {
       if (context._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) || /input|select|option|textarea|form/i.test(event.target.tagName))) {
         continue
       }
+
+      const relatedTarget = { relatedTarget: context._element }
 
       if (event.type === 'click') {
         relatedTarget.clickEvent = event
@@ -393,9 +385,10 @@ class Dropdown extends BaseComponent {
     //    - If key is not UP or DOWN => not a dropdown command
     //    - If trigger inside the menu => not a dropdown command
 
-    const isInput = /input|textarea/i.test(event.target.tagName)
-    const isEscapeEvent = event.key === ESCAPE_KEY
-    const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key)
+    const { target, key, delegateTarget } = event
+    const isInput = /input|textarea/i.test(target.tagName)
+    const isEscapeEvent = key === ESCAPE_KEY
+    const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(key)
 
     if (!isInput && !(isUpOrDownEvent || isEscapeEvent)) {
       return
@@ -403,12 +396,12 @@ class Dropdown extends BaseComponent {
 
     if (isInput && !isEscapeEvent) {
       // eslint-disable-next-line unicorn/no-lonely-if
-      if (!isUpOrDownEvent || event.target.closest(SELECTOR_MENU)) {
+      if (!isUpOrDownEvent || target.closest(SELECTOR_MENU)) {
         return
       }
     }
 
-    const isActive = this.classList.contains(CLASS_NAME_SHOW)
+    const isActive = delegateTarget.classList.contains(CLASS_NAME_SHOW)
 
     if (!isActive && isEscapeEvent) {
       return
@@ -421,7 +414,7 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
+    const getToggleButton = SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, delegateTarget.parentNode)
     const instance = Dropdown.getOrCreateInstance(getToggleButton)
 
     if (isEscapeEvent) {

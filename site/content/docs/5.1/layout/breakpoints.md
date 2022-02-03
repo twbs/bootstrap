@@ -29,7 +29,7 @@ Bootstrap includes six default breakpoints, sometimes referred to as _grid tiers
   </thead>
   <tbody>
     <tr>
-      <td>X-Small</td>
+      <td>Extra small</td>
       <td><em>None</em></td>
       <td>&lt;576px</td>
     </tr>
