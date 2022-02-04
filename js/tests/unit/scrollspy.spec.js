@@ -358,48 +358,6 @@ describe('ScrollSpy', () => {
       })
     })
 
-    it('should clear selection if above the first section', () => {
-      return new Promise(resolve => {
-        fixtureEl.innerHTML = [
-          '<nav id="navigation" class="navbar">',
-          '  <ul class="navbar-nav">',
-          '    <li class="nav-item"><a id="one-link"   class="nav-link active" href="#one">One</a></li>',
-          '    <li class="nav-item"><a id="two-link"   class="nav-link" href="#two">Two</a></li>',
-          '    <li class="nav-item"><a id="three-link" class="nav-link" href="#three">Three</a></li>',
-          '  </ul>',
-          '</nav>',
-          '<div id="content" style="height: 150px; overflow-y: auto;">',
-          '  <div id="spacer" style="height: 100px;"></div>',
-          '  <div id="one" style="height: 100px;"></div>',
-          '  <div id="two" style="height: 100px;"></div>',
-          '  <div id="three" style="height: 100px;"></div>',
-          '  <div id="spacer" style="height: 100px;"></div>',
-          '</div>'
-        ].join('')
-
-        const contentEl = fixtureEl.querySelector('#content')
-        // eslint-disable-next-line no-unused-vars
-        const scrollSpy = new ScrollSpy(contentEl, {
-          target: '#navigation'
-        })
-
-        onScrollStop(() => {
-          const active = () => fixtureEl.querySelector('.active')
-
-          expect(fixtureEl.querySelectorAll('.active')).toHaveSize(1)
-          expect(active().getAttribute('id')).toEqual('two-link')
-
-          onScrollStop(() => {
-            expect(active()).toBeNull()
-            resolve()
-          }, contentEl)
-          scrollTo(contentEl, 0)
-        }, contentEl)
-
-        scrollTo(contentEl, 201)
-      })
-    })
-
     it('should not clear selection if above the first section and first section is at the top', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
@@ -411,7 +369,7 @@ describe('ScrollSpy', () => {
           '    <li class="nav-item"><a id="three-link" class="nav-link" href="#three">Three</a></li>',
           '  </ul>',
           '</nav>',
-          '<div id="content" style="height: 200px; overflow-y: auto;">',
+          '<div id="content" style="height: 150px; overflow-y: auto;">',
           '  <div id="one" style="height: 100px;"></div>',
           '  <div id="two" style="height: 100px;"></div>',
           '  <div id="three" style="height: 100px;"></div>',
@@ -419,6 +377,7 @@ describe('ScrollSpy', () => {
           '</div>'
         ].join('')
 
+        const negativeHeight = -10
         const startOfSectionTwo = 101
         const contentEl = fixtureEl.querySelector('#content')
         const scrollSpy = new ScrollSpy(contentEl, {
@@ -433,6 +392,7 @@ describe('ScrollSpy', () => {
           spy.calls.reset()
           expect(fixtureEl.querySelectorAll('.active')).toHaveSize(1)
           expect(activeId()).toEqual('two-link')
+          contentEl.scrollTop = negativeHeight
 
           onScrollStop(() => {
             expect(fixtureEl.querySelectorAll('.active')).toHaveSize(1)

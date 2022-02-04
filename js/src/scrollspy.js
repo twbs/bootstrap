@@ -133,7 +133,7 @@ class ScrollSpy extends BaseComponent {
   _getNewObserver() {
     const options = {
       root: this._element,
-      threshold: [0, 0.5],
+      threshold: [0.1, 0.5],
       rootMargin: this._getRootMargin()
     }
 
@@ -142,23 +142,19 @@ class ScrollSpy extends BaseComponent {
 
   // The logic of selection
   _observerCallback(entries) {
-    const getTargetLink = entry => this._targetLinks.get(`#${entry.target.id}`)
-
     const activate = entry => {
       this._previousScrollData.visibleEntryTop = entry.target.offsetTop
-      const targetToActivate = getTargetLink(entry)
+      const targetToActivate = this._targetLinks.get(`#${entry.target.id}`)
       this._process(targetToActivate)
     }
 
     const parentScrollTop = this._element.scrollTop
-    let previousIntersectionRatio = 0
+    const userScrollsDown = parentScrollTop >= this._previousScrollData.parentScrollTop
+    this._previousScrollData.parentScrollTop = parentScrollTop
 
     for (const entry of entries) {
-      if (entry.isIntersecting && previousIntersectionRatio < entry.intersectionRatio) {
+      if (entry.isIntersecting) {
         const entryIsLowerThanPrevious = entry.target.offsetTop >= this._previousScrollData.visibleEntryTop
-        previousIntersectionRatio = entry.intersectionRatio
-
-        const userScrollsDown = parentScrollTop >= this._previousScrollData.parentScrollTop
 
         // if we are scrolling down, pick the bigger offsetTop
         if (userScrollsDown && entryIsLowerThanPrevious) {
@@ -170,15 +166,8 @@ class ScrollSpy extends BaseComponent {
         if (!userScrollsDown && !entryIsLowerThanPrevious) {
           activate(entry)
         }
-
-        continue
       }
-
-      const notVisibleElement = getTargetLink(entry)
-      this._clearActiveClass(notVisibleElement)
     }
-
-    this._previousScrollData.parentScrollTop = parentScrollTop
   }
 
   // TODO: v6 Only for backwards compatibility reasons. Use rootMargin only
