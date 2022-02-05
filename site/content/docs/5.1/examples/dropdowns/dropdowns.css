@@ -60,19 +60,19 @@
   border-color: rgba(255, 255, 255, .15);
 }
 
-#dropdownMacos .dropdown-menu,
-#dropdownIcons .dropdown-menu {
+
+.w-220px {
   width: 220px;
 }
 
-#dropdownFilter .dropdown-menu {
+.w-280px {
   width: 280px;
 }
 
-#dropdownCalendar {
+.w-340px {
   width: 340px;
 }
 
-#dropdownMega {
+.w-600px {
   width: 600px;
 }
