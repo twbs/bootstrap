@@ -1,18 +1,8 @@
 .feature-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 4rem;
   height: 4rem;
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  color: #fff;
 }
 
-.icon-link {
-  display: inline-flex;
-  align-items: center;
-}
 .icon-link > .bi {
   margin-top: .125rem;
   margin-left: .125rem;
@@ -24,12 +14,8 @@
 }
 
 .icon-square {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 3rem;
   height: 3rem;
-  font-size: 1.5rem;
 }
 
 .text-shadow-1 { text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25); }
