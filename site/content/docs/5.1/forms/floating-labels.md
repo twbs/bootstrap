@@ -75,9 +75,9 @@ Other than `.form-control`, floating labels are only available on `.form-select`
 </div>
 {{< /example >}}
 
-## Readonly plain text
+## Readonly plaintext
 
-You can also use floating labels with the `.form-control-plaintext` class to remove the default form field styling and preserve the correct margin and padding.
+Floating labels also support `.form-control-plaintext`, which can be helpful for toggling from an editable `<input>` to a plaintext value without affecting the page layout.
 
 {{< example >}}
 <div class="form-floating mb-3">
