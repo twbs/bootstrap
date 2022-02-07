@@ -12,8 +12,7 @@ import {
   getElement,
   getUID,
   isRTL,
-  noop,
-  typeCheckConfig
+  noop
 } from './util/index'
 import { DefaultAllowlist } from './util/sanitizer'
 import EventHandler from './dom/event-handler'
@@ -118,7 +117,7 @@ class Tooltip extends BaseComponent {
       throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)')
     }
 
-    super(element)
+    super(element, config)
 
     // Private
     this._isEnabled = true
@@ -129,7 +128,6 @@ class Tooltip extends BaseComponent {
     this._templateFactory = null
 
     // Protected
-    this._config = this._getConfig(config)
     this.tip = null
 
     this._setListeners()
@@ -140,16 +138,16 @@ class Tooltip extends BaseComponent {
     return Default
   }
 
+  static get DefaultType() {
+    return DefaultType
+  }
+
   static get NAME() {
     return NAME
   }
 
   static get Event() {
     return Event
-  }
-
-  static get DefaultType() {
-    return DefaultType
   }
 
   // Public
@@ -180,14 +178,16 @@ class Tooltip extends BaseComponent {
       } else {
         context._leave()
       }
-    } else {
-      if (this._getTipElement().classList.contains(CLASS_NAME_SHOW)) {
-        this._leave()
-        return
-      }
 
-      this._enter()
+      return
     }
+
+    if (this._isShown()) {
+      this._leave()
+      return
+    }
+
+    this._enter()
   }
 
   dispose() {
@@ -236,11 +236,7 @@ class Tooltip extends BaseComponent {
     if (this._popper) {
       this._popper.update()
     } else {
-      const placement = typeof this._config.placement === 'function' ?
-        this._config.placement.call(this, tip, this._element) :
-        this._config.placement
-      const attachment = AttachmentMap[placement.toUpperCase()]
-      this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
+      this._createPopper(tip)
     }
 
     tip.classList.add(CLASS_NAME_SHOW)
@@ -256,12 +252,12 @@ class Tooltip extends BaseComponent {
     }
 
     const complete = () => {
-      const prevHoverState = this._isHovered
+      const previousHoverState = this._isHovered
 
       this._isHovered = false
       EventHandler.trigger(this._element, this.constructor.Event.SHOWN)
 
-      if (prevHoverState) {
+      if (previousHoverState) {
         this._leave()
       }
     }
@@ -270,7 +266,7 @@ class Tooltip extends BaseComponent {
   }
 
   hide() {
-    if (!this._popper) {
+    if (!this._isShown()) {
       return
     }
 
@@ -293,6 +289,7 @@ class Tooltip extends BaseComponent {
     this._activeTrigger[TRIGGER_CLICK] = false
     this._activeTrigger[TRIGGER_FOCUS] = false
     this._activeTrigger[TRIGGER_HOVER] = false
+    this._isHovered = false
 
     const complete = () => {
       if (this._isWithActiveTrigger()) {
@@ -310,7 +307,6 @@ class Tooltip extends BaseComponent {
     }
 
     this._queueCallback(complete, this.tip, this._isAnimated())
-    this._isHovered = false
   }
 
   update() {
@@ -358,7 +354,7 @@ class Tooltip extends BaseComponent {
   setContent(content) {
     let isShown = false
     if (this.tip) {
-      isShown = this.tip.classList.contains(CLASS_NAME_SHOW)
+      isShown = this._isShown()
       this.tip.remove()
       this.tip = null
     }
@@ -394,7 +390,7 @@ class Tooltip extends BaseComponent {
   }
 
   _getTitle() {
-    return this._resolvePossibleFunction(this._config.title) || this._element.getAttribute('title')
+    return this._config.title
   }
 
   // Private
@@ -406,11 +402,23 @@ class Tooltip extends BaseComponent {
     return this._config.animation || (this.tip && this.tip.classList.contains(CLASS_NAME_FADE))
   }
 
+  _isShown() {
+    return this.tip && this.tip.classList.contains(CLASS_NAME_SHOW)
+  }
+
+  _createPopper(tip) {
+    const placement = typeof this._config.placement === 'function' ?
+      this._config.placement.call(this, tip, this._element) :
+      this._config.placement
+    const attachment = AttachmentMap[placement.toUpperCase()]
+    this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
+  }
+
   _getOffset() {
     const { offset } = this._config
 
     if (typeof offset === 'string') {
-      return offset.split(',').map(val => Number.parseInt(val, 10))
+      return offset.split(',').map(value => Number.parseInt(value, 10))
     }
 
     if (typeof offset === 'function') {
@@ -450,6 +458,16 @@ class Tooltip extends BaseComponent {
           name: 'arrow',
           options: {
             element: `.${this.constructor.NAME}-arrow`
+          }
+        },
+        {
+          name: 'preSetPlacement',
+          enabled: true,
+          phase: 'beforeMain',
+          fn: data => {
+            // Pre-set Popper's placement attribute in order to read the arrow sizes properly.
+            // Otherwise, Popper mixes up the width and height dimensions since the initial arrow style is for top placement
+            this._getTipElement().setAttribute('data-popper-placement', data.state.placement)
           }
         }
       ]
@@ -510,15 +528,21 @@ class Tooltip extends BaseComponent {
   }
 
   _fixTitle() {
-    const title = this._element.getAttribute('title')
+    const title = this._config.originalTitle
 
-    if (title && !this._element.getAttribute('aria-label') && !this._element.textContent) {
+    if (!title) {
+      return
+    }
+
+    if (!this._element.getAttribute('aria-label') && !this._element.textContent) {
       this._element.setAttribute('aria-label', title)
     }
+
+    this._element.removeAttribute('title')
   }
 
   _enter() {
-    if (this._getTipElement().classList.contains(CLASS_NAME_SHOW) || this._isHovered) {
+    if (this._isShown() || this._isHovered) {
       this._isHovered = true
       return
     }
@@ -558,18 +582,23 @@ class Tooltip extends BaseComponent {
   _getConfig(config) {
     const dataAttributes = Manipulator.getDataAttributes(this._element)
 
-    for (const dataAttr of Object.keys(dataAttributes)) {
-      if (DISALLOWED_ATTRIBUTES.has(dataAttr)) {
-        delete dataAttributes[dataAttr]
+    for (const dataAttribute of Object.keys(dataAttributes)) {
+      if (DISALLOWED_ATTRIBUTES.has(dataAttribute)) {
+        delete dataAttributes[dataAttribute]
       }
     }
 
     config = {
-      ...this.constructor.Default,
       ...dataAttributes,
       ...(typeof config === 'object' && config ? config : {})
     }
+    config = this._mergeConfigObj(config)
+    config = this._configAfterMerge(config)
+    this._typeCheckConfig(config)
+    return config
+  }
 
+  _configAfterMerge(config) {
     config.container = config.container === false ? document.body : getElement(config.container)
 
     if (typeof config.delay === 'number') {
@@ -579,6 +608,8 @@ class Tooltip extends BaseComponent {
       }
     }
 
+    config.originalTitle = this._element.getAttribute('title') || ''
+    config.title = this._resolvePossibleFunction(config.title) || config.originalTitle
     if (typeof config.title === 'number') {
       config.title = config.title.toString()
     }
@@ -587,7 +618,6 @@ class Tooltip extends BaseComponent {
       config.content = config.content.toString()
     }
 
-    typeCheckConfig(NAME, config, this.constructor.DefaultType)
     return config
   }
 
@@ -614,7 +644,6 @@ class Tooltip extends BaseComponent {
   }
 
   // Static
-
   static jQueryInterface(config) {
     return this.each(function () {
       const data = Tooltip.getOrCreateInstance(this, config)

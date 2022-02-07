@@ -1,4 +1,4 @@
-name: CSS
+name: cspell
 
 on:
   push:
@@ -12,21 +12,17 @@ env:
   NODE: 16
 
 jobs:
-  css:
+  cspell:
     runs-on: ubuntu-latest
 
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Run cspell
+        uses: streetsidesoftware/cspell-action@v1
         with:
-          node-version: "${{ env.NODE }}"
-          cache: npm
-
-      - name: Install npm dependencies
-        run: npm ci
-
-      - name: Build CSS
-        run: npm run css
+          config: ".cspell.json"
+          files: "**/*.md"
+          inline: error
+          incremental_files_only: false

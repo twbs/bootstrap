@@ -101,7 +101,7 @@ describe('ScrollBar', () => {
   })
 
   describe('hide - reset', () => {
-    it('should adjust the inline padding of fixed elements which are full-width', done => {
+    it('should adjust the inline padding of fixed elements which are full-width', () => {
       fixtureEl.innerHTML = [
         '<div style="height: 110vh; width: 100%">',
         '  <div class="fixed-top" id="fixed1" style="padding-right: 0px; width: 100vw"></div>',
@@ -134,10 +134,29 @@ describe('ScrollBar', () => {
       expect(getPaddingAttr(fixedEl2)).toBeNull()
       expect(currentPadding).toEqual(originalPadding)
       expect(currentPadding2).toEqual(originalPadding2)
-      done()
     })
 
-    it('should adjust the inline margin and padding of sticky elements', done => {
+    it('should remove padding & margin if not existed before adjustment', () => {
+      fixtureEl.innerHTML = [
+        '<div style="height: 110vh; width: 100%">',
+        '  <div class="fixed" id="fixed" style="width: 100vw;"></div>',
+        '  <div class="sticky-top" id="sticky" style=" width: 100vw;"></div>',
+        '</div>'
+      ].join('')
+      doc.style.overflowY = 'scroll'
+
+      const fixedEl = fixtureEl.querySelector('#fixed')
+      const stickyEl = fixtureEl.querySelector('#sticky')
+      const scrollBar = new ScrollBarHelper()
+
+      scrollBar.hide()
+      scrollBar.reset()
+
+      expect(fixedEl.getAttribute('style').includes('padding-right')).toBeFalse()
+      expect(stickyEl.getAttribute('style').includes('margin-right')).toBeFalse()
+    })
+
+    it('should adjust the inline margin and padding of sticky elements', () => {
       fixtureEl.innerHTML = [
         '<div style="height: 110vh">',
         '  <div class="sticky-top" style="margin-right: 10px; padding-right: 20px; width: 100vw; height: 10px"></div>',
@@ -163,7 +182,6 @@ describe('ScrollBar', () => {
       expect(getMarginX(stickyTopEl)).toEqual(originalMargin)
       expect(getPaddingAttr(stickyTopEl)).toBeNull()
       expect(getPaddingX(stickyTopEl)).toEqual(originalPadding)
-      done()
     })
 
     it('should not adjust the inline margin and padding of sticky and fixed elements when element do not have full width', () => {

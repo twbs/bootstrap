@@ -5,16 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
-import {
-  defineJQueryPlugin,
-  getElementFromSelector,
-  isRTL,
-  isVisible,
-  reflow,
-  typeCheckConfig
-} from './util/index'
+import { defineJQueryPlugin, getElementFromSelector, isRTL, isVisible, reflow } from './util/index'
 import EventHandler from './dom/event-handler'
-import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
 import ScrollBarHelper from './util/scrollbar'
 import BaseComponent from './base-component'
@@ -38,7 +30,6 @@ const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
 const EVENT_RESIZE = `resize${EVENT_KEY}`
-const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
 const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
@@ -70,9 +61,8 @@ const DefaultType = {
 
 class Modal extends BaseComponent {
   constructor(element, config) {
-    super(element)
+    super(element, config)
 
-    this._config = this._getConfig(config)
     this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element)
     this._backdrop = this._initializeBackDrop()
     this._focustrap = this._initializeFocusTrap()
@@ -84,6 +74,10 @@ class Modal extends BaseComponent {
   // Getters
   static get Default() {
     return Default
+  }
+
+  static get DefaultType() {
+    return DefaultType
   }
 
   static get NAME() {
@@ -120,7 +114,7 @@ class Modal extends BaseComponent {
     this._toggleEscapeEventListener(true)
     this._toggleResizeEventListener(true)
 
-    this._showBackdrop(() => this._showElement(relatedTarget))
+    this._backdrop.show(() => this._showElement(relatedTarget))
   }
 
   hide() {
@@ -163,9 +157,22 @@ class Modal extends BaseComponent {
 
   // Private
   _initializeBackDrop() {
+    const clickCallback = () => {
+      if (this._config.backdrop === 'static') {
+        this._triggerBackdropTransition()
+        return
+      }
+
+      this.hide()
+    }
+
+    // 'static' option will be translated to true, and booleans will keep their value
+    const isVisible = Boolean(this._config.backdrop)
+
     return new Backdrop({
-      isVisible: Boolean(this._config.backdrop), // 'static' option will be translated to true, and booleans will keep their value
-      isAnimated: this._isAnimated()
+      isVisible,
+      isAnimated: this._isAnimated(),
+      clickCallback: isVisible ? clickCallback : null
     })
   }
 
@@ -173,16 +180,6 @@ class Modal extends BaseComponent {
     return new FocusTrap({
       trapElement: this._element
     })
-  }
-
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' ? config : {})
-    }
-    typeCheckConfig(NAME, config, DefaultType)
-    return config
   }
 
   _showElement(relatedTarget) {
@@ -265,25 +262,6 @@ class Modal extends BaseComponent {
     })
   }
 
-  _showBackdrop(callback) {
-    EventHandler.on(this._element, EVENT_CLICK_DISMISS, event => {
-      if (event.target !== event.currentTarget) {
-        return
-      }
-
-      if (this._config.backdrop === true) {
-        this.hide()
-        return
-      }
-
-      if (this._config.backdrop === 'static') {
-        this._triggerBackdropTransition()
-      }
-    })
-
-    this._backdrop.show(callback)
-  }
-
   _isAnimated() {
     return this._element.classList.contains(CLASS_NAME_FADE)
   }
@@ -294,23 +272,22 @@ class Modal extends BaseComponent {
       return
     }
 
-    const { classList, scrollHeight, style } = this._element
-    const isModalOverflowing = scrollHeight > document.documentElement.clientHeight
-    const initialOverflowY = style.overflowY
+    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
+    const initialOverflowY = this._element.style.overflowY
     // return if the following background transition hasn't yet completed
-    if (initialOverflowY === 'hidden' || classList.contains(CLASS_NAME_STATIC)) {
+    if (initialOverflowY === 'hidden' || this._element.classList.contains(CLASS_NAME_STATIC)) {
       return
     }
 
     if (!isModalOverflowing) {
-      style.overflowY = 'hidden'
+      this._element.style.overflowY = 'hidden'
     }
 
-    classList.add(CLASS_NAME_STATIC)
+    this._element.classList.add(CLASS_NAME_STATIC)
     this._queueCallback(() => {
-      classList.remove(CLASS_NAME_STATIC)
+      this._element.classList.remove(CLASS_NAME_STATIC)
       this._queueCallback(() => {
-        style.overflowY = initialOverflowY
+        this._element.style.overflowY = initialOverflowY
       }, this._dialog)
     }, this._dialog)
 
@@ -384,10 +361,10 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     })
   })
 
-  // avoid conflict when clicking moddal toggler while another one is open
-  const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
-  if (allReadyOpen) {
-    Modal.getInstance(allReadyOpen).hide()
+  // avoid conflict when clicking modal toggler while another one is open
+  const alreadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
+  if (alreadyOpen) {
+    Modal.getInstance(alreadyOpen).hide()
   }
 
   const data = Modal.getOrCreateInstance(target)
