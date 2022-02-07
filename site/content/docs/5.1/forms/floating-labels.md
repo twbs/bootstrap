@@ -89,7 +89,7 @@ When working with the Bootstrap grid system, be sure to place form elements with
   </div>
   <div class="col-md">
     <div class="form-floating">
-      <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+      <select class="form-select" id="floatingSelectGrid">
         <option selected>Open this select menu</option>
         <option value="1">One</option>
         <option value="2">Two</option>

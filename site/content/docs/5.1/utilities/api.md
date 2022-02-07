@@ -15,8 +15,8 @@ The `$utilities` map contains all our utilities and is later merged with your cu
 | Option | Type | Default&nbsp;value | Description |
 | --- | --- | --- | --- |
 | [`property`](#property) | **Required** | – | Name of the property, this can be a string or an array of strings (e.g., horizontal paddings or margins). |
-| [`values`](#values) | **Required** | – | List of values, or a map if you don't want the class name to be the same as the value. If `null` is used as map key, it isn't compiled. |
-| [`class`](#class) | Optional | null | Name of the generated class. If not provided and `property` is an array of strings, `class` will default to the first element of the `property` array. |
+| [`values`](#values) | **Required** | – | List of values, or a map if you don't want the class name to be the same as the value. If `null` is used as map key, `class` is not prepended to the class name. |
+| [`class`](#class) | Optional | null | Name of the generated class. If not provided and `property` is an array of strings, `class` will default to the first element of the `property` array. If not provided and `property` is a string, the `values` keys are used for the `class` names. |
 | [`css-var`](#css-variable-utilities) | Optional | `false` | Boolean to generate CSS variables instead of CSS rules. |
 | [`local-vars`](#local-css-variables) | Optional | null | Map of local CSS variables to generate in addition to the CSS rules. |
 | [`state`](#states) | Optional | null | List of pseudo-class variants (e.g., `:hover` or `:focus`) to generate. |
@@ -132,6 +132,28 @@ Output:
 .o-50 { opacity: .5 !important; }
 .o-75 { opacity: .75 !important; }
 .o-100 { opacity: 1 !important; }
+```
+
+If `class: null`, generates classes for each of the `values` keys:
+
+```scss
+$utilities: (
+  "visibility": (
+    property: visibility,
+    class: null,
+    values: (
+      visible: visible,
+      invisible: hidden,
+    )
+  )
+);
+```
+
+Output:
+
+```css
+.visible { visibility: visible !important; }
+.invisible { visibility: hidden !important; }
 ```
 
 ### CSS variable utilities
@@ -363,7 +385,10 @@ New utilities can be added to the default `$utilities` map with a `map-merge`. M
 ```scss
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities,
@@ -385,7 +410,10 @@ Modify existing utilities in the default `$utilities` map with `map-get` and `ma
 ```scss
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities,
@@ -410,7 +438,10 @@ You can enable responsive classes for an existing set of utilities that are not 
 ```scss
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities, (
@@ -461,7 +492,10 @@ Missing v4 utilities, or used to another naming convention? The utilities API ca
 ```scss
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities, (
@@ -480,7 +514,10 @@ Remove any of the default utilities by setting the group key to `null`. For exam
 ```scss
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities,

@@ -103,8 +103,17 @@
 //
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 
+// For rows
 .table-striped {
   > tbody > tr:nth-of-type(#{$table-striped-order}) > * {
+    --#{$variable-prefix}table-accent-bg: var(--#{$variable-prefix}table-striped-bg);
+    color: var(--#{$variable-prefix}table-striped-color);
+  }
+}
+
+// For columns
+.table-striped-columns {
+  > :not(caption) > tr > :nth-child(#{$table-striped-columns-order}) {
     --#{$variable-prefix}table-accent-bg: var(--#{$variable-prefix}table-striped-bg);
     color: var(--#{$variable-prefix}table-striped-color);
   }
