@@ -256,12 +256,12 @@ class Collapse extends BaseComponent {
 
   // Static
   static jQueryInterface(config) {
-    return this.each(function () {
-      const _config = {}
-      if (typeof config === 'string' && /show|hide/.test(config)) {
-        _config.toggle = false
-      }
+    const _config = {}
+    if (typeof config === 'string' && /show|hide/.test(config)) {
+      _config.toggle = false
+    }
 
+    return this.each(function () {
       const data = Collapse.getOrCreateInstance(this, _config)
 
       if (typeof config === 'string') {
