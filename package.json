@@ -19,6 +19,27 @@
   "contributors": [
     "Twitter, Inc."
   ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twbs/bootstrap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/twbs/bootstrap/issues"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/twbs"
+    },
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/bootstrap"
+    }
+  ],
+  "main": "dist/js/bootstrap.js",
+  "sass": "scss/bootstrap.scss",
+  "style": "dist/css/bootstrap.css",
   "scripts": {
     "start": "npm-run-all --parallel watch docs-serve",
     "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
@@ -72,22 +93,6 @@
     "watch-js-main": "nodemon --watch js/src/ --ext js --exec \"npm-run-all js-lint js-compile\"",
     "watch-js-docs": "nodemon --watch site/assets/js/ --ext js --exec \"npm run js-lint\""
   },
-  "style": "dist/css/bootstrap.css",
-  "sass": "scss/bootstrap.scss",
-  "main": "dist/js/bootstrap.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/twbs/bootstrap.git"
-  },
-  "bugs": {
-    "url": "https://github.com/twbs/bootstrap/issues"
-  },
-  "license": "MIT",
-  "funding": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/bootstrap"
-  },
-  "dependencies": {},
   "peerDependencies": {
     "jquery": "1.9.1 - 3",
     "popper.js": "^1.16.1"
