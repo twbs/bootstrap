@@ -118,7 +118,7 @@
   }
 
   // Insert copy to clipboard button before .highlight
-  var title = 'Copy to clipboard'
+  var btnTitle = 'Copy to clipboard'
   var btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard">Copy</button></div>'
   document.querySelectorAll('div.highlight')
     .forEach(function (element) {
@@ -127,7 +127,7 @@
 
   document.querySelectorAll('.btn-clipboard')
     .forEach(function (btn) {
-      var tooltipBtn = new bootstrap.Tooltip(btn, { title: title })
+      var tooltipBtn = new bootstrap.Tooltip(btn, { title: btnTitle })
 
       btn.addEventListener('mouseleave', function () {
         // Explicitly hide tooltip, since after clicking it remains
@@ -148,7 +148,7 @@
 
     tooltipBtn.setContent({ '.tooltip-inner': 'Copied!' })
     event.trigger.addEventListener('hidden.bs.tooltip', function () {
-      tooltipBtn.setContent({ '.tooltip-inner': title })
+      tooltipBtn.setContent({ '.tooltip-inner': btnTitle })
     }, { once: true })
     event.clearSelection()
   })
@@ -160,7 +160,7 @@
 
     tooltipBtn.setContent({ '.tooltip-inner': fallbackMsg })
     event.trigger.addEventListener('hidden.bs.tooltip', function () {
-      tooltipBtn.setContent({ '.tooltip-inner': title })
+      tooltipBtn.setContent({ '.tooltip-inner': btnTitle })
     }, { once: true })
   })
 
