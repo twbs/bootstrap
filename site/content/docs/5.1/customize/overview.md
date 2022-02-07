@@ -49,3 +49,24 @@ Several Bootstrap components include embedded SVGs in our CSS to style component
 - [Navbar toggle buttons]({{< docsref "/components/navbar#responsive-behaviors" >}})
 
 Based on [community conversation](https://github.com/twbs/bootstrap/issues/25394), some options for addressing this in your own codebase include replacing the URLs with locally hosted assets, removing the images and using inline images (not possible in all components), and modifying your CSP. Our recommendation is to carefully review your own security policies and decide on the best path forward, if necessary.
+
+If you use the Webpack bundler with `css-loader`, you can extract Bootstrap's inline SVGs into files with an `asset/resource` rule in `webpack.config.js`:
+
+```js
+  module: {
+    rules: [
+      ...
+      {
+        mimetype: 'image/svg+xml',
+        scheme: 'data',
+        type: 'asset/resource',
+        generator: {
+          filename: 'icons/[hash].svg'
+        },
+      },
+      ...
+    ],
+  },
+```
+
+This rule will place inline SVGs into files under the `icons/` directory of the build directory, with the filename based on the hash of the file contents.  This should allow you to use a strict CSP that does not allow inline `data:` URLs in stylesheets.
