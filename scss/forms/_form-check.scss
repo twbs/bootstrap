@@ -14,6 +14,18 @@
   }
 }
 
+.form-check-reverse {
+  padding-right: $form-check-padding-start;
+  padding-left: 0;
+  text-align: right;
+
+  .form-check-input {
+    float: right;
+    margin-right: $form-check-padding-start * -1;
+    margin-left: 0;
+  }
+}
+
 .form-check-input {
   width: $form-check-input-width;
   height: $form-check-input-width;
@@ -128,6 +140,16 @@
       } @else {
         background-image: escape-svg($form-switch-checked-bg-image);
       }
+    }
+  }
+
+  &.form-check-reverse {
+    padding-right: $form-switch-padding-start;
+    padding-left: 0;
+
+    .form-check-input {
+      margin-right: $form-switch-padding-start * -1;
+      margin-left: 0;
     }
   }
 }
