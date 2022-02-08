@@ -2,7 +2,7 @@
 //
 // Generate semantic grid columns with these mixins.
 
-@mixin make-row($gutter-x: $grid-gutter-width, $gutter-y: 0) {
+@mixin make-row($gutter-x: $grid-gutter-width, $gutter-y: $grid-gutter-height) {
   --#{$variable-prefix}gutter-x: #{$gutter-x};
   --#{$variable-prefix}gutter-y: #{$gutter-y};
   display: flex;
