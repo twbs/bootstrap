@@ -95,7 +95,7 @@
 
 // Readonly controls as plain text
 //
-// Apply class to a readonly input to make it appear like regular plain
+// Apply class to a readonly input, textarea to make it appear like regular plain
 // text (without any border, background color, focus indicator)
 
 .form-control-plaintext {
@@ -105,9 +105,11 @@
   margin-bottom: 0; // match inputs if this class comes on inputs with default margins
   line-height: $input-line-height;
   color: $input-plaintext-color;
+  resize: none;
   background-color: transparent;
   border: solid transparent;
   border-width: $input-border-width 0;
+  appearance: none;
 
   &.form-control-sm,
   &.form-control-lg {
