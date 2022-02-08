@@ -66,7 +66,7 @@ If you want to have `<input readonly>`, `<select readonly>` or `<textarea readon
   <div class="mb-3 row">
     <label for="staticSelect" class="col-sm-2 col-form-label">Select</label>
     <div class="col-sm-10">
-      <select readonly class="form-control-plaintext" id="staticSelect">
+      <select class="form-control-plaintext" id="staticSelect">
         <option value="0">Open this select menu</option>
         <option value="1" selected>One</option>
         <option value="2">Two</option>
