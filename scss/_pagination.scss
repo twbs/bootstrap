@@ -27,6 +27,13 @@
     outline: $pagination-focus-outline;
     box-shadow: $pagination-focus-box-shadow;
   }
+  
+  &.active {
+    z-index: 3;
+    color: $pagination-active-color;
+    @include gradient-bg($pagination-active-bg);
+    border-color: $pagination-active-border-color;
+  }
 }
 
 .page-item {
