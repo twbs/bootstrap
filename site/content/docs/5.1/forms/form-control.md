@@ -58,18 +58,19 @@ If you want to have `<input readonly>`, `<select readonly>` or `<textarea readon
     </div>
   </div>
   <div class="mb-3 row">
-    <label for="staticBio" class="col-sm-2 col-form-label">Bio</label>
+    <label for="staticTextarea" class="col-sm-2 col-form-label">Textarea</label>
     <div class="col-sm-10">
-      <textarea readonly class="form-control-plaintext" id="staticBio">Few words about self</textarea>
+      <textarea readonly class="form-control-plaintext" id="staticTextarea" rows="2">Multi-line text</textarea>
     </div>
   </div>
   <div class="mb-3 row">
-    <label for="staticGender" class="col-sm-2 col-form-label">Gender</label>
+    <label for="staticSelect" class="col-sm-2 col-form-label">Select</label>
     <div class="col-sm-10">
-      <select readonly class="form-control-plaintext" id="staticGender">
-        <option value="0" selected>male</option>
-        <option value="1">female</option>
-        <option value="2">other</option>
+      <select readonly class="form-control-plaintext" id="staticSelect">
+        <option value="0">Open this select menu</option>
+        <option value="1" selected>One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
       </select>
     </div>
   </div>
