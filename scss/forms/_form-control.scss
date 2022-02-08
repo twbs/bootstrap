@@ -109,6 +109,7 @@
   border: solid transparent;
   border-width: $input-border-width 0;
   appearance: none;
+  resize: none;
 
   &.form-control-sm,
   &.form-control-lg {
@@ -164,10 +165,6 @@ textarea {
 
   &.form-control-lg {
     min-height: $input-height-lg;
-  }
-
-  &.form-control-plaintext {
-    resize: none;
   }
 }
 // stylelint-enable selector-no-qualifying-type
