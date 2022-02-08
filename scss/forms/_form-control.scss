@@ -103,8 +103,8 @@
   width: 100%;
   padding: $input-padding-y 0;
   margin-bottom: 0; // match inputs if this class comes on inputs with default margins
-  resize: none;
   line-height: $input-line-height;
+  resize: none;
   color: $input-plaintext-color;
   background-color: transparent;
   border: solid transparent;
