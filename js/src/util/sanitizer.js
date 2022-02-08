@@ -82,13 +82,13 @@ export const DefaultAllowlist = {
   ul: []
 }
 
-export function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
+export function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
   if (!unsafeHtml.length) {
     return unsafeHtml
   }
 
-  if (sanitizeFn && typeof sanitizeFn === 'function') {
-    return sanitizeFn(unsafeHtml)
+  if (sanitizeFunction && typeof sanitizeFunction === 'function') {
+    return sanitizeFunction(unsafeHtml)
   }
 
   const domParser = new window.DOMParser()

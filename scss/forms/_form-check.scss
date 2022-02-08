@@ -90,6 +90,7 @@
   &[disabled],
   &:disabled {
     ~ .form-check-label {
+      cursor: default;
       opacity: $form-check-label-disabled-opacity;
     }
   }

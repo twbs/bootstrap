@@ -12,6 +12,17 @@
   outline: 0;
   @include box-shadow($offcanvas-box-shadow);
   @include transition(transform $offcanvas-transition-duration ease-in-out);
+
+  &.showing,
+  &.show:not(.hiding) {
+    transform: none;
+  }
+
+  &.showing,
+  &.hiding,
+  &.show {
+    visibility: visible;
+  }
 }
 
 .offcanvas-backdrop {
@@ -76,8 +87,4 @@
   max-height: 100%;
   border-top: $offcanvas-border-width solid $offcanvas-border-color;
   transform: translateY(100%);
-}
-
-.offcanvas.show {
-  transform: none;
 }

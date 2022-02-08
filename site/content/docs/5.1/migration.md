@@ -91,7 +91,7 @@ Your custom Bootstrap CSS builds should now look something like this with a sepa
 
 - We've ditched the default Sass map merges to make it easier to remove redundant values. Keep in mind you now have to define all values in the Sass maps like `$theme-colors`. Check out how to deal with [Sass maps]({{< docsref "/customize/sass#maps-and-loops" >}}).
 
-- <span class="badge bg-danger">Breaking</span> Renamed `color-yiq()` function and related variables to `color-contrast()` as it's no longer related to YIQ colorspace. [See #30168.](https://github.com/twbs/bootstrap/pull/30168/)
+- <span class="badge bg-danger">Breaking</span> Renamed `color-yiq()` function and related variables to `color-contrast()` as it's no longer related to YIQ color space. [See #30168.](https://github.com/twbs/bootstrap/pull/30168/)
   - `$yiq-contrasted-threshold` is renamed to `$min-contrast-ratio`.
   - `$yiq-text-dark` and `$yiq-text-light` are respectively renamed to `$color-contrast-dark` and `$color-contrast-light`.
 
@@ -196,8 +196,9 @@ Your custom Bootstrap CSS builds should now look something like this with a sepa
 - **Added new floating forms!** We've promoted the Floating labels example to fully supported form components. [See the new Floating labels page.]({{< docsref "/forms/floating-labels" >}})
 
 - <span class="badge bg-danger">Breaking</span> **Consolidated native and custom form elements.** Checkboxes, radios, selects, and other inputs that had native and custom classes in v4 have been consolidated. Now nearly all our form elements are entirely custom, most without the need for custom HTML.
-  - `.custom-check` is now `.form-check`.
-  - `.custom-check.custom-switch` is now `.form-check.form-switch`.
+  - `.custom-control.custom-checkbox` is now `.form-check`.
+  - `.custom-control.custom-custom-radio` is now `.form-check`.
+  - `.custom-control.custom-switch` is now `.form-check.form-switch`.
   - `.custom-select` is now `.form-select`.
   - `.custom-file` and `.form-file` have been replaced by custom styles on top of `.form-control`.
   - `.custom-range` is now `.form-range`.
