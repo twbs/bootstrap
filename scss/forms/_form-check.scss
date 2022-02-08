@@ -108,46 +108,6 @@
 .form-switch {
   padding-left: $form-switch-padding-start;
 
-  @each $state, $value in $theme-colors {
-    &.switch-on-#{$state} {
-      .form-check-input {
-        &:checked {
-          background-color: $value;
-          border-color: $value;
-          &:focus,
-          &:active {
-            border-color: $value;
-            outline: 0;
-            box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width rgba($value, $input-btn-focus-color-opacity);
-          }
-        }
-      }
-    }
-
-    &.switch-off-#{$state} {
-      &:not([class*="switch-on-"]) .form-check-input:checked {
-        background-color: $white;
-        background-image: escape-svg($form-switch-bg-image);
-        border-color: $form-switch-color;
-      }
-
-      .form-check-input {
-        &:not(:checked) {
-          background-color: $value;
-          background-image: escape-svg($form-switch-bg-off-image);
-          border-color: $value;
-
-          &:focus,
-          &:active {
-            border-color: $value;
-            outline: 0;
-            box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width rgba($value, $input-btn-focus-color-opacity);
-          }
-        }
-      }
-    }
-  }
-
   .form-check-input {
     width: $form-switch-width;
     margin-left: $form-switch-padding-start * -1;
@@ -168,6 +128,55 @@
       } @else {
         background-image: escape-svg($form-switch-checked-bg-image);
       }
+    }
+  }
+}
+
+.switch-on {
+  .form-check-input:checked {
+    background-color: var(--#{$variable-prefix}-switch-color);
+    border-color: var(--#{$variable-prefix}-switch-color);
+
+    &:focus,
+    &:active {
+      border-color: var(--#{$variable-prefix}-switch-color);
+      outline: 0;
+      box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width rgba(var(--#{$variable-prefix}-switch-color-rgb), $input-btn-focus-color-opacity);
+    }
+  }
+
+  @each $color, $value in $theme-colors {
+    &.switch-on-#{$color} {
+      --#{$variable-prefix}-switch-color: var(--#{$variable-prefix}#{$color});
+      --#{$variable-prefix}-switch-color-rgb: var(--#{$variable-prefix}#{$color});
+    }
+  }
+}
+
+.switch-off {
+  &:not([class*="switch-on"]) .form-check-input:checked {
+    background-color: $white;
+    background-image: escape-svg($form-switch-bg-image);
+    border-color: $form-switch-color;
+  }
+
+  .form-check-input:not(:checked) {
+    background-color: var(--#{$variable-prefix}-switch-color);
+    background-image: escape-svg($form-switch-bg-off-image);
+    border-color: var(--#{$variable-prefix}-switch-color);
+
+    &:focus,
+    &:active {
+      border-color: var(--#{$variable-prefix}-switch-color);
+      outline: 0;
+      box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width rgba(var(--#{$variable-prefix}-switch-color-rgb), $input-btn-focus-color-opacity);
+    }
+  }
+
+  @each $color, $value in $theme-colors {
+    &.switch-off-#{$color} .form-check-input:not(:checked) {
+      --#{$variable-prefix}-switch-color: var(--#{$variable-prefix}#{$color});
+      --#{$variable-prefix}-switch-color-rgb: var(--#{$variable-prefix}#{$color});
     }
   }
 }

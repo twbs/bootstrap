@@ -129,71 +129,93 @@ and another when they are not checked.
   </div>
 </div>
 
-<div class="row">
-  <div class="col fw-bold">Checked status</div>
-  <div class="col fw-bold">Not checked status</div>
+<div class="row fw-bold">
+  <div class="col">Themed switch</div>
 </div>
 <div class="row">
   <div class="col">
-    <div class="form-check form-switch switch-on-primary">
+    <div class="form-check form-switch switch-on switch-on-primary">
       <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckPrimary" checked>
       <label class="form-check-label" for="flexSwitchCheckPrimary">Primary</label>
     </div>
-    <div class="form-check form-switch switch-on-secondary">
+  </div>
+  <div class="col">
+    <div class="form-check form-switch switch-on switch-on-secondary">
       <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckSecondary" checked>
       <label class="form-check-label" for="flexSwitchCheckSecondary">Secondary</label>
     </div>
-    <div class="form-check form-switch switch-on-success">
+  </div>
+  <div class="col">
+    <div class="form-check form-switch switch-on switch-on-success">
       <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckSuccess" checked>
       <label class="form-check-label" for="flexSwitchCheckSuccess">Success</label>
     </div>
-    <div class="form-check form-switch switch-on-danger">
+  </div>
+  <div class="col">
+    <div class="form-check form-switch switch-on switch-on-danger">
       <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDanger" checked>
       <label class="form-check-label" for="flexSwitchCheckDanger">Danger</label>
     </div>
-    <div class="form-check form-switch switch-on-warning">
+  </div>
+  <div class="col">
+    <div class="form-check form-switch switch-on switch-on-warning">
       <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckWarning" checked>
       <label class="form-check-label" for="flexSwitchCheckWarning">Warning</label>
     </div>
-    <div class="form-check form-switch switch-on-info">
-      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckInfo" checked>
-      <label class="form-check-label" for="flexSwitchCheckInfo">Info</label>
-    </div>
   </div>
   <div class="col">
-    <div class="form-check form-switch switch-off-primary">
-      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchOffCheckPrimary">
-      <label class="form-check-label" for="flexSwitchOffCheckPrimary">Check switch off with primary color</label>
-    </div>
-    <div class="form-check form-switch switch-off-secondary">
-      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchOffCheckSecondary">
-      <label class="form-check-label" for="flexSwitchOffCheckSecondary">Check switch off with secondary color</label>
-    </div>
-    <div class="form-check form-switch switch-off-success">
-      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchOffCheckSuccess">
-      <label class="form-check-label" for="flexSwitchOffCheckSuccess">Check switch off with success color</label>
-    </div>
-    <div class="form-check form-switch switch-off-danger">
-      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchOffCheckDanger">
-      <label class="form-check-label" for="flexSwitchOffCheckDanger">Check switch off with danger color</label>
-    </div>
-    <div class="form-check form-switch switch-off-warning">
-      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchOffCheckWarning">
-      <label class="form-check-label" for="flexSwitchOffCheckWarning">Check switch off with warning color</label>
-    </div>
-    <div class="form-check form-switch switch-off-info">
-      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchOffCheckInfo">
-      <label class="form-check-label" for="flexSwitchOffCheckInfo">Check switch off with info color</label>
+    <div class="form-check form-switch switch-on switch-on-info">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckInfo" checked>
+      <label class="form-check-label" for="flexSwitchCheckInfo">Info</label>
     </div>
   </div>
 </div>
 
 <div class="row">
-  <div class="col fw-bold">Both status at once</div>
+  <div class="col">
+    <div class="form-check form-switch switch-off switch-off-primary">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchOffCheckPrimary">
+      <label class="form-check-label" for="flexSwitchOffCheckPrimary">Primary</label>
+    </div>
+  </div>
+  <div class="col">
+    <div class="form-check form-switch switch-off switch-off-secondary">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchOffCheckSecondary">
+      <label class="form-check-label" for="flexSwitchOffCheckSecondary">Secondary</label>
+    </div>
+  </div>
+  <div class="col">
+    <div class="form-check form-switch switch-off switch-off-success">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchOffCheckSuccess">
+      <label class="form-check-label" for="flexSwitchOffCheckSuccess">Success</label>
+    </div>
+  </div>
+  <div class="col">
+    <div class="form-check form-switch switch-off switch-off-danger">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchOffCheckDanger">
+      <label class="form-check-label" for="flexSwitchOffCheckDanger">Danger</label>
+    </div>
+  </div>
+  <div class="col">
+    <div class="form-check form-switch switch-off switch-off-warning">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchOffCheckWarning">
+      <label class="form-check-label" for="flexSwitchOffCheckWarning">Warning</label>
+    </div>
+  </div>
+  <div class="col">
+    <div class="form-check form-switch switch-off switch-off-info">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchOffCheckInfo">
+      <label class="form-check-label" for="flexSwitchOffCheckInfo">Info</label>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col fw-bold">Two theme at once</div>
 </div>
 <div class="row">
   <div class="col">
-    <div class="form-check form-switch switch-on-success switch-off-danger">
+    <div class="form-check form-switch switch-on switch-on-success switch-off switch-off-danger">
       <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckSuccessDanger">
       <label class="form-check-label" for="flexSwitchCheckSuccessDanger">Check switch with success color when checked and danger when not</label>
     </div>
