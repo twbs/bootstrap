@@ -34,7 +34,6 @@
     color: $pagination-active-color;
     @include gradient-bg($pagination-active-bg);
     border-color: $pagination-active-border-color;
-    font-size: 50px;
   }
 }
 
