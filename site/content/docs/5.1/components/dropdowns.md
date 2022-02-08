@@ -1065,10 +1065,11 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <p>Configure the auto close behavior of the dropdown:</p>
         <ul>
           <li><code>true</code> - the dropdown will be closed by clicking outside or inside the dropdown menu.</li>
-          <li><code>false</code> - the dropdown will be closed by clicking the toggle button and manually calling <code>hide</code> or <code>toggle</code> method. (Also will not be closed by pressing <kbd>esc</kbd> key)</li>
+          <li><code>false</code> - the dropdown will be closed by clicking the toggle button and manually calling <code>hide</code> or <code>toggle</code> method.</li>
           <li><code>'inside'</code> - the dropdown will be closed (only) by clicking inside the dropdown menu.</li>
           <li><code>'outside'</code> - the dropdown will be closed (only) by clicking outside the dropdown menu.</li>
         </ul>
+        <p>The dropdown can always be closed with the <kbd>ESC</kbd> key.</p>
       </td>
     </tr>
     <tr>

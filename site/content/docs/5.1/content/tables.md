@@ -80,11 +80,21 @@ Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`
 
 {{< table class="table table-striped" >}}
 
+### Striped columns
+
+Use `.table-striped-columns` to add zebra-striping to any table column.
+
+{{< table class="table table-striped-columns" >}}
+
 These classes can also be added to table variants:
 
 {{< table class="table table-dark table-striped" >}}
 
+{{< table class="table table-dark table-striped-columns" >}}
+
 {{< table class="table table-success table-striped" >}}
+
+{{< table class="table table-success table-striped-columns" >}}
 
 ### Hoverable rows
 
@@ -94,7 +104,7 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
 
 {{< table class="table table-dark table-hover" >}}
 
-These hoverable rows can also be combined with the striped variant:
+These hoverable rows can also be combined with the striped rows variant:
 
 {{< table class="table table-striped table-hover" >}}
 
@@ -210,11 +220,11 @@ Highlight a table row or cell by adding a `.table-active` class.
 
 ## How do the variants and accented tables work?
 
-For the accented tables ([striped rows](#striped-rows), [hoverable rows](#hoverable-rows), and [active tables](#active-tables)), we used some techniques to make these effects work for all our [table variants](#variants):
+For the accented tables ([striped rows](#striped-rows), [striped columns](#striped-columns), [hoverable rows](#hoverable-rows), and [active tables](#active-tables)), we used some techniques to make these effects work for all our [table variants](#variants):
 
 - We start by setting the background of a table cell with the `--bs-table-bg` custom property. All table variants then set that custom property to colorize the table cells. This way, we don't get into trouble if semi-transparent colors are used as table backgrounds.
 - Then we add an inset box shadow on the table cells with `box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);` to layer on top of any specified `background-color`. Because we use a huge spread and no blur, the color will be monotone. Since `--bs-table-accent-bg` is unset by default, we don't have a default box shadow.
-- When either `.table-striped`, `.table-hover` or `.table-active` classes are added, the `--bs-table-accent-bg` is set to a semitransparent color to colorize the background.
+- When either `.table-striped`, `.table-striped-columns`, `.table-hover` or `.table-active` classes are added, the `--bs-table-accent-bg` is set to a semitransparent color to colorize the background.
 - For each table variant, we generate a `--bs-table-accent-bg` color with the highest contrast depending on that color. For example, the accent color for `.table-primary` is darker while `.table-dark` has a lighter accent color.
 - Text and border colors are generated the same way, and their colors are inherited by default.
 
