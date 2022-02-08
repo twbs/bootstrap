@@ -6,9 +6,10 @@
   opacity: 0;
   @include transition(color .15s ease-in-out, opacity .15s ease-in-out);
 
-  :hover > &,
   &:focus,
-  &:hover {
+  &:hover,
+  :hover > &,
+  :target > & {
     color: $link-color;
     text-decoration: none;
     opacity: 1;
