@@ -6,6 +6,10 @@
   opacity: 0;
   @include transition(color .15s ease-in-out, opacity .15s ease-in-out);
 
+  &::after {
+    content: "#";
+  }
+
   &:focus,
   &:hover,
   :hover > &,
