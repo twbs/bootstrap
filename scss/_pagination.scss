@@ -29,7 +29,7 @@
   }
   
   &.active,
-  .page-item.active & {
+  .active > & {
     z-index: 3;
     color: $pagination-active-color;
     @include gradient-bg($pagination-active-bg);
