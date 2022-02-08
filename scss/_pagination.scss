@@ -27,6 +27,7 @@
     outline: $pagination-focus-outline;
     box-shadow: $pagination-focus-box-shadow;
   }
+
   &.active,
   .active > & {
     z-index: 3;
