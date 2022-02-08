@@ -48,13 +48,30 @@ Add the `readonly` boolean attribute on an input to prevent modification of the 
 
 ## Readonly plain text
 
-If you want to have `<input readonly>` elements in your form styled as plain text, use the `.form-control-plaintext` class to remove the default form field styling and preserve the correct margin and padding.
+If you want to have `<input readonly>`, `<textarea readonly>` or `<select>` elements in your form styled as plain text, use the `.form-control-plaintext` class to remove the default form field styling and preserve the correct margin and padding.
 
 {{< example >}}
   <div class="mb-3 row">
     <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
       <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="staticTextarea" class="col-sm-2 col-form-label">Textarea</label>
+    <div class="col-sm-10">
+      <textarea readonly class="form-control-plaintext" id="staticTextarea" rows="2">Multi-line text</textarea>
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="staticSelect" class="col-sm-2 col-form-label">Select</label>
+    <div class="col-sm-10">
+      <select class="form-control-plaintext" id="staticSelect">
+        <option value="0">Open this select menu</option>
+        <option value="1" selected>One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
     </div>
   </div>
   <div class="mb-3 row">
