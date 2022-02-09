@@ -129,6 +129,21 @@ All heading elements—e.g., `<h1>`—and `<p>` are reset to have their `margin-
   </tbody>
 </table>
 
+## Horizontal rules
+
+The `<hr>` element has been simplified. Similar to browser defaults, `<hr>`s are styled via `border-top`, have a default `opacity: .25`, and automatically inherit their `border-color` via `color`, including when `color` is set via the parent. They can be modified with text, border, and opacity utilities.
+
+{{< example >}}
+<hr>
+
+<div class="text-success">
+  <hr>
+</div>
+
+<hr class="text-danger border-2 opacity-50">
+<hr class="border-primary border-3 opacity-75">
+{{< /example >}}
+
 ## Lists
 
 All lists—`<ul>`, `<ol>`, and `<dl>`—have their `margin-top` removed and a `margin-bottom: 1rem`. Nested lists have no `margin-bottom`. We've also reset the `padding-left` on `<ul>` and `<ol>` elements.
