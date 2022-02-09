@@ -35,18 +35,19 @@
     @include gradient-bg($pagination-active-bg);
     border-color: $pagination-active-border-color;
   }
+
+  &.disabled,
+  .disabled > & {
+    color: $pagination-disabled-color;
+    pointer-events: none;
+    background-color: $pagination-disabled-bg;
+    border-color: $pagination-disabled-border-color;
+  }
 }
 
 .page-item {
   &:not(:first-child) .page-link {
     margin-left: $pagination-margin-start;
-  }
-
-  &.disabled .page-link {
-    color: $pagination-disabled-color;
-    pointer-events: none;
-    background-color: $pagination-disabled-bg;
-    border-color: $pagination-disabled-border-color;
   }
 }
 
