@@ -24,7 +24,7 @@
 
   $is-css-var: map-get($utility, css-var);
   $is-local-vars: map-get($utility, local-vars);
-  $is-rtl: map-get($utility, rtl);  
+  $is-rtl: map-get($utility, rtl);
   $is-rfs: map-get($utility, rfs);
 
   @each $key, $value in $values {
