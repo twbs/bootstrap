@@ -34,7 +34,7 @@ Bootstrap 5 is increasingly making use of custom properties as local variables f
 
 Have a look at our table documentation for some [insight into how we're using CSS variables]({{< docsref "/content/tables#how-do-the-variants-and-accented-tables-work" >}}). Our [navbars also use CSS variables]({{< docsref "/components/navbar#css" >}}) as of v5.2.0. We're also using CSS variables across our grids—primarily for gutters the [new opt-in CSS grid]({{< docsref "/layout/css-grid" >}})—with more component usage coming in the future.
 
-Whenever possible, we'll assign CSS variables at the base component level (e.g., `.navbar` for navbar and it's sub-components). This reduces guessing on where and how to customize, and allows for easy modifications by our team in future updates.
+Whenever possible, we'll assign CSS variables at the base component level (e.g., `.navbar` for navbar and its sub-components). This reduces guessing on where and how to customize, and allows for easy modifications by our team in future updates.
 
 ## Prefix
 

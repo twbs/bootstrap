@@ -27,7 +27,7 @@ If you're making a scrollable container (other than the `<body>`), be sure to ha
 Scroll the area below the navbar and watch the active class change. The dropdown items will be highlighted as well.
 
 <div class="bd-example">
-  <nav id="navbar-example2" class="navbar navbar-light bg-light px-3">
+  <nav id="navbar-example2" class="navbar bg-light px-3">
     <a class="navbar-brand" href="#">Navbar</a>
     <ul class="nav nav-pills">
       <li class="nav-item">
@@ -62,7 +62,7 @@ Scroll the area below the navbar and watch the active class change. The dropdown
 </div>
 
 ```html
-<nav id="navbar-example2" class="navbar navbar-light bg-light px-3">
+<nav id="navbar-example2" class="navbar bg-light px-3">
   <a class="navbar-brand" href="#">Navbar</a>
   <ul class="nav nav-pills">
     <li class="nav-item">
@@ -103,7 +103,7 @@ Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its p
 <div class="bd-example">
   <div class="row">
     <div class="col-4">
-      <nav id="navbar-example3" class="navbar navbar-light bg-light flex-column align-items-stretch p-3">
+      <nav id="navbar-example3" class="navbar bg-light flex-column align-items-stretch p-3">
         <a class="navbar-brand" href="#">Navbar</a>
         <nav class="nav nav-pills flex-column">
           <a class="nav-link" href="#item-1">Item 1</a>
@@ -142,7 +142,7 @@ Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its p
 </div>
 
 ```html
-<nav id="navbar-example3" class="navbar navbar-light bg-light flex-column align-items-stretch p-3">
+<nav id="navbar-example3" class="navbar bg-light flex-column align-items-stretch p-3">
   <a class="navbar-brand" href="#">Navbar</a>
   <nav class="nav nav-pills flex-column">
     <a class="nav-link" href="#item-1">Item 1</a>

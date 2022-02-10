@@ -1117,7 +1117,7 @@ describe('Dropdown', () => {
     it('should not use "static" Popper in navbar', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
-          '<nav class="navbar navbar-expand-md navbar-light bg-light">',
+          '<nav class="navbar navbar-expand-md bg-light">',
           '  <div class="dropdown">',
           '    <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
           '    <div class="dropdown-menu">',
@@ -1187,7 +1187,7 @@ describe('Dropdown', () => {
     it('should manage bs attribute `data-bs-popper`="static" when dropdown is in navbar', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
-          '<nav class="navbar navbar-expand-md navbar-light bg-light">',
+          '<nav class="navbar navbar-expand-md bg-light">',
           '  <div class="dropdown">',
           '    <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
           '    <div class="dropdown-menu">',
