@@ -105,19 +105,34 @@ describe('Offcanvas', () => {
     })
 
     it('should not hide if esc is pressed but with keyboard = false', () => {
-      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
-      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
-      const offCanvas = new Offcanvas(offCanvasEl, { keyboard: false })
-      const keyDownEsc = createEvent('keydown')
-      keyDownEsc.key = 'Escape'
+        const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+        const offCanvas = new Offcanvas(offCanvasEl, { keyboard: false })
+        const keyDownEsc = createEvent('keydown')
+        keyDownEsc.key = 'Escape'
 
-      spyOn(offCanvas, 'hide')
+        spyOn(offCanvas, 'hide')
 
-      document.dispatchEvent(keyDownEsc)
+        const expectEnd = () => {
+          setTimeout(() => {
+            expect(offCanvas.hide).not.toHaveBeenCalled()
+            resolve()
+          }, 10)
+        }
 
-      expect(offCanvas._config.keyboard).toBeFalse()
-      expect(offCanvas.hide).not.toHaveBeenCalled()
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          expect(offCanvas._config.keyboard).toBeFalse()
+          offCanvasEl.dispatchEvent(keyDownEsc)
+        })
+
+        offCanvasEl.addEventListener('hidePrevented.bs.offcanvas', () => {
+          expectEnd()
+        })
+
+        offCanvas.show()
+      })
     })
 
     it('should not hide if user clicks on static backdrop', () => {
