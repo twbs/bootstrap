@@ -1080,6 +1080,7 @@ $nav-link-height:                   $font-size-base * $line-height-base + $nav-l
 $navbar-brand-height:               $navbar-brand-font-size * $line-height-base !default;
 $navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) * .5 !default;
 $navbar-brand-margin-end:           1rem !default;
+$navbar-brand-font-size:            $font-size-lg !default;
 
 $navbar-toggler-padding-y:          .25rem !default;
 $navbar-toggler-padding-x:          .75rem !default;
