@@ -79,6 +79,28 @@ You can use a link with the `href` attribute, or a button with the `data-bs-targ
 </div>
 {{< /example >}}
 
+### Static backdrop
+
+When backdrop is set to static, the offcanvas will not close when clicking outside it.
+
+{{< example >}}
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+  Toggle static offcanvas
+</button>
+
+<div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="staticBackdropLabel">Offcanvas</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      I will not close if you click outside me.
+    </div>
+  </div>
+</div>
+{{< /example >}}
+
 ## Placement
 
 There's no default placement for offcanvas components, so you must add one of the modifier classes below;
@@ -225,7 +247,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 {{< bs-table "table" >}}
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `backdrop` | boolean | `true` | Apply a backdrop on body while offcanvas is open |
+| `backdrop` | boolean or the string `static` | `true` | Apply a backdrop on body while offcanvas is open. Alternatively, specify `static` for a backdrop which doesn't close the offcanvas on click. |
 | `keyboard` | boolean | `true` | Closes the offcanvas when escape key is pressed |
 | `scroll` | boolean | `false` | Allow body scrolling while offcanvas is open |
 {{< /bs-table >}}
@@ -266,6 +288,7 @@ Bootstrap's offcanvas class exposes a few events for hooking into offcanvas func
 | `shown.bs.offcanvas` | This event is fired when an offcanvas element has been made visible to the user (will wait for CSS transitions to complete). |
 | `hide.bs.offcanvas` | This event is fired immediately when the `hide` method has been called. |
 | `hidden.bs.offcanvas` | This event is fired when an offcanvas element has been hidden from the user (will wait for CSS transitions to complete). |
+| `hidePrevented.bs.offcanvas` | This event is fired when the offcanvas is shown, its backdrop is `static` and a click outside the offcanvas is performed. |
 {{< /bs-table >}}
 
 ```js

@@ -74,6 +74,21 @@ describe('Offcanvas', () => {
       expect(offCanvas.hide).toHaveBeenCalled()
     })
 
+    it('should hide if esc is pressed and backdrop is static', () => {
+      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+
+      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+      const offCanvas = new Offcanvas(offCanvasEl, { backdrop: 'static' })
+      const keyDownEsc = createEvent('keydown')
+      keyDownEsc.key = 'Escape'
+
+      spyOn(offCanvas, 'hide')
+
+      offCanvasEl.dispatchEvent(keyDownEsc)
+
+      expect(offCanvas.hide).toHaveBeenCalled()
+    })
+
     it('should not hide if esc is not pressed', () => {
       fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
@@ -103,6 +118,42 @@ describe('Offcanvas', () => {
 
       expect(offCanvas._config.keyboard).toBeFalse()
       expect(offCanvas.hide).not.toHaveBeenCalled()
+    })
+
+    it('should not hide if user clicks on static backdrop', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+
+        const offCanvasEl = fixtureEl.querySelector('div')
+        const offCanvas = new Offcanvas(offCanvasEl, { backdrop: 'static' })
+
+        const clickEvent = new Event('mousedown', { bubbles: true, cancelable: true })
+        spyOn(offCanvas._backdrop._config, 'clickCallback').and.callThrough()
+        spyOn(offCanvas._backdrop, 'hide').and.callThrough()
+
+        const expectEnd = () => {
+          setTimeout(() => {
+            expect(offCanvas._backdrop.hide).not.toHaveBeenCalled()
+            resolve()
+          }, 10)
+        }
+
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          expect(offCanvas._backdrop._config.clickCallback).toEqual(jasmine.any(Function))
+
+          offCanvas._backdrop._getElement().dispatchEvent(clickEvent)
+        })
+
+        offCanvasEl.addEventListener('hide.bs.offcanvas', () => {
+          throw new Error('should not fire hide event')
+        })
+
+        offCanvasEl.addEventListener('hidePrevented.bs.offcanvas', () => {
+          expectEnd()
+        })
+
+        offCanvas.show()
+      })
     })
   })
 
