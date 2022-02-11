@@ -123,26 +123,31 @@ const getElement = object => {
   return null
 }
 
-const typeCheckConfig = (componentName, config, configTypes) => {
-  for (const property of Object.keys(configTypes)) {
-    const expectedTypes = configTypes[property]
-    const value = config[property]
-    const valueType = value && isElement(value) ? 'element' : toType(value)
-
-    if (!new RegExp(expectedTypes).test(valueType)) {
-      throw new TypeError(
-        `${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`
-      )
-    }
-  }
-}
-
 const isVisible = element => {
   if (!isElement(element) || element.getClientRects().length === 0) {
     return false
   }
 
-  return getComputedStyle(element).getPropertyValue('visibility') === 'visible'
+  const elementIsVisible = getComputedStyle(element).getPropertyValue('visibility') === 'visible'
+  // Handle `details` element as its content may falsie appear visible when it is closed
+  const closedDetails = element.closest('details:not([open])')
+
+  if (!closedDetails) {
+    return elementIsVisible
+  }
+
+  if (closedDetails !== element) {
+    const summary = element.closest('summary')
+    if (summary && summary.parentNode !== closedDetails) {
+      return false
+    }
+
+    if (summary === null) {
+      return false
+    }
+  }
+
+  return elementIsVisible
 }
 
 const isDisabled = element => {
@@ -327,5 +332,5 @@ export {
   onDOMContentLoaded,
   reflow,
   triggerTransitionEnd,
-  typeCheckConfig
+  toType
 }

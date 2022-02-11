@@ -6,7 +6,8 @@
  */
 
 import EventHandler from '../dom/event-handler'
-import { execute, executeAfterTransition, getElement, reflow, typeCheckConfig } from './index'
+import { execute, executeAfterTransition, getElement, reflow } from './index'
+import Config from './config'
 
 /**
  * Constants
@@ -37,11 +38,25 @@ const DefaultType = {
  * Class definition
  */
 
-class Backdrop {
+class Backdrop extends Config {
   constructor(config) {
+    super()
     this._config = this._getConfig(config)
     this._isAppended = false
     this._element = null
+  }
+
+  // Getters
+  static get Default() {
+    return Default
+  }
+
+  static get DefaultType() {
+    return DefaultType
+  }
+
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -53,11 +68,12 @@ class Backdrop {
 
     this._append()
 
+    const element = this._getElement()
     if (this._config.isAnimated) {
-      reflow(this._getElement())
+      reflow(element)
     }
 
-    this._getElement().classList.add(CLASS_NAME_SHOW)
+    element.classList.add(CLASS_NAME_SHOW)
 
     this._emulateAnimation(() => {
       execute(callback)
@@ -104,15 +120,9 @@ class Backdrop {
     return this._element
   }
 
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...(typeof config === 'object' ? config : {})
-    }
-
+  _configAfterMerge(config) {
     // use getElement() with the default "body" to get a fresh Element on each instantiation
     config.rootElement = getElement(config.rootElement)
-    typeCheckConfig(NAME, config, DefaultType)
     return config
   }
 
@@ -121,9 +131,10 @@ class Backdrop {
       return
     }
 
-    this._config.rootElement.append(this._getElement())
+    const element = this._getElement()
+    this._config.rootElement.append(element)
 
-    EventHandler.on(this._getElement(), EVENT_MOUSEDOWN, () => {
+    EventHandler.on(element, EVENT_MOUSEDOWN, () => {
       execute(this._config.clickCallback)
     })
 

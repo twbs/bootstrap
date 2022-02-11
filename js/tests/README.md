@@ -50,22 +50,24 @@ describe('getInstance', () => {
 })
 
 // Asynchronous test
-it('should show a tooltip without the animation', done => {
-  fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+it('should show a tooltip without the animation', () => {
+  return new Promise(resolve => {
+    fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
 
-  const tooltipEl = fixtureEl.querySelector('a')
-  const tooltip = new Tooltip(tooltipEl, {
-    animation: false
+    const tooltipEl = fixtureEl.querySelector('a')
+    const tooltip = new Tooltip(tooltipEl, {
+      animation: false
+    })
+
+    tooltipEl.addEventListener('shown.bs.tooltip', () => {
+      const tip = document.querySelector('.tooltip')
+
+      expect(tip).not.toBeNull()
+      expect(tip.classList.contains('fade')).toEqual(false)
+      resolve()
+    })
+
+    tooltip.show()
   })
-
-  tooltipEl.addEventListener('shown.bs.tooltip', () => {
-    const tip = document.querySelector('.tooltip')
-
-    expect(tip).not.toBeNull()
-    expect(tip.classList.contains('fade')).toEqual(false)
-    done()
-  })
-
-  tooltip.show()
 })
 ```

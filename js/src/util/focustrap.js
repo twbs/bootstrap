@@ -7,7 +7,7 @@
 
 import EventHandler from '../dom/event-handler'
 import SelectorEngine from '../dom/selector-engine'
-import { typeCheckConfig } from './index'
+import Config from './config'
 
 /**
  * Constants
@@ -37,23 +37,35 @@ const DefaultType = {
  * Class definition
  */
 
-class FocusTrap {
+class FocusTrap extends Config {
   constructor(config) {
+    super()
     this._config = this._getConfig(config)
     this._isActive = false
     this._lastTabNavDirection = null
   }
 
+  // Getters
+  static get Default() {
+    return Default
+  }
+
+  static get DefaultType() {
+    return DefaultType
+  }
+
+  static get NAME() {
+    return NAME
+  }
+
   // Public
   activate() {
-    const { trapElement, autofocus } = this._config
-
     if (this._isActive) {
       return
     }
 
-    if (autofocus) {
-      trapElement.focus()
+    if (this._config.autofocus) {
+      this._config.trapElement.focus()
     }
 
     EventHandler.off(document, EVENT_KEY) // guard against infinite focus loop
@@ -74,10 +86,9 @@ class FocusTrap {
 
   // Private
   _handleFocusin(event) {
-    const { target } = event
     const { trapElement } = this._config
 
-    if (target === document || target === trapElement || trapElement.contains(target)) {
+    if (event.target === document || event.target === trapElement || trapElement.contains(event.target)) {
       return
     }
 
@@ -98,15 +109,6 @@ class FocusTrap {
     }
 
     this._lastTabNavDirection = event.shiftKey ? TAB_NAV_BACKWARD : TAB_NAV_FORWARD
-  }
-
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...(typeof config === 'object' ? config : {})
-    }
-    typeCheckConfig(NAME, config, DefaultType)
-    return config
   }
 }
 
