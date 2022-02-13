@@ -1003,8 +1003,8 @@ Add `data-bs-toggle="dropdown"` to a link or button to toggle a dropdown.
 Call the dropdowns via JavaScript:
 
 ```js
-var dropdownElementList = Array.prototype.slice.call(document.querySelectorAll('.dropdown-toggle'))
-var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+const dropdownElementList = Array.prototype.slice.call(document.querySelectorAll('.dropdown-toggle'))
+const dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
   return new bootstrap.Dropdown(dropdownToggleEl)
 })
 ```
@@ -1087,7 +1087,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 #### Using function with `popperConfig`
 
 ```js
-var dropdown = new bootstrap.Dropdown(element, {
+const dropdown = new bootstrap.Dropdown(element, {
   popperConfig: function (defaultBsPopperConfig) {
     // var newPopperConfig = {...}
     // use defaultBsPopperConfig if needed...
@@ -1204,7 +1204,7 @@ All dropdown events are fired at the toggling element and then bubbled up. So yo
 </table>
 
 ```js
-var myDropdown = document.getElementById('myDropdown')
+const myDropdown = document.getElementById('myDropdown')
 myDropdown.addEventListener('show.bs.dropdown', function () {
   // do something...
 })
