@@ -88,8 +88,8 @@ Click the button below to show a toast (positioned with our utilities in the low
 We use the following JavaScript to trigger our live toast demo:
 
 ```js
-var toastTrigger = document.getElementById('liveToastBtn')
-var toastLiveExample = document.getElementById('liveToast')
+const toastTrigger = document.getElementById('liveToastBtn')
+const toastLiveExample = document.getElementById('liveToast')
 if (toastTrigger) {
   toastTrigger.addEventListener('click', function () {
     var toast = new bootstrap.Toast(toastLiveExample)
@@ -335,8 +335,8 @@ While technically it's possible to add focusable/actionable controls (such as ad
 Initialize toasts via JavaScript:
 
 ```js
-var toastElList = Array.prototype.slice.call(document.querySelectorAll('.toast'))
-var toastList = toastElList.map(function (toastEl) {
+const toastElList = Array.prototype.slice.call(document.querySelectorAll('.toast'))
+const toastList = toastElList.map(function (toastEl) {
   return new bootstrap.Toast(toastEl, option)
 })
 ```
@@ -418,8 +418,8 @@ toast.dispose()
 *Static* method which allows you to get the toast instance associated with a DOM element
 
 ```js
-var myToastEl = document.getElementById('myToastEl')
-var myToast = bootstrap.Toast.getInstance(myToastEl) // Returns a Bootstrap toast instance
+const myToastEl = document.getElementById('myToastEl')
+const myToast = bootstrap.Toast.getInstance(myToastEl) // Returns a Bootstrap toast instance
 ```
 
 #### getOrCreateInstance
@@ -427,8 +427,8 @@ var myToast = bootstrap.Toast.getInstance(myToastEl) // Returns a Bootstrap toas
 *Static* method which allows you to get the toast instance associated with a DOM element, or create a new one in case it wasn't initialized
 
 ```js
-var myToastEl = document.getElementById('myToastEl')
-var myToast = bootstrap.Toast.getOrCreateInstance(myToastEl) // Returns a Bootstrap toast instance
+const myToastEl = document.getElementById('myToastEl')
+const myToast = bootstrap.Toast.getOrCreateInstance(myToastEl) // Returns a Bootstrap toast instance
 ```
 
 ### Events
@@ -461,7 +461,7 @@ var myToast = bootstrap.Toast.getOrCreateInstance(myToastEl) // Returns a Bootst
 </table>
 
 ```js
-var myToastEl = document.getElementById('myToast')
+const myToastEl = document.getElementById('myToast')
 myToastEl.addEventListener('hidden.bs.toast', function () {
   // do something...
 })
