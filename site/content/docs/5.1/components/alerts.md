@@ -35,8 +35,8 @@ Click the button below to show an alert (hidden with inline styles to start), th
 We use the following JavaScript to trigger our live alert demo:
 
 ```js
-var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
-var alertTrigger = document.getElementById('liveAlertBtn')
+const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+const alertTrigger = document.getElementById('liveAlertBtn')
 
 function alert(message, type) {
   var wrapper = document.createElement('div')
@@ -189,8 +189,8 @@ Loop that generates the modifier classes with the `alert-variant()` mixin.
 Initialize elements as alerts
 
 ```js
-var alertList = document.querySelectorAll('.alert')
-var alerts = Array.prototype.slice.call(alertList).map(function (element) {
+const alertList = document.querySelectorAll('.alert')
+const alerts = Array.prototype.slice.call(alertList).map(function (element) {
   return new bootstrap.Alert(element)
 })
 ```
@@ -254,8 +254,8 @@ See the [triggers](#triggers) section for more details.
 </table>
 
 ```js
-var alertNode = document.querySelector('.alert')
-var alert = bootstrap.Alert.getInstance(alertNode)
+const alertNode = document.querySelector('.alert')
+const alert = bootstrap.Alert.getInstance(alertNode)
 alert.close()
 ```
 
@@ -287,7 +287,7 @@ Bootstrap's alert plugin exposes a few events for hooking into alert functionali
 </table>
 
 ```js
-var myAlert = document.getElementById('myAlert')
+const myAlert = document.getElementById('myAlert')
 myAlert.addEventListener('closed.bs.alert', function () {
   // do something, for instance, explicitly move focus to the most appropriate element,
   // so it doesn't get lost/reset to the start of the page
