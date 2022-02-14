@@ -31,18 +31,11 @@
       </button>
     </div>
 
-    <script src="../../../node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
-    <script src="../../dist/dom/event-handler.js"></script>
-    <script src="../../dist/dom/selector-engine.js"></script>
-    <script src="../../dist/dom/manipulator.js"></script>
-    <script src="../../dist/dom/data.js"></script>
-    <script src="../../dist/base-component.js"></script>
-    <script src="../../dist/tooltip.js"></script>
-    <script src="../../dist/popover.js"></script>
+    <script src="../../../dist/js/bootstrap.bundle.js"></script>
     <script>
       var popoverElements = document.querySelectorAll('[data-bs-toggle="popover"]')
       for (const popoverEl of popoverElements) {
-        new Popover(popoverEl)
+        new bootstrap.Popover(popoverEl)
       }
     </script>
   </body>

@@ -220,27 +220,29 @@ class Carousel extends BaseComponent {
   }
 
   _addTouchEventListeners() {
-    for (const itemImg of SelectorEngine.find(SELECTOR_ITEM_IMG, this._element)) {
-      EventHandler.on(itemImg, EVENT_DRAG_START, event => event.preventDefault())
+    for (const img of SelectorEngine.find(SELECTOR_ITEM_IMG, this._element)) {
+      EventHandler.on(img, EVENT_DRAG_START, event => event.preventDefault())
     }
 
     const endCallBack = () => {
-      if (this._config.pause === 'hover') {
-        // If it's a touch-enabled device, mouseenter/leave are fired as
-        // part of the mouse compatibility events on first tap - the carousel
-        // would stop cycling until user tapped out of it;
-        // here, we listen for touchend, explicitly pause the carousel
-        // (as if it's the second time we tap on it, mouseenter compat event
-        // is NOT fired) and after a timeout (to allow for mouse compatibility
-        // events to fire) we explicitly restart cycling
-
-        this.pause()
-        if (this.touchTimeout) {
-          clearTimeout(this.touchTimeout)
-        }
-
-        this.touchTimeout = setTimeout(event => this.cycle(event), TOUCHEVENT_COMPAT_WAIT + this._config.interval)
+      if (this._config.pause !== 'hover') {
+        return
       }
+
+      // If it's a touch-enabled device, mouseenter/leave are fired as
+      // part of the mouse compatibility events on first tap - the carousel
+      // would stop cycling until user tapped out of it;
+      // here, we listen for touchend, explicitly pause the carousel
+      // (as if it's the second time we tap on it, mouseenter compat event
+      // is NOT fired) and after a timeout (to allow for mouse compatibility
+      // events to fire) we explicitly restart cycling
+
+      this.pause()
+      if (this.touchTimeout) {
+        clearTimeout(this.touchTimeout)
+      }
+
+      this.touchTimeout = setTimeout(event => this.cycle(event), TOUCHEVENT_COMPAT_WAIT + this._config.interval)
     }
 
     const swipeConfig = {

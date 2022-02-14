@@ -187,7 +187,7 @@ Get updates on Bootstrap's development and chat with the project maintainers and
 
 For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under [the Semantic Versioning guidelines](https://semver.org/). Sometimes we screw up, but we adhere to those rules whenever possible.
 
-See [the Releases section of our GitHub project](https://github.com/twbs/bootstrap/releases) for changelogs for each release version of Bootstrap. Release announcement posts on [the official Bootstrap blog](https://blog.getbootstrap.com/) contain summaries of the most noteworthy changes made in each release.
+See [the Releases section of our GitHub project](https://github.com/twbs/bootstrap/releases) for changelogs for each release version of Bootstrap. Release announcement posts on [the official Bootstrap blog](https://blog.getbootstrap.com/) contain summaries of the most noteworthy changes made in each release. [Release planning](https://github.com/twbs/release#upcoming-release-schedule) takes place in a separate project.
 
 
 ## Creators
@@ -206,10 +206,16 @@ See [the Releases section of our GitHub project](https://github.com/twbs/bootstr
 ## Thanks
 
 <a href="https://www.browserstack.com/">
-  <img src="https://live.browserstack.com/images/opensource/browserstack-logo.svg" alt="BrowserStack Logo" width="192" height="42">
+  <img src="https://live.browserstack.com/images/opensource/browserstack-logo.svg" alt="BrowserStack" width="192" height="42">
 </a>
 
 Thanks to [BrowserStack](https://www.browserstack.com/) for providing the infrastructure that allows us to test in real browsers!
+
+<a href="https://www.netlify.com/">
+  <img src="https://www.netlify.com/v3/img/components/full-logo-light.svg" alt="Netlify" width="147" height="40">
+</a>
+
+Thanks to [Netlify](https://www.netlify.com/) for providing us with Deploy Previews!
 
 
 ## Sponsors
