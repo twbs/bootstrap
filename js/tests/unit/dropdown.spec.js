@@ -73,7 +73,7 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown, {
           offset: getOffset,
           popperConfig: {
-            onFirstUpdate: state => {
+            onFirstUpdate(state) {
               expect(getOffset).toHaveBeenCalledWith({
                 popper: state.rects.popper,
                 reference: state.rects.reference,
