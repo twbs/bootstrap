@@ -85,7 +85,7 @@ describe('Swipe', () => {
         defineDocumentElementOntouchstart()
         // eslint-disable-next-line no-new
         new Swipe(swipeEl, {
-          leftCallback: () => {
+          leftCallback() {
             expect(spyRight).not.toHaveBeenCalled()
             restorePointerEvents()
             resolve()
@@ -107,7 +107,7 @@ describe('Swipe', () => {
         defineDocumentElementOntouchstart()
         // eslint-disable-next-line no-new
         new Swipe(swipeEl, {
-          rightCallback: () => {
+          rightCallback() {
             expect(spyLeft).not.toHaveBeenCalled()
             restorePointerEvents()
             resolve()
@@ -190,7 +190,7 @@ describe('Swipe', () => {
         defineDocumentElementOntouchstart()
         // eslint-disable-next-line no-new
         new Swipe(swipeEl, {
-          rightCallback: () => {
+          rightCallback() {
             deleteDocumentElementOntouchstart()
             expect().nothing()
             resolve()
@@ -215,7 +215,7 @@ describe('Swipe', () => {
         defineDocumentElementOntouchstart()
         // eslint-disable-next-line no-new
         new Swipe(swipeEl, {
-          leftCallback: () => {
+          leftCallback() {
             expect().nothing()
             deleteDocumentElementOntouchstart()
             resolve()
