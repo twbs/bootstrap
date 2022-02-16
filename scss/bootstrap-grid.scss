@@ -9,6 +9,7 @@ $include-column-box-sizing: true !default;
 
 @import "mixins/lists";
 @import "mixins/breakpoints";
+@import "mixins/color-mode";
 @import "mixins/container";
 @import "mixins/grid";
 @import "mixins/utilities";

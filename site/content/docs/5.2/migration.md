@@ -7,6 +7,76 @@ aliases: "/migration/"
 toc: true
 ---
 
+## v5.3.0 (WIP)
+
+<hr class="mb-4">
+
+### Color modes!
+
+Learn more by reading the new [color modes documentation]({{< docsref "/customize/color-modes" >}}).
+
+- **Global support for light (default) and dark color modes.** Set color mode globally on the `:root` element, on groups of elements and components with a wrapper class, or directly on components, with `data-bs-theme="light|dark"`. Also included is a new `color-mode()` mixin that can output a ruleset with the `data-bs-theme` selector or a media query, depending on your preference.
+
+  <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span>  Color modes replace dark variants for components, so  `.carousel-dark`, `.dropdown-menu-dark`, and `.navbar-dark` are deprecated.
+
+- **New extended color system.** We've added new theme colors (but not in `$theme-colors)`) for a more nuanced, system-wide color palette with new secondary, tertiary, and emphasis colors for `color` and `background-color`. These new colors are available as Sass variables, CSS variables, and utilities.
+
+- We've also expanded our theme color Sass variables, CSS variables, and utilities to include text emphasis, subtle background colors, and subtle border colors. These are available as Sass variables, CSS variables, and utilities.
+
+- Adds new `_variables-dark.scss` stylesheet to house dark-mode specific overrides.
+
+### CSS variables
+
+- Restores CSS variables for breakpoints, though we don't use them in our media queries as they're not supported. However, these can be useful in JS-specific contexts.
+
+- Per the color modes update, we've added new utilities for Adds new Sass CSS variables `secondary` and `tertiary` text and background colors, plus `{color}-bg-subtle`, `{color}-border-subtle`, and `{color}-text` for our theme colors. These new colors are available through Sass and CSS variables (but not our color maps) with the express goal of making it easier to customize across multiple colors modes like light and dark.
+
+- Adds additional variables for alerts, `.btn-close`, and `.offcanvas`.
+
+- Converts links to use CSS variables for their color with `--bs-link-color-rgb` and `--bs-link-opacity`. This allows us to use the `rgba()` function to set the link color and customize its alpha layer opacity with ease. Also includes `--bs-link-decoration` and `--bs-link-hover-decoration` for controlling `text-decoration`.
+
+- `--bs-border-width` is now being used in more components for greater control over default global styling.
+
+- Adds new root CSS variables for our `box-shadow`s, including `--bs-box-shadow`, `--bs-box-shadow-sm`, `--bs-box-shadow-lg`, and `--bs-box-shadow-inset`.
+
+### Components
+
+#### Alert
+
+- Alert variants are now styled via CSS variables.
+
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.alert-variant()` mixin is now deprecated. We now [use the Sass loop]({{< docsref "/components/alerts#sass-loop" >}}) directly to modify the component's default CSS variables for each variant.
+
+#### List group
+
+- Alert variants are now styled via CSS variables.
+
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.list-group-variant()` mixin is now deprecated. We now [use the Sass loop]({{< docsref "/components/list-group#sass-loop" >}}) directly to modify the component's default CSS variables for each variant.
+
+#### Close button
+
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.btn-close-white` class has been deprecated and replaced with `data-bs-theme="dark"` on the close button or the parent element. [See the docs for an example.]({{< docsref "/components/close-button#dark-mode" >}})
+
+### Forms
+
+- Floating form labels now have a `background-color` to fix support for `<textarea>` elements. Additional changes have been made to also support disabled states and more.
+
+- Fixed display of date and time inputs in WebKit based browsers.
+
+### Utilities
+
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> `.text-muted` will be be replaced by `.text-body-secondary` in v6.
+
+  With the addition of the expanded theme colors and variables, the `.text-muted` variables and utility have been deprecated with v5.3.0. Its default value has also has been reassigned to the new `--bs-secondary-color` CSS variable to better support color modes. It will be removed in v6.0.0.
+
+- Adds new `.overflow-x`, `.overflow-y`, and several `.object-fit-*` utilities. _The object-fit property is used to specify how an `<img>` or `<video>` should be resized to fit its container, giving us a responsive alternative to using `background-image` for a resizable fill/fit image._
+
+- Adds new `.fw-medium` utility.
+
+- Added new [`.z-*` utilities]({{< docsref "/utilities/z-index" >}}) for `z-index`.
+
+For a complete list of changes, [see the v5.3.0 project on GitHub](https://github.com/twbs/bootstrap/projects/).
+
 ## v5.2.0
 
 <hr class="mb-4">

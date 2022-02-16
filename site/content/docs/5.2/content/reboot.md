@@ -95,6 +95,27 @@ All heading elements—e.g., `<h1>`—and `<p>` are reset to have their `margin-
 | `<h6></h6>` | <span class="h6">h6. Bootstrap heading</span> |
 {{< /bs-table >}}
 
+## Links
+
+Links have a default `color` and underline applied. While links change on `:hover`, they don't change based on whether someone `:visited` the link. They also receive no special `:focus` styles.
+
+{{< example >}}
+<a href="#">This is an example link</a>
+{{< /example >}}
+
+As of v5.3.x, link `color` is set using `rgba()` and new `-rgb` CSS variables, allowing for easy customization of link color opacity. Change the link color opacity with the `--bs-link-opacity` CSS variable:
+
+{{< example >}}
+<a href="#" style="--bs-link-opacity: .5">This is an example link</a>
+{{< /example >}}
+
+
+Placeholder links—those without an `href`—are targeted with a more specific selector and have their `color` and `text-decoration` reset to their default values.
+
+{{< example >}}
+<a>This is a placeholder link</a>
+{{< /example >}}
+
 ## Horizontal rules
 
 The `<hr>` element has been simplified. Similar to browser defaults, `<hr>`s are styled via `border-top`, have a default `opacity: .25`, and automatically inherit their `border-color` via `color`, including when `color` is set via the parent. They can be modified with text, border, and opacity utilities.

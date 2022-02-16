@@ -102,12 +102,11 @@ The syntax is nearly the same as the default, positive margin utilities, but wit
 
 When using `display: grid` or `display: flex`, you can make use of `gap` utilities on the parent element. This can save on having to add margin utilities to individual children of a grid or flex container. Gap utilities are responsive by default, and are generated via our utilities API, based on the `$spacers` Sass map.
 
-{{< example >}}
-<div class="grid gap-3" >
-  <div class="p-2 bg-light border g-col-6">Grid item 1</div>
-  <div class="p-2 bg-light border g-col-6">Grid item 2</div>
-  <div class="p-2 bg-light border g-col-6">Grid item 3</div>
-  <div class="p-2 bg-light border g-col-6">Grid item 4</div>
+{{< example class="bd-example-cssgrid" >}}
+<div class="d-grid gap-3">
+  <div class="p-2">Grid item 1</div>
+  <div class="p-2">Grid item 2</div>
+  <div class="p-2">Grid item 3</div>
 </div>
 {{< /example >}}
 

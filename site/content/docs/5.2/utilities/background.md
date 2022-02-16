@@ -14,6 +14,7 @@ Similar to the contextual text color classes, set the background of an element t
 {{< colors.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
 <div class="p-3 mb-2 bg-{{ .name }}{{ if .contrast_color }} text-{{ .contrast_color }}{{ else }} text-white{{ end }}">.bg-{{ .name }}</div>
+<div class="p-3 mb-2 bg-{{ .name }}-subtle text-emphasis-{{ .name }}">.bg-{{ .name }}-subtle</div>
 {{- end -}}
 {{< /colors.inline >}}
 <div class="p-3 mb-2 bg-body text-dark">.bg-body</div>
