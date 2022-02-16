@@ -998,9 +998,13 @@ As part of Bootstrap's evolving CSS variables approach, dropdowns now use local 
 
 {{< scss-docs name="dropdown-css-vars" file="scss/_dropdown.scss" >}}
 
-Customization through CSS variables can be seen on the `.dropdown-menu-dark` class where we override specific values without adding duplicate CSS selectors.
+{{< callout info >}}
+Dropdown items include at least one variable that is not set on `.dropdown`. This allows you to provide a new value while Bootstrap defaults to a fallback value.
 
-{{< scss-docs name="dropdown-dark-css-vars" file="scss/_dropdown.scss" >}}
+- `--bs-dropdown-item-border-radius`
+{{< /callout >}}
+
+Customization through CSS variables can be seen on the `.dropdown-menu-dark` class where we override specific values without adding duplicate CSS selectors.
 
 ### Sass variables
 

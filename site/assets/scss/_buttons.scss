@@ -34,7 +34,7 @@
 
 .btn-bd-light {
   --bs-btn-color: var(--bs-gray-600);
-  --bs-btn-border-color: var(--bs-gray-400);
+  --bs-btn-border-color: var(--bs-border-color);
   --bs-btn-hover-color: var(--bd-violet);
   --bs-btn-hover-border-color: var(--bd-violet);
   --bs-btn-active-color: var(--bd-violet);
@@ -42,4 +42,8 @@
   --bs-btn-active-border-color: var(--bd-violet);
   --bs-btn-focus-border-color: var(--bd-violet);
   --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+}
+
+.btn-bd-lg {
+  padding: .8rem 2rem;
 }
