@@ -46,7 +46,7 @@ Customize the prefix via the `$prefix` Sass variable. By default, it's set to `b
 
 CSS variables offer similar flexibility to Sass's variables, but without the need for compilation before being served to the browser. For example, here we're resetting our page's font and link styles with CSS variables.
 
-```css
+```scss
 body {
   font: 1rem/1.5 var(--bs-font-sans-serif);
 }

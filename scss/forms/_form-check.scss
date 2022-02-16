@@ -173,3 +173,12 @@
     }
   }
 }
+
+@if $enable-dark-mode {
+  [data-bs-theme="dark"] {
+    // Use `:not()` to keep from having to override subsequent embedded SVGs
+    .form-switch .form-check-input:not(:checked):not(:focus) {
+      background-image: escape-svg($form-switch-bg-image-dark);
+    }
+  }
+}

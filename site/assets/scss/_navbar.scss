@@ -2,7 +2,13 @@
   padding: .75rem 0;
   background-color: transparent;
   background-image: linear-gradient(to bottom, rgba(var(--bd-violet-rgb), 1), rgba(var(--bd-violet-rgb), .95));
-  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15), inset 0 -1px 0 rgba(0, 0, 0, .15);
+  box-shadow: 0 .5rem 1rem rgba($black, .15), inset 0 -1px 0 rgba($white, .15);
+
+  [data-bs-theme="dark"] & {
+    backdrop-filter: blur(.25rem);
+    background-image: linear-gradient(to bottom, rgba(var(--bd-violet-rgb), 1), rgba(var(--bd-violet-rgb), .75));
+    box-shadow: 0 .5rem 1rem rgba($black, .15), inset 0 -1px 0 rgba($white, .15);
+  }
 
   .bd-navbar-toggle {
     @include media-breakpoint-down(lg) {
@@ -75,17 +81,69 @@
   }
 
   .dropdown-menu {
-    --#{$prefix}dropdown-min-width: 12rem;
-    --#{$prefix}dropdown-link-hover-bg: rgba(var(--bd-violet-rgb), .1);
-    @include rfs(.875rem, --#{$prefix}dropdown-font-size);
+    --bs-dropdown-min-width: 12rem;
+    --bs-dropdown-padding-x: .25rem;
+    --bs-dropdown-padding-y: .25rem;
+    --bs-dropdown-link-hover-bg: rgba(var(--bd-violet-rgb), .1);
+    --bs-dropdown-link-active-bg: rgba(var(--bd-violet-rgb), 1);
+    @include rfs(.875rem, --bs-dropdown-font-size);
+    @include font-size(.875rem);
+    @include border-radius(.5rem);
     box-shadow: $dropdown-box-shadow;
-  }
 
-  .dropdown-item.current {
-    font-weight: 600;
-    background-image: escape-svg($dropdown-active-icon);
-    background-repeat: no-repeat;
-    background-position: right $dropdown-item-padding-x top .6rem;
-    background-size: .75rem .75rem;
+    li + li {
+      margin-top: .125rem;
+    }
+
+    .dropdown-item {
+      @include border-radius(.25rem);
+
+      &:active {
+        .bi {
+          color: inherit !important; // stylelint-disable-line declaration-no-important
+        }
+      }
+    }
+
+    .active {
+      font-weight: 600;
+
+      .bi {
+        display: block !important; // stylelint-disable-line declaration-no-important
+      }
+    }
   }
+}
+
+.bd-theme-toggle {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.bd-theme-toggle-checkbox {
+  position: absolute;
+  z-index: -1;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  white-space: nowrap;
+
+  ~ .bd-theme-toggle-light { display: none; }
+  ~ .bd-theme-toggle-dark { display: block; }
+
+  &:checked {
+    ~ .bd-theme-toggle-light { display: block; }
+    ~ .bd-theme-toggle-dark { display: none; }
+  }
+}
+
+.bd-theme-toggle-light {
+  color: var(--bs-warning);
+}
+
+.bd-theme-toggle-dark {
+  color: var(--bs-navbar-brand-color);
 }
