@@ -4,7 +4,7 @@
 @mixin pagination-size($padding-y, $padding-x, $font-size, $border-radius) {
   --#{$variable-prefix}pagination-padding-x: #{$padding-x};
   --#{$variable-prefix}pagination-padding-y: #{$padding-y};
-  --#{$variable-prefix}pagination-font-size: #{$font-size};
-  --#{$variable-prefix}pagination-border-radius: #{$border-radius};
+  @include rfs($font-size, --#{$variable-prefix}pagination-font-size);
+  --#{$variable-prefix}pagination-border-radius: #{$border-radius}; // stylelint-disable-line custom-property-empty-line-before
 }
 // scss-docs-end pagination-mixin
