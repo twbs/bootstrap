@@ -29,7 +29,7 @@
   position: relative;
   display: block;
   padding: var(--#{$variable-prefix}pagination-padding-y) var(--#{$variable-prefix}pagination-padding-x);
-  font-size: var(--#{$variable-prefix}pagination-font-size, inherit);
+  font-size: var(--#{$variable-prefix}pagination-font-size);
   color: var(--#{$variable-prefix}pagination-color);
   text-decoration: if($link-decoration == none, null, none);
   background-color: var(--#{$variable-prefix}pagination-bg);
