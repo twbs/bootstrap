@@ -106,3 +106,25 @@ module: {
 }
 // ...
 ```
+
+### Extracting embedded SVGs
+
+If you want to extract Bootstrap's embedded SVGs into separate files, add an `asset/resource` rule in `webpack.config.js`:
+
+```js
+// ...
+module: {
+  rules: [
+    {
+      mimetype: 'image/svg+xml',
+      scheme: 'data',
+      type: 'asset/resource',
+      generator: {
+        filename: 'icons/[hash].svg'
+      }
+    }
+  ]
+}
+```
+
+This rule will place embedded SVGs into files under the `icons/` directory of the build directory, with the filename based on the hash of the file contents.  This is compatible with a strict <abbr title="Content Security Policy">CSP</abbr> that does not allow inline `data:` URLs in stylesheets.
