@@ -258,6 +258,11 @@ Here's an example of building a custom `.btn-*` modifier class like we do for th
 
 {{< scss-docs name="btn-css-vars-example" file="site/assets/scss/_buttons.scss" >}}
 
+### Sass silent classes
+
+If you need to `@extend` from a button styling, you may want to use silent classes to avoid bloated selectors.
+All `.btn` classes are available as silent class as well (e.g. `%btn`, `%btn-primary` or `%btn-lg`)!
+
 ### Sass variables
 
 {{< scss-docs name="btn-variables" file="scss/_variables.scss" >}}
