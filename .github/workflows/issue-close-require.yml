@@ -1,4 +1,4 @@
-name: Issue Close Require
+name: Close Issue Awaiting Reply
 
 on:
   schedule:
