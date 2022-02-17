@@ -69,4 +69,4 @@ If you use the Webpack bundler with `css-loader`, you can extract Bootstrap's in
   },
 ```
 
-This rule will place inline SVGs into files under the `icons/` directory of the build directory, with the filename based on the hash of the file contents.  This should allow you to use a strict CSP that does not allow inline `data:` URLs in stylesheets.
+This rule will place inline SVGs into files under the `icons/` directory of the build directory, with the filename based on the hash of the file contents. This should allow you to use a strict CSP that does not allow inline `data:` URLs in stylesheets.
