@@ -62,7 +62,7 @@
   }
 
   .nav-link.active,
-  .nav-item.show .nav-link {
+  .nav-link.show {
     color: $nav-tabs-link-active-color;
     background-color: $nav-tabs-link-active-bg;
     border-color: $nav-tabs-link-active-border-color;
@@ -89,7 +89,7 @@
   }
 
   .nav-link.active,
-  .show > .nav-link {
+  .nav-link.show {
     color: $nav-pills-link-active-color;
     @include gradient-bg($nav-pills-link-active-bg);
   }
