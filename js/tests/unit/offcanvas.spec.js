@@ -99,7 +99,7 @@ describe('Offcanvas', () => {
 
       spyOn(offCanvas, 'hide')
 
-      document.dispatchEvent(keydownTab)
+      offCanvasEl.dispatchEvent(keydownTab)
 
       expect(offCanvas.hide).not.toHaveBeenCalled()
     })
