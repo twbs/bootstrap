@@ -49,7 +49,7 @@ Previously, our scripts dynamically added the `.hide` class to completely hide a
 
 Click the button below to show a toast (positioned with our utilities in the lower right corner) that has been hidden by default.
 
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       {{< placeholder width="20" height="20" background="#007aff" class="rounded me-2" text="false" title="false" >}}
@@ -70,7 +70,7 @@ Click the button below to show a toast (positioned with our utilities in the low
 ```html
 <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
 
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <img src="..." class="rounded me-2" alt="...">
@@ -122,7 +122,7 @@ Toasts are slightly translucent to blend in with what's below them.
 You can stack toasts by wrapping them in a toast container, which will vertically add some spacing.
 
 {{< example class="bg-light" >}}
-<div class="toast-container">
+<div class="toast-container position-static">
   <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       {{< placeholder width="20" height="20" background="#007aff" class="rounded me-2" text="false" title="false" >}}
