@@ -1390,6 +1390,7 @@ $modal-footer-border-width:         $modal-header-border-width !default;
 $modal-header-padding-y:            $modal-inner-padding !default;
 $modal-header-padding-x:            $modal-inner-padding !default;
 $modal-header-padding:              $modal-header-padding-y $modal-header-padding-x !default; // Keep this for backwards compatibility
+$modal-footer-bg:                   null !default;
 
 $modal-sm:                          300px !default;
 $modal-md:                          500px !default;
