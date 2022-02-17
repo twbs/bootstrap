@@ -1,11 +1,11 @@
 @each $color, $value in $theme-colors {
   .link-#{$color} {
-    color: $value;
+    color: $value !important; // stylelint-disable-line declaration-no-important
 
     @if $link-shade-percentage != 0 {
       &:hover,
       &:focus {
-        color: if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage));
+        color: if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage)) !important; // stylelint-disable-line declaration-no-important
       }
     }
   }

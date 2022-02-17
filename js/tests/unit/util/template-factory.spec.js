@@ -99,7 +99,7 @@ describe('TemplateFactory', () => {
 
       it('should resolve class if function is given', () => {
         const factory = new TemplateFactory({
-          extraClass: arg => {
+          extraClass(arg) {
             expect(arg).toEqual(factory)
             return 'testClass'
           }
