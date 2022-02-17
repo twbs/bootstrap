@@ -4,7 +4,7 @@
 // Base styles
 //
 
-.btn {
+.btn, %btn {
   // scss-docs-start btn-css-vars
   --#{$variable-prefix}btn-padding-x: #{$btn-padding-x};
   --#{$variable-prefix}btn-padding-y: #{$btn-padding-y};
@@ -104,13 +104,13 @@
 
 // scss-docs-start btn-variant-loops
 @each $color, $value in $theme-colors {
-  .btn-#{$color} {
+  .btn-#{$color}, %btn-#{$color} {
     @include button-variant($value, $value);
   }
 }
 
 @each $color, $value in $theme-colors {
-  .btn-outline-#{$color} {
+  .btn-outline-#{$color}, %btn-outline-#{$color} {
     @include button-outline-variant($value);
   }
 }
@@ -122,7 +122,7 @@
 //
 
 // Make a button look and behave like a link
-.btn-link {
+.btn-link, %btn-link {
   --#{$variable-prefix}btn-font-weight: #{$font-weight-normal};
   --#{$variable-prefix}btn-color: #{$btn-link-color};
   --#{$variable-prefix}btn-bg: transparent;
@@ -149,10 +149,10 @@
 // Button Sizes
 //
 
-.btn-lg {
+.btn-lg, %btn-lg {
   @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
 }
 
-.btn-sm {
+.btn-sm, %btn-sm {
   @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
 }
