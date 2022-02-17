@@ -13,6 +13,6 @@ jobs:
         with:
           actions: 'close-issues'
           labels: 'awaiting-reply'
-          inactive-day: 7
+          inactive-day: 14
           body: |
-            Since the issue was labeled with `awaiting-reply`, but no response in 7 days. This issue will be closed. If you have any questions, you can comment and reply.
+            Since the issue was labeled with `awaiting-reply`, but no response in 14 days. This issue will be closed. If you have any questions, you can comment and reply.
