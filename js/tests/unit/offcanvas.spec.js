@@ -114,21 +114,16 @@ describe('Offcanvas', () => {
         keyDownEsc.key = 'Escape'
 
         spyOn(offCanvas, 'hide')
-
-        const expectEnd = () => {
-          setTimeout(() => {
-            expect(offCanvas.hide).not.toHaveBeenCalled()
-            resolve()
-          }, 10)
-        }
+        const hidePreventedSpy = jasmine.createSpy('hidePrevented')
+        offCanvasEl.addEventListener('hidePrevented.bs.offcanvas', hidePreventedSpy)
 
         offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
           expect(offCanvas._config.keyboard).toBeFalse()
           offCanvasEl.dispatchEvent(keyDownEsc)
-        })
 
-        offCanvasEl.addEventListener('hidePrevented.bs.offcanvas', () => {
-          expectEnd()
+          expect(hidePreventedSpy).toHaveBeenCalled()
+          expect(offCanvas.hide).not.toHaveBeenCalled()
+          resolve()
         })
 
         offCanvas.show()
@@ -145,26 +140,16 @@ describe('Offcanvas', () => {
         const clickEvent = new Event('mousedown', { bubbles: true, cancelable: true })
         spyOn(offCanvas._backdrop._config, 'clickCallback').and.callThrough()
         spyOn(offCanvas._backdrop, 'hide').and.callThrough()
-
-        const expectEnd = () => {
-          setTimeout(() => {
-            expect(offCanvas._backdrop.hide).not.toHaveBeenCalled()
-            resolve()
-          }, 10)
-        }
+        const hidePreventedSpy = jasmine.createSpy('hidePrevented')
+        offCanvasEl.addEventListener('hidePrevented.bs.offcanvas', hidePreventedSpy)
 
         offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
           expect(offCanvas._backdrop._config.clickCallback).toEqual(jasmine.any(Function))
 
           offCanvas._backdrop._getElement().dispatchEvent(clickEvent)
-        })
-
-        offCanvasEl.addEventListener('hide.bs.offcanvas', () => {
-          throw new Error('should not fire hide event')
-        })
-
-        offCanvasEl.addEventListener('hidePrevented.bs.offcanvas', () => {
-          expectEnd()
+          expect(hidePreventedSpy).toHaveBeenCalled()
+          expect(offCanvas._backdrop.hide).not.toHaveBeenCalled()
+          resolve()
         })
 
         offCanvas.show()
