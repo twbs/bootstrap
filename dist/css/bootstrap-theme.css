@@ -1746,7 +1746,7 @@ body {
 .dynamicTable td input,
 .dynamicTable td select {
   color: #f2f2f2;
-  background-color: #1b1d30;
+  background-color: #121421;
   border-bottom: 1px solid rgba(0, 177, 255, .2);
 }
 .dynamicTable td input:focus,
@@ -1802,7 +1802,7 @@ body {
 .select2-container--bootstrap .select2-search--dropdown .select2-search__field {
   font-size: 14px;
   color: #f2f2f2;
-  background-color: #1b1d30;
+  background-color: #121421;
   background-color: #27283c;
   border: 1px solid transparent;
   border-radius: 0;
@@ -1833,7 +1833,7 @@ body {
 .select2-container--bootstrap .select2-selection--multiple {
   font-size: 14px;
   color: #f2f2f2;
-  background-color: #1b1d30;
+  background-color: #121421;
   border: 1px solid transparent;
   border-radius: 0;
   -webkit-box-shadow: none;
@@ -2105,6 +2105,18 @@ h1 {
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
   border: 0 none transparent;
+}
+.table > thead > tr > th {
+  border-bottom: 0;
+}
+.table > thead > tr:last-child > th {
+  border-bottom: 2px solid #38384b;
+}
+.table > thead > tr > th {
+  padding: 4px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 0;
 }
 .btn-toggle {
   position: relative;
