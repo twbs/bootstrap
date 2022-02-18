@@ -28,7 +28,7 @@
   --#{$variable-prefix}dropdown-inner-border: #{$dropdown-inner-border-radius};
   --#{$variable-prefix}dropdown-divider-bg: #{$dropdown-divider-bg};
   --#{$variable-prefix}dropdown-divider-margin-y: #{$dropdown-divider-margin-y};
-  --#{$variable-prefix}dropdown-shadow: #{$dropdown-box-shadow};
+  --#{$variable-prefix}dropdown-box-shadow: #{$dropdown-box-shadow};
   --#{$variable-prefix}dropdown-link-color: #{$dropdown-link-color};
   --#{$variable-prefix}dropdown-link-hover-color: #{$dropdown-link-hover-color};
   --#{$variable-prefix}dropdown-link-hover-bg: #{$dropdown-link-hover-bg};
@@ -54,7 +54,7 @@
   background-clip: padding-box;
   border: var(--#{$variable-prefix}dropdown-border-width) solid var(--#{$variable-prefix}dropdown-border-color);
   @include border-radius(var(--#{$variable-prefix}dropdown-border-radius));
-  @include box-shadow(var(--#{$variable-prefix}dropdown-shadow));
+  @include box-shadow(var(--#{$variable-prefix}dropdown-box-shadow));
 
   &[data-bs-popper] {
     top: 100%;
@@ -229,7 +229,7 @@
   --#{$variable-prefix}dropdown-color: #{$dropdown-dark-color};
   --#{$variable-prefix}dropdown-bg: #{$dropdown-dark-bg};
   --#{$variable-prefix}dropdown-border-color: #{$dropdown-dark-border-color};
-  --#{$variable-prefix}dropdown-shadow: #{$dropdown-dark-box-shadow};
+  --#{$variable-prefix}dropdown-box-shadow: #{$dropdown-dark-box-shadow};
   --#{$variable-prefix}dropdown-link-color: #{$dropdown-dark-link-color};
   --#{$variable-prefix}dropdown-link-hover-color: #{$dropdown-dark-link-hover-color};
   --#{$variable-prefix}dropdown-divider-bg: #{$dropdown-dark-divider-bg};

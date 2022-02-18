@@ -65,6 +65,6 @@
 @mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
   --#{$variable-prefix}btn-padding: #{$padding-y} #{$padding-x};
   @include rfs($font-size, --#{$variable-prefix}btn-font-size);
-  --#{$variable-prefix}btn-radius: #{$border-radius};
+  --#{$variable-prefix}btn-border-radius: #{$border-radius};
 }
 // scss-docs-end btn-size-mixin
