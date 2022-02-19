@@ -42,12 +42,6 @@ describe('Tooltip', () => {
     })
   })
 
-  describe('Event', () => {
-    it('should return plugin events', () => {
-      expect(Tooltip.Event).toEqual(jasmine.any(Object))
-    })
-  })
-
   describe('EVENT_KEY', () => {
     it('should return plugin event key', () => {
       expect(Tooltip.EVENT_KEY).toEqual('.bs.tooltip')
@@ -127,7 +121,7 @@ describe('Tooltip', () => {
         const tooltip = new Tooltip(tooltipEl, {
           offset: getOffset,
           popperConfig: {
-            onFirstUpdate: state => {
+            onFirstUpdate(state) {
               expect(getOffset).toHaveBeenCalledWith({
                 popper: state.rects.popper,
                 reference: state.rects.reference,

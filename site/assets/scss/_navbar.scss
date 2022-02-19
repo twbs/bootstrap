@@ -3,7 +3,7 @@
   --bs-gutter-y: $bd-gutter-x;
 
   padding: .75rem 0;
-  background-color: $bd-purple-bright;
+  background-color: $bd-violet;
 
   .navbar-toggler {
     padding: 0;
@@ -34,7 +34,7 @@
   }
 
   .offcanvas {
-    background-color: $bd-purple-bright;
+    background-color: $bd-violet;
     border-left: 0;
 
     @include media-breakpoint-down(md) {
