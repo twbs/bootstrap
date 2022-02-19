@@ -373,12 +373,12 @@ describe('EventHandler', () => {
     })
 
     it('should remove a listener registered by .one', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<div></div>'
 
         const div = fixtureEl.querySelector('div')
         const handler = () => {
-          throw new Error('called')
+          reject(new Error('called'))
         }
 
         EventHandler.one(div, 'foobar', handler)

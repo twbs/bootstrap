@@ -16,39 +16,12 @@
   list-style-type: none;
   counter-reset: section;
 
-  > li::before {
+  > .list-group-item::before {
     // Increments only this instance of the section counter
     content: counters(section, ".") ". ";
     counter-increment: section;
   }
 }
-
-
-// Interactive list items
-//
-// Use anchor or button elements instead of `li`s or `div`s to create interactive
-// list items. Includes an extra `.active` modifier class for selected items.
-
-.list-group-item-action {
-  width: 100%; // For `<button>`s (anchors become 100% by default though)
-  color: $list-group-action-color;
-  text-align: inherit; // For `<button>`s (anchors inherit)
-
-  // Hover state
-  &:hover,
-  &:focus {
-    z-index: 1; // Place hover/focus items above their siblings for proper border styling
-    color: $list-group-action-hover-color;
-    text-decoration: none;
-    background-color: $list-group-hover-bg;
-  }
-
-  &:active {
-    color: $list-group-action-active-color;
-    background-color: $list-group-action-active-bg;
-  }
-}
-
 
 // Individual list items
 //
@@ -96,6 +69,30 @@
   }
 }
 
+// Interactive list items
+//
+// Use anchor or button elements instead of `li`s or `div`s to create interactive
+// list items. Includes an extra `.active` modifier class for selected items.
+
+.list-group-item-action {
+  width: 100%; // For `<button>`s (anchors become 100% by default though)
+  color: $list-group-action-color;
+  text-align: inherit; // For `<button>`s (anchors inherit)
+
+  // Hover state
+  &:hover,
+  &:focus {
+    z-index: 1; // Place hover/focus items above their siblings for proper border styling
+    color: $list-group-action-hover-color;
+    text-decoration: none;
+    background-color: $list-group-hover-bg;
+  }
+
+  &:active {
+    color: $list-group-action-active-color;
+    background-color: $list-group-action-active-bg;
+  }
+}
 
 // Horizontal
 //

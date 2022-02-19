@@ -329,7 +329,7 @@ describe('Offcanvas', () => {
     })
 
     it('should not fire shown when show is prevented', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
         const offCanvasEl = fixtureEl.querySelector('div')
@@ -349,7 +349,7 @@ describe('Offcanvas', () => {
         })
 
         offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
-          throw new Error('should not fire shown event')
+          reject(new Error('should not fire shown event'))
         })
 
         offCanvas.show()
@@ -455,7 +455,7 @@ describe('Offcanvas', () => {
     })
 
     it('should not fire hidden when hide is prevented', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
         const offCanvasEl = fixtureEl.querySelector('div')
@@ -477,7 +477,7 @@ describe('Offcanvas', () => {
         })
 
         offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
-          throw new Error('should not fire hidden event')
+          reject(new Error('should not fire hidden event'))
         })
 
         offCanvas.hide()

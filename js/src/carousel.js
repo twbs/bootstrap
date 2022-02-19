@@ -279,9 +279,8 @@ class Carousel extends BaseComponent {
     return getNextActiveElement(this._items, activeElement, isNext, this._config.wrap)
   }
 
-  _triggerSlideEvent(relatedTarget, eventDirectionName) {
+  _triggerSlideEvent(relatedTarget, fromIndex, eventDirectionName) {
     const targetIndex = this._getItemIndex(relatedTarget)
-    const fromIndex = this._getItemIndex(this._getActive())
 
     return EventHandler.trigger(this._element, EVENT_SLIDE, {
       relatedTarget,
@@ -291,7 +290,7 @@ class Carousel extends BaseComponent {
     })
   }
 
-  _setActiveIndicatorElement(element) {
+  _setActiveIndicatorElement(index) {
     if (!this._indicatorsElement) {
       return
     }
@@ -301,7 +300,7 @@ class Carousel extends BaseComponent {
     activeIndicator.classList.remove(CLASS_NAME_ACTIVE)
     activeIndicator.removeAttribute('aria-current')
 
-    const newActiveIndicator = SelectorEngine.findOne(`[data-bs-slide-to="${this._getItemIndex(element)}"]`, this._indicatorsElement)
+    const newActiveIndicator = SelectorEngine.findOne(`[data-bs-slide-to="${index}"]`, this._indicatorsElement)
 
     if (newActiveIndicator) {
       newActiveIndicator.classList.add(CLASS_NAME_ACTIVE)
@@ -344,7 +343,7 @@ class Carousel extends BaseComponent {
       return
     }
 
-    const slideEvent = this._triggerSlideEvent(nextElement, eventDirectionName)
+    const slideEvent = this._triggerSlideEvent(nextElement, activeElementIndex, eventDirectionName)
     if (slideEvent.defaultPrevented) {
       return
     }
@@ -360,10 +359,24 @@ class Carousel extends BaseComponent {
       this.pause()
     }
 
-    this._setActiveIndicatorElement(nextElement)
+    this._setActiveIndicatorElement(nextElementIndex)
     this._activeElement = nextElement
 
-    const triggerSlidEvent = () => {
+    nextElement.classList.add(orderClassName)
+
+    reflow(nextElement)
+
+    activeElement.classList.add(directionalClassName)
+    nextElement.classList.add(directionalClassName)
+
+    const completeCallBack = () => {
+      nextElement.classList.remove(directionalClassName, orderClassName)
+      nextElement.classList.add(CLASS_NAME_ACTIVE)
+
+      activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
+
+      this._isSliding = false
+
       EventHandler.trigger(this._element, EVENT_SLID, {
         relatedTarget: nextElement,
         direction: eventDirectionName,
@@ -372,37 +385,15 @@ class Carousel extends BaseComponent {
       })
     }
 
-    if (this._element.classList.contains(CLASS_NAME_SLIDE)) {
-      nextElement.classList.add(orderClassName)
-
-      reflow(nextElement)
-
-      activeElement.classList.add(directionalClassName)
-      nextElement.classList.add(directionalClassName)
-
-      const completeCallBack = () => {
-        nextElement.classList.remove(directionalClassName, orderClassName)
-        nextElement.classList.add(CLASS_NAME_ACTIVE)
-
-        activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
-
-        this._isSliding = false
-
-        setTimeout(triggerSlidEvent, 0)
-      }
-
-      this._queueCallback(completeCallBack, activeElement, true)
-    } else {
-      activeElement.classList.remove(CLASS_NAME_ACTIVE)
-      nextElement.classList.add(CLASS_NAME_ACTIVE)
-
-      this._isSliding = false
-      triggerSlidEvent()
-    }
+    this._queueCallback(completeCallBack, activeElement, this._isAnimated())
 
     if (isCycling) {
       this.cycle()
     }
+  }
+
+  _isAnimated() {
+    return this._element.classList.contains(CLASS_NAME_SLIDE)
   }
 
   _getActive() {
@@ -482,7 +473,6 @@ class Carousel extends BaseComponent {
     }
 
     const config = {
-      ...Manipulator.getDataAttributes(target),
       ...Manipulator.getDataAttributes(this)
     }
     const slideIndex = this.getAttribute('data-bs-slide-to')
@@ -511,7 +501,7 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
 
   for (const carousel of carousels) {
-    Carousel.carouselInterface(carousel, Carousel.getInstance(carousel))
+    Carousel.getOrCreateInstance(carousel)
   }
 })
 
