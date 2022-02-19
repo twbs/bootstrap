@@ -441,28 +441,28 @@ describe('ScrollSpy', () => {
           targetSelector: '#div-100-5',
           contentEl,
           scrollSpy,
-          cb: () => {
+          cb() {
             scrollTo(contentEl, 0)
             testElementIsActiveAfterScroll({
               elementSelector: '#li-100-2',
               targetSelector: '#div-100-2',
               contentEl,
               scrollSpy,
-              cb: () => {
+              cb() {
                 scrollTo(contentEl, 0)
                 testElementIsActiveAfterScroll({
                   elementSelector: '#li-100-3',
                   targetSelector: '#div-100-3',
                   contentEl,
                   scrollSpy,
-                  cb: () => {
+                  cb() {
                     scrollTo(contentEl, 0)
                     testElementIsActiveAfterScroll({
                       elementSelector: '#li-100-2',
                       targetSelector: '#div-100-2',
                       contentEl,
                       scrollSpy,
-                      cb: () => {
+                      cb() {
                         scrollTo(contentEl, 0)
                         testElementIsActiveAfterScroll({
                           elementSelector: '#li-100-1',
