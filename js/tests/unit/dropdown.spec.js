@@ -513,7 +513,7 @@ describe('Dropdown', () => {
     })
 
     it('should not toggle a dropdown if the element is disabled', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<div class="dropdown">',
           '  <button disabled class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -527,7 +527,7 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown)
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
-          throw new Error('should not throw shown.bs.dropdown event')
+          reject(new Error('should not throw shown.bs.dropdown event'))
         })
 
         dropdown.toggle()
@@ -540,7 +540,7 @@ describe('Dropdown', () => {
     })
 
     it('should not toggle a dropdown if the element contains .disabled', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<div class="dropdown">',
           '  <button class="btn dropdown-toggle disabled" data-bs-toggle="dropdown">Dropdown</button>',
@@ -554,7 +554,7 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown)
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
-          throw new Error('should not throw shown.bs.dropdown event')
+          reject(new Error('should not throw shown.bs.dropdown event'))
         })
 
         dropdown.toggle()
@@ -567,7 +567,7 @@ describe('Dropdown', () => {
     })
 
     it('should not toggle a dropdown if the menu is shown', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<div class="dropdown">',
           '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -581,7 +581,7 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown)
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
-          throw new Error('should not throw shown.bs.dropdown event')
+          reject(new Error('should not throw shown.bs.dropdown event'))
         })
 
         dropdown.toggle()
@@ -594,7 +594,7 @@ describe('Dropdown', () => {
     })
 
     it('should not toggle a dropdown if show event is prevented', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<div class="dropdown">',
           '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -612,7 +612,7 @@ describe('Dropdown', () => {
         })
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
-          throw new Error('should not throw shown.bs.dropdown event')
+          reject(new Error('should not throw shown.bs.dropdown event'))
         })
 
         dropdown.toggle()
@@ -650,7 +650,7 @@ describe('Dropdown', () => {
     })
 
     it('should not show a dropdown if the element is disabled', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<div class="dropdown">',
           '  <button disabled class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -664,7 +664,7 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown)
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
-          throw new Error('should not throw shown.bs.dropdown event')
+          reject(new Error('should not throw shown.bs.dropdown event'))
         })
 
         dropdown.show()
@@ -677,7 +677,7 @@ describe('Dropdown', () => {
     })
 
     it('should not show a dropdown if the element contains .disabled', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<div class="dropdown">',
           '  <button class="btn dropdown-toggle disabled" data-bs-toggle="dropdown">Dropdown</button>',
@@ -691,7 +691,7 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown)
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
-          throw new Error('should not throw shown.bs.dropdown event')
+          reject(new Error('should not throw shown.bs.dropdown event'))
         })
 
         dropdown.show()
@@ -704,7 +704,7 @@ describe('Dropdown', () => {
     })
 
     it('should not show a dropdown if the menu is shown', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<div class="dropdown">',
           '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -718,7 +718,7 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown)
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
-          throw new Error('should not throw shown.bs.dropdown event')
+          reject(new Error('should not throw shown.bs.dropdown event'))
         })
 
         dropdown.show()
@@ -731,7 +731,7 @@ describe('Dropdown', () => {
     })
 
     it('should not show a dropdown if show event is prevented', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<div class="dropdown">',
           '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -749,7 +749,7 @@ describe('Dropdown', () => {
         })
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
-          throw new Error('should not throw shown.bs.dropdown event')
+          reject(new Error('should not throw shown.bs.dropdown event'))
         })
 
         dropdown.show()
@@ -817,7 +817,7 @@ describe('Dropdown', () => {
     })
 
     it('should not hide a dropdown if the element is disabled', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<div class="dropdown">',
           '  <button disabled class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -832,7 +832,7 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown)
 
         btnDropdown.addEventListener('hidden.bs.dropdown', () => {
-          throw new Error('should not throw hidden.bs.dropdown event')
+          reject(new Error('should not throw hidden.bs.dropdown event'))
         })
 
         dropdown.hide()
@@ -845,7 +845,7 @@ describe('Dropdown', () => {
     })
 
     it('should not hide a dropdown if the element contains .disabled', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<div class="dropdown">',
           '  <button class="btn dropdown-toggle disabled" data-bs-toggle="dropdown">Dropdown</button>',
@@ -860,7 +860,7 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown)
 
         btnDropdown.addEventListener('hidden.bs.dropdown', () => {
-          throw new Error('should not throw hidden.bs.dropdown event')
+          reject(new Error('should not throw hidden.bs.dropdown event'))
         })
 
         dropdown.hide()
@@ -873,7 +873,7 @@ describe('Dropdown', () => {
     })
 
     it('should not hide a dropdown if the menu is not shown', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<div class="dropdown">',
           '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -887,7 +887,7 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown)
 
         btnDropdown.addEventListener('hidden.bs.dropdown', () => {
-          throw new Error('should not throw hidden.bs.dropdown event')
+          reject(new Error('should not throw hidden.bs.dropdown event'))
         })
 
         dropdown.hide()
@@ -900,7 +900,7 @@ describe('Dropdown', () => {
     })
 
     it('should not hide a dropdown if hide event is prevented', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<div class="dropdown">',
           '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -919,7 +919,7 @@ describe('Dropdown', () => {
         })
 
         btnDropdown.addEventListener('hidden.bs.dropdown', () => {
-          throw new Error('should not throw hidden.bs.dropdown event')
+          reject(new Error('should not throw hidden.bs.dropdown event'))
         })
 
         dropdown.hide()

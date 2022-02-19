@@ -42,12 +42,6 @@ describe('Tooltip', () => {
     })
   })
 
-  describe('Event', () => {
-    it('should return plugin events', () => {
-      expect(Tooltip.Event).toEqual(jasmine.any(Object))
-    })
-  })
-
   describe('EVENT_KEY', () => {
     it('should return plugin event key', () => {
       expect(Tooltip.EVENT_KEY).toEqual('.bs.tooltip')
@@ -217,7 +211,7 @@ describe('Tooltip', () => {
 
   describe('disable', () => {
     it('should disable tooltip', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
 
         const tooltipEl = fixtureEl.querySelector('a')
@@ -226,7 +220,7 @@ describe('Tooltip', () => {
         tooltip.disable()
 
         tooltipEl.addEventListener('show.bs.tooltip', () => {
-          throw new Error('should not show a disabled tooltip')
+          reject(new Error('should not show a disabled tooltip'))
         })
 
         tooltip.show()
@@ -256,7 +250,7 @@ describe('Tooltip', () => {
 
   describe('toggle', () => {
     it('should do nothing if disabled', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
 
         const tooltipEl = fixtureEl.querySelector('a')
@@ -265,7 +259,7 @@ describe('Tooltip', () => {
         tooltip.disable()
 
         tooltipEl.addEventListener('show.bs.tooltip', () => {
-          throw new Error('should not show a disabled tooltip')
+          reject(new Error('should not show a disabled tooltip'))
         })
 
         tooltip.toggle()
@@ -658,7 +652,7 @@ describe('Tooltip', () => {
     })
 
     it('should not show a tooltip if show.bs.tooltip is prevented', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
 
         const tooltipEl = fixtureEl.querySelector('a')
@@ -677,7 +671,7 @@ describe('Tooltip', () => {
         })
 
         tooltipEl.addEventListener('shown.bs.tooltip', () => {
-          throw new Error('Tooltip should not be shown')
+          reject(new Error('Tooltip should not be shown'))
         })
 
         tooltip.show()
@@ -1007,7 +1001,7 @@ describe('Tooltip', () => {
     })
 
     it('should not hide a tooltip if hide event is prevented', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
 
         const assertDone = () => {
@@ -1028,7 +1022,7 @@ describe('Tooltip', () => {
           assertDone()
         })
         tooltipEl.addEventListener('hidden.bs.tooltip', () => {
-          throw new Error('should not trigger hidden event')
+          reject(new Error('should not trigger hidden event'))
         })
 
         tooltip.show()

@@ -43,12 +43,6 @@ describe('Popover', () => {
     })
   })
 
-  describe('Event', () => {
-    it('should return plugin events', () => {
-      expect(Popover.Event).toEqual(jasmine.any(Object))
-    })
-  })
-
   describe('EVENT_KEY', () => {
     it('should return plugin event key', () => {
       expect(Popover.EVENT_KEY).toEqual('.bs.popover')
@@ -174,7 +168,7 @@ describe('Popover', () => {
 
       popover.show()
 
-      expect(EventHandler.trigger).not.toHaveBeenCalledWith(popoverEl, Popover.Event.SHOW)
+      expect(EventHandler.trigger).not.toHaveBeenCalledWith(popoverEl, Popover.eventName('show'))
       expect(document.querySelector('.popover')).toBeNull()
     })
 

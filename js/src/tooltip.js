@@ -6,14 +6,7 @@
  */
 
 import * as Popper from '@popperjs/core'
-import {
-  defineJQueryPlugin,
-  findShadowRoot,
-  getElement,
-  getUID,
-  isRTL,
-  noop
-} from './util/index'
+import { defineJQueryPlugin, findShadowRoot, getElement, getUID, isRTL, noop } from './util/index'
 import { DefaultAllowlist } from './util/sanitizer'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
@@ -25,8 +18,6 @@ import TemplateFactory from './util/template-factory'
  */
 
 const NAME = 'tooltip'
-const DATA_KEY = 'bs.tooltip'
-const EVENT_KEY = `.${DATA_KEY}`
 const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn'])
 
 const CLASS_NAME_FADE = 'fade'
@@ -42,6 +33,17 @@ const TRIGGER_HOVER = 'hover'
 const TRIGGER_FOCUS = 'focus'
 const TRIGGER_CLICK = 'click'
 const TRIGGER_MANUAL = 'manual'
+
+const EVENT_HIDE = 'hide'
+const EVENT_HIDDEN = 'hidden'
+const EVENT_SHOW = 'show'
+const EVENT_SHOWN = 'shown'
+const EVENT_INSERTED = 'inserted'
+const EVENT_CLICK = 'click'
+const EVENT_FOCUSIN = 'focusin'
+const EVENT_FOCUSOUT = 'focusout'
+const EVENT_MOUSEENTER = 'mouseenter'
+const EVENT_MOUSELEAVE = 'mouseleave'
 
 const AttachmentMap = {
   AUTO: 'auto',
@@ -94,19 +96,6 @@ const DefaultType = {
   popperConfig: '(null|object|function)'
 }
 
-const Event = {
-  HIDE: `hide${EVENT_KEY}`,
-  HIDDEN: `hidden${EVENT_KEY}`,
-  SHOW: `show${EVENT_KEY}`,
-  SHOWN: `shown${EVENT_KEY}`,
-  INSERTED: `inserted${EVENT_KEY}`,
-  CLICK: `click${EVENT_KEY}`,
-  FOCUSIN: `focusin${EVENT_KEY}`,
-  FOCUSOUT: `focusout${EVENT_KEY}`,
-  MOUSEENTER: `mouseenter${EVENT_KEY}`,
-  MOUSELEAVE: `mouseleave${EVENT_KEY}`
-}
-
 /**
  * Class definition
  */
@@ -144,10 +133,6 @@ class Tooltip extends BaseComponent {
 
   static get NAME() {
     return NAME
-  }
-
-  static get Event() {
-    return Event
   }
 
   // Public
@@ -212,7 +197,7 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    const showEvent = EventHandler.trigger(this._element, this.constructor.Event.SHOW)
+    const showEvent = EventHandler.trigger(this._element, this.constructor.eventName(EVENT_SHOW))
     const shadowRoot = findShadowRoot(this._element)
     const isInTheDom = shadowRoot === null ?
       this._element.ownerDocument.documentElement.contains(this._element) :
@@ -230,7 +215,7 @@ class Tooltip extends BaseComponent {
 
     if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
       container.append(tip)
-      EventHandler.trigger(this._element, this.constructor.Event.INSERTED)
+      EventHandler.trigger(this._element, this.constructor.eventName(EVENT_INSERTED))
     }
 
     if (this._popper) {
@@ -255,7 +240,7 @@ class Tooltip extends BaseComponent {
       const previousHoverState = this._isHovered
 
       this._isHovered = false
-      EventHandler.trigger(this._element, this.constructor.Event.SHOWN)
+      EventHandler.trigger(this._element, this.constructor.eventName(EVENT_SHOWN))
 
       if (previousHoverState) {
         this._leave()
@@ -270,7 +255,7 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    const hideEvent = EventHandler.trigger(this._element, this.constructor.Event.HIDE)
+    const hideEvent = EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDE))
     if (hideEvent.defaultPrevented) {
       return
     }
@@ -301,7 +286,7 @@ class Tooltip extends BaseComponent {
       }
 
       this._element.removeAttribute('aria-describedby')
-      EventHandler.trigger(this._element, this.constructor.Event.HIDDEN)
+      EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDDEN))
 
       this._disposePopper()
     }
@@ -484,14 +469,14 @@ class Tooltip extends BaseComponent {
 
     for (const trigger of triggers) {
       if (trigger === 'click') {
-        EventHandler.on(this._element, this.constructor.Event.CLICK, this._config.selector, event => this.toggle(event))
+        EventHandler.on(this._element, this.constructor.eventName(EVENT_CLICK), this._config.selector, event => this.toggle(event))
       } else if (trigger !== TRIGGER_MANUAL) {
         const eventIn = trigger === TRIGGER_HOVER ?
-          this.constructor.Event.MOUSEENTER :
-          this.constructor.Event.FOCUSIN
+          this.constructor.eventName(EVENT_MOUSEENTER) :
+          this.constructor.eventName(EVENT_FOCUSIN)
         const eventOut = trigger === TRIGGER_HOVER ?
-          this.constructor.Event.MOUSELEAVE :
-          this.constructor.Event.FOCUSOUT
+          this.constructor.eventName(EVENT_MOUSELEAVE) :
+          this.constructor.eventName(EVENT_FOCUSOUT)
 
         EventHandler.on(this._element, eventIn, this._config.selector, event => {
           const context = this._initializeOnDelegatedTarget(event)
