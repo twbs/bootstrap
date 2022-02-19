@@ -49,7 +49,7 @@ const CLASS_NAME_DROPUP = 'dropup'
 const CLASS_NAME_DROPEND = 'dropend'
 const CLASS_NAME_DROPSTART = 'dropstart'
 
-const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]'
+const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)'
 const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE}.${CLASS_NAME_SHOW}`
 const SELECTOR_MENU = '.dropdown-menu'
 const SELECTOR_NAVBAR = '.navbar'
@@ -406,10 +406,6 @@ class Dropdown extends BaseComponent {
 
     event.preventDefault()
     event.stopPropagation()
-
-    if (isDisabled(this)) {
-      return
-    }
 
     const getToggleButton = SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, delegateTarget.parentNode)
     const instance = Dropdown.getOrCreateInstance(getToggleButton)
