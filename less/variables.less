@@ -17,6 +17,7 @@
 @apim-pass:            rgb(92, 184, 92);   // #5cb85c;
 @apim-fail:            rgb(217, 83, 79);   // #d9534f;
 @apim-warn:            rgb(247, 163, 92);  // #f7a35c; 
+@apim-slow:            rgb(50, 113, 50);   // #327132;
 
 @apim-aws:             rgb(227, 193, 121); // #e3c179;
 @apim-azure:           rgb(24, 168, 202);  // #18a8ca;
@@ -273,7 +274,7 @@
 @btn-link-disabled-color:        @apim-dark-disabled;
 
 // Allows for customizing button radius independently from global border radius
-@btn-border-radius-base:         @border-radius-base;
+@btn-border-radius-base:         3px;
 @btn-border-radius-large:        @border-radius-large;
 @btn-border-radius-small:        @border-radius-small;
 
@@ -620,21 +621,21 @@
 //
 //## Define colors for form feedback states and, by default, alerts.
 
-@state-success-text:             #3c763d;
-@state-success-bg:               #dff0d8;
-@state-success-border:           darken(spin(@state-success-bg, -10), 5%);
+@state-success-text:             @apim-dark-main;
+@state-success-bg:               @apim-pass;
+@state-success-border:           @apim-pass;
 
-@state-info-text:                #31708f;
-@state-info-bg:                  #d9edf7;
-@state-info-border:              darken(spin(@state-info-bg, -10), 7%);
+@state-info-text:                @apim2-white;
+@state-info-bg:                  @apim2-muted-blue;
+@state-info-border:              @apim2-muted-blue;
 
-@state-warning-text:             #8a6d3b;
-@state-warning-bg:               #fcf8e3;
-@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
+@state-warning-text:             @apim-dark-main;
+@state-warning-bg:               @apim-warn;
+@state-warning-border:           @apim-warn;
 
-@state-danger-text:              #a94442;
-@state-danger-bg:                #f2dede;
-@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
+@state-danger-text:              @apim2-white;
+@state-danger-bg:                @apim-fail;
+@state-danger-border:            @apim-fail;
 
 
 //== Tooltips
@@ -745,7 +746,7 @@
 //## Define alert colors, border radius, and padding.
 
 @alert-padding:               15px;
-@alert-border-radius:         @border-radius-base;
+@alert-border-radius:         6px;
 @alert-link-font-weight:      bold;
 
 @alert-success-bg:            @state-success-bg;
@@ -831,7 +832,7 @@
 @panel-body-padding:          15px;
 @panel-heading-padding:       10px 15px;
 @panel-footer-padding:        @panel-heading-padding;
-@panel-border-radius:         @border-radius-base;
+@panel-border-radius:         3px;
 
 //** Border color for elements within panels
 @panel-inner-border:          @apim-dark-secondary;
