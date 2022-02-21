@@ -81,7 +81,7 @@ You can use a link with the `href` attribute, or a button with the `data-bs-targ
 
 ### Static backdrop
 
-When backdrop is set to static, the offcanvas will not close when clicking outside it.
+When backdrop is set to static, the offcanvas will not close when clicking outside of it.
 
 {{< example >}}
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
@@ -95,7 +95,7 @@ When backdrop is set to static, the offcanvas will not close when clicking outsi
   </div>
   <div class="offcanvas-body">
     <div>
-      I will not close if you click outside me.
+      I will not close if you click outside of me.
     </div>
   </div>
 </div>
@@ -247,7 +247,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 {{< bs-table "table" >}}
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `backdrop` | boolean or the string `static` | `true` | Apply a backdrop on body while offcanvas is open. Alternatively, specify `static` for a backdrop which doesn't close the offcanvas on click. |
+| `backdrop` | boolean or the string `static` | `true` | Apply a backdrop on body while offcanvas is open. Alternatively, specify `static` for a backdrop which doesn't close the offcanvas when clicked. |
 | `keyboard` | boolean | `true` | Closes the offcanvas when escape key is pressed |
 | `scroll` | boolean | `false` | Allow body scrolling while offcanvas is open |
 {{< /bs-table >}}
@@ -288,7 +288,7 @@ Bootstrap's offcanvas class exposes a few events for hooking into offcanvas func
 | `shown.bs.offcanvas` | This event is fired when an offcanvas element has been made visible to the user (will wait for CSS transitions to complete). |
 | `hide.bs.offcanvas` | This event is fired immediately when the `hide` method has been called. |
 | `hidden.bs.offcanvas` | This event is fired when an offcanvas element has been hidden from the user (will wait for CSS transitions to complete). |
-| `hidePrevented.bs.offcanvas` | This event is fired when the offcanvas is shown, its backdrop is `static` and a click outside the offcanvas or an escape key press  is performed with the keyboard option or `data-bs-keyboard` set to `false`. |
+| `hidePrevented.bs.offcanvas` | This event is fired when the offcanvas is shown, its backdrop is `static` and a click outside of the offcanvas is performed. The event is also fired when the escape key is pressed and the `keyboard` option is set to `false`. |
 {{< /bs-table >}}
 
 ```js
