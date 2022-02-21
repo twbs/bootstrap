@@ -13,8 +13,6 @@ import Tooltip from './tooltip'
  */
 
 const NAME = 'popover'
-const DATA_KEY = 'bs.popover'
-const EVENT_KEY = `.${DATA_KEY}`
 
 const SELECTOR_TITLE = '.popover-header'
 const SELECTOR_CONTENT = '.popover-body'
@@ -37,19 +35,6 @@ const DefaultType = {
   content: '(null|string|element|function)'
 }
 
-const Event = {
-  HIDE: `hide${EVENT_KEY}`,
-  HIDDEN: `hidden${EVENT_KEY}`,
-  SHOW: `show${EVENT_KEY}`,
-  SHOWN: `shown${EVENT_KEY}`,
-  INSERTED: `inserted${EVENT_KEY}`,
-  CLICK: `click${EVENT_KEY}`,
-  FOCUSIN: `focusin${EVENT_KEY}`,
-  FOCUSOUT: `focusout${EVENT_KEY}`,
-  MOUSEENTER: `mouseenter${EVENT_KEY}`,
-  MOUSELEAVE: `mouseleave${EVENT_KEY}`
-}
-
 /**
  * Class definition
  */
@@ -66,10 +51,6 @@ class Popover extends Tooltip {
 
   static get NAME() {
     return NAME
-  }
-
-  static get Event() {
-    return Event
   }
 
   // Overrides
