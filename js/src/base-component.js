@@ -76,6 +76,10 @@ class BaseComponent extends Config {
   static get EVENT_KEY() {
     return `.${this.DATA_KEY}`
   }
+
+  static eventName(name) {
+    return `${name}${this.EVENT_KEY}`
+  }
 }
 
 export default BaseComponent
