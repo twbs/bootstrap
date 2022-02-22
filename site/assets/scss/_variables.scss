@@ -2,14 +2,21 @@
 
 // Local docs variables
 $bd-purple:        #563d7c;
-$bd-purple-bright: lighten(saturate($bd-purple, 5%), 15%); // stylelint-disable-line function-disallowed-list
+$bd-violet:        lighten(saturate($bd-purple, 5%), 15%); // stylelint-disable-line function-disallowed-list
 $bd-purple-light:  lighten(saturate($bd-purple, 5%), 45%); // stylelint-disable-line function-disallowed-list
-$bd-dark:          #2a2730;
-$bd-download:      #ffe484;
-$bd-info:          #5bc0de;
-$bd-warning:       #f0ad4e;
-$bd-danger:        #d9534f;
+$bd-accent:       #ffe484;
+$bd-info:         #5bc0de;
+$bd-warning:      #f0ad4e;
+$bd-danger:       #d9534f;
 $dropdown-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#292b2c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>");
 $sidebar-collapse-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='none' stroke='rgba(0,0,0,.5)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/></svg>");
 
 $bd-gutter-x: 1.25rem;
+
+:root {
+  --bd-purple: #{$bd-purple};
+  --bd-violet: #{$bd-violet};
+  --bd-accent: #{$bd-accent};
+  --bd-violet-rgb: #{to-rgb($bd-violet)};
+  --bd-accent-rgb: #{to-rgb($bd-accent)};
+}
