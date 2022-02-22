@@ -16,4 +16,4 @@ jobs:
           labels: 'awaiting-reply'
           inactive-day: 14
           body: |
-            Since the issue was labeled with `awaiting-reply`, but no response in 14 days. This issue will be closed. If you have any questions, you can comment and reply.
+            As the issue was labeled with `awaiting-reply`, but there has been no response in 14 days, this issue will be closed. If you have any questions, you can comment/reply.
