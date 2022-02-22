@@ -182,7 +182,7 @@ describe('Modal', () => {
     })
 
     it('should not fire shown event when show is prevented', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
         const modalEl = fixtureEl.querySelector('.modal')
@@ -200,7 +200,7 @@ describe('Modal', () => {
         })
 
         modalEl.addEventListener('shown.bs.modal', () => {
-          throw new Error('shown event triggered')
+          reject(new Error('shown event triggered'))
         })
 
         modal.show()
@@ -458,7 +458,7 @@ describe('Modal', () => {
     })
 
     it('should not close modal when clicking on modal-content', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<div class="modal">',
           '  <div class="modal-dialog">',
@@ -484,7 +484,7 @@ describe('Modal', () => {
         })
 
         modalEl.addEventListener('hidden.bs.modal', () => {
-          throw new Error('Should not hide a modal')
+          reject(new Error('Should not hide a modal'))
         })
 
         modal.show()
@@ -492,7 +492,7 @@ describe('Modal', () => {
     })
 
     it('should not close modal when clicking outside of modal-content if backdrop = false', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
         const modalEl = fixtureEl.querySelector('.modal')
@@ -513,7 +513,7 @@ describe('Modal', () => {
         })
 
         modalEl.addEventListener('hidden.bs.modal', () => {
-          throw new Error('Should not hide a modal')
+          reject(new Error('Should not hide a modal'))
         })
 
         modal.show()
@@ -521,7 +521,7 @@ describe('Modal', () => {
     })
 
     it('should not close modal when clicking outside of modal-content if backdrop = static', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
         const modalEl = fixtureEl.querySelector('.modal')
@@ -542,7 +542,7 @@ describe('Modal', () => {
         })
 
         modalEl.addEventListener('hidden.bs.modal', () => {
-          throw new Error('Should not hide a modal')
+          reject(new Error('Should not hide a modal'))
         })
 
         modal.show()
@@ -578,7 +578,7 @@ describe('Modal', () => {
     })
 
     it('should not close modal when escape key is pressed with keyboard = false', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
         const modalEl = fixtureEl.querySelector('.modal')
@@ -602,7 +602,7 @@ describe('Modal', () => {
         })
 
         modalEl.addEventListener('hidden.bs.modal', () => {
-          throw new Error('Should not hide a modal')
+          reject(new Error('Should not hide a modal'))
         })
 
         modal.show()
@@ -751,7 +751,7 @@ describe('Modal', () => {
     })
 
     it('should not hide a modal if hide is prevented', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
         const modalEl = fixtureEl.querySelector('.modal')
@@ -774,7 +774,7 @@ describe('Modal', () => {
         })
 
         modalEl.addEventListener('hidden.bs.modal', () => {
-          throw new Error('should not trigger hidden')
+          reject(new Error('should not trigger hidden'))
         })
 
         modal.show()
