@@ -609,7 +609,7 @@ $small-font-size:             .875em !default;
 
 $sub-sup-font-size:           .75em !default;
 
-$text-muted:                  $gray-600 !default;
+$text-muted:                  rgba(var(--#{$variable-prefix}body-color-rgb), .75) !default;
 
 $initialism-font-size:        $small-font-size !default;
 
