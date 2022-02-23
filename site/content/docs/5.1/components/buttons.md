@@ -76,7 +76,7 @@ You can even roll your own custom sizing with CSS variables:
 
 {{< example >}}
 <button type="button" class="btn btn-primary"
-        style="--bs-btn-padding: .25rem .5rem; --bs-btn-font-size: .75rem;">
+        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
   Custom button
 </button>
 {{< /example >}}
