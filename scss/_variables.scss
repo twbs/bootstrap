@@ -1149,6 +1149,11 @@ $dropdown-item-padding-x:           $spacer !default;
 
 $dropdown-header-color:             $gray-600 !default;
 $dropdown-header-padding:           $dropdown-padding-y $dropdown-item-padding-x !default;
+
+$dropdown-nested-bg:                url("data:image/svg+xml,<svg viewBox='0 0 7 12' xmlns='http://www.w3.org/2000/svg'><path d='m1 1 5 5-5 5' stroke='#{$dropdown-link-color}' fill='none' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/></svg>") !default;
+$dropdown-nested-active-bg:         url("data:image/svg+xml,<svg viewBox='0 0 7 12' xmlns='http://www.w3.org/2000/svg'><path d='m1 1 5 5-5 5' stroke='#{$dropdown-link-active-color}' fill='none' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/></svg>") !default;
+$dropdown-nested-bg-position:       right $dropdown-item-padding-x center !default;
+$dropdown-nested-bg-size:           7px 12px !default;
 // scss-docs-end dropdown-variables
 
 // scss-docs-start dropdown-dark-variables

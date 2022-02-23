@@ -63,6 +63,25 @@
     left: 0;
     margin-top: var(--#{$variable-prefix}dropdown-spacer);
   }
+
+  .dropdown > .dropdown-item {
+    background-image: escape-svg($dropdown-nested-bg);
+    background-repeat: no-repeat;
+    background-position: $dropdown-nested-bg-position;
+    background-size: $dropdown-nested-bg-size;
+
+    &:active {
+      background-image: escape-svg($dropdown-nested-active-bg);
+    }
+  }
+
+  .dropdown .dropdown-menu:hover,
+  .dropdown > .dropdown-item:hover ~ .dropdown-menu {
+    position: absolute;
+    top: 0;
+    left: calc(100% - .25rem); // stylelint-disable-line function-disallowed-list
+    display: block;
+
 }
 
 // scss-docs-start responsive-breakpoints

@@ -393,6 +393,30 @@ And putting it to use in a navbar:
 </nav>
 {{< /example >}}
 
+## Nesting
+
+{{< example >}}
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownNestedBtn" data-bs-toggle="dropdown" aria-expanded="false">
+    Nested dropdown
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownNestedBtn">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li class="dropdown">
+      <a class="dropdown-item" href="#" aria-labelledby="dropdownNested1">Nested dropdown</a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownNested1">
+        <li><a class="dropdown-item" href="#">Nested item</a></li>
+        <li><a class="dropdown-item" href="#">Nested item 2</a></li>
+        <li><a class="dropdown-item" href="#">Nested item 3</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+{{< /example >}}
+
 ## Directions
 
 {{< callout info >}}
