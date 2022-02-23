@@ -11,6 +11,7 @@
     "Blockquotes",
     "Bootstrappers",
     "borderless",
+    "Brotli",
     "browserslist",
     "browserslistrc",
     "btncheck",
@@ -67,6 +68,7 @@
     "Noto",
     "offcanvas",
     "offcanvases",
+    "Packagist",
     "popperjs",
     "prebuild",
     "precompiled",
@@ -103,17 +105,18 @@
     "vstack",
     "walkthroughs",
     "WCAG",
-    "zindex",
-    "بالعالم",
-    "مرحبًا"
+    "zindex"
   ],
-  "language": "en, en-US",
+  "language": "en-US",
   "files": [
-    "site/**/*.md"
+    "**/*.md"
   ],
   "ignorePaths": [
     ".cspell.json",
-    "*.min.*"
+    "dist/",
+    "*.min.*",
+    "**/*rtl*",
+    "**/tests/**"
   ],
   "useGitignore": true
 }

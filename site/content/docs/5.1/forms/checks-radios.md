@@ -197,6 +197,30 @@ Group checkboxes or radios on the same horizontal row by adding `.form-check-inl
 </div>
 {{< /example >}}
 
+## Reverse
+
+Put your checkboxes, radios, and switches on the opposite side with the `.form-check-reverse` modifier class.
+
+{{< example >}}
+<div class="form-check form-check-reverse">
+  <input class="form-check-input" type="checkbox" value="" id="reverseCheck1">
+  <label class="form-check-label" for="reverseCheck1">
+    Reverse checkbox
+  </label>
+</div>
+<div class="form-check form-check-reverse">
+  <input class="form-check-input" type="checkbox" value="" id="reverseCheck2" disabled>
+  <label class="form-check-label" for="reverseCheck2">
+    Disabled reverse checkbox
+  </label>
+</div>
+
+<div class="form-check form-switch form-check-reverse">
+  <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse">
+  <label class="form-check-label" for="flexSwitchCheckReverse">Reverse switch checkbox input</label>
+</div>
+{{< /example >}}
+
 ## Without labels
 
 Omit the wrapping `.form-check` for checkboxes and radios that have no label text. Remember to still provide some form of accessible name for assistive technologies (for instance, using `aria-label`). See the [forms overview accessibility]({{< docsref "/forms/overview#accessibility" >}}) section for details.

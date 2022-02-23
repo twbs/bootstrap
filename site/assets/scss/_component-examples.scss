@@ -124,7 +124,7 @@
     display: block;
   }
 
-  > :last-child {
+  > :not(hr):last-child {
     margin-bottom: 0;
   }
 
