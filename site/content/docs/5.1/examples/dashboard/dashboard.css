@@ -5,7 +5,6 @@ body {
 .feather {
   width: 16px;
   height: 16px;
-  vertical-align: text-bottom;
 }
 
 /*
@@ -62,7 +61,6 @@ body {
 
 .sidebar-heading {
   font-size: .75rem;
-  text-transform: uppercase;
 }
 
 /*
@@ -72,7 +70,6 @@ body {
 .navbar-brand {
   padding-top: .75rem;
   padding-bottom: .75rem;
-  font-size: 1rem;
   background-color: rgba(0, 0, 0, .25);
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
 }
@@ -84,8 +81,6 @@ body {
 
 .navbar .form-control {
   padding: .75rem 1rem;
-  border-width: 0;
-  border-radius: 0;
 }
 
 .form-control-dark {

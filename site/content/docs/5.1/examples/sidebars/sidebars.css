@@ -8,8 +8,6 @@ html {
 }
 
 main {
-  display: flex;
-  flex-wrap: nowrap;
   height: 100vh;
   height: -webkit-fill-available;
   max-height: 100vh;
@@ -19,18 +17,11 @@ main {
 
 .dropdown-toggle { outline: 0; }
 
-.nav-flush .nav-link {
-  border-radius: 0;
-}
-
 .btn-toggle {
-  display: inline-flex;
-  align-items: center;
   padding: .25rem .5rem;
   font-weight: 600;
   color: rgba(0, 0, 0, .65);
   background-color: transparent;
-  border: 0;
 }
 .btn-toggle:hover,
 .btn-toggle:focus {
@@ -54,11 +45,9 @@ main {
 }
 
 .btn-toggle-nav a {
-  display: inline-flex;
   padding: .1875rem .5rem;
   margin-top: .125rem;
   margin-left: 1.25rem;
-  text-decoration: none;
 }
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
@@ -70,4 +59,3 @@ main {
 }
 
 .fw-semibold { font-weight: 600; }
-.lh-tight { line-height: 1.25; }

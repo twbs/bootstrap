@@ -1,18 +1,5 @@
 .dropdown-menu {
-  position: static;
-  display: block;
-  width: auto;
   margin: 4rem auto;
-}
-
-.dropdown-menu-macos {
-  display: grid;
-  gap: .25rem;
-  padding: .5rem;
-  border-radius: .5rem;
-}
-.dropdown-menu-macos .dropdown-item {
-  border-radius: .25rem;
 }
 
 .dropdown-item-danger {
@@ -28,9 +15,7 @@
 }
 
 .btn-hover-light {
-  text-align: left;
   background-color: var(--bs-white);
-  border-radius: .25rem;
 }
 .btn-hover-light:hover,
 .btn-hover-light:focus {
@@ -73,4 +58,21 @@
 .form-control-dark {
   background-color: rgba(255, 255, 255, .05);
   border-color: rgba(255, 255, 255, .15);
+}
+
+
+.w-220px {
+  width: 220px;
+}
+
+.w-280px {
+  width: 280px;
+}
+
+.w-340px {
+  width: 340px;
+}
+
+.w-600px {
+  width: 600px;
 }
