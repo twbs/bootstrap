@@ -55,7 +55,6 @@ const CLASS_NAME_DROPDOWN_CENTER = 'dropdown-center'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)'
 const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE}.${CLASS_NAME_SHOW}`
 const SELECTOR_MENU = '.dropdown-menu'
-const SELECTOR_NAVBAR = '.navbar'
 const SELECTOR_NAVBAR_NAV = '.navbar-nav'
 const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
 
@@ -136,7 +135,7 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    this._createPopper()
+    this._popper = this._createPopper()
 
     // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
@@ -177,7 +176,6 @@ class Dropdown extends BaseComponent {
   }
 
   update() {
-    this._inNavbar = this._detectNavbar()
     if (this._popper) {
       this._popper.update()
     }
@@ -238,7 +236,7 @@ class Dropdown extends BaseComponent {
     }
 
     const popperConfig = this._getPopperConfig()
-    this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
+    return Popper.createPopper(referenceElement, this._menu, popperConfig)
   }
 
   _isShown() {
@@ -274,10 +272,6 @@ class Dropdown extends BaseComponent {
     return isEnd ? PLACEMENT_BOTTOMEND : PLACEMENT_BOTTOM
   }
 
-  _detectNavbar() {
-    return this._element.closest(SELECTOR_NAVBAR) !== null
-  }
-
   _getOffset() {
     const { offset } = this._config
 
@@ -306,15 +300,21 @@ class Dropdown extends BaseComponent {
         options: {
           offset: this._getOffset()
         }
-      }]
-    }
-
-    // Disable Popper if we have a static display or Dropdown is in Navbar
-    if (this._inNavbar || this._config.display === 'static') {
-      Manipulator.setDataAttribute(this._menu, 'popper', 'static') // todo:v6 remove
-      defaultBsPopperConfig.modifiers = [{
-        name: 'applyStyles',
-        enabled: false
+      },
+      {
+        name: 'applyCustomStyles',
+        enabled: true,
+        phase: 'afterWrite',
+        fn: () => {
+          this._menu.style.removeProperty('position')
+          const initialPosition = getComputedStyle(this._menu).position
+          if (this._config.display === 'static' || initialPosition === 'static') {
+            // this._menu.style.position = 'static'
+            this._menu.style.removeProperty('margin')
+            this._menu.style.removeProperty('transform')
+            Manipulator.setDataAttribute(this._menu, 'popper', 'static') // todo:v6 remove?
+          }
+        }
       }]
     }
 
