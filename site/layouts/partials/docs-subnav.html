@@ -4,6 +4,11 @@
       <input type="search" class="form-control" id="search-input" placeholder="Search docs..." aria-label="Search docs for..." autocomplete="off" data-bd-docs-version="{{ .Site.Params.docs_version }}">
     </form>
 
+    <div class="form-check form-switch d-none d-lg-block ms-3">
+      <input class="form-check-input" type="checkbox" role="switch" id="switch-main-container">
+      <label class="form-check-label text-muted" for="switch-main-container">Full width</label>
+    </div>
+
     {{ partial "docs-versions" . }}
 
     <button class="btn bd-sidebar-toggle d-md-none py-0 px-1 ms-3 order-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
