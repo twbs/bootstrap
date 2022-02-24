@@ -15,6 +15,24 @@
 (function () {
   'use strict'
 
+  // Switch container's width
+  var switchMainContainer = document.getElementById('switch-main-container')
+  if (switchMainContainer) {
+    switchMainContainer.addEventListener('change', function () {
+      var containers = document.querySelectorAll('body > .bd-subnavbar > div, body > .navbar > nav, body > .bd-layout')
+      containers.forEach(function (container) {
+        container.classList.toggle('container-fluid')
+        container.classList.toggle('container-xxl')
+      })
+      localStorage.setItem('bd-switch-main-container', switchMainContainer.checked ? 'true' : 'false')
+    })
+
+    if (localStorage.getItem('bd-switch-main-container') === 'true') {
+        switchMainContainer.checked = true
+        switchMainContainer.dispatchEvent(new Event('change'))
+    }
+  }
+
   // Tooltip and popover demos
   document.querySelectorAll('.tooltip-demo')
     .forEach(function (tooltip) {
