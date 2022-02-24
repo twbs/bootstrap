@@ -28,8 +28,8 @@
     })
 
     if (localStorage.getItem('bd-switch-main-container') === 'true') {
-        switchMainContainer.checked = true
-        switchMainContainer.dispatchEvent(new Event('change'))
+      switchMainContainer.checked = true
+      switchMainContainer.dispatchEvent(new Event('change'))
     }
   }
 
