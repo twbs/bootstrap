@@ -385,7 +385,7 @@ describe('Collapse', () => {
     })
 
     it('should not fire shown when show is prevented', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<div class="collapse"></div>'
 
         const collapseEl = fixtureEl.querySelector('div')
@@ -406,7 +406,7 @@ describe('Collapse', () => {
         })
 
         collapseEl.addEventListener('shown.bs.collapse', () => {
-          throw new Error('should not fire shown event')
+          reject(new Error('should not fire shown event'))
         })
 
         collapse.show()
@@ -466,7 +466,7 @@ describe('Collapse', () => {
     })
 
     it('should not fire hidden when hide is prevented', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<div class="collapse show"></div>'
 
         const collapseEl = fixtureEl.querySelector('div')
@@ -487,7 +487,7 @@ describe('Collapse', () => {
         })
 
         collapseEl.addEventListener('hidden.bs.collapse', () => {
-          throw new Error('should not fire hidden event')
+          reject(new Error('should not fire hidden event'))
         })
 
         collapse.hide()

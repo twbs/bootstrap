@@ -270,7 +270,7 @@ describe('Carousel', () => {
     })
 
     it('should stay at the start when the prev method is called and wrap is false', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<div id="myCarousel" class="carousel slide">',
           '  <div class="carousel-inner">',
@@ -286,7 +286,7 @@ describe('Carousel', () => {
         const carousel = new Carousel(carouselEl, { wrap: false })
 
         carouselEl.addEventListener('slid.bs.carousel', () => {
-          throw new Error('carousel slid when it should not have slid')
+          reject(new Error('carousel slid when it should not have slid'))
         })
 
         carousel.prev()

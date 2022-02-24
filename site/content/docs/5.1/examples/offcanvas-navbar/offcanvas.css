@@ -27,37 +27,22 @@ body {
   }
 }
 
-.nav-scroller {
-  position: relative;
-  z-index: 2;
-  height: 2.75rem;
-  overflow-y: hidden;
-}
-
 .nav-scroller .nav {
-  display: flex;
-  flex-wrap: nowrap;
-  padding-bottom: 1rem;
-  margin-top: -1px;
-  overflow-x: auto;
   color: rgba(255, 255, 255, .75);
-  text-align: center;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
 }
 
-.nav-underline .nav-link {
+.nav-scroller .nav-link {
   padding-top: .75rem;
   padding-bottom: .75rem;
   font-size: .875rem;
   color: #6c757d;
 }
 
-.nav-underline .nav-link:hover {
+.nav-scroller .nav-link:hover {
   color: #007bff;
 }
 
-.nav-underline .active {
+.nav-scroller .active {
   font-weight: 500;
   color: #343a40;
 }

@@ -102,7 +102,7 @@ describe('Alert', () => {
     })
 
     it('should not remove alert if close event is prevented', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<div class="alert"></div>'
 
         const getAlert = () => document.querySelector('.alert')
@@ -118,7 +118,7 @@ describe('Alert', () => {
         })
 
         alertEl.addEventListener('closed.bs.alert', () => {
-          throw new Error('should not fire closed event')
+          reject(new Error('should not fire closed event'))
         })
 
         alert.close()

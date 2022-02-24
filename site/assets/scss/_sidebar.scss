@@ -40,7 +40,7 @@
     &:focus {
       color: rgba($black, .85);
       text-decoration: if($link-hover-decoration == underline, none, null);
-      background-color: rgba($bd-purple-bright, .1);
+      background-color: rgba($bd-violet, .1);
     }
   }
 
@@ -55,11 +55,11 @@
     &:hover,
     &:focus {
       color: rgba($black, .85);
-      background-color: rgba($bd-purple-bright, .1);
+      background-color: rgba($bd-violet, .1);
     }
 
     &:focus {
-      box-shadow: 0 0 0 1px rgba($bd-purple-bright, .7);
+      box-shadow: 0 0 0 1px rgba($bd-violet, .7);
     }
 
     // Add chevron if there's a submenu
