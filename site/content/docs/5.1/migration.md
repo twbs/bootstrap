@@ -214,6 +214,8 @@ Your custom Bootstrap CSS builds should now look something like this with a sepa
 
 - <span class="badge bg-danger">Breaking</span> `.form-text` no longer sets `display`, allowing you to create inline or block help text as you wish just by changing the HTML element.
 
+- Form controls no longer used fixed `height` when possible, instead deferring to `min-height` to improve customization and compatibility with other components.
+
 - Validation icons are no longer applied to `<select>`s with `multiple`.
 
 - Rearranged source Sass files under `scss/forms/`, including input group styles.
