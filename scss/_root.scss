@@ -51,4 +51,10 @@
   --#{$variable-prefix}body-bg: #{$body-bg};
   // scss-docs-end root-body-variables
   // stylelint-enable custom-property-empty-line-before
+
+  --#{$variable-prefix}heading-color: #{$headings-color};
+  --#{$variable-prefix}link-color: #{$link-color};
+  --#{$variable-prefix}link-hover-color: #{$link-hover-color};
+
+  --#{$variable-prefix}code-color: #{$code-color};
 }

@@ -87,7 +87,7 @@ hr {
   font-style: $headings-font-style;
   font-weight: $headings-font-weight;
   line-height: $headings-line-height;
-  color: $headings-color;
+  color: var(--#{$variable-prefix}heading-color);
 }
 
 h1 {
@@ -243,11 +243,11 @@ sup { top: -.5em; }
 // Links
 
 a {
-  color: $link-color;
+  color: var(--#{$variable-prefix}link-color);
   text-decoration: $link-decoration;
 
   &:hover {
-    color: $link-hover-color;
+    color: var(--#{$variable-prefix}link-hover-color);
     text-decoration: $link-hover-decoration;
   }
 }
@@ -298,7 +298,7 @@ pre {
 
 code {
   @include font-size($code-font-size);
-  color: $code-color;
+  color: var(--#{$variable-prefix}code-color);
   word-wrap: break-word;
 
   // Streamline the style when inside anchors to avoid broken underline and more
