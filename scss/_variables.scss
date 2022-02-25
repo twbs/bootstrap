@@ -620,13 +620,14 @@ $blockquote-footer-font-size: $small-font-size !default;
 
 $hr-margin-y:                 $spacer !default;
 $hr-color:                    inherit !default;
+
 // fusv-disable
-$hr-bg-color: null !default; // Deprecated in v5.2.0
-$hr-height: null !default; // Deprecated in v5.2.0
+$hr-bg-color:                 null !default; // Deprecated in v5.2.0
+$hr-height:                   null !default; // Deprecated in v5.2.0
 // fusv-enable
 
-$hr-border-color: null !default; // Allows for inherited colors
-$hr-border-width: $border-width !default;
+$hr-border-color:             null !default; // Allows for inherited colors
+$hr-border-width:             var(--#{$variable-prefix}border-width) !default;
 $hr-opacity:                  .25 !default;
 
 $legend-margin-bottom:        .5rem !default;
@@ -1058,8 +1059,8 @@ $nav-link-transition:               color .15s ease-in-out, background-color .15
 $nav-link-disabled-color:           $gray-600 !default;
 
 $nav-tabs-border-color:             $gray-300 !default;
-$nav-tabs-border-width:             $border-width !default;
 $nav-tabs-border-radius:            $border-radius !default;
+$nav-tabs-border-width:             var(--#{$variable-prefix}border-width) !default;
 $nav-tabs-link-hover-border-color:  $gray-200 $gray-200 $nav-tabs-border-color !default;
 $nav-tabs-link-active-color:        $gray-700 !default;
 $nav-tabs-link-active-bg:           $body-bg !default;
@@ -1130,7 +1131,7 @@ $dropdown-color:                    $body-color !default;
 $dropdown-bg:                       $white !default;
 $dropdown-border-color:             rgba($black, .15) !default;
 $dropdown-border-radius:            $border-radius !default;
-$dropdown-border-width:             $border-width !default;
+$dropdown-border-width:             var(--#{$variable-prefix}border-width) !default;
 $dropdown-inner-border-radius:      subtract($dropdown-border-radius, $dropdown-border-width) !default;
 $dropdown-divider-bg:               $dropdown-border-color !default;
 $dropdown-divider-margin-y:         $spacer * .5 !default;
@@ -1180,8 +1181,8 @@ $pagination-padding-x-lg:           1.5rem !default;
 
 $pagination-color:                  $link-color !default;
 $pagination-bg:                     $white !default;
-$pagination-border-width:           $border-width !default;
 $pagination-border-radius:          $border-radius !default;
+$pagination-border-width:           var(--#{$variable-prefix}border-width) !default;
 $pagination-margin-start:           -$pagination-border-width !default;
 $pagination-border-color:           $gray-300 !default;
 
@@ -1222,9 +1223,9 @@ $placeholder-opacity-min:           .2 !default;
 $card-spacer-y:                     $spacer !default;
 $card-spacer-x:                     $spacer !default;
 $card-title-spacer-y:               $spacer * .5 !default;
-$card-border-width:                 $border-width !default;
-$card-border-color:                 rgba($black, .125) !default;
 $card-border-radius:                $border-radius !default;
+$card-border-width:                 var(--#{$variable-prefix}border-width) !default;
+$card-border-color:                 var(--#{$variable-prefix}border-color) !default;
 $card-box-shadow:                   null !default;
 $card-inner-border-radius:          subtract($card-border-radius, $card-border-width) !default;
 $card-cap-padding-y:                $card-spacer-y * .5 !default;
@@ -1245,9 +1246,9 @@ $accordion-padding-y:                     1rem !default;
 $accordion-padding-x:                     1.25rem !default;
 $accordion-color:                         $body-color !default;
 $accordion-bg:                            $body-bg !default;
-$accordion-border-width:                  $border-width !default;
-$accordion-border-color:                  rgba($black, .125) !default;
 $accordion-border-radius:                 $border-radius !default;
+$accordion-border-width:                  var(--#{$variable-prefix}border-width) !default;
+$accordion-border-color:                  var(--#{$variable-prefix}border-color) !default;
 $accordion-inner-border-radius:           subtract($accordion-border-radius, $accordion-border-width) !default;
 
 $accordion-body-padding-y:                $accordion-padding-y !default;
@@ -1309,7 +1310,7 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
 $popover-font-size:                 $font-size-sm !default;
 $popover-bg:                        $white !default;
 $popover-max-width:                 276px !default;
-$popover-border-width:              $border-width !default;
+$popover-border-width:              var(--#{$variable-prefix}border-width) !default;
 $popover-border-color:              rgba($black, .2) !default;
 $popover-border-radius:             $border-radius-lg !default;
 $popover-inner-border-radius:       subtract($popover-border-radius, $popover-border-width) !default;
@@ -1341,9 +1342,9 @@ $toast-padding-y:                   .5rem !default;
 $toast-font-size:                   .875rem !default;
 $toast-color:                       null !default;
 $toast-background-color:            rgba($white, .85) !default;
-$toast-border-width:                1px !default;
-$toast-border-color:                rgba($black, .1) !default;
 $toast-border-radius:               $border-radius !default;
+$toast-border-width:                var(--#{$variable-prefix}border-width) !default;
+$toast-border-color:                var(--#{$variable-prefix}border-color) !default;
 $toast-box-shadow:                  $box-shadow !default;
 $toast-spacing:                     $container-padding-x !default;
 
@@ -1379,16 +1380,16 @@ $modal-title-line-height:           $line-height-base !default;
 
 $modal-content-color:               null !default;
 $modal-content-bg:                  $white !default;
-$modal-content-border-color:        rgba($black, .2) !default;
-$modal-content-border-width:        $border-width !default;
 $modal-content-border-radius:       $border-radius-lg !default;
+$modal-content-border-color:        var(--#{$variable-prefix}border-color) !default;
+$modal-content-border-width:        var(--#{$variable-prefix}border-width) !default;
 $modal-content-inner-border-radius: subtract($modal-content-border-radius, $modal-content-border-width) !default;
 $modal-content-box-shadow-xs:       $box-shadow-sm !default;
 $modal-content-box-shadow-sm-up:    $box-shadow !default;
 
 $modal-backdrop-bg:                 $black !default;
 $modal-backdrop-opacity:            .5 !default;
-$modal-header-border-color:         $border-color !default;
+$modal-header-border-color:         var(--#{$variable-prefix}border-color) !default;
 $modal-footer-border-color:         $modal-header-border-color !default;
 $modal-header-border-width:         $modal-content-border-width !default;
 $modal-footer-border-width:         $modal-header-border-width !default;
@@ -1448,8 +1449,8 @@ $progress-bar-transition:           width .6s ease !default;
 $list-group-color:                  $gray-900 !default;
 $list-group-bg:                     $white !default;
 $list-group-border-color:           rgba($black, .125) !default;
-$list-group-border-width:           $border-width !default;
 $list-group-border-radius:          $border-radius !default;
+$list-group-border-width:           var(--#{$variable-prefix}border-width) !default;
 
 $list-group-item-padding-y:         $spacer * .5 !default;
 $list-group-item-padding-x:         $spacer !default;
@@ -1477,9 +1478,9 @@ $list-group-action-active-bg:       $gray-200 !default;
 // scss-docs-start thumbnail-variables
 $thumbnail-padding:                 .25rem !default;
 $thumbnail-bg:                      $body-bg !default;
-$thumbnail-border-width:            $border-width !default;
-$thumbnail-border-color:            $gray-300 !default;
 $thumbnail-border-radius:           $border-radius !default;
+$thumbnail-border-width:            var(--#{$variable-prefix}border-width) !default;
+$thumbnail-border-color:            var(--#{$variable-prefix}border-color) !default;
 $thumbnail-box-shadow:              $box-shadow-sm !default;
 // scss-docs-end thumbnail-variables
 
