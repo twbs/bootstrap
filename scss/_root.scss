@@ -63,4 +63,9 @@
   --#{$variable-prefix}border-color: #{$border-color};
   --#{$variable-prefix}border-style: #{$border-style};
   --#{$variable-prefix}border-width: #{$border-width};
+
+  --#{$variable-prefix}border-radius: #{$border-radius};
+  --#{$variable-prefix}border-radius-sm: #{$border-radius-sm};
+  --#{$variable-prefix}border-radius-lg: #{$border-radius-lg};
+  --#{$variable-prefix}border-radius-pill: #{$border-radius-pill};
 }

@@ -584,34 +584,34 @@ $utilities: map-merge(
       property: border-radius,
       class: rounded,
       values: (
-        null: $border-radius,
+        null: var(--#{$variable-prefix}border-radius),
         0: 0,
-        1: $border-radius-sm,
-        2: $border-radius,
-        3: $border-radius-lg,
+        1: var(--#{$variable-prefix}border-radius-sm),
+        2: var(--#{$variable-prefix}border-radius),
+        3: var(--#{$variable-prefix}border-radius-lg),
         circle: 50%,
-        pill: $border-radius-pill
+        pill: var(--#{$variable-prefix}border-radius-pill)
       )
     ),
     "rounded-top": (
       property: border-top-left-radius border-top-right-radius,
       class: rounded-top,
-      values: (null: $border-radius)
+      values: (null: var(--#{$variable-prefix}border-radius))
     ),
     "rounded-end": (
       property: border-top-right-radius border-bottom-right-radius,
       class: rounded-end,
-      values: (null: $border-radius)
+      values: (null: var(--#{$variable-prefix}border-radius))
     ),
     "rounded-bottom": (
       property: border-bottom-right-radius border-bottom-left-radius,
       class: rounded-bottom,
-      values: (null: $border-radius)
+      values: (null: var(--#{$variable-prefix}border-radius))
     ),
     "rounded-start": (
       property: border-bottom-left-radius border-top-left-radius,
       class: rounded-start,
-      values: (null: $border-radius)
+      values: (null: var(--#{$variable-prefix}border-radius))
     ),
     // scss-docs-end utils-border-radius
     // scss-docs-start utils-visibility
