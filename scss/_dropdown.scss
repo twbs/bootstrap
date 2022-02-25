@@ -25,7 +25,7 @@
   --#{$variable-prefix}dropdown-border-color: #{$dropdown-border-color};
   --#{$variable-prefix}dropdown-border-radius: #{$dropdown-border-radius};
   --#{$variable-prefix}dropdown-border-width: #{$dropdown-border-width};
-  --#{$variable-prefix}dropdown-inner-border: #{$dropdown-inner-border-radius};
+  --#{$variable-prefix}dropdown-inner-border-radius: #{$dropdown-inner-border-radius};
   --#{$variable-prefix}dropdown-divider-bg: #{$dropdown-divider-bg};
   --#{$variable-prefix}dropdown-divider-margin-y: #{$dropdown-divider-margin-y};
   --#{$variable-prefix}dropdown-box-shadow: #{$dropdown-box-shadow};
@@ -145,7 +145,7 @@
 // Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
   height: 0;
-  margin: $dropdown-divider-margin-y 0;
+  margin: var(--#{$variable-prefix}dropdown-divider-margin-y) 0;
   overflow: hidden;
   border-top: 1px solid var(--#{$variable-prefix}dropdown-divider-bg);
 }
@@ -170,11 +170,11 @@
   // See https://github.com/twbs/bootstrap/pull/27703
   @if $dropdown-padding-y == 0 {
     &:first-child {
-      @include border-top-radius($dropdown-inner-border-radius);
+      @include border-top-radius(var(--#{$variable-prefix}dropdown-inner-border-radius));
     }
 
     &:last-child {
-      @include border-bottom-radius($dropdown-inner-border-radius);
+      @include border-bottom-radius(var(--#{$variable-prefix}dropdown-inner-border-radius));
     }
   }
 
