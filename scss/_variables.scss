@@ -633,15 +633,14 @@ $legend-margin-bottom:        .5rem !default;
 $legend-font-size:            1.5rem !default;
 $legend-font-weight:          null !default;
 
-$mark-padding:                .2em !default;
-
 $dt-font-weight:              $font-weight-bold !default;
 
 $nested-kbd-font-weight:      $font-weight-bold !default;
 
 $list-inline-padding:         .5rem !default;
 
-$mark-bg:                     #fcf8e3 !default;
+$mark-padding:                .1875em !default;
+$mark-bg:                     $yellow-100 !default;
 // scss-docs-end type-variables
 
 

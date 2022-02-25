@@ -219,7 +219,7 @@ small {
 
 mark {
   padding: $mark-padding;
-  background-color: $mark-bg;
+  background-color: var(--#{$variable-prefix}highlight-bg);
 }
 
 
