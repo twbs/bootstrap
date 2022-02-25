@@ -128,6 +128,10 @@
     margin-bottom: 0;
   }
 
+  > hr:last-child {
+    margin-bottom: $spacer;
+  }
+
   // Images
   > svg + svg,
   > img + img {

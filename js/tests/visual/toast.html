@@ -50,22 +50,18 @@
       </div>
     </div>
 
-    <script src="../../dist/dom/event-handler.js"></script>
-    <script src="../../dist/dom/manipulator.js"></script>
-    <script src="../../dist/dom/data.js"></script>
-    <script src="../../dist/base-component.js"></script>
-    <script src="../../dist/toast.js"></script>
+    <script src="../../../dist/js/bootstrap.bundle.js"></script>
     <script>
       window.addEventListener('load', function () {
         var toastElements = document.querySelectorAll('.toast')
         for (const toastEl of toastElements) {
-          new Toast(toastEl)
+          new bootstrap.Toast(toastEl)
         }
 
         document.getElementById('btnShowToast').addEventListener('click', function () {
           var toastElements = document.querySelectorAll('.toast')
           for (const toastEl of toastElements) {
-            var toast = Toast.getInstance(toastEl)
+            var toast = bootstrap.Toast.getInstance(toastEl)
             toast.show()
           }
         })
@@ -73,7 +69,7 @@
         document.getElementById('btnHideToast').addEventListener('click', function () {
           var toastElements = document.querySelectorAll('.toast')
           for (const toastEl of toastElements) {
-            var toast = Toast.getInstance(toastEl)
+            var toast = bootstrap.Toast.getInstance(toastEl)
             toast.hide()
           }
         })

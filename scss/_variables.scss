@@ -467,7 +467,7 @@ $grid-row-columns:            6 !default;
 
 // Container padding
 
-$container-padding-x: $grid-gutter-width * .5 !default;
+$container-padding-x: $grid-gutter-width !default;
 
 
 // Components
@@ -609,7 +609,7 @@ $small-font-size:             .875em !default;
 
 $sub-sup-font-size:           .75em !default;
 
-$text-muted:                  $gray-600 !default;
+$text-muted:                  rgba(var(--#{$variable-prefix}body-color-rgb), .75) !default;
 
 $initialism-font-size:        $small-font-size !default;
 
@@ -620,9 +620,13 @@ $blockquote-footer-font-size: $small-font-size !default;
 
 $hr-margin-y:                 $spacer !default;
 $hr-color:                    inherit !default;
-$hr-bg-color:                 currentColor !default;
-$hr-border-width:             0 !default;
-$hr-height:                   $border-width !default;
+// fusv-disable
+$hr-bg-color: null !default; // Deprecated in v5.2.0
+$hr-height: null !default; // Deprecated in v5.2.0
+// fusv-enable
+
+$hr-border-color: null !default; // Allows for inherited colors
+$hr-border-width: $border-width !default;
 $hr-opacity:                  .25 !default;
 
 $legend-margin-bottom:        .5rem !default;
@@ -676,6 +680,7 @@ $table-border-width:          $border-width !default;
 $table-border-color:          $border-color !default;
 
 $table-striped-order:         odd !default;
+$table-striped-columns-order: even !default;
 
 $table-group-separator-color: currentColor !default;
 
@@ -1036,6 +1041,7 @@ $zindex-modal-backdrop:             1050 !default;
 $zindex-modal:                      1055 !default;
 $zindex-popover:                    1070 !default;
 $zindex-tooltip:                    1080 !default;
+$zindex-toast:                      1090 !default;
 // scss-docs-end zindex-stack
 
 
@@ -1389,6 +1395,7 @@ $modal-footer-border-width:         $modal-header-border-width !default;
 $modal-header-padding-y:            $modal-inner-padding !default;
 $modal-header-padding-x:            $modal-inner-padding !default;
 $modal-header-padding:              $modal-header-padding-y $modal-header-padding-x !default; // Keep this for backwards compatibility
+$modal-footer-bg:                   null !default;
 
 $modal-sm:                          300px !default;
 $modal-md:                          500px !default;

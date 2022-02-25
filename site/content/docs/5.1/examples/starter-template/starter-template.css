@@ -1,12 +1,3 @@
-.icon-list {
-  padding-left: 0;
-  list-style: none;
-}
-.icon-list li {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: .25rem;
-}
 .icon-list li::before {
   display: block;
   flex-shrink: 0;

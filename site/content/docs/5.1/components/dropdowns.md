@@ -953,9 +953,21 @@ By default, the dropdown menu is closed when clicking inside or outside the drop
 </div>
 {{< /example >}}
 
-## Sass
+## CSS
 
 ### Variables
+
+<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.2.0</small>
+
+As part of Bootstrap's evolving CSS variables approach, dropdowns now use local CSS variables on `.dropdown-menu` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+{{< scss-docs name="dropdown-css-vars" file="scss/_dropdown.scss" >}}
+
+Customization through CSS variables can be seen on the `.dropdown-menu-dark` class where we override specific values without adding duplicate CSS selectors.
+
+{{< scss-docs name="dropdown-dark-css-vars" file="scss/_dropdown.scss" >}}
+
+### Sass variables
 
 Variables for all dropdowns:
 
@@ -1065,10 +1077,11 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <p>Configure the auto close behavior of the dropdown:</p>
         <ul>
           <li><code>true</code> - the dropdown will be closed by clicking outside or inside the dropdown menu.</li>
-          <li><code>false</code> - the dropdown will be closed by clicking the toggle button and manually calling <code>hide</code> or <code>toggle</code> method. (Also will not be closed by pressing <kbd>esc</kbd> key)</li>
+          <li><code>false</code> - the dropdown will be closed by clicking the toggle button and manually calling <code>hide</code> or <code>toggle</code> method.</li>
           <li><code>'inside'</code> - the dropdown will be closed (only) by clicking inside the dropdown menu.</li>
           <li><code>'outside'</code> - the dropdown will be closed (only) by clicking outside the dropdown menu.</li>
         </ul>
+        <p>The dropdown can always be closed with the <kbd>ESC</kbd> key.</p>
       </td>
     </tr>
     <tr>
