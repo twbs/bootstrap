@@ -132,11 +132,9 @@
   margin-left: -var(--#{$variable-prefix}card-cap-padding-x) * .5;
   border-bottom: 0;
 
-  @if $nav-tabs-link-active-bg != var(--#{$variable-prefix}card-bg) {
-    .nav-link.active {
-      background-color: var(--#{$variable-prefix}card-bg);
-      border-bottom-color: var(--#{$variable-prefix}card-bg);
-    }
+  .nav-link.active {
+    background-color: var(--#{$variable-prefix}card-bg);
+    border-bottom-color: var(--#{$variable-prefix}card-bg);
   }
 }
 
