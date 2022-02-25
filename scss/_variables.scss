@@ -635,8 +635,6 @@ $legend-font-weight:          null !default;
 
 $dt-font-weight:              $font-weight-bold !default;
 
-$nested-kbd-font-weight:      $font-weight-bold !default;
-
 $list-inline-padding:         .5rem !default;
 
 $mark-padding:                .1875em !default;
@@ -1600,10 +1598,11 @@ $offcanvas-backdrop-opacity:        $modal-backdrop-opacity !default;
 $code-font-size:                    $small-font-size !default;
 $code-color:                        $pink !default;
 
-$kbd-padding-y:                     .2rem !default;
-$kbd-padding-x:                     .4rem !default;
+$kbd-padding-y:                     .1875rem !default;
+$kbd-padding-x:                     .375rem !default;
 $kbd-font-size:                     $code-font-size !default;
-$kbd-color:                         $white !default;
-$kbd-bg:                            $gray-900 !default;
+$kbd-color:                         var(--#{$variable-prefix}body-bg) !default;
+$kbd-bg:                            var(--#{$variable-prefix}body-color) !default;
+$nested-kbd-font-weight:            null !default; // Deprecated in v5.2.0, removing in v6
 
 $pre-color:                         null !default;
