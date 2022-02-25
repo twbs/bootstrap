@@ -483,7 +483,7 @@ $border-widths: (
   4: 4px,
   5: 5px
 ) !default;
-
+$border-style:                solid !default;
 $border-color:                $gray-300 !default;
 // scss-docs-end border-variables
 
@@ -654,7 +654,7 @@ $table-cell-padding-x-sm:     .25rem !default;
 
 $table-cell-vertical-align:   top !default;
 
-$table-color:                 $body-color !default;
+$table-color:                 var(--#{$variable-prefix}body-color) !default;
 $table-bg:                    transparent !default;
 $table-accent-bg:             transparent !default;
 
@@ -673,8 +673,8 @@ $table-hover-bg-factor:       .075 !default;
 $table-hover-bg:              rgba($black, $table-hover-bg-factor) !default;
 
 $table-border-factor:         .1 !default;
-$table-border-width:          $border-width !default;
-$table-border-color:          $border-color !default;
+$table-border-width:          var(--#{$variable-prefix}border-width) !default;
+$table-border-color:          var(--#{$variable-prefix}border-color) !default;
 
 $table-striped-order:         odd !default;
 $table-striped-columns-order: even !default;

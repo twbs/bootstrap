@@ -59,4 +59,8 @@
   --#{$variable-prefix}code-color: #{$code-color};
 
   --#{$variable-prefix}highlight-bg: #{$mark-bg};
+
+  --#{$variable-prefix}border-color: #{$border-color};
+  --#{$variable-prefix}border-style: #{$border-style};
+  --#{$variable-prefix}border-width: #{$border-width};
 }
