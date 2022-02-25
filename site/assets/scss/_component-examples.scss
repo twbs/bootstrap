@@ -336,7 +336,7 @@
 .highlight {
   padding: var(--bs-gutter-x) $bd-gutter-x;
   margin-bottom: 1rem;
-  background-color: $gray-100;
+  background-color: var(--bs-gray-100);
 
   @include media-breakpoint-up(sm) {
     padding: 1rem 1.5rem;
