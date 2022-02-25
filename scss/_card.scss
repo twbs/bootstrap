@@ -76,7 +76,7 @@
 }
 
 .card-subtitle {
-  margin-top: -var(--#{$variable-prefix}card-title-spacer-y) * .5;
+  margin-top: calc(-.5 * var(--#{$variable-prefix}card-title-spacer-y)); // stylelint-disable-line function-disallowed-list
   margin-bottom: 0;
 }
 
@@ -127,9 +127,9 @@
 //
 
 .card-header-tabs {
-  margin-right: -var(--#{$variable-prefix}card-cap-padding-x) * .5;
-  margin-bottom: -var(--#{$variable-prefix}card-cap-padding-y);
-  margin-left: -var(--#{$variable-prefix}card-cap-padding-x) * .5;
+  margin-right: calc(-.5 * var(--#{$variable-prefix}card-cap-padding-x)); // stylelint-disable-line function-disallowed-list
+  margin-bottom: calc(-1 * var(--#{$variable-prefix}card-cap-padding-y)); // stylelint-disable-line function-disallowed-list
+  margin-left: calc(-.5 * var(--#{$variable-prefix}card-cap-padding-x)); // stylelint-disable-line function-disallowed-list
   border-bottom: 0;
 
   .nav-link.active {
@@ -139,8 +139,8 @@
 }
 
 .card-header-pills {
-  margin-right: -var(--#{$variable-prefix}card-cap-padding-x) * .5;
-  margin-left: -var(--#{$variable-prefix}card-cap-padding-x) * .5;
+  margin-right: calc(-.5 * var(--#{$variable-prefix}card-cap-padding-x)); // stylelint-disable-line function-disallowed-list
+  margin-left: calc(-.5 * var(--#{$variable-prefix}card-cap-padding-x)); // stylelint-disable-line function-disallowed-list
 }
 
 // Card image
