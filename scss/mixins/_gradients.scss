@@ -5,7 +5,7 @@
   background-color: $color;
 
   @if $enable-gradients {
-    background-image: var(--#{$variable-prefix}gradient);
+    background-image: var(--#{$prefix}gradient);
   }
 }
 // scss-docs-end gradient-bg-mixin

@@ -194,7 +194,7 @@
     width: 10rem;
     color: $gray-600;
     background-color: $gray-100;
-    border: var(--#{$variable-prefix}border-width) solid var(--#{$variable-prefix}border-color);
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
 
     > div {
       display: flex;
@@ -265,7 +265,7 @@
 
 .bd-example-border-utils-0 {
   [class^="border"] {
-    border: var(--#{$variable-prefix}border-width) solid var(--#{$variable-prefix}border-color);
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
   }
 }
 

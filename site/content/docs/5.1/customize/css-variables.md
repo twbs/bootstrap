@@ -40,7 +40,7 @@ Whenever possible, we'll assign CSS variables at the base component level (e.g.,
 
 Most CSS variables use a prefix to avoid collisions with your own codebase. This prefix is in addition to the `--` that's required on every CSS variable.
 
-Customize the prefix via the `$variable-prefix` Sass variable. By default, it's set to `bs-` (note the trailing dash).
+Customize the prefix via the `$prefix` Sass variable. By default, it's set to `bs-` (note the trailing dash).
 
 ## Examples
 

@@ -52,12 +52,12 @@
 
       @if $is-css-var {
         .#{$property-class + $infix + $property-class-modifier} {
-          --#{$variable-prefix}#{$property-class}: #{$value};
+          --#{$prefix}#{$property-class}: #{$value};
         }
 
         @each $pseudo in $state {
           .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
-            --#{$variable-prefix}#{$property-class}: #{$value};
+            --#{$prefix}#{$property-class}: #{$value};
           }
         }
       } @else {
@@ -65,7 +65,7 @@
           @each $property in $properties {
             @if $is-local-vars {
               @each $local-var, $value in $is-local-vars {
-                --#{$variable-prefix}#{$local-var}: #{$value};
+                --#{$prefix}#{$local-var}: #{$value};
               }
             }
             #{$property}: $value if($enable-important-utilities, !important, null);
