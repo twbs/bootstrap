@@ -52,6 +52,7 @@
   }
 }
 
+/* rtl:begin:ignore */
 .bs-popover-end {
   > .popover-arrow {
     left: subtract(-$popover-arrow-height, $popover-border-width);
@@ -71,6 +72,8 @@
     }
   }
 }
+
+/* rtl:end:ignore */
 
 .bs-popover-bottom {
   > .popover-arrow {
@@ -102,6 +105,7 @@
   }
 }
 
+/* rtl:begin:ignore */
 .bs-popover-start {
   > .popover-arrow {
     right: subtract(-$popover-arrow-height, $popover-border-width);
@@ -121,6 +125,8 @@
     }
   }
 }
+
+/* rtl:end:ignore */
 
 .bs-popover-auto {
   &[data-popper-placement^="top"] {
