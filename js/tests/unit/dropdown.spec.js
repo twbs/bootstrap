@@ -279,6 +279,30 @@ describe('Dropdown', () => {
       })
     })
 
+    it('should toggle a centered dropdown', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown-center">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <a class="dropdown-item" href="#">Secondary link</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown)
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          expect(btnDropdown).toHaveClass('show')
+          expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
+          resolve()
+        })
+
+        dropdown.toggle()
+      })
+    })
+
     it('should toggle a dropup', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
@@ -292,6 +316,31 @@ describe('Dropdown', () => {
 
         const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
         const dropupEl = fixtureEl.querySelector('.dropup')
+        const dropdown = new Dropdown(btnDropdown)
+
+        dropupEl.addEventListener('shown.bs.dropdown', () => {
+          expect(btnDropdown).toHaveClass('show')
+          expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
+          resolve()
+        })
+
+        dropdown.toggle()
+      })
+    })
+
+    it('should toggle a dropup centered', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropup-center">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <a class="dropdown-item" href="#">Secondary link</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropupEl = fixtureEl.querySelector('.dropup-center')
         const dropdown = new Dropdown(btnDropdown)
 
         dropupEl.addEventListener('shown.bs.dropdown', () => {
