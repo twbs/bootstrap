@@ -623,11 +623,13 @@ describe('Collapse', () => {
         const collapseTest1 = fixtureEl.querySelector('#test1')
 
         collapseTest1.addEventListener('hidden.bs.collapse', () => {
-          expect(link1.getAttribute('aria-expanded')).toEqual('false')
-          expect(link2.getAttribute('aria-expanded')).toEqual('false')
-          expect(link1).toHaveClass('collapsed')
-          expect(link2).toHaveClass('collapsed')
-          resolve()
+          setTimeout(() => {
+            expect(link1.getAttribute('aria-expanded')).toEqual('false')
+            expect(link2.getAttribute('aria-expanded')).toEqual('false')
+            expect(link1).toHaveClass('collapsed')
+            expect(link2).toHaveClass('collapsed')
+            resolve()
+          }, 350)
         })
 
         link1.click()
@@ -900,41 +902,49 @@ describe('Collapse', () => {
         const target2 = fixtureEl.querySelector('#test2')
 
         const target2Shown = () => {
-          expect(trigger1).not.toHaveClass('collapsed')
-          expect(trigger1.getAttribute('aria-expanded')).toEqual('true')
-
-          expect(trigger2).not.toHaveClass('collapsed')
-          expect(trigger2.getAttribute('aria-expanded')).toEqual('true')
-
-          expect(trigger3).not.toHaveClass('collapsed')
-          expect(trigger3.getAttribute('aria-expanded')).toEqual('true')
-
-          target2.addEventListener('hidden.bs.collapse', () => {
+          setTimeout(() => {
             expect(trigger1).not.toHaveClass('collapsed')
             expect(trigger1.getAttribute('aria-expanded')).toEqual('true')
 
-            expect(trigger2).toHaveClass('collapsed')
-            expect(trigger2.getAttribute('aria-expanded')).toEqual('false')
+            expect(trigger2).not.toHaveClass('collapsed')
+            expect(trigger2.getAttribute('aria-expanded')).toEqual('true')
 
             expect(trigger3).not.toHaveClass('collapsed')
             expect(trigger3.getAttribute('aria-expanded')).toEqual('true')
 
-            target1.addEventListener('hidden.bs.collapse', () => {
-              expect(trigger1).toHaveClass('collapsed')
-              expect(trigger1.getAttribute('aria-expanded')).toEqual('false')
+            target2.addEventListener('hidden.bs.collapse', () => {
+              setTimeout(() => {
+                expect(trigger1).not.toHaveClass('collapsed')
+                expect(trigger1.getAttribute('aria-expanded')).toEqual('true')
 
-              expect(trigger2).toHaveClass('collapsed')
-              expect(trigger2.getAttribute('aria-expanded')).toEqual('false')
+                expect(trigger2).toHaveClass('collapsed')
+                expect(trigger2.getAttribute('aria-expanded')).toEqual('false')
 
-              expect(trigger3).toHaveClass('collapsed')
-              expect(trigger3.getAttribute('aria-expanded')).toEqual('false')
-              resolve()
+                expect(trigger3).not.toHaveClass('collapsed')
+                expect(trigger3.getAttribute('aria-expanded')).toEqual('true')
+
+                // eslint-disable max-nested-callbacks
+                target1.addEventListener('hidden.bs.collapse', () => {
+                  setTimeout(() => {
+                    expect(trigger1).toHaveClass('collapsed')
+                    expect(trigger1.getAttribute('aria-expanded')).toEqual('false')
+
+                    expect(trigger2).toHaveClass('collapsed')
+                    expect(trigger2.getAttribute('aria-expanded')).toEqual('false')
+
+                    expect(trigger3).toHaveClass('collapsed')
+                    expect(trigger3.getAttribute('aria-expanded')).toEqual('false')
+                    resolve()
+                  }, 350)
+                })
+                // eslint-enable max-nested-callbacks
+
+                trigger1.click()
+              }, 350)
             })
 
-            trigger1.click()
-          })
-
-          trigger2.click()
+            trigger2.click()
+          }, 350)
         }
 
         target2.addEventListener('shown.bs.collapse', target2Shown)
