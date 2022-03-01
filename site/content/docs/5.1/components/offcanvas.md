@@ -137,9 +137,54 @@ When backdrop is set to static, the offcanvas will not close when clicking outsi
 </div>
 {{< /example >}}
 
+## Responsive
+
+<small class="d-inline-flex px-2 py-1 fw-semibold text-success bg-success bg-opacity-10 rounded-2">Added in v5.2.0</small>
+
+Responsive offcanvas classes hide content outside the viewport from a specified breakpoint and down. Above that breakpoint, the contents within will behave as usual. For example, `.offcanvas-lg` hides content in an offcanvas below the `lg` breakpoint, but shows the content above the `lg` breakpoint.
+
+<div class="bd-example">
+  <button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">Toggle offcanvas</button>
+
+  <div class="alert alert-info d-none d-lg-block">Resize your browser to show the responsive offcanvas toggle.</div>
+
+  <div class="offcanvas-lg offcanvas-end" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">Responsive offcanvas</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p class="mb-0">This is content within an <code>.offcanvas-lg</code>.</p>
+    </div>
+  </div>
+</div>
+
+```html
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">Toggle offcanvas</button>
+
+<div class="offcanvas-lg offcanvas-end" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">Responsive offcanvas</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p class="mb-0">This is content within an <code>.offcanvas-lg</code>.</p>
+  </div>
+</div>
+```
+
+Responsive offcanvas classes are available across for each breakpoint.
+
+- `.offcanvas`
+- `.offcanvas-sm`
+- `.offcanvas-md`
+- `.offcanvas-lg`
+- `.offcanvas-xl`
+- `.offcanvas-xxl`
+
 ## Placement
 
-There's no default placement for offcanvas components, so you must add one of the modifier classes below;
+There's no default placement for offcanvas components, so you must add one of the modifier classes below.
 
 - `.offcanvas-start` places offcanvas on the left of the viewport (shown above)
 - `.offcanvas-end` places offcanvas on the right of the viewport
