@@ -7,7 +7,8 @@
 
 .badge {
   // scss-docs-start badge-css-vars
-  --#{$variable-prefix}badge-padding: #{$badge-padding-y $badge-padding-x};
+  --#{$variable-prefix}badge-padding-x: #{$badge-padding-x};
+  --#{$variable-prefix}badge-padding-y: #{$badge-padding-y};
   @include rfs($badge-font-size, --#{$variable-prefix}badge-font-size);
   --#{$variable-prefix}badge-font-weight: #{$badge-font-weight};
   --#{$variable-prefix}badge-color: #{$badge-color};
@@ -15,7 +16,7 @@
   // scss-docs-end badge-css-vars
 
   display: inline-block;
-  padding: var(--#{$variable-prefix}badge-padding);
+  padding: var(--#{$variable-prefix}badge-padding-y) var(--#{$variable-prefix}badge-padding-x);
   font-size: var(--#{$variable-prefix}badge-font-size);
   font-weight: var(--#{$variable-prefix}badge-font-weight);
   line-height: 1;

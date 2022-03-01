@@ -1150,7 +1150,11 @@ $dropdown-item-padding-y:           $spacer * .25 !default;
 $dropdown-item-padding-x:           $spacer !default;
 
 $dropdown-header-color:             $gray-600 !default;
-$dropdown-header-padding:           $dropdown-padding-y $dropdown-item-padding-x !default;
+$dropdown-header-padding-x:         $dropdown-item-padding-x !default;
+$dropdown-header-padding-y:         $dropdown-padding-y !default;
+// fusv-disable
+$dropdown-header-padding:           $dropdown-header-padding-y $dropdown-header-padding-x !default; // Deprecated in v5.2.0
+// fusv-enable
 // scss-docs-end dropdown-variables
 
 // scss-docs-start dropdown-dark-variables
