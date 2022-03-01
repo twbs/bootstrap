@@ -442,17 +442,21 @@ class Carousel extends BaseComponent {
         }
       }
 
-      const action = typeof config === 'string' ? config : _config.slide
-
       if (typeof config === 'number') {
         data.to(config)
-      } else if (typeof action === 'string') {
-        if (typeof data[action] === 'undefined') {
-          throw new TypeError(`No method named "${action}"`)
+        return
+      }
+
+      if (typeof config === 'string') {
+        if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
+          throw new TypeError(`No method named "${config}"`)
         }
 
-        data[action]()
-      } else if (_config.interval && _config.ride) {
+        data[config]()
+        return
+      }
+
+      if (_config.interval && _config.ride) {
         data.pause()
         data.cycle()
       }
