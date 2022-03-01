@@ -376,8 +376,8 @@ class Dropdown extends BaseComponent {
   }
 
   static dataApiKeydownHandler(event) {
-    // If not a key of UP | DOWN | ESCAPE => not a dropdown command
-    // If input/textarea && If key is other than ESCAPE  => not a dropdown command
+    // If not an UP | DOWN | ESCAPE key => not a dropdown command
+    // If input/textarea && if key is other than ESCAPE => not a dropdown command
 
     const { target, key, delegateTarget } = event
     const isInput = /input|textarea/i.test(target.tagName)
