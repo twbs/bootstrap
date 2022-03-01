@@ -239,9 +239,17 @@ Try the top, right, and bottom examples out below.
 
 Since the offcanvas panel is conceptually a modal dialog, be sure to add `aria-labelledby="..."`—referencing the offcanvas title—to `.offcanvas`. Note that you don’t need to add `role="dialog"` since we already add it via JavaScript.
 
-## Sass
+## CSS
 
 ### Variables
+
+<small class="d-inline-flex px-2 py-1 fw-semibold text-success bg-success bg-opacity-10 rounded-2">Added in v5.2.0</small>
+
+As part of Bootstrap's evolving CSS variables approach, offcanvas now uses local CSS variables on `.offcanvas` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+{{< scss-docs name="offcanvas-css-vars" file="scss/_offcanvas.scss" >}}
+
+### Sass variables
 
 {{< scss-docs name="offcanvas-variables" file="scss/_variables.scss" >}}
 
