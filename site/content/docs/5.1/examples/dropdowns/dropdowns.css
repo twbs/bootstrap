@@ -52,6 +52,7 @@
   background-color: rgba(0, 0, 0, .05);
 }
 .cal-btn[disabled] {
+  border: 0;
   opacity: .5;
 }
 
