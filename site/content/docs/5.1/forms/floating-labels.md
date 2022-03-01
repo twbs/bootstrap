@@ -104,11 +104,11 @@ Floating labels also support `.input-group`.
 </div>
 {{< /example >}}
 
-When using `.input-group` and `.form-floating` along with form validation, the `-feedback` should be placed outside of the `.form-floating`, but inside of the `.input-group`. This means that the feedback will need to be shown using javascript. For example, by placing `.is-invalid` on the `.form-floating` element.
+When using `.input-group` and `.form-floating` along with form validation, the `-feedback` should be placed outside of the `.form-floating`, but inside of the `.input-group`. This means that the feedback will need to be shown using javascript.
 
 {{< example >}}
 <div>
-  <div class="input-group mb-3">
+  <div class="input-group mb-3 has-validation">
     <span class="input-group-text">@</span>
     <div class="form-floating is-invalid">
       <input type="text" class="form-control is-invalid" id="inputGroupExample2" placeholder="Username" required>
