@@ -438,10 +438,10 @@ describe('Modal', () => {
         const modalEl = fixtureEl.querySelector('.modal')
         const modal = new Modal(modalEl)
 
-        spyOn(modal, '_adjustDialog').and.callThrough()
+        const spy = spyOn(modal, '_adjustDialog').and.callThrough()
 
         const expectDone = () => {
-          expect(modal._adjustDialog).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
 
           resolve()
         }
