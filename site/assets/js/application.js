@@ -15,6 +15,21 @@
 (() => {
   'use strict'
 
+  // Scroll the active sidebar link into view
+  const sidenav = document.querySelector('.bd-sidebar')
+  if (sidenav) {
+    const sidenavHeight = sidenav.clientHeight
+    const sidenavActiveLink = document.querySelector('.bd-links-nav .active')
+    const sidenavActiveLinkTop = sidenavActiveLink.offsetTop
+    const sidenavActiveLinkHeight = sidenavActiveLink.clientHeight
+    const viewportTop = sidenavActiveLinkTop
+    const viewportBottom = viewportTop - sidenavHeight + sidenavActiveLinkHeight
+
+    if (sidenav.scrollTop > viewportTop || sidenav.scrollTop < viewportBottom) {
+      sidenav.scrollTop = viewportTop - (sidenavHeight / 2) + (sidenavActiveLinkHeight / 2)
+    }
+  }
+
   // Tooltip and popover demos
   document.querySelectorAll('.tooltip-demo')
     .forEach(tooltip => {
@@ -120,8 +135,9 @@
   // Insert copy to clipboard button before .highlight
   const btnTitle = 'Copy to clipboard'
   const btnEdit = 'Edit on StackBlitz'
-  const btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard">Copy</button></div>'
-  document.querySelectorAll('div.highlight')
+  const btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard"><svg class="bi" width="1em" height="1em" fill="currentColor" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg></button></div>'
+
+  document.querySelectorAll('.bd-masthead .highlight, .bd-content > .highlight')
     .forEach(element => {
       element.insertAdjacentHTML('beforebegin', btnHtml)
     })
@@ -149,18 +165,29 @@
 
   const clipboard = new ClipboardJS('.btn-clipboard', {
     target(trigger) {
-      return trigger.parentNode.nextElementSibling
+      const snippet = trigger.parentNode.classList.contains('bd-clipboard') ? trigger.parentNode.nextElementSibling : trigger.closest('.bd-example-snippet').querySelector('.highlight')
+      return snippet
     }
   })
 
   clipboard.on('success', event => {
+    const iconFirstChild = event.trigger.querySelector('.bi').firstChild
     const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
+    const namespace = 'http://www.w3.org/1999/xlink'
+    const originalXhref = iconFirstChild.getAttributeNS(namespace, 'href')
+    const originalTitle = event.trigger.title
 
     tooltipBtn.setContent({ '.tooltip-inner': 'Copied!' })
     event.trigger.addEventListener('hidden.bs.tooltip', () => {
       tooltipBtn.setContent({ '.tooltip-inner': btnTitle })
     }, { once: true })
     event.clearSelection()
+    iconFirstChild.setAttributeNS(namespace, 'href', originalXhref.replace('clipboard', 'check2'))
+
+    setTimeout(() => {
+      iconFirstChild.setAttributeNS(namespace, 'href', originalXhref)
+      event.trigger.title = originalTitle
+    }, 2000)
   })
 
   clipboard.on('error', event => {

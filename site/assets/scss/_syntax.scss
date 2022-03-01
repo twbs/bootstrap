@@ -101,7 +101,7 @@
   .language-bash,
   .language-sh {
     &::before {
-      color: #009;
+      color: #777;
       content: "$ ";
       user-select: none;
     }

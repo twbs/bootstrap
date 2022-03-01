@@ -1,74 +1,89 @@
-<header class="navbar navbar-expand-md navbar-dark bd-navbar">
-  <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="Main navigation">
-    <a class="navbar-brand p-0 me-2" href="/" aria-label="Bootstrap">
+<header class="navbar navbar-expand-lg navbar-dark bd-navbar sticky-top">
+  <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+    {{- if eq .Layout "docs" }}
+      <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar" aria-controls="bdSidebar" aria-expanded="false" aria-label="Toggle docs navigation">
+        {{ partial "icons/hamburger.svg" (dict "class" "bi" "width" "24" "height" "24") }}
+        <span class="d-none fs-6 pe-1">Browse</span>
+      </button>
+    {{- else }}
+      <div class="d-lg-none" style="width: 2.25rem;"></div>
+    {{- end }}
+
+    <a class="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="Bootstrap">
       {{ partial "icons/bootstrap-white-fill.svg" (dict "class" "d-block my-1" "width" "40" "height" "32") }}
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
-      {{ partial "icons/hamburger.svg" (dict "class" "bi" "width" "32" "height" "32") }}
+    <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <svg class="bi" width="24" height="24" aria-hidden="true"><use xlink:href="#three-dots"></use></svg>
     </button>
 
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
-      <div class="offcanvas-header pb-0">
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+      <div class="offcanvas-header px-4 pb-0">
         <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Bootstrap</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
       </div>
 
-      <div class="offcanvas-body pt-0">
-        <hr class="d-md-none text-white-50">
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none text-white-50">
         <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
-          <li class="nav-item col-6 col-md-auto">
-            <a class="nav-link p-2{{ if .IsHome }} active" aria-current="page{{ end }}" href="/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Home</a>
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2{{ if eq .Page.Layout "docs" }} active" aria-current="true{{ end }}" href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Docs</a>
           </li>
-          <li class="nav-item col-6 col-md-auto">
-            <a class="nav-link p-2{{ if eq .Page.Layout "docs" }} active" aria-current="true{{ end }}" href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Docs</a>
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2{{ if eq .Page.Title "Examples" }} active" aria-current="true{{ end }}" href="/docs/{{ .Site.Params.docs_version }}/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
           </li>
-          <li class="nav-item col-6 col-md-auto">
-            <a class="nav-link p-2{{ if eq .Page.Title "Examples" }} active" aria-current="true{{ end }}" href="/docs/{{ .Site.Params.docs_version }}/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="{{ .Site.Params.icons }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');" target="_blank" rel="noopener">Icons</a>
           </li>
-          <li class="nav-item col-6 col-md-auto">
-            <a class="nav-link p-2" href="{{ .Site.Params.icons }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');" target="_blank" rel="noopener">Icons</a>
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="{{ .Site.Params.themes }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');" target="_blank" rel="noopener">Themes</a>
           </li>
-          <li class="nav-item col-6 col-md-auto">
-            <a class="nav-link p-2" href="{{ .Site.Params.themes }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');" target="_blank" rel="noopener">Themes</a>
-          </li>
-          <li class="nav-item col-6 col-md-auto">
-            <a class="nav-link p-2" href="{{ .Site.Params.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');" target="_blank" rel="noopener">Blog</a>
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="{{ .Site.Params.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');" target="_blank" rel="noopener">Blog</a>
           </li>
         </ul>
 
-        <hr class="d-md-none text-white-50">
+        <hr class="d-lg-none text-white-50">
+
+        {{ if eq .Layout "docs" }}
+        <form class="bd-search" data-shortcut="⌘K">
+          <input type="search" class="form-control" id="search-input" placeholder="Search docs..." aria-label="Search docs for..." autocomplete="off" data-bd-docs-version="{{ .Site.Params.docs_version }}">
+        </form>
+
+        <hr class="d-lg-none text-white-50">
+        {{ end }}
 
         <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
-          <li class="nav-item col-6 col-md-auto">
-            <a class="nav-link p-2" href="{{ .Site.Params.github_org }}" target="_blank" rel="noopener">
-              {{ partial "icons/github.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
-              <small class="d-md-none ms-2">GitHub</small>
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="{{ .Site.Params.github_org }}" target="_blank" rel="noopener">
+              {{ partial "icons/github.svg" (dict "class" "navbar-nav-svg" "width" "16" "height" "16") }}
+              <small class="d-lg-none ms-2">GitHub</small>
             </a>
           </li>
-          <li class="nav-item col-6 col-md-auto">
-            <a class="nav-link p-2" href="https://twitter.com/{{ .Site.Params.twitter }}" target="_blank" rel="noopener">
-              {{ partial "icons/twitter.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
-              <small class="d-md-none ms-2">Twitter</small>
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://twitter.com/{{ .Site.Params.twitter }}" target="_blank" rel="noopener">
+              {{ partial "icons/twitter.svg" (dict "class" "navbar-nav-svg" "width" "16" "height" "16") }}
+              <small class="d-lg-none ms-2">Twitter</small>
             </a>
           </li>
-          <li class="nav-item col-6 col-md-auto">
-            <a class="nav-link p-2" href="{{ .Site.Params.slack }}" target="_blank" rel="noopener">
-              {{ partial "icons/slack.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
-              <small class="d-md-none ms-2">Slack</small>
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="{{ .Site.Params.slack }}" target="_blank" rel="noopener">
+              {{ partial "icons/slack.svg" (dict "class" "navbar-nav-svg" "width" "16" "height" "16") }}
+              <small class="d-lg-none ms-2">Slack</small>
             </a>
           </li>
-          <li class="nav-item col-6 col-md-auto">
-            <a class="nav-link p-2" href="{{ .Site.Params.opencollective }}" target="_blank" rel="noopener">
-              {{ partial "icons/opencollective.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
-              <small class="d-md-none ms-2">Open Collective</small>
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="{{ .Site.Params.opencollective }}" target="_blank" rel="noopener">
+              {{ partial "icons/opencollective.svg" (dict "class" "navbar-nav-svg" "width" "16" "height" "16") }}
+              <small class="d-lg-none ms-2">Open Collective</small>
             </a>
           </li>
+          <li class="nav-item py-1 col-12 col-lg-auto">
+            <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+            <hr class="d-lg-none text-white-50">
+          </li>
+          {{ partial "docs-versions" . }}
         </ul>
-
-        <hr class="d-md-none text-white-50">
-
-        <a class="btn btn-bd-accent d-lg-inline-block my-2 my-md-0 ms-md-3" href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/">Download</a>
       </div>
     </div>
   </nav>

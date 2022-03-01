@@ -15,6 +15,7 @@
 
     ul {
       padding-left: 0;
+      margin-bottom: 0;
       list-style: none;
 
       ul {
@@ -38,5 +39,49 @@
         font: inherit;
       }
     }
+  }
+}
+
+.bd-toc-toggle {
+  display: flex;
+  align-items: center;
+
+  @include media-breakpoint-down(sm) {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  @include media-breakpoint-down(md) {
+    border: 1px solid $border-color;
+    @include border-radius(.4rem);
+
+    &:hover,
+    &:focus,
+    &:active,
+    &[aria-expanded="true"] {
+      color: var(--bd-violet);
+      background-color: $white;
+      border-color: var(--bd-violet);
+    }
+
+    &:focus,
+    &[aria-expanded="true"] {
+      box-shadow: 0 0 0 3px rgba(var(--bd-violet-rgb), .25);
+    }
+  }
+}
+
+.bd-toc-collapse {
+  @include media-breakpoint-down(md) {
+    nav {
+      padding: 1.25rem;
+      background-color: var(--bs-gray-100);
+      border: 1px solid $border-color;
+      @include border-radius(.25rem);
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    display: block !important; // stylelint-disable-line declaration-no-important
   }
 }

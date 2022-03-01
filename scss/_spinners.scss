@@ -29,7 +29,7 @@
   --#{$prefix}spinner-animation-name: spinner-border;
   // scss-docs-end spinner-border-css-vars
 
-  border: var(--#{$prefix}spinner-border-width) solid currentColor;
+  border: var(--#{$prefix}spinner-border-width) solid currentcolor;
   border-right-color: transparent;
 }
 
