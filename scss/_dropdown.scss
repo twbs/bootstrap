@@ -43,7 +43,7 @@
   --#{$variable-prefix}dropdown-header-color: #{$dropdown-header-color};
   --#{$variable-prefix}dropdown-header-padding-x: #{$dropdown-header-padding-x};
   --#{$variable-prefix}dropdown-header-padding-y: #{$dropdown-header-padding-y};
-  // scss-docs-end dropdown-css-vary
+  // scss-docs-end dropdown-css-vars
 
   position: absolute;
   z-index: $zindex-dropdown;
