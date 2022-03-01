@@ -114,6 +114,8 @@ Use the scaling classes for larger or smaller rounded corners. Sizes range from 
 {{< placeholder width="75" height="75" class="rounded-1" title="Example small rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-2" title="Example default rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-3" title="Example large rounded image" >}}
+{{< placeholder width="75" height="75" class="rounded-4" title="Example larger rounded image" >}}
+{{< placeholder width="75" height="75" class="rounded-5" title="Example extra large rounded image" >}}
 {{< /example >}}
 
 ## Sass
