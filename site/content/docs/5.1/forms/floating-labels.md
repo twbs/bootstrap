@@ -111,7 +111,7 @@ When using `.input-group` and `.form-floating` along with form validation, the `
   <div class="input-group mb-3">
     <span class="input-group-text">@</span>
     <div class="form-floating is-invalid">
-      <input type="text" class="form-control" id="inputGroupExample2" placeholder="Username" required>
+      <input type="text" class="form-control is-invalid" id="inputGroupExample2" placeholder="Username" required>
       <label for="inputGroupExample2">Username</label>
     </div>
     <div class="invalid-feedback">
