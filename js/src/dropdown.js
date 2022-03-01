@@ -48,8 +48,6 @@ const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_DROPUP = 'dropup'
 const CLASS_NAME_DROPEND = 'dropend'
 const CLASS_NAME_DROPSTART = 'dropstart'
-const CLASS_NAME_DROPUP_CENTER = 'dropup-center'
-const CLASS_NAME_DROPDOWN_CENTER = 'dropdown-center'
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)'
 const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE}.${CLASS_NAME_SHOW}`
@@ -64,8 +62,6 @@ const PLACEMENT_BOTTOM = isRTL() ? 'bottom-end' : 'bottom-start'
 const PLACEMENT_BOTTOMEND = isRTL() ? 'bottom-start' : 'bottom-end'
 const PLACEMENT_RIGHT = isRTL() ? 'left-start' : 'right-start'
 const PLACEMENT_LEFT = isRTL() ? 'right-start' : 'left-start'
-const PLACEMENT_TOPCENTER = 'top'
-const PLACEMENT_BOTTOMCENTER = 'bottom'
 
 const Default = {
   offset: [0, 2],
@@ -252,14 +248,6 @@ class Dropdown extends BaseComponent {
       return PLACEMENT_LEFT
     }
 
-    if (parentDropdown.classList.contains(CLASS_NAME_DROPUP_CENTER)) {
-      return PLACEMENT_TOPCENTER
-    }
-
-    if (parentDropdown.classList.contains(CLASS_NAME_DROPDOWN_CENTER)) {
-      return PLACEMENT_BOTTOMCENTER
-    }
-
     // We need to trim the value because custom properties can also include spaces
     const isEnd = getComputedStyle(this._menu).getPropertyValue('--bs-position').trim() === 'end'
 
@@ -391,10 +379,9 @@ class Dropdown extends BaseComponent {
     // If not an UP | DOWN | ESCAPE key => not a dropdown command
     // If input/textarea && if key is other than ESCAPE => not a dropdown command
 
-    const { target, key, delegateTarget } = event
-    const isInput = /input|textarea/i.test(target.tagName)
-    const isEscapeEvent = key === ESCAPE_KEY
-    const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(key)
+    const isInput = /input|textarea/i.test(event.target.tagName)
+    const isEscapeEvent = event.key === ESCAPE_KEY
+    const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key)
 
     if (!isUpOrDownEvent && !isEscapeEvent) {
       return
@@ -409,7 +396,7 @@ class Dropdown extends BaseComponent {
       event.stopPropagation()
     }
 
-    const getToggleButton = SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, delegateTarget.parentNode)
+    const getToggleButton = SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode)
     const instance = Dropdown.getOrCreateInstance(getToggleButton)
 
     if (isEscapeEvent) {
