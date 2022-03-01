@@ -400,6 +400,23 @@ And putting it to use in a navbar:
 Directions are mirrored when using Bootstrap in RTL, meaning `.dropstart` will appear on the right side.
 {{< /callout >}}
 
+### Centered
+
+Make the dropdown menu centered below the toggle with `.dropdown-center` on the parent element.
+
+{{< example >}}
+<div class="dropdown-center">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCenterBtn" data-bs-toggle="dropdown" aria-expanded="false">
+    Centered dropdown
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownCenterBtn">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Action two</a></li>
+    <li><a class="dropdown-item" href="#">Action three</a></li>
+  </ul>
+</div>
+{{< /example >}}
+
 ### Dropup
 
 Trigger dropdown menus above elements by adding `.dropup` to the parent element.
@@ -458,6 +475,23 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
   </ul>
 </div>
 ```
+
+### Dropup centered
+
+Make the dropup menu centered above the toggle with `.dropup-center` on the parent element.
+
+{{< example >}}
+<div class="dropup-center">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropupCenterBtn" data-bs-toggle="dropdown" aria-expanded="false">
+    Centered dropup
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropupCenterBtn">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Action two</a></li>
+    <li><a class="dropdown-item" href="#">Action three</a></li>
+  </ul>
+</div>
+{{< /example >}}
 
 ### Dropend
 

@@ -156,7 +156,7 @@
   line-height: 1;
   color: var(--#{$variable-prefix}navbar-color);
   background-color: transparent; // remove default button style
-  border: $border-width solid var(--#{$variable-prefix}navbar-toggler-border-color); // remove default button style
+  border: var(--#{$variable-prefix}border-width) solid var(--#{$variable-prefix}navbar-toggler-border-color); // remove default button style
   @include border-radius(var(--#{$variable-prefix}navbar-toggler-border-radius));
   @include transition(var(--#{$variable-prefix}navbar-toggler-transition));
 
