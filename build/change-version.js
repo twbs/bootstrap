@@ -26,6 +26,7 @@ const GLOBBY_OPTIONS = {
 }
 
 // Avoid modifying documentation content, **/dist files and dependencies in package*.json files matching the newVersion
+// We'll modify package*.json later explicitly
 const EXCLUDE_FILES_PATTERN = /^(site\/content\/docs\/|package\.json|package-lock\.json|(.*\/)?dist\/)/
 
 // Blame TC39... https://github.com/benjamingr/RegExp.escape/issues/37
