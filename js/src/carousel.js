@@ -266,11 +266,6 @@ class Carousel extends BaseComponent {
     return this._getItems().indexOf(element)
   }
 
-  _getItemByOrder(order, activeElement) {
-    const isNext = order === ORDER_NEXT
-    return getNextActiveElement(this._getItems(), activeElement, isNext, this._config.wrap)
-  }
-
   _setActiveIndicatorElement(index) {
     if (!this._indicatorsElement) {
       return
@@ -303,10 +298,8 @@ class Carousel extends BaseComponent {
 
   _slide(order, element = null) {
     const activeElement = this._getActive()
-    const activeElementIndex = this._getItemIndex(activeElement)
-
-    const nextElement = element || this._getItemByOrder(order, activeElement)
-    const nextElementIndex = this._getItemIndex(nextElement)
+    const isNext = order === ORDER_NEXT
+    const nextElement = element || getNextActiveElement(this._getItems(), activeElement, isNext, this._config.wrap)
 
     if (nextElement && nextElement.classList.contains(CLASS_NAME_ACTIVE)) {
       this._isSliding = false
@@ -317,11 +310,13 @@ class Carousel extends BaseComponent {
       return
     }
 
+    const nextElementIndex = this._getItemIndex(nextElement)
+
     const triggerEvent = eventName => {
       return EventHandler.trigger(this._element, eventName, {
         relatedTarget: nextElement,
         direction: this._orderToDirection(order),
-        from: activeElementIndex,
+        from: this._getItemIndex(activeElement),
         to: nextElementIndex
       })
     }
@@ -347,7 +342,6 @@ class Carousel extends BaseComponent {
     this._setActiveIndicatorElement(nextElementIndex)
     this._activeElement = nextElement
 
-    const isNext = order === ORDER_NEXT
     const directionalClassName = isNext ? CLASS_NAME_START : CLASS_NAME_END
     const orderClassName = isNext ? CLASS_NAME_NEXT : CLASS_NAME_PREV
 
