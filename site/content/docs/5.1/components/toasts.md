@@ -216,7 +216,7 @@ Place toasts with custom CSS as you need them. The top right is often used for n
   </div>
 </form>
 <div aria-live="polite" aria-atomic="true" class="bg-dark position-relative bd-example-toasts">
-  <div class="toast-container position-absolute p-3" id="toastPlacement">
+  <div class="toast-container p-3" id="toastPlacement">
     <div class="toast">
       <div class="toast-header">
         {{< placeholder width="20" height="20" background="#007aff" class="rounded me-2" text="false" title="false" >}}
@@ -237,9 +237,9 @@ For systems that generate more notifications, consider using a wrapping element 
 <div aria-live="polite" aria-atomic="true" class="position-relative">
   <!-- Position it: -->
   <!-- - `.toast-container` for spacing between toasts -->
-  <!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
+  <!-- - `top-0` & `end-0` to position the toasts in the upper right corner -->
   <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
-  <div class="toast-container position-absolute top-0 end-0 p-3">
+  <div class="toast-container top-0 end-0 p-3">
 
     <!-- Then put toasts within -->
     <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
