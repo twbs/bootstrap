@@ -10,7 +10,7 @@
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global ClipboardJS: false, StackBlitzSDK: false, bootstrap: false */
+/* global ClipboardJS: false, bootstrap: false */
 
 (function () {
   'use strict'
