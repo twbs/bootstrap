@@ -297,15 +297,15 @@ class Carousel extends BaseComponent {
   }
 
   _slide(order, element = null) {
+    if (this._isSliding) {
+      return
+    }
+
     const activeElement = this._getActive()
     const isNext = order === ORDER_NEXT
     const nextElement = element || getNextActiveElement(this._getItems(), activeElement, isNext, this._config.wrap)
 
     if (nextElement === activeElement) {
-      return
-    }
-
-    if (this._isSliding) {
       return
     }
 
