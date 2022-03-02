@@ -4,23 +4,23 @@
 
 .alert {
   // scss-docs-start alert-css-vars
-  --#{$variable-prefix}alert-bg: transparent;
-  --#{$variable-prefix}alert-padding-x: #{$alert-padding-x};
-  --#{$variable-prefix}alert-padding-y: #{$alert-padding-y};
-  --#{$variable-prefix}alert-margin-bottom: #{$alert-margin-bottom};
-  --#{$variable-prefix}alert-color: inherit;
-  --#{$variable-prefix}alert-border-color: transparent;
-  --#{$variable-prefix}alert-border: #{$alert-border-width} solid var(--#{$variable-prefix}alert-border-color);
-  --#{$variable-prefix}alert-border-radius: #{$alert-border-radius};
+  --#{$prefix}alert-bg: transparent;
+  --#{$prefix}alert-padding-x: #{$alert-padding-x};
+  --#{$prefix}alert-padding-y: #{$alert-padding-y};
+  --#{$prefix}alert-margin-bottom: #{$alert-margin-bottom};
+  --#{$prefix}alert-color: inherit;
+  --#{$prefix}alert-border-color: transparent;
+  --#{$prefix}alert-border: #{$alert-border-width} solid var(--#{$prefix}alert-border-color);
+  --#{$prefix}alert-border-radius: #{$alert-border-radius};
   // scss-docs-end alert-css-vars
 
   position: relative;
-  padding: var(--#{$variable-prefix}alert-padding-y) var(--#{$variable-prefix}alert-padding-x);
-  margin-bottom: var(--#{$variable-prefix}alert-margin-bottom);
-  color: var(--#{$variable-prefix}alert-color);
-  background-color: var(--#{$variable-prefix}alert-bg);
-  border: var(--#{$variable-prefix}alert-border);
-  border-radius: var(--#{$variable-prefix}alert-border-radius, 0); // stylelint-disable-line property-disallowed-list
+  padding: var(--#{$prefix}alert-padding-y) var(--#{$prefix}alert-padding-x);
+  margin-bottom: var(--#{$prefix}alert-margin-bottom);
+  color: var(--#{$prefix}alert-color);
+  background-color: var(--#{$prefix}alert-bg);
+  border: var(--#{$prefix}alert-border);
+  border-radius: var(--#{$prefix}alert-border-radius, 0); // stylelint-disable-line property-disallowed-list
 }
 
 // Headings for larger alerts
