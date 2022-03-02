@@ -1093,7 +1093,7 @@ describe('Dropdown', () => {
   })
 
   describe('update', () => {
-    it('should call Popper and detect navbar on update', () => {
+    it('should call Popper on update', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -1111,33 +1111,10 @@ describe('Dropdown', () => {
       expect(dropdown._popper).not.toBeNull()
 
       const spyUpdate = spyOn(dropdown._popper, 'update')
-      const spyDetect = spyOn(dropdown, '_detectNavbar')
 
       dropdown.update()
 
       expect(spyUpdate).toHaveBeenCalled()
-      expect(spyDetect).toHaveBeenCalled()
-    })
-
-    it('should just detect navbar on update', () => {
-      fixtureEl.innerHTML = [
-        '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
-        '  <div class="dropdown-menu">',
-        '    <a class="dropdown-item" href="#">Secondary link</a>',
-        '  </div>',
-        '</div>'
-      ].join('')
-
-      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
-      const dropdown = new Dropdown(btnDropdown)
-
-      const spy = spyOn(dropdown, '_detectNavbar')
-
-      dropdown.update()
-
-      expect(dropdown._popper).toBeNull()
-      expect(spy).toHaveBeenCalled()
     })
   })
 
@@ -1185,33 +1162,6 @@ describe('Dropdown', () => {
       })
     })
 
-    it('should not use "static" Popper in navbar', () => {
-      return new Promise(resolve => {
-        fixtureEl.innerHTML = [
-          '<nav class="navbar navbar-expand-md bg-light">',
-          '  <div class="dropdown">',
-          '    <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
-          '    <div class="dropdown-menu">',
-          '      <a class="dropdown-item" href="#">Secondary link</a>',
-          '    </div>',
-          '  </div>',
-          '</nav>'
-        ].join('')
-
-        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
-        const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
-        const dropdown = new Dropdown(btnDropdown)
-
-        btnDropdown.addEventListener('shown.bs.dropdown', () => {
-          expect(dropdown._popper).not.toBeNull()
-          expect(dropdownMenu.getAttribute('data-bs-popper')).toEqual('static')
-          resolve()
-        })
-
-        dropdown.show()
-      })
-    })
-
     it('should not collapse the dropdown when clicking a select option nested in the dropdown', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
@@ -1255,13 +1205,13 @@ describe('Dropdown', () => {
       })
     })
 
-    it('should manage bs attribute `data-bs-popper`="static" when dropdown is in navbar', () => {
+    it('should manage bs attribute `data-bs-popper`="static" when dropdown has position=static', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<nav class="navbar navbar-expand-md bg-light">',
           '  <div class="dropdown">',
           '    <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
-          '    <div class="dropdown-menu">',
+          '    <div class="dropdown-menu" style="position:static;">',
           '      <a class="dropdown-item" href="#">Secondary link</a>',
           '    </div>',
           '  </div>',
@@ -1273,8 +1223,13 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown)
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
-          expect(dropdownMenu.getAttribute('data-bs-popper')).toEqual('static')
-          dropdown.hide()
+          setTimeout(() => {
+            expect(dropdownMenu.getAttribute('data-bs-popper')).toEqual('static')
+            expect(dropdownMenu.style.getPropertyValue('margin')).toEqual('')
+            expect(dropdownMenu.style.getPropertyValue('position')).toEqual('')
+            expect(dropdownMenu.style.getPropertyValue('transform')).toEqual('')
+            dropdown.hide()
+          })
         })
 
         btnDropdown.addEventListener('hidden.bs.dropdown', () => {
@@ -1286,7 +1241,7 @@ describe('Dropdown', () => {
       })
     })
 
-    it('should not use Popper if display set to static', () => {
+    it('should handle Popper if display set to static', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<div class="dropdown">',
@@ -1302,7 +1257,51 @@ describe('Dropdown', () => {
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
           // Popper adds this attribute when we use it
+
           expect(dropdownMenu.getAttribute('data-popper-placement')).toBeNull()
+          setTimeout(() => {
+            expect(dropdownMenu.style.getPropertyValue('margin')).toEqual('')
+            expect(dropdownMenu.style.getPropertyValue('position')).toEqual('')
+            expect(dropdownMenu.style.getPropertyValue('transform')).toEqual('')
+            resolve()
+          })
+        })
+
+        btnDropdown.click()
+      })
+    })
+
+    it('should handle Popper if css position is set to static', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<style>',
+          '  .dropdown-menu { position: static }',
+          '</style>',
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <a class="dropdown-item" href="#">Secondary link</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Popper adds this attribute when we use it
+          expect(dropdownMenu.getAttribute('data-popper-placement')).toBeNull()
+          setTimeout(() => {
+            expect(dropdownMenu.getAttribute('data-bs-popper')).toEqual('static')
+            expect(dropdownMenu.style.getPropertyValue('margin')).toEqual('')
+            expect(dropdownMenu.style.getPropertyValue('position')).toEqual('')
+            expect(dropdownMenu.style.getPropertyValue('transform')).toEqual('')
+            btnDropdown.click()
+          })
+        })
+
+        btnDropdown.addEventListener('hidden.bs.dropdown', () => {
+          expect(dropdownMenu.getAttribute('data-bs-popper')).toBeNull()
           resolve()
         })
 
@@ -1326,8 +1325,10 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown)
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
-          expect(dropdownMenu.getAttribute('data-bs-popper')).toEqual('static')
-          dropdown.hide()
+          setTimeout(() => {
+            expect(dropdownMenu.getAttribute('data-bs-popper')).toEqual('static')
+            dropdown.hide()
+          })
         })
 
         btnDropdown.addEventListener('hidden.bs.dropdown', () => {
@@ -1974,7 +1975,7 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(triggerDropdown)
         const button = fixtureEl.querySelector('button[data-bs-toggle="dropdown"]')
 
-        const spy = spyOn(dropdown, 'toggle')
+        spyOn(dropdown, 'toggle')
 
         // Key escape
         button.focus()
@@ -1984,7 +1985,7 @@ describe('Dropdown', () => {
         button.dispatchEvent(keydownEscape)
 
         setTimeout(() => {
-          expect(spy).not.toHaveBeenCalled()
+          expect(dropdown.toggle).not.toHaveBeenCalled()
           expect(triggerDropdown).not.toHaveClass('show')
           resolve()
         }, 20)

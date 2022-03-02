@@ -55,7 +55,6 @@ const CLASS_NAME_DROPDOWN_CENTER = 'dropdown-center'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)'
 const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE}.${CLASS_NAME_SHOW}`
 const SELECTOR_MENU = '.dropdown-menu'
-const SELECTOR_NAVBAR_NAV = '.navbar-nav'
 const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
 
 const PLACEMENT_TOP = isRTL() ? 'top-end' : 'top-start'
@@ -99,7 +98,6 @@ class Dropdown extends BaseComponent {
     this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] ||
       SelectorEngine.prev(this._element, SELECTOR_MENU)[0] ||
       SelectorEngine.findOne(SELECTOR_MENU, this._parent)
-    this._inNavbar = this._detectNavbar()
   }
 
   // Getters
@@ -141,7 +139,7 @@ class Dropdown extends BaseComponent {
     // empty mouseover listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
-    if ('ontouchstart' in document.documentElement && !this._parent.closest(SELECTOR_NAVBAR_NAV)) {
+    if ('ontouchstart' in document.documentElement) {
       for (const element of [].concat(...document.body.children)) {
         EventHandler.on(element, 'mouseover', noop)
       }
@@ -304,15 +302,20 @@ class Dropdown extends BaseComponent {
       {
         name: 'applyCustomStyles',
         enabled: true,
-        phase: 'afterWrite',
-        fn: () => {
+        phase: 'beforeRead',
+        fn: ({ state, instance }) => {
           this._menu.style.removeProperty('position')
           const initialPosition = getComputedStyle(this._menu).position
           if (this._config.display === 'static' || initialPosition === 'static') {
-            // this._menu.style.position = 'static'
-            this._menu.style.removeProperty('margin')
-            this._menu.style.removeProperty('transform')
             Manipulator.setDataAttribute(this._menu, 'popper', 'static') // todo:v6 remove?
+            instance.setOptions({
+              modifiers: [{
+                name: 'applyStyles',
+                enabled: false
+              }]
+            })
+          } else {
+            this._menu.style.position = state.styles.popper.position // put back position
           }
         }
       }]
