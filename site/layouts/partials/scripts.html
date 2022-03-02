@@ -59,7 +59,7 @@ ${snippet.replace(/^/gm, '    ')}
         tags: ['bootstrap']
       }
 
-      StackBlitzSDK.openProject(project)
+    StackBlitzSDK.openProject(project, { openFile: 'index.html' })
   }
 </script>
 {{- end }}

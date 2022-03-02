@@ -127,7 +127,7 @@
 
   /**
    *
-   * @param {HTMLButtonElement} element
+   * @param {HTMLButtonElement} btn
    * @param {string} title
    */
   function snippetButtonTooltip(btn, title) {
