@@ -38,11 +38,11 @@
 }
 
 // stylelint-disable scss/dollar-variable-pattern
-@function rgba-css-var($identifier, $target) {
-  @if $identifier == "body" and $target == "bg" {
-    @return rgba(var(--#{$variable-prefix}#{$identifier}-bg-rgb), var(--#{$variable-prefix}#{$target}-opacity));
-  } @if $identifier == "body" and $target == "text" {
-    @return rgba(var(--#{$variable-prefix}#{$identifier}-color-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+@function rgba-css-var($identifier, $target, $value: null) {
+  @if ($identifier == "body" or $identifier == "white") and $target == "bg" {
+    @return rgba(var(--#{$variable-prefix}#{$value}-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+  } @else if ($identifier == "body" or $identifier == "white") and $target == "text" {
+    @return rgba(var(--#{$variable-prefix}#{$value}-rgb), var(--#{$variable-prefix}#{$target}-opacity));
   } @else {
     @return rgba(var(--#{$variable-prefix}#{$identifier}-rgb), var(--#{$variable-prefix}#{$target}-opacity));
   }

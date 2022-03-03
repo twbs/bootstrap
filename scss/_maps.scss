@@ -19,35 +19,25 @@ $utilities-colors: $theme-colors-rgb !default;
 $utilities-text: map-merge(
   $utilities-colors,
   (
-    "black": to-rgb($black),
-    "white": to-rgb($white),
-    "body": to-rgb($body-color)
+    // "black": to-rgb($warning), // A priori .text-black n'existe pas donc on pourrait le supprimer
+    "white": "warning",
+    "body": "warning",
   )
 ) !default;
-$utilities-text-colors: map-loop($utilities-text, rgba-css-var, "$key", "text") !default;
+$utilities-text-colors: map-loop($utilities-text, rgba-css-var, "$key", "text", "$value") !default;
 // scss-docs-end utilities-text-colors
 
 // scss-docs-start utilities-bg-colors
 $utilities-bg: map-merge(
   $utilities-colors,
   (
-    "black": to-rgb($black),
-    "white": to-rgb($white),
-    "body": to-rgb($body-bg)
+    // "black": to-rgb($warning), // A priori .bg-black n'existe pas donc on pourrait le supprimer
+    "white": "warning",
+    "body": "warning",
   )
 ) !default;
-$utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg") !default;
+$utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg", "$value") !default;
 // scss-docs-end utilities-bg-colors
-
-// scss-docs-start utilities-border-colors
-$utilities-border: map-merge(
-  $utilities-colors,
-  (
-    "white": to-rgb($white)
-  )
-) !default;
-$utilities-border-colors: map-loop($utilities-border, rgba-css-var, "$key", "border") !default;
-// scss-docs-end utilities-border-colors
 
 $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
 
