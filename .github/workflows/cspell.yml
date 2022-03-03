@@ -12,23 +12,7 @@ env:
   NODE: 16
 
 jobs:
-  pre_job:
-    runs-on: ubuntu-latest
-    outputs:
-      should_skip: ${{ steps.skip_check.outputs.should_skip }}
-    steps:
-      - id: skip_check
-        uses: fkirc/skip-duplicate-actions@v3
-        with:
-          github_token: ${{ github.token }}
-          cancel_others: 'true'
-          # skip_after_successful_duplicate: 'false'
-          concurrent_skipping: 'same_content'
-          do_not_skip: '["pull_request", "workflow_dispatch"]'
-
   cspell:
-    needs: pre_job
-    if: ${{ needs.pre_job.outputs.should_skip == 'false' }}
     runs-on: ubuntu-latest
 
     steps:
