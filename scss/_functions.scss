@@ -38,10 +38,23 @@
 }
 
 // stylelint-disable scss/dollar-variable-pattern
-@function rgba-css-var($identifier, $target, $value: null) {
+@function rgba-css-var($identifier, $target) {
+  @if $identifier == "body" and $target == "bg" {
+    @return rgba(var(--#{$variable-prefix}#{$identifier}-bg-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+  } @if $identifier == "body" and $target == "text" { // Missing @else here in the original code
+    @return rgba(var(--#{$variable-prefix}#{$identifier}-color-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+  } @else {
+    @return rgba(var(--#{$variable-prefix}#{$identifier}-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+  }
+}
+
+@function rgba-css-var-with-value($identifier, $target, $value: null) {
   @if ($identifier == "body" or $identifier == "white") and $target == "bg" {
-    @return rgba(var(--#{$variable-prefix}#{$value}-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+    @return rgba(var(--#{$variable-prefix}#{$identifier}-rgb), var(--#{$variable-prefix}#{$target}-opacity));
   } @else if ($identifier == "body" or $identifier == "white") and $target == "text" {
+    @return rgba(var(--#{$variable-prefix}#{$identifier}-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+    // Example of using $value for border colors redefinitions
+  } @else if ($identifier == "body" or $identifier == "white") and $target == "border" {
     @return rgba(var(--#{$variable-prefix}#{$value}-rgb), var(--#{$variable-prefix}#{$target}-opacity));
   } @else {
     @return rgba(var(--#{$variable-prefix}#{$identifier}-rgb), var(--#{$variable-prefix}#{$target}-opacity));
