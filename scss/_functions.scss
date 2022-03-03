@@ -48,6 +48,45 @@
   }
 }
 
+/* *
+   * First solution start
+   *
+   * Just need to uncomment below code when testing the first solution and comment the basic `rgba-css-var` function above
+   * */
+
+// @function rgba-css-var($identifier, $target) {
+//   @if $identifier == "body" and $target == "bg" {
+//     @return rgba(var(--#{$variable-prefix}#{$identifier}-bg-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+//   } @if $identifier == "body" and $target == "text" {
+//     @return rgba(var(--#{$variable-prefix}#{$identifier}-color-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+//   } @else {
+//     @return rgba(var(--#{$variable-prefix}#{$target}-#{$identifier}-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+//   }
+// }
+
+
+/* *
+   * Second solution start
+   *
+   * Just need to uncomment below code when testing the second solution and comment the basic `rgba-css-var` function above
+   * */
+
+// @function rgba-css-var($identifier, $target, $value: null) {
+//   @if $identifier == "body" and $target == "bg" {
+//     @return rgba(var(--#{$variable-prefix}#{$identifier}-bg-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+//   } @else if $identifier == "body" and $target == "text" {
+//     @return rgba(var(--#{$variable-prefix}#{$identifier}-color-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+//   } @else if $value != null {
+//     @return rgba(to-rgb($value), var(--#{$variable-prefix}#{$target}-opacity));
+//   } @else {
+//     @return rgba(var(--#{$variable-prefix}#{$identifier}-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+//   }
+// }
+
+/* *
+   * Solutions proposal end
+   * */
+
 @function rgba-css-var-with-value($identifier, $target, $value: null) {
   @if ($identifier == "body" or $identifier == "white") and $target == "bg" {
     @return rgba(var(--#{$variable-prefix}#{$identifier}-rgb), var(--#{$variable-prefix}#{$target}-opacity));

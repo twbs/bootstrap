@@ -58,4 +58,26 @@
   --#{$variable-prefix}border-radius: #{$border-radius};
   // scss-docs-end root-border-var
   // stylelint-enable custom-property-empty-line-before
+
+  /* *
+     * First solution start
+     *
+     * Just need to uncomment below code when testing the first solution
+     * */
+
+  // @each $color, $value in $utilities-text {
+  //   --#{$variable-prefix}text-#{$color}-rgb: #{$value};
+  // }
+
+  // @each $color, $value in $utilities-bg {
+  //   --#{$variable-prefix}bg-#{$color}-rgb: #{$value};
+  // }
+
+  // @each $color, $value in $utilities-border {
+  //   --#{$variable-prefix}border-#{$color}-rgb: #{$value};
+  // }
+
+  /* *
+     * Solutions proposal end
+     * */
 }
