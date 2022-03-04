@@ -1082,6 +1082,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>Overflow constraint boundary of the dropdown menu (applies only to Popper's preventOverflow modifier). By default it's <code>'clippingParents'</code> and can accept an HTMLElement reference (via JavaScript only). For more information refer to Popper's <a href="https://popper.js.org/docs/v2/utils/detect-overflow/#boundary">detectOverflow docs</a>.</td>
     </tr>
     <tr>
+      <td><code>strategy</code></td>
+      <td>string</td>
+      <td><code>'absolute'</code></td>
+      <td>Describes the positioning strategy to use. Accepts the values of <code>'absolute'</code> and <code>'fixed'</code>. For more information refer to Popper's <a href="https://popper.js.org/docs/v2/constructors/#strategy">strategy docs</a>.</td>
+    </tr>
+    <tr>
       <td><code>reference</code></td>
       <td>string | element | object</td>
       <td><code>'toggle'</code></td>
