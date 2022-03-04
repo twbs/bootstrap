@@ -272,6 +272,12 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
       <td>Overflow constraint boundary of the tooltip (applies only to Popper's preventOverflow modifier). By default it's <code>'clippingParents'</code> and can accept an HTMLElement reference (via JavaScript only). For more information refer to Popper's <a href="https://popper.js.org/docs/v2/utils/detect-overflow/#boundary">detectOverflow docs</a>.</td>
     </tr>
     <tr>
+      <td><code>strategy</code></td>
+      <td>string</td>
+      <td><code>'absolute'</code></td>
+      <td>Describes the positioning strategy to use. Accepts the values of <code>'absolute'</code> and <code>'fixed'</code>. For more information refer to Popper's <a href="https://popper.js.org/docs/v2/constructors/#strategy">strategy docs</a>.</td>
+    </tr>
+    <tr>
       <td><code>customClass</code></td>
       <td>string | function</td>
       <td><code>''</code></td>
