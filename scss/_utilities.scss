@@ -155,6 +155,7 @@ $utilities: map-merge(
     ),
     "border-width": (
       css-var: true,
+      css-variable-name: border-width,
       class: border,
       values: $border-widths
     ),
