@@ -1,4 +1,7 @@
 .bd-subnavbar {
+  --bs-gutter-x: $bd-gutter-x;
+  --bs-gutter-y: $bd-gutter-x;
+
   // The position and z-index are needed for the dropdown to stay on top of the content
   position: relative;
   z-index: $zindex-sticky;
@@ -31,16 +34,16 @@
     position: absolute;
     top: .4rem;
     right: .4rem;
+    bottom: .4rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 1.5rem;
-    padding-right: .25rem;
-    padding-left: .25rem;
+    padding-right: .3125rem;
+    padding-left: .3125rem;
     @include font-size(.75rem);
     color: $gray-600;
     content: "Ctrl + /";
-    border: $border-width solid $border-color;
+    background-color: $gray-100;
     @include border-radius(.125rem);
   }
 
@@ -52,8 +55,8 @@
     padding-right: 3.75rem;
 
     &:focus {
-      border-color: $bd-purple-bright;
-      box-shadow: 0 0 0 3px rgba($bd-purple-bright, .25);
+      border-color: $bd-violet;
+      box-shadow: 0 0 0 3px rgba($bd-violet, .25);
     }
   }
 }
@@ -63,11 +66,11 @@
 
   &:hover,
   &:focus {
-    color: $bd-purple-bright;
+    color: $bd-violet;
   }
 
   &:focus {
-    box-shadow: 0 0 0 3px rgba($bd-purple-bright, .25);
+    box-shadow: 0 0 0 3px rgba($bd-violet, .25);
   }
 
   .bi-collapse { display: none; }

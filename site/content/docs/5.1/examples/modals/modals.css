@@ -1,0 +1,17 @@
+.modal-sheet .modal-dialog {
+  width: 380px;
+  transition: bottom .75s ease-in-out;
+}
+.modal-sheet .modal-footer {
+  padding-bottom: 2rem;
+}
+
+.modal-alert .modal-dialog {
+  width: 380px;
+}
+
+.border-right { border-right: 1px solid #eee; }
+
+.modal-tour .modal-dialog {
+  width: 380px;
+}

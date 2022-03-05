@@ -3,7 +3,9 @@
 //
 
 .table {
+  --#{$variable-prefix}table-color: #{$table-color};
   --#{$variable-prefix}table-bg: #{$table-bg};
+  --#{$variable-prefix}table-border-color: #{$table-border-color};
   --#{$variable-prefix}table-accent-bg: #{$table-accent-bg};
   --#{$variable-prefix}table-striped-color: #{$table-striped-color};
   --#{$variable-prefix}table-striped-bg: #{$table-striped-bg};
@@ -14,9 +16,9 @@
 
   width: 100%;
   margin-bottom: $spacer;
-  color: $table-color;
+  color: var(--#{$variable-prefix}table-color);
   vertical-align: $table-cell-vertical-align;
-  border-color: $table-border-color;
+  border-color: var(--#{$variable-prefix}table-border-color);
 
   // Target th & td
   // We need the child combinator to prevent styles leaking to nested tables which doesn't have a `.table` class.
@@ -37,13 +39,11 @@
   > thead {
     vertical-align: bottom;
   }
-
-  // Highlight border color between thead, tbody and tfoot.
-  > :not(:last-child) > :last-child > * {
-    border-bottom-color: $table-group-separator-color;
-  }
 }
 
+.table-group-divider {
+  border-top: calc(2 * $table-border-width) solid $table-group-separator-color; // stylelint-disable-line function-disallowed-list
+}
 
 //
 // Change placement of captions with a class
@@ -91,14 +91,27 @@
   > :not(caption) > * > * {
     border-bottom-width: 0;
   }
+
+  > :not(:first-child) {
+    border-top-width: 0;
+  }
 }
 
 // Zebra-striping
 //
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 
+// For rows
 .table-striped {
-  > tbody > tr:nth-of-type(#{$table-striped-order}) {
+  > tbody > tr:nth-of-type(#{$table-striped-order}) > * {
+    --#{$variable-prefix}table-accent-bg: var(--#{$variable-prefix}table-striped-bg);
+    color: var(--#{$variable-prefix}table-striped-color);
+  }
+}
+
+// For columns
+.table-striped-columns {
+  > :not(caption) > tr > :nth-child(#{$table-striped-columns-order}) {
     --#{$variable-prefix}table-accent-bg: var(--#{$variable-prefix}table-striped-bg);
     color: var(--#{$variable-prefix}table-striped-color);
   }
@@ -118,7 +131,7 @@
 // Placed here since it has to come after the potential zebra striping
 
 .table-hover {
-  > tbody > tr:hover {
+  > tbody > tr:hover > * {
     --#{$variable-prefix}table-accent-bg: var(--#{$variable-prefix}table-hover-bg);
     color: var(--#{$variable-prefix}table-hover-color);
   }

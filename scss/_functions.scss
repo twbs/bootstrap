@@ -32,6 +32,47 @@
   }
 }
 
+// Colors
+@function to-rgb($value) {
+  @return red($value), green($value), blue($value);
+}
+
+// stylelint-disable scss/dollar-variable-pattern
+@function rgba-css-var($identifier, $target) {
+  @if $identifier == "body" and $target == "bg" {
+    @return rgba(var(--#{$variable-prefix}#{$identifier}-bg-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+  } @if $identifier == "body" and $target == "text" {
+    @return rgba(var(--#{$variable-prefix}#{$identifier}-color-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+  } @else {
+    @return rgba(var(--#{$variable-prefix}#{$identifier}-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+  }
+}
+
+@function map-loop($map, $func, $args...) {
+  $_map: ();
+
+  @each $key, $value in $map {
+    // allow to pass the $key and $value of the map as an function argument
+    $_args: ();
+    @each $arg in $args {
+      $_args: append($_args, if($arg == "$key", $key, if($arg == "$value", $value, $arg)));
+    }
+
+    $_map: map-merge($_map, ($key: call(get-function($func), $_args...)));
+  }
+
+  @return $_map;
+}
+// stylelint-enable scss/dollar-variable-pattern
+
+@function varify($list) {
+  $result: null;
+  @each $entry in $list {
+    $result: append($result, var(--#{$variable-prefix}#{$entry}), space);
+  }
+  @return $result;
+}
+
 // Internal Bootstrap function to turn maps into its negative variant.
 // It prefixes the keys with `n` and makes the value negative.
 @function negativify-map($map) {
@@ -53,6 +94,16 @@
     }
   }
   @return $result;
+}
+
+// Merge multiple maps
+@function map-merge-multiple($maps...) {
+  $merged-maps: ();
+
+  @each $map in $maps {
+    $merged-maps: map-merge($merged-maps, $map);
+  }
+  @return $merged-maps;
 }
 
 // Replace `$search` with `$replace` in `$string`
@@ -181,14 +232,6 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
     @return $value1 + $value2;
   }
 
-  @if type-of($value1) != number {
-    $value1: unquote("(") + $value1 + unquote(")");
-  }
-
-  @if type-of($value2) != number {
-    $value2: unquote("(") + $value2 + unquote(")");
-  }
-
   @return if($return-calc == true, calc(#{$value1} + #{$value2}), $value1 + unquote(" + ") + $value2);
 }
 
@@ -207,10 +250,6 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 
   @if type-of($value1) == number and type-of($value2) == number and comparable($value1, $value2) {
     @return $value1 - $value2;
-  }
-
-  @if type-of($value1) != number {
-    $value1: unquote("(") + $value1 + unquote(")");
   }
 
   @if type-of($value2) != number {

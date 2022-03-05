@@ -1,21 +1,27 @@
 /*!
-  * Bootstrap modal.js v5.0.2 (https://getbootstrap.com/)
+  * Bootstrap modal.js v5.1.3 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/selector-engine.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./base-component.js')) :
-  typeof define === 'function' && define.amd ? define(['./dom/selector-engine', './dom/event-handler', './dom/manipulator', './base-component'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Modal = factory(global.SelectorEngine, global.EventHandler, global.Manipulator, global.Base));
-}(this, (function (SelectorEngine, EventHandler, Manipulator, BaseComponent) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js'), require('./base-component.js')) :
+  typeof define === 'function' && define.amd ? define(['./dom/event-handler', './dom/manipulator', './dom/selector-engine', './base-component'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Modal = factory(global.EventHandler, global.Manipulator, global.SelectorEngine, global.Base));
+})(this, (function (EventHandler, Manipulator, SelectorEngine, BaseComponent) { 'use strict';
 
-  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+  const _interopDefaultLegacy = e => e && typeof e === 'object' && 'default' in e ? e : { default: e };
 
-  var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
-  var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
-  var Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
-  var BaseComponent__default = /*#__PURE__*/_interopDefaultLegacy(BaseComponent);
+  const EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
+  const Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
+  const SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
+  const BaseComponent__default = /*#__PURE__*/_interopDefaultLegacy(BaseComponent);
 
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap (v5.1.3): util/index.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */
   const MILLISECONDS_MULTIPLIER = 1000;
   const TRANSITION_END = 'transitionend'; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
@@ -102,7 +108,7 @@
     }
 
     if (typeof obj === 'string' && obj.length > 0) {
-      return SelectorEngine__default['default'].findOne(obj);
+      return document.querySelector(obj);
     }
 
     return null;
@@ -128,7 +134,35 @@
     return getComputedStyle(element).getPropertyValue('visibility') === 'visible';
   };
 
-  const reflow = element => element.offsetHeight;
+  const isDisabled = element => {
+    if (!element || element.nodeType !== Node.ELEMENT_NODE) {
+      return true;
+    }
+
+    if (element.classList.contains('disabled')) {
+      return true;
+    }
+
+    if (typeof element.disabled !== 'undefined') {
+      return element.disabled;
+    }
+
+    return element.hasAttribute('disabled') && element.getAttribute('disabled') !== 'false';
+  };
+  /**
+   * Trick to restart an element's animation
+   *
+   * @param {HTMLElement} element
+   * @return void
+   *
+   * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
+   */
+
+
+  const reflow = element => {
+    // eslint-disable-next-line no-unused-expressions
+    element.offsetHeight;
+  };
 
   const getjQuery = () => {
     const {
@@ -218,7 +252,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.2): util/scrollBar.js
+   * Bootstrap (v5.1.3): util/scrollBar.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -287,18 +321,18 @@
       const actualValue = element.style[styleProp];
 
       if (actualValue) {
-        Manipulator__default['default'].setDataAttribute(element, styleProp, actualValue);
+        Manipulator__default.default.setDataAttribute(element, styleProp, actualValue);
       }
     }
 
     _resetElementAttributes(selector, styleProp) {
       const manipulationCallBack = element => {
-        const value = Manipulator__default['default'].getDataAttribute(element, styleProp);
+        const value = Manipulator__default.default.getDataAttribute(element, styleProp);
 
         if (typeof value === 'undefined') {
           element.style.removeProperty(styleProp);
         } else {
-          Manipulator__default['default'].removeDataAttribute(element, styleProp);
+          Manipulator__default.default.removeDataAttribute(element, styleProp);
           element.style[styleProp] = value;
         }
       };
@@ -310,7 +344,7 @@
       if (isElement(selector)) {
         callBack(selector);
       } else {
-        SelectorEngine__default['default'].find(selector, this._element).forEach(callBack);
+        SelectorEngine__default.default.find(selector, this._element).forEach(callBack);
       }
     }
 
@@ -322,11 +356,12 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.2): util/backdrop.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * Bootstrap (v5.1.3): util/backdrop.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
-  const Default$1 = {
+  const Default$2 = {
+    className: 'modal-backdrop',
     isVisible: true,
     // if false, we use the backdrop helper without adding any element to the dom
     isAnimated: false,
@@ -334,17 +369,17 @@
     // give the choice to place backdrop under different elements
     clickCallback: null
   };
-  const DefaultType$1 = {
+  const DefaultType$2 = {
+    className: 'string',
     isVisible: 'boolean',
     isAnimated: 'boolean',
     rootElement: '(element|string)',
     clickCallback: '(function|null)'
   };
-  const NAME$1 = 'backdrop';
-  const CLASS_NAME_BACKDROP = 'modal-backdrop';
+  const NAME$2 = 'backdrop';
   const CLASS_NAME_FADE$1 = 'fade';
   const CLASS_NAME_SHOW$1 = 'show';
-  const EVENT_MOUSEDOWN = `mousedown.bs.${NAME$1}`;
+  const EVENT_MOUSEDOWN = `mousedown.bs.${NAME$2}`;
 
   class Backdrop {
     constructor(config) {
@@ -390,7 +425,7 @@
     _getElement() {
       if (!this._element) {
         const backdrop = document.createElement('div');
-        backdrop.className = CLASS_NAME_BACKDROP;
+        backdrop.className = this._config.className;
 
         if (this._config.isAnimated) {
           backdrop.classList.add(CLASS_NAME_FADE$1);
@@ -403,12 +438,12 @@
     }
 
     _getConfig(config) {
-      config = { ...Default$1,
+      config = { ...Default$2,
         ...(typeof config === 'object' ? config : {})
       }; // use getElement() with the default "body" to get a fresh Element on each instantiation
 
       config.rootElement = getElement(config.rootElement);
-      typeCheckConfig(NAME$1, config, DefaultType$1);
+      typeCheckConfig(NAME$2, config, DefaultType$2);
       return config;
     }
 
@@ -417,9 +452,9 @@
         return;
       }
 
-      this._config.rootElement.appendChild(this._getElement());
+      this._config.rootElement.append(this._getElement());
 
-      EventHandler__default['default'].on(this._getElement(), EVENT_MOUSEDOWN, () => {
+      EventHandler__default.default.on(this._getElement(), EVENT_MOUSEDOWN, () => {
         execute(this._config.clickCallback);
       });
       this._isAppended = true;
@@ -430,7 +465,7 @@
         return;
       }
 
-      EventHandler__default['default'].off(this._element, EVENT_MOUSEDOWN);
+      EventHandler__default.default.off(this._element, EVENT_MOUSEDOWN);
 
       this._element.remove();
 
@@ -445,7 +480,136 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.2): modal.js
+   * Bootstrap (v5.1.3): util/focustrap.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */
+  const Default$1 = {
+    trapElement: null,
+    // The element to trap focus inside of
+    autofocus: true
+  };
+  const DefaultType$1 = {
+    trapElement: 'element',
+    autofocus: 'boolean'
+  };
+  const NAME$1 = 'focustrap';
+  const DATA_KEY$1 = 'bs.focustrap';
+  const EVENT_KEY$1 = `.${DATA_KEY$1}`;
+  const EVENT_FOCUSIN = `focusin${EVENT_KEY$1}`;
+  const EVENT_KEYDOWN_TAB = `keydown.tab${EVENT_KEY$1}`;
+  const TAB_KEY = 'Tab';
+  const TAB_NAV_FORWARD = 'forward';
+  const TAB_NAV_BACKWARD = 'backward';
+
+  class FocusTrap {
+    constructor(config) {
+      this._config = this._getConfig(config);
+      this._isActive = false;
+      this._lastTabNavDirection = null;
+    }
+
+    activate() {
+      const {
+        trapElement,
+        autofocus
+      } = this._config;
+
+      if (this._isActive) {
+        return;
+      }
+
+      if (autofocus) {
+        trapElement.focus();
+      }
+
+      EventHandler__default.default.off(document, EVENT_KEY$1); // guard against infinite focus loop
+
+      EventHandler__default.default.on(document, EVENT_FOCUSIN, event => this._handleFocusin(event));
+      EventHandler__default.default.on(document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event));
+      this._isActive = true;
+    }
+
+    deactivate() {
+      if (!this._isActive) {
+        return;
+      }
+
+      this._isActive = false;
+      EventHandler__default.default.off(document, EVENT_KEY$1);
+    } // Private
+
+
+    _handleFocusin(event) {
+      const {
+        target
+      } = event;
+      const {
+        trapElement
+      } = this._config;
+
+      if (target === document || target === trapElement || trapElement.contains(target)) {
+        return;
+      }
+
+      const elements = SelectorEngine__default.default.focusableChildren(trapElement);
+
+      if (elements.length === 0) {
+        trapElement.focus();
+      } else if (this._lastTabNavDirection === TAB_NAV_BACKWARD) {
+        elements[elements.length - 1].focus();
+      } else {
+        elements[0].focus();
+      }
+    }
+
+    _handleKeydown(event) {
+      if (event.key !== TAB_KEY) {
+        return;
+      }
+
+      this._lastTabNavDirection = event.shiftKey ? TAB_NAV_BACKWARD : TAB_NAV_FORWARD;
+    }
+
+    _getConfig(config) {
+      config = { ...Default$1,
+        ...(typeof config === 'object' ? config : {})
+      };
+      typeCheckConfig(NAME$1, config, DefaultType$1);
+      return config;
+    }
+
+  }
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap (v5.1.3): util/component-functions.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */
+
+  const enableDismissTrigger = (component, method = 'hide') => {
+    const clickEvent = `click.dismiss${component.EVENT_KEY}`;
+    const name = component.NAME;
+    EventHandler__default.default.on(document, clickEvent, `[data-bs-dismiss="${name}"]`, function (event) {
+      if (['A', 'AREA'].includes(this.tagName)) {
+        event.preventDefault();
+      }
+
+      if (isDisabled(this)) {
+        return;
+      }
+
+      const target = getElementFromSelector(this) || this.closest(`.${name}`);
+      const instance = component.getOrCreateInstance(target); // Method argument is left, for Alert and only, as it doesn't implement the 'hide' method
+
+      instance[method]();
+    });
+  };
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap (v5.1.3): modal.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -475,7 +639,6 @@
   const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
   const EVENT_SHOW = `show${EVENT_KEY}`;
   const EVENT_SHOWN = `shown${EVENT_KEY}`;
-  const EVENT_FOCUSIN = `focusin${EVENT_KEY}`;
   const EVENT_RESIZE = `resize${EVENT_KEY}`;
   const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`;
   const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`;
@@ -486,22 +649,23 @@
   const CLASS_NAME_FADE = 'fade';
   const CLASS_NAME_SHOW = 'show';
   const CLASS_NAME_STATIC = 'modal-static';
+  const OPEN_SELECTOR = '.modal.show';
   const SELECTOR_DIALOG = '.modal-dialog';
   const SELECTOR_MODAL_BODY = '.modal-body';
   const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="modal"]';
-  const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="modal"]';
   /**
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
    */
 
-  class Modal extends BaseComponent__default['default'] {
+  class Modal extends BaseComponent__default.default {
     constructor(element, config) {
       super(element);
       this._config = this._getConfig(config);
-      this._dialog = SelectorEngine__default['default'].findOne(SELECTOR_DIALOG, this._element);
+      this._dialog = SelectorEngine__default.default.findOne(SELECTOR_DIALOG, this._element);
       this._backdrop = this._initializeBackDrop();
+      this._focustrap = this._initializeFocusTrap();
       this._isShown = false;
       this._ignoreBackdropClick = false;
       this._isTransitioning = false;
@@ -527,7 +691,7 @@
         return;
       }
 
-      const showEvent = EventHandler__default['default'].trigger(this._element, EVENT_SHOW, {
+      const showEvent = EventHandler__default.default.trigger(this._element, EVENT_SHOW, {
         relatedTarget
       });
 
@@ -551,9 +715,8 @@
 
       this._setResizeEvent();
 
-      EventHandler__default['default'].on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, event => this.hide(event));
-      EventHandler__default['default'].on(this._dialog, EVENT_MOUSEDOWN_DISMISS, () => {
-        EventHandler__default['default'].one(this._element, EVENT_MOUSEUP_DISMISS, event => {
+      EventHandler__default.default.on(this._dialog, EVENT_MOUSEDOWN_DISMISS, () => {
+        EventHandler__default.default.one(this._element, EVENT_MOUSEUP_DISMISS, event => {
           if (event.target === this._element) {
             this._ignoreBackdropClick = true;
           }
@@ -563,16 +726,12 @@
       this._showBackdrop(() => this._showElement(relatedTarget));
     }
 
-    hide(event) {
-      if (event && ['A', 'AREA'].includes(event.target.tagName)) {
-        event.preventDefault();
-      }
-
+    hide() {
       if (!this._isShown || this._isTransitioning) {
         return;
       }
 
-      const hideEvent = EventHandler__default['default'].trigger(this._element, EVENT_HIDE);
+      const hideEvent = EventHandler__default.default.trigger(this._element, EVENT_HIDE);
 
       if (hideEvent.defaultPrevented) {
         return;
@@ -590,29 +749,24 @@
 
       this._setResizeEvent();
 
-      EventHandler__default['default'].off(document, EVENT_FOCUSIN);
+      this._focustrap.deactivate();
 
       this._element.classList.remove(CLASS_NAME_SHOW);
 
-      EventHandler__default['default'].off(this._element, EVENT_CLICK_DISMISS);
-      EventHandler__default['default'].off(this._dialog, EVENT_MOUSEDOWN_DISMISS);
+      EventHandler__default.default.off(this._element, EVENT_CLICK_DISMISS);
+      EventHandler__default.default.off(this._dialog, EVENT_MOUSEDOWN_DISMISS);
 
       this._queueCallback(() => this._hideModal(), this._element, isAnimated);
     }
 
     dispose() {
-      [window, this._dialog].forEach(htmlElement => EventHandler__default['default'].off(htmlElement, EVENT_KEY));
+      [window, this._dialog].forEach(htmlElement => EventHandler__default.default.off(htmlElement, EVENT_KEY));
 
       this._backdrop.dispose();
 
-      super.dispose();
-      /**
-       * `document` has 2 events `EVENT_FOCUSIN` and `EVENT_CLICK_DATA_API`
-       * Do not move `document` in `htmlElements` array
-       * It will remove `EVENT_CLICK_DATA_API` event that should remain
-       */
+      this._focustrap.deactivate();
 
-      EventHandler__default['default'].off(document, EVENT_FOCUSIN);
+      super.dispose();
     }
 
     handleUpdate() {
@@ -628,9 +782,15 @@
       });
     }
 
+    _initializeFocusTrap() {
+      return new FocusTrap({
+        trapElement: this._element
+      });
+    }
+
     _getConfig(config) {
       config = { ...Default,
-        ...Manipulator__default['default'].getDataAttributes(this._element),
+        ...Manipulator__default.default.getDataAttributes(this._element),
         ...(typeof config === 'object' ? config : {})
       };
       typeCheckConfig(NAME, config, DefaultType);
@@ -640,11 +800,11 @@
     _showElement(relatedTarget) {
       const isAnimated = this._isAnimated();
 
-      const modalBody = SelectorEngine__default['default'].findOne(SELECTOR_MODAL_BODY, this._dialog);
+      const modalBody = SelectorEngine__default.default.findOne(SELECTOR_MODAL_BODY, this._dialog);
 
       if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
         // Don't move modal's DOM position
-        document.body.appendChild(this._element);
+        document.body.append(this._element);
       }
 
       this._element.style.display = 'block';
@@ -667,17 +827,13 @@
 
       this._element.classList.add(CLASS_NAME_SHOW);
 
-      if (this._config.focus) {
-        this._enforceFocus();
-      }
-
       const transitionComplete = () => {
         if (this._config.focus) {
-          this._element.focus();
+          this._focustrap.activate();
         }
 
         this._isTransitioning = false;
-        EventHandler__default['default'].trigger(this._element, EVENT_SHOWN, {
+        EventHandler__default.default.trigger(this._element, EVENT_SHOWN, {
           relatedTarget
         });
       };
@@ -685,19 +841,9 @@
       this._queueCallback(transitionComplete, this._dialog, isAnimated);
     }
 
-    _enforceFocus() {
-      EventHandler__default['default'].off(document, EVENT_FOCUSIN); // guard against infinite focus loop
-
-      EventHandler__default['default'].on(document, EVENT_FOCUSIN, event => {
-        if (document !== event.target && this._element !== event.target && !this._element.contains(event.target)) {
-          this._element.focus();
-        }
-      });
-    }
-
     _setEscapeEvent() {
       if (this._isShown) {
-        EventHandler__default['default'].on(this._element, EVENT_KEYDOWN_DISMISS, event => {
+        EventHandler__default.default.on(this._element, EVENT_KEYDOWN_DISMISS, event => {
           if (this._config.keyboard && event.key === ESCAPE_KEY) {
             event.preventDefault();
             this.hide();
@@ -706,15 +852,15 @@
           }
         });
       } else {
-        EventHandler__default['default'].off(this._element, EVENT_KEYDOWN_DISMISS);
+        EventHandler__default.default.off(this._element, EVENT_KEYDOWN_DISMISS);
       }
     }
 
     _setResizeEvent() {
       if (this._isShown) {
-        EventHandler__default['default'].on(window, EVENT_RESIZE, () => this._adjustDialog());
+        EventHandler__default.default.on(window, EVENT_RESIZE, () => this._adjustDialog());
       } else {
-        EventHandler__default['default'].off(window, EVENT_RESIZE);
+        EventHandler__default.default.off(window, EVENT_RESIZE);
       }
     }
 
@@ -736,12 +882,12 @@
 
         this._scrollBar.reset();
 
-        EventHandler__default['default'].trigger(this._element, EVENT_HIDDEN);
+        EventHandler__default.default.trigger(this._element, EVENT_HIDDEN);
       });
     }
 
     _showBackdrop(callback) {
-      EventHandler__default['default'].on(this._element, EVENT_CLICK_DISMISS, event => {
+      EventHandler__default.default.on(this._element, EVENT_CLICK_DISMISS, event => {
         if (this._ignoreBackdropClick) {
           this._ignoreBackdropClick = false;
           return;
@@ -766,7 +912,7 @@
     }
 
     _triggerBackdropTransition() {
-      const hideEvent = EventHandler__default['default'].trigger(this._element, EVENT_HIDE_PREVENTED);
+      const hideEvent = EventHandler__default.default.trigger(this._element, EVENT_HIDE_PREVENTED);
 
       if (hideEvent.defaultPrevented) {
         return;
@@ -851,28 +997,36 @@
    */
 
 
-  EventHandler__default['default'].on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+  EventHandler__default.default.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
     const target = getElementFromSelector(this);
 
     if (['A', 'AREA'].includes(this.tagName)) {
       event.preventDefault();
     }
 
-    EventHandler__default['default'].one(target, EVENT_SHOW, showEvent => {
+    EventHandler__default.default.one(target, EVENT_SHOW, showEvent => {
       if (showEvent.defaultPrevented) {
         // only register focus restorer if modal will actually get shown
         return;
       }
 
-      EventHandler__default['default'].one(target, EVENT_HIDDEN, () => {
+      EventHandler__default.default.one(target, EVENT_HIDDEN, () => {
         if (isVisible(this)) {
           this.focus();
         }
       });
-    });
+    }); // avoid conflict when clicking moddal toggler while another one is open
+
+    const allReadyOpen = SelectorEngine__default.default.findOne(OPEN_SELECTOR);
+
+    if (allReadyOpen) {
+      Modal.getInstance(allReadyOpen).hide();
+    }
+
     const data = Modal.getOrCreateInstance(target);
     data.toggle(this);
   });
+  enableDismissTrigger(Modal);
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -884,5 +1038,5 @@
 
   return Modal;
 
-})));
+}));
 //# sourceMappingURL=modal.js.map

@@ -1,0 +1,28 @@
+name: cspell
+
+on:
+  push:
+    branches-ignore:
+      - "dependabot/**"
+  pull_request:
+  workflow_dispatch:
+
+env:
+  FORCE_COLOR: 2
+  NODE: 16
+
+jobs:
+  cspell:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+
+      - name: Run cspell
+        uses: streetsidesoftware/cspell-action@v1
+        with:
+          config: ".cspell.json"
+          files: "**/*.md"
+          inline: error
+          incremental_files_only: false

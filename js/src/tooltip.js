@@ -1,64 +1,49 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.2): tooltip.js
+ * Bootstrap (v5.1.3): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import * as Popper from '@popperjs/core'
-
-import {
-  defineJQueryPlugin,
-  findShadowRoot,
-  getElement,
-  getUID,
-  isElement,
-  isRTL,
-  noop,
-  typeCheckConfig
-} from './util/index'
-import {
-  DefaultAllowlist,
-  sanitizeHtml
-} from './util/sanitizer'
-import Data from './dom/data'
+import { defineJQueryPlugin, findShadowRoot, getElement, getUID, isRTL, noop } from './util/index'
+import { DefaultAllowlist } from './util/sanitizer'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
-import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
+import TemplateFactory from './util/template-factory'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'tooltip'
-const DATA_KEY = 'bs.tooltip'
-const EVENT_KEY = `.${DATA_KEY}`
-const CLASS_PREFIX = 'bs-tooltip'
-const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn'])
 
-const DefaultType = {
-  animation: 'boolean',
-  template: 'string',
-  title: '(string|element|function)',
-  trigger: 'string',
-  delay: '(number|object)',
-  html: 'boolean',
-  selector: '(string|boolean)',
-  placement: '(string|function)',
-  offset: '(array|string|function)',
-  container: '(string|element|boolean)',
-  fallbackPlacements: 'array',
-  boundary: '(string|element)',
-  customClass: '(string|function)',
-  sanitize: 'boolean',
-  sanitizeFn: '(null|function)',
-  allowList: 'object',
-  popperConfig: '(null|object|function)'
-}
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_MODAL = 'modal'
+const CLASS_NAME_SHOW = 'show'
+
+const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
+const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`
+
+const EVENT_MODAL_HIDE = 'hide.bs.modal'
+
+const TRIGGER_HOVER = 'hover'
+const TRIGGER_FOCUS = 'focus'
+const TRIGGER_CLICK = 'click'
+const TRIGGER_MANUAL = 'manual'
+
+const EVENT_HIDE = 'hide'
+const EVENT_HIDDEN = 'hidden'
+const EVENT_SHOW = 'show'
+const EVENT_SHOWN = 'shown'
+const EVENT_INSERTED = 'inserted'
+const EVENT_CLICK = 'click'
+const EVENT_FOCUSIN = 'focusin'
+const EVENT_FOCUSOUT = 'focusout'
+const EVENT_MOUSEENTER = 'mouseenter'
+const EVENT_MOUSELEAVE = 'mouseleave'
 
 const AttachmentMap = {
   AUTO: 'auto',
@@ -91,37 +76,28 @@ const Default = {
   popperConfig: null
 }
 
-const Event = {
-  HIDE: `hide${EVENT_KEY}`,
-  HIDDEN: `hidden${EVENT_KEY}`,
-  SHOW: `show${EVENT_KEY}`,
-  SHOWN: `shown${EVENT_KEY}`,
-  INSERTED: `inserted${EVENT_KEY}`,
-  CLICK: `click${EVENT_KEY}`,
-  FOCUSIN: `focusin${EVENT_KEY}`,
-  FOCUSOUT: `focusout${EVENT_KEY}`,
-  MOUSEENTER: `mouseenter${EVENT_KEY}`,
-  MOUSELEAVE: `mouseleave${EVENT_KEY}`
+const DefaultType = {
+  animation: 'boolean',
+  template: 'string',
+  title: '(string|element|function)',
+  trigger: 'string',
+  delay: '(number|object)',
+  html: 'boolean',
+  selector: '(string|boolean)',
+  placement: '(string|function)',
+  offset: '(array|string|function)',
+  container: '(string|element|boolean)',
+  fallbackPlacements: 'array',
+  boundary: '(string|element)',
+  customClass: '(string|function)',
+  sanitize: 'boolean',
+  sanitizeFn: '(null|function)',
+  allowList: 'object',
+  popperConfig: '(null|object|function)'
 }
 
-const CLASS_NAME_FADE = 'fade'
-const CLASS_NAME_MODAL = 'modal'
-const CLASS_NAME_SHOW = 'show'
-
-const HOVER_STATE_SHOW = 'show'
-const HOVER_STATE_OUT = 'out'
-
-const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
-
-const TRIGGER_HOVER = 'hover'
-const TRIGGER_FOCUS = 'focus'
-const TRIGGER_CLICK = 'click'
-const TRIGGER_MANUAL = 'manual'
-
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Tooltip extends BaseComponent {
@@ -130,42 +106,36 @@ class Tooltip extends BaseComponent {
       throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)')
     }
 
-    super(element)
+    super(element, config)
 
-    // private
+    // Private
     this._isEnabled = true
     this._timeout = 0
-    this._hoverState = ''
+    this._isHovered = false
     this._activeTrigger = {}
     this._popper = null
+    this._templateFactory = null
 
     // Protected
-    this._config = this._getConfig(config)
     this.tip = null
 
     this._setListeners()
   }
 
   // Getters
-
   static get Default() {
     return Default
-  }
-
-  static get NAME() {
-    return NAME
-  }
-
-  static get Event() {
-    return Event
   }
 
   static get DefaultType() {
     return DefaultType
   }
 
-  // Public
+  static get NAME() {
+    return NAME
+  }
 
+  // Public
   enable() {
     this._isEnabled = true
   }
@@ -189,33 +159,32 @@ class Tooltip extends BaseComponent {
       context._activeTrigger.click = !context._activeTrigger.click
 
       if (context._isWithActiveTrigger()) {
-        context._enter(null, context)
+        context._enter()
       } else {
-        context._leave(null, context)
-      }
-    } else {
-      if (this.getTipElement().classList.contains(CLASS_NAME_SHOW)) {
-        this._leave(null, this)
-        return
+        context._leave()
       }
 
-      this._enter(null, this)
+      return
     }
+
+    if (this._isShown()) {
+      this._leave()
+      return
+    }
+
+    this._enter()
   }
 
   dispose() {
     clearTimeout(this._timeout)
 
-    EventHandler.off(this._element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler)
+    EventHandler.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler)
 
     if (this.tip) {
       this.tip.remove()
     }
 
-    if (this._popper) {
-      this._popper.destroy()
-    }
-
+    this._disposePopper()
     super.dispose()
   }
 
@@ -224,238 +193,215 @@ class Tooltip extends BaseComponent {
       throw new Error('Please use show on visible elements')
     }
 
-    if (!(this.isWithContent() && this._isEnabled)) {
+    if (!(this._isWithContent() && this._isEnabled)) {
       return
     }
 
-    const showEvent = EventHandler.trigger(this._element, this.constructor.Event.SHOW)
+    const showEvent = EventHandler.trigger(this._element, this.constructor.eventName(EVENT_SHOW))
     const shadowRoot = findShadowRoot(this._element)
-    const isInTheDom = shadowRoot === null ?
-      this._element.ownerDocument.documentElement.contains(this._element) :
-      shadowRoot.contains(this._element)
+    const isInTheDom = (shadowRoot || this._element.ownerDocument.documentElement).contains(this._element)
 
     if (showEvent.defaultPrevented || !isInTheDom) {
       return
     }
 
-    const tip = this.getTipElement()
-    const tipId = getUID(this.constructor.NAME)
+    const tip = this._getTipElement()
 
-    tip.setAttribute('id', tipId)
-    this._element.setAttribute('aria-describedby', tipId)
-
-    this.setContent()
-
-    if (this._config.animation) {
-      tip.classList.add(CLASS_NAME_FADE)
-    }
-
-    const placement = typeof this._config.placement === 'function' ?
-      this._config.placement.call(this, tip, this._element) :
-      this._config.placement
-
-    const attachment = this._getAttachment(placement)
-    this._addAttachmentClass(attachment)
+    this._element.setAttribute('aria-describedby', tip.getAttribute('id'))
 
     const { container } = this._config
-    Data.set(tip, this.constructor.DATA_KEY, this)
 
     if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
-      container.appendChild(tip)
-      EventHandler.trigger(this._element, this.constructor.Event.INSERTED)
+      container.append(tip)
+      EventHandler.trigger(this._element, this.constructor.eventName(EVENT_INSERTED))
     }
 
     if (this._popper) {
       this._popper.update()
     } else {
-      this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
+      this._createPopper(tip)
     }
 
     tip.classList.add(CLASS_NAME_SHOW)
-
-    const customClass = typeof this._config.customClass === 'function' ? this._config.customClass() : this._config.customClass
-    if (customClass) {
-      tip.classList.add(...customClass.split(' '))
-    }
 
     // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
     if ('ontouchstart' in document.documentElement) {
-      [].concat(...document.body.children).forEach(element => {
+      for (const element of [].concat(...document.body.children)) {
         EventHandler.on(element, 'mouseover', noop)
-      })
-    }
-
-    const complete = () => {
-      const prevHoverState = this._hoverState
-
-      this._hoverState = null
-      EventHandler.trigger(this._element, this.constructor.Event.SHOWN)
-
-      if (prevHoverState === HOVER_STATE_OUT) {
-        this._leave(null, this)
       }
     }
 
-    const isAnimated = this.tip.classList.contains(CLASS_NAME_FADE)
-    this._queueCallback(complete, this.tip, isAnimated)
+    const complete = () => {
+      const previousHoverState = this._isHovered
+
+      this._isHovered = false
+      EventHandler.trigger(this._element, this.constructor.eventName(EVENT_SHOWN))
+
+      if (previousHoverState) {
+        this._leave()
+      }
+    }
+
+    this._queueCallback(complete, this.tip, this._isAnimated())
   }
 
   hide() {
-    if (!this._popper) {
+    if (!this._isShown()) {
       return
     }
 
-    const tip = this.getTipElement()
-    const complete = () => {
-      if (this._isWithActiveTrigger()) {
-        return
-      }
-
-      if (this._hoverState !== HOVER_STATE_SHOW) {
-        tip.remove()
-      }
-
-      this._cleanTipClass()
-      this._element.removeAttribute('aria-describedby')
-      EventHandler.trigger(this._element, this.constructor.Event.HIDDEN)
-
-      if (this._popper) {
-        this._popper.destroy()
-        this._popper = null
-      }
-    }
-
-    const hideEvent = EventHandler.trigger(this._element, this.constructor.Event.HIDE)
+    const hideEvent = EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDE))
     if (hideEvent.defaultPrevented) {
       return
     }
 
+    const tip = this._getTipElement()
     tip.classList.remove(CLASS_NAME_SHOW)
 
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
-      [].concat(...document.body.children)
-        .forEach(element => EventHandler.off(element, 'mouseover', noop))
+      for (const element of [].concat(...document.body.children)) {
+        EventHandler.off(element, 'mouseover', noop)
+      }
     }
 
     this._activeTrigger[TRIGGER_CLICK] = false
     this._activeTrigger[TRIGGER_FOCUS] = false
     this._activeTrigger[TRIGGER_HOVER] = false
+    this._isHovered = false
 
-    const isAnimated = this.tip.classList.contains(CLASS_NAME_FADE)
-    this._queueCallback(complete, this.tip, isAnimated)
-    this._hoverState = ''
+    const complete = () => {
+      if (this._isWithActiveTrigger()) {
+        return
+      }
+
+      if (!this._isHovered) {
+        tip.remove()
+      }
+
+      this._element.removeAttribute('aria-describedby')
+      EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDDEN))
+
+      this._disposePopper()
+    }
+
+    this._queueCallback(complete, this.tip, this._isAnimated())
   }
 
   update() {
-    if (this._popper !== null) {
+    if (this._popper) {
       this._popper.update()
     }
   }
 
   // Protected
-
-  isWithContent() {
-    return Boolean(this.getTitle())
+  _isWithContent() {
+    return Boolean(this._getTitle())
   }
 
-  getTipElement() {
-    if (this.tip) {
-      return this.tip
+  _getTipElement() {
+    if (!this.tip) {
+      this.tip = this._createTipElement(this._getContentForTemplate())
     }
 
-    const element = document.createElement('div')
-    element.innerHTML = this._config.template
-
-    this.tip = element.children[0]
     return this.tip
   }
 
-  setContent() {
-    const tip = this.getTipElement()
-    this.setElementContent(SelectorEngine.findOne(SELECTOR_TOOLTIP_INNER, tip), this.getTitle())
+  _createTipElement(content) {
+    const tip = this._getTemplateFactory(content).toHtml()
+
+    // todo: remove this check on v6
+    if (!tip) {
+      return null
+    }
+
     tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
+    // todo: on v6 the following can be achieved with CSS only
+    tip.classList.add(`bs-${this.constructor.NAME}-auto`)
+
+    const tipId = getUID(this.constructor.NAME).toString()
+
+    tip.setAttribute('id', tipId)
+
+    if (this._isAnimated()) {
+      tip.classList.add(CLASS_NAME_FADE)
+    }
+
+    return tip
   }
 
-  setElementContent(element, content) {
-    if (element === null) {
-      return
+  setContent(content) {
+    let isShown = false
+    if (this.tip) {
+      isShown = this._isShown()
+      this.tip.remove()
+      this.tip = null
     }
 
-    if (isElement(content)) {
-      content = getElement(content)
+    this._disposePopper()
+    this.tip = this._createTipElement(content)
 
-      // content is a DOM node or a jQuery
-      if (this._config.html) {
-        if (content.parentNode !== element) {
-          element.innerHTML = ''
-          element.appendChild(content)
-        }
-      } else {
-        element.textContent = content.textContent
-      }
-
-      return
+    if (isShown) {
+      this.show()
     }
+  }
 
-    if (this._config.html) {
-      if (this._config.sanitize) {
-        content = sanitizeHtml(content, this._config.allowList, this._config.sanitizeFn)
-      }
-
-      element.innerHTML = content
+  _getTemplateFactory(content) {
+    if (this._templateFactory) {
+      this._templateFactory.changeContent(content)
     } else {
-      element.textContent = content
+      this._templateFactory = new TemplateFactory({
+        ...this._config,
+        // the `content` var has to be after `this._config`
+        // to override config.content in case of popover
+        content,
+        extraClass: this._resolvePossibleFunction(this._config.customClass)
+      })
+    }
+
+    return this._templateFactory
+  }
+
+  _getContentForTemplate() {
+    return {
+      [SELECTOR_TOOLTIP_INNER]: this._getTitle()
     }
   }
 
-  getTitle() {
-    let title = this._element.getAttribute('data-bs-original-title')
-
-    if (!title) {
-      title = typeof this._config.title === 'function' ?
-        this._config.title.call(this._element) :
-        this._config.title
-    }
-
-    return title
-  }
-
-  updateAttachment(attachment) {
-    if (attachment === 'right') {
-      return 'end'
-    }
-
-    if (attachment === 'left') {
-      return 'start'
-    }
-
-    return attachment
+  _getTitle() {
+    return this._config.title
   }
 
   // Private
+  _initializeOnDelegatedTarget(event) {
+    return this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig())
+  }
 
-  _initializeOnDelegatedTarget(event, context) {
-    const dataKey = this.constructor.DATA_KEY
-    context = context || Data.get(event.delegateTarget, dataKey)
+  _isAnimated() {
+    return this._config.animation || (this.tip && this.tip.classList.contains(CLASS_NAME_FADE))
+  }
 
-    if (!context) {
-      context = new this.constructor(event.delegateTarget, this._getDelegateConfig())
-      Data.set(event.delegateTarget, dataKey, context)
-    }
+  _isShown() {
+    return this.tip && this.tip.classList.contains(CLASS_NAME_SHOW)
+  }
 
-    return context
+  _createPopper(tip) {
+    const placement = typeof this._config.placement === 'function' ?
+      this._config.placement.call(this, tip, this._element) :
+      this._config.placement
+    const attachment = AttachmentMap[placement.toUpperCase()]
+    this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
   }
 
   _getOffset() {
     const { offset } = this._config
 
     if (typeof offset === 'string') {
-      return offset.split(',').map(val => Number.parseInt(val, 10))
+      return offset.split(',').map(value => Number.parseInt(value, 10))
     }
 
     if (typeof offset === 'function') {
@@ -463,6 +409,10 @@ class Tooltip extends BaseComponent {
     }
 
     return offset
+  }
+
+  _resolvePossibleFunction(arg) {
+    return typeof arg === 'function' ? arg.call(this._element) : arg
   }
 
   _getPopperConfig(attachment) {
@@ -494,17 +444,16 @@ class Tooltip extends BaseComponent {
           }
         },
         {
-          name: 'onChange',
+          name: 'preSetPlacement',
           enabled: true,
-          phase: 'afterWrite',
-          fn: data => this._handlePopperPlacementChange(data)
+          phase: 'beforeMain',
+          fn: data => {
+            // Pre-set Popper's placement attribute in order to read the arrow sizes properly.
+            // Otherwise, Popper mixes up the width and height dimensions since the initial arrow style is for top placement
+            this._getTipElement().setAttribute('data-popper-placement', data.state.placement)
+          }
         }
-      ],
-      onFirstUpdate: data => {
-        if (data.options.placement !== data.placement) {
-          this._handlePopperPlacementChange(data)
-        }
-      }
+      ]
     }
 
     return {
@@ -513,32 +462,34 @@ class Tooltip extends BaseComponent {
     }
   }
 
-  _addAttachmentClass(attachment) {
-    this.getTipElement().classList.add(`${CLASS_PREFIX}-${this.updateAttachment(attachment)}`)
-  }
-
-  _getAttachment(placement) {
-    return AttachmentMap[placement.toUpperCase()]
-  }
-
   _setListeners() {
     const triggers = this._config.trigger.split(' ')
 
-    triggers.forEach(trigger => {
+    for (const trigger of triggers) {
       if (trigger === 'click') {
-        EventHandler.on(this._element, this.constructor.Event.CLICK, this._config.selector, event => this.toggle(event))
+        EventHandler.on(this._element, this.constructor.eventName(EVENT_CLICK), this._config.selector, event => this.toggle(event))
       } else if (trigger !== TRIGGER_MANUAL) {
         const eventIn = trigger === TRIGGER_HOVER ?
-          this.constructor.Event.MOUSEENTER :
-          this.constructor.Event.FOCUSIN
+          this.constructor.eventName(EVENT_MOUSEENTER) :
+          this.constructor.eventName(EVENT_FOCUSIN)
         const eventOut = trigger === TRIGGER_HOVER ?
-          this.constructor.Event.MOUSELEAVE :
-          this.constructor.Event.FOCUSOUT
+          this.constructor.eventName(EVENT_MOUSELEAVE) :
+          this.constructor.eventName(EVENT_FOCUSOUT)
 
-        EventHandler.on(this._element, eventIn, this._config.selector, event => this._enter(event))
-        EventHandler.on(this._element, eventOut, this._config.selector, event => this._leave(event))
+        EventHandler.on(this._element, eventIn, this._config.selector, event => {
+          const context = this._initializeOnDelegatedTarget(event)
+          context._activeTrigger[event.type === 'focusin' ? TRIGGER_FOCUS : TRIGGER_HOVER] = true
+          context._enter()
+        })
+        EventHandler.on(this._element, eventOut, this._config.selector, event => {
+          const context = this._initializeOnDelegatedTarget(event)
+          context._activeTrigger[event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER] =
+            context._element.contains(event.relatedTarget)
+
+          context._leave()
+        })
       }
-    })
+    }
 
     this._hideModalHandler = () => {
       if (this._element) {
@@ -546,7 +497,7 @@ class Tooltip extends BaseComponent {
       }
     }
 
-    EventHandler.on(this._element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler)
+    EventHandler.on(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler)
 
     if (this._config.selector) {
       this._config = {
@@ -560,103 +511,77 @@ class Tooltip extends BaseComponent {
   }
 
   _fixTitle() {
-    const title = this._element.getAttribute('title')
-    const originalTitleType = typeof this._element.getAttribute('data-bs-original-title')
+    const title = this._config.originalTitle
 
-    if (title || originalTitleType !== 'string') {
-      this._element.setAttribute('data-bs-original-title', title || '')
-      if (title && !this._element.getAttribute('aria-label') && !this._element.textContent) {
-        this._element.setAttribute('aria-label', title)
-      }
-
-      this._element.setAttribute('title', '')
+    if (!title) {
+      return
     }
+
+    if (!this._element.getAttribute('aria-label') && !this._element.textContent) {
+      this._element.setAttribute('aria-label', title)
+    }
+
+    this._element.removeAttribute('title')
   }
 
-  _enter(event, context) {
-    context = this._initializeOnDelegatedTarget(event, context)
-
-    if (event) {
-      context._activeTrigger[
-        event.type === 'focusin' ? TRIGGER_FOCUS : TRIGGER_HOVER
-      ] = true
-    }
-
-    if (context.getTipElement().classList.contains(CLASS_NAME_SHOW) || context._hoverState === HOVER_STATE_SHOW) {
-      context._hoverState = HOVER_STATE_SHOW
+  _enter() {
+    if (this._isShown() || this._isHovered) {
+      this._isHovered = true
       return
     }
 
-    clearTimeout(context._timeout)
+    this._isHovered = true
 
-    context._hoverState = HOVER_STATE_SHOW
-
-    if (!context._config.delay || !context._config.delay.show) {
-      context.show()
-      return
-    }
-
-    context._timeout = setTimeout(() => {
-      if (context._hoverState === HOVER_STATE_SHOW) {
-        context.show()
+    this._setTimeout(() => {
+      if (this._isHovered) {
+        this.show()
       }
-    }, context._config.delay.show)
+    }, this._config.delay.show)
   }
 
-  _leave(event, context) {
-    context = this._initializeOnDelegatedTarget(event, context)
-
-    if (event) {
-      context._activeTrigger[
-        event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER
-      ] = context._element.contains(event.relatedTarget)
-    }
-
-    if (context._isWithActiveTrigger()) {
+  _leave() {
+    if (this._isWithActiveTrigger()) {
       return
     }
 
-    clearTimeout(context._timeout)
+    this._isHovered = false
 
-    context._hoverState = HOVER_STATE_OUT
-
-    if (!context._config.delay || !context._config.delay.hide) {
-      context.hide()
-      return
-    }
-
-    context._timeout = setTimeout(() => {
-      if (context._hoverState === HOVER_STATE_OUT) {
-        context.hide()
+    this._setTimeout(() => {
+      if (!this._isHovered) {
+        this.hide()
       }
-    }, context._config.delay.hide)
+    }, this._config.delay.hide)
+  }
+
+  _setTimeout(handler, timeout) {
+    clearTimeout(this._timeout)
+    this._timeout = setTimeout(handler, timeout)
   }
 
   _isWithActiveTrigger() {
-    for (const trigger in this._activeTrigger) {
-      if (this._activeTrigger[trigger]) {
-        return true
-      }
-    }
-
-    return false
+    return Object.values(this._activeTrigger).includes(true)
   }
 
   _getConfig(config) {
     const dataAttributes = Manipulator.getDataAttributes(this._element)
 
-    Object.keys(dataAttributes).forEach(dataAttr => {
-      if (DISALLOWED_ATTRIBUTES.has(dataAttr)) {
-        delete dataAttributes[dataAttr]
+    for (const dataAttribute of Object.keys(dataAttributes)) {
+      if (DISALLOWED_ATTRIBUTES.has(dataAttribute)) {
+        delete dataAttributes[dataAttribute]
       }
-    })
+    }
 
     config = {
-      ...this.constructor.Default,
       ...dataAttributes,
       ...(typeof config === 'object' && config ? config : {})
     }
+    config = this._mergeConfigObj(config)
+    config = this._configAfterMerge(config)
+    this._typeCheckConfig(config)
+    return config
+  }
 
+  _configAfterMerge(config) {
     config.container = config.container === false ? document.body : getElement(config.container)
 
     if (typeof config.delay === 'number') {
@@ -666,6 +591,8 @@ class Tooltip extends BaseComponent {
       }
     }
 
+    config.originalTitle = this._element.getAttribute('title') || ''
+    config.title = this._resolvePossibleFunction(config.title) || config.originalTitle
     if (typeof config.title === 'number') {
       config.title = config.title.toString()
     }
@@ -674,72 +601,51 @@ class Tooltip extends BaseComponent {
       config.content = config.content.toString()
     }
 
-    typeCheckConfig(NAME, config, this.constructor.DefaultType)
-
-    if (config.sanitize) {
-      config.template = sanitizeHtml(config.template, config.allowList, config.sanitizeFn)
-    }
-
     return config
   }
 
   _getDelegateConfig() {
     const config = {}
 
-    if (this._config) {
-      for (const key in this._config) {
-        if (this.constructor.Default[key] !== this._config[key]) {
-          config[key] = this._config[key]
-        }
+    for (const key in this._config) {
+      if (this.constructor.Default[key] !== this._config[key]) {
+        config[key] = this._config[key]
       }
     }
 
+    // In the future can be replaced with:
+    // const keysWithDifferentValues = Object.entries(this._config).filter(entry => this.constructor.Default[entry[0]] !== this._config[entry[0]])
+    // `Object.fromEntries(keysWithDifferentValues)`
     return config
   }
 
-  _cleanTipClass() {
-    const tip = this.getTipElement()
-    const tabClass = tip.getAttribute('class').match(BSCLS_PREFIX_REGEX)
-    if (tabClass !== null && tabClass.length > 0) {
-      tabClass.map(token => token.trim())
-        .forEach(tClass => tip.classList.remove(tClass))
+  _disposePopper() {
+    if (this._popper) {
+      this._popper.destroy()
+      this._popper = null
     }
-  }
-
-  _handlePopperPlacementChange(popperData) {
-    const { state } = popperData
-
-    if (!state) {
-      return
-    }
-
-    this.tip = state.elements.popper
-    this._cleanTipClass()
-    this._addAttachmentClass(this._getAttachment(state.placement))
   }
 
   // Static
-
   static jQueryInterface(config) {
     return this.each(function () {
       const data = Tooltip.getOrCreateInstance(this, config)
 
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-
-        data[config]()
+      if (typeof config !== 'string') {
+        return
       }
+
+      if (typeof data[config] === 'undefined') {
+        throw new TypeError(`No method named "${config}"`)
+      }
+
+      data[config]()
     })
   }
 }
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
- * add .Tooltip to jQuery only if jQuery is present
  */
 
 defineJQueryPlugin(Tooltip)

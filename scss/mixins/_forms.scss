@@ -104,6 +104,14 @@
     }
   }
 
+  .form-control-color {
+    @include form-validation-state-selector($state) {
+      @if $enable-validation-icons {
+        width: add($form-color-width, $input-height-inner);
+      }
+    }
+  }
+
   .form-check-input {
     @include form-validation-state-selector($state) {
       border-color: $color;

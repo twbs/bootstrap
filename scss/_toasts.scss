@@ -10,16 +10,18 @@
   box-shadow: $toast-box-shadow;
   @include border-radius($toast-border-radius);
 
-  &:not(.showing):not(.show) {
+  &.showing {
     opacity: 0;
   }
 
-  &.hide {
+  &:not(.show) {
     display: none;
   }
 }
 
 .toast-container {
+  position: absolute;
+  z-index: $zindex-toast;
   width: max-content;
   max-width: 100%;
   pointer-events: none;
