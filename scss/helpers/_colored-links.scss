@@ -1,12 +1,10 @@
 @each $color, $value in $theme-colors {
   .link-#{$color} {
-    --#{$variable-prefix}link-color: #{$value};
+    --#{$variable-prefix}link-color: #{$value} !important; // stylelint-disable-line declaration-no-important
+    --#{$variable-prefix}link-hover-color: #{$value} !important; // stylelint-disable-line declaration-no-important
 
     @if $link-shade-percentage != 0 {
       --#{$variable-prefix}link-hover-color: #{if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage))};
-    }
-    @else {
-      --#{$variable-prefix}link-hover-color: #{$value};
     }
   }
 }

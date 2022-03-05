@@ -267,9 +267,7 @@ class Carousel extends BaseComponent {
   }
 
   _getItemIndex(element) {
-    this._items = element && element.parentNode ?
-      SelectorEngine.find(SELECTOR_ITEM, element.parentNode) :
-      []
+    this._items = SelectorEngine.find(SELECTOR_ITEM, this._element)
 
     return this._items.indexOf(element)
   }
@@ -279,9 +277,8 @@ class Carousel extends BaseComponent {
     return getNextActiveElement(this._items, activeElement, isNext, this._config.wrap)
   }
 
-  _triggerSlideEvent(relatedTarget, eventDirectionName) {
+  _triggerSlideEvent(relatedTarget, fromIndex, eventDirectionName) {
     const targetIndex = this._getItemIndex(relatedTarget)
-    const fromIndex = this._getItemIndex(this._getActive())
 
     return EventHandler.trigger(this._element, EVENT_SLIDE, {
       relatedTarget,
@@ -291,7 +288,7 @@ class Carousel extends BaseComponent {
     })
   }
 
-  _setActiveIndicatorElement(element) {
+  _setActiveIndicatorElement(index) {
     if (!this._indicatorsElement) {
       return
     }
@@ -301,7 +298,7 @@ class Carousel extends BaseComponent {
     activeIndicator.classList.remove(CLASS_NAME_ACTIVE)
     activeIndicator.removeAttribute('aria-current')
 
-    const newActiveIndicator = SelectorEngine.findOne(`[data-bs-slide-to="${this._getItemIndex(element)}"]`, this._indicatorsElement)
+    const newActiveIndicator = SelectorEngine.findOne(`[data-bs-slide-to="${index}"]`, this._indicatorsElement)
 
     if (newActiveIndicator) {
       newActiveIndicator.classList.add(CLASS_NAME_ACTIVE)
@@ -344,7 +341,7 @@ class Carousel extends BaseComponent {
       return
     }
 
-    const slideEvent = this._triggerSlideEvent(nextElement, eventDirectionName)
+    const slideEvent = this._triggerSlideEvent(nextElement, activeElementIndex, eventDirectionName)
     if (slideEvent.defaultPrevented) {
       return
     }
@@ -360,10 +357,24 @@ class Carousel extends BaseComponent {
       this.pause()
     }
 
-    this._setActiveIndicatorElement(nextElement)
+    this._setActiveIndicatorElement(nextElementIndex)
     this._activeElement = nextElement
 
-    const triggerSlidEvent = () => {
+    nextElement.classList.add(orderClassName)
+
+    reflow(nextElement)
+
+    activeElement.classList.add(directionalClassName)
+    nextElement.classList.add(directionalClassName)
+
+    const completeCallBack = () => {
+      nextElement.classList.remove(directionalClassName, orderClassName)
+      nextElement.classList.add(CLASS_NAME_ACTIVE)
+
+      activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
+
+      this._isSliding = false
+
       EventHandler.trigger(this._element, EVENT_SLID, {
         relatedTarget: nextElement,
         direction: eventDirectionName,
@@ -372,37 +383,15 @@ class Carousel extends BaseComponent {
       })
     }
 
-    if (this._element.classList.contains(CLASS_NAME_SLIDE)) {
-      nextElement.classList.add(orderClassName)
-
-      reflow(nextElement)
-
-      activeElement.classList.add(directionalClassName)
-      nextElement.classList.add(directionalClassName)
-
-      const completeCallBack = () => {
-        nextElement.classList.remove(directionalClassName, orderClassName)
-        nextElement.classList.add(CLASS_NAME_ACTIVE)
-
-        activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
-
-        this._isSliding = false
-
-        setTimeout(triggerSlidEvent, 0)
-      }
-
-      this._queueCallback(completeCallBack, activeElement, true)
-    } else {
-      activeElement.classList.remove(CLASS_NAME_ACTIVE)
-      nextElement.classList.add(CLASS_NAME_ACTIVE)
-
-      this._isSliding = false
-      triggerSlidEvent()
-    }
+    this._queueCallback(completeCallBack, activeElement, this._isAnimated())
 
     if (isCycling) {
       this.cycle()
     }
+  }
+
+  _isAnimated() {
+    return this._element.classList.contains(CLASS_NAME_SLIDE)
   }
 
   _getActive() {
@@ -441,63 +430,33 @@ class Carousel extends BaseComponent {
   }
 
   // Static
-  static carouselInterface(element, config) {
-    const data = Carousel.getOrCreateInstance(element, config)
-
-    let { _config } = data
-    if (typeof config === 'object') {
-      _config = {
-        ..._config,
-        ...config
-      }
-    }
-
-    const action = typeof config === 'string' ? config : _config.slide
-
-    if (typeof config === 'number') {
-      data.to(config)
-    } else if (typeof action === 'string') {
-      if (typeof data[action] === 'undefined') {
-        throw new TypeError(`No method named "${action}"`)
-      }
-
-      data[action]()
-    } else if (_config.interval && _config.ride) {
-      data.pause()
-      data.cycle()
-    }
-  }
-
   static jQueryInterface(config) {
     return this.each(function () {
-      Carousel.carouselInterface(this, config)
+      const data = Carousel.getOrCreateInstance(this, config)
+
+      let { _config } = data
+      if (typeof config === 'object') {
+        _config = {
+          ..._config,
+          ...config
+        }
+      }
+
+      const action = typeof config === 'string' ? config : _config.slide
+
+      if (typeof config === 'number') {
+        data.to(config)
+      } else if (typeof action === 'string') {
+        if (typeof data[action] === 'undefined') {
+          throw new TypeError(`No method named "${action}"`)
+        }
+
+        data[action]()
+      } else if (_config.interval && _config.ride) {
+        data.pause()
+        data.cycle()
+      }
     })
-  }
-
-  static dataApiClickHandler(event) {
-    const target = getElementFromSelector(this)
-
-    if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
-      return
-    }
-
-    const config = {
-      ...Manipulator.getDataAttributes(target),
-      ...Manipulator.getDataAttributes(this)
-    }
-    const slideIndex = this.getAttribute('data-bs-slide-to')
-
-    if (slideIndex) {
-      config.interval = false
-    }
-
-    Carousel.carouselInterface(target, config)
-
-    if (slideIndex) {
-      Carousel.getInstance(target).to(slideIndex)
-    }
-
-    event.preventDefault()
   }
 }
 
@@ -505,13 +464,36 @@ class Carousel extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler)
+EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (event) {
+  const target = getElementFromSelector(this)
+
+  if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
+    return
+  }
+
+  event.preventDefault()
+
+  const carousel = Carousel.getOrCreateInstance(target)
+  const slideIndex = this.getAttribute('data-bs-slide-to')
+
+  if (slideIndex) {
+    carousel.to(slideIndex)
+    return
+  }
+
+  if (Manipulator.getDataAttribute(this, 'slide') === 'next') {
+    carousel.next()
+    return
+  }
+
+  carousel.prev()
+})
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
 
   for (const carousel of carousels) {
-    Carousel.carouselInterface(carousel, Carousel.getInstance(carousel))
+    Carousel.getOrCreateInstance(carousel)
   }
 })
 

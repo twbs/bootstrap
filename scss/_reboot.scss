@@ -64,18 +64,13 @@ body {
 // Content grouping
 //
 // 1. Reset Firefox's gray color
-// 2. Set correct height and prevent the `size` attribute to make the `hr` look like an input field
 
 hr {
   margin: $hr-margin-y 0;
   color: $hr-color; // 1
-  background-color: $hr-bg-color;
-  border: $hr-border-width;
+  border: 0;
+  border-top: $hr-border-width solid $hr-border-color;
   opacity: $hr-opacity;
-}
-
-hr:not([size]) {
-  height: $hr-height; // 2
 }
 
 

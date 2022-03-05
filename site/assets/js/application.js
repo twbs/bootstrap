@@ -10,7 +10,7 @@
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global ClipboardJS: false, anchors: false, bootstrap: false */
+/* global ClipboardJS: false, bootstrap: false */
 
 (function () {
   'use strict'
@@ -163,9 +163,4 @@
       tooltipBtn.setContent({ '.tooltip-inner': btnTitle })
     }, { once: true })
   })
-
-  anchors.options = {
-    icon: '#'
-  }
-  anchors.add('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
 })()

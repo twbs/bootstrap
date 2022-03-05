@@ -39,13 +39,11 @@
   > thead {
     vertical-align: bottom;
   }
-
-  // Highlight border color between thead, tbody and tfoot.
-  > :not(:first-child) {
-    border-top: (2 * $table-border-width) solid $table-group-separator-color;
-  }
 }
 
+.table-group-divider {
+  border-top: calc(2 * $table-border-width) solid $table-group-separator-color; // stylelint-disable-line function-disallowed-list
+}
 
 //
 // Change placement of captions with a class
