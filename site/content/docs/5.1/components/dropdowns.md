@@ -987,6 +987,44 @@ By default, the dropdown menu is closed when clicking inside or outside the drop
 </div>
 {{< /example >}}
 
+### Nested menus
+
+By default, the nested dropdown menus not supported, but you can add handler to stop closing parent's menu on click to sub-menu toggler:
+
+```js
+document.querySelectorAll('.dropdown-menu .dropdown-toggle[href="#"]').forEach(function (element) {
+  element.addEventListener('click', function (event) {
+    event.stopPropagation();
+  });
+});
+```
+
+Menu item contain nested menu can use class `.dropstart`/`.dropend` to display sub-menu at left/right of parent menu:
+
+```html
+<div class="dropdown">
+  <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenu" data-bs-toggle="dropdown" aria-expanded="false">Dropdown menu</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+    <li><a class="dropdown-item" href="...">Menu item</a></li>
+    <li class="dropstart">
+      <a class="dropdown-item dropdown-toggle" role="button" id="dropstartSubMenu" data-bs-toggle="dropdown" data-bs-offset="-9,2" aria-expanded="false" href="#">Dropstart nested menu</a>
+      <ul class="dropdown-menu" aria-labelledby="dropstartSubMenu">
+        <li><a class="dropdown-item" href="...">Sub-menu item</a></li>
+        <li><a class="dropdown-item" href="...">Sub-menu item</a></li>
+      </ul>
+    </li>
+    <li class="dropend">
+      <a class="dropdown-item dropdown-toggle" role="button" id="dropendSubMenu" data-bs-toggle="dropdown" data-bs-offset="-9,2" aria-expanded="false" href="#">Dropend nested menu</a>
+      <ul class="dropdown-menu" aria-labelledby="dropendSubMenu">
+        <li><a class="dropdown-item" href="...">Sub-menu item</a></li>
+        <li><a class="dropdown-item" href="...">Sub-menu item</a></li>
+      </ul>
+    </li>
+    <li><a class="dropdown-item" href="...">Menu item</a></li>
+  </ul>
+</div>
+```
+
 ## CSS
 
 ### Variables
