@@ -26,13 +26,6 @@ body {
 .carousel-item {
   height: 32rem;
 }
-.carousel-item > img {
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 100%;
-  height: 32rem;
-}
 
 
 /* MARKETING CONTENT
@@ -42,9 +35,6 @@ body {
 .marketing .col-lg-4 {
   margin-bottom: 1.5rem;
   text-align: center;
-}
-.marketing h2 {
-  font-weight: 400;
 }
 .marketing .col-lg-4 p {
   margin-right: .75rem;
@@ -60,11 +50,6 @@ body {
 }
 
 /* Thin out the marketing headings */
-.featurette-heading {
-  font-weight: 300;
-  line-height: 1;
-}
-
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */

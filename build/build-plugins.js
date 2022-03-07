@@ -48,7 +48,7 @@ const build = async plugin => {
         babelHelpers: 'bundled'
       })
     ],
-    external: source => {
+    external(source) {
       // Pattern to identify local files
       const pattern = /^(\.{1,2})\//
 
