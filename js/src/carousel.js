@@ -267,9 +267,7 @@ class Carousel extends BaseComponent {
   }
 
   _getItemIndex(element) {
-    this._items = element && element.parentNode ?
-      SelectorEngine.find(SELECTOR_ITEM, element.parentNode) :
-      []
+    this._items = SelectorEngine.find(SELECTOR_ITEM, this._element)
 
     return this._items.indexOf(element)
   }
@@ -432,62 +430,33 @@ class Carousel extends BaseComponent {
   }
 
   // Static
-  static carouselInterface(element, config) {
-    const data = Carousel.getOrCreateInstance(element, config)
-
-    let { _config } = data
-    if (typeof config === 'object') {
-      _config = {
-        ..._config,
-        ...config
-      }
-    }
-
-    const action = typeof config === 'string' ? config : _config.slide
-
-    if (typeof config === 'number') {
-      data.to(config)
-    } else if (typeof action === 'string') {
-      if (typeof data[action] === 'undefined') {
-        throw new TypeError(`No method named "${action}"`)
-      }
-
-      data[action]()
-    } else if (_config.interval && _config.ride) {
-      data.pause()
-      data.cycle()
-    }
-  }
-
   static jQueryInterface(config) {
     return this.each(function () {
-      Carousel.carouselInterface(this, config)
+      const data = Carousel.getOrCreateInstance(this, config)
+
+      let { _config } = data
+      if (typeof config === 'object') {
+        _config = {
+          ..._config,
+          ...config
+        }
+      }
+
+      const action = typeof config === 'string' ? config : _config.slide
+
+      if (typeof config === 'number') {
+        data.to(config)
+      } else if (typeof action === 'string') {
+        if (typeof data[action] === 'undefined') {
+          throw new TypeError(`No method named "${action}"`)
+        }
+
+        data[action]()
+      } else if (_config.interval && _config.ride) {
+        data.pause()
+        data.cycle()
+      }
     })
-  }
-
-  static dataApiClickHandler(event) {
-    const target = getElementFromSelector(this)
-
-    if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
-      return
-    }
-
-    const config = {
-      ...Manipulator.getDataAttributes(this)
-    }
-    const slideIndex = this.getAttribute('data-bs-slide-to')
-
-    if (slideIndex) {
-      config.interval = false
-    }
-
-    Carousel.carouselInterface(target, config)
-
-    if (slideIndex) {
-      Carousel.getInstance(target).to(slideIndex)
-    }
-
-    event.preventDefault()
   }
 }
 
@@ -495,7 +464,30 @@ class Carousel extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler)
+EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (event) {
+  const target = getElementFromSelector(this)
+
+  if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
+    return
+  }
+
+  event.preventDefault()
+
+  const carousel = Carousel.getOrCreateInstance(target)
+  const slideIndex = this.getAttribute('data-bs-slide-to')
+
+  if (slideIndex) {
+    carousel.to(slideIndex)
+    return
+  }
+
+  if (Manipulator.getDataAttribute(this, 'slide') === 'next') {
+    carousel.next()
+    return
+  }
+
+  carousel.prev()
+})
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
