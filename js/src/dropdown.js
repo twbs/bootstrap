@@ -401,7 +401,7 @@ class Dropdown extends BaseComponent {
 
     if (isEscapeEvent) {
       instance.hide()
-      getToggleButton.focus()
+      getToggleButton?.focus()
       return
     }
 
