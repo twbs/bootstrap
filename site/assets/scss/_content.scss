@@ -45,6 +45,10 @@
       }
     }
 
+    thead {
+      border-bottom: 2px solid currentColor;
+    }
+
     th,
     td {
       &:first-child {
@@ -72,10 +76,6 @@
   font-weight: 300;
 }
 
-.bd-text-purple-bright {
-  color: $bd-violet;
-}
-
-.bd-bg-purple-bright {
+.bd-bg-violet {
   background-color: $bd-violet;
 }

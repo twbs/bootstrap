@@ -124,8 +124,12 @@
     display: block;
   }
 
-  > :not(hr):last-child {
+  > :last-child {
     margin-bottom: 0;
+  }
+
+  > hr:last-child {
+    margin-bottom: $spacer;
   }
 
   // Images
@@ -190,7 +194,7 @@
     width: 10rem;
     color: $gray-600;
     background-color: $gray-100;
-    border: $border-width solid $border-color;
+    border: var(--#{$variable-prefix}border-width) solid var(--#{$variable-prefix}border-color);
 
     > div {
       display: flex;
@@ -261,7 +265,7 @@
 
 .bd-example-border-utils-0 {
   [class^="border"] {
-    border: 1px solid $border-color;
+    border: var(--#{$variable-prefix}border-width) solid var(--#{$variable-prefix}border-color);
   }
 }
 

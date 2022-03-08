@@ -20,7 +20,7 @@
 
 - name: Japanese
   code: ja
-  description: Bootstrap 4 日本語リファレンス
+  description: Bootstrap 5 日本語リファレンス
   url: https://getbootstrap.jp/
 
 - name: Russian

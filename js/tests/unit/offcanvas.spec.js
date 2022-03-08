@@ -74,6 +74,21 @@ describe('Offcanvas', () => {
       expect(offCanvas.hide).toHaveBeenCalled()
     })
 
+    it('should hide if esc is pressed and backdrop is static', () => {
+      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+
+      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+      const offCanvas = new Offcanvas(offCanvasEl, { backdrop: 'static' })
+      const keyDownEsc = createEvent('keydown')
+      keyDownEsc.key = 'Escape'
+
+      spyOn(offCanvas, 'hide')
+
+      offCanvasEl.dispatchEvent(keyDownEsc)
+
+      expect(offCanvas.hide).toHaveBeenCalled()
+    })
+
     it('should not hide if esc is not pressed', () => {
       fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
@@ -84,25 +99,61 @@ describe('Offcanvas', () => {
 
       spyOn(offCanvas, 'hide')
 
-      document.dispatchEvent(keydownTab)
+      offCanvasEl.dispatchEvent(keydownTab)
 
       expect(offCanvas.hide).not.toHaveBeenCalled()
     })
 
     it('should not hide if esc is pressed but with keyboard = false', () => {
-      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
-      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
-      const offCanvas = new Offcanvas(offCanvasEl, { keyboard: false })
-      const keyDownEsc = createEvent('keydown')
-      keyDownEsc.key = 'Escape'
+        const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+        const offCanvas = new Offcanvas(offCanvasEl, { keyboard: false })
+        const keyDownEsc = createEvent('keydown')
+        keyDownEsc.key = 'Escape'
 
-      spyOn(offCanvas, 'hide')
+        spyOn(offCanvas, 'hide')
+        const hidePreventedSpy = jasmine.createSpy('hidePrevented')
+        offCanvasEl.addEventListener('hidePrevented.bs.offcanvas', hidePreventedSpy)
 
-      document.dispatchEvent(keyDownEsc)
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          expect(offCanvas._config.keyboard).toBeFalse()
+          offCanvasEl.dispatchEvent(keyDownEsc)
 
-      expect(offCanvas._config.keyboard).toBeFalse()
-      expect(offCanvas.hide).not.toHaveBeenCalled()
+          expect(hidePreventedSpy).toHaveBeenCalled()
+          expect(offCanvas.hide).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.show()
+      })
+    })
+
+    it('should not hide if user clicks on static backdrop', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+
+        const offCanvasEl = fixtureEl.querySelector('div')
+        const offCanvas = new Offcanvas(offCanvasEl, { backdrop: 'static' })
+
+        const clickEvent = new Event('mousedown', { bubbles: true, cancelable: true })
+        spyOn(offCanvas._backdrop._config, 'clickCallback').and.callThrough()
+        spyOn(offCanvas._backdrop, 'hide').and.callThrough()
+        const hidePreventedSpy = jasmine.createSpy('hidePrevented')
+        offCanvasEl.addEventListener('hidePrevented.bs.offcanvas', hidePreventedSpy)
+
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          expect(offCanvas._backdrop._config.clickCallback).toEqual(jasmine.any(Function))
+
+          offCanvas._backdrop._getElement().dispatchEvent(clickEvent)
+          expect(hidePreventedSpy).toHaveBeenCalled()
+          expect(offCanvas._backdrop.hide).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.show()
+      })
     })
   })
 

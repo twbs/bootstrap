@@ -30,7 +30,7 @@ Use border utilities to add or remove an element's borders. Choose from all bord
 <span class="border-start-0"></span>
 {{< /example >}}
 
-## Border color
+## Color
 
 Change the border color using utilities built on our theme colors.
 
@@ -43,7 +43,45 @@ Change the border color using utilities built on our theme colors.
 <span class="border border-white"></span>
 {{< /example >}}
 
-## Border-width
+## Opacity
+
+<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.2.0</small>
+
+Bootstrap `border-{color}` utilities are generated with Sass using CSS variables. This allows for real-time color changes without compilation and dynamic alpha transparency changes.
+
+### How it works
+
+Consider our default `.border-success` utility.
+
+```css
+.border-success {
+  --bs-border-opacity: 1;
+  border-color: rgba(var(--bs-success-rgb), var(--bs-border-opacity)) !important;
+}
+```
+
+We use an RGB version of our `--bs-success` (with the value of `25, 135, 84`) CSS variable and attached a second CSS variable, `--bs-border-opacity`, for the alpha transparency (with a default value `1` thanks to a local CSS variable). That means anytime you use `.border-success` now, your computed `color` value is `rgba(25, 135, 84, 1)`. The local CSS variable inside each `.border-*` class avoids inheritance issues so nested instances of the utilities don't automatically have a modified alpha transparency.
+
+### Example
+
+To change that opacity, override `--bs-border-opacity` via custom styles or inline styles.
+
+{{< example >}}
+<div class="border border-success p-2 mb-2">This is default success border</div>
+<div class="border border-success p-2" style="--bs-border-opacity: .5;">This is 50% opacity success border</div>
+{{< /example >}}
+
+Or, choose from any of the `.border-opacity` utilities:
+
+{{< example >}}
+<div class="border border-success p-2 mb-2">This is default success border</div>
+<div class="border border-success p-2 mb-2 border-opacity-75">This is 75% opacity success border</div>
+<div class="border border-success p-2 mb-2 border-opacity-50">This is 50% opacity success border</div>
+<div class="border border-success p-2 mb-2 border-opacity-25">This is 25% opacity success border</div>
+<div class="border border-success p-2 border-opacity-10">This is 10% opacity success border</div>
+{{< /example >}}
+
+## Width
 
 {{< example class="bd-example-border-utils" >}}
 <span class="border border-1"></span>
@@ -53,7 +91,7 @@ Change the border color using utilities built on our theme colors.
 <span class="border border-5"></span>
 {{< /example >}}
 
-## Border-radius
+## Radius
 
 Add classes to an element to easily round its corners.
 
