@@ -51,7 +51,7 @@
   min-width: var(--#{$variable-prefix}dropdown-min-width);
   padding: var(--#{$variable-prefix}dropdown-padding-y) var(--#{$variable-prefix}dropdown-padding-x);
   margin: 0; // Override default margin of ul
-  @include font-size(var(#{$variable-prefix}dropdown-font-size));
+  @include font-size(var(--#{$variable-prefix}dropdown-font-size));
   color: var(--#{$variable-prefix}dropdown-color);
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   list-style: none;
