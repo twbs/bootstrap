@@ -55,7 +55,7 @@ describe('Offcanvas', () => {
 
       closeEl.click()
 
-      expect(offCanvas._config.keyboard).toBe(true)
+      expect(offCanvas._config.keyboard).toBeTrue()
       expect(offCanvas.hide).toHaveBeenCalled()
     })
 
@@ -64,6 +64,21 @@ describe('Offcanvas', () => {
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl)
+      const keyDownEsc = createEvent('keydown')
+      keyDownEsc.key = 'Escape'
+
+      spyOn(offCanvas, 'hide')
+
+      offCanvasEl.dispatchEvent(keyDownEsc)
+
+      expect(offCanvas.hide).toHaveBeenCalled()
+    })
+
+    it('should hide if esc is pressed and backdrop is static', () => {
+      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+
+      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+      const offCanvas = new Offcanvas(offCanvasEl, { backdrop: 'static' })
       const keyDownEsc = createEvent('keydown')
       keyDownEsc.key = 'Escape'
 
@@ -84,64 +99,91 @@ describe('Offcanvas', () => {
 
       spyOn(offCanvas, 'hide')
 
-      document.dispatchEvent(keydownTab)
+      offCanvasEl.dispatchEvent(keydownTab)
 
       expect(offCanvas.hide).not.toHaveBeenCalled()
     })
 
     it('should not hide if esc is pressed but with keyboard = false', () => {
-      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
-      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
-      const offCanvas = new Offcanvas(offCanvasEl, { keyboard: false })
-      const keyDownEsc = createEvent('keydown')
-      keyDownEsc.key = 'Escape'
+        const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+        const offCanvas = new Offcanvas(offCanvasEl, { keyboard: false })
+        const keyDownEsc = createEvent('keydown')
+        keyDownEsc.key = 'Escape'
 
-      spyOn(offCanvas, 'hide')
+        spyOn(offCanvas, 'hide')
+        const hidePreventedSpy = jasmine.createSpy('hidePrevented')
+        offCanvasEl.addEventListener('hidePrevented.bs.offcanvas', hidePreventedSpy)
 
-      document.dispatchEvent(keyDownEsc)
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          expect(offCanvas._config.keyboard).toBeFalse()
+          offCanvasEl.dispatchEvent(keyDownEsc)
 
-      expect(offCanvas._config.keyboard).toBe(false)
-      expect(offCanvas.hide).not.toHaveBeenCalled()
+          expect(hidePreventedSpy).toHaveBeenCalled()
+          expect(offCanvas.hide).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.show()
+      })
+    })
+
+    it('should not hide if user clicks on static backdrop', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+
+        const offCanvasEl = fixtureEl.querySelector('div')
+        const offCanvas = new Offcanvas(offCanvasEl, { backdrop: 'static' })
+
+        const clickEvent = new Event('mousedown', { bubbles: true, cancelable: true })
+        spyOn(offCanvas._backdrop._config, 'clickCallback').and.callThrough()
+        spyOn(offCanvas._backdrop, 'hide').and.callThrough()
+        const hidePreventedSpy = jasmine.createSpy('hidePrevented')
+        offCanvasEl.addEventListener('hidePrevented.bs.offcanvas', hidePreventedSpy)
+
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          expect(offCanvas._backdrop._config.clickCallback).toEqual(jasmine.any(Function))
+
+          offCanvas._backdrop._getElement().dispatchEvent(clickEvent)
+          expect(hidePreventedSpy).toHaveBeenCalled()
+          expect(offCanvas._backdrop.hide).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.show()
+      })
     })
   })
 
   describe('config', () => {
     it('should have default values', () => {
-      fixtureEl.innerHTML = [
-        '<div class="offcanvas">',
-        '</div>'
-      ].join('')
+      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl)
 
-      expect(offCanvas._config.backdrop).toEqual(true)
-      expect(offCanvas._backdrop._config.isVisible).toEqual(true)
-      expect(offCanvas._config.keyboard).toEqual(true)
-      expect(offCanvas._config.scroll).toEqual(false)
+      expect(offCanvas._config.backdrop).toBeTrue()
+      expect(offCanvas._backdrop._config.isVisible).toBeTrue()
+      expect(offCanvas._config.keyboard).toBeTrue()
+      expect(offCanvas._config.scroll).toBeFalse()
     })
 
     it('should read data attributes and override default config', () => {
-      fixtureEl.innerHTML = [
-        '<div class="offcanvas" data-bs-scroll="true" data-bs-backdrop="false"  data-bs-keyboard="false">',
-        '</div>'
-      ].join('')
+      fixtureEl.innerHTML = '<div class="offcanvas" data-bs-scroll="true" data-bs-backdrop="false" data-bs-keyboard="false"></div>'
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl)
 
-      expect(offCanvas._config.backdrop).toEqual(false)
-      expect(offCanvas._backdrop._config.isVisible).toEqual(false)
-      expect(offCanvas._config.keyboard).toEqual(false)
-      expect(offCanvas._config.scroll).toEqual(true)
+      expect(offCanvas._config.backdrop).toBeFalse()
+      expect(offCanvas._backdrop._config.isVisible).toBeFalse()
+      expect(offCanvas._config.keyboard).toBeFalse()
+      expect(offCanvas._config.scroll).toBeTrue()
     })
 
     it('given a config object must override data attributes', () => {
-      fixtureEl.innerHTML = [
-        '<div class="offcanvas" data-bs-scroll="true" data-bs-backdrop="false"  data-bs-keyboard="false">',
-        '</div>'
-      ].join('')
+      fixtureEl.innerHTML = '<div class="offcanvas" data-bs-scroll="true" data-bs-backdrop="false" data-bs-keyboard="false"></div>'
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl, {
@@ -149,90 +191,98 @@ describe('Offcanvas', () => {
         keyboard: true,
         scroll: false
       })
-      expect(offCanvas._config.backdrop).toEqual(true)
-      expect(offCanvas._config.keyboard).toEqual(true)
-      expect(offCanvas._config.scroll).toEqual(false)
+      expect(offCanvas._config.backdrop).toBeTrue()
+      expect(offCanvas._config.keyboard).toBeTrue()
+      expect(offCanvas._config.scroll).toBeFalse()
     })
   })
+
   describe('options', () => {
-    it('if scroll is enabled, should allow body to scroll while offcanvas is open', done => {
-      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+    it('if scroll is enabled, should allow body to scroll while offcanvas is open', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
-      spyOn(ScrollBarHelper.prototype, 'hide').and.callThrough()
-      spyOn(ScrollBarHelper.prototype, 'reset').and.callThrough()
-      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
-      const offCanvas = new Offcanvas(offCanvasEl, { scroll: true })
+        spyOn(ScrollBarHelper.prototype, 'hide').and.callThrough()
+        spyOn(ScrollBarHelper.prototype, 'reset').and.callThrough()
+        const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+        const offCanvas = new Offcanvas(offCanvasEl, { scroll: true })
 
-      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
-        expect(ScrollBarHelper.prototype.hide).not.toHaveBeenCalled()
-        offCanvas.hide()
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          expect(ScrollBarHelper.prototype.hide).not.toHaveBeenCalled()
+          offCanvas.hide()
+        })
+        offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+          expect(ScrollBarHelper.prototype.reset).not.toHaveBeenCalled()
+          resolve()
+        })
+        offCanvas.show()
       })
-      offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
-        expect(ScrollBarHelper.prototype.reset).not.toHaveBeenCalled()
-        done()
-      })
-      offCanvas.show()
     })
 
-    it('if scroll is disabled, should call ScrollBarHelper to handle scrollBar on body', done => {
-      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+    it('if scroll is disabled, should call ScrollBarHelper to handle scrollBar on body', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
-      spyOn(ScrollBarHelper.prototype, 'hide').and.callThrough()
-      spyOn(ScrollBarHelper.prototype, 'reset').and.callThrough()
-      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
-      const offCanvas = new Offcanvas(offCanvasEl, { scroll: false })
+        spyOn(ScrollBarHelper.prototype, 'hide').and.callThrough()
+        spyOn(ScrollBarHelper.prototype, 'reset').and.callThrough()
+        const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+        const offCanvas = new Offcanvas(offCanvasEl, { scroll: false })
 
-      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
-        expect(ScrollBarHelper.prototype.hide).toHaveBeenCalled()
-        offCanvas.hide()
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          expect(ScrollBarHelper.prototype.hide).toHaveBeenCalled()
+          offCanvas.hide()
+        })
+        offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+          expect(ScrollBarHelper.prototype.reset).toHaveBeenCalled()
+          resolve()
+        })
+        offCanvas.show()
       })
-      offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
-        expect(ScrollBarHelper.prototype.reset).toHaveBeenCalled()
-        done()
-      })
-      offCanvas.show()
     })
 
-    it('should hide a shown element if user click on backdrop', done => {
-      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+    it('should hide a shown element if user click on backdrop', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
-      const offCanvasEl = fixtureEl.querySelector('div')
-      const offCanvas = new Offcanvas(offCanvasEl, { backdrop: true })
+        const offCanvasEl = fixtureEl.querySelector('div')
+        const offCanvas = new Offcanvas(offCanvasEl, { backdrop: true })
 
-      const clickEvent = document.createEvent('MouseEvents')
-      clickEvent.initEvent('mousedown', true, true)
-      spyOn(offCanvas._backdrop._config, 'clickCallback').and.callThrough()
+        const clickEvent = new Event('mousedown', { bubbles: true, cancelable: true })
+        spyOn(offCanvas._backdrop._config, 'clickCallback').and.callThrough()
 
-      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
-        expect(typeof offCanvas._backdrop._config.clickCallback).toBe('function')
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          expect(offCanvas._backdrop._config.clickCallback).toEqual(jasmine.any(Function))
 
-        offCanvas._backdrop._getElement().dispatchEvent(clickEvent)
+          offCanvas._backdrop._getElement().dispatchEvent(clickEvent)
+        })
+
+        offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+          expect(offCanvas._backdrop._config.clickCallback).toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.show()
       })
-
-      offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
-        expect(offCanvas._backdrop._config.clickCallback).toHaveBeenCalled()
-        done()
-      })
-
-      offCanvas.show()
     })
 
-    it('should not trap focus if scroll is allowed', done => {
-      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+    it('should not trap focus if scroll is allowed', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
-      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
-      const offCanvas = new Offcanvas(offCanvasEl, {
-        scroll: true
+        const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+        const offCanvas = new Offcanvas(offCanvasEl, {
+          scroll: true
+        })
+
+        spyOn(offCanvas._focustrap, 'activate').and.callThrough()
+
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          expect(offCanvas._focustrap.activate).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.show()
       })
-
-      spyOn(offCanvas._focustrap, 'activate').and.callThrough()
-
-      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
-        expect(offCanvas._focustrap.activate).not.toHaveBeenCalled()
-        done()
-      })
-
-      offCanvas.show()
     })
   })
 
@@ -251,22 +301,49 @@ describe('Offcanvas', () => {
     })
 
     it('should call hide method if show class is present', () => {
-      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
-      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
-      const offCanvas = new Offcanvas(offCanvasEl)
-      offCanvas.show()
-      expect(offCanvasEl.classList.contains('show')).toBe(true)
+        const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+        const offCanvas = new Offcanvas(offCanvasEl)
 
-      spyOn(offCanvas, 'hide')
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          expect(offCanvasEl).toHaveClass('show')
+          spyOn(offCanvas, 'hide')
 
-      offCanvas.toggle()
+          offCanvas.toggle()
 
-      expect(offCanvas.hide).toHaveBeenCalled()
+          expect(offCanvas.hide).toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.show()
+      })
     })
   })
 
   describe('show', () => {
+    it('should add `showing` class during opening and `show` class on end', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+        const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+        const offCanvas = new Offcanvas(offCanvasEl)
+
+        offCanvasEl.addEventListener('show.bs.offcanvas', () => {
+          expect(offCanvasEl).not.toHaveClass('show')
+        })
+
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          expect(offCanvasEl).not.toHaveClass('showing')
+          expect(offCanvasEl).toHaveClass('show')
+          resolve()
+        })
+
+        offCanvas.show()
+        expect(offCanvasEl).toHaveClass('showing')
+      })
+    })
+
     it('should do nothing if already shown', () => {
       fixtureEl.innerHTML = '<div class="offcanvas show"></div>'
 
@@ -274,7 +351,7 @@ describe('Offcanvas', () => {
       const offCanvas = new Offcanvas(offCanvasEl)
       offCanvas.show()
 
-      expect(offCanvasEl.classList.contains('show')).toBe(true)
+      expect(offCanvasEl).toHaveClass('show')
 
       spyOn(offCanvas._backdrop, 'show').and.callThrough()
       spyOn(EventHandler, 'trigger').and.callThrough()
@@ -284,83 +361,117 @@ describe('Offcanvas', () => {
       expect(offCanvas._backdrop.show).not.toHaveBeenCalled()
     })
 
-    it('should show a hidden element', done => {
-      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+    it('should show a hidden element', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
-      const offCanvasEl = fixtureEl.querySelector('div')
-      const offCanvas = new Offcanvas(offCanvasEl)
-      spyOn(offCanvas._backdrop, 'show').and.callThrough()
+        const offCanvasEl = fixtureEl.querySelector('div')
+        const offCanvas = new Offcanvas(offCanvasEl)
+        spyOn(offCanvas._backdrop, 'show').and.callThrough()
 
-      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
-        expect(offCanvasEl.classList.contains('show')).toEqual(true)
-        expect(offCanvas._backdrop.show).toHaveBeenCalled()
-        done()
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          expect(offCanvasEl).toHaveClass('show')
+          expect(offCanvas._backdrop.show).toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.show()
       })
-
-      offCanvas.show()
     })
 
-    it('should not fire shown when show is prevented', done => {
-      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+    it('should not fire shown when show is prevented', () => {
+      return new Promise((resolve, reject) => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
-      const offCanvasEl = fixtureEl.querySelector('div')
-      const offCanvas = new Offcanvas(offCanvasEl)
-      spyOn(offCanvas._backdrop, 'show').and.callThrough()
+        const offCanvasEl = fixtureEl.querySelector('div')
+        const offCanvas = new Offcanvas(offCanvasEl)
+        spyOn(offCanvas._backdrop, 'show').and.callThrough()
 
-      const expectEnd = () => {
-        setTimeout(() => {
-          expect(offCanvas._backdrop.show).not.toHaveBeenCalled()
-          done()
-        }, 10)
-      }
+        const expectEnd = () => {
+          setTimeout(() => {
+            expect(offCanvas._backdrop.show).not.toHaveBeenCalled()
+            resolve()
+          }, 10)
+        }
 
-      offCanvasEl.addEventListener('show.bs.offcanvas', event => {
-        event.preventDefault()
-        expectEnd()
+        offCanvasEl.addEventListener('show.bs.offcanvas', event => {
+          event.preventDefault()
+          expectEnd()
+        })
+
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          reject(new Error('should not fire shown event'))
+        })
+
+        offCanvas.show()
       })
-
-      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
-        throw new Error('should not fire shown event')
-      })
-
-      offCanvas.show()
     })
 
-    it('on window load, should make visible an offcanvas element, if its markup contains class "show"', done => {
-      fixtureEl.innerHTML = '<div class="offcanvas show"></div>'
+    it('on window load, should make visible an offcanvas element, if its markup contains class "show"', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas show"></div>'
 
-      const offCanvasEl = fixtureEl.querySelector('div')
-      spyOn(Offcanvas.prototype, 'show').and.callThrough()
+        const offCanvasEl = fixtureEl.querySelector('div')
+        spyOn(Offcanvas.prototype, 'show').and.callThrough()
 
-      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
-        done()
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          resolve()
+        })
+
+        window.dispatchEvent(createEvent('load'))
+
+        const instance = Offcanvas.getInstance(offCanvasEl)
+        expect(instance).not.toBeNull()
+        expect(Offcanvas.prototype.show).toHaveBeenCalled()
       })
-
-      window.dispatchEvent(createEvent('load'))
-
-      const instance = Offcanvas.getInstance(offCanvasEl)
-      expect(instance).not.toBeNull()
-      expect(Offcanvas.prototype.show).toHaveBeenCalled()
     })
 
-    it('should trap focus', done => {
-      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+    it('should trap focus', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
-      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
-      const offCanvas = new Offcanvas(offCanvasEl)
+        const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+        const offCanvas = new Offcanvas(offCanvasEl)
 
-      spyOn(offCanvas._focustrap, 'activate').and.callThrough()
+        spyOn(offCanvas._focustrap, 'activate').and.callThrough()
 
-      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
-        expect(offCanvas._focustrap.activate).toHaveBeenCalled()
-        done()
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          expect(offCanvas._focustrap.activate).toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.show()
       })
-
-      offCanvas.show()
     })
   })
 
   describe('hide', () => {
+    it('should add `hiding` class during closing and remover `show` & `hiding` classes on end', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+        const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+        const offCanvas = new Offcanvas(offCanvasEl)
+
+        offCanvasEl.addEventListener('hide.bs.offcanvas', () => {
+          expect(offCanvasEl).not.toHaveClass('showing')
+          expect(offCanvasEl).toHaveClass('show')
+        })
+
+        offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+          expect(offCanvasEl).not.toHaveClass('hiding')
+          expect(offCanvasEl).not.toHaveClass('show')
+          resolve()
+        })
+
+        offCanvas.show()
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          offCanvas.hide()
+          expect(offCanvasEl).not.toHaveClass('showing')
+          expect(offCanvasEl).toHaveClass('hiding')
+        })
+      })
+    })
+
     it('should do nothing if already shown', () => {
       fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
@@ -375,65 +486,71 @@ describe('Offcanvas', () => {
       expect(EventHandler.trigger).not.toHaveBeenCalled()
     })
 
-    it('should hide a shown element', done => {
-      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+    it('should hide a shown element', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
-      const offCanvasEl = fixtureEl.querySelector('div')
-      const offCanvas = new Offcanvas(offCanvasEl)
-      spyOn(offCanvas._backdrop, 'hide').and.callThrough()
-      offCanvas.show()
+        const offCanvasEl = fixtureEl.querySelector('div')
+        const offCanvas = new Offcanvas(offCanvasEl)
+        spyOn(offCanvas._backdrop, 'hide').and.callThrough()
+        offCanvas.show()
 
-      offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
-        expect(offCanvasEl.classList.contains('show')).toEqual(false)
-        expect(offCanvas._backdrop.hide).toHaveBeenCalled()
-        done()
+        offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+          expect(offCanvasEl).not.toHaveClass('show')
+          expect(offCanvas._backdrop.hide).toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.hide()
       })
-
-      offCanvas.hide()
     })
 
-    it('should not fire hidden when hide is prevented', done => {
-      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+    it('should not fire hidden when hide is prevented', () => {
+      return new Promise((resolve, reject) => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
-      const offCanvasEl = fixtureEl.querySelector('div')
-      const offCanvas = new Offcanvas(offCanvasEl)
-      spyOn(offCanvas._backdrop, 'hide').and.callThrough()
+        const offCanvasEl = fixtureEl.querySelector('div')
+        const offCanvas = new Offcanvas(offCanvasEl)
+        spyOn(offCanvas._backdrop, 'hide').and.callThrough()
 
-      offCanvas.show()
+        offCanvas.show()
 
-      const expectEnd = () => {
-        setTimeout(() => {
-          expect(offCanvas._backdrop.hide).not.toHaveBeenCalled()
-          done()
-        }, 10)
-      }
+        const expectEnd = () => {
+          setTimeout(() => {
+            expect(offCanvas._backdrop.hide).not.toHaveBeenCalled()
+            resolve()
+          }, 10)
+        }
 
-      offCanvasEl.addEventListener('hide.bs.offcanvas', event => {
-        event.preventDefault()
-        expectEnd()
+        offCanvasEl.addEventListener('hide.bs.offcanvas', event => {
+          event.preventDefault()
+          expectEnd()
+        })
+
+        offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+          reject(new Error('should not fire hidden event'))
+        })
+
+        offCanvas.hide()
       })
-
-      offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
-        throw new Error('should not fire hidden event')
-      })
-
-      offCanvas.hide()
     })
 
-    it('should release focus trap', done => {
-      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+    it('should release focus trap', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
-      const offCanvasEl = fixtureEl.querySelector('div')
-      const offCanvas = new Offcanvas(offCanvasEl)
-      spyOn(offCanvas._focustrap, 'deactivate').and.callThrough()
-      offCanvas.show()
+        const offCanvasEl = fixtureEl.querySelector('div')
+        const offCanvas = new Offcanvas(offCanvasEl)
+        spyOn(offCanvas._focustrap, 'deactivate').and.callThrough()
+        offCanvas.show()
 
-      offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
-        expect(offCanvas._focustrap.deactivate).toHaveBeenCalled()
-        done()
+        offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+          expect(offCanvas._focustrap.deactivate).toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.hide()
       })
-
-      offCanvas.hide()
     })
   })
 
@@ -458,27 +575,29 @@ describe('Offcanvas', () => {
       expect(offCanvas._backdrop).toBeNull()
       expect(focustrap.deactivate).toHaveBeenCalled()
       expect(offCanvas._focustrap).toBeNull()
-      expect(Offcanvas.getInstance(offCanvasEl)).toEqual(null)
+      expect(Offcanvas.getInstance(offCanvasEl)).toBeNull()
     })
   })
 
   describe('data-api', () => {
-    it('should not prevent event for input', done => {
-      fixtureEl.innerHTML = [
-        '<input type="checkbox" data-bs-toggle="offcanvas" data-bs-target="#offcanvasdiv1" />',
-        '<div id="offcanvasdiv1" class="offcanvas"></div>'
-      ].join('')
+    it('should not prevent event for input', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<input type="checkbox" data-bs-toggle="offcanvas" data-bs-target="#offcanvasdiv1" />',
+          '<div id="offcanvasdiv1" class="offcanvas"></div>'
+        ].join('')
 
-      const target = fixtureEl.querySelector('input')
-      const offCanvasEl = fixtureEl.querySelector('#offcanvasdiv1')
+        const target = fixtureEl.querySelector('input')
+        const offCanvasEl = fixtureEl.querySelector('#offcanvasdiv1')
 
-      offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
-        expect(offCanvasEl.classList.contains('show')).toEqual(true)
-        expect(target.checked).toEqual(true)
-        done()
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          expect(offCanvasEl).toHaveClass('show')
+          expect(target.checked).toBeTrue()
+          resolve()
+        })
+
+        target.click()
       })
-
-      target.click()
     })
 
     it('should not call toggle on disabled elements', () => {
@@ -496,76 +615,82 @@ describe('Offcanvas', () => {
       expect(Offcanvas.prototype.toggle).not.toHaveBeenCalled()
     })
 
-    it('should call hide first, if another offcanvas is open', done => {
-      fixtureEl.innerHTML = [
-        '<button id="btn2" data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" ></button>',
-        '<div id="offcanvas1" class="offcanvas"></div>',
-        '<div id="offcanvas2" class="offcanvas"></div>'
-      ].join('')
+    it('should call hide first, if another offcanvas is open', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button id="btn2" data-bs-toggle="offcanvas" data-bs-target="#offcanvas2"></button>',
+          '<div id="offcanvas1" class="offcanvas"></div>',
+          '<div id="offcanvas2" class="offcanvas"></div>'
+        ].join('')
 
-      const trigger2 = fixtureEl.querySelector('#btn2')
-      const offcanvasEl1 = document.querySelector('#offcanvas1')
-      const offcanvasEl2 = document.querySelector('#offcanvas2')
-      const offcanvas1 = new Offcanvas(offcanvasEl1)
+        const trigger2 = fixtureEl.querySelector('#btn2')
+        const offcanvasEl1 = document.querySelector('#offcanvas1')
+        const offcanvasEl2 = document.querySelector('#offcanvas2')
+        const offcanvas1 = new Offcanvas(offcanvasEl1)
 
-      offcanvasEl1.addEventListener('shown.bs.offcanvas', () => {
-        trigger2.click()
+        offcanvasEl1.addEventListener('shown.bs.offcanvas', () => {
+          trigger2.click()
+        })
+        offcanvasEl1.addEventListener('hidden.bs.offcanvas', () => {
+          expect(Offcanvas.getInstance(offcanvasEl2)).not.toBeNull()
+          resolve()
+        })
+        offcanvas1.show()
       })
-      offcanvasEl1.addEventListener('hidden.bs.offcanvas', () => {
-        expect(Offcanvas.getInstance(offcanvasEl2)).not.toBeNull()
-        done()
-      })
-      offcanvas1.show()
     })
 
-    it('should focus on trigger element after closing offcanvas', done => {
-      fixtureEl.innerHTML = [
-        '<button id="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" ></button>',
-        '<div id="offcanvas" class="offcanvas"></div>'
-      ].join('')
+    it('should focus on trigger element after closing offcanvas', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button id="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></button>',
+          '<div id="offcanvas" class="offcanvas"></div>'
+        ].join('')
 
-      const trigger = fixtureEl.querySelector('#btn')
-      const offcanvasEl = fixtureEl.querySelector('#offcanvas')
-      const offcanvas = new Offcanvas(offcanvasEl)
-      spyOn(trigger, 'focus')
+        const trigger = fixtureEl.querySelector('#btn')
+        const offcanvasEl = fixtureEl.querySelector('#offcanvas')
+        const offcanvas = new Offcanvas(offcanvasEl)
+        spyOn(trigger, 'focus')
 
-      offcanvasEl.addEventListener('shown.bs.offcanvas', () => {
-        offcanvas.hide()
+        offcanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          offcanvas.hide()
+        })
+        offcanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+          setTimeout(() => {
+            expect(trigger.focus).toHaveBeenCalled()
+            resolve()
+          }, 5)
+        })
+
+        trigger.click()
       })
-      offcanvasEl.addEventListener('hidden.bs.offcanvas', () => {
-        setTimeout(() => {
-          expect(trigger.focus).toHaveBeenCalled()
-          done()
-        }, 5)
-      })
-
-      trigger.click()
     })
 
-    it('should not focus on trigger element after closing offcanvas, if it is not visible', done => {
-      fixtureEl.innerHTML = [
-        '<button id="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" ></button>',
-        '<div id="offcanvas" class="offcanvas"></div>'
-      ].join('')
+    it('should not focus on trigger element after closing offcanvas, if it is not visible', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button id="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></button>',
+          '<div id="offcanvas" class="offcanvas"></div>'
+        ].join('')
 
-      const trigger = fixtureEl.querySelector('#btn')
-      const offcanvasEl = fixtureEl.querySelector('#offcanvas')
-      const offcanvas = new Offcanvas(offcanvasEl)
-      spyOn(trigger, 'focus')
+        const trigger = fixtureEl.querySelector('#btn')
+        const offcanvasEl = fixtureEl.querySelector('#offcanvas')
+        const offcanvas = new Offcanvas(offcanvasEl)
+        spyOn(trigger, 'focus')
 
-      offcanvasEl.addEventListener('shown.bs.offcanvas', () => {
-        trigger.style.display = 'none'
-        offcanvas.hide()
+        offcanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          trigger.style.display = 'none'
+          offcanvas.hide()
+        })
+        offcanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+          setTimeout(() => {
+            expect(isVisible(trigger)).toBeFalse()
+            expect(trigger.focus).not.toHaveBeenCalled()
+            resolve()
+          }, 5)
+        })
+
+        trigger.click()
       })
-      offcanvasEl.addEventListener('hidden.bs.offcanvas', () => {
-        setTimeout(() => {
-          expect(isVisible(trigger)).toBe(false)
-          expect(trigger.focus).not.toHaveBeenCalled()
-          done()
-        }, 5)
-      })
-
-      trigger.click()
     })
   })
 
@@ -665,7 +790,7 @@ describe('Offcanvas', () => {
 
       const offcanvas = Offcanvas.getInstance(div)
       expect(offcanvas).not.toBeNull()
-      expect(offcanvas._config.scroll).toBe(true)
+      expect(offcanvas._config.scroll).toBeTrue()
     })
   })
 
@@ -706,7 +831,7 @@ describe('Offcanvas', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Offcanvas.getInstance(div)).toEqual(null)
+      expect(Offcanvas.getInstance(div)).toBeNull()
       expect(Offcanvas.getOrCreateInstance(div)).toBeInstanceOf(Offcanvas)
     })
 
@@ -715,13 +840,13 @@ describe('Offcanvas', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Offcanvas.getInstance(div)).toEqual(null)
+      expect(Offcanvas.getInstance(div)).toBeNull()
       const offcanvas = Offcanvas.getOrCreateInstance(div, {
         scroll: true
       })
       expect(offcanvas).toBeInstanceOf(Offcanvas)
 
-      expect(offcanvas._config.scroll).toEqual(true)
+      expect(offcanvas._config.scroll).toBeTrue()
     })
 
     it('should return the instance when exists without given configuration', () => {
@@ -739,7 +864,7 @@ describe('Offcanvas', () => {
       expect(offcanvas).toBeInstanceOf(Offcanvas)
       expect(offcanvas2).toEqual(offcanvas)
 
-      expect(offcanvas2._config.scroll).toEqual(true)
+      expect(offcanvas2._config.scroll).toBeTrue()
     })
   })
 })

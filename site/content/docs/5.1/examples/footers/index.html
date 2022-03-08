@@ -1,8 +1,6 @@
 ---
 layout: examples
 title: Footers
-extra_css:
-  - "footers.css"
 body_class: ""
 ---
 
@@ -48,7 +46,7 @@ body_class: ""
       <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
         <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
       </a>
-      <span class="text-muted">&copy; {{< year >}} Company, Inc</span>
+      <span class="mb-3 mb-md-0 text-muted">&copy; {{< year >}} Company, Inc</span>
     </div>
 
     <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
@@ -77,19 +75,19 @@ body_class: ""
 <div class="b-example-divider"></div>
 
 <div class="container">
-  <footer class="row row-cols-5 py-5 my-5 border-top">
-    <div class="col">
+  <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+    <div class="col mb-3">
       <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
       </a>
       <p class="text-muted">&copy; {{< year >}}</p>
     </div>
 
-    <div class="col">
+    <div class="col mb-3">
 
     </div>
 
-    <div class="col">
+    <div class="col mb-3">
       <h5>Section</h5>
       <ul class="nav flex-column">
         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
@@ -100,7 +98,7 @@ body_class: ""
       </ul>
     </div>
 
-    <div class="col">
+    <div class="col mb-3">
       <h5>Section</h5>
       <ul class="nav flex-column">
         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
@@ -111,7 +109,7 @@ body_class: ""
       </ul>
     </div>
 
-    <div class="col">
+    <div class="col mb-3">
       <h5>Section</h5>
       <ul class="nav flex-column">
         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
@@ -130,7 +128,7 @@ body_class: ""
 <div class="container">
   <footer class="py-5">
     <div class="row">
-      <div class="col-2">
+      <div class="col-6 col-md-2 mb-3">
         <h5>Section</h5>
         <ul class="nav flex-column">
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
@@ -141,7 +139,7 @@ body_class: ""
         </ul>
       </div>
 
-      <div class="col-2">
+      <div class="col-6 col-md-2 mb-3">
         <h5>Section</h5>
         <ul class="nav flex-column">
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
@@ -152,7 +150,7 @@ body_class: ""
         </ul>
       </div>
 
-      <div class="col-2">
+      <div class="col-6 col-md-2 mb-3">
         <h5>Section</h5>
         <ul class="nav flex-column">
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
@@ -163,11 +161,11 @@ body_class: ""
         </ul>
       </div>
 
-      <div class="col-4 offset-1">
+      <div class="col-md-5 offset-md-1 mb-3">
         <form>
           <h5>Subscribe to our newsletter</h5>
-          <p>Monthly digest of whats new and exciting from us.</p>
-          <div class="d-flex w-100 gap-2">
+          <p>Monthly digest of what's new and exciting from us.</p>
+          <div class="d-flex flex-column flex-sm-row w-100 gap-2">
             <label for="newsletter1" class="visually-hidden">Email address</label>
             <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
             <button class="btn btn-primary" type="button">Subscribe</button>
@@ -176,7 +174,7 @@ body_class: ""
       </div>
     </div>
 
-    <div class="d-flex justify-content-between py-4 my-4 border-top">
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
       <p>&copy; {{< year >}} Company, Inc. All rights reserved.</p>
       <ul class="list-unstyled d-flex">
         <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>

@@ -41,7 +41,7 @@
     --#{$variable-prefix}root-font-size: #{$font-size-root};
   }
   --#{$variable-prefix}body-font-family: #{$font-family-base};
-  --#{$variable-prefix}body-font-size: #{$font-size-base};
+  @include rfs($font-size-base, --#{$variable-prefix}body-font-size);
   --#{$variable-prefix}body-font-weight: #{$font-weight-base};
   --#{$variable-prefix}body-line-height: #{$line-height-base};
   --#{$variable-prefix}body-color: #{$body-color};
@@ -50,5 +50,13 @@
   }
   --#{$variable-prefix}body-bg: #{$body-bg};
   // scss-docs-end root-body-variables
+
+  // scss-docs-start root-border-var
+  --#{$variable-prefix}border-width: #{$border-width};
+  --#{$variable-prefix}border-style: solid;
+  --#{$variable-prefix}border-color: #{$border-color};
+  --#{$variable-prefix}border-radius: #{$border-radius};
+  --#{$variable-prefix}border-opacity: 1;
+  // scss-docs-end root-border-var
   // stylelint-enable custom-property-empty-line-before
 }

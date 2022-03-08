@@ -12,8 +12,7 @@ import {
   isRTL,
   isVisible,
   reflow,
-  triggerTransitionEnd,
-  typeCheckConfig
+  triggerTransitionEnd
 } from './util/index'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
@@ -62,7 +61,6 @@ const SELECTOR_ITEM = '.carousel-item'
 const SELECTOR_ITEM_IMG = '.carousel-item img'
 const SELECTOR_NEXT_PREV = '.carousel-item-next, .carousel-item-prev'
 const SELECTOR_INDICATORS = '.carousel-indicators'
-const SELECTOR_INDICATOR = '[data-bs-target]'
 const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]'
 const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]'
 
@@ -95,7 +93,7 @@ const DefaultType = {
 
 class Carousel extends BaseComponent {
   constructor(element, config) {
-    super(element)
+    super(element, config)
 
     this._items = null
     this._interval = null
@@ -105,7 +103,6 @@ class Carousel extends BaseComponent {
     this.touchTimeout = null
     this._swipeHelper = null
 
-    this._config = this._getConfig(config)
     this._indicatorsElement = SelectorEngine.findOne(SELECTOR_INDICATORS, this._element)
     this._addEventListeners()
   }
@@ -113,6 +110,10 @@ class Carousel extends BaseComponent {
   // Getters
   static get Default() {
     return Default
+  }
+
+  static get DefaultType() {
+    return DefaultType
   }
 
   static get NAME() {
@@ -125,6 +126,7 @@ class Carousel extends BaseComponent {
   }
 
   nextWhenVisible() {
+    // FIXME TODO use `document.visibilityState`
     // Don't call next when the page isn't visible
     // or the carousel or its parent isn't visible
     if (!document.hidden && isVisible(this._element)) {
@@ -146,8 +148,7 @@ class Carousel extends BaseComponent {
       this.cycle(true)
     }
 
-    clearInterval(this._interval)
-    this._interval = null
+    this._clearInterval()
   }
 
   cycle(event) {
@@ -155,23 +156,16 @@ class Carousel extends BaseComponent {
       this._isPaused = false
     }
 
-    if (this._interval) {
-      clearInterval(this._interval)
-      this._interval = null
-    }
-
-    if (this._config && this._config.interval && !this._isPaused) {
+    this._clearInterval()
+    if (this._config.interval && !this._isPaused) {
       this._updateInterval()
 
-      this._interval = setInterval(
-        (document.visibilityState ? this.nextWhenVisible : this.next).bind(this),
-        this._config.interval
-      )
+      this._interval = setInterval(() => this.nextWhenVisible(), this._config.interval)
     }
   }
 
   to(index) {
-    this._activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
+    this._activeElement = this._getActive()
     const activeIndex = this._getItemIndex(this._activeElement)
 
     if (index > this._items.length - 1 || index < 0) {
@@ -205,13 +199,8 @@ class Carousel extends BaseComponent {
   }
 
   // Private
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' ? config : {})
-    }
-    typeCheckConfig(NAME, config, DefaultType)
+  _configAfterMerge(config) {
+    config.defaultInterval = config.interval
     return config
   }
 
@@ -231,27 +220,29 @@ class Carousel extends BaseComponent {
   }
 
   _addTouchEventListeners() {
-    for (const itemImg of SelectorEngine.find(SELECTOR_ITEM_IMG, this._element)) {
-      EventHandler.on(itemImg, EVENT_DRAG_START, event => event.preventDefault())
+    for (const img of SelectorEngine.find(SELECTOR_ITEM_IMG, this._element)) {
+      EventHandler.on(img, EVENT_DRAG_START, event => event.preventDefault())
     }
 
     const endCallBack = () => {
-      if (this._config.pause === 'hover') {
-        // If it's a touch-enabled device, mouseenter/leave are fired as
-        // part of the mouse compatibility events on first tap - the carousel
-        // would stop cycling until user tapped out of it;
-        // here, we listen for touchend, explicitly pause the carousel
-        // (as if it's the second time we tap on it, mouseenter compat event
-        // is NOT fired) and after a timeout (to allow for mouse compatibility
-        // events to fire) we explicitly restart cycling
-
-        this.pause()
-        if (this.touchTimeout) {
-          clearTimeout(this.touchTimeout)
-        }
-
-        this.touchTimeout = setTimeout(event => this.cycle(event), TOUCHEVENT_COMPAT_WAIT + this._config.interval)
+      if (this._config.pause !== 'hover') {
+        return
       }
+
+      // If it's a touch-enabled device, mouseenter/leave are fired as
+      // part of the mouse compatibility events on first tap - the carousel
+      // would stop cycling until user tapped out of it;
+      // here, we listen for touchend, explicitly pause the carousel
+      // (as if it's the second time we tap on it, mouseenter compat event
+      // is NOT fired) and after a timeout (to allow for mouse compatibility
+      // events to fire) we explicitly restart cycling
+
+      this.pause()
+      if (this.touchTimeout) {
+        clearTimeout(this.touchTimeout)
+      }
+
+      this.touchTimeout = setTimeout(event => this.cycle(event), TOUCHEVENT_COMPAT_WAIT + this._config.interval)
     }
 
     const swipeConfig = {
@@ -276,9 +267,7 @@ class Carousel extends BaseComponent {
   }
 
   _getItemIndex(element) {
-    this._items = element && element.parentNode ?
-      SelectorEngine.find(SELECTOR_ITEM, element.parentNode) :
-      []
+    this._items = SelectorEngine.find(SELECTOR_ITEM, this._element)
 
     return this._items.indexOf(element)
   }
@@ -288,9 +277,8 @@ class Carousel extends BaseComponent {
     return getNextActiveElement(this._items, activeElement, isNext, this._config.wrap)
   }
 
-  _triggerSlideEvent(relatedTarget, eventDirectionName) {
+  _triggerSlideEvent(relatedTarget, fromIndex, eventDirectionName) {
     const targetIndex = this._getItemIndex(relatedTarget)
-    const fromIndex = this._getItemIndex(SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element))
 
     return EventHandler.trigger(this._element, EVENT_SLIDE, {
       relatedTarget,
@@ -300,27 +288,26 @@ class Carousel extends BaseComponent {
     })
   }
 
-  _setActiveIndicatorElement(element) {
-    if (this._indicatorsElement) {
-      const activeIndicator = SelectorEngine.findOne(SELECTOR_ACTIVE, this._indicatorsElement)
+  _setActiveIndicatorElement(index) {
+    if (!this._indicatorsElement) {
+      return
+    }
 
-      activeIndicator.classList.remove(CLASS_NAME_ACTIVE)
-      activeIndicator.removeAttribute('aria-current')
+    const activeIndicator = SelectorEngine.findOne(SELECTOR_ACTIVE, this._indicatorsElement)
 
-      const indicators = SelectorEngine.find(SELECTOR_INDICATOR, this._indicatorsElement)
+    activeIndicator.classList.remove(CLASS_NAME_ACTIVE)
+    activeIndicator.removeAttribute('aria-current')
 
-      for (const indicator of indicators) {
-        if (Number.parseInt(indicator.getAttribute('data-bs-slide-to'), 10) === this._getItemIndex(element)) {
-          indicator.classList.add(CLASS_NAME_ACTIVE)
-          indicator.setAttribute('aria-current', 'true')
-          break
-        }
-      }
+    const newActiveIndicator = SelectorEngine.findOne(`[data-bs-slide-to="${index}"]`, this._indicatorsElement)
+
+    if (newActiveIndicator) {
+      newActiveIndicator.classList.add(CLASS_NAME_ACTIVE)
+      newActiveIndicator.setAttribute('aria-current', 'true')
     }
   }
 
   _updateInterval() {
-    const element = this._activeElement || SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
+    const element = this._activeElement || this._getActive()
 
     if (!element) {
       return
@@ -328,17 +315,12 @@ class Carousel extends BaseComponent {
 
     const elementInterval = Number.parseInt(element.getAttribute('data-bs-interval'), 10)
 
-    if (elementInterval) {
-      this._config.defaultInterval = this._config.defaultInterval || this._config.interval
-      this._config.interval = elementInterval
-    } else {
-      this._config.interval = this._config.defaultInterval || this._config.interval
-    }
+    this._config.interval = elementInterval || this._config.defaultInterval
   }
 
   _slide(directionOrOrder, element) {
     const order = this._directionToOrder(directionOrOrder)
-    const activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
+    const activeElement = this._getActive()
     const activeElementIndex = this._getItemIndex(activeElement)
     const nextElement = element || this._getItemByOrder(order, activeElement)
 
@@ -359,7 +341,7 @@ class Carousel extends BaseComponent {
       return
     }
 
-    const slideEvent = this._triggerSlideEvent(nextElement, eventDirectionName)
+    const slideEvent = this._triggerSlideEvent(nextElement, activeElementIndex, eventDirectionName)
     if (slideEvent.defaultPrevented) {
       return
     }
@@ -375,10 +357,24 @@ class Carousel extends BaseComponent {
       this.pause()
     }
 
-    this._setActiveIndicatorElement(nextElement)
+    this._setActiveIndicatorElement(nextElementIndex)
     this._activeElement = nextElement
 
-    const triggerSlidEvent = () => {
+    nextElement.classList.add(orderClassName)
+
+    reflow(nextElement)
+
+    activeElement.classList.add(directionalClassName)
+    nextElement.classList.add(directionalClassName)
+
+    const completeCallBack = () => {
+      nextElement.classList.remove(directionalClassName, orderClassName)
+      nextElement.classList.add(CLASS_NAME_ACTIVE)
+
+      activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
+
+      this._isSliding = false
+
       EventHandler.trigger(this._element, EVENT_SLID, {
         relatedTarget: nextElement,
         direction: eventDirectionName,
@@ -387,36 +383,25 @@ class Carousel extends BaseComponent {
       })
     }
 
-    if (this._element.classList.contains(CLASS_NAME_SLIDE)) {
-      nextElement.classList.add(orderClassName)
-
-      reflow(nextElement)
-
-      activeElement.classList.add(directionalClassName)
-      nextElement.classList.add(directionalClassName)
-
-      const completeCallBack = () => {
-        nextElement.classList.remove(directionalClassName, orderClassName)
-        nextElement.classList.add(CLASS_NAME_ACTIVE)
-
-        activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
-
-        this._isSliding = false
-
-        setTimeout(triggerSlidEvent, 0)
-      }
-
-      this._queueCallback(completeCallBack, activeElement, true)
-    } else {
-      activeElement.classList.remove(CLASS_NAME_ACTIVE)
-      nextElement.classList.add(CLASS_NAME_ACTIVE)
-
-      this._isSliding = false
-      triggerSlidEvent()
-    }
+    this._queueCallback(completeCallBack, activeElement, this._isAnimated())
 
     if (isCycling) {
       this.cycle()
+    }
+  }
+
+  _isAnimated() {
+    return this._element.classList.contains(CLASS_NAME_SLIDE)
+  }
+
+  _getActive() {
+    return SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
+  }
+
+  _clearInterval() {
+    if (this._interval) {
+      clearInterval(this._interval)
+      this._interval = null
     }
   }
 
@@ -445,63 +430,33 @@ class Carousel extends BaseComponent {
   }
 
   // Static
-  static carouselInterface(element, config) {
-    const data = Carousel.getOrCreateInstance(element, config)
-
-    let { _config } = data
-    if (typeof config === 'object') {
-      _config = {
-        ..._config,
-        ...config
-      }
-    }
-
-    const action = typeof config === 'string' ? config : _config.slide
-
-    if (typeof config === 'number') {
-      data.to(config)
-    } else if (typeof action === 'string') {
-      if (typeof data[action] === 'undefined') {
-        throw new TypeError(`No method named "${action}"`)
-      }
-
-      data[action]()
-    } else if (_config.interval && _config.ride) {
-      data.pause()
-      data.cycle()
-    }
-  }
-
   static jQueryInterface(config) {
     return this.each(function () {
-      Carousel.carouselInterface(this, config)
+      const data = Carousel.getOrCreateInstance(this, config)
+
+      let { _config } = data
+      if (typeof config === 'object') {
+        _config = {
+          ..._config,
+          ...config
+        }
+      }
+
+      const action = typeof config === 'string' ? config : _config.slide
+
+      if (typeof config === 'number') {
+        data.to(config)
+      } else if (typeof action === 'string') {
+        if (typeof data[action] === 'undefined') {
+          throw new TypeError(`No method named "${action}"`)
+        }
+
+        data[action]()
+      } else if (_config.interval && _config.ride) {
+        data.pause()
+        data.cycle()
+      }
     })
-  }
-
-  static dataApiClickHandler(event) {
-    const target = getElementFromSelector(this)
-
-    if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
-      return
-    }
-
-    const config = {
-      ...Manipulator.getDataAttributes(target),
-      ...Manipulator.getDataAttributes(this)
-    }
-    const slideIndex = this.getAttribute('data-bs-slide-to')
-
-    if (slideIndex) {
-      config.interval = false
-    }
-
-    Carousel.carouselInterface(target, config)
-
-    if (slideIndex) {
-      Carousel.getInstance(target).to(slideIndex)
-    }
-
-    event.preventDefault()
   }
 }
 
@@ -509,13 +464,36 @@ class Carousel extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler)
+EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (event) {
+  const target = getElementFromSelector(this)
+
+  if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
+    return
+  }
+
+  event.preventDefault()
+
+  const carousel = Carousel.getOrCreateInstance(target)
+  const slideIndex = this.getAttribute('data-bs-slide-to')
+
+  if (slideIndex) {
+    carousel.to(slideIndex)
+    return
+  }
+
+  if (Manipulator.getDataAttribute(this, 'slide') === 'next') {
+    carousel.next()
+    return
+  }
+
+  carousel.prev()
+})
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
 
   for (const carousel of carousels) {
-    Carousel.carouselInterface(carousel, Carousel.getInstance(carousel))
+    Carousel.getOrCreateInstance(carousel)
   }
 })
 

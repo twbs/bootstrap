@@ -26,13 +26,6 @@ body {
 .carousel-item {
   height: 32rem;
 }
-.carousel-item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  height: 32rem;
-}
 
 
 /* MARKETING CONTENT
@@ -42,9 +35,6 @@ body {
 .marketing .col-lg-4 {
   margin-bottom: 1.5rem;
   text-align: center;
-}
-.marketing h2 {
-  font-weight: 400;
 }
 /* rtl:begin:ignore */
 .marketing .col-lg-4 p {
@@ -62,13 +52,12 @@ body {
 }
 
 /* Thin out the marketing headings */
+/* rtl:begin:remove */
 .featurette-heading {
-  font-weight: 300;
-  line-height: 1;
-  /* rtl:remove */
   letter-spacing: -.05rem;
 }
 
+/* rtl:end:remove */
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */

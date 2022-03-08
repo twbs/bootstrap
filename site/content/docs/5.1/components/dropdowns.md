@@ -400,6 +400,23 @@ And putting it to use in a navbar:
 Directions are mirrored when using Bootstrap in RTL, meaning `.dropstart` will appear on the right side.
 {{< /callout >}}
 
+### Centered
+
+Make the dropdown menu centered below the toggle with `.dropdown-center` on the parent element.
+
+{{< example >}}
+<div class="dropdown-center">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCenterBtn" data-bs-toggle="dropdown" aria-expanded="false">
+    Centered dropdown
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownCenterBtn">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Action two</a></li>
+    <li><a class="dropdown-item" href="#">Action three</a></li>
+  </ul>
+</div>
+{{< /example >}}
+
 ### Dropup
 
 Trigger dropdown menus above elements by adding `.dropup` to the parent element.
@@ -459,14 +476,31 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
 </div>
 ```
 
-### Dropright
+### Dropup centered
+
+Make the dropup menu centered above the toggle with `.dropup-center` on the parent element.
+
+{{< example >}}
+<div class="dropup-center">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropupCenterBtn" data-bs-toggle="dropdown" aria-expanded="false">
+    Centered dropup
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropupCenterBtn">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Action two</a></li>
+    <li><a class="dropdown-item" href="#">Action three</a></li>
+  </ul>
+</div>
+{{< /example >}}
+
+### Dropend
 
 Trigger dropdown menus at the right of the elements by adding `.dropend` to the parent element.
 
 <div class="bd-example">
   <div class="btn-group dropend">
     <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      Dropright
+      Dropend
     </button>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#">Action</a></li>
@@ -481,7 +515,7 @@ Trigger dropdown menus at the right of the elements by adding `.dropend` to the 
       Split dropend
     </button>
     <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-      <span class="visually-hidden">Toggle Dropright</span>
+      <span class="visually-hidden">Toggle Dropend</span>
     </button>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#">Action</a></li>
@@ -497,7 +531,7 @@ Trigger dropdown menus at the right of the elements by adding `.dropend` to the 
 <!-- Default dropend button -->
 <div class="btn-group dropend">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropright
+    Dropend
   </button>
   <ul class="dropdown-menu">
     <!-- Dropdown menu links -->
@@ -510,7 +544,7 @@ Trigger dropdown menus at the right of the elements by adding `.dropend` to the 
     Split dropend
   </button>
   <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-    <span class="visually-hidden">Toggle Dropright</span>
+    <span class="visually-hidden">Toggle Dropend</span>
   </button>
   <ul class="dropdown-menu">
     <!-- Dropdown menu links -->
@@ -518,14 +552,14 @@ Trigger dropdown menus at the right of the elements by adding `.dropend` to the 
 </div>
 ```
 
-### Dropleft
+### Dropstart
 
 Trigger dropdown menus at the left of the elements by adding `.dropstart` to the parent element.
 
 <div class="bd-example">
   <div class="btn-group dropstart">
     <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      Dropleft
+      Dropstart
     </button>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#">Action</a></li>
@@ -538,7 +572,7 @@ Trigger dropdown menus at the left of the elements by adding `.dropstart` to the
   <div class="btn-group">
     <div class="btn-group dropstart" role="group">
       <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-        <span class="visually-hidden">Toggle Dropleft</span>
+        <span class="visually-hidden">Toggle Dropstart</span>
       </button>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#">Action</a></li>
@@ -953,9 +987,21 @@ By default, the dropdown menu is closed when clicking inside or outside the drop
 </div>
 {{< /example >}}
 
-## Sass
+## CSS
 
 ### Variables
+
+<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.2.0</small>
+
+As part of Bootstrap's evolving CSS variables approach, dropdowns now use local CSS variables on `.dropdown-menu` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+{{< scss-docs name="dropdown-css-vars" file="scss/_dropdown.scss" >}}
+
+Customization through CSS variables can be seen on the `.dropdown-menu-dark` class where we override specific values without adding duplicate CSS selectors.
+
+{{< scss-docs name="dropdown-dark-css-vars" file="scss/_dropdown.scss" >}}
+
+### Sass variables
 
 Variables for all dropdowns:
 
@@ -1065,10 +1111,11 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <p>Configure the auto close behavior of the dropdown:</p>
         <ul>
           <li><code>true</code> - the dropdown will be closed by clicking outside or inside the dropdown menu.</li>
-          <li><code>false</code> - the dropdown will be closed by clicking the toggle button and manually calling <code>hide</code> or <code>toggle</code> method. (Also will not be closed by pressing <kbd>esc</kbd> key)</li>
+          <li><code>false</code> - the dropdown will be closed by clicking the toggle button and manually calling <code>hide</code> or <code>toggle</code> method.</li>
           <li><code>'inside'</code> - the dropdown will be closed (only) by clicking inside the dropdown menu.</li>
           <li><code>'outside'</code> - the dropdown will be closed (only) by clicking outside the dropdown menu.</li>
         </ul>
+        <p>The dropdown can always be closed with the <kbd>ESC</kbd> key.</p>
       </td>
     </tr>
     <tr>

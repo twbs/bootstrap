@@ -1,5 +1,3 @@
-// stylelint-disable indentation
-
 // Utilities
 
 $utilities: () !default;
@@ -100,15 +98,29 @@ $utilities: map-merge(
     // scss-docs-start utils-borders
     "border": (
       property: border,
+      local-vars: (
+        "border-opacity": 1
+      ),
       values: (
-        null: $border-width solid $border-color,
+        null: var(--#{$variable-prefix}border-width) var(--#{$variable-prefix}border-style) var(--#{$variable-prefix}border-color),
         0: 0,
+      )
+    ),
+    "border-opacity": (
+      css-var: true,
+      class: border-opacity,
+      values: (
+        10: .1,
+        25: .25,
+        50: .5,
+        75: .75,
+        100: 1
       )
     ),
     "border-top": (
       property: border-top,
       values: (
-        null: $border-width solid $border-color,
+        null: var(--#{$variable-prefix}border-width) var(--#{$variable-prefix}border-style) var(--#{$variable-prefix}border-color),
         0: 0,
       )
     ),
@@ -116,14 +128,14 @@ $utilities: map-merge(
       property: border-right,
       class: border-end,
       values: (
-        null: $border-width solid $border-color,
+        null: var(--#{$variable-prefix}border-width) var(--#{$variable-prefix}border-style) var(--#{$variable-prefix}border-color),
         0: 0,
       )
     ),
     "border-bottom": (
       property: border-bottom,
       values: (
-        null: $border-width solid $border-color,
+        null: var(--#{$variable-prefix}border-width) var(--#{$variable-prefix}border-style) var(--#{$variable-prefix}border-color),
         0: 0,
       )
     ),
@@ -131,17 +143,19 @@ $utilities: map-merge(
       property: border-left,
       class: border-start,
       values: (
-        null: $border-width solid $border-color,
+        null: var(--#{$variable-prefix}border-width) var(--#{$variable-prefix}border-style) var(--#{$variable-prefix}border-color),
         0: 0,
       )
     ),
     "border-color": (
-      property: border-color,
+      css-var: true,
+      css-variable-name: border-color,
       class: border,
-      values: map-merge($theme-colors, ("white": $white))
+      values: $utilities-border-colors
     ),
     "border-width": (
-      property: border-width,
+      css-var: true,
+      css-variable-name: border-width,
       class: border,
       values: $border-widths
     ),
@@ -237,12 +251,6 @@ $utilities: map-merge(
       property: flex-wrap,
       class: flex,
       values: wrap nowrap wrap-reverse
-    ),
-    "gap": (
-      responsive: true,
-      property: gap,
-      class: gap,
-      values: $spacers
     ),
     "justify-content": (
       responsive: true,
@@ -434,6 +442,13 @@ $utilities: map-merge(
       responsive: true,
       property: padding-left,
       class: ps,
+      values: $spacers
+    ),
+    // Gap utility
+    "gap": (
+      responsive: true,
+      property: gap,
+      class: gap,
       values: $spacers
     ),
     // scss-docs-end utils-spacing

@@ -368,6 +368,21 @@ Removes the ability for an element's popover to be shown. The popover will only 
 myPopover.disable()
 ```
 
+#### setContent
+
+Gives a way to change the popover's content after its initialization.
+
+```js
+myPopover.setContent({
+  '.popover-header': 'another title',
+  '.popover-body': 'another content'
+})
+```
+
+{{< callout info >}}
+The `setContent` method accepts an `object` argument, where each property-key is a valid `string` selector within the popover template, and each related property-value can be `string` | `element` | `function` | `null`
+{{< /callout >}}
+
 #### toggleEnabled
 
 Toggles the ability for an element's popover to be shown or hidden.

@@ -27,7 +27,6 @@ body {
   margin-top: .125rem;
   margin-right: .3125rem;
   color: rgba(0, 0, 0, .65);
-  text-decoration: none;
 }
 
 .bd-aside a:hover,
@@ -45,7 +44,6 @@ body {
   padding: .25rem .5rem;
   font-weight: 600;
   color: rgba(0, 0, 0, .65);
-  border: 0;
 }
 
 .bd-aside .btn:hover,
@@ -74,10 +72,7 @@ body {
 
 /* Examples */
 .scrollspy-example {
-  position: relative;
   height: 200px;
-  margin-top: .5rem;
-  overflow: auto;
 }
 
 [id="modal"] .bd-example .btn,
@@ -96,9 +91,9 @@ body {
 @media (min-width: 1200px) {
   body {
     display: grid;
-    gap: 1rem;
-    grid-template-columns: 1fr 4fr 1fr;
     grid-template-rows: auto;
+    grid-template-columns: 1fr 4fr 1fr;
+    gap: 1rem;
   }
 
   .bd-header {
@@ -122,10 +117,10 @@ body {
   .bd-cheatsheet section,
   .bd-cheatsheet article {
     display: inherit; /* 1 */
-    gap: inherit; /* 1 */
+    grid-template-rows: auto;
     grid-template-columns: 1fr 4fr;
     grid-column: 1 / span 2;
-    grid-template-rows: auto;
+    gap: inherit; /* 1 */
   }
 
   .bd-aside {

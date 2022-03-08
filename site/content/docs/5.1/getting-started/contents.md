@@ -171,7 +171,7 @@ bootstrap/
 ├── site/
 │   └──content/
 │      └── docs/
-│          └── 5.1/
+│          └── {{< param docs_version >}}/
 │              └── examples/
 ├── js/
 └── scss/

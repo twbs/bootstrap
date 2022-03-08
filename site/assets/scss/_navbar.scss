@@ -1,6 +1,9 @@
 .bd-navbar {
+  --bs-gutter-x: $bd-gutter-x;
+  --bs-gutter-y: $bd-gutter-x;
+
   padding: .75rem 0;
-  background-color: $bd-purple-bright;
+  background-color: $bd-violet;
 
   .navbar-toggler {
     padding: 0;
@@ -28,5 +31,14 @@
   .navbar-nav-svg {
     width: 1rem;
     height: 1rem;
+  }
+
+  .offcanvas {
+    background-color: $bd-violet;
+    border-left: 0;
+
+    @include media-breakpoint-down(md) {
+      box-shadow: $box-shadow-lg;
+    }
   }
 }

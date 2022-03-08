@@ -4,13 +4,13 @@
 
 /*!
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
- * Copyright 2011-2021 The Bootstrap Authors
- * Copyright 2011-2021 Twitter, Inc.
+ * Copyright 2011-2022 The Bootstrap Authors
+ * Copyright 2011-2022 Twitter, Inc.
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global ClipboardJS: false, anchors: false, bootstrap: false */
+/* global ClipboardJS: false, bootstrap: false */
 
 (function () {
   'use strict'
@@ -118,7 +118,8 @@
   }
 
   // Insert copy to clipboard button before .highlight
-  var btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
+  var btnTitle = 'Copy to clipboard'
+  var btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard">Copy</button></div>'
   document.querySelectorAll('div.highlight')
     .forEach(function (element) {
       element.insertAdjacentHTML('beforebegin', btnHtml)
@@ -126,7 +127,7 @@
 
   document.querySelectorAll('.btn-clipboard')
     .forEach(function (btn) {
-      var tooltipBtn = new bootstrap.Tooltip(btn)
+      var tooltipBtn = new bootstrap.Tooltip(btn, { title: btnTitle })
 
       btn.addEventListener('mouseleave', function () {
         // Explicitly hide tooltip, since after clicking it remains
@@ -145,10 +146,10 @@
   clipboard.on('success', function (event) {
     var tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
 
-    event.trigger.setAttribute('data-bs-original-title', 'Copied!')
-    tooltipBtn.show()
-
-    event.trigger.setAttribute('data-bs-original-title', 'Copy to clipboard')
+    tooltipBtn.setContent({ '.tooltip-inner': 'Copied!' })
+    event.trigger.addEventListener('hidden.bs.tooltip', function () {
+      tooltipBtn.setContent({ '.tooltip-inner': btnTitle })
+    }, { once: true })
     event.clearSelection()
   })
 
@@ -157,14 +158,9 @@
     var fallbackMsg = 'Press ' + modifierKey + 'C to copy'
     var tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
 
-    event.trigger.setAttribute('data-bs-original-title', fallbackMsg)
-    tooltipBtn.show()
-
-    event.trigger.setAttribute('data-bs-original-title', 'Copy to clipboard')
+    tooltipBtn.setContent({ '.tooltip-inner': fallbackMsg })
+    event.trigger.addEventListener('hidden.bs.tooltip', function () {
+      tooltipBtn.setContent({ '.tooltip-inner': btnTitle })
+    }, { once: true })
   })
-
-  anchors.options = {
-    icon: '#'
-  }
-  anchors.add('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
 })()

@@ -7,6 +7,9 @@ categories:
   - title: '❗ Breaking Changes'
     labels:
       - 'breaking-change'
+  - title: '🚀 Highlights'
+    labels:
+      - 'release-highlight'
   - title: '🚀 Features'
     labels:
       - 'new-feature'
