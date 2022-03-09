@@ -125,17 +125,24 @@
       element.insertAdjacentHTML('beforebegin', btnHtml)
     })
 
-  document.querySelectorAll('.btn-clipboard')
-    .forEach(function (btn) {
-      var tooltipBtn = new bootstrap.Tooltip(btn, { title: btnTitle })
+  /**
+   *
+   * @param {HTMLButtonElement} btn
+   * @param {string} title
+   */
+  function snippetButtonTooltip(btn, title) {
+    var tooltipBtn = new bootstrap.Tooltip(btn, { title: title })
 
-      btn.addEventListener('mouseleave', function () {
-        // Explicitly hide tooltip, since after clicking it remains
-        // focused (as it's a button), so tooltip would otherwise
-        // remain visible until focus is moved away
-        tooltipBtn.hide()
-      })
+    btn.addEventListener('mouseleave', function () {
+      // Explicitly hide tooltip, since after clicking it remains
+      // focused (as it's a button), so tooltip would otherwise
+      // remain visible until focus is moved away
+      tooltipBtn.hide()
     })
+  }
+
+  snippetButtonTooltip(document.querySelector('.btn-clipboard'), 'Copy to clipboard')
+  snippetButtonTooltip(document.querySelector('.btn-edit'), 'Edit on Stackblitz')
 
   var clipboard = new ClipboardJS('.btn-clipboard', {
     target: function (trigger) {
