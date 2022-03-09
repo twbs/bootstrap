@@ -1,0 +1,5 @@
+@include describe('tests') {
+  @include it('is setup') {
+    @include assert-equal(true, false);
+  }
+}

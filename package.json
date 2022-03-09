@@ -54,6 +54,7 @@
     "css-prefix-main": "postcss --config build/postcss.config.js --replace \"dist/css/*.css\" \"!dist/css/*.rtl*.css\" \"!dist/css/*.min.css\"",
     "css-prefix-examples": "postcss --config build/postcss.config.js --replace \"site/content/**/*.css\"",
     "css-prefix-examples-rtl": "cross-env-shell NODE_ENV=RTL postcss --config build/postcss.config.js --dir \"site/content/docs/$npm_package_config_version_short/examples/\" --ext \".rtl.css\" --base \"site/content/docs/$npm_package_config_version_short/examples/\" \"site/content/docs/$npm_package_config_version_short/examples/{blog,carousel,dashboard,cheatsheet}/*.css\" \"!site/content/docs/$npm_package_config_version_short/examples/{blog,carousel,dashboard,cheatsheet}/*.rtl.css\"",
+    "css-test": "mocha --config scss/tests/.mocharc.js",
     "js": "npm-run-all js-compile js-minify",
     "js-compile": "npm-run-all --aggregate-output --parallel js-compile-*",
     "js-compile-standalone": "rollup --environment BUNDLE:false --config build/rollup.config.js --sourcemap",
@@ -135,6 +136,7 @@
     "karma-jasmine-html-reporter": "^2.0.0",
     "karma-rollup-preprocessor": "7.0.7",
     "lockfile-lint": "^4.9.6",
+    "mocha": "^9.2.1",
     "nodemon": "^2.0.20",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.20",
@@ -143,6 +145,7 @@
     "rollup-plugin-istanbul": "^4.0.0",
     "rtlcss": "^4.0.0",
     "sass": "^1.57.1",
+    "sass-true": "^6.1.0",
     "shelljs": "^0.8.5",
     "stylelint": "^14.16.0",
     "stylelint-config-twbs-bootstrap": "^7.0.0",
@@ -175,5 +178,6 @@
     "peerDependencies": {
       "@popperjs/core": "^2.11.6"
     }
-  }
+  },
+  "dependencies": {}
 }
