@@ -56,8 +56,8 @@ const CLASS_NAME_NEXT = 'carousel-item-next'
 const CLASS_NAME_PREV = 'carousel-item-prev'
 
 const SELECTOR_ACTIVE = '.active'
-const SELECTOR_ACTIVE_ITEM = '.active.carousel-item'
 const SELECTOR_ITEM = '.carousel-item'
+const SELECTOR_ACTIVE_ITEM = SELECTOR_ACTIVE + SELECTOR_ITEM
 const SELECTOR_ITEM_IMG = '.carousel-item img'
 const SELECTOR_NEXT_PREV = '.carousel-item-next, .carousel-item-prev'
 const SELECTOR_INDICATORS = '.carousel-indicators'
@@ -95,7 +95,6 @@ class Carousel extends BaseComponent {
   constructor(element, config) {
     super(element, config)
 
-    this._items = null
     this._interval = null
     this._activeElement = null
     this._isPaused = false
@@ -165,10 +164,8 @@ class Carousel extends BaseComponent {
   }
 
   to(index) {
-    this._activeElement = this._getActive()
-    const activeIndex = this._getItemIndex(this._activeElement)
-
-    if (index > this._items.length - 1 || index < 0) {
+    const items = this._getItems()
+    if (index > items.length - 1 || index < 0) {
       return
     }
 
@@ -177,17 +174,16 @@ class Carousel extends BaseComponent {
       return
     }
 
+    const activeIndex = this._getItemIndex(this._getActive())
     if (activeIndex === index) {
       this.pause()
       this.cycle()
       return
     }
 
-    const order = index > activeIndex ?
-      ORDER_NEXT :
-      ORDER_PREV
+    const order = index > activeIndex ? ORDER_NEXT : ORDER_PREV
 
-    this._slide(order, this._items[index])
+    this._slide(order, items[index])
   }
 
   dispose() {
@@ -246,8 +242,8 @@ class Carousel extends BaseComponent {
     }
 
     const swipeConfig = {
-      leftCallback: () => this._slide(DIRECTION_LEFT),
-      rightCallback: () => this._slide(DIRECTION_RIGHT),
+      leftCallback: () => this._slide(this._directionToOrder(DIRECTION_LEFT)),
+      rightCallback: () => this._slide(this._directionToOrder(DIRECTION_RIGHT)),
       endCallback: endCallBack
     }
 
@@ -262,30 +258,12 @@ class Carousel extends BaseComponent {
     const direction = KEY_TO_DIRECTION[event.key]
     if (direction) {
       event.preventDefault()
-      this._slide(direction)
+      this._slide(this._directionToOrder(direction))
     }
   }
 
   _getItemIndex(element) {
-    this._items = SelectorEngine.find(SELECTOR_ITEM, this._element)
-
-    return this._items.indexOf(element)
-  }
-
-  _getItemByOrder(order, activeElement) {
-    const isNext = order === ORDER_NEXT
-    return getNextActiveElement(this._items, activeElement, isNext, this._config.wrap)
-  }
-
-  _triggerSlideEvent(relatedTarget, fromIndex, eventDirectionName) {
-    const targetIndex = this._getItemIndex(relatedTarget)
-
-    return EventHandler.trigger(this._element, EVENT_SLIDE, {
-      relatedTarget,
-      direction: eventDirectionName,
-      from: fromIndex,
-      to: targetIndex
-    })
+    return this._getItems().indexOf(element)
   }
 
   _setActiveIndicatorElement(index) {
@@ -318,30 +296,32 @@ class Carousel extends BaseComponent {
     this._config.interval = elementInterval || this._config.defaultInterval
   }
 
-  _slide(directionOrOrder, element) {
-    const order = this._directionToOrder(directionOrOrder)
-    const activeElement = this._getActive()
-    const activeElementIndex = this._getItemIndex(activeElement)
-    const nextElement = element || this._getItemByOrder(order, activeElement)
-
-    const nextElementIndex = this._getItemIndex(nextElement)
-    const isCycling = Boolean(this._interval)
-
-    const isNext = order === ORDER_NEXT
-    const directionalClassName = isNext ? CLASS_NAME_START : CLASS_NAME_END
-    const orderClassName = isNext ? CLASS_NAME_NEXT : CLASS_NAME_PREV
-    const eventDirectionName = this._orderToDirection(order)
-
-    if (nextElement && nextElement.classList.contains(CLASS_NAME_ACTIVE)) {
-      this._isSliding = false
-      return
-    }
-
+  _slide(order, element = null) {
     if (this._isSliding) {
       return
     }
 
-    const slideEvent = this._triggerSlideEvent(nextElement, activeElementIndex, eventDirectionName)
+    const activeElement = this._getActive()
+    const isNext = order === ORDER_NEXT
+    const nextElement = element || getNextActiveElement(this._getItems(), activeElement, isNext, this._config.wrap)
+
+    if (nextElement === activeElement) {
+      return
+    }
+
+    const nextElementIndex = this._getItemIndex(nextElement)
+
+    const triggerEvent = eventName => {
+      return EventHandler.trigger(this._element, eventName, {
+        relatedTarget: nextElement,
+        direction: this._orderToDirection(order),
+        from: this._getItemIndex(activeElement),
+        to: nextElementIndex
+      })
+    }
+
+    const slideEvent = triggerEvent(EVENT_SLIDE)
+
     if (slideEvent.defaultPrevented) {
       return
     }
@@ -353,12 +333,16 @@ class Carousel extends BaseComponent {
 
     this._isSliding = true
 
+    const isCycling = Boolean(this._interval)
     if (isCycling) {
       this.pause()
     }
 
     this._setActiveIndicatorElement(nextElementIndex)
     this._activeElement = nextElement
+
+    const directionalClassName = isNext ? CLASS_NAME_START : CLASS_NAME_END
+    const orderClassName = isNext ? CLASS_NAME_NEXT : CLASS_NAME_PREV
 
     nextElement.classList.add(orderClassName)
 
@@ -375,12 +359,7 @@ class Carousel extends BaseComponent {
 
       this._isSliding = false
 
-      EventHandler.trigger(this._element, EVENT_SLID, {
-        relatedTarget: nextElement,
-        direction: eventDirectionName,
-        from: activeElementIndex,
-        to: nextElementIndex
-      })
+      triggerEvent(EVENT_SLID)
     }
 
     this._queueCallback(completeCallBack, activeElement, this._isAnimated())
@@ -396,6 +375,10 @@ class Carousel extends BaseComponent {
 
   _getActive() {
     return SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
+  }
+
+  _getItems() {
+    return SelectorEngine.find(SELECTOR_ITEM, this._element)
   }
 
   _clearInterval() {
@@ -442,17 +425,21 @@ class Carousel extends BaseComponent {
         }
       }
 
-      const action = typeof config === 'string' ? config : _config.slide
-
       if (typeof config === 'number') {
         data.to(config)
-      } else if (typeof action === 'string') {
-        if (typeof data[action] === 'undefined') {
-          throw new TypeError(`No method named "${action}"`)
+        return
+      }
+
+      if (typeof config === 'string') {
+        if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
+          throw new TypeError(`No method named "${config}"`)
         }
 
-        data[action]()
-      } else if (_config.interval && _config.ride) {
+        data[config]()
+        return
+      }
+
+      if (_config.interval && _config.ride) {
         data.pause()
         data.cycle()
       }

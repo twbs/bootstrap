@@ -1,24 +1,41 @@
+// stylelint-disable custom-property-empty-line-before
+
 // Base class
 .tooltip {
+  // scss-docs-start tooltip-css-vars
+  --#{$variable-prefix}tooltip-zindex: #{$zindex-tooltip};
+  --#{$variable-prefix}tooltip-max-width: #{$tooltip-max-width};
+  --#{$variable-prefix}tooltip-padding-x: #{$tooltip-padding-x};
+  --#{$variable-prefix}tooltip-padding-y: #{$tooltip-padding-y};
+  --#{$variable-prefix}tooltip-margin: #{$tooltip-margin};
+  @include rfs($tooltip-font-size, --#{$variable-prefix}tooltip-font-size);
+  --#{$variable-prefix}tooltip-color: #{$tooltip-color};
+  --#{$variable-prefix}tooltip-bg: #{$tooltip-bg};
+  --#{$variable-prefix}tooltip-border-radius: #{$tooltip-border-radius};
+  --#{$variable-prefix}tooltip-opacity: #{$tooltip-opacity};
+  --#{$variable-prefix}tooltip-arrow-width: #{$tooltip-arrow-width};
+  --#{$variable-prefix}tooltip-arrow-height: #{$tooltip-arrow-height};
+  // scss-docs-end tooltip-css-vars
+
   position: absolute;
-  z-index: $zindex-tooltip;
+  z-index: var(--#{$variable-prefix}tooltip-zindex);
   display: block;
-  margin: $tooltip-margin;
+  margin: var(--#{$variable-prefix}tooltip-margin);
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
   @include reset-text();
-  @include font-size($tooltip-font-size);
+  @include font-size(var(--#{$variable-prefix}tooltip-font-size));
   // Allow breaking very long words so they don't overflow the tooltip's bounds
   word-wrap: break-word;
   opacity: 0;
 
-  &.show { opacity: $tooltip-opacity; }
+  &.show { opacity: var(--#{$variable-prefix}tooltip-opacity); }
 
   .tooltip-arrow {
     position: absolute;
     display: block;
-    width: $tooltip-arrow-width;
-    height: $tooltip-arrow-height;
+    width: var(--#{$variable-prefix}tooltip-arrow-width);
+    height: var(--#{$variable-prefix}tooltip-arrow-height);
 
     &::before {
       position: absolute;
@@ -30,32 +47,32 @@
 }
 
 .bs-tooltip-top {
-  padding: $tooltip-arrow-height 0;
+  padding: var(--#{$variable-prefix}tooltip-arrow-height) 0;
 
   .tooltip-arrow {
     bottom: 0;
 
     &::before {
       top: -1px;
-      border-width: $tooltip-arrow-height ($tooltip-arrow-width * .5) 0;
-      border-top-color: $tooltip-arrow-color;
+      border-width: var(--#{$variable-prefix}tooltip-arrow-height) calc(var(--#{$variable-prefix}tooltip-arrow-width) * .5) 0; // stylelint-disable-line function-disallowed-list
+      border-top-color: var(--#{$variable-prefix}tooltip-bg);
     }
   }
 }
 
 /* rtl:begin:ignore */
 .bs-tooltip-end {
-  padding: 0 $tooltip-arrow-height;
+  padding: 0 var(--#{$variable-prefix}tooltip-arrow-height);
 
   .tooltip-arrow {
     left: 0;
-    width: $tooltip-arrow-height;
-    height: $tooltip-arrow-width;
+    width: var(--#{$variable-prefix}tooltip-arrow-height);
+    height: var(--#{$variable-prefix}tooltip-arrow-width);
 
     &::before {
       right: -1px;
-      border-width: ($tooltip-arrow-width * .5) $tooltip-arrow-height ($tooltip-arrow-width * .5) 0;
-      border-right-color: $tooltip-arrow-color;
+      border-width: calc(var(--#{$variable-prefix}tooltip-arrow-width) * .5) var(--#{$variable-prefix}tooltip-arrow-height) calc(var(--#{$variable-prefix}tooltip-arrow-width) * .5) 0; // stylelint-disable-line function-disallowed-list
+      border-right-color: var(--#{$variable-prefix}tooltip-bg);
     }
   }
 }
@@ -63,32 +80,32 @@
 /* rtl:end:ignore */
 
 .bs-tooltip-bottom {
-  padding: $tooltip-arrow-height 0;
+  padding: var(--#{$variable-prefix}tooltip-arrow-height) 0;
 
   .tooltip-arrow {
     top: 0;
 
     &::before {
       bottom: -1px;
-      border-width: 0 ($tooltip-arrow-width * .5) $tooltip-arrow-height;
-      border-bottom-color: $tooltip-arrow-color;
+      border-width: 0 calc(var(--#{$variable-prefix}tooltip-arrow-width) * .5) var(--#{$variable-prefix}tooltip-arrow-height); // stylelint-disable-line function-disallowed-list
+      border-bottom-color: var(--#{$variable-prefix}tooltip-bg);
     }
   }
 }
 
 /* rtl:begin:ignore */
 .bs-tooltip-start {
-  padding: 0 $tooltip-arrow-height;
+  padding: 0 var(--#{$variable-prefix}tooltip-arrow-height);
 
   .tooltip-arrow {
     right: 0;
-    width: $tooltip-arrow-height;
-    height: $tooltip-arrow-width;
+    width: var(--#{$variable-prefix}tooltip-arrow-height);
+    height: var(--#{$variable-prefix}tooltip-arrow-width);
 
     &::before {
       left: -1px;
-      border-width: ($tooltip-arrow-width * .5) 0 ($tooltip-arrow-width * .5) $tooltip-arrow-height;
-      border-left-color: $tooltip-arrow-color;
+      border-width: calc(var(--#{$variable-prefix}tooltip-arrow-width) * .5) 0 calc(var(--#{$variable-prefix}tooltip-arrow-width) * .5) var(--#{$variable-prefix}tooltip-arrow-height); // stylelint-disable-line function-disallowed-list
+      border-left-color: var(--#{$variable-prefix}tooltip-bg);
     }
   }
 }
@@ -112,10 +129,10 @@
 
 // Wrapper for the tooltip content
 .tooltip-inner {
-  max-width: $tooltip-max-width;
-  padding: $tooltip-padding-y $tooltip-padding-x;
-  color: $tooltip-color;
+  max-width: var(--#{$variable-prefix}tooltip-max-width);
+  padding: var(--#{$variable-prefix}tooltip-padding-y) var(--#{$variable-prefix}tooltip-padding-x);
+  color: var(--#{$variable-prefix}tooltip-color);
   text-align: center;
-  background-color: $tooltip-bg;
-  @include border-radius($tooltip-border-radius);
+  background-color: var(--#{$variable-prefix}tooltip-bg);
+  border-radius: var(--#{$variable-prefix}tooltip-border-radius, 0); // stylelint-disable-line property-disallowed-list
 }
