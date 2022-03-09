@@ -1294,7 +1294,9 @@ $tooltip-margin:                    0 !default;
 
 $tooltip-arrow-width:               .8rem !default;
 $tooltip-arrow-height:              .4rem !default;
-$tooltip-arrow-color:               $tooltip-bg !default;
+// fusv-disable
+$tooltip-arrow-color:               null !default; // Deprecated in Bootstrap 5.2.0 for CSS variables
+// fusv-enable
 // scss-docs-end tooltip-variables
 
 // Form tooltips must come after regular tooltips
@@ -1331,10 +1333,13 @@ $popover-body-padding-x:            $spacer !default;
 
 $popover-arrow-width:               1rem !default;
 $popover-arrow-height:              .5rem !default;
-$popover-arrow-color:               $popover-bg !default;
-
-$popover-arrow-outer-color:         fade-in($popover-border-color, .05) !default;
 // scss-docs-end popover-variables
+
+// fusv-disable
+// Deprecated in Bootstrap 5.2.0 for CSS variables
+$popover-arrow-color:               $popover-bg !default;
+$popover-arrow-outer-color:         fade-in($popover-border-color, .05) !default;
+// fusv-enable
 
 
 // Toasts

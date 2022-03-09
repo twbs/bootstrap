@@ -48,6 +48,8 @@ const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_DROPUP = 'dropup'
 const CLASS_NAME_DROPEND = 'dropend'
 const CLASS_NAME_DROPSTART = 'dropstart'
+const CLASS_NAME_DROPUP_CENTER = 'dropup-center'
+const CLASS_NAME_DROPDOWN_CENTER = 'dropdown-center'
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)'
 const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE}.${CLASS_NAME_SHOW}`
@@ -62,6 +64,8 @@ const PLACEMENT_BOTTOM = isRTL() ? 'bottom-end' : 'bottom-start'
 const PLACEMENT_BOTTOMEND = isRTL() ? 'bottom-start' : 'bottom-end'
 const PLACEMENT_RIGHT = isRTL() ? 'left-start' : 'right-start'
 const PLACEMENT_LEFT = isRTL() ? 'right-start' : 'left-start'
+const PLACEMENT_TOPCENTER = 'top'
+const PLACEMENT_BOTTOMCENTER = 'bottom'
 
 const Default = {
   offset: [0, 2],
@@ -248,6 +252,14 @@ class Dropdown extends BaseComponent {
       return PLACEMENT_LEFT
     }
 
+    if (parentDropdown.classList.contains(CLASS_NAME_DROPUP_CENTER)) {
+      return PLACEMENT_TOPCENTER
+    }
+
+    if (parentDropdown.classList.contains(CLASS_NAME_DROPDOWN_CENTER)) {
+      return PLACEMENT_BOTTOMCENTER
+    }
+
     // We need to trim the value because custom properties can also include spaces
     const isEnd = getComputedStyle(this._menu).getPropertyValue('--bs-position').trim() === 'end'
 
@@ -400,8 +412,12 @@ class Dropdown extends BaseComponent {
     const instance = Dropdown.getOrCreateInstance(getToggleButton)
 
     if (isEscapeEvent) {
-      instance.hide()
-      getToggleButton.focus()
+      if (getToggleButton.classList.contains(CLASS_NAME_SHOW)) {
+        instance.hide()
+        getToggleButton.focus()
+        event.stopPropagation()
+      }
+
       return
     }
 

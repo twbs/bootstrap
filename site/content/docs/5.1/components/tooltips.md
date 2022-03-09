@@ -10,7 +10,7 @@ toc: true
 
 Things to know when using the tooltip plugin:
 
-- Tooltips rely on the 3rd party library [Popper](https://popper.js.org/) for positioning. You must include [popper.min.js]({{< param "cdn.popper" >}}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper in order for tooltips to work!
+- Tooltips rely on the third party library [Popper](https://popper.js.org/) for positioning. You must include [popper.min.js]({{< param "cdn.popper" >}}) before `bootstrap.js`, or use one `bootstrap.bundle.min.js` which contains Popper.
 - Tooltips are opt-in for performance reasons, so **you must initialize them yourself**.
 - Tooltips with zero-length titles are never displayed.
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
@@ -20,6 +20,8 @@ Things to know when using the tooltip plugin:
 - Tooltips must be hidden before their corresponding elements have been removed from the DOM.
 - Tooltips can be triggered thanks to an element inside a shadow DOM.
 
+Got all that? Great, let's see how they work with some examples.
+
 {{< callout info >}}
 {{< partial "callout-info-sanitizer.md" >}}
 {{< /callout >}}
@@ -28,11 +30,11 @@ Things to know when using the tooltip plugin:
 {{< partial "callout-info-prefersreducedmotion.md" >}}
 {{< /callout >}}
 
-Got all that? Great, let's see how they work with some examples.
+## Examples
 
-## Example: Enable tooltips everywhere
+### Enable tooltips
 
-One way to initialize all tooltips on a page would be to select them by their `data-bs-toggle` attribute:
+As mentioned above, you must initialize tooltips before they can be used. One way to initialize all tooltips on a page would be to select them by their `data-bs-toggle` attribute, like so:
 
 ```js
 var tooltipTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -41,7 +43,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 })
 ```
 
-## Examples
+### Tooltips on links
 
 Hover over the links below to see tooltips:
 
@@ -49,6 +51,29 @@ Hover over the links below to see tooltips:
   <p class="muted">Placeholder text to demonstrate some <a href="#" data-bs-toggle="tooltip" title="Default tooltip">inline links</a> with tooltips. This is now just filler, no killer. Content placed here just to mimic the presence of <a href="#" data-bs-toggle="tooltip" title="Another tooltip">real text</a>. And all that just to give you an idea of how tooltips would look when used in real-world situations. So hopefully you've now seen how <a href="#" data-bs-toggle="tooltip" title="Another one here too">these tooltips on links</a> can work in practice, once you use them on <a href="#" data-bs-toggle="tooltip" title="The last tip!">your own</a> site or project.
   </p>
 </div>
+
+### Custom tooltips
+
+<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.2.0</small>
+
+You can customize the appearance of tooltips using [CSS variables](#variables). We set a custom class with `data-bs-custom-class="custom-tooltip"` to scope our custom appearance and use it to override a local CSS variable.
+
+```scss
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-primary);
+}
+```
+
+{{< example class="tooltip-demo" >}}
+<button type="button" class="btn btn-secondary"
+        data-bs-toggle="tooltip" data-bs-placement="top"
+        data-bs-custom-class="custom-tooltip"
+        title="This top tooltip is themed via CSS variables.">
+  Custom tooltip
+</button>
+{{< /example >}}
+
+### Directions
 
 Hover over the buttons below to see the four tooltips directions: top, right, bottom, and left. Directions are mirrored when using Bootstrap in RTL.
 
@@ -96,9 +121,17 @@ With an SVG:
   </a>
 </div>
 
-## Sass
+## CSS
 
 ### Variables
+
+<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.2.0</small>
+
+As part of Bootstrap’s evolving CSS variables approach, tooltips now use local CSS variables on `.tooltip` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+{{< scss-docs name="tooltip-css-vars" file="scss/_tooltip.scss" >}}
+
+### Sass variables
 
 {{< scss-docs name="tooltip-variables" file="scss/_variables.scss" >}}
 
