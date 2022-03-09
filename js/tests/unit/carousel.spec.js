@@ -1200,9 +1200,7 @@ describe('Carousel', () => {
       const carousel = new Carousel(carouselEl, {})
 
       expect(carousel._directionToOrder('left')).toEqual('next')
-      expect(carousel._directionToOrder('prev')).toEqual('prev')
       expect(carousel._directionToOrder('right')).toEqual('prev')
-      expect(carousel._directionToOrder('next')).toEqual('next')
 
       expect(carousel._orderToDirection('next')).toEqual('left')
       expect(carousel._orderToDirection('prev')).toEqual('right')
@@ -1217,9 +1215,7 @@ describe('Carousel', () => {
       expect(isRTL()).toBeTrue()
 
       expect(carousel._directionToOrder('left')).toEqual('prev')
-      expect(carousel._directionToOrder('prev')).toEqual('prev')
       expect(carousel._directionToOrder('right')).toEqual('next')
-      expect(carousel._directionToOrder('next')).toEqual('next')
 
       expect(carousel._orderToDirection('next')).toEqual('right')
       expect(carousel._orderToDirection('prev')).toEqual('left')
