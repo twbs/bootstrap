@@ -51,7 +51,7 @@
     outline: $pagination-focus-outline;
     box-shadow: var(--#{$variable-prefix}pagination-focus-box-shadow);
   }
-  
+
   &.active,
   .active > & {
     z-index: 3;
