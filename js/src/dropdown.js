@@ -404,25 +404,22 @@ class Dropdown extends BaseComponent {
     }
 
     event.preventDefault()
-    if (!isEscapeEvent) {
-      event.stopPropagation()
-    }
 
     const getToggleButton = SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode)
     const instance = Dropdown.getOrCreateInstance(getToggleButton)
 
-    if (isEscapeEvent) {
-      if (getToggleButton.classList.contains(CLASS_NAME_SHOW)) {
-        instance.hide()
-        getToggleButton.focus()
-        event.stopPropagation()
-      }
-
+    if (isUpOrDownEvent) {
+      event.stopPropagation()
+      instance.show()
+      instance._selectMenuItem(event)
       return
     }
 
-    instance.show()
-    instance._selectMenuItem(event)
+    if (instance._isShown()) { // else is escape and we check if it is shown
+      event.stopPropagation()
+      instance.hide()
+      getToggleButton.focus()
+    }
   }
 }
 
