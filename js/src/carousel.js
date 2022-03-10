@@ -71,7 +71,7 @@ const KEY_TO_DIRECTION = {
 const Default = {
   interval: 5000,
   keyboard: true,
-  slide: false,
+  ride: false,
   pause: 'hover',
   wrap: true,
   touch: true
@@ -80,7 +80,7 @@ const Default = {
 const DefaultType = {
   interval: '(number|boolean)',
   keyboard: 'boolean',
-  slide: '(boolean|string)',
+  ride: '(boolean|string)',
   pause: '(string|boolean)',
   wrap: 'boolean',
   touch: 'boolean'
@@ -103,6 +103,10 @@ class Carousel extends BaseComponent {
 
     this._indicatorsElement = SelectorEngine.findOne(SELECTOR_INDICATORS, this._element)
     this._addEventListeners()
+
+    if (this._config.ride === CLASS_NAME_CAROUSEL) {
+      this.cycle()
+    }
   }
 
   // Getters
@@ -136,23 +140,19 @@ class Carousel extends BaseComponent {
     this._slide(ORDER_PREV)
   }
 
-  pause(event) {
-    if (!event) {
-      this._stayPaused = true
-    }
+  pause() {
+    this._stayPaused = true
 
     if (this._isSliding) {
       triggerTransitionEnd(this._element)
-      this.cycle(true)
+      this.cycle()
     }
 
     this._clearInterval()
   }
 
-  cycle(event) {
-    if (!event) {
-      this._stayPaused = false
-    }
+  cycle(isEvent) {
+    this._stayPaused = isEvent ? !(this._config.ride) : false
 
     this._clearInterval()
     if (this._config.interval && !this._stayPaused) {
@@ -205,8 +205,8 @@ class Carousel extends BaseComponent {
     }
 
     if (this._config.pause === 'hover') {
-      EventHandler.on(this._element, EVENT_MOUSEENTER, event => this.pause(event))
-      EventHandler.on(this._element, EVENT_MOUSELEAVE, event => this.cycle(event))
+      EventHandler.on(this._element, EVENT_MOUSEENTER, () => this.pause())
+      EventHandler.on(this._element, EVENT_MOUSELEAVE, () => this.cycle(true))
     }
 
     if (this._config.touch && Swipe.isSupported()) {
@@ -237,7 +237,7 @@ class Carousel extends BaseComponent {
         clearTimeout(this.touchTimeout)
       }
 
-      this.touchTimeout = setTimeout(event => this.cycle(event), TOUCHEVENT_COMPAT_WAIT + this._config.interval)
+      this.touchTimeout = setTimeout(() => this.cycle(true), TOUCHEVENT_COMPAT_WAIT + this._config.interval)
     }
 
     const swipeConfig = {
@@ -334,9 +334,7 @@ class Carousel extends BaseComponent {
     this._isSliding = true
 
     const isCycling = Boolean(this._interval)
-    if (isCycling) {
-      this.pause()
-    }
+    this.pause()
 
     this._setActiveIndicatorElement(nextElementIndex)
     this._activeElement = nextElement
@@ -420,12 +418,6 @@ class Carousel extends BaseComponent {
         }
 
         data[config]()
-        return
-      }
-
-      if (data._config.interval && data._config.ride) {
-        data.pause()
-        data.cycle()
       }
     })
   }
@@ -446,6 +438,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (e
 
   const carousel = Carousel.getOrCreateInstance(target)
   const slideIndex = this.getAttribute('data-bs-slide-to')
+  carousel.cycle(true)
 
   if (slideIndex) {
     carousel.to(slideIndex)

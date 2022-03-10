@@ -890,7 +890,7 @@ describe('Carousel', () => {
       carousel._slide('next')
       carousel.pause()
 
-      expect(carousel.cycle).toHaveBeenCalledWith(true)
+      expect(carousel.cycle).toHaveBeenCalled()
       expect(carousel._clearInterval).toHaveBeenCalled()
       expect(carousel._stayPaused).toBeTrue()
     })
@@ -921,7 +921,7 @@ describe('Carousel', () => {
       expect(carousel._stayPaused).toBeTrue()
     })
 
-    it('should not set is paused at true if an event is passed', () => {
+    it('should set `stayPaused` at true', () => {
       fixtureEl.innerHTML = [
         '<div id="myCarousel" class="carousel slide">',
         '  <div class="carousel-inner">',
@@ -936,14 +936,12 @@ describe('Carousel', () => {
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
       const carousel = new Carousel(carouselEl)
-      const event = createEvent('mouseenter')
 
       spyOn(carousel, '_clearInterval')
 
-      carousel.pause(event)
+      carousel.pause()
 
-      expect(carousel._clearInterval).toHaveBeenCalled()
-      expect(carousel._stayPaused).toBeFalse()
+      expect(carousel._stayPaused).toBeTrue()
     })
   })
 
@@ -1449,8 +1447,8 @@ describe('Carousel', () => {
       const loadEvent = createEvent('load')
 
       window.dispatchEvent(loadEvent)
-
-      expect(Carousel.getInstance(carouselEl)).not.toBeNull()
+      const carousel = Carousel.getInstance(carouselEl)
+      expect(carousel._interval).not.toBeNull()
     })
 
     it('should create carousel and go to the next slide on click (with real button controls)', () => {
