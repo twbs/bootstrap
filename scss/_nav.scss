@@ -42,7 +42,7 @@
   border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
 
   .nav-link {
-    margin-bottom: -$nav-tabs-border-width;
+    margin-bottom: calc($nav-tabs-border-width * -1); // stylelint-disable-line function-disallowed-list
     background: none;
     border: $nav-tabs-border-width solid transparent;
     @include border-top-radius($nav-tabs-border-radius);
@@ -70,7 +70,7 @@
 
   .dropdown-menu {
     // Make dropdown border overlap tab border
-    margin-top: -$nav-tabs-border-width;
+    margin-top: calc($nav-tabs-border-width * -1); // stylelint-disable-line function-disallowed-list
     // Remove the top rounded corners here since there is a hard edge above the menu
     @include border-top-radius(0);
   }
