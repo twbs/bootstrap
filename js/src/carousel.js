@@ -59,7 +59,6 @@ const SELECTOR_ACTIVE = '.active'
 const SELECTOR_ITEM = '.carousel-item'
 const SELECTOR_ACTIVE_ITEM = SELECTOR_ACTIVE + SELECTOR_ITEM
 const SELECTOR_ITEM_IMG = '.carousel-item img'
-const SELECTOR_NEXT_PREV = '.carousel-item-next, .carousel-item-prev'
 const SELECTOR_INDICATORS = '.carousel-indicators'
 const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]'
 const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]'
@@ -142,7 +141,7 @@ class Carousel extends BaseComponent {
       this._stayPaused = true
     }
 
-    if (SelectorEngine.findOne(SELECTOR_NEXT_PREV, this._element)) {
+    if (this._isSliding) {
       triggerTransitionEnd(this._element)
       this.cycle(true)
     }
