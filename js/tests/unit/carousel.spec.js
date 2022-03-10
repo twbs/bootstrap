@@ -891,7 +891,7 @@ describe('Carousel', () => {
 
       expect(carousel.cycle).toHaveBeenCalledWith(true)
       expect(carousel._clearInterval).toHaveBeenCalled()
-      expect(carousel._isPaused).toBeTrue()
+      expect(carousel._stayPaused).toBeTrue()
     })
 
     it('should not call cycle if nothing is in transition', () => {
@@ -917,7 +917,7 @@ describe('Carousel', () => {
 
       expect(carousel.cycle).not.toHaveBeenCalled()
       expect(carousel._clearInterval).toHaveBeenCalled()
-      expect(carousel._isPaused).toBeTrue()
+      expect(carousel._stayPaused).toBeTrue()
     })
 
     it('should not set is paused at true if an event is passed', () => {
@@ -942,7 +942,7 @@ describe('Carousel', () => {
       carousel.pause(event)
 
       expect(carousel._clearInterval).toHaveBeenCalled()
-      expect(carousel._isPaused).toBeFalse()
+      expect(carousel._stayPaused).toBeFalse()
     })
   })
 
@@ -988,7 +988,7 @@ describe('Carousel', () => {
 
       spyOn(window, 'setInterval').and.callThrough()
 
-      carousel._isPaused = true
+      carousel._stayPaused = true
       carousel.cycle(true)
 
       expect(window.setInterval).not.toHaveBeenCalled()

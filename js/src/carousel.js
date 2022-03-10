@@ -97,7 +97,7 @@ class Carousel extends BaseComponent {
 
     this._interval = null
     this._activeElement = null
-    this._isPaused = false
+    this._stayPaused = false
     this._isSliding = false
     this.touchTimeout = null
     this._swipeHelper = null
@@ -139,7 +139,7 @@ class Carousel extends BaseComponent {
 
   pause(event) {
     if (!event) {
-      this._isPaused = true
+      this._stayPaused = true
     }
 
     if (SelectorEngine.findOne(SELECTOR_NEXT_PREV, this._element)) {
@@ -152,11 +152,11 @@ class Carousel extends BaseComponent {
 
   cycle(event) {
     if (!event) {
-      this._isPaused = false
+      this._stayPaused = false
     }
 
     this._clearInterval()
-    if (this._config.interval && !this._isPaused) {
+    if (this._config.interval && !this._stayPaused) {
       this._updateInterval()
 
       this._interval = setInterval(() => this.nextWhenVisible(), this._config.interval)
