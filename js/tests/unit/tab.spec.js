@@ -511,60 +511,6 @@ describe('Tab', () => {
       tabEl2.dispatchEvent(keydown)
       expect(tab.show).toHaveBeenCalled()
     })
-
-    it('if keydown event is Tab, handle it. If we are on the last element, just continue', () => {
-      fixtureEl.innerHTML = [
-        '<div class="nav">',
-        '  <span id="tab1" class="nav-link active" data-bs-toggle="tab"></span>',
-        '  <span id="tab2" class="nav-link" data-bs-toggle="tab"></span>',
-        '</div>'
-      ].join('')
-
-      const tabEl = fixtureEl.querySelector('#tab1')
-      const tabEl2 = fixtureEl.querySelector('#tab2')
-      // eslint-disable-next-line no-unused-vars
-      const tab = new Tab(tabEl)
-      const tab2 = new Tab(tabEl2)
-      spyOn(tab2, 'show').and.callThrough()
-
-      const keydown = new KeyboardEvent('keydown', { key: 'Tab' })
-      const eventSpy = spyOn(keydown, 'preventDefault').and.callThrough()
-
-      tabEl.dispatchEvent(keydown)
-      expect(tab2.show).toHaveBeenCalled()
-      expect(eventSpy).toHaveBeenCalled()
-      eventSpy.calls.reset()
-
-      tabEl2.dispatchEvent(keydown)
-      expect(eventSpy).not.toHaveBeenCalled()
-    })
-
-    it('if keydown event is Shift+Tab, handle it. If we are on the first element, just continue', () => {
-      fixtureEl.innerHTML = [
-        '<div class="nav">',
-        '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
-        '  <span id="tab2" class="nav-link active" data-bs-toggle="tab"></span>',
-        '</div>'
-      ].join('')
-
-      const tabEl = fixtureEl.querySelector('#tab1')
-      const tabEl2 = fixtureEl.querySelector('#tab2')
-      const tab = new Tab(tabEl)
-      // eslint-disable-next-line no-unused-vars
-      const tab2 = new Tab(tabEl2)
-      spyOn(tab, 'show').and.callThrough()
-
-      const keydown = new KeyboardEvent('keydown', { key: 'Tab', shiftKey: true })
-      const eventSpy = spyOn(keydown, 'preventDefault').and.callThrough()
-
-      tabEl2.dispatchEvent(keydown)
-      expect(tab.show).toHaveBeenCalled()
-      expect(eventSpy).toHaveBeenCalled()
-      eventSpy.calls.reset()
-
-      tabEl.dispatchEvent(keydown)
-      expect(eventSpy).not.toHaveBeenCalled()
-    })
   })
 
   describe('jQueryInterface', () => {
