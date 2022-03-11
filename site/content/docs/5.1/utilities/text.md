@@ -116,13 +116,13 @@ Change a selection to our monospace font stack with `.font-monospace`.
 <p class="font-monospace">This is in monospace</p>
 {{< /example >}}
 
-## Reset color
+## Muted color
 
-Reset a text or link's color with `.text-reset`, so that it inherits the color from its parent.
+Mute text color with `.text-muted`
 
 {{< example >}}
 <p class="text-muted">
-  Muted text with a <a href="#" class="text-reset">reset link</a>.
+  This text is muted
 </p>
 {{< /example >}}
 
