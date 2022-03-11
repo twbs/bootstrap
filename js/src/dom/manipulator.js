@@ -27,7 +27,7 @@ function normalizeData(value) {
   }
 
   try {
-    return JSON.parse(decodeURIComponent(val))
+    return JSON.parse(decodeURIComponent(value))
   } catch {
     return value
   }
