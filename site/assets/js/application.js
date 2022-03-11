@@ -132,7 +132,14 @@
    */
   function snippetButtonTooltip(selector, title) {
     document.querySelectorAll(selector).forEach(function (btn) {
-      new bootstrap.Tooltip(btn, { title: title })
+      var tooltipBtn = new bootstrap.Tooltip(btn, { title: title })
+
+      btn.addEventListener('mouseleave', function () {
+        // Explicitly hide tooltip, since after clicking it remains
+        // focused (as it's a button), so tooltip would otherwise
+        // remain visible until focus is moved away
+        tooltipBtn.hide()
+      })
     })
   }
 
