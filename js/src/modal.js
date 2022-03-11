@@ -69,6 +69,8 @@ class Modal extends BaseComponent {
     this._isShown = false
     this._isTransitioning = false
     this._scrollBar = new ScrollBarHelper()
+
+    this._addEventListeners()
   }
 
   // Getters
@@ -111,9 +113,6 @@ class Modal extends BaseComponent {
 
     this._adjustDialog()
 
-    this._toggleEscapeEventListener(true)
-    this._toggleResizeEventListener(true)
-
     this._backdrop.show(() => this._showElement(relatedTarget))
   }
 
@@ -130,10 +129,6 @@ class Modal extends BaseComponent {
 
     this._isShown = false
     this._isTransitioning = true
-
-    this._toggleEscapeEventListener(false)
-    this._toggleResizeEventListener(false)
-
     this._focustrap.deactivate()
 
     this._element.classList.remove(CLASS_NAME_SHOW)
@@ -217,12 +212,7 @@ class Modal extends BaseComponent {
     this._queueCallback(transitionComplete, this._dialog, this._isAnimated())
   }
 
-  _toggleEscapeEventListener(enable) {
-    if (!enable) {
-      EventHandler.off(this._element, EVENT_KEYDOWN_DISMISS)
-      return
-    }
-
+  _addEventListeners() {
     EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS, event => {
       if (event.key !== ESCAPE_KEY) {
         return
@@ -236,15 +226,12 @@ class Modal extends BaseComponent {
 
       this._triggerBackdropTransition()
     })
-  }
 
-  _toggleResizeEventListener(enable) {
-    if (enable) {
-      EventHandler.on(window, EVENT_RESIZE, () => this._adjustDialog())
-      return
-    }
-
-    EventHandler.off(window, EVENT_RESIZE)
+    EventHandler.on(window, EVENT_RESIZE, () => {
+      if (this._isShown && !this._isTransitioning) {
+        this._adjustDialog()
+      }
+    })
   }
 
   _hideModal() {

@@ -400,6 +400,23 @@ And putting it to use in a navbar:
 Directions are mirrored when using Bootstrap in RTL, meaning `.dropstart` will appear on the right side.
 {{< /callout >}}
 
+### Centered
+
+Make the dropdown menu centered below the toggle with `.dropdown-center` on the parent element.
+
+{{< example >}}
+<div class="dropdown-center">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCenterBtn" data-bs-toggle="dropdown" aria-expanded="false">
+    Centered dropdown
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownCenterBtn">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Action two</a></li>
+    <li><a class="dropdown-item" href="#">Action three</a></li>
+  </ul>
+</div>
+{{< /example >}}
+
 ### Dropup
 
 Trigger dropdown menus above elements by adding `.dropup` to the parent element.
@@ -458,6 +475,23 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
   </ul>
 </div>
 ```
+
+### Dropup centered
+
+Make the dropup menu centered above the toggle with `.dropup-center` on the parent element.
+
+{{< example >}}
+<div class="dropup-center">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropupCenterBtn" data-bs-toggle="dropdown" aria-expanded="false">
+    Centered dropup
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropupCenterBtn">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Action two</a></li>
+    <li><a class="dropdown-item" href="#">Action three</a></li>
+  </ul>
+</div>
+{{< /example >}}
 
 ### Dropend
 
@@ -953,9 +987,21 @@ By default, the dropdown menu is closed when clicking inside or outside the drop
 </div>
 {{< /example >}}
 
-## Sass
+## CSS
 
 ### Variables
+
+<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.2.0</small>
+
+As part of Bootstrap's evolving CSS variables approach, dropdowns now use local CSS variables on `.dropdown-menu` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+{{< scss-docs name="dropdown-css-vars" file="scss/_dropdown.scss" >}}
+
+Customization through CSS variables can be seen on the `.dropdown-menu-dark` class where we override specific values without adding duplicate CSS selectors.
+
+{{< scss-docs name="dropdown-dark-css-vars" file="scss/_dropdown.scss" >}}
+
+### Sass variables
 
 Variables for all dropdowns:
 

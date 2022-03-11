@@ -160,7 +160,7 @@ describe('Toast', () => {
     })
 
     it('should not trigger shown if show is prevented', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<div class="toast" data-bs-delay="1" data-bs-animation="false">',
           '  <div class="toast-body">',
@@ -185,7 +185,7 @@ describe('Toast', () => {
         })
 
         toastEl.addEventListener('shown.bs.toast', () => {
-          throw new Error('shown event should not be triggered if show is prevented')
+          reject(new Error('shown event should not be triggered if show is prevented'))
         })
 
         toast.show()
@@ -449,7 +449,7 @@ describe('Toast', () => {
     })
 
     it('should not trigger hidden if hide is prevented', () => {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
           '<div class="toast" data-bs-delay="1" data-bs-animation="false">',
           '  <div class="toast-body">',
@@ -478,7 +478,7 @@ describe('Toast', () => {
         })
 
         toastEl.addEventListener('hidden.bs.toast', () => {
-          throw new Error('hidden event should not be triggered if hide is prevented')
+          reject(new Error('hidden event should not be triggered if hide is prevented'))
         })
 
         toast.show()

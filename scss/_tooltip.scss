@@ -43,6 +43,7 @@
   }
 }
 
+/* rtl:begin:ignore */
 .bs-tooltip-end {
   padding: 0 $tooltip-arrow-height;
 
@@ -59,6 +60,8 @@
   }
 }
 
+/* rtl:end:ignore */
+
 .bs-tooltip-bottom {
   padding: $tooltip-arrow-height 0;
 
@@ -73,6 +76,7 @@
   }
 }
 
+/* rtl:begin:ignore */
 .bs-tooltip-start {
   padding: 0 $tooltip-arrow-height;
 
@@ -88,6 +92,8 @@
     }
   }
 }
+
+/* rtl:end:ignore */
 
 .bs-tooltip-auto {
   &[data-popper-placement^="top"] {

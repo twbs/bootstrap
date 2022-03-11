@@ -134,7 +134,7 @@ Toggle a working modal demo by clicking the button below. It will slide down and
 
 ### Static backdrop
 
-When backdrop is set to static, the modal will not close when clicking outside it. Click the button below to try it.
+When backdrop is set to static, the modal will not close when clicking outside of it. Click the button below to try it.
 
 <div class="modal fade" id="staticBackdropLive" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLiveLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -144,7 +144,7 @@ When backdrop is set to static, the modal will not close when clicking outside i
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>I will not close if you click outside me. Don't even try to press escape key.</p>
+        <p>I will not close if you click outside of me. Don't even try to press escape key.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -873,7 +873,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td><code>backdrop</code></td>
       <td>boolean or the string <code>'static'</code></td>
       <td><code>true</code></td>
-      <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.</td>
+      <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal when clicked.</td>
     </tr>
     <tr>
       <td><code>keyboard</code></td>
@@ -1001,7 +1001,7 @@ Bootstrap's modal class exposes a few events for hooking into modal functionalit
     </tr>
     <tr>
       <td><code>hidePrevented.bs.modal</code></td>
-      <td>This event is fired when the modal is shown, its backdrop is <code>static</code> and a click outside the modal or an escape key press is performed with the keyboard option or <code>data-bs-keyboard</code> set to <code>false</code>.</td>
+      <td>This event is fired when the modal is shown, its backdrop is <code>static</code> and a click outside of the modal is performed. The event is also fired when the escape key is pressed and the <code>keyboard</code> option is set to <code>false</code>.</td>
     </tr>
   </tbody>
 </table>
