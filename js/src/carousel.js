@@ -59,7 +59,6 @@ const SELECTOR_ACTIVE = '.active'
 const SELECTOR_ITEM = '.carousel-item'
 const SELECTOR_ACTIVE_ITEM = SELECTOR_ACTIVE + SELECTOR_ITEM
 const SELECTOR_ITEM_IMG = '.carousel-item img'
-const SELECTOR_NEXT_PREV = '.carousel-item-next, .carousel-item-prev'
 const SELECTOR_INDICATORS = '.carousel-indicators'
 const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]'
 const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]'
@@ -97,7 +96,7 @@ class Carousel extends BaseComponent {
 
     this._interval = null
     this._activeElement = null
-    this._isPaused = false
+    this._stayPaused = false
     this._isSliding = false
     this.touchTimeout = null
     this._swipeHelper = null
@@ -139,10 +138,10 @@ class Carousel extends BaseComponent {
 
   pause(event) {
     if (!event) {
-      this._isPaused = true
+      this._stayPaused = true
     }
 
-    if (SelectorEngine.findOne(SELECTOR_NEXT_PREV, this._element)) {
+    if (this._isSliding) {
       triggerTransitionEnd(this._element)
       this.cycle(true)
     }
@@ -152,11 +151,11 @@ class Carousel extends BaseComponent {
 
   cycle(event) {
     if (!event) {
-      this._isPaused = false
+      this._stayPaused = false
     }
 
     this._clearInterval()
-    if (this._config.interval && !this._isPaused) {
+    if (this._config.interval && !this._stayPaused) {
       this._updateInterval()
 
       this._interval = setInterval(() => this.nextWhenVisible(), this._config.interval)
@@ -328,6 +327,7 @@ class Carousel extends BaseComponent {
 
     if (!activeElement || !nextElement) {
       // Some weirdness is happening, so we bail
+      // todo: change tests that use empty divs to avoid this check
       return
     }
 
@@ -389,10 +389,6 @@ class Carousel extends BaseComponent {
   }
 
   _directionToOrder(direction) {
-    if (![DIRECTION_RIGHT, DIRECTION_LEFT].includes(direction)) {
-      return direction
-    }
-
     if (isRTL()) {
       return direction === DIRECTION_LEFT ? ORDER_PREV : ORDER_NEXT
     }
@@ -401,10 +397,6 @@ class Carousel extends BaseComponent {
   }
 
   _orderToDirection(order) {
-    if (![ORDER_NEXT, ORDER_PREV].includes(order)) {
-      return order
-    }
-
     if (isRTL()) {
       return order === ORDER_PREV ? DIRECTION_LEFT : DIRECTION_RIGHT
     }
@@ -416,14 +408,6 @@ class Carousel extends BaseComponent {
   static jQueryInterface(config) {
     return this.each(function () {
       const data = Carousel.getOrCreateInstance(this, config)
-
-      let { _config } = data
-      if (typeof config === 'object') {
-        _config = {
-          ..._config,
-          ...config
-        }
-      }
 
       if (typeof config === 'number') {
         data.to(config)
@@ -439,7 +423,7 @@ class Carousel extends BaseComponent {
         return
       }
 
-      if (_config.interval && _config.ride) {
+      if (data._config.interval && data._config.ride) {
         data.pause()
         data.cycle()
       }

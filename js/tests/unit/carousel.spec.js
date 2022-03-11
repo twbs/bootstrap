@@ -868,7 +868,7 @@ describe('Carousel', () => {
   })
 
   describe('pause', () => {
-    it('should call cycle if the carousel have carousel-item-next and carousel-item-prev class', () => {
+    it('should call cycle if the carousel have carousel-item-next or carousel-item-prev class, cause is sliding', () => {
       fixtureEl.innerHTML = [
         '<div id="myCarousel" class="carousel slide">',
         '  <div class="carousel-inner">',
@@ -887,11 +887,12 @@ describe('Carousel', () => {
       spyOn(carousel, 'cycle')
       spyOn(carousel, '_clearInterval')
 
+      carousel._slide('next')
       carousel.pause()
 
       expect(carousel.cycle).toHaveBeenCalledWith(true)
       expect(carousel._clearInterval).toHaveBeenCalled()
-      expect(carousel._isPaused).toBeTrue()
+      expect(carousel._stayPaused).toBeTrue()
     })
 
     it('should not call cycle if nothing is in transition', () => {
@@ -917,7 +918,7 @@ describe('Carousel', () => {
 
       expect(carousel.cycle).not.toHaveBeenCalled()
       expect(carousel._clearInterval).toHaveBeenCalled()
-      expect(carousel._isPaused).toBeTrue()
+      expect(carousel._stayPaused).toBeTrue()
     })
 
     it('should not set is paused at true if an event is passed', () => {
@@ -942,7 +943,7 @@ describe('Carousel', () => {
       carousel.pause(event)
 
       expect(carousel._clearInterval).toHaveBeenCalled()
-      expect(carousel._isPaused).toBeFalse()
+      expect(carousel._stayPaused).toBeFalse()
     })
   })
 
@@ -988,7 +989,7 @@ describe('Carousel', () => {
 
       spyOn(window, 'setInterval').and.callThrough()
 
-      carousel._isPaused = true
+      carousel._stayPaused = true
       carousel.cycle(true)
 
       expect(window.setInterval).not.toHaveBeenCalled()
@@ -1200,9 +1201,7 @@ describe('Carousel', () => {
       const carousel = new Carousel(carouselEl, {})
 
       expect(carousel._directionToOrder('left')).toEqual('next')
-      expect(carousel._directionToOrder('prev')).toEqual('prev')
       expect(carousel._directionToOrder('right')).toEqual('prev')
-      expect(carousel._directionToOrder('next')).toEqual('next')
 
       expect(carousel._orderToDirection('next')).toEqual('left')
       expect(carousel._orderToDirection('prev')).toEqual('right')
@@ -1217,9 +1216,7 @@ describe('Carousel', () => {
       expect(isRTL()).toBeTrue()
 
       expect(carousel._directionToOrder('left')).toEqual('prev')
-      expect(carousel._directionToOrder('prev')).toEqual('prev')
       expect(carousel._directionToOrder('right')).toEqual('next')
-      expect(carousel._directionToOrder('next')).toEqual('next')
 
       expect(carousel._orderToDirection('next')).toEqual('right')
       expect(carousel._orderToDirection('prev')).toEqual('left')

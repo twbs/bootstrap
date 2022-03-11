@@ -481,7 +481,7 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
 Make the dropup menu centered above the toggle with `.dropup-center` on the parent element.
 
 {{< example >}}
-<div class="dropup-center">
+<div class="dropup-center dropup">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropupCenterBtn" data-bs-toggle="dropdown" aria-expanded="false">
     Centered dropup
   </button>

@@ -478,6 +478,7 @@ $utilities: map-merge(
         lighter: $font-weight-lighter,
         normal: $font-weight-normal,
         bold: $font-weight-bold,
+        semibold: $font-weight-semibold,
         bolder: $font-weight-bolder
       )
     ),
@@ -605,6 +606,8 @@ $utilities: map-merge(
         1: $border-radius-sm,
         2: $border-radius,
         3: $border-radius-lg,
+        4: $border-radius-xl,
+        5: $border-radius-2xl,
         circle: 50%,
         pill: $border-radius-pill
       )
