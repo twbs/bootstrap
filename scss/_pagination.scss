@@ -73,6 +73,7 @@
   &:not(:first-child) .page-link {
     margin-left: $pagination-margin-start;
   }
+
   @if $pagination-margin-start == (-$pagination-border-width) {
     &:first-child {
       .page-link {
