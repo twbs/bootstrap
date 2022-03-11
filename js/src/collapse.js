@@ -190,8 +190,6 @@ class Collapse extends BaseComponent {
       this._isTransitioning = false
       this._element.classList.remove(CLASS_NAME_COLLAPSING)
       this._element.classList.add(CLASS_NAME_COLLAPSE)
-      EventHandler.trigger(this._element, EVENT_HIDDEN)
-
       for (const trigger of this._triggerArray) {
         const element = getElementFromSelector(trigger)
 
@@ -199,6 +197,8 @@ class Collapse extends BaseComponent {
           this._addAriaAndCollapsedClass([trigger], false)
         }
       }
+
+      EventHandler.trigger(this._element, EVENT_HIDDEN)
     }
 
     this._element.style[dimension] = ''
