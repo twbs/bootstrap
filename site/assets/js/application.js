@@ -35,7 +35,7 @@
         toastPlacement.dataset.originalClass = toastPlacement.className
       }
 
-      toastPlacement.className = toastPlacement.dataset.originalClass + ' ' + this.value
+      toastPlacement.className = `${toastPlacement.dataset.originalClass} ${this.value}`
     })
   }
 
@@ -63,7 +63,7 @@
 
   function alert(message, type) {
     const wrapper = document.createElement('div')
-    wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+    wrapper.innerHTML = `<div class="alert alert-${type} alert-dismissible" role="alert">${message}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
 
     alertPlaceholder.append(wrapper)
   }
@@ -112,7 +112,7 @@
       const modalTitle = exampleModal.querySelector('.modal-title')
       const modalBodyInput = exampleModal.querySelector('.modal-body input')
 
-      modalTitle.textContent = 'New message to ' + recipient
+      modalTitle.textContent = `New message to ${recipient}`
       modalBodyInput.value = recipient
     })
   }
@@ -165,7 +165,7 @@
 
   clipboard.on('error', event => {
     const modifierKey = /mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
-    const fallbackMsg = 'Press ' + modifierKey + 'C to copy'
+    const fallbackMsg = `Press ${modifierKey}C to copy`
     const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
 
     tooltipBtn.setContent({ '.tooltip-inner': fallbackMsg })

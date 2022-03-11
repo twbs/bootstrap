@@ -40,7 +40,7 @@
       return
     }
 
-    const link = document.querySelector('.bd-aside a[href="' + hash + '"]')
+    const link = document.querySelector(`.bd-aside a[href="${hash}"]`)
 
     if (!link) {
       return
