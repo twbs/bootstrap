@@ -4,6 +4,13 @@ baseURL:                "https://getbootstrap.com"
 
 security:
   enableInlineShortcodes: true
+  exec:
+    allow:
+      - '^dart-sass-embedded$'
+      - '^go$'
+      - '^npx$'
+      - '^postcss$'
+      - '^babel$'
   funcs:
     getenv:
       - ^HUGO_
