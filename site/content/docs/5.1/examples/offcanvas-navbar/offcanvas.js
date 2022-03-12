@@ -1,4 +1,4 @@
-(function () {
+(() => {
   'use strict'
 
   document.querySelector('#navbarSideCollapse').addEventListener('click', () => {

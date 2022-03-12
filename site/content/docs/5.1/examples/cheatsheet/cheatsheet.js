@@ -1,6 +1,6 @@
 /* global bootstrap: false */
 
-(function () {
+(() => {
   'use strict'
 
   // Tooltip and popover demos

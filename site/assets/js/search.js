@@ -2,7 +2,7 @@
 // IT'S ALL JUST JUNK FOR OUR DOCS!
 // ++++++++++++++++++++++++++++++++++++++++++
 
-(function () {
+(() => {
   'use strict'
 
   const inputElement = document.getElementById('search-input')
