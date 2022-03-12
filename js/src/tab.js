@@ -28,6 +28,8 @@ const EVENT_LOAD_DATA_API = `load${EVENT_KEY}`
 
 const ARROW_LEFT_KEY = 'ArrowLeft'
 const ARROW_RIGHT_KEY = 'ArrowRight'
+const ARROW_UP_KEY = 'ArrowUp'
+const ARROW_DOWN_KEY = 'ArrowDown'
 
 const CLASS_NAME_ACTIVE = 'active'
 const CLASS_NAME_FADE = 'fade'
@@ -159,13 +161,13 @@ class Tab extends BaseComponent {
   }
 
   _keydown(event) {
-    if (!([ARROW_LEFT_KEY, ARROW_RIGHT_KEY].includes(event.key))) {
+    if (!([ARROW_LEFT_KEY, ARROW_RIGHT_KEY, ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key))) {
       return
     }
 
-    const children = this._getChildren()
-
-    const nextActiveElement = getNextActiveElement(children, event.target, event.key === ARROW_RIGHT_KEY, true)
+    event.stopPropagation()
+    const isNext = [ARROW_RIGHT_KEY, ARROW_DOWN_KEY].includes(event.key)
+    const nextActiveElement = getNextActiveElement(this._getChildren(), event.target, isNext, true)
     Tab.getOrCreateInstance(nextActiveElement).show()
   }
 

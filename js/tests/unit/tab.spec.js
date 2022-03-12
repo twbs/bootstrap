@@ -446,7 +446,7 @@ describe('Tab', () => {
   })
 
   describe('_keydown', () => {
-    it('if event is not one of left/right arrow, ignore it', () => {
+    it('if event is not one of left/right/up/down arrow, ignore it', () => {
       fixtureEl.innerHTML = [
         '<ul class="nav">',
         '  <li class="nav-link" data-bs-toggle="tab"></li>',
@@ -458,17 +458,18 @@ describe('Tab', () => {
 
       const keydown = createEvent('keydown')
       keydown.key = 'Enter'
-      spyOn(keydown, 'preventDefault')
+      spyOn(Event.prototype, 'stopPropagation').and.callThrough()
       spyOn(tab, '_keydown')
       spyOn(tab, '_getChildren')
 
       tabEl.dispatchEvent(keydown)
       expect(tab._keydown).toHaveBeenCalled()
       expect(tab._getChildren).not.toHaveBeenCalled()
-      expect(keydown.preventDefault).not.toHaveBeenCalled()
+
+      expect(Event.prototype.stopPropagation).not.toHaveBeenCalled()
     })
 
-    it('if keydown event is right arrow, handle it', () => {
+    it('if keydown event is right/down arrow, handle it', () => {
       fixtureEl.innerHTML = [
         '<div class="nav">',
         '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
@@ -478,16 +479,26 @@ describe('Tab', () => {
 
       const tabEl = fixtureEl.querySelector('#tab1')
       const tabEl2 = fixtureEl.querySelector('#tab2')
-      // eslint-disable-next-line no-unused-vars
       const tab = new Tab(tabEl)
       const tab2 = new Tab(tabEl2)
-      spyOn(tab2, 'show')
+      spyOn(tab, 'show').and.callThrough()
+      spyOn(tab2, 'show').and.callThrough()
 
-      const keydown = createEvent('keydown')
+      spyOn(Event.prototype, 'stopPropagation').and.callThrough()
+
+      let keydown = createEvent('keydown')
       keydown.key = 'ArrowRight'
 
       tabEl.dispatchEvent(keydown)
       expect(tab2.show).toHaveBeenCalled()
+
+      keydown = createEvent('keydown')
+      keydown.key = 'ArrowDown'
+
+      tabEl2.dispatchEvent(keydown)
+      expect(tab.show).toHaveBeenCalled()
+
+      expect(Event.prototype.stopPropagation).toHaveBeenCalledTimes(2)
     })
 
     it('if keydown event is left arrow, handle it', () => {
@@ -501,15 +512,25 @@ describe('Tab', () => {
       const tabEl = fixtureEl.querySelector('#tab1')
       const tabEl2 = fixtureEl.querySelector('#tab2')
       const tab = new Tab(tabEl)
-      // eslint-disable-next-line no-unused-vars
       const tab2 = new Tab(tabEl2)
-      spyOn(tab, 'show')
+      spyOn(tab, 'show').and.callThrough()
+      spyOn(tab2, 'show').and.callThrough()
 
-      const keydown = createEvent('keydown')
+      spyOn(Event.prototype, 'stopPropagation').and.callThrough()
+
+      let keydown = createEvent('keydown')
       keydown.key = 'ArrowLeft'
 
       tabEl2.dispatchEvent(keydown)
       expect(tab.show).toHaveBeenCalled()
+
+      keydown = createEvent('keydown')
+      keydown.key = 'ArrowUp'
+
+      tabEl.dispatchEvent(keydown)
+      expect(tab2.show).toHaveBeenCalled()
+
+      expect(Event.prototype.stopPropagation).toHaveBeenCalledTimes(2)
     })
   })
 
