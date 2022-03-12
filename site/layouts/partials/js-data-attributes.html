@@ -1,0 +1,30 @@
+<div>
+  Options can be passed via data attributes or JavaScript. For data attributes, append the option name to
+  <code>data-bs-</code>, as in <code>data-bs-animation=""</code>.
+  Make sure to change the case type of the option name from camelCase to kebab-case when passing the options via data
+  attributes.
+  For example, instead of using <code>data-bs-customClass="beautifier"</code>, use
+  <code>data-bs-custom-class="beautifier"</code>.
+</div>
+
+<div class="bd-callout bd-callout-">
+  <small
+    class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-success bg-success bg-opacity-10 border border-success border-opacity-10 rounded-2">
+    Added in v5.2.0
+  </small>
+
+  <div class="small">
+    <p>
+      All components support an <strong>experimental</strong> reserved data-attribute <code>data-bs-config</code> that
+      can house simple component configuration as JSON string.
+    </p>
+
+    <p> In any case when an element has <code>data-bs-config='{"delay":0, "title":123}'</code> and
+      <code>data-bs-title="456"</code> attributes, the
+      final <code>title</code> value will be <code>456</code> the separate data attributes will override values given on
+      <code>data-bs-config</code>.</p>
+    <p>
+      In addition, the existing data-attributes are able to house json values like <code>data-bs-delay='{"show":0,"hide":150}'</code>
+    </p>
+  </div>
+</div>

@@ -308,7 +308,7 @@ var carousel = new bootstrap.Carousel(myCarousel)
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-interval=""`.
+{{< partial "js-data-attributes.html" >}}
 
 {{< bs-table >}}
 | Name | Type | Default | Description |
