@@ -100,7 +100,7 @@ For more information, see the [WAI-ARIA Authoring Practices for the breadcrumb p
 
 ### Variables
 
-<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.3.0</small>
+{{< added-in "5.2.0" >}}
 
 As part of Bootstrap's evolving CSS variables approach, breadcrumbs now use local CSS variables on `.breadcrumb` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
