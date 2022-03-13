@@ -105,16 +105,50 @@
 
 // Gets the value of a specific option for a given utility
 @function utilities-get-option($utility-name, $option-name) {
-  @return map-get(
-    utilities-get-options($utility-name),
-    $option-name
-  );
+
+  $options: utilities-get-options($utility-name);
+
+  @if ($options) {
+    @return map-get(
+      $options,
+      $option-name
+    );
+  }
+
+  @return null;
+}
+
+// Returns a map of the values for the utility
+@function utilities-get-values($utility-name) {
+  $values: utilities-get-option($utility-name, values);
+
+  @if (type-of($values) != map) {
+    @return map-from($values);
+  }
+
+  @return $values;
+}
+
+@function map-from($list-or-string) {
+  $map: ();
+
+  @each $item in $list-or-string {
+    $map: map-merge(
+      $map,
+      ($item: $item)
+    );
+  }
+
+  @return $map;
 }
 
 // Gets a specific value for the given utility
 @function utilities-get-value($utility-name, $value-name) {
+
+  $values: utilities-get-values($utility-name);
+
   @return map-get(
-    utility-get-option($utility-name, values),
+    $values,
     $value-name
   );
 }
@@ -124,16 +158,26 @@
 // To completely replace the existing options, set the 3rd `$merge` parameter to false
 @mixin utilities-set-options($utility-name, $options, $merge: true) {
 
-  @if($merge) {
-    $options: map-merge(
-      utilities-get-options($utility-name),
+  @if ($merge) {
+
+    $existing-options: utilities-get-options($utility-name);
+
+    // Allow the mixin to create a new utility
+    // when setting an unknown utility name
+    $options: if(
+      $existing-options,
+      map-merge(
+        utilities-get-options($utility-name),
+        $options
+      ),
       $options
-    )
+    );
   }
 
-  $utilities: map-merge($utilities,
-    $utility-name: $options
-  )
+  $utilities: map-merge(
+    $utilities,
+    ($utility-name: $options)
+  ) !global; // !global ensures we modify the global $utilities map
 }
 
 // Set a specific option to a new value for the given utility
@@ -143,37 +187,41 @@
 
 // Add new values to a given utility.
 // If you want to completely reconfigure the values
-// use `utility-set-option` to provide a new map
+// use `utilities-set-option` to provide a new map
 // for the `values` option
 @mixin utilities-add-values($utility-name, $values) {
+
+  $existing-values: utilities-get-values($utility-name);
+
   @include utilities-set-option(
     $utility-name,
     values,
     map-merge(
-      utility-get-option($utility-name, values),
+      $existing-values,
       $values
     )
-  )
+  );
 }
 
 // Remove specific values from a given utility
 @mixin utilities-remove-values($utility-name, $value-names...) {
 
-  $values: utility-get-option($utility-name, values);
+  $values: utilities-get-values($utility-name);
 
-  $updated-values: map-remove($values, $value-names);
+  $updated-values: map-remove($values, $value-names...);
 
-  @include utility-set-option($utility-name, values, $updated-values);
+  @include utilities-set-option($utility-name, values, $updated-values);
 }
 
 // Add a new utility to the utilities map
 @mixin utilities-add($utility-name, $utility) {
-  $utilities: map-merge($utilities,
+  $utilities: map-merge(
+    $utilities,
     ($utility-name: $utility)
-  );
+  ) !global;
 }
 
 // Remove a utility from the utilities map
 @mixin utilities-remove($utility-names...) {
-  $utilities: map-remove($utility, $utility-names);
+  $utilities: map-remove($utilities, $utility-names...) !global;
 }
