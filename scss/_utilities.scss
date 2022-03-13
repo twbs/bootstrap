@@ -102,7 +102,7 @@ $utilities: map-merge(
         "border-opacity": 1
       ),
       values: (
-        null: var(--#{$variable-prefix}border-width) var(--#{$variable-prefix}border-style) var(--#{$variable-prefix}border-color),
+        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
         0: 0,
       )
     ),
@@ -120,7 +120,7 @@ $utilities: map-merge(
     "border-top": (
       property: border-top,
       values: (
-        null: var(--#{$variable-prefix}border-width) var(--#{$variable-prefix}border-style) var(--#{$variable-prefix}border-color),
+        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
         0: 0,
       )
     ),
@@ -128,14 +128,14 @@ $utilities: map-merge(
       property: border-right,
       class: border-end,
       values: (
-        null: var(--#{$variable-prefix}border-width) var(--#{$variable-prefix}border-style) var(--#{$variable-prefix}border-color),
+        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
         0: 0,
       )
     ),
     "border-bottom": (
       property: border-bottom,
       values: (
-        null: var(--#{$variable-prefix}border-width) var(--#{$variable-prefix}border-style) var(--#{$variable-prefix}border-color),
+        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
         0: 0,
       )
     ),
@@ -143,7 +143,7 @@ $utilities: map-merge(
       property: border-left,
       class: border-start,
       values: (
-        null: var(--#{$variable-prefix}border-width) var(--#{$variable-prefix}border-style) var(--#{$variable-prefix}border-color),
+        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
         0: 0,
       )
     ),
@@ -457,7 +457,7 @@ $utilities: map-merge(
     "font-family": (
       property: font-family,
       class: font,
-      values: (monospace: var(--#{$variable-prefix}font-monospace))
+      values: (monospace: var(--#{$prefix}font-monospace))
     ),
     "font-size": (
       rfs: true,
@@ -583,7 +583,7 @@ $utilities: map-merge(
     "gradient": (
       property: background-image,
       class: bg,
-      values: (gradient: var(--#{$variable-prefix}gradient))
+      values: (gradient: var(--#{$prefix}gradient))
     ),
     // scss-docs-start utils-interaction
     "user-select": (
@@ -601,36 +601,36 @@ $utilities: map-merge(
       property: border-radius,
       class: rounded,
       values: (
-        null: $border-radius,
+        null: var(--#{$prefix}border-radius),
         0: 0,
-        1: $border-radius-sm,
-        2: $border-radius,
-        3: $border-radius-lg,
-        4: $border-radius-xl,
-        5: $border-radius-2xl,
+        1: var(--#{$prefix}border-radius-sm),
+        2: var(--#{$prefix}border-radius),
+        3: var(--#{$prefix}border-radius-lg),
+        4: var(--#{$prefix}border-radius-xl),
+        5: var(--#{$prefix}border-radius-2xl),
         circle: 50%,
-        pill: $border-radius-pill
+        pill: var(--#{$prefix}border-radius-pill)
       )
     ),
     "rounded-top": (
       property: border-top-left-radius border-top-right-radius,
       class: rounded-top,
-      values: (null: $border-radius)
+      values: (null: var(--#{$prefix}border-radius))
     ),
     "rounded-end": (
       property: border-top-right-radius border-bottom-right-radius,
       class: rounded-end,
-      values: (null: $border-radius)
+      values: (null: var(--#{$prefix}border-radius))
     ),
     "rounded-bottom": (
       property: border-bottom-right-radius border-bottom-left-radius,
       class: rounded-bottom,
-      values: (null: $border-radius)
+      values: (null: var(--#{$prefix}border-radius))
     ),
     "rounded-start": (
       property: border-bottom-left-radius border-top-left-radius,
       class: rounded-start,
-      values: (null: $border-radius)
+      values: (null: var(--#{$prefix}border-radius))
     ),
     // scss-docs-end utils-border-radius
     // scss-docs-start utils-visibility
