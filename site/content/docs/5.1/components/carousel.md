@@ -310,55 +310,16 @@ var carousel = new bootstrap.Carousel(myCarousel)
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-interval=""`.
 
-<table class="table">
-  <thead>
-    <tr>
-      <th style="width: 100px;">Name</th>
-      <th style="width: 50px;">Type</th>
-      <th style="width: 50px;">Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>interval</code></td>
-      <td>number</td>
-      <td><code>5000</code></td>
-      <td>The amount of time to delay between automatically cycling an item. If <code>false</code>, carousel will not automatically cycle.</td>
-    </tr>
-    <tr>
-      <td><code>keyboard</code></td>
-      <td>boolean</td>
-      <td><code>true</code></td>
-      <td>Whether the carousel should react to keyboard events.</td>
-    </tr>
-    <tr>
-      <td><code>pause</code></td>
-      <td>string | boolean</td>
-      <td><code>'hover'</code></td>
-      <td><p>If set to <code>'hover'</code>, pauses the cycling of the carousel on <code>mouseenter</code> and resumes the cycling of the carousel on <code>mouseleave</code>. If set to <code>false</code>, hovering over the carousel won't pause it.</p>
-      <p>On touch-enabled devices, when set to <code>'hover'</code>, cycling will pause on <code>touchend</code> (once the user finished interacting with the carousel) for two intervals, before automatically resuming. Note that this is in addition to the above mouse behavior.</p></td>
-    </tr>
-    <tr>
-      <td><code>ride</code></td>
-      <td>string | boolean</td>
-      <td><code>false</code></td>
-      <td>Autoplays the carousel after the user manually cycles the first item. If set to <code>'carousel'</code>, autoplays the carousel on load.</td>
-    </tr>
-    <tr>
-      <td><code>wrap</code></td>
-      <td>boolean</td>
-      <td><code>true</code></td>
-      <td>Whether the carousel should cycle continuously or have hard stops.</td>
-    </tr>
-    <tr>
-      <td><code>touch</code></td>
-      <td>boolean</td>
-      <td><code>true</code></td>
-      <td>Whether the carousel should support left/right swipe interactions on touchscreen devices.</td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table >}}
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `interval` | number | `5000` | The amount of time to delay between automatically cycling an item. If `false`, carousel will not automatically cycle. |
+| `keyboard` | boolean | `true` | Whether the carousel should react to keyboard events. |
+| `pause` | string, boolean | `"hover"` | If set to `"hover"`, pauses the cycling of the carousel on `mouseenter` and resumes the cycling of the carousel on `mouseleave`. If set to `false`, hovering over the carousel won't pause it. On touch-enabled devices, when set to `"hover"`, cycling will pause on `touchend` (once the user finished interacting with the carousel) for two intervals, before automatically resuming. This is in addition to the mouse behavior. |
+| `ride` | string, boolean | `false` | Autoplays the carousel after the user manually cycles the first item. If set to`"carousel"`, autoplays the carousel on load. |
+| `wrap` | boolean | `true` | Whether the carousel should cycle continuously or have hard stops. |
+| `touch` | boolean | `true` | Whether the carousel should support left/right swipe interactions on touchscreen devices. |
+{{< /bs-table >}}
 
 ### Methods
 
@@ -376,61 +337,19 @@ var carousel = new bootstrap.Carousel(myCarousel, {
 })
 ```
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Method</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>cycle</code></td>
-      <td>Cycles through the carousel items from left to right.</td>
-    </tr>
-    <tr>
-      <td><code>pause</code></td>
-      <td>Stops the carousel from cycling through items.</td>
-    </tr>
-    <tr>
-      <td><code>prev</code></td>
-      <td>Cycles to the previous item. <strong>Returns to the caller before the previous item has been shown</strong> (e.g., before the <code>slid.bs.carousel</code> event occurs).</td>
-    </tr>
-    <tr>
-      <td><code>next</code></td>
-      <td>Cycles to the next item. <strong>Returns to the caller before the next item has been shown</strong> (e.g., before the <code>slid.bs.carousel</code> event occurs).</td>
-    </tr>
-    <tr>
-      <td><code>nextWhenVisible</code></td>
-      <td>Don't cycle carousel to next when the page isn't visible or the carousel or its parent isn't visible. <strong>Returns to the caller before the target item has been shown</strong>
-    </tr>
-    <tr>
-      <td><code>to</code></td>
-      <td>Cycles the carousel to a particular frame (0 based, similar to an array). <strong>Returns to the caller before the target item has been shown</strong> (e.g., before the <code>slid.bs.carousel</code> event occurs).</td>
-    </tr>
-    <tr>
-      <td><code>dispose</code></td>
-      <td>Destroys an element's carousel. (Removes stored data on the DOM element)</td>
-    </tr>
-    <tr>
-      <td>
-        <code>getInstance</code>
-      </td>
-      <td>
-        Static method which allows you to get the carousel instance associated to a DOM element, you can use it like this: <code>bootstrap.Carousel.getInstance(element)</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>getOrCreateInstance</code>
-      </td>
-      <td>
-        Static method which returns a carousel instance associated to a DOM element or create a new one in case it wasn't initialized.
-        You can use it like this: <code>bootstrap.Carousel.getOrCreateInstance(element)</code>
-      </td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table >}}
+| Method | Description |
+| --- | --- |
+| `cycle` | Cycles through the carousel items from left to right. |
+| `pause` | Stops the carousel from cycling through items. |
+| `prev` | Cycles to the previous item. **Returns to the caller before the previous item has been shown** (e.g., before the `slid.bs.carousel` event occurs). |
+| `next` | Cycles to the next item. **Returns to the caller before the next item has been shown** (e.g., before the `slid.bs.carousel` event occurs). |
+| `nextWhenVisible` | Don't cycle carousel to next when the page isn't visible or the carousel or its parent isn't visible. **Returns to the caller before the target item has been shown** |
+| `to` | Cycles the carousel to a particular frame (0 based, similar to an array). **Returns to the caller before the target item has been shown** (e.g., before the `slid.bs.carousel` event occurs). |
+| `dispose` | Destroys an element's carousel. (Removes stored data on the DOM element) |
+| `getInstance` | Static method which allows you to get the carousel instance associated to a DOM element, you can use it like this: `bootstrap.Carousel.getInstance(element)` |
+| `getOrCreateInstance` | Static method which returns a carousel instance associated to a DOM element or create a new one in case it wasn't initialized. You can use it like this: `bootstrap.Carousel.getOrCreateInstance(element)` |
+{{< /bs-table >}}
 
 ### Events
 
@@ -443,24 +362,12 @@ Bootstrap's carousel class exposes two events for hooking into carousel function
 
 All carousel events are fired at the carousel itself (i.e. at the `<div class="carousel">`).
 
-<table class="table">
-  <thead>
-    <tr>
-      <th style="width: 150px;">Event type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>slide.bs.carousel</code></td>
-      <td>Fires immediately when the <code>slide</code> instance method is invoked.</td>
-    </tr>
-    <tr>
-      <td><code>slid.bs.carousel</code></td>
-      <td>Fired when the carousel has completed its slide transition.</td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table >}}
+| Event type | Description |
+| --- | --- |
+| `slide.bs.carousel` | Fires immediately when the `slide` instance method is invoked. |
+| `slid.bs.carousel` | Fired when the carousel has completed its slide transition. |
+{{< /bs-table >}}
 
 ```js
 var myCarousel = document.getElementById('myCarousel')
