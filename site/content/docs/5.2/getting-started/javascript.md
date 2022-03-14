@@ -36,9 +36,43 @@ We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootst
 ```
 
 {{< callout warning >}}
-## Incompatible plugins
+## Dependencies for vanilla ESM in the browser requires an `importmap`
 
-Due to browser limitations, some of our plugins, namely Dropdown, Tooltip and Popover plugins, cannot be used in a `<script>` tag with `module` type because they depend on Popper. For more information about the issue see [here](https://v8.dev/features/modules#specifiers).
+In order to support build tools, NPM dependencies, etc - external dependencies such as PopperJs are `import`ed with their NPM package name (e.g. `@popperjs/core`), to make this work in the browser you need to define an `importmap` which resolves arbitrary names to fully-qualified or relative URIs.
+
+If your [targeted browsers](https://caniuse.com/?search=importmap) do not support `importmap` then you will need to use the [es-module-shims](https://github.com/guybedford/es-module-shims) library.  For example:
+
+```html
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha256-YvdLHPgkqJ8DVUxjjnGVlMMJtNimJ6dYkowFFvp4kKs=" crossorigin="anonymous">
+		<title>Hello, modularity!</title>
+	</head>
+	<body>
+		<h1>Hello, modularity!</h1>
+		<button id="pops" type="button" class="btn btn-primary btn-lg" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="ESM in Browser" data-bs-content="Bang!">Pop, over</button>
+
+		<script async src="https://cdn.jsdelivr.net/npm/es-module-shims@1.4.7/dist/es-module-shims.js" integrity="sha256-nSakAbR1isjLi28AfJqaTRXkE1yTLYyjx785E+nX9mo=" crossorigin="anonymous"></script>
+		<script type="importmap">
+		{
+			"imports": {
+				"@popperjs/core": "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.4/dist/esm/index.js",
+				"@twbs/bootstrap": "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.esm.min.js"
+			}
+		}
+		</script>
+	    <script type="module">
+			import * as bootstrap from '@twbs/bootstrap'
+
+			new bootstrap.Popover(document.getElementById('pops'))
+		</script>
+  </body>
+</html>
+```
+
 {{< /callout >}}
 
 ## Dependencies
