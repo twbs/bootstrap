@@ -459,6 +459,7 @@ describe('Tab', () => {
       const keydown = createEvent('keydown')
       keydown.key = 'Enter'
       spyOn(Event.prototype, 'stopPropagation').and.callThrough()
+      spyOn(Event.prototype, 'preventDefault').and.callThrough()
       spyOn(tab, '_keydown')
       spyOn(tab, '_getChildren')
 
@@ -467,6 +468,7 @@ describe('Tab', () => {
       expect(tab._getChildren).not.toHaveBeenCalled()
 
       expect(Event.prototype.stopPropagation).not.toHaveBeenCalled()
+      expect(Event.prototype.preventDefault).not.toHaveBeenCalled()
     })
 
     it('if keydown event is right/down arrow, handle it', () => {
@@ -485,6 +487,7 @@ describe('Tab', () => {
       spyOn(tab2, 'show').and.callThrough()
 
       spyOn(Event.prototype, 'stopPropagation').and.callThrough()
+      spyOn(Event.prototype, 'preventDefault').and.callThrough()
 
       let keydown = createEvent('keydown')
       keydown.key = 'ArrowRight'
@@ -499,6 +502,7 @@ describe('Tab', () => {
       expect(tab.show).toHaveBeenCalled()
 
       expect(Event.prototype.stopPropagation).toHaveBeenCalledTimes(2)
+      expect(Event.prototype.preventDefault).toHaveBeenCalledTimes(2)
     })
 
     it('if keydown event is left arrow, handle it', () => {
@@ -517,6 +521,7 @@ describe('Tab', () => {
       spyOn(tab2, 'show').and.callThrough()
 
       spyOn(Event.prototype, 'stopPropagation').and.callThrough()
+      spyOn(Event.prototype, 'preventDefault').and.callThrough()
 
       let keydown = createEvent('keydown')
       keydown.key = 'ArrowLeft'
@@ -531,6 +536,7 @@ describe('Tab', () => {
       expect(tab2.show).toHaveBeenCalled()
 
       expect(Event.prototype.stopPropagation).toHaveBeenCalledTimes(2)
+      expect(Event.prototype.preventDefault).toHaveBeenCalledTimes(2)
     })
   })
 
