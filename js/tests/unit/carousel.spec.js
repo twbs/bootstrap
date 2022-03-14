@@ -667,14 +667,14 @@ describe('Carousel', () => {
         const carouselEl = fixtureEl.querySelector('.carousel')
         const carousel = new Carousel(carouselEl)
 
-        spyOn(carousel, '_mayEnableCycle').and.callThrough()
+        spyOn(carousel, '_maybeEnableCycle').and.callThrough()
         spyOn(carousel, 'cycle')
 
         const mouseOutEvent = createEvent('mouseout')
         carouselEl.dispatchEvent(mouseOutEvent)
 
         setTimeout(() => {
-          expect(carousel._mayEnableCycle).toHaveBeenCalled()
+          expect(carousel._maybeEnableCycle).toHaveBeenCalled()
           expect(carousel.cycle).toHaveBeenCalled()
           resolve()
         }, 10)
@@ -895,14 +895,14 @@ describe('Carousel', () => {
       const carousel = new Carousel(carouselEl)
       const nextSpy = spyOn(carousel, 'next')
       const prevSpy = spyOn(carousel, 'prev')
-      spyOn(carousel, '_mayEnableCycle')
+      spyOn(carousel, '_maybeEnableCycle')
 
       nextBtnEl.click()
       prevBtnEl.click()
 
       expect(nextSpy).toHaveBeenCalled()
       expect(prevSpy).toHaveBeenCalled()
-      expect(carousel._mayEnableCycle).toHaveBeenCalled()
+      expect(carousel._maybeEnableCycle).toHaveBeenCalled()
     })
   })
 

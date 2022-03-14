@@ -154,7 +154,7 @@ class Carousel extends BaseComponent {
     this._interval = setInterval(() => this.nextWhenVisible(), this._config.interval)
   }
 
-  _mayEnableCycle() {
+  _maybeEnableCycle() {
     if (!this._config.ride) {
       return
     }
@@ -209,7 +209,7 @@ class Carousel extends BaseComponent {
 
     if (this._config.pause === 'hover') {
       EventHandler.on(this._element, EVENT_MOUSEENTER, () => this.pause())
-      EventHandler.on(this._element, EVENT_MOUSELEAVE, () => this._mayEnableCycle())
+      EventHandler.on(this._element, EVENT_MOUSELEAVE, () => this._maybeEnableCycle())
     }
 
     if (this._config.touch && Swipe.isSupported()) {
@@ -240,7 +240,7 @@ class Carousel extends BaseComponent {
         clearTimeout(this.touchTimeout)
       }
 
-      this.touchTimeout = setTimeout(() => this._mayEnableCycle(), TOUCHEVENT_COMPAT_WAIT + this._config.interval)
+      this.touchTimeout = setTimeout(() => this._maybeEnableCycle(), TOUCHEVENT_COMPAT_WAIT + this._config.interval)
     }
 
     const swipeConfig = {
@@ -444,18 +444,18 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (e
 
   if (slideIndex) {
     carousel.to(slideIndex)
-    carousel._mayEnableCycle()
+    carousel._maybeEnableCycle()
     return
   }
 
   if (Manipulator.getDataAttribute(this, 'slide') === 'next') {
     carousel.next()
-    carousel._mayEnableCycle()
+    carousel._maybeEnableCycle()
     return
   }
 
   carousel.prev()
-  carousel._mayEnableCycle()
+  carousel._maybeEnableCycle()
 })
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
