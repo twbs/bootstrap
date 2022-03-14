@@ -423,15 +423,18 @@ describe('Tab', () => {
     it('should put aria attributes', () => {
       fixtureEl.innerHTML = [
         '<ul class="nav">',
-        '  <li class="nav-link" data-bs-target="#test"></li>',
+        '  <li class="nav-link" id="foo" data-bs-target="#panel"></li>',
+        '  <li class="nav-link" data-bs-target="#panel2"></li>',
         '</ul>',
-        '<div id="test"></div>'
+        '<div id="panel"></div>',
+        '<div id="panel2"></div>'
       ].join('')
 
       const tabEl = fixtureEl.querySelector('.nav-link')
       const parent = fixtureEl.querySelector('.nav')
       const children = fixtureEl.querySelectorAll('.nav-link')
-      const tabPanel = fixtureEl.querySelector('#test')
+      const tabPanel = fixtureEl.querySelector('#panel')
+      const tabPanel2 = fixtureEl.querySelector('#panel2')
 
       expect(parent.getAttribute('role')).toEqual(null)
       expect(tabEl.getAttribute('role')).toEqual(null)
@@ -441,7 +444,14 @@ describe('Tab', () => {
 
       expect(parent.getAttribute('role')).toEqual('tablist')
       expect(tabEl.getAttribute('role')).toEqual('tab')
+
       expect(tabPanel.getAttribute('role')).toEqual('tabpanel')
+      expect(tabPanel2.getAttribute('role')).toEqual('tabpanel')
+      expect(tabPanel.hasAttribute('tabindex')).toBeFalse()
+      expect(tabPanel.hasAttribute('tabindex2')).toBeFalse()
+
+      expect(tabPanel.getAttribute('aria-labelledby')).toEqual('#foo')
+      expect(tabPanel2.hasAttribute('aria-labelledby')).toBeFalse()
     })
   })
 

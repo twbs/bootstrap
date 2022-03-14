@@ -215,7 +215,6 @@ class Tab extends BaseComponent {
       return
     }
 
-    this._setAttributeIfNotExists(target, 'tabindex', '0')
     this._setAttributeIfNotExists(target, 'role', 'tabpanel')
 
     if (child.id) {
