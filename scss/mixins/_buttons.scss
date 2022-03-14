@@ -20,20 +20,20 @@
   $disabled-border: $border,
   $disabled-color: color-contrast($disabled-background)
 ) {
-  --#{$variable-prefix}btn-color: #{$color};
-  --#{$variable-prefix}btn-bg: #{$background};
-  --#{$variable-prefix}btn-border-color: #{$border};
-  --#{$variable-prefix}btn-hover-color: #{$hover-color};
-  --#{$variable-prefix}btn-hover-bg: #{$hover-background};
-  --#{$variable-prefix}btn-hover-border-color: #{$hover-border};
-  --#{$variable-prefix}btn-focus-shadow-rgb: #{to-rgb(mix($color, $border, 15%))};
-  --#{$variable-prefix}btn-active-color: #{$active-color};
-  --#{$variable-prefix}btn-active-bg: #{$active-background};
-  --#{$variable-prefix}btn-active-border-color: #{$active-border};
-  --#{$variable-prefix}btn-active-shadow: #{$btn-active-box-shadow};
-  --#{$variable-prefix}btn-disabled-color: #{$disabled-color};
-  --#{$variable-prefix}btn-disabled-bg: #{$disabled-background};
-  --#{$variable-prefix}btn-disabled-border-color: #{$disabled-border};
+  --#{$prefix}btn-color: #{$color};
+  --#{$prefix}btn-bg: #{$background};
+  --#{$prefix}btn-border-color: #{$border};
+  --#{$prefix}btn-hover-color: #{$hover-color};
+  --#{$prefix}btn-hover-bg: #{$hover-background};
+  --#{$prefix}btn-hover-border-color: #{$hover-border};
+  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix($color, $border, 15%))};
+  --#{$prefix}btn-active-color: #{$active-color};
+  --#{$prefix}btn-active-bg: #{$active-background};
+  --#{$prefix}btn-active-border-color: #{$active-border};
+  --#{$prefix}btn-active-shadow: #{$btn-active-box-shadow};
+  --#{$prefix}btn-disabled-color: #{$disabled-color};
+  --#{$prefix}btn-disabled-bg: #{$disabled-background};
+  --#{$prefix}btn-disabled-border-color: #{$disabled-border};
 }
 // scss-docs-end btn-variant-mixin
 
@@ -45,27 +45,27 @@
   $active-border: $color,
   $active-color: color-contrast($active-background)
 ) {
-  --#{$variable-prefix}btn-color: #{$color};
-  --#{$variable-prefix}btn-border-color: #{$color};
-  --#{$variable-prefix}btn-hover-color: #{$color-hover};
-  --#{$variable-prefix}btn-hover-bg: #{$active-background};
-  --#{$variable-prefix}btn-hover-border-color: #{$active-border};
-  --#{$variable-prefix}btn-focus-shadow-rgb: #{to-rgb($color)};
-  --#{$variable-prefix}btn-active-color: #{$active-color};
-  --#{$variable-prefix}btn-active-bg: #{$active-background};
-  --#{$variable-prefix}btn-active-border-color: #{$active-border};
-  --#{$variable-prefix}btn-active-shadow: #{$btn-active-box-shadow};
-  --#{$variable-prefix}btn-disabled-color: #{$color};
-  --#{$variable-prefix}btn-disabled-bg: transparent;
-  --#{$variable-prefix}gradient: none;
+  --#{$prefix}btn-color: #{$color};
+  --#{$prefix}btn-border-color: #{$color};
+  --#{$prefix}btn-hover-color: #{$color-hover};
+  --#{$prefix}btn-hover-bg: #{$active-background};
+  --#{$prefix}btn-hover-border-color: #{$active-border};
+  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb($color)};
+  --#{$prefix}btn-active-color: #{$active-color};
+  --#{$prefix}btn-active-bg: #{$active-background};
+  --#{$prefix}btn-active-border-color: #{$active-border};
+  --#{$prefix}btn-active-shadow: #{$btn-active-box-shadow};
+  --#{$prefix}btn-disabled-color: #{$color};
+  --#{$prefix}btn-disabled-bg: transparent;
+  --#{$prefix}gradient: none;
 }
 // scss-docs-end btn-outline-variant-mixin
 
 // scss-docs-start btn-size-mixin
 @mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
-  --#{$variable-prefix}btn-padding-y: #{$padding-y};
-  --#{$variable-prefix}btn-padding-x: #{$padding-x};
-  @include rfs($font-size, --#{$variable-prefix}btn-font-size);
-  --#{$variable-prefix}btn-border-radius: #{$border-radius};
+  --#{$prefix}btn-padding-y: #{$padding-y};
+  --#{$prefix}btn-padding-x: #{$padding-x};
+  @include rfs($font-size, --#{$prefix}btn-font-size);
+  --#{$prefix}btn-border-radius: #{$border-radius};
 }
 // scss-docs-end btn-size-mixin

@@ -349,38 +349,13 @@ var toastList = toastElList.map(function (toastEl) {
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-animation=""`.
 
-<table class="table">
-  <thead>
-    <tr>
-      <th style="width: 100px;">Name</th>
-      <th style="width: 100px;">Type</th>
-      <th style="width: 50px;">Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>animation</code></td>
-      <td>boolean</td>
-      <td><code>true</code></td>
-      <td>Apply a CSS fade transition to the toast</td>
-    </tr>
-    <tr>
-      <td><code>autohide</code></td>
-      <td>boolean</td>
-      <td><code>true</code></td>
-      <td>Auto hide the toast</td>
-    </tr>
-    <tr>
-      <td><code>delay</code></td>
-      <td>number</td>
-      <td>
-        <code>5000</code>
-      </td>
-      <td>Delay hiding the toast (ms)</td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table "table" >}}
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `animation` | boolean | `true` | Apply a CSS fade transition to the toast |
+| `autohide` | boolean | `true`  | Automatically hide the toast after the delay |
+| `delay` | number | `5000` | Delay in milliseconds before hiding the toast |
+{{< /bs-table >}}
 
 ### Methods
 
@@ -388,77 +363,26 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 {{< partial "callout-danger-async-methods.md" >}}
 {{< /callout >}}
 
-#### show
-
-Reveals an element's toast. **Returns to the caller before the toast has actually been shown** (i.e. before the `shown.bs.toast` event occurs).
-You have to manually call this method, instead your toast won't show.
-
-```js
-toast.show()
-```
-
-#### hide
-
-Hides an element's toast. **Returns to the caller before the toast has actually been hidden** (i.e. before the `hidden.bs.toast` event occurs). You have to manually call this method if you made `autohide` to `false`.
-
-```js
-toast.hide()
-```
-
-#### dispose
-
-Hides an element's toast. Your toast will remain on the DOM but won't show anymore.
-
-```js
-toast.dispose()
-```
-
-#### getInstance
-
-*Static* method which allows you to get the toast instance associated with a DOM element
-
-```js
-var myToastEl = document.getElementById('myToastEl')
-var myToast = bootstrap.Toast.getInstance(myToastEl) // Returns a Bootstrap toast instance
-```
-
-#### getOrCreateInstance
-
-*Static* method which allows you to get the toast instance associated with a DOM element, or create a new one in case it wasn't initialized
-
-```js
-var myToastEl = document.getElementById('myToastEl')
-var myToast = bootstrap.Toast.getOrCreateInstance(myToastEl) // Returns a Bootstrap toast instance
-```
+{{< bs-table "table" >}}
+| Method | Description |
+| --- | --- |
+| `show` | Reveals an element's toast. **Returns to the caller before the toast has actually been shown** (i.e. before the `shown.bs.toast` event occurs). You have to manually call this method, instead your toast won't show. |
+| `hide` | Hides an element's toast. **Returns to the caller before the toast has actually been hidden** (i.e. before the `hidden.bs.toast` event occurs). You have to manually call this method if you made `autohide` to `false`. |
+| `dispose` | Hides an element's toast. Your toast will remain on the DOM but won't show anymore. |
+| `getInstance` | *Static* method which allows you to get the scrollspy instance associated with a DOM element. <br> Par example: `var myToastEl = document.getElementById('myToastEl')` `var myToast = bootstrap.Toast.getInstance(myToastEl)` Returns a Bootstrap toast instance|
+| `getOrCreateInstance` | *Static* method which allows you to get the scrollspy instance associated with a DOM element, or create a new one, in case it wasn't initialized.  <br>`var myToastEl = document.getElementById('myToastEl')`  `var myToast = bootstrap.Toast.getOrCreateInstance(myToastEl)` Returns a Bootstrap toast instance |
+{{< /bs-table >}}
 
 ### Events
 
-<table class="table">
-  <thead>
-    <tr>
-      <th style="width: 150px;">Event type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>show.bs.toast</code></td>
-      <td>This event fires immediately when the <code>show</code> instance method is called.</td>
-    </tr>
-    <tr>
-      <td><code>shown.bs.toast</code></td>
-      <td>This event is fired when the toast has been made visible to the user.</td>
-    </tr>
-    <tr>
-      <td><code>hide.bs.toast</code></td>
-      <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
-    </tr>
-    <tr>
-      <td><code>hidden.bs.toast</code></td>
-      <td>This event is fired when the toast has finished being hidden from the user.</td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table "table" >}}
+| Event | Description |
+| --- | --- |
+| `show.bs.toast` | This event fires immediately when the `show` instance method is called. |
+| `shown.bs.toast` | This event is fired when the toast has been made visible to the user. |
+| `hide.bs.toast` | This event is fired immediately when the `hide` instance method has been called. |
+| `hidden.bs.toast` | This event is fired when the toast has finished being hidden from the user. |
+{{< /bs-table >}}
 
 ```js
 var myToastEl = document.getElementById('myToast')

@@ -143,30 +143,12 @@ var collapseList = collapseElementList.map(function (collapseEl) {
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-parent=""`.
 
-<table class="table">
-  <thead>
-    <tr>
-      <th style="width: 100px;">Name</th>
-      <th style="width: 50px;">Type</th>
-      <th style="width: 50px;">Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>parent</code></td>
-      <td>selector | jQuery object | DOM element </td>
-      <td><code>false</code></td>
-      <td>If parent is provided, then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior - this is dependent on the <code>card</code> class). The attribute has to be set on the target collapsible area.</td>
-    </tr>
-    <tr>
-      <td><code>toggle</code></td>
-      <td>boolean</td>
-      <td><code>true</code></td>
-      <td>Toggles the collapsible element on invocation</td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table "table" >}}
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+`parent` | selector, jQuery object, DOM element | `false` | If parent is provided, then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior - this is dependent on the `card` class). The attribute has to be set on the target collapsible area. |
+`toggle` | boolean | `true` | Toggles the collapsible element on invocation |
+{{< /bs-table >}}
 
 ### Methods
 
@@ -185,80 +167,29 @@ var bsCollapse = new bootstrap.Collapse(myCollapse, {
 })
 ```
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Method</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>toggle</code></td>
-      <td>Toggles a collapsible element to shown or hidden. <strong>Returns to the caller before the collapsible element has actually been shown or hidden</strong> (i.e. before the <code>shown.bs.collapse</code> or <code>hidden.bs.collapse</code> event occurs).</td>
-    </tr>
-    <tr>
-      <td><code>show</code></td>
-      <td>Shows a collapsible element. <strong>Returns to the caller before the collapsible element has actually been shown</strong> (e.g., before the <code>shown.bs.collapse</code> event occurs). </td>
-    </tr>
-    <tr>
-      <td><code>hide</code></td>
-      <td>Hides a collapsible element. <strong>Returns to the caller before the collapsible element has actually been hidden</strong> (e.g., before the <code>hidden.bs.collapse</code> event occurs).</td>
-    </tr>
-    <tr>
-      <td><code>dispose</code></td>
-      <td>Destroys an element's collapse. (Removes stored data on the DOM element)</td>
-    </tr>
-    <tr>
-      <td>
-        <code>getInstance</code>
-      </td>
-      <td>
-        Static method which allows you to get the collapse instance associated to a DOM element, you can use it like this: <code>bootstrap.Collapse.getInstance(element)</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>getOrCreateInstance</code>
-      </td>
-      <td>
-        Static method which returns a collapse instance associated to a DOM element or create a new one in case it wasn't initialized.
-        You can use it like this: <code>bootstrap.Collapse.getOrCreateInstance(element)</code>
-      </td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table >}}
+| Method | Description |
+| --- | --- |
+| `toggle` | Toggles a collapsible element to shown or hidden. **Returns to the caller before the collapsible element has actually been shown or hidden** (i.e. before the `shown.bs.collapse` or `hidden.bs.collapse` event occurs). |
+| `show` | Shows a collapsible element. **Returns to the caller before the collapsible element has actually been shown** (e.g., before the `shown.bs.collapse` event occurs). |
+| `hide` | Hides a collapsible element. **Returns to the caller before the collapsible element has actually been hidden** (e.g., before the `hidden.bs.collapse` event occurs). |
+| `dispose` | Destroys an element's collapse. (Removes stored data on the DOM element) |
+| `getInstance` | Static method which allows you to get the collapse instance associated to a DOM element, you can use it like this: `bootstrap.Collapse.getInstance(element)` |
+| `getOrCreateInstance` | Static method which returns a collapse instance associated to a DOM element or create a new one in case it wasn't initialized. You can use it like this: `bootstrap.Collapse.getOrCreateInstance(element)` |
+{{< /bs-table >}}
 
 ### Events
 
 Bootstrap's collapse class exposes a few events for hooking into collapse functionality.
 
-<table class="table">
-  <thead>
-    <tr>
-      <th style="width: 150px;">Event type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>show.bs.collapse</code></td>
-      <td>This event fires immediately when the <code>show</code> instance method is called.</td>
-    </tr>
-    <tr>
-      <td><code>shown.bs.collapse</code></td>
-      <td>This event is fired when a collapse element has been made visible to the user (will wait for CSS transitions to complete).</td>
-    </tr>
-    <tr>
-      <td><code>hide.bs.collapse</code></td>
-      <td>This event is fired immediately when the <code>hide</code> method has been called.</td>
-    </tr>
-    <tr>
-      <td><code>hidden.bs.collapse</code></td>
-      <td>This event is fired when a collapse element has been hidden from the user (will wait for CSS transitions to complete).</td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table >}}
+| Event type | Description |
+| --- | --- |
+| `show.bs.collapse` | This event fires immediately when the `show` instance method is called. |
+| `shown.bs.collapse` | This event is fired when a collapse element has been made visible to the user (will wait for CSS transitions to complete). |
+| `hide.bs.collapse` | This event is fired immediately when the `hide` method has been called. |
+| `hidden.bs.collapse` | This event is fired when a collapse element has been hidden from the user (will wait for CSS transitions to complete). |
+{{< /bs-table >}}
 
 ```js
 var myCollapsible = document.getElementById('myCollapsible')
