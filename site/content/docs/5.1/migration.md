@@ -72,8 +72,6 @@ Your custom Bootstrap CSS builds should now look something like this with a sepa
 
   Read more about CSS variables in each component on their respective documentation pages.
 
-- **Introduced new `$enable-container-classes` option. —** Now when opting into the experimental CSS Grid layout, `.container-*` classes will still be compiled, unless this option is set to `false`.
-
 - **Thicker table dividers are now opt-in. —** We've removed the thicker and more difficult to override border between table groups and moved it to an optional class you can apply, `.table-group-divider`. [See the table docs for an example.]({{< docsref "/content/tables#table-group-dividers" >}})
 
 - **Updated several components to use CSS variables. —** While Sass still underpins everything, each of these components have been updated to include several CSS variables on the component base classes (e.g., `.btn`), allowing for more real-time customization of Bootstrap. The following components are now built with CSS variables:
