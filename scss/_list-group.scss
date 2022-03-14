@@ -63,7 +63,7 @@
     border-top-width: 0;
 
     &.active {
-      margin-top: -$list-group-border-width;
+      margin-top: calc($list-group-border-width * -1); // stylelint-disable-line function-disallowed-list
       border-top-width: $list-group-border-width;
     }
   }
@@ -125,7 +125,7 @@
           border-left-width: 0;
 
           &.active {
-            margin-left: -$list-group-border-width;
+            margin-left: calc($list-group-border-width * -1); // stylelint-disable-line function-disallowed-list
             border-left-width: $list-group-border-width;
           }
         }

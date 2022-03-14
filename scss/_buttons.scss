@@ -6,59 +6,59 @@
 
 .btn {
   // scss-docs-start btn-css-vars
-  --#{$variable-prefix}btn-padding-x: #{$btn-padding-x};
-  --#{$variable-prefix}btn-padding-y: #{$btn-padding-y};
-  --#{$variable-prefix}btn-font-family: #{$btn-font-family};
-  @include rfs($btn-font-size, --#{$variable-prefix}btn-font-size);
-  --#{$variable-prefix}btn-font-weight: #{$btn-font-weight};
-  --#{$variable-prefix}btn-line-height: #{$btn-line-height};
-  --#{$variable-prefix}btn-color: #{$body-color};
-  --#{$variable-prefix}btn-bg: transparent;
-  --#{$variable-prefix}btn-border-width: #{$btn-border-width};
-  --#{$variable-prefix}btn-border-color: transparent;
-  --#{$variable-prefix}btn-border-radius: #{$btn-border-radius};
-  --#{$variable-prefix}btn-box-shadow: #{$btn-box-shadow};
-  --#{$variable-prefix}btn-disabled-opacity: #{$btn-disabled-opacity};
-  --#{$variable-prefix}btn-focus-box-shadow: 0 0 0 #{$btn-focus-width} rgba(var(--#{$variable-prefix}btn-focus-shadow-rgb), .5);
+  --#{$prefix}btn-padding-x: #{$btn-padding-x};
+  --#{$prefix}btn-padding-y: #{$btn-padding-y};
+  --#{$prefix}btn-font-family: #{$btn-font-family};
+  @include rfs($btn-font-size, --#{$prefix}btn-font-size);
+  --#{$prefix}btn-font-weight: #{$btn-font-weight};
+  --#{$prefix}btn-line-height: #{$btn-line-height};
+  --#{$prefix}btn-color: #{$body-color};
+  --#{$prefix}btn-bg: transparent;
+  --#{$prefix}btn-border-width: #{$btn-border-width};
+  --#{$prefix}btn-border-color: transparent;
+  --#{$prefix}btn-border-radius: #{$btn-border-radius};
+  --#{$prefix}btn-box-shadow: #{$btn-box-shadow};
+  --#{$prefix}btn-disabled-opacity: #{$btn-disabled-opacity};
+  --#{$prefix}btn-focus-box-shadow: 0 0 0 #{$btn-focus-width} rgba(var(--#{$prefix}btn-focus-shadow-rgb), .5);
   // scss-docs-end btn-css-vars
 
   display: inline-block;
-  padding: var(--#{$variable-prefix}btn-padding-y) var(--#{$variable-prefix}btn-padding-x);
-  font-family: var(--#{$variable-prefix}btn-font-family);
-  font-size: var(--#{$variable-prefix}btn-font-size);
-  font-weight: var(--#{$variable-prefix}btn-font-weight);
-  line-height: var(--#{$variable-prefix}btn-line-height);
-  color: var(--#{$variable-prefix}btn-color);
+  padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
+  font-family: var(--#{$prefix}btn-font-family);
+  font-size: var(--#{$prefix}btn-font-size);
+  font-weight: var(--#{$prefix}btn-font-weight);
+  line-height: var(--#{$prefix}btn-line-height);
+  color: var(--#{$prefix}btn-color);
   text-align: center;
   text-decoration: if($link-decoration == none, null, none);
   white-space: $btn-white-space;
   vertical-align: middle;
   cursor: if($enable-button-pointers, pointer, null);
   user-select: none;
-  border: var(--#{$variable-prefix}btn-border-width) solid var(--#{$variable-prefix}btn-border-color);
-  @include border-radius(var(--#{$variable-prefix}btn-border-radius));
-  @include gradient-bg(var(--#{$variable-prefix}btn-bg));
-  @include box-shadow(var(--#{$variable-prefix}btn-box-shadow));
+  border: var(--#{$prefix}btn-border-width) solid var(--#{$prefix}btn-border-color);
+  @include border-radius(var(--#{$prefix}btn-border-radius));
+  @include gradient-bg(var(--#{$prefix}btn-bg));
+  @include box-shadow(var(--#{$prefix}btn-box-shadow));
   @include transition($btn-transition);
 
   &:hover {
-    color: var(--#{$variable-prefix}btn-hover-color);
+    color: var(--#{$prefix}btn-hover-color);
     text-decoration: if($link-hover-decoration == underline, none, null);
-    background-color: var(--#{$variable-prefix}btn-hover-bg);
-    border-color: var(--#{$variable-prefix}btn-hover-border-color);
+    background-color: var(--#{$prefix}btn-hover-bg);
+    border-color: var(--#{$prefix}btn-hover-border-color);
   }
 
   .btn-check:focus + &,
   &:focus {
-    color: var(--#{$variable-prefix}btn-hover-color);
-    @include gradient-bg(var(--#{$variable-prefix}btn-hover-bg));
-    border-color: var(--#{$variable-prefix}btn-hover-border-color);
+    color: var(--#{$prefix}btn-hover-color);
+    @include gradient-bg(var(--#{$prefix}btn-hover-bg));
+    border-color: var(--#{$prefix}btn-hover-border-color);
     outline: 0;
     // Avoid using mixin so we can pass custom focus shadow properly
     @if $enable-shadows {
-      box-shadow: var(--#{$variable-prefix}btn-box-shadow), var(--#{$variable-prefix}btn-focus-box-shadow);
+      box-shadow: var(--#{$prefix}btn-box-shadow), var(--#{$prefix}btn-focus-box-shadow);
     } @else {
-      box-shadow: var(--#{$variable-prefix}btn-focus-box-shadow);
+      box-shadow: var(--#{$prefix}btn-focus-box-shadow);
     }
   }
 
@@ -67,19 +67,19 @@
   &:active,
   &.active,
   &.show {
-    color: var(--#{$variable-prefix}btn-active-color);
-    background-color: var(--#{$variable-prefix}btn-active-bg);
+    color: var(--#{$prefix}btn-active-color);
+    background-color: var(--#{$prefix}btn-active-bg);
     // Remove CSS gradients if they're enabled
     background-image: if($enable-gradients, none, null);
-    border-color: var(--#{$variable-prefix}btn-active-border-color);
-    @include box-shadow(var(--#{$variable-prefix}btn-active-shadow));
+    border-color: var(--#{$prefix}btn-active-border-color);
+    @include box-shadow(var(--#{$prefix}btn-active-shadow));
 
     &:focus {
       // Avoid using mixin so we can pass custom focus shadow properly
       @if $enable-shadows {
-        box-shadow: var(--#{$variable-prefix}btn-active-shadow), var(--#{$variable-prefix}btn-focus-box-shadow);
+        box-shadow: var(--#{$prefix}btn-active-shadow), var(--#{$prefix}btn-focus-box-shadow);
       } @else {
-        box-shadow: var(--#{$variable-prefix}btn-focus-box-shadow);
+        box-shadow: var(--#{$prefix}btn-focus-box-shadow);
       }
     }
   }
@@ -87,12 +87,12 @@
   &:disabled,
   &.disabled,
   fieldset:disabled & {
-    color: var(--#{$variable-prefix}btn-disabled-color);
+    color: var(--#{$prefix}btn-disabled-color);
     pointer-events: none;
-    background-color: var(--#{$variable-prefix}btn-disabled-bg);
+    background-color: var(--#{$prefix}btn-disabled-bg);
     background-image: if($enable-gradients, none, null);
-    border-color: var(--#{$variable-prefix}btn-disabled-border-color);
-    opacity: var(--#{$variable-prefix}btn-disabled-opacity);
+    border-color: var(--#{$prefix}btn-disabled-border-color);
+    opacity: var(--#{$prefix}btn-disabled-opacity);
     @include box-shadow(none);
   }
 }
@@ -123,16 +123,16 @@
 
 // Make a button look and behave like a link
 .btn-link {
-  --#{$variable-prefix}btn-font-weight: #{$font-weight-normal};
-  --#{$variable-prefix}btn-color: #{$btn-link-color};
-  --#{$variable-prefix}btn-bg: transparent;
-  --#{$variable-prefix}btn-border-color: transparent;
-  --#{$variable-prefix}btn-hover-color: #{$btn-link-hover-color};
-  --#{$variable-prefix}btn-hover-border-color: transparent;
-  --#{$variable-prefix}btn-active-border-color: transparent;
-  --#{$variable-prefix}btn-disabled-color: #{$btn-link-disabled-color};
-  --#{$variable-prefix}btn-disabled-border-color: transparent;
-  --#{$variable-prefix}btn-box-shadow: none;
+  --#{$prefix}btn-font-weight: #{$font-weight-normal};
+  --#{$prefix}btn-color: #{$btn-link-color};
+  --#{$prefix}btn-bg: transparent;
+  --#{$prefix}btn-border-color: transparent;
+  --#{$prefix}btn-hover-color: #{$btn-link-hover-color};
+  --#{$prefix}btn-hover-border-color: transparent;
+  --#{$prefix}btn-active-border-color: transparent;
+  --#{$prefix}btn-disabled-color: #{$btn-link-disabled-color};
+  --#{$prefix}btn-disabled-border-color: transparent;
+  --#{$prefix}btn-box-shadow: none;
 
   text-decoration: $link-decoration;
 

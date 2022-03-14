@@ -109,7 +109,7 @@ Here's how you can use these in your Sass:
 
 ## Generating utilities
 
-<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.1.0</small>
+{{< added-in "5.1.0" >}}
 
 Bootstrap doesn't include `color` and `background-color` utilities for every color variable, but you can generate these yourself with our [utility API]({{< docsref "/utilities/api" >}}) and our extended Sass maps added in v5.1.0.
 
