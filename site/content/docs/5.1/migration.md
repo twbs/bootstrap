@@ -9,9 +9,15 @@ toc: true
 
 ## v5.2.0
 
+<hr class="mb-4">
+
+### Refreshed design
+
+Bootstrap v5.2.0 features a subtle design update for a handful of components and properties across the project, **most notably through refined `border-radius` values on buttons and form controls**. Our documentation also has been updated with a new homepage, simpler docs layout that no longer collapses sections of the sidebar, and more prominent examples of [Bootstrap Icons](https://icons.getbootstrap.com).
+
 ### New `_maps.scss`
 
-Bootstrap v5.2.0 introduced a new Sass file, `_maps.scss`, that pulled out several Sass maps from `_variables.scss` to fix an issue where updates to an original map were not applied to secondary maps that extend them. For example, updates to `$theme-colors` were not being applied to other theme maps that relied on `$theme-colors`, breaking key customization workflows. In short, Sass has a limitation where once a default variable or map has been _used_, it cannot be updated.
+**Bootstrap v5.2.0 introduced a new Sass file with `_maps.scss`.** It pulls out several Sass maps from `_variables.scss` to fix an issue where updates to an original map were not applied to secondary maps that extend them. For example, updates to `$theme-colors` were not being applied to other theme maps that relied on `$theme-colors`, breaking key customization workflows. In short, Sass has a limitation where once a default variable or map has been _used_, it cannot be updated. _Similarly, there's a similar shortcoming with CSS variables when they're used to compose other CSS variables._
 
 This is why variable customizations in Bootstrap have to come after `@import "functions"`, but before `@import "variables"` and the rest of our import stack. The same applies to Sass maps—you must override the defaults before the defaults get used. The following maps have been moved to the new `_maps.scss`:
 
@@ -53,10 +59,63 @@ Your custom Bootstrap CSS builds should now look something like this with a sepa
   // etc
 ```
 
-### Key changes
+### New utilities
 
-- **Introduced new `$enable-container-classes` option.** Now when opting into the experimental CSS Grid layout, `.container-*` classes will still be compiled, unless this option is set to `false`.
-- **Thicker table dividers are now opt-in.** We've removed the thicker and more difficult to override border between table groups and moved it to an optional class you can apply, `.table-group-divider`. [See the table docs for an example.]({{< docsref "/content/tables#table-group-dividers" >}})
+- Expanded [`font-weight` utilities]({{< docsref "/utilities/text#font-weight-and-italics" >}}) to include `.fw-600` for semibold fonts.
+- Expanded [`border-radius` utilities]({{< docsref "/utilities/borders#sizes" >}}) to include two new sizes, `.rounded-4` and `.rounded-5`, for more options.
+
+### Additional changes
+
+- **Introduced new `$enable-container-classes` option. —** Now when opting into the experimental CSS Grid layout, `.container-*` classes will still be compiled, unless this option is set to `false`.
+
+- **Alerts, badges, buttons, dropdowns, navbars, pagination, popovers, and tooltips are now built with CSS variables. —** While Sass still underpins everything, each of these components have been updated to include several CSS variables on the component base classes (e.g., `.btn`), allowing for more real-time customization of Bootstrap.
+
+  Read more about CSS variables in each component on their respective documentation pages.
+
+- **Thicker table dividers are now opt-in. —** We've removed the thicker and more difficult to override border between table groups and moved it to an optional class you can apply, `.table-group-divider`. [See the table docs for an example.]({{< docsref "/content/tables#table-group-dividers" >}})
+
+- **Updated several components to use CSS variables. —** While Sass still underpins everything, each of these components have been updated to include several CSS variables on the component base classes (e.g., `.btn`), allowing for more real-time customization of Bootstrap. The following components are now built with CSS variables:
+
+  - [Alerts]({{< docsref "/components/alerts/" >}})
+  - [Badges]({{< docsref "/components/badge/" >}})
+  - [Breadcrumbs]({{< docsref "/components/breadcrumb/" >}})
+  - [Buttons]({{< docsref "/components/buttons/" >}})
+  - [Dropdowns]({{< docsref "/components/dropdowns/" >}})
+  - [Navbars]({{< docsref "/components/navbar/" >}})
+  - [Popovers]({{< docsref "/components/popovers/" >}})
+  - [Tooltips]({{< docsref "/components/tooltips/" >}})
+
+- **Alerts, badges, breadcrumbs, buttons, navbars, popovers, and tooltips are now built with CSS variables. —** While Sass still underpins everything, each of these components have been updated to include several CSS variables on the component base classes (e.g., `.btn`), allowing for more real-time customization of Bootstrap.
+
+- Updated our grid systems so that containers now keep their gutter values, and enabling the experimental CSS Grid no longer removes container classes.
+
+## v5.1.0
+
+<hr class="mb-4">
+
+- **Added experimental support for [CSS Grid layout]({{< docsref "/layout/css-grid" >}}). —** This is a work in progress, and is not yet ready for production use, but you can opt into the new feature via Sass. To enable it, disable the default grid, by setting `$enable-grid-classes: false` and enable the CSS Grid by setting `$enable-cssgrid: true`.
+
+- **Updated navbars to support offcanvas. —** Add [offcanvas drawers in any navbar]({{< docsref "/components/navbar#offcanvas" >}}) with the responsive `.navbar-expand-*` classes and some offcanvas markup.
+
+- **Added new [placeholder component]({{< docsref "/components/placeholders/" >}}). —** Our newest component, a way to provide temporary blocks in lieu of real content to help indicate that something is still loading in your site or app.
+
+- **Collapse plugin now supports [horizontal collapsing]({{< docsref "/components/collapse#horizontal" >}}). —** Add `.collapse-horizontal` to your `.collapse` to collapse the `width` instead of the `height`. Avoid browser repainting by setting a `min-height` or `height`.
+
+- **Added new stack and vertical rule helpers. —** Quickly apply multiple flexbox properties to quickly create custom layouts with [stacks]({{< docsref "/helpers/stacks/" >}}). Choose from horizontal (`.hstack`) and vertical (`.vstack`) stacks. Add vertical dividers similar to `<hr>` elements with the [new `.vr` helpers]({{< docsref "/helpers/vertical-rule/" >}}).
+
+- **Added new global `:root` CSS variables. —** Added several new CSS variables to the `:root` level for controlling `<body>` styles. More are in the works, including across our utilities and components, but for now read up [CSS variables in the Customize section]({{< docsref "/customize/css-variables/" >}}).
+
+- **Overhauled color and background utilities to use CSS variables, and added new [text opacity]({{< docsref "/utilities/text#opacity" >}}) and [background opacity]({{< docsref "/utilities/background#opacity" >}}) utilities. —** `.text-*` and `.bg-*` utilities are now built with CSS variables and `rgba()` color values, allowing you to easily customize any utility with new opacity utilities.
+
+- **Added new snippet examples based to show how to customize our components. —** Pull ready to use customized components and other common design patterns with our new [Snippets examples]({{< docsref "/examples#snippets" >}}). Includes [footers]({{< docsref "/examples/footers/" >}}), [dropdowns]({{< docsref "/examples/dropdowns/" >}}), [list groups]({{< docsref "/examples/list-groups/" >}}), and [modals]({{< docsref "/examples/modals/" >}}).
+
+Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.com/2021/08/04/bootstrap-5-1-0/)
+
+<hr class="my-5">
+
+{{< callout info >}}
+**Hey there!** Changes to our first major release of Bootstrap 5, v5.0.0, are documented below. They don't reflect the additional changes shown above.
+{{< /callout >}}
 
 - **Popovers and tooltips now use CSS variables.** Both components have been updated to use CSS variables on their base classes, `.popover` and `.tooltip`. Some CSS variables have been updated from their Sass counterparts to reduce the number of variables. As a result, three variables have been deprecated in this release: `$popover-arrow-color`, `$popover-arrow-outer-color`, and `$tooltip-arrow-color`.
 

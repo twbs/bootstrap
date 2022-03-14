@@ -40,11 +40,11 @@
 // stylelint-disable scss/dollar-variable-pattern
 @function rgba-css-var($identifier, $target) {
   @if $identifier == "body" and $target == "bg" {
-    @return rgba(var(--#{$variable-prefix}#{$identifier}-bg-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+    @return rgba(var(--#{$prefix}#{$identifier}-bg-rgb), var(--#{$prefix}#{$target}-opacity));
   } @if $identifier == "body" and $target == "text" {
-    @return rgba(var(--#{$variable-prefix}#{$identifier}-color-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+    @return rgba(var(--#{$prefix}#{$identifier}-color-rgb), var(--#{$prefix}#{$target}-opacity));
   } @else {
-    @return rgba(var(--#{$variable-prefix}#{$identifier}-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+    @return rgba(var(--#{$prefix}#{$identifier}-rgb), var(--#{$prefix}#{$target}-opacity));
   }
 }
 
@@ -68,7 +68,7 @@
 @function varify($list) {
   $result: null;
   @each $entry in $list {
-    $result: append($result, var(--#{$variable-prefix}#{$entry}), space);
+    $result: append($result, var(--#{$prefix}#{$entry}), space);
   }
   @return $result;
 }
