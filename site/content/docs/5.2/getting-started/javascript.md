@@ -36,7 +36,7 @@ We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootst
 ```
 
 {{< callout warning >}}
-## Dependencies for vanilla ESM in the browser requires an `importmap`
+## Dependencies for vanilla ESM in the browser require an `importmap`
 
 In order to support build tools, npm dependencies - external dependencies such as Popper are `import`ed with their npm package name (e.g. `@popperjs/core`), to make this work in the browser you need to define an `importmap` which resolves arbitrary names to fully-qualified or relative URIs.
 
@@ -55,7 +55,7 @@ If your [targeted browsers](https://caniuse.com/?search=importmap) do not suppor
     <h1>Hello, modularity!</h1>
     <button id="popoverButton" type="button" class="btn btn-primary btn-lg" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="ESM in Browser" data-bs-content="Bang!">Pop, over</button>
 
-    <script async src="https://cdn.jsdelivr.net/npm/es-module-shims@1/dist/es-module-shims.js" crossorigin="anonymous"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/es-module-shims@1/dist/es-module-shims.min.js" crossorigin="anonymous"></script>
     <script type="importmap">
     {
       "imports": {
