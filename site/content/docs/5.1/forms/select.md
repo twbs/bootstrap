@@ -19,6 +19,8 @@ Custom `<select>` menus need only a custom class, `.form-select` to trigger the 
 </select>
 {{< /example >}}
 
+Note that Safari will automatically apply a background colour and a gloss effect to `<select>`s. To override this, add `-webkit-appearance:none;` to your CSS.
+
 ## Sizing
 
 You may also choose from small and large custom selects to match our similarly sized text inputs.
