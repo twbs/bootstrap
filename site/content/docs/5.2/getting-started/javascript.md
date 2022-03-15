@@ -60,12 +60,12 @@ If your [targeted browsers](https://caniuse.com/?search=importmap) do not suppor
     {
       "imports": {
         "@popperjs/core": "{{< param "cdn.popper" >}}",
-        "@twbs/bootstrap": "https://cdn.jsdelivr.net/npm/bootstrap@{{< param "current_version" >}}/dist/js/bootstrap.esm.min.js"
+        "bootstrap": "https://cdn.jsdelivr.net/npm/bootstrap@{{< param "current_version" >}}/dist/js/bootstrap.esm.min.js"
       }
     }
     </script>
       <script type="module">
-      import * as bootstrap from '@twbs/bootstrap'
+      import * as bootstrap from 'bootstrap'
 
       new bootstrap.Popover(document.getElementById('popoverButton'))
     </script>
