@@ -53,7 +53,7 @@ If your [targeted browsers](https://caniuse.com/?search=importmap) do not suppor
   </head>
   <body>
     <h1>Hello, modularity!</h1>
-    <button id="popoverButtton" type="button" class="btn btn-primary btn-lg" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="ESM in Browser" data-bs-content="Bang!">Pop, over</button>
+    <button id="popoverButton" type="button" class="btn btn-primary btn-lg" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="ESM in Browser" data-bs-content="Bang!">Pop, over</button>
 
     <script async src="https://cdn.jsdelivr.net/npm/es-module-shims@1/dist/es-module-shims.js" crossorigin="anonymous"></script>
     <script type="importmap">
@@ -67,7 +67,7 @@ If your [targeted browsers](https://caniuse.com/?search=importmap) do not suppor
       <script type="module">
       import * as bootstrap from '@twbs/bootstrap'
 
-      new bootstrap.Popover(document.getElementById('popoverButtton'))
+      new bootstrap.Popover(document.getElementById('popoverButton'))
     </script>
   </body>
 </html>
