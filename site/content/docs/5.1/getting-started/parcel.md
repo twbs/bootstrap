@@ -8,7 +8,7 @@ toc: true
 
 ## Install Parcel
 
-Install [Parcel Bundler](https://en.parceljs.org/getting_started.html).
+Install [Parcel Bundler](https://parceljs.org/getting-started/webapp/).
 
 ## Install Bootstrap
 
@@ -65,7 +65,7 @@ Include `src/index.js` before the closing `</body>` tag.
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <script src="./index.js"></script>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
 ```
@@ -78,7 +78,7 @@ Add `dev` and `build` scripts in your `package.json` file.
 "scripts": {
   "dev": "parcel ./src/index.html",
   "prebuild": "npx rimraf build",
-  "build": "parcel build --public-url ./ ./src/index.html --experimental-scope-hoisting --out-dir build"
+  "build": "parcel build --public-url ./ ./src/index.html --dist-dir build"
 }
 ```
 
