@@ -1943,6 +1943,41 @@ describe('Dropdown', () => {
       })
     })
 
+    it('should not propagate escape key events if dropdown is open', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="parent">',
+          '  <div class="dropdown">',
+          '    <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '    <div class="dropdown-menu">',
+          '      <a class="dropdown-item" href="#">Some Item</a>',
+          '    </div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const parent = fixtureEl.querySelector('.parent')
+        const toggle = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+
+        const parentKeyHandler = jasmine.createSpy('parentKeyHandler')
+
+        parent.addEventListener('keydown', parentKeyHandler)
+        parent.addEventListener('keyup', () => {
+          expect(parentKeyHandler).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        const keydownEscape = createEvent('keydown', { bubbles: true })
+        keydownEscape.key = 'Escape'
+        const keyupEscape = createEvent('keyup', { bubbles: true })
+        keyupEscape.key = 'Escape'
+
+        toggle.click()
+        toggle.dispatchEvent(keydownEscape)
+        toggle.dispatchEvent(keyupEscape)
+      })
+    })
+
     it('should close dropdown using `escape` button, and return focus to its trigger', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
