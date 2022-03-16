@@ -1,6 +1,6 @@
 import FocusTrap from '../../../src/util/focustrap'
 import EventHandler from '../../../src/dom/event-handler'
-import SelectorEngine from '../../../src/dom/selector-engine'
+import { SelectorEngine } from '../../../src/dom/selector-engine'
 import { clearFixture, createEvent, getFixture } from '../../helpers/fixture'
 
 describe('FocusTrap', () => {

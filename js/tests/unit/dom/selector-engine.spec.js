@@ -1,5 +1,10 @@
-import SelectorEngine from '../../../src/dom/selector-engine'
-import { getFixture, clearFixture } from '../../helpers/fixture'
+import {
+  getElementFromSelector,
+  getMultipleElementsFromSelector,
+  getSelectorFromElement,
+  SelectorEngine
+} from '../../../src/dom/selector-engine'
+import { clearFixture, getFixture } from '../../helpers/fixture'
 
 describe('SelectorEngine', () => {
   let fixtureEl
@@ -232,5 +237,159 @@ describe('SelectorEngine', () => {
       expect(SelectorEngine.focusableChildren(fixtureEl)).toEqual(expectedElements)
     })
   })
-})
 
+  describe('getSelectorFromElement', () => {
+    it('should get selector from data-bs-target', () => {
+      fixtureEl.innerHTML = [
+        '<div id="test" data-bs-target=".target"></div>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(getSelectorFromElement(testEl)).toEqual('.target')
+    })
+
+    it('should get selector from href if no data-bs-target set', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" href=".target"></a>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(getSelectorFromElement(testEl)).toEqual('.target')
+    })
+
+    it('should get selector from href if data-bs-target equal to #', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" data-bs-target="#" href=".target"></a>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(getSelectorFromElement(testEl)).toEqual('.target')
+    })
+
+    it('should return null if a selector from a href is a url without an anchor', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" data-bs-target="#" href="foo/bar.html"></a>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(getSelectorFromElement(testEl)).toBeNull()
+    })
+
+    it('should return the anchor if a selector from a href is a url', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" data-bs-target="#" href="foo/bar.html#target"></a>',
+        '<div id="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(getSelectorFromElement(testEl)).toEqual('#target')
+    })
+
+    it('should return null if selector not found', () => {
+      fixtureEl.innerHTML = '<a id="test" href=".target"></a>'
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(getSelectorFromElement(testEl)).toBeNull()
+    })
+
+    it('should return null if no selector', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const testEl = fixtureEl.querySelector('div')
+
+      expect(getSelectorFromElement(testEl)).toBeNull()
+    })
+  })
+
+  describe('getElementFromSelector', () => {
+    it('should get element from data-bs-target', () => {
+      fixtureEl.innerHTML = [
+        '<div id="test" data-bs-target=".target"></div>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('.target'))
+    })
+
+    it('should get element from href if no data-bs-target set', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" href=".target"></a>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('.target'))
+    })
+
+    it('should return null if element not found', () => {
+      fixtureEl.innerHTML = '<a id="test" href=".target"></a>'
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(getElementFromSelector(testEl)).toBeNull()
+    })
+
+    it('should return null if no selector', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const testEl = fixtureEl.querySelector('div')
+
+      expect(getElementFromSelector(testEl)).toBeNull()
+    })
+  })
+
+  describe('getMultipleElementsFromSelector', () => {
+    it('should get elements from data-bs-target', () => {
+      fixtureEl.innerHTML = [
+        '<div id="test" data-bs-target=".target"></div>',
+        '<div class="target"></div>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
+    })
+
+    it('should get elements in array, from href if no data-bs-target set', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" href=".target"></a>',
+        '<div class="target"></div>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
+    })
+
+    it('should return empty array if elements not found', () => {
+      fixtureEl.innerHTML = '<a id="test" href=".target"></a>'
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(getMultipleElementsFromSelector(testEl)).toHaveSize(0)
+    })
+
+    it('should return empty array if no selector', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const testEl = fixtureEl.querySelector('div')
+
+      expect(getMultipleElementsFromSelector(testEl)).toHaveSize(0)
+    })
+  })
+})

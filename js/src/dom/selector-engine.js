@@ -80,4 +80,56 @@ const SelectorEngine = {
   }
 }
 
-export default SelectorEngine
+const getSelector = element => {
+  let selector = element.getAttribute('data-bs-target')
+
+  if (!selector || selector === '#') {
+    let hrefAttribute = element.getAttribute('href')
+
+    // The only valid content that could double as a selector are IDs or classes,
+    // so everything starting with `#` or `.`. If a "real" URL is used as the selector,
+    // `document.querySelector` will rightfully complain it is invalid.
+    // See https://github.com/twbs/bootstrap/issues/32273
+    if (!hrefAttribute || (!hrefAttribute.includes('#') && !hrefAttribute.startsWith('.'))) {
+      return null
+    }
+
+    // Just in case some CMS puts out a full URL with the anchor appended
+    if (hrefAttribute.includes('#') && !hrefAttribute.startsWith('#')) {
+      hrefAttribute = `#${hrefAttribute.split('#')[1]}`
+    }
+
+    selector = hrefAttribute && hrefAttribute !== '#' ? hrefAttribute.trim() : null
+  }
+
+  return selector
+}
+
+const getSelectorFromElement = element => {
+  const selector = getSelector(element)
+
+  if (selector) {
+    return SelectorEngine.findOne(selector) ? selector : null
+  }
+
+  return null
+}
+
+const getElementFromSelector = element => {
+  const selector = getSelector(element)
+
+  return selector ? SelectorEngine.findOne(selector) : null
+}
+
+const getMultipleElementsFromSelector = element => {
+  const selector = getSelector(element)
+
+  return selector ? SelectorEngine.find(selector) : []
+}
+
+export {
+  SelectorEngine,
+  getElementFromSelector,
+  getMultipleElementsFromSelector,
+  getSelectorFromElement
+}

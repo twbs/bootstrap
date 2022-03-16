@@ -7,7 +7,7 @@
 
 import { defineJQueryPlugin, getElementFromSelector, getNextActiveElement, isDisabled } from './util/index.js'
 import EventHandler from './dom/event-handler.js'
-import SelectorEngine from './dom/selector-engine.js'
+import { getElementFromSelector, SelectorEngine } from './dom/selector-engine.js'
 import BaseComponent from './base-component.js'
 
 /**
