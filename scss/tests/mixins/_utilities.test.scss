@@ -250,16 +250,16 @@ $enable-important-utilities: false;
             class: desaturated-color,
             local-vars: (
               color-opacity: 1,
-              color-saturation: .25
+              color-saturation: 0.25
             ),
             values: (
-              blue: hsla(192, var(--bs-color-saturation), 0, var(--bs-color-opacity))
+              blue: hsla(192deg, var(--bs-color-saturation), 0, var(--bs-color-opacity))
             )
           )
         ) {
           .desaturated-color-blue {
             --bs-color-opacity: 1;
-            --bs-color-saturation: .25;
+            --bs-color-saturation: 0.25;
             color: hsla(192deg, var(--bs-color-saturation), 0, var(--bs-color-opacity));
           }
         }
