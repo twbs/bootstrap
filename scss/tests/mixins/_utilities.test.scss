@@ -1,5 +1,3 @@
-// stylelint-disable scss/dollar-variable-default, declaration-no-important
-
 $prefix: bs-;
 $enable-important-utilities: false;
 
@@ -250,7 +248,7 @@ $enable-important-utilities: false;
             class: desaturated-color,
             local-vars: (
               color-opacity: 1,
-              color-saturation: 0.25
+              color-saturation: .25
             ),
             values: (
               blue: hsla(192deg, var(--bs-color-saturation), 0, var(--bs-color-opacity))
@@ -259,6 +257,8 @@ $enable-important-utilities: false;
         ) {
           .desaturated-color-blue {
             --bs-color-opacity: 1;
+            // Sass compilation will put a leading zero so we want to keep that one
+            // stylelint-disable-next-line number-leading-zero
             --bs-color-saturation: 0.25;
             color: hsla(192deg, var(--bs-color-saturation), 0, var(--bs-color-opacity));
           }
