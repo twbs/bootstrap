@@ -126,7 +126,7 @@
   }
 }
 
-@mixin make-cssgrid($columns: $grid-columns, $breakpoints: $grid-breakpoints) {
+@mixin make-cssgrid($columns: $grid-columns, $breakpoints: $grid-breakpoints, $rows: $grid-rows) {
   @each $breakpoint in map-keys($breakpoints) {
     $infix: breakpoint-infix($breakpoint, $breakpoints);
 
@@ -141,11 +141,40 @@
         // Start with `1` because `0` is and invalid value.
         // Ends with `$columns - 1` because offsetting by the width of an entire row isn't possible.
         @for $i from 1 through ($columns - 1) {
-          .g-start#{$infix}-#{$i} {
+          // TODO: remove `.g-start*` classes in next version
+          .g-start#{$infix}-#{$i},
+          .g-col-start#{$infix}-#{$i} {
             grid-column-start: $i;
           }
         }
+
+        @for $i from 2 through $columns {
+          .g-col-end#{$infix}-#{$i} {
+            grid-column-end: $i;
+          }
+        }
       }
+
+      @if $rows > 0 {
+        @for $i from 1 through $rows {
+          .g-row#{$infix}-#{$i} {
+            grid-row: auto / span $i;
+          }
+        }
+
+        @for $i from 1 through ($rows - 1) {
+          .g-row-start#{$infix}-#{$i} {
+            grid-row-start: $i;
+          }
+        }
+
+        @for $i from 2 through $rows {
+          .g-row-end#{$infix}-#{$i} {
+            grid-row-end: $i;
+          }
+        }
+      }
+
     }
   }
 }
