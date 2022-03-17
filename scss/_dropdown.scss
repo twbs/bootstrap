@@ -225,7 +225,7 @@
 // Dropdown text
 .dropdown-item-text {
   display: block;
-  padding: var(--#{$prefix}dropdown-item-padding);
+  padding: var(--#{$prefix}dropdown-item-padding-y) var(--#{$prefix}dropdown-item-padding-x);
   color: var(--#{$prefix}dropdown-link-color);
 }
 
