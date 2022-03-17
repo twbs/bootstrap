@@ -15,7 +15,7 @@
 @if $enable-cssgrid {
   .grid {
     display: grid;
-    grid-template-rows: repeat(var(--#{$prefix}rows, #{$grid-rows}), 1fr);
+    grid-template-rows: repeat(var(--#{$prefix}rows, 1), 1fr);
     grid-template-columns: repeat(var(--#{$prefix}columns, #{$grid-columns}), 1fr);
     gap: var(--#{$prefix}gap, #{$grid-gutter-width});
 
