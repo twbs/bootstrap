@@ -1,5 +1,4 @@
 /* eslint-env node */
-
 require.extensions['.scss'] = function (module, filename) {
   return module._compile(`
 var sassTrue = require('sass-true');
