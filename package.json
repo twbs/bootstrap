@@ -101,13 +101,13 @@
     "watch-js-docs": "nodemon --watch site/assets/js/ --ext js --exec \"npm run js-lint\""
   },
   "peerDependencies": {
-    "@popperjs/core": "^2.11.2"
+    "@popperjs/core": "^2.11.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.5",
+    "@babel/core": "^7.17.7",
     "@babel/preset-env": "^7.16.11",
-    "@popperjs/core": "^2.11.2",
+    "@popperjs/core": "^2.11.4",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^21.0.2",
     "@rollup/plugin-node-resolve": "^13.1.3",
@@ -116,38 +116,38 @@
     "bundlewatch": "^0.3.3",
     "clean-css-cli": "^5.5.2",
     "cross-env": "^7.0.3",
-    "eslint": "^8.10.0",
+    "eslint": "^8.11.0",
     "eslint-config-xo": "^0.40.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-unicorn": "^41.0.0",
     "find-unused-sass-variables": "^4.0.3",
     "globby": "^11.0.4",
     "hammer-simulator": "0.0.1",
-    "hugo-bin": "^0.81.3",
+    "hugo-bin": "^0.82.2",
     "ip": "^1.1.5",
     "jquery": "^3.6.0",
     "karma": "^6.3.17",
     "karma-browserstack-launcher": "1.4.0",
-    "karma-chrome-launcher": "^3.1.0",
+    "karma-chrome-launcher": "^3.1.1",
     "karma-coverage-istanbul-reporter": "^3.0.3",
     "karma-detect-browsers": "^2.3.3",
     "karma-firefox-launcher": "^2.1.2",
     "karma-jasmine": "^4.0.1",
     "karma-jasmine-html-reporter": "^1.7.0",
-    "karma-rollup-preprocessor": "7.0.7",
-    "lockfile-lint": "^4.6.2",
+    "karma-rollup-preprocessor": "7.0.8",
+    "lockfile-lint": "^4.7.4",
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.8",
     "postcss-cli": "^9.1.0",
-    "rollup": "^2.70.0",
+    "rollup": "^2.70.1",
     "rollup-plugin-istanbul": "^3.0.0",
     "rtlcss": "^3.5.0",
     "sass": "^1.49.9",
     "shelljs": "^0.8.5",
     "stylelint": "14.2.0",
     "stylelint-config-twbs-bootstrap": "^3.0.1",
-    "terser": "^5.12.0",
+    "terser": "^5.12.1",
     "vnu-jar": "21.10.12"
   },
   "files": [
@@ -173,7 +173,7 @@
     },
     "dependencies": {},
     "peerDependencies": {
-      "@popperjs/core": "^2.11.2"
+      "@popperjs/core": "^2.11.4"
     }
   }
 }

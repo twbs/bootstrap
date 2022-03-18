@@ -171,9 +171,27 @@ Use spinners within buttons to indicate an action is currently processing or tak
 </button>
 {{< /example >}}
 
-## Sass
+## CSS
 
 ### Variables
+
+{{< added-in "5.2.0" >}}
+
+As part of Bootstrap's evolving CSS variables approach, spinners now use local CSS variables on `.spinner-border` and `.spinner-grow` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+Border spinner variables:
+
+{{< scss-docs name="spinner-border-css-vars" file="scss/_spinners.scss" >}}
+
+Growing spinner variables:
+
+{{< scss-docs name="spinner-grow-css-vars" file="scss/_spinners.scss" >}}
+
+For both spinners, small spinner modifier classes are used to update the values of these CSS variables as needed. For example, the `.spinner-border-sm` class does the following:
+
+{{< scss-docs name="spinner-border-sm-css-vars" file="scss/_spinners.scss" >}}
+
+### Sass variables
 
 {{< scss-docs name="spinner-variables" file="scss/_variables.scss" >}}
 
