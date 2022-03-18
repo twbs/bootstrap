@@ -61,7 +61,7 @@ Your custom Bootstrap CSS builds should now look something like this with a sepa
 
 ### New utilities
 
-- Expanded [`font-weight` utilities]({{< docsref "/utilities/text#font-weight-and-italics" >}}) to include `.fw-600` for semibold fonts.
+- Expanded [`font-weight` utilities]({{< docsref "/utilities/text#font-weight-and-italics" >}}) to include `.fw-semibold` for semibold fonts.
 - Expanded [`border-radius` utilities]({{< docsref "/utilities/borders#sizes" >}}) to include two new sizes, `.rounded-4` and `.rounded-5`, for more options.
 
 ### Additional changes
