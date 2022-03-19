@@ -15,9 +15,33 @@ toc: true
 
 Bootstrap v5.2.0 features a subtle design update for a handful of components and properties across the project, **most notably through refined `border-radius` values on buttons and form controls**. Our documentation also has been updated with a new homepage, simpler docs layout that no longer collapses sections of the sidebar, and more prominent examples of [Bootstrap Icons](https://icons.getbootstrap.com).
 
+### More CSS variables
+
+**We've updated nearly all our components to use CSS variables.** While Sass still underpins everything, each component has been updated to include CSS variables on the component base classes (e.g., `.btn`), allowing for more real-time customization of Bootstrap.
+
+The following components are now built with CSS variables:
+
+- [Alerts]({{< docsref "/components/alerts/" >}})
+- [Badges]({{< docsref "/components/badge/" >}})
+- [Breadcrumbs]({{< docsref "/components/breadcrumb/" >}})
+- [Buttons]({{< docsref "/components/buttons/" >}})
+- [Dropdowns]({{< docsref "/components/dropdowns/" >}})
+- [Navbars]({{< docsref "/components/navbar/" >}})
+- [Pagination]({{< docsref "/components/pagination/" >}})
+- [Popovers]({{< docsref "/components/popovers/" >}})
+- [Progress]({{< docsref "/components/progress/" >}})
+- [Spinners]({{< docsref "/components/spinners/" >}})
+- [Tooltips]({{< docsref "/components/tooltips/" >}})
+
+Read more about CSS variables in each component on their respective documentation pages. The rest of our components, forms, and more will be updated by v5.3.
+
+Our CSS variable usage will be somewhat incomplete until Bootstrap 6. While we'd love to fully implement these across the board, they do run the risk of causing breaking changes. For example, setting `$alert-border-width: var(--bs-border-width)` in our source code breaks potential Sass in your own code if you were doing `$alert-border-width * 2` for some reason.
+
+As such, wherever possible, we will continue to push towards more CSS variables, but please recognize our implementation may be slightly limited in v5.
+
 ### New `_maps.scss`
 
-**Bootstrap v5.2.0 introduced a new Sass file with `_maps.scss`.** It pulls out several Sass maps from `_variables.scss` to fix an issue where updates to an original map were not applied to secondary maps that extend them. For example, updates to `$theme-colors` were not being applied to other theme maps that relied on `$theme-colors`, breaking key customization workflows. In short, Sass has a limitation where once a default variable or map has been _used_, it cannot be updated. _Similarly, there's a similar shortcoming with CSS variables when they're used to compose other CSS variables._
+**Bootstrap v5.2.0 introduced a new Sass file with `_maps.scss`.** It pulls out several Sass maps from `_variables.scss` to fix an issue where updates to an original map were not applied to secondary maps that extend them. For example, updates to `$theme-colors` were not being applied to other theme maps that relied on `$theme-colors`, breaking key customization workflows. In short, Sass has a limitation where once a default variable or map has been _used_, it cannot be updated. _There's a similar shortcoming with CSS variables when they're used to compose other CSS variables._
 
 This is why variable customizations in Bootstrap have to come after `@import "functions"`, but before `@import "variables"` and the rest of our import stack. The same applies to Sass maps—you must override the defaults before the defaults get used. The following maps have been moved to the new `_maps.scss`:
 
@@ -61,33 +85,18 @@ Your custom Bootstrap CSS builds should now look something like this with a sepa
 
 ### New utilities
 
-- Expanded [`font-weight` utilities]({{< docsref "/utilities/text#font-weight-and-italics" >}}) to include `.fw-600` for semibold fonts.
+- Expanded [`font-weight` utilities]({{< docsref "/utilities/text#font-weight-and-italics" >}}) to include `.fw-semibold` for semibold fonts.
 - Expanded [`border-radius` utilities]({{< docsref "/utilities/borders#sizes" >}}) to include two new sizes, `.rounded-4` and `.rounded-5`, for more options.
 
 ### Additional changes
 
-- **Introduced new `$enable-container-classes` option. —** Now when opting into the experimental CSS Grid layout, `.container-*` classes will still be compiled, unless this option is set to `false`.
-
-- **Alerts, badges, buttons, dropdowns, navbars, pagination, popovers, and tooltips are now built with CSS variables. —** While Sass still underpins everything, each of these components have been updated to include several CSS variables on the component base classes (e.g., `.btn`), allowing for more real-time customization of Bootstrap.
-
-  Read more about CSS variables in each component on their respective documentation pages.
+- **Introduced new `$enable-container-classes` option. —** Now when opting into the experimental CSS Grid layout, `.container-*` classes will still be compiled, unless this option is set to `false`. Containers also now keep their gutter values.
 
 - **Thicker table dividers are now opt-in. —** We've removed the thicker and more difficult to override border between table groups and moved it to an optional class you can apply, `.table-group-divider`. [See the table docs for an example.]({{< docsref "/content/tables#table-group-dividers" >}})
 
-- **Updated several components to use CSS variables. —** While Sass still underpins everything, each of these components have been updated to include several CSS variables on the component base classes (e.g., `.btn`), allowing for more real-time customization of Bootstrap. The following components are now built with CSS variables:
+- Added `.form-check-reverse` modifier to flip the order of labels and associated checkboxes/radios.
 
-  - [Alerts]({{< docsref "/components/alerts/" >}})
-  - [Badges]({{< docsref "/components/badge/" >}})
-  - [Breadcrumbs]({{< docsref "/components/breadcrumb/" >}})
-  - [Buttons]({{< docsref "/components/buttons/" >}})
-  - [Dropdowns]({{< docsref "/components/dropdowns/" >}})
-  - [Navbars]({{< docsref "/components/navbar/" >}})
-  - [Popovers]({{< docsref "/components/popovers/" >}})
-  - [Tooltips]({{< docsref "/components/tooltips/" >}})
-
-- **Alerts, badges, breadcrumbs, buttons, navbars, popovers, and tooltips are now built with CSS variables. —** While Sass still underpins everything, each of these components have been updated to include several CSS variables on the component base classes (e.g., `.btn`), allowing for more real-time customization of Bootstrap.
-
-- Updated our grid systems so that containers now keep their gutter values, and enabling the experimental CSS Grid no longer removes container classes.
+- Added striped columns support to tables via
 
 ## v5.1.0
 
