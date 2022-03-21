@@ -88,8 +88,8 @@ const getTransitionDurationFromElement = element => {
   }
 
   // If multiple durations are defined, take the first
-  transitionDuration = transitionDuration.split(',')[0]
-  transitionDelay = transitionDelay.split(',')[0]
+  [transitionDuration] = transitionDuration.split(',');
+  [transitionDelay] = transitionDelay.split(',')
 
   return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER
 }
