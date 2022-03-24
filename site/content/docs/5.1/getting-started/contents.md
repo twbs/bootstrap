@@ -68,96 +68,25 @@ This is the most basic form of Bootstrap: precompiled files for quick drop-in us
 
 Bootstrap includes a handful of options for including some or all of our compiled CSS.
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">CSS files</th>
-      <th scope="col">Layout</th>
-      <th scope="col">Content</th>
-      <th scope="col">Components</th>
-      <th scope="col">Utilities</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">
-        <div><code class="fw-normal text-nowrap">bootstrap.css</code></div>
-        <div><code class="fw-normal text-nowrap">bootstrap.rtl.css</code></div>
-        <div><code class="fw-normal text-nowrap">bootstrap.min.css</code></div>
-        <div><code class="fw-normal text-nowrap">bootstrap.rtl.min.css</code></div>
-      </th>
-      <td>Included</td>
-      <td>Included</td>
-      <td>Included</td>
-      <td>Included</td>
-    </tr>
-    <tr>
-      <th scope="row">
-        <div><code class="fw-normal text-nowrap">bootstrap-grid.css</code></div>
-        <div><code class="fw-normal text-nowrap">bootstrap-grid.rtl.css</code></div>
-        <div><code class="fw-normal text-nowrap">bootstrap-grid.min.css</code></div>
-        <div><code class="fw-normal text-nowrap">bootstrap-grid.rtl.min.css</code></div>
-      </th>
-      <td><a class="link-secondary" href="{{< docsref "/layout/grid" >}}">Only grid system</a></td>
-      <td class="text-muted">&mdash;</td>
-      <td class="text-muted">&mdash;</td>
-      <td><a class="link-secondary" href="{{< docsref "/utilities/flex" >}}">Only flex utilities</a></td>
-    </tr>
-    <tr>
-      <th scope="row">
-        <div><code class="fw-normal text-nowrap">bootstrap-utilities.css</code></div>
-        <div><code class="fw-normal text-nowrap">bootstrap-utilities.rtl.css</code></div>
-        <div><code class="fw-normal text-nowrap">bootstrap-utilities.min.css</code></div>
-        <div><code class="fw-normal text-nowrap">bootstrap-utilities.rtl.min.css</code></div>
-      </th>
-      <td class="text-muted">&mdash;</td>
-      <td class="text-muted">&mdash;</td>
-      <td class="text-muted">&mdash;</td>
-      <td>Included</td>
-    </tr>
-    <tr>
-      <th scope="row">
-        <div><code class="fw-normal text-nowrap">bootstrap-reboot.css</code></div>
-        <div><code class="fw-normal text-nowrap">bootstrap-reboot.rtl.css</code></div>
-        <div><code class="fw-normal text-nowrap">bootstrap-reboot.min.css</code></div>
-        <div><code class="fw-normal text-nowrap">bootstrap-reboot.rtl.min.css</code></div>
-      </th>
-      <td class="text-muted">&mdash;</td>
-      <td><a class="link-secondary" href="{{< docsref "/content/reboot" >}}">Only Reboot</a></td>
-      <td class="text-muted">&mdash;</td>
-      <td class="text-muted">&mdash;</td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table "table" >}}
+| CSS files | Layout | Content | Components | Utilities |
+| --- | --- | --- | --- | --- |
+| `bootstrap.css`<br> `bootstrap.min.css`<br> `bootstrap.rtl.css`<br> `bootstrap.rtl.min.css` | Included | Included | Included | Included |
+| `bootstrap-grid.css`<br> `bootstrap-grid.rtl.css`<br> `bootstrap-grid.min.css`<br> `bootstrap-grid.rtl.min.css` | [Only grid system]({{< docsref "/layout/grid" >}}) | — | — | [Only flex utilities]({{< docsref "/utilities/flex" >}}) |
+| `bootstrap-utilities.css`<br> `bootstrap-utilities.rtl.css`<br> `bootstrap-utilities.min.css`<br> `bootstrap-utilities.rtl.min.css` | — | — | — | Included |
+| `bootstrap-reboot.css`<br> `bootstrap-reboot.rtl.css`<br> `bootstrap-reboot.min.css`<br> `bootstrap-reboot.rtl.min.css` | [Only Reboot]({{< docsref "/content/reboot" >}}) | — | — | [Only flex utilities]({{< docsref "/utilities/flex" >}}) |
+{{< /bs-table >}}
 
 ## JS files
 
 Similarly, we have options for including some or all of our compiled JavaScript.
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">JS files</th>
-      <th scope="col">Popper</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">
-        <div><code class="fw-normal text-nowrap">bootstrap.bundle.js</code></div>
-        <div><code class="fw-normal text-nowrap">bootstrap.bundle.min.js</code></div>
-      </th>
-      <td>Included</td>
-    </tr>
-    <tr>
-      <th scope="row">
-        <div><code class="fw-normal text-nowrap">bootstrap.js</code></div>
-        <div><code class="fw-normal text-nowrap">bootstrap.min.js</code></div>
-      </th>
-      <td class="text-muted">&mdash;</td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table "table" >}}
+| JS Files | Popper |
+| --- | --- |
+| `bootstrap.bundle.js`<br> `bootstrap.bundle.min.js`<br> | Included |
+| `bootstrap.js`<br> `bootstrap.min.js`<br> | – |
+{{< /bs-table >}}
 
 ## Bootstrap source code
 

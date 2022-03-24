@@ -33,7 +33,7 @@ Colorize text with color utilities. If you want to colorize links, you can use t
 
 ## Opacity
 
-<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.1.0</small>
+{{< added-in "5.1.0" >}}
 
 As of v5.1.0, text color utilities are generated with Sass using CSS variables. This allows for real-time color changes without compilation and dynamic alpha transparency changes.
 

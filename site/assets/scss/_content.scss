@@ -31,18 +31,19 @@
   }
 
   // Override Bootstrap defaults
-  > .table {
-    max-width: 100%;
+  > .table,
+  > .table-responsive .table {
     margin-bottom: 1.5rem;
     @include font-size(.875rem);
 
     @include media-breakpoint-down(lg) {
-      display: block;
-      overflow-x: auto;
-
       &.table-bordered {
         border: 0;
       }
+    }
+
+    thead {
+      border-bottom: 2px solid currentColor;
     }
 
     th,
@@ -57,6 +58,7 @@
     }
 
     // Prevent breaking of code
+    // stylelint-disable-next-line selector-max-compound-selectors
     td:first-child > code {
       white-space: nowrap;
     }
@@ -72,10 +74,6 @@
   font-weight: 300;
 }
 
-.bd-text-purple-bright {
-  color: $bd-violet;
-}
-
-.bd-bg-purple-bright {
+.bd-bg-violet {
   background-color: $bd-violet;
 }

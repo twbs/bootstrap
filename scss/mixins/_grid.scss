@@ -3,14 +3,14 @@
 // Generate semantic grid columns with these mixins.
 
 @mixin make-row($gutter: $grid-gutter-width) {
-  --#{$variable-prefix}gutter-x: #{$gutter};
-  --#{$variable-prefix}gutter-y: 0;
+  --#{$prefix}gutter-x: #{$gutter};
+  --#{$prefix}gutter-y: 0;
   display: flex;
   flex-wrap: wrap;
   // TODO: Revisit calc order after https://github.com/react-bootstrap/react-bootstrap/issues/6039 is fixed
-  margin-top: calc(-1 * var(--#{$variable-prefix}gutter-y)); // stylelint-disable-line function-disallowed-list
-  margin-right: calc(-.5 * var(--#{$variable-prefix}gutter-x)); // stylelint-disable-line function-disallowed-list
-  margin-left: calc(-.5 * var(--#{$variable-prefix}gutter-x)); // stylelint-disable-line function-disallowed-list
+  margin-top: calc(-1 * var(--#{$prefix}gutter-y)); // stylelint-disable-line function-disallowed-list
+  margin-right: calc(-.5 * var(--#{$prefix}gutter-x)); // stylelint-disable-line function-disallowed-list
+  margin-left: calc(-.5 * var(--#{$prefix}gutter-x)); // stylelint-disable-line function-disallowed-list
 }
 
 @mixin make-col-ready() {
@@ -22,9 +22,9 @@
   flex-shrink: 0;
   width: 100%;
   max-width: 100%; // Prevent `.col-auto`, `.col` (& responsive variants) from breaking out the grid
-  padding-right: calc(var(--#{$variable-prefix}gutter-x) * .5); // stylelint-disable-line function-disallowed-list
-  padding-left: calc(var(--#{$variable-prefix}gutter-x) * .5); // stylelint-disable-line function-disallowed-list
-  margin-top: var(--#{$variable-prefix}gutter-y);
+  padding-right: calc(var(--#{$prefix}gutter-x) * .5); // stylelint-disable-line function-disallowed-list
+  padding-left: calc(var(--#{$prefix}gutter-x) * .5); // stylelint-disable-line function-disallowed-list
+  margin-top: var(--#{$prefix}gutter-y);
 }
 
 @mixin make-col($size: false, $columns: $grid-columns) {
@@ -114,12 +114,12 @@
       @each $key, $value in $gutters {
         .g#{$infix}-#{$key},
         .gx#{$infix}-#{$key} {
-          --#{$variable-prefix}gutter-x: #{$value};
+          --#{$prefix}gutter-x: #{$value};
         }
 
         .g#{$infix}-#{$key},
         .gy#{$infix}-#{$key} {
-          --#{$variable-prefix}gutter-y: #{$value};
+          --#{$prefix}gutter-y: #{$value};
         }
       }
     }

@@ -27,7 +27,7 @@
 
 :root {
   @if $font-size-root != null {
-    font-size: var(--#{$variable-prefix}root-font-size);
+    font-size: var(--#{$prefix}root-font-size);
   }
 
   @if $enable-smooth-scroll {
@@ -48,13 +48,13 @@
 // scss-docs-start reboot-body-rules
 body {
   margin: 0; // 1
-  font-family: var(--#{$variable-prefix}body-font-family);
-  font-size: var(--#{$variable-prefix}body-font-size);
-  font-weight: var(--#{$variable-prefix}body-font-weight);
-  line-height: var(--#{$variable-prefix}body-line-height);
-  color: var(--#{$variable-prefix}body-color);
-  text-align: var(--#{$variable-prefix}body-text-align);
-  background-color: var(--#{$variable-prefix}body-bg); // 2
+  font-family: var(--#{$prefix}body-font-family);
+  font-size: var(--#{$prefix}body-font-size);
+  font-weight: var(--#{$prefix}body-font-weight);
+  line-height: var(--#{$prefix}body-line-height);
+  color: var(--#{$prefix}body-color);
+  text-align: var(--#{$prefix}body-text-align);
+  background-color: var(--#{$prefix}body-bg); // 2
   -webkit-text-size-adjust: 100%; // 3
   -webkit-tap-highlight-color: rgba($black, 0); // 4
 }
@@ -87,7 +87,7 @@ hr {
   font-style: $headings-font-style;
   font-weight: $headings-font-weight;
   line-height: $headings-line-height;
-  color: $headings-color;
+  color: var(--#{$prefix}heading-color);
 }
 
 h1 {
@@ -219,7 +219,7 @@ small {
 
 mark {
   padding: $mark-padding;
-  background-color: $mark-bg;
+  background-color: var(--#{$prefix}highlight-bg);
 }
 
 
@@ -243,11 +243,11 @@ sup { top: -.5em; }
 // Links
 
 a {
-  color: $link-color;
+  color: var(--#{$prefix}link-color);
   text-decoration: $link-decoration;
 
   &:hover {
-    color: $link-hover-color;
+    color: var(--#{$prefix}link-hover-color);
     text-decoration: $link-hover-decoration;
   }
 }
@@ -298,7 +298,7 @@ pre {
 
 code {
   @include font-size($code-font-size);
-  color: $code-color;
+  color: var(--#{$prefix}code-color);
   word-wrap: break-word;
 
   // Streamline the style when inside anchors to avoid broken underline and more

@@ -26,68 +26,23 @@ We use [Autoprefixer](https://github.com/postcss/autoprefixer) to handle intende
 
 Generally speaking, Bootstrap supports the latest versions of each major platform's default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile's Turbo mode, UC Browser Mini, Amazon Silk) are not supported.
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Chrome</th>
-      <th scope="col">Firefox</th>
-      <th scope="col">Safari</th>
-      <th scope="col">Android Browser &amp; WebView</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Android</th>
-      <td>Supported</td>
-      <td>Supported</td>
-      <td class="text-muted">&mdash;</td>
-      <td>v6.0+</td>
-    </tr>
-    <tr>
-      <th scope="row">iOS</th>
-      <td>Supported</td>
-      <td>Supported</td>
-      <td>Supported</td>
-      <td class="text-muted">&mdash;</td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table "table" >}}
+| | Chrome | Firefox | Safari | Android Browser &amp; WebView |
+| --- | --- | --- | --- | --- |
+| **Android** | Supported | Supported | <span class="text-muted">&mdash;</span> | v6.0+ |
+| **Windows** | Supported | Supported | Supported | <span class="text-muted">&mdash;</span> |
+{{< /bs-table >}}
 
 ### Desktop browsers
 
 Similarly, the latest versions of most desktop browsers are supported.
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Chrome</th>
-      <th scope="col">Firefox</th>
-      <th scope="col">Microsoft Edge</th>
-      <th scope="col">Opera</th>
-      <th scope="col">Safari</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Mac</th>
-      <td>Supported</td>
-      <td>Supported</td>
-      <td>Supported</td>
-      <td>Supported</td>
-      <td>Supported</td>
-    </tr>
-    <tr>
-      <th scope="row">Windows</th>
-      <td>Supported</td>
-      <td>Supported</td>
-      <td>Supported</td>
-      <td>Supported</td>
-      <td class="text-muted">&mdash;</td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table "table" >}}
+| | Chrome | Firefox | Microsoft Edge | Opera | Safari |
+| --- | --- | --- | --- | --- | --- |
+| **Mac** | Supported | Supported | Supported | Supported | Supported |
+| **Windows** | Supported | Supported | Supported | Supported | <span class="text-muted">&mdash;</span> |
+{{< /bs-table >}}
 
 For Firefox, in addition to the latest normal stable release, we also support the latest [Extended Support Release (ESR)](https://www.mozilla.org/en-US/firefox/enterprise/) version of Firefox.
 
