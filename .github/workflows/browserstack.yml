@@ -2,10 +2,11 @@ name: BrowserStack
 
 on:
   push:
+  workflow_dispatch:
 
 env:
   FORCE_COLOR: 2
-  NODE: 14
+  NODE: 16
 
 jobs:
   browserstack:

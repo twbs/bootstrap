@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.6.0): alert.js
+ * Bootstrap (v4.6.1): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9,32 +9,28 @@ import $ from 'jquery'
 import Util from './util'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'alert'
-const VERSION = '4.6.0'
+const VERSION = '4.6.1'
 const DATA_KEY = 'bs.alert'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 const JQUERY_NO_CONFLICT = $.fn[NAME]
 
-const SELECTOR_DISMISS = '[data-dismiss="alert"]'
+const CLASS_NAME_ALERT = 'alert'
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_SHOW = 'show'
 
 const EVENT_CLOSE = `close${EVENT_KEY}`
 const EVENT_CLOSED = `closed${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
-const CLASS_NAME_ALERT = 'alert'
-const CLASS_NAME_FADE = 'fade'
-const CLASS_NAME_SHOW = 'show'
+const SELECTOR_DISMISS = '[data-dismiss="alert"]'
 
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Alert {
@@ -43,13 +39,11 @@ class Alert {
   }
 
   // Getters
-
   static get VERSION() {
     return VERSION
   }
 
   // Public
-
   close(element) {
     let rootElement = this._element
     if (element) {
@@ -71,7 +65,6 @@ class Alert {
   }
 
   // Private
-
   _getRootElement(element) {
     const selector = Util.getSelectorFromElement(element)
     let parent = false
@@ -117,7 +110,6 @@ class Alert {
   }
 
   // Static
-
   static _jQueryInterface(config) {
     return this.each(function () {
       const $element = $(this)
@@ -146,9 +138,7 @@ class Alert {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
+ * Data API implementation
  */
 
 $(document).on(
@@ -158,9 +148,7 @@ $(document).on(
 )
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
  */
 
 $.fn[NAME] = Alert._jQueryInterface
