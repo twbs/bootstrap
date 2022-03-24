@@ -154,7 +154,7 @@ Please read the [collapse accessibility section]({{< docsref "/components/collap
 
 ### Variables
 
-{{< added-in "5.3.0" >}}
+{{< added-in "5.2.0" >}}
 
 As part of Bootstrap's evolving CSS variables approach, accordions now use local CSS variables on `.accordion` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
