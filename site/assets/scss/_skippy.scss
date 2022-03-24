@@ -11,8 +11,8 @@
     position: static !important;
     width: auto !important;
     height: auto !important;
-    padding: $spacer / 2 !important;
-    margin: $spacer / 4 !important;
+    padding: $spacer * .5 !important;
+    margin: $spacer * .25 !important;
     overflow: visible !important;
     clip: auto !important;
     white-space: normal !important;

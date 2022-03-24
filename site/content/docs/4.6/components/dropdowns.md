@@ -580,7 +580,7 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 {{< example >}}
 <div class="dropdown-menu">
   <a class="dropdown-item" href="#">Regular link</a>
-  <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Disabled link</a>
+  <a class="dropdown-item disabled">Disabled link</a>
   <a class="dropdown-item" href="#">Another link</a>
 </div>
 {{< /example >}}

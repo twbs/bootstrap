@@ -40,7 +40,7 @@ $(function () {
     assert.expect(2)
     var $el = $('<div/>')
     var $tab = $el.bootstrapTab()
-    assert.ok($tab instanceof $, 'returns jquery collection')
+    assert.true($tab instanceof $, 'returns jquery collection')
     assert.strictEqual($tab[0], $el[0], 'collection contains element')
   })
 
@@ -76,7 +76,7 @@ $(function () {
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
-  QUnit.test('should activate element by tab id', function (assert) {
+  QUnit.test('should activate element by tab id (.nav-pills)', function (assert) {
     assert.expect(2)
     var pillsHTML = '<ul class="nav nav-pills">' +
         '<li><a href="#home">Home</a></li>' +
@@ -334,8 +334,8 @@ $(function () {
     var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
 
     $tabs.find('li:last-child button').trigger('click')
-    assert.notOk($tabs.find('li:first-child button').hasClass('active'))
-    assert.ok($tabs.find('li:last-child button').hasClass('active'))
+    assert.false($tabs.find('li:first-child button').hasClass('active'))
+    assert.true($tabs.find('li:last-child button').hasClass('active'))
   })
 
   QUnit.test('should support li > .dropdown-item', function (assert) {
@@ -356,8 +356,8 @@ $(function () {
     var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
 
     $tabs.find('.dropdown-item').trigger('click')
-    assert.ok($tabs.find('.dropdown-item').hasClass('active'))
-    assert.notOk($tabs.find('.nav-link:not(.dropdown-toggle)').hasClass('active'))
+    assert.true($tabs.find('.dropdown-item').hasClass('active'))
+    assert.false($tabs.find('.nav-link:not(.dropdown-toggle)').hasClass('active'))
   })
 
   QUnit.test('Nested tabs', function (assert) {
@@ -387,12 +387,12 @@ $(function () {
     $(tabsHTML).appendTo('#qunit-fixture')
 
     $('#tabNested2').on('shown.bs.tab', function () {
-      assert.ok($('#x-tab1').hasClass('active'))
+      assert.true($('#x-tab1').hasClass('active'))
       done()
     })
 
     $('#tab1').on('shown.bs.tab', function () {
-      assert.ok($('#x-tab1').hasClass('active'))
+      assert.true($('#x-tab1').hasClass('active'))
       $('#tabNested2').trigger($.Event('click'))
     })
       .trigger($.Event('click'))
@@ -413,15 +413,15 @@ $(function () {
     $(tabsHTML).appendTo('#qunit-fixture')
     $('#tab-profile')
       .on('shown.bs.tab', function () {
-        assert.ok($('#profile').hasClass('fade'))
-        assert.ok($('#profile').hasClass('show'))
+        assert.true($('#profile').hasClass('fade'))
+        assert.true($('#profile').hasClass('show'))
 
         $('#tab-home')
           .on('shown.bs.tab', function () {
-            assert.ok($('#profile').hasClass('fade'))
-            assert.notOk($('#profile').hasClass('show'))
-            assert.ok($('#home').hasClass('fade'))
-            assert.ok($('#home').hasClass('show'))
+            assert.true($('#profile').hasClass('fade'))
+            assert.false($('#profile').hasClass('show'))
+            assert.true($('#home').hasClass('fade'))
+            assert.true($('#home').hasClass('show'))
 
             done()
           })

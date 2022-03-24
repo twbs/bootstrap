@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.6.0): dropdown.js
+ * Bootstrap (v4.6.1): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -10,13 +10,11 @@ import Popper from 'popper.js'
 import Util from './util'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'dropdown'
-const VERSION = '4.6.0'
+const VERSION = '4.6.1'
 const DATA_KEY = 'bs.dropdown'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -29,6 +27,14 @@ const ARROW_DOWN_KEYCODE = 40 // KeyboardEvent.which value for down arrow key
 const RIGHT_MOUSE_BUTTON_WHICH = 3 // MouseEvent.which value for the right button (assuming a right-handed mouse)
 const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEYCODE}|${ARROW_DOWN_KEYCODE}|${ESCAPE_KEYCODE}`)
 
+const CLASS_NAME_DISABLED = 'disabled'
+const CLASS_NAME_SHOW = 'show'
+const CLASS_NAME_DROPUP = 'dropup'
+const CLASS_NAME_DROPRIGHT = 'dropright'
+const CLASS_NAME_DROPLEFT = 'dropleft'
+const CLASS_NAME_MENURIGHT = 'dropdown-menu-right'
+const CLASS_NAME_POSITION_STATIC = 'position-static'
+
 const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_SHOW = `show${EVENT_KEY}`
@@ -37,14 +43,6 @@ const EVENT_CLICK = `click${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY}${DATA_API_KEY}`
-
-const CLASS_NAME_DISABLED = 'disabled'
-const CLASS_NAME_SHOW = 'show'
-const CLASS_NAME_DROPUP = 'dropup'
-const CLASS_NAME_DROPRIGHT = 'dropright'
-const CLASS_NAME_DROPLEFT = 'dropleft'
-const CLASS_NAME_MENURIGHT = 'dropdown-menu-right'
-const CLASS_NAME_POSITION_STATIC = 'position-static'
 
 const SELECTOR_DATA_TOGGLE = '[data-toggle="dropdown"]'
 const SELECTOR_FORM_CHILD = '.dropdown form'
@@ -78,9 +76,7 @@ const DefaultType = {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Dropdown {
@@ -95,7 +91,6 @@ class Dropdown {
   }
 
   // Getters
-
   static get VERSION() {
     return VERSION
   }
@@ -109,7 +104,6 @@ class Dropdown {
   }
 
   // Public
-
   toggle() {
     if (this._element.disabled || $(this._element).hasClass(CLASS_NAME_DISABLED)) {
       return
@@ -145,10 +139,7 @@ class Dropdown {
 
     // Totally disable Popper for Dropdowns in Navbar
     if (!this._inNavbar && usePopper) {
-      /**
-       * Check for Popper dependency
-       * Popper - https://popper.js.org
-       */
+      // Check for Popper dependency
       if (typeof Popper === 'undefined') {
         throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)')
       }
@@ -240,7 +231,6 @@ class Dropdown {
   }
 
   // Private
-
   _addEventListeners() {
     $(this._element).on(EVENT_CLICK, event => {
       event.preventDefault()
@@ -308,7 +298,7 @@ class Dropdown {
       offset.fn = data => {
         data.offsets = {
           ...data.offsets,
-          ...(this._config.offset(data.offsets, this._element) || {})
+          ...this._config.offset(data.offsets, this._element)
         }
 
         return data
@@ -348,7 +338,6 @@ class Dropdown {
   }
 
   // Static
-
   static _jQueryInterface(config) {
     return this.each(function () {
       let data = $(this).data(DATA_KEY)
@@ -504,9 +493,7 @@ class Dropdown {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
+ * Data API implementation
  */
 
 $(document)
@@ -523,9 +510,7 @@ $(document)
   })
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
  */
 
 $.fn[NAME] = Dropdown._jQueryInterface

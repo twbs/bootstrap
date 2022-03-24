@@ -1,26 +1,21 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.6.0): tooltip.js
+ * Bootstrap (v4.6.1): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import {
-  DefaultWhitelist,
-  sanitizeHtml
-} from './tools/sanitizer'
+import { DefaultWhitelist, sanitizeHtml } from './tools/sanitizer'
 import $ from 'jquery'
 import Popper from 'popper.js'
 import Util from './util'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'tooltip'
-const VERSION = '4.6.0'
+const VERSION = '4.6.1'
 const DATA_KEY = 'bs.tooltip'
 const EVENT_KEY = `.${DATA_KEY}`
 const JQUERY_NO_CONFLICT = $.fn[NAME]
@@ -28,25 +23,19 @@ const CLASS_PREFIX = 'bs-tooltip'
 const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 const DISALLOWED_ATTRIBUTES = ['sanitize', 'whiteList', 'sanitizeFn']
 
-const DefaultType = {
-  animation: 'boolean',
-  template: 'string',
-  title: '(string|element|function)',
-  trigger: 'string',
-  delay: '(number|object)',
-  html: 'boolean',
-  selector: '(string|boolean)',
-  placement: '(string|function)',
-  offset: '(number|string|function)',
-  container: '(string|element|boolean)',
-  fallbackPlacement: '(string|array)',
-  boundary: '(string|element)',
-  customClass: '(string|function)',
-  sanitize: 'boolean',
-  sanitizeFn: '(null|function)',
-  whiteList: 'object',
-  popperConfig: '(null|object)'
-}
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_SHOW = 'show'
+
+const HOVER_STATE_SHOW = 'show'
+const HOVER_STATE_OUT = 'out'
+
+const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
+const SELECTOR_ARROW = '.arrow'
+
+const TRIGGER_HOVER = 'hover'
+const TRIGGER_FOCUS = 'focus'
+const TRIGGER_CLICK = 'click'
+const TRIGGER_MANUAL = 'manual'
 
 const AttachmentMap = {
   AUTO: 'auto',
@@ -78,8 +67,25 @@ const Default = {
   popperConfig: null
 }
 
-const HOVER_STATE_SHOW = 'show'
-const HOVER_STATE_OUT = 'out'
+const DefaultType = {
+  animation: 'boolean',
+  template: 'string',
+  title: '(string|element|function)',
+  trigger: 'string',
+  delay: '(number|object)',
+  html: 'boolean',
+  selector: '(string|boolean)',
+  placement: '(string|function)',
+  offset: '(number|string|function)',
+  container: '(string|element|boolean)',
+  fallbackPlacement: '(string|array)',
+  boundary: '(string|element)',
+  customClass: '(string|function)',
+  sanitize: 'boolean',
+  sanitizeFn: '(null|function)',
+  whiteList: 'object',
+  popperConfig: '(null|object)'
+}
 
 const Event = {
   HIDE: `hide${EVENT_KEY}`,
@@ -94,21 +100,8 @@ const Event = {
   MOUSELEAVE: `mouseleave${EVENT_KEY}`
 }
 
-const CLASS_NAME_FADE = 'fade'
-const CLASS_NAME_SHOW = 'show'
-
-const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
-const SELECTOR_ARROW = '.arrow'
-
-const TRIGGER_HOVER = 'hover'
-const TRIGGER_FOCUS = 'focus'
-const TRIGGER_CLICK = 'click'
-const TRIGGER_MANUAL = 'manual'
-
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Tooltip {
@@ -117,7 +110,7 @@ class Tooltip {
       throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)')
     }
 
-    // private
+    // Private
     this._isEnabled = true
     this._timeout = 0
     this._hoverState = ''
@@ -133,7 +126,6 @@ class Tooltip {
   }
 
   // Getters
-
   static get VERSION() {
     return VERSION
   }
@@ -163,7 +155,6 @@ class Tooltip {
   }
 
   // Public
-
   enable() {
     this._isEnabled = true
   }
@@ -381,7 +372,6 @@ class Tooltip {
   }
 
   // Protected
-
   isWithContent() {
     return Boolean(this.getTitle())
   }
@@ -439,7 +429,6 @@ class Tooltip {
   }
 
   // Private
-
   _getPopperConfig(attachment) {
     const defaultBsConfig = {
       placement: attachment,
@@ -476,7 +465,7 @@ class Tooltip {
       offset.fn = data => {
         data.offsets = {
           ...data.offsets,
-          ...(this.config.offset(data.offsets, this.element) || {})
+          ...this.config.offset(data.offsets, this.element)
         }
 
         return data
@@ -735,7 +724,6 @@ class Tooltip {
   }
 
   // Static
-
   static _jQueryInterface(config) {
     return this.each(function () {
       const $element = $(this)
@@ -763,9 +751,7 @@ class Tooltip {
 }
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
  */
 
 $.fn[NAME] = Tooltip._jQueryInterface

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.6.0): modal.js
+ * Bootstrap (v4.6.1): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9,18 +9,44 @@ import $ from 'jquery'
 import Util from './util'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'modal'
-const VERSION = '4.6.0'
+const VERSION = '4.6.1'
 const DATA_KEY = 'bs.modal'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 const JQUERY_NO_CONFLICT = $.fn[NAME]
 const ESCAPE_KEYCODE = 27 // KeyboardEvent.which value for Escape (Esc) key
+
+const CLASS_NAME_SCROLLABLE = 'modal-dialog-scrollable'
+const CLASS_NAME_SCROLLBAR_MEASURER = 'modal-scrollbar-measure'
+const CLASS_NAME_BACKDROP = 'modal-backdrop'
+const CLASS_NAME_OPEN = 'modal-open'
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_SHOW = 'show'
+const CLASS_NAME_STATIC = 'modal-static'
+
+const EVENT_HIDE = `hide${EVENT_KEY}`
+const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY}`
+const EVENT_HIDDEN = `hidden${EVENT_KEY}`
+const EVENT_SHOW = `show${EVENT_KEY}`
+const EVENT_SHOWN = `shown${EVENT_KEY}`
+const EVENT_FOCUSIN = `focusin${EVENT_KEY}`
+const EVENT_RESIZE = `resize${EVENT_KEY}`
+const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
+const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
+const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY}`
+const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`
+const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
+
+const SELECTOR_DIALOG = '.modal-dialog'
+const SELECTOR_MODAL_BODY = '.modal-body'
+const SELECTOR_DATA_TOGGLE = '[data-toggle="modal"]'
+const SELECTOR_DATA_DISMISS = '[data-dismiss="modal"]'
+const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
+const SELECTOR_STICKY_CONTENT = '.sticky-top'
 
 const Default = {
   backdrop: true,
@@ -36,38 +62,8 @@ const DefaultType = {
   show: 'boolean'
 }
 
-const EVENT_HIDE = `hide${EVENT_KEY}`
-const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY}`
-const EVENT_HIDDEN = `hidden${EVENT_KEY}`
-const EVENT_SHOW = `show${EVENT_KEY}`
-const EVENT_SHOWN = `shown${EVENT_KEY}`
-const EVENT_FOCUSIN = `focusin${EVENT_KEY}`
-const EVENT_RESIZE = `resize${EVENT_KEY}`
-const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
-const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
-const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY}`
-const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
-
-const CLASS_NAME_SCROLLABLE = 'modal-dialog-scrollable'
-const CLASS_NAME_SCROLLBAR_MEASURER = 'modal-scrollbar-measure'
-const CLASS_NAME_BACKDROP = 'modal-backdrop'
-const CLASS_NAME_OPEN = 'modal-open'
-const CLASS_NAME_FADE = 'fade'
-const CLASS_NAME_SHOW = 'show'
-const CLASS_NAME_STATIC = 'modal-static'
-
-const SELECTOR_DIALOG = '.modal-dialog'
-const SELECTOR_MODAL_BODY = '.modal-body'
-const SELECTOR_DATA_TOGGLE = '[data-toggle="modal"]'
-const SELECTOR_DATA_DISMISS = '[data-dismiss="modal"]'
-const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
-const SELECTOR_STICKY_CONTENT = '.sticky-top'
-
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Modal {
@@ -84,7 +80,6 @@ class Modal {
   }
 
   // Getters
-
   static get VERSION() {
     return VERSION
   }
@@ -94,7 +89,6 @@ class Modal {
   }
 
   // Public
-
   toggle(relatedTarget) {
     return this._isShown ? this.hide() : this.show(relatedTarget)
   }
@@ -104,21 +98,21 @@ class Modal {
       return
     }
 
-    if ($(this._element).hasClass(CLASS_NAME_FADE)) {
-      this._isTransitioning = true
-    }
-
     const showEvent = $.Event(EVENT_SHOW, {
       relatedTarget
     })
 
     $(this._element).trigger(showEvent)
 
-    if (this._isShown || showEvent.isDefaultPrevented()) {
+    if (showEvent.isDefaultPrevented()) {
       return
     }
 
     this._isShown = true
+
+    if ($(this._element).hasClass(CLASS_NAME_FADE)) {
+      this._isTransitioning = true
+    }
 
     this._checkScrollbar()
     this._setScrollbar()
@@ -219,7 +213,6 @@ class Modal {
   }
 
   // Private
-
   _getConfig(config) {
     config = {
       ...Default,
@@ -545,7 +538,6 @@ class Modal {
   }
 
   // Static
-
   static _jQueryInterface(config, relatedTarget) {
     return this.each(function () {
       let data = $(this).data(DATA_KEY)
@@ -574,9 +566,7 @@ class Modal {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
+ * Data API implementation
  */
 
 $(document).on(EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
@@ -614,9 +604,7 @@ $(document).on(EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
 })
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
  */
 
 $.fn[NAME] = Modal._jQueryInterface

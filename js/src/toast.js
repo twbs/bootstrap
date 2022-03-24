@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.6.0): toast.js
+ * Bootstrap (v4.6.1): toast.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9,16 +9,19 @@ import $ from 'jquery'
 import Util from './util'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'toast'
-const VERSION = '4.6.0'
+const VERSION = '4.6.1'
 const DATA_KEY = 'bs.toast'
 const EVENT_KEY = `.${DATA_KEY}`
 const JQUERY_NO_CONFLICT = $.fn[NAME]
+
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_HIDE = 'hide'
+const CLASS_NAME_SHOW = 'show'
+const CLASS_NAME_SHOWING = 'showing'
 
 const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
 const EVENT_HIDE = `hide${EVENT_KEY}`
@@ -26,16 +29,7 @@ const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
 
-const CLASS_NAME_FADE = 'fade'
-const CLASS_NAME_HIDE = 'hide'
-const CLASS_NAME_SHOW = 'show'
-const CLASS_NAME_SHOWING = 'showing'
-
-const DefaultType = {
-  animation: 'boolean',
-  autohide: 'boolean',
-  delay: 'number'
-}
+const SELECTOR_DATA_DISMISS = '[data-dismiss="toast"]'
 
 const Default = {
   animation: true,
@@ -43,12 +37,14 @@ const Default = {
   delay: 500
 }
 
-const SELECTOR_DATA_DISMISS = '[data-dismiss="toast"]'
+const DefaultType = {
+  animation: 'boolean',
+  autohide: 'boolean',
+  delay: 'number'
+}
 
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Toast {
@@ -60,7 +56,6 @@ class Toast {
   }
 
   // Getters
-
   static get VERSION() {
     return VERSION
   }
@@ -74,7 +69,6 @@ class Toast {
   }
 
   // Public
-
   show() {
     const showEvent = $.Event(EVENT_SHOW)
 
@@ -146,7 +140,6 @@ class Toast {
   }
 
   // Private
-
   _getConfig(config) {
     config = {
       ...Default,
@@ -191,7 +184,6 @@ class Toast {
   }
 
   // Static
-
   static _jQueryInterface(config) {
     return this.each(function () {
       const $element = $(this)
@@ -215,9 +207,7 @@ class Toast {
 }
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
  */
 
 $.fn[NAME] = Toast._jQueryInterface

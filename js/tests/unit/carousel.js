@@ -56,7 +56,7 @@ $(function () {
 
     var defaultConfig = Carousel.Default
 
-    assert.strictEqual(defaultConfig.touch, true)
+    assert.true(defaultConfig.touch)
   })
 
   QUnit.test('should throw explicit error on undefined method', function (assert) {
@@ -74,7 +74,7 @@ $(function () {
     assert.expect(2)
     var $el = $('<div/>')
     var $carousel = $el.bootstrapCarousel()
-    assert.ok($carousel instanceof $, 'returns jquery collection')
+    assert.true($carousel instanceof $, 'returns jquery collection')
     assert.strictEqual($carousel[0], $el[0], 'collection contains element')
   })
 
@@ -93,7 +93,7 @@ $(function () {
       message = error.message
     }
 
-    assert.ok(message === expectedMessage, 'correct error message')
+    assert.strictEqual(message, expectedMessage, 'correct error message')
 
     config = {
       keyboard: document.createElement('div')
@@ -106,7 +106,7 @@ $(function () {
       message = error.message
     }
 
-    assert.ok(message === expectedMessage, 'correct error message')
+    assert.strictEqual(message, expectedMessage, 'correct error message')
   })
 
   QUnit.test('should not fire slid when slide is prevented', function (assert) {
@@ -153,17 +153,17 @@ $(function () {
       .one('slide.bs.carousel', function (e) {
         e.preventDefault()
         setTimeout(function () {
-          assert.ok($carousel.find('.carousel-item:nth-child(1)').is('.active'), 'first item still active')
-          assert.ok($carousel.find('.carousel-indicators li:nth-child(1)').is('.active'), 'first indicator still active')
+          assert.true($carousel.find('.carousel-item:nth-child(1)').is('.active'), 'first item still active')
+          assert.true($carousel.find('.carousel-indicators li:nth-child(1)').is('.active'), 'first indicator still active')
           $carousel.bootstrapCarousel('next')
         }, 0)
       })
       .one('slid.bs.carousel', function () {
         setTimeout(function () {
-          assert.ok(!$carousel.find('.carousel-item:nth-child(1)').is('.active'), 'first item still active')
-          assert.ok(!$carousel.find('.carousel-indicators li:nth-child(1)').is('.active'), 'first indicator still active')
-          assert.ok($carousel.find('.carousel-item:nth-child(2)').is('.active'), 'second item active')
-          assert.ok($carousel.find('.carousel-indicators li:nth-child(2)').is('.active'), 'second indicator active')
+          assert.false($carousel.find('.carousel-item:nth-child(1)').is('.active'), 'first item still active')
+          assert.false($carousel.find('.carousel-indicators li:nth-child(1)').is('.active'), 'first indicator still active')
+          assert.true($carousel.find('.carousel-item:nth-child(2)').is('.active'), 'second item active')
+          assert.true($carousel.find('.carousel-indicators li:nth-child(2)').is('.active'), 'second indicator active')
           done()
         }, 0)
       })
@@ -211,12 +211,12 @@ $(function () {
 
     $carousel
       .one('slide.bs.carousel', function (e) {
-        assert.ok(e.direction, 'direction present on next')
+        assert.notStrictEqual(e.direction, 'undefined', 'direction present on next')
         assert.strictEqual(e.direction, 'left', 'direction is left on next')
 
         $carousel
           .one('slide.bs.carousel', function (e) {
-            assert.ok(e.direction, 'direction present on prev')
+            assert.notStrictEqual(e.direction, 'undefined', 'direction present on prev')
             assert.strictEqual(e.direction, 'right', 'direction is right on prev')
             done()
           })
@@ -266,12 +266,12 @@ $(function () {
 
     $carousel
       .one('slid.bs.carousel', function (e) {
-        assert.ok(e.direction, 'direction present on next')
+        assert.notStrictEqual(e.direction, 'undefined', 'direction present on next')
         assert.strictEqual(e.direction, 'left', 'direction is left on next')
 
         $carousel
           .one('slid.bs.carousel', function (e) {
-            assert.ok(e.direction, 'direction present on prev')
+            assert.notStrictEqual(e.direction, 'undefined', 'direction present on prev')
             assert.strictEqual(e.direction, 'right', 'direction is right on prev')
             done()
           })
@@ -320,8 +320,8 @@ $(function () {
 
     $(template)
       .on('slide.bs.carousel', function (e) {
-        assert.ok(e.relatedTarget, 'relatedTarget present')
-        assert.ok($(e.relatedTarget).hasClass('carousel-item'), 'relatedTarget has class "item"')
+        assert.notStrictEqual(e.relatedTarget, 'undefined', 'relatedTarget present')
+        assert.true($(e.relatedTarget).hasClass('carousel-item'), 'relatedTarget has class "item"')
         done()
       })
       .bootstrapCarousel('next')
@@ -367,8 +367,8 @@ $(function () {
 
     $(template)
       .on('slid.bs.carousel', function (e) {
-        assert.ok(e.relatedTarget, 'relatedTarget present')
-        assert.ok($(e.relatedTarget).hasClass('carousel-item'), 'relatedTarget has class "item"')
+        assert.notStrictEqual(e.relatedTarget, 'undefined', 'relatedTarget present')
+        assert.true($(e.relatedTarget).hasClass('carousel-item'), 'relatedTarget has class "item"')
         done()
       })
       .bootstrapCarousel('next')
@@ -404,14 +404,14 @@ $(function () {
     var done = assert.async()
     $(template)
       .on('slid.bs.carousel', function (e) {
-        assert.ok(typeof e.from !== 'undefined', 'from present')
-        assert.ok(typeof e.to !== 'undefined', 'to present')
+        assert.notStrictEqual(typeof e.from, 'undefined', 'from present')
+        assert.notStrictEqual(typeof e.to, 'undefined', 'to present')
         $(this).off()
         done()
       })
       .on('slide.bs.carousel', function (e) {
-        assert.ok(typeof e.from !== 'undefined', 'from present')
-        assert.ok(typeof e.to !== 'undefined', 'to present')
+        assert.notStrictEqual(typeof e.from, 'undefined', 'from present')
+        assert.notStrictEqual(typeof e.to, 'undefined', 'to present')
         $(this).off('slide.bs.carousel')
       })
       .bootstrapCarousel('next')
@@ -475,7 +475,7 @@ $(function () {
     $carousel.attr('data-interval', false)
     $carousel.appendTo('body')
     $carousel.bootstrapCarousel(1)
-    assert.strictEqual($carousel.data('bs.carousel')._config.interval, false, 'data attribute has higher priority than default options')
+    assert.false($carousel.data('bs.carousel')._config.interval, 'data attribute has higher priority than default options')
     $carousel.remove()
   })
 
@@ -670,13 +670,13 @@ $(function () {
     })
 
     $template.one('keydown', function (event) {
-      assert.strictEqual(event.isDefaultPrevented(), false)
+      assert.false(event.isDefaultPrevented())
     })
 
     $template.trigger(eventArrowDown)
 
     $template.one('keydown', function (event) {
-      assert.strictEqual(event.isDefaultPrevented(), false)
+      assert.false(event.isDefaultPrevented())
       done()
     })
 
@@ -950,12 +950,12 @@ $(function () {
       which: 65
     }) // 65 for "a"
     $inputText.on('keydown', function (event) {
-      assert.strictEqual(event.isDefaultPrevented(), false)
+      assert.false(event.isDefaultPrevented())
     })
     $inputText.trigger(eventKeyDown)
 
     $textArea.on('keydown', function (event) {
-      assert.strictEqual(event.isDefaultPrevented(), false)
+      assert.false(event.isDefaultPrevented())
       done()
     })
     $textArea.trigger(eventKeyDown)
@@ -985,14 +985,14 @@ $(function () {
 
     var $firstItem = $('#firstItem')
     setTimeout(function () {
-      assert.ok($firstItem.hasClass('active'))
+      assert.true($firstItem.hasClass('active'))
       $html
         .bootstrapCarousel('dispose')
         .attr('style', 'visibility: hidden;')
         .bootstrapCarousel()
 
       setTimeout(function () {
-        assert.ok($firstItem.hasClass('active'))
+        assert.true($firstItem.hasClass('active'))
         done()
       }, 80)
     }, 80)
@@ -1025,13 +1025,13 @@ $(function () {
     var $firstItem = $('#firstItem')
 
     setTimeout(function () {
-      assert.ok($firstItem.hasClass('active'))
+      assert.true($firstItem.hasClass('active'))
       $carousel.bootstrapCarousel('dispose')
       $parent.attr('style', 'visibility: hidden;')
       $carousel.bootstrapCarousel()
 
       setTimeout(function () {
-        assert.ok($firstItem.hasClass('active'))
+        assert.true($firstItem.hasClass('active'))
         done()
       }, 80)
     }, 80)
@@ -1069,8 +1069,8 @@ $(function () {
 
     $carousel.one('slid.bs.carousel', function () {
       assert.ok(true, 'slid event fired')
-      assert.ok($item.hasClass('active'))
-      assert.ok(spy.called)
+      assert.true($item.hasClass('active'))
+      assert.true(spy.called)
       $styles.remove()
       delete document.documentElement.ontouchstart
       done()
@@ -1111,8 +1111,8 @@ $(function () {
 
     $carousel.one('slid.bs.carousel', function () {
       assert.ok(true, 'slid event fired')
-      assert.ok($item.hasClass('active'))
-      assert.ok(spy.called)
+      assert.true($item.hasClass('active'))
+      assert.true(spy.called)
       delete document.documentElement.ontouchstart
       restorePointerEvents()
       done()
@@ -1158,8 +1158,8 @@ $(function () {
 
     $carousel.one('slid.bs.carousel', function () {
       assert.ok(true, 'slid event fired')
-      assert.ok(!$item.hasClass('active'))
-      assert.ok(spy.called)
+      assert.false($item.hasClass('active'))
+      assert.true(spy.called)
       assert.strictEqual(carousel.touchDeltaX, 0)
       $styles.remove()
       delete document.documentElement.ontouchstart
@@ -1202,8 +1202,8 @@ $(function () {
 
     $carousel.one('slid.bs.carousel', function () {
       assert.ok(true, 'slid event fired')
-      assert.ok(!$item.hasClass('active'))
-      assert.ok(spy.called)
+      assert.false($item.hasClass('active'))
+      assert.true(spy.called)
       assert.strictEqual(carousel.touchDeltaX, 0)
       restorePointerEvents()
       delete document.documentElement.ontouchstart
@@ -1258,7 +1258,7 @@ $(function () {
 
     carousel.next()
 
-    assert.strictEqual(spy.called, false)
+    assert.false(spy.called)
   })
 
   QUnit.test('should call next when the page is visible', function (assert) {
@@ -1282,7 +1282,7 @@ $(function () {
 
     carousel.nextWhenVisible()
 
-    assert.strictEqual(spy.called, true)
+    assert.true(spy.called)
     sandbox.restore()
   })
 
@@ -1296,7 +1296,7 @@ $(function () {
     $carousel.appendTo('#qunit-fixture')
     $carousel.bootstrapCarousel()
 
-    assert.strictEqual(spy.called, false)
+    assert.false(spy.called)
     spy.restore()
   })
 
@@ -1310,7 +1310,7 @@ $(function () {
     $carousel.appendTo('#qunit-fixture')
     $carousel.bootstrapCarousel()
 
-    assert.strictEqual(spy.called, true)
+    assert.true(spy.called)
     spy.restore()
   })
 
@@ -1327,7 +1327,7 @@ $(function () {
     $(window).trigger($.Event('load'))
 
     setTimeout(function () {
-      assert.strictEqual(spy.called, true)
+      assert.true(spy.called)
       spy.restore()
       done()
     }, 5)
@@ -1342,7 +1342,7 @@ $(function () {
     $carousel.appendTo('#qunit-fixture')
     $carousel.bootstrapCarousel()
 
-    assert.strictEqual(spy.called, false)
+    assert.false(spy.called)
     spy.restore()
   })
 })

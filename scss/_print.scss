@@ -55,15 +55,6 @@
       page-break-inside: avoid;
     }
 
-    //
-    // Printing Tables:
-    // https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
-    //
-
-    thead {
-      display: table-header-group;
-    }
-
     tr,
     img {
       page-break-inside: avoid;

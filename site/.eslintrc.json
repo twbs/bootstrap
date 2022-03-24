@@ -14,7 +14,12 @@
     "xo/browser"
   ],
   "rules": {
+    "arrow-body-style": "off",
     "capitalized-comments": "off",
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
     "indent": [
       "error",
       2,
@@ -23,22 +28,35 @@
         "SwitchCase": 1
       }
     ],
+    "no-var": "off",
     "object-curly-spacing": [
       "error",
       "always"
     ],
+    "object-shorthand": "off",
+    "operator-linebreak": [
+      "error",
+      "after"
+    ],
+    "prefer-arrow-callback": "off",
+    "prefer-destructuring": "off",
     "semi": [
       "error",
       "never"
     ],
     "strict": "error",
+    "unicorn/no-array-method-this-argument": "off",
     "unicorn/no-for-loop": "off",
     "unicorn/no-null": "off",
+    "unicorn/numeric-separators-style": "off",
     "unicorn/prefer-array-find": "off",
+    "unicorn/prefer-array-flat": "off",
     "unicorn/prefer-dom-node-append": "off",
     "unicorn/prefer-dom-node-dataset": "off",
     "unicorn/prefer-includes": "off",
+    "unicorn/prefer-module": "off",
     "unicorn/prefer-number-properties": "off",
+    "unicorn/prefer-prototype-methods": "off",
     "unicorn/prefer-query-selector": "off",
     "unicorn/prevent-abbreviations": "off"
   }

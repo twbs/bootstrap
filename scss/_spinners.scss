@@ -10,7 +10,7 @@
   display: inline-block;
   width: $spinner-width;
   height: $spinner-height;
-  vertical-align: text-bottom;
+  vertical-align: $spinner-vertical-align;
   border: $spinner-border-width solid currentColor;
   border-right-color: transparent;
   // stylelint-disable-next-line property-disallowed-list
@@ -42,7 +42,7 @@
   display: inline-block;
   width: $spinner-width;
   height: $spinner-height;
-  vertical-align: text-bottom;
+  vertical-align: $spinner-vertical-align;
   background-color: currentColor;
   // stylelint-disable-next-line property-disallowed-list
   border-radius: 50%;

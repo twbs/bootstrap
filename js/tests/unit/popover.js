@@ -41,7 +41,7 @@ $(function () {
     assert.expect(2)
     var $el = $('<div/>')
     var $popover = $el.bootstrapPopover()
-    assert.ok($popover instanceof $, 'returns jquery collection')
+    assert.true($popover instanceof $, 'returns jquery collection')
     assert.strictEqual($popover[0], $el[0], 'collection contains element')
   })
 
@@ -67,8 +67,8 @@ $(function () {
     $('<a href="#" title="mdo" data-content="https://twitter.com/mdo" data-custom-class="a b">@mdo</a>')
       .appendTo('#qunit-fixture')
       .on('shown.bs.popover', function () {
-        assert.strictEqual($('.popover').hasClass('popover fade bs-popover-right show'), true, 'has default classes')
-        assert.strictEqual($('.popover').hasClass('a b'), true, 'has custom classes')
+        assert.true($('.popover').hasClass('popover fade bs-popover-right show'), 'has default classes')
+        assert.true($('.popover').hasClass('a b'), 'has custom classes')
         done()
       })
       .bootstrapPopover('show')
@@ -157,9 +157,9 @@ $(function () {
 
     assert.notStrictEqual($('.popover').length, 0, 'popover inserted')
     assert.strictEqual($('.popover .popover-header').text(), '@glebm <3 writing tests', 'title inserted')
-    assert.ok(!$.contains($('.popover').get(0), title), 'title node copied, not moved')
+    assert.false($.contains($('.popover').get(0), title), 'title node copied, not moved')
     assert.strictEqual($('.popover .popover-body').html(), '¯\\_(ツ)_/¯', 'content inserted')
-    assert.ok(!$.contains($('.popover').get(0), content), 'content node copied, not moved')
+    assert.false($.contains($('.popover').get(0), content), 'content node copied, not moved')
   })
 
   QUnit.test('should not duplicate HTML object', function (assert) {
@@ -254,7 +254,7 @@ $(function () {
       })
       .one('shown.bs.popover', function () {
         assert.notStrictEqual($('.popover').length, 0, 'popover was inserted')
-        assert.ok($('.popover').hasClass('foobar'), 'custom class is present')
+        assert.true($('.popover').hasClass('foobar'), 'custom class is present')
         $popover.bootstrapPopover('hide')
       })
       .one('hidden.bs.popover', function () {
@@ -265,7 +265,7 @@ $(function () {
   })
 
   QUnit.test('should destroy popover', function (assert) {
-    assert.expect(7)
+    assert.expect(9)
     var $popover = $('<div/>')
       .bootstrapPopover({
         trigger: 'hover'
@@ -273,16 +273,18 @@ $(function () {
       .on('click.foo', $.noop)
 
     assert.ok($popover.data('bs.popover'), 'popover has data')
-    assert.ok($._data($popover[0], 'events').mouseover && $._data($popover[0], 'events').mouseout, 'popover has hover event')
+    assert.ok($._data($popover[0], 'events').mouseover, 'popover has mouseover event')
+    assert.ok($._data($popover[0], 'events').mouseout, 'popover has mouseout event')
     assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover has extra click.foo event')
 
     $popover.bootstrapPopover('show')
     $popover.bootstrapPopover('dispose')
 
-    assert.ok(!$popover.hasClass('show'), 'popover is hidden')
-    assert.ok(!$popover.data('popover'), 'popover does not have data')
+    assert.false($popover.hasClass('show'), 'popover is hidden')
+    assert.strictEqual(typeof $popover.data('popover'), 'undefined', 'popover does not have data')
     assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover still has click.foo')
-    assert.ok(!$._data($popover[0], 'events').mouseover && !$._data($popover[0], 'events').mouseout, 'popover does not have any events')
+    assert.strictEqual(typeof $._data($popover[0], 'events').mouseover, 'undefined', 'popover does not have mouseover event')
+    assert.strictEqual(typeof $._data($popover[0], 'events').mouseout, 'undefined', 'popover does not have mouseout event')
   })
 
   QUnit.test('should render popover element using delegated selector', function (assert) {
@@ -335,7 +337,7 @@ $(function () {
             $div
               .one('shown.bs.popover', function () {
                 $('.content-with-handler .btn').trigger('click')
-                assert.ok(handlerCalled, 'content\'s event handler still present')
+                assert.true(handlerCalled, 'content\'s event handler still present')
                 $div.bootstrapPopover('dispose')
                 done()
               })
@@ -448,14 +450,14 @@ $(function () {
         content: 'with disable/enable'
       })
       .on('shown.bs.popover', function () {
-        assert.strictEqual($('.popover').hasClass('show'), true)
+        assert.true($('.popover').hasClass('show'))
         done()
       })
 
     $popover.bootstrapPopover('disable')
     $popover.trigger($.Event('click'))
     setTimeout(function () {
-      assert.strictEqual($('.popover').length === 0, true)
+      assert.strictEqual($('.popover').length, 0)
       $popover.bootstrapPopover('enable')
       $popover.trigger($.Event('click'))
     }, 200)
