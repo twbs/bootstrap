@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.6.0): popover.js
+ * Bootstrap (v4.6.1): popover.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9,18 +9,22 @@ import $ from 'jquery'
 import Tooltip from './tooltip'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'popover'
-const VERSION = '4.6.0'
+const VERSION = '4.6.1'
 const DATA_KEY = 'bs.popover'
 const EVENT_KEY = `.${DATA_KEY}`
 const JQUERY_NO_CONFLICT = $.fn[NAME]
 const CLASS_PREFIX = 'bs-popover'
 const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
+
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_SHOW = 'show'
+
+const SELECTOR_TITLE = '.popover-header'
+const SELECTOR_CONTENT = '.popover-body'
 
 const Default = {
   ...Tooltip.Default,
@@ -38,12 +42,6 @@ const DefaultType = {
   content: '(string|element|function)'
 }
 
-const CLASS_NAME_FADE = 'fade'
-const CLASS_NAME_SHOW = 'show'
-
-const SELECTOR_TITLE = '.popover-header'
-const SELECTOR_CONTENT = '.popover-body'
-
 const Event = {
   HIDE: `hide${EVENT_KEY}`,
   HIDDEN: `hidden${EVENT_KEY}`,
@@ -58,14 +56,11 @@ const Event = {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Popover extends Tooltip {
   // Getters
-
   static get VERSION() {
     return VERSION
   }
@@ -95,7 +90,6 @@ class Popover extends Tooltip {
   }
 
   // Overrides
-
   isWithContent() {
     return this.getTitle() || this._getContent()
   }
@@ -125,7 +119,6 @@ class Popover extends Tooltip {
   }
 
   // Private
-
   _getContent() {
     return this.element.getAttribute('data-content') ||
       this.config.content
@@ -140,7 +133,6 @@ class Popover extends Tooltip {
   }
 
   // Static
-
   static _jQueryInterface(config) {
     return this.each(function () {
       let data = $(this).data(DATA_KEY)
@@ -167,9 +159,7 @@ class Popover extends Tooltip {
 }
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
  */
 
 $.fn[NAME] = Popover._jQueryInterface
