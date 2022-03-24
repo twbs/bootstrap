@@ -569,19 +569,17 @@ Trigger dropdown menus at the left of the elements by adding `.dropstart` to the
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div>
-  <div class="btn-group">
-    <div class="btn-group dropstart" role="group">
-      <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-        <span class="visually-hidden">Toggle Dropstart</span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Separated link</a></li>
-      </ul>
-    </div>
+  <div class="btn-group dropstart" role="group">
+    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+      <span class="visually-hidden">Toggle Dropstart</span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
     <button type="button" class="btn btn-secondary">
       Split dropstart
     </button>
@@ -600,15 +598,13 @@ Trigger dropdown menus at the left of the elements by adding `.dropstart` to the
 </div>
 
 <!-- Split dropstart button -->
-<div class="btn-group">
-  <div class="btn-group dropstart" role="group">
-    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-      <span class="visually-hidden">Toggle Dropstart</span>
-    </button>
-    <ul class="dropdown-menu">
-      <!-- Dropdown menu links -->
-    </ul>
-  </div>
+<div class="btn-group dropstart" role="group">
+  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="visually-hidden">Toggle Dropstart</span>
+  </button>
+  <ul class="dropdown-menu">
+    <!-- Dropdown menu links -->
+  </ul>
   <button type="button" class="btn btn-secondary">
     Split dropstart
   </button>
