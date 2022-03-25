@@ -1,7 +1,10 @@
+// stylelint-disable custom-property-empty-line-before
+
 .pagination {
   // scss-docs-start pagination-css-vars
   --#{$prefix}pagination-padding-x: #{$pagination-padding-x};
   --#{$prefix}pagination-padding-y: #{$pagination-padding-y};
+  @include rfs($pagination-font-size, --#{$prefix}pagination-font-size);
   --#{$prefix}pagination-color: #{$pagination-color};
   --#{$prefix}pagination-bg: #{$pagination-bg};
   --#{$prefix}pagination-border-width: #{$pagination-border-width};
