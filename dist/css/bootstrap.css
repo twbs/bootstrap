@@ -90,6 +90,7 @@ hr {
   background-color: currentColor;
   border: 0;
   opacity: 0.25;
+  color: var(--bs-dark-rgb: 33, 37, 41);
 }
 
 hr:not([size]) {
