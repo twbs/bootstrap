@@ -12,6 +12,7 @@
   --#{$prefix}popover-box-shadow: #{$popover-box-shadow};
   --#{$prefix}popover-header-padding-x: #{$popover-header-padding-x};
   --#{$prefix}popover-header-padding-y: #{$popover-header-padding-y};
+  @include rfs($popover-header-font-size, --#{$prefix}popover-header-font-size);
   --#{$prefix}popover-header-color: #{$popover-header-color};
   --#{$prefix}popover-header-bg: #{$popover-header-bg};
   --#{$prefix}popover-body-padding-x: #{$popover-body-padding-x};
@@ -183,7 +184,7 @@
 .popover-header {
   padding: var(--#{$prefix}popover-header-padding-y) var(--#{$prefix}popover-header-padding-x);
   margin-bottom: 0; // Reset the default from Reboot
-  @include font-size($font-size-base);
+  font-size: var(--#{$prefix}popover-header-font-size);
   color: var(--#{$prefix}popover-header-color);
   background-color: var(--#{$prefix}popover-header-bg);
   border-bottom: var(--#{$prefix}popover-border-width) solid var(--#{$prefix}popover-border-color);
