@@ -296,9 +296,17 @@ And if you want `<label>`s as the `.list-group-item` for large hit areas, you ca
 </div>
 {{< /example >}}
 
-## Sass
+## CSS
 
 ### Variables
+
+{{< added-in "5.2.0" >}}
+
+As part of Bootstrap's evolving CSS variables approach, list groups now use local CSS variables on `.list-group` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+{{< scss-docs name="list-group-css-vars" file="scss/_list-group.scss" >}}
+
+### Sass variables
 
 {{< scss-docs name="list-group-variables" file="scss/_variables.scss" >}}
 
