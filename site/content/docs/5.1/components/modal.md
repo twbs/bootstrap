@@ -766,9 +766,19 @@ Another override is the option to pop up a modal that covers the user viewport, 
   </div>
 </div>
 
-## Sass
+## CSS
 
 ### Variables
+
+{{< added-in "5.2.0" >}}
+
+As part of Bootstrap's evolving CSS variables approach, dropdowns now use local CSS variables on `.modal` and `.modal-backdrop` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+{{< scss-docs name="modal-css-vars" file="scss/_modal.scss" >}}
+
+{{< scss-docs name="modal-backdrop-css-vars" file="scss/_modal.scss" >}}
+
+### Sass variables
 
 {{< scss-docs name="modal-variables" file="scss/_variables.scss" >}}
 
