@@ -144,7 +144,7 @@
   }
 
   snippetButtonTooltip('.btn-clipboard', 'Copy to clipboard')
-  snippetButtonTooltip('.btn-edit', 'Edit on Stackblitz')
+  snippetButtonTooltip('.btn-edit', 'Edit on StackBlitz')
 
   var clipboard = new ClipboardJS('.btn-clipboard', {
     target: function (trigger) {
