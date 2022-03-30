@@ -6,6 +6,7 @@
     * class: any extra class(es) to be added to the `div` - default: ""
     * show_preview: if the preview should be output in the HTML - default: `true`
     * show_markup: if the markup should be output in the HTML - default: `true`
+    * show_edit_btn: if the edit button should be displayed - default: `true`
 */ -}}
 
 {{- $id := .Get "id" -}}
@@ -13,6 +14,7 @@
 {{- $lang := .Get "lang" | default "html" -}}
 {{- $show_preview := .Get "show_preview" | default true -}}
 {{- $show_markup := .Get "show_markup" | default true -}}
+{{- $show_edit_btn := .Get "show_edit_btn" | default true -}}
 {{- $input := .Inner -}}
 
 {{- if eq $show_preview true -}}
@@ -22,9 +24,11 @@
 {{- end -}}
 
 {{- if eq $show_markup true -}}
+  {{- if eq $show_edit_btn true -}}
   <div class="bd-edit">
     <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">Try it</button>
   </div>
+  {{- end -}}
   {{- $content := replaceRE `<svg class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>\n` `<img src="..." class="$1" alt="...">` $input -}}
   {{- $content = replaceRE ` (class=" *?")` "" $content -}}
   {{- highlight (trim $content "\n") $lang "" -}}
