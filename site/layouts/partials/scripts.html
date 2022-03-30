@@ -26,7 +26,7 @@
   document.querySelectorAll('.btn-edit')
     .forEach(function (btn) {
       btn.addEventListener('click', function (event) {
-        var htmlSnippet = event.target.closest('.bd-content').querySelector('.bd-example').innerHTML
+        var htmlSnippet = event.target.closest('.bd-edit').previousSibling.innerHTML
 
         StackBlitzSDK.openBootstrapSnippet(htmlSnippet)
       })
