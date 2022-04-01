@@ -6,11 +6,16 @@
   // scss-docs-start list-group-css-vars
   --#{$prefix}list-group-color: #{$list-group-color};
   --#{$prefix}list-group-bg: #{$list-group-bg};
+  --#{$prefix}list-group-hover-bg: #{$list-group-hover-bg};
   --#{$prefix}list-group-border-color: #{$list-group-border-color};
   --#{$prefix}list-group-border-width: #{$list-group-border-width};
   --#{$prefix}list-group-border-radius: #{$list-group-border-radius};
   --#{$prefix}list-group-item-padding-x: #{$list-group-item-padding-x};
   --#{$prefix}list-group-item-padding-y: #{$list-group-item-padding-y};
+  --#{$prefix}list-group-action-color: #{$list-group-action-color};
+  --#{$prefix}list-group-action-hover-color: #{$list-group-action-hover-color};
+  --#{$prefix}list-group-action-active-color: #{$list-group-action-active-color};
+  --#{$prefix}list-group-action-active-bg: #{$list-group-action-active-bg};
   --#{$prefix}list-group-disabled-color: #{$list-group-disabled-color};
   --#{$prefix}list-group-disabled-bg: #{$list-group-disabled-bg};
   --#{$prefix}list-group-active-color: #{$list-group-active-color};
@@ -45,21 +50,21 @@
 
 .list-group-item-action {
   width: 100%; // For `<button>`s (anchors become 100% by default though)
-  color: $list-group-action-color;
+  color: var(--#{$prefix}list-group-action-color);
   text-align: inherit; // For `<button>`s (anchors inherit)
 
   // Hover state
   &:hover,
   &:focus {
     z-index: 1; // Place hover/focus items above their siblings for proper border styling
-    color: $list-group-action-hover-color;
+    color: var(--#{$prefix}list-group-action-hover-color);
     text-decoration: none;
-    background-color: $list-group-hover-bg;
+    background-color: var(--#{$prefix}list-group-hover-bg);
   }
 
   &:active {
-    color: $list-group-action-active-color;
-    background-color: $list-group-action-active-bg;
+    color: var(--#{$prefix}list-group-action-active-color);
+    background-color: var(--#{$prefix}list-group-action-active-bg);
   }
 }
 
