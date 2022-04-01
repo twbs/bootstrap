@@ -84,26 +84,19 @@
 // Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
 
 .navbar-nav {
+  // scss-docs-start navbar-nav-css-vars
+  --#{$prefix}nav-link-padding-x: 0;
+  --#{$prefix}nav-link-padding-y: #{$nav-link-padding-y};
+  --#{$prefix}nav-link-color: var(--#{$prefix}navbar-color);
+  --#{$prefix}nav-link-hover-color: var(--#{$prefix}navbar-hover-color);
+  --#{$prefix}nav-link-disabled-color: var(--#{$prefix}navbar-disabled-color);
+  // scss-docs-end navbar-nav-css-vars
+
   display: flex;
   flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
-
-  .nav-link {
-    padding-right: 0;
-    padding-left: 0;
-    color: var(--#{$prefix}navbar-color);
-
-    &:hover,
-    &:focus {
-      color: var(--#{$prefix}navbar-hover-color);
-    }
-
-    &.disabled {
-      color: var(--#{$prefix}navbar-disabled-color);
-    }
-  }
 
   .show > .nav-link,
   .nav-link.active {
