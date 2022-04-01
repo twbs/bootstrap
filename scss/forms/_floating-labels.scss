@@ -1,3 +1,14 @@
+// We use mixins instead of placeholders as placeholders would combine the selectors when @extend-ed
+
+@mixin form-floating-active-input-styles() {
+  padding-top: $form-floating-input-padding-t;
+  padding-bottom: $form-floating-input-padding-b;
+}
+
+@mixin form-floating-active-label-styles() {
+  transform: $form-floating-label-transform;
+}
+
 .form-floating {
   position: relative;
 
@@ -38,19 +49,17 @@
 
     &:focus,
     &:not(:placeholder-shown) {
-      padding-top: $form-floating-input-padding-t;
-      padding-bottom: $form-floating-input-padding-b;
+      @include form-floating-active-input-styles();
     }
+
     // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
     &:-webkit-autofill {
-      padding-top: $form-floating-input-padding-t;
-      padding-bottom: $form-floating-input-padding-b;
+      @include form-floating-active-input-styles();
     }
   }
 
   > .form-select {
-    padding-top: $form-floating-input-padding-t;
-    padding-bottom: $form-floating-input-padding-b;
+    @include form-floating-active-input-styles();
     padding-left: $form-floating-padding-x;
   }
 
@@ -59,13 +68,13 @@
   > .form-control-plaintext,
   > .form-select {
     ~ label {
-      transform: $form-floating-label-transform;
+      @include form-floating-active-label-styles();
     }
   }
   // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
   > .form-control:-webkit-autofill {
     ~ label {
-      transform: $form-floating-label-transform;
+      @include form-floating-active-label-styles();
     }
   }
   > textarea:focus,
@@ -93,5 +102,23 @@
   > :disabled ~ label,
   > .form-control:disabled ~ label { // Required for `.form-control`s because of specificity
     color: $form-floating-label-disabled-color;
+  }
+}
+
+// Todo in v6: Consider combining this with the .form-control-plaintext rules to reduce some CSS?
+.form-floating-always {
+  > .form-control {
+    @include form-floating-active-input-styles();
+
+    &::placeholder {
+      color: $input-color;
+    }
+    &:focus::placeholder {
+      color: $input-placeholder-color;
+    }
+  }
+
+  > label {
+    @include form-floating-active-label-styles();
   }
 }
