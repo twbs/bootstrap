@@ -119,6 +119,7 @@
 
   // Insert copy to clipboard button before .highlight
   var btnTitle = 'Copy to clipboard'
+  var btnEdit = 'Edit on StackBlitz'
   var btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard">Copy</button></div>'
   document.querySelectorAll('div.highlight')
     .forEach(function (element) {
@@ -143,8 +144,8 @@
     })
   }
 
-  snippetButtonTooltip('.btn-clipboard', 'Copy to clipboard')
-  snippetButtonTooltip('.btn-edit', 'Edit on StackBlitz')
+  snippetButtonTooltip('.btn-clipboard', btnTitle)
+  snippetButtonTooltip('.btn-edit', btnEdit)
 
   var clipboard = new ClipboardJS('.btn-clipboard', {
     target: function (trigger) {
