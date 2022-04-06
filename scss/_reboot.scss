@@ -27,7 +27,7 @@
 
 :root {
   @if $font-size-root != null {
-    font-size: var(--#{$prefix}root-font-size);
+    @include font-size(var(--#{$prefix}root-font-size));
   }
 
   @if $enable-smooth-scroll {
@@ -49,7 +49,7 @@
 body {
   margin: 0; // 1
   font-family: var(--#{$prefix}body-font-family);
-  font-size: var(--#{$prefix}body-font-size);
+  @include font-size(var(--#{$prefix}body-font-size));
   font-weight: var(--#{$prefix}body-font-weight);
   line-height: var(--#{$prefix}body-line-height);
   color: var(--#{$prefix}body-color);
