@@ -438,11 +438,11 @@ select {
   }
 }
 
-// Remove the dropdown arrow in Chrome from inputs built with datalists.
+// Remove the dropdown arrow only from text type inputs built with datalists in Chrome.
 // See https://stackoverflow.com/a/54997118
 
-[list]::-webkit-calendar-picker-indicator {
-  display: none;
+[list]:not([type="date"]):not([type="datetime-local"]):not([type="month"]):not([type="week"]):not([type="time"])::-webkit-calendar-picker-indicator {
+  display: none !important;
 }
 
 // 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
