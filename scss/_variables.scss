@@ -762,6 +762,8 @@ $table-striped-columns-order: even !default;
 
 $table-group-separator-color: currentcolor !default;
 
+$table-thead-sticky-zindex:   5 !default;
+
 $table-caption-color:         var(--#{$prefix}secondary-color) !default;
 
 $table-bg-scale:              -80% !default;
