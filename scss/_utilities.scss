@@ -148,8 +148,7 @@ $utilities: map-merge(
       )
     ),
     "border-color": (
-      css-var: true,
-      css-variable-name: border-color,
+      property: border-color,
       class: border,
       values: $utilities-border-colors
     ),
