@@ -38,7 +38,7 @@ const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 
 const Default = {
   offset: null, // TODO: v6 @deprecated, keep it for backwards compatibility reasons
-  rootMargin: '0px 0px -40%',
+  rootMargin: '0px 0px -25%',
   smoothScroll: false,
   target: null
 }
@@ -61,6 +61,7 @@ class ScrollSpy extends BaseComponent {
     // this._element is the observablesContainer and config.target the menu links wrapper
     this._targetLinks = new Map()
     this._observableSections = new Map()
+    this._rootElement = getComputedStyle(this._element).overflowY === 'visible' ? null : this._element
     this._activeTarget = null
     this._observer = null
     this._previousScrollData = {
@@ -124,16 +125,23 @@ class ScrollSpy extends BaseComponent {
       const observableSection = this._observableSections.get(event.target.hash)
       if (observableSection) {
         event.preventDefault()
+        const root = this._rootElement || window
+        const height = observableSection.offsetTop - this._element.offsetTop
+        if (root.scrollTo) {
+          root.scrollTo({ top: height })
+          return
+        }
+
         // Chrome 60 doesn't support `scrollTo`
-        this._element.scrollTop = observableSection.offsetTop - this._element.offsetTop
+        root.scrollTop = height
       }
     })
   }
 
   _getNewObserver() {
     const options = {
-      root: this._element,
-      threshold: [0.1, 0.5],
+      root: this._rootElement,
+      threshold: [0.1, 0.5, 1],
       rootMargin: this._getRootMargin()
     }
 
@@ -142,23 +150,25 @@ class ScrollSpy extends BaseComponent {
 
   // The logic of selection
   _observerCallback(entries) {
+    const targetElement = entry => this._targetLinks.get(`#${entry.target.id}`)
     const activate = entry => {
       this._previousScrollData.visibleEntryTop = entry.target.offsetTop
-      const targetToActivate = this._targetLinks.get(`#${entry.target.id}`)
-      this._process(targetToActivate)
+      this._process(targetElement(entry))
     }
 
-    const parentScrollTop = this._element.scrollTop
+    const parentScrollTop = (this._rootElement || document.documentElement).scrollTop
     const userScrollsDown = parentScrollTop >= this._previousScrollData.parentScrollTop
     this._previousScrollData.parentScrollTop = parentScrollTop
 
     for (const entry of entries) {
       if (!entry.isIntersecting) {
+        this._activeTarget = null
+        this._clearActiveClass(targetElement(entry))
+
         continue
       }
 
       const entryIsLowerThanPrevious = entry.target.offsetTop >= this._previousScrollData.visibleEntryTop
-
       // if we are scrolling down, pick the bigger offsetTop
       if (userScrollsDown && entryIsLowerThanPrevious) {
         activate(entry)
@@ -179,7 +189,7 @@ class ScrollSpy extends BaseComponent {
 
   // TODO: v6 Only for backwards compatibility reasons. Use rootMargin only
   _getRootMargin() {
-    return this._config.offset ? `${this._config.offset}px 0px 0px` : this._config.rootMargin
+    return this._config.offset ? `${this._config.offset}px 0px -30%` : this._config.rootMargin
   }
 
   _initializeTargetsAndObservables() {
