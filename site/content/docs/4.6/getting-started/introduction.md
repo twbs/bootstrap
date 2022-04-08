@@ -61,8 +61,8 @@ Curious which components explicitly require jQuery, our JavaScript, and Popper? 
 - Dropdowns for displaying and positioning (also requires [Popper](https://popper.js.org/))
 - Modals for displaying, positioning, and scroll behavior
 - Navbar for extending our Collapse plugin to implement responsive behavior
-- Tooltips and popovers for displaying and positioning (also requires [Popper](https://popper.js.org/))
 - Scrollspy for scroll behavior and navigation updates
+- Tooltips and popovers for displaying and positioning (also requires [Popper](https://popper.js.org/))
 {{< /markdown >}}
 </details>
 
