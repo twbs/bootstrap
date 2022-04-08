@@ -122,7 +122,7 @@ class ScrollSpy {
 
         return null
       })
-      .filter(item => item)
+      .filter(Boolean)
       .sort((a, b) => a[0] - b[0])
       .forEach(item => {
         this._offsets.push(item[0])
