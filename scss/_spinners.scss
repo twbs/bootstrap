@@ -11,7 +11,7 @@
   width: $spinner-width;
   height: $spinner-height;
   vertical-align: $spinner-vertical-align;
-  border: $spinner-border-width solid currentColor;
+  border: $spinner-border-width solid currentcolor;
   border-right-color: transparent;
   // stylelint-disable-next-line property-disallowed-list
   border-radius: 50%;
@@ -43,7 +43,7 @@
   width: $spinner-width;
   height: $spinner-height;
   vertical-align: $spinner-vertical-align;
-  background-color: currentColor;
+  background-color: currentcolor;
   // stylelint-disable-next-line property-disallowed-list
   border-radius: 50%;
   opacity: 0;
