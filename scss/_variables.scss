@@ -685,7 +685,7 @@ $table-border-color:          var(--#{$prefix}border-color) !default;
 $table-striped-order:         odd !default;
 $table-striped-columns-order: even !default;
 
-$table-group-separator-color: currentColor !default;
+$table-group-separator-color: currentcolor !default;
 
 $table-caption-color:         $text-muted !default;
 
