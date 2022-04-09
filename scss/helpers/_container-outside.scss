@@ -1,0 +1,15 @@
+.ms-n-auto {
+  margin-left: calc(-50vw + var(--bs-scrollbar-width) * .5 + var(--#{$variable-prefix}container-max-width) * .5);
+}
+
+.me-n-auto {
+  margin-right: calc(-50vw + var(--bs-scrollbar-width) * .5 + var(--#{$variable-prefix}container-max-width) * .5);
+}
+
+.ps-auto {
+  padding-left: calc(50vw - var(--bs-scrollbar-width) * .5 - var(--#{$variable-prefix}container-max-width) * .5);
+}
+
+.pe-auto {
+  padding-right: calc(50vw - var(--bs-scrollbar-width) * .5 - var(--#{$variable-prefix}container-max-width) * .5);
+}

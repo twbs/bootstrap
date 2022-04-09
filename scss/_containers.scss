@@ -21,6 +21,10 @@
         max-width: $container-max-width;
       }
 
+      :root {
+        --#{$variable-prefix}container-max-width: #{$container-max-width};
+      }
+
       // Extend each breakpoint which is smaller or equal to the current breakpoint
       $extend-breakpoint: true;
 
