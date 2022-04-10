@@ -44,12 +44,22 @@
     }
   }
 
-  // Add some height to date inputs on iOS
-  // https://github.com/twbs/bootstrap/issues/23307
-  // TODO: we can remove this workaround once https://bugs.webkit.org/show_bug.cgi?id=198959 is resolved
   &::-webkit-date-and-time-value {
+    // Android Chrome + form-control's "width: 100%" makes the input width too small
+    // "2022/04/10" = 10 characters
+    // Tested under Android 11 / Chrome 89 & Android 12 / Chrome 100
+    min-width: 10ch;
+
+    // Add some height to date inputs on iOS
+    // https://github.com/twbs/bootstrap/issues/23307
+    // TODO: we can remove this workaround once https://bugs.webkit.org/show_bug.cgi?id=198959 is resolved
     // Multiply line-height by 1em if it has no unit
     height: if(unit($input-line-height) == "", $input-line-height * 1em, $input-line-height);
+
+    // Android Chrome type="date" is taller than the other inputs
+    // because of "margin: 1px 24px 1px 4px" inside the shadow DOM
+    // Tested under Android 11 / Chrome 89 & Android 12 / Chrome 100
+    margin: 0;
   }
 
   // Prevent excessive date input height in Webkit
