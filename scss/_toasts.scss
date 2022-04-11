@@ -2,6 +2,7 @@
   // scss-docs-start toast-css-vars
   --#{$prefix}toast-padding-x: #{$toast-padding-x};
   --#{$prefix}toast-padding-y: #{$toast-padding-y};
+  --#{$prefix}toast-spacing: #{$toast-spacing};
   --#{$prefix}toast-max-width: #{$toast-max-width};
   @include rfs($toast-font-size, --#{$prefix}toast-font-size);
   --#{$prefix}toast-color: #{$toast-color}; // stylelint-disable-line custom-property-empty-line-before
@@ -17,7 +18,7 @@
 
   width: var(--#{$prefix}toast-max-width);
   max-width: 100%;
-  @include font-size($toast-font-size);
+  @include font-size(var(--#{$prefix}toast-font-size));
   color: var(--#{$prefix}toast-color);
   pointer-events: auto;
   background-color: var(--#{$prefix}toast-bg);
@@ -43,7 +44,7 @@
   pointer-events: none;
 
   > :not(:last-child) {
-    margin-bottom: $toast-spacing;
+    margin-bottom: var(--#{$prefix}toast-spacing);
   }
 }
 
