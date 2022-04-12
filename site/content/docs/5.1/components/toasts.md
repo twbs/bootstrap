@@ -377,7 +377,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 | `show` | Reveals an element's toast. **Returns to the caller before the toast has actually been shown** (i.e. before the `shown.bs.toast` event occurs). You have to manually call this method, instead your toast won't show. |
 | `hide` | Hides an element's toast. **Returns to the caller before the toast has actually been hidden** (i.e. before the `hidden.bs.toast` event occurs). You have to manually call this method if you made `autohide` to `false`. |
 | `dispose` | Hides an element's toast. Your toast will remain on the DOM but won't show anymore. |
-| `getInstance` | *Static* method which allows you to get the scrollspy instance associated with a DOM element. <br> Par example: `var myToastEl = document.getElementById('myToastEl')` `var myToast = bootstrap.Toast.getInstance(myToastEl)` Returns a Bootstrap toast instance|
+| `getInstance` | *Static* method which allows you to get the scrollspy instance associated with a DOM element. <br> For example: `var myToastEl = document.getElementById('myToastEl')` `var myToast = bootstrap.Toast.getInstance(myToastEl)` Returns a Bootstrap toast instance|
 | `getOrCreateInstance` | *Static* method which allows you to get the scrollspy instance associated with a DOM element, or create a new one, in case it wasn't initialized.  <br>`var myToastEl = document.getElementById('myToastEl')`  `var myToast = bootstrap.Toast.getOrCreateInstance(myToastEl)` Returns a Bootstrap toast instance |
 {{< /bs-table >}}
 

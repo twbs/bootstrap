@@ -27,7 +27,7 @@ Bootstrap includes six default breakpoints, sometimes referred to as _grid tiers
 | Medium | `md` | &ge;768px |
 | Large | `lg` | &ge;992px |
 | Extra large | `xl` | &ge;1200px |
-| Extra extra large | <code>xxl</code> | &ge;1400px |
+| Extra extra large | `xxl` | &ge;1400px |
 {{< /bs-table >}}
 
 
