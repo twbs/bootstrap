@@ -884,25 +884,30 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
 {{< /example >}}
 
 {{< example >}}
-<form class="dropdown-menu p-4">
-  <div class="mb-3">
-    <label for="exampleDropdownFormEmail2" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
-  </div>
-  <div class="mb-3">
-    <label for="exampleDropdownFormPassword2" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
-  </div>
-  <div class="mb-3">
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-      <label class="form-check-label" for="dropdownCheck2">
-        Remember me
-      </label>
+<div class="dropdown">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown form
+  </button>
+  <form class="dropdown-menu p-4">
+    <div class="mb-3">
+      <label for="exampleDropdownFormEmail2" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
     </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
-</form>
+    <div class="mb-3">
+      <label for="exampleDropdownFormPassword2" class="form-label">Password</label>
+      <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
+    </div>
+    <div class="mb-3">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="dropdownCheck2">
+        <label class="form-check-label" for="dropdownCheck2">
+          Remember me
+        </label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+  </form>
+</div>
 {{< /example >}}
 
 ## Dropdown options
@@ -1109,9 +1114,9 @@ All dropdown events are fired at the toggling element and then bubbled up. So yo
 {{< bs-table >}}
 | Event type | Description |
 | --- | --- |
-| `show.bs.dropdown` | Fires immediately when the show instance method is called. |
+| `show.bs.dropdown` | Fires immediately when the `show` instance method is called. |
 | `shown.bs.dropdown` | Fired when the dropdown has been made visible to the user and CSS transitions have completed. |
-| `hide.bs.dropdown` | Fires immediately when the hide instance method has been called. |
+| `hide.bs.dropdown` | Fires immediately when the `hide` instance method has been called. |
 | `hidden.bs.dropdown` | Fired when the dropdown has finished being hidden from the user and CSS transitions have completed. |
 {{< /bs-table >}}
 

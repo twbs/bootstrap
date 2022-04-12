@@ -3,17 +3,37 @@
 //
 
 .card {
+  // scss-docs-start card-css-vars
+  --#{$prefix}card-spacer-y: #{$card-spacer-y};
+  --#{$prefix}card-spacer-x: #{$card-spacer-x};
+  --#{$prefix}card-title-spacer-y: #{$card-title-spacer-y};
+  --#{$prefix}card-border-width: #{$card-border-width};
+  --#{$prefix}card-border-color: #{$card-border-color};
+  --#{$prefix}card-border-radius: #{$card-border-radius};
+  --#{$prefix}card-box-shadow: #{$card-box-shadow};
+  --#{$prefix}card-inner-border-radius: #{$card-inner-border-radius};
+  --#{$prefix}card-cap-padding-y: #{$card-cap-padding-y};
+  --#{$prefix}card-cap-padding-x: #{$card-cap-padding-x};
+  --#{$prefix}card-cap-bg: #{$card-cap-bg};
+  --#{$prefix}card-cap-color: #{$card-cap-color};
+  --#{$prefix}card-height: #{$card-height};
+  --#{$prefix}card-color: #{$card-color};
+  --#{$prefix}card-bg: #{$card-bg};
+  --#{$prefix}card-img-overlay-padding: #{$card-img-overlay-padding};
+  --#{$prefix}card-group-margin: #{$card-group-margin};
+  // scss-docs-end card-css-vars
+
   position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
-  height: $card-height;
+  height: var(--#{$prefix}card-height);
   word-wrap: break-word;
-  background-color: $card-bg;
+  background-color: var(--#{$prefix}card-bg);
   background-clip: border-box;
-  border: $card-border-width solid $card-border-color;
-  @include border-radius($card-border-radius);
-  @include box-shadow($card-box-shadow);
+  border: var(--#{$prefix}card-border-width) solid var(--#{$prefix}card-border-color);
+  @include border-radius(var(--#{$prefix}card-border-radius));
+  @include box-shadow(var(--#{$prefix}card-box-shadow));
 
   > hr {
     margin-right: 0;
@@ -26,12 +46,12 @@
 
     &:first-child {
       border-top-width: 0;
-      @include border-top-radius($card-inner-border-radius);
+      @include border-top-radius(var(--#{$prefix}card-inner-border-radius));
     }
 
     &:last-child  {
       border-bottom-width: 0;
-      @include border-bottom-radius($card-inner-border-radius);
+      @include border-bottom-radius(var(--#{$prefix}card-inner-border-radius));
     }
   }
 
@@ -47,16 +67,16 @@
   // Enable `flex-grow: 1` for decks and groups so that card blocks take up
   // as much space as possible, ensuring footers are aligned to the bottom.
   flex: 1 1 auto;
-  padding: $card-spacer-y $card-spacer-x;
-  color: $card-color;
+  padding: var(--#{$prefix}card-spacer-y) var(--#{$prefix}card-spacer-x);
+  color: var(--#{$prefix}card-color);
 }
 
 .card-title {
-  margin-bottom: $card-title-spacer-y;
+  margin-bottom: var(--#{$prefix}card-title-spacer-y);
 }
 
 .card-subtitle {
-  margin-top: -$card-title-spacer-y * .5;
+  margin-top: calc(-.5 * var(--#{$prefix}card-title-spacer-y)); // stylelint-disable-line function-disallowed-list
   margin-bottom: 0;
 }
 
@@ -70,7 +90,7 @@
   }
 
   + .card-link {
-    margin-left: $card-spacer-x;
+    margin-left: var(--#{$prefix}card-spacer-x);
   }
 }
 
@@ -79,25 +99,25 @@
 //
 
 .card-header {
-  padding: $card-cap-padding-y $card-cap-padding-x;
+  padding: var(--#{$prefix}card-cap-padding-y) var(--#{$prefix}card-cap-padding-x);
   margin-bottom: 0; // Removes the default margin-bottom of <hN>
-  color: $card-cap-color;
-  background-color: $card-cap-bg;
-  border-bottom: $card-border-width solid $card-border-color;
+  color: var(--#{$prefix}card-cap-color);
+  background-color: var(--#{$prefix}card-cap-bg);
+  border-bottom: var(--#{$prefix}card-border-width) solid var(--#{$prefix}card-border-color);
 
   &:first-child {
-    @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
+    @include border-radius(var(--#{$prefix}card-inner-border-radius) var(--#{$prefix}card-inner-border-radius) 0 0);
   }
 }
 
 .card-footer {
-  padding: $card-cap-padding-y $card-cap-padding-x;
-  color: $card-cap-color;
-  background-color: $card-cap-bg;
-  border-top: $card-border-width solid $card-border-color;
+  padding: var(--#{$prefix}card-cap-padding-y) var(--#{$prefix}card-cap-padding-x);
+  color: var(--#{$prefix}card-cap-color);
+  background-color: var(--#{$prefix}card-cap-bg);
+  border-top: var(--#{$prefix}card-border-width) solid var(--#{$prefix}card-border-color);
 
   &:last-child {
-    @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
+    @include border-radius(0 0 var(--#{$prefix}card-inner-border-radius) var(--#{$prefix}card-inner-border-radius));
   }
 }
 
@@ -107,22 +127,20 @@
 //
 
 .card-header-tabs {
-  margin-right: -$card-cap-padding-x * .5;
-  margin-bottom: -$card-cap-padding-y;
-  margin-left: -$card-cap-padding-x * .5;
+  margin-right: calc(-.5 * var(--#{$prefix}card-cap-padding-x)); // stylelint-disable-line function-disallowed-list
+  margin-bottom: calc(-1 * var(--#{$prefix}card-cap-padding-y)); // stylelint-disable-line function-disallowed-list
+  margin-left: calc(-.5 * var(--#{$prefix}card-cap-padding-x)); // stylelint-disable-line function-disallowed-list
   border-bottom: 0;
 
-  @if $nav-tabs-link-active-bg != $card-bg {
-    .nav-link.active {
-      background-color: $card-bg;
-      border-bottom-color: $card-bg;
-    }
+  .nav-link.active {
+    background-color: var(--#{$prefix}card-bg);
+    border-bottom-color: var(--#{$prefix}card-bg);
   }
 }
 
 .card-header-pills {
-  margin-right: -$card-cap-padding-x * .5;
-  margin-left: -$card-cap-padding-x * .5;
+  margin-right: calc(-.5 * var(--#{$prefix}card-cap-padding-x)); // stylelint-disable-line function-disallowed-list
+  margin-left: calc(-.5 * var(--#{$prefix}card-cap-padding-x)); // stylelint-disable-line function-disallowed-list
 }
 
 // Card image
@@ -132,8 +150,8 @@
   right: 0;
   bottom: 0;
   left: 0;
-  padding: $card-img-overlay-padding;
-  @include border-radius($card-inner-border-radius);
+  padding: var(--#{$prefix}card-img-overlay-padding);
+  @include border-radius(var(--#{$prefix}card-inner-border-radius));
 }
 
 .card-img,
@@ -144,12 +162,12 @@
 
 .card-img,
 .card-img-top {
-  @include border-top-radius($card-inner-border-radius);
+  @include border-top-radius(var(--#{$prefix}card-inner-border-radius));
 }
 
 .card-img,
 .card-img-bottom {
-  @include border-bottom-radius($card-inner-border-radius);
+  @include border-bottom-radius(var(--#{$prefix}card-inner-border-radius));
 }
 
 
@@ -161,7 +179,7 @@
   // The child selector allows nested `.card` within `.card-group`
   // to display properly.
   > .card {
-    margin-bottom: $card-group-margin;
+    margin-bottom: var(--#{$prefix}card-group-margin);
   }
 
   @include media-breakpoint-up(sm) {

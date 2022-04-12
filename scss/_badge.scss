@@ -17,7 +17,7 @@
 
   display: inline-block;
   padding: var(--#{$prefix}badge-padding-y) var(--#{$prefix}badge-padding-x);
-  font-size: var(--#{$prefix}badge-font-size);
+  @include font-size(var(--#{$prefix}badge-font-size));
   font-weight: var(--#{$prefix}badge-font-weight);
   line-height: 1;
   color: var(--#{$prefix}badge-color);
