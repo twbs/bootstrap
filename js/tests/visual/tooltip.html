@@ -75,7 +75,7 @@
           <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="left" title="<img src=1 onerror=alert(123)>">
             Tooltip with XSS title
           </button>
-          <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip with XSS" data-bs-container="<img src=1 onerror=alert(123)>">
+          <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip-xss-container" data-bs-placement="left" title="Tooltip with XSS" data-bs-container="<img src=1 onerror=alert(123)>">
             Tooltip with XSS container
           </button>
         </p>
@@ -110,6 +110,13 @@
       var tooltipElements = document.querySelectorAll('[data-bs-toggle="tooltip"]')
       for (const tooltipEl of tooltipElements) {
         new bootstrap.Tooltip(tooltipEl)
+      }
+
+      var tooltipXSSContainerElement = document.querySelector('[data-bs-toggle="tooltip-xss-container"]')
+      try {
+        new bootstrap.Tooltip(tooltipXSSContainerElement)
+      } catch {
+        // Should fail
       }
 
       var tooltipElement = document.getElementById('tooltipElement')
