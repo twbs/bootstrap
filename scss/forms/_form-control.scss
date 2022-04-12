@@ -66,6 +66,7 @@
   // don't honor that edge case; we style them as disabled anyway.
   &:disabled,
   &[readonly] {
+    color: $input-disabled-color;
     background-color: $input-disabled-bg;
     border-color: $input-disabled-border-color;
     // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
