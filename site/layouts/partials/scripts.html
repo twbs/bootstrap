@@ -23,19 +23,16 @@
 {{ if eq .Page.Layout "docs" -}}
 <script>
   // Open in StackBlitz logic
-  document.querySelectorAll('.btn-edit')
-    .forEach(function (btn) {
-      btn.addEventListener('click', function (event) {
-        var htmlSnippet = event.target.closest('.bd-edit').previousSibling.innerHTML
+  document.querySelectorAll('.btn-edit').forEach(btn => {
+    btn.addEventListener('click', event => {
+      const htmlSnippet = event.target.closest('.bd-edit').previousSibling.innerHTML
 
-        StackBlitzSDK.openBootstrapSnippet(htmlSnippet)
-      })
+      StackBlitzSDK.openBootstrapSnippet(htmlSnippet)
     })
+  })
 
-  StackBlitzSDK.openBootstrapSnippet = function(snippet) {
-    var project = {
-        files: {
-          'index.html': `<!doctype html>
+  StackBlitzSDK.openBootstrapSnippet = snippet => {
+    const markup = `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -52,12 +49,16 @@ ${snippet.replace(/^/gm, '    ')}
     <${'script'} src="{{ .Site.Params.cdn.js_bundle }}"></${'script'}>
   </body>
 </html>`
-        },
-        title: 'Bootstrap Example',
-        description: 'Official example from ' + window.location.href,
-        template: 'html',
-        tags: ['bootstrap']
-      }
+
+    const project = {
+      files: {
+        'index.html': markup
+      },
+      title: 'Bootstrap Example',
+      description: `Official example from ${window.location.href}`,
+      template: 'html',
+      tags: ['bootstrap']
+    }
 
     StackBlitzSDK.openProject(project, { openFile: 'index.html' })
   }
