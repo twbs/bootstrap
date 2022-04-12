@@ -17,8 +17,7 @@
   flex-wrap: wrap;
   padding: var(--#{$prefix}breadcrumb-padding-y) var(--#{$prefix}breadcrumb-padding-x);
   margin-bottom: var(--#{$prefix}breadcrumb-margin-bottom);
-  @include font-size($breadcrumb-font-size);
-  font-size: var(--#{$prefix}breadcrumb-font-size);
+  @include font-size(var(--#{$prefix}breadcrumb-font-size));
   list-style: none;
   background-color: var(--#{$prefix}breadcrumb-bg);
   @include border-radius(var(--#{$prefix}breadcrumb-border-radius));
@@ -31,8 +30,8 @@
 
     &::before {
       float: left; // Suppress inline spacings and underlining of the separator
-      padding-right: $breadcrumb-item-padding-x;
-      color: $breadcrumb-divider-color;
+      padding-right: var(--#{$prefix}breadcrumb-item-padding-x);
+      color: var(--#{$prefix}breadcrumb-divider-color);
       content: var(--#{$prefix}breadcrumb-divider, escape-svg($breadcrumb-divider)) #{"/* rtl:"} var(--#{$prefix}breadcrumb-divider, escape-svg($breadcrumb-divider-flipped)) #{"*/"};
     }
   }

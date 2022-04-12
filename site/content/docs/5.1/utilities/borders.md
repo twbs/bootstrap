@@ -43,6 +43,12 @@ Change the border color using utilities built on our theme colors.
 <span class="border border-white"></span>
 {{< /example >}}
 
+{{< callout >}}
+Unlike text and background color utilities, border color utilities redeclare the `border-color` property **without** an additional `--bs-border-opacity`, as opposed to resetting only `--bs-border-color`. This ensures the backward compatibility of border color utilities applying to other components while providing additional functionality through CSS variables.
+
+This will be revisited in a future major release.
+{{< /callout >}}
+
 ## Opacity
 
 {{< added-in "5.2.0" >}}

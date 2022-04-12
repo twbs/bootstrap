@@ -224,7 +224,7 @@ This makes an alert listen for click events on descendant elements which have th
 | `close` | Closes an alert by removing it from the DOM. If the `.fade` and `.show` classes are present on the element, the alert will fade out before it is removed. |
 | `dispose` | Destroys an element's alert. (Removes stored data on the DOM element) |
 | `getInstance` | Static method which allows you to get the alert instance associated to a DOM element. For example: `bootstrap.Alert.getInstance(alert)`. |
-| `getOrCreateInstance` | Static method which returns an alert instance associated to a DOM element or create a new one in case it wasn't initialized. You can use it like this: <code>bootstrap.Alert.getOrCreateInstance(element)</code>. |
+| `getOrCreateInstance` | Static method which returns an alert instance associated to a DOM element or create a new one in case it wasn't initialized. You can use it like this: `bootstrap.Alert.getOrCreateInstance(element)`. |
 {{< /bs-table >}}
 
 Basic usage:
