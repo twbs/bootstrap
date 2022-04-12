@@ -170,7 +170,7 @@ textarea {
 
 .form-control-color {
   width: $form-color-width;
-  height: auto; // Override fixed browser height
+  height: $input-height;
   padding: $input-padding-y;
 
   &:not(:disabled):not([readonly]) {
@@ -178,12 +178,14 @@ textarea {
   }
 
   &::-moz-color-swatch {
-    height: if(unit($input-line-height) == "", $input-line-height * 1em, $input-line-height);
+    border: 0 !important; // stylelint-disable-line declaration-no-important
     @include border-radius($input-border-radius);
   }
 
   &::-webkit-color-swatch {
-    height: if(unit($input-line-height) == "", $input-line-height * 1em, $input-line-height);
     @include border-radius($input-border-radius);
   }
+
+  &.form-control-sm { height: $input-height-sm; }
+  &.form-control-lg { height: $input-height-lg; }
 }
