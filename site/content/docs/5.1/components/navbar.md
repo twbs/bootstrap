@@ -742,6 +742,10 @@ As part of Bootstrap's evolving CSS variables approach, navbars now use local CS
 
 {{< scss-docs name="navbar-css-vars" file="scss/_navbar.scss" >}}
 
+Some additional CSS variables are also present on `.navbar-nav`:
+
+{{< scss-docs name="navbar-nav-css-vars" file="scss/_navbar.scss" >}}
+
 ### Sass variables
 
 {{< scss-docs name="navbar-variables" file="scss/_variables.scss" >}}
