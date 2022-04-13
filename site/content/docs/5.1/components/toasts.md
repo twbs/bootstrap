@@ -355,7 +355,9 @@ var toastList = toastElList.map(function (toastEl) {
 
 ### Options
 
-{{< partial "js-data-attributes.html" >}}
+{{< markdown >}}
+{{< partial "js-data-attributes.md" >}}
+{{< /markdown >}}
 
 {{< bs-table "table" >}}
 | Name | Type | Default | Description |

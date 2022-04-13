@@ -324,7 +324,9 @@ Target elements that are not visible will be ignored and their corresponding nav
 
 ### Options
 
-{{< partial "js-data-attributes.html" >}}
+{{< markdown >}}
+{{< partial "js-data-attributes.md" >}}
+{{< /markdown >}}
 
 {{< bs-table "table" >}}
 | Name | Type | Default | Description |

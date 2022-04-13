@@ -166,7 +166,9 @@ Additionally, while it is possible to also include interactive controls (such as
 
 ### Options
 
-{{< partial "js-data-attributes.html" >}}
+{{< markdown >}}
+{{< partial "js-data-attributes.md" >}}
+{{< /markdown >}}
 
 {{< callout warning >}}
 Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` options cannot be supplied using data attributes.

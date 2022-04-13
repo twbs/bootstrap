@@ -308,7 +308,9 @@ var carousel = new bootstrap.Carousel(myCarousel)
 
 ### Options
 
-{{< partial "js-data-attributes.html" >}}
+{{< markdown >}}
+{{< partial "js-data-attributes.md" >}}
+{{< /markdown >}}
 
 {{< bs-table >}}
 | Name | Type | Default | Description |

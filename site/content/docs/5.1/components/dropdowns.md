@@ -1064,7 +1064,9 @@ Regardless of whether you call your dropdown via JavaScript or instead use the d
 
 ### Options
 
-{{< partial "js-data-attributes.html" >}}
+{{< markdown >}}
+{{< partial "js-data-attributes.md" >}}
+{{< /markdown >}}
 
 {{< bs-table "table" >}}
 | Name | Type | Default | Description |

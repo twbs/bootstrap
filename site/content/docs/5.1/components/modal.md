@@ -820,7 +820,9 @@ var myModal = new bootstrap.Modal(document.getElementById('myModal'), options)
 
 ### Options
 
-{{< partial "js-data-attributes.html" >}}
+{{< markdown >}}
+{{< partial "js-data-attributes.md" >}}
+{{< /markdown >}}
 
 {{< bs-table "table" >}}
 | Name | Type | Default | Description |
