@@ -71,10 +71,10 @@ const KEY_TO_DIRECTION = {
 const Default = {
   interval: 5000,
   keyboard: true,
-  ride: false,
   pause: 'hover',
-  wrap: true,
-  touch: true
+  ride: false,
+  touch: true,
+  wrap: true
 }
 
 const DefaultType = {
@@ -82,8 +82,8 @@ const DefaultType = {
   keyboard: 'boolean',
   ride: '(boolean|string)',
   pause: '(string|boolean)',
-  wrap: 'boolean',
-  touch: 'boolean'
+  touch: 'boolean',
+  wrap: 'boolean'
 }
 
 /**
