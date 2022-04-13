@@ -413,7 +413,7 @@ When using Bootstrap's source Sass files, you have the option of using Sass vari
 
 ### Variables
 
-Variables and maps determine the number of columns, the gutter width and height, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.
+Variables and maps determine the number of columns, the vertical and horizontal gutter size, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.
 
 ```scss
 $grid-columns:       12;
@@ -501,7 +501,7 @@ Using our built-in grid Sass variables and maps, it's possible to completely cus
 
 ### Columns and gutters
 
-The number of grid columns can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each individual column while `$grid-gutter-width` and `$grid-gutter-height` set the width and height for the column gutters.
+The number of grid columns can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each individual column. `$grid-gutter-width` and `$grid-gutter-height` set the width and height of the gutters.
 
 ```scss
 $grid-columns:       12 !default;
