@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Introduction
-description: Get started with Bootstrap, the world's most popular framework for building responsive, mobile-first sites, with jsDelivr and a template starter page.
+description: Get started with Bootstrap via CDN and a template starter page.
 group: getting-started
 aliases:
   - "/docs/5.1/getting-started/"
@@ -62,9 +62,9 @@ Curious which components explicitly require our JavaScript and Popper? Click the
 - Modals for displaying, positioning, and scroll behavior
 - Navbar for extending our Collapse plugin to implement responsive behavior
 - Offcanvases for displaying, positioning, and scroll behavior
+- Scrollspy for scroll behavior and navigation updates
 - Toasts for displaying and dismissing
 - Tooltips and popovers for displaying and positioning (also requires [Popper](https://popper.js.org/))
-- Scrollspy for scroll behavior and navigation updates
 {{< /markdown >}}
 </details>
 

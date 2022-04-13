@@ -2,18 +2,18 @@
 // IT'S ALL JUST JUNK FOR OUR DOCS!
 // ++++++++++++++++++++++++++++++++++++++++++
 
-(function () {
+(() => {
   'use strict'
 
-  var inputElement = document.getElementById('search-input')
+  const inputElement = document.getElementById('search-input')
 
   if (!window.docsearch || !inputElement) {
     return
   }
 
-  var siteDocsVersion = inputElement.getAttribute('data-bd-docs-version')
+  const siteDocsVersion = inputElement.getAttribute('data-bd-docs-version')
 
-  document.addEventListener('keydown', function (event) {
+  document.addEventListener('keydown', event => {
     if (event.ctrlKey && event.key === '/') {
       event.preventDefault()
       inputElement.focus()
@@ -25,11 +25,11 @@
     indexName: 'bootstrap',
     inputSelector: '#search-input',
     algoliaOptions: {
-      facetFilters: ['version:' + siteDocsVersion]
+      facetFilters: [`version:${siteDocsVersion}`]
     },
-    transformData: function (hits) {
-      return hits.map(function (hit) {
-        var liveUrl = 'https://getbootstrap.com/'
+    transformData(hits) {
+      return hits.map(hit => {
+        const liveUrl = 'https://getbootstrap.com/'
 
         hit.url = window.location.origin.startsWith(liveUrl) ?
           // On production, return the result as is

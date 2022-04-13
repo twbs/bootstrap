@@ -150,8 +150,16 @@ Omit the `data-bs-parent` attribute on each `.accordion-collapse` to make accord
 
 Please read the [collapse accessibility section]({{< docsref "/components/collapse#accessibility" >}}) for more information.
 
-## Sass
+## CSS
 
 ### Variables
+
+{{< added-in "5.2.0" >}}
+
+As part of Bootstrap's evolving CSS variables approach, accordions now use local CSS variables on `.accordion` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+{{< scss-docs name="accordion-css-vars" file="scss/_accordion.scss" >}}
+
+### Sass variables
 
 {{< scss-docs name="accordion-variables" file="scss/_variables.scss" >}}

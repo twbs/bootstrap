@@ -2,30 +2,9 @@
 
 // scss-docs-start pagination-mixin
 @mixin pagination-size($padding-y, $padding-x, $font-size, $border-radius) {
-  .page-link {
-    padding: $padding-y $padding-x;
-    @include font-size($font-size);
-  }
-
-  .page-item {
-    @if $pagination-margin-start == (-$pagination-border-width) {
-      &:first-child {
-        .page-link {
-          @include border-start-radius($border-radius);
-        }
-      }
-
-      &:last-child {
-        .page-link {
-          @include border-end-radius($border-radius);
-        }
-      }
-    } @else {
-      //Add border-radius to all pageLinks in case they have left margin
-      .page-link {
-        @include border-radius($border-radius);
-      }
-    }
-  }
+  --#{$prefix}pagination-padding-x: #{$padding-x};
+  --#{$prefix}pagination-padding-y: #{$padding-y};
+  @include rfs($font-size, --#{$prefix}pagination-font-size);
+  --#{$prefix}pagination-border-radius: #{$border-radius}; // stylelint-disable-line custom-property-empty-line-before
 }
 // scss-docs-end pagination-mixin

@@ -128,6 +128,10 @@
     margin-bottom: 0;
   }
 
+  > hr:last-child {
+    margin-bottom: $spacer;
+  }
+
   // Images
   > svg + svg,
   > img + img {
@@ -190,7 +194,7 @@
     width: 10rem;
     color: $gray-600;
     background-color: $gray-100;
-    border: $border-width solid $border-color;
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
 
     > div {
       display: flex;
@@ -235,6 +239,21 @@
   white-space: nowrap;
 }
 
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-primary);
+}
+
+// scss-docs-start custom-popovers
+.custom-popover {
+  --bs-popover-max-width: 200px;
+  --bs-popover-border-color: var(--bs-primary);
+  --bs-popover-header-bg: var(--bs-primary);
+  --bs-popover-header-color: var(--bs-white);
+  --bs-popover-body-padding-x: 1rem;
+  --bs-popover-body-padding-y: .5rem;
+}
+// scss-docs-end custom-popovers
+
 // Scrollspy demo on fixed height div
 .scrollspy-example {
   position: relative;
@@ -261,7 +280,7 @@
 
 .bd-example-border-utils-0 {
   [class^="border"] {
-    border: 1px solid $border-color;
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
   }
 }
 
@@ -317,7 +336,7 @@
 .highlight {
   padding: var(--bs-gutter-x) $bd-gutter-x;
   margin-bottom: 1rem;
-  background-color: $gray-100;
+  background-color: var(--bs-gray-100);
 
   @include media-breakpoint-up(sm) {
     padding: 1rem 1.5rem;

@@ -49,7 +49,7 @@ Previously, our scripts dynamically added the `.hide` class to completely hide a
 
 Click the button below to show a toast (positioned with our utilities in the lower right corner) that has been hidden by default.
 
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       {{< placeholder width="20" height="20" background="#007aff" class="rounded me-2" text="false" title="false" >}}
@@ -70,7 +70,7 @@ Click the button below to show a toast (positioned with our utilities in the low
 ```html
 <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
 
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <img src="..." class="rounded me-2" alt="...">
@@ -122,7 +122,7 @@ Toasts are slightly translucent to blend in with what's below them.
 You can stack toasts by wrapping them in a toast container, which will vertically add some spacing.
 
 {{< example class="bg-light" >}}
-<div class="toast-container">
+<div class="toast-container position-static">
   <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       {{< placeholder width="20" height="20" background="#007aff" class="rounded me-2" text="false" title="false" >}}
@@ -216,7 +216,7 @@ Place toasts with custom CSS as you need them. The top right is often used for n
   </div>
 </form>
 <div aria-live="polite" aria-atomic="true" class="bg-dark position-relative bd-example-toasts">
-  <div class="toast-container position-absolute p-3" id="toastPlacement">
+  <div class="toast-container p-3" id="toastPlacement">
     <div class="toast">
       <div class="toast-header">
         {{< placeholder width="20" height="20" background="#007aff" class="rounded me-2" text="false" title="false" >}}
@@ -237,9 +237,9 @@ For systems that generate more notifications, consider using a wrapping element 
 <div aria-live="polite" aria-atomic="true" class="position-relative">
   <!-- Position it: -->
   <!-- - `.toast-container` for spacing between toasts -->
-  <!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
+  <!-- - `top-0` & `end-0` to position the toasts in the upper right corner -->
   <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
-  <div class="toast-container position-absolute top-0 end-0 p-3">
+  <div class="toast-container top-0 end-0 p-3">
 
     <!-- Then put toasts within -->
     <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -324,9 +324,17 @@ When using `autohide: false`, you must add a close button to allow users to dism
 
 While technically it's possible to add focusable/actionable controls (such as additional buttons or links) in your toast, you should avoid doing this for autohiding toasts. Even if you give the toast a long [`delay` timeout](#options), keyboard and assistive technology users may find it difficult to reach the toast in time to take action (since toasts don't receive focus when they are displayed). If you absolutely must have further controls, we recommend using a toast with `autohide: false`.
 
-## Sass
+## CSS
 
 ### Variables
+
+{{< added-in "5.2.0" >}}
+
+As part of Bootstrap's evolving CSS variables approach, toasts now use local CSS variables on `.toast` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+{{< scss-docs name="toast-css-vars" file="scss/_toasts.scss" >}}
+
+### Sass variables
 
 {{< scss-docs name="toast-variables" file="scss/_variables.scss" >}}
 
@@ -349,38 +357,13 @@ var toastList = toastElList.map(function (toastEl) {
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-animation=""`.
 
-<table class="table">
-  <thead>
-    <tr>
-      <th style="width: 100px;">Name</th>
-      <th style="width: 100px;">Type</th>
-      <th style="width: 50px;">Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>animation</code></td>
-      <td>boolean</td>
-      <td><code>true</code></td>
-      <td>Apply a CSS fade transition to the toast</td>
-    </tr>
-    <tr>
-      <td><code>autohide</code></td>
-      <td>boolean</td>
-      <td><code>true</code></td>
-      <td>Auto hide the toast</td>
-    </tr>
-    <tr>
-      <td><code>delay</code></td>
-      <td>number</td>
-      <td>
-        <code>5000</code>
-      </td>
-      <td>Delay hiding the toast (ms)</td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table "table" >}}
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `animation` | boolean | `true` | Apply a CSS fade transition to the toast |
+| `autohide` | boolean | `true`  | Automatically hide the toast after the delay |
+| `delay` | number | `5000` | Delay in milliseconds before hiding the toast |
+{{< /bs-table >}}
 
 ### Methods
 
@@ -388,77 +371,26 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 {{< partial "callout-danger-async-methods.md" >}}
 {{< /callout >}}
 
-#### show
-
-Reveals an element's toast. **Returns to the caller before the toast has actually been shown** (i.e. before the `shown.bs.toast` event occurs).
-You have to manually call this method, instead your toast won't show.
-
-```js
-toast.show()
-```
-
-#### hide
-
-Hides an element's toast. **Returns to the caller before the toast has actually been hidden** (i.e. before the `hidden.bs.toast` event occurs). You have to manually call this method if you made `autohide` to `false`.
-
-```js
-toast.hide()
-```
-
-#### dispose
-
-Hides an element's toast. Your toast will remain on the DOM but won't show anymore.
-
-```js
-toast.dispose()
-```
-
-#### getInstance
-
-*Static* method which allows you to get the toast instance associated with a DOM element
-
-```js
-var myToastEl = document.getElementById('myToastEl')
-var myToast = bootstrap.Toast.getInstance(myToastEl) // Returns a Bootstrap toast instance
-```
-
-#### getOrCreateInstance
-
-*Static* method which allows you to get the toast instance associated with a DOM element, or create a new one in case it wasn't initialized
-
-```js
-var myToastEl = document.getElementById('myToastEl')
-var myToast = bootstrap.Toast.getOrCreateInstance(myToastEl) // Returns a Bootstrap toast instance
-```
+{{< bs-table "table" >}}
+| Method | Description |
+| --- | --- |
+| `show` | Reveals an element's toast. **Returns to the caller before the toast has actually been shown** (i.e. before the `shown.bs.toast` event occurs). You have to manually call this method, instead your toast won't show. |
+| `hide` | Hides an element's toast. **Returns to the caller before the toast has actually been hidden** (i.e. before the `hidden.bs.toast` event occurs). You have to manually call this method if you made `autohide` to `false`. |
+| `dispose` | Hides an element's toast. Your toast will remain on the DOM but won't show anymore. |
+| `getInstance` | *Static* method which allows you to get the scrollspy instance associated with a DOM element. <br> For example: `var myToastEl = document.getElementById('myToastEl')` `var myToast = bootstrap.Toast.getInstance(myToastEl)` Returns a Bootstrap toast instance|
+| `getOrCreateInstance` | *Static* method which allows you to get the scrollspy instance associated with a DOM element, or create a new one, in case it wasn't initialized.  <br>`var myToastEl = document.getElementById('myToastEl')`  `var myToast = bootstrap.Toast.getOrCreateInstance(myToastEl)` Returns a Bootstrap toast instance |
+{{< /bs-table >}}
 
 ### Events
 
-<table class="table">
-  <thead>
-    <tr>
-      <th style="width: 150px;">Event type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>show.bs.toast</code></td>
-      <td>This event fires immediately when the <code>show</code> instance method is called.</td>
-    </tr>
-    <tr>
-      <td><code>shown.bs.toast</code></td>
-      <td>This event is fired when the toast has been made visible to the user.</td>
-    </tr>
-    <tr>
-      <td><code>hide.bs.toast</code></td>
-      <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
-    </tr>
-    <tr>
-      <td><code>hidden.bs.toast</code></td>
-      <td>This event is fired when the toast has finished being hidden from the user.</td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table "table" >}}
+| Event | Description |
+| --- | --- |
+| `show.bs.toast` | This event fires immediately when the `show` instance method is called. |
+| `shown.bs.toast` | This event is fired when the toast has been made visible to the user. |
+| `hide.bs.toast` | This event is fired immediately when the `hide` instance method has been called. |
+| `hidden.bs.toast` | This event is fired when the toast has finished being hidden from the user. |
+{{< /bs-table >}}
 
 ```js
 var myToastEl = document.getElementById('myToast')

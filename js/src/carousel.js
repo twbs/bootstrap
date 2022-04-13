@@ -56,10 +56,9 @@ const CLASS_NAME_NEXT = 'carousel-item-next'
 const CLASS_NAME_PREV = 'carousel-item-prev'
 
 const SELECTOR_ACTIVE = '.active'
-const SELECTOR_ACTIVE_ITEM = '.active.carousel-item'
 const SELECTOR_ITEM = '.carousel-item'
+const SELECTOR_ACTIVE_ITEM = SELECTOR_ACTIVE + SELECTOR_ITEM
 const SELECTOR_ITEM_IMG = '.carousel-item img'
-const SELECTOR_NEXT_PREV = '.carousel-item-next, .carousel-item-prev'
 const SELECTOR_INDICATORS = '.carousel-indicators'
 const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]'
 const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]'
@@ -95,10 +94,9 @@ class Carousel extends BaseComponent {
   constructor(element, config) {
     super(element, config)
 
-    this._items = null
     this._interval = null
     this._activeElement = null
-    this._isPaused = false
+    this._stayPaused = false
     this._isSliding = false
     this.touchTimeout = null
     this._swipeHelper = null
@@ -140,10 +138,10 @@ class Carousel extends BaseComponent {
 
   pause(event) {
     if (!event) {
-      this._isPaused = true
+      this._stayPaused = true
     }
 
-    if (SelectorEngine.findOne(SELECTOR_NEXT_PREV, this._element)) {
+    if (this._isSliding) {
       triggerTransitionEnd(this._element)
       this.cycle(true)
     }
@@ -153,11 +151,11 @@ class Carousel extends BaseComponent {
 
   cycle(event) {
     if (!event) {
-      this._isPaused = false
+      this._stayPaused = false
     }
 
     this._clearInterval()
-    if (this._config.interval && !this._isPaused) {
+    if (this._config.interval && !this._stayPaused) {
       this._updateInterval()
 
       this._interval = setInterval(() => this.nextWhenVisible(), this._config.interval)
@@ -165,10 +163,8 @@ class Carousel extends BaseComponent {
   }
 
   to(index) {
-    this._activeElement = this._getActive()
-    const activeIndex = this._getItemIndex(this._activeElement)
-
-    if (index > this._items.length - 1 || index < 0) {
+    const items = this._getItems()
+    if (index > items.length - 1 || index < 0) {
       return
     }
 
@@ -177,17 +173,16 @@ class Carousel extends BaseComponent {
       return
     }
 
+    const activeIndex = this._getItemIndex(this._getActive())
     if (activeIndex === index) {
       this.pause()
       this.cycle()
       return
     }
 
-    const order = index > activeIndex ?
-      ORDER_NEXT :
-      ORDER_PREV
+    const order = index > activeIndex ? ORDER_NEXT : ORDER_PREV
 
-    this._slide(order, this._items[index])
+    this._slide(order, items[index])
   }
 
   dispose() {
@@ -246,8 +241,8 @@ class Carousel extends BaseComponent {
     }
 
     const swipeConfig = {
-      leftCallback: () => this._slide(DIRECTION_LEFT),
-      rightCallback: () => this._slide(DIRECTION_RIGHT),
+      leftCallback: () => this._slide(this._directionToOrder(DIRECTION_LEFT)),
+      rightCallback: () => this._slide(this._directionToOrder(DIRECTION_RIGHT)),
       endCallback: endCallBack
     }
 
@@ -262,36 +257,15 @@ class Carousel extends BaseComponent {
     const direction = KEY_TO_DIRECTION[event.key]
     if (direction) {
       event.preventDefault()
-      this._slide(direction)
+      this._slide(this._directionToOrder(direction))
     }
   }
 
   _getItemIndex(element) {
-    this._items = element && element.parentNode ?
-      SelectorEngine.find(SELECTOR_ITEM, element.parentNode) :
-      []
-
-    return this._items.indexOf(element)
+    return this._getItems().indexOf(element)
   }
 
-  _getItemByOrder(order, activeElement) {
-    const isNext = order === ORDER_NEXT
-    return getNextActiveElement(this._items, activeElement, isNext, this._config.wrap)
-  }
-
-  _triggerSlideEvent(relatedTarget, eventDirectionName) {
-    const targetIndex = this._getItemIndex(relatedTarget)
-    const fromIndex = this._getItemIndex(this._getActive())
-
-    return EventHandler.trigger(this._element, EVENT_SLIDE, {
-      relatedTarget,
-      direction: eventDirectionName,
-      from: fromIndex,
-      to: targetIndex
-    })
-  }
-
-  _setActiveIndicatorElement(element) {
+  _setActiveIndicatorElement(index) {
     if (!this._indicatorsElement) {
       return
     }
@@ -301,7 +275,7 @@ class Carousel extends BaseComponent {
     activeIndicator.classList.remove(CLASS_NAME_ACTIVE)
     activeIndicator.removeAttribute('aria-current')
 
-    const newActiveIndicator = SelectorEngine.findOne(`[data-bs-slide-to="${this._getItemIndex(element)}"]`, this._indicatorsElement)
+    const newActiveIndicator = SelectorEngine.findOne(`[data-bs-slide-to="${index}"]`, this._indicatorsElement)
 
     if (newActiveIndicator) {
       newActiveIndicator.classList.add(CLASS_NAME_ACTIVE)
@@ -321,92 +295,90 @@ class Carousel extends BaseComponent {
     this._config.interval = elementInterval || this._config.defaultInterval
   }
 
-  _slide(directionOrOrder, element) {
-    const order = this._directionToOrder(directionOrOrder)
-    const activeElement = this._getActive()
-    const activeElementIndex = this._getItemIndex(activeElement)
-    const nextElement = element || this._getItemByOrder(order, activeElement)
-
-    const nextElementIndex = this._getItemIndex(nextElement)
-    const isCycling = Boolean(this._interval)
-
-    const isNext = order === ORDER_NEXT
-    const directionalClassName = isNext ? CLASS_NAME_START : CLASS_NAME_END
-    const orderClassName = isNext ? CLASS_NAME_NEXT : CLASS_NAME_PREV
-    const eventDirectionName = this._orderToDirection(order)
-
-    if (nextElement && nextElement.classList.contains(CLASS_NAME_ACTIVE)) {
-      this._isSliding = false
-      return
-    }
-
+  _slide(order, element = null) {
     if (this._isSliding) {
       return
     }
 
-    const slideEvent = this._triggerSlideEvent(nextElement, eventDirectionName)
+    const activeElement = this._getActive()
+    const isNext = order === ORDER_NEXT
+    const nextElement = element || getNextActiveElement(this._getItems(), activeElement, isNext, this._config.wrap)
+
+    if (nextElement === activeElement) {
+      return
+    }
+
+    const nextElementIndex = this._getItemIndex(nextElement)
+
+    const triggerEvent = eventName => {
+      return EventHandler.trigger(this._element, eventName, {
+        relatedTarget: nextElement,
+        direction: this._orderToDirection(order),
+        from: this._getItemIndex(activeElement),
+        to: nextElementIndex
+      })
+    }
+
+    const slideEvent = triggerEvent(EVENT_SLIDE)
+
     if (slideEvent.defaultPrevented) {
       return
     }
 
     if (!activeElement || !nextElement) {
       // Some weirdness is happening, so we bail
+      // todo: change tests that use empty divs to avoid this check
       return
     }
 
     this._isSliding = true
 
+    const isCycling = Boolean(this._interval)
     if (isCycling) {
       this.pause()
     }
 
-    this._setActiveIndicatorElement(nextElement)
+    this._setActiveIndicatorElement(nextElementIndex)
     this._activeElement = nextElement
 
-    const triggerSlidEvent = () => {
-      EventHandler.trigger(this._element, EVENT_SLID, {
-        relatedTarget: nextElement,
-        direction: eventDirectionName,
-        from: activeElementIndex,
-        to: nextElementIndex
-      })
-    }
+    const directionalClassName = isNext ? CLASS_NAME_START : CLASS_NAME_END
+    const orderClassName = isNext ? CLASS_NAME_NEXT : CLASS_NAME_PREV
 
-    if (this._element.classList.contains(CLASS_NAME_SLIDE)) {
-      nextElement.classList.add(orderClassName)
+    nextElement.classList.add(orderClassName)
 
-      reflow(nextElement)
+    reflow(nextElement)
 
-      activeElement.classList.add(directionalClassName)
-      nextElement.classList.add(directionalClassName)
+    activeElement.classList.add(directionalClassName)
+    nextElement.classList.add(directionalClassName)
 
-      const completeCallBack = () => {
-        nextElement.classList.remove(directionalClassName, orderClassName)
-        nextElement.classList.add(CLASS_NAME_ACTIVE)
-
-        activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
-
-        this._isSliding = false
-
-        setTimeout(triggerSlidEvent, 0)
-      }
-
-      this._queueCallback(completeCallBack, activeElement, true)
-    } else {
-      activeElement.classList.remove(CLASS_NAME_ACTIVE)
+    const completeCallBack = () => {
+      nextElement.classList.remove(directionalClassName, orderClassName)
       nextElement.classList.add(CLASS_NAME_ACTIVE)
 
+      activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
+
       this._isSliding = false
-      triggerSlidEvent()
+
+      triggerEvent(EVENT_SLID)
     }
+
+    this._queueCallback(completeCallBack, activeElement, this._isAnimated())
 
     if (isCycling) {
       this.cycle()
     }
   }
 
+  _isAnimated() {
+    return this._element.classList.contains(CLASS_NAME_SLIDE)
+  }
+
   _getActive() {
     return SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
+  }
+
+  _getItems() {
+    return SelectorEngine.find(SELECTOR_ITEM, this._element)
   }
 
   _clearInterval() {
@@ -417,10 +389,6 @@ class Carousel extends BaseComponent {
   }
 
   _directionToOrder(direction) {
-    if (![DIRECTION_RIGHT, DIRECTION_LEFT].includes(direction)) {
-      return direction
-    }
-
     if (isRTL()) {
       return direction === DIRECTION_LEFT ? ORDER_PREV : ORDER_NEXT
     }
@@ -429,10 +397,6 @@ class Carousel extends BaseComponent {
   }
 
   _orderToDirection(order) {
-    if (![ORDER_NEXT, ORDER_PREV].includes(order)) {
-      return order
-    }
-
     if (isRTL()) {
       return order === ORDER_PREV ? DIRECTION_LEFT : DIRECTION_RIGHT
     }
@@ -441,63 +405,29 @@ class Carousel extends BaseComponent {
   }
 
   // Static
-  static carouselInterface(element, config) {
-    const data = Carousel.getOrCreateInstance(element, config)
-
-    let { _config } = data
-    if (typeof config === 'object') {
-      _config = {
-        ..._config,
-        ...config
-      }
-    }
-
-    const action = typeof config === 'string' ? config : _config.slide
-
-    if (typeof config === 'number') {
-      data.to(config)
-    } else if (typeof action === 'string') {
-      if (typeof data[action] === 'undefined') {
-        throw new TypeError(`No method named "${action}"`)
-      }
-
-      data[action]()
-    } else if (_config.interval && _config.ride) {
-      data.pause()
-      data.cycle()
-    }
-  }
-
   static jQueryInterface(config) {
     return this.each(function () {
-      Carousel.carouselInterface(this, config)
+      const data = Carousel.getOrCreateInstance(this, config)
+
+      if (typeof config === 'number') {
+        data.to(config)
+        return
+      }
+
+      if (typeof config === 'string') {
+        if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
+          throw new TypeError(`No method named "${config}"`)
+        }
+
+        data[config]()
+        return
+      }
+
+      if (data._config.interval && data._config.ride) {
+        data.pause()
+        data.cycle()
+      }
     })
-  }
-
-  static dataApiClickHandler(event) {
-    const target = getElementFromSelector(this)
-
-    if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
-      return
-    }
-
-    const config = {
-      ...Manipulator.getDataAttributes(target),
-      ...Manipulator.getDataAttributes(this)
-    }
-    const slideIndex = this.getAttribute('data-bs-slide-to')
-
-    if (slideIndex) {
-      config.interval = false
-    }
-
-    Carousel.carouselInterface(target, config)
-
-    if (slideIndex) {
-      Carousel.getInstance(target).to(slideIndex)
-    }
-
-    event.preventDefault()
   }
 }
 
@@ -505,13 +435,36 @@ class Carousel extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler)
+EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (event) {
+  const target = getElementFromSelector(this)
+
+  if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
+    return
+  }
+
+  event.preventDefault()
+
+  const carousel = Carousel.getOrCreateInstance(target)
+  const slideIndex = this.getAttribute('data-bs-slide-to')
+
+  if (slideIndex) {
+    carousel.to(slideIndex)
+    return
+  }
+
+  if (Manipulator.getDataAttribute(this, 'slide') === 'next') {
+    carousel.next()
+    return
+  }
+
+  carousel.prev()
+})
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
 
   for (const carousel of carousels) {
-    Carousel.carouselInterface(carousel, Carousel.getInstance(carousel))
+    Carousel.getOrCreateInstance(carousel)
   }
 })
 

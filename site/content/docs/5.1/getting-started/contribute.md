@@ -23,48 +23,14 @@ When completed, you'll be able to run the various commands provided from the com
 
 Our [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/package.json) includes numerous tasks for developing the project. Run `npm run` to see all the npm scripts in your terminal. **Primary tasks include:**
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Task</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <code>npm start</code>
-      </td>
-      <td>
-        Compiles CSS and JavaScript, builds the documentation, and starts a local server.
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>npm run dist</code>
-      </td>
-      <td>
-       Creates the <code>dist/</code> directory with compiled files. Requires <a href="https://sass-lang.com/">Sass</a>, <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, and <a href="https://github.com/terser/terser">terser</a>.
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>npm test</code>
-      </td>
-      <td>
-        Runs tests locally after running <code>npm run dist</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>npm run docs-serve</code>
-      </td>
-      <td>
-        Builds and runs the documentation locally.
-      </td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table >}}
+| Task | Description |
+| --- | --- |
+| `npm start` | Compiles CSS and JavaScript, builds the documentation, and starts a local server. |
+| `npm run dist` | Creates the `dist/` directory with compiled files. Uses [Sass](https://sass-lang.com/), [Autoprefixer](https://github.com/postcss/autoprefixer), and [terser](https://github.com/terser/terser). |
+| `npm test` | Runs tests locally after running `npm run dist` |
+| `npm run docs-serve` | Builds and runs the documentation locally. |
+{{< /bs-table >}}
 
 {{< callout info >}}
 {{< partial "callout-info-npm-starter.md" >}}
@@ -78,7 +44,7 @@ Dart Sass uses a rounding precision of 10 and for efficiency reasons does not al
 
 ## Autoprefixer
 
-Bootstrap uses [Autoprefixer][autoprefixer] (included in our build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.
+Bootstrap uses [Autoprefixer](https://github.com/postcss/autoprefixer) (included in our build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.
 
 We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [.browserslistrc]({{< param repo >}}/blob/v{{< param current_version >}}/.browserslistrc) for details.
 
@@ -99,5 +65,3 @@ Learn more about using Hugo by reading its [documentation](https://gohugo.io/doc
 ## Troubleshooting
 
 Should you encounter problems with installing dependencies, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
-
-[autoprefixer]: https://github.com/postcss/autoprefixer
