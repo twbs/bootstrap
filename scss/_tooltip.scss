@@ -17,10 +17,10 @@
   --#{$prefix}tooltip-arrow-height: #{$tooltip-arrow-height};
   // scss-docs-end tooltip-css-vars
 
-  position: absolute;
   z-index: var(--#{$prefix}tooltip-zindex);
   display: block;
   margin: var(--#{$prefix}tooltip-margin);
+  @include deprecate("`$tooltip-margin`", "v5", "v5.x", );
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
   @include reset-text();
@@ -32,7 +32,6 @@
   &.show { opacity: var(--#{$prefix}tooltip-opacity); }
 
   .tooltip-arrow {
-    position: absolute;
     display: block;
     width: var(--#{$prefix}tooltip-arrow-width);
     height: var(--#{$prefix}tooltip-arrow-height);
