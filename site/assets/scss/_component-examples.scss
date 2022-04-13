@@ -256,16 +256,30 @@
 
 // Scrollspy demo on fixed height div
 .scrollspy-example {
-  position: relative;
   height: 200px;
   margin-top: .5rem;
   overflow: auto;
 }
 
 .scrollspy-example-2 {
-  position: relative;
   height: 350px;
   overflow: auto;
+}
+
+.simple-list-example-scrollspy {
+  a {
+    padding: .25rem;
+    margin: .5rem 0;
+
+    &:focus {
+      background-color: rgba($bd-purple, .65);
+    }
+  }
+
+  .active {
+    background-color: rgba($bd-purple, .15);
+  }
+
 }
 
 .bd-example-border-utils {
