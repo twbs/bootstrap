@@ -170,10 +170,10 @@ function addHandler(element, originalTypeEvent, handler, delegationFunction, one
     return
   }
 
-  const uid = makeEventUid(callable, originalTypeEvent.replace(namespaceRegex, ''))
-  const fn = isDelegated ?
-    bootstrapDelegationHandler(element, handler, callable) :
-    bootstrapHandler(element, callable)
+  const uid = getUidEvent(originalHandler, originalTypeEvent.replace(namespaceRegex, ''))
+  const fn = delegation ?
+    bootstrapDelegationHandler(element, handler, delegationFunction) :
+    bootstrapHandler(element, handler)
 
   fn.delegationSelector = isDelegated ? handler : null
   fn.callable = callable
