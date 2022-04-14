@@ -288,18 +288,9 @@ const EventHandler = {
       defaultPrevented = jQueryEvent.isDefaultPrevented()
     }
 
-    const evt = new Event(event, { bubbles, cancelable: true })
+    let evt = new Event(event, { bubbles, cancelable: true })
+    evt = hydrateObj(evt, args)
 
-    // merge custom information in our event
-    if (typeof args !== 'undefined') {
-      for (const key of Object.keys(args)) {
-        Object.defineProperty(evt, key, {
-          get() {
-            return args[key]
-          }
-        })
-      }
-    }
 
     if (defaultPrevented) {
       evt.preventDefault()
@@ -315,6 +306,17 @@ const EventHandler = {
 
     return evt
   }
+}
+
+function hydrateObj(obj, meta) {
+  for (const [key, value] of Object.entries(meta || {})) {
+    Object.defineProperty(obj, key, {
+      get() {
+        return value
+      }
+    })
+  }
+  return obj
 }
 
 export default EventHandler
