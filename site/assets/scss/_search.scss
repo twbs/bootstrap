@@ -1,24 +1,8 @@
+// stylelint-disable selector-class-pattern
+
 .bd-search {
   position: relative;
   width: 100%;
-
-  &::after {
-    position: absolute;
-    top: .4rem;
-    right: .4rem;
-    bottom: .4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-right: .3125rem;
-    padding-left: .3125rem;
-    @include font-size(.75rem);
-    color: rgba($white, .65);
-    // content: "⌘K";
-    content: attr(data-shortcut);
-    background-color: rgba($white, .1);
-    @include border-radius(.125rem);
-  }
 
   @include media-breakpoint-up(lg) {
     position: absolute;
@@ -33,30 +17,68 @@
     margin-left: -140px;
   }
 
-  .form-control {
-    padding-right: 2.75rem;
-    color: $white;
-    background-color: rgba($black, .1);
-    border-color: rgba($white, .4);
-    transition-property: background-color, border-color, box-shadow;
+}
 
-    &::placeholder {
-      color: rgba($white, .65);
-    }
+.DocSearch-Container {
+  z-index: 1030;
 
-    &::-webkit-search-cancel-button {
-      appearance: none;
-      width: 1rem;
-      height: 1rem;
-      cursor: pointer;
-      background: escape-svg($search-clear-icon) no-repeat 0 0;
-      background-size: 100% 100%;
-    }
+  @include media-breakpoint-up(lg) {
+    padding-top: 4rem;
+  }
+}
 
-    &:focus {
-      background-color: rgba($black, .25);
-      border-color: rgba($bd-accent, 1);
-      box-shadow: 0 0 0 .25rem rgba($bd-accent, .4);
+.DocSearch-Button {
+  --docsearch-searchbox-background: #{rgba($black, .1)};
+  --docsearch-searchbox-color: #{$white};
+  --docsearch-searchbox-focus-background: #{rgba($black, .25)};
+  --docsearch-searchbox-shadow: #{0 0 0 .25rem rgba($bd-accent, .4)};
+  --docsearch-text-color: #{$white};
+  --docsearch-muted-color: #{rgba($white, .65)};
+
+  width: 100%;
+  margin: 0;
+  border: 1px solid rgba($white, .4);
+  @include border-radius(.375rem);
+
+  .DocSearch-Search-Icon {
+    opacity: .65;
+  }
+
+  &:active,
+  &:focus,
+  &:hover {
+    border-color: rgba($bd-accent, 1);
+
+    .DocSearch-Search-Icon {
+      opacity: 1;
     }
   }
+}
+
+.DocSearch-Button-Keys {
+  min-width: 0;
+  padding-right: .25rem;
+  padding-left: .25rem;
+  background: rgba($black, .25);
+  @include border-radius(.25rem);
+}
+
+.DocSearch-Button-Key {
+  top: 0;
+  width: auto;
+  height: 1.25rem;
+  padding-right: .125rem;
+  padding-left: .125rem;
+  margin-right: 0;
+  font-size: .875rem;
+  background: none;
+  box-shadow: none;
+}
+
+.DocSearch-Commands-Key {
+  padding-left: 1px;
+  font-size: .875rem;
+  background-color: rgba($black, .1);
+  background-image: none;
+  box-shadow: none;
 }

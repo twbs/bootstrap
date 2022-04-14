@@ -1,4 +1,5 @@
-{{- "<!-- Bootstrap core CSS -->" | safeHTML }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
 {{ if eq hugo.Environment "production" -}}
 {{ if eq .Page.Params.direction "rtl" -}}
 <link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap.rtl.min.css" rel="stylesheet" {{ printf "integrity=%q" .Site.Params.cdn.css_rtl_hash | safeHTMLAttr }} crossorigin="anonymous">
