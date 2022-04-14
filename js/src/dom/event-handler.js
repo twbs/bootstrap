@@ -74,12 +74,12 @@ const nativeEvents = new Set([
  * Private methods
  */
 
-function getUidEvent(element, uid) {
+function makeEventUid(element, uid) {
   return (uid && `${uid}::${uidEvent++}`) || element.uidEvent || uidEvent++
 }
 
-function getEvent(element) {
-  const uid = getUidEvent(element)
+function getElementEvents(element) {
+  const uid = makeEventUid(element)
 
   element.uidEvent = uid
   eventRegistry[uid] = eventRegistry[uid] || {}
@@ -121,9 +121,9 @@ function bootstrapDelegationHandler(element, selector, fn) {
   }
 }
 
-function findHandler(events, handler, delegationSelector = null) {
+function findHandler(events, callable, delegationSelector = null) {
   return Object.values(events)
-    .find(event => event.originalHandler === handler && event.delegationSelector === delegationSelector)
+    .find(event => event.originalHandler === callable && event.delegationSelector === delegationSelector)
 }
 
 function normalizeParameters(originalTypeEvent, handler, delegationFunction) {
@@ -167,7 +167,7 @@ function addHandler(element, originalTypeEvent, handler, delegationFunction, one
   }
 
   const [delegation, originalHandler, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction)
-  const events = getEvent(element)
+  const events = getElementEvents(element)
   const handlers = events[typeEvent] || (events[typeEvent] = {})
   const previousFunction = findHandler(handlers, originalHandler, delegation ? handler : null)
 
@@ -177,7 +177,7 @@ function addHandler(element, originalTypeEvent, handler, delegationFunction, one
     return
   }
 
-  const uid = getUidEvent(originalHandler, originalTypeEvent.replace(namespaceRegex, ''))
+  const uid = makeEventUid(originalHandler, originalTypeEvent.replace(namespaceRegex, ''))
   const fn = delegation ?
     bootstrapDelegationHandler(element, handler, delegationFunction) :
     bootstrapHandler(element, handler)
@@ -235,7 +235,7 @@ const EventHandler = {
 
     const [delegation, originalHandler, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction)
     const inNamespace = typeEvent !== originalTypeEvent
-    const events = getEvent(element)
+    const events = getElementEvents(element)
     const isNamespace = originalTypeEvent.startsWith('.')
 
     if (typeof originalHandler !== 'undefined') {
