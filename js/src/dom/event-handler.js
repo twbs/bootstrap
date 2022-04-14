@@ -123,12 +123,12 @@ function bootstrapDelegationHandler(element, selector, fn) {
 
 function findHandler(events, callable, delegationSelector = null) {
   return Object.values(events)
-    .find(event => event.originalHandler === callable && event.delegationSelector === delegationSelector)
+    .find(event => event.callable === callable && event.delegationSelector === delegationSelector)
 }
 
 function normalizeParameters(originalTypeEvent, handler, delegationFunction) {
   const isDelegated = typeof handler === 'string'
-  const originalHandler = isDelegated ?
+  const callable = isDelegated ?
     delegationFunction :
     (handler || delegationFunction) // todo: tooltip passes `false` instead of selector, so we need to check
   let typeEvent = getTypeEvent(originalTypeEvent)
@@ -137,7 +137,7 @@ function normalizeParameters(originalTypeEvent, handler, delegationFunction) {
     typeEvent = originalTypeEvent
   }
 
-  return [isDelegated, originalHandler, typeEvent]
+  return [isDelegated, callable, typeEvent]
 }
 
 function addHandler(element, originalTypeEvent, handler, delegationFunction, oneOff) {
@@ -177,7 +177,7 @@ function addHandler(element, originalTypeEvent, handler, delegationFunction, one
     bootstrapHandler(element, callable)
 
   fn.delegationSelector = isDelegated ? handler : null
-  fn.originalHandler = callable
+  fn.callable = callable
   fn.oneOff = oneOff
   fn.uidEvent = uid
   handlers[uid] = fn
@@ -202,7 +202,7 @@ function removeNamespacedHandlers(element, events, typeEvent, namespace) {
   for (const handlerKey of Object.keys(storeElementEvent)) {
     if (handlerKey.includes(namespace)) {
       const event = storeElementEvent[handlerKey]
-      removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector)
+      removeHandler(element, events, typeEvent, event.callable, event.delegationSelector)
     }
   }
 }
@@ -227,18 +227,19 @@ const EventHandler = {
       return
     }
 
-    const [isDelegated, originalHandler, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction)
+    const [isDelegated, callable, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction)
     const inNamespace = typeEvent !== originalTypeEvent
     const events = getElementEvents(element)
+    const storeElementEvent = events[typeEvent] || {}
     const isNamespace = originalTypeEvent.startsWith('.')
 
-    if (typeof originalHandler !== 'undefined') {
+    if (typeof callable !== 'undefined') {
       // Simplest case: handler is passed, remove that listener ONLY.
-      if (!events || !events[typeEvent]) {
+      if (!storeElementEvent) {
         return
       }
 
-      removeHandler(element, events, typeEvent, originalHandler, isDelegated ? handler : null)
+      removeHandler(element, events, typeEvent, callable, isDelegated ? handler : null)
       return
     }
 
@@ -248,13 +249,12 @@ const EventHandler = {
       }
     }
 
-    const storeElementEvent = events[typeEvent] || {}
     for (const keyHandlers of Object.keys(storeElementEvent)) {
       const handlerKey = keyHandlers.replace(stripUidRegex, '')
 
       if (!inNamespace || originalTypeEvent.includes(handlerKey)) {
         const event = storeElementEvent[keyHandlers]
-        removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector)
+        removeHandler(element, events, typeEvent, event.callable, event.delegationSelector)
       }
     }
   },
