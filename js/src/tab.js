@@ -171,12 +171,8 @@ class Tab extends BaseComponent {
     const nextActiveElement = getNextActiveElement(this._getChildren().filter(element => !isDisabled(element)), event.target, isNext, true)
 
     if (nextActiveElement) {
-       Tab.getOrCreateInstance(nextActiveElement).show()
+      Tab.getOrCreateInstance(nextActiveElement).show()
     }
-      return
-    }
-
-    Tab.getOrCreateInstance(nextActiveElement).show()
   }
 
   _getChildren() { // collection of inner elements
