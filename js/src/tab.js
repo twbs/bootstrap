@@ -170,7 +170,9 @@ class Tab extends BaseComponent {
     const isNext = [ARROW_RIGHT_KEY, ARROW_DOWN_KEY].includes(event.key)
     const nextActiveElement = getNextActiveElement(this._getChildren().filter(element => !isDisabled(element)), event.target, isNext, true)
 
-    if (!nextActiveElement) {
+    if (nextActiveElement) {
+       Tab.getOrCreateInstance(nextActiveElement).show()
+    }
       return
     }
 
