@@ -5,6 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
+import { enableMagicActions } from './src/dom/magic-actions'
+
 export { default as Alert } from './src/alert'
 export { default as Button } from './src/button'
 export { default as Carousel } from './src/carousel'
@@ -16,4 +18,7 @@ export { default as Popover } from './src/popover'
 export { default as ScrollSpy } from './src/scrollspy'
 export { default as Tab } from './src/tab'
 export { default as Toast } from './src/toast'
+export { default as Toggler } from './src/toggler'
 export { default as Tooltip } from './src/tooltip'
+
+enableMagicActions()

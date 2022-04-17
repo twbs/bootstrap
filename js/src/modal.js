@@ -5,14 +5,14 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, getElementFromSelector, isRTL, isVisible, reflow } from './util/index'
+import { defineJQueryPlugin, isRTL, isVisible, reflow } from './util/index'
 import EventHandler from './dom/event-handler'
 import SelectorEngine from './dom/selector-engine'
 import ScrollBarHelper from './util/scrollbar'
 import BaseComponent from './base-component'
 import Backdrop from './util/backdrop'
 import FocusTrap from './util/focustrap'
-import { enableDismissTrigger } from './util/component-functions'
+import { enableDismissTrigger, eventActionOnPlugin } from './dom/magic-actions'
 
 /**
  * Constants
@@ -21,7 +21,6 @@ import { enableDismissTrigger } from './util/component-functions'
 const NAME = 'modal'
 const DATA_KEY = 'bs.modal'
 const EVENT_KEY = `.${DATA_KEY}`
-const DATA_API_KEY = '.data-api'
 const ESCAPE_KEY = 'Escape'
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
@@ -31,7 +30,6 @@ const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
 const EVENT_RESIZE = `resize${EVENT_KEY}`
 const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_OPEN = 'modal-open'
 const CLASS_NAME_FADE = 'fade'
@@ -328,35 +326,24 @@ class Modal extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
-  const target = getElementFromSelector(this)
-
-  if (['A', 'AREA'].includes(this.tagName)) {
-    event.preventDefault()
-  }
-
-  EventHandler.one(target, EVENT_SHOW, showEvent => {
+eventActionOnPlugin(Modal, 'click', SELECTOR_DATA_TOGGLE, 'toggle', data => {
+  EventHandler.one(data.target, EVENT_SHOW, showEvent => {
     if (showEvent.defaultPrevented) {
       // only register focus restorer if modal will actually get shown
       return
     }
 
-    EventHandler.one(target, EVENT_HIDDEN, () => {
-      if (isVisible(this)) {
-        this.focus()
+    EventHandler.one(data.target, EVENT_HIDDEN, () => {
+      if (isVisible(data.event.target)) {
+        data.event.target.focus()
       }
     })
   })
-
-  // avoid conflict when clicking modal toggler while another one is open
+  // avoid conflict when clicking a toggler of an offcanvas, while another is open
   const alreadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
-  if (alreadyOpen) {
+  if (alreadyOpen && alreadyOpen !== data.target) {
     Modal.getInstance(alreadyOpen).hide()
   }
-
-  const data = Modal.getOrCreateInstance(target)
-
-  data.toggle(this)
 })
 
 enableDismissTrigger(Modal)
