@@ -11,7 +11,6 @@ import { getjQuery } from '../util/index'
  * Constants
  */
 
-const namespaceRegex = /[^.]*(?=\..*)\.|.*/
 const stripNameRegex = /\..*/
 const stripUidRegex = /::\d+$/
 const eventRegistry = {} // Events storage
@@ -87,21 +86,21 @@ function getElementEvents(element) {
   return eventRegistry[uid]
 }
 
-function bootstrapHandler(element, fn) {
-  return function handler(event) {
-    hydrateObj(event, { delegateTarget: element })
+function bootstrapHandler(meta, fn) {
+  return function (event) {
+    hydrateObj(event, { delegateTarget: meta.explicitOriginalTarget })
 
-    if (handler.oneOff) {
-      EventHandler.off(element, event.type, fn)
+    if (meta.oneOff) {
+      EventHandler.off(meta.explicitOriginalTarget, event.type, fn)
     }
 
-    return fn.apply(element, [event])
+    return fn.apply(meta.explicitOriginalTarget, [event])
   }
 }
 
-function bootstrapDelegationHandler(element, selector, fn) {
-  return function handler(event) {
-    const domElements = element.querySelectorAll(selector)
+function bootstrapDelegationHandler(meta, fn) {
+  return function (event) {
+    const domElements = meta.explicitOriginalTarget.querySelectorAll(meta.delegationSelector)
 
     for (let { target } = event; target && target !== this; target = target.parentNode) {
       for (const domElement of domElements) {
@@ -111,8 +110,8 @@ function bootstrapDelegationHandler(element, selector, fn) {
 
         hydrateObj(event, { delegateTarget: target })
 
-        if (handler.oneOff) {
-          EventHandler.off(element, event.type, selector, fn)
+        if (meta.oneOff) {
+          EventHandler.off(meta.explicitOriginalTarget, event.type, meta.delegationSelector, fn)
         }
 
         return fn.apply(target, [event])
@@ -126,26 +125,14 @@ function findHandler(events, callable, delegationSelector = null) {
     .find(event => event.callable === callable && event.delegationSelector === delegationSelector)
 }
 
-function normalizeParameters(originalTypeEvent, handler, delegationFunction) {
-  const isDelegated = typeof handler === 'string'
-  // todo: tooltip passes `false` instead of selector, so we need to check
-  const callable = isDelegated ? delegationFunction : (handler || delegationFunction)
-  let typeEvent = getTypeEvent(originalTypeEvent)
-
-  if (!nativeEvents.has(typeEvent)) {
-    typeEvent = originalTypeEvent
-  }
-
-  return [isDelegated, callable, typeEvent]
-}
-
 function addHandler(element, originalTypeEvent, handler, delegationFunction, oneOff) {
   if (typeof originalTypeEvent !== 'string' || !element) {
     return
   }
 
-  let [isDelegated, callable, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction)
-
+  const parameters = new Parameters(handler, delegationFunction)
+  const meta = new EventMeta(element, originalTypeEvent, parameters, oneOff)
+  let { callable, isDelegated, delegationSelector } = parameters
   // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM position
   // this prevents the handler from being dispatched the same way as mouseover or mouseout does
   if (originalTypeEvent in customEvents) {
@@ -161,8 +148,8 @@ function addHandler(element, originalTypeEvent, handler, delegationFunction, one
   }
 
   const events = getElementEvents(element)
-  const handlers = events[typeEvent] || (events[typeEvent] = {})
-  const previousFunction = findHandler(handlers, callable, isDelegated ? handler : null)
+  const handlers = events[meta.name] || (events[meta.name] = {})
+  const previousFunction = findHandler(handlers, callable, delegationSelector)
 
   if (previousFunction) {
     previousFunction.oneOff = previousFunction.oneOff && oneOff
@@ -170,18 +157,14 @@ function addHandler(element, originalTypeEvent, handler, delegationFunction, one
     return
   }
 
-  const uid = getUidEvent(originalHandler, originalTypeEvent.replace(namespaceRegex, ''))
-  const fn = delegation ?
-    bootstrapDelegationHandler(element, handler, delegationFunction) :
-    bootstrapHandler(element, handler)
+  const uid = makeEventUid(callable, meta.namespace)
+  const fn = isDelegated ?
+    bootstrapDelegationHandler(meta, callable) :
+    bootstrapHandler(meta, callable)
 
-  fn.delegationSelector = isDelegated ? handler : null
-  fn.callable = callable
-  fn.oneOff = oneOff
-  fn.uidEvent = uid
-  handlers[uid] = fn
+  handlers[uid] = hydrateObj(hydrateObj(fn, meta), { callable, uidEvent: uid })
 
-  element.addEventListener(typeEvent, fn, isDelegated)
+  element.addEventListener(meta.name, handlers[uid], isDelegated)
 }
 
 function removeHandler(element, events, typeEvent, handler, delegationSelector) {
@@ -206,12 +189,6 @@ function removeNamespacedHandlers(element, events, typeEvent, namespace) {
   }
 }
 
-function getTypeEvent(event) {
-  // allow to get the native events from namespaced events ('click.bs.button' --> 'click')
-  event = event.replace(stripNameRegex, '')
-  return customEvents[event] || event
-}
-
 const EventHandler = {
   on(element, event, handler, delegationFunction) {
     addHandler(element, event, handler, delegationFunction, false)
@@ -226,34 +203,35 @@ const EventHandler = {
       return
     }
 
-    const [isDelegated, callable, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction)
-    const inNamespace = typeEvent !== originalTypeEvent
-    const events = getElementEvents(element)
-    const storeElementEvent = events[typeEvent] || {}
-    const isNamespace = originalTypeEvent.startsWith('.')
+    const parameters = new Parameters(handler, delegationFunction)
+    const meta = new EventMeta(element, originalTypeEvent, parameters)
+    const { callable, delegationSelector } = parameters
 
-    if (typeof callable !== 'undefined') {
+    const events = getElementEvents(element)
+    const storeElementEvent = events[meta.name] || {}
+
+    if (callable) {
       // Simplest case: handler is passed, remove that listener ONLY.
       if (!Object.keys(storeElementEvent).length) {
         return
       }
 
-      removeHandler(element, events, typeEvent, callable, isDelegated ? handler : null)
+      removeHandler(element, events, meta.name, callable, delegationSelector)
       return
     }
 
-    if (isNamespace) {
+    if (meta.isNamespace) {
       for (const elementEvent of Object.keys(events)) {
-        removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1))
+        removeNamespacedHandlers(element, events, elementEvent, meta.namespace)
       }
     }
 
     for (const keyHandlers of Object.keys(storeElementEvent)) {
       const handlerKey = keyHandlers.replace(stripUidRegex, '')
 
-      if (!inNamespace || originalTypeEvent.includes(handlerKey)) {
+      if (!meta.namespace || originalTypeEvent.includes(handlerKey)) {
         const event = storeElementEvent[keyHandlers]
-        removeHandler(element, events, typeEvent, event.callable, event.delegationSelector)
+        removeHandler(element, events, meta.name, event.callable, event.delegationSelector)
       }
     }
   },
@@ -263,16 +241,15 @@ const EventHandler = {
       return null
     }
 
+    const meta = new EventMeta(element, event)
     const $ = getjQuery()
-    const typeEvent = getTypeEvent(event)
-    const inNamespace = event !== typeEvent
 
     let jQueryEvent = null
     let bubbles = true
     let nativeDispatch = true
     let defaultPrevented = false
 
-    if (inNamespace && $) {
+    if (meta.namespace && $) {
       jQueryEvent = $.Event(event, args)
 
       $(element).trigger(jQueryEvent)
@@ -281,7 +258,7 @@ const EventHandler = {
       defaultPrevented = jQueryEvent.isDefaultPrevented()
     }
 
-    let evt = new Event(event, { bubbles, cancelable: true })
+    let evt = new Event(meta.name, { bubbles, cancelable: true })
     evt = hydrateObj(evt, args)
 
     if (defaultPrevented) {
@@ -298,6 +275,33 @@ const EventHandler = {
 
     return evt
   }
+}
+
+function Parameters(handler, delegationFunction) {
+  this.isDelegated = typeof handler === 'string'
+  this.callable = this.isDelegated ?
+    delegationFunction :
+    (handler || delegationFunction) // todo: tooltip passes `false` instead of selector, so we need to check
+  this.delegationSelector = this.isDelegated ? handler : null
+}
+
+function EventMeta(element, eventName, parameters = {}, oneOff = false) {
+  this.givenName = eventName
+  this.isNamespace = eventName.startsWith('.')
+
+  const namespaces = eventName.split('.')
+  let name = namespaces.shift()
+
+  if (!this.isNamespace) {
+    name = customEvents[name] || name
+    name = nativeEvents.has(name) ? name : eventName
+  }
+
+  this.name = this.isNamespace ? null : name
+  this.namespace = namespaces.join('.')
+  this.explicitOriginalTarget = element
+  this.delegationSelector = parameters.delegationSelector
+  this.oneOff = oneOff
 }
 
 function hydrateObj(obj, meta) {
