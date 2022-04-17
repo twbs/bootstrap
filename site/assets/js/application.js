@@ -10,7 +10,7 @@
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global ClipboardJS: false, bootstrap: false */
+/* global bootstrap: false */
 
 (() => {
   'use strict'
@@ -131,73 +131,4 @@
       modalBodyInput.value = recipient
     })
   }
-
-  // Insert copy to clipboard button before .highlight
-  const btnTitle = 'Copy to clipboard'
-  const btnEdit = 'Edit on StackBlitz'
-  const btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard"><svg class="bi" width="1em" height="1em" fill="currentColor" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg></button></div>'
-
-  document.querySelectorAll('.bd-masthead .highlight, .bd-content > .highlight')
-    .forEach(element => {
-      element.insertAdjacentHTML('beforebegin', btnHtml)
-    })
-
-  /**
-   *
-   * @param {string} selector
-   * @param {string} title
-   */
-  function snippetButtonTooltip(selector, title) {
-    document.querySelectorAll(selector).forEach(btn => {
-      const tooltipBtn = new bootstrap.Tooltip(btn, { title })
-
-      btn.addEventListener('mouseleave', () => {
-        // Explicitly hide tooltip, since after clicking it remains
-        // focused (as it's a button), so tooltip would otherwise
-        // remain visible until focus is moved away
-        tooltipBtn.hide()
-      })
-    })
-  }
-
-  snippetButtonTooltip('.btn-clipboard', btnTitle)
-  snippetButtonTooltip('.btn-edit', btnEdit)
-
-  const clipboard = new ClipboardJS('.btn-clipboard', {
-    target(trigger) {
-      const snippet = trigger.parentNode.classList.contains('bd-clipboard') ? trigger.parentNode.nextElementSibling : trigger.closest('.bd-example-snippet').querySelector('.highlight')
-      return snippet
-    }
-  })
-
-  clipboard.on('success', event => {
-    const iconFirstChild = event.trigger.querySelector('.bi').firstChild
-    const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
-    const namespace = 'http://www.w3.org/1999/xlink'
-    const originalXhref = iconFirstChild.getAttributeNS(namespace, 'href')
-    const originalTitle = event.trigger.title
-
-    tooltipBtn.setContent({ '.tooltip-inner': 'Copied!' })
-    event.trigger.addEventListener('hidden.bs.tooltip', () => {
-      tooltipBtn.setContent({ '.tooltip-inner': btnTitle })
-    }, { once: true })
-    event.clearSelection()
-    iconFirstChild.setAttributeNS(namespace, 'href', originalXhref.replace('clipboard', 'check2'))
-
-    setTimeout(() => {
-      iconFirstChild.setAttributeNS(namespace, 'href', originalXhref)
-      event.trigger.title = originalTitle
-    }, 2000)
-  })
-
-  clipboard.on('error', event => {
-    const modifierKey = /mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
-    const fallbackMsg = `Press ${modifierKey}C to copy`
-    const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
-
-    tooltipBtn.setContent({ '.tooltip-inner': fallbackMsg })
-    event.trigger.addEventListener('hidden.bs.tooltip', () => {
-      tooltipBtn.setContent({ '.tooltip-inner': btnTitle })
-    }, { once: true })
-  })
 })()

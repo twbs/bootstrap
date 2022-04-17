@@ -15,7 +15,7 @@
 {{- $show_markup := .Get "show_markup" | default true -}}
 {{- $input := .Inner -}}
 
-<div class="bd-example-snippet">
+<div class="bd-example-snippet bd-code-snippet">
   {{- if eq $show_preview true -}}
   <div{{ with $id }} id="{{ . }}"{{ end }} class="bd-example{{ with $class }} {{ . }}{{ end }}">
     {{- $input -}}
