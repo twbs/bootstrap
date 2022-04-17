@@ -102,7 +102,27 @@ class Offcanvas extends BaseComponent {
     }
 
     this._isShown = true
-    this._backdrop.show()
+    this._element.style.visibility = 'visible'
+
+    if (this._element.classList.contains('offcanvas-slide')) {
+      if (this._element.classList.contains('offcanvas-start')) {
+        getElementFromSelector(this._element).classList.add('slide-start')
+      }
+
+      if (this._element.classList.contains('offcanvas-end')) {
+        getElementFromSelector(this._element).classList.add('slide-end')
+      }
+
+      if (this._element.classList.contains('offcanvas-top')) {
+        getElementFromSelector(this._element).classList.add('slide-top')
+      }
+
+      if (this._element.classList.contains('offcanvas-bottom')) {
+        getElementFromSelector(this._element).classList.add('slide-bottom')
+      }
+    } else {
+      this._backdrop.show()
+    }
 
     if (!this._config.scroll) {
       new ScrollBarHelper().hide()
@@ -141,6 +161,13 @@ class Offcanvas extends BaseComponent {
     this._isShown = false
     this._element.classList.add(CLASS_NAME_HIDING)
     this._backdrop.hide()
+
+    if (this._element.classList.contains('offcanvas-slide')) {
+      getElementFromSelector(this._element).classList.remove('slide-start')
+      getElementFromSelector(this._element).classList.remove('slide-end')
+      getElementFromSelector(this._element).classList.remove('slide-top')
+      getElementFromSelector(this._element).classList.remove('slide-bottom')
+    }
 
     const completeCallback = () => {
       this._element.classList.remove(CLASS_NAME_SHOW, CLASS_NAME_HIDING)

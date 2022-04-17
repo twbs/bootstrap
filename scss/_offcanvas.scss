@@ -88,3 +88,16 @@
   border-top: $offcanvas-border-width solid $offcanvas-border-color;
   transform: translateY(100%);
 }
+
+.slide-start {
+  margin-left: $offcanvas-horizontal-width;
+}
+.slide-end {
+  margin-right: $offcanvas-horizontal-width;
+}
+.slide-top {
+  margin-top: $offcanvas-vertical-height;
+}
+.slide-bottom {
+  margin-bottom: $offcanvas-vertical-height;
+}
