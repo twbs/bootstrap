@@ -433,7 +433,12 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   event.preventDefault()
-  Dropdown.getOrCreateInstance(this).toggle()
+ /**  Dropdown.getOrCreateInstance(this).toggle() */
+  if (/input|textarea/i.test(event.target.tagName)) {
+    Dropdown.getOrCreateInstance(this).show()
+  } else {
+    Dropdown.getOrCreateInstance(this).toggle()
+  }
 })
 
 /**
