@@ -10,10 +10,25 @@
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global ClipboardJS: false, bootstrap: false */
+/* global bootstrap: false */
 
 (() => {
   'use strict'
+
+  // Scroll the active sidebar link into view
+  const sidenav = document.querySelector('.bd-sidebar')
+  if (sidenav) {
+    const sidenavHeight = sidenav.clientHeight
+    const sidenavActiveLink = document.querySelector('.bd-links-nav .active')
+    const sidenavActiveLinkTop = sidenavActiveLink.offsetTop
+    const sidenavActiveLinkHeight = sidenavActiveLink.clientHeight
+    const viewportTop = sidenavActiveLinkTop
+    const viewportBottom = viewportTop - sidenavHeight + sidenavActiveLinkHeight
+
+    if (sidenav.scrollTop > viewportTop || sidenav.scrollTop < viewportBottom) {
+      sidenav.scrollTop = viewportTop - (sidenavHeight / 2) + (sidenavActiveLinkHeight / 2)
+    }
+  }
 
   // Tooltip and popover demos
   document.querySelectorAll('.tooltip-demo')
@@ -116,61 +131,4 @@
       modalBodyInput.value = recipient
     })
   }
-
-  // Insert copy to clipboard button before .highlight
-  const btnTitle = 'Copy to clipboard'
-  const btnEdit = 'Edit on StackBlitz'
-  const btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard">Copy</button></div>'
-  document.querySelectorAll('div.highlight')
-    .forEach(element => {
-      element.insertAdjacentHTML('beforebegin', btnHtml)
-    })
-
-  /**
-   *
-   * @param {string} selector
-   * @param {string} title
-   */
-  function snippetButtonTooltip(selector, title) {
-    document.querySelectorAll(selector).forEach(btn => {
-      const tooltipBtn = new bootstrap.Tooltip(btn, { title })
-
-      btn.addEventListener('mouseleave', () => {
-        // Explicitly hide tooltip, since after clicking it remains
-        // focused (as it's a button), so tooltip would otherwise
-        // remain visible until focus is moved away
-        tooltipBtn.hide()
-      })
-    })
-  }
-
-  snippetButtonTooltip('.btn-clipboard', btnTitle)
-  snippetButtonTooltip('.btn-edit', btnEdit)
-
-  const clipboard = new ClipboardJS('.btn-clipboard', {
-    target(trigger) {
-      return trigger.parentNode.nextElementSibling
-    }
-  })
-
-  clipboard.on('success', event => {
-    const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
-
-    tooltipBtn.setContent({ '.tooltip-inner': 'Copied!' })
-    event.trigger.addEventListener('hidden.bs.tooltip', () => {
-      tooltipBtn.setContent({ '.tooltip-inner': btnTitle })
-    }, { once: true })
-    event.clearSelection()
-  })
-
-  clipboard.on('error', event => {
-    const modifierKey = /mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
-    const fallbackMsg = `Press ${modifierKey}C to copy`
-    const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
-
-    tooltipBtn.setContent({ '.tooltip-inner': fallbackMsg })
-    event.trigger.addEventListener('hidden.bs.tooltip', () => {
-      tooltipBtn.setContent({ '.tooltip-inner': btnTitle })
-    }, { once: true })
-  })
 })()

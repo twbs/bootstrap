@@ -85,21 +85,17 @@
 .bd-example {
   position: relative;
   padding: 1rem;
-  margin: 1rem ($bd-gutter-x * -1) 0;
-  border: solid $gray-300;
+  margin: 1rem ($bd-gutter-x * -.5) 0;
+  border: solid $border-color;
   border-width: 1px 0 0;
   @include clearfix();
 
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(md) {
     padding: 1.5rem;
     margin-right: 0;
     margin-left: 0;
     border-width: 1px;
-    @include border-top-radius(.25rem);
-
-    + .bd-clipboard + .highlight {
-      @include border-bottom-radius(.25rem);
-    }
+    @include border-top-radius(var(--bs-border-radius));
   }
 
   + p {
@@ -348,12 +344,14 @@
 //
 
 .highlight {
-  padding: var(--bs-gutter-x) $bd-gutter-x;
+  position: relative;
+  padding: .75rem ($bd-gutter-x * .5);
   margin-bottom: 1rem;
   background-color: var(--bs-gray-100);
 
-  @include media-breakpoint-up(sm) {
-    padding: 1rem 1.5rem;
+  @include media-breakpoint-up(md) {
+    padding: .75rem 1.25rem;
+    @include border-radius(var(--bs-border-radius));
   }
 
   pre {
@@ -363,6 +361,11 @@
     white-space: pre;
     background-color: transparent;
     border: 0;
+
+    // Undo tabindex that's automatically added by Hugo
+    &:focus {
+      outline: 0;
+    }
   }
 
   pre code {
@@ -372,11 +375,22 @@
   }
 }
 
-.bd-content .highlight {
-  margin-right: $bd-gutter-x * -1;
-  margin-left: $bd-gutter-x * -1;
+.bd-example-snippet {
+  .highlight {
+    @include border-top-radius(0);
+    border: 1px solid $border-color;
+  }
+  .highlight-toolbar {
+    border: solid $border-color;
+    border-width: 0 1px;
+  }
+}
 
-  @include media-breakpoint-up(sm) {
+.bd-content .highlight {
+  margin-right: $bd-gutter-x * -.5;
+  margin-left: $bd-gutter-x * -.5;
+
+  @include media-breakpoint-up(md) {
     margin-right: 0;
     margin-left: 0;
   }
