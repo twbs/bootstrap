@@ -82,6 +82,15 @@
 // Docs examples
 //
 
+.bd-example-snippet {
+  border: solid $border-color;
+  border-width: 1px 0;
+
+  @include media-breakpoint-up(md) {
+    border-width: 1px;
+  }
+}
+
 .bd-example {
   position: relative;
   padding: 1rem;
@@ -371,8 +380,6 @@
 
 .bd-code-snippet {
   margin: $spacer ($bd-gutter-x * -.5);
-  border: solid $border-color;
-  border-width: 1px 0;
 
   .highlight {
     margin-bottom: 0;
@@ -381,7 +388,6 @@
   @include media-breakpoint-up(md) {
     margin-right: 0;
     margin-left: 0;
-    border-width: 1px;
     @include border-radius($border-radius);
   }
 }
