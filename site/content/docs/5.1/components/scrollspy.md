@@ -115,7 +115,7 @@ Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its p
       </nav>
     </div>
     <div class="col-8">
-      <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" class="scrollspy-example-3" tabindex="0">
+      <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" class="scrollspy-example-2" tabindex="0">
         <div id="item-1">
           <h4>Item 1</h4>
           <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
