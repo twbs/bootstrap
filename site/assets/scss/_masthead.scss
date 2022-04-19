@@ -20,9 +20,13 @@
     color: $gray-700;
   }
 
+  .bd-code-snippet {
+    margin: 0;
+    @include border-radius(.5rem);
+  }
+
   .highlight {
     padding: .5rem 4rem .5rem 1rem;
-    margin-bottom: 0;
     line-height: 1.25;
     background-color: rgba(var(--bs-body-color-rgb), .075);
     @include border-radius(.5rem);

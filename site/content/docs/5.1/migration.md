@@ -17,23 +17,7 @@ Bootstrap v5.2.0 features a subtle design update for a handful of components and
 
 ### More CSS variables
 
-**We've updated nearly all our components to use CSS variables.** While Sass still underpins everything, each component has been updated to include CSS variables on the component base classes (e.g., `.btn`), allowing for more real-time customization of Bootstrap.
-
-The following components are now built with CSS variables:
-
-- [Alerts]({{< docsref "/components/alerts/" >}})
-- [Badges]({{< docsref "/components/badge/" >}})
-- [Breadcrumbs]({{< docsref "/components/breadcrumb/" >}})
-- [Buttons]({{< docsref "/components/buttons/" >}})
-- [Dropdowns]({{< docsref "/components/dropdowns/" >}})
-- [Navbars]({{< docsref "/components/navbar/" >}})
-- [Pagination]({{< docsref "/components/pagination/" >}})
-- [Popovers]({{< docsref "/components/popovers/" >}})
-- [Progress]({{< docsref "/components/progress/" >}})
-- [Spinners]({{< docsref "/components/spinners/" >}})
-- [Tooltips]({{< docsref "/components/tooltips/" >}})
-
-Read more about CSS variables in each component on their respective documentation pages. The rest of our components, forms, and more will be updated by v5.3.
+**We've updated all our components to use CSS variables.** While Sass still underpins everything, each component has been updated to include CSS variables on the component base classes (e.g., `.btn`), allowing for more real-time customization of Bootstrap. In subsequent releases, we'll continue to expand our use of CSS variables into our layout, forms, helpers, and utilities. Read more about CSS variables in each component on their respective documentation pages.
 
 Our CSS variable usage will be somewhat incomplete until Bootstrap 6. While we'd love to fully implement these across the board, they do run the risk of causing breaking changes. For example, setting `$alert-border-width: var(--bs-border-width)` in our source code breaks potential Sass in your own code if you were doing `$alert-border-width * 2` for some reason.
 
@@ -43,7 +27,7 @@ As such, wherever possible, we will continue to push towards more CSS variables,
 
 **Bootstrap v5.2.0 introduced a new Sass file with `_maps.scss`.** It pulls out several Sass maps from `_variables.scss` to fix an issue where updates to an original map were not applied to secondary maps that extend them. For example, updates to `$theme-colors` were not being applied to other theme maps that relied on `$theme-colors`, breaking key customization workflows. In short, Sass has a limitation where once a default variable or map has been _used_, it cannot be updated. _There's a similar shortcoming with CSS variables when they're used to compose other CSS variables._
 
-This is why variable customizations in Bootstrap have to come after `@import "functions"`, but before `@import "variables"` and the rest of our import stack. The same applies to Sass maps—you must override the defaults before the defaults get used. The following maps have been moved to the new `_maps.scss`:
+This is why variable customizations in Bootstrap have to come after `@import "functions"`, but before `@import "variables"` and the rest of our import stack. The same applies to Sass maps—you must override the defaults before they get used. The following maps have been moved to the new `_maps.scss`:
 
 - `$theme-colors-rgb`
 - `$utilities-colors`
@@ -92,11 +76,19 @@ Your custom Bootstrap CSS builds should now look something like this with a sepa
 
 - **Introduced new `$enable-container-classes` option. —** Now when opting into the experimental CSS Grid layout, `.container-*` classes will still be compiled, unless this option is set to `false`. Containers also now keep their gutter values.
 
+- **Offcanvas component now has [responsive variations]({{< docsref "/components/offcanvas#responsive" >}}).** The original `.offcanvas` class remains unchanged—it hides content across all viewports. To make it responsive, change that `.offcanvas` class to any `.offcanvas-{sm|md|lg|xl|xxl}` class.
+
 - **Thicker table dividers are now opt-in. —** We've removed the thicker and more difficult to override border between table groups and moved it to an optional class you can apply, `.table-group-divider`. [See the table docs for an example.]({{< docsref "/content/tables#table-group-dividers" >}})
+
+- **[Scrollspy has been rewritten](https://github.com/twbs/bootstrap/pull/33421) to use the Intersection Observer API**, which means you no longer need relative parent wrappers, deprecates `offset` config, and more. Look for your Scrollspy implementations to be more accurate and consistent in their nav highlighting.
+
+- **Popovers and tooltips now use CSS variables.** Some CSS variables have been updated from their Sass counterparts to reduce the number of variables. As a result, three variables have been deprecated in this release: `$popover-arrow-color`, `$popover-arrow-outer-color`, and `$tooltip-arrow-color`.
 
 - Added `.form-check-reverse` modifier to flip the order of labels and associated checkboxes/radios.
 
-- Added striped columns support to tables via
+- Added [striped columns]({{< docsref "/content/tables#striped-columns" >}}) support to tables via the new `.table-striped-columns` class.
+
+For a complete list of changes, [see the v5.2.0 project on GitHub](https://github.com/twbs/bootstrap/projects/32).
 
 ## v5.1.0
 
@@ -127,8 +119,6 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 {{< callout info >}}
 **Hey there!** Changes to our first major release of Bootstrap 5, v5.0.0, are documented below. They don't reflect the additional changes shown above.
 {{< /callout >}}
-
-- **Popovers and tooltips now use CSS variables.** Both components have been updated to use CSS variables on their base classes, `.popover` and `.tooltip`. Some CSS variables have been updated from their Sass counterparts to reduce the number of variables. As a result, three variables have been deprecated in this release: `$popover-arrow-color`, `$popover-arrow-outer-color`, and `$tooltip-arrow-color`.
 
 ## Dependencies
 
