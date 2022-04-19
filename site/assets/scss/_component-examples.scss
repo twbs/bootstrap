@@ -85,16 +85,10 @@
 .bd-example {
   position: relative;
   padding: 1rem;
-  margin: 1rem ($bd-gutter-x * -.5) 0;
-  border: solid $border-color;
-  border-width: 1px 0 0;
   @include clearfix();
 
   @include media-breakpoint-up(md) {
     padding: 1.5rem;
-    margin-right: 0;
-    margin-left: 0;
-    border-width: 1px;
     @include border-top-radius(var(--bs-border-radius));
   }
 
@@ -375,23 +369,24 @@
   }
 }
 
-.bd-example-snippet {
-  .highlight {
-    @include border-top-radius(0);
-    border: 1px solid $border-color;
-  }
-  .highlight-toolbar {
-    border: solid $border-color;
-    border-width: 0 1px;
-  }
-}
+.bd-code-snippet {
+  margin: $spacer ($bd-gutter-x * -.5);
+  border: solid $border-color;
+  border-width: 1px 0;
 
-.bd-content .highlight {
-  margin-right: $bd-gutter-x * -.5;
-  margin-left: $bd-gutter-x * -.5;
+  .highlight {
+    margin-bottom: 0;
+  }
 
   @include media-breakpoint-up(md) {
     margin-right: 0;
     margin-left: 0;
+    border-width: 1px;
+    @include border-radius($border-radius);
   }
+}
+
+.highlight-toolbar {
+  border: solid $border-color;
+  border-width: 1px 0;
 }
