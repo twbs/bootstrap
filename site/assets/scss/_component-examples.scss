@@ -223,15 +223,6 @@
   }
 }
 
-.bd-example-modal {
-  background-color: #fafafa;
-
-  .modal {
-    position: static;
-    display: block;
-  }
-}
-
 .bd-example-offcanvas {
   @include border-start-radius(0);
 
