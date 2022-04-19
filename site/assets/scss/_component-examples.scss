@@ -1,84 +1,4 @@
 //
-// Grid examples
-//
-
-.bd-example-row {
-  .row {
-    > .col,
-    > [class^="col-"] {
-      padding-top: .75rem;
-      padding-bottom: .75rem;
-      background-color: rgba(39, 41, 43, .03);
-      border: 1px solid rgba(39, 41, 43, .1);
-    }
-  }
-
-  .row + .row {
-    margin-top: 1rem;
-  }
-}
-
-.bd-example-row-flex-cols .row {
-  min-height: 10rem;
-  background-color: rgba(255, 0, 0, .1);
-}
-
-.bd-example-cssgrid {
-  text-align: center;
-
-  .grid + .grid {
-    margin-top: 1rem;
-  }
-
-  .grid > * {
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    background-color: rgba(255, 0, 255, .1);
-    border: 1px solid rgba(255, 0, 255, .25);
-  }
-}
-
-.bd-example-flex div {
-  background-color: rgba($bd-purple, .15);
-  border: 1px solid rgba($bd-purple, .15);
-}
-
-// Grid mixins
-.example-container {
-  width: 800px;
-  @include make-container();
-}
-
-.example-row {
-  @include make-row();
-}
-
-.example-content-main {
-  @include make-col-ready();
-
-  @include media-breakpoint-up(sm) {
-    @include make-col(6);
-  }
-
-  @include media-breakpoint-up(lg) {
-    @include make-col(8);
-  }
-}
-
-.example-content-secondary {
-  @include make-col-ready();
-
-  @include media-breakpoint-up(sm) {
-    @include make-col(6);
-  }
-
-  @include media-breakpoint-up(lg) {
-    @include make-col(4);
-  }
-}
-
-
-//
 // Docs examples
 //
 
@@ -195,6 +115,85 @@
   .pagination {
     margin-top: .5rem;
     margin-bottom: .5rem;
+  }
+}
+
+//
+// Grid examples
+//
+
+.bd-example-row {
+  .row {
+    > .col,
+    > [class^="col-"] {
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      background-color: rgba(39, 41, 43, .03);
+      border: 1px solid rgba(39, 41, 43, .1);
+    }
+  }
+
+  .row + .row {
+    margin-top: 1rem;
+  }
+}
+
+.bd-example-row-flex-cols .row {
+  min-height: 10rem;
+  background-color: rgba(255, 0, 0, .1);
+}
+
+.bd-example-cssgrid {
+  text-align: center;
+
+  .grid + .grid {
+    margin-top: 1rem;
+  }
+
+  .grid > * {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background-color: rgba(255, 0, 255, .1);
+    border: 1px solid rgba(255, 0, 255, .25);
+  }
+}
+
+.bd-example-flex div {
+  background-color: rgba($bd-purple, .15);
+  border: 1px solid rgba($bd-purple, .15);
+}
+
+// Grid mixins
+.example-container {
+  width: 800px;
+  @include make-container();
+}
+
+.example-row {
+  @include make-row();
+}
+
+.example-content-main {
+  @include make-col-ready();
+
+  @include media-breakpoint-up(sm) {
+    @include make-col(6);
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include make-col(8);
+  }
+}
+
+.example-content-secondary {
+  @include make-col-ready();
+
+  @include media-breakpoint-up(sm) {
+    @include make-col(6);
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include make-col(4);
   }
 }
 
