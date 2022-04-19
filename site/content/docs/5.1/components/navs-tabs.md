@@ -341,22 +341,7 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
       <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link disabled" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Disabled (class only)</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="test-tab" data-bs-toggle="tab" data-bs-target="#test" type="button" role="tab" aria-controls="test" aria-selected="false">Test</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="contact1-tab" data-bs-toggle="tab" data-bs-target="#contact1" type="button" role="tab" aria-controls="contact1" aria-selected="false" disabled>Disabled (attr only)</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="test1-tab" data-bs-toggle="tab" data-bs-target="#test1" type="button" role="tab" aria-controls="test1" aria-selected="false">Test1</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link disabled" id="contact2-tab" data-bs-toggle="tab" data-bs-target="#contact2" type="button" role="tab" aria-controls="contact2" aria-selected="false" disabled>Disabled (attr + class)</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="test2-tab" data-bs-toggle="tab" data-bs-target="#test2" type="button" role="tab" aria-controls="test2" aria-selected="false">Test2</button>
+      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button>
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
@@ -368,15 +353,6 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
     </div>
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
       <p>This is some placeholder content the <strong>Contact tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
-    </div>
-    <div class="tab-pane fade" id="test" role="tabpanel" aria-labelledby="test-tab" tabindex="0">
-      <p>This is some placeholder content the <strong>Test tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
-    </div>
-    <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact1-tab" tabindex="0">
-      <p>This is some placeholder content the <strong>Contact 1 tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
-    </div>
-    <div class="tab-pane fade" id="test1" role="tabpanel" aria-labelledby="test1-tab" tabindex="0">
-      <p>This is some placeholder content the <strong>Test 1 tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
     </div>
   </div>
 </div>
