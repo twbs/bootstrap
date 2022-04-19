@@ -96,7 +96,7 @@
   padding: 1rem;
   margin: 0 ($bd-gutter-x * -.5);
   border: solid $border-color;
-  border-width: 1px 0 0;
+  border-width: 1px 0;
   @include clearfix();
 
   @include media-breakpoint-up(md) {
@@ -398,6 +398,7 @@
   }
 
   .bd-example {
+    margin: 0;
     border: 0;
   }
 
