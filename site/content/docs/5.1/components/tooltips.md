@@ -47,10 +47,10 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 
 Hover over the links below to see tooltips:
 
-<div class="bd-example tooltip-demo">
-  <p class="muted">Placeholder text to demonstrate some <a href="#" data-bs-toggle="tooltip" title="Default tooltip">inline links</a> with tooltips. This is now just filler, no killer. Content placed here just to mimic the presence of <a href="#" data-bs-toggle="tooltip" title="Another tooltip">real text</a>. And all that just to give you an idea of how tooltips would look when used in real-world situations. So hopefully you've now seen how <a href="#" data-bs-toggle="tooltip" title="Another one here too">these tooltips on links</a> can work in practice, once you use them on <a href="#" data-bs-toggle="tooltip" title="The last tip!">your own</a> site or project.
-  </p>
-</div>
+{{< example class="tooltip-demo" >}}
+<p class="muted">Placeholder text to demonstrate some <a href="#" data-bs-toggle="tooltip" title="Default tooltip">inline links</a> with tooltips. This is now just filler, no killer. Content placed here just to mimic the presence of <a href="#" data-bs-toggle="tooltip" title="Another tooltip">real text</a>. And all that just to give you an idea of how tooltips would look when used in real-world situations. So hopefully you've now seen how <a href="#" data-bs-toggle="tooltip" title="Another one here too">these tooltips on links</a> can work in practice, once you use them on <a href="#" data-bs-toggle="tooltip" title="The last tip!">your own</a> site or project.
+</p>
+{{< /example >}}
 
 ### Custom tooltips
 
@@ -58,11 +58,8 @@ Hover over the links below to see tooltips:
 
 You can customize the appearance of tooltips using [CSS variables](#variables). We set a custom class with `data-bs-custom-class="custom-tooltip"` to scope our custom appearance and use it to override a local CSS variable.
 
-```scss
-.custom-tooltip {
-  --bs-tooltip-bg: var(--bs-primary);
-}
-```
+{{< scss-docs name="custom-tooltip" file="site/assets/scss/_component-examples.scss" >}}
+
 
 {{< example class="tooltip-demo" >}}
 <button type="button" class="btn btn-secondary"
