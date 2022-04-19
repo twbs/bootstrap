@@ -169,31 +169,31 @@ Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its p
 
 <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" tabindex="0">
   <div id="item-1">
-    <h4 id="item-1">Item 1</h4>
+    <h4>Item 1</h4>
     <p>...</p>
   </div>
   <div id="item-1-1">
-    <h5 id="item-1-1">Item 1-1</h5>
+    <h5>Item 1-1</h5>
     <p>...</p>
   </div>
   <div id="item-1-2">
-    <h5 id="item-1-2">Item 1-2</h5>
+    <h5>Item 1-2</h5>
     <p>...</p>
   </div>
   <div id="item-2">
-    <h4 id="item-2">Item 2</h4>
+    <h4>Item 2</h4>
     <p>...</p>
   </div>
   <div id="item-3">
-    <h4 id="item-3">Item 3</h4>
+    <h4>Item 3</h4>
     <p>...</p>
   </div>
   <div id="item-3-1">
-    <h5 id="item-3-1">Item 3-1</h5>
+    <h5>Item 3-1</h5>
     <p>...</p>
   </div>
   <div id="item-3-2">
-    <h5 id="item-3-2">Item 3-2</h5>
+    <h5>Item 3-2</h5>
     <p>...</p>
   </div>
 </div>
