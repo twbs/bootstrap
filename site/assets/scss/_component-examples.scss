@@ -122,40 +122,22 @@
 // Grid examples
 //
 
-.bd-example-row {
-  .row {
-    > .col,
-    > [class^="col-"] {
-      padding-top: .75rem;
-      padding-bottom: .75rem;
-      background-color: rgba(39, 41, 43, .03);
-      border: 1px solid rgba(39, 41, 43, .1);
-    }
-  }
+.bd-example-row [class^="col"],
+.bd-example-cssgrid .grid > * {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  background-color: rgba(var(--bd-violet-rgb), .1);
+  border: 1px solid rgba(var(--bd-violet-rgb), .25);
+}
 
-  .row + .row {
-    margin-top: 1rem;
-  }
+.bd-example-row .row + .row,
+.bd-example-cssgrid .grid + .grid {
+  margin-top: 1rem;
 }
 
 .bd-example-row-flex-cols .row {
   min-height: 10rem;
   background-color: rgba(255, 0, 0, .1);
-}
-
-.bd-example-cssgrid {
-  text-align: center;
-
-  .grid + .grid {
-    margin-top: 1rem;
-  }
-
-  .grid > * {
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    background-color: rgba(255, 0, 255, .1);
-    border: 1px solid rgba(255, 0, 255, .25);
-  }
 }
 
 .bd-example-flex div {
