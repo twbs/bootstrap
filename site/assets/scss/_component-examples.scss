@@ -94,11 +94,23 @@
 .bd-example {
   position: relative;
   padding: 1rem;
+  margin: 0 ($bd-gutter-x * -.5);
+  border: solid $border-color;
+  border-width: 1px 0 0;
   @include clearfix();
 
   @include media-breakpoint-up(md) {
     padding: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: 1px;
     @include border-top-radius(var(--bs-border-radius));
+  }
+
+  + .bd-code-snippet {
+    @include border-top-radius(0);
+    border: solid $border-color;
+    border-width: 0 1px 1px;
   }
 
   + p {
@@ -379,10 +391,14 @@
 }
 
 .bd-code-snippet {
-  margin: $spacer ($bd-gutter-x * -.5);
+  margin: 0 ($bd-gutter-x * -.5) $spacer;
 
   .highlight {
     margin-bottom: 0;
+  }
+
+  .bd-example {
+    border: 0;
   }
 
   @include media-breakpoint-up(md) {
