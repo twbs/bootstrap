@@ -88,7 +88,7 @@ All constructors accept an optional options object or nothing (which initiates a
 const myModalEl = document.getElementById('myModal')
 
 const modal = new bootstrap.Modal(myModalEl) // initialized with defaults
-const modal = new bootstrap.Modal(myModalEl, { keyboard: false }) // initialized with no keyboard
+const modal1 = new bootstrap.Modal(myModalEl, { keyboard: false }) // initialized with no keyboard
 ```
 
 If you'd like to get a particular plugin instance, each plugin exposes a `getInstance` method. In order to retrieve it directly from an element, do this: `bootstrap.Popover.getInstance(myPopoverEl)`.

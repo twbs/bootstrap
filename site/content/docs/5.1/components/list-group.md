@@ -473,9 +473,9 @@ Activates a list item element and content container. Tab should have either a `d
 Selects the given list item and shows its associated pane. Any other list item that was previously selected becomes unselected and its associated pane is hidden. **Returns to the caller before the tab pane has actually been shown** (for example, before the `shown.bs.tab` event occurs).
 
 ```js
-  const tab = new bootstrap.Tab('#someListItem')
+const tab = new bootstrap.Tab('#someListItem')
 
-  tab.show()
+tab.show()
 ```
 
 #### dispose

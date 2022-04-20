@@ -329,7 +329,7 @@ Bootstrap's offcanvas class exposes a few events for hooking into offcanvas func
 
 ```js
 const myOffcanvas = document.getElementById('myOffcanvas')
-myOffcanvas.addEventListener('hidden.bs.offcanvas',  event => {
+myOffcanvas.addEventListener('hidden.bs.offcanvas', event => {
   // do something...
 })
 ```

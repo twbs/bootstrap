@@ -491,7 +491,7 @@ exampleModal.addEventListener('show.bs.modal', event => {
   const modalTitle = exampleModal.querySelector('.modal-title')
   const modalBodyInput = exampleModal.querySelector('.modal-body input')
 
-  modalTitle.textContent = 'New message to ' + recipient
+  modalTitle.textContent = `New message to ${recipient}`
   modalBodyInput.value = recipient
 })
 ```
@@ -817,7 +817,7 @@ Create a modal with a single line of JavaScript:
 ```js
 const myModal = new bootstrap.Modal(document.getElementById('myModal'), options)
 // or
-const myModal = new bootstrap.Modal('#myModal', options)
+const myModalAlternative = new bootstrap.Modal('#myModal', options)
 ```
 
 ### Options

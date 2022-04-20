@@ -633,10 +633,10 @@ Activates a tab element and content container. Tab should have either a `data-bs
 Selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden. **Returns to the caller before the tab pane has actually been shown** (i.e. before the `shown.bs.tab` event occurs).
 
 ```js
-  const someTabTriggerEl = document.querySelector('#someTabTrigger')
-  const tab = new bootstrap.Tab(someTabTriggerEl)
+const someTabTriggerEl = document.querySelector('#someTabTrigger')
+const tab = new bootstrap.Tab(someTabTriggerEl)
 
-  tab.show()
+tab.show()
 ```
 
 #### dispose

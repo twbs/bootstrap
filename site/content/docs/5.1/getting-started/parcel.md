@@ -36,6 +36,7 @@ project-name/
 
 Import [Bootstrap's JavaScript]({{< docsref "/getting-started/javascript" >}}) in your app's entry point (usually `src/index.js`). You can import all our plugins in one file or separately if you require only a subset of them.
 
+<!-- eslint-skip -->
 ```js
 // Import all plugins
 import * as bootstrap from 'bootstrap';

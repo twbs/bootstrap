@@ -91,7 +91,7 @@ We use the following JavaScript to trigger our live toast demo:
 const toastTrigger = document.getElementById('liveToastBtn')
 const toastLiveExample = document.getElementById('liveToast')
 if (toastTrigger) {
-  toastTrigger.addEventListener('click', function () {
+  toastTrigger.addEventListener('click', () => {
     const toast = new bootstrap.Toast(toastLiveExample)
 
     toast.show()

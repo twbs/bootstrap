@@ -14,6 +14,7 @@ toc: true
 
 Import [Bootstrap's JavaScript]({{< docsref "/getting-started/javascript" >}}) by adding this line to your app's entry point (usually `index.js` or `app.js`):
 
+<!-- eslint-skip -->
 ```js
 import 'bootstrap';
 
@@ -23,6 +24,7 @@ import * as bootstrap from 'bootstrap';
 
 Alternatively, if you only need just a few of our plugins, you may **import plugins individually** as needed:
 
+<!-- eslint-skip -->
 ```js
 import Alert from 'bootstrap/js/dist/alert';
 
@@ -48,6 +50,7 @@ First, create your own `_custom.scss` and use it to override the [built-in custo
 
 For Bootstrap to compile, make sure you install and use the required loaders: [sass-loader](https://github.com/webpack-contrib/sass-loader), [postcss-loader](https://github.com/webpack-contrib/postcss-loader) with [Autoprefixer](https://github.com/postcss/autoprefixer#webpack). With minimal setup, your webpack config should include this rule or similar:
 
+<!-- eslint-skip -->
 ```js
 // ...
 {
@@ -66,8 +69,8 @@ For Bootstrap to compile, make sure you install and use the required loaders: [s
       // if you use postcss 7.x skip the key
       postcssOptions: {
         // postcss plugins, can be exported to postcss.config.js
-        plugins: function () {
-          return [
+        plugins: () => {
+          [
             require('autoprefixer')
           ];
         }
@@ -85,6 +88,7 @@ For Bootstrap to compile, make sure you install and use the required loaders: [s
 
 Alternatively, you may use Bootstrap's ready-to-use CSS by simply adding this line to your project's entry point:
 
+<!-- eslint-skip -->
 ```js
 import 'bootstrap/dist/css/bootstrap.min.css';
 ```

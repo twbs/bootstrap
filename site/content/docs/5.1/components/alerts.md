@@ -37,7 +37,7 @@ We use the following JavaScript to trigger our live alert demo:
 ```js
 const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
 
-function alert(message, type) {
+const alert = (message, type) => {
   const wrapper = document.createElement('div')
   wrapper.innerHTML = [
     `<div class="alert alert-${type} alert-dismissible" role="alert">`,
@@ -45,7 +45,6 @@ function alert(message, type) {
     '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
     '</div>'
   ].join('')
-
 
   alertPlaceholder.append(wrapper)
 }
@@ -196,7 +195,7 @@ Initialize elements as alerts
 
 ```js
 const alertList = document.querySelectorAll('.alert')
-const alerts = [...alertList].map(element =>  new bootstrap.Alert(element))
+const alerts = [...alertList].map(element => new bootstrap.Alert(element))
 ```
 
 {{< callout info >}}
@@ -249,7 +248,7 @@ Bootstrap's alert plugin exposes a few events for hooking into alert functionali
 {{< /bs-table >}}
 
 ```js
-const  myAlert = document.getElementById('myAlert')
+const myAlert = document.getElementById('myAlert')
 myAlert.addEventListener('closed.bs.alert', event => {
   // do something, for instance, explicitly move focus to the most appropriate element,
   // so it doesn't get lost/reset to the start of the page
