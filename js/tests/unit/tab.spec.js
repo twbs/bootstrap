@@ -549,24 +549,28 @@ describe('Tab', () => {
       expect(Event.prototype.preventDefault).toHaveBeenCalledTimes(2)
     })
 
-    it('if keydown event is right arrow and next element has disabled attribute', () => {
+    it('if keydown event is right arrow and next element is disabled', () => {
       fixtureEl.innerHTML = [
         '<div class="nav">',
         '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
         '  <span id="tab2" class="nav-link" data-bs-toggle="tab" disabled></span>',
-        '  <span id="tab3" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab3" class="nav-link disabled" data-bs-toggle="tab"></span>',
+        '  <span id="tab4" class="nav-link" data-bs-toggle="tab"></span>',
         '</div>'
       ].join('')
 
       const tabEl = fixtureEl.querySelector('#tab1')
       const tabEl2 = fixtureEl.querySelector('#tab2')
       const tabEl3 = fixtureEl.querySelector('#tab3')
+      const tabEl4 = fixtureEl.querySelector('#tab4')
       const tab = new Tab(tabEl)
       const tab2 = new Tab(tabEl2)
       const tab3 = new Tab(tabEl3)
+      const tab4 = new Tab(tabEl4)
       spyOn(tab, 'show').and.callThrough()
       spyOn(tab2, 'show').and.callThrough()
       spyOn(tab3, 'show').and.callThrough()
+      spyOn(tab4, 'show').and.callThrough()
 
       const keydown = createEvent('keydown')
       keydown.key = 'ArrowRight'
@@ -574,35 +578,8 @@ describe('Tab', () => {
       tabEl.dispatchEvent(keydown)
       expect(tab.show).not.toHaveBeenCalled()
       expect(tab2.show).not.toHaveBeenCalled()
-      expect(tab3.show).toHaveBeenCalledTimes(1)
-    })
-
-    it('if keydown event is right arrow and next element has disabled class', () => {
-      fixtureEl.innerHTML = [
-        '<div class="nav">',
-        '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
-        '  <span id="tab2" class="nav-link disabled" data-bs-toggle="tab"></span>',
-        '  <span id="tab3" class="nav-link" data-bs-toggle="tab"></span>',
-        '</div>'
-      ].join('')
-
-      const tabEl = fixtureEl.querySelector('#tab1')
-      const tabEl2 = fixtureEl.querySelector('#tab2')
-      const tabEl3 = fixtureEl.querySelector('#tab3')
-      const tab = new Tab(tabEl)
-      const tab2 = new Tab(tabEl2)
-      const tab3 = new Tab(tabEl3)
-      spyOn(tab, 'show').and.callThrough()
-      spyOn(tab2, 'show').and.callThrough()
-      spyOn(tab3, 'show').and.callThrough()
-
-      const keydown = createEvent('keydown')
-      keydown.key = 'ArrowRight'
-
-      tabEl.dispatchEvent(keydown)
-      expect(tab.show).not.toHaveBeenCalled()
-      expect(tab2.show).not.toHaveBeenCalled()
-      expect(tab3.show).toHaveBeenCalledTimes(1)
+      expect(tab3.show).not.toHaveBeenCalled()
+      expect(tab4.show).toHaveBeenCalledTimes(1)
     })
 
     it('if keydown event is left arrow and next element has disabled attribute', () => {
@@ -610,52 +587,29 @@ describe('Tab', () => {
         '<div class="nav">',
         '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
         '  <span id="tab2" class="nav-link" data-bs-toggle="tab" disabled></span>',
-        '  <span id="tab3" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab3" class="nav-link disabled" data-bs-toggle="tab"></span>',
+        '  <span id="tab4" class="nav-link" data-bs-toggle="tab"></span>',
         '</div>'
       ].join('')
 
       const tabEl = fixtureEl.querySelector('#tab1')
       const tabEl2 = fixtureEl.querySelector('#tab2')
       const tabEl3 = fixtureEl.querySelector('#tab3')
+      const tabEl4 = fixtureEl.querySelector('#tab4')
       const tab = new Tab(tabEl)
       const tab2 = new Tab(tabEl2)
       const tab3 = new Tab(tabEl3)
+      const tab4 = new Tab(tabEl4)
       spyOn(tab, 'show').and.callThrough()
       spyOn(tab2, 'show').and.callThrough()
       spyOn(tab3, 'show').and.callThrough()
+      spyOn(tab4, 'show').and.callThrough()
 
       const keydown = createEvent('keydown')
       keydown.key = 'ArrowLeft'
 
-      tabEl3.dispatchEvent(keydown)
-      expect(tab3.show).not.toHaveBeenCalled()
-      expect(tab2.show).not.toHaveBeenCalled()
-      expect(tab.show).toHaveBeenCalledTimes(1)
-    })
-
-    it('if keydown event is left arrow and next element has disabled class', () => {
-      fixtureEl.innerHTML = [
-        '<div class="nav">',
-        '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
-        '  <span id="tab2" class="nav-link disabled" data-bs-toggle="tab"></span>',
-        '  <span id="tab3" class="nav-link" data-bs-toggle="tab"></span>',
-        '</div>'
-      ].join('')
-
-      const tabEl = fixtureEl.querySelector('#tab1')
-      const tabEl2 = fixtureEl.querySelector('#tab2')
-      const tabEl3 = fixtureEl.querySelector('#tab3')
-      const tab = new Tab(tabEl)
-      const tab2 = new Tab(tabEl2)
-      const tab3 = new Tab(tabEl3)
-      spyOn(tab, 'show').and.callThrough()
-      spyOn(tab2, 'show').and.callThrough()
-      spyOn(tab3, 'show').and.callThrough()
-
-      const keydown = createEvent('keydown')
-      keydown.key = 'ArrowLeft'
-
-      tabEl3.dispatchEvent(keydown)
+      tabEl4.dispatchEvent(keydown)
+      expect(tab4.show).not.toHaveBeenCalled()
       expect(tab3.show).not.toHaveBeenCalled()
       expect(tab2.show).not.toHaveBeenCalled()
       expect(tab.show).toHaveBeenCalledTimes(1)
