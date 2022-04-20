@@ -11,6 +11,8 @@
 
 <link rel="canonical" href="{{ .Permalink }}">
 
+<link rel="preconnect" href="https://AK7KMZKZHQ-dsn.algolia.net" crossorigin>
+
 {{ with .Params.robots -}}
 <meta name="robots" content="{{ . }}">
 {{- end }}
@@ -19,5 +21,3 @@
 {{ partial "favicons" . }}
 {{ partial "social" . }}
 {{ partial "analytics" . }}
-
-<link rel="preconnect" href="https://AK7KMZKZHQ-dsn.algolia.net" crossorigin />
