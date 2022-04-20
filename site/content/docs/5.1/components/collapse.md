@@ -133,10 +133,8 @@ To add accordion-like group management to a collapsible area, add the data attri
 Enable manually with:
 
 ```js
-var collapseElementList = Array.prototype.slice.call(document.querySelectorAll('.collapse'))
-var collapseList = collapseElementList.map(function (collapseEl) {
-  return new bootstrap.Collapse(collapseEl)
-})
+const collapseElementList = document.querySelectorAll('.collapse')
+const collapseList = [...collapseElementList].map(collapseEl => new bootstrap.Collapse(collapseEl))
 ```
 
 ### Options
@@ -163,8 +161,7 @@ Activates your content as a collapsible element. Accepts an optional options `ob
 You can create a collapse instance with the constructor, for example:
 
 ```js
-var myCollapse = document.getElementById('myCollapse')
-var bsCollapse = new bootstrap.Collapse(myCollapse, {
+const bsCollapse = new bootstrap.Collapse('#myCollapse', {
   toggle: false
 })
 ```
@@ -194,8 +191,8 @@ Bootstrap's collapse class exposes a few events for hooking into collapse functi
 {{< /bs-table >}}
 
 ```js
-var myCollapsible = document.getElementById('myCollapsible')
-myCollapsible.addEventListener('hidden.bs.collapse', function () {
+const myCollapsible = document.getElementById('myCollapsible')
+myCollapsible.addEventListener('hidden.bs.collapse', event => {
   // do something...
 })
 ```

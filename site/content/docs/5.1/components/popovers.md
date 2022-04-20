@@ -38,10 +38,8 @@ Keep reading to see how popovers work with some examples.
 As mentioned above, you must initialize popovers before they can be used. One way to initialize all popovers on a page would be to select them by their `data-bs-toggle` attribute, like so:
 
 ```js
-var popoverTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-  return new bootstrap.Popover(popoverTriggerEl)
-})
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 ```
 
 ### Live demo
@@ -76,7 +74,7 @@ Four options are available: top, right, bottom, and left. Directions are mirrore
 When you have some styles on a parent element that interfere with a popover, you'll want to specify a custom `container` so that the popover's HTML appears within that element instead. This is common in responsive tables, input groups, and the like.
 
 ```js
-var popover = new bootstrap.Popover(document.querySelector('.example-popover'), {
+const popover = new bootstrap.Popover('.example-popover', {
   container: 'body'
 })
 ```
@@ -114,7 +112,7 @@ For proper cross-browser and cross-platform behavior, you must use the `<a>` tag
 {{< /example >}}
 
 ```js
-var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
+const popover = new bootstrap.Popover('.popover-dismiss', {
   trigger: 'focus'
 })
 ```
@@ -150,8 +148,8 @@ As part of Bootstrap’s evolving CSS variables approach, popovers now use local
 Enable popovers via JavaScript:
 
 ```js
-var exampleEl = document.getElementById('example')
-var popover = new bootstrap.Popover(exampleEl, options)
+const exampleEl = document.getElementById('example')
+const popover = new bootstrap.Popover(exampleEl, options)
 ```
 
 {{< callout warning >}}
@@ -207,9 +205,9 @@ Options for individual popovers can alternatively be specified through the use o
 #### Using function with `popperConfig`
 
 ```js
-var popover = new bootstrap.Popover(element, {
-  popperConfig: function (defaultBsPopperConfig) {
-    // var newPopperConfig = {...}
+const popover = new bootstrap.Popover(element, {
+  popperConfig(defaultBsPopperConfig) {
+    // const newPopperConfig = {...}
     // use defaultBsPopperConfig if needed...
     // return newPopperConfig
   }
@@ -241,8 +239,7 @@ var popover = new bootstrap.Popover(element, {
 
 ```js
 // getOrCreateInstance example
-var exampleTriggerEl = document.getElementById('example')
-var popover = bootstrap.Popover.getOrCreateInstance(exampleTriggerEl) // Returns a Bootstrap popover instance
+const popover = bootstrap.Popover.getOrCreateInstance('#example') // Returns a Bootstrap popover instance
 
 // setContent example
 myPopover.setContent({
@@ -269,8 +266,8 @@ The `setContent` method accepts an `object` argument, where each property-key is
 {{< /bs-table >}}
 
 ```js
-var myPopoverTrigger = document.getElementById('myPopover')
-myPopoverTrigger.addEventListener('hidden.bs.popover', function () {
+const myPopoverTrigger = document.getElementById('myPopover')
+myPopoverTrigger.addEventListener('hidden.bs.popover', () => {
   // do something...
 })
 ```
