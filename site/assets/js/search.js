@@ -5,11 +5,11 @@
 (() => {
   'use strict'
 
-  const siteDocsVersion = document.querySelector('#docsearch').getAttribute('data-bd-docs-version')
-
   if (!window.docsearch) {
     return
   }
+
+  const siteDocsVersion = document.querySelector('#docsearch').getAttribute('data-bd-docs-version')
 
   window.docsearch({
     apiKey: '3151f502c7b9e9dafd5e6372b691a24e',
