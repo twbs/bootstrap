@@ -582,7 +582,7 @@ describe('Tab', () => {
       expect(tab4.show).toHaveBeenCalledTimes(1)
     })
 
-    it('if keydown event is left arrow and next element has disabled attribute', () => {
+    it('if keydown event is left arrow and next element is disabled', () => {
       fixtureEl.innerHTML = [
         '<div class="nav">',
         '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
