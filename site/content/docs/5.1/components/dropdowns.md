@@ -881,7 +881,7 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
 
 {{< example >}}
 <div class="dropdown">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
     Dropdown form
   </button>
   <form class="dropdown-menu p-4">
