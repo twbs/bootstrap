@@ -30,6 +30,10 @@
   &:hover {
     color: $primary;
   }
+
+  &:focus {
+    z-index: 3;
+  }
 }
 
 .btn-clipboard {
