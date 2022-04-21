@@ -72,7 +72,7 @@ describe('Manipulator', () => {
     })
 
     it('should omit `bs-config` data attribute', () => {
-      fixtureEl.innerHTML = '<div data-bs-toggle="tabs" data-bs-target="#element"  data-bs-config=\'{"testBool":false}\'></div>'
+      fixtureEl.innerHTML = '<div data-bs-toggle="tabs" data-bs-target="#element" data-bs-config=\'{"testBool":false}\'></div>'
 
       const div = fixtureEl.querySelector('div')
 
