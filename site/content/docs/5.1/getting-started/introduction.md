@@ -95,7 +95,8 @@ Curious which components explicitly require our JavaScript and Popper? Click the
 - Collapse for toggling visibility of content
 - Dropdowns for displaying and positioning (also requires [Popper](https://popper.js.org/))
 - Modals for displaying, positioning, and scroll behavior
-- Navbar for extending our Collapse plugin to implement responsive behavior
+- Navbar for extending our Collapse and Offcanvas plugins to implement responsive behaviors
+- Navs with the Tab plugin for toggling content panes
 - Offcanvases for displaying, positioning, and scroll behavior
 - Scrollspy for scroll behavior and navigation updates
 - Toasts for displaying and dismissing
