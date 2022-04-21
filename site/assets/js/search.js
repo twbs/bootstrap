@@ -5,17 +5,19 @@
 (() => {
   'use strict'
 
-  if (!window.docsearch) {
+  const searchElement = document.getElementById('docsearch')
+
+  if (!window.docsearch || !searchElement) {
     return
   }
 
-  const siteDocsVersion = document.querySelector('#docsearch').getAttribute('data-bd-docs-version')
+  const siteDocsVersion = searchElement.getAttribute('data-bd-docs-version')
 
   window.docsearch({
     apiKey: '3151f502c7b9e9dafd5e6372b691a24e',
     indexName: 'bootstrap',
     appId: 'AK7KMZKZHQ',
-    container: '#docsearch',
+    container: searchElement,
     searchParameters: {
       facetFilters: [`version:${siteDocsVersion}`]
     },
