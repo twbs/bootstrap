@@ -131,4 +131,12 @@
       modalBodyInput.value = recipient
     })
   }
+
+  // Offcanvas demo
+  const myOffcanvas = document.querySelector('.bd-example-offcanvas #offcanvas')
+  if (myOffcanvas) {
+    myOffcanvas.addEventListener('show.bs.offcanvas', event => {
+      event.preventDefault()
+    }, false)
+  }
 })()
