@@ -338,7 +338,9 @@ Target elements that are not visible will be ignored and their corresponding nav
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-root-margin=""`.
+{{< markdown >}}
+{{< partial "js-data-attributes.md" >}}
+{{< /markdown >}}
 
 {{< bs-table "table" >}}
 | Name | Type | Default | Description |
