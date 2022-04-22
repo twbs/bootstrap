@@ -20,6 +20,9 @@
 }
 
 .DocSearch-Container {
+  --docsearch-muted-color: #{$text-muted};
+  --docsearch-hit-shadow: none;
+
   z-index: 1030;
 
   @include media-breakpoint-up(lg) {
@@ -81,4 +84,38 @@
   background-color: rgba($black, .1);
   background-image: none;
   box-shadow: none;
+}
+
+.DocSearch-Form {
+  @include border-radius(var(--bs-border-radius));
+}
+
+.DocSearch-Hits {
+  mark {
+    padding: 0;
+  }
+}
+
+.DocSearch-Hit {
+  padding-bottom: 0;
+  @include border-radius(0);
+
+  a {
+    @include border-radius(0);
+    border: solid var(--bs-border-color);
+    border-width: 0 1px 1px;
+  }
+
+  &:first-child a {
+    @include border-top-radius(var(--bs-border-radius));
+    border-top-width: 1px;
+  }
+  &:last-child a {
+    @include border-bottom-radius(var(--bs-border-radius));
+  }
+}
+
+.DocSearch-Hit-icon {
+  display: flex;
+  align-items: center;
 }
