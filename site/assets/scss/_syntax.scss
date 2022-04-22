@@ -98,6 +98,8 @@
 .language-sh .c { color: var(--base03); }
 
 .chroma {
+  padding-bottom: 0.5rem !important;
+  
   .language-bash,
   .language-sh {
     &::before {
