@@ -1,14 +1,30 @@
-<div class="dropdown ms-3">
-  <button class="btn btn-bd-light dropdown-toggle" id="bd-versions" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
-    <span class="d-none d-lg-inline">Bootstrap</span> v{{ .Site.Params.docs_version }}
-  </button>
+{{- $url := split .Permalink "/" -}}
+{{- $group_slug := index $url (sub (len $url) 3) -}}
+{{- $page_slug := index $url (sub (len $url) 2) -}}
+
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link py-2 px-0 px-lg-2 dropdown-toggle" id="bd-versions" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+    <span class="d-lg-none">Bootstrap</span> v{{ .Site.Params.docs_version }}
+  </a>
   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-versions">
+    <li><h6 class="dropdown-header">v5 releases</h6></li>
     <li><a class="dropdown-item current" aria-current="true" href="/docs/{{ .Site.Params.docs_version }}/">Latest ({{ .Site.Params.docs_version }}.x)</a></li>
+    <li>
+      <a class="dropdown-item" href="https://getbootstrap.com/docs/5.1/{{ $group_slug }}/{{ $page_slug }}/">v5.1.3</a>
+    </li>
+    <li>
+      {{- if eq .Page.Params.added "5.1" }}
+        <div class="dropdown-item disabled">v5.0.2</div>
+      {{- else }}
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.0/{{ $group_slug }}/{{ $page_slug }}/">v5.0.2</a>
+      {{- end }}
+    </li>
     <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header">Previous releases</h6></li>
     <li><a class="dropdown-item" href="https://getbootstrap.com/docs/4.6/">v4.6.x</a></li>
     <li><a class="dropdown-item" href="https://getbootstrap.com/docs/3.4/">v3.4.1</a></li>
     <li><a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="/docs/versions/">All versions</a></li>
   </ul>
-</div>
+</li>
