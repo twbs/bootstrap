@@ -12,12 +12,15 @@
   margin: $dropdown-spacer 0 0;
   @include font-size(.875rem);
   background-color: $dropdown-bg;
+  background-clip: padding-box;
   border: $dropdown-border-width solid $dropdown-border-color;
   @include border-radius($dropdown-border-radius);
-  @include box-shadow($dropdown-box-shadow);
+  box-shadow: $dropdown-box-shadow;
 
   @include media-breakpoint-up(md) {
-    width: 400px;
+    width: 500px;
+    margin-top: .5rem;
+    margin-left: -110px;
   }
 }
 

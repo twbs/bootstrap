@@ -14,11 +14,16 @@
   const siteDocsVersion = inputElement.getAttribute('data-bd-docs-version')
 
   document.addEventListener('keydown', event => {
-    if (event.ctrlKey && event.key === '/') {
+    if ((((event.ctrlKey || event.metaKey) && event.key === 'k')) || (event.ctrlKey && event.key === '/')) {
       event.preventDefault()
       inputElement.focus()
     }
   })
+
+  if (navigator.platform.includes('Win') || navigator.platform.includes('Linux')) {
+    const searchShortcut = document.querySelector('.bd-search')
+    searchShortcut.setAttribute('data-shortcut', '⌃K')
+  }
 
   window.docsearch({
     apiKey: '5990ad008512000bba2cf951ccf0332f',

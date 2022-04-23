@@ -77,7 +77,7 @@ Adding in the previous and next controls. We recommend using `<button>` elements
 You can also add the indicators to the carousel, alongside the controls, too.
 
 {{< example >}}
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -110,7 +110,7 @@ You can also add the indicators to the carousel, alongside the controls, too.
 Add captions to your slides easily with the `.carousel-caption` element within any `.carousel-item`. They can be easily hidden on smaller viewports, as shown below, with optional [display utilities]({{< docsref "/utilities/display" >}}). We hide them initially with `.d-none` and bring them back on medium-sized devices with `.d-md-block`.
 
 {{< example >}}
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -308,7 +308,9 @@ var carousel = new bootstrap.Carousel(myCarousel)
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-interval=""`.
+{{< markdown >}}
+{{< partial "js-data-attributes.md" >}}
+{{< /markdown >}}
 
 {{< bs-table >}}
 | Name | Type | Default | Description |
@@ -316,9 +318,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 | `interval` | number | `5000` | The amount of time to delay between automatically cycling an item. If `false`, carousel will not automatically cycle. |
 | `keyboard` | boolean | `true` | Whether the carousel should react to keyboard events. |
 | `pause` | string, boolean | `"hover"` | If set to `"hover"`, pauses the cycling of the carousel on `mouseenter` and resumes the cycling of the carousel on `mouseleave`. If set to `false`, hovering over the carousel won't pause it. On touch-enabled devices, when set to `"hover"`, cycling will pause on `touchend` (once the user finished interacting with the carousel) for two intervals, before automatically resuming. This is in addition to the mouse behavior. |
-| `ride` | string, boolean | `false` | Autoplays the carousel after the user manually cycles the first item. If set to`"carousel"`, autoplays the carousel on load. |
-| `wrap` | boolean | `true` | Whether the carousel should cycle continuously or have hard stops. |
+| `ride` | string, boolean | `false` | If set to `true`, autoplays the carousel after the user manually cycles the first item. If set to `"carousel"`, autoplays the carousel on load. |
 | `touch` | boolean | `true` | Whether the carousel should support left/right swipe interactions on touchscreen devices. |
+| `wrap` | boolean | `true` | Whether the carousel should cycle continuously or have hard stops. |
 {{< /bs-table >}}
 
 ### Methods

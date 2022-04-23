@@ -176,25 +176,16 @@
 
 // Scale up the modal
 @include media-breakpoint-up(sm) {
+  .modal {
+    --#{$prefix}modal-margin: #{$modal-dialog-margin-y-sm-up};
+    --#{$prefix}modal-box-shadow: #{$modal-content-box-shadow-sm-up};
+  }
+
   // Automatically set modal's width for larger viewports
   .modal-dialog {
-    --#{$prefix}modal-margin: #{$modal-dialog-margin-y-sm-up};
-
     max-width: var(--#{$prefix}modal-width);
     margin-right: auto;
     margin-left: auto;
-  }
-
-  .modal-dialog-scrollable {
-    height: calc(100% - var(--#{$prefix}modal-margin) * 2);
-  }
-
-  .modal-dialog-centered {
-    min-height: calc(100% - var(--#{$prefix}modal-margin) * 2);
-  }
-
-  .modal-content {
-    --#{$prefix}modal-box-shadow: #{$modal-content-box-shadow-sm-up};
   }
 
   .modal-sm {

@@ -1,8 +1,8 @@
-<nav class="collapse bd-links" id="bd-docs-nav" aria-label="Docs navigation">
+<nav class="bd-links w-100">
   {{- $url := split .Permalink "/" -}}
   {{- $page_slug := index $url (sub (len $url) 2) -}}
 
-  <ul class="list-unstyled mb-0 py-3 pt-md-1">
+  <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
   {{- range $group := .Site.Data.sidebar -}}
     {{- $link := $group.title -}}
     {{- $link_slug := $link | urlize -}}
@@ -16,26 +16,27 @@
     {{- $is_active_group := eq $.Page.Params.group $group_slug -}}
 
     {{- if $group.pages }}
-      <li class="mb-1">
-        <button class="btn d-inline-flex align-items-center rounded{{ if not $is_active_group }} collapsed{{ end }}" data-bs-toggle="collapse" data-bs-target="#{{ $group_slug }}-collapse" aria-expanded="{{ $is_active_group }}"{{ if $is_active_group }} aria-current="true"{{ end }}>
+      <li class="bd-links-group py-2">
+        <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+          {{- if $group.icon }}
+            <svg class="bi me-2"{{- if $group.icon_color }} style="color: var(--bs-{{ $group.icon_color }});"{{- end }} aria-hidden="true"><use xlink:href="#{{ $group.icon }}"></use></svg>
+          {{- end }}
           {{ $group.title }}
-        </button>
+        </strong>
 
-        <div class="collapse{{ if $is_active_group }} show{{ end }}" id="{{ $group_slug }}-collapse">
-          <ul class="list-unstyled fw-normal pb-1 small">
-            {{- range $doc := $group.pages -}}
-              {{- $doc_slug := $doc.title | urlize -}}
-              {{- $is_active := and $is_active_group (eq $page_slug $doc_slug) -}}
-              {{- $href := printf "/docs/%s/%s/%s/" $.Site.Params.docs_version $group_slug $doc_slug }}
-              <li><a href="{{ $href }}" class="d-inline-flex align-items-center rounded{{ if $is_active }} active{{ end }}"{{ if $is_active }} aria-current="page"{{ end }}>{{ $doc.title }}</a></li>
-            {{- end }}
-          </ul>
-        </div>
+        <ul class="list-unstyled fw-normal pb-2 small">
+          {{- range $doc := $group.pages -}}
+            {{- $doc_slug := $doc.title | urlize -}}
+            {{- $is_active := and $is_active_group (eq $page_slug $doc_slug) -}}
+            {{- $href := printf "/docs/%s/%s/%s/" $.Site.Params.docs_version $group_slug $doc_slug }}
+            <li><a href="{{ $href }}" class="bd-links-link d-inline-block rounded{{ if $is_active }} active{{ end }}"{{ if $is_active }} aria-current="page"{{ end }}>{{ $doc.title }}</a></li>
+          {{- end }}
+        </ul>
       </li>
     {{- else }}
-      <li class="my-3 mx-4 border-top"></li>
-      <li>
-        <a href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/" class="d-inline-flex align-items-center rounded{{ if $is_active_group }} active{{ end }}"{{ if $is_active_group }} aria-current="page"{{ end }}>
+      <li class="bd-links-span-all mt-1 mb-3 mx-4 border-top"></li>
+      <li class="bd-links-span-all">
+        <a href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/" class="bd-links-link d-inline-block rounded small {{ if $is_active_group }} active{{ end }}"{{ if $is_active_group }} aria-current="page"{{ end }}>
           {{ $group.title }}
         </a>
       </li>

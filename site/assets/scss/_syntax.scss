@@ -17,7 +17,7 @@
   --base0F: #333;
 }
 
-.hll { background-color: #fff; }
+.hl { background-color: var(--base02); }
 .c { color: var(--base03); }
 .err { color: var(--base08); }
 .k { color: var(--base0E); }
@@ -35,7 +35,7 @@
   font-weight: 600;
   color: #fff;
 }
-.gi { color: var(--base0C); }
+.gi { color: var(--bs-success); }
 .gp {
   font-weight: 600;
   color: var(--base04);
@@ -101,7 +101,7 @@
   .language-bash,
   .language-sh {
     &::before {
-      color: #009;
+      color: #777;
       content: "$ ";
       user-select: none;
     }

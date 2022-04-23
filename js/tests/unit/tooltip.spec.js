@@ -730,15 +730,12 @@ describe('Tooltip', () => {
 
     it('should not hide tooltip if leave event occurs and enter event occurs within the hide delay', () => {
       return new Promise(resolve => {
-        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip" data-bs-delay=\'{"show":0,"hide":150}\'>'
 
         const tooltipEl = fixtureEl.querySelector('a')
-        const tooltip = new Tooltip(tooltipEl, {
-          delay: {
-            show: 0,
-            hide: 150
-          }
-        })
+        const tooltip = new Tooltip(tooltipEl)
+
+        expect(tooltip._config.delay).toEqual({ show: 0, hide: 150 })
 
         setTimeout(() => {
           expect(tooltip._getTipElement()).toHaveClass('show')
