@@ -569,7 +569,7 @@ Trigger dropdown menus at the left of the elements by adding `.dropstart` to the
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div>
-  <div class="btn-group dropstart" role="group">
+  <div class="btn-group dropstart">
     <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
       <span class="visually-hidden">Toggle Dropstart</span>
     </button>
@@ -598,7 +598,7 @@ Trigger dropdown menus at the left of the elements by adding `.dropstart` to the
 </div>
 
 <!-- Split dropstart button -->
-<div class="btn-group dropstart" role="group">
+<div class="btn-group dropstart">
   <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="visually-hidden">Toggle Dropstart</span>
   </button>
