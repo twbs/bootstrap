@@ -222,41 +222,31 @@
           display: none;
         }
 
-        .offcanvas-header {
-          display: none;
-        }
-
         .offcanvas {
-          position: inherit;
-          bottom: 0;
+          // stylelint-disable declaration-no-important
+          position: static;
           z-index: auto;
           flex-grow: 1;
-          visibility: visible !important; // stylelint-disable-line declaration-no-important
-          background-color: transparent;
-          border-right: 0;
-          border-left: 0;
+          width: auto !important;
+          height: auto !important;
+          visibility: visible !important;
+          background-color: transparent !important;
+          border: 0 !important;
+          transform: none !important;
           @include box-shadow(none);
           @include transition(none);
-          transform: none;
-        }
-        .offcanvas-top,
-        .offcanvas-bottom {
-          height: auto;
-          border-top: 0;
-          border-bottom: 0;
-        }
+          // stylelint-enable declaration-no-important
 
-        .offcanvas-body {
-          display: flex;
-          flex-grow: 0;
-          padding: 0;
-          overflow-y: visible;
-        }
+          .offcanvas-header {
+            display: none;
+          }
 
-        // Reset `background-color` in case `.bg-*` classes are used in offcanvas
-        .offcanvas,
-        .offcanvas-body {
-          background-color: transparent !important; // stylelint-disable-line declaration-no-important
+          .offcanvas-body {
+            display: flex;
+            flex-grow: 0;
+            padding: 0;
+            overflow-y: visible;
+          }
         }
       }
     }

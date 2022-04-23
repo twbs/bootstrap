@@ -25,8 +25,7 @@
   // Open in StackBlitz logic
   document.querySelectorAll('.btn-edit').forEach(btn => {
     btn.addEventListener('click', event => {
-      const htmlSnippet = event.target.closest('.bd-edit').previousSibling.innerHTML
-
+      const htmlSnippet = event.target.closest('.bd-code-snippet').querySelector('.bd-example').innerHTML
       StackBlitzSDK.openBootstrapSnippet(htmlSnippet)
     })
   })

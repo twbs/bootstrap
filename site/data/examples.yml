@@ -63,6 +63,8 @@
   examples:
     - name: Navbars
       description: "Demonstration of all responsive and container options for the navbar."
+    - name: Navbars offcanvas
+      description: "Same as the Navbars example, but with our offcanvas component."
     - name: Navbar static
       description: "Single navbar example of a static top navbar along with some additional content."
     - name: Navbar fixed

@@ -22,7 +22,15 @@ function normalizeData(value) {
     return null
   }
 
-  return value
+  if (typeof value !== 'string') {
+    return value
+  }
+
+  try {
+    return JSON.parse(decodeURIComponent(value))
+  } catch {
+    return value
+  }
 }
 
 function normalizeDataKey(key) {
@@ -44,7 +52,7 @@ const Manipulator = {
     }
 
     const attributes = {}
-    const bsKeys = Object.keys(element.dataset).filter(key => key.startsWith('bs'))
+    const bsKeys = Object.keys(element.dataset).filter(key => key.startsWith('bs') && !key.startsWith('bsConfig'))
 
     for (const key of bsKeys) {
       let pureKey = key.replace(/^bs/, '')
@@ -57,22 +65,6 @@ const Manipulator = {
 
   getDataAttribute(element, key) {
     return normalizeData(element.getAttribute(`data-bs-${normalizeDataKey(key)}`))
-  },
-
-  offset(element) {
-    const rect = element.getBoundingClientRect()
-
-    return {
-      top: rect.top + window.pageYOffset,
-      left: rect.left + window.pageXOffset
-    }
-  },
-
-  position(element) {
-    return {
-      top: element.offsetTop,
-      left: element.offsetLeft
-    }
   }
 }
 
