@@ -69,9 +69,9 @@
   }
 
   .dropdown-menu {
-    --#{$variable-prefix}dropdown-min-width: 12rem;
-    --#{$variable-prefix}dropdown-link-hover-bg: rgba(var(--bd-violet-rgb), .1);
-    @include rfs(.875rem, --#{$variable-prefix}dropdown-font-size);
+    --#{$prefix}dropdown-min-width: 12rem;
+    --#{$prefix}dropdown-link-hover-bg: rgba(var(--bd-violet-rgb), .1);
+    @include rfs(.875rem, --#{$prefix}dropdown-font-size);
     box-shadow: $dropdown-box-shadow;
   }
 
