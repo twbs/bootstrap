@@ -8,7 +8,7 @@ aliases: "/examples/"
 {{< list-examples.inline >}}
 {{ range $entry := $.Site.Data.examples -}}
 <div class="row g-lg-5 mb-5">
-  <div class="col-lg-3">
+  <div class="bd-content col-lg-3">
     <h2 id="{{ $entry.category | urlize }}">{{ $entry.category }}</h2>
     <p>{{ $entry.description }}</p>
     {{ if eq $entry.category "RTL" -}}
