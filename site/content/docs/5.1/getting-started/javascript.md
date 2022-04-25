@@ -20,7 +20,7 @@ While the Bootstrap CSS can be used with any framework, **the Bootstrap JavaScri
 
 A better alternative for those using React and similar frameworks is to use a framework-specific package **instead of** the Bootstrap JavaScript. Here are some of the most popular options:
 
-- React: [react-bootstrap](https://react-bootstrap.github.io/) or [Reactstrap](https://reactstrap.github.io/)
+- React: [react-bootstrap](https://react-bootstrap.github.io/)
 - Vue: [BootstrapVue](https://bootstrap-vue.org/)
 - Angular: [ng-bootstrap](https://ng-bootstrap.github.io/)
 
