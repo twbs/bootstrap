@@ -271,10 +271,8 @@ While both ways to dismiss an offcanvas are supported, keep in mind that dismiss
 Enable manually with:
 
 ```js
-var offcanvasElementList = Array.prototype.slice.call(document.querySelectorAll('.offcanvas'))
-var offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
-  return new bootstrap.Offcanvas(offcanvasEl)
-})
+const offcanvasElementList = document.querySelectorAll('.offcanvas')
+const offcanvasList = [...offcanvasElementList].map(offcanvasEl => new bootstrap.Offcanvas(offcanvasEl))
 ```
 
 ### Options
@@ -302,8 +300,7 @@ Activates your content as an offcanvas element. Accepts an optional options `obj
 You can create an offcanvas instance with the constructor, for example:
 
 ```js
-var myOffcanvas = document.getElementById('myOffcanvas')
-var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
+const bsOffcanvas = new bootstrap.Offcanvas('#myOffcanvas')
 ```
 
 {{< bs-table "table" >}}
@@ -331,8 +328,8 @@ Bootstrap's offcanvas class exposes a few events for hooking into offcanvas func
 {{< /bs-table >}}
 
 ```js
-var myOffcanvas = document.getElementById('myOffcanvas')
-myOffcanvas.addEventListener('hidden.bs.offcanvas', function () {
+const myOffcanvas = document.getElementById('myOffcanvas')
+myOffcanvas.addEventListener('hidden.bs.offcanvas', event => {
   // do something...
 })
 ```
