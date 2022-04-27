@@ -225,7 +225,7 @@ function setEventProperty(event, propName, value) {
     get() {
       return value
     }
-  });
+  })
 }
 
 const EventHandler = {
