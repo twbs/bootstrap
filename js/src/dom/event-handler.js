@@ -89,7 +89,7 @@ function getEvent(element) {
 
 function bootstrapHandler(element, fn) {
   return function handler(event) {
-    event.delegateTarget = element
+    setEventProperty(event, 'delegateTarget', element)
 
     if (handler.oneOff) {
       EventHandler.off(element, event.type, fn)
@@ -109,7 +109,7 @@ function bootstrapDelegationHandler(element, selector, fn) {
           continue
         }
 
-        event.delegateTarget = target
+        setEventProperty(event, 'delegateTarget', target)
 
         if (handler.oneOff) {
           EventHandler.off(element, event.type, selector, fn)
@@ -219,6 +219,15 @@ function getTypeEvent(event) {
   return customEvents[event] || event
 }
 
+function setEventProperty(event, propName, value) {
+  Object.defineProperty(event, propName, {
+    configurable: true,
+    get() {
+      return value
+    }
+  });
+}
+
 const EventHandler = {
   on(element, event, handler, delegationFunction) {
     addHandler(element, event, handler, delegationFunction, false)
@@ -293,11 +302,7 @@ const EventHandler = {
     // merge custom information in our event
     if (typeof args !== 'undefined') {
       for (const key of Object.keys(args)) {
-        Object.defineProperty(evt, key, {
-          get() {
-            return args[key]
-          }
-        })
+        setEventProperty(evt, key, args[key])
       }
     }
 
