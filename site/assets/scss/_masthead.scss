@@ -84,11 +84,19 @@
   mix-blend-mode: darken;
 
   svg {
-    filter: drop-shadow(0 1px 1px #fff);
+    filter: drop-shadow(0 1px 1px var(--bs-body-bg));
   }
 }
 
 .masthead-notice {
   background-color: var(--bd-accent);
   box-shadow: inset 0 -1px 1px rgba(var(--bs-body-color-rgb), .15), 0 .25rem 1.5rem rgba(var(--bs-body-bg-rgb), .75);
+}
+
+@if $enable-dark-mode {
+  [data-theme="dark"] {
+    .masthead-followup-icon {
+      mix-blend-mode: lighten;
+    }
+  }
 }

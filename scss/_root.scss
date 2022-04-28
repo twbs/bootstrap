@@ -86,23 +86,28 @@
   --#{$prefix}border-radius-pill: #{$border-radius-pill};
   // scss-docs-end root-border-var
 
+  --#{$prefix}emphasis-color: #{$emphasis-color};
+  --#{$prefix}accent-color: #{$accent-color};
+  --#{$prefix}accent-bg: #{$accent-bg};
+  --#{$prefix}accent-border: #{$accent-border};
+
   // TODO: move to form components? or make global?
   --#{$prefix}form-control-bg: var(--#{$prefix}body-bg);
   --#{$prefix}form-control-disabled-bg: var(--#{$prefix}secondary-bg);
 }
 
 [data-theme="dark"] {
-  --#{$prefix}primary: #{$blue-300};
-  --#{$prefix}success: #{$green-300};
-  --#{$prefix}danger: #{$red-300};
-  --#{$prefix}warning: #{$yellow-300};
-  --#{$prefix}info: #{$cyan-300};
+  // --#{$prefix}primary: #{$blue-300};
+  // --#{$prefix}success: #{$green-300};
+  // --#{$prefix}danger: #{$red-300};
+  // --#{$prefix}warning: #{$yellow-300};
+  // --#{$prefix}info: #{$cyan-300};
 
-  --#{$prefix}primary-rgb: #{to-rgb($blue-300)};
-  --#{$prefix}success-rgb: #{to-rgb($green-300)};
-  --#{$prefix}danger-rgb: #{to-rgb($red-300)};
-  --#{$prefix}warning-rgb: #{to-rgb($yellow-300)};
-  --#{$prefix}info-rgb: #{to-rgb($cyan-300)};
+  // --#{$prefix}primary-rgb: #{to-rgb($blue-300)};
+  // --#{$prefix}success-rgb: #{to-rgb($green-300)};
+  // --#{$prefix}danger-rgb: #{to-rgb($red-300)};
+  // --#{$prefix}warning-rgb: #{to-rgb($yellow-300)};
+  // --#{$prefix}info-rgb: #{to-rgb($cyan-300)};
 
   --#{$prefix}body-color: #{$body-color-dark};
   --#{$prefix}body-color-rgb: #{to-rgb($body-color-dark)};
@@ -119,6 +124,11 @@
   --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
   --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
 
+  --#{$prefix}emphasis-color: #{$emphasis-color-dark};
+  --#{$prefix}accent-color: #{$accent-color-dark};
+  --#{$prefix}accent-bg: #{$accent-bg-dark};
+  --#{$prefix}accent-border: #{$accent-border-dark};
+
   --#{$prefix}heading-color: #{$headings-color-dark};
 
   --#{$prefix}link-color: #{$link-color-dark};
@@ -127,4 +137,5 @@
   --#{$prefix}code-color: #{$code-color-dark};
 
   --#{$prefix}border-color: #{$border-color-dark};
+  --#{$prefix}border-color-translucent: #{$border-color-translucent-dark};
 }

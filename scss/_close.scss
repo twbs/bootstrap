@@ -38,3 +38,11 @@
 .btn-close-white {
   filter: $btn-close-white-filter;
 }
+
+@if $enable-dark-mode {
+  [data-theme="dark"] {
+    .btn-close {
+      filter: $btn-close-white-filter;
+    }
+  }
+}

@@ -6,11 +6,13 @@ group: customize
 toc: true
 ---
 
-## Dark mode
+## Color modes
 
-<small class="d-inline-flex px-2 py-1 fw-semibold text-success bg-success bg-opacity-10 rounded-2">Added in v5.3.0</small>
+{{< added-in "5.3.0" >}}
 
-**Bootstrap now supports dark mode!** After upgrading to v5.3.0, you'll be able to implement your own color mode toggler (see below for an example from Bootstrap's docs) and apply the different color modes as you see fit. Color modes can be toggled globally on the `<html>` element, or on specific components and elements, thanks to an easy `data-theme` attribute.
+### Dark mode
+
+**Bootstrap now supports color modes, starting with dark mode!** After upgrading to v5.3.0, you'll be able to implement your own color mode toggler (see below for an example from Bootstrap's docs) and apply the different color modes as you see fit. Color modes can be toggled globally on the `<html>` element, or on specific components and elements, thanks to the `data-theme` attribute.
 
 For example, to change the toggle mode of a dropdown menu, add `data-theme="light"` or `data-theme="dark"` to the parent `.dropdown`. Now, no matter the global color mode, these dropdowns will display as intended.
 
@@ -44,11 +46,11 @@ For example, to change the toggle mode of a dropdown menu, add `data-theme="ligh
 </div>
 {{< /example >}}
 
-## Custom color modes
+### Custom color modes
 
-While the primary use case for color modes is light and dark mode, custom color modes can easily be added. Create your own `data-theme` selector with a custom value as the name of your color mode, then modify the CSS variables as needed.
+While the primary use case for color modes is light and dark mode, custom color modes are also possible. Create your own `data-theme` selector with a custom value as the name of your color mode, then modify our CSS variables as needed.
 
-For example, you can create a blue theme with the selector `data-theme="blue"`.
+For example, you can create a "blue theme" with the selector `data-theme="blue"`.
 
 {{< scss-docs name="custom-color-mode" file="site/assets/scss/_content.scss" >}}
 
@@ -79,16 +81,18 @@ For example, you can create a blue theme with the selector `data-theme="blue"`.
 </div>
 ```
 
-## New theme colors
+## Colors
 
-<small class="d-inline-flex px-2 py-1 fw-semibold text-success bg-success bg-opacity-10 rounded-2">Added in v5.2.0</small>
+### New theme colors
 
-Bootstrap's color palette has continued to expand and become more nuanced in v5.2.0 with the addition of new `secondary` and `tertiary` colors. Our new colors are available through Sass and CSS variables (but not our color maps), with the express goal of making it easier to customize across multiple colors modes like light and dark.
+{{< added-in "5.3.0" >}}
+
+Bootstrap's color palette has continued to expand and become more nuanced in v5.3.0 with the addition of new `secondary` and `tertiary` text and background colors. Our new colors are available through Sass and CSS variables (but not our color maps) with the express goal of making it easier to customize across multiple colors modes like light and dark.
 
 Colors ending in `--rgb` provide the `red, green, blue` values for use in `rgb()` and `rgba()` color modes. For example, `rgba(var(--bs-secondary-bg-rgb), .5)`.
 
 {{< callout warning>}}
-**Heads up!** There's some potentially confusing things regarding new secondary and tertiary colors, and our secondary theme color.
+**Heads up!** There's some potentially confusing things regarding new secondary and tertiary colors, and our secondary theme color. Expect this to be ironed out in v6.
 {{< /callout >}}
 
 {{< bs-table "table text-start table-swatches" >}}
@@ -105,7 +109,7 @@ Colors ending in `--rgb` provide the `red, green, blue` values for use in `rgb()
 | **Info —** Theme color used for neutral and informative content. | <div class="p-3 text-bg-info rounded-2">Info</div> | `--bs-info`<br>`--bs-info-rgb` |
 {{< /bs-table >}}
 
-## Theme colors
+### Theme colors
 
 We use a subset of all colors to create a smaller color palette for generating color schemes, also available as Sass variables and a Sass map in Bootstrap's `scss/_variables.scss` file.
 
@@ -113,7 +117,7 @@ We use a subset of all colors to create a smaller color palette for generating c
   {{< theme-colors.inline >}}
   {{- range (index $.Site.Data "theme-colors") }}
     <div class="col-md-4">
-      <div class="p-3 mb-3 bg-{{ .name }} {{ if .contrast_color }}text-{{ .contrast_color }}{{ else }}text-white{{ end }}">{{ .name | title }}</div>
+      <div class="p-3 mb-3 text-bg-{{ .name }} rounded-3">{{ .name | title }}</div>
     </div>
   {{ end -}}
   {{< /theme-colors.inline >}}
@@ -125,7 +129,7 @@ All these colors are available as a Sass map, `$theme-colors`.
 
 Check out [our Sass maps and loops docs]({{< docsref "/customize/sass#maps-and-loops" >}}) for how to modify these colors.
 
-## All colors
+### All colors
 
 All Bootstrap colors are available as Sass variables and a Sass map in `scss/_variables.scss` file. To avoid increased file sizes, we don't create text or background color classes for each of these variables. Instead, we choose a subset of these colors for a [theme palette](#theme-colors).
 

@@ -76,7 +76,8 @@
 
   .dropdown-menu {
     --bs-dropdown-min-width: 12rem;
-    --bs-dropdown-padding: .25rem;
+    --bs-dropdown-padding-x: .25rem;
+    --bs-dropdown-padding-y: .25rem;
     --bs-dropdown-link-hover-bg: rgba(var(--bd-violet-rgb), .1);
     --bs-dropdown-link-active-bg: rgba(var(--bd-violet-rgb), 1);
     @include rfs(.875rem, --bs-dropdown-font-size);

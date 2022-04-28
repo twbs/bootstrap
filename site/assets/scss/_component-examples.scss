@@ -3,7 +3,7 @@
 //
 
 .bd-example-snippet {
-  border: solid $border-color;
+  border: solid var(--bs-border-color);
   border-width: 1px 0;
 
   @include media-breakpoint-up(md) {
@@ -17,7 +17,7 @@
   position: relative;
   padding: var(--bd-example-padding);
   margin: 0 ($bd-gutter-x * -.5);
-  border: solid $border-color;
+  border: solid var(--bs-border-color);
   border-width: 1px 0;
   @include clearfix();
 
