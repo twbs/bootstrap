@@ -2,19 +2,19 @@
   "files": [
     {
       "path": "./dist/css/bootstrap-grid.css",
-      "maxSize": "7.5 kB"
+      "maxSize": "7.75 kB"
     },
     {
       "path": "./dist/css/bootstrap-grid.min.css",
-      "maxSize": "6.55 kB"
+      "maxSize": "7.0 kB"
     },
     {
       "path": "./dist/css/bootstrap-reboot.css",
-      "maxSize": "2.75 kB"
+      "maxSize": "3.0 kB"
     },
     {
       "path": "./dist/css/bootstrap-reboot.min.css",
-      "maxSize": "2.5 kB"
+      "maxSize": "2.75 kB"
     },
     {
       "path": "./dist/css/bootstrap-utilities.css",
@@ -26,11 +26,11 @@
     },
     {
       "path": "./dist/css/bootstrap.css",
-      "maxSize": "28.75 kB"
+      "maxSize": "29.25 kB"
     },
     {
       "path": "./dist/css/bootstrap.min.css",
-      "maxSize": "26.5 kB"
+      "maxSize": "27.25 kB"
     },
     {
       "path": "./dist/js/bootstrap.bundle.js",
