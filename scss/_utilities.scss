@@ -98,9 +98,6 @@ $utilities: map-merge(
     // scss-docs-start utils-borders
     "border": (
       property: border,
-      local-vars: (
-        "border-opacity": 1
-      ),
       values: (
         null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
         0: 0,
