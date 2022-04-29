@@ -124,15 +124,19 @@ Use the scaling classes for larger or smaller rounded corners. Sizes range from 
 {{< placeholder width="75" height="75" class="rounded-5" title="Example extra large rounded image" >}}
 {{< /example >}}
 
-## Sass
+## CSS
 
 ### Variables
+
+{{< scss-docs name="root-border-var" file="scss/_root.scss" >}}
+
+### Sass variables
 
 {{< scss-docs name="border-variables" file="scss/_variables.scss" >}}
 
 {{< scss-docs name="border-radius-variables" file="scss/_variables.scss" >}}
 
-### Mixins
+### Sass mixins
 
 {{< scss-docs name="border-radius-mixins" file="scss/mixins/_border-radius.scss" >}}
 
