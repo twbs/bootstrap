@@ -23,7 +23,8 @@ project-name/
 ├── build/
 ├── node_modules/
 │   └── bootstrap/
-│   └── popper.js/
+│   └── @popperjs/
+|       └── core/
 ├── scss/
 │   └── custom.scss
 ├── src/
