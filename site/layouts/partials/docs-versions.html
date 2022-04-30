@@ -22,10 +22,14 @@
       </a>
     </li>
     <li>
-      <a class="dropdown-item" href="https://getbootstrap.com/docs/5.1/{{ .Scratch.Get "versions_link" }}">v5.1.3</a>
+      {{- if (eq .Page.Params.added "5.2") }}
+        <div class="dropdown-item disabled">v5.1.3</div>
+      {{- else }}
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/5.1/{{ .Scratch.Get "versions_link" }}">v5.1.3</a>
+      {{- end }}
     </li>
     <li>
-      {{- if eq .Page.Params.added "5.1" }}
+      {{- if or (eq .Page.Params.added "5.1") (eq .Page.Params.added "5.2") }}
         <div class="dropdown-item disabled">v5.0.2</div>
       {{- else }}
         <a class="dropdown-item" href="https://getbootstrap.com/docs/5.0/{{ .Scratch.Get "versions_link" }}">v5.0.2</a>
