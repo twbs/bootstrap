@@ -1,9 +1,10 @@
 {{- $url := split .Permalink "/" -}}
+{{- $page_version := index $url (sub (len $url) 4) -}}
 {{- $group_slug := index $url (sub (len $url) 3) -}}
 {{- $page_slug := index $url (sub (len $url) 2) -}}
 
 {{- $versions_link := "" -}}
-{{- if (eq .Layout "docs") }}
+{{- if and (eq .Layout "docs") (eq $page_version .Site.Params.docs_version) -}}
   {{- .Scratch.Set "versions_link" (printf "%s/%s/" $group_slug $page_slug) -}}
 {{- else if (eq .Layout "single") }}
   {{- .Scratch.Set "versions_link" (printf "%s/" $page_slug) -}}
