@@ -119,43 +119,43 @@ Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its p
         <div id="item-1">
           <h4>Item 1</h4>
           <p>This is some placeholder content for the scrollspy page.</p>
-          <p>Keep in mind that javascript tries to pick the right element, among all that may be visible. Multiple visible scrollpsy targets at the same time, may cause some misfunctioning.</p>
+          <p>Keep in mind that javascript tries to pick the right element, among all that may be visible. Multiple visible scrollspy targets at the same time, may cause some misfunction.</p>
           <p>Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
         </div>
         <div id="item-1-1">
           <h5>Item 1-1</h5>
           <p>This is some placeholder content for the scrollspy page.</p>
-          <p>Keep in mind that javascript tries to pick the right element, among all that may be visible. Multiple visible scrollpsy targets at the same time, may cause some misfunctioning.</p>
+          <p>Keep in mind that javascript tries to pick the right element, among all that may be visible. Multiple visible scrollspy targets at the same time, may cause some misfunction.</p>
           <p>Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
         </div>
         <div id="item-1-2">
           <h5>Item 1-2</h5>
           <p>This is some placeholder content for the scrollspy page.</p>
-          <p>Keep in mind that javascript tries to pick the right element, among all that may be visible. Multiple visible scrollpsy targets at the same time, may cause some misfunctioning.</p>
+          <p>Keep in mind that javascript tries to pick the right element, among all that may be visible. Multiple visible scrollspy targets at the same time, may cause some misfunction.</p>
           <p>Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
         </div>
         <div id="item-2">
           <h4>Item 2</h4>
           <p>This is some placeholder content for the scrollspy page.</p>
-          <p>Keep in mind that javascript tries to pick the right element, among all that may be visible. Multiple visible scrollpsy targets at the same time, may cause some misfunctioning.</p>
+          <p>Keep in mind that javascript tries to pick the right element, among all that may be visible. Multiple visible scrollspy targets at the same time, may cause some misfunction.</p>
           <p>Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
         </div>
         <div id="item-3">
           <h4>Item 3</h4>
           <p>This is some placeholder content for the scrollspy page.</p>
-          <p>Keep in mind that javascript tries to pick the right element, among all that may be visible. Multiple visible scrollpsy targets at the same time, may cause some misfunctioning.</p>
+          <p>Keep in mind that javascript tries to pick the right element, among all that may be visible. Multiple visible scrollspy targets at the same time, may cause some misfunction.</p>
           <p>Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
         </div>
         <div id="item-3-1">
           <h5>Item 3-1</h5>
           <p>This is some placeholder content for the scrollspy page.</p>
-          <p>Keep in mind that javascript tries to pick the right element, among all that may be visible. Multiple visible scrollpsy targets at the same time, may cause some misfunctioning.</p>
+          <p>Keep in mind that javascript tries to pick the right element, among all that may be visible. Multiple visible scrollspy targets at the same time, may cause some misfunction.</p>
           <p>Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
         </div>
         <div id="item-3-2">
           <h5>Item 3-2</h5>
           <p>This is some placeholder content for the scrollspy page.</p>
-          <p>Keep in mind that javascript tries to pick the right element, among all that may be visible. Multiple visible scrollpsy targets at the same time, may cause some misfunctioning.</p>
+          <p>Keep in mind that javascript tries to pick the right element, among all that may be visible. Multiple visible scrollspy targets at the same time, may cause some misfunction.</p>
           <p>Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
         </div>
       </div>
