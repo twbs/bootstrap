@@ -103,17 +103,6 @@ $utilities: map-merge(
         0: 0,
       )
     ),
-    "border-opacity": (
-      css-var: true,
-      class: border-opacity,
-      values: (
-        10: .1,
-        25: .25,
-        50: .5,
-        75: .75,
-        100: 1
-      )
-    ),
     "border-top": (
       property: border-top,
       values: (
@@ -147,6 +136,9 @@ $utilities: map-merge(
     "border-color": (
       property: border-color,
       class: border,
+      local-vars: (
+        "border-opacity": 1
+      ),
       values: $utilities-border-colors
     ),
     "border-width": (
@@ -154,6 +146,17 @@ $utilities: map-merge(
       css-variable-name: border-width,
       class: border,
       values: $border-widths
+    ),
+    "border-opacity": (
+      css-var: true,
+      class: border-opacity,
+      values: (
+        10: .1,
+        25: .25,
+        50: .5,
+        75: .75,
+        100: 1
+      )
     ),
     // scss-docs-end utils-borders
     // Sizing utilities
