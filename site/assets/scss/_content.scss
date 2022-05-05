@@ -2,13 +2,12 @@
 // Bootstrap docs content theming
 //
 
-.bd-content {
-  // Offset content from fixed navbar when jumping to headings
-  > :target {
-    padding-top: 5rem;
-    margin-top: -5rem;
-  }
+// Offset content from fixed navbar when jumping to headings
+:root {
+  scroll-padding-top: 5rem;
+}
 
+.bd-content {
   > h2:not(:first-child) {
     margin-top: 3rem;
   }
