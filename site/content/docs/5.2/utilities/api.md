@@ -3,7 +3,7 @@ layout: docs
 title: Utility API
 description: The utility API is a Sass-based tool to generate utility classes.
 group: utilities
-aliases: "/docs/5.1/utilities/"
+aliases: "/docs/5.2/utilities/"
 toc: true
 ---
 
