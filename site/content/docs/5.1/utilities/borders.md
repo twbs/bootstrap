@@ -12,6 +12,8 @@ Use border utilities to add or remove an element's borders. Choose from all bord
 
 ### Additive
 
+Add borders to custom elements:
+
 {{< example class="bd-example-border-utils" >}}
 <span class="border"></span>
 <span class="border-top"></span>
@@ -21,6 +23,8 @@ Use border utilities to add or remove an element's borders. Choose from all bord
 {{< /example >}}
 
 ### Subtractive
+
+Or remove borders:
 
 {{< example class="bd-example-border-utils bd-example-border-utils-0" >}}
 <span class="border-0"></span>
@@ -43,11 +47,22 @@ Change the border color using utilities built on our theme colors.
 <span class="border border-white"></span>
 {{< /example >}}
 
-{{< callout >}}
-Unlike text and background color utilities, border color utilities redeclare the `border-color` property **without** an additional `--bs-border-opacity`, as opposed to resetting only `--bs-border-color`. This ensures the backward compatibility of border color utilities applying to other components while providing additional functionality through CSS variables.
+Or modify the default `border-color` of a component:
 
-This will be revisited in a future major release.
-{{< /callout >}}
+{{< example >}}
+<div class="mb-4">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="email" class="form-control border-success" id="exampleFormControlInput1" placeholder="name@example.com">
+</div>
+
+<div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
+  Dangerous heading
+</div>
+
+<div class="p-3 bg-info bg-opacity-10 border border-info border-start-0 rounded-end">
+  Changing border color and width
+</div>
+{{< /example >}}
 
 ## Opacity
 
