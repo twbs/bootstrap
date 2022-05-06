@@ -46,9 +46,7 @@
         <hr class="d-lg-none text-white-50">
 
         {{ if eq .Layout "docs" }}
-        <form class="bd-search" data-shortcut="⌘K">
-          <input type="search" class="form-control" id="search-input" placeholder="Search docs..." aria-label="Search docs for..." autocomplete="off" data-bd-docs-version="{{ .Site.Params.docs_version }}">
-        </form>
+        <div class="bd-search" id="docsearch" data-bd-docs-version="{{ .Site.Params.docs_version }}"></div>
 
         <hr class="d-lg-none text-white-50">
         {{ end }}
