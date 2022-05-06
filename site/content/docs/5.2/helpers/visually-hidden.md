@@ -3,7 +3,7 @@ layout: docs
 title: Visually hidden
 description: Use these helpers to visually hide elements but keep them accessible to assistive technologies.
 group: helpers
-aliases: "/docs/5.1/helpers/screen-readers/"
+aliases: "/docs/5.2/helpers/screen-readers/"
 ---
 
 Visually hide an element while still allowing it to be exposed to assistive technologies (such as screen readers) with `.visually-hidden`. Use `.visually-hidden-focusable` to visually hide an element by default, but to display it when it's focused (e.g. by a keyboard-only user). `.visually-hidden-focusable` can also be applied to a container–thanks to `:focus-within`, the container will be displayed when any child element of the container receives focus.
