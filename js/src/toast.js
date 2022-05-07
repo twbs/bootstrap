@@ -100,7 +100,7 @@ class Toast extends BaseComponent {
   }
 
   hide() {
-    if (!this._element.classList.contains(CLASS_NAME_SHOW)) {
+    if (!this.isShown()) {
       return
     }
 
@@ -123,11 +123,15 @@ class Toast extends BaseComponent {
   dispose() {
     this._clearTimeout()
 
-    if (this._element.classList.contains(CLASS_NAME_SHOW)) {
+    if (this.isShown()) {
       this._element.classList.remove(CLASS_NAME_SHOW)
     }
 
     super.dispose()
+  }
+
+  isShown() {
+    return this._element.classList.contains(CLASS_NAME_SHOW)
   }
 
   // Private
