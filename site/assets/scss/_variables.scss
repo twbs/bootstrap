@@ -6,7 +6,6 @@ $bd-violet:        lighten(saturate($bd-purple, 5%), 15%); // stylelint-disable-
 $bd-purple-light:  lighten(saturate($bd-purple, 5%), 45%); // stylelint-disable-line function-disallowed-list
 $bd-accent:       #ffe484;
 $dropdown-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#292b2c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>");
-$search-clear-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='rgba(255,255,255,.75)' d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z'/></svg>");
 
 $bd-gutter-x: 3rem;
 $bd-callout-variants: info, warning, danger !default;
@@ -19,4 +18,6 @@ $bd-callout-variants: info, warning, danger !default;
   --bd-accent-rgb: #{to-rgb($bd-accent)};
   --bd-pink-rgb: #{to-rgb($pink-500)};
   --bd-teal-rgb: #{to-rgb($teal-500)};
+  --docsearch-primary-color: var(--bd-violet);
+  --docsearch-logo-color: var(--bd-violet);
 }
