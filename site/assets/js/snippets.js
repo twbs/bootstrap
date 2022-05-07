@@ -15,16 +15,10 @@
 (() => {
   'use strict'
 
-  // Tooltip and popover demos
-  // Tooltip and popover demos
+  // Tooltip demos
   document.querySelectorAll('[data-bs-toggle="tooltip"]')
     .forEach(tooltip => {
       new bootstrap.Tooltip(tooltip)
-    })
-
-  document.querySelectorAll('[data-bs-toggle="popover"]')
-    .forEach(popover => {
-      new bootstrap.Popover(popover)
     })
 
   const toastPlacement = document.getElementById('toastPlacement')
