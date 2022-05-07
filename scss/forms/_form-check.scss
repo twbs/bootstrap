@@ -37,7 +37,7 @@
   background-size: contain;
   border: $form-check-input-border;
   appearance: none;
-  color-adjust: exact; // Keep themed appearance for print
+  print-color-adjust: exact; // Keep themed appearance for print
   @include transition($form-check-transition);
 
   &[type="checkbox"] {
