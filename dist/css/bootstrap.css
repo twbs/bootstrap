@@ -59,6 +59,10 @@
   --bs-body-bg: #fff;
 }
 
+*{
+  -webkit-tap-highlight-color: transparent;
+}
+
 *,
 *::before,
 *::after {
