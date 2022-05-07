@@ -8,20 +8,26 @@ toc: true
 
 ## How it works
 
-Scrollspy toggles the `.active` class on anchor (`<a>`) elements when the element with the `id` referenced by the anchor's `href` is scrolled into view. Generally, it will be most useful in conjunction with a Bootstrap [nav component]({{< docsref "/components/navs-tabs" >}}) or [list group]({{< docsref "/components/list-group" >}}), but it will also work with any anchor elements in the current page.
+Scrollspy toggles the `.active` class on anchor (`<a>`) elements when the element with the `id` referenced by the anchor's `href` is scrolled into view. Scrollspy is best used in conjunction with a Bootstrap [nav component]({{< docsref "/components/navs-tabs" >}}) or [list group]({{< docsref "/components/list-group" >}}), but it will also work with any anchor elements in the current page. Here's how it works.
 
-{{< callout >}}
-### Scrollable containers and keyboard access
+- To start, scrollspy requires two things: a navigation, list group, or a simple set of links, plus a scrollable container. The scrollable container can be the `<body>` or a custom element with a set `height` and `overflow-y: scroll`.
 
-If you're making a scrollable container (other than the `<body>`), be sure to have a `height` set and `overflow-y: scroll;` applied to it—alongside a `tabindex="0"` to ensure keyboard access.
-{{< /callout >}}
+- On the scrollable container, add `data-bs-spy="scroll"` and `data-bs-target="#navId"` where `navId` is the unique `id` of the associated navigation. Be sure to also include a `tabindex="0"` to ensure keyboard access.
 
-## Example in navbar
+- As you scroll the "spied" container, an `.active` class is added and removed from anchor links within the associated navigation. Links must have resolvable `id` targets, otherwise they're ignored. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`
 
-Scroll the area below the navbar and watch the active class change. The dropdown items will be highlighted as well.
+- Target elements that aren't visible will be ignored and their corresponding nav items will never receive an `.active` class.
+
+Checkout the examples below to see it in action.
+
+## Examples
+
+### Navbar
+
+Scroll the area below the navbar and watch the active class change. Open the dropdown menu and watch the dropdown items be highlighted as well.
 
 <div class="bd-example">
-  <nav id="navbar-example2" class="navbar bg-light px-3">
+  <nav id="navbar-example2" class="navbar bg-light px-3 mb-3">
     <a class="navbar-brand" href="#">Navbar</a>
     <ul class="nav nav-pills">
       <li class="nav-item">
@@ -41,7 +47,7 @@ Scroll the area below the navbar and watch the active class change. The dropdown
       </li>
     </ul>
   </nav>
-  <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+  <div class="scrollspy-example bg-light p-3 rounded-2" data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
     <h4 id="scrollspyHeading1">First heading</h4>
     <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
     <h4 id="scrollspyHeading2">Second heading</h4>
@@ -76,7 +82,7 @@ Scroll the area below the navbar and watch the active class change. The dropdown
     </li>
   </ul>
 </nav>
-<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
   <h4 id="scrollspyHeading1">First heading</h4>
   <p>...</p>
   <h4 id="scrollspyHeading2">Second heading</h4>
@@ -90,15 +96,14 @@ Scroll the area below the navbar and watch the active class change. The dropdown
 </div>
 ```
 
-## Example with nested nav
+### Nested nav
 
 Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its parents will also be `.active`. Scroll the area next to the navbar and watch the active class change.
 
 <div class="bd-example">
   <div class="row">
     <div class="col-4">
-      <nav id="navbar-example3" class="navbar bg-light flex-column align-items-stretch p-3">
-        <a class="navbar-brand" href="#">Navbar</a>
+      <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end">
         <nav class="nav nav-pills flex-column">
           <a class="nav-link" href="#item-1">Item 1</a>
           <nav class="nav nav-pills flex-column">
@@ -115,34 +120,41 @@ Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its p
       </nav>
     </div>
     <div class="col-8">
-      <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" class="scrollspy-example-2" tabindex="0">
+      <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
         <div id="item-1">
           <h4>Item 1</h4>
           <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+          <p>Keep in mind that the JavaScript plugin tries to pick the right element among all that may be visible. Multiple visible scrollspy targets at the same time may cause some issues.</p>
         </div>
         <div id="item-1-1">
           <h5>Item 1-1</h5>
           <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+          <p>Keep in mind that the JavaScript plugin tries to pick the right element among all that may be visible. Multiple visible scrollspy targets at the same time may cause some issues.</p>
         </div>
         <div id="item-1-2">
           <h5>Item 1-2</h5>
           <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+          <p>Keep in mind that the JavaScript plugin tries to pick the right element among all that may be visible. Multiple visible scrollspy targets at the same time may cause some issues.</p>
         </div>
         <div id="item-2">
           <h4>Item 2</h4>
           <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+          <p>Keep in mind that the JavaScript plugin tries to pick the right element among all that may be visible. Multiple visible scrollspy targets at the same time may cause some issues.</p>
         </div>
         <div id="item-3">
           <h4>Item 3</h4>
           <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+          <p>Keep in mind that the JavaScript plugin tries to pick the right element among all that may be visible. Multiple visible scrollspy targets at the same time may cause some issues.</p>
         </div>
         <div id="item-3-1">
           <h5>Item 3-1</h5>
           <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+          <p>Keep in mind that the JavaScript plugin tries to pick the right element among all that may be visible. Multiple visible scrollspy targets at the same time may cause some issues.</p>
         </div>
         <div id="item-3-2">
           <h5>Item 3-2</h5>
           <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+          <p>Keep in mind that the JavaScript plugin tries to pick the right element among all that may be visible. Multiple visible scrollspy targets at the same time may cause some issues.</p>
         </div>
       </div>
     </div>
@@ -167,7 +179,7 @@ Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its p
   </nav>
 </nav>
 
-<div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" tabindex="0">
+<div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" tabindex="0">
   <div id="item-1">
     <h4>Item 1</h4>
     <p>...</p>
@@ -199,7 +211,7 @@ Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its p
 </div>
 ```
 
-## Example with list-group
+### List group
 
 Scrollspy also works with `.list-group`s. Scroll the area next to the list group and watch the active class change.
 
@@ -214,7 +226,7 @@ Scrollspy also works with `.list-group`s. Scroll the area next to the list group
       </div>
     </div>
     <div class="col-8">
-      <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+      <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
         <h4 id="list-item-1">Item 1</h4>
         <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
         <h4 id="list-item-2">Item 2</h4>
@@ -235,7 +247,7 @@ Scrollspy also works with `.list-group`s. Scroll the area next to the list group
   <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
   <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
 </div>
-<div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+<div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
   <h4 id="list-item-1">Item 1</h4>
   <p>...</p>
   <h4 id="list-item-2">Item 2</h4>
@@ -247,19 +259,19 @@ Scrollspy also works with `.list-group`s. Scroll the area next to the list group
 </div>
 ```
 
-## Example with simple anchors
+### Simple anchors
 
-Scrollspy is not limited to nav components and list groups, but will work on any `<a>` anchor elements in the current document. Scroll the area and watch the `.active` class change.
+Scrollspy is not limited to nav components and list groups, so it will work on any `<a>` anchor elements in the current document. Scroll the area and watch the `.active` class change.
 
 <div class="bd-example">
   <div class="row">
     <div class="col-4">
-      <div id="simple-list-example" class="d-flex flex-column simple-list-example-scrollspy text-center">
-        <a href="#simple-list-item-1">Item 1</a>
-        <a href="#simple-list-item-2">Item 2</a>
-        <a href="#simple-list-item-3">Item 3</a>
-        <a href="#simple-list-item-4">Item 4</a>
-        <a href="#simple-list-item-5">Item 5</a>
+      <div id="simple-list-example" class="d-flex flex-column gap-2 simple-list-example-scrollspy text-center">
+        <a class="p-1 rounded" href="#simple-list-item-1">Item 1</a>
+        <a class="p-1 rounded" href="#simple-list-item-2">Item 2</a>
+        <a class="p-1 rounded" href="#simple-list-item-3">Item 3</a>
+        <a class="p-1 rounded" href="#simple-list-item-4">Item 4</a>
+        <a class="p-1 rounded" href="#simple-list-item-5">Item 5</a>
       </div>
     </div>
     <div class="col-8">
@@ -323,18 +335,6 @@ const scrollSpy = new bootstrap.ScrollSpy(document.body, {
   target: '#navbar-example'
 })
 ```
-
-{{< callout danger >}}
-#### Requires resolvable `id` targets
-
-Links must have resolvable `id` targets, otherwise they are being ignored. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`
-{{< /callout >}}
-
-{{< callout info >}}
-#### Non-visible target elements are ignored
-
-Target elements that are not visible will be ignored and their corresponding nav items will never be highlighted.
-{{< /callout >}}
 
 ### Options
 
