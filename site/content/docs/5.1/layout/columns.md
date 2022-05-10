@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Columns
-description: Learn how to modify columns with a handful of options for alignment, ordering, and offsetting thanks to our flexbox grid system. Plus, see how to use column classes to manage widths of non-grid elements.
+description: Learn how to modify columns with a handful of options for alignment, ordering, and offsetting, thanks to our flexbox grid system. Plus, see how to use column classes to manage the widths of non-grid elements.
 group: layout
 toc: true
 ---
@@ -14,7 +14,7 @@ toc: true
 
 - **Columns build on the grid's flexbox architecture.** Flexbox means we have options for changing individual columns and [modifying groups of columns at the row level]({{< docsref "/layout/grid#row-columns" >}}). You choose how columns grow, shrink, or otherwise change.
 
-- **When building grid layouts, all content goes in columns.** The hierarchy of Bootstrap's grid goes from [container]({{< docsref "/layout/containers" >}}) to row to column to your content. On rare occasions, you may combine content and column, but be aware there can be unintended consequences.
+- **When building grid layouts, all content goes in columns.** The hierarchy of Bootstrap's grid goes from [container]({{< docsref "/layout/containers" >}}) to row to column to your content. You may combine content and column on rare occasions, but be aware there can be unintended consequences.
 
 - **Bootstrap includes predefined classes for creating fast, responsive layouts.** With [six breakpoints]({{< docsref "/layout/breakpoints" >}}) and a dozen columns at each grid tier, we have dozens of classes already built for you to create your desired layouts. This can be disabled via Sass if you wish.
 
@@ -149,7 +149,7 @@ If more than 12 columns are placed within a single row, each group of extra colu
 
 ### Column breaks
 
-Breaking columns to a new line in flexbox requires a small hack: add an element with `width: 100%` wherever you want to wrap your columns to a new line. Normally this is accomplished with multiple `.row`s, but not every implementation method can account for this.
+Breaking columns to a new line in flexbox requires a small hack: add an element with `width: 100%` wherever you want to wrap your columns to a new line. Usually, this is accomplished with multiple `.row`s, but not every implementation method can account for this.
 
 {{< example class="bd-example-row" >}}
 <div class="container">
@@ -187,7 +187,7 @@ You may also apply this break at specific breakpoints with our [responsive displ
 
 ### Order classes
 
-Use `.order-` classes for controlling the **visual order** of your content. These classes are responsive, so you can set the `order` by breakpoint (e.g., `.order-1.order-md-2`). Includes support for `1` through `5` across all six grid tiers.
+Use `.order-` classes to control your content's **visual order**. These classes are responsive, so you can set the `order` by breakpoint (e.g., `.order-1.order-md-2`). Includes support for `1` through `5` across all six grid tiers.
 
 {{< example class="bd-example-row" >}}
 <div class="container">
@@ -205,7 +205,7 @@ Use `.order-` classes for controlling the **visual order** of your content. Thes
 </div>
 {{< /example >}}
 
-There are also responsive `.order-first` and `.order-last` classes that change the `order` of an element by applying `order: -1` and `order: 6`, respectively. These classes can also be intermixed with the numbered `.order-*` classes as needed.
+There are also responsive `.order-first` and `.order-last` classes that change the `order` of an element by applying `order: -1` and `order: 6`, respectively. As needed, these classes can also be intermixed with the numbered `.order-*` classes.
 
 {{< example class="bd-example-row" >}}
 <div class="container">
@@ -225,7 +225,7 @@ There are also responsive `.order-first` and `.order-last` classes that change t
 
 ### Offsetting columns
 
-You can offset grid columns in two ways: our responsive `.offset-` grid classes and our [margin utilities]({{< docsref "/utilities/spacing" >}}). Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.
+You can offset grid columns in two ways: our responsive `.offset-` grid classes and our [margin utilities]({{< docsref "/utilities/spacing" >}}). Grid classes are sized to match columns, while margins are more useful for quick layouts where the width of the offset is variable.
 
 #### Offset classes
 
@@ -247,7 +247,7 @@ Move columns to the right using `.offset-md-*` classes. These classes increase t
 </div>
 {{< /example >}}
 
-In addition to column clearing at responsive breakpoints, you may need to reset offsets. See this in action in [the grid example]({{< docsref "/examples/grid" >}}).
+In addition to column clearing at responsive breakpoints. See this in action in [the grid example]({{< docsref "/examples/grid" >}}).
 
 {{< example class="bd-example-row" >}}
 <div class="container">
@@ -285,7 +285,7 @@ With the move to flexbox in v4, you can use margin utilities like `.me-auto` to 
 
 ## Standalone column classes
 
-The `.col-*` classes can also be used outside a `.row` to give an element a specific width. Whenever column classes are used as non direct children of a row, the paddings are omitted.
+The `.col-*` classes can also be used outside a `.row` to give an element a specific width. The paddings are omitted whenever column classes are used as non-direct children of a row.
 
 {{< example >}}
 <div class="col-3 bg-light p-3 border">
@@ -307,11 +307,11 @@ The classes can be used together with utilities to create responsive floated ima
   </p>
 
   <p>
-    As you can see the paragraphs gracefully wrap around the floated image. Now imagine how this would look with some actual content in here, rather than just this boring placeholder text that goes on and on, but actually conveys no tangible information at. It simply takes up space and should not really be read.
+    As you can see, the paragraphs gracefully wrap around the floated image. Now imagine how this would look with some actual content here, rather than just this boring placeholder text that goes on and on but conveys no tangible information. It simply takes up space and should not be read.
   </p>
 
   <p>
-    And yet, here you are, still persevering in reading this placeholder text, hoping for some more insights, or some hidden easter egg of content. A joke, perhaps. Unfortunately, there's none of that here.
+    And yet, here you are, still persevering in reading this placeholder text, hoping for some more insights or some hidden easter egg of content. A joke, perhaps. Unfortunately, there's none of that here.
   </p>
 </div>
 {{< /example >}}
