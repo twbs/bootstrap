@@ -8,7 +8,7 @@ toc: true
 
 ## How they work
 
-- **Gutters are the gaps between column content, created by horizontal `padding`.** We set `padding-right` and `padding-left` on each column, and use negative `margin` to offset that at the start and end of each row to align content.
+- **Gutters are the gaps between column content created by horizontal `padding`.** We set `padding-right` and `padding-left` on each column and use a negative `margin` to offset that at the start and end of each row to align content.
 
 - **Gutters start at `1.5rem` (`24px`) wide.** This allows us to match our grid to the [padding and margin spacers]({{< docsref "/utilities/spacing" >}}) scale.
 
@@ -71,7 +71,7 @@ An alternative solution is to add a wrapper around the `.row` with the `.overflo
 
 ## Horizontal & vertical gutters
 
-`.g-*` classes can be used to control the horizontal gutter widths, for the following example we use a smaller gutter width, so there won't be a need to add the `.overflow-hidden` wrapper class.
+`.g-*` classes can be used to control the horizontal gutter widths; for the following example, we use a smaller gutter width, so there won't be a need to add the `.overflow-hidden` wrapper class.
 
 {{< example >}}
 <div class="container">
