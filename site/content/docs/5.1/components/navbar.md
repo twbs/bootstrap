@@ -11,12 +11,12 @@ toc: true
 Here's what you need to know before getting started with the navbar:
 
 - Navbars require a wrapping `.navbar` with `.navbar-expand{-sm|-md|-lg|-xl|-xxl}` for responsive collapsing and [color scheme](#color-schemes) classes.
-- Navbars and their contents are fluid by default. Change the [container](#containers) to limit their horizontal width in different ways.
+- Navbars and their contents are fluid by default. Change the [container](#containers) to limit their horizontal width differently.
 - Use our [spacing]({{< docsref "/utilities/spacing" >}}) and [flex]({{< docsref "/utilities/flex" >}}) utility classes for controlling spacing and alignment within navbars.
 - Navbars are responsive by default, but you can easily modify them to change that. Responsive behavior depends on our Collapse JavaScript plugin.
 - Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
 - Indicate the current item by using `aria-current="page"` for the current page or `aria-current="true"` for the current item in a set.
-- **New in v5.2.0:** Navbars can be themed with CSS variables that are scoped to the `.navbar` base class. `.navbar-light` has been deprecated and `.navbar-dark` has been rewritten to override CSS variables instead of adding additional styles.
+- **New in v5.2.0:** Navbars can be themed with CSS variables scoped to the `.navbar` base class. `.navbar-light` has been deprecated, and `.navbar-dark` has been rewritten to override CSS variables instead of adding additional styles.
 
 {{< callout info >}}
 {{< partial "callout-info-prefersreducedmotion.md" >}}
@@ -79,7 +79,7 @@ This example uses [background]({{< docsref "/utilities/background" >}}) (`bg-lig
 
 ### Brand
 
-The `.navbar-brand` can be applied to most elements, but an anchor works best, as some elements might require utility classes or custom styles.
+The `.navbar-brand` can be applied to most elements, but an anchor works best, as some might require utility classes or custom styles.
 
 #### Text
 
@@ -117,7 +117,7 @@ You can replace the text within the `.navbar-brand` with an `<img>`.
 
 #### Image and text
 
-You can also make use of some additional utilities to add an image and text at the same time. Note the addition of `.d-inline-block` and `.align-text-top` on the `<img>`.
+You can also use some additional utilities to add an image and text at the same time. Note the addition of `.d-inline-block` and `.align-text-top` on the `<img>`.
 
 {{< example >}}
 <nav class="navbar bg-light">
@@ -132,11 +132,11 @@ You can also make use of some additional utilities to add an image and text at t
 
 ### Nav
 
-Navbar navigation links build on our `.nav` options with their own modifier class and require the use of [toggler classes](#toggler) for proper responsive styling. **Navigation in navbars will also grow to occupy as much horizontal space as possible** to keep your navbar contents securely aligned.
+Navbar navigation links build on our `.nav` options with their modifier class and require the use of [toggler classes](#toggler) for proper responsive styling. **Navigation in navbars will also grow to occupy as much horizontal space as possible** to align your navbar contents securely.
 
 Add the `.active` class on `.nav-link` to indicate the current page.
 
-Please note that you should also add the `aria-current` attribute on the active `.nav-link`.
+You should also add the `aria-current` attribute on the active `.nav-link`.
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg bg-light">
@@ -186,7 +186,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
 </nav>
 {{< /example >}}
 
-You can also use dropdowns in your navbar. Dropdown menus require a wrapping element for positioning, so be sure to use separate and nested elements for `.nav-item` and `.nav-link` as shown below.
+You can also use dropdowns in your navbar. Dropdown menus require a wrapping element for positioning, so use separate and nested elements for `.nav-item` and `.nav-link` as shown below.
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg bg-light">
@@ -324,7 +324,7 @@ Mix and match with other components and utilities as needed.
 **New in v5.2.0:** Navbar theming is now powered by CSS variables and `.navbar-light` has been deprecated. CSS variables are applied to `.navbar`, defaulting to the "light" appearance, and can be overridden with `.navbar-dark`.
 {{< /callout >}}
 
-Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and CSS variables. The default is our "light navbar" for use with light background colors, but you can also apply `.navbar-dark` for dark background colors. Then, customize with `.bg-*` utilities.
+Navbar themes are more accessible than ever thanks to Bootstrap's combination of Sass and CSS variables. The default is our "light navbar" for use with light background colors, but you can also apply `.navbar-dark` for dark background colors. Then, customize with `.bg-*` utilities.
 
 <div class="bd-example">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -443,7 +443,7 @@ Although it's not required, you can wrap a navbar in a `.container` to center it
 </div>
 {{< /example >}}
 
-Use any of the responsive containers to change how wide the content in your navbar is presented.
+Use any responsive containers to change how wide the content in your navbar is presented.
 
 {{< example >}}
 <nav class="navbar navbar-expand-lg bg-light">
@@ -501,7 +501,7 @@ Fixed navbars use `position: fixed`, meaning they're pulled from the normal flow
 
 ## Scrolling
 
-Add `.navbar-nav-scroll` to a `.navbar-nav` (or other navbar sub-component) to enable vertical scrolling within the toggleable contents of a collapsed navbar. By default, scrolling kicks in at `75vh` (or 75% of the viewport height), but you can override that with the local CSS custom property `--bs-navbar-height` or custom styles. At larger viewports when the navbar is expanded, content will appear as it does in a default navbar.
+Add `.navbar-nav-scroll` to a `.navbar-nav` (or other navbar sub-component) to enable vertical scrolling within the toggleable contents of a collapsed navbar. By default, scrolling kicks in at `75vh` (or 75% of the viewport height), but you can override that with the local CSS custom property `--bs-navbar-height` or custom styles. When the navbar is expanded at larger viewports, the content will appear as it does in a default navbar.
 
 Please note that this behavior comes with a potential drawback of `overflow`—when setting `overflow-y: auto` (required to scroll the content here), `overflow-x` is the equivalent of `auto`, which will crop some horizontal content.
 
@@ -548,13 +548,13 @@ Here's an example navbar using `.navbar-nav-scroll` with `style="--bs-scroll-hei
 
 ## Responsive behaviors
 
-Navbars can use `.navbar-toggler`, `.navbar-collapse`, and `.navbar-expand{-sm|-md|-lg|-xl|-xxl}` classes to determine when their content collapses behind a button. In combination with other utilities, you can easily choose when to show or hide particular elements.
+Navbars can use `.navbar-toggler`, `.navbar-collapse`, and `.navbar-expand{-sm|-md|-lg|-xl|-xxl}` classes to determine when their content collapses behind a button. You can easily choose when to show or hide particular elements in combination with other utilities.
 
 For navbars that never collapse, add the `.navbar-expand` class on the navbar. For navbars that always collapse, don't add any `.navbar-expand` class.
 
 ### Toggler
 
-Navbar togglers are left-aligned by default, but should they follow a sibling element like a `.navbar-brand`, they'll automatically be aligned to the far right. Reversing your markup will reverse the placement of the toggler. Below are examples of different toggle styles.
+Navbar toggles are left-aligned by default, but they'll automatically be aligned to the far right if they follow a sibling element like a `.navbar-brand`. Reversing your markup will reverse the placement of the toggler. Below are examples of different toggle styles.
 
 With no `.navbar-brand` shown at the smallest breakpoint:
 
@@ -648,7 +648,7 @@ With a toggler on the left and brand name on the right:
 
 ### External content
 
-Sometimes you want to use the collapse plugin to trigger a container element for content that structurally sits outside of the `.navbar` . Because our plugin works on the `id` and `data-bs-target` matching, that's easily done!
+Sometimes you want to use the collapse plugin to trigger a container element for content that structurally sits outside of the `.navbar` . Because our plugin works on the `id` and `data-bs-target` matching, that's quickly done!
 
 {{< example >}}
 <div class="collapse" id="navbarToggleExternalContent">
@@ -666,13 +666,13 @@ Sometimes you want to use the collapse plugin to trigger a container element for
 </nav>
 {{< /example >}}
 
-When you do this, we recommend including additional JavaScript to move the focus programmatically to the container when it is opened. Otherwise, keyboard users and users of assistive technologies will likely have a hard time finding the newly revealed content - particularly if the container that was opened comes *before* the toggler in the document's structure. We also recommend making sure that the toggler has the `aria-controls` attribute, pointing to the `id` of the content container. In theory, this allows assistive technology users to jump directly from the toggler to the container it controls–but support for this is currently quite patchy.
+When you do this, we recommend including additional JavaScript to move the focus programmatically to the container when it is opened. Otherwise, keyboard users and users of assistive technologies will likely have a hard time finding the newly revealed content - particularly if the opened container comes *before* the toggler in the document's structure. We also recommend ensuring that the toggler has the `aria-controls` attribute, pointing to the `id` of the content container. In theory, this allows assistive technology users to jump directly from the toggler to the container it controls–but support for this is currently quite patchy.
 
 ### Offcanvas
 
-Transform your expanding and collapsing navbar into an offcanvas drawer with the offcanvas plugin. We extend both the offcanvas default styles and use our `.navbar-expand-*` classes to create a dynamic and flexible navigation sidebar.
+With the off-canvas plugin, transform your expanding and collapsing navbar into an off-canvas drawer. We extend both the off-canvas default styles and use our `.navbar-expand-*` classes to create a dynamic and flexible navigation sidebar.
 
-In the example below, to create an offcanvas navbar that is always collapsed across all breakpoints, omit the `.navbar-expand-*` class entirely.
+In the example below, to create an off-canvas navbar that is always collapsed across all breakpoints, omit the `.navbar-expand-*` class entirely.
 
 {{< example >}}
 <nav class="navbar bg-light fixed-top">
@@ -718,7 +718,7 @@ In the example below, to create an offcanvas navbar that is always collapsed acr
 </nav>
 {{< /example >}}
 
-To create an offcanvas navbar that expands into a normal navbar at a specific breakpoint like `lg`, use `.navbar-expand-lg`.
+To create an off-canvas navbar that expands into a normal navbar at a specific breakpoint like `lg`, use `.navbar-expand-lg`.
 
 ```html
 <nav class="navbar navbar-expand-lg bg-light fixed-top">
@@ -738,7 +738,7 @@ To create an offcanvas navbar that expands into a normal navbar at a specific br
 
 {{< added-in "5.2.0" >}}
 
-As part of Bootstrap's evolving CSS variables approach, navbars now use local CSS variables on `.navbar` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+As part of Bootstrap's evolving CSS variables approach, navbars now use local CSS variables on `.navbar` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is also supported.
 
 {{< scss-docs name="navbar-css-vars" file="scss/_navbar.scss" >}}
 

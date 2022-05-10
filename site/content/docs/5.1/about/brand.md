@@ -6,11 +6,11 @@ group: about
 toc: true
 ---
 
-Have a need for Bootstrap's brand resources? Great! We have only a few guidelines we follow, and in turn ask you to follow as well.
+Need Bootstrap's brand resources? Great! We have only a few guidelines we follow and, in turn, ask you to follow as well.
 
 ## Logo
 
-When referencing Bootstrap, use our logo mark. Do not modify our logos in any way. Do not use Bootstrap's branding for your own open or closed source projects. **Do not use the Twitter name or logo** in association with Bootstrap.
+When referencing Bootstrap, use our logo mark. Do not modify our logos in any way. Do not use Bootstrap's branding for your own open or closed source projects. **Do not use the Twitter name or logo** associated with Bootstrap.
 
 <div class="bd-brand-item px-2 py-5 mb-3 bg-light rounded-lg">
   <img class="d-block img-fluid mx-auto" src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="256" height="204">

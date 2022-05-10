@@ -1,16 +1,16 @@
 ---
 layout: docs
 title: Ratios
-description: Use generated pseudo elements to make an element maintain the aspect ratio of your choosing. Perfect for responsively handling video or slideshow embeds based on the width of the parent.
+description: Use generated pseudo-elements to make an element maintain the aspect ratio of your choosing. Perfect for responsively handling video or slideshow embeds based on the parent's width.
 group: helpers
 toc: true
 ---
 
 ## About
 
-Use the ratio helper to manage the aspect ratios of external content like `<iframe>`s, `<embed>`s, `<video>`s, and `<object>`s. These helpers also can be used on any standard HTML child element (e.g., a `<div>` or `<img>`). Styles are applied from the parent `.ratio` class directly to the child.
+Use the ratio helper to manage the aspect ratios of external content like `<iframe>`s, `<embed>`s, `<video>`s, and `<object>`s. These helpers also can be used on any standard HTML child element (e.g., a `<div>` or `<img>`). Styles are applied directly to the child from the parent `.ratio` class.
 
-Aspect ratios are declared in a Sass map and included in each class via CSS variable, which also allows [custom aspect ratios](#custom-ratios).
+Aspect ratios are declared in a Sass map and included in each class via CSS variable, allowing [custom aspect ratios](#custom-ratios).
 
 {{< callout info >}}
 **Pro-Tip!** You don't need `frameborder="0"` on your `<iframe>`s as we override that for you in [Reboot]({{< docsref "/content/reboot" >}}).
@@ -18,7 +18,7 @@ Aspect ratios are declared in a Sass map and included in each class via CSS vari
 
 ## Example
 
-Wrap any embed, like an `<iframe>`, in a parent element with `.ratio` and an aspect ratio class. The immediate child element is automatically sized thanks to our universal selector `.ratio > *`.
+Wrap any embed, like an `<iframe>`, in a parent element with `.ratio` and an aspect ratio class. Thanks to our universal selector `.ratio > *`, the immediate child element is automatically sized.
 
 {{< example >}}
 <div class="ratio ratio-16x9">
@@ -57,7 +57,7 @@ For example, to create a 2x1 aspect ratio, set `--bs-aspect-ratio: 50%` on the `
 </div>
 {{< /example >}}
 
-This CSS variable makes it easy to modify the aspect ratio across breakpoints. The following is 4x3 to start, but changes to a custom 2x1 at the medium breakpoint.
+This CSS variable makes it easy to modify the aspect ratio across breakpoints. The following is 4x3 to start but changes to a custom 2x1 at the medium breakpoint.
 
 ```scss
 .ratio-4x3 {
@@ -72,7 +72,6 @@ This CSS variable makes it easy to modify the aspect ratio across breakpoints. T
   <div>4x3, then 2x1</div>
 </div>
 {{< /example >}}
-
 
 ## Sass map
 

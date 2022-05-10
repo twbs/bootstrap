@@ -6,7 +6,7 @@ group: components
 toc: true
 ---
 
-Toasts are lightweight notifications designed to mimic the push notifications that have been popularized by mobile and desktop operating systems. They're built with flexbox, so they're easy to align and position.
+Toasts are lightweight notifications designed to mimic the push notifications that mobile and desktop operating systems have popularized. They're built with flexbox, so they're easy to align and position.
 
 ## Overview
 
@@ -23,7 +23,7 @@ Things to know when using the toast plugin:
 
 ### Basic
 
-To encourage extensible and predictable toasts, we recommend a header and body. Toast headers use `display: flex`, allowing easy alignment of content thanks to our margin and flexbox utilities.
+To encourage extensible and predictable toasts, we recommend a header and body. Toast headers use `display: flex`, allowing easy content alignment thanks to our margin and flexbox utilities.
 
 Toasts are as flexible as you need and have very little required markup. At a minimum, we require a single element to contain your "toasted" content and strongly encourage a dismiss button.
 
@@ -42,7 +42,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 {{< /example >}}
 
 {{< callout warning >}}
-Previously, our scripts dynamically added the `.hide` class to completely hide a toast (with `display:none`, rather than just with `opacity:0`). This is now not necessary anymore. However, for backwards compatibility, our script will continue to toggle the class (even though there is no practical need for it) until the next major version.
+Previously, our scripts dynamically added the `.hide` class to completely hide a toast (with `display:none`, rather than just with `opacity:0`). This is now not necessary anymore. However, for backward compatibility, our script will continue to toggle the class (even though there is no practical need for it) until the next major version.
 {{< /callout >}}
 
 ### Live example
@@ -119,7 +119,7 @@ Toasts are slightly translucent to blend in with what's below them.
 
 ### Stacking
 
-You can stack toasts by wrapping them in a toast container, which will vertically add some spacing.
+You can stack toasts by wrapping them in a toast container, vertically adding some spacing.
 
 {{< example class="bg-light" >}}
 <div class="toast-container position-static">
@@ -195,7 +195,7 @@ Building on the above example, you can create different toast color schemes with
 
 ## Placement
 
-Place toasts with custom CSS as you need them. The top right is often used for notifications, as is the top middle. If you're only ever going to show one toast at a time, put the positioning styles right on the `.toast`.
+Place toasts with custom CSS as you need them. The top right is often used for notifications, as is the top middle. If you're only ever going to show one toast at a time, but the positioning styles right on the `.toast`.
 
 {{< example >}}
 <form>
@@ -269,7 +269,7 @@ For systems that generate more notifications, consider using a wrapping element 
 </div>
 {{< /example >}}
 
-You can also get fancy with flexbox utilities to align toasts horizontally and/or vertically.
+You can also get fancy with flexbox utilities to align toasts horizontally or vertically.
 
 {{< example class="bg-dark bd-example-toasts d-flex" >}}
 <!-- Flexbox container for aligning the toasts -->
@@ -292,13 +292,13 @@ You can also get fancy with flexbox utilities to align toasts horizontally and/o
 
 ## Accessibility
 
-Toasts are intended to be small interruptions to your visitors or users, so to help those with screen readers and similar assistive technologies, you should wrap your toasts in an [`aria-live` region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions). Changes to live regions (such as injecting/updating a toast component) are automatically announced by screen readers without needing to move the user's focus or otherwise interrupt the user. Additionally, include `aria-atomic="true"` to ensure that the entire toast is always announced as a single (atomic) unit, rather than just announcing what was changed (which could lead to problems if you only update part of the toast's content, or if displaying the same toast content at a later point in time). If the information needed is important for the process, e.g. for a list of errors in a form, then use the [alert component]({{< docsref "/components/alerts" >}}) instead of toast.
+Toasts are intended to be minor interruptions to your visitors or users. To help those with screen readers and similar assistive technologies, you should wrap your toasts in an [`aria-live` region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions). Changes to live regions (such as injecting/updating a toast component) are automatically announced by screen readers without needing to move the user's focus or otherwise interrupt the user. Additionally, include `aria-atomic="true"` to ensure that the entire toast is always announced as a single (atomic) unit, rather than just announcing what was changed (which could lead to problems if you only update part of the toast's content, or if displaying the same toast content at a later point in time). If the information needed is vital for the process, e.g., for a list of errors in a form, then use the [alert component]({{< docsref "/components/alerts" >}}) instead of toast.
 
-Note that the live region needs to be present in the markup *before* the toast is generated or updated. If you dynamically generate both at the same time and inject them into the page, they will generally not be announced by assistive technologies.
+Note that the live region must be present in the markup *before* the toast is generated or updated. If you dynamically generate both simultaneously and inject them into the page, they will generally not be announced by assistive technologies.
 
 You also need to adapt the `role` and `aria-live` level depending on the content. If it's an important message like an error, use `role="alert" aria-live="assertive"`, otherwise use `role="status" aria-live="polite"` attributes.
 
-As the content you're displaying changes, be sure to update the [`delay` timeout](#options) so that users have enough time to read the toast.
+As the content you're displaying changes, update the [`delay` timeout](#options) so that users have enough time to read the toast.
 
 ```html
 <div class="toast" role="alert" aria-live="polite" aria-atomic="true" data-bs-delay="10000">
@@ -322,7 +322,7 @@ When using `autohide: false`, you must add a close button to allow users to dism
 </div>
 {{< /example >}}
 
-While technically it's possible to add focusable/actionable controls (such as additional buttons or links) in your toast, you should avoid doing this for autohiding toasts. Even if you give the toast a long [`delay` timeout](#options), keyboard and assistive technology users may find it difficult to reach the toast in time to take action (since toasts don't receive focus when they are displayed). If you absolutely must have further controls, we recommend using a toast with `autohide: false`.
+While technically it's possible to add focusable/actionable controls (such as adding buttons or links) in your toast, you should avoid doing this for autohiding toasts. Even if you give the toast a long [`delay` timeout](#options), keyboard and assistive technology users may find it difficult to reach the toast in time to take action (since toasts don't receive focus when they are displayed). If you absolutely must have further controls, we recommend using a toast with `autohide: false`.
 
 ## CSS
 
@@ -330,7 +330,7 @@ While technically it's possible to add focusable/actionable controls (such as ad
 
 {{< added-in "5.2.0" >}}
 
-As part of Bootstrap's evolving CSS variables approach, toasts now use local CSS variables on `.toast` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+As part of Bootstrap's evolving CSS variables approach, toasts now use local CSS variables on `.toast` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is also supported.
 
 {{< scss-docs name="toast-css-vars" file="scss/_toasts.scss" >}}
 

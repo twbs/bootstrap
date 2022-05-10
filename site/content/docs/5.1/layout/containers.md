@@ -1,14 +1,14 @@
 ---
 layout: docs
 title: Containers
-description: Containers are a fundamental building block of Bootstrap that contain, pad, and align your content within a given device or viewport.
+description: Containers are a fundamental building block of Bootstrap that contains, pad, and align your content within a given device or viewport.
 group: layout
 toc: true
 ---
 
 ## How they work
 
-Containers are the most basic layout element in Bootstrap and are **required when using our default grid system**. Containers are used to contain, pad, and (sometimes) center the content within them. While containers *can* be nested, most layouts do not require a nested container.
+Containers are Bootstrap's most basic layout element and are **required when using our default grid system**. Containers are used to contain, pad, and (sometimes) center the content. While containers *can* be nested, most layouts do not require a nested container.
 
 Bootstrap comes with three different containers:
 
@@ -44,7 +44,7 @@ Our default `.container` class is a responsive, fixed-width container, meaning i
 
 ## Responsive containers
 
-Responsive containers allow you to specify a class that is 100% wide until the specified breakpoint is reached, after which we apply `max-width`s for each of the higher breakpoints. For example, `.container-sm` is 100% wide to start until the `sm` breakpoint is reached, where it will scale up with `md`, `lg`, `xl`, and `xxl`.
+Responsive containers allow you to specify a class that is 100% wide until the specified breakpoint is reached, after which we apply `max-width's for each of the higher breakpoints. For example,`.container-sm` is 100% wide to start until the `sm` breakpoint is reached, where it will scale up with `md`,`lg`,`xl`, and`xxl`.
 
 ```html
 <div class="container-sm">100% wide until small breakpoint</div>
@@ -56,7 +56,7 @@ Responsive containers allow you to specify a class that is 100% wide until the s
 
 ## Fluid containers
 
-Use `.container-fluid` for a full width container, spanning the entire width of the viewport.
+Use `.container-fluid` for a full-width container spanning the entire width of the viewport.
 
 ```html
 <div class="container-fluid">
@@ -70,7 +70,7 @@ As shown above, Bootstrap generates a series of predefined container classes to 
 
 {{< scss-docs name="container-max-widths" file="scss/_variables.scss" >}}
 
-In addition to customizing the Sass, you can also create your own containers with our Sass mixin.
+In addition to customizing the Sass, you can also create your containers with our Sass mixin.
 
 ```scss
 // Source mixin
@@ -88,4 +88,4 @@ In addition to customizing the Sass, you can also create your own containers wit
 }
 ```
 
-For more information and examples on how to modify our Sass maps and variables, please refer to [the Sass section of the Grid documentation]({{< docsref "/layout/grid#sass" >}}).
+For more information and examples on how to modify our Sass maps and variables, please refer to [the Sass section of the Grid documentation]({{< docsref "/layout/grid#sass">}}).

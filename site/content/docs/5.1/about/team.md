@@ -5,7 +5,7 @@ description: An overview of the founding team and core contributors to Bootstrap
 group: about
 ---
 
-Bootstrap is maintained by the founding team and a small group of invaluable core contributors, with the massive support and involvement of our community.
+Bootstrap is maintained by the founding team and a small group of invaluable core contributors, with our community's massive support and involvement.
 
 {{< team.inline >}}
 <div class="list-group mb-3">

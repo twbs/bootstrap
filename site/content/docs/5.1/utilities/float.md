@@ -8,7 +8,7 @@ toc: true
 
 ## Overview
 
-These utility classes float an element to the left or right, or disable floating, based on the current viewport size using the [CSS `float` property](https://developer.mozilla.org/en-US/docs/Web/CSS/float). `!important` is included to avoid specificity issues. These use the same viewport breakpoints as our grid system. Please be aware float utilities have no effect on flex items.
+These utility classes float an element to the left or right or disable floating based on the current viewport size using the [CSS `float` property](https://developer.mozilla.org/en-US/docs/Web/CSS/float). `!important` is included to avoid specificity issues. These use the same viewport breakpoints as our grid system. Please be aware float utilities do not affect flex items.
 
 {{< example >}}
 <div class="float-start">Float start on all viewport sizes</div><br>
@@ -32,6 +32,7 @@ Here are all the support classes:
 {{< markdown >}}
 {{< float.inline >}}
 {{- range $.Site.Data.breakpoints }}
+
 - `.float{{ .abbr }}-start`
 - `.float{{ .abbr }}-end`
 - `.float{{ .abbr }}-none`

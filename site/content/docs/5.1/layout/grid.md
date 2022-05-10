@@ -8,7 +8,7 @@ toc: true
 
 ## Example
 
-Bootstrap's grid system uses a series of containers, rows, and columns to layout and align content. It's built with [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) and is fully responsive. Below is an example and an in-depth explanation for how the grid system comes together.
+Bootstrap's grid system uses a series of containers, rows, and columns to layout and aligns content. It's built with [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) and is fully responsive. Below is an example and an in-depth explanation of how the grid system comes together.
 
 {{< callout info >}}
 **New to or unfamiliar with flexbox?** [Read this CSS Tricks flexbox guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-background) for background, terminology, guidelines, and code snippets.
@@ -30,29 +30,29 @@ Bootstrap's grid system uses a series of containers, rows, and columns to layout
 </div>
 {{< /example >}}
 
-The above example creates three equal-width columns across all devices and viewports using our predefined grid classes. Those columns are centered in the page with the parent `.container`.
+Using our predefined grid classes, the above example creates three equal-width columns across all devices and viewports. Those columns are centered on the page with the parent `.container`.
 
 ## How it works
 
 Breaking it down, here's how the grid system comes together:
 
-- **Our grid supports [six responsive breakpoints]({{< docsref "/layout/breakpoints" >}}).**  Breakpoints are based on `min-width` media queries, meaning they affect that breakpoint and all those above it (e.g., `.col-sm-4` applies to `sm`, `md`, `lg`, `xl`, and `xxl`). This means you can control container and column sizing and behavior by each breakpoint.
+- **Our grid supports [six responsive breakpoints]({{< docsref "/layout/breakpoints" >}}).**  Breakpoints are based on `min-width` media queries, which affect that breakpoint and all those above it (e.g., `.col-sm-4` applies to `sm`, `md`, `lg`, `xl`, and `xxl`). This means you can control each breakpoint's container and column sizing and behavior.
 
 - **Containers center and horizontally pad your content.** Use `.container` for a responsive pixel width, `.container-fluid` for `width: 100%` across all viewports and devices, or a responsive container (e.g., `.container-md`) for a combination of fluid and pixel widths.
 
 - **Rows are wrappers for columns.** Each column has horizontal `padding` (called a gutter) for controlling the space between them. This `padding` is then counteracted on the rows with negative margins to ensure the content in your columns is visually aligned down the left side. Rows also support modifier classes to [uniformly apply column sizing](#row-columns) and [gutter classes]({{< docsref "/layout/gutters" >}}) to change the spacing of your content.
 
-- **Columns are incredibly flexible.** There are 12 template columns available per row, allowing you to create different combinations of elements that span any number of columns. Column classes indicate the number of template columns to span (e.g., `col-4` spans four). `width`s are set in percentages so you always have the same relative sizing.
+- **Columns are incredibly flexible.** There are 12 template columns available per row, allowing you to create different combinations of elements that span any number of columns. Column classes indicate the number of template columns to span (e.g., `col-4` spans four). `widths are set in percentages, so you always have the exact relative sizing.
 
 - **Gutters are also responsive and customizable.** [Gutter classes are available]({{< docsref "/layout/gutters" >}}) across all breakpoints, with all the same sizes as our [margin and padding spacing]({{< docsref "/utilities/spacing" >}}). Change horizontal gutters with `.gx-*` classes, vertical gutters with `.gy-*`, or all gutters with `.g-*` classes. `.g-0` is also available to remove gutters.
 
-- **Sass variables, maps, and mixins power the grid.** If you don't want to use the predefined grid classes in Bootstrap, you can use our [grid's source Sass](#sass) to create your own with more semantic markup. We also include some CSS custom properties to consume these Sass variables for even greater flexibility for you.
+- **Sass variables, maps, and mixins power the grid.** If you don't want to use the predefined grid classes in Bootstrap, you can use our [grid's source Sass](#sass) to create your own with more semantic markup. We also include some CSS custom properties to consume these Sass variables for even greater flexibility.
 
 Be aware of the limitations and [bugs around flexbox](https://github.com/philipwalton/flexbugs), like the [inability to use some HTML elements as flex containers](https://github.com/philipwalton/flexbugs#flexbug-9).
 
 ## Grid options
 
-Bootstrap's grid system can adapt across all six default breakpoints, and any breakpoints you customize. The six default grid tiers are as follow:
+Bootstrap's grid system can adapt across all six default breakpoints and any breakpoints you customize. The six default grid tiers are as follows:
 
 - Extra small (xs)
 - Small (sm)
@@ -61,7 +61,7 @@ Bootstrap's grid system can adapt across all six default breakpoints, and any br
 - Extra large (xl)
 - Extra extra large (xxl)
 
-As noted above, each of these breakpoints have their own container, unique class prefix, and modifiers. Here's how the grid changes across these breakpoints:
+As noted above, each of these breakpoints has its container, unique class prefix, and modifiers. Here's how the grid changes across these breakpoints:
 
 <table class="table mb-4">
   <thead>
@@ -137,11 +137,11 @@ As noted above, each of these breakpoints have their own container, unique class
 
 ## Auto-layout columns
 
-Utilize breakpoint-specific column classes for easy column sizing without an explicit numbered class like `.col-sm-6`.
+Utilize breakpoint-specific column classes for easy column sizing without a precise numbered class like `.col-sm-6`.
 
 ### Equal-width
 
-For example, here are two grid layouts that apply to every device and viewport, from `xs` to `xxl`. Add any number of unit-less classes for each breakpoint you need and every column will be the same width.
+For example, two grid layouts apply to every device and viewport, from `xs` to `xxl`. Add any number of unitless classes for each breakpoint you need, and every column will be the same width.
 
 {{< example class="bd-example-row" >}}
 <div class="container">
@@ -235,7 +235,7 @@ Bootstrap's grid includes six tiers of predefined classes for building complex r
 
 ### All breakpoints
 
-For grids that are the same from the smallest of devices to the largest, use the `.col` and `.col-*` classes. Specify a numbered class when you need a particularly sized column; otherwise, feel free to stick to `.col`.
+For grids that are the same from smallest devices to largest, use the `.col` and `.col-*` classes. Specify a numbered class when you need a particularly sized column; otherwise, feel free to stick to `.col`.
 
 {{< example class="bd-example-row" >}}
 <div class="container">
@@ -254,7 +254,7 @@ For grids that are the same from the smallest of devices to the largest, use the
 
 ### Stacked to horizontal
 
-Using a single set of `.col-sm-*` classes, you can create a basic grid system that starts out stacked and becomes horizontal at the small breakpoint (`sm`).
+Using a single set of `.col-sm-*` classes, you can create a basic grid system that starts stacked and becomes horizontal at the small breakpoint (`sm`).
 
 {{< example class="bd-example-row" >}}
 <div class="container">
@@ -272,7 +272,7 @@ Using a single set of `.col-sm-*` classes, you can create a basic grid system th
 
 ### Mix and match
 
-Don't want your columns to simply stack in some grid tiers? Use a combination of different classes for each tier as needed. See the example below for a better idea of how it all works.
+Don't want your columns to stack in some grid tiers? Use a combination of different classes for each tier as needed. See the example below for a better idea of how it all works.
 
 {{< example class="bd-example-row" >}}
 <div class="container">
@@ -299,9 +299,9 @@ Don't want your columns to simply stack in some grid tiers? Use a combination of
 
 ### Row columns
 
-Use the responsive `.row-cols-*` classes to quickly set the number of columns that best render your content and layout. Whereas normal `.col-*` classes apply to the individual columns (e.g., `.col-md-4`), the row columns classes are set on the parent `.row` as a shortcut. With `.row-cols-auto` you can give the columns their natural width.
+Use the responsive `.row-cols-*` classes to quickly set the number of columns that best render your content and layout. At the same time, standard `.col-*` classes apply to the individual columns (e.g., `.col-md-4`), and the row and column classes are set on the parent `.row` as a shortcut. With `.row-cols-auto`, you can give the columns their natural width.
 
-Use these row columns classes to quickly create basic grid layouts or to control your card layouts.
+Use these row and column classes to create basic grid layouts or control your card layouts quickly.
 
 {{< example class="bd-example-row" >}}
 <div class="container">
@@ -409,11 +409,11 @@ To nest your content with the default grid, add a new `.row` and set of `.col-sm
 
 ## Sass
 
-When using Bootstrap's source Sass files, you have the option of using Sass variables and mixins to create custom, semantic, and responsive page layouts. Our predefined grid classes use these same variables and mixins to provide a whole suite of ready-to-use classes for fast responsive layouts.
+When using Bootstrap's source Sass files, you can use Sass variables and mixins to create custom, semantic, and responsive page layouts. Our predefined grid classes use these same variables and mixins to provide a whole suite of ready-to-use classes for fast, responsive layouts.
 
 ### Variables
 
-Variables and maps determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.
+Variables and maps determine the number of columns, the gutter width, and the media query point to begin floating columns. We use these to generate the predefined grid classes documented above and the custom mixins listed below.
 
 ```scss
 $grid-columns:      12;
@@ -426,7 +426,7 @@ $grid-gutter-width: 1.5rem;
 
 ### Mixins
 
-Mixins are used in conjunction with the grid variables to generate semantic CSS for individual grid columns.
+Mixins are used with the grid variables to generate semantic CSS for individual grid columns.
 
 ```scss
 // Creates a wrapper for a series of columns
@@ -445,7 +445,7 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 
 ### Example usage
 
-You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.
+You can modify the variables to your custom values or use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.
 
 ```scss
 .example-container {
@@ -493,11 +493,11 @@ You can modify the variables to your own custom values, or just use the mixins w
 
 ## Customizing the grid
 
-Using our built-in grid Sass variables and maps, it's possible to completely customize the predefined grid classes. Change the number of tiers, the media query dimensions, and the container widths—then recompile.
+Using our built-in grid Sass variables and maps, it's possible to customize the predefined grid classes completely. Then, change the number of tiers, the media query dimensions, and the container widths and recompile.
 
 ### Columns and gutters
 
-The number of grid columns can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each individual column while `$grid-gutter-width` sets the width for the column gutters.
+The number of grid columns can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each column, while `$grid-gutter-width` sets the width for the column gutters.
 
 ```scss
 $grid-columns: 12 !default;
@@ -523,4 +523,4 @@ $container-max-widths: (
 );
 ```
 
-When making any changes to the Sass variables or maps, you'll need to save your changes and recompile. Doing so will output a brand new set of predefined grid classes for column widths, offsets, and ordering. Responsive visibility utilities will also be updated to use the custom breakpoints. Make sure to set grid values in `px` (not `rem`, `em`, or `%`).
+When making any changes to the Sass variables or maps, you'll need to save your changes and recompile them. Doing so will output a new set of predefined grid classes for column widths, offsets, and ordering. Responsive visibility utilities will also be updated to use the custom breakpoints. Make sure to set grid values in `px` (not `rem`, `em`, or `%`).

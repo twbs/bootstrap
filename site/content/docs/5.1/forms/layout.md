@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Layout
-description: Give your forms some structure—from inline to horizontal to custom grid implementations—with our form layout options.
+description: Give your forms some structure with our form layout options, from inline to horizontal to custom grid implementations.
 group: forms
 toc: true
 ---
@@ -13,11 +13,11 @@ Every group of form fields should reside in a `<form>` element. Bootstrap provid
 - New to browser forms? Consider reviewing [the MDN form docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) for an overview and complete list of available attributes.
 - `<button>`s within a `<form>` default to `type="submit"`, so strive to be specific and always include a `type`.
 
-Since Bootstrap applies `display: block` and `width: 100%` to almost all our form controls, forms will by default stack vertically. Additional classes can be used to vary this layout on a per-form basis.
+Since Bootstrap applies `display: block` and `width: 100%` to almost all our form controls, forms will, by default, stack vertically; Additional classes can be used to vary this layout on a per-form basis.
 
 ## Utilities
 
-[Margin utilities]({{< docsref "/utilities/spacing" >}}) are the easiest way to add some structure to forms. They provide basic grouping of labels, controls, optional form text, and form validation messaging. We recommend sticking to `margin-bottom` utilities, and using a single direction throughout the form for consistency.
+[Margin utilities]({{< docsref "/utilities/spacing" >}}) are the easiest way to add some structure to forms. They provide a basic grouping of labels, controls, optional form text, and form validation messaging. We recommend sticking to `margin-bottom` utilities and using a single direction throughout the form for consistency.
 
 Feel free to build your forms however you like, with `<fieldset>`s, `<div>`s, or nearly any other element.
 
@@ -49,7 +49,7 @@ More complex forms can be built using our grid classes. Use these for form layou
 
 ## Gutters
 
-By adding [gutter modifier classes]({{< docsref "/layout/gutters" >}}), you can have control over the gutter width in as well the inline as block direction. **Also requires the `$enable-grid-classes` Sass variable to be enabled** (on by default).
+By adding [gutter modifier classes]({{< docsref "/layout/gutters">}}), you can have control over the gutter width as well as the inline as block direction. **Also requires the `$enable-grid-classes` Sass variable to be enabled** (by default).
 
 {{< example >}}
 <div class="row g-3">
@@ -113,9 +113,9 @@ More complex layouts can also be created with the grid system.
 
 ## Horizontal form
 
-Create horizontal forms with the grid by adding the `.row` class to form groups and using the `.col-*-*` classes to specify the width of your labels and controls. Be sure to add `.col-form-label` to your `<label>`s as well so they're vertically centered with their associated form controls.
+Create horizontal forms with the grid by adding the `.row` class to form groups and using the `.col-*-*` classes to specify the width of your labels and controls. Be sure to add `.col-form-label` to your `<label>`s so they're vertically centered with their associated form controls.
 
-At times, you maybe need to use margin or padding utilities to create that perfect alignment you need. For example, we've removed the `padding-top` on our stacked radio inputs label to better align the text baseline.
+You may need to use margin or padding utilities to create that perfect alignment you need. For example, we've removed the `padding-top` on our stacked radio inputs label to align the text baseline better.
 
 {{< example >}}
 <form>
@@ -195,7 +195,7 @@ Be sure to use `.col-form-label-sm` or `.col-form-label-lg` to your `<label>`s o
 
 ## Column sizing
 
-As shown in the previous examples, our grid system allows you to place any number of `.col`s within a `.row`. They'll split the available width equally between them. You may also pick a subset of your columns to take up more or less space, while the remaining `.col`s equally split the rest, with specific column classes like `.col-sm-7`.
+As the previous examples show, our grid system allows you to place any number of `.col`s within a `.row`. They'll split the available width equally between them. You may also pick a subset of your columns to take up more or less space, while the remaining `.col`s equally split the rest, with specific column classes like `.col-sm-7`.
 
 {{< example >}}
 <div class="row g-3">
@@ -213,7 +213,7 @@ As shown in the previous examples, our grid system allows you to place any numbe
 
 ## Auto-sizing
 
-The example below uses a flexbox utility to vertically center the contents and changes `.col` to `.col-auto` so that your columns only take up as much space as needed. Put another way, the column sizes itself based on the contents.
+The example below uses a flexbox utility to vertically center the contents and changes `.col` to `.col-auto` so that your columns only take up as much space as needed. Put another way, the column sizes themselves based on the contents.
 
 {{< example >}}
 <form class="row gy-2 gx-3 align-items-center">

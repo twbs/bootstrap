@@ -20,7 +20,7 @@ We use a subset of all colors to create a smaller color palette for generating c
   {{< /theme-colors.inline >}}
 </div>
 
-All these colors are available as a Sass map, `$theme-colors`.
+These colors are available as a Sass map, `$theme-colors`.
 
 {{< scss-docs name="theme-colors-map" file="scss/_variables.scss" >}}
 
@@ -28,9 +28,9 @@ Check out [our Sass maps and loops docs]({{< docsref "/customize/sass#maps-and-l
 
 ## All colors
 
-All Bootstrap colors are available as Sass variables and a Sass map in `scss/_variables.scss` file. To avoid increased file sizes, we don't create text or background color classes for each of these variables. Instead, we choose a subset of these colors for a [theme palette](#theme-colors).
+All Bootstrap colors are available as Sass variables and a Sass map in the `scss/_variables.scss` file. To avoid increased file sizes, we don't create text or background color classes for each variable. Instead, we choose a subset of these colors for a [theme palette](#theme-colors).
 
-Be sure to monitor contrast ratios as you customize colors. As shown below, we've added three contrast ratios to each of the main colors—one for the swatch's current colors, one for against white, and one for against black.
+Be sure to monitor contrast ratios as you customize colors. As shown below, we've added three contrast ratios to each of the primary colors—one for the swatch's current colors, one against white, and one for black.
 
 <div class="row font-monospace">
   {{< theme-colors.inline >}}
@@ -91,7 +91,7 @@ Within `scss/_variables.scss`, you'll find Bootstrap's color variables and Sass 
 
 {{< scss-docs name="colors-map" file="scss/_variables.scss" >}}
 
-Add, remove, or modify values within the map to update how they're used in many other components. Unfortunately at this time, not _every_ component utilizes this Sass map. Future updates will strive to improve upon this. Until then, plan on making use of the `${color}` variables and this Sass map.
+Add, remove, or modify values within the map to update how they're used in many other components. Unfortunately, at this time, not _every_ component utilizes this Sass map. Future updates will strive to improve upon this. Until then, plan on making use of the `${color}` variables and this Sass map.
 
 ### Example
 
@@ -111,10 +111,10 @@ Here's how you can use these in your Sass:
 
 {{< added-in "5.1.0" >}}
 
-Bootstrap doesn't include `color` and `background-color` utilities for every color variable, but you can generate these yourself with our [utility API]({{< docsref "/utilities/api" >}}) and our extended Sass maps added in v5.1.0.
+Bootstrap doesn't include `color` and `background-color` utilities for every color variable. Still, you can generate these yourself with our [utility API]({{< docsref "/utilities/api" >}}) and our extended Sass maps added in v5.1.0.
 
 1. To start, make sure you've imported our functions, variables, mixins, and utilities.
-2. Use our `map-merge-multiple()` function to quickly merge multiple Sass maps together in a new map.
+2. Use our `map-merge-multiple()` function to merge multiple Sass maps into a new map quickly.
 3. Merge this new combined map to extend any utility with a `{color}-{level}` class name.
 
 Here's an example that generates text color utilities (e.g., `.text-purple-500`) using the above steps.

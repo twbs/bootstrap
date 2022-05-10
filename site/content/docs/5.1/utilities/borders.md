@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Borders
-description: Use border utilities to quickly style the border and border-radius of an element. Great for images, buttons, or any other element.
+description: Use border utilities to quickly style an element's border and radius. Great for images, buttons, or any other element.
 group: utilities
 toc: true
 ---
@@ -81,11 +81,11 @@ Consider our default `.border-success` utility.
 }
 ```
 
-We use an RGB version of our `--bs-success` (with the value of `25, 135, 84`) CSS variable and attached a second CSS variable, `--bs-border-opacity`, for the alpha transparency (with a default value `1` thanks to a local CSS variable). That means anytime you use `.border-success` now, your computed `color` value is `rgba(25, 135, 84, 1)`. The local CSS variable inside each `.border-*` class avoids inheritance issues so nested instances of the utilities don't automatically have a modified alpha transparency.
+We used an RGB version of our `--bs-success` (with the value of `25, 135, 84`) CSS variable and attached a second CSS variable, `--bs-border-opacity`, for the alpha transparency (with a default value `1` thanks to a local CSS variable). That means anytime you use `.border-success` now, your computed `color` value is `rgba(25, 135, 84, 1)`. The local CSS variable inside each `.border-*` class avoids inheritance issues, so nested instances of the utilities don't automatically have modified alpha transparency.
 
 ### Example
 
-To change that opacity, override `--bs-border-opacity` via custom styles or inline styles.
+To change that opacity, override `--bs-border-opacity` via custom or inline styles.
 
 {{< example >}}
 <div class="border border-success p-2 mb-2">This is default success border</div>
@@ -114,7 +114,7 @@ Or, choose from any of the `.border-opacity` utilities:
 
 ## Radius
 
-Add classes to an element to easily round its corners.
+Add classes to an element to quickly round its corners.
 
 {{< example class="bd-example-rounded-utils" >}}
 {{< placeholder width="75" height="75" class="rounded" title="Example rounded image" >}}
@@ -128,7 +128,7 @@ Add classes to an element to easily round its corners.
 
 ### Sizes
 
-Use the scaling classes for larger or smaller rounded corners. Sizes range from `0` to `3`, and can be configured by modifying the utilities API.
+Use the scaling classes for larger or smaller rounded corners. Sizes range from `0` to `3` and can be configured by modifying the utility API.
 
 {{< example class="bd-example-rounded-utils" >}}
 {{< placeholder width="75" height="75" class="rounded-0" title="Example non-rounded image" >}}

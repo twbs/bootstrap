@@ -6,7 +6,7 @@ group: helpers
 aliases: "/docs/5.1/helpers/"
 ---
 
-Easily clear `float`s by adding `.clearfix` **to the parent element**. Can also be used as a mixin.
+Easily clear `float`s by adding `.clearfix` **to the parent element**. It can also be used as a mixin.
 
 Use in HTML:
 
@@ -26,7 +26,7 @@ Use the mixin in SCSS:
 }
 ```
 
-The following example shows how the clearfix can be used. Without the clearfix the wrapping div would not span around the buttons which would cause a broken layout.
+The following example shows how the clearfix can be used. Without the clearfix, the wrapping div would not span around the buttons, which would cause a broken layout.
 
 {{< example >}}
 <div class="bg-info clearfix">
