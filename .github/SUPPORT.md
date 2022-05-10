@@ -1,8 +1,8 @@
-### Bug reports
+# Bug reports
 
 See the [contributing guidelines](CONTRIBUTING.md) for sharing bug reports.
 
-### How-to
+## How-to
 
 For general troubleshooting or help getting started:
 
