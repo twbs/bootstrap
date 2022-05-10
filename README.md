@@ -21,11 +21,9 @@
   <a href="https://blog.getbootstrap.com/">Blog</a>
 </p>
 
-
 ## Bootstrap 5
 
-Our default branch is for development of our Bootstrap 5 release. Head to the [`v4-dev` branch](https://github.com/twbs/bootstrap/tree/v4-dev) to view the readme, documentation, and source code for Bootstrap 4.
-
+Our default branch is for the development of our Bootstrap 5 release. Head to the [`v4-dev` branch](https://github.com/twbs/bootstrap/tree/v4-dev) to view the readme, documentation, and source code for Bootstrap 4.
 
 ## Table of contents
 
@@ -41,8 +39,7 @@ Our default branch is for development of our Bootstrap 5 release. Head to the [`
 - [Thanks](#thanks)
 - [Copyright and license](#copyright-and-license)
 
-
-## Quick start
+## Quickstart
 
 Several quick start options are available:
 
@@ -53,8 +50,7 @@ Several quick start options are available:
 - Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.1.3`
 - Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap` Sass: `Install-Package bootstrap.sass`
 
-Read the [Getting started page](https://getbootstrap.com/docs/5.1/getting-started/introduction/) for information on the framework contents, templates, examples, and more.
-
+Read the [Getting started page](https://getbootstrap.com/docs/5.1/getting-started/introduction/) for information on the framework contents, templates, examples, etc.
 
 ## Status
 
@@ -74,10 +70,9 @@ Read the [Getting started page](https://getbootstrap.com/docs/5.1/getting-starte
 [![Backers on Open Collective](https://img.shields.io/opencollective/backers/bootstrap)](#backers)
 [![Sponsors on Open Collective](https://img.shields.io/opencollective/sponsors/bootstrap)](#sponsors)
 
-
 ## What's included
 
-Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations.
+You'll find the following directories and files within the download, logically grouping common assets and providing both compiled and minified variations.
 
 <details>
   <summary>Download contents</summary>
@@ -131,15 +126,14 @@ Within the download you'll find the following directories and files, logically g
       ├── bootstrap.min.js
       └── bootstrap.min.js.map
   ```
+
 </details>
 
-We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). [Source maps](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Popper](https://popper.js.org/).
-
+We provided compiled CSS and JS (`bootstrap.*`) and compiled and minified CSS and JS (`bootstrap.min.*`). [Source maps](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps) (`bootstrap.*.map`) are available for use with specific browsers' developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Popper](https://popper.js.org/).
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/twbs/bootstrap/blob/main/.github/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/twbs/bootstrap/issues/new).
-
+Have a bug or a feature request? Please read the [issue guidelines](https://github.com/twbs/bootstrap/blob/main/.github/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues if your problem or idea is not addressed yet, [please open a new issue](https://github.com/twbs/bootstrap/issues/new).
 
 ## Documentation
 
@@ -150,7 +144,7 @@ Documentation search is powered by [Algolia's DocSearch](https://community.algol
 ### Running documentation locally
 
 1. Run `npm install` to install the Node.js dependencies, including Hugo (the site builder).
-2. Run `npm run test` (or a specific npm script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
+2. Run `npm run test` (or a specific npm script) to rebuild distributed CSS and JavaScript files and our docs assets.
 3. From the root `/bootstrap` directory, run `npm run docs-serve` in the command line.
 4. Open `http://localhost:9001/` in your browser, and voilà.
 
@@ -162,7 +156,6 @@ You can find all our previous releases docs on <https://getbootstrap.com/docs/ve
 
 [Previous releases](https://github.com/twbs/bootstrap/releases) and their documentation are also available for download.
 
-
 ## Contributing
 
 Please read through our [contributing guidelines](https://github.com/twbs/bootstrap/blob/main/.github/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
@@ -170,7 +163,6 @@ Please read through our [contributing guidelines](https://github.com/twbs/bootst
 Moreover, if your pull request contains JavaScript patches or features, you must include [relevant unit tests](https://github.com/twbs/bootstrap/tree/main/js/tests). All HTML and CSS should conform to the [Code Guide](https://github.com/mdo/code-guide), maintained by [Mark Otto](https://github.com/mdo).
 
 Editor preferences are available in the [editor config](https://github.com/twbs/bootstrap/blob/main/.editorconfig) for easy use in common text editors. Read more and download plugins at <https://editorconfig.org/>.
-
 
 ## Community
 
@@ -181,15 +173,13 @@ Get updates on Bootstrap's development and chat with the project maintainers and
 - Join [the official Slack room](https://bootstrap-slack.herokuapp.com/).
 - Chat with fellow Bootstrappers in IRC. On the `irc.libera.chat` server, in the `#bootstrap` channel.
 - Implementation help may be found at Stack Overflow (tagged [`bootstrap-5`](https://stackoverflow.com/questions/tagged/bootstrap-5)).
-- Developers should use the keyword `bootstrap` on packages which modify or add to the functionality of Bootstrap when distributing through [npm](https://www.npmjs.com/browse/keyword/bootstrap) or similar delivery mechanisms for maximum discoverability.
-
+- Developers should use the keyword `bootstrap` on packages that modify or add to the functionality of Bootstrap when distributing through [npm](https://www.npmjs.com/browse/keyword/bootstrap) or similar delivery mechanisms for maximum discoverability.
 
 ## Versioning
 
 For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under [the Semantic Versioning guidelines](https://semver.org/). Sometimes we screw up, but we adhere to those rules whenever possible.
 
 See [the Releases section of our GitHub project](https://github.com/twbs/bootstrap/releases) for changelogs for each release version of Bootstrap. Release announcement posts on [the official Bootstrap blog](https://blog.getbootstrap.com/) contain summaries of the most noteworthy changes made in each release.
-
 
 ## Creators
 
@@ -203,7 +193,6 @@ See [the Releases section of our GitHub project](https://github.com/twbs/bootstr
 - <https://twitter.com/fat>
 - <https://github.com/fat>
 
-
 ## Thanks
 
 <a href="https://www.browserstack.com/">
@@ -216,8 +205,7 @@ Thanks to [BrowserStack](https://www.browserstack.com/) for providing the infras
   <img src="https://www.netlify.com/v3/img/components/full-logo-light.svg" alt="Netlify" width="147" height="40">
 </a>
 
-Thanks to [Netlify](https://www.netlify.com/) for providing us with Deploy Previews!
-
+Thanks to [Netlify](https://www.netlify.com/) for providing Deploy Previews!
 
 ## Sponsors
 
@@ -234,13 +222,11 @@ Support this project by becoming a sponsor. Your logo will show up here with a l
 [![OC sponsor 8](https://opencollective.com/bootstrap/sponsor/8/avatar.svg)](https://opencollective.com/bootstrap/sponsor/8/website)
 [![OC sponsor 9](https://opencollective.com/bootstrap/sponsor/9/avatar.svg)](https://opencollective.com/bootstrap/sponsor/9/website)
 
-
 ## Backers
 
 Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/bootstrap#backer)]
 
 [![Backers](https://opencollective.com/bootstrap/backers.svg?width=890)](https://opencollective.com/bootstrap#backers)
-
 
 ## Copyright and license
 
