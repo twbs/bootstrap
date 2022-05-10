@@ -6,18 +6,18 @@ group: customize
 toc: true
 ---
 
-Utilize our source Sass files to take advantage of variables, maps, mixins, and more.
+Utilize our source Sass files to take advantage of variables, maps, mixins, etc.
 
 ## File structure
 
-Whenever possible, avoid modifying Bootstrap's core files. For Sass, that means creating your own stylesheet that imports Bootstrap so you can modify and extend it. Assuming you're using a package manager like npm, you'll have a file structure that looks like this:
+Whenever possible, avoid modifying Bootstrap's core files. For Sass, that means creating your stylesheet that imports Bootstrap so you can modify and extend it. Assuming you're using a package manager like npm, you'll have a file structure that looks like this:
 
 ```text
 your-project/
 ├── scss
 │   └── custom.scss
 └── node_modules/
-    └── bootstrap
+    └── Bootstrap
         ├── js
         └── scss
 ```
@@ -35,7 +35,7 @@ your-project/
 
 ## Importing
 
-In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two options: include all of Bootstrap, or pick the parts you need. We encourage the latter, though be aware there are some requirements and dependencies across our components. You also will need to include some JavaScript for our plugins.
+In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two options: include all Bootstrap or pick the parts you need. We encourage the latter, though be aware there are some requirements and dependencies across our components. You also will need to include some JavaScript for our plugins.
 
 ```scss
 // Custom.scss
@@ -82,15 +82,15 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 // 8. Add additional custom code here
 ```
 
-With that setup in place, you can begin to modify any of the Sass variables and maps in your `custom.scss`. You can also start to add parts of Bootstrap under the `// Optional` section as needed. We suggest using the full import stack from our `bootstrap.scss` file as your starting point.
+With that setup in place, you can begin to modify any of the Sass variables and maps in your `custom.scss`. You can also add parts of Bootstrap under the `// Optional` section as needed. We suggest using the full import stack from our `bootstrap.scss` file as your starting point.
 
 ## Variable defaults
 
-Every Sass variable in Bootstrap includes the `!default` flag allowing you to override the variable's default value in your own Sass without modifying Bootstrap's source code. Copy and paste variables as needed, modify their values, and remove the `!default` flag. If a variable has already been assigned, then it won't be re-assigned by the default values in Bootstrap.
+Every Sass variable in Bootstrap includes the `!default` flag allowing you to override the variable's default value in your Sass without modifying Bootstrap's source code. Copy and paste variables as needed, modify their values, and remove the `!default` flag. If a variable has already been assigned, it won't be re-assigned by the default values in Bootstrap.
 
-You will find the complete list of Bootstrap's variables in `scss/_variables.scss`. Some variables are set to `null`, these variables don't output the property unless they are overridden in your configuration.
+You will find the complete list of Bootstrap's variables in `scss/_variables.scss`. Some variables are set to `null`; these variables don't output the property unless they are overridden in your configuration.
 
-Variable overrides must come after our functions are imported, but before the rest of the imports.
+Variable overrides must come after our functions are imported before the rest of the imports.
 
 Here's an example that changes the `background-color` and `color` for the `<body>` when importing and compiling Bootstrap via npm:
 
@@ -122,9 +122,9 @@ Repeat as necessary for any variable in Bootstrap, including the global options 
 
 ## Maps and loops
 
-Bootstrap includes a handful of Sass maps, key value pairs that make it easier to generate families of related CSS. We use Sass maps for our colors, grid breakpoints, and more. Just like Sass variables, all Sass maps include the `!default` flag and can be overridden and extended.
+Bootstrap includes a handful of Sass maps and key-value pairs that make generating families of related CSS easier. We use Sass maps for our colors, grid breakpoints, and more. Like Sass variables, all Sass maps include the `!default` flag and can be overridden and extended.
 
-Some of our Sass maps are merged into empty ones by default. This is done to allow easy expansion of a given Sass map, but comes at the cost of making _removing_ items from a map slightly more difficult.
+Some of our Sass maps are merged into empty ones by default. This is done to allow easy expansion of a given Sass map but comes at the cost of making _removing_ items from a map slightly more complicated.
 
 ### Modify map
 
@@ -146,7 +146,7 @@ $theme-colors: (
 
 ### Add to map
 
-Add new colors to `$theme-colors`, or any other map, by creating a new Sass map with your custom values and merging it with the original map. In this case, we'll create a new `$custom-colors` map and merge it with `$theme-colors`.
+Add new colors to `$theme-colors` or any other map by creating a new Sass map with your custom values and merging it with the original map. In this case, we'll create a new `$custom-colors` map and merge it with `$theme-colors`.
 
 ```scss
 // Create your own map
@@ -158,7 +158,7 @@ $custom-colors: (
 $theme-colors: map-merge($theme-colors, $custom-colors);
 ```
 
-### Remove from map
+### Remove from the map
 
 To remove colors from `$theme-colors`, or any other map, use `map-remove`. Be aware you must insert it between our requirements and options:
 
@@ -180,9 +180,9 @@ $theme-colors: map-remove($theme-colors, "info", "light", "dark");
 
 ## Required keys
 
-Bootstrap assumes the presence of some specific keys within Sass maps as we used and extend these ourselves. As you customize the included maps, you may encounter errors where a specific Sass map's key is being used.
+Bootstrap assumes the presence of some specific keys within Sass maps as we used and extended these ourselves. As you customize the included maps, you may encounter errors where a specific Sass map's key is used.
 
-For example, we use the `primary`, `success`, and `danger` keys from `$theme-colors` for links, buttons, and form states. Replacing the values of these keys should present no issues, but removing them may cause Sass compilation issues. In these instances, you'll need to modify the Sass code that makes use of those values.
+For example, we use the `primary`, `success`, and `danger` keys from `$theme-colors` for links, buttons, and form states. Replacing the values of these keys should present no issues, but removing them may cause Sass compilation issues. In these instances, you'll need to modify the Sass code that uses those values.
 
 ## Functions
 
@@ -201,7 +201,7 @@ You can lighten or darken colors with Bootstrap's `tint-color()` and `shade-colo
 
 {{< scss-docs name="color-functions" file="scss/_functions.scss" >}}
 
-In practice, you'd call the function and pass in the color and weight parameters.
+You'd call the function and pass in the color and weight parameters in practice.
 
 ```scss
 .custom-element {
@@ -217,7 +217,7 @@ In practice, you'd call the function and pass in the color and weight parameters
 
 In order to meet [WCAG 2.0 accessibility standards for color contrast](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html), authors **must** provide [a contrast ratio of at least 4.5:1](https://www.w3.org/WAI/WCAG20/quickref/20160105/Overview.php#visual-audio-contrast-contrast), with very few exceptions.
 
-An additional function we include in Bootstrap is the color contrast function, `color-contrast`. It utilizes the [WCAG 2.0 algorithm](https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests) for calculating contrast thresholds based on [relative luminance](https://www.w3.org/WAI/GL/wiki/Relative_luminance) in a `sRGB` color space to automatically return a light (`#fff`), dark (`#212529`) or black (`#000`) contrast color based on the specified base color. This function is especially useful for mixins or loops where you're generating multiple classes.
+We include an additional function in Bootstrap, the color contrast function, `color-contrast`. It utilizes the [WCAG 2.0 algorithm](https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests) for calculating contrast thresholds based on [relative luminance](https://www.w3.org/WAI/GL/wiki/Relative_luminance) in an `sRGB` color space to return a light automatically (`#fff`), dark (`#212529`) or black (`#000`) contrast color based on the specified base color. This function is handy for mixins or loops where you're generating multiple classes.
 
 For example, to generate color swatches from our `$theme-colors` map:
 
@@ -251,7 +251,7 @@ We use the `escape-svg` function to escape the `<`, `>` and `#` characters for S
 
 ### Add and Subtract functions
 
-We use the `add` and `subtract` functions to wrap the CSS `calc` function. The primary purpose of these functions is to avoid errors when a "unitless" `0` value is passed into a `calc` expression. Expressions like `calc(10px - 0)` will return an error in all browsers, despite being mathematically correct.
+We use the `add` and `subtract` functions to wrap the CSS `calc` function. The primary purpose of these functions is to avoid errors when a "unitless" `0` value is passed into a `calc` expression. Despite being mathematically correct, expressions like `calc(10px - 0)` will return an error in all browsers.
 
 Example where the calc is valid:
 
@@ -289,7 +289,7 @@ $border-width: 0;
 
 ## Mixins
 
-Our `scss/mixins/` directory has a ton of mixins that power parts of Bootstrap and can also be used across your own project.
+Our `scss/mixins/` directory has a ton of mixins that power parts of Bootstrap and can also be used across your project.
 
 ### Color schemes
 
