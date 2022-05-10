@@ -19,7 +19,7 @@ Since Bootstrap applies `display: block` and `width: 100%` to almost all our for
 
 [Margin utilities]({{< docsref "/utilities/spacing" >}}) are the easiest way to add some structure to forms. They provide a basic grouping of labels, controls, optional form text, and form validation messaging. We recommend sticking to `margin-bottom` utilities and using a single direction throughout the form for consistency.
 
-Feel free to build your forms however you like, with `<fieldset>'s, `<div>'s, or nearly any other element.
+Feel free to build your forms however you like, with `<fieldset>`s, `<div>`s, or nearly any other element.
 
 {{< example >}}
 <div class="mb-3">
@@ -113,7 +113,7 @@ More complex layouts can also be created with the grid system.
 
 ## Horizontal form
 
-Create horizontal forms with the grid by adding the `.row` class to form groups and using the `.col-*-*` classes to specify the width of your labels and controls. Be sure to add `.col-form-label` to your `<label>'s so they're vertically centered with their associated form controls.
+Create horizontal forms with the grid by adding the `.row` class to form groups and using the `.col-*-*` classes to specify the width of your labels and controls. Be sure to add `.col-form-label` to your `<label>`s so they're vertically centered with their associated form controls.
 
 You may need to use margin or padding utilities to create that perfect alignment you need. For example, we've removed the `padding-top` on our stacked radio inputs label to align the text baseline better.
 
@@ -195,7 +195,7 @@ Be sure to use `.col-form-label-sm` or `.col-form-label-lg` to your `<label>`s o
 
 ## Column sizing
 
-As the previous examples show, our grid system allows you to place any number of `.col's within a `.row`. They'll split the available width equally between them. You may also pick a subset of your columns to take up more or less space, while the remaining `.col's equally split the rest, with specific column classes like `.col-sm-7`.
+As the previous examples show, our grid system allows you to place any number of `.col`s within a `.row`. They'll split the available width equally between them. You may also pick a subset of your columns to take up more or less space, while the remaining `.col`s equally split the rest, with specific column classes like `.col-sm-7`.
 
 {{< example >}}
 <div class="row g-3">
