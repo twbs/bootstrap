@@ -9,12 +9,12 @@ toc: true
 
 ## Approach
 
-Reboot builds upon Normalize, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some `<table>` styles for a simpler baseline and later provide `.table`, `.table-bordered`, and more.
+Reboot builds upon Normalize, providing many HTML elements with opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some `<table>` styles for a more straightforward baseline and later provide `.table`, `.table-bordered`, and more.
 
 Here are our guidelines and reasons for choosing what to override in Reboot:
 
 - Update some browser default values to use `rem`s instead of `em`s for scalable component spacing.
-- Avoid `margin-top`. Vertical margins can collapse, yielding unexpected results. More importantly though, a single direction of `margin` is a simpler mental model.
+- Avoid `margin-top`. Vertical margins can collapse, yielding unexpected results. More importantly, though, a single direction of `margin` is a simpler mental model.
 - For easier scaling across device sizes, block elements should use `rem`s for `margin`s.
 - Keep declarations of `font`-related properties to a minimum, using `inherit` whenever possible.
 
@@ -22,7 +22,7 @@ Here are our guidelines and reasons for choosing what to override in Reboot:
 
 {{< added-in "5.2.0" >}}
 
-With v5.1.1, we standardized our required `@import`s across all our CSS bundles (including `bootstrap.css`, `bootstrap-reboot.css`, and `bootstrap-grid.css`) to include `_root.scss`. This adds `:root` level CSS variables to all bundles, regardless of how many of them are used in that bundle. Ultimately Bootstrap 5 will continue to see more [CSS variables]({{< docsref "/customize/css-variables" >}}) added over time, in order to provide more real-time customization without the need to always recompile Sass. Our approach is to take our source Sass variables and transform them into CSS variables. That way, even if you don't use CSS variables, you still have all the power of Sass. **This is still in-progress and will take time to fully implement.**
+With v5.1.1, we standardized our required `@import`s across all our CSS bundles (including `bootstrap.css`, `bootstrap-reboot.css`, and `bootstrap-grid.css`) to include `_root.scss`. This adds `:root` level CSS variables to all bundles, regardless of how many of them are used in that bundle. Ultimately Bootstrap 5 will continue to see more [CSS variables]({{< docsref "/customize/css-variables" >}}) added over time to provide more real-time customization without the need always to recompile Sass. Our approach is to take our source Sass variables and transform them into CSS variables. That way, even if you don't use CSS variables, you still have all the power of Sass. **This is still in-progress and will take time to implement fully.**
 
 For example, consider these `:root` CSS variables for common `<body>` styles:
 
@@ -32,7 +32,7 @@ In practice, those variables are then applied in Reboot like so:
 
 {{< scss-docs name="reboot-body-rules" file="scss/_reboot.scss" >}}
 
-Which allows you to make real-time customizations however you like:
+This allows you to make real-time customizations however you like:
 
 ```html
 <body style="--bs-body-color: #333;">
@@ -44,14 +44,14 @@ Which allows you to make real-time customizations however you like:
 
 The `<html>` and `<body>` elements are updated to provide better page-wide defaults. More specifically:
 
-- The `box-sizing` is globally set on every element—including `*::before` and `*::after`, to `border-box`. This ensures that the declared width of element is never exceeded due to padding or border.
+- The `box-sizing` is globally set on every element—including `*::before` and `*::after`, to `border-box`. This ensures that the declared width of the element is never exceeded due to padding or border.
   - No base `font-size` is declared on the `<html>`, but `16px` is assumed (the browser default). `font-size: 1rem` is applied on the `<body>` for easy responsive type-scaling via media queries while respecting user preferences and ensuring a more accessible approach. This browser default can be overridden by modifying the `$font-size-root` variable.
 - The `<body>` also sets a global `font-family`, `font-weight`, `line-height`, and `color`. This is inherited later by some form elements to prevent font inconsistencies.
 - For safety, the `<body>` has a declared `background-color`, defaulting to `#fff`.
 
 ## Native font stack
 
-Bootstrap utilizes a "native font stack" or "system font stack" for optimum text rendering on every device and OS. These system fonts have been designed specifically with today's devices in mind, with improved rendering on screens, variable font support, and more. Read more about [native font stacks in this *Smashing Magazine* article](https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/).
+Bootstrap utilizes a "native font stack" or "system font stack" for optimum text rendering on every device and OS. These system fonts have been designed specifically for today's devices, with improved rendering on screens, variable font support, and more. Read more about [native font stacks in this *Smashing Magazine* article](https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/).
 
 ```scss
 $font-family-sans-serif:
@@ -76,7 +76,7 @@ $font-family-sans-serif:
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 ```
 
-Note that because the font stack includes emoji fonts, many common symbol/dingbat unicode characters will be rendered as multi-colored pictographs. Their appearance will vary, depending on the style used in the browser/platform's native emoji font, and they won't be affected by any CSS `color` styles.
+Note that because the font stack includes emoji fonts, many common symbol/dingbat Unicode characters will be rendered as multi-colored pictographs. Their appearance will vary depending on the style used in the browser/platform's native emoji font, and they won't be affected by any CSS `color` styles.
 
 This `font-family` is applied to the `<body>` and automatically inherited globally throughout Bootstrap. To switch the global `font-family`, update `$font-family-base` and recompile Bootstrap.
 
@@ -116,11 +116,11 @@ All lists—`<ul>`, `<ol>`, and `<dl>`—have their `margin-top` removed and a `
 
 <div class="bd-example">
 {{< markdown >}}
-* All lists have their top margin removed
+*All lists have their top margin removed
 * And their bottom margin normalized
-* Nested lists have no bottom margin
-  * This way they have a more even appearance
-  * Particularly when followed by more list items
+*Nested lists have no bottom margin
+  * This way, they have a more even appearance
+  *Particularly when followed by more list items
 * The left padding has also been reset
 
 1. Here's an ordered list
@@ -128,6 +128,7 @@ All lists—`<ul>`, `<ol>`, and `<dl>`—have their `margin-top` removed and a `
 3. It has the same overall look
 4. As the previous unordered list
 {{< /markdown >}}
+
 </div>
 
 For simpler styling, clear hierarchy, and better spacing, description lists have updated `margin`s. `<dd>`s reset `margin-left` to `0` and add `margin-bottom: .5rem`. `<dt>`s are **bolded**.
@@ -172,7 +173,7 @@ For indicating variables use the `<var>` tag.
 
 ## User input
 
-Use the `<kbd>` to indicate input that is typically entered via keyboard.
+Use the `<kbd>` to indicate input typically entered via the keyboard.
 
 {{< example >}}
 To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
@@ -181,7 +182,7 @@ To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
 
 ## Sample output
 
-For indicating sample output from a program use the `<samp>` tag.
+Use the `<samp>` tag to indicate sample output from a program.
 
 {{< example >}}
 <samp>This text is meant to be treated as sample output from a computer program.</samp>
@@ -231,8 +232,8 @@ Tables are slightly adjusted to style `<caption>`s, collapse borders, and ensure
 
 Various form elements have been rebooted for simpler base styles. Here are some of the most notable changes:
 
-- `<fieldset>`s have no borders, padding, or margin so they can be easily used as wrappers for individual inputs or groups of inputs.
-- `<legend>`s, like fieldsets, have also been restyled to be displayed as a heading of sorts.
+- `<fieldset>`s have no borders, padding, or margin so that they can be easily used as wrappers for individual or groups of inputs.
+Like fieldsets, `<legend>`s have also been restyled to be displayed as a heading of sorts.
 - `<label>`s are set to `display: inline-block` to allow `margin` to be applied.
 - `<input>`s, `<select>`s, `<textarea>`s, and `<button>`s are mostly addressed by Normalize, but Reboot removes their `margin` and sets `line-height: inherit`, too.
 - `<textarea>`s are modified to only be resizable vertically as horizontal resizing often "breaks" page layout.
@@ -407,7 +408,7 @@ The default `margin` on blockquotes is `1em 40px`, so we reset that to `0 0 1rem
 
 ### Inline elements
 
-The `<abbr>` element receives basic styling to make it stand out amongst paragraph text.
+The `<abbr>` element receives basic styling from making it stand out amongst paragraph text.
 
 <div class="bd-example">
   The <abbr title="HyperText Markup Language">HTML</abbr> abbreviation element.
@@ -415,7 +416,7 @@ The `<abbr>` element receives basic styling to make it stand out amongst paragra
 
 ### Summary
 
-The default `cursor` on summary is `text`, so we reset that to `pointer` to convey that the element can be interacted with by clicking on it.
+The default `cursor` on the summary is `text`, so we reset that to `pointer` to convey that the element can be interacted with by clicking on it.
 
 <div class="bd-example">
   <details>
@@ -438,7 +439,8 @@ HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.o
 ```
 
 {{< callout warning >}}
-##### jQuery incompatibility
+
+### jQuery incompatibility
 
 `[hidden]` is not compatible with jQuery's `$(...).hide()` and `$(...).show()` methods. Therefore, we don't currently especially endorse `[hidden]` over other techniques for managing the `display` of elements.
 {{< /callout >}}
