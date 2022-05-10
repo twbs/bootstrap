@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Utilities for layout
-description: For faster mobile-friendly and responsive development, Bootstrap includes dozens of utility classes for showing, hiding, aligning, and spacing content.
+description: For faster, mobile-friendly, and responsive development, Bootstrap includes dozens of utility classes for showing, hiding, aligning, and spacing content.
 group: layout
 toc: true
 ---
@@ -22,4 +22,4 @@ Use the `margin` and `padding` [spacing utilities]({{< docsref "/utilities/spaci
 
 ## Toggle `visibility`
 
-When toggling `display` isn't needed, you can toggle the `visibility` of an element with our [visibility utilities]({{< docsref "/utilities/visibility" >}}). Invisible elements will still affect the layout of the page, but are visually hidden from visitors.
+When toggling `display` isn't needed, you can toggle the `visibility` of an element with our [visibility utilities]({{< docsref "/utilities/visibility" >}}). Invisible elements will still affect the page's layout but are visually hidden from visitors.
