@@ -63,7 +63,7 @@
   }
 
   .dropdown-toggle {
-    &:focus {
+    &:focus:not(:focus-visible) {
       outline: 0;
     }
   }

@@ -242,17 +242,8 @@
 }
 
 .simple-list-example-scrollspy {
-  a {
-    padding: .25rem;
-    margin: .5rem 0;
-
-    &:focus {
-      background-color: rgba($bd-purple, .65);
-    }
-  }
-
   .active {
-    background-color: rgba($bd-purple, .15);
+    background-color: rgba(var(--bd-violet-rgb), .15);
   }
 }
 
