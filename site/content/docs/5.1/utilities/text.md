@@ -1,14 +1,14 @@
 ---
 layout: docs
 title: Text
-description: Documentation and examples for common text utilities to control alignment, wrapping, weight, and more.
+description: Documentation and examples for standard text utilities to control alignment, wrapping, weight, and more.
 group: utilities
 toc: true
 ---
 
 ## Text alignment
 
-Easily realign text to components with text alignment classes. For start, end, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.
+Quickly realign text to components with text alignment classes. For a start, end, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.
 
 {{< example >}}
 <p class="text-start">Start aligned text on all viewport sizes.</p>
@@ -22,7 +22,7 @@ Easily realign text to components with text alignment classes. For start, end, a
 {{< /example >}}
 
 {{< callout info >}}
-Note that we don't provide utility classes for justified text. While, aesthetically, justified text might look more appealing, it does make word-spacing more random and therefore harder to read.
+Note that we don't provide utility classes for justified text. While aesthetically, the justified text might look more appealing, it does make word-spacing more random and, therefore, harder to read.
 {{< /callout >}}
 
 ## Text wrapping and overflow
@@ -45,7 +45,7 @@ Prevent text from wrapping with a `.text-nowrap` class.
 
 ## Word break
 
-Prevent long strings of text from breaking your components' layout by using `.text-break` to set `word-wrap: break-word` and `word-break: break-word`. We use `word-wrap` instead of the more common `overflow-wrap` for wider browser support, and add the deprecated `word-break: break-word` to avoid issues with flex containers.
+Prevent long text strings from breaking your components' layout by using `.text-break` to set `word-wrap: break-word` and `word-break: break-word`. We use `word-wrap` instead of the more common `overflow-wrap` for broader browser support and add the deprecated `word-break: break-word` to avoid issues with flex containers.
 
 {{< example >}}
 <p class="text-break">mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
@@ -69,7 +69,7 @@ Note how `.text-capitalize` only changes the first letter of each word, leaving 
 
 ## Font size
 
-Quickly change the `font-size` of text. While our heading classes (e.g., `.h1`–`.h6`) apply `font-size`, `font-weight`, and `line-height`, these utilities _only_ apply `font-size`. Sizing for these utilities matches HTML's heading elements, so as the number increases, their size decreases.
+Quickly change the `font-size` of the text. While our heading classes (e.g., `.h1`–`.h6`) apply `font-size`, `font-weight`, and `line-height`, these utilities _only_ apply `font-size`. Sizing for these utilities matches HTML's heading elements, so as the number increases, their size decreases.
 
 {{< example >}}
 <p class="fs-1">.fs-1 text</p>
@@ -97,7 +97,7 @@ Quickly change the `font-weight` or `font-style` of text with these utilities. `
 <p class="fst-normal">Text with normal font style</p>
 {{< /example >}}
 
-## Line height
+## Line-height
 
 Change the line height with `.lh-*` utilities.
 
@@ -144,7 +144,7 @@ Decorate text in components with text decoration classes.
 
 ### Maps
 
-Font-size utilities are generated from this map, in combination with our utilities API.
+Font-size utilities are generated from this map in combination with our utility API.
 
 {{< scss-docs name="font-sizes" file="scss/_variables.scss" >}}
 
