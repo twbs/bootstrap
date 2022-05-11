@@ -1,0 +1,108 @@
+@mixin stepper-horizontal() {
+  display: inline-grid;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+
+  .stepper-item {
+    grid-template-rows: repeat(2, var(--#{$prefix}stepper-size));
+    grid-template-columns: auto;
+    justify-items: center;
+
+    &::after {
+      top: calc((var(--#{$prefix}stepper-size) * .5) - (var(--#{$prefix}stepper-track-size) * .5)); // stylelint-disable-line function-disallowed-list
+      right: 0;
+      bottom: auto;
+      left: calc(-50% - var(--#{$prefix}stepper-gap)); // stylelint-disable-line function-disallowed-list
+      width: auto;
+      height: var(--#{$prefix}stepper-track-size);
+    }
+
+    &:last-child::after {
+      right: 50%;
+    }
+  }
+}
+
+.stepper {
+  // scss-docs-start stepper-css-vars
+  --#{$prefix}stepper-size: #{$stepper-size};
+  --#{$prefix}stepper-gap: #{$stepper-gap};
+  --#{$prefix}stepper-bg: #{$stepper-bg};
+  --#{$prefix}stepper-track-size: #{$stepper-track-size};
+  --#{$prefix}stepper-active-color: #{$stepper-active-fg};
+  --#{$prefix}stepper-active-bg: #{$stepper-active-bg};
+  // scss-docs-end stepper-css-vars
+
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-auto-flow: row;
+  gap: var(--#{$prefix}stepper-gap);
+  padding-left: 0;
+  list-style: none;
+  counter-reset: stepper;
+}
+
+.stepper-item {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: var(--#{$prefix}stepper-size) auto;
+  gap: .5rem;
+  place-items: center;
+  justify-items: start;
+  text-align: center;
+  text-decoration: none;
+
+
+  // The counter
+  &::before {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    width: var(--#{$prefix}stepper-size);
+    height: var(--#{$prefix}stepper-size);
+    padding: .5rem;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    content: counter(stepper);
+    counter-increment: stepper;
+    background-color: var(--#{$prefix}stepper-bg);
+    @include border-radius(50%);
+  }
+
+  // Connecting lines
+  &::after {
+    position: absolute;
+    top: calc(var(--#{$prefix}stepper-gap) * -1); // stylelint-disable-line function-disallowed-list
+    bottom: 100%;
+    left: calc((var(--#{$prefix}stepper-size) * .5) - (var(--#{$prefix}stepper-track-size) * .5)); // stylelint-disable-line function-disallowed-list
+    width: var(--#{$prefix}stepper-track-size);
+    // height: auto;
+    content: "";
+    background-color: var(--#{$prefix}stepper-bg);
+  }
+
+  // Avoid sibling selector for easier CSS overrides
+  &:first-child::after {
+    display: none;
+  }
+
+  &.active {
+    &::before,
+    &::after {
+      color: var(--#{$prefix}stepper-active-color);
+      background-color: var(--#{$prefix}stepper-active-bg);
+    }
+  }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .stepper-horizontal#{$infix} {
+      @include stepper-horizontal();
+    }
+  }
+}
