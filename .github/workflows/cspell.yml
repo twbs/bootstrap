@@ -11,8 +11,14 @@ env:
   FORCE_COLOR: 2
   NODE: 16
 
+permissions:
+  contents: read
+
 jobs:
   cspell:
+    permissions:
+      contents: read  # for streetsidesoftware/cspell-action to fetch files for commit
+      pull-requests: read  # for streetsidesoftware/cspell-action to fetch commits for PR
     runs-on: ubuntu-latest
 
     steps:
