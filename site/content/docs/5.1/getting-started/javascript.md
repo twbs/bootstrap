@@ -14,11 +14,11 @@ If you use a bundler (Webpack, Rollup...), you can use `/js/dist/*.js` files whi
 
 ## Usage with JavaScript frameworks
 
-While the Bootstrap CSS can be used with any framework, **the Bootstrap JavaScript is not fully compatible with frameworks like React, Vue, and Angular** which assume full knowledge of the DOM. Both Bootstrap and the framework may attempt to mutate the same DOM element, resulting in bugs like dropdowns that are stuck in the "open" position.
+While the Bootstrap CSS can be used with any framework, **the Bootstrap JavaScript is not fully compatible with JavaScript frameworks like React, Vue, and Angular** which assume full knowledge of the DOM. Both Bootstrap and the framework may attempt to mutate the same DOM element, resulting in bugs like dropdowns that are stuck in the "open" position.
 
-A better alternative for those using React and similar frameworks is to use a framework-specific package **instead of** the Bootstrap JavaScript. Here are some of the most popular options:
+A better alternative for those using this type of frameworks is to use a framework-specific package **instead of** the Bootstrap JavaScript. Here are some of the most popular options:
 
-- React: [react-bootstrap](https://react-bootstrap.github.io/)
+- React: [React Bootstrap](https://react-bootstrap.github.io/)
 - Vue: [BootstrapVue](https://bootstrap-vue.org/)
 - Angular: [ng-bootstrap](https://ng-bootstrap.github.io/)
 
