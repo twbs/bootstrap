@@ -40,7 +40,7 @@ const DefaultType = {
 class FocusTrap extends Config {
   constructor(config) {
     super()
-    this._config = this._getConfig(config)
+    this.setConfig(this._getInitialConfig(config))
     this._isActive = false
     this._lastTabNavDirection = null
   }
