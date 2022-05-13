@@ -17,7 +17,7 @@
   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-versions">
     <li><h6 class="dropdown-header">v5 releases</h6></li>
     <li>
-      <a class="dropdown-item current" aria-current="true" href="/docs/{{ .Site.Params.docs_version }}/{{ $versions_link }}">
+      <a class="dropdown-item current" aria-current="true" href="{{ if .IsHome }}/{{ else }}/docs/{{ .Site.Params.docs_version }}/{{ $versions_link }}{{ end }}">
         Latest ({{ .Site.Params.docs_version }}.x)
       </a>
     </li>
