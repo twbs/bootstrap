@@ -413,11 +413,12 @@ When using Bootstrap's source Sass files, you have the option of using Sass vari
 
 ### Variables
 
-Variables and maps determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.
+Variables and maps determine the number of columns, the vertical and horizontal gutter size, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.
 
 ```scss
-$grid-columns:      12;
-$grid-gutter-width: 1.5rem;
+$grid-columns:       12;
+$grid-gutter-width:  1.5rem;
+$grid-gutter-height: 0;
 ```
 
 {{< scss-docs name="grid-breakpoints" file="scss/_variables.scss" >}}
@@ -430,7 +431,10 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 
 ```scss
 // Creates a wrapper for a series of columns
-@include make-row();
+@include make-row(); // default values for both horizontal and vertical gutters
+@include make-row(2rem); // 2rem for horizontal gutters and default value for vertical gutters
+@include make-row(2rem, 1rem); // 2rem for horizontal gutters and 1rem for vertical gutters
+@include make-row($gutter-y: 1rem); // default value for horizontal gutters and 1rem for vertical gutters
 
 // Make the element grid-ready (applying everything but the width)
 @include make-col-ready();
@@ -497,11 +501,12 @@ Using our built-in grid Sass variables and maps, it's possible to completely cus
 
 ### Columns and gutters
 
-The number of grid columns can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each individual column while `$grid-gutter-width` sets the width for the column gutters.
+The number of grid columns can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each individual column. `$grid-gutter-width` and `$grid-gutter-height` set the width and height of the gutters.
 
 ```scss
-$grid-columns: 12 !default;
-$grid-gutter-width: 1.5rem !default;
+$grid-columns:       12 !default;
+$grid-gutter-width:  1.5rem !default;
+$grid-gutter-height: 0 !default;
 ```
 
 ### Grid tiers
