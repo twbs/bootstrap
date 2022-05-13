@@ -30,6 +30,7 @@ const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
 const EVENT_RESIZE = `resize${EVENT_KEY}`
+const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
 const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
@@ -152,22 +153,9 @@ class Modal extends BaseComponent {
 
   // Private
   _initializeBackDrop() {
-    const clickCallback = () => {
-      if (this._config.backdrop === 'static') {
-        this._triggerBackdropTransition()
-        return
-      }
-
-      this.hide()
-    }
-
-    // 'static' option will be translated to true, and booleans will keep their value
-    const isVisible = Boolean(this._config.backdrop)
-
     return new Backdrop({
-      isVisible,
-      isAnimated: this._isAnimated(),
-      clickCallback: isVisible ? clickCallback : null
+      isVisible: Boolean(this._config.backdrop), // 'static' option will be translated to true, and booleans will keep their value,
+      isAnimated: this._isAnimated()
     })
   }
 
@@ -230,6 +218,21 @@ class Modal extends BaseComponent {
     EventHandler.on(window, EVENT_RESIZE, () => {
       if (this._isShown && !this._isTransitioning) {
         this._adjustDialog()
+      }
+    })
+
+    EventHandler.on(this._element, EVENT_CLICK_DISMISS, event => {
+      if (event.target !== event.currentTarget) { // click is inside modal-dialog
+        return
+      }
+
+      if (this._config.backdrop === 'static') {
+        this._triggerBackdropTransition()
+        return
+      }
+
+      if (this._config.backdrop) {
+        this.hide()
       }
     })
   }
