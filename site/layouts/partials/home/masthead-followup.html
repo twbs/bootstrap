@@ -22,7 +22,7 @@
       <p class="pe-lg-5">
         Install Bootstrap’s source Sass and JavaScript files via npm, RubyGems, Composer, or Meteor. Package managed installs don’t include documentation or our full build scripts. You can also <a href="https://github.com/twbs/bootstrap-npm-starter">use our npm template repo</a> to quickly generate a Bootstrap project via npm.
       </p>
-      {{ highlight "npm install bootstrap" "sh" "" }}
+      {{ highlight (printf ("npm install bootstrap@%s") .Site.Params.current_version) "sh" "" }}
       {{ highlight (printf ("gem install bootstrap -v %s") .Site.Params.current_ruby_version) "sh" "" }}
       <p>
         <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/">Read our installation docs</a> for more info and additional package managers.

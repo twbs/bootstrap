@@ -12,7 +12,7 @@
       </p>
       <div class="d-flex flex-column flex-md-row align-items-md-stretch justify-content-md-center gap-3 mb-4">
         <div class="d-inline-block v-align-middle fs-5" style="min-width: fit-content;">
-          {{ highlight "npm i bootstrap" "sh" "" }}
+          {{ highlight (printf ("npm install bootstrap@%s") .Site.Params.current_version) "sh" "" }}
         </div>
         <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold" onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">
           <svg class="bi me-2" aria-hidden="true"><use xlink:href="#book-half"></use></svg>
