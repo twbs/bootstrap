@@ -1,5 +1,7 @@
-// NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
-// IT'S ALL JUST JUNK FOR OUR DOCS!
+// NOTICE!!! Initially embedded in our docs this JavaScript
+// file contains elements that can help you create reproducible
+// use cases in StackBlitz for instance.
+// In a real project please adapt this content to your needs.
 // ++++++++++++++++++++++++++++++++++++++++++
 
 /*!
@@ -15,13 +17,15 @@
 (() => {
   'use strict'
 
-  // Tooltip and popover demos
-  // Tooltip and popover demos
+  // Tooltips
+  // Instanciate all tooltips in a page
   document.querySelectorAll('[data-bs-toggle="tooltip"]')
     .forEach(tooltip => {
       new bootstrap.Tooltip(tooltip)
     })
 
+  // Popovers
+  // Instanciate all popovers in a page
   document.querySelectorAll('[data-bs-toggle="popover"]')
     .forEach(popover => {
       new bootstrap.Popover(popover)

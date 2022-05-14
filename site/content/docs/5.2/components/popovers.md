@@ -46,7 +46,7 @@ const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstra
 
 We use JavaScript similar to the snippet above to render the following live popover. Titles are set via `title` attribute and body content is set via `data-bs-content`.
 
-{{< example >}}
+{{< example js_snippet="true" >}}
 <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
 {{< /example >}}
 
