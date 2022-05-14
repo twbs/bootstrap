@@ -78,7 +78,7 @@ You can also use the CDN to fetch any of our [additional builds listed in the Co
 
 - Read about what's included in Bootstrap in our [contents section]({{< docsref "/getting-started/contents#precompiled-bootstrap" >}}) and the list of [components that require JavaScript](#js-components) below.
 
-- Need a little more power? Consider building with Bootstrap by [including the source files via package manager]({{< docsref "/getting-started/download#package-managers" >}}).
+- Need a little more power? Consider building with Bootstrap by [including the source files via a package manager]({{< docsref "/getting-started/download#package-managers" >}}).
 
 - Looking to use Bootstrap as a module with `<script type="module">`? Please refer to our [using Bootstrap as a module]({{< docsref "/getting-started/javascript#using-bootstrap-as-a-module" >}}) section.
 
