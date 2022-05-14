@@ -351,6 +351,11 @@ $enable-negative-margins:     false !default;
 $enable-deprecation-messages: true !default;
 $enable-important-utilities:  true !default;
 
+$enable-alert-variants:           true !default;
+$enable-button-variants:          true !default;
+$enable-button-outline-variants:  true !default;
+$enable-table-variants:           true !default;
+
 // Prefix for :root CSS variables
 
 $variable-prefix:             bs- !default; // Deprecated in v5.2.0 for the shorter `$prefix`
