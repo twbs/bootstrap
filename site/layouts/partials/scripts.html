@@ -26,12 +26,19 @@
   document.querySelectorAll('.btn-edit').forEach(btn => {
     btn.addEventListener('click', event => {
       const htmlSnippet = event.target.closest('.bd-code-snippet').querySelector('.bd-example').innerHTML
+
+      // Get extra classes for this example except '.bd-example'
+      const classes = event.target.closest('.bd-code-snippet').querySelector('.bd-example').classList
+      if (classes) {
+        classes.remove('bd-example')
+      }
+
       const jsSnippet = event.target.closest('.bd-code-snippet').querySelector('.btn-edit').getAttribute('data-js-snippet')
-      StackBlitzSDK.openBootstrapSnippet(htmlSnippet, jsSnippet)
+      StackBlitzSDK.openBootstrapSnippet(htmlSnippet, jsSnippet, classes)
     })
   })
 
-  StackBlitzSDK.openBootstrapSnippet = (htmlSnippet, jsSnippet) => {
+  StackBlitzSDK.openBootstrapSnippet = (htmlSnippet, jsSnippet, classes) => {
     const markup = `<!doctype html>
 <html lang="en">
   <head>
@@ -41,7 +48,7 @@
     <title>Bootstrap Example</title>
     <${'script'} src="{{ .Site.Params.cdn.js_bundle }}"></${'script'}>
   </head>
-  <body>
+  <body class="${classes}">
 
     <!-- Example Code -->
 ${htmlSnippet.replace(/^/gm, '    ')}
