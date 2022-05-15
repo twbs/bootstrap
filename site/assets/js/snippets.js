@@ -17,21 +17,27 @@
 (() => {
   'use strict'
 
+  // --------
   // Tooltips
+  // --------
   // Instanciate all tooltips in a page
   document.querySelectorAll('[data-bs-toggle="tooltip"]')
     .forEach(tooltip => {
       new bootstrap.Tooltip(tooltip)
     })
 
+  // --------
   // Popovers
+  // --------
   // Instanciate all popovers in a page
   document.querySelectorAll('[data-bs-toggle="popover"]')
     .forEach(popover => {
       new bootstrap.Popover(popover)
     })
 
+  // -------------------------------
   // Toasts
+  // -------------------------------
   // Used by 'Placement' docs example
   const toastPlacement = document.getElementById('toastPlacement')
   if (toastPlacement) {
@@ -44,6 +50,8 @@
     })
   }
 
+  // Instanciate all toasts in a page
+  // Not useful in StackBlitz examples
   document.querySelectorAll('.bd-example .toast')
     .forEach(toastNode => {
       const toast = new bootstrap.Toast(toastNode, {
@@ -53,6 +61,8 @@
       toast.show()
     })
 
+  // Used in 'Show live toast' docs example
+  // Not useful in StackBlitz examples
   const toastTrigger = document.getElementById('liveToastBtn')
   const toastLiveExample = document.getElementById('liveToast')
   if (toastTrigger) {
@@ -63,6 +73,9 @@
     })
   }
 
+  // -------------------------------
+  // Alerts
+  // -------------------------------
   const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
   const alertTrigger = document.getElementById('liveAlertBtn')
 
@@ -84,12 +97,18 @@
     })
   }
 
+  // -------------------------------
+  // Checkboxes
+  // -------------------------------
   // Indeterminate checkbox example
   document.querySelectorAll('.bd-example-indeterminate [type="checkbox"]')
     .forEach(checkbox => {
       checkbox.indeterminate = true
     })
 
+  // -------------------------------
+  // Links
+  // -------------------------------
   // Disable empty links in docs examples
   document.querySelectorAll('.bd-content [href="#"]')
     .forEach(link => {
@@ -98,6 +117,9 @@
       })
     })
 
+  // -------------------------------
+  // Modal
+  // -------------------------------
   // Modal relatedTarget demo
   const exampleModal = document.getElementById('exampleModal')
   if (exampleModal) {
@@ -116,6 +138,9 @@
     })
   }
 
+  // -------------------------------
+  // Offcanvas
+  // -------------------------------
   // Offcanvas demo
   const myOffcanvas = document.querySelector('.bd-example-offcanvas #offcanvas')
   if (myOffcanvas) {
