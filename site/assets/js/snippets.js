@@ -119,7 +119,7 @@
   // -------------------------------
   // Modal
   // -------------------------------
-  // Modal relatedTarget demo
+  // Modal 'Varying modal content' example in docs and StackBlitz
   const exampleModal = document.getElementById('exampleModal')
   if (exampleModal) {
     exampleModal.addEventListener('show.bs.modal', event => {
