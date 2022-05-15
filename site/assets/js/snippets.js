@@ -140,7 +140,7 @@
   // -------------------------------
   // Offcanvas
   // -------------------------------
-  // Offcanvas demo
+  // 'Offcanvas components' example in docs only
   const myOffcanvas = document.querySelector('.bd-example-offcanvas #offcanvas')
   if (myOffcanvas) {
     myOffcanvas.addEventListener('show.bs.offcanvas', event => {
