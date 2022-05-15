@@ -20,7 +20,7 @@
   // --------
   // Tooltips
   // --------
-  // Instanciate all tooltips in a page
+  // Instanciate all tooltips in a docs or StackBlitz page
   document.querySelectorAll('[data-bs-toggle="tooltip"]')
     .forEach(tooltip => {
       new bootstrap.Tooltip(tooltip)
@@ -29,7 +29,7 @@
   // --------
   // Popovers
   // --------
-  // Instanciate all popovers in a page
+  // Instanciate all popovers in a docs or StackBlitz page
   document.querySelectorAll('[data-bs-toggle="popover"]')
     .forEach(popover => {
       new bootstrap.Popover(popover)
@@ -38,7 +38,7 @@
   // -------------------------------
   // Toasts
   // -------------------------------
-  // Used by 'Placement' docs example
+  // Used by 'Placement' example in docs or StackBlitz
   const toastPlacement = document.getElementById('toastPlacement')
   if (toastPlacement) {
     document.getElementById('selectToastPlacement').addEventListener('change', function () {
@@ -50,8 +50,7 @@
     })
   }
 
-  // Instanciate all toasts in a page
-  // Not useful in StackBlitz examples
+  // Instanciate all toasts in a docs page only
   document.querySelectorAll('.bd-example .toast')
     .forEach(toastNode => {
       const toast = new bootstrap.Toast(toastNode, {
@@ -61,8 +60,7 @@
       toast.show()
     })
 
-  // Used in 'Show live toast' docs example
-  // Not useful in StackBlitz examples
+  // Instanciate all toasts in a docs page only
   const toastTrigger = document.getElementById('liveToastBtn')
   const toastLiveExample = document.getElementById('liveToast')
   if (toastTrigger) {
@@ -76,6 +74,7 @@
   // -------------------------------
   // Alerts
   // -------------------------------
+  // Used in 'Show live toast' example in docs or StackBlitz
   const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
   const alertTrigger = document.getElementById('liveAlertBtn')
 
