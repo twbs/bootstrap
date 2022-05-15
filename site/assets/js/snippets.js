@@ -31,6 +31,8 @@
       new bootstrap.Popover(popover)
     })
 
+  // Toasts
+  // Used by 'Placement' docs example
   const toastPlacement = document.getElementById('toastPlacement')
   if (toastPlacement) {
     document.getElementById('selectToastPlacement').addEventListener('change', function () {
