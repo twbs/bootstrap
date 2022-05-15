@@ -97,9 +97,9 @@
   }
 
   // -------------------------------
-  // Checkboxes
+  // Checks & Radios
   // -------------------------------
-  // Indeterminate checkbox example
+  // Indeterminate checkbox example in docs and StackBlitz
   document.querySelectorAll('.bd-example-indeterminate [type="checkbox"]')
     .forEach(checkbox => {
       checkbox.indeterminate = true
@@ -108,7 +108,7 @@
   // -------------------------------
   // Links
   // -------------------------------
-  // Disable empty links in docs examples
+  // Disable empty links in docs examples only
   document.querySelectorAll('.bd-content [href="#"]')
     .forEach(link => {
       link.addEventListener('click', event => {
