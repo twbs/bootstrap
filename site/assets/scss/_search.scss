@@ -6,7 +6,7 @@
 
   @include media-breakpoint-up(lg) {
     position: absolute;
-    top: .75rem;
+    top: .875rem;
     left: 50%;
     width: 200px;
     margin-left: -100px;
@@ -39,6 +39,7 @@
   --docsearch-muted-color: #{rgba($white, .65)};
 
   width: 100%;
+  height: 38px; // Match Bootstrap inputs
   margin: 0;
   border: 1px solid rgba($white, .4);
   @include border-radius(.375rem);
@@ -60,8 +61,7 @@
 
 .DocSearch-Button-Keys {
   min-width: 0;
-  padding-right: .25rem;
-  padding-left: .25rem;
+  padding: .125rem .25rem;
   background: rgba($black, .25);
   @include border-radius(.25rem);
 }
