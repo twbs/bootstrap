@@ -65,6 +65,7 @@ params:
   blog:                 "https://blog.getbootstrap.com/"
   themes:               "https://themes.getbootstrap.com/"
   icons:                "https://icons.getbootstrap.com/"
+  swag:                 "https://cottonbureau.com/people/bootstrap"
 
   download:
     source:             "https://github.com/twbs/bootstrap/archive/v5.2.0-beta1.zip"
