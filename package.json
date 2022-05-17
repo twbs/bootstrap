@@ -117,7 +117,7 @@
     "clean-css-cli": "^5.6.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.15.0",
-    "eslint-config-xo": "^0.40.0",
+    "eslint-config-xo": "^0.41.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-markdown": "^2.2.1",
     "eslint-plugin-unicorn": "^42.0.0",
