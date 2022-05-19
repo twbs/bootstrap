@@ -641,9 +641,10 @@ describe('Modal', () => {
 
         modalEl.addEventListener('shown.bs.modal', () => {
           const spy = spyOn(modal, '_queueCallback').and.callThrough()
+          const mouseDown = createEvent('mousedown')
 
-          modalEl.click()
-          modalEl.click()
+          modalEl.dispatchEvent(mouseDown)
+          modalEl.dispatchEvent(mouseDown)
 
           setTimeout(() => {
             expect(spy).toHaveBeenCalledTimes(1)
@@ -709,13 +710,19 @@ describe('Modal', () => {
         fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
         const modalEl = fixtureEl.querySelector('.modal')
+        const dialogEl = modalEl.querySelector('.modal-dialog')
         const modal = new Modal(modalEl)
-        modalEl.addEventListener('shown.bs.modal', () => {
-          modalEl.click()
-        })
 
-        modalEl.addEventListener('hidden.bs.modal', () => {
-          expect(document.querySelector('.modal-backdrop')).toBeNull()
+        spyOn(modal, 'hide')
+
+        modalEl.addEventListener('shown.bs.modal', () => {
+          const mouseDown = createEvent('mousedown')
+
+          dialogEl.dispatchEvent(mouseDown)
+          expect(modal.hide).not.toHaveBeenCalled()
+
+          modalEl.dispatchEvent(mouseDown)
+          expect(modal.hide).toHaveBeenCalled()
           resolve()
         })
 
