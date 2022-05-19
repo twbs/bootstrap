@@ -127,6 +127,7 @@ class ScrollSpy extends BaseComponent {
         event.preventDefault()
         const root = this._rootElement || window
         const height = observableSection.offsetTop - this._element.offsetTop
+        window.history.pushState(null, null, event.target.hash)
         if (root.scrollTo) {
           root.scrollTo({ top: height, behavior: 'smooth' })
           return
