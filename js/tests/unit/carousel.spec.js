@@ -660,7 +660,7 @@ describe('Carousel', () => {
       })
     })
 
-    it('should call `maybeCycle` on mouse out with pause equal to hover', () => {
+    it('should call `maybeEnableCycle` on mouse out with pause equal to hover', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<div class="carousel" data-bs-ride="true"></div>'
 
