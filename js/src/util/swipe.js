@@ -26,15 +26,15 @@ const CLASS_NAME_POINTER_EVENT = 'pointer-event'
 const SWIPE_THRESHOLD = 40
 
 const Default = {
+  endCallback: null,
   leftCallback: null,
-  rightCallback: null,
-  endCallback: null
+  rightCallback: null
 }
 
 const DefaultType = {
+  endCallback: '(function|null)',
   leftCallback: '(function|null)',
-  rightCallback: '(function|null)',
-  endCallback: '(function|null)'
+  rightCallback: '(function|null)'
 }
 
 /**

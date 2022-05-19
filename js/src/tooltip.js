@@ -54,46 +54,46 @@ const AttachmentMap = {
 }
 
 const Default = {
+  allowList: DefaultAllowlist,
   animation: true,
-  template: '<div class="tooltip" role="tooltip">' +
-              '<div class="tooltip-arrow"></div>' +
-              '<div class="tooltip-inner"></div>' +
-            '</div>',
-  trigger: 'hover focus',
-  title: '',
-  delay: 0,
-  html: false,
-  selector: false,
-  placement: 'top',
-  offset: [0, 0],
-  container: false,
-  fallbackPlacements: ['top', 'right', 'bottom', 'left'],
   boundary: 'clippingParents',
+  container: false,
   customClass: '',
+  delay: 0,
+  fallbackPlacements: ['top', 'right', 'bottom', 'left'],
+  html: false,
+  offset: [0, 0],
+  placement: 'top',
+  popperConfig: null,
   sanitize: true,
   sanitizeFn: null,
-  allowList: DefaultAllowlist,
-  popperConfig: null
+  selector: false,
+  template: '<div class="tooltip" role="tooltip">' +
+            '<div class="tooltip-arrow"></div>' +
+            '<div class="tooltip-inner"></div>' +
+            '</div>',
+  title: '',
+  trigger: 'hover focus'
 }
 
 const DefaultType = {
+  allowList: 'object',
   animation: 'boolean',
-  template: 'string',
-  title: '(string|element|function)',
-  trigger: 'string',
-  delay: '(number|object)',
-  html: 'boolean',
-  selector: '(string|boolean)',
-  placement: '(string|function)',
-  offset: '(array|string|function)',
-  container: '(string|element|boolean)',
-  fallbackPlacements: 'array',
   boundary: '(string|element)',
+  container: '(string|element|boolean)',
   customClass: '(string|function)',
+  delay: '(number|object)',
+  fallbackPlacements: 'array',
+  html: 'boolean',
+  offset: '(array|string|function)',
+  placement: '(string|function)',
+  popperConfig: '(null|object|function)',
   sanitize: 'boolean',
   sanitizeFn: '(null|function)',
-  allowList: 'object',
-  popperConfig: '(null|object|function)'
+  selector: '(string|boolean)',
+  template: 'string',
+  title: '(string|element|function)',
+  trigger: 'string'
 }
 
 /**
