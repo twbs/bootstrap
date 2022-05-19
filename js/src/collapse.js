@@ -45,13 +45,13 @@ const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]'
 
 const Default = {
-  toggle: true,
-  parent: null
+  parent: null,
+  toggle: true
 }
 
 const DefaultType = {
-  toggle: 'boolean',
-  parent: '(null|element)'
+  parent: '(null|element)',
+  toggle: 'boolean'
 }
 
 /**

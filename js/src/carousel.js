@@ -80,8 +80,8 @@ const Default = {
 const DefaultType = {
   interval: '(number|boolean)',
   keyboard: 'boolean',
-  ride: '(boolean|string)',
   pause: '(string|boolean)',
+  ride: '(boolean|string)',
   touch: 'boolean',
   wrap: 'boolean'
 }
