@@ -838,7 +838,7 @@ describe('Carousel', () => {
 
       carousel.cycle()
       carousel.next()
-      expect(carousel.cycle).toHaveBeenCalled()
+      expect(carousel.cycle).toHaveBeenCalledTimes(1)
     })
 
     it('should update indicators if present', () => {
