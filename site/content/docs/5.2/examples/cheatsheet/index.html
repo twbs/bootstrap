@@ -691,16 +691,16 @@ body_class: "bg-light"
         <p class="h2">Example heading <span class="badge bg-secondary">New</span></p>
         <p class="h3">Example heading <span class="badge bg-success">New</span></p>
         <p class="h4">Example heading <span class="badge bg-danger">New</span></p>
-        <p class="h5">Example heading <span class="badge bg-warning text-dark">New</span></p>
-        <p class="h6">Example heading <span class="badge bg-info text-dark">New</span></p>
-        <p class="h6">Example heading <span class="badge bg-light text-dark">New</span></p>
+        <p class="h5">Example heading <span class="badge text-bg-warning">New</span></p>
+        <p class="h6">Example heading <span class="badge text-bg-info">New</span></p>
+        <p class="h6">Example heading <span class="badge text-bg-light">New</span></p>
         <p class="h6">Example heading <span class="badge bg-dark">New</span></p>
         {{< /example >}}
 
         {{< example show_markup="false" >}}
         {{< badge.inline >}}
         {{- range (index $.Site.Data "theme-colors") }}
-        <span class="badge rounded-pill bg-{{ .name }}{{ if or (eq .name "light") (eq .name "warning") (eq .name "info") }} text-dark{{ end }}">{{ .name | title }}</span>{{- end -}}
+        <span class="badge rounded-pill {{ if or (eq .name "light") (eq .name "warning") (eq .name "info") }}text-{{ end }}bg-{{ .name }}">{{ .name | title }}</span>{{- end -}}
         {{< /badge.inline >}}
         {{< /example >}}
       </div>
@@ -1392,10 +1392,10 @@ body_class: "bg-light"
           <div class="progress-bar bg-success w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
         </div>
         <div class="progress mb-3">
-          <div class="progress-bar bg-info text-dark w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+          <div class="progress-bar text-bg-info w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
         </div>
         <div class="progress mb-3">
-          <div class="progress-bar bg-warning text-dark w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+          <div class="progress-bar text-bg-warning w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
         </div>
         <div class="progress">
           <div class="progress-bar bg-danger w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
