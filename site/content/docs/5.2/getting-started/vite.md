@@ -34,14 +34,13 @@ We're building a Vite project with Bootstrap from scratch, so there are some pre
    ```sh
    npm i --save bootstrap @popperjs/core
    ```
+4. **Install additional dependencies.** In addition to Vite and Bootstrap, we need a few more dependencies to properly import and bundle Bootstrap's CSS and JS with Vite. These include Sass<!--, some loaders, and Autoprefixer-->.
 
-<!--
-4. **Install additional dependencies.** In addition to Vite and Bootstrap, we need a few more dependencies to properly import and bundle Bootstrap's CSS and JS with Vite. These include Sass, some loaders, and Autoprefixer.
+<!--npm i save-dev autoprefixer css-loader postcss-loader sass sass-loader style-loader-->
 
    ```sh
-   npm i save-dev autoprefixer css-loader postcss-loader sass sass-loader style-loader
+   npm i --save-dev sass
    ```
--->
 
 Now that we have all the necessary dependencies installed and setup, we can get to work creating the project files and importing Bootstrap.
 
@@ -143,16 +142,13 @@ In the next and final section to this guide, we'll setup the Vite loaders and im
 
 1. **Setup the loaders in `vite.config.js`.** Your configuration file is now complete and should match the snippet below. <!--The only new part here is the `module` section.-->
 
+   <!-- eslint-skip -->
    ```js
    const path = require('path')
 
    export default {
      root: path.resolve(__dirname, 'dist'),
-     entry: './src/js/main.js',
-     output: {
-       filename: 'main.js',
-       path: path.resolve(__dirname, 'dist')
-     },
+     // TODO:
      server: {
        port: 8080,
        hot: true
