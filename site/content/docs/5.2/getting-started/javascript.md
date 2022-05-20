@@ -24,7 +24,11 @@ A better alternative for those using this type of frameworks is to use a framewo
 
 ## Using Bootstrap as a module
 
-We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootstrap.esm.min.js`) which allows you to use Bootstrap as a module in your browser, if your [targeted browsers support it](https://caniuse.com/es6-module).
+{{< callout >}}
+**Try it yourself!** Download the source code and working demo for using Bootstrap as an ES module from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/sass-js-esm). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/sass-js-esm?file=index.html).
+{{< /callout >}}
+
+We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootstrap.esm.min.js`) which allows you to use Bootstrap as a module in the browser, if your [targeted browsers support it](https://caniuse.com/es6-module).
 
 ```html
 <script type="module">
@@ -35,12 +39,19 @@ We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootst
 </script>
 ```
 
-{{< callout warning >}}
-## Dependencies for vanilla ESM in the browser require an `importmap`
+Compared to JS bundlers, using ESM in the browser requires you to use the full path and filename instead of the module name. That's why we use `'bootstrap.esm.min.js'` instead of `'bootstrap'` above. This is further complicated by our Popper dependency, which imports Popper like so:
 
-In order to support build tools, npm dependencies - external dependencies such as Popper are `import`ed with their npm package name (e.g. `@popperjs/core`), to make this work in the browser you need to define an `importmap` which resolves arbitrary names to fully-qualified or relative URIs.
+```js
+import * as Popper from "@popperjs/core"
+```
 
-If your [targeted browsers](https://caniuse.com/?search=importmap) do not support `importmap` then you will need to use the [es-module-shims](https://github.com/guybedford/es-module-shims) library. For example:
+If you try this as-is, you'll see an error in the console like the following:
+
+```text
+Uncaught TypeError: Failed to resolve module specifier "@popperjs/core". Relative references must start with either "/", "./", or "../".
+```
+
+To fix this, you can use an `importmap` to resolve the arbitrary module names to complete paths. If your [targeted browsers](https://caniuse.com/?search=importmap) do not support `importmap`, you'll need to use the [es-module-shims](https://github.com/guybedford/es-module-shims) project. Here's how it works for Bootstrap and Popper:
 
 ```html
 <!doctype html>
@@ -53,7 +64,7 @@ If your [targeted browsers](https://caniuse.com/?search=importmap) do not suppor
   </head>
   <body>
     <h1>Hello, modularity!</h1>
-    <button id="popoverButton" type="button" class="btn btn-primary btn-lg" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="ESM in Browser" data-bs-content="Bang!">Pop, over</button>
+    <button id="popoverButton" type="button" class="btn btn-primary btn-lg" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="ESM in Browser" data-bs-content="Bang!">Custom popover</button>
 
     <script async src="https://cdn.jsdelivr.net/npm/es-module-shims@1/dist/es-module-shims.min.js" crossorigin="anonymous"></script>
     <script type="importmap">
@@ -64,7 +75,7 @@ If your [targeted browsers](https://caniuse.com/?search=importmap) do not suppor
       }
     }
     </script>
-      <script type="module">
+    <script type="module">
       import * as bootstrap from 'bootstrap'
 
       new bootstrap.Popover(document.getElementById('popoverButton'))
@@ -72,8 +83,6 @@ If your [targeted browsers](https://caniuse.com/?search=importmap) do not suppor
   </body>
 </html>
 ```
-
-{{< /callout >}}
 
 ## Dependencies
 
