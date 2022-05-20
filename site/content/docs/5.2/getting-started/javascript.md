@@ -41,6 +41,7 @@ We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootst
 
 Compared to JS bundlers, using ESM in the browser requires you to use the full path and filename instead of the module name. [Read more about JS modules in the browser.](https://v8.dev/features/modules#specifiers) That's why we use `'bootstrap.esm.min.js'` instead of `'bootstrap'` above. However, this is further complicated by our Popper dependency, which imports Popper into our JavaScript like so:
 
+<!-- eslint-skip -->
 ```js
 import * as Popper from "@popperjs/core"
 ```
