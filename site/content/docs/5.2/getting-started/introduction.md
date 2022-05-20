@@ -16,7 +16,7 @@ Get started by including Bootstrap's production-ready CSS and JavaScript via CDN
 
 <br>
 
-1. **Create a new `index.html` file in your project root.** Include the `<meta name="viewport>` tag as well for [proper responsive behavior](https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag) in mobile devices.
+1. **Create a new `index.html` file in your project root.** Include the `<meta name="viewport">` tag as well for [proper responsive behavior](https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag) in mobile devices.
 
    ```html
    <!doctype html>

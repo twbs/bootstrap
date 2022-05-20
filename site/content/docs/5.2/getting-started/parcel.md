@@ -22,13 +22,13 @@ When all will be completed, your project will be structured like this:
 project-name/
 ├── build/
 ├── node_modules/
+│   ├── @popperjs/
+|   |   └── core/
 │   └── bootstrap/
-│   └── @popperjs/
-|       └── core/
 ├── scss/
 │   └── custom.scss
 ├── src/
-│   └── index.html
+│   ├── index.html
 │   └── index.js
 └── package.json
 ```
