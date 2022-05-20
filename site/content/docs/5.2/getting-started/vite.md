@@ -36,10 +36,10 @@ We're building a Vite project with Bootstrap from scratch, so there are some pre
    ```
 
 <!--
-4. **Install additional dependencies.** In addition to Vite and Bootstrap, we need a few more dependencies to properly import and bundle Bootstrap's CSS and JS with Vite. <!--These include Sass, some loaders, and Autoprefixer.
+4. **Install additional dependencies.** In addition to Vite and Bootstrap, we need a few more dependencies to properly import and bundle Bootstrap's CSS and JS with Vite. These include Sass, some loaders, and Autoprefixer.
 
    ```sh
-   npm i --save-dev autoprefixer css-loader postcss-loader sass sass-loader style-loader
+   npm i save-dev autoprefixer css-loader postcss-loader sass sass-loader style-loader
    ```
 -->
 
@@ -71,7 +71,7 @@ my-project/
 └── vite.config.js
 ```
 
-At this point, everything is in the right place, but Webpack won't work because we haven't filled in our `vite.config.js` yet.
+At this point, everything is in the right place, but Vite won't work because we haven't filled in our `vite.config.js` yet.
 
 ## Configure Vite
 
