@@ -128,6 +128,7 @@ Importing Bootstrap into Parcel requires two imports, one into our `styles.scss`
 
    You can also import JavaScript plugins individually as needed to keep bundle sizes down:
 
+   <!-- eslint-skip -->
    ```js
    import Alert from 'bootstrap/js/dist/alert';
 
