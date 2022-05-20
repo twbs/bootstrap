@@ -1,101 +1,131 @@
 ---
 layout: docs
-title: Parcel
-description: Learn how to include Bootstrap in your project using Parcel.
+title: "Bootstrap & Parcel"
+description: The official guide for how to include and bundle Bootstrap's CSS and JavaScript in your project using Parcel.
 group: getting-started
 toc: true
 ---
 
-## Install Parcel
+{{< callout >}}
+**Want to skip to the end?** Download the source code and working demo for this guide from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/parcel). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/parcel?file=index.html) for live editing.
+{{< /callout >}}
 
-Install [Parcel Bundler](https://parceljs.org/getting-started/webapp/).
+## Setup
 
-## Install Bootstrap
+We're building a Parcel project with Bootstrap from scratch, so there are some prerequisites and up front steps before we can really get started. This guide requires you to have Node.js installed and some familiarity with the terminal.
 
-[Install bootstrap]({{< docsref "/getting-started/download#npm" >}}) as a Node.js module using npm.
+<br>
 
-Bootstrap depends on [Popper](https://popper.js.org/), which is specified in the `peerDependencies` property. This means that you will have to make sure to add both of them to your `package.json` using `npm install @popperjs/core`.
+1. **Create a project folder and setup npm.** We'll create the `my-project` folder and initialize npm with the `-y` argument to avoid it asking us all the interactive questions.
 
-When all will be completed, your project will be structured like this:
+   ```sh
+   mkdir my-project && cd my-project
+   npm init -y
+   ```
 
-```text
-project-name/
-├── build/
-├── node_modules/
-│   ├── @popperjs/
-|   |   └── core/
-│   └── bootstrap/
-├── scss/
-│   └── custom.scss
-├── src/
-│   ├── index.html
-│   └── index.js
-└── package.json
-```
+2. **Install Parcel.** Next we need to install our Parcel development dependencies: .
 
-## Importing JavaScript
+   ```sh
+   npm i --save-dev parcel
+   ```
 
-Import [Bootstrap's JavaScript]({{< docsref "/getting-started/javascript" >}}) in your app's entry point (usually `src/index.js`). You can import all our plugins in one file or separately if you require only a subset of them.
+3. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Popper since our dropdowns, popovers, and tooltips depend on it for their positioning. If you don't plan on using those components, you can omit Popper here.
 
-<!-- eslint-skip -->
-```js
-// Import all plugins
-import * as bootstrap from 'bootstrap';
+   ```sh
+   npm i --save bootstrap @popperjs/core
+   ```
 
-// Or import only needed plugins
-import { Tooltip as Tooltip, Toast as Toast, Popover as Popover } from 'bootstrap';
+## Project structure
 
-// Or import just one
-import Alert as Alert from '../node_modules/bootstrap/js/dist/alert';
-```
+We've already created the `my-project` folder and initialized npm. Now we'll also create our `src` folder, stylesheet, and JavaScript file to round out the project structure.
 
-## Importing CSS
+1. **Create the project structure.** Run the following from `my-project`, or manually create the folder and file structure shown below.
 
-To utilize the full potential of Bootstrap and customize it to your needs, use the source files as a part of your project's bundling process.
+   ```sh
+   mkdir {src,src/js,src/scss}
+   touch src/index.html src/js/main.js src/scss/styles.scss src/scss/_custom.scss
+   ```
 
-Create your own `scss/custom.scss` to [import Bootstrap's Sass files]({{< docsref "/customize/sass#importing" >}}) and then override the [built-in custom variables]({{< docsref "/customize/sass#variable-defaults" >}}).
+   When you're done, your complete project should look like this:
 
-## Build app
+   ```text
+   my-project/
+   ├── src/
+   │   ├── js/
+   │   │   └── main.js
+   │   ├── scss/
+   │   │   ├── _custom.scss
+   │   │   └── styles.scss
+   │   └── index.html
+   ├── package-lock.json
+   └── package.json
+   ```
 
-Include `src/index.js` before the closing `</body>` tag.
+2. **Add the Parcel npm scripts.** Open the `package.json` and add the following `start` script to the `scripts` object. We'll use this script to start our Parcel development server and render the HTML file we created after it's compiled into the `dist` directory.
 
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-    <script type="module" src="./index.js"></script>
-  </body>
-</html>
-```
+   ```json
+   {
+      // ...
+      "scripts": {
+        "start": "parcel serve src/index.html --public-url / --dist-dir dist",
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      // ...
+   }
+   ```
 
-### Edit `package.json`
+3. **Fill in the `src/index.html` file.** Parcel needs a page to render, so we use our `index.html` page to setup some basic HTML, including our CSS and JavaScript files.
 
-Add `dev` and `build` scripts in your `package.json` file.
+   ```html
+   <!doctype html>
+   <html lang="en">
+     <head>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <title>Bootstrap w/ Parcel</title>
+       <link rel="stylesheet" href="scss/styles.scss">
+       <script type="module" src="js/main.js"></script>
+     </head>
+     <body>
+       <div class="container py-4 px-3 mx-auto">
+         <h1>Hello, Bootstrap and Parcel!</h1>
+         <button class="btn btn-primary">Primary button</button>
+       </div>
+     </body>
+   </html>
+   ```
 
-```json
-"scripts": {
-  "dev": "parcel ./src/index.html",
-  "prebuild": "npx rimraf build",
-  "build": "parcel build --public-url ./ ./src/index.html --dist-dir build"
-}
-```
+   Parcel can automatically detect we're using Sass and install the [Sass Parcel plugin](https://parceljs.org/languages/sass/) to support it. However, if you wish, you can also manually run `npm i --save-dev @parcel/transformer-sass`.
 
-### Run dev script
+4. **And finally, we can start Parcel.** From the `my-project` folder in your terminal, run that newly added npm script:
 
-Your app will be accessible at `http://127.0.0.1:1234`.
+   ```sh
+   npm start
+   ```
 
-```sh
-npm run dev
-```
+At this point, everything is in the right place, but we don't have any styles or JavaScript from Bootstrap yet.
 
-### Build app files
+## Import Bootstrap
 
-Built files are in the `build/` folder.
+Importing Bootstrap into Parcel requires two imports, one into our `styles.scss` and one into our `main.js`.
 
-```sh
-npm run build
-```
+1. **Import Bootstrap's CSS and JS.** Add the following to `src/scss/styles.scss` to import all of Bootstrap's source Sass.
+
+   ```scss
+   @import "~bootstrap/scss/bootstrap";
+   ```
+
+   And then add the following to `src/js/main.js` to import all of Bootstrap's JS. Popper will be imported automatically through Bootstrap.
+
+   <!-- eslint-skip -->
+   ```js
+   import * as bootstrap from 'bootstrap'
+   ```
+
+2. **And you're done! 🎉** With Bootstrap's source Sass and JS fully loaded, your local development server should now look like this.
+
+   Now you can start adding any Bootstrap components you want to use. Be sure to [checkout the complete Parcel example project](https://github.com/twbs/examples/tree/main/parcel) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
+
+<hr class="my-5">
+
+_See something wrong or out of date here? Please [open an issue on GitHub]({{< param repo >}}/issues/new/choose). Need help troubleshooting? [Search or start a discussion]({{< param repo >}}/discussions) on GitHub._
