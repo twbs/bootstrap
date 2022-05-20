@@ -56,6 +56,7 @@ export const DefaultAllowlist = {
   b: [],
   br: [],
   col: [],
+  colgroup: ['span'],
   code: [],
   div: [],
   em: [],
@@ -78,6 +79,10 @@ export const DefaultAllowlist = {
   sub: [],
   sup: [],
   strong: [],
+  table: ['span'],
+  td: ['colspan', 'rowspan'],
+  tr: [],
+  th: ['scope'],
   u: [],
   ul: []
 }
