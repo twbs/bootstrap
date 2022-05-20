@@ -214,6 +214,7 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
 
    You can also import JavaScript plugins individually as needed to keep bundle sizes down:
 
+   <!-- eslint-skip -->
    ```js
    import Alert from 'bootstrap/js/dist/alert';
 
