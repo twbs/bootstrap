@@ -79,6 +79,7 @@ With dependencies installed and our project folder ready for us to start coding,
 
 1. **Open `vite.config.js` in your editor.** Since it's blank, we'll need to add some boilerplate config to it so we can start our server. This part of the config tells Vite were to look for our project's JavaScript, where to output the compiled code to (`dist`), and how the development server should behave (pulling from the `dist` folder with hot reload).
 
+   <!-- eslint-skip -->
    ```js
    const path = require('path')
 
