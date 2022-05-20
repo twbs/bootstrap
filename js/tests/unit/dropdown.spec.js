@@ -231,13 +231,13 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown)
 
         document.documentElement.ontouchstart = noop
-        spyOn(EventHandler, 'on')
-        spyOn(EventHandler, 'off')
+        const spy = spyOn(EventHandler, 'on')
+        const spyOff = spyOn(EventHandler, 'off')
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
           expect(btnDropdown).toHaveClass('show')
           expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
-          expect(EventHandler.on).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover', noop)
+          expect(spy).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover', noop)
 
           dropdown.toggle()
         })
@@ -245,7 +245,7 @@ describe('Dropdown', () => {
         btnDropdown.addEventListener('hidden.bs.dropdown', () => {
           expect(btnDropdown).not.toHaveClass('show')
           expect(btnDropdown.getAttribute('aria-expanded')).toEqual('false')
-          expect(EventHandler.off).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover', noop)
+          expect(spyOff).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover', noop)
 
           document.documentElement.ontouchstart = defaultValueOnTouchStart
           resolve()
@@ -547,7 +547,7 @@ describe('Dropdown', () => {
           reference: virtualElement,
           popperConfig: {
             onFirstUpdate() {
-              expect(virtualElement.getBoundingClientRect).toHaveBeenCalled()
+              expect(spy).toHaveBeenCalled()
               expect(btnDropdown).toHaveClass('show')
               expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
               resolve()
@@ -555,7 +555,7 @@ describe('Dropdown', () => {
           }
         })
 
-        spyOn(virtualElement, 'getBoundingClientRect').and.callThrough()
+        const spy = spyOn(virtualElement, 'getBoundingClientRect').and.callThrough()
 
         dropdown.toggle()
       })
@@ -996,7 +996,7 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown)
 
         document.documentElement.ontouchstart = noop
-        spyOn(EventHandler, 'off')
+        const spy = spyOn(EventHandler, 'off')
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
           dropdown.hide()
@@ -1005,7 +1005,7 @@ describe('Dropdown', () => {
         btnDropdown.addEventListener('hidden.bs.dropdown', () => {
           expect(btnDropdown).not.toHaveClass('show')
           expect(btnDropdown.getAttribute('aria-expanded')).toEqual('false')
-          expect(EventHandler.off).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
 
           document.documentElement.ontouchstart = defaultValueOnTouchStart
           resolve()
@@ -1034,13 +1034,13 @@ describe('Dropdown', () => {
       expect(dropdown._popper).toBeNull()
       expect(dropdown._menu).not.toBeNull()
       expect(dropdown._element).not.toBeNull()
-      spyOn(EventHandler, 'off')
+      const spy = spyOn(EventHandler, 'off')
 
       dropdown.dispose()
 
       expect(dropdown._menu).toBeNull()
       expect(dropdown._element).toBeNull()
-      expect(EventHandler.off).toHaveBeenCalledWith(btnDropdown, Dropdown.EVENT_KEY)
+      expect(spy).toHaveBeenCalledWith(btnDropdown, Dropdown.EVENT_KEY)
     })
 
     it('should dispose dropdown with Popper', () => {
@@ -1088,13 +1088,13 @@ describe('Dropdown', () => {
 
       expect(dropdown._popper).not.toBeNull()
 
-      spyOn(dropdown._popper, 'update')
-      spyOn(dropdown, '_detectNavbar')
+      const spyUpdate = spyOn(dropdown._popper, 'update')
+      const spyDetect = spyOn(dropdown, '_detectNavbar')
 
       dropdown.update()
 
-      expect(dropdown._popper.update).toHaveBeenCalled()
-      expect(dropdown._detectNavbar).toHaveBeenCalled()
+      expect(spyUpdate).toHaveBeenCalled()
+      expect(spyDetect).toHaveBeenCalled()
     })
 
     it('should just detect navbar on update', () => {
@@ -1110,12 +1110,12 @@ describe('Dropdown', () => {
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown)
 
-      spyOn(dropdown, '_detectNavbar')
+      const spy = spyOn(dropdown, '_detectNavbar')
 
       dropdown.update()
 
       expect(dropdown._popper).toBeNull()
-      expect(dropdown._detectNavbar).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
   })
 
@@ -1891,7 +1891,7 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(triggerDropdown)
         const button = fixtureEl.querySelector('button[data-bs-toggle="dropdown"]')
 
-        spyOn(dropdown, 'toggle')
+        const spy = spyOn(dropdown, 'toggle')
 
         // Key escape
         button.focus()
@@ -1901,7 +1901,7 @@ describe('Dropdown', () => {
         button.dispatchEvent(keydownEscape)
 
         setTimeout(() => {
-          expect(dropdown.toggle).not.toHaveBeenCalled()
+          expect(spy).not.toHaveBeenCalled()
           expect(triggerDropdown).not.toHaveClass('show')
           resolve()
         }, 20)

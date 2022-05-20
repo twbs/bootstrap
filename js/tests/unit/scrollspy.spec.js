@@ -199,11 +199,11 @@ describe('ScrollSpy', () => {
           target: 'ss-target'
         })
 
-        spyOn(scrollSpy, '_process').and.callThrough()
+        const spy = spyOn(scrollSpy, '_process').and.callThrough()
 
         onScrollStop(() => {
           expect(rootEl).toHaveClass('active')
-          expect(scrollSpy._process).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           resolve()
         }, scrollSpyEl)
 
@@ -277,12 +277,12 @@ describe('ScrollSpy', () => {
           target: fixtureEl.querySelector('#ss-target')
         })
 
-        spyOn(scrollSpy, '_process').and.callThrough()
+        const spy = spyOn(scrollSpy, '_process').and.callThrough()
 
         onScrollStop(() => {
           expect(rootEl).toHaveClass('active')
           expect(scrollSpy._activeTarget).toEqual(fixtureEl.querySelector('[href="#detail"]'))
-          expect(scrollSpy._process).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           resolve()
         }, scrollSpyEl)
 
@@ -581,11 +581,11 @@ describe('ScrollSpy', () => {
       const el = fixtureEl.querySelector('.content')
       const scrollSpy = new ScrollSpy(el)
 
-      spyOn(scrollSpy._observer, 'disconnect')
+      const spy = spyOn(scrollSpy._observer, 'disconnect')
 
       scrollSpy.refresh()
 
-      expect(scrollSpy._observer.disconnect).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
   })
 
@@ -627,8 +627,8 @@ describe('ScrollSpy', () => {
       jQueryMock.elements = [div]
 
       jQueryMock.fn.scrollspy.call(jQueryMock, { rootMargin: '100px' })
-      spyOn(ScrollSpy.prototype, 'constructor')
-      expect(ScrollSpy.prototype.constructor).not.toHaveBeenCalledWith(div, { rootMargin: '100px' })
+      const spy = spyOn(ScrollSpy.prototype, 'constructor')
+      expect(spy).not.toHaveBeenCalledWith(div, { rootMargin: '100px' })
 
       const scrollspy = ScrollSpy.getInstance(div)
       expect(scrollspy).not.toBeNull()
@@ -655,7 +655,7 @@ describe('ScrollSpy', () => {
       const div = fixtureEl.querySelector('.content')
       const scrollSpy = new ScrollSpy(div)
 
-      spyOn(scrollSpy, 'refresh')
+      const spy = spyOn(scrollSpy, 'refresh')
 
       jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
       jQueryMock.elements = [div]
@@ -663,7 +663,7 @@ describe('ScrollSpy', () => {
       jQueryMock.fn.scrollspy.call(jQueryMock, 'refresh')
 
       expect(ScrollSpy.getInstance(div)).toEqual(scrollSpy)
-      expect(scrollSpy.refresh).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should throw error on undefined method', () => {
