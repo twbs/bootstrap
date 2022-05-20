@@ -102,13 +102,13 @@
     - title: Clearfix
     - title: Color & background
     - title: Colored links
-    - title: Ratio
     - title: Position
+    - title: Ratio
     - title: Stacks
-    - title: Visually hidden
     - title: Stretched link
     - title: Text truncation
     - title: Vertical rule
+    - title: Visually hidden
 
 - title: Utilities
   icon: braces-asterisk
