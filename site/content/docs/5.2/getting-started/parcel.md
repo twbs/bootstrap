@@ -7,7 +7,7 @@ toc: true
 ---
 
 {{< callout >}}
-**Want to skip to the end?** Download the source code and working demo for this guide from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/parcel). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/parcel?file=index.html) for live editing.
+**Want to skip to the end?** Download the source code and working demo for this guide from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/parcel). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/parcel?file=index.html), but Parcel isn't currently supported there.
 {{< /callout >}}
 
 ## Setup
@@ -103,26 +103,43 @@ We've already created the `my-project` folder and initialized npm. Now we'll als
    npm start
    ```
 
+   <img class="img-fluid" src="/docs/{{< param docs_version >}}/assets/img/guides/parcel-dev-server.png" alt="Parcel dev server running">
+
 At this point, everything is in the right place, but we don't have any styles or JavaScript from Bootstrap yet.
 
 ## Import Bootstrap
 
 Importing Bootstrap into Parcel requires two imports, one into our `styles.scss` and one into our `main.js`.
 
-1. **Import Bootstrap's CSS and JS.** Add the following to `src/scss/styles.scss` to import all of Bootstrap's source Sass.
+1. **Import Bootstrap's CSS.** Add the following to `src/scss/styles.scss` to import all of Bootstrap's source Sass.
 
    ```scss
    @import "~bootstrap/scss/bootstrap";
    ```
 
-   And then add the following to `src/js/main.js` to import all of Bootstrap's JS. Popper will be imported automatically through Bootstrap.
+   *You can also import our stylesheets individually if you want. [Read our Sass import docs]({{< docsref "/customize/sass#importing" >}}) for details.*
+
+2. **Import Bootstrap's JS.** Add the following to `src/js/main.js` to import all of Bootstrap's JS. Popper will be imported automatically through Bootstrap.
 
    <!-- eslint-skip -->
    ```js
    import * as bootstrap from 'bootstrap'
    ```
 
-2. **And you're done! 🎉** With Bootstrap's source Sass and JS fully loaded, your local development server should now look like this.
+   You can also import JavaScript plugins individually as needed to keep bundle sizes down:
+
+   ```js
+   import Alert from 'bootstrap/js/dist/alert';
+
+   // or, specify which plugins you need:
+   import { Tooltip, Toast, Popover } from 'bootstrap';
+   ```
+
+   *[Read our JavaScript docs]({{< docsref "/getting-started/javascript/" >}}) for more information on how to use Bootstrap's plugins.*
+
+3. **And you're done! 🎉** With Bootstrap's source Sass and JS fully loaded, your local development server should now look like this.
+
+   <img class="img-fluid" src="/docs/{{< param docs_version >}}/assets/img/guides/parcel-dev-server-bootstrap.png" alt="Parcel dev server running with Bootstrap">
 
    Now you can start adding any Bootstrap components you want to use. Be sure to [checkout the complete Parcel example project](https://github.com/twbs/examples/tree/main/parcel) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
 
