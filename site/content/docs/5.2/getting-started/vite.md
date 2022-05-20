@@ -85,11 +85,6 @@ With dependencies installed and our project folder ready for us to start coding,
 
    export default {
      root: path.resolve(__dirname, 'dist'),
-     entry: './src/js/main.js',
-     output: {
-       filename: 'main.js',
-       path: path.resolve(__dirname, 'dist')
-     },
      server: {
        port: 8080,
        hot: true
@@ -142,59 +137,30 @@ With dependencies installed and our project folder ready for us to start coding,
 
 In the next and final section to this guide, we'll setup the Vite loaders and import all of Bootstrap's CSS and JavaScript.
 
-<!--
 ## Import Bootstrap
 
-Importing Bootstrap into Webpack requires the loaders we installed in the first section. We've installed them with npm, but now Webpack needs to be configured to use them.
+<!--Importing Bootstrap into Vite requires the loaders we installed in the first section. We've installed them with npm, but now Vite needs to be configured to use them.-->
 
-1. **Setup the loaders in `webpack.config.js`.** Your configuration file is now complete and should match the snippet below. The only new part here is the `module` section.
+1. **Setup the loaders in `vite.config.js`.** Your configuration file is now complete and should match the snippet below. <!--The only new part here is the `module` section.-->
 
    ```js
    const path = require('path')
 
-   module.exports = {
+   export default {
+     root: path.resolve(__dirname, 'dist'),
      entry: './src/js/main.js',
      output: {
        filename: 'main.js',
        path: path.resolve(__dirname, 'dist')
      },
-     devServer: {
-       static: path.resolve(__dirname, 'dist'),
+     server: {
        port: 8080,
        hot: true
-     },
-     module: {
-       rules: [
-         {
-           test: /\.(scss)$/,
-           use: [
-             {
-               loader: 'style-loader'
-             },
-             {
-               loader: 'css-loader'
-             },
-             {
-               loader: 'postcss-loader',
-               options: {
-                 postcssOptions: {
-                   plugins: () => [
-                     require('autoprefixer')
-                   ]
-                 }
-               }
-             },
-             {
-               loader: 'sass-loader'
-             }
-           ]
-         }
-       ]
      }
    }
    ```
 
-   Here's a recap of why we need all these loaders. `style-loader` injects the CSS into a `<style>` element in the `<head>` of the HTML page, `css-loader` helps with using `@import` and `url()`, `postcss-loader` is required for Autoprefixer, and `sass-loader` allows us to use Sass.
+   <!--Here's a recap of why we need all these loaders. `style-loader` injects the CSS into a `<style>` element in the `<head>` of the HTML page, `css-loader` helps with using `@import` and `url()`, `postcss-loader` is required for Autoprefixer, and `sass-loader` allows us to use Sass.-->
 
 2. **Now, let's import Bootstrap's CSS.** Add the following to `src/scss/styles.scss` to import all of Bootstrap's source Sass.
 
@@ -207,7 +173,7 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
 
 3. **Next we load the CSS and import Bootstrap's JavaScript.** Add the following to `src/js/main.js` to load the CSS and import all of Bootstrap's JS. Popper will be imported automatically through Bootstrap.
 
-   <!- eslint-skip ->
+   <!-- eslint-skip -->
    ```js
    // Import our custom CSS
    import '../scss/styles.scss'
@@ -218,7 +184,7 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
 
    You can also import JavaScript plugins individually as needed to keep bundle sizes down:
 
-   <!- eslint-skip ->
+   <!-- eslint-skip -->
    ```js
    import Alert from 'bootstrap/js/dist/alert';
 
@@ -233,7 +199,6 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
    <img class="img-fluid" src="/docs/{{< param docs_version >}}/assets/img/guides/vite-dev-server-bootstrap.png" alt="Vite dev server running with Bootstrap">
 
    Now you can start adding any Bootstrap components you want to use. Be sure to [checkout the complete Vite example project](https://github.com/twbs/examples/tree/main/vite) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
--->
 
 <hr class="my-5">
 
