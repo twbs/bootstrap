@@ -7,7 +7,7 @@ toc: true
 ---
 
 {{< callout >}}
-**Want to skip to the end?** Download the source code and working demo for this guide from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/parcel). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/parcel?file=index.html), but Parcel isn't currently supported there.
+**Want to skip to the end?** Download the source code and working demo for this guide from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/parcel). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/parcel?file=index.html) but not run it because Parcel isn't currently supported there.
 {{< /callout >}}
 
 ## Setup
@@ -23,7 +23,7 @@ We're building a Parcel project with Bootstrap from scratch, so there are some p
    npm init -y
    ```
 
-2. **Install Parcel.** Next we need to install our Parcel development dependencies: .
+2. **Install Parcel.** Next we need to install our Parcel development dependencies:
 
    ```sh
    npm i --save-dev parcel
