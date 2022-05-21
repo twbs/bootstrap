@@ -35,17 +35,15 @@ We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootst
 </script>
 ```
 
-{{< callout warning >}}
 ## Incompatible plugins
 
-Due to browser limitations, some of our plugins, namely Dropdown, Tooltip and Popover plugins, cannot be used in a `<script>` tag with `module` type because they depend on Popper. For more information about the issue see [here](https://v8.dev/features/modules#specifiers).
-{{< /callout >}}
+Due to browser limitations, some of our plugins—namely Dropdown, Tooltip, and Popover—cannot be used in a `<script>` tag with `module` type because they depend on Popper. For more information about the issue see [here](https://v8.dev/features/modules#specifiers).
 
 ## Dependencies
 
 Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs.
 
-Our dropdowns, popovers and tooltips also depend on [Popper](https://popper.js.org/).
+Our dropdowns, popovers, and tooltips also depend on [Popper](https://popper.js.org/).
 
 ## Data attributes
 
@@ -55,13 +53,9 @@ Nearly all Bootstrap plugins can be enabled and configured through HTML alone wi
 {{< partial "js-data-attributes.md" >}}
 {{< /markdown >}}
 
-
-{{< callout warning >}}
 ## Selectors
 
-Currently, to query DOM elements we use the native methods `querySelector` and `querySelectorAll` for performance reasons, so you have to use [valid selectors](https://www.w3.org/TR/CSS21/syndata.html#value-def-identifier).
-If you use special selectors, for example: `collapse:Example` be sure to escape them.
-{{< /callout >}}
+We use the native `querySelector` and `querySelectorAll` methods to query DOM elements for performance reasons, so you must use [valid selectors](https://www.w3.org/TR/CSS21/syndata.html#value-def-identifier). If you use special selectors like `collapse:Example`, be sure to escape them.
 
 ## Events
 
@@ -79,7 +73,6 @@ myModal.addEventListener('show.bs.modal', event => {
 })
 ```
 
-
 ## Programmatic API
 
 All constructors accept an optional options object or nothing (which initiates a plugin with its default behavior):
@@ -93,17 +86,25 @@ const configObject = { keyboard: false }
 const modal1 = new bootstrap.Modal(myModalEl, configObject) // initialized with no keyboard
 ```
 
-If you'd like to get a particular plugin instance, each plugin exposes a `getInstance` method. In order to retrieve it directly from an element, do this: `bootstrap.Popover.getInstance(myPopoverEl)`.
-This method will return `null` if an instance is not initiated over the requested element
+If you'd like to get a particular plugin instance, each plugin exposes a `getInstance` method. For example, to retrieve an instance directly from an element:
 
-Alternatively `getOrCreateInstance` can be used to get the instance associated with a DOM element, or create a new one in case it wasn't initialized: `bootstrap.Popover.getOrCreateInstance(myPopoverEl, configObject)`.
+```js
+bootstrap.Popover.getInstance(myPopoverEl)
+```
+
+This method will return `null` if an instance is not initiated over the requested element.
+
+Alternatively, `getOrCreateInstance` can be used to get the instance associated with a DOM element, or create a new one in case it wasn't initialized.
+
+```js
+bootstrap.Popover.getOrCreateInstance(myPopoverEl, configObject)
+```
+
 In case an instance wasn't initialized, it may accept and use an optional configuration object as second argument.
 
 ### CSS selectors in constructors
 
-All plugin constructors, and in addition `getInstance` and `getOrCreateInstance` methods, can accept as first argument, a DOM element or a valid [CSS selector](#selectors).
-
-Currently, the element for the plugin is found by the `querySelector` method since our plugins support a single element only.
+In addition to the `getInstance` and `getOrCreateInstance` methods, all plugin constructors can accept a DOM element or a valid [CSS selector](#selectors) as the first argument. Plugin elements are found with the `querySelector` method since our plugins only support a single element.
 
 ```js
 const modal = new bootstrap.Modal('#myModal')
@@ -114,9 +115,7 @@ const alert = bootstrap.Alert.getOrCreateInstance('#myAlert')
 
 ### Asynchronous functions and transitions
 
-All programmatic API methods are **asynchronous** and return to the caller once the transition is started, but **before it ends**.
-
-In order to execute an action once the transition is complete, you can listen to the corresponding event.
+All programmatic API methods are **asynchronous** and return to the caller once the transition is started, but **before it ends**. In order to execute an action once the transition is complete, you can listen to the corresponding event.
 
 ```js
 const myCollapseEl = document.querySelector('#myCollapse')
@@ -140,11 +139,9 @@ carousel.to('1') // Will start sliding to the slide 1 and returns to the caller
 carousel.to('2') // !! Will be ignored, as the transition to the slide 1 is not finished !!
 ```
 
-{{< callout warning >}}
-##### `dispose` method
-Special care on `dispose` usage. It may seem right to use it directly after `hide()` but it will lead to wrong results.
+#### `dispose` method
 
-So the proper use would be something like:
+While it may seem correct to use the `dispose` method immediately after `hide()`, it will lead to incorrect results. Here's an example of the problem use:
 
 ```js
 const myModal = document.querySelector('#myModal')
@@ -154,7 +151,6 @@ myModal.addEventListener('shown.bs.hidden', event => {
   myModal.dispose()
 })
 ```
-{{< /callout >}}
 
 ### Default settings
 
@@ -165,7 +161,9 @@ You can change the default settings for a plugin by modifying the plugin's `Cons
 bootstrap.Modal.Default.keyboard = false
 ```
 
-## Exposed Methods & Properties by all BS plugins
+## Methods and properties
+
+Every Bootstrap plugin exposes the following methods and static properties.
 
 {{< bs-table "table" >}}
 | Method | Description |
@@ -176,7 +174,7 @@ bootstrap.Modal.Default.keyboard = false
 {{< /bs-table >}}
 
 {{< bs-table "table" >}}
-| Static Properties | Description |
+| Static property | Description |
 | --- | --- |
 | `NAME`  | Returns the plugin name. (Example: `bootstrap.Tooltip.NAME`) |
 | `VERSION`  | The version of each of Bootstrap's plugins can be accessed via the `VERSION` property of the plugin's constructor (Example: `bootstrap.Tooltip.VERSION`) |
@@ -253,13 +251,9 @@ const tooltip = new bootstrap.Tooltip(yourTooltipEl, {
 })
 ```
 
+## Optionally using jQuery
 
-## Still want to use jQuery? It's possible!
-
-Bootstrap 5 is designed to be used without jQuery, but it's still possible to use our components with jQuery.
-
-**If Bootstrap detects `jQuery` in the `window` object**, it'll add all of our components in jQuery's plugin system;
-this means you'll be able to do:
+**You don't need jQuery in Bootstrap 5**, but it's still possible to use our components with jQuery. If Bootstrap detects `jQuery` in the `window` object, it'll add all of our components in jQuery's plugin system. This allows you to do the following:
 
 ```js
 $('[data-bs-toggle="tooltip"]').tooltip() // to enable tooltips, with default configuration
@@ -271,7 +265,7 @@ $('#myTooltip').tooltip('show') // to trigger `show` method
 
 The same goes for our other components.
 
-### No conflict (only if you use jQuery)
+### No conflict
 
 Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances, namespace collisions can occasionally occur. If this happens, you may call `.noConflict` on the plugin you wish to revert the value of.
 
@@ -279,6 +273,8 @@ Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In 
 const bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
 $.fn.bootstrapBtn = bootstrapButton // give $().bootstrapBtn the Bootstrap functionality
 ```
+
+Bootstrap does not officially support third-party JavaScript libraries like Prototype or jQuery UI. Despite `.noConflict` and namespaced events, there may be compatibility problems that you need to fix on your own.
 
 ### jQuery events
 
@@ -290,13 +286,6 @@ $('#myTab a').on('shown.bs.tab', () => {
 })
 ```
 
+## Disabled JavaScript
 
-## No special fallbacks when JavaScript is disabled
-
-Bootstrap's plugins don't fall back particularly gracefully when JavaScript is disabled. If you care about the user experience in this case, use [`<noscript>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript) to explain the situation (and how to re-enable JavaScript) to your users, and/or add your own custom fallbacks.
-
-{{< callout warning >}}
-##### Third-party libraries
-
-**Bootstrap does not officially support third-party JavaScript libraries** like Prototype or jQuery UI. Despite `.noConflict` and namespaced events, there may be compatibility problems that you need to fix on your own.
-{{< /callout >}}
+Bootstrap's plugins have no special fallback when JavaScript is disabled. If you care about the user experience in this case, use [`<noscript>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript) to explain the situation (and how to re-enable JavaScript) to your users, and/or add your own custom fallbacks.
