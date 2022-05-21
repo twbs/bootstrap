@@ -246,7 +246,7 @@ Validation styles are available for the following form controls and components:
 <form class="was-validated">
   <div class="mb-3">
     <label for="validationTextarea" class="form-label">Textarea</label>
-    <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+    <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" required></textarea>
     <div class="invalid-feedback">
       Please enter a message in the textarea.
     </div>
