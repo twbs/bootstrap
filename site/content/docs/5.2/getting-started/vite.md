@@ -34,9 +34,7 @@ We're building a Vite project with Bootstrap from scratch, so there are some pre
    ```sh
    npm i --save bootstrap @popperjs/core
    ```
-4. **Install additional dependencies.** In addition to Vite and Bootstrap, we need a few more dependencies to properly import and bundle Bootstrap's CSS and JS with Vite. These include Sass<!--, some loaders, and Autoprefixer-->.
-
-<!--npm i save-dev autoprefixer css-loader postcss-loader sass sass-loader style-loader-->
+4. **Install additional dependencies.** In addition to Vite and Bootstrap, we need another dependency (Sass) to properly import and bundle Bootstrap's CSS.
 
    ```sh
    npm i --save-dev sass
@@ -46,25 +44,24 @@ Now that we have all the necessary dependencies installed and setup, we can get 
 
 ## Project structure
 
-We've already created the `my-project` folder and initialized npm. Now we'll also create our `src` and `dist` folders to round out the project structure. Run the following from `my-project`, or manually create the folder and file structure shown below.
+We've already created the `my-project` folder and initialized npm. Now we'll also create our `src` folder to round out the project structure. Run the following from `my-project`, or manually create the folder and file structure shown below.
 
 ```sh
-mkdir {dist,src,src/js,src/scss}
-touch dist/index.html src/js/main.js src/scss/styles.scss src/scss/_custom.scss vite.config.js
+mkdir {src,src/js,src/scss}
+touch src/index.html src/js/main.js src/scss/styles.scss src/scss/_custom.scss vite.config.js
 ```
 
 When you're done, your complete project should look like this:
 
 ```text
 my-project/
-├── dist/
-│   └── index.html
 ├── src/
 │   ├── js/
 │   │   └── main.js
 │   └── scss/
-│       ├── _custom.scss
-│       └── styles.scss
+│   |   ├── _custom.scss
+│   |   └── styles.scss
+|   └── index.html
 ├── package-lock.json
 ├── package.json
 └── vite.config.js
@@ -76,14 +73,14 @@ At this point, everything is in the right place, but Vite won't work because we 
 
 With dependencies installed and our project folder ready for us to start coding, we can now configure Vite and run our project locally.
 
-1. **Open `vite.config.js` in your editor.** Since it's blank, we'll need to add some boilerplate config to it so we can start our server. This part of the config tells Vite were to look for our project's JavaScript, where to output the compiled code to (`dist`), and how the development server should behave (pulling from the `dist` folder with hot reload).
+1. **Open `vite.config.js` in your editor.** Since it's blank, we'll need to add some boilerplate config to it so we can start our server. This part of the config tells Vite were to look for our project's JavaScript and how the development server should behave (pulling from the `src` folder with hot reload).
 
    <!-- eslint-skip -->
    ```js
    const path = require('path')
 
    export default {
-     root: path.resolve(__dirname, 'dist'),
+     root: path.resolve(__dirname, 'src'),
      server: {
        port: 8080,
        hot: true
@@ -91,7 +88,7 @@ With dependencies installed and our project folder ready for us to start coding,
    }
    ```
 
-2. **Next we create our `dist/index.html`.** This is the HTML page Vite will load in the browser to utilize the bundled CSS and JS we'll add to it in later steps. Before we can do that, we have to give it something to render and include the `output` JS from the previous step.
+2. **Next we create our `src/index.html`.** This is the HTML page Vite will load in the browser to utilize the bundled CSS and JS we'll add to it in later steps. Before we can do that, we have to give it something to render and include the `output` JS from the previous step.
 
    ```html
    <!doctype html>
@@ -106,7 +103,7 @@ With dependencies installed and our project folder ready for us to start coding,
          <h1>Hello, Bootstrap and Vite!</h1>
          <button class="btn btn-primary">Primary button</button>
        </div>
-       <script src="./main.js"></script>
+       <script type="module" src="./js/main.js"></script>
      </body>
    </html>
    ```
@@ -140,15 +137,19 @@ In the next and final section to this guide, we'll setup the Vite loaders and im
 
 <!--Importing Bootstrap into Vite requires the loaders we installed in the first section. We've installed them with npm, but now Vite needs to be configured to use them.-->
 
-1. **Setup the loaders in `vite.config.js`.** Your configuration file is now complete and should match the snippet below. <!--The only new part here is the `module` section.-->
+1. **Setup the loaders in `vite.config.js`.** Your configuration file is now complete and should match the snippet below. The only new part here is the `resolve` section.
 
    <!-- eslint-skip -->
    ```js
    const path = require('path')
 
    export default {
-     root: path.resolve(__dirname, 'dist'),
-     // TODO:
+     root: path.resolve(__dirname, 'src'),
+     resolve: {
+       alias: {
+         '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+       }
+     },
      server: {
        port: 8080,
        hot: true
