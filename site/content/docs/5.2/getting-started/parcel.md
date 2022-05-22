@@ -21,7 +21,7 @@ We're building a Parcel project with Bootstrap from scratch, so there are some p
    npm init -y
    ```
 
-2. **Install Parcel.** Unlike our Webpack guide, there's only a single build tool dependency here. Parcel will automatically install language transformers (like Sass) as it detects them.
+2. **Install Parcel.** Unlike our Webpack guide, there's only a single build tool dependency here. Parcel will automatically install language transformers (like Sass) as it detects them. We use `--save-dev` to signal that this dependency is only for development use and not for production.
 
    ```sh
    npm i --save-dev parcel
