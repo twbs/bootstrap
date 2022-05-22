@@ -242,17 +242,8 @@
 }
 
 .simple-list-example-scrollspy {
-  a {
-    padding: .25rem;
-    margin: .5rem 0;
-
-    &:focus {
-      background-color: rgba($bd-purple, .65);
-    }
-  }
-
   .active {
-    background-color: rgba($bd-purple, .15);
+    background-color: rgba(var(--bd-violet-rgb), .15);
   }
 }
 
@@ -263,12 +254,6 @@
     height: 5rem;
     margin: .25rem;
     background-color: #f5f5f5;
-  }
-}
-
-.bd-example-border-utils-0 {
-  [class^="border"] {
-    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
   }
 }
 
@@ -334,8 +319,8 @@
 
   pre {
     padding: 0;
-    margin-top: .65rem;
-    margin-bottom: .65rem;
+    margin-top: .625rem;
+    margin-bottom: .625rem;
     white-space: pre;
     background-color: transparent;
     border: 0;
