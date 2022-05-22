@@ -33,7 +33,7 @@ We're building a Parcel project with Bootstrap from scratch, so there are some p
    npm i --save bootstrap @popperjs/core
    ```
 
-Now that we have all the necessary dependencies installed and setup, we can get to work creating the project files and importing Bootstrap.
+Now that we have all the necessary dependencies installed, we can get to work creating the project files and importing Bootstrap.
 
 ## Project structure
 
@@ -85,7 +85,9 @@ With dependencies installed and our project folder ready for us to start coding,
    </html>
    ```
 
-   Parcel can automatically detect we're using Sass and install the [Sass Parcel plugin](https://parceljs.org/languages/sass/) to support it. However, if you wish, you can also manually run `npm i --save-dev @parcel/transformer-sass`.
+   We're including a little bit of Bootstrap styling here with the `div class="container"` and `<button>` so that we see when Bootstrap's CSS is loaded by Webpack.
+
+   Parcel will automatically detect we're using Sass and install the [Sass Parcel plugin](https://parceljs.org/languages/sass/) to support it. However, if you wish, you can also manually run `npm i --save-dev @parcel/transformer-sass`.
 
 2. **Add the Parcel npm scripts.** Open the `package.json` and add the following `start` script to the `scripts` object. We'll use this script to start our Parcel development server and render the HTML file we created after it's compiled into the `dist` directory.
 
@@ -117,6 +119,7 @@ Importing Bootstrap into Parcel requires two imports, one into our `styles.scss`
 1. **Import Bootstrap's CSS.** Add the following to `src/scss/styles.scss` to import all of Bootstrap's source Sass.
 
    ```scss
+   // Import all of Bootstrap's CSS
    @import "~bootstrap/scss/bootstrap";
    ```
 
@@ -126,6 +129,7 @@ Importing Bootstrap into Parcel requires two imports, one into our `styles.scss`
 
    <!-- eslint-skip -->
    ```js
+   // Import all of Bootstrap's JS
    import * as bootstrap from 'bootstrap'
    ```
 

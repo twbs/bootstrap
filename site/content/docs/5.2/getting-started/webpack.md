@@ -39,7 +39,7 @@ We're building a Webpack project with Bootstrap from scratch, so there are some 
    npm i --save-dev autoprefixer css-loader postcss-loader sass sass-loader style-loader
    ```
 
-Now that we have all the necessary dependencies installed and setup, we can get to work creating the project files and importing Bootstrap.
+Now that we have all the necessary dependencies installed, we can get to work creating the project files and importing Bootstrap.
 
 ## Project structure
 

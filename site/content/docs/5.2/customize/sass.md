@@ -22,7 +22,7 @@ your-project/
         └── scss
 ```
 
-If you've downloaded our source files and aren't using a package manager, you'll want to manually setup something similar to that structure, keeping Bootstrap's source files separate from your own.
+If you've downloaded our source files and aren't using a package manager, you'll want to manually create something similar to that structure, keeping Bootstrap's source files separate from your own.
 
 ```text
 your-project/
