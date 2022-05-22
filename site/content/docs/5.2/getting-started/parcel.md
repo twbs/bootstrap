@@ -14,8 +14,6 @@ toc: true
 
 We're building a Parcel project with Bootstrap from scratch, so there are some prerequisites and up front steps before we can really get started. This guide requires you to have Node.js installed and some familiarity with the terminal.
 
-<br>
-
 1. **Create a project folder and setup npm.** We'll create the `my-project` folder and initialize npm with the `-y` argument to avoid it asking us all the interactive questions.
 
    ```sh
@@ -23,7 +21,7 @@ We're building a Parcel project with Bootstrap from scratch, so there are some p
    npm init -y
    ```
 
-2. **Install Parcel.** Next we need to install our Parcel development dependencies:
+2. **Install Parcel.** Unlike our Webpack guide, there's only a single build tool dependency here. Parcel will automatically install language transformers (like Sass) as it detects them.
 
    ```sh
    npm i --save-dev parcel
@@ -35,46 +33,38 @@ We're building a Parcel project with Bootstrap from scratch, so there are some p
    npm i --save bootstrap @popperjs/core
    ```
 
+Now that we have all the necessary dependencies installed and setup, we can get to work creating the project files and importing Bootstrap.
+
 ## Project structure
 
-We've already created the `my-project` folder and initialized npm. Now we'll also create our `src` folder, stylesheet, and JavaScript file to round out the project structure.
+We've already created the `my-project` folder and initialized npm. Now we'll also create our `src` folder, stylesheet, and JavaScript file to round out the project structure. Run the following from `my-project`, or manually create the folder and file structure shown below.
 
-1. **Create the project structure.** Run the following from `my-project`, or manually create the folder and file structure shown below.
+```sh
+mkdir {src,src/js,src/scss}
+touch src/index.html src/js/main.js src/scss/styles.scss
+```
 
-   ```sh
-   mkdir {src,src/js,src/scss}
-   touch src/index.html src/js/main.js src/scss/styles.scss src/scss/_custom.scss
-   ```
+When you're done, your complete project should look like this:
 
-   When you're done, your complete project should look like this:
+```text
+my-project/
+├── src/
+│   ├── js/
+│   │   └── main.js
+│   ├── scss/
+│   │   └── styles.scss
+│   └── index.html
+├── package-lock.json
+└── package.json
+```
 
-   ```text
-   my-project/
-   ├── src/
-   │   ├── js/
-   │   │   └── main.js
-   │   ├── scss/
-   │   │   ├── _custom.scss
-   │   │   └── styles.scss
-   │   └── index.html
-   ├── package-lock.json
-   └── package.json
-   ```
+At this point, everything is in the right place, but Parcel needs an HTML page and npm script to start our server.
 
-2. **Add the Parcel npm scripts.** Open the `package.json` and add the following `start` script to the `scripts` object. We'll use this script to start our Parcel development server and render the HTML file we created after it's compiled into the `dist` directory.
+## Configure Parcel
 
-   ```json
-   {
-      // ...
-      "scripts": {
-        "start": "parcel serve src/index.html --public-url / --dist-dir dist",
-        "test": "echo \"Error: no test specified\" && exit 1"
-      },
-      // ...
-   }
-   ```
+With dependencies installed and our project folder ready for us to start coding, we can now configure Parcel and run our project locally. Parcel itself requires no configuration file by design, but we do need an npm script and an HTML file to start our server.
 
-3. **Fill in the `src/index.html` file.** Parcel needs a page to render, so we use our `index.html` page to setup some basic HTML, including our CSS and JavaScript files.
+1. **Fill in the `src/index.html` file.** Parcel needs a page to render, so we use our `index.html` page to setup some basic HTML, including our CSS and JavaScript files.
 
    ```html
    <!doctype html>
@@ -97,7 +87,20 @@ We've already created the `my-project` folder and initialized npm. Now we'll als
 
    Parcel can automatically detect we're using Sass and install the [Sass Parcel plugin](https://parceljs.org/languages/sass/) to support it. However, if you wish, you can also manually run `npm i --save-dev @parcel/transformer-sass`.
 
-4. **And finally, we can start Parcel.** From the `my-project` folder in your terminal, run that newly added npm script:
+2. **Add the Parcel npm scripts.** Open the `package.json` and add the following `start` script to the `scripts` object. We'll use this script to start our Parcel development server and render the HTML file we created after it's compiled into the `dist` directory.
+
+   ```json
+   {
+      // ...
+      "scripts": {
+        "start": "parcel serve src/index.html --public-url / --dist-dir dist",
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      // ...
+   }
+   ```
+
+3. **And finally, we can start Parcel.** From the `my-project` folder in your terminal, run that newly added npm script:
 
    ```sh
    npm start
@@ -105,7 +108,7 @@ We've already created the `my-project` folder and initialized npm. Now we'll als
 
    <img class="img-fluid" src="/docs/{{< param docs_version >}}/assets/img/guides/parcel-dev-server.png" alt="Parcel dev server running">
 
-At this point, everything is in the right place, but we don't have any styles or JavaScript from Bootstrap yet.
+In the next and final section to this guide, we'll import all of Bootstrap's CSS and JavaScript.
 
 ## Import Bootstrap
 
@@ -130,10 +133,10 @@ Importing Bootstrap into Parcel requires two imports, one into our `styles.scss`
 
    <!-- eslint-skip -->
    ```js
-   import Alert from 'bootstrap/js/dist/alert';
+   import Alert from 'bootstrap/js/dist/alert'
 
    // or, specify which plugins you need:
-   import { Tooltip, Toast, Popover } from 'bootstrap';
+   import { Tooltip, Toast, Popover } from 'bootstrap'
    ```
 
    *[Read our JavaScript docs]({{< docsref "/getting-started/javascript/" >}}) for more information on how to use Bootstrap's plugins.*
@@ -144,6 +147,6 @@ Importing Bootstrap into Parcel requires two imports, one into our `styles.scss`
 
    Now you can start adding any Bootstrap components you want to use. Be sure to [checkout the complete Parcel example project](https://github.com/twbs/examples/tree/main/parcel) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
 
-<hr class="my-5">
-
-_See something wrong or out of date here? Please [open an issue on GitHub]({{< param repo >}}/issues/new/choose). Need help troubleshooting? [Search or start a discussion]({{< param repo >}}/discussions) on GitHub._
+{{< markdown >}}
+{{< partial "guide-footer.md" >}}
+{{< /markdown >}}
