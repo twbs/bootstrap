@@ -133,6 +133,7 @@
   --#{$prefix}btn-disabled-color: #{$btn-link-disabled-color};
   --#{$prefix}btn-disabled-border-color: transparent;
   --#{$prefix}btn-box-shadow: none;
+  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix(color-contrast($primary), $primary, 15%))};
 
   text-decoration: $link-decoration;
 

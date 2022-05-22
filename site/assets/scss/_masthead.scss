@@ -26,13 +26,22 @@
   }
 
   .highlight {
-    padding: .5rem 4rem .5rem 1rem;
-    line-height: 1.25;
+    width: 100%;
+    padding: .5rem 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     background-color: rgba(var(--bs-body-color-rgb), .075);
     @include border-radius(.5rem);
+
+    @include media-breakpoint-up(lg) {
+      padding-right: 4rem;
+    }
   }
   .btn-clipboard {
-    margin-top: .4rem;
+    position: absolute;
+    top: -.125rem;
+    right: 0;
     background-color: transparent;
   }
 
