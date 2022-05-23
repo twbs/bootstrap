@@ -6,6 +6,8 @@ group: getting-started
 toc: true
 ---
 
+<img class="mb-4 img-fluid rounded-3" srcset="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-webpack.png, /docs/{{< param docs_version >}}/assets/img/guides/bootstrap-webpack@2x.png 2x" src="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-webpack.png" width="2000" height="1000" alt="">
+
 {{< callout >}}
 **Want to skip to the end?** Download the source code and working demo for this guide from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/webpack). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/webpack?file=index.html) for live editing.
 {{< /callout >}}
@@ -13,8 +15,6 @@ toc: true
 ## Setup
 
 We're building a Webpack project with Bootstrap from scratch, so there are some prerequisites and up front steps before we can really get started. This guide requires you to have Node.js installed and some familiarity with the terminal.
-
-<br>
 
 1. **Create a project folder and setup npm.** We'll create the `my-project` folder and initialize npm with the `-y` argument to avoid it asking us all the interactive questions.
 
@@ -41,7 +41,7 @@ We're building a Webpack project with Bootstrap from scratch, so there are some 
    npm i --save-dev autoprefixer css-loader postcss-loader sass sass-loader style-loader
    ```
 
-Now that we have all the necessary dependencies installed and setup, we can get to work creating the project files and importing Bootstrap.
+Now that we have all the necessary dependencies installed, we can get to work creating the project files and importing Bootstrap.
 
 ## Project structure
 
@@ -49,7 +49,7 @@ We've already created the `my-project` folder and initialized npm. Now we'll als
 
 ```sh
 mkdir {dist,src,src/js,src/scss}
-touch dist/index.html src/js/main.js src/scss/styles.scss src/scss/_custom.scss webpack.config.js
+touch dist/index.html src/js/main.js src/scss/styles.scss webpack.config.js
 ```
 
 When you're done, your complete project should look like this:
@@ -62,7 +62,6 @@ my-project/
 │   ├── js/
 │   │   └── main.js
 │   └── scss/
-│       ├── _custom.scss
 │       └── styles.scss
 ├── package-lock.json
 ├── package.json
@@ -216,10 +215,10 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
 
    <!-- eslint-skip -->
    ```js
-   import Alert from 'bootstrap/js/dist/alert';
+   import Alert from 'bootstrap/js/dist/alert'
 
    // or, specify which plugins you need:
-   import { Tooltip, Toast, Popover } from 'bootstrap';
+   import { Tooltip, Toast, Popover } from 'bootstrap'
    ```
 
    *[Read our JavaScript docs]({{< docsref "/getting-started/javascript/" >}}) for more information on how to use Bootstrap's plugins.*
@@ -230,6 +229,6 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
 
    Now you can start adding any Bootstrap components you want to use. Be sure to [checkout the complete Webpack example project](https://github.com/twbs/examples/tree/main/webpack) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
 
-<hr class="my-5">
-
-_See something wrong or out of date here? Please [open an issue on GitHub]({{< param repo >}}/issues/new/choose). Need help troubleshooting? [Search or start a discussion]({{< param repo >}}/discussions) on GitHub._
+{{< markdown >}}
+{{< partial "guide-footer.md" >}}
+{{< /markdown >}}
