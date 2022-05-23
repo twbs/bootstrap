@@ -6,6 +6,8 @@ group: getting-started
 toc: true
 ---
 
+<img class="mb-4 img-fluid rounded-3" srcset="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-vite.png, /docs/{{< param docs_version >}}/assets/img/guides/bootstrap-vite@2x.png 2x" src="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-vite.png" width="2000" height="1000" alt="">
+
 {{< callout >}}
 **Want to skip to the end?** Download the source code and working demo for this guide from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/vite). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/vite?file=index.html) for live editing.
 {{< /callout >}}
@@ -14,8 +16,6 @@ toc: true
 
 We're building a Vite project with Bootstrap from scratch, so there are some prerequisites and up front steps before we can really get started. This guide requires you to have Node.js installed and some familiarity with the terminal.
 
-<br>
-
 1. **Create a project folder and setup npm.** We'll create the `my-project` folder and initialize npm with the `-y` argument to avoid it asking us all the interactive questions.
 
    ```sh
@@ -23,7 +23,7 @@ We're building a Vite project with Bootstrap from scratch, so there are some pre
    npm init -y
    ```
 
-2. **Install Vite.** Next we need to install our Vite development dependencies: `vite` for the core of Vite. We use `--save-dev` to signal that these dependencies are only for development use and not for production.
+2. **Install Vite.** Unlike our Webpack guide, there’s only a single build tool dependency here. We use `--save-dev` to signal that this dependency is only for development use and not for production.
 
    ```sh
    npm i --save-dev vite
@@ -34,7 +34,7 @@ We're building a Vite project with Bootstrap from scratch, so there are some pre
    ```sh
    npm i --save bootstrap @popperjs/core
    ```
-4. **Install additional dependencies.** In addition to Vite and Bootstrap, we need another dependency (Sass) to properly import and bundle Bootstrap's CSS.
+4. **Install additional dependency.** In addition to Vite and Bootstrap, we need another dependency (Sass) to properly import and bundle Bootstrap's CSS.
 
    ```sh
    npm i --save-dev sass
@@ -44,11 +44,11 @@ Now that we have all the necessary dependencies installed and setup, we can get 
 
 ## Project structure
 
-We've already created the `my-project` folder and initialized npm. Now we'll also create our `src` folder to round out the project structure. Run the following from `my-project`, or manually create the folder and file structure shown below.
+We've already created the `my-project` folder and initialized npm. Now we'll also create our `src` folder, stylesheet, and JavaScript file to round out the project structure. Run the following from `my-project`, or manually create the folder and file structure shown below.
 
 ```sh
 mkdir {src,src/js,src/scss}
-touch src/index.html src/js/main.js src/scss/styles.scss src/scss/_custom.scss vite.config.js
+touch src/index.html src/js/main.js src/scss/styles.scss vite.config.js
 ```
 
 When you're done, your complete project should look like this:
@@ -59,7 +59,6 @@ my-project/
 │   ├── js/
 │   │   └── main.js
 │   └── scss/
-│   |   ├── _custom.scss
 │   |   └── styles.scss
 |   └── index.html
 ├── package-lock.json
@@ -88,7 +87,7 @@ With dependencies installed and our project folder ready for us to start coding,
    }
    ```
 
-2. **Next we create our `src/index.html`.** This is the HTML page Vite will load in the browser to utilize the bundled CSS and JS we'll add to it in later steps. Before we can do that, we have to give it something to render and include the `output` JS from the previous step.
+2. **Next we fill in `src/index.html`.** This is the HTML page Vite will load in the browser to utilize the bundled CSS and JS we'll add to it in later steps.
 
    ```html
    <!doctype html>
@@ -131,13 +130,11 @@ With dependencies installed and our project folder ready for us to start coding,
 
    <img class="img-fluid" src="/docs/{{< param docs_version >}}/assets/img/guides/vite-dev-server.png" alt="Vite dev server running">
 
-In the next and final section to this guide, we'll setup the Vite loaders and import all of Bootstrap's CSS and JavaScript.
+In the next and final section to this guide, we’ll import all of Bootstrap’s CSS and JavaScript.
 
 ## Import Bootstrap
 
-<!--Importing Bootstrap into Vite requires the loaders we installed in the first section. We've installed them with npm, but now Vite needs to be configured to use them.-->
-
-1. **Setup the loaders in `vite.config.js`.** Your configuration file is now complete and should match the snippet below. The only new part here is the `resolve` section.
+1. **Set up Bootstrap Sass import in `vite.config.js`.** Your configuration file is now complete and should match the snippet below. The only new part here is the `resolve` section.
 
    <!-- eslint-skip -->
    ```js
@@ -156,8 +153,6 @@ In the next and final section to this guide, we'll setup the Vite loaders and im
      }
    }
    ```
-
-   <!--Here's a recap of why we need all these loaders. `style-loader` injects the CSS into a `<style>` element in the `<head>` of the HTML page, `css-loader` helps with using `@import` and `url()`, `postcss-loader` is required for Autoprefixer, and `sass-loader` allows us to use Sass.-->
 
 2. **Now, let's import Bootstrap's CSS.** Add the following to `src/scss/styles.scss` to import all of Bootstrap's source Sass.
 
@@ -197,6 +192,6 @@ In the next and final section to this guide, we'll setup the Vite loaders and im
 
    Now you can start adding any Bootstrap components you want to use. Be sure to [checkout the complete Vite example project](https://github.com/twbs/examples/tree/main/vite) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
 
-<hr class="my-5">
-
-_See something wrong or out of date here? Please [open an issue on GitHub]({{< param repo >}}/issues/new/choose). Need help troubleshooting? [Search or start a discussion]({{< param repo >}}/discussions) on GitHub._
+{{< markdown >}}
+{{< partial "guide-footer.md" >}}
+{{< /markdown >}}
