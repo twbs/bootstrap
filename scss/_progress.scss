@@ -12,7 +12,7 @@
   // scss-docs-start progress-css-vars
   --#{$prefix}progress-height: #{$progress-height};
   @include rfs($progress-font-size, --#{$prefix}progress-font-size);
-  --#{$prefix}progress-bg: #{$progress-bg}; // stylelint-disable-line custom-property-empty-line-before
+  --#{$prefix}progress-bg: #{$progress-bg};
   --#{$prefix}progress-border-radius: #{$progress-border-radius};
   --#{$prefix}progress-box-shadow: #{$progress-box-shadow};
   --#{$prefix}progress-bar-color: #{$progress-bar-color};

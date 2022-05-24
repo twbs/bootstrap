@@ -24,14 +24,14 @@
 
   {{- if eq $show_markup true -}}
     {{- if eq $show_preview true -}}
-      <div class="d-flex align-items-center highlight-toolbar bg-light  ps-3 pe-2 py-1">
+      <div class="d-flex align-items-center highlight-toolbar bg-light ps-3 pe-2 py-1">
         <small class="font-monospace text-muted text-uppercase">{{- $lang -}}</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
-            <svg class="bi" width="1em" height="1em" fill="currentColor" role="img" aria-label="Copy"><use xlink:href="#lightning-charge-fill"/></svg>
+            <svg class="bi" role="img" aria-label="Try it"><use xlink:href="#lightning-charge-fill"/></svg>
           </button>
-          <button type="button" class="btn-clipboard" title="Copy to clipboard">
-            <svg class="bi" width="1em" height="1em" fill="currentColor" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg>
+          <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
+            <svg class="bi" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg>
           </button>
         </div>
       </div>

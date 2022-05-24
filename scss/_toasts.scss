@@ -5,7 +5,7 @@
   --#{$prefix}toast-spacing: #{$toast-spacing};
   --#{$prefix}toast-max-width: #{$toast-max-width};
   @include rfs($toast-font-size, --#{$prefix}toast-font-size);
-  --#{$prefix}toast-color: #{$toast-color}; // stylelint-disable-line custom-property-empty-line-before
+  --#{$prefix}toast-color: #{$toast-color};
   --#{$prefix}toast-bg: #{$toast-background-color};
   --#{$prefix}toast-border-width: #{$toast-border-width};
   --#{$prefix}toast-border-color: #{$toast-border-color};
