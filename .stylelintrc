@@ -3,7 +3,6 @@
     "stylelint-config-twbs-bootstrap"
   ],
   "rules": {
-    "custom-property-empty-line-before": null,
     "declaration-property-value-disallowed-list": {
       "border": "none",
       "outline": "none"
