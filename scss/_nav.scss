@@ -37,10 +37,13 @@
 
   .nav-link {
     margin-bottom: -$nav-tabs-border-width;
+    background-color: transparent;
     border: $nav-tabs-border-width solid transparent;
     @include border-top-radius($nav-tabs-border-radius);
 
     @include hover-focus() {
+      // Prevents active .nav-link tab overlapping focus outline of previous/next .nav-link
+      isolation: isolate;
       border-color: $nav-tabs-link-hover-border-color;
     }
 
@@ -73,6 +76,8 @@
 
 .nav-pills {
   .nav-link {
+    background: none;
+    border: 0;
     @include border-radius($nav-pills-border-radius);
   }
 
