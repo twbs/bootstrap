@@ -13,7 +13,7 @@
   display: block;
   min-height: $font-size-base * $line-height-base;
   padding-left: $custom-control-gutter + $custom-control-indicator-size;
-  color-adjust: exact; // Keep themed appearance for print
+  print-color-adjust: exact; // Keep themed appearance for print
 }
 
 .custom-control-inline {
@@ -91,7 +91,7 @@
     pointer-events: none;
     content: "";
     background-color: $custom-control-indicator-bg;
-    border: $custom-control-indicator-border-color solid $custom-control-indicator-border-width;
+    border: $custom-control-indicator-border-width solid $custom-control-indicator-border-color;
     @include box-shadow($custom-control-indicator-box-shadow);
   }
 
