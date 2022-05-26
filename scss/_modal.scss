@@ -5,6 +5,18 @@
 // .modal-dialog    - positioning shell for the actual modal
 // .modal-content   - actual modal w/ bg and corners and stuff
 
+// scss-docs-start modal-sass-deps
+// @import "variables";
+// @import "maps";
+// @import "mixins";
+// @import "utilities";
+// @import "root";
+// @import "reboot";
+// @import "type";
+// @import "transitions";
+// @import "close";
+// @import "modal";
+// scss-docs-end modal-sass-deps
 
 // Container that the modal scrolls within
 .modal {

@@ -768,6 +768,10 @@ Another override is the option to pop up a modal that covers the user viewport, 
 
 ## CSS
 
+### Dependencies
+
+{{< scss-docs name="modal-sass-deps" file="scss/_modal.scss" >}}
+
 ### Variables
 
 {{< added-in "5.2.0" >}}
