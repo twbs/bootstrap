@@ -392,7 +392,6 @@ New utilities can be added to the default `$utilities` map with a `map-merge`. M
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
-@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities,
@@ -405,6 +404,8 @@ $utilities: map-merge(
     )
   )
 );
+
+@import "bootstrap/scss/utilities/api";
 ```
 
 ### Modify utilities
@@ -417,7 +418,6 @@ Modify existing utilities in the default `$utilities` map with `map-get` and `ma
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
-@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities,
@@ -433,6 +433,8 @@ $utilities: map-merge(
     ),
   )
 );
+
+@import "bootstrap/scss/utilities/api";
 ```
 
 #### Enable responsive
@@ -445,7 +447,6 @@ You can enable responsive classes for an existing set of utilities that are not 
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
-@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities, (
@@ -455,6 +456,8 @@ $utilities: map-merge(
     ),
   )
 );
+
+@import "bootstrap/scss/utilities/api";
 ```
 
 This will now generate responsive variations of `.border` and `.border-0` for each breakpoint. Your generated CSS will look like this:
@@ -499,7 +502,6 @@ Missing v4 utilities, or used to another naming convention? The utilities API ca
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
-@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities, (
@@ -509,11 +511,13 @@ $utilities: map-merge(
     ),
   )
 );
+
+@import "bootstrap/scss/utilities/api";
 ```
 
 ### Remove utilities
 
-Remove any of the default utilities by setting the group key to `null`. For example, to remove all our `width` utilities, create a `$utilities` `map-merge` and add `"width": null` within.
+Remove any of the default utilities with the [`map-remove()` Sass function](https://sass-lang.com/documentation/modules/map#remove).
 
 ```scss
 @import "bootstrap/scss/functions";
@@ -521,7 +525,21 @@ Remove any of the default utilities by setting the group key to `null`. For exam
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
+
+// Remove multiple utilities with a comma-separated list
+$utilities: map-remove($utilities, "width", "float");
+
 @import "bootstrap/scss/utilities/api";
+```
+
+You can also use the [`map-merge()` Sass function](https://sass-lang.com/documentation/modules/map#merge) and set the group key to `null` to remove the utility.
+
+```scss
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
 
 $utilities: map-merge(
   $utilities,
@@ -529,6 +547,44 @@ $utilities: map-merge(
     "width": null
   )
 );
+
+@import "bootstrap/scss/utilities/api";
+```
+
+### Add, remove, modify
+
+You can add, remove, and modify many utilities all at once with the [`map-merge()` Sass function](https://sass-lang.com/documentation/modules/map#merge). Here's how you can combine the previous examples into one larger map.
+
+```scss
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    // Remove the `width` utility
+    "width": null,
+
+    // Make an existing utility responsive
+    "border": map-merge(
+      map-get($utilities, "border"),
+      ( responsive: true ),
+    ),
+
+    // Add new utilities
+    "cursor": (
+      property: cursor,
+      class: cursor,
+      responsive: true,
+      values: auto pointer grab,
+    )
+  )
+);
+
+@import "bootstrap/scss/utilities/api";
 ```
 
 #### Remove utility in RTL

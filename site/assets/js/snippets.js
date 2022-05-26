@@ -1,5 +1,7 @@
-// NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
-// IT'S ALL JUST JUNK FOR OUR DOCS!
+// NOTICE!!! Initially embedded in our docs this JavaScript
+// file contains elements that can help you create reproducible
+// use cases in StackBlitz for instance.
+// In a real project please adapt this content to your needs.
 // ++++++++++++++++++++++++++++++++++++++++++
 
 /*!
@@ -15,18 +17,28 @@
 (() => {
   'use strict'
 
-  // Tooltip and popover demos
-  // Tooltip and popover demos
+  // --------
+  // Tooltips
+  // --------
+  // Instanciate all tooltips in a docs or StackBlitz page
   document.querySelectorAll('[data-bs-toggle="tooltip"]')
     .forEach(tooltip => {
       new bootstrap.Tooltip(tooltip)
     })
 
+  // --------
+  // Popovers
+  // --------
+  // Instanciate all popovers in a docs or StackBlitz page
   document.querySelectorAll('[data-bs-toggle="popover"]')
     .forEach(popover => {
       new bootstrap.Popover(popover)
     })
 
+  // -------------------------------
+  // Toasts
+  // -------------------------------
+  // Used by 'Placement' example in docs or StackBlitz
   const toastPlacement = document.getElementById('toastPlacement')
   if (toastPlacement) {
     document.getElementById('selectToastPlacement').addEventListener('change', function () {
@@ -38,6 +50,7 @@
     })
   }
 
+  // Instanciate all toasts in a docs page only
   document.querySelectorAll('.bd-example .toast')
     .forEach(toastNode => {
       const toast = new bootstrap.Toast(toastNode, {
@@ -47,6 +60,7 @@
       toast.show()
     })
 
+  // Instanciate all toasts in a docs page only
   const toastTrigger = document.getElementById('liveToastBtn')
   const toastLiveExample = document.getElementById('liveToast')
   if (toastTrigger) {
@@ -57,6 +71,10 @@
     })
   }
 
+  // -------------------------------
+  // Alerts
+  // -------------------------------
+  // Used in 'Show live toast' example in docs or StackBlitz
   const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
   const alertTrigger = document.getElementById('liveAlertBtn')
 
@@ -78,13 +96,19 @@
     })
   }
 
-  // Indeterminate checkbox example
+  // -------------------------------
+  // Checks & Radios
+  // -------------------------------
+  // Indeterminate checkbox example in docs and StackBlitz
   document.querySelectorAll('.bd-example-indeterminate [type="checkbox"]')
     .forEach(checkbox => {
       checkbox.indeterminate = true
     })
 
-  // Disable empty links in docs examples
+  // -------------------------------
+  // Links
+  // -------------------------------
+  // Disable empty links in docs examples only
   document.querySelectorAll('.bd-content [href="#"]')
     .forEach(link => {
       link.addEventListener('click', event => {
@@ -92,7 +116,10 @@
       })
     })
 
-  // Modal relatedTarget demo
+  // -------------------------------
+  // Modal
+  // -------------------------------
+  // Modal 'Varying modal content' example in docs and StackBlitz
   const exampleModal = document.getElementById('exampleModal')
   if (exampleModal) {
     exampleModal.addEventListener('show.bs.modal', event => {
@@ -110,7 +137,10 @@
     })
   }
 
-  // Offcanvas demo
+  // -------------------------------
+  // Offcanvas
+  // -------------------------------
+  // 'Offcanvas components' example in docs only
   const myOffcanvas = document.querySelector('.bd-example-offcanvas #offcanvas')
   if (myOffcanvas) {
     myOffcanvas.addEventListener('show.bs.offcanvas', event => {

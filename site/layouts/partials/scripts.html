@@ -26,11 +26,16 @@
   document.querySelectorAll('.btn-edit').forEach(btn => {
     btn.addEventListener('click', event => {
       const htmlSnippet = event.target.closest('.bd-code-snippet').querySelector('.bd-example').innerHTML
-      StackBlitzSDK.openBootstrapSnippet(htmlSnippet)
+
+      // Get extra classes for this example except '.bd-example'
+      const classes = Array.from(event.target.closest('.bd-code-snippet').querySelector('.bd-example').classList).filter(x => x !== 'bd-example').join(' ')
+
+      const jsSnippet = event.target.closest('.bd-code-snippet').querySelector('.btn-edit').getAttribute('data-js-snippet')
+      StackBlitzSDK.openBootstrapSnippet(htmlSnippet, jsSnippet, classes)
     })
   })
 
-  StackBlitzSDK.openBootstrapSnippet = snippet => {
+  StackBlitzSDK.openBootstrapSnippet = (htmlSnippet, jsSnippet, classes) => {
     const markup = `<!doctype html>
 <html lang="en">
   <head>
@@ -38,24 +43,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ .Site.Params.cdn.css }}" rel="stylesheet">
     <title>Bootstrap Example</title>
+    <${'script'} src="{{ .Site.Params.cdn.js_bundle }}"></${'script'}>
   </head>
-  <body>
+  <body class="p-3 ${classes}">
 
     <!-- Example Code -->
-${snippet.replace(/^/gm, '    ')}
+${htmlSnippet.replace(/^/gm, '    ')}
     <!-- End Example Code -->
-
-    <${'script'} src="{{ .Site.Params.cdn.js_bundle }}"></${'script'}>
   </body>
 </html>`
 
+    const jsSnippetContent = jsSnippet ? '{{ os.ReadFile "site/assets/js/snippets.js" }}' : null
     const project = {
       files: {
-        'index.html': markup
+        'index.html': markup,
+        'index.js': jsSnippetContent
       },
       title: 'Bootstrap Example',
       description: `Official example from ${window.location.href}`,
-      template: 'html',
+      template: jsSnippet ? 'javascript' : 'html',
       tags: ['bootstrap']
     }
 
