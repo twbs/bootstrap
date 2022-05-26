@@ -4,6 +4,7 @@
   `args` are all optional and can be one of the following:
     * id: the `div`'s id - default: ""
     * class: any extra class(es) to be added to the `div` - default: ""
+    * js_snippet: add extra JS snippet to StackBlitz - default: `false`
     * show_preview: if the preview should be output in the HTML - default: `true`
     * show_markup: if the markup should be output in the HTML - default: `true`
 */ -}}
@@ -13,6 +14,7 @@
 {{- $lang := .Get "lang" | default "html" -}}
 {{- $show_preview := .Get "show_preview" | default true -}}
 {{- $show_markup := .Get "show_markup" | default true -}}
+{{- $js_snippet := .Get "js_snippet" | default false -}}
 {{- $input := .Inner -}}
 
 <div class="bd-example-snippet bd-code-snippet">
@@ -27,7 +29,7 @@
       <div class="d-flex align-items-center highlight-toolbar bg-light ps-3 pe-2 py-1">
         <small class="font-monospace text-muted text-uppercase">{{- $lang -}}</small>
         <div class="d-flex ms-auto">
-          <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
+          <button type="button" class="btn-edit text-nowrap"{{ with $js_snippet }} data-js-snippet="{{ $js_snippet }}"{{ end }} title="Try it on StackBlitz">
             <svg class="bi" role="img" aria-label="Try it"><use xlink:href="#lightning-charge-fill"/></svg>
           </button>
           <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">

@@ -197,7 +197,7 @@ Building on the above example, you can create different toast color schemes with
 
 Place toasts with custom CSS as you need them. The top right is often used for notifications, as is the top middle. If you're only ever going to show one toast at a time, put the positioning styles right on the `.toast`.
 
-{{< example >}}
+{{< example js_snippet="true" >}}
 <form>
   <div class="mb-3">
     <label for="selectToastPlacement">Toast placement</label>
