@@ -392,7 +392,6 @@ New utilities can be added to the default `$utilities` map with a `map-merge`. M
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
-@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities,
@@ -405,6 +404,8 @@ $utilities: map-merge(
     )
   )
 );
+
+@import "bootstrap/scss/utilities/api";
 ```
 
 ### Modify utilities
@@ -417,7 +418,6 @@ Modify existing utilities in the default `$utilities` map with `map-get` and `ma
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
-@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities,
@@ -433,6 +433,8 @@ $utilities: map-merge(
     ),
   )
 );
+
+@import "bootstrap/scss/utilities/api";
 ```
 
 #### Enable responsive
@@ -445,7 +447,6 @@ You can enable responsive classes for an existing set of utilities that are not 
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
-@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities, (
@@ -455,6 +456,8 @@ $utilities: map-merge(
     ),
   )
 );
+
+@import "bootstrap/scss/utilities/api";
 ```
 
 This will now generate responsive variations of `.border` and `.border-0` for each breakpoint. Your generated CSS will look like this:
@@ -499,7 +502,6 @@ Missing v4 utilities, or used to another naming convention? The utilities API ca
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
-@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities, (
@@ -509,6 +511,8 @@ $utilities: map-merge(
     ),
   )
 );
+
+@import "bootstrap/scss/utilities/api";
 ```
 
 ### Remove utilities
@@ -521,7 +525,6 @@ Remove any of the default utilities by setting the group key to `null`. For exam
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
-@import "bootstrap/scss/utilities/api";
 
 $utilities: map-merge(
   $utilities,
@@ -529,6 +532,8 @@ $utilities: map-merge(
     "width": null
   )
 );
+
+@import "bootstrap/scss/utilities/api";
 ```
 
 #### Remove utility in RTL
