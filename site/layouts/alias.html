@@ -1,1 +1,0 @@
-{{ partial "redirect" .Permalink }}
