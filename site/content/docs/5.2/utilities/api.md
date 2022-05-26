@@ -568,7 +568,7 @@ $utilities: map-merge(
     // Remove the `width` utility
     "width": null,
 
-    // Make an existing utility reponsive
+    // Make an existing utility responsive
     "border": map-merge(
       map-get($utilities, "border"),
       ( responsive: true ),
