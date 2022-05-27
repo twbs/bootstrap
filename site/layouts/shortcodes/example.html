@@ -4,17 +4,20 @@
   `args` are all optional and can be one of the following:
     * id: the `div`'s id - default: ""
     * class: any extra class(es) to be added to the `div` - default: ""
-    * js_snippet: add extra JS snippet to StackBlitz - default: `false`
-    * show_preview: if the preview should be output in the HTML - default: `true`
+    * lang: language used to display the code - default: "html"
+    * sb_hide: hide edit StackBlitz button - default `false`
+    * sb_js_snippet: add extra JS snippet to StackBlitz - default: `false`
     * show_markup: if the markup should be output in the HTML - default: `true`
+    * show_preview: if the preview should be output in the HTML - default: `true`
 */ -}}
 
 {{- $id := .Get "id" -}}
 {{- $class := .Get "class" -}}
 {{- $lang := .Get "lang" | default "html" -}}
-{{- $show_preview := .Get "show_preview" | default true -}}
+{{- $sb_hide := .Get "sb_hide" | default false -}}
+{{- $sb_js_snippet := .Get "sb_js_snippet" | default false -}}
 {{- $show_markup := .Get "show_markup" | default true -}}
-{{- $js_snippet := .Get "js_snippet" | default false -}}
+{{- $show_preview := .Get "show_preview" | default true -}}
 {{- $input := .Inner -}}
 
 <div class="bd-example-snippet bd-code-snippet">
@@ -29,9 +32,11 @@
       <div class="d-flex align-items-center highlight-toolbar bg-light ps-3 pe-2 py-1">
         <small class="font-monospace text-muted text-uppercase">{{- $lang -}}</small>
         <div class="d-flex ms-auto">
-          <button type="button" class="btn-edit text-nowrap"{{ with $js_snippet }} data-js-snippet="{{ $js_snippet }}"{{ end }} title="Try it on StackBlitz">
+          {{- if eq $sb_hide false -}}
+          <button type="button" class="btn-edit text-nowrap"{{ with $sb_js_snippet }} data-sb-js-snippet="{{ $sb_js_snippet }}"{{ end }} title="Try it on StackBlitz">
             <svg class="bi" role="img" aria-label="Try it"><use xlink:href="#lightning-charge-fill"/></svg>
           </button>
+          {{- end -}}
           <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
             <svg class="bi" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg>
           </button>
