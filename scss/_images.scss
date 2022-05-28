@@ -12,9 +12,12 @@
 
 // Image thumbnails
 .img-thumbnail {
+  --#{$prefix}thumbnail-bg: #{$thumbnail-bg};
+  --#{$prefix}thumbnail-border-color: #{$thumbnail-border-color};
+
   padding: $thumbnail-padding;
-  background-color: $thumbnail-bg;
-  border: $thumbnail-border-width solid $thumbnail-border-color;
+  background-color: var(--#{$prefix}thumbnail-bg);
+  border: $thumbnail-border-width solid var(--#{$prefix}thumbnail-border-color);
   @include border-radius($thumbnail-border-radius);
   @include box-shadow($thumbnail-box-shadow);
 
@@ -37,6 +40,8 @@
 }
 
 .figure-caption {
+  --#{$prefix}figure-caption-color: #{$figure-caption-color};
+
   @include font-size($figure-caption-font-size);
-  color: $figure-caption-color;
+  color: var(--#{$prefix}figure-caption-color);
 }
