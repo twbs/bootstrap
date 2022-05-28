@@ -93,10 +93,12 @@
 }
 
 .blockquote-footer {
+  --#{$prefix}blockquote-footer-color: #{$blockquote-footer-color};
+
   margin-top: -$blockquote-margin-y;
   margin-bottom: $blockquote-margin-y;
   @include font-size($blockquote-footer-font-size);
-  color: $blockquote-footer-color;
+  color: var(--#{$prefix}blockquote-footer-color);
 
   &::before {
     content: "\2014\00A0"; // em dash, nbsp
