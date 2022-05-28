@@ -235,6 +235,8 @@ As part of Bootstrap's evolving CSS variables approach, offcanvas now uses local
 
 {{< scss-docs name="offcanvas-css-vars" file="scss/_offcanvas.scss" >}}
 
+{{< scss-docs name="offcanvas-backdrop-css-vars" file="scss/_offcanvas.scss" >}}
+
 ### Sass variables
 
 {{< scss-docs name="offcanvas-variables" file="scss/_variables.scss" >}}
