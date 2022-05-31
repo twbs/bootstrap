@@ -412,9 +412,9 @@ describe('Tab', () => {
       const tab = new Tab(tabEl)
       const spy = jasmine.createSpy('spy')
 
-      spyOn(tab, '_queueCallback')
+      const spyQueue = spyOn(tab, '_queueCallback')
       tab._activate(null, spy)
-      expect(tab._queueCallback).not.toHaveBeenCalled()
+      expect(spyQueue).not.toHaveBeenCalled()
       expect(spy).not.toHaveBeenCalled()
     })
   })
@@ -468,17 +468,17 @@ describe('Tab', () => {
 
       const keydown = createEvent('keydown')
       keydown.key = 'Enter'
-      spyOn(Event.prototype, 'stopPropagation').and.callThrough()
-      spyOn(Event.prototype, 'preventDefault').and.callThrough()
-      spyOn(tab, '_keydown')
-      spyOn(tab, '_getChildren')
+      const spyStop = spyOn(Event.prototype, 'stopPropagation').and.callThrough()
+      const spyPrevent = spyOn(Event.prototype, 'preventDefault').and.callThrough()
+      const spyKeydown = spyOn(tab, '_keydown')
+      const spyGet = spyOn(tab, '_getChildren')
 
       tabEl.dispatchEvent(keydown)
-      expect(tab._keydown).toHaveBeenCalled()
-      expect(tab._getChildren).not.toHaveBeenCalled()
+      expect(spyKeydown).toHaveBeenCalled()
+      expect(spyGet).not.toHaveBeenCalled()
 
-      expect(Event.prototype.stopPropagation).not.toHaveBeenCalled()
-      expect(Event.prototype.preventDefault).not.toHaveBeenCalled()
+      expect(spyStop).not.toHaveBeenCalled()
+      expect(spyPrevent).not.toHaveBeenCalled()
     })
 
     it('if keydown event is right/down arrow, handle it', () => {
@@ -493,26 +493,26 @@ describe('Tab', () => {
       const tabEl2 = fixtureEl.querySelector('#tab2')
       const tab = new Tab(tabEl)
       const tab2 = new Tab(tabEl2)
-      spyOn(tab, 'show').and.callThrough()
-      spyOn(tab2, 'show').and.callThrough()
+      const spyShow1 = spyOn(tab, 'show').and.callThrough()
+      const spyShow2 = spyOn(tab2, 'show').and.callThrough()
 
-      spyOn(Event.prototype, 'stopPropagation').and.callThrough()
-      spyOn(Event.prototype, 'preventDefault').and.callThrough()
+      const spyStop = spyOn(Event.prototype, 'stopPropagation').and.callThrough()
+      const spyPrevent = spyOn(Event.prototype, 'preventDefault').and.callThrough()
 
       let keydown = createEvent('keydown')
       keydown.key = 'ArrowRight'
 
       tabEl.dispatchEvent(keydown)
-      expect(tab2.show).toHaveBeenCalled()
+      expect(spyShow2).toHaveBeenCalled()
 
       keydown = createEvent('keydown')
       keydown.key = 'ArrowDown'
 
       tabEl2.dispatchEvent(keydown)
-      expect(tab.show).toHaveBeenCalled()
+      expect(spyShow1).toHaveBeenCalled()
 
-      expect(Event.prototype.stopPropagation).toHaveBeenCalledTimes(2)
-      expect(Event.prototype.preventDefault).toHaveBeenCalledTimes(2)
+      expect(spyStop).toHaveBeenCalledTimes(2)
+      expect(spyPrevent).toHaveBeenCalledTimes(2)
     })
 
     it('if keydown event is left arrow, handle it', () => {
@@ -527,26 +527,26 @@ describe('Tab', () => {
       const tabEl2 = fixtureEl.querySelector('#tab2')
       const tab = new Tab(tabEl)
       const tab2 = new Tab(tabEl2)
-      spyOn(tab, 'show').and.callThrough()
-      spyOn(tab2, 'show').and.callThrough()
+      const spyShow1 = spyOn(tab, 'show').and.callThrough()
+      const spyShow2 = spyOn(tab2, 'show').and.callThrough()
 
-      spyOn(Event.prototype, 'stopPropagation').and.callThrough()
-      spyOn(Event.prototype, 'preventDefault').and.callThrough()
+      const spyStop = spyOn(Event.prototype, 'stopPropagation').and.callThrough()
+      const spyPrevent = spyOn(Event.prototype, 'preventDefault').and.callThrough()
 
       let keydown = createEvent('keydown')
       keydown.key = 'ArrowLeft'
 
       tabEl2.dispatchEvent(keydown)
-      expect(tab.show).toHaveBeenCalled()
+      expect(spyShow1).toHaveBeenCalled()
 
       keydown = createEvent('keydown')
       keydown.key = 'ArrowUp'
 
       tabEl.dispatchEvent(keydown)
-      expect(tab2.show).toHaveBeenCalled()
+      expect(spyShow2).toHaveBeenCalled()
 
-      expect(Event.prototype.stopPropagation).toHaveBeenCalledTimes(2)
-      expect(Event.prototype.preventDefault).toHaveBeenCalledTimes(2)
+      expect(spyStop).toHaveBeenCalledTimes(2)
+      expect(spyPrevent).toHaveBeenCalledTimes(2)
     })
 
     it('if keydown event is right arrow and next element is disabled', () => {
@@ -567,19 +567,19 @@ describe('Tab', () => {
       const tab2 = new Tab(tabEl2)
       const tab3 = new Tab(tabEl3)
       const tab4 = new Tab(tabEl4)
-      spyOn(tab, 'show').and.callThrough()
-      spyOn(tab2, 'show').and.callThrough()
-      spyOn(tab3, 'show').and.callThrough()
-      spyOn(tab4, 'show').and.callThrough()
+      const spy1 = spyOn(tab, 'show').and.callThrough()
+      const spy2 = spyOn(tab2, 'show').and.callThrough()
+      const spy3 = spyOn(tab3, 'show').and.callThrough()
+      const spy4 = spyOn(tab4, 'show').and.callThrough()
 
       const keydown = createEvent('keydown')
       keydown.key = 'ArrowRight'
 
       tabEl.dispatchEvent(keydown)
-      expect(tab.show).not.toHaveBeenCalled()
-      expect(tab2.show).not.toHaveBeenCalled()
-      expect(tab3.show).not.toHaveBeenCalled()
-      expect(tab4.show).toHaveBeenCalledTimes(1)
+      expect(spy1).not.toHaveBeenCalled()
+      expect(spy2).not.toHaveBeenCalled()
+      expect(spy3).not.toHaveBeenCalled()
+      expect(spy4).toHaveBeenCalledTimes(1)
     })
 
     it('if keydown event is left arrow and next element is disabled', () => {
@@ -600,19 +600,19 @@ describe('Tab', () => {
       const tab2 = new Tab(tabEl2)
       const tab3 = new Tab(tabEl3)
       const tab4 = new Tab(tabEl4)
-      spyOn(tab, 'show').and.callThrough()
-      spyOn(tab2, 'show').and.callThrough()
-      spyOn(tab3, 'show').and.callThrough()
-      spyOn(tab4, 'show').and.callThrough()
+      const spy1 = spyOn(tab, 'show').and.callThrough()
+      const spy2 = spyOn(tab2, 'show').and.callThrough()
+      const spy3 = spyOn(tab3, 'show').and.callThrough()
+      const spy4 = spyOn(tab4, 'show').and.callThrough()
 
       const keydown = createEvent('keydown')
       keydown.key = 'ArrowLeft'
 
       tabEl4.dispatchEvent(keydown)
-      expect(tab4.show).not.toHaveBeenCalled()
-      expect(tab3.show).not.toHaveBeenCalled()
-      expect(tab2.show).not.toHaveBeenCalled()
-      expect(tab.show).toHaveBeenCalledTimes(1)
+      expect(spy4).not.toHaveBeenCalled()
+      expect(spy3).not.toHaveBeenCalled()
+      expect(spy2).not.toHaveBeenCalled()
+      expect(spy1).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -650,7 +650,7 @@ describe('Tab', () => {
       const div = fixtureEl.querySelector('.nav > div')
       const tab = new Tab(div)
 
-      spyOn(tab, 'show')
+      const spy = spyOn(tab, 'show')
 
       jQueryMock.fn.tab = Tab.jQueryInterface
       jQueryMock.elements = [div]
@@ -658,7 +658,7 @@ describe('Tab', () => {
       jQueryMock.fn.tab.call(jQueryMock, 'show')
 
       expect(Tab.getInstance(div)).toEqual(tab)
-      expect(tab.show).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should throw error on undefined method', () => {
@@ -972,11 +972,11 @@ describe('Tab', () => {
         ].join('')
 
         const tabEl = fixtureEl.querySelector('[href="#test2"]')
-        spyOn(Event.prototype, 'preventDefault').and.callThrough()
+        const spy = spyOn(Event.prototype, 'preventDefault').and.callThrough()
 
         tabEl.addEventListener('shown.bs.tab', () => {
           expect(tabEl).toHaveClass('active')
-          expect(Event.prototype.preventDefault).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           resolve()
         })
 
