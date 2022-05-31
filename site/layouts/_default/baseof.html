@@ -1,5 +1,14 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="auto">
+  <script>
+    const theme = localStorage.getItem('theme')
+    if (theme === null) {
+      localStorage.setItem('theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+    } else if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+  </script>
+
   <head>
     {{ partial "header" . }}
   </head>
