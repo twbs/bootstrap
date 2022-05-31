@@ -134,7 +134,7 @@
     "karma-detect-browsers": "^2.3.3",
     "karma-firefox-launcher": "^2.1.2",
     "karma-jasmine": "^5.0.1",
-    "karma-jasmine-html-reporter": "^1.7.0",
+    "karma-jasmine-html-reporter": "^2.0.0",
     "karma-rollup-preprocessor": "7.0.7",
     "lockfile-lint": "^4.7.4",
     "nodemon": "^2.0.16",
@@ -148,7 +148,7 @@
     "shelljs": "^0.8.5",
     "stylelint": "^14.8.3",
     "stylelint-config-twbs-bootstrap": "^3.1.0",
-    "terser": "^5.13.1",
+    "terser": "^5.14.0",
     "vnu-jar": "21.10.12"
   },
   "files": [
