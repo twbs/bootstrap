@@ -1,8 +1,5 @@
 <!doctype html>
 <html lang="en" data-theme="auto">
-  {{- $colorModeJS := resources.Get "js/color-modes/index.js" }}
-  <script src="{{ $colorModeJS.Permalink | relURL }}"></script>
-
   <head>
     {{ partial "header" . }}
   </head>
