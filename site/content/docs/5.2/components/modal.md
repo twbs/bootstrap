@@ -807,7 +807,7 @@ Activate a modal without writing JavaScript. Set `data-bs-toggle="modal"` on a c
 {{% js-dismiss "modal" %}}
 
 {{< callout warning >}}
-While both ways to dismiss a modal are supported, keep in mind that dismissing from outside a modal does not match [the WAI-ARIA modal dialog design pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal). Do this at your own risk.
+While both ways to dismiss a modal are supported, keep in mind that dismissing from outside a modal does not match the [ARIA Authoring Practices Guide dialog (modal) pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/). Do this at your own risk.
 {{< /callout >}}
 
 ### Via JavaScript
