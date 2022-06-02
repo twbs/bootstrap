@@ -78,7 +78,7 @@ $(function () {
 
   QUnit.test('should activate element by tab id (.nav-pills)', function (assert) {
     assert.expect(2)
-    var pillsHTML = '<ul class="nav nav-pills">' +
+    var pillsHTML = '<ul class="nav nav-pills" role="tablist">' +
         '<li><a href="#home">Home</a></li>' +
         '<li><a href="#profile">Profile</a></li>' +
         '</ul>'
@@ -94,9 +94,9 @@ $(function () {
 
   QUnit.test('should activate element by tab id in ordered list', function (assert) {
     assert.expect(2)
-    var pillsHTML = '<ol class="nav nav-pills">' +
+    var pillsHTML = '<ol class="nav nav-pills" role="tablist">' +
         '<li><button type="button" data-target="#home" role="tab">Home</button></li>' +
-        '<li><button type="button" href="#profile" role="tab">Profile</button></li>' +
+        '<li><button type="button" data-target="#profile" role="tab">Profile</button></li>' +
         '</ol>'
 
     $('<ol><li id="home" role="tabpanel"/><li id="profile" role="tabpanel"/></ol>').appendTo('#qunit-fixture')
@@ -112,7 +112,7 @@ $(function () {
     assert.expect(2)
     var tabsHTML = '<nav class="nav">' +
                       '<button type="button" data-target="#home" role="tab">Home</button>' +
-                      '<button type="button" data-target="#profile" role="tab">Profile</a>' +
+                      '<button type="button" data-target="#profile" role="tab">Profile</button>' +
                     '</nav>'
 
     $('<div><div id="home" role="tabpanel"/><div id="profile" role="tabpanel"/></div>').appendTo('#qunit-fixture')
@@ -226,7 +226,7 @@ $(function () {
 
     var tabsHTML = '<ul class="nav" role="tablist">' +
         '<li><button type="button" data-target="#home" role="tab">Home</button></li>' +
-        '<li><button type="button" data-target="#profile">Profile</button></li>' +
+        '<li><button type="button" data-target="#profile" role="tab">Profile</button></li>' +
         '</ul>'
 
     $(tabsHTML)
@@ -341,7 +341,7 @@ $(function () {
   QUnit.test('should support li > .dropdown-item', function (assert) {
     assert.expect(2)
     var tabsHTML = [
-      '<ul class="nav nav-tabs">',
+      '<ul class="nav nav-tabs" role="tablist">',
       '  <li class="nav-item"><a class="nav-link active" href="#home" data-toggle="tab">Home</a></li>',
       '  <li class="nav-item"><a class="nav-link" href="#profile" data-toggle="tab">Profile</a></li>',
       '  <li class="nav-item dropdown">',
@@ -510,7 +510,7 @@ $(function () {
     var html = [
       '<ul class="nav nav-tabs" role="tablist">',
       '  <li class="nav-item" role="presentation">',
-      '     <button type="button" class="nav-link nav-tab" data-target="#home" role="tab" data-toggle="tab">Home</button>',
+      '    <button type="button" class="nav-link nav-tab" data-target="#home" role="tab" data-toggle="tab">Home</button>',
       '  </li>',
       '  <li class="nav-item" role="presentation">',
       '    <button type="button" id="secondNav" class="nav-link nav-tab" data-target="#profile" role="tab" data-toggle="tab">Profile</button>',
