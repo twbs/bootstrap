@@ -46,7 +46,7 @@ const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstra
 
 We use JavaScript similar to the snippet above to render the following live popover. Titles are set via `title` attribute and body content is set via `data-bs-content`.
 
-{{< example sb_hide="true" sb_js_snippet="true" >}}
+{{< example stackblitz="false" stackblitz_add_js="true" >}}
 <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
 {{< /example >}}
 
@@ -54,7 +54,7 @@ We use JavaScript similar to the snippet above to render the following live popo
 
 Four options are available: top, right, bottom, and left. Directions are mirrored when using Bootstrap in RTL. Set `data-bs-placement` to change the direction.
 
-{{< example sb_js_snippet="true" >}}
+{{< example stackblitz_add_js="true" >}}
 <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
   Popover on top
 </button>
@@ -87,7 +87,7 @@ You can customize the appearance of popovers using [CSS variables](#variables). 
 
 {{< scss-docs name="custom-popovers" file="site/assets/scss/_component-examples.scss" >}}
 
-{{< example class="custom-popover-demo" sb_js_snippet="true" >}}
+{{< example class="custom-popover-demo" stackblitz_add_js="true" >}}
 <button type="button" class="btn btn-secondary"
         data-bs-toggle="popover" data-bs-placement="right"
         data-bs-custom-class="custom-popover"
@@ -107,7 +107,7 @@ Use the `focus` trigger to dismiss popovers on the user's next click of a differ
 For proper cross-browser and cross-platform behavior, you must use the `<a>` tag, _not_ the `<button>` tag, and you also must include a [`tabindex`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) attribute.
 {{< /callout >}}
 
-{{< example sb_js_snippet="true" >}}
+{{< example stackblitz_add_js="true" >}}
 <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Dismissible popover" data-bs-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
 {{< /example >}}
 
@@ -123,7 +123,7 @@ Elements with the `disabled` attribute aren't interactive, meaning users cannot 
 
 For disabled popover triggers, you may also prefer `data-bs-trigger="hover focus"` so that the popover appears as immediate visual feedback to your users as they may not expect to _click_ on a disabled element.
 
-{{< example sb_js_snippet="true" >}}
+{{< example stackblitz_add_js="true" >}}
 <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
   <button class="btn btn-primary" type="button" disabled>Disabled button</button>
 </span>

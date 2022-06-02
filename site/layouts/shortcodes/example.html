@@ -5,8 +5,8 @@
     * id: the `div`'s id - default: ""
     * class: any extra class(es) to be added to the `div` - default: ""
     * lang: language used to display the code - default: "html"
-    * sb_hide: hide edit StackBlitz button - default `false`
-    * sb_js_snippet: add extra JS snippet to StackBlitz - default: `false`
+    * stackblitz: if edit StackBlitz button should be displayed - default `true`
+    * stackblitz_add_js: if extra JS snippet shoud le added to StackBlitz - default: `false`
     * show_markup: if the markup should be output in the HTML - default: `true`
     * show_preview: if the preview should be output in the HTML - default: `true`
 */ -}}
@@ -14,8 +14,8 @@
 {{- $id := .Get "id" -}}
 {{- $class := .Get "class" -}}
 {{- $lang := .Get "lang" | default "html" -}}
-{{- $sb_hide := .Get "sb_hide" | default false -}}
-{{- $sb_js_snippet := .Get "sb_js_snippet" | default false -}}
+{{- $stackblitz := .Get "stackblitz" | default true -}}
+{{- $stackblitz_add_js := .Get "stackblitz_add_js" | default false -}}
 {{- $show_markup := .Get "show_markup" | default true -}}
 {{- $show_preview := .Get "show_preview" | default true -}}
 {{- $input := .Inner -}}
@@ -32,8 +32,8 @@
       <div class="d-flex align-items-center highlight-toolbar bg-light ps-3 pe-2 py-1">
         <small class="font-monospace text-muted text-uppercase">{{- $lang -}}</small>
         <div class="d-flex ms-auto">
-          {{- if eq $sb_hide false -}}
-          <button type="button" class="btn-edit text-nowrap"{{ with $sb_js_snippet }} data-sb-js-snippet="{{ $sb_js_snippet }}"{{ end }} title="Try it on StackBlitz">
+          {{- if eq $stackblitz true -}}
+          <button type="button" class="btn-edit text-nowrap"{{ with $stackblitz_add_js }} data-sb-js-snippet="{{ $stackblitz_add_js }}"{{ end }} title="Try it on StackBlitz">
             <svg class="bi" role="img" aria-label="Try it"><use xlink:href="#lightning-charge-fill"/></svg>
           </button>
           {{- end -}}
