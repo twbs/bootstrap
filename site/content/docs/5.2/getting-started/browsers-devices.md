@@ -30,7 +30,7 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
 | | Chrome | Firefox | Safari | Android Browser &amp; WebView |
 | --- | --- | --- | --- | --- |
 | **Android** | Supported | Supported | <span class="text-muted">&mdash;</span> | v6.0+ |
-| **Windows** | Supported | Supported | Supported | <span class="text-muted">&mdash;</span> |
+| **iOS** | Supported | Supported | Supported | <span class="text-muted">&mdash;</span> |
 {{< /bs-table >}}
 
 ### Desktop browsers
