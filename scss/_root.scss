@@ -71,4 +71,8 @@
   --#{$prefix}code-color: #{$code-color};
 
   --#{$prefix}highlight-bg: #{$mark-bg};
+
+  @each $breakpoint, $breakpoint-value in $grid-breakpoints {
+    --#{$prefix}breakpoint-#{$breakpoint}: #{$breakpoint-value};
+  }
 }
