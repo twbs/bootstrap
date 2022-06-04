@@ -78,6 +78,11 @@
         @each $pseudo in $state {
           .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
             @each $property in $properties {
+              @if $is-local-vars {
+                @each $local-var, $variable in $is-local-vars {
+                  --#{$prefix}#{$local-var}: #{$variable};
+                }
+              }
               #{$property}: $value if($enable-important-utilities, !important, null);
             }
           }
