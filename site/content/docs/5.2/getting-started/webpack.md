@@ -93,7 +93,7 @@ With dependencies installed and our project folder ready for us to start coding,
    }
    ```
 
-2. **Next we create our `dist/index.html`.** This is the HTML page Webpack will load in the browser to utilize the bundled CSS and JS we'll add to it in later steps. Before we can do that, we have to give it something to render and include the `output` JS from the previous step.
+2. **Next we fill in our `dist/index.html`.** This is the HTML page Webpack will load in the browser to utilize the bundled CSS and JS we'll add to it in later steps. Before we can do that, we have to give it something to render and include the `output` JS from the previous step.
 
    ```html
    <!doctype html>
@@ -142,7 +142,7 @@ In the next and final section to this guide, we'll setup the Webpack loaders and
 
 Importing Bootstrap into Webpack requires the loaders we installed in the first section. We've installed them with npm, but now Webpack needs to be configured to use them.
 
-1. **Setup the loaders in `webpack.config.js`.** Your configuration file is now complete and should match the snippet below. The only new part here is the `module` section.
+1. **Set up the loaders in `webpack.config.js`.** Your configuration file is now complete and should match the snippet below. The only new part here is the `module` section.
 
    ```js
    const path = require('path')
