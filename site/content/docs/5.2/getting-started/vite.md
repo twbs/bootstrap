@@ -134,7 +134,7 @@ In the next and final section to this guide, we’ll import all of Bootstrap’s
 
 ## Import Bootstrap
 
-1. **Set up Bootstrap Sass import in `vite.config.js`.** Your configuration file is now complete and should match the snippet below. The only new part here is the `resolve` section.
+1. **Set up Bootstrap's Sass import in `vite.config.js`.** Your configuration file is now complete and should match the snippet below. The only new part here is the `resolve` section—we use this to add an alias to our source files inside `node_modules` to keep imports as simple as possible.
 
    <!-- eslint-skip -->
    ```js
