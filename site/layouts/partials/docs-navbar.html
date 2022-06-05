@@ -31,10 +31,10 @@
 
   <ul class="navbar-nav ml-md-auto">
     <li class="nav-item dropdown">
-      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-expanded="false">
-        v{{ .Site.Params.docs_version }}
-      </a>
-      <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
+      <button class="btn nav-link dropdown-toggle mr-md-2" data-toggle="dropdown" aria-expanded="false">
+        <span class="sr-only">Bootstrap&nbsp;</span> v{{ .Site.Params.docs_version }} <span class="sr-only">(switch to other versions)</span>
+      </button>
+      <div class="dropdown-menu dropdown-menu-md-right">
         <a class="dropdown-item active" href="/docs/{{ .Site.Params.docs_version }}/">Latest ({{ .Site.Params.docs_version }}.x)</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="https://getbootstrap.com/docs/5.1/">5.1.x</a>
