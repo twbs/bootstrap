@@ -324,11 +324,6 @@
     white-space: pre;
     background-color: transparent;
     border: 0;
-
-    // Undo tabindex that's automatically added by Hugo
-    &:focus {
-      outline: 0;
-    }
   }
 
   pre code {
