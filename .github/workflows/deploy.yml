@@ -1,4 +1,4 @@
-name: CSS
+name: Deploy
 
 on:
   push:
