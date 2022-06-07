@@ -2,10 +2,14 @@
 // Bootstrap docs content theming
 //
 
+// Add a scroll-padding custom property to the html element
+html {
+  scroll-padding-top: var(--scroll-padding, 50px);
+}
+
 .bd-content {
   // Offset content from fixed navbar when jumping to headings
   > :target {
-    padding-top: 5rem;
     margin-top: -5rem;
   }
 
