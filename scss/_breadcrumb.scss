@@ -6,6 +6,7 @@
   @include rfs($breadcrumb-font-size, --#{$prefix}breadcrumb-font-size);
   --#{$prefix}breadcrumb-bg: #{$breadcrumb-bg};
   --#{$prefix}breadcrumb-border-radius: #{$breadcrumb-border-radius};
+  --#{$prefix}breadcrumb-divider: #{inspect(escape-svg($breadcrumb-divider))} #{"/* rtl:"} #{inspect(escape-svg($breadcrumb-divider-flipped))} #{"*/"};
   --#{$prefix}breadcrumb-divider-color: #{$breadcrumb-divider-color};
   --#{$prefix}breadcrumb-item-padding-x: #{$breadcrumb-item-padding-x};
   --#{$prefix}breadcrumb-item-active-color: #{$breadcrumb-active-color};
@@ -30,7 +31,7 @@
       float: left; // Suppress inline spacings and underlining of the separator
       padding-right: var(--#{$prefix}breadcrumb-item-padding-x);
       color: var(--#{$prefix}breadcrumb-divider-color);
-      content: var(--#{$prefix}breadcrumb-divider, escape-svg($breadcrumb-divider)) #{"/* rtl:"} var(--#{$prefix}breadcrumb-divider, escape-svg($breadcrumb-divider-flipped)) #{"*/"};
+      content: var(--#{$prefix}breadcrumb-divider);
     }
   }
 
