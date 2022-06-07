@@ -172,3 +172,8 @@ $utilities-links-underline: map-loop($utilities-colors, rgba-css-var, "$key", "l
 $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
 
 $gutters: $spacers !default;
+
+// scss-docs-start navbar-breakpoints
+$navbar-breakpoints: $grid-breakpoints !default;
+// scss-docs-end navbar-breakpoints
+
