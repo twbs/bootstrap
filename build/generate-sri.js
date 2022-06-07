@@ -26,24 +26,12 @@ const configFile = path.join(__dirname, '../config.yml')
 // `configPropertyName` is the config.yml variable's name of the file
 const files = [
   {
-    file: 'dist/css/bootstrap.min.css',
+    file: 'dist/css/lakehomes.min.css',
     configPropertyName: 'css_hash'
   },
   {
-    file: 'dist/css/bootstrap.rtl.min.css',
+    file: 'dist/css/lakehomes.rtl.min.css',
     configPropertyName: 'css_rtl_hash'
-  },
-  {
-    file: 'dist/js/bootstrap.min.js',
-    configPropertyName: 'js_hash'
-  },
-  {
-    file: 'dist/js/bootstrap.bundle.min.js',
-    configPropertyName: 'js_bundle_hash'
-  },
-  {
-    file: 'node_modules/@popperjs/core/dist/umd/popper.min.js',
-    configPropertyName: 'popper_hash'
   }
 ]
 

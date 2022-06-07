@@ -1,0 +1,29 @@
+name: CSS
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  css:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node_version: [16.x]
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Build release
+        run: npm run release
+
+      - name: Upload artifacts for deployment
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: lakehomes-*.zip 
