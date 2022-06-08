@@ -202,11 +202,18 @@ class Dropdown {
       return
     }
 
+    // If this is a touch-enabled device we remove the extra
+    // empty mouseover listeners we added for iOS support
+    if ('ontouchstart' in document.documentElement) {
+      $(document.body).children().off('mouseover', null, $.noop)
+    }
+
     if (this._popper) {
       this._popper.destroy()
     }
 
     $(this._menu).toggleClass(CLASS_NAME_SHOW)
+    this._element.setAttribute('aria-expanded', false)
     $(parent)
       .toggleClass(CLASS_NAME_SHOW)
       .trigger($.Event(EVENT_HIDDEN, relatedTarget))
@@ -404,13 +411,12 @@ class Dropdown {
         $(document.body).children().off('mouseover', null, $.noop)
       }
 
-      toggles[i].setAttribute('aria-expanded', 'false')
-
       if (context._popper) {
         context._popper.destroy()
       }
 
       $(dropdownMenu).removeClass(CLASS_NAME_SHOW)
+      toggles[i].setAttribute('aria-expanded', 'false')
       $(parent)
         .removeClass(CLASS_NAME_SHOW)
         .trigger($.Event(EVENT_HIDDEN, relatedTarget))

@@ -1585,12 +1585,12 @@ $(function () {
   })
 
   QUnit.test('should hide a dropdown and destroy popper', function (assert) {
-    assert.expect(1)
+    assert.expect(2)
     var done = assert.async()
 
     var fixtureHtml = [
       '<div class="dropdown">',
-      '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+      '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Dropdown</button>',
       '  <div class="dropdown-menu">',
       '    <a class="dropdown-item" href="#">Secondary link</a>',
       '  </div>',
@@ -1600,9 +1600,8 @@ $(function () {
     $(fixtureHtml).appendTo('#qunit-fixture')
 
     var $dropdownEl = $('.dropdown')
-    var dropdown = $('[data-toggle="dropdown"]')
-      .bootstrapDropdown()
-      .data('bs.dropdown')
+    var $btnDropdown = $('[data-toggle="dropdown"]').bootstrapDropdown()
+    var dropdown = $btnDropdown.data('bs.dropdown')
     var spyPopper
 
     $dropdownEl.one('shown.bs.dropdown', function () {
@@ -1612,6 +1611,7 @@ $(function () {
 
     $dropdownEl.one('hidden.bs.dropdown', function () {
       assert.true(spyPopper.called)
+      assert.strictEqual($btnDropdown.attr('aria-expanded'), 'false', 'aria-expanded is set to string "false" on hide')
       done()
     })
 
