@@ -128,7 +128,7 @@ class ScrollSpy extends BaseComponent {
         const root = this._rootElement || window
         const height = observableSection.offsetTop - this._element.offsetTop
         if (root.scrollTo) {
-          root.scrollTo({ top: height })
+          root.scrollTo({ top: height, behavior: 'smooth' })
           return
         }
 
