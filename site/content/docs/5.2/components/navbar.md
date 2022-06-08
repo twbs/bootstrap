@@ -732,7 +732,7 @@ To create an offcanvas navbar that expands into a normal navbar at a specific br
 </nav>
 ```
 
-When using offcanvas in a dark navbar, be aware that you may need to have a dark background on the offcanvas content to avoid the text becoming illegible. In the example below, we add `.navbar-dark` and `.bg-dark` to the `.navbar, `.text-bg-dark` to the `.offcanvas`, and `.btn-close-white` to `.btn-close` for proper styling with a dark offcanvas.
+When using offcanvas in a dark navbar, be aware that you may need to have a dark background on the offcanvas content to avoid the text becoming illegible. In the example below, we add `.navbar-dark` and `.bg-dark` to the `.navbar`, `.text-bg-dark` to the `.offcanvas`, and `.btn-close-white` to `.btn-close` for proper styling with a dark offcanvas.
 
 {{< example >}}
 <nav class="navbar navbar-dark bg-dark fixed-top">
