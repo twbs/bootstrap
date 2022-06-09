@@ -1,1 +1,1 @@
-Note that `title` attribute can be used instead of `data-bs-title` and will be removed and rendered directly in the Popper element.
+Feel free to use either `title` or `data-bs-title` in your HTML. When `title` is used, Popper will replace it automatically with `data-bs-title` when the element is rendered.
