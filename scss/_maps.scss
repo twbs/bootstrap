@@ -6,6 +6,10 @@
 $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value") !default;
 // scss-docs-end theme-colors-rgb
 
+// scss-docs-start navbar-breakpoints
+$navbar-breakpoints: $grid-breakpoints !default;
+// scss-docs-end navbar-breakpoints
+
 // Utilities maps
 //
 // Extends the default `$theme-colors` maps to help create our utilities.
