@@ -5065,5 +5065,19 @@
     display: none !important;
   }
 }
-
+.object-fit-cover{
+  object-fit: cover !important;
+}
+.object-fit-contain{
+  object-fit: contain !important;
+}
+.object-fit-fill{
+  object-fit: fill !important;
+}
+.object-fit-none{
+  object-fit: none !important;
+}
+.object-fit-revert{
+  object-fit: revert !important;
+}
 /*# sourceMappingURL=bootstrap-grid.css.map */
