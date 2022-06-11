@@ -19,8 +19,6 @@ const NAME = 'toast'
 const DATA_KEY = 'bs.toast'
 const EVENT_KEY = `.${DATA_KEY}`
 
-const CLASS_PROGRESS_BAR = '.toast-progress'
-
 const EVENT_MOUSEOVER = `mouseover${EVENT_KEY}`
 const EVENT_MOUSEOUT = `mouseout${EVENT_KEY}`
 const EVENT_FOCUSIN = `focusin${EVENT_KEY}`
@@ -31,9 +29,12 @@ const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
 
 const CLASS_NAME_FADE = 'fade'
-const CLASS_NAME_HIDE = 'hide' // @deprecated - kept here only for backwards compatibility
+const CLASS_NAME_HIDE = 'hide' // TODO:v6: @deprecated - kept here only for backwards compatibility
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_SHOWING = 'showing'
+
+const CLASS_PROGRESS_BAR = '.toast-progress'
+const CLASS_NAME_PROGRESS_BAR_ANIMATED = 'animated'
 
 const DefaultType = {
   animation: 'boolean',
@@ -148,7 +149,7 @@ class Toast extends BaseComponent {
       return
     }
 
-    this._toggleProgressBar(this._config.delay)
+    this._toggleProgressBar(true)
     this._timeout = setTimeout(() => {
       this.hide()
     }, this._config.delay)
@@ -195,24 +196,23 @@ class Toast extends BaseComponent {
 
   _clearTimeout() {
     clearTimeout(this._timeout)
-    this._toggleProgressBar(null)
+    this._toggleProgressBar(false)
     this._timeout = null
   }
 
-  _toggleProgressBar(time) {
+  _toggleProgressBar(enable) {
     const progressBarElement = SelectorEngine.findOne(CLASS_PROGRESS_BAR, this._element)
     if (!progressBarElement) {
       return
     }
 
-    if (time) {
-      progressBarElement.classList.add('animated')
-      progressBarElement.style.animationDuration = `${time}ms`
+    if (enable) {
+      progressBarElement.classList.add(CLASS_NAME_PROGRESS_BAR_ANIMATED)
+      progressBarElement.style.animationDuration = `${this._config.delay}ms`
       return
     }
 
-    progressBarElement.classList.remove('animated')
-    reflow(progressBarElement)
+    progressBarElement.classList.remove(CLASS_NAME_PROGRESS_BAR_ANIMATED)
   }
 
   // Static
