@@ -441,4 +441,41 @@ describe('EventHandler', () => {
       expect(i).toEqual(5)
     })
   })
+
+  describe('general functionality', () => {
+    it('should hydrate properties, and make them configurable', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div id="div1">',
+          '   <div id="div2"></div>',
+          '   <div id="div3"></div>',
+          '</div>'
+        ].join('')
+
+        const div1 = fixtureEl.querySelector('#div1')
+        const div2 = fixtureEl.querySelector('#div2')
+        const div3 = fixtureEl.querySelector('#div3')
+
+        EventHandler.on(div1, 'click', event => {
+          event.originalTarget = div3
+
+          expect(event.currentTarget).toBe(div2)
+
+          Object.defineProperty(event, 'currentTarget', {
+            configurable: true,
+            get() {
+              return div1
+            }
+          })
+
+          expect(event.currentTarget).toBe(div1)
+          resolve()
+        })
+
+        expect(() => {
+          EventHandler.trigger(div1, 'click', { delegateTarget: div2, originalTarget: null, currentTarget: div2 })
+        }).not.toThrowError(TypeError)
+      })
+    })
+  })
 })
