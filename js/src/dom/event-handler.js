@@ -234,7 +234,7 @@ const EventHandler = {
 
     if (typeof callable !== 'undefined') {
       // Simplest case: handler is passed, remove that listener ONLY.
-      if (!storeElementEvent) {
+      if (!Object.keys(storeElementEvent).length) {
         return
       }
 
