@@ -20,7 +20,7 @@
   color: var(--#{$prefix}alert-color);
   background-color: var(--#{$prefix}alert-bg);
   border: var(--#{$prefix}alert-border);
-  border-radius: var(--#{$prefix}alert-border-radius, 0); // stylelint-disable-line property-disallowed-list
+  @include border-radius(var(--#{$prefix}alert-border-radius));
 }
 
 // Headings for larger alerts

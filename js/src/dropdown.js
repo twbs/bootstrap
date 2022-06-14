@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): dropdown.js
+ * Bootstrap (v5.2.0-beta1): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -68,21 +68,21 @@ const PLACEMENT_TOPCENTER = 'top'
 const PLACEMENT_BOTTOMCENTER = 'bottom'
 
 const Default = {
-  offset: [0, 2],
+  autoClose: true,
   boundary: 'clippingParents',
-  reference: 'toggle',
   display: 'dynamic',
+  offset: [0, 2],
   popperConfig: null,
-  autoClose: true
+  reference: 'toggle'
 }
 
 const DefaultType = {
-  offset: '(array|string|function)',
+  autoClose: '(boolean|string)',
   boundary: '(string|element)',
-  reference: '(string|element|object)',
   display: 'string',
+  offset: '(array|string|function)',
   popperConfig: '(null|object|function)',
-  autoClose: '(boolean|string)'
+  reference: '(string|element|object)'
 }
 
 /**
@@ -404,25 +404,22 @@ class Dropdown extends BaseComponent {
     }
 
     event.preventDefault()
-    if (!isEscapeEvent) {
-      event.stopPropagation()
-    }
 
     const getToggleButton = SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode)
     const instance = Dropdown.getOrCreateInstance(getToggleButton)
 
-    if (isEscapeEvent) {
-      if (getToggleButton.classList.contains(CLASS_NAME_SHOW)) {
-        instance.hide()
-        getToggleButton.focus()
-        event.stopPropagation()
-      }
-
+    if (isUpOrDownEvent) {
+      event.stopPropagation()
+      instance.show()
+      instance._selectMenuItem(event)
       return
     }
 
-    instance.show()
-    instance._selectMenuItem(event)
+    if (instance._isShown()) { // else is escape and we check if it is shown
+      event.stopPropagation()
+      instance.hide()
+      getToggleButton.focus()
+    }
   }
 }
 

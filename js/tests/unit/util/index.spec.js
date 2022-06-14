@@ -576,7 +576,7 @@ describe('Util', () => {
       const spy = jasmine.createSpy()
       const spy2 = jasmine.createSpy()
 
-      spyOn(document, 'addEventListener').and.callThrough()
+      const spyAdd = spyOn(document, 'addEventListener').and.callThrough()
       spyOnProperty(document, 'readyState').and.returnValue('loading')
 
       Util.onDOMContentLoaded(spy)
@@ -589,7 +589,7 @@ describe('Util', () => {
 
       expect(spy).toHaveBeenCalled()
       expect(spy2).toHaveBeenCalled()
-      expect(document.addEventListener).toHaveBeenCalledTimes(1)
+      expect(spyAdd).toHaveBeenCalledTimes(1)
     })
 
     it('should execute callback if readyState is not "loading"', () => {

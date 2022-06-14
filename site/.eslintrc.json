@@ -1,61 +1,53 @@
 {
-  "root": true,
+  "env": {
+    "browser": true,
+    "node": false
+  },
+  "plugins": [
+    "markdown"
+  ],
+  "overrides": [
+    {
+      // 2. Enable the Markdown processor for all .md files.
+      "files": ["./**/*.md"],
+      "processor": "markdown/markdown"
+    },
+    {
+      // In v2, configuration for fenced code blocks is separate from the
+      // containing Markdown file. Each code block has a virtual filename
+      // appended to the Markdown file's path.
+      "files": [
+        "./**/*.md/*.js"
+      ],
+      // Configuration for fenced code blocks goes with the override for
+      // the code block's virtual filename, for example:
+      "parserOptions": {
+        "ecmaFeatures": {
+          "impliedStrict": true
+        }
+      },
+      "rules": {
+        "no-array-for-each": "off",
+        "no-undef": "off",
+        "no-unused-vars": "off",
+        "unicorn/no-array-for-each": "off",
+        "unicorn/numeric-separators-style": "off",
+        "no-unused-expressions": "off",
+        "no-unused-labels": "off",
+        "no-labels": "off",
+        "no-redeclare": "off"
+      }
+    }
+  ],
   "parserOptions": {
-    "ecmaVersion": 5,
     "sourceType": "script"
   },
-  "extends": [
-    "plugin:unicorn/recommended",
-    "xo",
-    "xo/browser"
-  ],
+  "extends": "../.eslintrc.json",
   "rules": {
-    "arrow-body-style": "off",
-    "capitalized-comments": "off",
-    "comma-dangle": [
-      "error",
-      "never"
-    ],
-    "indent": [
-      "error",
-      2,
-      {
-        "MemberExpression": "off",
-        "SwitchCase": 1
-      }
-    ],
-    "multiline-ternary": [
-      "error",
-      "always-multiline"
-    ],
-    "no-negated-condition": "off",
     "no-new": "off",
-    "no-var": "off",
-    "object-curly-spacing": [
-      "error",
-      "always"
-    ],
-    "object-shorthand": "off",
-    "operator-linebreak": [
-      "error",
-      "after"
-    ],
-    "prefer-arrow-callback": "off",
-    "prefer-destructuring": "off",
-    "semi": [
-      "error",
-      "never"
-    ],
+    "prefer-template": "error",
     "strict": "error",
     "unicorn/no-array-for-each": "off",
-    "unicorn/no-array-method-this-argument": "off",
-    "unicorn/no-for-loop": "off",
-    "unicorn/no-null": "off",
-    "unicorn/numeric-separators-style": "off",
-    "unicorn/prefer-array-flat": "off",
-    "unicorn/prefer-dom-node-dataset": "off",
-    "unicorn/prefer-module": "off",
-    "unicorn/prefer-query-selector": "off",
-    "unicorn/prevent-abbreviations": "off"
+    "unicorn/numeric-separators-style": "off"
   }
 }
