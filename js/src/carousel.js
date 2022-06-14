@@ -78,7 +78,7 @@ const Default = {
 }
 
 const DefaultType = {
-  interval: '(number|boolean)',
+  interval: 'number',
   keyboard: 'boolean',
   pause: '(string|boolean)',
   ride: '(boolean|string)',
