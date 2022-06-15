@@ -307,7 +307,7 @@ class Tooltip extends BaseComponent {
 
   // Protected
   _isWithContent() {
-    return Boolean(this._getTitle())
+    return this._config.title || this._config.originalTitle
   }
 
   _getTipElement() {
@@ -344,8 +344,6 @@ class Tooltip extends BaseComponent {
   setContent(content) {
     this._newContent = content
     if (this._isShown()) {
-      this.tip.remove()
-      this.tip = null
       this._disposePopper()
       this.show()
     }
