@@ -272,7 +272,7 @@ Then instantiate and use the plugin in the Webpack configuration.
 
 After running `npm run build` again, there will be a new file `dist/main.css`, which will contain all of the CSS imported by `src/js/main.js`.
 
-If you view `dist/index.html` in your browser now, the style will be missing, as it is now in a separate file.  You can include the generated CSS in `dist/index.html` like this:
+If you view `dist/index.html` in your browser now, the style will be missing, as it is now in `dist/main.css`.  You can include the generated CSS in `dist/index.html` like this:
 
 ```diff
 --- a/webpack/dist/index.html
@@ -289,7 +289,30 @@ If you view `dist/index.html` in your browser now, the style will be missing, as
 
 ### Extracting SVG files
 
-Bootstrap's CSS includes multiple references to SVG files provided as inline `data:` URIs.  If you define a Content Security Policy for your project without allowing `data:` URIs for images, then these SVG files will not load. You can get around this problem by extracting the inline SVG files using Webpack's asset modules feature.
+Bootstrap's CSS includes multiple references to SVG files via inline `data:` URIs.  If you define a Content Security Policy for your project that blocks `data:` URIs for images, then these SVG files will not load. You can get around this problem by extracting the inline SVG files using Webpack's asset modules feature.
+
+You can configure Webpack to extract inline SVG files like this:
+```diff
+--- a/webpack/webpack.config.js
++++ b/webpack/webpack.config.js
+@@ -16,6 +16,14 @@ module.exports = {
+   },
+   module: {
+     rules: [
++      {
++        mimetype: 'image/svg+xml',
++        scheme: 'data',
++        type: 'asset/resource',
++        generator: {
++          filename: 'icons/[hash].svg'
++        }
++      },
+       {
+         test: /\.(scss)$/,
+         use: [
+```
+
+After running `npm run build` again, you will find the SVG files extracted into `dist/icons` and properly referenced from CSS.
 
 {{< markdown >}}
 {{< partial "guide-footer.md" >}}
