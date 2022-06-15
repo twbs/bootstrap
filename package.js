@@ -9,10 +9,3 @@ Package.describe({
   git: 'https://github.com/twbs/bootstrap.git'
 })
 
-Package.onUse(api => {
-  api.versionsFrom('METEOR@1.0')
-  api.addFiles([
-    'dist/css/bootstrap.css',
-    'dist/js/bootstrap.js'
-  ], 'client')
-})
