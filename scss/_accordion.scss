@@ -141,6 +141,9 @@
 
     .accordion-button {
       @include border-radius(0);
+      &.collapsed {
+        @include border-bottom-radius(0);
+      }
     }
   }
 }
