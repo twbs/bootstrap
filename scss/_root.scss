@@ -1,3 +1,9 @@
+@mixin cssvar($name, $value) {
+  @if $value != null {
+    --#{$prefix}#{$name}: #{$value};
+  }
+}
+
 :root {
   // Note: Custom variable values only support SassScript inside `#{}`.
 
@@ -64,11 +70,9 @@
   --#{$prefix}border-radius-pill: #{$border-radius-pill};
   // scss-docs-end root-border-var
 
-  --#{$prefix}heading-color: #{$headings-color};
-  --#{$prefix}link-color: #{$link-color};
-  --#{$prefix}link-hover-color: #{$link-hover-color};
-
-  --#{$prefix}code-color: #{$code-color};
-
-  --#{$prefix}highlight-bg: #{$mark-bg};
+  @include cssvar(heading-color, $headings-color);
+  @include cssvar(link-color, $link-color);
+  @include cssvar(link-hover-color, $link-hover-color);
+  @include cssvar(code-color, $code-color);
+  @include cssvar(highlight-bg, $mark-bg);
 }
