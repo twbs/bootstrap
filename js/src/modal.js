@@ -30,7 +30,8 @@ const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
 const EVENT_RESIZE = `resize${EVENT_KEY}`
-const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
+const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`
+const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY}`
 const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
@@ -69,6 +70,7 @@ class Modal extends BaseComponent {
     this._focustrap = this._initializeFocusTrap()
     this._isShown = false
     this._isTransitioning = false
+    this._dismissOutside = false
     this._scrollBar = new ScrollBarHelper()
 
     this._addEventListeners()
@@ -221,8 +223,12 @@ class Modal extends BaseComponent {
       }
     })
 
-    EventHandler.on(this._element, EVENT_CLICK_DISMISS, event => {
-      if (event.target !== event.currentTarget) { // click is inside modal-dialog
+    EventHandler.on(this._element, EVENT_MOUSEDOWN_DISMISS, event => {
+      this._dismissOutside = (event.target === event.currentTarget)
+    })
+    
+    EventHandler.on(this._element, EVENT_MOUSEUP_DISMISS, event => {
+      if (event.target !== event.currentTarget || !this._dismissOutside) { // click is inside (or originated inside) modal-dialog
         return
       }
 
