@@ -30,7 +30,7 @@
       // Get extra classes for this example except '.bd-example'
       const classes = Array.from(event.target.closest('.bd-code-snippet').querySelector('.bd-example').classList).filter(x => x !== 'bd-example').join(' ')
 
-      const jsSnippet = event.target.closest('.bd-code-snippet').querySelector('.btn-edit').getAttribute('data-js-snippet')
+      const jsSnippet = event.target.closest('.bd-code-snippet').querySelector('.btn-edit').getAttribute('data-sb-js-snippet')
       StackBlitzSDK.openBootstrapSnippet(htmlSnippet, jsSnippet, classes)
     })
   })
