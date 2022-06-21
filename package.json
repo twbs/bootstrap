@@ -133,7 +133,7 @@
     "karma-coverage-istanbul-reporter": "^3.0.3",
     "karma-detect-browsers": "^2.3.3",
     "karma-firefox-launcher": "^2.1.2",
-    "karma-jasmine": "^5.0.1",
+    "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.0.0",
     "karma-rollup-preprocessor": "7.0.7",
     "lockfile-lint": "^4.7.5",
