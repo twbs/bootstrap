@@ -307,7 +307,7 @@ class Tooltip extends BaseComponent {
 
   // Protected
   _isWithContent() {
-    return this._config.title || this._config.originalTitle
+    return Boolean(this._config.title || this._config.originalTitle)
   }
 
   _getTipElement() {
