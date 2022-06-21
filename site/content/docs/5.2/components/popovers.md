@@ -51,7 +51,7 @@ We use JavaScript similar to the snippet above to render the following live popo
 {{< /callout >}}
 
 {{< example stackblitz_add_js="true" >}}
-<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
 {{< /example >}}
 
 ### Four directions
