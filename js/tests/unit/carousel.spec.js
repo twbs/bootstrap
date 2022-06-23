@@ -406,7 +406,7 @@ describe('Carousel', () => {
         Simulator.setType('pointer')
 
         fixtureEl.innerHTML = [
-          '<div class="carousel" data-bs-interval="false">',
+          '<div class="carousel">',
           '  <div class="carousel-inner">',
           '    <div id="item" class="carousel-item">',
           '      <img alt="">',
@@ -453,7 +453,7 @@ describe('Carousel', () => {
         Simulator.setType('pointer')
 
         fixtureEl.innerHTML = [
-          '<div class="carousel" data-bs-interval="false">',
+          '<div class="carousel">',
           '  <div class="carousel-inner">',
           '    <div id="item" class="carousel-item active">',
           '      <img alt="">',
@@ -495,7 +495,7 @@ describe('Carousel', () => {
         document.documentElement.ontouchstart = noop
 
         fixtureEl.innerHTML = [
-          '<div class="carousel" data-bs-interval="false">',
+          '<div class="carousel">',
           '  <div class="carousel-inner">',
           '    <div id="item" class="carousel-item">',
           '      <img alt="">',
@@ -536,7 +536,7 @@ describe('Carousel', () => {
         document.documentElement.ontouchstart = noop
 
         fixtureEl.innerHTML = [
-          '<div class="carousel" data-bs-interval="false">',
+          '<div class="carousel">',
           '  <div class="carousel-inner">',
           '    <div id="item" class="carousel-item active">',
           '      <img alt="">',
@@ -578,7 +578,7 @@ describe('Carousel', () => {
         document.documentElement.ontouchstart = noop
 
         fixtureEl.innerHTML = [
-          '<div class="carousel" data-bs-interval="false">',
+          '<div class="carousel">',
           '  <div class="carousel-inner">',
           '    <div id="item" class="carousel-item active">',
           '      <img alt="">',
@@ -622,7 +622,7 @@ describe('Carousel', () => {
         clearPointerEvents()
         document.documentElement.ontouchstart = noop
 
-        fixtureEl.innerHTML = '<div class="carousel" data-bs-interval="false"></div>'
+        fixtureEl.innerHTML = '<div class="carousel"></div>'
 
         const carouselEl = fixtureEl.querySelector('.carousel')
         const carousel = new Carousel(carouselEl)
@@ -910,7 +910,7 @@ describe('Carousel', () => {
     it('should not call next when the page is not visible', () => {
       fixtureEl.innerHTML = [
         '<div style="display: none;">',
-        '  <div class="carousel" data-bs-interval="false"></div>',
+        '  <div class="carousel"></div>',
         '</div>'
       ].join('')
 

@@ -208,10 +208,10 @@ Add `data-bs-interval=""` to a `.carousel-item` to change the amount of time to 
 
 ### Disable touch swiping
 
-Carousels support swiping left/right on touchscreen devices to move between slides. This can be disabled using the `data-bs-touch` attribute. The example below also does not include the `data-bs-ride` attribute and has `data-bs-interval="false"` so it doesn't autoplay.
+Carousels support swiping left/right on touchscreen devices to move between slides. This can be disabled using the `data-bs-touch` attribute. The example below also does not include the `data-bs-ride` attribute so it doesn't autoplay.
 
 {{< example >}}
-<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
   <div class="carousel-inner">
     <div class="carousel-item active">
       {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" >}}
@@ -314,7 +314,7 @@ const carousel = new bootstrap.Carousel('#myCarousel')
 {{< bs-table >}}
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `interval` | number | `5000` | The amount of time to delay between automatically cycling an item. If `false`, carousel will not automatically cycle. |
+| `interval` | number | `5000` | The amount of time to delay between automatically cycling an item. |
 | `keyboard` | boolean | `true` | Whether the carousel should react to keyboard events. |
 | `pause` | string, boolean | `"hover"` | If set to `"hover"`, pauses the cycling of the carousel on `mouseenter` and resumes the cycling of the carousel on `mouseleave`. If set to `false`, hovering over the carousel won't pause it. On touch-enabled devices, when set to `"hover"`, cycling will pause on `touchend` (once the user finished interacting with the carousel) for two intervals, before automatically resuming. This is in addition to the mouse behavior. |
 | `ride` | string, boolean | `false` | If set to `true`, autoplays the carousel after the user manually cycles the first item. If set to `"carousel"`, autoplays the carousel on load. |
