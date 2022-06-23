@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: awaiting reply
-        if: github.event.label.name == 'awaiting-reply'
+        if: github.event.label.name == 'needs-example'
         uses: actions-cool/issues-helper@v3
         with:
           actions: "create-comment"
