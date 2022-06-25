@@ -2127,6 +2127,34 @@ describe('Dropdown', () => {
       dropdownMenu.click()
       expect(spy).toHaveBeenCalledWith(dropdownToggle)
     })
+
+    it('should open the dropdown and focus on the first item when using ArrowDown for the first time on an input search', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <input id="search" class="form-control dropdown-toggle" type="text" placeholder="Search..."  data-bs-toggle="dropdown" aria-expanded="false" aria-label="Search...">',
+          '  <ul class="dropdown-menu mt-1 dropdown-menu-end" aria-labelledby="search">',
+          '    <a id="item1" class="dropdown-item" href="#">A link</a>',
+          '    <a id="item2" class="dropdown-item" href="#">Another link</a>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const firstItem = fixtureEl.querySelector('#item1')
+
+        triggerDropdown.addEventListener('shown.bs.dropdown', () => {
+          setTimeout(() => {
+            expect(document.activeElement).toEqual(firstItem, 'item1 is focused')
+            resolve()
+          })
+        })
+
+        const keydown = createEvent('keydown')
+        keydown.key = 'ArrowDown'
+        triggerDropdown.dispatchEvent(keydown)
+      })
+    })
   })
 
   describe('jQueryInterface', () => {
