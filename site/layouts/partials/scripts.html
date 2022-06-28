@@ -27,8 +27,8 @@
     btn.addEventListener('click', event => {
       const htmlSnippet = event.target.closest('.bd-code-snippet').querySelector('.bd-example').innerHTML
 
-      // Get extra classes for this example except '.bd-example'
-      const classes = Array.from(event.target.closest('.bd-code-snippet').querySelector('.bd-example').classList).filter(x => x !== 'bd-example').join(' ')
+      // Get extra classes for this example
+      const classes = Array.from(event.target.closest('.bd-code-snippet').querySelector('.bd-example').classList).join(' ')
 
       const jsSnippet = event.target.closest('.bd-code-snippet').querySelector('.btn-edit').getAttribute('data-sb-js-snippet')
       StackBlitzSDK.openBootstrapSnippet(htmlSnippet, jsSnippet, classes)
@@ -42,10 +42,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ .Site.Params.cdn.css }}" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/{{ .Site.Params.docs_version }}/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
     <${'script'} src="{{ .Site.Params.cdn.js_bundle }}"></${'script'}>
   </head>
-  <body class="p-3 ${classes}">
+  <body class="p-3 m-0 border-0 ${classes}">
 
     <!-- Example Code -->
 ${htmlSnippet.replace(/^/gm, '    ')}
