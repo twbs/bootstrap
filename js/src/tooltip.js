@@ -115,6 +115,7 @@ class Tooltip extends BaseComponent {
     this._activeTrigger = {}
     this._popper = null
     this._templateFactory = null
+    this._newContent = null
 
     // Protected
     this.tip = null
@@ -205,6 +206,12 @@ class Tooltip extends BaseComponent {
       return
     }
 
+    // todo v6 remove this OR make it optional
+    if (this.tip) {
+      this.tip.remove()
+      this.tip = null
+    }
+
     const tip = this._getTipElement()
 
     this._element.setAttribute('aria-describedby', tip.getAttribute('id'))
@@ -219,7 +226,7 @@ class Tooltip extends BaseComponent {
     if (this._popper) {
       this._popper.update()
     } else {
-      this._createPopper(tip)
+      this._popper = this._createPopper(tip)
     }
 
     tip.classList.add(CLASS_NAME_SHOW)
@@ -305,7 +312,7 @@ class Tooltip extends BaseComponent {
 
   _getTipElement() {
     if (!this.tip) {
-      this.tip = this._createTipElement(this._getContentForTemplate())
+      this.tip = this._createTipElement(this._newContent || this._getContentForTemplate())
     }
 
     return this.tip
@@ -335,17 +342,11 @@ class Tooltip extends BaseComponent {
   }
 
   setContent(content) {
-    let isShown = false
-    if (this.tip) {
-      isShown = this._isShown()
+    this._newContent = content
+    if (this._isShown()) {
       this.tip.remove()
       this.tip = null
-    }
-
-    this._disposePopper()
-    this.tip = this._createTipElement(content)
-
-    if (isShown) {
+      this._disposePopper()
       this.show()
     }
   }
@@ -373,7 +374,7 @@ class Tooltip extends BaseComponent {
   }
 
   _getTitle() {
-    return this._config.title
+    return this._resolvePossibleFunction(this._config.title) || this._config.originalTitle
   }
 
   // Private
@@ -394,7 +395,7 @@ class Tooltip extends BaseComponent {
       this._config.placement.call(this, tip, this._element) :
       this._config.placement
     const attachment = AttachmentMap[placement.toUpperCase()]
-    this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
+    return Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
   }
 
   _getOffset() {
@@ -592,7 +593,6 @@ class Tooltip extends BaseComponent {
     }
 
     config.originalTitle = this._element.getAttribute('title') || ''
-    config.title = this._resolvePossibleFunction(config.title) || config.originalTitle
     if (typeof config.title === 'number') {
       config.title = config.title.toString()
     }
