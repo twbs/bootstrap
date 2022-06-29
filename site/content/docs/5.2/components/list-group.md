@@ -269,6 +269,31 @@ Place Bootstrap's checkboxes and radios within list group items and customize as
 </ul>
 {{< /example >}}
 
+{{< example >}}
+<ul class="list-group">
+  <li class="list-group-item">
+    <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" aria-label="...">
+    First radio
+  </li>
+  <li class="list-group-item">
+    <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" aria-label="...">
+    Second radio
+  </li>
+  <li class="list-group-item">
+    <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" aria-label="...">
+    Third radio
+  </li>
+  <li class="list-group-item">
+    <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" aria-label="...">
+    Fourth radio
+  </li>
+  <li class="list-group-item">
+    <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" aria-label="...">
+    Fifth radio
+  </li>
+</ul>
+{{< /example >}}
+
 And if you want `<label>`s as the `.list-group-item` for large hit areas, you can do that, too.
 
 {{< example >}}
@@ -292,6 +317,31 @@ And if you want `<label>`s as the `.list-group-item` for large hit areas, you ca
   <label class="list-group-item">
     <input class="form-check-input me-1" type="checkbox" value="">
     Fifth checkbox
+  </label>
+</div>
+{{< /example >}}
+
+{{< example >}}
+<div class="list-group">
+  <label class="list-group-item">
+    <input class="form-check-input me-1" type="radio" name="listGroupRadio2" value="">
+    First radio
+  </label>
+  <label class="list-group-item">
+    <input class="form-check-input me-1" type="radio" name="listGroupRadio2" value="">
+    Second radio
+  </label>
+  <label class="list-group-item">
+    <input class="form-check-input me-1" type="radio" name="listGroupRadio2" value="">
+    Third radio
+  </label>
+  <label class="list-group-item">
+    <input class="form-check-input me-1" type="radio" name="listGroupRadio2" value="">
+    Fourth radio
+  </label>
+  <label class="list-group-item">
+    <input class="form-check-input me-1" type="radio" name="listGroupRadio2" value="">
+    Fifth radio
   </label>
 </div>
 {{< /example >}}
