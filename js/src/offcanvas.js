@@ -18,6 +18,7 @@ import SelectorEngine from './dom/selector-engine'
 import Backdrop from './util/backdrop'
 import FocusTrap from './util/focustrap'
 import { enableDismissTrigger } from './util/component-functions'
+import HistoryHelper from './util/history'
 
 /**
  * Constants
@@ -70,6 +71,7 @@ class Offcanvas extends BaseComponent {
     this._isShown = false
     this._backdrop = this._initializeBackDrop()
     this._focustrap = this._initializeFocusTrap()
+    this._historyHelper = new HistoryHelper(this._element, { prefix: this.constructor.NAME })
     this._addEventListeners()
   }
 
@@ -112,6 +114,7 @@ class Offcanvas extends BaseComponent {
     this._element.setAttribute('aria-modal', true)
     this._element.setAttribute('role', 'dialog')
     this._element.classList.add(CLASS_NAME_SHOWING)
+    this._historyHelper.add()
 
     const completeCallBack = () => {
       if (!this._config.scroll || this._config.backdrop) {
@@ -152,6 +155,7 @@ class Offcanvas extends BaseComponent {
         new ScrollBarHelper().reset()
       }
 
+      this._historyHelper.remove()
       EventHandler.trigger(this._element, EVENT_HIDDEN)
     }
 
@@ -269,6 +273,17 @@ EventHandler.on(window, EVENT_RESIZE, () => {
     if (getComputedStyle(element).position !== 'fixed') {
       Offcanvas.getOrCreateInstance(element).hide()
     }
+  }
+})
+
+HistoryHelper.onChange(Offcanvas, (newUrl, oldUrl) => {
+  if (oldUrl) {
+    Offcanvas.getOrCreateInstance(oldUrl).hide()
+    return
+  }
+
+  if (newUrl) {
+    Offcanvas.getOrCreateInstance(newUrl).show()
   }
 })
 
