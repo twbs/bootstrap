@@ -904,7 +904,7 @@ describe('Tab', () => {
       })
     })
 
-    it('should not add `show` class to tab panes if there is no `.fade` class', () => {
+    it('should add `show` class to tab panes if there is no `.fade` class', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<ul class="nav nav-tabs" role="tablist">',
@@ -924,7 +924,7 @@ describe('Tab', () => {
         const secondNavEl = fixtureEl.querySelector('#secondNav')
 
         secondNavEl.addEventListener('shown.bs.tab', () => {
-          expect(fixtureEl.querySelectorAll('.show')).toHaveSize(0)
+          expect(fixtureEl.querySelectorAll('.tab-content .show')).toHaveSize(1)
           resolve()
         })
 

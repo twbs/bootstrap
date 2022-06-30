@@ -23,7 +23,7 @@
   --docsearch-muted-color: #{$text-muted};
   --docsearch-hit-shadow: none;
 
-  z-index: 1030;
+  z-index: 2000; // Make sure to be over all components showcased in the documentation
 
   @include media-breakpoint-up(lg) {
     padding-top: 4rem;
