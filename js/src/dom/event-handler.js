@@ -89,7 +89,7 @@ function getElementEvents(element) {
 
 function bootstrapHandler(element, fn) {
   return function handler(event) {
-    event.delegateTarget = element
+    hydrateObj(event, { delegateTarget: element })
 
     if (handler.oneOff) {
       EventHandler.off(element, event.type, fn)
@@ -109,7 +109,7 @@ function bootstrapDelegationHandler(element, selector, fn) {
           continue
         }
 
-        event.delegateTarget = target
+        hydrateObj(event, { delegateTarget: target })
 
         if (handler.oneOff) {
           EventHandler.off(element, event.type, selector, fn)
@@ -302,11 +302,16 @@ const EventHandler = {
 
 function hydrateObj(obj, meta) {
   for (const [key, value] of Object.entries(meta || {})) {
-    Object.defineProperty(obj, key, {
-      get() {
-        return value
-      }
-    })
+    try {
+      obj[key] = value
+    } catch {
+      Object.defineProperty(obj, key, {
+        configurable: true,
+        get() {
+          return value
+        }
+      })
+    }
   }
 
   return obj
