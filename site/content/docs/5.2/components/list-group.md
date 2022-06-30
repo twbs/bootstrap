@@ -294,7 +294,7 @@ You can use `.stretched-link` on `<label>`s to make the whole list group item cl
     <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckboxStretched">
     <label class="form-check-label stretched-link" for="thirdCheckboxStretched">Third checkbox</label>
   </li>
-</div>
+</ul>
 {{< /example >}}
 
 ## CSS
