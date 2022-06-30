@@ -281,7 +281,7 @@ Place Bootstrap's checkboxes and radios within list group items and customize as
 You can use `.stretched-link` on `<label>`s to make the whole list group item clickable.
 
 {{< example >}}
-<div class="list-group">
+<ul class="list-group">
   <li class="list-group-item">
     <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckboxStretched">
     <label class="form-check-label stretched-link" for="firstCheckboxStretched">First checkbox</label>
