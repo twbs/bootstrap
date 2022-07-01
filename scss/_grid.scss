@@ -19,6 +19,22 @@
     grid-template-columns: repeat(var(--#{$prefix}columns, #{$grid-columns}), 1fr);
     gap: var(--#{$prefix}gap, #{$grid-gutter-width});
 
+    @if $grid-rows > 1 {
+      @for $i from 2 through $grid-rows {
+        &.g-rows-#{$i} {
+          grid-template-rows: repeat($i, 1fr);
+        }
+      }
+    }
+
+    @if $grid-columns > 1 {
+      @for $i from 2 through $grid-columns {
+        &.g-cols-#{$i} {
+          grid-template-columns: repeat($i, 1fr);
+        }
+      }
+    }
+
     @include make-cssgrid();
   }
 }
