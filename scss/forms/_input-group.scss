@@ -10,6 +10,7 @@
   width: 100%;
 
   > .form-control,
+  > .form-control-plaintext,
   > .form-select {
     position: relative; // For focus state's z-index
     flex: 1 1 auto;
