@@ -65,6 +65,7 @@
 // manipulation.
 
 .input-group-lg > .form-control,
+.input-group-lg > .form-control-plaintext,
 .input-group-lg > .form-select,
 .input-group-lg > .input-group-text,
 .input-group-lg > .btn {
@@ -73,13 +74,22 @@
   @include border-radius($input-border-radius-lg);
 }
 
+.input-group-lg > .form-control-plaintext{
+  padding-left: 0;
+}
+
 .input-group-sm > .form-control,
+.input-group-sm > .form-control-plaintext,
 .input-group-sm > .form-select,
 .input-group-sm > .input-group-text,
 .input-group-sm > .btn {
   padding: $input-padding-y-sm $input-padding-x-sm;
   @include font-size($input-font-size-sm);
   @include border-radius($input-border-radius-sm);
+}
+
+.input-group-sm > .form-control-plaintext{
+  padding-left: 0;
 }
 
 .input-group-lg > .form-select,
