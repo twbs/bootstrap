@@ -243,10 +243,10 @@ $utilities: map-merge(
         <p>Why write more JavaScript when you can write HTML? Nearly all of Bootstrap's JavaScript plugins feature a first-class data API, allowing you to use JavaScript just by adding <code>data</code> attributes.</p>
         <div class="p-4 mb-3 border rounded-3">
           <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdown">
+            <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Dropdown item</a></li>
               <li><a class="dropdown-item" href="#">Dropdown item</a></li>
               <li><a class="dropdown-item" href="#">Dropdown item</a></li>
@@ -255,10 +255,10 @@ $utilities: map-merge(
         </div>
 
         {{ highlight (printf `<div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Dropdown
   </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown">
+  <ul class="dropdown-menu">
     <li><a class="dropdown-item" href="#">Dropdown item</a></li>
     <li><a class="dropdown-item" href="#">Dropdown item</a></li>
     <li><a class="dropdown-item" href="#">Dropdown item</a></li>

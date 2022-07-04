@@ -66,6 +66,18 @@
     left: 0;
     margin-top: var(--#{$prefix}dropdown-spacer);
   }
+
+  @if $dropdown-padding-y == 0 {
+    > .dropdown-item:first-child,
+    > li:first-child .dropdown-item {
+      @include border-top-radius(var(--#{$prefix}dropdown-inner-border-radius));
+    }
+    > .dropdown-item:last-child,
+    > li:last-child .dropdown-item {
+      @include border-bottom-radius(var(--#{$prefix}dropdown-inner-border-radius));
+    }
+
+  }
 }
 
 // scss-docs-start responsive-breakpoints
@@ -171,18 +183,6 @@
   white-space: nowrap; // prevent links from randomly breaking onto new lines
   background-color: transparent; // For `<button>`s
   border: 0; // For `<button>`s
-
-  // Prevent dropdown overflow if there's no padding
-  // See https://github.com/twbs/bootstrap/pull/27703
-  @if $dropdown-padding-y == 0 {
-    &:first-child {
-      @include border-top-radius(var(--#{$prefix}dropdown-inner-border-radius));
-    }
-
-    &:last-child {
-      @include border-bottom-radius(var(--#{$prefix}dropdown-inner-border-radius));
-    }
-  }
 
   &:hover,
   &:focus {

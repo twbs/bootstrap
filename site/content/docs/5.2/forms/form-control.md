@@ -31,7 +31,7 @@ Set heights using classes like `.form-control-lg` and `.form-control-sm`.
 
 ## Disabled
 
-Add the `disabled` boolean attribute on an input to give it a grayed out appearance and remove pointer events.
+Add the `disabled` boolean attribute on an input to give it a grayed out appearance, remove pointer events, and prevent focusing.
 
 {{< example >}}
 <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
@@ -40,7 +40,7 @@ Add the `disabled` boolean attribute on an input to give it a grayed out appeara
 
 ## Readonly
 
-Add the `readonly` boolean attribute on an input to prevent modification of the input's value.
+Add the `readonly` boolean attribute on an input to prevent modification of the input's value. `readonly` inputs can still be focused and selected, while `disabled` inputs cannot.
 
 {{< example >}}
 <input class="form-control" type="text" value="Readonly input here..." aria-label="readonly input example" readonly>
@@ -48,7 +48,7 @@ Add the `readonly` boolean attribute on an input to prevent modification of the 
 
 ## Readonly plain text
 
-If you want to have `<input readonly>` elements in your form styled as plain text, use the `.form-control-plaintext` class to remove the default form field styling and preserve the correct margin and padding.
+If you want to have `<input readonly>` elements in your form styled as plain text, replace `.form-control` with `.form-control-plaintext` to remove the default form field styling and preserve the correct `margin` and `padding`.
 
 {{< example >}}
   <div class="mb-3 row">

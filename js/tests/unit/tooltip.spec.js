@@ -185,7 +185,7 @@ describe('Tooltip', () => {
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
 
-      expect(tooltip._config.title).toEqual('Another tooltip')
+      expect(tooltip._getTitle()).toEqual('Another tooltip')
     })
   })
 
@@ -296,10 +296,10 @@ describe('Tooltip', () => {
           trigger: 'click'
         })
 
-        spyOn(tooltip, 'toggle').and.callThrough()
+        const spy = spyOn(tooltip, 'toggle').and.callThrough()
 
         tooltipEl.addEventListener('shown.bs.tooltip', () => {
-          expect(tooltip.toggle).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           resolve()
         })
 
@@ -336,14 +336,14 @@ describe('Tooltip', () => {
           trigger: 'click'
         })
 
-        spyOn(tooltip, 'toggle').and.callThrough()
+        const spy = spyOn(tooltip, 'toggle').and.callThrough()
 
         tooltipEl.addEventListener('shown.bs.tooltip', () => {
           tooltipEl.click()
         })
 
         tooltipEl.addEventListener('hidden.bs.tooltip', () => {
-          expect(tooltip.toggle).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           resolve()
         })
 
@@ -456,12 +456,12 @@ describe('Tooltip', () => {
         const tooltipEl = fixtureEl.querySelector('a')
         const tooltip = new Tooltip(tooltipEl)
 
-        spyOn(tooltip, 'show')
+        const spy = spyOn(tooltip, 'show')
 
         tooltipEl.querySelector('rect').dispatchEvent(createEvent('mouseover', { bubbles: true }))
 
         setTimeout(() => {
-          expect(tooltip.show).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           resolve()
         }, 0)
       })
@@ -475,11 +475,11 @@ describe('Tooltip', () => {
         const tooltip = new Tooltip(tooltipEl)
         document.documentElement.ontouchstart = noop
 
-        spyOn(EventHandler, 'on').and.callThrough()
+        const spy = spyOn(EventHandler, 'on').and.callThrough()
 
         tooltipEl.addEventListener('shown.bs.tooltip', () => {
           expect(document.querySelector('.tooltip')).not.toBeNull()
-          expect(EventHandler.on).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover', noop)
+          expect(spy).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover', noop)
           document.documentElement.ontouchstart = undefined
           resolve()
         })
@@ -687,14 +687,14 @@ describe('Tooltip', () => {
           delay: 150
         })
 
-        spyOn(tooltip, 'show')
+        const spy = spyOn(tooltip, 'show')
 
         setTimeout(() => {
-          expect(tooltip.show).not.toHaveBeenCalled()
+          expect(spy).not.toHaveBeenCalled()
         }, 100)
 
         setTimeout(() => {
-          expect(tooltip.show).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           resolve()
         }, 200)
 
@@ -711,15 +711,15 @@ describe('Tooltip', () => {
           delay: 150
         })
 
-        spyOn(tooltip, 'show')
+        const spy = spyOn(tooltip, 'show')
 
         setTimeout(() => {
-          expect(tooltip.show).not.toHaveBeenCalled()
+          expect(spy).not.toHaveBeenCalled()
           tooltipEl.dispatchEvent(createEvent('mouseover'))
         }, 100)
 
         setTimeout(() => {
-          expect(tooltip.show).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           expect(document.querySelectorAll('.tooltip')).toHaveSize(0)
           resolve()
         }, 200)
@@ -770,7 +770,7 @@ describe('Tooltip', () => {
         const tooltip = new Tooltip(tooltipEl)
         const triggerChild = tooltipEl.querySelector('b')
 
-        spyOn(tooltip, 'hide').and.callThrough()
+        const spy = spyOn(tooltip, 'hide').and.callThrough()
 
         tooltipEl.addEventListener('mouseover', () => {
           const moveMouseToChildEvent = createEvent('mouseout')
@@ -782,7 +782,7 @@ describe('Tooltip', () => {
         })
 
         tooltipEl.addEventListener('mouseout', () => {
-          expect(tooltip.hide).not.toHaveBeenCalled()
+          expect(spy).not.toHaveBeenCalled()
           resolve()
         })
 
@@ -848,7 +848,7 @@ describe('Tooltip', () => {
           }, 100)
 
           setTimeout(() => {
-            expect(insertedFunc).toHaveBeenCalledTimes(1)
+            expect(insertedFunc).toHaveBeenCalledTimes(2)
             resolve()
           }, 200)
         }, 0)
@@ -959,16 +959,16 @@ describe('Tooltip', () => {
 
         const tooltipEl = fixtureEl.querySelector('a')
         const tooltip = new Tooltip(tooltipEl)
+        const spy = spyOn(EventHandler, 'off')
 
         tooltipEl.addEventListener('shown.bs.tooltip', () => {
           document.documentElement.ontouchstart = noop
-          spyOn(EventHandler, 'off')
           tooltip.hide()
         })
 
         tooltipEl.addEventListener('hidden.bs.tooltip', () => {
           expect(document.querySelector('.tooltip')).toBeNull()
-          expect(EventHandler.off).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover', noop)
+          expect(spy).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover', noop)
           document.documentElement.ontouchstart = undefined
           resolve()
         })
@@ -1050,11 +1050,11 @@ describe('Tooltip', () => {
         const tooltip = new Tooltip(tooltipEl)
 
         tooltipEl.addEventListener('shown.bs.tooltip', () => {
-          spyOn(tooltip._popper, 'update')
+          const spy = spyOn(tooltip._popper, 'update')
 
           tooltip.update()
 
-          expect(tooltip._popper.update).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           resolve()
         })
 
@@ -1100,10 +1100,10 @@ describe('Tooltip', () => {
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
 
-      spyOn(document, 'createElement').and.callThrough()
+      const spy = spyOn(document, 'createElement').and.callThrough()
 
       expect(tooltip._getTipElement()).toBeDefined()
-      expect(document.createElement).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should return the created tip element', () => {
@@ -1166,6 +1166,7 @@ describe('Tooltip', () => {
       tooltip.setContent({ '.tooltip-inner': 'foo' })
 
       expect(tip()).not.toHaveClass('show')
+      tooltip.show()
       expect(tip().querySelector('.tooltip-inner').textContent).toEqual('foo')
     })
 
@@ -1229,6 +1230,7 @@ describe('Tooltip', () => {
       })
 
       tooltip.setContent({ '.tooltip': { 0: childContent, jquery: 'jQuery' } })
+      tooltip.show()
 
       expect(childContent.parentNode).toEqual(tooltip._getTipElement())
     })
@@ -1483,7 +1485,7 @@ describe('Tooltip', () => {
       const div = fixtureEl.querySelector('div')
       const tooltip = new Tooltip(div)
 
-      spyOn(tooltip, 'show')
+      const spy = spyOn(tooltip, 'show')
 
       jQueryMock.fn.tooltip = Tooltip.jQueryInterface
       jQueryMock.elements = [div]
@@ -1491,7 +1493,7 @@ describe('Tooltip', () => {
       jQueryMock.fn.tooltip.call(jQueryMock, 'show')
 
       expect(Tooltip.getInstance(div)).toEqual(tooltip)
-      expect(tooltip.show).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should throw error on undefined method', () => {

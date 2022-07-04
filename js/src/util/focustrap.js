@@ -24,13 +24,13 @@ const TAB_NAV_FORWARD = 'forward'
 const TAB_NAV_BACKWARD = 'backward'
 
 const Default = {
-  trapElement: null, // The element to trap focus inside of
-  autofocus: true
+  autofocus: true,
+  trapElement: null // The element to trap focus inside of
 }
 
 const DefaultType = {
-  trapElement: 'element',
-  autofocus: 'boolean'
+  autofocus: 'boolean',
+  trapElement: 'element'
 }
 
 /**

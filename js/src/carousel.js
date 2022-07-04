@@ -78,10 +78,10 @@ const Default = {
 }
 
 const DefaultType = {
-  interval: '(number|boolean)',
+  interval: '(number|boolean)', // TODO:v6 remove boolean support
   keyboard: 'boolean',
-  ride: '(boolean|string)',
   pause: '(string|boolean)',
+  ride: '(boolean|string)',
   touch: 'boolean',
   wrap: 'boolean'
 }

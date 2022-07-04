@@ -106,8 +106,8 @@ The `<hr>` element has been simplified. Similar to browser defaults, `<hr>`s are
   <hr>
 </div>
 
-<hr class="text-danger border-2 opacity-50">
-<hr class="border-primary border-3 opacity-75">
+<hr class="border border-danger border-2 opacity-50">
+<hr class="border border-primary border-3 opacity-75">
 {{< /example >}}
 
 ## Lists

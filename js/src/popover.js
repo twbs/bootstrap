@@ -19,15 +19,15 @@ const SELECTOR_CONTENT = '.popover-body'
 
 const Default = {
   ...Tooltip.Default,
-  placement: 'right',
-  offset: [0, 8],
-  trigger: 'click',
   content: '',
+  offset: [0, 8],
+  placement: 'right',
   template: '<div class="popover" role="tooltip">' +
-              '<div class="popover-arrow"></div>' +
-              '<h3 class="popover-header"></h3>' +
-              '<div class="popover-body"></div>' +
-            '</div>'
+    '<div class="popover-arrow"></div>' +
+    '<h3 class="popover-header"></h3>' +
+    '<div class="popover-body"></div>' +
+    '</div>',
+  trigger: 'click'
 }
 
 const DefaultType = {

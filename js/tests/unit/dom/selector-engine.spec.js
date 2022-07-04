@@ -166,7 +166,7 @@ describe('SelectorEngine', () => {
         '<span>lorem</span>',
         '<a>lorem</a>',
         '<button>lorem</button>',
-        '<input />',
+        '<input>',
         '<textarea></textarea>',
         '<select></select>',
         '<details>lorem</details>'
