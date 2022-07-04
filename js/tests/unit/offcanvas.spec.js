@@ -603,7 +603,7 @@ describe('Offcanvas', () => {
     it('should not prevent event for input', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
-          '<input type="checkbox" data-bs-toggle="offcanvas" data-bs-target="#offcanvasdiv1" />',
+          '<input type="checkbox" data-bs-toggle="offcanvas" data-bs-target="#offcanvasdiv1">',
           '<div id="offcanvasdiv1" class="offcanvas"></div>'
         ].join('')
 
