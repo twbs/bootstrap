@@ -46,7 +46,7 @@ Skip the download with [jsDelivr](https://www.jsdelivr.com/) to deliver cached v
 If you're using our compiled JavaScript and prefer to include Popper separately, add Popper before our JS, via a CDN preferably.
 
 ```html
-<script src="{{< param "cdn.popper" >}}" integrity="{{< param "cdn.popper_hash" >}}" crossorigin="anonymous"></script>
+<script src="{{< param "cdn.floating_ui" >}}" integrity="{{< param "cdn.floating_ui_hash" >}}" crossorigin="anonymous"></script>
 <script src="{{< param "cdn.js" >}}" integrity="{{< param "cdn.js_hash" >}}" crossorigin="anonymous"></script>
 ```
 

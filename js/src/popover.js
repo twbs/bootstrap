@@ -23,9 +23,10 @@ const Default = {
   offset: [0, 8],
   placement: 'right',
   template: '<div class="popover" role="tooltip">' +
-    '<div class="popover-arrow"></div>' +
+    '<div class="popover-inner">' +
     '<h3 class="popover-header"></h3>' +
     '<div class="popover-body"></div>' +
+    '</div>' +
     '</div>',
   trigger: 'click'
 }

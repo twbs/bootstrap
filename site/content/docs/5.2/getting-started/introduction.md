@@ -53,7 +53,7 @@ Get started by including Bootstrap's production-ready CSS and JavaScript via CDN
    You can also include [Popper](https://popper.js.org/) and our JS separately. If you don't plan to use dropdowns, popovers, or tooltips, save some kilobytes by not including Popper.
 
    ```html
-   <script src="{{< param "cdn.popper" >}}" integrity="{{< param "cdn.popper_hash" >}}" crossorigin="anonymous"></script>
+   <script src="{{< param "cdn.floating_ui" >}}" integrity="{{< param "cdn.floating_ui_hash" >}}" crossorigin="anonymous"></script>
    <script src="{{< param "cdn.js" >}}" integrity="{{< param "cdn.js_hash" >}}" crossorigin="anonymous"></script>
    ```
 

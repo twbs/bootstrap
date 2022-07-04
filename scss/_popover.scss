@@ -22,6 +22,9 @@
   --#{$prefix}popover-arrow-border: var(--#{$prefix}popover-border-color);
   // scss-docs-end popover-css-vars
 
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: var(--#{$prefix}popover-zindex);
   display: block;
   max-width: var(--#{$prefix}popover-max-width);
@@ -31,149 +34,121 @@
   @include font-size(var(--#{$prefix}popover-font-size));
   // Allow breaking very long words so they don't overflow the popover's bounds
   word-wrap: break-word;
+
+  &::before,
+  &::after {
+    position: absolute;
+    display: block;
+    content: "";
+    border-color: transparent;
+    border-style: solid;
+    border-width: 0;
+    transform: translateX(-50%);
+  }
+}
+
+.popover-inner {
+  margin: var(--#{$prefix}popover-arrow-height);
   background-color: var(--#{$prefix}popover-bg);
   background-clip: padding-box;
   border: var(--#{$prefix}popover-border-width) solid var(--#{$prefix}popover-border-color);
   @include border-radius(var(--#{$prefix}popover-border-radius));
   @include box-shadow(var(--#{$prefix}popover-box-shadow));
-
-  .popover-arrow {
-    display: block;
-    width: var(--#{$prefix}popover-arrow-width);
-    height: var(--#{$prefix}popover-arrow-height);
-
-    &::before,
-    &::after {
-      position: absolute;
-      display: block;
-      content: "";
-      border-color: transparent;
-      border-style: solid;
-      border-width: 0;
-    }
-  }
 }
 
-.bs-popover-top {
-  > .popover-arrow {
-    bottom: calc((var(--#{$prefix}popover-arrow-height) * -1) - var(--#{$prefix}popover-border-width)); // stylelint-disable-line function-disallowed-list
-
-    &::before,
-    &::after {
-      border-width: var(--#{$prefix}popover-arrow-height) calc(var(--#{$prefix}popover-arrow-width) * .5) 0; // stylelint-disable-line function-disallowed-list
-    }
-
-    &::before {
-      bottom: 0;
-      border-top-color: var(--#{$prefix}popover-arrow-border);
-    }
-
-    &::after {
-      bottom: var(--#{$prefix}popover-border-width);
-      border-top-color: var(--#{$prefix}popover-bg);
-    }
-  }
-}
-
-/* rtl:begin:ignore */
-.bs-popover-end {
-  > .popover-arrow {
-    left: calc((var(--#{$prefix}popover-arrow-height) * -1) - var(--#{$prefix}popover-border-width)); // stylelint-disable-line function-disallowed-list
-    width: var(--#{$prefix}popover-arrow-height);
-    height: var(--#{$prefix}popover-arrow-width);
-
-    &::before,
-    &::after {
-      border-width: calc(var(--#{$prefix}popover-arrow-width) * .5) var(--#{$prefix}popover-arrow-height) calc(var(--#{$prefix}popover-arrow-width) * .5) 0; // stylelint-disable-line function-disallowed-list
-    }
-
-    &::before {
-      left: 0;
-      border-right-color: var(--#{$prefix}popover-arrow-border);
-    }
-
-    &::after {
-      left: var(--#{$prefix}popover-border-width);
-      border-right-color: var(--#{$prefix}popover-bg);
-    }
-  }
-}
-
-/* rtl:end:ignore */
-
-.bs-popover-bottom {
-  > .popover-arrow {
-    top: calc((var(--#{$prefix}popover-arrow-height) * -1) - var(--#{$prefix}popover-border-width)); // stylelint-disable-line function-disallowed-list
-
-    &::before,
-    &::after {
-      border-width: 0 calc(var(--#{$prefix}popover-arrow-width) * .5) var(--#{$prefix}popover-arrow-height); // stylelint-disable-line function-disallowed-list
-    }
-
-    &::before {
-      top: 0;
-      border-bottom-color: var(--#{$prefix}popover-arrow-border);
-    }
-
-    &::after {
-      top: var(--#{$prefix}popover-border-width);
-      border-bottom-color: var(--#{$prefix}popover-bg);
-    }
-  }
-
-  // This will remove the popover-header's border just below the arrow
-  .popover-header::before {
-    position: absolute;
-    top: 0;
+.popover[data-bs-placement="top"] {
+  &::before,
+  &::after {
     left: 50%;
-    display: block;
-    width: var(--#{$prefix}popover-arrow-width);
-    margin-left: calc(var(--#{$prefix}popover-arrow-width) * -.5); // stylelint-disable-line function-disallowed-list
-    content: "";
-    border-bottom: var(--#{$prefix}popover-border-width) solid var(--#{$prefix}popover-header-bg);
+    border-width: var(--#{$prefix}popover-arrow-height) calc(var(--#{$prefix}popover-arrow-width) * .5) 0; // stylelint-disable-line function-disallowed-list
+  }
+
+  &::before {
+    bottom: 0;
+    border-top-color: var(--#{$prefix}popover-arrow-border);
+  }
+
+  &::after {
+    bottom: var(--#{$prefix}popover-border-width);
+    border-top-color: var(--#{$prefix}popover-bg);
   }
 }
+
+.popover[data-bs-placement="bottom"] {
+  &::before,
+  &::after {
+    left: 50%;
+    border-width: 0 calc(var(--#{$prefix}popover-arrow-width) * .5) var(--#{$prefix}popover-arrow-height); // stylelint-disable-line function-disallowed-list
+  }
+
+  &::before {
+    top: 0;
+    border-bottom-color: var(--#{$prefix}popover-arrow-border);
+  }
+
+  &::after {
+    top: var(--#{$prefix}popover-border-width);
+    border-bottom-color: var(--#{$prefix}popover-bg);
+  }
+}
+
 
 /* rtl:begin:ignore */
-.bs-popover-start {
-  > .popover-arrow {
-    right: calc((var(--#{$prefix}popover-arrow-height) * -1) - var(--#{$prefix}popover-border-width)); // stylelint-disable-line function-disallowed-list
-    width: var(--#{$prefix}popover-arrow-height);
-    height: var(--#{$prefix}popover-arrow-width);
 
-    &::before,
-    &::after {
-      border-width: calc(var(--#{$prefix}popover-arrow-width) * .5) 0 calc(var(--#{$prefix}popover-arrow-width) * .5) var(--#{$prefix}popover-arrow-height); // stylelint-disable-line function-disallowed-list
-    }
+.popover[data-bs-placement="right"] {
+  &::before,
+  &::after {
+    top: 50%;
+    border-width: calc(var(--#{$prefix}popover-arrow-width) * .5) var(--#{$prefix}popover-arrow-height) calc(var(--#{$prefix}popover-arrow-width) * .5) 0; // stylelint-disable-line function-disallowed-list
+    transform: translateY(-50%);
+  }
 
-    &::before {
-      right: 0;
-      border-left-color: var(--#{$prefix}popover-arrow-border);
-    }
+  &::before {
+    left: 0;
+    border-right-color: var(--#{$prefix}popover-arrow-border);
+  }
 
-    &::after {
-      right: var(--#{$prefix}popover-border-width);
-      border-left-color: var(--#{$prefix}popover-bg);
-    }
+  &::after {
+    left: var(--#{$prefix}popover-border-width);
+    border-right-color: var(--#{$prefix}popover-bg);
   }
 }
+
+
+.popover[data-bs-placement="left"] {
+  &::before,
+  &::after {
+    top: 50%;
+    border-width: calc(var(--#{$prefix}popover-arrow-width) * .5) 0 calc(var(--#{$prefix}popover-arrow-width) * .5) var(--#{$prefix}popover-arrow-height); // stylelint-disable-line function-disallowed-list
+    transform: translateY(-50%);
+  }
+
+  &::before {
+    right: 0;
+    border-left-color: var(--#{$prefix}popover-arrow-border);
+  }
+
+  &::after {
+    right: var(--#{$prefix}popover-border-width);
+    border-left-color: var(--#{$prefix}popover-bg);
+  }
+}
+
 
 /* rtl:end:ignore */
 
-.bs-popover-auto {
-  &[data-popper-placement^="top"] {
-    @extend .bs-popover-top;
-  }
-  &[data-popper-placement^="right"] {
-    @extend .bs-popover-end;
-  }
-  &[data-popper-placement^="bottom"] {
-    @extend .bs-popover-bottom;
-  }
-  &[data-popper-placement^="left"] {
-    @extend .bs-popover-start;
-  }
+// This will remove the popover-header's border just below the arrow
+.popover-header::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: block;
+  width: var(--#{$prefix}popover-arrow-width);
+  margin-left: calc(var(--#{$prefix}popover-arrow-width) * -.5); // stylelint-disable-line function-disallowed-list
+  content: "";
+  border-bottom: var(--#{$prefix}popover-border-width) solid var(--#{$prefix}popover-header-bg);
 }
+
 
 // Offset the popover to account for the popover arrow
 .popover-header {
