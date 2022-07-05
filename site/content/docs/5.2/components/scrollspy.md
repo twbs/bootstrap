@@ -22,21 +22,20 @@ Scrollspy toggles the `.active` class on anchor (`<a>`) elements when the elemen
 
 Target elements that aren't visible will be ignored and their corresponding nav items will never receive an `.active` class.
 
-In case your scrollspy instance is initialized in a not visible wrapper, it will ignore all target elements.
+In case your scrollspy instance is initialized in a non-visible wrapper, it will ignore all target elements.
 As of above, when the wrapper becomes visible (its elements too), you must force scrollspy instance to check again for observable elements, using the `refresh` method.
 
 <details>
   <summary class="text-muted">Show tab example</summary>
 
 ```js
-
-document.querySelectorAll('#nav-tab>.nav-link').forEach(el =>
-  el.addEventListener('shown.bs.tab', event => {
+document.querySelectorAll('#nav-tab>[data-bs-toggle="tab"]').forEach(el => {
+  el.addEventListener('shown.bs.tab', () => {
     const target = el.getAttribute('data-bs-target')
-    const scrollElem = `${target}>[data-bs-spy="scroll"]`
-    bootstrap.ScrollSpy.getInstance(scrollElem).refresh()
+    const scrollElem = document.querySelector(`${target} [data-bs-spy="scroll"]`)
+    bootstrap.ScrollSpy.getOrCreateInstance(scrollElem).refresh()
   })
-)
+})
 ```
 </details>
 
