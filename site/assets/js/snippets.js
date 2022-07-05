@@ -102,7 +102,9 @@
   // Indeterminate checkbox example in docs and StackBlitz
   document.querySelectorAll('.bd-example-indeterminate [type="checkbox"]')
     .forEach(checkbox => {
-      checkbox.indeterminate = true
+      if (checkbox.id.includes('Indeterminate')) {
+        checkbox.indeterminate = true
+      }
     })
 
   // -------------------------------
