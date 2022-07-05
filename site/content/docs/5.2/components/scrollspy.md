@@ -23,10 +23,10 @@ Scrollspy toggles the `.active` class on anchor (`<a>`) elements when the elemen
 Target elements that aren't visible will be ignored and their corresponding nav items will never receive an `.active` class.
 
 In case your scrollspy instance is initialized in a not visible wrapper, it will ignore all target elements.
-As of above, when the wrapper becomes visible (its elements too), you must force scrollspy instance to check again for observable elements, using the `refresh` method
+As of above, when the wrapper becomes visible (its elements too), you must force scrollspy instance to check again for observable elements, using the `refresh` method.
 
 <details>
-  <summary class="text-muted">hidden tab example</summary>
+  <summary class="text-muted">Show tab example</summary>
 
 ```js
 
