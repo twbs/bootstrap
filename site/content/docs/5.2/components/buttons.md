@@ -186,10 +186,10 @@ const bsButton = new bootstrap.Button('#myButton')
 {{< bs-table "table" >}}
 | Method | Description |
 | --- | --- |
-| `toggle` | Toggles push state. Gives the button the appearance that it has been activated. |
 | `dispose` | Destroys an element's button. (Removes stored data on the DOM element) |
 | `getInstance` | Static method which allows you to get the button instance associated to a DOM element, you can use it like this: `bootstrap.Button.getInstance(element)`|
 | `getOrCreateInstance` | Static method which returns a button instance associated to a DOM element or create a new one in case it wasn't initialized. You can use it like this: `bootstrap.Button.getOrCreateInstance(element)` |
+| `toggle` | Toggles push state. Gives the button the appearance that it has been activated. |
 {{< /bs-table >}}
 
 For example, to toggle all buttons
