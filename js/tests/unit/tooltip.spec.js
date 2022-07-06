@@ -1358,6 +1358,25 @@ describe('Tooltip', () => {
       })
     })
 
+    it('should add the aria-label attribute when element text content is a whitespace string', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="A tooltip"><span>    </span></a>'
+
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl)
+
+        tooltipEl.addEventListener('shown.bs.tooltip', () => {
+          const tooltipShown = document.querySelector('.tooltip')
+
+          expect(tooltipShown).not.toBeNull()
+          expect(tooltipEl.getAttribute('aria-label')).toEqual('A tooltip')
+          resolve()
+        })
+
+        tooltip.show()
+      })
+    })
+
     it('should not add the aria-label attribute if the attribute already exists', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<a href="#" rel="tooltip" aria-label="Different label" title="Another tooltip"></a>'
