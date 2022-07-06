@@ -336,8 +336,8 @@ Bootstrap's offcanvas class exposes a few events for hooking into offcanvas func
 {{< bs-table "table" >}}
 | Event type | Description |
 | --- | --- |
-| `hidden.bs.offcanvas` | This event is fired when an offcanvas element has been hidden from the user (will wait for CSS transitions to complete). |
 | `hide.bs.offcanvas` | This event is fired immediately when the `hide` method has been called. |
+| `hidden.bs.offcanvas` | This event is fired when an offcanvas element has been hidden from the user (will wait for CSS transitions to complete). |
 | `hidePrevented.bs.offcanvas` | This event is fired when the offcanvas is shown, its backdrop is `static` and a click outside of the offcanvas is performed. The event is also fired when the escape key is pressed and the `keyboard` option is set to `false`. |
 | `show.bs.offcanvas` | This event fires immediately when the `show` instance method is called. |
 | `shown.bs.offcanvas` | This event is fired when an offcanvas element has been made visible to the user (will wait for CSS transitions to complete). |

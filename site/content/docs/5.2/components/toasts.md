@@ -387,8 +387,8 @@ const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, o
 {{< bs-table "table" >}}
 | Event | Description |
 | --- | --- |
-| `hidden.bs.toast` | This event is fired when the toast has finished being hidden from the user. |
 | `hide.bs.toast` | This event is fired immediately when the `hide` instance method has been called. |
+| `hidden.bs.toast` | This event is fired when the toast has finished being hidden from the user. |
 | `show.bs.toast` | This event fires immediately when the `show` instance method is called. |
 | `shown.bs.toast` | This event is fired when the toast has been made visible to the user. |
 {{< /bs-table >}}
