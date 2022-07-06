@@ -49,7 +49,13 @@ Checkboxes can utilize the `:indeterminate` pseudo class when manually set via J
 
 Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input's state.
 
-{{< example >}}
+{{< example class="bd-example-indeterminate" stackblitz_add_js="true" >}}
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminateDisabled" disabled>
+  <label class="form-check-label" for="flexCheckIndeterminateDisabled">
+    Disabled indeterminate checkbox
+  </label>
+</div>
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
   <label class="form-check-label" for="flexCheckDisabled">
