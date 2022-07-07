@@ -420,6 +420,7 @@ Variables and maps determine the number of columns, the gutter width, and the me
 ```scss
 $grid-columns:      12;
 $grid-gutter-width: 1.5rem;
+$grid-row-columns:  6;
 ```
 
 {{< scss-docs name="grid-breakpoints" file="scss/_variables.scss" >}}
@@ -499,11 +500,12 @@ Using our built-in grid Sass variables and maps, it's possible to completely cus
 
 ### Columns and gutters
 
-The number of grid columns can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each individual column while `$grid-gutter-width` sets the width for the column gutters.
+The number of grid columns can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each individual column while `$grid-gutter-width` sets the width for the column gutters. `$grid-row-columns` is used to set the maximum number of columns of `.row-cols-*`, any number over this limit is ignored.
 
 ```scss
 $grid-columns: 12 !default;
 $grid-gutter-width: 1.5rem !default;
+$grid-row-columns: 6 !default;
 ```
 
 ### Grid tiers
