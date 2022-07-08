@@ -1000,8 +1000,9 @@ $form-floating-padding-y:         1rem !default;
 $form-floating-input-padding-t:   1.625rem !default;
 $form-floating-input-padding-b:   .625rem !default;
 $form-floating-label-opacity:     .65 !default;
-$form-floating-label-transform:   scale(.85) translateY(-.5rem) translateX(.15rem) !default;
-$form-floating-transition:        opacity .1s ease-in-out, transform .1s ease-in-out !default;
+$form-floating-label-scale:       .85 !default;
+$form-floating-label-transform:   scale($form-floating-label-scale) translateY(-.5rem) translateX(.15rem) !default;
+$form-floating-transition:        opacity .1s ease-in-out, transform .1s ease-in-out, width .1s ease-in-out !default;
 // scss-docs-end form-floating-variables
 
 // Form validation

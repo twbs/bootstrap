@@ -54,6 +54,7 @@
   > .form-control-plaintext,
   > .form-select {
     ~ label {
+      width: 100% / $form-floating-label-scale;
       opacity: $form-floating-label-opacity;
       transform: $form-floating-label-transform;
     }
@@ -61,6 +62,7 @@
   // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
   > .form-control:-webkit-autofill {
     ~ label {
+      width: 100% / $form-floating-label-scale;
       opacity: $form-floating-label-opacity;
       transform: $form-floating-label-transform;
     }
