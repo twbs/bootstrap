@@ -16,6 +16,8 @@ Scrollspy toggles the `.active` class on anchor (`<a>`) elements when the elemen
 
 - As you scroll the "spied" container, an `.active` class is added and removed from anchor links within the associated navigation. Links must have resolvable `id` targets, otherwise they're ignored. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`
 
+- Target elements that are not visible will be ignored. See the [Non-visible elements](#non-visible-elements) section below.
+
 ## Examples
 
 ### Navbar
