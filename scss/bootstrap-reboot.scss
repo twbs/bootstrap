@@ -1,5 +1,5 @@
 @import "mixins/banner";
-@include bsBanner(Reboot, "Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md)");
+@include bsBanner(Reboot);
 
 @import "functions";
 @import "variables";
