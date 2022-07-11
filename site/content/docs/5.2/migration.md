@@ -388,6 +388,7 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 ### Navbars
 
 - <span class="badge bg-danger">Breaking</span> Navbars now require a container within (to drastically simplify spacing requirements and CSS required).
+- <span class="badge bg-danger">Breaking</span> The `.active` class can no longer be applied to `.nav-item`s, it must be applied directly on `.nav-link`s.
 
 ### Offcanvas
 

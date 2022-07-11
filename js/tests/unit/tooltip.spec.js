@@ -185,7 +185,7 @@ describe('Tooltip', () => {
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
 
-      expect(tooltip._config.title).toEqual('Another tooltip')
+      expect(tooltip._getTitle()).toEqual('Another tooltip')
     })
   })
 
@@ -848,7 +848,7 @@ describe('Tooltip', () => {
           }, 100)
 
           setTimeout(() => {
-            expect(insertedFunc).toHaveBeenCalledTimes(1)
+            expect(insertedFunc).toHaveBeenCalledTimes(2)
             resolve()
           }, 200)
         }, 0)
@@ -1166,6 +1166,7 @@ describe('Tooltip', () => {
       tooltip.setContent({ '.tooltip-inner': 'foo' })
 
       expect(tip()).not.toHaveClass('show')
+      tooltip.show()
       expect(tip().querySelector('.tooltip-inner').textContent).toEqual('foo')
     })
 
@@ -1229,6 +1230,7 @@ describe('Tooltip', () => {
       })
 
       tooltip.setContent({ '.tooltip': { 0: childContent, jquery: 'jQuery' } })
+      tooltip.show()
 
       expect(childContent.parentNode).toEqual(tooltip._getTipElement())
     })
@@ -1349,6 +1351,25 @@ describe('Tooltip', () => {
 
           expect(tooltipShown).not.toBeNull()
           expect(tooltipEl.getAttribute('aria-label')).toEqual('Another tooltip')
+          resolve()
+        })
+
+        tooltip.show()
+      })
+    })
+
+    it('should add the aria-label attribute when element text content is a whitespace string', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="A tooltip"><span>    </span></a>'
+
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl)
+
+        tooltipEl.addEventListener('shown.bs.tooltip', () => {
+          const tooltipShown = document.querySelector('.tooltip')
+
+          expect(tooltipShown).not.toBeNull()
+          expect(tooltipEl.getAttribute('aria-label')).toEqual('A tooltip')
           resolve()
         })
 

@@ -889,7 +889,7 @@ describe('ScrollSpy', () => {
 
       setTimeout(() => {
         if (div.scrollTo) {
-          expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop })
+          expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop, behavior: 'smooth' })
         } else {
           expect(clickSpy).toHaveBeenCalledWith(observable.offsetTop - div.offsetTop)
         }

@@ -102,7 +102,9 @@
   // Indeterminate checkbox example in docs and StackBlitz
   document.querySelectorAll('.bd-example-indeterminate [type="checkbox"]')
     .forEach(checkbox => {
-      checkbox.indeterminate = true
+      if (checkbox.id.includes('Indeterminate')) {
+        checkbox.indeterminate = true
+      }
     })
 
   // -------------------------------
@@ -141,10 +143,12 @@
   // Offcanvas
   // -------------------------------
   // 'Offcanvas components' example in docs only
-  const myOffcanvas = document.querySelector('.bd-example-offcanvas #offcanvas')
+  const myOffcanvas = document.querySelectorAll('.bd-example-offcanvas .offcanvas')
   if (myOffcanvas) {
-    myOffcanvas.addEventListener('show.bs.offcanvas', event => {
-      event.preventDefault()
-    }, false)
+    myOffcanvas.forEach(offcanvas => {
+      offcanvas.addEventListener('show.bs.offcanvas', event => {
+        event.preventDefault()
+      }, false)
+    })
   }
 })()

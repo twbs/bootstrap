@@ -986,7 +986,7 @@ describe('Dropdown', () => {
           '<div class="dropdown">',
           '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
           '  <div class="dropdown-menu">',
-          '    <a class="dropdown-item" href="#">Dropdwon item</a>',
+          '    <a class="dropdown-item" href="#">Dropdown item</a>',
           '  </div>',
           '</div>'
         ].join('')
