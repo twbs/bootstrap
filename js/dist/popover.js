@@ -1,6 +1,6 @@
 /*!
-  * Bootstrap popover.js v4.6.1 (https://getbootstrap.com/)
-  * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap popover.js v4.6.2 (https://getbootstrap.com/)
+  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -27,11 +27,14 @@
   function _createClass(Constructor, protoProps, staticProps) {
     if (protoProps) _defineProperties(Constructor.prototype, protoProps);
     if (staticProps) _defineProperties(Constructor, staticProps);
+    Object.defineProperty(Constructor, "prototype", {
+      writable: false
+    });
     return Constructor;
   }
 
   function _extends() {
-    _extends = Object.assign || function (target) {
+    _extends = Object.assign ? Object.assign.bind() : function (target) {
       for (var i = 1; i < arguments.length; i++) {
         var source = arguments[i];
 
@@ -44,7 +47,6 @@
 
       return target;
     };
-
     return _extends.apply(this, arguments);
   }
 
@@ -56,11 +58,10 @@
   }
 
   function _setPrototypeOf(o, p) {
-    _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
       o.__proto__ = p;
       return o;
     };
-
     return _setPrototypeOf(o, p);
   }
 
@@ -69,7 +70,7 @@
    */
 
   var NAME = 'popover';
-  var VERSION = '4.6.1';
+  var VERSION = '4.6.2';
   var DATA_KEY = 'bs.popover';
   var EVENT_KEY = "." + DATA_KEY;
   var JQUERY_NO_CONFLICT = $__default["default"].fn[NAME];
