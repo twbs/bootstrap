@@ -24,7 +24,7 @@ buildFuture:            true
 
 enableRobotsTXT:        true
 metaDataFormat:         "yaml"
-disableKinds:           ["404", "taxonomy", "term", "RSS"]
+disableKinds:           ["taxonomy", "term", "RSS"]
 
 publishDir:             "_site"
 
@@ -34,17 +34,19 @@ module:
       target:           static/docs/5.2/dist
     - source:           site/assets
       target:           assets
-    - source:           site/content
-      target:           content
+    - source:           site/content/docs
+      target:           content/docs
+    - source:           site/content/latest
+      target:           content/docs/5.2
     - source:           site/data
       target:           data
     - source:           site/layouts
       target:           layouts
-    - source:           site/static
-      target:           static
-    - source:           site/static/docs/5.2/assets/img/favicons/apple-touch-icon.png
+    - source:           site/static/assets
+      target:           static/docs/5.2/assets
+    - source:           site/static/assets/img/favicons/apple-touch-icon.png
       target:           static/apple-touch-icon.png
-    - source:           site/static/docs/5.2/assets/img/favicons/favicon.ico
+    - source:           site/static/assets/img/favicons/favicon.ico
       target:           static/favicon.ico
 
 params:
