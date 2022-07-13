@@ -308,7 +308,7 @@ describe('Offcanvas', () => {
       })
     })
 
-    it('should trap focus if scroll is allowed & backdrop is enabled', () => {
+    it('should trap focus if scroll is allowed OR backdrop is enabled', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<div class="offcanvas"></div>'
 
