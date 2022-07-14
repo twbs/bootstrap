@@ -133,6 +133,7 @@ class Modal extends BaseComponent {
     this._focustrap.deactivate()
 
     this._element.classList.remove(CLASS_NAME_SHOW)
+    document.body.classList.remove(CLASS_NAME_OPEN)
 
     this._queueCallback(() => this._hideModal(), this._element, this._isAnimated())
   }
@@ -245,7 +246,6 @@ class Modal extends BaseComponent {
     this._isTransitioning = false
 
     this._backdrop.hide(() => {
-      document.body.classList.remove(CLASS_NAME_OPEN)
       this._resetAdjustments()
       this._scrollBar.reset()
       EventHandler.trigger(this._element, EVENT_HIDDEN)
