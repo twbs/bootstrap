@@ -1,7 +1,7 @@
 <header class="navbar navbar-expand-lg navbar-dark bd-navbar sticky-top">
   <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
     {{- if eq .Layout "docs" }}
-      <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar" aria-controls="bdSidebar" aria-expanded="false" aria-label="Toggle docs navigation">
+      <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar" aria-controls="bdSidebar" aria-label="Toggle docs navigation">
         {{ partial "icons/hamburger.svg" (dict "class" "bi" "width" "24" "height" "24") }}
         <span class="d-none fs-6 pe-1">Browse</span>
       </button>
@@ -13,11 +13,11 @@
       {{ partial "icons/bootstrap-white-fill.svg" (dict "class" "d-block my-1" "width" "40" "height" "32") }}
     </a>
 
-    <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Toggle navigation">
       <svg class="bi" aria-hidden="true"><use xlink:href="#three-dots"></use></svg>
     </button>
 
-    <div class="offcanvas-lg offcanvas-end flex-grow-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
       <div class="offcanvas-header px-4 pb-0">
         <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Bootstrap</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>

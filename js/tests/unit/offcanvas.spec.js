@@ -293,13 +293,35 @@ describe('Offcanvas', () => {
 
         const offCanvasEl = fixtureEl.querySelector('.offcanvas')
         const offCanvas = new Offcanvas(offCanvasEl, {
-          scroll: true
+          scroll: true,
+          backdrop: false
         })
 
         const spy = spyOn(offCanvas._focustrap, 'activate').and.callThrough()
 
         offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
           expect(spy).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.show()
+      })
+    })
+
+    it('should trap focus if scroll is allowed OR backdrop is enabled', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+
+        const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+        const offCanvas = new Offcanvas(offCanvasEl, {
+          scroll: true,
+          backdrop: true
+        })
+
+        const spy = spyOn(offCanvas._focustrap, 'activate').and.callThrough()
+
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          expect(spy).toHaveBeenCalled()
           resolve()
         })
 
