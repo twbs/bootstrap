@@ -10,6 +10,7 @@ module.exports = context => {
   return {
     map: context.file.dirname.includes('examples') ? false : mapConfig,
     plugins: {
+      "postcss-drop-empty-css-vars": {},
       autoprefixer: {
         cascade: false
       },
