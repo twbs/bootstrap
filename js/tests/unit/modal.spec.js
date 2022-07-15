@@ -713,16 +713,16 @@ describe('Modal', () => {
         const dialogEl = modalEl.querySelector('.modal-dialog')
         const modal = new Modal(modalEl)
 
-        spyOn(modal, 'hide')
+        const spy = spyOn(modal, 'hide')
 
         modalEl.addEventListener('shown.bs.modal', () => {
           const mouseDown = createEvent('mousedown')
 
           dialogEl.dispatchEvent(mouseDown)
-          expect(modal.hide).not.toHaveBeenCalled()
+          expect(spy).not.toHaveBeenCalled()
 
           modalEl.dispatchEvent(mouseDown)
-          expect(modal.hide).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           resolve()
         })
 
