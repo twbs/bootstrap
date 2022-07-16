@@ -109,6 +109,13 @@ if (BROWSERSTACK) {
     project: 'Bootstrap',
     retryLimit: 2
   }
+
+  config.captureTimeout = 3e5
+  config.browserDisconnectTolerance = 0
+  config.browserDisconnectTimeout = 3e5
+  config.browserSocketTimeout = 1.2e5
+  config.browserNoActivityTimeout = 3e5
+
   plugins.push('karma-browserstack-launcher', 'karma-jasmine-html-reporter')
   config.customLaunchers = browsers
   console.log('config.customLaunchers', config.customLaunchers)
