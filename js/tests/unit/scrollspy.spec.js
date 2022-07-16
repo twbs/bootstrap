@@ -126,6 +126,24 @@ describe('ScrollSpy', () => {
       expect(scrollSpy._rootElement).toBeNull()
     })
 
+    it('should respect threshold option', () => {
+      fixtureEl.innerHTML = [
+        '<ul id="navigation" class="navbar">',
+        '   <a class="nav-link active" id="one-link" href="#">One</a>' +
+        '</ul>',
+        '<div id="content">',
+        '  <div id="one-link" style="height: 300px;">test</div>',
+        '</div>'
+      ].join('')
+
+      const scrollSpy = new ScrollSpy('#content', {
+        target: '#navigation',
+        threshold: [1]
+      })
+
+      expect(scrollSpy._observer.thresholds).toEqual([1])
+    })
+
     it('should not take count to not visible sections', () => {
       fixtureEl.innerHTML = [
         '<nav id="navigation" class="navbar">',

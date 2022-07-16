@@ -40,14 +40,16 @@ const Default = {
   offset: null, // TODO: v6 @deprecated, keep it for backwards compatibility reasons
   rootMargin: '0px 0px -25%',
   smoothScroll: false,
-  target: null
+  target: null,
+  threshold: [0.1, 0.5, 1]
 }
 
 const DefaultType = {
   offset: '(number|null)', // TODO v6 @deprecated, keep it for backwards compatibility reasons
   rootMargin: 'string',
   smoothScroll: 'boolean',
-  target: 'element'
+  target: 'element',
+  threshold: 'array'
 }
 
 /**
@@ -141,7 +143,7 @@ class ScrollSpy extends BaseComponent {
   _getNewObserver() {
     const options = {
       root: this._rootElement,
-      threshold: [0.1, 0.5, 1],
+      threshold: this._config.threshold,
       rootMargin: this._getRootMargin()
     }
 
