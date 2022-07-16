@@ -443,8 +443,8 @@ describe('EventHandler', () => {
   })
 
   describe('general functionality', () => {
-    fit('should hydrate properties, and make them configurable', done => {
-      new Promise(resolve => {
+    fit('should hydrate properties, and make them configurable', () => {
+      return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<div id="div1">',
           '   <div id="div2"></div>',
@@ -475,8 +475,6 @@ describe('EventHandler', () => {
         expect(() => {
           EventHandler.trigger(div1, 'click', { delegateTarget: div2, originalTarget: null, currentTarget: div2 })
         }).not.toThrowError(TypeError)
-      }).then(() => {
-        done();
       })
     })
   })
