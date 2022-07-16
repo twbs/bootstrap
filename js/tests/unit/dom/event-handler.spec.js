@@ -443,7 +443,7 @@ describe('EventHandler', () => {
   })
 
   describe('general functionality', () => {
-    it('should hydrate properties, and make them configurable', () => {
+    fit('should hydrate properties, and make them configurable', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<div id="div1">',
