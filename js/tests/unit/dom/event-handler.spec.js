@@ -4,12 +4,19 @@ import { noop } from '../../../src/util'
 
 describe('EventHandler', () => {
   let fixtureEl
+  let originalTimeout
 
   beforeAll(() => {
     fixtureEl = getFixture()
   })
 
+  beforeEach(() => {
+    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+  })
+
   afterEach(() => {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout
     clearFixture()
   })
 
