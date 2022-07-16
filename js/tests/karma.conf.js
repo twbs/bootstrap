@@ -111,7 +111,9 @@ if (BROWSERSTACK) {
   }
   plugins.push('karma-browserstack-launcher', 'karma-jasmine-html-reporter')
   config.customLaunchers = browsers
+  console.log('config.customLaunchers', config.customLaunchers)
   config.browsers = Object.keys(browsers)
+  console.log('config.browsers', config.browsers)
   reporters.push('BrowserStack', 'kjhtml')
 } else if (JQUERY_TEST) {
   frameworks.push('detectBrowsers')
@@ -166,6 +168,6 @@ config.plugins = plugins
 config.reporters = reporters
 
 module.exports = karmaConfig => {
-  config.logLevel = karmaConfig.LOG_ERROR
+  config.logLevel = karmaConfig.LOG_DEBUG
   karmaConfig.set(config)
 }
