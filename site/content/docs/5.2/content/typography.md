@@ -88,6 +88,8 @@ Traditional heading elements are designed to work best in the meat of your page 
 
 Display headings are configured via the `$display-font-sizes` Sass map and two variables, `$display-font-weight` and `$display-line-height`.
 
+Display headings are customizable via two variables, `$display-font-family` and `$display-font-style`.
+
 {{< scss-docs name="display-headings" file="scss/_variables.scss" >}}
 
 ## Lead

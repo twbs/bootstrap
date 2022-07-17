@@ -22,7 +22,7 @@
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: var(--#{$prefix}badge-border-radius, 0); // stylelint-disable-line property-disallowed-list
+  @include border-radius(var(--#{$prefix}badge-border-radius));
   @include gradient-bg();
 
   // Empty badges collapse automatically

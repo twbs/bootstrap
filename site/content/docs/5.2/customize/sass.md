@@ -160,17 +160,18 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 ### Remove from map
 
-To remove colors from `$theme-colors`, or any other map, use `map-remove`. Be aware you must insert it between our requirements and options:
+To remove colors from `$theme-colors`, or any other map, use `map-remove`. Be aware you must insert `$theme-colors` between our requirements just after its definition in `variables` and before its usage in `maps`:
 
 ```scss
 // Required
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
+
+$theme-colors: map-remove($theme-colors, "info", "light", "dark");
+
 @import "../node_modules/bootstrap/scss/maps";
 @import "../node_modules/bootstrap/scss/mixins";
 @import "../node_modules/bootstrap/scss/root";
-
-$theme-colors: map-remove($theme-colors, "info", "light", "dark");
 
 // Optional
 @import "../node_modules/bootstrap/scss/reboot";
