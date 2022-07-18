@@ -285,7 +285,7 @@ With the move to flexbox in v4, you can use margin utilities like `.me-auto` to 
 
 ## Standalone column classes
 
-The `.col-*` classes can also be used outside a `.row` to give an element a specific width. Whenever column classes are used as non direct children of a row, the paddings are omitted.
+The `.col-*` classes can also be used outside a `.row` to give an element a specific width. Whenever column classes are used as non-direct children of a row, the paddings are omitted.
 
 {{< example >}}
 <div class="col-3 bg-light p-3 border">
