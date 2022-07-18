@@ -380,6 +380,8 @@ const scrollSpy = new bootstrap.ScrollSpy(document.body, {
 | `rootMargin` | string | `0px 0px -40%` | Intersection Observer [rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin) valid units, when calculating scroll position. |
 | `smoothScroll` | boolean | `false` | Enables smooth scrolling when a user clicks on a link that refers to ScrollSpy observables. |
 | `target` | string \| jQuery object \| DOM element |  | Specifies element to apply Scrollspy plugin. |
+| `threshold` | array | `[0.1, 0.5, 1]` | Intersection Observer [threshold](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver#threshold) valid input, when calculating scroll position.|
+
 {{< /bs-table >}}
 
 {{< callout warning >}}

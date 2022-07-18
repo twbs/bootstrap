@@ -132,7 +132,7 @@ describe('ScrollSpy', () => {
         '   <a class="nav-link active" id="one-link" href="#">One</a>' +
         '</ul>',
         '<div id="content">',
-        '  <div id="one-link" style="height: 300px;">test</div>',
+        '  <div id="one-link">test</div>',
         '</div>'
       ].join('')
 
@@ -142,6 +142,31 @@ describe('ScrollSpy', () => {
       })
 
       expect(scrollSpy._observer.thresholds).toEqual([1])
+    })
+
+    it('should respect threshold option mark-up', () => {
+      fixtureEl.innerHTML = [
+        '<ul id="navigation" class="navbar">',
+        '   <a class="nav-link active" id="one-link" href="#">One</a>' +
+        '</ul>',
+        '<div id="content" data-bs-threshold="0,0.2,1">',
+        '  <div id="one-link">test</div>',
+        '</div>'
+      ].join('')
+
+      const scrollSpy = new ScrollSpy('#content', {
+        target: '#navigation'
+      })
+
+      const expectToBeCloseToArray = (actual, expected) => {
+        expect(actual.length).toBe(expected.length)
+        for (const x of actual) {
+          const i = actual.indexOf(x)
+          expect(x).withContext(`[${i}]`).toBeCloseTo(expected[i])
+        }
+      }
+
+      expectToBeCloseToArray(scrollSpy._observer.thresholds, [0, 0.2, 1])
     })
 
     it('should not take count to not visible sections', () => {
