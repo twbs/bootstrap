@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.6.1): alert.js
+ * Bootstrap (v4.6.2): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -13,7 +13,7 @@ import Util from './util'
  */
 
 const NAME = 'alert'
-const VERSION = '4.6.1'
+const VERSION = '4.6.2'
 const DATA_KEY = 'bs.alert'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
