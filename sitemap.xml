@@ -34,6 +34,15 @@
     <loc>https://getbootstrap.com/</loc>
   </url>
   <url>
+    <loc>https://getbootstrap.com/docs/5.2/getting-started/parcel/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.2/getting-started/vite/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.2/getting-started/webpack/</loc>
+  </url>
+  <url>
     <loc>https://getbootstrap.com/docs/5.2/utilities/borders/</loc>
   </url>
   <url>
@@ -262,9 +271,6 @@
     <loc>https://getbootstrap.com/docs/5.2/components/pagination/</loc>
   </url>
   <url>
-    <loc>https://getbootstrap.com/docs/5.2/getting-started/parcel/</loc>
-  </url>
-  <url>
     <loc>https://getbootstrap.com/docs/5.2/components/placeholders/</loc>
   </url>
   <url>
@@ -392,9 +398,6 @@
   </url>
   <url>
     <loc>https://getbootstrap.com/docs/5.2/helpers/visually-hidden/</loc>
-  </url>
-  <url>
-    <loc>https://getbootstrap.com/docs/5.2/getting-started/webpack/</loc>
   </url>
   <url>
     <loc>https://getbootstrap.com/docs/5.2/layout/z-index/</loc>
