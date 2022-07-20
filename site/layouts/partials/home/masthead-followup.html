@@ -41,6 +41,25 @@
 <script src="%s" integrity=%q crossorigin="anonymous"></script>
 `) .Site.Params.cdn.js_bundle (.Site.Params.cdn.js_bundle_hash | safeHTMLAttr)) "html" "" }}
     </div>
+
+    <div class="col-md-8 mx-auto text-center">
+      <h4 class="fw-semibold">Read our getting started guides</h4>
+      <p>Get a jump on including Bootstrap's source files in a new project with our official guides.</p>
+      <div class="d-flex flex-wrap align-items-center justify-content-center gap-4 mt-4">
+        <a class="d-flex flex-column align-items-center text-decoration-none" href="/docs/{{ .Site.Params.docs_version }}/getting-started/webpack">
+          <img class="d-block mb-2" src="/docs/{{ .Site.Params.docs_version }}/assets/img/webpack.png" alt="" width="72" height="72" loading="lazy">
+          <span class="text-muted">Webpack</span>
+        </a>
+        <a class="d-flex flex-column align-items-center text-decoration-none" href="/docs/{{ .Site.Params.docs_version }}/getting-started/parcel">
+          <img class="d-block mb-2" src="/docs/{{ .Site.Params.docs_version }}/assets/img/parcel.png" alt="" width="72" height="72" loading="lazy">
+          <span class="text-muted">Parcel</span>
+        </a>
+        <a class="d-flex flex-column align-items-center text-decoration-none" href="/docs/{{ .Site.Params.docs_version }}/getting-started/vite">
+          <img class="d-block mb-2" src="/docs/{{ .Site.Params.docs_version }}/assets/img/vite.png" alt="" width="72" height="72" loading="lazy">
+          <span class="text-muted">Vite</span>
+        </a>
+      </div>
+    </div>
   </section>
 
   <section class="col-lg-7 mb-5">

@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap swipe.js v5.2.0-beta1 (https://getbootstrap.com/)
+  * Bootstrap swipe.js v5.2.0 (https://getbootstrap.com/)
   * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -16,7 +16,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.0-beta1): util/swipe.js
+   * Bootstrap (v5.2.0): util/swipe.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -36,14 +36,14 @@
   const CLASS_NAME_POINTER_EVENT = 'pointer-event';
   const SWIPE_THRESHOLD = 40;
   const Default = {
+    endCallback: null,
     leftCallback: null,
-    rightCallback: null,
-    endCallback: null
+    rightCallback: null
   };
   const DefaultType = {
+    endCallback: '(function|null)',
     leftCallback: '(function|null)',
-    rightCallback: '(function|null)',
-    endCallback: '(function|null)'
+    rightCallback: '(function|null)'
   };
   /**
    * Class definition
