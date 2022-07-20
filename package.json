@@ -135,7 +135,7 @@
     "karma-rollup-preprocessor": "7.0.8",
     "karma-jasmine-html-reporter": "^2.0.0",
     "karma-jasmine": "^5.0.1",
-    "lockfile-lint": "^4.7.4",
+    "lockfile-lint": "^4.7.6",
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.12",
