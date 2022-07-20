@@ -37,6 +37,7 @@
       }
     ],
     "no-console": "error",
+    "no-negated-condition": "off",
     "object-curly-spacing": [
       "error",
       "always"
@@ -51,16 +52,12 @@
     ],
     "unicorn/explicit-length-check": "off",
     "unicorn/no-array-callback-reference": "off",
-    "unicorn/no-array-for-each": "off",
     "unicorn/no-array-method-this-argument": "off",
-    "unicorn/no-for-loop": "off",
     "unicorn/no-null": "off",
     "unicorn/no-unused-properties": "error",
-    "unicorn/numeric-separators-style": "off",
     "unicorn/prefer-array-flat": "off",
     "unicorn/prefer-dom-node-dataset": "off",
     "unicorn/prefer-module": "off",
-    "unicorn/prefer-prototype-methods": "off",
     "unicorn/prefer-query-selector": "off",
     "unicorn/prefer-spread": "off",
     "unicorn/prevent-abbreviations": "off"

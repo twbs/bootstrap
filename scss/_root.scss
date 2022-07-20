@@ -6,49 +6,68 @@
   // Generate palettes for full colors, grays, and theme colors.
 
   @each $color, $value in $colors {
-    --#{$variable-prefix}#{$color}: #{$value};
+    --#{$prefix}#{$color}: #{$value};
   }
 
   @each $color, $value in $grays {
-    --#{$variable-prefix}gray-#{$color}: #{$value};
+    --#{$prefix}gray-#{$color}: #{$value};
   }
 
   @each $color, $value in $theme-colors {
-    --#{$variable-prefix}#{$color}: #{$value};
+    --#{$prefix}#{$color}: #{$value};
   }
 
   @each $color, $value in $theme-colors-rgb {
-    --#{$variable-prefix}#{$color}-rgb: #{$value};
+    --#{$prefix}#{$color}-rgb: #{$value};
   }
 
-  --#{$variable-prefix}white-rgb: #{to-rgb($white)};
-  --#{$variable-prefix}black-rgb: #{to-rgb($black)};
-  --#{$variable-prefix}body-color-rgb: #{to-rgb($body-color)};
-  --#{$variable-prefix}body-bg-rgb: #{to-rgb($body-bg)};
+  --#{$prefix}white-rgb: #{to-rgb($white)};
+  --#{$prefix}black-rgb: #{to-rgb($black)};
+  --#{$prefix}body-color-rgb: #{to-rgb($body-color)};
+  --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
 
   // Fonts
 
   // Note: Use `inspect` for lists so that quoted items keep the quotes.
   // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
-  --#{$variable-prefix}font-sans-serif: #{inspect($font-family-sans-serif)};
-  --#{$variable-prefix}font-monospace: #{inspect($font-family-monospace)};
-  --#{$variable-prefix}gradient: #{$gradient};
+  --#{$prefix}font-sans-serif: #{inspect($font-family-sans-serif)};
+  --#{$prefix}font-monospace: #{inspect($font-family-monospace)};
+  --#{$prefix}gradient: #{$gradient};
 
   // Root and body
-  // stylelint-disable custom-property-empty-line-before
   // scss-docs-start root-body-variables
   @if $font-size-root != null {
-    --#{$variable-prefix}root-font-size: #{$font-size-root};
+    --#{$prefix}root-font-size: #{$font-size-root};
   }
-  --#{$variable-prefix}body-font-family: #{$font-family-base};
-  --#{$variable-prefix}body-font-size: #{$font-size-base};
-  --#{$variable-prefix}body-font-weight: #{$font-weight-base};
-  --#{$variable-prefix}body-line-height: #{$line-height-base};
-  --#{$variable-prefix}body-color: #{$body-color};
+  --#{$prefix}body-font-family: #{$font-family-base};
+  @include rfs($font-size-base, --#{$prefix}body-font-size);
+  --#{$prefix}body-font-weight: #{$font-weight-base};
+  --#{$prefix}body-line-height: #{$line-height-base};
+  --#{$prefix}body-color: #{$body-color};
   @if $body-text-align != null {
-    --#{$variable-prefix}body-text-align: #{$body-text-align};
+    --#{$prefix}body-text-align: #{$body-text-align};
   }
-  --#{$variable-prefix}body-bg: #{$body-bg};
+  --#{$prefix}body-bg: #{$body-bg};
   // scss-docs-end root-body-variables
-  // stylelint-enable custom-property-empty-line-before
+
+  // scss-docs-start root-border-var
+  --#{$prefix}border-width: #{$border-width};
+  --#{$prefix}border-style: #{$border-style};
+  --#{$prefix}border-color: #{$border-color};
+  --#{$prefix}border-color-translucent: #{$border-color-translucent};
+
+  --#{$prefix}border-radius: #{$border-radius};
+  --#{$prefix}border-radius-sm: #{$border-radius-sm};
+  --#{$prefix}border-radius-lg: #{$border-radius-lg};
+  --#{$prefix}border-radius-xl: #{$border-radius-xl};
+  --#{$prefix}border-radius-2xl: #{$border-radius-2xl};
+  --#{$prefix}border-radius-pill: #{$border-radius-pill};
+  // scss-docs-end root-border-var
+
+  --#{$prefix}link-color: #{$link-color};
+  --#{$prefix}link-hover-color: #{$link-hover-color};
+
+  --#{$prefix}code-color: #{$code-color};
+
+  --#{$prefix}highlight-bg: #{$mark-bg};
 }

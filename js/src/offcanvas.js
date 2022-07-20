@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): offcanvas.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Bootstrap (v5.2.0): offcanvas.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
@@ -9,22 +9,18 @@ import {
   defineJQueryPlugin,
   getElementFromSelector,
   isDisabled,
-  isVisible,
-  typeCheckConfig
+  isVisible
 } from './util/index'
 import ScrollBarHelper from './util/scrollbar'
 import EventHandler from './dom/event-handler'
 import BaseComponent from './base-component'
 import SelectorEngine from './dom/selector-engine'
-import Manipulator from './dom/manipulator'
 import Backdrop from './util/backdrop'
 import FocusTrap from './util/focustrap'
 import { enableDismissTrigger } from './util/component-functions'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'offcanvas'
@@ -34,6 +30,23 @@ const DATA_API_KEY = '.data-api'
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 const ESCAPE_KEY = 'Escape'
 
+const CLASS_NAME_SHOW = 'show'
+const CLASS_NAME_SHOWING = 'showing'
+const CLASS_NAME_HIDING = 'hiding'
+const CLASS_NAME_BACKDROP = 'offcanvas-backdrop'
+const OPEN_SELECTOR = '.offcanvas.show'
+
+const EVENT_SHOW = `show${EVENT_KEY}`
+const EVENT_SHOWN = `shown${EVENT_KEY}`
+const EVENT_HIDE = `hide${EVENT_KEY}`
+const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY}`
+const EVENT_HIDDEN = `hidden${EVENT_KEY}`
+const EVENT_RESIZE = `resize${EVENT_KEY}`
+const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
+
+const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="offcanvas"]'
+
 const Default = {
   backdrop: true,
   keyboard: true,
@@ -41,35 +54,19 @@ const Default = {
 }
 
 const DefaultType = {
-  backdrop: 'boolean',
+  backdrop: '(boolean|string)',
   keyboard: 'boolean',
   scroll: 'boolean'
 }
 
-const CLASS_NAME_SHOW = 'show'
-const CLASS_NAME_BACKDROP = 'offcanvas-backdrop'
-const OPEN_SELECTOR = '.offcanvas.show'
-
-const EVENT_SHOW = `show${EVENT_KEY}`
-const EVENT_SHOWN = `shown${EVENT_KEY}`
-const EVENT_HIDE = `hide${EVENT_KEY}`
-const EVENT_HIDDEN = `hidden${EVENT_KEY}`
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
-const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
-
-const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="offcanvas"]'
-
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class Offcanvas extends BaseComponent {
   constructor(element, config) {
-    super(element)
+    super(element, config)
 
-    this._config = this._getConfig(config)
     this._isShown = false
     this._backdrop = this._initializeBackDrop()
     this._focustrap = this._initializeFocusTrap()
@@ -77,17 +74,19 @@ class Offcanvas extends BaseComponent {
   }
 
   // Getters
+  static get Default() {
+    return Default
+  }
+
+  static get DefaultType() {
+    return DefaultType
+  }
 
   static get NAME() {
     return NAME
   }
 
-  static get Default() {
-    return Default
-  }
-
   // Public
-
   toggle(relatedTarget) {
     return this._isShown ? this.hide() : this.show(relatedTarget)
   }
@@ -104,24 +103,23 @@ class Offcanvas extends BaseComponent {
     }
 
     this._isShown = true
-    this._element.style.visibility = 'visible'
-
     this._backdrop.show()
 
     if (!this._config.scroll) {
       new ScrollBarHelper().hide()
     }
 
-    this._element.removeAttribute('aria-hidden')
     this._element.setAttribute('aria-modal', true)
     this._element.setAttribute('role', 'dialog')
-    this._element.classList.add(CLASS_NAME_SHOW)
+    this._element.classList.add(CLASS_NAME_SHOWING)
 
     const completeCallBack = () => {
-      if (!this._config.scroll) {
+      if (!this._config.scroll || this._config.backdrop) {
         this._focustrap.activate()
       }
 
+      this._element.classList.add(CLASS_NAME_SHOW)
+      this._element.classList.remove(CLASS_NAME_SHOWING)
       EventHandler.trigger(this._element, EVENT_SHOWN, { relatedTarget })
     }
 
@@ -142,14 +140,13 @@ class Offcanvas extends BaseComponent {
     this._focustrap.deactivate()
     this._element.blur()
     this._isShown = false
-    this._element.classList.remove(CLASS_NAME_SHOW)
+    this._element.classList.add(CLASS_NAME_HIDING)
     this._backdrop.hide()
 
     const completeCallback = () => {
-      this._element.setAttribute('aria-hidden', true)
+      this._element.classList.remove(CLASS_NAME_SHOW, CLASS_NAME_HIDING)
       this._element.removeAttribute('aria-modal')
       this._element.removeAttribute('role')
-      this._element.style.visibility = 'hidden'
 
       if (!this._config.scroll) {
         new ScrollBarHelper().reset()
@@ -168,24 +165,25 @@ class Offcanvas extends BaseComponent {
   }
 
   // Private
-
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' ? config : {})
-    }
-    typeCheckConfig(NAME, config, DefaultType)
-    return config
-  }
-
   _initializeBackDrop() {
+    const clickCallback = () => {
+      if (this._config.backdrop === 'static') {
+        EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED)
+        return
+      }
+
+      this.hide()
+    }
+
+    // 'static' option will be translated to true, and booleans will keep their value
+    const isVisible = Boolean(this._config.backdrop)
+
     return new Backdrop({
       className: CLASS_NAME_BACKDROP,
-      isVisible: this._config.backdrop,
+      isVisible,
       isAnimated: true,
       rootElement: this._element.parentNode,
-      clickCallback: () => this.hide()
+      clickCallback: isVisible ? clickCallback : null
     })
   }
 
@@ -197,14 +195,20 @@ class Offcanvas extends BaseComponent {
 
   _addEventListeners() {
     EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS, event => {
-      if (this._config.keyboard && event.key === ESCAPE_KEY) {
-        this.hide()
+      if (event.key !== ESCAPE_KEY) {
+        return
       }
+
+      if (!this._config.keyboard) {
+        EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED)
+        return
+      }
+
+      this.hide()
     })
   }
 
   // Static
-
   static jQueryInterface(config) {
     return this.each(function () {
       const data = Offcanvas.getOrCreateInstance(this, config)
@@ -223,9 +227,7 @@ class Offcanvas extends BaseComponent {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
+ * Data API implementation
  */
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
@@ -247,24 +249,33 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   })
 
   // avoid conflict when clicking a toggler of an offcanvas, while another is open
-  const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
-  if (allReadyOpen && allReadyOpen !== target) {
-    Offcanvas.getInstance(allReadyOpen).hide()
+  const alreadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
+  if (alreadyOpen && alreadyOpen !== target) {
+    Offcanvas.getInstance(alreadyOpen).hide()
   }
 
   const data = Offcanvas.getOrCreateInstance(target)
   data.toggle(this)
 })
 
-EventHandler.on(window, EVENT_LOAD_DATA_API, () =>
-  SelectorEngine.find(OPEN_SELECTOR).forEach(el => Offcanvas.getOrCreateInstance(el).show())
-)
+EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+  for (const selector of SelectorEngine.find(OPEN_SELECTOR)) {
+    Offcanvas.getOrCreateInstance(selector).show()
+  }
+})
+
+EventHandler.on(window, EVENT_RESIZE, () => {
+  for (const element of SelectorEngine.find('[aria-modal][class*=show][class*=offcanvas-]')) {
+    if (getComputedStyle(element).position !== 'fixed') {
+      Offcanvas.getOrCreateInstance(element).hide()
+    }
+  }
+})
 
 enableDismissTrigger(Offcanvas)
+
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
  */
 
 defineJQueryPlugin(Offcanvas)

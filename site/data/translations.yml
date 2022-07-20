@@ -1,8 +1,3 @@
-- name: العربية
-  code: ar
-  description: Bootstrap 5 باللغة العربية
-  url: https://bootstrap.mahdi.style/
-
 - name: 中文(繁體)
   code: zh-tw
   description: Bootstrap 4 繁體中文手冊
@@ -20,7 +15,7 @@
 
 - name: Japanese
   code: ja
-  description: Bootstrap 4 日本語リファレンス
+  description: Bootstrap 5 日本語リファレンス
   url: https://getbootstrap.jp/
 
 - name: Russian
@@ -42,3 +37,8 @@
   code: zh-CN
   description: Bootstrap 5 中文文档
   url: https://v5.bootcss.com/
+  
+- name: Spanish
+  code: es
+  description: Bootstrap 5 Español
+  url: https://bootstrap.esdocu.com/

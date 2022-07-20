@@ -5,10 +5,11 @@ on:
     branches-ignore:
       - "dependabot/**"
   pull_request:
+  workflow_dispatch:
 
 env:
   FORCE_COLOR: 2
-  NODE: 14
+  NODE: 16
 
 jobs:
   css:
@@ -16,10 +17,10 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: "${{ env.NODE }}"
           cache: npm

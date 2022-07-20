@@ -1,19 +1,15 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.0): dom/selector-engine.js
+ * Bootstrap (v5.2.0): dom/selector-engine.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-/**
- * ------------------------------------------------------------------------
- * Constants
- * ------------------------------------------------------------------------
- */
-
 import { isDisabled, isVisible } from '../util/index'
 
-const NODE_TEXT = 3
+/**
+ * Constants
+ */
 
 const SelectorEngine = {
   find(selector, element = document.documentElement) {
@@ -25,21 +21,16 @@ const SelectorEngine = {
   },
 
   children(element, selector) {
-    return [].concat(...element.children)
-      .filter(child => child.matches(selector))
+    return [].concat(...element.children).filter(child => child.matches(selector))
   },
 
   parents(element, selector) {
     const parents = []
+    let ancestor = element.parentNode.closest(selector)
 
-    let ancestor = element.parentNode
-
-    while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== NODE_TEXT) {
-      if (ancestor.matches(selector)) {
-        parents.push(ancestor)
-      }
-
-      ancestor = ancestor.parentNode
+    while (ancestor) {
+      parents.push(ancestor)
+      ancestor = ancestor.parentNode.closest(selector)
     }
 
     return parents
@@ -58,7 +49,7 @@ const SelectorEngine = {
 
     return []
   },
-
+  // TODO: this is now unused; remove later along with prev()
   next(element, selector) {
     let next = element.nextElementSibling
 
@@ -83,7 +74,7 @@ const SelectorEngine = {
       'details',
       '[tabindex]',
       '[contenteditable="true"]'
-    ].map(selector => `${selector}:not([tabindex^="-"])`).join(', ')
+    ].map(selector => `${selector}:not([tabindex^="-"])`).join(',')
 
     return this.find(focusables, element).filter(el => !isDisabled(el) && isVisible(el))
   }

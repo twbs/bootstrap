@@ -3,26 +3,45 @@
 // Easily usable on <ul>, <ol>, or <div>.
 
 .list-group {
+  // scss-docs-start list-group-css-vars
+  --#{$prefix}list-group-color: #{$list-group-color};
+  --#{$prefix}list-group-bg: #{$list-group-bg};
+  --#{$prefix}list-group-border-color: #{$list-group-border-color};
+  --#{$prefix}list-group-border-width: #{$list-group-border-width};
+  --#{$prefix}list-group-border-radius: #{$list-group-border-radius};
+  --#{$prefix}list-group-item-padding-x: #{$list-group-item-padding-x};
+  --#{$prefix}list-group-item-padding-y: #{$list-group-item-padding-y};
+  --#{$prefix}list-group-action-color: #{$list-group-action-color};
+  --#{$prefix}list-group-action-hover-color: #{$list-group-action-hover-color};
+  --#{$prefix}list-group-action-hover-bg: #{$list-group-hover-bg};
+  --#{$prefix}list-group-action-active-color: #{$list-group-action-active-color};
+  --#{$prefix}list-group-action-active-bg: #{$list-group-action-active-bg};
+  --#{$prefix}list-group-disabled-color: #{$list-group-disabled-color};
+  --#{$prefix}list-group-disabled-bg: #{$list-group-disabled-bg};
+  --#{$prefix}list-group-active-color: #{$list-group-active-color};
+  --#{$prefix}list-group-active-bg: #{$list-group-active-bg};
+  --#{$prefix}list-group-active-border-color: #{$list-group-active-border-color};
+  // scss-docs-end list-group-css-vars
+
   display: flex;
   flex-direction: column;
 
   // No need to set list-style: none; since .list-group-item is block level
   padding-left: 0; // reset padding because ul and ol
   margin-bottom: 0;
-  @include border-radius($list-group-border-radius);
+  @include border-radius(var(--#{$prefix}list-group-border-radius));
 }
 
 .list-group-numbered {
   list-style-type: none;
   counter-reset: section;
 
-  > li::before {
+  > .list-group-item::before {
     // Increments only this instance of the section counter
     content: counters(section, ".") ". ";
     counter-increment: section;
   }
 }
-
 
 // Interactive list items
 //
@@ -31,24 +50,23 @@
 
 .list-group-item-action {
   width: 100%; // For `<button>`s (anchors become 100% by default though)
-  color: $list-group-action-color;
+  color: var(--#{$prefix}list-group-action-color);
   text-align: inherit; // For `<button>`s (anchors inherit)
 
   // Hover state
   &:hover,
   &:focus {
     z-index: 1; // Place hover/focus items above their siblings for proper border styling
-    color: $list-group-action-hover-color;
+    color: var(--#{$prefix}list-group-action-hover-color);
     text-decoration: none;
-    background-color: $list-group-hover-bg;
+    background-color: var(--#{$prefix}list-group-action-hover-bg);
   }
 
   &:active {
-    color: $list-group-action-active-color;
-    background-color: $list-group-action-active-bg;
+    color: var(--#{$prefix}list-group-action-active-color);
+    background-color: var(--#{$prefix}list-group-action-active-bg);
   }
 }
-
 
 // Individual list items
 //
@@ -57,11 +75,11 @@
 .list-group-item {
   position: relative;
   display: block;
-  padding: $list-group-item-padding-y $list-group-item-padding-x;
-  color: $list-group-color;
+  padding: var(--#{$prefix}list-group-item-padding-y) var(--#{$prefix}list-group-item-padding-x);
+  color: var(--#{$prefix}list-group-color);
   text-decoration: if($link-decoration == none, null, none);
-  background-color: $list-group-bg;
-  border: $list-group-border-width solid $list-group-border-color;
+  background-color: var(--#{$prefix}list-group-bg);
+  border: var(--#{$prefix}list-group-border-width) solid var(--#{$prefix}list-group-border-color);
 
   &:first-child {
     @include border-top-radius(inherit);
@@ -73,29 +91,28 @@
 
   &.disabled,
   &:disabled {
-    color: $list-group-disabled-color;
+    color: var(--#{$prefix}list-group-disabled-color);
     pointer-events: none;
-    background-color: $list-group-disabled-bg;
+    background-color: var(--#{$prefix}list-group-disabled-bg);
   }
 
   // Include both here for `<a>`s and `<button>`s
   &.active {
     z-index: 2; // Place active items above their siblings for proper border styling
-    color: $list-group-active-color;
-    background-color: $list-group-active-bg;
-    border-color: $list-group-active-border-color;
+    color: var(--#{$prefix}list-group-active-color);
+    background-color: var(--#{$prefix}list-group-active-bg);
+    border-color: var(--#{$prefix}list-group-active-border-color);
   }
 
   & + & {
     border-top-width: 0;
 
     &.active {
-      margin-top: -$list-group-border-width;
-      border-top-width: $list-group-border-width;
+      margin-top: calc(var(--#{$prefix}list-group-border-width) * -1); // stylelint-disable-line function-disallowed-list
+      border-top-width: var(--#{$prefix}list-group-border-width);
     }
   }
 }
-
 
 // Horizontal
 //
@@ -110,12 +127,12 @@
 
       > .list-group-item {
         &:first-child {
-          @include border-bottom-start-radius($list-group-border-radius);
+          @include border-bottom-start-radius(var(--#{$prefix}list-group-border-radius));
           @include border-top-end-radius(0);
         }
 
         &:last-child {
-          @include border-top-end-radius($list-group-border-radius);
+          @include border-top-end-radius(var(--#{$prefix}list-group-border-radius));
           @include border-bottom-start-radius(0);
         }
 
@@ -124,12 +141,12 @@
         }
 
         + .list-group-item {
-          border-top-width: $list-group-border-width;
+          border-top-width: var(--#{$prefix}list-group-border-width);
           border-left-width: 0;
 
           &.active {
-            margin-left: -$list-group-border-width;
-            border-left-width: $list-group-border-width;
+            margin-left: calc(var(--#{$prefix}list-group-border-width) * -1); // stylelint-disable-line function-disallowed-list
+            border-left-width: var(--#{$prefix}list-group-border-width);
           }
         }
       }
@@ -147,7 +164,7 @@
   @include border-radius(0);
 
   > .list-group-item {
-    border-width: 0 0 $list-group-border-width;
+    border-width: 0 0 var(--#{$prefix}list-group-border-width);
 
     &:last-child {
       border-bottom-width: 0;

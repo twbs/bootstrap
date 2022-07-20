@@ -1,0 +1,121 @@
+// stylelint-disable selector-class-pattern
+
+.bd-search {
+  position: relative;
+  width: 100%;
+
+  @include media-breakpoint-up(lg) {
+    position: absolute;
+    top: .875rem;
+    left: 50%;
+    width: 200px;
+    margin-left: -100px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    width: 280px;
+    margin-left: -140px;
+  }
+
+}
+
+.DocSearch-Container {
+  --docsearch-muted-color: #{$text-muted};
+  --docsearch-hit-shadow: none;
+
+  z-index: 2000; // Make sure to be over all components showcased in the documentation
+
+  @include media-breakpoint-up(lg) {
+    padding-top: 4rem;
+  }
+}
+
+.DocSearch-Button {
+  --docsearch-searchbox-background: #{rgba($black, .1)};
+  --docsearch-searchbox-color: #{$white};
+  --docsearch-searchbox-focus-background: #{rgba($black, .25)};
+  --docsearch-searchbox-shadow: #{0 0 0 .25rem rgba($bd-accent, .4)};
+  --docsearch-text-color: #{$white};
+  --docsearch-muted-color: #{rgba($white, .65)};
+
+  width: 100%;
+  height: 38px; // Match Bootstrap inputs
+  margin: 0;
+  border: 1px solid rgba($white, .4);
+  @include border-radius(.375rem);
+
+  .DocSearch-Search-Icon {
+    opacity: .65;
+  }
+
+  &:active,
+  &:focus,
+  &:hover {
+    border-color: rgba($bd-accent, 1);
+
+    .DocSearch-Search-Icon {
+      opacity: 1;
+    }
+  }
+}
+
+.DocSearch-Button-Keys {
+  min-width: 0;
+  padding: .125rem .25rem;
+  background: rgba($black, .25);
+  @include border-radius(.25rem);
+}
+
+.DocSearch-Button-Key {
+  top: 0;
+  width: auto;
+  height: 1.25rem;
+  padding-right: .125rem;
+  padding-left: .125rem;
+  margin-right: 0;
+  font-size: .875rem;
+  background: none;
+  box-shadow: none;
+}
+
+.DocSearch-Commands-Key {
+  padding-left: 1px;
+  font-size: .875rem;
+  background-color: rgba($black, .1);
+  background-image: none;
+  box-shadow: none;
+}
+
+.DocSearch-Form {
+  @include border-radius(var(--bs-border-radius));
+}
+
+.DocSearch-Hits {
+  mark {
+    padding: 0;
+  }
+}
+
+.DocSearch-Hit {
+  padding-bottom: 0;
+  @include border-radius(0);
+
+  a {
+    @include border-radius(0);
+    border: solid var(--bs-border-color);
+    border-width: 0 1px 1px;
+  }
+
+  &:first-child a {
+    @include border-top-radius(var(--bs-border-radius));
+    border-top-width: 1px;
+  }
+  &:last-child a {
+    @include border-bottom-radius(var(--bs-border-radius));
+  }
+}
+
+.DocSearch-Hit-icon {
+  display: flex;
+  align-items: center;
+}

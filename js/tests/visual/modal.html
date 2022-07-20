@@ -184,7 +184,7 @@
 
       <br><br>
 
-      <div class="bg-dark text-white p-2" id="tall" style="display: none;">
+      <div class="text-bg-dark p-2" id="tall" style="display: none;">
         Tall body content to force the page to have a scrollbar.
       </div>
 
@@ -199,16 +199,7 @@
       </button>
     </div>
 
-    <script src="../../../node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
-    <script src="../../dist/dom/event-handler.js"></script>
-    <script src="../../dist/dom/selector-engine.js"></script>
-    <script src="../../dist/dom/data.js"></script>
-    <script src="../../dist/dom/manipulator.js"></script>
-    <script src="../../dist/base-component.js"></script>
-    <script src="../../dist/modal.js"></script>
-    <script src="../../dist/collapse.js"></script>
-    <script src="../../dist/tooltip.js"></script>
-    <script src="../../dist/popover.js"></script>
+    <script src="../../../dist/js/bootstrap.bundle.js"></script>
     <script>
       var ffBugTestResult = document.getElementById('ff-bug-test-result')
       var firefoxTestDone = false
@@ -220,15 +211,14 @@
         }
       }
 
-      [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-        .forEach(function (popover) {
-          new Popover(popover)
-        })
-
-      var tooltipList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-      tooltipList.forEach(function (tooltip) {
-        new Tooltip(tooltip)
-      })
+      var popoverElements = document.querySelectorAll('[data-bs-toggle="popover"]')
+      for (const popoverEl of popoverElements) {
+        new bootstrap.Popover(popoverEl)
+      }
+      var tooltipElements = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      for (const tooltipEl of tooltipElements) {
+        new bootstrap.Tooltip(tooltipEl)
+      }
 
       var tallToggle = document.getElementById('tall-toggle')
       var tall = document.getElementById('tall')
@@ -250,7 +240,7 @@
       ffBugInput.addEventListener('focus', handlerClickFfBugInput)
 
       var btnPreventModal = document.getElementById('btnPreventModal')
-      var modalFf = new Modal(firefoxModal)
+      var modalFf = new bootstrap.Modal(firefoxModal)
 
       btnPreventModal.addEventListener('click', function () {
         function shownFirefoxModal() {

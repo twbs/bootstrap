@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://getbootstrap.com/">
-    <img src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo-shadow.png" alt="Bootstrap logo" width="200" height="165">
+    <img src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo-shadow.png" alt="Bootstrap logo" width="200" height="165">
   </a>
 </p>
 
@@ -9,12 +9,12 @@
 <p align="center">
   Sleek, intuitive, and powerful front-end framework for faster and easier web development.
   <br>
-  <a href="https://getbootstrap.com/docs/5.1/"><strong>Explore Bootstrap docs »</strong></a>
+  <a href="https://getbootstrap.com/docs/5.2/"><strong>Explore Bootstrap docs »</strong></a>
   <br>
   <br>
-  <a href="https://github.com/twbs/bootstrap/issues/new?template=bug_report.md">Report bug</a>
+  <a href="https://github.com/twbs/bootstrap/issues/new?assignees=-&labels=bug&template=bug_report.yml">Report bug</a>
   ·
-  <a href="https://github.com/twbs/bootstrap/issues/new?template=feature_request.md">Request feature</a>
+  <a href="https://github.com/twbs/bootstrap/issues/new?assignees=&labels=feature&template=feature_request.yml">Request feature</a>
   ·
   <a href="https://themes.getbootstrap.com/">Themes</a>
   ·
@@ -46,14 +46,14 @@ Our default branch is for development of our Bootstrap 5 release. Head to the [`
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.1.0.zip)
+- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.2.0.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
-- Install with [npm](https://www.npmjs.com/): `npm install bootstrap`
-- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap`
-- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.1.0`
+- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@v5.2.0`
+- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@v5.2.0`
+- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.2.0`
 - Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap` Sass: `Install-Package bootstrap.sass`
 
-Read the [Getting started page](https://getbootstrap.com/docs/5.1/getting-started/introduction/) for information on the framework contents, templates and examples, and more.
+Read the [Getting started page](https://getbootstrap.com/docs/5.2/getting-started/introduction/) for information on the framework contents, templates, examples, and more.
 
 
 ## Status
@@ -65,8 +65,6 @@ Read the [Getting started page](https://getbootstrap.com/docs/5.1/getting-starte
 [![Meteor Atmosphere](https://img.shields.io/badge/meteor-twbs%3Abootstrap-blue)](https://atmospherejs.com/twbs/bootstrap)
 [![Packagist Prerelease](https://img.shields.io/packagist/vpre/twbs/bootstrap)](https://packagist.org/packages/twbs/bootstrap)
 [![NuGet](https://img.shields.io/nuget/vpre/bootstrap)](https://www.nuget.org/packages/bootstrap/absoluteLatest)
-[![peerDependencies Status](https://img.shields.io/david/peer/twbs/bootstrap)](https://david-dm.org/twbs/bootstrap?type=peer)
-[![devDependency Status](https://img.shields.io/david/dev/twbs/bootstrap)](https://david-dm.org/twbs/bootstrap?type=dev)
 [![Coverage Status](https://img.shields.io/coveralls/github/twbs/bootstrap/main)](https://coveralls.io/github/twbs/bootstrap?branch=main)
 [![CSS gzip size](https://img.badgesize.io/twbs/bootstrap/main/dist/css/bootstrap.min.css?compression=gzip&label=CSS%20gzip%20size)](https://github.com/twbs/bootstrap/blob/main/dist/css/bootstrap.min.css)
 [![CSS Brotli size](https://img.badgesize.io/twbs/bootstrap/main/dist/css/bootstrap.min.css?compression=brotli&label=CSS%20Brotli%20size)](https://github.com/twbs/bootstrap/blob/main/dist/css/bootstrap.min.css)
@@ -79,59 +77,63 @@ Read the [Getting started page](https://getbootstrap.com/docs/5.1/getting-starte
 
 ## What's included
 
-Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
+Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations.
 
-```text
-bootstrap/
-├── css/
-│   ├── bootstrap-grid.css
-│   ├── bootstrap-grid.css.map
-│   ├── bootstrap-grid.min.css
-│   ├── bootstrap-grid.min.css.map
-│   ├── bootstrap-grid.rtl.css
-│   ├── bootstrap-grid.rtl.css.map
-│   ├── bootstrap-grid.rtl.min.css
-│   ├── bootstrap-grid.rtl.min.css.map
-│   ├── bootstrap-reboot.css
-│   ├── bootstrap-reboot.css.map
-│   ├── bootstrap-reboot.min.css
-│   ├── bootstrap-reboot.min.css.map
-│   ├── bootstrap-reboot.rtl.css
-│   ├── bootstrap-reboot.rtl.css.map
-│   ├── bootstrap-reboot.rtl.min.css
-│   ├── bootstrap-reboot.rtl.min.css.map
-│   ├── bootstrap-utilities.css
-│   ├── bootstrap-utilities.css.map
-│   ├── bootstrap-utilities.min.css
-│   ├── bootstrap-utilities.min.css.map
-│   ├── bootstrap-utilities.rtl.css
-│   ├── bootstrap-utilities.rtl.css.map
-│   ├── bootstrap-utilities.rtl.min.css
-│   ├── bootstrap-utilities.rtl.min.css.map
-│   ├── bootstrap.css
-│   ├── bootstrap.css.map
-│   ├── bootstrap.min.css
-│   ├── bootstrap.min.css.map
-│   ├── bootstrap.rtl.css
-│   ├── bootstrap.rtl.css.map
-│   ├── bootstrap.rtl.min.css
-│   └── bootstrap.rtl.min.css.map
-└── js/
-    ├── bootstrap.bundle.js
-    ├── bootstrap.bundle.js.map
-    ├── bootstrap.bundle.min.js
-    ├── bootstrap.bundle.min.js.map
-    ├── bootstrap.esm.js
-    ├── bootstrap.esm.js.map
-    ├── bootstrap.esm.min.js
-    ├── bootstrap.esm.min.js.map
-    ├── bootstrap.js
-    ├── bootstrap.js.map
-    ├── bootstrap.min.js
-    └── bootstrap.min.js.map
-```
+<details>
+  <summary>Download contents</summary>
 
-We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). [source maps](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Popper](https://popper.js.org/).
+  ```text
+  bootstrap/
+  ├── css/
+  │   ├── bootstrap-grid.css
+  │   ├── bootstrap-grid.css.map
+  │   ├── bootstrap-grid.min.css
+  │   ├── bootstrap-grid.min.css.map
+  │   ├── bootstrap-grid.rtl.css
+  │   ├── bootstrap-grid.rtl.css.map
+  │   ├── bootstrap-grid.rtl.min.css
+  │   ├── bootstrap-grid.rtl.min.css.map
+  │   ├── bootstrap-reboot.css
+  │   ├── bootstrap-reboot.css.map
+  │   ├── bootstrap-reboot.min.css
+  │   ├── bootstrap-reboot.min.css.map
+  │   ├── bootstrap-reboot.rtl.css
+  │   ├── bootstrap-reboot.rtl.css.map
+  │   ├── bootstrap-reboot.rtl.min.css
+  │   ├── bootstrap-reboot.rtl.min.css.map
+  │   ├── bootstrap-utilities.css
+  │   ├── bootstrap-utilities.css.map
+  │   ├── bootstrap-utilities.min.css
+  │   ├── bootstrap-utilities.min.css.map
+  │   ├── bootstrap-utilities.rtl.css
+  │   ├── bootstrap-utilities.rtl.css.map
+  │   ├── bootstrap-utilities.rtl.min.css
+  │   ├── bootstrap-utilities.rtl.min.css.map
+  │   ├── bootstrap.css
+  │   ├── bootstrap.css.map
+  │   ├── bootstrap.min.css
+  │   ├── bootstrap.min.css.map
+  │   ├── bootstrap.rtl.css
+  │   ├── bootstrap.rtl.css.map
+  │   ├── bootstrap.rtl.min.css
+  │   └── bootstrap.rtl.min.css.map
+  └── js/
+      ├── bootstrap.bundle.js
+      ├── bootstrap.bundle.js.map
+      ├── bootstrap.bundle.min.js
+      ├── bootstrap.bundle.min.js.map
+      ├── bootstrap.esm.js
+      ├── bootstrap.esm.js.map
+      ├── bootstrap.esm.min.js
+      ├── bootstrap.esm.min.js.map
+      ├── bootstrap.js
+      ├── bootstrap.js.map
+      ├── bootstrap.min.js
+      └── bootstrap.min.js.map
+  ```
+</details>
+
+We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). [Source maps](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Popper](https://popper.js.org/).
 
 
 ## Bugs and feature requests
@@ -205,10 +207,16 @@ See [the Releases section of our GitHub project](https://github.com/twbs/bootstr
 ## Thanks
 
 <a href="https://www.browserstack.com/">
-  <img src="https://live.browserstack.com/images/opensource/browserstack-logo.svg" alt="BrowserStack Logo" width="192" height="42">
+  <img src="https://live.browserstack.com/images/opensource/browserstack-logo.svg" alt="BrowserStack" width="192" height="42">
 </a>
 
 Thanks to [BrowserStack](https://www.browserstack.com/) for providing the infrastructure that allows us to test in real browsers!
+
+<a href="https://www.netlify.com/">
+  <img src="https://www.netlify.com/v3/img/components/full-logo-light.svg" alt="Netlify" width="147" height="40">
+</a>
+
+Thanks to [Netlify](https://www.netlify.com/) for providing us with Deploy Previews!
 
 
 ## Sponsors
@@ -236,4 +244,4 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 
 ## Copyright and license
 
-Code and documentation copyright 2011–2021 the [Bootstrap Authors](https://github.com/twbs/bootstrap/graphs/contributors) and [Twitter, Inc.](https://twitter.com) Code released under the [MIT License](https://github.com/twbs/bootstrap/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
+Code and documentation copyright 2011–2022 the [Bootstrap Authors](https://github.com/twbs/bootstrap/graphs/contributors) and [Twitter, Inc.](https://twitter.com) Code released under the [MIT License](https://github.com/twbs/bootstrap/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).

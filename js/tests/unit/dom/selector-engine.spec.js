@@ -1,6 +1,4 @@
 import SelectorEngine from '../../../src/dom/selector-engine'
-
-/** Test helpers */
 import { getFixture, clearFixture } from '../../helpers/fixture'
 
 describe('SelectorEngine', () => {
@@ -23,7 +21,7 @@ describe('SelectorEngine', () => {
       expect(SelectorEngine.find('div', fixtureEl)).toEqual([div])
     })
 
-    it('should find elements globaly', () => {
+    it('should find elements globally', () => {
       fixtureEl.innerHTML = '<div id="test"></div>'
 
       const div = fixtureEl.querySelector('#test')
@@ -32,13 +30,15 @@ describe('SelectorEngine', () => {
     })
 
     it('should handle :scope selectors', () => {
-      fixtureEl.innerHTML = `<ul>
-        <li></li>
-        <li>
-          <a href="#" class="active">link</a>
-        </li>
-        <li></li>
-      </ul>`
+      fixtureEl.innerHTML = [
+        '<ul>',
+        '  <li></li>',
+        '  <li>',
+        '    <a href="#" class="active">link</a>',
+        '  </li>',
+        '  <li></li>',
+        '</ul>'
+      ].join('')
 
       const listEl = fixtureEl.querySelector('ul')
       const aActive = fixtureEl.querySelector('.active')
@@ -59,11 +59,13 @@ describe('SelectorEngine', () => {
 
   describe('children', () => {
     it('should find children', () => {
-      fixtureEl.innerHTML = `<ul>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>`
+      fixtureEl.innerHTML = [
+        '<ul>',
+        '  <li></li>',
+        '  <li></li>',
+        '  <li></li>',
+        '</ul>'
+      ].join('')
 
       const list = fixtureEl.querySelector('ul')
       const liList = [].concat(...fixtureEl.querySelectorAll('li'))
@@ -75,7 +77,7 @@ describe('SelectorEngine', () => {
 
   describe('parents', () => {
     it('should return parents', () => {
-      expect(SelectorEngine.parents(fixtureEl, 'body').length).toEqual(1)
+      expect(SelectorEngine.parents(fixtureEl, 'body')).toHaveSize(1)
     })
   })
 
@@ -164,7 +166,7 @@ describe('SelectorEngine', () => {
         '<span>lorem</span>',
         '<a>lorem</a>',
         '<button>lorem</button>',
-        '<input />',
+        '<input>',
         '<textarea></textarea>',
         '<select></select>',
         '<details>lorem</details>'
@@ -199,9 +201,7 @@ describe('SelectorEngine', () => {
     })
 
     it('should return not return elements with negative tab index', () => {
-      fixtureEl.innerHTML = [
-        '<button tabindex="-1">lorem</button>'
-      ].join('')
+      fixtureEl.innerHTML = '<button tabindex="-1">lorem</button>'
 
       const expectedElements = []
 
@@ -209,9 +209,7 @@ describe('SelectorEngine', () => {
     })
 
     it('should return contenteditable elements', () => {
-      fixtureEl.innerHTML = [
-        '<div contenteditable="true">lorem</div>'
-      ].join('')
+      fixtureEl.innerHTML = '<div contenteditable="true">lorem</div>'
 
       const expectedElements = [fixtureEl.querySelector('[contenteditable="true"]')]
 
@@ -219,9 +217,7 @@ describe('SelectorEngine', () => {
     })
 
     it('should not return disabled elements', () => {
-      fixtureEl.innerHTML = [
-        '<button disabled="true">lorem</button>'
-      ].join('')
+      fixtureEl.innerHTML = '<button disabled="true">lorem</button>'
 
       const expectedElements = []
 
@@ -229,9 +225,7 @@ describe('SelectorEngine', () => {
     })
 
     it('should not return invisible elements', () => {
-      fixtureEl.innerHTML = [
-        '<button style="display:none;">lorem</button>'
-      ].join('')
+      fixtureEl.innerHTML = '<button style="display:none;">lorem</button>'
 
       const expectedElements = []
 

@@ -2,14 +2,13 @@
 // Bootstrap docs content theming
 //
 
-// Offset for the sticky header
-@include media-breakpoint-up(md) {
-  :root {
-    scroll-padding-top: 4rem;
-  }
-}
-
 .bd-content {
+  // Offset content from fixed navbar when jumping to headings
+  > :target {
+    padding-top: 5rem;
+    margin-top: -5rem;
+  }
+
   > h2:not(:first-child) {
     margin-top: 3rem;
   }
@@ -31,18 +30,23 @@
   }
 
   // Override Bootstrap defaults
-  > .table {
-    max-width: 100%;
+  > .table,
+  > .table-responsive .table {
     margin-bottom: 1.5rem;
     @include font-size(.875rem);
 
     @include media-breakpoint-down(lg) {
-      display: block;
-      overflow-x: auto;
-
       &.table-bordered {
         border: 0;
       }
+    }
+
+    thead {
+      border-bottom: 2px solid currentcolor;
+    }
+
+    tbody:not(:first-child) {
+      border-top: 2px solid currentcolor;
     }
 
     th,
@@ -57,10 +61,23 @@
     }
 
     // Prevent breaking of code
+    // stylelint-disable-next-line selector-max-compound-selectors
+    th,
     td:first-child > code {
       white-space: nowrap;
     }
   }
+}
+
+.table-options {
+  td:nth-child(2) {
+    min-width: 160px;
+  }
+}
+
+.table-options td:last-child,
+.table-utilities td:last-child {
+  min-width: 280px;
 }
 
 .bd-title {
@@ -72,10 +89,38 @@
   font-weight: 300;
 }
 
-.bd-text-purple-bright {
-  color: $bd-purple-bright;
+.bd-bg-violet {
+  background-color: $bd-violet;
 }
 
-.bd-bg-purple-bright {
-  background-color: $bd-purple-bright;
+.bi {
+  width: 1em;
+  height: 1em;
+  fill: currentcolor;
+}
+
+.icon-link {
+  display: flex;
+  align-items: center;
+  text-decoration-color: rgba($primary, .5);
+  text-underline-offset: .5rem;
+  backface-visibility: hidden;
+
+  .bi {
+    width: 1.5em;
+    height: 1.5em;
+    transition: .2s ease-in-out transform; // stylelint-disable-line property-disallowed-list
+  }
+
+  &:hover {
+    .bi {
+      transform: translate3d(5px, 0, 0);
+    }
+  }
+}
+
+.border-lg-start {
+  @include media-breakpoint-up(lg) {
+    border-left: $border-width solid $border-color;
+  }
 }

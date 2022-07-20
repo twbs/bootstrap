@@ -37,7 +37,7 @@ describe('Base Component', () => {
   describe('Static Methods', () => {
     describe('VERSION', () => {
       it('should return version', () => {
-        expect(typeof DummyClass.VERSION).toEqual('string')
+        expect(DummyClass.VERSION).toEqual(jasmine.any(String))
       })
     })
 
@@ -48,6 +48,13 @@ describe('Base Component', () => {
     })
 
     describe('NAME', () => {
+      it('should throw an Error if it is not initialized', () => {
+        expect(() => {
+          // eslint-disable-next-line no-unused-expressions
+          BaseComponent.NAME
+        }).toThrowError(Error)
+      })
+
       it('should return plugin NAME', () => {
         expect(DummyClass.NAME).toEqual(name)
       })
@@ -59,6 +66,7 @@ describe('Base Component', () => {
       })
     })
   })
+
   describe('Public Methods', () => {
     describe('constructor', () => {
       it('should accept element, either passed as a CSS selector or DOM element', () => {
@@ -74,7 +82,19 @@ describe('Base Component', () => {
         expect(elInstance._element).toEqual(el)
         expect(selectorInstance._element).toEqual(fixtureEl.querySelector('#bar'))
       })
+
+      it('should not initialize and add element record to Data (caching), if argument `element` is not an HTML element', () => {
+        fixtureEl.innerHTML = ''
+
+        const el = fixtureEl.querySelector('#foo')
+        const elInstance = new DummyClass(el)
+        const selectorInstance = new DummyClass('#bar')
+
+        expect(elInstance._element).not.toBeDefined()
+        expect(selectorInstance._element).not.toBeDefined()
+      })
     })
+
     describe('dispose', () => {
       it('should dispose an component', () => {
         createInstance()
@@ -88,11 +108,11 @@ describe('Base Component', () => {
 
       it('should de-register element event listeners', () => {
         createInstance()
-        spyOn(EventHandler, 'off')
+        const spy = spyOn(EventHandler, 'off')
 
         instance.dispose()
 
-        expect(EventHandler.off).toHaveBeenCalledWith(element, DummyClass.EVENT_KEY)
+        expect(spy).toHaveBeenCalledWith(element, DummyClass.EVENT_KEY)
       })
     })
 
@@ -123,9 +143,10 @@ describe('Base Component', () => {
 
         const div = fixtureEl.querySelector('div')
 
-        expect(DummyClass.getInstance(div)).toEqual(null)
+        expect(DummyClass.getInstance(div)).toBeNull()
       })
     })
+
     describe('getOrCreateInstance', () => {
       it('should return an instance', () => {
         createInstance()
@@ -139,7 +160,7 @@ describe('Base Component', () => {
         fixtureEl.innerHTML = '<div id="foo"></div>'
         element = fixtureEl.querySelector('#foo')
 
-        expect(DummyClass.getInstance(element)).toEqual(null)
+        expect(DummyClass.getInstance(element)).toBeNull()
         expect(DummyClass.getOrCreateInstance(element)).toBeInstanceOf(DummyClass)
       })
     })

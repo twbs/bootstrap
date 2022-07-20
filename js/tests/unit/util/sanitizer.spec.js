@@ -23,6 +23,31 @@ describe('Sanitizer', () => {
       expect(result).not.toContain('href="javascript:alert(7)')
     })
 
+    it('should sanitize template and work with multiple regex', () => {
+      const template = [
+        '<div>',
+        '  <a href="javascript:alert(7)" aria-label="This is a link" data-foo="bar">Click me</a>',
+        '  <span>Some content</span>',
+        '</div>'
+      ].join('')
+
+      const myDefaultAllowList = DefaultAllowlist
+      // With the default allow list
+      let result = sanitizeHtml(template, myDefaultAllowList, null)
+
+      // `data-foo` won't be present
+      expect(result).not.toContain('data-foo="bar"')
+
+      // Add the following regex too
+      myDefaultAllowList['*'].push(/^data-foo/)
+
+      result = sanitizeHtml(template, myDefaultAllowList, null)
+
+      expect(result).not.toContain('href="javascript:alert(7)') // This is in the default list
+      expect(result).toContain('aria-label="This is a link"') // This is in the default list
+      expect(result).toContain('data-foo="bar"') // We explicitly allow this
+    })
+
     it('should allow aria attributes and safe attributes', () => {
       const template = [
         '<div aria-pressed="true">',
@@ -59,12 +84,12 @@ describe('Sanitizer', () => {
         return htmlUnsafe
       }
 
-      spyOn(DOMParser.prototype, 'parseFromString')
+      const spy = spyOn(DOMParser.prototype, 'parseFromString')
 
       const result = sanitizeHtml(template, DefaultAllowlist, mySanitize)
 
       expect(result).toEqual(template)
-      expect(DOMParser.prototype.parseFromString).not.toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
     })
 
     it('should allow multiple sanitation passes of the same template', () => {

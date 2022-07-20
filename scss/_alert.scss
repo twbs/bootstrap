@@ -3,11 +3,24 @@
 //
 
 .alert {
+  // scss-docs-start alert-css-vars
+  --#{$prefix}alert-bg: transparent;
+  --#{$prefix}alert-padding-x: #{$alert-padding-x};
+  --#{$prefix}alert-padding-y: #{$alert-padding-y};
+  --#{$prefix}alert-margin-bottom: #{$alert-margin-bottom};
+  --#{$prefix}alert-color: inherit;
+  --#{$prefix}alert-border-color: transparent;
+  --#{$prefix}alert-border: #{$alert-border-width} solid var(--#{$prefix}alert-border-color);
+  --#{$prefix}alert-border-radius: #{$alert-border-radius};
+  // scss-docs-end alert-css-vars
+
   position: relative;
-  padding: $alert-padding-y $alert-padding-x;
-  margin-bottom: $alert-margin-bottom;
-  border: $alert-border-width solid transparent;
-  @include border-radius($alert-border-radius);
+  padding: var(--#{$prefix}alert-padding-y) var(--#{$prefix}alert-padding-x);
+  margin-bottom: var(--#{$prefix}alert-margin-bottom);
+  color: var(--#{$prefix}alert-color);
+  background-color: var(--#{$prefix}alert-bg);
+  border: var(--#{$prefix}alert-border);
+  @include border-radius(var(--#{$prefix}alert-border-radius));
 }
 
 // Headings for larger alerts
@@ -47,6 +60,7 @@
   $alert-background: shift-color($value, $alert-bg-scale);
   $alert-border: shift-color($value, $alert-border-scale);
   $alert-color: shift-color($value, $alert-color-scale);
+
   @if (contrast-ratio($alert-background, $alert-color) < $min-contrast-ratio) {
     $alert-color: mix($value, color-contrast($alert-background), abs($alert-color-scale));
   }

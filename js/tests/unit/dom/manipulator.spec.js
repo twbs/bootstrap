@@ -1,7 +1,5 @@
 import Manipulator from '../../../src/dom/manipulator'
-
-/** Test helpers */
-import { getFixture, clearFixture } from '../../helpers/fixture'
+import { clearFixture, getFixture } from '../../helpers/fixture'
 
 describe('Manipulator', () => {
   let fixtureEl
@@ -72,6 +70,17 @@ describe('Manipulator', () => {
         target: '#element'
       })
     })
+
+    it('should omit `bs-config` data attribute', () => {
+      fixtureEl.innerHTML = '<div data-bs-toggle="tabs" data-bs-target="#element" data-bs-config=\'{"testBool":false}\'></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Manipulator.getDataAttributes(div)).toEqual({
+        toggle: 'tabs',
+        target: '#element'
+      })
+    })
   })
 
   describe('getDataAttribute', () => {
@@ -98,93 +107,29 @@ describe('Manipulator', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Manipulator.getDataAttribute(div, 'test')).toEqual(false)
+      expect(Manipulator.getDataAttribute(div, 'test')).toBeFalse()
 
       div.setAttribute('data-bs-test', 'true')
-      expect(Manipulator.getDataAttribute(div, 'test')).toEqual(true)
+      expect(Manipulator.getDataAttribute(div, 'test')).toBeTrue()
 
       div.setAttribute('data-bs-test', '1')
       expect(Manipulator.getDataAttribute(div, 'test')).toEqual(1)
     })
-  })
 
-  describe('offset', () => {
-    it('should return an object with two properties top and left, both numbers', () => {
-      fixtureEl.innerHTML = '<div></div>'
+    it('should normalize json data', () => {
+      fixtureEl.innerHTML = '<div data-bs-test=\'{"delay":{"show":100,"hide":10}}\'></div>'
 
       const div = fixtureEl.querySelector('div')
-      const offset = Manipulator.offset(div)
 
-      expect(offset).toBeDefined()
-      expect(offset.top).toEqual(jasmine.any(Number))
-      expect(offset.left).toEqual(jasmine.any(Number))
-    })
+      expect(Manipulator.getDataAttribute(div, 'test')).toEqual({ delay: { show: 100, hide: 10 } })
 
-    it('should return offset relative to attached element\'s offset', () => {
-      const top = 500
-      const left = 1000
+      const objectData = { 'Super Hero': ['Iron Man', 'Super Man'], testNum: 90, url: 'http://localhost:8080/test?foo=bar' }
+      const dataStr = JSON.stringify(objectData)
+      div.setAttribute('data-bs-test', encodeURIComponent(dataStr))
+      expect(Manipulator.getDataAttribute(div, 'test')).toEqual(objectData)
 
-      fixtureEl.innerHTML = `<div style="position:absolute;top:${top}px;left:${left}px"></div>`
-
-      const div = fixtureEl.querySelector('div')
-      const offset = Manipulator.offset(div)
-      const fixtureOffset = Manipulator.offset(fixtureEl)
-
-      expect(offset).toEqual({
-        top: fixtureOffset.top + top,
-        left: fixtureOffset.left + left
-      })
-    })
-
-    it('should not change offset when viewport is scrolled', done => {
-      const top = 500
-      const left = 1000
-      const scrollY = 200
-      const scrollX = 400
-
-      fixtureEl.innerHTML = `<div style="position:absolute;top:${top}px;left:${left}px"></div>`
-
-      const div = fixtureEl.querySelector('div')
-      const offset = Manipulator.offset(div)
-
-      // append an element that forces scrollbars on the window so we can scroll
-      const { defaultView: win, body } = fixtureEl.ownerDocument
-      const forceScrollBars = document.createElement('div')
-      forceScrollBars.style.cssText = 'position:absolute;top:5000px;left:5000px;width:1px;height:1px'
-      body.append(forceScrollBars)
-
-      const scrollHandler = () => {
-        expect(window.pageYOffset).toBe(scrollY)
-        expect(window.pageXOffset).toBe(scrollX)
-
-        const newOffset = Manipulator.offset(div)
-
-        expect(newOffset).toEqual({
-          top: offset.top,
-          left: offset.left
-        })
-
-        win.removeEventListener('scroll', scrollHandler)
-        forceScrollBars.remove()
-        win.scrollTo(0, 0)
-        done()
-      }
-
-      win.addEventListener('scroll', scrollHandler)
-      win.scrollTo(scrollX, scrollY)
-    })
-  })
-
-  describe('position', () => {
-    it('should return an object with two properties top and left, both numbers', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const position = Manipulator.position(div)
-
-      expect(position).toBeDefined()
-      expect(position.top).toEqual(jasmine.any(Number))
-      expect(position.left).toEqual(jasmine.any(Number))
+      div.setAttribute('data-bs-test', dataStr)
+      expect(Manipulator.getDataAttribute(div, 'test')).toEqual(objectData)
     })
   })
 })

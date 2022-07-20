@@ -1,7 +1,5 @@
 import Toast from '../../src/toast'
-
-/** Test helpers */
-import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
+import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Toast', () => {
   let fixtureEl
@@ -38,52 +36,56 @@ describe('Toast', () => {
       expect(toastByElement._element).toEqual(toastEl)
     })
 
-    it('should allow to config in js', done => {
-      fixtureEl.innerHTML = [
-        '<div class="toast">',
-        '  <div class="toast-body">',
-        '    a simple toast',
-        '  </div>',
-        '</div>'
-      ].join('')
+    it('should allow to config in js', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="toast">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '  </div>',
+          '</div>'
+        ].join('')
 
-      const toastEl = fixtureEl.querySelector('div')
-      const toast = new Toast(toastEl, {
-        delay: 1
+        const toastEl = fixtureEl.querySelector('div')
+        const toast = new Toast(toastEl, {
+          delay: 1
+        })
+
+        toastEl.addEventListener('shown.bs.toast', () => {
+          expect(toastEl).toHaveClass('show')
+          resolve()
+        })
+
+        toast.show()
       })
-
-      toastEl.addEventListener('shown.bs.toast', () => {
-        expect(toastEl.classList.contains('show')).toEqual(true)
-        done()
-      })
-
-      toast.show()
     })
 
-    it('should close toast when close element with data-bs-dismiss attribute is set', done => {
-      fixtureEl.innerHTML = [
-        '<div class="toast" data-bs-delay="1" data-bs-autohide="false" data-bs-animation="false">',
-        '  <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
-        '</div>'
-      ].join('')
+    it('should close toast when close element with data-bs-dismiss attribute is set', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="toast" data-bs-delay="1" data-bs-autohide="false" data-bs-animation="false">',
+          '  <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
+          '</div>'
+        ].join('')
 
-      const toastEl = fixtureEl.querySelector('div')
-      const toast = new Toast(toastEl)
+        const toastEl = fixtureEl.querySelector('div')
+        const toast = new Toast(toastEl)
 
-      toastEl.addEventListener('shown.bs.toast', () => {
-        expect(toastEl.classList.contains('show')).toEqual(true)
+        toastEl.addEventListener('shown.bs.toast', () => {
+          expect(toastEl).toHaveClass('show')
 
-        const button = toastEl.querySelector('.btn-close')
+          const button = toastEl.querySelector('.btn-close')
 
-        button.click()
+          button.click()
+        })
+
+        toastEl.addEventListener('hidden.bs.toast', () => {
+          expect(toastEl).not.toHaveClass('show')
+          resolve()
+        })
+
+        toast.show()
       })
-
-      toastEl.addEventListener('hidden.bs.toast', () => {
-        expect(toastEl.classList.contains('show')).toEqual(false)
-        done()
-      })
-
-      toast.show()
     })
   })
 
@@ -113,304 +115,324 @@ describe('Toast', () => {
   })
 
   describe('show', () => {
-    it('should auto hide', done => {
-      fixtureEl.innerHTML = [
-        '<div class="toast" data-bs-delay="1">',
-        '  <div class="toast-body">',
-        '    a simple toast',
-        '  </div>',
-        '</div>'
-      ].join('')
+    it('should auto hide', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="toast" data-bs-delay="1">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '  </div>',
+          '</div>'
+        ].join('')
 
-      const toastEl = fixtureEl.querySelector('.toast')
-      const toast = new Toast(toastEl)
+        const toastEl = fixtureEl.querySelector('.toast')
+        const toast = new Toast(toastEl)
 
-      toastEl.addEventListener('hidden.bs.toast', () => {
-        expect(toastEl.classList.contains('show')).toEqual(false)
-        done()
-      })
-
-      toast.show()
-    })
-
-    it('should not add fade class', done => {
-      fixtureEl.innerHTML = [
-        '<div class="toast" data-bs-delay="1" data-bs-animation="false">',
-        '  <div class="toast-body">',
-        '    a simple toast',
-        '  </div>',
-        '</div>'
-      ].join('')
-
-      const toastEl = fixtureEl.querySelector('.toast')
-      const toast = new Toast(toastEl)
-
-      toastEl.addEventListener('shown.bs.toast', () => {
-        expect(toastEl.classList.contains('fade')).toEqual(false)
-        done()
-      })
-
-      toast.show()
-    })
-
-    it('should not trigger shown if show is prevented', done => {
-      fixtureEl.innerHTML = [
-        '<div class="toast" data-bs-delay="1" data-bs-animation="false">',
-        '  <div class="toast-body">',
-        '    a simple toast',
-        '  </div>',
-        '</div>'
-      ].join('')
-
-      const toastEl = fixtureEl.querySelector('.toast')
-      const toast = new Toast(toastEl)
-
-      const assertDone = () => {
-        setTimeout(() => {
-          expect(toastEl.classList.contains('show')).toEqual(false)
-          done()
-        }, 20)
-      }
-
-      toastEl.addEventListener('show.bs.toast', event => {
-        event.preventDefault()
-        assertDone()
-      })
-
-      toastEl.addEventListener('shown.bs.toast', () => {
-        throw new Error('shown event should not be triggered if show is prevented')
-      })
-
-      toast.show()
-    })
-
-    it('should clear timeout if toast is shown again before it is hidden', done => {
-      fixtureEl.innerHTML = [
-        '<div class="toast">',
-        '  <div class="toast-body">',
-        '    a simple toast',
-        '  </div>',
-        '</div>'
-      ].join('')
-
-      const toastEl = fixtureEl.querySelector('.toast')
-      const toast = new Toast(toastEl)
-
-      setTimeout(() => {
-        toast._config.autohide = false
-        toastEl.addEventListener('shown.bs.toast', () => {
-          expect(toast._clearTimeout).toHaveBeenCalled()
-          expect(toast._timeout).toBeNull()
-          done()
+        toastEl.addEventListener('hidden.bs.toast', () => {
+          expect(toastEl).not.toHaveClass('show')
+          resolve()
         })
+
         toast.show()
-      }, toast._config.delay / 2)
-
-      spyOn(toast, '_clearTimeout').and.callThrough()
-
-      toast.show()
+      })
     })
 
-    it('should clear timeout if toast is interacted with mouse', done => {
-      fixtureEl.innerHTML = [
-        '<div class="toast">',
-        '  <div class="toast-body">',
-        '    a simple toast',
-        '  </div>',
-        '</div>'
-      ].join('')
+    it('should not add fade class', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="toast" data-bs-delay="1" data-bs-animation="false">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '  </div>',
+          '</div>'
+        ].join('')
 
-      const toastEl = fixtureEl.querySelector('.toast')
-      const toast = new Toast(toastEl)
-      const spy = spyOn(toast, '_clearTimeout').and.callThrough()
+        const toastEl = fixtureEl.querySelector('.toast')
+        const toast = new Toast(toastEl)
 
-      setTimeout(() => {
-        spy.calls.reset()
-
-        toastEl.addEventListener('mouseover', () => {
-          expect(toast._clearTimeout).toHaveBeenCalledTimes(1)
-          expect(toast._timeout).toBeNull()
-          done()
+        toastEl.addEventListener('shown.bs.toast', () => {
+          expect(toastEl).not.toHaveClass('fade')
+          resolve()
         })
 
-        const mouseOverEvent = createEvent('mouseover')
-        toastEl.dispatchEvent(mouseOverEvent)
-      }, toast._config.delay / 2)
-
-      toast.show()
+        toast.show()
+      })
     })
 
-    it('should clear timeout if toast is interacted with keyboard', done => {
-      fixtureEl.innerHTML = [
-        '<button id="outside-focusable">outside focusable</button>',
-        '<div class="toast">',
-        '  <div class="toast-body">',
-        '    a simple toast',
-        '    <button>with a button</button>',
-        '  </div>',
-        '</div>'
-      ].join('')
+    it('should not trigger shown if show is prevented', () => {
+      return new Promise((resolve, reject) => {
+        fixtureEl.innerHTML = [
+          '<div class="toast" data-bs-delay="1" data-bs-animation="false">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '  </div>',
+          '</div>'
+        ].join('')
 
-      const toastEl = fixtureEl.querySelector('.toast')
-      const toast = new Toast(toastEl)
-      const spy = spyOn(toast, '_clearTimeout').and.callThrough()
+        const toastEl = fixtureEl.querySelector('.toast')
+        const toast = new Toast(toastEl)
 
-      setTimeout(() => {
-        spy.calls.reset()
+        const assertDone = () => {
+          setTimeout(() => {
+            expect(toastEl).not.toHaveClass('show')
+            resolve()
+          }, 20)
+        }
 
-        toastEl.addEventListener('focusin', () => {
-          expect(toast._clearTimeout).toHaveBeenCalledTimes(1)
-          expect(toast._timeout).toBeNull()
-          done()
+        toastEl.addEventListener('show.bs.toast', event => {
+          event.preventDefault()
+          assertDone()
         })
 
-        const insideFocusable = toastEl.querySelector('button')
-        insideFocusable.focus()
-      }, toast._config.delay / 2)
+        toastEl.addEventListener('shown.bs.toast', () => {
+          reject(new Error('shown event should not be triggered if show is prevented'))
+        })
 
-      toast.show()
+        toast.show()
+      })
     })
 
-    it('should still auto hide after being interacted with mouse and keyboard', done => {
-      fixtureEl.innerHTML = [
-        '<button id="outside-focusable">outside focusable</button>',
-        '<div class="toast">',
-        '  <div class="toast-body">',
-        '    a simple toast',
-        '    <button>with a button</button>',
-        '  </div>',
-        '</div>'
-      ].join('')
+    it('should clear timeout if toast is shown again before it is hidden', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="toast">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '  </div>',
+          '</div>'
+        ].join('')
 
-      const toastEl = fixtureEl.querySelector('.toast')
-      const toast = new Toast(toastEl)
+        const toastEl = fixtureEl.querySelector('.toast')
+        const toast = new Toast(toastEl)
 
-      setTimeout(() => {
-        toastEl.addEventListener('mouseover', () => {
+        setTimeout(() => {
+          toast._config.autohide = false
+          toastEl.addEventListener('shown.bs.toast', () => {
+            expect(spy).toHaveBeenCalled()
+            expect(toast._timeout).toBeNull()
+            resolve()
+          })
+          toast.show()
+        }, toast._config.delay / 2)
+
+        const spy = spyOn(toast, '_clearTimeout').and.callThrough()
+
+        toast.show()
+      })
+    })
+
+    it('should clear timeout if toast is interacted with mouse', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="toast">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const toastEl = fixtureEl.querySelector('.toast')
+        const toast = new Toast(toastEl)
+        const spy = spyOn(toast, '_clearTimeout').and.callThrough()
+
+        setTimeout(() => {
+          spy.calls.reset()
+
+          toastEl.addEventListener('mouseover', () => {
+            expect(toast._clearTimeout).toHaveBeenCalledTimes(1)
+            expect(toast._timeout).toBeNull()
+            resolve()
+          })
+
+          const mouseOverEvent = createEvent('mouseover')
+          toastEl.dispatchEvent(mouseOverEvent)
+        }, toast._config.delay / 2)
+
+        toast.show()
+      })
+    })
+
+    it('should clear timeout if toast is interacted with keyboard', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button id="outside-focusable">outside focusable</button>',
+          '<div class="toast">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '    <button>with a button</button>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const toastEl = fixtureEl.querySelector('.toast')
+        const toast = new Toast(toastEl)
+        const spy = spyOn(toast, '_clearTimeout').and.callThrough()
+
+        setTimeout(() => {
+          spy.calls.reset()
+
+          toastEl.addEventListener('focusin', () => {
+            expect(toast._clearTimeout).toHaveBeenCalledTimes(1)
+            expect(toast._timeout).toBeNull()
+            resolve()
+          })
+
           const insideFocusable = toastEl.querySelector('button')
           insideFocusable.focus()
-        })
+        }, toast._config.delay / 2)
 
-        toastEl.addEventListener('focusin', () => {
-          const mouseOutEvent = createEvent('mouseout')
-          toastEl.dispatchEvent(mouseOutEvent)
-        })
-
-        toastEl.addEventListener('mouseout', () => {
-          const outsideFocusable = document.getElementById('outside-focusable')
-          outsideFocusable.focus()
-        })
-
-        toastEl.addEventListener('focusout', () => {
-          expect(toast._timeout).not.toBeNull()
-          done()
-        })
-
-        const mouseOverEvent = createEvent('mouseover')
-        toastEl.dispatchEvent(mouseOverEvent)
-      }, toast._config.delay / 2)
-
-      toast.show()
+        toast.show()
+      })
     })
 
-    it('should not auto hide if focus leaves but mouse pointer remains inside', done => {
-      fixtureEl.innerHTML = [
-        '<button id="outside-focusable">outside focusable</button>',
-        '<div class="toast">',
-        '  <div class="toast-body">',
-        '    a simple toast',
-        '    <button>with a button</button>',
-        '  </div>',
-        '</div>'
-      ].join('')
+    it('should still auto hide after being interacted with mouse and keyboard', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button id="outside-focusable">outside focusable</button>',
+          '<div class="toast">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '    <button>with a button</button>',
+          '  </div>',
+          '</div>'
+        ].join('')
 
-      const toastEl = fixtureEl.querySelector('.toast')
-      const toast = new Toast(toastEl)
+        const toastEl = fixtureEl.querySelector('.toast')
+        const toast = new Toast(toastEl)
 
-      setTimeout(() => {
-        toastEl.addEventListener('mouseover', () => {
-          const insideFocusable = toastEl.querySelector('button')
-          insideFocusable.focus()
-        })
+        setTimeout(() => {
+          toastEl.addEventListener('mouseover', () => {
+            const insideFocusable = toastEl.querySelector('button')
+            insideFocusable.focus()
+          })
 
-        toastEl.addEventListener('focusin', () => {
-          const outsideFocusable = document.getElementById('outside-focusable')
-          outsideFocusable.focus()
-        })
+          toastEl.addEventListener('focusin', () => {
+            const mouseOutEvent = createEvent('mouseout')
+            toastEl.dispatchEvent(mouseOutEvent)
+          })
 
-        toastEl.addEventListener('focusout', () => {
-          expect(toast._timeout).toBeNull()
-          done()
-        })
+          toastEl.addEventListener('mouseout', () => {
+            const outsideFocusable = document.getElementById('outside-focusable')
+            outsideFocusable.focus()
+          })
 
-        const mouseOverEvent = createEvent('mouseover')
-        toastEl.dispatchEvent(mouseOverEvent)
-      }, toast._config.delay / 2)
+          toastEl.addEventListener('focusout', () => {
+            expect(toast._timeout).not.toBeNull()
+            resolve()
+          })
 
-      toast.show()
+          const mouseOverEvent = createEvent('mouseover')
+          toastEl.dispatchEvent(mouseOverEvent)
+        }, toast._config.delay / 2)
+
+        toast.show()
+      })
     })
 
-    it('should not auto hide if mouse pointer leaves but focus remains inside', done => {
-      fixtureEl.innerHTML = [
-        '<button id="outside-focusable">outside focusable</button>',
-        '<div class="toast">',
-        '  <div class="toast-body">',
-        '    a simple toast',
-        '    <button>with a button</button>',
-        '  </div>',
-        '</div>'
-      ].join('')
+    it('should not auto hide if focus leaves but mouse pointer remains inside', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button id="outside-focusable">outside focusable</button>',
+          '<div class="toast">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '    <button>with a button</button>',
+          '  </div>',
+          '</div>'
+        ].join('')
 
-      const toastEl = fixtureEl.querySelector('.toast')
-      const toast = new Toast(toastEl)
+        const toastEl = fixtureEl.querySelector('.toast')
+        const toast = new Toast(toastEl)
 
-      setTimeout(() => {
-        toastEl.addEventListener('mouseover', () => {
-          const insideFocusable = toastEl.querySelector('button')
-          insideFocusable.focus()
-        })
+        setTimeout(() => {
+          toastEl.addEventListener('mouseover', () => {
+            const insideFocusable = toastEl.querySelector('button')
+            insideFocusable.focus()
+          })
 
-        toastEl.addEventListener('focusin', () => {
-          const mouseOutEvent = createEvent('mouseout')
-          toastEl.dispatchEvent(mouseOutEvent)
-        })
+          toastEl.addEventListener('focusin', () => {
+            const outsideFocusable = document.getElementById('outside-focusable')
+            outsideFocusable.focus()
+          })
 
-        toastEl.addEventListener('mouseout', () => {
-          expect(toast._timeout).toBeNull()
-          done()
-        })
+          toastEl.addEventListener('focusout', () => {
+            expect(toast._timeout).toBeNull()
+            resolve()
+          })
 
-        const mouseOverEvent = createEvent('mouseover')
-        toastEl.dispatchEvent(mouseOverEvent)
-      }, toast._config.delay / 2)
+          const mouseOverEvent = createEvent('mouseover')
+          toastEl.dispatchEvent(mouseOverEvent)
+        }, toast._config.delay / 2)
 
-      toast.show()
+        toast.show()
+      })
+    })
+
+    it('should not auto hide if mouse pointer leaves but focus remains inside', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button id="outside-focusable">outside focusable</button>',
+          '<div class="toast">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '    <button>with a button</button>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const toastEl = fixtureEl.querySelector('.toast')
+        const toast = new Toast(toastEl)
+
+        setTimeout(() => {
+          toastEl.addEventListener('mouseover', () => {
+            const insideFocusable = toastEl.querySelector('button')
+            insideFocusable.focus()
+          })
+
+          toastEl.addEventListener('focusin', () => {
+            const mouseOutEvent = createEvent('mouseout')
+            toastEl.dispatchEvent(mouseOutEvent)
+          })
+
+          toastEl.addEventListener('mouseout', () => {
+            expect(toast._timeout).toBeNull()
+            resolve()
+          })
+
+          const mouseOverEvent = createEvent('mouseover')
+          toastEl.dispatchEvent(mouseOverEvent)
+        }, toast._config.delay / 2)
+
+        toast.show()
+      })
     })
   })
 
   describe('hide', () => {
-    it('should allow to hide toast manually', done => {
-      fixtureEl.innerHTML = [
-        '<div class="toast" data-bs-delay="1" data-bs-autohide="false">',
-        '  <div class="toast-body">',
-        '    a simple toast',
-        '  </div>',
-        '  </div>'
-      ].join('')
+    it('should allow to hide toast manually', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="toast" data-bs-delay="1" data-bs-autohide="false">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '  </div>',
+          '</div>'
+        ].join('')
 
-      const toastEl = fixtureEl.querySelector('.toast')
-      const toast = new Toast(toastEl)
+        const toastEl = fixtureEl.querySelector('.toast')
+        const toast = new Toast(toastEl)
 
-      toastEl.addEventListener('shown.bs.toast', () => {
-        toast.hide()
+        toastEl.addEventListener('shown.bs.toast', () => {
+          toast.hide()
+        })
+
+        toastEl.addEventListener('hidden.bs.toast', () => {
+          expect(toastEl).not.toHaveClass('show')
+          resolve()
+        })
+
+        toast.show()
       })
-
-      toastEl.addEventListener('hidden.bs.toast', () => {
-        expect(toastEl.classList.contains('show')).toEqual(false)
-        done()
-      })
-
-      toast.show()
     })
 
     it('should do nothing when we call hide on a non shown toast', () => {
@@ -419,46 +441,48 @@ describe('Toast', () => {
       const toastEl = fixtureEl.querySelector('div')
       const toast = new Toast(toastEl)
 
-      spyOn(toastEl.classList, 'contains')
+      const spy = spyOn(toastEl.classList, 'contains')
 
       toast.hide()
 
-      expect(toastEl.classList.contains).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
-    it('should not trigger hidden if hide is prevented', done => {
-      fixtureEl.innerHTML = [
-        '<div class="toast" data-bs-delay="1" data-bs-animation="false">',
-        '  <div class="toast-body">',
-        '    a simple toast',
-        '  </div>',
-        '</div>'
-      ].join('')
+    it('should not trigger hidden if hide is prevented', () => {
+      return new Promise((resolve, reject) => {
+        fixtureEl.innerHTML = [
+          '<div class="toast" data-bs-delay="1" data-bs-animation="false">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '  </div>',
+          '</div>'
+        ].join('')
 
-      const toastEl = fixtureEl.querySelector('.toast')
-      const toast = new Toast(toastEl)
+        const toastEl = fixtureEl.querySelector('.toast')
+        const toast = new Toast(toastEl)
 
-      const assertDone = () => {
-        setTimeout(() => {
-          expect(toastEl.classList.contains('show')).toEqual(true)
-          done()
-        }, 20)
-      }
+        const assertDone = () => {
+          setTimeout(() => {
+            expect(toastEl).toHaveClass('show')
+            resolve()
+          }, 20)
+        }
 
-      toastEl.addEventListener('shown.bs.toast', () => {
-        toast.hide()
+        toastEl.addEventListener('shown.bs.toast', () => {
+          toast.hide()
+        })
+
+        toastEl.addEventListener('hide.bs.toast', event => {
+          event.preventDefault()
+          assertDone()
+        })
+
+        toastEl.addEventListener('hidden.bs.toast', () => {
+          reject(new Error('hidden event should not be triggered if hide is prevented'))
+        })
+
+        toast.show()
       })
-
-      toastEl.addEventListener('hide.bs.toast', event => {
-        event.preventDefault()
-        assertDone()
-      })
-
-      toastEl.addEventListener('hidden.bs.toast', () => {
-        throw new Error('hidden event should not be triggered if hide is prevented')
-      })
-
-      toast.show()
     })
   })
 
@@ -477,34 +501,36 @@ describe('Toast', () => {
       expect(Toast.getInstance(toastEl)).toBeNull()
     })
 
-    it('should allow to destroy toast and hide it before that', done => {
-      fixtureEl.innerHTML = [
-        '<div class="toast" data-bs-delay="0" data-bs-autohide="false">',
-        '  <div class="toast-body">',
-        '    a simple toast',
-        '  </div>',
-        '</div>'
-      ].join('')
+    it('should allow to destroy toast and hide it before that', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="toast" data-bs-delay="0" data-bs-autohide="false">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '  </div>',
+          '</div>'
+        ].join('')
 
-      const toastEl = fixtureEl.querySelector('div')
-      const toast = new Toast(toastEl)
-      const expected = () => {
-        expect(toastEl.classList.contains('show')).toEqual(true)
-        expect(Toast.getInstance(toastEl)).not.toBeNull()
+        const toastEl = fixtureEl.querySelector('div')
+        const toast = new Toast(toastEl)
+        const expected = () => {
+          expect(toastEl).toHaveClass('show')
+          expect(Toast.getInstance(toastEl)).not.toBeNull()
 
-        toast.dispose()
+          toast.dispose()
 
-        expect(Toast.getInstance(toastEl)).toBeNull()
-        expect(toastEl.classList.contains('show')).toEqual(false)
+          expect(Toast.getInstance(toastEl)).toBeNull()
+          expect(toastEl).not.toHaveClass('show')
 
-        done()
-      }
+          resolve()
+        }
 
-      toastEl.addEventListener('shown.bs.toast', () => {
-        setTimeout(expected, 1)
+        toastEl.addEventListener('shown.bs.toast', () => {
+          setTimeout(expected, 1)
+        })
+
+        toast.show()
       })
-
-      toast.show()
     })
   })
 
@@ -542,7 +568,7 @@ describe('Toast', () => {
       const div = fixtureEl.querySelector('div')
       const toast = new Toast(div)
 
-      spyOn(toast, 'show')
+      const spy = spyOn(toast, 'show')
 
       jQueryMock.fn.toast = Toast.jQueryInterface
       jQueryMock.elements = [div]
@@ -550,7 +576,7 @@ describe('Toast', () => {
       jQueryMock.fn.toast.call(jQueryMock, 'show')
 
       expect(Toast.getInstance(div)).toEqual(toast)
-      expect(toast.show).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should throw error on undefined method', () => {
@@ -584,7 +610,7 @@ describe('Toast', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Toast.getInstance(div)).toEqual(null)
+      expect(Toast.getInstance(div)).toBeNull()
     })
   })
 
@@ -605,7 +631,7 @@ describe('Toast', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Toast.getInstance(div)).toEqual(null)
+      expect(Toast.getInstance(div)).toBeNull()
       expect(Toast.getOrCreateInstance(div)).toBeInstanceOf(Toast)
     })
 
@@ -614,7 +640,7 @@ describe('Toast', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Toast.getInstance(div)).toEqual(null)
+      expect(Toast.getInstance(div)).toBeNull()
       const toast = Toast.getOrCreateInstance(div, {
         delay: 1
       })

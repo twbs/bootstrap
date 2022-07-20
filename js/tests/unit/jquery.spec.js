@@ -1,4 +1,5 @@
 /* eslint-env jquery */
+
 import Alert from '../../src/alert'
 import Button from '../../src/button'
 import Carousel from '../../src/carousel'
@@ -11,9 +12,7 @@ import ScrollSpy from '../../src/scrollspy'
 import Tab from '../../src/tab'
 import Toast from '../../src/toast'
 import Tooltip from '../../src/tooltip'
-
-/** Test helpers */
-import { getFixture, clearFixture } from '../helpers/fixture'
+import { clearFixture, getFixture } from '../helpers/fixture'
 
 describe('jQuery', () => {
   let fixtureEl
@@ -41,19 +40,21 @@ describe('jQuery', () => {
     expect(Tooltip.jQueryInterface).toEqual(jQuery.fn.tooltip)
   })
 
-  it('should use jQuery event system', done => {
-    fixtureEl.innerHTML = [
-      '<div class="alert">',
-      '  <button type="button" data-bs-dismiss="alert">x</button>',
-      '</div>'
-    ].join('')
+  it('should use jQuery event system', () => {
+    return new Promise(resolve => {
+      fixtureEl.innerHTML = [
+        '<div class="alert">',
+        '  <button type="button" data-bs-dismiss="alert">x</button>',
+        '</div>'
+      ].join('')
 
-    $(fixtureEl).find('.alert')
-      .one('closed.bs.alert', () => {
-        expect($(fixtureEl).find('.alert').length).toEqual(0)
-        done()
-      })
+      $(fixtureEl).find('.alert')
+        .one('closed.bs.alert', () => {
+          expect($(fixtureEl).find('.alert')).toHaveSize(0)
+          resolve()
+        })
 
-    $(fixtureEl).find('button').trigger('click')
+      $(fixtureEl).find('button').trigger('click')
+    })
   })
 })

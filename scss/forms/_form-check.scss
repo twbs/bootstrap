@@ -14,6 +14,18 @@
   }
 }
 
+.form-check-reverse {
+  padding-right: $form-check-padding-start;
+  padding-left: 0;
+  text-align: right;
+
+  .form-check-input {
+    float: right;
+    margin-right: $form-check-padding-start * -1;
+    margin-left: 0;
+  }
+}
+
 .form-check-input {
   width: $form-check-input-width;
   height: $form-check-input-width;
@@ -25,7 +37,7 @@
   background-size: contain;
   border: $form-check-input-border;
   appearance: none;
-  color-adjust: exact; // Keep themed appearance for print
+  print-color-adjust: exact; // Keep themed appearance for print
   @include transition($form-check-transition);
 
   &[type="checkbox"] {
@@ -53,7 +65,7 @@
 
     &[type="checkbox"] {
       @if $enable-gradients {
-        background-image: escape-svg($form-check-input-checked-bg-image), var(--#{$variable-prefix}gradient);
+        background-image: escape-svg($form-check-input-checked-bg-image), var(--#{$prefix}gradient);
       } @else {
         background-image: escape-svg($form-check-input-checked-bg-image);
       }
@@ -61,7 +73,7 @@
 
     &[type="radio"] {
       @if $enable-gradients {
-        background-image: escape-svg($form-check-radio-checked-bg-image), var(--#{$variable-prefix}gradient);
+        background-image: escape-svg($form-check-radio-checked-bg-image), var(--#{$prefix}gradient);
       } @else {
         background-image: escape-svg($form-check-radio-checked-bg-image);
       }
@@ -73,7 +85,7 @@
     border-color: $form-check-input-indeterminate-border-color;
 
     @if $enable-gradients {
-      background-image: escape-svg($form-check-input-indeterminate-bg-image), var(--#{$variable-prefix}gradient);
+      background-image: escape-svg($form-check-input-indeterminate-bg-image), var(--#{$prefix}gradient);
     } @else {
       background-image: escape-svg($form-check-input-indeterminate-bg-image);
     }
@@ -90,6 +102,7 @@
   &[disabled],
   &:disabled {
     ~ .form-check-label {
+      cursor: default;
       opacity: $form-check-label-disabled-opacity;
     }
   }
@@ -123,10 +136,20 @@
       background-position: $form-switch-checked-bg-position;
 
       @if $enable-gradients {
-        background-image: escape-svg($form-switch-checked-bg-image), var(--#{$variable-prefix}gradient);
+        background-image: escape-svg($form-switch-checked-bg-image), var(--#{$prefix}gradient);
       } @else {
         background-image: escape-svg($form-switch-checked-bg-image);
       }
+    }
+  }
+
+  &.form-check-reverse {
+    padding-right: $form-switch-padding-start;
+    padding-left: 0;
+
+    .form-check-input {
+      margin-right: $form-switch-padding-start * -1;
+      margin-left: 0;
     }
   }
 }

@@ -1,21 +1,130 @@
 //
-// Grid examples
+// Docs examples
 //
 
-.bd-example-row {
-  .row {
-    > .col,
-    > [class^="col-"] {
-      padding-top: .75rem;
-      padding-bottom: .75rem;
-      background-color: rgba(39, 41, 43, .03);
-      border: 1px solid rgba(39, 41, 43, .1);
+.bd-example-snippet {
+  border: solid $border-color;
+  border-width: 1px 0;
+
+  @include media-breakpoint-up(md) {
+    border-width: 1px;
+  }
+}
+
+.bd-example {
+  --bd-example-padding: 1rem;
+
+  position: relative;
+  padding: var(--bd-example-padding);
+  margin: 0 ($bd-gutter-x * -.5);
+  border: solid $border-color;
+  border-width: 1px 0;
+  @include clearfix();
+
+  @include media-breakpoint-up(md) {
+    --bd-example-padding: 1.5rem;
+
+    margin-right: 0;
+    margin-left: 0;
+    border-width: 1px;
+    @include border-top-radius(var(--bs-border-radius));
+  }
+
+  + .bd-code-snippet {
+    @include border-top-radius(0);
+    border: solid $border-color;
+    border-width: 0 1px 1px;
+  }
+
+  + p {
+    margin-top: 2rem;
+  }
+
+  > .form-control {
+    + .form-control {
+      margin-top: .5rem;
     }
   }
 
-  .row + .row {
-    margin-top: 1rem;
+  > .nav + .nav,
+  > .alert + .alert,
+  > .navbar + .navbar,
+  > .progress + .progress {
+    margin-top: $spacer;
   }
+
+  > .dropdown-menu {
+    position: static;
+    display: block;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  > hr:last-child {
+    margin-bottom: $spacer;
+  }
+
+  // Images
+  > svg + svg,
+  > img + img {
+    margin-left: .5rem;
+  }
+
+  // Buttons
+  > .btn,
+  > .btn-group {
+    margin: .25rem .125rem;
+  }
+  > .btn-toolbar + .btn-toolbar {
+    margin-top: .5rem;
+  }
+
+  // List groups
+  > .list-group {
+    max-width: 400px;
+  }
+
+  > [class*="list-group-horizontal"] {
+    max-width: 100%;
+  }
+
+  // Navbars
+  .fixed-top,
+  .sticky-top {
+    position: static;
+    margin: calc(var(--bd-example-padding) * -1) calc(var(--bd-example-padding) * -1) var(--bd-example-padding); // stylelint-disable-line function-disallowed-list
+  }
+
+  .fixed-bottom,
+  .sticky-bottom {
+    position: static;
+    margin: var(--bd-example-padding) calc(var(--bd-example-padding) * -1) calc(var(--bd-example-padding) * -1); // stylelint-disable-line function-disallowed-list
+
+  }
+
+  // Pagination
+  .pagination {
+    margin-bottom: 0;
+  }
+}
+
+//
+// Grid examples
+//
+
+.bd-example-row [class^="col"],
+.bd-example-cssgrid .grid > * {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  background-color: rgba(var(--bd-violet-rgb), .1);
+  border: 1px solid rgba(var(--bd-violet-rgb), .25);
+}
+
+.bd-example-row .row + .row,
+.bd-example-cssgrid .grid + .grid {
+  margin-top: 1rem;
 }
 
 .bd-example-row-flex-cols .row {
@@ -23,22 +132,7 @@
   background-color: rgba(255, 0, 0, .1);
 }
 
-.bd-example-cssgrid {
-  text-align: center;
-
-  .grid + .grid {
-    margin-top: 1rem;
-  }
-
-  .grid > * {
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    background-color: rgba(255, 0, 255, .1);
-    border: 1px solid rgba(255, 0, 255, .25);
-  }
-}
-
-.bd-highlight {
+.bd-example-flex div {
   background-color: rgba($bd-purple, .15);
   border: 1px solid rgba($bd-purple, .15);
 }
@@ -77,110 +171,6 @@
   }
 }
 
-
-//
-// Docs examples
-//
-
-.bd-example {
-  position: relative;
-  padding: 1rem;
-  margin: 1rem (-$grid-gutter-width * .5) 0;
-  border: solid $gray-300;
-  border-width: 1px 0 0;
-  @include clearfix();
-
-  @include media-breakpoint-up(sm) {
-    padding: 1.5rem;
-    margin-right: 0;
-    margin-left: 0;
-    border-width: 1px;
-    @include border-top-radius(.25rem);
-
-    + .bd-clipboard + .highlight {
-      @include border-bottom-radius(.25rem);
-    }
-  }
-
-  + p {
-    margin-top: 2rem;
-  }
-
-  > .form-control {
-    + .form-control {
-      margin-top: .5rem;
-    }
-  }
-
-  > .nav + .nav,
-  > .alert + .alert,
-  > .navbar + .navbar,
-  > .progress + .progress {
-    margin-top: 1rem;
-  }
-
-  > .dropdown-menu {
-    position: static;
-    display: block;
-  }
-
-  > :last-child {
-    margin-bottom: 0;
-  }
-
-  // Images
-  > svg + svg,
-  > img + img {
-    margin-left: .5rem;
-  }
-
-  // Buttons
-  > .btn,
-  > .btn-group {
-    margin: .25rem .125rem;
-  }
-  > .btn-toolbar + .btn-toolbar {
-    margin-top: .5rem;
-  }
-
-  // List groups
-  > .list-group {
-    max-width: 400px;
-  }
-
-  > [class*="list-group-horizontal"] {
-    max-width: 100%;
-  }
-
-  // Navbars
-  .fixed-top,
-  .sticky-top {
-    position: static;
-    margin: -1rem -1rem 1rem;
-  }
-
-  .fixed-bottom {
-    position: static;
-    margin: 1rem -1rem -1rem;
-  }
-
-  @include media-breakpoint-up(sm) {
-    .fixed-top,
-    .sticky-top {
-      margin: -1.5rem -1.5rem 1rem;
-    }
-    .fixed-bottom {
-      margin: 1rem -1.5rem -1.5rem;
-    }
-  }
-
-  // Pagination
-  .pagination {
-    margin-top: .5rem;
-    margin-bottom: .5rem;
-  }
-}
-
 // Ratio helpers
 .bd-example-ratios {
   .ratio {
@@ -188,7 +178,7 @@
     width: 10rem;
     color: $gray-600;
     background-color: $gray-100;
-    border: $border-width solid $border-color;
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
 
     > div {
       display: flex;
@@ -207,18 +197,7 @@
   }
 }
 
-.bd-example-modal {
-  background-color: #fafafa;
-
-  .modal {
-    position: static;
-    display: block;
-  }
-}
-
 .bd-example-offcanvas {
-  @include border-start-radius(0);
-
   .offcanvas {
     position: static;
     display: block;
@@ -233,18 +212,39 @@
   white-space: nowrap;
 }
 
+// scss-docs-start custom-tooltip
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-primary);
+}
+// scss-docs-end custom-tooltip
+
+// scss-docs-start custom-popovers
+.custom-popover {
+  --bs-popover-max-width: 200px;
+  --bs-popover-border-color: var(--bs-primary);
+  --bs-popover-header-bg: var(--bs-primary);
+  --bs-popover-header-color: var(--bs-white);
+  --bs-popover-body-padding-x: 1rem;
+  --bs-popover-body-padding-y: .5rem;
+}
+// scss-docs-end custom-popovers
+
 // Scrollspy demo on fixed height div
 .scrollspy-example {
-  position: relative;
   height: 200px;
   margin-top: .5rem;
   overflow: auto;
 }
 
 .scrollspy-example-2 {
-  position: relative;
   height: 350px;
   overflow: auto;
+}
+
+.simple-list-example-scrollspy {
+  .active {
+    background-color: rgba(var(--bd-violet-rgb), .15);
+  }
 }
 
 .bd-example-border-utils {
@@ -257,12 +257,6 @@
   }
 }
 
-.bd-example-border-utils-0 {
-  [class^="border"] {
-    border: 1px solid $border-color;
-  }
-}
-
 .bd-example-rounded-utils {
   [class*="rounded"] {
     margin: .25rem;
@@ -271,7 +265,7 @@
 
 .bd-example-position-utils {
   position: relative;
-  padding: 3em;
+  padding: 2rem;
 
   .position-relative {
     height: 200px;
@@ -279,8 +273,8 @@
   }
 
   .position-absolute {
-    width: 2em;
-    height: 2em;
+    width: 2rem;
+    height: 2rem;
     background-color: $dark;
     @include border-radius();
   }
@@ -313,21 +307,28 @@
 //
 
 .highlight {
-  padding: 1rem;
+  position: relative;
+  padding: .75rem ($bd-gutter-x * .5);
   margin-bottom: 1rem;
-  background-color: $gray-100;
+  background-color: var(--bs-gray-100);
 
-  @include media-breakpoint-up(sm) {
-    padding: 1rem 1.5rem;
+  @include media-breakpoint-up(md) {
+    padding: .75rem 1.25rem;
+    @include border-radius(var(--bs-border-radius));
   }
 
   pre {
     padding: 0;
-    margin-top: .65rem;
-    margin-bottom: .65rem;
+    margin-top: .625rem;
+    margin-bottom: .625rem;
     white-space: pre;
     background-color: transparent;
     border: 0;
+
+    // Undo tabindex that's automatically added by Hugo
+    &:focus {
+      outline: 0;
+    }
   }
 
   pre code {
@@ -337,12 +338,26 @@
   }
 }
 
-.bd-content .highlight {
-  margin-right: (-$grid-gutter-width * .5);
-  margin-left: (-$grid-gutter-width * .5);
+.bd-code-snippet {
+  margin: 0 ($bd-gutter-x * -.5) $spacer;
 
-  @include media-breakpoint-up(sm) {
+  .highlight {
+    margin-bottom: 0;
+  }
+
+  .bd-example {
+    margin: 0;
+    border: 0;
+  }
+
+  @include media-breakpoint-up(md) {
     margin-right: 0;
     margin-left: 0;
+    @include border-radius($border-radius);
   }
+}
+
+.highlight-toolbar {
+  border: solid $border-color;
+  border-width: 1px 0;
 }
