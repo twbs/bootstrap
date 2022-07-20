@@ -98,6 +98,7 @@ describe('Modal', () => {
           expect(modalEl.getAttribute('aria-hidden')).toBeNull()
           expect(modalEl.style.display).toEqual('block')
           expect(document.querySelector('.modal-backdrop')).not.toBeNull()
+          expect(document.body.classList.contains('modal-open')).toBe(true)
           resolve()
         })
 
@@ -698,6 +699,7 @@ describe('Modal', () => {
           expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
           expect(modalEl.style.display).toEqual('none')
           expect(backdropSpy).toHaveBeenCalled()
+          expect(document.body.classList.contains('modal-open')).not.toBe(true)
           resolve()
         })
 
