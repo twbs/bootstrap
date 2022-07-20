@@ -1,0 +1,16 @@
+//
+// Background helpers
+//
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-contain {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.bg-center {
+  background-position: 50% 50%;
+}
