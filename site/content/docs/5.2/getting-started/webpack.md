@@ -4,6 +4,7 @@ title: "Bootstrap & Webpack"
 description: The official guide for how to include and bundle Bootstrap's CSS and JavaScript in your project using Webpack.
 group: getting-started
 toc: true
+thumbnail: guides/bootstrap-webpack@2x.png
 ---
 
 <img class="mb-4 img-fluid rounded-3" srcset="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-webpack.png, /docs/{{< param docs_version >}}/assets/img/guides/bootstrap-webpack@2x.png 2x" src="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-webpack.png" width="2000" height="1000" alt="">
