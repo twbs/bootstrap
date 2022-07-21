@@ -46,9 +46,9 @@ module:
       target:           static
     - source:           site/docs-assets
       target:           static/docs/5.2/assets
-    - source:           site/static/assets/img/favicons/apple-touch-icon.png
+    - source:           site/docs-assets/img/favicons/apple-touch-icon.png
       target:           static/apple-touch-icon.png
-    - source:           site/static/assets/img/favicons/favicon.ico
+    - source:           site/docs-assets/img/favicons/favicon.ico
       target:           static/favicon.ico
 
 params:
