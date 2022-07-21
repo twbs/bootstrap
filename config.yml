@@ -42,7 +42,9 @@ module:
       target:           data
     - source:           site/layouts
       target:           layouts
-    - source:           site/static/assets
+    - source:           site/static
+      target:           static
+    - source:           site/docs-assets
       target:           static/docs/5.2/assets
     - source:           site/static/assets/img/favicons/apple-touch-icon.png
       target:           static/apple-touch-icon.png
