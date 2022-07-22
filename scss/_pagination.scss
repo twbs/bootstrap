@@ -2,6 +2,7 @@
   // scss-docs-start pagination-css-vars
   --#{$prefix}pagination-padding-x: #{$pagination-padding-x};
   --#{$prefix}pagination-padding-y: #{$pagination-padding-y};
+  --#{$prefix}pagination-margin-start: #{$pagination-margin-start};
   @include rfs($pagination-font-size, --#{$prefix}pagination-font-size);
   --#{$prefix}pagination-color: #{$pagination-color};
   --#{$prefix}pagination-bg: #{$pagination-bg};
@@ -14,6 +15,7 @@
   --#{$prefix}pagination-focus-color: #{$pagination-focus-color};
   --#{$prefix}pagination-focus-bg: #{$pagination-focus-bg};
   --#{$prefix}pagination-focus-box-shadow: #{$pagination-focus-box-shadow};
+  --#{$prefix}pagination-focus-outline: #{$pagination-focus-outline};
   --#{$prefix}pagination-active-color: #{$pagination-active-color};
   --#{$prefix}pagination-active-bg: #{$pagination-active-bg};
   --#{$prefix}pagination-active-border-color: #{$pagination-active-border-color};
@@ -49,7 +51,7 @@
     z-index: 3;
     color: var(--#{$prefix}pagination-focus-color);
     background-color: var(--#{$prefix}pagination-focus-bg);
-    outline: $pagination-focus-outline;
+    outline: var(--#{$prefix}pagination-focus-outline);
     box-shadow: var(--#{$prefix}pagination-focus-box-shadow);
   }
 
@@ -72,7 +74,7 @@
 
 .page-item {
   &:not(:first-child) .page-link {
-    margin-left: $pagination-margin-start;
+    margin-left: var(--#{$prefix}pagination-margin-start);
   }
 
   @if $pagination-margin-start == (calc($pagination-border-width * -1)) {
