@@ -36,6 +36,10 @@ class BaseComponent extends Config {
   }
 
   // Public
+  getElement() {
+    return this._element
+  }
+
   dispose() {
     Data.remove(this._element, this.constructor.DATA_KEY)
     EventHandler.off(this._element, this.constructor.EVENT_KEY)

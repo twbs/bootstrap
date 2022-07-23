@@ -23,12 +23,12 @@ With that in mind, consider the following demos for our custom form validation s
 
 ## Custom styles
 
-For custom Bootstrap form validation messages, you'll need to add the data-bs-toggle="form-validation" `<form>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you. When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to your form controls.
+For custom Bootstrap form validation messages, you'll need to add the data-bs-toggle="form" `<form>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you. When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to your form controls.
 
 Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback. Background icons for `<select>`s are only available with `.form-select`, and not `.form-control`.
 
 {{< example >}}
-<form class="row g-3" data-bs-toggle="form-validation">
+<form class="row g-3" data-bs-toggle="form">
   <div class="col-md-4">
     <label for="validationCustom01" class="form-label">First name</label>
     <input type="text" class="form-control" id="validationCustom01" value="Mark" required data-bs-valid="Looks good!" data-bs-invalid="Please, provide a valid Name!">
@@ -266,7 +266,7 @@ Validation styles are available for the following form controls and components:
 If your form layout allows it, you can swap the `.{valid|invalid}-feedback` classes for `.{valid|invalid}-tooltip` classes to display validation feedback in a styled tooltip. Be sure to have a parent with `position: relative` on it for tooltip positioning. In the example below, our column classes have this already, but your project may require an alternative setup.
 
 {{< example >}}
-<form class="row g-3" data-bs-toggle="form-validation" data-bs-type="tooltip" >
+<form class="row g-3" data-bs-toggle="form" data-bs-type="tooltip" >
   <div class="col-md-4 position-relative">
     <label for="validationTooltip01" class="form-label">First name</label>
     <input type="text" class="form-control" id="validationTooltip01" value="Mark" required data-bs-valid="Looks good!">
@@ -333,3 +333,73 @@ Used to iterate over `$form-validation-states` map values to generate our valida
 ### Customizing
 
 Validation states can be customized via Sass with the `$form-validation-states` map. Located in our `_variables.scss` file, this Sass map is how we generate the default `valid`/`invalid` validation states. Included is a nested map for customizing each state's color, icon, tooltip color, and focus shadow. While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.
+
+
+## Usage
+### Via data attributes
+
+To easily add form validation behavior to you form, add `data-bs-toggle="form"` attribute to the `<form>` element.
+
+### Via JavaScript
+
+Enable manually with:
+
+```js
+const formElementList = document.querySelectorAll('form')
+const formList = [...formElementList].map(formEl => new bootstrap.Form(formEl))
+```
+
+### Options
+
+#### Form
+{{< bs-table "table" >}}
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `type` | string | `feedback` | You may pick the kind of feedback. Acceptable values `tooltip` or `feedback` |
+| `validateCallback` | function, null | `null` | A callback to execute while trying to check for errors. Can be use for ajax submissions/validations. |
+{{< /bs-table >}}
+
+
+#### Field
+{{< bs-table "table" >}}
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `invalid` | string | `''` | invalid message to append |
+| `valid` | string | `''` | valid message to append |
+{{< /bs-table >}}
+
+### Methods
+
+
+You can create a form instance using the constructor, for example:
+
+```js
+const bsForm = new bootstrap.Form('#myForm', { type: 'tooltip' })
+```
+
+#### Form
+{{< bs-table "table" >}}
+| Method | Description |
+| --- | --- |
+| `getInstance` | *Static* method which allows you to get the form instance associated with a DOM element. |
+| `getOrCreateInstance` | *Static* method which allows you to get the form instance associated with a DOM element, or create a new one in case it wasn't initialized. |
+| `getElement` | Returns the DOM element of the instance. |
+| `getFields` | Returns all form-fields instances of the form. Array\<FormField\>. |
+| `getField('name')` | Searches and return the requested FormField instance or undefined. |
+| `clear` | Clears all the form validation results. |
+| `validate` | Activates validation process.  |
+{{< /bs-table >}}
+
+#### Field
+{{< bs-table "table" >}}
+| Method | Description |
+| --- | --- |
+| `getInstance` | *Static* method which allows you to get the form Field instance associated with a DOM element |
+| `getOrCreateInstance` | *Static* method which allows you to get the form Field instance associated with a DOM element, or create a new one in case it wasn't initialized |
+| `getElement` | Returns the DOM element of the instance. |
+| `clearAppended` | Clears any appended messages from field. |
+| `appendError(message)` | Appends the given message as an error feedback. In case we do not provide a message, it fallbacks to the configuration given `invalid` message. |
+| `appendSuccess(message)` | Appends the given message as a success feedback. In case we do not provide a message, it fallbacks to the configuration given `valid` message. |
+| `appendFeedback(message)` | Appends the given message as a simple info feedback. |
+| `name` | returns the name (fallback to id) of the field as unique identifier between form elements. |
+{{< /bs-table >}}

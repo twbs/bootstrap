@@ -20,15 +20,13 @@ const CLASS_FIELD_SUCCESS = 'is-valid'
 
 const ARIA_DESCRIBED_BY = 'aria-describedby'
 const Default = {
-  invalid: '', // invalid message to add
-  name: null,
-  valid: '', // valid message to add
+  invalid: '', // invalid message to append
+  valid: '', // valid message to append
   type: 'feedback' // or tooltip
 }
 
 const DefaultType = {
   invalid: 'string',
-  name: 'string',
   valid: 'string',
   type: 'string'
 }
@@ -68,10 +66,6 @@ class FormField extends BaseComponent {
 
   static get MessageTypes() {
     return MessageTypes
-  }
-
-  getElement() {
-    return this._element
   }
 
   clearAppended() {
@@ -121,6 +115,10 @@ class FormField extends BaseComponent {
     const describedBy = `${this._initialDescribedBy} ${feedbackElement.id}`.trim()
     this._element.setAttribute(ARIA_DESCRIBED_BY, describedBy)
     return true
+  }
+
+  name() {
+    return this._element.name || this._element.id
   }
 }
 
