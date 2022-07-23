@@ -2,7 +2,7 @@
 
 .bd-search {
   position: relative;
-  width: 100%;
+  // width: 100%;
 
   @include media-breakpoint-up(lg) {
     position: absolute;
@@ -57,6 +57,20 @@
       opacity: 1;
     }
   }
+
+  @include media-breakpoint-down(lg) {
+    &,
+    &:hover,
+    &:focus {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+    }
+    &:focus {
+      box-shadow: var(--docsearch-searchbox-shadow);
+    }
+  }
+
 }
 
 .DocSearch-Button-Keys {
