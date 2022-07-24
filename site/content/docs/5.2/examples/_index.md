@@ -16,7 +16,7 @@ aliases: "/examples/"
         <p>
           <strong>RTL is still experimental</strong> and will evolve with feedback. Spotted something or have an improvement to suggest?
         </p>
-        <p><a href="{{ $.Site.Params.repo }}/issues/new">Please open an issue.</a></p>
+        <p><a href="{{ $.Site.Params.repo }}/issues/new/choose">Please open an issue.</a></p>
       </div>
     {{ end -}}
   </div>
