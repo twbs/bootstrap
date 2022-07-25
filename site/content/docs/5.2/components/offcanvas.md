@@ -81,6 +81,8 @@ You can use a link with the `href` attribute, or a button with the `data-bs-targ
 
 ### Dark offcanvas
 
+{{< added-in "5.2.0" >}}
+
 Change the appearance of offcanvases with utilities to better match them to different contexts like dark navbars. Here we add `.text-bg-dark` to the `.offcanvas` and `.btn-close-white` to `.btn-close` for proper styling with a dark offcanvas. If you have dropdowns within, consider also adding `.dropdown-menu-dark` to `.dropdown-menu`.
 
 {{< example class="bd-example-offcanvas p-0 bg-light overflow-hidden" >}}
