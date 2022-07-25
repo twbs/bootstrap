@@ -143,6 +143,8 @@ Use the scaling classes for larger or smaller rounded corners. Sizes range from 
 
 ### Variables
 
+{{< added-in "5.2.0" >}}
+
 {{< scss-docs name="root-border-var" file="scss/_root.scss" >}}
 
 ### Sass variables
