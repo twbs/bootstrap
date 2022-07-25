@@ -17,7 +17,7 @@ Create custom `<input type="range">` controls with `.form-range`. The track (the
 
 ## Disabled
 
-Add the `disabled` boolean attribute on an input to give it a grayed out appearance and remove pointer events.
+Add the `disabled` boolean attribute on an input to give it a grayed out appearance, remove pointer events, and prevent focusing.
 
 {{< example >}}
 <label for="disabledRange" class="form-label">Disabled range</label>

@@ -90,6 +90,35 @@ Floating labels also support `.form-control-plaintext`, which can be helpful for
 </div>
 {{< /example >}}
 
+## Input groups
+
+Floating labels also support `.input-group`.
+
+{{< example >}}
+<div class="input-group mb-3">
+  <span class="input-group-text">@</span>
+  <div class="form-floating">
+    <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
+    <label for="floatingInputGroup1">Username</label>
+  </div>
+</div>
+{{< /example >}}
+
+When using `.input-group` and `.form-floating` along with form validation, the `-feedback` should be placed outside of the `.form-floating`, but inside of the `.input-group`. This means that the feedback will need to be shown using javascript.
+
+{{< example >}}
+<div class="input-group has-validation">
+  <span class="input-group-text">@</span>
+  <div class="form-floating is-invalid">
+    <input type="text" class="form-control is-invalid" id="floatingInputGroup2" placeholder="Username" required>
+    <label for="floatingInputGroup2">Username</label>
+  </div>
+  <div class="invalid-feedback">
+    Please choose a username.
+  </div>
+</div>
+{{< /example >}}
+
 ## Layout
 
 When working with the Bootstrap grid system, be sure to place form elements within column classes.

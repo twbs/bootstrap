@@ -21,7 +21,7 @@ describe('SelectorEngine', () => {
       expect(SelectorEngine.find('div', fixtureEl)).toEqual([div])
     })
 
-    it('should find elements globaly', () => {
+    it('should find elements globally', () => {
       fixtureEl.innerHTML = '<div id="test"></div>'
 
       const div = fixtureEl.querySelector('#test')

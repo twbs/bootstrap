@@ -46,11 +46,11 @@ Our default branch is for development of our Bootstrap 5 release. Head to the [`
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.2.0-beta1.zip)
+- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.2.0.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
-- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@v5.2.0-beta1`
-- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@v5.2.0-beta1`
-- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.2.0-beta1`
+- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@v5.2.0`
+- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@v5.2.0`
+- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.2.0`
 - Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap` Sass: `Install-Package bootstrap.sass`
 
 Read the [Getting started page](https://getbootstrap.com/docs/5.2/getting-started/introduction/) for information on the framework contents, templates, examples, and more.
@@ -145,7 +145,7 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 
 Bootstrap's documentation, included in this repo in the root directory, is built with [Hugo](https://gohugo.io/) and publicly hosted on GitHub Pages at <https://getbootstrap.com/>. The docs may also be run locally.
 
-Documentation search is powered by [Algolia's DocSearch](https://community.algolia.com/docsearch/). Working on our search? Be sure to set `debug: true` in `site/assets/js/search.js`.
+Documentation search is powered by [Algolia's DocSearch](https://docsearch.algolia.com/). Working on our search? Be sure to set `debug: true` in `site/assets/js/search.js`.
 
 ### Running documentation locally
 
