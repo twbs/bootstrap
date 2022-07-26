@@ -40,6 +40,14 @@ $utilities: map-merge(
       property: overflow,
       values: auto hidden visible scroll,
     ),
+    "overflow-x": (
+      property: overflow-x,
+      values: auto hidden visible scroll,
+    ),
+    "overflow-y": (
+      property: overflow-y,
+      values: auto hidden visible scroll,
+    ),
     // scss-docs-end utils-overflow
     // scss-docs-start utils-display
     "display": (
