@@ -22,6 +22,20 @@ $utilities: map-merge(
       )
     ),
     // scss-docs-end utils-float
+    // Object Fit utilities
+    // scss-docs-start utils-object-fit
+    "object-fit": (
+      responsive: true,
+      property: object-fit,
+      values: (
+        contain: contain,
+        cover: cover,
+        fill: fill,
+        scale: scale-down,
+        none: none,
+      )
+    ),
+    // scss-docs-end utils-object-fit
     // Opacity utilities
     // scss-docs-start utils-opacity
     "opacity": (
