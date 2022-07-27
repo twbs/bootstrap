@@ -13,12 +13,12 @@ import {
   isVisible,
   reflow,
   triggerTransitionEnd
-} from './util/index'
-import EventHandler from './dom/event-handler'
-import Manipulator from './dom/manipulator'
-import SelectorEngine from './dom/selector-engine'
-import Swipe from './util/swipe'
-import BaseComponent from './base-component'
+} from './util/index.js'
+import EventHandler from './dom/event-handler.js'
+import Manipulator from './dom/manipulator.js'
+import SelectorEngine from './dom/selector-engine.js'
+import Swipe from './util/swipe.js'
+import BaseComponent from './base-component.js'
 
 /**
  * Constants
