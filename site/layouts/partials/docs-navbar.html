@@ -1,21 +1,29 @@
 <header class="navbar navbar-expand-lg navbar-dark bd-navbar sticky-top">
   <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
     {{- if eq .Layout "docs" }}
+    <div class="bd-navbar-toggle">
       <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar" aria-controls="bdSidebar" aria-label="Toggle docs navigation">
         {{ partial "icons/hamburger.svg" (dict "class" "bi" "width" "24" "height" "24") }}
         <span class="d-none fs-6 pe-1">Browse</span>
       </button>
+    </div>
     {{- else }}
-      <div class="d-lg-none" style="width: 2.25rem;"></div>
+      <div class="d-lg-none" style="width: 1.5rem;"></div>
     {{- end }}
 
     <a class="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="Bootstrap">
       {{ partial "icons/bootstrap-white-fill.svg" (dict "class" "d-block my-1" "width" "40" "height" "32") }}
     </a>
 
-    <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Toggle navigation">
-      <svg class="bi" aria-hidden="true"><use xlink:href="#three-dots"></use></svg>
-    </button>
+    <div class="d-flex">
+      {{ if eq .Layout "docs" }}
+        <div class="bd-search" id="docsearch" data-bd-docs-version="{{ .Site.Params.docs_version }}"></div>
+      {{ end }}
+
+      <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Toggle navigation">
+        <svg class="bi" aria-hidden="true"><use xlink:href="#three-dots"></use></svg>
+      </button>
+    </div>
 
     <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
       <div class="offcanvas-header px-4 pb-0">
@@ -44,12 +52,6 @@
         </ul>
 
         <hr class="d-lg-none text-white-50">
-
-        {{ if eq .Layout "docs" }}
-        <div class="bd-search" id="docsearch" data-bd-docs-version="{{ .Site.Params.docs_version }}"></div>
-
-        <hr class="d-lg-none text-white-50">
-        {{ end }}
 
         <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
           <li class="nav-item col-6 col-lg-auto">

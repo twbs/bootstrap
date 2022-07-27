@@ -4,6 +4,12 @@
   background-image: linear-gradient(to bottom, rgba(var(--bd-violet-rgb), 1), rgba(var(--bd-violet-rgb), .95));
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15), inset 0 -1px 0 rgba(0, 0, 0, .15);
 
+  .bd-navbar-toggle {
+    @include media-breakpoint-down(lg) {
+      width: 4.25rem;
+    }
+  }
+
   .navbar-toggler {
     padding: 0;
     margin-right: -.5rem;
