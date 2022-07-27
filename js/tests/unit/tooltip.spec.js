@@ -423,7 +423,7 @@ describe('Tooltip', () => {
     it('should destroy a tooltip and reset it\'s initial title', () => {
       fixtureEl.innerHTML = [
         '<span id="tooltipWithTitle" rel="tooltip" title="tooltipTitle"></span>',
-        '<span id="tooltipWithOutTitle" rel="tooltip" data-bs-title="tooltipTitle"></span>'
+        '<span id="tooltipWithoutTitle" rel="tooltip" data-bs-title="tooltipTitle"></span>'
       ].join('')
 
       const tooltipWithTitleEl = fixtureEl.querySelector('#tooltipWithTitle')
@@ -432,11 +432,11 @@ describe('Tooltip', () => {
       tooltip.dispose()
       expect(tooltipWithTitleEl.getAttribute('title')).toBe('tooltipTitle')
 
-      const tooltipWithOutTitleEl = fixtureEl.querySelector('#tooltipWithOutTitle')
+      const tooltipWithoutTitleEl = fixtureEl.querySelector('#tooltipWithoutTitle')
       const tooltip2 = new Tooltip('#tooltipWithTitle')
-      expect(tooltipWithOutTitleEl.getAttribute('title')).toBeNull()
+      expect(tooltipWithoutTitleEl.getAttribute('title')).toBeNull()
       tooltip2.dispose()
-      expect(tooltipWithOutTitleEl.getAttribute('title')).toBeNull()
+      expect(tooltipWithoutTitleEl.getAttribute('title')).toBeNull()
     })
   })
 
