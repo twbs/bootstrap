@@ -144,7 +144,7 @@ describe('ScrollSpy', () => {
       expect(scrollSpy._observer.thresholds).toEqual([1])
     })
 
-    it('should respect threshold option mark-up', () => {
+    it('should respect threshold option markup', () => {
       fixtureEl.innerHTML = [
         '<ul id="navigation" class="navbar">',
         '   <a class="nav-link active" id="one-link" href="#">One</a>' +
