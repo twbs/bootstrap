@@ -506,51 +506,51 @@
  */
 .has-warning .select2-dropdown,
 .has-warning .select2-selection {
-  border-color: #1b1d30;
+  border-color: #f7a35c;
 }
 .has-warning .select2-container--focus .select2-selection,
 .has-warning .select2-container--open .select2-selection {
-  border-color: #09090f;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #404471;
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #404471;
+  border-color: #f5882b;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #fcdabd;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #fcdabd;
 }
 .has-warning.select2-drop-active {
-  border-color: #09090f;
+  border-color: #f5882b;
 }
 .has-warning.select2-drop-active.select2-drop.select2-drop-above {
-  border-top-color: #09090f;
+  border-top-color: #f5882b;
 }
 .has-error .select2-dropdown,
 .has-error .select2-selection {
-  border-color: #fff;
+  border-color: #d9534f;
 }
 .has-error .select2-container--focus .select2-selection,
 .has-error .select2-container--open .select2-selection {
-  border-color: #e6e6e6;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #fff;
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #fff;
+  border-color: #c9302c;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #eba5a3;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #eba5a3;
 }
 .has-error.select2-drop-active {
-  border-color: #e6e6e6;
+  border-color: #c9302c;
 }
 .has-error.select2-drop-active.select2-drop.select2-drop-above {
-  border-top-color: #e6e6e6;
+  border-top-color: #c9302c;
 }
 .has-success .select2-dropdown,
 .has-success .select2-selection {
-  border-color: #1b1d30;
+  border-color: #5cb85c;
 }
 .has-success .select2-container--focus .select2-selection,
 .has-success .select2-container--open .select2-selection {
-  border-color: #09090f;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #404471;
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #404471;
+  border-color: #449d44;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #a3d7a3;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #a3d7a3;
 }
 .has-success.select2-drop-active {
-  border-color: #09090f;
+  border-color: #449d44;
 }
 .has-success.select2-drop-active.select2-drop.select2-drop-above {
-  border-top-color: #09090f;
+  border-top-color: #449d44;
 }
 /**
  * Select2 widgets in Bootstrap Input Groups
