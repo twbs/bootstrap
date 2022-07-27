@@ -158,6 +158,7 @@ describe('ScrollSpy', () => {
         target: '#navigation'
       })
 
+      // See https://stackoverflow.com/a/45592926
       const expectToBeCloseToArray = (actual, expected) => {
         expect(actual.length).toBe(expected.length)
         for (const x of actual) {
