@@ -48,10 +48,9 @@ module:
       target:           static/favicon.ico
 
 params:
-  description:          "The most popular HTML, CSS, and JS library in the world."
+  subtitle:             "The most popular HTML, CSS, and JS library in the world."
+  description:          "Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins."
   authors:              "Mark Otto, Jacob Thornton, and Bootstrap contributors"
-  social_image_path:    /docs/5.2/assets/brand/bootstrap-social.png
-  social_logo_path:     /docs/5.2/assets/brand/bootstrap-social-logo.png
 
   current_version:      "5.2.0"
   current_ruby_version: "5.2.0"
