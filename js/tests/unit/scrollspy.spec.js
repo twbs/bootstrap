@@ -126,6 +126,50 @@ describe('ScrollSpy', () => {
       expect(scrollSpy._rootElement).toBeNull()
     })
 
+    it('should respect threshold option', () => {
+      fixtureEl.innerHTML = [
+        '<ul id="navigation" class="navbar">',
+        '   <a class="nav-link active" id="one-link" href="#">One</a>' +
+        '</ul>',
+        '<div id="content">',
+        '  <div id="one-link">test</div>',
+        '</div>'
+      ].join('')
+
+      const scrollSpy = new ScrollSpy('#content', {
+        target: '#navigation',
+        threshold: [1]
+      })
+
+      expect(scrollSpy._observer.thresholds).toEqual([1])
+    })
+
+    it('should respect threshold option markup', () => {
+      fixtureEl.innerHTML = [
+        '<ul id="navigation" class="navbar">',
+        '   <a class="nav-link active" id="one-link" href="#">One</a>' +
+        '</ul>',
+        '<div id="content" data-bs-threshold="0,0.2,1">',
+        '  <div id="one-link">test</div>',
+        '</div>'
+      ].join('')
+
+      const scrollSpy = new ScrollSpy('#content', {
+        target: '#navigation'
+      })
+
+      // See https://stackoverflow.com/a/45592926
+      const expectToBeCloseToArray = (actual, expected) => {
+        expect(actual.length).toBe(expected.length)
+        for (const x of actual) {
+          const i = actual.indexOf(x)
+          expect(x).withContext(`[${i}]`).toBeCloseTo(expected[i])
+        }
+      }
+
+      expectToBeCloseToArray(scrollSpy._observer.thresholds, [0, 0.2, 1])
+    })
+
     it('should not take count to not visible sections', () => {
       fixtureEl.innerHTML = [
         '<nav id="navigation" class="navbar">',

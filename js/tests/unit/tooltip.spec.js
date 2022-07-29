@@ -419,6 +419,25 @@ describe('Tooltip', () => {
         tooltip.show()
       })
     })
+
+    it('should destroy a tooltip and reset it\'s initial title', () => {
+      fixtureEl.innerHTML = [
+        '<span id="tooltipWithTitle" rel="tooltip" title="tooltipTitle"></span>',
+        '<span id="tooltipWithoutTitle" rel="tooltip" data-bs-title="tooltipTitle"></span>'
+      ].join('')
+
+      const tooltipWithTitleEl = fixtureEl.querySelector('#tooltipWithTitle')
+      const tooltip = new Tooltip('#tooltipWithTitle')
+      expect(tooltipWithTitleEl.getAttribute('title')).toBeNull()
+      tooltip.dispose()
+      expect(tooltipWithTitleEl.getAttribute('title')).toBe('tooltipTitle')
+
+      const tooltipWithoutTitleEl = fixtureEl.querySelector('#tooltipWithoutTitle')
+      const tooltip2 = new Tooltip('#tooltipWithTitle')
+      expect(tooltipWithoutTitleEl.getAttribute('title')).toBeNull()
+      tooltip2.dispose()
+      expect(tooltipWithoutTitleEl.getAttribute('title')).toBeNull()
+    })
   })
 
   describe('show', () => {
