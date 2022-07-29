@@ -34,7 +34,7 @@ Adjust the `overflow` property on the fly with four default values and classes. 
 
 ## Vertical and Horizontal Overflow
 
-Specify the actual behaviour of overflowing content within the horizontal direction <i>(x-axis)</i> or vertical direction <i>(y-axis)</i> of the element. Classes can be combined for various effects as you need.
+Specify how the overflowing content within the horizontal direction <i>(x-axis)</i> or vertical direction <i>(y-axis)</i> of the element should behave. Classes can be combined for various effects as you need.
 
 ### Overflow-x
 
@@ -69,7 +69,7 @@ Adjust the `overflow-x` property with four default values and classes. These wil
 
 ### Overflow-y
 
-Adjust the `overflow-y` property with four default values and classes. These will only affect the overflow of content vertical:
+Adjust the `overflow-y` property with four default values and classes. These will only affect the overflow of content vertically:
 
 <div class="bd-example d-md-flex">
   <div class="overflow-y-auto p-3 mb-3 mb-md-0 me-md-3 bg-light w-100" style="max-width: 200px; max-height: 100px;">

@@ -32,7 +32,7 @@ Add the `object-fit-{value}` class to the [replaced element](https://developer.m
 
 ## Responsive
 
-Responsive variations also exist for each `object-fit` value using the format `.object-fit-{breakpoint}-{value}`, for the following breakpoint abbreations: `sm`, `md`, `lg`, `xl`, and `xxl`. Classes can be combined for various effects as you need.
+Responsive variations also exist for each `object-fit` value using the format `.object-fit-{breakpoint}-{value}`, for the following breakpoint abbreviations: `sm`, `md`, `lg`, `xl`, and `xxl`. Classes can be combined for various effects as you need.
 
 
 {{< example class="d-flex overflow-auto" >}}
