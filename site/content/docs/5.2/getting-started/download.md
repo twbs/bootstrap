@@ -19,7 +19,7 @@ This doesn't include documentation, source files, or any optional JavaScript dep
 
 ## Source files
 
-Compile Bootstrap with your own asset pipeline by downloading our source Sass, JavaScript, and documentation files. This option requires some additional tooling:
+Precompile Bootstrap with your own asset pipeline by downloading our source Sass, JavaScript, and documentation files. This option requires some additional tooling:
 
 - [Sass compiler]({{< docsref "/getting-started/contribute#sass" >}}) for compiling Sass source files into CSS files
 - [Autoprefixer](https://github.com/postcss/autoprefixer) for CSS vendor prefixing
@@ -52,7 +52,7 @@ If you're using our compiled JavaScript and prefer to include Popper separately,
 
 ## Package managers
 
-Pull in Bootstrap's **source files** into nearly any project with some of the most popular package managers. No matter the package manager, Bootstrap will **require a [Sass compiler]({{< docsref "/getting-started/contribute#sass" >}}) and [Autoprefixer](https://github.com/postcss/autoprefixer)** for a setup that matches our official compiled versions.
+Pull in Bootstrap's **source files** into nearly any project with some of the most popular package managers. No matter the package manager, Bootstrap will **require a [Sass compiler]({{< docsref "/getting-started/contribute#sass" >}}) and [Autoprefixer](https://github.com/postcss/autoprefixer)** for a setup that matches our official precompiled versions.
 
 ### npm
 
@@ -68,7 +68,7 @@ The `bootstrap` module itself exports all of our plugins. You can manually load 
 Bootstrap's `package.json` contains some additional metadata under the following keys:
 
 - `sass` - path to Bootstrap's main [Sass](https://sass-lang.com/) source file
-- `style` - path to Bootstrap's non-minified CSS that's been precompiled using the default settings (no customization)
+- `style` - path to Bootstrap's non-minified CSS that's been compiled using the default settings (no customization)
 
 {{< callout info >}}
 {{< partial "callout-info-npm-starter.md" >}}
