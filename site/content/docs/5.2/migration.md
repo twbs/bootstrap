@@ -7,6 +7,14 @@ aliases: "/migration/"
 toc: true
 ---
 
+## v5.3.0
+
+### Improved markup for progress bars
+
+**We've improved our markup for [progress bars]({{< docsref "/components/progress" >}}).** With our original progress bar structure, bars with a zero value were _not_ announced by some screen readers (NVDA, VoiceOver on iOS). `role="progressbar"` and the relevant `aria-*` attributes are now on the outer `.progress` element, leaving the `.progress-bar` purely for the visual presentation of the bar and optional label. We've also introduced a new `.progress-stacked` class to more logically wrap [multiple progress bars]({{< docsref "/components/progress#multiple-bars" >}}) into a single stacked progress bar.
+
+While we recommend adopting the new markup for improved compatibility with all screen readers, note that the legacy progress bar structure will continue to work as before.
+
 ## v5.2.0
 
 <hr class="mb-4">
