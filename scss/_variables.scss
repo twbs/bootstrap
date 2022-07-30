@@ -1333,7 +1333,7 @@ $popover-box-shadow:                $box-shadow !default;
 
 $popover-header-font-size:          $font-size-base !default;
 $popover-header-bg:                 shade-color($popover-bg, 6%) !default;
-$popover-header-color:              var(--#{$prefix}heading-color) !default;
+$popover-header-color:              $headings-color !default;
 $popover-header-padding-y:          .5rem !default;
 $popover-header-padding-x:          $spacer !default;
 

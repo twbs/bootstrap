@@ -151,7 +151,7 @@ For improved cross-browser rendering, we use [Reboot]({{< docsref "/content/rebo
 
 ## Community
 
-Stay up to date on the development of Bootstrap and reach out to the community with these helpful resources.
+Stay up-to-date on the development of Bootstrap and reach out to the community with these helpful resources.
 
 - Read and subscribe to [The Official Bootstrap Blog]({{< param blog >}}).
 - Ask and explore [our GitHub Discussions](https://github.com/twbs/bootstrap/discussions).
