@@ -1,0 +1,115 @@
+/* CSS Styles */
+body{
+    font-family: 'Roboto Slab', serif;
+}
+h1 {
+    color:dodgerblue;
+    font-family: 'Fraunces', serif;
+}
+
+.nav-link {
+    color:blueviolet;
+}
+
+.cards, .nav {
+    padding: 20px 0px;
+}
+/* Header Styles */
+.heroHeader {
+    height: 500px;
+    width:auto;
+    display:grid;
+    align-items: end;
+    grid-template-columns: 1/1/1;
+    grid-template-rows: 1fr 200px 100px;
+    grid-template-areas: 
+    ". . ."
+    "headline . heroImage"
+    "headline2 . heroImage"
+    ;
+  }
+  .heroImage{
+    grid-area:heroImage;
+    padding:20px;
+  }
+  .headline{
+    grid-row: 2;
+    grid-column: span 3/-1;
+    position:auto;
+    z-index:2;
+    padding-bottom:32px;
+  }
+  .headline2{
+    grid-area: headline2;
+    grid-column: span 2/-1;
+    z-index:2;
+  }
+
+/* Footer Styles */
+.footer {
+    grid-area: footer;
+    height: 300px;
+    width:auto;
+    display:grid;
+    grid-template-columns: 1/1;
+    grid-template-rows: 1/1;
+    grid-template-areas:
+    "footerLeft footerRightTop"
+    "footerLeft footerRightBottom";
+  }
+  
+  .footerLeft{
+    grid-area: footerLeft;
+  }
+  
+  .footerLinkEa {
+    padding: 32px 0px 0px 0px;
+  }
+  
+  .footerRightTop {
+    grid-area: footerRightTop;
+    display:grid;
+    margin-top:32px;
+    grid-template-columns: 80px 80px 80px;
+    grid-template-rows: 44px 80px;
+    grid-template-areas:
+    "footerHeadline footerHeadline footerHeadline"
+    "linkedIn dribbble gitHub";
+  }
+  
+  .footerHeadline{
+    grid-area: footerHeadline;
+  }
+  
+  .linkedIn {
+    grid-area: linkedIn;
+  
+  }
+  
+  .dribble {
+    grid-area: dribbble;
+  }
+  
+  .gitHub {
+    grid-area: gitHub;
+  }
+  
+  .footerRightBottom {
+    grid-area: footerRightBottom;
+    display:grid;
+    grid-template-columns: 1;
+    grid-template-rows: 32px 32px;
+    grid-template-areas:
+    "copyright1"
+    "copyright2";
+  }
+  
+  .copyright1 {
+    grid-area:copyright1;
+  }
+  
+  .copyright2 {
+    grid-area:copyright2;
+    font-size: .8em !important;
+  }
+  
