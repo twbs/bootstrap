@@ -120,10 +120,13 @@
     $validation-messages: $validation-messages + ":not(." + unquote($state) + "-tooltip)" + ":not(." + unquote($state) + "-feedback)";
   }
 
-  > :not(:first-child):not(.dropdown-menu):not(.form-floating)#{$validation-messages},
+  > :not(:first-child):not(.dropdown-menu)#{$validation-messages} {
+    margin-left: -$input-border-width;
+    @include border-start-radius(0);
+  }
+
   > .form-floating:not(:first-child) > .form-control,
   > .form-floating:not(:first-child) > .form-select {
-    margin-left: -$input-border-width;
     @include border-start-radius(0);
   }
 }
