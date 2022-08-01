@@ -2,47 +2,65 @@
 body{
     font-family: 'Roboto Slab', serif;
 }
-h1 {
-    color:dodgerblue;
+h1, h5 {
     font-family: 'Fraunces', serif;
+    font-weight: 900 !important;
 }
 
-.nav-link {
-    color:blueviolet;
+h5 {
+  font-size: 1.6rem !important;
 }
 
-.cards, .nav {
-    padding: 20px 0px;
+nav {
+    padding: 100px 0px;
+    background-color: antiquewhite;
 }
+
+.cards, .mainParagraph {
+  padding: 40px 0px;
+}
+
+.nav-pills .nav-link.active{
+  background-color:darkblue;
+}
+
 /* Header Styles */
+.jumbotron.heroHeader {
+  padding: 0px !important;
+  background:none !important;
+}
 .heroHeader {
     height: 500px;
     width:auto;
     display:grid;
     align-items: end;
-    grid-template-columns: 1/1/1;
-    grid-template-rows: 1fr 200px 100px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 200px 80px;
     grid-template-areas: 
     ". . ."
-    "headline . heroImage"
+    "headline . ."
     "headline2 . heroImage"
     ;
   }
   .heroImage{
     grid-area:heroImage;
-    padding:20px;
+    position:auto;
+    z-index: 1;
+    grid-column: span 1/-1;
+    opacity: 50%;
   }
   .headline{
     grid-row: 2;
     grid-column: span 3/-1;
     position:auto;
     z-index:2;
-    padding-bottom:32px;
   }
   .headline2{
     grid-area: headline2;
-    grid-column: span 2/-1;
+    grid-column: span 3/-1;
+    margin-top: 50px;
     z-index:2;
+    align-content: flex-start;
   }
 
 /* Footer Styles */
@@ -63,7 +81,7 @@ h1 {
   }
   
   .footerLinkEa {
-    padding: 32px 0px 0px 0px;
+    padding: 32px 100px 0px 0px;
   }
   
   .footerRightTop {

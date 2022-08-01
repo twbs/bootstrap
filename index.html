@@ -9,41 +9,75 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Roboto+Slab:wght@300;400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;900&family=Roboto+Slab&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <div class="container">  
-    <nav><ul class="nav nav-pills">
-        <li class="nav-item">
-          <a class="nav-link active" href="#" tabindex="0">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" tabindex="0">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" tabindex="0">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+      <button class="navbar-toggler" tabindex="0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#" tabindex="0">Case Studies <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" tabindex="0">Presentations and Papers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" tabindex="0">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" tabindex="0">Contact</a>
+          </li>
+        </ul>
+      </div>
     </nav>
    
     <header>
       <div class="jumbotron heroHeader">
         <h1 class="display-4 headline">Hi, I'm Kate Garrigan.</h1>
-        <p class="lead headline2">I'm a product designer and startup founder in Denver, Colorado.</p>
+        <h5 class="lead headline2">I'm a product designer and startup founder in Denver, Colorado.</h5>
         <div class="heroImage"><img src="images/backgroundimage.png" alt="illustration of a woman> sitting in front of mountains"/></div>
       </div>
 
-      <div>
+      <div class="mainParagraph">
         <p>I specialize in incorporating new, disruptive technologies into existing business paradigms – like bringing machine learning and AI to commercial real estate and educational apps and digital content to publishing. I’ve even helped bring blockchain to the government. (I like to do other stuff, too.)</p>
         <p>I’ve designed blockchain products, machine learning applications and AI-based software, as well as more traditional web, app, and digital book products. I’d love to chat!</p>
       </div>
     </header>  
 
     <section>
+      <div class="card-deck cards">
+        <div class="card" tabindex="0">
+          <img src="images/testimage.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Teaching the Machine (Learning Model)</h5>
+            <p class="card-text">Early stage startup BlueSuit needed a way for its data extraction platform to learn from external user corrections...</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Read more</a>
+          </div>
+        </div>
+        <div class="card" tabindex="0">
+          <img src="images/sellingtheapi.png"  class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Ensuring a Useful and Usable API</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+          </div>
+        </div>
+        <div class="card" tabindex="0">
+          <img src="images/sellingtheapi.png"  class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Selling the API</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+          </div>
+        </div>
+      </div>
       <div class="card-deck cards">
         <div class="card" tabindex="0">
           <img src="images/backgroundimage.png" class="card-img-top" alt="...">
@@ -70,12 +104,39 @@
           </div>
         </div>
       </div>
-      </section>
+      <div class="card-deck cards">
+        <div class="card" tabindex="0">
+          <img src="images/backgroundimage.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Teaching the Machine (Learning Model)</h5>
+            <p class="card-text">Early stage startup BlueSuit needed a way for its data extraction platform to learn from external user corrections...</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Read more</a>
+          </div>
+        </div>
+        <div class="card" tabindex="0">
+          <img src="images/backgroundimage.png"  class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Ensuring a Useful and Usable API</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+          </div>
+        </div>
+        <div class="card" tabindex="0">
+          <img src="images/backgroundimage.png"  class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Selling the API</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+          </div>
+        </div>
+      </div>
+    
+    </section>
 
     <footer>
       <div class="footer">
         <div class="footerLeft">
-          <div class="footerLinkEa"><a href="#" tabindex="0">Home</a></div>
+          <div class="footerLinkEa"><a href="#" tabindex="0">Case Studies</a></div>
           <div class="footerLinkEa"><a href="#" tabindex="0">Presentations and Papers</a></div>
           <div class="footerLinkEa"><a href="#" tabindex="0">About Me</a></div>
           <div class="footerLinkEa"><a href="#" tabindex="0">Contact</a></div>
@@ -87,8 +148,8 @@
           <div class="gitHub"><a href="https://github.com/frac-ture" tabindex="0"><img src="images/github.png" alt="gitHub logo"></a></div>
         </div>
         <div class="footerRightBottom">
-          <div class="copyright1">I made this</div>
-          <div class="copyright2">&copy; Kate Garrigan, 2012 - 2023</div>
+          <div class="copyright1">I made this site</div>
+          <div class="copyright2">&copy; Kate Garrigan, 2012 - 2023, header image from <a href="http://undraw.co" tabindex="0">unDraw</a> and altered by me</div>
           </div>
         </div>
       </div>
