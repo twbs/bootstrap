@@ -15,6 +15,7 @@
   --#{$prefix}tooltip-arrow-height: #{$tooltip-arrow-height};
   // scss-docs-end tooltip-css-vars
 
+  position: absolute; //It is covered from popper, but we keep it to avoid doc overflowing in edge cases
   z-index: var(--#{$prefix}tooltip-zindex);
   display: block;
   padding: var(--#{$prefix}tooltip-arrow-height);

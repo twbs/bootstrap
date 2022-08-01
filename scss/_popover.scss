@@ -22,6 +22,7 @@
   --#{$prefix}popover-arrow-border: var(--#{$prefix}popover-border-color);
   // scss-docs-end popover-css-vars
 
+  position: absolute; //It is covered from popper, but we keep it to avoid doc overflowing in edge cases
   z-index: var(--#{$prefix}popover-zindex);
   display: block;
   max-width: var(--#{$prefix}popover-max-width);
