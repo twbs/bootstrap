@@ -104,7 +104,8 @@
     border-color: var(--#{$prefix}list-group-active-border-color);
   }
 
-  & + & {
+  // stylelint-disable-next-line scss/selector-no-redundant-nesting-selector
+  & + .list-group-item {
     border-top-width: 0;
 
     &.active {
