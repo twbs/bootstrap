@@ -424,7 +424,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
   <!-- Navbar content -->
 </nav>
 
-<nav class="navbar" style="background-color: #e3f2fd;">
+<nav class="navbar" style="background-color: #e3f2fd !important;">
   <!-- Navbar content -->
 </nav>
 ```
