@@ -23,7 +23,7 @@
   // Instantiate all tooltips in a docs or StackBlitz page
   document.querySelectorAll('[data-bs-toggle="tooltip"]')
     .forEach(tooltip => {
-      new bootstrap.Tooltip(tooltip, { trigger: 'click' })
+      new bootstrap.Tooltip(tooltip)
     })
 
   // --------
