@@ -18,6 +18,10 @@
     {{ partial "favicons" . }}
 
     <style>
+      body {
+        background-color: #f5f5f5;
+      }
+
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -30,6 +34,50 @@
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
         }
+      }
+
+      main {
+        max-width: 1420px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .b-ex {
+        display: flex;
+        flex-direction: column;
+        min-height: 200px;
+        justify-content: center;
+        border: var(--bs-border-style) var(--bs-border-color-translucent);
+        border-width: var(--bs-border-width) 0;
+        background-color: #fff;
+      }
+
+      @media (min-width: 768px) {
+        .b-ex {
+          margin: 0 1.5rem 2rem;
+          border-width: var(--bs-border-width);
+          border-radius: var(--bs-border-radius-lg);
+          box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .075), 0 .5rem 1.5rem rgba(0, 0, 0, .075);
+        }
+      }
+
+      .b-ex-btns .btn-link {
+        display: inline-flex;
+      }
+      .b-ex-btns .btn-link:hover > .d-none-hover { display: none !important; }
+      .b-ex-btns .btn-link:hover > .d-block-hover { display: block !important; }
+
+      .btn-bd-light {
+        --bs-btn-color: var(--bs-gray-600);
+        --bs-btn-bg: var(--bs-white);
+        --bs-btn-border-color: var(--bs-gray-400);
+        --bs-btn-hover-color: var(--bs-gray-700);
+        --bs-btn-hover-border-color: var(--bs-gray-500);
+        /*--bs-btn-active-color: var(--bd-violet);*/
+        --bs-btn-active-bg: var(--bs-gray-200);
+        --bs-btn-active-border-color: var(--bs-gray-500);
+        --bs-btn-focus-border-color: var(--bs-primary);
+        --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
       }
 
       .b-example-divider {
@@ -76,6 +124,26 @@
     {{- end }}
   </head>
   <body{{ with .Page.Params.body_class }} class="{{ . }}"{{ end }}>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <symbol id="bootstrap" viewBox="0 0 118 94">
+        <title>Bootstrap</title>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"></path>
+      </symbol>
+      <symbol id="clipboard" viewBox="0 0 16 16">
+        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+      </symbol>
+      <symbol id="clipboard-fill" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+      </symbol>
+      <symbol id="lightning-charge" viewBox="0 0 16 16">
+        <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41 4.157 8.5z"/>
+      </symbol>
+      <symbol id="lightning-charge-fill" viewBox="0 0 16 16">
+        <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
+      </symbol>
+    </svg>
+
     {{ .Content }}
 
     {{ if ne .Page.Params.include_js false -}}

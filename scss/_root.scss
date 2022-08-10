@@ -64,6 +64,10 @@
   --#{$prefix}border-radius-pill: #{$border-radius-pill};
   // scss-docs-end root-border-var
 
+  --#{$prefix}box-shadow: #{$box-shadow};
+  --#{$prefix}box-shadow-sm: #{$box-shadow-sm};
+  --#{$prefix}box-shadow-lg: #{$box-shadow-lg};
+
   --#{$prefix}link-color: #{$link-color};
   --#{$prefix}link-hover-color: #{$link-hover-color};
 

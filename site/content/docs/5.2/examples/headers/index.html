@@ -7,10 +7,6 @@ body_class: ""
 ---
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-  <symbol id="bootstrap" viewBox="0 0 118 94">
-    <title>Bootstrap</title>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"></path>
-  </symbol>
   <symbol id="home" viewBox="0 0 16 16">
     <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
   </symbol>
@@ -33,263 +29,344 @@ body_class: ""
 <main>
   <h1 class="visually-hidden">Headers examples</h1>
 
-  <div class="container">
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-        <span class="fs-4">Simple header</span>
+  <div class="d-flex align-items-center mt-4 mx-3 mb-2 mx-md-4">
+    <h2 class="h5 mb-0 text-muted">Simple header</h2>
+    <div class="ms-auto b-ex-btns">
+      <a href="#" class="btn btn-link btn-sm d-inline-flex align-items-center gap-1 link-secondary text-decoration-none">
+        <svg class="bi d-none-hover" width="16" height="16"><use xlink:href="#clipboard"/></svg>
+        <svg class="bi d-none d-block-hover" width="16" height="16"><use xlink:href="#clipboard-fill"/></svg>
+        Copy
       </a>
-
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-      </ul>
-    </header>
-  </div>
-
-  <div class="b-example-divider"></div>
-
-  <div class="container">
-    <header class="d-flex justify-content-center py-3">
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-      </ul>
-    </header>
-  </div>
-
-  <div class="b-example-divider"></div>
-
-  <div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+      <a href="#" class="btn btn-link btn-sm d-inline-flex align-items-center gap-1 link-secondary text-decoration-none">
+        <svg class="bi d-none-hover" width="16" height="16"><use xlink:href="#lightning-charge"/></svg>
+        <svg class="bi d-none d-block-hover" width="16" height="16"><use xlink:href="#lightning-charge-fill"/></svg>
+        StackBlitz
       </a>
-
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
-      </ul>
-
-      <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-primary me-2">Login</button>
-        <button type="button" class="btn btn-primary">Sign-up</button>
-      </div>
-    </header>
+    </div>
   </div>
 
-  <div class="b-example-divider"></div>
-
-  <header class="p-3 text-bg-dark">
+  <div class="b-ex">
     <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
-        </a>
-
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-        </ul>
-
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-        </form>
-
-        <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
-          <button type="button" class="btn btn-warning">Sign-up</button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="b-example-divider"></div>
-
-  <header class="p-3 mb-3 border-bottom">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
-        </a>
-
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Inventory</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Customers</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Products</a></li>
-        </ul>
-
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-        </form>
-
-        <div class="dropdown text-end">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-          </a>
-          <ul class="dropdown-menu text-small">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="b-example-divider"></div>
-
-  <header class="py-3 mb-3 border-bottom">
-    <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
-      <div class="dropdown">
-        <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
           <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+          <span class="fs-4">Simple header</span>
         </a>
-        <ul class="dropdown-menu text-small shadow">
-          <li><a class="dropdown-item active" href="#" aria-current="page">Overview</a></li>
-          <li><a class="dropdown-item" href="#">Inventory</a></li>
-          <li><a class="dropdown-item" href="#">Customers</a></li>
-          <li><a class="dropdown-item" href="#">Products</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Reports</a></li>
-          <li><a class="dropdown-item" href="#">Analytics</a></li>
+
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">About</a></li>
         </ul>
-      </div>
-
-      <div class="d-flex align-items-center">
-        <form class="w-100 me-3" role="search">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-        </form>
-
-        <div class="flex-shrink-0 dropdown">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-          </a>
-          <ul class="dropdown-menu text-small shadow">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="container-fluid pb-3">
-    <div class="d-grid gap-3" style="grid-template-columns: 1fr 2fr;">
-      <div class="bg-light border rounded-3">
-        <br><br><br><br><br><br><br><br><br><br>
-      </div>
-      <div class="bg-light border rounded-3">
-        <br><br><br><br><br><br><br><br><br><br>
-      </div>
+      </header>
     </div>
   </div>
 
-  <div class="b-example-divider"></div>
-
-  <nav class="py-2 bg-light border-bottom">
-    <div class="container d-flex flex-wrap">
-      <ul class="nav me-auto">
-        <li class="nav-item"><a href="#" class="nav-link link-dark px-2 active" aria-current="page">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Features</a></li>
-        <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Pricing</a></li>
-        <li class="nav-item"><a href="#" class="nav-link link-dark px-2">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link link-dark px-2">About</a></li>
-      </ul>
-      <ul class="nav">
-        <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Login</a></li>
-        <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Sign up</a></li>
-      </ul>
-    </div>
-  </nav>
-  <header class="py-3 mb-4 border-bottom">
-    <div class="container d-flex flex-wrap justify-content-center">
-      <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-        <span class="fs-4">Double header</span>
+  <div class="d-flex align-items-center mt-4 mx-3 mb-2 mx-md-4">
+    <h2 class="h5 mb-0 text-muted">Centered nav</h2>
+    <div class="ms-auto b-ex-btns">
+      <a href="#" class="btn btn-link btn-sm d-inline-flex align-items-center gap-1 link-secondary text-decoration-none">
+        <svg class="bi d-none-hover" width="16" height="16"><use xlink:href="#clipboard"/></svg>
+        <svg class="bi d-none d-block-hover" width="16" height="16"><use xlink:href="#clipboard-fill"/></svg>
+        Copy
       </a>
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
-        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-      </form>
+      <a href="#" class="btn btn-link btn-sm d-inline-flex align-items-center gap-1 link-secondary text-decoration-none">
+        <svg class="bi d-none-hover" width="16" height="16"><use xlink:href="#lightning-charge"/></svg>
+        <svg class="bi d-none d-block-hover" width="16" height="16"><use xlink:href="#lightning-charge-fill"/></svg>
+        StackBlitz
+      </a>
     </div>
-  </header>
+  </div>
 
-  <div class="b-example-divider"></div>
+  <div class="b-ex">
+    <div class="container">
+      <header class="d-flex justify-content-center py-3">
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+        </ul>
+      </header>
+    </div>
+  </div>
 
-  <header>
-    <div class="px-3 py-2 text-bg-dark">
-      <div class="container">
+  <div class="d-flex align-items-center mt-4 mx-3 mb-2 mx-md-4">
+    <h3>Dark justified header</h3>
+    <div class="btn-group ms-auto">
+      <a href="#" class="btn btn-bd-light btn-sm">Copy</a>
+      <a href="#" class="btn btn-bd-light btn-sm">Open in StackBlitz</a>
+    </div>
+  </div>
+
+  <div class="b-ex">
+    <div class="container">
+      <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+        </a>
+
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
+        </ul>
+
+        <div class="col-md-3 text-end">
+          <button type="button" class="btn btn-outline-primary me-2">Login</button>
+          <button type="button" class="btn btn-primary">Sign-up</button>
+        </div>
+      </header>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center mt-4 mx-3 mb-2 mx-md-4">
+    <h3>Dark header</h3>
+    <div class="btn-group ms-auto">
+      <a href="#" class="btn btn-bd-light btn-sm">Copy</a>
+      <a href="#" class="btn btn-bd-light btn-sm">Open in StackBlitz</a>
+    </div>
+  </div>
+
+  <div class="b-ex">
+    <div class="container">
+      <header class="p-3 text-bg-dark rounded-3">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
             <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
           </a>
 
-          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-            <li>
-              <a href="#" class="nav-link text-secondary">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"/></svg>
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"/></svg>
-                Dashboard
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"/></svg>
-                Orders
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"/></svg>
-                Products
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
-                Customers
-              </a>
-            </li>
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+          </ul>
+
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+          </form>
+
+          <div class="text-end">
+            <button type="button" class="btn btn-outline-light me-2">Login</button>
+            <button type="button" class="btn btn-warning">Sign-up</button>
+          </div>
+        </div>
+      </header>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center mt-4 mx-3 mb-2 mx-md-4">
+    <h3>Header with user dropdown</h3>
+    <div class="btn-group ms-auto">
+      <a href="#" class="btn btn-bd-light btn-sm">Copy</a>
+      <a href="#" class="btn btn-bd-light btn-sm">Open in StackBlitz</a>
+    </div>
+  </div>
+
+  <div class="b-ex">
+    <div class="container">
+      <header class="p-3 mb-3 border-bottom">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+          </a>
+
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Inventory</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Customers</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Products</a></li>
+          </ul>
+
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+          </form>
+
+          <div class="dropdown text-end">
+            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu text-small">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center mt-4 mx-3 mb-2 mx-md-4">
+    <h3>Header with app layout</h3>
+    <div class="btn-group ms-auto">
+      <a href="#" class="btn btn-bd-light btn-sm">Copy</a>
+      <a href="#" class="btn btn-bd-light btn-sm">Open in StackBlitz</a>
+    </div>
+  </div>
+
+  <div class="b-ex">
+    <header class="py-3 mb-3 border-bottom">
+      <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
+        <div class="dropdown">
+          <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+          </a>
+          <ul class="dropdown-menu text-small shadow">
+            <li><a class="dropdown-item active" href="#" aria-current="page">Overview</a></li>
+            <li><a class="dropdown-item" href="#">Inventory</a></li>
+            <li><a class="dropdown-item" href="#">Customers</a></li>
+            <li><a class="dropdown-item" href="#">Products</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Reports</a></li>
+            <li><a class="dropdown-item" href="#">Analytics</a></li>
           </ul>
         </div>
-      </div>
-    </div>
-    <div class="px-3 py-2 border-bottom mb-3">
-      <div class="container d-flex flex-wrap justify-content-center">
-        <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-        </form>
 
-        <div class="text-end">
-          <button type="button" class="btn btn-light text-dark me-2">Login</button>
-          <button type="button" class="btn btn-primary">Sign-up</button>
+        <div class="d-flex align-items-center">
+          <form class="w-100 me-3" role="search">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+          </form>
+
+          <div class="flex-shrink-0 dropdown">
+            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu text-small shadow">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container-fluid pb-3">
+      <div class="d-grid gap-3" style="grid-template-columns: 1fr 2fr;">
+        <div class="bg-light border rounded-3">
+          <br><br><br><br><br><br><br><br><br><br>
+        </div>
+        <div class="bg-light border rounded-3">
+          <br><br><br><br><br><br><br><br><br><br>
         </div>
       </div>
     </div>
-  </header>
+  </div>
 
-  <div class="b-example-divider"></div>
+  <div class="d-flex align-items-center mt-4 mx-3 mb-2 mx-md-4">
+    <h3>Stacked headers</h3>
+    <div class="btn-group ms-auto">
+      <a href="#" class="btn btn-bd-light btn-sm">Copy</a>
+      <a href="#" class="btn btn-bd-light btn-sm">Open in StackBlitz</a>
+    </div>
+  </div>
+
+  <div class="b-ex">
+    <nav class="py-2 bg-light border-bottom">
+      <div class="container d-flex flex-wrap">
+        <ul class="nav me-auto">
+          <li class="nav-item"><a href="#" class="nav-link link-dark px-2 active" aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Features</a></li>
+          <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Pricing</a></li>
+          <li class="nav-item"><a href="#" class="nav-link link-dark px-2">FAQs</a></li>
+          <li class="nav-item"><a href="#" class="nav-link link-dark px-2">About</a></li>
+        </ul>
+        <ul class="nav">
+          <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Login</a></li>
+          <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Sign up</a></li>
+        </ul>
+      </div>
+    </nav>
+    <header class="py-3 mb-4 border-bottom">
+      <div class="container d-flex flex-wrap justify-content-center">
+        <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+          <span class="fs-4">Double header</span>
+        </a>
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+        </form>
+      </div>
+    </header>
+  </div>
+
+
+  <div class="d-flex align-items-center mt-4 mx-3 mb-2 mx-md-4">
+    <h3>Stack header w/ icon nav</h3>
+    <div class="btn-group ms-auto">
+      <a href="#" class="btn btn-bd-light btn-sm">Copy</a>
+      <a href="#" class="btn btn-bd-light btn-sm">Open in StackBlitz</a>
+    </div>
+  </div>
+
+  <div class="b-ex">
+    <header>
+      <div class="px-3 py-2 text-bg-dark">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+              <li>
+                <a href="#" class="nav-link text-secondary">
+                  <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"/></svg>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"/></svg>
+                  Dashboard
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"/></svg>
+                  Orders
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"/></svg>
+                  Products
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
+                  Customers
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="px-3 py-2 border-bottom mb-3">
+        <div class="container d-flex flex-wrap justify-content-center">
+          <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+          </form>
+
+          <div class="text-end">
+            <button type="button" class="btn btn-bd-light text-dark me-2">Login</button>
+            <button type="button" class="btn btn-primary">Sign-up</button>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
 </main>
