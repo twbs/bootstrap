@@ -85,7 +85,7 @@
 
 .navbar-nav {
   // scss-docs-start navbar-nav-css-vars
-  --#{$prefix}nav-link-padding-x: 0;
+  --#{$prefix}nav-link-padding-x: #{$nav-link-padding-x};
   --#{$prefix}nav-link-padding-y: #{$nav-link-padding-y};
   @include rfs($nav-link-font-size, --#{$prefix}nav-link-font-size);
   --#{$prefix}nav-link-font-weight: #{$nav-link-font-weight};
