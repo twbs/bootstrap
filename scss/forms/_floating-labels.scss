@@ -57,6 +57,7 @@
     ~ label {
       opacity: $form-floating-label-opacity;
       transform: $form-floating-label-transform;
+      font-size: $form-floating-label-font-size;
     }
   }
   // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
@@ -64,6 +65,7 @@
     ~ label {
       opacity: $form-floating-label-opacity;
       transform: $form-floating-label-transform;
+      font-size: $form-floating-label-font-size;
     }
   }
 
