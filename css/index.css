@@ -1,4 +1,4 @@
-/* CSS Styles */
+/* Typography Styles */
 body{
     font-family: 'Roboto Slab', serif;
 }
@@ -11,15 +11,13 @@ h5 {
   font-size: 1.6rem !important;
 }
 
-nav {
-    padding: 100px 0px;
-    background-color: antiquewhite;
-}
 
-.cards, .mainParagraph {
-  padding: 40px 0px;
+/* Nav Styles */
+.navPosition {
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
-
 .nav-pills .nav-link.active{
   background-color:darkblue;
 }
@@ -63,31 +61,60 @@ nav {
     align-content: flex-start;
   }
 
+/* Card Styles */
+.card, .card-deck {
+  padding: 20px 0px;
+}
+
+.ghost {
+  width:33%;
+  height:10px;
+}
+
 /* Footer Styles */
-.footer {
-    grid-area: footer;
-    height: 300px;
-    width:auto;
-    display:grid;
-    grid-template-columns: 1/1;
-    grid-template-rows: 1/1;
+.mainFooter{
+  grid-area: mainFooter;
+  font-size: .8em;
+  margin-top: 50px;
+  margin-bottom: 16px;
+  display:grid;
+  grid-template-columns: col(3);
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+  "footerLeft2 footerLeft1 footerRightTop"
+  "footerLeft2 footerLeft1 footerRightBottom";
+}
+
+@media all and (max-width:870px) {
+  .mainFooter {
+    grid-template-columns: col(1);
+    grid-template-rows: row(4);
     grid-template-areas:
-    "footerLeft footerRightTop"
-    "footerLeft footerRightBottom";
+      "footerLeft1" 
+      "footerLeft2" 
+      "footerRightTop"
+      "footerRightBottom";
   }
-  
-  .footerLeft{
-    grid-area: footerLeft;
+}  
+
+  .footerLeft1{
+    grid-area: footerLeft1;
+    margin-right: 40px;
   }
-  
+
+  .footerLeft2{
+    grid-area: footerLeft2;
+    margin-right: 40px;
+
+  }
+
   .footerLinkEa {
-    padding: 32px 100px 0px 0px;
+    padding: 4px;
   }
-  
+
   .footerRightTop {
     grid-area: footerRightTop;
     display:grid;
-    margin-top:32px;
     grid-template-columns: 80px 80px 80px;
     grid-template-rows: 44px 80px;
     grid-template-areas:
@@ -130,4 +157,3 @@ nav {
     grid-area:copyright2;
     font-size: .8em !important;
   }
-  
