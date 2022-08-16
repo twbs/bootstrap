@@ -7,6 +7,7 @@
   --#{$prefix}breadcrumb-bg: #{$breadcrumb-bg};
   --#{$prefix}breadcrumb-border-radius: #{$breadcrumb-border-radius};
   --#{$prefix}breadcrumb-divider-color: #{$breadcrumb-divider-color};
+  --#{$prefix}breadcrumb-item-color: #{$breadcrumb-item-color};
   --#{$prefix}breadcrumb-item-padding-x: #{$breadcrumb-item-padding-x};
   --#{$prefix}breadcrumb-item-active-color: #{$breadcrumb-active-color};
   // scss-docs-end breadcrumb-css-vars
@@ -22,6 +23,8 @@
 }
 
 .breadcrumb-item {
+  color: var(--#{$prefix}breadcrumb-item-color);
+
   // The separator between breadcrumbs (by default, a forward-slash: "/")
   + .breadcrumb-item {
     padding-left: var(--#{$prefix}breadcrumb-item-padding-x);
