@@ -1,0 +1,48 @@
+<section class="row g-md-5 pb-md-5 mb-5 align-items-center">
+  <div class="col-lg-8 mb-5">
+    <div class="masthead-followup-icon d-inline-block mb-3" style="--bg-rgb: var(--bd-pink-rgb);">
+      <svg class="bi fs-1"><use xlink:href="#braces"></use></svg>
+    </div>
+    <h2 class="display-5 mb-3 fw-semibold lh-sm">Build and extend in real-time with CSS&nbsp;variables</h2>
+    <p class="lead fw-normal">
+      Bootstrap 5 is evolving with each release to better utilize CSS variables for global theme styles, individual components, and even utilities. We provide dozens of variables for colors, font styles, and more at a <code>:root</code> level for use anywhere. On components and utilities, CSS variables are scoped to the relevant class and can easily be modified.
+    </p>
+    <p class="d-flex align-items-start flex-column lead fw-normal mb-0">
+      <a href="/docs/{{ .Site.Params.docs_version }}/customize/css-variables/" class="icon-link fw-semibold mb-3">
+        Learn more about CSS variables
+        <svg class="bi"><use xlink:href="#arrow-right-short"></use></svg>
+      </a>
+    </p>
+  </div>
+  <div class="row gx-md-5">
+    <div class="col-lg-6 mb-3">
+      <h3 class="fw-semibold">Using CSS variables</h3>
+      <p>Use any of our <a href="/docs/{{ .Site.Params.docs_version }}/customize/css-variables/#root-variables">global <code>:root</code> variables</a> to write new styles. CSS variables use the <code>var(--bs-variableName)</code> syntax and can be inherited by children elements.</p>
+      {{ highlight (printf `.component {
+  color: var(--bs-gray-800);
+  background-color: var(--bs-gray-100);
+  border: 1px solid var(--bs-gray-200);
+  border-radius: .25rem;
+}
+
+.component-header {
+  color: var(--bs-purple);
+}`) "scss" "" }}
+    </div>
+    <div class="col-lg-6 mb-3">
+      <h3 class="fw-semibold">Customizing via CSS variables</h3>
+      <p>Override global, component, or utility class variables to customize Bootstrap just how you like. No need to redeclare each rule, just a new variable value.</p>
+      {{ highlight (printf `body {
+  --bs-body-font-family: var(--bs-font-monospace);
+  --bs-body-line-height: 1.4;
+  --bs-body-bg: var(--bs-gray-100);
+}
+
+.table {
+  --bs-table-color: var(--bs-gray-600);
+  --bs-table-bg: var(--bs-gray-100);
+  --bs-table-border-color: transparent;
+}`) "scss" "" }}
+    </div>
+  </div>
+</section>
