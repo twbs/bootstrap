@@ -16,6 +16,7 @@
   --#{$prefix}card-cap-padding-x: #{$card-cap-padding-x};
   --#{$prefix}card-cap-bg: #{$card-cap-bg};
   --#{$prefix}card-cap-color: #{$card-cap-color};
+  --#{$prefix}card-title-color: #{$card-title-color};
   --#{$prefix}card-height: #{$card-height};
   --#{$prefix}card-color: #{$card-color};
   --#{$prefix}card-bg: #{$card-bg};
@@ -73,6 +74,7 @@
 
 .card-title {
   margin-bottom: var(--#{$prefix}card-title-spacer-y);
+  color: var(--#{$prefix}card-title-color);
 }
 
 .card-subtitle {
