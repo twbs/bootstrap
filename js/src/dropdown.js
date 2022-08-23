@@ -95,7 +95,7 @@ class Dropdown extends BaseComponent {
 
     this._popper = null
     this._parent = this._element.parentNode // dropdown wrapper
-    this._menu = SelectorEngine.findOne(SELECTOR_MENU, this._parent)
+    this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] || SelectorEngine.prev(this._element, SELECTOR_MENU)[0]
     this._inNavbar = this._detectNavbar()
   }
 
@@ -405,7 +405,7 @@ class Dropdown extends BaseComponent {
 
     event.preventDefault()
 
-    const getToggleButton = SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode)
+    const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
     const instance = Dropdown.getOrCreateInstance(getToggleButton)
 
     if (isUpOrDownEvent) {
