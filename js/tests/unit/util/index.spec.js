@@ -22,6 +22,146 @@ describe('Util', () => {
     })
   })
 
+<<<<<<< HEAD
+=======
+  describe('getSelectorFromElement', () => {
+    it('should get selector from data-bs-target', () => {
+      fixtureEl.innerHTML = [
+        '<div id="test" data-bs-target=".target"></div>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getSelectorFromElement(testEl)).toEqual('.target')
+    })
+
+    it('should get selector from href if no data-bs-target set', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" href=".target"></a>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getSelectorFromElement(testEl)).toEqual('.target')
+    })
+
+    it('should get selector from href if data-bs-target equal to #', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" data-bs-target="#" href=".target"></a>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getSelectorFromElement(testEl)).toEqual('.target')
+    })
+
+    it('should return null if a selector from a href is a url without an anchor', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" data-bs-target="#" href="foo/bar.html"></a>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getSelectorFromElement(testEl)).toBeNull()
+    })
+
+    it('should return the anchor if a selector from a href is a url', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" data-bs-target="#" href="foo/bar.html#target"></a>',
+        '<div id="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getSelectorFromElement(testEl)).toEqual('#target')
+    })
+
+    it('should return null if selector not found', () => {
+      fixtureEl.innerHTML = '<a id="test" href=".target"></a>'
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getSelectorFromElement(testEl)).toBeNull()
+    })
+
+    it('should return null if no selector', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const testEl = fixtureEl.querySelector('div')
+
+      expect(Util.getSelectorFromElement(testEl)).toBeNull()
+    })
+  })
+
+  describe('getElementFromSelector', () => {
+    it('should get element from data-bs-target', () => {
+      fixtureEl.innerHTML = [
+        '<div id="test" data-bs-target=".target"></div>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('.target'))
+    })
+
+    it('should get element from href if no data-bs-target set', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" href=".target"></a>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('.target'))
+    })
+
+    it('should get element with id starting with int', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" href="#42/weird/id"></a>',
+        '<div id="42/weird/id"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('#' + CSS.escape('42/weird/id')))
+    })
+
+    it('should get complex elements with numbers in IDs', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" data-bs-target=".foo #2foo">a test</a>',
+        '<div class="foo">',
+        '<a class="mytarget" id="2foo" href="#42/weird/id"></a>',
+        '</div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector(".mytarget"))
+    })
+
+    it('should return null if element not found', () => {
+      fixtureEl.innerHTML = '<a id="test" href=".target"></a>'
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getElementFromSelector(testEl)).toBeNull()
+    })
+
+    it('should return null if no selector', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const testEl = fixtureEl.querySelector('div')
+
+      expect(Util.getElementFromSelector(testEl)).toBeNull()
+    })
+  })
+
+>>>>>>> b50233dbc (Added Utest to validate that complex selectors do properly work)
   describe('getTransitionDurationFromElement', () => {
     it('should get transition from element', () => {
       fixtureEl.innerHTML = '<div style="transition: all 300ms ease-out;"></div>'
