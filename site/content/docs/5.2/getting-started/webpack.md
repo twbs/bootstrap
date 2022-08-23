@@ -4,6 +4,7 @@ title: "Bootstrap & Webpack"
 description: The official guide for how to include and bundle Bootstrap's CSS and JavaScript in your project using Webpack.
 group: getting-started
 toc: true
+thumbnail: guides/bootstrap-webpack@2x.png
 ---
 
 <img class="mb-4 img-fluid rounded-3" srcset="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-webpack.png, /docs/{{< param docs_version >}}/assets/img/guides/bootstrap-webpack@2x.png 2x" src="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-webpack.png" width="2000" height="1000" alt="">
@@ -93,7 +94,7 @@ With dependencies installed and our project folder ready for us to start coding,
    }
    ```
 
-2. **Next we create our `dist/index.html`.** This is the HTML page Webpack will load in the browser to utilize the bundled CSS and JS we'll add to it in later steps. Before we can do that, we have to give it something to render and include the `output` JS from the previous step.
+2. **Next we fill in our `dist/index.html`.** This is the HTML page Webpack will load in the browser to utilize the bundled CSS and JS we'll add to it in later steps. Before we can do that, we have to give it something to render and include the `output` JS from the previous step.
 
    ```html
    <!doctype html>
@@ -136,13 +137,13 @@ With dependencies installed and our project folder ready for us to start coding,
 
    <img class="img-fluid" src="/docs/{{< param docs_version >}}/assets/img/guides/webpack-dev-server.png" alt="Webpack dev server running">
 
-In the next and final section to this guide, we'll setup the Webpack loaders and import all of Bootstrap's CSS and JavaScript.
+In the next and final section to this guide, we'll set up the Webpack loaders and import all of Bootstrap's CSS and JavaScript.
 
 ## Import Bootstrap
 
 Importing Bootstrap into Webpack requires the loaders we installed in the first section. We've installed them with npm, but now Webpack needs to be configured to use them.
 
-1. **Setup the loaders in `webpack.config.js`.** Your configuration file is now complete and should match the snippet below. The only new part here is the `module` section.
+1. **Set up the loaders in `webpack.config.js`.** Your configuration file is now complete and should match the snippet below. The only new part here is the `module` section.
 
    ```js
    const path = require('path')
@@ -227,7 +228,7 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
 
    <img class="img-fluid" src="/docs/{{< param docs_version >}}/assets/img/guides/webpack-dev-server-bootstrap.png" alt="Webpack dev server running with Bootstrap">
 
-   Now you can start adding any Bootstrap components you want to use. Be sure to [checkout the complete Webpack example project](https://github.com/twbs/examples/tree/main/webpack) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
+   Now you can start adding any Bootstrap components you want to use. Be sure to [check out the complete Webpack example project](https://github.com/twbs/examples/tree/main/webpack) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
 
 {{< markdown >}}
 {{< partial "guide-footer.md" >}}

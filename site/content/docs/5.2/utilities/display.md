@@ -32,7 +32,7 @@ Where *value* is one of:
 - `flex`
 - `inline-flex`
 
-The display values can be altered by changing the `$displays` variable and recompiling the SCSS.
+The display values can be altered by changing the `display` values defined in `$utilities` and recompiling the SCSS.
 
 The media queries affect screen widths with the given breakpoint *or larger*. For example, `.d-lg-none` sets `display: none;` on `lg`, `xl`, and `xxl` screens.
 

@@ -108,11 +108,11 @@ describe('Base Component', () => {
 
       it('should de-register element event listeners', () => {
         createInstance()
-        spyOn(EventHandler, 'off')
+        const spy = spyOn(EventHandler, 'off')
 
         instance.dispose()
 
-        expect(EventHandler.off).toHaveBeenCalledWith(element, DummyClass.EVENT_KEY)
+        expect(spy).toHaveBeenCalledWith(element, DummyClass.EVENT_KEY)
       })
     })
 

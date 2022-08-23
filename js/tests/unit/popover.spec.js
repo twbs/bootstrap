@@ -164,11 +164,11 @@ describe('Popover', () => {
 
       const popoverEl = fixtureEl.querySelector('a')
       const popover = new Popover(popoverEl, { animation: false })
-      spyOn(EventHandler, 'trigger').and.callThrough()
+      const spy = spyOn(EventHandler, 'trigger').and.callThrough()
 
       popover.show()
 
-      expect(EventHandler.trigger).not.toHaveBeenCalledWith(popoverEl, Popover.eventName('show'))
+      expect(spy).not.toHaveBeenCalledWith(popoverEl, Popover.eventName('show'))
       expect(document.querySelector('.popover')).toBeNull()
     })
 
@@ -329,11 +329,11 @@ describe('Popover', () => {
       jQueryMock.fn.popover = Popover.jQueryInterface
       jQueryMock.elements = [popoverEl]
 
-      spyOn(popover, 'show')
+      const spy = spyOn(popover, 'show')
 
       jQueryMock.fn.popover.call(jQueryMock, 'show')
 
-      expect(popover.show).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
   })
 

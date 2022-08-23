@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap dropdown.js v5.2.0-beta1 (https://getbootstrap.com/)
+  * Bootstrap dropdown.js v5.2.0 (https://getbootstrap.com/)
   * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -37,7 +37,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.0-beta1): dropdown.js
+   * Bootstrap (v5.2.0): dropdown.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -83,20 +83,20 @@
   const PLACEMENT_TOPCENTER = 'top';
   const PLACEMENT_BOTTOMCENTER = 'bottom';
   const Default = {
-    offset: [0, 2],
+    autoClose: true,
     boundary: 'clippingParents',
-    reference: 'toggle',
     display: 'dynamic',
+    offset: [0, 2],
     popperConfig: null,
-    autoClose: true
+    reference: 'toggle'
   };
   const DefaultType = {
-    offset: '(array|string|function)',
+    autoClose: '(boolean|string)',
     boundary: '(string|element)',
-    reference: '(string|element|object)',
     display: 'string',
+    offset: '(array|string|function)',
     popperConfig: '(null|object|function)',
-    autoClose: '(boolean|string)'
+    reference: '(string|element|object)'
   };
   /**
    * Class definition

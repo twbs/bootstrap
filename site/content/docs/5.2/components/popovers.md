@@ -44,17 +44,21 @@ const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstra
 
 ### Live demo
 
-We use JavaScript similar to the snippet above to render the following live popover. Titles are set via `title` attribute and body content is set via `data-bs-content`.
+We use JavaScript similar to the snippet above to render the following live popover. Titles are set via `data-bs-title` and body content is set via `data-bs-content`.
 
-{{< example >}}
-<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+{{< callout warning >}}
+{{< partial "callout-warning-data-bs-title-vs-title.md" >}}
+{{< /callout >}}
+
+{{< example stackblitz_add_js="true" >}}
+<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
 {{< /example >}}
 
 ### Four directions
 
 Four options are available: top, right, bottom, and left. Directions are mirrored when using Bootstrap in RTL. Set `data-bs-placement` to change the direction.
 
-{{< example >}}
+{{< example stackblitz_add_js="true" >}}
 <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
   Popover on top
 </button>
@@ -79,6 +83,14 @@ const popover = new bootstrap.Popover('.example-popover', {
 })
 ```
 
+Another situation where you'll want to set an explicit custom `container` are popovers inside a [modal dialog]({{< docsref "/components/modal" >}}), to make sure that the popover itself is appended to the modal. This is particularly important for popovers that contain interactive elements – modal dialogs will trap focus, so unless the popover is a child element of the modal, users won't be able to focus or activate these interactive elements.
+
+```js
+const popover = new bootstrap.Popover('.example-popover', {
+  container: '.modal-body'
+})
+```
+
 ### Custom popovers
 
 {{< added-in "5.2.0" >}}
@@ -87,11 +99,11 @@ You can customize the appearance of popovers using [CSS variables](#variables). 
 
 {{< scss-docs name="custom-popovers" file="site/assets/scss/_component-examples.scss" >}}
 
-{{< example class="custom-popover-demo" >}}
+{{< example class="custom-popover-demo" stackblitz_add_js="true" >}}
 <button type="button" class="btn btn-secondary"
         data-bs-toggle="popover" data-bs-placement="right"
         data-bs-custom-class="custom-popover"
-        title="Custom popover"
+        data-bs-title="Custom popover"
         data-bs-content="This popover is themed via CSS variables.">
   Custom popover
 </button>
@@ -107,8 +119,8 @@ Use the `focus` trigger to dismiss popovers on the user's next click of a differ
 For proper cross-browser and cross-platform behavior, you must use the `<a>` tag, _not_ the `<button>` tag, and you also must include a [`tabindex`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) attribute.
 {{< /callout >}}
 
-{{< example >}}
-<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Dismissible popover" data-bs-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
+{{< example stackblitz_add_js="true" >}}
+<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Dismissible popover" data-bs-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
 {{< /example >}}
 
 ```js
@@ -123,7 +135,7 @@ Elements with the `disabled` attribute aren't interactive, meaning users cannot 
 
 For disabled popover triggers, you may also prefer `data-bs-trigger="hover focus"` so that the popover appears as immediate visual feedback to your users as they may not expect to _click_ on a disabled element.
 
-{{< example >}}
+{{< example stackblitz_add_js="true" >}}
 <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
   <button class="btn btn-primary" type="button" disabled>Disabled button</button>
 </span>
@@ -171,7 +183,6 @@ Additionally, while it is possible to also include interactive controls (such as
 {{< callout warning >}}
 Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` options cannot be supplied using data attributes.
 {{< /callout >}}
-
 
 {{< bs-table "table" >}}
 | Name | Type | Default | Description |
@@ -258,11 +269,11 @@ The `setContent` method accepts an `object` argument, where each property-key is
 {{< bs-table >}}
 | Event | Description |
 | --- | --- |
-| `show.bs.popover` | This event fires immediately when the `show` instance method is called. |
-| `shown.bs.popover` | This event is fired when the popover has been made visible to the user (will wait for CSS transitions to complete). |
 | `hide.bs.popover` | This event is fired immediately when the `hide` instance method has been called. |
 | `hidden.bs.popover` | This event is fired when the popover has finished being hidden from the user (will wait for CSS transitions to complete). |
 | `inserted.bs.popover` | This event is fired after the `show.bs.popover` event when the popover template has been added to the DOM. |
+| `show.bs.popover` | This event fires immediately when the `show` instance method is called. |
+| `shown.bs.popover` | This event is fired when the popover has been made visible to the user (will wait for CSS transitions to complete). |
 {{< /bs-table >}}
 
 ```js

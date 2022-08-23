@@ -1,9 +1,8 @@
 /*!
- * Bootstrap Reboot v5.2.0-beta1 (https://getbootstrap.com/)
+ * Bootstrap Reboot v5.2.0 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md)
  */
 :root {
   --bs-blue: #0d6efd;
@@ -68,7 +67,6 @@
   --bs-border-radius-xl: 1rem;
   --bs-border-radius-2xl: 2rem;
   --bs-border-radius-pill: 50rem;
-  --bs-heading-color: ;
   --bs-link-color: #0d6efd;
   --bs-link-hover-color: #0a58ca;
   --bs-code-color: #d63384;
@@ -113,7 +111,6 @@ h6, h5, h4, h3, h2, h1 {
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
-  color: var(--bs-heading-color);
 }
 
 h1 {
@@ -313,7 +310,7 @@ table {
 caption {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  color: rgba(var(--bs-body-color-rgb), 0.75);
+  color: #6c757d;
   text-align: left;
 }
 

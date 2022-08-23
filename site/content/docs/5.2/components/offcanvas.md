@@ -66,15 +66,33 @@ You can use a link with the `href` attribute, or a button with the `data-bs-targ
       Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
     </div>
     <div class="dropdown mt-3">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
         Dropdown button
       </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#">Action</a></li>
         <li><a class="dropdown-item" href="#">Another action</a></li>
         <li><a class="dropdown-item" href="#">Something else here</a></li>
       </ul>
     </div>
+  </div>
+</div>
+{{< /example >}}
+
+### Dark offcanvas
+
+{{< added-in "5.2.0" >}}
+
+Change the appearance of offcanvases with utilities to better match them to different contexts like dark navbars. Here we add `.text-bg-dark` to the `.offcanvas` and `.btn-close-white` to `.btn-close` for proper styling with a dark offcanvas. If you have dropdowns within, consider also adding `.dropdown-menu-dark` to `.dropdown-menu`.
+
+{{< example class="bd-example-offcanvas p-0 bg-light overflow-hidden" >}}
+<div class="offcanvas offcanvas-start show text-bg-dark" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasDarkLabel">Offcanvas</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvasDark" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Place offcanvas content here.</p>
   </div>
 </div>
 {{< /example >}}
@@ -139,7 +157,7 @@ When backdrop is set to static, the offcanvas will not close when clicking outsi
 
 ## Responsive
 
-<small class="d-inline-flex px-2 py-1 fw-semibold text-success bg-success bg-opacity-10 rounded-2">Added in v5.2.0</small>
+{{< added-in "5.2.0" >}}
 
 Responsive offcanvas classes hide content outside the viewport from a specified breakpoint and down. Above that breakpoint, the contents within will behave as usual. For example, `.offcanvas-lg` hides content in an offcanvas below the `lg` breakpoint, but shows the content above the `lg` breakpoint.
 
@@ -229,7 +247,7 @@ Since the offcanvas panel is conceptually a modal dialog, be sure to add `aria-l
 
 ### Variables
 
-<small class="d-inline-flex px-2 py-1 fw-semibold text-success bg-success bg-opacity-10 rounded-2">Added in v5.2.0</small>
+{{< added-in "5.2.0" >}}
 
 As part of Bootstrap's evolving CSS variables approach, offcanvas now uses local CSS variables on `.offcanvas` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
@@ -263,7 +281,7 @@ Add `data-bs-toggle="offcanvas"` and a `data-bs-target` or `href` to the element
 {{% js-dismiss "offcanvas" %}}
 
 {{< callout warning >}}
-While both ways to dismiss an offcanvas are supported, keep in mind that dismissing from outside an offcanvas does not match [the WAI-ARIA modal dialog design pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal). Do this at your own risk.
+While both ways to dismiss an offcanvas are supported, keep in mind that dismissing from outside an offcanvas does not match the [ARIA Authoring Practices Guide dialog (modal) pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/). Do this at your own risk.
 {{< /callout >}}
 
 ### Via JavaScript

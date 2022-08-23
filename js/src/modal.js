@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.0-beta1): modal.js
+ * Bootstrap (v5.2.0): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -30,7 +30,7 @@ const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
 const EVENT_RESIZE = `resize${EVENT_KEY}`
-const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
+const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`
 const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
@@ -46,14 +46,14 @@ const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="modal"]'
 
 const Default = {
   backdrop: true,
-  keyboard: true,
-  focus: true
+  focus: true,
+  keyboard: true
 }
 
 const DefaultType = {
   backdrop: '(boolean|string)',
-  keyboard: 'boolean',
-  focus: 'boolean'
+  focus: 'boolean',
+  keyboard: 'boolean'
 }
 
 /**
@@ -221,7 +221,7 @@ class Modal extends BaseComponent {
       }
     })
 
-    EventHandler.on(this._element, EVENT_CLICK_DISMISS, event => {
+    EventHandler.on(this._element, EVENT_MOUSEDOWN_DISMISS, event => {
       if (event.target !== event.currentTarget) { // click is inside modal-dialog
         return
       }

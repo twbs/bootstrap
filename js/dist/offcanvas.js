@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap offcanvas.js v5.2.0-beta1 (https://getbootstrap.com/)
+  * Bootstrap offcanvas.js v5.2.0 (https://getbootstrap.com/)
   * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -20,7 +20,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.0-beta1): offcanvas.js
+   * Bootstrap (v5.2.0): offcanvas.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -118,7 +118,7 @@
       this._element.classList.add(CLASS_NAME_SHOWING);
 
       const completeCallBack = () => {
-        if (!this._config.scroll) {
+        if (!this._config.scroll || this._config.backdrop) {
           this._focustrap.activate();
         }
 
