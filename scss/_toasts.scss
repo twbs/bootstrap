@@ -1,5 +1,6 @@
 .toast {
   // scss-docs-start toast-css-vars
+  --#{$prefix}toast-zindex: #{$zindex-toast};
   --#{$prefix}toast-padding-x: #{$toast-padding-x};
   --#{$prefix}toast-padding-y: #{$toast-padding-y};
   --#{$prefix}toast-spacing: #{$toast-spacing};
@@ -38,7 +39,7 @@
 
 .toast-container {
   position: absolute;
-  z-index: $zindex-toast;
+  z-index: var(--#{$prefix}toast-zindex);
   width: max-content;
   max-width: 100%;
   pointer-events: none;
