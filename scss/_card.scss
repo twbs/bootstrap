@@ -40,19 +40,25 @@
     margin-left: 0;
   }
 
-  > .list-group {
+  > .list-group:not(:only-child) {
     border-top: inherit;
     border-bottom: inherit;
 
     &:first-child {
       border-top-width: 0;
-      @include border-top-radius(var(--#{$prefix}card-inner-border-radius));
     }
 
     &:last-child  {
       border-bottom-width: 0;
-      @include border-bottom-radius(var(--#{$prefix}card-inner-border-radius));
     }
+  }
+
+  > :first-child {
+    @include border-top-radius(var(--#{$prefix}card-inner-border-radius));
+  }
+
+  > :last-child {
+    @include border-bottom-radius(var(--#{$prefix}card-inner-border-radius));
   }
 
   // Due to specificity of the above selector (`.card > .list-group`), we must
@@ -104,10 +110,6 @@
   color: var(--#{$prefix}card-cap-color);
   background-color: var(--#{$prefix}card-cap-bg);
   border-bottom: var(--#{$prefix}card-border-width) solid var(--#{$prefix}card-border-color);
-
-  &:first-child {
-    @include border-radius(var(--#{$prefix}card-inner-border-radius) var(--#{$prefix}card-inner-border-radius) 0 0);
-  }
 }
 
 .card-footer {
@@ -115,10 +117,6 @@
   color: var(--#{$prefix}card-cap-color);
   background-color: var(--#{$prefix}card-cap-bg);
   border-top: var(--#{$prefix}card-border-width) solid var(--#{$prefix}card-border-color);
-
-  &:last-child {
-    @include border-radius(0 0 var(--#{$prefix}card-inner-border-radius) var(--#{$prefix}card-inner-border-radius));
-  }
 }
 
 
@@ -154,22 +152,9 @@
   @include border-radius(var(--#{$prefix}card-inner-border-radius));
 }
 
-.card-img,
-.card-img-top,
-.card-img-bottom {
+.card-img {
   width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
 }
-
-.card-img,
-.card-img-top {
-  @include border-top-radius(var(--#{$prefix}card-inner-border-radius));
-}
-
-.card-img,
-.card-img-bottom {
-  @include border-bottom-radius(var(--#{$prefix}card-inner-border-radius));
-}
-
 
 //
 // Card groups
@@ -202,13 +187,12 @@
         &:not(:last-child) {
           @include border-end-radius(0);
 
-          .card-img-top,
-          .card-header {
+          > :first-child {
             // stylelint-disable-next-line property-disallowed-list
             border-top-right-radius: 0;
           }
-          .card-img-bottom,
-          .card-footer {
+
+          > :last-child {
             // stylelint-disable-next-line property-disallowed-list
             border-bottom-right-radius: 0;
           }
@@ -217,13 +201,12 @@
         &:not(:first-child) {
           @include border-start-radius(0);
 
-          .card-img-top,
-          .card-header {
+          > :first-child {
             // stylelint-disable-next-line property-disallowed-list
             border-top-left-radius: 0;
           }
-          .card-img-bottom,
-          .card-footer {
+
+          > :last-child {
             // stylelint-disable-next-line property-disallowed-list
             border-bottom-left-radius: 0;
           }
