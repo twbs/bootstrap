@@ -127,12 +127,12 @@
       flex-direction: row;
 
       > .list-group-item {
-        &:first-child {
+        &:first-child:not(:last-child) {
           @include border-bottom-start-radius(var(--#{$prefix}list-group-border-radius));
           @include border-top-end-radius(0);
         }
 
-        &:last-child {
+        &:last-child:not(:first-child) {
           @include border-top-end-radius(var(--#{$prefix}list-group-border-radius));
           @include border-bottom-start-radius(0);
         }
