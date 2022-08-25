@@ -23,6 +23,7 @@
   --docsearch-hit-shadow: none;
 
   z-index: 2000; // Make sure to be over all components showcased in the documentation
+  cursor: auto;
 
   @include media-breakpoint-up(lg) {
     padding-top: 4rem;
