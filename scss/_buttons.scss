@@ -61,9 +61,6 @@
   }
 
   .btn-check:checked + &,
-  .btn-check:active + &,
-  &:active,
-  &.active,
   &.show {
     color: var(--#{$prefix}btn-active-color);
     background-color: var(--#{$prefix}btn-active-bg);
