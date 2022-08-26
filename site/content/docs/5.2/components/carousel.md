@@ -287,7 +287,13 @@ The transition duration of `.carousel-item` can be changed with the `$carousel-t
 
 ### Variables
 
+Variables for all carousels:
+
 {{< scss-docs name="carousel-variables" file="scss/_variables.scss" >}}
+
+Variables for the [dark carousel](#dark-variant):
+
+{{< scss-docs name="carousel-dark-variables" file="scss/_variables.scss" >}}
 
 ## Usage
 
