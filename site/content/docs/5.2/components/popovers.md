@@ -83,6 +83,14 @@ const popover = new bootstrap.Popover('.example-popover', {
 })
 ```
 
+Another situation where you'll want to set an explicit custom `container` are popovers inside a [modal dialog]({{< docsref "/components/modal" >}}), to make sure that the popover itself is appended to the modal. This is particularly important for popovers that contain interactive elements – modal dialogs will trap focus, so unless the popover is a child element of the modal, users won't be able to focus or activate these interactive elements.
+
+```js
+const popover = new bootstrap.Popover('.example-popover', {
+  container: '.modal-body'
+})
+```
+
 ### Custom popovers
 
 {{< added-in "5.2.0" >}}
@@ -175,7 +183,6 @@ Additionally, while it is possible to also include interactive controls (such as
 {{< callout warning >}}
 Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` options cannot be supplied using data attributes.
 {{< /callout >}}
-
 
 {{< bs-table "table" >}}
 | Name | Type | Default | Description |

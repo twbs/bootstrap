@@ -4,6 +4,7 @@ title: "Bootstrap & Vite"
 description: The official guide for how to include and bundle Bootstrap's CSS and JavaScript in your project using Vite.
 group: getting-started
 toc: true
+thumbnail: guides/bootstrap-vite@2x.png
 ---
 
 <img class="mb-4 img-fluid rounded-3" srcset="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-vite.png, /docs/{{< param docs_version >}}/assets/img/guides/bootstrap-vite@2x.png 2x" src="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-vite.png" width="2000" height="1000" alt="">
@@ -190,7 +191,7 @@ In the next and final section to this guide, we’ll import all of Bootstrap’s
 
    <img class="img-fluid" src="/docs/{{< param docs_version >}}/assets/img/guides/vite-dev-server-bootstrap.png" alt="Vite dev server running with Bootstrap">
 
-   Now you can start adding any Bootstrap components you want to use. Be sure to [checkout the complete Vite example project](https://github.com/twbs/examples/tree/main/vite) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
+   Now you can start adding any Bootstrap components you want to use. Be sure to [check out the complete Vite example project](https://github.com/twbs/examples/tree/main/vite) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
 
 {{< markdown >}}
 {{< partial "guide-footer.md" >}}

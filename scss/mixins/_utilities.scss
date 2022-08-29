@@ -28,7 +28,7 @@
 
     $infix: if($property-class == "" and str-slice($infix, 1, 1) == "-", str-slice($infix, 2), $infix);
 
-    // Don't prefix if value key is null (eg. with shadow class)
+    // Don't prefix if value key is null (e.g. with shadow class)
     $property-class-modifier: if($key, if($property-class == "" and $infix == "", "", "-") + $key, "");
 
     @if map-get($utility, rfs) {

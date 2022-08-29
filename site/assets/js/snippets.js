@@ -20,7 +20,7 @@
   // --------
   // Tooltips
   // --------
-  // Instanciate all tooltips in a docs or StackBlitz page
+  // Instantiate all tooltips in a docs or StackBlitz page
   document.querySelectorAll('[data-bs-toggle="tooltip"]')
     .forEach(tooltip => {
       new bootstrap.Tooltip(tooltip)
@@ -29,7 +29,7 @@
   // --------
   // Popovers
   // --------
-  // Instanciate all popovers in a docs or StackBlitz page
+  // Instantiate all popovers in a docs or StackBlitz page
   document.querySelectorAll('[data-bs-toggle="popover"]')
     .forEach(popover => {
       new bootstrap.Popover(popover)
@@ -50,7 +50,7 @@
     })
   }
 
-  // Instanciate all toasts in a docs page only
+  // Instantiate all toasts in a docs page only
   document.querySelectorAll('.bd-example .toast')
     .forEach(toastNode => {
       const toast = new bootstrap.Toast(toastNode, {
@@ -60,7 +60,7 @@
       toast.show()
     })
 
-  // Instanciate all toasts in a docs page only
+  // Instantiate all toasts in a docs page only
   const toastTrigger = document.getElementById('liveToastBtn')
   const toastLiveExample = document.getElementById('liveToast')
   if (toastTrigger) {

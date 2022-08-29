@@ -454,12 +454,11 @@ describe('EventHandler', () => {
 
         const div1 = fixtureEl.querySelector('#div1')
         const div2 = fixtureEl.querySelector('#div2')
-        const div3 = fixtureEl.querySelector('#div3')
 
         EventHandler.on(div1, 'click', event => {
-          event.originalTarget = div3
-
           expect(event.currentTarget).toBe(div2)
+          expect(event.delegateTarget).toBe(div1)
+          expect(event.originalTarget).toBeNull()
 
           Object.defineProperty(event, 'currentTarget', {
             configurable: true,
@@ -473,7 +472,7 @@ describe('EventHandler', () => {
         })
 
         expect(() => {
-          EventHandler.trigger(div1, 'click', { delegateTarget: div2, originalTarget: null, currentTarget: div2 })
+          EventHandler.trigger(div1, 'click', { originalTarget: null, currentTarget: div2 })
         }).not.toThrowError(TypeError)
       })
     })

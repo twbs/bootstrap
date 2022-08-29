@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.0-beta1): tooltip.js
+ * Bootstrap (v5.2.0): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -185,6 +185,10 @@ class Tooltip extends BaseComponent {
       this.tip.remove()
     }
 
+    if (this._config.originalTitle) {
+      this._element.setAttribute('title', this._config.originalTitle)
+    }
+
     this._disposePopper()
     super.dispose()
   }
@@ -344,8 +348,6 @@ class Tooltip extends BaseComponent {
   setContent(content) {
     this._newContent = content
     if (this._isShown()) {
-      this.tip.remove()
-      this.tip = null
       this._disposePopper()
       this.show()
     }

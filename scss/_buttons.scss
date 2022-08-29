@@ -147,6 +147,7 @@
   --#{$prefix}btn-border-color: transparent;
   --#{$prefix}btn-hover-color: #{$btn-link-hover-color};
   --#{$prefix}btn-hover-border-color: transparent;
+  --#{$prefix}btn-active-color: #{$btn-link-hover-color};
   --#{$prefix}btn-active-border-color: transparent;
   --#{$prefix}btn-disabled-color: #{$btn-link-disabled-color};
   --#{$prefix}btn-disabled-border-color: transparent;
@@ -158,6 +159,14 @@
   &:hover,
   &:focus {
     text-decoration: $link-hover-decoration;
+  }
+
+  &:focus {
+    color: var(--#{$prefix}btn-color);
+  }
+
+  &:hover {
+    color: var(--#{$prefix}btn-hover-color);
   }
 
   // No need for an active state here

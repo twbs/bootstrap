@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap scrollspy.js v5.2.0-beta1 (https://getbootstrap.com/)
+  * Bootstrap scrollspy.js v5.2.0 (https://getbootstrap.com/)
   * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -17,7 +17,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.0-beta1): scrollspy.js
+   * Bootstrap (v5.2.0): scrollspy.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -137,7 +137,8 @@
 
           if (root.scrollTo) {
             root.scrollTo({
-              top: height
+              top: height,
+              behavior: 'smooth'
             });
             return;
           } // Chrome 60 doesn't support `scrollTo`
