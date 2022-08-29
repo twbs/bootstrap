@@ -303,8 +303,8 @@ const offcanvasList = [...offcanvasElementList].map(offcanvasEl => new bootstrap
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `backdrop` | boolean or the string `static` | `true` | Apply a backdrop on body while offcanvas is open. Alternatively, specify `static` for a backdrop which doesn't close the offcanvas when clicked. |
-| `keyboard` | boolean | `true` | Closes the offcanvas when escape key is pressed |
-| `scroll` | boolean | `false` | Allow body scrolling while offcanvas is open |
+| `keyboard` | boolean | `true` | Closes the offcanvas when escape key is pressed. |
+| `scroll` | boolean | `false` | Allow body scrolling while offcanvas is open. |
 {{< /bs-table >}}
 
 ### Methods
@@ -324,10 +324,10 @@ const bsOffcanvas = new bootstrap.Offcanvas('#myOffcanvas')
 {{< bs-table "table" >}}
 | Method | Description |
 | --- | --- |
-| `getInstance` | *Static* method which allows you to get the offcanvas instance associated with a DOM element |
-| `getOrCreateInstance` | *Static* method which allows you to get the offcanvas instance associated with a DOM element, or create a new one in case it wasn't initialized |
-| `hide` | Hides an offcanvas element. **Returns to the caller before the offcanvas element has actually been hidden** (i.e. before the `hidden.bs.offcanvas` event occurs).|
-| `show` | Shows an offcanvas element. **Returns to the caller before the offcanvas element has actually been shown** (i.e. before the `shown.bs.offcanvas` event occurs).|
+| `getInstance` | *Static* method which allows you to get the offcanvas instance associated with a DOM element. |
+| `getOrCreateInstance` | *Static* method which allows you to get the offcanvas instance associated with a DOM element, or create a new one in case it wasn't initialized. |
+| `hide` | Hides an offcanvas element. **Returns to the caller before the offcanvas element has actually been hidden** (i.e. before the `hidden.bs.offcanvas` event occurs). |
+| `show` | Shows an offcanvas element. **Returns to the caller before the offcanvas element has actually been shown** (i.e. before the `shown.bs.offcanvas` event occurs). |
 | `toggle` | Toggles an offcanvas element to shown or hidden. **Returns to the caller before the offcanvas element has actually been shown or hidden** (i.e. before the `shown.bs.offcanvas` or `hidden.bs.offcanvas` event occurs). |
 {{< /bs-table >}}
 
