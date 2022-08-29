@@ -147,7 +147,7 @@ const collapseList = [...collapseElementList].map(collapseEl => new bootstrap.Co
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 `parent` | selector, DOM element | `null` | If parent is provided, then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior - this is dependent on the `card` class). The attribute has to be set on the target collapsible area. |
-`toggle` | boolean | `true` | Toggles the collapsible element on invocation |
+`toggle` | boolean | `true` | Toggles the collapsible element on invocation. |
 {{< /bs-table >}}
 
 ### Methods
@@ -170,8 +170,8 @@ const bsCollapse = new bootstrap.Collapse('#myCollapse', {
 | Method | Description |
 | --- | --- |
 | `dispose` | Destroys an element's collapse. (Removes stored data on the DOM element) |
-| `getInstance` | Static method which allows you to get the collapse instance associated to a DOM element, you can use it like this: `bootstrap.Collapse.getInstance(element)` |
-| `getOrCreateInstance` | Static method which returns a collapse instance associated to a DOM element or create a new one in case it wasn't initialized. You can use it like this: `bootstrap.Collapse.getOrCreateInstance(element)` |
+| `getInstance` | Static method which allows you to get the collapse instance associated to a DOM element, you can use it like this: `bootstrap.Collapse.getInstance(element)`. |
+| `getOrCreateInstance` | Static method which returns a collapse instance associated to a DOM element or create a new one in case it wasn't initialized. You can use it like this: `bootstrap.Collapse.getOrCreateInstance(element)`. |
 | `hide` | Hides a collapsible element. **Returns to the caller before the collapsible element has actually been hidden** (e.g., before the `hidden.bs.collapse` event occurs). |
 | `show` | Shows a collapsible element. **Returns to the caller before the collapsible element has actually been shown** (e.g., before the `shown.bs.collapse` event occurs). |
 | `toggle` | Toggles a collapsible element to shown or hidden. **Returns to the caller before the collapsible element has actually been shown or hidden** (i.e. before the `shown.bs.collapse` or `hidden.bs.collapse` event occurs). |

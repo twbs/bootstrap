@@ -397,7 +397,7 @@ To keep backwards compatibility, we will continue to parse a given `offset` to `
 | Method | Description |
 | --- | --- |
 | `dispose` | Destroys an element's scrollspy. (Removes stored data on the DOM element) |
-| `getInstance` | *Static* method to get the scrollspy instance associated with a DOM element |
+| `getInstance` | *Static* method to get the scrollspy instance associated with a DOM element. |
 | `getOrCreateInstance` | *Static* method to get the scrollspy instance associated with a DOM element, or to create a new one in case it wasn't initialized. |
 | `refresh` | When adding or removing elements in the DOM, you'll need to call the refresh method. |
 {{< /bs-table >}}
