@@ -29,6 +29,7 @@ Carousels don't automatically normalize slide dimensions. As such, you may need 
 Here's a carousel with slides only. Note the presence of the `.d-block` and `.w-100` on carousel images to prevent browser default image alignment.
 
 {{< example >}}
+
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -49,6 +50,7 @@ Here's a carousel with slides only. Note the presence of the `.d-block` and `.w-
 Adding in the previous and next controls. We recommend using `<button>` elements, but you can also use `<a>` elements with `role="button"`.
 
 {{< example >}}
+
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -77,6 +79,7 @@ Adding in the previous and next controls. We recommend using `<button>` elements
 You can also add the indicators to the carousel, alongside the controls, too.
 
 {{< example >}}
+
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -110,6 +113,7 @@ You can also add the indicators to the carousel, alongside the controls, too.
 Add captions to your slides easily with the `.carousel-caption` element within any `.carousel-item`. They can be easily hidden on smaller viewports, as shown below, with optional [display utilities]({{< docsref "/utilities/display" >}}). We hide them initially with `.d-none` and bring them back on medium-sized devices with `.d-md-block`.
 
 {{< example >}}
+
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -155,6 +159,7 @@ Add captions to your slides easily with the `.carousel-caption` element within a
 Add `.carousel-fade` to your carousel to animate slides with a fade transition instead of a slide. Depending on your carousel content (e.g., text only slides), you may want to add `.bg-body` or some custom CSS to the `.carousel-item`s for proper crossfading.
 
 {{< example >}}
+
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -183,6 +188,7 @@ Add `.carousel-fade` to your carousel to animate slides with a fade transition i
 Add `data-bs-interval=""` to a `.carousel-item` to change the amount of time to delay between automatically cycling to the next item.
 
 {{< example >}}
+
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="10000">
@@ -211,6 +217,7 @@ Add `data-bs-interval=""` to a `.carousel-item` to change the amount of time to 
 Carousels support swiping left/right on touchscreen devices to move between slides. This can be disabled using the `data-bs-touch` attribute. The example below also does not include the `data-bs-ride` attribute so it doesn't autoplay.
 
 {{< example >}}
+
 <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -239,6 +246,7 @@ Carousels support swiping left/right on touchscreen devices to move between slid
 Add `.carousel-dark` to the `.carousel` for darker controls, indicators, and captions. Controls have been inverted from their default white fill with the `filter` CSS property. Captions and controls have additional Sass variables that customize the `color` and `background-color`.
 
 {{< example >}}
+
 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -302,8 +310,10 @@ The `data-bs-ride="carousel"` attribute is used to mark a carousel as animating 
 Call carousel manually with:
 
 ```js
-const carousel = new bootstrap.Carousel('#myCarousel')
+const carousel = new bootstrap.Carousel("#myCarousel");
 ```
+
+To obtain a valid reference to the carousel, make sure that it has loaded by placing code inside a `$(window).on("load", function()}` rather than a `$(document).ready(function()}`
 
 ### Options
 
@@ -331,11 +341,11 @@ const carousel = new bootstrap.Carousel('#myCarousel')
 You can create a carousel instance with the carousel constructor, for example, to initialize with additional options and start cycling through items:
 
 ```js
-const myCarouselElement = document.querySelector('#myCarousel')
+const myCarouselElement = document.querySelector("#myCarousel");
 const carousel = new bootstrap.Carousel(myCarouselElement, {
   interval: 2000,
-  wrap: false
-})
+  wrap: false,
+});
 ```
 
 {{< bs-table >}}
@@ -371,9 +381,9 @@ All carousel events are fired at the carousel itself (i.e. at the `<div class="c
 {{< /bs-table >}}
 
 ```js
-const myCarousel = document.getElementById('myCarousel')
+const myCarousel = document.getElementById("myCarousel");
 
-myCarousel.addEventListener('slide.bs.carousel', event => {
+myCarousel.addEventListener("slide.bs.carousel", (event) => {
   // do something...
-})
+});
 ```
