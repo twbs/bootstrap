@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): tooltip.js
+ * Bootstrap (v5.2.0): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -54,46 +54,46 @@ const AttachmentMap = {
 }
 
 const Default = {
+  allowList: DefaultAllowlist,
   animation: true,
-  template: '<div class="tooltip" role="tooltip">' +
-              '<div class="tooltip-arrow"></div>' +
-              '<div class="tooltip-inner"></div>' +
-            '</div>',
-  trigger: 'hover focus',
-  title: '',
-  delay: 0,
-  html: false,
-  selector: false,
-  placement: 'top',
-  offset: [0, 0],
-  container: false,
-  fallbackPlacements: ['top', 'right', 'bottom', 'left'],
   boundary: 'clippingParents',
+  container: false,
   customClass: '',
+  delay: 0,
+  fallbackPlacements: ['top', 'right', 'bottom', 'left'],
+  html: false,
+  offset: [0, 0],
+  placement: 'top',
+  popperConfig: null,
   sanitize: true,
   sanitizeFn: null,
-  allowList: DefaultAllowlist,
-  popperConfig: null
+  selector: false,
+  template: '<div class="tooltip" role="tooltip">' +
+            '<div class="tooltip-arrow"></div>' +
+            '<div class="tooltip-inner"></div>' +
+            '</div>',
+  title: '',
+  trigger: 'hover focus'
 }
 
 const DefaultType = {
+  allowList: 'object',
   animation: 'boolean',
-  template: 'string',
-  title: '(string|element|function)',
-  trigger: 'string',
-  delay: '(number|object)',
-  html: 'boolean',
-  selector: '(string|boolean)',
-  placement: '(string|function)',
-  offset: '(array|string|function)',
-  container: '(string|element|boolean)',
-  fallbackPlacements: 'array',
   boundary: '(string|element)',
+  container: '(string|element|boolean)',
   customClass: '(string|function)',
+  delay: '(number|object)',
+  fallbackPlacements: 'array',
+  html: 'boolean',
+  offset: '(array|string|function)',
+  placement: '(string|function)',
+  popperConfig: '(null|object|function)',
   sanitize: 'boolean',
   sanitizeFn: '(null|function)',
-  allowList: 'object',
-  popperConfig: '(null|object|function)'
+  selector: '(string|boolean)',
+  template: 'string',
+  title: '(string|element|function)',
+  trigger: 'string'
 }
 
 /**
@@ -115,6 +115,7 @@ class Tooltip extends BaseComponent {
     this._activeTrigger = {}
     this._popper = null
     this._templateFactory = null
+    this._newContent = null
 
     // Protected
     this.tip = null
@@ -184,6 +185,10 @@ class Tooltip extends BaseComponent {
       this.tip.remove()
     }
 
+    if (this._config.originalTitle) {
+      this._element.setAttribute('title', this._config.originalTitle)
+    }
+
     this._disposePopper()
     super.dispose()
   }
@@ -205,6 +210,12 @@ class Tooltip extends BaseComponent {
       return
     }
 
+    // todo v6 remove this OR make it optional
+    if (this.tip) {
+      this.tip.remove()
+      this.tip = null
+    }
+
     const tip = this._getTipElement()
 
     this._element.setAttribute('aria-describedby', tip.getAttribute('id'))
@@ -219,7 +230,7 @@ class Tooltip extends BaseComponent {
     if (this._popper) {
       this._popper.update()
     } else {
-      this._createPopper(tip)
+      this._popper = this._createPopper(tip)
     }
 
     tip.classList.add(CLASS_NAME_SHOW)
@@ -305,7 +316,7 @@ class Tooltip extends BaseComponent {
 
   _getTipElement() {
     if (!this.tip) {
-      this.tip = this._createTipElement(this._getContentForTemplate())
+      this.tip = this._createTipElement(this._newContent || this._getContentForTemplate())
     }
 
     return this.tip
@@ -335,17 +346,9 @@ class Tooltip extends BaseComponent {
   }
 
   setContent(content) {
-    let isShown = false
-    if (this.tip) {
-      isShown = this._isShown()
-      this.tip.remove()
-      this.tip = null
-    }
-
-    this._disposePopper()
-    this.tip = this._createTipElement(content)
-
-    if (isShown) {
+    this._newContent = content
+    if (this._isShown()) {
+      this._disposePopper()
       this.show()
     }
   }
@@ -373,7 +376,7 @@ class Tooltip extends BaseComponent {
   }
 
   _getTitle() {
-    return this._config.title
+    return this._resolvePossibleFunction(this._config.title) || this._config.originalTitle
   }
 
   // Private
@@ -394,7 +397,7 @@ class Tooltip extends BaseComponent {
       this._config.placement.call(this, tip, this._element) :
       this._config.placement
     const attachment = AttachmentMap[placement.toUpperCase()]
-    this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
+    return Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
   }
 
   _getOffset() {
@@ -517,7 +520,7 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    if (!this._element.getAttribute('aria-label') && !this._element.textContent) {
+    if (!this._element.getAttribute('aria-label') && !this._element.textContent.trim()) {
       this._element.setAttribute('aria-label', title)
     }
 
@@ -592,7 +595,6 @@ class Tooltip extends BaseComponent {
     }
 
     config.originalTitle = this._element.getAttribute('title') || ''
-    config.title = this._resolvePossibleFunction(config.title) || config.originalTitle
     if (typeof config.title === 'number') {
       config.title = config.title.toString()
     }

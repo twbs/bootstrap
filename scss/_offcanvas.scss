@@ -43,17 +43,6 @@
       @include box-shadow(var(--#{$prefix}offcanvas-box-shadow));
       @include transition(transform $offcanvas-transition-duration ease-in-out);
 
-      &.showing,
-      &.show:not(.hiding) {
-        transform: none;
-      }
-
-      &.showing,
-      &.hiding,
-      &.show {
-        visibility: visible;
-      }
-
       &.offcanvas-start {
         top: 0;
         left: 0;
@@ -87,6 +76,17 @@
         max-height: 100%;
         border-top: var(--#{$prefix}offcanvas-border-width) solid var(--#{$prefix}offcanvas-border-color);
         transform: translateY(100%);
+      }
+
+      &.showing,
+      &.show:not(.hiding) {
+        transform: none;
+      }
+
+      &.showing,
+      &.hiding,
+      &.show {
+        visibility: visible;
       }
     }
 

@@ -84,12 +84,12 @@ describe('Sanitizer', () => {
         return htmlUnsafe
       }
 
-      spyOn(DOMParser.prototype, 'parseFromString')
+      const spy = spyOn(DOMParser.prototype, 'parseFromString')
 
       const result = sanitizeHtml(template, DefaultAllowlist, mySanitize)
 
       expect(result).toEqual(template)
-      expect(DOMParser.prototype.parseFromString).not.toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
     })
 
     it('should allow multiple sanitation passes of the same template', () => {

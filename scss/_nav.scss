@@ -8,7 +8,7 @@
   --#{$prefix}nav-link-padding-x: #{$nav-link-padding-x};
   --#{$prefix}nav-link-padding-y: #{$nav-link-padding-y};
   @include rfs($nav-link-font-size, --#{$prefix}nav-link-font-size);
-  --#{$prefix}nav-link-font-weight: #{$nav-link-font-weight}; // stylelint-disable-line custom-property-empty-line-before
+  --#{$prefix}nav-link-font-weight: #{$nav-link-font-weight};
   --#{$prefix}nav-link-color: #{$nav-link-color};
   --#{$prefix}nav-link-hover-color: #{$nav-link-hover-color};
   --#{$prefix}nav-link-disabled-color: #{$nav-link-disabled-color};

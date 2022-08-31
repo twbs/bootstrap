@@ -22,7 +22,7 @@
       <p class="pe-lg-5">
         Install Bootstrap’s source Sass and JavaScript files via npm, RubyGems, Composer, or Meteor. Package managed installs don’t include documentation or our full build scripts. You can also <a href="https://github.com/twbs/bootstrap-npm-starter">use our npm template repo</a> to quickly generate a Bootstrap project via npm.
       </p>
-      {{ highlight "npm install bootstrap" "sh" "" }}
+      {{ highlight (printf ("npm install bootstrap@%s") .Site.Params.current_version) "sh" "" }}
       {{ highlight (printf ("gem install bootstrap -v %s") .Site.Params.current_ruby_version) "sh" "" }}
       <p>
         <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/">Read our installation docs</a> for more info and additional package managers.
@@ -40,6 +40,25 @@
       {{ highlight (printf (`<!-- JavaScript Bundle with Popper -->
 <script src="%s" integrity=%q crossorigin="anonymous"></script>
 `) .Site.Params.cdn.js_bundle (.Site.Params.cdn.js_bundle_hash | safeHTMLAttr)) "html" "" }}
+    </div>
+
+    <div class="col-md-8 mx-auto text-center">
+      <h4 class="fw-semibold">Read our getting started guides</h4>
+      <p>Get a jump on including Bootstrap's source files in a new project with our official guides.</p>
+      <div class="d-flex flex-wrap align-items-center justify-content-center gap-4 mt-4">
+        <a class="d-flex flex-column align-items-center text-decoration-none" href="/docs/{{ .Site.Params.docs_version }}/getting-started/webpack">
+          <img class="d-block mb-2" src="/docs/{{ .Site.Params.docs_version }}/assets/img/webpack.png" alt="" width="72" height="72" loading="lazy">
+          <span class="text-muted">Webpack</span>
+        </a>
+        <a class="d-flex flex-column align-items-center text-decoration-none" href="/docs/{{ .Site.Params.docs_version }}/getting-started/parcel">
+          <img class="d-block mb-2" src="/docs/{{ .Site.Params.docs_version }}/assets/img/parcel.png" alt="" width="72" height="72" loading="lazy">
+          <span class="text-muted">Parcel</span>
+        </a>
+        <a class="d-flex flex-column align-items-center text-decoration-none" href="/docs/{{ .Site.Params.docs_version }}/getting-started/vite">
+          <img class="d-block mb-2" src="/docs/{{ .Site.Params.docs_version }}/assets/img/vite.png" alt="" width="72" height="72" loading="lazy">
+          <span class="text-muted">Vite</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -243,10 +262,10 @@ $utilities: map-merge(
         <p>Why write more JavaScript when you can write HTML? Nearly all of Bootstrap's JavaScript plugins feature a first-class data API, allowing you to use JavaScript just by adding <code>data</code> attributes.</p>
         <div class="p-4 mb-3 border rounded-3">
           <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdown">
+            <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Dropdown item</a></li>
               <li><a class="dropdown-item" href="#">Dropdown item</a></li>
               <li><a class="dropdown-item" href="#">Dropdown item</a></li>
@@ -255,10 +274,10 @@ $utilities: map-merge(
         </div>
 
         {{ highlight (printf `<div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Dropdown
   </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown">
+  <ul class="dropdown-menu">
     <li><a class="dropdown-item" href="#">Dropdown item</a></li>
     <li><a class="dropdown-item" href="#">Dropdown item</a></li>
     <li><a class="dropdown-item" href="#">Dropdown item</a></li>

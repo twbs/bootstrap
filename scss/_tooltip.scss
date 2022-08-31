@@ -1,5 +1,3 @@
-// stylelint-disable custom-property-empty-line-before
-
 // Base class
 .tooltip {
   // scss-docs-start tooltip-css-vars
@@ -21,7 +19,7 @@
   display: block;
   padding: var(--#{$prefix}tooltip-arrow-height);
   margin: var(--#{$prefix}tooltip-margin);
-  @include deprecate("`$tooltip-margin`", "v5", "v5.x", );
+  @include deprecate("`$tooltip-margin`", "v5", "v5.x", true);
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
   @include reset-text();
@@ -118,5 +116,5 @@
   color: var(--#{$prefix}tooltip-color);
   text-align: center;
   background-color: var(--#{$prefix}tooltip-bg);
-  border-radius: var(--#{$prefix}tooltip-border-radius, 0); // stylelint-disable-line property-disallowed-list
+  @include border-radius(var(--#{$prefix}tooltip-border-radius));
 }

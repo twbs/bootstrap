@@ -59,13 +59,12 @@
     opacity: 1;
   }
 
-  // Disabled and read-only inputs
+  // Disabled inputs
   //
   // HTML5 says that controls under a fieldset > legend:first-child won't be
   // disabled if the fieldset is disabled. Due to implementation difficulty, we
   // don't honor that edge case; we style them as disabled anyway.
-  &:disabled,
-  &[readonly] {
+  &:disabled {
     color: $input-disabled-color;
     background-color: $input-disabled-bg;
     border-color: $input-disabled-border-color;
@@ -109,6 +108,10 @@
   background-color: transparent;
   border: solid transparent;
   border-width: $input-border-width 0;
+
+  &:focus {
+    outline: 0;
+  }
 
   &.form-control-sm,
   &.form-control-lg {
@@ -170,7 +173,7 @@ textarea {
 
 .form-control-color {
   width: $form-color-width;
-  height: auto; // Override fixed browser height
+  height: $input-height;
   padding: $input-padding-y;
 
   &:not(:disabled):not([readonly]) {
@@ -178,12 +181,14 @@ textarea {
   }
 
   &::-moz-color-swatch {
-    height: if(unit($input-line-height) == "", $input-line-height * 1em, $input-line-height);
+    border: 0 !important; // stylelint-disable-line declaration-no-important
     @include border-radius($input-border-radius);
   }
 
   &::-webkit-color-swatch {
-    height: if(unit($input-line-height) == "", $input-line-height * 1em, $input-line-height);
     @include border-radius($input-border-radius);
   }
+
+  &.form-control-sm { height: $input-height-sm; }
+  &.form-control-lg { height: $input-height-lg; }
 }
