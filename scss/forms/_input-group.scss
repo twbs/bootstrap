@@ -22,7 +22,7 @@
   > .form-control:focus,
   > .form-select:focus,
   > .form-floating:focus-within {
-    z-index: 3;
+    z-index: 5;
   }
 
   // Ensure buttons are always above inputs for more visually pleasing borders.
@@ -33,7 +33,7 @@
     z-index: 2;
 
     &:focus {
-      z-index: 3;
+      z-index: 5;
     }
   }
 }
