@@ -48,7 +48,7 @@ const DefaultType = {
   offset: '(number|null)', // TODO v6 @deprecated, keep it for backwards compatibility reasons
   rootMargin: 'string',
   smoothScroll: 'boolean',
-  target: 'element',
+  target: '(string|element)',
   threshold: 'array'
 }
 
