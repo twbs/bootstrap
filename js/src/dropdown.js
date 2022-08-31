@@ -405,7 +405,7 @@ class Dropdown extends BaseComponent {
 
     event.preventDefault()
 
-    const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
+    const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0] || SelectorEngine.next(this, SELECTOR_DATA_TOGGLE)[0]
     const instance = Dropdown.getOrCreateInstance(getToggleButton)
 
     if (isUpOrDownEvent) {
