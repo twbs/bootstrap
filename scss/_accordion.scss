@@ -140,7 +140,10 @@
     &:last-child { border-bottom: 0; }
 
     .accordion-button {
-      @include border-radius(0);
+      &,
+      &.collapsed {
+        @include border-radius(0);
+      }
     }
   }
 }
