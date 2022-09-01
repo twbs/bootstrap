@@ -3,7 +3,7 @@
   --#{$prefix}alert-color: #{$color};
   --#{$prefix}alert-bg: #{$background};
   --#{$prefix}alert-border-color: #{$border};
-  --#{$prefix}alert-link-color: #{ shade-color($color, 20%) };
+  --#{$prefix}alert-link-color: #{shade-color($color, 20%)};
 
   @if $enable-gradients {
     background-image: var(--#{$prefix}gradient);
