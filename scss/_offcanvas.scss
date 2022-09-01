@@ -2,6 +2,7 @@
 
 %offcanvas-css-vars {
   // scss-docs-start offcanvas-css-vars
+  --#{$prefix}offcanvas-zindex: #{$zindex-offcanvas};
   --#{$prefix}offcanvas-width: #{$offcanvas-horizontal-width};
   --#{$prefix}offcanvas-height: #{$offcanvas-vertical-height};
   --#{$prefix}offcanvas-padding-x: #{$offcanvas-padding-x};
@@ -31,7 +32,7 @@
     @include media-breakpoint-down($next) {
       position: fixed;
       bottom: 0;
-      z-index: $zindex-offcanvas;
+      z-index: var(--#{$prefix}offcanvas-zindex);
       display: flex;
       flex-direction: column;
       max-width: 100%;
