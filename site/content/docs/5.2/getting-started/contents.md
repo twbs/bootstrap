@@ -1,12 +1,12 @@
 ---
 layout: docs
 title: Contents
-description: Discover what's included in Bootstrap, including our precompiled and source code flavors.
+description: Discover what's included in Bootstrap, including our compiled and source code flavors.
 group: getting-started
 toc: true
 ---
 
-## Precompiled Bootstrap
+## Compiled Bootstrap
 
 Once downloaded, unzip the compressed folder and you'll see something like this:
 
@@ -62,9 +62,9 @@ bootstrap/
     └── bootstrap.min.js.map
 ```
 
-This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). [Source maps](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Popper](https://popper.js.org/).
+This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). [Source maps](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Popper](https://popper.js.org/).
 
-## CSS files
+### CSS files
 
 Bootstrap includes a handful of options for including some or all of our compiled CSS.
 
@@ -77,7 +77,7 @@ Bootstrap includes a handful of options for including some or all of our compile
 | `bootstrap-reboot.css`<br> `bootstrap-reboot.rtl.css`<br> `bootstrap-reboot.min.css`<br> `bootstrap-reboot.rtl.min.css` | — | [Only Reboot]({{< docsref "/content/reboot" >}}) | — | — |
 {{< /bs-table >}}
 
-## JS files
+### JS files
 
 Similarly, we have options for including some or all of our compiled JavaScript.
 
@@ -90,7 +90,7 @@ Similarly, we have options for including some or all of our compiled JavaScript.
 
 ## Bootstrap source code
 
-The Bootstrap source code download includes the precompiled CSS and JavaScript assets, along with source Sass, JavaScript, and documentation. More specifically, it includes the following and more:
+The Bootstrap source code download includes the compiled CSS and JavaScript assets, along with source Sass, JavaScript, and documentation. More specifically, it includes the following and more:
 
 ```text
 bootstrap/
@@ -106,4 +106,6 @@ bootstrap/
 └── scss/
 ```
 
-The `scss/` and `js/` are the source code for our CSS and JavaScript. The `dist/` folder includes everything listed in the precompiled download section above. The `site/docs/` folder includes the source code for our documentation, and `examples/` of Bootstrap usage. Beyond that, any other included file provides support for packages, license information, and development.
+The `scss/` and `js/` are the source code for our CSS and JavaScript. The `dist/` folder includes everything listed in the compiled download section above. The `site/content/docs/` folder includes the source code for our hosted documentation, including our live examples of Bootstrap usage.
+
+Beyond that, any other included file provides support for packages, license information, and development.

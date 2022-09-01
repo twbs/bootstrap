@@ -20,12 +20,12 @@ describe('FocusTrap', () => {
 
       const trapElement = fixtureEl.querySelector('div')
 
-      spyOn(trapElement, 'focus')
+      const spy = spyOn(trapElement, 'focus')
 
       const focustrap = new FocusTrap({ trapElement })
       focustrap.activate()
 
-      expect(trapElement.focus).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('if configured not to autofocus, should not autofocus itself', () => {
@@ -33,12 +33,12 @@ describe('FocusTrap', () => {
 
       const trapElement = fixtureEl.querySelector('div')
 
-      spyOn(trapElement, 'focus')
+      const spy = spyOn(trapElement, 'focus')
 
       const focustrap = new FocusTrap({ trapElement, autofocus: false })
       focustrap.activate()
 
-      expect(trapElement.focus).not.toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
     })
 
     it('should force focus inside focus trap if it can', () => {
@@ -57,12 +57,12 @@ describe('FocusTrap', () => {
         const inside = document.getElementById('inside')
 
         const focusInListener = () => {
-          expect(inside.focus).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           document.removeEventListener('focusin', focusInListener)
           resolve()
         }
 
-        spyOn(inside, 'focus')
+        const spy = spyOn(inside, 'focus')
         spyOn(SelectorEngine, 'focusableChildren').and.callFake(() => [inside])
 
         document.addEventListener('focusin', focusInListener)
@@ -97,10 +97,10 @@ describe('FocusTrap', () => {
         const outside = document.getElementById('outside')
 
         spyOn(SelectorEngine, 'focusableChildren').and.callFake(() => [first, inside, last])
-        spyOn(first, 'focus').and.callThrough()
+        const spy = spyOn(first, 'focus').and.callThrough()
 
         const focusInListener = () => {
-          expect(first.focus).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           first.removeEventListener('focusin', focusInListener)
           resolve()
         }
@@ -136,10 +136,10 @@ describe('FocusTrap', () => {
         const outside = document.getElementById('outside')
 
         spyOn(SelectorEngine, 'focusableChildren').and.callFake(() => [first, inside, last])
-        spyOn(last, 'focus').and.callThrough()
+        const spy = spyOn(last, 'focus').and.callThrough()
 
         const focusInListener = () => {
-          expect(last.focus).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           last.removeEventListener('focusin', focusInListener)
           resolve()
         }
@@ -167,12 +167,12 @@ describe('FocusTrap', () => {
         focustrap.activate()
 
         const focusInListener = () => {
-          expect(focustrap._config.trapElement.focus).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           document.removeEventListener('focusin', focusInListener)
           resolve()
         }
 
-        spyOn(focustrap._config.trapElement, 'focus')
+        const spy = spyOn(focustrap._config.trapElement, 'focus')
 
         document.addEventListener('focusin', focusInListener)
 
@@ -200,19 +200,19 @@ describe('FocusTrap', () => {
       const focustrap = new FocusTrap({ trapElement: fixtureEl })
       focustrap.activate()
 
-      spyOn(EventHandler, 'off')
+      const spy = spyOn(EventHandler, 'off')
       focustrap.deactivate()
 
-      expect(EventHandler.off).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('doesn\'t try removing event listeners unless it needs to (in case it hasn\'t been activated)', () => {
       const focustrap = new FocusTrap({ trapElement: fixtureEl })
 
-      spyOn(EventHandler, 'off')
+      const spy = spyOn(EventHandler, 'off')
       focustrap.deactivate()
 
-      expect(EventHandler.off).not.toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
     })
   })
 })

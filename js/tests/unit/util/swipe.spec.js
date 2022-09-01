@@ -163,7 +163,7 @@ describe('Swipe', () => {
       deleteDocumentElementOntouchstart()
 
       const swipe = new Swipe(swipeEl)
-      spyOn(swipe, '_handleSwipe')
+      const spy = spyOn(swipe, '_handleSwipe')
 
       mockSwipeGesture(swipeEl, {
         pos: [300, 10],
@@ -173,7 +173,7 @@ describe('Swipe', () => {
       })
 
       restorePointerEvents()
-      expect(swipe._handleSwipe).not.toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
     })
 
     it('should allow swipeRight and call "rightCallback" with pointer events', () => {

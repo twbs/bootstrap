@@ -112,11 +112,11 @@ describe('Collapse', () => {
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl)
 
-      spyOn(collapse, 'show')
+      const spy = spyOn(collapse, 'show')
 
       collapse.toggle()
 
-      expect(collapse.show).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should call hide method if show class is present', () => {
@@ -127,11 +127,11 @@ describe('Collapse', () => {
         toggle: false
       })
 
-      spyOn(collapse, 'hide')
+      const spy = spyOn(collapse, 'hide')
 
       collapse.toggle()
 
-      expect(collapse.hide).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should find collapse children if they have collapse class too not only data-bs-parent', () => {
@@ -174,7 +174,7 @@ describe('Collapse', () => {
     it('should do nothing if is transitioning', () => {
       fixtureEl.innerHTML = '<div></div>'
 
-      spyOn(EventHandler, 'trigger')
+      const spy = spyOn(EventHandler, 'trigger')
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
@@ -184,13 +184,13 @@ describe('Collapse', () => {
       collapse._isTransitioning = true
       collapse.show()
 
-      expect(EventHandler.trigger).not.toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
     })
 
     it('should do nothing if already shown', () => {
       fixtureEl.innerHTML = '<div class="show"></div>'
 
-      spyOn(EventHandler, 'trigger')
+      const spy = spyOn(EventHandler, 'trigger')
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
@@ -199,7 +199,7 @@ describe('Collapse', () => {
 
       collapse.show()
 
-      expect(EventHandler.trigger).not.toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
     })
 
     it('should show a collapsed element', () => {
@@ -418,7 +418,7 @@ describe('Collapse', () => {
     it('should do nothing if is transitioning', () => {
       fixtureEl.innerHTML = '<div></div>'
 
-      spyOn(EventHandler, 'trigger')
+      const spy = spyOn(EventHandler, 'trigger')
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
@@ -428,13 +428,13 @@ describe('Collapse', () => {
       collapse._isTransitioning = true
       collapse.hide()
 
-      expect(EventHandler.trigger).not.toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
     })
 
     it('should do nothing if already shown', () => {
       fixtureEl.innerHTML = '<div></div>'
 
-      spyOn(EventHandler, 'trigger')
+      const spy = spyOn(EventHandler, 'trigger')
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
@@ -443,7 +443,7 @@ describe('Collapse', () => {
 
       collapse.hide()
 
-      expect(EventHandler.trigger).not.toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
     })
 
     it('should hide a collapsed element', () => {
@@ -525,12 +525,12 @@ describe('Collapse', () => {
         const triggerEl = fixtureEl.querySelector('a')
         const nestedTriggerEl = fixtureEl.querySelector('#nested')
 
-        spyOn(Event.prototype, 'preventDefault').and.callThrough()
+        const spy = spyOn(Event.prototype, 'preventDefault').and.callThrough()
 
         triggerEl.addEventListener('click', event => {
           expect(event.target.isEqualNode(nestedTriggerEl)).toBeTrue()
           expect(event.delegateTarget.isEqualNode(triggerEl)).toBeTrue()
-          expect(Event.prototype.preventDefault).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           resolve()
         })
 

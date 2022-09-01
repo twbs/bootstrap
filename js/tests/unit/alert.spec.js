@@ -148,14 +148,14 @@ describe('Alert', () => {
       const alertEl = fixtureEl.querySelector('.alert')
       const alert = new Alert(alertEl)
 
-      spyOn(alert, 'close')
+      const spy = spyOn(alert, 'close')
 
       jQueryMock.fn.alert = Alert.jQueryInterface
       jQueryMock.elements = [alertEl]
 
       jQueryMock.fn.alert.call(jQueryMock, 'close')
 
-      expect(alert.close).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should create new alert instance and call close', () => {

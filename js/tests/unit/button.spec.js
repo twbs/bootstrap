@@ -100,14 +100,14 @@ describe('Button', () => {
       const btnEl = fixtureEl.querySelector('.btn')
       const button = new Button(btnEl)
 
-      spyOn(button, 'toggle')
+      const spy = spyOn(button, 'toggle')
 
       jQueryMock.fn.button = Button.jQueryInterface
       jQueryMock.elements = [btnEl]
 
       jQueryMock.fn.button.call(jQueryMock, 'toggle')
 
-      expect(button.toggle).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should create new button instance and call toggle', () => {

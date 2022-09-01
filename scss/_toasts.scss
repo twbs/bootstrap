@@ -1,11 +1,12 @@
 .toast {
   // scss-docs-start toast-css-vars
+  --#{$prefix}toast-zindex: #{$zindex-toast};
   --#{$prefix}toast-padding-x: #{$toast-padding-x};
   --#{$prefix}toast-padding-y: #{$toast-padding-y};
   --#{$prefix}toast-spacing: #{$toast-spacing};
   --#{$prefix}toast-max-width: #{$toast-max-width};
   @include rfs($toast-font-size, --#{$prefix}toast-font-size);
-  --#{$prefix}toast-color: #{$toast-color}; // stylelint-disable-line custom-property-empty-line-before
+  --#{$prefix}toast-color: #{$toast-color};
   --#{$prefix}toast-bg: #{$toast-background-color};
   --#{$prefix}toast-border-width: #{$toast-border-width};
   --#{$prefix}toast-border-color: #{$toast-border-color};
@@ -38,7 +39,7 @@
 
 .toast-container {
   position: absolute;
-  z-index: $zindex-toast;
+  z-index: var(--#{$prefix}toast-zindex);
   width: max-content;
   max-width: 100%;
   pointer-events: none;

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.0-beta1): offcanvas.js
+ * Bootstrap (v5.2.0): offcanvas.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -114,7 +114,7 @@ class Offcanvas extends BaseComponent {
     this._element.classList.add(CLASS_NAME_SHOWING)
 
     const completeCallBack = () => {
-      if (!this._config.scroll) {
+      if (!this._config.scroll || this._config.backdrop) {
         this._focustrap.activate()
       }
 

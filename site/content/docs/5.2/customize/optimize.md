@@ -19,7 +19,7 @@ If you're not using a component, comment it out or delete it entirely. For examp
 
 Bootstrap's JavaScript includes every component in our primary dist files (`bootstrap.js` and `bootstrap.min.js`), and even our primary dependency (Popper) with our bundle files (`bootstrap.bundle.js` and `bootstrap.bundle.min.js`). While you're customizing via Sass, be sure to remove related JavaScript.
 
-For instance, assuming you're using your own JavaScript bundler like Webpack or Rollup, you'd only import the JavaScript you plan on using. In the example below, we show how to just include our modal JavaScript:
+For instance, assuming you're using your own JavaScript bundler like Webpack, Parcel, or Vite, you'd only import the JavaScript you plan on using. In the example below, we show how to just include our modal JavaScript:
 
 <!-- eslint-skip -->
 ```js
@@ -77,7 +77,7 @@ Whenever possible, be sure to compress all the code you serve to your visitors. 
 
 While minifying and using compression might seem like enough, making your files non-blocking ones is also a big step in making your site well-optimized and fast enough.
 
-If you are using a [Lighthouse](https://developers.google.com/web/tools/lighthouse/) plugin in Google Chrome, you may have stumbled over FCP. [The First Contentful Paint](https://web.dev/fcp/) metric measures the time from when the page starts loading to when any part of the page's content is rendered on the screen.
+If you are using a [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) plugin in Google Chrome, you may have stumbled over FCP. [The First Contentful Paint](https://web.dev/fcp/) metric measures the time from when the page starts loading to when any part of the page's content is rendered on the screen.
 
 You can improve FCP by deferring non-critical JavaScript or CSS. What does that mean? Simply, JavaScript or stylesheets that don't need to be present on the first paint of your page should be marked with `async` or `defer` attributes.
 

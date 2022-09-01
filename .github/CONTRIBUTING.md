@@ -18,9 +18,7 @@ the preferred channel for [bug reports](#bug-reports), [features requests](#feat
 and [submitting pull requests](#pull-requests), but please respect the following
 restrictions:
 
-* Please **do not** use the issue tracker for personal support requests.  Stack
-  Overflow ([`bootstrap-5`](https://stackoverflow.com/questions/tagged/bootstrap-5) tag),
-  [Slack](https://bootstrap-slack.herokuapp.com/) or [IRC](/README.md#community) are better places to get help.
+* Please **do not** use the issue tracker for personal support requests. Stack Overflow ([`bootstrap-5`](https://stackoverflow.com/questions/tagged/bootstrap-5) tag), [our GitHub Discussions](https://github.com/twbs/bootstrap/discussions) or [IRC](/README.md#community) are better places to get help.
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
@@ -69,7 +67,7 @@ Guidelines for bug reports:
 
 3. **Isolate the problem** &mdash; ideally create a [reduced test
    case](https://css-tricks.com/reduced-test-cases/) and a live example.
-   [This JS Bin](https://jsbin.com/lolome/edit?html,output) is a helpful template.
+   These [v4 CodePen](https://codepen.io/team/bootstrap/pen/yLabNQL) and [v5 CodePen](https://codepen.io/team/bootstrap/pen/qBamdLj) are helpful templates.
 
 
 A good bug report shouldn't leave others needing to chase you up for more
