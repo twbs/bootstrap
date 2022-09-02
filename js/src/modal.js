@@ -109,9 +109,6 @@ class Modal extends BaseComponent {
     this._isTransitioning = true
 
     this._scrollBar.hide()
-
-    document.body.classList.add(CLASS_NAME_OPEN)
-
     this._adjustDialog()
 
     this._backdrop.show(() => this._showElement(relatedTarget))
@@ -188,6 +185,8 @@ class Modal extends BaseComponent {
     this._element.classList.add(CLASS_NAME_SHOW)
 
     const transitionComplete = () => {
+      document.body.classList.add(CLASS_NAME_OPEN)
+
       if (this._config.focus) {
         this._focustrap.activate()
       }
