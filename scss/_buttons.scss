@@ -167,6 +167,9 @@
   --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix(color-contrast($primary), $primary, 15%))};
 
   text-decoration: $link-decoration;
+  @if $enable-gradients {
+    background-image: none;
+  }
 
   &:hover,
   &:focus-visible {
