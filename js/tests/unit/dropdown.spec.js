@@ -1491,7 +1491,7 @@ describe('Dropdown', () => {
       expect(spy).toHaveBeenCalledWith(dropdownToggle2)
     })
 
-    it('should be able to show the good menu, even with multiple dropdowns in the same tag', () => {
+    it('should be able to show the proper menu, even with multiple dropdowns in the same tag', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
         '  <button id="dropdown1" class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown toggle</button>',
