@@ -109,7 +109,7 @@ You can replace the text within the `.navbar-brand` with an `<img>`.
 <nav class="navbar bg-light">
   <div class="container">
     <a class="navbar-brand" href="#">
-      <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24">
+      <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="30" height="24">
     </a>
   </div>
 </nav>
@@ -123,7 +123,7 @@ You can also make use of some additional utilities to add an image and text at t
 <nav class="navbar bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
       Bootstrap
     </a>
   </div>
@@ -792,11 +792,19 @@ Some additional CSS variables are also present on `.navbar-nav`:
 
 {{< scss-docs name="navbar-nav-css-vars" file="scss/_navbar.scss" >}}
 
+Customization through CSS variables can be seen on the `.navbar-dark` class where we override specific values without adding duplicate CSS selectors.
+
+{{< scss-docs name="navbar-dark-css-vars" file="scss/_navbar.scss" >}}
+
 ### Sass variables
+
+Variables for all navbars:
 
 {{< scss-docs name="navbar-variables" file="scss/_variables.scss" >}}
 
-{{< scss-docs name="navbar-theme-variables" file="scss/_variables.scss" >}}
+Variables for the [dark navbar](#color-schemes):
+
+{{< scss-docs name="navbar-dark-variables" file="scss/_variables.scss" >}}
 
 ### Sass loop
 

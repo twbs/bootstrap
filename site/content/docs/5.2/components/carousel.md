@@ -281,13 +281,19 @@ Add `.carousel-dark` to the `.carousel` for darker controls, indicators, and cap
 
 ## Custom transition
 
-The transition duration of `.carousel-item` can be changed with the `$carousel-transition-duration` Sass variable before compiling or custom styles if you're using the compiled CSS. If multiple transitions are applied, make sure the transform transition is defined first (eg. `transition: transform 2s ease, opacity .5s ease-out`).
+The transition duration of `.carousel-item` can be changed with the `$carousel-transition-duration` Sass variable before compiling or custom styles if you're using the compiled CSS. If multiple transitions are applied, make sure the transform transition is defined first (e.g. `transition: transform 2s ease, opacity .5s ease-out`).
 
 ## Sass
 
 ### Variables
 
+Variables for all carousels:
+
 {{< scss-docs name="carousel-variables" file="scss/_variables.scss" >}}
+
+Variables for the [dark carousel](#dark-variant):
+
+{{< scss-docs name="carousel-dark-variables" file="scss/_variables.scss" >}}
 
 ## Usage
 
@@ -343,10 +349,10 @@ const carousel = new bootstrap.Carousel(myCarouselElement, {
 | --- | --- |
 | `cycle` | Cycles through the carousel items from left to right. |
 | `dispose` | Destroys an element's carousel. (Removes stored data on the DOM element) |
-| `getInstance` | Static method which allows you to get the carousel instance associated to a DOM element, you can use it like this: `bootstrap.Carousel.getInstance(element)` |
-| `getOrCreateInstance` | Static method which returns a carousel instance associated to a DOM element or create a new one in case it wasn't initialized. You can use it like this: `bootstrap.Carousel.getOrCreateInstance(element)` |
+| `getInstance` | Static method which allows you to get the carousel instance associated to a DOM element, you can use it like this: `bootstrap.Carousel.getInstance(element)`. |
+| `getOrCreateInstance` | Static method which returns a carousel instance associated to a DOM element or create a new one in case it wasn't initialized. You can use it like this: `bootstrap.Carousel.getOrCreateInstance(element)`. |
 | `next` | Cycles to the next item. **Returns to the caller before the next item has been shown** (e.g., before the `slid.bs.carousel` event occurs). |
-| `nextWhenVisible` | Don't cycle carousel to next when the page isn't visible or the carousel or its parent isn't visible. **Returns to the caller before the target item has been shown** |
+| `nextWhenVisible` | Don't cycle carousel to next when the page isn't visible or the carousel or its parent isn't visible. **Returns to the caller before the target item has been shown**. |
 | `pause` | Stops the carousel from cycling through items. |
 | `prev` | Cycles to the previous item. **Returns to the caller before the previous item has been shown** (e.g., before the `slid.bs.carousel` event occurs). |
 | `to` | Cycles the carousel to a particular frame (0 based, similar to an array). **Returns to the caller before the target item has been shown** (e.g., before the `slid.bs.carousel` event occurs). |

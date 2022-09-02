@@ -265,6 +265,7 @@
 }
 
 .navbar-dark {
+  // scss-docs-start navbar-dark-css-vars
   --#{$prefix}navbar-color: #{$navbar-dark-color};
   --#{$prefix}navbar-hover-color: #{$navbar-dark-hover-color};
   --#{$prefix}navbar-disabled-color: #{$navbar-dark-disabled-color};
@@ -273,4 +274,5 @@
   --#{$prefix}navbar-brand-hover-color: #{$navbar-dark-brand-hover-color};
   --#{$prefix}navbar-toggler-border-color: #{$navbar-dark-toggler-border-color};
   --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
+  // scss-docs-end navbar-dark-css-vars
 }

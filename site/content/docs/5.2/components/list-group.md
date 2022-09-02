@@ -485,7 +485,7 @@ Destroys an element's tab.
 
 #### getInstance
 
-*Static* method which allows you to get the tab instance associated with a DOM element
+*Static* method which allows you to get the tab instance associated with a DOM element.
 
 ```js
 const tab = bootstrap.Tab.getInstance('#trigger') // Returns a Bootstrap tab instance
@@ -493,7 +493,7 @@ const tab = bootstrap.Tab.getInstance('#trigger') // Returns a Bootstrap tab ins
 
 #### getOrCreateInstance
 
-*Static* method which allows you to get the tab instance associated with a DOM element, or create a new one in case it wasn't initialized
+*Static* method which allows you to get the tab instance associated with a DOM element, or create a new one in case it wasn't initialized.
 
 ```js
 const tab = bootstrap.Tab.getOrCreateInstance('#trigger') // Returns a Bootstrap tab instance
