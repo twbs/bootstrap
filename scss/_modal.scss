@@ -133,7 +133,7 @@
 
   .btn-close {
     padding: calc(var(--#{$prefix}modal-header-padding-y) * .5) calc(var(--#{$prefix}modal-header-padding-x) * .5);
-    margin: calc(var(--#{$prefix}modal-header-padding-y) * -.5) calc(var(--#{$prefix}modal-header-padding-x) * -.5) calc(var(--#{$prefix}modal-header-padding-y) * -.5) auto;
+    margin: calc(-.5 * var(--#{$prefix}modal-header-padding-y)) calc(-.5 * var(--#{$prefix}modal-header-padding-x)) calc(-.5 * var(--#{$prefix}modal-header-padding-y)) auto;
   }
 }
 
