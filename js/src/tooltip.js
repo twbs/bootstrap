@@ -251,6 +251,7 @@ class Tooltip extends BaseComponent {
       if (this._isHovered === false) {
         this._leave()
       }
+
       this._isHovered = false
     }
 
