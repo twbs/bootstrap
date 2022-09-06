@@ -9,7 +9,22 @@ toc: true
 
 ## Glossary
 
-{{< js.inline >}}
-{{- ( print "```" "css" "\n" ( readFile (path.Join "site/static/docs" .Site.Params.docs_version "assets/data/glossary.data") ) "\n" "```" ) | markdownify -}}
-{{< /js.inline >}}
-
+{{< tables.inline >}}
+{{ $file := split (readFile (path.Join "site/static/docs" .Site.Params.docs_version "assets/data/glossary.data")) "\n" }}
+<table class="table">
+  <tbody>
+    {{- range $file }}
+    {{ $class := split . ":" }}
+    <tr>
+      <td>
+      {{ if gt (len (string (index $class 1))) 1 }}
+      <a href="/docs/{{ $.Site.Params.docs_version }}/{{ (index $class 1) }}">{{ index $class 0 }}</a>
+      {{ else }}
+      <span>{{ index $class 0 }}</span>
+      {{ end }}
+      </td>
+    </tr>
+    {{- end -}}
+  </tbody>
+</table>
+{{< /tables.inline >}}
