@@ -1263,4 +1263,36 @@ describe('Modal', () => {
       expect(modal2._config.backdrop).toBeTrue()
     })
   })
+  
+  describe('toggle between modals', () => {
+    it('should toggle modal-open class on body', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button data-bs-toggle="modal" data-bs-target="#exampleModalToggle2"></button>',
+          '<div id="exampleModalToggle" class="modal fade"><div class="modal-dialog"></div></div>',
+          '<div id="exampleModalToggle2" class="modal"><div class="modal-dialog"></div></div>'
+        ].join('')
+
+        const trigger = fixtureEl.querySelector('button')
+        const modalEl1 = document.querySelector('#exampleModalToggle')
+        const modalEl2 = document.querySelector('#exampleModalToggle2')
+        const modal1 = new Modal(modalEl1)
+
+        modalEl1.addEventListener('shown.bs.modal', () => {
+          expect(document.body.classList.contains('modal-open')).toBe(true)
+          setTimeout(() => trigger.click(), 10)
+        })
+        modalEl1.addEventListener('hidden.bs.modal', () => {
+          expect(document.body.classList.contains('modal-open')).not.toBe(true)
+        })
+
+        modalEl2.addEventListener('shown.bs.modal', () => {
+          expect(document.body.classList.contains('modal-open')).toBe(true)
+          resolve()
+        })
+
+        modal1.show()
+      })
+    })
+  })
 })
