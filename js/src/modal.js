@@ -130,7 +130,6 @@ class Modal extends BaseComponent {
     this._focustrap.deactivate()
 
     this._element.classList.remove(CLASS_NAME_SHOW)
-    document.body.classList.remove(CLASS_NAME_OPEN)
 
     this._queueCallback(() => this._hideModal(), this._element, this._isAnimated())
   }
@@ -243,6 +242,8 @@ class Modal extends BaseComponent {
     this._element.removeAttribute('aria-modal')
     this._element.removeAttribute('role')
     this._isTransitioning = false
+
+    document.body.classList.remove(CLASS_NAME_OPEN)
 
     this._backdrop.hide(() => {
       this._resetAdjustments()
