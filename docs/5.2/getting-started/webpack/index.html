@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
 <link href="/docs/5.2/assets/css/docs.css" rel="stylesheet">
 
@@ -31,23 +31,21 @@
 <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
 <meta name="theme-color" content="#712cf9">
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@getbootstrap">
 <meta name="twitter:creator" content="@getbootstrap">
 <meta name="twitter:title" content="Bootstrap &amp; Webpack">
 <meta name="twitter:description" content="The official guide for how to include and bundle Bootstrap&rsquo;s CSS and JavaScript in your project using Webpack.">
-<meta name="twitter:image" content="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-social.png">
+<meta name="twitter:image" content="/docs/5.2/assets/img/guides/bootstrap-webpack@2x.png">
 
-<!-- Facebook -->
 <meta property="og:url" content="https://getbootstrap.com/docs/5.2/getting-started/webpack/">
 <meta property="og:title" content="Bootstrap &amp; Webpack">
 <meta property="og:description" content="The official guide for how to include and bundle Bootstrap&rsquo;s CSS and JavaScript in your project using Webpack.">
 <meta property="og:type" content="article">
-<meta property="og:image" content="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-social.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1000">
 <meta property="og:image:height" content="500">
+<meta property="og:image" content="/docs/5.2/assets/img/guides/bootstrap-webpack@2x.png">
 
 <script defer src="https://cdn.usefathom.com/script.js" data-site="ITUSEYJG"></script>
 
@@ -145,6 +143,7 @@
 
     <header class="navbar navbar-expand-lg navbar-dark bd-navbar sticky-top">
   <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+    <div class="bd-navbar-toggle">
       <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar" aria-controls="bdSidebar" aria-label="Toggle docs navigation">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi" fill="currentColor" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
@@ -152,14 +151,21 @@
 
         <span class="d-none fs-6 pe-1">Browse</span>
       </button>
+    </div>
 
     <a class="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="Bootstrap">
       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="d-block my-1" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"/></svg>
     </a>
 
-    <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Toggle navigation">
-      <svg class="bi" aria-hidden="true"><use xlink:href="#three-dots"></use></svg>
-    </button>
+    <div class="d-flex">
+      
+        <div class="bd-search" id="docsearch" data-bd-docs-version="5.2"></div>
+      
+
+      <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Toggle navigation">
+        <svg class="bi" aria-hidden="true"><use xlink:href="#three-dots"></use></svg>
+      </button>
+    </div>
 
     <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
       <div class="offcanvas-header px-4 pb-0">
@@ -189,12 +195,6 @@
 
         <hr class="d-lg-none text-white-50">
 
-
-        <div class="bd-search" id="docsearch" data-bd-docs-version="5.2"></div>
-
-        <hr class="d-lg-none text-white-50">
-
-
         <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
           <li class="nav-item col-6 col-lg-auto">
             <a class="nav-link py-2 px-0 px-lg-2" href="https://github.com/twbs" target="_blank" rel="noopener">
@@ -218,7 +218,7 @@
             <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
             <hr class="d-lg-none text-white-50">
           </li>
-
+          
 
 <li class="nav-item dropdown">
   <button type="button" class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
@@ -254,7 +254,7 @@
 </header>
 
 
-
+    
   <div class="container-xxl bd-gutter mt-3 my-md-4 bd-layout">
     <aside class="bd-sidebar">
       <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar" aria-labelledby="bdSidebarOffcanvasLabel">
@@ -480,7 +480,7 @@
 
       </div>
 
-
+      
         <div class="bd-toc mt-3 mb-5 my-lg-0 ps-xl-3 mb-lg-5 text-muted">
           <button class="btn btn-link link-dark p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
             On this page
@@ -495,14 +495,20 @@
     <li><a href="#project-structure">Project structure</a></li>
     <li><a href="#configure-webpack">Configure Webpack</a></li>
     <li><a href="#import-bootstrap">Import Bootstrap</a></li>
+    <li><a href="#production-optimizations">Production optimizations</a>
+      <ul>
+        <li><a href="#extracting-css">Extracting CSS</a></li>
+        <li><a href="#extracting-svg-files">Extracting SVG files</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
           </div>
         </div>
-
+      
 
       <div class="bd-content ps-lg-2">
-
+        
 
         <img class="mb-4 img-fluid rounded-3" srcset="/docs/5.2/assets/img/guides/bootstrap-webpack.png, /docs/5.2/assets/img/guides/bootstrap-webpack@2x.png 2x" src="/docs/5.2/assets/img/guides/bootstrap-webpack.png" width="2000" height="1000" alt="">
 <div class="bd-callout bd-callout-info">
@@ -682,6 +688,69 @@
 <p>Now you can start adding any Bootstrap components you want to use. Be sure to <a href="https://github.com/twbs/examples/tree/main/webpack">check out the complete Webpack example project</a> for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap&rsquo;s CSS and JS that you need.</p>
 </li>
 </ol>
+<h2 id="production-optimizations">Production optimizations <a class="anchor-link" href="#production-optimizations" aria-label="Link to this section: Production optimizations"></a></h2>
+<p>Depending on your setup, you may want to implement some additional security and speed optimizations useful for running the project in production. Note that these optimizations are not applied on <a href="https://github.com/twbs/examples/tree/main/webpack">the Webpack example project</a> and are up to you to implement.</p>
+<h3 id="extracting-css">Extracting CSS <a class="anchor-link" href="#extracting-css" aria-label="Link to this section: Extracting CSS"></a></h3>
+<p>The <code>style-loader</code> we configured above conveniently emits CSS into the bundle so that manually loading a CSS file in <code>dist/index.html</code> isn&rsquo;t necessary. This approach may not work with a strict Content Security Policy, however, and it may become a bottleneck in your application due to the large bundle size.</p>
+<p>To separate the CSS so that we can load it directly from <code>dist/index.html</code>, use the <code>mini-css-extract-loader</code> Webpack plugin.</p>
+<p>First, install the plugin:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npm install --save-dev mini-css-extract-plugin
+</span></span></code></pre></div><p>Then instantiate and use the plugin in the Webpack configuration:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl"><span class="gd">--- a/webpack/webpack.config.js
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+++ b/webpack/webpack.config.js
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span><span class="gu">@@ -1,8 +1,10 @@
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span><span class="gi">+const miniCssExtractPlugin = require(&#39;mini-css-extract-plugin&#39;)
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span> const path = require(&#39;path&#39;)
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"> module.exports = {
+</span></span><span class="line"><span class="cl">   mode: &#39;development&#39;,
+</span></span><span class="line"><span class="cl">   entry: &#39;./src/js/main.js&#39;,
+</span></span><span class="line"><span class="cl"><span class="gi">+  plugins: [new miniCssExtractPlugin()],
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span>   output: {
+</span></span><span class="line"><span class="cl">     filename: &#34;main.js&#34;,
+</span></span><span class="line"><span class="cl">     path: path.resolve(__dirname, &#34;dist&#34;),
+</span></span><span class="line"><span class="cl"><span class="gu">@@ -18,8 +20,8 @@ module.exports = {
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span>         test: /\.(scss)$/,
+</span></span><span class="line"><span class="cl">         use: [
+</span></span><span class="line"><span class="cl">           {
+</span></span><span class="line"><span class="cl"><span class="gd">-            // Adds CSS to the DOM by injecting a `&lt;style&gt;` tag
+</span></span></span><span class="line"><span class="cl"><span class="gd">-            loader: &#39;style-loader&#39;
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+            // Extracts CSS for each JS file that includes CSS
+</span></span></span><span class="line"><span class="cl"><span class="gi">+            loader: miniCssExtractPlugin.loader
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span>           },
+</span></span><span class="line"><span class="cl">           {
+</span></span></code></pre></div><p>After running <code>npm run build</code> again, there will be a new file <code>dist/main.css</code>, which will contain all of the CSS imported by <code>src/js/main.js</code>. If you view <code>dist/index.html</code> in your browser now, the style will be missing, as it is now in <code>dist/main.css</code>. You can include the generated CSS in <code>dist/index.html</code> like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl"><span class="gd">--- a/webpack/dist/index.html
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+++ b/webpack/dist/index.html
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span><span class="gu">@@ -3,6 +3,7 @@
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span>   &lt;head&gt;
+</span></span><span class="line"><span class="cl">     &lt;meta charset=&#34;utf-8&#34;&gt;
+</span></span><span class="line"><span class="cl">     &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1&#34;&gt;
+</span></span><span class="line"><span class="cl"><span class="gi">+    &lt;link rel=&#34;stylesheet&#34; href=&#34;./main.css&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span>     &lt;title&gt;Bootstrap w/ Webpack&lt;/title&gt;
+</span></span><span class="line"><span class="cl">   &lt;/head&gt;
+</span></span><span class="line"><span class="cl">   &lt;body&gt;
+</span></span></code></pre></div><h3 id="extracting-svg-files">Extracting SVG files <a class="anchor-link" href="#extracting-svg-files" aria-label="Link to this section: Extracting SVG files"></a></h3>
+<p>Bootstrap&rsquo;s CSS includes multiple references to SVG files via inline <code>data:</code> URIs. If you define a Content Security Policy for your project that blocks <code>data:</code> URIs for images, then these SVG files will not load. You can get around this problem by extracting the inline SVG files using Webpack&rsquo;s asset modules feature.</p>
+<p>Configure Webpack to extract inline SVG files like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl"><span class="gd">--- a/webpack/webpack.config.js
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+++ b/webpack/webpack.config.js
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span><span class="gu">@@ -16,6 +16,14 @@ module.exports = {
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span>   },
+</span></span><span class="line"><span class="cl">   module: {
+</span></span><span class="line"><span class="cl">     rules: [
+</span></span><span class="line"><span class="cl"><span class="gi">+      {
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        mimetype: &#39;image/svg+xml&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        scheme: &#39;data&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        type: &#39;asset/resource&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        generator: {
+</span></span></span><span class="line"><span class="cl"><span class="gi">+          filename: &#39;icons/[hash].svg&#39;
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        }
+</span></span></span><span class="line"><span class="cl"><span class="gi">+      },
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span>       {
+</span></span><span class="line"><span class="cl">         test: /\.(scss)$/,
+</span></span><span class="line"><span class="cl">         use: [
+</span></span></code></pre></div><p>After running <code>npm run build</code> again, you&rsquo;ll find the SVG files extracted into <code>dist/icons</code> and properly referenced from CSS.</p>
 <hr class="my-5">
 <p><em>See something wrong or out of date here? Please <a href="https://github.com/twbs/bootstrap/issues/new/choose">open an issue on GitHub</a>. Need help troubleshooting? <a href="https://github.com/twbs/bootstrap/discussions">Search or start a discussion</a> on GitHub.</em>
 
@@ -701,7 +770,7 @@
         <ul class="list-unstyled small text-muted">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.2/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.2.0.</li>
+          <li class="mb-2">Currently v5.2.1.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -750,7 +819,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -759,12 +828,12 @@
 <script src="/docs/5.2/assets/js/docs.min.js"></script>
 
 <script>
-
+  
   document.querySelectorAll('.btn-edit').forEach(btn => {
     btn.addEventListener('click', event => {
       const htmlSnippet = event.target.closest('.bd-code-snippet').querySelector('.bd-example').innerHTML
 
-
+      
       const classes = Array.from(event.target.closest('.bd-code-snippet').querySelector('.bd-example').classList).join(' ')
 
       const jsSnippet = event.target.closest('.bd-code-snippet').querySelector('.btn-edit').getAttribute('data-sb-js-snippet')
@@ -778,10 +847,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.2.0\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.2.1\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.2\.0\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.2\.1\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 
@@ -808,7 +877,7 @@ ${htmlSnippet.replace(/^/gm, '    ')}
 </script>
 
 
-
+    
   <div class="position-fixed"><input type="text" tabindex="-1"></div>
 
   </body>
