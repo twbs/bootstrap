@@ -644,7 +644,9 @@ describe('Modal', () => {
           const mouseDown = createEvent('mousedown')
 
           modalEl.dispatchEvent(mouseDown)
+          modalEl.click()
           modalEl.dispatchEvent(mouseDown)
+          modalEl.click()
 
           setTimeout(() => {
             expect(spy).toHaveBeenCalledTimes(1)
@@ -719,9 +721,11 @@ describe('Modal', () => {
           const mouseDown = createEvent('mousedown')
 
           dialogEl.dispatchEvent(mouseDown)
+          modalEl.click()
           expect(spy).not.toHaveBeenCalled()
 
           modalEl.dispatchEvent(mouseDown)
+          modalEl.click()
           expect(spy).toHaveBeenCalled()
           resolve()
         })
