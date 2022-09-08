@@ -98,7 +98,7 @@ describe('Modal', () => {
           expect(modalEl.getAttribute('aria-hidden')).toBeNull()
           expect(modalEl.style.display).toEqual('block')
           expect(document.querySelector('.modal-backdrop')).not.toBeNull()
-          expect(document.body.classList.contains('modal-open')).toBe(true)
+          expect(document.body).toHaveClasss('modal-open')
           resolve()
         })
 
@@ -699,7 +699,7 @@ describe('Modal', () => {
           expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
           expect(modalEl.style.display).toEqual('none')
           expect(backdropSpy).toHaveBeenCalled()
-          expect(document.body.classList.contains('modal-open')).not.toBe(true)
+          expect(document.body).not.toHaveClass('modal-open')
           resolve()
         })
 
@@ -1279,15 +1279,15 @@ describe('Modal', () => {
         const modal1 = new Modal(modalEl1)
 
         modalEl1.addEventListener('shown.bs.modal', () => {
-          expect(document.body.classList.contains('modal-open')).toBe(true)
+          expect(document.body).toHaveClass('modal-open'))
           setTimeout(() => trigger.click(), 10)
         })
         modalEl1.addEventListener('hidden.bs.modal', () => {
-          expect(document.body.classList.contains('modal-open')).not.toBe(true)
+          expect(document.body).not.toHaveClass('modal-open')
         })
 
         modalEl2.addEventListener('shown.bs.modal', () => {
-          expect(document.body.classList.contains('modal-open')).toBe(true)
+          expect(document.body).toHaveClass('modal-open')
           resolve()
         })
 
