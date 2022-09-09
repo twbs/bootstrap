@@ -379,11 +379,12 @@ If your code declares a `$utilities` map before importing `bootstrap/scss/utilit
 
 ```scss
 $utilities: (
-  // Adds a new font-variant utility
-  "font-variant": (
-    class: fv,
-    property: font-variant,
-    values: tabular-nums small-caps,
+  // Adds a new cursor utility
+  "cursor": (
+    property: cursor,
+    class: cursor,
+    responsive: true,
+    values: auto pointer grab,
   ),
   // Redefines the overflow utility
   "overflow": (
@@ -416,6 +417,7 @@ After importing `bootstrap/scss/utilities`, you can use mixins to:
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
 
+// Adds a new cursor utility
 @include utilities-add(cursor, (
   property: cursor,
   class: cursor,
@@ -423,7 +425,7 @@ After importing `bootstrap/scss/utilities`, you can use mixins to:
   values: auto pointer grab,
 ));
 
-// Remove user-select and shadow
+// Removes user-select and shadow
 @include utilities-remove(user-select, shadow);
 
 @import "bootstrap/scss/utilities/api";
