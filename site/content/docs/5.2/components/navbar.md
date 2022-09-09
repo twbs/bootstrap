@@ -792,11 +792,19 @@ Some additional CSS variables are also present on `.navbar-nav`:
 
 {{< scss-docs name="navbar-nav-css-vars" file="scss/_navbar.scss" >}}
 
+Customization through CSS variables can be seen on the `.navbar-dark` class where we override specific values without adding duplicate CSS selectors.
+
+{{< scss-docs name="navbar-dark-css-vars" file="scss/_navbar.scss" >}}
+
 ### Sass variables
+
+Variables for all navbars:
 
 {{< scss-docs name="navbar-variables" file="scss/_variables.scss" >}}
 
-{{< scss-docs name="navbar-theme-variables" file="scss/_variables.scss" >}}
+Variables for the [dark navbar](#color-schemes):
+
+{{< scss-docs name="navbar-dark-variables" file="scss/_variables.scss" >}}
 
 ### Sass loop
 

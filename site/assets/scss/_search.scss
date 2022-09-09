@@ -23,6 +23,7 @@
   --docsearch-hit-shadow: none;
 
   z-index: 2000; // Make sure to be over all components showcased in the documentation
+  cursor: auto; // Needed because of [role="button"] in Algolia search modal. Remove once https://github.com/algolia/docsearch/issues/1370 is tackled.
 
   @include media-breakpoint-up(lg) {
     padding-top: 4rem;

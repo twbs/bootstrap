@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.0): tooltip.js
+ * Bootstrap (v5.2.1): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -111,7 +111,7 @@ class Tooltip extends BaseComponent {
     // Private
     this._isEnabled = true
     this._timeout = 0
-    this._isHovered = false
+    this._isHovered = null
     this._activeTrigger = {}
     this._popper = null
     this._templateFactory = null
@@ -246,14 +246,13 @@ class Tooltip extends BaseComponent {
     }
 
     const complete = () => {
-      const previousHoverState = this._isHovered
-
-      this._isHovered = false
       EventHandler.trigger(this._element, this.constructor.eventName(EVENT_SHOWN))
 
-      if (previousHoverState) {
+      if (this._isHovered === false) {
         this._leave()
       }
+
+      this._isHovered = false
     }
 
     this._queueCallback(complete, this.tip, this._isAnimated())
@@ -283,7 +282,7 @@ class Tooltip extends BaseComponent {
     this._activeTrigger[TRIGGER_CLICK] = false
     this._activeTrigger[TRIGGER_FOCUS] = false
     this._activeTrigger[TRIGGER_HOVER] = false
-    this._isHovered = false
+    this._isHovered = null // it is a trick to support manual triggering
 
     const complete = () => {
       if (this._isWithActiveTrigger()) {

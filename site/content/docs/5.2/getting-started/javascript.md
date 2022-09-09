@@ -222,8 +222,8 @@ Every Bootstrap plugin exposes the following methods and static properties.
 {{< bs-table "table" >}}
 | Static property | Description |
 | --- | --- |
-| `NAME`  | Returns the plugin name. (Example: `bootstrap.Tooltip.NAME`) |
-| `VERSION`  | The version of each of Bootstrap's plugins can be accessed via the `VERSION` property of the plugin's constructor (Example: `bootstrap.Tooltip.VERSION`) |
+| `NAME` | Returns the plugin name. (Example: `bootstrap.Tooltip.NAME`) |
+| `VERSION` | The version of each of Bootstrap's plugins can be accessed via the `VERSION` property of the plugin's constructor (Example: `bootstrap.Tooltip.VERSION`) |
 {{< /bs-table >}}
 
 ## Sanitizer
