@@ -115,7 +115,7 @@
 //
 
 .bd-example-row [class^="col"],
-.bd-example-cssgrid .grid > * {
+.bd-example-cssgrid [class*="grid"] > * {
   padding-top: .75rem;
   padding-bottom: .75rem;
   background-color: rgba(var(--bd-violet-rgb), .1);

@@ -37,9 +37,9 @@ They can also be used in [stacks]({{< docsref "/helpers/stacks" >}}):
 
 {{< example >}}
 <div class="hstack gap-3">
-  <div class="bg-light border">First item</div>
-  <div class="bg-light border ms-auto">Second item</div>
+  <div class="bg-body-tertiary border">First item</div>
+  <div class="bg-body-tertiary border ms-auto">Second item</div>
   <div class="vr"></div>
-  <div class="bg-light border">Third item</div>
+  <div class="bg-body-tertiary border">Third item</div>
 </div>
 {{< /example >}}
