@@ -129,12 +129,12 @@
 
 .bd-example-row-flex-cols .row {
   min-height: 10rem;
-  background-color: rgba(var(--bs-violet-rgb), .1);
+  background-color: rgba(var(--bd-violet-rgb), .1);
 }
 
 .bd-example-flex div {
-  background-color: rgba(var(--bs-violet-rgb), .15);
-  border: 1px solid rgba(var(--bs-violet-rgb), .15);
+  background-color: rgba(var(--bd-violet-rgb), .15);
+  border: 1px solid rgba(var(--bd-violet-rgb), .15);
 }
 
 // Grid mixins
