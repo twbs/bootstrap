@@ -24,6 +24,8 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
 
 ### Vertical alignment
 
+Change the vertical alignment with any of the responsive `align-items-*` classes.
+
 {{< example class="bd-example-row bd-example-row-flex-cols" >}}
 <div class="container text-center">
   <div class="row align-items-start">
@@ -37,6 +39,11 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
       One of three columns
     </div>
   </div>
+</div>
+{{< /example >}}
+
+{{< example class="bd-example-row bd-example-row-flex-cols" >}}
+<div class="container text-center">
   <div class="row align-items-center">
     <div class="col">
       One of three columns
@@ -48,6 +55,11 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
       One of three columns
     </div>
   </div>
+</div>
+{{< /example >}}
+
+{{< example class="bd-example-row bd-example-row-flex-cols" >}}
+<div class="container text-center">
   <div class="row align-items-end">
     <div class="col">
       One of three columns
@@ -61,6 +73,8 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
   </div>
 </div>
 {{< /example >}}
+
+Or, change the alignment of each column individually with any of the responsive `.align-self-*` classes.
 
 {{< example class="bd-example-row bd-example-row-flex-cols" >}}
 <div class="container text-center">
