@@ -201,7 +201,7 @@ You may also apply this break at specific breakpoints with our [responsive displ
 
 ### Order classes
 
-Use `.order-` classes for controlling the **visual order** of your content. These classes are responsive, so you can set the `order` by breakpoint (e.g., `.order-1.order-md-2`). Includes support for `1` through `5` across all six grid tiers.
+Use `.order-` classes for controlling the **visual order** of your content. These classes are responsive, so you can set the `order` by breakpoint (e.g., `.order-1.order-md-2`). Includes support for `1` through `5` across all six grid tiers. If you need more `.order-*` classes, you can modify the default number via Sass variable.
 
 {{< example class="bd-example-row" >}}
 <div class="container text-center">
@@ -301,11 +301,12 @@ With the move to flexbox in v4, you can use margin utilities like `.me-auto` to 
 
 The `.col-*` classes can also be used outside a `.row` to give an element a specific width. Whenever column classes are used as non-direct children of a row, the paddings are omitted.
 
-{{< example >}}
-<div class="col-3 bg-light p-3 border">
+{{< example class="bd-example-row" >}}
+<div class="col-3 p-3 mb-2">
   .col-3: width of 25%
 </div>
-<div class="col-sm-9 bg-light p-3 border">
+
+<div class="col-sm-9 p-3">
   .col-sm-9: width of 75% above sm breakpoint
 </div>
 {{< /example >}}
