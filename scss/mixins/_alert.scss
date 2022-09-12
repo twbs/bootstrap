@@ -9,7 +9,7 @@
   }
 
   .alert-link {
-    color: shade-color($color, 20%);
+    color: shift-color($color, 20%);
   }
 }
 // scss-docs-end alert-variant-mixin

@@ -76,105 +76,105 @@ $color-contrast-dark:      $black !default;
 $color-contrast-light:     $white !default;
 
 // fusv-disable
-$blue-100: tint-color($blue, 80%) !default;
-$blue-200: tint-color($blue, 60%) !default;
-$blue-300: tint-color($blue, 40%) !default;
-$blue-400: tint-color($blue, 20%) !default;
+$blue-100: shift-color($blue, -80%) !default;
+$blue-200: shift-color($blue, -60%) !default;
+$blue-300: shift-color($blue, -40%) !default;
+$blue-400: shift-color($blue, -20%) !default;
 $blue-500: $blue !default;
-$blue-600: shade-color($blue, 20%) !default;
-$blue-700: shade-color($blue, 40%) !default;
-$blue-800: shade-color($blue, 60%) !default;
-$blue-900: shade-color($blue, 80%) !default;
+$blue-600: shift-color($blue, 20%) !default;
+$blue-700: shift-color($blue, 40%) !default;
+$blue-800: shift-color($blue, 60%) !default;
+$blue-900: shift-color($blue, 80%) !default;
 
-$indigo-100: tint-color($indigo, 80%) !default;
-$indigo-200: tint-color($indigo, 60%) !default;
-$indigo-300: tint-color($indigo, 40%) !default;
-$indigo-400: tint-color($indigo, 20%) !default;
+$indigo-100: shift-color($indigo, -80%) !default;
+$indigo-200: shift-color($indigo, -60%) !default;
+$indigo-300: shift-color($indigo, -40%) !default;
+$indigo-400: shift-color($indigo, -20%) !default;
 $indigo-500: $indigo !default;
-$indigo-600: shade-color($indigo, 20%) !default;
-$indigo-700: shade-color($indigo, 40%) !default;
-$indigo-800: shade-color($indigo, 60%) !default;
-$indigo-900: shade-color($indigo, 80%) !default;
+$indigo-600: shift-color($indigo, 20%) !default;
+$indigo-700: shift-color($indigo, 40%) !default;
+$indigo-800: shift-color($indigo, 60%) !default;
+$indigo-900: shift-color($indigo, 80%) !default;
 
-$purple-100: tint-color($purple, 80%) !default;
-$purple-200: tint-color($purple, 60%) !default;
-$purple-300: tint-color($purple, 40%) !default;
-$purple-400: tint-color($purple, 20%) !default;
+$purple-100: shift-color($purple, -80%) !default;
+$purple-200: shift-color($purple, -60%) !default;
+$purple-300: shift-color($purple, -40%) !default;
+$purple-400: shift-color($purple, -20%) !default;
 $purple-500: $purple !default;
-$purple-600: shade-color($purple, 20%) !default;
-$purple-700: shade-color($purple, 40%) !default;
-$purple-800: shade-color($purple, 60%) !default;
-$purple-900: shade-color($purple, 80%) !default;
+$purple-600: shift-color($purple, 20%) !default;
+$purple-700: shift-color($purple, 40%) !default;
+$purple-800: shift-color($purple, 60%) !default;
+$purple-900: shift-color($purple, 80%) !default;
 
-$pink-100: tint-color($pink, 80%) !default;
-$pink-200: tint-color($pink, 60%) !default;
-$pink-300: tint-color($pink, 40%) !default;
-$pink-400: tint-color($pink, 20%) !default;
+$pink-100: shift-color($pink, -80%) !default;
+$pink-200: shift-color($pink, -60%) !default;
+$pink-300: shift-color($pink, -40%) !default;
+$pink-400: shift-color($pink, -20%) !default;
 $pink-500: $pink !default;
-$pink-600: shade-color($pink, 20%) !default;
-$pink-700: shade-color($pink, 40%) !default;
-$pink-800: shade-color($pink, 60%) !default;
-$pink-900: shade-color($pink, 80%) !default;
+$pink-600: shift-color($pink, 20%) !default;
+$pink-700: shift-color($pink, 40%) !default;
+$pink-800: shift-color($pink, 60%) !default;
+$pink-900: shift-color($pink, 80%) !default;
 
-$red-100: tint-color($red, 80%) !default;
-$red-200: tint-color($red, 60%) !default;
-$red-300: tint-color($red, 40%) !default;
-$red-400: tint-color($red, 20%) !default;
+$red-100: shift-color($red, -80%) !default;
+$red-200: shift-color($red, -60%) !default;
+$red-300: shift-color($red, -40%) !default;
+$red-400: shift-color($red, -20%) !default;
 $red-500: $red !default;
-$red-600: shade-color($red, 20%) !default;
-$red-700: shade-color($red, 40%) !default;
-$red-800: shade-color($red, 60%) !default;
-$red-900: shade-color($red, 80%) !default;
+$red-600: shift-color($red, 20%) !default;
+$red-700: shift-color($red, 40%) !default;
+$red-800: shift-color($red, 60%) !default;
+$red-900: shift-color($red, 80%) !default;
 
-$orange-100: tint-color($orange, 80%) !default;
-$orange-200: tint-color($orange, 60%) !default;
-$orange-300: tint-color($orange, 40%) !default;
-$orange-400: tint-color($orange, 20%) !default;
+$orange-100: shift-color($orange, -80%) !default;
+$orange-200: shift-color($orange, -60%) !default;
+$orange-300: shift-color($orange, -40%) !default;
+$orange-400: shift-color($orange, -20%) !default;
 $orange-500: $orange !default;
-$orange-600: shade-color($orange, 20%) !default;
-$orange-700: shade-color($orange, 40%) !default;
-$orange-800: shade-color($orange, 60%) !default;
-$orange-900: shade-color($orange, 80%) !default;
+$orange-600: shift-color($orange, 20%) !default;
+$orange-700: shift-color($orange, 40%) !default;
+$orange-800: shift-color($orange, 60%) !default;
+$orange-900: shift-color($orange, 80%) !default;
 
-$yellow-100: tint-color($yellow, 80%) !default;
-$yellow-200: tint-color($yellow, 60%) !default;
-$yellow-300: tint-color($yellow, 40%) !default;
-$yellow-400: tint-color($yellow, 20%) !default;
+$yellow-100: shift-color($yellow, -80%) !default;
+$yellow-200: shift-color($yellow, -60%) !default;
+$yellow-300: shift-color($yellow, -40%) !default;
+$yellow-400: shift-color($yellow, -20%) !default;
 $yellow-500: $yellow !default;
-$yellow-600: shade-color($yellow, 20%) !default;
-$yellow-700: shade-color($yellow, 40%) !default;
-$yellow-800: shade-color($yellow, 60%) !default;
-$yellow-900: shade-color($yellow, 80%) !default;
+$yellow-600: shift-color($yellow, 20%) !default;
+$yellow-700: shift-color($yellow, 40%) !default;
+$yellow-800: shift-color($yellow, 60%) !default;
+$yellow-900: shift-color($yellow, 80%) !default;
 
-$green-100: tint-color($green, 80%) !default;
-$green-200: tint-color($green, 60%) !default;
-$green-300: tint-color($green, 40%) !default;
-$green-400: tint-color($green, 20%) !default;
+$green-100: shift-color($green, -80%) !default;
+$green-200: shift-color($green, -60%) !default;
+$green-300: shift-color($green, -40%) !default;
+$green-400: shift-color($green, -20%) !default;
 $green-500: $green !default;
-$green-600: shade-color($green, 20%) !default;
-$green-700: shade-color($green, 40%) !default;
-$green-800: shade-color($green, 60%) !default;
-$green-900: shade-color($green, 80%) !default;
+$green-600: shift-color($green, 20%) !default;
+$green-700: shift-color($green, 40%) !default;
+$green-800: shift-color($green, 60%) !default;
+$green-900: shift-color($green, 80%) !default;
 
-$teal-100: tint-color($teal, 80%) !default;
-$teal-200: tint-color($teal, 60%) !default;
-$teal-300: tint-color($teal, 40%) !default;
-$teal-400: tint-color($teal, 20%) !default;
+$teal-100: shift-color($teal, -80%) !default;
+$teal-200: shift-color($teal, -60%) !default;
+$teal-300: shift-color($teal, -40%) !default;
+$teal-400: shift-color($teal, -20%) !default;
 $teal-500: $teal !default;
-$teal-600: shade-color($teal, 20%) !default;
-$teal-700: shade-color($teal, 40%) !default;
-$teal-800: shade-color($teal, 60%) !default;
-$teal-900: shade-color($teal, 80%) !default;
+$teal-600: shift-color($teal, 20%) !default;
+$teal-700: shift-color($teal, 40%) !default;
+$teal-800: shift-color($teal, 60%) !default;
+$teal-900: shift-color($teal, 80%) !default;
 
-$cyan-100: tint-color($cyan, 80%) !default;
-$cyan-200: tint-color($cyan, 60%) !default;
-$cyan-300: tint-color($cyan, 40%) !default;
-$cyan-400: tint-color($cyan, 20%) !default;
+$cyan-100: shift-color($cyan, -80%) !default;
+$cyan-200: shift-color($cyan, -60%) !default;
+$cyan-300: shift-color($cyan, -40%) !default;
+$cyan-400: shift-color($cyan, -20%) !default;
 $cyan-500: $cyan !default;
-$cyan-600: shade-color($cyan, 20%) !default;
-$cyan-700: shade-color($cyan, 40%) !default;
-$cyan-800: shade-color($cyan, 60%) !default;
-$cyan-900: shade-color($cyan, 80%) !default;
+$cyan-600: shift-color($cyan, 20%) !default;
+$cyan-700: shift-color($cyan, 40%) !default;
+$cyan-800: shift-color($cyan, 60%) !default;
+$cyan-900: shift-color($cyan, 80%) !default;
 
 $blues: (
   "blue-100": $blue-100,
@@ -780,13 +780,13 @@ $btn-border-radius-lg:        $border-radius-lg !default;
 $btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 $btn-hover-bg-shade-amount:       15% !default;
-$btn-hover-bg-tint-amount:        15% !default;
+$btn-hover-bg-tint-amount:        -15% !default;
 $btn-hover-border-shade-amount:   20% !default;
-$btn-hover-border-tint-amount:    10% !default;
+$btn-hover-border-tint-amount:    -10% !default;
 $btn-active-bg-shade-amount:      20% !default;
-$btn-active-bg-tint-amount:       20% !default;
+$btn-active-bg-tint-amount:       -20% !default;
 $btn-active-border-shade-amount:  25% !default;
-$btn-active-border-tint-amount:   10% !default;
+$btn-active-border-tint-amount:   -10% !default;
 // scss-docs-end btn-variables
 
 
@@ -839,7 +839,7 @@ $input-border-radius-sm:                $border-radius-sm !default;
 $input-border-radius-lg:                $border-radius-lg !default;
 
 $input-focus-bg:                        $input-bg !default;
-$input-focus-border-color:              tint-color($component-active-bg, 50%) !default;
+$input-focus-border-color:              shift-color($component-active-bg, -50%) !default;
 $input-focus-color:                     $input-color !default;
 $input-focus-width:                     $input-btn-focus-width !default;
 $input-focus-box-shadow:                $input-btn-focus-box-shadow !default;
@@ -983,7 +983,7 @@ $form-range-thumb-border-radius:           1rem !default;
 $form-range-thumb-box-shadow:              0 .1rem .25rem rgba($black, .1) !default;
 $form-range-thumb-focus-box-shadow:        0 0 0 1px $body-bg, $input-focus-box-shadow !default;
 $form-range-thumb-focus-box-shadow-width:  $input-focus-width !default; // For focus box shadow issue in Edge
-$form-range-thumb-active-bg:               tint-color($component-active-bg, 70%) !default;
+$form-range-thumb-active-bg:               shift-color($component-active-bg, -70%) !default;
 $form-range-thumb-disabled-bg:             $gray-500 !default;
 $form-range-thumb-transition:              background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 // scss-docs-end form-range-variables
@@ -991,7 +991,7 @@ $form-range-thumb-transition:              background-color .15s ease-in-out, bo
 // scss-docs-start form-file-variables
 $form-file-button-color:          $input-color !default;
 $form-file-button-bg:             $input-group-addon-bg !default;
-$form-file-button-hover-bg:       shade-color($form-file-button-bg, 5%) !default;
+$form-file-button-hover-bg:       shift-color($form-file-button-bg, 5%) !default;
 // scss-docs-end form-file-variables
 
 // scss-docs-start form-floating-variables
@@ -1144,7 +1144,7 @@ $dropdown-divider-margin-y:         $spacer * .5 !default;
 $dropdown-box-shadow:               $box-shadow !default;
 
 $dropdown-link-color:               $gray-900 !default;
-$dropdown-link-hover-color:         shade-color($dropdown-link-color, 10%) !default;
+$dropdown-link-hover-color:         shift-color($dropdown-link-color, 10%) !default;
 $dropdown-link-hover-bg:            $gray-200 !default;
 
 $dropdown-link-active-color:        $component-active-color !default;
@@ -1271,8 +1271,8 @@ $accordion-button-padding-x:              $accordion-padding-x !default;
 $accordion-button-color:                  $accordion-color !default;
 $accordion-button-bg:                     var(--#{$prefix}accordion-bg) !default;
 $accordion-transition:                    $btn-transition, border-radius .15s ease !default;
-$accordion-button-active-bg:              tint-color($component-active-bg, 90%) !default;
-$accordion-button-active-color:           shade-color($primary, 10%) !default;
+$accordion-button-active-bg:              shift-color($component-active-bg, -90%) !default;
+$accordion-button-active-color:           shift-color($primary, 10%) !default;
 
 $accordion-button-focus-border-color:     $input-focus-border-color !default;
 $accordion-button-focus-box-shadow:       $btn-focus-box-shadow !default;
@@ -1331,7 +1331,7 @@ $popover-inner-border-radius:       subtract($popover-border-radius, $popover-bo
 $popover-box-shadow:                $box-shadow !default;
 
 $popover-header-font-size:          $font-size-base !default;
-$popover-header-bg:                 shade-color($popover-bg, 6%) !default;
+$popover-header-bg:                 shift-color($popover-bg, 6%) !default;
 $popover-header-color:              $headings-color !default;
 $popover-header-padding-y:          .5rem !default;
 $popover-header-padding-x:          $spacer !default;
