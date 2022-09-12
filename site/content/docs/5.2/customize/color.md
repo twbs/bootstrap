@@ -14,7 +14,7 @@ toc: true
 
 **Bootstrap now supports color modes, starting with dark mode!** After upgrading to v5.3.0, you'll be able to implement your own color mode toggler (see below for an example from Bootstrap's docs) and apply the different color modes as you see fit. Color modes can be toggled globally on the `<html>` element, or on specific components and elements, thanks to the `data-bs-theme` attribute.
 
-For example, to change the toggle mode of a dropdown menu, add `data-bs-theme="light"` or `data-bs-theme="dark"` to the parent `.dropdown`. Now, no matter the global color mode, these dropdowns will display as intended.
+For example, to change the color mode of a dropdown menu, add `data-bs-theme="light"` or `data-bs-theme="dark"` to the parent `.dropdown`. Now, no matter the global color mode, these dropdowns will display as intended.
 
 {{< example class="d-flex justify-content-between" >}}
 <div class="dropdown" data-bs-theme="light">
@@ -111,8 +111,6 @@ Use `data-bs-theme` on a nested element to change the color mode for a group of 
 </div>
 {{< /example >}}
 
-
-
 ### Custom color modes
 
 While the primary use case for color modes is light and dark mode, custom color modes are also possible. Create your own `data-bs-theme` selector with a custom value as the name of your color mode, then modify our Sass and CSS variables as needed. We opted to create a separate `_variables-dark.scss` stylesheet to house Bootstrap's dark mode specific Sass variables, but that's not required for you.
@@ -168,7 +166,8 @@ Colors ending in `--rgb` provide the `red, green, blue` values for use in `rgb()
 | **Body —** Default foreground (color) and background, including components. | <div class="p-3 mb-1 rounded-2" style="background-color: var(--bs-body-color);">&nbsp;</div> <div class="p-3 rounded-2 border" style="background-color: var(--bs-body-bg);">&nbsp;</div> | `--bs-body-color`<br>`--bs-body-color-rgb`<br>`--bs-body-bg`<br>`--bs-body-bg-rgb` |
 | **Secondary —** For disabled states, dividers, and lighter text. | <div class="p-3 mb-1 rounded-2" style="background-color: var(--bs-secondary-color);">&nbsp;</div> <div class="p-3 rounded-2" style="background-color: var(--bs-secondary-bg);">&nbsp;</div> | `--bs-secondary-color`<br>`--bs-secondary-color-rgb`<br>`--bs-secondary-bg`<br>`--bs-secondary-bg-rgb` |
 | **Tertiary —** For hovers, accents, wells, and text. | <div class="p-3 mb-1 rounded-2" style="background-color: var(--bs-tertiary-color);">&nbsp;</div> <div class="p-3 rounded-2" style="background-color: var(--bs-tertiary-bg);">&nbsp;</div> | `--bs-tertiary-color`<br>`--bs-tertiary-color-rgb`<br>`--bs-tertiary-bg`<br>`--bs-tertiary-bg-rgb` |
-| **Border —** For component borders, dividers, and rules. Blends with background colors thanks to `rgba()` values. | <div class="p-3 rounded-2" style="background-color: var(--bs-border-color);">Border color</div> | `--bs-border-color` |
+| **Emphasis —** For higher contrast text. Not applicable for backgrounds. | <div class="p-3 mb-1 rounded-2" style="background-color: var(--bs-emphasis-color);">&nbsp;</div> | `--bs-emphasis-color`<br>`--bs-emphasis-color-rgb` |
+| **Border —** For component borders, dividers, and rules. Use `--bs-border-color-translucent` to blend with backgrounds with an `rgba()` value. | <div class="p-3 rounded-2" style="background-color: var(--bs-border-color);">Border color</div> | `--bs-border-color`<br>`--bs-border-color-translucent` |
 | **Primary —** Main theme color, used for hyperlinks, focus styles, and component and form active states. | <div class="p-3 text-bg-primary rounded-2">Primary</div> | `--bs-primary`<br>`--bs-primary-rgb` |
 | **Success —** Theme color used for positive or successful actions and information. | <div class="p-3 text-bg-success rounded-2">Success</div> | `--bs-success`<br>`--bs-success-rgb` |
 | **Danger —** Theme color used for errors and dangerous actions. | <div class="p-3 text-bg-danger rounded-2">Danger</div> | `--bs-danger`<br>`--bs-danger-rgb` |

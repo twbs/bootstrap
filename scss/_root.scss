@@ -48,6 +48,9 @@
   // --#{$prefix}body-accent-color: #{$body-accent-color};
 
   // todo: replace body-accent-color with secondary-color
+  --#{$prefix}emphasis-color: #{$body-emphasis-color};
+  --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color)};
+
   --#{$prefix}secondary-color: #{$body-secondary-color};
   --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color)};
   --#{$prefix}secondary-bg: #{$body-secondary-bg};
@@ -114,13 +117,16 @@
   --#{$prefix}body-bg: #{$body-bg-dark};
   --#{$prefix}body-bg-rgb: #{to-rgb($body-bg-dark)};
 
+  --#{$prefix}emphasis-color: #{$body-emphasis-color-dark};
+  --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color-dark)};
+
   --#{$prefix}secondary-color: #{$body-secondary-color-dark};
-  // --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color-dark)};
+  --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color-dark)};
   --#{$prefix}secondary-bg: #{$body-secondary-bg-dark};
   --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg-dark)};
 
   --#{$prefix}tertiary-color: #{$body-tertiary-color-dark};
-  // --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color-dark)};
+  --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color-dark)};
   --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
   --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
 
