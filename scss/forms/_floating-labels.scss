@@ -19,6 +19,7 @@
     text-align: start;
     text-overflow: ellipsis;
     white-space: nowrap;
+    opacity: $form-floating-label-placeholder-opacity;
     pointer-events: none;
     border: $input-border-width solid transparent; // Required for aligning label's text with the input as it affects inner box model
     transform-origin: 0 0;
