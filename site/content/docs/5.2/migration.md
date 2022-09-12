@@ -7,6 +7,32 @@ aliases: "/migration/"
 toc: true
 ---
 
+## v5.3.0 (WIP)
+
+<hr class="mb-4">
+
+### Color modes!
+
+- Global support for light (default) and dark modes. Set color theme globally on the `:root` element, on groups of elements and components with a wrapper class, or directly on components. Color modes replace dark variants for components, so  `.carousel-dark`, `.dropdown-menu-dark`, and `.navbar-dark` are deprecated.
+
+- New extended color system. We've added new theme colors (but not in `$theme-colors)`) for a more nuanced, system-wide color palette with new secondary, tertiary, and emphasis colors for `color` and `background-color`. These new colors are available as Sass variables, CSS variables, and utilities.
+
+- Adds new `_variables-dark.scss` stylesheet to house dark-mode specific overrides.
+
+### CSS variables
+
+- Restores CSS variables for breakpoints, though we don't use them in our media queries as they're not supported. However, these can be useful in JS-specific contexts.
+
+- Adds additional variables for alerts, `.btn-close`, and `.offcanvas`.
+
+### Utilities
+
+- Adds new `.overflow-x`, `.overflow-y`, and several `.object-fit-*` utilities. _The object-fit property is used to specify how an `<img>` or `<video>` should be resized to fit its container. Offers a responsive alternative to using `background-image` for a resizable fill/fit image._
+
+- Adds new `.fw-medium` utility.
+
+For a complete list of changes, [see the v5.3.0 project on GitHub](https://github.com/twbs/bootstrap/projects/).
+
 ## v5.2.0
 
 <hr class="mb-4">

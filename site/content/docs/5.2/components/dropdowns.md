@@ -353,9 +353,7 @@ Button dropdowns work with buttons of all sizes, including default and split dro
 
 Opt into darker dropdowns to match a dark navbar or custom style by adding `.dropdown-menu-dark` onto an existing `.dropdown-menu`. No changes are required to the dropdown items.
 
-{{< callout warning >}}
-**Heads up!** Dark variants for components were deprecated in v5.3.0 with the introduction of color modes. Instead of adding `.dropdown-menu-dark`, set `data-bs-theme="dark"` on the root element, a parent wrapper, or the component itself.
-{{< /callout >}}
+{{< callout-dark-variants "dropdown-menu" >}}
 
 {{< example >}}
 <div class="dropdown">

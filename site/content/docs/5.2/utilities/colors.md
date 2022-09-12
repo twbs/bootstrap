@@ -18,6 +18,11 @@ Colorize text with color utilities. If you want to colorize links, you can use t
 {{< /colors.inline >}}
 <p class="text-body">.text-body</p>
 <p class="text-muted">.text-muted</p>
+
+<p class="text-body-emphasis">.text-body-emphasis</p>
+<p class="text-body-secondary">.text-body-secondary</p>
+<p class="text-body-tertiary">.text-body-tertiary</p>
+
 <p class="text-white bg-dark">.text-white</p>
 <p class="text-black-50">.text-black-50</p>
 <p class="text-white-50 bg-dark">.text-white-50</p>

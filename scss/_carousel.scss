@@ -213,7 +213,8 @@
 
 // Dark mode carousel
 
-.carousel-dark {
+.carousel-dark,
+[data-bs-theme="dark"] .carousel {
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
     filter: $carousel-dark-control-icon-filter;

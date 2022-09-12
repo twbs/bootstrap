@@ -1,0 +1,1 @@
+**Heads up!** Dark variants for components were deprecated in v5.3.0 with the introduction of color modes. Instead of adding `.{component-name}-dark`, set `data-bs-theme="dark"` on the root element, a parent wrapper, or the component itself.
