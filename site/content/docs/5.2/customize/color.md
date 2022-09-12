@@ -46,6 +46,73 @@ For example, to change the toggle mode of a dropdown menu, add `data-bs-theme="l
 </div>
 {{< /example >}}
 
+### Nesting color modes
+
+Use `data-bs-theme` on a nested element to change the color mode for a group of elements or components. In the example below, we have an outer dark mode with a nested light mode. You'll notice components naturally adapt their appearance without modifciation, but the nested `data-bs-theme="light"` needs help reseting some global styles. This is because `data-bs-theme` doesn't reset the globally declared `<body>` colors, so we have to add `.bg-body` and `.text-body`.
+
+{{< example class="" >}}
+<div data-bs-theme="dark">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Color modes</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Dark</li>
+    </ol>
+  </nav>
+
+  <p>This should be shown in a <strong>dark</strong> theme at all times.</p>
+
+  <div class="progress mb-4">
+    <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+
+  <div class="dropdown mb-4">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonDark2" data-bs-toggle="dropdown" aria-expanded="false">
+      Dark dropdown
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonDark2">
+      <li><a class="dropdown-item active" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+  </div>
+
+  <div data-bs-theme="light" class="p-3 bg-body text-body rounded">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Color modes</a></li>
+        <li class="breadcrumb-item"><a href="#">Dark</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Light</li>
+      </ol>
+    </nav>
+
+    <p>This should be shown in a <strong>light</strong> theme at all times.</p>
+
+    <div class="progress mb-4">
+      <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonLight" data-bs-toggle="dropdown" aria-expanded="false">
+        Light dropdown
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonLight">
+        <li><a class="dropdown-item active" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+{{< /example >}}
+
+
+
 ### Custom color modes
 
 While the primary use case for color modes is light and dark mode, custom color modes are also possible. Create your own `data-bs-theme` selector with a custom value as the name of your color mode, then modify our Sass and CSS variables as needed. We opted to create a separate `_variables-dark.scss` stylesheet to house Bootstrap's dark mode specific Sass variables, but that's not required for you.
