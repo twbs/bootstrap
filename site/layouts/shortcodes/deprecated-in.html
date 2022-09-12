@@ -1,0 +1,5 @@
+{{- /* Outputs badge to identify the first version something was added */ -}}
+
+{{- $version := .Get 0 -}}
+
+<small class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-emphasis bg-warning bg-opacity-10 border border-warning border-opacity-10 rounded-2">Deprecated in v{{ $version }}</small>
