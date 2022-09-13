@@ -787,6 +787,10 @@ $btn-active-bg-shade-amount:      20% !default;
 $btn-active-bg-tint-amount:       20% !default;
 $btn-active-border-shade-amount:  25% !default;
 $btn-active-border-tint-amount:   10% !default;
+
+$btn-hover-bg:                    shade-color($body-bg, $btn-hover-bg-shade-amount) !default;
+$btn-active-bg:                   shade-color($body-bg, $btn-active-bg-shade-amount) !default;
+$btn-disabled-bg:                 $body-bg !default;
 // scss-docs-end btn-variables
 
 
