@@ -22,7 +22,6 @@
     </contentFiles>
   </metadata>
   <files>
-    <file src="LICENSE.txt" target="" />
     <file src="nuget\bootstrap.png" target="" />
 
     <file src="dist\css\*.*" target="content\Content" />
