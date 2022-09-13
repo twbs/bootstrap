@@ -72,7 +72,6 @@
           // After changing the theme, hide offcanvas
           const oc = document.querySelector('[aria-modal][class*=show][class*=offcanvas-]')
           if (oc !== null) {
-            // eslint-disable-next-line no-undef
             bootstrap.Offcanvas.getInstance(oc).hide()
           }
         })
