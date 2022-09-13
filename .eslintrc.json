@@ -7,7 +7,14 @@
     "xo",
     "xo/browser"
   ],
+  "globals": {
+    "bootstrap": false
+  },
   "rules": {
+    "no-redeclare": [ "error", {
+        "builtinGlobals": false
+      }
+    ],
     "arrow-body-style": "off",
     "capitalized-comments": "off",
     "comma-dangle": [
