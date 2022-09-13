@@ -712,21 +712,13 @@ describe('Modal', () => {
         fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
         const modalEl = fixtureEl.querySelector('.modal')
-        const dialogEl = modalEl.querySelector('.modal-dialog')
         const modal = new Modal(modalEl)
-
-        const spy = spyOn(modal, 'hide')
-
         modalEl.addEventListener('shown.bs.modal', () => {
-          const mouseDown = createEvent('mousedown')
-
-          dialogEl.dispatchEvent(mouseDown)
           modalEl.click()
-          expect(spy).not.toHaveBeenCalled()
+        })
 
-          modalEl.dispatchEvent(mouseDown)
-          modalEl.click()
-          expect(spy).toHaveBeenCalled()
+        modalEl.addEventListener('hidden.bs.modal', () => {
+          expect(document.querySelector('.modal-backdrop')).toBeNull()
           resolve()
         })
 
