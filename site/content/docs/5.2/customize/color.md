@@ -48,7 +48,7 @@ For example, to change the color mode of a dropdown menu, add `data-bs-theme="li
 
 ### Nesting color modes
 
-Use `data-bs-theme` on a nested element to change the color mode for a group of elements or components. In the example below, we have an outer dark mode with a nested light mode. You'll notice components naturally adapt their appearance without modifciation, but the nested `data-bs-theme="light"` needs help reseting some global styles. This is because `data-bs-theme` doesn't reset the globally declared `<body>` colors, so we have to add `.bg-body` and `.text-body`.
+Use `data-bs-theme` on a nested element to change the color mode for a group of elements or components. In the example below, we have an outer dark mode with a nested light mode. You'll notice components naturally adapt their appearance without modification, but the nested `data-bs-theme="light"` needs help to reset some global styles. This is because `data-bs-theme` doesn't reset the globally declared `<body>` colors, so we have to add `.bg-body` and `.text-body`.
 
 {{< example class="" >}}
 <div data-bs-theme="dark">
