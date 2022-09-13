@@ -10,6 +10,8 @@
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
+/* global bootstrap: false */
+
 (() => {
   'use strict'
 
