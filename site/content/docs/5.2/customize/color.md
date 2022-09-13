@@ -95,10 +95,10 @@ Use `data-bs-theme` on a nested element to change the color mode for a group of 
     </div>
 
     <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonLight" data-bs-toggle="dropdown" aria-expanded="false">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonLight2" data-bs-toggle="dropdown" aria-expanded="false">
         Light dropdown
       </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonLight">
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonLight2">
         <li><a class="dropdown-item active" href="#">Action</a></li>
         <li><a class="dropdown-item" href="#">Action</a></li>
         <li><a class="dropdown-item" href="#">Another action</a></li>
