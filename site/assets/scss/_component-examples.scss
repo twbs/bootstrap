@@ -58,7 +58,8 @@
     display: block;
   }
 
-  > :last-child {
+  > :last-child,
+  > nav:last-child .breadcrumb {
     margin-bottom: 0;
   }
 
