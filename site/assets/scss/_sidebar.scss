@@ -20,6 +20,10 @@
   }
 }
 
+.bd-links-heading {
+  color: var(--bs-emphasis-color);
+}
+
 .bd-links-nav {
   @include media-breakpoint-down(lg) {
     font-size: .875rem;
