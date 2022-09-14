@@ -91,7 +91,7 @@ const getTransitionDurationFromElement = element => {
   transitionDuration = transitionDuration.split(',')[0]
   transitionDelay = transitionDelay.split(',')[0]
 
-  return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER
+  return (floatTransitionDuration + floatTransitionDelay) * MILLISECONDS_MULTIPLIER
 }
 
 const triggerTransitionEnd = element => {
