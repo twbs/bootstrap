@@ -57,6 +57,12 @@ const config = {
   autoWatch: false,
   singleRun: true,
   concurrency: Number.POSITIVE_INFINITY,
+  // Configuration recommended by BrowserStack team
+  browserDisconnectedTimeout: 60000,
+  pingTimeout: 10000, // default is 5 secs
+  browserDisconnectTolerance: 3, // default is 0 attempt
+  browserNoActivityTimeout: 210000,
+  // End of recommended configuration
   client: {
     clearContext: false
   },
