@@ -223,8 +223,8 @@ class Modal extends BaseComponent {
     })
 
     EventHandler.on(this._element, EVENT_MOUSEDOWN_DISMISS, event => {
+      // a bad trick to segregate clicks that may start inside dialog but end outside, and avoid listen to scrollbar clicks
       EventHandler.one(this._element, EVENT_CLICK_DISMISS, event2 => {
-        // handle click on removed elements
         if (this._element !== event.target || this._element !== event2.target) {
           return
         }
