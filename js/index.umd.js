@@ -16,6 +16,7 @@ import Popover from './src/popover'
 import ScrollSpy from './src/scrollspy'
 import Tab from './src/tab'
 import Toast from './src/toast'
+import Toa from './src/toa'
 import Tooltip from './src/tooltip'
 
 export default {
@@ -32,3 +33,5 @@ export default {
   Toast,
   Tooltip
 }
+
+window.customElements.define('bs-toa', Toa)

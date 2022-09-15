@@ -1,6 +1,13 @@
 <div class="bd-masthead mb-3" id="content">
   <div class="container-xxl bd-gutter">
     <div class="col-md-8 mx-auto text-center">
+     <div class="m-2 p-3 bg-white">
+       <bs-toa class="border"><div class="toast-body bg-info mb-2">dddddd</div></bs-toa>
+       <bs-toa class="border" autohide="false"><div class="toast-body bg-primary">dddddd</div></bs-toa>
+
+       <hr>
+       <button class="btn btn-sm btn-primary" onclick="document.querySelector('bs-toa').show()">show again</button>
+     </div>
       <a class="d-flex flex-column flex-lg-row justify-content-center align-items-center mb-4 text-dark lh-sm text-decoration-none" href="https://blog.getbootstrap.com/2022/07/19/bootstrap-5-2-0/">
         <strong class="d-sm-inline-block p-2 me-2 mb-2 mb-lg-0 rounded-3 masthead-notice">New in v5.2</strong>
         <span class="text-muted">CSS variables, responsive offcanvas, new utilities, and more!</span>
