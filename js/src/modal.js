@@ -225,7 +225,7 @@ class Modal extends BaseComponent {
     EventHandler.on(this._element, EVENT_MOUSEDOWN_DISMISS, event => {
       EventHandler.one(this._element, EVENT_CLICK_DISMISS, event2 => {
         // handle click on removed elements
-        if (!this._element.contains(event2.target)) {
+        if (this._element !== event.target || this._element !== event2.target) {
           return
         }
 
