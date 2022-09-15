@@ -73,7 +73,7 @@ At this point, everything is in the right place, but Vite won't work because we 
 
 With dependencies installed and our project folder ready for us to start coding, we can now configure Vite and run our project locally.
 
-1. **Open `vite.config.js` in your editor.** Since it's blank, we'll need to add some boilerplate config to it so we can start our server. This part of the config tells Vite were to look for our project's JavaScript and how the development server should behave (pulling from the `src` folder with hot reload).
+1. **Open `vite.config.js` in your editor.** Since it's blank, we'll need to add some boilerplate config to it so we can start our server. This part of the config tells Vite where to look for our project's JavaScript and how the development server should behave (pulling from the `src` folder with hot reload).
 
    <!-- eslint-skip -->
    ```js
