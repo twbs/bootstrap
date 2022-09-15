@@ -229,11 +229,6 @@ class Modal extends BaseComponent {
           return
         }
 
-        // a bad trick to segregate clicks that may start inside dialog but end outside, and avoid listen to scrollbar clicks
-        if (this._dialog.contains(event.target) || this._dialog.contains(event2.target)) {
-          return
-        }
-
         if (this._config.backdrop === 'static') {
           this._triggerBackdropTransition()
           return
