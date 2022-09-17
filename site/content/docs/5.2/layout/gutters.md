@@ -48,7 +48,7 @@ An alternative solution is to add a wrapper around the `.row` with the `.overflo
 
 ## Vertical gutters
 
-`.gy-*` classes can be used to control the vertical gutter widths. Like the horizontal gutters, the vertical gutters can cause some overflow below the `.row` at the end of a page. If this occurs, you add a wrapper around `.row` with the `.overflow-hidden` class:
+`.gy-*` classes can be used to control the vertical gutter widths within a row when columns wrap to new lines. Like the horizontal gutters, the vertical gutters can cause some overflow below the `.row` at the end of a page. If this occurs, you add a wrapper around `.row` with the `.overflow-hidden` class:
 
 {{< example >}}
 <div class="container overflow-hidden text-center">

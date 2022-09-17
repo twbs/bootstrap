@@ -442,62 +442,26 @@ To make tabs panel fade in, add `.fade` to each `.tab-pane`. The first tab pane 
 
 ### Methods
 
-#### constructor
+{{< callout danger >}}
+{{< partial "callout-danger-async-methods.md" >}}
+{{< /callout >}}
 
-Activates a list item element and content container. Tab should have either a `data-bs-target` or an `href` targeting a container node in the DOM.
+Activates your content as a tab element.
 
-```html
-<div class="list-group" id="myList" role="tablist">
-  <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#home" role="tab">Home</a>
-  <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#profile" role="tab">Profile</a>
-  <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#messages" role="tab">Messages</a>
-  <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#settings" role="tab">Settings</a>
-</div>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="home" role="tabpanel">...</div>
-  <div class="tab-pane" id="profile" role="tabpanel">...</div>
-  <div class="tab-pane" id="messages" role="tabpanel">...</div>
-  <div class="tab-pane" id="settings" role="tabpanel">...</div>
-</div>
-
-<script>
-  const firstTabEl = document.querySelector('#myTab a:last-child')
-  const firstTab = new bootstrap.Tab(firstTabEl)
-
-  firstTab.show()
-</script>
-```
-
-#### show
-
-Selects the given list item and shows its associated pane. Any other list item that was previously selected becomes unselected and its associated pane is hidden. **Returns to the caller before the tab pane has actually been shown** (for example, before the `shown.bs.tab` event occurs).
+You can create a tab instance with the constructor, for example:
 
 ```js
-const tab = new bootstrap.Tab('#someListItem')
-
-tab.show()
+const bsTab = new bootstrap.Tab('#myTab')
 ```
 
-#### dispose
-
-Destroys an element's tab.
-
-#### getInstance
-
-*Static* method which allows you to get the tab instance associated with a DOM element
-
-```js
-const tab = bootstrap.Tab.getInstance('#trigger') // Returns a Bootstrap tab instance
-```
-
-#### getOrCreateInstance
-
-*Static* method which allows you to get the tab instance associated with a DOM element, or create a new one in case it wasn't initialized
-
-```js
-const tab = bootstrap.Tab.getOrCreateInstance('#trigger') // Returns a Bootstrap tab instance
-```
+{{< bs-table >}}
+| Method | Description |
+| --- | --- |
+| `dispose` | Destroys an element's tab. |
+| `getInstance` | Static method which allows you to get the tab instance associated with a DOM element, you can use it like this: `bootstrap.Tab.getInstance(element)`. |
+| `getOrCreateInstance` | Static method which returns a tab instance associated to a DOM element or create a new one in case it wasn't initialized. You can use it like this: `bootstrap.Tab.getOrCreateInstance(element)`. |
+| `show` | Selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden. **Returns to the caller before the tab pane has actually been shown** (i.e. before the `shown.bs.tab` event occurs). |
+{{< /bs-table >}}
 
 ### Events
 
@@ -508,7 +472,7 @@ When showing a new tab, the events fire in the following order:
 3. `hidden.bs.tab` (on the previous active tab, the same one as for the `hide.bs.tab` event)
 4. `shown.bs.tab` (on the newly-active just-shown tab, the same one as for the `show.bs.tab` event)
 
-If no tab was already active, the `hide.bs.tab` and `hidden.bs.tab` events will not be fired.
+If no tab was already active, then the `hide.bs.tab` and `hidden.bs.tab` events will not be fired.
 
 {{< bs-table >}}
 | Event type | Description |

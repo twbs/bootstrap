@@ -22,7 +22,7 @@
   > .form-control:focus,
   > .form-select:focus,
   > .form-floating:focus-within {
-    z-index: 3;
+    z-index: 5;
   }
 
   // Ensure buttons are always above inputs for more visually pleasing borders.
@@ -33,7 +33,7 @@
     z-index: 2;
 
     &:focus {
-      z-index: 3;
+      z-index: 5;
     }
   }
 }
@@ -120,10 +120,13 @@
     $validation-messages: $validation-messages + ":not(." + unquote($state) + "-tooltip)" + ":not(." + unquote($state) + "-feedback)";
   }
 
-  > :not(:first-child):not(.dropdown-menu):not(.form-floating)#{$validation-messages},
+  > :not(:first-child):not(.dropdown-menu)#{$validation-messages} {
+    margin-left: -$input-border-width;
+    @include border-start-radius(0);
+  }
+
   > .form-floating:not(:first-child) > .form-control,
   > .form-floating:not(:first-child) > .form-select {
-    margin-left: -$input-border-width;
     @include border-start-radius(0);
   }
 }

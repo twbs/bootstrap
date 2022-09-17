@@ -104,11 +104,12 @@
     border-color: var(--#{$prefix}list-group-active-border-color);
   }
 
-  & + & {
+  // stylelint-disable-next-line scss/selector-no-redundant-nesting-selector
+  & + .list-group-item {
     border-top-width: 0;
 
     &.active {
-      margin-top: calc(var(--#{$prefix}list-group-border-width) * -1); // stylelint-disable-line function-disallowed-list
+      margin-top: calc(-1 * var(--#{$prefix}list-group-border-width)); // stylelint-disable-line function-disallowed-list
       border-top-width: var(--#{$prefix}list-group-border-width);
     }
   }
@@ -126,12 +127,12 @@
       flex-direction: row;
 
       > .list-group-item {
-        &:first-child {
+        &:first-child:not(:last-child) {
           @include border-bottom-start-radius(var(--#{$prefix}list-group-border-radius));
           @include border-top-end-radius(0);
         }
 
-        &:last-child {
+        &:last-child:not(:first-child) {
           @include border-top-end-radius(var(--#{$prefix}list-group-border-radius));
           @include border-bottom-start-radius(0);
         }
@@ -145,7 +146,7 @@
           border-left-width: 0;
 
           &.active {
-            margin-left: calc(var(--#{$prefix}list-group-border-width) * -1); // stylelint-disable-line function-disallowed-list
+            margin-left: calc(-1 * var(--#{$prefix}list-group-border-width)); // stylelint-disable-line function-disallowed-list
             border-left-width: var(--#{$prefix}list-group-border-width);
           }
         }
