@@ -10,6 +10,8 @@
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
+/* global bootstrap: false */
+
 (() => {
   'use strict'
 
@@ -36,14 +38,20 @@
   const showActiveTheme = theme => {
     const activeThemeIcon = document.querySelector('.theme-icon-active use')
     const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
-    const svgOfActiveBtn = btnToActive.querySelector('svg use').getAttribute('href')
+    try {
+      const svgOfActiveBtn = btnToActive.querySelector('svg use').getAttribute('href')
 
-    document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
-      element.classList.remove('active')
-    })
+      document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+        element.classList.remove('active')
+      })
 
-    btnToActive.classList.add('active')
-    activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+      btnToActive.classList.add('active')
+      if (activeThemeIcon !== null) {
+        activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+      }
+    } catch {
+      // Using different theme names. Not just dark and light.
+    }
   }
 
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
@@ -62,6 +70,12 @@
           localStorage.setItem('theme', theme)
           setTheme(theme)
           showActiveTheme(theme)
+
+          // After changing the theme, hide offcanvas
+          const oc = document.querySelector('[aria-modal][class*=show][class*=offcanvas-]')
+          if (oc !== null) {
+            bootstrap.Offcanvas.getInstance(oc).hide()
+          }
         })
       })
   })
