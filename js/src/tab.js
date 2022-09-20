@@ -115,7 +115,6 @@ class Tab extends BaseComponent {
         return
       }
 
-      element.focus()
       element.removeAttribute('tabindex')
       element.setAttribute('aria-selected', true)
       this._toggleDropDown(element, true)
