@@ -127,7 +127,7 @@
     "hugo-bin": "^0.91.1",
     "ip": "^2.0.0",
     "jquery": "^3.6.1",
-    "karma": "^6.4.0",
+    "karma": "^6.4.1",
     "karma-browserstack-launcher": "1.4.0",
     "karma-chrome-launcher": "^3.1.1",
     "karma-coverage-istanbul-reporter": "^3.0.3",
