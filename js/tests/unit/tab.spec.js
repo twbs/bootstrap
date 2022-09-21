@@ -36,9 +36,7 @@ describe('Tab', () => {
       expect(tabBySelector._element).toEqual(tabEl)
       expect(tabByElement._element).toEqual(tabEl)
     })
-  })
 
-  describe('constructor', () => {
     it('Do not Throw exception if not parent', () => {
       fixtureEl.innerHTML = [
         fixtureEl.innerHTML = '<div class=""><div class="nav-link"></div></div>'
@@ -381,6 +379,35 @@ describe('Tab', () => {
         })
 
         btnCloseEl.click()
+      })
+    })
+
+    it('should not focus on opened tab', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<ul class="nav" role="tablist">',
+          '  <li><button type="button" id="home" data-bs-target="#home" role="tab">Home</button></li>',
+          '  <li><button type="button" id="triggerProfile" data-bs-target="#profile" role="tab">Profile</button></li>',
+          '</ul>',
+          '<ul>',
+          '  <li id="home" role="tabpanel"></li>',
+          '  <li id="profile" role="tabpanel"></li>',
+          '</ul>'
+        ].join('')
+
+        const firstTab = fixtureEl.querySelector('#home')
+        firstTab.focus()
+
+        const profileTriggerEl = fixtureEl.querySelector('#triggerProfile')
+        const tab = new Tab(profileTriggerEl)
+
+        profileTriggerEl.addEventListener('shown.bs.tab', () => {
+          expect(document.activeElement).toBe(firstTab)
+          expect(document.activeElement).not.toBe(profileTriggerEl)
+          resolve()
+        })
+
+        tab.show()
       })
     })
   })
