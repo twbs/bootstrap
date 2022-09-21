@@ -840,10 +840,11 @@ describe('Tab', () => {
         '</ul>'
       ].join('')
 
-      const firstDropItem = fixtureEl.querySelector('.dropdown-item')
+      const dropItems = fixtureEl.querySelectorAll('.dropdown-item')
 
-      firstDropItem.click()
-      expect(firstDropItem).toHaveClass('active')
+      dropItems[1].click()
+      expect(dropItems[0]).not.toHaveClass('active')
+      expect(dropItems[1]).toHaveClass('active')
       expect(fixtureEl.querySelector('.nav-link')).not.toHaveClass('active')
     })
 
