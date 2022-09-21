@@ -236,7 +236,7 @@
       const modalFf = new bootstrap.Modal(firefoxModal)
 
       document.getElementById('btnPreventModal').addEventListener('click', () => {
-        const shownFirefoxModal =() => {
+        const shownFirefoxModal = () => {
           modalFf.hide()
           firefoxModal.removeEventListener('shown.bs.modal', hideFirefoxModal)
         }
