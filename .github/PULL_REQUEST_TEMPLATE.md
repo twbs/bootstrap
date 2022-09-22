@@ -27,8 +27,14 @@
 - [ ] I have added tests to cover my changes
 - [ ] All new and existing tests passed
 
+
+#### Live previews
+
+<!-- Please add direct links where your modifications can be seen in the documentation -->
+
+* https://deploy-preview-{your pr number}--twbs-bootstrap.netlify.app/
+
+
 ### Related issues
 
 <!-- Please link any related issues here. -->
-
-### [Live preview](https://deploy-preview-{your pr number}--twbs-bootstrap.netlify.app/)
