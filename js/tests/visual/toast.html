@@ -52,15 +52,17 @@
 
     <script src="../../../dist/js/bootstrap.bundle.js"></script>
     <script>
+      /* global bootstrap: false */
+
       window.addEventListener('load', () => {
         document.querySelectorAll('.toast').forEach(toastEl => new bootstrap.Toast(toastEl))
 
         document.getElementById('btnShowToast').addEventListener('click', () => {
-          document.querySelectorAll('.toast').forEach(toastEl =>  bootstrap.Toast.getInstance(toastEl).show())
+          document.querySelectorAll('.toast').forEach(toastEl => bootstrap.Toast.getInstance(toastEl).show())
         })
 
         document.getElementById('btnHideToast').addEventListener('click', () => {
-          document.querySelectorAll('.toast').forEach(toastEl =>  bootstrap.Toast.getInstance(toastEl).hide())
+          document.querySelectorAll('.toast').forEach(toastEl => bootstrap.Toast.getInstance(toastEl).hide())
         })
       })
     </script>
