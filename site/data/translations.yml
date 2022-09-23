@@ -42,3 +42,149 @@
   code: es
   description: Bootstrap 5 Español
   url: https://bootstrap.esdocu.com/
+  
+  - name: 简体中文
+  code: zh-cn
+  description: Bootstrap 5 简体中文文档
+  url: https://bootstrap21.org/zh-CN/
+
+- name: 中國傳統的
+  code: zh-tw
+  description: Bootstrap 5 繁體中文文檔
+  url: https://bootstrap21.org/zh-TW/
+
+- name: Español
+  code: es
+  description: Documentación de Bootstrap 5 en español
+  url: https://bootstrap21.org/es/
+
+- name: हिन्दी
+  code: hi
+  description: Bootstrap 5 के लिए हिंदी में प्रलेखन
+  url: https://bootstrap21.org/hi/
+
+- name: اللغة العربية
+  code: ar
+  description: توثيق Bootstrap 5 باللغة العربية
+  url: https://bootstrap21.org/ar/
+
+- name: বাংলা
+  code: bn
+  description: বাংলায় ডকুমেন্টেশন Bootstrap 5
+  url: https://bootstrap21.org/bn/
+
+- name: Português do Brasil
+  code: pt
+  description: Documentação Bootstrap 5 em português do Brasil
+  url: https://bootstrap21.org/pt/
+
+- name: Русский
+  code: ru
+  description: Документация по Bootstrap 5 на русском языке
+  url: https://bootstrap21.org/ru/
+
+- name: 日本語
+  code: ja
+  description: Bootstrap 5 の日本語ドキュメンテーション
+  url: https://bootstrap21.org/ja/
+
+- name: ਪੰਜਾਬੀ
+  code: pa
+  description: ਪੰਜਾਬੀ ਵਿੱਚ ਦਸਤਾਵੇਜ਼ Bootstrap 5
+  url: https://bootstrap21.org/pa/
+
+- name: मराठी
+  code: mr
+  description: मराठीत दस्तऐवजीकरण Bootstrap 5
+  url: https://bootstrap21.org/mr/
+
+- name: తెలుగు
+  code: te
+  description: తెలుగులో డాక్యుమెంటేషన్ Bootstrap 5
+  url: https://bootstrap21.org/te/
+
+- name: Melayu
+  code: ms
+  description: Dokumentasi Bootstrap 5 dalam bahasa Melayu
+  url: https://bootstrap21.org/ms/
+
+- name: Türkçe
+  code: tr
+  description: Türkçe Bootstrap 5 Belgeleri
+  url: https://bootstrap21.org/tr/
+
+- name: 한국인
+  code: ko
+  description: 한국어로 된 Bootstrap 5 에 대한 문서
+  url: https://bootstrap21.org/ko/
+
+- name: Français
+  code: fr
+  description: Bootstrap 5 en français
+  url: https://bootstrap21.org/fr/
+
+- name: Deutsche
+  code: de
+  description: Bootstrap 5 auf Deutsche
+  url: https://bootstrap21.org/de/
+
+- name: Tiếng Việt
+  code: vi
+  description: Tài liệu Bootstrap 5 bằng tiếng Việt
+  url: https://bootstrap21.org/vi/
+
+- name: தமிழ்
+  code: ta
+  description: தமிழில் ஆவணம் Bootstrap 5
+  url: https://bootstrap21.org/ta/
+
+- name: اردو
+  code: ur
+  description: اردو میں Bootstrap کے لیے دستاویز
+  url: https://bootstrap21.org/ur/
+
+- name: Basa jawa
+  code: jw
+  description: Dokumentasi Java Bootstrap 5
+  url: https://bootstrap21.org/jw/
+
+- name: Italiano
+  code: it
+  description: Documentazione Bootstrap 5 italiana
+  url: https://bootstrap21.org/it/
+
+- name: فارسی
+  code: fa
+  description: مستندات 5 Bootstrap به زبان فارسی
+  url: https://bootstrap21.org/fa/
+
+- name: ગુજરાતી
+  code: gu
+  description: ગુજરાતીમાં દસ્તાવેજીકરણ Bootstrap 5
+  url: https://bootstrap21.org/gu/
+
+- name: ไทย
+  code: th
+  description: เอกสาร Bootstrap 5 เป็นภาษาไทย
+  url: https://bootstrap21.org/th/
+
+- name: Українська
+  code: uk
+  description: Документація Bootstrap 5 українською
+  url: https://bootstrap21.org/uk/
+
+- name: Polski
+  code: pl
+  description: Dokumentacja Bootstrapa 5 w języku polskim
+  url: https://bootstrap21.org/pl/
+
+- name: O'zbek
+  code: uz
+  description: Bootstrap 5 Documentation O'zbek tilida
+  url: https://bootstrap21.org/uz/
+
+- name: Беларускі
+  code: be
+  description: Дакументацыя па Bootstrap 5 на беларускай мове
+  url: https://bootstrap21.org/be/
+
