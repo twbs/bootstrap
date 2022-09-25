@@ -40,6 +40,6 @@ jobs:
         uses: JustinBeckwith/linkinator-action@v1
         with:
           paths: _site
-          recurse: true
+          recurse: false 
           verbosity: error
           skip: "^(?!http://localhost)"
