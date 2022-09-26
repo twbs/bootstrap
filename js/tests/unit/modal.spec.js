@@ -734,6 +734,36 @@ describe('Modal', () => {
       })
     })
 
+    it('should not close modal when clicking on an element removed from modal content', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="modal">',
+          ' <div class="modal-dialog">',
+          '   <button class="btn">BTN</button>',
+          ' </div>',
+          '</div>'
+        ].join('')
+
+        const modalEl = fixtureEl.querySelector('.modal')
+        const buttonEl = modalEl.querySelector('.btn')
+        const modal = new Modal(modalEl)
+
+        const spy = spyOn(modal, 'hide')
+        buttonEl.addEventListener('click', () => {
+          buttonEl.remove()
+        })
+
+        modalEl.addEventListener('shown.bs.modal', () => {
+          modalEl.dispatchEvent(createEvent('mousedown'))
+          buttonEl.click()
+          expect(spy).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        modal.show()
+      })
+    })
+
     it('should do nothing is the modal is not shown', () => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
