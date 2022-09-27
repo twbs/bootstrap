@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run cspell
-        uses: streetsidesoftware/cspell-action@v1
+        uses: streetsidesoftware/cspell-action@v2
         with:
           config: ".cspell.json"
           files: "**/*.md"

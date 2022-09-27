@@ -208,14 +208,14 @@ describe('Toast', () => {
         setTimeout(() => {
           toast._config.autohide = false
           toastEl.addEventListener('shown.bs.toast', () => {
-            expect(toast._clearTimeout).toHaveBeenCalled()
+            expect(spy).toHaveBeenCalled()
             expect(toast._timeout).toBeNull()
             resolve()
           })
           toast.show()
         }, toast._config.delay / 2)
 
-        spyOn(toast, '_clearTimeout').and.callThrough()
+        const spy = spyOn(toast, '_clearTimeout').and.callThrough()
 
         toast.show()
       })
@@ -441,11 +441,11 @@ describe('Toast', () => {
       const toastEl = fixtureEl.querySelector('div')
       const toast = new Toast(toastEl)
 
-      spyOn(toastEl.classList, 'contains')
+      const spy = spyOn(toastEl.classList, 'contains')
 
       toast.hide()
 
-      expect(toastEl.classList.contains).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should not trigger hidden if hide is prevented', () => {
@@ -568,7 +568,7 @@ describe('Toast', () => {
       const div = fixtureEl.querySelector('div')
       const toast = new Toast(div)
 
-      spyOn(toast, 'show')
+      const spy = spyOn(toast, 'show')
 
       jQueryMock.fn.toast = Toast.jQueryInterface
       jQueryMock.elements = [div]
@@ -576,7 +576,7 @@ describe('Toast', () => {
       jQueryMock.fn.toast.call(jQueryMock, 'show')
 
       expect(Toast.getInstance(div)).toEqual(toast)
-      expect(toast.show).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should throw error on undefined method', () => {

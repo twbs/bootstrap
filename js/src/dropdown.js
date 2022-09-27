@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): dropdown.js
+ * Bootstrap (v5.2.1): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -48,6 +48,8 @@ const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_DROPUP = 'dropup'
 const CLASS_NAME_DROPEND = 'dropend'
 const CLASS_NAME_DROPSTART = 'dropstart'
+const CLASS_NAME_DROPUP_CENTER = 'dropup-center'
+const CLASS_NAME_DROPDOWN_CENTER = 'dropdown-center'
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)'
 const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE}.${CLASS_NAME_SHOW}`
@@ -62,23 +64,25 @@ const PLACEMENT_BOTTOM = isRTL() ? 'bottom-end' : 'bottom-start'
 const PLACEMENT_BOTTOMEND = isRTL() ? 'bottom-start' : 'bottom-end'
 const PLACEMENT_RIGHT = isRTL() ? 'left-start' : 'right-start'
 const PLACEMENT_LEFT = isRTL() ? 'right-start' : 'left-start'
+const PLACEMENT_TOPCENTER = 'top'
+const PLACEMENT_BOTTOMCENTER = 'bottom'
 
 const Default = {
-  offset: [0, 2],
+  autoClose: true,
   boundary: 'clippingParents',
-  reference: 'toggle',
   display: 'dynamic',
+  offset: [0, 2],
   popperConfig: null,
-  autoClose: true
+  reference: 'toggle'
 }
 
 const DefaultType = {
-  offset: '(array|string|function)',
+  autoClose: '(boolean|string)',
   boundary: '(string|element)',
-  reference: '(string|element|object)',
   display: 'string',
+  offset: '(array|string|function)',
   popperConfig: '(null|object|function)',
-  autoClose: '(boolean|string)'
+  reference: '(string|element|object)'
 }
 
 /**
@@ -91,7 +95,8 @@ class Dropdown extends BaseComponent {
 
     this._popper = null
     this._parent = this._element.parentNode // dropdown wrapper
-    this._menu = SelectorEngine.findOne(SELECTOR_MENU, this._parent)
+    // todo: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.2/forms/input-group/
+    this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] || SelectorEngine.prev(this._element, SELECTOR_MENU)[0]
     this._inNavbar = this._detectNavbar()
   }
 
@@ -248,6 +253,14 @@ class Dropdown extends BaseComponent {
       return PLACEMENT_LEFT
     }
 
+    if (parentDropdown.classList.contains(CLASS_NAME_DROPUP_CENTER)) {
+      return PLACEMENT_TOPCENTER
+    }
+
+    if (parentDropdown.classList.contains(CLASS_NAME_DROPDOWN_CENTER)) {
+      return PLACEMENT_BOTTOMCENTER
+    }
+
     // We need to trim the value because custom properties can also include spaces
     const isEnd = getComputedStyle(this._menu).getPropertyValue('--bs-position').trim() === 'end'
 
@@ -392,21 +405,23 @@ class Dropdown extends BaseComponent {
     }
 
     event.preventDefault()
-    if (!isEscapeEvent) {
-      event.stopPropagation()
-    }
 
-    const getToggleButton = SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode)
+    // todo: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.2/forms/input-group/
+    const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0] || SelectorEngine.next(this, SELECTOR_DATA_TOGGLE)[0]
     const instance = Dropdown.getOrCreateInstance(getToggleButton)
 
-    if (isEscapeEvent) {
-      instance.hide()
-      getToggleButton.focus()
+    if (isUpOrDownEvent) {
+      event.stopPropagation()
+      instance.show()
+      instance._selectMenuItem(event)
       return
     }
 
-    instance.show()
-    instance._selectMenuItem(event)
+    if (instance._isShown()) { // else is escape and we check if it is shown
+      event.stopPropagation()
+      instance.hide()
+      getToggleButton.focus()
+    }
   }
 }
 

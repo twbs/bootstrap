@@ -52,26 +52,15 @@
 
     <script src="../../../dist/js/bootstrap.bundle.js"></script>
     <script>
-      window.addEventListener('load', function () {
-        var toastElements = document.querySelectorAll('.toast')
-        for (const toastEl of toastElements) {
-          new bootstrap.Toast(toastEl)
-        }
+      window.addEventListener('load', () => {
+        document.querySelectorAll('.toast').forEach(toastEl => new bootstrap.Toast(toastEl))
 
-        document.getElementById('btnShowToast').addEventListener('click', function () {
-          var toastElements = document.querySelectorAll('.toast')
-          for (const toastEl of toastElements) {
-            var toast = bootstrap.Toast.getInstance(toastEl)
-            toast.show()
-          }
+        document.getElementById('btnShowToast').addEventListener('click', () => {
+          document.querySelectorAll('.toast').forEach(toastEl =>  bootstrap.Toast.getInstance(toastEl).show())
         })
 
-        document.getElementById('btnHideToast').addEventListener('click', function () {
-          var toastElements = document.querySelectorAll('.toast')
-          for (const toastEl of toastElements) {
-            var toast = bootstrap.Toast.getInstance(toastEl)
-            toast.hide()
-          }
+        document.getElementById('btnHideToast').addEventListener('click', () => {
+          document.querySelectorAll('.toast').forEach(toastEl =>  bootstrap.Toast.getInstance(toastEl).hide())
         })
       })
     </script>

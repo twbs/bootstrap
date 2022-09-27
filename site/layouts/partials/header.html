@@ -7,9 +7,13 @@
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="{{ .Site.Params.docs_version }}">
 
-<title>{{ if .IsHome }}{{ .Site.Title | markdownify }} · {{ .Site.Params.description | markdownify }}{{ else }}{{ .Title | markdownify }} · {{ .Site.Title | markdownify }} v{{ .Site.Params.docs_version }}{{ end }}</title>
+<title>{{ if .IsHome }}{{ .Site.Title | markdownify }} · {{ .Site.Params.subtitle | markdownify }}{{ else }}{{ .Title | markdownify }} · {{ .Site.Title | markdownify }} v{{ .Site.Params.docs_version }}{{ end }}</title>
 
 <link rel="canonical" href="{{ .Permalink }}">
+
+{{- if eq .Page.Layout "docs" -}}
+<link rel="preconnect" href="https://AK7KMZKZHQ-dsn.algolia.net" crossorigin>
+{{- end }}
 
 {{ with .Params.robots -}}
 <meta name="robots" content="{{ . }}">

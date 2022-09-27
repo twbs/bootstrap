@@ -19,7 +19,7 @@
       description: "Transform modals to serve any purpose, from feature tours to dialogs."
 
 - category: Custom Components
-  description: "Brand new components and templates to help folks quickly get started with Bootstrap and demonstrate best practices for adding onto the framework."
+  description: "Brand-new components and templates to help folks quickly get started with Bootstrap and demonstrate best practices for adding onto the framework."
   examples:
     - name: Album
       description: "Simple one-page template for photo galleries, portfolios, and more."
@@ -63,6 +63,8 @@
   examples:
     - name: Navbars
       description: "Demonstration of all responsive and container options for the navbar."
+    - name: Navbars offcanvas
+      description: "Same as the Navbars example, but with our offcanvas component."
     - name: Navbar static
       description: "Single navbar example of a static top navbar along with some additional content."
     - name: Navbar fixed

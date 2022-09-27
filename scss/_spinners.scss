@@ -2,6 +2,17 @@
 // Rotating border
 //
 
+.spinner-grow,
+.spinner-border {
+  display: inline-block;
+  width: var(--#{$prefix}spinner-width);
+  height: var(--#{$prefix}spinner-height);
+  vertical-align: var(--#{$prefix}spinner-vertical-align);
+  // stylelint-disable-next-line property-disallowed-list
+  border-radius: 50%;
+  animation: var(--#{$prefix}spinner-animation-speed) linear infinite var(--#{$prefix}spinner-animation-name);
+}
+
 // scss-docs-start spinner-border-keyframes
 @keyframes spinner-border {
   to { transform: rotate(360deg) #{"/* rtl:ignore */"}; }
@@ -9,21 +20,25 @@
 // scss-docs-end spinner-border-keyframes
 
 .spinner-border {
-  display: inline-block;
-  width: $spinner-width;
-  height: $spinner-height;
-  vertical-align: $spinner-vertical-align;
-  border: $spinner-border-width solid currentColor;
+  // scss-docs-start spinner-border-css-vars
+  --#{$prefix}spinner-width: #{$spinner-width};
+  --#{$prefix}spinner-height: #{$spinner-height};
+  --#{$prefix}spinner-vertical-align: #{$spinner-vertical-align};
+  --#{$prefix}spinner-border-width: #{$spinner-border-width};
+  --#{$prefix}spinner-animation-speed: #{$spinner-animation-speed};
+  --#{$prefix}spinner-animation-name: spinner-border;
+  // scss-docs-end spinner-border-css-vars
+
+  border: var(--#{$prefix}spinner-border-width) solid currentcolor;
   border-right-color: transparent;
-  // stylelint-disable-next-line property-disallowed-list
-  border-radius: 50%;
-  animation: $spinner-animation-speed linear infinite spinner-border;
 }
 
 .spinner-border-sm {
-  width: $spinner-width-sm;
-  height: $spinner-height-sm;
-  border-width: $spinner-border-width-sm;
+  // scss-docs-start spinner-border-sm-css-vars
+  --#{$prefix}spinner-width: #{$spinner-width-sm};
+  --#{$prefix}spinner-height: #{$spinner-height-sm};
+  --#{$prefix}spinner-border-width: #{$spinner-border-width-sm};
+  // scss-docs-end spinner-border-sm-css-vars
 }
 
 //
@@ -43,27 +58,28 @@
 // scss-docs-end spinner-grow-keyframes
 
 .spinner-grow {
-  display: inline-block;
-  width: $spinner-width;
-  height: $spinner-height;
-  vertical-align: $spinner-vertical-align;
-  background-color: currentColor;
-  // stylelint-disable-next-line property-disallowed-list
-  border-radius: 50%;
+  // scss-docs-start spinner-grow-css-vars
+  --#{$prefix}spinner-width: #{$spinner-width};
+  --#{$prefix}spinner-height: #{$spinner-height};
+  --#{$prefix}spinner-vertical-align: #{$spinner-vertical-align};
+  --#{$prefix}spinner-animation-speed: #{$spinner-animation-speed};
+  --#{$prefix}spinner-animation-name: spinner-grow;
+  // scss-docs-end spinner-grow-css-vars
+
+  background-color: currentcolor;
   opacity: 0;
-  animation: $spinner-animation-speed linear infinite spinner-grow;
 }
 
 .spinner-grow-sm {
-  width: $spinner-width-sm;
-  height: $spinner-height-sm;
+  --#{$prefix}spinner-width: #{$spinner-width-sm};
+  --#{$prefix}spinner-height: #{$spinner-height-sm};
 }
 
 @if $enable-reduced-motion {
   @media (prefers-reduced-motion: reduce) {
     .spinner-border,
     .spinner-grow {
-      animation-duration: $spinner-animation-speed * 2;
+      --#{$prefix}spinner-animation-speed: #{$spinner-animation-speed * 2};
     }
   }
 }

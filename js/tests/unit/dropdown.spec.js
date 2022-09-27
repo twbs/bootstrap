@@ -231,13 +231,13 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown)
 
         document.documentElement.ontouchstart = noop
-        spyOn(EventHandler, 'on')
-        spyOn(EventHandler, 'off')
+        const spy = spyOn(EventHandler, 'on')
+        const spyOff = spyOn(EventHandler, 'off')
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
           expect(btnDropdown).toHaveClass('show')
           expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
-          expect(EventHandler.on).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover', noop)
+          expect(spy).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover', noop)
 
           dropdown.toggle()
         })
@@ -245,7 +245,7 @@ describe('Dropdown', () => {
         btnDropdown.addEventListener('hidden.bs.dropdown', () => {
           expect(btnDropdown).not.toHaveClass('show')
           expect(btnDropdown.getAttribute('aria-expanded')).toEqual('false')
-          expect(EventHandler.off).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover', noop)
+          expect(spyOff).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover', noop)
 
           document.documentElement.ontouchstart = defaultValueOnTouchStart
           resolve()
@@ -547,7 +547,7 @@ describe('Dropdown', () => {
           reference: virtualElement,
           popperConfig: {
             onFirstUpdate() {
-              expect(virtualElement.getBoundingClientRect).toHaveBeenCalled()
+              expect(spy).toHaveBeenCalled()
               expect(btnDropdown).toHaveClass('show')
               expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
               resolve()
@@ -555,7 +555,7 @@ describe('Dropdown', () => {
           }
         })
 
-        spyOn(virtualElement, 'getBoundingClientRect').and.callThrough()
+        const spy = spyOn(virtualElement, 'getBoundingClientRect').and.callThrough()
 
         dropdown.toggle()
       })
@@ -986,7 +986,7 @@ describe('Dropdown', () => {
           '<div class="dropdown">',
           '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
           '  <div class="dropdown-menu">',
-          '    <a class="dropdown-item" href="#">Dropdwon item</a>',
+          '    <a class="dropdown-item" href="#">Dropdown item</a>',
           '  </div>',
           '</div>'
         ].join('')
@@ -996,7 +996,7 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown)
 
         document.documentElement.ontouchstart = noop
-        spyOn(EventHandler, 'off')
+        const spy = spyOn(EventHandler, 'off')
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
           dropdown.hide()
@@ -1005,7 +1005,7 @@ describe('Dropdown', () => {
         btnDropdown.addEventListener('hidden.bs.dropdown', () => {
           expect(btnDropdown).not.toHaveClass('show')
           expect(btnDropdown.getAttribute('aria-expanded')).toEqual('false')
-          expect(EventHandler.off).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
 
           document.documentElement.ontouchstart = defaultValueOnTouchStart
           resolve()
@@ -1034,13 +1034,13 @@ describe('Dropdown', () => {
       expect(dropdown._popper).toBeNull()
       expect(dropdown._menu).not.toBeNull()
       expect(dropdown._element).not.toBeNull()
-      spyOn(EventHandler, 'off')
+      const spy = spyOn(EventHandler, 'off')
 
       dropdown.dispose()
 
       expect(dropdown._menu).toBeNull()
       expect(dropdown._element).toBeNull()
-      expect(EventHandler.off).toHaveBeenCalledWith(btnDropdown, Dropdown.EVENT_KEY)
+      expect(spy).toHaveBeenCalledWith(btnDropdown, Dropdown.EVENT_KEY)
     })
 
     it('should dispose dropdown with Popper', () => {
@@ -1088,13 +1088,13 @@ describe('Dropdown', () => {
 
       expect(dropdown._popper).not.toBeNull()
 
-      spyOn(dropdown._popper, 'update')
-      spyOn(dropdown, '_detectNavbar')
+      const spyUpdate = spyOn(dropdown._popper, 'update')
+      const spyDetect = spyOn(dropdown, '_detectNavbar')
 
       dropdown.update()
 
-      expect(dropdown._popper.update).toHaveBeenCalled()
-      expect(dropdown._detectNavbar).toHaveBeenCalled()
+      expect(spyUpdate).toHaveBeenCalled()
+      expect(spyDetect).toHaveBeenCalled()
     })
 
     it('should just detect navbar on update', () => {
@@ -1110,12 +1110,12 @@ describe('Dropdown', () => {
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown)
 
-      spyOn(dropdown, '_detectNavbar')
+      const spy = spyOn(dropdown, '_detectNavbar')
 
       dropdown.update()
 
       expect(dropdown._popper).toBeNull()
-      expect(dropdown._detectNavbar).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
   })
 
@@ -1456,6 +1456,67 @@ describe('Dropdown', () => {
 
         triggerDropdownFirst.click()
       })
+    })
+
+    it('should be able to identify clicked dropdown, even with multiple dropdowns in the same tag', () => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button id="dropdown1" class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown toggle</button>',
+        '  <div id="menu1" class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Dropdown item</a>',
+        '  </div>',
+        '  <button id="dropdown2" class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown toggle</button>',
+        '  <div id="menu2" class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Dropdown item</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const dropdownToggle1 = fixtureEl.querySelector('#dropdown1')
+      const dropdownToggle2 = fixtureEl.querySelector('#dropdown2')
+      const dropdownMenu1 = fixtureEl.querySelector('#menu1')
+      const dropdownMenu2 = fixtureEl.querySelector('#menu2')
+      const spy = spyOn(Dropdown, 'getOrCreateInstance').and.callThrough()
+
+      dropdownToggle1.click()
+      expect(spy).toHaveBeenCalledWith(dropdownToggle1)
+
+      dropdownToggle2.click()
+      expect(spy).toHaveBeenCalledWith(dropdownToggle2)
+
+      dropdownMenu1.click()
+      expect(spy).toHaveBeenCalledWith(dropdownToggle1)
+
+      dropdownMenu2.click()
+      expect(spy).toHaveBeenCalledWith(dropdownToggle2)
+    })
+
+    it('should be able to show the proper menu, even with multiple dropdowns in the same tag', () => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button id="dropdown1" class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown toggle</button>',
+        '  <div id="menu1" class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Dropdown item</a>',
+        '  </div>',
+        '  <button id="dropdown2" class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown toggle</button>',
+        '  <div id="menu2" class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Dropdown item</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const dropdownToggle1 = fixtureEl.querySelector('#dropdown1')
+      const dropdownToggle2 = fixtureEl.querySelector('#dropdown2')
+      const dropdownMenu1 = fixtureEl.querySelector('#menu1')
+      const dropdownMenu2 = fixtureEl.querySelector('#menu2')
+
+      dropdownToggle1.click()
+      expect(dropdownMenu1).toHaveClass('show')
+      expect(dropdownMenu2).not.toHaveClass('show')
+
+      dropdownToggle2.click()
+      expect(dropdownMenu1).not.toHaveClass('show')
+      expect(dropdownMenu2).toHaveClass('show')
     })
 
     it('should fire hide and hidden event without a clickEvent if event type is not click', () => {
@@ -1891,7 +1952,7 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(triggerDropdown)
         const button = fixtureEl.querySelector('button[data-bs-toggle="dropdown"]')
 
-        spyOn(dropdown, 'toggle')
+        const spy = spyOn(dropdown, 'toggle')
 
         // Key escape
         button.focus()
@@ -1901,7 +1962,7 @@ describe('Dropdown', () => {
         button.dispatchEvent(keydownEscape)
 
         setTimeout(() => {
-          expect(dropdown.toggle).not.toHaveBeenCalled()
+          expect(spy).not.toHaveBeenCalled()
           expect(triggerDropdown).not.toHaveClass('show')
           resolve()
         }, 20)
@@ -1938,6 +1999,41 @@ describe('Dropdown', () => {
         keyupEscape.key = 'Escape'
 
         toggle.focus()
+        toggle.dispatchEvent(keydownEscape)
+        toggle.dispatchEvent(keyupEscape)
+      })
+    })
+
+    it('should not propagate escape key events if dropdown is open', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="parent">',
+          '  <div class="dropdown">',
+          '    <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '    <div class="dropdown-menu">',
+          '      <a class="dropdown-item" href="#">Some Item</a>',
+          '    </div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const parent = fixtureEl.querySelector('.parent')
+        const toggle = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+
+        const parentKeyHandler = jasmine.createSpy('parentKeyHandler')
+
+        parent.addEventListener('keydown', parentKeyHandler)
+        parent.addEventListener('keyup', () => {
+          expect(parentKeyHandler).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        const keydownEscape = createEvent('keydown', { bubbles: true })
+        keydownEscape.key = 'Escape'
+        const keyupEscape = createEvent('keyup', { bubbles: true })
+        keyupEscape.key = 'Escape'
+
+        toggle.click()
         toggle.dispatchEvent(keydownEscape)
         toggle.dispatchEvent(keyupEscape)
       })
