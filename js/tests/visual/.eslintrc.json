@@ -7,7 +7,9 @@
     "sourceType": "module"
   },
   "settings": {
-    "html/html-extensions": [".html"]
+    "html/html-extensions": [
+      ".html"
+    ]
   },
   "rules": {
     "no-console": "off",
