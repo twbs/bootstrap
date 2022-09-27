@@ -38,6 +38,8 @@
 }
 
 .toast-container {
+  --#{$prefix}toast-zindex: #{$zindex-toast};
+
   position: absolute;
   z-index: var(--#{$prefix}toast-zindex);
   width: max-content;

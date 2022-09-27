@@ -1256,7 +1256,7 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
 // scss-docs-start accordion-variables
 $accordion-padding-y:                     1rem !default;
 $accordion-padding-x:                     1.25rem !default;
-$accordion-color:                         var(--#{$prefix}body-color) !default;
+$accordion-color:                         $body-color !default; // Sass variable because of $accordion-button-icon
 $accordion-bg:                            $body-bg !default;
 $accordion-border-width:                  $border-width !default;
 $accordion-border-color:                  var(--#{$prefix}border-color) !default;

@@ -36,9 +36,7 @@ describe('Tab', () => {
       expect(tabBySelector._element).toEqual(tabEl)
       expect(tabByElement._element).toEqual(tabEl)
     })
-  })
 
-  describe('constructor', () => {
     it('Do not Throw exception if not parent', () => {
       fixtureEl.innerHTML = [
         fixtureEl.innerHTML = '<div class=""><div class="nav-link"></div></div>'
@@ -383,6 +381,35 @@ describe('Tab', () => {
         btnCloseEl.click()
       })
     })
+
+    it('should not focus on opened tab', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<ul class="nav" role="tablist">',
+          '  <li><button type="button" id="home" data-bs-target="#home" role="tab">Home</button></li>',
+          '  <li><button type="button" id="triggerProfile" data-bs-target="#profile" role="tab">Profile</button></li>',
+          '</ul>',
+          '<ul>',
+          '  <li id="home" role="tabpanel"></li>',
+          '  <li id="profile" role="tabpanel"></li>',
+          '</ul>'
+        ].join('')
+
+        const firstTab = fixtureEl.querySelector('#home')
+        firstTab.focus()
+
+        const profileTriggerEl = fixtureEl.querySelector('#triggerProfile')
+        const tab = new Tab(profileTriggerEl)
+
+        profileTriggerEl.addEventListener('shown.bs.tab', () => {
+          expect(document.activeElement).toBe(firstTab)
+          expect(document.activeElement).not.toBe(profileTriggerEl)
+          resolve()
+        })
+
+        tab.show()
+      })
+    })
   })
 
   describe('dispose', () => {
@@ -486,15 +513,19 @@ describe('Tab', () => {
         '<div class="nav">',
         '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
         '  <span id="tab2" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab3" class="nav-link" data-bs-toggle="tab"></span>',
         '</div>'
       ].join('')
 
-      const tabEl = fixtureEl.querySelector('#tab1')
+      const tabEl1 = fixtureEl.querySelector('#tab1')
       const tabEl2 = fixtureEl.querySelector('#tab2')
-      const tab = new Tab(tabEl)
+      const tabEl3 = fixtureEl.querySelector('#tab3')
+      const tab1 = new Tab(tabEl1)
       const tab2 = new Tab(tabEl2)
-      const spyShow1 = spyOn(tab, 'show').and.callThrough()
+      const tab3 = new Tab(tabEl3)
+      const spyShow1 = spyOn(tab1, 'show').and.callThrough()
       const spyShow2 = spyOn(tab2, 'show').and.callThrough()
+      const spyShow3 = spyOn(tab3, 'show').and.callThrough()
 
       const spyStop = spyOn(Event.prototype, 'stopPropagation').and.callThrough()
       const spyPrevent = spyOn(Event.prototype, 'preventDefault').and.callThrough()
@@ -502,17 +533,20 @@ describe('Tab', () => {
       let keydown = createEvent('keydown')
       keydown.key = 'ArrowRight'
 
-      tabEl.dispatchEvent(keydown)
+      tabEl1.dispatchEvent(keydown)
       expect(spyShow2).toHaveBeenCalled()
 
       keydown = createEvent('keydown')
       keydown.key = 'ArrowDown'
 
       tabEl2.dispatchEvent(keydown)
+      expect(spyShow3).toHaveBeenCalled()
+
+      tabEl3.dispatchEvent(keydown)
       expect(spyShow1).toHaveBeenCalled()
 
-      expect(spyStop).toHaveBeenCalledTimes(2)
-      expect(spyPrevent).toHaveBeenCalledTimes(2)
+      expect(spyStop).toHaveBeenCalledTimes(3)
+      expect(spyPrevent).toHaveBeenCalledTimes(3)
     })
 
     it('if keydown event is left arrow, handle it', () => {
@@ -813,10 +847,11 @@ describe('Tab', () => {
         '</ul>'
       ].join('')
 
-      const firstDropItem = fixtureEl.querySelector('.dropdown-item')
+      const dropItems = fixtureEl.querySelectorAll('.dropdown-item')
 
-      firstDropItem.click()
-      expect(firstDropItem).toHaveClass('active')
+      dropItems[1].click()
+      expect(dropItems[0]).not.toHaveClass('active')
+      expect(dropItems[1]).toHaveClass('active')
       expect(fixtureEl.querySelector('.nav-link')).not.toHaveClass('active')
     })
 
