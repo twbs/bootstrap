@@ -201,6 +201,8 @@
 
     <script src="../../../dist/js/bootstrap.bundle.js"></script>
     <script>
+      /* global bootstrap: false */
+
       const ffBugTestResult = document.getElementById('ff-bug-test-result')
       const firefoxTestDone = false
 
@@ -217,11 +219,7 @@
 
       const tall = document.getElementById('tall')
       document.getElementById('tall-toggle').addEventListener('click', () => {
-        if (tall.style.display === 'none') {
-          tall.style.display = 'block'
-        } else {
-          tall.style.display = 'none'
-        }
+        tall.style.display = tall.style.display === 'none' ? 'block' : 'none'
       })
 
       const ffBugInput = document.getElementById('ff-bug-input')
@@ -231,6 +229,7 @@
         ffBugInput.addEventListener('focus', reportFirefoxTestResult.bind(true))
         ffBugInput.removeEventListener('focus', handlerClickFfBugInput)
       }
+
       ffBugInput.addEventListener('focus', handlerClickFfBugInput)
 
       const modalFf = new bootstrap.Modal(firefoxModal)
