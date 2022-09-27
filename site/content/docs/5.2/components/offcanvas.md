@@ -79,22 +79,6 @@ You can use a link with the `href` attribute, or a button with the `data-bs-targ
 </div>
 {{< /example >}}
 
-### Dark offcanvas
-
-Change the appearance of offcanvases with utilities to better match them to different contexts like dark navbars. Here we add `.text-bg-dark` to the `.offcanvas` and `.btn-close-white` to `.btn-close` for proper styling with a dark offcanvas. If you have dropdowns within, consider also adding `.dropdown-menu-dark` to `.dropdown-menu`.
-
-{{< example class="bd-example-offcanvas p-0 bg-light overflow-hidden" >}}
-<div class="offcanvas offcanvas-start show text-bg-dark" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasDarkLabel">Offcanvas</h5>
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvasDark" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <p>Place offcanvas content here.</p>
-  </div>
-</div>
-{{< /example >}}
-
 ### Body scrolling
 
 Scrolling the `<body>` element is disabled when an offcanvas and its backdrop are visible. Use the `data-bs-scroll` attribute to enable `<body>` scrolling.
@@ -153,9 +137,27 @@ When backdrop is set to static, the offcanvas will not close when clicking outsi
 </div>
 {{< /example >}}
 
+## Dark offcanvas
+
+{{< added-in "5.2.0" >}}
+
+Change the appearance of offcanvases with utilities to better match them to different contexts like dark navbars. Here we add `.text-bg-dark` to the `.offcanvas` and `.btn-close-white` to `.btn-close` for proper styling with a dark offcanvas. If you have dropdowns within, consider also adding `.dropdown-menu-dark` to `.dropdown-menu`.
+
+{{< example class="bd-example-offcanvas p-0 bg-light overflow-hidden" >}}
+<div class="offcanvas offcanvas-start show text-bg-dark" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasDarkLabel">Offcanvas</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvasDark" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Place offcanvas content here.</p>
+  </div>
+</div>
+{{< /example >}}
+
 ## Responsive
 
-<small class="d-inline-flex px-2 py-1 fw-semibold text-success bg-success bg-opacity-10 rounded-2">Added in v5.2.0</small>
+{{< added-in "5.2.0" >}}
 
 Responsive offcanvas classes hide content outside the viewport from a specified breakpoint and down. Above that breakpoint, the contents within will behave as usual. For example, `.offcanvas-lg` hides content in an offcanvas below the `lg` breakpoint, but shows the content above the `lg` breakpoint.
 
@@ -245,7 +247,7 @@ Since the offcanvas panel is conceptually a modal dialog, be sure to add `aria-l
 
 ### Variables
 
-<small class="d-inline-flex px-2 py-1 fw-semibold text-success bg-success bg-opacity-10 rounded-2">Added in v5.2.0</small>
+{{< added-in "5.2.0" >}}
 
 As part of Bootstrap's evolving CSS variables approach, offcanvas now uses local CSS variables on `.offcanvas` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
@@ -301,8 +303,8 @@ const offcanvasList = [...offcanvasElementList].map(offcanvasEl => new bootstrap
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `backdrop` | boolean or the string `static` | `true` | Apply a backdrop on body while offcanvas is open. Alternatively, specify `static` for a backdrop which doesn't close the offcanvas when clicked. |
-| `keyboard` | boolean | `true` | Closes the offcanvas when escape key is pressed |
-| `scroll` | boolean | `false` | Allow body scrolling while offcanvas is open |
+| `keyboard` | boolean | `true` | Closes the offcanvas when escape key is pressed. |
+| `scroll` | boolean | `false` | Allow body scrolling while offcanvas is open. |
 {{< /bs-table >}}
 
 ### Methods
@@ -322,10 +324,10 @@ const bsOffcanvas = new bootstrap.Offcanvas('#myOffcanvas')
 {{< bs-table "table" >}}
 | Method | Description |
 | --- | --- |
-| `getInstance` | *Static* method which allows you to get the offcanvas instance associated with a DOM element |
-| `getOrCreateInstance` | *Static* method which allows you to get the offcanvas instance associated with a DOM element, or create a new one in case it wasn't initialized |
-| `hide` | Hides an offcanvas element. **Returns to the caller before the offcanvas element has actually been hidden** (i.e. before the `hidden.bs.offcanvas` event occurs).|
-| `show` | Shows an offcanvas element. **Returns to the caller before the offcanvas element has actually been shown** (i.e. before the `shown.bs.offcanvas` event occurs).|
+| `getInstance` | *Static* method which allows you to get the offcanvas instance associated with a DOM element. |
+| `getOrCreateInstance` | *Static* method which allows you to get the offcanvas instance associated with a DOM element, or create a new one in case it wasn't initialized. |
+| `hide` | Hides an offcanvas element. **Returns to the caller before the offcanvas element has actually been hidden** (i.e. before the `hidden.bs.offcanvas` event occurs). |
+| `show` | Shows an offcanvas element. **Returns to the caller before the offcanvas element has actually been shown** (i.e. before the `shown.bs.offcanvas` event occurs). |
 | `toggle` | Toggles an offcanvas element to shown or hidden. **Returns to the caller before the offcanvas element has actually been shown or hidden** (i.e. before the `shown.bs.offcanvas` or `hidden.bs.offcanvas` event occurs). |
 {{< /bs-table >}}
 

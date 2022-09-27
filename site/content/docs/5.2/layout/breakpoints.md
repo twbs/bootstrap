@@ -22,7 +22,7 @@ Bootstrap includes six default breakpoints, sometimes referred to as _grid tiers
 {{< bs-table "table" >}}
 | Breakpoint | Class infix | Dimensions |
 | --- | --- | --- |
-| Extra small | <em>None</em>  |&lt;576px |
+| Extra small | <em>None</em> |&lt;576px |
 | Small | `sm` | &ge;576px |
 | Medium | `md` | &ge;768px |
 | Large | `lg` | &ge;992px |

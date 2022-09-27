@@ -16,9 +16,7 @@ Scrollspy toggles the `.active` class on anchor (`<a>`) elements when the elemen
 
 - As you scroll the "spied" container, an `.active` class is added and removed from anchor links within the associated navigation. Links must have resolvable `id` targets, otherwise they're ignored. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`
 
-- Target elements that aren't visible will be ignored and their corresponding nav items will never receive an `.active` class.
-
-Checkout the examples below to see it in action.
+- Target elements that are not visible will be ignored. See the [Non-visible elements](#non-visible-elements) section below.
 
 ## Examples
 
@@ -330,6 +328,20 @@ Scrollspy is not limited to nav components and list groups, so it will work on a
 </div>
 ```
 
+## Non-visible elements
+
+Target elements that aren’t visible will be ignored and their corresponding nav items won't receive an `.active` class. Scrollspy instances initialized in a non-visible wrapper will ignore all target elements. Use the `refresh` method to check for observable elements once the wrapper becomes visible.
+
+```js
+document.querySelectorAll('#nav-tab>[data-bs-toggle="tab"]').forEach(el => {
+  el.addEventListener('shown.bs.tab', () => {
+    const target = el.getAttribute('data-bs-target')
+    const scrollElem = document.querySelector(`${target} [data-bs-spy="scroll"]`)
+    bootstrap.ScrollSpy.getOrCreateInstance(scrollElem).refresh()
+  })
+})
+```
+
 ## Usage
 
 ### Via data attributes
@@ -365,9 +377,11 @@ const scrollSpy = new bootstrap.ScrollSpy(document.body, {
 {{< bs-table "table" >}}
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `rootMargin` | string | `0px 0px -40%` | Intersection Observer [rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin) valid units, when calculating scroll position. |
+| `rootMargin` | string | `0px 0px -25%` | Intersection Observer [rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin) valid units, when calculating scroll position. |
 | `smoothScroll` | boolean | `false` | Enables smooth scrolling when a user clicks on a link that refers to ScrollSpy observables. |
-| `target` | string \| jQuery object \| DOM element |  | Specifies element to apply Scrollspy plugin. |
+| `target` | string, DOM element | `null` | Specifies element to apply Scrollspy plugin. |
+| `threshold` | array | `[0.1, 0.5, 1]` | `IntersectionObserver` [threshold](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver#threshold) valid input, when calculating scroll position. |
+
 {{< /bs-table >}}
 
 {{< callout warning >}}
@@ -383,7 +397,7 @@ To keep backwards compatibility, we will continue to parse a given `offset` to `
 | Method | Description |
 | --- | --- |
 | `dispose` | Destroys an element's scrollspy. (Removes stored data on the DOM element) |
-| `getInstance` | *Static* method to get the scrollspy instance associated with a DOM element |
+| `getInstance` | *Static* method to get the scrollspy instance associated with a DOM element. |
 | `getOrCreateInstance` | *Static* method to get the scrollspy instance associated with a DOM element, or to create a new one in case it wasn't initialized. |
 | `refresh` | When adding or removing elements in the DOM, you'll need to call the refresh method. |
 {{< /bs-table >}}

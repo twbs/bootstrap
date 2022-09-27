@@ -4,6 +4,7 @@ title: "Bootstrap & Parcel"
 description: The official guide for how to include and bundle Bootstrap's CSS and JavaScript in your project using Parcel.
 group: getting-started
 toc: true
+thumbnail: guides/bootstrap-parcel@2x.png
 ---
 
 <img class="mb-4 img-fluid rounded-3" srcset="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-parcel.png, /docs/{{< param docs_version >}}/assets/img/guides/bootstrap-parcel@2x.png 2x" src="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-parcel.png" width="2000" height="1000" alt="">
@@ -66,7 +67,7 @@ At this point, everything is in the right place, but Parcel needs an HTML page a
 
 With dependencies installed and our project folder ready for us to start coding, we can now configure Parcel and run our project locally. Parcel itself requires no configuration file by design, but we do need an npm script and an HTML file to start our server.
 
-1. **Fill in the `src/index.html` file.** Parcel needs a page to render, so we use our `index.html` page to setup some basic HTML, including our CSS and JavaScript files.
+1. **Fill in the `src/index.html` file.** Parcel needs a page to render, so we use our `index.html` page to set up some basic HTML, including our CSS and JavaScript files.
 
    ```html
    <!doctype html>
@@ -151,7 +152,7 @@ Importing Bootstrap into Parcel requires two imports, one into our `styles.scss`
 
    <img class="img-fluid" src="/docs/{{< param docs_version >}}/assets/img/guides/parcel-dev-server-bootstrap.png" alt="Parcel dev server running with Bootstrap">
 
-   Now you can start adding any Bootstrap components you want to use. Be sure to [checkout the complete Parcel example project](https://github.com/twbs/examples/tree/main/parcel) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
+   Now you can start adding any Bootstrap components you want to use. Be sure to [check out the complete Parcel example project](https://github.com/twbs/examples/tree/main/parcel) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
 
 {{< markdown >}}
 {{< partial "guide-footer.md" >}}

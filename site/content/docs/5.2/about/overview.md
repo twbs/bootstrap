@@ -26,4 +26,4 @@ Our latest release, Bootstrap 5, focuses on improving v4's codebase with as few 
 
 ## Get involved
 
-Get involved with Bootstrap development by [opening an issue]({{< param repo >}}/issues/new) or submitting a pull request. Read our [contributing guidelines]({{< param repo >}}/blob/v{{< param current_version >}}/.github/CONTRIBUTING.md) for information on how we develop.
+Get involved with Bootstrap development by [opening an issue]({{< param repo >}}/issues/new/choose) or submitting a pull request. Read our [contributing guidelines]({{< param repo >}}/blob/v{{< param current_version >}}/.github/CONTRIBUTING.md) for information on how we develop.
