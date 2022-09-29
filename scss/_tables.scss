@@ -12,7 +12,7 @@
   --#{$prefix}table-color: #{$table-color};
   --#{$prefix}table-bg: #{$table-bg};
   --#{$prefix}table-border-color: #{$table-border-color};
-  --#{$prefix}table-accent-bg: #{$table-accent-bg}; // Deprecated in Bootstrap 5.3.0 for CSS variables
+  --#{$prefix}table-accent-bg: #{$table-accent-bg};
   --#{$prefix}table-striped-color: #{$table-striped-color};
   --#{$prefix}table-striped-bg: #{$table-striped-bg};
   --#{$prefix}table-active-color: #{$table-active-color};
@@ -36,7 +36,7 @@
     color: var(--#{$prefix}table-color--state, var(--#{$prefix}table-color--type, var(--#{$prefix}table-color)));
     background-color: var(--#{$prefix}table-bg);
     border-bottom-width: $table-border-width;
-    box-shadow: inset 0 0 0 9999px var(--#{$prefix}table-bg--state, var(--#{$prefix}table-bg--type, transparent));
+    box-shadow: inset 0 0 0 9999px var(--#{$prefix}table-bg--state, var(--#{$prefix}table-bg--type, var(--#{$prefix}table-accent-bg)));
   }
 
   > tbody {
@@ -110,7 +110,7 @@
 
 // For rows
 .table-striped {
-  > tbody > tr:nth-of-type(#{$table-striped-order}) {
+  > tbody > tr:nth-of-type(#{$table-striped-order}) > * {
     --#{$prefix}table-color--type: var(--#{$prefix}table-striped-color);
     --#{$prefix}table-bg--type: var(--#{$prefix}table-striped-bg);
   }

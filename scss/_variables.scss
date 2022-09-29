@@ -666,9 +666,7 @@ $table-cell-vertical-align:   top !default;
 
 $table-color:                 var(--#{$prefix}body-color) !default;
 $table-bg:                    var(--#{$prefix}body-bg) !default;
-// fusv-disable
-$table-accent-bg:             transparent !default; // Deprecated in Bootstrap 5.3.0 for CSS variables
-// fusv-enable
+$table-accent-bg:             transparent !default;
 
 $table-th-font-weight:        null !default;
 
