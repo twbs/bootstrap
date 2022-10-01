@@ -107,12 +107,12 @@ class Tooltip extends BaseComponent {
     }
 
     /*
-     Check if the element is get initialized with Tooltip instance.
-     if it exist then dispose it.
+    Check if the element is get initialized with Tooltip instance.
+    if it exist then dispose it.
     */
-    const el = typeof element === 'string' ? document.querySelector(element) : element
-    if (el && el.instance) {
-      // el.instance.dispose()
+    const tooltipInstance = Tooltip.getInstance(element)
+    if (tooltipInstance) {
+      tooltipInstance.dispose()
     }
 
     super(element, config)
@@ -124,6 +124,7 @@ class Tooltip extends BaseComponent {
     this._popper = null
     this._templateFactory = null
     this._newContent = null
+
     // Protected
     this.tip = null
     this._setListeners()
@@ -131,10 +132,6 @@ class Tooltip extends BaseComponent {
     if (!this._config.selector) {
       this._fixTitle()
     }
-
-    // store the current Tooltip instance in element object
-    this._element.instance = this
-    el.instance = this
   }
 
   // Getters
