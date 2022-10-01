@@ -69,9 +69,9 @@ const Default = {
   sanitizeFn: null,
   selector: false,
   template: '<div class="tooltip" role="tooltip">' +
-            '<div class="tooltip-arrow"></div>' +
-            '<div class="tooltip-inner"></div>' +
-            '</div>',
+    '<div class="tooltip-arrow"></div>' +
+    '<div class="tooltip-inner"></div>' +
+    '</div>',
   title: '',
   trigger: 'hover focus'
 }
@@ -106,8 +106,16 @@ class Tooltip extends BaseComponent {
       throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)')
     }
 
-    super(element, config)
+    /*
+     Check if the element is get initialized with Tooltip instance.
+     if it exist then dispose it.
+    */
+    const el = typeof element === 'string' ? document.querySelector(element) : element
+    if (el && el.instance) {
+      el.instance.dispose()
+    }
 
+    super(element, config)
     // Private
     this._isEnabled = true
     this._timeout = 0
@@ -116,10 +124,11 @@ class Tooltip extends BaseComponent {
     this._popper = null
     this._templateFactory = null
     this._newContent = null
-
+    // store the current Tooltip instance in element object
+    this._element.instance = this
+    el.instance = this
     // Protected
     this.tip = null
-
     this._setListeners()
 
     if (!this._config.selector) {
