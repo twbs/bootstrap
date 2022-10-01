@@ -112,7 +112,7 @@ class Tooltip extends BaseComponent {
     */
     const el = typeof element === 'string' ? document.querySelector(element) : element
     if (el && el.instance) {
-      el.instance.dispose()
+      // el.instance.dispose()
     }
 
     super(element, config)
@@ -124,9 +124,6 @@ class Tooltip extends BaseComponent {
     this._popper = null
     this._templateFactory = null
     this._newContent = null
-    // store the current Tooltip instance in element object
-    this._element.instance = this
-    el.instance = this
     // Protected
     this.tip = null
     this._setListeners()
@@ -134,6 +131,10 @@ class Tooltip extends BaseComponent {
     if (!this._config.selector) {
       this._fixTitle()
     }
+
+    // store the current Tooltip instance in element object
+    this._element.instance = this
+    el.instance = this
   }
 
   // Getters
