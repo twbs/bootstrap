@@ -106,10 +106,7 @@ class Tooltip extends BaseComponent {
       throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)')
     }
 
-    /*
-    Check if the element is get initialized with Tooltip instance.
-    if it exist then dispose it.
-    */
+    // Check if the element is initialized and if so dispose it.
     const tooltipInstance = Tooltip.getInstance(element)
     if (tooltipInstance) {
       tooltipInstance.dispose()
@@ -127,6 +124,7 @@ class Tooltip extends BaseComponent {
 
     // Protected
     this.tip = null
+
     this._setListeners()
 
     if (!this._config.selector) {
