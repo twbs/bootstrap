@@ -161,6 +161,7 @@ class Tab extends BaseComponent {
     const nextActiveElement = getNextActiveElement(this._getChildren().filter(element => !isDisabled(element)), event.target, isNext, true)
 
     if (nextActiveElement) {
+      nextActiveElement.focus({ preventScroll: true })
       Tab.getOrCreateInstance(nextActiveElement).show()
     }
   }
