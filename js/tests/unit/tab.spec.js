@@ -526,6 +526,9 @@ describe('Tab', () => {
       const spyShow1 = spyOn(tab1, 'show').and.callThrough()
       const spyShow2 = spyOn(tab2, 'show').and.callThrough()
       const spyShow3 = spyOn(tab3, 'show').and.callThrough()
+      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
+      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
+      const spyFocus3 = spyOn(tabEl3, 'focus').and.callThrough()
 
       const spyStop = spyOn(Event.prototype, 'stopPropagation').and.callThrough()
       const spyPrevent = spyOn(Event.prototype, 'preventDefault').and.callThrough()
@@ -535,15 +538,18 @@ describe('Tab', () => {
 
       tabEl1.dispatchEvent(keydown)
       expect(spyShow2).toHaveBeenCalled()
+      expect(spyFocus2).toHaveBeenCalled()
 
       keydown = createEvent('keydown')
       keydown.key = 'ArrowDown'
 
       tabEl2.dispatchEvent(keydown)
       expect(spyShow3).toHaveBeenCalled()
+      expect(spyFocus3).toHaveBeenCalled()
 
       tabEl3.dispatchEvent(keydown)
       expect(spyShow1).toHaveBeenCalled()
+      expect(spyFocus1).toHaveBeenCalled()
 
       expect(spyStop).toHaveBeenCalledTimes(3)
       expect(spyPrevent).toHaveBeenCalledTimes(3)
@@ -557,12 +563,14 @@ describe('Tab', () => {
         '</div>'
       ].join('')
 
-      const tabEl = fixtureEl.querySelector('#tab1')
+      const tabEl1 = fixtureEl.querySelector('#tab1')
       const tabEl2 = fixtureEl.querySelector('#tab2')
-      const tab = new Tab(tabEl)
+      const tab1 = new Tab(tabEl1)
       const tab2 = new Tab(tabEl2)
-      const spyShow1 = spyOn(tab, 'show').and.callThrough()
+      const spyShow1 = spyOn(tab1, 'show').and.callThrough()
       const spyShow2 = spyOn(tab2, 'show').and.callThrough()
+      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
+      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
 
       const spyStop = spyOn(Event.prototype, 'stopPropagation').and.callThrough()
       const spyPrevent = spyOn(Event.prototype, 'preventDefault').and.callThrough()
@@ -572,12 +580,14 @@ describe('Tab', () => {
 
       tabEl2.dispatchEvent(keydown)
       expect(spyShow1).toHaveBeenCalled()
+      expect(spyFocus1).toHaveBeenCalled()
 
       keydown = createEvent('keydown')
       keydown.key = 'ArrowUp'
 
-      tabEl.dispatchEvent(keydown)
+      tabEl1.dispatchEvent(keydown)
       expect(spyShow2).toHaveBeenCalled()
+      expect(spyFocus2).toHaveBeenCalled()
 
       expect(spyStop).toHaveBeenCalledTimes(2)
       expect(spyPrevent).toHaveBeenCalledTimes(2)
@@ -605,6 +615,10 @@ describe('Tab', () => {
       const spy2 = spyOn(tab2, 'show').and.callThrough()
       const spy3 = spyOn(tab3, 'show').and.callThrough()
       const spy4 = spyOn(tab4, 'show').and.callThrough()
+      const spyFocus1 = spyOn(tabEl, 'focus').and.callThrough()
+      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
+      const spyFocus3 = spyOn(tabEl3, 'focus').and.callThrough()
+      const spyFocus4 = spyOn(tabEl4, 'focus').and.callThrough()
 
       const keydown = createEvent('keydown')
       keydown.key = 'ArrowRight'
@@ -614,6 +628,10 @@ describe('Tab', () => {
       expect(spy2).not.toHaveBeenCalled()
       expect(spy3).not.toHaveBeenCalled()
       expect(spy4).toHaveBeenCalledTimes(1)
+      expect(spyFocus1).not.toHaveBeenCalled()
+      expect(spyFocus2).not.toHaveBeenCalled()
+      expect(spyFocus3).not.toHaveBeenCalled()
+      expect(spyFocus4).toHaveBeenCalledTimes(1)
     })
 
     it('if keydown event is left arrow and next element is disabled', () => {
@@ -638,6 +656,10 @@ describe('Tab', () => {
       const spy2 = spyOn(tab2, 'show').and.callThrough()
       const spy3 = spyOn(tab3, 'show').and.callThrough()
       const spy4 = spyOn(tab4, 'show').and.callThrough()
+      const spyFocus1 = spyOn(tabEl, 'focus').and.callThrough()
+      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
+      const spyFocus3 = spyOn(tabEl3, 'focus').and.callThrough()
+      const spyFocus4 = spyOn(tabEl4, 'focus').and.callThrough()
 
       const keydown = createEvent('keydown')
       keydown.key = 'ArrowLeft'
@@ -647,6 +669,10 @@ describe('Tab', () => {
       expect(spy3).not.toHaveBeenCalled()
       expect(spy2).not.toHaveBeenCalled()
       expect(spy1).toHaveBeenCalledTimes(1)
+      expect(spyFocus4).not.toHaveBeenCalled()
+      expect(spyFocus3).not.toHaveBeenCalled()
+      expect(spyFocus2).not.toHaveBeenCalled()
+      expect(spyFocus1).toHaveBeenCalledTimes(1)
     })
   })
 
