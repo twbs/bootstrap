@@ -9,6 +9,7 @@ import { defineJQueryPlugin, reflow } from './util/index'
 import EventHandler from './dom/event-handler'
 import BaseComponent from './base-component'
 import { enableDismissTrigger } from './util/component-functions'
+import FocusTrap from './util/focustrap'
 
 /**
  * Constants
@@ -17,6 +18,7 @@ import { enableDismissTrigger } from './util/component-functions'
 const NAME = 'toast'
 const DATA_KEY = 'bs.toast'
 const EVENT_KEY = `.${DATA_KEY}`
+const ESCAPE_KEY = 'Escape'
 
 const EVENT_MOUSEOVER = `mouseover${EVENT_KEY}`
 const EVENT_MOUSEOUT = `mouseout${EVENT_KEY}`
@@ -26,6 +28,7 @@ const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
+const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
 
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_HIDE = 'hide' // @deprecated - kept here only for backwards compatibility
@@ -35,13 +38,17 @@ const CLASS_NAME_SHOWING = 'showing'
 const DefaultType = {
   animation: 'boolean',
   autohide: 'boolean',
-  delay: 'number'
+  delay: 'number',
+  keyboard: 'boolean',
+  focus: 'boolean'
 }
 
 const Default = {
   animation: true,
   autohide: true,
-  delay: 5000
+  delay: 5000,
+  keyboard: true,
+  focus: true
 }
 
 /**
@@ -55,6 +62,9 @@ class Toast extends BaseComponent {
     this._timeout = null
     this._hasMouseInteraction = false
     this._hasKeyboardInteraction = false
+    this._focustrap = new FocusTrap({
+      trapElement: this._element
+    })
     this._setListeners()
   }
 
@@ -85,6 +95,10 @@ class Toast extends BaseComponent {
       this._element.classList.add(CLASS_NAME_FADE)
     }
 
+    if (this._config.focus) {
+      this._focustrap.activate()
+    }
+
     const complete = () => {
       this._element.classList.remove(CLASS_NAME_SHOWING)
       EventHandler.trigger(this._element, EVENT_SHOWN)
@@ -110,6 +124,7 @@ class Toast extends BaseComponent {
       return
     }
 
+    this._focustrap.deactivate()
     const complete = () => {
       this._element.classList.add(CLASS_NAME_HIDE) // @deprecated
       this._element.classList.remove(CLASS_NAME_SHOWING, CLASS_NAME_SHOW)
@@ -127,7 +142,12 @@ class Toast extends BaseComponent {
       this._element.classList.remove(CLASS_NAME_SHOW)
     }
 
+    this._focustrap.deactivate()
     super.dispose()
+  }
+
+  toggle() {
+    return this.isShown() ? this.hide() : this.show()
   }
 
   isShown() {
@@ -187,6 +207,18 @@ class Toast extends BaseComponent {
     EventHandler.on(this._element, EVENT_MOUSEOUT, event => this._onInteraction(event, false))
     EventHandler.on(this._element, EVENT_FOCUSIN, event => this._onInteraction(event, true))
     EventHandler.on(this._element, EVENT_FOCUSOUT, event => this._onInteraction(event, false))
+    // add esc event to close toast
+    EventHandler.on(document, EVENT_KEYDOWN_DISMISS, event => {
+      if (event.key !== ESCAPE_KEY) {
+        return
+      }
+
+      if (this._config.keyboard) {
+        event.preventDefault()
+        this._clearTimeout()
+        this.hide()
+      }
+    })
   }
 
   _clearTimeout() {
