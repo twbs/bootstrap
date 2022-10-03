@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap toast.js v5.2.1 (https://getbootstrap.com/)
+  * Bootstrap toast.js v5.2.2 (https://getbootstrap.com/)
   * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -16,7 +16,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.1): toast.js
+   * Bootstrap (v5.2.2): toast.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -167,13 +167,17 @@
       switch (event.type) {
         case 'mouseover':
         case 'mouseout':
-          this._hasMouseInteraction = isInteracting;
-          break;
+          {
+            this._hasMouseInteraction = isInteracting;
+            break;
+          }
 
         case 'focusin':
         case 'focusout':
-          this._hasKeyboardInteraction = isInteracting;
-          break;
+          {
+            this._hasKeyboardInteraction = isInteracting;
+            break;
+          }
       }
 
       if (isInteracting) {
