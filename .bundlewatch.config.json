@@ -6,7 +6,7 @@
     },
     {
       "path": "./dist/css/bootstrap-grid.min.css",
-      "maxSize": "6.55 kB"
+      "maxSize": "6.75 kB"
     },
     {
       "path": "./dist/css/bootstrap-reboot.css",
@@ -26,11 +26,11 @@
     },
     {
       "path": "./dist/css/bootstrap.css",
-      "maxSize": "28.75 kB"
+      "maxSize": "29.0 kB"
     },
     {
       "path": "./dist/css/bootstrap.min.css",
-      "maxSize": "26.75 kB"
+      "maxSize": "27.0 kB"
     },
     {
       "path": "./dist/js/bootstrap.bundle.js",
