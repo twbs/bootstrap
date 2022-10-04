@@ -64,11 +64,14 @@
   --#{$prefix}border-radius-pill: #{$border-radius-pill};
   // scss-docs-end root-border-var
 
-  --#{$prefix}heading-color: #{$headings-color};
   --#{$prefix}link-color: #{$link-color};
   --#{$prefix}link-hover-color: #{$link-hover-color};
 
   --#{$prefix}code-color: #{$code-color};
 
   --#{$prefix}highlight-bg: #{$mark-bg};
+
+  @each $name, $value in $grid-breakpoints {
+    --#{$prefix}breakpoint-#{$name}: #{$value};
+  }
 }

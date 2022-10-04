@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.0-beta1): carousel.js
+ * Bootstrap (v5.2.2): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -78,7 +78,7 @@ const Default = {
 }
 
 const DefaultType = {
-  interval: '(number|boolean)',
+  interval: '(number|boolean)', // TODO:v6 remove boolean support
   keyboard: 'boolean',
   pause: '(string|boolean)',
   ride: '(boolean|string)',

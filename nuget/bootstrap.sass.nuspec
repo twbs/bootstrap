@@ -13,7 +13,7 @@
     <language>en-us</language>
     <projectUrl>https://getbootstrap.com/</projectUrl>
     <icon>bootstrap.png</icon>
-    <license type="file">LICENSE.txt</license>
+    <license type="expression">MIT</license>
     <copyright>Copyright 2017-2022</copyright>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>css sass mobile-first responsive front-end framework web</tags>
@@ -22,7 +22,6 @@
     </contentFiles>
   </metadata>
   <files>
-    <file src="LICENSE.txt" target="" />
     <file src="nuget\bootstrap.png" target="" />
 
     <file src="scss\**\*.scss" target="content\Content\bootstrap" />

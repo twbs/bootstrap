@@ -19,7 +19,7 @@ While the Bootstrap CSS can be used with any framework, **the Bootstrap JavaScri
 A better alternative for those using this type of frameworks is to use a framework-specific package **instead of** the Bootstrap JavaScript. Here are some of the most popular options:
 
 - React: [React Bootstrap](https://react-bootstrap.github.io/)
-- Vue: [BootstrapVue](https://bootstrap-vue.org/)
+- Vue: [BootstrapVue](https://bootstrap-vue.org/) (currently only supports Vue 2 and Bootstrap 4)
 - Angular: [ng-bootstrap](https://ng-bootstrap.github.io/)
 
 ## Using Bootstrap as a module
@@ -222,8 +222,8 @@ Every Bootstrap plugin exposes the following methods and static properties.
 {{< bs-table "table" >}}
 | Static property | Description |
 | --- | --- |
-| `NAME`  | Returns the plugin name. (Example: `bootstrap.Tooltip.NAME`) |
-| `VERSION`  | The version of each of Bootstrap's plugins can be accessed via the `VERSION` property of the plugin's constructor (Example: `bootstrap.Tooltip.VERSION`) |
+| `NAME` | Returns the plugin name. (Example: `bootstrap.Tooltip.NAME`) |
+| `VERSION` | The version of each of Bootstrap's plugins can be accessed via the `VERSION` property of the plugin's constructor (Example: `bootstrap.Tooltip.VERSION`) |
 {{< /bs-table >}}
 
 ## Sanitizer
