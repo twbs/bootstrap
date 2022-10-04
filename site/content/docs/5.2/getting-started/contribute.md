@@ -17,7 +17,7 @@ To use our build system and run our documentation locally, you'll need a copy of
 2. Either [download Bootstrap's sources]({{< param "download.source" >}}) or fork [Bootstrap's repository]({{< param repo >}}).
 3. Navigate to the root `/bootstrap` directory and run `npm install` to install our local dependencies listed in [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/package.json).
 
-When completed, you'll be able to run the various commands provided from the command line.
+When completed, you'll be able to run the various commands provided from the command-line.
 
 ## Using npm scripts
 
@@ -57,7 +57,7 @@ Bootstrap uses [RTLCSS](https://rtlcss.com/) to process compiled CSS and convert
 Running our documentation locally requires the use of Hugo, which gets installed via the [hugo-bin](https://www.npmjs.com/package/hugo-bin) npm package. Hugo is a blazingly fast and quite extensible static site generator that provides us: basic includes, Markdown-based files, templates, and more. Here's how to get it started:
 
 1. Run through the [tooling setup](#tooling-setup) above to install all dependencies.
-2. From the root `/bootstrap` directory, run `npm run docs-serve` in the command line.
+2. From the root `/bootstrap` directory, run `npm run docs-serve` in the command-line.
 3. Open `http://localhost:9001/` in your browser, and voilà.
 
 Learn more about using Hugo by reading its [documentation](https://gohugo.io/documentation/).
