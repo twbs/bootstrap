@@ -9,11 +9,11 @@
     <owners>bootstrap</owners>
     <description>The most popular front-end framework for developing responsive, mobile first projects on the web.</description>
     <releaseNotes>https://blog.getbootstrap.com/</releaseNotes>
-    <summary>Bootstrap framework in CSS. Includes JavaScript</summary>
+    <summary>Bootstrap framework in CSS. Includes JavaScript.</summary>
     <language>en-us</language>
     <projectUrl>https://getbootstrap.com/</projectUrl>
     <icon>bootstrap.png</icon>
-    <license type="file">LICENSE.txt</license>
+    <license type="expression">MIT</license>
     <copyright>Copyright 2017-2022</copyright>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>css mobile-first responsive front-end framework web</tags>
@@ -22,7 +22,6 @@
     </contentFiles>
   </metadata>
   <files>
-    <file src="LICENSE.txt" target="" />
     <file src="nuget\bootstrap.png" target="" />
 
     <file src="dist\css\*.*" target="content\Content" />

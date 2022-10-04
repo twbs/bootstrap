@@ -57,6 +57,28 @@ describe('Dropdown', () => {
       expect(dropdownByElement._element).toEqual(btnDropdown)
     })
 
+    it('should work on invalid markup', () => {
+      return new Promise(resolve => {
+        // TODO: REMOVE in v6
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <div class="dropdown-menu">',
+          '    <a class="dropdown-item" href="#">Link</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const dropdownElem = fixtureEl.querySelector('.dropdown-menu')
+        const dropdown = new Dropdown(dropdownElem)
+
+        dropdownElem.addEventListener('shown.bs.dropdown', () => {
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
     it('should create offset modifier correctly when offset option is a function', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
