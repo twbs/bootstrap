@@ -59,7 +59,6 @@ describe('Toast', () => {
         toast.show()
       })
     })
-
     it('should close toast when close element with data-bs-dismiss attribute is set', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
@@ -152,6 +151,58 @@ describe('Toast', () => {
 
         toastEl.addEventListener('shown.bs.toast', () => {
           expect(toastEl).not.toHaveClass('fade')
+          resolve()
+        })
+
+        toast.show()
+      })
+    })
+
+    it('should not trap focus if focus equal to false', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="toast" tabindex="2">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '    <button>with a button</button>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const toastEl = fixtureEl.querySelector('.toast')
+        const toast = new Toast(toastEl, {
+          focus: false
+        })
+
+        const spy = spyOn(toast._focustrap, 'activate').and.callThrough()
+
+        toastEl.addEventListener('shown.bs.toast', () => {
+          expect(spy).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        toast.show()
+      })
+    })
+
+    it('should trap focus', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="toast" tabindex="2">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '    <button>with a button</button>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const toastEl = fixtureEl.querySelector('.toast')
+        const toast = new Toast(toastEl)
+
+        const spy = spyOn(toast._focustrap, 'activate').and.callThrough()
+
+        toastEl.addEventListener('shown.bs.toast', () => {
+          expect(spy).toHaveBeenCalled()
           resolve()
         })
 
@@ -409,6 +460,34 @@ describe('Toast', () => {
   })
 
   describe('hide', () => {
+    it('should release focus trap', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="toast" tabindex="2" id="notification">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '    <button>with a button</button>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const toastEl = fixtureEl.querySelector('#notification')
+        const toast = new Toast(toastEl)
+        const spy = spyOn(toast._focustrap, 'deactivate').and.callThrough()
+
+        toastEl.addEventListener('shown.bs.toast', () => {
+          toast.hide()
+        })
+
+        toastEl.addEventListener('hidden.bs.toast', () => {
+          expect(spy).toHaveBeenCalled()
+          resolve()
+        })
+
+        toast.show()
+      })
+    })
+
     it('should allow to hide toast manually', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
@@ -484,6 +563,29 @@ describe('Toast', () => {
         toast.show()
       })
     })
+
+    it('should be hide on esc keydown', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="toast">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '    <button>with a button</button>',
+          '  </div>',
+          '</div>'
+        ].join(' ')
+
+        const toastEl = fixtureEl.querySelector('.toast')
+        const toast = new Toast(toastEl)
+        toastEl.addEventListener('hidden.bs.toast', () => {
+          resolve()
+        })
+        toastEl.addEventListener('shown.bs.toast', () => {
+          fixtureEl.dispatchEvent(new KeyboardEvent('keypress', { key: 'Escape' }))
+        })
+        toast.show()
+      })
+    })
   })
 
   describe('dispose', () => {
@@ -530,6 +632,68 @@ describe('Toast', () => {
         })
 
         toast.show()
+      })
+    })
+    it('focustrap should be deactivate', () => {
+      fixtureEl.innerHTML = [
+        '<div class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '    <button>with a button</button>',
+        '  </div>',
+        '</div>'
+      ].join('')
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toast = new Toast(toastEl)
+      const spyDeactivate = spyOn(toast._focustrap, 'deactivate').and.callThrough()
+      toast.dispose()
+      expect(spyDeactivate).toHaveBeenCalled()
+    })
+  })
+
+  describe('toggle', () => {
+    it('the element should be hide if it shown', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button id="outside-focusable">outside focusable</button>',
+          '<div class="toast">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '    <button>with a button</button>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const toastEl = fixtureEl.querySelector('.toast')
+        const toast = new Toast(toastEl)
+        toastEl.addEventListener('hidden.bs.toast', () => {
+          resolve()
+        })
+        toastEl.addEventListener('shown.bs.toast', () => {
+          toast.toggle()
+        })
+        toast.show()
+      })
+    })
+
+    it('element should be show if it is hide', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button id="outside-focusable">outside focusable</button>',
+          '<div class="toast">',
+          '  <div class="toast-body">',
+          '    a simple toast',
+          '    <button>with a button</button>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const toastEl = fixtureEl.querySelector('.toast')
+        const toast = new Toast(toastEl)
+        toastEl.addEventListener('shown.bs.toast', () => {
+          resolve()
+        })
+        toast.toggle()
       })
     })
   })
