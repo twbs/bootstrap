@@ -1313,7 +1313,7 @@ describe('Modal', () => {
         const modal1 = new Modal(modalEl1)
 
         modalEl1.addEventListener('shown.bs.modal', () => {
-          expect(document.body).toHaveClass('modal-open'))
+          expect(document.body).toHaveClass('modal-open')
           setTimeout(() => trigger.click(), 10)
         })
         modalEl1.addEventListener('hidden.bs.modal', () => {
