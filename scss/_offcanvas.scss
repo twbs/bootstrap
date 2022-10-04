@@ -12,6 +12,8 @@
   --#{$prefix}offcanvas-border-width: #{$offcanvas-border-width};
   --#{$prefix}offcanvas-border-color: #{$offcanvas-border-color};
   --#{$prefix}offcanvas-box-shadow: #{$offcanvas-box-shadow};
+  --#{$prefix}offcanvas-transition: #{transform $offcanvas-transition-duration ease-in-out};
+  --#{$prefix}offcanvas-title-line-height: #{$offcanvas-title-line-height};
   // scss-docs-end offcanvas-css-vars
 }
 
@@ -42,7 +44,7 @@
       background-clip: padding-box;
       outline: 0;
       @include box-shadow(var(--#{$prefix}offcanvas-box-shadow));
-      @include transition(transform $offcanvas-transition-duration ease-in-out);
+      @include transition(var(--#{$prefix}offcanvas-transition));
 
       &.offcanvas-start {
         top: 0;
@@ -134,7 +136,7 @@
 
 .offcanvas-title {
   margin-bottom: 0;
-  line-height: $offcanvas-title-line-height;
+  line-height: var(--#{$prefix}offcanvas-title-line-height);
 }
 
 .offcanvas-body {
