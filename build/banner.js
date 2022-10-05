@@ -11,4 +11,9 @@ function getBanner(pluginFilename) {
   */`
 }
 
+function name(myname){
+  console.log(`Hello ${myname}`);
+}
+name('Muhammed Nget')
+
 module.exports = getBanner
