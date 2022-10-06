@@ -9,8 +9,6 @@ import { defineJQueryPlugin, reflow } from './util/index'
 import EventHandler from './dom/event-handler'
 import BaseComponent from './base-component'
 import { enableDismissTrigger } from './util/component-functions'
-import FocusTrap from './util/focustrap'
-
 /**
  * Constants
  */
@@ -39,16 +37,14 @@ const DefaultType = {
   animation: 'boolean',
   autohide: 'boolean',
   delay: 'number',
-  keyboard: 'boolean',
-  focus: 'boolean'
+  keyboard: 'boolean'
 }
 
 const Default = {
   animation: true,
   autohide: true,
   delay: 5000,
-  keyboard: true,
-  focus: true
+  keyboard: true
 }
 
 /**
@@ -62,9 +58,6 @@ class Toast extends BaseComponent {
     this._timeout = null
     this._hasMouseInteraction = false
     this._hasKeyboardInteraction = false
-    this._focustrap = new FocusTrap({
-      trapElement: this._element
-    })
     this._setListeners()
   }
 
@@ -95,10 +88,6 @@ class Toast extends BaseComponent {
       this._element.classList.add(CLASS_NAME_FADE)
     }
 
-    if (this._config.focus) {
-      this._focustrap.activate()
-    }
-
     const complete = () => {
       this._element.classList.remove(CLASS_NAME_SHOWING)
       EventHandler.trigger(this._element, EVENT_SHOWN)
@@ -124,7 +113,6 @@ class Toast extends BaseComponent {
       return
     }
 
-    this._focustrap.deactivate()
     const complete = () => {
       this._element.classList.add(CLASS_NAME_HIDE) // @deprecated
       this._element.classList.remove(CLASS_NAME_SHOWING, CLASS_NAME_SHOW)
@@ -142,7 +130,6 @@ class Toast extends BaseComponent {
       this._element.classList.remove(CLASS_NAME_SHOW)
     }
 
-    this._focustrap.deactivate()
     super.dispose()
   }
 
