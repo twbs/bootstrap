@@ -42,7 +42,7 @@
     {{- end -}}
 
     {{- $content = replaceRE `<svg class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>` `<img src="..." class="$1" alt="...">` $content -}}
-    {{- $content = replaceRE `<img class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?/>` `<img src="..." class="$1" alt="...">` $content -}}
+    {{- $content = replaceRE `<img class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?>` `<img src="..." class="$1" alt="...">` $content -}}
     {{- $content = replaceRE ` (class=" *?")` "" $content -}}
     {{- highlight (trim $content "\n") $lang "" -}}
   {{- end -}}
