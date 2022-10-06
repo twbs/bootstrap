@@ -42,7 +42,6 @@
   display: block;
 }
 
-/* rtl:begin:ignore */
 .carousel-item-next:not(.carousel-item-start),
 .active.carousel-item-end {
   transform: translateX(100%);
@@ -52,8 +51,6 @@
 .active.carousel-item-start {
   transform: translateX(-100%);
 }
-
-/* rtl:end:ignore */
 
 
 //
