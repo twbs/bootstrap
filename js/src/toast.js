@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.1): toast.js
+ * Bootstrap (v5.2.2): toast.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -153,15 +153,20 @@ class Toast extends BaseComponent {
   _onInteraction(event, isInteracting) {
     switch (event.type) {
       case 'mouseover':
-      case 'mouseout':
+      case 'mouseout': {
         this._hasMouseInteraction = isInteracting
         break
+      }
+
       case 'focusin':
-      case 'focusout':
+      case 'focusout': {
         this._hasKeyboardInteraction = isInteracting
         break
-      default:
+      }
+
+      default: {
         break
+      }
     }
 
     if (isInteracting) {
