@@ -15,6 +15,14 @@ class DummyClass extends BaseComponent {
   }
 }
 
+function sleep(milliseconds) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve()
+    }, milliseconds)
+  })
+}
+
 describe('Base Component', () => {
   let fixtureEl
   const name = 'dummy'
@@ -162,6 +170,44 @@ describe('Base Component', () => {
 
         expect(DummyClass.getInstance(element)).toBeNull()
         expect(DummyClass.getOrCreateInstance(element)).toBeInstanceOf(DummyClass)
+      })
+    })
+
+    describe('_queueCallback', () => {
+      it('Should fire.', async () => {
+        createInstance()
+
+        const spy = jasmine.createSpy('_queueCallback spy')
+
+        spyOn(window, 'getComputedStyle').and.returnValue({
+          transitionDuration: '0.05s',
+          transitionDelay: '0s'
+        })
+
+        instance._queueCallback(spy, element)
+
+        await sleep(70)
+
+        expect(spy).toHaveBeenCalled()
+      })
+
+      it('Should not fire if the component gets disposed during the transition', async () => {
+        createInstance()
+
+        const spy = jasmine.createSpy('_queueCallback spy')
+
+        spyOn(window, 'getComputedStyle').and.returnValue({
+          transitionDuration: '0.05s',
+          transitionDelay: '0s'
+        })
+
+        instance._queueCallback(spy, element)
+
+        instance.dispose()
+
+        await sleep(70)
+
+        expect(spy).not.toHaveBeenCalled()
       })
     })
   })

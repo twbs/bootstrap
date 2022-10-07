@@ -6,7 +6,7 @@
  */
 
 import Data from './dom/data'
-import { executeAfterTransition, getElement } from './util/index'
+import { executeAfterTransition, getElement, execute } from './util/index'
 import EventHandler from './dom/event-handler'
 import Config from './util/config'
 
@@ -46,7 +46,12 @@ class BaseComponent extends Config {
   }
 
   _queueCallback(callback, element, isAnimated = true) {
-    executeAfterTransition(callback, element, isAnimated)
+    executeAfterTransition(() => {
+      // Do not execute callback if this component has been disposed.
+      if (this._element) {
+        execute(callback)
+      }
+    }, element, isAnimated)
   }
 
   _getConfig(config) {
