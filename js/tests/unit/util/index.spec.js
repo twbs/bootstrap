@@ -645,7 +645,7 @@ describe('Util', () => {
       expect(resultBar).toBe('foo')
     })
 
-    it('should Not execute if arg  not function & return  default argument', () => {
+    it('should not execute if arg is not function & return default argument', () => {
       const foo = 'bar'
       expect(Util.execute(foo)).toBe('bar')
       expect(Util.execute(foo, [], 4)).toBe(4)
