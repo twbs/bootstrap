@@ -631,6 +631,25 @@ describe('Util', () => {
       Util.execute(spy)
       expect(spy).toHaveBeenCalled()
     })
+
+    it('should execute if arg is function & return the result', () => {
+      const functionFoo = (num1, num2 = 10) => num1 + num2
+      const resultFoo = Util.execute(functionFoo, [4, 5])
+      expect(resultFoo).toBe(9)
+
+      const resultFoo1 = Util.execute(functionFoo, [4])
+      expect(resultFoo1).toBe(14)
+
+      const functionBar = () => 'foo'
+      const resultBar = Util.execute(functionBar)
+      expect(resultBar).toBe('foo')
+    })
+
+    it('should not execute if arg is not function & return default argument', () => {
+      const foo = 'bar'
+      expect(Util.execute(foo)).toBe('bar')
+      expect(Util.execute(foo, [], 4)).toBe(4)
+    })
   })
 
   describe('executeAfterTransition', () => {
