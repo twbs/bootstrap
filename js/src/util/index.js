@@ -123,6 +123,24 @@ const getElement = object => {
   return null
 }
 
+/* https://gomakethings.com/how-to-get-all-of-an-elements-siblings-with-vanilla-js/ */
+const getSiblings = element => {
+  // Setup siblings array and get the first sibling
+  const siblings = []
+  let sibling = element.parentNode.firstChild
+
+  // Loop through each sibling and push to the array
+  while (sibling) {
+    if (sibling.nodeType === 1 && sibling !== element) {
+      siblings.push(sibling)
+    }
+
+    sibling = sibling.nextSibling
+  }
+
+  return siblings
+}
+
 const isVisible = element => {
   if (!isElement(element) || element.getClientRects().length === 0) {
     return false
@@ -320,6 +338,7 @@ export {
   getjQuery,
   getNextActiveElement,
   getSelectorFromElement,
+  getSiblings,
   getTransitionDurationFromElement,
   getUID,
   isDisabled,

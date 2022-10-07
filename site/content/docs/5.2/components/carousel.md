@@ -32,13 +32,13 @@ Here's a carousel with slides only. Note the presence of the `.d-block` and `.w-
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#555" background="#777" text="First slide" >}}
     </div>
     <div class="carousel-item">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#444" background="#666" text="Second slide" >}}
     </div>
     <div class="carousel-item">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#333" background="#555" text="Third slide" >}}
     </div>
   </div>
 </div>
@@ -52,13 +52,13 @@ Adding in the previous and next controls. We recommend using `<button>` elements
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#555" background="#777" text="First slide" >}}
     </div>
     <div class="carousel-item">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#444" background="#666" text="Second slide" >}}
     </div>
     <div class="carousel-item">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#333" background="#555" text="Third slide" >}}
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -77,7 +77,7 @@ Adding in the previous and next controls. We recommend using `<button>` elements
 You can also add the indicators to the carousel, alongside the controls, too.
 
 {{< example >}}
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true" data-bs-value=2>
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -85,13 +85,13 @@ You can also add the indicators to the carousel, alongside the controls, too.
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#555" background="#777" text="First slide" >}}
     </div>
     <div class="carousel-item">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#444" background="#666" text="Second slide" >}}
     </div>
     <div class="carousel-item">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#333" background="#555" text="Third slide" >}}
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -118,21 +118,21 @@ Add captions to your slides easily with the `.carousel-caption` element within a
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#555" background="#777" text="First slide" >}}
       <div class="carousel-caption d-none d-md-block">
         <h5>First slide label</h5>
         <p>Some representative placeholder content for the first slide.</p>
       </div>
     </div>
     <div class="carousel-item">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#444" background="#666" text="Second slide" >}}
       <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
         <p>Some representative placeholder content for the second slide.</p>
       </div>
     </div>
     <div class="carousel-item">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#333" background="#555" text="Third slide" >}}
       <div class="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
         <p>Some representative placeholder content for the third slide.</p>
@@ -158,13 +158,13 @@ Add `.carousel-fade` to your carousel to animate slides with a fade transition i
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#555" background="#777" text="First slide" >}}
     </div>
     <div class="carousel-item">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#444" background="#666" text="Second slide" >}}
     </div>
     <div class="carousel-item">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#333" background="#555" text="Third slide" >}}
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -186,13 +186,13 @@ Add `data-bs-interval=""` to a `.carousel-item` to change the amount of time to 
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="10000">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#555" background="#777" text="First slide" >}}
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#444" background="#666" text="Second slide" >}}
     </div>
     <div class="carousel-item">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#333" background="#555" text="Third slide" >}}
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -214,13 +214,13 @@ Carousels support swiping left/right on touchscreen devices to move between slid
 <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#555" background="#777" text="First slide" >}}
     </div>
     <div class="carousel-item">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#444" background="#666" text="Second slide" >}}
     </div>
     <div class="carousel-item">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#333" background="#555" text="Third slide" >}}
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
@@ -228,6 +228,53 @@ Carousels support swiping left/right on touchscreen devices to move between slid
     <span class="visually-hidden">Previous</span>
   </button>
   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+{{< /example >}}
+
+## Enable multiple items
+
+Add `data-bs-items=x` to your carousel to have multiple items in one slide.Depending on your carousel content (e.g., with caption slides), you may want to add a surrounding `<div>`.
+
+{{< callout warning >}}
+Doesn't work well with indicators and fade effect.
+{{< /callout >}}
+
+{{< example >}}
+<div id="carouselExampleMultiple" class="carousel slide" data-bs-ride="carousel" data-bs-items=2>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#555" background="#aaa" text="First slide" >}}
+    </div>
+    <div class="carousel-item">
+      <div class="position-relative">
+        {{< placeholder width="100%" height="400" class="bd-placeholder-img-lg d-block" color="#444" background="#999" text="Second slide" >}}
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#333" background="#888" text="Third slide" >}}
+    </div>
+    <div class="carousel-item">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#222" background="#777" text="Fourth slide" >}}
+    </div>
+    <div class="carousel-item">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#111" background="#666" text="Fifth slide" >}}
+    </div>
+    <div class="carousel-item">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#000" background="#555" text="Sixth slide" >}}
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleMultiple" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleMultiple" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
@@ -247,21 +294,21 @@ Add `.carousel-dark` to the `.carousel` for darker controls, indicators, and cap
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="10000">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#aaa" background="#f5f5f5" text="First slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#aaa" background="#f5f5f5" text="First slide" >}}
       <div class="carousel-caption d-none d-md-block">
         <h5>First slide label</h5>
         <p>Some representative placeholder content for the first slide.</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#bbb" background="#eee" text="Second slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#bbb" background="#eee" text="Second slide" >}}
       <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
         <p>Some representative placeholder content for the second slide.</p>
       </div>
     </div>
     <div class="carousel-item">
-      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#999" background="#e5e5e5" text="Third slide" >}}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#999" background="#e5e5e5" text="Third slide" >}}
       <div class="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
         <p>Some representative placeholder content for the third slide.</p>
