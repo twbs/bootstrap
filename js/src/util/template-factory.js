@@ -6,7 +6,7 @@
  */
 
 import { DefaultAllowlist, sanitizeHtml } from './sanitizer'
-import { getElement, isElement } from '../util/index'
+import { execute, getElement, isElement } from '../util/index'
 import SelectorEngine from '../dom/selector-engine'
 import Config from './config'
 
@@ -143,7 +143,7 @@ class TemplateFactory extends Config {
   }
 
   _resolvePossibleFunction(arg) {
-    return typeof arg === 'function' ? arg(this) : arg
+    return execute(arg, [this])
   }
 
   _putElementInTemplate(element, templateElement) {

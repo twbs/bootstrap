@@ -249,10 +249,8 @@ const defineJQueryPlugin = plugin => {
   })
 }
 
-const execute = callback => {
-  if (typeof callback === 'function') {
-    callback()
-  }
+const execute = (possibleCallback, args = [], defaultValue = possibleCallback) => {
+  return typeof possibleCallback === 'function' ? possibleCallback(...args) : defaultValue
 }
 
 const executeAfterTransition = (callback, transitionElement, waitForTransition = true) => {
