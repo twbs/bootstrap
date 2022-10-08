@@ -14,7 +14,7 @@ Bootstrap has a base `.btn` class that sets up basic styles such as padding and 
 
 The `.btn` class is intended to be used in conjunction with our additional predefined button styles, or to serve as a basis for your own custom styles.
 
-{{< callout info >}}
+{{< callout warning >}}
 If you are using the `.btn` class on its own, remember to at very least define some explicit `:focus` and/or `:focus-visible` styles.
 {{< /callout >}}
 
