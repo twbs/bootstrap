@@ -125,11 +125,9 @@ const getElement = object => {
 
 /* https://gomakethings.com/how-to-get-all-of-an-elements-siblings-with-vanilla-js/ */
 const getSiblings = element => {
-  // Setup siblings array and get the first sibling
   const siblings = []
-  let sibling = element.parentNode.firstChild
+  let sibling = element?.parentNode?.firstChild
 
-  // Loop through each sibling and push to the array
   while (sibling) {
     if (sibling.nodeType === 1 && sibling !== element) {
       siblings.push(sibling)

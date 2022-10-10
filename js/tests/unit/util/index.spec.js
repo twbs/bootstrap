@@ -226,6 +226,39 @@ describe('Util', () => {
     })
   })
 
+  describe('getSiblings', () => {
+    it('should return an empty array if there is a null or undefined element', () => {
+      expect(Util.getSiblings(null)).toEqual([])
+      expect(Util.getSiblings(undefined)).toEqual([])
+    })
+
+    it('should return an empty array if there is only one element', () => {
+      fixtureEl.innerHTML = '<div><div id="alone"></div></div>'
+
+      const div = fixtureEl.querySelector('#alone')
+
+      expect(Util.getSiblings(div)).toEqual([])
+    })
+
+    it('should return the siblings of an element', () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '<div id="first"></div>',
+        '<div id="second"></div>',
+        '<div id="third"></div>',
+        '</div>'
+      ].join('')
+
+      const first = fixtureEl.querySelector('#first')
+      const second = fixtureEl.querySelector('#second')
+      const third = fixtureEl.querySelector('#third')
+
+      expect(Util.getSiblings(first)).toEqual([second, third])
+      expect(Util.getSiblings(second)).toEqual([first, third])
+      expect(Util.getSiblings(third)).toEqual([first, second])
+    })
+  })
+
   describe('isVisible', () => {
     it('should return false if the element is not defined', () => {
       expect(Util.isVisible(null)).toBeFalse()
