@@ -83,10 +83,6 @@
   &:first-child:active,
   &.active,
   &.show {
-    // WILL REMOVING THESE CAUSE OTHER PROBLEMS?
-    // color: var(--#{$prefix}btn-active-color);
-    // background-color: var(--#{$prefix}btn-active-bg);
-
     // Remove CSS gradients if they're enabled
     background-image: if($enable-gradients, none, null);
     border-color: var(--#{$prefix}btn-active-border-color);
