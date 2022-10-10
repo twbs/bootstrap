@@ -102,15 +102,11 @@ class Carousel extends BaseComponent {
     this._isSliding = false
     this.touchTimeout = null
     this._swipeHelper = null
-    this.hasRun = false
+    this._populated = false
 
     this._indicatorsElement = SelectorEngine.findOne(SELECTOR_INDICATORS, this._element)
     this._addEventListeners()
-
-    if (this._config.items > 1) {
-      element.style.setProperty('--bs-carousel-items', this._config.items)
-      this.populateCarouselItems()
-    }
+    this._checkItemsBehavior()
 
     if (this._config.ride === CLASS_NAME_CAROUSEL) {
       this.cycle()
@@ -206,48 +202,42 @@ class Carousel extends BaseComponent {
   }
 
   // Private
-  removeCarouselItems() {
-    if (window.matchMedia('(min-width: 768px)').matches) {
-      return
-    }
-
+  _removeCarouselItems() {
     for (const carouselItem of this._getItems()) {
-      // Get the first carousel item's child
-      const firstChild = carouselItem.querySelector(':first-child')
-      const siblings = getSiblings(firstChild)
+      const siblings = getSiblings(carouselItem.firstElementChild)
 
-      // Remove .carousel-item's first child next elements
       for (const sibling of siblings) {
-        if (sibling !== firstChild) {
-          sibling.remove()
-        }
+        sibling.remove()
       }
     }
 
-    this.hasRun = false
+    this._populated = false
   }
 
   // For every slide in carousel, copy the next slide's item in the slide.
-  populateCarouselItems() {
-    if (window.matchMedia('(max-width: 768px)').matches || this.hasRun) {
-      return
-    }
-
+  _populateCarouselItems() {
     for (const carouselItem of this._getItems()) {
       let next = carouselItem
 
       for (let items = 1; items < this._config.items; items++) {
-        next = next.nextElementSibling
-
-        if (!next) {
-          next = getSiblings(carouselItem).shift()
-        }
-
+        next = next.nextElementSibling || getSiblings(carouselItem).shift()
         carouselItem.append(next.querySelector(':first-child').cloneNode(true))
       }
     }
 
-    this.hasRun = true
+    this._populated = true
+  }
+
+  _checkItemsBehavior() {
+    if (window.innerWidth >= 768) {
+      if (!this._populated && typeof this._config.items === 'number' && this._config.items > 1) {
+        this._element.style.setProperty('--bs-carousel-items', Math.ceil(this._config.items))
+        this._populateCarouselItems()
+      }
+    } else if (this._populated) {
+      this._element.style.setProperty('--bs-carousel-items', 1)
+      this._removeCarouselItems()
+    }
   }
 
   _configAfterMerge(config) {
@@ -268,6 +258,10 @@ class Carousel extends BaseComponent {
 
     if (this._config.touch && Swipe.isSupported()) {
       this._addTouchEventListeners()
+    }
+
+    if (typeof this._config.items === 'number' && this._config.items > 1) {
+      this._addResizeEventListeners()
     }
   }
 
@@ -304,6 +298,12 @@ class Carousel extends BaseComponent {
     }
 
     this._swipeHelper = new Swipe(this._element, swipeConfig)
+  }
+
+  _addResizeEventListeners() {
+    EventHandler.on(window, 'resize', () => {
+      this._checkItemsBehavior()
+    })
   }
 
   _keydown(event) {
@@ -517,15 +517,6 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
 
   for (const carousel of carousels) {
     Carousel.getOrCreateInstance(carousel)
-  }
-})
-
-EventHandler.on(window, 'resize', () => {
-  const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
-
-  for (const carousel of carousels) {
-    Carousel.getOrCreateInstance(carousel).removeCarouselItems()
-    Carousel.getOrCreateInstance(carousel).populateCarouselItems()
   }
 })
 

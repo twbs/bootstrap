@@ -37,11 +37,9 @@
   backface-visibility: hidden;
   @include transition($carousel-transition);
 
-  @include media-breakpoint-up(md) {
-    > :not(.carousel-caption) {
-      float: left;
-      width: calc(100% / var(--bs-carousel-items)); // stylelint-disable-line function-disallowed-list
-    }
+  > :not(.carousel-caption) {
+    float: left;
+    width: calc(100% / var(--bs-carousel-items)); // stylelint-disable-line function-disallowed-list
   }
 }
 
