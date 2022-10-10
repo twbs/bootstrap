@@ -150,7 +150,7 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 - Renamed "Navs" component page to "Navs & Tabs".
 - Renamed "Checks" page to "Checks & radios".
 - Redesigned the navbar and added a new subnav to make it easier to get around our sites and docs versions.
-- Added new keyboard shortcut for the search field: <kbd>Ctrl + /</kbd>.
+- Added new keyboard shortcut for the search field: <kbd><kbd>Ctrl</kbd> + <kbd>/</kbd></kbd>.
 
 ## Sass
 
