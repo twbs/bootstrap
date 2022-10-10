@@ -12,7 +12,7 @@
 //    is the upcoming slide in transition.
 
 .carousel {
-  --bs-carousel-value: 1;
+  --bs-carousel-items: 1;
 
   position: relative;
 }
@@ -39,7 +39,8 @@
 
   @include media-breakpoint-up(md) {
     > :not(.carousel-caption) {
-      width: calc(100% / var(--bs-carousel-items)) // stylelint-disable-line function-disallowed-list
+      float: left;
+      width: calc(100% / var(--bs-carousel-items)); // stylelint-disable-line function-disallowed-list
     }
   }
 }
@@ -47,7 +48,7 @@
 .carousel-item.active,
 .carousel-item-next,
 .carousel-item-prev {
-  display: flex;
+  display: block;
 }
 
 .carousel-item-next:not(.carousel-item-start),

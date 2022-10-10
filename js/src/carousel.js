@@ -109,9 +109,8 @@ class Carousel extends BaseComponent {
 
     if (this._config.items > 1) {
       element.style.setProperty('--bs-carousel-items', this._config.items)
+      this.populateCarouselItems()
     }
-
-    this.populateCarouselItems()
 
     if (this._config.ride === CLASS_NAME_CAROUSEL) {
       this.cycle()
