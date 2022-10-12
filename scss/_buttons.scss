@@ -55,7 +55,7 @@
   }
 
   &:focus-visible {
-    color: var(--#{$prefix}btn-hover-color);
+    color: #ffc0cb;
     @include gradient-bg(var(--#{$prefix}btn-hover-bg));
     border-color: var(--#{$prefix}btn-hover-border-color);
     outline: 0;
@@ -68,6 +68,7 @@
   }
 
   .btn-check:focus-visible + & {
+    color: #ffc0cb;
     border-color: var(--#{$prefix}btn-hover-border-color);
     outline: 0;
     // Avoid using mixin so we can pass custom focus shadow properly
@@ -91,6 +92,8 @@
     @include box-shadow(var(--#{$prefix}btn-active-shadow));
 
     &:focus-visible {
+      color: #ffc0cb;
+
       // Avoid using mixin so we can pass custom focus shadow properly
       @if $enable-shadows {
         box-shadow: var(--#{$prefix}btn-active-shadow), var(--#{$prefix}btn-focus-box-shadow);
@@ -179,11 +182,12 @@
 
   &:hover,
   &:focus-visible {
+    color: #ffc0cb;
     text-decoration: $link-hover-decoration;
   }
 
   &:focus-visible {
-    color: var(--#{$prefix}btn-color);
+    color: #ffc0cb;
   }
 
   &:hover {

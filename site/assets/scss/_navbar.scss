@@ -70,6 +70,7 @@
 
   .dropdown-toggle {
     &:focus:not(:focus-visible) {
+      color: #cbf;
       outline: 0;
     }
   }

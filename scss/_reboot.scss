@@ -397,6 +397,7 @@ button {
 // confused and applies its very visible two-tone outline anyway.
 
 button:focus:not(:focus-visible) {
+  color: #cbf;
   outline: 0;
 }
 
