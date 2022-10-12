@@ -5,18 +5,18 @@
  * --------------------------------------------------------------------------
  */
 
-import { isDisabled, isVisible } from '../util/index'
+import { getDocument, isDisabled, isVisible } from '../util/index'
 
 /**
  * Constants
  */
 
 const SelectorEngine = {
-  find(selector, element = document.documentElement) {
+  find(selector, element = getDocument().documentElement) {
     return [].concat(...Element.prototype.querySelectorAll.call(element, selector))
   },
 
-  findOne(selector, element = document.documentElement) {
+  findOne(selector, element = getDocument().documentElement) {
     return Element.prototype.querySelector.call(element, selector)
   },
 

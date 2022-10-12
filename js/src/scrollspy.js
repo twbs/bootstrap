@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, getElement, isDisabled, isVisible } from './util/index'
+import { defineJQueryPlugin, getElement, isDisabled, isVisible, getWindow } from './util/index'
 import EventHandler from './dom/event-handler'
 import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
@@ -63,7 +63,7 @@ class ScrollSpy extends BaseComponent {
     // this._element is the observablesContainer and config.target the menu links wrapper
     this._targetLinks = new Map()
     this._observableSections = new Map()
-    this._rootElement = getComputedStyle(this._element).overflowY === 'visible' ? null : this._element
+    this._rootElement = getWindow().getComputedStyle(this._element).overflowY === 'visible' ? null : this._element
     this._activeTarget = null
     this._observer = null
     this._previousScrollData = {
@@ -134,7 +134,7 @@ class ScrollSpy extends BaseComponent {
       const observableSection = this._observableSections.get(event.target.hash)
       if (observableSection) {
         event.preventDefault()
-        const root = this._rootElement || window
+        const root = this._rootElement || getWindow()
         const height = observableSection.offsetTop - this._element.offsetTop
         if (root.scrollTo) {
           root.scrollTo({ top: height, behavior: 'smooth' })
@@ -279,7 +279,7 @@ class ScrollSpy extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+EventHandler.on(getWindow(), EVENT_LOAD_DATA_API, () => {
   for (const spy of SelectorEngine.find(SELECTOR_DATA_SPY)) {
     ScrollSpy.getOrCreateInstance(spy)
   }

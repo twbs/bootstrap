@@ -140,7 +140,7 @@ function normalizeParameters(originalTypeEvent, handler, delegationFunction) {
 }
 
 function addHandler(element, originalTypeEvent, handler, delegationFunction, oneOff) {
-  if (typeof originalTypeEvent !== 'string' || !element) {
+  if (typeof originalTypeEvent !== 'string' || !element || !element.addEventListener) {
     return
   }
 
