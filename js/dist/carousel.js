@@ -115,7 +115,7 @@
       // FIXME TODO use `document.visibilityState`
       // Don't call next when the page isn't visible
       // or the carousel or its parent isn't visible
-      if (!document.hidden && index_js.isVisible(this._element)) {
+      if (!this._document.hidden && index_js.isVisible(this._element)) {
         this.next();
       }
     }
@@ -348,7 +348,7 @@
    * Data API implementation
    */
 
-  EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (event) {
+  EventHandler.on(index_js.getDocument(), EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (event) {
     const target = SelectorEngine.getElementFromSelector(this);
     if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
       return;
@@ -369,7 +369,7 @@
     carousel.prev();
     carousel._maybeEnableCycle();
   });
-  EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+  EventHandler.on(index_js.getWindow(), EVENT_LOAD_DATA_API, () => {
     const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE);
     for (const carousel of carousels) {
       Carousel.getOrCreateInstance(carousel);

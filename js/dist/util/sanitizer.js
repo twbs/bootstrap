@@ -4,10 +4,10 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.Sanitizer = {}));
-})(this, (function (exports) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('./index.js')) :
+  typeof define === 'function' && define.amd ? define(['exports', './index'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.Sanitizer = {}, global.Index));
+})(this, (function (exports, index_js) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -16,7 +16,6 @@
    * --------------------------------------------------------------------------
    */
 
-  // js-docs-start allow-list
   const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i;
   const DefaultAllowlist = {
     // Global attributes allowed on any supplied element below.
@@ -82,7 +81,8 @@
     if (sanitizeFunction && typeof sanitizeFunction === 'function') {
       return sanitizeFunction(unsafeHtml);
     }
-    const domParser = new window.DOMParser();
+    const windowRef = index_js.getWindow();
+    const domParser = new windowRef.DOMParser();
     const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
     const elements = [].concat(...createdDocument.body.querySelectorAll('*'));
     for (const element of elements) {

@@ -4,10 +4,10 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('../dom/event-handler.js'), require('../dom/selector-engine.js'), require('./config.js')) :
-  typeof define === 'function' && define.amd ? define(['../dom/event-handler', '../dom/selector-engine', './config'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Focustrap = factory(global.EventHandler, global.SelectorEngine, global.Config));
-})(this, (function (EventHandler, SelectorEngine, Config) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('../dom/event-handler'), require('../dom/selector-engine'), require('./config'), require('./index.js')) :
+  typeof define === 'function' && define.amd ? define(['../dom/event-handler', '../dom/selector-engine', './config', './index'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Focustrap = factory(global.EventHandler, global.SelectorEngine, global.Config, global.Index));
+})(this, (function (EventHandler, SelectorEngine, Config, index_js) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -49,6 +49,7 @@
       this._config = this._getConfig(config);
       this._isActive = false;
       this._lastTabNavDirection = null;
+      this._document = index_js.getDocument();
     }
 
     // Getters
@@ -70,9 +71,9 @@
       if (this._config.autofocus) {
         this._config.trapElement.focus();
       }
-      EventHandler.off(document, EVENT_KEY); // guard against infinite focus loop
-      EventHandler.on(document, EVENT_FOCUSIN, event => this._handleFocusin(event));
-      EventHandler.on(document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event));
+      EventHandler.off(this._document, EVENT_KEY); // guard against infinite focus loop
+      EventHandler.on(this._document, EVENT_FOCUSIN, event => this._handleFocusin(event));
+      EventHandler.on(this._document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event));
       this._isActive = true;
     }
     deactivate() {
@@ -80,7 +81,7 @@
         return;
       }
       this._isActive = false;
-      EventHandler.off(document, EVENT_KEY);
+      EventHandler.off(this._document, EVENT_KEY);
     }
 
     // Private
@@ -88,7 +89,7 @@
       const {
         trapElement
       } = this._config;
-      if (event.target === document || event.target === trapElement || trapElement.contains(event.target)) {
+      if (event.target === this._document || event.target === trapElement || trapElement.contains(event.target)) {
         return;
       }
       const elements = SelectorEngine.focusableChildren(trapElement);

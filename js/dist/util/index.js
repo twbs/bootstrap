@@ -48,7 +48,7 @@
   const getUID = prefix => {
     do {
       prefix += Math.floor(Math.random() * MAX_UID);
-    } while (document.getElementById(prefix));
+    } while (getDocument().getElementById(prefix));
     return prefix;
   };
   const getTransitionDurationFromElement = element => {
@@ -60,7 +60,7 @@
     let {
       transitionDuration,
       transitionDelay
-    } = window.getComputedStyle(element);
+    } = getWindow().getComputedStyle(element);
     const floatTransitionDuration = Number.parseFloat(transitionDuration);
     const floatTransitionDelay = Number.parseFloat(transitionDelay);
 
@@ -130,7 +130,7 @@
     return element.hasAttribute('disabled') && element.getAttribute('disabled') !== 'false';
   };
   const findShadowRoot = element => {
-    if (!document.documentElement.attachShadow) {
+    if (!getDocument().documentElement.attachShadow) {
       return null;
     }
 
@@ -164,17 +164,18 @@
   };
 
   const getjQuery = () => {
-    if (window.jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
+    if (getWindow().jQuery && !getDocument().body.hasAttribute('data-bs-no-jquery')) {
       return window.jQuery;
     }
     return null;
   };
   const DOMContentLoadedCallbacks = [];
   const onDOMContentLoaded = callback => {
-    if (document.readyState === 'loading') {
+    const documentRef = getDocument();
+    if (documentRef.readyState === 'loading') {
       // add listener on the first call when the document is in loading state
       if (!DOMContentLoadedCallbacks.length) {
-        document.addEventListener('DOMContentLoaded', () => {
+        documentRef.addEventListener('DOMContentLoaded', () => {
           for (const callback of DOMContentLoadedCallbacks) {
             callback();
           }
@@ -185,7 +186,10 @@
       callback();
     }
   };
-  const isRTL = () => document.documentElement.dir === 'rtl';
+  const isRTL = () => {
+    var _getDocument$document;
+    return ((_getDocument$document = getDocument().documentElement) == null ? void 0 : _getDocument$document.dir) === 'rtl';
+  };
   const defineJQueryPlugin = plugin => {
     onDOMContentLoaded(() => {
       const $ = getjQuery();
@@ -256,14 +260,30 @@
     return list[Math.max(0, Math.min(index, listLength - 1))];
   };
 
+  /**
+   * @return {window|{}} The proper element
+   */
+  const getWindow = () => {
+    return typeof window !== 'undefined' ? window : {};
+  };
+
+  /**
+   * @return {document|{}} The proper element
+   */
+  const getDocument = () => {
+    return typeof document !== 'undefined' ? document : {};
+  };
+
   exports.defineJQueryPlugin = defineJQueryPlugin;
   exports.execute = execute;
   exports.executeAfterTransition = executeAfterTransition;
   exports.findShadowRoot = findShadowRoot;
+  exports.getDocument = getDocument;
   exports.getElement = getElement;
   exports.getNextActiveElement = getNextActiveElement;
   exports.getTransitionDurationFromElement = getTransitionDurationFromElement;
   exports.getUID = getUID;
+  exports.getWindow = getWindow;
   exports.getjQuery = getjQuery;
   exports.isDisabled = isDisabled;
   exports.isElement = isElement;

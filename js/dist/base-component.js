@@ -35,6 +35,8 @@
         return;
       }
       this._element = element;
+      this._window = index_js.getWindow();
+      this._document = index_js.getDocument();
       this._config = this._getConfig(config);
       Data.set(this._element, this.constructor.DATA_KEY, this);
     }

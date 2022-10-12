@@ -92,9 +92,56 @@ const toType = object => {
 const getUID = prefix => {
   do {
     prefix += Math.floor(Math.random() * MAX_UID);
-  } while (getDocument().getElementById(prefix));
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+  } while (document.getElementById(prefix));
   return prefix;
 };
+=======
+  } while (getDocument().getElementById(prefix));
+
+  return prefix;
+};
+
+const getSelector = element => {
+  let selector = element.getAttribute('data-bs-target');
+
+  if (!selector || selector === '#') {
+    let hrefAttribute = element.getAttribute('href'); // The only valid content that could double as a selector are IDs or classes,
+    // so everything starting with `#` or `.`. If a "real" URL is used as the selector,
+    // `document.querySelector` will rightfully complain it is invalid.
+    // See https://github.com/twbs/bootstrap/issues/32273
+
+    if (!hrefAttribute || !hrefAttribute.includes('#') && !hrefAttribute.startsWith('.')) {
+      return null;
+    } // Just in case some CMS puts out a full URL with the anchor appended
+
+
+    if (hrefAttribute.includes('#') && !hrefAttribute.startsWith('#')) {
+      hrefAttribute = `#${hrefAttribute.split('#')[1]}`;
+    }
+
+    selector = hrefAttribute && hrefAttribute !== '#' ? hrefAttribute.trim() : null;
+  }
+
+  return selector;
+};
+
+const getSelectorFromElement = element => {
+  const selector = getSelector(element);
+
+  if (selector) {
+    return getDocument().querySelector(selector) ? selector : null;
+  }
+
+  return null;
+};
+
+const getElementFromSelector = element => {
+  const selector = getSelector(element);
+  return selector ? getDocument().querySelector(selector) : null;
+};
+
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
 const getTransitionDurationFromElement = element => {
   if (!element) {
     return 0;
@@ -216,6 +263,7 @@ const getjQuery = () => {
 const DOMContentLoadedCallbacks = [];
 const onDOMContentLoaded = callback => {
   const documentRef = getDocument();
+
   if (documentRef.readyState === 'loading') {
     // add listener on the first call when the document is in loading state
     if (!DOMContentLoadedCallbacks.length) {
@@ -230,10 +278,17 @@ const onDOMContentLoaded = callback => {
     callback();
   }
 };
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+const isRTL = () => document.documentElement.dir === 'rtl';
+=======
+
 const isRTL = () => {
   var _getDocument$document;
+
   return ((_getDocument$document = getDocument().documentElement) == null ? void 0 : _getDocument$document.dir) === 'rtl';
 };
+
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
 const defineJQueryPlugin = plugin => {
   onDOMContentLoaded(() => {
     const $ = getjQuery();
@@ -250,6 +305,10 @@ const defineJQueryPlugin = plugin => {
     }
   });
 };
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+=======
+
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
 const execute = (possibleCallback, args = [], defaultValue = possibleCallback) => {
   return typeof possibleCallback === 'function' ? possibleCallback(...args) : defaultValue;
 };
@@ -303,17 +362,19 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
   }
   return list[Math.max(0, Math.min(index, listLength - 1))];
 };
-
 /**
  * @return {window|{}} The proper element
  */
+
+
 const getWindow = () => {
   return typeof window !== 'undefined' ? window : {};
 };
-
 /**
  * @return {document|{}} The proper element
  */
+
+
 const getDocument = () => {
   return typeof document !== 'undefined' ? document : {};
 };
@@ -750,10 +811,10 @@ const getSelector = element => {
   return selector;
 };
 const SelectorEngine = {
-  find(selector, element = getDocument().documentElement) {
+  find(selector, element = document.documentElement) {
     return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
   },
-  findOne(selector, element = getDocument().documentElement) {
+  findOne(selector, element = document.documentElement) {
     return Element.prototype.querySelector.call(element, selector);
   },
   children(element, selector) {
@@ -961,7 +1022,12 @@ class Button extends BaseComponent {
  * Data API implementation
  */
 
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$5, event => {
+=======
+
 EventHandler.on(getDocument(), EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$5, event => {
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
   event.preventDefault();
   const button = event.target.closest(SELECTOR_DATA_TOGGLE$5);
   const data = Button.getOrCreateInstance(button);
@@ -981,7 +1047,77 @@ defineJQueryPlugin(Button);
  * --------------------------------------------------------------------------
  */
 
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
 
+=======
+const SelectorEngine = {
+  find(selector, element = getDocument().documentElement) {
+    return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
+  },
+
+  findOne(selector, element = getDocument().documentElement) {
+    return Element.prototype.querySelector.call(element, selector);
+  },
+
+  children(element, selector) {
+    return [].concat(...element.children).filter(child => child.matches(selector));
+  },
+
+  parents(element, selector) {
+    const parents = [];
+    let ancestor = element.parentNode.closest(selector);
+
+    while (ancestor) {
+      parents.push(ancestor);
+      ancestor = ancestor.parentNode.closest(selector);
+    }
+
+    return parents;
+  },
+
+  prev(element, selector) {
+    let previous = element.previousElementSibling;
+
+    while (previous) {
+      if (previous.matches(selector)) {
+        return [previous];
+      }
+
+      previous = previous.previousElementSibling;
+    }
+
+    return [];
+  },
+
+  // TODO: this is now unused; remove later along with prev()
+  next(element, selector) {
+    let next = element.nextElementSibling;
+
+    while (next) {
+      if (next.matches(selector)) {
+        return [next];
+      }
+
+      next = next.nextElementSibling;
+    }
+
+    return [];
+  },
+
+  focusableChildren(element) {
+    const focusables = ['a', 'button', 'input', 'textarea', 'select', 'details', '[tabindex]', '[contenteditable="true"]'].map(selector => `${selector}:not([tabindex^="-"])`).join(',');
+    return this.find(focusables, element).filter(el => !isDisabled(el) && isVisible(el));
+  }
+
+};
+
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap (v5.2.2): util/swipe.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
 /**
  * Constants
  */
@@ -1021,7 +1157,12 @@ class Swipe extends Config {
     }
     this._config = this._getConfig(config);
     this._deltaX = 0;
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+    this._supportPointerEvents = Boolean(window.PointerEvent);
+=======
     this._supportPointerEvents = Boolean(getWindow().PointerEvent);
+
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
     this._initEvents();
   }
 
@@ -1433,8 +1574,15 @@ class Carousel extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(getDocument(), EVENT_CLICK_DATA_API$5, SELECTOR_DATA_SLIDE, function (event) {
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+EventHandler.on(document, EVENT_CLICK_DATA_API$5, SELECTOR_DATA_SLIDE, function (event) {
   const target = SelectorEngine.getElementFromSelector(this);
+=======
+
+EventHandler.on(getDocument(), EVENT_CLICK_DATA_API$5, SELECTOR_DATA_SLIDE, function (event) {
+  const target = getElementFromSelector(this);
+
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
   if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
     return;
   }
@@ -1683,7 +1831,12 @@ class Collapse extends BaseComponent {
  * Data API implementation
  */
 
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+EventHandler.on(document, EVENT_CLICK_DATA_API$4, SELECTOR_DATA_TOGGLE$4, function (event) {
+=======
+
 EventHandler.on(getDocument(), EVENT_CLICK_DATA_API$4, SELECTOR_DATA_TOGGLE$4, function (event) {
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
   // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
   if (event.target.tagName === 'A' || event.delegateTarget && event.delegateTarget.tagName === 'A') {
     event.preventDefault();
@@ -1813,8 +1966,15 @@ class Dropdown extends BaseComponent {
     // empty mouseover listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+    if ('ontouchstart' in document.documentElement && !this._parent.closest(SELECTOR_NAVBAR_NAV)) {
+      for (const element of [].concat(...document.body.children)) {
+=======
+
+
     if ('ontouchstart' in this._document.documentElement && !this._parent.closest(SELECTOR_NAVBAR_NAV)) {
       for (const element of [].concat(...this._document.body.children)) {
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
         EventHandler.on(element, 'mouseover', noop);
       }
     }
@@ -1956,8 +2116,13 @@ class Dropdown extends BaseComponent {
         enabled: false
       }];
     }
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
     return {
       ...defaultBsPopperConfig,
+=======
+
+    return { ...defaultBsPopperConfig,
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
       ...execute(this._config.popperConfig, [defaultBsPopperConfig])
     };
   }
@@ -2054,12 +2219,21 @@ class Dropdown extends BaseComponent {
  * Data API implementation
  */
 
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE$3, Dropdown.dataApiKeydownHandler);
+EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataApiKeydownHandler);
+EventHandler.on(document, EVENT_CLICK_DATA_API$3, Dropdown.clearMenus);
+EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus);
+EventHandler.on(document, EVENT_CLICK_DATA_API$3, SELECTOR_DATA_TOGGLE$3, function (event) {
+=======
+
 const documentRef = getDocument();
 EventHandler.on(documentRef, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE$3, Dropdown.dataApiKeydownHandler);
 EventHandler.on(documentRef, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataApiKeydownHandler);
 EventHandler.on(documentRef, EVENT_CLICK_DATA_API$3, Dropdown.clearMenus);
 EventHandler.on(documentRef, EVENT_KEYUP_DATA_API, Dropdown.clearMenus);
 EventHandler.on(documentRef, EVENT_CLICK_DATA_API$3, SELECTOR_DATA_TOGGLE$3, function (event) {
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
   event.preventDefault();
   Dropdown.getOrCreateInstance(this).toggle();
 });
@@ -2076,8 +2250,132 @@ defineJQueryPlugin(Dropdown);
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
 
 
+=======
+/**
+ * Constants
+ */
+
+const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top';
+const SELECTOR_STICKY_CONTENT = '.sticky-top';
+const PROPERTY_PADDING = 'padding-right';
+const PROPERTY_MARGIN = 'margin-right';
+/**
+ * Class definition
+ */
+
+class ScrollBarHelper {
+  constructor() {
+    this._element = getDocument().body;
+    this._window = getWindow();
+  } // Public
+
+
+  getWidth() {
+    // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
+    const documentWidth = document.documentElement.clientWidth;
+    return Math.abs(this._window.innerWidth - documentWidth);
+  }
+
+  hide() {
+    const width = this.getWidth();
+
+    this._disableOverFlow(); // give padding to element to balance the hidden scrollbar width
+
+
+    this._setElementAttributes(this._element, PROPERTY_PADDING, calculatedValue => calculatedValue + width); // trick: We adjust positive paddingRight and negative marginRight to sticky-top elements to keep showing fullwidth
+
+
+    this._setElementAttributes(SELECTOR_FIXED_CONTENT, PROPERTY_PADDING, calculatedValue => calculatedValue + width);
+
+    this._setElementAttributes(SELECTOR_STICKY_CONTENT, PROPERTY_MARGIN, calculatedValue => calculatedValue - width);
+  }
+
+  reset() {
+    this._resetElementAttributes(this._element, 'overflow');
+
+    this._resetElementAttributes(this._element, PROPERTY_PADDING);
+
+    this._resetElementAttributes(SELECTOR_FIXED_CONTENT, PROPERTY_PADDING);
+
+    this._resetElementAttributes(SELECTOR_STICKY_CONTENT, PROPERTY_MARGIN);
+  }
+
+  isOverflowing() {
+    return this.getWidth() > 0;
+  } // Private
+
+
+  _disableOverFlow() {
+    this._saveInitialAttribute(this._element, 'overflow');
+
+    this._element.style.overflow = 'hidden';
+  }
+
+  _setElementAttributes(selector, styleProperty, callback) {
+    const scrollbarWidth = this.getWidth();
+
+    const manipulationCallBack = element => {
+      if (element !== this._element && this._window.innerWidth > element.clientWidth + scrollbarWidth) {
+        return;
+      }
+
+      this._saveInitialAttribute(element, styleProperty);
+
+      const calculatedValue = this._window.getComputedStyle(element).getPropertyValue(styleProperty);
+
+      element.style.setProperty(styleProperty, `${callback(Number.parseFloat(calculatedValue))}px`);
+    };
+
+    this._applyManipulationCallback(selector, manipulationCallBack);
+  }
+
+  _saveInitialAttribute(element, styleProperty) {
+    const actualValue = element.style.getPropertyValue(styleProperty);
+
+    if (actualValue) {
+      Manipulator.setDataAttribute(element, styleProperty, actualValue);
+    }
+  }
+
+  _resetElementAttributes(selector, styleProperty) {
+    const manipulationCallBack = element => {
+      const value = Manipulator.getDataAttribute(element, styleProperty); // We only want to remove the property if the value is `null`; the value can also be zero
+
+      if (value === null) {
+        element.style.removeProperty(styleProperty);
+        return;
+      }
+
+      Manipulator.removeDataAttribute(element, styleProperty);
+      element.style.setProperty(styleProperty, value);
+    };
+
+    this._applyManipulationCallback(selector, manipulationCallBack);
+  }
+
+  _applyManipulationCallback(selector, callBack) {
+    if (isElement(selector)) {
+      callBack(selector);
+      return;
+    }
+
+    for (const sel of SelectorEngine.find(selector, this._element)) {
+      callBack(sel);
+    }
+  }
+
+}
+
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap (v5.2.2): util/backdrop.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
 /**
  * Constants
  */
@@ -2235,8 +2533,13 @@ class FocusTrap extends Config {
     this._config = this._getConfig(config);
     this._isActive = false;
     this._lastTabNavDirection = null;
-    this._document = getDocument();
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
   }
+=======
+    this._document = getDocument();
+  } // Getters
+
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
 
   // Getters
   static get Default() {
@@ -2257,9 +2560,17 @@ class FocusTrap extends Config {
     if (this._config.autofocus) {
       this._config.trapElement.focus();
     }
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+    EventHandler.off(document, EVENT_KEY$5); // guard against infinite focus loop
+    EventHandler.on(document, EVENT_FOCUSIN$2, event => this._handleFocusin(event));
+    EventHandler.on(document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event));
+=======
+
     EventHandler.off(this._document, EVENT_KEY$5); // guard against infinite focus loop
+
     EventHandler.on(this._document, EVENT_FOCUSIN$2, event => this._handleFocusin(event));
     EventHandler.on(this._document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event));
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
     this._isActive = true;
   }
   deactivate() {
@@ -2267,15 +2578,26 @@ class FocusTrap extends Config {
       return;
     }
     this._isActive = false;
-    EventHandler.off(this._document, EVENT_KEY$5);
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+    EventHandler.off(document, EVENT_KEY$5);
   }
+=======
+    EventHandler.off(this._document, EVENT_KEY$5);
+  } // Private
+
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
 
   // Private
   _handleFocusin(event) {
     const {
       trapElement
     } = this._config;
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+    if (event.target === document || event.target === trapElement || trapElement.contains(event.target)) {
+=======
+
     if (event.target === this._document || event.target === trapElement || trapElement.contains(event.target)) {
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
       return;
     }
     const elements = SelectorEngine.focusableChildren(trapElement);
@@ -2318,15 +2640,14 @@ const PROPERTY_MARGIN = 'margin-right';
 
 class ScrollBarHelper {
   constructor() {
-    this._element = getDocument().body;
-    this._window = getWindow();
+    this._element = document.body;
   }
 
   // Public
   getWidth() {
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
     const documentWidth = document.documentElement.clientWidth;
-    return Math.abs(this._window.innerWidth - documentWidth);
+    return Math.abs(window.innerWidth - documentWidth);
   }
   hide() {
     const width = this.getWidth();
@@ -2355,11 +2676,11 @@ class ScrollBarHelper {
   _setElementAttributes(selector, styleProperty, callback) {
     const scrollbarWidth = this.getWidth();
     const manipulationCallBack = element => {
-      if (element !== this._element && this._window.innerWidth > element.clientWidth + scrollbarWidth) {
+      if (element !== this._element && window.innerWidth > element.clientWidth + scrollbarWidth) {
         return;
       }
       this._saveInitialAttribute(element, styleProperty);
-      const calculatedValue = this._window.getComputedStyle(element).getPropertyValue(styleProperty);
+      const calculatedValue = window.getComputedStyle(element).getPropertyValue(styleProperty);
       element.style.setProperty(styleProperty, `${callback(Number.parseFloat(calculatedValue))}px`);
     };
     this._applyManipulationCallback(selector, manipulationCallBack);
@@ -2592,7 +2913,12 @@ class Modal extends BaseComponent {
     this._element.removeAttribute('role');
     this._isTransitioning = false;
     this._backdrop.hide(() => {
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+      document.body.classList.remove(CLASS_NAME_OPEN);
+=======
       this._document.body.classList.remove(CLASS_NAME_OPEN);
+
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
       this._resetAdjustments();
       this._scrollBar.reset();
       EventHandler.trigger(this._element, EVENT_HIDDEN$4);
@@ -2606,9 +2932,16 @@ class Modal extends BaseComponent {
     if (hideEvent.defaultPrevented) {
       return;
     }
-    const isModalOverflowing = this._element.scrollHeight > this._document.documentElement.clientHeight;
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
     const initialOverflowY = this._element.style.overflowY;
     // return if the following background transition hasn't yet completed
+=======
+
+    const isModalOverflowing = this._element.scrollHeight > this._document.documentElement.clientHeight;
+    const initialOverflowY = this._element.style.overflowY; // return if the following background transition hasn't yet completed
+
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
     if (initialOverflowY === 'hidden' || this._element.classList.contains(CLASS_NAME_STATIC)) {
       return;
     }
@@ -2630,7 +2963,12 @@ class Modal extends BaseComponent {
    */
 
   _adjustDialog() {
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
+=======
     const isModalOverflowing = this._element.scrollHeight > this._document.documentElement.clientHeight;
+
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
     const scrollbarWidth = this._scrollBar.getWidth();
     const isBodyOverflowing = scrollbarWidth > 0;
     if (isBodyOverflowing && !isModalOverflowing) {
@@ -2666,8 +3004,15 @@ class Modal extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(getDocument(), EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$2, function (event) {
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$2, function (event) {
   const target = SelectorEngine.getElementFromSelector(this);
+=======
+
+EventHandler.on(getDocument(), EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$2, function (event) {
+  const target = getElementFromSelector(this);
+
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
   if (['A', 'AREA'].includes(this.tagName)) {
     event.preventDefault();
   }
@@ -2887,8 +3232,15 @@ class Offcanvas extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(getDocument(), EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$1, function (event) {
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+EventHandler.on(document, EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$1, function (event) {
   const target = SelectorEngine.getElementFromSelector(this);
+=======
+
+EventHandler.on(getDocument(), EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$1, function (event) {
+  const target = getElementFromSelector(this);
+
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
   if (['A', 'AREA'].includes(this.tagName)) {
     event.preventDefault();
   }
@@ -2937,6 +3289,7 @@ defineJQueryPlugin(Offcanvas);
  * --------------------------------------------------------------------------
  */
 
+// js-docs-start allow-list
 const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i;
 const DefaultAllowlist = {
   // Global attributes allowed on any supplied element below.
@@ -3002,8 +3355,13 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
   if (sanitizeFunction && typeof sanitizeFunction === 'function') {
     return sanitizeFunction(unsafeHtml);
   }
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+  const domParser = new window.DOMParser();
+=======
+
   const windowRef = getWindow();
   const domParser = new windowRef.DOMParser();
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
   const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
   const elements = [].concat(...createdDocument.body.querySelectorAll('*'));
   for (const element of elements) {
@@ -3302,6 +3660,10 @@ class Tooltip extends BaseComponent {
   dispose() {
     clearTimeout(this._timeout);
     EventHandler.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler);
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+=======
+
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
     if (this._element.getAttribute('data-bs-original-title')) {
       this._element.setAttribute('title', this._element.getAttribute('data-bs-original-title'));
     }
@@ -3320,7 +3682,14 @@ class Tooltip extends BaseComponent {
     const isInTheDom = (shadowRoot || this._element.ownerDocument.documentElement).contains(this._element);
     if (showEvent.defaultPrevented || !isInTheDom) {
       return;
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
     }
+=======
+    } // todo v6 remove this OR make it optional
+
+
+    this._disposePopper();
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
 
     // TODO: v6 remove this or make it optional
     this._disposePopper();
@@ -3336,12 +3705,23 @@ class Tooltip extends BaseComponent {
     this._popper = this._createPopper(tip);
     tip.classList.add(CLASS_NAME_SHOW$2);
 
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
     // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+    if ('ontouchstart' in document.documentElement) {
+      for (const element of [].concat(...document.body.children)) {
+=======
+    this._popper = this._createPopper(tip);
+    tip.classList.add(CLASS_NAME_SHOW$2); // If this is a touch-enabled device we add extra
+    // empty mouseover listeners to the body's immediate children;
+    // only needed because of broken event delegation on iOS
+    // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+
     if ('ontouchstart' in this._document.documentElement) {
       for (const element of [].concat(...this._document.body.children)) {
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
         EventHandler.on(element, 'mouseover', noop);
       }
     }
@@ -3367,8 +3747,14 @@ class Tooltip extends BaseComponent {
 
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+    if ('ontouchstart' in document.documentElement) {
+      for (const element of [].concat(...document.body.children)) {
+=======
+
     if ('ontouchstart' in this._document.documentElement) {
       for (const element of [].concat(...this._document.body.children)) {
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
         EventHandler.off(element, 'mouseover', noop);
       }
     }
@@ -3516,8 +3902,12 @@ class Tooltip extends BaseComponent {
         }
       }]
     };
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
     return {
       ...defaultBsPopperConfig,
+=======
+    return { ...defaultBsPopperConfig,
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
       ...execute(this._config.popperConfig, [defaultBsPopperConfig])
     };
   }
@@ -3644,11 +4034,20 @@ class Tooltip extends BaseComponent {
       this._popper.destroy();
       this._popper = null;
     }
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+=======
+
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
     if (this.tip) {
       this.tip.remove();
       this.tip = null;
     }
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
   }
+=======
+  } // Static
+
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
 
   // Static
   static jQueryInterface(config) {
@@ -4000,7 +4399,12 @@ class ScrollSpy extends BaseComponent {
  * Data API implementation
  */
 
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+EventHandler.on(window, EVENT_LOAD_DATA_API$1, () => {
+=======
+
 EventHandler.on(getWindow(), EVENT_LOAD_DATA_API$1, () => {
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
   for (const spy of SelectorEngine.find(SELECTOR_DATA_SPY)) {
     ScrollSpy.getOrCreateInstance(spy);
   }
@@ -4258,7 +4662,12 @@ class Tab extends BaseComponent {
  * Data API implementation
  */
 
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+=======
+
 EventHandler.on(getDocument(), EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
   if (['A', 'AREA'].includes(this.tagName)) {
     event.preventDefault();
   }
@@ -4271,7 +4680,12 @@ EventHandler.on(getDocument(), EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, funct
 /**
  * Initialize on focus
  */
+<<<<<<< HEAD:dist/js/bootstrap.esm.js
+EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+=======
+
 EventHandler.on(getWindow(), EVENT_LOAD_DATA_API, () => {
+>>>>>>> deba7df82 (dist):dist/js/bootstrap.esm.mjs
   for (const element of SelectorEngine.find(SELECTOR_DATA_TOGGLE_ACTIVE)) {
     Tab.getOrCreateInstance(element);
   }

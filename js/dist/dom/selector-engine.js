@@ -38,10 +38,10 @@
     return selector;
   };
   const SelectorEngine = {
-    find(selector, element = document.documentElement) {
+    find(selector, element = index_js.getDocument().documentElement) {
       return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
     },
-    findOne(selector, element = document.documentElement) {
+    findOne(selector, element = index_js.getDocument().documentElement) {
       return Element.prototype.querySelector.call(element, selector);
     },
     children(element, selector) {

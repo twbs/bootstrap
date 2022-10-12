@@ -56,7 +56,7 @@
       }
       this._config = this._getConfig(config);
       this._deltaX = 0;
-      this._supportPointerEvents = Boolean(window.PointerEvent);
+      this._supportPointerEvents = Boolean(index_js.getWindow().PointerEvent);
       this._initEvents();
     }
 
@@ -125,7 +125,7 @@
 
     // Static
     static isSupported() {
-      return 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0;
+      return 'ontouchstart' in index_js.getDocument().documentElement || navigator.maxTouchPoints > 0;
     }
   }
 

@@ -67,7 +67,7 @@
       // this._element is the observablesContainer and config.target the menu links wrapper
       this._targetLinks = new Map();
       this._observableSections = new Map();
-      this._rootElement = getComputedStyle(this._element).overflowY === 'visible' ? null : this._element;
+      this._rootElement = index_js.getWindow().getComputedStyle(this._element).overflowY === 'visible' ? null : this._element;
       this._activeTarget = null;
       this._observer = null;
       this._previousScrollData = {
@@ -129,7 +129,7 @@
         const observableSection = this._observableSections.get(event.target.hash);
         if (observableSection) {
           event.preventDefault();
-          const root = this._rootElement || window;
+          const root = this._rootElement || index_js.getWindow();
           const height = observableSection.offsetTop - this._element.offsetTop;
           if (root.scrollTo) {
             root.scrollTo({
@@ -257,7 +257,7 @@
    * Data API implementation
    */
 
-  EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+  EventHandler.on(index_js.getWindow(), EVENT_LOAD_DATA_API, () => {
     for (const spy of SelectorEngine.find(SELECTOR_DATA_SPY)) {
       ScrollSpy.getOrCreateInstance(spy);
     }

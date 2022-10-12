@@ -32,14 +32,15 @@
 
   class ScrollBarHelper {
     constructor() {
-      this._element = document.body;
+      this._element = index_js.getDocument().body;
+      this._window = index_js.getWindow();
     }
 
     // Public
     getWidth() {
       // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
       const documentWidth = document.documentElement.clientWidth;
-      return Math.abs(window.innerWidth - documentWidth);
+      return Math.abs(this._window.innerWidth - documentWidth);
     }
     hide() {
       const width = this.getWidth();
@@ -68,11 +69,11 @@
     _setElementAttributes(selector, styleProperty, callback) {
       const scrollbarWidth = this.getWidth();
       const manipulationCallBack = element => {
-        if (element !== this._element && window.innerWidth > element.clientWidth + scrollbarWidth) {
+        if (element !== this._element && this._window.innerWidth > element.clientWidth + scrollbarWidth) {
           return;
         }
         this._saveInitialAttribute(element, styleProperty);
-        const calculatedValue = window.getComputedStyle(element).getPropertyValue(styleProperty);
+        const calculatedValue = this._window.getComputedStyle(element).getPropertyValue(styleProperty);
         element.style.setProperty(styleProperty, `${callback(Number.parseFloat(calculatedValue))}px`);
       };
       this._applyManipulationCallback(selector, manipulationCallBack);
