@@ -157,7 +157,7 @@
     }
 
     _resolvePossibleFunction(arg) {
-      return typeof arg === 'function' ? arg(this) : arg;
+      return index.execute(arg, [this]);
     }
 
     _putElementInTemplate(element, templateElement) {

@@ -60,7 +60,7 @@
 
       this._config = this._getConfig(config);
       this._deltaX = 0;
-      this._supportPointerEvents = Boolean(window.PointerEvent);
+      this._supportPointerEvents = Boolean(index.getWindow().PointerEvent);
 
       this._initEvents();
     } // Getters
@@ -145,7 +145,7 @@
 
 
     static isSupported() {
-      return 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0;
+      return 'ontouchstart' in index.getDocument().documentElement || navigator.maxTouchPoints > 0;
     }
 
   }

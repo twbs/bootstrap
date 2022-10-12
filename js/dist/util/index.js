@@ -34,7 +34,7 @@
   const getUID = prefix => {
     do {
       prefix += Math.floor(Math.random() * MAX_UID);
-    } while (document.getElementById(prefix));
+    } while (getDocument().getElementById(prefix));
 
     return prefix;
   };
@@ -67,7 +67,7 @@
     const selector = getSelector(element);
 
     if (selector) {
-      return document.querySelector(selector) ? selector : null;
+      return getDocument().querySelector(selector) ? selector : null;
     }
 
     return null;
@@ -75,7 +75,7 @@
 
   const getElementFromSelector = element => {
     const selector = getSelector(element);
-    return selector ? document.querySelector(selector) : null;
+    return selector ? getDocument().querySelector(selector) : null;
   };
 
   const getTransitionDurationFromElement = element => {
@@ -87,7 +87,7 @@
     let {
       transitionDuration,
       transitionDelay
-    } = window.getComputedStyle(element);
+    } = getWindow().getComputedStyle(element);
     const floatTransitionDuration = Number.parseFloat(transitionDuration);
     const floatTransitionDelay = Number.parseFloat(transitionDelay); // Return 0 if element or transition duration is not found
 
@@ -175,7 +175,7 @@
   };
 
   const findShadowRoot = element => {
-    if (!document.documentElement.attachShadow) {
+    if (!getDocument().documentElement.attachShadow) {
       return null;
     } // Can find the shadow root otherwise it'll return the document
 
@@ -213,7 +213,7 @@
   };
 
   const getjQuery = () => {
-    if (window.jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
+    if (getWindow().jQuery && !getDocument().body.hasAttribute('data-bs-no-jquery')) {
       return window.jQuery;
     }
 
@@ -223,10 +223,12 @@
   const DOMContentLoadedCallbacks = [];
 
   const onDOMContentLoaded = callback => {
-    if (document.readyState === 'loading') {
+    const documentRef = getDocument();
+
+    if (documentRef.readyState === 'loading') {
       // add listener on the first call when the document is in loading state
       if (!DOMContentLoadedCallbacks.length) {
-        document.addEventListener('DOMContentLoaded', () => {
+        documentRef.addEventListener('DOMContentLoaded', () => {
           for (const callback of DOMContentLoadedCallbacks) {
             callback();
           }
@@ -239,7 +241,11 @@
     }
   };
 
-  const isRTL = () => document.documentElement.dir === 'rtl';
+  const isRTL = () => {
+    var _getDocument$document;
+
+    return ((_getDocument$document = getDocument().documentElement) == null ? void 0 : _getDocument$document.dir) === 'rtl';
+  };
 
   const defineJQueryPlugin = plugin => {
     onDOMContentLoaded(() => {
@@ -260,10 +266,8 @@
     });
   };
 
-  const execute = callback => {
-    if (typeof callback === 'function') {
-      callback();
-    }
+  const execute = (possibleCallback, args = [], defaultValue = possibleCallback) => {
+    return typeof possibleCallback === 'function' ? possibleCallback(...args) : defaultValue;
   };
 
   const executeAfterTransition = (callback, transitionElement, waitForTransition = true) => {
@@ -323,17 +327,35 @@
 
     return list[Math.max(0, Math.min(index, listLength - 1))];
   };
+  /**
+   * @return {window|{}} The proper element
+   */
+
+
+  const getWindow = () => {
+    return typeof window !== 'undefined' ? window : {};
+  };
+  /**
+   * @return {document|{}} The proper element
+   */
+
+
+  const getDocument = () => {
+    return typeof document !== 'undefined' ? document : {};
+  };
 
   exports.defineJQueryPlugin = defineJQueryPlugin;
   exports.execute = execute;
   exports.executeAfterTransition = executeAfterTransition;
   exports.findShadowRoot = findShadowRoot;
+  exports.getDocument = getDocument;
   exports.getElement = getElement;
   exports.getElementFromSelector = getElementFromSelector;
   exports.getNextActiveElement = getNextActiveElement;
   exports.getSelectorFromElement = getSelectorFromElement;
   exports.getTransitionDurationFromElement = getTransitionDurationFromElement;
   exports.getUID = getUID;
+  exports.getWindow = getWindow;
   exports.getjQuery = getjQuery;
   exports.isDisabled = isDisabled;
   exports.isElement = isElement;

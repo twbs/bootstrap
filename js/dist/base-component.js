@@ -40,6 +40,8 @@
       }
 
       this._element = element;
+      this._window = index.getWindow();
+      this._document = index.getDocument();
       this._config = this._getConfig(config);
       Data__default.default.set(this._element, this.constructor.DATA_KEY, this);
     } // Public

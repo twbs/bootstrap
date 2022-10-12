@@ -187,10 +187,6 @@
       clearTimeout(this._timeout);
       EventHandler__default.default.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler);
 
-      if (this.tip) {
-        this.tip.remove();
-      }
-
       if (this._element.getAttribute('data-bs-original-title')) {
         this._element.setAttribute('title', this._element.getAttribute('data-bs-original-title'));
       }
@@ -219,10 +215,7 @@
       } // todo v6 remove this OR make it optional
 
 
-      if (this.tip) {
-        this.tip.remove();
-        this.tip = null;
-      }
+      this._disposePopper();
 
       const tip = this._getTipElement();
 
@@ -237,19 +230,14 @@
         EventHandler__default.default.trigger(this._element, this.constructor.eventName(EVENT_INSERTED));
       }
 
-      if (this._popper) {
-        this._popper.update();
-      } else {
-        this._popper = this._createPopper(tip);
-      }
-
+      this._popper = this._createPopper(tip);
       tip.classList.add(CLASS_NAME_SHOW); // If this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
       // only needed because of broken event delegation on iOS
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
-      if ('ontouchstart' in document.documentElement) {
-        for (const element of [].concat(...document.body.children)) {
+      if ('ontouchstart' in this._document.documentElement) {
+        for (const element of [].concat(...this._document.body.children)) {
           EventHandler__default.default.on(element, 'mouseover', index.noop);
         }
       }
@@ -283,8 +271,8 @@
       tip.classList.remove(CLASS_NAME_SHOW); // If this is a touch-enabled device we remove the extra
       // empty mouseover listeners we added for iOS support
 
-      if ('ontouchstart' in document.documentElement) {
-        for (const element of [].concat(...document.body.children)) {
+      if ('ontouchstart' in this._document.documentElement) {
+        for (const element of [].concat(...this._document.body.children)) {
           EventHandler__default.default.off(element, 'mouseover', index.noop);
         }
       }
@@ -300,14 +288,12 @@
         }
 
         if (!this._isHovered) {
-          tip.remove();
+          this._disposePopper();
         }
 
         this._element.removeAttribute('aria-describedby');
 
         EventHandler__default.default.trigger(this._element, this.constructor.eventName(EVENT_HIDDEN));
-
-        this._disposePopper();
       };
 
       this._queueCallback(complete, this.tip, this._isAnimated());
@@ -402,7 +388,7 @@
     }
 
     _createPopper(tip) {
-      const placement = typeof this._config.placement === 'function' ? this._config.placement.call(this, tip, this._element) : this._config.placement;
+      const placement = index.execute(this._config.placement, [this, tip, this._element]);
       const attachment = AttachmentMap[placement.toUpperCase()];
       return Popper__namespace.createPopper(this._element, tip, this._getPopperConfig(attachment));
     }
@@ -424,7 +410,7 @@
     }
 
     _resolvePossibleFunction(arg) {
-      return typeof arg === 'function' ? arg.call(this._element) : arg;
+      return index.execute(arg, [this._element]);
     }
 
     _getPopperConfig(attachment) {
@@ -462,7 +448,7 @@
         }]
       };
       return { ...defaultBsPopperConfig,
-        ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig)
+        ...index.execute(this._config.popperConfig, [defaultBsPopperConfig])
       };
     }
 
@@ -623,6 +609,11 @@
         this._popper.destroy();
 
         this._popper = null;
+      }
+
+      if (this.tip) {
+        this.tip.remove();
+        this.tip = null;
       }
     } // Static
 

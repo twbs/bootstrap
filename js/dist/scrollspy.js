@@ -69,7 +69,7 @@
 
       this._targetLinks = new Map();
       this._observableSections = new Map();
-      this._rootElement = getComputedStyle(this._element).overflowY === 'visible' ? null : this._element;
+      this._rootElement = index.getWindow().getComputedStyle(this._element).overflowY === 'visible' ? null : this._element;
       this._activeTarget = null;
       this._observer = null;
       this._previousScrollData = {
@@ -141,7 +141,7 @@
 
         if (observableSection) {
           event.preventDefault();
-          const root = this._rootElement || window;
+          const root = this._rootElement || index.getWindow();
           const height = observableSection.offsetTop - this._element.offsetTop;
 
           if (root.scrollTo) {
@@ -295,7 +295,7 @@
    */
 
 
-  EventHandler__default.default.on(window, EVENT_LOAD_DATA_API, () => {
+  EventHandler__default.default.on(index.getWindow(), EVENT_LOAD_DATA_API, () => {
     for (const spy of SelectorEngine__default.default.find(SELECTOR_DATA_SPY)) {
       ScrollSpy.getOrCreateInstance(spy);
     }
