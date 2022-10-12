@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { isDisabled, isVisible, parseSelector } from '../util/index.js'
+import { getDocument, isDisabled, isVisible, parseSelector } from '../util/index.js'
 
 const getSelector = element => {
   let selector = element.getAttribute('data-bs-target')
@@ -33,11 +33,11 @@ const getSelector = element => {
 }
 
 const SelectorEngine = {
-  find(selector, element = document.documentElement) {
+  find(selector, element = getDocument().documentElement) {
     return [].concat(...Element.prototype.querySelectorAll.call(element, selector))
   },
 
-  findOne(selector, element = document.documentElement) {
+  findOne(selector, element = getDocument().documentElement) {
     return Element.prototype.querySelector.call(element, selector)
   },
 

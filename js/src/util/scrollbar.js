@@ -7,7 +7,7 @@
 
 import Manipulator from '../dom/manipulator.js'
 import SelectorEngine from '../dom/selector-engine.js'
-import { isElement } from './index.js'
+import { isElement, getDocument, getWindow } from './index.js'
 
 /**
  * Constants
@@ -24,14 +24,15 @@ const PROPERTY_MARGIN = 'margin-right'
 
 class ScrollBarHelper {
   constructor() {
-    this._element = document.body
+    this._element = getDocument().body
+    this._window = getWindow()
   }
 
   // Public
   getWidth() {
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
     const documentWidth = document.documentElement.clientWidth
-    return Math.abs(window.innerWidth - documentWidth)
+    return Math.abs(this._window.innerWidth - documentWidth)
   }
 
   hide() {
@@ -64,12 +65,12 @@ class ScrollBarHelper {
   _setElementAttributes(selector, styleProperty, callback) {
     const scrollbarWidth = this.getWidth()
     const manipulationCallBack = element => {
-      if (element !== this._element && window.innerWidth > element.clientWidth + scrollbarWidth) {
+      if (element !== this._element && this._window.innerWidth > element.clientWidth + scrollbarWidth) {
         return
       }
 
       this._saveInitialAttribute(element, styleProperty)
-      const calculatedValue = window.getComputedStyle(element).getPropertyValue(styleProperty)
+      const calculatedValue = this._window.getComputedStyle(element).getPropertyValue(styleProperty)
       element.style.setProperty(styleProperty, `${callback(Number.parseFloat(calculatedValue))}px`)
     }
 

@@ -8,7 +8,7 @@
 import Data from './dom/data.js'
 import EventHandler from './dom/event-handler.js'
 import Config from './util/config.js'
-import { executeAfterTransition, getElement } from './util/index.js'
+import { executeAfterTransition, getElement, getDocument, getWindow } from './util/index.js'
 
 /**
  * Constants
@@ -30,6 +30,8 @@ class BaseComponent extends Config {
     }
 
     this._element = element
+    this._window = getWindow()
+    this._document = getDocument()
     this._config = this._getConfig(config)
 
     Data.set(this._element, this.constructor.DATA_KEY, this)

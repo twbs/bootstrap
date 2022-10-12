@@ -7,7 +7,7 @@
 
 import EventHandler from '../dom/event-handler.js'
 import Config from './config.js'
-import { execute } from './index.js'
+import { execute, getDocument, getWindow } from './index.js'
 
 /**
  * Constants
@@ -52,7 +52,7 @@ class Swipe extends Config {
 
     this._config = this._getConfig(config)
     this._deltaX = 0
-    this._supportPointerEvents = Boolean(window.PointerEvent)
+    this._supportPointerEvents = Boolean(getWindow().PointerEvent)
     this._initEvents()
   }
 
@@ -139,7 +139,7 @@ class Swipe extends Config {
 
   // Static
   static isSupported() {
-    return 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
+    return 'ontouchstart' in getDocument().documentElement || navigator.maxTouchPoints > 0
   }
 }
 

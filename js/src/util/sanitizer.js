@@ -5,7 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
-// js-docs-start allow-list
+import { getWindow } from './index.js'
+
 const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i
 
 export const DefaultAllowlist = {
@@ -88,7 +89,8 @@ export function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
     return sanitizeFunction(unsafeHtml)
   }
 
-  const domParser = new window.DOMParser()
+  const windowRef = getWindow()
+  const domParser = new windowRef.DOMParser()
   const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html')
   const elements = [].concat(...createdDocument.body.querySelectorAll('*'))
 

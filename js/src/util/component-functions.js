@@ -7,13 +7,13 @@
 
 import EventHandler from '../dom/event-handler.js'
 import SelectorEngine from '../dom/selector-engine.js'
-import { isDisabled } from './index.js'
+import { getDocument, isDisabled } from './index.js'
 
 const enableDismissTrigger = (component, method = 'hide') => {
   const clickEvent = `click.dismiss${component.EVENT_KEY}`
   const name = component.NAME
 
-  EventHandler.on(document, clickEvent, `[data-bs-dismiss="${name}"]`, function (event) {
+  EventHandler.on(getDocument(), clickEvent, `[data-bs-dismiss="${name}"]`, function (event) {
     if (['A', 'AREA'].includes(this.tagName)) {
       event.preventDefault()
     }
