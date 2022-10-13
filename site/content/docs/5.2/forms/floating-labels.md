@@ -88,6 +88,10 @@ Add the `disabled` boolean attribute on an input, a textarea or a select to give
   <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextareaDisabled" disabled></textarea>
   <label for="floatingTextareaDisabled">Comments</label>
 </div>
+<div class="form-floating mb-3">
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled" style="height: 100px" disabled></textarea>
+  <label for="floatingTextarea2Disabled">Comments</label>
+</div>
 <div class="form-floating">
   <select class="form-select" id="floatingSelectDisabled" aria-label="Floating label disabled select example" disabled>
     <option selected>Open this select menu</option>
