@@ -707,7 +707,7 @@ $utilities: map-merge(
     // scss-docs-end utils-visibility
     "z-index": (
       property: z-index,
-      class: z
+      class: z,
       values: $zindex-levels,
     )
   ),
