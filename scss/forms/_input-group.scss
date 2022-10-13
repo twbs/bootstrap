@@ -60,6 +60,19 @@
 }
 
 
+// Styled buttons
+//
+// Uses with `.btn` class to style button as addon.
+
+.input-group-btn {
+  @include button-variant(
+    $input-group-addon-bg,
+    $input-group-addon-border-color,
+    $input-group-addon-color
+  );
+}
+
+
 // Sizing
 //
 // Remix the default form control sizing classes into new ones for easier
