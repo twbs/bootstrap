@@ -157,7 +157,40 @@ $custom-colors: (
 // Merge the maps
 $theme-colors: map-merge($theme-colors, $custom-colors);
 ```
+If you want to use ```bg-custom-color```, ```text-custom-color```, ```border-custom-color``` and e.t.c, you need to generate utilities for that classes. You can read more about generating utilities [here](../customize/color.md)  - they're also presented example of ```text-custom-color``` utility. On that page you can see example of ```bg-custom-color``` and ```border-color``` utilities - pay attention that you need import ```"../node_modules/bootstrap/scss/utilities/api"``` after generating utilities. You can find all classes utilities in ```"../node_modules/bootstrap/scss/_utilites.scss"```.
 
+```scss
+$utilities: map-merge(
+  $utilities,
+  (
+    "border-color": map-merge(
+			map-get($utilities, "border-color"),
+			(
+				values: map-merge(
+					map-get(map-get($utilities, "border-color"), "values"),
+					(
+						$theme-colors
+					),
+				),
+			),
+		),
+    
+    "background-color": map-merge(
+      map-get($utilities, "background-color"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "background-color"), "values"),
+          (
+            $theme-colors
+          ),
+        ),
+      ),
+    ),
+  )
+);
+
+@import "../node_modules/bootstrap/scss/utilities/api";
+```
 ### Remove from map
 
 To remove colors from `$theme-colors`, or any other map, use `map-remove`. Be aware you must insert `$theme-colors` between our requirements just after its definition in `variables` and before its usage in `maps`:
