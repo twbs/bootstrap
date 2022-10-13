@@ -160,24 +160,24 @@ The additional class `.input-group-btn` (using with `.btn`) style button same as
 {{< example >}}
 <div class="input-group mb-3">
   <button class="btn btn-secondary" type="button">.btn-secondary</button>
-  <input type="text" class="form-control" placeholder="" aria-label="Example text between button addon and styled button addon">
+  <input type="text" class="form-control" aria-label="Example text between button addon and styled button addon">
   <button class="btn input-group-btn" type="button">.input-group-btn</button>
 </div>
 
 <div class="input-group mb-3">
-  <input type="file" class="form-control" placeholder="" aria-label="Example file input with styled button addon">
+  <input type="file" class="form-control" aria-label="Example file input with styled button addon">
   <button class="btn input-group-btn" type="button">Button</button>
 </div>
 
 <div class="input-group dropdown">
-    <input type="file" class="form-control" placeholder="" aria-label="Example file input with styled dropdown addon">
+    <input type="file" class="form-control" aria-label="Example file input with styled dropdown addon">
     <button class="btn input-group-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image-fill" viewBox="0 0 16 16">
           <path d="M.002 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-12a2 2 0 0 1-2-2V3zm1 9v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12zm5-6.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/>
         </svg>
     </button>
     <div class="dropdown-menu dropdown-menu-end p-1">
-        <svg class="img-fluid rounded placeholder" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#20c997"></rect></svg>
+        <svg class="img-fluid rounded" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#20c997"></rect></svg>
         <div class="d-flex mt-2">
             <small class="me-auto font-monospace">path/to/file.jpg</small>
             <a role="button" class="btn btn-sm btn-close" href="#" title="Delete file"></a>
