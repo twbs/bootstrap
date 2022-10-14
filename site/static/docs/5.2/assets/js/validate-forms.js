@@ -11,6 +11,9 @@
       if (!form.checkValidity()) {
         event.preventDefault()
         event.stopPropagation()
+        // Focus on first error
+        let invalidItems = form.querySelectorAll(':invalid')
+        invalidItems[0].focus()
       }
 
       form.classList.add('was-validated')
