@@ -15,40 +15,40 @@
   <div class="row gx-md-5">
     <div class="col-lg-6">
       <h3 class="fw-semibold">Quickly customize components</h3>
-      <p>Apply any of our included utility classes to our components to customize their appearance, like the navigation example below. There are hundreds of classes available—from <a href="/docs/{{ .Site.Params.docs_version }}/utilities/position/">positioning</a> and <a href="/docs/{{ .Site.Params.docs_version }}/utilities/sizing/">sizing</a> to <a href="/docs/{{ .Site.Params.docs_version }}/utilities/colors/">colors</a> and <a href="/docs/{{ .Site.Params.docs_version }}/utilities/shadows/">effects</a>.</p>
+      <p>Apply any of our included utility classes to our components to customize their appearance, like the navigation example below. There are hundreds of classes available—from <a href="/docs/{{ .Site.Params.docs_version }}/utilities/position/">positioning</a> and <a href="/docs/{{ .Site.Params.docs_version }}/utilities/sizing/">sizing</a> to <a href="/docs/{{ .Site.Params.docs_version }}/utilities/colors/">colors</a> and <a href="/docs/{{ .Site.Params.docs_version }}/utilities/shadows/">effects</a>. Mix them with CSS variable overrides for even more control.</p>
       <div class="p-4 border rounded-3 mb-4">
-        <ul class="nav nav-pills mb-4">
-          <li class="nav-item">
-            <button class="nav-link active">Home</button>
+        <ul class="nav nav-pills mb-4" id="pillNav" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Home</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link">Profile</button>
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Profile</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link">Contact</button>
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Contact</button>
           </li>
         </ul>
-        <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm">
-          <li class="nav-item">
-            <button class="nav-link bg-white rounded-5">Home</button>
+        <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active rounded-5" id="home-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Home</button>
           </li>
-          <li class="nav-item">
-            <button class="nav-link text-white rounded-5">Profile</button>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-5" id="profile-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Profile</button>
           </li>
-          <li class="nav-item">
-            <button class="nav-link text-white rounded-5">Contact</button>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-5" id="contact-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Contact</button>
           </li>
         </ul>
       </div>
-{{ highlight (printf `<ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm">
-  <li class="nav-item">
-    <button class="nav-link bg-white rounded-5">Home</button>
+{{ highlight (printf `<ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active rounded-5" id="home-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Home</button>
   </li>
-  <li class="nav-item">
-    <button class="nav-link text-white rounded-5">Profile</button>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link rounded-5" id="profile-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Profile</button>
   </li>
-  <li class="nav-item">
-    <button class="nav-link text-white rounded-5">Contact</button>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link rounded-5" id="contact-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Contact</button>
   </li>
 </ul>
 `) "html" "" }}
