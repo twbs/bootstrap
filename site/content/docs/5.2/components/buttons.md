@@ -21,7 +21,7 @@ Bootstrap includes several predefined button styles, each serving its own semant
 {{< /example >}}
 
 {{< callout info >}}
-{{< partial "callout-warning-color-assistive-technologies.md" >}}
+{{< partial "callouts/warning-color-assistive-technologies.md" >}}
 {{< /callout >}}
 
 ## Disable text wrapping
