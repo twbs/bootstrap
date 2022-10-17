@@ -363,7 +363,7 @@ These changes, and more, are demonstrated below.
 </form>
 
 {{< callout warning >}}
-{{< partial "callout-warning-input-support.md" >}}
+{{< partial "callouts/warning-input-support.md" >}}
 {{< /callout >}}
 
 ### Pointers on buttons
