@@ -64,11 +64,14 @@
 //
 // Uses with `.btn` class to style button as addon.
 
-.input-group-btn {
+.btn.input-group-btn {
   @include button-variant(
     $input-group-addon-bg,
     $input-group-addon-border-color,
-    $input-group-addon-color
+    $hover-background: shade-color($input-group-addon-bg, $btn-hover-bg-shade-amount),
+    $hover-border: shade-color($input-group-addon-border-color, $btn-hover-border-shade-amount),
+    $active-background: shade-color($input-group-addon-bg, $btn-active-bg-shade-amount),
+    $active-border: shade-color($input-group-addon-border-color, $btn-active-border-shade-amount)
   );
 }
 
