@@ -135,7 +135,7 @@ These mixins take those declared breakpoints, subtract `.02px` from them, and us
 ```
 
 {{< callout warning >}}
-{{< partial "callout-info-mediaqueries-breakpoints.md" >}}
+{{< partial "callouts/info-mediaqueries-breakpoints.md" >}}
 {{< /callout >}}
 
 ### Single breakpoint
