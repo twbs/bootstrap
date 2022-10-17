@@ -8,7 +8,7 @@
     width: subtract(100%, add($input-height-inner-quarter, $input-height-inner-half));
     height: $form-floating-label-height;
     content: "";
-    background-color: transparent;
+    background-color: $input-bg;
     pointer-events: none;
     @include border-radius($input-border-radius);
   }
