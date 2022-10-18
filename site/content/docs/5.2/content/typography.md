@@ -141,6 +141,10 @@ Change text alignment, transform, style, weight, line-height, decoration and col
 
 Stylized implementation of HTML's `<abbr>` element for abbreviations and acronyms to show the expanded version on hover. Abbreviations have a default underline and gain a help cursor to provide additional context on hover and to users of assistive technologies.
 
+{{< callout info >}}
+This stylized implementation will only be rendered if the primary input mechanism can conveniently hover over elements.
+{{< /callout >}}
+
 Add `.initialism` to an abbreviation for a slightly smaller font-size.
 
 {{< example >}}
