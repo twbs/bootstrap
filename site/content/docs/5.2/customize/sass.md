@@ -158,7 +158,7 @@ $custom-colors: (
 $theme-colors: map-merge($theme-colors, $custom-colors);
 ```
 
-If you want to use ```bg-custom-color```, ```text-custom-color```, ```border-custom-color```, and e.t.c, you need to generate utilities for those classes. You can read more about generating utilities [here]({{< docsref "/customize/color#generating-utilities" >}})  - there's also an example of ```text-custom-color``` utilities present. On that page, you can see an example of ```bg-custom-color``` and ```border-color``` utilities - pay attention that you need to import ```"../node_modules/bootstrap/scss/utilities/api"``` after generating utilities. You can find all classes utilities in ```"../node_modules/bootstrap/scss/_utilites.scss"```.
+If you want to use ```bg-custom-color```, ```text-custom-color```, ```border-custom-color```, and e.t.c, you need to generate utilities for those classes. You can read more about generating utilities [here]({{< docsref "/customize/color#generating-utilities" >}})  - there's also an example of ```text-custom-color``` utilities present. On that page, you can see an example of ```bg-custom-color``` and ```border-color``` utilities - pay attention that you need to import ```"../node_modules/bootstrap/scss/utilities/api"``` after generating utilities. You can find all classes utilities in ```"../node_modules/bootstrap/scss/_utilities.scss"```.
 
 ```scss
 $utilities: map-merge(
