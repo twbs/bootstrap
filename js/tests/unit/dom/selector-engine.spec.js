@@ -1,9 +1,4 @@
-import {
-  getElementFromSelector,
-  getMultipleElementsFromSelector,
-  getSelectorFromElement,
-  SelectorEngine
-} from '../../../src/dom/selector-engine'
+import SelectorEngine from '../../../src/dom/selector-engine'
 import { clearFixture, getFixture } from '../../helpers/fixture'
 
 describe('SelectorEngine', () => {
@@ -247,7 +242,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(getSelectorFromElement(testEl)).toEqual('.target')
+      expect(SelectorEngine.getSelectorFromElement(testEl)).toEqual('.target')
     })
 
     it('should get selector from href if no data-bs-target set', () => {
@@ -258,7 +253,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(getSelectorFromElement(testEl)).toEqual('.target')
+      expect(SelectorEngine.getSelectorFromElement(testEl)).toEqual('.target')
     })
 
     it('should get selector from href if data-bs-target equal to #', () => {
@@ -269,7 +264,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(getSelectorFromElement(testEl)).toEqual('.target')
+      expect(SelectorEngine.getSelectorFromElement(testEl)).toEqual('.target')
     })
 
     it('should return null if a selector from a href is a url without an anchor', () => {
@@ -280,7 +275,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(getSelectorFromElement(testEl)).toBeNull()
+      expect(SelectorEngine.getSelectorFromElement(testEl)).toBeNull()
     })
 
     it('should return the anchor if a selector from a href is a url', () => {
@@ -291,7 +286,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(getSelectorFromElement(testEl)).toEqual('#target')
+      expect(SelectorEngine.getSelectorFromElement(testEl)).toEqual('#target')
     })
 
     it('should return null if selector not found', () => {
@@ -299,7 +294,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(getSelectorFromElement(testEl)).toBeNull()
+      expect(SelectorEngine.getSelectorFromElement(testEl)).toBeNull()
     })
 
     it('should return null if no selector', () => {
@@ -307,7 +302,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('div')
 
-      expect(getSelectorFromElement(testEl)).toBeNull()
+      expect(SelectorEngine.getSelectorFromElement(testEl)).toBeNull()
     })
   })
 
@@ -320,7 +315,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('.target'))
+      expect(SelectorEngine.getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('.target'))
     })
 
     it('should get element from href if no data-bs-target set', () => {
@@ -331,7 +326,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('.target'))
+      expect(SelectorEngine.getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('.target'))
     })
 
     it('should return null if element not found', () => {
@@ -339,7 +334,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(getElementFromSelector(testEl)).toBeNull()
+      expect(SelectorEngine.getElementFromSelector(testEl)).toBeNull()
     })
 
     it('should return null if no selector', () => {
@@ -347,7 +342,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('div')
 
-      expect(getElementFromSelector(testEl)).toBeNull()
+      expect(SelectorEngine.getElementFromSelector(testEl)).toBeNull()
     })
   })
 
@@ -361,7 +356,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
     })
 
     it('should get elements in array, from href if no data-bs-target set', () => {
@@ -373,7 +368,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
     })
 
     it('should return empty array if elements not found', () => {
@@ -381,7 +376,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(getMultipleElementsFromSelector(testEl)).toHaveSize(0)
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toHaveSize(0)
     })
 
     it('should return empty array if no selector', () => {
@@ -389,7 +384,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('div')
 
-      expect(getMultipleElementsFromSelector(testEl)).toHaveSize(0)
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toHaveSize(0)
     })
   })
 })
