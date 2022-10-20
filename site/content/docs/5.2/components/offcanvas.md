@@ -18,7 +18,7 @@ Offcanvas is a sidebar component that can be toggled via JavaScript to appear fr
 **Heads up!** Given how CSS handles animations, you cannot use `margin` or `translate` on an `.offcanvas` element. Instead, use the class as an independent wrapping element.
 
 {{< callout info >}}
-{{< partial "callout-info-prefersreducedmotion.md" >}}
+{{< partial "callouts/info-prefersreducedmotion.md" >}}
 {{< /callout >}}
 
 ## Examples
@@ -310,7 +310,7 @@ const offcanvasList = [...offcanvasElementList].map(offcanvasEl => new bootstrap
 ### Methods
 
 {{< callout danger >}}
-{{< partial "callout-danger-async-methods.md" >}}
+{{< partial "callouts/danger-async-methods.md" >}}
 {{< /callout >}}
 
 Activates your content as an offcanvas element. Accepts an optional options `object`.
