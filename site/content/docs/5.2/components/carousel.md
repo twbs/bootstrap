@@ -10,8 +10,6 @@ toc: true
 
 The carousel is a slideshow for cycling through a series of content, built with CSS 3D transforms and a bit of JavaScript. It works with a series of images, text, or custom markup. It also includes support for previous/next controls and indicators.
 
-In browsers where the [Page Visibility API](https://www.w3.org/TR/page-visibility/) is supported, the carousel will avoid sliding when the webpage is not visible to the user (such as when the browser tab is inactive, the browser window is minimized, etc.).
-
 {{< callout info >}}
 {{< partial "callouts/info-prefersreducedmotion.md" >}}
 {{< /callout >}}
@@ -176,6 +174,8 @@ See [WCAG 2.1 Success Criterion 2.2.2 Pause, Stop, Hide](https://www.w3.org/TR/W
 
 Autoplaying carousels automatically pause while hovered with the mouse, and while keyboard focus is inside them.
 
+In browsers that support the [Page Visibility API](https://www.w3.org/TR/page-visibility/), the carousel will stop cycling when the webpage is not visible to the user (such as when the browser tab is inactive, or when the browser window is minimized).
+
 {{< example >}}
 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
@@ -200,7 +200,7 @@ Autoplaying carousels automatically pause while hovered with the mouse, and whil
 </div>
 {{< /example >}}
 
-Using `data-bs-ride="true"`, carousels won't automatically start to autoplay on page load. Instead, they will only start to animate after the first user interaction.
+Using `data-bs-ride="true"`, carousels won't automatically start to cycle on page load. Instead, they will only start after the first user interaction.
 
 {{< example >}}
 <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
