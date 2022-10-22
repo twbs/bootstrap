@@ -17,9 +17,9 @@ The carousel is a slideshow for cycling through a series of content, built with 
 Note that nested carousels are not supported. You should also be aware that carousels can often cause usability and accessibility challenges.
 
 {{< callout warning >}}
-For performance reasons, carousels must be manually initialized using the [carousel constructor method](#methods). Without initialization, some of the event listeners (specifically, the events needed touch/swipe support) will not be registered until a user has explicitly activated the previous/next controls, if present.
+For performance reasons, carousels must be manually initialized using the [carousel constructor method](#methods). Without initialization, some of the event listeners (specifically, the events needed touch/swipe support) will not be registered until a user has explicitly activated a control or indicator.
 
-The only exception are [autoplaying carousels](#autoplaying-carousel) using the `data-bs-ride="carousel"` attribute – these are initialized automatically on the page load.
+The only exception are [autoplaying carousels](#autoplaying-carousel) using the `data-bs-ride="carousel"` attribute – these are initialized automatically on page load.
 {{< /callout >}}
 
 ## Basic examples
