@@ -402,10 +402,11 @@ const carousel = new bootstrap.Carousel('#myCarousel')
 {{< partial "callouts/danger-async-methods.md" >}}
 {{< /callout >}}
 
-You can create a carousel instance with the carousel constructor, for example, to initialize with additional options and start cycling through items:
+You can create a carousel instance with the carousel constructor, for example, to initialize with additional options and (provided it has `data-bs-ride="carousel"`) start cycling through items:
 
 ```js
 const myCarouselElement = document.querySelector('#myCarousel')
+
 const carousel = new bootstrap.Carousel(myCarouselElement, {
   interval: 2000,
   wrap: false
