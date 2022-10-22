@@ -306,8 +306,8 @@
   min-height: 15rem;
 
   > div {
-    background-color: lighten($bd-violet, 35%);
-    border: 1px solid lighten($bd-violet, 20%);
+    background-color: tint-color($bd-violet, 75%);
+    border: 1px solid tint-color($bd-violet, 50%);
   }
 
   > :nth-child(2) {
