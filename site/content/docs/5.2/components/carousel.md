@@ -166,6 +166,14 @@ Add `.carousel-fade` to your carousel to animate slides with a fade transition i
 
 You can make your carousels autoplay on page load by adding the `data-bs-ride="carousel"` attribute.
 
+{{< callout info >}}
+For accessibility reasons, we recommend avoiding the use of autoplaying carousels.
+
+If your page does include an autoplaying carousel, we recommend providing an additional button or control to explicitly pause/stop the carousel.
+
+See [WCAG 2.1 Success Criterion 2.2.2 Pause, Stop, Hide](https://www.w3.org/TR/WCAG21/#pause-stop-hide).
+{{< /callout >}}
+
 Autoplaying carousels automatically pause while hovered with the mouse, and while keyboard focus is inside them.
 
 {{< example >}}
