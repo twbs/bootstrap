@@ -160,7 +160,7 @@ Add `.carousel-fade` to your carousel to animate slides with a fade transition i
 </div>
 {{< /example >}}
 
-## Autoplaying carousel
+## Autoplaying carousels
 
 You can make your carousels autoplay on page load by adding the `data-bs-ride="carousel"` attribute.
 
@@ -254,7 +254,7 @@ Add `data-bs-interval=""` to a `.carousel-item` to change the amount of time to 
 </div>
 {{< /example >}}
 
-### Autoplaying carousel without controls
+### Autoplaying carousels without controls
 
 Here's a carousel with slides only. Note the presence of the `.d-block` and `.w-100` on carousel images to prevent browser default image alignment.
 
