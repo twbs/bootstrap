@@ -14,11 +14,7 @@ The carousel is a slideshow for cycling through a series of content, built with 
 {{< partial "callouts/info-prefersreducedmotion.md" >}}
 {{< /callout >}}
 
-Please be aware that nested carousels are not supported, and carousels are generally not compliant with accessibility standards.
-
-Carousels don't automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content. While carousels support previous/next controls and indicators, they're not explicitly required. Add and customize as you see fit.
-
-**The `.active` class needs to be added to one of the slides** otherwise the carousel will not be visible. Also be sure to set a unique `id` on the `.carousel` for optional controls, especially if you're using multiple carousels on a single page. Control and indicator elements must have a `data-bs-target` attribute (or `href` for links) that matches the `id` of the `.carousel` element.
+Note that nested carousels are not supported. You should also be aware that carousels can often cause usability and accessibility challenges.
 
 {{< callout warning >}}
 For performance reasons, carousels must be manually initialized using the [carousel constructor method](#methods). Without initialization, some of the event listeners (specifically, the events needed touch/swipe support) will not be registered until a user has explicitly activated the previous/next controls, if present.
@@ -53,6 +49,10 @@ Here is a basic example of a carousel with three slides. Note the previous/next 
   </button>
 </div>
 {{< /example >}}
+
+Carousels don't automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content. While carousels support previous/next controls and indicators, they're not explicitly required. Add and customize as you see fit.
+
+**The `.active` class needs to be added to one of the slides** otherwise the carousel will not be visible. Also be sure to set a unique `id` on the `.carousel` for optional controls, especially if you're using multiple carousels on a single page. Control and indicator elements must have a `data-bs-target` attribute (or `href` for links) that matches the `id` of the `.carousel` element.
 
 ### Indicators
 
