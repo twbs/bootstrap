@@ -19,7 +19,7 @@ Note that nested carousels are not supported. You should also be aware that caro
 {{< callout warning >}}
 For performance reasons, carousels must be manually initialized using the [carousel constructor method](#methods). Without initialization, some of the event listeners (specifically, the events needed touch/swipe support) will not be registered until a user has explicitly activated a control or indicator.
 
-The only exception are [autoplaying carousels](#autoplaying-carousel) using the `data-bs-ride="carousel"` attribute – these are initialized automatically on page load.
+The only exception are [autoplaying carousels](#autoplaying-carousel) with the `data-bs-ride="carousel"` attribute – these are initialized automatically on page load. If you are using autoplaying carousels with the data attribute, **don't explicitly initialize the same carousels with the constructor method.**
 {{< /callout >}}
 
 ## Basic examples
@@ -162,7 +162,7 @@ Add `.carousel-fade` to your carousel to animate slides with a fade transition i
 
 ## Autoplaying carousels
 
-You can make your carousels autoplay on page load by adding the `data-bs-ride="carousel"` attribute.
+You can make your carousels autoplay on page load by setting the `ride` option to `carousel`.
 
 {{< callout info >}}
 For accessibility reasons, we recommend avoiding the use of autoplaying carousels.
@@ -172,7 +172,7 @@ If your page does include an autoplaying carousel, we recommend providing an add
 See [WCAG 2.1 Success Criterion 2.2.2 Pause, Stop, Hide](https://www.w3.org/TR/WCAG21/#pause-stop-hide).
 {{< /callout >}}
 
-Autoplaying carousels automatically pause while hovered with the mouse, and while keyboard focus is inside them.
+Autoplaying carousels automatically pause while hovered with the mouse. This behavior can be controlled with the `pause` option.
 
 In browsers that support the [Page Visibility API](https://www.w3.org/TR/page-visibility/), the carousel will stop cycling when the webpage is not visible to the user (such as when the browser tab is inactive, or when the browser window is minimized).
 
@@ -200,7 +200,7 @@ In browsers that support the [Page Visibility API](https://www.w3.org/TR/page-vi
 </div>
 {{< /example >}}
 
-Using `data-bs-ride="true"`, carousels won't automatically start to cycle on page load. Instead, they will only start after the first user interaction.
+When the `ride` option is set to `true`, rather than `carousel`, the carousel won't automatically start to cycle on page load. Instead, it will only start after the first user interaction.
 
 {{< example >}}
 <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
@@ -276,7 +276,7 @@ Here's a carousel with slides only. Note the presence of the `.d-block` and `.w-
 
 ## Disable touch swiping
 
-Carousels support swiping left/right on touchscreen devices to move between slides. This can be disabled with the `data-bs-touch="false"` attribute.
+Carousels support swiping left/right on touchscreen devices to move between slides. This can be disabled by setting the `touch` option to `false`.
 
 {{< example >}}
 <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
@@ -369,8 +369,6 @@ Variables for the [dark carousel](#dark-variant):
 
 Use data attributes to easily control the position of the carousel. `data-bs-slide` accepts the keywords `prev` or `next`, which alters the slide position relative to its current position. Alternatively, use `data-bs-slide-to` to pass a raw slide index to the carousel `data-bs-slide-to="2"`, which shifts the slide position to a particular index beginning with `0`.
 
-The `data-bs-ride="carousel"` attribute is used to mark a carousel as animating starting at page load. If you don't use `data-bs-ride="carousel"` to initialize your carousel, you have to initialize it yourself. **It cannot be used in combination with (redundant and unnecessary) explicit JavaScript initialization of the same carousel.**
-
 ### Via JavaScript
 
 Call carousel manually with:
@@ -402,14 +400,14 @@ const carousel = new bootstrap.Carousel('#myCarousel')
 {{< partial "callouts/danger-async-methods.md" >}}
 {{< /callout >}}
 
-You can create a carousel instance with the carousel constructor, for example, to initialize with additional options and (provided it has `data-bs-ride="carousel"`) start cycling through items:
+You can create a carousel instance with the carousel constructor, and pass on any additional options. For example, to manually initialize an autoplaying carousel (assuming you're not using the `data-bs-ride="carousel"` attribute in the markup itself) with a specific interval and with touch support disabled, you can use:
 
 ```js
 const myCarouselElement = document.querySelector('#myCarousel')
 
 const carousel = new bootstrap.Carousel(myCarouselElement, {
   interval: 2000,
-  wrap: false
+  touch: false
 })
 ```
 
