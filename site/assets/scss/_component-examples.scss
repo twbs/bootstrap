@@ -305,6 +305,11 @@
 .bd-example-zindex-levels {
   min-height: 15rem;
 
+  > div {
+    background-color: lighten($bd-violet, 35%);
+    border: 1px solid lighten($bd-violet, 20%);
+  }
+
   > :nth-child(2) {
     top: 3rem;
     left: 3rem;
