@@ -19,7 +19,7 @@ Note that nested carousels are not supported. You should also be aware that caro
 {{< callout warning >}}
 For performance reasons, carousels must be manually initialized using the [carousel constructor method](#methods). Without initialization, some of the event listeners (specifically, the events needed touch/swipe support) will not be registered until a user has explicitly activated a control or indicator.
 
-The only exception are [autoplaying carousels](#autoplaying-carousel) with the `data-bs-ride="carousel"` attribute – these are initialized automatically on page load. If you are using autoplaying carousels with the data attribute, **don't explicitly initialize the same carousels with the constructor method.**
+The only exception are [autoplaying carousels](#autoplaying-carousels) with the `data-bs-ride="carousel"` attribute – these are initialized automatically on page load. If you are using autoplaying carousels with the data attribute, **don't explicitly initialize the same carousels with the constructor method.**
 {{< /callout >}}
 
 ## Basic examples
