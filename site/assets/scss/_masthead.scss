@@ -94,3 +94,13 @@
   background-color: var(--bd-accent);
   box-shadow: inset 0 -1px 1px rgba(var(--bs-body-color-rgb), .15), 0 .25rem 1.5rem rgba(var(--bs-body-bg-rgb), .75);
 }
+
+.animate-img {
+  > img {
+    transition: .2s ease-in-out transform; // stylelint-disable-line property-disallowed-list
+  }
+
+  &:hover > img {
+    transform: scale(1.1);
+  }
+}
