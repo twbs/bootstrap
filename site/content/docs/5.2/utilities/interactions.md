@@ -31,7 +31,7 @@ The `.pe-none` class (and the `pointer-events` CSS property it sets) only preven
 If possible, the simpler solution is:
 
 - For form controls, add the `disabled` HTML attribute.
-* For links, remove the `href` attribute, making it a non-interactive anchor or placeholder link.
+- For links, remove the `href` attribute, making it a non-interactive anchor or placeholder link.
 
 ## Sass
 
