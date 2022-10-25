@@ -6,7 +6,8 @@
  */
 
 import EventHandler from '../dom/event-handler'
-import { getElementFromSelector, isDisabled } from './index'
+import { getElementFromSelector, getSelectorFromElement, isDisabled } from './index'
+import SelectorEngine from '../dom/selector-engine'
 
 const enableDismissTrigger = (component, method = 'hide') => {
   const clickEvent = `click.dismiss${component.EVENT_KEY}`
@@ -29,6 +30,34 @@ const enableDismissTrigger = (component, method = 'hide') => {
   })
 }
 
+const eventActionOnPlugin = (Plugin, onEvent, stringSelector, method, callback = null) => {
+  eventAction(`${onEvent}.${Plugin.NAME}`, stringSelector, data => {
+    const instances = data.targets.filter(Boolean).map(element => Plugin.getOrCreateInstance(element))
+    if (typeof callback === 'function') {
+      callback({ ...data, instances })
+    }
+
+    for (const instance of instances) {
+      instance[method]()
+    }
+  })
+}
+
+const eventAction = (onEvent, stringSelector, callback) => {
+  const selector = `${stringSelector}:not(.disabled):not(:disabled)`
+  EventHandler.on(document, onEvent, selector, function (event) {
+    if (['A', 'AREA'].includes(this.tagName)) {
+      event.preventDefault()
+    }
+
+    const selector = getSelectorFromElement(this)
+    const targets = selector ? SelectorEngine.find(selector) : [this]
+
+    callback({ targets, event })
+  })
+}
+
 export {
-  enableDismissTrigger
+  enableDismissTrigger,
+  eventActionOnPlugin
 }
