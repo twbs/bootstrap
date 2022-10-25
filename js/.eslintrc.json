@@ -1,4 +1,5 @@
 {
+  "extends": "../.eslintrc.json",
   "env": {
     "es2022": true
   },
@@ -21,6 +22,5 @@
         ]
       }
     }
-  ],
-  "extends": "../.eslintrc.json"
+  ]
 }
