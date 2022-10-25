@@ -8,7 +8,10 @@
   },
   "overrides": [
     {
-      "files": ["./*.js", "./src/**/*.js"],
+      "files": [
+        "./*.js",
+        "./src/**/*.js"
+      ],
       "rules": {
         "import/extensions": [
           2,
