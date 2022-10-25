@@ -302,6 +302,32 @@
   min-height: 240px;
 }
 
+.bd-example-zindex-levels {
+  min-height: 15rem;
+
+  > div {
+    background-color: tint-color($bd-violet, 75%);
+    border: 1px solid tint-color($bd-violet, 50%);
+  }
+
+  > :nth-child(2) {
+    top: 3rem;
+    left: 3rem;
+  }
+  > :nth-child(3) {
+    top: 4.5rem;
+    left: 4.5rem;
+  }
+  > :nth-child(4) {
+    top: 6rem;
+    left: 6rem;
+  }
+  > :nth-child(5) {
+    top: 7.5rem;
+    left: 7.5rem;
+  }
+}
+
 //
 // Code snippets
 //
