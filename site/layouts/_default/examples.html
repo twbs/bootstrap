@@ -89,5 +89,7 @@
         <script{{ with .async }} async{{ end }} src="{{ .src }}"{{ with .integrity }} {{ printf "integrity=%q" . | safeHTMLAttr }} crossorigin="anonymous"{{ end }}></script>
       {{- end -}}
     {{- end }}
+
+    <!-- to jest moja zmiana w pliku examples.html -->
   </body>
 </html>
