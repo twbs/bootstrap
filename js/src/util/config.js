@@ -5,8 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
-import { isElement, toType } from './index'
-import Manipulator from '../dom/manipulator'
+import { isElement, toType } from './index.js'
+import Manipulator from '../dom/manipulator.js'
 
 /**
  * Class definition

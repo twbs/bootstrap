@@ -5,10 +5,10 @@
  * --------------------------------------------------------------------------
  */
 
-import { DefaultAllowlist, sanitizeHtml } from './sanitizer'
-import { execute, getElement, isElement } from '../util/index'
-import SelectorEngine from '../dom/selector-engine'
-import Config from './config'
+import { DefaultAllowlist, sanitizeHtml } from './sanitizer.js'
+import { execute, getElement, isElement } from './index.js'
+import SelectorEngine from '../dom/selector-engine.js'
+import Config from './config.js'
 
 /**
  * Constants
