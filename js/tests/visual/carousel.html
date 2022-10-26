@@ -55,7 +55,7 @@
       // Test to show that transition-duration can be changed with css
       carousel.addEventListener('slid.bs.carousel', event => {
         t1 = performance.now()
-        console.log('transition-duration took ' + (t1 - t0) + 'ms, slid at ' + event.timeStamp)
+        console.log(`transition-duration took ${t1 - t0}ms, slid at ${event.timeStamp}`)
       })
       carousel.addEventListener('slide.bs.carousel', () => {
         t0 = performance.now()

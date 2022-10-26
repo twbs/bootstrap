@@ -897,7 +897,7 @@ describe('Collapse', () => {
         const trigger2 = fixtureEl.querySelector('#trigger2')
         const trigger3 = fixtureEl.querySelector('#trigger3')
         const target1 = fixtureEl.querySelector('#test1')
-        const target2 = fixtureEl.querySelector('#' + CSS.escape('0/my/id'))
+        const target2 = fixtureEl.querySelector(`#${CSS.escape('0/my/id')}`)
 
         const target2Shown = () => {
           expect(trigger1).not.toHaveClass('collapsed')
