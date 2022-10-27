@@ -5,14 +5,14 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, getElementFromSelector, isRTL, isVisible, reflow } from './util/index'
-import EventHandler from './dom/event-handler'
-import SelectorEngine from './dom/selector-engine'
-import ScrollBarHelper from './util/scrollbar'
-import BaseComponent from './base-component'
-import Backdrop from './util/backdrop'
-import FocusTrap from './util/focustrap'
-import { enableDismissTrigger } from './util/component-functions'
+import { defineJQueryPlugin, getElementFromSelector, isRTL, isVisible, reflow } from './util/index.js'
+import EventHandler from './dom/event-handler.js'
+import SelectorEngine from './dom/selector-engine.js'
+import ScrollBarHelper from './util/scrollbar.js'
+import BaseComponent from './base-component.js'
+import Backdrop from './util/backdrop.js'
+import FocusTrap from './util/focustrap.js'
+import { enableDismissTrigger } from './util/component-functions.js'
 
 /**
  * Constants
