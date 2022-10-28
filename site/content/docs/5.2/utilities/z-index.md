@@ -17,11 +17,11 @@ We call these "low-level" `z-index` utilities because of their default values of
 {{< /callout >}}
 
 {{< example class="bd-example-zindex-levels position-relative" >}}
-<div class="z-n1 position-absolute p-5 rounded-3"></div>
-<div class="z-0 position-absolute p-5 rounded-3"></div>
-<div class="z-1 position-absolute p-5 rounded-3"></div>
-<div class="z-2 position-absolute p-5 rounded-3"></div>
 <div class="z-3 position-absolute p-5 rounded-3"></div>
+<div class="z-2 position-absolute p-5 rounded-3"></div>
+<div class="z-1 position-absolute p-5 rounded-3"></div>
+<div class="z-0 position-absolute p-5 rounded-3"></div>
+<div class="z-n1 position-absolute p-5 rounded-3"></div>
 {{< /example >}}
 
 ## Overlays
