@@ -1,14 +1,14 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.1): tab.js
+ * Bootstrap (v5.2.2): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, getElementFromSelector, getNextActiveElement, isDisabled } from './util/index'
-import EventHandler from './dom/event-handler'
-import SelectorEngine from './dom/selector-engine'
-import BaseComponent from './base-component'
+import { defineJQueryPlugin, getElementFromSelector, getNextActiveElement, isDisabled } from './util/index.js'
+import EventHandler from './dom/event-handler.js'
+import SelectorEngine from './dom/selector-engine.js'
+import BaseComponent from './base-component.js'
 
 /**
  * Constants
@@ -161,6 +161,7 @@ class Tab extends BaseComponent {
     const nextActiveElement = getNextActiveElement(this._getChildren().filter(element => !isDisabled(element)), event.target, isNext, true)
 
     if (nextActiveElement) {
+      nextActiveElement.focus({ preventScroll: true })
       Tab.getOrCreateInstance(nextActiveElement).show()
     }
   }
