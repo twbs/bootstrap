@@ -96,7 +96,10 @@
   }
 }
 
+
+//
 // Helper functions and mixins for manipulating the utilities map
+//
 
 // Gets the map of options for a given utility
 @function utilities-get-options($utility-name) {
@@ -151,7 +154,6 @@
   );
 }
 
-
 // Set options for a given utility, merged with the existing ones by default.
 // To completely replace the existing options, set the 3rd `$merge` parameter to false
 @mixin utilities-set-options($utility-name, $options, $merge: true) {
@@ -180,10 +182,9 @@
   @include utilities-set-options($utility-name, ($option-name: $value));
 }
 
-// Add new values to a given utility.
-// If you want to completely reconfigure the values
-// use `utilities-set-option` to provide a new map
-// for the `values` option
+// Add new values to a given utility
+//
+// If you want to completely reconfigure the values use `utilities-set-option` to provide a new map for the `values` option
 @mixin utilities-add-values($utility-name, $values) {
   $existing-values: utilities-get-values($utility-name);
 
