@@ -52,6 +52,13 @@
     height: if(unit($input-line-height) == "", $input-line-height * 1em, $input-line-height);
   }
 
+  // Prevent excessive date input height in Webkit
+  // https://github.com/twbs/bootstrap/issues/34433
+  &::-webkit-datetime-edit {
+    display: block;
+    padding: 0;
+  }
+
   // Placeholder
   &::placeholder {
     color: $input-placeholder-color;
