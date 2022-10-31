@@ -6,12 +6,12 @@
  */
 
 import * as Popper from '@popperjs/core'
-import { defineJQueryPlugin, execute, findShadowRoot, getElement, getUID, isRTL, noop } from './util/index'
-import { DefaultAllowlist } from './util/sanitizer'
-import EventHandler from './dom/event-handler'
-import Manipulator from './dom/manipulator'
-import BaseComponent from './base-component'
-import TemplateFactory from './util/template-factory'
+import { defineJQueryPlugin, execute, findShadowRoot, getElement, getUID, isRTL, noop } from './util/index.js'
+import { DefaultAllowlist } from './util/sanitizer.js'
+import EventHandler from './dom/event-handler.js'
+import Manipulator from './dom/manipulator.js'
+import BaseComponent from './base-component.js'
+import TemplateFactory from './util/template-factory.js'
 
 /**
  * Constants

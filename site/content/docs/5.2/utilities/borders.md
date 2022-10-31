@@ -140,7 +140,6 @@ Use the scaling classes for larger or smaller rounded corners. Sizes range from 
 {{< /example >}}
 
 {{< example class="bd-example-rounded-utils" >}}
-
 {{< placeholder width="75" height="75" class="rounded-bottom-1" title="Example small rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-start-2" title="Example default left rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-end-circle" title="Example right completely round image" >}}
