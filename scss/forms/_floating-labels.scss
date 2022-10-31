@@ -83,4 +83,8 @@
       border-width: $input-border-width 0; // Required to properly position label text - as explained above
     }
   }
+
+  > .form-control:disabled ~ label {
+    color: $form-floating-label-disabled-color;
+  }
 }
