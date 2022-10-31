@@ -74,6 +74,7 @@ Read the [Getting started page](https://getbootstrap.com/docs/5.2/getting-starte
 [![Sponsors on Open Collective](https://img.shields.io/opencollective/sponsors/bootstrap)](#sponsors)
 [![OpenSSF Scorecard](https://img.shields.io/ossf-scorecard/github.com/twbs/bootstrap)](https://api.securityscorecards.dev/projects/github.com/twbs/bootstrap)
 
+
 ## What's included
 
 Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations.
