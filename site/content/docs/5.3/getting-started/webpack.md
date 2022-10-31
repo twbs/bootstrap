@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: "Bootstrap & Webpack"
+title: Bootstrap and Webpack
 description: The official guide for how to include and bundle Bootstrap's CSS and JavaScript in your project using Webpack.
 group: getting-started
 toc: true
