@@ -188,7 +188,7 @@ class Modal extends BaseComponent {
     this._element.classList.add(CLASS_NAME_SHOW)
 
     const transitionComplete = () => {
-      if ("undefined" != typeof this._config.focus && this._config.focus) {
+      if (typeof this._config.focus !== "undefined" && this._config.focus) {
         this._focustrap.activate()
       }
 
