@@ -100,17 +100,41 @@ The syntax is nearly the same as the default, positive margin utilities, but wit
 
 ## Gap
 
-When using `display: grid`, you can make use of `gap` utilities on the parent grid container. This can save on having to add margin utilities to individual grid items (children of a `display: grid` container). Gap utilities are responsive by default, and are generated via our utilities API, based on the `$spacers` Sass map.
+When using `display: grid` or `display: flex`, you can make use of `gap` utilities on the parent grid container. This can save on having to add margin utilities to individual grid items (children of a `grid` or `flex` container). Gap utilities are responsive by default, and are generated via our utilities API, based on the `$spacers` Sass map.
 
 {{< example html >}}
-<div class="d-grid gap-3">
-  <div class="p-2 bg-light border">Grid item 1</div>
-  <div class="p-2 bg-light border">Grid item 2</div>
-  <div class="p-2 bg-light border">Grid item 3</div>
+<div class="grid gap-3" >
+  <div class="p-2 bg-light border g-col-6">Grid item 1</div>
+  <div class="p-2 bg-light border g-col-6">Grid item 2</div>
+  <div class="p-2 bg-light border g-col-6">Grid item 3</div>
+  <div class="p-2 bg-light border g-col-6">Grid item 4</div>
 </div>
 {{< /example >}}
 
 Support includes responsive options for all of Bootstrap's grid breakpoints, as well as six sizes from the `$spacers` map (`0`–`5`). There is no `.gap-auto` utility class as it's effectively the same as `.gap-0`.
+
+### row-gap
+`row-gap` behaves just like `gap` except it specifies the size of the gap between an element's rows only.
+{{< example html >}}
+<div class="grid gap-0 row-gap-3" >
+  <div class="p-2 bg-light border g-col-6">Grid item 1</div>
+  <div class="p-2 bg-light border g-col-6">Grid item 2</div>
+  <div class="p-2 bg-light border g-col-6">Grid item 3</div>
+  <div class="p-2 bg-light border g-col-6">Grid item 4</div>
+</div>
+{{< /example >}}
+
+### column-gap
+`column-gap` behaves just like `gap` as well, except it specifies the size of the gap between an element's columns only.
+{{< example html >}}
+<div class="grid gap-0 column-gap-3" >
+  <div class="p-2 bg-light border g-col-6">Grid item 1</div>
+  <div class="p-2 bg-light border g-col-6">Grid item 2</div>
+  <div class="p-2 bg-light border g-col-6">Grid item 3</div>
+  <div class="p-2 bg-light border g-col-6">Grid item 4</div>
+</div>
+{{< /example >}}
+
 
 ## Sass
 
