@@ -1,6 +1,6 @@
 /* eslint-env node */
 
-const runnerPath = require('path').join(__dirname, 'runner')
+const runnerPath = require('node:path').join(__dirname, 'runner')
 
 require.extensions['.scss'] = function (module, filename) {
   return module._compile(`

@@ -1,12 +1,12 @@
 /* eslint-env node */
 
-const path = require('path')
+const path = require('node:path')
 
 module.exports = {
-  spec_dir: 'scss', /* eslint-disable-line camelcase */
+  spec_dir: 'scss' /* eslint-disable-line camelcase */,
 
   // Make Mocha look for `.test.scss` files
-  spec_files: ['**/*.{test,spec}.scss'], /* eslint-disable-line camelcase */
+  spec_files: ['**/*.{test,spec}.scss'] /* eslint-disable-line camelcase */,
 
   // Compile them into JS scripts running `sass-true`
   requires: [path.join(__dirname, 'sass-true/register')],
