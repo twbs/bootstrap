@@ -116,8 +116,15 @@
   }
 }
 
+// Offcanvas background
 .offcanvas-backdrop {
-  @include overlay-backdrop($zindex-offcanvas-backdrop, $offcanvas-backdrop-bg, $offcanvas-backdrop-opacity);
+  // scss-docs-start offcanvas-backdrop-css-vars
+  --#{$prefix}offcanvas-backdrop-zindex: #{$zindex-offcanvas-backdrop};
+  --#{$prefix}offcanvas-backdrop-bg: #{$offcanvas-backdrop-bg};
+  --#{$prefix}offcanvas-backdrop-opacity: #{$offcanvas-backdrop-opacity};
+  // scss-docs-end offcanvas-backdrop-css-vars
+  
+  @include overlay-backdrop(var(--#{$prefix}offcanvas-backdrop-zindex), var(--#{$prefix}offcanvas-backdrop-bg), var(--#{$prefix}offcanvas-backdrop-opacity));
 }
 
 .offcanvas-header {

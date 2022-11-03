@@ -112,12 +112,12 @@
 // Modal background
 .modal-backdrop {
   // scss-docs-start modal-backdrop-css-vars
-  --#{$prefix}backdrop-zindex: #{$zindex-modal-backdrop};
-  --#{$prefix}backdrop-bg: #{$modal-backdrop-bg};
-  --#{$prefix}backdrop-opacity: #{$modal-backdrop-opacity};
+  --#{$prefix}modal-backdrop-zindex: #{$zindex-modal-backdrop};
+  --#{$prefix}modal-backdrop-bg: #{$modal-backdrop-bg};
+  --#{$prefix}modal-backdrop-opacity: #{$modal-backdrop-opacity};
   // scss-docs-end modal-backdrop-css-vars
 
-  @include overlay-backdrop(var(--#{$prefix}backdrop-zindex), var(--#{$prefix}backdrop-bg), var(--#{$prefix}backdrop-opacity));
+  @include overlay-backdrop(var(--#{$prefix}modal-backdrop-zindex), var(--#{$prefix}modal-backdrop-bg), var(--#{$prefix}modal-backdrop-opacity));
 }
 
 // Modal header

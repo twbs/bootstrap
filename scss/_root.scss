@@ -48,6 +48,9 @@
     --#{$prefix}body-text-align: #{$body-text-align};
   }
   --#{$prefix}body-bg: #{$body-bg};
+
+  --#{$prefix}backdrop-bg: #{$backdrop-bg};
+  --#{$prefix}backdrop-opacity: #{$backdrop-opacity};
   // scss-docs-end root-body-variables
 
   // scss-docs-start root-border-var

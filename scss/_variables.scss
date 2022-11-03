@@ -402,6 +402,10 @@ $body-bg:                   $white !default;
 $body-color:                $gray-900 !default;
 $body-text-align:           null !default;
 
+// Backdrop
+$backdrop-bg:               $black !default;
+$backdrop-opacity:          .5 !default;
+
 // Links
 //
 // Style anchor elements.
@@ -1418,9 +1422,8 @@ $modal-content-border-radius:       $border-radius-lg !default;
 $modal-content-inner-border-radius: subtract($modal-content-border-radius, $modal-content-border-width) !default;
 $modal-content-box-shadow-xs:       $box-shadow-sm !default;
 $modal-content-box-shadow-sm-up:    $box-shadow !default;
-
-$modal-backdrop-bg:                 $black !default;
-$modal-backdrop-opacity:            .5 !default;
+$modal-backdrop-bg:                 var(--#{$prefix}backdrop-bg) !default;
+$modal-backdrop-opacity:            var(--#{$prefix}backdrop-opacity) !default;
 
 $modal-header-border-color:         var(--#{$prefix}border-color) !default;
 $modal-header-border-width:         $modal-content-border-width !default;
@@ -1629,8 +1632,8 @@ $offcanvas-title-line-height:       $modal-title-line-height !default;
 $offcanvas-bg-color:                $modal-content-bg !default;
 $offcanvas-color:                   $modal-content-color !default;
 $offcanvas-box-shadow:              $modal-content-box-shadow-xs !default;
-$offcanvas-backdrop-bg:             $modal-backdrop-bg !default;
-$offcanvas-backdrop-opacity:        $modal-backdrop-opacity !default;
+$offcanvas-backdrop-bg:             var(--#{$prefix}backdrop-bg) !default;
+$offcanvas-backdrop-opacity:        var(--#{$prefix}backdrop-opacity) !default;
 // scss-docs-end offcanvas-variables
 
 // Code
