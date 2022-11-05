@@ -41,7 +41,7 @@ Any single `.btn` can be turned into a dropdown toggle with some markup changes.
 </div>
 {{< /example >}}
 
-While `<button>` is the recommended control for a dropdown toggle, there might be situations where you have to use an `<a>` element. If you do, we recommend adding a `role="button"` attribute to appropriately convey their purpose to assistive technologies such as screen readers.
+While `<button>` is the recommended control for a dropdown toggle, there might be situations where you have to use an `<a>` element. If you do, we recommend adding a `role="button"` attribute to appropriately convey control's purpose to assistive technologies such as screen readers.
 
 {{< example >}}
 <div class="dropdown">
