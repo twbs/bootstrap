@@ -7,7 +7,6 @@
 
 import {
   defineJQueryPlugin,
-  getElementFromSelector,
   isDisabled,
   isVisible
 } from './util/index.js'
@@ -231,7 +230,7 @@ class Offcanvas extends BaseComponent {
  */
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
-  const target = getElementFromSelector(this)
+  const target = SelectorEngine.getElementFromSelector(this)
 
   if (['A', 'AREA'].includes(this.tagName)) {
     event.preventDefault()
