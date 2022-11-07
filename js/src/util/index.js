@@ -9,6 +9,20 @@ const MAX_UID = 1_000_000
 const MILLISECONDS_MULTIPLIER = 1000
 const TRANSITION_END = 'transitionend'
 
+/**
+ * Properly escape IDs selectors to handle weird IDs
+ * @param {string} selector
+ * @returns {string}
+ */
+const parseSelector = selector => {
+  if (selector && window.CSS && window.CSS.escape) {
+    // document.querySelector needs escaping to handle IDs (html5+) containing for instance /
+    selector = selector.replaceAll(/#([^\s"#']+)/g, (match, id) => '#' + CSS.escape(id))
+  }
+
+  return selector
+}
+
 // Shout-out Angus Croll (https://goo.gl/pxwQGp)
 const toType = object => {
   if (object === null || object === undefined) {
@@ -76,7 +90,7 @@ const getElement = object => {
   }
 
   if (typeof object === 'string' && object.length > 0) {
-    return document.querySelector(object)
+    return document.querySelector(parseSelector(object))
   }
 
   return null
@@ -285,6 +299,7 @@ export {
   isVisible,
   noop,
   onDOMContentLoaded,
+  parseSelector,
   reflow,
   triggerTransitionEnd,
   toType

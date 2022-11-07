@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { isDisabled, isVisible } from '../util/index.js'
+import { isDisabled, isVisible, parseSelector } from '../util/index.js'
 
 /**
  * Constants
@@ -99,6 +99,7 @@ const SelectorEngine = {
       }
 
       selector = hrefAttribute && hrefAttribute !== '#' ? hrefAttribute.trim() : null
+      selector = parseSelector(selector)
     }
 
     return selector
