@@ -10,7 +10,7 @@ const MILLISECONDS_MULTIPLIER = 1000
 const TRANSITION_END = 'transitionend'
 
 /**
- * Properly escape IDs in getSelector() to handle weird IDs
+ * Properly escape IDs selectors to handle weird IDs
  * @param {string} selector
  * @returns {string}
  */
