@@ -53,18 +53,6 @@ describe('Data', () => {
     expect(Data.get(div, TEST_KEY)).toEqual(data)
   })
 
-  it('should overwrite data if something is already stored', () => {
-    const data = { ...TEST_DATA }
-    const copy = { ...data }
-
-    Data.set(div, TEST_KEY, data)
-    Data.set(div, TEST_KEY, copy)
-
-    // Using `toBe` since spread creates a shallow copy
-    expect(Data.get(div, TEST_KEY)).not.toBe(data)
-    expect(Data.get(div, TEST_KEY)).toBe(copy)
-  })
-
   it('should do nothing when an element has nothing stored', () => {
     Data.remove(div, TEST_KEY)
 
@@ -101,6 +89,18 @@ describe('Data', () => {
 
     expect(console.error).toHaveBeenCalled()
     expect(Data.get(div, UNKNOWN_KEY)).toBeNull()
+  })
+
+  it('should console.error a message if "set" is for the same element', () => {
+    console.error = jasmine.createSpy('console.error')
+
+    const data = { ...TEST_DATA }
+
+    Data.set(div, TEST_KEY, data)
+    Data.set(div, TEST_KEY, data)
+
+    expect(console.error).toHaveBeenCalled()
+    expect(Data.get(div, TEST_KEY)).toEqual(data)
   })
   /* eslint-enable no-console */
 })
