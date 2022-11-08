@@ -87,7 +87,7 @@ describe('Data', () => {
     Data.set(div, TEST_KEY, data)
     Data.set(div, UNKNOWN_KEY, copy)
 
-    expect(console.error).toHaveBeenCalled()
+    expect(console.error).toHaveBeenCalledWith(`Bootstrap doesn't allow more than one instance per element. Bound instance: ${TEST_KEY}.`)
     expect(Data.get(div, UNKNOWN_KEY)).toBeNull()
   })
 
@@ -99,7 +99,7 @@ describe('Data', () => {
     Data.set(div, TEST_KEY, data)
     Data.set(div, TEST_KEY, data)
 
-    expect(console.error).toHaveBeenCalled()
+    expect(console.error).toHaveBeenCalledWith(`Bootstrap doesn't allow more than one instance per element. Bound instance: ${TEST_KEY}.`)
     expect(Data.get(div, TEST_KEY)).toEqual(data)
   })
   /* eslint-enable no-console */
