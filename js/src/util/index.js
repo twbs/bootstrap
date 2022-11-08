@@ -9,6 +9,20 @@ const MAX_UID = 1_000_000
 const MILLISECONDS_MULTIPLIER = 1000
 const TRANSITION_END = 'transitionend'
 
+/**
+ * Properly escape IDs selectors to handle weird IDs
+ * @param {string} selector
+ * @returns {string}
+ */
+const parseSelector = selector => {
+  if (selector && window.CSS && window.CSS.escape) {
+    // document.querySelector needs escaping to handle IDs (html5+) containing for instance /
+    selector = selector.replaceAll(/#([^\s"#']+)/g, (match, id) => '#' + CSS.escape(id))
+  }
+
+  return selector
+}
+
 // Shout-out Angus Croll (https://goo.gl/pxwQGp)
 const toType = object => {
   if (object === null || object === undefined) {
@@ -28,47 +42,6 @@ const getUID = prefix => {
   } while (document.getElementById(prefix))
 
   return prefix
-}
-
-const getSelector = element => {
-  let selector = element.getAttribute('data-bs-target')
-
-  if (!selector || selector === '#') {
-    let hrefAttribute = element.getAttribute('href')
-
-    // The only valid content that could double as a selector are IDs or classes,
-    // so everything starting with `#` or `.`. If a "real" URL is used as the selector,
-    // `document.querySelector` will rightfully complain it is invalid.
-    // See https://github.com/twbs/bootstrap/issues/32273
-    if (!hrefAttribute || (!hrefAttribute.includes('#') && !hrefAttribute.startsWith('.'))) {
-      return null
-    }
-
-    // Just in case some CMS puts out a full URL with the anchor appended
-    if (hrefAttribute.includes('#') && !hrefAttribute.startsWith('#')) {
-      hrefAttribute = `#${hrefAttribute.split('#')[1]}`
-    }
-
-    selector = hrefAttribute && hrefAttribute !== '#' ? hrefAttribute.trim() : null
-  }
-
-  return selector
-}
-
-const getSelectorFromElement = element => {
-  const selector = getSelector(element)
-
-  if (selector) {
-    return document.querySelector(selector) ? selector : null
-  }
-
-  return null
-}
-
-const getElementFromSelector = element => {
-  const selector = getSelector(element)
-
-  return selector ? document.querySelector(selector) : null
 }
 
 const getTransitionDurationFromElement = element => {
@@ -117,7 +90,7 @@ const getElement = object => {
   }
 
   if (typeof object === 'string' && object.length > 0) {
-    return document.querySelector(object)
+    return document.querySelector(parseSelector(object))
   }
 
   return null
@@ -316,10 +289,8 @@ export {
   executeAfterTransition,
   findShadowRoot,
   getElement,
-  getElementFromSelector,
   getjQuery,
   getNextActiveElement,
-  getSelectorFromElement,
   getTransitionDurationFromElement,
   getUID,
   isDisabled,
@@ -328,6 +299,7 @@ export {
   isVisible,
   noop,
   onDOMContentLoaded,
+  parseSelector,
   reflow,
   triggerTransitionEnd,
   toType
