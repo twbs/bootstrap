@@ -243,7 +243,7 @@ Doesn't work well with indicators and fade effect.
 {{< /callout >}}
 
 {{< example >}}
-<div id="carouselExampleMultiple" class="carousel slide" data-bs-ride="carousel" data-bs-items=2>
+<div id="carouselExampleMultiple" class="carousel slide" data-bs-items=2>
   <div class="carousel-inner">
     <div class="carousel-item active">
       {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block" color="#555" background="#aaa" text="First slide" >}}
