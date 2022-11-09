@@ -7,7 +7,6 @@
 
 import {
   defineJQueryPlugin,
-  getElementFromSelector,
   getNextActiveElement,
   getSiblings,
   isRTL,
@@ -485,7 +484,7 @@ class Carousel extends BaseComponent {
  */
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (event) {
-  const target = getElementFromSelector(this)
+  const target = SelectorEngine.getElementFromSelector(this)
 
   if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
     return

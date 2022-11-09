@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Color & background
+title: Color and background
 description: Set a background color with contrasting foreground color.
 group: helpers
 toc: true
