@@ -13,7 +13,7 @@ The carousel is a slideshow for cycling through a series of content, built with 
 In browsers where the [Page Visibility API](https://www.w3.org/TR/page-visibility/) is supported, the carousel will avoid sliding when the webpage is not visible to the user (such as when the browser tab is inactive, the browser window is minimized, etc.).
 
 {{< callout info >}}
-{{< partial "callout-info-prefersreducedmotion.md" >}}
+{{< partial "callouts/info-prefersreducedmotion.md" >}}
 {{< /callout >}}
 
 Please be aware that nested carousels are not supported, and carousels are generally not compliant with accessibility standards.
@@ -331,7 +331,7 @@ const carousel = new bootstrap.Carousel('#myCarousel')
 ### Methods
 
 {{< callout danger >}}
-{{< partial "callout-danger-async-methods.md" >}}
+{{< partial "callouts/danger-async-methods.md" >}}
 {{< /callout >}}
 
 You can create a carousel instance with the carousel constructor, for example, to initialize with additional options and start cycling through items:

@@ -1,11 +1,11 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.1): dom/event-handler.js
+ * Bootstrap (v5.2.2): dom/event-handler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import { getjQuery } from '../util/index'
+import { getjQuery } from '../util/index.js'
 
 /**
  * Constants

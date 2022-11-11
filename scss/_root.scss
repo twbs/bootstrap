@@ -70,4 +70,8 @@
   --#{$prefix}code-color: #{$code-color};
 
   --#{$prefix}highlight-bg: #{$mark-bg};
+
+  @each $name, $value in $grid-breakpoints {
+    --#{$prefix}breakpoint-#{$name}: #{$value};
+  }
 }
