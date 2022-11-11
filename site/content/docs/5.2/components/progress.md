@@ -20,7 +20,7 @@ Put that all together, and you have the following examples.
 
 {{< example >}}
 <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-  <div class="progress-bar" style="width: 0"></div>
+  <div class="progress-bar" style="width: 0%"></div>
 </div>
 <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
   <div class="progress-bar" style="width: 25%"></div>
