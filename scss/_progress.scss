@@ -31,6 +31,9 @@
 }
 
 .progress-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   overflow: hidden;
   color: var(--#{$prefix}progress-bar-color);
   text-align: center;
