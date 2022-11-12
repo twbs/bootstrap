@@ -205,9 +205,7 @@ Used for creating the CSS animations for our spinners. Included in `scss/_spinne
 
 
 [color]:   {{< docsref "/utilities/colors" >}}
-[display]: {{< docsref "/utilities/display" >}}
 [flex]:    {{< docsref "/utilities/flex" >}}
 [float]:   {{< docsref "/utilities/float" >}}
 [margin]:  {{< docsref "/utilities/spacing" >}}
-[sizing]:  {{< docsref "/utilities/sizing" >}}
 [text]:    {{< docsref "/utilities/text" >}}

@@ -128,7 +128,7 @@ describe('Config', () => {
       const obj = new DummyConfigClass()
       expect(() => {
         obj._typeCheckConfig(config)
-      }).toThrowError(TypeError, obj.constructor.NAME.toUpperCase() + ': Option "parent" provided type "number" but expected type "(string|element)".')
+      }).toThrowError(TypeError, `${obj.constructor.NAME.toUpperCase()}: Option "parent" provided type "number" but expected type "(string|element)".`)
     })
 
     it('should return null stringified when null is passed', () => {
