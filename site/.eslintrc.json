@@ -1,15 +1,28 @@
 {
+  "extends": "../.eslintrc.json",
   "env": {
     "browser": true,
     "node": false
   },
+  "parserOptions": {
+    "sourceType": "script"
+  },
   "plugins": [
     "markdown"
   ],
+  "rules": {
+    "no-new": "off",
+    "strict": "error",
+    "unicorn/no-array-for-each": "off",
+    "unicorn/numeric-separators-style": "off",
+    "unicorn/prefer-node-protocol": "off"
+  },
   "overrides": [
     {
       // 2. Enable the Markdown processor for all .md files.
-      "files": ["./**/*.md"],
+      "files": [
+        "./**/*.md"
+      ],
       "processor": "markdown/markdown"
     },
     {
@@ -28,27 +41,15 @@
       },
       "rules": {
         "no-array-for-each": "off",
+        "no-labels": "off",
+        "no-redeclare": "off",
         "no-undef": "off",
-        "no-unused-vars": "off",
-        "unicorn/no-array-for-each": "off",
-        "unicorn/numeric-separators-style": "off",
         "no-unused-expressions": "off",
         "no-unused-labels": "off",
-        "no-labels": "off",
-        "no-redeclare": "off"
+        "no-unused-vars": "off",
+        "unicorn/no-array-for-each": "off",
+        "unicorn/numeric-separators-style": "off"
       }
     }
-  ],
-  "parserOptions": {
-    "sourceType": "script"
-  },
-  "extends": "../.eslintrc.json",
-  "rules": {
-    "no-new": "off",
-    "prefer-template": "error",
-    "strict": "error",
-    "unicorn/no-array-for-each": "off",
-    "unicorn/numeric-separators-style": "off",
-    "unicorn/prefer-node-protocol": "off"
-  }
+  ]
 }

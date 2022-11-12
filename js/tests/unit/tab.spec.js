@@ -207,7 +207,7 @@ describe('Tab', () => {
       const tab = new Tab(profileTriggerEl)
 
       profileTriggerEl.addEventListener('shown.bs.tab', () => {
-        expect(fixtureEl.querySelector('#' + CSS.escape('2'))).toHaveClass('active')
+        expect(fixtureEl.querySelector(`#${CSS.escape('2')}`)).toHaveClass('active')
         done()
       })
 
