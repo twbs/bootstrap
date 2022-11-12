@@ -17,8 +17,9 @@ permissions:
 jobs:
   run:
     permissions:
-      checks: write  # for coverallsapp/github-action to create new checks
-      contents: read  # for actions/checkout to fetch code
+      # allow coverallsapp/github-action to to create new checks issues and fetch code
+      checks: write
+      contents: read
     name: JS Tests
     runs-on: ubuntu-latest
 
