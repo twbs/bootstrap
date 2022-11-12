@@ -12,8 +12,9 @@ permissions:
 jobs:
   update_release_draft:
     permissions:
-      contents: write  # for release-drafter/release-drafter to create a github release
-      pull-requests: write  # for release-drafter/release-drafter to add label to PR
+      # allow release-drafter/release-drafter to create a GitHub release and add labels to PRs
+      contents: write
+      pull-requests: write
     runs-on: ubuntu-latest
     if: github.repository == 'twbs/bootstrap'
     steps:
