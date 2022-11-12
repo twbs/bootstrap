@@ -631,12 +631,17 @@ You can use `<a>` or `<button>` elements as dropdown items.
 You can also create non-interactive dropdown items with `.dropdown-item-text`. Feel free to style further with custom CSS or text utilities.
 
 {{< example >}}
-<ul class="dropdown-menu">
-  <li><span class="dropdown-item-text">Dropdown item text</span></li>
-  <li><a class="dropdown-item" href="#">Action</a></li>
-  <li><a class="dropdown-item" href="#">Another action</a></li>
-  <li><a class="dropdown-item" href="#">Something else here</a></li>
-</ul>
+<div class="dropdown show">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+    Dropdown with item text
+  </button>
+  <ul class="dropdown-menu show">
+    <li><span class="dropdown-item-text">Dropdown item text</span></li>
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
 {{< /example >}}
 
 ### Active
@@ -644,11 +649,16 @@ You can also create non-interactive dropdown items with `.dropdown-item-text`. F
 Add `.active` to items in the dropdown to **style them as active**. To convey the active state to assistive technologies, use the `aria-current` attribute — using the `page` value for the current page, or `true` for the current item in a set.
 
 {{< example >}}
-<ul class="dropdown-menu">
-  <li><a class="dropdown-item" href="#">Regular link</a></li>
-  <li><a class="dropdown-item active" href="#" aria-current="true">Active link</a></li>
-  <li><a class="dropdown-item" href="#">Another link</a></li>
-</ul>
+<div class="dropdown show">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+    Dropdown with .active class
+  </button>
+  <ul class="dropdown-menu show">
+    <li><a class="dropdown-item" href="#">Regular link</a></li>
+    <li><a class="dropdown-item active" href="#" aria-current="true">Active link</a></li>
+    <li><a class="dropdown-item" href="#">Another link</a></li>
+  </ul>
+</div>
 {{< /example >}}
 
 ### Disabled
@@ -656,11 +666,16 @@ Add `.active` to items in the dropdown to **style them as active**. To convey th
 Add `.disabled` to items in the dropdown to **style them as disabled**.
 
 {{< example >}}
-<ul class="dropdown-menu">
-  <li><a class="dropdown-item" href="#">Regular link</a></li>
-  <li><a class="dropdown-item disabled">Disabled link</a></li>
-  <li><a class="dropdown-item" href="#">Another link</a></li>
-</ul>
+<div class="dropdown show">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+    Dropdown with .disabled class
+  </button>
+  <ul class="dropdown-menu show">
+    <li><a class="dropdown-item" href="#">Regular link</a></li>
+    <li><a class="dropdown-item disabled">Disabled link</a></li>
+    <li><a class="dropdown-item" href="#">Another link</a></li>
+  </ul>
+</div>
 {{< /example >}}
 
 ## Menu alignment
@@ -812,11 +827,16 @@ Taking most of the options shown above, here's a small kitchen sink demo of vari
 Add a header to label sections of actions in any dropdown menu.
 
 {{< example >}}
-<ul class="dropdown-menu">
-  <li><h6 class="dropdown-header">Dropdown header</h6></li>
-  <li><a class="dropdown-item" href="#">Action</a></li>
-  <li><a class="dropdown-item" href="#">Another action</a></li>
-</ul>
+<div class="dropdown show">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+    Dropdown with .dropdown-header class
+  </button>
+  <ul class="dropdown-menu show">
+    <li><h6 class="dropdown-header">Dropdown header</h6></li>
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+  </ul>
+</div>
 {{< /example >}}
 
 ### Dividers
@@ -824,11 +844,15 @@ Add a header to label sections of actions in any dropdown menu.
 Separate groups of related menu items with a divider.
 
 {{< example >}}
-<ul class="dropdown-menu">
-  <li><a class="dropdown-item" href="#">Action</a></li>
-  <li><a class="dropdown-item" href="#">Another action</a></li>
-  <li><a class="dropdown-item" href="#">Something else here</a></li>
-  <li><hr class="dropdown-divider"></li>
+<div class="dropdown show">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+    Dropdown with divider
+  </button>
+  <ul class="dropdown-menu show">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><hr class="dropdown-divider"></li>
   <li><a class="dropdown-item" href="#">Separated link</a></li>
 </ul>
 {{< /example >}}
@@ -838,13 +862,18 @@ Separate groups of related menu items with a divider.
 Place any freeform text within a dropdown menu with text and use [spacing utilities]({{< docsref "/utilities/spacing" >}}). Note that you'll likely need additional sizing styles to constrain the menu width.
 
 {{< example >}}
-<div class="dropdown-menu p-4 text-muted" style="max-width: 200px;">
-  <p>
-    Some example text that's free-flowing within the dropdown menu.
-  </p>
-  <p class="mb-0">
-    And this is more example text.
-  </p>
+<div class="dropdown show">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+    Dropdown containing simple text
+  </button>
+  <div class="dropdown-menu show p-4 text-muted" style="max-width: 200px;">
+    <p>
+      Some example text that's free-flowing within the dropdown menu.
+    </p>
+    <p class="mb-0">
+      And this is more example text.
+    </p>
+  </div>
 </div>
 {{< /example >}}
 
