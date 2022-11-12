@@ -102,7 +102,7 @@
   // Instantiate all non-autoplaying carousels in a docs or StackBlitz page
   document.querySelectorAll('.carousel:not([data-bs-ride="carousel"])')
     .forEach(carousel => {
-      new bootstrap.Carousel(carousel)
+      bootstrap.getOrCreateInstance.Carousel(carousel)
     })
 
   // -------------------------------
