@@ -61,11 +61,11 @@ a {
 
 ## Focus variables
 
-<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.3.0</small>
+{{< added-in "5.3.0" >}}
 
 Bootstrap provides custom `:focus` styles using a combination of Sass and CSS variables that can be optionally added to specific components and elements. We do not yet globally override all `:focus ` styles.
 
-In our Sass, we set default values that can be customized pre-compiling.
+In our Sass, we set default values that can be customized before compiling.
 
 {{< scss-docs name="focus-ring-variables" file="scss/_variables.scss" >}}
 
