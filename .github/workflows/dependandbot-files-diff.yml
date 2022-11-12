@@ -1,0 +1,36 @@
+name: Dist Files Difference
+
+on:
+  pull_request:
+    branches:
+      - "dependabot/**"
+  workflow_dispatch:
+
+jobs:
+  eslint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "${{ env.NODE }}"
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Build Dist
+        run: npm run dist
+
+      - uses: technote-space/get-diff-action@v6
+        with:
+          PATTERNS: |
+            dist/**/*.(css|js)
+            js/dist/**/*.js
+
+      - name: Check Dist Differences
+        run: yarn lint
+        if: env.GIT_DIFF
