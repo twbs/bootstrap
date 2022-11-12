@@ -22,11 +22,11 @@ However, Bootstrap does add built-in support for most standard keyboard menu int
 
 ## Examples
 
-Wrap the dropdown's toggle (your button or link) and the dropdown menu within `.dropdown`, or another element that declares `position: relative;`. Dropdowns can be triggered from `<a>` or `<button>` elements to better fit your potential needs. The examples shown here use semantic `<ul>` elements where appropriate, but custom markup is supported.
+Wrap the dropdown's toggle (your button or link) and the dropdown menu within `.dropdown`, or another element that declares `position: relative;`. Ideally, you should use a `<button>` element as the dropdown trigger, but the plugin will work with `<a>` elements as well. The examples shown here use semantic `<ul>` elements where appropriate, but custom markup is supported.
 
 ### Single button
 
-Any single `.btn` can be turned into a dropdown toggle with some markup changes. Here's how you can put them to work with either `<button>` elements:
+Any single `.btn` can be turned into a dropdown toggle with some markup changes. Here's how you can put them to work with `<button>` elements:
 
 {{< example >}}
 <div class="dropdown">
@@ -41,7 +41,7 @@ Any single `.btn` can be turned into a dropdown toggle with some markup changes.
 </div>
 {{< /example >}}
 
-And with `<a>` elements:
+While `<button>` is the recommended control for a dropdown toggle, there might be situations where you have to use an `<a>` element. If you do, we recommend adding a `role="button"` attribute to appropriately convey control's purpose to assistive technologies such as screen readers.
 
 {{< example >}}
 <div class="dropdown">
@@ -378,9 +378,9 @@ And putting it to use in a navbar:
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
-          </a>
+          </button>
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
