@@ -17,7 +17,7 @@ permissions:
 jobs:
   cspell:
     permissions:
-      # allow streetsidesoftware/cspell-action to fetch files for commit and PRs
+      # allow streetsidesoftware/cspell-action to fetch files for commits and PRs
       contents: read
       pull-requests: read
     runs-on: ubuntu-latest
