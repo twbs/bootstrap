@@ -1,6 +1,17 @@
 .form-floating {
   position: relative;
 
+  &::before:not(.form-control:disabled) {
+    position: absolute;
+    top: $input-border-width;
+    left: $input-border-width;
+    width: subtract(100%, add($input-height-inner-quarter, $input-height-inner-half));
+    height: $form-floating-label-height;
+    content: "";
+    background-color: $input-bg;
+    @include border-radius($input-border-radius);
+  }
+
   > .form-control,
   > .form-control-plaintext,
   > .form-select {
@@ -12,8 +23,13 @@
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
     height: 100%; // allow textareas
     padding: $form-floating-padding-y $form-floating-padding-x;
+    overflow: hidden;
+    text-align: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     pointer-events: none;
     border: $input-border-width solid transparent; // Required for aligning label's text with the input as it affects inner box model
     transform-origin: 0 0;

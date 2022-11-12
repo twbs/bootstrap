@@ -100,7 +100,7 @@
 .chroma {
   .language-bash,
   .language-sh {
-    &::before {
+    .line::before {
       color: #777;
       content: "$ ";
       user-select: none;

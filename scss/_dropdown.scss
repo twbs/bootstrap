@@ -18,12 +18,13 @@
 // The dropdown menu
 .dropdown-menu {
   // scss-docs-start dropdown-css-vars
+  --#{$prefix}dropdown-zindex: #{$zindex-dropdown};
   --#{$prefix}dropdown-min-width: #{$dropdown-min-width};
   --#{$prefix}dropdown-padding-x: #{$dropdown-padding-x};
   --#{$prefix}dropdown-padding-y: #{$dropdown-padding-y};
   --#{$prefix}dropdown-spacer: #{$dropdown-spacer};
   @include rfs($dropdown-font-size, --#{$prefix}dropdown-font-size);
-  --#{$prefix}dropdown-color: #{$dropdown-color}; // stylelint-disable-line custom-property-empty-line-before
+  --#{$prefix}dropdown-color: #{$dropdown-color};
   --#{$prefix}dropdown-bg: #{$dropdown-bg};
   --#{$prefix}dropdown-border-color: #{$dropdown-border-color};
   --#{$prefix}dropdown-border-radius: #{$dropdown-border-radius};
@@ -46,7 +47,7 @@
   // scss-docs-end dropdown-css-vars
 
   position: absolute;
-  z-index: $zindex-dropdown;
+  z-index: var(--#{$prefix}dropdown-zindex);
   display: none; // none by default, but block on "open" of the menu
   min-width: var(--#{$prefix}dropdown-min-width);
   padding: var(--#{$prefix}dropdown-padding-y) var(--#{$prefix}dropdown-padding-x);
@@ -65,6 +66,18 @@
     top: 100%;
     left: 0;
     margin-top: var(--#{$prefix}dropdown-spacer);
+  }
+
+  @if $dropdown-padding-y == 0 {
+    > .dropdown-item:first-child,
+    > li:first-child .dropdown-item {
+      @include border-top-radius(var(--#{$prefix}dropdown-inner-border-radius));
+    }
+    > .dropdown-item:last-child,
+    > li:last-child .dropdown-item {
+      @include border-bottom-radius(var(--#{$prefix}dropdown-inner-border-radius));
+    }
+
   }
 }
 
@@ -171,18 +184,6 @@
   white-space: nowrap; // prevent links from randomly breaking onto new lines
   background-color: transparent; // For `<button>`s
   border: 0; // For `<button>`s
-
-  // Prevent dropdown overflow if there's no padding
-  // See https://github.com/twbs/bootstrap/pull/27703
-  @if $dropdown-padding-y == 0 {
-    &:first-child {
-      @include border-top-radius(var(--#{$prefix}dropdown-inner-border-radius));
-    }
-
-    &:last-child {
-      @include border-bottom-radius(var(--#{$prefix}dropdown-inner-border-radius));
-    }
-  }
 
   &:hover,
   &:focus {

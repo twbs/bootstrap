@@ -135,16 +135,16 @@
     }
   }
 
-  .input-group .form-control,
-  .input-group .form-select {
-    @include form-validation-state-selector($state) {
-      @if $state == "valid" {
-        z-index: 1;
-      } @else if $state == "invalid" {
-        z-index: 2;
-      }
-      &:focus {
-        z-index: 3;
+  .input-group {
+    > .form-control:not(:focus),
+    > .form-select:not(:focus),
+    > .form-floating:not(:focus-within) {
+      @include form-validation-state-selector($state) {
+        @if $state == "valid" {
+          z-index: 3;
+        } @else if $state == "invalid" {
+          z-index: 4;
+        }
       }
     }
   }

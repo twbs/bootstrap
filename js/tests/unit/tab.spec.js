@@ -36,9 +36,7 @@ describe('Tab', () => {
       expect(tabBySelector._element).toEqual(tabEl)
       expect(tabByElement._element).toEqual(tabEl)
     })
-  })
 
-  describe('constructor', () => {
     it('Do not Throw exception if not parent', () => {
       fixtureEl.innerHTML = [
         fixtureEl.innerHTML = '<div class=""><div class="nav-link"></div></div>'
@@ -177,6 +175,43 @@ describe('Tab', () => {
 
         tab.show()
       })
+    })
+
+    it('should work with tab id being an int', done => {
+      fixtureEl.innerHTML = [
+        '<div class="card-header d-block d-inline-block">',
+        '  <ul class="nav nav-tabs card-header-tabs" id="page_tabs">',
+        '    <li class="nav-item">',
+        '      <a class="nav-link" draggable="false" data-toggle="tab" href="#tab1">',
+        '        Working Tab 1 (#tab1)',
+        '     </a>',
+        '    </li>',
+        '    <li class="nav-item">',
+        '      <a id="trigger2" class="nav-link" draggable="false" data-toggle="tab" href="#2">',
+        '        Tab with numeric ID should work (#2)',
+        '      </a>',
+        '    </li>',
+        '  </ul>',
+        '</div>',
+        '<div class="card-body">',
+        '  <div class="tab-content" id="page_content">',
+        '     <div class="tab-pane fade" id="tab1">',
+        '      Working Tab 1 (#tab1) Content Here',
+        '  </div>',
+        '  <div class="tab-pane fade" id="2">',
+        '      Working Tab 2 (#2) with numeric ID',
+        '  </div>',
+        '</div>'
+      ].join('')
+      const profileTriggerEl = fixtureEl.querySelector('#trigger2')
+      const tab = new Tab(profileTriggerEl)
+
+      profileTriggerEl.addEventListener('shown.bs.tab', () => {
+        expect(fixtureEl.querySelector('#' + CSS.escape('2'))).toHaveClass('active')
+        done()
+      })
+
+      tab.show()
     })
 
     it('should not fire shown when show is prevented', () => {
@@ -383,6 +418,35 @@ describe('Tab', () => {
         btnCloseEl.click()
       })
     })
+
+    it('should not focus on opened tab', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<ul class="nav" role="tablist">',
+          '  <li><button type="button" id="home" data-bs-target="#home" role="tab">Home</button></li>',
+          '  <li><button type="button" id="triggerProfile" data-bs-target="#profile" role="tab">Profile</button></li>',
+          '</ul>',
+          '<ul>',
+          '  <li id="home" role="tabpanel"></li>',
+          '  <li id="profile" role="tabpanel"></li>',
+          '</ul>'
+        ].join('')
+
+        const firstTab = fixtureEl.querySelector('#home')
+        firstTab.focus()
+
+        const profileTriggerEl = fixtureEl.querySelector('#triggerProfile')
+        const tab = new Tab(profileTriggerEl)
+
+        profileTriggerEl.addEventListener('shown.bs.tab', () => {
+          expect(document.activeElement).toBe(firstTab)
+          expect(document.activeElement).not.toBe(profileTriggerEl)
+          resolve()
+        })
+
+        tab.show()
+      })
+    })
   })
 
   describe('dispose', () => {
@@ -412,9 +476,9 @@ describe('Tab', () => {
       const tab = new Tab(tabEl)
       const spy = jasmine.createSpy('spy')
 
-      spyOn(tab, '_queueCallback')
+      const spyQueue = spyOn(tab, '_queueCallback')
       tab._activate(null, spy)
-      expect(tab._queueCallback).not.toHaveBeenCalled()
+      expect(spyQueue).not.toHaveBeenCalled()
       expect(spy).not.toHaveBeenCalled()
     })
   })
@@ -468,17 +532,17 @@ describe('Tab', () => {
 
       const keydown = createEvent('keydown')
       keydown.key = 'Enter'
-      spyOn(Event.prototype, 'stopPropagation').and.callThrough()
-      spyOn(Event.prototype, 'preventDefault').and.callThrough()
-      spyOn(tab, '_keydown')
-      spyOn(tab, '_getChildren')
+      const spyStop = spyOn(Event.prototype, 'stopPropagation').and.callThrough()
+      const spyPrevent = spyOn(Event.prototype, 'preventDefault').and.callThrough()
+      const spyKeydown = spyOn(tab, '_keydown')
+      const spyGet = spyOn(tab, '_getChildren')
 
       tabEl.dispatchEvent(keydown)
-      expect(tab._keydown).toHaveBeenCalled()
-      expect(tab._getChildren).not.toHaveBeenCalled()
+      expect(spyKeydown).toHaveBeenCalled()
+      expect(spyGet).not.toHaveBeenCalled()
 
-      expect(Event.prototype.stopPropagation).not.toHaveBeenCalled()
-      expect(Event.prototype.preventDefault).not.toHaveBeenCalled()
+      expect(spyStop).not.toHaveBeenCalled()
+      expect(spyPrevent).not.toHaveBeenCalled()
     })
 
     it('if keydown event is right/down arrow, handle it', () => {
@@ -486,33 +550,46 @@ describe('Tab', () => {
         '<div class="nav">',
         '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
         '  <span id="tab2" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab3" class="nav-link" data-bs-toggle="tab"></span>',
         '</div>'
       ].join('')
 
-      const tabEl = fixtureEl.querySelector('#tab1')
+      const tabEl1 = fixtureEl.querySelector('#tab1')
       const tabEl2 = fixtureEl.querySelector('#tab2')
-      const tab = new Tab(tabEl)
+      const tabEl3 = fixtureEl.querySelector('#tab3')
+      const tab1 = new Tab(tabEl1)
       const tab2 = new Tab(tabEl2)
-      spyOn(tab, 'show').and.callThrough()
-      spyOn(tab2, 'show').and.callThrough()
+      const tab3 = new Tab(tabEl3)
+      const spyShow1 = spyOn(tab1, 'show').and.callThrough()
+      const spyShow2 = spyOn(tab2, 'show').and.callThrough()
+      const spyShow3 = spyOn(tab3, 'show').and.callThrough()
+      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
+      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
+      const spyFocus3 = spyOn(tabEl3, 'focus').and.callThrough()
 
-      spyOn(Event.prototype, 'stopPropagation').and.callThrough()
-      spyOn(Event.prototype, 'preventDefault').and.callThrough()
+      const spyStop = spyOn(Event.prototype, 'stopPropagation').and.callThrough()
+      const spyPrevent = spyOn(Event.prototype, 'preventDefault').and.callThrough()
 
       let keydown = createEvent('keydown')
       keydown.key = 'ArrowRight'
 
-      tabEl.dispatchEvent(keydown)
-      expect(tab2.show).toHaveBeenCalled()
+      tabEl1.dispatchEvent(keydown)
+      expect(spyShow2).toHaveBeenCalled()
+      expect(spyFocus2).toHaveBeenCalled()
 
       keydown = createEvent('keydown')
       keydown.key = 'ArrowDown'
 
       tabEl2.dispatchEvent(keydown)
-      expect(tab.show).toHaveBeenCalled()
+      expect(spyShow3).toHaveBeenCalled()
+      expect(spyFocus3).toHaveBeenCalled()
 
-      expect(Event.prototype.stopPropagation).toHaveBeenCalledTimes(2)
-      expect(Event.prototype.preventDefault).toHaveBeenCalledTimes(2)
+      tabEl3.dispatchEvent(keydown)
+      expect(spyShow1).toHaveBeenCalled()
+      expect(spyFocus1).toHaveBeenCalled()
+
+      expect(spyStop).toHaveBeenCalledTimes(3)
+      expect(spyPrevent).toHaveBeenCalledTimes(3)
     })
 
     it('if keydown event is left arrow, handle it', () => {
@@ -523,30 +600,34 @@ describe('Tab', () => {
         '</div>'
       ].join('')
 
-      const tabEl = fixtureEl.querySelector('#tab1')
+      const tabEl1 = fixtureEl.querySelector('#tab1')
       const tabEl2 = fixtureEl.querySelector('#tab2')
-      const tab = new Tab(tabEl)
+      const tab1 = new Tab(tabEl1)
       const tab2 = new Tab(tabEl2)
-      spyOn(tab, 'show').and.callThrough()
-      spyOn(tab2, 'show').and.callThrough()
+      const spyShow1 = spyOn(tab1, 'show').and.callThrough()
+      const spyShow2 = spyOn(tab2, 'show').and.callThrough()
+      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
+      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
 
-      spyOn(Event.prototype, 'stopPropagation').and.callThrough()
-      spyOn(Event.prototype, 'preventDefault').and.callThrough()
+      const spyStop = spyOn(Event.prototype, 'stopPropagation').and.callThrough()
+      const spyPrevent = spyOn(Event.prototype, 'preventDefault').and.callThrough()
 
       let keydown = createEvent('keydown')
       keydown.key = 'ArrowLeft'
 
       tabEl2.dispatchEvent(keydown)
-      expect(tab.show).toHaveBeenCalled()
+      expect(spyShow1).toHaveBeenCalled()
+      expect(spyFocus1).toHaveBeenCalled()
 
       keydown = createEvent('keydown')
       keydown.key = 'ArrowUp'
 
-      tabEl.dispatchEvent(keydown)
-      expect(tab2.show).toHaveBeenCalled()
+      tabEl1.dispatchEvent(keydown)
+      expect(spyShow2).toHaveBeenCalled()
+      expect(spyFocus2).toHaveBeenCalled()
 
-      expect(Event.prototype.stopPropagation).toHaveBeenCalledTimes(2)
-      expect(Event.prototype.preventDefault).toHaveBeenCalledTimes(2)
+      expect(spyStop).toHaveBeenCalledTimes(2)
+      expect(spyPrevent).toHaveBeenCalledTimes(2)
     })
 
     it('if keydown event is right arrow and next element is disabled', () => {
@@ -559,27 +640,35 @@ describe('Tab', () => {
         '</div>'
       ].join('')
 
-      const tabEl = fixtureEl.querySelector('#tab1')
+      const tabEl1 = fixtureEl.querySelector('#tab1')
       const tabEl2 = fixtureEl.querySelector('#tab2')
       const tabEl3 = fixtureEl.querySelector('#tab3')
       const tabEl4 = fixtureEl.querySelector('#tab4')
-      const tab = new Tab(tabEl)
+      const tab1 = new Tab(tabEl1)
       const tab2 = new Tab(tabEl2)
       const tab3 = new Tab(tabEl3)
       const tab4 = new Tab(tabEl4)
-      spyOn(tab, 'show').and.callThrough()
-      spyOn(tab2, 'show').and.callThrough()
-      spyOn(tab3, 'show').and.callThrough()
-      spyOn(tab4, 'show').and.callThrough()
+      const spy1 = spyOn(tab1, 'show').and.callThrough()
+      const spy2 = spyOn(tab2, 'show').and.callThrough()
+      const spy3 = spyOn(tab3, 'show').and.callThrough()
+      const spy4 = spyOn(tab4, 'show').and.callThrough()
+      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
+      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
+      const spyFocus3 = spyOn(tabEl3, 'focus').and.callThrough()
+      const spyFocus4 = spyOn(tabEl4, 'focus').and.callThrough()
 
       const keydown = createEvent('keydown')
       keydown.key = 'ArrowRight'
 
-      tabEl.dispatchEvent(keydown)
-      expect(tab.show).not.toHaveBeenCalled()
-      expect(tab2.show).not.toHaveBeenCalled()
-      expect(tab3.show).not.toHaveBeenCalled()
-      expect(tab4.show).toHaveBeenCalledTimes(1)
+      tabEl1.dispatchEvent(keydown)
+      expect(spy1).not.toHaveBeenCalled()
+      expect(spy2).not.toHaveBeenCalled()
+      expect(spy3).not.toHaveBeenCalled()
+      expect(spy4).toHaveBeenCalledTimes(1)
+      expect(spyFocus1).not.toHaveBeenCalled()
+      expect(spyFocus2).not.toHaveBeenCalled()
+      expect(spyFocus3).not.toHaveBeenCalled()
+      expect(spyFocus4).toHaveBeenCalledTimes(1)
     })
 
     it('if keydown event is left arrow and next element is disabled', () => {
@@ -592,27 +681,35 @@ describe('Tab', () => {
         '</div>'
       ].join('')
 
-      const tabEl = fixtureEl.querySelector('#tab1')
+      const tabEl1 = fixtureEl.querySelector('#tab1')
       const tabEl2 = fixtureEl.querySelector('#tab2')
       const tabEl3 = fixtureEl.querySelector('#tab3')
       const tabEl4 = fixtureEl.querySelector('#tab4')
-      const tab = new Tab(tabEl)
+      const tab1 = new Tab(tabEl1)
       const tab2 = new Tab(tabEl2)
       const tab3 = new Tab(tabEl3)
       const tab4 = new Tab(tabEl4)
-      spyOn(tab, 'show').and.callThrough()
-      spyOn(tab2, 'show').and.callThrough()
-      spyOn(tab3, 'show').and.callThrough()
-      spyOn(tab4, 'show').and.callThrough()
+      const spy1 = spyOn(tab1, 'show').and.callThrough()
+      const spy2 = spyOn(tab2, 'show').and.callThrough()
+      const spy3 = spyOn(tab3, 'show').and.callThrough()
+      const spy4 = spyOn(tab4, 'show').and.callThrough()
+      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
+      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
+      const spyFocus3 = spyOn(tabEl3, 'focus').and.callThrough()
+      const spyFocus4 = spyOn(tabEl4, 'focus').and.callThrough()
 
       const keydown = createEvent('keydown')
       keydown.key = 'ArrowLeft'
 
       tabEl4.dispatchEvent(keydown)
-      expect(tab4.show).not.toHaveBeenCalled()
-      expect(tab3.show).not.toHaveBeenCalled()
-      expect(tab2.show).not.toHaveBeenCalled()
-      expect(tab.show).toHaveBeenCalledTimes(1)
+      expect(spy4).not.toHaveBeenCalled()
+      expect(spy3).not.toHaveBeenCalled()
+      expect(spy2).not.toHaveBeenCalled()
+      expect(spy1).toHaveBeenCalledTimes(1)
+      expect(spyFocus4).not.toHaveBeenCalled()
+      expect(spyFocus3).not.toHaveBeenCalled()
+      expect(spyFocus2).not.toHaveBeenCalled()
+      expect(spyFocus1).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -650,7 +747,7 @@ describe('Tab', () => {
       const div = fixtureEl.querySelector('.nav > div')
       const tab = new Tab(div)
 
-      spyOn(tab, 'show')
+      const spy = spyOn(tab, 'show')
 
       jQueryMock.fn.tab = Tab.jQueryInterface
       jQueryMock.elements = [div]
@@ -658,7 +755,7 @@ describe('Tab', () => {
       jQueryMock.fn.tab.call(jQueryMock, 'show')
 
       expect(Tab.getInstance(div)).toEqual(tab)
-      expect(tab.show).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should throw error on undefined method', () => {
@@ -813,10 +910,11 @@ describe('Tab', () => {
         '</ul>'
       ].join('')
 
-      const firstDropItem = fixtureEl.querySelector('.dropdown-item')
+      const dropItems = fixtureEl.querySelectorAll('.dropdown-item')
 
-      firstDropItem.click()
-      expect(firstDropItem).toHaveClass('active')
+      dropItems[1].click()
+      expect(dropItems[0]).not.toHaveClass('active')
+      expect(dropItems[1]).toHaveClass('active')
       expect(fixtureEl.querySelector('.nav-link')).not.toHaveClass('active')
     })
 
@@ -904,7 +1002,7 @@ describe('Tab', () => {
       })
     })
 
-    it('should not add `show` class to tab panes if there is no `.fade` class', () => {
+    it('should add `show` class to tab panes if there is no `.fade` class', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<ul class="nav nav-tabs" role="tablist">',
@@ -924,7 +1022,7 @@ describe('Tab', () => {
         const secondNavEl = fixtureEl.querySelector('#secondNav')
 
         secondNavEl.addEventListener('shown.bs.tab', () => {
-          expect(fixtureEl.querySelectorAll('.show')).toHaveSize(0)
+          expect(fixtureEl.querySelectorAll('.tab-content .show')).toHaveSize(1)
           resolve()
         })
 
@@ -972,11 +1070,11 @@ describe('Tab', () => {
         ].join('')
 
         const tabEl = fixtureEl.querySelector('[href="#test2"]')
-        spyOn(Event.prototype, 'preventDefault').and.callThrough()
+        const spy = spyOn(Event.prototype, 'preventDefault').and.callThrough()
 
         tabEl.addEventListener('shown.bs.tab', () => {
           expect(tabEl).toHaveClass('active')
-          expect(Event.prototype.preventDefault).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           resolve()
         })
 

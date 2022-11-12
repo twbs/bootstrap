@@ -126,6 +126,50 @@ describe('ScrollSpy', () => {
       expect(scrollSpy._rootElement).toBeNull()
     })
 
+    it('should respect threshold option', () => {
+      fixtureEl.innerHTML = [
+        '<ul id="navigation" class="navbar">',
+        '   <a class="nav-link active" id="one-link" href="#">One</a>' +
+        '</ul>',
+        '<div id="content">',
+        '  <div id="one-link">test</div>',
+        '</div>'
+      ].join('')
+
+      const scrollSpy = new ScrollSpy('#content', {
+        target: '#navigation',
+        threshold: [1]
+      })
+
+      expect(scrollSpy._observer.thresholds).toEqual([1])
+    })
+
+    it('should respect threshold option markup', () => {
+      fixtureEl.innerHTML = [
+        '<ul id="navigation" class="navbar">',
+        '   <a class="nav-link active" id="one-link" href="#">One</a>' +
+        '</ul>',
+        '<div id="content" data-bs-threshold="0,0.2,1">',
+        '  <div id="one-link">test</div>',
+        '</div>'
+      ].join('')
+
+      const scrollSpy = new ScrollSpy('#content', {
+        target: '#navigation'
+      })
+
+      // See https://stackoverflow.com/a/45592926
+      const expectToBeCloseToArray = (actual, expected) => {
+        expect(actual.length).toBe(expected.length)
+        for (const x of actual) {
+          const i = actual.indexOf(x)
+          expect(x).withContext(`[${i}]`).toBeCloseTo(expected[i])
+        }
+      }
+
+      expectToBeCloseToArray(scrollSpy._observer.thresholds, [0, 0.2, 1])
+    })
+
     it('should not take count to not visible sections', () => {
       fixtureEl.innerHTML = [
         '<nav id="navigation" class="navbar">',
@@ -199,11 +243,11 @@ describe('ScrollSpy', () => {
           target: 'ss-target'
         })
 
-        spyOn(scrollSpy, '_process').and.callThrough()
+        const spy = spyOn(scrollSpy, '_process').and.callThrough()
 
         onScrollStop(() => {
           expect(rootEl).toHaveClass('active')
-          expect(scrollSpy._process).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           resolve()
         }, scrollSpyEl)
 
@@ -277,12 +321,12 @@ describe('ScrollSpy', () => {
           target: fixtureEl.querySelector('#ss-target')
         })
 
-        spyOn(scrollSpy, '_process').and.callThrough()
+        const spy = spyOn(scrollSpy, '_process').and.callThrough()
 
         onScrollStop(() => {
           expect(rootEl).toHaveClass('active')
           expect(scrollSpy._activeTarget).toEqual(fixtureEl.querySelector('[href="#detail"]'))
-          expect(scrollSpy._process).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           resolve()
         }, scrollSpyEl)
 
@@ -581,11 +625,11 @@ describe('ScrollSpy', () => {
       const el = fixtureEl.querySelector('.content')
       const scrollSpy = new ScrollSpy(el)
 
-      spyOn(scrollSpy._observer, 'disconnect')
+      const spy = spyOn(scrollSpy._observer, 'disconnect')
 
       scrollSpy.refresh()
 
-      expect(scrollSpy._observer.disconnect).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
   })
 
@@ -627,8 +671,8 @@ describe('ScrollSpy', () => {
       jQueryMock.elements = [div]
 
       jQueryMock.fn.scrollspy.call(jQueryMock, { rootMargin: '100px' })
-      spyOn(ScrollSpy.prototype, 'constructor')
-      expect(ScrollSpy.prototype.constructor).not.toHaveBeenCalledWith(div, { rootMargin: '100px' })
+      const spy = spyOn(ScrollSpy.prototype, 'constructor')
+      expect(spy).not.toHaveBeenCalledWith(div, { rootMargin: '100px' })
 
       const scrollspy = ScrollSpy.getInstance(div)
       expect(scrollspy).not.toBeNull()
@@ -655,7 +699,7 @@ describe('ScrollSpy', () => {
       const div = fixtureEl.querySelector('.content')
       const scrollSpy = new ScrollSpy(div)
 
-      spyOn(scrollSpy, 'refresh')
+      const spy = spyOn(scrollSpy, 'refresh')
 
       jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
       jQueryMock.elements = [div]
@@ -663,7 +707,7 @@ describe('ScrollSpy', () => {
       jQueryMock.fn.scrollspy.call(jQueryMock, 'refresh')
 
       expect(ScrollSpy.getInstance(div)).toEqual(scrollSpy)
-      expect(scrollSpy.refresh).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should throw error on undefined method', () => {
@@ -889,7 +933,7 @@ describe('ScrollSpy', () => {
 
       setTimeout(() => {
         if (div.scrollTo) {
-          expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop })
+          expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop, behavior: 'smooth' })
         } else {
           expect(clickSpy).toHaveBeenCalledWith(observable.offsetTop - div.offsetTop)
         }

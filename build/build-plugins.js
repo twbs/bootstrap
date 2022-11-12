@@ -9,7 +9,7 @@
 
 'use strict'
 
-const path = require('path')
+const path = require('node:path')
 const rollup = require('rollup')
 const globby = require('globby')
 const { babel } = require('@rollup/plugin-babel')
@@ -27,7 +27,7 @@ const filenameToEntity = filename => filename.replace('.js', '')
 
 for (const file of jsFiles) {
   resolvedPlugins.push({
-    src: file.replace('.js', ''),
+    src: file,
     dist: file.replace('src', 'dist'),
     fileName: path.basename(file),
     className: filenameToEntity(path.basename(file))
