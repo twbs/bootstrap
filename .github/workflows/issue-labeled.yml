@@ -10,8 +10,9 @@ permissions:
 jobs:
   issue-labeled:
     permissions:
-      issues: write  # for actions-cool/issues-helper to update issues
-      pull-requests: write  # for actions-cool/issues-helper to update PRs
+      # allow actions-cool/issues-helper to update issues and PRs
+      issues: write
+      pull-requests: write
     if: github.repository == 'twbs/bootstrap'
     runs-on: ubuntu-latest
     steps:
