@@ -853,8 +853,9 @@ Separate groups of related menu items with a divider.
     <li><a class="dropdown-item" href="#">Another action</a></li>
     <li><a class="dropdown-item" href="#">Something else here</a></li>
     <li><hr class="dropdown-divider"></li>
-  <li><a class="dropdown-item" href="#">Separated link</a></li>
-</ul>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  </ul>
+</div>
 {{< /example >}}
 
 ### Text
