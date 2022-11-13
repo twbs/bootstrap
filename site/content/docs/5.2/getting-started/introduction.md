@@ -8,6 +8,7 @@ aliases:
   - "/docs/getting-started/"
   - "/getting-started/"
 toc: true
+next: Download
 ---
 
 ## Quick start

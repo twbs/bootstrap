@@ -59,6 +59,23 @@
         {{ end }}
 
         {{ .Content }}
+
+        {{ if or (.Page.Params.Next) (.Page.Params.prev) }}
+          <div class="d-flex justify-content-between border-top pt-5 mt-5">
+            {{ if .Page.Params.Prev }}
+              <a class="d-flex flex-column text-decoration-none text-body-emphasis" href="/docs/{{ .Site.Params.docs_version }}/{{ .Page.Params.group }}/{{ .Page.Params.Prev }}">
+                <span class="opacity-50">Previous</span>
+                <span class="fw-semibold">{{ .Page.Params.Prev | title }}</span>
+              </a>
+            {{ end }}
+            {{ if .Page.Params.Next }}
+              <a class="d-flex flex-column align-items-end text-decoration-none text-body-emphasis" href="/docs/{{ .Site.Params.docs_version }}/{{ .Page.Params.group }}/{{ .Page.Params.Next }}">
+                <span class="opacity-50">Next</span>
+                <span class="fw-semibold">{{ .Page.Params.Next | title }}</span>
+              </a>
+            {{ end }}
+          </div>
+        {{ end }}
       </div>
     </main>
   </div>
