@@ -17,7 +17,7 @@ const TRANSITION_END = 'transitionend'
 const parseSelector = selector => {
   if (selector && window.CSS && window.CSS.escape) {
     // document.querySelector needs escaping to handle IDs (html5+) containing for instance /
-    selector = selector.replaceAll(/#([^\s"#']+)/g, (match, id) => '#' + CSS.escape(id))
+    selector = selector.replace(/#([^\s"#']+)/g, (match, id) => `#${CSS.escape(id)}`)
   }
 
   return selector
