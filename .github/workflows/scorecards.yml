@@ -1,11 +1,14 @@
 name: Scorecards supply-chain security
+
 on:
   # Only the default branch is supported.
   branch_protection_rule:
-  schedule:
-    - cron: '16 10 * * 6'
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+  schedule:
+    - cron: "16 10 * * 6"
+  workflow_dispatch:
 
 # Declare default permissions as read only.
 permissions: read-all
@@ -24,12 +27,12 @@ jobs:
       actions: read
 
     steps:
-      - name: "Checkout code"
-        uses: actions/checkout@v3.0.0
+      - name: Checkout repository
+        uses: actions/checkout@v3
         with:
           persist-credentials: false
 
-      - name: "Run analysis"
+      - name: Run analysis
         uses: ossf/scorecard-action@v2.0.6
         with:
           results_file: results.sarif
@@ -48,15 +51,15 @@ jobs:
 
       # Upload the results as artifacts (optional). Commenting out will disable uploads of run results in SARIF
       # format to the repository Actions tab.
-      - name: "Upload artifact"
-        uses: actions/upload-artifact@v3.0.0
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
         with:
           name: SARIF file
           path: results.sarif
           retention-days: 5
 
       # Upload the results to GitHub's code scanning dashboard.
-      - name: "Upload to code-scanning"
+      - name: Upload to code-scanning
         uses: github/codeql-action/upload-sarif@v1.0.26
         with:
           sarif_file: results.sarif
