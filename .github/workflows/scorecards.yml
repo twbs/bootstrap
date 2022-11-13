@@ -27,7 +27,7 @@ jobs:
       actions: read
 
     steps:
-      - name: Checkout repository
+      - name: Clone repository
         uses: actions/checkout@v3
         with:
           persist-credentials: false
