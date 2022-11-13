@@ -577,9 +577,9 @@ class Tooltip extends BaseComponent {
   _getDelegateConfig() {
     const config = {}
 
-    for (const key in this._config) {
-      if (this.constructor.Default[key] !== this._config[key]) {
-        config[key] = this._config[key]
+    for (const [key, value] of Object.entries(this._config)) {
+      if (this.constructor.Default[key] !== value) {
+        config[key] = value
       }
     }
 
