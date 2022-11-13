@@ -241,7 +241,7 @@ class Carousel extends BaseComponent {
 
   _configAfterMerge(config) {
     config.defaultInterval = config.interval
-    config.items = (config.items < 1 ? this.constructor.Default.items : config.items)
+    config.items = config.items < 1 ? this.constructor.Default.items : config.items
     return config
   }
 
