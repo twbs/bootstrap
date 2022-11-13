@@ -8,8 +8,6 @@
 import {
   defineJQueryPlugin,
   getElement,
-  getElementFromSelector,
-  getSelectorFromElement,
   reflow
 } from './util/index.js'
 import EventHandler from './dom/event-handler.js'
@@ -68,7 +66,7 @@ class Collapse extends BaseComponent {
     const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
 
     for (const elem of toggleList) {
-      const selector = getSelectorFromElement(elem)
+      const selector = SelectorEngine.getSelectorFromElement(elem)
       const filterElement = SelectorEngine.find(selector)
         .filter(foundElement => foundElement === this._element)
 
@@ -185,7 +183,7 @@ class Collapse extends BaseComponent {
     this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
 
     for (const trigger of this._triggerArray) {
-      const element = getElementFromSelector(trigger)
+      const element = SelectorEngine.getElementFromSelector(trigger)
 
       if (element && !this._isShown(element)) {
         this._addAriaAndCollapsedClass([trigger], false)
@@ -229,7 +227,7 @@ class Collapse extends BaseComponent {
     const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE)
 
     for (const element of children) {
-      const selected = getElementFromSelector(element)
+      const selected = SelectorEngine.getElementFromSelector(element)
 
       if (selected) {
         this._addAriaAndCollapsedClass([element], this._isShown(selected))
@@ -285,10 +283,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     event.preventDefault()
   }
 
-  const selector = getSelectorFromElement(this)
-  const selectorElements = SelectorEngine.find(selector)
-
-  for (const element of selectorElements) {
+  for (const element of SelectorEngine.getMultipleElementsFromSelector(this)) {
     Collapse.getOrCreateInstance(element, { toggle: false }).toggle()
   }
 })
