@@ -27,7 +27,7 @@ Place one add-on or button on either side of an input. You may also place one on
     <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
     <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
   </div>
-  <div id="passwordHelpBlock" class="form-text">Choose wisely</div>
+  <div class="form-text">Example help text goes outside the input group.</div>
 </div>
 
 <div class="input-group mb-3">
