@@ -40,11 +40,11 @@ Put that all together, and you have the following examples.
 </div>
 {{< /example >}}
 
-## Sizing
+## Bar sizing
 
 ### Width
 
-Bootstrap provides a handful of [utilities for setting width]({{< docsref "/utilities/sizing" >}}). Depending on your needs, these may help with quickly configuring progress.
+Bootstrap provides a handful of [utilities for setting width]({{< docsref "/utilities/sizing" >}}). Depending on your needs, these may help with quickly configuring the width of the `.progress-bar`.
 
 {{< example >}}
 <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
@@ -54,7 +54,7 @@ Bootstrap provides a handful of [utilities for setting width]({{< docsref "/util
 
 ### Height
 
-We only set a `height` value on the `.progress`, so if you change that value the inner `.progress-bar` will automatically resize accordingly.
+You only set a `height` value on the `.progress` container, so if you change that value, the inner `.progress-bar` will automatically resize accordingly.
 
 {{< example >}}
 <div class="progress"  role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 1px">
