@@ -208,8 +208,14 @@
 }
 
 // Tooltips
-.tooltip-demo a {
-  white-space: nowrap;
+.tooltip-demo {
+  a {
+    white-space: nowrap;
+  }
+
+  .btn {
+    margin: .25rem .125rem;
+  }
 }
 
 // scss-docs-start custom-tooltip
