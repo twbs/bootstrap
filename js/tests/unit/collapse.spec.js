@@ -278,14 +278,14 @@ describe('Collapse', () => {
         fixtureEl.innerHTML = [
           '<div id="parentGroup" class="accordion">',
           '  <div id="parentHeader" class="accordion-header">',
-          '    <button data-bs-target="#parentContent" data-bs-toggle="collapse" role="button" class="accordion-toggle">Parent</button>',
+          '    <button data-bs-target="#parentContent" data-bs-toggle="collapse" class="accordion-toggle">Parent</button>',
           '  </div>',
           '  <div id="parentContent" class="accordion-collapse collapse" aria-labelledby="parentHeader" data-bs-parent="#parentGroup">',
           '    <div class="accordion-body">',
           '      <div id="childGroup" class="accordion">',
           '        <div class="accordion-item">',
           '          <div id="childHeader1" class="accordion-header">',
-          '            <button data-bs-target="#childContent1" data-bs-toggle="collapse" role="button" class="accordion-toggle">Child 1</button>',
+          '            <button data-bs-target="#childContent1" data-bs-toggle="collapse" class="accordion-toggle">Child 1</button>',
           '          </div>',
           '          <div id="childContent1" class="accordion-collapse collapse" aria-labelledby="childHeader1" data-bs-parent="#childGroup">',
           '            <div>content</div>',
@@ -293,7 +293,7 @@ describe('Collapse', () => {
           '        </div>',
           '        <div class="accordion-item">',
           '          <div id="childHeader2" class="accordion-header">',
-          '            <button data-bs-target="#childContent2" data-bs-toggle="collapse" role="button" class="accordion-toggle">Child 2</button>',
+          '            <button data-bs-target="#childContent2" data-bs-toggle="collapse" class="accordion-toggle">Child 2</button>',
           '          </div>',
           '          <div id="childContent2" class="accordion-collapse collapse" aria-labelledby="childHeader2" data-bs-parent="#childGroup">',
           '            <div>content</div>',
@@ -897,7 +897,7 @@ describe('Collapse', () => {
         const trigger2 = fixtureEl.querySelector('#trigger2')
         const trigger3 = fixtureEl.querySelector('#trigger3')
         const target1 = fixtureEl.querySelector('#test1')
-        const target2 = fixtureEl.querySelector('#' + CSS.escape('0/my/id'))
+        const target2 = fixtureEl.querySelector(`#${CSS.escape('0/my/id')}`)
 
         const target2Shown = () => {
           expect(trigger1).not.toHaveClass('collapsed')

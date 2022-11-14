@@ -46,6 +46,7 @@
       "error",
       "after"
     ],
+    "prefer-template": "error",
     "semi": [
       "error",
       "never"
