@@ -6,6 +6,10 @@ group: components
 toc: true
 ---
 
+{{< callout info >}}
+**New markup in v5.3.0 —** We've deprecated the previous HTML structure for progress bars and replaced it with a more accessible one. The previous structure will continue to work until v6. [See what's change in our migration guide.]({{< docsref "/migration#improved-markup-for-progress-bars" >}})
+{{< /callout >}}
+
 ## How it works
 
 Progress components are built with two HTML elements, some CSS to set the width, and a few attributes. We don't use [the HTML5 `<progress>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress), ensuring you can stack progress bars, animate them, and place text labels over them.
@@ -36,25 +40,28 @@ Put that all together, and you have the following examples.
 </div>
 {{< /example >}}
 
-{{< callout info >}}
-### Changed markup structure for progress bars
+## Sizing
 
-Note that the recommended markup for progress bars has changed compared to past versions of Bootstrap. Previously, the `role` and various `aria-` attributes were on the inner `.progress-bar` element.
-
-```html
-<div class="progress">
-  <div class="progress-bar" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-```
-
-The problem with this structure is that progress bars with a zero value are completely ignored, and not announced, by assistive technologies. While the legacy structure will still be displayed correctly, we strongly recommend updating to the new structure.
-{{< /callout >}}
+### Width
 
 Bootstrap provides a handful of [utilities for setting width]({{< docsref "/utilities/sizing" >}}). Depending on your needs, these may help with quickly configuring progress.
 
 {{< example >}}
 <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
   <div class="progress-bar w-75"></div>
+</div>
+{{< /example >}}
+
+### Height
+
+We only set a `height` value on the `.progress`, so if you change that value the inner `.progress-bar` will automatically resize accordingly.
+
+{{< example >}}
+<div class="progress"  role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 1px">
+  <div class="progress-bar" style="width: 25%"></div>
+</div>
+<div class="progress" role="progressbar" aria-label="Example 20px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
+  <div class="progress-bar" style="width: 25%"></div>
 </div>
 {{< /example >}}
 
@@ -65,19 +72,6 @@ Add labels to your progress bars by placing text within the `.progress-bar`.
 {{< example >}}
 <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
   <div class="progress-bar" style="width: 25%">25%</div>
-</div>
-{{< /example >}}
-
-## Height
-
-We only set a `height` value on the `.progress`, so if you change that value the inner `.progress-bar` will automatically resize accordingly.
-
-{{< example >}}
-<div class="progress"  role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 1px">
-  <div class="progress-bar" style="width: 25%"></div>
-</div>
-<div class="progress" role="progressbar" aria-label="Example 20px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
-  <div class="progress-bar" style="width: 25%"></div>
 </div>
 {{< /example >}}
 
@@ -121,22 +115,6 @@ You can include multiple progress components inside a container with `.progress-
   </div>
 </div>
 {{< /example >}}
-
-{{< callout info >}}
-### Changed markup for multiple progress bars
-
-Note that the recommended markup for multiple progress bars has changed compared to past versions of Bootstrap. Previously, multiple progress bars were structured as a single `.progress` element with various `.progress-bar` children.
-
-```html
-<div class="progress">
-  <div class="progress-bar" role="progressbar" aria-label="Segment one" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-  <div class="progress-bar bg-success" role="progressbar" aria-label="Segment two" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-  <div class="progress-bar bg-info" role="progressbar" aria-label="Segment three" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-```
-
-As with the single progress bar, the problem with this structure is that progress bars with a zero value are completely ignored, and not announced, by assistive technologies. While the legacy structure will still be displayed correctly, we strongly recommend updating to the new structure.
-{{< /callout >}}
 
 ## Striped
 
