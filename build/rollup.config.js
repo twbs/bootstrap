@@ -8,7 +8,6 @@ const banner = require('./banner.js')
 
 const BUNDLE = process.env.BUNDLE === 'true'
 const ESM = process.env.ESM === 'true'
-
 let fileDestination = `bootstrap${ESM ? '.esm' : ''}`
 const external = ['@popperjs/core']
 const plugins = [
@@ -17,6 +16,9 @@ const plugins = [
     exclude: 'node_modules/**',
     // Include the helpers in the bundle, at most one copy of each
     babelHelpers: 'bundled'
+  }),
+  replace({
+    __BS_VERSION__: `v${process.env.npm_package_version}`
   })
 ]
 const globals = {

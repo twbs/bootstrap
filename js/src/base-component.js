@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.2): base-component.js
+ * Bootstrap (__BS_VERSION__): base-component.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -14,7 +14,7 @@ import Config from './util/config.js'
  * Constants
  */
 
-const VERSION = '5.2.2'
+const VERSION = '__BS_VERSION__'
 
 /**
  * Class definition
