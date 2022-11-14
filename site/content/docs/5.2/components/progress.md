@@ -7,7 +7,7 @@ toc: true
 ---
 
 {{< callout info >}}
-**New markup in v5.3.0 —** We've deprecated the previous HTML structure for progress bars and replaced it with a more accessible one. The previous structure will continue to work until v6. [See what's change in our migration guide.]({{< docsref "/migration#improved-markup-for-progress-bars" >}})
+**New markup in v5.3.0 —** We've deprecated the previous HTML structure for progress bars and replaced it with a more accessible one. The previous structure will continue to work until v6. [See what's changed in our migration guide.]({{< docsref "/migration#improved-markup-for-progress-bars" >}})
 {{< /callout >}}
 
 ## How it works
