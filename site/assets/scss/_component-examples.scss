@@ -171,6 +171,14 @@
   }
 }
 
+.bd-example-range {
+  .form-range::-moz-range-track,
+  .form-range::-webkit-slider-runnable-track {
+    height: .5rem;
+    background-image: linear-gradient(to right, #9ec5fe 0%, #9ec5fe var(--value, 0%), #dee2e6 var(--value, 0%), #dee2e6 100%);
+  }
+}
+
 // Ratio helpers
 .bd-example-ratios {
   .ratio {
