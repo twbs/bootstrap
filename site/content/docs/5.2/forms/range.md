@@ -49,6 +49,8 @@ By default, range inputs "snap" to integer values. To change this, you can speci
 
 ## Via javascript
 
+{{< added-in "5.3.0" >}}
+
 Range is not implemented with Javascript in Bootstrap. Here is a way to do so to have the same behavior on all supported browsers.
 
 Build a range input with `min` and `max` attributes.
