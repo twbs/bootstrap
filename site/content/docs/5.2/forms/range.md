@@ -6,7 +6,7 @@ group: forms
 toc: true
 extra_js:
   - src: "/docs/5.2/assets/js/form-range.js"
-    async: true
+    async: false
 ---
 
 ## Overview
@@ -49,8 +49,6 @@ By default, range inputs "snap" to integer values. To change this, you can speci
 
 ## Via javascript
 
-{{< added-in "5.3.0" >}}
-
 Range is not implemented with Javascript in Bootstrap. Here is a way to do so to have the same behavior on all supported browsers.
 
 Build a range input with `min` and `max` attributes.
@@ -60,17 +58,19 @@ Build a range input with `min` and `max` attributes.
 <input type="range" class="form-range" id="jsRange" min="0" max="100">
 {{< /example >}}
 
-The input backgrounds must be initialized in a different way.
+The input track backgrounds must be initialized in a different way. Please note that `--value` is what does the trick so affordable.
 
-```css
-.form-range::-moz-range-track,
+```scss
+.form-range::-moz-range-track {
+  background: linear-gradient(to right, $blue-200 0%, $blue-200 var(--value, 0%), $gray-300 var(--value, 0%), $gray-300 100%);
+}
+
 .form-range::-webkit-slider-runnable-track {
-  height: .5rem;
-  background-image: linear-gradient(to right, #9ec5fe 0%, #9ec5fe var(--value, 0%), #dee2e6 var(--value, 0%), #dee2e6 100%);
+  background: linear-gradient(to right, $blue-200 0%, $blue-200 var(--value, 0%), $gray-300 var(--value, 0%), $gray-300 100%);
 }
 ```
 
-Introduce event listeners on the input to make it dynamic.
+Introduce event listeners on the input to make it dynamic by changing the `--value`.
 
 ```js
 // Getting all the range inputs
