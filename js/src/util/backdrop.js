@@ -5,9 +5,9 @@
  * --------------------------------------------------------------------------
  */
 
-import EventHandler from '../dom/event-handler'
-import { execute, executeAfterTransition, getElement, reflow } from './index'
-import Config from './config'
+import EventHandler from '../dom/event-handler.js'
+import { execute, executeAfterTransition, getElement, reflow } from './index.js'
+import Config from './config.js'
 
 /**
  * Constants

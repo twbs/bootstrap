@@ -5,8 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
-import { isElement, toType } from './index'
-import Manipulator from '../dom/manipulator'
+import { isElement, toType } from './index.js'
+import Manipulator from '../dom/manipulator.js'
 
 /**
  * Class definition
@@ -49,8 +49,7 @@ class Config {
   }
 
   _typeCheckConfig(config, configTypes = this.constructor.DefaultType) {
-    for (const property of Object.keys(configTypes)) {
-      const expectedTypes = configTypes[property]
+    for (const [property, expectedTypes] of Object.entries(configTypes)) {
       const value = config[property]
       const valueType = isElement(value) ? 'element' : toType(value)
 

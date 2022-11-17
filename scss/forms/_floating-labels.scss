@@ -1,7 +1,7 @@
 .form-floating {
   position: relative;
 
-  &::before {
+  &::before:not(.form-control:disabled) {
     position: absolute;
     top: $input-border-width;
     left: $input-border-width;
@@ -82,5 +82,9 @@
     ~ label {
       border-width: $input-border-width 0; // Required to properly position label text - as explained above
     }
+  }
+
+  > .form-control:disabled ~ label {
+    color: $form-floating-label-disabled-color;
   }
 }

@@ -94,7 +94,7 @@ These Sass mixins translate in our compiled CSS using the values declared in our
 
 ### Max-width
 
-We occasionally use media queries that go in the other direction (the given screen size *or smaller*):
+We occasionally use media queries that go in the other direction (the given screen size _or smaller_):
 
 ```scss
 // No media query necessary for xs breakpoint as it's effectively `@media (max-width: 0) { ... }`
@@ -135,7 +135,7 @@ These mixins take those declared breakpoints, subtract `.02px` from them, and us
 ```
 
 {{< callout warning >}}
-{{< partial "callout-info-mediaqueries-breakpoints.md" >}}
+{{< partial "callouts/info-mediaqueries-breakpoints.md" >}}
 {{< /callout >}}
 
 ### Single breakpoint
