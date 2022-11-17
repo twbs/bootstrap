@@ -36,7 +36,7 @@ aliases: "/examples/"
             <h3 class="h5 mb-1">{{ $example.name }}</h3>
           </a>
           <button type="button" class="btn-edit text-nowrap float-end" title="Try it on StackBlitz" style="margin-top: -30px" data-sb-js-snippet="{{ $example.name | urlize }}">
-            <svg class="bi" role="img" aria-label="Try it"><use xlink:href="#lightning-charge-fill"/></svg>
+            <svg class="bi" aria-hidden="true"><use xlink:href="#lightning-charge-fill"/></svg>
           </button>
           <p class="text-muted">{{ $example.description }}</p>
         </div>
