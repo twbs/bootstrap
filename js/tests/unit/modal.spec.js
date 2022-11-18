@@ -644,7 +644,9 @@ describe('Modal', () => {
           const mouseDown = createEvent('mousedown')
 
           modalEl.dispatchEvent(mouseDown)
+          modalEl.click()
           modalEl.dispatchEvent(mouseDown)
+          modalEl.click()
 
           setTimeout(() => {
             expect(spy).toHaveBeenCalledTimes(1)
@@ -719,10 +721,42 @@ describe('Modal', () => {
           const mouseDown = createEvent('mousedown')
 
           dialogEl.dispatchEvent(mouseDown)
+          modalEl.click()
           expect(spy).not.toHaveBeenCalled()
 
           modalEl.dispatchEvent(mouseDown)
+          modalEl.click()
           expect(spy).toHaveBeenCalled()
+          resolve()
+        })
+
+        modal.show()
+      })
+    })
+
+    it('should not close modal when clicking on an element removed from modal content', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="modal">',
+          ' <div class="modal-dialog">',
+          '   <button class="btn">BTN</button>',
+          ' </div>',
+          '</div>'
+        ].join('')
+
+        const modalEl = fixtureEl.querySelector('.modal')
+        const buttonEl = modalEl.querySelector('.btn')
+        const modal = new Modal(modalEl)
+
+        const spy = spyOn(modal, 'hide')
+        buttonEl.addEventListener('click', () => {
+          buttonEl.remove()
+        })
+
+        modalEl.addEventListener('shown.bs.modal', () => {
+          modalEl.dispatchEvent(createEvent('mousedown'))
+          buttonEl.click()
+          expect(spy).not.toHaveBeenCalled()
           resolve()
         })
 

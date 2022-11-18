@@ -16,7 +16,7 @@ Things to know when using the toast plugin:
 - Toasts will automatically hide if you do not specify `autohide: false`.
 
 {{< callout info >}}
-{{< partial "callout-info-prefersreducedmotion.md" >}}
+{{< partial "callouts/info-prefersreducedmotion.md" >}}
 {{< /callout >}}
 
 ## Examples
@@ -360,23 +360,23 @@ const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, o
 {{< bs-table "table" >}}
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `animation` | boolean | `true` | Apply a CSS fade transition to the toast |
-| `autohide` | boolean | `true`  | Automatically hide the toast after the delay |
-| `delay` | number | `5000` | Delay in milliseconds before hiding the toast |
+| `animation` | boolean | `true` | Apply a CSS fade transition to the toast. |
+| `autohide` | boolean | `true` | Automatically hide the toast after the delay. |
+| `delay` | number | `5000` | Delay in milliseconds before hiding the toast. |
 {{< /bs-table >}}
 
 ### Methods
 
 {{< callout danger >}}
-{{< partial "callout-danger-async-methods.md" >}}
+{{< partial "callouts/danger-async-methods.md" >}}
 {{< /callout >}}
 
 {{< bs-table "table" >}}
 | Method | Description |
 | --- | --- |
 | `dispose` | Hides an element's toast. Your toast will remain on the DOM but won't show anymore. |
-| `getInstance` | *Static* method which allows you to get the toast instance associated with a DOM element. <br> For example: `const myToastEl = document.getElementById('myToastEl')` `const myToast = bootstrap.Toast.getInstance(myToastEl)` Returns a Bootstrap toast instance|
-| `getOrCreateInstance` | *Static* method which allows you to get the toast instance associated with a DOM element, or create a new one, in case it wasn't initialized.  <br>`const myToastEl = document.getElementById('myToastEl')`  `const myToast = bootstrap.Toast.getOrCreateInstance(myToastEl)` Returns a Bootstrap toast instance |
+| `getInstance` | *Static* method which allows you to get the toast instance associated with a DOM element. <br> For example: `const myToastEl = document.getElementById('myToastEl')` `const myToast = bootstrap.Toast.getInstance(myToastEl)` Returns a Bootstrap toast instance. |
+| `getOrCreateInstance` | *Static* method which allows you to get the toast instance associated with a DOM element, or create a new one, in case it wasn't initialized. <br>`const myToastEl = document.getElementById('myToastEl')` `const myToast = bootstrap.Toast.getOrCreateInstance(myToastEl)` Returns a Bootstrap toast instance. |
 | `hide` | Hides an element's toast. **Returns to the caller before the toast has actually been hidden** (i.e. before the `hidden.bs.toast` event occurs). You have to manually call this method if you made `autohide` to `false`. |
 | `isShown` | Returns a boolean according to toast's visibility state. |
 | `show` | Reveals an element's toast. **Returns to the caller before the toast has actually been shown** (i.e. before the `shown.bs.toast` event occurs). You have to manually call this method, instead your toast won't show. |

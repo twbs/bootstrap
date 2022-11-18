@@ -150,7 +150,7 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 - Renamed "Navs" component page to "Navs & Tabs".
 - Renamed "Checks" page to "Checks & radios".
 - Redesigned the navbar and added a new subnav to make it easier to get around our sites and docs versions.
-- Added new keyboard shortcut for the search field: <kbd>Ctrl + /</kbd>.
+- Added new keyboard shortcut for the search field: <kbd><kbd>Ctrl</kbd> + <kbd>/</kbd></kbd>.
 
 ## Sass
 
@@ -457,7 +457,7 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 
 - <span class="badge bg-danger">Breaking</span> Renamed `.font-weight-*` utilities as `.fw-*` for brevity and consistency.
 
-- <span class="badge bg-danger">Breaking</span> Renamed `.font-style-*` utilities as `.fst-*` for brevity and consistency.
+- <span class="badge bg-danger">Breaking</span> Renamed `.font-italic` utility to `.fst-italic` for brevity and consistency with new `.fst-normal` utility.
 
 - Added `.d-grid` to display utilities and new `gap` utilities (`.gap`) for CSS Grid and flexbox layouts.
 
