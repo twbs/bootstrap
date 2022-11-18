@@ -7,6 +7,8 @@
   --#{$prefix}card-spacer-y: #{$card-spacer-y};
   --#{$prefix}card-spacer-x: #{$card-spacer-x};
   --#{$prefix}card-title-spacer-y: #{$card-title-spacer-y};
+  --#{$prefix}card-title-color: #{$card-title-color};
+  --#{$prefix}card-subtitle-color: #{$card-subtitle-color};
   --#{$prefix}card-border-width: #{$card-border-width};
   --#{$prefix}card-border-color: #{$card-border-color};
   --#{$prefix}card-border-radius: #{$card-border-radius};
@@ -73,11 +75,13 @@
 
 .card-title {
   margin-bottom: var(--#{$prefix}card-title-spacer-y);
+  color: var(--#{$prefix}card-title-color);
 }
 
 .card-subtitle {
   margin-top: calc(-.5 * var(--#{$prefix}card-title-spacer-y)); // stylelint-disable-line function-disallowed-list
   margin-bottom: 0;
+  color: var(--#{$prefix}card-subtitle-color);
 }
 
 .card-text:last-child {

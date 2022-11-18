@@ -5,11 +5,11 @@
     $hover-bg: mix($color, $background, percentage($table-hover-bg-factor));
     $striped-bg: mix($color, $background, percentage($table-striped-bg-factor));
     $active-bg: mix($color, $background, percentage($table-active-bg-factor));
-    $border-color: mix($color, $background, percentage($table-border-factor));
+    $table-border-color: mix($color, $background, percentage($table-border-factor));
 
     --#{$prefix}table-color: #{$color};
     --#{$prefix}table-bg: #{$background};
-    --#{$prefix}table-border-color: #{$border-color};
+    --#{$prefix}table-border-color: #{$table-border-color};
     --#{$prefix}table-striped-bg: #{$striped-bg};
     --#{$prefix}table-striped-color: #{color-contrast($striped-bg)};
     --#{$prefix}table-active-bg: #{$active-bg};
