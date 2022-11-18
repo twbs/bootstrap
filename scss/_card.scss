@@ -156,9 +156,18 @@
   @include border-radius(var(--#{$prefix}card-inner-border-radius));
 }
 
-.card-img {
+.card-img,
+.card-img-top,
+.card-img-bottom {
   width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
 }
+
+.card-img-top,
+.card-img-bottom {
+  @include deprecate("`.card-img-top`", "v5.3.0", "v6.0.0", true);
+  @include deprecate("`.card-img-bottom`", "v5.3.0", "v6.0.0", true);
+}
+
 
 //
 // Card groups
