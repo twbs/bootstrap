@@ -3,7 +3,10 @@
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
   "version": "5.2.3",
   "config": {
-    "version_short": "5.2"
+    "version_short": "5.2",
+    "license": "MIT",
+    "homepage": "https://getbootstrap.com/",
+    "author": "The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)"
   },
   "keywords": [
     "css",
@@ -65,9 +68,9 @@
     "js-compile-plugins": "node build/build-plugins.js",
     "js-lint": "eslint --cache --cache-location .cache/.eslintcache --report-unused-disable-directives --ext .html,.js .",
     "js-minify": "npm-run-all --aggregate-output --parallel js-minify-*",
-    "js-minify-standalone": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.js.map,includeSources,url=bootstrap.min.js.map\" --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
-    "js-minify-standalone-esm": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.esm.js.map,includeSources,url=bootstrap.esm.min.js.map\" --output dist/js/bootstrap.esm.min.js dist/js/bootstrap.esm.js",
-    "js-minify-bundle": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.bundle.js.map,includeSources,url=bootstrap.bundle.min.js.map\" --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
+    "js-minify-standalone": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.js.map,includeSources,url=bootstrap.min.js.map\" --output dist/js/bootstrap.min.js dist/js/bootstrap.js --format \"preamble='/*!\\n  * Bootstrap v$npm_package_version ($npm_package_config_homepage)\\n  * Copyright 2011-`date +%Y` $npm_package_config_author\\n  * Licensed under $npm_package_config_license (https://github.com/twbs/bootstrap/blob/main/LICENSE)\\n  */'\"",
+    "js-minify-standalone-esm": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.esm.js.map,includeSources,url=bootstrap.esm.min.js.map\" --output dist/js/bootstrap.esm.min.js dist/js/bootstrap.esm.js --format \"preamble='/*!\\n  * Bootstrap v$npm_package_version ($npm_package_config_homepage)\\n  * Copyright 2011-`date +%Y` $npm_package_config_author\\n  * Licensed under $npm_package_config_license (https://github.com/twbs/bootstrap/blob/main/LICENSE)\\n  */'\"",
+    "js-minify-bundle": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.bundle.js.map,includeSources,url=bootstrap.bundle.min.js.map\" --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js --format \"preamble='/*!\\n  * Bootstrap v$npm_package_version ($npm_package_config_homepage)\\n  * Copyright 2011-`date +%Y` $npm_package_config_author\\n  * Licensed under $npm_package_config_license (https://github.com/twbs/bootstrap/blob/main/LICENSE)\\n  */'\"",
     "js-test": "npm-run-all --aggregate-output --parallel js-test-karma js-test-jquery js-test-integration-*",
     "js-debug": "cross-env DEBUG=true npm run js-test-karma",
     "js-test-karma": "karma start js/tests/karma.conf.js",
@@ -141,6 +144,7 @@
     "nodemon": "^2.0.20",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.19",
+    "postcss-banner": "^4.0.1",
     "postcss-cli": "^10.0.0",
     "rollup": "^3.3.0",
     "rollup-plugin-istanbul": "^4.0.0",
