@@ -25,18 +25,11 @@
   .highlight {
     background-color: rgba($black, .05);
   }
-
-  strong {
-    // color: var(--bs-emphasis-color);
-  }
 }
 
 // Variations
 @each $variant in $bd-callout-variants {
   .bd-callout-#{$variant} {
-    // --bd-callout-bg: rgba(var(--bs-#{$variant}-rgb), .075);
-    // --bd-callout-border: rgba(var(--bs-#{$variant}-rgb), .5);
-
     --bd-callout-color: var(--bs-#{$variant}-text);
     --bd-callout-bg: var(--bs-#{$variant}-bg-subtle);
     --bd-callout-border: var(--bs-#{$variant}-border-subtle);
