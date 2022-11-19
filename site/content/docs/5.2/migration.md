@@ -75,6 +75,8 @@ Learn more by reading the new [color modes documentation]({{< docsref "/customiz
 
 - Added new [`.z-*` utilities]({{< docsref "/utilities/z-index" >}}) for `z-index`.
 
+- [Box shadow utilities]({{< docsref "/utilities/shadows" >}}) (and Sass variables) have been updated for dark mode. They now use `--bs-body-color-rgb` to generate the `rgba()` color values, allowing them to easily adapt to color modes based on the specified foreground color.
+
 For a complete list of changes, [see the v5.3.0 project on GitHub](https://github.com/twbs/bootstrap/projects/).
 
 ## v5.2.0
