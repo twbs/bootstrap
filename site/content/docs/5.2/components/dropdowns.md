@@ -353,7 +353,7 @@ Button dropdowns work with buttons of all sizes, including default and split dro
 
 Opt into darker dropdowns to match a dark navbar or custom style by adding `.dropdown-menu-dark` onto an existing `.dropdown-menu`. No changes are required to the dropdown items.
 
-{{< callout-dark-variants "dropdown-menu" >}}
+{{< callout-deprecated-dark-variants "dropdown-menu" >}}
 
 {{< example >}}
 <div class="dropdown">
