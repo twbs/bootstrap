@@ -25,7 +25,7 @@ Colorize text with color utilities. If you want to colorize links, you can use t
 <p class="text-body-tertiary">.text-body-tertiary</p>
 
 <p class="text-white bg-dark">.text-white</p>
-<p class="text-black-50">.text-black-50</p>
+<p class="text-black-50 bg-white">.text-black-50</p>
 <p class="text-white-50 bg-dark">.text-white-50</p>
 {{< /example >}}
 
