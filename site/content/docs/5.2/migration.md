@@ -59,6 +59,8 @@ Learn more by reading the new [color modes documentation]({{< docsref "/customiz
 
 ### Forms
 
+- `.form-check` and `.form-switch` components are now built with CSS variables for setting the `background-image`. The usage here differs from other components in that the various focus, active, etc states for each component aren't set on the base class. Instead, the states override one variable (e.g., `--bs-form-switch-bg`).
+
 - Floating form labels now have a `background-color` to fix support for `<textarea>` elements. Additional changes have been made to also support disabled states and more.
 
 - Fixed display of date and time inputs in WebKit based browsers.
