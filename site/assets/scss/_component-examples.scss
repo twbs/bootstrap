@@ -116,6 +116,7 @@
 //
 
 .bd-example-row [class^="col"],
+.bd-example-cols [class^="col"] > *,
 .bd-example-cssgrid [class*="grid"] > * {
   padding-top: .75rem;
   padding-bottom: .75rem;

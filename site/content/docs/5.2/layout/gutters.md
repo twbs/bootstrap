@@ -18,7 +18,7 @@ toc: true
 
 `.gx-*` classes can be used to control the horizontal gutter widths. The `.container` or `.container-fluid` parent may need to be adjusted if larger gutters are used too to avoid unwanted overflow, using a matching padding utility. For example, in the following example we've increased the padding with `.px-4`:
 
-{{< example class="bd-example-row" >}}
+{{< example class="bd-example-cols" >}}
 <div class="container px-4 text-center">
   <div class="row gx-5">
     <div class="col">
@@ -33,7 +33,7 @@ toc: true
 
 An alternative solution is to add a wrapper around the `.row` with the `.overflow-hidden` class:
 
-{{< example class="bd-example-row" >}}
+{{< example class="bd-example-cols" >}}
 <div class="container overflow-hidden text-center">
   <div class="row gx-5">
     <div class="col">
@@ -50,7 +50,7 @@ An alternative solution is to add a wrapper around the `.row` with the `.overflo
 
 `.gy-*` classes can be used to control the vertical gutter widths within a row when columns wrap to new lines. Like the horizontal gutters, the vertical gutters can cause some overflow below the `.row` at the end of a page. If this occurs, you add a wrapper around `.row` with the `.overflow-hidden` class:
 
-{{< example class="bd-example-row" >}}
+{{< example class="bd-example-cols" >}}
 <div class="container overflow-hidden text-center">
   <div class="row gy-5">
     <div class="col-6">
@@ -73,7 +73,7 @@ An alternative solution is to add a wrapper around the `.row` with the `.overflo
 
 `.g-*` classes can be used to control the horizontal gutter widths, for the following example we use a smaller gutter width, so there won't be a need to add the `.overflow-hidden` wrapper class.
 
-{{< example class="bd-example-row" >}}
+{{< example class="bd-example-cols" >}}
 <div class="container text-center">
   <div class="row g-2">
     <div class="col-6">
@@ -96,7 +96,7 @@ An alternative solution is to add a wrapper around the `.row` with the `.overflo
 
 Gutter classes can also be added to [row columns]({{< docsref "/layout/grid#row-columns" >}}). In the following example, we use responsive row columns and responsive gutter classes.
 
-{{< example class="bd-example-row" >}}
+{{< example class="bd-example-cols" >}}
 <div class="container text-center">
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
     <div class="col">
