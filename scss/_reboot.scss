@@ -245,8 +245,8 @@ a {
   text-decoration: var(--#{$prefix}link-decoration);
 
   &:hover {
-    color: rgba(var(--#{$prefix}link-hover-color-rgb), var(--#{$prefix}link-opacity, 1));
-    text-decoration: var(--#{$prefix}link-hover-decoration);
+    --#{$prefix}link-color-rgb: var(--#{$prefix}link-hover-color-rgb);
+    --#{$prefix}link-decoration: var(--#{$prefix}link-hover-decoration);
   }
 }
 

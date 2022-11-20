@@ -33,7 +33,7 @@ Learn more by reading the new [color modes documentation]({{< docsref "/customiz
 
 - Adds additional variables for alerts, `.btn-close`, and `.offcanvas`.
 
-- Converts links to use CSS variables for their color with `--bs-link-color-rgb` and `--bs-link-opacity`. This allows us to use the `rgba()` function to set the link color and customize its alpha layer opacity with ease. Also includes `--bs-link-decoration` and `--bs-link-hover-decoration` for controlling `text-decoration`.
+- Converts links to use CSS variables for styling `color` and `text-decoration`. Colors are now set with `--bs-link-color-rgb` and `--bs-link-opacity` as `rgba()` color, allowing you to customize the translucency with ease. The `a:hover` pseudo-class no longer resets the CSS properties, but instead overrides the new CSS variables values (e.g., `--bs-link-color: var(--bs-link-hover-color);`).
 
 - `--bs-border-width` is now being used in more components for greater control over default global styling.
 
