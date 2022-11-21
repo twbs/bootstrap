@@ -16,9 +16,6 @@
   ],
   "homepage": "https://getbootstrap.com/",
   "author": "The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)",
-  "contributors": [
-    "Twitter, Inc."
-  ],
   "license": "MIT",
   "repository": {
     "type": "git",
