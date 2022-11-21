@@ -39,7 +39,7 @@
   @if $font-size-root != null {
     --#{$prefix}root-font-size: #{$font-size-root};
   }
-  --#{$prefix}body-font-family: #{$font-family-base};
+  --#{$prefix}body-font-family: #{inspect($font-family-base)};
   @include rfs($font-size-base, --#{$prefix}body-font-size);
   --#{$prefix}body-font-weight: #{$font-weight-base};
   --#{$prefix}body-line-height: #{$line-height-base};
