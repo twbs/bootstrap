@@ -74,7 +74,7 @@ Set a `background-color` with contrasting foreground `color` with [our `.text-bg
 {{< /example >}}
 
 {{< callout info >}}
-{{< partial "callout-warning-color-assistive-technologies.md" >}}
+{{< partial "callouts/warning-color-assistive-technologies.md" >}}
 {{< /callout >}}
 
 ## Pill badges

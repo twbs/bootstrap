@@ -5,9 +5,9 @@
  * --------------------------------------------------------------------------
  */
 
-import Config from './config'
-import EventHandler from '../dom/event-handler'
-import { execute } from './index'
+import Config from './config.js'
+import EventHandler from '../dom/event-handler.js'
+import { execute } from './index.js'
 
 /**
  * Constants

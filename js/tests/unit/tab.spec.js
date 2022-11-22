@@ -177,6 +177,43 @@ describe('Tab', () => {
       })
     })
 
+    it('should work with tab id being an int', done => {
+      fixtureEl.innerHTML = [
+        '<div class="card-header d-block d-inline-block">',
+        '  <ul class="nav nav-tabs card-header-tabs" id="page_tabs">',
+        '    <li class="nav-item">',
+        '      <a class="nav-link" draggable="false" data-toggle="tab" href="#tab1">',
+        '        Working Tab 1 (#tab1)',
+        '     </a>',
+        '    </li>',
+        '    <li class="nav-item">',
+        '      <a id="trigger2" class="nav-link" draggable="false" data-toggle="tab" href="#2">',
+        '        Tab with numeric ID should work (#2)',
+        '      </a>',
+        '    </li>',
+        '  </ul>',
+        '</div>',
+        '<div class="card-body">',
+        '  <div class="tab-content" id="page_content">',
+        '     <div class="tab-pane fade" id="tab1">',
+        '      Working Tab 1 (#tab1) Content Here',
+        '  </div>',
+        '  <div class="tab-pane fade" id="2">',
+        '      Working Tab 2 (#2) with numeric ID',
+        '  </div>',
+        '</div>'
+      ].join('')
+      const profileTriggerEl = fixtureEl.querySelector('#trigger2')
+      const tab = new Tab(profileTriggerEl)
+
+      profileTriggerEl.addEventListener('shown.bs.tab', () => {
+        expect(fixtureEl.querySelector(`#${CSS.escape('2')}`)).toHaveClass('active')
+        done()
+      })
+
+      tab.show()
+    })
+
     it('should not fire shown when show is prevented', () => {
       return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<div class="nav"><div class="nav-link"></div></div>'
@@ -603,19 +640,19 @@ describe('Tab', () => {
         '</div>'
       ].join('')
 
-      const tabEl = fixtureEl.querySelector('#tab1')
+      const tabEl1 = fixtureEl.querySelector('#tab1')
       const tabEl2 = fixtureEl.querySelector('#tab2')
       const tabEl3 = fixtureEl.querySelector('#tab3')
       const tabEl4 = fixtureEl.querySelector('#tab4')
-      const tab = new Tab(tabEl)
+      const tab1 = new Tab(tabEl1)
       const tab2 = new Tab(tabEl2)
       const tab3 = new Tab(tabEl3)
       const tab4 = new Tab(tabEl4)
-      const spy1 = spyOn(tab, 'show').and.callThrough()
+      const spy1 = spyOn(tab1, 'show').and.callThrough()
       const spy2 = spyOn(tab2, 'show').and.callThrough()
       const spy3 = spyOn(tab3, 'show').and.callThrough()
       const spy4 = spyOn(tab4, 'show').and.callThrough()
-      const spyFocus1 = spyOn(tabEl, 'focus').and.callThrough()
+      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
       const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
       const spyFocus3 = spyOn(tabEl3, 'focus').and.callThrough()
       const spyFocus4 = spyOn(tabEl4, 'focus').and.callThrough()
@@ -623,7 +660,7 @@ describe('Tab', () => {
       const keydown = createEvent('keydown')
       keydown.key = 'ArrowRight'
 
-      tabEl.dispatchEvent(keydown)
+      tabEl1.dispatchEvent(keydown)
       expect(spy1).not.toHaveBeenCalled()
       expect(spy2).not.toHaveBeenCalled()
       expect(spy3).not.toHaveBeenCalled()
@@ -644,19 +681,19 @@ describe('Tab', () => {
         '</div>'
       ].join('')
 
-      const tabEl = fixtureEl.querySelector('#tab1')
+      const tabEl1 = fixtureEl.querySelector('#tab1')
       const tabEl2 = fixtureEl.querySelector('#tab2')
       const tabEl3 = fixtureEl.querySelector('#tab3')
       const tabEl4 = fixtureEl.querySelector('#tab4')
-      const tab = new Tab(tabEl)
+      const tab1 = new Tab(tabEl1)
       const tab2 = new Tab(tabEl2)
       const tab3 = new Tab(tabEl3)
       const tab4 = new Tab(tabEl4)
-      const spy1 = spyOn(tab, 'show').and.callThrough()
+      const spy1 = spyOn(tab1, 'show').and.callThrough()
       const spy2 = spyOn(tab2, 'show').and.callThrough()
       const spy3 = spyOn(tab3, 'show').and.callThrough()
       const spy4 = spyOn(tab4, 'show').and.callThrough()
-      const spyFocus1 = spyOn(tabEl, 'focus').and.callThrough()
+      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
       const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
       const spyFocus3 = spyOn(tabEl3, 'focus').and.callThrough()
       const spyFocus4 = spyOn(tabEl4, 'focus').and.callThrough()
