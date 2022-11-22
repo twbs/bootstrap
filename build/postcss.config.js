@@ -1,7 +1,6 @@
 'use strict'
 
-const pkg = require('../package.json')
-const year = new Date().getFullYear()
+const banner = require('./banner.js')
 
 const mapConfig = {
   inline: false,
@@ -9,23 +8,22 @@ const mapConfig = {
   sourcesContent: true
 }
 
+const sanitizeFileName = fileName => {
+  const cleanName = fileName.replace('bootstrap', '').replace('-', '').replace('.css', '')
+  return cleanName.charAt(0).toUpperCase() + cleanName.slice(1)
+}
+
 module.exports = context => {
   return {
     map: context.file.dirname.includes('examples') ? false : mapConfig,
     plugins: {
+      'postcss-header': {
+        header: context.file.basename.includes('bootstrap') && !context.file.basename.includes('rtl') ? banner(sanitizeFileName(context.file.basename)) : ''
+      },
       autoprefixer: {
         cascade: false
       },
-      rtlcss: context.env === 'RTL',
-      'postcss-banner': {
-        important: true,
-        banner: context.file.basename.includes('bootstrap') ?
-          `${pkg.name} ${context.file.basename.split('-').length > 1 ? `${context.file.basename.split('-')[1].split('.')[0]} ` : ''}v${pkg.version} (${pkg.homepage})
-Copyright 2011-${year} ${pkg.author}
-Copyright 2011-${year} ${pkg.contributors[0]}
-Licensed under ${pkg.license} (https://github.com/twbs/bootstrap/blob/main/LICENSE)` :
-          ''
-      }
+      rtlcss: context.env === 'RTL'
     }
   }
 }
