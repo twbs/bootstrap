@@ -180,7 +180,7 @@
 // Add modifier classes to change text and background color on individual items.
 // Organizationally, this must come after the `:hover` states.
 
-@each $state, $value in $theme-colors {
+@each $state in map-keys($theme-colors) {
   .list-group-item-#{$state} {
     --#{$prefix}list-group-color: var(--#{$prefix}#{$state}-text);
     --#{$prefix}list-group-bg: var(--#{$prefix}#{$state}-bg-subtle);

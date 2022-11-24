@@ -55,7 +55,7 @@
 
 // scss-docs-start alert-modifiers
 // Generate contextual modifier classes for colorizing the alert
-@each $state, $value in $theme-colors {
+@each $state in map-keys($theme-colors) {
   .alert-#{$state} {
     --#{$prefix}alert-color: var(--#{$prefix}#{$state}-text);
     --#{$prefix}alert-bg: var(--#{$prefix}#{$state}-bg-subtle);
