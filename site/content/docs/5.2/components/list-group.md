@@ -325,7 +325,7 @@ Used in combination with `$theme-colors` to generate the [contextual variant cla
 
 ### Sass loop
 
-Loop that generates the modifier classes with the `list-group-item-variant()` mixin.
+Loop that generates the modifier classes with an overriding of CSS variables.
 
 {{< scss-docs name="list-group-modifiers" file="scss/_list-group.scss" >}}
 
