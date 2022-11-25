@@ -80,9 +80,9 @@ Note that because the font stack includes emoji fonts, many common symbol/dingba
 
 This `font-family` is applied to the `<body>` and automatically inherited globally throughout Bootstrap. To switch the global `font-family`, update `$font-family-base` and recompile Bootstrap.
 
-## Headings and paragraphs
+## Headings
 
-All heading elements—e.g., `<h1>`—and `<p>` are reset to have their `margin-top` removed. Headings have `margin-bottom: .5rem` added and paragraphs `margin-bottom: 1rem` for easy spacing.
+All heading elements—`<h1>`—`<h6>` have their `margin-top` removed, `margin-bottom: .5rem` set, and `line-height` tightened. While headings inherit their `color` by default, you can also override it via optional CSS variable, `--bs-heading-color`.
 
 {{< bs-table "table" >}}
 | Heading | Example |
@@ -94,6 +94,14 @@ All heading elements—e.g., `<h1>`—and `<p>` are reset to have their `margin-
 | `<h5></h5>` | <span class="h5">h5. Bootstrap heading</span> |
 | `<h6></h6>` | <span class="h6">h6. Bootstrap heading</span> |
 {{< /bs-table >}}
+
+## Paragraphs
+
+All `<p>` elements have their `margin-top` removed and `margin-bottom: 1rem` set for easy spacing.
+
+{{< example >}}
+<p>This is an example paragraph.</p>
+{{< /example >}}
 
 ## Links
 

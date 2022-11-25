@@ -78,7 +78,9 @@
   --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
   // scss-docs-end root-body-variables
 
-  --#{$prefix}heading-color: #{$headings-color};
+  @if $headings-color != null {
+    --#{$prefix}heading-color: #{$headings-color};
+  }
 
   --#{$prefix}link-color: #{$link-color};
   --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
@@ -115,7 +117,6 @@
 
   --#{$prefix}emphasis-color: #{$emphasis-color};
 
-  // TODO: move to form components? or make global?
   --#{$prefix}form-control-bg: var(--#{$prefix}body-bg);
   --#{$prefix}form-control-disabled-bg: var(--#{$prefix}secondary-bg);
   // --#{$prefix}form-valid-color: #{$form-feedback-valid-color};
