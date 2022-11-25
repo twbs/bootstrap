@@ -319,7 +319,7 @@ As part of Bootstrap's evolving CSS variables approach, list groups now use loca
 
 ### Sass mixins
 
-Used in combination with `$theme-colors` to generate the [contextual variant classes](#contextual-classes) for `.list-group-item`s.
+Used in combination with `$theme-colors` to generate the [contextual variant classes](#variants) for `.list-group-item`s.
 
 {{< scss-docs name="list-group-mixin" file="scss/mixins/_list-group.scss" >}}
 
