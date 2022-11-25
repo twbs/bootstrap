@@ -33,13 +33,13 @@ Learn more by reading the new [color modes documentation]({{< docsref "/customiz
 
 - Adds additional variables for alerts, `.btn-close`, and `.offcanvas`.
 
-- Converts links to use CSS variables for styling `color` and `text-decoration`. Colors are now set with `--bs-link-color-rgb` and `--bs-link-opacity` as `rgba()` color, allowing you to customize the translucency with ease. The `a:hover` pseudo-class no longer resets the CSS properties, but instead overrides the new CSS variables values (e.g., `--bs-link-color: var(--bs-link-hover-color);`).
+- The `--bs-heading-color` variable is back with an update and dark mode support. First, we now check for a `null` value on the associated Sass variable, `$headings-color`, before trying to output the CSS variable, so by default it's not present in our compiled CSS. Second, we use the CSS variable with a fallback value, `inherit`, allowing the original behavior to persist, but also allowing for overrides.
+
+- Converts links to use CSS variables for styling `color`, but not `text-decoration`. Colors are now set with `--bs-link-color-rgb` and `--bs-link-opacity` as `rgba()` color, allowing you to customize the translucency with ease. The `a:hover` pseudo-class now overrides `--bs-link-color-rgb` instead of explicitly setting the `color` property.
 
 - `--bs-border-width` is now being used in more components for greater control over default global styling.
 
 - Adds new root CSS variables for our `box-shadow`s, including `--bs-box-shadow`, `--bs-box-shadow-sm`, `--bs-box-shadow-lg`, and `--bs-box-shadow-inset`.
-
-- The `--bs-heading-color` variable is back with an update and dark mode support. First, we now check for a `null` value on the associated Sass variable, `$headings-color`, before trying to output the CSS variable, so by default it's not present in our compiled CSS. Second, we use the CSS variable with a fallback value, `inherit`, allowing the original behavior to persist, but also allowing for overrides.
 
 ### Components
 
