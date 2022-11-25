@@ -4,7 +4,7 @@
 // List Groups
 
 // scss-docs-start list-group-mixin
-@mixin list-group-item-variant($state, $background, $color, $background-hover: shade-color($background, 10%)) {
+@mixin list-group-item-variant($state, $background, $color) {
   .list-group-item-#{$state} {
     color: $color;
     background-color: $background;
@@ -13,7 +13,7 @@
       &:hover,
       &:focus {
         color: $color;
-        background-color: $background-hover;
+        background-color: shade-color($background, 10%);
       }
 
       &.active {
