@@ -20,10 +20,13 @@ $bd-callout-variants: info, warning, danger !default;
   --bd-teal-rgb: #{to-rgb($teal-500)};
   --docsearch-primary-color: var(--bd-violet);
   --docsearch-logo-color: var(--bd-violet);
+
+  --bd-violet-bg: var(--bd-violet);
   --bd-sidebar-link-bg: rgba(var(--bd-violet-rgb), .1);
 }
 
 [data-bs-theme="dark"] {
   --bd-violet: #{mix($bd-violet, $white, 75%)};
+  --bd-violet-bg: #{$bd-violet};
   --bd-sidebar-link-bg: rgba(#{to-rgb(mix($bd-violet, $black, 75%))}, .5);
 }
