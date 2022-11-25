@@ -48,7 +48,7 @@ Colors ending in `-rgb` provide the `red, green, blue` values for use in `rgb()`
     </tr>
     <tr>
       <td rowspan="2">
-        {{< markdown >}}**Secondary —** For disabled component states, dividers, and lighter text.{{< /markdown >}}
+        {{< markdown >}}**Secondary —** Use the `color` option for lighter text. Use the `bg` option for dividers and to indicate disabled component states.{{< /markdown >}}
       </td>
       <td class="ps-0">
         <div class="p-3 rounded-2" style="background-color: var(--bs-secondary-color);">&nbsp;</div>
@@ -67,7 +67,7 @@ Colors ending in `-rgb` provide the `red, green, blue` values for use in `rgb()`
     </tr>
     <tr>
       <td rowspan="2">
-        {{< markdown >}}**Tertiary —** For component hover colors, accents, wells, and text.{{< /markdown >}}
+        {{< markdown >}}**Tertiary —** Use the `color` option for even lighter text. Use the `bg` option to style backgrounds for hover states, accents, and wells.{{< /markdown >}}
       </td>
       <td class="ps-0">
         <div class="p-3 rounded-2" style="background-color: var(--bs-tertiary-color);">&nbsp;</div>

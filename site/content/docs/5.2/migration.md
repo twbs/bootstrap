@@ -7,7 +7,7 @@ aliases: "/migration/"
 toc: true
 ---
 
-## v5.3.0 (WIP)
+## v5.3.0
 
 <hr class="mb-4">
 
@@ -17,7 +17,7 @@ Learn more by reading the new [color modes documentation]({{< docsref "/customiz
 
 - **Global support for light (default) and dark color modes.** Set color mode globally on the `:root` element, on groups of elements and components with a wrapper class, or directly on components, with `data-bs-theme="light|dark"`. Also included is a new `color-mode()` mixin that can output a ruleset with the `data-bs-theme` selector or a media query, depending on your preference.
 
-  <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span>  Color modes replace dark variants for components, so  `.carousel-dark`, `.dropdown-menu-dark`, and `.navbar-dark` are deprecated.
+  <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span>  Color modes replace dark variants for components, so  `.btn-close-white`, `.carousel-dark`, `.dropdown-menu-dark`, and `.navbar-dark` are deprecated.
 
 - **New extended color system.** We've added new theme colors (but not in `$theme-colors)`) for a more nuanced, system-wide color palette with new secondary, tertiary, and emphasis colors for `color` and `background-color`. These new colors are available as Sass variables, CSS variables, and utilities.
 
@@ -29,7 +29,7 @@ Learn more by reading the new [color modes documentation]({{< docsref "/customiz
 
 - Restores CSS variables for breakpoints, though we don't use them in our media queries as they're not supported. However, these can be useful in JS-specific contexts.
 
-- Per the color modes update, we've added new utilities for Adds new Sass CSS variables `secondary` and `tertiary` text and background colors, plus `{color}-bg-subtle`, `{color}-border-subtle`, and `{color}-text` for our theme colors. These new colors are available through Sass and CSS variables (but not our color maps) with the express goal of making it easier to customize across multiple colors modes like light and dark.
+- Per the color modes update, we've added new utilities for new Sass CSS variables `secondary` and `tertiary` text and background colors, plus `{color}-bg-subtle`, `{color}-border-subtle`, and `{color}-text` for our theme colors. These new colors are available through Sass and CSS variables (but not our color maps) with the express goal of making it easier to customize across multiple colors modes like light and dark.
 
 - Adds additional variables for alerts, `.btn-close`, and `.offcanvas`.
 
@@ -49,13 +49,13 @@ Learn more by reading the new [color modes documentation]({{< docsref "/customiz
 
 #### List group
 
-- Alert variants are now styled via CSS variables.
+- List group item variants are now styled via CSS variables.
 
 - <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.list-group-variant()` mixin is now deprecated. We now [use the Sass loop]({{< docsref "/components/list-group#sass-loop" >}}) directly to modify the component's default CSS variables for each variant.
 
 #### Close button
 
-- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.btn-close-white` class has been deprecated and replaced with `data-bs-theme="dark"` on the close button or the parent element. [See the docs for an example.]({{< docsref "/components/close-button#dark-mode" >}})
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.btn-close-white` class has been deprecated and replaced with `data-bs-theme="dark"` on the close button or the parent element. [See the docs for an example.]({{< docsref "/components/close-button#dark-variant" >}})
 
 ### Forms
 
