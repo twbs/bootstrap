@@ -143,6 +143,17 @@
   }
 }
 
+// stylelint-disable selector-no-qualifying-type
+.bd-summary-link {
+  color: var(--bs-link-color);
+
+  &:hover,
+  details[open] > & {
+    color: var(--bs-link-hover-color);
+  }
+}
+// stylelint-enable selector-no-qualifying-type
+
 // scss-docs-start custom-color-mode
 [data-bs-theme="blue"] {
   --bs-body-color: var(--bs-white);
