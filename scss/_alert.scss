@@ -12,6 +12,7 @@
   --#{$prefix}alert-border-color: transparent;
   --#{$prefix}alert-border: #{$alert-border-width} solid var(--#{$prefix}alert-border-color);
   --#{$prefix}alert-border-radius: #{$alert-border-radius};
+  --#{$prefix}alert-link-color: inherit;
   // scss-docs-end alert-css-vars
 
   position: relative;
@@ -32,6 +33,7 @@
 // Provide class for links that match alerts
 .alert-link {
   font-weight: $alert-link-font-weight;
+  color: var(--#{$prefix}alert-link-color);
 }
 
 
