@@ -1010,6 +1010,8 @@ Dropdown items include at least one variable that is not set on `.dropdown`. Thi
 
 Customization through CSS variables can be seen on the `.dropdown-menu-dark` class where we override specific values without adding duplicate CSS selectors.
 
+{{< scss-docs name="dropdown-dark-css-vars" file="scss/_dropdown.scss" >}}
+
 ### Sass variables
 
 Variables for all dropdowns:
