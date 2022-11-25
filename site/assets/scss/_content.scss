@@ -92,12 +92,10 @@
 }
 
 .table-swatches {
-  // td:first-child { width: 340px; }
-  // td:nth-child(2) { width: 200px; }
-
   th {
     color: var(--bs-emphasis-color);
   }
+
   td code {
     white-space: nowrap;
   }
