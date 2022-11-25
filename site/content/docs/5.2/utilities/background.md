@@ -17,6 +17,10 @@ Similar to the contextual text color classes, set the background of an element t
 <div class="p-3 mb-2 bg-{{ .name }}-subtle text-emphasis-{{ .name }}">.bg-{{ .name }}-subtle</div>
 {{- end -}}
 {{< /colors.inline >}}
+
+<p class="p-3 mb-2 bg-body-secondary">.bg-body-secondary</p>
+<p class="p-3 mb-2 bg-body-tertiary">.bg-body-tertiary</p>
+
 <div class="p-3 mb-2 bg-body text-body">.bg-body</div>
 <div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
 <div class="p-3 mb-2 bg-transparent text-body">.bg-transparent</div>
