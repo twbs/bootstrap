@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.2): util/index.js
+ * Bootstrap (v5.2.3): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -17,7 +17,7 @@ const TRANSITION_END = 'transitionend'
 const parseSelector = selector => {
   if (selector && window.CSS && window.CSS.escape) {
     // document.querySelector needs escaping to handle IDs (html5+) containing for instance /
-    selector = selector.replace(/#([^\s"#']+)/g, (match, id) => '#' + CSS.escape(id))
+    selector = selector.replace(/#([^\s"#']+)/g, (match, id) => `#${CSS.escape(id)}`)
   }
 
   return selector
