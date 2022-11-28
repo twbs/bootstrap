@@ -4,7 +4,7 @@
 // https://primer.github.io/.
 
 .form-select {
-  --#{$prefix}form-select-bg: #{escape-svg($form-select-indicator)};
+  --#{$prefix}form-select-bg-img: #{escape-svg($form-select-indicator)};
 
   display: block;
   width: 100%;
@@ -16,7 +16,7 @@
   line-height: $form-select-line-height;
   color: $form-select-color;
   background-color: $form-select-bg;
-  background-image: var(--#{$prefix}form-select-bg);
+  background-image: var(--#{$prefix}form-select-bg-img), var(--#{$prefix}form-select-bg-icon, none);
   background-repeat: no-repeat;
   background-position: $form-select-bg-position;
   background-size: $form-select-bg-size;
@@ -75,7 +75,7 @@
 @if $enable-dark-mode {
   @include color-mode(dark) {
     .form-select {
-      --#{$prefix}form-select-bg: #{escape-svg($form-select-indicator-dark)};
+      --#{$prefix}form-select-bg-img: #{escape-svg($form-select-indicator-dark)};
     }
   }
 }
