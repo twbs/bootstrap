@@ -207,7 +207,7 @@ Using the grid, wrap cards in columns and rows as needed.
 
 {{< example >}}
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-6 mb-3 mb-sm-0">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Special title treatment</h5>
@@ -233,7 +233,7 @@ Using the grid, wrap cards in columns and rows as needed.
 Use our handful of [available sizing utilities]({{< docsref "/utilities/sizing" >}}) to quickly set a card's width.
 
 {{< example >}}
-<div class="card w-75">
+<div class="card w-75 mb-3">
   <div class="card-body">
     <h5 class="card-title">Card title</h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -269,7 +269,7 @@ Use custom CSS in your stylesheets or as inline styles to set a width.
 You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]({{< docsref "/utilities/text#text-alignment" >}}).
 
 {{< example >}}
-<div class="card" style="width: 18rem;">
+<div class="card mb-3" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">Special title treatment</h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -277,7 +277,7 @@ You can quickly change the text alignment of any card—in its entirety or speci
   </div>
 </div>
 
-<div class="card text-center" style="width: 18rem;">
+<div class="card text-center mb-3" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">Special title treatment</h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
