@@ -129,7 +129,31 @@ For example, despite using `data-bs-theme="dark"` on a random `<div>`, the `<div
 </div>
 {{< /example >}}
 
-## Sass usage
+## Usage
+
+### Enable dark mode
+
+Enable the built in dark color mode across your entire project by adding the `data-bs-theme="dark"` attribute to the `<html>` element. This will apply the dark color mode to all components and elements, other than those with a specific `data-bs-theme` attribute applied. Building on the [quick start template]({{< docsref "/getting-started/introduction#quick-start" >}}):
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="{{< param "cdn.css" >}}" rel="stylesheet" integrity="{{< param "cdn.css_hash" >}}" crossorigin="anonymous">
+  </head>
+  <body data-bs-theme="dark">
+    <h1>Hello, world!</h1>
+    <script src="{{< param "cdn.js_bundle" >}}" integrity="{{< param "cdn.js_bundle_hash" >}}" crossorigin="anonymous"></script>
+  </body>
+</html>
+```
+
+Bootstrap does not yet ship with a built-in color mode picker, but you can use the one from our own documentation if you like. [Learn more in the JavaScript section.](#javascript)
+
+### Building with Sass
 
 Our new dark mode option is available to use for all users of Bootstrap, but it's controlled via data attributes instead of media queries and does not automatically toggle your project's color mode. You can disable our dark mode entirely via Sass by changing `@enable-dark-mode` to `false`.
 
@@ -247,4 +271,3 @@ CSS variables for our dark color mode are partially generated from dark mode spe
 Styles for dark mode, and any custom color modes you create, can be scoped appropriately to the `data-bs-theme` attribute selector or media query with the customizable `color-mode()` mixin. See the [Sass usage section](#sass-usage) for more details.
 
 {{< scss-docs name="color-mode-mixin" file="scss/mixins/_color-mode.scss" >}}
-
