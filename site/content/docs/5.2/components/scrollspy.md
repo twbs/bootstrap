@@ -60,7 +60,7 @@ Scroll the area below the navbar and watch the active class change. Open the dro
 </div>
 
 ```html
-<nav id="navbar-example2" class="navbar bg-body-secondary px-3 mb-3">
+<nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
   <a class="navbar-brand" href="#">Navbar</a>
   <ul class="nav nav-pills">
     <li class="nav-item">
