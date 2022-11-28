@@ -115,12 +115,6 @@
         display: block !important; // stylelint-disable-line declaration-no-important
       }
     }
-
-    // For the color mode picker
-    // stylelint-disable-next-line selector-max-id
-    #bd-theme + & {
-      --bs-dropdown-min-width: 8rem;
-    }
   }
 }
 
