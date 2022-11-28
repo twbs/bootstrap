@@ -120,8 +120,8 @@
 .bd-example-cssgrid [class*="grid"] > * {
   padding-top: .75rem;
   padding-bottom: .75rem;
-  background-color: rgba(var(--bd-violet-rgb), .1);
-  border: 1px solid rgba(var(--bd-violet-rgb), .25);
+  background-color: rgba(var(--bd-violet-rgb), .15);
+  border: 1px solid rgba(var(--bd-violet-rgb), .3);
 }
 
 .bd-example-row .row + .row,
@@ -131,12 +131,12 @@
 
 .bd-example-row-flex-cols .row {
   min-height: 10rem;
-  background-color: rgba(var(--bd-violet-rgb), .1);
+  background-color: rgba(var(--bd-violet-rgb), .15);
 }
 
 .bd-example-flex div {
   background-color: rgba(var(--bd-violet-rgb), .15);
-  border: 1px solid rgba(var(--bd-violet-rgb), .15);
+  border: 1px solid rgba(var(--bd-violet-rgb), .3);
 }
 
 // Grid mixins
