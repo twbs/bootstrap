@@ -25,7 +25,7 @@ Scrollspy toggles the `.active` class on anchor (`<a>`) elements when the elemen
 Scroll the area below the navbar and watch the active class change. Open the dropdown menu and watch the dropdown items be highlighted as well.
 
 <div class="bd-example">
-  <nav id="navbar-example2" class="navbar bg-body-secondary px-3 mb-3 rounded-2">
+  <nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3 rounded-2">
     <a class="navbar-brand" href="#">Navbar</a>
     <ul class="nav nav-pills">
       <li class="nav-item">
