@@ -117,10 +117,10 @@
 
   --#{$prefix}emphasis-color: #{$emphasis-color};
 
+  // scss-docs-start form-control-vars
   --#{$prefix}form-control-bg: var(--#{$prefix}body-bg);
   --#{$prefix}form-control-disabled-bg: var(--#{$prefix}secondary-bg);
-  // --#{$prefix}form-valid-color: #{$form-feedback-valid-color};
-  // --#{$prefix}form-valid-bg: #{$form-feedback-valid-color};
+  // scss-docs-end form-control-vars
 
   --#{$prefix}highlight-bg: #{$mark-bg};
 

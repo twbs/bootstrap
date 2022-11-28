@@ -23,7 +23,22 @@ Learn more by reading the new [color modes documentation]({{< docsref "/customiz
 
 - We've also expanded our theme color Sass variables, CSS variables, and utilities to include text emphasis, subtle background colors, and subtle border colors. These are available as Sass variables, CSS variables, and utilities.
 
-- Adds new `_variables-dark.scss` stylesheet to house dark-mode specific overrides.
+- Adds new `_variables-dark.scss` stylesheet to house dark-mode specific overrides. This stylesheet should be imported immediately after the existing `_variables.scss` file in your import stack.
+
+  ```diff
+  diff --git a/scss/bootstrap.scss b/scss/bootstrap.scss
+  index 8f8296def..449d70487 100644
+  --- a/scss/bootstrap.scss
+  +++ b/scss/bootstrap.scss
+  @@ -6,6 +6,7 @@
+   // Configuration
+   @import "functions";
+   @import "variables";
+  +@import "variables-dark";
+   @import "maps";
+   @import "mixins";
+   @import "utilities";
+  ```
 
 ### CSS variables
 
