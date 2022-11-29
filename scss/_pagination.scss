@@ -75,7 +75,7 @@
     margin-left: $pagination-margin-start;
   }
 
-  @if $pagination-margin-start == ($pagination-border-width * -1) {
+  @if $pagination-margin-start == calc($pagination-border-width * -1) {
     &:first-child {
       .page-link {
         @include border-start-radius(var(--#{$prefix}pagination-border-radius));

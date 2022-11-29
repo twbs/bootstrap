@@ -1,0 +1,13 @@
+// scss-docs-start color-mode-mixin
+@mixin color-mode($mode: light, $type: $color-mode-type) {
+  @if $type == "media-query" {
+    @media (prefers-color-scheme: $mode) {
+      @content;
+    }
+  } @else {
+    [data-bs-theme="#{$mode}"] {
+      @content;
+    }
+  }
+}
+// scss-docs-end color-mode-mixin

@@ -27,7 +27,7 @@ Offcanvas is a sidebar component that can be toggled via JavaScript to appear fr
 
 Below is an offcanvas example that is shown by default (via `.show` on `.offcanvas`). Offcanvas includes support for a header with a close button and an optional body class for some initial `padding`. We suggest that you include offcanvas headers with dismiss actions whenever possible, or provide an explicit dismiss action.
 
-{{< example class="bd-example-offcanvas p-0 bg-light overflow-hidden" >}}
+{{< example class="bd-example-offcanvas p-0 bg-body-tertiary overflow-hidden" >}}
 <div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasLabel">Offcanvas</h5>
@@ -143,7 +143,7 @@ When backdrop is set to static, the offcanvas will not close when clicking outsi
 
 Change the appearance of offcanvases with utilities to better match them to different contexts like dark navbars. Here we add `.text-bg-dark` to the `.offcanvas` and `.btn-close-white` to `.btn-close` for proper styling with a dark offcanvas. If you have dropdowns within, consider also adding `.dropdown-menu-dark` to `.dropdown-menu`.
 
-{{< example class="bd-example-offcanvas p-0 bg-light overflow-hidden" >}}
+{{< example class="bd-example-offcanvas p-0 bg-body-secondary overflow-hidden" >}}
 <div class="offcanvas offcanvas-start show text-bg-dark" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasDarkLabel">Offcanvas</h5>

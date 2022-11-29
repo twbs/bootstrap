@@ -11,13 +11,12 @@
 
   h1 {
     @include font-size(4rem);
-    line-height: 1;
   }
 
   .lead {
     @include font-size(1rem);
     font-weight: 400;
-    color: $gray-700;
+    color: var(--bs-secondary-color);
   }
 
   .bd-code-snippet {
@@ -46,8 +45,7 @@
   }
 
   #carbonads { // stylelint-disable-line selector-max-id
-    margin-right: auto;
-    margin-left: auto;
+    margin-inline: auto;
   }
 
   @include media-breakpoint-up(md) {
@@ -86,7 +84,7 @@
   mix-blend-mode: darken;
 
   svg {
-    filter: drop-shadow(0 1px 1px #fff);
+    filter: drop-shadow(0 1px 1px var(--bs-body-bg));
   }
 }
 
@@ -102,5 +100,13 @@
 
   &:hover > img {
     transform: scale(1.1);
+  }
+}
+
+@if $enable-dark-mode {
+  [data-bs-theme="dark"] {
+    .masthead-followup-icon {
+      mix-blend-mode: lighten;
+    }
   }
 }
