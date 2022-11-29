@@ -137,14 +137,14 @@ Enable the built in dark color mode across your entire project by adding the `da
 
 ```html
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
     <link href="{{< param "cdn.css" >}}" rel="stylesheet" integrity="{{< param "cdn.css_hash" >}}" crossorigin="anonymous">
   </head>
-  <body data-bs-theme="dark">
+  <body>
     <h1>Hello, world!</h1>
     <script src="{{< param "cdn.js_bundle" >}}" integrity="{{< param "cdn.js_bundle_hash" >}}" crossorigin="anonymous"></script>
   </body>
