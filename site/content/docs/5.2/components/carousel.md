@@ -8,18 +8,16 @@ toc: true
 
 ## How it works
 
-The carousel is a slideshow for cycling through a series of content, built with CSS 3D transforms and a bit of JavaScript. It works with a series of images, text, or custom markup. It also includes support for previous/next controls and indicators.
+- The carousel is a slideshow for cycling through a series of content, built with CSS 3D transforms and a bit of JavaScript. It works with a series of images, text, or custom markup. It also includes support for previous/next controls and indicators.
+
+- For performance reasons, **carousels must be manually initialized** using the [carousel constructor method](#methods). Without initialization, some of the event listeners (specifically, the events needed touch/swipe support) will not be registered until a user has explicitly activated a control or indicator.
+
+  The only exception are [autoplaying carousels](#autoplaying-carousels) with the `data-bs-ride="carousel"` attribute as these are initialized automatically on page load. If you're using autoplaying carousels with the data attribute, **don't explicitly initialize the same carousels with the constructor method.**
+
+- Nested carousels are not supported. You should also be aware that carousels in general can often cause usability and accessibility challenges.
 
 {{< callout info >}}
 {{< partial "callouts/info-prefersreducedmotion.md" >}}
-{{< /callout >}}
-
-Note that nested carousels are not supported. You should also be aware that carousels can often cause usability and accessibility challenges.
-
-{{< callout warning >}}
-For performance reasons, carousels must be manually initialized using the [carousel constructor method](#methods). Without initialization, some of the event listeners (specifically, the events needed touch/swipe support) will not be registered until a user has explicitly activated a control or indicator.
-
-The only exception are [autoplaying carousels](#autoplaying-carousels) with the `data-bs-ride="carousel"` attribute – these are initialized automatically on page load. If you are using autoplaying carousels with the data attribute, **don't explicitly initialize the same carousels with the constructor method.**
 {{< /callout >}}
 
 ## Basic examples
@@ -162,19 +160,13 @@ Add `.carousel-fade` to your carousel to animate slides with a fade transition i
 
 ## Autoplaying carousels
 
-You can make your carousels autoplay on page load by setting the `ride` option to `carousel`.
+You can make your carousels autoplay on page load by setting the `ride` option to `carousel`. Autoplaying carousels automatically pause while hovered with the mouse. This behavior can be controlled with the `pause` option. In browsers that support the [Page Visibility API](https://www.w3.org/TR/page-visibility/), the carousel will stop cycling when the webpage is not visible to the user (such as when the browser tab is inactive, or when the browser window is minimized).
 
 {{< callout info >}}
-For accessibility reasons, we recommend avoiding the use of autoplaying carousels.
-
-If your page does include an autoplaying carousel, we recommend providing an additional button or control to explicitly pause/stop the carousel.
+For accessibility reasons, we recommend avoiding the use of autoplaying carousels. If your page does include an autoplaying carousel, we recommend providing an additional button or control to explicitly pause/stop the carousel.
 
 See [WCAG 2.1 Success Criterion 2.2.2 Pause, Stop, Hide](https://www.w3.org/TR/WCAG21/#pause-stop-hide).
 {{< /callout >}}
-
-Autoplaying carousels automatically pause while hovered with the mouse. This behavior can be controlled with the `pause` option.
-
-In browsers that support the [Page Visibility API](https://www.w3.org/TR/page-visibility/), the carousel will stop cycling when the webpage is not visible to the user (such as when the browser tab is inactive, or when the browser window is minimized).
 
 {{< example >}}
 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
