@@ -102,7 +102,7 @@ const DefaultType = {
 
 class Tooltip extends BaseComponent {
   constructor(element, config) {
-    if (typeof Popper === 'undefined') {
+    if (Popper === undefined) {
       throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)')
     }
 
@@ -613,7 +613,7 @@ class Tooltip extends BaseComponent {
         return
       }
 
-      if (typeof data[config] === 'undefined') {
+      if (data[config] === undefined) {
         throw new TypeError(`No method named "${config}"`)
       }
 

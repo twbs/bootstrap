@@ -223,7 +223,7 @@ class Dropdown extends BaseComponent {
   }
 
   _createPopper() {
-    if (typeof Popper === 'undefined') {
+    if (Popper === undefined) {
       throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)')
     }
 
@@ -345,7 +345,7 @@ class Dropdown extends BaseComponent {
         return
       }
 
-      if (typeof data[config] === 'undefined') {
+      if (data[config] === undefined) {
         throw new TypeError(`No method named "${config}"`)
       }
 

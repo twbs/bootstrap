@@ -200,7 +200,7 @@ class Toast extends BaseComponent {
       const data = Toast.getOrCreateInstance(this, config)
 
       if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
+        if (data[config] === undefined) {
           throw new TypeError(`No method named "${config}"`)
         }
 

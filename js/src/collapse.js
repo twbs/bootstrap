@@ -263,7 +263,7 @@ class Collapse extends BaseComponent {
       const data = Collapse.getOrCreateInstance(this, _config)
 
       if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
+        if (data[config] === undefined) {
           throw new TypeError(`No method named "${config}"`)
         }
 

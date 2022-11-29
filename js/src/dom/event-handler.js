@@ -231,7 +231,7 @@ const EventHandler = {
     const storeElementEvent = events[typeEvent] || {}
     const isNamespace = originalTypeEvent.startsWith('.')
 
-    if (typeof callable !== 'undefined') {
+    if (callable !== undefined) {
       // Simplest case: handler is passed, remove that listener ONLY.
       if (!Object.keys(storeElementEvent).length) {
         return

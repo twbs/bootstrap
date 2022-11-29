@@ -76,11 +76,11 @@ const isElement = object => {
     return false
   }
 
-  if (typeof object.jquery !== 'undefined') {
+  if (object.jquery !== undefined) {
     object = object[0]
   }
 
-  return typeof object.nodeType !== 'undefined'
+  return object.nodeType !== undefined
 }
 
 const getElement = object => {
@@ -132,7 +132,7 @@ const isDisabled = element => {
     return true
   }
 
-  if (typeof element.disabled !== 'undefined') {
+  if (element.disabled !== undefined) {
     return element.disabled
   }
 

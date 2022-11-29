@@ -322,7 +322,7 @@ class Modal extends BaseComponent {
         return
       }
 
-      if (typeof data[config] === 'undefined') {
+      if (data[config] === undefined) {
         throw new TypeError(`No method named "${config}"`)
       }
 
