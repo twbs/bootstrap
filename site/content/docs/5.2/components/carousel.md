@@ -304,7 +304,11 @@ Carousels support swiping left/right on touchscreen devices to move between slid
 
 ## Dark variant
 
+{{< deprecated-in "5.3.0" >}}
+
 Add `.carousel-dark` to the `.carousel` for darker controls, indicators, and captions. Controls are inverted compared to their default white fill with the `filter` CSS property. Captions and controls have additional Sass variables that customize the `color` and `background-color`.
+
+{{< callout-deprecated-dark-variants "carousel" >}}
 
 {{< example >}}
 <div id="carouselExampleDark" class="carousel carousel-dark slide">
