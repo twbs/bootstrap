@@ -1,4 +1,5 @@
-:root {
+:root,
+[data-bs-theme="light"] {
   // Note: Custom variable values only support SassScript inside `#{}`.
 
   // Colors
@@ -19,6 +20,18 @@
 
   @each $color, $value in $theme-colors-rgb {
     --#{$prefix}#{$color}-rgb: #{$value};
+  }
+
+  @each $color, $value in $theme-colors-text {
+    --#{$prefix}#{$color}-text: #{$value};
+  }
+
+  @each $color, $value in $theme-colors-bg-subtle {
+    --#{$prefix}#{$color}-bg-subtle: #{$value};
+  }
+
+  @each $color, $value in $theme-colors-border-subtle {
+    --#{$prefix}#{$color}-border-subtle: #{$value};
   }
 
   --#{$prefix}white-rgb: #{to-rgb($white)};
@@ -44,11 +57,44 @@
   --#{$prefix}body-font-weight: #{$font-weight-base};
   --#{$prefix}body-line-height: #{$line-height-base};
   --#{$prefix}body-color: #{$body-color};
+
+  --#{$prefix}emphasis-color: #{$body-emphasis-color};
+  --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color)};
+
+  --#{$prefix}secondary-color: #{$body-secondary-color};
+  --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color)};
+  --#{$prefix}secondary-bg: #{$body-secondary-bg};
+  --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg)};
+
+  --#{$prefix}tertiary-color: #{$body-tertiary-color};
+  --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color)};
+  --#{$prefix}tertiary-bg: #{$body-tertiary-bg};
+  --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg)};
+
   @if $body-text-align != null {
     --#{$prefix}body-text-align: #{$body-text-align};
   }
   --#{$prefix}body-bg: #{$body-bg};
+  --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
   // scss-docs-end root-body-variables
+
+  @if $headings-color != null {
+    --#{$prefix}heading-color: #{$headings-color};
+  }
+
+  --#{$prefix}link-color: #{$link-color};
+  --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
+  --#{$prefix}link-decoration: #{$link-decoration};
+
+  --#{$prefix}link-hover-color: #{$link-hover-color};
+  --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color)};
+
+  @if $link-hover-decoration != null {
+    --#{$prefix}link-hover-decoration: #{$link-hover-decoration};
+  }
+
+  --#{$prefix}code-color: #{$code-color};
+  --#{$prefix}highlight-bg: #{$mark-bg};
 
   // scss-docs-start root-border-var
   --#{$prefix}border-width: #{$border-width};
@@ -64,14 +110,86 @@
   --#{$prefix}border-radius-pill: #{$border-radius-pill};
   // scss-docs-end root-border-var
 
-  --#{$prefix}link-color: #{$link-color};
-  --#{$prefix}link-hover-color: #{$link-hover-color};
+  --#{$prefix}box-shadow: #{$box-shadow};
+  --#{$prefix}box-shadow-sm: #{$box-shadow-sm};
+  --#{$prefix}box-shadow-lg: #{$box-shadow-lg};
+  --#{$prefix}box-shadow-inset: #{$box-shadow-inset};
 
-  --#{$prefix}code-color: #{$code-color};
+  --#{$prefix}emphasis-color: #{$emphasis-color};
+
+  // scss-docs-start form-control-vars
+  --#{$prefix}form-control-bg: var(--#{$prefix}body-bg);
+  --#{$prefix}form-control-disabled-bg: var(--#{$prefix}secondary-bg);
+  // scss-docs-end form-control-vars
 
   --#{$prefix}highlight-bg: #{$mark-bg};
 
   @each $name, $value in $grid-breakpoints {
     --#{$prefix}breakpoint-#{$name}: #{$value};
+  }
+}
+
+@if $enable-dark-mode {
+  @include color-mode(dark) {
+    // scss-docs-start root-dark-mode-vars
+    --#{$prefix}body-color: #{$body-color-dark};
+    --#{$prefix}body-color-rgb: #{to-rgb($body-color-dark)};
+    --#{$prefix}body-bg: #{$body-bg-dark};
+    --#{$prefix}body-bg-rgb: #{to-rgb($body-bg-dark)};
+
+    --#{$prefix}emphasis-color: #{$body-emphasis-color-dark};
+    --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color-dark)};
+
+    --#{$prefix}secondary-color: #{$body-secondary-color-dark};
+    --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color-dark)};
+    --#{$prefix}secondary-bg: #{$body-secondary-bg-dark};
+    --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg-dark)};
+
+    --#{$prefix}tertiary-color: #{$body-tertiary-color-dark};
+    --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color-dark)};
+    --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
+    --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
+
+    --#{$prefix}emphasis-color: #{$emphasis-color-dark};
+
+    --#{$prefix}primary-text: #{$primary-text-dark};
+    --#{$prefix}secondary-text: #{$secondary-text-dark};
+    --#{$prefix}success-text: #{$success-text-dark};
+    --#{$prefix}info-text: #{$info-text-dark};
+    --#{$prefix}warning-text: #{$warning-text-dark};
+    --#{$prefix}danger-text: #{$danger-text-dark};
+    --#{$prefix}light-text: #{$light-text-dark};
+    --#{$prefix}dark-text: #{$dark-text-dark};
+
+    --#{$prefix}primary-bg-subtle: #{$primary-bg-subtle-dark};
+    --#{$prefix}secondary-bg-subtle: #{$secondary-bg-subtle-dark};
+    --#{$prefix}success-bg-subtle: #{$success-bg-subtle-dark};
+    --#{$prefix}info-bg-subtle: #{$info-bg-subtle-dark};
+    --#{$prefix}warning-bg-subtle: #{$warning-bg-subtle-dark};
+    --#{$prefix}danger-bg-subtle: #{$danger-bg-subtle-dark};
+    --#{$prefix}light-bg-subtle: #{$light-bg-subtle-dark};
+    --#{$prefix}dark-bg-subtle: #{$dark-bg-subtle-dark};
+
+    --#{$prefix}primary-border-subtle: #{$primary-border-subtle-dark};
+    --#{$prefix}secondary-border-subtle: #{$secondary-border-subtle-dark};
+    --#{$prefix}success-border-subtle: #{$success-border-subtle-dark};
+    --#{$prefix}info-border-subtle: #{$info-border-subtle-dark};
+    --#{$prefix}warning-border-subtle: #{$warning-border-subtle-dark};
+    --#{$prefix}danger-border-subtle: #{$danger-border-subtle-dark};
+    --#{$prefix}light-border-subtle: #{$light-border-subtle-dark};
+    --#{$prefix}dark-border-subtle: #{$dark-border-subtle-dark};
+
+    --#{$prefix}heading-color: #{$headings-color-dark};
+
+    --#{$prefix}link-color: #{$link-color-dark};
+    --#{$prefix}link-hover-color: #{$link-hover-color-dark};
+    --#{$prefix}link-color-rgb: #{to-rgb($link-color-dark)};
+    --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-dark)};
+
+    --#{$prefix}code-color: #{$code-color-dark};
+
+    --#{$prefix}border-color: #{$border-color-dark};
+    --#{$prefix}border-color-translucent: #{$border-color-translucent-dark};
+    // scss-docs-end root-dark-mode-vars
   }
 }

@@ -13,6 +13,7 @@ You can find and customize these variables for key global options in Bootstrap's
 | Variable                       | Values                             | Description                                                                            |
 | ------------------------------ | ---------------------------------- | -------------------------------------------------------------------------------------- |
 | `$spacer`                      | `1rem` (default), or any value > 0 | Specifies the default spacer value to programmatically generate our [spacer utilities]({{< docsref "/utilities/spacing" >}}). |
+| `$enable-dark-mode`            | `true` (default) or `false`        | Enables built-in [dark mode support]({{< docsref "/customize/color-modes#dark-mode" >}}) across the project and its components. |
 | `$enable-rounded`              | `true` (default) or `false`        | Enables predefined `border-radius` styles on various components. |
 | `$enable-shadows`              | `true` or `false` (default)        | Enables predefined decorative `box-shadow` styles on various components. Does not affect `box-shadow`s used for focus states. |
 | `$enable-gradients`            | `true` or `false` (default)        | Enables predefined gradients via `background-image` styles on various components. |
