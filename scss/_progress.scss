@@ -8,7 +8,8 @@
 }
 // scss-docs-end progress-keyframes
 
-.progress {
+.progress,
+.progress-stacked {
   // scss-docs-start progress-css-vars
   --#{$prefix}progress-height: #{$progress-height};
   @include rfs($progress-font-size, --#{$prefix}progress-font-size);
@@ -44,6 +45,14 @@
 .progress-bar-striped {
   @include gradient-striped();
   background-size: var(--#{$prefix}progress-height) var(--#{$prefix}progress-height);
+}
+
+.progress-stacked > .progress {
+  overflow: visible;
+}
+
+.progress-stacked > .progress > .progress-bar {
+  width: 100%;
 }
 
 @if $enable-transitions {
