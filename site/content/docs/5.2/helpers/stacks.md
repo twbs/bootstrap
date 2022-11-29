@@ -19,9 +19,9 @@ Use `.vstack` to create vertical layouts. Stacked items are full-width by defaul
 
 {{< example >}}
 <div class="vstack gap-3">
-  <div class="bg-light border">First item</div>
-  <div class="bg-light border">Second item</div>
-  <div class="bg-light border">Third item</div>
+  <div class="bg-body-tertiary border">First item</div>
+  <div class="bg-body-tertiary border">Second item</div>
+  <div class="bg-body-tertiary border">Third item</div>
 </div>
 {{< /example >}}
 
@@ -31,9 +31,9 @@ Use `.hstack` for horizontal layouts. Stacked items are vertically centered by d
 
 {{< example >}}
 <div class="hstack gap-3">
-  <div class="bg-light border">First item</div>
-  <div class="bg-light border">Second item</div>
-  <div class="bg-light border">Third item</div>
+  <div class="bg-body-tertiary border">First item</div>
+  <div class="bg-body-tertiary border">Second item</div>
+  <div class="bg-body-tertiary border">Third item</div>
 </div>
 {{< /example >}}
 
@@ -41,9 +41,9 @@ Using horizontal margin utilities like `.ms-auto` as spacers:
 
 {{< example >}}
 <div class="hstack gap-3">
-  <div class="bg-light border">First item</div>
-  <div class="bg-light border ms-auto">Second item</div>
-  <div class="bg-light border">Third item</div>
+  <div class="bg-body-tertiary border">First item</div>
+  <div class="bg-body-tertiary border ms-auto">Second item</div>
+  <div class="bg-body-tertiary border">Third item</div>
 </div>
 {{< /example >}}
 
@@ -51,10 +51,10 @@ And with [vertical rules]({{< docsref "/helpers/vertical-rule" >}}):
 
 {{< example >}}
 <div class="hstack gap-3">
-  <div class="bg-light border">First item</div>
-  <div class="bg-light border ms-auto">Second item</div>
+  <div class="bg-body-tertiary border">First item</div>
+  <div class="bg-body-tertiary border ms-auto">Second item</div>
   <div class="vr"></div>
-  <div class="bg-light border">Third item</div>
+  <div class="bg-body-tertiary border">Third item</div>
 </div>
 {{< /example >}}
 

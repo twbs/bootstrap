@@ -349,7 +349,11 @@ Button dropdowns work with buttons of all sizes, including default and split dro
 
 ## Dark dropdowns
 
+{{< deprecated-in "5.3.0" >}}
+
 Opt into darker dropdowns to match a dark navbar or custom style by adding `.dropdown-menu-dark` onto an existing `.dropdown-menu`. No changes are required to the dropdown items.
+
+{{< callout-deprecated-dark-variants "dropdown-menu" >}}
 
 {{< example >}}
 <div class="dropdown">
@@ -997,6 +1001,12 @@ By default, the dropdown menu is closed when clicking inside or outside the drop
 As part of Bootstrap's evolving CSS variables approach, dropdowns now use local CSS variables on `.dropdown-menu` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
 {{< scss-docs name="dropdown-css-vars" file="scss/_dropdown.scss" >}}
+
+{{< callout info >}}
+Dropdown items include at least one variable that is not set on `.dropdown`. This allows you to provide a new value while Bootstrap defaults to a fallback value.
+
+- `--bs-dropdown-item-border-radius`
+{{< /callout >}}
 
 Customization through CSS variables can be seen on the `.dropdown-menu-dark` class where we override specific values without adding duplicate CSS selectors.
 
