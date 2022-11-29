@@ -14,11 +14,16 @@ Similar to the contextual text color classes, set the background of an element t
 {{< colors.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
 <div class="p-3 mb-2 bg-{{ .name }}{{ if .contrast_color }} text-{{ .contrast_color }}{{ else }} text-white{{ end }}">.bg-{{ .name }}</div>
+<div class="p-3 mb-2 bg-{{ .name }}-subtle text-emphasis-{{ .name }}">.bg-{{ .name }}-subtle</div>
 {{- end -}}
 {{< /colors.inline >}}
-<div class="p-3 mb-2 bg-body text-dark">.bg-body</div>
+<p class="p-3 mb-2 bg-body-secondary">.bg-body-secondary</p>
+<p class="p-3 mb-2 bg-body-tertiary">.bg-body-tertiary</p>
+
+<div class="p-3 mb-2 bg-body text-body">.bg-body</div>
+<div class="p-3 mb-2 bg-black text-white">.bg-black</div>
 <div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
-<div class="p-3 mb-2 bg-transparent text-dark">.bg-transparent</div>
+<div class="p-3 mb-2 bg-transparent text-body">.bg-transparent</div>
 {{< /example >}}
 
 ## Background gradient
@@ -33,6 +38,7 @@ Do you need a gradient in your custom CSS? Just add `background-image: var(--bs-
 <div class="p-3 mb-2 bg-{{ .name }} bg-gradient{{ with .contrast_color }} text-{{ . }}{{ else }} text-white{{ end }}">.bg-{{ .name }}.bg-gradient</div>
 {{- end -}}
 {{< /colors.inline >}}
+<div class="p-3 mb-2 bg-black bg-gradient text-white">.bg-black.bg-gradient</div>
 {{< /markdown >}}
 
 ## Opacity

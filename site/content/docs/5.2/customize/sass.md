@@ -57,8 +57,9 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 
 // 2. Include any default variable overrides here
 
-// 3. Include remainder of required Bootstrap stylesheets
+// 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
 
 // 4. Include any default map overrides here
 
@@ -104,6 +105,7 @@ $body-color: #111;
 
 // Required
 @import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
 @import "../node_modules/bootstrap/scss/maps";
 @import "../node_modules/bootstrap/scss/mixins";
 @import "../node_modules/bootstrap/scss/root";
@@ -166,6 +168,7 @@ To remove colors from `$theme-colors`, or any other map, use `map-remove`. Be aw
 // Required
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
 
 $theme-colors: map-remove($theme-colors, "info", "light", "dark");
 
@@ -294,7 +297,7 @@ Our `scss/mixins/` directory has a ton of mixins that power parts of Bootstrap a
 
 ### Color schemes
 
-A shorthand mixin for the `prefers-color-scheme` media query is available with support for `light`, `dark`, and custom color schemes.
+A shorthand mixin for the `prefers-color-scheme` media query is available with support for `light`, `dark`, and custom color schemes. See [the color modes documentation]({{< docsref "/customize/color-modes" >}}) for information on our color mode mixin.
 
 {{< scss-docs name="mixin-color-scheme" file="scss/mixins/_color-scheme.scss" >}}
 

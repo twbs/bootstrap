@@ -87,7 +87,7 @@ You can also use the CDN to fetch any of our [additional builds listed in the Co
 Curious which components explicitly require our JavaScript and Popper? Click the show components link below. If you're at all unsure about the general page structure, keep reading for an example page template.
 
 <details>
-<summary class="text-primary mb-3">Show components requiring JavaScript</summary>
+<summary class="bd-summary-link mb-3">Show components requiring JavaScript</summary>
 {{< markdown >}}
 - Alerts for dismissing
 - Buttons for toggling states and checkbox/radio functionality

@@ -17,8 +17,9 @@
   <ul class="dropdown-menu dropdown-menu-end">
     <li><h6 class="dropdown-header">v5 releases</h6></li>
     <li>
-      <a class="dropdown-item current" aria-current="true" href="{{ if .IsHome }}/{{ else }}/docs/{{ .Site.Params.docs_version }}/{{ $versions_link }}{{ end }}">
+      <a class="dropdown-item d-flex align-items-center justify-content-between active" aria-current="true" href="{{ if .IsHome }}/{{ else }}/docs/{{ .Site.Params.docs_version }}/{{ $versions_link }}{{ end }}">
         Latest ({{ .Site.Params.docs_version }}.x)
+        <svg class="bi"><use xlink:href="#check2"></use></svg>
       </a>
     </li>
     <li>

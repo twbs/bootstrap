@@ -66,7 +66,7 @@ Click the accordions below to expand/collapse the accordion content.
 
 Add `.accordion-flush` to remove the default `background-color`, some borders, and some rounded corners to render accordions edge-to-edge with their parent container.
 
-{{< example class="bg-light" >}}
+{{< example class="bg-body-secondary" >}}
 <div class="accordion accordion-flush" id="accordionFlushExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">

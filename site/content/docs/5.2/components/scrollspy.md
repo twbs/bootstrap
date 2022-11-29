@@ -25,7 +25,7 @@ Scrollspy toggles the `.active` class on anchor (`<a>`) elements when the elemen
 Scroll the area below the navbar and watch the active class change. Open the dropdown menu and watch the dropdown items be highlighted as well.
 
 <div class="bd-example">
-  <nav id="navbar-example2" class="navbar bg-light px-3 mb-3">
+  <nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3 rounded-2">
     <a class="navbar-brand" href="#">Navbar</a>
     <ul class="nav nav-pills">
       <li class="nav-item">
@@ -45,7 +45,7 @@ Scroll the area below the navbar and watch the active class change. Open the dro
       </li>
     </ul>
   </nav>
-  <div class="scrollspy-example bg-light p-3 rounded-2" data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
+  <div class="scrollspy-example bg-body-tertiary p-3 rounded-2" data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
     <h4 id="scrollspyHeading1">First heading</h4>
     <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
     <h4 id="scrollspyHeading2">Second heading</h4>
@@ -60,7 +60,7 @@ Scroll the area below the navbar and watch the active class change. Open the dro
 </div>
 
 ```html
-<nav id="navbar-example2" class="navbar bg-light px-3 mb-3">
+<nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
   <a class="navbar-brand" href="#">Navbar</a>
   <ul class="nav nav-pills">
     <li class="nav-item">
@@ -80,7 +80,7 @@ Scroll the area below the navbar and watch the active class change. Open the dro
     </li>
   </ul>
 </nav>
-<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-light p-3 rounded-2" tabindex="0">
+<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
   <h4 id="scrollspyHeading1">First heading</h4>
   <p>...</p>
   <h4 id="scrollspyHeading2">Second heading</h4>
