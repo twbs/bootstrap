@@ -302,16 +302,16 @@ const tooltip = new bootstrap.Tooltip(yourTooltipEl, {
 
 ```js
 // to enable tooltips with the default configuration
-$('[data-bs-toggle="tooltip"]').tooltip();
+$('[data-bs-toggle="tooltip"]').tooltip()
 
 // to initialize tooltips with given configuration
 $('[data-bs-toggle="tooltip"]').tooltip({
   boundary: 'clippingParents',
   customClass: 'myClass'
-});
+})
 
 // to trigger the `show` method
-$('#myTooltip').tooltip('show');
+$('#myTooltip').tooltip('show')
 ```
 
 The same goes for our other components.
