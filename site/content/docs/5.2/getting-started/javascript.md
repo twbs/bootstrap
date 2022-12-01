@@ -125,7 +125,6 @@ All constructors accept an optional options object or nothing (which initiates a
 
 ```js
 const myModalEl = document.querySelector('#myModal')
-
 const modal = new bootstrap.Modal(myModalEl) // initialized with defaults
 
 const configObject = { keyboard: false }
@@ -302,11 +301,17 @@ const tooltip = new bootstrap.Tooltip(yourTooltipEl, {
 **You don't need jQuery in Bootstrap 5**, but it's still possible to use our components with jQuery. If Bootstrap detects `jQuery` in the `window` object, it'll add all of our components in jQuery's plugin system. This allows you to do the following:
 
 ```js
-$('[data-bs-toggle="tooltip"]').tooltip() // to enable tooltips, with default configuration
+// to enable tooltips with the default configuration
+$('[data-bs-toggle="tooltip"]').tooltip()
 
-$('[data-bs-toggle="tooltip"]').tooltip({ boundary: 'clippingParents', customClass: 'myClass' }) // to initialize tooltips with given configuration
+// to initialize tooltips with given configuration
+$('[data-bs-toggle="tooltip"]').tooltip({
+  boundary: 'clippingParents',
+  customClass: 'myClass'
+})
 
-$('#myTooltip').tooltip('show') // to trigger `show` method
+// to trigger the `show` method
+$('#myTooltip').tooltip('show')
 ```
 
 The same goes for our other components.
