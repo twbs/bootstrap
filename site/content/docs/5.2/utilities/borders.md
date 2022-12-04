@@ -42,6 +42,7 @@ Change the border color using utilities built on our theme colors.
 {{< border.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
 <span class="border border-{{ .name }}"></span>
+<span class="border border-{{ .name }}-subtle"></span>
 {{- end -}}
 {{< /border.inline >}}
 <span class="border border-white"></span>
@@ -137,6 +138,14 @@ Use the scaling classes for larger or smaller rounded corners. Sizes range from 
 {{< placeholder width="75" height="75" class="rounded-3" title="Example large rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-4" title="Example larger rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-5" title="Example extra large rounded image" >}}
+{{< /example >}}
+
+{{< example class="bd-example-rounded-utils" >}}
+{{< placeholder width="75" height="75" class="rounded-bottom-1" title="Example small rounded image" >}}
+{{< placeholder width="75" height="75" class="rounded-start-2" title="Example default left rounded image" >}}
+{{< placeholder width="75" height="75" class="rounded-end-circle" title="Example right completely round image" >}}
+{{< placeholder width="75" height="75" class="rounded-start-pill" title="Example left rounded pill image" >}}
+{{< placeholder width="75" height="75" class="rounded-5 rounded-top-0" title="Example extra large bottom rounded image" >}}
 {{< /example >}}
 
 ## CSS

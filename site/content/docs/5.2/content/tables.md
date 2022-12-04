@@ -18,6 +18,10 @@ Using the most basic table markup, here's how `.table`-based tables look in Boot
 
 Use contextual classes to color tables, table rows or individual cells.
 
+{{< callout info >}}
+**Heads up!** Because of the more complicated CSS used to generate our table variants, they most likely won't see color mode adaptive styling until v6.
+{{< /callout >}}
+
 <div class="bd-example">
   <table class="table">
     <thead>
@@ -69,7 +73,7 @@ Use contextual classes to color tables, table rows or individual cells.
 {{< /highlight >}}
 
 {{< callout info >}}
-{{< partial "callout-warning-color-assistive-technologies.md" >}}
+{{< partial "callouts/warning-color-assistive-technologies.md" >}}
 {{< /callout >}}
 
 ## Accented tables

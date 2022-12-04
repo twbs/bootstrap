@@ -1397,27 +1397,31 @@ direction: rtl
 
       <div>
         {{< example show_markup="false" >}}
-        <div class="progress mb-3">
-          <div class="progress-bar" role="progressbar" aria-label="مثال مع عنوان" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+        <div class="progress mb-3" role="progressbar" aria-label="مثال مع عنوان" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar">0%</div>
         </div>
-        <div class="progress mb-3">
-          <div class="progress-bar bg-success w-25" role="progressbar" aria-label="مثال ناجح مع عنوان" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+        <div class="progress mb-3" role="progressbar" aria-label="مثال ناجح مع عنوان" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar bg-success w-25">25%</div>
         </div>
-        <div class="progress mb-3">
-          <div class="progress-bar text-bg-info w-50" role="progressbar" aria-label="مثال توضيح مع عنوان" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+        <div class="progress mb-3" role="progressbar" aria-label="مثال توضيح مع عنوان" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar text-bg-info w-50">50%</div>
         </div>
-        <div class="progress mb-3">
-          <div class="progress-bar text-bg-warning w-75" role="progressbar" aria-label="مثال تنبيه مع عنوان" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+        <div class="progress mb-3" role="progressbar" aria-label="مثال تنبيه مع عنوان" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar text-bg-warning w-75">75%</div>
         </div>
-        <div class="progress">
-          <div class="progress-bar bg-danger w-100" role="progressbar" aria-label="مثال خطر مع عنوان" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+        <div class="progress" role="progressbar" aria-label="مثال خطر مع عنوان" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar bg-danger w-100">100%</div>
         </div>
         {{< /example >}}
 
         {{< example show_markup="false" >}}
-        <div class="progress">
-          <div class="progress-bar" role="progressbar" aria-label="القسم الأول - مثال افتراضي" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-          <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-label="القسم الثاني - مثال ناجح مقلّم متحرك" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-stacked">
+          <div class="progress" role="progressbar" aria-label="القسم الأول - مثال افتراضي" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar"></div>
+          </div>
+          <div class="progress" role="progressbar" aria-label="القسم الثاني - مثال ناجح مقلّم متحرك" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"></div>
+          </div>
         </div>
         {{< /example >}}
       </div>
@@ -1539,7 +1543,7 @@ direction: rtl
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">عنوان الصندوق العائم</h5>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">عنوان الصندوق العائم</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
       </div>
       <div class="modal-body">
@@ -1556,7 +1560,7 @@ direction: rtl
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLiveLabel">عنوان الصندوق العائم</h5>
+        <h1 class="modal-title fs-5" id="staticBackdropLiveLabel">عنوان الصندوق العائم</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
       </div>
       <div class="modal-body">
@@ -1573,7 +1577,7 @@ direction: rtl
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">عنوان الصندوق العائم</h5>
+        <h1 class="modal-title fs-5" id="exampleModalCenteredScrollableTitle">عنوان الصندوق العائم</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
       </div>
       <div class="modal-body">
@@ -1596,7 +1600,7 @@ direction: rtl
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title h4" id="exampleModalFullscreenLabel">صندوق عائم يملأ الشاشة</h5>
+        <h1 class="modal-title fs-4" id="exampleModalFullscreenLabel">صندوق عائم يملأ الشاشة</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
       </div>
       <div class="modal-body">
