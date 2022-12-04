@@ -80,9 +80,9 @@ Note that because the font stack includes emoji fonts, many common symbol/dingba
 
 This `font-family` is applied to the `<body>` and automatically inherited globally throughout Bootstrap. To switch the global `font-family`, update `$font-family-base` and recompile Bootstrap.
 
-## Headings and paragraphs
+## Headings
 
-All heading elements—e.g., `<h1>`—and `<p>` are reset to have their `margin-top` removed. Headings have `margin-bottom: .5rem` added and paragraphs `margin-bottom: 1rem` for easy spacing.
+All heading elements—`<h1>`—`<h6>` have their `margin-top` removed, `margin-bottom: .5rem` set, and `line-height` tightened. While headings inherit their `color` by default, you can also override it via optional CSS variable, `--bs-heading-color`.
 
 {{< bs-table "table" >}}
 | Heading | Example |
@@ -94,6 +94,35 @@ All heading elements—e.g., `<h1>`—and `<p>` are reset to have their `margin-
 | `<h5></h5>` | <span class="h5">h5. Bootstrap heading</span> |
 | `<h6></h6>` | <span class="h6">h6. Bootstrap heading</span> |
 {{< /bs-table >}}
+
+## Paragraphs
+
+All `<p>` elements have their `margin-top` removed and `margin-bottom: 1rem` set for easy spacing.
+
+{{< example >}}
+<p>This is an example paragraph.</p>
+{{< /example >}}
+
+## Links
+
+Links have a default `color` and underline applied. While links change on `:hover`, they don't change based on whether someone `:visited` the link. They also receive no special `:focus` styles.
+
+{{< example >}}
+<a href="#">This is an example link</a>
+{{< /example >}}
+
+As of v5.3.x, link `color` is set using `rgba()` and new `-rgb` CSS variables, allowing for easy customization of link color opacity. Change the link color opacity with the `--bs-link-opacity` CSS variable:
+
+{{< example >}}
+<a href="#" style="--bs-link-opacity: .5">This is an example link</a>
+{{< /example >}}
+
+
+Placeholder links—those without an `href`—are targeted with a more specific selector and have their `color` and `text-decoration` reset to their default values.
+
+{{< example >}}
+<a>This is a placeholder link</a>
+{{< /example >}}
 
 ## Horizontal rules
 
