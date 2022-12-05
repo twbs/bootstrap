@@ -48,9 +48,9 @@ describe('Modal', () => {
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modalBySelector = new Modal('.modal')
-      const modalByElement = new Modal(modalEl)
-
       expect(modalBySelector._element).toEqual(modalEl)
+
+      const modalByElement = new Modal(modalEl)
       expect(modalByElement._element).toEqual(modalEl)
     })
   })
