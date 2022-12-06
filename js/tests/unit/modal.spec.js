@@ -838,6 +838,40 @@ describe('Modal', () => {
         modal.show()
       })
     })
+
+    it('should prevent scrolling upon focusing modal triggering element when modal is hidden', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button type="button" id="btn-1" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>',
+          '<div style={height: 1000px}></div>',
+          '<div class="modal" id="exampleModal"><div class="modal-dialog"></div></div>',
+          '<button type="button" id="btn-2"></button>'
+        ].join('')
+
+        const scrollY = window.scrollY
+
+        const modalEl = fixtureEl.querySelector('.modal')
+        const button1El = fixtureEl.querySelector('#btn-1')
+        const button2El = fixtureEl.querySelector('#btn-2')
+        const modal = new Modal(modalEl)
+
+        button2El.addEventListener('click', () => {
+          button1El.focus()
+          expect(window.scrollY).toEqual(scrollY)
+        })
+
+        modalEl.addEventListener('shown.bs.modal', () => {
+          modal.hide()
+        })
+
+        modalEl.addEventListener('hidden.bs.modal', () => {
+          button2El.click()
+          resolve()
+        })
+
+        modal.show()
+      })
+    })
   })
 
   describe('dispose', () => {
