@@ -1119,7 +1119,7 @@ To detect what elements need rounded corners inside an input group with validati
   <div class="input-group-prepend">
     <span class="input-group-text">@</span>
   </div>
-  <input type="text" class="form-control" required>
+  <input type="text" class="form-control is-invalid" required>
   <div class="invalid-feedback">
     Please choose a username.
   </div>
