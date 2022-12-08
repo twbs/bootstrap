@@ -1,8 +1,8 @@
 ---
 layout: docs
-title: Support the team
-group: thanks
-aliases: "/thanks/"
+title: Support Bootstrap
+description: Show your support through donations and sponsorships to help maintaining Bootstrap
+group: about
 toc: true
 ---
 
