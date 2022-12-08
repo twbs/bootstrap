@@ -42,7 +42,6 @@
   display: block;
 }
 
-/* rtl:begin:ignore */
 .carousel-item-next:not(.carousel-item-start),
 .active.carousel-item-end {
   transform: translateX(100%);
@@ -52,8 +51,6 @@
 .active.carousel-item-start {
   transform: translateX(-100%);
 }
-
-/* rtl:end:ignore */
 
 
 //
@@ -202,9 +199,9 @@
 
 .carousel-caption {
   position: absolute;
-  right: (100% - $carousel-caption-width) / 2;
+  right: (100% - $carousel-caption-width) * .5;
   bottom: $carousel-caption-spacer;
-  left: (100% - $carousel-caption-width) / 2;
+  left: (100% - $carousel-caption-width) * .5;
   padding-top: $carousel-caption-padding-y;
   padding-bottom: $carousel-caption-padding-y;
   color: $carousel-caption-color;
@@ -213,7 +210,7 @@
 
 // Dark mode carousel
 
-.carousel-dark {
+%carousel-dark {
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
     filter: $carousel-dark-control-icon-filter;
@@ -225,5 +222,17 @@
 
   .carousel-caption {
     color: $carousel-dark-caption-color;
+  }
+}
+
+.carousel-dark {
+  @extend %carousel-dark;
+}
+
+@if $enable-dark-mode {
+  @include color-mode(dark) {
+    .carousel {
+      @extend %carousel-dark;
+    }
   }
 }

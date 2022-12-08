@@ -20,12 +20,15 @@
     $property-class: if(map-has-key($utility, class), map-get($utility, class), nth($properties, 1));
     $property-class: if($property-class == null, "", $property-class);
 
+    // Use custom CSS variable name if present, otherwise default to `class`
+    $css-variable-name: if(map-has-key($utility, css-variable-name), map-get($utility, css-variable-name), map-get($utility, class));
+
     // State params to generate pseudo-classes
     $state: if(map-has-key($utility, state), map-get($utility, state), ());
 
     $infix: if($property-class == "" and str-slice($infix, 1, 1) == "-", str-slice($infix, 2), $infix);
 
-    // Don't prefix if value key is null (eg. with shadow class)
+    // Don't prefix if value key is null (e.g. with shadow class)
     $property-class-modifier: if($key, if($property-class == "" and $infix == "", "", "-") + $key, "");
 
     @if map-get($utility, rfs) {
@@ -41,25 +44,51 @@
       }
     }
 
+    $is-css-var: map-get($utility, css-var);
+    $is-local-vars: map-get($utility, local-vars);
     $is-rtl: map-get($utility, rtl);
 
     @if $value != null {
       @if $is-rtl == false {
         /* rtl:begin:remove */
       }
-      .#{$property-class + $infix + $property-class-modifier} {
-        @each $property in $properties {
-          #{$property}: $value if($enable-important-utilities, !important, null);
-        }
-      }
 
-      @each $pseudo in $state {
-        .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
+      @if $is-css-var {
+        .#{$property-class + $infix + $property-class-modifier} {
+          --#{$prefix}#{$css-variable-name}: #{$value};
+        }
+
+        @each $pseudo in $state {
+          .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
+            --#{$prefix}#{$css-variable-name}: #{$value};
+          }
+        }
+      } @else {
+        .#{$property-class + $infix + $property-class-modifier} {
           @each $property in $properties {
+            @if $is-local-vars {
+              @each $local-var, $variable in $is-local-vars {
+                --#{$prefix}#{$local-var}: #{$variable};
+              }
+            }
             #{$property}: $value if($enable-important-utilities, !important, null);
           }
         }
+
+        @each $pseudo in $state {
+          .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
+            @each $property in $properties {
+              @if $is-local-vars {
+                @each $local-var, $variable in $is-local-vars {
+                  --#{$prefix}#{$local-var}: #{$variable};
+                }
+              }
+              #{$property}: $value if($enable-important-utilities, !important, null);
+            }
+          }
+        }
       }
+
       @if $is-rtl == false {
         /* rtl:end:remove */
       }

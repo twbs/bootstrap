@@ -1,34 +1,19 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): index.esm.js
+ * Bootstrap (v5.2.3): index.esm.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import Alert from './src/alert'
-import Button from './src/button'
-import Carousel from './src/carousel'
-import Collapse from './src/collapse'
-import Dropdown from './src/dropdown'
-import Modal from './src/modal'
-import Offcanvas from './src/offcanvas'
-import Popover from './src/popover'
-import ScrollSpy from './src/scrollspy'
-import Tab from './src/tab'
-import Toast from './src/toast'
-import Tooltip from './src/tooltip'
-
-export {
-  Alert,
-  Button,
-  Carousel,
-  Collapse,
-  Dropdown,
-  Modal,
-  Offcanvas,
-  Popover,
-  ScrollSpy,
-  Tab,
-  Toast,
-  Tooltip
-}
+export { default as Alert } from './src/alert.js'
+export { default as Button } from './src/button.js'
+export { default as Carousel } from './src/carousel.js'
+export { default as Collapse } from './src/collapse.js'
+export { default as Dropdown } from './src/dropdown.js'
+export { default as Modal } from './src/modal.js'
+export { default as Offcanvas } from './src/offcanvas.js'
+export { default as Popover } from './src/popover.js'
+export { default as ScrollSpy } from './src/scrollspy.js'
+export { default as Tab } from './src/tab.js'
+export { default as Toast } from './src/toast.js'
+export { default as Tooltip } from './src/tooltip.js'

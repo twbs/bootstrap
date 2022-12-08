@@ -45,9 +45,6 @@
       </div>
       <div class="row">
         <p>
-          <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip with XSS" data-bs-container="<img src=1 onerror=alert(123)>">
-            Tooltip with XSS
-          </button>
           <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip with container (selector)" data-bs-container="#customContainer">
             Tooltip with container (selector)
           </button>
@@ -56,6 +53,9 @@
           </button>
           <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
             Tooltip with HTML
+          </button>
+          <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip with XSS" data-bs-container="<img src=1 onerror=alert(123)>">
+            Tooltip with XSS
           </button>
         </p>
       </div>
@@ -66,48 +66,73 @@
         <div id="shadow" class="pt-5"></div>
       </div>
       <div id="customContainer"></div>
+
+      <div class="row mt-4 border-top">
+        <hr>
+        <div class="h4">Test Selector triggered tooltips</div>
+        <div id="wrapperTriggeredBySelector">
+          <div class="py-2 selectorButtonsBlock">
+            <button type="button" class="btn btn-secondary bs-dynamic-tooltip" title="random title">Using title</button>
+            <button type="button" class="btn btn-secondary bs-dynamic-tooltip" data-bs-title="random title">Using bs-title</button>
+          </div>
+
+        </div>
+        <div class="mt-3">
+          <button type="button" class="btn btn-primary" onclick="duplicateButtons()">Duplicate above two buttons</button>
+        </div>
+      </div>
     </div>
 
-    <script src="../../../node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
-    <script src="../../dist/dom/selector-engine.js"></script>
-    <script src="../../dist/dom/event-handler.js"></script>
-    <script src="../../dist/dom/manipulator.js"></script>
-    <script src="../../dist/dom/data.js"></script>
-    <script src="../../dist/base-component.js"></script>
-    <script src="../../dist/tooltip.js"></script>
+    <script src="../../../dist/js/bootstrap.bundle.js"></script>
     <script>
+      /* global bootstrap: false */
+
       if (typeof document.body.attachShadow === 'function') {
-        var shadowRoot = document.getElementById('shadow').attachShadow({ mode: 'open' })
+        const shadowRoot = document.getElementById('shadow').attachShadow({ mode: 'open' })
         shadowRoot.innerHTML =
-          '<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top in a shadow dom">' +
+          '<button id="firstShadowTooltip" type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top in a shadow dom">' +
           '  Tooltip on top in a shadow dom' +
           '</button>' +
-          '<button id="secondTooltip" type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top in a shadow dom with container option">' +
+          '<button id="secondShadowTooltip" type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top in a shadow dom with container option">' +
           '  Tooltip on top in a shadow dom' +
           '</button>'
 
-        var firstChildTooltip = new Tooltip(shadowRoot.firstChild)
-        var secondChildTooltip = new Tooltip(shadowRoot.getElementById('secondTooltip'), {
+        new bootstrap.Tooltip(shadowRoot.firstChild)
+        new bootstrap.Tooltip(shadowRoot.getElementById('secondShadowTooltip'), {
           container: shadowRoot
         })
       }
 
-      [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        .forEach(function (tooltip) {
-          new Tooltip(tooltip)
-        })
-
-      var tooltipElement = document.getElementById('tooltipElement')
-      var tooltipElementInstance = new Tooltip(tooltipElement, {
-        container: document.getElementById('customContainer')
+      new bootstrap.Tooltip('#tooltipElement', {
+        container: '#customContainer'
       })
 
-      var target = document.getElementById('target')
-      var targetTooltip = new Tooltip(target, {
-        placement : 'top',
-        trigger : 'manual'
+      const targetTooltip = new bootstrap.Tooltip('#target', {
+        placement: 'top',
+        trigger: 'manual'
       })
       targetTooltip.show()
+
+      document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(tooltipEl => new bootstrap.Tooltip(tooltipEl))
     </script>
+
+    <script>
+      /* global bootstrap: false */
+
+      new bootstrap.Tooltip('#wrapperTriggeredBySelector', {
+        animation: false,
+        selector: '.bs-dynamic-tooltip'
+      })
+
+      /* eslint-disable no-unused-vars */
+      function duplicateButtons() {
+        const buttonsBlock = document.querySelector('.selectorButtonsBlock')// get first
+        const buttonsBlockClone = buttonsBlock.cloneNode(true)
+        buttonsBlockClone.innerHTML += new Date().toLocaleString()
+        document.querySelector('#wrapperTriggeredBySelector').append(buttonsBlockClone)
+      }
+      /* eslint-enable no-unused-vars */
+    </script>
+
   </body>
 </html>

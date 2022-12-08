@@ -4,15 +4,17 @@ preferred:
   - name: Feather
     website: https://feathericons.com/
   - name: Octicons
-    website: https://octicons.github.com/
+    website: https://primer.style/octicons/
 
 more:
   - name: Bytesize
     website: https://github.com/danklammer/bytesize-icons
+  - name: CoreUI Icons
+    website: https://icons.coreui.io/
   - name: Google Material icons
-    website: https://material.io/resources/icons/
+    website: https://fonts.google.com/icons
   - name: Ionicons
-    website: https://ionicons.com/
+    website: https://ionic.io/ionicons
   - name: Dripicons
     website: http://demo.amitjakhu.com/dripicons/
   - name: Ikons
@@ -21,5 +23,5 @@ more:
     website: https://icons8.com/
   - name: icofont
     website: https://icofont.com/
-  - name: CoreUI Icons
-    website: https://icons.coreui.io/
+  - name: Tabler Icons
+    website: https://tabler-icons.io/

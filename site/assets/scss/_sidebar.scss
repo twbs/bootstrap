@@ -1,87 +1,64 @@
 .bd-sidebar {
-  @include media-breakpoint-down(md) {
-    margin: 0 -.75rem 1rem;
-  }
-}
-
-.bd-links {
-  overflow: auto;
-  font-weight: 600;
-
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     position: sticky;
     top: 5rem;
     // Override collapse behaviors
     // stylelint-disable-next-line declaration-no-important
     display: block !important;
-    height: subtract(100vh, 7rem);
+    height: subtract(100vh, 6rem);
     // Prevent focus styles to be cut off:
     padding-left: .25rem;
     margin-left: -.25rem;
     overflow-y: auto;
   }
 
-  > ul {
-    @include media-breakpoint-down(md) {
-      padding: 1.5rem .75rem;
-      background-color: $gray-100;
-      border-bottom: 1px solid $gray-200;
+  @include media-breakpoint-down(lg) {
+    .offcanvas-lg {
+      border-right-color: var(--bs-border-color);
+      box-shadow: $box-shadow-lg;
     }
   }
+}
 
-  a {
-    padding: .1875rem .5rem;
-    margin-top: .125rem;
-    margin-left: 1.25rem;
-    color: rgba($black, .65);
-    text-decoration: if($link-decoration == none, null, none);
+.bd-links-heading {
+  color: var(--bs-emphasis-color);
+}
 
-    &:hover,
-    &:focus {
-      color: rgba($black, .85);
-      text-decoration: if($link-hover-decoration == underline, none, null);
-      background-color: rgba($bd-purple-bright, .1);
-    }
+.bd-links-nav {
+  @include media-breakpoint-down(lg) {
+    font-size: .875rem;
   }
 
-  .btn {
-    // Custom styles (as we don't have a completely neutral button style)
-    padding: .25rem .5rem;
+  @include media-breakpoint-between(xs, lg) {
+    column-count: 2;
+    column-gap: 1.5rem;
+
+    .bd-links-group {
+      break-inside: avoid;
+    }
+
+    .bd-links-span-all {
+      column-span: all;
+    }
+  }
+}
+
+.bd-links-link {
+  padding: .1875rem .5rem;
+  margin-top: .125rem;
+  margin-left: 1.125rem;
+  color: var(--bs-body-color);
+  text-decoration: if($link-decoration == none, null, none);
+
+  &:hover,
+  &:focus,
+  &.active {
+    color: var(--bs-emphasis-color);
+    text-decoration: if($link-hover-decoration == underline, none, null);
+    background-color: var(--bd-sidebar-link-bg);
+  }
+
+  &.active {
     font-weight: 600;
-    color: rgba($black, .65);
-    background-color: transparent;
-    border: 0;
-
-    &:hover,
-    &:focus {
-      color: rgba($black, .85);
-      background-color: rgba($bd-purple-bright, .1);
-    }
-
-    &:focus {
-      box-shadow: 0 0 0 1px rgba($bd-purple-bright, .7);
-    }
-
-    // Add chevron if there's a submenu
-    &::before {
-      width: 1.25em;
-      line-height: 0; // Align in the middle
-      content: escape-svg($sidebar-collapse-icon);
-      @include transition(transform .35s ease);
-      transform-origin: .5em 50%;
-    }
-
-    &[aria-expanded="true"] {
-      color: rgba($black, .85);
-
-      &::before {
-        transform: rotate(90deg);
-      }
-    }
-  }
-
-  .active {
-    font-weight: 600;
-    color: rgba($black, .85);
   }
 }

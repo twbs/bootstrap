@@ -1,27 +1,39 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): util/index.js
+ * Bootstrap (v5.2.3): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-const MAX_UID = 1000000
+const MAX_UID = 1_000_000
 const MILLISECONDS_MULTIPLIER = 1000
 const TRANSITION_END = 'transitionend'
 
-// Shoutout AngusCroll (https://goo.gl/pxwQGp)
-const toType = obj => {
-  if (obj === null || obj === undefined) {
-    return `${obj}`
+/**
+ * Properly escape IDs selectors to handle weird IDs
+ * @param {string} selector
+ * @returns {string}
+ */
+const parseSelector = selector => {
+  if (selector && window.CSS && window.CSS.escape) {
+    // document.querySelector needs escaping to handle IDs (html5+) containing for instance /
+    selector = selector.replace(/#([^\s"#']+)/g, (match, id) => `#${CSS.escape(id)}`)
   }
 
-  return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
+  return selector
+}
+
+// Shout-out Angus Croll (https://goo.gl/pxwQGp)
+const toType = object => {
+  if (object === null || object === undefined) {
+    return `${object}`
+  }
+
+  return Object.prototype.toString.call(object).match(/\s([a-z]+)/i)[1].toLowerCase()
 }
 
 /**
- * --------------------------------------------------------------------------
- * Public Util Api
- * --------------------------------------------------------------------------
+ * Public Util API
  */
 
 const getUID = prefix => {
@@ -30,47 +42,6 @@ const getUID = prefix => {
   } while (document.getElementById(prefix))
 
   return prefix
-}
-
-const getSelector = element => {
-  let selector = element.getAttribute('data-bs-target')
-
-  if (!selector || selector === '#') {
-    let hrefAttr = element.getAttribute('href')
-
-    // The only valid content that could double as a selector are IDs or classes,
-    // so everything starting with `#` or `.`. If a "real" URL is used as the selector,
-    // `document.querySelector` will rightfully complain it is invalid.
-    // See https://github.com/twbs/bootstrap/issues/32273
-    if (!hrefAttr || (!hrefAttr.includes('#') && !hrefAttr.startsWith('.'))) {
-      return null
-    }
-
-    // Just in case some CMS puts out a full URL with the anchor appended
-    if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
-      hrefAttr = `#${hrefAttr.split('#')[1]}`
-    }
-
-    selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null
-  }
-
-  return selector
-}
-
-const getSelectorFromElement = element => {
-  const selector = getSelector(element)
-
-  if (selector) {
-    return document.querySelector(selector) ? selector : null
-  }
-
-  return null
-}
-
-const getElementFromSelector = element => {
-  const selector = getSelector(element)
-
-  return selector ? document.querySelector(selector) : null
 }
 
 const getTransitionDurationFromElement = element => {
@@ -100,55 +71,56 @@ const triggerTransitionEnd = element => {
   element.dispatchEvent(new Event(TRANSITION_END))
 }
 
-const isElement = obj => (obj[0] || obj).nodeType
-
-const emulateTransitionEnd = (element, duration) => {
-  let called = false
-  const durationPadding = 5
-  const emulatedDuration = duration + durationPadding
-
-  function listener() {
-    called = true
-    element.removeEventListener(TRANSITION_END, listener)
-  }
-
-  element.addEventListener(TRANSITION_END, listener)
-  setTimeout(() => {
-    if (!called) {
-      triggerTransitionEnd(element)
-    }
-  }, emulatedDuration)
-}
-
-const typeCheckConfig = (componentName, config, configTypes) => {
-  Object.keys(configTypes).forEach(property => {
-    const expectedTypes = configTypes[property]
-    const value = config[property]
-    const valueType = value && isElement(value) ? 'element' : toType(value)
-
-    if (!new RegExp(expectedTypes).test(valueType)) {
-      throw new TypeError(
-        `${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`
-      )
-    }
-  })
-}
-
-const isVisible = element => {
-  if (!element) {
+const isElement = object => {
+  if (!object || typeof object !== 'object') {
     return false
   }
 
-  if (element.style && element.parentNode && element.parentNode.style) {
-    const elementStyle = getComputedStyle(element)
-    const parentNodeStyle = getComputedStyle(element.parentNode)
-
-    return elementStyle.display !== 'none' &&
-      parentNodeStyle.display !== 'none' &&
-      elementStyle.visibility !== 'hidden'
+  if (typeof object.jquery !== 'undefined') {
+    object = object[0]
   }
 
-  return false
+  return typeof object.nodeType !== 'undefined'
+}
+
+const getElement = object => {
+  // it's a jQuery object or a node element
+  if (isElement(object)) {
+    return object.jquery ? object[0] : object
+  }
+
+  if (typeof object === 'string' && object.length > 0) {
+    return document.querySelector(parseSelector(object))
+  }
+
+  return null
+}
+
+const isVisible = element => {
+  if (!isElement(element) || element.getClientRects().length === 0) {
+    return false
+  }
+
+  const elementIsVisible = getComputedStyle(element).getPropertyValue('visibility') === 'visible'
+  // Handle `details` element as its content may falsie appear visible when it is closed
+  const closedDetails = element.closest('details:not([open])')
+
+  if (!closedDetails) {
+    return elementIsVisible
+  }
+
+  if (closedDetails !== element) {
+    const summary = element.closest('summary')
+    if (summary && summary.parentNode !== closedDetails) {
+      return false
+    }
+
+    if (summary === null) {
+      return false
+    }
+  }
+
+  return elementIsVisible
 }
 
 const isDisabled = element => {
@@ -192,21 +164,40 @@ const findShadowRoot = element => {
 
 const noop = () => {}
 
-const reflow = element => element.offsetHeight
+/**
+ * Trick to restart an element's animation
+ *
+ * @param {HTMLElement} element
+ * @return void
+ *
+ * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
+ */
+const reflow = element => {
+  element.offsetHeight // eslint-disable-line no-unused-expressions
+}
 
 const getjQuery = () => {
-  const { jQuery } = window
-
-  if (jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
-    return jQuery
+  if (window.jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
+    return window.jQuery
   }
 
   return null
 }
 
+const DOMContentLoadedCallbacks = []
+
 const onDOMContentLoaded = callback => {
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', callback)
+    // add listener on the first call when the document is in loading state
+    if (!DOMContentLoadedCallbacks.length) {
+      document.addEventListener('DOMContentLoaded', () => {
+        for (const callback of DOMContentLoadedCallbacks) {
+          callback()
+        }
+      })
+    }
+
+    DOMContentLoadedCallbacks.push(callback)
   } else {
     callback()
   }
@@ -214,11 +205,12 @@ const onDOMContentLoaded = callback => {
 
 const isRTL = () => document.documentElement.dir === 'rtl'
 
-const defineJQueryPlugin = (name, plugin) => {
+const defineJQueryPlugin = plugin => {
   onDOMContentLoaded(() => {
     const $ = getjQuery()
     /* istanbul ignore if */
     if ($) {
+      const name = plugin.NAME
       const JQUERY_NO_CONFLICT = $.fn[name]
       $.fn[name] = plugin.jQueryInterface
       $.fn[name].Constructor = plugin
@@ -230,29 +222,85 @@ const defineJQueryPlugin = (name, plugin) => {
   })
 }
 
-const execute = callback => {
-  if (typeof callback === 'function') {
-    callback()
+const execute = (possibleCallback, args = [], defaultValue = possibleCallback) => {
+  return typeof possibleCallback === 'function' ? possibleCallback(...args) : defaultValue
+}
+
+const executeAfterTransition = (callback, transitionElement, waitForTransition = true) => {
+  if (!waitForTransition) {
+    execute(callback)
+    return
   }
+
+  const durationPadding = 5
+  const emulatedDuration = getTransitionDurationFromElement(transitionElement) + durationPadding
+
+  let called = false
+
+  const handler = ({ target }) => {
+    if (target !== transitionElement) {
+      return
+    }
+
+    called = true
+    transitionElement.removeEventListener(TRANSITION_END, handler)
+    execute(callback)
+  }
+
+  transitionElement.addEventListener(TRANSITION_END, handler)
+  setTimeout(() => {
+    if (!called) {
+      triggerTransitionEnd(transitionElement)
+    }
+  }, emulatedDuration)
+}
+
+/**
+ * Return the previous/next element of a list.
+ *
+ * @param {array} list    The list of elements
+ * @param activeElement   The active element
+ * @param shouldGetNext   Choose to get next or previous element
+ * @param isCycleAllowed
+ * @return {Element|elem} The proper element
+ */
+const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
+  const listLength = list.length
+  let index = list.indexOf(activeElement)
+
+  // if the element does not exist in the list return an element
+  // depending on the direction and if cycle is allowed
+  if (index === -1) {
+    return !shouldGetNext && isCycleAllowed ? list[listLength - 1] : list[0]
+  }
+
+  index += shouldGetNext ? 1 : -1
+
+  if (isCycleAllowed) {
+    index = (index + listLength) % listLength
+  }
+
+  return list[Math.max(0, Math.min(index, listLength - 1))]
 }
 
 export {
-  getUID,
-  getSelectorFromElement,
-  getElementFromSelector,
-  getTransitionDurationFromElement,
-  triggerTransitionEnd,
-  isElement,
-  emulateTransitionEnd,
-  typeCheckConfig,
-  isVisible,
-  isDisabled,
-  findShadowRoot,
-  noop,
-  reflow,
-  getjQuery,
-  onDOMContentLoaded,
-  isRTL,
   defineJQueryPlugin,
-  execute
+  execute,
+  executeAfterTransition,
+  findShadowRoot,
+  getElement,
+  getjQuery,
+  getNextActiveElement,
+  getTransitionDurationFromElement,
+  getUID,
+  isDisabled,
+  isElement,
+  isRTL,
+  isVisible,
+  noop,
+  onDOMContentLoaded,
+  parseSelector,
+  reflow,
+  triggerTransitionEnd,
+  toType
 }

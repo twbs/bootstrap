@@ -4,6 +4,16 @@
 // `<nav>`s, `<ul>`s or `<ol>`s.
 
 .nav {
+  // scss-docs-start nav-css-vars
+  --#{$prefix}nav-link-padding-x: #{$nav-link-padding-x};
+  --#{$prefix}nav-link-padding-y: #{$nav-link-padding-y};
+  @include rfs($nav-link-font-size, --#{$prefix}nav-link-font-size);
+  --#{$prefix}nav-link-font-weight: #{$nav-link-font-weight};
+  --#{$prefix}nav-link-color: #{$nav-link-color};
+  --#{$prefix}nav-link-hover-color: #{$nav-link-hover-color};
+  --#{$prefix}nav-link-disabled-color: #{$nav-link-disabled-color};
+  // scss-docs-end nav-css-vars
+
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
@@ -13,22 +23,22 @@
 
 .nav-link {
   display: block;
-  padding: $nav-link-padding-y $nav-link-padding-x;
-  @include font-size($nav-link-font-size);
-  font-weight: $nav-link-font-weight;
-  color: $nav-link-color;
+  padding: var(--#{$prefix}nav-link-padding-y) var(--#{$prefix}nav-link-padding-x);
+  @include font-size(var(--#{$prefix}nav-link-font-size));
+  font-weight: var(--#{$prefix}nav-link-font-weight);
+  color: var(--#{$prefix}nav-link-color);
   text-decoration: if($link-decoration == none, null, none);
   @include transition($nav-link-transition);
 
   &:hover,
   &:focus {
-    color: $nav-link-hover-color;
+    color: var(--#{$prefix}nav-link-hover-color);
     text-decoration: if($link-hover-decoration == underline, none, null);
   }
 
   // Disabled state lightens text
   &.disabled {
-    color: $nav-link-disabled-color;
+    color: var(--#{$prefix}nav-link-disabled-color);
     pointer-events: none;
     cursor: default;
   }
@@ -39,23 +49,34 @@
 //
 
 .nav-tabs {
-  border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
+  // scss-docs-start nav-tabs-css-vars
+  --#{$prefix}nav-tabs-border-width: #{$nav-tabs-border-width};
+  --#{$prefix}nav-tabs-border-color: #{$nav-tabs-border-color};
+  --#{$prefix}nav-tabs-border-radius: #{$nav-tabs-border-radius};
+  --#{$prefix}nav-tabs-link-hover-border-color: #{$nav-tabs-link-hover-border-color};
+  --#{$prefix}nav-tabs-link-active-color: #{$nav-tabs-link-active-color};
+  --#{$prefix}nav-tabs-link-active-bg: #{$nav-tabs-link-active-bg};
+  --#{$prefix}nav-tabs-link-active-border-color: #{$nav-tabs-link-active-border-color};
+  // scss-docs-end nav-tabs-css-vars
+
+  border-bottom: var(--#{$prefix}nav-tabs-border-width) solid var(--#{$prefix}nav-tabs-border-color);
 
   .nav-link {
-    margin-bottom: -$nav-tabs-border-width;
+    margin-bottom: calc(-1 * var(--#{$prefix}nav-tabs-border-width)); // stylelint-disable-line function-disallowed-list
     background: none;
-    border: $nav-tabs-border-width solid transparent;
-    @include border-top-radius($nav-tabs-border-radius);
+    border: var(--#{$prefix}nav-tabs-border-width) solid transparent;
+    @include border-top-radius(var(--#{$prefix}nav-tabs-border-radius));
 
     &:hover,
     &:focus {
-      border-color: $nav-tabs-link-hover-border-color;
       // Prevents active .nav-link tab overlapping focus outline of previous/next .nav-link
       isolation: isolate;
+      border-color: var(--#{$prefix}nav-tabs-link-hover-border-color);
     }
 
-    &.disabled {
-      color: $nav-link-disabled-color;
+    &.disabled,
+    &:disabled {
+      color: var(--#{$prefix}nav-link-disabled-color);
       background-color: transparent;
       border-color: transparent;
     }
@@ -63,14 +84,14 @@
 
   .nav-link.active,
   .nav-item.show .nav-link {
-    color: $nav-tabs-link-active-color;
-    background-color: $nav-tabs-link-active-bg;
-    border-color: $nav-tabs-link-active-border-color;
+    color: var(--#{$prefix}nav-tabs-link-active-color);
+    background-color: var(--#{$prefix}nav-tabs-link-active-bg);
+    border-color: var(--#{$prefix}nav-tabs-link-active-border-color);
   }
 
   .dropdown-menu {
     // Make dropdown border overlap tab border
-    margin-top: -$nav-tabs-border-width;
+    margin-top: calc(-1 * var(--#{$prefix}nav-tabs-border-width)); // stylelint-disable-line function-disallowed-list
     // Remove the top rounded corners here since there is a hard edge above the menu
     @include border-top-radius(0);
   }
@@ -82,16 +103,28 @@
 //
 
 .nav-pills {
+  // scss-docs-start nav-pills-css-vars
+  --#{$prefix}nav-pills-border-radius: #{$nav-pills-border-radius};
+  --#{$prefix}nav-pills-link-active-color: #{$nav-pills-link-active-color};
+  --#{$prefix}nav-pills-link-active-bg: #{$nav-pills-link-active-bg};
+  // scss-docs-end nav-pills-css-vars
+
   .nav-link {
     background: none;
     border: 0;
-    @include border-radius($nav-pills-border-radius);
+    @include border-radius(var(--#{$prefix}nav-pills-border-radius));
+
+    &:disabled {
+      color: var(--#{$prefix}nav-link-disabled-color);
+      background-color: transparent;
+      border-color: transparent;
+    }
   }
 
   .nav-link.active,
   .show > .nav-link {
-    color: $nav-pills-link-active-color;
-    @include gradient-bg($nav-pills-link-active-bg);
+    color: var(--#{$prefix}nav-pills-link-active-color);
+    @include gradient-bg(var(--#{$prefix}nav-pills-link-active-bg));
   }
 }
 

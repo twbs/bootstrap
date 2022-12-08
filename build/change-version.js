@@ -2,15 +2,15 @@
 
 /*!
  * Script to update version number references in the project.
- * Copyright 2017-2021 The Bootstrap Authors
- * Copyright 2017-2021 Twitter, Inc.
+ * Copyright 2017-2022 The Bootstrap Authors
+ * Copyright 2017-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
 'use strict'
 
-const fs = require('fs').promises
-const path = require('path')
+const fs = require('node:fs').promises
+const path = require('node:path')
 const globby = require('globby')
 
 const VERBOSE = process.argv.includes('--verbose')
@@ -57,7 +57,7 @@ async function replaceRecursively(file, oldVersion, newVersion) {
 }
 
 async function main(args) {
-  const [oldVersion, newVersion] = args
+  let [oldVersion, newVersion] = args
 
   if (!oldVersion || !newVersion) {
     console.error('USAGE: change-version old_version new_version [--verbose] [--dry[-run]]')
@@ -66,7 +66,7 @@ async function main(args) {
   }
 
   // Strip any leading `v` from arguments because otherwise we will end up with duplicate `v`s
-  [oldVersion, newVersion].map(arg => arg.startsWith('v') ? arg.slice(1) : arg)
+  [oldVersion, newVersion] = [oldVersion, newVersion].map(arg => arg.startsWith('v') ? arg.slice(1) : arg)
 
   try {
     const files = await globby(GLOB, GLOBBY_OPTIONS)

@@ -1,26 +1,17 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): scrollspy.js
+ * Bootstrap (v5.2.3): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import {
-  defineJQueryPlugin,
-  getSelectorFromElement,
-  getUID,
-  isElement,
-  typeCheckConfig
-} from './util/index'
-import EventHandler from './dom/event-handler'
-import Manipulator from './dom/manipulator'
-import SelectorEngine from './dom/selector-engine'
-import BaseComponent from './base-component'
+import { defineJQueryPlugin, getElement, isDisabled, isVisible } from './util/index.js'
+import EventHandler from './dom/event-handler.js'
+import SelectorEngine from './dom/selector-engine.js'
+import BaseComponent from './base-component.js'
 
 /**
- * ------------------------------------------------------------------------
  * Constants
- * ------------------------------------------------------------------------
  */
 
 const NAME = 'scrollspy'
@@ -28,263 +19,254 @@ const DATA_KEY = 'bs.scrollspy'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
-const Default = {
-  offset: 10,
-  method: 'auto',
-  target: ''
-}
-
-const DefaultType = {
-  offset: 'number',
-  method: 'string',
-  target: '(string|element)'
-}
-
 const EVENT_ACTIVATE = `activate${EVENT_KEY}`
-const EVENT_SCROLL = `scroll${EVENT_KEY}`
+const EVENT_CLICK = `click${EVENT_KEY}`
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item'
 const CLASS_NAME_ACTIVE = 'active'
 
 const SELECTOR_DATA_SPY = '[data-bs-spy="scroll"]'
+const SELECTOR_TARGET_LINKS = '[href]'
 const SELECTOR_NAV_LIST_GROUP = '.nav, .list-group'
 const SELECTOR_NAV_LINKS = '.nav-link'
 const SELECTOR_NAV_ITEMS = '.nav-item'
 const SELECTOR_LIST_ITEMS = '.list-group-item'
+const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_NAV_ITEMS} > ${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`
 const SELECTOR_DROPDOWN = '.dropdown'
 const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 
-const METHOD_OFFSET = 'offset'
-const METHOD_POSITION = 'position'
+const Default = {
+  offset: null, // TODO: v6 @deprecated, keep it for backwards compatibility reasons
+  rootMargin: '0px 0px -25%',
+  smoothScroll: false,
+  target: null,
+  threshold: [0.1, 0.5, 1]
+}
+
+const DefaultType = {
+  offset: '(number|null)', // TODO v6 @deprecated, keep it for backwards compatibility reasons
+  rootMargin: 'string',
+  smoothScroll: 'boolean',
+  target: 'element',
+  threshold: 'array'
+}
 
 /**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
+ * Class definition
  */
 
 class ScrollSpy extends BaseComponent {
   constructor(element, config) {
-    super(element)
-    this._scrollElement = this._element.tagName === 'BODY' ? window : this._element
-    this._config = this._getConfig(config)
-    this._selector = `${this._config.target} ${SELECTOR_NAV_LINKS}, ${this._config.target} ${SELECTOR_LIST_ITEMS}, ${this._config.target} .${CLASS_NAME_DROPDOWN_ITEM}`
-    this._offsets = []
-    this._targets = []
+    super(element, config)
+
+    // this._element is the observablesContainer and config.target the menu links wrapper
+    this._targetLinks = new Map()
+    this._observableSections = new Map()
+    this._rootElement = getComputedStyle(this._element).overflowY === 'visible' ? null : this._element
     this._activeTarget = null
-    this._scrollHeight = 0
-
-    EventHandler.on(this._scrollElement, EVENT_SCROLL, () => this._process())
-
-    this.refresh()
-    this._process()
+    this._observer = null
+    this._previousScrollData = {
+      visibleEntryTop: 0,
+      parentScrollTop: 0
+    }
+    this.refresh() // initialize
   }
 
   // Getters
-
   static get Default() {
     return Default
   }
 
-  static get DATA_KEY() {
-    return DATA_KEY
+  static get DefaultType() {
+    return DefaultType
+  }
+
+  static get NAME() {
+    return NAME
   }
 
   // Public
-
   refresh() {
-    const autoMethod = this._scrollElement === this._scrollElement.window ?
-      METHOD_OFFSET :
-      METHOD_POSITION
+    this._initializeTargetsAndObservables()
+    this._maybeEnableSmoothScroll()
 
-    const offsetMethod = this._config.method === 'auto' ?
-      autoMethod :
-      this._config.method
+    if (this._observer) {
+      this._observer.disconnect()
+    } else {
+      this._observer = this._getNewObserver()
+    }
 
-    const offsetBase = offsetMethod === METHOD_POSITION ?
-      this._getScrollTop() :
-      0
-
-    this._offsets = []
-    this._targets = []
-    this._scrollHeight = this._getScrollHeight()
-
-    const targets = SelectorEngine.find(this._selector)
-
-    targets.map(element => {
-      const targetSelector = getSelectorFromElement(element)
-      const target = targetSelector ? SelectorEngine.findOne(targetSelector) : null
-
-      if (target) {
-        const targetBCR = target.getBoundingClientRect()
-        if (targetBCR.width || targetBCR.height) {
-          return [
-            Manipulator[offsetMethod](target).top + offsetBase,
-            targetSelector
-          ]
-        }
-      }
-
-      return null
-    })
-      .filter(item => item)
-      .sort((a, b) => a[0] - b[0])
-      .forEach(item => {
-        this._offsets.push(item[0])
-        this._targets.push(item[1])
-      })
+    for (const section of this._observableSections.values()) {
+      this._observer.observe(section)
+    }
   }
 
   dispose() {
+    this._observer.disconnect()
     super.dispose()
-    EventHandler.off(this._scrollElement, EVENT_KEY)
-
-    this._scrollElement = null
-    this._config = null
-    this._selector = null
-    this._offsets = null
-    this._targets = null
-    this._activeTarget = null
-    this._scrollHeight = null
   }
 
   // Private
+  _configAfterMerge(config) {
+    // TODO: on v6 target should be given explicitly & remove the {target: 'ss-target'} case
+    config.target = getElement(config.target) || document.body
 
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' && config ? config : {})
+    // TODO: v6 Only for backwards compatibility reasons. Use rootMargin only
+    config.rootMargin = config.offset ? `${config.offset}px 0px -30%` : config.rootMargin
+
+    if (typeof config.threshold === 'string') {
+      config.threshold = config.threshold.split(',').map(value => Number.parseFloat(value))
     }
-
-    if (typeof config.target !== 'string' && isElement(config.target)) {
-      let { id } = config.target
-      if (!id) {
-        id = getUID(NAME)
-        config.target.id = id
-      }
-
-      config.target = `#${id}`
-    }
-
-    typeCheckConfig(NAME, config, DefaultType)
 
     return config
   }
 
-  _getScrollTop() {
-    return this._scrollElement === window ?
-      this._scrollElement.pageYOffset :
-      this._scrollElement.scrollTop
-  }
-
-  _getScrollHeight() {
-    return this._scrollElement.scrollHeight || Math.max(
-      document.body.scrollHeight,
-      document.documentElement.scrollHeight
-    )
-  }
-
-  _getOffsetHeight() {
-    return this._scrollElement === window ?
-      window.innerHeight :
-      this._scrollElement.getBoundingClientRect().height
-  }
-
-  _process() {
-    const scrollTop = this._getScrollTop() + this._config.offset
-    const scrollHeight = this._getScrollHeight()
-    const maxScroll = this._config.offset + scrollHeight - this._getOffsetHeight()
-
-    if (this._scrollHeight !== scrollHeight) {
-      this.refresh()
-    }
-
-    if (scrollTop >= maxScroll) {
-      const target = this._targets[this._targets.length - 1]
-
-      if (this._activeTarget !== target) {
-        this._activate(target)
-      }
-
+  _maybeEnableSmoothScroll() {
+    if (!this._config.smoothScroll) {
       return
     }
 
-    if (this._activeTarget && scrollTop < this._offsets[0] && this._offsets[0] > 0) {
-      this._activeTarget = null
-      this._clear()
-      return
-    }
+    // unregister any previous listeners
+    EventHandler.off(this._config.target, EVENT_CLICK)
 
-    for (let i = this._offsets.length; i--;) {
-      const isActiveTarget = this._activeTarget !== this._targets[i] &&
-          scrollTop >= this._offsets[i] &&
-          (typeof this._offsets[i + 1] === 'undefined' || scrollTop < this._offsets[i + 1])
+    EventHandler.on(this._config.target, EVENT_CLICK, SELECTOR_TARGET_LINKS, event => {
+      const observableSection = this._observableSections.get(event.target.hash)
+      if (observableSection) {
+        event.preventDefault()
+        const root = this._rootElement || window
+        const height = observableSection.offsetTop - this._element.offsetTop
+        if (root.scrollTo) {
+          root.scrollTo({ top: height, behavior: 'smooth' })
+          return
+        }
 
-      if (isActiveTarget) {
-        this._activate(this._targets[i])
+        // Chrome 60 doesn't support `scrollTo`
+        root.scrollTop = height
       }
-    }
-  }
-
-  _activate(target) {
-    this._activeTarget = target
-
-    this._clear()
-
-    const queries = this._selector.split(',')
-      .map(selector => `${selector}[data-bs-target="${target}"],${selector}[href="${target}"]`)
-
-    const link = SelectorEngine.findOne(queries.join(','))
-
-    if (link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
-      SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE, link.closest(SELECTOR_DROPDOWN))
-        .classList.add(CLASS_NAME_ACTIVE)
-
-      link.classList.add(CLASS_NAME_ACTIVE)
-    } else {
-      // Set triggered link as active
-      link.classList.add(CLASS_NAME_ACTIVE)
-
-      SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP)
-        .forEach(listGroup => {
-          // Set triggered links parents as active
-          // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
-          SelectorEngine.prev(listGroup, `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`)
-            .forEach(item => item.classList.add(CLASS_NAME_ACTIVE))
-
-          // Handle special case when .nav-link is inside .nav-item
-          SelectorEngine.prev(listGroup, SELECTOR_NAV_ITEMS)
-            .forEach(navItem => {
-              SelectorEngine.children(navItem, SELECTOR_NAV_LINKS)
-                .forEach(item => item.classList.add(CLASS_NAME_ACTIVE))
-            })
-        })
-    }
-
-    EventHandler.trigger(this._scrollElement, EVENT_ACTIVATE, {
-      relatedTarget: target
     })
   }
 
-  _clear() {
-    SelectorEngine.find(this._selector)
-      .filter(node => node.classList.contains(CLASS_NAME_ACTIVE))
-      .forEach(node => node.classList.remove(CLASS_NAME_ACTIVE))
+  _getNewObserver() {
+    const options = {
+      root: this._rootElement,
+      threshold: this._config.threshold,
+      rootMargin: this._config.rootMargin
+    }
+
+    return new IntersectionObserver(entries => this._observerCallback(entries), options)
+  }
+
+  // The logic of selection
+  _observerCallback(entries) {
+    const targetElement = entry => this._targetLinks.get(`#${entry.target.id}`)
+    const activate = entry => {
+      this._previousScrollData.visibleEntryTop = entry.target.offsetTop
+      this._process(targetElement(entry))
+    }
+
+    const parentScrollTop = (this._rootElement || document.documentElement).scrollTop
+    const userScrollsDown = parentScrollTop >= this._previousScrollData.parentScrollTop
+    this._previousScrollData.parentScrollTop = parentScrollTop
+
+    for (const entry of entries) {
+      if (!entry.isIntersecting) {
+        this._activeTarget = null
+        this._clearActiveClass(targetElement(entry))
+
+        continue
+      }
+
+      const entryIsLowerThanPrevious = entry.target.offsetTop >= this._previousScrollData.visibleEntryTop
+      // if we are scrolling down, pick the bigger offsetTop
+      if (userScrollsDown && entryIsLowerThanPrevious) {
+        activate(entry)
+        // if parent isn't scrolled, let's keep the first visible item, breaking the iteration
+        if (!parentScrollTop) {
+          return
+        }
+
+        continue
+      }
+
+      // if we are scrolling up, pick the smallest offsetTop
+      if (!userScrollsDown && !entryIsLowerThanPrevious) {
+        activate(entry)
+      }
+    }
+  }
+
+  _initializeTargetsAndObservables() {
+    this._targetLinks = new Map()
+    this._observableSections = new Map()
+
+    const targetLinks = SelectorEngine.find(SELECTOR_TARGET_LINKS, this._config.target)
+
+    for (const anchor of targetLinks) {
+      // ensure that the anchor has an id and is not disabled
+      if (!anchor.hash || isDisabled(anchor)) {
+        continue
+      }
+
+      const observableSection = SelectorEngine.findOne(anchor.hash, this._element)
+
+      // ensure that the observableSection exists & is visible
+      if (isVisible(observableSection)) {
+        this._targetLinks.set(anchor.hash, anchor)
+        this._observableSections.set(anchor.hash, observableSection)
+      }
+    }
+  }
+
+  _process(target) {
+    if (this._activeTarget === target) {
+      return
+    }
+
+    this._clearActiveClass(this._config.target)
+    this._activeTarget = target
+    target.classList.add(CLASS_NAME_ACTIVE)
+    this._activateParents(target)
+
+    EventHandler.trigger(this._element, EVENT_ACTIVATE, { relatedTarget: target })
+  }
+
+  _activateParents(target) {
+    // Activate dropdown parents
+    if (target.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
+      SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE, target.closest(SELECTOR_DROPDOWN))
+        .classList.add(CLASS_NAME_ACTIVE)
+      return
+    }
+
+    for (const listGroup of SelectorEngine.parents(target, SELECTOR_NAV_LIST_GROUP)) {
+      // Set triggered links parents as active
+      // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
+      for (const item of SelectorEngine.prev(listGroup, SELECTOR_LINK_ITEMS)) {
+        item.classList.add(CLASS_NAME_ACTIVE)
+      }
+    }
+  }
+
+  _clearActiveClass(parent) {
+    parent.classList.remove(CLASS_NAME_ACTIVE)
+
+    const activeNodes = SelectorEngine.find(`${SELECTOR_TARGET_LINKS}.${CLASS_NAME_ACTIVE}`, parent)
+    for (const node of activeNodes) {
+      node.classList.remove(CLASS_NAME_ACTIVE)
+    }
   }
 
   // Static
-
   static jQueryInterface(config) {
     return this.each(function () {
-      const data = ScrollSpy.getInstance(this) || new ScrollSpy(this, typeof config === 'object' ? config : {})
+      const data = ScrollSpy.getOrCreateInstance(this, config)
 
       if (typeof config !== 'string') {
         return
       }
 
-      if (typeof data[config] === 'undefined') {
+      if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
         throw new TypeError(`No method named "${config}"`)
       }
 
@@ -294,23 +276,19 @@ class ScrollSpy extends BaseComponent {
 }
 
 /**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
+ * Data API implementation
  */
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
-  SelectorEngine.find(SELECTOR_DATA_SPY)
-    .forEach(spy => new ScrollSpy(spy))
+  for (const spy of SelectorEngine.find(SELECTOR_DATA_SPY)) {
+    ScrollSpy.getOrCreateInstance(spy)
+  }
 })
 
 /**
- * ------------------------------------------------------------------------
  * jQuery
- * ------------------------------------------------------------------------
- * add .ScrollSpy to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, ScrollSpy)
+defineJQueryPlugin(ScrollSpy)
 
 export default ScrollSpy

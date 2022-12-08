@@ -1,18 +1,19 @@
-/// Grid system
+// Grid system
 //
 // Generate semantic grid columns with these mixins.
 
 @mixin make-row($gutter: $grid-gutter-width) {
-  --#{$variable-prefix}gutter-x: #{$gutter};
-  --#{$variable-prefix}gutter-y: 0;
+  --#{$prefix}gutter-x: #{$gutter};
+  --#{$prefix}gutter-y: 0;
   display: flex;
   flex-wrap: wrap;
-  margin-top: calc(var(--#{$variable-prefix}gutter-y) * -1); // stylelint-disable-line function-disallowed-list
-  margin-right: calc(var(--#{$variable-prefix}gutter-x) / -2); // stylelint-disable-line function-disallowed-list
-  margin-left: calc(var(--#{$variable-prefix}gutter-x) / -2); // stylelint-disable-line function-disallowed-list
+  // TODO: Revisit calc order after https://github.com/react-bootstrap/react-bootstrap/issues/6039 is fixed
+  margin-top: calc(-1 * var(--#{$prefix}gutter-y)); // stylelint-disable-line function-disallowed-list
+  margin-right: calc(-.5 * var(--#{$prefix}gutter-x)); // stylelint-disable-line function-disallowed-list
+  margin-left: calc(-.5 * var(--#{$prefix}gutter-x)); // stylelint-disable-line function-disallowed-list
 }
 
-@mixin make-col-ready($gutter: $grid-gutter-width) {
+@mixin make-col-ready() {
   // Add box sizing if only the grid is loaded
   box-sizing: if(variable-exists(include-column-box-sizing) and $include-column-box-sizing, border-box, null);
   // Prevent columns from becoming too narrow when at smaller grid tiers by
@@ -21,15 +22,16 @@
   flex-shrink: 0;
   width: 100%;
   max-width: 100%; // Prevent `.col-auto`, `.col` (& responsive variants) from breaking out the grid
-  padding-right: calc(var(--#{$variable-prefix}gutter-x) / 2); // stylelint-disable-line function-disallowed-list
-  padding-left: calc(var(--#{$variable-prefix}gutter-x) / 2); // stylelint-disable-line function-disallowed-list
-  margin-top: var(--#{$variable-prefix}gutter-y);
+  padding-right: calc(var(--#{$prefix}gutter-x) * .5); // stylelint-disable-line function-disallowed-list
+  padding-left: calc(var(--#{$prefix}gutter-x) * .5); // stylelint-disable-line function-disallowed-list
+  margin-top: var(--#{$prefix}gutter-y);
 }
 
 @mixin make-col($size: false, $columns: $grid-columns) {
   @if $size {
     flex: 0 0 auto;
-    width: percentage($size / $columns);
+    width: percentage(divide($size, $columns));
+
   } @else {
     flex: 1 1 0;
     max-width: 100%;
@@ -42,19 +44,19 @@
 }
 
 @mixin make-col-offset($size, $columns: $grid-columns) {
-  $num: $size / $columns;
+  $num: divide($size, $columns);
   margin-left: if($num == 0, 0, percentage($num));
 }
 
 // Row columns
 //
 // Specify on a parent element(e.g., .row) to force immediate children into NN
-// numberof columns. Supports wrapping to new lines, but does not do a Masonry
+// number of columns. Supports wrapping to new lines, but does not do a Masonry
 // style grid.
 @mixin row-cols($count) {
   > * {
     flex: 0 0 auto;
-    width: 100% / $count;
+    width: divide(100%, $count);
   }
 }
 
@@ -112,12 +114,36 @@
       @each $key, $value in $gutters {
         .g#{$infix}-#{$key},
         .gx#{$infix}-#{$key} {
-          --#{$variable-prefix}gutter-x: #{$value};
+          --#{$prefix}gutter-x: #{$value};
         }
 
         .g#{$infix}-#{$key},
         .gy#{$infix}-#{$key} {
-          --#{$variable-prefix}gutter-y: #{$value};
+          --#{$prefix}gutter-y: #{$value};
+        }
+      }
+    }
+  }
+}
+
+@mixin make-cssgrid($columns: $grid-columns, $breakpoints: $grid-breakpoints) {
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      @if $columns > 0 {
+        @for $i from 1 through $columns {
+          .g-col#{$infix}-#{$i} {
+            grid-column: auto / span $i;
+          }
+        }
+
+        // Start with `1` because `0` is and invalid value.
+        // Ends with `$columns - 1` because offsetting by the width of an entire row isn't possible.
+        @for $i from 1 through ($columns - 1) {
+          .g-start#{$infix}-#{$i} {
+            grid-column-start: $i;
+          }
         }
       }
     }

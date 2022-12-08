@@ -1,11 +1,5 @@
 import Button from '../../src/button'
-
-/** Test helpers */
-import {
-  getFixture,
-  clearFixture,
-  jQueryMock
-} from '../helpers/fixture'
+import { getFixture, clearFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Button', () => {
   let fixtureEl
@@ -51,19 +45,19 @@ describe('Button', () => {
       const divTest = fixtureEl.querySelector('.test')
       const btnTestParent = fixtureEl.querySelector('.testParent')
 
-      expect(btn.classList.contains('active')).toEqual(false)
+      expect(btn).not.toHaveClass('active')
 
       btn.click()
 
-      expect(btn.classList.contains('active')).toEqual(true)
+      expect(btn).toHaveClass('active')
 
       btn.click()
 
-      expect(btn.classList.contains('active')).toEqual(false)
+      expect(btn).not.toHaveClass('active')
 
       divTest.click()
 
-      expect(btnTestParent.classList.contains('active')).toEqual(true)
+      expect(btnTestParent).toHaveClass('active')
     })
   })
 
@@ -75,12 +69,12 @@ describe('Button', () => {
       const button = new Button(btnEl)
 
       expect(btnEl.getAttribute('aria-pressed')).toEqual('false')
-      expect(btnEl.classList.contains('active')).toEqual(false)
+      expect(btnEl).not.toHaveClass('active')
 
       button.toggle()
 
       expect(btnEl.getAttribute('aria-pressed')).toEqual('true')
-      expect(btnEl.classList.contains('active')).toEqual(true)
+      expect(btnEl).toHaveClass('active')
     })
   })
 
@@ -91,7 +85,7 @@ describe('Button', () => {
       const btnEl = fixtureEl.querySelector('.btn')
       const button = new Button(btnEl)
 
-      expect(Button.getInstance(btnEl)).toBeDefined()
+      expect(Button.getInstance(btnEl)).not.toBeNull()
 
       button.dispose()
 
@@ -106,14 +100,14 @@ describe('Button', () => {
       const btnEl = fixtureEl.querySelector('.btn')
       const button = new Button(btnEl)
 
-      spyOn(button, 'toggle')
+      const spy = spyOn(button, 'toggle')
 
       jQueryMock.fn.button = Button.jQueryInterface
       jQueryMock.elements = [btnEl]
 
       jQueryMock.fn.button.call(jQueryMock, 'toggle')
 
-      expect(button.toggle).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should create new button instance and call toggle', () => {
@@ -126,8 +120,8 @@ describe('Button', () => {
 
       jQueryMock.fn.button.call(jQueryMock, 'toggle')
 
-      expect(Button.getInstance(btnEl)).toBeDefined()
-      expect(btnEl.classList.contains('active')).toEqual(true)
+      expect(Button.getInstance(btnEl)).not.toBeNull()
+      expect(btnEl).toHaveClass('active')
     })
 
     it('should just create a button instance without calling toggle', () => {
@@ -140,8 +134,8 @@ describe('Button', () => {
 
       jQueryMock.fn.button.call(jQueryMock)
 
-      expect(Button.getInstance(btnEl)).toBeDefined()
-      expect(btnEl.classList.contains('active')).toEqual(false)
+      expect(Button.getInstance(btnEl)).not.toBeNull()
+      expect(btnEl).not.toHaveClass('active')
     })
   })
 
@@ -161,7 +155,29 @@ describe('Button', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Button.getInstance(div)).toEqual(null)
+      expect(Button.getInstance(div)).toBeNull()
+    })
+  })
+
+  describe('getOrCreateInstance', () => {
+    it('should return button instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const button = new Button(div)
+
+      expect(Button.getOrCreateInstance(div)).toEqual(button)
+      expect(Button.getInstance(div)).toEqual(Button.getOrCreateInstance(div, {}))
+      expect(Button.getOrCreateInstance(div)).toBeInstanceOf(Button)
+    })
+
+    it('should return new instance when there is no button instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Button.getInstance(div)).toBeNull()
+      expect(Button.getOrCreateInstance(div)).toBeInstanceOf(Button)
     })
   })
 })

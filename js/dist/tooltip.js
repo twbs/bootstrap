@@ -1,421 +1,144 @@
 /*!
-  * Bootstrap tooltip.js v5.0.0-beta3 (https://getbootstrap.com/)
-  * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap tooltip.js v5.2.3 (https://getbootstrap.com/)
+  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@popperjs/core'), require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js'), require('./base-component.js')) :
-  typeof define === 'function' && define.amd ? define(['@popperjs/core', './dom/data', './dom/event-handler', './dom/manipulator', './dom/selector-engine', './base-component'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Tooltip = factory(global.Popper, global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine, global.Base));
-}(this, (function (Popper, Data, EventHandler, Manipulator, SelectorEngine, BaseComponent) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@popperjs/core'), require('./util/index'), require('./util/sanitizer'), require('./dom/event-handler'), require('./dom/manipulator'), require('./base-component'), require('./util/template-factory')) :
+  typeof define === 'function' && define.amd ? define(['@popperjs/core', './util/index', './util/sanitizer', './dom/event-handler', './dom/manipulator', './base-component', './util/template-factory'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Tooltip = factory(global["@popperjs/core"], global.Index, global.Sanitizer, global.EventHandler, global.Manipulator, global.BaseComponent, global.TemplateFactory));
+})(this, (function (Popper, index, sanitizer, EventHandler, Manipulator, BaseComponent, TemplateFactory) { 'use strict';
 
-  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+  const _interopDefaultLegacy = e => e && typeof e === 'object' && 'default' in e ? e : { default: e };
 
   function _interopNamespace(e) {
     if (e && e.__esModule) return e;
-    var n = Object.create(null);
+    const n = Object.create(null, { [Symbol.toStringTag]: { value: 'Module' } });
     if (e) {
-      Object.keys(e).forEach(function (k) {
+      for (const k in e) {
         if (k !== 'default') {
-          var d = Object.getOwnPropertyDescriptor(e, k);
+          const d = Object.getOwnPropertyDescriptor(e, k);
           Object.defineProperty(n, k, d.get ? d : {
             enumerable: true,
-            get: function () {
-              return e[k];
-            }
+            get: () => e[k]
           });
         }
-      });
+      }
     }
-    n['default'] = e;
+    n.default = e;
     return Object.freeze(n);
   }
 
-  var Popper__namespace = /*#__PURE__*/_interopNamespace(Popper);
-  var Data__default = /*#__PURE__*/_interopDefaultLegacy(Data);
-  var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
-  var Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
-  var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
-  var BaseComponent__default = /*#__PURE__*/_interopDefaultLegacy(BaseComponent);
+  const Popper__namespace = /*#__PURE__*/_interopNamespace(Popper);
+  const EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
+  const Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
+  const BaseComponent__default = /*#__PURE__*/_interopDefaultLegacy(BaseComponent);
+  const TemplateFactory__default = /*#__PURE__*/_interopDefaultLegacy(TemplateFactory);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-beta3): util/index.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-  const MAX_UID = 1000000;
-  const MILLISECONDS_MULTIPLIER = 1000;
-  const TRANSITION_END = 'transitionend'; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
-
-  const toType = obj => {
-    if (obj === null || obj === undefined) {
-      return `${obj}`;
-    }
-
-    return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
-  };
-  /**
-   * --------------------------------------------------------------------------
-   * Public Util Api
-   * --------------------------------------------------------------------------
-   */
-
-
-  const getUID = prefix => {
-    do {
-      prefix += Math.floor(Math.random() * MAX_UID);
-    } while (document.getElementById(prefix));
-
-    return prefix;
-  };
-
-  const getTransitionDurationFromElement = element => {
-    if (!element) {
-      return 0;
-    } // Get transition-duration of the element
-
-
-    let {
-      transitionDuration,
-      transitionDelay
-    } = window.getComputedStyle(element);
-    const floatTransitionDuration = Number.parseFloat(transitionDuration);
-    const floatTransitionDelay = Number.parseFloat(transitionDelay); // Return 0 if element or transition duration is not found
-
-    if (!floatTransitionDuration && !floatTransitionDelay) {
-      return 0;
-    } // If multiple durations are defined, take the first
-
-
-    transitionDuration = transitionDuration.split(',')[0];
-    transitionDelay = transitionDelay.split(',')[0];
-    return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER;
-  };
-
-  const triggerTransitionEnd = element => {
-    element.dispatchEvent(new Event(TRANSITION_END));
-  };
-
-  const isElement = obj => (obj[0] || obj).nodeType;
-
-  const emulateTransitionEnd = (element, duration) => {
-    let called = false;
-    const durationPadding = 5;
-    const emulatedDuration = duration + durationPadding;
-
-    function listener() {
-      called = true;
-      element.removeEventListener(TRANSITION_END, listener);
-    }
-
-    element.addEventListener(TRANSITION_END, listener);
-    setTimeout(() => {
-      if (!called) {
-        triggerTransitionEnd(element);
-      }
-    }, emulatedDuration);
-  };
-
-  const typeCheckConfig = (componentName, config, configTypes) => {
-    Object.keys(configTypes).forEach(property => {
-      const expectedTypes = configTypes[property];
-      const value = config[property];
-      const valueType = value && isElement(value) ? 'element' : toType(value);
-
-      if (!new RegExp(expectedTypes).test(valueType)) {
-        throw new TypeError(`${componentName.toUpperCase()}: ` + `Option "${property}" provided type "${valueType}" ` + `but expected type "${expectedTypes}".`);
-      }
-    });
-  };
-
-  const findShadowRoot = element => {
-    if (!document.documentElement.attachShadow) {
-      return null;
-    } // Can find the shadow root otherwise it'll return the document
-
-
-    if (typeof element.getRootNode === 'function') {
-      const root = element.getRootNode();
-      return root instanceof ShadowRoot ? root : null;
-    }
-
-    if (element instanceof ShadowRoot) {
-      return element;
-    } // when we don't find a shadow root
-
-
-    if (!element.parentNode) {
-      return null;
-    }
-
-    return findShadowRoot(element.parentNode);
-  };
-
-  const noop = () => function () {};
-
-  const getjQuery = () => {
-    const {
-      jQuery
-    } = window;
-
-    if (jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
-      return jQuery;
-    }
-
-    return null;
-  };
-
-  const onDOMContentLoaded = callback => {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', callback);
-    } else {
-      callback();
-    }
-  };
-
-  const isRTL = () => document.documentElement.dir === 'rtl';
-
-  const defineJQueryPlugin = (name, plugin) => {
-    onDOMContentLoaded(() => {
-      const $ = getjQuery();
-      /* istanbul ignore if */
-
-      if ($) {
-        const JQUERY_NO_CONFLICT = $.fn[name];
-        $.fn[name] = plugin.jQueryInterface;
-        $.fn[name].Constructor = plugin;
-
-        $.fn[name].noConflict = () => {
-          $.fn[name] = JQUERY_NO_CONFLICT;
-          return plugin.jQueryInterface;
-        };
-      }
-    });
-  };
-
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-beta3): util/sanitizer.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-  const uriAttrs = new Set(['background', 'cite', 'href', 'itemtype', 'longdesc', 'poster', 'src', 'xlink:href']);
-  const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i;
-  /**
-   * A pattern that recognizes a commonly useful subset of URLs that are safe.
-   *
-   * Shoutout to Angular 7 https://github.com/angular/angular/blob/7.2.4/packages/core/src/sanitization/url_sanitizer.ts
-   */
-
-  const SAFE_URL_PATTERN = /^(?:(?:https?|mailto|ftp|tel|file):|[^#&/:?]*(?:[#/?]|$))/i;
-  /**
-   * A pattern that matches safe data URLs. Only matches image, video and audio types.
-   *
-   * Shoutout to Angular 7 https://github.com/angular/angular/blob/7.2.4/packages/core/src/sanitization/url_sanitizer.ts
-   */
-
-  const DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[\d+/a-z]+=*$/i;
-
-  const allowedAttribute = (attr, allowedAttributeList) => {
-    const attrName = attr.nodeName.toLowerCase();
-
-    if (allowedAttributeList.includes(attrName)) {
-      if (uriAttrs.has(attrName)) {
-        return Boolean(SAFE_URL_PATTERN.test(attr.nodeValue) || DATA_URL_PATTERN.test(attr.nodeValue));
-      }
-
-      return true;
-    }
-
-    const regExp = allowedAttributeList.filter(attrRegex => attrRegex instanceof RegExp); // Check if a regular expression validates the attribute.
-
-    for (let i = 0, len = regExp.length; i < len; i++) {
-      if (regExp[i].test(attrName)) {
-        return true;
-      }
-    }
-
-    return false;
-  };
-
-  const DefaultAllowlist = {
-    // Global attributes allowed on any supplied element below.
-    '*': ['class', 'dir', 'id', 'lang', 'role', ARIA_ATTRIBUTE_PATTERN],
-    a: ['target', 'href', 'title', 'rel'],
-    area: [],
-    b: [],
-    br: [],
-    col: [],
-    code: [],
-    div: [],
-    em: [],
-    hr: [],
-    h1: [],
-    h2: [],
-    h3: [],
-    h4: [],
-    h5: [],
-    h6: [],
-    i: [],
-    img: ['src', 'srcset', 'alt', 'title', 'width', 'height'],
-    li: [],
-    ol: [],
-    p: [],
-    pre: [],
-    s: [],
-    small: [],
-    span: [],
-    sub: [],
-    sup: [],
-    strong: [],
-    u: [],
-    ul: []
-  };
-  function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
-    if (!unsafeHtml.length) {
-      return unsafeHtml;
-    }
-
-    if (sanitizeFn && typeof sanitizeFn === 'function') {
-      return sanitizeFn(unsafeHtml);
-    }
-
-    const domParser = new window.DOMParser();
-    const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
-    const allowlistKeys = Object.keys(allowList);
-    const elements = [].concat(...createdDocument.body.querySelectorAll('*'));
-
-    for (let i = 0, len = elements.length; i < len; i++) {
-      const el = elements[i];
-      const elName = el.nodeName.toLowerCase();
-
-      if (!allowlistKeys.includes(elName)) {
-        el.parentNode.removeChild(el);
-        continue;
-      }
-
-      const attributeList = [].concat(...el.attributes);
-      const allowedAttributes = [].concat(allowList['*'] || [], allowList[elName] || []);
-      attributeList.forEach(attr => {
-        if (!allowedAttribute(attr, allowedAttributes)) {
-          el.removeAttribute(attr.nodeName);
-        }
-      });
-    }
-
-    return createdDocument.body.innerHTML;
-  }
-
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-beta3): tooltip.js
+   * Bootstrap (v5.2.3): tooltip.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   /**
-   * ------------------------------------------------------------------------
    * Constants
-   * ------------------------------------------------------------------------
    */
 
   const NAME = 'tooltip';
-  const DATA_KEY = 'bs.tooltip';
-  const EVENT_KEY = `.${DATA_KEY}`;
-  const CLASS_PREFIX = 'bs-tooltip';
-  const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g');
   const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn']);
-  const DefaultType = {
-    animation: 'boolean',
-    template: 'string',
-    title: '(string|element|function)',
-    trigger: 'string',
-    delay: '(number|object)',
-    html: 'boolean',
-    selector: '(string|boolean)',
-    placement: '(string|function)',
-    offset: '(array|string|function)',
-    container: '(string|element|boolean)',
-    fallbackPlacements: 'array',
-    boundary: '(string|element)',
-    customClass: '(string|function)',
-    sanitize: 'boolean',
-    sanitizeFn: '(null|function)',
-    allowList: 'object',
-    popperConfig: '(null|object|function)'
-  };
-  const AttachmentMap = {
-    AUTO: 'auto',
-    TOP: 'top',
-    RIGHT: isRTL() ? 'left' : 'right',
-    BOTTOM: 'bottom',
-    LEFT: isRTL() ? 'right' : 'left'
-  };
-  const Default = {
-    animation: true,
-    template: '<div class="tooltip" role="tooltip">' + '<div class="tooltip-arrow"></div>' + '<div class="tooltip-inner"></div>' + '</div>',
-    trigger: 'hover focus',
-    title: '',
-    delay: 0,
-    html: false,
-    selector: false,
-    placement: 'top',
-    offset: [0, 0],
-    container: false,
-    fallbackPlacements: ['top', 'right', 'bottom', 'left'],
-    boundary: 'clippingParents',
-    customClass: '',
-    sanitize: true,
-    sanitizeFn: null,
-    allowList: DefaultAllowlist,
-    popperConfig: null
-  };
-  const Event$1 = {
-    HIDE: `hide${EVENT_KEY}`,
-    HIDDEN: `hidden${EVENT_KEY}`,
-    SHOW: `show${EVENT_KEY}`,
-    SHOWN: `shown${EVENT_KEY}`,
-    INSERTED: `inserted${EVENT_KEY}`,
-    CLICK: `click${EVENT_KEY}`,
-    FOCUSIN: `focusin${EVENT_KEY}`,
-    FOCUSOUT: `focusout${EVENT_KEY}`,
-    MOUSEENTER: `mouseenter${EVENT_KEY}`,
-    MOUSELEAVE: `mouseleave${EVENT_KEY}`
-  };
   const CLASS_NAME_FADE = 'fade';
   const CLASS_NAME_MODAL = 'modal';
   const CLASS_NAME_SHOW = 'show';
-  const HOVER_STATE_SHOW = 'show';
-  const HOVER_STATE_OUT = 'out';
   const SELECTOR_TOOLTIP_INNER = '.tooltip-inner';
+  const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`;
+  const EVENT_MODAL_HIDE = 'hide.bs.modal';
   const TRIGGER_HOVER = 'hover';
   const TRIGGER_FOCUS = 'focus';
   const TRIGGER_CLICK = 'click';
   const TRIGGER_MANUAL = 'manual';
+  const EVENT_HIDE = 'hide';
+  const EVENT_HIDDEN = 'hidden';
+  const EVENT_SHOW = 'show';
+  const EVENT_SHOWN = 'shown';
+  const EVENT_INSERTED = 'inserted';
+  const EVENT_CLICK = 'click';
+  const EVENT_FOCUSIN = 'focusin';
+  const EVENT_FOCUSOUT = 'focusout';
+  const EVENT_MOUSEENTER = 'mouseenter';
+  const EVENT_MOUSELEAVE = 'mouseleave';
+  const AttachmentMap = {
+    AUTO: 'auto',
+    TOP: 'top',
+    RIGHT: index.isRTL() ? 'left' : 'right',
+    BOTTOM: 'bottom',
+    LEFT: index.isRTL() ? 'right' : 'left'
+  };
+  const Default = {
+    allowList: sanitizer.DefaultAllowlist,
+    animation: true,
+    boundary: 'clippingParents',
+    container: false,
+    customClass: '',
+    delay: 0,
+    fallbackPlacements: ['top', 'right', 'bottom', 'left'],
+    html: false,
+    offset: [0, 0],
+    placement: 'top',
+    popperConfig: null,
+    sanitize: true,
+    sanitizeFn: null,
+    selector: false,
+    template: '<div class="tooltip" role="tooltip">' + '<div class="tooltip-arrow"></div>' + '<div class="tooltip-inner"></div>' + '</div>',
+    title: '',
+    trigger: 'hover focus'
+  };
+  const DefaultType = {
+    allowList: 'object',
+    animation: 'boolean',
+    boundary: '(string|element)',
+    container: '(string|element|boolean)',
+    customClass: '(string|function)',
+    delay: '(number|object)',
+    fallbackPlacements: 'array',
+    html: 'boolean',
+    offset: '(array|string|function)',
+    placement: '(string|function)',
+    popperConfig: '(null|object|function)',
+    sanitize: 'boolean',
+    sanitizeFn: '(null|function)',
+    selector: '(string|boolean)',
+    template: 'string',
+    title: '(string|element|function)',
+    trigger: 'string'
+  };
   /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
+   * Class definition
    */
 
-  class Tooltip extends BaseComponent__default['default'] {
+  class Tooltip extends BaseComponent__default.default {
     constructor(element, config) {
       if (typeof Popper__namespace === 'undefined') {
         throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)');
       }
 
-      super(element); // private
+      super(element, config); // Private
 
       this._isEnabled = true;
       this._timeout = 0;
-      this._hoverState = '';
+      this._isHovered = null;
       this._activeTrigger = {};
-      this._popper = null; // Protected
+      this._popper = null;
+      this._templateFactory = null;
+      this._newContent = null; // Protected
 
-      this.config = this._getConfig(config);
       this.tip = null;
 
       this._setListeners();
+
+      if (!this._config.selector) {
+        this._fixTitle();
+      }
     } // Getters
 
 
@@ -423,24 +146,12 @@
       return Default;
     }
 
-    static get NAME() {
-      return NAME;
-    }
-
-    static get DATA_KEY() {
-      return DATA_KEY;
-    }
-
-    static get Event() {
-      return Event$1;
-    }
-
-    static get EVENT_KEY() {
-      return EVENT_KEY;
-    }
-
     static get DefaultType() {
       return DefaultType;
+    }
+
+    static get NAME() {
+      return NAME;
     } // Public
 
 
@@ -456,53 +167,32 @@
       this._isEnabled = !this._isEnabled;
     }
 
-    toggle(event) {
+    toggle() {
       if (!this._isEnabled) {
         return;
       }
 
-      if (event) {
-        const context = this._initializeOnDelegatedTarget(event);
+      this._activeTrigger.click = !this._activeTrigger.click;
 
-        context._activeTrigger.click = !context._activeTrigger.click;
+      if (this._isShown()) {
+        this._leave();
 
-        if (context._isWithActiveTrigger()) {
-          context._enter(null, context);
-        } else {
-          context._leave(null, context);
-        }
-      } else {
-        if (this.getTipElement().classList.contains(CLASS_NAME_SHOW)) {
-          this._leave(null, this);
-
-          return;
-        }
-
-        this._enter(null, this);
+        return;
       }
+
+      this._enter();
     }
 
     dispose() {
       clearTimeout(this._timeout);
-      EventHandler__default['default'].off(this._element, this.constructor.EVENT_KEY);
-      EventHandler__default['default'].off(this._element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler);
+      EventHandler__default.default.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler);
 
-      if (this.tip && this.tip.parentNode) {
-        this.tip.parentNode.removeChild(this.tip);
+      if (this._element.getAttribute('data-bs-original-title')) {
+        this._element.setAttribute('title', this._element.getAttribute('data-bs-original-title'));
       }
 
-      this._isEnabled = null;
-      this._timeout = null;
-      this._hoverState = null;
-      this._activeTrigger = null;
+      this._disposePopper();
 
-      if (this._popper) {
-        this._popper.destroy();
-      }
-
-      this._popper = null;
-      this.config = null;
-      this.tip = null;
       super.dispose();
     }
 
@@ -511,248 +201,205 @@
         throw new Error('Please use show on visible elements');
       }
 
-      if (!(this.isWithContent() && this._isEnabled)) {
+      if (!(this._isWithContent() && this._isEnabled)) {
         return;
       }
 
-      const showEvent = EventHandler__default['default'].trigger(this._element, this.constructor.Event.SHOW);
-      const shadowRoot = findShadowRoot(this._element);
-      const isInTheDom = shadowRoot === null ? this._element.ownerDocument.documentElement.contains(this._element) : shadowRoot.contains(this._element);
+      const showEvent = EventHandler__default.default.trigger(this._element, this.constructor.eventName(EVENT_SHOW));
+      const shadowRoot = index.findShadowRoot(this._element);
+
+      const isInTheDom = (shadowRoot || this._element.ownerDocument.documentElement).contains(this._element);
 
       if (showEvent.defaultPrevented || !isInTheDom) {
         return;
-      }
+      } // todo v6 remove this OR make it optional
 
-      const tip = this.getTipElement();
-      const tipId = getUID(this.constructor.NAME);
-      tip.setAttribute('id', tipId);
 
-      this._element.setAttribute('aria-describedby', tipId);
+      this._disposePopper();
 
-      this.setContent();
+      const tip = this._getTipElement();
 
-      if (this.config.animation) {
-        tip.classList.add(CLASS_NAME_FADE);
-      }
+      this._element.setAttribute('aria-describedby', tip.getAttribute('id'));
 
-      const placement = typeof this.config.placement === 'function' ? this.config.placement.call(this, tip, this._element) : this.config.placement;
-
-      const attachment = this._getAttachment(placement);
-
-      this._addAttachmentClass(attachment);
-
-      const container = this._getContainer();
-
-      Data__default['default'].set(tip, this.constructor.DATA_KEY, this);
+      const {
+        container
+      } = this._config;
 
       if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
-        container.appendChild(tip);
-        EventHandler__default['default'].trigger(this._element, this.constructor.Event.INSERTED);
+        container.append(tip);
+        EventHandler__default.default.trigger(this._element, this.constructor.eventName(EVENT_INSERTED));
       }
 
-      if (this._popper) {
-        this._popper.update();
-      } else {
-        this._popper = Popper__namespace.createPopper(this._element, tip, this._getPopperConfig(attachment));
-      }
-
-      tip.classList.add(CLASS_NAME_SHOW);
-      const customClass = typeof this.config.customClass === 'function' ? this.config.customClass() : this.config.customClass;
-
-      if (customClass) {
-        tip.classList.add(...customClass.split(' '));
-      } // If this is a touch-enabled device we add extra
+      this._popper = this._createPopper(tip);
+      tip.classList.add(CLASS_NAME_SHOW); // If this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
       // only needed because of broken event delegation on iOS
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
-
       if ('ontouchstart' in document.documentElement) {
-        [].concat(...document.body.children).forEach(element => {
-          EventHandler__default['default'].on(element, 'mouseover', noop());
-        });
+        for (const element of [].concat(...document.body.children)) {
+          EventHandler__default.default.on(element, 'mouseover', index.noop);
+        }
       }
 
       const complete = () => {
-        const prevHoverState = this._hoverState;
-        this._hoverState = null;
-        EventHandler__default['default'].trigger(this._element, this.constructor.Event.SHOWN);
+        EventHandler__default.default.trigger(this._element, this.constructor.eventName(EVENT_SHOWN));
 
-        if (prevHoverState === HOVER_STATE_OUT) {
-          this._leave(null, this);
+        if (this._isHovered === false) {
+          this._leave();
         }
+
+        this._isHovered = false;
       };
 
-      if (this.tip.classList.contains(CLASS_NAME_FADE)) {
-        const transitionDuration = getTransitionDurationFromElement(this.tip);
-        EventHandler__default['default'].one(this.tip, 'transitionend', complete);
-        emulateTransitionEnd(this.tip, transitionDuration);
-      } else {
-        complete();
-      }
+      this._queueCallback(complete, this.tip, this._isAnimated());
     }
 
     hide() {
-      if (!this._popper) {
+      if (!this._isShown()) {
         return;
       }
 
-      const tip = this.getTipElement();
+      const hideEvent = EventHandler__default.default.trigger(this._element, this.constructor.eventName(EVENT_HIDE));
+
+      if (hideEvent.defaultPrevented) {
+        return;
+      }
+
+      const tip = this._getTipElement();
+
+      tip.classList.remove(CLASS_NAME_SHOW); // If this is a touch-enabled device we remove the extra
+      // empty mouseover listeners we added for iOS support
+
+      if ('ontouchstart' in document.documentElement) {
+        for (const element of [].concat(...document.body.children)) {
+          EventHandler__default.default.off(element, 'mouseover', index.noop);
+        }
+      }
+
+      this._activeTrigger[TRIGGER_CLICK] = false;
+      this._activeTrigger[TRIGGER_FOCUS] = false;
+      this._activeTrigger[TRIGGER_HOVER] = false;
+      this._isHovered = null; // it is a trick to support manual triggering
 
       const complete = () => {
         if (this._isWithActiveTrigger()) {
           return;
         }
 
-        if (this._hoverState !== HOVER_STATE_SHOW && tip.parentNode) {
-          tip.parentNode.removeChild(tip);
+        if (!this._isHovered) {
+          this._disposePopper();
         }
-
-        this._cleanTipClass();
 
         this._element.removeAttribute('aria-describedby');
 
-        EventHandler__default['default'].trigger(this._element, this.constructor.Event.HIDDEN);
-
-        if (this._popper) {
-          this._popper.destroy();
-
-          this._popper = null;
-        }
+        EventHandler__default.default.trigger(this._element, this.constructor.eventName(EVENT_HIDDEN));
       };
 
-      const hideEvent = EventHandler__default['default'].trigger(this._element, this.constructor.Event.HIDE);
-
-      if (hideEvent.defaultPrevented) {
-        return;
-      }
-
-      tip.classList.remove(CLASS_NAME_SHOW); // If this is a touch-enabled device we remove the extra
-      // empty mouseover listeners we added for iOS support
-
-      if ('ontouchstart' in document.documentElement) {
-        [].concat(...document.body.children).forEach(element => EventHandler__default['default'].off(element, 'mouseover', noop));
-      }
-
-      this._activeTrigger[TRIGGER_CLICK] = false;
-      this._activeTrigger[TRIGGER_FOCUS] = false;
-      this._activeTrigger[TRIGGER_HOVER] = false;
-
-      if (this.tip.classList.contains(CLASS_NAME_FADE)) {
-        const transitionDuration = getTransitionDurationFromElement(tip);
-        EventHandler__default['default'].one(tip, 'transitionend', complete);
-        emulateTransitionEnd(tip, transitionDuration);
-      } else {
-        complete();
-      }
-
-      this._hoverState = '';
+      this._queueCallback(complete, this.tip, this._isAnimated());
     }
 
     update() {
-      if (this._popper !== null) {
+      if (this._popper) {
         this._popper.update();
       }
     } // Protected
 
 
-    isWithContent() {
-      return Boolean(this.getTitle());
+    _isWithContent() {
+      return Boolean(this._getTitle());
     }
 
-    getTipElement() {
-      if (this.tip) {
-        return this.tip;
+    _getTipElement() {
+      if (!this.tip) {
+        this.tip = this._createTipElement(this._newContent || this._getContentForTemplate());
       }
 
-      const element = document.createElement('div');
-      element.innerHTML = this.config.template;
-      this.tip = element.children[0];
       return this.tip;
     }
 
-    setContent() {
-      const tip = this.getTipElement();
-      this.setElementContent(SelectorEngine__default['default'].findOne(SELECTOR_TOOLTIP_INNER, tip), this.getTitle());
-      tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW);
+    _createTipElement(content) {
+      const tip = this._getTemplateFactory(content).toHtml(); // todo: remove this check on v6
+
+
+      if (!tip) {
+        return null;
+      }
+
+      tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW); // todo: on v6 the following can be achieved with CSS only
+
+      tip.classList.add(`bs-${this.constructor.NAME}-auto`);
+      const tipId = index.getUID(this.constructor.NAME).toString();
+      tip.setAttribute('id', tipId);
+
+      if (this._isAnimated()) {
+        tip.classList.add(CLASS_NAME_FADE);
+      }
+
+      return tip;
     }
 
-    setElementContent(element, content) {
-      if (element === null) {
-        return;
+    setContent(content) {
+      this._newContent = content;
+
+      if (this._isShown()) {
+        this._disposePopper();
+
+        this.show();
       }
+    }
 
-      if (typeof content === 'object' && isElement(content)) {
-        if (content.jquery) {
-          content = content[0];
-        } // content is a DOM node or a jQuery
-
-
-        if (this.config.html) {
-          if (content.parentNode !== element) {
-            element.innerHTML = '';
-            element.appendChild(content);
-          }
-        } else {
-          element.textContent = content.textContent;
-        }
-
-        return;
-      }
-
-      if (this.config.html) {
-        if (this.config.sanitize) {
-          content = sanitizeHtml(content, this.config.allowList, this.config.sanitizeFn);
-        }
-
-        element.innerHTML = content;
+    _getTemplateFactory(content) {
+      if (this._templateFactory) {
+        this._templateFactory.changeContent(content);
       } else {
-        element.textContent = content;
+        this._templateFactory = new TemplateFactory__default.default({ ...this._config,
+          // the `content` var has to be after `this._config`
+          // to override config.content in case of popover
+          content,
+          extraClass: this._resolvePossibleFunction(this._config.customClass)
+        });
       }
+
+      return this._templateFactory;
     }
 
-    getTitle() {
-      let title = this._element.getAttribute('data-bs-original-title');
-
-      if (!title) {
-        title = typeof this.config.title === 'function' ? this.config.title.call(this._element) : this.config.title;
-      }
-
-      return title;
+    _getContentForTemplate() {
+      return {
+        [SELECTOR_TOOLTIP_INNER]: this._getTitle()
+      };
     }
 
-    updateAttachment(attachment) {
-      if (attachment === 'right') {
-        return 'end';
-      }
-
-      if (attachment === 'left') {
-        return 'start';
-      }
-
-      return attachment;
+    _getTitle() {
+      return this._resolvePossibleFunction(this._config.title) || this._element.getAttribute('data-bs-original-title');
     } // Private
 
 
-    _initializeOnDelegatedTarget(event, context) {
-      const dataKey = this.constructor.DATA_KEY;
-      context = context || Data__default['default'].get(event.delegateTarget, dataKey);
+    _initializeOnDelegatedTarget(event) {
+      return this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig());
+    }
 
-      if (!context) {
-        context = new this.constructor(event.delegateTarget, this._getDelegateConfig());
-        Data__default['default'].set(event.delegateTarget, dataKey, context);
-      }
+    _isAnimated() {
+      return this._config.animation || this.tip && this.tip.classList.contains(CLASS_NAME_FADE);
+    }
 
-      return context;
+    _isShown() {
+      return this.tip && this.tip.classList.contains(CLASS_NAME_SHOW);
+    }
+
+    _createPopper(tip) {
+      const placement = typeof this._config.placement === 'function' ? this._config.placement.call(this, tip, this._element) : this._config.placement;
+      const attachment = AttachmentMap[placement.toUpperCase()];
+      return Popper__namespace.createPopper(this._element, tip, this._getPopperConfig(attachment));
     }
 
     _getOffset() {
       const {
         offset
-      } = this.config;
+      } = this._config;
 
       if (typeof offset === 'string') {
-        return offset.split(',').map(val => Number.parseInt(val, 10));
+        return offset.split(',').map(value => Number.parseInt(value, 10));
       }
 
       if (typeof offset === 'function') {
@@ -762,14 +409,17 @@
       return offset;
     }
 
+    _resolvePossibleFunction(arg) {
+      return typeof arg === 'function' ? arg.call(this._element) : arg;
+    }
+
     _getPopperConfig(attachment) {
       const defaultBsPopperConfig = {
         placement: attachment,
         modifiers: [{
           name: 'flip',
           options: {
-            altBoundary: true,
-            fallbackPlacements: this.config.fallbackPlacements
+            fallbackPlacements: this._config.fallbackPlacements
           }
         }, {
           name: 'offset',
@@ -779,7 +429,7 @@
         }, {
           name: 'preventOverflow',
           options: {
-            boundary: this.config.boundary
+            boundary: this._config.boundary
           }
         }, {
           name: 'arrow',
@@ -787,54 +437,50 @@
             element: `.${this.constructor.NAME}-arrow`
           }
         }, {
-          name: 'onChange',
+          name: 'preSetPlacement',
           enabled: true,
-          phase: 'afterWrite',
-          fn: data => this._handlePopperPlacementChange(data)
-        }],
-        onFirstUpdate: data => {
-          if (data.options.placement !== data.placement) {
-            this._handlePopperPlacementChange(data);
+          phase: 'beforeMain',
+          fn: data => {
+            // Pre-set Popper's placement attribute in order to read the arrow sizes properly.
+            // Otherwise, Popper mixes up the width and height dimensions since the initial arrow style is for top placement
+            this._getTipElement().setAttribute('data-popper-placement', data.state.placement);
           }
-        }
+        }]
       };
       return { ...defaultBsPopperConfig,
-        ...(typeof this.config.popperConfig === 'function' ? this.config.popperConfig(defaultBsPopperConfig) : this.config.popperConfig)
+        ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig)
       };
-    }
-
-    _addAttachmentClass(attachment) {
-      this.getTipElement().classList.add(`${CLASS_PREFIX}-${this.updateAttachment(attachment)}`);
-    }
-
-    _getContainer() {
-      if (this.config.container === false) {
-        return document.body;
-      }
-
-      if (isElement(this.config.container)) {
-        return this.config.container;
-      }
-
-      return SelectorEngine__default['default'].findOne(this.config.container);
-    }
-
-    _getAttachment(placement) {
-      return AttachmentMap[placement.toUpperCase()];
     }
 
     _setListeners() {
-      const triggers = this.config.trigger.split(' ');
-      triggers.forEach(trigger => {
+      const triggers = this._config.trigger.split(' ');
+
+      for (const trigger of triggers) {
         if (trigger === 'click') {
-          EventHandler__default['default'].on(this._element, this.constructor.Event.CLICK, this.config.selector, event => this.toggle(event));
+          EventHandler__default.default.on(this._element, this.constructor.eventName(EVENT_CLICK), this._config.selector, event => {
+            const context = this._initializeOnDelegatedTarget(event);
+
+            context.toggle();
+          });
         } else if (trigger !== TRIGGER_MANUAL) {
-          const eventIn = trigger === TRIGGER_HOVER ? this.constructor.Event.MOUSEENTER : this.constructor.Event.FOCUSIN;
-          const eventOut = trigger === TRIGGER_HOVER ? this.constructor.Event.MOUSELEAVE : this.constructor.Event.FOCUSOUT;
-          EventHandler__default['default'].on(this._element, eventIn, this.config.selector, event => this._enter(event));
-          EventHandler__default['default'].on(this._element, eventOut, this.config.selector, event => this._leave(event));
+          const eventIn = trigger === TRIGGER_HOVER ? this.constructor.eventName(EVENT_MOUSEENTER) : this.constructor.eventName(EVENT_FOCUSIN);
+          const eventOut = trigger === TRIGGER_HOVER ? this.constructor.eventName(EVENT_MOUSELEAVE) : this.constructor.eventName(EVENT_FOCUSOUT);
+          EventHandler__default.default.on(this._element, eventIn, this._config.selector, event => {
+            const context = this._initializeOnDelegatedTarget(event);
+
+            context._activeTrigger[event.type === 'focusin' ? TRIGGER_FOCUS : TRIGGER_HOVER] = true;
+
+            context._enter();
+          });
+          EventHandler__default.default.on(this._element, eventOut, this._config.selector, event => {
+            const context = this._initializeOnDelegatedTarget(event);
+
+            context._activeTrigger[event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER] = context._element.contains(event.relatedTarget);
+
+            context._leave();
+          });
         }
-      });
+      }
 
       this._hideModalHandler = () => {
         if (this._element) {
@@ -842,113 +488,86 @@
         }
       };
 
-      EventHandler__default['default'].on(this._element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler);
-
-      if (this.config.selector) {
-        this.config = { ...this.config,
-          trigger: 'manual',
-          selector: ''
-        };
-      } else {
-        this._fixTitle();
-      }
+      EventHandler__default.default.on(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler);
     }
 
     _fixTitle() {
       const title = this._element.getAttribute('title');
 
-      const originalTitleType = typeof this._element.getAttribute('data-bs-original-title');
-
-      if (title || originalTitleType !== 'string') {
-        this._element.setAttribute('data-bs-original-title', title || '');
-
-        if (title && !this._element.getAttribute('aria-label') && !this._element.textContent) {
-          this._element.setAttribute('aria-label', title);
-        }
-
-        this._element.setAttribute('title', '');
+      if (!title) {
+        return;
       }
+
+      if (!this._element.getAttribute('aria-label') && !this._element.textContent.trim()) {
+        this._element.setAttribute('aria-label', title);
+      }
+
+      this._element.setAttribute('data-bs-original-title', title); // DO NOT USE IT. Is only for backwards compatibility
+
+
+      this._element.removeAttribute('title');
     }
 
-    _enter(event, context) {
-      context = this._initializeOnDelegatedTarget(event, context);
-
-      if (event) {
-        context._activeTrigger[event.type === 'focusin' ? TRIGGER_FOCUS : TRIGGER_HOVER] = true;
-      }
-
-      if (context.getTipElement().classList.contains(CLASS_NAME_SHOW) || context._hoverState === HOVER_STATE_SHOW) {
-        context._hoverState = HOVER_STATE_SHOW;
+    _enter() {
+      if (this._isShown() || this._isHovered) {
+        this._isHovered = true;
         return;
       }
 
-      clearTimeout(context._timeout);
-      context._hoverState = HOVER_STATE_SHOW;
+      this._isHovered = true;
 
-      if (!context.config.delay || !context.config.delay.show) {
-        context.show();
-        return;
-      }
-
-      context._timeout = setTimeout(() => {
-        if (context._hoverState === HOVER_STATE_SHOW) {
-          context.show();
+      this._setTimeout(() => {
+        if (this._isHovered) {
+          this.show();
         }
-      }, context.config.delay.show);
+      }, this._config.delay.show);
     }
 
-    _leave(event, context) {
-      context = this._initializeOnDelegatedTarget(event, context);
-
-      if (event) {
-        context._activeTrigger[event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER] = context._element.contains(event.relatedTarget);
-      }
-
-      if (context._isWithActiveTrigger()) {
+    _leave() {
+      if (this._isWithActiveTrigger()) {
         return;
       }
 
-      clearTimeout(context._timeout);
-      context._hoverState = HOVER_STATE_OUT;
+      this._isHovered = false;
 
-      if (!context.config.delay || !context.config.delay.hide) {
-        context.hide();
-        return;
-      }
-
-      context._timeout = setTimeout(() => {
-        if (context._hoverState === HOVER_STATE_OUT) {
-          context.hide();
+      this._setTimeout(() => {
+        if (!this._isHovered) {
+          this.hide();
         }
-      }, context.config.delay.hide);
+      }, this._config.delay.hide);
+    }
+
+    _setTimeout(handler, timeout) {
+      clearTimeout(this._timeout);
+      this._timeout = setTimeout(handler, timeout);
     }
 
     _isWithActiveTrigger() {
-      for (const trigger in this._activeTrigger) {
-        if (this._activeTrigger[trigger]) {
-          return true;
-        }
-      }
-
-      return false;
+      return Object.values(this._activeTrigger).includes(true);
     }
 
     _getConfig(config) {
-      const dataAttributes = Manipulator__default['default'].getDataAttributes(this._element);
-      Object.keys(dataAttributes).forEach(dataAttr => {
-        if (DISALLOWED_ATTRIBUTES.has(dataAttr)) {
-          delete dataAttributes[dataAttr];
-        }
-      });
+      const dataAttributes = Manipulator__default.default.getDataAttributes(this._element);
 
-      if (config && typeof config.container === 'object' && config.container.jquery) {
-        config.container = config.container[0];
+      for (const dataAttribute of Object.keys(dataAttributes)) {
+        if (DISALLOWED_ATTRIBUTES.has(dataAttribute)) {
+          delete dataAttributes[dataAttribute];
+        }
       }
 
-      config = { ...this.constructor.Default,
-        ...dataAttributes,
+      config = { ...dataAttributes,
         ...(typeof config === 'object' && config ? config : {})
       };
+      config = this._mergeConfigObj(config);
+      config = this._configAfterMerge(config);
+
+      this._typeCheckConfig(config);
+
+      return config;
+    }
+
+    _configAfterMerge(config) {
+      config.container = config.container === false ? document.body : index.getElement(config.container);
 
       if (typeof config.delay === 'number') {
         config.delay = {
@@ -965,91 +584,65 @@
         config.content = config.content.toString();
       }
 
-      typeCheckConfig(NAME, config, this.constructor.DefaultType);
-
-      if (config.sanitize) {
-        config.template = sanitizeHtml(config.template, config.allowList, config.sanitizeFn);
-      }
-
       return config;
     }
 
     _getDelegateConfig() {
       const config = {};
 
-      if (this.config) {
-        for (const key in this.config) {
-          if (this.constructor.Default[key] !== this.config[key]) {
-            config[key] = this.config[key];
-          }
+      for (const key in this._config) {
+        if (this.constructor.Default[key] !== this._config[key]) {
+          config[key] = this._config[key];
         }
       }
+
+      config.selector = false;
+      config.trigger = 'manual'; // In the future can be replaced with:
+      // const keysWithDifferentValues = Object.entries(this._config).filter(entry => this.constructor.Default[entry[0]] !== this._config[entry[0]])
+      // `Object.fromEntries(keysWithDifferentValues)`
 
       return config;
     }
 
-    _cleanTipClass() {
-      const tip = this.getTipElement();
-      const tabClass = tip.getAttribute('class').match(BSCLS_PREFIX_REGEX);
+    _disposePopper() {
+      if (this._popper) {
+        this._popper.destroy();
 
-      if (tabClass !== null && tabClass.length > 0) {
-        tabClass.map(token => token.trim()).forEach(tClass => tip.classList.remove(tClass));
-      }
-    }
-
-    _handlePopperPlacementChange(popperData) {
-      const {
-        state
-      } = popperData;
-
-      if (!state) {
-        return;
+        this._popper = null;
       }
 
-      this.tip = state.elements.popper;
-
-      this._cleanTipClass();
-
-      this._addAttachmentClass(this._getAttachment(state.placement));
+      if (this.tip) {
+        this.tip.remove();
+        this.tip = null;
+      }
     } // Static
 
 
     static jQueryInterface(config) {
       return this.each(function () {
-        let data = Data__default['default'].get(this, DATA_KEY);
+        const data = Tooltip.getOrCreateInstance(this, config);
 
-        const _config = typeof config === 'object' && config;
-
-        if (!data && /dispose|hide/.test(config)) {
+        if (typeof config !== 'string') {
           return;
         }
 
-        if (!data) {
-          data = new Tooltip(this, _config);
+        if (typeof data[config] === 'undefined') {
+          throw new TypeError(`No method named "${config}"`);
         }
 
-        if (typeof config === 'string') {
-          if (typeof data[config] === 'undefined') {
-            throw new TypeError(`No method named "${config}"`);
-          }
-
-          data[config]();
-        }
+        data[config]();
       });
     }
 
   }
   /**
-   * ------------------------------------------------------------------------
    * jQuery
-   * ------------------------------------------------------------------------
-   * add .Tooltip to jQuery only if jQuery is present
    */
 
 
-  defineJQueryPlugin(NAME, Tooltip);
+  index.defineJQueryPlugin(Tooltip);
 
   return Tooltip;
 
-})));
+}));
 //# sourceMappingURL=tooltip.js.map

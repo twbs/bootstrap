@@ -10,7 +10,7 @@
     <div class="container">
       <h1>Dropdown <small>Bootstrap Visual Test</small></h1>
 
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <nav class="navbar navbar-expand-md bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -28,8 +28,8 @@
               <a class="nav-link" href="#">Link</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-              <ul class="dropdown-menu" aria-labelledby="dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+              <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -50,8 +50,8 @@
           <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown2" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-          <ul class="dropdown-menu" aria-labelledby="dropdown2">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+          <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -103,7 +103,7 @@
         </div>
 
         <div class="col-sm-12 mt-4">
-          <div class="btn-group dropup" role="group">
+          <div class="btn-group dropup">
             <a href="#" class="btn btn-secondary">Dropup split align end</a>
             <button type="button" id="dropdown-page-subheader-button-3" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="visually-hidden">Product actions</span>
@@ -125,7 +125,7 @@
         </div>
 
         <div class="col-sm-12 mt-4">
-          <div class="btn-group dropend" role="group">
+          <div class="btn-group dropend">
             <a href="#" class="btn btn-secondary">Dropend split</a>
             <button type="button" id="dropdown-page-subheader-button-4" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="visually-hidden">Product actions</span>
@@ -137,17 +137,17 @@
             </div>
           </div>
           <div class="btn-group dropend">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuRight" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropend
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuRight">
+            <div class="dropdown-menu">
               <button class="dropdown-item" type="button">Action</button>
               <button class="dropdown-item" type="button">Another action</button>
               <button class="dropdown-item" type="button">Something else here</button>
             </div>
           </div>
           <!-- dropstart -->
-          <div class="btn-group dropstart" role="group">
+          <div class="btn-group dropstart">
             <a href="#" class="btn btn-secondary">Dropstart split</a>
             <button type="button" id="dropdown-page-subheader-button-5" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="visually-hidden">Product actions</span>
@@ -159,10 +159,10 @@
             </div>
           </div>
           <div class="btn-group dropstart">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropstartMenu" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropstart
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropstartMenu">
+            <div class="dropdown-menu">
               <button class="dropdown-item" type="button">Action</button>
               <button class="dropdown-item" type="button">Another action</button>
               <button class="dropdown-item" type="button">Something else here</button>
@@ -187,10 +187,10 @@
         </div>
         <div class="col-sm-3 mt-4">
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
               Dropdown menu without Popper
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Action</a></li>
               <li><a class="dropdown-item" href="#">Another action</a></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -200,13 +200,6 @@
       </div>
     </div>
 
-    <script src="../../../node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
-    <script src="../../dist/dom/event-handler.js"></script>
-    <script src="../../dist/dom/selector-engine.js"></script>
-    <script src="../../dist/dom/data.js"></script>
-    <script src="../../dist/dom/manipulator.js"></script>
-    <script src="../../dist/base-component.js"></script>
-    <script src="../../dist/dropdown.js"></script>
-    <script src="../../dist/collapse.js"></script>
+    <script src="../../../dist/js/bootstrap.bundle.js"></script>
   </body>
 </html>

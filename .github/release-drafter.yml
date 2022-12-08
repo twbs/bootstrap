@@ -7,6 +7,9 @@ categories:
   - title: '❗ Breaking Changes'
     labels:
       - 'breaking-change'
+  - title: '🚀 Highlights'
+    labels:
+      - 'release-highlight'
   - title: '🚀 Features'
     labels:
       - 'new-feature'
@@ -17,7 +20,7 @@ categories:
       - 'fix'
       - 'bugfix'
       - 'bug'
-  - title: '⚡ Performance Improvements'
+  - title: '⚡ Performance improvements'
     labels:
       - 'performance'
   - title: '🎨 CSS'
@@ -29,6 +32,9 @@ categories:
   - title: '📖 Docs'
     labels:
       - 'docs'
+  - title: '🛠 Examples'
+    labels:
+      - 'examples'
   - title: '🌎 Accessibility'
     labels:
       - 'accessibility'
