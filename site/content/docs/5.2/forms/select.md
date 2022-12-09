@@ -12,7 +12,7 @@ Custom `<select>` menus need only a custom class, `.form-select` to trigger the 
 
 {{< example >}}
 <select class="form-select" aria-label="Default select example">
-  <option selected>Open this select menu</option>
+  <option selected aria-hidden="true">Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
   <option value="3">Three</option>
@@ -25,14 +25,14 @@ You may also choose from small and large custom selects to match our similarly s
 
 {{< example >}}
 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-  <option selected>Open this select menu</option>
+  <option selected aria-hidden="true">Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
   <option value="3">Three</option>
 </select>
 
 <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-  <option selected>Open this select menu</option>
+  <option selected aria-hidden="true">Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
   <option value="3">Three</option>
@@ -43,7 +43,7 @@ The `multiple` attribute is also supported:
 
 {{< example >}}
 <select class="form-select" multiple aria-label="multiple select example">
-  <option selected>Open this select menu</option>
+  <option selected aria-hidden="true">Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
   <option value="3">Three</option>
@@ -54,7 +54,7 @@ As is the `size` attribute:
 
 {{< example >}}
 <select class="form-select" size="3" aria-label="size 3 select example">
-  <option selected>Open this select menu</option>
+  <option selected aria-hidden="true">Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
   <option value="3">Three</option>
@@ -67,7 +67,7 @@ Add the `disabled` boolean attribute on a select to give it a grayed out appeara
 
 {{< example >}}
 <select class="form-select" aria-label="Disabled select example" disabled>
-  <option selected>Open this select menu</option>
+  <option selected aria-hidden="true">Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
   <option value="3">Three</option>
