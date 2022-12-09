@@ -217,7 +217,7 @@
 
 // Dark mode carousel
 
-.carousel-dark {
+%carousel-dark {
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
     filter: $carousel-dark-control-icon-filter;
@@ -229,5 +229,17 @@
 
   .carousel-caption {
     color: $carousel-dark-caption-color;
+  }
+}
+
+.carousel-dark {
+  @extend %carousel-dark;
+}
+
+@if $enable-dark-mode {
+  @include color-mode(dark) {
+    .carousel {
+      @extend %carousel-dark;
+    }
   }
 }

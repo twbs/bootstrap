@@ -52,8 +52,8 @@ params:
   description:          "Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins."
   authors:              "Mark Otto, Jacob Thornton, and Bootstrap contributors"
 
-  current_version:      "5.2.2"
-  current_ruby_version: "5.2.2"
+  current_version:      "5.2.3"
+  current_ruby_version: "5.2.3"
   docs_version:         "5.2"
   rfs_version:          "v9.0.6"
   github_org:           "https://github.com/twbs"
@@ -66,20 +66,20 @@ params:
   swag:                 "https://cottonbureau.com/people/bootstrap"
 
   download:
-    source:             "https://github.com/twbs/bootstrap/archive/v5.2.2.zip"
-    dist:               "https://github.com/twbs/bootstrap/releases/download/v5.2.2/bootstrap-5.2.2-dist.zip"
-    dist_examples:      "https://github.com/twbs/bootstrap/releases/download/v5.2.2/bootstrap-5.2.2-examples.zip"
+    source:             "https://github.com/twbs/bootstrap/archive/v5.2.3.zip"
+    dist:               "https://github.com/twbs/bootstrap/releases/download/v5.2.3/bootstrap-5.2.3-dist.zip"
+    dist_examples:      "https://github.com/twbs/bootstrap/releases/download/v5.2.3/bootstrap-5.2.3-examples.zip"
 
   cdn:
     # See https://www.srihash.org for info on how to generate the hashes
-    css:              "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-    css_hash:         "sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-    css_rtl:          "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.rtl.min.css"
-    css_rtl_hash:     "sha384-7mQhpDl5nRA5nY9lr8F1st2NbIly/8WqhjTp+0oFxEA/QUuvlbF6M1KXezGBh3Nb"
-    js:               "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
-    js_hash:          "sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
-    js_bundle:        "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-    js_bundle_hash:   "sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    css:              "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    css_hash:         "sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+    css_rtl:          "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.rtl.min.css"
+    css_rtl_hash:     "sha384-DOXMLfHhQkvFFp+rWTZwVlPVqdIhpDVYT9csOnHSgWQWPX0v5MCGtjCJbY6ERspU"
+    js:               "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+    js_hash:          "sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+    js_bundle:        "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    js_bundle_hash:   "sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     popper:           "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     popper_hash:      "sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
 
