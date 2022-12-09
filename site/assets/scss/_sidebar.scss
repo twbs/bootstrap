@@ -14,14 +14,14 @@
 
   @include media-breakpoint-down(lg) {
     .offcanvas-lg {
-      border-right-color: var(--bs-border-color);
+      border-right-color: var(--#{$prefix}border-color);
       box-shadow: $box-shadow-lg;
     }
   }
 }
 
 .bd-links-heading {
-  color: var(--bs-emphasis-color);
+  color: var(--#{$prefix}emphasis-color);
 }
 
 .bd-links-nav {
@@ -47,13 +47,13 @@
   padding: .1875rem .5rem;
   margin-top: .125rem;
   margin-left: 1.125rem;
-  color: var(--bs-body-color);
+  color: var(--#{$prefix}body-color);
   text-decoration: if($link-decoration == none, null, none);
 
   &:hover,
   &:focus,
   &.active {
-    color: var(--bs-emphasis-color);
+    color: var(--#{$prefix}emphasis-color);
     text-decoration: if($link-hover-decoration == underline, none, null);
     background-color: var(--bd-sidebar-link-bg);
   }

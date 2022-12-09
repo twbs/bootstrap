@@ -107,7 +107,7 @@
 }
 
 .DocSearch-Form {
-  @include border-radius(var(--bs-border-radius));
+  @include border-radius(var(--#{$prefix}border-radius));
 }
 
 .DocSearch-Hits {
@@ -122,16 +122,16 @@
 
   a {
     @include border-radius(0);
-    border: solid var(--bs-border-color);
+    border: solid var(--#{$prefix}border-color);
     border-width: 0 1px 1px;
   }
 
   &:first-child a {
-    @include border-top-radius(var(--bs-border-radius));
+    @include border-top-radius(var(--#{$prefix}border-radius));
     border-top-width: 1px;
   }
   &:last-child a {
-    @include border-bottom-radius(var(--bs-border-radius));
+    @include border-bottom-radius(var(--#{$prefix}border-radius));
   }
 }
 

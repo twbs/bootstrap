@@ -1,5 +1,5 @@
 .bd-gutter {
-  --bs-gutter-x: #{$bd-gutter-x};
+  --#{$prefix}gutter-x: #{$bd-gutter-x};
 }
 
 .bd-layout {

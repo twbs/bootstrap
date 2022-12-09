@@ -14,10 +14,10 @@
   @include font-size(.8125rem);
   line-height: 1.4;
   text-align: left;
-  background-color: var(--bs-tertiary-bg);
+  background-color: var(--#{$prefix}tertiary-bg);
 
   a {
-    color: var(--bs-body-color);
+    color: var(--#{$prefix}body-color);
     text-decoration: none;
   }
 
@@ -34,5 +34,5 @@
 .carbon-poweredby {
   display: block;
   margin-top: .75rem;
-  color: var(--bs-body-color) !important;
+  color: var(--#{$prefix}body-color) !important;
 }

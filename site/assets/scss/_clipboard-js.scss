@@ -22,13 +22,13 @@
   display: block;
   padding: .5em;
   line-height: 1;
-  color: var(--bs-body-color);
-  background-color: var(--bs-tertiary-bg);
+  color: var(--#{$prefix}body-color);
+  background-color: var(--#{$prefix}tertiary-bg);
   border: 0;
   @include border-radius(.25rem);
 
   &:hover {
-    color: var(--bs-link-color);
+    color: var(--#{$prefix}link-color);
   }
 
   &:focus {

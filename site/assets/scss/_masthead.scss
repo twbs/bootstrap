@@ -2,8 +2,8 @@
   --bd-pink-rgb: #{to-rgb($pink)};
   padding: 3rem 0;
   // stylelint-disable
-  background-image: linear-gradient(180deg, rgba(var(--bs-body-bg-rgb), .01), rgba(var(--bs-body-bg-rgb), 1) 85%),
-                    radial-gradient(ellipse at top left, rgba(var(--bs-primary-rgb), .5), transparent 50%),
+  background-image: linear-gradient(180deg, rgba(var(--#{$prefix}body-bg-rgb), .01), rgba(var(--#{$prefix}body-bg-rgb), 1) 85%),
+                    radial-gradient(ellipse at top left, rgba(var(--#{$prefix}primary-rgb), .5), transparent 50%),
                     radial-gradient(ellipse at top right, rgba(var(--bd-accent-rgb), .5), transparent 50%),
                     radial-gradient(ellipse at center right, rgba(var(--bd-violet-rgb), .5), transparent 50%),
                     radial-gradient(ellipse at center left, rgba(var(--bd-pink-rgb), .5), transparent 50%);
@@ -16,7 +16,7 @@
   .lead {
     @include font-size(1rem);
     font-weight: 400;
-    color: var(--bs-secondary-color);
+    color: var(--#{$prefix}secondary-color);
   }
 
   .bd-code-snippet {
@@ -30,7 +30,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    background-color: rgba(var(--bs-body-color-rgb), .075);
+    background-color: rgba(var(--#{$prefix}body-color-rgb), .075);
     @include border-radius(.5rem);
 
     @include media-breakpoint-up(lg) {
@@ -84,13 +84,13 @@
   mix-blend-mode: darken;
 
   svg {
-    filter: drop-shadow(0 1px 1px var(--bs-body-bg));
+    filter: drop-shadow(0 1px 1px var(--#{$prefix}body-bg));
   }
 }
 
 .masthead-notice {
   background-color: var(--bd-accent);
-  box-shadow: inset 0 -1px 1px rgba(var(--bs-body-color-rgb), .15), 0 .25rem 1.5rem rgba(var(--bs-body-bg-rgb), .75);
+  box-shadow: inset 0 -1px 1px rgba(var(--#{$prefix}body-color-rgb), .15), 0 .25rem 1.5rem rgba(var(--#{$prefix}body-bg-rgb), .75);
 }
 
 .animate-img {
