@@ -27,7 +27,7 @@
 }
 
 .form-check-input {
-  --#{$prefix}form-check-bg: #{escape-svg($form-check-input-bg)};
+  --#{$prefix}form-check-bg: #{$form-check-input-bg};
 
   width: $form-check-input-width;
   height: $form-check-input-width;
