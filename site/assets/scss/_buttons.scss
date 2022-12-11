@@ -6,8 +6,8 @@
 .btn-bd-primary {
   --bs-btn-font-weight: 600;
   --bs-btn-color: var(--bs-white);
-  --bs-btn-bg: var(--bd-violet);
-  --bs-btn-border-color: var(--bd-violet);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
   --bs-btn-border-radius: .5rem;
   --bs-btn-hover-color: var(--bs-white);
   --bs-btn-hover-bg: #{shade-color($bd-violet, 10%)};
