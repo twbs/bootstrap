@@ -269,6 +269,10 @@ Various form elements have been rebooted for simpler base styles. Here are some 
 
 These changes, and more, are demonstrated below.
 
+{{< callout warning >}}
+{{< partial "callouts/warning-input-support.md" >}}
+{{< /callout >}}
+
 <form class="bd-example">
   <fieldset>
     <legend>Example legend</legend>
@@ -391,10 +395,6 @@ These changes, and more, are demonstrated below.
   </fieldset>
 </form>
 
-{{< callout warning >}}
-{{< partial "callouts/warning-input-support.md" >}}
-{{< /callout >}}
-
 ### Pointers on buttons
 
 Reboot includes an enhancement for `role="button"` to change the default cursor to `pointer`. Add this attribute to elements to help indicate elements are interactive. This role isn't necessary for `<button>` elements, which get their own `cursor` change.
@@ -466,10 +466,8 @@ HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.o
 <input type="text" hidden>
 ```
 
-{{< callout warning >}}
-##### jQuery incompatibility
-
-`[hidden]` is not compatible with jQuery's `$(...).hide()` and `$(...).show()` methods. Therefore, we don't currently especially endorse `[hidden]` over other techniques for managing the `display` of elements.
+{{< callout info >}}
+Since `[hidden]` is not compatible with jQuery's `$(...).hide()` and `$(...).show()` methods, we don't specifically endorse `[hidden]` over other techniques for managing the `display` of elements.
 {{< /callout >}}
 
 To merely toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document, use [the `.invisible` class]({{< docsref "/utilities/visibility" >}}) instead.
