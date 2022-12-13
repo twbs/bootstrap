@@ -7,8 +7,8 @@
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
   color: var(--bd-callout-color, inherit);
-  background-color: var(--bd-callout-bg, var(--#{$prefix}gray-100));
-  border-left: .25rem solid var(--bd-callout-border, var(--#{$prefix}gray-300));
+  background-color: var(--bd-callout-bg, var(--bs-gray-100));
+  border-left: .25rem solid var(--bd-callout-border, var(--bs-gray-300));
 
   h4 {
     margin-bottom: .25rem;
@@ -30,8 +30,8 @@
 // Variations
 @each $variant in $bd-callout-variants {
   .bd-callout-#{$variant} {
-    --bd-callout-color: var(--#{$prefix}#{$variant}-text);
-    --bd-callout-bg: var(--#{$prefix}#{$variant}-bg-subtle);
-    --bd-callout-border: var(--#{$prefix}#{$variant}-border-subtle);
+    --bd-callout-color: var(--bs-#{$variant}-text);
+    --bd-callout-bg: var(--bs-#{$variant}-bg-subtle);
+    --bd-callout-border: var(--bs-#{$variant}-border-subtle);
   }
 }

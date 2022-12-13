@@ -84,12 +84,12 @@
   }
 
   .dropdown-menu {
-    --#{$prefix}dropdown-min-width: 12rem;
-    --#{$prefix}dropdown-padding-x: .25rem;
-    --#{$prefix}dropdown-padding-y: .25rem;
-    --#{$prefix}dropdown-link-hover-bg: rgba(var(--bd-violet-rgb), .1);
-    --#{$prefix}dropdown-link-active-bg: rgba(var(--bd-violet-rgb), 1);
-    @include rfs(.875rem, --#{$prefix}dropdown-font-size);
+    --bs-dropdown-min-width: 12rem;
+    --bs-dropdown-padding-x: .25rem;
+    --bs-dropdown-padding-y: .25rem;
+    --bs-dropdown-link-hover-bg: rgba(var(--bd-violet-rgb), .1);
+    --bs-dropdown-link-active-bg: rgba(var(--bd-violet-rgb), 1);
+    @include rfs(.875rem, --bs-dropdown-font-size);
     @include font-size(.875rem);
     @include border-radius(.5rem);
     box-shadow: $dropdown-box-shadow;
