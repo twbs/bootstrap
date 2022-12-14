@@ -235,3 +235,13 @@
   }
 }
 // scss-docs-end modal-fullscreen-loop
+
+// modal-blur-background
+body.modal-open > :not(.modal) {
+  -webkit-filter: grayscale($modal-backdrop-grayscale) blur($modal-backdrop-blur);
+  -moz-filter: grayscale($modal-backdrop-grayscale) blur($modal-backdrop-blur);
+  -o-filter: grayscale($modal-backdrop-grayscale) blur($modal-backdrop-blur);
+  -ms-filter: grayscale($modal-backdrop-grayscale) blur($modal-backdrop-blur);
+  filter: grayscale($modal-backdrop-grayscale) blur($modal-backdrop-blur);
+}
+// scss-docs-end modal-fullscreen-loop
