@@ -104,7 +104,7 @@
     "@popperjs/core": "^2.11.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.13",
+    "@babel/core": "^7.20.5",
     "@babel/cli": "^7.18.10",
     "@babel/preset-env": "^7.19.0",
     "@popperjs/core": "^2.11.5",
@@ -123,7 +123,7 @@
     "find-unused-sass-variables": "^4.0.4",
     "globby": "^13.1.2",
     "hammer-simulator": "0.0.1",
-    "hugo-bin": "^0.89.0",
+    "hugo-bin": "^0.96.0",
     "ip": "^1.1.8",
     "jquery": "^3.6.0",
     "karma": "^6.4.0",
@@ -147,7 +147,7 @@
     "shelljs": "^0.8.5",
     "stylelint": "^14.11.0",
     "stylelint-config-twbs-bootstrap": "^6.0.0",
-    "terser": "^5.14.2",
+    "terser": "^5.16.1",
     "vnu-jar": "21.10.12"
   },
   "files": [
