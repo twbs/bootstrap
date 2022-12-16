@@ -44,6 +44,18 @@
   }
 }
 
-.btn-close-white {
+%btn-close-white {
   filter: var(--#{$prefix}btn-close-white-filter);
+}
+
+.btn-close-white {
+  @extend %btn-close-white;
+}
+
+@if $enable-dark-mode {
+  @include color-mode(dark) {
+    .btn-close {
+      @extend %btn-close-white;
+    }
+  }
 }
