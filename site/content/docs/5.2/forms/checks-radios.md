@@ -304,4 +304,10 @@ Different variants of `.btn`, such at the various outlined styles, are supported
 
 ### Variables
 
+Variables for checks:
+
 {{< scss-docs name="form-check-variables" file="scss/_variables.scss" >}}
+
+Variables for switches:
+
+{{< scss-docs name="form-switch-variables" file="scss/_variables.scss" >}}

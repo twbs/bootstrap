@@ -22,6 +22,20 @@ $utilities: map-merge(
       )
     ),
     // scss-docs-end utils-float
+    // Object Fit utilities
+    // scss-docs-start utils-object-fit
+    "object-fit": (
+      responsive: true,
+      property: object-fit,
+      values: (
+        contain: contain,
+        cover: cover,
+        fill: fill,
+        scale: scale-down,
+        none: none,
+      )
+    ),
+    // scss-docs-end utils-object-fit
     // Opacity utilities
     // scss-docs-start utils-opacity
     "opacity": (
@@ -38,6 +52,14 @@ $utilities: map-merge(
     // scss-docs-start utils-overflow
     "overflow": (
       property: overflow,
+      values: auto hidden visible scroll,
+    ),
+    "overflow-x": (
+      property: overflow-x,
+      values: auto hidden visible scroll,
+    ),
+    "overflow-y": (
+      property: overflow-y,
       values: auto hidden visible scroll,
     ),
     // scss-docs-end utils-overflow
@@ -140,6 +162,11 @@ $utilities: map-merge(
         "border-opacity": 1
       ),
       values: $utilities-border-colors
+    ),
+    "subtle-border-color": (
+      property: border-color,
+      class: border,
+      values: $utilities-border-subtle
     ),
     "border-width": (
       css-var: true,
@@ -450,6 +477,18 @@ $utilities: map-merge(
       class: gap,
       values: $spacers
     ),
+    "row-gap": (
+      responsive: true,
+      property: row-gap,
+      class: row-gap,
+      values: $spacers
+    ),
+    "column-gap": (
+      responsive: true,
+      property: column-gap,
+      class: column-gap,
+      values: $spacers
+    ),
     // scss-docs-end utils-spacing
     // Text
     // scss-docs-start utils-text
@@ -473,11 +512,12 @@ $utilities: map-merge(
       property: font-weight,
       class: fw,
       values: (
-        light: $font-weight-light,
         lighter: $font-weight-lighter,
+        light: $font-weight-light,
         normal: $font-weight-normal,
-        bold: $font-weight-bold,
+        medium: $font-weight-medium,
         semibold: $font-weight-semibold,
+        bold: $font-weight-bold,
         bolder: $font-weight-bolder
       )
     ),
@@ -535,9 +575,12 @@ $utilities: map-merge(
       values: map-merge(
         $utilities-text-colors,
         (
-          "muted": $text-muted,
+          "muted": $text-muted, // deprecated
           "black-50": rgba($black, .5), // deprecated
           "white-50": rgba($white, .5), // deprecated
+          "body-secondary": var(--#{$prefix}secondary-color),
+          "body-tertiary": var(--#{$prefix}tertiary-color),
+          "body-emphasis": var(--#{$prefix}emphasis-color),
           "reset": inherit,
         )
       )
@@ -552,6 +595,11 @@ $utilities: map-merge(
         100: 1
       )
     ),
+    "text-color": (
+      property: color,
+      class: text,
+      values: $utilities-text-emphasis-colors
+    ),
     // scss-docs-end utils-color
     // scss-docs-start utils-bg-color
     "background-color": (
@@ -563,7 +611,10 @@ $utilities: map-merge(
       values: map-merge(
         $utilities-bg-colors,
         (
-          "transparent": transparent
+          "transparent": transparent,
+          "body-secondary": rgba(var(--#{$prefix}secondary-bg-rgb), var(--#{$prefix}bg-opacity)),
+          "body-tertiary": rgba(var(--#{$prefix}tertiary-bg-rgb), var(--#{$prefix}bg-opacity)),
+          "body-emphasis": rgba(var(--#{$prefix}emphasis-bg-rgb), var(--#{$prefix}bg-opacity)),
         )
       )
     ),
@@ -577,6 +628,11 @@ $utilities: map-merge(
         75: .75,
         100: 1
       )
+    ),
+    "subtle-background-color": (
+      property: background-color,
+      class: bg,
+      values: $utilities-bg-subtle
     ),
     // scss-docs-end utils-bg-color
     "gradient": (
@@ -614,22 +670,62 @@ $utilities: map-merge(
     "rounded-top": (
       property: border-top-left-radius border-top-right-radius,
       class: rounded-top,
-      values: (null: var(--#{$prefix}border-radius))
+      values: (
+        null: var(--#{$prefix}border-radius),
+        0: 0,
+        1: var(--#{$prefix}border-radius-sm),
+        2: var(--#{$prefix}border-radius),
+        3: var(--#{$prefix}border-radius-lg),
+        4: var(--#{$prefix}border-radius-xl),
+        5: var(--#{$prefix}border-radius-2xl),
+        circle: 50%,
+        pill: var(--#{$prefix}border-radius-pill)
+      )
     ),
     "rounded-end": (
       property: border-top-right-radius border-bottom-right-radius,
       class: rounded-end,
-      values: (null: var(--#{$prefix}border-radius))
+      values: (
+        null: var(--#{$prefix}border-radius),
+        0: 0,
+        1: var(--#{$prefix}border-radius-sm),
+        2: var(--#{$prefix}border-radius),
+        3: var(--#{$prefix}border-radius-lg),
+        4: var(--#{$prefix}border-radius-xl),
+        5: var(--#{$prefix}border-radius-2xl),
+        circle: 50%,
+        pill: var(--#{$prefix}border-radius-pill)
+      )
     ),
     "rounded-bottom": (
       property: border-bottom-right-radius border-bottom-left-radius,
       class: rounded-bottom,
-      values: (null: var(--#{$prefix}border-radius))
+      values: (
+        null: var(--#{$prefix}border-radius),
+        0: 0,
+        1: var(--#{$prefix}border-radius-sm),
+        2: var(--#{$prefix}border-radius),
+        3: var(--#{$prefix}border-radius-lg),
+        4: var(--#{$prefix}border-radius-xl),
+        5: var(--#{$prefix}border-radius-2xl),
+        circle: 50%,
+        pill: var(--#{$prefix}border-radius-pill)
+      )
     ),
     "rounded-start": (
       property: border-bottom-left-radius border-top-left-radius,
       class: rounded-start,
-      values: (null: var(--#{$prefix}border-radius))
+      values: (
+        null: var(--#{$prefix}border-radius),
+        0: 0,
+        1: var(--#{$prefix}border-radius-sm),
+        2: var(--#{$prefix}border-radius),
+        3: var(--#{$prefix}border-radius-lg),
+        4: var(--#{$prefix}border-radius-xl),
+        5: var(--#{$prefix}border-radius-2xl),
+        circle: 50%,
+        pill: var(--#{$prefix}border-radius-pill)
+      )
     ),
     // scss-docs-end utils-border-radius
     // scss-docs-start utils-visibility
@@ -640,8 +736,13 @@ $utilities: map-merge(
         visible: visible,
         invisible: hidden,
       )
-    )
+    ),
     // scss-docs-end utils-visibility
+    "z-index": (
+      property: z-index,
+      class: z,
+      values: $zindex-levels,
+    )
   ),
   $utilities
 );
