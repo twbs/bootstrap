@@ -155,6 +155,7 @@
   "files": [
     "dist/{css,js}/*.{css,js,map}",
     "js/{src,dist}/**/*.{js,map}",
+    "js/index.{esm,umd}.js",
     "scss/**/*.scss"
   ],
   "hugo-bin": {
