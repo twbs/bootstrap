@@ -11,6 +11,9 @@ env:
   FORCE_COLOR: 2
   NODE: 18
 
+permissions:
+  contents: read
+
 jobs:
   lint:
     runs-on: ubuntu-latest
