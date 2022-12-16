@@ -11,8 +11,15 @@ env:
   FORCE_COLOR: 2
   NODE: 18
 
+permissions:
+  contents: read
+
 jobs:
   run:
+    permissions:
+      # allow coverallsapp/github-action to create new checks issues and fetch code
+      checks: write
+      contents: read
     name: JS Tests
     runs-on: ubuntu-latest
 
