@@ -37,8 +37,8 @@
 
       &:hover,
       &.active {
-        color: $bd-purple;
-        background-color: $bd-purple-light;
+        color: var(--bs-emphasis-color);
+        background-color: var(--bd-sidebar-link-bg);
       }
       &.active {
         font-weight: 500;
