@@ -46,11 +46,11 @@ Our default branch is for development of our Bootstrap 5 release. Head to the [`
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.2.2.zip)
+- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.2.3.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
-- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@v5.2.2`
-- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@v5.2.2`
-- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.2.2`
+- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@v5.2.3`
+- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@v5.2.3`
+- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.2.3`
 - Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap` Sass: `Install-Package bootstrap.sass`
 
 Read the [Getting started page](https://getbootstrap.com/docs/5.2/getting-started/introduction/) for information on the framework contents, templates, examples, and more.
@@ -58,7 +58,7 @@ Read the [Getting started page](https://getbootstrap.com/docs/5.2/getting-starte
 
 ## Status
 
-[![Build Status](https://img.shields.io/github/workflow/status/twbs/bootstrap/JS%20Tests/main?label=JS%20Tests&logo=github)](https://github.com/twbs/bootstrap/actions?query=workflow%3AJS+Tests+branch%3Amain)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/twbs/bootstrap/js.yml?branch=main&label=JS%20Tests&logo=github)](https://github.com/twbs/bootstrap/actions?query=workflow%3AJS+Tests+branch%3Amain)
 [![npm version](https://img.shields.io/npm/v/bootstrap)](https://www.npmjs.com/package/bootstrap)
 [![Gem version](https://img.shields.io/gem/v/bootstrap)](https://rubygems.org/gems/bootstrap)
 [![Meteor Atmosphere](https://img.shields.io/badge/meteor-twbs%3Abootstrap-blue)](https://atmospherejs.com/twbs/bootstrap)
@@ -72,6 +72,7 @@ Read the [Getting started page](https://getbootstrap.com/docs/5.2/getting-starte
 [![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=SkxZcStBeExEdVJqQ2hWYnlWckpkNmNEY213SFp6WHFETWk2bGFuY3pCbz0tLXhqbHJsVlZhQnRBdEpod3NLSDMzaHc9PQ==--3d0b75245708616eb93113221beece33e680b229)](https://www.browserstack.com/automate/public-build/SkxZcStBeExEdVJqQ2hWYnlWckpkNmNEY213SFp6WHFETWk2bGFuY3pCbz0tLXhqbHJsVlZhQnRBdEpod3NLSDMzaHc9PQ==--3d0b75245708616eb93113221beece33e680b229)
 [![Backers on Open Collective](https://img.shields.io/opencollective/backers/bootstrap)](#backers)
 [![Sponsors on Open Collective](https://img.shields.io/opencollective/sponsors/bootstrap)](#sponsors)
+![OpenSSF Scorecard](https://img.shields.io/ossf-scorecard/github.com/twbs/bootstrap)
 
 
 ## What's included
