@@ -25,7 +25,7 @@ $bd-callout-variants: info, warning, danger !default;
   --bd-sidebar-link-bg: rgba(var(--bd-violet-rgb), .1);
 }
 
-[data-bs-theme="dark"] {
+@include color-mode(dark, true) {
   --bd-violet: #{mix($bd-violet, $white, 75%)};
   --bd-violet-bg: #{$bd-violet};
   --bd-sidebar-link-bg: rgba(#{to-rgb(mix($bd-violet, $black, 75%))}, .5);

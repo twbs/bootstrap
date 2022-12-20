@@ -44,18 +44,18 @@
   }
 }
 
-@mixin test() {
+@mixin btn-close-white() {
   filter: var(--#{$prefix}btn-close-white-filter);
 }
 
-%btn-close-white {
-  @include test();
+.btn-close-white {
+  @include btn-close-white();
 }
 
 @if $enable-dark-mode {
   @include color-mode(dark) {
     .btn-close {
-      @include test();
+      @include btn-close-white();
     }
   }
 }
