@@ -66,6 +66,32 @@ Once again, this spinner is built with `currentColor`, so you can easily change 
 {{< /spinner.inline >}}
 {{< /example >}}
 
+## Loading dots spinner
+
+The loading dots spinner is a special spinner that's built using an SVG, making it much easier to work style and animate with CSS. Rather than generate pseudo-elements with `::before` and `::after`, we just have one, tiny HTML element.
+
+{{< callout info >}}
+Loading dots should be named `.loading-dots`, but for consistency's sake, we're using `.spinner-dots`.
+{{< /callout >}}
+
+{{< example >}}
+<svg class="spinner-dots" width="32" height="16" role="status" xmlns="http://www.w3.org/2000/svg">
+  <title>Loading...</title><circle cx="4" cy="8" r="4"/><circle cx="16" cy="8" r="4"/><circle cx="28" cy="8" r="4"/>
+</svg>
+{{< /example >}}
+
+And as usual, this spinner is styled with `currentColor`, so text color utilities can be applied.
+
+{{< example >}}
+{{< spinner.inline >}}
+{{- range (index $.Site.Data "theme-colors") }}
+<svg class="spinner-dots text-{{ .name }}" width="32" height="16" role="status" xmlns="http://www.w3.org/2000/svg">
+  <title>Loading...</title><circle cx="4" cy="8" r="4"/><circle cx="16" cy="8" r="4"/><circle cx="28" cy="8" r="4"/>
+</svg>
+{{- end -}}
+{{< /spinner.inline >}}
+{{< /example >}}
+
 ## Alignment
 
 Spinners in Bootstrap are built with `rem`s, `currentColor`, and `display: inline-flex`. This means they can easily be resized, recolored, and quickly aligned.
