@@ -1187,6 +1187,39 @@ describe('Carousel', () => {
         })
       })
     })
+
+    it('should update the active element if none is active', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div id="myCarousel" class="carousel slide">',
+          '  <div class="carousel-indicators">',
+          '    <button type="button" data-bs-target="myCarousel" data-bs-slide-to="0" aria-label="Slide 1"></button>',
+          '    <button type="button" data-bs-target="myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>',
+          '    <button type="button" data-bs-target="myCarousel" data-bs-slide-to="2" aria-label="Slide 3" id="thirdIndicator"></button>',
+          '  </div>',
+          '  <div class="carousel-inner">',
+          '    <div id="item1" class="carousel-item active">item 1</div>',
+          '    <div class="carousel-item">item 2</div>',
+          '    <div id="item3" class="carousel-item">item 3</div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const carouselEl = fixtureEl.querySelector('#myCarousel')
+        const thirdIndicator = fixtureEl.querySelector('#thirdIndicator')
+        const thirdItem = fixtureEl.querySelector('#item3')
+        const carousel = new Carousel(carouselEl, {})
+
+        carousel.to(2)
+
+        carouselEl.addEventListener('slid.bs.carousel', () => {
+          expect(thirdItem).toHaveClass('active')
+          expect(thirdIndicator).toHaveClass('active')
+          expect(thirdIndicator.getAttribute('aria-current')).toEqual('true')
+          resolve()
+        })
+      })
+    })
   })
 
   describe('rtl function', () => {
