@@ -379,7 +379,7 @@ $enable-deprecation-messages: true !default;
 $enable-important-utilities:  true !default;
 
 $enable-dark-mode:            true !default;
-$color-mode-type:             data !default;
+$color-mode-type:             data !default; // `data` or `media-query`
 
 // Prefix for :root CSS variables
 
