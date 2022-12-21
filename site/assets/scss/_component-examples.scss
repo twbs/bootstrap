@@ -352,7 +352,7 @@
   }
 
   pre {
-    padding: 0;
+    padding: 1em 0;
     margin-top: .625rem;
     margin-right: 1.875rem;
     margin-bottom: .625rem;
@@ -365,15 +365,6 @@
     @include font-size(inherit);
     color: var(--bs-body-color); // Effectively the base text color
     word-wrap: normal;
-  }
-}
-
-/* dirty hack to work around Firefox's current scrollbar implementation for overflow:auto
-   containers that doesn't leave sufficient space for the scrollbar to appear without covering content */
-/* stylelint-disable-next-line function-url-quotes */
-@-moz-document url-prefix() {
-  .highlight pre {
-    padding: 1em 0;
   }
 }
 
