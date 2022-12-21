@@ -368,6 +368,14 @@
   }
 }
 
+/* dirty hack to work around Firefox's current scrollbar implementation for overflow:auto
+   containers that doesn't leave sufficient space for the scrollbar to appear without covering content */
+@-moz-document url-prefix() {
+  .highlight pre {
+    padding: 1em 0;
+  }
+}
+
 .bd-code-snippet {
   margin: 0 ($bd-gutter-x * -.5) $spacer;
 
