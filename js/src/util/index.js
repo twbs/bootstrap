@@ -96,22 +96,6 @@ const getElement = object => {
   return null
 }
 
-/* https://gomakethings.com/how-to-get-all-of-an-elements-siblings-with-vanilla-js/ */
-const getSiblings = element => {
-  const siblings = []
-  let sibling = element?.parentNode?.firstChild
-
-  while (sibling) {
-    if (sibling.nodeType === 1 && sibling !== element) {
-      siblings.push(sibling)
-    }
-
-    sibling = sibling.nextSibling
-  }
-
-  return siblings
-}
-
 const isVisible = element => {
   if (!isElement(element) || element.getClientRects().length === 0) {
     return false
@@ -278,10 +262,11 @@ const executeAfterTransition = (callback, transitionElement, waitForTransition =
  * @param activeElement   The active element
  * @param shouldGetNext   Choose to get next or previous element
  * @param isCycleAllowed
+ * @param maxItems        Choose between specified first elements
  * @return {Element|elem} The proper element
  */
-const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
-  const listLength = list.length
+const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed, maxItems = null) => {
+  const listLength = maxItems || list.length
   let index = list.indexOf(activeElement)
 
   // if the element does not exist in the list return an element
@@ -307,7 +292,6 @@ export {
   getElement,
   getjQuery,
   getNextActiveElement,
-  getSiblings,
   getTransitionDurationFromElement,
   getUID,
   isDisabled,
