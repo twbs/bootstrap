@@ -9,6 +9,10 @@
 <script src="https://cdn.jsdelivr.net/npm/@stackblitz/sdk@1/bundles/sdk.umd.js"></script>
 {{- end }}
 
+{{ if eq .Page.Layout "single" -}}
+<script src="https://cdn.jsdelivr.net/npm/@stackblitz/sdk@1/bundles/sdk.umd.js"></script>
+{{- end }}
+
 {{- $vendor := resources.Match "js/vendor/*.js" -}}
 {{- $js := resources.Match "js/*.js" -}}
 {{- $targetDocsJSPath := path.Join "/docs" .Site.Params.docs_version "assets/js/docs.js" -}}
@@ -68,5 +72,102 @@ ${htmlSnippet.replace(/^/gm, '    ')}
 
     StackBlitzSDK.openProject(project, { openFile: 'index.html' })
   }
+</script>
+{{- end }}
+
+{{ if eq .Page.Layout "single" -}}
+<script>
+  // Open in StackBlitz logic
+  document.querySelectorAll('.btn-edit').forEach(btn => {
+    btn.addEventListener('click', event => {
+      const exampleRef = event.target.closest('.btn-edit').getAttribute('data-sb-js-snippet')
+
+      StackBlitzSDK.openBootstrapSnippet(exampleRef)
+    })
+
+    StackBlitzSDK.openBootstrapSnippet = async (exampleRef) => {
+      const isRTL = '-rtl' === exampleRef.substring(exampleRef.length - 4)
+
+      const exampleMarkup = "../examples/" + exampleRef + "/index.html"
+      let markup
+      let jsSnippet = 'import \'./style.css\';'
+      
+      await fetch(exampleMarkup)
+        .then(response => response.text())
+        .then(text => markup = text)
+
+      let d = document.createElement('html')
+      d.innerHTML = markup
+
+      const exampleCSS = d.querySelector('style').innerHTML
+
+      // Get CSS file
+      const css = "../examples/"
+        + (isRTL ? (exampleRef.substring(0, exampleRef.length - 4)) : exampleRef)
+        + "/"
+        + (isRTL ? (exampleRef.substring(0, exampleRef.length - 4) + '.rtl') : exampleRef)
+        + ".css"
+      let cssContent = ''
+      const response = await fetch(css)
+
+      if (response.ok) {
+        cssContent = await response.text()
+      }
+
+      // Get JS file
+      // First try in the basic directory
+      const js = "../examples/" + (isRTL ? (exampleRef.substring(0, exampleRef.length - 4)) : exampleRef) + "/" + (isRTL ? (exampleRef.substring(0, exampleRef.length - 4)) : exampleRef) + ".js"
+      let jsContent = ''
+      const responseJS = await fetch(js)
+
+      if (responseJS.ok) {
+        jsContent = await responseJS.text()
+      }
+
+      // Second try for RTL in the basic-rtl directory
+      if (isRTL && !responseJS.ok) {
+        const jsRTL = "../examples/" + exampleRef + "/" + exampleRef.substring(0, exampleRef.length - 4) + ".js"
+        const responseJSRTL = await fetch(jsRTL)
+
+        if (responseJSRTL.ok) {
+          jsContent = await responseJSRTL.text()
+        }
+      }
+
+      // Get HTML content
+      let htmlContent = d.querySelector('body').outerHTML.replaceAll('"/docs/5.', '"https://getbootstrap.com/docs/5.')
+
+      // Special use case to handle images from Heroes example
+      htmlContent = htmlContent.replaceAll('src="bootstrap-', 'src="https://getbootstrap.com/docs/5.2/examples/' + exampleRef + '/bootstrap-')
+      // Special use case to handle images from Features example
+      htmlContent = htmlContent.replaceAll('background-image: url(\'', 'background-image: url(\'https://getbootstrap.com/docs/5.2/examples/' + exampleRef + '/')
+
+      const t = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ .Site.Params.cdn.css }}" rel="stylesheet">
+    <title>Bootstrap Example</title>
+    <${'script'} src="{{ .Site.Params.cdn.js_bundle }}"></${'script'}>
+  </head>
+  ${htmlContent}
+</html>`
+
+      const project = {
+        files: {
+          'index.html': t,
+          'index.js': jsSnippet + '\r\n\r\n' + jsContent,
+          'style.css': exampleCSS + cssContent,
+        },
+        title: 'Bootstrap Example',
+        description: `Official example from ${window.location.href}`,
+        template: 'javascript',
+        tags: ['bootstrap']
+      }
+
+      StackBlitzSDK.openProject(project, { openFile: 'index.html' })
+    }
+  })
 </script>
 {{- end }}
