@@ -1536,7 +1536,7 @@ $progress-bar-transition:           width .6s ease !default;
 $list-group-color:                  var(--#{$prefix}body-color) !default;
 $list-group-bg:                     var(--#{$prefix}body-bg) !default;
 $list-group-border-color:           var(--#{$prefix}border-color) !default;
-$list-group-border-width:           $border-width !default;
+$list-group-border-width:           var(--#{$prefix}border-width) !default;
 $list-group-border-radius:          var(--#{$prefix}border-radius) !default;
 
 $list-group-item-padding-y:         $spacer * .5 !default;

@@ -155,14 +155,14 @@ Bootstrap does not yet ship with a built-in color mode picker, but you can use t
 
 ### Building with Sass
 
-Our new dark mode option is available to use for all users of Bootstrap, but it's controlled via data attributes instead of media queries and does not automatically toggle your project's color mode. You can disable our dark mode entirely via Sass by changing `@enable-dark-mode` to `false`.
+Our new dark mode option is available to use for all users of Bootstrap, but it's controlled via data attributes instead of media queries and does not automatically toggle your project's color mode. You can disable our dark mode entirely via Sass by changing `$enable-dark-mode` to `false`.
 
 We use a custom Sass mixin, `color-mode()`, to help you control _how_ color modes are applied. By default, we use a `data` attribute approach, allowing you to create more user-friendly experiences where your visitors can choose to have an automatic dark mode or control their preference (like in our own docs here). This is also an easy and scalable way to add different themes and more custom color modes beyond light and dark.
 
 In case you want to use media queries and only make color modes automatic, you can change the mixin's default type via Sass variable. Consider the following snippet and it's compiled CSS output.
 
 ```scss
-@color-mode-type: data !default;
+$color-mode-type: data;
 
 @include color-mode(dark) {
   .element {
@@ -184,7 +184,7 @@ Outputs to:
 And when setting to `media-query`:
 
 ```scss
-@color-mode-type: media-query;
+$color-mode-type: media-query;
 
 @include color-mode(dark) {
   .element {
