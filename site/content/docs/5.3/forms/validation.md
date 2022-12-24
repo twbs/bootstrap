@@ -5,7 +5,7 @@ description: Provide valuable, actionable feedback to your users with HTML5 form
 group: forms
 toc: true
 extra_js:
-  - src: "/docs/5.2/assets/js/validate-forms.js"
+  - src: "/docs/5.3/assets/js/validate-forms.js"
     async: true
 ---
 
