@@ -1,3 +1,5 @@
+// stylelint-disable selector-attribute-quotes
+
 @import "../../functions";
 @import "../../variables";
 @import "../../variables-dark";
@@ -6,8 +8,8 @@
 
 @include describe("global $color-mode-type: data") {
   @include it("generates data attribute selectors for dark mode") {
-    @include assert {
-      @include output {
+    @include assert() {
+      @include output() {
         @include color-mode(dark) {
           .element {
             color: var(--bs-primary-text);
@@ -18,7 +20,7 @@
           --custom-color: #{mix($indigo, $blue, 50%)};
         }
       }
-      @include expect {
+      @include expect() {
         [data-bs-theme=dark] .element {
           color: var(--bs-primary-text);
           background-color: var(--bs-primary-bg-subtle);
@@ -35,8 +37,8 @@
   @include it("generates media queries for dark mode") {
     $color-mode-type: media-query !global;
 
-    @include assert {
-      @include output {
+    @include assert() {
+      @include output() {
         @include color-mode(dark) {
           .element {
             color: var(--bs-primary-text);
@@ -47,7 +49,7 @@
           --custom-color: #{mix($indigo, $blue, 50%)};
         }
       }
-      @include expect {
+      @include expect() {
         @media (prefers-color-scheme: dark) {
           .element {
             color: var(--bs-primary-text);

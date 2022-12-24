@@ -5,12 +5,12 @@ $enable-important-utilities: false;
 @import "../../mixins/utilities";
 
 @mixin test-generate-utility($params...) {
-  @include assert () {
-    @include output () {
+  @include assert() {
+    @include output() {
       @include generate-utility($params...);
     }
 
-    @include expect () {
+    @include expect() {
       @content;
     }
   }
