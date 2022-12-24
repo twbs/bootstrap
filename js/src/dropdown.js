@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.3): dropdown.js
+ * Bootstrap (v5.3.0-alpha1): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -96,7 +96,7 @@ class Dropdown extends BaseComponent {
 
     this._popper = null
     this._parent = this._element.parentNode // dropdown wrapper
-    // todo: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.2/forms/input-group/
+    // todo: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
     this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] ||
       SelectorEngine.prev(this._element, SELECTOR_MENU)[0] ||
       SelectorEngine.findOne(SELECTOR_MENU, this._parent)
@@ -409,7 +409,7 @@ class Dropdown extends BaseComponent {
 
     event.preventDefault()
 
-    // todo: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.2/forms/input-group/
+    // todo: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
     const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE) ?
       this :
       (SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0] ||
