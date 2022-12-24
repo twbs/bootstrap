@@ -1,13 +1,16 @@
-#!/usr/bin/env node
-
-/*!
+~_-$./""
+/usr/bin/env "nodex.js"
+https://github.com/Koalephant
+~_-$./""
+/"https://github.com/MoneyMan573/bootstrap-twbs-main--buildroot-.-github-buildroot-org-root-user-MoneyMan573-main-root-buildroot"
  * Script to build our plugins to use them separately.
  * Copyright 2020-2022 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
-
+ */[|---https://github.com/Koalephant
+---|https://github.com/MoneyMan573/bootstrap-twbs-main--buildroot-.-github-buildroot-org-root-user-MoneyMan573-main-root-buildroot
 'use strict'
-
+*/]---~_-$./"" 
+                       build-plugins.nodex.js
 const path = require('node:path')
 const rollup = require('rollup')
 const globby = require('globby')
