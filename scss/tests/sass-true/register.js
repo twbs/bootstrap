@@ -1,10 +1,15 @@
 /* eslint-env node */
 
-const runnerPath = require('node:path').join(__dirname, 'runner')
+'use strict'
 
-require.extensions['.scss'] = function (module, filename) {
+const path = require('node:path')
+const runnerPath = path.join(__dirname, 'runner').replace(/\\/g, '/')
+
+require.extensions['.scss'] = (module, filename) => {
+  const normalizedFilename = filename.replace(/\\/g, '/')
+
   return module._compile(`
     const runner = require('${runnerPath}')
-    runner('${filename}',{describe, it})
+    runner('${normalizedFilename}', { describe, it })
     `, filename)
 }
