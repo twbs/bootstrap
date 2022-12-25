@@ -157,7 +157,8 @@
     "dist/{css,js}/*.{css,js,map}",
     "js/{src,dist}/**/*.{js,map}",
     "js/index.{esm,umd}.js",
-    "scss/**/*.scss"
+    "scss/**/*.scss",
+    "!scss/tests/**"
   ],
   "hugo-bin": {
     "buildTags": "extended"
