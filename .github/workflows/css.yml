@@ -33,8 +33,8 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
-      - name: Run CSS tests
-        run: npm run css-test
-
       - name: Build CSS
         run: npm run css
+
+      - name: Run CSS tests
+        run: npm run css-test
