@@ -33,12 +33,10 @@ aliases: "/examples/"
                                             alt=""
                                             width="480" height="300"
                                             loading="lazy">
-          </a>
-          <h3 class="h5 mb-1">
-            <a href="/docs/{{ $.Site.Params.docs_version }}/examples/{{ $example.name | urlize }}/"{{ if in $example.name "RTL" }} hreflang="ar"{{ end }}>
+            <h3 class="h5 mb-1">
               {{ $example.name }}
-            </a>
-          </h3>
+            </h3>
+          </a>
           <p class="text-muted">{{ $example.description }}</p>
         </div>
       {{ if (eq (add $i 1) $len) }}</div>{{ end }}
