@@ -28,7 +28,7 @@
 
   {{- if eq $show_markup true -}}
     {{- if eq $show_preview true -}}
-      <div class="d-flex align-items-center highlight-toolbar bg-light ps-3 pe-2 py-1">
+      <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1">
         <small class="font-monospace text-muted text-uppercase">{{- $lang -}}</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap"{{ with $stackblitz_add_js }} data-sb-js-snippet="{{ $stackblitz_add_js }}"{{ end }} title="Try it on StackBlitz">
