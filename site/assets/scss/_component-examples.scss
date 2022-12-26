@@ -180,7 +180,7 @@
     width: 10rem;
     color: var(--bs-secondary-color);
     background-color: var(--bs-tertiary-bg);
-    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+    border: var(--bs-border-width) solid var(--bs-border-color);
 
     > div {
       display: flex;
