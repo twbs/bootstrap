@@ -131,6 +131,8 @@
 
 @if $enable-dark-mode {
   @include color-mode(dark, true) {
+    color-scheme: dark;
+
     // scss-docs-start root-dark-mode-vars
     --#{$prefix}body-color: #{$body-color-dark};
     --#{$prefix}body-color-rgb: #{to-rgb($body-color-dark)};
