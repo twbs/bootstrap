@@ -1,15 +1,11 @@
 // stylelint-disable selector-class-pattern
 
-:root,
-[data-bs-theme="light"] {
+:root {
   --docsearch-primary-color: var(--bd-violet);
   --docsearch-logo-color: var(--bd-violet);
 }
 
 @include color-mode(dark, true) {
-  --docsearch-primary-color: var(--bd-violet);
-  --docsearch-logo-color: var(--bd-violet);
-
   // From here, the values are copied from https://cdn.jsdelivr.net/npm/@docsearch/css@3
   // in html[data-theme="dark"] selector
   // and are slightly modified for formatting purpose
