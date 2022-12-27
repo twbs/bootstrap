@@ -7,9 +7,41 @@
 @import "functions";
 @import "variables";
 @import "variables-dark";
+
+// Create your own map
+// stylelint-disable-next-line scss/dollar-variable-default
+$custom-colors: (
+  "custom-color": #712cf9
+);
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
 @import "maps";
 @import "mixins";
 @import "utilities";
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$custom-colors-text: (
+  "custom-color": #712cf9
+);
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$custom-colors-bg-subtle: (
+  "custom-color": #e1d2fe
+);
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$custom-colors-border-subtle: (
+  "custom-color": #bfa1fc
+);
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors-text: map-merge($theme-colors-text, $custom-colors-text);
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors-bg-subtle: map-merge($theme-colors-bg-subtle, $custom-colors-bg-subtle);
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors-border-subtle: map-merge($theme-colors-border-subtle, $custom-colors-border-subtle);
 
 // Layout & components
 @import "root";
