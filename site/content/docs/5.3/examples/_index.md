@@ -33,7 +33,9 @@ aliases: "/examples/"
                                             alt=""
                                             width="480" height="300"
                                             loading="lazy">
-            <h3 class="h5 mb-1">{{ $example.name }}</h3>
+            <h3 class="h5 mb-1">
+              {{ $example.name }}
+            </h3>
           </a>
           <p class="text-muted">{{ $example.description }}</p>
         </div>

@@ -18,8 +18,6 @@ $bd-callout-variants: info, warning, danger !default;
   --bd-accent-rgb: #{to-rgb($bd-accent)};
   --bd-pink-rgb: #{to-rgb($pink-500)};
   --bd-teal-rgb: #{to-rgb($teal-500)};
-  --docsearch-primary-color: var(--bd-violet);
-  --docsearch-logo-color: var(--bd-violet);
 
   --bd-violet-bg: var(--bd-violet);
   --bd-sidebar-link-bg: rgba(var(--bd-violet-rgb), .1);
