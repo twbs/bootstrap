@@ -2,10 +2,14 @@ name: BrowserStack
 
 on:
   push:
+  workflow_dispatch:
 
 env:
   FORCE_COLOR: 2
-  NODE: 16
+  NODE: 18
+
+permissions:
+  contents: read
 
 jobs:
   browserstack:
@@ -15,10 +19,12 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: "${{ env.NODE }}"
           cache: npm

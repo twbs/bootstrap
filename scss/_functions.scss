@@ -40,11 +40,11 @@
 // stylelint-disable scss/dollar-variable-pattern
 @function rgba-css-var($identifier, $target) {
   @if $identifier == "body" and $target == "bg" {
-    @return rgba(var(--#{$variable-prefix}#{$identifier}-bg-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+    @return rgba(var(--#{$prefix}#{$identifier}-bg-rgb), var(--#{$prefix}#{$target}-opacity));
   } @if $identifier == "body" and $target == "text" {
-    @return rgba(var(--#{$variable-prefix}#{$identifier}-color-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+    @return rgba(var(--#{$prefix}#{$identifier}-color-rgb), var(--#{$prefix}#{$target}-opacity));
   } @else {
-    @return rgba(var(--#{$variable-prefix}#{$identifier}-rgb), var(--#{$variable-prefix}#{$target}-opacity));
+    @return rgba(var(--#{$prefix}#{$identifier}-rgb), var(--#{$prefix}#{$target}-opacity));
   }
 }
 
@@ -68,7 +68,7 @@
 @function varify($list) {
   $result: null;
   @each $entry in $list {
-    $result: append($result, var(--#{$variable-prefix}#{$entry}), space);
+    $result: append($result, var(--#{$prefix}#{$entry}), space);
   }
   @return $result;
 }
@@ -109,7 +109,7 @@
 // Replace `$search` with `$replace` in `$string`
 // Used on our SVG icon backgrounds for custom forms.
 //
-// @author Hugo Giraudel
+// @author Kitty Giraudel
 // @param {String} $string - Initial string
 // @param {String} $search - Substring to replace
 // @param {String} $replace ('') - New value
@@ -177,9 +177,9 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
   @return if($l1 > $l2, divide($l1 + .05, $l2 + .05), divide($l2 + .05, $l1 + .05));
 }
 
-// Return WCAG2.0 relative luminance
-// See https://www.w3.org/WAI/GL/wiki/Relative_luminance
-// See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+// Return WCAG2.1 relative luminance
+// See https://www.w3.org/TR/WCAG/#dfn-relative-luminance
+// See https://www.w3.org/TR/WCAG/#dfn-contrast-ratio
 @function luminance($color) {
   $rgb: (
     "r": red($color),
@@ -188,7 +188,7 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
   );
 
   @each $name, $value in $rgb {
-    $value: if(divide($value, 255) < .03928, divide(divide($value, 255), 12.92), nth($_luminance-list, $value + 1));
+    $value: if(divide($value, 255) < .04045, divide(divide($value, 255), 12.92), nth($_luminance-list, $value + 1));
     $rgb: map-merge($rgb, ($name: $value));
   }
 
@@ -198,7 +198,7 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 // Return opaque color
 // opaque(#fff, rgba(0, 0, 0, .5)) => #808080
 @function opaque($background, $foreground) {
-  @return mix(rgba($foreground, 1), $background, opacity($foreground) * 100);
+  @return mix(rgba($foreground, 1), $background, opacity($foreground) * 100%);
 }
 
 // scss-docs-start color-functions

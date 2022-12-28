@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): collapse.js
+ * Bootstrap (v5.3.0-alpha1): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -8,15 +8,11 @@
 import {
   defineJQueryPlugin,
   getElement,
-  getElementFromSelector,
-  getSelectorFromElement,
-  reflow,
-  typeCheckConfig
-} from './util/index'
-import EventHandler from './dom/event-handler'
-import Manipulator from './dom/manipulator'
-import SelectorEngine from './dom/selector-engine'
-import BaseComponent from './base-component'
+  reflow
+} from './util/index.js'
+import EventHandler from './dom/event-handler.js'
+import SelectorEngine from './dom/selector-engine.js'
+import BaseComponent from './base-component.js'
 
 /**
  * Constants
@@ -47,13 +43,13 @@ const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]'
 
 const Default = {
-  toggle: true,
-  parent: null
+  parent: null,
+  toggle: true
 }
 
 const DefaultType = {
-  toggle: 'boolean',
-  parent: '(null|element)'
+  parent: '(null|element)',
+  toggle: 'boolean'
 }
 
 /**
@@ -62,18 +58,17 @@ const DefaultType = {
 
 class Collapse extends BaseComponent {
   constructor(element, config) {
-    super(element)
+    super(element, config)
 
     this._isTransitioning = false
-    this._config = this._getConfig(config)
     this._triggerArray = []
 
     const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
 
     for (const elem of toggleList) {
-      const selector = getSelectorFromElement(elem)
+      const selector = SelectorEngine.getSelectorFromElement(elem)
       const filterElement = SelectorEngine.find(selector)
-        .filter(foundElem => foundElem === this._element)
+        .filter(foundElement => foundElement === this._element)
 
       if (selector !== null && filterElement.length) {
         this._triggerArray.push(elem)
@@ -94,6 +89,10 @@ class Collapse extends BaseComponent {
   // Getters
   static get Default() {
     return Default
+  }
+
+  static get DefaultType() {
+    return DefaultType
   }
 
   static get NAME() {
@@ -184,9 +183,9 @@ class Collapse extends BaseComponent {
     this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
 
     for (const trigger of this._triggerArray) {
-      const elem = getElementFromSelector(trigger)
+      const element = SelectorEngine.getElementFromSelector(trigger)
 
-      if (elem && !this._isShown(elem)) {
+      if (element && !this._isShown(element)) {
         this._addAriaAndCollapsedClass([trigger], false)
       }
     }
@@ -210,15 +209,9 @@ class Collapse extends BaseComponent {
   }
 
   // Private
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...Manipulator.getDataAttributes(this._element),
-      ...config
-    }
+  _configAfterMerge(config) {
     config.toggle = Boolean(config.toggle) // Coerce string values
     config.parent = getElement(config.parent)
-    typeCheckConfig(NAME, config, DefaultType)
     return config
   }
 
@@ -234,7 +227,7 @@ class Collapse extends BaseComponent {
     const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE)
 
     for (const element of children) {
-      const selected = getElementFromSelector(element)
+      const selected = SelectorEngine.getElementFromSelector(element)
 
       if (selected) {
         this._addAriaAndCollapsedClass([element], this._isShown(selected))
@@ -245,7 +238,7 @@ class Collapse extends BaseComponent {
   _getFirstLevelChildren(selector) {
     const children = SelectorEngine.find(CLASS_NAME_DEEPER_CHILDREN, this._config.parent)
     // remove children if greater depth
-    return SelectorEngine.find(selector, this._config.parent).filter(elem => !children.includes(elem))
+    return SelectorEngine.find(selector, this._config.parent).filter(element => !children.includes(element))
   }
 
   _addAriaAndCollapsedClass(triggerArray, isOpen) {
@@ -253,25 +246,20 @@ class Collapse extends BaseComponent {
       return
     }
 
-    for (const elem of triggerArray) {
-      if (isOpen) {
-        elem.classList.remove(CLASS_NAME_COLLAPSED)
-      } else {
-        elem.classList.add(CLASS_NAME_COLLAPSED)
-      }
-
-      elem.setAttribute('aria-expanded', isOpen)
+    for (const element of triggerArray) {
+      element.classList.toggle(CLASS_NAME_COLLAPSED, !isOpen)
+      element.setAttribute('aria-expanded', isOpen)
     }
   }
 
   // Static
   static jQueryInterface(config) {
-    return this.each(function () {
-      const _config = {}
-      if (typeof config === 'string' && /show|hide/.test(config)) {
-        _config.toggle = false
-      }
+    const _config = {}
+    if (typeof config === 'string' && /show|hide/.test(config)) {
+      _config.toggle = false
+    }
 
+    return this.each(function () {
       const data = Collapse.getOrCreateInstance(this, _config)
 
       if (typeof config === 'string') {
@@ -295,10 +283,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     event.preventDefault()
   }
 
-  const selector = getSelectorFromElement(this)
-  const selectorElements = SelectorEngine.find(selector)
-
-  for (const element of selectorElements) {
+  for (const element of SelectorEngine.getMultipleElementsFromSelector(this)) {
     Collapse.getOrCreateInstance(element, { toggle: false }).toggle()
   }
 })

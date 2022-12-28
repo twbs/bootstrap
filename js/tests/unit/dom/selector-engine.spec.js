@@ -1,5 +1,5 @@
 import SelectorEngine from '../../../src/dom/selector-engine'
-import { getFixture, clearFixture } from '../../helpers/fixture'
+import { clearFixture, getFixture } from '../../helpers/fixture'
 
 describe('SelectorEngine', () => {
   let fixtureEl
@@ -21,7 +21,7 @@ describe('SelectorEngine', () => {
       expect(SelectorEngine.find('div', fixtureEl)).toEqual([div])
     })
 
-    it('should find elements globaly', () => {
+    it('should find elements globally', () => {
       fixtureEl.innerHTML = '<div id="test"></div>'
 
       const div = fixtureEl.querySelector('#test')
@@ -30,13 +30,15 @@ describe('SelectorEngine', () => {
     })
 
     it('should handle :scope selectors', () => {
-      fixtureEl.innerHTML = `<ul>
-        <li></li>
-        <li>
-          <a href="#" class="active">link</a>
-        </li>
-        <li></li>
-      </ul>`
+      fixtureEl.innerHTML = [
+        '<ul>',
+        '  <li></li>',
+        '  <li>',
+        '    <a href="#" class="active">link</a>',
+        '  </li>',
+        '  <li></li>',
+        '</ul>'
+      ].join('')
 
       const listEl = fixtureEl.querySelector('ul')
       const aActive = fixtureEl.querySelector('.active')
@@ -57,11 +59,13 @@ describe('SelectorEngine', () => {
 
   describe('children', () => {
     it('should find children', () => {
-      fixtureEl.innerHTML = `<ul>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>`
+      fixtureEl.innerHTML = [
+        '<ul>',
+        '  <li></li>',
+        '  <li></li>',
+        '  <li></li>',
+        '</ul>'
+      ].join('')
 
       const list = fixtureEl.querySelector('ul')
       const liList = [].concat(...fixtureEl.querySelectorAll('li'))
@@ -73,7 +77,7 @@ describe('SelectorEngine', () => {
 
   describe('parents', () => {
     it('should return parents', () => {
-      expect(SelectorEngine.parents(fixtureEl, 'body').length).toEqual(1)
+      expect(SelectorEngine.parents(fixtureEl, 'body')).toHaveSize(1)
     })
   })
 
@@ -162,7 +166,7 @@ describe('SelectorEngine', () => {
         '<span>lorem</span>',
         '<a>lorem</a>',
         '<button>lorem</button>',
-        '<input />',
+        '<input>',
         '<textarea></textarea>',
         '<select></select>',
         '<details>lorem</details>'
@@ -197,9 +201,7 @@ describe('SelectorEngine', () => {
     })
 
     it('should return not return elements with negative tab index', () => {
-      fixtureEl.innerHTML = [
-        '<button tabindex="-1">lorem</button>'
-      ].join('')
+      fixtureEl.innerHTML = '<button tabindex="-1">lorem</button>'
 
       const expectedElements = []
 
@@ -207,9 +209,7 @@ describe('SelectorEngine', () => {
     })
 
     it('should return contenteditable elements', () => {
-      fixtureEl.innerHTML = [
-        '<div contenteditable="true">lorem</div>'
-      ].join('')
+      fixtureEl.innerHTML = '<div contenteditable="true">lorem</div>'
 
       const expectedElements = [fixtureEl.querySelector('[contenteditable="true"]')]
 
@@ -217,9 +217,7 @@ describe('SelectorEngine', () => {
     })
 
     it('should not return disabled elements', () => {
-      fixtureEl.innerHTML = [
-        '<button disabled="true">lorem</button>'
-      ].join('')
+      fixtureEl.innerHTML = '<button disabled="true">lorem</button>'
 
       const expectedElements = []
 
@@ -227,14 +225,166 @@ describe('SelectorEngine', () => {
     })
 
     it('should not return invisible elements', () => {
-      fixtureEl.innerHTML = [
-        '<button style="display:none;">lorem</button>'
-      ].join('')
+      fixtureEl.innerHTML = '<button style="display:none;">lorem</button>'
 
       const expectedElements = []
 
       expect(SelectorEngine.focusableChildren(fixtureEl)).toEqual(expectedElements)
     })
   })
-})
 
+  describe('getSelectorFromElement', () => {
+    it('should get selector from data-bs-target', () => {
+      fixtureEl.innerHTML = [
+        '<div id="test" data-bs-target=".target"></div>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(SelectorEngine.getSelectorFromElement(testEl)).toEqual('.target')
+    })
+
+    it('should get selector from href if no data-bs-target set', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" href=".target"></a>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(SelectorEngine.getSelectorFromElement(testEl)).toEqual('.target')
+    })
+
+    it('should get selector from href if data-bs-target equal to #', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" data-bs-target="#" href=".target"></a>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(SelectorEngine.getSelectorFromElement(testEl)).toEqual('.target')
+    })
+
+    it('should return null if a selector from a href is a url without an anchor', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" data-bs-target="#" href="foo/bar.html"></a>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(SelectorEngine.getSelectorFromElement(testEl)).toBeNull()
+    })
+
+    it('should return the anchor if a selector from a href is a url', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" data-bs-target="#" href="foo/bar.html#target"></a>',
+        '<div id="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(SelectorEngine.getSelectorFromElement(testEl)).toEqual('#target')
+    })
+
+    it('should return null if selector not found', () => {
+      fixtureEl.innerHTML = '<a id="test" href=".target"></a>'
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(SelectorEngine.getSelectorFromElement(testEl)).toBeNull()
+    })
+
+    it('should return null if no selector', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const testEl = fixtureEl.querySelector('div')
+
+      expect(SelectorEngine.getSelectorFromElement(testEl)).toBeNull()
+    })
+  })
+
+  describe('getElementFromSelector', () => {
+    it('should get element from data-bs-target', () => {
+      fixtureEl.innerHTML = [
+        '<div id="test" data-bs-target=".target"></div>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(SelectorEngine.getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('.target'))
+    })
+
+    it('should get element from href if no data-bs-target set', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" href=".target"></a>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(SelectorEngine.getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('.target'))
+    })
+
+    it('should return null if element not found', () => {
+      fixtureEl.innerHTML = '<a id="test" href=".target"></a>'
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(SelectorEngine.getElementFromSelector(testEl)).toBeNull()
+    })
+
+    it('should return null if no selector', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const testEl = fixtureEl.querySelector('div')
+
+      expect(SelectorEngine.getElementFromSelector(testEl)).toBeNull()
+    })
+  })
+
+  describe('getMultipleElementsFromSelector', () => {
+    it('should get elements from data-bs-target', () => {
+      fixtureEl.innerHTML = [
+        '<div id="test" data-bs-target=".target"></div>',
+        '<div class="target"></div>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
+    })
+
+    it('should get elements in array, from href if no data-bs-target set', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" href=".target"></a>',
+        '<div class="target"></div>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
+    })
+
+    it('should return empty array if elements not found', () => {
+      fixtureEl.innerHTML = '<a id="test" href=".target"></a>'
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toHaveSize(0)
+    })
+
+    it('should return empty array if no selector', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const testEl = fixtureEl.querySelector('div')
+
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toHaveSize(0)
+    })
+  })
+})

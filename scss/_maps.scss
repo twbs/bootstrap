@@ -1,0 +1,121 @@
+// Re-assigned maps
+//
+// Placed here so that others can override the default Sass maps and see automatic updates to utilities and more.
+
+// scss-docs-start theme-colors-rgb
+$theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value") !default;
+// scss-docs-end theme-colors-rgb
+
+$theme-colors-text: (
+  "primary": $primary-text,
+  "secondary": $secondary-text,
+  "success": $success-text,
+  "info": $info-text,
+  "warning": $warning-text,
+  "danger": $danger-text,
+  "light": $light-text,
+  "dark": $dark-text,
+) !default;
+
+$theme-colors-bg-subtle: (
+  "primary": $primary-bg-subtle,
+  "secondary": $secondary-bg-subtle,
+  "success": $success-bg-subtle,
+  "info": $info-bg-subtle,
+  "warning": $warning-bg-subtle,
+  "danger": $danger-bg-subtle,
+  "light": $light-bg-subtle,
+  "dark": $dark-bg-subtle,
+) !default;
+
+$theme-colors-border-subtle: (
+  "primary": $primary-border-subtle,
+  "secondary": $secondary-border-subtle,
+  "success": $success-border-subtle,
+  "info": $info-border-subtle,
+  "warning": $warning-border-subtle,
+  "danger": $danger-border-subtle,
+  "light": $light-border-subtle,
+  "dark": $dark-border-subtle,
+) !default;
+
+// Utilities maps
+//
+// Extends the default `$theme-colors` maps to help create our utilities.
+
+// Come v6, we'll de-dupe these variables. Until then, for backward compatibility, we keep them to reassign.
+// scss-docs-start utilities-colors
+$utilities-colors: $theme-colors-rgb !default;
+// scss-docs-end utilities-colors
+
+// scss-docs-start utilities-text-colors
+$utilities-text: map-merge(
+  $utilities-colors,
+  (
+    "black": to-rgb($black),
+    "white": to-rgb($white),
+    "body": to-rgb($body-color)
+  )
+) !default;
+$utilities-text-colors: map-loop($utilities-text, rgba-css-var, "$key", "text") !default;
+
+$utilities-text-emphasis-colors: (
+  "primary-emphasis": var(--#{$prefix}primary-text),
+  "secondary-emphasis": var(--#{$prefix}secondary-text),
+  "success-emphasis": var(--#{$prefix}success-text),
+  "info-emphasis": var(--#{$prefix}info-text),
+  "warning-emphasis": var(--#{$prefix}warning-text),
+  "danger-emphasis": var(--#{$prefix}danger-text),
+  "light-emphasis": var(--#{$prefix}light-text),
+  "dark-emphasis": var(--#{$prefix}dark-text)
+) !default;
+// scss-docs-end utilities-text-colors
+
+// scss-docs-start utilities-bg-colors
+$utilities-bg: map-merge(
+  $utilities-colors,
+  (
+    "black": to-rgb($black),
+    "white": to-rgb($white),
+    "body": to-rgb($body-bg)
+  )
+) !default;
+$utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg") !default;
+
+$utilities-bg-subtle: (
+  "primary-subtle": var(--#{$prefix}primary-bg-subtle),
+  "secondary-subtle": var(--#{$prefix}secondary-bg-subtle),
+  "success-subtle": var(--#{$prefix}success-bg-subtle),
+  "info-subtle": var(--#{$prefix}info-bg-subtle),
+  "warning-subtle": var(--#{$prefix}warning-bg-subtle),
+  "danger-subtle": var(--#{$prefix}danger-bg-subtle),
+  "light-subtle": var(--#{$prefix}light-bg-subtle),
+  "dark-subtle": var(--#{$prefix}dark-bg-subtle)
+) !default;
+// $utilities-bg-subtle-colors: map-loop($utilities-bg-subtle, rgba-css-var, "$key", "bg") !default;
+// scss-docs-end utilities-bg-colors
+
+// scss-docs-start utilities-border-colors
+$utilities-border: map-merge(
+  $utilities-colors,
+  (
+    "white": to-rgb($white)
+  )
+) !default;
+$utilities-border-colors: map-loop($utilities-border, rgba-css-var, "$key", "border") !default;
+
+$utilities-border-subtle: (
+  "primary-subtle": var(--#{$prefix}primary-border-subtle),
+  "secondary-subtle": var(--#{$prefix}secondary-border-subtle),
+  "success-subtle": var(--#{$prefix}success-border-subtle),
+  "info-subtle": var(--#{$prefix}info-border-subtle),
+  "warning-subtle": var(--#{$prefix}warning-border-subtle),
+  "danger-subtle": var(--#{$prefix}danger-border-subtle),
+  "light-subtle": var(--#{$prefix}light-border-subtle),
+  "dark-subtle": var(--#{$prefix}dark-border-subtle)
+) !default;
+// scss-docs-end utilities-border-colors
+
+$negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
+
+$gutters: $spacers !default;

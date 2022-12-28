@@ -1,6 +1,6 @@
 'use strict'
 
-const path = require('path')
+const path = require('node:path')
 const { babel } = require('@rollup/plugin-babel')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
 const replace = require('@rollup/plugin-replace')
@@ -9,7 +9,7 @@ const banner = require('./banner.js')
 const BUNDLE = process.env.BUNDLE === 'true'
 const ESM = process.env.ESM === 'true'
 
-let fileDest = `bootstrap${ESM ? '.esm' : ''}`
+let fileDestination = `bootstrap${ESM ? '.esm' : ''}`
 const external = ['@popperjs/core']
 const plugins = [
   babel({
@@ -24,7 +24,7 @@ const globals = {
 }
 
 if (BUNDLE) {
-  fileDest += '.bundle'
+  fileDestination += '.bundle'
   // Remove last entry in external array to bundle Popper
   external.pop()
   delete globals['@popperjs/core']
@@ -40,8 +40,8 @@ if (BUNDLE) {
 const rollupConfig = {
   input: path.resolve(__dirname, `../js/index.${ESM ? 'esm' : 'umd'}.js`),
   output: {
-    banner,
-    file: path.resolve(__dirname, `../dist/js/${fileDest}.js`),
+    banner: banner(),
+    file: path.resolve(__dirname, `../dist/js/${fileDestination}.js`),
     format: ESM ? 'esm' : 'umd',
     globals,
     generatedCode: 'es2015'

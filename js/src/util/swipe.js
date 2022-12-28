@@ -1,12 +1,13 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): util/swipe.js
+ * Bootstrap (v5.3.0-alpha1): util/swipe.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import EventHandler from '../dom/event-handler'
-import { execute, typeCheckConfig } from './index'
+import Config from './config.js'
+import EventHandler from '../dom/event-handler.js'
+import { execute } from './index.js'
 
 /**
  * Constants
@@ -25,23 +26,24 @@ const CLASS_NAME_POINTER_EVENT = 'pointer-event'
 const SWIPE_THRESHOLD = 40
 
 const Default = {
+  endCallback: null,
   leftCallback: null,
-  rightCallback: null,
-  endCallback: null
+  rightCallback: null
 }
 
 const DefaultType = {
+  endCallback: '(function|null)',
   leftCallback: '(function|null)',
-  rightCallback: '(function|null)',
-  endCallback: '(function|null)'
+  rightCallback: '(function|null)'
 }
 
 /**
  * Class definition
  */
 
-class Swipe {
+class Swipe extends Config {
   constructor(element, config) {
+    super()
     this._element = element
 
     if (!element || !Swipe.isSupported()) {
@@ -52,6 +54,19 @@ class Swipe {
     this._deltaX = 0
     this._supportPointerEvents = Boolean(window.PointerEvent)
     this._initEvents()
+  }
+
+  // Getters
+  static get Default() {
+    return Default
+  }
+
+  static get DefaultType() {
+    return DefaultType
+  }
+
+  static get NAME() {
+    return NAME
   }
 
   // Public
@@ -116,15 +131,6 @@ class Swipe {
       EventHandler.on(this._element, EVENT_TOUCHMOVE, event => this._move(event))
       EventHandler.on(this._element, EVENT_TOUCHEND, event => this._end(event))
     }
-  }
-
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...(typeof config === 'object' ? config : {})
-    }
-    typeCheckConfig(NAME, config, DefaultType)
-    return config
   }
 
   _eventIsPointerPenTouch(event) {

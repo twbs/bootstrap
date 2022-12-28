@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): util/index.js
+ * Bootstrap (v5.3.0-alpha1): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9,13 +9,27 @@ const MAX_UID = 1_000_000
 const MILLISECONDS_MULTIPLIER = 1000
 const TRANSITION_END = 'transitionend'
 
-// Shoutout AngusCroll (https://goo.gl/pxwQGp)
-const toType = obj => {
-  if (obj === null || obj === undefined) {
-    return `${obj}`
+/**
+ * Properly escape IDs selectors to handle weird IDs
+ * @param {string} selector
+ * @returns {string}
+ */
+const parseSelector = selector => {
+  if (selector && window.CSS && window.CSS.escape) {
+    // document.querySelector needs escaping to handle IDs (html5+) containing for instance /
+    selector = selector.replace(/#([^\s"#']+)/g, (match, id) => `#${CSS.escape(id)}`)
   }
 
-  return Object.prototype.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
+  return selector
+}
+
+// Shout-out Angus Croll (https://goo.gl/pxwQGp)
+const toType = object => {
+  if (object === null || object === undefined) {
+    return `${object}`
+  }
+
+  return Object.prototype.toString.call(object).match(/\s([a-z]+)/i)[1].toLowerCase()
 }
 
 /**
@@ -28,47 +42,6 @@ const getUID = prefix => {
   } while (document.getElementById(prefix))
 
   return prefix
-}
-
-const getSelector = element => {
-  let selector = element.getAttribute('data-bs-target')
-
-  if (!selector || selector === '#') {
-    let hrefAttr = element.getAttribute('href')
-
-    // The only valid content that could double as a selector are IDs or classes,
-    // so everything starting with `#` or `.`. If a "real" URL is used as the selector,
-    // `document.querySelector` will rightfully complain it is invalid.
-    // See https://github.com/twbs/bootstrap/issues/32273
-    if (!hrefAttr || (!hrefAttr.includes('#') && !hrefAttr.startsWith('.'))) {
-      return null
-    }
-
-    // Just in case some CMS puts out a full URL with the anchor appended
-    if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
-      hrefAttr = `#${hrefAttr.split('#')[1]}`
-    }
-
-    selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null
-  }
-
-  return selector
-}
-
-const getSelectorFromElement = element => {
-  const selector = getSelector(element)
-
-  if (selector) {
-    return document.querySelector(selector) ? selector : null
-  }
-
-  return null
-}
-
-const getElementFromSelector = element => {
-  const selector = getSelector(element)
-
-  return selector ? document.querySelector(selector) : null
 }
 
 const getTransitionDurationFromElement = element => {
@@ -98,43 +71,29 @@ const triggerTransitionEnd = element => {
   element.dispatchEvent(new Event(TRANSITION_END))
 }
 
-const isElement = obj => {
-  if (!obj || typeof obj !== 'object') {
+const isElement = object => {
+  if (!object || typeof object !== 'object') {
     return false
   }
 
-  if (typeof obj.jquery !== 'undefined') {
-    obj = obj[0]
+  if (typeof object.jquery !== 'undefined') {
+    object = object[0]
   }
 
-  return typeof obj.nodeType !== 'undefined'
+  return typeof object.nodeType !== 'undefined'
 }
 
-const getElement = obj => {
+const getElement = object => {
   // it's a jQuery object or a node element
-  if (isElement(obj)) {
-    return obj.jquery ? obj[0] : obj
+  if (isElement(object)) {
+    return object.jquery ? object[0] : object
   }
 
-  if (typeof obj === 'string' && obj.length > 0) {
-    return document.querySelector(obj)
+  if (typeof object === 'string' && object.length > 0) {
+    return document.querySelector(parseSelector(object))
   }
 
   return null
-}
-
-const typeCheckConfig = (componentName, config, configTypes) => {
-  for (const property of Object.keys(configTypes)) {
-    const expectedTypes = configTypes[property]
-    const value = config[property]
-    const valueType = value && isElement(value) ? 'element' : toType(value)
-
-    if (!new RegExp(expectedTypes).test(valueType)) {
-      throw new TypeError(
-        `${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`
-      )
-    }
-  }
 }
 
 const isVisible = element => {
@@ -142,7 +101,26 @@ const isVisible = element => {
     return false
   }
 
-  return getComputedStyle(element).getPropertyValue('visibility') === 'visible'
+  const elementIsVisible = getComputedStyle(element).getPropertyValue('visibility') === 'visible'
+  // Handle `details` element as its content may falsie appear visible when it is closed
+  const closedDetails = element.closest('details:not([open])')
+
+  if (!closedDetails) {
+    return elementIsVisible
+  }
+
+  if (closedDetails !== element) {
+    const summary = element.closest('summary')
+    if (summary && summary.parentNode !== closedDetails) {
+      return false
+    }
+
+    if (summary === null) {
+      return false
+    }
+  }
+
+  return elementIsVisible
 }
 
 const isDisabled = element => {
@@ -199,10 +177,8 @@ const reflow = element => {
 }
 
 const getjQuery = () => {
-  const { jQuery } = window
-
-  if (jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
-    return jQuery
+  if (window.jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
+    return window.jQuery
   }
 
   return null
@@ -246,10 +222,8 @@ const defineJQueryPlugin = plugin => {
   })
 }
 
-const execute = callback => {
-  if (typeof callback === 'function') {
-    callback()
-  }
+const execute = (possibleCallback, args = [], defaultValue = possibleCallback) => {
+  return typeof possibleCallback === 'function' ? possibleCallback(...args) : defaultValue
 }
 
 const executeAfterTransition = (callback, transitionElement, waitForTransition = true) => {
@@ -291,14 +265,14 @@ const executeAfterTransition = (callback, transitionElement, waitForTransition =
  * @return {Element|elem} The proper element
  */
 const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
+  const listLength = list.length
   let index = list.indexOf(activeElement)
 
-  // if the element does not exist in the list return an element depending on the direction and if cycle is allowed
+  // if the element does not exist in the list return an element
+  // depending on the direction and if cycle is allowed
   if (index === -1) {
-    return list[!shouldGetNext && isCycleAllowed ? list.length - 1 : 0]
+    return !shouldGetNext && isCycleAllowed ? list[listLength - 1] : list[0]
   }
-
-  const listLength = list.length
 
   index += shouldGetNext ? 1 : -1
 
@@ -315,10 +289,8 @@ export {
   executeAfterTransition,
   findShadowRoot,
   getElement,
-  getElementFromSelector,
   getjQuery,
   getNextActiveElement,
-  getSelectorFromElement,
   getTransitionDurationFromElement,
   getUID,
   isDisabled,
@@ -327,7 +299,8 @@ export {
   isVisible,
   noop,
   onDOMContentLoaded,
+  parseSelector,
   reflow,
   triggerTransitionEnd,
-  typeCheckConfig
+  toType
 }

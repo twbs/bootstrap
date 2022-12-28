@@ -1,17 +1,16 @@
-/*!
- * Bootstrap Grid v5.1.3 (https://getbootstrap.com/)
- * Copyright 2011-2021 The Bootstrap Authors
- * Copyright 2011-2021 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
+@import "mixins/banner";
+@include bsBanner(Grid);
 
 $include-column-box-sizing: true !default;
 
 @import "functions";
 @import "variables";
+@import "variables-dark";
+@import "maps";
 
 @import "mixins/lists";
 @import "mixins/breakpoints";
+@import "mixins/color-mode";
 @import "mixins/container";
 @import "mixins/grid";
 @import "mixins/utilities";

@@ -1,7 +1,7 @@
 import FocusTrap from '../../../src/util/focustrap'
 import EventHandler from '../../../src/dom/event-handler'
 import SelectorEngine from '../../../src/dom/selector-engine'
-import { clearFixture, getFixture, createEvent } from '../../helpers/fixture'
+import { clearFixture, createEvent, getFixture } from '../../helpers/fixture'
 
 describe('FocusTrap', () => {
   let fixtureEl
@@ -20,12 +20,12 @@ describe('FocusTrap', () => {
 
       const trapElement = fixtureEl.querySelector('div')
 
-      spyOn(trapElement, 'focus')
+      const spy = spyOn(trapElement, 'focus')
 
       const focustrap = new FocusTrap({ trapElement })
       focustrap.activate()
 
-      expect(trapElement.focus).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('if configured not to autofocus, should not autofocus itself', () => {
@@ -33,148 +33,156 @@ describe('FocusTrap', () => {
 
       const trapElement = fixtureEl.querySelector('div')
 
-      spyOn(trapElement, 'focus')
+      const spy = spyOn(trapElement, 'focus')
 
       const focustrap = new FocusTrap({ trapElement, autofocus: false })
       focustrap.activate()
 
-      expect(trapElement.focus).not.toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
     })
 
-    it('should force focus inside focus trap if it can', done => {
-      fixtureEl.innerHTML = [
-        '<a href="#" id="outside">outside</a>',
-        '<div id="focustrap" tabindex="-1">',
-        '   <a href="#" id="inside">inside</a>',
-        '</div>'
-      ].join('')
+    it('should force focus inside focus trap if it can', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<a href="#" id="outside">outside</a>',
+          '<div id="focustrap" tabindex="-1">',
+          '  <a href="#" id="inside">inside</a>',
+          '</div>'
+        ].join('')
 
-      const trapElement = fixtureEl.querySelector('div')
-      const focustrap = new FocusTrap({ trapElement })
-      focustrap.activate()
+        const trapElement = fixtureEl.querySelector('div')
+        const focustrap = new FocusTrap({ trapElement })
+        focustrap.activate()
 
-      const inside = document.getElementById('inside')
+        const inside = document.getElementById('inside')
 
-      const focusInListener = () => {
-        expect(inside.focus).toHaveBeenCalled()
-        document.removeEventListener('focusin', focusInListener)
-        done()
-      }
+        const focusInListener = () => {
+          expect(spy).toHaveBeenCalled()
+          document.removeEventListener('focusin', focusInListener)
+          resolve()
+        }
 
-      spyOn(inside, 'focus')
-      spyOn(SelectorEngine, 'focusableChildren').and.callFake(() => [inside])
+        const spy = spyOn(inside, 'focus')
+        spyOn(SelectorEngine, 'focusableChildren').and.callFake(() => [inside])
 
-      document.addEventListener('focusin', focusInListener)
+        document.addEventListener('focusin', focusInListener)
 
-      const focusInEvent = createEvent('focusin', { bubbles: true })
-      Object.defineProperty(focusInEvent, 'target', {
-        value: document.getElementById('outside')
+        const focusInEvent = createEvent('focusin', { bubbles: true })
+        Object.defineProperty(focusInEvent, 'target', {
+          value: document.getElementById('outside')
+        })
+
+        document.dispatchEvent(focusInEvent)
       })
-
-      document.dispatchEvent(focusInEvent)
     })
 
-    it('should wrap focus around forward on tab', done => {
-      fixtureEl.innerHTML = [
-        '<a href="#" id="outside">outside</a>',
-        '<div id="focustrap" tabindex="-1">',
-        '   <a href="#" id="first">first</a>',
-        '   <a href="#" id="inside">inside</a>',
-        '   <a href="#" id="last">last</a>',
-        '</div>'
-      ].join('')
+    it('should wrap focus around forward on tab', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<a href="#" id="outside">outside</a>',
+          '<div id="focustrap" tabindex="-1">',
+          '  <a href="#" id="first">first</a>',
+          '  <a href="#" id="inside">inside</a>',
+          '  <a href="#" id="last">last</a>',
+          '</div>'
+        ].join('')
 
-      const trapElement = fixtureEl.querySelector('div')
-      const focustrap = new FocusTrap({ trapElement })
-      focustrap.activate()
+        const trapElement = fixtureEl.querySelector('div')
+        const focustrap = new FocusTrap({ trapElement })
+        focustrap.activate()
 
-      const first = document.getElementById('first')
-      const inside = document.getElementById('inside')
-      const last = document.getElementById('last')
-      const outside = document.getElementById('outside')
+        const first = document.getElementById('first')
+        const inside = document.getElementById('inside')
+        const last = document.getElementById('last')
+        const outside = document.getElementById('outside')
 
-      spyOn(SelectorEngine, 'focusableChildren').and.callFake(() => [first, inside, last])
-      spyOn(first, 'focus').and.callThrough()
+        spyOn(SelectorEngine, 'focusableChildren').and.callFake(() => [first, inside, last])
+        const spy = spyOn(first, 'focus').and.callThrough()
 
-      const focusInListener = () => {
-        expect(first.focus).toHaveBeenCalled()
-        first.removeEventListener('focusin', focusInListener)
-        done()
-      }
+        const focusInListener = () => {
+          expect(spy).toHaveBeenCalled()
+          first.removeEventListener('focusin', focusInListener)
+          resolve()
+        }
 
-      first.addEventListener('focusin', focusInListener)
+        first.addEventListener('focusin', focusInListener)
 
-      const keydown = createEvent('keydown')
-      keydown.key = 'Tab'
+        const keydown = createEvent('keydown')
+        keydown.key = 'Tab'
 
-      document.dispatchEvent(keydown)
-      outside.focus()
-    })
-
-    it('should wrap focus around backwards on shift-tab', done => {
-      fixtureEl.innerHTML = [
-        '<a href="#" id="outside">outside</a>',
-        '<div id="focustrap" tabindex="-1">',
-        '   <a href="#" id="first">first</a>',
-        '   <a href="#" id="inside">inside</a>',
-        '   <a href="#" id="last">last</a>',
-        '</div>'
-      ].join('')
-
-      const trapElement = fixtureEl.querySelector('div')
-      const focustrap = new FocusTrap({ trapElement })
-      focustrap.activate()
-
-      const first = document.getElementById('first')
-      const inside = document.getElementById('inside')
-      const last = document.getElementById('last')
-      const outside = document.getElementById('outside')
-
-      spyOn(SelectorEngine, 'focusableChildren').and.callFake(() => [first, inside, last])
-      spyOn(last, 'focus').and.callThrough()
-
-      const focusInListener = () => {
-        expect(last.focus).toHaveBeenCalled()
-        last.removeEventListener('focusin', focusInListener)
-        done()
-      }
-
-      last.addEventListener('focusin', focusInListener)
-
-      const keydown = createEvent('keydown')
-      keydown.key = 'Tab'
-      keydown.shiftKey = true
-
-      document.dispatchEvent(keydown)
-      outside.focus()
-    })
-
-    it('should force focus on itself if there is no focusable content', done => {
-      fixtureEl.innerHTML = [
-        '<a href="#" id="outside">outside</a>',
-        '<div id="focustrap" tabindex="-1"></div>'
-      ].join('')
-
-      const trapElement = fixtureEl.querySelector('div')
-      const focustrap = new FocusTrap({ trapElement })
-      focustrap.activate()
-
-      const focusInListener = () => {
-        expect(focustrap._config.trapElement.focus).toHaveBeenCalled()
-        document.removeEventListener('focusin', focusInListener)
-        done()
-      }
-
-      spyOn(focustrap._config.trapElement, 'focus')
-
-      document.addEventListener('focusin', focusInListener)
-
-      const focusInEvent = createEvent('focusin', { bubbles: true })
-      Object.defineProperty(focusInEvent, 'target', {
-        value: document.getElementById('outside')
+        document.dispatchEvent(keydown)
+        outside.focus()
       })
+    })
 
-      document.dispatchEvent(focusInEvent)
+    it('should wrap focus around backwards on shift-tab', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<a href="#" id="outside">outside</a>',
+          '<div id="focustrap" tabindex="-1">',
+          '  <a href="#" id="first">first</a>',
+          '  <a href="#" id="inside">inside</a>',
+          '  <a href="#" id="last">last</a>',
+          '</div>'
+        ].join('')
+
+        const trapElement = fixtureEl.querySelector('div')
+        const focustrap = new FocusTrap({ trapElement })
+        focustrap.activate()
+
+        const first = document.getElementById('first')
+        const inside = document.getElementById('inside')
+        const last = document.getElementById('last')
+        const outside = document.getElementById('outside')
+
+        spyOn(SelectorEngine, 'focusableChildren').and.callFake(() => [first, inside, last])
+        const spy = spyOn(last, 'focus').and.callThrough()
+
+        const focusInListener = () => {
+          expect(spy).toHaveBeenCalled()
+          last.removeEventListener('focusin', focusInListener)
+          resolve()
+        }
+
+        last.addEventListener('focusin', focusInListener)
+
+        const keydown = createEvent('keydown')
+        keydown.key = 'Tab'
+        keydown.shiftKey = true
+
+        document.dispatchEvent(keydown)
+        outside.focus()
+      })
+    })
+
+    it('should force focus on itself if there is no focusable content', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<a href="#" id="outside">outside</a>',
+          '<div id="focustrap" tabindex="-1"></div>'
+        ].join('')
+
+        const trapElement = fixtureEl.querySelector('div')
+        const focustrap = new FocusTrap({ trapElement })
+        focustrap.activate()
+
+        const focusInListener = () => {
+          expect(spy).toHaveBeenCalled()
+          document.removeEventListener('focusin', focusInListener)
+          resolve()
+        }
+
+        const spy = spyOn(focustrap._config.trapElement, 'focus')
+
+        document.addEventListener('focusin', focusInListener)
+
+        const focusInEvent = createEvent('focusin', { bubbles: true })
+        Object.defineProperty(focusInEvent, 'target', {
+          value: document.getElementById('outside')
+        })
+
+        document.dispatchEvent(focusInEvent)
+      })
     })
   })
 
@@ -182,29 +190,29 @@ describe('FocusTrap', () => {
     it('should flag itself as no longer active', () => {
       const focustrap = new FocusTrap({ trapElement: fixtureEl })
       focustrap.activate()
-      expect(focustrap._isActive).toBe(true)
+      expect(focustrap._isActive).toBeTrue()
 
       focustrap.deactivate()
-      expect(focustrap._isActive).toBe(false)
+      expect(focustrap._isActive).toBeFalse()
     })
 
     it('should remove all event listeners', () => {
       const focustrap = new FocusTrap({ trapElement: fixtureEl })
       focustrap.activate()
 
-      spyOn(EventHandler, 'off')
+      const spy = spyOn(EventHandler, 'off')
       focustrap.deactivate()
 
-      expect(EventHandler.off).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('doesn\'t try removing event listeners unless it needs to (in case it hasn\'t been activated)', () => {
       const focustrap = new FocusTrap({ trapElement: fixtureEl })
 
-      spyOn(EventHandler, 'off')
+      const spy = spyOn(EventHandler, 'off')
       focustrap.deactivate()
 
-      expect(EventHandler.off).not.toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
     })
   })
 })

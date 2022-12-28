@@ -1,24 +1,39 @@
 // Base class
 .tooltip {
-  position: absolute;
-  z-index: $zindex-tooltip;
+  // scss-docs-start tooltip-css-vars
+  --#{$prefix}tooltip-zindex: #{$zindex-tooltip};
+  --#{$prefix}tooltip-max-width: #{$tooltip-max-width};
+  --#{$prefix}tooltip-padding-x: #{$tooltip-padding-x};
+  --#{$prefix}tooltip-padding-y: #{$tooltip-padding-y};
+  --#{$prefix}tooltip-margin: #{$tooltip-margin};
+  @include rfs($tooltip-font-size, --#{$prefix}tooltip-font-size);
+  --#{$prefix}tooltip-color: #{$tooltip-color};
+  --#{$prefix}tooltip-bg: #{$tooltip-bg};
+  --#{$prefix}tooltip-border-radius: #{$tooltip-border-radius};
+  --#{$prefix}tooltip-opacity: #{$tooltip-opacity};
+  --#{$prefix}tooltip-arrow-width: #{$tooltip-arrow-width};
+  --#{$prefix}tooltip-arrow-height: #{$tooltip-arrow-height};
+  // scss-docs-end tooltip-css-vars
+
+  z-index: var(--#{$prefix}tooltip-zindex);
   display: block;
-  margin: $tooltip-margin;
+  padding: var(--#{$prefix}tooltip-arrow-height);
+  margin: var(--#{$prefix}tooltip-margin);
+  @include deprecate("`$tooltip-margin`", "v5", "v5.x", true);
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
   @include reset-text();
-  @include font-size($tooltip-font-size);
+  @include font-size(var(--#{$prefix}tooltip-font-size));
   // Allow breaking very long words so they don't overflow the tooltip's bounds
   word-wrap: break-word;
   opacity: 0;
 
-  &.show { opacity: $tooltip-opacity; }
+  &.show { opacity: var(--#{$prefix}tooltip-opacity); }
 
   .tooltip-arrow {
-    position: absolute;
     display: block;
-    width: $tooltip-arrow-width;
-    height: $tooltip-arrow-height;
+    width: var(--#{$prefix}tooltip-arrow-width);
+    height: var(--#{$prefix}tooltip-arrow-height);
 
     &::before {
       position: absolute;
@@ -29,65 +44,55 @@
   }
 }
 
-.bs-tooltip-top {
-  padding: $tooltip-arrow-height 0;
+.bs-tooltip-top .tooltip-arrow {
+  bottom: 0;
 
-  .tooltip-arrow {
-    bottom: 0;
-
-    &::before {
-      top: -1px;
-      border-width: $tooltip-arrow-height ($tooltip-arrow-width * .5) 0;
-      border-top-color: $tooltip-arrow-color;
-    }
+  &::before {
+    top: -1px;
+    border-width: var(--#{$prefix}tooltip-arrow-height) calc(var(--#{$prefix}tooltip-arrow-width) * .5) 0; // stylelint-disable-line function-disallowed-list
+    border-top-color: var(--#{$prefix}tooltip-bg);
   }
 }
 
-.bs-tooltip-end {
-  padding: 0 $tooltip-arrow-height;
+/* rtl:begin:ignore */
+.bs-tooltip-end .tooltip-arrow {
+  left: 0;
+  width: var(--#{$prefix}tooltip-arrow-height);
+  height: var(--#{$prefix}tooltip-arrow-width);
 
-  .tooltip-arrow {
-    left: 0;
-    width: $tooltip-arrow-height;
-    height: $tooltip-arrow-width;
-
-    &::before {
-      right: -1px;
-      border-width: ($tooltip-arrow-width * .5) $tooltip-arrow-height ($tooltip-arrow-width * .5) 0;
-      border-right-color: $tooltip-arrow-color;
-    }
+  &::before {
+    right: -1px;
+    border-width: calc(var(--#{$prefix}tooltip-arrow-width) * .5) var(--#{$prefix}tooltip-arrow-height) calc(var(--#{$prefix}tooltip-arrow-width) * .5) 0; // stylelint-disable-line function-disallowed-list
+    border-right-color: var(--#{$prefix}tooltip-bg);
   }
 }
 
-.bs-tooltip-bottom {
-  padding: $tooltip-arrow-height 0;
+/* rtl:end:ignore */
 
-  .tooltip-arrow {
-    top: 0;
+.bs-tooltip-bottom .tooltip-arrow {
+  top: 0;
 
-    &::before {
-      bottom: -1px;
-      border-width: 0 ($tooltip-arrow-width * .5) $tooltip-arrow-height;
-      border-bottom-color: $tooltip-arrow-color;
-    }
+  &::before {
+    bottom: -1px;
+    border-width: 0 calc(var(--#{$prefix}tooltip-arrow-width) * .5) var(--#{$prefix}tooltip-arrow-height); // stylelint-disable-line function-disallowed-list
+    border-bottom-color: var(--#{$prefix}tooltip-bg);
   }
 }
 
-.bs-tooltip-start {
-  padding: 0 $tooltip-arrow-height;
+/* rtl:begin:ignore */
+.bs-tooltip-start .tooltip-arrow {
+  right: 0;
+  width: var(--#{$prefix}tooltip-arrow-height);
+  height: var(--#{$prefix}tooltip-arrow-width);
 
-  .tooltip-arrow {
-    right: 0;
-    width: $tooltip-arrow-height;
-    height: $tooltip-arrow-width;
-
-    &::before {
-      left: -1px;
-      border-width: ($tooltip-arrow-width * .5) 0 ($tooltip-arrow-width * .5) $tooltip-arrow-height;
-      border-left-color: $tooltip-arrow-color;
-    }
+  &::before {
+    left: -1px;
+    border-width: calc(var(--#{$prefix}tooltip-arrow-width) * .5) 0 calc(var(--#{$prefix}tooltip-arrow-width) * .5) var(--#{$prefix}tooltip-arrow-height); // stylelint-disable-line function-disallowed-list
+    border-left-color: var(--#{$prefix}tooltip-bg);
   }
 }
+
+/* rtl:end:ignore */
 
 .bs-tooltip-auto {
   &[data-popper-placement^="top"] {
@@ -106,10 +111,10 @@
 
 // Wrapper for the tooltip content
 .tooltip-inner {
-  max-width: $tooltip-max-width;
-  padding: $tooltip-padding-y $tooltip-padding-x;
-  color: $tooltip-color;
+  max-width: var(--#{$prefix}tooltip-max-width);
+  padding: var(--#{$prefix}tooltip-padding-y) var(--#{$prefix}tooltip-padding-x);
+  color: var(--#{$prefix}tooltip-color);
   text-align: center;
-  background-color: $tooltip-bg;
-  @include border-radius($tooltip-border-radius);
+  background-color: var(--#{$prefix}tooltip-bg);
+  @include border-radius(var(--#{$prefix}tooltip-border-radius));
 }

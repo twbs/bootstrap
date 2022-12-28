@@ -1,6 +1,6 @@
 // Utility generator
 // Used to generate utilities & print utilities
-@mixin generate-utility($utility, $infix, $is-rfs-media-query: false) {
+@mixin generate-utility($utility, $infix: "", $is-rfs-media-query: false) {
   $values: map-get($utility, values);
 
   // If the values are a list or string, convert it into a map
@@ -20,12 +20,15 @@
     $property-class: if(map-has-key($utility, class), map-get($utility, class), nth($properties, 1));
     $property-class: if($property-class == null, "", $property-class);
 
+    // Use custom CSS variable name if present, otherwise default to `class`
+    $css-variable-name: if(map-has-key($utility, css-variable-name), map-get($utility, css-variable-name), map-get($utility, class));
+
     // State params to generate pseudo-classes
     $state: if(map-has-key($utility, state), map-get($utility, state), ());
 
     $infix: if($property-class == "" and str-slice($infix, 1, 1) == "-", str-slice($infix, 2), $infix);
 
-    // Don't prefix if value key is null (eg. with shadow class)
+    // Don't prefix if value key is null (e.g. with shadow class)
     $property-class-modifier: if($key, if($property-class == "" and $infix == "", "", "-") + $key, "");
 
     @if map-get($utility, rfs) {
@@ -52,20 +55,20 @@
 
       @if $is-css-var {
         .#{$property-class + $infix + $property-class-modifier} {
-          --#{$variable-prefix}#{$property-class}: #{$value};
+          --#{$prefix}#{$css-variable-name}: #{$value};
         }
 
         @each $pseudo in $state {
           .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
-            --#{$variable-prefix}#{$property-class}: #{$value};
+            --#{$prefix}#{$css-variable-name}: #{$value};
           }
         }
       } @else {
         .#{$property-class + $infix + $property-class-modifier} {
           @each $property in $properties {
             @if $is-local-vars {
-              @each $local-var, $value in $is-local-vars {
-                --#{$variable-prefix}#{$local-var}: #{$value};
+              @each $local-var, $variable in $is-local-vars {
+                --#{$prefix}#{$local-var}: #{$variable};
               }
             }
             #{$property}: $value if($enable-important-utilities, !important, null);
@@ -75,6 +78,11 @@
         @each $pseudo in $state {
           .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
             @each $property in $properties {
+              @if $is-local-vars {
+                @each $local-var, $variable in $is-local-vars {
+                  --#{$prefix}#{$local-var}: #{$variable};
+                }
+              }
               #{$property}: $value if($enable-important-utilities, !important, null);
             }
           }
