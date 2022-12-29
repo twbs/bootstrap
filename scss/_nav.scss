@@ -133,27 +133,35 @@
 //
 
 .nav-underline {
-  .nav-item + .nav-item,
-  .nav-link + .nav-link {
-    margin-left: $nav-link-padding-x;
-  }
+  // scss-docs-start nav-underline-css-vars
+  --#{$prefix}nav-underline-gap: #{$nav-underline-gap};
+  --#{$prefix}nav-underline-border-width: #{$nav-underline-border-width};
+  --#{$prefix}nav-underline-link-active-color: #{$nav-underline-link-active-color};
+  // scss-docs-end nav-underline-css-vars
+
+  gap: var(--#{$prefix}nav-underline-gap);
+
+  // .nav-item + .nav-item,
+  // .nav-link + .nav-link {
+  //   margin-left: $nav-link-padding-x;
+  // }
 
   .nav-link {
     padding-right: 0;
     padding-left: 0;
-    border-bottom: .125rem solid transparent;
+    border-bottom: var(--#{$prefix}nav-underline-border-width) solid transparent;
 
     &:hover,
     &:focus {
-      border-bottom-color: currentColor;
+      border-bottom-color: currentcolor;
     }
   }
 
   .nav-link.active,
   .show > .nav-link {
     font-weight: $font-weight-bold;
-    color: $dark;
-    border-bottom-color: currentColor;
+    color: var(--#{$prefix}nav-underline-link-active-color);
+    border-bottom-color: currentcolor;
   }
 }
 
