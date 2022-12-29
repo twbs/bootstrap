@@ -1,16 +1,5 @@
-// stylelint-disable indentation, function-disallowed-list, declaration-colon-newline-after, value-list-comma-newline-after, value-list-comma-space-after
-
 .focus-ring:focus {
   outline: 0;
-  // By default, there is no `--bs-focus-ring-x` or `--bs-focus-ring-y`, but we provide CSS variables with fallbacks to initial `0` values
-  box-shadow: 0 0 0 var(--#{$prefix}focus-ring-offset-width) var(--#{$prefix}focus-ring-offset-color, var(--#{$prefix}body-bg)),
-              var(--#{$prefix}focus-ring-x, 0)
-              var(--#{$prefix}focus-ring-y, 0)
-              var(--#{$prefix}focus-ring-blur)
-              calc(var(--#{$prefix}focus-ring-width) + var(--#{$prefix}focus-ring-offset-width))
-              var(--#{$prefix}focus-ring-color);
-}
-
-@each $state, $value in $theme-colors {
-  .focus-ring-#{$state}:focus { --#{$prefix}focus-ring-color: rgba(#{to-rgb($value)}, var(--bs-focus-ring-opacity)); }
+  // By default, there is no `--bs-focus-ring-x`, `--bs-focus-ring-y`, or `--bs-focus-ring-blur`, but we provide CSS variables with fallbacks to initial `0` values
+  box-shadow: var(--#{$prefix}focus-ring-x, 0) var(--#{$prefix}focus-ring-y, 0) var(--#{$prefix}focus-ring-blur, 0) var(--#{$prefix}focus-ring-width) var(--#{$prefix}focus-ring-color);
 }

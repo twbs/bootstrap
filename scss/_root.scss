@@ -133,13 +133,8 @@
   --#{$prefix}focus-ring-width: #{$focus-ring-width};
   --#{$prefix}focus-ring-opacity: #{$focus-ring-opacity};
   --#{$prefix}focus-ring-color: #{$focus-ring-color};
-  --#{$prefix}focus-ring-blur: #{$focus-ring-blur};
-  // --#{$prefix}focus-ring-offset: 0 0 0 1px var(--#{$prefix}focus-ring-offset-color, var(--#{$prefix}body-bg));
-  --#{$prefix}focus-ring-offset-width: 1px;
-  --#{$prefix}focus-ring-offset-color: var(--#{$prefix}body-bg);
-
-  // By default, there is no `--bs-focus-ring-x` or `--bs-focus-ring-y`, but we provide CSS variables with fallbacks to initial `0` values
-  --#{$prefix}focus-ring-box-shadow: 0 0 0 var(--#{$prefix}focus-ring-offset-width) var(--#{$prefix}focus-ring-offset-color), var(--#{$prefix}focus-ring-x, 0) var(--#{$prefix}focus-ring-y, 0) var(--#{$prefix}focus-ring-blur) var(--#{$prefix}focus-ring-width) var(--#{$prefix}focus-ring-color);
+  // By default, there is no `--bs-focus-ring-x`, `--bs-focus-ring-y`, or `--bs-focus-ring-blur`, but we provide CSS variables with fallbacks to initial `0` values
+  --#{$prefix}focus-ring-box-shadow: var(--#{$prefix}focus-ring-x, 0) var(--#{$prefix}focus-ring-y, 0) var(--#{$prefix}focus-ring-blur, 0) var(--#{$prefix}focus-ring-width) var(--#{$prefix}focus-ring-color);
   // scss-docs-end root-focus-variables
 }
 

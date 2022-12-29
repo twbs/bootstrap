@@ -554,8 +554,7 @@ $focus-ring-width:      .25rem !default;
 $focus-ring-opacity:    .25 !default;
 $focus-ring-color:      rgba($primary, $focus-ring-opacity) !default;
 $focus-ring-blur:       0 !default;
-$focus-ring-offset:     0 0 0 1px var(--#{$prefix}focus-ring-offset-color, var(--#{$prefix}body-bg)) !default;
-$focus-ring-box-shadow: $focus-ring-offset, 0 0 $focus-ring-blur $focus-ring-width $focus-ring-color !default;
+$focus-ring-box-shadow: 0 0 $focus-ring-blur $focus-ring-width $focus-ring-color !default;
 // scss-docs-end focus-ring-variables
 
 // scss-docs-start caret-variables
@@ -1134,7 +1133,7 @@ $nav-link-hover-color:              var(--#{$prefix}link-hover-color) !default;
 $nav-link-transition:               color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
 $nav-link-disabled-color:           var(--#{$prefix}secondary-color) !default;
 $nav-link-disabled-color:           $gray-600 !default;
-$nav-link-focus-box-shadow:              $focus-ring-box-shadow !default;
+$nav-link-focus-box-shadow:         $focus-ring-box-shadow !default;
 
 $nav-tabs-border-color:             var(--#{$prefix}border-color) !default;
 $nav-tabs-border-width:             var(--#{$prefix}border-width) !default;

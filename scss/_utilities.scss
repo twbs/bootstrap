@@ -84,6 +84,14 @@ $utilities: map-merge(
       )
     ),
     // scss-docs-end utils-shadow
+    // scss-docs-start utils-focus-ring
+    "focus-ring": (
+      css-var: true,
+      css-variable-name: focus-ring-color,
+      class: focus-ring,
+      values: map-loop($theme-colors-rgb, rgba-css-var, "$key", "focus-ring")
+    ),
+    // scss-docs-end utils-focus-ring
     // scss-docs-start utils-position
     "position": (
       property: position,

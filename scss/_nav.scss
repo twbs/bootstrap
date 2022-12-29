@@ -37,7 +37,7 @@
   }
 
   &:focus {
-    outline-color: transparent;
+    outline: 0;
     box-shadow: $nav-link-focus-box-shadow;
   }
 
