@@ -3,13 +3,12 @@
 /*!
  * Script to run vnu-jar if Java is available.
  * Copyright 2017-2022 The Bootstrap Authors
- * Copyright 2017-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
 'use strict'
 
-const { execFile, spawn } = require('child_process')
+const { execFile, spawn } = require('node:child_process')
 const vnu = require('vnu-jar')
 
 execFile('java', ['-version'], (error, stdout, stderr) => {

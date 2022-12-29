@@ -1,18 +1,18 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.1): modal.js
+ * Bootstrap (v5.3.0-alpha1): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, getElementFromSelector, isRTL, isVisible, reflow } from './util/index'
-import EventHandler from './dom/event-handler'
-import SelectorEngine from './dom/selector-engine'
-import ScrollBarHelper from './util/scrollbar'
-import BaseComponent from './base-component'
-import Backdrop from './util/backdrop'
-import FocusTrap from './util/focustrap'
-import { enableDismissTrigger } from './util/component-functions'
+import { defineJQueryPlugin, isRTL, isVisible, reflow } from './util/index.js'
+import EventHandler from './dom/event-handler.js'
+import SelectorEngine from './dom/selector-engine.js'
+import ScrollBarHelper from './util/scrollbar.js'
+import BaseComponent from './base-component.js'
+import Backdrop from './util/backdrop.js'
+import FocusTrap from './util/focustrap.js'
+import { enableDismissTrigger } from './util/component-functions.js'
 
 /**
  * Constants
@@ -223,9 +223,9 @@ class Modal extends BaseComponent {
     })
 
     EventHandler.on(this._element, EVENT_MOUSEDOWN_DISMISS, event => {
+      // a bad trick to segregate clicks that may start inside dialog but end outside, and avoid listen to scrollbar clicks
       EventHandler.one(this._element, EVENT_CLICK_DISMISS, event2 => {
-        // a bad trick to segregate clicks that may start inside dialog but end outside, and avoid listen to scrollbar clicks
-        if (this._dialog.contains(event.target) || this._dialog.contains(event2.target)) {
+        if (this._element !== event.target || this._element !== event2.target) {
           return
         }
 
@@ -336,7 +336,7 @@ class Modal extends BaseComponent {
  */
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
-  const target = getElementFromSelector(this)
+  const target = SelectorEngine.getElementFromSelector(this)
 
   if (['A', 'AREA'].includes(this.tagName)) {
     event.preventDefault()
