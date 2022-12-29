@@ -38,6 +38,11 @@
     text-decoration: if($link-hover-decoration == underline, none, null);
   }
 
+  &:focus {
+    outline: 0;
+    box-shadow: $nav-link-focus-box-shadow;
+  }
+
   // Disabled state lightens text
   &.disabled {
     color: var(--#{$prefix}nav-link-disabled-color);
