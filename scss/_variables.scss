@@ -321,13 +321,13 @@ $theme-colors: (
 ) !default;
 // scss-docs-end theme-colors-map
 
-$primary-text:            $blue-600 !default;
-$secondary-text:          $gray-600 !default;
-$success-text:            $green-600 !default;
-$info-text:               $cyan-700 !default;
-$warning-text:            $yellow-700 !default;
-$danger-text:             $red-600 !default;
-$light-text:              $gray-600 !default;
+$primary-text:            $blue-700 !default;
+$secondary-text:          $gray-700 !default;
+$success-text:            $green-700 !default;
+$info-text:               $cyan-800 !default;
+$warning-text:            $yellow-800 !default;
+$danger-text:             $red-700 !default;
+$light-text:              $gray-700 !default;
 $dark-text:               $gray-700 !default;
 
 $primary-bg-subtle:       $blue-100 !default;
