@@ -1271,13 +1271,8 @@ $pagination-margin-start:           calc($pagination-border-width * -1) !default
 $pagination-border-color:           var(--#{$prefix}border-color) !default;
 
 $pagination-focus-color:            var(--#{$prefix}link-hover-color) !default;
-<<<<<<< HEAD
 $pagination-focus-bg:               var(--#{$prefix}secondary-bg) !default;
-$pagination-focus-box-shadow:       $input-btn-focus-box-shadow !default;
-=======
-$pagination-focus-bg:               $gray-200 !default;
 $pagination-focus-box-shadow:       $focus-ring-box-shadow !default;
->>>>>>> f9a0c95d0 (Update instances of -btn-focus-box-shadow to use -ring-box-shadow, unless it's for buttons or inputs)
 $pagination-focus-outline:          0 !default;
 
 $pagination-hover-color:            var(--#{$prefix}link-hover-color) !default;
