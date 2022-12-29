@@ -8,7 +8,7 @@ toc: true
 added: 5.3
 ---
 
-The icon link helper component modifies our default link styles to enhance their apperance and quickly align any pairing of icon and text. Alignment is set via inline flexbox styling and a default `gap` value. We stylize the underline with a custom offset and color. Icons are automatically sized to `1em` to match their associated text's `font-size`.
+The icon link helper component modifies our default link styles to enhance their appearance and quickly align any pairing of icon and text. Alignment is set via inline flexbox styling and a default `gap` value. We stylize the underline with a custom offset and color. Icons are automatically sized to `1em` to match their associated text's `font-size`.
 
 Icon links assume [Bootstrap Icons](https://icons.getbootstrap.com) are being used, but you can use any icon or image you like.
 
@@ -52,11 +52,11 @@ Customize the hover `transform` by overriding the `--bs-icon-link-transform` CSS
 
 ## Pairs with link utilities
 
+Modify icon links with any of [our link utilities]({{< docsref "/utilities/link/" >}}) for modifying underline color and offset.
+
 {{< example >}}
 <a class="icon-link icon-link-hover link-success link-underline-success link-underline-opacity-25" href="#">
   Icon link
   <svg class="bi"><use xlink:href="#arrow-right"></use></svg>
 </a>
 {{< /example >}}
-
-
