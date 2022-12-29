@@ -279,7 +279,7 @@
 
 @if $enable-dark-mode {
   @include color-mode(dark) {
-    .navbar {
+    .navbar-toggler-icon {
       --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
     }
   }
