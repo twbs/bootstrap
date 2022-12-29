@@ -26,13 +26,13 @@ aliases: "/examples/"
           <svg class="bi fs-5 flex-shrink-0"><use xlink:href="#box-seam"></use></svg>
           <div>
             <h3 class="h5 mb-1">
-              <a class="d-block" href="{{ $.Site.Params.github_org }}{{ $example.url }}/" target="_blank">
+              <a class="d-block link-offset-1" href="{{ $.Site.Params.github_org }}{{ $example.url }}/" target="_blank">
                 {{ $example.name }}
               </a>
             </h3>
             <p class="text-muted">{{ $example.description }}</p>
             <p>
-              <a class="d-flex gap-1 align-items-center small link-secondary" href="https://stackblitz.com/github/twbs{{ $example.url }}?file=index.html" target="_blank">
+              <a class="icon-link small link-secondary link-offset-1" href="https://stackblitz.com/github/twbs{{ $example.url }}?file=index.html" target="_blank">
                 <svg class="bi flex-shrink-0"><use xlink:href="#lightning-charge-fill"></use></svg>
                 Edit in StackBlitz
               </a>
@@ -41,7 +41,7 @@ aliases: "/examples/"
         </div>
       {{ else }}
         <div class="col-sm-6 col-md-3 mb-3">
-          <a class="d-block" href="/docs/{{ $.Site.Params.docs_version }}/examples/{{ $example.name | urlize }}/"{{ if in $example.name "RTL" }} hreflang="ar"{{ end }}>
+          <a class="d-block link-offset-1" href="/docs/{{ $.Site.Params.docs_version }}/examples/{{ $example.name | urlize }}/"{{ if in $example.name "RTL" }} hreflang="ar"{{ end }}>
             <img class="img-thumbnail mb-3" srcset="/docs/{{ $.Site.Params.docs_version }}/assets/img/examples/{{ $example.name | urlize }}.png,
                                                     /docs/{{ $.Site.Params.docs_version }}/assets/img/examples/{{ $example.name | urlize }}@2x.png 2x"
                                             src="/docs/{{ $.Site.Params.docs_version }}/assets/img/examples/{{ $example.name | urlize }}.png"
