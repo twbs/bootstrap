@@ -345,6 +345,12 @@ On the `.nav-pills` modifier class:
 
 {{< scss-docs name="nav-pills-css-vars" file="scss/_nav.scss" >}}
 
+{{< added-in "5.3.0" >}}
+
+On the `.nav-underline` modifier class:
+
+{{< scss-docs name="nav-underline-css-vars" file="scss/_nav.scss" >}}
+
 ### Sass variables
 
 {{< scss-docs name="nav-variables" file="scss/_variables.scss" >}}
