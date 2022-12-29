@@ -187,6 +187,68 @@
 // scss-docs-start navbar-expand-loop
 // Generate series of `.navbar-expand-*` responsive classes for configuring
 // where your navbar collapses.
+@custom-media --navbar-expand (min-width: 768px);
+
+@media (--navbar-expand) {
+  .new-navbar-expand {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+
+    .navbar-nav {
+      flex-direction: row;
+
+      .dropdown-menu {
+        position: absolute;
+      }
+
+      .nav-link {
+        padding-right: var(--#{$prefix}navbar-nav-link-padding-x);
+        padding-left: var(--#{$prefix}navbar-nav-link-padding-x);
+      }
+    }
+
+    .navbar-nav-scroll {
+      overflow: visible;
+    }
+
+    .navbar-collapse {
+      display: flex !important; // stylelint-disable-line declaration-no-important
+      flex-basis: auto;
+    }
+
+    .navbar-toggler {
+      display: none;
+    }
+
+    .offcanvas {
+      // stylelint-disable declaration-no-important
+      position: static;
+      z-index: auto;
+      flex-grow: 1;
+      width: auto !important;
+      height: auto !important;
+      visibility: visible !important;
+      background-color: transparent !important;
+      border: 0 !important;
+      transform: none !important;
+      @include box-shadow(none);
+      @include transition(none);
+      // stylelint-enable declaration-no-important
+
+      .offcanvas-header {
+        display: none;
+      }
+
+      .offcanvas-body {
+        display: flex;
+        flex-grow: 0;
+        padding: 0;
+        overflow-y: visible;
+      }
+    }
+  }
+}
+
 .navbar-expand {
   @each $breakpoint in map-keys($grid-breakpoints) {
     $next: breakpoint-next($breakpoint, $grid-breakpoints);
