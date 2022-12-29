@@ -38,8 +38,8 @@
 
       &:hover,
       &.active {
-        color: var(--bd-violet-text);
-        border-left-color: var(--bd-violet-text);
+        color: var(--bd-toc-color);
+        border-left-color: var(--bd-toc-color);
       }
 
       &.active {
