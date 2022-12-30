@@ -11,7 +11,7 @@ The `.focus-ring` helper removes the default `outline` on `:focus`, replacing it
 
 ## Example
 
-Click into the example below and press <kbd>Tab</kbd> to see the focus ring in action.
+Click directly on the link below to see the focus ring in action, or into the example below and then press <kbd>Tab</kbd>.
 
 {{< example >}}
 <a href="#" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2">
