@@ -22,7 +22,7 @@
     '<div class="bd-code-snippet">',
     '   <div class="bd-clipboard">',
     '      <button type="button" class="btn-clipboard">',
-    '        <svg class="bi" width="1em" height="1em" fill="currentColor" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg>',
+    '        <svg class="bi" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg>',
     '      </button>',
     '   </div>',
     '</div>'
@@ -56,7 +56,7 @@
   })
 
   clipboard.on('success', event => {
-    const iconFirstChild = event.trigger.querySelector('.bi').firstChild
+    const iconFirstChild = event.trigger.querySelector('.bi').firstElementChild
     const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
     const namespace = 'http://www.w3.org/1999/xlink'
     const originalXhref = iconFirstChild.getAttributeNS(namespace, 'href')

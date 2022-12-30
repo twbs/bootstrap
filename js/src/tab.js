@@ -1,14 +1,14 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): tab.js
+ * Bootstrap (v5.3.0-alpha1): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, getElementFromSelector, getNextActiveElement, isDisabled } from './util/index'
-import EventHandler from './dom/event-handler'
-import SelectorEngine from './dom/selector-engine'
-import BaseComponent from './base-component'
+import { defineJQueryPlugin, getNextActiveElement, isDisabled } from './util/index.js'
+import EventHandler from './dom/event-handler.js'
+import SelectorEngine from './dom/selector-engine.js'
+import BaseComponent from './base-component.js'
 
 /**
  * Constants
@@ -38,7 +38,6 @@ const CLASS_DROPDOWN = 'dropdown'
 
 const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 const SELECTOR_DROPDOWN_MENU = '.dropdown-menu'
-const SELECTOR_DROPDOWN_ITEM = '.dropdown-item'
 const NOT_SELECTOR_DROPDOWN_TOGGLE = ':not(.dropdown-toggle)'
 
 const SELECTOR_TAB_PANEL = '.list-group, .nav, [role="tablist"]'
@@ -107,19 +106,14 @@ class Tab extends BaseComponent {
 
     element.classList.add(CLASS_NAME_ACTIVE)
 
-    this._activate(getElementFromSelector(element)) // Search and activate/show the proper section
+    this._activate(SelectorEngine.getElementFromSelector(element)) // Search and activate/show the proper section
 
-    const isAnimated = element.classList.contains(CLASS_NAME_FADE)
     const complete = () => {
-      if (isAnimated) { // todo: maybe is redundant
-        element.classList.add(CLASS_NAME_SHOW)
-      }
-
       if (element.getAttribute('role') !== 'tab') {
+        element.classList.add(CLASS_NAME_SHOW)
         return
       }
 
-      element.focus()
       element.removeAttribute('tabindex')
       element.setAttribute('aria-selected', true)
       this._toggleDropDown(element, true)
@@ -128,7 +122,7 @@ class Tab extends BaseComponent {
       })
     }
 
-    this._queueCallback(complete, element, isAnimated)
+    this._queueCallback(complete, element, element.classList.contains(CLASS_NAME_FADE))
   }
 
   _deactivate(element, relatedElem) {
@@ -139,15 +133,11 @@ class Tab extends BaseComponent {
     element.classList.remove(CLASS_NAME_ACTIVE)
     element.blur()
 
-    this._deactivate(getElementFromSelector(element)) // Search and deactivate the shown section too
+    this._deactivate(SelectorEngine.getElementFromSelector(element)) // Search and deactivate the shown section too
 
-    const isAnimated = element.classList.contains(CLASS_NAME_FADE)
     const complete = () => {
-      if (isAnimated) { // todo maybe is redundant
-        element.classList.remove(CLASS_NAME_SHOW)
-      }
-
       if (element.getAttribute('role') !== 'tab') {
+        element.classList.remove(CLASS_NAME_SHOW)
         return
       }
 
@@ -157,7 +147,7 @@ class Tab extends BaseComponent {
       EventHandler.trigger(element, EVENT_HIDDEN, { relatedTarget: relatedElem })
     }
 
-    this._queueCallback(complete, element, isAnimated)
+    this._queueCallback(complete, element, element.classList.contains(CLASS_NAME_FADE))
   }
 
   _keydown(event) {
@@ -168,8 +158,12 @@ class Tab extends BaseComponent {
     event.stopPropagation()// stopPropagation/preventDefault both added to support up/down keys without scrolling the page
     event.preventDefault()
     const isNext = [ARROW_RIGHT_KEY, ARROW_DOWN_KEY].includes(event.key)
-    const nextActiveElement = getNextActiveElement(this._getChildren(), event.target, isNext, true)
-    Tab.getOrCreateInstance(nextActiveElement).show()
+    const nextActiveElement = getNextActiveElement(this._getChildren().filter(element => !isDisabled(element)), event.target, isNext, true)
+
+    if (nextActiveElement) {
+      nextActiveElement.focus({ preventScroll: true })
+      Tab.getOrCreateInstance(nextActiveElement).show()
+    }
   }
 
   _getChildren() { // collection of inner elements
@@ -209,7 +203,7 @@ class Tab extends BaseComponent {
   }
 
   _setInitialAttributesOnTargetPanel(child) {
-    const target = getElementFromSelector(child)
+    const target = SelectorEngine.getElementFromSelector(child)
 
     if (!target) {
       return
@@ -237,7 +231,6 @@ class Tab extends BaseComponent {
 
     toggle(SELECTOR_DROPDOWN_TOGGLE, CLASS_NAME_ACTIVE)
     toggle(SELECTOR_DROPDOWN_MENU, CLASS_NAME_SHOW)
-    toggle(SELECTOR_DROPDOWN_ITEM, CLASS_NAME_ACTIVE)
     outerElem.setAttribute('aria-expanded', open)
   }
 

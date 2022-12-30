@@ -6,9 +6,8 @@
 .btn-bd-primary {
   --bs-btn-font-weight: 600;
   --bs-btn-color: var(--bs-white);
-  --bs-btn-bg: var(--bd-violet);
-  --bs-btn-border-color: var(--bd-violet);
-  --bs-btn-border-radius: .5rem;
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
   --bs-btn-hover-color: var(--bs-white);
   --bs-btn-hover-bg: #{shade-color($bd-violet, 10%)};
   --bs-btn-hover-border-color: #{shade-color($bd-violet, 10%)};
@@ -33,13 +32,21 @@
 }
 
 .btn-bd-light {
+  --btn-custom-color: #{mix($bd-violet, $white, 75%)};
+
   --bs-btn-color: var(--bs-gray-600);
-  --bs-btn-border-color: var(--bs-gray-400);
-  --bs-btn-hover-color: var(--bd-violet);
-  --bs-btn-hover-border-color: var(--bd-violet);
-  --bs-btn-active-color: var(--bd-violet);
+  --bs-btn-border-color: var(--bs-border-color);
+  --bs-btn-hover-color: var(--btn-custom-color);
+  --bs-btn-hover-border-color: var(--btn-custom-color);
+  --bs-btn-active-color: var(--btn-custom-color);
   --bs-btn-active-bg: var(--bs-white);
-  --bs-btn-active-border-color: var(--bd-violet);
-  --bs-btn-focus-border-color: var(--bd-violet);
+  --bs-btn-active-border-color: var(--btn-custom-color);
+  --bs-btn-focus-border-color: var(--btn-custom-color);
   --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+}
+
+.bd-btn-lg {
+  --bs-btn-border-radius: .5rem;
+
+  padding: .8125rem 2rem;
 }

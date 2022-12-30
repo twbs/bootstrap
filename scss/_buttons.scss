@@ -1,5 +1,3 @@
-// stylelint-disable custom-property-empty-line-before
-
 //
 // Base styles
 //
@@ -17,6 +15,7 @@
   --#{$prefix}btn-border-width: #{$btn-border-width};
   --#{$prefix}btn-border-color: transparent;
   --#{$prefix}btn-border-radius: #{$btn-border-radius};
+  --#{$prefix}btn-hover-border-color: transparent;
   --#{$prefix}btn-box-shadow: #{$btn-box-shadow};
   --#{$prefix}btn-disabled-opacity: #{$btn-disabled-opacity};
   --#{$prefix}btn-focus-box-shadow: 0 0 0 #{$btn-focus-width} rgba(var(--#{$prefix}btn-focus-shadow-rgb), .5);
@@ -48,8 +47,14 @@
     border-color: var(--#{$prefix}btn-hover-border-color);
   }
 
-  .btn-check:focus + &,
-  &:focus {
+  .btn-check + &:hover {
+    // override for the checkbox/radio buttons
+    color: var(--#{$prefix}btn-color);
+    background-color: var(--#{$prefix}btn-bg);
+    border-color: var(--#{$prefix}btn-border-color);
+  }
+
+  &:focus-visible {
     color: var(--#{$prefix}btn-hover-color);
     @include gradient-bg(var(--#{$prefix}btn-hover-bg));
     border-color: var(--#{$prefix}btn-hover-border-color);
@@ -62,9 +67,20 @@
     }
   }
 
+  .btn-check:focus-visible + & {
+    border-color: var(--#{$prefix}btn-hover-border-color);
+    outline: 0;
+    // Avoid using mixin so we can pass custom focus shadow properly
+    @if $enable-shadows {
+      box-shadow: var(--#{$prefix}btn-box-shadow), var(--#{$prefix}btn-focus-box-shadow);
+    } @else {
+      box-shadow: var(--#{$prefix}btn-focus-box-shadow);
+    }
+  }
+
   .btn-check:checked + &,
-  .btn-check:active + &,
-  &:active,
+  :not(.btn-check) + &:active,
+  &:first-child:active,
   &.active,
   &.show {
     color: var(--#{$prefix}btn-active-color);
@@ -74,7 +90,7 @@
     border-color: var(--#{$prefix}btn-active-border-color);
     @include box-shadow(var(--#{$prefix}btn-active-shadow));
 
-    &:focus {
+    &:focus-visible {
       // Avoid using mixin so we can pass custom focus shadow properly
       @if $enable-shadows {
         box-shadow: var(--#{$prefix}btn-active-shadow), var(--#{$prefix}btn-focus-box-shadow);
@@ -105,7 +121,27 @@
 // scss-docs-start btn-variant-loops
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
-    @include button-variant($value, $value);
+    @if $color == "light" {
+      @include button-variant(
+        $value,
+        $value,
+        $hover-background: shade-color($value, $btn-hover-bg-shade-amount),
+        $hover-border: shade-color($value, $btn-hover-border-shade-amount),
+        $active-background: shade-color($value, $btn-active-bg-shade-amount),
+        $active-border: shade-color($value, $btn-active-border-shade-amount)
+      );
+    } @else if $color == "dark" {
+      @include button-variant(
+        $value,
+        $value,
+        $hover-background: tint-color($value, $btn-hover-bg-tint-amount),
+        $hover-border: tint-color($value, $btn-hover-border-tint-amount),
+        $active-background: tint-color($value, $btn-active-bg-tint-amount),
+        $active-border: tint-color($value, $btn-active-border-tint-amount)
+      );
+    } @else {
+      @include button-variant($value, $value);
+    }
   }
 }
 
@@ -129,16 +165,29 @@
   --#{$prefix}btn-border-color: transparent;
   --#{$prefix}btn-hover-color: #{$btn-link-hover-color};
   --#{$prefix}btn-hover-border-color: transparent;
+  --#{$prefix}btn-active-color: #{$btn-link-hover-color};
   --#{$prefix}btn-active-border-color: transparent;
   --#{$prefix}btn-disabled-color: #{$btn-link-disabled-color};
   --#{$prefix}btn-disabled-border-color: transparent;
   --#{$prefix}btn-box-shadow: none;
+  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix(color-contrast($primary), $primary, 15%))};
 
   text-decoration: $link-decoration;
+  @if $enable-gradients {
+    background-image: none;
+  }
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     text-decoration: $link-hover-decoration;
+  }
+
+  &:focus-visible {
+    color: var(--#{$prefix}btn-color);
+  }
+
+  &:hover {
+    color: var(--#{$prefix}btn-hover-color);
   }
 
   // No need for an active state here

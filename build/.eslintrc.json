@@ -9,6 +9,7 @@
   "extends": "../.eslintrc.json",
   "rules": {
     "no-console": "off",
-    "strict": "error"
+    "strict": "error",
+    "unicorn/prefer-top-level-await": "off"
   }
 }

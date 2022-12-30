@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): collapse.js
+ * Bootstrap (v5.3.0-alpha1): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -8,13 +8,11 @@
 import {
   defineJQueryPlugin,
   getElement,
-  getElementFromSelector,
-  getSelectorFromElement,
   reflow
-} from './util/index'
-import EventHandler from './dom/event-handler'
-import SelectorEngine from './dom/selector-engine'
-import BaseComponent from './base-component'
+} from './util/index.js'
+import EventHandler from './dom/event-handler.js'
+import SelectorEngine from './dom/selector-engine.js'
+import BaseComponent from './base-component.js'
 
 /**
  * Constants
@@ -46,13 +44,13 @@ const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]'
 
 const Default = {
-  toggle: true,
-  parent: null
+  parent: null,
+  toggle: true
 }
 
 const DefaultType = {
-  toggle: 'boolean',
-  parent: '(null|element)'
+  parent: '(null|element)',
+  toggle: 'boolean'
 }
 
 /**
@@ -69,7 +67,7 @@ class Collapse extends BaseComponent {
     const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
 
     for (const elem of toggleList) {
-      const selector = getSelectorFromElement(elem)
+      const selector = SelectorEngine.getSelectorFromElement(elem)
       const filterElement = SelectorEngine.find(selector)
         .filter(foundElement => foundElement === this._element)
 
@@ -197,7 +195,7 @@ class Collapse extends BaseComponent {
       this._element.classList.add(CLASS_NAME_COLLAPSE)
 
       for (const trigger of this._triggerArray) {
-        const element = getElementFromSelector(trigger)
+        const element = SelectorEngine.getElementFromSelector(trigger)
         trigger.classList.remove(CLASS_NAME_TRIGGER_COLLAPSING)
 
         if (element && !this._isShown(element)) {
@@ -236,7 +234,7 @@ class Collapse extends BaseComponent {
     const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE)
 
     for (const element of children) {
-      const selected = getElementFromSelector(element)
+      const selected = SelectorEngine.getElementFromSelector(element)
 
       if (selected) {
         this._addAriaAndCollapsedClass([element], this._isShown(selected))
@@ -292,10 +290,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     event.preventDefault()
   }
 
-  const selector = getSelectorFromElement(this)
-  const selectorElements = SelectorEngine.find(selector)
-
-  for (const element of selectorElements) {
+  for (const element of SelectorEngine.getMultipleElementsFromSelector(this)) {
     Collapse.getOrCreateInstance(element, { toggle: false }).toggle()
   }
 })
