@@ -145,21 +145,21 @@ Instead of applying button sizing classes to every button in a group, just add `
 
 {{< example >}}
 <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
-  <button type="button" class="btn btn-outline-dark">Left</button>
-  <button type="button" class="btn btn-outline-dark">Middle</button>
-  <button type="button" class="btn btn-outline-dark">Right</button>
+  <button type="button" class="btn btn-outline-primary">Left</button>
+  <button type="button" class="btn btn-outline-primary">Middle</button>
+  <button type="button" class="btn btn-outline-primary">Right</button>
 </div>
 <br>
 <div class="btn-group" role="group" aria-label="Default button group">
-  <button type="button" class="btn btn-outline-dark">Left</button>
-  <button type="button" class="btn btn-outline-dark">Middle</button>
-  <button type="button" class="btn btn-outline-dark">Right</button>
+  <button type="button" class="btn btn-outline-primary">Left</button>
+  <button type="button" class="btn btn-outline-primary">Middle</button>
+  <button type="button" class="btn btn-outline-primary">Right</button>
 </div>
 <br>
 <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-  <button type="button" class="btn btn-outline-dark">Left</button>
-  <button type="button" class="btn btn-outline-dark">Middle</button>
-  <button type="button" class="btn btn-outline-dark">Right</button>
+  <button type="button" class="btn btn-outline-primary">Left</button>
+  <button type="button" class="btn btn-outline-primary">Middle</button>
+  <button type="button" class="btn btn-outline-primary">Right</button>
 </div>
 {{< /example >}}
 
@@ -190,12 +190,12 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
 
 {{< example >}}
 <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-  <button type="button" class="btn btn-dark">Button</button>
-  <button type="button" class="btn btn-dark">Button</button>
-  <button type="button" class="btn btn-dark">Button</button>
-  <button type="button" class="btn btn-dark">Button</button>
-  <button type="button" class="btn btn-dark">Button</button>
-  <button type="button" class="btn btn-dark">Button</button>
+  <button type="button" class="btn btn-primary">Button</button>
+  <button type="button" class="btn btn-primary">Button</button>
+  <button type="button" class="btn btn-primary">Button</button>
+  <button type="button" class="btn btn-primary">Button</button>
+  <button type="button" class="btn btn-primary">Button</button>
+  <button type="button" class="btn btn-primary">Button</button>
 </div>
 {{< /example >}}
 

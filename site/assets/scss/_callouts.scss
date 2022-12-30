@@ -3,6 +3,8 @@
 //
 
 .bd-callout {
+  --#{$prefix}link-color-rgb: var(--bd-callout-link);
+
   padding: 1.25rem;
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;

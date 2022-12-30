@@ -18,13 +18,16 @@ $bd-callout-variants: info, warning, danger !default;
   --bd-accent-rgb: #{to-rgb($bd-accent)};
   --bd-pink-rgb: #{to-rgb($pink-500)};
   --bd-teal-rgb: #{to-rgb($teal-500)};
-
   --bd-violet-bg: var(--bd-violet);
+  --bd-toc-color: var(--bd-violet);
   --bd-sidebar-link-bg: rgba(var(--bd-violet-rgb), .1);
+  --bd-callout-link: #{to-rgb($blue-600)};
 }
 
 @include color-mode(dark, true) {
   --bd-violet: #{mix($bd-violet, $white, 75%)};
   --bd-violet-bg: #{$bd-violet};
+  --bd-toc-color: var(--#{$prefix}emphasis-color);
   --bd-sidebar-link-bg: rgba(#{to-rgb(mix($bd-violet, $black, 75%))}, .5);
+  --bd-callout-link: #{to-rgb($blue-300)};
 }
