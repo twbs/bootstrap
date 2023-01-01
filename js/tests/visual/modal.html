@@ -264,7 +264,7 @@
 
       slowModal.addEventListener('shown.bs.modal', () => {
         t1 = performance.now()
-        console.log('transition-duration took ' + (t1 - t0) + 'ms.')
+        console.log(`transition-duration took ${t1 - t0}ms.`)
       })
 
       slowModal.addEventListener('show.bs.modal', () => {

@@ -44,6 +44,18 @@
   }
 }
 
-.btn-close-white {
+@mixin btn-close-white() {
   filter: var(--#{$prefix}btn-close-white-filter);
+}
+
+.btn-close-white {
+  @include btn-close-white();
+}
+
+@if $enable-dark-mode {
+  @include color-mode(dark) {
+    .btn-close {
+      @include btn-close-white();
+    }
+  }
 }

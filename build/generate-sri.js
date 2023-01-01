@@ -6,7 +6,6 @@
  * otherwise the hashes won't match!
  *
  * Copyright 2017-2022 The Bootstrap Authors
- * Copyright 2017-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
