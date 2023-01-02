@@ -34,9 +34,11 @@
 
     document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
       element.classList.remove('active')
+      element.setAttribute('aria-pressed', 'false')
     })
 
     btnToActive.classList.add('active')
+    btnToActive.setAttribute('aria-pressed', 'true')
     activeThemeIcon.setAttribute('href', svgOfActiveBtn)
   }
 
