@@ -2,7 +2,7 @@
 
 /*!
  * Script to build our plugins to use them separately.
- * Copyright 2020-2022 The Bootstrap Authors
+ * Copyright 2020-2023 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
