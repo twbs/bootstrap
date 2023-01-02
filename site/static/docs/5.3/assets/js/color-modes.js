@@ -43,6 +43,7 @@
     activeThemeIcon.setAttribute('href', svgOfActiveBtn)
     const themeSwitcherLabel = `Toggle theme (${btnToActive.dataset.bsThemeValue})`
     themeSwitcher.setAttribute('aria-label', themeSwitcherLabel)
+    themeSwitcher.focus()
   }
 
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
