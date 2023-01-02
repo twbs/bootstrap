@@ -1,0 +1,664 @@
+---
+layout: docs
+title: Flex
+description: Quickly manage the layout, alignment, and sizing of grid columns, navigation, components, and more with a full suite of responsive flexbox utilities. For more complex implementations, custom CSS may be necessary.
+group: utilities
+toc: true
+---
+
+## Enable flex behaviors
+
+Apply `display` utilities to create a flexbox container and transform **direct children elements** into flex items. Flex containers and items are able to be modified further with additional flex properties.
+
+{{< example class="bd-example-flex" >}}
+<div class="d-flex p-2">I'm a flexbox container!</div>
+{{< /example >}}
+
+{{< example class="bd-example-flex" >}}
+<div class="d-inline-flex p-2">I'm an inline flexbox container!</div>
+{{< /example >}}
+
+Responsive variations also exist for `.d-flex` and `.d-inline-flex`.
+
+{{< markdown >}}
+{{< flex.inline >}}
+{{- range $.Site.Data.breakpoints }}
+- `.d{{ .abbr }}-flex`
+- `.d{{ .abbr }}-inline-flex`
+{{- end -}}
+{{< /flex.inline >}}
+{{< /markdown >}}
+
+## Direction
+
+Set the direction of flex items in a flex container with direction utilities. In most cases you can omit the horizontal class here as the browser default is `row`. However, you may encounter situations where you needed to explicitly set this value (like responsive layouts).
+
+Use `.flex-row` to set a horizontal direction (the browser default), or `.flex-row-reverse` to start the horizontal direction from the opposite side.
+
+{{< example class="bd-example-flex" >}}
+<div class="d-flex flex-row mb-3">
+  <div class="p-2">Flex item 1</div>
+  <div class="p-2">Flex item 2</div>
+  <div class="p-2">Flex item 3</div>
+</div>
+<div class="d-flex flex-row-reverse">
+  <div class="p-2">Flex item 1</div>
+  <div class="p-2">Flex item 2</div>
+  <div class="p-2">Flex item 3</div>
+</div>
+{{< /example >}}
+
+Use `.flex-column` to set a vertical direction, or `.flex-column-reverse`  to start the vertical direction from the opposite side.
+
+{{< example class="bd-example-flex" >}}
+<div class="d-flex flex-column mb-3">
+  <div class="p-2">Flex item 1</div>
+  <div class="p-2">Flex item 2</div>
+  <div class="p-2">Flex item 3</div>
+</div>
+<div class="d-flex flex-column-reverse">
+  <div class="p-2">Flex item 1</div>
+  <div class="p-2">Flex item 2</div>
+  <div class="p-2">Flex item 3</div>
+</div>
+{{< /example >}}
+
+Responsive variations also exist for `flex-direction`.
+
+{{< markdown >}}
+{{< flex.inline >}}
+{{- range $.Site.Data.breakpoints }}
+- `.flex{{ .abbr }}-row`
+- `.flex{{ .abbr }}-row-reverse`
+- `.flex{{ .abbr }}-column`
+- `.flex{{ .abbr }}-column-reverse`
+{{- end -}}
+{{< /flex.inline >}}
+{{< /markdown >}}
+
+## Justify content
+
+Use `justify-content` utilities on flexbox containers to change the alignment of flex items on the main axis (the x-axis to start, y-axis if `flex-direction: column`). Choose from `start` (browser default), `end`, `center`, `between`, `around`, or `evenly`.
+
+<div class="bd-example bd-example-flex">
+  <div class="d-flex justify-content-start mb-3">
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">Start</div>
+  </div>
+  <div class="d-flex justify-content-end mb-3">
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">End</div>
+  </div>
+  <div class="d-flex justify-content-center mb-3">
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">Center</div>
+  </div>
+  <div class="d-flex justify-content-between mb-3">
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">Between</div>
+  </div>
+  <div class="d-flex justify-content-around mb-3">
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">Around</div>
+  </div>
+  <div class="d-flex justify-content-evenly">
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">Evenly</div>
+  </div>
+</div>
+
+```html
+<div class="d-flex justify-content-start">...</div>
+<div class="d-flex justify-content-end">...</div>
+<div class="d-flex justify-content-center">...</div>
+<div class="d-flex justify-content-between">...</div>
+<div class="d-flex justify-content-around">...</div>
+<div class="d-flex justify-content-evenly">...</div>
+```
+
+Responsive variations also exist for `justify-content`.
+
+{{< markdown >}}
+{{< flex.inline >}}
+{{- range $.Site.Data.breakpoints }}
+- `.justify-content{{ .abbr }}-start`
+- `.justify-content{{ .abbr }}-end`
+- `.justify-content{{ .abbr }}-center`
+- `.justify-content{{ .abbr }}-between`
+- `.justify-content{{ .abbr }}-around`
+- `.justify-content{{ .abbr }}-evenly`
+{{- end -}}
+{{< /flex.inline >}}
+{{< /markdown >}}
+
+## Align items
+
+Use `align-items` utilities on flexbox containers to change the alignment of flex items on the cross axis (the y-axis to start, x-axis if `flex-direction: column`). Choose from `start`, `end`, `center`, `baseline`, or `stretch` (browser default).
+
+<div class="bd-example bd-example-flex">
+  <div class="d-flex align-items-start mb-3" style="height: 100px">
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+  </div>
+  <div class="d-flex align-items-end mb-3" style="height: 100px">
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+  </div>
+  <div class="d-flex align-items-center mb-3" style="height: 100px">
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+  </div>
+  <div class="d-flex align-items-baseline mb-3" style="height: 100px">
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+  </div>
+  <div class="d-flex align-items-stretch" style="height: 100px">
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+  </div>
+</div>
+
+```html
+<div class="d-flex align-items-start">...</div>
+<div class="d-flex align-items-end">...</div>
+<div class="d-flex align-items-center">...</div>
+<div class="d-flex align-items-baseline">...</div>
+<div class="d-flex align-items-stretch">...</div>
+```
+
+Responsive variations also exist for `align-items`.
+
+{{< markdown >}}
+{{< flex.inline >}}
+{{- range $.Site.Data.breakpoints }}
+- `.align-items{{ .abbr }}-start`
+- `.align-items{{ .abbr }}-end`
+- `.align-items{{ .abbr }}-center`
+- `.align-items{{ .abbr }}-baseline`
+- `.align-items{{ .abbr }}-stretch`
+{{- end -}}
+{{< /flex.inline >}}
+{{< /markdown >}}
+
+## Align self
+
+Use `align-self` utilities on flexbox items to individually change their alignment on the cross axis (the y-axis to start, x-axis if `flex-direction: column`). Choose from the same options as `align-items`: `start`, `end`, `center`, `baseline`, or `stretch` (browser default).
+
+<div class="bd-example bd-example-flex">
+  <div class="d-flex mb-3" style="height: 100px">
+    <div class="p-2">Flex item</div>
+    <div class="align-self-start p-2">Aligned flex item</div>
+    <div class="p-2">Flex item</div>
+  </div>
+  <div class="d-flex mb-3" style="height: 100px">
+    <div class="p-2">Flex item</div>
+    <div class="align-self-end p-2">Aligned flex item</div>
+    <div class="p-2">Flex item</div>
+  </div>
+  <div class="d-flex mb-3" style="height: 100px">
+    <div class="p-2">Flex item</div>
+    <div class="align-self-center p-2">Aligned flex item</div>
+    <div class="p-2">Flex item</div>
+  </div>
+  <div class="d-flex mb-3" style="height: 100px">
+    <div class="p-2">Flex item</div>
+    <div class="align-self-baseline p-2">Aligned flex item</div>
+    <div class="p-2">Flex item</div>
+  </div>
+  <div class="d-flex" style="height: 100px">
+    <div class="p-2">Flex item</div>
+    <div class="align-self-stretch p-2">Aligned flex item</div>
+    <div class="p-2">Flex item</div>
+  </div>
+</div>
+
+```html
+<div class="align-self-start">Aligned flex item</div>
+<div class="align-self-end">Aligned flex item</div>
+<div class="align-self-center">Aligned flex item</div>
+<div class="align-self-baseline">Aligned flex item</div>
+<div class="align-self-stretch">Aligned flex item</div>
+```
+
+Responsive variations also exist for `align-self`.
+
+{{< markdown >}}
+{{< flex.inline >}}
+{{- range $.Site.Data.breakpoints }}
+- `.align-self{{ .abbr }}-start`
+- `.align-self{{ .abbr }}-end`
+- `.align-self{{ .abbr }}-center`
+- `.align-self{{ .abbr }}-baseline`
+- `.align-self{{ .abbr }}-stretch`
+{{- end -}}
+{{< /flex.inline >}}
+{{< /markdown >}}
+
+## Fill
+
+Use the `.flex-fill` class on a series of sibling elements to force them into widths equal to their content (or equal widths if their content does not surpass their border-boxes) while taking up all available horizontal space.
+
+{{< example class="bd-example-flex" >}}
+<div class="d-flex">
+  <div class="p-2 flex-fill">Flex item with a lot of content</div>
+  <div class="p-2 flex-fill">Flex item</div>
+  <div class="p-2 flex-fill">Flex item</div>
+</div>
+{{< /example >}}
+
+Responsive variations also exist for `flex-fill`.
+
+{{< markdown >}}
+{{< flex.inline >}}
+{{- range $.Site.Data.breakpoints }}
+- `.flex{{ .abbr }}-fill`
+{{- end -}}
+{{< /flex.inline >}}
+{{< /markdown >}}
+
+## Grow and shrink
+
+Use `.flex-grow-*` utilities to toggle a flex item's ability to grow to fill available space. In the example below, the `.flex-grow-1` elements uses all available space it can, while allowing the remaining two flex items their necessary space.
+
+{{< example class="bd-example-flex" >}}
+<div class="d-flex">
+  <div class="p-2 flex-grow-1">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Third flex item</div>
+</div>
+{{< /example >}}
+
+Use `.flex-shrink-*` utilities to toggle a flex item's ability to shrink if necessary. In the example below, the second flex item with `.flex-shrink-1` is forced to wrap its contents to a new line, "shrinking" to allow more space for the previous flex item with `.w-100`.
+
+{{< example class="bd-example-flex" >}}
+<div class="d-flex">
+  <div class="p-2 w-100">Flex item</div>
+  <div class="p-2 flex-shrink-1">Flex item</div>
+</div>
+{{< /example >}}
+
+Responsive variations also exist for `flex-grow` and `flex-shrink`.
+
+{{< markdown >}}
+{{< flex.inline >}}
+{{- range $.Site.Data.breakpoints }}
+- `.flex{{ .abbr }}-{grow|shrink}-0`
+- `.flex{{ .abbr }}-{grow|shrink}-1`
+{{- end -}}
+{{< /flex.inline >}}
+{{< /markdown >}}
+
+## Auto margins
+
+Flexbox can do some pretty awesome things when you mix flex alignments with auto margins. Shown below are three examples of controlling flex items via auto margins: default (no auto margin), pushing two items to the right (`.me-auto`), and pushing two items to the left (`.ms-auto`).
+
+{{< example class="bd-example-flex" >}}
+<div class="d-flex mb-3">
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+</div>
+
+<div class="d-flex mb-3">
+  <div class="me-auto p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+</div>
+
+<div class="d-flex mb-3">
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="ms-auto p-2">Flex item</div>
+</div>
+{{< /example >}}
+
+### With align-items
+
+Vertically move one flex item to the top or bottom of a container by mixing `align-items`, `flex-direction: column`, and `margin-top: auto` or `margin-bottom: auto`.
+
+{{< example class="bd-example-flex" >}}
+<div class="d-flex align-items-start flex-column mb-3" style="height: 200px;">
+  <div class="mb-auto p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+</div>
+
+<div class="d-flex align-items-end flex-column mb-3" style="height: 200px;">
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="mt-auto p-2">Flex item</div>
+</div>
+{{< /example >}}
+
+## Wrap
+
+Change how flex items wrap in a flex container. Choose from no wrapping at all (the browser default) with `.flex-nowrap`, wrapping with `.flex-wrap`, or reverse wrapping with `.flex-wrap-reverse`.
+
+<div class="bd-example bd-example-flex">
+  <div class="d-flex flex-nowrap" style="width: 8rem;">
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+  </div>
+</div>
+
+```html
+<div class="d-flex flex-nowrap">
+  ...
+</div>
+```
+
+<div class="bd-example bd-example-flex">
+  <div class="d-flex flex-wrap">
+    <div class="p-2">Flex item 1</div>
+    <div class="p-2">Flex item 2</div>
+    <div class="p-2">Flex item 3</div>
+    <div class="p-2">Flex item 4</div>
+    <div class="p-2">Flex item 5</div>
+    <div class="p-2">Flex item 6</div>
+    <div class="p-2">Flex item 7</div>
+    <div class="p-2">Flex item 8</div>
+    <div class="p-2">Flex item 9</div>
+    <div class="p-2">Flex item 10</div>
+    <div class="p-2">Flex item 11</div>
+    <div class="p-2">Flex item 12</div>
+    <div class="p-2">Flex item 13</div>
+    <div class="p-2">Flex item 14</div>
+  </div>
+</div>
+
+```html
+<div class="d-flex flex-wrap">
+  ...
+</div>
+```
+
+<div class="bd-example bd-example-flex">
+  <div class="d-flex flex-wrap-reverse">
+    <div class="p-2">Flex item 1</div>
+    <div class="p-2">Flex item 2</div>
+    <div class="p-2">Flex item 3</div>
+    <div class="p-2">Flex item 4</div>
+    <div class="p-2">Flex item 5</div>
+    <div class="p-2">Flex item 6</div>
+    <div class="p-2">Flex item 7</div>
+    <div class="p-2">Flex item 8</div>
+    <div class="p-2">Flex item 9</div>
+    <div class="p-2">Flex item 10</div>
+    <div class="p-2">Flex item 11</div>
+    <div class="p-2">Flex item 12</div>
+    <div class="p-2">Flex item 13</div>
+    <div class="p-2">Flex item 14</div>
+  </div>
+</div>
+
+```html
+<div class="d-flex flex-wrap-reverse">
+  ...
+</div>
+```
+
+
+Responsive variations also exist for `flex-wrap`.
+
+{{< markdown >}}
+{{< flex.inline >}}
+{{- range $.Site.Data.breakpoints }}
+- `.flex{{ .abbr }}-nowrap`
+- `.flex{{ .abbr }}-wrap`
+- `.flex{{ .abbr }}-wrap-reverse`
+{{- end -}}
+{{< /flex.inline >}}
+{{< /markdown >}}
+
+## Order
+
+Change the _visual_ order of specific flex items with a handful of `order` utilities. We only provide options for making an item first or last, as well as a reset to use the DOM order. As `order` takes any integer value from 0 to 5, add custom CSS for any additional values needed.
+
+{{< example class="bd-example-flex" >}}
+<div class="d-flex flex-nowrap">
+  <div class="order-3 p-2">First flex item</div>
+  <div class="order-2 p-2">Second flex item</div>
+  <div class="order-1 p-2">Third flex item</div>
+</div>
+{{< /example >}}
+
+Responsive variations also exist for `order`.
+
+{{< markdown >}}
+{{< flex.inline >}}
+{{- range $bp := $.Site.Data.breakpoints -}}
+{{- range (seq 0 5) }}
+- `.order{{ $bp.abbr }}-{{ . }}`
+{{- end -}}
+{{- end -}}
+{{< /flex.inline >}}
+{{< /markdown >}}
+
+Additionally there are also responsive `.order-first` and `.order-last` classes that change the `order` of an element by applying `order: -1` and `order: 6`, respectively.
+
+{{< markdown >}}
+{{< flex.inline >}}
+{{- range $bp := $.Site.Data.breakpoints -}}
+{{- range (slice "first" "last") }}
+- `.order{{ $bp.abbr }}-{{ . }}`
+{{- end -}}
+{{- end -}}
+{{< /flex.inline >}}
+{{< /markdown >}}
+
+## Align content
+
+Use `align-content` utilities on flexbox containers to align flex items _together_ on the cross axis. Choose from `start` (browser default), `end`, `center`, `between`, `around`, or `stretch`. To demonstrate these utilities, we've enforced `flex-wrap: wrap` and increased the number of flex items.
+
+**Heads up!** This property has no effect on single rows of flex items.
+
+<div class="bd-example bd-example-flex">
+  <div class="d-flex align-content-start flex-wrap mb-3" style="height: 200px">
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+  </div>
+</div>
+
+```html
+<div class="d-flex align-content-start flex-wrap">
+  ...
+</div>
+```
+
+<div class="bd-example bd-example-flex">
+  <div class="d-flex align-content-end flex-wrap mb-3" style="height: 200px">
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+  </div>
+</div>
+
+```html
+<div class="d-flex align-content-end flex-wrap">...</div>
+```
+
+<div class="bd-example bd-example-flex">
+  <div class="d-flex align-content-center flex-wrap mb-3" style="height: 200px">
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+  </div>
+</div>
+
+```html
+<div class="d-flex align-content-center flex-wrap">...</div>
+```
+
+<div class="bd-example bd-example-flex">
+  <div class="d-flex align-content-between flex-wrap mb-3" style="height: 200px">
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+  </div>
+</div>
+
+```html
+<div class="d-flex align-content-between flex-wrap">...</div>
+```
+
+<div class="bd-example bd-example-flex">
+  <div class="d-flex align-content-around flex-wrap mb-3" style="height: 200px">
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+  </div>
+</div>
+
+```html
+<div class="d-flex align-content-around flex-wrap">...</div>
+```
+
+<div class="bd-example bd-example-flex">
+  <div class="d-flex align-content-stretch flex-wrap mb-3" style="height: 200px">
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+    <div class="p-2">Flex item</div>
+  </div>
+</div>
+
+```html
+<div class="d-flex align-content-stretch flex-wrap">...</div>
+```
+
+Responsive variations also exist for `align-content`.
+
+{{< markdown >}}
+{{< flex.inline >}}
+{{- range $.Site.Data.breakpoints }}
+- `.align-content{{ .abbr }}-start`
+- `.align-content{{ .abbr }}-end`
+- `.align-content{{ .abbr }}-center`
+- `.align-content{{ .abbr }}-between`
+- `.align-content{{ .abbr }}-around`
+- `.align-content{{ .abbr }}-stretch`
+{{- end -}}
+{{< /flex.inline >}}
+{{< /markdown >}}
+
+## Media object
+
+Looking to replicate the [media object component](https://getbootstrap.com/docs/4.6/components/media-object/) from Bootstrap 4? Recreate it in no time with a few flex utilities that allow even more flexibility and customization than before.
+
+{{< example >}}
+<div class="d-flex">
+  <div class="flex-shrink-0">
+    {{< placeholder width="100" height="100" color="#999" background="#e5e5e5" text="Image" >}}
+  </div>
+  <div class="flex-grow-1 ms-3">
+    This is some content from a media component. You can replace this with any content and adjust it as needed.
+  </div>
+</div>
+{{< /example >}}
+
+And say you want to vertically center the content next to the image:
+
+{{< example >}}
+<div class="d-flex align-items-center">
+  <div class="flex-shrink-0">
+    {{< placeholder width="100" height="100" color="#999" background="#e5e5e5" text="Image" >}}
+  </div>
+  <div class="flex-grow-1 ms-3">
+    This is some content from a media component. You can replace this with any content and adjust it as needed.
+  </div>
+</div>
+{{< /example >}}
+
+## Sass
+
+### Utilities API
+
+Flexbox utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
+
+{{< scss-docs name="utils-flex" file="scss/_utilities.scss" >}}

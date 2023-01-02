@@ -4,8 +4,15 @@ on:
   schedule:
     - cron: "0 0 * * *"
 
+permissions:
+  contents: read
+
 jobs:
   issue-close-require:
+    permissions:
+      # allow actions-cool/issues-helper to update issues and PRs
+      issues: write
+      pull-requests: write
     runs-on: ubuntu-latest
     if: github.repository == 'twbs/bootstrap'
     steps:

@@ -1,4 +1,4 @@
-// stylelint-disable selector-max-type
+// stylelint-disable selector-max-type, selector-no-qualifying-type, selector-max-compound-selectors
 
 .bd-toc {
   @include media-breakpoint-up(lg) {
@@ -16,23 +16,34 @@
     ul {
       padding-left: 0;
       margin-bottom: 0;
+      margin-left: -.75rem;
       list-style: none;
 
       ul {
         padding-left: 1rem;
-        margin-top: .25rem;
+        margin-left: -1rem;
+
+        a {
+          padding-left: 1.375rem;
+        }
       }
     }
 
-    li {
-      margin-bottom: .25rem;
-    }
-
     a {
+      display: block;
+      padding: .125rem 0 .125rem .625rem;
       color: inherit;
+      text-decoration: none;
+      border-left: .125rem solid transparent;
 
-      &:not(:hover) {
-        text-decoration: none;
+      &:hover,
+      &.active {
+        color: var(--bd-toc-color);
+        border-left-color: var(--bd-toc-color);
+      }
+
+      &.active {
+        font-weight: 500;
       }
 
       code {
