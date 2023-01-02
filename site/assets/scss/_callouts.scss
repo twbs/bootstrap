@@ -4,6 +4,7 @@
 
 .bd-callout {
   --#{$prefix}link-color-rgb: var(--bd-callout-link);
+  --#{$prefix}code-color: var(--bd-callout-code-color);
 
   padding: 1.25rem;
   margin-top: 1.25rem;
