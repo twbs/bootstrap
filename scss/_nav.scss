@@ -38,7 +38,7 @@
     text-decoration: if($link-hover-decoration == underline, none, null);
   }
 
-  &:focus {
+  &:focus-visible {
     outline: 0;
     box-shadow: $nav-link-focus-box-shadow;
   }
