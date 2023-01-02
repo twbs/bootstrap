@@ -29,6 +29,7 @@
 
   const showActiveTheme = theme => {
     const themeSwitcher = document.querySelector('#bd-theme')
+    const themeSwitcherText = document.querySelector('#bd-theme-text')
     const activeThemeIcon = document.querySelector('.theme-icon-active use')
     const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
     const svgOfActiveBtn = btnToActive.querySelector('svg use').getAttribute('href')
@@ -41,7 +42,7 @@
     btnToActive.classList.add('active')
     btnToActive.setAttribute('aria-pressed', 'true')
     activeThemeIcon.setAttribute('href', svgOfActiveBtn)
-    const themeSwitcherLabel = `${themeSwitcher.innerText} (${btnToActive.dataset.bsThemeValue})`
+    const themeSwitcherLabel = `${themeSwitcherText.innerText} (${btnToActive.dataset.bsThemeValue})`
     themeSwitcher.setAttribute('aria-label', themeSwitcherLabel)
     themeSwitcher.focus()
   }
