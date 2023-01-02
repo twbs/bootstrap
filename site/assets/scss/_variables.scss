@@ -22,6 +22,7 @@ $bd-callout-variants: info, warning, danger !default;
   --bd-toc-color: var(--bd-violet);
   --bd-sidebar-link-bg: rgba(var(--bd-violet-rgb), .1);
   --bd-callout-link: #{to-rgb($blue-600)};
+  --bd-callout-code-color: #{$pink-600};
 }
 
 @include color-mode(dark, true) {
@@ -30,4 +31,5 @@ $bd-callout-variants: info, warning, danger !default;
   --bd-toc-color: var(--#{$prefix}emphasis-color);
   --bd-sidebar-link-bg: rgba(#{to-rgb(mix($bd-violet, $black, 75%))}, .5);
   --bd-callout-link: #{to-rgb($blue-300)};
+  --bd-callout-code-color: #{$pink-300};
 }
