@@ -9,7 +9,7 @@ added: 5.3
 
 ## Link opacity
 
-Change the alpha opacity of the link `rgba()` color value with utilities.
+Change the alpha opacity of the link `rgba()` color value with utilities. Please be aware that changes to a color's opacity can result in contrast ratios below the WCAG minimum.
 
 {{< example >}}
 <p><a class="link-opacity-10" href="#">Link opacity 10</a></p>
@@ -38,10 +38,14 @@ Change the underline's color independent of the link text color.
 {{< example >}}
 {{< link-underline-colors.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
-<p><a href="#" class="link-dark link-underline-{{ .name }}">{{ .name | title }} underline</a></p>
+<p><a href="#" class="link-underline-{{ .name }}">{{ .name | title }} underline</a></p>
 {{- end -}}
 {{< /link-underline-colors.inline >}}
 {{< /example >}}
+
+{{< callout info >}}
+{{< partial "callouts/warning-color-assistive-technologies.md" >}}
+{{< /callout >}}
 
 ### Underline offset
 
@@ -87,6 +91,10 @@ Just like the `.link-opacity-*-hover` utilities, `.link-offset` and `.link-under
 {{- end -}}
 {{< /colored-links.inline >}}
 {{< /example >}}
+
+{{< callout info >}}
+{{< partial "callouts/warning-color-assistive-technologies.md" >}}
+{{< /callout >}}
 
 ## Sass
 

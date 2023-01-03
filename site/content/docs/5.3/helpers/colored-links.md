@@ -8,7 +8,7 @@ toc: true
 
 ## Link colors
 
-You can use the `.link-*` classes to colorize links. Unlike the [`.text-*` classes]({{< docsref "/utilities/colors" >}}), these classes have a `:hover` and `:focus` state.
+You can use the `.link-*` classes to colorize links. Unlike the [`.text-*` classes]({{< docsref "/utilities/colors" >}}), these classes have a `:hover` and `:focus` state. Some of the link styles use a relatively light foreground color, and should only be used on a dark background in order to have sufficient contrast.
 
 {{< example >}}
 {{< colored-links.inline >}}
@@ -19,7 +19,7 @@ You can use the `.link-*` classes to colorize links. Unlike the [`.text-*` class
 {{< /example >}}
 
 {{< callout info >}}
-Some of the link styles use a relatively light foreground color, and should only be used on a dark background in order to have sufficient contrast.
+{{< partial "callouts/warning-color-assistive-technologies.md" >}}
 {{< /callout >}}
 
 ## Link utilities
