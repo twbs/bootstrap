@@ -211,6 +211,8 @@
 // Dark mode carousel
 
 @mixin carousel-dark() {
+  --#{$prefix}heading-color: $black;
+
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
     filter: $carousel-dark-control-icon-filter;
