@@ -344,7 +344,7 @@
   position: relative;
   padding: .75rem ($bd-gutter-x * .5);
   margin-bottom: 1rem;
-  background-color: var(--bs-tertiary-bg);
+  background-color: var(--bd-pre-bg);
 
   @include media-breakpoint-up(md) {
     padding: .75rem 1.25rem;
@@ -388,7 +388,7 @@
 }
 
 .highlight-toolbar {
-  background-color: var(--bs-tertiary-bg);
+  background-color: var(--bd-pre-bg);
   border: solid var(--bs-border-color);
   border-width: 1px 0;
 

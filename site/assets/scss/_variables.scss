@@ -23,6 +23,7 @@ $bd-callout-variants: info, warning, danger !default;
   --bd-sidebar-link-bg: rgba(var(--bd-violet-rgb), .1);
   --bd-callout-link: #{to-rgb($blue-600)};
   --bd-callout-code-color: #{$pink-600};
+  --bd-pre-bg: var(--bs-tertiary-bg);
 }
 
 @include color-mode(dark, true) {
@@ -32,4 +33,5 @@ $bd-callout-variants: info, warning, danger !default;
   --bd-sidebar-link-bg: rgba(#{to-rgb(mix($bd-violet, $black, 75%))}, .5);
   --bd-callout-link: #{to-rgb($blue-300)};
   --bd-callout-code-color: #{$pink-300};
+  --bd-pre-bg: #{adjust-color($gray-900, $lightness: -2.5%)}; // stylelint-disable-line scss/at-function-named-arguments
 }
