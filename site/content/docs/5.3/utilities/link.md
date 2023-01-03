@@ -43,10 +43,6 @@ Change the underline's color independent of the link text color.
 {{< /link-underline-colors.inline >}}
 {{< /example >}}
 
-{{< callout info >}}
-{{< partial "callouts/warning-color-assistive-technologies.md" >}}
-{{< /callout >}}
-
 ### Underline offset
 
 Change the underline's distance from your text. Offset is set in `em` units to automatically scale with the element's current `font-size`.
