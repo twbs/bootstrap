@@ -9,10 +9,18 @@
 }
 
 .dropdown-toggle {
+  --#{$prefix}dropdown-btn-icon-transform: #{$dropdown-icon-transform};
+
   white-space: nowrap;
 
   // Generate the caret automatically
   @include caret();
+
+  &.show {
+    &::after {
+      transform: var(--#{$prefix}dropdown-btn-icon-transform);
+    }
+  }
 }
 
 // The dropdown menu
