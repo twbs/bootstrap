@@ -81,6 +81,7 @@ With dependencies installed and our project folder ready for us to start coding,
    const path = require('path')
 
    module.exports = {
+     mode: 'development',
      entry: './src/js/main.js',
      output: {
        filename: 'main.js',
@@ -116,13 +117,14 @@ With dependencies installed and our project folder ready for us to start coding,
 
    We're including a little bit of Bootstrap styling here with the `div class="container"` and `<button>` so that we see when Bootstrap's CSS is loaded by Webpack.
 
-3. **Now we need an npm script to run Webpack.** Open `package.json` and add the `start` script shown below (you should already have the test script). We'll use this script to start our local Webpack dev server.
+3. **Now we need an npm script to run Webpack.** Open `package.json` and add the `start` script shown below (you should already have the test script). We'll use this script to start our local Webpack dev server. You can also add a `build` script shown below to build your project.
 
    ```json
    {
      // ...
      "scripts": {
-       "start": "webpack serve --mode development",
+       "start": "webpack serve",
+       "build": "webpack build",
        "test": "echo \"Error: no test specified\" && exit 1"
      },
      // ...
@@ -149,6 +151,7 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
    const path = require('path')
 
    module.exports = {
+     mode: 'development',
      entry: './src/js/main.js',
      output: {
        filename: 'main.js',
@@ -165,12 +168,15 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
            test: /\.(scss)$/,
            use: [
              {
+               // Adds CSS to the DOM by injecting a `<style>` tag
                loader: 'style-loader'
              },
              {
+               // Interprets `@import` and `url()` like `import/require()` and will resolve them
                loader: 'css-loader'
              },
              {
+               // Loader for webpack to process CSS with PostCSS
                loader: 'postcss-loader',
                options: {
                  postcssOptions: {
@@ -181,6 +187,7 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
                }
              },
              {
+               // Loads a SASS/SCSS file and compiles it to CSS
                loader: 'sass-loader'
              }
            ]
