@@ -64,6 +64,10 @@ const DefaultType = {
 class Modal extends BaseComponent {
   constructor(element, config) {
     super(element, config)
+    
+    if (!this._element) { 
+      return 
+    } 
 
     this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element)
     this._backdrop = this._initializeBackDrop()
