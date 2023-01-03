@@ -14,8 +14,11 @@
   }
 }
 
-.icon-link-hover:hover {
-  > .bi {
-    transform: var(--#{$prefix}icon-link-transform, translate3d(.25em, 0, 0));
+.icon-link-hover {
+  &:hover,
+  &:focus-visible {
+    > .bi {
+      transform: var(--#{$prefix}icon-link-transform, translate3d(.25em, 0, 0));
+    }
   }
 }
