@@ -7,7 +7,28 @@ aliases: "/migration/"
 toc: true
 ---
 
-## v5.3.0
+## v5.3.0-alpha2
+
+- We no longer set a color for `$headings-color-dark` or `--bs-heading-color` for dark mode. To avoid several problems of headings within components appearing the wrong color, we've set the Sass variable to `null` and added a `null` check like we use on the default light mode.
+
+- Added SCSS testing via True to help test our utilities API and other customizations.
+
+- Improved included JavaScript for live Toast demo.
+
+- Added new `.nav-underline`.
+- Examples now display with their color mode.
+- Fixed selector for dark mode toggler SVG change
+- Added new link utilities, icon link helper, and updated colored link helpers.
+- Theme switcher HTML and JavaScript now much more accessible with aria attributes.
+- Cards now get a color.
+- Added focus styles to navs, plus new focus utility
+- Replaced instances of our bootstrap-npm-starter project with the newer and more complete twbs/examples repo.
+
+<hr class="mb-4">
+
+For a complete list of changes, [see the v5.3.0-alpha2 project on GitHub](https://github.com/orgs/twbs/projects/13).
+
+## v5.3.0-alpha1
 
 <hr class="mb-4">
 
