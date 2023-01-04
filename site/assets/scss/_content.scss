@@ -9,6 +9,12 @@
     margin-top: -5rem;
   }
 
+  > h2,
+  > h3,
+  > h4 {
+    --#{$prefix}heading-color: #fff;
+  }
+
   > h2:not(:first-child) {
     margin-top: 3rem;
   }
@@ -102,6 +108,7 @@
 }
 
 .bd-title {
+  --#{$prefix}heading-color: #fff;
   @include font-size(3rem);
 }
 

@@ -44,7 +44,7 @@ $body-tertiary-bg-dark:             mix($gray-800, $gray-900, 50%) !default;
 $emphasis-color-dark:               $white !default;
 $border-color-dark:                 $gray-700 !default;
 $border-color-translucent-dark:     rgba($white, .15) !default;
-$headings-color-dark:               #fff !default;
+$headings-color-dark:               null !default;
 $link-color-dark:                   $blue-300 !default;
 $link-hover-color-dark:             $blue-200 !default;
 $code-color-dark:                   $pink-300 !default;
