@@ -316,6 +316,12 @@
   > div {
     background-color: tint-color($bd-violet, 75%);
     border: 1px solid tint-color($bd-violet, 50%);
+
+    > span {
+      position: absolute;
+      right: 5px;
+      bottom: 0;
+    }
   }
 
   > :nth-child(2) {
