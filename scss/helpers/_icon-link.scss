@@ -1,0 +1,24 @@
+.icon-link {
+  display: inline-flex;
+  gap: .375rem;
+  align-items: center;
+  text-decoration-color: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-opacity, .5));
+  text-underline-offset: .5rem;
+  backface-visibility: hidden;
+
+  > .bi {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+    @include transition(.2s ease-in-out transform);
+  }
+}
+
+.icon-link-hover {
+  &:hover,
+  &:focus-visible {
+    > .bi {
+      transform: var(--#{$prefix}icon-link-transform, translate3d(.25em, 0, 0));
+    }
+  }
+}

@@ -609,6 +609,56 @@ $utilities: map-merge(
       values: $utilities-text-emphasis-colors
     ),
     // scss-docs-end utils-color
+    // scss-docs-start utils-links
+    "link-opacity": (
+      css-var: true,
+      class: link-opacity,
+      state: hover,
+      values: (
+        10: .1,
+        25: .25,
+        50: .5,
+        75: .75,
+        100: 1
+      )
+    ),
+    "link-offset": (
+      property: text-underline-offset,
+      class: link-offset,
+      state: hover,
+      values: (
+        1: .125em,
+        2: .25em,
+        3: .375em,
+      )
+    ),
+    "link-underline": (
+      // css-var: true,
+      property: text-decoration-color,
+      class: link-underline,
+      local-vars: (
+        "link-underline-opacity": 1
+      ),
+      values: map-merge(
+        $utilities-links-underline,
+        (
+          null: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-underline-opacity, 1)),
+        )
+      )
+    ),
+    "link-underline-opacity": (
+      css-var: true,
+      class: link-underline-opacity,
+      state: hover,
+      values: (
+        10: .1,
+        25: .25,
+        50: .5,
+        75: .75,
+        100: 1
+      ),
+    ),
+    // scss-docs-end utils-links
     // scss-docs-start utils-bg-color
     "background-color": (
       property: background-color,
