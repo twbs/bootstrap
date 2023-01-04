@@ -3,7 +3,7 @@
   gap: .375rem;
   align-items: center;
   text-decoration-color: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-opacity, .5));
-  text-underline-offset: .5rem;
+  text-underline-offset: .25em;
   backface-visibility: hidden;
 
   > .bi {
