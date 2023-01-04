@@ -49,15 +49,15 @@ body_class: ""
   </symbol>
 </svg>
 
-<div class="d-flex gap-5 justify-content-center">
-  <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px">
+<div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+  <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px" data-bs-theme="light">
     <li><a class="dropdown-item rounded-2 active" href="#">Action</a></li>
     <li><a class="dropdown-item rounded-2" href="#">Another action</a></li>
     <li><a class="dropdown-item rounded-2" href="#">Something else here</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item rounded-2" href="#">Separated link</a></li>
   </ul>
-  <ul class="dropdown-menu dropdown-menu-dark position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px">
+  <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
     <li><a class="dropdown-item rounded-2 active" href="#">Action</a></li>
     <li><a class="dropdown-item rounded-2" href="#">Another action</a></li>
     <li><a class="dropdown-item rounded-2" href="#">Something else here</a></li>
@@ -68,8 +68,8 @@ body_class: ""
 
 <div class="b-example-divider"></div>
 
-<div class="d-flex gap-5 justify-content-center">
-  <div class="dropdown-menu d-block position-static pt-0 mx-0 rounded-3 shadow overflow-hidden w-280px">
+<div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+  <div class="dropdown-menu d-block position-static pt-0 mx-0 rounded-3 shadow overflow-hidden w-280px" data-bs-theme="light">
     <form class="p-2 mb-2 bg-body-tertiary border-bottom">
       <input type="search" class="form-control" autocomplete="false" placeholder="Type to filter...">
     </form>
@@ -93,9 +93,9 @@ body_class: ""
     </ul>
   </div>
 
-  <div class="dropdown-menu dropdown-menu-dark d-block position-static border-0 pt-0 mx-0 rounded-3 shadow overflow-hidden w-280px">
+  <div class="dropdown-menu d-block position-static border-0 pt-0 mx-0 rounded-3 shadow overflow-hidden w-280px" data-bs-theme="dark">
     <form class="p-2 mb-2 bg-dark border-bottom border-dark">
-      <input type="search" class="form-control form-control-dark" autocomplete="false" placeholder="Type to filter...">
+      <input type="search" class="form-control" autocomplete="false" placeholder="Type to filter...">
     </form>
     <ul class="list-unstyled mb-0">
       <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#">
@@ -120,8 +120,8 @@ body_class: ""
 
 <div class="b-example-divider"></div>
 
-<div class="d-flex gap-5 justify-content-center">
-  <ul class="dropdown-menu d-block position-static mx-0 shadow w-220px">
+<div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+  <ul class="dropdown-menu d-block position-static mx-0 shadow w-220px" data-bs-theme="light">
     <li>
       <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
         <svg class="bi" width="16" height="16"><use xlink:href="#files"/></svg>
@@ -160,7 +160,7 @@ body_class: ""
       </a>
     </li>
   </ul>
-  <ul class="dropdown-menu dropdown-menu-dark d-block position-static mx-0 border-0 shadow w-220px">
+  <ul class="dropdown-menu d-block position-static mx-0 border-0 shadow w-220px" data-bs-theme="dark">
     <li>
       <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
         <svg class="bi" width="16" height="16"><use xlink:href="#files"/></svg>
@@ -203,80 +203,161 @@ body_class: ""
 
 <div class="b-example-divider"></div>
 
-<div class="dropdown-menu d-block position-static p-2 shadow rounded-3 w-340px">
-  <div class="d-grid gap-1">
-    <div class="cal">
-      <div class="cal-month">
-        <button class="btn cal-btn" type="button">
-          <svg class="bi" width="16" height="16"><use xlink:href="#arrow-left-short"/></svg>
-        </button>
-        <strong class="cal-month-name">June</strong>
-        <select class="form-select cal-month-name d-none">
-          <option value="January">January</option>
-          <option value="February">February</option>
-          <option value="March">March</option>
-          <option value="April">April</option>
-          <option value="May">May</option>
-          <option selected value="June">June</option>
-          <option value="July">July</option>
-          <option value="August">August</option>
-          <option value="September">September</option>
-          <option value="October">October</option>
-          <option value="November">November</option>
-          <option value="December">December</option>
-        </select>
-        <button class="btn cal-btn" type="button">
-          <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-short"/></svg>
-        </button>
+<div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+  <div class="dropdown-menu d-block position-static p-2 mx-0 shadow rounded-3 w-340px" data-bs-theme="light">
+    <div class="d-grid gap-1">
+      <div class="cal">
+        <div class="cal-month">
+          <button class="btn cal-btn" type="button">
+            <svg class="bi" width="16" height="16"><use xlink:href="#arrow-left-short"/></svg>
+          </button>
+          <strong class="cal-month-name">June</strong>
+          <select class="form-select cal-month-name d-none">
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option selected value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
+          <button class="btn cal-btn" type="button">
+            <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-short"/></svg>
+          </button>
+        </div>
+        <div class="cal-weekdays text-muted">
+          <div class="cal-weekday">Sun</div>
+          <div class="cal-weekday">Mon</div>
+          <div class="cal-weekday">Tue</div>
+          <div class="cal-weekday">Wed</div>
+          <div class="cal-weekday">Thu</div>
+          <div class="cal-weekday">Fri</div>
+          <div class="cal-weekday">Sat</div>
+        </div>
+        <div class="cal-days">
+          <button class="btn cal-btn" disabled type="button">30</button>
+          <button class="btn cal-btn" disabled type="button">31</button>
+
+          <button class="btn cal-btn" type="button">1</button>
+          <button class="btn cal-btn" type="button">2</button>
+          <button class="btn cal-btn" type="button">3</button>
+          <button class="btn cal-btn" type="button">4</button>
+          <button class="btn cal-btn" type="button">5</button>
+          <button class="btn cal-btn" type="button">6</button>
+          <button class="btn cal-btn" type="button">7</button>
+
+          <button class="btn cal-btn" type="button">8</button>
+          <button class="btn cal-btn" type="button">9</button>
+          <button class="btn cal-btn" type="button">10</button>
+          <button class="btn cal-btn" type="button">11</button>
+          <button class="btn cal-btn" type="button">12</button>
+          <button class="btn cal-btn" type="button">13</button>
+          <button class="btn cal-btn" type="button">14</button>
+
+          <button class="btn cal-btn" type="button">15</button>
+          <button class="btn cal-btn" type="button">16</button>
+          <button class="btn cal-btn" type="button">17</button>
+          <button class="btn cal-btn" type="button">18</button>
+          <button class="btn cal-btn" type="button">19</button>
+          <button class="btn cal-btn" type="button">20</button>
+          <button class="btn cal-btn" type="button">21</button>
+
+          <button class="btn cal-btn" type="button">22</button>
+          <button class="btn cal-btn" type="button">23</button>
+          <button class="btn cal-btn" type="button">24</button>
+          <button class="btn cal-btn" type="button">25</button>
+          <button class="btn cal-btn" type="button">26</button>
+          <button class="btn cal-btn" type="button">27</button>
+          <button class="btn cal-btn" type="button">28</button>
+
+          <button class="btn cal-btn" type="button">29</button>
+          <button class="btn cal-btn" type="button">30</button>
+          <button class="btn cal-btn" type="button">31</button>
+        </div>
       </div>
-      <div class="cal-weekdays text-muted">
-        <div class="cal-weekday">Sun</div>
-        <div class="cal-weekday">Mon</div>
-        <div class="cal-weekday">Tue</div>
-        <div class="cal-weekday">Wed</div>
-        <div class="cal-weekday">Thu</div>
-        <div class="cal-weekday">Fri</div>
-        <div class="cal-weekday">Sat</div>
-      </div>
-      <div class="cal-days">
-        <button class="btn cal-btn" disabled type="button">30</button>
-        <button class="btn cal-btn" disabled type="button">31</button>
+    </div>
+  </div>
 
-        <button class="btn cal-btn" type="button">1</button>
-        <button class="btn cal-btn" type="button">2</button>
-        <button class="btn cal-btn" type="button">3</button>
-        <button class="btn cal-btn" type="button">4</button>
-        <button class="btn cal-btn" type="button">5</button>
-        <button class="btn cal-btn" type="button">6</button>
-        <button class="btn cal-btn" type="button">7</button>
+  <div class="dropdown-menu d-block position-static p-2 mx-0 shadow rounded-3 w-340px" data-bs-theme="dark">
+    <div class="d-grid gap-1">
+      <div class="cal">
+        <div class="cal-month">
+          <button class="btn cal-btn" type="button">
+            <svg class="bi" width="16" height="16"><use xlink:href="#arrow-left-short"/></svg>
+          </button>
+          <strong class="cal-month-name">June</strong>
+          <select class="form-select cal-month-name d-none">
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option selected value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
+          <button class="btn cal-btn" type="button">
+            <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-short"/></svg>
+          </button>
+        </div>
+        <div class="cal-weekdays text-muted">
+          <div class="cal-weekday">Sun</div>
+          <div class="cal-weekday">Mon</div>
+          <div class="cal-weekday">Tue</div>
+          <div class="cal-weekday">Wed</div>
+          <div class="cal-weekday">Thu</div>
+          <div class="cal-weekday">Fri</div>
+          <div class="cal-weekday">Sat</div>
+        </div>
+        <div class="cal-days">
+          <button class="btn cal-btn" disabled type="button">30</button>
+          <button class="btn cal-btn" disabled type="button">31</button>
 
-        <button class="btn cal-btn" type="button">8</button>
-        <button class="btn cal-btn" type="button">9</button>
-        <button class="btn cal-btn" type="button">10</button>
-        <button class="btn cal-btn" type="button">11</button>
-        <button class="btn cal-btn" type="button">12</button>
-        <button class="btn cal-btn" type="button">13</button>
-        <button class="btn cal-btn" type="button">14</button>
+          <button class="btn cal-btn" type="button">1</button>
+          <button class="btn cal-btn" type="button">2</button>
+          <button class="btn cal-btn" type="button">3</button>
+          <button class="btn cal-btn" type="button">4</button>
+          <button class="btn cal-btn" type="button">5</button>
+          <button class="btn cal-btn" type="button">6</button>
+          <button class="btn cal-btn" type="button">7</button>
 
-        <button class="btn cal-btn" type="button">15</button>
-        <button class="btn cal-btn" type="button">16</button>
-        <button class="btn cal-btn" type="button">17</button>
-        <button class="btn cal-btn" type="button">18</button>
-        <button class="btn cal-btn" type="button">19</button>
-        <button class="btn cal-btn" type="button">20</button>
-        <button class="btn cal-btn" type="button">21</button>
+          <button class="btn cal-btn" type="button">8</button>
+          <button class="btn cal-btn" type="button">9</button>
+          <button class="btn cal-btn" type="button">10</button>
+          <button class="btn cal-btn" type="button">11</button>
+          <button class="btn cal-btn" type="button">12</button>
+          <button class="btn cal-btn" type="button">13</button>
+          <button class="btn cal-btn" type="button">14</button>
 
-        <button class="btn cal-btn" type="button">22</button>
-        <button class="btn cal-btn" type="button">23</button>
-        <button class="btn cal-btn" type="button">24</button>
-        <button class="btn cal-btn" type="button">25</button>
-        <button class="btn cal-btn" type="button">26</button>
-        <button class="btn cal-btn" type="button">27</button>
-        <button class="btn cal-btn" type="button">28</button>
+          <button class="btn cal-btn" type="button">15</button>
+          <button class="btn cal-btn" type="button">16</button>
+          <button class="btn cal-btn" type="button">17</button>
+          <button class="btn cal-btn" type="button">18</button>
+          <button class="btn cal-btn" type="button">19</button>
+          <button class="btn cal-btn" type="button">20</button>
+          <button class="btn cal-btn" type="button">21</button>
 
-        <button class="btn cal-btn" type="button">29</button>
-        <button class="btn cal-btn" type="button">30</button>
-        <button class="btn cal-btn" type="button">31</button>
+          <button class="btn cal-btn" type="button">22</button>
+          <button class="btn cal-btn" type="button">23</button>
+          <button class="btn cal-btn" type="button">24</button>
+          <button class="btn cal-btn" type="button">25</button>
+          <button class="btn cal-btn" type="button">26</button>
+          <button class="btn cal-btn" type="button">27</button>
+          <button class="btn cal-btn" type="button">28</button>
+
+          <button class="btn cal-btn" type="button">29</button>
+          <button class="btn cal-btn" type="button">30</button>
+          <button class="btn cal-btn" type="button">31</button>
+        </div>
       </div>
     </div>
   </div>
@@ -284,24 +365,84 @@ body_class: ""
 
 <div class="b-example-divider"></div>
 
-<div class="dropdown-menu position-static d-flex align-items-stretch p-3 rounded-3 shadow-lg w-600px">
-  <nav class="d-grid gap-2 col-8">
-    <a href="#" class="btn btn-hover-light rounded-2 d-flex align-items-center gap-3 py-2 px-3 lh-sm text-start">
-      <svg class="bi" width="32" height="32"><use xlink:href="#image-fill"/></svg>
-      <div>
-        <strong class="d-block">Features</strong>
-        <small>Take a tour through the product</small>
-      </div>
-    </a>
-    <a href="#" class="btn btn-hover-light rounded-2 d-flex align-items-center gap-3 py-2 px-3 lh-sm text-start">
-      <svg class="bi" width="32" height="32"><use xlink:href="#question-circle"/></svg>
-      <div>
-        <strong class="d-block">Support</strong>
-        <small>Get help from our support crew</small>
-      </div>
-    </a>
-  </nav>
-  <div class="col-4">
-    ...
+<div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+  <div class="dropdown-menu position-static d-flex align-items-stretch justify-content-start p-3 rounded-3 shadow-lg" data-bs-theme="light">
+    <nav class="col-md-8">
+      <ul class="list-unstyled d-flex flex-column gap-2">
+        <a href="#" class="btn btn-hover-light rounded-2 d-flex align-items-start gap-2 py-2 px-3 lh-sm text-start">
+          <svg class="bi" width="24" height="24"><use xlink:href="#image-fill"/></svg>
+          <div>
+            <strong class="d-block">Main product</strong>
+            <small>Take a tour through the product</small>
+          </div>
+        </a>
+        <a href="#" class="btn btn-hover-light rounded-2 d-flex align-items-start gap-2 py-2 px-3 lh-sm text-start">
+          <svg class="bi" width="24" height="24"><use xlink:href="#music-note-beamed"/></svg>
+          <div>
+            <strong class="d-block">Another product</strong>
+            <small>Explore this other product we offer</small>
+          </div>
+        </a>
+        <a href="#" class="btn btn-hover-light rounded-2 d-flex align-items-start gap-2 py-2 px-3 lh-sm text-start">
+          <svg class="bi" width="24" height="24"><use xlink:href="#question-circle"/></svg>
+          <div>
+            <strong class="d-block">Support</strong>
+            <small>Get help from our support crew</small>
+          </div>
+        </a>
+      </ul>
+    </nav>
+    <div class="vr mx-4 opacity-10">&nbsp;</div>
+    <div class="col-auto pe-3">
+      <nav>
+        <ul class="d-flex flex-column gap-2 list-unstyled small">
+          <li><a href="#" class="link-offset-2 link-underline link-underline-opacity-25 link-underline-opacity-75-hover">Documentation</a></li>
+          <li><a href="#" class="link-offset-2 link-underline link-underline-opacity-25 link-underline-opacity-75-hover">Use cases</a></li>
+          <li><a href="#" class="link-offset-2 link-underline link-underline-opacity-25 link-underline-opacity-75-hover">API status</a></li>
+          <li><a href="#" class="link-offset-2 link-underline link-underline-opacity-25 link-underline-opacity-75-hover">Partners</a></li>
+          <li><a href="#" class="link-offset-2 link-underline link-underline-opacity-25 link-underline-opacity-75-hover">Resources</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="dropdown-menu position-static d-flex align-items-stretch justify-content-start p-3 rounded-3 shadow-lg" data-bs-theme="dark">
+    <nav class="col-md-8">
+      <ul class="list-unstyled d-flex flex-column gap-2">
+        <a href="#" class="btn btn-hover-light rounded-2 d-flex align-items-start gap-2 py-2 px-3 lh-sm text-start">
+          <svg class="bi" width="24" height="24"><use xlink:href="#image-fill"/></svg>
+          <div>
+            <strong class="d-block">Main product</strong>
+            <small>Take a tour through the product</small>
+          </div>
+        </a>
+        <a href="#" class="btn btn-hover-light rounded-2 d-flex align-items-start gap-2 py-2 px-3 lh-sm text-start">
+          <svg class="bi" width="24" height="24"><use xlink:href="#music-note-beamed"/></svg>
+          <div>
+            <strong class="d-block">Another product</strong>
+            <small>Explore this other product we offer</small>
+          </div>
+        </a>
+        <a href="#" class="btn btn-hover-light rounded-2 d-flex align-items-start gap-2 py-2 px-3 lh-sm text-start">
+          <svg class="bi" width="24" height="24"><use xlink:href="#question-circle"/></svg>
+          <div>
+            <strong class="d-block">Support</strong>
+            <small>Get help from our support crew</small>
+          </div>
+        </a>
+      </ul>
+    </nav>
+    <div class="vr mx-4 opacity-10">&nbsp;</div>
+    <div class="col-auto pe-3">
+      <nav>
+        <ul class="d-flex flex-column gap-2 list-unstyled small">
+          <li><a href="#" class="link-offset-2 link-underline link-underline-opacity-25 link-underline-opacity-75-hover">Documentation</a></li>
+          <li><a href="#" class="link-offset-2 link-underline link-underline-opacity-25 link-underline-opacity-75-hover">Use cases</a></li>
+          <li><a href="#" class="link-offset-2 link-underline link-underline-opacity-25 link-underline-opacity-75-hover">API status</a></li>
+          <li><a href="#" class="link-offset-2 link-underline link-underline-opacity-25 link-underline-opacity-75-hover">Partners</a></li>
+          <li><a href="#" class="link-offset-2 link-underline link-underline-opacity-25 link-underline-opacity-75-hover">Resources</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </div>
