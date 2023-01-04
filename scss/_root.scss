@@ -190,7 +190,9 @@
     --#{$prefix}light-border-subtle: #{$light-border-subtle-dark};
     --#{$prefix}dark-border-subtle: #{$dark-border-subtle-dark};
 
-    --#{$prefix}heading-color: #{$headings-color-dark};
+    @if $headings-color-dark != null {
+      --#{$prefix}heading-color: #{$headings-color-dark};
+    }
 
     --#{$prefix}link-color: #{$link-color-dark};
     --#{$prefix}link-hover-color: #{$link-hover-color-dark};
