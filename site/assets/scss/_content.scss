@@ -12,7 +12,7 @@
   > h2,
   > h3,
   > h4 {
-    --#{$prefix}heading-color: #fff;
+    --bs-heading-color: var(--bs-emphasis-color);
   }
 
   > h2:not(:first-child) {
@@ -108,7 +108,7 @@
 }
 
 .bd-title {
-  --#{$prefix}heading-color: #fff;
+  --bs-heading-color: var(--bs-emphasis-color);
   @include font-size(3rem);
 }
 
