@@ -92,7 +92,6 @@ $utilities-bg-subtle: (
   "light-subtle": var(--#{$prefix}light-bg-subtle),
   "dark-subtle": var(--#{$prefix}dark-bg-subtle)
 ) !default;
-// $utilities-bg-subtle-colors: map-loop($utilities-bg-subtle, rgba-css-var, "$key", "bg") !default;
 // scss-docs-end utilities-bg-colors
 
 // scss-docs-start utilities-border-colors
