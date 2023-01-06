@@ -106,7 +106,8 @@
   --#{$prefix}border-radius-sm: #{$border-radius-sm};
   --#{$prefix}border-radius-lg: #{$border-radius-lg};
   --#{$prefix}border-radius-xl: #{$border-radius-xl};
-  --#{$prefix}border-radius-2xl: #{$border-radius-2xl};
+  --#{$prefix}border-radius-xxl: #{$border-radius-xxl};
+  --#{$prefix}border-radius-2xl: var(--#{$prefix}border-radius-xxl); // Deprecated in v5.3.0 for consistency
   --#{$prefix}border-radius-pill: #{$border-radius-pill};
   // scss-docs-end root-border-var
 

@@ -533,9 +533,12 @@ $border-radius:               .375rem !default;
 $border-radius-sm:            .25rem !default;
 $border-radius-lg:            .5rem !default;
 $border-radius-xl:            1rem !default;
-$border-radius-2xl:           2rem !default;
+$border-radius-xxl:           2rem !default;
 $border-radius-pill:          50rem !default;
 // scss-docs-end border-radius-variables
+// fusv-disable
+$border-radius-2xl:           $border-radius-xxl !default; // Deprecated in v5.3.0
+// fusv-enable
 
 // scss-docs-start box-shadow-variables
 $box-shadow:                  0 .5rem 1rem rgba(var(--#{$prefix}body-color-rgb), .15) !default;
