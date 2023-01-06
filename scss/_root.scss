@@ -115,8 +115,6 @@
   --#{$prefix}box-shadow-lg: #{$box-shadow-lg};
   --#{$prefix}box-shadow-inset: #{$box-shadow-inset};
 
-  --#{$prefix}emphasis-color: #{$emphasis-color};
-
   // scss-docs-start form-control-vars
   --#{$prefix}form-control-bg: var(--#{$prefix}body-bg);
   --#{$prefix}form-control-disabled-bg: var(--#{$prefix}secondary-bg);
@@ -158,8 +156,6 @@
     --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color-dark)};
     --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
     --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
-
-    --#{$prefix}emphasis-color: #{$emphasis-color-dark};
 
     --#{$prefix}primary-text: #{$primary-text-dark};
     --#{$prefix}secondary-text: #{$secondary-text-dark};
