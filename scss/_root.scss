@@ -58,8 +58,8 @@
   --#{$prefix}body-line-height: #{$line-height-base};
   --#{$prefix}body-color: #{$body-color};
 
-  --#{$prefix}emphasis-color: #{$emphasis-color};
-  --#{$prefix}emphasis-color-rgb: #{to-rgb($emphasis-color)};
+  --#{$prefix}emphasis-color: #{$body-emphasis-color};
+  --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color)};
 
   --#{$prefix}secondary-color: #{$body-secondary-color};
   --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color)};
@@ -144,8 +144,8 @@
     --#{$prefix}body-bg: #{$body-bg-dark};
     --#{$prefix}body-bg-rgb: #{to-rgb($body-bg-dark)};
 
-    --#{$prefix}emphasis-color: #{$emphasis-color-dark};
-    --#{$prefix}emphasis-color-rgb: #{to-rgb($emphasis-color-dark)};
+    --#{$prefix}emphasis-color: #{$body-emphasis-color-dark};
+    --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color-dark)};
 
     --#{$prefix}secondary-color: #{$body-secondary-color-dark};
     --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color-dark)};
