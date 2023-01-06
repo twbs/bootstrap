@@ -28,7 +28,7 @@
   @include border-radius(.25rem);
 
   &:hover {
-    color: var(--bs-link-color);
+    color: var(--bs-link-hover-color);
   }
 
   &:focus {
