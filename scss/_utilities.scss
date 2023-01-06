@@ -796,11 +796,13 @@ $utilities: map-merge(
       )
     ),
     // scss-docs-end utils-visibility
+    // scss-docs-start utils-zindex
     "z-index": (
       property: z-index,
       class: z,
       values: $zindex-levels,
     )
+    // scss-docs-end utils-zindex
   ),
   $utilities
 );
