@@ -541,10 +541,10 @@ $border-radius-2xl:           $border-radius-xxl !default; // Deprecated in v5.3
 // fusv-enable
 
 // scss-docs-start box-shadow-variables
-$box-shadow:                  0 .5rem 1rem rgba(var(--#{$prefix}body-color-rgb), .15) !default;
-$box-shadow-sm:               0 .125rem .25rem rgba(var(--#{$prefix}body-color-rgb), .075) !default;
-$box-shadow-lg:               0 1rem 3rem rgba(var(--#{$prefix}body-color-rgb), .175) !default;
-$box-shadow-inset:            inset 0 1px 2px rgba(var(--#{$prefix}body-color-rgb), .075) !default;
+$box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
+$box-shadow-sm:               0 .125rem .25rem rgba($black, .075) !default;
+$box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
+$box-shadow-inset:            inset 0 1px 2px rgba($black, .075) !default;
 // scss-docs-end box-shadow-variables
 
 $component-active-color:      $white !default;
