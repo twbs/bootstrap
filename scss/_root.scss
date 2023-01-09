@@ -121,10 +121,6 @@
   --#{$prefix}form-control-disabled-bg: var(--#{$prefix}secondary-bg);
   // scss-docs-end form-control-vars
 
-  @each $name, $value in $grid-breakpoints {
-    --#{$prefix}breakpoint-#{$name}: #{$value};
-  }
-
   // Focus styles
   // scss-docs-start root-focus-variables
   --#{$prefix}focus-ring-width: #{$focus-ring-width};
