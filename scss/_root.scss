@@ -153,32 +153,17 @@
     --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
     --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
 
-    --#{$prefix}primary-text: #{$primary-text-dark};
-    --#{$prefix}secondary-text: #{$secondary-text-dark};
-    --#{$prefix}success-text: #{$success-text-dark};
-    --#{$prefix}info-text: #{$info-text-dark};
-    --#{$prefix}warning-text: #{$warning-text-dark};
-    --#{$prefix}danger-text: #{$danger-text-dark};
-    --#{$prefix}light-text: #{$light-text-dark};
-    --#{$prefix}dark-text: #{$dark-text-dark};
+    @each $color, $value in $theme-colors-text-dark {
+      --#{$prefix}#{$color}-text: #{$value};
+    }
 
-    --#{$prefix}primary-bg-subtle: #{$primary-bg-subtle-dark};
-    --#{$prefix}secondary-bg-subtle: #{$secondary-bg-subtle-dark};
-    --#{$prefix}success-bg-subtle: #{$success-bg-subtle-dark};
-    --#{$prefix}info-bg-subtle: #{$info-bg-subtle-dark};
-    --#{$prefix}warning-bg-subtle: #{$warning-bg-subtle-dark};
-    --#{$prefix}danger-bg-subtle: #{$danger-bg-subtle-dark};
-    --#{$prefix}light-bg-subtle: #{$light-bg-subtle-dark};
-    --#{$prefix}dark-bg-subtle: #{$dark-bg-subtle-dark};
+    @each $color, $value in $theme-colors-bg-subtle-dark {
+      --#{$prefix}#{$color}-bg-subtle: #{$value};
+    }
 
-    --#{$prefix}primary-border-subtle: #{$primary-border-subtle-dark};
-    --#{$prefix}secondary-border-subtle: #{$secondary-border-subtle-dark};
-    --#{$prefix}success-border-subtle: #{$success-border-subtle-dark};
-    --#{$prefix}info-border-subtle: #{$info-border-subtle-dark};
-    --#{$prefix}warning-border-subtle: #{$warning-border-subtle-dark};
-    --#{$prefix}danger-border-subtle: #{$danger-border-subtle-dark};
-    --#{$prefix}light-border-subtle: #{$light-border-subtle-dark};
-    --#{$prefix}dark-border-subtle: #{$dark-border-subtle-dark};
+    @each $color, $value in $theme-colors-border-subtle-dark {
+      --#{$prefix}#{$color}-border-subtle: #{$value};
+    }
 
     @if $headings-color-dark != null {
       --#{$prefix}heading-color: #{$headings-color-dark};

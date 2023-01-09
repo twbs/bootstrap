@@ -39,6 +39,45 @@ $theme-colors-border-subtle: (
   "dark": $dark-border-subtle,
 ) !default;
 
+$theme-colors-text-dark: null !default;
+$theme-colors-bg-subtle-dark: null !default;
+$theme-colors-border-subtle-dark: null !default;
+
+@if $enable-dark-mode {
+  $theme-colors-text-dark: (
+    "primary": $primary-text-dark,
+    "secondary": $secondary-text-dark,
+    "success": $success-text-dark,
+    "info": $info-text-dark,
+    "warning": $warning-text-dark,
+    "danger": $danger-text-dark,
+    "light": $light-text-dark,
+    "dark": $dark-text-dark,
+  ) !default;
+
+  $theme-colors-bg-subtle-dark: (
+    "primary": $primary-bg-subtle-dark,
+    "secondary": $secondary-bg-subtle-dark,
+    "success": $success-bg-subtle-dark,
+    "info": $info-bg-subtle-dark,
+    "warning": $warning-bg-subtle-dark,
+    "danger": $danger-bg-subtle-dark,
+    "light": $light-bg-subtle-dark,
+    "dark": $dark-bg-subtle-dark,
+  ) !default;
+
+  $theme-colors-border-subtle-dark: (
+    "primary": $primary-border-subtle-dark,
+    "secondary": $secondary-border-subtle-dark,
+    "success": $success-border-subtle-dark,
+    "info": $info-border-subtle-dark,
+    "warning": $warning-border-subtle-dark,
+    "danger": $danger-border-subtle-dark,
+    "light": $light-border-subtle-dark,
+    "dark": $dark-border-subtle-dark,
+  ) !default;
+}
+
 // Utilities maps
 //
 // Extends the default `$theme-colors` maps to help create our utilities.
