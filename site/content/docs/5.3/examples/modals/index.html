@@ -55,7 +55,7 @@ body_class: ""
   </symbol>
 </svg>
 
-<div class="modal modal-sheet position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSheet">
+<div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalSheet">
   <div class="modal-dialog" role="document">
     <div class="modal-content rounded-4 shadow">
       <div class="modal-header border-bottom-0">
@@ -65,9 +65,9 @@ body_class: ""
       <div class="modal-body py-0">
         <p>This is a modal sheet, a variation of the modal that docs itself to the bottom of the viewport like the newer share sheets in iOS.</p>
       </div>
-      <div class="modal-footer flex-column border-top-0">
-        <button type="button" class="btn btn-lg btn-primary w-100 mx-0 mb-2">Save changes</button>
-        <button type="button" class="btn btn-lg btn-light w-100 mx-0" data-bs-dismiss="modal">Close</button>
+      <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+        <button type="button" class="btn btn-lg btn-primary">Save changes</button>
+        <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -75,7 +75,7 @@ body_class: ""
 
 <div class="b-example-divider"></div>
 
-<div class="modal modal-alert position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalChoice">
+<div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
   <div class="modal-dialog" role="document">
     <div class="modal-content rounded-3 shadow">
       <div class="modal-body p-4 text-center">
@@ -83,8 +83,8 @@ body_class: ""
         <p class="mb-0">You can always change your mind in your account settings.</p>
       </div>
       <div class="modal-footer flex-nowrap p-0">
-        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end"><strong>Yes, enable</strong></button>
-        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button>
+        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong>Yes, enable</strong></button>
+        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button>
       </div>
     </div>
   </div>
@@ -92,13 +92,13 @@ body_class: ""
 
 <div class="b-example-divider"></div>
 
-<div class="modal modal-tour position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalTour">
+<div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalTour">
   <div class="modal-dialog" role="document">
     <div class="modal-content rounded-4 shadow">
       <div class="modal-body p-5">
         <h2 class="fw-bold mb-0">What's new</h2>
 
-        <ul class="d-grid gap-4 my-5 list-unstyled">
+        <ul class="d-grid gap-4 my-5 list-unstyled small">
           <li class="d-flex gap-4">
             <svg class="bi text-muted flex-shrink-0" width="48" height="48"><use xlink:href="#grid-fill"/></svg>
             <div>
@@ -129,11 +129,10 @@ body_class: ""
 
 <div class="b-example-divider"></div>
 
-<div class="modal modal-signin position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSignin">
+<div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalSignin">
   <div class="modal-dialog" role="document">
     <div class="modal-content rounded-4 shadow">
       <div class="modal-header p-5 pb-4 border-bottom-0">
-        <!-- <h1 class="modal-title fs-5" >Modal title</h1> -->
         <h1 class="fw-bold mb-0 fs-2">Sign up for free</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -152,7 +151,7 @@ body_class: ""
           <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
           <hr class="my-4">
           <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
-          <button class="w-100 py-2 mb-2 btn btn-outline-dark rounded-3" type="submit">
+          <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
             <svg class="bi me-1" width="16" height="16"><use xlink:href="#twitter"/></svg>
             Sign up with Twitter
           </button>
