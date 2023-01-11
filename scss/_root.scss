@@ -36,8 +36,6 @@
 
   --#{$prefix}white-rgb: #{to-rgb($white)};
   --#{$prefix}black-rgb: #{to-rgb($black)};
-  --#{$prefix}body-color-rgb: #{to-rgb($body-color)};
-  --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
 
   // Fonts
 
@@ -56,7 +54,14 @@
   @include rfs($font-size-base, --#{$prefix}body-font-size);
   --#{$prefix}body-font-weight: #{$font-weight-base};
   --#{$prefix}body-line-height: #{$line-height-base};
+  @if $body-text-align != null {
+    --#{$prefix}body-text-align: #{$body-text-align};
+  }
+
   --#{$prefix}body-color: #{$body-color};
+  --#{$prefix}body-color-rgb: #{to-rgb($body-color)};
+  --#{$prefix}body-bg: #{$body-bg};
+  --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
 
   --#{$prefix}emphasis-color: #{$body-emphasis-color};
   --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color)};
@@ -70,12 +75,6 @@
   --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color)};
   --#{$prefix}tertiary-bg: #{$body-tertiary-bg};
   --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg)};
-
-  @if $body-text-align != null {
-    --#{$prefix}body-text-align: #{$body-text-align};
-  }
-  --#{$prefix}body-bg: #{$body-bg};
-  --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
   // scss-docs-end root-body-variables
 
   @if $headings-color != null {
