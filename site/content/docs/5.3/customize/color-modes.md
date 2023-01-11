@@ -11,7 +11,7 @@ added: "5.3"
 
 **Bootstrap now supports color modes, starting with dark mode!** With v5.3.0 you can implement your own color mode toggler (see below for an example from Bootstrap's docs) and apply the different color modes as you see fit. We support a light mode (default) and now dark mode. Color modes can be toggled globally on the `<html>` element, or on specific components and elements, thanks to the `data-bs-theme` attribute.
 
-Alternatively, you can also switch to a media query implementation thanks to our color mode mixin—see [the usage section for details](#sass-usage). Heads up though—this eliminates your ability to change themes on a per-component basis as shown below.
+Alternatively, you can also switch to a media query implementation thanks to our color mode mixin—see [the usage section for details](#building-with-sass). Heads up though—this eliminates your ability to change themes on a per-component basis as shown below.
 
 ## Example
 
@@ -256,7 +256,7 @@ Here's a look at the JavaScript that powers it. Feel free to inspect our own doc
 
 ### Variables
 
-Dozens of root level CSS variables are repeated as overrides for dark mode. These are scoped to the color mode selector, which defaults to `data-bs-theme` but [can be configured](#sass-usage) to use a `prefers-color-scheme` media query. Use these variables as a guideline for generating your own new color modes.
+Dozens of root level CSS variables are repeated as overrides for dark mode. These are scoped to the color mode selector, which defaults to `data-bs-theme` but [can be configured](#building-with-sass) to use a `prefers-color-scheme` media query. Use these variables as a guideline for generating your own new color modes.
 
 {{< scss-docs name="root-dark-mode-vars" file="scss/_root.scss" >}}
 
@@ -268,6 +268,6 @@ CSS variables for our dark color mode are partially generated from dark mode spe
 
 ### Sass mixin
 
-Styles for dark mode, and any custom color modes you create, can be scoped appropriately to the `data-bs-theme` attribute selector or media query with the customizable `color-mode()` mixin. See the [Sass usage section](#sass-usage) for more details.
+Styles for dark mode, and any custom color modes you create, can be scoped appropriately to the `data-bs-theme` attribute selector or media query with the customizable `color-mode()` mixin. See the [Sass usage section](#building-with-sass) for more details.
 
 {{< scss-docs name="color-mode-mixin" file="scss/mixins/_color-mode.scss" >}}
