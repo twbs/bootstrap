@@ -23,6 +23,11 @@ toc: true
 - Cards now get a color.
 - Added focus styles to navs, plus new focus utility
 - Replaced instances of our bootstrap-npm-starter project with the newer and more complete twbs/examples repo.
+- Added Sass maps for generating theme colors for dark mode text, subtle background, and subtle border.
+- Snippet examples are now ready for dark mode with updated markup and reduced custom styles.
+- Added `color-scheme: dark` to dark mode CSS to change OS level controls like scrollbars
+- Added `twbs/examples` repo contents to the top of the Examples page.
+- Improved docs code syntax colors and more across light and dark mode
 
 <hr class="mb-4">
 
