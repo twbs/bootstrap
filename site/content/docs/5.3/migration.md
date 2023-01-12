@@ -19,6 +19,7 @@ toc: true
 - Examples now display with their color mode.
 - Fixed selector for dark mode toggler SVG change
 - Added new link utilities, icon link helper, and updated colored link helpers.
+- Added new `.link-body-emphasis` helper.
 - Theme switcher HTML and JavaScript now much more accessible with aria attributes.
 - Cards now get a color.
 - Added focus styles to navs, plus new focus utility
@@ -28,6 +29,7 @@ toc: true
 - Added `color-scheme: dark` to dark mode CSS to change OS level controls like scrollbars
 - Added `twbs/examples` repo contents to the top of the Examples page.
 - Improved docs code syntax colors and more across light and dark mode
+- Shadows always stay dark once again.
 
 <hr class="mb-4">
 
