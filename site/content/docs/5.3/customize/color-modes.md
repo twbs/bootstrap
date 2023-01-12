@@ -79,8 +79,8 @@ For example, despite using `data-bs-theme="dark"` on a random `<div>`, the `<div
 
   <p>This should be shown in a <strong>dark</strong> theme at all times.</p>
 
-  <div class="progress mb-4">
-    <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress mb-4" role="progressbar" aria-label="Basic example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar" style="width: 25%"></div>
   </div>
 
   <div class="dropdown mb-4">
@@ -108,8 +108,8 @@ For example, despite using `data-bs-theme="dark"` on a random `<div>`, the `<div
 
     <p>This should be shown in a <strong>light</strong> theme at all times.</p>
 
-    <div class="progress mb-4">
-      <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress mb-4" role="progressbar" aria-label="Basic example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-bar" style="width: 25%"></div>
     </div>
 
     <div class="dropdown">
