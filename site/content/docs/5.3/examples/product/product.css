@@ -2,13 +2,17 @@
   max-width: 960px;
 }
 
+.icon-link > bi {
+  width: .75em;
+  height: .75em;
+}
+
 /*
  * Custom translucent site header
  */
 
 .site-header {
   background-color: rgba(0, 0, 0, .85);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
 }
 .site-header a {
