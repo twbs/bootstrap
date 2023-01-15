@@ -252,9 +252,11 @@ Here's a look at the JavaScript that powers it. Feel free to inspect our own doc
 {{< /js.inline >}}
 {{< /example >}}
 
-## Add colors to the theme
+## Adding theme colors
 
-Adding a new color in `$theme-colors` is not enough for some of our components like [Alerts]({{< docsref "/components/alerts" >}}) and [List group]({{< docsref "/components/alerts" >}}). New colors need also to be defined in `$theme-colors-text`, `$theme-colors-bg-subtle` and `$theme-colors-border-subtle`.
+Adding a new color in `$theme-colors` is not enough for some of our components like [alerts]({{< docsref "/components/alerts" >}}) and [list groups]({{< docsref "/components/list-group" >}}). New colors must also be defined in `$theme-colors-text`, `$theme-colors-bg-subtle` and `$theme-colors-border-subtle`.
+
+This is a manual process because Sass cannot generate it's own Sass variables from an existing variable or map. In future versions of Bootstrap, we'll reimagine this setup to reduce the duplication.
 
 ```scss
 // Required
@@ -262,32 +264,31 @@ Adding a new color in `$theme-colors` is not enough for some of our components l
 @import "variables";
 @import "variables-dark";
 
+// Add a custom color to $theme-colors
 $custom-colors: (
   "custom-color": #712cf9
 );
-
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
 @import "maps";
 @import "mixins";
 @import "utilities";
 
+// Add a custom color to new theme maps
 $custom-colors-text: (
   "custom-color": #712cf9
 );
-
 $custom-colors-bg-subtle: (
   "custom-color": #e1d2fe
 );
-
 $custom-colors-border-subtle: (
   "custom-color": #bfa1fc
 );
-
 $theme-colors-text: map-merge($theme-colors-text, $custom-colors-text);
 $theme-colors-bg-subtle: map-merge($theme-colors-bg-subtle, $custom-colors-bg-subtle);
 $theme-colors-border-subtle: map-merge($theme-colors-border-subtle, $custom-colors-border-subtle);
 
+// Remainder of Bootstrap imports
 @import "root";
 @import "reboot";
 // etc
