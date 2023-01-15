@@ -21,7 +21,7 @@ These CSS variables are available everywhere, regardless of color mode.
 ```css
 {{< root.inline >}}
 {{- $css := readFile "dist/css/bootstrap.css" -}}
-{{- $match := findRE ":root {([^}]*)}" $css 1 -}}
+{{- $match := findRE `:root,\n\[data-bs-theme=light\] {([^}]*)}` $css 1 -}}
 
 {{- if (eq (len $match) 0) -}}
 {{- errorf "Got no matches for :root in %q!" $.Page.Path -}}
@@ -29,6 +29,21 @@ These CSS variables are available everywhere, regardless of color mode.
 
 {{- index $match 0 -}}
 
+{{< /root.inline >}}
+```
+
+### Dark mode
+
+These variables are scoped to our built-in dark mode.
+
+```css
+{{< root.inline >}}
+{{- $css := readFile "dist/css/bootstrap.css" -}}
+{{- $match := findRE `\[data-bs-theme=dark\] {([^}]*)}` $css 1 -}}
+{{- if (eq (len $match) 0) -}}
+{{- errorf "Got no matches for [data-bs-theme=dark] in %q!" $.Page.Path -}}
+{{- end -}}
+{{- index $match 0 -}}
 {{< /root.inline >}}
 ```
 
@@ -58,6 +73,20 @@ a {
   color: var(--bs-blue);
 }
 ```
+
+## Focus variables
+
+{{< added-in "5.3.0" >}}
+
+Bootstrap provides custom `:focus` styles using a combination of Sass and CSS variables that can be optionally added to specific components and elements. We do not yet globally override all `:focus` styles.
+
+In our Sass, we set default values that can be customized before compiling.
+
+{{< scss-docs name="focus-ring-variables" file="scss/_variables.scss" >}}
+
+Those variables are then reassigned to `:root` level CSS variables that can be customized in real-time, including with options for `x` and `y` offsets (which default to their fallback value of `0`).
+
+{{< scss-docs name="root-focus-variables" file="scss/_root.scss" >}}
 
 ## Grid breakpoints
 

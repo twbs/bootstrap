@@ -37,8 +37,16 @@ Add `data-bs-theme="dark"` to the `.btn-close`, or to its parent element, to inv
 </div>
 {{< /example >}}
 
-## Sass
+## CSS
 
 ### Variables
+
+{{< added-in "5.3.0" >}}
+
+As part of Bootstrap's evolving CSS variables approach, close button now uses local CSS variables on `.btn-close` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+{{< scss-docs name="close-css-vars" file="scss/_close.scss" >}}
+
+### Sass variables
 
 {{< scss-docs name="close-variables" file="scss/_variables.scss" >}}

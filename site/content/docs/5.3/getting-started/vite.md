@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: "Bootstrap & Vite"
+title: Bootstrap and Vite
 description: The official guide for how to include and bundle Bootstrap's CSS and JavaScript in your project using Vite.
 group: getting-started
 toc: true
