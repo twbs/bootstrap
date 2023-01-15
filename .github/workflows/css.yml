@@ -35,3 +35,6 @@ jobs:
 
       - name: Build CSS
         run: npm run css
+
+      - name: Run CSS tests
+        run: npm run css-test

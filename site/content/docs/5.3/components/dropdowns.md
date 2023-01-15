@@ -400,8 +400,7 @@ And putting it to use in a navbar:
 ## Directions
 
 {{< callout info >}}
-#### RTL
-Directions are mirrored when using Bootstrap in RTL, meaning `.dropstart` will appear on the right side.
+**Directions are flipped in RTL mode.** As such, `.dropstart` will appear on the right side.
 {{< /callout >}}
 
 ### Centered
@@ -1057,18 +1056,16 @@ Add `data-bs-toggle="dropdown"` to a link or button to toggle a dropdown.
 
 ### Via JavaScript
 
+{{< callout warning >}}
+Dropdowns must have `data-bs-toggle="dropdown"` on their trigger element, regardless of using the Data API or JavaScript.
+{{< /callout >}}
+
 Call the dropdowns via JavaScript:
 
 ```js
 const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
 const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl))
 ```
-
-{{< callout info >}}
-##### `data-bs-toggle="dropdown"` still required
-
-Regardless of whether you call your dropdown via JavaScript or instead use the data-api, `data-bs-toggle="dropdown"` is always required to be present on the dropdown's trigger element.
-{{< /callout >}}
 
 ### Options
 

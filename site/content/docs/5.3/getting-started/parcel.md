@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: "Bootstrap & Parcel"
+title: Bootstrap and Parcel
 description: The official guide for how to include and bundle Bootstrap's CSS and JavaScript in your project using Parcel.
 group: getting-started
 toc: true

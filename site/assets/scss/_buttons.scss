@@ -6,9 +6,8 @@
 .btn-bd-primary {
   --bs-btn-font-weight: 600;
   --bs-btn-color: var(--bs-white);
-  --bs-btn-bg: var(--bd-violet);
-  --bs-btn-border-color: var(--bd-violet);
-  --bs-btn-border-radius: .5rem;
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
   --bs-btn-hover-color: var(--bs-white);
   --bs-btn-hover-bg: #{shade-color($bd-violet, 10%)};
   --bs-btn-hover-border-color: #{shade-color($bd-violet, 10%)};
@@ -44,4 +43,10 @@
   --bs-btn-active-border-color: var(--btn-custom-color);
   --bs-btn-focus-border-color: var(--btn-custom-color);
   --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+}
+
+.bd-btn-lg {
+  --bs-btn-border-radius: .5rem;
+
+  padding: .8125rem 2rem;
 }

@@ -82,34 +82,34 @@ Use `justify-content` utilities on flexbox containers to change the alignment of
 
 <div class="bd-example bd-example-flex">
   <div class="d-flex justify-content-start mb-3">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">Start</div>
   </div>
   <div class="d-flex justify-content-end mb-3">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">End</div>
   </div>
   <div class="d-flex justify-content-center mb-3">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">Center</div>
   </div>
   <div class="d-flex justify-content-between mb-3">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">Between</div>
   </div>
   <div class="d-flex justify-content-around mb-3">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">Around</div>
   </div>
   <div class="d-flex justify-content-evenly">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
+    <div class="p-2 bd-highlight">Justify</div>
+    <div class="p-2 bd-highlight">Content</div>
+    <div class="p-2 bd-highlight">Evenly</div>
   </div>
 </div>
 
