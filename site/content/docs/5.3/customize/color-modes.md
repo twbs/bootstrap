@@ -256,7 +256,7 @@ Here's a look at the JavaScript that powers it. Feel free to inspect our own doc
 
 Adding a new color in `$theme-colors` is not enough for some of our components like [alerts]({{< docsref "/components/alerts" >}}) and [list groups]({{< docsref "/components/list-group" >}}). New colors must also be defined in `$theme-colors-text`, `$theme-colors-bg-subtle` and `$theme-colors-border-subtle`.
 
-This is a manual process because Sass cannot generate it's own Sass variables from an existing variable or map. In future versions of Bootstrap, we'll reimagine this setup to reduce the duplication.
+This is a manual process because Sass cannot generate it's own Sass variables from an existing variable or map. In future versions of Bootstrap, we'll revisit this setup to reduce the duplication.
 
 ```scss
 // Required
