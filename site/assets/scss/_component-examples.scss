@@ -352,13 +352,14 @@
   }
 
   pre {
-    padding: .2rem 0 .7rem;
-    margin-top: .625rem;
+    padding: .2rem 0 .9rem;
+    margin-top: .825rem;
     margin-right: 1.875rem;
-    margin-bottom: .625rem;
+    margin-bottom: 0;
     white-space: pre;
     background-color: transparent;
     border: 0;
+    overflow: overlay;
   }
 
   pre code {

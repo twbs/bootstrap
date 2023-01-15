@@ -36,10 +36,18 @@
     @include media-breakpoint-up(lg) {
       padding-right: 4rem;
     }
+
+    pre {
+      overflow: hidden;
+      padding: 0;
+      margin-top: 0.625rem;
+      margin-right: 1.875rem;
+      margin-bottom: 0.625rem;
+    }
   }
   .btn-clipboard {
     position: absolute;
-    top: -.125rem;
+    top: -.625rem;
     right: 0;
     background-color: transparent;
   }
