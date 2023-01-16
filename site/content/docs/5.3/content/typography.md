@@ -60,7 +60,7 @@ Use the included utility classes to recreate the small secondary heading text fr
 {{< example >}}
 <h3>
   Fancy display heading
-  <small class="text-muted">With faded secondary text</small>
+  <small class="text-body-secondary">With faded secondary text</small>
 </h3>
 {{< /example >}}
 
