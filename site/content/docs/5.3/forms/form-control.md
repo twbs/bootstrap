@@ -173,12 +173,6 @@ Learn more about [support for datalist elements](https://caniuse.com/datalist).
 
 ## CSS
 
-### Variables
-
-Form controls make use of a small amount of CSS variables to support custom styling across color modes.
-
-{{< scss-docs name="form-control-vars" file="scss/_root.scss" >}}
-
 ### Sass variables
 
 `$input-*` are shared across most of our form controls (and not buttons).
