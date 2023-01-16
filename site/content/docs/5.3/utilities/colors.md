@@ -18,7 +18,7 @@ Colorize text with color utilities. If you want to colorize links, you can use t
 {{- end -}}
 {{< /colors.inline >}}
 <p class="text-body">.text-body</p>
-<p class="text-muted">.text-muted</p>
+<p class="text-body-secondary">.text-body-secondary</p>
 
 <p class="text-body-emphasis">.text-body-emphasis</p>
 <p class="text-body-secondary">.text-body-secondary</p>
@@ -35,7 +35,7 @@ Colorize text with color utilities. If you want to colorize links, you can use t
 {{< /callout >}}
 
 {{< callout warning >}}
-**Deprecation:** With the addition of the expanded theme colors and variables, the `.text-muted` utility has been deprecated as of v5.3.0. Its default value has also has been reassigned to the new `--bs-secondary-color` CSS variable to better support color modes. It will be removed in v6.0.0.
+**Deprecation:** With the addition of the expanded theme colors and variables, the `.text-body-secondary` utility has been deprecated as of v5.3.0. Its default value has also has been reassigned to the new `--bs-secondary-color` CSS variable to better support color modes. It will be removed in v6.0.0.
 {{< /callout >}}
 
 {{< callout info >}}

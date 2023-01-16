@@ -576,7 +576,7 @@ Modals have three optional sizes, available via modifier classes to be placed on
 | Size | Class | Modal max-width
 | --- | --- | --- |
 | Small | `.modal-sm` | `300px` |
-| Default | <span class="text-muted">None</span> | `500px` |
+| Default | <span class="text-body-secondary">None</span> | `500px` |
 | Large | `.modal-lg` | `800px` |
 | Extra large | `.modal-xl` | `1140px` |
 {{< /bs-table >}}

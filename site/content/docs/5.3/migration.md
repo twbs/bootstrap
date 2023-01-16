@@ -132,9 +132,9 @@ We've also introduced a new `.progress-stacked` class to more logically wrap [mu
 
 ### Utilities
 
-- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> `.text-muted` will be be replaced by `.text-body-secondary` in v6.
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> `.text-body-secondary` will be be replaced by `.text-body-secondary` in v6.
 
-  With the addition of the expanded theme colors and variables, the `.text-muted` variables and utility have been deprecated with v5.3.0. Its default value has also has been reassigned to the new `--bs-secondary-color` CSS variable to better support color modes. It will be removed in v6.0.0.
+  With the addition of the expanded theme colors and variables, the `.text-body-secondary` variables and utility have been deprecated with v5.3.0. Its default value has also has been reassigned to the new `--bs-secondary-color` CSS variable to better support color modes. It will be removed in v6.0.0.
 
 - Adds new `.overflow-x`, `.overflow-y`, and several `.object-fit-*` utilities. _The object-fit property is used to specify how an `<img>` or `<video>` should be resized to fit its container, giving us a responsive alternative to using `background-image` for a resizable fill/fit image._
 
