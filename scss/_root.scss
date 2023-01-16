@@ -115,11 +115,6 @@
   --#{$prefix}box-shadow-lg: #{$box-shadow-lg};
   --#{$prefix}box-shadow-inset: #{$box-shadow-inset};
 
-  // scss-docs-start form-control-vars
-  --#{$prefix}form-control-bg: var(--#{$prefix}body-bg);
-  --#{$prefix}form-control-disabled-bg: var(--#{$prefix}secondary-bg);
-  // scss-docs-end form-control-vars
-
   // Focus styles
   // scss-docs-start root-focus-variables
   --#{$prefix}focus-ring-width: #{$focus-ring-width};
