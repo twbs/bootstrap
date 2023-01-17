@@ -116,6 +116,10 @@
       }
     }
   }
+
+  .dropdown-menu-end {
+    --bs-dropdown-min-width: 8rem;
+  }
 }
 
 @include color-mode(dark) {
