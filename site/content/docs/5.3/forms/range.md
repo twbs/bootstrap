@@ -42,8 +42,8 @@ By default, range inputs "snap" to integer values. To change this, you can speci
 <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
 {{< /example >}}
 
-## Sass
+## CSS
 
-### Variables
+### Sass variables
 
 {{< scss-docs name="form-range-variables" file="scss/_variables.scss" >}}
