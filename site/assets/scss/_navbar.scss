@@ -9,7 +9,7 @@
     z-index: -1;
     display: block;
     content: "";
-    background-image: linear-gradient(to bottom, rgba(var(--bd-violet-rgb), 1), rgba(var(--bd-violet-rgb), .95));
+    background-image: linear-gradient(rgba(var(--bd-violet-rgb), 1), rgba(var(--bd-violet-rgb), .95));
   }
 
   .bd-navbar-toggle {
