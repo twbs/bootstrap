@@ -322,14 +322,14 @@ $theme-colors: (
 // scss-docs-end theme-colors-map
 
 // scss-docs-start theme-text-variables
-$primary-text:            $blue-700 !default;
-$secondary-text:          $gray-700 !default;
-$success-text:            $green-700 !default;
-$info-text:               $cyan-800 !default;
-$warning-text:            $yellow-800 !default;
-$danger-text:             $red-700 !default;
-$light-text:              $gray-700 !default;
-$dark-text:               $gray-700 !default;
+$primary-text-emphasis:   $blue-700 !default;
+$secondary-text-emphasis: $gray-700 !default;
+$success-text-emphasis:   $green-700 !default;
+$info-text-emphasis:      $cyan-800 !default;
+$warning-text-emphasis:   $yellow-800 !default;
+$danger-text-emphasis:    $red-700 !default;
+$light-text-emphasis:     $gray-700 !default;
+$dark-text-emphasis:      $gray-700 !default;
 // scss-docs-end theme-text-variables
 
 // scss-docs-start theme-bg-subtle-variables
@@ -1365,7 +1365,7 @@ $accordion-button-focus-box-shadow:       $btn-focus-box-shadow !default;
 
 $accordion-icon-width:                    1.25rem !default;
 $accordion-icon-color:                    $body-color !default;
-$accordion-icon-active-color:             $primary-text !default;
+$accordion-icon-active-color:             $primary-text-emphasis !default;
 $accordion-icon-transition:               transform .2s ease-in-out !default;
 $accordion-icon-transform:                rotate(-180deg) !default;
 
