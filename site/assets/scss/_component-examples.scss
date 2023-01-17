@@ -134,7 +134,7 @@
   background-color: rgba(var(--bd-violet-rgb), .15);
 }
 
-.bd-example-flex div {
+.bd-example-flex div:not(.vr) {
   background-color: rgba(var(--bd-violet-rgb), .15);
   border: 1px solid rgba(var(--bd-violet-rgb), .3);
 }

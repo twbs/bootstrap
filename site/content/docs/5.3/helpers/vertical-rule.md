@@ -35,11 +35,11 @@ Vertical rules scale their height in flex layouts:
 
 They can also be used in [stacks]({{< docsref "/helpers/stacks" >}}):
 
-{{< example >}}
+{{< example class="bd-example-flex" >}}
 <div class="hstack gap-3">
-  <div class="bg-body-tertiary border">First item</div>
-  <div class="bg-body-tertiary border ms-auto">Second item</div>
+  <div class="p-2">First item</div>
+  <div class="p-2 ms-auto">Second item</div>
   <div class="vr"></div>
-  <div class="bg-body-tertiary border">Third item</div>
+  <div class="p-2">Third item</div>
 </div>
 {{< /example >}}
