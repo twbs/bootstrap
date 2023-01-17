@@ -321,6 +321,7 @@ $theme-colors: (
 ) !default;
 // scss-docs-end theme-colors-map
 
+// scss-docs-start theme-text-variables
 $primary-text:            $blue-700 !default;
 $secondary-text:          $gray-700 !default;
 $success-text:            $green-700 !default;
@@ -329,7 +330,9 @@ $warning-text:            $yellow-800 !default;
 $danger-text:             $red-700 !default;
 $light-text:              $gray-700 !default;
 $dark-text:               $gray-700 !default;
+// scss-docs-end theme-text-variables
 
+// scss-docs-start theme-bg-subtle-variables
 $primary-bg-subtle:       $blue-100 !default;
 $secondary-bg-subtle:     $gray-100 !default;
 $success-bg-subtle:       $green-100 !default;
@@ -338,7 +341,9 @@ $warning-bg-subtle:       $yellow-100 !default;
 $danger-bg-subtle:        $red-100 !default;
 $light-bg-subtle:         mix($gray-100, $white) !default;
 $dark-bg-subtle:          $gray-400 !default;
+// scss-docs-end theme-bg-subtle-variables
 
+// scss-docs-start theme-border-subtle-variables
 $primary-border-subtle:   $blue-200 !default;
 $secondary-border-subtle: $gray-200 !default;
 $success-border-subtle:   $green-200 !default;
@@ -347,6 +352,7 @@ $warning-border-subtle:   $yellow-200 !default;
 $danger-border-subtle:    $red-200 !default;
 $light-border-subtle:     $gray-200 !default;
 $dark-border-subtle:      $gray-500 !default;
+// scss-docs-end theme-border-subtle-variables
 
 // Characters which are escaped by the escape-svg function
 $escaped-characters: (
