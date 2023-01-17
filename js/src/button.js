@@ -17,7 +17,6 @@ const NAME = 'button'
 const DATA_KEY = 'bs.button'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
-
 const CLASS_NAME_ACTIVE = 'active'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="button"]'
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
