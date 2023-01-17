@@ -166,7 +166,7 @@ $color-mode-type: data;
 
 @include color-mode(dark) {
   .element {
-    color: var(--bs-primary-text);
+    color: var(--bs-primary-text-emphasis);
     background-color: var(--bs-primary-bg-subtle);
   }
 }
@@ -176,7 +176,7 @@ Outputs to:
 
 ```css
 [data-bs-theme=dark] .element {
-  color: var(--bs-primary-text);
+  color: var(--bs-primary-text-emphasis);
   background-color: var(--bs-primary-bg-subtle);
 }
 ```
@@ -188,7 +188,7 @@ $color-mode-type: media-query;
 
 @include color-mode(dark) {
   .element {
-    color: var(--bs-primary-text);
+    color: var(--bs-primary-text-emphasis);
     background-color: var(--bs-primary-bg-subtle);
   }
 }
@@ -199,7 +199,7 @@ Outputs to:
 ```css
 @media (prefers-color-scheme: dark) {
   .element {
-    color: var(--bs-primary-text);
+    color: var(--bs-primary-text-emphasis);
     background-color: var(--bs-primary-bg-subtle);
   }
 }
