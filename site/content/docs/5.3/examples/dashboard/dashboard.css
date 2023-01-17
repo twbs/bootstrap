@@ -1,10 +1,12 @@
 body {
-  font-size: .875rem;
+  /* font-size: .875rem; */
 }
 
-.feather {
-  width: 16px;
-  height: 16px;
+.bi {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  /* vertical-align: -.125em; */
 }
 
 /*
@@ -38,23 +40,24 @@ body {
 }
 
 .sidebar .nav-link {
+  font-size: .875rem;
   font-weight: 500;
-  color: #333;
+  /* color: #333; */
 }
 
-.sidebar .nav-link .feather {
+/* .sidebar .nav-link .feather {
   margin-right: 4px;
   color: #727272;
-}
+} */
 
 .sidebar .nav-link.active {
   color: #2470dc;
 }
 
-.sidebar .nav-link:hover .feather,
+/* .sidebar .nav-link:hover .feather,
 .sidebar .nav-link.active .feather {
   color: inherit;
-}
+} */
 
 .sidebar-heading {
   font-size: .75rem;
