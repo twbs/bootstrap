@@ -18,25 +18,27 @@ Width and height utilities are generated from the utility API in `_utilities.scs
 <div class="w-auto p-3">Width auto</div>
 {{< /example >}}
 
-{{< example >}}
-<div style="height: 100px; background-color: rgba(255,0,0,0.1);">
-  <div class="h-25 d-inline-block" style="width: 120px; background-color: rgba(0,0,255,.1)">Height 25%</div>
-  <div class="h-50 d-inline-block" style="width: 120px; background-color: rgba(0,0,255,.1)">Height 50%</div>
-  <div class="h-75 d-inline-block" style="width: 120px; background-color: rgba(0,0,255,.1)">Height 75%</div>
-  <div class="h-100 d-inline-block" style="width: 120px; background-color: rgba(0,0,255,.1)">Height 100%</div>
-  <div class="h-auto d-inline-block" style="width: 120px; background-color: rgba(0,0,255,.1)">Height auto</div>
+{{< example class="bd-example-flex" >}}
+<div style="height: 100px;">
+  <div class="h-25 d-inline-block" style="width: 120px;">Height 25%</div>
+  <div class="h-50 d-inline-block" style="width: 120px;">Height 50%</div>
+  <div class="h-75 d-inline-block" style="width: 120px;">Height 75%</div>
+  <div class="h-100 d-inline-block" style="width: 120px;">Height 100%</div>
+  <div class="h-auto d-inline-block" style="width: 120px;">Height auto</div>
 </div>
 {{< /example >}}
 
 You can also use `max-width: 100%;` and `max-height: 100%;` utilities as needed.
 
-{{< example >}}
-{{< placeholder width="100%" height="100" class="mw-100" text="Max-width 100%" >}}
+{{< example class="bd-example-flex" >}}
+<div style="width: 50%; height: 100px;">
+  <div class="mw-100" style="width: 200%;">Max-width 100%</div>
+</div>
 {{< /example >}}
 
-{{< example >}}
-<div style="height: 100px; background-color: rgba(255,0,0,.1);">
-  <div class="mh-100" style="width: 100px; height: 200px; background-color: rgba(0,0,255,.1);">Max-height 100%</div>
+{{< example class="bd-example-flex" >}}
+<div style="height: 100px;">
+  <div class="mh-100" style="width: 100px; height: 200px;">Max-height 100%</div>
 </div>
 {{< /example >}}
 
