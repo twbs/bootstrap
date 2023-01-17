@@ -30,7 +30,7 @@ aliases: "/examples/"
                 {{ $example.name }}
               </a>
             </h3>
-            <p class="text-muted">{{ $example.description }}</p>
+            <p class="text-body-secondary">{{ $example.description }}</p>
             <p>
               <a class="icon-link small link-secondary link-offset-1" href="https://stackblitz.com/github/twbs{{ $example.url }}?file=index.html" target="_blank">
                 <svg class="bi flex-shrink-0"><use xlink:href="#lightning-charge-fill"></use></svg>
@@ -52,7 +52,7 @@ aliases: "/examples/"
               {{ $example.name }}
             </h3>
           </a>
-          <p class="text-muted">{{ $example.description }}</p>
+          <p class="text-body-secondary">{{ $example.description }}</p>
         </div>
       {{ end }}
     {{ if (eq (add $i 1) $len) }}</div>{{ end }}

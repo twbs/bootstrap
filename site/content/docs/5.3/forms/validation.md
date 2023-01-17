@@ -349,19 +349,19 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
 </form>
 {{< /example >}}
 
-## Sass
+## CSS
 
-### Variables
+### Sass variables
 
 {{< scss-docs name="form-feedback-variables" file="scss/_variables.scss" >}}
 
-### Mixins
+### Sass mixins
 
 Two mixins are combined together, through our [loop](#loop), to generate our form validation feedback styles.
 
 {{< scss-docs name="form-validation-mixins" file="scss/mixins/_forms.scss" >}}
 
-### Map
+### Sass map
 
 This is the validation Sass map from `_variables.scss`. Override or extend this to generate different or additional states.
 
@@ -369,7 +369,7 @@ This is the validation Sass map from `_variables.scss`. Override or extend this 
 
 Maps of `$form-validation-states` can contain three optional parameters to override tooltips and focus styles.
 
-### Loop
+### Sass loop
 
 Used to iterate over `$form-validation-states` map values to generate our validation styles. Any modifications to the above Sass map will be reflected in your compiled CSS via this loop.
 

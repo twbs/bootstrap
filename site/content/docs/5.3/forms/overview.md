@@ -105,11 +105,11 @@ If none of these are present, assistive technologies may resort to using the `pl
 
 While using visually hidden content (`.visually-hidden`, `aria-label`, and even `placeholder` content, which disappears once a form field has content) will benefit assistive technology users, a lack of visible label text may still be problematic for certain users. Some form of visible label is generally the best approach, both for accessibility and usability.
 
-## Sass
+## CSS
 
 Many form variables are set at a general level to be re-used and extended by individual form components. You'll see these most often as `$input-btn-*` and `$input-*` variables.
 
-### Variables
+### Sass variables
 
 `$input-btn-*` variables are shared global variables between our [buttons]({{< docsref "/components/buttons" >}}) and our form components. You'll find these frequently reassigned as values to other component-specific variables.
 

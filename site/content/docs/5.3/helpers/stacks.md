@@ -80,6 +80,6 @@ Create an inline form with `.hstack`:
 </div>
 {{< /example >}}
 
-## Sass
+## CSS
 
 {{< scss-docs name="stacks" file="scss/helpers/_stacks.scss" >}}

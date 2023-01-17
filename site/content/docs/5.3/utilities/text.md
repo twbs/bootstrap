@@ -122,7 +122,7 @@ Change a selection to our monospace font stack with `.font-monospace`.
 Reset a text or link's color with `.text-reset`, so that it inherits the color from its parent.
 
 {{< example >}}
-<p class="text-muted">
+<p class="text-body-secondary">
   Muted text with a <a href="#" class="text-reset">reset link</a>.
 </p>
 {{< /example >}}
@@ -137,19 +137,23 @@ Decorate text in components with text decoration classes.
 <a href="#" class="text-decoration-none">This link has its text decoration removed</a>
 {{< /example >}}
 
-## Sass
+## CSS
 
-### Variables
+### Sass variables
+
+Default type and font related Sass variables:
 
 {{< scss-docs name="font-variables" file="scss/_variables.scss" >}}
 
-### Maps
+### Sass maps
 
 Font-size utilities are generated from this map, in combination with our utilities API.
 
 {{< scss-docs name="font-sizes" file="scss/_variables.scss" >}}
 
-### Utilities API
+{{< scss-docs name="theme-text-map" file="scss/_maps.scss" >}}
+
+## Utilities API
 
 Font and text utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 
