@@ -823,13 +823,13 @@ Use `.table-responsive{-sm|-md|-lg|-xl|-xxl}` as needed to create responsive tab
 {{< /tables.inline >}}
 {{< /highlight >}}
 
-## Sass
+## CSS
 
-### Variables
+### Sass variables
 
 {{< scss-docs name="table-variables" file="scss/_variables.scss" >}}
 
-### Loop
+### Sass loop
 
 {{< scss-docs name="table-loop" file="scss/_variables.scss" >}}
 

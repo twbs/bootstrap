@@ -380,6 +380,7 @@
 
   .highlight {
     margin-bottom: 0;
+    @include border-top-radius(0);
   }
 
   .bd-example {
@@ -396,6 +397,12 @@
 
 .highlight-toolbar {
   background-color: var(--bd-pre-bg);
+}
+
+.bd-scss-docs {
+  .highlight-toolbar {
+    @include border-top-radius(calc(var(--bs-border-radius) + 1px));
+  }
 }
 
 .focused {
