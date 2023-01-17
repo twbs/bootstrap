@@ -149,6 +149,7 @@ $utilities-bg-subtle: (
 $utilities-border: map-merge(
   $utilities-colors,
   (
+    "black": to-rgb($black),
     "white": to-rgb($white)
   )
 ) !default;
