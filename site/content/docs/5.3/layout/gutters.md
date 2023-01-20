@@ -71,7 +71,7 @@ An alternative solution is to add a wrapper around the `.row` with the `.overflo
 
 ## Horizontal & vertical gutters
 
-`.g-*` classes can be used to control the horizontal gutter widths, for the following example we use a smaller gutter width, so there won't be a need to add the `.overflow-hidden` wrapper class.
+`.g-*` classes can be used to control the horizontal and vertical gutter widths, for the following example we use a smaller gutter width, so there won't be a need to add the `.overflow-hidden` wrapper class.
 
 {{< example class="bd-example-cols" >}}
 <div class="container text-center">
