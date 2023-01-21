@@ -112,11 +112,11 @@ describe('Collapse', () => {
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl)
 
-      spyOn(collapse, 'show')
+      const spy = spyOn(collapse, 'show')
 
       collapse.toggle()
 
-      expect(collapse.show).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should call hide method if show class is present', () => {
@@ -127,11 +127,11 @@ describe('Collapse', () => {
         toggle: false
       })
 
-      spyOn(collapse, 'hide')
+      const spy = spyOn(collapse, 'hide')
 
       collapse.toggle()
 
-      expect(collapse.hide).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should find collapse children if they have collapse class too not only data-bs-parent', () => {
@@ -174,7 +174,7 @@ describe('Collapse', () => {
     it('should do nothing if is transitioning', () => {
       fixtureEl.innerHTML = '<div></div>'
 
-      spyOn(EventHandler, 'trigger')
+      const spy = spyOn(EventHandler, 'trigger')
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
@@ -184,13 +184,13 @@ describe('Collapse', () => {
       collapse._isTransitioning = true
       collapse.show()
 
-      expect(EventHandler.trigger).not.toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
     })
 
     it('should do nothing if already shown', () => {
       fixtureEl.innerHTML = '<div class="show"></div>'
 
-      spyOn(EventHandler, 'trigger')
+      const spy = spyOn(EventHandler, 'trigger')
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
@@ -199,7 +199,7 @@ describe('Collapse', () => {
 
       collapse.show()
 
-      expect(EventHandler.trigger).not.toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
     })
 
     it('should show a collapsed element', () => {
@@ -278,14 +278,14 @@ describe('Collapse', () => {
         fixtureEl.innerHTML = [
           '<div id="parentGroup" class="accordion">',
           '  <div id="parentHeader" class="accordion-header">',
-          '    <button data-bs-target="#parentContent" data-bs-toggle="collapse" role="button" class="accordion-toggle">Parent</button>',
+          '    <button data-bs-target="#parentContent" data-bs-toggle="collapse" class="accordion-toggle">Parent</button>',
           '  </div>',
           '  <div id="parentContent" class="accordion-collapse collapse" aria-labelledby="parentHeader" data-bs-parent="#parentGroup">',
           '    <div class="accordion-body">',
           '      <div id="childGroup" class="accordion">',
           '        <div class="accordion-item">',
           '          <div id="childHeader1" class="accordion-header">',
-          '            <button data-bs-target="#childContent1" data-bs-toggle="collapse" role="button" class="accordion-toggle">Child 1</button>',
+          '            <button data-bs-target="#childContent1" data-bs-toggle="collapse" class="accordion-toggle">Child 1</button>',
           '          </div>',
           '          <div id="childContent1" class="accordion-collapse collapse" aria-labelledby="childHeader1" data-bs-parent="#childGroup">',
           '            <div>content</div>',
@@ -293,7 +293,7 @@ describe('Collapse', () => {
           '        </div>',
           '        <div class="accordion-item">',
           '          <div id="childHeader2" class="accordion-header">',
-          '            <button data-bs-target="#childContent2" data-bs-toggle="collapse" role="button" class="accordion-toggle">Child 2</button>',
+          '            <button data-bs-target="#childContent2" data-bs-toggle="collapse" class="accordion-toggle">Child 2</button>',
           '          </div>',
           '          <div id="childContent2" class="accordion-collapse collapse" aria-labelledby="childHeader2" data-bs-parent="#childGroup">',
           '            <div>content</div>',
@@ -418,7 +418,7 @@ describe('Collapse', () => {
     it('should do nothing if is transitioning', () => {
       fixtureEl.innerHTML = '<div></div>'
 
-      spyOn(EventHandler, 'trigger')
+      const spy = spyOn(EventHandler, 'trigger')
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
@@ -428,13 +428,13 @@ describe('Collapse', () => {
       collapse._isTransitioning = true
       collapse.hide()
 
-      expect(EventHandler.trigger).not.toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
     })
 
     it('should do nothing if already shown', () => {
       fixtureEl.innerHTML = '<div></div>'
 
-      spyOn(EventHandler, 'trigger')
+      const spy = spyOn(EventHandler, 'trigger')
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
@@ -443,7 +443,7 @@ describe('Collapse', () => {
 
       collapse.hide()
 
-      expect(EventHandler.trigger).not.toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
     })
 
     it('should hide a collapsed element', () => {
@@ -525,12 +525,12 @@ describe('Collapse', () => {
         const triggerEl = fixtureEl.querySelector('a')
         const nestedTriggerEl = fixtureEl.querySelector('#nested')
 
-        spyOn(Event.prototype, 'preventDefault').and.callThrough()
+        const spy = spyOn(Event.prototype, 'preventDefault').and.callThrough()
 
         triggerEl.addEventListener('click', event => {
           expect(event.target.isEqualNode(nestedTriggerEl)).toBeTrue()
           expect(event.delegateTarget.isEqualNode(triggerEl)).toBeTrue()
-          expect(Event.prototype.preventDefault).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
           resolve()
         })
 
@@ -887,17 +887,17 @@ describe('Collapse', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<a id="trigger1" role="button" data-bs-toggle="collapse" href="#test1"></a>',
-          '<a id="trigger2" role="button" data-bs-toggle="collapse" href="#test2"></a>',
+          '<a id="trigger2" role="button" data-bs-toggle="collapse" href="#0/my/id"></a>',
           '<a id="trigger3" role="button" data-bs-toggle="collapse" href=".multi"></a>',
           '<div id="test1" class="multi"></div>',
-          '<div id="test2" class="multi"></div>'
+          '<div id="0/my/id" class="multi"></div>'
         ].join('')
 
         const trigger1 = fixtureEl.querySelector('#trigger1')
         const trigger2 = fixtureEl.querySelector('#trigger2')
         const trigger3 = fixtureEl.querySelector('#trigger3')
         const target1 = fixtureEl.querySelector('#test1')
-        const target2 = fixtureEl.querySelector('#test2')
+        const target2 = fixtureEl.querySelector(`#${CSS.escape('0/my/id')}`)
 
         const target2Shown = () => {
           expect(trigger1).not.toHaveClass('collapsed')

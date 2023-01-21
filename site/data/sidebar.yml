@@ -2,6 +2,8 @@
 # The logic for the sidebar generation is in "site/layouts/partials/docs-sidebar.html".
 
 - title: Getting started
+  icon: book-half
+  icon_color: indigo
   pages:
     - title: Introduction
     - title: Download
@@ -10,22 +12,28 @@
     - title: JavaScript
     - title: Webpack
     - title: Parcel
+    - title: Vite
     - title: Accessibility
     - title: RFS
     - title: RTL
     - title: Contribute
 
 - title: Customize
+  icon: palette2
+  icon_color: pink
   pages:
     - title: Overview
     - title: Sass
     - title: Options
     - title: Color
+    - title: Color modes
     - title: Components
     - title: CSS variables
     - title: Optimize
 
 - title: Layout
+  icon: grid-fill
+  icon_color: teal
   pages:
     - title: Breakpoints
     - title: Containers
@@ -37,6 +45,8 @@
     - title: CSS Grid
 
 - title: Content
+  icon: file-earmark-richtext
+  icon_color: gray
   pages:
     - title: Reboot
     - title: Typography
@@ -45,6 +55,8 @@
     - title: Figures
 
 - title: Forms
+  icon: ui-radios
+  icon_color: blue
   pages:
     - title: Overview
     - title: Form control
@@ -57,6 +69,8 @@
     - title: Validation
 
 - title: Components
+  icon: menu-button-wide-fill
+  icon_color: cyan
   pages:
     - title: Accordion
     - title: Alerts
@@ -84,18 +98,25 @@
     - title: Tooltips
 
 - title: Helpers
+  icon: magic
+  icon_color: orange
   pages:
     - title: Clearfix
+    - title: Color & background
     - title: Colored links
-    - title: Ratio
+    - title: Focus ring
+    - title: Icon link
     - title: Position
+    - title: Ratio
     - title: Stacks
-    - title: Visually hidden
     - title: Stretched link
     - title: Text truncation
     - title: Vertical rule
+    - title: Visually hidden
 
 - title: Utilities
+  icon: braces-asterisk
+  icon_color: red
   pages:
     - title: API
     - title: Background
@@ -105,6 +126,8 @@
     - title: Flex
     - title: Float
     - title: Interactions
+    - title: Link
+    - title: Object fit
     - title: Opacity
     - title: Overflow
     - title: Position
@@ -114,13 +137,18 @@
     - title: Text
     - title: Vertical align
     - title: Visibility
+    - title: Z-index
 
 - title: Extend
+  icon: tools
+  icon_color: blue
   pages:
     - title: Approach
     - title: Icons
 
 - title: About
+  icon: globe2
+  icon_color: indigo
   pages:
     - title: Overview
     - title: Team
