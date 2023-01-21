@@ -75,6 +75,14 @@ Add labels to your progress bars by placing text within the `.progress-bar`.
 </div>
 {{< /example >}}
 
+Note that by default, the content inside the `.progress-bar` is controlled with `overflow: hidden`, so it doesn't bleed out of the bar. If your progress bar is shorter than its label, the content will be capped and may become unreadable. To change this behavior, you can use `.overflow-visible` from the [overflow utilities]({{< docsref "/utilities/overflow" >}}), but make sure to also define an explicit [text color]({{< docsref "/utilities/colors#colors" >}}) so the text remains readable. Be aware though that currently this approach does not take into account [color modes]({{< docsref "/customize/color-modes" >}}).
+
+{{< example >}}
+<div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar overflow-visible text-dark" style="width: 10%">Long label text for the progress bar, set to a dark color</div>
+</div>
+{{< /example >}}
+
 ## Backgrounds
 
 Use background utility classes to change the appearance of individual progress bars.
@@ -97,6 +105,31 @@ Use background utility classes to change the appearance of individual progress b
 {{< callout info >}}
 {{< partial "callouts/warning-color-assistive-technologies.md" >}}
 {{< /callout >}}
+
+If you're adding labels to progress bars with a custom background color, make sure to also set an appropriate [text color]({{< docsref "/utilities/colors#colors" >}}), so the labels remain readable and have sufficient contrast.
+
+{{< example >}}
+<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar bg-success" style="width: 25%">25%</div>
+</div>
+<div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar bg-info text-dark" style="width: 50%">50%</div>
+</div>
+<div class="progress" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar bg-warning text-dark" style="width: 75%">75%</div>
+</div>
+<div class="progress" role="progressbar" aria-label="Danger example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar bg-danger" style="width: 100%">100%</div>
+</div>
+{{< /example >}}
+
+Alternatively, you can use the new combined [color and background]({{< docsref "/helpers/color-background" >}}) helper classes.
+
+{{< example >}}
+<div class="progress" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar text-bg-warning" style="width: 75%">75%</div>
+</div>
+{{< /example >}}
 
 ## Multiple bars
 

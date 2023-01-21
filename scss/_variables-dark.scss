@@ -8,14 +8,14 @@
 
 // scss-docs-start sass-dark-mode-vars
 // scss-docs-start theme-text-dark-variables
-$primary-text-dark:                 $blue-300 !default;
-$secondary-text-dark:               $gray-300 !default;
-$success-text-dark:                 $green-300 !default;
-$info-text-dark:                    $cyan-300 !default;
-$warning-text-dark:                 $yellow-300 !default;
-$danger-text-dark:                  $red-300 !default;
-$light-text-dark:                   $gray-100 !default;
-$dark-text-dark:                    $gray-300 !default;
+$primary-text-emphasis-dark:        $blue-300 !default;
+$secondary-text-emphasis-dark:      $gray-300 !default;
+$success-text-emphasis-dark:        $green-300 !default;
+$info-text-emphasis-dark:           $cyan-300 !default;
+$warning-text-emphasis-dark:        $yellow-300 !default;
+$danger-text-emphasis-dark:         $red-300 !default;
+$light-text-emphasis-dark:          $gray-100 !default;
+$dark-text-emphasis-dark:           $gray-300 !default;
 // scss-docs-end theme-text-dark-variables
 
 // scss-docs-start theme-bg-subtle-dark-variables
@@ -70,6 +70,6 @@ $form-switch-bg-image-dark:         url("data:image/svg+xml,<svg xmlns='http://w
 // Accordion
 //
 
-$accordion-button-icon-dark:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$primary-text-dark}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
-$accordion-button-active-icon-dark:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$primary-text-dark}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+$accordion-button-icon-dark:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$primary-text-emphasis-dark}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+$accordion-button-active-icon-dark:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$primary-text-emphasis-dark}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
 // scss-docs-end sass-dark-mode-vars

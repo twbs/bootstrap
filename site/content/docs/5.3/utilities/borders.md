@@ -49,6 +49,7 @@ Change the border color using utilities built on our theme colors.
 <span class="border border-{{ .name }}-subtle"></span>
 {{- end -}}
 {{< /border.inline >}}
+<span class="border border-black"></span>
 <span class="border border-white"></span>
 {{< /example >}}
 

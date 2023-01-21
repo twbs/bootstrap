@@ -23,7 +23,7 @@
   }
 
   @each $color, $value in $theme-colors-text {
-    --#{$prefix}#{$color}-text: #{$value};
+    --#{$prefix}#{$color}-text-emphasis: #{$value};
   }
 
   @each $color, $value in $theme-colors-bg-subtle {
@@ -149,7 +149,7 @@
     --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
 
     @each $color, $value in $theme-colors-text-dark {
-      --#{$prefix}#{$color}-text: #{$value};
+      --#{$prefix}#{$color}-text-emphasis: #{$value};
     }
 
     @each $color, $value in $theme-colors-bg-subtle-dark {
