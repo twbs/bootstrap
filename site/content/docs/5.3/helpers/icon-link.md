@@ -13,7 +13,7 @@ The icon link helper component modifies our default link styles to enhance their
 Icon links assume [Bootstrap Icons](https://icons.getbootstrap.com) are being used, but you can use any icon or image you like.
 
 {{< callout >}}
-When icons are purely decorative, they should be hidden from assistive technologies using `aria-hidden="true"`, as we've done in our examples. For icons that convey meaning, provide an appropriate text alternative via by adding `role="img"` and an appropriate `aria-label="..."` to the SVGs.
+When icons are purely decorative, they should be hidden from assistive technologies using `aria-hidden="true"`, as we've done in our examples. For icons that convey meaning, provide an appropriate text alternative by adding `role="img"` and an appropriate `aria-label="..."` to the SVGs.
 {{< /callout >}}
 
 ## Example
