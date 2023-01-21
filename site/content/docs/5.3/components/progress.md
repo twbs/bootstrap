@@ -123,7 +123,7 @@ If you're adding labels to progress bars with a custom background color, make su
 </div>
 {{< /example >}}
 
-Alternatively, you can use the new combined [color & background helper]({{< docsref "/helpers/color-background" >}}) classes.
+Alternatively, you can use the new combined [color and background]({{< docsref "/helpers/color-background" >}}) helper classes.
 
 {{< example >}}
 <div class="progress" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
