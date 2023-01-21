@@ -123,6 +123,14 @@ If you're adding labels to progress bars with a custom background color, make su
 </div>
 {{< /example >}}
 
+Alternatively, you can use the new combined [color & background helper]({{< docsref "/helpers/color-background" >}}) classes.
+
+{{< example >}}
+<div class="progress" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar text-bg-warning" style="width: 75%">75%</div>
+</div>
+{{< /example >}}
+
 ## Multiple bars
 
 You can include multiple progress components inside a container with `.progress-stacked` to create a single stacked progress bar. Note that in this case, the styling to set the visual width of the progress bar *must* be applied to the `.progress` elements, rather than the `.progress-bar`s.
