@@ -27,5 +27,14 @@
       }
     ],
     "scss/selector-no-union-class-name": true
-  }
+  },
+  "overrides": [
+    {
+      "files": "scss/**/*.{test,spec}.scss",
+      "rules": {
+        "scss/dollar-variable-default": null,
+        "declaration-no-important": null
+      }
+    }
+  ]
 }

@@ -2,8 +2,7 @@
 
 /*!
  * Script to build our plugins to use them separately.
- * Copyright 2020-2022 The Bootstrap Authors
- * Copyright 2020-2022 Twitter, Inc.
+ * Copyright 2020-2023 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
@@ -16,7 +15,7 @@ const { babel } = require('@rollup/plugin-babel')
 const banner = require('./banner.js')
 
 const sourcePath = path.resolve(__dirname, '../js/src/').replace(/\\/g, '/')
-const jsFiles = globby.sync(sourcePath + '/**/*.js')
+const jsFiles = globby.sync(`${sourcePath}/**/*.js`)
 
 // Array which holds the resolved plugins
 const resolvedPlugins = []
