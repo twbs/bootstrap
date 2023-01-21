@@ -55,6 +55,7 @@
     "unicorn/no-array-callback-reference": "off",
     "unicorn/no-array-method-this-argument": "off",
     "unicorn/no-null": "off",
+    "unicorn/no-typeof-undefined": "off",
     "unicorn/no-unused-properties": "error",
     "unicorn/prefer-array-flat": "off",
     "unicorn/prefer-dom-node-dataset": "off",

@@ -1,9 +1,9 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "5.2.3",
+  "version": "5.3.0-alpha1",
   "config": {
-    "version_short": "5.2"
+    "version_short": "5.3"
   },
   "keywords": [
     "css",
@@ -16,9 +16,6 @@
   ],
   "homepage": "https://getbootstrap.com/",
   "author": "The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)",
-  "contributors": [
-    "Twitter, Inc."
-  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -57,6 +54,7 @@
     "css-prefix-main": "postcss --config build/postcss.config.js --replace \"dist/css/*.css\" \"!dist/css/*.rtl*.css\" \"!dist/css/*.min.css\"",
     "css-prefix-examples": "postcss --config build/postcss.config.js --replace \"site/content/**/*.css\"",
     "css-prefix-examples-rtl": "cross-env-shell NODE_ENV=RTL postcss --config build/postcss.config.js --dir \"site/content/docs/$npm_package_config_version_short/examples/\" --ext \".rtl.css\" --base \"site/content/docs/$npm_package_config_version_short/examples/\" \"site/content/docs/$npm_package_config_version_short/examples/{blog,carousel,dashboard,cheatsheet}/*.css\" \"!site/content/docs/$npm_package_config_version_short/examples/{blog,carousel,dashboard,cheatsheet}/*.rtl.css\"",
+    "css-test": "jasmine --config=scss/tests/jasmine.js",
     "js": "npm-run-all js-compile js-minify",
     "js-compile": "npm-run-all --aggregate-output --parallel js-compile-*",
     "js-compile-standalone": "rollup --environment BUNDLE:false --config build/rollup.config.js --sourcemap",
@@ -84,7 +82,7 @@
     "docs-serve": "hugo server --port 9001 --disableFastRender",
     "docs-serve-only": "npx sirv-cli _site --port 9001",
     "lockfile-lint": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",
-    "update-deps": "ncu -u -x globby,karma-browserstack-launcher,karma-rollup-preprocessor && echo Manually update site/assets/js/vendor",
+    "update-deps": "ncu -u -x globby,karma-browserstack-launcher,karma-rollup-preprocessor,terser && echo Manually update site/assets/js/vendor",
     "release": "npm-run-all dist release-sri docs-build release-zip*",
     "release-sri": "node build/generate-sri.js",
     "release-version": "node build/change-version.js",
@@ -97,6 +95,7 @@
     "watch-css-main": "nodemon --watch scss/ --ext scss --exec \"npm-run-all css-lint css-compile css-prefix\"",
     "watch-css-dist": "nodemon --watch dist/css/ --ext css --ignore \"dist/css/*.rtl.*\" --exec \"npm run css-rtl\"",
     "watch-css-docs": "nodemon --watch site/assets/scss/ --ext scss --exec \"npm run css-lint\"",
+    "watch-css-test": "nodemon --watch scss/ --ext scss,js --exec \"npm run css-test\"",
     "watch-js-main": "nodemon --watch js/src/ --ext js --exec \"npm-run-all js-lint js-compile\"",
     "watch-js-docs": "nodemon --watch site/assets/js/ --ext js --exec \"npm run js-lint\""
   },
@@ -104,30 +103,31 @@
     "@popperjs/core": "^2.11.6"
   },
   "devDependencies": {
-    "@babel/cli": "^7.19.3",
-    "@babel/core": "^7.20.5",
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
     "@popperjs/core": "^2.11.6",
     "@rollup/plugin-babel": "^6.0.3",
-    "@rollup/plugin-commonjs": "^23.0.3",
+    "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
-    "@rollup/plugin-replace": "^5.0.1",
+    "@rollup/plugin-replace": "^5.0.2",
     "autoprefixer": "^10.4.13",
     "bundlewatch": "^0.3.3",
     "clean-css-cli": "^5.6.1",
     "cross-env": "^7.0.3",
-    "eslint": "^8.28.0",
+    "eslint": "^8.31.0",
     "eslint-config-xo": "^0.43.1",
     "eslint-plugin-html": "^7.1.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-markdown": "^3.0.0",
-    "eslint-plugin-unicorn": "^44.0.2",
+    "eslint-plugin-unicorn": "^45.0.2",
     "find-unused-sass-variables": "^4.0.5",
     "globby": "^11.1.0",
     "hammer-simulator": "0.0.1",
-    "hugo-bin": "^0.95.0",
+    "hugo-bin": "^0.97.0",
     "ip": "^2.0.0",
-    "jquery": "^3.6.1",
+    "jasmine": "^4.5.0",
+    "jquery": "^3.6.3",
     "karma": "^6.4.1",
     "karma-browserstack-launcher": "1.4.0",
     "karma-chrome-launcher": "^3.1.1",
@@ -137,25 +137,28 @@
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.0.0",
     "karma-rollup-preprocessor": "7.0.7",
-    "lockfile-lint": "^4.9.6",
+    "lockfile-lint": "^4.10.0",
     "nodemon": "^2.0.20",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.19",
-    "postcss-cli": "^10.0.0",
-    "rollup": "^3.5.0",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
+    "rollup": "^3.9.1",
     "rollup-plugin-istanbul": "^4.0.0",
     "rtlcss": "^4.0.0",
-    "sass": "^1.56.1",
+    "sass": "^1.57.1",
+    "sass-true": "^7.0.0",
     "shelljs": "^0.8.5",
-    "stylelint": "^14.15.0",
+    "stylelint": "^14.16.1",
     "stylelint-config-twbs-bootstrap": "^7.0.0",
-    "terser": "^5.16.0",
+    "terser": "5.16.0",
     "vnu-jar": "22.9.29"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
     "js/{src,dist}/**/*.{js,map}",
-    "scss/**/*.scss"
+    "js/index.{esm,umd}.js",
+    "scss/**/*.scss",
+    "!scss/tests/**"
   ],
   "hugo-bin": {
     "buildTags": "extended"

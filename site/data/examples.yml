@@ -1,3 +1,29 @@
+- category: Starters
+  external: true
+  description: "Functional examples of using Bootstrap in common JS frameworks like Webpack, Parcel, Vite, and more you can edit in StackBlitz."
+  examples:
+    - name: CDN starter
+      description: "Instantly include Bootstrap's compiled CSS and JavaScript via the jsDelivr CDN."
+      url: /examples/tree/main/starter
+    - name: Sass & JS
+      description: "Use npm to import and compile Bootstrap's Sass with Autoprefixer and Stylelint, plus our bundled JavaScript."
+      url: /examples/tree/main/sass-js
+    - name: Sass & ESM JS
+      description: "Import and compile Bootstrap's Sass with Autoprefixer and Stylelint, and compile our source JavaScript with an ESM shim."
+      url: /examples/tree/main/sass-js-esm
+    - name: Webpack
+      description: "Import and bundle Bootstrap's source Sass and JavaScript with Webpack."
+      url: /examples/tree/main/webpack
+    - name: Parcel
+      description: "Import and bundle Bootstrap's source Sass and JavaScript via Parcel."
+      url: /examples/tree/main/parcel
+    - name: Vite
+      description: "Import and bundle Bootstrap's source Sass and JavaScript with Vite."
+      url: /examples/tree/main/vite
+    - name: Bootstrap Icons
+      description: "Import and compile Bootstrap's Sass with Stylelint, PurgeCSS, and the Bootstrap Icons web font."
+      url: /examples/tree/main/bootstrap-icons
+
 - category: Snippets
   description: "Common patterns for building sites and apps that build on existing components and utilities with custom CSS and more."
   examples:
