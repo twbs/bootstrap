@@ -6,6 +6,10 @@ group: utilities
 toc: true
 ---
 
+{{< callout info >}}
+{{< partial "callouts/warning-color-assistive-technologies.md" >}}
+{{< /callout >}}
+
 ## Background color
 
 Similar to the contextual text color classes, set the background of an element to any contextual class. Background utilities **do not set `color`**, so in some cases you'll want to use `.text-*` [color utilities]({{< docsref "/utilities/colors" >}}).

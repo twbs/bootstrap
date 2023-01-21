@@ -13,7 +13,7 @@ We recommend getting familiar with Bootstrap first by reading through our [Getti
 You may also want to read up on [the RTLCSS project](https://rtlcss.com/), as it powers our approach to RTL.
 
 {{< callout warning >}}
-**Bootstrap's RTL feature is still experimental** and will probably evolve according to user feedback. Spotted something or have an improvement to suggest? [Open an issue]({{< param repo >}}/issues/new/choose), we'd love to get your insights.
+**Bootstrap's RTL feature is still experimental** and will evolve based on user feedback. Spotted something or have an improvement to suggest? [Open an issue]({{< param repo >}}/issues/new/choose), we'd love to get your insights.
 {{< /callout >}}
 
 ## Required HTML
@@ -161,7 +161,7 @@ Need both LTR and RTL on the same page? Thanks to [RTLCSS String Maps](https://r
 After running Sass then RTLCSS, each selector in your CSS files will be prepended by `.ltr`, and `.rtl` for RTL files. Now you're able to use both files on the same page, and simply use `.ltr` or `.rtl` on your components wrappers to use one or the other direction.
 
 {{< callout warning >}}
-**Edge cases and known limitations —** Please consider the following when working with a combined LTR and RTL implementation:
+**Edge cases and known limitations** to consider when working with a combined LTR and RTL implementation:
 
 1. When switching `.ltr` and `.rtl`, make sure you add `dir` and `lang` attributes accordingly.
 2. Loading both files can be a real performance bottleneck: consider some [optimization]({{< docsref "/customize/optimize" >}}), and maybe try to [load one of those files asynchronously](https://www.filamentgroup.com/lab/load-css-simpler/).

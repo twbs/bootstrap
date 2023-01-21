@@ -23,6 +23,10 @@ Color and background helpers combine the power of our [`.text-*` utilities]({{< 
 {{< /text-bg.inline >}}
 {{< /example >}}
 
+{{< callout info >}}
+{{< partial "callouts/warning-color-assistive-technologies.md" >}}
+{{< /callout >}}
+
 ## With components
 
 Use them in place of combined `.text-*` and `.bg-*` classes, like on [badges]({{< docsref "/components/badge#background-colors" >}}):

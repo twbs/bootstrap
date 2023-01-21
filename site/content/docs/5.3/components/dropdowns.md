@@ -1057,7 +1057,7 @@ Add `data-bs-toggle="dropdown"` to a link or button to toggle a dropdown.
 ### Via JavaScript
 
 {{< callout warning >}}
-Dropdowns must have `data-bs-toggle="dropdown"` on their trigger element, regardless of using the Data API or JavaScript.
+Dropdowns must have `data-bs-toggle="dropdown"` on their trigger element, regardless of whether you call your dropdown via JavaScript or use the data-api.
 {{< /callout >}}
 
 Call the dropdowns via JavaScript:
