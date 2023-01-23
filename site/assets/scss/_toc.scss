@@ -10,6 +10,10 @@
     overflow-y: auto;
   }
 
+  @include media-breakpoint-only(lg) {
+    padding-left: .125rem;
+  }
+
   nav {
     @include font-size(.875rem);
 
@@ -19,12 +23,17 @@
       margin-left: -.75rem;
       list-style: none;
 
+      @include media-breakpoint-only(lg) {
+        margin-left: 0;
+      }
+
       ul {
         padding-left: 1rem;
         margin-left: -1rem;
 
         a {
           padding-left: 1.375rem;
+          margin-left: .125rem;
         }
       }
     }
@@ -32,14 +41,24 @@
     a {
       display: block;
       padding: .125rem 0 .125rem .625rem;
+      margin: 0 .125rem 0 0;
       color: inherit;
       text-decoration: none;
       border-left: .125rem solid transparent;
+
+      @include media-breakpoint-only(lg) {
+        padding-left: 0;
+      }
 
       &:hover,
       &.active {
         color: var(--bd-toc-color);
         border-left-color: var(--bd-toc-color);
+
+        @include media-breakpoint-only(lg) {
+          border-left-color: transparent;
+        }
+
       }
 
       &.active {
