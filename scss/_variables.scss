@@ -322,12 +322,12 @@ $theme-colors: (
 // scss-docs-end theme-colors-map
 
 // scss-docs-start theme-text-variables
-$primary-text-emphasis:   shade-color($primary, 40%) !default;
-$secondary-text-emphasis: shade-color($secondary, 40%) !default;
-$success-text-emphasis:   shade-color($success, 40%) !default;
+$primary-text-emphasis:   shade-color($primary, 60%) !default;
+$secondary-text-emphasis: shade-color($secondary, 60%) !default;
+$success-text-emphasis:   shade-color($success, 60%) !default;
 $info-text-emphasis:      shade-color($info, 60%) !default;
 $warning-text-emphasis:   shade-color($warning, 60%) !default;
-$danger-text-emphasis:    shade-color($danger, 40%) !default;
+$danger-text-emphasis:    shade-color($danger, 60%) !default;
 $light-text-emphasis:     $gray-700 !default;
 $dark-text-emphasis:      $gray-700 !default;
 // scss-docs-end theme-text-variables
