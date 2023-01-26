@@ -322,34 +322,34 @@ $theme-colors: (
 // scss-docs-end theme-colors-map
 
 // scss-docs-start theme-text-variables
-$primary-text-emphasis:   $blue-700 !default;
-$secondary-text-emphasis: $gray-700 !default;
-$success-text-emphasis:   $green-700 !default;
-$info-text-emphasis:      $cyan-800 !default;
-$warning-text-emphasis:   $yellow-800 !default;
-$danger-text-emphasis:    $red-700 !default;
+$primary-text-emphasis:   shade-color($primary, 60%) !default;
+$secondary-text-emphasis: shade-color($secondary, 60%) !default;
+$success-text-emphasis:   shade-color($success, 60%) !default;
+$info-text-emphasis:      shade-color($info, 60%) !default;
+$warning-text-emphasis:   shade-color($warning, 60%) !default;
+$danger-text-emphasis:    shade-color($danger, 60%) !default;
 $light-text-emphasis:     $gray-700 !default;
 $dark-text-emphasis:      $gray-700 !default;
 // scss-docs-end theme-text-variables
 
 // scss-docs-start theme-bg-subtle-variables
-$primary-bg-subtle:       $blue-100 !default;
-$secondary-bg-subtle:     $gray-100 !default;
-$success-bg-subtle:       $green-100 !default;
-$info-bg-subtle:          $cyan-100 !default;
-$warning-bg-subtle:       $yellow-100 !default;
-$danger-bg-subtle:        $red-100 !default;
+$primary-bg-subtle:       tint-color($primary, 80%) !default;
+$secondary-bg-subtle:     tint-color($secondary, 80%) !default;
+$success-bg-subtle:       tint-color($success, 80%) !default;
+$info-bg-subtle:          tint-color($info, 80%) !default;
+$warning-bg-subtle:       tint-color($warning, 80%) !default;
+$danger-bg-subtle:        tint-color($danger, 80%) !default;
 $light-bg-subtle:         mix($gray-100, $white) !default;
 $dark-bg-subtle:          $gray-400 !default;
 // scss-docs-end theme-bg-subtle-variables
 
 // scss-docs-start theme-border-subtle-variables
-$primary-border-subtle:   $blue-200 !default;
-$secondary-border-subtle: $gray-200 !default;
-$success-border-subtle:   $green-200 !default;
-$info-border-subtle:      $cyan-200 !default;
-$warning-border-subtle:   $yellow-200 !default;
-$danger-border-subtle:    $red-200 !default;
+$primary-border-subtle:   tint-color($primary, 60%) !default;
+$secondary-border-subtle: tint-color($secondary, 60%) !default;
+$success-border-subtle:   tint-color($success, 60%) !default;
+$info-border-subtle:      tint-color($info, 60%) !default;
+$warning-border-subtle:   tint-color($warning, 60%) !default;
+$danger-border-subtle:    tint-color($danger, 60%) !default;
 $light-border-subtle:     $gray-200 !default;
 $dark-border-subtle:      $gray-500 !default;
 // scss-docs-end theme-border-subtle-variables
