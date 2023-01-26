@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Right to lneft
+title: Right to left
 description: Direct your elements from the right to the left.
 group: helpers
 toc: false
