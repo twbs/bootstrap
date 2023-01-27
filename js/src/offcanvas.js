@@ -174,6 +174,12 @@ class Offcanvas extends BaseComponent {
       this.hide()
     }
 
+    const keydownCallback = event => {
+      if (event.key === ESCAPE_KEY) {
+        this.hide()
+      }
+    }
+
     // 'static' option will be translated to true, and booleans will keep their value
     const isVisible = Boolean(this._config.backdrop)
 
@@ -182,7 +188,8 @@ class Offcanvas extends BaseComponent {
       isVisible,
       isAnimated: true,
       rootElement: this._element.parentNode,
-      clickCallback: isVisible ? clickCallback : null
+      clickCallback: isVisible ? clickCallback : null,
+      keydownCallback: this._config.keyboard ? keydownCallback : null
     })
   }
 

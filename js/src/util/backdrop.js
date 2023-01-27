@@ -16,13 +16,16 @@ import Config from './config.js'
 const NAME = 'backdrop'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
+const EVENT_KEY = `.bs.${NAME}`
 const EVENT_MOUSEDOWN = `mousedown.bs.${NAME}`
+const EVENT_KEYDOWN = `keydown.bs.${NAME}`
 
 const Default = {
   className: 'modal-backdrop',
   clickCallback: null,
   isAnimated: false,
   isVisible: true, // if false, we use the backdrop helper without adding any element to the dom
+  keydownCallback: null,
   rootElement: 'body' // give the choice to place backdrop under different elements
 }
 
@@ -31,6 +34,7 @@ const DefaultType = {
   clickCallback: '(function|null)',
   isAnimated: 'boolean',
   isVisible: 'boolean',
+  keydownCallback: '(function|null)',
   rootElement: '(element|string)'
 }
 
@@ -99,7 +103,7 @@ class Backdrop extends Config {
       return
     }
 
-    EventHandler.off(this._element, EVENT_MOUSEDOWN)
+    EventHandler.off(this._element, EVENT_KEY)
 
     this._element.remove()
     this._isAppended = false
@@ -137,6 +141,12 @@ class Backdrop extends Config {
     EventHandler.on(element, EVENT_MOUSEDOWN, () => {
       execute(this._config.clickCallback)
     })
+
+    if (this._config.keydownCallback) {
+      EventHandler.on(document, EVENT_KEYDOWN, event => {
+        execute(this._config.keydownCallback, [event])
+      })
+    }
 
     this._isAppended = true
   }
