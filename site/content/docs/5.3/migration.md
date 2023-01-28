@@ -7,7 +7,69 @@ aliases: "/migration/"
 toc: true
 ---
 
-## v5.3.0
+## v5.3.0-alpha2
+
+If you're migrating from our previous alpha release of v5.3.0, please reviewing the changes listed below.
+
+### Color modes
+
+- Dark mode colors are now derived from our theme colors (e.g., `$primary`) in Sass, rather than color specific tints or shades (e.g., `$blue-300`). This allows for a more automated dark mode when customizing the default theme colors.
+
+- Added Sass maps for generating theme colors for dark mode text, subtle background, and subtle border.
+
+- [Snippet examples]() are now ready for dark mode with updated markup and reduced custom styles.
+
+- Added `color-scheme: dark` to dark mode CSS to change OS level controls like scrollbars
+
+- Our `box-shadow`s will once again always stay dark instead of inverting to white when in dark mode.
+
+- Improved HTML and JavaScript for our color mode toggle script. The selector for changing the active SVG has been improved, and the markup made more accessible with ARIA attributes.
+
+- Improved docs code syntax colors and more across light and dark modes.
+
+### Typography
+
+- We no longer set a color for `$headings-color-dark` or `--bs-heading-color` for dark mode. To avoid several problems of headings within components appearing the wrong color, we've set the Sass variable to `null` and added a `null` check like we use on the default light mode.
+
+### Components
+
+- Cards now have a `color` set on them to improve rendering across color modes.
+
+- Added new `.nav-underline` variant for our navigation with a simpler bottom border under the active nav link. [See the docs for an example.]({{< docsref "/components/navs-tabs#underline" >}})
+
+- Navs now have new `:focus-visible` styles that better match our custom button focus styles.
+
+### Helpers
+
+- Added new `.icon-link` helper to quickly place and align Bootstrap Icons alongside a textual link. Icon links support our new link utilities, too.
+
+- Added new focus ring helper for removing the default `outline` and setting a custom `box-shadow` focus ring.
+
+### Utilities
+
+- Added new `.link-body-emphasis` helper alongside our [colored links]({{< docsref "/helpers/colored-links" >}}). This creates a colored link using our color mode responsive emphasis color.
+
+- Added new link utilities for link color opacity, underline offset, underline color, and underline opacity. [Explore the new links utilities.]({{< docsref "/utilities/link" >}})
+
+### Docs
+
+- Examples are now displayed with the appropriate light or dark color mode as dictated by the setting in our docs. However, they lack an individual color mode picker for the time being.
+
+- Improved included JavaScript for live Toast demo.
+
+- Added `twbs/examples` repo contents to the top of the Examples page.
+
+### Tooling
+
+- Added SCSS testing via True to help test our utilities API and other customizations.
+
+- Replaced instances of our bootstrap-npm-starter project with the newer and more complete [twbs/examples repo](https://github.com/twbs/examples).
+
+<hr class="mb-4">
+
+For a complete list of changes, [see the v5.3.0-alpha2 project on GitHub](https://github.com/orgs/twbs/projects/13).
+
+## v5.3.0-alpha1
 
 <hr class="mb-4">
 
@@ -69,6 +131,10 @@ Learn more by reading the new [color modes documentation]({{< docsref "/customiz
 - List group item variants are now styled via CSS variables.
 
 - <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.list-group-variant()` mixin is now deprecated. We now [use the Sass loop]({{< docsref "/components/list-group#sass-loop" >}}) directly to modify the component's default CSS variables for each variant.
+
+#### Dropdowns
+
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.dropdown-menu-dark` class has been deprecated and replaced with `data-bs-theme="dark"` on the close button or any parent element. [See the docs for an example.]({{< docsref "/components/dropdowns#dark-dropdowns" >}})
 
 #### Close button
 
