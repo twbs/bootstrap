@@ -3,7 +3,8 @@
 //
 
 .spinner-grow,
-.spinner-border {
+.spinner-border,
+.spinner-border-reverse {
   display: inline-block;
   width: var(--#{$prefix}spinner-width);
   height: var(--#{$prefix}spinner-height);
@@ -17,9 +18,13 @@
 @keyframes spinner-border {
   to { transform: rotate(360deg) #{"/* rtl:ignore */"}; }
 }
+
+@keyframes spinner-border-reverse {
+  to { transform: rotate(-360deg) #{"/* rtl:ignore */"}; }
+}
 // scss-docs-end spinner-border-keyframes
 
-.spinner-border {
+.spinner-border, .spinner-border-reverse {
   // scss-docs-start spinner-border-css-vars
   --#{$prefix}spinner-width: #{$spinner-width};
   --#{$prefix}spinner-height: #{$spinner-height};
@@ -31,6 +36,10 @@
 
   border: var(--#{$prefix}spinner-border-width) solid currentcolor;
   border-right-color: transparent;
+}
+
+.spinner-border-reverse {
+  --#{$prefix}spinner-animation-name: spinner-border-reverse;
 }
 
 .spinner-border-sm {
