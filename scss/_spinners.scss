@@ -24,7 +24,8 @@
 }
 // scss-docs-end spinner-border-keyframes
 
-.spinner-border, .spinner-border-reverse {
+.spinner-border,
+.spinner-border-reverse {
   // scss-docs-start spinner-border-css-vars
   --#{$prefix}spinner-width: #{$spinner-width};
   --#{$prefix}spinner-height: #{$spinner-height};
