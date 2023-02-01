@@ -175,6 +175,14 @@
   --bs-border-color-translucent: rgba(255, 255, 255, 0.15);
 }
 
+.action {
+  transition: all 500ms ease;
+ }
+.action:hover {
+  transition: all 400ms ease;
+  filter: drop-shadow(2px 2px 10px #6c6c6c5c) brightness(1.1);
+}
+
 *,
 *::before,
 *::after {
