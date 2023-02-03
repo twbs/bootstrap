@@ -1,5 +1,5 @@
 import { clearFixture, getFixture } from '../../helpers/fixture'
-import EventHandler from '../../../src/dom/event-handler'
+import { EventHandler } from '../../../src/dom/event-handler'
 import Swipe from '../../../src/util/swipe'
 import { noop } from '../../../src/util'
 
@@ -237,7 +237,7 @@ describe('Swipe', () => {
       const swipe = new Swipe(swipeEl)
 
       swipe.dispose()
-      expect(EventHandler.off).toHaveBeenCalledWith(swipeEl, '.bs.swipe')
+      expect(EventHandler.off).toHaveBeenCalledWith(swipeEl, '.bs.swipe', undefined, undefined)
     })
 
     it('should destroy', () => {
@@ -263,7 +263,7 @@ describe('Swipe', () => {
 
       swipe.dispose()
 
-      expect(removeEventSpy).toHaveBeenCalledWith(fixtureEl, '.bs.swipe')
+      expect(removeEventSpy).toHaveBeenCalledWith(fixtureEl, '.bs.swipe', undefined, undefined)
       deleteDocumentElementOntouchstart()
     })
   })

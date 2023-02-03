@@ -11,7 +11,7 @@ import {
   isVisible
 } from './util/index.js'
 import ScrollBarHelper from './util/scrollbar.js'
-import EventHandler from './dom/event-handler.js'
+import { ScopedEventHandler } from './dom/event-handler.js'
 import BaseComponent from './base-component.js'
 import SelectorEngine from './dom/selector-engine.js'
 import Backdrop from './util/backdrop.js'
@@ -23,10 +23,6 @@ import { enableDismissTrigger } from './util/component-functions.js'
  */
 
 const NAME = 'offcanvas'
-const DATA_KEY = 'bs.offcanvas'
-const EVENT_KEY = `.${DATA_KEY}`
-const DATA_API_KEY = '.data-api'
-const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 const ESCAPE_KEY = 'Escape'
 
 const CLASS_NAME_SHOW = 'show'
@@ -35,14 +31,15 @@ const CLASS_NAME_HIDING = 'hiding'
 const CLASS_NAME_BACKDROP = 'offcanvas-backdrop'
 const OPEN_SELECTOR = '.offcanvas.show'
 
-const EVENT_SHOW = `show${EVENT_KEY}`
-const EVENT_SHOWN = `shown${EVENT_KEY}`
-const EVENT_HIDE = `hide${EVENT_KEY}`
-const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY}`
-const EVENT_HIDDEN = `hidden${EVENT_KEY}`
-const EVENT_RESIZE = `resize${EVENT_KEY}`
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
-const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
+const EVENT_SHOW = 'show'
+const EVENT_SHOWN = 'shown'
+const EVENT_HIDE = 'hide'
+const EVENT_HIDE_PREVENTED = 'hidePrevented'
+const EVENT_HIDDEN = 'hidden'
+const EVENT_RESIZE = 'resize'
+const EVENT_CLICK = 'click'
+const EVENT_LOAD = 'load'
+const EVENT_KEYDOWN_DISMISS = 'keydown.dismiss'
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="offcanvas"]'
 
@@ -95,7 +92,7 @@ class Offcanvas extends BaseComponent {
       return
     }
 
-    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, { relatedTarget })
+    const showEvent = this._events.trigger(EVENT_SHOW, { relatedTarget })
 
     if (showEvent.defaultPrevented) {
       return
@@ -119,7 +116,7 @@ class Offcanvas extends BaseComponent {
 
       this._element.classList.add(CLASS_NAME_SHOW)
       this._element.classList.remove(CLASS_NAME_SHOWING)
-      EventHandler.trigger(this._element, EVENT_SHOWN, { relatedTarget })
+      this._events.trigger(EVENT_SHOWN, { relatedTarget })
     }
 
     this._queueCallback(completeCallBack, this._element, true)
@@ -130,7 +127,7 @@ class Offcanvas extends BaseComponent {
       return
     }
 
-    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE)
+    const hideEvent = this._events.trigger(EVENT_HIDE)
 
     if (hideEvent.defaultPrevented) {
       return
@@ -151,7 +148,7 @@ class Offcanvas extends BaseComponent {
         new ScrollBarHelper().reset()
       }
 
-      EventHandler.trigger(this._element, EVENT_HIDDEN)
+      this._events.trigger(EVENT_HIDDEN)
     }
 
     this._queueCallback(completeCallback, this._element, true)
@@ -167,7 +164,7 @@ class Offcanvas extends BaseComponent {
   _initializeBackDrop() {
     const clickCallback = () => {
       if (this._config.backdrop === 'static') {
-        EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED)
+        this._events.trigger(EVENT_HIDE_PREVENTED)
         return
       }
 
@@ -193,13 +190,13 @@ class Offcanvas extends BaseComponent {
   }
 
   _addEventListeners() {
-    EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS, event => {
+    this._events.on(EVENT_KEYDOWN_DISMISS, event => {
       if (event.key !== ESCAPE_KEY) {
         return
       }
 
       if (!this._config.keyboard) {
-        EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED)
+        this._events.trigger(EVENT_HIDE_PREVENTED)
         return
       }
 
@@ -229,7 +226,7 @@ class Offcanvas extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+new ScopedEventHandler(document, Offcanvas.EVENT_KEY, true).on(EVENT_CLICK, SELECTOR_DATA_TOGGLE, function (event) {
   const target = SelectorEngine.getElementFromSelector(this)
 
   if (['A', 'AREA'].includes(this.tagName)) {
@@ -240,7 +237,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     return
   }
 
-  EventHandler.one(target, EVENT_HIDDEN, () => {
+  new ScopedEventHandler(target, Offcanvas.EVENT_KEY).one(EVENT_HIDDEN, () => {
     // focus on trigger when it is closed
     if (isVisible(this)) {
       this.focus()
@@ -257,13 +254,14 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   data.toggle(this)
 })
 
-EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+const handler = new ScopedEventHandler(window, Offcanvas.EVENT_KEY, true)
+handler.on(EVENT_LOAD, () => {
   for (const selector of SelectorEngine.find(OPEN_SELECTOR)) {
     Offcanvas.getOrCreateInstance(selector).show()
   }
 })
 
-EventHandler.on(window, EVENT_RESIZE, () => {
+handler.on(EVENT_RESIZE, () => {
   for (const element of SelectorEngine.find('[aria-modal][class*=show][class*=offcanvas-]')) {
     if (getComputedStyle(element).position !== 'fixed') {
       Offcanvas.getOrCreateInstance(element).hide()

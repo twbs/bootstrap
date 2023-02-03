@@ -6,7 +6,7 @@
  */
 
 import { defineJQueryPlugin, getElement, isDisabled, isVisible } from './util/index.js'
-import EventHandler from './dom/event-handler.js'
+import { ScopedEventHandler } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 import BaseComponent from './base-component.js'
 
@@ -15,13 +15,10 @@ import BaseComponent from './base-component.js'
  */
 
 const NAME = 'scrollspy'
-const DATA_KEY = 'bs.scrollspy'
-const EVENT_KEY = `.${DATA_KEY}`
-const DATA_API_KEY = '.data-api'
 
-const EVENT_ACTIVATE = `activate${EVENT_KEY}`
-const EVENT_CLICK = `click${EVENT_KEY}`
-const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_ACTIVATE = 'activate'
+const EVENT_CLICK = 'click'
+const EVENT_LOAD = 'load'
 
 const CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item'
 const CLASS_NAME_ACTIVE = 'active'
@@ -128,9 +125,10 @@ class ScrollSpy extends BaseComponent {
     }
 
     // unregister any previous listeners
-    EventHandler.off(this._config.target, EVENT_CLICK)
+    const handler = new ScopedEventHandler(this._config.target, this.constructor.EVENT_KEY)
+    handler.off(EVENT_CLICK)
 
-    EventHandler.on(this._config.target, EVENT_CLICK, SELECTOR_TARGET_LINKS, event => {
+    handler.on(EVENT_CLICK, SELECTOR_TARGET_LINKS, event => {
       const observableSection = this._observableSections.get(event.target.hash)
       if (observableSection) {
         event.preventDefault()
@@ -228,7 +226,7 @@ class ScrollSpy extends BaseComponent {
     target.classList.add(CLASS_NAME_ACTIVE)
     this._activateParents(target)
 
-    EventHandler.trigger(this._element, EVENT_ACTIVATE, { relatedTarget: target })
+    this._events.trigger(EVENT_ACTIVATE, { relatedTarget: target })
   }
 
   _activateParents(target) {
@@ -279,7 +277,7 @@ class ScrollSpy extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+new ScopedEventHandler(window, ScrollSpy.EVENT_KEY, true).on(EVENT_LOAD, () => {
   for (const spy of SelectorEngine.find(SELECTOR_DATA_SPY)) {
     ScrollSpy.getOrCreateInstance(spy)
   }

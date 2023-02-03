@@ -7,8 +7,8 @@
 
 import Data from './dom/data.js'
 import { executeAfterTransition, getElement } from './util/index.js'
-import EventHandler from './dom/event-handler.js'
 import Config from './util/config.js'
+import { ScopedEventHandler } from './dom/event-handler.js'
 
 /**
  * Constants
@@ -31,14 +31,14 @@ class BaseComponent extends Config {
 
     this._element = element
     this._config = this._getConfig(config)
-
+    this._events = new ScopedEventHandler(this._element, this.constructor.EVENT_KEY)
     Data.set(this._element, this.constructor.DATA_KEY, this)
   }
 
   // Public
   dispose() {
     Data.remove(this._element, this.constructor.DATA_KEY)
-    EventHandler.off(this._element, this.constructor.EVENT_KEY)
+    this._events.off()
 
     for (const propertyName of Object.getOwnPropertyNames(this)) {
       this[propertyName] = null

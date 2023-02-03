@@ -6,7 +6,6 @@
  */
 
 import { defineJQueryPlugin, reflow } from './util/index.js'
-import EventHandler from './dom/event-handler.js'
 import BaseComponent from './base-component.js'
 import { enableDismissTrigger } from './util/component-functions.js'
 
@@ -15,17 +14,15 @@ import { enableDismissTrigger } from './util/component-functions.js'
  */
 
 const NAME = 'toast'
-const DATA_KEY = 'bs.toast'
-const EVENT_KEY = `.${DATA_KEY}`
 
-const EVENT_MOUSEOVER = `mouseover${EVENT_KEY}`
-const EVENT_MOUSEOUT = `mouseout${EVENT_KEY}`
-const EVENT_FOCUSIN = `focusin${EVENT_KEY}`
-const EVENT_FOCUSOUT = `focusout${EVENT_KEY}`
-const EVENT_HIDE = `hide${EVENT_KEY}`
-const EVENT_HIDDEN = `hidden${EVENT_KEY}`
-const EVENT_SHOW = `show${EVENT_KEY}`
-const EVENT_SHOWN = `shown${EVENT_KEY}`
+const EVENT_MOUSEOVER = 'mouseover'
+const EVENT_MOUSEOUT = 'mouseout'
+const EVENT_FOCUSIN = 'focusin'
+const EVENT_FOCUSOUT = 'focusout'
+const EVENT_HIDE = 'hide'
+const EVENT_HIDDEN = 'hidden'
+const EVENT_SHOW = 'show'
+const EVENT_SHOWN = 'shown'
 
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_HIDE = 'hide' // @deprecated - kept here only for backwards compatibility
@@ -73,7 +70,7 @@ class Toast extends BaseComponent {
 
   // Public
   show() {
-    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW)
+    const showEvent = this._events.trigger(EVENT_SHOW)
 
     if (showEvent.defaultPrevented) {
       return
@@ -87,7 +84,7 @@ class Toast extends BaseComponent {
 
     const complete = () => {
       this._element.classList.remove(CLASS_NAME_SHOWING)
-      EventHandler.trigger(this._element, EVENT_SHOWN)
+      this._events.trigger(EVENT_SHOWN)
 
       this._maybeScheduleHide()
     }
@@ -104,7 +101,7 @@ class Toast extends BaseComponent {
       return
     }
 
-    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE)
+    const hideEvent = this._events.trigger(EVENT_HIDE)
 
     if (hideEvent.defaultPrevented) {
       return
@@ -113,7 +110,7 @@ class Toast extends BaseComponent {
     const complete = () => {
       this._element.classList.add(CLASS_NAME_HIDE) // @deprecated
       this._element.classList.remove(CLASS_NAME_SHOWING, CLASS_NAME_SHOW)
-      EventHandler.trigger(this._element, EVENT_HIDDEN)
+      this._events.trigger(EVENT_HIDDEN)
     }
 
     this._element.classList.add(CLASS_NAME_SHOWING)
@@ -183,10 +180,10 @@ class Toast extends BaseComponent {
   }
 
   _setListeners() {
-    EventHandler.on(this._element, EVENT_MOUSEOVER, event => this._onInteraction(event, true))
-    EventHandler.on(this._element, EVENT_MOUSEOUT, event => this._onInteraction(event, false))
-    EventHandler.on(this._element, EVENT_FOCUSIN, event => this._onInteraction(event, true))
-    EventHandler.on(this._element, EVENT_FOCUSOUT, event => this._onInteraction(event, false))
+    this._events.on(EVENT_MOUSEOVER, event => this._onInteraction(event, true))
+    this._events.on(EVENT_MOUSEOUT, event => this._onInteraction(event, false))
+    this._events.on(EVENT_FOCUSIN, event => this._onInteraction(event, true))
+    this._events.on(EVENT_FOCUSOUT, event => this._onInteraction(event, false))
   }
 
   _clearTimeout() {

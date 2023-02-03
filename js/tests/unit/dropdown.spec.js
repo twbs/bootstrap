@@ -1,5 +1,5 @@
 import Dropdown from '../../src/dropdown'
-import EventHandler from '../../src/dom/event-handler'
+import { EventHandler } from '../../src/dom/event-handler'
 import { noop } from '../../src/util/index'
 import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
@@ -1062,7 +1062,7 @@ describe('Dropdown', () => {
 
       expect(dropdown._menu).toBeNull()
       expect(dropdown._element).toBeNull()
-      expect(spy).toHaveBeenCalledWith(btnDropdown, Dropdown.EVENT_KEY)
+      expect(spy).toHaveBeenCalledWith(btnDropdown, Dropdown.EVENT_KEY, undefined, undefined)
     })
 
     it('should dispose dropdown with Popper', () => {

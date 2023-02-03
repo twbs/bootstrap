@@ -17,7 +17,7 @@ import {
   isVisible,
   noop
 } from './util/index.js'
-import EventHandler from './dom/event-handler.js'
+import { EventHandler, ScopedEventHandler } from './dom/event-handler.js'
 import Manipulator from './dom/manipulator.js'
 import SelectorEngine from './dom/selector-engine.js'
 import BaseComponent from './base-component.js'
@@ -27,9 +27,6 @@ import BaseComponent from './base-component.js'
  */
 
 const NAME = 'dropdown'
-const DATA_KEY = 'bs.dropdown'
-const EVENT_KEY = `.${DATA_KEY}`
-const DATA_API_KEY = '.data-api'
 
 const ESCAPE_KEY = 'Escape'
 const TAB_KEY = 'Tab'
@@ -37,13 +34,13 @@ const ARROW_UP_KEY = 'ArrowUp'
 const ARROW_DOWN_KEY = 'ArrowDown'
 const RIGHT_MOUSE_BUTTON = 2 // MouseEvent.button value for the secondary button, usually the right button
 
-const EVENT_HIDE = `hide${EVENT_KEY}`
-const EVENT_HIDDEN = `hidden${EVENT_KEY}`
-const EVENT_SHOW = `show${EVENT_KEY}`
-const EVENT_SHOWN = `shown${EVENT_KEY}`
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
-const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY}${DATA_API_KEY}`
-const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_HIDE = 'hide'
+const EVENT_HIDDEN = 'hidden'
+const EVENT_SHOW = 'show'
+const EVENT_SHOWN = 'shown'
+const EVENT_CLICK = 'click'
+const EVENT_KEYDOWN = 'keydown'
+const EVENT_KEYUP = 'keyup'
 
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_DROPUP = 'dropup'
@@ -130,7 +127,7 @@ class Dropdown extends BaseComponent {
       relatedTarget: this._element
     }
 
-    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, relatedTarget)
+    const showEvent = this._events.trigger(EVENT_SHOW, relatedTarget)
 
     if (showEvent.defaultPrevented) {
       return
@@ -153,7 +150,7 @@ class Dropdown extends BaseComponent {
 
     this._menu.classList.add(CLASS_NAME_SHOW)
     this._element.classList.add(CLASS_NAME_SHOW)
-    EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget)
+    this._events.trigger(EVENT_SHOWN, relatedTarget)
   }
 
   hide() {
@@ -185,7 +182,7 @@ class Dropdown extends BaseComponent {
 
   // Private
   _completeHide(relatedTarget) {
-    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE, relatedTarget)
+    const hideEvent = this._events.trigger(EVENT_HIDE, relatedTarget)
     if (hideEvent.defaultPrevented) {
       return
     }
@@ -206,7 +203,7 @@ class Dropdown extends BaseComponent {
     this._element.classList.remove(CLASS_NAME_SHOW)
     this._element.setAttribute('aria-expanded', 'false')
     Manipulator.removeDataAttribute(this._menu, 'popper')
-    EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
+    this._events.trigger(EVENT_HIDDEN, relatedTarget)
   }
 
   _getConfig(config) {
@@ -436,12 +433,12 @@ class Dropdown extends BaseComponent {
 /**
  * Data API implementation
  */
-
-EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE, Dropdown.dataApiKeydownHandler)
-EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataApiKeydownHandler)
-EventHandler.on(document, EVENT_CLICK_DATA_API, Dropdown.clearMenus)
-EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus)
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+const handler = new ScopedEventHandler(document, Dropdown.EVENT_KEY, true)
+handler.on(EVENT_KEYDOWN, SELECTOR_DATA_TOGGLE, Dropdown.dataApiKeydownHandler)
+handler.on(EVENT_KEYDOWN, SELECTOR_MENU, Dropdown.dataApiKeydownHandler)
+handler.on(EVENT_CLICK, Dropdown.clearMenus)
+handler.on(EVENT_KEYUP, Dropdown.clearMenus)
+handler.on(EVENT_CLICK, SELECTOR_DATA_TOGGLE, function (event) {
   event.preventDefault()
   Dropdown.getOrCreateInstance(this).toggle()
 })

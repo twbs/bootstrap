@@ -2,7 +2,7 @@ import ScrollSpy from '../../src/scrollspy'
 
 /** Test helpers */
 import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
-import EventHandler from '../../src/dom/event-handler'
+import { EventHandler } from '../../src/dom/event-handler'
 
 describe('ScrollSpy', () => {
   let fixtureEl
@@ -871,7 +871,7 @@ describe('ScrollSpy', () => {
         smoothScroll: true
       })
 
-      expect(offSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy')
+      expect(offSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy', undefined, undefined)
       expect(onSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy', '[href]', jasmine.any(Function))
     })
 

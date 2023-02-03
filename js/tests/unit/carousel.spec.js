@@ -1,5 +1,5 @@
 import Carousel from '../../src/carousel'
-import EventHandler from '../../src/dom/event-handler'
+import { EventHandler } from '../../src/dom/event-handler'
 import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 import { isRTL, noop } from '../../src/util/index'
 import Swipe from '../../src/util/swipe'
@@ -1296,7 +1296,7 @@ describe('Carousel', () => {
       carousel.dispose()
 
       expect(carousel._swipeHelper).toBeNull()
-      expect(removeEventSpy).toHaveBeenCalledWith(carouselEl, Carousel.EVENT_KEY)
+      expect(removeEventSpy).toHaveBeenCalledWith(carouselEl, Carousel.EVENT_KEY, undefined, undefined)
       expect(swipeHelperSpy).toHaveBeenCalled()
 
       delete document.documentElement.ontouchstart

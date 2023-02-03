@@ -8,7 +8,7 @@
 import * as Popper from '@popperjs/core'
 import { defineJQueryPlugin, execute, findShadowRoot, getElement, getUID, isRTL, noop } from './util/index.js'
 import { DefaultAllowlist } from './util/sanitizer.js'
-import EventHandler from './dom/event-handler.js'
+import { EventHandler } from './dom/event-handler.js'
 import Manipulator from './dom/manipulator.js'
 import BaseComponent from './base-component.js'
 import TemplateFactory from './util/template-factory.js'
@@ -189,7 +189,7 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    const showEvent = EventHandler.trigger(this._element, this.constructor.eventName(EVENT_SHOW))
+    const showEvent = this._events.trigger(EVENT_SHOW)
     const shadowRoot = findShadowRoot(this._element)
     const isInTheDom = (shadowRoot || this._element.ownerDocument.documentElement).contains(this._element)
 
@@ -208,7 +208,7 @@ class Tooltip extends BaseComponent {
 
     if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
       container.append(tip)
-      EventHandler.trigger(this._element, this.constructor.eventName(EVENT_INSERTED))
+      this._events.trigger(EVENT_INSERTED)
     }
 
     this._popper = this._createPopper(tip)
@@ -226,7 +226,7 @@ class Tooltip extends BaseComponent {
     }
 
     const complete = () => {
-      EventHandler.trigger(this._element, this.constructor.eventName(EVENT_SHOWN))
+      this._events.trigger(EVENT_SHOWN)
 
       if (this._isHovered === false) {
         this._leave()
@@ -243,7 +243,7 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    const hideEvent = EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDE))
+    const hideEvent = this._events.trigger(EVENT_HIDE)
     if (hideEvent.defaultPrevented) {
       return
     }
@@ -274,7 +274,7 @@ class Tooltip extends BaseComponent {
       }
 
       this._element.removeAttribute('aria-describedby')
-      EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDDEN))
+      this._events.trigger(EVENT_HIDDEN)
     }
 
     this._queueCallback(complete, this.tip, this._isAnimated())
@@ -445,7 +445,7 @@ class Tooltip extends BaseComponent {
 
     for (const trigger of triggers) {
       if (trigger === 'click') {
-        EventHandler.on(this._element, this.constructor.eventName(EVENT_CLICK), this._config.selector, event => {
+        this._events.on(EVENT_CLICK, this._config.selector, event => {
           const context = this._initializeOnDelegatedTarget(event)
           context.toggle()
         })
@@ -457,12 +457,12 @@ class Tooltip extends BaseComponent {
           this.constructor.eventName(EVENT_MOUSELEAVE) :
           this.constructor.eventName(EVENT_FOCUSOUT)
 
-        EventHandler.on(this._element, eventIn, this._config.selector, event => {
+        this._events.on(eventIn, this._config.selector, event => {
           const context = this._initializeOnDelegatedTarget(event)
           context._activeTrigger[event.type === 'focusin' ? TRIGGER_FOCUS : TRIGGER_HOVER] = true
           context._enter()
         })
-        EventHandler.on(this._element, eventOut, this._config.selector, event => {
+        this._events.on(eventOut, this._config.selector, event => {
           const context = this._initializeOnDelegatedTarget(event)
           context._activeTrigger[event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER] =
             context._element.contains(event.relatedTarget)

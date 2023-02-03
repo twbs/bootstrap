@@ -13,7 +13,7 @@ import {
   reflow,
   triggerTransitionEnd
 } from './util/index.js'
-import EventHandler from './dom/event-handler.js'
+import { ScopedEventHandler } from './dom/event-handler.js'
 import Manipulator from './dom/manipulator.js'
 import SelectorEngine from './dom/selector-engine.js'
 import Swipe from './util/swipe.js'
@@ -24,9 +24,6 @@ import BaseComponent from './base-component.js'
  */
 
 const NAME = 'carousel'
-const DATA_KEY = 'bs.carousel'
-const EVENT_KEY = `.${DATA_KEY}`
-const DATA_API_KEY = '.data-api'
 
 const ARROW_LEFT_KEY = 'ArrowLeft'
 const ARROW_RIGHT_KEY = 'ArrowRight'
@@ -37,14 +34,14 @@ const ORDER_PREV = 'prev'
 const DIRECTION_LEFT = 'left'
 const DIRECTION_RIGHT = 'right'
 
-const EVENT_SLIDE = `slide${EVENT_KEY}`
-const EVENT_SLID = `slid${EVENT_KEY}`
-const EVENT_KEYDOWN = `keydown${EVENT_KEY}`
-const EVENT_MOUSEENTER = `mouseenter${EVENT_KEY}`
-const EVENT_MOUSELEAVE = `mouseleave${EVENT_KEY}`
-const EVENT_DRAG_START = `dragstart${EVENT_KEY}`
-const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_SLIDE = 'slide'
+const EVENT_SLID = 'slid'
+const EVENT_KEYDOWN = 'keydown'
+const EVENT_MOUSEENTER = 'mouseenter'
+const EVENT_MOUSELEAVE = 'mouseleave'
+const EVENT_DRAG_START = 'dragstart'
+const EVENT_LOAD = 'load'
+const EVENT_CLICK = 'click'
 
 const CLASS_NAME_CAROUSEL = 'carousel'
 const CLASS_NAME_ACTIVE = 'active'
@@ -159,7 +156,7 @@ class Carousel extends BaseComponent {
     }
 
     if (this._isSliding) {
-      EventHandler.one(this._element, EVENT_SLID, () => this.cycle())
+      this._events.one(EVENT_SLID, () => this.cycle())
       return
     }
 
@@ -173,7 +170,7 @@ class Carousel extends BaseComponent {
     }
 
     if (this._isSliding) {
-      EventHandler.one(this._element, EVENT_SLID, () => this.to(index))
+      this._events.one(EVENT_SLID, () => this.to(index))
       return
     }
 
@@ -203,12 +200,12 @@ class Carousel extends BaseComponent {
 
   _addEventListeners() {
     if (this._config.keyboard) {
-      EventHandler.on(this._element, EVENT_KEYDOWN, event => this._keydown(event))
+      this._events.on(EVENT_KEYDOWN, event => this._keydown(event))
     }
 
     if (this._config.pause === 'hover') {
-      EventHandler.on(this._element, EVENT_MOUSEENTER, () => this.pause())
-      EventHandler.on(this._element, EVENT_MOUSELEAVE, () => this._maybeEnableCycle())
+      this._events.on(EVENT_MOUSEENTER, () => this.pause())
+      this._events.on(EVENT_MOUSELEAVE, () => this._maybeEnableCycle())
     }
 
     if (this._config.touch && Swipe.isSupported()) {
@@ -218,7 +215,7 @@ class Carousel extends BaseComponent {
 
   _addTouchEventListeners() {
     for (const img of SelectorEngine.find(SELECTOR_ITEM_IMG, this._element)) {
-      EventHandler.on(img, EVENT_DRAG_START, event => event.preventDefault())
+      new ScopedEventHandler(img, Carousel.EVENT_KEY).on(img, EVENT_DRAG_START, event => event.preventDefault())
     }
 
     const endCallBack = () => {
@@ -313,7 +310,7 @@ class Carousel extends BaseComponent {
     const nextElementIndex = this._getItemIndex(nextElement)
 
     const triggerEvent = eventName => {
-      return EventHandler.trigger(this._element, eventName, {
+      return this._events.trigger(eventName, {
         relatedTarget: nextElement,
         direction: this._orderToDirection(order),
         from: this._getItemIndex(activeElement),
@@ -429,7 +426,7 @@ class Carousel extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (event) {
+new ScopedEventHandler(document, Carousel.EVENT_KEY, true).on(EVENT_CLICK, SELECTOR_DATA_SLIDE, function (event) {
   const target = SelectorEngine.getElementFromSelector(this)
 
   if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
@@ -457,7 +454,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (e
   carousel._maybeEnableCycle()
 })
 
-EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+new ScopedEventHandler(window, Carousel.EVENT_KEY, true).on(EVENT_LOAD, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
 
   for (const carousel of carousels) {

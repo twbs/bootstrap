@@ -6,7 +6,7 @@
  */
 
 import { defineJQueryPlugin, getNextActiveElement, isDisabled } from './util/index.js'
-import EventHandler from './dom/event-handler.js'
+import { EventHandler, ScopedEventHandler } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 import BaseComponent from './base-component.js'
 
@@ -15,16 +15,14 @@ import BaseComponent from './base-component.js'
  */
 
 const NAME = 'tab'
-const DATA_KEY = 'bs.tab'
-const EVENT_KEY = `.${DATA_KEY}`
 
-const EVENT_HIDE = `hide${EVENT_KEY}`
-const EVENT_HIDDEN = `hidden${EVENT_KEY}`
-const EVENT_SHOW = `show${EVENT_KEY}`
-const EVENT_SHOWN = `shown${EVENT_KEY}`
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}`
-const EVENT_KEYDOWN = `keydown${EVENT_KEY}`
-const EVENT_LOAD_DATA_API = `load${EVENT_KEY}`
+const EVENT_HIDE = 'hide'
+const EVENT_HIDDEN = 'hidden'
+const EVENT_SHOW = 'show'
+const EVENT_SHOWN = 'shown'
+const EVENT_CLICK = 'click'
+const EVENT_KEYDOWN = 'keydown'
+const EVENT_LOAD = 'load'
 
 const ARROW_LEFT_KEY = 'ArrowLeft'
 const ARROW_RIGHT_KEY = 'ArrowRight'
@@ -66,7 +64,7 @@ class Tab extends BaseComponent {
     // Set up initial aria attributes
     this._setInitialAttributes(this._parent, this._getChildren())
 
-    EventHandler.on(this._element, EVENT_KEYDOWN, event => this._keydown(event))
+    this._events.on(EVENT_KEYDOWN, event => this._keydown(event))
   }
 
   // Getters
@@ -85,10 +83,10 @@ class Tab extends BaseComponent {
     const active = this._getActiveElem()
 
     const hideEvent = active ?
-      EventHandler.trigger(active, EVENT_HIDE, { relatedTarget: innerElem }) :
+      EventHandler.trigger(active, this.constructor.eventName(EVENT_HIDE), { relatedTarget: innerElem }) :
       null
 
-    const showEvent = EventHandler.trigger(innerElem, EVENT_SHOW, { relatedTarget: active })
+    const showEvent = EventHandler.trigger(innerElem, this.constructor.eventName(EVENT_SHOW), { relatedTarget: active })
 
     if (showEvent.defaultPrevented || (hideEvent && hideEvent.defaultPrevented)) {
       return
@@ -117,7 +115,7 @@ class Tab extends BaseComponent {
       element.removeAttribute('tabindex')
       element.setAttribute('aria-selected', true)
       this._toggleDropDown(element, true)
-      EventHandler.trigger(element, EVENT_SHOWN, {
+      EventHandler.trigger(element, this.constructor.eventName(EVENT_SHOWN), {
         relatedTarget: relatedElem
       })
     }
@@ -144,7 +142,7 @@ class Tab extends BaseComponent {
       element.setAttribute('aria-selected', false)
       element.setAttribute('tabindex', '-1')
       this._toggleDropDown(element, false)
-      EventHandler.trigger(element, EVENT_HIDDEN, { relatedTarget: relatedElem })
+      EventHandler.trigger(element, this.constructor.eventName(EVENT_HIDDEN), { relatedTarget: relatedElem })
     }
 
     this._queueCallback(complete, element, element.classList.contains(CLASS_NAME_FADE))
@@ -276,7 +274,7 @@ class Tab extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+new ScopedEventHandler(document, Tab.EVENT_KEY).on(EVENT_CLICK, SELECTOR_DATA_TOGGLE, function (event) {
   if (['A', 'AREA'].includes(this.tagName)) {
     event.preventDefault()
   }
@@ -291,7 +289,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
 /**
  * Initialize on focus
  */
-EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+new ScopedEventHandler(window, Tab.EVENT_KEY).on(EVENT_LOAD, () => {
   for (const element of SelectorEngine.find(SELECTOR_DATA_TOGGLE_ACTIVE)) {
     Tab.getOrCreateInstance(element)
   }

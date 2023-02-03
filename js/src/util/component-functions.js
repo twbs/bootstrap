@@ -5,15 +5,15 @@
  * --------------------------------------------------------------------------
  */
 
-import EventHandler from '../dom/event-handler.js'
+import { ScopedEventHandler } from '../dom/event-handler.js'
 import { isDisabled } from './index.js'
 import SelectorEngine from '../dom/selector-engine.js'
 
 const enableDismissTrigger = (component, method = 'hide') => {
-  const clickEvent = `click.dismiss${component.EVENT_KEY}`
+  const clickEvent = 'click.dismiss'
   const name = component.NAME
 
-  EventHandler.on(document, clickEvent, `[data-bs-dismiss="${name}"]`, function (event) {
+  new ScopedEventHandler(document, component.EVENT_KEY).on(clickEvent, `[data-bs-dismiss="${name}"]`, function (event) {
     if (['A', 'AREA'].includes(this.tagName)) {
       event.preventDefault()
     }

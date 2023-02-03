@@ -10,7 +10,7 @@ import {
   getElement,
   reflow
 } from './util/index.js'
-import EventHandler from './dom/event-handler.js'
+import { ScopedEventHandler } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 import BaseComponent from './base-component.js'
 
@@ -19,15 +19,12 @@ import BaseComponent from './base-component.js'
  */
 
 const NAME = 'collapse'
-const DATA_KEY = 'bs.collapse'
-const EVENT_KEY = `.${DATA_KEY}`
-const DATA_API_KEY = '.data-api'
 
-const EVENT_SHOW = `show${EVENT_KEY}`
-const EVENT_SHOWN = `shown${EVENT_KEY}`
-const EVENT_HIDE = `hide${EVENT_KEY}`
-const EVENT_HIDDEN = `hidden${EVENT_KEY}`
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_SHOW = 'show'
+const EVENT_SHOWN = 'shown'
+const EVENT_HIDE = 'hide'
+const EVENT_HIDDEN = 'hidden'
+const EVENT_CLICK = 'click'
 
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_COLLAPSE = 'collapse'
@@ -126,7 +123,7 @@ class Collapse extends BaseComponent {
       return
     }
 
-    const startEvent = EventHandler.trigger(this._element, EVENT_SHOW)
+    const startEvent = this._events.trigger(EVENT_SHOW)
     if (startEvent.defaultPrevented) {
       return
     }
@@ -153,7 +150,7 @@ class Collapse extends BaseComponent {
 
       this._element.style[dimension] = ''
 
-      EventHandler.trigger(this._element, EVENT_SHOWN)
+      this._events.trigger(EVENT_SHOWN)
     }
 
     const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1)
@@ -168,7 +165,7 @@ class Collapse extends BaseComponent {
       return
     }
 
-    const startEvent = EventHandler.trigger(this._element, EVENT_HIDE)
+    const startEvent = this._events.trigger(EVENT_HIDE)
     if (startEvent.defaultPrevented) {
       return
     }
@@ -196,7 +193,7 @@ class Collapse extends BaseComponent {
       this._isTransitioning = false
       this._element.classList.remove(CLASS_NAME_COLLAPSING)
       this._element.classList.add(CLASS_NAME_COLLAPSE)
-      EventHandler.trigger(this._element, EVENT_HIDDEN)
+      this._events.trigger(EVENT_HIDDEN)
     }
 
     this._element.style[dimension] = ''
@@ -277,7 +274,7 @@ class Collapse extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+new ScopedEventHandler(document, Collapse.EVENT_KEY, true).on(EVENT_CLICK, SELECTOR_DATA_TOGGLE, function (event) {
   // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
   if (event.target.tagName === 'A' || (event.delegateTarget && event.delegateTarget.tagName === 'A')) {
     event.preventDefault()

@@ -6,7 +6,7 @@
  */
 
 import { defineJQueryPlugin } from './util/index.js'
-import EventHandler from './dom/event-handler.js'
+import { ScopedEventHandler } from './dom/event-handler.js'
 import BaseComponent from './base-component.js'
 
 /**
@@ -14,13 +14,10 @@ import BaseComponent from './base-component.js'
  */
 
 const NAME = 'button'
-const DATA_KEY = 'bs.button'
-const EVENT_KEY = `.${DATA_KEY}`
-const DATA_API_KEY = '.data-api'
 
 const CLASS_NAME_ACTIVE = 'active'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="button"]'
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_CLICK = 'click'
 
 /**
  * Class definition
@@ -54,7 +51,7 @@ class Button extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, event => {
+new ScopedEventHandler(document, Button.EVENT_KEY, true).on(EVENT_CLICK, SELECTOR_DATA_TOGGLE, event => {
   event.preventDefault()
 
   const button = event.target.closest(SELECTOR_DATA_TOGGLE)

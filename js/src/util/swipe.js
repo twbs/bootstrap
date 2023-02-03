@@ -6,7 +6,7 @@
  */
 
 import Config from './config.js'
-import EventHandler from '../dom/event-handler.js'
+import { ScopedEventHandler } from '../dom/event-handler.js'
 import { execute } from './index.js'
 
 /**
@@ -15,11 +15,11 @@ import { execute } from './index.js'
 
 const NAME = 'swipe'
 const EVENT_KEY = '.bs.swipe'
-const EVENT_TOUCHSTART = `touchstart${EVENT_KEY}`
-const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY}`
-const EVENT_TOUCHEND = `touchend${EVENT_KEY}`
-const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY}`
-const EVENT_POINTERUP = `pointerup${EVENT_KEY}`
+const EVENT_TOUCHSTART = 'touchstart'
+const EVENT_TOUCHMOVE = 'touchmove'
+const EVENT_TOUCHEND = 'touchend'
+const EVENT_POINTERDOWN = 'pointerdown'
+const EVENT_POINTERUP = 'pointerup'
 const POINTER_TYPE_TOUCH = 'touch'
 const POINTER_TYPE_PEN = 'pen'
 const CLASS_NAME_POINTER_EVENT = 'pointer-event'
@@ -53,6 +53,7 @@ class Swipe extends Config {
     this._config = this._getConfig(config)
     this._deltaX = 0
     this._supportPointerEvents = Boolean(window.PointerEvent)
+    this._events = new ScopedEventHandler(this._element, EVENT_KEY)
     this._initEvents()
   }
 
@@ -71,7 +72,7 @@ class Swipe extends Config {
 
   // Public
   dispose() {
-    EventHandler.off(this._element, EVENT_KEY)
+    this._events.off()
   }
 
   // Private
@@ -122,14 +123,14 @@ class Swipe extends Config {
 
   _initEvents() {
     if (this._supportPointerEvents) {
-      EventHandler.on(this._element, EVENT_POINTERDOWN, event => this._start(event))
-      EventHandler.on(this._element, EVENT_POINTERUP, event => this._end(event))
+      this._events.on(EVENT_POINTERDOWN, event => this._start(event))
+      this._events.on(EVENT_POINTERUP, event => this._end(event))
 
       this._element.classList.add(CLASS_NAME_POINTER_EVENT)
     } else {
-      EventHandler.on(this._element, EVENT_TOUCHSTART, event => this._start(event))
-      EventHandler.on(this._element, EVENT_TOUCHMOVE, event => this._move(event))
-      EventHandler.on(this._element, EVENT_TOUCHEND, event => this._end(event))
+      this._events.on(EVENT_TOUCHSTART, event => this._start(event))
+      this._events.on(EVENT_TOUCHMOVE, event => this._move(event))
+      this._events.on(EVENT_TOUCHEND, event => this._end(event))
     }
   }
 

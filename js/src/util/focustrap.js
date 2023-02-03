@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import EventHandler from '../dom/event-handler.js'
+import { ScopedEventHandler } from '../dom/event-handler.js'
 import SelectorEngine from '../dom/selector-engine.js'
 import Config from './config.js'
 
@@ -14,10 +14,9 @@ import Config from './config.js'
  */
 
 const NAME = 'focustrap'
-const DATA_KEY = 'bs.focustrap'
-const EVENT_KEY = `.${DATA_KEY}`
-const EVENT_FOCUSIN = `focusin${EVENT_KEY}`
-const EVENT_KEYDOWN_TAB = `keydown.tab${EVENT_KEY}`
+const EVENT_KEY = '.bs.focustrap'
+const EVENT_FOCUSIN = 'focusin'
+const EVENT_KEYDOWN_TAB = 'keydown.tab'
 
 const TAB_KEY = 'Tab'
 const TAB_NAV_FORWARD = 'forward'
@@ -43,6 +42,7 @@ class FocusTrap extends Config {
     this._config = this._getConfig(config)
     this._isActive = false
     this._lastTabNavDirection = null
+    this._events = new ScopedEventHandler(document, EVENT_KEY)
   }
 
   // Getters
@@ -68,9 +68,9 @@ class FocusTrap extends Config {
       this._config.trapElement.focus()
     }
 
-    EventHandler.off(document, EVENT_KEY) // guard against infinite focus loop
-    EventHandler.on(document, EVENT_FOCUSIN, event => this._handleFocusin(event))
-    EventHandler.on(document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event))
+    this._events.off() // guard against infinite focus loop
+    this._events.on(EVENT_FOCUSIN, event => this._handleFocusin(event))
+    this._events.on(EVENT_KEYDOWN_TAB, event => this._handleKeydown(event))
 
     this._isActive = true
   }
@@ -81,7 +81,7 @@ class FocusTrap extends Config {
     }
 
     this._isActive = false
-    EventHandler.off(document, EVENT_KEY)
+    this._events.off()
   }
 
   // Private

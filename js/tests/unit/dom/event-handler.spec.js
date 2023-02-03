@@ -1,4 +1,4 @@
-import EventHandler from '../../../src/dom/event-handler'
+import { EventHandler } from '../../../src/dom/event-handler'
 import { clearFixture, getFixture } from '../../helpers/fixture'
 import { noop } from '../../../src/util'
 

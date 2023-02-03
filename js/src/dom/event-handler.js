@@ -211,6 +211,83 @@ function getTypeEvent(event) {
   return customEvents[event] || event
 }
 
+function offHandler(element, originalTypeEvent, handler, delegationFunction) {
+  if (typeof originalTypeEvent !== 'string' || !element) {
+    return
+  }
+
+  const [isDelegated, callable, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction)
+  const inNamespace = typeEvent !== originalTypeEvent
+  const events = getElementEvents(element)
+  const storeElementEvent = events[typeEvent] || {}
+  const isNamespace = originalTypeEvent.startsWith('.')
+
+  if (typeof callable !== 'undefined') {
+    // Simplest case: handler is passed, remove that listener ONLY.
+    if (!Object.keys(storeElementEvent).length) {
+      return
+    }
+
+    removeHandler(element, events, typeEvent, callable, isDelegated ? handler : null)
+    return
+  }
+
+  if (isNamespace) {
+    for (const elementEvent of Object.keys(events)) {
+      removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1))
+    }
+  }
+
+  for (const [keyHandlers, event] of Object.entries(storeElementEvent)) {
+    const handlerKey = keyHandlers.replace(stripUidRegex, '')
+
+    if (!inNamespace || originalTypeEvent.includes(handlerKey)) {
+      removeHandler(element, events, typeEvent, event.callable, event.delegationSelector)
+    }
+  }
+}
+
+function triggerEvent(element, event, args) {
+  if (typeof event !== 'string' || !element) {
+    return null
+  }
+
+  const $ = getjQuery()
+  const typeEvent = getTypeEvent(event)
+  const inNamespace = event !== typeEvent
+
+  let jQueryEvent = null
+  let bubbles = true
+  let nativeDispatch = true
+  let defaultPrevented = false
+
+  if (inNamespace && $) {
+    jQueryEvent = $.Event(event, args)
+
+    $(element).trigger(jQueryEvent)
+    bubbles = !jQueryEvent.isPropagationStopped()
+    nativeDispatch = !jQueryEvent.isImmediatePropagationStopped()
+    defaultPrevented = jQueryEvent.isDefaultPrevented()
+  }
+
+  let evt = new Event(event, { bubbles, cancelable: true })
+  evt = hydrateObj(evt, args)
+
+  if (defaultPrevented) {
+    evt.preventDefault()
+  }
+
+  if (nativeDispatch) {
+    element.dispatchEvent(evt)
+  }
+
+  if (evt.defaultPrevented && jQueryEvent) {
+    jQueryEvent.preventDefault()
+  }
+
+  return evt
+}
+
 const EventHandler = {
   on(element, event, handler, delegationFunction) {
     addHandler(element, event, handler, delegationFunction, false)
@@ -220,81 +297,41 @@ const EventHandler = {
     addHandler(element, event, handler, delegationFunction, true)
   },
 
-  off(element, originalTypeEvent, handler, delegationFunction) {
-    if (typeof originalTypeEvent !== 'string' || !element) {
-      return
-    }
-
-    const [isDelegated, callable, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction)
-    const inNamespace = typeEvent !== originalTypeEvent
-    const events = getElementEvents(element)
-    const storeElementEvent = events[typeEvent] || {}
-    const isNamespace = originalTypeEvent.startsWith('.')
-
-    if (typeof callable !== 'undefined') {
-      // Simplest case: handler is passed, remove that listener ONLY.
-      if (!Object.keys(storeElementEvent).length) {
-        return
-      }
-
-      removeHandler(element, events, typeEvent, callable, isDelegated ? handler : null)
-      return
-    }
-
-    if (isNamespace) {
-      for (const elementEvent of Object.keys(events)) {
-        removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1))
-      }
-    }
-
-    for (const [keyHandlers, event] of Object.entries(storeElementEvent)) {
-      const handlerKey = keyHandlers.replace(stripUidRegex, '')
-
-      if (!inNamespace || originalTypeEvent.includes(handlerKey)) {
-        removeHandler(element, events, typeEvent, event.callable, event.delegationSelector)
-      }
-    }
+  off(element, event, handler, delegationFunction) {
+    offHandler(element, event, handler, delegationFunction)
   },
 
   trigger(element, event, args) {
-    if (typeof event !== 'string' || !element) {
-      return null
-    }
+    return triggerEvent(element, event, args)
+  }
+}
 
-    const $ = getjQuery()
-    const typeEvent = getTypeEvent(event)
-    const inNamespace = event !== typeEvent
+class ScopedEventHandler {
+  constructor(element, namespace = '', isDataApi = false) {
+    this._element = element
+    this._namespace = namespace
+    this._isDataApi = isDataApi
+  }
 
-    let jQueryEvent = null
-    let bubbles = true
-    let nativeDispatch = true
-    let defaultPrevented = false
+  on(event, handler, delegationFunction) {
+    EventHandler.on(this._element, this._eventName(event), handler, delegationFunction)
+  }
 
-    if (inNamespace && $) {
-      jQueryEvent = $.Event(event, args)
+  one(event, handler, delegationFunction) {
+    EventHandler.one(this._element, this._eventName(event), handler, delegationFunction)
+  }
 
-      $(element).trigger(jQueryEvent)
-      bubbles = !jQueryEvent.isPropagationStopped()
-      nativeDispatch = !jQueryEvent.isImmediatePropagationStopped()
-      defaultPrevented = jQueryEvent.isDefaultPrevented()
-    }
+  off(event, handler, delegationFunction) {
+    EventHandler.off(this._element, this._eventName(event), handler, delegationFunction)
+  }
 
-    let evt = new Event(event, { bubbles, cancelable: true })
-    evt = hydrateObj(evt, args)
+  trigger(event, args) {
+    return EventHandler.trigger(this._element, this._eventName(event), args)
+  }
 
-    if (defaultPrevented) {
-      evt.preventDefault()
-    }
-
-    if (nativeDispatch) {
-      element.dispatchEvent(evt)
-    }
-
-    if (evt.defaultPrevented && jQueryEvent) {
-      jQueryEvent.preventDefault()
-    }
-
-    return evt
+  _eventName(event = '') {
+    const eventName = event + this._namespace
+    return this._isDataApi ? `${eventName}.data-api` : eventName
   }
 }
 
@@ -315,4 +352,4 @@ function hydrateObj(obj, meta = {}) {
   return obj
 }
 
-export default EventHandler
+export { EventHandler, ScopedEventHandler }

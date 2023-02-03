@@ -1,6 +1,6 @@
 import BaseComponent from '../../src/base-component'
 import { clearFixture, getFixture } from '../helpers/fixture'
-import EventHandler from '../../src/dom/event-handler'
+import { EventHandler } from '../../src/dom/event-handler'
 import { noop } from '../../src/util'
 
 class DummyClass extends BaseComponent {
@@ -112,7 +112,7 @@ describe('Base Component', () => {
 
         instance.dispose()
 
-        expect(spy).toHaveBeenCalledWith(element, DummyClass.EVENT_KEY)
+        expect(spy).toHaveBeenCalledWith(element, DummyClass.EVENT_KEY, undefined, undefined)
       })
     })
 

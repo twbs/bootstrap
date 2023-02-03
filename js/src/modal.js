@@ -6,7 +6,7 @@
  */
 
 import { defineJQueryPlugin, isRTL, isVisible, reflow } from './util/index.js'
-import EventHandler from './dom/event-handler.js'
+import { EventHandler, ScopedEventHandler } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 import ScrollBarHelper from './util/scrollbar.js'
 import BaseComponent from './base-component.js'
@@ -19,21 +19,19 @@ import { enableDismissTrigger } from './util/component-functions.js'
  */
 
 const NAME = 'modal'
-const DATA_KEY = 'bs.modal'
-const EVENT_KEY = `.${DATA_KEY}`
-const DATA_API_KEY = '.data-api'
+
 const ESCAPE_KEY = 'Escape'
 
-const EVENT_HIDE = `hide${EVENT_KEY}`
-const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY}`
-const EVENT_HIDDEN = `hidden${EVENT_KEY}`
-const EVENT_SHOW = `show${EVENT_KEY}`
-const EVENT_SHOWN = `shown${EVENT_KEY}`
-const EVENT_RESIZE = `resize${EVENT_KEY}`
-const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
-const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`
-const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_HIDE = 'hide'
+const EVENT_HIDE_PREVENTED = 'hidePrevented'
+const EVENT_HIDDEN = 'hidden'
+const EVENT_SHOW = 'show'
+const EVENT_SHOWN = 'shown'
+const EVENT_RESIZE = 'resize'
+const EVENT_CLICK_DISMISS = 'click.dismiss'
+const EVENT_MOUSEDOWN_DISMISS = 'mousedown.dismiss'
+const EVENT_KEYDOWN_DISMISS = 'keydown.dismiss'
+const EVENT_CLICK = 'click'
 
 const CLASS_NAME_OPEN = 'modal-open'
 const CLASS_NAME_FADE = 'fade'
@@ -98,7 +96,7 @@ class Modal extends BaseComponent {
       return
     }
 
-    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
+    const showEvent = this._events.trigger(EVENT_SHOW, {
       relatedTarget
     })
 
@@ -123,7 +121,7 @@ class Modal extends BaseComponent {
       return
     }
 
-    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE)
+    const hideEvent = this._events.trigger(EVENT_HIDE)
 
     if (hideEvent.defaultPrevented) {
       return
@@ -140,7 +138,7 @@ class Modal extends BaseComponent {
 
   dispose() {
     for (const htmlElement of [window, this._dialog]) {
-      EventHandler.off(htmlElement, EVENT_KEY)
+      EventHandler.off(htmlElement, this.constructor.EVENT_KEY)
     }
 
     this._backdrop.dispose()
@@ -193,7 +191,7 @@ class Modal extends BaseComponent {
       }
 
       this._isTransitioning = false
-      EventHandler.trigger(this._element, EVENT_SHOWN, {
+      this._events.trigger(EVENT_SHOWN, {
         relatedTarget
       })
     }
@@ -202,7 +200,7 @@ class Modal extends BaseComponent {
   }
 
   _addEventListeners() {
-    EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS, event => {
+    this._events.on(EVENT_KEYDOWN_DISMISS, event => {
       if (event.key !== ESCAPE_KEY) {
         return
       }
@@ -216,15 +214,15 @@ class Modal extends BaseComponent {
       this._triggerBackdropTransition()
     })
 
-    EventHandler.on(window, EVENT_RESIZE, () => {
+    EventHandler.on(window, this.constructor.eventName(EVENT_RESIZE), () => {
       if (this._isShown && !this._isTransitioning) {
         this._adjustDialog()
       }
     })
 
-    EventHandler.on(this._element, EVENT_MOUSEDOWN_DISMISS, event => {
+    this._events.on(EVENT_MOUSEDOWN_DISMISS, event => {
       // a bad trick to segregate clicks that may start inside dialog but end outside, and avoid listen to scrollbar clicks
-      EventHandler.one(this._element, EVENT_CLICK_DISMISS, event2 => {
+      this._events.one(EVENT_CLICK_DISMISS, event2 => {
         if (this._element !== event.target || this._element !== event2.target) {
           return
         }
@@ -252,7 +250,7 @@ class Modal extends BaseComponent {
       document.body.classList.remove(CLASS_NAME_OPEN)
       this._resetAdjustments()
       this._scrollBar.reset()
-      EventHandler.trigger(this._element, EVENT_HIDDEN)
+      this._events.trigger(EVENT_HIDDEN)
     })
   }
 
@@ -261,7 +259,7 @@ class Modal extends BaseComponent {
   }
 
   _triggerBackdropTransition() {
-    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED)
+    const hideEvent = this._events.trigger(EVENT_HIDE_PREVENTED)
     if (hideEvent.defaultPrevented) {
       return
     }
@@ -335,20 +333,21 @@ class Modal extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+new ScopedEventHandler(document, Modal.EVENT_KEY, true).on(EVENT_CLICK, SELECTOR_DATA_TOGGLE, function (event) {
   const target = SelectorEngine.getElementFromSelector(this)
 
   if (['A', 'AREA'].includes(this.tagName)) {
     event.preventDefault()
   }
 
-  EventHandler.one(target, EVENT_SHOW, showEvent => {
+  const events = new ScopedEventHandler(target, Modal.EVENT_KEY)
+  events.one(EVENT_SHOW, showEvent => {
     if (showEvent.defaultPrevented) {
       // only register focus restorer if modal will actually get shown
       return
     }
 
-    EventHandler.one(target, EVENT_HIDDEN, () => {
+    events.one(EVENT_HIDDEN, () => {
       if (isVisible(this)) {
         this.focus()
       }

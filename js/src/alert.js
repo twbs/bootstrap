@@ -6,7 +6,6 @@
  */
 
 import { defineJQueryPlugin } from './util/index.js'
-import EventHandler from './dom/event-handler.js'
 import BaseComponent from './base-component.js'
 import { enableDismissTrigger } from './util/component-functions.js'
 
@@ -15,11 +14,9 @@ import { enableDismissTrigger } from './util/component-functions.js'
  */
 
 const NAME = 'alert'
-const DATA_KEY = 'bs.alert'
-const EVENT_KEY = `.${DATA_KEY}`
 
-const EVENT_CLOSE = `close${EVENT_KEY}`
-const EVENT_CLOSED = `closed${EVENT_KEY}`
+const EVENT_CLOSE = 'close'
+const EVENT_CLOSED = 'closed'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 
@@ -35,7 +32,7 @@ class Alert extends BaseComponent {
 
   // Public
   close() {
-    const closeEvent = EventHandler.trigger(this._element, EVENT_CLOSE)
+    const closeEvent = this._events.trigger(EVENT_CLOSE)
 
     if (closeEvent.defaultPrevented) {
       return
@@ -50,7 +47,7 @@ class Alert extends BaseComponent {
   // Private
   _destroyElement() {
     this._element.remove()
-    EventHandler.trigger(this._element, EVENT_CLOSED)
+    this._events.trigger(EVENT_CLOSED)
     this.dispose()
   }
 
