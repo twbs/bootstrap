@@ -1234,7 +1234,7 @@ $dropdown-link-hover-bg:            var(--#{$prefix}tertiary-bg) !default;
 $dropdown-link-active-color:        $component-active-color !default;
 $dropdown-link-active-bg:           $component-active-bg !default;
 
-$dropdown-link-disabled-color:      $gray-500 !default;
+$dropdown-link-disabled-color:      var(--#{$prefix}tertiary-color) !default;
 
 $dropdown-item-padding-y:           $spacer * .25 !default;
 $dropdown-item-padding-x:           $spacer !default;
