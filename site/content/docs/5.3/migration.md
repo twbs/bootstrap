@@ -51,6 +51,8 @@ If you're migrating from our previous alpha release of v5.3.0, please reviewing 
 
 - Added new link utilities for link color opacity, underline offset, underline color, and underline opacity. [Explore the new links utilities.]({{< docsref "/utilities/link" >}})
 
+- CSS variable based `border-width` utilities have been reverted to set their property directly (as was done prior to v5.2.0). This avoids inheritance issues across nested elements, including tables.
+
 ### Docs
 
 - Examples are now displayed with the appropriate light or dark color mode as dictated by the setting in our docs. However, they lack an individual color mode picker for the time being.
