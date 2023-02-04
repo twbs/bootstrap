@@ -145,6 +145,19 @@ Or, use custom CSS or inline styles to change the dimensions as needed.
 </div>
 {{< /example >}}
 
+## Reverse modifier class
+
+Add `.reverse` to any spinner to reverse its behavior. The spinner-border will rotate in the opposite direction, and the spinner-grow will shrink instead of growing
+
+{{< example >}}
+<div class="spinner-border reverse" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow reverse" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+{{< /example >}}
+
 ## Buttons
 
 Use spinners within buttons to indicate an action is currently processing or taking place. You may also swap the text out of the spinner element and utilize button text as needed.

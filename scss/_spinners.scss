@@ -83,3 +83,30 @@
     }
   }
 }
+
+//
+// reverse modifier class
+//
+
+.reverse {
+  &.spinner-border {
+    animation: var(--#{$prefix}spinner-animation-speed) linear infinite reverse-spinner-border;
+  }
+  &.spinner-grow {
+    animation: reverse-spinner-grow var(--#{$prefix}spinner-animation-speed) linear infinite;
+  }
+}
+
+@keyframes reverse-spinner-border {
+  from { transform: rotate(360deg) /* rtl:ignore */; }
+}
+
+@keyframes reverse-spinner-grow {
+  100% {
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: none;
+  }
+}
