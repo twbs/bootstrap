@@ -262,11 +262,10 @@ const executeAfterTransition = (callback, transitionElement, waitForTransition =
  * @param activeElement   The active element
  * @param shouldGetNext   Choose to get next or previous element
  * @param isCycleAllowed
- * @param maxItems        Choose between specified first elements
  * @return {Element|elem} The proper element
  */
-const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed, maxItems = null) => {
-  const listLength = maxItems || list.length
+const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
+  const listLength = list.length
   let index = list.indexOf(activeElement)
 
   // if the element does not exist in the list return an element

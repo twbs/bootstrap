@@ -57,6 +57,14 @@
   transform: translateX(100%);
 }
 
+.carousel-item-prev.carousel-item-end {
+  margin-left: calc(-100% / var(--bs-carousel-items)); // stylelint-disable-line function-disallowed-list
+
+  & ~ & {
+    margin-left: 0;
+  }
+}
+
 .carousel-item-next.carousel-item-start,
 .active.carousel-item-start {
   transform: translateX(-100%);

@@ -211,7 +211,8 @@ class Carousel extends BaseComponent {
       i++
     }
 
-    this._getItems()[i + activeIndex - 1].classList.remove('show')
+    SelectorEngine.findOne('.carousel-inner', this._element).insertBefore(this._getItems()[this._getItems().length - 1 - i].cloneNode(true), SelectorEngine.findOne('.carousel-inner', this._element).firstChild)
+    this._getItems()[i + activeIndex].classList.remove('show')
     this._getItems()[this._getItems().length - 1].classList.remove('show')
   }
 
@@ -334,10 +335,8 @@ class Carousel extends BaseComponent {
 
     const activeElement = this._getActive()
     const isNext = order === ORDER_NEXT
-    const nextElement = element || getNextActiveElement(this._getItems(), activeElement, isNext, this._config.wrap, this._getItems().length - this._config.items)
+    const nextElement = element || getNextActiveElement(this._getItems().slice(1, this._getItems().length - this._config.items), activeElement, isNext, this._config.wrap)
 
-    // // eslint-disable-next-line no-console
-    // console.log(this._getItems(), nextElement)
     if (nextElement === activeElement) {
       return
     }
@@ -371,25 +370,45 @@ class Carousel extends BaseComponent {
 
     this._isSliding = true
 
-    this._setActiveIndicatorElement(nextElementIndex)
+    this._setActiveIndicatorElement(nextElementIndex - 1)
     this._activeElement = nextElement
 
     const directionalClassName = isNext ? CLASS_NAME_START : CLASS_NAME_END
     const orderClassName = isNext ? CLASS_NAME_NEXT : CLASS_NAME_PREV
 
-    for (let index = 1; index <= this._config.items; index++) {
+    for (let index = 1; index < this._config.items; index++) {
       this._getItems()[activeElementIndex + index].classList.remove('show')
       this._getItems()[activeElementIndex + index].classList.add(orderClassName)
       reflow(this._getItems()[activeElementIndex + index])
     }
 
-    for (let index = 0; index <= this._config.items; index++) {
+    if (isNext) {
+      this._getItems()[activeElementIndex + this._config.items].classList.add(orderClassName)
+      reflow(this._getItems()[activeElementIndex + this._config.items])
+    } else {
+      this._getItems()[(activeElementIndex + this._getItems().length - this._config.items - 1) % (this._getItems().length - this._config.items)].classList.add(orderClassName)
+      reflow(this._getItems()[(activeElementIndex + this._getItems().length - this._config.items - 1) % (this._getItems().length - this._config.items)])
+    }
+
+    for (let index = 0; index < this._config.items; index++) {
       this._getItems()[activeElementIndex + index].classList.add(directionalClassName)
     }
 
+    if (isNext) {
+      this._getItems()[activeElementIndex + this._config.items].classList.add(directionalClassName)
+    } else {
+      this._getItems()[(activeElementIndex + this._getItems().length - this._config.items - 1) % (this._getItems().length - this._config.items)].classList.add(directionalClassName)
+    }
+
     const completeCallBack = () => {
-      for (let index = 0; index <= this._config.items; index++) {
+      for (let index = 0; index < this._config.items; index++) {
         this._getItems()[activeElementIndex + index].classList.remove(directionalClassName, orderClassName)
+      }
+
+      if (isNext) {
+        this._getItems()[activeElementIndex + this._config.items].classList.remove(directionalClassName, orderClassName)
+      } else {
+        this._getItems()[(activeElementIndex + this._getItems().length - this._config.items - 1) % (this._getItems().length - this._config.items)].classList.remove(directionalClassName, orderClassName)
       }
 
       nextElement.classList.add(CLASS_NAME_ACTIVE)
@@ -482,10 +501,10 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (e
   event.preventDefault()
 
   const carousel = Carousel.getOrCreateInstance(target)
-  const slideIndex = this.getAttribute('data-bs-slide-to')
+  const slideIndex = Number(this.getAttribute('data-bs-slide-to'))
 
   if (slideIndex) {
-    carousel.to(slideIndex)
+    carousel.to(slideIndex + 1)
     carousel._maybeEnableCycle()
     return
   }
