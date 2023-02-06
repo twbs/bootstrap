@@ -77,22 +77,22 @@ Other than `.form-control`, floating labels are only available on `.form-select`
 
 ## Disabled
 
-Add the `disabled` boolean attribute on an input, a textarea or a select to give it a grayed out appearance, remove pointer events, and prevent focusing.
+Add the `.disabled` class to `.form-floating` and `disabled` boolean attribute on an input, a textarea or a select to give it a grayed out appearance, remove pointer events, and prevent focusing.
 
 {{< example >}}
-<div class="form-floating mb-3">
+<div class="form-floating disabled mb-3">
   <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
   <label for="floatingInputDisabled">Email address</label>
 </div>
-<div class="form-floating mb-3">
+<div class="form-floating disabled mb-3">
   <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextareaDisabled" disabled></textarea>
   <label for="floatingTextareaDisabled">Comments</label>
 </div>
-<div class="form-floating mb-3">
+<div class="form-floating disabled mb-3">
   <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled" style="height: 100px" disabled></textarea>
   <label for="floatingTextarea2Disabled">Comments</label>
 </div>
-<div class="form-floating">
+<div class="form-floating disabled">
   <select class="form-select" id="floatingSelectDisabled" aria-label="Floating label disabled select example" disabled>
     <option selected>Open this select menu</option>
     <option value="1">One</option>
