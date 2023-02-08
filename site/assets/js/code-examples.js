@@ -4,8 +4,7 @@
 
 /*!
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
- * Copyright 2011-2022 The Bootstrap Authors
- * Copyright 2011-2022 Twitter, Inc.
+ * Copyright 2011-2023 The Bootstrap Authors
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
@@ -56,7 +55,7 @@
   })
 
   clipboard.on('success', event => {
-    const iconFirstChild = event.trigger.querySelector('.bi').firstChild
+    const iconFirstChild = event.trigger.querySelector('.bi').firstElementChild
     const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
     const namespace = 'http://www.w3.org/1999/xlink'
     const originalXhref = iconFirstChild.getAttributeNS(namespace, 'href')
