@@ -1,6 +1,6 @@
 /*!
   * Bootstrap v5.3.0-alpha1 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -3482,44 +3482,44 @@
 
   const Popper = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
     __proto__: null,
-    popperGenerator,
-    detectOverflow,
-    createPopperBase: createPopper$2,
-    createPopper,
-    createPopperLite: createPopper$1,
-    top,
-    bottom,
-    right,
-    left,
-    auto,
-    basePlacements,
-    start,
-    end,
-    clippingParents,
-    viewport,
-    popper,
-    reference,
-    variationPlacements,
-    placements,
-    beforeRead,
-    read,
-    afterRead,
-    beforeMain,
-    main,
     afterMain,
-    beforeWrite,
-    write,
+    afterRead,
     afterWrite,
-    modifierPhases,
     applyStyles: applyStyles$1,
     arrow: arrow$1,
+    auto,
+    basePlacements,
+    beforeMain,
+    beforeRead,
+    beforeWrite,
+    bottom,
+    clippingParents,
     computeStyles: computeStyles$1,
+    createPopper,
+    createPopperBase: createPopper$2,
+    createPopperLite: createPopper$1,
+    detectOverflow,
+    end,
     eventListeners,
     flip: flip$1,
     hide: hide$1,
+    left,
+    main,
+    modifierPhases,
     offset: offset$1,
+    placements,
+    popper,
+    popperGenerator,
     popperOffsets: popperOffsets$1,
-    preventOverflow: preventOverflow$1
+    preventOverflow: preventOverflow$1,
+    read,
+    reference,
+    right,
+    start,
+    top,
+    variationPlacements,
+    viewport,
+    write
   }, Symbol.toStringTag, { value: 'Module' }));
 
   /**
