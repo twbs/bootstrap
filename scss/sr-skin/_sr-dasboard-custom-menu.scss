@@ -1,0 +1,13 @@
+.sr-dashboard-custom-menu {
+  border-radius: 0;
+  .list-group-item {
+    padding: map-get($spacers, 3);
+    margin-bottom: .5rem;
+    color: $blue-100;
+    background-color: $blue-400;
+    border: 0;
+    &.active {
+      background-color: $blue-600;
+    }
+  }
+}

@@ -1,0 +1,83 @@
+.bg-primary-100{
+  background-color: map-get($blues, blue-100);
+}
+.bg-primary-200{
+  background-color: map-get($blues, blue-200);
+}
+.bg-primary-300{
+  background-color: map-get($blues, blue-300);
+}
+.bg-primary-400{
+  background-color: map-get($blues, blue-400);
+}
+.bg-primary-500{
+  background-color: map-get($blues, blue-500);
+}
+.bg-primary-600{
+  background-color: map-get($blues, blue-600);
+}
+.bg-primary-700{
+  background-color: map-get($blues, blue-700);
+}
+.bg-primary-800{
+  background-color: map-get($blues, blue-800);
+}
+.bg-primary-900{
+  background-color: map-get($blues, blue-900);
+}
+
+.bg-secondary-100{
+  background-color: map-get($yellows, yellow-100);
+}
+.bg-secondary-200{
+  background-color: map-get($yellows, yellow-200);
+}
+.bg-secondary-300{
+  background-color: map-get($yellows, yellow-300);
+}
+.bg-secondary-400{
+  background-color: map-get($yellows, yellow-400);
+}
+.bg-secondary-500{
+  background-color: map-get($yellows, yellow-500);
+}
+.bg-secondary-600{
+  background-color: map-get($yellows, yellow-600);
+}
+.bg-secondary-700{
+  background-color: map-get($yellows, yellow-700);
+}
+.bg-secondary-800{
+  background-color: map-get($yellows, yellow-800);
+}
+.bg-secondary-900{
+  background-color: map-get($yellows, yellow-900);
+}
+
+.bg-gray-100{
+  background-color: $gray-100;
+}
+.bg-gray-200{
+  background-color: $gray-200;
+}
+.bg-gray-300{
+  background-color: $gray-300;
+}
+.bg-gray-400{
+  background-color: $gray-400;
+}
+.bg-gray-500{
+  background-color: $gray-500;
+}
+.bg-gray-600{
+  background-color: $gray-600;
+}
+.bg-gray-700{
+  background-color: $gray-700;
+}
+.bg-gray-800{
+  background-color: $gray-800;
+}
+.bg-gray-900{
+  background-color: $gray-900;
+}

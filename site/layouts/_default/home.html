@@ -1,16 +1,143 @@
 {{ define "main" }}
-  <main>
-    {{ partial "home/masthead" . }}
-    <div class="container-xxl bd-gutter masthead-followup">
-      {{ partial "home/get-started" . }}
-      {{ partial "home/customize" . }}
-      {{ partial "home/css-variables" . }}
-      {{ partial "home/components-utilities" . }}
-      {{ partial "home/plugins" . }}
-      {{ partial "home/icons" . }}
-      {{ partial "home/themes" . }}
+  <main class="bg-gray-200">
+    <nav class="bg-dark navbar navbar-expand-md text-bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">SmartResponse</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item text-warning">
+              <a class="nav-link active" href="#">FOR DONNORS</a>
+            </li>
+            <li class="nav-item text-warning">
+              <a class="nav-link" href="#">FOR ORGANIZATIONS</a>
+            </li>
+            <li class="nav-item text-warning">
+              <a class="nav-link">FOR MEDIA</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="py-4 px-2 bg-gray-200">
+      <h1 class="primary-text">Add an Organization</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Add New Organization
+          </li>
+        </ol>
+      </nav>
     </div>
-  </main>
+    <div class="container-fluid d-flex">
+      <div class="col-2">
+        <ul class="list-group sr-dashboard-custom-menu">
+          <li class="list-group-item" aria-current="true">Home</li>
+          <li class="list-group-item active">Why Smart Response</li>
+          <li class="list-group-item">Login for Organizations</li>
+          <li class="list-group-item">Add your Organization</li>
+          <li class="list-group-item">Nominate an Organization</li>
+          <li class="list-group-item">Updates</li>
+          <li class="list-group-item">FAQ</li>
+          <li class="list-group-item">
+            Last item in the menu with a long description or title
+          </li>
+        </ul>
+      </div>
+      <div class="col-9 card ms-3 p-3">
+        <h3>Organization Information</h3>
 
+        <div class="form-floating mb-3 col-6">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="placeholder text"
+          />
+          <label for="floatingInput">text</label>
+        </div>
+        <div class="d-flex">
+          <div class="form-floating mb-3 col-4">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="name@example.com"
+            />
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="form-floating ms-3 col-6">
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+            />
+            <label for="floatingPassword">Password</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-primary p-3">primary</div>
+    <div class="bg-secondary p-3">Secondary</div>
+    <div class="bg-yellow p-3">yellow</div>
+    <div class="card p-3">
+      <h3>colors</h3>
+      <div class="d-flex">
+        <div class="col-auto">
+          <div class="bg-primary-100 p-3">primary-100</div>
+          <div class="bg-primary-200 p-3">primary-200</div>
+          <div class="bg-primary-300 p-3">primary-300</div>
+          <div class="bg-primary-400 p-3">primary-400</div>
+          <div class="bg-primary-500 p-3">primary-500</div>
+          <div class="bg-primary-600 p-3">primary-600</div>
+          <div class="bg-primary-700 p-3">primary-700</div>
+          <div class="bg-primary-800 p-3">primary-800</div>
+          <div class="bg-primary-900 p-3">primary-900</div>
+        </div>
+        <div class="col-auto">
+          <div class="bg-secondary-100 p-3">secondary-100</div>
+          <div class="bg-secondary-200 p-3">secondary-200</div>
+          <div class="bg-secondary-300 p-3">secondary-300</div>
+          <div class="bg-secondary-400 p-3">secondary-400</div>
+          <div class="bg-secondary-500 p-3">secondary-500</div>
+          <div class="bg-secondary-600 p-3">secondary-600</div>
+          <div class="bg-secondary-700 p-3">secondary-700</div>
+          <div class="bg-secondary-800 p-3">secondary-800</div>
+          <div class="bg-secondary-900 p-3">secondary-900</div>
+        </div>
+        <div class="col-auto">
+          <div class="bg-gray-100 p-3">gray-100</div>
+          <div class="bg-gray-200 p-3">gray-200</div>
+          <div class="bg-gray-300 p-3">gray-300</div>
+          <div class="bg-gray-400 p-3">gray-400</div>
+          <div class="bg-gray-500 p-3">gray-500</div>
+          <div class="bg-gray-600 p-3">gray-600</div>
+          <div class="bg-gray-700 p-3">gray-700</div>
+          <div class="bg-gray-800 p-3">gray-800</div>
+          <div class="bg-gray-900 p-3">gray-900</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-bg-primary p-3">Primary with contrasting color</div>
+    <div class="text-bg-secondary p-3">Secondary with contrasting color</div>
+    <div class="text-bg-success p-3">Success with contrasting color</div>
+    <div class="text-bg-danger p-3">Danger with contrasting color</div>
+    <div class="text-bg-warning p-3">Warning with contrasting color</div>
+    <div class="text-bg-info p-3">Info with contrasting color</div>
+    <div class="text-bg-light p-3">Light with contrasting color</div>
+    <div class="text-bg-dark p-3">Dark with contrasting color</div>
+
+    <script type="module" src="js/main.js"></script>
+  </main>
   {{ .Content }}
 {{ end }}

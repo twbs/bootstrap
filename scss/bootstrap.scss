@@ -1,7 +1,32 @@
 @import "mixins/banner";
 @include bsBanner("");
 
+//-----------------start customization of variables
+// scss-docs-start gray-color-variables
+$white:    #fff !default;
+$gray-100: #eff4f4 !default;
+$gray-200: #e2e8e8 !default;
+$gray-300: #d1d9d9 !default;
+$gray-400: #bbc6c7 !default;
+$gray-500: #a4b3b4 !default;
+$gray-600: #8da0a1 !default;
+$gray-700: #718081 !default;
+$gray-800: #556061 !default;
+$gray-900: #384040 !default;
+$black:    #1c2020 !default;
+// scss-docs-end gray-color-variables
+// scss-docs-start color-variables
+$blue:    #4f8099 !default;
+$red:     #d7282e !default;
+$orange:  #fc863d !default;
+$yellow:  #fed540 !default;
+$green:   #237f3f !default;
+// scss-docs-end color-variables
 
+$secondary:     $gray-600 !default;
+$success:       $green !default;
+$info:          $orange !default;
+//-------------- end customization of variables
 // scss-docs-start import-stack
 // Configuration
 @import "functions";
@@ -50,3 +75,6 @@
 // Utilities
 @import "utilities/api";
 // scss-docs-end import-stack
+
+//import sr-theme
+@import "sr-skin/sr-theme";
