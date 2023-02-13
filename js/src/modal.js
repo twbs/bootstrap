@@ -208,7 +208,6 @@ class Modal extends BaseComponent {
       }
 
       if (this._config.keyboard) {
-        event.preventDefault()
         this.hide()
         return
       }
