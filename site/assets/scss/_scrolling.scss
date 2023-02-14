@@ -1,0 +1,5 @@
+// When navigating with the keyboard, prevent focus from landing behind the sticky header
+
+main *:focus {
+  scroll-margin-top: 100px;
+}

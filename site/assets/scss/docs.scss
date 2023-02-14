@@ -52,6 +52,7 @@ $enable-cssgrid: true; // stylelint-disable-line scss/dollar-variable-default
 @import "colors";
 @import "clipboard-js";
 @import "placeholder-img";
+@import "scrolling";
 
 // Load docs dependencies
 @import "syntax";
