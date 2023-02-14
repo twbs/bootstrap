@@ -127,7 +127,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
     <label for="validationDefaultUsername" class="form-label">Username</label>
     <div class="input-group">
       <span class="input-group-text" id="inputGroupPrepend2">@</span>
-      <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
+      <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
     </div>
   </div>
   <div class="col-md-6">
