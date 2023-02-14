@@ -123,6 +123,11 @@
   // By default, there is no `--bs-focus-ring-x`, `--bs-focus-ring-y`, or `--bs-focus-ring-blur`, but we provide CSS variables with fallbacks to initial `0` values
   --#{$prefix}focus-ring-box-shadow: var(--#{$prefix}focus-ring-x, 0) var(--#{$prefix}focus-ring-y, 0) var(--#{$prefix}focus-ring-blur, 0) var(--#{$prefix}focus-ring-width) var(--#{$prefix}focus-ring-color);
   // scss-docs-end root-focus-variables
+
+  --#{$prefix}form-valid-color: #{$green-500};
+  --#{$prefix}form-valid-border-color: #{$green-500};
+  --#{$prefix}form-invalid-color: #{$red-500};
+  --#{$prefix}form-invalid-border-color: #{$red-500};
 }
 
 @if $enable-dark-mode {
@@ -173,6 +178,11 @@
 
     --#{$prefix}border-color: #{$border-color-dark};
     --#{$prefix}border-color-translucent: #{$border-color-translucent-dark};
+
+    --#{$prefix}form-valid-color: #{$green-300};
+    --#{$prefix}form-valid-border-color: #{$green-300};
+    --#{$prefix}form-invalid-color: #{$red-300};
+    --#{$prefix}form-invalid-border-color: #{$red-300};
     // scss-docs-end root-dark-mode-vars
   }
 }
