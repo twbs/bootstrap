@@ -177,8 +177,9 @@ $utilities: map-merge(
       values: $utilities-border-subtle
     ),
     "border-width": (
-      css-var: true,
-      css-variable-name: border-width,
+      property: border-width,
+      // css-var: true,
+      // css-variable-name: border-width,
       class: border,
       values: $border-widths
     ),
