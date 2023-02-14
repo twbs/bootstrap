@@ -1,5 +1,4 @@
-:root,
-[data-bs-theme="light"] {
+@include root('[data-bs-theme="light"]') {
   // Note: Custom variable values only support SassScript inside `#{}`.
 
   // Colors
