@@ -1080,23 +1080,30 @@ $form-feedback-icon-invalid-color:  $form-feedback-invalid-color !default;
 $form-feedback-icon-invalid:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{$form-feedback-icon-invalid-color}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$form-feedback-icon-invalid-color}' stroke='none'/></svg>") !default;
 // scss-docs-end form-feedback-variables
 
+// scss-docs-start form-validation-colors
+$form-valid-color:                  $form-feedback-valid-color !default;
+$form-valid-border-color:           $form-feedback-valid-color !default;
+$form-invalid-color:                $form-feedback-invalid-color !default;
+$form-invalid-border-color:         $form-feedback-invalid-color !default;
+// scss-docs-end form-validation-colors
+
 // scss-docs-start form-validation-states
 $form-validation-states: (
   "valid": (
-    "color": var(--#{$prefix}success-text),
+    "color": var(--#{$prefix}form-valid-color),
     "icon": $form-feedback-icon-valid,
     "tooltip-color": #fff,
     "tooltip-bg-color": var(--#{$prefix}success),
     "focus-box-shadow": 0 0 $input-btn-focus-blur $input-focus-width rgba(var(--#{$prefix}success-rgb), $input-btn-focus-color-opacity),
-    "border-color": var(--#{$prefix}success),
+    "border-color": var(--#{$prefix}form-valid-border-color),
   ),
   "invalid": (
-    "color": var(--#{$prefix}danger-text),
+    "color": var(--#{$prefix}form-invalid-color),
     "icon": $form-feedback-icon-invalid,
     "tooltip-color": #fff,
     "tooltip-bg-color": var(--#{$prefix}danger),
     "focus-box-shadow": 0 0 $input-btn-focus-blur $input-focus-width rgba(var(--#{$prefix}danger-rgb), $input-btn-focus-color-opacity),
-    "border-color": var(--#{$prefix}danger),
+    "border-color": var(--#{$prefix}form-invalid-border-color),
   )
 ) !default;
 // scss-docs-end form-validation-states
