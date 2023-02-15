@@ -14,7 +14,7 @@
     position: sticky;
     top: 48px;
   }
-  #navbarSearch {
+  .navbar-search {
     display: block;
   }
 }
