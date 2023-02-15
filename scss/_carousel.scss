@@ -230,7 +230,7 @@
 
 @if $enable-dark-mode {
   @include color-mode(dark) {
-    .carousel {
+    .carousel:not([data-bs-theme="light"]) {
       @include carousel-dark();
     }
   }
