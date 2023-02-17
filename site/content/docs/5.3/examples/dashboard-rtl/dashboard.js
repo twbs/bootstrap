@@ -41,6 +41,9 @@
       plugins: {
         legend: {
           display: false
+        },
+        tooltip: {
+          boxPadding: 3
         }
       }
     }
