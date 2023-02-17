@@ -241,8 +241,8 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   }
 
   EventHandler.one(target, EVENT_HIDDEN, () => {
-    // focus on trigger when it is closed
-    if (isVisible(this)) {
+    // focus on trigger when it is closed if not scrolling
+    if (isVisible(this) && !this._config.scroll) {
       this.focus()
     }
   })
