@@ -144,7 +144,7 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 
 Bootstrap's documentation, included in this repo in the root directory, is built with [Hugo](https://gohugo.io/) and publicly hosted on GitHub Pages at <https://getbootstrap.com/>. The docs may also be run locally.
 
-Documentation search is powered by [Algolia's DocSearch](https://docsearch.algolia.com/). Working on our search? Be sure to set `debug: true` in `site/assets/js/search.js`.
+Documentation search is powered by [Algolia's DocSearch](https://docsearch.algolia.com/).
 
 ### Running documentation locally
 
