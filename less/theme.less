@@ -518,8 +518,10 @@ b, strong {
       border-top: 1px solid @nav-tabs-link-color;
       border-left: 1px solid @nav-tabs-link-color;
       border-bottom: 3px solid @nav-tabs-active-link-hover-bg;
-      border-top-left-radius: 6px;
-      border-top-right-radius: 6px;
+      border-top-left-radius: @border-radius-small;
+      border-top-right-radius: @border-radius-small;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
 
       &:hover,
       &:focus {
@@ -882,6 +884,19 @@ body {
   padding: @s2bs-padding-base-vertical @s2bs-padding-base-horizontal;
 }
 
+.input-group > .input-group-btn:not(:first-child):not(:last-child) .select2-container--bootstrap .select2-selection {
+  border-radius: 0;
+}
+
+.input-group > .input-group-btn:first-child:not(:last-child) .select2-container--bootstrap .select2-selection {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group > .input-group-btn:not(:first-child):last-child .select2-container--bootstrap .select2-selection {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 
 .widget-content {
   min-height: 180px;

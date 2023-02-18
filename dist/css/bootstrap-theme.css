@@ -63,20 +63,20 @@
   color: #fff;
   background-color: #121421;
   border: 1px solid transparent;
-  border-radius: 0;
+  border-radius: 12px;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 }
 .select2-container--bootstrap .select2-selection.form-control {
-  border-radius: 0;
+  border-radius: 12px;
 }
 .select2-container--bootstrap .select2-search--dropdown .select2-search__field {
   font-size: 14px;
   color: #fff;
   background-color: #121421;
   border: 1px solid transparent;
-  border-radius: 0;
+  border-radius: 12px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 }
@@ -314,7 +314,7 @@
   cursor: default;
   background: #121421;
   border: 1px solid transparent;
-  border-radius: 0;
+  border-radius: 12px;
 }
 .select2-container--bootstrap .select2-selection--multiple .select2-search--inline .select2-search__field {
   min-width: 5em;
@@ -344,7 +344,7 @@
   padding: 5px 22px 5px 10px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 0;
+  border-radius: 8px;
   /* 2 */
 }
 .select2-container--bootstrap .select2-selection--single.input-sm .select2-selection__arrow b,
@@ -356,7 +356,7 @@
 .input-group-sm .select2-container--bootstrap .select2-selection--multiple,
 .form-group-sm .select2-container--bootstrap .select2-selection--multiple {
   min-height: 30px;
-  border-radius: 0;
+  border-radius: 8px;
 }
 .select2-container--bootstrap .select2-selection--multiple.input-sm .select2-selection__choice,
 .input-group-sm .select2-container--bootstrap .select2-selection--multiple .select2-selection__choice,
@@ -386,7 +386,7 @@
   padding: 8px 29px 8px 14px;
   font-size: 17px;
   line-height: 1.2;
-  border-radius: 0;
+  border-radius: 16px;
   /* 1 */
 }
 .select2-container--bootstrap .select2-selection--single.input-lg .select2-selection__arrow,
@@ -406,7 +406,7 @@
 .input-group-lg .select2-container--bootstrap .select2-selection--multiple,
 .form-group-lg .select2-container--bootstrap .select2-selection--multiple {
   min-height: 39px;
-  border-radius: 0;
+  border-radius: 16px;
 }
 .select2-container--bootstrap .select2-selection--multiple.input-lg .select2-selection__choice,
 .input-group-lg .select2-container--bootstrap .select2-selection--multiple .select2-selection__choice,
@@ -415,7 +415,7 @@
   margin: 7px 0 0 7px;
   font-size: 17px;
   line-height: 1.2;
-  border-radius: 0;
+  border-radius: 12px;
 }
 .select2-container--bootstrap .select2-selection--multiple.input-lg .select2-search--inline .select2-search__field,
 .input-group-lg .select2-container--bootstrap .select2-selection--multiple .select2-search--inline .select2-search__field,
@@ -1295,7 +1295,7 @@ fieldset[disabled] .btn-inverse.active {
   color: #f2dede;
 }
 .navbar-default {
-  border-radius: 0;
+  border-radius: 12px;
 }
 .navbar-default .open .dropdown-menu {
   margin-top: 1px;
@@ -1483,7 +1483,7 @@ fieldset[disabled] .btn-inverse.active {
   background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
 }
 .list-group {
-  border-radius: 0;
+  border-radius: 12px;
 }
 .list-group-item.active,
 .list-group-item.active:hover,
@@ -1527,9 +1527,11 @@ fieldset[disabled] .btn-inverse.active {
   border-top: 1px solid #fff;
   border-bottom: 3px solid #00b1ff;
   border-left: 1px solid #fff;
-  border-radius: 0;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  border-radius: 12px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
 .apim-nav-tabs > li > a:hover,
 .apim-nav-tabs > li > a:focus {
@@ -1780,7 +1782,7 @@ body {
   background-color: #1b1d30;
 }
 .select2-container--bootstrap .select2-search--dropdown .select2-dropdown {
-  border-radius: 0;
+  border-radius: 12px;
 }
 .select2-container--bootstrap .select2-search--dropdown .select2-search__field {
   font-size: 14px;
@@ -1788,7 +1790,7 @@ body {
   background-color: #121421;
   background-color: #27283c;
   border: 1px solid transparent;
-  border-radius: 0;
+  border-radius: 12px;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -1818,7 +1820,7 @@ body {
   color: #f2f2f2;
   background-color: #121421;
   border: 1px solid transparent;
-  border-radius: 0;
+  border-radius: 12px;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -1828,7 +1830,7 @@ body {
 }
 .select2-container--bootstrap .select2-selection {
   border-bottom: 1px solid rgba(0, 177, 255, .75);
-  border-radius: 0;
+  border-radius: 12px;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -1838,6 +1840,17 @@ body {
 .select2-label {
   padding: 6px 12px;
   line-height: 34px;
+}
+.input-group > .input-group-btn:not(:first-child):not(:last-child) .select2-container--bootstrap .select2-selection {
+  border-radius: 0;
+}
+.input-group > .input-group-btn:first-child:not(:last-child) .select2-container--bootstrap .select2-selection {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-group > .input-group-btn:not(:first-child):last-child .select2-container--bootstrap .select2-selection {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 .widget-content {
   min-height: 180px;

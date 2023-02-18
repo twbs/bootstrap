@@ -187,9 +187,9 @@
 @line-height-large:         1.2; // extra decimals for Win 8.1 Chrome
 @line-height-small:         1.5;
 
-@border-radius-base:        0;
-@border-radius-large:       0;
-@border-radius-small:       0;
+@border-radius-base:        12px;
+@border-radius-large:       16px;
+@border-radius-small:       8px;
 
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color:    @apim-light-main;
@@ -274,7 +274,7 @@
 @btn-link-disabled-color:        @apim-dark-disabled;
 
 // Allows for customizing button radius independently from global border radius
-@btn-border-radius-base:         3px;
+@btn-border-radius-base:         @border-radius-base;
 @btn-border-radius-large:        @border-radius-large;
 @btn-border-radius-small:        @border-radius-small;
 
@@ -322,7 +322,7 @@
 @legend-border-color:            #e5e5e5;
 
 //** Background color for textual input addons
-@input-group-addon-bg:           transparent;
+@input-group-addon-bg:           rgba(255, 255, 255, 0.05);
 //** Border color for textual input addons
 @input-group-addon-border-color: transparent;
 
@@ -595,7 +595,7 @@
 
 @pager-bg:                             @pagination-bg;
 @pager-border:                         @pagination-border;
-@pager-border-radius:                  15px;
+@pager-border-radius:                  @border-radius-large;
 
 @pager-hover-bg:                       @pagination-hover-bg;
 
@@ -746,7 +746,7 @@
 //## Define alert colors, border radius, and padding.
 
 @alert-padding:               15px;
-@alert-border-radius:         6px;
+@alert-border-radius:         @border-radius-base;
 @alert-link-font-weight:      bold;
 
 @alert-success-bg:            @state-success-text;
@@ -832,7 +832,7 @@
 @panel-body-padding:          15px;
 @panel-heading-padding:       10px 15px;
 @panel-footer-padding:        @panel-heading-padding;
-@panel-border-radius:         3px;
+@panel-border-radius:         @border-radius-base;
 
 //** Border color for elements within panels
 @panel-inner-border:          @apim-dark-secondary;
@@ -906,7 +906,7 @@
 
 @badge-font-weight:           bold;
 @badge-line-height:           1;
-@badge-border-radius:         10px;
+@badge-border-radius:         @border-radius-large;
 
 
 //== Breadcrumbs
