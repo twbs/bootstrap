@@ -2562,7 +2562,7 @@ output {
   background-color: #121421;
   background-image: none;
   border: 1px solid transparent;
-  border-bottom: 1px solid rgba(0, 177, 255, .2);
+  border-bottom: 1px solid rgba(0, 177, 255, .75);
 }
 .form-control:focus {
   border-color: #00b1ff;

@@ -1730,7 +1730,7 @@ body {
 .dynamicTable td select {
   color: #f2f2f2;
   background-color: #121421;
-  border-bottom: 1px solid rgba(0, 177, 255, .2);
+  border-bottom: 1px solid rgba(0, 177, 255, .75);
 }
 .dynamicTable td input:focus,
 .dynamicTable td select:focus {
@@ -1827,7 +1827,7 @@ body {
   background-color: #1c2f48;
 }
 .select2-container--bootstrap .select2-selection {
-  border-bottom: 1px solid rgba(0, 177, 255, .2);
+  border-bottom: 1px solid rgba(0, 177, 255, .75);
   border-radius: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
