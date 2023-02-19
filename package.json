@@ -98,7 +98,12 @@
     "watch-css-docs": "nodemon --watch site/assets/scss/ --ext scss --exec \"npm run css-lint\"",
     "watch-css-test": "nodemon --watch scss/ --ext scss,js --exec \"npm run css-test\"",
     "watch-js-main": "nodemon --watch js/src/ --ext js --exec \"npm-run-all js-lint js-compile\"",
-    "watch-js-docs": "nodemon --watch site/assets/js/ --ext js --exec \"npm run js-lint\""
+    "watch-js-docs": "nodemon --watch site/assets/js/ --ext js --exec \"npm run js-lint\"",
+    "astro-dev": "astro dev",
+		"astro-start": "astro dev",
+		"astro-build": "astro build",
+		"astro-preview": "astro preview",
+		"astro": "astro"
   },
   "peerDependencies": {
     "@popperjs/core": "^2.11.6"
@@ -112,6 +117,7 @@
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-replace": "^5.0.2",
+    "astro": "^2.0.14",
     "autoprefixer": "^10.4.13",
     "bundlewatch": "^0.3.3",
     "clean-css-cli": "^5.6.2",
