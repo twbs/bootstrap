@@ -43,6 +43,14 @@
       description: "Extend list groups with utilities and custom styles for any content."
     - name: Modals
       description: "Transform modals to serve any purpose, from feature tours to dialogs."
+    - name: Badges
+      description: "Make badges work with custom inner HTML and new looks."
+    - name: Breadcrumbs
+      description: "Integrate custom icons and create stepper components."
+    - name: Buttons
+      description: "Create custom buttons for just about any use case with utilities."
+    - name: Jumbotrons
+      description: "Create modernized versions of the classic Bootstrap component."
 
 - category: Custom Components
   description: "Brand-new components and templates to help folks quickly get started with Bootstrap and demonstrate best practices for adding onto the framework."
