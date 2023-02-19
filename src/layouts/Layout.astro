@@ -1,0 +1,84 @@
+---
+import { config } from "../libs/config";
+import Stylesheet from "../components/head/Stylesheet.astro";
+import Favicons from "../components/head/Favicons.astro";
+import Social from "../components/head/Social.astro";
+import Analytics from "../components/head/Analytics.astro";
+import Skippy from "../components/body/Skippy.astro";
+import Icons from "../components/body/Icons.astro";
+import DocsNavbar from "../components/body/DocsNavbar.astro";
+import Scripts from "../components/body/Scripts.astro";
+
+export interface Props {
+	description: string;
+	layout: string; // TODO: better handling? It represents .Page.Layout // At least should be a Type
+	robots: string;
+}
+
+const { description, layout, robots } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<meta name="description" content={description ? description : config.params.description}>
+		<!--TODO: handle | markdownify -->
+
+		<meta name="author" content={config.params.authors}>
+		<meta name="generator" content={Astro.generator} />
+		<meta name="docsearch:language" content="en">
+		<meta name="docsearch:version" content={config.params.docs_version}>
+
+		<title>{config.title}</title>
+		<!--TODO: handle <title>{{ if .IsHome }}{{ .Site.Title | markdownify }} · {{ .Site.Params.subtitle | markdownify }}{{ else }}{{ .Title | markdownify }} · {{ .Site.Title | markdownify }} v{{ .Site.Params.docs_version }}{{ end }}</title>-->
+
+		<!--TODO: handle <link rel="canonical" href="{{ .Permalink }}">-->
+
+		{layout == 'docs' && <link rel="preconnect" href="https://AK7KMZKZHQ-dsn.algolia.net" crossorigin>}
+		{robots && <meta name="robots" content={robots}>}
+
+		<script src={'/docs/' + config.params.docs_version + '/assets/js/color-modes.js'}></script>
+		
+		<!--
+			TODO: handle relURL?? or use public??
+			{{- $colorModeJS := printf "/docs/%s/assets/js/color-modes.js" $.Site.Params.docs_version -}}
+			<script src="{{ $colorModeJS | relURL }}"></script>
+		-->
+		<!--<script is:inline src="/color-script.js"></script>-->
+
+		<Stylesheet {...Astro.props}/>
+		<Favicons {...Astro.props}/>
+		<Social {...Astro.props}/>
+		<Analytics />
+	</head>
+	<body><!--TODO: handle {{ block "body_override" . }}<body>{{ end }} -->
+
+		<Skippy layout={layout}/>
+		<Icons />
+		<DocsNavbar layout={layout}/>
+
+		<!-- TODO:
+			{{ block "main" . }}
+			{{ end }}
+		-->
+		<main>
+		</main>
+
+		<!-- TODO:
+			{{ partial "footer" . }}
+		-->
+
+		<Scripts {...Astro.props}/>
+
+		<footer>
+		</footer>
+
+		<!-- TODO:
+			{{ block "footer" . }}
+			{{ end }}
+		-->
+	</body>
+</html>
