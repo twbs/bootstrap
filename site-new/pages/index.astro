@@ -6,6 +6,7 @@ import Customize from '../components/home/Customize.astro'
 import CSSVariables from '../components/home/CSSVariables.astro'
 import ComponentUtilities from '../components/home/ComponentUtilities.astro'
 import Plugins from '../components/home/Plugins.astro'
+import Icons from '../components/home/Icons.astro'
 import { getConfig, getVersionedDocsPath } from '../libs/config'
 ---
 
@@ -56,9 +57,9 @@ import { getConfig, getVersionedDocsPath } from '../libs/config'
     <CSSVariables />
     <ComponentUtilities />
     <Plugins />
+    <Icons />
     <!--
       TODO: each partial must become a component
-      {{ partial "home/icons" . }}
       {{ partial "home/themes" . }}
      -->
   </div>
