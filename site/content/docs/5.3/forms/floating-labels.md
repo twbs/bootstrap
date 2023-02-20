@@ -108,11 +108,11 @@ Add the `.disabled` class to `.form-floating` and `disabled` boolean attribute o
 Floating labels also support `.form-control-plaintext`, which can be helpful for toggling from an editable `<input>` to a plaintext value without affecting the page layout.
 
 {{< example >}}
-<div class="form-floating mb-3">
+<div class="form-floating readonly mb-3">
   <input type="email" readonly class="form-control-plaintext" id="floatingEmptyPlaintextInput" placeholder="name@example.com">
   <label for="floatingEmptyPlaintextInput">Empty input</label>
 </div>
-<div class="form-floating mb-3">
+<div class="form-floating readonly mb-3">
   <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="name@example.com" value="name@example.com">
   <label for="floatingPlaintextInput">Input with value</label>
 </div>

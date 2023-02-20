@@ -7,9 +7,14 @@
     left: $input-border-width;
     width: subtract(100%, add($input-height-inner-quarter, $input-height-inner-half));
     height: $form-floating-label-height;
+    pointer-events: none;
     content: "";
     background-color: $input-bg;
     @include border-radius($input-border-radius);
+  }
+
+  &.readonly::before {
+    pointer-events: all;
   }
 
   &.disabled::before {
