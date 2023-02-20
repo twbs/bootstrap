@@ -1,10 +1,10 @@
 name: Docs
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+  #push:
+  #  branches-ignore:
+  #    - "dependabot/**"
+  #pull_request:
   workflow_dispatch:
 
 env:
