@@ -5,7 +5,7 @@ description: Use our custom range inputs for consistent cross-browser styling an
 group: forms
 toc: true
 extra_js:
-  - src: "/docs/5.2/assets/js/form-range.js"
+  - src: "/docs/5.3/assets/js/form-range.js"
     async: false
 ---
 
