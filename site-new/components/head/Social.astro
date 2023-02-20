@@ -1,0 +1,34 @@
+---
+import { getConfig, getVersionedDocsPath } from '../../libs/config'
+
+interface Props {
+  description: string
+  thumbnail: string
+  title: string
+}
+
+const { description, thumbnail, title } = Astro.props
+
+// TODO(HiDeoo) Test when assets are figured out
+const socialImageUrl = new URL(getVersionedDocsPath(`assets/${thumbnail}`), Astro.site)
+---
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content={getConfig().params.twitter} />
+<meta name="twitter:creator" content={getConfig().params.twitter} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={socialImageUrl} />
+
+<meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<!-- TODO(HiDeoo) Figure out what IsPage is in Hugo -->
+<!-- <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" /> -->
+<meta property="og:image" content={socialImageUrl} />
+<meta property="og:image:type" content="image/png" />
+<!-- TODO(HiDeoo)
+{{ with (imageConfig (path.Join "site/static" $socialImagePath)) -}}
+<meta property="og:image:width" content="{{ .Width }}">
+<meta property="og:image:height" content="{{ .Height }}">
+{{- end }} -->

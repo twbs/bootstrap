@@ -1,0 +1,61 @@
+---
+import { getConfig, getVersionedDocsPath } from '../../libs/config'
+import type { Layout } from '../../libs/layout'
+import Stylesheet from './Stylesheet.astro'
+import Favicons from './Favicons.astro'
+import Social from './Social.astro'
+import Analytics from './Analytics.astro'
+
+interface Props {
+  description: string
+  layout: Layout
+  robots: string | undefined
+  thumbnail: string
+  title: string
+}
+
+const { description, layout, robots, thumbnail, title } = Astro.props
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
+
+const isHome = Astro.url.pathname === '/'
+const pageTitle = isHome
+  ? `${getConfig().title} · ${getConfig().params.subtitle}`
+  : `${title} · ${getConfig().title} v${getConfig().params.docs_version}`
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="description" content={description} />
+<!--TODO: handle | markdownify -->
+<!-- TODO(HiDeoo) markdownify in a meta tag? -->
+
+<meta name="author" content={getConfig().params.authors} />
+<meta name="generator" content={Astro.generator} />
+<meta name="docsearch:language" content="en" />
+<meta name="docsearch:version" content={getConfig().params.docs_version} />
+
+<title>{pageTitle}</title>
+
+<link rel="canonical" href={canonicalUrl} />
+
+{layout === 'docs' && <link rel="preconnect" href="https://AK7KMZKZHQ-dsn.algolia.net" crossorigin />}
+{robots && <meta name="robots" content={robots} />}
+
+<!-- TODO(HiDeoo) Broken link atm -->
+<script src={getVersionedDocsPath('assets/js/color-modes.js')}></script>
+
+<!--
+			TODO: handle relURL?? or use public??
+      TODO(HiDeoo) This should prolly use getVersionedDocsPath()
+			{{- $colorModeJS := printf "/docs/%s/assets/js/color-modes.js" $.Site.Params.docs_version -}}
+			<script src="{{ $colorModeJS | relURL }}"></script>
+		-->
+<!-- TODO(HiDeoo) where does this file comes? Generated? -->
+<!--<script is:inline src="/color-script.js"></script>-->
+
+<Stylesheet layout={layout} />
+<Favicons />
+<Social description={description} thumbnail={thumbnail} title={title} />
+<Analytics />

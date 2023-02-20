@@ -1,0 +1,57 @@
+---
+import { getConfig } from '../libs/config'
+import type { Layout } from '../libs/layout'
+import Head from '../components/head/Head.astro'
+import Header from '../components/header/Header.astro'
+import Scripts from '../components/Scripts.astro'
+
+interface Props {
+  frontmatter?: {
+    description?: string
+    thumbnail?: string
+    title?: string
+  }
+  layout?: Layout
+  robots?: string
+}
+
+const { frontmatter, layout, robots } = Astro.props
+
+// TODO(HiDeoo) This should probably be refactored to use a content collection when I get a better understanding of the
+// structure of the docs.
+const title = frontmatter?.title ?? getConfig().title
+const description = frontmatter?.description ?? getConfig().params.description
+const thumbnail = frontmatter?.thumbnail ? `img/${frontmatter.thumbnail}` : 'brand/bootstrap-social.png'
+---
+
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <Head description={description} layout={layout} robots={robots} thumbnail={thumbnail} title={title} />
+  </head>
+  <body
+    ><!--TODO: handle {{ block "body_override" . }}<body>{{ end }} -->
+
+    <Header layout={layout} />
+
+    <!-- TODO:
+			{{ block "main" . }}
+			{{ end }}
+		-->
+    <main></main>
+
+    <!-- TODO:
+			{{ partial "footer" . }}
+		-->
+
+    <Scripts layout={layout} />
+
+    <!-- TODO(HiDeoo) Is this related to the footer partial just above? Or the footer block below? Something else? -->
+    <footer></footer>
+
+    <!-- TODO:
+			{{ block "footer" . }}
+			{{ end }}
+		-->
+  </body>
+</html>

@@ -1,0 +1,24 @@
+---
+interface Props {
+  active?: boolean
+  href: string
+  rel?: HTMLAnchorElement['rel']
+  target?: HTMLAnchorElement['target']
+  text: string
+}
+
+const { active, text, ...props } = Astro.props
+
+// TODO(HiDeoo) Test onclick handlers
+---
+
+<li class="nav-item col-6 col-lg-auto">
+  <a
+    aria-current={active ? true : undefined}
+    class:list={['nav-link py-2 px-0 px-lg-2', { active }]}
+    onclick={`ga('send', 'event', 'Navbar', 'Community links', '${text}');`}
+    {...props}
+  >
+    {text}
+  </a>
+</li>
