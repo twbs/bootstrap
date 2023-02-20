@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import Ads from '../components/Ads.astro'
 import GetStarted from '../components/home/GetStarted.astro'
+import Customize from '../components/home/Customize.astro'
 import { getConfig, getVersionedDocsPath } from '../libs/config'
 ---
 
@@ -47,9 +48,9 @@ import { getConfig, getVersionedDocsPath } from '../libs/config'
   </div>
   <div class="container-xxl bd-gutter masthead-followup">
     <GetStarted />
+    <Customize />
     <!--
       TODO: each partial must become a component
-      {{ partial "home/customize" . }}
       {{ partial "home/css-variables" . }}
       {{ partial "home/components-utilities" . }}
       {{ partial "home/plugins" . }}
