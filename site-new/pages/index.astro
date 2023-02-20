@@ -19,7 +19,10 @@ import { getConfig } from '../libs/config'
         </p>
         <div class="d-flex flex-column flex-lg-row align-items-md-stretch justify-content-md-center gap-3 mb-4">
           <div class="d-inline-block v-align-middle fs-5">
-            <!-- TODO: replace by Astro stuff -->
+            <!-- TODO: replace by Astro stuff
+              * 'highlight' is a feature provided by Hugo
+              * We use Chroma style overriden in _syntax.scss
+            -->
             <!-- {{ highlight (printf ("npm i bootstrap@%s") .Site.Params.current_version) "sh" "" }} -->
           </div>
           <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold" onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">
