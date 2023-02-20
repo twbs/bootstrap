@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import Ads from '../components/Ads.astro'
 import { getConfig } from '../libs/config'
 ---
 
@@ -35,8 +36,7 @@ import { getConfig } from '../libs/config'
           <span class="px-1">&middot;</span>
           <a href="/docs/versions/" class="link-secondary text-nowrap">All releases</a>
         </p>
-        <!-- TODO: replace by Astro component -->
-        <!-- {{ partial "ads" . }} -->
+        <Ads />
       </div>
     </div>
   </div>
