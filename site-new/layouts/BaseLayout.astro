@@ -38,7 +38,9 @@ const thumbnail = frontmatter?.thumbnail ? `img/${frontmatter.thumbnail}` : 'bra
 			{{ block "main" . }}
 			{{ end }}
 		-->
-    <main></main>
+    <main>
+      <slot />
+    </main>
 
     <!-- TODO:
 			{{ partial "footer" . }}
