@@ -1,10 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import Ads from '../components/Ads.astro'
+import GetStarted from '../components/home/GetStarted.astro'
 import { getConfig, getVersionedDocsPath } from '../libs/config'
 ---
 
 <BaseLayout>
+  <!--TODO: could be in a separate file. Was in "home/masthead.html" in Bootstrap-->
   <div class="bd-masthead mb-3" id="content">
     <div class="container-xxl bd-gutter">
       <div class="col-md-8 mx-auto text-center">
@@ -42,5 +44,17 @@ import { getConfig, getVersionedDocsPath } from '../libs/config'
         <Ads />
       </div>
     </div>
+  </div>
+  <div class="container-xxl bd-gutter masthead-followup">
+    <GetStarted />
+    <!--
+      TODO: each partial must become a component
+      {{ partial "home/customize" . }}
+      {{ partial "home/css-variables" . }}
+      {{ partial "home/components-utilities" . }}
+      {{ partial "home/plugins" . }}
+      {{ partial "home/icons" . }}
+      {{ partial "home/themes" . }}
+     -->
   </div>
 </BaseLayout>
