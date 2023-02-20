@@ -8,6 +8,9 @@ env:
   FORCE_COLOR: 2
   NODE: 18
 
+permissions:
+  contents: read
+
 jobs:
   browserstack:
     runs-on: ubuntu-latest
