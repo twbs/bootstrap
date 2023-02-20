@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import { getConfig } from '../libs/config'
 ---
 
 <BaseLayout>
@@ -26,8 +27,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
           </a>
         </div>
         <p class="text-body-secondary mb-0">
-          <!--TODO: replace .Site.Params.current_version by current version -->
-          Currently <strong>v<!--{{ .Site.Params.current_version }}--></strong>
+          Currently <strong>v{getConfig().params.current_version}</strong>
           <span class="px-1">&middot;</span>
           <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/" class="link-secondary">Download</a>
           <span class="px-1">&middot;</span>

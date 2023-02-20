@@ -40,6 +40,7 @@ const configSchema = z.object({
   params: z.object({
     authors: z.string(),
     blog: z.string().url(),
+    current_version: z.string(), // TODO: get the right semver regex
     description: z.string(),
     docs_version: z.string().regex(/^\d+\.\d+$/),
     github_org: z.string().url(),
