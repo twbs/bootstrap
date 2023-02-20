@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import Ads from '../components/Ads.astro'
 import GetStarted from '../components/home/GetStarted.astro'
 import Customize from '../components/home/Customize.astro'
+import CSSVariables from '../components/home/CSSVariables.astro'
 import { getConfig, getVersionedDocsPath } from '../libs/config'
 ---
 
@@ -47,8 +48,10 @@ import { getConfig, getVersionedDocsPath } from '../libs/config'
     </div>
   </div>
   <div class="container-xxl bd-gutter masthead-followup">
+    <!--TODO: Do we need to prefix their name? (e.g., HomeGetStarted, etc) -->
     <GetStarted />
     <Customize />
+    <CSSVariables />
     <!--
       TODO: each partial must become a component
       {{ partial "home/css-variables" . }}
