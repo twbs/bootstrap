@@ -1,5 +1,45 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+
+/*
+ TODO: Bootstrap's frontmatter
+  - title: "404 - File not found"
+  - layout: 404
+  - description: ""
+  - url: /404.html
+  - robots: noindex,follow
+  - sitemap_exclude: true
+*/
+
+/*
+ TODO: Be able to override <body>
+  - Note: {{ define "body_override" }} is used in site/layouts/_default/ files:
+    - 404.html
+    - baseof.html
+    - docs.html
+
+  {{ define "body_override" }}<body class="d-flex flex-column min-vh-100">{{ end }}
+*/
+
+/*
+ TODO: Be able to override <main>
+  - Note: {{ define "main" }} is used in site/layouts/_default/ files:
+    - 404.html
+    - docs.html
+    - home.html
+    - single.html
+
+  {{ define "main" }}
+    <main class="my-auto p-5" id="content">
+      {{ .Content }}
+    </main>
+  {{ end }}
+*/
 ---
 
-<BaseLayout robots="noindex,follow" />
+<BaseLayout robots="noindex,follow">
+  <div class="text-center py-5">
+    <h1 class="display-1">404</h1>
+    <h2>File not found</h2>
+  </div>
+</BaseLayout>
