@@ -1,5 +1,5 @@
 ---
-import BootstrapWhiteFillIcon from "../icons/BootstrapWhiteFillIcon.astro";
+import BootstrapWhiteFillIcon from '../icons/BootstrapWhiteFillIcon.astro'
 import { getConfig, getVersionedDocsPath } from '../../libs/config'
 ---
 
@@ -7,13 +7,29 @@ import { getConfig, getVersionedDocsPath } from '../../libs/config'
   <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
     <div class="row">
       <div class="col-lg-3 mb-3">
-        <a class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="/" aria-label="Bootstrap">
+        <a
+          class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none"
+          href="/"
+          aria-label="Bootstrap"
+        >
           <BootstrapWhiteFillIcon class="d-block me-2" height={32} width={40} />
           <span class="fs-5">Bootstrap</span>
         </a>
         <ul class="list-unstyled small">
-          <li class="mb-2">Designed and built with all the love in the world by the <a href={getVersionedDocsPath('about/team')}>Bootstrap team</a> with the help of <a href={`${getConfig().params.repo}/graphs/contributors`}>our contributors</a>.</li>
-          <li class="mb-2">Code licensed <a href={`${getConfig().params.repo}/blob/main/LICENSE`} target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
+          <li class="mb-2">
+            Designed and built with all the love in the world by the <a href={getVersionedDocsPath('about/team')}
+              >Bootstrap team</a
+            > with the help of <a href={`${getConfig().params.repo}/graphs/contributors`}>our contributors</a>.
+          </li>
+          <li class="mb-2">
+            Code licensed <a
+              href={`${getConfig().params.repo}/blob/main/LICENSE`}
+              target="_blank"
+              rel="license noopener">MIT</a
+            >, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener"
+              >CC BY 3.0</a
+            >.
+          </li>
           <li class="mb-2">Currently v{getConfig().params.current_version}.</li>
         </ul>
       </div>
