@@ -1,16 +1,17 @@
 ---
 import type { Layout } from '../../libs/layout'
 import Skippy from './Skippy.astro'
-import Icons from '../Icons.astro'
+import Symbols from '../icons/Symbols.astro'
 import Navigation from './Navigation.astro'
 
 interface Props {
   layout: Layout
+  title: string
 }
 
-const { layout } = Astro.props
+const { layout, title } = Astro.props
 ---
 
 <Skippy layout={layout} />
-<Icons />
-<Navigation layout={layout} />
+<Symbols />
+<Navigation layout={layout} title={title} />

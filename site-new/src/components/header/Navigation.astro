@@ -1,12 +1,17 @@
 ---
 import { getConfig, getVersionedDocsPath } from '../../libs/config'
 import type { Layout } from '../../libs/layout'
+import BootstrapWhiteFillIcon from '../icons/BootstrapWhiteFillIcon.astro'
+import GitHubIcon from '../icons/GitHubIcon.astro'
+import HamburgerIcon from '../icons/HamburgerIcon.astro'
 import LinkItem from './LinkItem.astro'
+import OpenCollectiveIcon from '../icons/OpenCollectiveIcon.astro'
+import TwitterIcon from '../icons/TwitterIcon.astro'
 import Versions from './Versions.astro'
 
 interface Props {
   layout: Layout
-  title?: string // TODO: warning should be linked to .Page.title
+  title: string
 }
 
 const { layout, title } = Astro.props
@@ -25,7 +30,7 @@ const { layout, title } = Astro.props
             aria-controls="bdSidebar"
             aria-label="Toggle docs navigation"
           >
-            {/* TODO: {{ partial "icons/hamburger.svg" (dict "class" "bi" "width" "24" "height" "24") }} */}
+            <HamburgerIcon class="bi" height={24} width={24} />
             <span class="d-none fs-6 pe-1">Browse</span>
           </button>
         </div>
@@ -34,10 +39,7 @@ const { layout, title } = Astro.props
     {layout != 'docs' && <div class="d-lg-none" style="width: 1.5rem;" />}
 
     <a class="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="Bootstrap">
-      <!--
-        TODO:
-      {{ partial "icons/bootstrap-white-fill.svg" (dict "class" "d-block my-1" "width" "40" "height" "32") }}
-       -->
+      <BootstrapWhiteFillIcon class="d-block my-1" height={32} width={40} />
     </a>
 
     <div class="d-flex">
@@ -96,20 +98,21 @@ const { layout, title } = Astro.props
           <!-- TODO(HiDeoo) should be a LinkItem but requires some refactors first -->
           <li class="nav-item col-6 col-lg-auto">
             <a class="nav-link py-2 px-0 px-lg-2" href={getConfig().params.github_org} target="_blank" rel="noopener">
-              <!--TODO
-              {{ partial "icons/github.svg" (dict "class" "navbar-nav-svg" "width" "16" "height" "16") }}
-              -->
+              <GitHubIcon class="navbar-nav-svg" height={16} width={16} />
               <small class="d-lg-none ms-2">GitHub</small>
             </a>
           </li>
           <!-- TODO(HiDeoo) should be a LinkItem but requires some refactors first -->
           <li class="nav-item col-6 col-lg-auto">
-            <!-- <a class="nav-link py-2 px-0 px-lg-2" href=`https://twitter.com/${getConfig().params.twitter}` target="_blank" rel="noopener"> -->
-            <!--TODO
-              {{ partial "icons/twitter.svg" (dict "class" "navbar-nav-svg" "width" "16" "height" "16") }}
-              -->
-            <small class="d-lg-none ms-2">Twitter</small>
-            <!-- </a> -->
+            <a
+              class="nav-link py-2 px-0 px-lg-2"
+              href={`https://twitter.com/${getConfig().params.twitter}`}
+              target="_blank"
+              rel="noopener"
+            >
+              <TwitterIcon class="navbar-nav-svg" height={16} width={16} />
+              <small class="d-lg-none ms-2">Twitter</small>
+            </a>
           </li>
           <!-- TODO(HiDeoo) should be a LinkItem but requires some refactors first -->
           <li class="nav-item col-6 col-lg-auto">
@@ -119,9 +122,7 @@ const { layout, title } = Astro.props
               target="_blank"
               rel="noopener"
             >
-              <!--TODO
-              {{ partial "icons/opencollective.svg" (dict "class" "navbar-nav-svg" "width" "16" "height" "16") }}
-              -->
+              <OpenCollectiveIcon class="navbar-nav-svg" height={16} width={16} />
               <small class="d-lg-none ms-2">Open Collective</small>
             </a>
           </li>

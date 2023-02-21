@@ -4,6 +4,10 @@ import { z } from 'zod'
 
 let config: Config | undefined
 
+// https://ihateregex.io/expr/semver/
+const semverRegex =
+  /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/
+
 // A helper to get the config loaded fom the `config.yml` file. If the config does not match the `configSchema` below,
 // an error is thrown to indicate that the config file is invalid and some action is required.
 export function getConfig(): Config {
@@ -40,7 +44,7 @@ const configSchema = z.object({
   params: z.object({
     authors: z.string(),
     blog: z.string().url(),
-    current_version: z.string(), // TODO: get the right semver regex
+    current_version: z.string().regex(semverRegex),
     description: z.string(),
     docs_version: z.string().regex(/^\d+\.\d+$/),
     github_org: z.string().url(),

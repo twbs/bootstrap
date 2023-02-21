@@ -32,7 +32,7 @@ const thumbnail = frontmatter?.thumbnail ? `img/${frontmatter.thumbnail}` : 'bra
   <body
     ><!--TODO: handle {{ block "body_override" . }}<body>{{ end }} -->
 
-    <Header layout={layout} />
+    <Header layout={layout} title={title} />
 
     <!-- TODO:
 			{{ block "main" . }}

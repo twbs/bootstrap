@@ -19,20 +19,21 @@ const { layout } = Astro.props
 -->{
   import.meta.env.PROD ? (
     <script
+      is:inline
       src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     />
   ) : (
-    <script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.js" />
+    <script is:inline src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.js" />
   )
 }
 
 {
   layout === 'docs' && (
     <>
-      <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" />
-      <script src="https://cdn.jsdelivr.net/npm/@stackblitz/sdk@1/bundles/sdk.umd.js" />
+      <script is:inline src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" />
+      <script is:inline src="https://cdn.jsdelivr.net/npm/@stackblitz/sdk@1/bundles/sdk.umd.js" />
     </>
   )
 }

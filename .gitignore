@@ -42,4 +42,6 @@ Thumbs.db
 /node_modules/
 
 # TODO(HiDeoo) Rename or remove later
-/dist-site-new
+/site-new/dist
+# TODO(HiDeoo) This could be avoided by modifying the other node_modules ignore rule.
+/site-new/node_modules
