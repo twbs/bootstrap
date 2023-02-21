@@ -25,10 +25,8 @@ import DropletFillIcon from '../icons/DropletFillIcon.astro'
   <div class="col-lg-6">
     <img
       class="img-fluid mt-3 mx-auto"
-      srcset={`${getVersionedDocsPath('assets/img/bootstrap-themes.png')}, ${getVersionedDocsPath(
-        'assets/img/bootstrap-themes@2x.png'
-      )} 2x`}
-      src={getVersionedDocsPath('assets/img/bootstrap-themes.png')}
+      srcset="/img/bootstrap-themes.png, /img/bootstrap-themes@2x.png 2x"
+      src="/img/bootstrap-themes.png"
       alt="Bootstrap Themes"
       width="700"
       height="500"
