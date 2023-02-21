@@ -1,6 +1,7 @@
 ---
 import { getVersionedDocsPath } from '../../libs/config'
 ---
+
 <div class="col-lg-7 mx-auto pb-3 mb-3 mb-md-5 text-md-center">
   <div class="masthead-followup-icon d-inline-block mb-3" style="--bg-rgb: var(--bd-violet-rgb);">
     <svg class="bi fs-1"><use xlink:href="#code"></use></svg>
@@ -22,7 +23,10 @@ import { getVersionedDocsPath } from '../../libs/config'
     <svg class="bi mb-2 fs-2 text-body-secondary"><use xlink:href="#box-seam"></use></svg>
     <h3 class="fw-semibold">Install via package manager</h3>
     <p class="pe-lg-5">
-      Install Bootstrap’s source Sass and JavaScript files via npm, RubyGems, Composer, or Meteor. Package managed installs don’t include documentation or our full build scripts. You can also <a href="https://github.com/twbs/examples/">use any demo from our Examples repo</a> to quickly jumpstart Bootstrap projects.
+      Install Bootstrap’s source Sass and JavaScript files via npm, RubyGems, Composer, or Meteor. Package managed
+      installs don’t include documentation or our full build scripts. You can also <a
+        href="https://github.com/twbs/examples/">use any demo from our Examples repo</a
+      > to quickly jumpstart Bootstrap projects.
     </p>
     <!-- TODO: replace by Astro stuff
       * 'highlight' is a feature provided by Hugo
@@ -33,14 +37,22 @@ import { getVersionedDocsPath } from '../../libs/config'
     {{ highlight (printf ("gem install bootstrap -v %s") .Site.Params.current_ruby_version) "sh" "" }}
     -->
     <p>
-      <a href={getVersionedDocsPath('getting-started/download')}>Read our installation docs</a> for more info and additional package managers.
+      <a href={getVersionedDocsPath('getting-started/download')}>Read our installation docs</a> for more info and additional
+      package managers.
     </p>
   </div>
   <div class="col-lg-6 py-lg-4 ps-lg-5 border-lg-start">
     <svg class="bi mb-2 fs-2 text-body-secondary"><use xlink:href="#globe2"></use></svg>
     <h3 class="fw-semibold">Include via CDN</h3>
     <p class="pe-lg-5">
-      When you only need to include Bootstrap’s compiled CSS or JS, you can use <a href="https://www.jsdelivr.com/package/npm/bootstrap">jsDelivr</a>. See it in action with our simple <a href={getVersionedDocsPath('getting-started/introduction/#quick-start')}>quick start</a>, or <a href={getVersionedDocsPath('examples')}>browse the examples</a> to jumpstart your next project. You can also choose to include Popper and our JS <a href={getVersionedDocsPath('getting-started/introduction/#separate')}>separately</a>.
+      When you only need to include Bootstrap’s compiled CSS or JS, you can use <a
+        href="https://www.jsdelivr.com/package/npm/bootstrap">jsDelivr</a
+      >. See it in action with our simple <a href={getVersionedDocsPath('getting-started/introduction/#quick-start')}
+        >quick start</a
+      >, or <a href={getVersionedDocsPath('examples')}>browse the examples</a> to jumpstart your next project. You can also
+      choose to include Popper and our JS <a href={getVersionedDocsPath('getting-started/introduction/#separate')}
+        >separately</a
+      >.
     </p>
     <!-- TODO: replace by Astro stuff
       * 'highlight' is a feature provided by Hugo
@@ -56,16 +68,46 @@ import { getVersionedDocsPath } from '../../libs/config'
     <h4 class="fw-semibold">Read our getting started guides</h4>
     <p>Get a jump on including Bootstrap's source files in a new project with our official guides.</p>
     <div class="d-flex flex-wrap align-items-center justify-content-center gap-4 mt-4">
-      <a class="d-flex flex-column align-items-center text-decoration-none animate-img" href={getVersionedDocsPath('getting-started/webpack')}>
-        <img class="d-block mb-2" src={getVersionedDocsPath('assets/img/webpack.svg')} alt="" width="72" height="72" loading="lazy">
+      <a
+        class="d-flex flex-column align-items-center text-decoration-none animate-img"
+        href={getVersionedDocsPath('getting-started/webpack')}
+      >
+        <img
+          class="d-block mb-2"
+          src={getVersionedDocsPath('assets/img/webpack.svg')}
+          alt=""
+          width="72"
+          height="72"
+          loading="lazy"
+        />
         <span class="text-body-secondary">Webpack</span>
       </a>
-      <a class="d-flex flex-column align-items-center text-decoration-none animate-img" href={getVersionedDocsPath('getting-started/parcel')}>
-        <img class="d-block mb-2" src={getVersionedDocsPath('assets/img/parcel.png')} alt="" width="72" height="72" loading="lazy">
+      <a
+        class="d-flex flex-column align-items-center text-decoration-none animate-img"
+        href={getVersionedDocsPath('getting-started/parcel')}
+      >
+        <img
+          class="d-block mb-2"
+          src={getVersionedDocsPath('assets/img/parcel.png')}
+          alt=""
+          width="72"
+          height="72"
+          loading="lazy"
+        />
         <span class="text-body-secondary">Parcel</span>
       </a>
-      <a class="d-flex flex-column align-items-center text-decoration-none animate-img" href={getVersionedDocsPath('getting-started/vite')}>
-        <img class="d-block mb-2" src={getVersionedDocsPath('assets/img/vite.svg')} alt="" width="72" height="72" loading="lazy">
+      <a
+        class="d-flex flex-column align-items-center text-decoration-none animate-img"
+        href={getVersionedDocsPath('getting-started/vite')}
+      >
+        <img
+          class="d-block mb-2"
+          src={getVersionedDocsPath('assets/img/vite.svg')}
+          alt=""
+          width="72"
+          height="72"
+          loading="lazy"
+        />
         <span class="text-body-secondary">Vite</span>
       </a>
     </div>

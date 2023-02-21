@@ -1,6 +1,7 @@
 ---
 import { getVersionedDocsPath } from '../../libs/config'
 ---
+
 <section class="row g-3 g-md-5 pb-md-5 mb-5 align-items-center">
   <div class="col-lg-6">
     <div class="masthead-followup-icon d-inline-block mb-3" style="--bg-rgb: var(--bd-teal-rgb);">
@@ -23,9 +24,15 @@ import { getVersionedDocsPath } from '../../libs/config'
     </p>
   </div>
   <div class="col-lg-6">
-      <img class="img-fluid mt-3 mx-auto" srcset={`${getVersionedDocsPath('assets/img/bootstrap-icons.png')},
+    <img
+      class="img-fluid mt-3 mx-auto"
+      srcset={`${getVersionedDocsPath('assets/img/bootstrap-icons.png')},
                                                   ${getVersionedDocsPath('assets/img/bootstrap-icons@2x.png')} 2x"
                                           src=${getVersionedDocsPath('assets/img/bootstrap-icons.png')}`}
-                                          alt="Bootstrap Icons" width="700" height="425" loading="lazy">
+      alt="Bootstrap Icons"
+      width="700"
+      height="425"
+      loading="lazy"
+    />
   </div>
 </section>

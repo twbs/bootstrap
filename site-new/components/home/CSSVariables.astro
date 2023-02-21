@@ -1,6 +1,7 @@
 ---
 import { getVersionedDocsPath } from '../../libs/config'
 ---
+
 <section class="row g-md-5 pb-md-5 mb-5 align-items-center">
   <div class="col-lg-8 mb-5">
     <div class="masthead-followup-icon d-inline-block mb-3" style="--bg-rgb: var(--bd-pink-rgb);">
@@ -8,7 +9,11 @@ import { getVersionedDocsPath } from '../../libs/config'
     </div>
     <h2 class="display-5 mb-3 fw-semibold lh-sm">Build and extend in real-time with CSS&nbsp;variables</h2>
     <p class="lead fw-normal">
-      Bootstrap 5 is evolving with each release to better utilize CSS variables for global theme styles, individual components, and even utilities. We provide dozens of variables for colors, font styles, and more at a <code>:root</code> level for use anywhere. On components and utilities, CSS variables are scoped to the relevant class and can easily be modified.
+      Bootstrap 5 is evolving with each release to better utilize CSS variables for global theme styles, individual
+      components, and even utilities. We provide dozens of variables for colors, font styles, and more at a <code
+        >:root</code
+      > level for use anywhere. On components and utilities, CSS variables are scoped to the relevant class and can easily
+      be modified.
     </p>
     <p class="d-flex align-items-start flex-column lead fw-normal mb-0">
       <a href={getVersionedDocsPath('customize/css-variables')} class="icon-link icon-link-hover fw-semibold mb-3">
@@ -20,12 +25,17 @@ import { getVersionedDocsPath } from '../../libs/config'
   <div class="row gx-md-5">
     <div class="col-lg-6 mb-3">
       <h3 class="fw-semibold">Using CSS variables</h3>
-      <p>Use any of our <a href={getVersionedDocsPath('customize/css-variables/#root-variables')}>global <code>:root</code> variables</a> to write new styles. CSS variables use the <code>var(--bs-variableName)</code> syntax and can be inherited by children elements.</p>
+      <p>
+        Use any of our <a href={getVersionedDocsPath('customize/css-variables/#root-variables')}
+          >global <code>:root</code> variables</a
+        > to write new styles. CSS variables use the <code>var(--bs-variableName)</code> syntax and can be inherited by children
+        elements.
+      </p>
       <!-- TODO: replace by Astro stuff
       * 'highlight' is a feature provided by Hugo
       * We use Chroma style overriden in _syntax.scss
     -->
-    <!--
+      <!--
       {{ highlight (printf `.component {
   color: var(--bs-gray-800);
   background-color: var(--bs-gray-100);
@@ -40,7 +50,10 @@ import { getVersionedDocsPath } from '../../libs/config'
     </div>
     <div class="col-lg-6 mb-3">
       <h3 class="fw-semibold">Customizing via CSS variables</h3>
-      <p>Override global, component, or utility class variables to customize Bootstrap just how you like. No need to redeclare each rule, just a new variable value.</p>
+      <p>
+        Override global, component, or utility class variables to customize Bootstrap just how you like. No need to
+        redeclare each rule, just a new variable value.
+      </p>
       <!-- TODO: replace by Astro stuff
         * 'highlight' is a feature provided by Hugo
         * We use Chroma style overriden in _syntax.scss
