@@ -4,6 +4,7 @@ import type { Layout } from '../libs/layout'
 import Head from '../components/head/Head.astro'
 import Header from '../components/header/Header.astro'
 import Scripts from '../components/Scripts.astro'
+import Footer from '../components/footer/Footer.astro'
 
 interface Props {
   frontmatter?: {
@@ -49,7 +50,8 @@ const thumbnail = frontmatter?.thumbnail ? `img/${frontmatter.thumbnail}` : 'bra
     <Scripts layout={layout} />
 
     <!-- TODO(HiDeoo) Is this related to the footer partial just above? Or the footer block below? Something else? -->
-    <footer></footer>
+    <!-- TODO: handle correctly the footer system: blocks, layouts, examples without footers, etc. But for now, let'us a Footer.astro everywhere! -->
+    <Footer />
 
     <!-- TODO:
 			{{ block "footer" . }}
