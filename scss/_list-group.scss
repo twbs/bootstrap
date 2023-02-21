@@ -182,23 +182,16 @@
 
 @each $state in map-keys($theme-colors) {
   .list-group-item-#{$state} {
-    --#{$prefix}list-group-color: var(--#{$prefix}#{$state}-text);
+    --#{$prefix}list-group-color: var(--#{$prefix}#{$state}-text-emphasis);
     --#{$prefix}list-group-bg: var(--#{$prefix}#{$state}-bg-subtle);
     --#{$prefix}list-group-border-color: var(--#{$prefix}#{$state}-border-subtle);
-
-    &.list-group-item-action {
-      &:hover,
-      &:focus {
-        --#{$prefix}list-group-action-hover-color: var(--#{$prefix}emphasis-color);
-        --#{$prefix}list-group-action-hover-bg: var(--#{$prefix}#{$state}-border-subtle);
-      }
-
-      &:active {
-        --#{$prefix}list-group-active-color: var(--#{$prefix}emphasis-color);
-        --#{$prefix}list-group-active-bg: var(--#{$prefix}#{$state}-text);
-        --#{$prefix}list-group-active-border-color: var(--#{$prefix}#{$state}-text);
-      }
-    }
+    --#{$prefix}list-group-action-hover-color: var(--#{$prefix}emphasis-color);
+    --#{$prefix}list-group-action-hover-bg: var(--#{$prefix}#{$state}-border-subtle);
+    --#{$prefix}list-group-action-active-color: var(--#{$prefix}emphasis-color);
+    --#{$prefix}list-group-action-active-bg: var(--#{$prefix}#{$state}-border-subtle);
+    --#{$prefix}list-group-active-color: var(--#{$prefix}#{$state}-bg-subtle);
+    --#{$prefix}list-group-active-bg: var(--#{$prefix}#{$state}-text-emphasis);
+    --#{$prefix}list-group-active-border-color: var(--#{$prefix}#{$state}-text-emphasis);
   }
 }
 // scss-docs-end list-group-modifiers

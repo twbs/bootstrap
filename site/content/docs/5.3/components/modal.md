@@ -488,7 +488,7 @@ exampleModal.addEventListener('show.bs.modal', event => {
   const button = event.relatedTarget
   // Extract info from data-bs-* attributes
   const recipient = button.getAttribute('data-bs-whatever')
-  // If necessary, you could initiate an AJAX request here
+  // If necessary, you could initiate an Ajax request here
   // and then do the updating in a callback.
   //
   // Update the modal's content.
@@ -576,7 +576,7 @@ Modals have three optional sizes, available via modifier classes to be placed on
 | Size | Class | Modal max-width
 | --- | --- | --- |
 | Small | `.modal-sm` | `300px` |
-| Default | <span class="text-muted">None</span> | `500px` |
+| Default | <span class="text-body-secondary">None</span> | `500px` |
 | Large | `.modal-lg` | `800px` |
 | Extra large | `.modal-xl` | `1140px` |
 {{< /bs-table >}}

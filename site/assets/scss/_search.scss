@@ -44,7 +44,7 @@
 }
 
 .DocSearch-Container {
-  --docsearch-muted-color: #{$text-muted};
+  --docsearch-muted-color: var(--bs-secondary-color);
   --docsearch-hit-shadow: none;
 
   z-index: 2000; // Make sure to be over all components showcased in the documentation
