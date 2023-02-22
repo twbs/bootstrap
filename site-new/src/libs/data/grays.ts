@@ -4,7 +4,7 @@ import { z } from 'zod'
 
 let grays: Grays | undefined
 
-// A helper to get the config loaded fom the `config.yml` file. If the config does not match the `configSchema` below,
+// A helper to get the config loaded fom the `site/data/grays.yml` file. If the grays config does not match the `configSchema` below,
 // an error is thrown to indicate that the config file is invalid and some action is required.
 export function getGrays(): Grays {
   if (grays) {
