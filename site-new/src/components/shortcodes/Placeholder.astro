@@ -1,4 +1,6 @@
 ---
+import { getGrays } from '../../libs/data/grays'
+
 /*
   Usage: `placeholder args`
 
@@ -25,13 +27,8 @@ interface Props {
 }
 
 // TODO: default value of text should be "default (printf "%sx%s" $width $height)"
-// TODO: default background value is '$default_background'
-// TODO: default color value is '$default_color'
-// TODO:
-// {{- $grays := $.Site.Data.grays -}}
-// {{- $default_color := (index $grays 2).hex -}}
-// {{- $default_background := (index $grays 5).hex -}}
-const { background="#868e96", classes="bd-placeholder-img", color="#dee2e6", height="180", markup = 'svg', text='width x height', title = 'Placeholder', width="100%" } = Astro.props
+// TODO: double check the rendering of the grays (doubt about the index value compared to Hugo)
+const { background=getGrays()[5].hex, classes="bd-placeholder-img", color=getGrays()[2].hex, height="180", markup = 'svg', text='width x height', title = 'Placeholder', width="100%" } = Astro.props
 ---
 
 <!--TODO: better syntax for `bd-placeholder-img${classes ? classes : ''}` both in <img> and <svg>?-->
