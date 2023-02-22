@@ -84,6 +84,7 @@ a {
 
 body {
   font-weight: @font-family-weight;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.25);
 }
 b, strong {
   font-weight: @font-family-bold-weight;
@@ -518,8 +519,8 @@ b, strong {
       border-top: 1px solid @nav-tabs-link-color;
       border-left: 1px solid @nav-tabs-link-color;
       border-bottom: 3px solid @nav-tabs-active-link-hover-bg;
-      border-top-left-radius: @border-radius-small;
-      border-top-right-radius: @border-radius-small;
+      border-top-left-radius: @border-radius-base;
+      border-top-right-radius: @border-radius-base;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
 
@@ -657,7 +658,7 @@ b, strong {
   // font-weight: @font-family-bold-weight;
   color: @sidebar-default-color;
   background-color: @sidebar-default-bg;
-  // .box-shadow(0px (2* @navbar-default-shadow-height) @navbar-default-shadow-height @navbar-default-shadow-height @sidebar-default-border);
+  .box-shadow(0px (2* @navbar-default-shadow-height) @navbar-default-shadow-height @navbar-default-shadow-height @sidebar-default-border);
   // .add-cicle-to-icon();
 
   > h1, h2, h3, h4, h5, h6,
@@ -729,6 +730,8 @@ b, strong {
   margin-top: 0;
   > h1 {
     margin-top: 0;
+    font-family: @font-family-monospace;
+    font-weight: 400;
   }
 }
 
@@ -1330,4 +1333,31 @@ h1 {
 }
 .info-label {
   color: @gray;
+}
+
+body ::selection {
+  background: @apim-accent;
+  color: @apim-dark-main;
+}
+
+.tab-content {
+  border: 2px solid var(--accent);
+  border-top-width: 0;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+/* Ensure datetime picker appears on screen */
+.modal .vdatetime-popup {
+  top: 100%;
+}
+
+.theme-apim .vdatetime-popup__header,
+.theme-apim .vdatetime-calendar__month__day--selected > span > span,
+.theme-apim .vdatetime-calendar__month__day--selected:hover > span > span {
+  background: var(--dark-primary);
+}
+
+.larger {
+  font-size: 2rem;
 }

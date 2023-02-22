@@ -128,7 +128,7 @@
 @font-family-sans-serif:  "Open Sans", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
-@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-monospace:   "Menlo", "Monaco", "Consolas", "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 @font-family-weight:      400;  // Regular
 @font-family-bold-weight: 600;  // Semi-bold
@@ -289,7 +289,7 @@
 @input-bg-disabled:              @apim-dark-secondary-alt;
 
 //** Text color for `<input>`s
-@input-color:                    @apim-grey-text;
+@input-color:                    @apim-accent;
 //** `<input>` border color
 @input-border:                   transparent;
 
@@ -314,6 +314,7 @@
 @input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
 //** Small `.form-control` height
 @input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+@input-font-family:              @font-family-monospace;
 
 //** `.form-group` margin
 @form-group-margin-bottom:       15px;

@@ -53,7 +53,7 @@
 // Example usage: change the default blue border and shadow to white for better
 // contrast against a dark gray background.
 .form-control-focus(@color: @input-border-focus) {
-  @color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
+  @color-rgba: rgba(red(@color), green(@color), blue(@color), .9);
   &:focus {
     border-color: @color;
     outline: 0;
@@ -64,7 +64,7 @@
 
 .form-control-underline(@color: @input-border-focus) {
   @color-rgba: rgba(red(@color), green(@color), blue(@color), .75);
-  border-bottom: 1px solid @color-rgba;
+  border-bottom: 2px solid @color-rgba;
 }
 
 // Form control sizing

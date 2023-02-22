@@ -45,6 +45,8 @@
 @s2bs-input-height-large: @input-height-large;
 @s2bs-input-height-small: @input-height-small;
 
+@s2bs-input-font-family: @input-font-family;
+
 // Theme-specific variables
 // -------------------------
 
@@ -88,6 +90,7 @@
   border-radius: @s2bs-input-border-radius;
   color: @s2bs-input-color;
   font-size: @s2bs-font-size-base;
+  font-family: @s2bs-input-font-family;
 }
 
 // @see http://getbootstrap.com/css/#forms-control-validation
@@ -278,6 +281,7 @@
     display: block;
     padding: @s2bs-dropdown-header-padding-vertical @s2bs-padding-base-horizontal;
     font-size: @s2bs-dropdown-header-font-size;
+    font-family: @s2bs-input-font-family;
     line-height: @s2bs-line-height-base;
     white-space: nowrap;
   }
@@ -396,6 +400,7 @@
   .select2-results > .select2-results__options {
     max-height: 200px;
     overflow-y: auto;
+    font-family: @s2bs-input-font-family;
   }
 
 
