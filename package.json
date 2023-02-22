@@ -107,6 +107,7 @@
     "@popperjs/core": "^2.11.6"
   },
   "devDependencies": {
+    "@astrojs/mdx": "^0.17.0",
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
