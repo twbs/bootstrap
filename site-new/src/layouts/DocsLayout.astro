@@ -1,5 +1,23 @@
 ---
+import type { MarkdownLayoutProps } from 'astro'
+import type { LayoutOverridesHTMLAttributes } from '../libs/layout'
 import BaseLayout from './BaseLayout.astro'
+
+// TODO(HiDeoo) Depending on the routing implementation, the partial may not be needed.
+type Props = Partial<
+  MarkdownLayoutProps<{
+    toc?: boolean
+  }>
+>
+
+const { frontmatter } = Astro.props
+
+const bodyProps: LayoutOverridesHTMLAttributes<'body'> = { tabindex: 0 }
+
+if (frontmatter?.toc) {
+  bodyProps['data-bs-spy'] = 'scroll'
+  bodyProps['data-bs-target'] = '#TableOfContents'
+}
 ---
 
-<BaseLayout layout="docs" />
+<BaseLayout {...Astro.props} layout="docs" overrides={{ body: bodyProps }} />
