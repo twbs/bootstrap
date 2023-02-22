@@ -20,4 +20,6 @@ if (frontmatter?.toc) {
 }
 ---
 
-<BaseLayout {...Astro.props} layout="docs" overrides={{ body: bodyProps }} />
+<BaseLayout {...Astro.props} layout="docs" overrides={{ body: bodyProps }}>
+  <slot />
+</BaseLayout>
