@@ -1,0 +1,15 @@
+---
+/*
+ * Usage: `callout "type"`, where `type` is one of info (default), danger, or warning
+ */
+
+interface Props {
+  cssClass: string // TODO: default "info" // TODO: type info | danger | warning
+}
+
+const { cssClass } = Astro.props
+---
+
+<div class={`bd-callout bd-callout-${cssClass}`}>
+  <slot />
+</div>

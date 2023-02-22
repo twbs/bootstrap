@@ -7,16 +7,31 @@ toc: true
 ---
 import AddedIn from '../components/shortcodes/AddedIn.astro';
 import CalloutDeprecatedDarkVariants from '../components/shortcodes/CalloutDeprecatedDarkVariants.astro';
+import Callout from '../components/shortcodes/Callout.astro';
 
 {/* TODO: change layout to DocsLayout.astro */}
 
 This is a test page to test page titles, descriptions & thumbnails.
 
 {/* TODO: global list of shortcodes! */}
+# AddedIn
 <AddedIn version="5.3" />
 {/* bs-table */}
+
+# CalloutDeprecatedDarkVariants
 <CalloutDeprecatedDarkVariants component="dropdown-menu" />
-{/* callout */}
+
+# Callout
+<Callout cssClass="danger">
+  Simple text
+</Callout>
+<Callout cssClass="warning">
+  **Inlined SVG requires properly escaped characters.** Some reserved characters, such as `<`, `>` and `#`, must be URL-encoded or escaped. We do this with the `$breadcrumb-divider` variable using our [`escape-svg()` Sass function](). <AddedIn version="truc" /> When customizing the CSS variable, you must handle this yourself. Read [Kevin Weber's explanations on CodePen](https://codepen.io/kevinweber/pen/dXWoRw ) for more info.
+</Callout>
+<Callout>
+  <AddedIn version="4.6" />
+</Callout>
+
 {/* deprecated-in */}
 {/* docsref */}
 {/* example */}
