@@ -27,6 +27,10 @@ interface Props {
 // TODO: default value of text should be "default (printf "%sx%s" $width $height)"
 // TODO: default background value is '$default_background'
 // TODO: default color value is '$default_color'
+// TODO:
+// {{- $grays := $.Site.Data.grays -}}
+// {{- $default_color := (index $grays 2).hex -}}
+// {{- $default_background := (index $grays 5).hex -}}
 const { background="#868e96", classes="bd-placeholder-img", color="#dee2e6", height="180", markup = 'svg', text='width x height', title = 'Placeholder', width="100%" } = Astro.props
 ---
 
@@ -38,12 +42,23 @@ const { background="#868e96", classes="bd-placeholder-img", color="#dee2e6", hei
     alt={`${title} : ${text}`}
     width={width}
     height={height}
+    src={`data:image/svg+xml,%3Csvg%20style='font-size:%201.125rem;%20font-family:system-ui,-apple-system,%22Segoe%20UI%22,Roboto,%22Helvetica%20Neue%22,%22Noto%20Sans%22,%22Liberation%20Sans%22,Arial,sans-serif,%22Apple%20Color%20Emoji%22,%22Segoe%20UI%20Emoji%22,%22Segoe%20UI%20Symbol%22,%22Noto%20Color%20Emoji%22;%20-webkit-user-select:%20none;%20-moz-user-select:%20none;%20user-select:%20none;%20text-anchor:%20middle;'%20width='200'%20height='200'%20xmlns='http://www.w3.org/2000/svg'%3E
+    ${(title !== "false" ? ("%3Ctitle%3E" + title + "%3C/title%3E") : "")}
+    %3Crect%20width='100%25'%20height='100%25'%20fill='%23dee2e6'%3E%3C/rect%3E
+    ${(text !== "false" ? ("%3Ctext%20x='50%25'%20y='50%25'%20fill='%23868e96'%20dy='.3em'%3E" + text + "%3C/text%3E") : undefined)}
+    %3C/svg%3E`}
   />
   :
   <svg xmlns="http://www.w3.org/2000/svg"
     class={`bd-placeholder-img${classes ? classes : ''}`}
     width={width}
     height={height}
+    role={(title !== "false" || text !== "false") ? "img" : undefined}
+    aria-label={(title !== "false" || text !== "false") ?
+    ((title!=="false" ? title + (text !== "false" ? ': ' : '') : "") + (text !== "false" ? text : ""))
+    : undefined
+    }
+    aria-hidden={!(title !== "false" || text !== "false") ? true : false}
     preserveAspectRatio="xMidYMid slice" focusable="false">
     {
       title !== "false" && <title>{title}</title>
@@ -55,33 +70,3 @@ const { background="#868e96", classes="bd-placeholder-img", color="#dee2e6", hei
   </svg>
 }
 
-<!--
-{{- $grays := $.Site.Data.grays -}}
-{{- $default_color := (index $grays 2).hex -}}
-{{- $default_background := (index $grays 5).hex -}}
-
-{{- $show_title := not (eq $title "false") -}}
-{{- $show_text := not (eq $text "false") -}}
-
-{{- if eq $markup "img" -}}
-  <img src="data:image/svg+xml,%3Csvg%20style='font-size:%201.125rem;%20font-family:system-ui,-apple-system,%22Segoe%20UI%22,Roboto,%22Helvetica%20Neue%22,%22Noto%20Sans%22,%22Liberation%20Sans%22,Arial,sans-serif,%22Apple%20Color%20Emoji%22,%22Segoe%20UI%20Emoji%22,%22Segoe%20UI%20Symbol%22,%22Noto%20Color%20Emoji%22;%20-webkit-user-select:%20none;%20-moz-user-select:%20none;%20user-select:%20none;%20text-anchor:%20middle;'%20width='200'%20height='200'%20xmlns='http://www.w3.org/2000/svg'%3E
-      {{- if $show_title }}%3Ctitle%3E{{ $title }}%3C/title%3E{{ end -}}
-      %3Crect%20width='100%25'%20height='100%25'%20fill='%23dee2e6'%3E%3C/rect%3E
-      {{- if $show_text }}%3Ctext%20x='50%25'%20y='50%25'%20fill='%23868e96'%20dy='.3em'%3E{{ $text }}%3C/text%3E{{ end -}}
-    %3C/svg%3E">
-{{- else -}}
-  <svg
-    {{ if (or $show_title $show_text) }}
-      role="img"
-      aria-label="
-        {{ if $show_title }}
-          {{ $title }}
-          {{ if $show_text }}: {{ end }}
-        {{ end }}
-        {{ if ($show_text) }}{{ $text }}{{ end }}"
-    {{ else }}
-      aria-hidden="true"
-    {{ end }}
-  </svg>
-{{- end -}}
--->
