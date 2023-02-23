@@ -94,6 +94,8 @@ Or, change the alignment of each column individually with any of the responsive 
 
 ### Horizontal alignment
 
+Change the horizontal alignment with any of the responsive `justify-content-*` classes.
+
 {{< example class="bd-example-row" >}}
 <div class="container text-center">
   <div class="row justify-content-start">

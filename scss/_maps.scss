@@ -6,17 +6,20 @@
 $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value") !default;
 // scss-docs-end theme-colors-rgb
 
+// scss-docs-start theme-text-map
 $theme-colors-text: (
-  "primary": $primary-text,
-  "secondary": $secondary-text,
-  "success": $success-text,
-  "info": $info-text,
-  "warning": $warning-text,
-  "danger": $danger-text,
-  "light": $light-text,
-  "dark": $dark-text,
+  "primary": $primary-text-emphasis,
+  "secondary": $secondary-text-emphasis,
+  "success": $success-text-emphasis,
+  "info": $info-text-emphasis,
+  "warning": $warning-text-emphasis,
+  "danger": $danger-text-emphasis,
+  "light": $light-text-emphasis,
+  "dark": $dark-text-emphasis,
 ) !default;
+// scss-docs-end theme-text-map
 
+// scss-docs-start theme-bg-subtle-map
 $theme-colors-bg-subtle: (
   "primary": $primary-bg-subtle,
   "secondary": $secondary-bg-subtle,
@@ -27,7 +30,9 @@ $theme-colors-bg-subtle: (
   "light": $light-bg-subtle,
   "dark": $dark-bg-subtle,
 ) !default;
+// scss-docs-end theme-bg-subtle-map
 
+// scss-docs-start theme-border-subtle-map
 $theme-colors-border-subtle: (
   "primary": $primary-border-subtle,
   "secondary": $secondary-border-subtle,
@@ -38,23 +43,27 @@ $theme-colors-border-subtle: (
   "light": $light-border-subtle,
   "dark": $dark-border-subtle,
 ) !default;
+// scss-docs-end theme-border-subtle-map
 
 $theme-colors-text-dark: null !default;
 $theme-colors-bg-subtle-dark: null !default;
 $theme-colors-border-subtle-dark: null !default;
 
 @if $enable-dark-mode {
+  // scss-docs-start theme-text-dark-map
   $theme-colors-text-dark: (
-    "primary": $primary-text-dark,
-    "secondary": $secondary-text-dark,
-    "success": $success-text-dark,
-    "info": $info-text-dark,
-    "warning": $warning-text-dark,
-    "danger": $danger-text-dark,
-    "light": $light-text-dark,
-    "dark": $dark-text-dark,
+    "primary": $primary-text-emphasis-dark,
+    "secondary": $secondary-text-emphasis-dark,
+    "success": $success-text-emphasis-dark,
+    "info": $info-text-emphasis-dark,
+    "warning": $warning-text-emphasis-dark,
+    "danger": $danger-text-emphasis-dark,
+    "light": $light-text-emphasis-dark,
+    "dark": $dark-text-emphasis-dark,
   ) !default;
+  // scss-docs-end theme-text-dark-map
 
+  // scss-docs-start theme-bg-subtle-dark-map
   $theme-colors-bg-subtle-dark: (
     "primary": $primary-bg-subtle-dark,
     "secondary": $secondary-bg-subtle-dark,
@@ -65,7 +74,9 @@ $theme-colors-border-subtle-dark: null !default;
     "light": $light-bg-subtle-dark,
     "dark": $dark-bg-subtle-dark,
   ) !default;
+  // scss-docs-end theme-bg-subtle-dark-map
 
+  // scss-docs-start theme-border-subtle-dark-map
   $theme-colors-border-subtle-dark: (
     "primary": $primary-border-subtle-dark,
     "secondary": $secondary-border-subtle-dark,
@@ -76,6 +87,7 @@ $theme-colors-border-subtle-dark: null !default;
     "light": $light-border-subtle-dark,
     "dark": $dark-border-subtle-dark,
   ) !default;
+  // scss-docs-end theme-border-subtle-dark-map
 }
 
 // Utilities maps
@@ -99,14 +111,14 @@ $utilities-text: map-merge(
 $utilities-text-colors: map-loop($utilities-text, rgba-css-var, "$key", "text") !default;
 
 $utilities-text-emphasis-colors: (
-  "primary-emphasis": var(--#{$prefix}primary-text),
-  "secondary-emphasis": var(--#{$prefix}secondary-text),
-  "success-emphasis": var(--#{$prefix}success-text),
-  "info-emphasis": var(--#{$prefix}info-text),
-  "warning-emphasis": var(--#{$prefix}warning-text),
-  "danger-emphasis": var(--#{$prefix}danger-text),
-  "light-emphasis": var(--#{$prefix}light-text),
-  "dark-emphasis": var(--#{$prefix}dark-text)
+  "primary-emphasis": var(--#{$prefix}primary-text-emphasis),
+  "secondary-emphasis": var(--#{$prefix}secondary-text-emphasis),
+  "success-emphasis": var(--#{$prefix}success-text-emphasis),
+  "info-emphasis": var(--#{$prefix}info-text-emphasis),
+  "warning-emphasis": var(--#{$prefix}warning-text-emphasis),
+  "danger-emphasis": var(--#{$prefix}danger-text-emphasis),
+  "light-emphasis": var(--#{$prefix}light-text-emphasis),
+  "dark-emphasis": var(--#{$prefix}dark-text-emphasis)
 ) !default;
 // scss-docs-end utilities-text-colors
 
@@ -137,6 +149,7 @@ $utilities-bg-subtle: (
 $utilities-border: map-merge(
   $utilities-colors,
   (
+    "black": to-rgb($black),
     "white": to-rgb($white)
   )
 ) !default;
