@@ -12,6 +12,8 @@ import Callout from '../components/shortcodes/Callout.astro'
 import DeprecatedIn from '../components/shortcodes/DeprecatedIn.astro'
 import JsDismiss from '../components/shortcodes/JsDismiss.astro'
 import Placeholder from '../components/shortcodes/Placeholder.astro'
+import BsTable from '../components/shortcodes/BsTable.astro'
+import Table from '../components/shortcodes/Table.astro'
 
 {/* TODO: change layout to DocsLayout.astro */}
 
@@ -25,7 +27,7 @@ This is a test page to test page titles, descriptions & thumbnails.
 
 # BsTable
 
-TODO: "bs-table"
+<BsTable />
 
 # CalloutDeprecatedDarkVariants
 
@@ -92,7 +94,10 @@ TODO: "scss-docs"
 
 # Table
 
-TODO: "table"
+<Table />
+<Table class="table" simplified={false} />
+<Table class="table table-striped-columns" />
+<Table class="table table-bordered-columns" />
 
 # Year
 
