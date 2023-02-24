@@ -1,0 +1,107 @@
+---
+import { Prism } from '@astrojs/prism'
+
+interface Props {
+  code: string
+  // https://prismjs.com/#supported-languages
+  lang: string
+}
+
+const { code, lang } = Astro.props
+
+// TODO(HiDeoo) Style (We use Chroma style overriden in _syntax.scss)
+// TODO(HiDeoo) sh $ prefix
+// TODO(HiDeoo) tabindex on pre (or maybe not https://github.com/alecthomas/chroma/pull/736)
+
+// TODO(HiDeoo) Finish porting site/assets/js/code-examples.js
+//   // wrap programmatically code blocks and add copy btn.
+//   document.querySelectorAll('.highlight')
+//     .forEach(element => {
+// TODO(HiDeoo) The ignore part is not done, we need to find usage of the component where this is relevant and figure out how to do it the Astro way.
+//       if (!element.closest('.bd-example-snippet')) { // Ignore examples made be shortcode
+//         element.insertAdjacentHTML('beforebegin', btnHtml)
+//         element.previousElementSibling.append(element)
+//       }
+//     })
+---
+
+<script>
+  import ClipboardJS from 'clipboard'
+
+  const btnTitle = 'Copy to clipboard'
+  const btnEdit = 'Edit on StackBlitz'
+
+  function snippetButtonTooltip(selector: string, title: string) {
+    document.querySelectorAll(selector).forEach((btn) => {
+      bootstrap.Tooltip.getOrCreateInstance(btn, { title })
+    })
+  }
+
+  snippetButtonTooltip('.btn-clipboard', btnTitle)
+  snippetButtonTooltip('.btn-edit', btnEdit)
+
+  const clipboard = new ClipboardJS('.btn-clipboard', {
+    target: (trigger) => trigger.closest('.bd-code-snippet')?.querySelector('.highlight')!,
+  })
+
+  clipboard.on('success', (event) => {
+    const iconFirstChild = event.trigger.querySelector('.bi')?.firstElementChild
+    const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
+    const namespace = 'http://www.w3.org/1999/xlink'
+    const originalXhref = iconFirstChild?.getAttributeNS(namespace, 'href')
+    // TODO(HiDeoo) Check other cases where this component is used and see if this code is relevant somehow
+    // const originalTitle = event.trigger?.title
+
+    tooltipBtn?.setContent({ '.tooltip-inner': 'Copied!' })
+
+    event.trigger.addEventListener(
+      'hidden.bs.tooltip',
+      () => {
+        tooltipBtn?.setContent({ '.tooltip-inner': btnTitle })
+      },
+      { once: true }
+    )
+
+    event.clearSelection()
+
+    if (originalXhref) {
+      iconFirstChild?.setAttributeNS(namespace, 'href', originalXhref.replace('clipboard', 'check2'))
+    }
+
+    setTimeout(() => {
+      if (originalXhref) {
+        iconFirstChild?.setAttributeNS(namespace, 'href', originalXhref)
+      }
+
+      // TODO(HiDeoo) See todo above regarding `originalTitle`
+      // event.trigger.title = originalTitle
+    }, 2000)
+  })
+
+  clipboard.on('error', (event) => {
+    const modifierKey = /mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
+    const fallbackMsg = `Press ${modifierKey}C to copy`
+    const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
+
+    tooltipBtn?.setContent({ '.tooltip-inner': fallbackMsg })
+
+    event.trigger.addEventListener(
+      'hidden.bs.tooltip',
+      () => {
+        tooltipBtn?.setContent({ '.tooltip-inner': btnTitle })
+      },
+      { once: true }
+    )
+  })
+</script>
+
+<div class="bd-code-snippet">
+  <div class="bd-clipboard">
+    <button type="button" class="btn-clipboard">
+      <svg class="bi" role="img" aria-label="Copy"><use xlink:href="#clipboard"></use></svg>
+    </button>
+  </div>
+  <div class="highlight">
+    <Prism code={code} lang={lang} />
+  </div>
+</div>

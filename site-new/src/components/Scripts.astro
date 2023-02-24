@@ -39,10 +39,10 @@ const { layout } = Astro.props
 }
 
 <!--
-{{- $vendor := resources.Match "js/vendor/*.js" -}}
 {{- $js := resources.Match "js/*.js" -}}
 TODO(HiDeoo) This should prolly use getVersionedDocsPath()
 {{- $targetDocsJSPath := path.Join "/docs" .Site.Params.docs_version "assets/js/docs.js" -}}
+// TODO(HiDeoo) $vendor is no longer relevant as the only JS vendor was clipboard.js and is now bundled by Astro
 {{- $docsJs := append $js $vendor | resources.Concat $targetDocsJSPath -}}
 
 {{- if eq hugo.Environment "production" -}}

@@ -1,5 +1,6 @@
 ---
 import { getVersionedDocsPath } from '../../libs/config'
+import Code from '../Code.astro'
 ---
 
 <section class="col-lg-7 mb-5">
@@ -23,31 +24,23 @@ import { getVersionedDocsPath } from '../../libs/config'
   <div class="col-lg-6">
     <h3>Include all of Bootstrap’s Sass</h3>
     <p>Import one stylesheet and you're off to the races with every feature of our CSS.</p>
-    <!-- TODO: replace by Astro stuff
-      * 'highlight' is a feature provided by Hugo
-      * We use Chroma style overriden in _syntax.scss
-    -->
-    <!--
-    {{ highlight (printf `// Variable overrides first
+    <Code
+      code={`// Variable overrides first
 $primary: #900;
 $enable-shadows: true;
 $prefix: "mo-";
 
 // Then import Bootstrap
-@import "../node_modules/bootstrap/scss/bootstrap";
-`) "scss" "" }}
-    -->
+@import "../node_modules/bootstrap/scss/bootstrap";`}
+      lang="scss"
+    />
     <p>Learn more about our <a href={getVersionedDocsPath('customize/options')}>global Sass options</a>.</p>
   </div>
   <div class="col-lg-6">
     <h3>Include what you need</h3>
     <p>The easiest way to customize Bootstrap—include only the CSS you need.</p>
-    <!-- TODO: replace by Astro stuff
-      * 'highlight' is a feature provided by Hugo
-      * We use Chroma style overriden in _syntax.scss
-    -->
-    <!--
-{{ highlight (printf `// Functions first
+    <Code
+      code={`// Functions first
 @import "../node_modules/bootstrap/scss/functions";
 
 // Variable overrides second
@@ -67,9 +60,9 @@ $prefix: "mo-";
 @import "../node_modules/bootstrap/scss/containers";
 @import "../node_modules/bootstrap/scss/grid";
 @import "../node_modules/bootstrap/scss/helpers";
-@import "../node_modules/bootstrap/scss/utilities/api";
-`) "scss" "" }}
-    -->
+@import "../node_modules/bootstrap/scss/utilities/api";`}
+      lang="scss"
+    />
     <p>Learn more about <a href={getVersionedDocsPath('customize/sass')}>using Bootstrap with Sass</a>.</p>
   </div>
 </section>

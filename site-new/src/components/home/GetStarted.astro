@@ -1,5 +1,6 @@
 ---
-import { getVersionedDocsPath } from '../../libs/config'
+import { getConfig, getVersionedDocsPath } from '../../libs/config'
+import Code from '../Code.astro'
 ---
 
 <div class="col-lg-7 mx-auto pb-3 mb-3 mb-md-5 text-md-center">
@@ -28,14 +29,8 @@ import { getVersionedDocsPath } from '../../libs/config'
         href="https://github.com/twbs/examples/">use any demo from our Examples repo</a
       > to quickly jumpstart Bootstrap projects.
     </p>
-    <!-- TODO: replace by Astro stuff
-      * 'highlight' is a feature provided by Hugo
-      * We use Chroma style overriden in _syntax.scss
-    -->
-    <!--
-    {{ highlight (printf ("npm install bootstrap@%s") .Site.Params.current_version) "sh" "" }}
-    {{ highlight (printf ("gem install bootstrap -v %s") .Site.Params.current_ruby_version) "sh" "" }}
-    -->
+    <Code code={`npm i bootstrap@${getConfig().params.current_version}`} lang="sh" />
+    <Code code={`gem install bootstrap -v ${getConfig().params.current_ruby_version}`} lang="sh" />
     <p>
       <a href={getVersionedDocsPath('getting-started/download')}>Read our installation docs</a> for more info and additional
       package managers.
@@ -54,14 +49,18 @@ import { getVersionedDocsPath } from '../../libs/config'
         >separately</a
       >.
     </p>
-    <!-- TODO: replace by Astro stuff
-      * 'highlight' is a feature provided by Hugo
-      * We use Chroma style overriden in _syntax.scss
-    -->
-    <!--
-    {{ highlight (printf (`<link href="%s" rel="stylesheet" integrity=%q crossorigin="anonymous">`) .Site.Params.cdn.css (.Site.Params.cdn.css_hash | safeHTMLAttr)) "html" "" }}
-    {{ highlight (printf (`<script src="%s" integrity=%q crossorigin="anonymous"></script>`) .Site.Params.cdn.js_bundle (.Site.Params.cdn.js_bundle_hash | safeHTMLAttr)) "html" "" }}
-    -->
+    <Code
+      code={`<link href="${getConfig().params.cdn.css}" rel="stylesheet" integrity="${
+        getConfig().params.cdn.css_hash
+      }" crossorigin="anonymous">`}
+      lang="html"
+    />
+    <Code
+      code={`<script src="${getConfig().params.cdn.js_bundle}" integrity="${
+        getConfig().params.cdn.js_bundle_hash
+      }" crossorigin="anonymous"></script>`}
+      lang="html"
+    />
   </div>
 
   <div class="col-md-8 mx-auto text-center">

@@ -1,5 +1,5 @@
 ---
-import { getGrays } from '../../libs/data/grays'
+import { getData } from '../../libs/data'
 
 interface Props {
   /**
@@ -45,13 +45,11 @@ interface Props {
   width?: string
 }
 
-// TODO: double check the rendering of the grays (doubt about the index value compared to Hugo)
-// TODO(HiDeoo) `getGrays()` should be refactored to not rely on indexes but have strictly typed values to use, e.g. `getGrays().100` or `getGrays('100')`.
 // TODO(HiDeoo) After migrating the docs, make sure this is never called with the "false" string.
 const {
-  background = getGrays()[5].hex,
+  background = getData('grays')['600'],
   class: className,
-  color = getGrays()[2].hex,
+  color = getData('grays')['300'],
   height = '180',
   markup = 'svg',
   text,

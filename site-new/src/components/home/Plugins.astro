@@ -1,5 +1,9 @@
 ---
 import { getVersionedDocsPath } from '../../libs/config'
+import { getData } from '../../libs/data'
+import Code from '../Code.astro'
+
+const plugins = getData('plugins')
 ---
 
 <section class="pb-md-5 mb-5">
@@ -39,23 +43,19 @@ import { getVersionedDocsPath } from '../../libs/config'
           </ul>
         </div>
       </div>
-      <!-- TODO: replace by Astro stuff
-        * 'highlight' is a feature provided by Hugo
-        * We use Chroma style overriden in _syntax.scss
-      -->
-      <!--
-      {{ highlight (printf `<div class="dropdown">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-  Dropdown
-</button>
-<ul class="dropdown-menu">
-  <li><button class="dropdown-item" type="button">Dropdown item</button></li>
-  <li><button class="dropdown-item" type="button">Dropdown item</button></li>
-  <li><button class="dropdown-item" type="button">Dropdown item</button></li>
-</ul>
-</div>
-`) "html" "" }}
-      -->
+      <Code
+        code={`<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown
+  </button>
+  <ul class="dropdown-menu">
+    <li><button class="dropdown-item" type="button">Dropdown item</button></li>
+    <li><button class="dropdown-item" type="button">Dropdown item</button></li>
+    <li><button class="dropdown-item" type="button">Dropdown item</button></li>
+  </ul>
+</div>`}
+        lang="html"
+      />
       <p>
         Learn more about <a href={getVersionedDocsPath('getting-started/javascript/#using-bootstrap-as-a-module')}
           >our JavaScript as modules</a
@@ -72,18 +72,19 @@ import { getVersionedDocsPath } from '../../libs/config'
       </p>
       <hr class="my-4" />
       <div class="row g-3">
-        <!-- TODO: handle this loop through .Site.Data.plugins -->
-        <!--
-        {{- range $plugin := .Site.Data.plugins -}}
-          {{- $href := printf "/docs/%s/%s" $.Site.Params.docs_version $plugin.link }}
-          <div class="col-sm-6 mb-2">
-            <a class="d-block pe-lg-4 text-decoration-none lh-sm" href="{{ $href }}">
-              <h4 class="mb-0 fs-5 fw-semibold">{{ $plugin.name }}</h4>
-              <small class="text-body-secondary">{{ $plugin.description }}</small>
-            </a>
-          </div>
-        {{- end }}
-         -->
+        {
+          plugins.map((plugin) => {
+            return (
+              <div class="col-sm-6 mb-2">
+                {/* TODO(HiDeoo) Ensure link color is correct after properly loading stylesheets  */}
+                <a class="d-block pe-lg-4 text-decoration-none lh-sm" href={getVersionedDocsPath(plugin.link)}>
+                  <h4 class="mb-0 fs-5 fw-semibold">{plugin.name}</h4>
+                  <small class="text-body-secondary">{plugin.description}</small>
+                </a>
+              </div>
+            )
+          })
+        }
       </div>
     </div>
   </div>

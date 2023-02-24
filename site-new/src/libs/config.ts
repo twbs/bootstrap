@@ -1,15 +1,39 @@
 import fs from 'node:fs'
 import yaml from 'js-yaml'
 import { z } from 'zod'
+import { zVersionMajorMinor, zVersionSemver } from './validation'
+
+// The config schema used to validate the config file content and ensure all values required by the site are valid.
+const configSchema = z.object({
+  params: z.object({
+    authors: z.string(),
+    blog: z.string().url(),
+    cdn: z.object({
+      css: z.string().url(),
+      css_hash: z.string(),
+      js_bundle: z.string().url(),
+      js_bundle_hash: z.string(),
+    }),
+    current_version: zVersionSemver,
+    current_ruby_version: zVersionSemver,
+    description: z.string(),
+    docs_version: zVersionMajorMinor,
+    github_org: z.string().url(),
+    icons: z.string().url(),
+    opencollective: z.string().url(),
+    repo: z.string().url(),
+    subtitle: z.string(),
+    swag: z.string().url(),
+    themes: z.string().url(),
+    twitter: z.string(),
+  }),
+  title: z.string(),
+})
 
 let config: Config | undefined
 
-// https://ihateregex.io/expr/semver/
-const semverRegex =
-  /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/
-
-// A helper to get the config loaded fom the `config.yml` file. If the config does not match the `configSchema` below,
-// an error is thrown to indicate that the config file is invalid and some action is required.
+// A helper to get the config loaded fom the `config.yml` file. If the config does not match the `configSchema`, an
+// error is thrown to indicate that the config file is invalid and some action is required.
 export function getConfig(): Config {
   if (config) {
     // Returns the config if it has already been loaded.
@@ -38,25 +62,5 @@ export function getVersionedDocsPath(path: string): string {
 
   return `/docs/${docs_version}/${path.replace(/^\//, '')}`
 }
-
-// The config schema used to validate the config file content and ensure all values required by the site are valid.
-const configSchema = z.object({
-  params: z.object({
-    authors: z.string(),
-    blog: z.string().url(),
-    current_version: z.string().regex(semverRegex),
-    description: z.string(),
-    docs_version: z.string().regex(/^\d+\.\d+$/),
-    github_org: z.string().url(),
-    icons: z.string().url(),
-    opencollective: z.string().url(),
-    repo: z.string().url(),
-    subtitle: z.string(),
-    swag: z.string().url(),
-    themes: z.string().url(),
-    twitter: z.string(),
-  }),
-  title: z.string(),
-})
 
 type Config = z.infer<typeof configSchema>

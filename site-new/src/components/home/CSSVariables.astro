@@ -1,5 +1,6 @@
 ---
 import { getVersionedDocsPath } from '../../libs/config'
+import Code from '../Code.astro'
 ---
 
 <section class="row g-md-5 pb-md-5 mb-5 align-items-center">
@@ -31,12 +32,8 @@ import { getVersionedDocsPath } from '../../libs/config'
         > to write new styles. CSS variables use the <code>var(--bs-variableName)</code> syntax and can be inherited by children
         elements.
       </p>
-      <!-- TODO: replace by Astro stuff
-      * 'highlight' is a feature provided by Hugo
-      * We use Chroma style overriden in _syntax.scss
-    -->
-      <!--
-      {{ highlight (printf `.component {
+      <Code
+        code={`.component {
   color: var(--bs-gray-800);
   background-color: var(--bs-gray-100);
   border: 1px solid var(--bs-gray-200);
@@ -45,8 +42,9 @@ import { getVersionedDocsPath } from '../../libs/config'
 
 .component-header {
   color: var(--bs-purple);
-}`) "scss" "" }}
-    -->
+}`}
+        lang="scss"
+      />
     </div>
     <div class="col-lg-6 mb-3">
       <h3 class="fw-semibold">Customizing via CSS variables</h3>
@@ -54,12 +52,8 @@ import { getVersionedDocsPath } from '../../libs/config'
         Override global, component, or utility class variables to customize Bootstrap just how you like. No need to
         redeclare each rule, just a new variable value.
       </p>
-      <!-- TODO: replace by Astro stuff
-        * 'highlight' is a feature provided by Hugo
-        * We use Chroma style overriden in _syntax.scss
-      -->
-      <!--
-      {{ highlight (printf `body {
+      <Code
+        code={`body {
   --bs-body-font-family: var(--bs-font-monospace);
   --bs-body-line-height: 1.4;
   --bs-body-bg: var(--bs-gray-100);
@@ -69,8 +63,9 @@ import { getVersionedDocsPath } from '../../libs/config'
   --bs-table-color: var(--bs-gray-600);
   --bs-table-bg: var(--bs-gray-100);
   --bs-table-border-color: transparent;
-}`) "scss" "" }}
-      -->
+}`}
+        lang="scss"
+      />
     </div>
   </div>
 </section>

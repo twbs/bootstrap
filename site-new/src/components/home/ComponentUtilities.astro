@@ -1,5 +1,6 @@
 ---
 import { getVersionedDocsPath } from '../../libs/config'
+import Code from '../Code.astro'
 ---
 
 <section class="pb-md-5 mb-5">
@@ -103,12 +104,8 @@ import { getVersionedDocsPath } from '../../libs/config'
           </li>
         </ul>
       </div>
-      <!-- TODO: replace by Astro stuff
-        * 'highlight' is a feature provided by Hugo
-        * We use Chroma style overriden in _syntax.scss
-      -->
-      <!--
-{{ highlight (printf `<ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+      <Code
+        code={`<ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
   <li class="nav-item" role="presentation">
     <button class="nav-link active rounded-5" id="home-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Home</button>
   </li>
@@ -118,9 +115,9 @@ import { getVersionedDocsPath } from '../../libs/config'
   <li class="nav-item" role="presentation">
     <button class="nav-link rounded-5" id="contact-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Contact</button>
   </li>
-</ul>
-`) "html" "" }}
-      -->
+</ul>`}
+        lang="html"
+      />
       <p class="d-flex justify-content-start mb-md-0">
         <a href={getVersionedDocsPath('examples#snippets')} class="icon-link icon-link-hover fw-semibold">
           Explore customized components
@@ -134,12 +131,8 @@ import { getVersionedDocsPath } from '../../libs/config'
         Use Bootstrap's utility API to modify any of our included utilities or create your own custom utilities for any
         project. Import Bootstrap first, then use Sass map functions to modify, add, or remove utilities.
       </p>
-      <!-- TODO: replace by Astro stuff
-        * 'highlight' is a feature provided by Hugo
-        * We use Chroma style overriden in _syntax.scss
-      -->
-      <!--
-{{ highlight (printf `@import "bootstrap/scss/bootstrap";
+      <Code
+        code={`@import "bootstrap/scss/bootstrap";
 
 $utilities: map-merge(
   $utilities,
@@ -151,9 +144,9 @@ $utilities: map-merge(
       values: auto pointer grab,
     )
   )
-);
-`) "scss" "" }}
-      -->
+);`}
+        lang="scss"
+      />
       <p class="d-flex justify-content-start mb-md-0">
         <a href={getVersionedDocsPath('utilities/api/')} class="icon-link icon-link-hover fw-semibold mb-3">
           Explore the utility API
