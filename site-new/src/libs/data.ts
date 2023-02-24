@@ -35,6 +35,19 @@ const dataDefinitions = {
       name: z.string(),
     })
     .array(),
+  sidebar: z
+    .object({
+      title: z.string(),
+      icon: z.string().optional(),
+      icon_color: z.string().optional(),
+      pages: z
+        .object({
+          title: z.string(),
+        })
+        .array()
+        .optional(),
+    })
+    .array(),
 } satisfies Record<string, DataSchema>
 
 let data = new Map<DataType, z.infer<DataSchema>>()

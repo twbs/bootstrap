@@ -1,0 +1,36 @@
+---
+import { getData } from '../libs/data'
+
+const sidebar = getData('sidebar')
+
+console.log(sidebar)
+
+// TODO: WIP finish this component
+---
+
+<h1>Sidebar</h1>
+
+<nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
+  <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
+    {
+      sidebar.map((sidebarElement) => {
+        return (
+          <li class="bd-links-group py-2">
+            <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+              {sidebarElement.icon && (
+                <svg
+                  class="bi me-2"
+                  style={sidebarElement.icon_color && `color: var(--bs-${sidebarElement.icon_color});`}
+                  aria-hidden="true"
+                >
+                  <use xlink:href={`#${sidebarElement.icon}`} />
+                </svg>
+              )}
+              {sidebarElement.title}
+            </strong>
+          </li>
+        )
+      })
+    }
+  </ul>
+</nav>
