@@ -1,0 +1,27 @@
+---
+interface Props {
+  name: string
+}
+
+const { name } = Astro.props
+---
+
+<p>
+  Dismissal can be achieved with the <code>data</code> attribute on a button <strong>within the {name}</strong> as demonstrated
+  below:
+</p>
+
+<div>// TODO(HiDeoo) add code</div>
+
+<!-- ```html
+<button type="button" class="btn-close" data-bs-dismiss="{{ $name }}" aria-label="Close"></button>
+``` -->
+
+<p>or on a button <strong>outside the {name}</strong> using the <code>data-bs-target</code> as demonstrated below:</p>
+
+<div>// TODO(HiDeoo) add code</div>
+
+<!-- ```html
+<button type="button" class="btn-close" data-bs-dismiss="{{ $name }}" data-bs-target="#my-{{ $name }}" aria-label="Close"></button>
+```
+ -->
