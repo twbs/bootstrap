@@ -374,8 +374,7 @@ Now that you're familiar with how the utilities API works, you can use it to mod
 
 1. [Creating your own `$utilities` map](#add-or-override-utilities) that gets automatically merged with our default `$utilities` map.
 2. [Modify our defaults using mixins](#modify-defaults) to add or remove utilities, update specific options, or modify utility values.
-
-You can also use functions to [get specific utility values](#get-values-and-options) for your own use in your Sass.
+3. You can also use functions to [get specific utility values](#get-values-and-options) for your own use in your Sass.
 
 ### Add or override utilities
 

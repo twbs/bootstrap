@@ -135,6 +135,10 @@
         rtl: true
       ));
 
+      // Unedited options are still present
+      @include assert-equal(utilities-get-option(flex, property), flex, "property");
+      @include assert-equal(utilities-get-option(flex, values), (fill: 1 1 auto), "values");
+      // And the updated options have their new values
       @include assert-equal(utilities-get-option(flex, responsive), false, "responsive");
       @include assert-equal(utilities-get-option(flex, rtl), true, "rtl");
     }
