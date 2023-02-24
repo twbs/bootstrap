@@ -1,29 +1,17 @@
 ---
 interface Props {
-  name: string
+  /**
+   * Any class(es) to be added to the `table`
+   * @default "table"
+   */
+  cssClass?: string
 }
 
-const { name } = Astro.props
+const { cssClass = 'table' } = Astro.props
 
-/*
-{{< bs-table >}}
-| Method | Description |
-| --- | --- |
-| `close` | Closes an alert by removing it from the DOM. If the `.fade` and `.show` classes are present on the element, the alert will fade out before it is removed. |
-| `dispose` | Destroys an element's alert. (Removes stored data on the DOM element) |
-| `getInstance` | Static method which allows you to get the alert instance associated to a DOM element. For example: `bootstrap.Alert.getInstance(alert)`. |
-| `getOrCreateInstance` | Static method which returns an alert instance associated to a DOM element or create a new one in case it wasn't initialized. You can use it like this: `bootstrap.Alert.getOrCreateInstance(element)`. |
-{{< /bs-table >}}
-
-{{< bs-table "table" >}}
-| Method | Description |
-| --- | --- |
-| `dispose` | Destroys an element's button. (Removes stored data on the DOM element) |
-| `getInstance` | Static method which allows you to get the button instance associated to a DOM element, you can use it like this: `bootstrap.Button.getInstance(element)`. |
-| `getOrCreateInstance` | Static method which returns a button instance associated to a DOM element or create a new one in case it wasn't initialized. You can use it like this: `bootstrap.Button.getOrCreateInstance(element)`. |
-| `toggle` | Toggles push state. Gives the button the appearance that it has been activated. |
-{{< /bs-table >}}
-*/
+// TODO: is there a better way to handle this component???
+let slotContent = await Astro.slots.render('default', [])
+slotContent = slotContent.replace('<table>', `<table class="${cssClass}">`)
 ---
 
-BsTable
+<div class="table-responsive" set:html={slotContent} />
