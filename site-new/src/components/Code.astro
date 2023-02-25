@@ -40,6 +40,11 @@ const { code, lang } = Astro.props
   snippetButtonTooltip('.btn-clipboard', btnTitle)
   snippetButtonTooltip('.btn-edit', btnEdit)
 
+  // TODO: Issue to fix, when copying "npm i bootstrap@5.3.0-alpha1" code in the homepage
+  // `trigger.closest('.bd-code-snippet')?.querySelector('.highlight')!.textContent`
+  // contains "\n    npm i bootstrap@5.3.0-alpha1\n  "
+  // This issue can only seen on Firefox macOS (working on Chrome macOS)
+  // However, there's no problem on Firefox macOS in https://twbs-bootstrap.netlify.app/
   const clipboard = new ClipboardJS('.btn-clipboard', {
     target: (trigger) => trigger.closest('.bd-code-snippet')?.querySelector('.highlight')!,
   })
