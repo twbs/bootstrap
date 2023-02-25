@@ -380,7 +380,6 @@
 
   .highlight {
     margin-bottom: 0;
-    @include border-top-radius(0);
   }
 
   .bd-example {
@@ -391,7 +390,7 @@
   @include media-breakpoint-up(md) {
     margin-right: 0;
     margin-left: 0;
-    @include border-radius($border-radius);
+    @include border-radius(calc(var(--bs-border-radius) + 1px));
   }
 }
 
@@ -401,7 +400,7 @@
 
 .bd-scss-docs {
   .highlight-toolbar {
-    @include border-top-radius(calc(var(--bs-border-radius) + 1px));
+    @include border-top-radius(calc(var(--bs-border-radius) - 1px));
   }
 }
 
