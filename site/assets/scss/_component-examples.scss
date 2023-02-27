@@ -404,8 +404,3 @@
     @include border-top-radius(calc(var(--bs-border-radius) + 1px));
   }
 }
-
-.focused {
-  outline: 0;
-  box-shadow: var(--#{$variable-prefix}focus-ring-offset), var(--#{$variable-prefix}focus-ring-x, 0) var(--#{$variable-prefix}focus-ring-y, 0) var(--#{$variable-prefix}focus-ring-blur) var(--#{$variable-prefix}focus-ring-width) var(--#{$variable-prefix}focus-ring-color);
-}
