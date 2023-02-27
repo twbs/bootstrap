@@ -97,15 +97,19 @@
 .bs-tooltip-auto {
   &[data-popper-placement^="top"] {
     @extend .bs-tooltip-top;
+	  padding: 0 0 var(--#{$prefix}tooltip-arrow-height) 0;
   }
   &[data-popper-placement^="right"] {
     @extend .bs-tooltip-end;
+	  padding: 0 0 0 var(--#{$prefix}tooltip-arrow-height);
   }
   &[data-popper-placement^="bottom"] {
     @extend .bs-tooltip-bottom;
+	  padding: var(--#{$prefix}tooltip-arrow-height) 0 0 0;
   }
   &[data-popper-placement^="left"] {
     @extend .bs-tooltip-start;
+	  padding: 0 var(--#{$prefix}tooltip-arrow-height) 0 0;
   }
 }
 
