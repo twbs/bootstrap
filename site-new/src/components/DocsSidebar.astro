@@ -1,31 +1,68 @@
 ---
 import { getData } from '../libs/data'
+import { getConfig } from '../libs/config'
 
 const sidebar = getData('sidebar')
 
-// TODO: WIP finish this component
+// TODO: Handle $url
+// TODO: Handle $page_slug
 ---
 
 <nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
   <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
     {
       sidebar.map((sidebarElement) => {
-        return (
-          <li class="bd-links-group py-2">
-            <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
-              {sidebarElement.icon && (
-                <svg
-                  class="bi me-2"
-                  style={sidebarElement.icon_color && `color: var(--bs-${sidebarElement.icon_color});`}
-                  aria-hidden="true"
-                >
-                  <use xlink:href={`#${sidebarElement.icon}`} />
-                </svg>
-              )}
-              {sidebarElement.title}
-            </strong>
-          </li>
-        )
+        // TODO: Handle $link
+        // TODO: Handle $link_slug
+        // TODO: Handle "if $group-pages" + $link/$link_slug
+        // TODO: Handle $group_slug + find a way to use urlize instead of split/join/toLowerCase
+        const groupSlug = sidebarElement.title.split(' ').join('-').toLowerCase();
+        // TODO: Handle $is_active_group
+
+        if (sidebarElement.pages) {
+          return (
+            <li class="bd-links-group py-2">
+              <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+                {sidebarElement.icon && (
+                  <svg
+                    class="bi me-2"
+                    style={sidebarElement.icon_color && `color: var(--bs-${sidebarElement.icon_color});`}
+                    aria-hidden="true"
+                  >
+                    <use xlink:href={`#${sidebarElement.icon}`} />
+                  </svg>
+                )}
+                {sidebarElement.title}
+              </strong>
+              <ul class="list-unstyled fw-normal pb-2 small">
+                {
+                  sidebarElement.pages?.map((sidebarElementPage) => {
+                    // TODO: Handle $doc_slug correctly + find a way to use urlize instead of split/join/toLowerCase
+                    const docSlug = sidebarElementPage.title.split(' ').join('-').toLowerCase();
+                    // TODO: Handle $is_active
+                    // TODO: Handle $href
+                    // TODO: finalize the inclusion of the following <a href="">
+                    const url = "/docs/" + getConfig().params.docs_version + "/" + groupSlug + "/" + docSlug;
+                    return (
+                      <li>
+                        <a href={url} class="bd-links-link d-inline-block rounded">{sidebarElementPage.title}</a>
+                      </li>
+                    )
+                  })
+                }
+              </ul>
+            </li>
+          )
+        } else {
+          return (
+            <li class="bd-links-span-all mt-1 mb-3 mx-4 border-top"></li>
+            <li class="bd-links-span-all">
+              <a href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/" class="bd-links-link d-inline-block rounded small">
+                {sidebarElement.title}
+              </a>
+            </li>
+          )
+        }
       })
     }
   </ul>
