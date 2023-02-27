@@ -12,6 +12,7 @@ const docsDirectory = './site-new'
 // A list of components that should be auto imported in all pages for convenience.
 // Note: updating this list requires a restart of the dev server.
 const autoImportedComponents = [
+  'src/components/GuideFooter.mdx',
   'src/components/JsDataAttributes.mdx',
   'src/components/callouts/InfoNpmStarter.mdx',
   'src/components/shortcodes/AddedIn.astro',
