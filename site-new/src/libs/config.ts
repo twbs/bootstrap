@@ -32,6 +32,7 @@ const configSchema = z.object({
     icons: z.string().url(),
     opencollective: z.string().url(),
     repo: z.string().url(),
+    rfs_version: z.string(), // TODO: create the "v" + semVer regexp
     subtitle: z.string(),
     swag: z.string().url(),
     themes: z.string().url(),
