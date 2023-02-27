@@ -22,6 +22,9 @@ const configSchema = z.object({
     current_ruby_version: zVersionSemver,
     description: z.string(),
     docs_version: zVersionMajorMinor,
+    download: z.object({
+      source: z.string().url()
+    }),
     github_org: z.string().url(),
     icons: z.string().url(),
     opencollective: z.string().url(),
