@@ -1,7 +1,8 @@
 import fs from 'node:fs'
 import yaml from 'js-yaml'
 import { z } from 'zod'
-import { zNamedHexColor } from './validation'
+import { zHexColor, zNamedHexColor } from './validation'
+import { capitalizeFirstLetter } from './string'
 
 // An object containing all the data types and their associated schema. The key should match the name of the data file
 // in the `./site/data/` directory.
@@ -48,6 +49,16 @@ const dataDefinitions = {
         .optional(),
     })
     .array(),
+  'theme-colors': z
+    .object({
+      name: z.string(),
+      hex: zHexColor,
+    })
+    .array()
+    .transform((val) => {
+      // Add a `title` property to each theme color object being the capitalized version of the `name` property.
+      return val.map((themeColor) => ({ ...themeColor, title: capitalizeFirstLetter(themeColor.name) }))
+    }),
 } satisfies Record<string, DataSchema>
 
 let data = new Map<DataType, z.infer<DataSchema>>()

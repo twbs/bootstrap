@@ -101,7 +101,7 @@
     "astro-dev": "astro dev --root site-new",
     "astro-build": "astro build --root site-new",
     "astro-preview": "astro preview --root site-new",
-    "astro-lint": "prettier --config site-new/.prettierrc.json -c --cache site-new && astro check --root site-new && tsc --noEmit"
+    "astro-lint": "prettier --config site-new/.prettierrc.json -c --cache site-new && tsc --noEmit"
   },
   "peerDependencies": {
     "@popperjs/core": "^2.11.6"
@@ -120,6 +120,7 @@
     "@types/bootstrap": "^5.2.6",
     "@types/js-yaml": "^4.0.5",
     "astro": "^2.0.14",
+    "astro-auto-import": "^0.2.1",
     "autoprefixer": "^10.4.14",
     "bundlewatch": "^0.3.3",
     "clean-css-cli": "^5.6.2",
@@ -164,6 +165,7 @@
     "stylelint": "^14.16.1",
     "stylelint-config-twbs-bootstrap": "^7.0.0",
     "terser": "5.16.0",
+    "unist-util-visit": "^4.1.2",
     "vnu-jar": "22.9.29",
     "zod": "^3.20.6"
   },

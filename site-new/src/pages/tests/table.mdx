@@ -1,0 +1,57 @@
+---
+layout: ../../layouts/DocsLayout.astro
+title: Table
+description: This page contains a port of the `{{< table …` thingy
+---
+
+import { getData } from '../../libs/data'
+
+<Table />
+
+<Table class="table" simplified={false} />
+
+<Table class="table table-striped-columns" />
+
+<Table class="table table-bordered-columns" />
+
+> This following section contains examples previously using the `{{< table.inline >}}` inline shortcode. After reading more about it [here](https://github.com/gohugoio/hugo/issues/4011), turns out these are not related at all to the other `{{< table …` shortcode.
+
+<div class="bd-example">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Class</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Default</th>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      {getData('theme-colors').map((themeColor) => {
+        return (
+          <tr class={`table-${themeColor.name}`}>
+            <th scope="row">{themeColor.title}</th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+        )
+      })}
+    </tbody>
+  </table>
+</div>
+
+<Code code={`<!-- On tables -->
+${getData('theme-colors').map((themeColor) => `<table class="table-${themeColor.name}">...</table>`).join('\n')}
+
+<!-- On rows -->
+${getData('theme-colors').map((themeColor) => `<tr class="table-${themeColor.name}">...</tr>`).join('\n')}
+
+<!-- On cells (\`td\` or \`th\`) -->
+<tr>
+  ${getData('theme-colors').map((themeColor) => `<td class="table-${themeColor.name}">...</td>`).join('\n  ')}
+</tr>
+`} language="html" />

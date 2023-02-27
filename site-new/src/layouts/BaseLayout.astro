@@ -17,6 +17,8 @@ type Props = {
   // HTML element names.
   overrides?: {
     body?: LayoutOverridesHTMLAttributes<'body'>
+    // Note that main can also be overridden by the Astro slot named "main" and that the slot will take precedence over
+    // any override.
     main?: LayoutOverridesHTMLAttributes<'main'>
   }
   // A string containing the robots meta tag content. If not set, the tag will not be rendered.
@@ -57,9 +59,15 @@ const mainProps = overrides?.main ?? {}
   <body {...bodyProps}>
     <Header layout={layout} title={title} />
 
-    <main {...mainProps}>
-      <slot />
-    </main>
+    {
+      Astro.slots.has('main') ? (
+        <slot name="main" />
+      ) : (
+        <main {...mainProps}>
+          <slot />
+        </main>
+      )
+    }
 
     <!-- TODO:
 			{{ partial "footer" . }}

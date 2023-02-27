@@ -1,6 +1,3 @@
----
----
-
 <thead>
   <tr>
     <th scope="col">#</th>

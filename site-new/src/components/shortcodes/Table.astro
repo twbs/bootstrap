@@ -1,15 +1,15 @@
 ---
-import Code from '../Code.astro'
-import TableContent from '../TableContent.astro'
+import Code from '../shortcodes/Code.astro'
+import * as tableContent from './TableContent.md'
 
 interface Props {
   /**
-   * Any class(es) to be added to the `table`
-   * @default ""
+   * Any class(es) to be added to the `<table>` element (both in the example and code snippet).
    */
   class?: string
   /**
-   * Show a simplified version in the examples
+   * Show a simplified version in the example code snippet by replacing the table content inside `<table>` & `</table>`
+   * with `...`.
    * @default true
    */
   simplified?: boolean
@@ -17,51 +17,15 @@ interface Props {
 
 const { class: className, simplified = true } = Astro.props
 
-let tableAttributes = ''
-let tableContent = '  ...\n'
-
-if (className) {
-  tableAttributes = ` class="${className}"`
-}
-
-if (!simplified) {
-  // TODO: get a dump from TableContent.astro or handle it differently
-  tableContent = `<thead>
-  <tr>
-    <th scope="col">#</th>
-    <th scope="col">First</th>
-    <th scope="col">Last</th>
-    <th scope="col">Handle</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <th scope="row">1</th>
-    <td>Mark</td>
-    <td>Otto</td>
-    <td>@mdo</td>
-  </tr>
-  <tr>
-    <th scope="row">2</th>
-    <td>Jacob</td>
-    <td>Thornton</td>
-    <td>@fat</td>
-  </tr>
-  <tr>
-    <th scope="row">3</th>
-    <td colspan="2">Larry the Bird</td>
-    <td>@twitter</td>
-  </tr>
-</tbody>`
-}
-
-const table = `<table${tableAttributes}>\n${tableContent}</table>`
+const tableCode = `<table${className ? ` class="${className}"` : ''}>
+  ${simplified ? '...' : tableContent.compiledContent()}
+</table>`
 ---
 
 <div class="bd-example">
   <table class={className}>
-    {simplified ? <TableContent /> : tableContent}
+    <tableContent.Content />
   </table>
 </div>
 
-<Code code={table} lang="html" />
+<Code code={tableCode} lang="html" />

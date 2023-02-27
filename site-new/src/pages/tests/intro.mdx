@@ -1,0 +1,69 @@
+---
+layout: ../../layouts/DocsLayout.astro
+title: Get started with Bootstrap
+description: Bootstrap is a powerful, feature-packed frontend toolkit. Build anything—from prototype to production—in minutes.
+toc: true
+added: "5.1"
+sections:
+  - title: Sass
+    description: Utilize our source Sass files to take advantage of variables, maps, mixins, and functions.
+  - title: Options
+    description: Customize Bootstrap with built-in variables to easily toggle global CSS preferences.
+  - title: Color
+    description: Learn about and customize the color systems that support the entire toolkit.
+  - title: Color modes
+    description: Explore our default light mode and the new dark mode, or create custom color modes yourself.
+  - title: Components
+    description: Learn how we build nearly all our components responsively and with base and modifier classes.
+  - title: CSS variables
+    description: Use Bootstrap's CSS custom properties for fast and forward-looking design and development.
+  - title: Optimize
+    description: Keep your projects lean, responsive, and maintainable so you can deliver the best experience.
+---
+
+## Quick start
+
+Get started by including Bootstrap's production-ready CSS and JavaScript via CDN without the need for any build steps. See it in practice with this [Bootstrap CodePen demo](https://codepen.io/team/bootstrap/pen/qBamdLj).
+
+<br/>
+
+1. **Create a new `index.html` file in your project root.** Include the `<meta name="viewport">` tag as well for [proper responsive behavior](https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag) in mobile devices.
+
+   ```html
+   <!doctype html>
+   <html lang="en">
+     <head>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <title>Bootstrap demo</title>
+     </head>
+     <body>
+       <h1>Hello, world!</h1>
+     </body>
+   </html>
+   ```
+
+2. **Include Bootstrap's CSS and JS.** Place the `<link>` tag in the `<head>` for our CSS, and the `<script>` tag for our JavaScript bundle (including Popper for positioning dropdowns, poppers, and tooltips) before the closing `</body>`. Learn more about our [CDN links](#cdn-links).
+
+   ```html
+   <!doctype html>
+   <html lang="en">
+     <head>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <title>Bootstrap demo</title>
+       <link href="{{< param "cdn.css" >}}" rel="stylesheet" integrity="{{< param "cdn.css_hash" >}}" crossorigin="anonymous">
+     </head>
+     <body>
+       <h1>Hello, world!</h1>
+       <script src="{{< param "cdn.js_bundle" >}}" integrity="{{< param "cdn.js_bundle_hash" >}}" crossorigin="anonymous"></script>
+     </body>
+   </html>
+   ```
+
+   You can also include [Popper](https://popper.js.org/) and our JS separately. If you don't plan to use dropdowns, popovers, or tooltips, save some kilobytes by not including Popper.
+
+   ```html
+   <script src="{{< param "cdn.popper" >}}" integrity="{{< param "cdn.popper_hash" >}}" crossorigin="anonymous"></script>
+   <script src="{{< param "cdn.js" >}}" integrity="{{< param "cdn.js_hash" >}}" crossorigin="anonymous"></script>
+   ```

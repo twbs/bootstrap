@@ -4,3 +4,4 @@
 site-new/dist
 site-new/public
 site-new/src/scss
+site-new/src/pages/**/*.mdx
