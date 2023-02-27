@@ -11,8 +11,12 @@ const configSchema = z.object({
     cdn: z.object({
       css: z.string().url(),
       css_hash: z.string(),
+      js: z.string().url(),
+      js_hash: z.string(),
       js_bundle: z.string().url(),
       js_bundle_hash: z.string(),
+      popper: z.string().url(),
+      popper_hash: z.string(),
     }),
     current_version: zVersionSemver,
     current_ruby_version: zVersionSemver,

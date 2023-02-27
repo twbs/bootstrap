@@ -13,7 +13,6 @@ description: Bootstrap is a powerful, feature-packed frontend toolkit. Build any
 toc: true
 
 # TODO: I needed to change <br> into <br/>. Maybe there's a config somewhere to fix this behavior because <br>'s perfectly valid. It won't help if we can't copy/paste the .md documents as is from Bootstrap.
-# TODO: handle all remaining {{< >}} in the document to replace them with real values
 # TODO: Astro doesn't seem to check bad URLs which is the case with Hugo. Maybe something to configure somewhere?
 ---
 
@@ -48,11 +47,11 @@ Get started by including Bootstrap's production-ready CSS and JavaScript via CDN
        <meta charset="utf-8">
        <meta name="viewport" content="width=device-width, initial-scale=1">
        <title>Bootstrap demo</title>
-       <link href="{{< param "cdn.css" >}}" rel="stylesheet" integrity="{{< param "cdn.css_hash" >}}" crossorigin="anonymous">
+       <link href="[[param:cdn.css]]" rel="stylesheet" integrity="[[param:cdn.css_hash]]" crossorigin="anonymous">
      </head>
      <body>
        <h1>Hello, world!</h1>
-       <script src="{{< param "cdn.js_bundle" >}}" integrity="{{< param "cdn.js_bundle_hash" >}}" crossorigin="anonymous"></script>
+       <script src="[[param:cdn.js_bundle]]" integrity="[[param:cdn.js_bundle_hash]]" crossorigin="anonymous"></script>
      </body>
    </html>
    ```
@@ -60,8 +59,8 @@ Get started by including Bootstrap's production-ready CSS and JavaScript via CDN
    You can also include [Popper](https://popper.js.org/) and our JS separately. If you don't plan to use dropdowns, popovers, or tooltips, save some kilobytes by not including Popper.
 
    ```html
-   <script src="{{< param "cdn.popper" >}}" integrity="{{< param "cdn.popper_hash" >}}" crossorigin="anonymous"></script>
-   <script src="{{< param "cdn.js" >}}" integrity="{{< param "cdn.js_hash" >}}" crossorigin="anonymous"></script>
+   <script src="[[param:cdn.popper]]" integrity="[[param:cdn.popper_hash]]" crossorigin="anonymous"></script>
+   <script src="[[param:cdn.js]]" integrity="[[param:cdn.js_hash]]" crossorigin="anonymous"></script>
    ```
 
 {/* TODO: Can't copy the rest of the content. From here, handle the rest of the document whose some parts need shortcodes, partials or whatever */}
