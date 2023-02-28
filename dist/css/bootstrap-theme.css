@@ -220,7 +220,7 @@
 }
 .select2-container--bootstrap.select2-container--disabled .select2-selection,
 .select2-container--bootstrap.select2-container--disabled .select2-selection--multiple .select2-selection__choice {
-  background-color: #27283c;
+  background-color: #1b1e32;
 }
 .select2-container--bootstrap.select2-container--disabled .select2-selection__clear,
 .select2-container--bootstrap.select2-container--disabled .select2-selection--multiple .select2-selection__choice__remove {
@@ -1698,8 +1698,11 @@ fieldset[disabled] .btn-inverse.active {
 }
 .main .page-header > h1 {
   margin-top: 0;
+  overflow: hidden;
   font-family: "Menlo", "Monaco", "Consolas", "Courier New", monospace;
   font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 body {
   padding-top: 70px;
