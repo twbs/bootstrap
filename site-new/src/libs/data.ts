@@ -7,6 +7,11 @@ import { capitalizeFirstLetter } from './string'
 // An object containing all the data types and their associated schema. The key should match the name of the data file
 // in the `./site/data/` directory.
 const dataDefinitions = {
+  colors: z.object({
+      name: z.string(),
+      hex: zHexColor,
+    })
+    .array(),
   grays: z
     .tuple([
       zNamedHexColor(z.literal(100)),
@@ -19,7 +24,8 @@ const dataDefinitions = {
       zNamedHexColor(z.literal(800)),
       zNamedHexColor(z.literal(900)),
     ])
-    .transform((val) => {
+    // TODO: transform() is commented because of the usage in customize/color.md which loops over it
+    /*.transform((val) => {
       // Map array entries to an object with the name as key and the hex color as value for easier lookup.
       const grays = {} as Record<(typeof val)[number]['name'], string>
 
@@ -28,7 +34,7 @@ const dataDefinitions = {
       }
 
       return grays
-    }),
+    })*/,
   plugins: z
     .object({
       description: z.string(),
