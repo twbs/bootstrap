@@ -651,6 +651,7 @@ $utilities: map-merge(
       class: link-underline-opacity,
       state: hover,
       values: (
+        0: 0,
         10: .1,
         25: .25,
         50: .5,
