@@ -1,5 +1,5 @@
 ---
-import type { MarkdownLayoutProps } from 'astro'
+import type { CollectionEntry } from 'astro:content'
 import { getConfig } from '../libs/config'
 import type { Layout, LayoutOverridesHTMLAttributes } from '../libs/layout'
 import Head from '../components/head/Head.astro'
@@ -31,13 +31,7 @@ type Props = {
 // The following props are automatically set by Astro (if defined) based on the markdown frontmatter when rendering a
 // markdown page. They can be accessed through the `Astro.props.frontmatter` object but note that they won't be set when
 // not rendering a markdown page.
-type MarkdownProps = Partial<
-  MarkdownLayoutProps<{
-    description?: string
-    thumbnail?: string
-    title?: string
-  }>
->
+type MarkdownProps = Partial<CollectionEntry<'docs'>['data']>
 
 const { frontmatter, layout, overrides, robots } = Astro.props
 
@@ -54,7 +48,14 @@ const mainProps = overrides?.main ?? {}
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
   <head>
-    <Head description={description} layout={layout} robots={robots} thumbnail={thumbnail} title={title} />
+    <Head
+      description={description}
+      direction={frontmatter?.direction}
+      layout={layout}
+      robots={robots}
+      thumbnail={thumbnail}
+      title={title}
+    />
   </head>
   <body {...bodyProps}>
     <Header layout={layout} title={title} />

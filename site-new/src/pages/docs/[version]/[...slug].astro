@@ -1,0 +1,26 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content'
+import DocsLayout from '../../../layouts/DocsLayout.astro'
+import { getConfig } from '../../../libs/config'
+import Code from '../../../components/shortcodes/Code.astro'
+
+export async function getStaticPaths() {
+  const docsPages = await getCollection('docs')
+
+  return docsPages.map((docsPage) => {
+    return {
+      params: { slug: docsPage.slug, version: getConfig().params.docs_version },
+      props: docsPage,
+    }
+  })
+}
+
+type Props = CollectionEntry<'docs'>
+
+const { data, render } = Astro.props
+const { Content } = await render()
+---
+
+<DocsLayout frontmatter={data}>
+  <Content components={{ pre: Code }} />
+</DocsLayout>

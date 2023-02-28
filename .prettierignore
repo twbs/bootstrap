@@ -1,7 +1,9 @@
 # Prettier is only used for the webite
 
 # TODO(HiDeoo) rename later
+site-new/.astro
 site-new/dist
 site-new/public
 site-new/src/scss
 site-new/src/pages/**/*.mdx
+site-new/src/content/**/*.mdx

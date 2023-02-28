@@ -1,26 +1,19 @@
 ---
-import type { MarkdownLayoutProps } from 'astro'
+import type { CollectionEntry } from 'astro:content'
 import type { LayoutOverridesHTMLAttributes } from '../libs/layout'
 import Ads from '../components/Ads.astro'
 import BaseLayout from './BaseLayout.astro'
 import DocsSidebar from '../components/DocsSidebar.astro'
 
-// TODO(HiDeoo) Depending on the routing implementation, the partial may not be needed.
-type Props = Partial<
-  MarkdownLayoutProps<{
-    added?: string
-    description: string
-    sections?: { title: string; description: string }[]
-    title: string
-    toc?: boolean
-  }>
->
+interface Props {
+  frontmatter: CollectionEntry<'docs'>['data']
+}
 
 const { frontmatter } = Astro.props
 
 const bodyProps: LayoutOverridesHTMLAttributes<'body'> = { tabindex: 0 }
 
-if (frontmatter?.toc) {
+if (frontmatter.toc) {
   bodyProps['data-bs-spy'] = 'scroll'
   bodyProps['data-bs-target'] = '#TableOfContents'
 }
@@ -51,7 +44,7 @@ if (frontmatter?.toc) {
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
           <div class="mb-3 mb-md-0 d-flex text-nowrap">
             {
-              frontmatter?.added && (
+              frontmatter.added && (
                 <small class="d-inline-flex px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2 me-2">
                   Added in v{frontmatter.added}
                 </small>
@@ -68,14 +61,14 @@ if (frontmatter?.toc) {
               View on GitHub
             </a>
           </div>
-          <h1 class="bd-title mb-0" id="content">{frontmatter?.title}</h1>
+          <h1 class="bd-title mb-0" id="content">{frontmatter.title}</h1>
         </div>
-        <p class="bd-lead">{frontmatter?.description}</p>
+        <p class="bd-lead">{frontmatter.description}</p>
         <Ads />
       </div>
 
       {
-        frontmatter?.toc && (
+        frontmatter.toc && (
           <div class="bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 text-body-secondary">
             <button
               class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none"
@@ -101,7 +94,7 @@ if (frontmatter?.toc) {
 
       <div class="bd-content ps-lg-2">
         {
-          frontmatter?.sections && (
+          frontmatter.sections && (
             <div class="row g-3">
               {frontmatter.sections.map((section) => (
                 <div class="col-md-6">

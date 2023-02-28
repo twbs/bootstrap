@@ -1,4 +1,6 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
+import { getConfig, getVersionedBsJsPath } from '../libs/config'
 import type { Layout } from '../libs/layout'
 
 interface Props {
@@ -6,28 +8,18 @@ interface Props {
 }
 
 const { layout } = Astro.props
+
+const bsJsLinkProps: HTMLAttributes<'script'> = {
+  src: getVersionedBsJsPath(),
+}
+
+if (import.meta.env.PROD) {
+  bsJsLinkProps.crossorigin = 'anonymous'
+  bsJsLinkProps.integrity = getConfig().params.cdn.js_bundle_hash
+}
 ---
 
-<!--
-  TODO: Handle correctly the origin of bootstrap.bundle.*.js (from the docs and not from the CDN)
-  TODO(HiDeoo) This should use getVersionedDocsPath()
-{{ if eq hugo.Environment "production" -}}
-  <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.min.js" {{ printf "integrity=%q" .Site.Params.cdn.js_bundle_hash | safeHTMLAttr }} crossorigin="anonymous"></script>
-{{ else -}}
-  <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
-{{- end }}
--->{
-  import.meta.env.PROD ? (
-    <script
-      is:inline
-      src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-      crossorigin="anonymous"
-    />
-  ) : (
-    <script is:inline src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.js" />
-  )
-}
+<script is:inline {...bsJsLinkProps}></script>
 
 {
   layout === 'docs' && (

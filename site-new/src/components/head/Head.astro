@@ -8,13 +8,14 @@ import Analytics from './Analytics.astro'
 
 interface Props {
   description: string
+  direction?: 'rtl'
   layout: Layout
   robots: string | undefined
   thumbnail: string
   title: string
 }
 
-const { description, layout, robots, thumbnail, title } = Astro.props
+const { description, direction, layout, robots, thumbnail, title } = Astro.props
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
 
@@ -53,7 +54,7 @@ const pageTitle = isHome
 routing so I fully understand the current structure. -->
 <script is:inline src="/js/color-modes.js"></script>
 
-<Stylesheet layout={layout} />
+<Stylesheet direction={direction} layout={layout} />
 <Favicons />
 <Social description={description} thumbnail={thumbnail} title={title} />
 <Analytics />

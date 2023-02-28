@@ -31,7 +31,7 @@ This is a test page to test page titles, descriptions & thumbnails.
 | `getOrCreateInstance` | Static method which returns an alert instance associated to a DOM element or create a new one in case it wasn't initialized. You can use it like this: `bootstrap.Alert.getOrCreateInstance(element)`. |
 </BsTable>
 
-<BsTable cssClass="table">
+<BsTable class="table">
 | Method | Description |
 | --- | --- |
 | `dispose` | Destroys an element's button. (Removes stored data on the DOM element) |
@@ -40,7 +40,7 @@ This is a test page to test page titles, descriptions & thumbnails.
 | `toggle` | Toggles push state. Gives the button the appearance that it has been activated. |
 </BsTable>
 
-<BsTable cssClass="table table-options">
+<BsTable class="table table-options">
 | Variable                       | Values                             | Description                                                                            |
 | ------------------------------ | ---------------------------------- | -------------------------------------------------------------------------------------- |
 | `$enable-rounded`              | `true` (default) or `false`        | Enables predefined `border-radius` styles on various components. |
@@ -61,10 +61,10 @@ TODO: add an example which contains {{< docsref >}} links
 
 # Callout
 
-<Callout cssClass="danger">
+<Callout type="danger">
   Simple text
 </Callout>
-<Callout cssClass="warning">
+<Callout type="warning">
   **Inlined SVG requires properly escaped characters.** Some reserved characters, such as `<`, `>` and `#`, must be URL-encoded or escaped. We do this with the `$breadcrumb-divider` variable using our [`escape-svg()` Sass function](). <AddedIn version="truc" /> When customizing the CSS variable, you must handle this yourself. Read [Kevin Weber's explanations on CodePen](https://codepen.io/kevinweber/pen/dXWoRw ) for more info.
 </Callout>
 <Callout>

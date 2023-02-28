@@ -2,12 +2,13 @@
 import { Prism } from '@astrojs/prism'
 
 interface Props {
-  code: string
+  class: string
+  code?: string
   // https://prismjs.com/#supported-languages
-  lang: string
+  lang?: string
 }
 
-const { code, lang } = Astro.props
+const { class: className, code, lang } = Astro.props
 
 // TODO(HiDeoo) Style (We use Chroma style overriden in _syntax.scss)
 // TODO(HiDeoo) sh $ prefix
@@ -108,6 +109,6 @@ const { code, lang } = Astro.props
     </button>
   </div>
   <div class="highlight">
-    <Prism code={code} lang={lang} />
+    {code && lang ? <Prism code={code} lang={lang} /> : /* prettier-ignore */ <pre class={className}><slot /></pre>}
   </div>
 </div>

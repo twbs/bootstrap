@@ -7,7 +7,7 @@ import { SKIP, visit } from 'unist-util-visit'
 export const rehypeBsTable: Plugin<[], Root> = function () {
   return function rehypeBsTablePlugin(ast) {
     visit(ast, 'element', (node, _index, parent) => {
-      if (node.tagName !== 'table' || parent?.type !== 'mdxJsxFlowElement') {
+      if (node.tagName !== 'table' || parent?.type !== 'mdxJsxFlowElement' || parent.name !== 'BsTable') {
         return SKIP
       }
 
