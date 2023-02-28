@@ -65,9 +65,9 @@ Customize the hover `transform` by overriding the `--bs-icon-link-transform` CSS
 Customize the color by overriding the `--bs-link-*` CSS variable:
 
 {{< example >}}
-<a class="icon-link icon-link-hover link-warning" style="--bs-link-hover-color-rgb: 139,185,354;" href="#">
-  <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"></use></svg>
+<a class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" href="#">
   Icon link
+  <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
 </a>
 {{< /example >}}
 
