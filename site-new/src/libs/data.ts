@@ -7,6 +7,14 @@ import { capitalizeFirstLetter } from './string'
 // An object containing all the data types and their associated schema. The key should match the name of the data file
 // in the `./site/data/` directory.
 const dataDefinitions = {
+  breakpoints: z.object({
+      breakpoint: z.string(), // TODO: type?
+      abbr: z.string(), // TODO: type?
+      name: z.string(), // TODO: type?
+      "min-width": z.string(), // TODO: type?
+      container: z.string(), // TODO: type?
+    })
+    .array(),
   colors: z.object({
       name: z.string(),
       hex: zHexColor,
