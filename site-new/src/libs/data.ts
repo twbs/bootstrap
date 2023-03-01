@@ -26,6 +26,14 @@ const dataDefinitions = {
       user: z.string(),
     })
     .array(),
+  translations: z
+    .object({
+      name: z.string(),
+      code: z.string(), // TODO: could maybe be a type
+      description: z.string(),
+      url: z.string().url(),
+    })
+    .array(),
   grays: z
     .tuple([
       zNamedHexColor(z.literal(100)),
