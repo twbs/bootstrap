@@ -20,6 +20,12 @@ const dataDefinitions = {
       hex: zHexColor,
     })
     .array(),
+  'core-team': z
+    .object({
+      name: z.string(),
+      user: z.string(),
+    })
+    .array(),
   grays: z
     .tuple([
       zNamedHexColor(z.literal(100)),
