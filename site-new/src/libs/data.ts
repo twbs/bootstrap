@@ -81,6 +81,7 @@ const dataDefinitions = {
     .object({
       name: z.string(),
       hex: zHexColor,
+      contrast_color: z.string().optional()
     })
     .array()
     .transform((val) => {
