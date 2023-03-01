@@ -10,26 +10,24 @@ the developers managing and developing this open source project. In return,
 they should reciprocate that respect in addressing your issue or assessing
 patches and features.
 
-
 ## Using the issue tracker
 
-The [issue tracker](https://github.com/twbs/bootstrap/issues) is
-the preferred channel for [bug reports](#bug-reports), [features requests](#feature-requests)
-and [submitting pull requests](#pull-requests), but please respect the following
+The [issue tracker](https://github.com/twbs/bootstrap/issues){:target="\_blank"} is
+the preferred channel for [bug reports](#bug-reports){:target="\_blank"}, [features requests](#feature-requests){:target="\_blank"}
+and [submitting pull requests](#pull-requests){:target="\_blank"}, but please respect the following
 restrictions:
 
-- Please **do not** use the issue tracker for personal support requests. Stack Overflow ([`bootstrap-5`](https://stackoverflow.com/questions/tagged/bootstrap-5) tag), [our GitHub Discussions](https://github.com/twbs/bootstrap/discussions) or [IRC](/README.md#community) are better places to get help.
+- Please **do not** use the issue tracker for personal support requests. Stack Overflow ([`bootstrap-5`](https://stackoverflow.com/questions/tagged/bootstrap-5){:target="\_blank"} tag), [our GitHub Discussions](https://github.com/twbs/bootstrap/discussions){:target="\_blank"} or [IRC](/README.md#community){:target="\_blank"} are better places to get help.
 
 - Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
 
 - Please **do not** post comments consisting solely of "+1" or ":thumbsup:".
-  Use [GitHub's "reactions" feature](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/)
+  Use [GitHub's "reactions" feature](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/){:target="\_blank"}
   instead. We reserve the right to delete comments which violate this rule.
 
 - Please **do not** open issues regarding the official themes offered on <https://themes.getbootstrap.com/>.
   Instead, please email any questions or feedback regarding those themes to `themes AT getbootstrap DOT com`.
-
 
 ## Issues and labels
 
@@ -46,8 +44,7 @@ Our bug tracker utilizes several labels to help organize and identify issues. He
 - `js` - Issues stemming from our compiled or source JavaScript files.
 - `meta` - Issues with the project itself or our GitHub repository.
 
-For a complete look at our labels, see the [project labels page](https://github.com/twbs/bootstrap/labels).
-
+For a complete look at our labels, see the [project labels page](https://github.com/twbs/bootstrap/labels){:target="\_blank"}.
 
 ## Bug reports
 
@@ -56,7 +53,7 @@ Good bug reports are extremely helpful, so thanks!
 
 Guidelines for bug reports:
 
-0. **[Validate your HTML](https://html5.validator.nu/)** to ensure your
+0. **[Validate your HTML](https://html5.validator.nu/){:target="\_blank"}** to ensure your
    problem isn't caused by a simple error in your own code.
 
 1. **Use the GitHub issue search** &mdash; check if the issue has already been
@@ -66,9 +63,8 @@ Guidelines for bug reports:
    latest `main` (or `v4-dev` branch if the issue is about v4) in the repository.
 
 3. **Isolate the problem** &mdash; ideally create a [reduced test
-   case](https://css-tricks.com/reduced-test-cases/) and a live example.
-   These [v4 CodePen](https://codepen.io/team/bootstrap/pen/yLabNQL) and [v5 CodePen](https://codepen.io/team/bootstrap/pen/qBamdLj) are helpful templates.
-
+   case](https://css-tricks.com/reduced-test-cases/){:target="\_blank"} and a live example.
+   These [v4 CodePen](https://codepen.io/team/bootstrap/pen/yLabNQL){:target="\_blank"} and [v5 CodePen](https://codepen.io/team/bootstrap/pen/qBamdLj){:target="\_blank"} are helpful templates.
 
 A good bug report shouldn't leave others needing to chase you up for more
 information. Please try to be as detailed as possible in your report. What is
@@ -99,13 +95,12 @@ Example:
 
 Sometimes bugs reported to us are actually caused by bugs in the browser(s) themselves, not bugs in Bootstrap per se.
 
-| Vendor(s)     | Browser(s)                   | Rendering engine | Bug reporting website(s)                               | Notes                                                    |
-| ------------- | ---------------------------- | ---------------- | ------------------------------------------------------ | -------------------------------------------------------- |
-| Mozilla       | Firefox                      | Gecko            | <https://bugzilla.mozilla.org/enter_bug.cgi>             | "Core" is normally the right product option to choose.   |
-| Apple         | Safari                       | WebKit           | <https://bugs.webkit.org/enter_bug.cgi?product=WebKit>   | In Apple's bug reporter, choose "Safari" as the product. |
-| Google, Opera | Chrome, Chromium, Opera v15+ | Blink            | <https://bugs.chromium.org/p/chromium/issues/list>       | Click the "New issue" button.                            |
-| Microsoft     | Edge                         | Blink            | <https://developer.microsoft.com/en-us/microsoft-edge/>  | Go to "Help > Send Feedback" from the browser            |
-
+| Vendor(s)     | Browser(s)                   | Rendering engine | Bug reporting website(s)                                | Notes                                                    |
+| ------------- | ---------------------------- | ---------------- | ------------------------------------------------------- | -------------------------------------------------------- |
+| Mozilla       | Firefox                      | Gecko            | <https://bugzilla.mozilla.org/enter_bug.cgi>            | "Core" is normally the right product option to choose.   |
+| Apple         | Safari                       | WebKit           | <https://bugs.webkit.org/enter_bug.cgi?product=WebKit>  | In Apple's bug reporter, choose "Safari" as the product. |
+| Google, Opera | Chrome, Chromium, Opera v15+ | Blink            | <https://bugs.chromium.org/p/chromium/issues/list>      | Click the "New issue" button.                            |
+| Microsoft     | Edge                         | Blink            | <https://developer.microsoft.com/en-us/microsoft-edge/> | Go to "Help > Send Feedback" from the browser            |
 
 ## Feature requests
 
@@ -114,39 +109,38 @@ fits with the scope and aims of the project. It's up to _you_ to make a strong
 case to convince the project's developers of the merits of this feature. Please
 provide as much detail and context as possible.
 
-
 ## Pull requests
 
 Good pull requests—patches, improvements, new features—are a fantastic
 help. They should remain focused in scope and avoid containing unrelated
 commits.
 
-**Please ask first** before embarking on any **significant** pull request (e.g.
+**Please [ask](https://github.com/twbs/bootstrap/issues/new?assignees=&labels=feature&template=feature_request.yml&title=Suggest+a+new+feature){:target="\_blank"} first** before embarking on any **significant** pull request (e.g.
 implementing features, refactoring code, porting to a different language),
 otherwise you risk spending a lot of time working on something that the
 project's developers might not want to merge into the project. For trivial
 things, or things that don't require a lot of your time, you can go ahead and
 make a PR.
 
-Please adhere to the [coding guidelines](#code-guidelines) used throughout the
+Please adhere to the [coding guidelines](#code-guidelines){:target="\_blank"} used throughout the
 project (indentation, accurate comments, etc.) and any other requirements
 (such as test coverage).
 
 **Do not edit `bootstrap.css` or `bootstrap.js`, and do not commit
 any dist files (`dist/` or `js/dist`).** Those files are automatically generated by our build tools. You should
-edit the source files in [`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/main/scss)
-and/or [`/bootstrap/js/src/`](https://github.com/twbs/bootstrap/tree/main/js/src) instead.
+edit the source files in [`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/main/scss){:target="\_blank"}
+and/or [`/bootstrap/js/src/`](https://github.com/twbs/bootstrap/tree/main/js/src){:target="\_blank"} instead.
 
 Similarly, when contributing to Bootstrap's documentation, you should edit the
 documentation source files in
-[the `/bootstrap/site/content/docs/` directory of the `main` branch](https://github.com/twbs/bootstrap/tree/main/site/content/docs).
+[the `/bootstrap/site/content/docs/` directory of the `main` branch](https://github.com/twbs/bootstrap/tree/main/site/content/docs){:target="\_blank"}.
 **Do not edit the `gh-pages` branch.** That branch is generated from the
 documentation source files and is managed separately by the Bootstrap Core Team.
 
 Adhering to the following process is the best way to get your work
 included in the project:
 
-1. [Fork](https://help.github.com/articles/fork-a-repo/) the project, clone your fork,
+1. [Fork](https://help.github.com/articles/fork-a-repo/){:target="\_blank"} the project, clone your fork,
    and configure the remotes:
 
    ```bash
@@ -173,9 +167,9 @@ included in the project:
    ```
 
 4. Commit your changes in logical chunks. Please adhere to these [git commit
-   message guidelines](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+   message guidelines](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html){:target="\_blank"}
    or your code is unlikely be merged into the main project. Use Git's
-   [interactive rebase](https://help.github.com/articles/about-git-rebase/)
+   [interactive rebase](https://help.github.com/articles/about-git-rebase/){:target="\_blank"}
    feature to tidy up your commits before making them public.
 
 5. Locally merge (or rebase) the upstream development branch into your topic branch:
@@ -190,32 +184,31 @@ included in the project:
    git push origin <topic-branch-name>
    ```
 
-7. [Open a Pull Request](https://help.github.com/articles/about-pull-requests/)
-    with a clear title and description against the `main` branch.
+7. [Open a Pull Request](https://help.github.com/articles/about-pull-requests/){:target="\_blank"}
+   with a clear title and description against the `main` branch.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
-license your work under the terms of the [MIT License](../LICENSE) (if it
+license your work under the terms of the [MIT License](../LICENSE){:target="\_blank"} (if it
 includes code changes) and under the terms of the
-[Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/)
+[Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/){:target="\_blank"}
 (if it includes documentation changes).
-
 
 ## Code guidelines
 
 ### HTML
 
-[Adhere to the Code Guide.](https://codeguide.co/#html)
+[Adhere to the Code Guide.](https://codeguide.co/#html){:target="\_blank"}
 
 - Use tags and elements appropriate for an HTML5 doctype (e.g., self-closing tags).
 - Use CDNs and HTTPS for third-party JS when possible. We don't use protocol-relative URLs in this case because they break when viewing the page locally via `file://`.
-- Use [WAI-ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) attributes in documentation examples to promote accessibility.
+- Use [WAI-ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA){:target="\_blank"} attributes in documentation examples to promote accessibility.
 
 ### CSS
 
-[Adhere to the Code Guide.](https://codeguide.co/#css)
+[Adhere to the Code Guide.](https://codeguide.co/#css){:target="\_blank"}
 
-- When feasible, default color palettes should comply with [WCAG color contrast guidelines](https://www.w3.org/TR/WCAG20/#visual-audio-contrast).
-- Except in rare cases, don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](https://www.a11yproject.com/posts/2013-01-25-never-remove-css-outlines/) for more details.
+- When feasible, default color palettes should comply with [WCAG color contrast guidelines](https://www.w3.org/TR/WCAG20/#visual-audio-contrast){:target="\_blank"}.
+- Except in rare cases, don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](https://www.a11yproject.com/posts/2013-01-25-never-remove-css-outlines/){:target="\_blank"} for more details.
 
 ### JS
 
@@ -228,10 +221,9 @@ includes code changes) and under the terms of the
 
 Run `npm run test` before committing to ensure your changes follow our coding standards.
 
-
 ## License
 
-By contributing your code, you agree to license your contribution under the [MIT License](../LICENSE).
-By contributing to the documentation, you agree to license your contribution under the [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/).
+By contributing your code, you agree to license your contribution under the [MIT License](../LICENSE){:target="\_blank"}.
+By contributing to the documentation, you agree to license your contribution under the [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/){:target="\_blank"}.
 
 Prior to v3.1.0, Bootstrap's code was released under the Apache License v2.0.
