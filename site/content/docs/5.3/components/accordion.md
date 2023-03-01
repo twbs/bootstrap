@@ -11,7 +11,7 @@ toc: true
 
 ## How it works
 
-The accordion uses [collapse]({{< docsref "/components/collapse" >}}){:target="\_blank"} internally to make it collapsible. To render an accordion that's expanded, add the `.open` class on the `.accordion`.
+The accordion uses [collapse]({{< docsref "/components/collapse" >}}) internally to make it collapsible. To render an accordion that's expanded, add the `.open` class on the `.accordion`.
 
 {{< callout info >}}
 {{< partial "callouts/info-prefersreducedmotion.md" >}}
@@ -23,6 +23,7 @@ Click the accordions below to expand/collapse the accordion content.
 
 {{< example >}}
 
+```html
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header">
@@ -61,6 +62,7 @@ Click the accordions below to expand/collapse the accordion content.
     </div>
   </div>
 </div>
+```
 {{< /example >}}
 
 ### Flush
@@ -68,7 +70,7 @@ Click the accordions below to expand/collapse the accordion content.
 Add `.accordion-flush` to remove some borders and rounded corners to render accordions edge-to-edge with their parent container.
 
 {{< example class="bg-body-secondary" >}}
-
+```html
 <div class="accordion accordion-flush" id="accordionFlushExample">
   <div class="accordion-item">
     <h2 class="accordion-header">
@@ -101,6 +103,7 @@ Add `.accordion-flush` to remove some borders and rounded corners to render acco
     </div>
   </div>
 </div>
+```
 {{< /example >}}
 
 ### Always open
@@ -109,6 +112,7 @@ Omit the `data-bs-parent` attribute on each `.accordion-collapse` to make accord
 
 {{< example >}}
 
+```html
 <div class="accordion" id="accordionPanelsStayOpenExample">
   <div class="accordion-item">
     <h2 class="accordion-header">
@@ -147,6 +151,7 @@ Omit the `data-bs-parent` attribute on each `.accordion-collapse` to make accord
     </div>
   </div>
 </div>
+```
 {{< /example >}}
 
 ## Accessibility

@@ -11,7 +11,7 @@ Community members have translated Bootstrap's documentation into various languag
 
 <ul>
 {{ range .Site.Data.translations -}}
-  <li><a href="{{ .url }}" hreflang="{{ .code }}" target="_blank">{{ .description }} ({{ .name }})</a></li>
+  <li><a href="{{ .url }}" hreflang="{{ .code }}">{{ .description }} ({{ .name }})</a></li>
 {{ end -}}
 </ul>
 {{< /translations.inline >}}

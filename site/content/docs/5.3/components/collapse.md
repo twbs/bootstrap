@@ -26,6 +26,7 @@ Generally, we recommend using a `<button>` with the `data-bs-target` attribute. 
 
 {{< example >}}
 
+```html
 <p>
   <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
     Link with href
@@ -39,11 +40,12 @@ Generally, we recommend using a `<button>` with the `data-bs-target` attribute. 
     Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
   </div>
 </div>
+```
 {{< /example >}}
 
 ## Horizontal
 
-The collapse plugin supports horizontal collapsing. Add the `.collapse-horizontal` modifier class to transition the `width` instead of `height` and set a `width` on the immediate child element. Feel free to write your own custom Sass, use inline styles, or use our [width utilities]({{< docsref "/utilities/sizing" >}}){:target="\_blank"}.
+The collapse plugin supports horizontal collapsing. Add the `.collapse-horizontal` modifier class to transition the `width` instead of `height` and set a `width` on the immediate child element. Feel free to write your own custom Sass, use inline styles, or use our [width utilities]({{< docsref "/utilities/sizing" >}}).
 
 {{< callout info >}}
 Please note that while the example below has a `min-height` set to avoid excessive repaints in our docs, this is not explicitly required. **Only the `width` on the child element is required.**
@@ -51,6 +53,7 @@ Please note that while the example below has a `min-height` set to avoid excessi
 
 {{< example >}}
 
+```html
 <p>
   <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
     Toggle width collapse
@@ -63,6 +66,7 @@ Please note that while the example below has a `min-height` set to avoid excessi
     </div>
   </div>
 </div>
+```
 {{< /example >}}
 
 ## Multiple toggles and targets
@@ -72,6 +76,7 @@ Conversely, multiple `<button>` or `<a>` elements can show and hide the same ele
 
 {{< example >}}
 
+```html
 <p>
   <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
   <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
@@ -93,6 +98,7 @@ Conversely, multiple `<button>` or `<a>` elements can show and hide the same ele
     </div>
   </div>
 </div>
+```
 {{< /example >}}
 
 ## Accessibility
@@ -101,7 +107,7 @@ Be sure to add `aria-expanded` to the control element. This attribute explicitly
 
 If your control element is targeting a single collapsible element – i.e. the `data-bs-target` attribute is pointing to an `id` selector – you should add the `aria-controls` attribute to the control element, containing the `id` of the collapsible element. Modern screen readers and similar assistive technologies make use of this attribute to provide users with additional shortcuts to navigate directly to the collapsible element itself.
 
-Note that Bootstrap's current implementation does not cover the various _optional_ keyboard interactions described in the [ARIA Authoring Practices Guide accordion pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/){:target="\_blank"} - you will need to include these yourself with custom JavaScript.
+Note that Bootstrap's current implementation does not cover the various _optional_ keyboard interactions described in the [ARIA Authoring Practices Guide accordion pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/) - you will need to include these yourself with custom JavaScript.
 
 ## CSS
 
@@ -129,7 +135,7 @@ These classes can be found in `_transitions.scss`.
 
 Just add `data-bs-toggle="collapse"` and a `data-bs-target` to the element to automatically assign control of one or more collapsible elements. The `data-bs-target` attribute accepts a CSS selector to apply the collapse to. Be sure to add the class `collapse` to the collapsible element. If you'd like it to default open, add the additional class `show`.
 
-To add accordion-like group management to a collapsible area, add the data attribute `data-bs-parent="#selector"`. Refer to the [Accordion page](https://getbootstrap.com/docs/5/components/accordion/){:target="\_blank"} for more information.
+To add accordion-like group management to a collapsible area, add the data attribute `data-bs-parent="#selector"`. Refer to the [Accordion page](https://getbootstrap.com/docs/5/components/accordion/) for more information.
 
 ### Via JavaScript
 
