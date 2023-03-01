@@ -752,7 +752,7 @@ Just like with card groups, card footers will automatically line up.
 
 ### Masonry
 
-In `v4` we used a CSS-only technique to mimic the behavior of [Masonry](https://masonry.desandro.com/){:target="\_blank"}-like columns, but this technique came with lots of unpleasant [side effects](https://github.com/twbs/bootstrap/pull/28922){:target="\_blank"}. If you want to have this type of layout in `v5`, you can just make use of Masonry plugin. **Masonry is not included in Bootstrap**, but we've made a [demo example]({{< docsref "/examples/masonry" >}}) to help you get started.
+In `v4` we used a CSS-only technique to mimic the behavior of [Masonry](https://masonry.desandro.com/)-like columns, but this technique came with lots of unpleasant [side effects](https://github.com/twbs/bootstrap/pull/28922). If you want to have this type of layout in `v5`, you can just make use of Masonry plugin. **Masonry is not included in Bootstrap**, but we've made a [demo example]({{< docsref "/examples/masonry" >}}) to help you get started.
 
 ## CSS
 
