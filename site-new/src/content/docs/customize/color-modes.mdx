@@ -7,7 +7,6 @@ toc: true
 added: "5.3"
 # TODO: <hr> changed to <hr/> and shouldn't be
 # TODO: "example" shortcode
-# TODO: "scss-docs" shortcode
 ---
 
 ## Dark mode
@@ -214,7 +213,7 @@ While the primary use case for color modes is light and dark mode, custom color 
 
 For example, you can create a "blue theme" with the selector `data-bs-theme="blue"`. In your custom Sass or CSS file, add the new selector and override any global or component CSS variables as needed. If you're using Sass, you can also use Sass's functions within your CSS variable overrides.
 
-{/* {{< scss-docs name="custom-color-mode" file="site/assets/scss/_content.scss" >}} */}
+<ScssDocs name="custom-color-mode" file="site/assets/scss/_content.scss" />
 
 <div class="bd-example text-body bg-body" data-bs-theme="blue">
   <div class="h4">Example blue theme</div>
@@ -261,16 +260,16 @@ Here's a look at the JavaScript that powers it. Feel free to inspect our own doc
 
 Dozens of root level CSS variables are repeated as overrides for dark mode. These are scoped to the color mode selector, which defaults to `data-bs-theme` but [can be configured](#building-with-sass) to use a `prefers-color-scheme` media query. Use these variables as a guideline for generating your own new color modes.
 
-{/* {{< scss-docs name="root-dark-mode-vars" file="scss/_root.scss" >}} */}
+<ScssDocs name="root-dark-mode-vars" file="scss/_root.scss" />
 
 ### Sass variables
 
 CSS variables for our dark color mode are partially generated from dark mode specific Sass variables in `_variables-dark.scss`. This also includes some custom overrides for changing the colors of embedded SVGs used throughout our components.
 
-{/* {{< scss-docs name="sass-dark-mode-vars" file="scss/_variables-dark.scss" >}} */}
+<ScssDocs name="sass-dark-mode-vars" file="scss/_variables-dark.scss" />
 
 ### Sass mixin
 
 Styles for dark mode, and any custom color modes you create, can be scoped appropriately to the `data-bs-theme` attribute selector or media query with the customizable `color-mode()` mixin. See the [Sass usage section](#building-with-sass) for more details.
 
-{/* {{< scss-docs name="color-mode-mixin" file="scss/mixins/_color-mode.scss" >}} */}
+<ScssDocs name="color-mode-mixin" file="scss/mixins/_color-mode.scss" />
