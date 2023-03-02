@@ -145,6 +145,47 @@ Or, use custom CSS or inline styles to change the dimensions as needed.
 </div>
 {{< /example >}}
 
+## Animations - Reverse
+
+Add `.spinner-reverse` to any spinner to reverse its animation.
+
+{{< example >}}
+<div class="spinner-border spinner-reverse" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow spinner-reverse" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+{{< /example >}}
+
+
+## Animations - Alternate
+
+Add `.spinner-alternate` to any spinner to alternate its animation.
+
+{{< example >}}
+<div class="spinner-border spinner-alternate" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow spinner-alternate" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+{{< /example >}}
+
+
+## Animations - Alternate reverse
+
+Add `.spinner-alternate-reverse` to any spinner to alternate-reverse its animation.
+
+{{< example >}}
+<div class="spinner-border spinner-alternate-reverse" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow spinner-alternate-reverse" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+{{< /example >}}
+
 ## Buttons
 
 Use spinners within buttons to indicate an action is currently processing or taking place. You may also swap the text out of the spinner element and utilize button text as needed.

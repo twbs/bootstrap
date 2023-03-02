@@ -83,3 +83,19 @@
     }
   }
 }
+
+//
+// Animation helpers
+//
+
+.spinner-reverse {
+  animation-direction: reverse;
+}
+
+.spinner-alternate {
+  animation-direction: alternate;
+}
+
+.spinner-alternate-reverse {
+  animation-direction: alternate-reverse;
+}
