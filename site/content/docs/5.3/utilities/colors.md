@@ -25,9 +25,8 @@ Color utilities like `.text-*` that generated from our original `$theme-colors` 
 <p class="text-{{ .name }}-emphasis">.text-{{ .name }}-emphasis</p>
 {{- end -}}
 {{< /colors.inline >}}
-<p class="text-body">.text-body</p>
-<p class="text-body-secondary">.text-body-secondary</p>
 
+<p class="text-body">.text-body</p>
 <p class="text-body-emphasis">.text-body-emphasis</p>
 <p class="text-body-secondary">.text-body-secondary</p>
 <p class="text-body-tertiary">.text-body-tertiary</p>
