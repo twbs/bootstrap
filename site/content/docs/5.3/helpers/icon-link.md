@@ -45,6 +45,14 @@ Add `.icon-link-hover` to move the icon to the right on hover.
 </a>
 {{< /example >}}
 
+## Customize
+
+Modify the styling of an icon link with our link CSS variables, Sass variables, utilities, or custom styles.
+
+### CSS variables
+
+Modify the `--bs-link-*` and `--bs-icon-link-*` CSS variables as needed to change the default appearance.
+
 Customize the hover `transform` by overriding the `--bs-icon-link-transform` CSS variable:
 
 {{< example >}}
@@ -54,7 +62,22 @@ Customize the hover `transform` by overriding the `--bs-icon-link-transform` CSS
 </a>
 {{< /example >}}
 
-## Pairs with link utilities
+Customize the color by overriding the `--bs-link-*` CSS variable:
+
+{{< example >}}
+<a class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" href="#">
+  Icon link
+  <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+</a>
+{{< /example >}}
+
+### Sass
+
+Customize the icon link Sass variables to modify all icon link styles across your Bootstrap-powered project.
+
+{{< scss-docs name="icon-link-variables" file="scss/_variables.scss" >}}
+
+### Utilities
 
 Modify icon links with any of [our link utilities]({{< docsref "/utilities/link/" >}}) for modifying underline color and offset.
 
