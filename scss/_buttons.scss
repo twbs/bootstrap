@@ -7,7 +7,7 @@
   --#{$prefix}btn-padding-x: #{$btn-padding-x};
   --#{$prefix}btn-padding-y: #{$btn-padding-y};
   --#{$prefix}btn-font-family: #{$btn-font-family};
-   @include rfs($btn-font-size, --#{$prefix}btn-font-size);
+  @include rfs($btn-font-size, --#{$prefix}btn-font-size);
   --#{$prefix}btn-font-weight: #{$btn-font-weight};
   --#{$prefix}btn-line-height: #{$btn-line-height};
   --#{$prefix}btn-color: #{$btn-color};
