@@ -164,8 +164,6 @@ class Tab extends BaseComponent {
 
     if (nextActiveElement) {
       nextActiveElement.focus({ preventScroll: true })
-      // eslint-disable-next-line no-console
-      console.log(nextActiveElement)
       Tab.getOrCreateInstance(nextActiveElement).show()
     }
   }
@@ -288,8 +286,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     return
   }
 
-  // eslint-disable-next-line no-console
-  console.log(this)
   Tab.getOrCreateInstance(this).show()
 })
 
