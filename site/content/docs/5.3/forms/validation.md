@@ -371,7 +371,7 @@ These variables are also color mode adaptive, meaning they change color while in
 
 ### Sass mixins
 
-Two mixins are combined together, through our [loop](#loop), to generate our form validation feedback styles.
+Two mixins are combined, through our [loop](#loop), to generate our form validation feedback styles.
 
 {{< scss-docs name="form-validation-mixins" file="scss/mixins/_forms.scss" >}}
 
