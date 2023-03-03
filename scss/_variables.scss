@@ -459,6 +459,15 @@ $link-hover-decoration:                   null !default;
 $stretched-link-pseudo-element:           after !default;
 $stretched-link-z-index:                  1 !default;
 
+// Icon links
+// scss-docs-start icon-link-variables
+$icon-link-gap:               .375rem !default;
+$icon-link-underline-offset:  .25em !default;
+$icon-link-icon-size:         1em !default;
+$icon-link-icon-transition:   .2s ease-in-out transform !default;
+$icon-link-icon-transform:    translate3d(.25em, 0, 0) !default;
+// scss-docs-end icon-link-variables
+
 // Paragraphs
 //
 // Style p element.
@@ -801,6 +810,7 @@ $input-btn-border-width:      var(--#{$prefix}border-width) !default;
 // For each of Bootstrap's buttons, define text, background, and border color.
 
 // scss-docs-start btn-variables
+$btn-color:                   var(--#{$prefix}body-color) !default;
 $btn-padding-y:               $input-btn-padding-y !default;
 $btn-padding-x:               $input-btn-padding-x !default;
 $btn-font-family:             $input-btn-font-family !default;
