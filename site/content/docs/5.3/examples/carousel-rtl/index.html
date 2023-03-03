@@ -6,7 +6,7 @@ extra_css:
   - "../carousel/carousel.rtl.css"
 ---
 
-<header>
+<header data-bs-theme="dark">
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">شرائح العرض</a>
@@ -44,7 +44,7 @@ extra_css:
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        {{< placeholder width="100%" height="100%" background="#777" color="#777" text="false" title="false" >}}
+        {{< placeholder width="100%" height="100%" background="var(--bs-secondary-color)" text="false" title="false" >}}
         <div class="container">
           <div class="carousel-caption text-start">
             <h1>عنوان المثال.</h1>
@@ -54,7 +54,7 @@ extra_css:
         </div>
       </div>
       <div class="carousel-item">
-        {{< placeholder width="100%" height="100%" background="#777" color="#777" text="false" title="false" >}}
+        {{< placeholder width="100%" height="100%" background="var(--bs-secondary-color)" text="false" title="false" >}}
         <div class="container">
           <div class="carousel-caption">
             <h1>عنوان مثال آخر.</h1>
@@ -64,7 +64,7 @@ extra_css:
         </div>
       </div>
       <div class="carousel-item">
-        {{< placeholder width="100%" height="100%" background="#777" color="#777" text="false" title="false" >}}
+        {{< placeholder width="100%" height="100%" background="var(--bs-secondary-color)" text="false" title="false" >}}
         <div class="container">
           <div class="carousel-caption text-end">
             <h1>واحد أكثر لقياس جيد.</h1>
@@ -94,19 +94,19 @@ extra_css:
     <!-- Three columns of text below the carousel -->
     <div class="row">
       <div class="col-lg-4">
-        {{< placeholder width="140" height="140" background="#777" color="#777" class="rounded-circle" >}}
+        {{< placeholder width="140" height="140" background="var(--bs-secondary-color)" text="false" class="rounded-circle" >}}
         <h2 class="fw-normal">عنوان</h2>
         <p>تذكر دائماً أن الحاسوب لا يمتلك ذكاءً، ولكنه يكتسب الذكاء الاصطناعي من خلال ثلاثة عناصر وظيفية رئيسة، هي: القدرة على التحليل، والقدرة على التأليف، والاستدلال المنطقي.</p>
         <p><a class="btn btn-secondary" href="#">عرض التفاصيل</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        {{< placeholder width="140" height="140" background="#777" color="#777" class="rounded-circle" >}}
+        {{< placeholder width="140" height="140" background="var(--bs-secondary-color)" text="false" class="rounded-circle" >}}
         <h2 class="fw-normal">عنوان آخر</h2>
         <p>إذا أردنا استخدام الحاسوب الذكي في معالجة اللغة العربية فإننا نجد أنفسنا أمام تحدٍّ كبير، خاصة وأن لغتنا تمتاز بتماسك منظوماتها وتداخلها، ومع ذلك فإن الذكاء الاصطناعي يمكّننا من الحصول على أربعة أنواع من المعالجة، هي: المعالجة الصوتية، والمعالجة الصرفية، والمعالجة النحوية، والمعالجة الدلالية.</p>
         <p><a class="btn btn-secondary" href="#">عرض التفاصيل</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        {{< placeholder width="140" height="140" background="#777" color="#777" class="rounded-circle" >}}
+        {{< placeholder width="140" height="140" background="var(--bs-secondary-color)" text="false" class="rounded-circle" >}}
         <h2 class="fw-normal">عنوان ثالث لتأكيد المعلومة</h2>
         <p>بفضل بحوث الذكاء الاصطناعي وتقنياته استطعنا الانتقال من مرحلة التعامل مع الفيزيائي إلى مرحلة التعامل مع المنطقي، وقد انعكس هذا الانتقال بصورة إيجابية على الكيفية التي تتعامل بها الشعوب مع لغاتها الحيَّة، وهذا يعني أنه يجب أن ينعكس بصورة إيجابية على كيفية تعاملنا مع لغتنا العربية.</p>
         <p><a class="btn btn-secondary" href="#">عرض التفاصيل</a></p>
@@ -124,7 +124,7 @@ extra_css:
         <p class="lead">وجه الإنسان هو جزء معقَّد ومتميِّز للغاية من جسمه. وفي الواقع، إنه أحد أكثر أنظمة الإشارات المتاحة تعقيداً لدينا؛ فهو يتضمَّن أكثر من 40 عضلة مستقلة هيكلياً ووظيفياً، بحيث يمكن تشغيل كل منها بشكل مستقل عن البعض الآخر؛ وتشكِّل أحد أقوى مؤشرات العواطف.</p>
       </div>
       <div class="col-md-5">
-        {{< placeholder width="500" height="500" background="#eee" color="#aaa" class="bd-placeholder-img-lg featurette-image img-fluid mx-auto" >}}
+        {{< placeholder width="500" height="500" background="var(--bs-secondary-bg)" color="var(--bs-secondary-color)" class="bd-placeholder-img-lg featurette-image img-fluid mx-auto" >}}
       </div>
     </div>
 
@@ -136,7 +136,7 @@ extra_css:
         <p class="lead">عندما نضحك أو نبكي، فإننا نعرض عواطفنا، مما يسمح للآخرين بإلقاء نظرة خاطفة على أذهاننا أثناء "قراءة" وجوهنا بناءً على التغييرات في مكوّنات الوجه الرئيسة، مثل: العينين والحاجبين والجفنين والأنف والشفتين.</p>
       </div>
       <div class="col-md-5 order-md-1">
-        {{< placeholder width="500" height="500" background="#eee" color="#aaa" class="bd-placeholder-img-lg featurette-image img-fluid mx-auto" >}}
+        {{< placeholder width="500" height="500" background="var(--bs-secondary-bg)" color="var(--bs-secondary-color)" class="bd-placeholder-img-lg featurette-image img-fluid mx-auto" >}}
       </div>
     </div>
 
@@ -148,7 +148,7 @@ extra_css:
         <p class="lead">إن جميع العضلات في أجسامنا مدعمة بالأعصاب المتصلة من كافة أنحاء الجسم بالنخاع الشوكي والدماغ. وهذا الاتصال العصبي هو ثنائي الاتجاه، أي إن العصب يتسبَّب في تقلصات العضلات بناءً على إشارات الدماغ، ويقوم في الوقت نفسه بإرسال معلومات عن حالة العضلات إلى الدماغ</p>
       </div>
       <div class="col-md-5">
-        {{< placeholder width="500" height="500" background="#eee" color="#aaa" class="bd-placeholder-img-lg featurette-image img-fluid mx-auto" >}}
+        {{< placeholder width="500" height="500" background="var(--bs-secondary-bg)" color="var(--bs-secondary-color)" class="bd-placeholder-img-lg featurette-image img-fluid mx-auto" >}}
       </div>
     </div>
 
