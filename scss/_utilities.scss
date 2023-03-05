@@ -634,7 +634,6 @@ $utilities: map-merge(
       )
     ),
     "link-underline": (
-      // css-var: true,
       property: text-decoration-color,
       class: link-underline,
       local-vars: (
@@ -652,6 +651,7 @@ $utilities: map-merge(
       class: link-underline-opacity,
       state: hover,
       values: (
+        0: 0,
         10: .1,
         25: .25,
         50: .5,
