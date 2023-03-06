@@ -30,25 +30,65 @@ export function getStaticPaths() {
     </a>
   </div>
   {
-    getData('examples').map(({ category, examples, external }) => {
+    getData('examples').map(({ category, description, examples, external }) => {
       return (
         <div class="bd-content">
-          <h2>{category}</h2>
-          {examples.map((example) => {
-            if (external) {
-              return (
-                <p>
-                  <a>External example: {example.name}</a>
-                </p>
-              )
-            }
-
-            return (
+          <h2 id={getSlug(category)}>{category}</h2>
+          <p>{description}</p>
+          {category === 'RTL' && 
+            <div class="bd-callout bd-callout-warning small">
               <p>
-                <a href={getVersionedDocsPath(`/examples/${getSlug(example.name)}`)}>{example.name}</a>
+                <strong>RTL is still experimental</strong> and will evolve with feedback. Spotted something or have an improvement to suggest?
               </p>
-            )
-          })}
+              <p><a href={`${getConfig().repo}/issues/new/choose`}>Please open an issue.</a></p>
+            </div>
+          }
+          <div class="row">
+            {examples.map((example) => {
+              if (external) {
+                return (
+                  <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
+                    <svg class="bi fs-5 flex-shrink-0"><use xlink:href="#box-seam"></use></svg>
+                    <div>
+                      <h3 class="h5 mb-1">
+                        <a class="d-block link-offset-1" href={`${getConfig().github_org}${example.url}/`} target="_blank">
+                          {example.name}
+                        </a>
+                      </h3>
+                      <p class="text-body-secondary">{example.description}</p>
+                      <p>
+                        <a class="icon-link small link-secondary link-offset-1" href={`https://stackblitz.com/github/twbs${example.url}?file=index.html`} target="_blank">
+                          <svg class="bi flex-shrink-0"><use xlink:href="#lightning-charge-fill"></use></svg>
+                          Edit in StackBlitz
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                )
+              }
+
+              return (
+                <div class="col-sm-6 col-md-3 mb-3">
+                  <a class="d-block link-offset-1"
+                    href={`/docs/${getConfig().docs_version}/examples/${getSlug(example.name)}/`}
+                    hreflang={example.name.includes('RTL') ? 'ar' : undefined}
+                  >
+                    <img class="img-thumbnail mb-3"
+                      srcset={`${getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}.png`)}, ${getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}@2x.png`)} 2x`}
+                      src={getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}.png`)}
+                      alt=""
+                      width="480"
+                      height="300"
+                      loading="lazy">
+                    <h3 class="h5 mb-1">
+                      {example.name}
+                    </h3>
+                  </a>
+                  <p class="text-body-secondary">{example.description}</p>
+                </div>
+              )
+            })}
+          </div>
         </div>
       )
     })
