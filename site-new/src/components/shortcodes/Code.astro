@@ -1,29 +1,57 @@
 ---
+import fs from 'node:fs'
+import path from 'node:path'
 import { Prism } from '@astrojs/prism'
 
 interface Props {
-  class: string
-  code?: string
-  // https://prismjs.com/#supported-languages
+  /**
+   * The CSS class(es) to be added to the `pre` HTML element when rendering code blocks in Markdown.
+   * Note that this prop is not used when the component is invoked directly.
+   */
+  class?: string
+  /**
+   * The code to highlight.
+   * If an array is passed, elements will be joined with a new line.
+   */
+  code?: string | string[]
+  /**
+   * The CSS class(es) to be added to the `div` wrapper HTML element.
+   */
+  containerClass?: string
+  /**
+   * The language to use for highlighting.
+   * @see https://prismjs.com/#supported-languages
+   */
   lang?: string
+  /**
+   * If the `filePath` prop is defined, this prop can be used to specify a regex containing a match group to extract
+   * only a part of the file.
+   */
+  fileMatch?: string
+  /**
+   * A path to the file containing the code to highlight relative to the root of the repository.
+   * This takes precedence over the `code` prop.
+   */
+  filePath?: string
 }
 
-const { class: className, code, lang } = Astro.props
+const { class: className, code, containerClass, fileMatch, filePath, lang } = Astro.props
 
-// TODO(HiDeoo) Style (We use Chroma style overriden in _syntax.scss)
-// TODO(HiDeoo) sh $ prefix
-// TODO(HiDeoo) tabindex on pre (or maybe not https://github.com/alecthomas/chroma/pull/736)
+let codeToDisplay = filePath
+  ? fs.readFileSync(path.join(process.cwd(), filePath), 'utf8')
+  : Array.isArray(code)
+  ? code.join('\n')
+  : code
 
-// TODO(HiDeoo) Finish porting site/assets/js/code-examples.js
-//   // wrap programmatically code blocks and add copy btn.
-//   document.querySelectorAll('.highlight')
-//     .forEach(element => {
-// TODO(HiDeoo) The ignore part is not done, we need to find usage of the component where this is relevant and figure out how to do it the Astro way.
-//       if (!element.closest('.bd-example-snippet')) { // Ignore examples made be shortcode
-//         element.insertAdjacentHTML('beforebegin', btnHtml)
-//         element.previousElementSibling.append(element)
-//       }
-//     })
+if (filePath && fileMatch && codeToDisplay) {
+  const match = codeToDisplay.match(new RegExp(fileMatch))
+
+  if (!match || !match[1]) {
+    throw new Error(`The file at ${filePath} does not contains a match for the regex '${fileMatch}'.`)
+  }
+
+  codeToDisplay = match[1]
+}
 ---
 
 <script>
@@ -102,13 +130,27 @@ const { class: className, code, lang } = Astro.props
   })
 </script>
 
-<div class="bd-code-snippet">
-  <div class="bd-clipboard">
-    <button type="button" class="btn-clipboard">
-      <svg class="bi" role="img" aria-label="Copy"><use xlink:href="#clipboard"></use></svg>
-    </button>
-  </div>
+<div class:list={['bd-code-snippet', containerClass]}>
+  {
+    Astro.slots.has('pre') ? (
+      <slot name="pre" />
+    ) : (
+      <div class="bd-clipboard">
+        <button type="button" class="btn-clipboard">
+          <svg class="bi" role="img" aria-label="Copy">
+            <use xlink:href="#clipboard" />
+          </svg>
+        </button>
+      </div>
+    )
+  }
   <div class="highlight">
-    {code && lang ? <Prism code={code} lang={lang} /> : /* prettier-ignore */ <pre class={className}><slot /></pre>}
+    {
+      codeToDisplay && lang ? (
+        <Prism code={codeToDisplay} lang={lang} />
+      ) : (
+        /* prettier-ignore */ <pre class={className}><slot /></pre>
+      )
+    }
   </div>
 </div>

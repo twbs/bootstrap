@@ -1,62 +1,57 @@
 import fs from 'node:fs'
 import yaml from 'js-yaml'
 import { z } from 'zod'
-import { zHexColor, zNamedHexColor } from './validation'
-import { capitalizeFirstLetter } from './string'
+import { zHexColor, zLanguageCode, zNamedHexColors, zPxSizeOrEmpty } from './validation'
+import { capitalizeFirstLetter } from './utils'
 
 // An object containing all the data types and their associated schema. The key should match the name of the data file
 // in the `./site/data/` directory.
 const dataDefinitions = {
-  breakpoints: z.object({
-      breakpoint: z.string(), // TODO: type?
-      abbr: z.string(), // TODO: type?
-      name: z.string(), // TODO: type?
-      "min-width": z.string(), // TODO: type?
-      container: z.string(), // TODO: type?
-    })
-    .array(),
-  colors: z.object({
+  breakpoints: z
+    .object({
+      breakpoint: z.string(),
+      abbr: z.string(),
       name: z.string(),
-      hex: zHexColor,
+      'min-width': zPxSizeOrEmpty,
+      container: zPxSizeOrEmpty,
     })
     .array(),
+  colors: zNamedHexColors(13),
   'core-team': z
     .object({
       name: z.string(),
       user: z.string(),
     })
     .array(),
-  translations: z
+  examples: z
     .object({
-      name: z.string(),
-      code: z.string(), // TODO: could maybe be a type
+      category: z.string(),
+      external: z.boolean().optional(),
       description: z.string(),
-      url: z.string().url(),
+      examples: z
+        .object({
+          description: z.string(),
+          name: z.string(),
+          url: z.string().optional(),
+        })
+        .array(),
     })
     .array(),
-  grays: z
-    .tuple([
-      zNamedHexColor(z.literal(100)),
-      zNamedHexColor(z.literal(200)),
-      zNamedHexColor(z.literal(300)),
-      zNamedHexColor(z.literal(400)),
-      zNamedHexColor(z.literal(500)),
-      zNamedHexColor(z.literal(600)),
-      zNamedHexColor(z.literal(700)),
-      zNamedHexColor(z.literal(800)),
-      zNamedHexColor(z.literal(900)),
-    ])
-    // TODO: transform() is commented because of the usage in customize/color.md which loops over it
-    /*.transform((val) => {
-      // Map array entries to an object with the name as key and the hex color as value for easier lookup.
-      const grays = {} as Record<(typeof val)[number]['name'], string>
-
-      for (const { name, hex } of val) {
-        grays[name] = hex
-      }
-
-      return grays
-    })*/,
+  grays: zNamedHexColors(9),
+  icons: z.object({
+    preferred: z
+      .object({
+        name: z.string(),
+        website: z.string().url(),
+      })
+      .array(),
+    more: z
+      .object({
+        name: z.string(),
+        website: z.string().url(),
+      })
+      .array(),
+  }),
   plugins: z
     .object({
       description: z.string(),
@@ -81,13 +76,21 @@ const dataDefinitions = {
     .object({
       name: z.string(),
       hex: zHexColor,
-      contrast_color: z.string().optional()
+      contrast_color: z.union([z.literal('dark'), z.literal('white')]).optional(),
     })
     .array()
     .transform((val) => {
       // Add a `title` property to each theme color object being the capitalized version of the `name` property.
       return val.map((themeColor) => ({ ...themeColor, title: capitalizeFirstLetter(themeColor.name) }))
     }),
+  translations: z
+    .object({
+      name: z.string(),
+      code: zLanguageCode,
+      description: z.string(),
+      url: z.string().url(),
+    })
+    .array(),
 } satisfies Record<string, DataSchema>
 
 let data = new Map<DataType, z.infer<DataSchema>>()

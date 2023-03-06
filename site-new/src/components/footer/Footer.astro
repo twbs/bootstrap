@@ -19,18 +19,16 @@ import { getConfig, getVersionedDocsPath } from '../../libs/config'
           <li class="mb-2">
             Designed and built with all the love in the world by the <a href={getVersionedDocsPath('about/team')}
               >Bootstrap team</a
-            > with the help of <a href={`${getConfig().params.repo}/graphs/contributors`}>our contributors</a>.
+            > with the help of <a href={`${getConfig().repo}/graphs/contributors`}>our contributors</a>.
           </li>
           <li class="mb-2">
-            Code licensed <a
-              href={`${getConfig().params.repo}/blob/main/LICENSE`}
-              target="_blank"
-              rel="license noopener">MIT</a
+            Code licensed <a href={`${getConfig().repo}/blob/main/LICENSE`} target="_blank" rel="license noopener"
+              >MIT</a
             >, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener"
               >CC BY 3.0</a
             >.
           </li>
-          <li class="mb-2">Currently v{getConfig().params.current_version}.</li>
+          <li class="mb-2">Currently v{getConfig().current_version}.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -39,10 +37,10 @@ import { getConfig, getVersionedDocsPath } from '../../libs/config'
           <li class="mb-2"><a href="/">Home</a></li>
           <li class="mb-2"><a href={getVersionedDocsPath('/')}>Docs</a></li>
           <li class="mb-2"><a href={getVersionedDocsPath('examples')}>Examples</a></li>
-          <li class="mb-2"><a href={getConfig().params.icons}>Icons</a></li>
-          <li class="mb-2"><a href={getConfig().params.themes}>Themes</a></li>
-          <li class="mb-2"><a href={getConfig().params.blog}>Blog</a></li>
-          <li class="mb-2"><a href={getConfig().params.swag}>Swag Store</a></li>
+          <li class="mb-2"><a href={getConfig().icons}>Icons</a></li>
+          <li class="mb-2"><a href={getConfig().themes}>Themes</a></li>
+          <li class="mb-2"><a href={getConfig().blog}>Blog</a></li>
+          <li class="mb-2"><a href={getConfig().swag}>Swag Store</a></li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 mb-3">
@@ -58,20 +56,20 @@ import { getConfig, getVersionedDocsPath } from '../../libs/config'
       <div class="col-6 col-lg-2 mb-3">
         <h5>Projects</h5>
         <ul class="list-unstyled">
-          <li class="mb-2"><a href={`${getConfig().params.github_org}/bootstrap`}>Bootstrap 5</a></li>
-          <li class="mb-2"><a href={`${getConfig().params.github_org}/bootstrap/tree/v4-dev`}>Bootstrap 4</a></li>
-          <li class="mb-2"><a href={`${getConfig().params.github_org}/icons`}>Icons</a></li>
-          <li class="mb-2"><a href={`${getConfig().params.github_org}/rfs`}>RFS</a></li>
-          <li class="mb-2"><a href={`${getConfig().params.github_org}/examples/`}>Examples repo</a></li>
+          <li class="mb-2"><a href={`${getConfig().github_org}/bootstrap`}>Bootstrap 5</a></li>
+          <li class="mb-2"><a href={`${getConfig().github_org}/bootstrap/tree/v4-dev`}>Bootstrap 4</a></li>
+          <li class="mb-2"><a href={`${getConfig().github_org}/icons`}>Icons</a></li>
+          <li class="mb-2"><a href={`${getConfig().github_org}/rfs`}>RFS</a></li>
+          <li class="mb-2"><a href={`${getConfig().github_org}/examples/`}>Examples repo</a></li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 mb-3">
         <h5>Community</h5>
         <ul class="list-unstyled">
-          <li class="mb-2"><a href={`${getConfig().params.github_org}/bootstrap/issues`}>Issues</a></li>
-          <li class="mb-2"><a href={`${getConfig().params.github_org}/bootstrap/discussions`}>Discussions</a></li>
+          <li class="mb-2"><a href={`${getConfig().github_org}/bootstrap/issues`}>Issues</a></li>
+          <li class="mb-2"><a href={`${getConfig().github_org}/bootstrap/discussions`}>Discussions</a></li>
           <li class="mb-2"><a href="https://github.com/sponsors/twbs">Corporate sponsors</a></li>
-          <li class="mb-2"><a href={getConfig().params.opencollective}>Open Collective</a></li>
+          <li class="mb-2"><a href={getConfig().opencollective}>Open Collective</a></li>
           <li class="mb-2"><a href="https://stackoverflow.com/questions/tagged/bootstrap-5">Stack Overflow</a></li>
         </ul>
       </div>

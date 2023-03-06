@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from 'astro/types'
 import { getConfig, getVersionedBsCssPath } from '../../libs/config'
 import type { Layout } from '../../libs/layout'
+import Scss from './Scss.astro'
 
 interface Props {
   direction?: 'rtl'
@@ -17,7 +18,7 @@ const bsCssLinkProps: HTMLAttributes<'link'> = {
 
 if (import.meta.env.PROD) {
   bsCssLinkProps.crossorigin = 'anonymous'
-  bsCssLinkProps.integrity = direction === 'rtl' ? getConfig().params.cdn.css_rtl_hash : getConfig().params.cdn.css_hash
+  bsCssLinkProps.integrity = direction === 'rtl' ? getConfig().cdn.css_rtl_hash : getConfig().cdn.css_hash
 }
 ---
 
@@ -25,27 +26,4 @@ if (import.meta.env.PROD) {
 
 <link {...bsCssLinkProps} />
 
-<!--TODO: handle all elements right after -->
-<!--
-
-{{- if (ne .Page.Layout "examples") }}
-TODO(HiDeoo) This should prolly use getVersionedDocsPath()
-{{- $targetDocsCssPath := path.Join "/docs" .Site.Params.docs_version "assets/css/docs.css" -}}
-{{- $sassOptions := dict "targetPath" $targetDocsCssPath "outputStyle" "expanded" "precision" 6 -}}
-{{- $postcssOptions := dict "use" "autoprefixer" "noMap" true -}}
-TODO(HiDeoo) The current import of the style does not respect any of the config below, figure out if we can port it back
-to the Astro implementation or we need to move out the stylesheets processing to a custom adapter.
-{{ if eq hugo.Environment "production" -}}
-  {{- $sassOptions = merge $sassOptions (dict "outputStyle" "compressed") -}}
-{{- end -}}
-
-{{- $style := resources.Get "scss/docs.scss" | toCSS $sassOptions | postCSS $postcssOptions }}
-
-<link href="{{ $style.Permalink | relURL }}" rel="stylesheet">
-{{- end }}
--->
-
-<!-- TODO(HiDeoo) See todo above regarding style imports -->
-<style is:global lang="scss">
-  @import '../../scss/docs';
-</style>
+{layout !== 'examples' && <Scss />}

@@ -1,4 +1,6 @@
 ---
+import Code from './Code.astro'
+
 interface Props {
   name: string
 }
@@ -11,17 +13,14 @@ const { name } = Astro.props
   below:
 </p>
 
-<div>// TODO(HiDeoo) add code</div>
-
-<!-- ```html
-<button type="button" class="btn-close" data-bs-dismiss="{{ $name }}" aria-label="Close"></button>
-``` -->
+<Code
+  code={`<button type="button" class="btn-close" data-bs-dismiss="${name}" aria-label="Close"></button>`}
+  lang="html"
+/>
 
 <p>or on a button <strong>outside the {name}</strong> using the <code>data-bs-target</code> as demonstrated below:</p>
 
-<div>// TODO(HiDeoo) add code</div>
-
-<!-- ```html
-<button type="button" class="btn-close" data-bs-dismiss="{{ $name }}" data-bs-target="#my-{{ $name }}" aria-label="Close"></button>
-```
- -->
+<Code
+  code={`<button type="button" class="btn-close" data-bs-dismiss="${name}" data-bs-target="#my-${name}" aria-label="Close"></button>`}
+  lang="html"
+/>

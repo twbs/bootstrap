@@ -31,14 +31,12 @@ type Props = {
 // The following props are automatically set by Astro (if defined) based on the markdown frontmatter when rendering a
 // markdown page. They can be accessed through the `Astro.props.frontmatter` object but note that they won't be set when
 // not rendering a markdown page.
-type MarkdownProps = Partial<CollectionEntry<'docs'>['data']>
+type MarkdownProps = { frontmatter?: Partial<CollectionEntry<'docs'>['data']> }
 
 const { frontmatter, layout, overrides, robots } = Astro.props
 
-// TODO(HiDeoo) This should probably be refactored to use a content collection when I get a better understanding of the
-// structure of the docs.
 const title = Astro.props.title ?? frontmatter?.title ?? getConfig().title
-const description = frontmatter?.description ?? getConfig().params.description
+const description = frontmatter?.description ?? getConfig().description
 const thumbnail = frontmatter?.thumbnail ? `img/${frontmatter.thumbnail}` : 'brand/bootstrap-social.png'
 
 const bodyProps = overrides?.body ?? {}
@@ -58,7 +56,7 @@ const mainProps = overrides?.main ?? {}
     />
   </head>
   <body {...bodyProps}>
-    <Header layout={layout} title={title} />
+    <Header layout={layout} title={title} addedIn={frontmatter?.added} />
 
     {
       Astro.slots.has('main') ? (
@@ -70,19 +68,11 @@ const mainProps = overrides?.main ?? {}
       )
     }
 
-    <!-- TODO:
-			{{ partial "footer" . }}
-		-->
-
     <Scripts layout={layout} />
 
-    <!-- TODO(HiDeoo) Is this related to the footer partial just above? Or the footer block below? Something else? -->
     <!-- TODO: handle correctly the footer system: blocks, layouts, examples without footers, etc. But for now, let'us a Footer.astro everywhere! -->
     <Footer />
 
-    <!-- TODO:
-			{{ block "footer" . }}
-			{{ end }}
-		-->
+    {frontmatter?.extra_js && frontmatter.extra_js.map((js) => <script is:inline async={js.async} src={js.src} />)}
   </body>
 </html>

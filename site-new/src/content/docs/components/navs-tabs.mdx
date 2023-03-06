@@ -20,8 +20,7 @@ The base `.nav` component does not include any `.active` state. The following ex
 To convey the active state to assistive technologies, use the `aria-current` attribute — using the `page` value for current page, or `true` for the current item in a set.
 </Callout>
 
-{/* {{< example >}}
-<ul class="nav">
+<Example code={`<ul class="nav">
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
@@ -34,19 +33,16 @@ To convey the active state to assistive technologies, use the `aria-current` att
   <li class="nav-item">
     <a class="nav-link disabled">Disabled</a>
   </li>
-</ul>
-{{< /example >}} */}
+</ul>`} />
 
 Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, `<ol>` if the order of your items is important, or roll your own with a `<nav>` element. Because the `.nav` uses `display: flex`, the nav links behave the same as nav items would, but without the extra markup.
 
-{/* {{< example >}}
-<nav class="nav">
+<Example code={`<nav class="nav">
   <a class="nav-link active" aria-current="page" href="#">Active</a>
   <a class="nav-link" href="#">Link</a>
   <a class="nav-link" href="#">Link</a>
   <a class="nav-link disabled">Disabled</a>
-</nav>
-{{< /example >}} */}
+</nav>`} />
 
 ## Available styles
 
@@ -58,8 +54,7 @@ Change the horizontal alignment of your nav with [flexbox utilities]([[docsref:/
 
 Centered with `.justify-content-center`:
 
-{/* {{< example >}}
-<ul class="nav justify-content-center">
+<Example code={`<ul class="nav justify-content-center">
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
@@ -72,13 +67,11 @@ Centered with `.justify-content-center`:
   <li class="nav-item">
     <a class="nav-link disabled">Disabled</a>
   </li>
-</ul>
-{{< /example >}} */}
+</ul>`} />
 
 Right-aligned with `.justify-content-end`:
 
-{/* {{< example >}}
-<ul class="nav justify-content-end">
+<Example code={`<ul class="nav justify-content-end">
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
@@ -91,15 +84,13 @@ Right-aligned with `.justify-content-end`:
   <li class="nav-item">
     <a class="nav-link disabled">Disabled</a>
   </li>
-</ul>
-{{< /example >}} */}
+</ul>`} />
 
 ### Vertical
 
 Stack your navigation by changing the flex item direction with the `.flex-column` utility. Need to stack them on some viewports but not others? Use the responsive versions (e.g., `.flex-sm-column`).
 
-{/* {{< example >}}
-<ul class="nav flex-column">
+<Example code={`<ul class="nav flex-column">
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
@@ -112,26 +103,22 @@ Stack your navigation by changing the flex item direction with the `.flex-column
   <li class="nav-item">
     <a class="nav-link disabled">Disabled</a>
   </li>
-</ul>
-{{< /example >}} */}
+</ul>`} />
 
 As always, vertical navigation is possible without `<ul>`s, too.
 
-{/* {{< example >}}
-<nav class="nav flex-column">
+<Example code={`<nav class="nav flex-column">
   <a class="nav-link active" aria-current="page" href="#">Active</a>
   <a class="nav-link" href="#">Link</a>
   <a class="nav-link" href="#">Link</a>
   <a class="nav-link disabled">Disabled</a>
-</nav>
-{{< /example >}} */}
+</nav>`} />
 
 ### Tabs
 
 Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabbed interface. Use them to create tabbable regions with our [tab JavaScript plugin](#javascript-behavior).
 
-{/* {{< example >}}
-<ul class="nav nav-tabs">
+<Example code={`<ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
@@ -144,15 +131,13 @@ Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabb
   <li class="nav-item">
     <a class="nav-link disabled">Disabled</a>
   </li>
-</ul>
-{{< /example >}} */}
+</ul>`} />
 
 ### Pills
 
 Take that same HTML, but use `.nav-pills` instead:
 
-{/* {{< example >}}
-<ul class="nav nav-pills">
+<Example code={`<ul class="nav nav-pills">
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
@@ -165,15 +150,13 @@ Take that same HTML, but use `.nav-pills` instead:
   <li class="nav-item">
     <a class="nav-link disabled">Disabled</a>
   </li>
-</ul>
-{{< /example >}} */}
+</ul>`} />
 
 ### Underline
 
 Take that same HTML, but use `.nav-underline` instead:
 
-{/* {{< example >}}
-<ul class="nav nav-underline">
+<Example code={`<ul class="nav nav-underline">
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
@@ -186,15 +169,13 @@ Take that same HTML, but use `.nav-underline` instead:
   <li class="nav-item">
     <a class="nav-link disabled">Disabled</a>
   </li>
-</ul>
-{{< /example >}} */}
+</ul>`} />
 
 ### Fill and justify
 
 Force your `.nav`'s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your `.nav-item`s, use `.nav-fill`. Notice that all horizontal space is occupied, but not every nav item has the same width.
 
-{/* {{< example >}}
-<ul class="nav nav-pills nav-fill">
+<Example code={`<ul class="nav nav-pills nav-fill">
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
@@ -207,24 +188,20 @@ Force your `.nav`'s contents to extend the full available width one of two modif
   <li class="nav-item">
     <a class="nav-link disabled">Disabled</a>
   </li>
-</ul>
-{{< /example >}} */}
+</ul>`} />
 
 When using a `<nav>`-based navigation, you can safely omit `.nav-item` as only `.nav-link` is required for styling `<a>` elements.
 
-{/* {{< example >}}
-<nav class="nav nav-pills nav-fill">
+<Example code={`<nav class="nav nav-pills nav-fill">
   <a class="nav-link active" aria-current="page" href="#">Active</a>
   <a class="nav-link" href="#">Much longer nav link</a>
   <a class="nav-link" href="#">Link</a>
   <a class="nav-link disabled">Disabled</a>
-</nav>
-{{< /example >}} */}
+</nav>`} />
 
 For equal-width elements, use `.nav-justified`. All horizontal space will be occupied by nav links, but unlike the `.nav-fill` above, every nav item will be the same width.
 
-{/* {{< example >}}
-<ul class="nav nav-pills nav-justified">
+<Example code={`<ul class="nav nav-pills nav-justified">
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
@@ -237,32 +214,27 @@ For equal-width elements, use `.nav-justified`. All horizontal space will be occ
   <li class="nav-item">
     <a class="nav-link disabled">Disabled</a>
   </li>
-</ul>
-{{< /example >}} */}
+</ul>`} />
 
 Similar to the `.nav-fill` example using a `<nav>`-based navigation.
 
-{/* {{< example >}}
-<nav class="nav nav-pills nav-justified">
+<Example code={`<nav class="nav nav-pills nav-justified">
   <a class="nav-link active" aria-current="page" href="#">Active</a>
   <a class="nav-link" href="#">Much longer nav link</a>
   <a class="nav-link" href="#">Link</a>
   <a class="nav-link disabled">Disabled</a>
 </nav>
-
-{{< /example >}} */}
+`} />
 ## Working with flex utilities
 
 If you need responsive nav variations, consider using a series of [flexbox utilities]([[docsref:/utilities/flex]]). While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, our nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.
 
-{/* {{< example >}}
-<nav class="nav nav-pills flex-column flex-sm-row">
+<Example code={`<nav class="nav nav-pills flex-column flex-sm-row">
   <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="#">Active</a>
   <a class="flex-sm-fill text-sm-center nav-link" href="#">Longer nav link</a>
   <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
   <a class="flex-sm-fill text-sm-center nav-link disabled">Disabled</a>
-</nav>
-{{< /example >}} */}
+</nav>`} />
 
 ## Regarding accessibility
 
@@ -276,8 +248,7 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
 
 ### Tabs with dropdowns
 
-{/* {{< example >}}
-<ul class="nav nav-tabs">
+<Example code={`<ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
@@ -297,13 +268,11 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
   <li class="nav-item">
     <a class="nav-link disabled">Disabled</a>
   </li>
-</ul>
-{{< /example >}} */}
+</ul>`} />
 
 ### Pills with dropdowns
 
-{/* {{< example >}}
-<ul class="nav nav-pills">
+<Example code={`<ul class="nav nav-pills">
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
@@ -323,8 +292,7 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
   <li class="nav-item">
     <a class="nav-link disabled">Disabled</a>
   </li>
-</ul>
-{{< /example >}} */}
+</ul>`} />
 
 ## CSS
 
@@ -649,9 +617,7 @@ To make tabs fade in, add `.fade` to each `.tab-pane`. The first tab pane must a
 
 ### Methods
 
-<Callout type="danger">
-<DangerAsyncMethods />
-</Callout>
+<Callout name="danger-async-methods" type="danger" />
 
 Activates your content as a tab element.
 

@@ -29,8 +29,8 @@ import Code from '../shortcodes/Code.astro'
         href="https://github.com/twbs/examples/">use any demo from our Examples repo</a
       > to quickly jumpstart Bootstrap projects.
     </p>
-    <Code code={`npm i bootstrap@${getConfig().params.current_version}`} lang="sh" />
-    <Code code={`gem install bootstrap -v ${getConfig().params.current_ruby_version}`} lang="sh" />
+    <Code code={`npm i bootstrap@${getConfig().current_version}`} lang="sh" />
+    <Code code={`gem install bootstrap -v ${getConfig().current_ruby_version}`} lang="sh" />
     <p>
       <a href={getVersionedDocsPath('getting-started/download')}>Read our installation docs</a> for more info and additional
       package managers.
@@ -50,14 +50,14 @@ import Code from '../shortcodes/Code.astro'
       >.
     </p>
     <Code
-      code={`<link href="${getConfig().params.cdn.css}" rel="stylesheet" integrity="${
-        getConfig().params.cdn.css_hash
+      code={`<link href="${getConfig().cdn.css}" rel="stylesheet" integrity="${
+        getConfig().cdn.css_hash
       }" crossorigin="anonymous">`}
       lang="html"
     />
     <Code
-      code={`<script src="${getConfig().params.cdn.js_bundle}" integrity="${
-        getConfig().params.cdn.js_bundle_hash
+      code={`<script src="${getConfig().cdn.js_bundle}" integrity="${
+        getConfig().cdn.js_bundle_hash
       }" crossorigin="anonymous"></script>`}
       lang="html"
     />
@@ -71,21 +71,42 @@ import Code from '../shortcodes/Code.astro'
         class="d-flex flex-column align-items-center text-decoration-none animate-img"
         href={getVersionedDocsPath('getting-started/webpack')}
       >
-        <img class="d-block mb-2" src="/img/webpack.svg" alt="" width="72" height="72" loading="lazy" />
+        <img
+          class="d-block mb-2"
+          src={getVersionedDocsPath('/assets/img/webpack.svg')}
+          alt=""
+          width="72"
+          height="72"
+          loading="lazy"
+        />
         <span class="text-body-secondary">Webpack</span>
       </a>
       <a
         class="d-flex flex-column align-items-center text-decoration-none animate-img"
         href={getVersionedDocsPath('getting-started/parcel')}
       >
-        <img class="d-block mb-2" src="/img/parcel.png" alt="" width="72" height="72" loading="lazy" />
+        <img
+          class="d-block mb-2"
+          src={getVersionedDocsPath('/assets/img/parcel.png')}
+          alt=""
+          width="72"
+          height="72"
+          loading="lazy"
+        />
         <span class="text-body-secondary">Parcel</span>
       </a>
       <a
         class="d-flex flex-column align-items-center text-decoration-none animate-img"
         href={getVersionedDocsPath('getting-started/vite')}
       >
-        <img class="d-block mb-2" src="/img/vite.svg" alt="" width="72" height="72" loading="lazy" />
+        <img
+          class="d-block mb-2"
+          src={getVersionedDocsPath('/assets/img/vite.svg')}
+          alt=""
+          width="72"
+          height="72"
+          loading="lazy"
+        />
         <span class="text-body-secondary">Vite</span>
       </a>
     </div>

@@ -4,9 +4,8 @@ description: Provide valuable, actionable feedback to your users with HTML5 form
 # TODO: handle group
 # group: forms
 toc: true
-# TODO: handle extra_js
 extra_js:
-  - src: "/docs/5.3/assets/js/validate-forms.js"
+  - src: "[[docsref:/assets/js/validate-forms.js]]"
     async: true
 ---
 
@@ -35,8 +34,7 @@ For custom Bootstrap form validation messages, you'll need to add the `novalidat
 
 Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback. Background icons for `<select>`s are only available with `.form-select`, and not `.form-control`.
 
-{/* {{< example >}}
-<form class="row g-3 needs-validation" novalidate>
+<Example code={`<form class="row g-3 needs-validation" novalidate>
   <div class="col-md-4">
     <label for="validationCustom01" class="form-label">First name</label>
     <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
@@ -99,14 +97,10 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
   <div class="col-12">
     <button class="btn btn-primary" type="submit">Submit form</button>
   </div>
-</form>
-{{< /example >}} */}
+</form>`} />
 
-{/* {{< example lang="js" show_preview="false" >}}
-{{< js.inline >}}
-{{- readFile (path.Join "site/static/docs" .Site.Params.docs_version "assets/js/validate-forms.js") -}}
-{{< /js.inline >}}
-{{< /example >}} */}
+{/* TODO(HiDeoo) Rename path */}
+<Code containerClass="bd-example-snippet" lang="js" filePath="site-new/static/docs/[version]/assets/js/validate-forms.js" />
 
 ## Browser defaults
 
@@ -114,8 +108,7 @@ Not interested in custom validation feedback messages or writing JavaScript to c
 
 While these feedback styles cannot be styled with CSS, you can still customize the feedback text through JavaScript.
 
-{/* {{< example >}}
-<form class="row g-3">
+<Example code={`<form class="row g-3">
   <div class="col-md-4">
     <label for="validationDefault01" class="form-label">First name</label>
     <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
@@ -157,8 +150,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
   <div class="col-12">
     <button class="btn btn-primary" type="submit">Submit form</button>
   </div>
-</form>
-{{< /example >}} */}
+</form>`} />
 
 ## Server-side
 
@@ -168,8 +160,7 @@ For invalid fields, ensure that the invalid feedback/error message is associated
 
 To fix [issues with border radius](https://github.com/twbs/bootstrap/issues/25110), input groups require an additional `.has-validation` class.
 
-{/* {{< example >}}
-<form class="row g-3">
+<Example code={`<form class="row g-3">
   <div class="col-md-4">
     <label for="validationServer01" class="form-label">First name</label>
     <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required>
@@ -232,8 +223,7 @@ To fix [issues with border radius](https://github.com/twbs/bootstrap/issues/2511
   <div class="col-12">
     <button class="btn btn-primary" type="submit">Submit form</button>
   </div>
-</form>
-{{< /example >}} */}
+</form>`} />
 
 ## Supported elements
 
@@ -243,8 +233,7 @@ Validation styles are available for the following form controls and components:
 - `<select>`s with `.form-select`
 - `.form-check`s
 
-{/* {{< example >}}
-<form class="was-validated">
+<Example code={`<form class="was-validated">
   <div class="mb-3">
     <label for="validationTextarea" class="form-label">Textarea</label>
     <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" required></textarea>
@@ -287,15 +276,13 @@ Validation styles are available for the following form controls and components:
   <div class="mb-3">
     <button class="btn btn-primary" type="submit" disabled>Submit form</button>
   </div>
-</form>
-{{< /example >}} */}
+</form>`} />
 
 ## Tooltips
 
 If your form layout allows it, you can swap the `.{valid|invalid}-feedback` classes for `.{valid|invalid}-tooltip` classes to display validation feedback in a styled tooltip. Be sure to have a parent with `position: relative` on it for tooltip positioning. In the example below, our column classes have this already, but your project may require an alternative setup.
 
-{/* {{< example >}}
-<form class="row g-3 needs-validation" novalidate>
+<Example code={`<form class="row g-3 needs-validation" novalidate>
   <div class="col-md-4 position-relative">
     <label for="validationTooltip01" class="form-label">First name</label>
     <input type="text" class="form-control" id="validationTooltip01" value="Mark" required>
@@ -347,8 +334,7 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
   <div class="col-12">
     <button class="btn btn-primary" type="submit">Submit form</button>
   </div>
-</form>
-{{< /example >}} */}
+</form>`} />
 
 ## CSS
 

@@ -6,9 +6,9 @@ description: Convey meaning through `color` with a handful of color utility clas
 toc: true
 ---
 
-<Callout>
-<WarningColorAssistiveTechnologies />
-</Callout>
+import { getData } from '../../../libs/data'
+
+<Callout name="warning-color-assistive-technologies" />
 
 ## Colors
 
@@ -18,14 +18,10 @@ Colorize text with color utilities. If you want to colorize links, you can use t
 Color utilities like `.text-*` that generated from our original `$theme-colors` Sass map don't yet respond to color modes, however, any `.text-*-emphasis` utility will. This will be resolved in v6.
 </Callout>
 
-{/* {{< example >}}
-{{< colors.inline >}}
-{{- range (index $.Site.Data "theme-colors") }}
-<p class="text-{{ .name }}{{ with .contrast_color }} bg-{{ . }}{{ end }}">.text-{{ .name }}</p>
-<p class="text-{{ .name }}-emphasis">.text-{{ .name }}-emphasis</p>
-{{- end -}}
-{{< /colors.inline >}}
-<p class="text-body">.text-body</p>
+<Example code={[
+  ...getData('theme-colors').map((themeColor) => `<p class="text-${themeColor.name}${themeColor.contrast_color ? ` bg-${themeColor.contrast_color}` : ``}">.text-${themeColor.name}</p>
+<p class="text-${themeColor.name}-emphasis">.text-${themeColor.name}-emphasis</p>`),
+  `<p class="text-body">.text-body</p>
 <p class="text-body-secondary">.text-body-secondary</p>
 
 <p class="text-body-emphasis">.text-body-emphasis</p>
@@ -35,8 +31,8 @@ Color utilities like `.text-*` that generated from our original `$theme-colors` 
 <p class="text-black bg-white">.text-black</p>
 <p class="text-white bg-dark">.text-white</p>
 <p class="text-black-50 bg-white">.text-black-50</p>
-<p class="text-white-50 bg-dark">.text-white-50</p>
-{{< /example >}} */}
+<p class="text-white-50 bg-dark">.text-white-50</p>`
+]} />
 
 <Callout type="warning">
 **Deprecation:** With the addition of `.text-opacity-*` utilities and CSS variables for text utilities, `.text-black-50` and `.text-white-50` are deprecated as of v5.1.0. They'll be removed in v6.0.0.
@@ -69,19 +65,15 @@ We use an RGB version of our `--bs-primary` (with the value of `13, 110, 253`) C
 
 To change that opacity, override `--bs-text-opacity` via custom styles or inline styles.
 
-{/* {{< example >}}
-<div class="text-primary">This is default primary text</div>
-<div class="text-primary" style="--bs-text-opacity: .5;">This is 50% opacity primary text</div>
-{{< /example >}} */}
+<Example code={`<div class="text-primary">This is default primary text</div>
+<div class="text-primary" style="--bs-text-opacity: .5;">This is 50% opacity primary text</div>`} />
 
 Or, choose from any of the `.text-opacity` utilities:
 
-{/* {{< example >}}
-<div class="text-primary">This is default primary text</div>
+<Example code={`<div class="text-primary">This is default primary text</div>
 <div class="text-primary text-opacity-75">This is 75% opacity primary text</div>
 <div class="text-primary text-opacity-50">This is 50% opacity primary text</div>
-<div class="text-primary text-opacity-25">This is 25% opacity primary text</div>
-{{< /example >}} */}
+<div class="text-primary text-opacity-25">This is 25% opacity primary text</div>`} />
 
 ## Specificity
 

@@ -19,8 +19,7 @@ Alternatively, you can also switch to a media query implementation thanks to our
 
 For example, to change the color mode of a dropdown menu, add `data-bs-theme="light"` or `data-bs-theme="dark"` to the parent `.dropdown`. Now, no matter the global color mode, these dropdowns will display with the specified theme value.
 
-{/* {{< example class="d-flex justify-content-between" >}}
-<div class="dropdown" data-bs-theme="light">
+<Example class="d-flex justify-content-between" code={`<div class="dropdown" data-bs-theme="light">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonLight" data-bs-toggle="dropdown" aria-expanded="false">
     Default dropdown
   </button>
@@ -46,8 +45,7 @@ For example, to change the color mode of a dropdown menu, add `data-bs-theme="li
     <li><hr class="dropdown-divider"/></li>
     <li><a class="dropdown-item" href="#">Separated link</a></li>
   </ul>
-</div>
-{{< /example >}} */}
+</div>`} />
 
 ## How it works
 
@@ -70,8 +68,7 @@ Use `data-bs-theme` on a nested element to change the color mode for a group of 
 
 For example, despite using `data-bs-theme="dark"` on a random `<div>`, the `<div>` has no `background-color` as it's set on the `<body>`. As such, if you want the `color` and `background-color` to adapt, you'll need to add `.text-body` and `.bg-body`.
 
-{/* {{< example class="p-0" >}}
-<div data-bs-theme="dark" class="p-3 text-body bg-body">
+<Example class="p-0" code={`<div data-bs-theme="dark" class="p-3 text-body bg-body">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Color modes</a></li>
@@ -128,8 +125,7 @@ For example, despite using `data-bs-theme="dark"` on a random `<div>`, the `<div
       </ul>
     </div>
   </div>
-</div>
-{{< /example >}} */}
+</div>`} />
 
 ## Usage
 
@@ -144,11 +140,11 @@ Enable the built in dark color mode across your entire project by adding the `da
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
-    <link href="[[param:cdn.css]]" rel="stylesheet" integrity="[[param:cdn.css_hash]]" crossorigin="anonymous">
+    <link href="[[config:cdn.css]]" rel="stylesheet" integrity="[[config:cdn.css_hash]]" crossorigin="anonymous">
   </head>
   <body>
     <h1>Hello, world!</h1>
-    <script src="[[param:cdn.js_bundle]]" integrity="[[param:cdn.js_bundle_hash]]" crossorigin="anonymous"></script>
+    <script src="[[config:cdn.js_bundle]]" integrity="[[config:cdn.js_bundle_hash]]" crossorigin="anonymous"></script>
   </body>
 </html>
 ```
@@ -248,11 +244,8 @@ To allow visitors or users to toggle color modes, you'll need to create a toggle
 
 Here's a look at the JavaScript that powers it. Feel free to inspect our own documentation navbar to see how it's implemented using HTML and CSS from our own components. Note that if you decide to use media queries for your color modes, your JavaScript may need to be modified or removed if you prefer an implicit control.
 
-{/* {{< example lang="js" show_preview="false" >}}
-{{< js.inline >}}
-{{- readFile (path.Join "site/static/docs" .Site.Params.docs_version "assets/js/color-modes.js") -}}
-{{< /js.inline >}}
-{{< /example >}} */}
+{/* TODO(HiDeoo) Rename path */}
+<Code containerClass="bd-example-snippet" lang="js" filePath="site-new/static/docs/[version]/assets/js/color-modes.js" />
 
 ## CSS
 

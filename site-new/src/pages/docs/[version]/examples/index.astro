@@ -1,0 +1,46 @@
+---
+import SingleLayout from '../../../../layouts/SingleLayout.astro'
+import { getConfig, getVersionedDocsPath } from '../../../../libs/config'
+import { getData } from '../../../../libs/data'
+import { getSlug } from '../../../../libs/utils'
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { version: getConfig().docs_version },
+    },
+  ]
+}
+
+// TODO(HiDeoo) This is far from complete, but I needed some bits to get started
+// TODO(HiDeoo) Before doing this page, port first `site-new/src/layouts/SingleLayout.astro`
+// TODO(HiDeoo) Finish porting `site/content/docs/5.3/examples/_index.md`
+// TODO(HiDeoo) Note that the way this page is constructed in Hugo, e.g. `{{ if (eq $i 0) }}<div class="row">{{ end }}` is not JSX / Astro compliant so a 1:1 port is not possible so the logic should be rethinked to get the same output.
+---
+
+<SingleLayout title="Examples">
+  {
+    getData('examples').map(({ category, examples, external }) => {
+      return (
+        <div class="bd-content">
+          <h2>{category}</h2>
+          {examples.map((example) => {
+            if (external) {
+              return (
+                <p>
+                  <a>External example: {example.name}</a>
+                </p>
+              )
+            }
+
+            return (
+              <p>
+                <a href={getVersionedDocsPath(`/examples/${getSlug(example.name)}`)}>{example.name}</a>
+              </p>
+            )
+          })}
+        </div>
+      )
+    })
+  }
+</SingleLayout>

@@ -27,9 +27,7 @@ myModal.addEventListener('shown.bs.modal', () => {
 })
 ```
 
-<Callout>
-<InfoPrefersReducedMotion />
-</Callout>
+<Callout name="info-prefersreducedmotion" />
 
 Keep reading for demos and usage guidelines.
 
@@ -449,8 +447,7 @@ Have a bunch of buttons that all trigger the same modal with slightly different 
 
 Below is a live demo followed by example HTML and JavaScript. For more information, [read the modal events docs](#events) for details on `relatedTarget`.
 
-{/* {{< example stackblitz_add_js="true" >}}
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
+<Example addStackblitzJs code={`<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for @fat</button>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
 
@@ -479,8 +476,7 @@ Below is a live demo followed by example HTML and JavaScript. For more informati
       </div>
     </div>
   </div>
-</div>
-{{< /example >}} */}
+</div>`} />
 
 ```js
 const exampleModal = document.getElementById('exampleModal')
@@ -505,8 +501,7 @@ exampleModal.addEventListener('show.bs.modal', event => {
 
 Toggle between multiple modals with some clever placement of the `data-bs-target` and `data-bs-toggle` attributes. For example, you could toggle a password reset modal from within an already open sign in modal. **Please note multiple modals cannot be open at the same time**—this method simply toggles between two separate modals.
 
-{/* {{< example >}}
-<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+<Example code={`<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -538,8 +533,7 @@ Toggle between multiple modals with some clever placement of the `data-bs-target
     </div>
   </div>
 </div>
-<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Open first modal</button>
-{{< /example >}} */}
+<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Open first modal</button>`} />
 
 ### Change animation
 
@@ -839,9 +833,7 @@ const myModalAlternative = new bootstrap.Modal('#myModal', options)
 
 ### Methods
 
-<Callout type="danger">
-<DangerAsyncMethods />
-</Callout>
+<Callout name="danger-async-methods" type="danger" />
 
 #### Passing options
 

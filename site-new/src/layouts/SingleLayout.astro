@@ -1,0 +1,32 @@
+---
+import BaseLayout from './BaseLayout.astro'
+
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+
+// TODO(HiDeoo) This is far from complete, but I needed some bits to get started
+// TODO(HiDeoo) Finish porting `site/layouts/_default/single.html`
+---
+
+<BaseLayout {...Astro.props} layout="single">
+  <Fragment slot="main">
+    <header class="py-5 border-bottom">
+      <div class="container-xxl bd-gutter pt-md-1 pb-md-4">
+        <div class="row">
+          <div class="col-xl-8">
+            <h1 class="bd-title mt-0">{title}</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="bd-content order-1 py-5" id="content">
+      <div class="container-xxl bd-gutter">
+        <slot />
+      </div>
+    </main>
+  </Fragment>
+</BaseLayout>

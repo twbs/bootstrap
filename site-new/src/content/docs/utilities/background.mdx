@@ -9,9 +9,7 @@ toc: true
 
 import { getData } from '../../../libs/data'
 
-<Callout>
-<WarningColorAssistiveTechnologies/>
-</Callout>
+<Callout name="warning-color-assistive-technologies" />
 
 ## Background color
 
@@ -21,21 +19,17 @@ Similar to the contextual text color classes, set the background of an element t
 Background utilities like `.bg-*` that generated from our original `$theme-colors` Sass map don't yet respond to color modes, however, any `.bg-*-subtle` utility will. This will be resolved in v6.
 </Callout>
 
-{/* {{< example >}}
-{{< colors.inline >}}
-{{- range (index $.Site.Data "theme-colors") }}
-<div class="p-3 mb-2 bg-{{ .name }}{{ if .contrast_color }} text-{{ .contrast_color }}{{ else }} text-white{{ end }}">.bg-{{ .name }}</div>
-<div class="p-3 mb-2 bg-{{ .name }}-subtle text-emphasis-{{ .name }}">.bg-{{ .name }}-subtle</div>
-{{- end -}}
-{{< /colors.inline >}}
-<p class="p-3 mb-2 bg-body-secondary">.bg-body-secondary</p>
+<Example code={[
+  ...getData('theme-colors').map((themeColor) => `<div class="p-3 mb-2 bg-${themeColor.name} ${themeColor.contrast_color ? `text-${themeColor.contrast_color}` : `text-white`}">.bg-${themeColor.name}</div>
+<div class="p-3 mb-2 bg-${themeColor.name}-subtle text-emphasis-${themeColor.name}">.bg-${themeColor.name}-subtle</div>`),
+  `<p class="p-3 mb-2 bg-body-secondary">.bg-body-secondary</p>
 <p class="p-3 mb-2 bg-body-tertiary">.bg-body-tertiary</p>
 
 <div class="p-3 mb-2 bg-body text-body">.bg-body</div>
 <div class="p-3 mb-2 bg-black text-white">.bg-black</div>
 <div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
-<div class="p-3 mb-2 bg-transparent text-body">.bg-transparent</div>
-{{< /example >}} */}
+<div class="p-3 mb-2 bg-transparent text-body">.bg-transparent</div>`
+]} />
 
 ## Background gradient
 
@@ -49,17 +43,6 @@ Do you need a gradient in your custom CSS? Just add `background-image: var(--bs-
   )
 })}
 <div class="p-3 mb-2 bg-black bg-gradient text-white">.bg-black.bg-gradient</div>
-
-{/*
-{{< markdown >}}
-{{< colors.inline >}}
-{{- range (index $.Site.Data "theme-colors") }}
-<div class="p-3 mb-2 bg-{{ .name }} bg-gradient{{ with .contrast_color }} text-{{ . }}{{ else }} text-white{{ end }}">.bg-{{ .name }}.bg-gradient</div>
-{{- end -}}
-{{< /colors.inline >}}
-<div class="p-3 mb-2 bg-black bg-gradient text-white">.bg-black.bg-gradient</div>
-{{< /markdown >}}
-*/}
 
 ## Opacity
 
@@ -84,20 +67,16 @@ We use an RGB version of our `--bs-success` (with the value of `25, 135, 84`) CS
 
 To change that opacity, override `--bs-bg-opacity` via custom styles or inline styles.
 
-{/* {{< example >}}
-<div class="bg-success p-2 text-white">This is default success background</div>
-<div class="bg-success p-2" style="--bs-bg-opacity: .5;">This is 50% opacity success background</div>
-{{< /example >}} */}
+<Example code={`<div class="bg-success p-2 text-white">This is default success background</div>
+<div class="bg-success p-2" style="--bs-bg-opacity: .5;">This is 50% opacity success background</div>`} />
 
 Or, choose from any of the `.bg-opacity` utilities:
 
-{/* {{< example >}}
-<div class="bg-success p-2 text-white">This is default success background</div>
+<Example code={`<div class="bg-success p-2 text-white">This is default success background</div>
 <div class="bg-success p-2 text-white bg-opacity-75">This is 75% opacity success background</div>
 <div class="bg-success p-2 text-dark bg-opacity-50">This is 50% opacity success background</div>
 <div class="bg-success p-2 text-dark bg-opacity-25">This is 25% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-opacity-10">This is 10% opacity success background</div>
-{{< /example >}} */}
+<div class="bg-success p-2 text-dark bg-opacity-10">This is 10% opacity success background</div>`} />
 
 ## CSS
 

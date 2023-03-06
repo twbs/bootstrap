@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config'
 
 import { bootstrap } from './src/libs/astro'
+import { getConfig } from './src/libs/config'
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,5 +10,5 @@ export default defineConfig({
     smartypants: false,
     syntaxHighlight: 'prism',
   },
-  site: 'https://getbootstrap.com/',
+  site: getConfig().baseURL,
 })

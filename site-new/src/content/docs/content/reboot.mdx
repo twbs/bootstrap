@@ -102,45 +102,35 @@ All heading elements—`<h1>`—`<h6>` have their `margin-top` removed, `margin-
 
 All `<p>` elements have their `margin-top` removed and `margin-bottom: 1rem` set for easy spacing.
 
-{/* {{< example >}}
-<p>This is an example paragraph.</p>
-{{< /example >}} */}
+<Example code={`<p>This is an example paragraph.</p>`} />
 
 ## Links
 
 Links have a default `color` and underline applied. While links change on `:hover`, they don't change based on whether someone `:visited` the link. They also receive no special `:focus` styles.
 
-{/* {{< example >}}
-<a href="#">This is an example link</a>
-{{< /example >}} */}
+<Example code={`<a href="#">This is an example link</a>`} />
 
 As of v5.3.x, link `color` is set using `rgba()` and new `-rgb` CSS variables, allowing for easy customization of link color opacity. Change the link color opacity with the `--bs-link-opacity` CSS variable:
 
-{/* {{< example >}}
-<a href="#" style="--bs-link-opacity: .5">This is an example link</a>
-{{< /example >}} */}
+<Example code={`<a href="#" style="--bs-link-opacity: .5">This is an example link</a>`} />
 
 
 Placeholder links—those without an `href`—are targeted with a more specific selector and have their `color` and `text-decoration` reset to their default values.
 
-{/* {{< example >}}
-<a>This is a placeholder link</a>
-{{< /example >}} */}
+<Example code={`<a>This is a placeholder link</a>`} />
 
 ## Horizontal rules
 
 The `<hr>` element has been simplified. Similar to browser defaults, `<hr>`s are styled via `border-top`, have a default `opacity: .25`, and automatically inherit their `border-color` via `color`, including when `color` is set via the parent. They can be modified with text, border, and opacity utilities.
 
-{/* {{< example >}}
-<hr>
+<Example code={`<hr>
 
 <div class="text-success">
   <hr>
 </div>
 
 <hr class="border border-danger border-2 opacity-50">
-<hr class="border border-primary border-3 opacity-75">
-{{< /example >}} */}
+<hr class="border border-primary border-3 opacity-75">`} />
 
 ## Lists
 
@@ -178,51 +168,40 @@ For simpler styling, clear hierarchy, and better spacing, description lists have
 
 Wrap inline snippets of code with `<code>`. Be sure to escape HTML angle brackets.
 
-{/* {{< example >}}
-For example, <code>&lt;section&gt;</code> should be wrapped as inline.
-{{< /example >}} */}
+<Example code={`For example, <code>&lt;section&gt;</code> should be wrapped as inline.`} />
 
 ## Code blocks
 
 Use `<pre>`s for multiple lines of code. Once again, be sure to escape any angle brackets in the code for proper rendering. The `<pre>` element is reset to remove its `margin-top` and use `rem` units for its `margin-bottom`.
 
-{/* {{< example >}}
-<pre><code>&lt;p&gt;Sample text here...&lt;/p&gt;
+<Example code={`<pre><code>&lt;p&gt;Sample text here...&lt;/p&gt;
 &lt;p&gt;And another line of sample text here...&lt;/p&gt;
-</code></pre>
-{{< /example >}} */}
+</code></pre>`} />
 
 ## Variables
 
 For indicating variables use the `<var>` tag.
 
-{/* {{< example >}}
-<var>y</var> = <var>m</var><var>x</var> + <var>b</var>
-{{< /example >}} */}
+<Example code={`<var>y</var> = <var>m</var><var>x</var> + <var>b</var>`} />
 
 ## User input
 
 Use the `<kbd>` to indicate input that is typically entered via keyboard.
 
-{/* {{< example >}}
-To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br/>
-To edit settings, press <kbd><kbd>Ctrl</kbd> + <kbd>,</kbd></kbd>
-{{< /example >}} */}
+<Example code={`To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br/>
+To edit settings, press <kbd><kbd>Ctrl</kbd> + <kbd>,</kbd></kbd>`} />
 
 ## Sample output
 
 For indicating sample output from a program use the `<samp>` tag.
 
-{/* {{< example >}}
-<samp>This text is meant to be treated as sample output from a computer program.</samp>
-{{< /example >}} */}
+<Example code={`<samp>This text is meant to be treated as sample output from a computer program.</samp>`} />
 
 ## Tables
 
 Tables are slightly adjusted to style `<caption>`s, collapse borders, and ensure consistent `text-align` throughout. Additional changes for borders, padding, and more come with [the `.table` class]([[docsref:/content/tables]]).
 
-{/* {{< example >}}
-<table>
+<Example code={`<table>
   <caption>
     This is an example table, and this is its caption to describe the contents.
   </caption>
@@ -254,8 +233,7 @@ Tables are slightly adjusted to style `<caption>`s, collapse borders, and ensure
       <td>Table cell</td>
     </tr>
   </tbody>
-</table>
-{{< /example >}} */}
+</table>`} />
 
 ## Forms
 
@@ -270,9 +248,7 @@ Various form elements have been rebooted for simpler base styles. Here are some 
 
 These changes, and more, are demonstrated below.
 
-<Callout type="warning">
-<WarningInputSupport />
-</Callout>
+<Callout name="warning-input-support" type="warning" />
 
 <form class="bd-example">
   <fieldset>
@@ -400,9 +376,7 @@ These changes, and more, are demonstrated below.
 
 Reboot includes an enhancement for `role="button"` to change the default cursor to `pointer`. Add this attribute to elements to help indicate elements are interactive. This role isn't necessary for `<button>` elements, which get their own `cursor` change.
 
-{/* {{< example >}}
-<span role="button" tabindex="0">Non-button element button</span>
-{{< /example >}} */}
+<Example code={`<span role="button" tabindex="0">Non-button element button</span>`} />
 
 ## Misc elements
 

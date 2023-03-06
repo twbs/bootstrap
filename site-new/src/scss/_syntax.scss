@@ -38,12 +38,39 @@
 }
 
 .highlight pre code {
-  // TODO(HiDeoo) Check all `sh` code blocks and make sure this is really what we want.
-  // Prevent token highlighting for the shell language.
-  &.language-sh .token { color: var(--bs-body-color); }
+  // Prevent token highlighting for the shell and PowerShell languages.
+  &.language-bash,
+  &.language-powershell,
+  &.language-sh {
+    .token {
+      color: var(--bs-body-color);
+    }
+  }
+
+  // Shell prefix.
+  &.language-bash,
+  &.language-sh {
+    .token.prefix::before {
+      color: var(--base03);
+      content: "$ ";
+      user-select: none;
+    }
+  }
+
+  // PowerShell prefix.
+  &.language-powershell {
+    .token.prefix::before {
+      color: var(--base0C);
+      content: "PM> ";
+      user-select: none;
+    }
+  }
 
   // All values (var, hex, units, etc.) are not tokenized individually.
   &.language-scss { color: var(--base08); }
+
+  // Highlight all JS untokenized values.
+  &.language-js { color: var(--base0A); }
 }
 
 // https://prismjs.com/tokens.html
@@ -53,9 +80,15 @@
   // Highlight double quotes in attribute values with the same color as the value.
   &.attr-value .token.punctuation:not(.attr-equals) { color: var(--base0C); }
   &.boolean { color: var(--base08); }
+  &.class-name { color: var(--base0A); }
+  &.constant { color: var(--base0A); }
   &.comment { color: var(--base03); }
+  &.doctype-tag { color: var(--base08); }
   &.function { color: var(--base0B); }
   &.keyword { color: var(--base0E); }
+  &.name { color: var(--base08); }
+  &.operator { color: var(--base05); }
+  &.parameter { color: var(--base0A); }
   &.property { color: var(--base0A); }
   &.punctuation { color: var(--base05); }
   &.selector { color: var(--base07); }
@@ -63,101 +96,3 @@
   &.tag { color: var(--base08); }
   &.variable { color: var(--base08); }
 }
-
-// TODO(HiDeoo) Remove all this once ported to the new theme.
-// .hl { background-color: var(--base02); }
-// .c { color: var(--base03); }
-// .err { color: var(--base08); }
-// .k { color: var(--base0E); }
-// .l { color: var(----base09); }
-// .n { color: var(--base08); }
-// .o { color: var(--base05); }
-// .p { color: var(--base05); }
-// .cm { color: var(--base04); }
-// .cp { color: var(--base08); }
-// .c1 { color: var(--base03); }
-// .cs { color: var(--base04); }
-// .gd { color: var(--base08); }
-// .ge { font-style: italic; }
-// .gh {
-//   font-weight: 600;
-//   color: #fff;
-// }
-// .gi { color: var(--bs-success); }
-// .gp {
-//   font-weight: 600;
-//   color: var(--base04);
-// }
-// .gs { font-weight: 600; }
-// .gu {
-//   font-weight: 600;
-//   color: var(--base0C);
-// }
-// .kc { color: var(--base0E); }
-// .kd { color: var(--base0E); }
-// .kn { color: var(--base0C); }
-// .kp { color: var(--base0E); }
-// .kr { color: var(--base0E); }
-// .kt { color: var(--base0A); }
-// .ld { color: var(--base0C); }
-// .m { color: var(--base09); }
-// .s { color: var(--base0C); }
-// .na { color: var(--base0A); }
-// .nb { color: var(--base05); }
-// .nc { color: var(--base07); }
-// .no { color: var(--base08); }
-// .nd { color: var(--base07); }
-// .ni { color: var(--base08); }
-// .ne { color: var(--base08); }
-// .nf { color: var(--base0B); }
-// .nl { color: var(--base05); }
-// .nn { color: var(--base0A); }
-// .nx { color: var(--base0A); }
-// .py { color: var(--base08); }
-// .nt { color: var(--base08); }
-// .nv { color: var(--base08); }
-// .ow { color: var(--base0C); }
-// .w { color: #fff; }
-// .mf { color: var(--base09); }
-// .mh { color: var(--base09); }
-// .mi { color: var(--base09); }
-// .mo { color: var(--base09); }
-// .sb { color: var(--base0C); }
-// .sc { color: #fff; }
-// .sd { color: var(--base04); }
-// .s2 { color: var(--base0C); }
-// .se { color: var(--base09); }
-// .sh { color: var(--base0C); }
-// .si { color: var(--base09); }
-// .sx { color: var(--base0C); }
-// .sr { color: var(--base0C); }
-// .s1 { color: var(--base0C); }
-// .ss { color: var(--base0C); }
-// .bp { color: var(--base05); }
-// .vc { color: var(--base08); }
-// .vg { color: var(--base08); }
-// .vi { color: var(--base08); }
-// .il { color: var(--base09); }
-
-// // Color commas in rgba() values
-// .m + .o { color: var(--base03); }
-
-// // Fix bash
-// .language-sh .c { color: var(--base03); }
-
-// .chroma {
-//   .language-bash,
-//   .language-sh {
-//     .line::before {
-//       color: var(--base03);
-//       content: "$ ";
-//       user-select: none;
-//     }
-//   }
-
-//   .language-powershell::before {
-//     color: var(--base0C);
-//     content: "PM> ";
-//     user-select: none;
-//   }
-// }

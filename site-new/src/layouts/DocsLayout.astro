@@ -1,15 +1,21 @@
 ---
+import type { MarkdownHeading } from 'astro'
 import type { CollectionEntry } from 'astro:content'
+import { getConfig } from '../libs/config'
 import type { LayoutOverridesHTMLAttributes } from '../libs/layout'
+import { getSlug } from '../libs/utils'
 import Ads from '../components/Ads.astro'
 import BaseLayout from './BaseLayout.astro'
 import DocsSidebar from '../components/DocsSidebar.astro'
+import TableOfContents from '../components/TableOfContents.astro'
 
 interface Props {
   frontmatter: CollectionEntry<'docs'>['data']
+  headings?: MarkdownHeading[]
+  id: CollectionEntry<'docs'>['id']
 }
 
-const { frontmatter } = Astro.props
+const { frontmatter, headings, id } = Astro.props
 
 const bodyProps: LayoutOverridesHTMLAttributes<'body'> = { tabindex: 0 }
 
@@ -50,10 +56,9 @@ if (frontmatter.toc) {
                 </small>
               )
             }
-            <!-- {{ .Site.Params.repo }}/blob/v{{ .Site.Params.current_version }}/site/content/{{ .Page.File.Path | replaceRE `\\` "/" }}" -->
             <a
               class="btn btn-sm btn-bd-light rounded-2"
-              href="// TODO(HiDeoo) Figure out this link when we have proper routing and we know for sure where files will be located."
+              href={`${getConfig().repo}/blob/v${getConfig().current_version}/site/src/content/${id}`}
               title="View and edit this file on GitHub"
               target="_blank"
               rel="noopener"
@@ -68,7 +73,7 @@ if (frontmatter.toc) {
       </div>
 
       {
-        frontmatter.toc && (
+        frontmatter.toc && headings && (
           <div class="bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 text-body-secondary">
             <button
               class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none"
@@ -86,7 +91,9 @@ if (frontmatter.toc) {
             <strong class="d-none d-md-block h6 my-2 ms-3">On this page</strong>
             <hr class="d-none d-md-block my-2 ms-3" />
             <div class="collapse bd-toc-collapse" id="tocContents">
-              {/*TODO(HiDeoo) {{ .TableOfContents }} */}
+              <nav id="TableOfContents">
+                <TableOfContents headings={headings} />
+              </nav>
             </div>
           </div>
         )
@@ -98,8 +105,7 @@ if (frontmatter.toc) {
             <div class="row g-3">
               {frontmatter.sections.map((section) => (
                 <div class="col-md-6">
-                  {/* TODO(HiDeoo) Fix URLs and sanitize them */}
-                  <a class="d-block text-decoration-none" href="../{{ urlize .title }}/">
+                  <a class="d-block text-decoration-none" href={`./${getSlug(section.title)}/`}>
                     <strong class="d-block h5 mb-0">{section.title}</strong>
                     <span class="text-secondary">{section.description}</span>
                   </a>

@@ -33,8 +33,7 @@ Be sure to use an appropriate `type` attribute on all inputs (e.g., `email` for 
 
 Here's a quick example to demonstrate Bootstrap's form styles. Keep reading for documentation on required classes, form layout, and more.
 
-{/* {{< example >}}
-<form>
+<Example code={`<form>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -49,8 +48,7 @@ Here's a quick example to demonstrate Bootstrap's form styles. Keep reading for 
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-{{< /example >}} */}
+</form>`} />
 
 ## Disabled forms
 
@@ -64,8 +62,7 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 
 However, if your form also includes custom button-like elements such as `<a class="btn btn-*">...</a>`, these will only be given a style of `pointer-events: none`, meaning they are still focusable and operable using the keyboard. In this case, you must manually modify these controls by adding `tabindex="-1"` to prevent them from receiving focus and `aria-disabled="disabled"` to signal their state to assistive technologies.
 
-{/* {{< example >}}
-<form>
+<Example code={`<form>
   <fieldset disabled>
     <legend>Disabled fieldset example</legend>
     <div class="mb-3">
@@ -88,8 +85,7 @@ However, if your form also includes custom button-like elements such as `<a clas
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </fieldset>
-</form>
-{{< /example >}} */}
+</form>`} />
 
 ## Accessibility
 

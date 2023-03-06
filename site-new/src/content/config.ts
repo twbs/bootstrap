@@ -1,11 +1,18 @@
 import { z, defineCollection } from 'astro:content'
 
-export const docsSchema = z.object({
+const docsSchema = z.object({
   added: z.string().optional(),
   // TODO(HiDeoo) aliases
   description: z.string(),
   direction: z.literal('rtl').optional(),
   // TODO(HiDeoo) group
+  extra_js: z
+    .object({
+      async: z.boolean().optional(),
+      src: z.string(),
+    })
+    .array()
+    .optional(),
   sections: z
     .object({
       description: z.string(),

@@ -1,5 +1,5 @@
 ---
-import { getConfig } from '../../libs/config'
+import { getConfig, getVersionedDocsPath } from '../../libs/config'
 import type { Layout } from '../../libs/layout'
 import Stylesheet from './Stylesheet.astro'
 import Favicons from './Favicons.astro'
@@ -21,21 +21,19 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
 
 const isHome = Astro.url.pathname === '/'
 const pageTitle = isHome
-  ? `${getConfig().title} · ${getConfig().params.subtitle}`
-  : `${title} · ${getConfig().title} v${getConfig().params.docs_version}`
+  ? `${getConfig().title} · ${getConfig().subtitle}`
+  : `${title} · ${getConfig().title} v${getConfig().docs_version}`
 ---
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <meta name="description" content={description} />
-<!--TODO: handle | markdownify -->
-<!-- TODO(HiDeoo) markdownify in a meta tag? -->
 
-<meta name="author" content={getConfig().params.authors} />
+<meta name="author" content={getConfig().authors} />
 <meta name="generator" content={Astro.generator} />
 <meta name="docsearch:language" content="en" />
-<meta name="docsearch:version" content={getConfig().params.docs_version} />
+<meta name="docsearch:version" content={getConfig().docs_version} />
 
 <title>{pageTitle}</title>
 
@@ -44,17 +42,9 @@ const pageTitle = isHome
 {layout === 'docs' && <link rel="preconnect" href="https://AK7KMZKZHQ-dsn.algolia.net" crossorigin />}
 {robots && <meta name="robots" content={robots} />}
 
-<!--
-  TODO: handle relURL?? or use public??
-  TODO(HiDeoo) This should prolly use getVersionedDocsPath()
-  {{- $colorModeJS := printf "/docs/%s/assets/js/color-modes.js" $.Site.Params.docs_version -}}
-  <script src="{{ $colorModeJS | relURL }}"></script>
--->
-<!-- TODO(HiDeoo) Looks like this should be versioned in /docs or something, but we need to have a talk first regarding
-routing so I fully understand the current structure. -->
-<script is:inline src="/js/color-modes.js"></script>
+<script is:inline src={getVersionedDocsPath('assets/js/color-modes.js')}></script>
 
 <Stylesheet direction={direction} layout={layout} />
 <Favicons />
-<Social description={description} thumbnail={thumbnail} title={title} />
+<Social description={description} layout={layout} thumbnail={thumbnail} title={title} />
 <Analytics />

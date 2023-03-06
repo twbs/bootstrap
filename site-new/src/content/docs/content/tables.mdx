@@ -53,23 +53,20 @@ Use contextual classes to color tables, table rows or individual cells.
   </table>
 </div>
 
-{/* TODO: fix this use case which doesn't work anymore even in the tables.mdx example with <Code/> */}
-```html
-<!-- On tables -->
-${getData('theme-colors').map((themeColor) => `<table class="table-${themeColor.name}">...</table>`).join('\n')}
-
-<!-- On rows -->
-${getData('theme-colors').map((themeColor) => `<tr class="table-${themeColor.name}">...</tr>`).join('\n')}
-
+<Code code={[
+  `<!-- On tables -->`,
+  ...getData('theme-colors').map((themeColor) => `<table class="table-${themeColor.name}">...</table>`),
+  `
+<!-- On rows -->`,
+  ...getData('theme-colors').map((themeColor) => `<tr class="table-${themeColor.name}">...</tr>`),
+  `
 <!-- On cells (\`td\` or \`th\`) -->
-<tr>
-  ${getData('theme-colors').map((themeColor) => `<td class="table-${themeColor.name}">...</td>`).join('\n  ')}
-</tr>
-```
+<tr>`,
+  ...getData('theme-colors').map((themeColor) => `  <td class="table-${themeColor.name}">...</td>`),
+  `</tr>`
+]} lang="html" />
 
-<Callout>
-<WarningColorAssistiveTechnologies />
-</Callout>
+<Callout name="warning-color-assistive-technologies" />
 
 ## Accented tables
 
@@ -263,8 +260,7 @@ Add `.table-sm` to make any `.table` more compact by cutting all cell `padding` 
 
 Add a thicker border, darker between table groups—`<thead>`, `<tbody>`, and `<tfoot>`—with `.table-group-divider`. Customize the color by changing the `border-top-color` (which we don't currently provide a utility class for at this time).
 
-{/* {{< example >}}
-<table class="table">
+<Example code={`<table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -292,8 +288,7 @@ Add a thicker border, darker between table groups—`<thead>`, `<tbody>`, and `<
       <td>@twitter</td>
     </tr>
   </tbody>
-</table>
-{{< /example >}} */}
+</table>`} />
 
 ## Vertical alignment
 
@@ -622,8 +617,7 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
 
 You can also put the `<caption>` on the top of the table with `.caption-top`.
 
-{/* {{< example >}}
-<table class="table caption-top">
+<Example code={`<table class="table caption-top">
   <caption>List of users</caption>
   <thead>
     <tr>
@@ -653,8 +647,7 @@ You can also put the `<caption>` on the top of the table with `.caption-top`.
       <td>@twitter</td>
     </tr>
   </tbody>
-</table>
-{{< /example >}} */}
+</table>`} />
 
 ## Responsive tables
 
@@ -743,15 +736,18 @@ Use `.table-responsive{-sm|-md|-lg|-xl|-xxl}` as needed to create responsive tab
 
 **These tables may appear broken until their responsive styles apply at specific viewport widths.**
 
-{/* TODO: original code tests if not (eq . "xs") but the value never can't be that */}
 {getData('breakpoints').map((breakpoint) => {
+  if (breakpoint.breakpoint === 'xs') {
+    return <Fragment />
+  }
+
   return (
     <div class="bd-example">
       <div class={`table-responsive${breakpoint.abbr}`}>
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">#{breakpoint.breakpoint}</th>
+              <th scope="col">#</th>
               <th scope="col">Heading</th>
               <th scope="col">Heading</th>
               <th scope="col">Heading</th>
@@ -803,19 +799,12 @@ Use `.table-responsive{-sm|-md|-lg|-xl|-xxl}` as needed to create responsive tab
   )
 })}
 
-{/* TODO: original code tests if not (eq . "xs") but the value never can't be that */}
-{/* TODO: fix this use case which doesn't work anymore even in the tables.mdx example with <Code/> */}
-<Code language="html">
-{getData('breakpoints').map((breakpoint) => {
-  return (
-    <div class={`table-responsive${breakpoint.abbr}`}>
-      <table class="table">
-        ...
-      </table>
-    </div>
-  )
-})}
-</Code>
+<Code code={getData('breakpoints').map((breakpoint) => `<div class="table-responsive${breakpoint.abbr}">
+  <table class="table">
+    ...
+  </table>
+</div>
+`)} lang="html" />
 
 ## CSS
 

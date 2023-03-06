@@ -1,23 +1,20 @@
 ---
+import type { CollectionEntry } from 'astro:content'
 import type { Layout } from '../../libs/layout'
 import Skippy from './Skippy.astro'
 import Symbols from '../icons/Symbols.astro'
 import Navigation from './Navigation.astro'
-import Debug from '../Debug.astro'
 
 interface Props {
+  addedIn?: CollectionEntry<'docs'>['data']['added']
   layout: Layout
   title: string
 }
 
-const { layout, title } = Astro.props
+const { addedIn, layout, title } = Astro.props
 ---
 
 <Skippy layout={layout} />
 <Symbols />
 
-<!-- TODO(HiDeoo) debug section to remove -->
-<Debug />
-<!-- TODO(HiDeoo) end of debug section to remove -->
-
-<Navigation layout={layout} title={title} />
+<Navigation layout={layout} title={title} addedIn={addedIn} />

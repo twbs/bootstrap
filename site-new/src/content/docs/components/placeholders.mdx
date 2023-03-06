@@ -7,6 +7,8 @@ toc: true
 added: "5.1"
 ---
 
+import { getData } from '../../../libs/data'
+
 ## About
 
 Placeholders can be used to enhance the experience of your application. They're built only with HTML and CSS, meaning you don't need any JavaScript to create them. You will, however, need some custom JavaScript to toggle their visibility. Their appearance, color, and sizing can be easily customized with our utility classes.
@@ -78,13 +80,11 @@ Create placeholders with the `.placeholder` class and a grid column class (e.g.,
 
 We apply additional styling to `.btn`s via `::before` to ensure the `height` is respected. You may extend this pattern for other situations as needed, or add a `&nbsp;` within the element to reflect the height when actual text is rendered in its place.
 
-{/* {{< example >}}
-<p aria-hidden="true">
+<Example code={`<p aria-hidden="true">
   <span class="placeholder col-6"></span>
 </p>
 
-<a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4" aria-hidden="true"></a>
-{{< /example >}} */}
+<a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4" aria-hidden="true"></a>`} />
 
 <Callout>
 The use of `aria-hidden="true"` only indicates that the element should be hidden to screen readers. The *loading* behavior of the placeholder depends on how authors will actually use the placeholder styles, how they plan to update things, etc. Some JavaScript code may be needed to *swap* the state of the placeholder and inform AT users of the update.
@@ -94,49 +94,40 @@ The use of `aria-hidden="true"` only indicates that the element should be hidden
 
 You can change the `width` through grid column classes, width utilities, or inline styles.
 
-{/* {{< example >}}
-<span class="placeholder col-6"></span>
+<Example code={`<span class="placeholder col-6"></span>
 <span class="placeholder w-75"></span>
-<span class="placeholder" style="width: 25%;"></span>
-{{< /example >}} */}
+<span class="placeholder" style="width: 25%;"></span>`} />
 
 ### Color
 
 By default, the `placeholder` uses `currentColor`. This can be overridden with a custom color or utility class.
 
-{/* {{< example >}}
-<span class="placeholder col-12"></span>
-{{< placeholders.inline >}}
-{{- range (index $.Site.Data "theme-colors") }}
-<span class="placeholder col-12 bg-{{ .name }}"></span>
-{{- end -}}
-{{< /placeholders.inline >}}
-{{< /example >}} */}
+<Example code={[
+  `<span class="placeholder col-12"></span>
+  `,
+  ...getData('theme-colors').map((themeColor) => `<span class="placeholder col-12 bg-${themeColor.name}"></span>`)
+]} />
 
 ### Sizing
 
 The size of `.placeholder`s are based on the typographic style of the parent element. Customize them with sizing modifiers: `.placeholder-lg`, `.placeholder-sm`, or `.placeholder-xs`.
 
-{/* {{< example >}}
-<span class="placeholder col-12 placeholder-lg"></span>
+<Example code={`<span class="placeholder col-12 placeholder-lg"></span>
 <span class="placeholder col-12"></span>
 <span class="placeholder col-12 placeholder-sm"></span>
-<span class="placeholder col-12 placeholder-xs"></span>
-{{< /example >}} */}
+<span class="placeholder col-12 placeholder-xs"></span>`} />
 
 ### Animation
 
 Animate placeholders with `.placeholder-glow` or `.placeholder-wave` to better convey the perception of something being *actively* loaded.
 
-{/* {{< example >}}
-<p class="placeholder-glow">
+<Example code={`<p class="placeholder-glow">
   <span class="placeholder col-12"></span>
 </p>
 
 <p class="placeholder-wave">
   <span class="placeholder col-12"></span>
-</p>
-{{< /example >}} */}
+</p>`} />
 
 ## Sass
 

@@ -10,7 +10,7 @@ toc: true
 
 Things to know when using the popover plugin:
 
-- Popovers rely on the third party library [Popper](https://popper.js.org/) for positioning. You must include [popper.min.js]([[param:cdn.popper]]) before `bootstrap.js`, or use one `bootstrap.bundle.min.js` which contains Popper.
+- Popovers rely on the third party library [Popper](https://popper.js.org/) for positioning. You must include [popper.min.js]([[config:cdn.popper]]) before `bootstrap.js`, or use one `bootstrap.bundle.min.js` which contains Popper.
 - Popovers require the [popover plugin]([[docsref:/components/popovers]]) as a dependency.
 - Popovers are opt-in for performance reasons, so **you must initialize them yourself**.
 - Zero-length `title` and `content` values will never show a popover.
@@ -21,13 +21,9 @@ Things to know when using the popover plugin:
 - Popovers must be hidden before their corresponding elements have been removed from the DOM.
 - Popovers can be triggered thanks to an element inside a shadow DOM.
 
-<Callout>
-<InfoSanitizer />
-</Callout>
+<Callout name="info-sanitizer" />
 
-<Callout>
-<InfoPrefersReducedMotion />
-</Callout>
+<Callout name="info-prefersreducedmotion" />
 
 Keep reading to see how popovers work with some examples.
 
@@ -46,20 +42,15 @@ const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstra
 
 We use JavaScript similar to the snippet above to render the following live popover. Titles are set via `data-bs-title` and body content is set via `data-bs-content`.
 
-<Callout type="warning">
-<WarningDataBsTitleVsTitle />
-</Callout>
+<Callout name="warning-data-bs-title-vs-title" type="warning" />
 
-{/* {{< example stackblitz_add_js="true" >}}
-<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
-{{< /example >}} */}
+<Example addStackblitzJs code={`<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>`} />
 
 ### Four directions
 
 Four options are available: top, right, bottom, and left. Directions are mirrored when using Bootstrap in RTL. Set `data-bs-placement` to change the direction.
 
-{/* {{< example stackblitz_add_js="true" >}}
-<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+<Example addStackblitzJs code={`<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
   Popover on top
 </button>
 <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover">
@@ -70,8 +61,7 @@ Four options are available: top, right, bottom, and left. Directions are mirrore
 </button>
 <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Left popover">
   Popover on left
-</button>
-{{< /example >}} */}
+</button>`} />
 
 ### Custom `container`
 
@@ -99,15 +89,13 @@ You can customize the appearance of popovers using [CSS variables](#variables). 
 
 <ScssDocs name="custom-popovers" file="site/assets/scss/_component-examples.scss" />
 
-{/* {{< example class="custom-popover-demo" stackblitz_add_js="true" >}}
-<button type="button" class="btn btn-secondary"
+<Example addStackblitzJs class="custom-popover-demo" code={`<button type="button" class="btn btn-secondary"
         data-bs-toggle="popover" data-bs-placement="right"
         data-bs-custom-class="custom-popover"
         data-bs-title="Custom popover"
         data-bs-content="This popover is themed via CSS variables.">
   Custom popover
-</button>
-{{< /example >}} */}
+</button>`} />
 
 ### Dismiss on next click
 
@@ -117,9 +105,7 @@ Use the `focus` trigger to dismiss popovers on the user's next click of an eleme
 **Dismissing on next click requires specific HTML for proper cross-browser and cross-platform behavior.** You can only use `<a>` elements, not `<button>`s, and you must include a [`tabindex`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex).
 </Callout>
 
-{/* {{< example stackblitz_add_js="true" >}}
-<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Dismissible popover" data-bs-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
-{{< /example >}} */}
+<Example addStackblitzJs code={`<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Dismissible popover" data-bs-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>`} />
 
 ```js
 const popover = new bootstrap.Popover('.popover-dismiss', {
@@ -133,11 +119,9 @@ Elements with the `disabled` attribute aren't interactive, meaning users cannot 
 
 For disabled popover triggers, you may also prefer `data-bs-trigger="hover focus"` so that the popover appears as immediate visual feedback to your users as they may not expect to _click_ on a disabled element.
 
-{/* {{< example stackblitz_add_js="true" >}}
-<span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
+<Example addStackblitzJs code={`<span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
   <button class="btn btn-primary" type="button" disabled>Disabled button</button>
-</span>
-{{< /example >}} */}
+</span>`} />
 
 ## CSS
 
@@ -195,7 +179,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
 | `popperConfig` | null, object, function | `null` | To change Bootstrap's default Popper config, see [Popper's configuration](https://popper.js.org/docs/v2/constructors/#options). When a function is used to create the Popper configuration, it's called with an object that contains the Bootstrap's default Popper configuration. It helps you use and merge the default with your own configuration. The function must return a configuration object for Popper. |
 | `sanitize` | boolean | `true` | Enable or disable the sanitization. If activated `'template'`, `'content'` and `'title'` options will be sanitized. |
 | `sanitizeFn` | null, function | `null` | Here you can supply your own sanitize function. This can be useful if you prefer to use a dedicated library to perform sanitization. |
-| `selector` | string, false | `false` | If a selector is provided, popover objects will be delegated to the specified targets. In practice, this is used to also apply popovers to dynamically added DOM elements (`jQuery.on` support). See [this issue]([[param:repo]]/issues/4215) and [an informative example](https://codepen.io/Johann-S/pen/djJYPb). **Note**: `title` attribute must not be used as a selector. |
+| `selector` | string, false | `false` | If a selector is provided, popover objects will be delegated to the specified targets. In practice, this is used to also apply popovers to dynamically added DOM elements (`jQuery.on` support). See [this issue]([[config:repo]]/issues/4215) and [an informative example](https://codepen.io/Johann-S/pen/djJYPb). **Note**: `title` attribute must not be used as a selector. |
 | `template` | string | `'<div class="popover" role="popover"><div class="popover-arrow"></div><div class="popover-inner"></div></div>'` | Base HTML to use when creating the popover. The popover's `title` will be injected into the `.popover-inner`. `.popover-arrow` will become the popover's arrow. The outermost wrapper element should have the `.popover` class and `role="popover"`. |
 | `title` | string, element, function | `''` | Default title value if `title` attribute isn't present. If a function is given, it will be called with its `this` reference set to the element that the popover is attached to. |
 | `trigger` | string | `'hover focus'` | How popover is triggered: click, hover, focus, manual. You may pass multiple triggers; separate them with a space. `'manual'` indicates that the popover will be triggered programmatically via the `.popover('show')`, `.popover('hide')` and `.popover('toggle')` methods; this value cannot be combined with any other trigger. `'hover'` on its own will result in popovers that cannot be triggered via the keyboard, and should only be used if alternative methods for conveying the same information for keyboard users is present. |
@@ -221,9 +205,7 @@ const popover = new bootstrap.Popover(element, {
 
 ### Methods
 
-<Callout type="danger">
-<DangerAsyncMethods />
-</Callout>
+<Callout name="danger-async-methods" type="danger" />
 
 <BsTable>
 | Method | Description |

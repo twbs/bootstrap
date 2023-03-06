@@ -1,15 +1,14 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
 import DocsLayout from '../../../layouts/DocsLayout.astro'
 import { getConfig } from '../../../libs/config'
+import { docsPages } from '../../../libs/content'
 import Code from '../../../components/shortcodes/Code.astro'
 
 export async function getStaticPaths() {
-  const docsPages = await getCollection('docs')
-
   return docsPages.map((docsPage) => {
     return {
-      params: { slug: docsPage.slug, version: getConfig().params.docs_version },
+      params: { slug: docsPage.slug, version: getConfig().docs_version },
       props: docsPage,
     }
   })
@@ -17,10 +16,10 @@ export async function getStaticPaths() {
 
 type Props = CollectionEntry<'docs'>
 
-const { data, render } = Astro.props
-const { Content } = await render()
+const { id, data, render } = Astro.props
+const { Content, headings, remarkPluginFrontmatter } = await render()
 ---
 
-<DocsLayout frontmatter={data}>
+<DocsLayout frontmatter={remarkPluginFrontmatter as typeof data} headings={headings} id={id}>
   <Content components={{ pre: Code }} />
 </DocsLayout>
