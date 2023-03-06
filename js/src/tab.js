@@ -233,6 +233,7 @@ class Tab extends BaseComponent {
 
     toggle(SELECTOR_DROPDOWN_TOGGLE, CLASS_NAME_ACTIVE)
     toggle(SELECTOR_DROPDOWN_MENU, CLASS_NAME_SHOW)
+    outerElem.setAttribute('aria-expanded', open)
   }
 
   _setAttributeIfNotExists(element, attribute, value) {
