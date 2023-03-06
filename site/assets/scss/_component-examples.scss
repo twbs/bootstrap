@@ -359,10 +359,11 @@
   }
 
   pre {
-    padding: 0;
-    margin-top: .625rem;
+    padding: .25rem 0 .875rem;
+    margin-top: .8125rem;
     margin-right: 1.875rem;
-    margin-bottom: .625rem;
+    margin-bottom: 0;
+    overflow: overlay;
     white-space: pre;
     background-color: transparent;
     border: 0;
