@@ -1,8 +1,6 @@
 title:                  "Bootstrap"
 baseURL:                "https://getbootstrap.com"
 
-# TODO(HiDeoo) Generate robots.txt
-
 # TODO(HiDeoo) Check if still relevant, update Astro config and prolly remove this value from here
 publishDir:             "_site"
 

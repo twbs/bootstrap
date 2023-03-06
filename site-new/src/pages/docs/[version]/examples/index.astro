@@ -1,4 +1,5 @@
 ---
+import DropletFillIcon from '../../../../components/icons/DropletFillIcon.astro'
 import SingleLayout from '../../../../layouts/SingleLayout.astro'
 import { getConfig, getVersionedDocsPath } from '../../../../libs/config'
 import { getData } from '../../../../libs/data'
@@ -12,13 +13,22 @@ export function getStaticPaths() {
   ]
 }
 
-// TODO(HiDeoo) This is far from complete, but I needed some bits to get started
-// TODO(HiDeoo) Before doing this page, port first `site-new/src/layouts/SingleLayout.astro`
 // TODO(HiDeoo) Finish porting `site/content/docs/5.3/examples/_index.md`
 // TODO(HiDeoo) Note that the way this page is constructed in Hugo, e.g. `{{ if (eq $i 0) }}<div class="row">{{ end }}` is not JSX / Astro compliant so a 1:1 port is not possible so the logic should be rethinked to get the same output.
+
+// TODO: handle aliases "/examples" from site/content/docs/5.3/examples/_index.md
 ---
 
-<SingleLayout title="Examples">
+<SingleLayout title="Examples" description="Quickly get a project started with any of our examples ranging from using parts of the framework to custom components and layouts.">
+  <div class="d-flex flex-column flex-md-row gap-3" slot="header-content">
+    <a href={getConfig().download.dist_examples} class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download Examples');">
+      <svg class="bi me-2" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
+      Download examples
+    </a>
+    <a href={getConfig().download.source} class="btn btn-lg bd-btn-lg btn-outline-secondary" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download');">
+      Download source code
+    </a>
+  </div>
   {
     getData('examples').map(({ category, examples, external }) => {
       return (
@@ -43,4 +53,28 @@ export function getStaticPaths() {
       )
     })
   }
+  <Fragment slot="main-content">
+    <hr class="my-5">
+    <div class="container">
+      <div class="text-center">
+        <div class="masthead-followup-icon d-inline-block mb-2 text-bg-danger">
+          <DropletFillIcon height={32} width={32} />
+        </div>
+        <h2 class="display-6 fw-normal">Go further with Bootstrap Themes</h2>
+        <p class="col-md-10 col-lg-8 mx-auto lead">
+          Need something more than these examples? Take Bootstrap to the next level with premium themes from the <a href={getConfig().themes}>official Bootstrap Themes marketplace</a>. They’re built as their own extended frameworks, rich with new components and plugins, documentation, and powerful build tools.
+        </p>
+        <a href={getConfig().themes} class="btn btn-lg btn-outline-primary mb-3">Browse themes</a>
+      </div>
+      <img class="d-block img-fluid mt-3 mx-auto"
+        srcset={`${getVersionedDocsPath('/assets/img/bootstrap-themes-collage.png')}, ${getVersionedDocsPath(
+          '/assets/img/bootstrap-themes-collage@2x.png'
+        )} 2x`}
+        src={getVersionedDocsPath('/assets/img/bootstrap-themes-collage.png')}
+        alt="Bootstrap Themes"
+        width="1150"
+        height="320"
+        loading="lazy">
+    </div>
+  </Fragment>
 </SingleLayout>

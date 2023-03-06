@@ -1,14 +1,13 @@
 ---
+import Ads from '../components/Ads.astro';
 import BaseLayout from './BaseLayout.astro'
 
 interface Props {
+  description: string,
   title: string
 }
 
-const { title } = Astro.props
-
-// TODO(HiDeoo) This is far from complete, but I needed some bits to get started
-// TODO(HiDeoo) Finish porting `site/layouts/_default/single.html`
+const { description, title } = Astro.props
 ---
 
 <BaseLayout {...Astro.props} layout="single">
@@ -18,6 +17,11 @@ const { title } = Astro.props
         <div class="row">
           <div class="col-xl-8">
             <h1 class="bd-title mt-0">{title}</h1>
+            <p class="bd-lead">{description}</p>
+            <slot name="header-content" />
+          </div>
+          <div class="col-xl-4 d-lg-flex justify-content-xl-end">
+            <Ads />
           </div>
         </div>
       </div>
@@ -26,6 +30,7 @@ const { title } = Astro.props
     <main class="bd-content order-1 py-5" id="content">
       <div class="container-xxl bd-gutter">
         <slot />
+        <slot name="main-content" />
       </div>
     </main>
   </Fragment>
