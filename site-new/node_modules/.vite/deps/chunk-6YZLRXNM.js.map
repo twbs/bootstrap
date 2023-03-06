@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["browser-external:node:path"],
-  "sourcesContent": ["module.exports = Object.create(new Proxy({}, {\n  get(_, key) {\n    if (\n      key !== '__esModule' &&\n      key !== '__proto__' &&\n      key !== 'constructor' &&\n      key !== 'splice'\n    ) {\n      console.warn(`Module \"node:path\" has been externalized for browser compatibility. Cannot access \"node:path.${key}\" in client code. See http://vitejs.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.`)\n    }\n  }\n}))"],
-  "mappings": ";;;;;AAAA;AAAA;AAAA,WAAO,UAAU,OAAO,OAAO,IAAI,MAAM,CAAC,GAAG;AAAA,MAC3C,IAAI,GAAG,KAAK;AACV,YACE,QAAQ,gBACR,QAAQ,eACR,QAAQ,iBACR,QAAQ,UACR;AACA,kBAAQ,KAAK,gGAAgG,uIAAuI;AAAA,QACtP;AAAA,MACF;AAAA,IACF,CAAC,CAAC;AAAA;AAAA;",
-  "names": []
-}
