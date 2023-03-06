@@ -138,8 +138,8 @@ Animate placeholders with `.placeholder-glow` or `.placeholder-wave` to better c
 </p>
 {{< /example >}}
 
-## Sass
+## CSS
 
-### Variables
+### Sass variables
 
 {{< scss-docs name="placeholders" file="scss/_variables.scss" >}}
