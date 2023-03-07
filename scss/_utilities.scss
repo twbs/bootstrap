@@ -177,8 +177,7 @@ $utilities: map-merge(
       values: $utilities-border-subtle
     ),
     "border-width": (
-      css-var: true,
-      css-variable-name: border-width,
+      property: border-width,
       class: border,
       values: $border-widths
     ),
@@ -583,7 +582,7 @@ $utilities: map-merge(
       values: map-merge(
         $utilities-text-colors,
         (
-          "muted": $text-muted, // deprecated
+          "muted": var(--#{$prefix}secondary-color), // deprecated
           "black-50": rgba($black, .5), // deprecated
           "white-50": rgba($white, .5), // deprecated
           "body-secondary": var(--#{$prefix}secondary-color),
@@ -633,7 +632,6 @@ $utilities: map-merge(
       )
     ),
     "link-underline": (
-      // css-var: true,
       property: text-decoration-color,
       class: link-underline,
       local-vars: (
@@ -651,6 +649,7 @@ $utilities: map-merge(
       class: link-underline-opacity,
       state: hover,
       values: (
+        0: 0,
         10: .1,
         25: .25,
         50: .5,

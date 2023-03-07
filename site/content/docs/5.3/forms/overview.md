@@ -51,42 +51,6 @@ Here's a quick example to demonstrate Bootstrap's form styles. Keep reading for 
 </form>
 {{< /example >}}
 
-## Form text
-
-Block-level or inline-level form text can be created using `.form-text`.
-
-{{< callout warning >}}
-Form text should be explicitly associated with the form control it relates to using the `aria-labelledby` (for mandatory information such as data format) or `aria-describedby` (for complementary information) attribute. This will ensure that assistive technologies—such as screen readers—will announce this form text when the user focuses or enters the control.
-{{< /callout >}}
-
-Form text below inputs can be styled with `.form-text`. If a block-level element will be used, a top margin is added for easy spacing from the inputs above.
-
-{{< example >}}
-<label for="inputPassword5" class="form-label">Password</label>
-<input type="password" id="inputPassword5" class="form-control" aria-labelledby="passwordHelpBlock">
-<div id="passwordHelpBlock" class="form-text">
-  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-</div>
-{{< /example >}}
-
-Inline text can use any typical inline HTML element (be it a `<span>`, `<small>`, or something else) with nothing more than the `.form-text` class.
-
-{{< example >}}
-<div class="row g-3 align-items-center">
-  <div class="col-auto">
-    <label for="inputPassword6" class="col-form-label">Password</label>
-  </div>
-  <div class="col-auto">
-    <input type="password" id="inputPassword6" class="form-control" aria-labelledby="passwordHelpInline">
-  </div>
-  <div class="col-auto">
-    <span id="passwordHelpInline" class="form-text">
-      Must be 8-20 characters long.
-    </span>
-  </div>
-</div>
-{{< /example >}}
-
 ## Disabled forms
 
 Add the `disabled` boolean attribute on an input to prevent user interactions and make it appear lighter.
@@ -141,11 +105,11 @@ If none of these are present, assistive technologies may resort to using the `pl
 
 While using visually hidden content (`.visually-hidden`, `aria-label`, and even `placeholder` content, which disappears once a form field has content) will benefit assistive technology users, a lack of visible label text may still be problematic for certain users. Some form of visible label is generally the best approach, both for accessibility and usability.
 
-## Sass
+## CSS
 
 Many form variables are set at a general level to be re-used and extended by individual form components. You'll see these most often as `$input-btn-*` and `$input-*` variables.
 
-### Variables
+### Sass variables
 
 `$input-btn-*` variables are shared global variables between our [buttons]({{< docsref "/components/buttons" >}}) and our form components. You'll find these frequently reassigned as values to other component-specific variables.
 

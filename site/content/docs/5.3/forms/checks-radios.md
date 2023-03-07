@@ -300,9 +300,9 @@ Different variants of `.btn`, such at the various outlined styles, are supported
 <label class="btn btn-outline-danger" for="danger-outlined">Danger radio</label>
 {{< /example >}}
 
-## Sass
+## CSS
 
-### Variables
+### Sass variables
 
 Variables for checks:
 

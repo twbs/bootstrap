@@ -108,7 +108,7 @@ Toasts are slightly translucent to blend in with what's below them.
   <div class="toast-header">
     {{< placeholder width="20" height="20" background="#007aff" class="rounded me-2" text="false" title="false" >}}
     <strong class="me-auto">Bootstrap</strong>
-    <small class="text-muted">11 mins ago</small>
+    <small class="text-body-secondary">11 mins ago</small>
     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
   <div class="toast-body">
@@ -127,7 +127,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
     <div class="toast-header">
       {{< placeholder width="20" height="20" background="#007aff" class="rounded me-2" text="false" title="false" >}}
       <strong class="me-auto">Bootstrap</strong>
-      <small class="text-muted">just now</small>
+      <small class="text-body-secondary">just now</small>
       <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">
@@ -139,7 +139,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
     <div class="toast-header">
       {{< placeholder width="20" height="20" background="#007aff" class="rounded me-2" text="false" title="false" >}}
       <strong class="me-auto">Bootstrap</strong>
-      <small class="text-muted">2 seconds ago</small>
+      <small class="text-body-secondary">2 seconds ago</small>
       <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">
@@ -246,7 +246,7 @@ For systems that generate more notifications, consider using a wrapping element 
       <div class="toast-header">
         {{< placeholder width="20" height="20" background="#007aff" class="rounded me-2" text="false" title="false" >}}
         <strong class="me-auto">Bootstrap</strong>
-        <small class="text-muted">just now</small>
+        <small class="text-body-secondary">just now</small>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">
@@ -258,7 +258,7 @@ For systems that generate more notifications, consider using a wrapping element 
       <div class="toast-header">
         {{< placeholder width="20" height="20" background="#007aff" class="rounded me-2" text="false" title="false" >}}
         <strong class="me-auto">Bootstrap</strong>
-        <small class="text-muted">2 seconds ago</small>
+        <small class="text-body-secondary">2 seconds ago</small>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">
