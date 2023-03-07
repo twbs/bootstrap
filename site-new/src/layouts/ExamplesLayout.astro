@@ -9,7 +9,7 @@ import Favicons from '../components/head/Favicons.astro'
 
 type Props = ExampleFrontmatter
 
-const { body_class, direction, extra_css, extra_js, html_class, include_js, title } = Astro.props
+const { body_class, direction, extra_css, extra_js, html_class, include_js, title = 'Example' } = Astro.props
 
 const pageTitle = `${title} · ${getConfig().title} v${getConfig().docs_version}`
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
