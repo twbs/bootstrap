@@ -23,7 +23,7 @@ aliases: "/examples/"
     {{ if (eq $i 0) }}<div class="row">{{ end }}
       {{ if $entry.external }}
         <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
-          <svg class="bi fs-5 flex-shrink-0"><use xlink:href="#box-seam"></use></svg>
+          <svg class="bi fs-5 flex-shrink-0 mt-1"><use xlink:href="#box-seam"></use></svg>
           <div>
             <h3 class="h5 mb-1">
               <a class="d-block link-offset-1" href="{{ $.Site.Params.github_org }}{{ $example.url }}/" target="_blank">
