@@ -69,7 +69,7 @@ If you're migrating from our previous alpha release of v5.3.0, please reviewing 
 
 ### Docs
 
-- Examples are now displayed with the appropriate light or dark color mode as dictated by the setting in our docs. However, they lack an individual color mode picker for the time being.
+- Examples are now displayed with the appropriate light or dark color mode as dictated by the setting in our docs. Each example has an individual color mode picker.
 
 - Improved included JavaScript for live Toast demo.
 
@@ -150,7 +150,7 @@ Learn more by reading the new [color modes documentation]({{< docsref "/customiz
 
 #### Dropdowns
 
-- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.dropdown-menu-dark` class has been deprecated and replaced with `data-bs-theme="dark"` on the close button or any parent element. [See the docs for an example.]({{< docsref "/components/dropdowns#dark-dropdowns" >}})
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.dropdown-menu-dark` class has been deprecated and replaced with `data-bs-theme="dark"` on the dropdown or any parent element. [See the docs for an example.]({{< docsref "/components/dropdowns#dark-dropdowns" >}})
 
 #### Close button
 
