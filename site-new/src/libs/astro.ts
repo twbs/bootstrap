@@ -11,10 +11,7 @@ import { getConfig } from './config'
 import { rehypeBsTable } from './rehype'
 import { remarkBsConfig, remarkBsDocsref } from './remark'
 import { configurePrism } from './prism'
-
-// TODO(HiDeoo) Fix path when moving to `site`
-// The docs directory path relative to the root of the project.
-const docsDirectory = 'site-new'
+import { docsDirectory, getDocsFsPath, getDocsPublicFsPath, getDocsStaticFsPath } from './path'
 
 // A list of directories in `src/components` that contains components that will be auto imported in all pages for
 // convenience.
@@ -44,7 +41,7 @@ export function bootstrap(): AstroIntegration[] {
       hooks: {
         'astro:config:setup': ({ addWatchFile, updateConfig }) => {
           // Reload the config when the integration is modified.
-          addWatchFile(path.join(getDocsPath(), 'src/libs/astro.ts'))
+          addWatchFile(path.join(getDocsFsPath(), 'src/libs/astro.ts'))
 
           // Add the remark and rehype plugins.
           updateConfig({
@@ -85,7 +82,7 @@ function bootstrap_auto_import() {
   const autoImportedComponents: string[] = []
 
   for (const autoImportedComponentDirectory of autoImportedComponentDirectories) {
-    const components = fs.readdirSync(path.join(getDocsPath(), 'src/components', autoImportedComponentDirectory), {
+    const components = fs.readdirSync(path.join(getDocsFsPath(), 'src/components', autoImportedComponentDirectory), {
       withFileTypes: true,
     })
 
@@ -104,14 +101,14 @@ function bootstrap_auto_import() {
 }
 
 function cleanPublicDirectory() {
-  fs.rmSync(getDocsPublicPath(), { force: true, recursive: true })
+  fs.rmSync(getDocsPublicFsPath(), { force: true, recursive: true })
 }
 
 // Copy the `dist` folder from the root of the repo containing the latest version of Bootstrap to make it available from
 // the `/docs/${docs_version}/dist` URL.
 function copyBootstrap() {
   const source = path.join(process.cwd(), 'dist')
-  const destination = path.join(getDocsPublicPath(), 'docs', getConfig().docs_version, 'dist')
+  const destination = path.join(getDocsPublicFsPath(), 'docs', getConfig().docs_version, 'dist')
 
   fs.mkdirSync(destination, { recursive: true })
   fs.cpSync(source, destination, { recursive: true })
@@ -121,16 +118,16 @@ function copyBootstrap() {
 // A folder named `[version]` will automatically be renamed to the current version of the docs extracted from the
 // `config.yml` file.
 function copyStatic() {
-  const source = getDocsStaticPath()
-  const destination = path.join(getDocsPublicPath())
+  const source = getDocsStaticFsPath()
+  const destination = path.join(getDocsPublicFsPath())
 
   copyStaticRecursively(source, destination)
 }
 
 // Alias (copy) some static files to different paths.
 function aliasStatic() {
-  const source = getDocsStaticPath()
-  const destination = path.join(getDocsPublicPath())
+  const source = getDocsStaticFsPath()
+  const destination = path.join(getDocsPublicFsPath())
 
   for (const [aliasSource, aliasDestination] of Object.entries(staticFileAliases)) {
     fs.cpSync(path.join(source, aliasSource), path.join(destination, aliasDestination))
@@ -154,18 +151,6 @@ function copyStaticRecursively(source: string, destination: string) {
 
 function replacePathVersionPlaceholder(name: string) {
   return name.replace('[version]', getConfig().docs_version)
-}
-
-export function getDocsStaticPath() {
-  return path.join(getDocsPath(), 'static')
-}
-
-function getDocsPublicPath() {
-  return path.join(getDocsPath(), 'public')
-}
-
-function getDocsPath() {
-  return path.join(process.cwd(), docsDirectory)
 }
 
 function sitemapFilter(page: string, excludedUrls: string[]) {

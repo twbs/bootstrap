@@ -38,7 +38,7 @@ const sidebar = getData('sidebar')
 
                   const generatedPage = docsPages.find((page) => page.slug === unversionedPageSlug)
 
-                  // This test should not be necessary, see comments for `getSlug()` in `site-new/src/libs/utils.ts`.
+                  // This test should not be necessary, see comments for `getSlug()` in `src/libs/utils.ts`.
                   if (!generatedPage) {
                     throw new Error(
                       `The page '${page.title}' referenced in 'site/data/sidebar.yml' does not exist at '${url}'.`

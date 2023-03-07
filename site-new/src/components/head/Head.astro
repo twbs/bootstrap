@@ -1,10 +1,12 @@
 ---
-import { getConfig, getVersionedDocsPath } from '../../libs/config'
+import { getConfig } from '../../libs/config'
+import { getVersionedDocsPath } from '../../libs/path'
 import type { Layout } from '../../libs/layout'
 import Stylesheet from './Stylesheet.astro'
 import Favicons from './Favicons.astro'
 import Social from './Social.astro'
 import Analytics from './Analytics.astro'
+import Scss from './Scss.astro'
 
 interface Props {
   description: string
@@ -45,6 +47,7 @@ const pageTitle = isHome
 <script is:inline src={getVersionedDocsPath('assets/js/color-modes.js')}></script>
 
 <Stylesheet direction={direction} layout={layout} />
+<Scss />
 <Favicons />
 <Social description={description} layout={layout} thumbnail={thumbnail} title={title} />
 <Analytics />

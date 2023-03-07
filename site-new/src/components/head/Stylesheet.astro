@@ -1,8 +1,6 @@
 ---
-import type { HTMLAttributes } from 'astro/types'
-import { getConfig, getVersionedBsCssPath } from '../../libs/config'
+import { getVersionedBsCssProps } from '../../libs/bootstrap'
 import type { Layout } from '../../libs/layout'
-import Scss from './Scss.astro'
 
 interface Props {
   direction?: 'rtl'
@@ -10,20 +8,8 @@ interface Props {
 }
 
 const { direction, layout } = Astro.props
-
-const bsCssLinkProps: HTMLAttributes<'link'> = {
-  href: getVersionedBsCssPath(direction),
-  rel: 'stylesheet',
-}
-
-if (import.meta.env.PROD) {
-  bsCssLinkProps.crossorigin = 'anonymous'
-  bsCssLinkProps.integrity = direction === 'rtl' ? getConfig().cdn.css_rtl_hash : getConfig().cdn.css_hash
-}
 ---
 
 {layout === 'docs' && <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />}
 
-<link {...bsCssLinkProps} />
-
-{layout !== 'examples' && <Scss />}
+<link {...getVersionedBsCssProps(direction)} />

@@ -9,6 +9,8 @@ extra_js:
     async: true
 ---
 
+import { getDocsRelativePath } from '../../../libs/path'
+
 <Callout type="warning">
 We are aware that currently the client-side custom validation styles and tooltips are not accessible, since they are not exposed to assistive technologies. While we work on a solution, we'd recommend either using the server-side option or the default browser validation method.
 </Callout>
@@ -99,8 +101,7 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
   </div>
 </form>`} />
 
-{/* TODO(HiDeoo) Rename path */}
-<Code containerClass="bd-example-snippet" lang="js" filePath="site-new/static/docs/[version]/assets/js/validate-forms.js" />
+<Code containerClass="bd-example-snippet" lang="js" filePath={getDocsRelativePath('/static/docs/[version]/assets/js/validate-forms.js')} />
 
 ## Browser defaults
 

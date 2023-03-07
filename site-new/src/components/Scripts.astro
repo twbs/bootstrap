@@ -1,6 +1,5 @@
 ---
-import type { HTMLAttributes } from 'astro/types'
-import { getConfig, getVersionedBsJsPath } from '../libs/config'
+import { getVersionedBsJsProps } from '../libs/bootstrap'
 import type { Layout } from '../libs/layout'
 import StackBlitz from '../components/StackBlitz.astro'
 
@@ -9,18 +8,9 @@ interface Props {
 }
 
 const { layout } = Astro.props
-
-const bsJsLinkProps: HTMLAttributes<'script'> = {
-  src: getVersionedBsJsPath(),
-}
-
-if (import.meta.env.PROD) {
-  bsJsLinkProps.crossorigin = 'anonymous'
-  bsJsLinkProps.integrity = getConfig().cdn.js_bundle_hash
-}
 ---
 
-<script is:inline {...bsJsLinkProps}></script>
+<script is:inline {...getVersionedBsJsProps()}></script>
 
 {
   layout === 'docs' && (

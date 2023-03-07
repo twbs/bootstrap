@@ -2,7 +2,8 @@ import type { Root } from 'mdast'
 import type { MdxJsxAttribute, MdxJsxExpressionAttribute } from 'mdast-util-mdx-jsx'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
-import { getConfig, getVersionedDocsPath } from './config'
+import { getConfig } from './config'
+import { getVersionedDocsPath } from './path'
 
 // [[config:foo]]
 // [[config:foo.bar]]

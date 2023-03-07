@@ -9,6 +9,8 @@ added: "5.3"
 # TODO: "example" shortcode
 ---
 
+import { getDocsRelativePath } from '../../../libs/path'
+
 ## Dark mode
 
 **Bootstrap now supports color modes, starting with dark mode!** With v5.3.0 you can implement your own color mode toggler (see below for an example from Bootstrap's docs) and apply the different color modes as you see fit. We support a light mode (default) and now dark mode. Color modes can be toggled globally on the `<html>` element, or on specific components and elements, thanks to the `data-bs-theme` attribute.
@@ -244,8 +246,7 @@ To allow visitors or users to toggle color modes, you'll need to create a toggle
 
 Here's a look at the JavaScript that powers it. Feel free to inspect our own documentation navbar to see how it's implemented using HTML and CSS from our own components. Note that if you decide to use media queries for your color modes, your JavaScript may need to be modified or removed if you prefer an implicit control.
 
-{/* TODO(HiDeoo) Rename path */}
-<Code containerClass="bd-example-snippet" lang="js" filePath="site-new/static/docs/[version]/assets/js/color-modes.js" />
+<Code containerClass="bd-example-snippet" lang="js" filePath={getDocsRelativePath('/static/docs/[version]/assets/js/color-modes.js')} />
 
 ## CSS
 
