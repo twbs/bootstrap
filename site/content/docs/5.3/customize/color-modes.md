@@ -62,11 +62,15 @@ For example, to change the color mode of a dropdown menu, add `data-bs-theme="li
 
 - We use a custom `_variables-dark.scss` to power those shared global CSS variable overrides for dark mode. This file isn't required for your own custom color modes, but it's required for our dark mode for two reasons. First, it's better to have a single place to reset global colors. Second, some Sass variables had to be overridden for background images embedded in our CSS for accordions, form components, and more.
 
-## Nesting color modes
+## Nesting dark mode
 
-Use `data-bs-theme` on a nested element to change the color mode for a group of elements or components. In the example below, we have an outer dark mode with a nested light mode. You'll notice components naturally adapt their appearance, but you may need to add some utilities along the way to utilize the styles specific to each color mode.
+{{< callout warning >}}
+Currently we don't fully support nesting a light mode component inside dark mode as this would significantly complicate our compiled CSS with additional, more specific selectors. Support in v6 has yet to be determined.
+{{< /callout >}}
 
-For example, despite using `data-bs-theme="dark"` on a random `<div>`, the `<div>` has no `background-color` as it's set on the `<body>`. As such, if you want the `color` and `background-color` to adapt, you'll need to add `.text-body` and `.bg-body`.
+Use `data-bs-theme="dark"` on a nested element to change the color mode for a group of elements or components from light to dark. You'll notice components naturally adapt their appearance, but you may need to add some utilities along the way to utilize the styles specific to each color mode.
+
+For example, despite using `data-bs-theme="dark"` on a random `<div>`, the `<div>` has no `background-color` as it's inherited from the `<body>`. As such, if you want the `color` and `background-color` to adapt, you'll need to add `.text-body` and `.bg-body`.
 
 {{< example class="p-0" >}}
 <div data-bs-theme="dark" class="p-3 text-body bg-body">
