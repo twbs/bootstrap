@@ -178,8 +178,6 @@ $utilities: map-merge(
     ),
     "border-width": (
       property: border-width,
-      // css-var: true,
-      // css-variable-name: border-width,
       class: border,
       values: $border-widths
     ),
@@ -651,6 +649,7 @@ $utilities: map-merge(
       class: link-underline-opacity,
       state: hover,
       values: (
+        0: 0,
         10: .1,
         25: .25,
         50: .5,
