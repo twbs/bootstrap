@@ -83,7 +83,7 @@ We apply additional styling to `.btn`s via `::before` to ensure the `height` is 
   <span class="placeholder col-6"></span>
 </p>
 
-<a class="btn btn-primary disabled placeholder col-4" aria-hidden="true"></a>
+<a class="btn btn-primary disabled placeholder col-4"></a>
 {{< /example >}}
 
 {{< callout info >}}
