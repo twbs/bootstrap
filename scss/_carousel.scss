@@ -230,7 +230,8 @@
 
 @if $enable-dark-mode {
   @include color-mode(dark) {
-    .carousel {
+    .carousel,
+    &.carousel {
       @include carousel-dark();
     }
   }
