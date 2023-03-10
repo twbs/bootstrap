@@ -22,7 +22,7 @@ If you are using the `.btn` class on its own, remember to at least define some e
 
 ## Variants
 
-Bootstrap includes several predefined button styles, each serving its own semantic purpose, with a few extras thrown in for more control.
+Bootstrap includes several button variants, each serving its own semantic purpose, with a few extras thrown in for more control.
 
 {{< example >}}
 {{< buttons.inline >}}
