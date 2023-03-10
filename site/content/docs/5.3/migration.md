@@ -69,7 +69,7 @@ If you're migrating from our previous alpha release of v5.3.0, please reviewing 
 
 ### Docs
 
-- Examples are now displayed with the appropriate light or dark color mode as dictated by the setting in our docs. However, they lack an individual color mode picker for the time being.
+- Examples are now displayed with the appropriate light or dark color mode as dictated by the setting in our docs. Each example has an individual color mode picker.
 
 - Improved included JavaScript for live Toast demo.
 
@@ -150,7 +150,7 @@ Learn more by reading the new [color modes documentation]({{< docsref "/customiz
 
 #### Dropdowns
 
-- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.dropdown-menu-dark` class has been deprecated and replaced with `data-bs-theme="dark"` on the close button or any parent element. [See the docs for an example.]({{< docsref "/components/dropdowns#dark-dropdowns" >}})
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.dropdown-menu-dark` class has been deprecated and replaced with `data-bs-theme="dark"` on the dropdown or any parent element. [See the docs for an example.]({{< docsref "/components/dropdowns#dark-dropdowns" >}})
 
 #### Close button
 
@@ -214,9 +214,9 @@ We've also introduced a new `.progress-stacked` class to more logically wrap [mu
 
 ### Utilities
 
-- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> `.text-body-secondary` will be be replaced by `.text-body-secondary` in v6.
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> `.text-muted` will be replaced by `.text-body-secondary` in v6.
 
-  With the addition of the expanded theme colors and variables, the `.text-body-secondary` variables and utility have been deprecated with v5.3.0. Its default value has also has been reassigned to the new `--bs-secondary-color` CSS variable to better support color modes. It will be removed in v6.0.0.
+  With the addition of the expanded theme colors and variables, the `.text-muted` variables and utility have been deprecated with v5.3.0. Its default value has also been reassigned to the new `--bs-secondary-color` CSS variable to better support color modes. It will be removed in v6.0.0.
 
 - Adds new `.overflow-x`, `.overflow-y`, and several `.object-fit-*` utilities. _The object-fit property is used to specify how an `<img>` or `<video>` should be resized to fit its container, giving us a responsive alternative to using `background-image` for a resizable fill/fit image._
 
