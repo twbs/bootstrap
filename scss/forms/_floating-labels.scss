@@ -17,7 +17,7 @@
     height: 100%; // allow textareas
     padding: $form-floating-padding-y $form-floating-padding-x;
     overflow: hidden;
-    color: var(--#{$prefix}body-color);
+    color: $input-color;
     text-align: start;
     text-overflow: ellipsis;
     white-space: nowrap;
