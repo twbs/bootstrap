@@ -1,9 +1,10 @@
 ---
+import { getCalloutByName } from '@libs/content'
 import type { MarkdownInstance } from 'astro'
 
 interface Props {
   /**
-   * The name of an existing callout to display located in `src/components/callouts`.
+   * The name of an existing callout to display located in `src/content/callouts`.
    * This will override any content passed in via the default slot.
    */
   name?:
@@ -24,14 +25,20 @@ interface Props {
 
 const { name, type = 'info' } = Astro.props
 
-let namedCallout: MarkdownInstance<{}> | undefined
+let Content: MarkdownInstance<{}>['Content'] | undefined
 
 if (name) {
-  const callouts = await Astro.glob('../callouts/*.md')
-  namedCallout = callouts.find((callout) => callout.file.endsWith(`${name}.md`))
+  const callout = await getCalloutByName(name)
+
+  if (!callout) {
+    throw new Error(`Could not find callout with name '${name}'.`)
+  }
+
+  const namedCallout = await callout.render()
+  Content = namedCallout.Content
 }
 ---
 
 <div class={`bd-callout bd-callout-${type}`}>
-  {namedCallout ? <namedCallout.Content /> : <slot />}
+  {Content ? <Content /> : <slot />}
 </div>

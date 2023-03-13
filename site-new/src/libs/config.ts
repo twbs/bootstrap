@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import yaml from 'js-yaml'
 import { z } from 'zod'
-import { zVersionMajorMinor, zVersionSemver } from './validation'
+import { zPrefixedVersionSemver, zVersionMajorMinor, zVersionSemver } from './validation'
 
 // The config schema used to validate the config file content and ensure all values required by the site are valid.
 const configSchema = z.object({
@@ -39,7 +39,7 @@ const configSchema = z.object({
   icons: z.string().url(),
   opencollective: z.string().url(),
   repo: z.string().url(),
-  rfs_version: z.string(), // TODO: create the "v" + semVer regexp
+  rfs_version: zPrefixedVersionSemver,
   subtitle: z.string(),
   swag: z.string().url(),
   themes: z.string().url(),

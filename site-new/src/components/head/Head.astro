@@ -1,12 +1,12 @@
 ---
-import { getConfig } from '../../libs/config'
-import { getVersionedDocsPath } from '../../libs/path'
-import type { Layout } from '../../libs/layout'
-import Stylesheet from './Stylesheet.astro'
-import Favicons from './Favicons.astro'
-import Social from './Social.astro'
-import Analytics from './Analytics.astro'
-import Scss from './Scss.astro'
+import { getConfig } from '@libs/config'
+import { getVersionedDocsPath } from '@libs/path'
+import type { Layout } from '@libs/layout'
+import Stylesheet from '@components/head/Stylesheet.astro'
+import Favicons from '@components/head/Favicons.astro'
+import Social from '@components/head/Social.astro'
+import Analytics from '@components/head/Analytics.astro'
+import Scss from '@components/head/Scss.astro'
 
 interface Props {
   description: string

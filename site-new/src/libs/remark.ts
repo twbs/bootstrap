@@ -86,7 +86,7 @@ export const remarkBsDocsref: Plugin<[], Root> = function () {
   }
 }
 
-function replaceConfigInText(text: string) {
+export function replaceConfigInText(text: string) {
   return text.replace(configRegExp, (_match, path) => {
     const value = getConfigValueAtPath(path)
 

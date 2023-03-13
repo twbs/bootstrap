@@ -1,11 +1,12 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import { getConfig } from '../libs/config'
-import type { Layout, LayoutOverridesHTMLAttributes } from '../libs/layout'
-import Head from '../components/head/Head.astro'
-import Header from '../components/header/Header.astro'
-import Scripts from '../components/Scripts.astro'
-import Footer from '../components/footer/Footer.astro'
+import { getConfig } from '@libs/config'
+import type { Layout, LayoutOverridesHTMLAttributes } from '@libs/layout'
+import Head from '@components/head/Head.astro'
+import Header from '@components/header/Header.astro'
+import Scripts from '@components/Scripts.astro'
+import Footer from '@components/footer/Footer.astro'
+import { stripMarkdown } from '@libs/utils'
 
 // The following props can be directly passed to the base layout component from any page or layout extending it,
 // e.g. <BaseLayout layout="docs" robots="noindex" />.
@@ -36,7 +37,7 @@ type MarkdownProps = { frontmatter?: Partial<CollectionEntry<'docs'>['data']> }
 const { frontmatter, layout, overrides, robots } = Astro.props
 
 const title = Astro.props.title ?? frontmatter?.title ?? getConfig().title
-const description = frontmatter?.description ?? getConfig().description
+const description = frontmatter?.description ? stripMarkdown(frontmatter.description) : getConfig().description
 const thumbnail = frontmatter?.thumbnail ? `img/${frontmatter.thumbnail}` : 'brand/bootstrap-social.png'
 
 const bodyProps = overrides?.body ?? {}
@@ -70,7 +71,6 @@ const mainProps = overrides?.main ?? {}
 
     <Scripts layout={layout} />
 
-    <!-- TODO: handle correctly the footer system: blocks, layouts, examples without footers, etc. But for now, let'us a Footer.astro everywhere! -->
     <Footer />
 
     {frontmatter?.extra_js && frontmatter.extra_js.map((js) => <script is:inline async={js.async} src={js.src} />)}

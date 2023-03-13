@@ -1,13 +1,14 @@
 ---
+import Markdown from '@astrojs/markdown-component'
 import type { MarkdownHeading } from 'astro'
 import type { CollectionEntry } from 'astro:content'
-import { getConfig } from '../libs/config'
-import type { LayoutOverridesHTMLAttributes } from '../libs/layout'
-import { getSlug } from '../libs/utils'
-import Ads from '../components/Ads.astro'
-import BaseLayout from './BaseLayout.astro'
-import DocsSidebar from '../components/DocsSidebar.astro'
-import TableOfContents from '../components/TableOfContents.astro'
+import { getConfig } from '@libs/config'
+import type { LayoutOverridesHTMLAttributes } from '@libs/layout'
+import { getSlug } from '@libs/utils'
+import Ads from '@components/Ads.astro'
+import BaseLayout from '@layouts/BaseLayout.astro'
+import DocsSidebar from '@components/DocsSidebar.astro'
+import TableOfContents from '@components/TableOfContents.astro'
 
 interface Props {
   frontmatter: CollectionEntry<'docs'>['data']
@@ -68,7 +69,7 @@ if (frontmatter.toc) {
           </div>
           <h1 class="bd-title mb-0" id="content">{frontmatter.title}</h1>
         </div>
-        <p class="bd-lead">{frontmatter.description}</p>
+        <p class="bd-lead"><Markdown content={frontmatter.description} /></p>
         <Ads />
       </div>
 

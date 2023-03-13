@@ -1,7 +1,14 @@
 import fs from 'node:fs'
 import yaml from 'js-yaml'
 import { z } from 'zod'
-import { zHexColor, zLanguageCode, zNamedHexColors, zPxSizeOrEmpty } from './validation'
+import {
+  zHexColor,
+  zLanguageCode,
+  zNamedHexColors,
+  zPxSizeOrEmpty,
+  zVersionMajorMinor,
+  zVersionSemver,
+} from './validation'
 import { capitalizeFirstLetter } from './utils'
 
 // An object containing all the data types and their associated schema. The key should match the name of the data file
@@ -21,6 +28,18 @@ const dataDefinitions = {
     .object({
       name: z.string(),
       user: z.string(),
+    })
+    .array(),
+  'docs-versions': z
+    .object({
+      group: z.string(),
+      baseurl: z.string().url(),
+      description: z.string(),
+      versions: z
+        .object({
+          v: z.union([zVersionSemver, zVersionMajorMinor]),
+        })
+        .array(),
     })
     .array(),
   examples: z

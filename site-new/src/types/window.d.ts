@@ -15,7 +15,6 @@ export declare global {
    *  - `bootstrap.Tooltip.getInstance`
    *
    */
-  // TODO(HiDeoo) Reevaluate this
   export const bootstrap: typeof import('bootstrap')
   // export const bootstrap: any
 

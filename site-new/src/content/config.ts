@@ -2,10 +2,9 @@ import { z, defineCollection } from 'astro:content'
 
 const docsSchema = z.object({
   added: z.string().optional(),
-  // TODO(HiDeoo) aliases
+  aliases: z.string().or(z.string().array()).optional(),
   description: z.string(),
   direction: z.literal('rtl').optional(),
-  // TODO(HiDeoo) group
   extra_js: z
     .object({
       async: z.boolean().optional(),
@@ -29,6 +28,13 @@ const docsCollection = defineCollection({
   schema: docsSchema,
 })
 
+const calloutsSchema = z.object({})
+
+const calloutsCollection = defineCollection({
+  schema: calloutsSchema,
+})
+
 export const collections = {
   docs: docsCollection,
+  callouts: calloutsCollection,
 }

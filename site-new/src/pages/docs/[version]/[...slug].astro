@@ -1,9 +1,9 @@
 ---
-import type { CollectionEntry } from 'astro:content'
-import DocsLayout from '../../../layouts/DocsLayout.astro'
-import { getConfig } from '../../../libs/config'
-import { docsPages } from '../../../libs/content'
-import Code from '../../../components/shortcodes/Code.astro'
+import type { InferGetStaticPropsType } from 'astro'
+import DocsLayout from '@layouts/DocsLayout.astro'
+import { getConfig } from '@libs/config'
+import { docsPages } from '@libs/content'
+import Code from '@shortcodes/Code.astro'
 
 export async function getStaticPaths() {
   return docsPages.map((docsPage) => {
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
   })
 }
 
-type Props = CollectionEntry<'docs'>
+type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
 const { id, data, render } = Astro.props
 const { Content, headings, remarkPluginFrontmatter } = await render()

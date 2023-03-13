@@ -63,7 +63,7 @@ export function bootstrap(): AstroIntegration[] {
             },
           })
         },
-        'astro:config:done': ({}) => {
+        'astro:config:done': () => {
           cleanPublicDirectory()
           copyBootstrap()
           copyStatic()
@@ -71,7 +71,8 @@ export function bootstrap(): AstroIntegration[] {
         },
       },
     },
-    mdx(),
+    // https://github.com/withastro/astro/issues/6475
+    mdx() as AstroIntegration,
     sitemap({
       filter: (page) => sitemapFilter(page, sitemapExcludedUrls),
     }),

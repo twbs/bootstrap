@@ -1,9 +1,9 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import type { Layout } from '../../libs/layout'
-import Skippy from './Skippy.astro'
-import Symbols from '../icons/Symbols.astro'
-import Navigation from './Navigation.astro'
+import type { Layout } from '@libs/layout'
+import Skippy from '@components/header/Skippy.astro'
+import Symbols from '@components/icons/Symbols.astro'
+import Navigation from '@components/header/Navigation.astro'
 
 interface Props {
   addedIn?: CollectionEntry<'docs'>['data']['added']

@@ -1,15 +1,15 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import { getConfig } from '../../libs/config'
-import { getVersionedDocsPath } from '../../libs/path'
-import type { Layout } from '../../libs/layout'
-import BootstrapWhiteFillIcon from '../icons/BootstrapWhiteFillIcon.astro'
-import GitHubIcon from '../icons/GitHubIcon.astro'
-import HamburgerIcon from '../icons/HamburgerIcon.astro'
-import LinkItem from './LinkItem.astro'
-import OpenCollectiveIcon from '../icons/OpenCollectiveIcon.astro'
-import TwitterIcon from '../icons/TwitterIcon.astro'
-import Versions from './Versions.astro'
+import { getConfig } from '@libs/config'
+import { getVersionedDocsPath } from '@libs/path'
+import type { Layout } from '@libs/layout'
+import BootstrapWhiteFillIcon from '@components/icons/BootstrapWhiteFillIcon.astro'
+import GitHubIcon from '@components/icons/GitHubIcon.astro'
+import HamburgerIcon from '@components/icons/HamburgerIcon.astro'
+import LinkItem from '@components/header/LinkItem.astro'
+import OpenCollectiveIcon from '@components/icons/OpenCollectiveIcon.astro'
+import TwitterIcon from '@components/icons/TwitterIcon.astro'
+import Versions from '@components/header/Versions.astro'
 
 interface Props {
   addedIn?: CollectionEntry<'docs'>['data']['added']

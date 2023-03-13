@@ -101,15 +101,17 @@
     "astro-dev": "astro dev --root site-new",
     "astro-build": "astro build --root site-new",
     "astro-preview": "astro preview --root site-new",
-    "astro-lint": "prettier --config site-new/.prettierrc.json -c --cache site-new && tsc --noEmit"
+    "astro-lint": "prettier --config site-new/.prettierrc.json -c --cache site-new && astro check --root site-new && tsc -p site-new --noEmit",
+    "astro-netlify": "npm-run-all dist release-sri astro-build"
   },
   "peerDependencies": {
     "@popperjs/core": "^2.11.6"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^0.17.0",
-    "@astrojs/prism": "^2.0.0",
-    "@astrojs/sitemap": "^1.1.0",
+    "@astrojs/markdown-component": "^1.0.2",
+    "@astrojs/mdx": "^0.18.0",
+    "@astrojs/prism": "^2.1.0",
+    "@astrojs/sitemap": "^1.2.0",
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
@@ -122,8 +124,9 @@
     "@types/bootstrap": "^5.2.6",
     "@types/google.analytics": "^0.0.42",
     "@types/js-yaml": "^4.0.5",
+    "@types/mime": "^3.0.1",
     "@types/prismjs": "^1.26.0",
-    "astro": "^2.0.14",
+    "astro": "^2.1.2",
     "astro-auto-import": "^0.2.1",
     "autoprefixer": "^10.4.14",
     "bundlewatch": "^0.3.3",
@@ -157,6 +160,7 @@
     "karma-jasmine-html-reporter": "^2.0.0",
     "karma-rollup-preprocessor": "7.0.7",
     "lockfile-lint": "^4.10.1",
+    "mime": "^3.0.0",
     "nodemon": "^2.0.21",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.21",

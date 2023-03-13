@@ -46,8 +46,6 @@ Thumbs.db
 # TODO(HiDeoo) This could be avoided by modifying the other node_modules ignore rule.
 /site-new/node_modules
 # TODO(HiDeoo) Rename later
-/site-new/public/docs/*/dist
-# TODO(HiDeoo) Rename later
 /site-new/.astro
 # TODO(HiDeoo) Rename later
 /site-new/public

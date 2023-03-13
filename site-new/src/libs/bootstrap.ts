@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'astro/types'
-import { getConfig } from './config'
-import { getVersionedDocsPath } from './path'
+import { getConfig } from '@libs/config'
+import { getVersionedDocsPath } from '@libs/path'
 
 export function getVersionedBsCssProps(direction: 'rtl' | undefined) {
   let bsCssLinkHref = '/dist/css/bootstrap'

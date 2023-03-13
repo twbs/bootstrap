@@ -1,9 +1,10 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import type { APIRoute } from 'astro'
-import { getConfig } from '../../../../libs/config'
-import { getExamplesAssets } from '../../../../libs/examples'
-import { getDocsFsPath } from '../../../../libs/path'
+import mime from 'mime'
+import { getConfig } from '@libs/config'
+import { getExamplesAssets } from '@libs/examples'
+import { getDocsFsPath } from '@libs/path'
 
 export function getStaticPaths() {
   const examplesAssets = getExamplesAssets()
@@ -15,8 +16,6 @@ export function getStaticPaths() {
   })
 }
 
-// @ts-expect-error APIRoute response is not properly typed, it supports a buffer as body but body is typed as string.
-// https://docs.astro.build/en/core-concepts/endpoints/#static-file-endpoints
 export const get: APIRoute = ({ params }) => {
   const asset = params.asset
 
@@ -26,9 +25,8 @@ export const get: APIRoute = ({ params }) => {
 
   const assetPath = path.join(getDocsFsPath(), 'src/assets/examples', asset)
   const buffer = fs.readFileSync(assetPath)
+  const mimetype = mime.getType(assetPath)
+  const headers: ResponseInit['headers'] = typeof mimetype === 'string' ? { 'Content-Type': mimetype } : {}
 
-  return {
-    body: buffer,
-    encoding: 'binary',
-  }
+  return new Response(buffer, { headers })
 }

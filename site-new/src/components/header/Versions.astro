@@ -1,7 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import { getConfig } from '../../libs/config'
-import type { Layout } from '../../libs/layout'
+import { getConfig } from '@libs/config'
+import type { Layout } from '@libs/layout'
+import { getVersionedDocsPath } from '@libs/path'
 
 interface Props {
   addedIn?: CollectionEntry<'docs'>['data']['added']
@@ -17,11 +18,9 @@ let versionsLink = ''
 
 if (layout === 'docs' && version === getConfig().docs_version) {
   versionsLink = `${slug}/`
+} else if (layout === 'single' && Astro.url.pathname.startsWith(getVersionedDocsPath(''))) {
+  versionsLink = Astro.url.pathname.replace(getVersionedDocsPath(''), '')
 }
-// TODO(HiDeoo) Handle this when we have a single page layout
-// else if (layout === 'single') {
-//   // TODO(HiDeoo) {{- $versions_link = printf "%s/" $page_slug -}}
-// }
 ---
 
 <li class="nav-item dropdown">

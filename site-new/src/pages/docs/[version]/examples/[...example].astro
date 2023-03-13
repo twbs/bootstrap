@@ -1,17 +1,25 @@
 ---
-import ExamplesLayout from '../../../../layouts/ExamplesLayout.astro'
-import { getConfig } from '../../../../libs/config'
-import { getExampleNameFromPagePath, type ExampleFrontmatter } from '../../../../libs/examples'
+import ExamplesLayout from '@layouts/ExamplesLayout.astro'
+import { getConfig } from '@libs/config'
+import { exampleFrontmatterSchema, getExampleNameFromPagePath, type ExampleFrontmatter } from '@libs/examples'
 
 export async function getStaticPaths() {
   const examplesPages = await Astro.glob('../../../../assets/examples/**/*.astro')
 
   return examplesPages.map((examplesPage) => {
     const { default: Content, file, url, ...props } = examplesPage
+    const example = getExampleNameFromPagePath(examplesPage.file)
+    let frontmatter: ExampleFrontmatter
+
+    try {
+      frontmatter = exampleFrontmatterSchema.parse(props)
+    } catch (error) {
+      throw new Error(`Invalid frontmatter for the '${example}' example.`, { cause: error })
+    }
 
     return {
-      params: { example: getExampleNameFromPagePath(examplesPage.file), version: getConfig().docs_version },
-      props: { ...props, Content },
+      params: { example, version: getConfig().docs_version },
+      props: { ...frontmatter, Content },
     }
   })
 }

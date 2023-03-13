@@ -2,7 +2,6 @@ import type { APIRoute } from 'astro'
 
 export const get: APIRoute = function get({ site }) {
   const isProduction = import.meta.env.PROD
-  // TODO(HiDeoo) Test this works as expected
   const isNetlify = import.meta.env.NETLIFY === 'true'
 
   const allowCrawling = !isNetlify && isProduction

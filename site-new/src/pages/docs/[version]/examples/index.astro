@@ -1,10 +1,10 @@
 ---
-import DropletFillIcon from '../../../../components/icons/DropletFillIcon.astro'
-import SingleLayout from '../../../../layouts/SingleLayout.astro'
-import { getConfig } from '../../../../libs/config'
-import { getVersionedDocsPath } from '../../../../libs/path'
-import { getData } from '../../../../libs/data'
-import { getSlug } from '../../../../libs/utils'
+import DropletFillIcon from '@components/icons/DropletFillIcon.astro'
+import SingleLayout from '@layouts/SingleLayout.astro'
+import { getConfig } from '@libs/config'
+import { getVersionedDocsPath } from '@libs/path'
+import { getData } from '@libs/data'
+import { getSlug } from '@libs/utils'
 
 export function getStaticPaths() {
   return [
@@ -13,8 +13,6 @@ export function getStaticPaths() {
     },
   ]
 }
-
-// TODO: handle aliases "/examples" from site/content/docs/5.3/examples/_index.md
 ---
 
 <SingleLayout
