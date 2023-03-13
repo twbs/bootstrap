@@ -121,7 +121,7 @@
     "eslint-plugin-html": "^7.1.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-markdown": "^3.0.0",
-    "eslint-plugin-unicorn": "^45.0.2",
+    "eslint-plugin-unicorn": "^46.0.0",
     "find-unused-sass-variables": "^4.0.5",
     "globby": "^11.1.0",
     "hammer-simulator": "0.0.1",
