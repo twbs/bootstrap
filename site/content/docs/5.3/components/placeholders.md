@@ -38,7 +38,7 @@ In the example below, we take a typical card component and recreate it with plac
       <span class="placeholder col-6"></span>
       <span class="placeholder col-8"></span>
     </p>
-    <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+    <a class="btn btn-primary disabled placeholder col-6"></a>
   </div>
 </div>
 </div>
@@ -67,7 +67,7 @@ In the example below, we take a typical card component and recreate it with plac
       <span class="placeholder col-6"></span>
       <span class="placeholder col-8"></span>
     </p>
-    <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+    <a class="btn btn-primary disabled placeholder col-6"></a>
   </div>
 </div>
 ```
@@ -83,7 +83,7 @@ We apply additional styling to `.btn`s via `::before` to ensure the `height` is 
   <span class="placeholder col-6"></span>
 </p>
 
-<a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4" aria-hidden="true"></a>
+<a class="btn btn-primary disabled placeholder col-4"></a>
 {{< /example >}}
 
 {{< callout info >}}
