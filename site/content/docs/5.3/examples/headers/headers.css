@@ -10,6 +10,6 @@
   font-size: 85%;
 }
 
-.dropdown-toggle {
+.dropdown-toggle:not(:focus) {
   outline: 0;
 }
