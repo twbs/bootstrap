@@ -37,13 +37,13 @@ Learn about our [`z-index` approach]({{< docsref "/extend/approach#z-index-scale
 
 ## CSS
 
-### Sass map
+### Sass maps
 
 Customize this Sass map to change the available values and generated utilities.
 
 {{< scss-docs name="zindex-levels-map" file="scss/_variables.scss" >}}
 
-### Utilities API
+### Sass utilities API
 
 Position utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 

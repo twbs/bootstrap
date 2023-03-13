@@ -139,15 +139,15 @@ Support includes responsive options for all of Bootstrap's grid breakpoints, as 
 </div>
 {{< /example >}}
 
-## Sass
+## CSS
 
-### Maps
+### Sass maps
 
 Spacing utilities are declared via Sass map and then generated with our utilities API.
 
 {{< scss-docs name="spacer-variables-maps" file="scss/_variables.scss" >}}
 
-### Utilities API
+### Sass utilities API
 
 Spacing utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 

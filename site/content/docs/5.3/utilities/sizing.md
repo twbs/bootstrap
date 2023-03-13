@@ -53,9 +53,9 @@ You can also use utilities to set the width and height relative to the viewport.
 <div class="vh-100">Height 100vh</div>
 ```
 
-## Sass
+## CSS
 
-### Utilities API
+### Sass utilities API
 
 Sizing utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 

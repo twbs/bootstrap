@@ -134,7 +134,7 @@ Color mode adaptive text colors are also available as a Sass map:
 
 {{< scss-docs name="theme-text-dark-map" file="scss/_maps.scss" >}}
 
-### Utilities API
+### Sass utilities API
 
 Color utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 

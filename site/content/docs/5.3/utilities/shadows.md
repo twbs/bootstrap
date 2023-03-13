@@ -17,13 +17,13 @@ While shadows on components are disabled by default in Bootstrap and can be enab
 <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">Larger shadow</div>
 {{< /example >}}
 
-## Sass
+## CSS
 
-### Variables
+### Sass variables
 
 {{< scss-docs name="box-shadow-variables" file="scss/_variables.scss" >}}
 
-### Utilities API
+### Sass utilities API
 
 Shadow utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 

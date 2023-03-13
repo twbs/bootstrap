@@ -45,13 +45,13 @@ By default, there is no `--bs-focus-ring-x`, `--bs-focus-ring-y`, or `--bs-focus
 </a>
 {{< /example >}}
 
-### Sass
+### Sass variables
 
 Customize the focus ring Sass variables to modify all usage of the focus ring styles across your Bootstrap-powered project.
 
 {{< scss-docs name="focus-ring-variables" file="scss/_variables.scss" >}}
 
-### Utilities
+### Sass utilities API
 
 In addition to `.focus-ring`, we have several `.focus-ring-*` utilities to modify the helper class defaults. Modify the color with any of our [theme colors]({{< docsref "/customize/color#theme-colors" >}}). Note that the light and dark variants may not be visible on all background colors given current color mode support.
 

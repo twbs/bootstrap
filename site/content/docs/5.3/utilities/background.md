@@ -143,7 +143,7 @@ Color mode background colors are also available as a Sass map:
 
 {{< scss-docs name="gradient-mixins" file="scss/mixins/_gradients.scss" >}}
 
-## Utilities API
+### Sass utilities API
 
 Background utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 

@@ -153,7 +153,7 @@ Font-size utilities are generated from this map, in combination with our utiliti
 
 {{< scss-docs name="theme-text-map" file="scss/_maps.scss" >}}
 
-## Utilities API
+### Sass utilities API
 
 Font and text utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 

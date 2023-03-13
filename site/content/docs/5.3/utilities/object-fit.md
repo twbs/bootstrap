@@ -54,7 +54,9 @@ The `.object-fit-{value}` and responsive `.object-fit-{breakpoint}-{value}` util
 <video src="..." class="object-fit-none" autoplay></video>
 ```
 
-## Utilities API
+## CSS
+
+### Sass utilities API
 
 Object fit utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 
