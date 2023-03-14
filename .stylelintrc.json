@@ -4,29 +4,27 @@
   ],
   "reportInvalidScopeDisables": true,
   "reportNeedlessDisables": true,
-  "rules": {
-    "declaration-property-value-disallowed-list": {
-      "border": "none",
-      "outline": "none"
-    },
-    "function-disallowed-list": [
-      "calc",
-      "lighten",
-      "darken"
-    ],
-    "property-disallowed-list": [
-      "border-radius",
-      "border-top-left-radius",
-      "border-top-right-radius",
-      "border-bottom-right-radius",
-      "border-bottom-left-radius",
-      "transition"
-    ]
-  },
   "overrides": [
     {
       "files": "**/*.scss",
       "rules": {
+        "declaration-property-value-disallowed-list": {
+          "border": "none",
+          "outline": "none"
+        },
+        "function-disallowed-list": [
+          "calc",
+          "lighten",
+          "darken"
+        ],
+        "property-disallowed-list": [
+          "border-radius",
+          "border-top-left-radius",
+          "border-top-right-radius",
+          "border-bottom-right-radius",
+          "border-bottom-left-radius",
+          "transition"
+        ],
         "scss/dollar-variable-default": [
           true,
           {
@@ -53,8 +51,6 @@
       "files": "site/**/examples/**/*.css",
       "rules": {
         "comment-empty-line-before": null,
-        "function-disallowed-list": null,
-        "property-disallowed-list": null,
         "property-no-vendor-prefix": null,
         "selector-no-qualifying-type": null,
         "value-no-vendor-prefix": null
