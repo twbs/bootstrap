@@ -514,7 +514,7 @@ describe('Tab', () => {
       expect(tabPanel.hasAttribute('tabindex')).toBeFalse()
       expect(tabPanel.hasAttribute('tabindex2')).toBeFalse()
 
-      expect(tabPanel.getAttribute('aria-labelledby')).toEqual('#foo')
+      expect(tabPanel.getAttribute('aria-labelledby')).toEqual('foo')
       expect(tabPanel2.hasAttribute('aria-labelledby')).toBeFalse()
     })
   })
