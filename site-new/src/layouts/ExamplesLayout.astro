@@ -195,7 +195,13 @@ const htmlProps: HTMLAttributes<'html'> = direction === 'rtl' ? { lang: 'ar', di
         <Fragment>
           <script is:inline {...getVersionedBsJsProps()} />
           {extra_js?.map((js) => (
-            <script is:inline async={js.async} src={js.src} />
+            <script
+              is:inline
+              async={js.async}
+              src={js.src}
+              integrity={js.integrity}
+              crossorigin={js.integrity ? 'anonymous' : undefined}
+            />
           ))}
         </Fragment>
       )

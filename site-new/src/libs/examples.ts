@@ -11,6 +11,7 @@ export const exampleFrontmatterSchema = z.object({
   extra_js: z
     .object({
       async: z.boolean().optional(),
+      integrity: z.string().optional(),
       src: z.string(),
     })
     .array()
