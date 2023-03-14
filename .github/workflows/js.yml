@@ -45,7 +45,7 @@ jobs:
         run: npm run js-test
 
       - name: Run Coveralls
-        uses: coverallsapp/github-action@1.1.3
+        uses: coverallsapp/github-action@v1.2.4
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           path-to-lcov: "./js/coverage/lcov.info"

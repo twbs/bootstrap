@@ -165,7 +165,6 @@
   margin-right: $carousel-control-width;
   margin-bottom: 1rem;
   margin-left: $carousel-control-width;
-  list-style: none;
 
   [data-bs-target] {
     box-sizing: content-box;
@@ -210,7 +209,7 @@
 
 // Dark mode carousel
 
-%carousel-dark {
+@mixin carousel-dark() {
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
     filter: $carousel-dark-control-icon-filter;
@@ -226,13 +225,14 @@
 }
 
 .carousel-dark {
-  @extend %carousel-dark;
+  @include carousel-dark();
 }
 
 @if $enable-dark-mode {
   @include color-mode(dark) {
-    .carousel {
-      @extend %carousel-dark;
+    .carousel,
+    &.carousel {
+      @include carousel-dark();
     }
   }
 }

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.3): tab.js
+ * Bootstrap (v5.3.0-alpha1): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -212,7 +212,7 @@ class Tab extends BaseComponent {
     this._setAttributeIfNotExists(target, 'role', 'tabpanel')
 
     if (child.id) {
-      this._setAttributeIfNotExists(target, 'aria-labelledby', `#${child.id}`)
+      this._setAttributeIfNotExists(target, 'aria-labelledby', `${child.id}`)
     }
   }
 

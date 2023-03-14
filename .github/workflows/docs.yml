@@ -41,6 +41,9 @@ jobs:
       - name: Validate HTML
         run: npm run docs-vnu
 
+      - name: Check for unused templates
+        run: npm run docs-check-unused-templates
+
       - name: Run linkinator
         uses: JustinBeckwith/linkinator-action@v1
         with:

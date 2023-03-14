@@ -1,6 +1,3 @@
-{{- $colorModeJS := resources.Get "js/color-modes/index.js" }}
-<script src="{{ $colorModeJS.Permalink | relURL }}"></script>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="{{ .Page.Params.description | default .Site.Params.description | markdownify }}">
@@ -21,6 +18,9 @@
 {{ with .Params.robots -}}
 <meta name="robots" content="{{ . }}">
 {{- end }}
+
+{{- $colorModeJS := printf "/docs/%s/assets/js/color-modes.js" $.Site.Params.docs_version -}}
+<script src="{{ $colorModeJS | relURL }}"></script>
 
 {{ partial "stylesheet" . }}
 {{ partial "favicons" . }}

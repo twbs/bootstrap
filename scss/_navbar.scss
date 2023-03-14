@@ -100,9 +100,11 @@
   margin-bottom: 0;
   list-style: none;
 
-  .show > .nav-link,
-  .nav-link.active {
-    color: var(--#{$prefix}navbar-active-color);
+  .nav-link {
+    &.active,
+    &.show {
+      color: var(--#{$prefix}navbar-active-color);
+    }
   }
 
   .dropdown-menu {
@@ -279,7 +281,7 @@
 
 @if $enable-dark-mode {
   @include color-mode(dark) {
-    .navbar {
+    .navbar-toggler-icon {
       --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
     }
   }

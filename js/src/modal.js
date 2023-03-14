@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.3): modal.js
+ * Bootstrap (v5.3.0-alpha1): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -208,7 +208,6 @@ class Modal extends BaseComponent {
       }
 
       if (this._config.keyboard) {
-        event.preventDefault()
         this.hide()
         return
       }

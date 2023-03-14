@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.3): offcanvas.js
+ * Bootstrap (v5.3.0-alpha1): offcanvas.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -198,12 +198,12 @@ class Offcanvas extends BaseComponent {
         return
       }
 
-      if (!this._config.keyboard) {
-        EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED)
+      if (this._config.keyboard) {
+        this.hide()
         return
       }
 
-      this.hide()
+      EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED)
     })
   }
 
