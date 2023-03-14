@@ -2,6 +2,8 @@
   "extends": [
     "stylelint-config-twbs-bootstrap"
   ],
+  "reportInvalidScopeDisables": true,
+  "reportNeedlessDisables": true,
   "rules": {
     "declaration-property-value-disallowed-list": {
       "border": "none",
@@ -19,21 +21,32 @@
       "border-bottom-right-radius",
       "border-bottom-left-radius",
       "transition"
-    ],
-    "scss/dollar-variable-default": [
-      true,
-      {
-        "ignore": "local"
-      }
-    ],
-    "scss/selector-no-union-class-name": true
+    ]
   },
   "overrides": [
+    {
+      "files": "**/*.scss",
+      "rules": {
+        "scss/dollar-variable-default": [
+          true,
+          {
+            "ignore": "local"
+          }
+        ],
+        "scss/selector-no-union-class-name": true
+      }
+    },
     {
       "files": "scss/**/*.{test,spec}.scss",
       "rules": {
         "scss/dollar-variable-default": null,
         "declaration-no-important": null
+      }
+    },
+    {
+      "files": "site/**/*.scss",
+      "rules": {
+        "scss/dollar-variable-default": null
       }
     }
   ]
