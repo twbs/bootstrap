@@ -8,17 +8,18 @@
   'use strict'
 
   const storedTheme = localStorage.getItem('theme')
+  const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
 
   const getPreferredTheme = () => {
     if (storedTheme) {
       return storedTheme
     }
 
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    return prefersDarkMode ? 'dark' : 'light'
   }
 
   const setTheme = function (theme) {
-    if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    if (theme === 'auto' && prefersDarkMode) {
       document.documentElement.setAttribute('data-bs-theme', 'dark')
     } else {
       document.documentElement.setAttribute('data-bs-theme', theme)
