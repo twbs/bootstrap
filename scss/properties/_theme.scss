@@ -1,0 +1,156 @@
+:root {
+  --md-sys-color-primary: #006e2f;
+  --md-sys-color-on-primary: #ffffff;
+
+  --md-sys-color-primary-container: #85fb9c;
+  --md-sys-color-on-primary-container: #002109;
+
+  --md-sys-color-secondary: #006a65;
+  --md-sys-color-on-secondary: #ffffff;
+
+  --md-sys-color-secondary-container: #70f7ee;
+  --md-sys-color-on-secondary-container: #00201e;
+
+  --md-sys-color-tertiary: #00696f;
+  --md-sys-color-on-tertiary: #ffffff;
+
+  --md-sys-color-tertiary-container: #6ff6ff;
+  --md-sys-color-on-tertiary-container: #002022;
+
+  --md-sys-color-error: #ba1a1a;
+  --md-sys-color-error-container: #ffdad6;
+
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-on-error-container: #410002;
+
+  --md-sys-color-background: #fcfdf7;
+  --md-sys-color-on-background: #1a1c19;
+
+  --md-sys-color-surface: #fcfdf7;
+  --md-sys-color-on-surface: #1a1c19;
+
+  --md-sys-color-surface-variant: #dde5da;
+  --md-sys-color-on-surface-variant: #414941;
+
+  --md-sys-color-outline: #727970;
+  --md-sys-color-inverse-on-surface: #f0f1ec;
+
+  --md-sys-color-inverse-surface: #2e312e;
+  --md-sys-color-inverse-primary: #69de82;
+
+  --md-sys-color-shadow: #000000;
+  --md-sys-color-surface-tint: #006e2f;
+  --md-sys-color-surface-tint-color: #006e2f;
+
+  --md-sys-color-tip: #006d44;
+  --md-sys-color-on-tip: #ffffff;
+  --md-sys-color-tip-container: #75fbb6;
+  --md-sys-color-on-tip-container: #002111;
+
+  --md-sys-color-info: #006875;
+  --md-sys-color-on-info: #ffffff;
+  --md-sys-color-info-container: #9bf0ff;
+  --md-sys-color-on-info-container: #001f24;
+
+  --md-sys-color-warning: #7d5700;
+  --md-sys-color-on-warning: #ffffff;
+  --md-sys-color-warning-container: #ffdeaa;
+  --md-sys-color-on-warning-container: #271900;
+
+  --md-sys-color-danger: #bf0800;
+  --md-sys-color-on-danger: #ffffff;
+  --md-sys-color-danger-container: #ffdad4;
+  --md-sys-color-on-danger-container: #400100;
+
+  --md-sys-elevation-level1: linear-gradient(0deg, rgba(103, 80, 164, 0.05), rgba(103, 80, 164, 0.05)), var(--md-sys-color-surface);
+  --md-sys-elevation-level2: linear-gradient(0deg, rgba(103, 80, 164, 0.08), rgba(103, 80, 164, 0.08)), var(--md-sys-color-surface);
+  --md-sys-elevation-level3: linear-gradient(0deg, rgba(103, 80, 164, 0.11), rgba(103, 80, 164, 0.11)), var(--md-sys-color-surface);
+  --md-sys-elevation-level4: linear-gradient(0deg, rgba(103, 80, 164, 0.12), rgba(103, 80, 164, 0.12)), var(--md-sys-color-surface);
+  --md-sys-elevation-level5: linear-gradient(0deg, rgba(103, 80, 164, 0.14), rgba(103, 80, 164, 0.14)), var(--md-sys-color-surface);
+
+  --md-sys-color-on-surface-variant-2: linear-gradient(0deg,rgba(68,71,70,.15),rgba(68,71,70,.15)), var(--md-sys-color-surface);
+  --md-sys-color-on-surface-variant-4: linear-gradient(0deg,rgba(68,71,70,.18),rgba(68,71,70,.18)), var(--md-sys-color-surface);
+
+  //@import "highlight-light.scss";
+}
+
+body.dark {
+  --md-sys-color-primary: #69de82;
+  --md-sys-color-on-primary: #003915;
+
+  --md-sys-color-primary-container: #005322;
+  --md-sys-color-on-primary-container: #85fb9c;
+
+  --md-sys-color-secondary: #4fdad2;
+  --md-sys-color-on-secondary: #003734;
+
+  --md-sys-color-secondary-container: #00504c;
+  --md-sys-color-on-secondary-container: #70f7ee;
+
+  --md-sys-color-tertiary: #4cd9e2;
+  --md-sys-color-on-tertiary: #00373a;
+
+  --md-sys-color-tertiary-container: #004f53;
+  --md-sys-color-on-tertiary-container: #6ff6ff;
+
+  --md-sys-color-error: #ffb4ab;
+  --md-sys-color-error-container: #93000a;
+
+  --md-sys-color-on-error: #690005;
+  --md-sys-color-on-error-container: #ffdad6;
+
+  --md-sys-color-background: #1a1c19;
+  --md-sys-color-on-background: #e2e3dd;
+
+  --md-sys-color-surface: #1a1c19;
+  --md-sys-color-on-surface: #e2e3dd;
+
+  --md-sys-color-surface-variant: #414941;
+  --md-sys-color-on-surface-variant: #c1c9be;
+
+  --md-sys-color-outline: #8b9389;
+  --md-sys-color-inverse-on-surface: #1a1c19;
+
+  --md-sys-color-inverse-surface: #e2e3dd;
+  --md-sys-color-inverse-primary: #006e2f;
+
+  --md-sys-color-shadow: #000000;
+  --md-sys-color-surface-tint: #69de82;
+
+  --md-sys-color-surface-tint-color: #69de82;
+
+  --md-sys-color-tip: #55de9b;
+  --md-sys-color-on-tip: #003921;
+  --md-sys-color-tip-container: #005232;
+  --md-sys-color-on-tip-container: #75fbb6;
+
+  --md-sys-color-info: #50d8ec;
+  --md-sys-color-on-info: #00363d;
+  --md-sys-color-info-container: #004f58;
+  --md-sys-color-on-info-container: #9bf0ff;
+
+  --md-sys-color-warning: #ffba2c;
+  --md-sys-color-on-warning: #422c00;
+  --md-sys-color-warning-container: #5f4100;
+  --md-sys-color-on-warning-container: #ffdeaa;
+
+  --md-sys-color-danger: #ffb4a7;
+  --md-sys-color-on-danger: #680200;
+  --md-sys-color-danger-container: #920500;
+  --md-sys-color-on-danger-container: #ffdad4;
+
+  --md-sys-elevation-level1: linear-gradient(0deg, rgba(103, 80, 164, 0.05), rgba(103, 80, 164, 0.05)), var(--md-sys-color-surface);
+  --md-sys-elevation-level2: linear-gradient(0deg, rgba(103, 80, 164, 0.08), rgba(103, 80, 164, 0.08)), var(--md-sys-color-surface);
+  --md-sys-elevation-level3: linear-gradient(0deg, rgba(103, 80, 164, 0.11), rgba(103, 80, 164, 0.11)), var(--md-sys-color-surface);
+  --md-sys-elevation-level4: linear-gradient(0deg, rgba(103, 80, 164, 0.12), rgba(103, 80, 164, 0.12)), var(--md-sys-color-surface);
+  --md-sys-elevation-level5: linear-gradient(0deg, rgba(103, 80, 164, 0.14), rgba(103, 80, 164, 0.14)), var(--md-sys-color-surface);
+
+  --md-sys-color-on-surface-variant-2: linear-gradient(0deg,rgba(68,71,70,.15),rgba(68,71,70,.15));
+  --md-sys-color-on-surface-variant-4: linear-gradient(0deg,rgba(68,71,70,.18),rgba(68,71,70,.18));
+
+  //@import "highlight-dark.scss";
+}
+$md-sys-color-on-surface-2: linear-gradient(0deg,hsla(0, 0%, 89%, 0.08),hsla(0,0%,89%,.08)), var(--md-sys-color-secondary-container);
+$md-sys-color-on-surface-4: linear-gradient(0deg,hsla(0,0%,89%,.12),hsla(0,0%,89%,.12)), var(--md-sys-color-secondary-container);
+
+//@import "custom/styles_variables"

@@ -1,0 +1,33 @@
+//
+// Copyright 2021 Google LLC
+// SPDX-License-Identifier: Apache-2.0
+//
+
+$standard-easing: cubic-bezier(0.4, 0, 0.2, 1);
+$acceleration-easing: cubic-bezier(0.4, 0, 1, 1);
+$deceleration-easing: cubic-bezier(0, 0, 0.2, 1);
+$sharp-easing: cubic-bezier(0.4, 0, 0.6, 1);
+
+@function standard($name, $duration, $delay: null) {
+  @return _animation($name, $duration, $standard-easing, $delay);
+}
+
+@function acceleration($name, $duration, $delay: null) {
+  @return _animation($name, $duration, $acceleration-easing, $delay);
+}
+
+@function deceleration($name, $duration, $delay: null) {
+  @return _animation($name, $duration, $deceleration-easing, $delay);
+}
+
+@function sharp($name, $duration, $delay: null) {
+  @return _animation($name, $duration, $sharp-easing, $delay);
+}
+
+@function _animation($name, $duration, $easing, $delay) {
+  @if $delay {
+    @return $name $duration $easing $delay;
+  }
+
+  @return $name $duration $easing;
+}
