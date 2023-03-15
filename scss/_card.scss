@@ -30,7 +30,7 @@
   flex-direction: column;
   min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
   height: var(--#{$prefix}card-height);
-  color: var(--#{$prefix}body-color);
+  color: var(--#{$prefix}card-color);
   word-wrap: break-word;
   background-color: var(--#{$prefix}card-bg);
   background-clip: border-box;
@@ -71,7 +71,6 @@
   // as much space as possible, ensuring footers are aligned to the bottom.
   flex: 1 1 auto;
   padding: var(--#{$prefix}card-spacer-y) var(--#{$prefix}card-spacer-x);
-  color: var(--#{$prefix}card-color);
 }
 
 .card-title {
