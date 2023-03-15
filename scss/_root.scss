@@ -16,6 +16,7 @@
 
   @each $color, $value in $theme-colors {
     --#{$prefix}#{$color}: #{$value};
+    --#{$prefix}text-on-#{$color}: #{color-contrast($value)};
   }
 
   @each $color, $value in $theme-colors-rgb {
@@ -110,10 +111,17 @@
   --#{$prefix}border-radius-pill: #{$border-radius-pill};
   // scss-docs-end root-border-var
 
+
   --#{$prefix}box-shadow: #{$box-shadow};
   --#{$prefix}box-shadow-sm: #{$box-shadow-sm};
   --#{$prefix}box-shadow-lg: #{$box-shadow-lg};
   --#{$prefix}box-shadow-inset: #{$box-shadow-inset};
+
+  @each $name, $value in $shadows {
+    --#{$prefix}shadow-#{$name}: #{$value};
+  }
+
+  --#{$prefix}offcanvas-bg: #{$body-bg};
 
   // Focus styles
   // scss-docs-start root-focus-variables
@@ -122,6 +130,7 @@
   --#{$prefix}focus-ring-color: #{$focus-ring-color};
   // scss-docs-end root-focus-variables
 
+  --#{$prefix}input-border-color: #{$input-border-color};
   // scss-docs-start root-form-validation-variables
   --#{$prefix}form-valid-color: #{$form-valid-color};
   --#{$prefix}form-valid-border-color: #{$form-valid-border-color};
@@ -135,6 +144,12 @@
     color-scheme: dark;
 
     // scss-docs-start root-dark-mode-vars
+    @each $color, $value in $theme-colors-dark {
+      --#{$prefix}#{$color}: #{$value};
+      --#{$prefix}text-on-#{$color}: #{color-contrast($value)};
+      --#{$prefix}#{$color}-rgb: #{to-rgb($value)};
+    }
+
     --#{$prefix}body-color: #{$body-color-dark};
     --#{$prefix}body-color-rgb: #{to-rgb($body-color-dark)};
     --#{$prefix}body-bg: #{$body-bg-dark};
@@ -179,6 +194,7 @@
     --#{$prefix}border-color: #{$border-color-dark};
     --#{$prefix}border-color-translucent: #{$border-color-translucent-dark};
 
+    --#{$prefix}input-border-color: #{$border-color-dark};
     --#{$prefix}form-valid-color: #{$form-valid-color-dark};
     --#{$prefix}form-valid-border-color: #{$form-valid-border-color-dark};
     --#{$prefix}form-invalid-color: #{$form-invalid-color-dark};

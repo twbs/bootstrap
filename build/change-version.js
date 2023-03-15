@@ -10,6 +10,7 @@
 
 const fs = require('node:fs').promises
 const path = require('node:path')
+const process = require('node:process')
 const globby = require('globby')
 
 const VERBOSE = process.argv.includes('--verbose')

@@ -11,10 +11,23 @@
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global bootstrap: false */
+/* mdc, global bootstrap: false */
 
 (() => {
   'use strict'
+
+  // --------
+  // MDC
+  // --------
+  document.querySelectorAll('button.list-group-item, .btn:not(input,.theme-toggle), a.list-group-item')
+    .forEach(button => {
+      window.addEventListener('load', () => {
+        const rippleElement = document.createElement('span')
+        rippleElement.className = 'ripple-surface'
+        button.append(rippleElement)
+        return new mdc.ripple.MDCRipple(rippleElement)
+      })
+    })
 
   // --------
   // Tooltips

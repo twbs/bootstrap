@@ -19,7 +19,7 @@
   background-repeat: no-repeat;
   background-position: $form-select-bg-position;
   background-size: $form-select-bg-size;
-  border: $form-select-border-width solid $form-select-border-color;
+  border: $form-select-border-width solid var(--#{$prefix}input-border-color);
   @include border-radius($form-select-border-radius, 0);
   @include box-shadow($form-select-box-shadow);
   @include transition($form-select-transition);

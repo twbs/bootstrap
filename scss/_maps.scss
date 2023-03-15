@@ -2,6 +2,19 @@
 //
 // Placed here so that others can override the default Sass maps and see automatic updates to utilities and more.
 
+// scss-docs-start theme-colors-map
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+) !default;
+// scss-docs-end theme-colors-map
+
 // scss-docs-start theme-colors-rgb
 $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value") !default;
 // scss-docs-end theme-colors-rgb
@@ -48,6 +61,17 @@ $theme-colors-border-subtle: (
 $theme-colors-text-dark: null !default;
 $theme-colors-bg-subtle-dark: null !default;
 $theme-colors-border-subtle-dark: null !default;
+
+$theme-colors-dark: (
+  "primary":    $primary-dark,
+  "secondary":  $secondary-dark,
+  "success":    $success-dark,
+  "info":       $info-dark,
+  "warning":    $warning-dark,
+  "danger":     $danger-dark,
+  "light":      $light-dark,
+  "dark":       $dark-dark
+) !default;
 
 @if $enable-dark-mode {
   // scss-docs-start theme-text-dark-map

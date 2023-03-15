@@ -3,6 +3,10 @@
 //
 
 .btn {
+  // MDC Ripple variables
+  --mdc-ripple-hover-opacity: 0;
+  --mdc-ripple-focus-opacity: 0;
+  --mdc-ripple-press-opacity: .2;
   // scss-docs-start btn-css-vars
   --#{$prefix}btn-padding-x: #{$btn-padding-x};
   --#{$prefix}btn-padding-y: #{$btn-padding-y};
@@ -15,13 +19,23 @@
   --#{$prefix}btn-border-width: #{$btn-border-width};
   --#{$prefix}btn-border-color: transparent;
   --#{$prefix}btn-border-radius: #{$btn-border-radius};
-  --#{$prefix}btn-hover-border-color: transparent;
   --#{$prefix}btn-box-shadow: #{$btn-box-shadow};
+  --#{$prefix}btn-hover-box-shadow: #{$btn-hover-box-shadow};
+  --#{$prefix}btn-focus-box-shadow: #{$btn-focus-box-shadow};
+  --#{$prefix}btn-active-box-shadow: #{$btn-active-box-shadow};
   --#{$prefix}btn-disabled-opacity: #{$btn-disabled-opacity};
-  --#{$prefix}btn-focus-box-shadow: 0 0 0 #{$btn-focus-width} rgba(var(--#{$prefix}btn-focus-shadow-rgb), .5);
   // scss-docs-end btn-css-vars
+  @for $i from 1 through 10 {
+    &.elevated-#{$i} {
+      --#{$prefix}btn-box-shadow: var(--#{$prefix}shadow-#{$i}dp);
+      --#{$prefix}btn-hover-box-shadow: var(--#{$prefix}shadow-#{($i + 4)}dp);
+      --#{$prefix}btn-focus-box-shadow: var(--#{$prefix}shadow-#{($i + 4)}dp);
+      --#{$prefix}btn-active-box-shadow: var(--#{$prefix}shadow-#{($i + 8)}dp);
+    }
+  }
 
-  display: inline-block;
+  position: relative;
+  display: inline-flex;
   padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
   font-family: var(--#{$prefix}btn-font-family);
   @include font-size(var(--#{$prefix}btn-font-size));
@@ -45,6 +59,10 @@
     text-decoration: if($link-hover-decoration == underline, none, null);
     background-color: var(--#{$prefix}btn-hover-bg);
     border-color: var(--#{$prefix}btn-hover-border-color);
+  }
+
+  &:not([class*="btn-outline-"], .btn-link,[class*="btn-text-"]):hover {
+    @include box-shadow(var(--#{$prefix}btn-hover-box-shadow));
   }
 
   .btn-check + &:hover {
@@ -121,33 +139,28 @@
 // scss-docs-start btn-variant-loops
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
-    @if $color == "light" {
-      @include button-variant(
-        $value,
-        $value,
-        $hover-background: shade-color($value, $btn-hover-bg-shade-amount),
-        $hover-border: shade-color($value, $btn-hover-border-shade-amount),
-        $active-background: shade-color($value, $btn-active-bg-shade-amount),
-        $active-border: shade-color($value, $btn-active-border-shade-amount)
-      );
-    } @else if $color == "dark" {
-      @include button-variant(
-        $value,
-        $value,
-        $hover-background: tint-color($value, $btn-hover-bg-tint-amount),
-        $hover-border: tint-color($value, $btn-hover-border-tint-amount),
-        $active-background: tint-color($value, $btn-active-bg-tint-amount),
-        $active-border: tint-color($value, $btn-active-border-tint-amount)
-      );
-    } @else {
-      @include button-variant($value, $value);
-    }
+    @include button-variant($value, $value);
+  }
+}
+
+@each $state in map-keys($theme-colors) {
+  .btn-#{$state} {
+    --mdc-ripple-color: var(--#{$prefix}text-on-#{$state});
+    --#{$prefix}btn-color: var(--#{$prefix}text-on-#{$state});
+    --#{$prefix}btn-bg: var(--#{$prefix}#{$state});
+    --#{$prefix}btn-border-color: var(--#{$prefix}#{$state});
   }
 }
 
 @each $color, $value in $theme-colors {
   .btn-outline-#{$color} {
     @include button-outline-variant($value);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-text-#{$color} {
+    @include button-text-variant($value);
   }
 }
 // scss-docs-end btn-variant-loops
@@ -193,6 +206,54 @@
   // No need for an active state here
 }
 
+.btn-icon {
+  border-radius: 50%;
+  box-shadow: none;
+  color: var(--#{$prefix}body-color);
+  min-width: 0;
+  padding: 0;
+  transition: background-color 15ms linear;
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  fill: currentColor;
+  width: #{$btn-icon-size-sm};
+  height: #{$btn-icon-size-sm};
+  //@include btn-icon($btn-icon-height, $btn-icon-width, $font-size-icon);
+
+  &::before {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: inherit;
+    content: "";
+    pointer-events: none;
+  }
+
+  &:hover,
+  &:focus,
+  &.focus {
+    background-image: linear-gradient(to bottom, rgba(var(--#{$prefix}body-color-rgb), $overlay-focus-colored-opacity), rgba(var(--#{$prefix}body-color-rgb), $overlay-focus-colored-opacity));
+    border: none;
+  }
+
+  &:active {
+    background-image: linear-gradient(to bottom, rgba(var(--#{$prefix}body-color-rgb), $overlay-pressed-colored-opacity), rgba(var(--#{$prefix}body-color-rgb), $overlay-pressed-colored-opacity));
+    color: initial;
+  }
+
+  & span,
+  & i,
+  & svg {
+    font-size: $font-size-icon;
+  }
+}
 
 //
 // Button Sizes

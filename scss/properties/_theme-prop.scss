@@ -1,0 +1,13 @@
+@keyframes swoopy {
+  from {
+    clip-path: var(--circle-top-right-out);
+  }
+  to {
+    clip-path: var(--circle-bottom-right-in);
+  }
+}
+.app-transition {
+  transition-duration: .35s;
+  transition-timing-function: ease-in-out;
+  animation-name: swoopy;
+}

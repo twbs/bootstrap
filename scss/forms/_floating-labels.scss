@@ -9,6 +9,7 @@
     height: $form-floating-label-height;
     content: "";
     background-color: $input-bg;
+    z-index: -1;
     @include border-radius($input-border-radius);
   }
 
@@ -86,5 +87,259 @@
 
   > .form-control:disabled ~ label {
     color: $form-floating-label-disabled-color;
+  }
+}
+
+
+
+
+
+$label-height-sm: $font-size-sm * $line-height-sm;
+$label-top-position-sm: $label-height-sm * 0.6;
+$label-height-md: $font-size-base * $line-height-sm;
+$label-top-position-md: $label-height-md * 0.6;
+$label-height-lg: $font-size-lg * $line-height-sm;
+$label-top-position-lg: $label-height-lg * 0.6;
+
+@mixin label-common {
+  position: absolute;
+  z-index: 3;
+  max-width: calc(100% - #{$border-width * 2});
+  @include text-truncate();
+}
+
+[dir='rtl'] {
+  %label-inside-input-rtl {
+    right: 0;
+    left: auto !important;
+  }
+
+  %label-above-input-rtl {
+    right: $input-padding-x-sm;
+    left: auto !important;
+  }
+}
+
+@mixin label-inside-input() {
+  + label {
+    @include label-common();
+
+    top: $input-border-width;
+    left: $input-border-width;
+
+    @include font-size($input-font-size);
+    padding: $input-padding-y $input-padding-x;
+
+    color: $input-placeholder-color;
+    pointer-events: none;
+
+    transition: all $transition-fast;
+
+    @extend %label-inside-input-rtl;
+  }
+
+  &.form-control-sm + label {
+    @include font-size($input-font-size-sm);
+    padding: $input-padding-y-sm $input-padding-x-sm;
+  }
+  &.form-control-lg + label {
+    @include font-size($input-font-size-lg);
+    padding: $input-padding-y-lg $input-padding-x-lg;
+  }
+}
+
+$transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+
+@mixin label-above-input {
+  + label {
+    @include label-common();
+    left: $input-padding-x-sm;
+    padding: 0 0.3rem;
+    line-height: $line-height-sm;
+    background-color: var(--#{$prefix}body-bg);
+    border-radius: $border-radius;
+    @extend %label-above-input-rtl;
+  }
+
+  + label,
+  + label.label-sm {
+    top: -$label-top-position-sm;
+    font-size: $font-size-sm;
+  }
+  + label.label-md {
+    top: -$label-top-position-md;
+    font-size: $font-size-base;
+  }
+  + label.label-lg {
+    top: -$label-top-position-lg;
+    font-size: $font-size-lg;
+  }
+}
+
+.floating-label-old {
+  position: relative;
+
+  & select {
+    border-radius: $border-radius-sm;
+    @include label-above-input();
+  }
+
+  & input,
+  & textarea {
+    border-radius: $border-radius-sm;
+    @include label-inside-input();
+  }
+
+  & input::placeholder,
+  & textarea::placeholder {
+    color: transparent;
+    transition: color $transition-fast;
+  }
+
+  & label + input::placeholder,
+  & label + textarea::placeholder {
+    color: $input-placeholder-color;
+  }
+
+  & input:focus,
+  & select:focus,
+  & textarea:focus {
+    border-color: $input-focus-border-color;
+    border-width: 1px;
+    box-shadow: $input-focus-border-color;
+    @include label-above-input();
+
+    &::placeholder {
+      color: $input-placeholder-color;
+    }
+  }
+
+  & input[placeholder]:not(:placeholder-shown),
+  & textarea[placeholder]:not(:placeholder-shown) {
+    @include label-above-input();
+  }
+
+  & input:not([placeholder]):not([value]),
+  & textarea:not([placeholder]):empty {
+    @include label-above-input();
+  }
+
+  & input:-webkit-autofill,
+  & textarea:-webkit-autofill {
+    @include label-above-input();
+  }
+}
+
+:is(.card, .card-body) .form-control:focus:not(.border-0) + label,
+:is(.card, .card-body) .floating-label > input:focus + label,
+:is(.card, .card-body) .floating-label > textarea:focus + label,
+:is(.card, .card-body) .floating-label > select:focus + label,
+:is(.card, .card-body) .floating-label > input[placeholder]:not(:placeholder-shown) + label,
+:is(.card, .card-body) .floating-label > textarea[placeholder]:not(:placeholder-shown) + label {
+  background-color: var(--#{$prefix}card-bg) !important;
+}
+
+
+.floating-field {
+  position: relative;
+
+  & select {
+    border-color: transparent;
+    border-bottom-width: 1px;
+    border-bottom: 1px solid $input-border-color;
+    @include border-radius(0);
+    @include label-above-input();
+
+    + label {
+      left: 0;
+      padding: 0.2rem;
+    }
+  }
+
+  & input,
+  & textarea {
+    border-color: transparent;
+    border-bottom-width: 1px;
+    border-bottom: 1px solid $input-border-color;
+    @include border-radius(0);
+    @include label-inside-input();
+
+    + label {
+      left: 0;
+      padding: 0.2rem;
+    }
+  }
+
+  & input::placeholder,
+  & textarea::placeholder {
+    color: transparent;
+    transition: color $transition-fast;
+  }
+
+  & label + input::placeholder,
+  & label + textarea::placeholder {
+    color: $input-placeholder-color;
+  }
+
+  & select:focus {
+    border-width: 0;
+    box-shadow: none;
+    border-bottom: 2px solid $input-focus-border-color;
+  }
+
+  & input:focus,
+  & textarea:focus {
+    border-width: 1px;
+    border-color: transparent;
+    border-bottom: 2px solid $input-focus-border-color;
+    box-shadow: none;
+    @include border-radius(0);
+
+    &::placeholder {
+      color: $input-placeholder-color;
+    }
+
+    @include label-above-input();
+
+    + label {
+      left: 0;
+      padding: 0.2rem;
+    }
+  }
+
+  & input[placeholder]:not(:placeholder-shown),
+  & textarea[placeholder]:not(:placeholder-shown) {
+    @include label-above-input();
+
+    + label {
+      left: 0;
+      padding: 0.2rem;
+    }
+  }
+
+  & input:not([placeholder]):not([value]),
+  & textarea:not([placeholder]):empty {
+    @include label-above-input();
+
+    + label {
+      left: 0;
+      padding: 0.2rem;
+    }
+  }
+
+  & input:-webkit-autofill,
+  & textarea:-webkit-autofill {
+    @include label-above-input();
+
+    + label {
+      left: 0;
+      padding: 0.2rem;
+    }
+  }
+  .floating-label > input:not(:focus):placeholder-shown + label::before,
+  .floating-label > textarea:not(:focus):placeholder-shown + label::before,
+  .floating-label > input:not(:focus):placeholder-shown + label::after,
+  .floating-label > textarea:not(:focus):placeholder-shown + label::after {
+    border-top-color: transparent;
   }
 }

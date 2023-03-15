@@ -7,17 +7,44 @@ toc: true
 ---
 
 ## Example
+Wrap a pair of `<input class="form-control">` and `<label>` elements in `.floating-label` to enable floating labels with Bootstrap's textual form fields. A `placeholder` is required on each `<input>` as our method of CSS-only floating labels uses the `:placeholder-shown` pseudo-element. Also note that the `<input>` must come first so we can utilize a sibling selector (e.g., `~`).
 
-Wrap a pair of `<input class="form-control">` and `<label>` elements in `.form-floating` to enable floating labels with Bootstrap's textual form fields. A `placeholder` is required on each `<input>` as our method of CSS-only floating labels uses the `:placeholder-shown` pseudo-element. Also note that the `<input>` must come first so we can utilize a sibling selector (e.g., `~`).
+{{< example >}}
+<div class="floating-label mb-3">
+  <input type="email" class="form-control" id="floatingInput222" placeholder="name@example.com">
+  <label for="floatingInput222">Email address</label>
+</div>
+<div class="floating-label mb-3">
+  <input type="password" class="form-control" id="floatingInput111" placeholder="name@example.com">
+  <label for="floatingInput111">Password</label>
+</div>
+{{< /example >}}
+
+
+
+
+Wrap a pair of `<input class="form-control">` and `<label>` elements in `.floating-form` to enable floating labels with Bootstrap's textual form fields. A `placeholder` is required on each `<input>` as our method of CSS-only floating labels uses the `:placeholder-shown` pseudo-element. Also note that the `<input>` must come first so we can utilize a sibling selector (e.g., `~`).
 
 {{< example >}}
 <div class="form-floating mb-3">
-  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-  <label for="floatingInput">Email address</label>
+  <input type="email" class="form-control" id="floatingInput2" placeholder="name@example.com">
+  <label for="floatingInput2">Email address</label>
+</div>
+<div class="form-floating mb-3">
+  <input type="email" class="form-control" id="floatingInput22" placeholder="name@example.com">
+  <label for="floatingInput22">Email address</label>
+</div>
+{{< /example >}}
+
+
+{{< example >}}
+<div class="form-floating mb-3">
+  <input type="email" class="form-control" id="floatingInput3" placeholder="name@example.com">
+  <label for="floatingInput3">Email address</label>
 </div>
 <div class="form-floating">
-  <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-  <label for="floatingPassword">Password</label>
+  <input type="password" class="form-control" id="floatingPassword3" placeholder="Password">
+  <label for="floatingPassword3">Password</label>
 </div>
 {{< /example >}}
 

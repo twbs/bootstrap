@@ -256,6 +256,21 @@
     }
   }
 }
+
+.navbar-primary {
+  padding: .75rem 0;
+  background-color: transparent;
+  box-shadow: var(--#{$prefix}box-shadow);
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    display: block;
+    content: "";
+    background-image: linear-gradient(rgba(var(--#{$prefix}primary-rgb), 1), rgba(var(--#{$prefix}primary-rgb), .95));
+  }
+}
 // scss-docs-end navbar-expand-loop
 
 // Navbar themes

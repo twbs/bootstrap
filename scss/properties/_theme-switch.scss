@@ -1,0 +1,167 @@
+[data-bs-theme=light] {
+  --clr-foreground: hsl(0 0% 0%);
+  --clr-background: hsl(0 0% 100%);
+  #theme-toggle {
+    &::before {
+      -webkit-animation: pulseToLight 650ms ease-out;
+      animation: pulseToLight 650ms ease-out;
+    }
+  }
+  .toggle-circle {
+    transform: translateX(-15%);
+  }
+  .toggle-sun {
+    transform: rotate(0.5turn);
+  }
+}
+[data-bs-theme=dark] {
+  --clr-background: hsl(0 0% 0%);
+  --clr-foreground: hsl(0 0% 100%);
+  #theme-toggle {
+    &::before {
+      -webkit-animation: pulseToDark 650ms ease-out;
+      animation: pulseToDark 650ms ease-out;
+    }
+  }
+}
+
+#theme-toggle {
+  cursor: pointer;
+  background: 0;
+  border: 0;
+  opacity: 0.8;
+  border-radius: 50%;
+  position: relative;
+  isolation: isolate;
+
+  svg {
+    fill: currentColor;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: hsl(0 0% 50% / 0.2);
+    border-radius: inherit;
+    transform: scale(0);
+    opacity: 0;
+    z-index: -1;
+  }
+  &::after {
+    content: attr(aria-label);
+    position: absolute;
+    color: var(--clr-background);
+    background: var(--clr-foreground);
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    font-size: $font-size-sm;
+    left: 0;
+    right: 0;
+    top: 95%;
+    margin: 0 auto;
+    padding: 0.5em 1em;
+    border-radius: 0.125em;
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: top;
+    transition: transform 0ms linear 100ms, opacity 100ms linear;
+  }
+  &:hover {
+    outline: 0;
+    opacity: 1;
+    background: hsl(0 0% 50% / 0.15);
+    &::after {
+      opacity: 0.7;
+      transform: scale(1);
+      transition: transform 70ms linear, opacity 70ms linear;
+    }
+  }
+  &:focus {
+    outline: 0;
+    opacity: 1;
+    background: hsl(0 0% 50% / 0.15);
+  }
+  &:focus-visible {
+    &::after {
+      opacity: 0.7;
+      transform: scale(1);
+      transition: transform 70ms linear, opacity 70ms linear;
+    }
+  }
+}
+.toggle-circle {
+  transition: transform 500ms ease-out;
+}
+.toggle-sun {
+  transform-origin: center center;
+  transition: transform 750ms cubic-bezier(0.11, 0.14, 0.29, 1.32);
+}
+
+@-webkit-keyframes pulseToLight {
+  0% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  10% {
+    transform: scale(1);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseToLight {
+  0% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  10% {
+    transform: scale(1);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes pulseToDark {
+  0% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  10% {
+    transform: scale(1);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseToDark {
+  0% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  10% {
+    transform: scale(1);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}

@@ -10,7 +10,7 @@ const BUNDLE = process.env.BUNDLE === 'true'
 const ESM = process.env.ESM === 'true'
 
 let fileDestination = `bootstrap${ESM ? '.esm' : ''}`
-const external = ['@popperjs/core']
+const external = ['@popperjs/core', '@material/ripple']
 const plugins = [
   babel({
     // Only transpile our source code
@@ -20,14 +20,19 @@ const plugins = [
   })
 ]
 const globals = {
-  '@popperjs/core': 'Popper'
+  '@popperjs/core': 'Popper',
+  '@material/ripple': 'MDCRipple'
 }
 
 if (BUNDLE) {
   fileDestination += '.bundle'
   // Remove last entry in external array to bundle Popper
   external.pop()
+  external.pop()
+
   delete globals['@popperjs/core']
+  delete globals['@material/ripple']
+
   plugins.push(
     replace({
       'process.env.NODE_ENV': '"production"',

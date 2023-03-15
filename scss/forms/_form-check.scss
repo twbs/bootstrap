@@ -44,10 +44,40 @@
   @include transition($form-check-transition);
 
   &[type="checkbox"] {
+    &::before {
+      --thumb-scale: .01;
+      --thumb-highlight-size: var(--space-xl);
+      content: "";
+      width: var(--thumb-highlight-size);
+      height: var(--thumb-highlight-size);
+      -webkit-clip-path: circle(50%);
+      clip-path: circle(50%);
+      position: absolute;
+      top: 50%;
+      background: var(--thumb-highlight-color);
+      transform-origin: center center;
+      transform: translateX(calc(var(--isRTL) * 50%)) translateY(-50%) translateZ(-1px) scale(var(--thumb-scale));
+      will-change: transform;
+    }
     @include border-radius($form-check-input-border-radius);
   }
 
   &[type="radio"] {
+    &::before {
+      --thumb-scale: .01;
+      --thumb-highlight-size: var(--space-xl);
+      content: "";
+      width: var(--thumb-highlight-size);
+      height: var(--thumb-highlight-size);
+      -webkit-clip-path: circle(50%);
+      clip-path: circle(50%);
+      position: absolute;
+      top: 50%;
+      background: var(--thumb-highlight-color);
+      transform-origin: center center;
+      transform: translateX(calc(var(--isRTL) * 50%)) translateY(-50%) translateZ(-1px) scale(var(--thumb-scale));
+      will-change: transform;
+    }
     // stylelint-disable-next-line property-disallowed-list
     border-radius: $form-check-radio-border-radius;
   }

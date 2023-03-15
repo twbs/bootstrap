@@ -22,7 +22,7 @@
   color: var(--#{$prefix}btn-close-color);
   background: transparent var(--#{$prefix}btn-close-bg) center / $btn-close-width auto no-repeat; // include transparent for button elements
   border: 0; // for button elements
-  @include border-radius();
+  @include border-radius(50%);
   opacity: var(--#{$prefix}btn-close-opacity);
 
   // Override <a>'s hover style
@@ -30,12 +30,14 @@
     color: var(--#{$prefix}btn-close-color);
     text-decoration: none;
     opacity: var(--#{$prefix}btn-close-hover-opacity);
+    background-color: rgba(var(--#{$prefix}body-color-rgb), $overlay-focus-colored-opacity)
   }
 
   &:focus {
     outline: 0;
     box-shadow: var(--#{$prefix}btn-close-focus-shadow);
     opacity: var(--#{$prefix}btn-close-focus-opacity);
+    background-color: rgba(var(--#{$prefix}body-color-rgb), $overlay-pressed-colored-opacity)
   }
 
   &:disabled,

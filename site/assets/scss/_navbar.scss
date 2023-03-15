@@ -1,7 +1,7 @@
 .bd-navbar {
   padding: .75rem 0;
   background-color: transparent;
-  box-shadow: 0 .5rem 1rem rgba($black, .15), inset 0 -1px 0 rgba($white, .15);
+  box-shadow: var(--#{$prefix}box-shadow);
 
   &::after {
     position: absolute;
@@ -9,8 +9,20 @@
     z-index: -1;
     display: block;
     content: "";
-    background-image: linear-gradient(rgba(var(--bd-violet-rgb), 1), rgba(var(--bd-violet-rgb), .95));
+    //background-image: linear-gradient(rgba(var(--#{$prefix}primary-rgb), 1), rgba(var(--#{$prefix}primary-rgb), .95));
   }
+  //padding: .75rem 0;
+  //background-color: transparent;
+  //box-shadow: 0 .5rem 1rem rgba($black, .15), inset 0 -1px 0 rgba($white, .15);
+  //
+  //&::after {
+  //  position: absolute;
+  //  inset: 0;
+  //  z-index: -1;
+  //  display: block;
+  //  content: "";
+  //  background-image: linear-gradient(rgba(var(--bd-violet-rgb), 1), rgba(var(--bd-violet-rgb), .95));
+  //}
 
   .bd-navbar-toggle {
     @include media-breakpoint-down(lg) {
@@ -38,7 +50,7 @@
   }
 
   .navbar-brand {
-    color: $white;
+    //color: $white;
     transition: .2s ease-in-out transform; // stylelint-disable-line property-disallowed-list
 
     &:hover {
@@ -50,16 +62,16 @@
   .nav-link {
     padding-right: $spacer * .25;
     padding-left: $spacer * .25;
-    color: rgba($white, .85);
+    //color: rgba($white, .85);
 
     &:hover,
     &:focus {
-      color: $white;
+      //color: $white;
     }
 
     &.active {
       font-weight: 600;
-      color: $white;
+      //color: $white;
     }
   }
 

@@ -43,6 +43,10 @@ const files = [
   {
     file: 'node_modules/@popperjs/core/dist/umd/popper.min.js',
     configPropertyName: 'popper_hash'
+  },
+  {
+    file: 'node_modules/@material/ripple/dist/mdc.ripple.min.js',
+    configPropertyName: 'mdc_ripple_hash'
   }
 ]
 
