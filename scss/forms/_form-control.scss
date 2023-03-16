@@ -1,6 +1,10 @@
 //
 // General form controls (plus a few specific high-level interventions)
 //
+// Define the variables for the form control focus state
+$form-control-border-color: #ccc !default;
+$form-control-box-shadow: inset 0 1px 1px rgb(3, 2, 2),
+  0 0 8px rgb(3, 3, 3) !default;
 
 .form-control {
   display: block;
@@ -34,8 +38,9 @@
   &:focus {
     color: $input-focus-color;
     background-color: $input-focus-bg;
-    border-color: $input-focus-border-color;
+    border-color: $form-control-border-color;
     outline: 0;
+    box-shadow: $form-control-box-shadow;
     @if $enable-shadows {
       @include box-shadow($input-box-shadow, $input-focus-box-shadow);
     } @else {
@@ -56,7 +61,11 @@
     // https://github.com/twbs/bootstrap/issues/23307
     // TODO: we can remove this workaround once https://bugs.webkit.org/show_bug.cgi?id=198959 is resolved
     // Multiply line-height by 1em if it has no unit
-    height: if(unit($input-line-height) == "", $input-line-height * 1em, $input-line-height);
+    height: if(
+      unit($input-line-height) == "",
+      $input-line-height * 1em,
+      $input-line-height
+    );
 
     // Android Chrome type="date" is taller than the other inputs
     // because of "margin: 1px 24px 1px 4px" inside the shadow DOM
@@ -209,6 +218,10 @@ textarea {
     @include border-radius($input-border-radius);
   }
 
-  &.form-control-sm { height: $input-height-sm; }
-  &.form-control-lg { height: $input-height-lg; }
+  &.form-control-sm {
+    height: $input-height-sm;
+  }
+  &.form-control-lg {
+    height: $input-height-lg;
+  }
 }
