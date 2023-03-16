@@ -1,6 +1,10 @@
 //
 // General form controls (plus a few specific high-level interventions)
 //
+// Define the variables for the form control focus state
+$form-control-border-color: #ccc !default;
+$form-control-box-shadow: inset 0 1px 1px rgb(3, 2, 2),
+  0 0 8px rgb(3, 3, 3) !default;
 
 .form-control {
   display: block;
@@ -32,10 +36,11 @@
 
   // Customize the `:focus` state to imitate native WebKit styles.
   &:focus {
-    color: $input-focus-color;
+      color: $input-focus-color;
     background-color: $input-focus-bg;
-    border-color: $input-focus-border-color;
+    border-color: $form-control-border-color;
     outline: 0;
+    box-shadow: $form-control-box-shadow;
     @if $enable-shadows {
       @include box-shadow($input-box-shadow, $input-focus-box-shadow);
     } @else {
