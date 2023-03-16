@@ -99,7 +99,7 @@
 
 .animate-img {
   > img {
-    transition: .2s ease-in-out transform; // stylelint-disable-line property-disallowed-list
+    @include transition(transform .2s ease-in-out);
   }
 
   &:hover > img {
