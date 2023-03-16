@@ -1,6 +1,6 @@
 /*!
   * Bootstrap v5.3.0-alpha1 (https://getbootstrap.com/)
-  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -2546,6 +2546,7 @@
           return;
         }
         if (this._config.keyboard) {
+          event.preventDefault();
           this.hide();
           return;
         }
@@ -2846,11 +2847,11 @@
         if (event.key !== ESCAPE_KEY) {
           return;
         }
-        if (this._config.keyboard) {
-          this.hide();
+        if (!this._config.keyboard) {
+          EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED);
           return;
         }
-        EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED);
+        this.hide();
       });
     }
 
@@ -4177,7 +4178,7 @@
       }
       this._setAttributeIfNotExists(target, 'role', 'tabpanel');
       if (child.id) {
-        this._setAttributeIfNotExists(target, 'aria-labelledby', `${child.id}`);
+        this._setAttributeIfNotExists(target, 'aria-labelledby', `#${child.id}`);
       }
     }
     _toggleDropDown(element, open) {
