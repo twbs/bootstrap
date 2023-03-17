@@ -1,0 +1,82 @@
+//:root {
+//--circle-top-right-out: circle(0% at top right);
+//}
+//@keyframes in-circle-swoop {
+//  from {
+//    clip-path: circle(0% at top right);
+//  }
+//  to {
+//    clip-path: circle(150% at top right);
+//  }
+//}
+//
+//.app-main {
+//  position: fixed!important;
+//  z-index: -1!important;
+//  pointer-events: none!important;
+//  contain: size style!important;
+//  overflow: clip!important
+//}
+
+
+//@keyframes swoopy {
+//  from {
+//    clip-path: var(--circle-top-right-out);
+//  }
+//  to {
+//    clip-path: var(--circle-bottom-right-in);
+//  }
+//}
+//
+//[transition-style="in:custom:swoopy"] {
+//  --transition__duration: 10s;
+//  animation-name: swoopy;
+//}
+
+//
+////
+////@keyframes swoopy {
+////  from {
+////    clip-path: circle(0% at top right);
+////  }
+////  to {
+////    clip-path: circle(150% at top right);
+////  }
+////}
+//
+@supports (clip-path: inset(50%)) {
+  [data-bs-theme='light'], [data-bs-theme='dark']  {
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-color: inherit;
+    border: inherit;
+    position: absolute;
+    bottom: -10px;
+    left: calc(50% - 10px);
+    clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+    transform: rotate(-45deg);
+    border-radius: 0 0 0 0.25em;
+  }
+}
+
+.app-transition {
+  //.dark-mode {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  mix-blend-mode: difference;
+
+  //}
+  //transition-duration: 5s;
+  //animation-name: in-circle-swoop;
+}
+
+//[data-bs-theme='light'], .app-transition {
+//  transition-duration: 1.25s;
+//  transition: 1.25s color ease-in-out, cubic-bezier(.30, 1, .25, 1);
+//  animation-name: out-circle-swoop;
+//}

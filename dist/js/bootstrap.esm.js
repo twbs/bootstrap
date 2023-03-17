@@ -486,6 +486,8 @@ function hydrateObj(obj, meta = {}) {
  */
 
 const elementMap = new Map();
+
+// eslint-disable-next-line import/no-anonymous-default-export
 const Data = {
   set(element, key, instance) {
     if (!elementMap.has(element)) {
@@ -4154,7 +4156,7 @@ class Tab extends BaseComponent {
     }
     this._setAttributeIfNotExists(target, 'role', 'tabpanel');
     if (child.id) {
-      this._setAttributeIfNotExists(target, 'aria-labelledby', `#${child.id}`);
+      this._setAttributeIfNotExists(target, 'aria-labelledby', `${child.id}`);
     }
   }
   _toggleDropDown(element, open) {

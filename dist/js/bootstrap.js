@@ -509,6 +509,8 @@
    */
 
   const elementMap = new Map();
+
+  // eslint-disable-next-line import/no-anonymous-default-export
   const Data = {
     set(element, key, instance) {
       if (!elementMap.has(element)) {
@@ -4177,7 +4179,7 @@
       }
       this._setAttributeIfNotExists(target, 'role', 'tabpanel');
       if (child.id) {
-        this._setAttributeIfNotExists(target, 'aria-labelledby', `#${child.id}`);
+        this._setAttributeIfNotExists(target, 'aria-labelledby', `${child.id}`);
       }
     }
     _toggleDropDown(element, open) {
@@ -4446,6 +4448,8 @@
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
+
+  // eslint-disable-next-line import/no-anonymous-default-export
   const index_umd = {
     Alert,
     Button,

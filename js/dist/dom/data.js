@@ -21,6 +21,8 @@
    */
 
   const elementMap = new Map();
+
+  // eslint-disable-next-line import/no-anonymous-default-export
   const data = {
     set(element, key, instance) {
       if (!elementMap.has(element)) {
