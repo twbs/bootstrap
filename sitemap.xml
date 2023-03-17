@@ -25,6 +25,9 @@
     <loc>https://getbootstrap.com/docs/5.3/components/badge/</loc>
   </url>
   <url>
+    <loc>https://getbootstrap.com/docs/5.3/examples/badges/</loc>
+  </url>
+  <url>
     <loc>https://getbootstrap.com/docs/5.3/getting-started/best-practices/</loc>
   </url>
   <url>
@@ -55,6 +58,9 @@
     <loc>https://getbootstrap.com/docs/5.3/components/breadcrumb/</loc>
   </url>
   <url>
+    <loc>https://getbootstrap.com/docs/5.3/examples/breadcrumbs/</loc>
+  </url>
+  <url>
     <loc>https://getbootstrap.com/docs/5.3/layout/breakpoints/</loc>
   </url>
   <url>
@@ -65,6 +71,9 @@
   </url>
   <url>
     <loc>https://getbootstrap.com/docs/5.3/components/buttons/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.3/examples/buttons/</loc>
   </url>
   <url>
     <loc>https://getbootstrap.com/docs/5.3/components/card/</loc>
@@ -172,6 +181,9 @@
     <loc>https://getbootstrap.com/docs/5.3/forms/floating-labels/</loc>
   </url>
   <url>
+    <loc>https://getbootstrap.com/docs/5.3/helpers/focus-ring/</loc>
+  </url>
+  <url>
     <loc>https://getbootstrap.com/docs/5.3/examples/footers/</loc>
   </url>
   <url>
@@ -199,6 +211,9 @@
     <loc>https://getbootstrap.com/docs/5.3/examples/heroes/</loc>
   </url>
   <url>
+    <loc>https://getbootstrap.com/docs/5.3/helpers/icon-link/</loc>
+  </url>
+  <url>
     <loc>https://getbootstrap.com/docs/5.3/extend/icons/</loc>
   </url>
   <url>
@@ -217,10 +232,16 @@
     <loc>https://getbootstrap.com/docs/5.3/examples/jumbotron/</loc>
   </url>
   <url>
+    <loc>https://getbootstrap.com/docs/5.3/examples/jumbotrons/</loc>
+  </url>
+  <url>
     <loc>https://getbootstrap.com/docs/5.3/forms/layout/</loc>
   </url>
   <url>
     <loc>https://getbootstrap.com/docs/5.3/about/license/</loc>
+  </url>
+  <url>
+    <loc>https://getbootstrap.com/docs/5.3/utilities/link/</loc>
   </url>
   <url>
     <loc>https://getbootstrap.com/docs/5.3/components/list-group/</loc>

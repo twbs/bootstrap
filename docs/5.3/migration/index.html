@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Track and review changes to the Bootstrap source files, documentation, and components to help you migrate from v4 to v5.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.108.0">
+<meta name="generator" content="Hugo 0.111.3">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -36,16 +36,16 @@
 <meta name="twitter:creator" content="@getbootstrap">
 <meta name="twitter:title" content="Migrating to v5">
 <meta name="twitter:description" content="Track and review changes to the Bootstrap source files, documentation, and components to help you migrate from v4 to v5.">
-<meta name="twitter:image" content="/docs/5.3/assets/brand/bootstrap-social.png">
+<meta name="twitter:image" content="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-social.png">
 
 <meta property="og:url" content="https://getbootstrap.com/docs/5.3/migration/">
 <meta property="og:title" content="Migrating to v5">
 <meta property="og:description" content="Track and review changes to the Bootstrap source files, documentation, and components to help you migrate from v4 to v5.">
 <meta property="og:type" content="article">
+<meta property="og:image" content="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-social.png">
 <meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1000">
-<meta property="og:image:height" content="500">
-<meta property="og:image" content="/docs/5.3/assets/brand/bootstrap-social.png">
+<meta property="og:image:width" content="2000">
+<meta property="og:image:height" content="1000">
 
 <script defer src="https://cdn.usefathom.com/script.js" data-site="ITUSEYJG"></script>
 
@@ -59,7 +59,7 @@
 
 
   </head>
-  <body>
+  <body data-bs-spy="scroll" data-bs-target="#TableOfContents">
     <div class="skippy visually-hidden-focusable overflow-hidden">
   <div class="container-xl">
     <a class="d-inline-flex p-2 m-1" href="#content">Skip to main content</a>
@@ -68,8 +68,8 @@
 </div>
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-  <symbol id="arrow-right-short" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+  <symbol id="arrow-right" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
   </symbol>
   <symbol id="book-half" viewBox="0 0 16 16">
     <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
@@ -273,27 +273,28 @@
                     type="button"
                     aria-expanded="false"
                     data-bs-toggle="dropdown"
-                    data-bs-display="static">
+                    data-bs-display="static"
+                    aria-label="Toggle theme (auto)">
               <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
-              <span class="d-lg-none ms-2">Toggle theme</span>
+              <span class="d-lg-none ms-2" id="bd-theme-text">Toggle theme</span>
             </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme" style="--bs-dropdown-min-width: 8rem;">
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
               <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
                   <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
                   Light
                   <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
                 </button>
               </li>
               <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
                   <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
                   Dark
                   <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
                 </button>
               </li>
               <li>
-                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto">
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
                   <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
                   Auto
                   <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
@@ -449,6 +450,8 @@
             <li><a href="/docs/5.3/helpers/clearfix/" class="bd-links-link d-inline-block rounded">Clearfix</a></li>
             <li><a href="/docs/5.3/helpers/color-background/" class="bd-links-link d-inline-block rounded">Color &amp; background</a></li>
             <li><a href="/docs/5.3/helpers/colored-links/" class="bd-links-link d-inline-block rounded">Colored links</a></li>
+            <li><a href="/docs/5.3/helpers/focus-ring/" class="bd-links-link d-inline-block rounded">Focus ring</a></li>
+            <li><a href="/docs/5.3/helpers/icon-link/" class="bd-links-link d-inline-block rounded">Icon link</a></li>
             <li><a href="/docs/5.3/helpers/position/" class="bd-links-link d-inline-block rounded">Position</a></li>
             <li><a href="/docs/5.3/helpers/ratio/" class="bd-links-link d-inline-block rounded">Ratio</a></li>
             <li><a href="/docs/5.3/helpers/stacks/" class="bd-links-link d-inline-block rounded">Stacks</a></li>
@@ -473,6 +476,7 @@
             <li><a href="/docs/5.3/utilities/flex/" class="bd-links-link d-inline-block rounded">Flex</a></li>
             <li><a href="/docs/5.3/utilities/float/" class="bd-links-link d-inline-block rounded">Float</a></li>
             <li><a href="/docs/5.3/utilities/interactions/" class="bd-links-link d-inline-block rounded">Interactions</a></li>
+            <li><a href="/docs/5.3/utilities/link/" class="bd-links-link d-inline-block rounded">Link</a></li>
             <li><a href="/docs/5.3/utilities/object-fit/" class="bd-links-link d-inline-block rounded">Object fit</a></li>
             <li><a href="/docs/5.3/utilities/opacity/" class="bd-links-link d-inline-block rounded">Opacity</a></li>
             <li><a href="/docs/5.3/utilities/overflow/" class="bd-links-link d-inline-block rounded">Overflow</a></li>
@@ -527,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha1/site/content/docs/5.3/migration.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha2/site/content/docs/5.3/migration.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -539,31 +543,44 @@
       </div>
 
       
-        <div class="bd-toc mt-3 mb-5 my-lg-0 ps-xl-3 mb-lg-5 text-body-secondary">
+        <div class="bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 text-body-secondary">
           <button class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
             On this page
             <svg class="bi d-md-none ms-2" aria-hidden="true"><use xlink:href="#chevron-expand"></use></svg>
           </button>
-          <strong class="d-none d-md-block h6 my-2">On this page</strong>
-          <hr class="d-none d-md-block my-2">
+          <strong class="d-none d-md-block h6 my-2 ms-3">On this page</strong>
+          <hr class="d-none d-md-block my-2 ms-3">
           <div class="collapse bd-toc-collapse" id="tocContents">
             <nav id="TableOfContents">
   <ul>
-    <li><a href="#v530">v5.3.0</a>
+    <li><a href="#v530-alpha2">v5.3.0-alpha2</a>
       <ul>
-        <li><a href="#color-modes">Color modes!</a></li>
         <li><a href="#css-variables">CSS variables</a></li>
-        <li><a href="#components">Components</a>
+        <li><a href="#color-modes">Color modes</a></li>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#components">Components</a></li>
+        <li><a href="#helpers">Helpers</a></li>
+        <li><a href="#utilities">Utilities</a></li>
+        <li><a href="#docs">Docs</a></li>
+        <li><a href="#tooling">Tooling</a></li>
+      </ul>
+    </li>
+    <li><a href="#v530-alpha1">v5.3.0-alpha1</a>
+      <ul>
+        <li><a href="#color-modes-1">Color modes!</a></li>
+        <li><a href="#css-variables-1">CSS variables</a></li>
+        <li><a href="#components-1">Components</a>
           <ul>
             <li><a href="#alert">Alert</a></li>
             <li><a href="#list-group">List group</a></li>
+            <li><a href="#dropdowns">Dropdowns</a></li>
             <li><a href="#close-button">Close button</a></li>
             <li><a href="#navbar">Navbar</a></li>
           </ul>
         </li>
         <li><a href="#progress-bars">Progress bars</a></li>
         <li><a href="#forms">Forms</a></li>
-        <li><a href="#utilities">Utilities</a></li>
+        <li><a href="#utilities-1">Utilities</a></li>
       </ul>
     </li>
     <li><a href="#v520">v5.2.0</a>
@@ -585,7 +602,7 @@
     <li><a href="#content-reboot-etc">Content, Reboot, etc</a></li>
     <li><a href="#rtl">RTL</a></li>
     <li><a href="#forms-1">Forms</a></li>
-    <li><a href="#components-1">Components</a>
+    <li><a href="#components-2">Components</a>
       <ul>
         <li><a href="#accordion">Accordion</a></li>
         <li><a href="#alerts">Alerts</a></li>
@@ -596,7 +613,7 @@
         <li><a href="#carousel">Carousel</a></li>
         <li><a href="#close-button-1">Close button</a></li>
         <li><a href="#collapse">Collapse</a></li>
-        <li><a href="#dropdowns">Dropdowns</a></li>
+        <li><a href="#dropdowns-1">Dropdowns</a></li>
         <li><a href="#jumbotron">Jumbotron</a></li>
         <li><a href="#list-group-1">List group</a></li>
         <li><a href="#navs-and-tabs">Navs and tabs</a></li>
@@ -609,8 +626,8 @@
         <li><a href="#tooltips">Tooltips</a></li>
       </ul>
     </li>
-    <li><a href="#utilities-1">Utilities</a></li>
-    <li><a href="#helpers">Helpers</a></li>
+    <li><a href="#utilities-2">Utilities</a></li>
+    <li><a href="#helpers-1">Helpers</a></li>
     <li><a href="#javascript">JavaScript</a></li>
   </ul>
 </nav>
@@ -621,17 +638,122 @@
       <div class="bd-content ps-lg-2">
         
 
-        <h2 id="v530">v5.3.0 <a class="anchor-link" href="#v530" aria-label="Link to this section: v5.3.0"></a></h2>
+        <h2 id="v530-alpha2">v5.3.0-alpha2 <a class="anchor-link" href="#v530-alpha2" aria-label="Link to this section: v5.3.0-alpha2"></a></h2>
+<p>If you&rsquo;re migrating from our previous alpha release of v5.3.0, please reviewing the changes listed below.</p>
+<h3 id="css-variables">CSS variables <a class="anchor-link" href="#css-variables" aria-label="Link to this section: CSS variables"></a></h3>
+<ul>
+<li>Removed several duplicate and unused root CSS variables.</li>
+</ul>
+<h3 id="color-modes">Color modes <a class="anchor-link" href="#color-modes" aria-label="Link to this section: Color modes"></a></h3>
+<ul>
+<li>
+<p>Dark mode colors are now derived from our theme colors (e.g., <code>$primary</code>) in Sass, rather than color specific tints or shades (e.g., <code>$blue-300</code>). This allows for a more automated dark mode when customizing the default theme colors.</p>
+</li>
+<li>
+<p>Added Sass maps for generating theme colors for dark mode text, subtle background, and subtle border.</p>
+</li>
+<li>
+<p><a href="/docs/5.3/examples/#snippets">Snippet examples</a> are now ready for dark mode with updated markup and reduced custom styles.</p>
+</li>
+<li>
+<p>Added <code>color-scheme: dark</code> to dark mode CSS to change OS level controls like scrollbars</p>
+</li>
+<li>
+<p>Form validation <code>border-color</code> and text <code>color</code> states now respond to dark mode, thanks to new Sass and CSS variables.</p>
+</li>
+<li>
+<p>Dropped recently added form control background CSS variables and reassigned the Sass variables to use CSS variables instead. This simplifies the styling across color modes and avoids an issue where form controls in dark mode wouldn&rsquo;t update properly.</p>
+</li>
+<li>
+<p>Our <code>box-shadow</code>s will once again always stay dark instead of inverting to white when in dark mode.</p>
+</li>
+<li>
+<p>Improved HTML and JavaScript for our color mode toggle script. The selector for changing the active SVG has been improved, and the markup made more accessible with ARIA attributes.</p>
+</li>
+<li>
+<p>Improved docs code syntax colors and more across light and dark modes.</p>
+</li>
+</ul>
+<h3 id="typography">Typography <a class="anchor-link" href="#typography" aria-label="Link to this section: Typography"></a></h3>
+<ul>
+<li>We no longer set a color for <code>$headings-color-dark</code> or <code>--bs-heading-color</code> for dark mode. To avoid several problems of headings within components appearing the wrong color, we&rsquo;ve set the Sass variable to <code>null</code> and added a <code>null</code> check like we use on the default light mode.</li>
+</ul>
+<h3 id="components">Components <a class="anchor-link" href="#components" aria-label="Link to this section: Components"></a></h3>
+<ul>
+<li>
+<p>Cards now have a <code>color</code> set on them to improve rendering across color modes.</p>
+</li>
+<li>
+<p>Added new <code>.nav-underline</code> variant for our navigation with a simpler bottom border under the active nav link. <a href="/docs/5.3/components/navs-tabs/#underline">See the docs for an example.</a></p>
+</li>
+<li>
+<p>Navs now have new <code>:focus-visible</code> styles that better match our custom button focus styles.</p>
+</li>
+</ul>
+<h3 id="helpers">Helpers <a class="anchor-link" href="#helpers" aria-label="Link to this section: Helpers"></a></h3>
+<ul>
+<li>
+<p>Added new <code>.icon-link</code> helper to quickly place and align Bootstrap Icons alongside a textual link. Icon links support our new link utilities, too.</p>
+</li>
+<li>
+<p>Added new focus ring helper for removing the default <code>outline</code> and setting a custom <code>box-shadow</code> focus ring.</p>
+</li>
+</ul>
+<h3 id="utilities">Utilities <a class="anchor-link" href="#utilities" aria-label="Link to this section: Utilities"></a></h3>
+<ul>
+<li>
+<p>Renamed Sass and CSS variables <code>${color}-text</code> to <code>${color}-text-emphasis</code> to match their associated utilities.</p>
+</li>
+<li>
+<p>Added new <code>.link-body-emphasis</code> helper alongside our <a href="/docs/5.3/helpers/colored-links/">colored links</a>. This creates a colored link using our color mode responsive emphasis color.</p>
+</li>
+<li>
+<p>Added new link utilities for link color opacity, underline offset, underline color, and underline opacity. <a href="/docs/5.3/utilities/link/">Explore the new links utilities.</a></p>
+</li>
+<li>
+<p>CSS variable based <code>border-width</code> utilities have been reverted to set their property directly (as was done prior to v5.2.0). This avoids inheritance issues across nested elements, including tables.</p>
+</li>
+<li>
+<p>Added new <code>.border-black</code> utility to match our <code>.text-black</code> and <code>.bg-black</code> utilities.</p>
+</li>
+<li>
+<p><span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> Deprecated the <code>.text-muted</code> utility and <code>$text-muted</code> Sass variable. It&rsquo;s been replaced by <code>.text-body-secondary</code> and <code>$body-secondary-color</code>.</p>
+</li>
+</ul>
+<h3 id="docs">Docs <a class="anchor-link" href="#docs" aria-label="Link to this section: Docs"></a></h3>
+<ul>
+<li>
+<p>Examples are now displayed with the appropriate light or dark color mode as dictated by the setting in our docs. Each example has an individual color mode picker.</p>
+</li>
+<li>
+<p>Improved included JavaScript for live Toast demo.</p>
+</li>
+<li>
+<p>Added <code>twbs/examples</code> repo contents to the top of the Examples page.</p>
+</li>
+</ul>
+<h3 id="tooling">Tooling <a class="anchor-link" href="#tooling" aria-label="Link to this section: Tooling"></a></h3>
+<ul>
+<li>
+<p>Added SCSS testing via True to help test our utilities API and other customizations.</p>
+</li>
+<li>
+<p>Replaced instances of our bootstrap-npm-starter project with the newer and more complete <a href="https://github.com/twbs/examples">twbs/examples repo</a>.</p>
+</li>
+</ul>
 <hr class="mb-4">
-<h3 id="color-modes">Color modes! <a class="anchor-link" href="#color-modes" aria-label="Link to this section: Color modes!"></a></h3>
+<p>For a complete list of changes, <a href="https://github.com/orgs/twbs/projects/13">see the v5.3.0-alpha2 project on GitHub</a>.</p>
+<h2 id="v530-alpha1">v5.3.0-alpha1 <a class="anchor-link" href="#v530-alpha1" aria-label="Link to this section: v5.3.0-alpha1"></a></h2>
+<hr class="mb-4">
+<h3 id="color-modes-1">Color modes! <a class="anchor-link" href="#color-modes-1" aria-label="Link to this section: Color modes!"></a></h3>
 <p>Learn more by reading the new <a href="/docs/5.3/customize/color-modes/">color modes documentation</a>.</p>
 <ul>
 <li>
 <p><strong>Global support for light (default) and dark color modes.</strong> Set color mode globally on the <code>:root</code> element, on groups of elements and components with a wrapper class, or directly on components, with <code>data-bs-theme=&quot;light|dark&quot;</code>. Also included is a new <code>color-mode()</code> mixin that can output a ruleset with the <code>data-bs-theme</code> selector or a media query, depending on your preference.</p>
-<p><span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span>  Color modes replace dark variants for components, so  <code>.btn-close-white</code>, <code>.carousel-dark</code>, <code>.dropdown-menu-dark</code>, and <code>.navbar-dark</code> are deprecated.</p>
+<p><span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> Color modes replace dark variants for components, so  <code>.btn-close-white</code>, <code>.carousel-dark</code>, <code>.dropdown-menu-dark</code>, and <code>.navbar-dark</code> are deprecated.</p>
 </li>
 <li>
-<p><strong>New extended color system.</strong> We&rsquo;ve added new theme colors (but not in <code>$theme-colors)</code>) for a more nuanced, system-wide color palette with new secondary, tertiary, and emphasis colors for <code>color</code> and <code>background-color</code>. These new colors are available as Sass variables, CSS variables, and utilities.</p>
+<p><strong>New extended color system.</strong> We&rsquo;ve added new theme colors (but not in <code>$theme-colors</code>) for a more nuanced, system-wide color palette with new secondary, tertiary, and emphasis colors for <code>color</code> and <code>background-color</code>. These new colors are available as Sass variables, CSS variables, and utilities.</p>
 </li>
 <li>
 <p>We&rsquo;ve also expanded our theme color Sass variables, CSS variables, and utilities to include text emphasis, subtle background colors, and subtle border colors. These are available as Sass variables, CSS variables, and utilities.</p>
@@ -652,13 +774,13 @@
 </span></span><span class="line"><span class="cl"> @import &#34;utilities&#34;;
 </span></span></code></pre></div></li>
 </ul>
-<h3 id="css-variables">CSS variables <a class="anchor-link" href="#css-variables" aria-label="Link to this section: CSS variables"></a></h3>
+<h3 id="css-variables-1">CSS variables <a class="anchor-link" href="#css-variables-1" aria-label="Link to this section: CSS variables"></a></h3>
 <ul>
 <li>
 <p>Restores CSS variables for breakpoints, though we don&rsquo;t use them in our media queries as they&rsquo;re not supported. However, these can be useful in JS-specific contexts.</p>
 </li>
 <li>
-<p>Per the color modes update, we&rsquo;ve added new utilities for new Sass CSS variables <code>secondary</code> and <code>tertiary</code> text and background colors, plus <code>{color}-bg-subtle</code>, <code>{color}-border-subtle</code>, and <code>{color}-text</code> for our theme colors. These new colors are available through Sass and CSS variables (but not our color maps) with the express goal of making it easier to customize across multiple colors modes like light and dark.</p>
+<p>Per the color modes update, we&rsquo;ve added new utilities for new Sass CSS variables <code>secondary</code> and <code>tertiary</code> text and background colors, plus <code>{color}-bg-subtle</code>, <code>{color}-border-subtle</code>, and <code>{color}-text-emphasis</code> for our theme colors. These new colors are available through Sass and CSS variables (but not our color maps) with the express goal of making it easier to customize across multiple colors modes like light and dark.</p>
 </li>
 <li>
 <p>Adds additional variables for alerts, <code>.btn-close</code>, and <code>.offcanvas</code>.</p>
@@ -676,7 +798,7 @@
 <p>Adds new root CSS variables for our <code>box-shadow</code>s, including <code>--bs-box-shadow</code>, <code>--bs-box-shadow-sm</code>, <code>--bs-box-shadow-lg</code>, and <code>--bs-box-shadow-inset</code>.</p>
 </li>
 </ul>
-<h3 id="components">Components <a class="anchor-link" href="#components" aria-label="Link to this section: Components"></a></h3>
+<h3 id="components-1">Components <a class="anchor-link" href="#components-1" aria-label="Link to this section: Components"></a></h3>
 <h4 id="alert">Alert <a class="anchor-link" href="#alert" aria-label="Link to this section: Alert"></a></h4>
 <ul>
 <li>
@@ -694,6 +816,10 @@
 <li>
 <p><span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The <code>.list-group-variant()</code> mixin is now deprecated. We now <a href="/docs/5.3/components/list-group/#sass-loop">use the Sass loop</a> directly to modify the component&rsquo;s default CSS variables for each variant.</p>
 </li>
+</ul>
+<h4 id="dropdowns">Dropdowns <a class="anchor-link" href="#dropdowns" aria-label="Link to this section: Dropdowns"></a></h4>
+<ul>
+<li><span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The <code>.dropdown-menu-dark</code> class has been deprecated and replaced with <code>data-bs-theme=&quot;dark&quot;</code> on the dropdown or any parent element. <a href="/docs/5.3/components/dropdowns/#dark-dropdowns">See the docs for an example.</a></li>
 </ul>
 <h4 id="close-button">Close button <a class="anchor-link" href="#close-button" aria-label="Link to this section: Close button"></a></h4>
 <ul>
@@ -750,11 +876,11 @@
 <p>Fixed display of date and time inputs in WebKit based browsers.</p>
 </li>
 </ul>
-<h3 id="utilities">Utilities <a class="anchor-link" href="#utilities" aria-label="Link to this section: Utilities"></a></h3>
+<h3 id="utilities-1">Utilities <a class="anchor-link" href="#utilities-1" aria-label="Link to this section: Utilities"></a></h3>
 <ul>
 <li>
-<p><span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> <code>.text-muted</code> will be be replaced by <code>.text-body-secondary</code> in v6.</p>
-<p>With the addition of the expanded theme colors and variables, the <code>.text-muted</code> variables and utility have been deprecated with v5.3.0. Its default value has also has been reassigned to the new <code>--bs-secondary-color</code> CSS variable to better support color modes. It will be removed in v6.0.0.</p>
+<p><span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> <code>.text-muted</code> will be replaced by <code>.text-body-secondary</code> in v6.</p>
+<p>With the addition of the expanded theme colors and variables, the <code>.text-muted</code> variables and utility have been deprecated with v5.3.0. Its default value has also been reassigned to the new <code>--bs-secondary-color</code> CSS variable to better support color modes. It will be removed in v6.0.0.</p>
 </li>
 <li>
 <p>Adds new <code>.overflow-x</code>, <code>.overflow-y</code>, and several <code>.object-fit-*</code> utilities. <em>The object-fit property is used to specify how an <code>&lt;img&gt;</code> or <code>&lt;video&gt;</code> should be resized to fit its container, giving us a responsive alternative to using <code>background-image</code> for a resizable fill/fit image.</em></p>
@@ -1113,7 +1239,7 @@
 </li>
 </ul>
 <hr class="my-5">
-<h2 id="components-1">Components <a class="anchor-link" href="#components-1" aria-label="Link to this section: Components"></a></h2>
+<h2 id="components-2">Components <a class="anchor-link" href="#components-2" aria-label="Link to this section: Components"></a></h2>
 <ul>
 <li>Unified <code>padding</code> values for alerts, breadcrumbs, cards, dropdowns, list groups, modals, popovers, and tooltips to be based on our <code>$spacer</code> variable. <a href="https://github.com/twbs/bootstrap/pull/30564">See #30564</a>.</li>
 </ul>
@@ -1209,7 +1335,7 @@
 <ul>
 <li>Removed scroll anchoring for accordions.</li>
 </ul>
-<h3 id="dropdowns">Dropdowns <a class="anchor-link" href="#dropdowns" aria-label="Link to this section: Dropdowns"></a></h3>
+<h3 id="dropdowns-1">Dropdowns <a class="anchor-link" href="#dropdowns-1" aria-label="Link to this section: Dropdowns"></a></h3>
 <ul>
 <li>
 <p>Added new <code>.dropdown-menu-dark</code> variant and associated variables for on-demand dark dropdowns.</p>
@@ -1308,7 +1434,7 @@
 <p><span class="badge bg-danger">Breaking</span> Renamed <code>whiteList</code> option to <code>allowList</code>.</p>
 </li>
 </ul>
-<h2 id="utilities-1">Utilities <a class="anchor-link" href="#utilities-1" aria-label="Link to this section: Utilities"></a></h2>
+<h2 id="utilities-2">Utilities <a class="anchor-link" href="#utilities-2" aria-label="Link to this section: Utilities"></a></h2>
 <ul>
 <li>
 <p><span class="badge bg-danger">Breaking</span> Renamed several utilities to use logical property names instead of directional names with the addition of RTL support:</p>
@@ -1319,7 +1445,7 @@
 <li>Renamed <code>.rounded-left</code> and <code>.rounded-right</code> to <code>.rounded-start</code> and <code>.rounded-end</code>.</li>
 <li>Renamed <code>.ml-*</code> and <code>.mr-*</code> to <code>.ms-*</code> and <code>.me-*</code>.</li>
 <li>Renamed <code>.pl-*</code> and <code>.pr-*</code> to <code>.ps-*</code> and <code>.pe-*</code>.</li>
-<li>Renamed <code>.text-left</code> and <code>.text-right</code> to <code>.text-start</code> and <code>.text-end</code>.</li>
+<li>Renamed <code>.text-*-left</code> and <code>.text-*-right</code> to <code>.text-*-start</code> and <code>.text-*-end</code>.</li>
 </ul>
 </li>
 <li>
@@ -1368,7 +1494,7 @@
 <p>Extended the <code>.visually-hidden-focusable</code> helper to also work on containers, using <code>:focus-within</code>.</p>
 </li>
 </ul>
-<h2 id="helpers">Helpers <a class="anchor-link" href="#helpers" aria-label="Link to this section: Helpers"></a></h2>
+<h2 id="helpers-1">Helpers <a class="anchor-link" href="#helpers-1" aria-label="Link to this section: Helpers"></a></h2>
 <ul>
 <li>
 <p><span class="badge bg-danger">Breaking</span> <strong>Responsive embed helpers have been renamed to <a href="/docs/5.3/helpers/ratio/">ratio helpers</a></strong> with new class names and improved behaviors, as well as a helpful CSS variable.</p>
@@ -1424,14 +1550,14 @@
   <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
     <div class="row">
       <div class="col-lg-3 mb-3">
-        <a class="d-inline-flex align-items-center mb-2 text-body-secondary text-decoration-none" href="/" aria-label="Bootstrap">
+        <a class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="/" aria-label="Bootstrap">
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="d-block me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"/></svg>
           <span class="fs-5">Bootstrap</span>
         </a>
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha1.</li>
+          <li class="mb-2">Currently v5.3.0-alpha2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1463,7 +1589,7 @@
           <li class="mb-2"><a href="https://github.com/twbs/bootstrap/tree/v4-dev">Bootstrap 4</a></li>
           <li class="mb-2"><a href="https://github.com/twbs/icons">Icons</a></li>
           <li class="mb-2"><a href="https://github.com/twbs/rfs">RFS</a></li>
-          <li class="mb-2"><a href="https://github.com/twbs/bootstrap-npm-starter">npm starter</a></li>
+          <li class="mb-2"><a href="https://github.com/twbs/examples/">Examples repo</a></li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 mb-3">
@@ -1480,7 +1606,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -1508,10 +1634,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha1\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha2\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha1\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha2\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 
@@ -1521,7 +1647,7 @@ ${htmlSnippet.replace(/^/gm, '    ')}
   </body>
 </html>`
 
-    const jsSnippetContent = jsSnippet ? '\/\/ NOTICE!!! Initially embedded in our docs this JavaScript\n\/\/ file contains elements that can help you create reproducible\n\/\/ use cases in StackBlitz for instance\.\n\/\/ In a real project please adapt this content to your needs\.\n\/\/ \u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\n\n\/\*!\n \* JavaScript for Bootstrap\u0027s docs \(https:\/\/getbootstrap\.com\/\)\n \* Copyright 2011\-2022 The Bootstrap Authors\n \* Copyright 2011\-2022 Twitter, Inc\.\n \* Licensed under the Creative Commons Attribution 3\.0 Unported License\.\n \* For details, see https:\/\/creativecommons\.org\/licenses\/by\/3\.0\/\.\n \*\/\n\n\/\* global bootstrap: false \*\/\n\n\(\(\) =\u003e \{\n  \u0027use strict\u0027\n\n  \/\/ \-\-\-\-\-\-\-\-\n  \/\/ Tooltips\n  \/\/ \-\-\-\-\-\-\-\-\n  \/\/ Instantiate all tooltips in a docs or StackBlitz page\n  document\.querySelectorAll\(\u0027\[data\-bs\-toggle=\u0022tooltip\u0022\]\u0027\)\n    \.forEach\(tooltip =\u003e \{\n      new bootstrap\.Tooltip\(tooltip\)\n    \}\)\n\n  \/\/ \-\-\-\-\-\-\-\-\n  \/\/ Popovers\n  \/\/ \-\-\-\-\-\-\-\-\n  \/\/ Instantiate all popovers in a docs or StackBlitz page\n  document\.querySelectorAll\(\u0027\[data\-bs\-toggle=\u0022popover\u0022\]\u0027\)\n    \.forEach\(popover =\u003e \{\n      new bootstrap\.Popover\(popover\)\n    \}\)\n\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Toasts\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Used by \u0027Placement\u0027 example in docs or StackBlitz\n  const toastPlacement = document\.getElementById\(\u0027toastPlacement\u0027\)\n  if \(toastPlacement\) \{\n    document\.getElementById\(\u0027selectToastPlacement\u0027\)\.addEventListener\(\u0027change\u0027, function \(\) \{\n      if \(!toastPlacement\.dataset\.originalClass\) \{\n        toastPlacement\.dataset\.originalClass = toastPlacement\.className\n      \}\n\n      toastPlacement\.className = `\$\{toastPlacement\.dataset\.originalClass\} \$\{this\.value\}`\n    \}\)\n  \}\n\n  \/\/ Instantiate all toasts in a docs page only\n  document\.querySelectorAll\(\u0027\.bd\-example \.toast\u0027\)\n    \.forEach\(toastNode =\u003e \{\n      const toast = new bootstrap\.Toast\(toastNode, \{\n        autohide: false\n      \}\)\n\n      toast\.show\(\)\n    \}\)\n\n  \/\/ Instantiate all toasts in a docs page only\n  const toastTrigger = document\.getElementById\(\u0027liveToastBtn\u0027\)\n  const toastLiveExample = document\.getElementById\(\u0027liveToast\u0027\)\n  if \(toastTrigger\) \{\n    toastTrigger\.addEventListener\(\u0027click\u0027, \(\) =\u003e \{\n      const toast = new bootstrap\.Toast\(toastLiveExample\)\n\n      toast\.show\(\)\n    \}\)\n  \}\n\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Alerts\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Used in \u0027Show live toast\u0027 example in docs or StackBlitz\n  const alertPlaceholder = document\.getElementById\(\u0027liveAlertPlaceholder\u0027\)\n  const alertTrigger = document\.getElementById\(\u0027liveAlertBtn\u0027\)\n\n  const appendAlert = \(message, type\) =\u003e \{\n    const wrapper = document\.createElement\(\u0027div\u0027\)\n    wrapper\.innerHTML = \[\n      `\u003cdiv class=\u0022alert alert\-\$\{type\} alert\-dismissible\u0022 role=\u0022alert\u0022\u003e`,\n      `   \u003cdiv\u003e\$\{message\}\u003c\/div\u003e`,\n      \u0027   \u003cbutton type=\u0022button\u0022 class=\u0022btn\-close\u0022 data\-bs\-dismiss=\u0022alert\u0022 aria\-label=\u0022Close\u0022\u003e\u003c\/button\u003e\u0027,\n      \u0027\u003c\/div\u003e\u0027\n    \]\.join\(\u0027\u0027\)\n\n    alertPlaceholder\.append\(wrapper\)\n  \}\n\n  if \(alertTrigger\) \{\n    alertTrigger\.addEventListener\(\u0027click\u0027, \(\) =\u003e \{\n      appendAlert\(\u0027Nice, you triggered this alert message!\u0027, \u0027success\u0027\)\n    \}\)\n  \}\n\n  \/\/ \-\-\-\-\-\-\-\-\n  \/\/ Carousels\n  \/\/ \-\-\-\-\-\-\-\-\n  \/\/ Instantiate all non\-autoplaying carousels in a docs or StackBlitz page\n  document\.querySelectorAll\(\u0027\.carousel:not\(\[data\-bs\-ride=\u0022carousel\u0022\]\)\u0027\)\n    \.forEach\(carousel =\u003e \{\n      bootstrap\.Carousel\.getOrCreateInstance\(carousel\)\n    \}\)\n\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Checks \u0026 Radios\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Indeterminate checkbox example in docs and StackBlitz\n  document\.querySelectorAll\(\u0027\.bd\-example\-indeterminate \[type=\u0022checkbox\u0022\]\u0027\)\n    \.forEach\(checkbox =\u003e \{\n      if \(checkbox\.id\.includes\(\u0027Indeterminate\u0027\)\) \{\n        checkbox\.indeterminate = true\n      \}\n    \}\)\n\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Links\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Disable empty links in docs examples only\n  document\.querySelectorAll\(\u0027\.bd\-content \[href=\u0022#\u0022\]\u0027\)\n    \.forEach\(link =\u003e \{\n      link\.addEventListener\(\u0027click\u0027, event =\u003e \{\n        event\.preventDefault\(\)\n      \}\)\n    \}\)\n\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Modal\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Modal \u0027Varying modal content\u0027 example in docs and StackBlitz\n  const exampleModal = document\.getElementById\(\u0027exampleModal\u0027\)\n  if \(exampleModal\) \{\n    exampleModal\.addEventListener\(\u0027show\.bs\.modal\u0027, event =\u003e \{\n      \/\/ Button that triggered the modal\n      const button = event\.relatedTarget\n      \/\/ Extract info from data\-bs\-\* attributes\n      const recipient = button\.getAttribute\(\u0027data\-bs\-whatever\u0027\)\n\n      \/\/ Update the modal\u0027s content\.\n      const modalTitle = exampleModal\.querySelector\(\u0027\.modal\-title\u0027\)\n      const modalBodyInput = exampleModal\.querySelector\(\u0027\.modal\-body input\u0027\)\n\n      modalTitle\.textContent = `New message to \$\{recipient\}`\n      modalBodyInput\.value = recipient\n    \}\)\n  \}\n\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Offcanvas\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ \u0027Offcanvas components\u0027 example in docs only\n  const myOffcanvas = document\.querySelectorAll\(\u0027\.bd\-example\-offcanvas \.offcanvas\u0027\)\n  if \(myOffcanvas\) \{\n    myOffcanvas\.forEach\(offcanvas =\u003e \{\n      offcanvas\.addEventListener\(\u0027show\.bs\.offcanvas\u0027, event =\u003e \{\n        event\.preventDefault\(\)\n      \}, false\)\n    \}\)\n  \}\n\}\)\(\)\n' : null
+    const jsSnippetContent = jsSnippet ? '\/\/ NOTICE!!! Initially embedded in our docs this JavaScript\n\/\/ file contains elements that can help you create reproducible\n\/\/ use cases in StackBlitz for instance\.\n\/\/ In a real project please adapt this content to your needs\.\n\/\/ \u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\n\n\/\*!\n \* JavaScript for Bootstrap\u0027s docs \(https:\/\/getbootstrap\.com\/\)\n \* Copyright 2011\-2023 The Bootstrap Authors\n \* Licensed under the Creative Commons Attribution 3\.0 Unported License\.\n \* For details, see https:\/\/creativecommons\.org\/licenses\/by\/3\.0\/\.\n \*\/\n\n\/\* global bootstrap: false \*\/\n\n\(\(\) =\u003e \{\n  \u0027use strict\u0027\n\n  \/\/ \-\-\-\-\-\-\-\-\n  \/\/ Tooltips\n  \/\/ \-\-\-\-\-\-\-\-\n  \/\/ Instantiate all tooltips in a docs or StackBlitz\n  document\.querySelectorAll\(\u0027\[data\-bs\-toggle=\u0022tooltip\u0022\]\u0027\)\n    \.forEach\(tooltip =\u003e \{\n      new bootstrap\.Tooltip\(tooltip\)\n    \}\)\n\n  \/\/ \-\-\-\-\-\-\-\-\n  \/\/ Popovers\n  \/\/ \-\-\-\-\-\-\-\-\n  \/\/ Instantiate all popovers in docs or StackBlitz\n  document\.querySelectorAll\(\u0027\[data\-bs\-toggle=\u0022popover\u0022\]\u0027\)\n    \.forEach\(popover =\u003e \{\n      new bootstrap\.Popover\(popover\)\n    \}\)\n\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Toasts\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Used by \u0027Placement\u0027 example in docs or StackBlitz\n  const toastPlacement = document\.getElementById\(\u0027toastPlacement\u0027\)\n  if \(toastPlacement\) \{\n    document\.getElementById\(\u0027selectToastPlacement\u0027\)\.addEventListener\(\u0027change\u0027, function \(\) \{\n      if \(!toastPlacement\.dataset\.originalClass\) \{\n        toastPlacement\.dataset\.originalClass = toastPlacement\.className\n      \}\n\n      toastPlacement\.className = `\$\{toastPlacement\.dataset\.originalClass\} \$\{this\.value\}`\n    \}\)\n  \}\n\n  \/\/ Instantiate all toasts in docs pages only\n  document\.querySelectorAll\(\u0027\.bd\-example \.toast\u0027\)\n    \.forEach\(toastNode =\u003e \{\n      const toast = new bootstrap\.Toast\(toastNode, \{\n        autohide: false\n      \}\)\n\n      toast\.show\(\)\n    \}\)\n\n  \/\/ Instantiate all toasts in docs pages only\n  const toastTrigger = document\.getElementById\(\u0027liveToastBtn\u0027\)\n  const toastLiveExample = document\.getElementById\(\u0027liveToast\u0027\)\n\n  if \(toastTrigger\) \{\n    const toastBootstrap = bootstrap\.Toast\.getOrCreateInstance\(toastLiveExample\)\n    toastTrigger\.addEventListener\(\u0027click\u0027, \(\) =\u003e \{\n      toastBootstrap\.show\(\)\n    \}\)\n  \}\n\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Alerts\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Used in \u0027Show live toast\u0027 example in docs or StackBlitz\n  const alertPlaceholder = document\.getElementById\(\u0027liveAlertPlaceholder\u0027\)\n  const alertTrigger = document\.getElementById\(\u0027liveAlertBtn\u0027\)\n\n  const appendAlert = \(message, type\) =\u003e \{\n    const wrapper = document\.createElement\(\u0027div\u0027\)\n    wrapper\.innerHTML = \[\n      `\u003cdiv class=\u0022alert alert\-\$\{type\} alert\-dismissible\u0022 role=\u0022alert\u0022\u003e`,\n      `   \u003cdiv\u003e\$\{message\}\u003c\/div\u003e`,\n      \u0027   \u003cbutton type=\u0022button\u0022 class=\u0022btn\-close\u0022 data\-bs\-dismiss=\u0022alert\u0022 aria\-label=\u0022Close\u0022\u003e\u003c\/button\u003e\u0027,\n      \u0027\u003c\/div\u003e\u0027\n    \]\.join\(\u0027\u0027\)\n\n    alertPlaceholder\.append\(wrapper\)\n  \}\n\n  if \(alertTrigger\) \{\n    alertTrigger\.addEventListener\(\u0027click\u0027, \(\) =\u003e \{\n      appendAlert\(\u0027Nice, you triggered this alert message!\u0027, \u0027success\u0027\)\n    \}\)\n  \}\n\n  \/\/ \-\-\-\-\-\-\-\-\n  \/\/ Carousels\n  \/\/ \-\-\-\-\-\-\-\-\n  \/\/ Instantiate all non\-autoplaying carousels in docs or StackBlitz\n  document\.querySelectorAll\(\u0027\.carousel:not\(\[data\-bs\-ride=\u0022carousel\u0022\]\)\u0027\)\n    \.forEach\(carousel =\u003e \{\n      bootstrap\.Carousel\.getOrCreateInstance\(carousel\)\n    \}\)\n\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Checks \u0026 Radios\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Indeterminate checkbox example in docs and StackBlitz\n  document\.querySelectorAll\(\u0027\.bd\-example\-indeterminate \[type=\u0022checkbox\u0022\]\u0027\)\n    \.forEach\(checkbox =\u003e \{\n      if \(checkbox\.id\.includes\(\u0027Indeterminate\u0027\)\) \{\n        checkbox\.indeterminate = true\n      \}\n    \}\)\n\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Links\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Disable empty links in docs examples only\n  document\.querySelectorAll\(\u0027\.bd\-content \[href=\u0022#\u0022\]\u0027\)\n    \.forEach\(link =\u003e \{\n      link\.addEventListener\(\u0027click\u0027, event =\u003e \{\n        event\.preventDefault\(\)\n      \}\)\n    \}\)\n\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Modal\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Modal \u0027Varying modal content\u0027 example in docs and StackBlitz\n  const exampleModal = document\.getElementById\(\u0027exampleModal\u0027\)\n  if \(exampleModal\) \{\n    exampleModal\.addEventListener\(\u0027show\.bs\.modal\u0027, event =\u003e \{\n      \/\/ Button that triggered the modal\n      const button = event\.relatedTarget\n      \/\/ Extract info from data\-bs\-\* attributes\n      const recipient = button\.getAttribute\(\u0027data\-bs\-whatever\u0027\)\n\n      \/\/ Update the modal\u0027s content\.\n      const modalTitle = exampleModal\.querySelector\(\u0027\.modal\-title\u0027\)\n      const modalBodyInput = exampleModal\.querySelector\(\u0027\.modal\-body input\u0027\)\n\n      modalTitle\.textContent = `New message to \$\{recipient\}`\n      modalBodyInput\.value = recipient\n    \}\)\n  \}\n\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ Offcanvas\n  \/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n  \/\/ \u0027Offcanvas components\u0027 example in docs only\n  const myOffcanvas = document\.querySelectorAll\(\u0027\.bd\-example\-offcanvas \.offcanvas\u0027\)\n  if \(myOffcanvas\) \{\n    myOffcanvas\.forEach\(offcanvas =\u003e \{\n      offcanvas\.addEventListener\(\u0027show\.bs\.offcanvas\u0027, event =\u003e \{\n        event\.preventDefault\(\)\n      \}, false\)\n    \}\)\n  \}\n\}\)\(\)\n' : null
     const project = {
       files: {
         'index.html': markup,
@@ -1539,7 +1665,7 @@ ${htmlSnippet.replace(/^/gm, '    ')}
 
 
     
-  <div class="position-fixed"><input type="text" tabindex="-1"></div>
+  <div class="position-fixed" aria-hidden="true"><input type="text" tabindex="-1"></div>
 
   </body>
 </html>
