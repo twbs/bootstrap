@@ -204,12 +204,12 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 // scss-docs-start color-functions
 // Tint a color: mix a color with white
 @function tint-color($color, $weight) {
-  @return mix(white, $color, $weight);
+  @return mix(white, $color, $weight * 1%);
 }
 
 // Shade a color: mix a color with black
 @function shade-color($color, $weight) {
-  @return mix(black, $color, $weight);
+  @return mix(black, $color, $weight * 1%);
 }
 
 // Shade the color if the weight is positive, else tint it
