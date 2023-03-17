@@ -126,7 +126,7 @@
     "hammer-simulator": "0.0.1",
     "hugo-bin": "^0.101.0",
     "ip": "^2.0.0",
-    "jasmine": "^4.5.0",
+    "jasmine": "^4.6.0",
     "jquery": "^3.6.4",
     "karma": "^6.4.1",
     "karma-browserstack-launcher": "1.4.0",
