@@ -3,7 +3,6 @@ layout: docs
 title: Icon link
 description: Quickly create stylized hyperlinks with Bootstrap Icons or other icons.
 group: helpers
-aliases: "/docs/5.3/icon-link/"
 toc: true
 added: 5.3
 ---
