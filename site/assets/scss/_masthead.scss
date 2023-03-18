@@ -10,6 +10,7 @@
   // stylelint-enable
 
   h1 {
+    --bs-heading-color: var(--bs-emphasis-color);
     @include font-size(4rem);
   }
 
@@ -64,6 +65,12 @@
 }
 
 .masthead-followup {
+  h2,
+  h3,
+  h4 {
+    --bs-heading-color: var(--bs-emphasis-color);
+  }
+
   .lead {
     @include font-size(1rem);
   }
