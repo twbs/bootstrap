@@ -79,6 +79,24 @@
     }
 
   }
+
+  //Add default border-bottom to dropdown-item
+  > .dropdown-item:not(:last-child),
+  > li:not(:last-child) .dropdown-item {
+    border-bottom: var(--#{$prefix}dropdown-border-width) solid
+      var(--#{$prefix}dropdown-border-color);
+
+    &:hover,
+    &:focus {
+      border-bottom-color: var(--#{$prefix}dropdown-link-hover-bg);
+    }
+
+    &:active,
+    &:active {
+      border-bottom-color: var(--#{$prefix}dropdown-link-active-bg);
+    }
+  }
+
 }
 
 // scss-docs-start responsive-breakpoints
