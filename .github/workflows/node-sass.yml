@@ -34,3 +34,8 @@ jobs:
           npx --package node-sass@latest node-sass --version
           npx --package node-sass@latest node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/ -o dist-sass/css/
           ls -Al dist-sass/css
+
+      # Check that there are no Sass variables (`$`)
+      - name: Check built CSS files
+        run: |
+          find dist-sass/css/ -name "*.css" |xargs grep -F "\$"|wc -l |bc ; if [ $? -eq 0 ]; then exit 0; else exit 1; fi
