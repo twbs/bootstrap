@@ -4,11 +4,6 @@
 
 .bd-content {
   // Offset content from fixed navbar when jumping to headings
-  > :target {
-    padding-top: 5rem;
-    margin-top: -5rem;
-  }
-
   > h2,
   > h3,
   > h4 {
