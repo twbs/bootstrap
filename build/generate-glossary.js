@@ -35,7 +35,7 @@ fs.readFile('../dist/css/bootstrap.css', 'utf8', (error, data) => {
   }
 
   // Create a temp file containing all classes names as keys and empty values
-  fs.writeFile('../site/static/docs/5.2/assets/data/glossary.data.temp', newContent, error => {
+  fs.writeFile('../site/static/docs/5.3/assets/data/glossary.data.temp', newContent, error => {
     if (error) {
       throw error
     }
@@ -44,7 +44,7 @@ fs.readFile('../dist/css/bootstrap.css', 'utf8', (error, data) => {
   // Compare what's inside our glossary.data and the temp glossary to:
   // - remove in glossary.data what doesn't exist anymore
   // - add the keys in glossary.data that should be completed with the corresponding links manually
-  fs.readFile('../site/static/docs/5.2/assets/data/glossary.data', 'utf8', (error, data) => {
+  fs.readFile('../site/static/docs/5.3/assets/data/glossary.data', 'utf8', (error, data) => {
     if (error) {
       throw error
     }
@@ -74,13 +74,13 @@ fs.readFile('../dist/css/bootstrap.css', 'utf8', (error, data) => {
       }
     }
 
-    fs.writeFile('../site/static/docs/5.2/assets/data/glossary.data', finalContentArray.sort().join(''), { flag: 'w' }, error => {
+    fs.writeFile('../site/static/docs/5.3/assets/data/glossary.data', finalContentArray.sort().join(''), { flag: 'w' }, error => {
       if (error) {
         throw error
       }
     })
 
-    fs.unlink('../site/static/docs/5.2/assets/data/glossary.data.temp', error => {
+    fs.unlink('../site/static/docs/5.3/assets/data/glossary.data.temp', error => {
       if (error) {
         throw error
       }
