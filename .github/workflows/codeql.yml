@@ -7,13 +7,12 @@ on:
       - v4-dev
       - "!dependabot/**"
   pull_request:
-    # The branches below must be a subset of the branches above
     branches:
       - main
       - v4-dev
       - "!dependabot/**"
   schedule:
-    - cron: "0 2 * * 5"
+    - cron: "0 2 * * 4"
   workflow_dispatch:
 
 jobs:
@@ -21,18 +20,25 @@ jobs:
     name: Analyze
     runs-on: ubuntu-latest
     permissions:
-      actions: read
-      contents: read
       security-events: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          persist-credentials: false
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
+          config-file: ./.github/codeql/codeql-config.yml
           languages: "javascript"
+          queries: +security-and-quality
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
+        with:
+          category: "/language:javascript"

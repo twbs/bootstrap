@@ -1,13 +1,13 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.0): util/scrollBar.js
+ * Bootstrap (v5.3.0-alpha1): util/scrollBar.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import SelectorEngine from '../dom/selector-engine'
-import Manipulator from '../dom/manipulator'
-import { isElement } from './index'
+import SelectorEngine from '../dom/selector-engine.js'
+import Manipulator from '../dom/manipulator.js'
+import { isElement } from './index.js'
 
 /**
  * Constants

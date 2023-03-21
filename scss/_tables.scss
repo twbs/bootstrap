@@ -42,7 +42,7 @@
 }
 
 .table-group-divider {
-  border-top: ($table-border-width * 2) solid $table-group-separator-color;
+  border-top: calc($table-border-width * 2) solid $table-group-separator-color; // stylelint-disable-line function-disallowed-list
 }
 
 //

@@ -10,7 +10,7 @@
   @include rfs($btn-font-size, --#{$prefix}btn-font-size);
   --#{$prefix}btn-font-weight: #{$btn-font-weight};
   --#{$prefix}btn-line-height: #{$btn-line-height};
-  --#{$prefix}btn-color: #{$body-color};
+  --#{$prefix}btn-color: #{$btn-color};
   --#{$prefix}btn-bg: transparent;
   --#{$prefix}btn-border-width: #{$btn-border-width};
   --#{$prefix}btn-border-color: transparent;
@@ -47,11 +47,18 @@
     border-color: var(--#{$prefix}btn-hover-border-color);
   }
 
-  .btn-check:focus + &,
-  &:focus {
+  .btn-check + &:hover {
+    // override for the checkbox/radio buttons
+    color: var(--#{$prefix}btn-color);
+    background-color: var(--#{$prefix}btn-bg);
+    border-color: var(--#{$prefix}btn-border-color);
+  }
+
+  &:focus-visible {
     color: var(--#{$prefix}btn-hover-color);
     @include gradient-bg(var(--#{$prefix}btn-hover-bg));
     border-color: var(--#{$prefix}btn-hover-border-color);
+    outline: 0;
     // Avoid using mixin so we can pass custom focus shadow properly
     @if $enable-shadows {
       box-shadow: var(--#{$prefix}btn-box-shadow), var(--#{$prefix}btn-focus-box-shadow);
@@ -60,14 +67,20 @@
     }
   }
 
-  .btn-check:focus:not(:focus-visible) + &,
-  &:focus:not(:focus-visible) {
+  .btn-check:focus-visible + & {
+    border-color: var(--#{$prefix}btn-hover-border-color);
     outline: 0;
+    // Avoid using mixin so we can pass custom focus shadow properly
+    @if $enable-shadows {
+      box-shadow: var(--#{$prefix}btn-box-shadow), var(--#{$prefix}btn-focus-box-shadow);
+    } @else {
+      box-shadow: var(--#{$prefix}btn-focus-box-shadow);
+    }
   }
 
   .btn-check:checked + &,
-  .btn-check:active + &,
-  &:active,
+  :not(.btn-check) + &:active,
+  &:first-child:active,
   &.active,
   &.show {
     color: var(--#{$prefix}btn-active-color);
@@ -77,7 +90,7 @@
     border-color: var(--#{$prefix}btn-active-border-color);
     @include box-shadow(var(--#{$prefix}btn-active-shadow));
 
-    &:focus {
+    &:focus-visible {
       // Avoid using mixin so we can pass custom focus shadow properly
       @if $enable-shadows {
         box-shadow: var(--#{$prefix}btn-active-shadow), var(--#{$prefix}btn-focus-box-shadow);
@@ -156,17 +169,20 @@
   --#{$prefix}btn-active-border-color: transparent;
   --#{$prefix}btn-disabled-color: #{$btn-link-disabled-color};
   --#{$prefix}btn-disabled-border-color: transparent;
-  --#{$prefix}btn-box-shadow: none;
-  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix(color-contrast($primary), $primary, 15%))};
+  --#{$prefix}btn-box-shadow: 0 0 0 #000; // Can't use `none` as keyword negates all values when used with multiple shadows
+  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix(color-contrast($link-color), $link-color, 15%))};
 
   text-decoration: $link-decoration;
+  @if $enable-gradients {
+    background-image: none;
+  }
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     text-decoration: $link-hover-decoration;
   }
 
-  &:focus {
+  &:focus-visible {
     color: var(--#{$prefix}btn-color);
   }
 

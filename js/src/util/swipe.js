@@ -1,13 +1,13 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.0): util/swipe.js
+ * Bootstrap (v5.3.0-alpha1): util/swipe.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import Config from './config'
-import EventHandler from '../dom/event-handler'
-import { execute } from './index'
+import Config from './config.js'
+import EventHandler from '../dom/event-handler.js'
+import { execute } from './index.js'
 
 /**
  * Constants

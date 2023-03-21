@@ -1,12 +1,12 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.0): util/config.js
+ * Bootstrap (v5.3.0-alpha1): util/config.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import { isElement, toType } from './index'
-import Manipulator from '../dom/manipulator'
+import { isElement, toType } from './index.js'
+import Manipulator from '../dom/manipulator.js'
 
 /**
  * Class definition
@@ -49,8 +49,7 @@ class Config {
   }
 
   _typeCheckConfig(config, configTypes = this.constructor.DefaultType) {
-    for (const property of Object.keys(configTypes)) {
-      const expectedTypes = configTypes[property]
+    for (const [property, expectedTypes] of Object.entries(configTypes)) {
       const value = config[property]
       const valueType = isElement(value) ? 'element' : toType(value)
 

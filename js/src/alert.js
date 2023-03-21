@@ -1,14 +1,14 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.0): alert.js
+ * Bootstrap (v5.3.0-alpha1): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin } from './util/index'
-import EventHandler from './dom/event-handler'
-import BaseComponent from './base-component'
-import { enableDismissTrigger } from './util/component-functions'
+import { defineJQueryPlugin } from './util/index.js'
+import EventHandler from './dom/event-handler.js'
+import BaseComponent from './base-component.js'
+import { enableDismissTrigger } from './util/component-functions.js'
 
 /**
  * Constants

@@ -22,13 +22,13 @@
   display: block;
   padding: .5em;
   line-height: 1;
-  color: $gray-900;
-  background-color: $gray-100;
+  color: var(--bs-body-color);
+  background-color: var(--bd-pre-bg);
   border: 0;
   @include border-radius(.25rem);
 
   &:hover {
-    color: $primary;
+    color: var(--bs-link-hover-color);
   }
 
   &:focus {
@@ -39,6 +39,6 @@
 .btn-clipboard {
   position: relative;
   z-index: 2;
-  margin-top: .75rem;
+  margin-top: 1.25rem;
   margin-right: .75rem;
 }

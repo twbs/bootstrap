@@ -1,5 +1,30 @@
 // stylelint-disable selector-class-pattern
 
+:root {
+  --docsearch-primary-color: var(--bd-violet);
+  --docsearch-logo-color: var(--bd-violet);
+}
+
+@include color-mode(dark, true) {
+  // From here, the values are copied from https://cdn.jsdelivr.net/npm/@docsearch/css@3
+  // in html[data-theme="dark"] selector
+  // and are slightly modified for formatting purpose
+  --docsearch-text-color: #f5f6f7;
+  --docsearch-container-background: rgba(9, 10, 17, .8);
+  --docsearch-modal-background: #15172a;
+  --docsearch-modal-shadow: inset 1px 1px 0 0 #2c2e40, 0 3px 8px 0 #000309;
+  --docsearch-searchbox-background: #090a11;
+  --docsearch-searchbox-focus-background: #000;
+  --docsearch-hit-color: #bec3c9;
+  --docsearch-hit-shadow: none;
+  --docsearch-hit-background: #090a11;
+  --docsearch-key-gradient: linear-gradient(-26.5deg, #565872, #31355b);
+  --docsearch-key-shadow: inset 0 -2px 0 0 #282d55, inset 0 0 1px 1px #51577d, 0 2px 2px 0 rgba(3, 4, 9, .3);
+  --docsearch-footer-background: #1e2136;
+  --docsearch-footer-shadow: inset 0 1px 0 0 rgba(73, 76, 106, .5), 0 -4px 8px 0 rgba(0, 0, 0, .2);
+  --docsearch-muted-color: #7f8497;
+}
+
 .bd-search {
   position: relative;
 
@@ -19,7 +44,7 @@
 }
 
 .DocSearch-Container {
-  --docsearch-muted-color: #{$text-muted};
+  --docsearch-muted-color: var(--bs-secondary-color);
   --docsearch-hit-shadow: none;
 
   z-index: 2000; // Make sure to be over all components showcased in the documentation
@@ -138,4 +163,10 @@
 .DocSearch-Hit-icon {
   display: flex;
   align-items: center;
+}
+
+// Fix --docsearch-logo-color that doesn't do anything
+.DocSearch-Logo svg .cls-1,
+.DocSearch-Logo svg .cls-2 {
+  fill: var(--docsearch-logo-color);
 }

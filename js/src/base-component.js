@@ -1,20 +1,20 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.0): base-component.js
+ * Bootstrap (v5.3.0-alpha1): base-component.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import Data from './dom/data'
-import { executeAfterTransition, getElement } from './util/index'
-import EventHandler from './dom/event-handler'
-import Config from './util/config'
+import Data from './dom/data.js'
+import { executeAfterTransition, getElement } from './util/index.js'
+import EventHandler from './dom/event-handler.js'
+import Config from './util/config.js'
 
 /**
  * Constants
  */
 
-const VERSION = '5.2.0'
+const VERSION = '5.3.0-alpha1'
 
 /**
  * Class definition

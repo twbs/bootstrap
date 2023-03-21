@@ -26,6 +26,7 @@
     - title: Sass
     - title: Options
     - title: Color
+    - title: Color modes
     - title: Components
     - title: CSS variables
     - title: Optimize
@@ -103,6 +104,8 @@
     - title: Clearfix
     - title: Color & background
     - title: Colored links
+    - title: Focus ring
+    - title: Icon link
     - title: Position
     - title: Ratio
     - title: Stacks
@@ -123,6 +126,8 @@
     - title: Flex
     - title: Float
     - title: Interactions
+    - title: Link
+    - title: Object fit
     - title: Opacity
     - title: Overflow
     - title: Position
@@ -132,6 +137,7 @@
     - title: Text
     - title: Vertical align
     - title: Visibility
+    - title: Z-index
 
 - title: Extend
   icon: tools

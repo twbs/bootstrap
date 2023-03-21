@@ -1,0 +1,69 @@
+// stylelint-disable selector-attribute-quotes
+
+@import "../../functions";
+@import "../../variables";
+@import "../../variables-dark";
+@import "../../maps";
+@import "../../mixins";
+
+@include describe("global $color-mode-type: data") {
+  @include it("generates data attribute selectors for dark mode") {
+    @include assert() {
+      @include output() {
+        @include color-mode(dark) {
+          .element {
+            color: var(--bs-primary-text-emphasis);
+            background-color: var(--bs-primary-bg-subtle);
+          }
+        }
+        @include color-mode(dark, true) {
+          --custom-color: #{mix($indigo, $blue, 50%)};
+        }
+      }
+      @include expect() {
+        [data-bs-theme=dark] .element {
+          color: var(--bs-primary-text-emphasis);
+          background-color: var(--bs-primary-bg-subtle);
+        }
+        [data-bs-theme=dark] {
+          --custom-color: #3a3ff8;
+        }
+      }
+    }
+  }
+}
+
+@include describe("global $color-mode-type: media-query") {
+  @include it("generates media queries for dark mode") {
+    $color-mode-type: media-query !global;
+
+    @include assert() {
+      @include output() {
+        @include color-mode(dark) {
+          .element {
+            color: var(--bs-primary-text-emphasis);
+            background-color: var(--bs-primary-bg-subtle);
+          }
+        }
+        @include color-mode(dark, true) {
+          --custom-color: #{mix($indigo, $blue, 50%)};
+        }
+      }
+      @include expect() {
+        @media (prefers-color-scheme: dark) {
+          .element {
+            color: var(--bs-primary-text-emphasis);
+            background-color: var(--bs-primary-bg-subtle);
+          }
+        }
+        @media (prefers-color-scheme: dark) {
+          :root {
+            --custom-color: #3a3ff8;
+          }
+        }
+      }
+    }
+
+    $color-mode-type: data !global;
+  }
+}
