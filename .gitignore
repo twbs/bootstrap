@@ -40,3 +40,6 @@ Thumbs.db
 # Folders to ignore
 /js/coverage/
 /node_modules/
+
+# Ignore generated diff files
+# /site/static/docs/5.3/assets/json/diffs
