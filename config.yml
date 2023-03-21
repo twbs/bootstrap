@@ -24,7 +24,7 @@ buildFuture:            true
 
 enableRobotsTXT:        true
 metaDataFormat:         "yaml"
-disableKinds:           ["404", "taxonomy", "term", "RSS"]
+disableKinds:           ["taxonomy", "term", "RSS"]
 
 publishDir:             "_site"
 

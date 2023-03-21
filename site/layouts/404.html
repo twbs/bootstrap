@@ -1,0 +1,11 @@
+{{ define "body_override" }}<body class="d-flex flex-column min-vh-100">{{ end }}
+{{ define "main" }}
+<main class="my-auto p-5" id="content">
+  <div class="text-center py-5">
+    <h1 class="display-1">404</h1>
+    <h2>File not found</h2>
+  </div>
+
+  {{ .Content }}
+</main>
+{{ end }}
