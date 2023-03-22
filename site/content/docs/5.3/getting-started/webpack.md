@@ -156,6 +156,7 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
    'use strict'
 
    const path = require('path')
+   const autoprefixer = require('autoprefixer')
    const HtmlWebpackPlugin = require('html-webpack-plugin')
 
    module.exports = {
@@ -271,15 +272,15 @@ Then instantiate and use the plugin in the Webpack configuration:
 ```diff
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -2,6 +2,7 @@
-
+@@ -3,6 +3,7 @@
  const path = require('path')
+ const autoprefixer = require('autoprefixer')
  const HtmlWebpackPlugin = require('html-webpack-plugin')
 +const miniCssExtractPlugin = require('mini-css-extract-plugin')
 
  module.exports = {
    mode: 'development',
-@@ -16,7 +17,8 @@ module.exports = {
+@@ -17,7 +18,8 @@ module.exports = {
      hot: true
    },
    plugins: [
@@ -289,7 +290,7 @@ Then instantiate and use the plugin in the Webpack configuration:
    ],
    module: {
      rules: [
-@@ -24,8 +26,8 @@ module.exports = {
+@@ -25,8 +27,8 @@ module.exports = {
          test: /\.(scss)$/,
          use: [
            {
@@ -325,7 +326,7 @@ Configure Webpack to extract inline SVG files like this:
 ```diff
 --- a/webpack/webpack.config.js
 +++ b/webpack/webpack.config.js
-@@ -22,6 +22,14 @@ module.exports = {
+@@ -23,6 +23,14 @@ module.exports = {
    },
    module: {
      rules: [
