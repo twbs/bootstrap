@@ -43,6 +43,6 @@ jobs:
             echo "All good, no Sass variables found"
             exit 0
           else
-            echo "Sass variables found!"
+            echo "Found Sass variables!"
             exit 1
           fi
