@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - "*"
-      - "!dependabot/**"
+    branches-ignore:
+      - "dependabot/**"
   workflow_dispatch:
 
 env:
