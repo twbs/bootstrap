@@ -3,7 +3,8 @@ name: BrowserStack
 on:
   push:
     branches:
-      - main
+      - "*"
+      - "!dependabot/**"
   workflow_dispatch:
 
 env:
