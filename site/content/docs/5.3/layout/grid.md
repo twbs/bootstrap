@@ -409,11 +409,11 @@ To nest your content with the default grid, add a new `.row` and set of `.col-sm
 </div>
 {{< /example >}}
 
-## Sass
+## CSS
 
 When using Bootstrap's source Sass files, you have the option of using Sass variables and mixins to create custom, semantic, and responsive page layouts. Our predefined grid classes use these same variables and mixins to provide a whole suite of ready-to-use classes for fast responsive layouts.
 
-### Variables
+### Sass variables
 
 Variables and maps determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.
 
@@ -427,7 +427,7 @@ $grid-row-columns:  6;
 
 {{< scss-docs name="container-max-widths" file="scss/_variables.scss" >}}
 
-### Mixins
+### Sass mixins
 
 Mixins are used in conjunction with the grid variables to generate semantic CSS for individual grid columns.
 
