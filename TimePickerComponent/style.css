@@ -1,0 +1,24 @@
+/* Styles for the time picker component */
+.time-picker {
+  display: flex; /* Use flexbox layout for the container */
+  flex-direction: column; /* Stack child elements vertically */
+  align-items: center; /* Center child elements horizontally */
+  margin: 50px auto; /* Set top and bottom margin to 50px and center horizontally */
+  font-family: Arial, sans-serif; /* Use Arial or sans-serif font family */
+}
+  
+  /* Styles for the label element */
+.time-picker label {
+  margin-bottom: 10px; /* Set bottom margin to 10px */
+  font-weight: bold; /* Use bold font weight */
+}
+  
+  /* Styles for the time input element */
+.time-picker [type="time"] {
+  padding: 10px; /* Add 10px of padding to the input field */
+  border-radius: 5px; /* Round the corners of the input field */
+  border: 1px solid #ccc; /* Add a 1px gray border to the input field */
+}
+  
+  
+  
