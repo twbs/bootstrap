@@ -12,10 +12,11 @@ const { browsers } = require('./browsers')
 
 const ENV = process.env
 const LAMBDATEST = Boolean(ENV.LAMBDATEST)
+const BROWSERSTACK = Boolean(ENV.BROWSERSTACK)
 const DEBUG = Boolean(ENV.DEBUG)
 const JQUERY_TEST = Boolean(ENV.JQUERY)
 
-var webdriverConfig = {
+const webdriverConfig = {
   hostname: 'hub.lambdatest.com',
   port: 80
 }
@@ -26,8 +27,7 @@ const frameworks = [
 
 const plugins = [
   'karma-jasmine',
-  'karma-rollup-preprocessor',
-  'karma-webdriver-launcher'
+  'karma-rollup-preprocessor'
 ]
 
 const reporters = ['dots']
@@ -108,19 +108,47 @@ const config = {
 
 if (LAMBDATEST) {
   config.hostname = 'localhost.lambdatest.com',
-  Object.keys(browsers).map(key => {
-    browsers[key].base = 'WebDriver'
-    browsers[key].config = webdriverConfig
-    browsers[key].user = ENV.LT_USERNAME
-    browsers[key].accessKey = ENV.LT_ACCESS_KEY
-    browsers[key].build = `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`
-    browsers[key].project = 'Bootstrap'
-    browsers[key].tunnel = true
-    browsers[key].tunnelName = 'jasmine'
-  })
-  plugins.push('karma-jasmine', 'karma-jasmine-html-reporter')
-  config.customLaunchers = browsers
-  config.browsers = Object.keys(browsers)
+    Object.keys(browsers['lambdaTest']).map(key => {
+      browsers['lambdaTest'][key].base = 'WebDriver'
+      browsers['lambdaTest'][key].config = webdriverConfig
+      browsers['lambdaTest'][key].user = ENV.LT_USERNAME
+      browsers['lambdaTest'][key].accessKey = ENV.LT_ACCESS_KEY
+      browsers['lambdaTest'][key].build = `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`
+      browsers['lambdaTest'][key].project = 'Bootstrap'
+      browsers['lambdaTest'][key].tunnel = true
+      browsers['lambdaTest'][key].tunnelName = 'jasmine'
+    })
+  plugins.push( 'karma-webdriver-launcher', 'karma-jasmine', 'karma-jasmine-html-reporter')
+  config.customLaunchers = browsers['lambdaTest']
+  config.browsers = Object.keys(browsers['lambdaTest'])
+} else if (BROWSERSTACK) {
+  config.hostname = ip.address()
+  config.browserStack = {
+    username: ENV.BROWSER_STACK_USERNAME,
+    accessKey: ENV.BROWSER_STACK_ACCESS_KEY,
+    build: `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`,
+    project: 'Bootstrap',
+    retryLimit: 2
+  }
+  plugins.push('karma-browserstack-launcher', 'karma-jasmine-html-reporter')
+  config.customLaunchers = browsers['browserStack']
+  config.browsers = Object.keys(browsers['browserStack'])
+  reporters.push('BrowserStack', 'kjhtml')
+} else if (JQUERY_TEST) {
+  frameworks.push('detectBrowsers')
+  plugins.push(
+    'karma-chrome-launcher',
+    'karma-firefox-launcher',
+    'karma-detect-browsers'
+  )
+  config.detectBrowsers = detectBrowsers
+  config.files = [
+    'node_modules/jquery/dist/jquery.slim.min.js',
+    {
+      pattern: 'js/tests/unit/jquery.spec.js',
+      watched: false
+    }
+  ]
 } else if (JQUERY_TEST) {
   frameworks.push('detectBrowsers')
   plugins.push(
