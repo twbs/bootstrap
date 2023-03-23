@@ -20,6 +20,11 @@ const webdriverConfig = {
   port: 80
 }
 
+const webdriverConfigMobile = {
+  hostname: 'mobile-hub.lambdatest.com',
+  port: 80
+}
+
 const frameworks = [
   'jasmine'
 ]
@@ -109,7 +114,10 @@ if (LAMBDATEST) {
   config.hostname = 'localhost.lambdatest.com',
     Object.keys(browsers['lambdaTest']).map(key => {
       browsers['lambdaTest'][key].base = 'WebDriver'
-      browsers['lambdaTest'][key].config = webdriverConfig
+      if (browsers['lambdaTest'][key].isRealMobile)
+        browsers['lambdaTest'][key].config = webdriverConfigMobile
+      else
+        browsers['lambdaTest'][key].config = webdriverConfig
       browsers['lambdaTest'][key].user = ENV.LT_USERNAME
       browsers['lambdaTest'][key].accessKey = ENV.LT_ACCESS_KEY
       browsers['lambdaTest'][key].build = `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`
@@ -117,7 +125,7 @@ if (LAMBDATEST) {
       browsers['lambdaTest'][key].tunnel = true
       browsers['lambdaTest'][key].tunnelName = 'jasmine'
     })
-  plugins.push( 'karma-webdriver-launcher', 'karma-jasmine', 'karma-jasmine-html-reporter')
+  plugins.push('karma-webdriver-launcher', 'karma-jasmine', 'karma-jasmine-html-reporter')
   config.customLaunchers = browsers['lambdaTest']
   config.browsers = Object.keys(browsers['lambdaTest'])
 } else if (BROWSERSTACK) {

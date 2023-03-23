@@ -40,24 +40,24 @@ const browsers = {
     },
     iphone7: {
       platformName: 'ios',
-      platformVersion: '15.0',
+      platformVersion: '15',
       browserName: 'Safari',
       deviceName: 'iPhone 7',
-      real_mobile: true
+      isRealMobile: true
     },
     iphone12: {
       platformName: 'ios',
-      platformVersion: '15.0',
+      platformVersion: '16',
       browserName: 'Safari',
       deviceName: 'iPhone 12',
-      real_mobile: true
+      isRealMobile: true
     },
     pixel2: {
       platformName: 'android',
-      platformVersion: '8.0',
+      platformVersion: '9',
       browserName: 'Chrome',
-      deviceName: 'Google Pixel 2',
-      real_mobile: true
+      deviceName: 'Google Pixel 3',
+      isRealMobile: true
     }
   },
   browserStack: {
