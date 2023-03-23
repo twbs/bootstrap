@@ -96,17 +96,17 @@ For a list of selected items use `<ul>` or `<ol>`.
 
 {{< example class="d-flex gap-2 align-items-center" >}}
 <ul class="list-unstyled d-flex gap-2 flex-wrap m-0">
-  <li><span class="chip" id="labelchip1">
+  <li><span class="chip" id="chip-label1">
     Dismissible chip
-    <button type="button" class="btn-close" aria-labelledby="labelchip1" aria-label="Close"></button>
+    <button type="button" class="btn-close" aria-labelledby="chip-label1" aria-label="Close"></button>
   </span></li>
-  <li><span class="chip" id="labelchip2">
+  <li><span class="chip" id="chip-label2">
     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
       <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
       <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
     </svg>
     Dismissible chip
-    <button type="button" class="btn-close" aria-labelledby="labelchip2" aria-label="Close"></button>
+    <button type="button" class="btn-close" aria-labelledby="chip-label2" aria-label="Close"></button>
   </span></li>
 </ul>
 {{< /example >}}
@@ -124,13 +124,13 @@ Add `.chip-sm` to the `.chip` for a small variant.
 <p class="mb-0"><span class="chip chip-sm">Informative</span></p>
 <button class="chip chip-sm">Filter</button>
 <a class="chip chip-sm" href="#">Navigation</a>
-<p><span class="chip chip-sm" id="labelchip4">
+<p><span class="chip chip-sm" id="chip-label4">
   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
     <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
   </svg>
   Input
-  <button type="button" class="btn-close" aria-labelledby="labelchip4" aria-label="Close"></button>
+  <button type="button" class="btn-close" aria-labelledby="chip-label4" aria-label="Close"></button>
 </span></p>
 {{< /example >}}
 
@@ -154,13 +154,13 @@ Disabled chips using the `<a>` element behave a bit different:
 <p class="mb-0"><span class="chip disabled" aria-disabled="true">Informative</span></p>
 <button class="chip" disabled>Filter</button>
 <a class="chip disabled" aria-disabled="true">Navigation</a>
-<p><span class="chip disabled" id="labelchip5" aria-disabled="true">
+<p><span class="chip disabled" id="chip-label5" aria-disabled="true">
   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
     <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
   </svg>
   Input
-  <button type="button" class="btn-close" aria-labelledby="labelchip5" aria-label="Close"></button>
+  <button type="button" class="btn-close" aria-labelledby="chip-label5" aria-label="Close"></button>
 </span></p>
 {{< /example >}}
 
@@ -173,13 +173,13 @@ Use the `.rounded-pill` utility class to make chips more rounded with a larger `
 <p class="mb-0"><span class="chip rounded-pill">Informative</span></p>
 <button class="chip rounded-pill">Filter</button>
 <a class="chip chip rounded-pill" href="#">Navigation</a>
-<p><span class="chip chip rounded-pill" id="labelchip6">
+<p><span class="chip chip rounded-pill" id="chip-label6">
   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
     <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
   </svg>
   Input
-  <button type="button" class="btn-close" aria-labelledby="labelchip6" aria-label="Close"></button>
+  <button type="button" class="btn-close" aria-labelledby="chip-label6" aria-label="Close"></button>
 </span></p>
 {{< /example >}}
 
