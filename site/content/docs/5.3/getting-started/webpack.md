@@ -130,7 +130,7 @@ With dependencies installed and our project folder ready for us to start coding,
      "scripts": {
        "start": "webpack serve",
        "build": "webpack build",
-       "test": "echo \"Error: no test specified\" && exit 1"
+       "test": "npm run build"
      },
      // ...
    }
@@ -217,7 +217,7 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
 
    ```scss
    // Import all of Bootstrap's CSS
-   @import "~bootstrap/scss/bootstrap";
+   @import "bootstrap/scss/bootstrap";
    ```
 
    *You can also import our stylesheets individually if you want. [Read our Sass import docs]({{< docsref "/customize/sass#importing" >}}) for details.*
