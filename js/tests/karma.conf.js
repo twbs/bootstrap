@@ -69,7 +69,7 @@ const config = {
     'node_modules/hammer-simulator/index.js',
     {
       pattern: 'js/tests/unit/**/!(jquery).spec.js',
-      watched: !LAMBDATEST
+      watched: !BROWSERSTACK
     }
   ],
   preprocessors: {
