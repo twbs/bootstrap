@@ -1,5 +1,4 @@
 /* eslint-env node */
-
 'use strict'
 
 const path = require('node:path')
@@ -11,9 +10,20 @@ const replace = require('@rollup/plugin-replace')
 const { browsers } = require('./browsers')
 
 const ENV = process.env
+const LAMBDATEST = Boolean(ENV.LAMBDATEST)
 const BROWSERSTACK = Boolean(ENV.BROWSERSTACK)
 const DEBUG = Boolean(ENV.DEBUG)
 const JQUERY_TEST = Boolean(ENV.JQUERY)
+
+const webdriverConfig = {
+  hostname: 'hub.lambdatest.com',
+  port: 80
+}
+
+const webdriverConfigMobile = {
+  hostname: 'mobile-hub.lambdatest.com',
+  port: 80
+}
 
 const frameworks = [
   'jasmine'
@@ -56,6 +66,10 @@ const config = {
   colors: true,
   autoWatch: false,
   singleRun: true,
+  captureTimeout: 90000,
+  browserDisconnectTolerance: 3,
+  browserDisconnectTimeout: 90000,
+  browserNoActivityTimeout: 90000,
   concurrency: Number.POSITIVE_INFINITY,
   client: {
     clearContext: false
@@ -100,7 +114,36 @@ const config = {
   }
 }
 
-if (BROWSERSTACK) {
+if (LAMBDATEST) {
+  config.hostname = 'localhost.lambdatest.com',
+    Object.keys(browsers['lambdaTest']).map(key => {
+      browsers['lambdaTest'][key].base = 'WebDriver'
+      browsers['lambdaTest'][key].build = `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`
+      browsers['lambdaTest'][key].project = 'Bootstrap'
+      if (browsers['lambdaTest'][key].isRealMobile) {
+        browsers['lambdaTest'][key].config = webdriverConfigMobile
+        browsers['lambdaTest'][key].user = ENV.LT_USERNAME
+        browsers['lambdaTest'][key].accessKey = ENV.LT_ACCESS_KEY
+        browsers['lambdaTest'][key].tunnel = true
+        browsers['lambdaTest'][key].tunnelName = process.env.LT_TUNNEL_NAME || 'jasmine'
+        browsers['lambdaTest'][key].pseudoActivityInterval = 15000 // 5000 ms heartbeat
+      }
+      else {
+        browsers['lambdaTest'][key].config = webdriverConfig
+        browsers['lambdaTest'][key]["LT:Options"].username = ENV.LT_USERNAME
+        browsers['lambdaTest'][key]["LT:Options"].accessKey = ENV.LT_ACCESS_KEY
+        browsers['lambdaTest'][key]["LT:Options"].tunnel = true
+        browsers['lambdaTest'][key]["LT:Options"].tunnelName = process.env.LT_TUNNEL_NAME || 'jasmine'
+        browsers['lambdaTest'][key]["LT:Options"].plugin = 'bootstrap-karma'
+        browsers['lambdaTest'][key]["LT:Options"].pseudoActivityInterval = 15000 // 5000 ms heartbeat
+      }
+      browsers['lambdaTest'][key].retryLimit = 2
+    })
+  plugins.push('karma-webdriver-launcher', 'karma-jasmine', 'karma-jasmine-html-reporter')
+  config.customLaunchers = browsers['lambdaTest']
+  config.browsers = Object.keys(browsers['lambdaTest'])
+  reporters.push('kjhtml')
+} else if (BROWSERSTACK) {
   config.hostname = ip.address()
   config.browserStack = {
     username: ENV.BROWSER_STACK_USERNAME,
@@ -110,9 +153,24 @@ if (BROWSERSTACK) {
     retryLimit: 2
   }
   plugins.push('karma-browserstack-launcher', 'karma-jasmine-html-reporter')
-  config.customLaunchers = browsers
-  config.browsers = Object.keys(browsers)
+  config.customLaunchers = browsers['browserStack']
+  config.browsers = Object.keys(browsers['browserStack'])
   reporters.push('BrowserStack', 'kjhtml')
+} else if (JQUERY_TEST) {
+  frameworks.push('detectBrowsers')
+  plugins.push(
+    'karma-chrome-launcher',
+    'karma-firefox-launcher',
+    'karma-detect-browsers'
+  )
+  config.detectBrowsers = detectBrowsers
+  config.files = [
+    'node_modules/jquery/dist/jquery.slim.min.js',
+    {
+      pattern: 'js/tests/unit/jquery.spec.js',
+      watched: false
+    }
+  ]
 } else if (JQUERY_TEST) {
   frameworks.push('detectBrowsers')
   plugins.push(
@@ -164,7 +222,6 @@ if (BROWSERSTACK) {
 config.frameworks = frameworks
 config.plugins = plugins
 config.reporters = reporters
-
 module.exports = karmaConfig => {
   config.logLevel = karmaConfig.LOG_ERROR
   karmaConfig.set(config)
