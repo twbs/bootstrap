@@ -8,17 +8,12 @@ const { babel } = require('@rollup/plugin-babel')
 const istanbul = require('rollup-plugin-istanbul')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
 const replace = require('@rollup/plugin-replace')
-const { browsers } = require('./browsers')
+const { browsers } = require('./browsers-old')
 
 const ENV = process.env
-const LAMBDATEST = Boolean(ENV.LAMBDATEST)
+const BROWSERSTACK = Boolean(ENV.BROWSERSTACK)
 const DEBUG = Boolean(ENV.DEBUG)
 const JQUERY_TEST = Boolean(ENV.JQUERY)
-
-var webdriverConfig = {
-  hostname: 'hub.lambdatest.com',
-  port: 80
-}
 
 const frameworks = [
   'jasmine'
@@ -26,8 +21,7 @@ const frameworks = [
 
 const plugins = [
   'karma-jasmine',
-  'karma-rollup-preprocessor',
-  'karma-webdriver-launcher'
+  'karma-rollup-preprocessor'
 ]
 
 const reporters = ['dots']
@@ -70,7 +64,7 @@ const config = {
     'node_modules/hammer-simulator/index.js',
     {
       pattern: 'js/tests/unit/**/!(jquery).spec.js',
-      watched: !LAMBDATEST
+      watched: !BROWSERSTACK
     }
   ],
   preprocessors: {
@@ -106,21 +100,19 @@ const config = {
   }
 }
 
-if (LAMBDATEST) {
-  config.hostname = 'localhost.lambdatest.com',
-  Object.keys(browsers).map(key => {
-    browsers[key].base = 'WebDriver'
-    browsers[key].config = webdriverConfig
-    browsers[key].user = ENV.LT_USERNAME
-    browsers[key].accessKey = ENV.LT_ACCESS_KEY
-    browsers[key].build = `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`
-    browsers[key].project = 'Bootstrap'
-    browsers[key].tunnel = true
-    browsers[key].tunnelName = 'jasmine'
-  })
-  plugins.push('karma-jasmine', 'karma-jasmine-html-reporter')
+if (BROWSERSTACK) {
+  config.hostname = ip.address()
+  config.browserStack = {
+    username: ENV.BROWSER_STACK_USERNAME,
+    accessKey: ENV.BROWSER_STACK_ACCESS_KEY,
+    build: `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`,
+    project: 'Bootstrap',
+    retryLimit: 2
+  }
+  plugins.push('karma-browserstack-launcher', 'karma-jasmine-html-reporter')
   config.customLaunchers = browsers
   config.browsers = Object.keys(browsers)
+  reporters.push('BrowserStack', 'kjhtml')
 } else if (JQUERY_TEST) {
   frameworks.push('detectBrowsers')
   plugins.push(
@@ -172,6 +164,7 @@ if (LAMBDATEST) {
 config.frameworks = frameworks
 config.plugins = plugins
 config.reporters = reporters
+
 module.exports = karmaConfig => {
   config.logLevel = karmaConfig.LOG_ERROR
   karmaConfig.set(config)
