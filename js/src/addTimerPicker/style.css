@@ -1,0 +1,81 @@
+.time-picker {
+    font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 400px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  }
+ 
+
+
+
+ 
+  .time-picker-header {
+    display: flex;
+    justify-content: center;
+  
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 30px;
+  
+  }
+  
+  .time-picker-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #4b0082;
+  }
+  .btn-cancel,
+.btn-ok {
+  background-color: #4b0082;
+  border: 1px solid #4b0082;
+  color: #dddddd;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+ 
+}
+
+.btn-cancel:hover,
+.btn-ok:hover {
+  background-color: #dddddd;
+}
+  
+  .time-picker-body {
+   
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hour, .minute, .ampm {
+    font-size: 16px;
+    padding: 5px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #4b0082;
+  }
+  
+  .hour:focus, .minute:focus, .ampm:focus {
+    outline: none;
+    border-color: #4b0082;
+  }
+  
+  .hour option, .minute option, .ampm option {
+    color: #4b0082;
+  }
+  
+  span {
+    font-size: 16px;
+    color: #4b0082;
+  }
+  .select{
+    font-size: 20px;
+    color: #4b0082;
+  }
+ 
+  
