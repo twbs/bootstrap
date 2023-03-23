@@ -41,3 +41,4 @@ Thumbs.db
 /dist-sass/
 /js/coverage/
 /node_modules/
+.lambdatest
