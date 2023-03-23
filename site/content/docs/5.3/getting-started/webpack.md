@@ -130,7 +130,7 @@ With dependencies installed and our project folder ready for us to start coding,
      "scripts": {
        "start": "webpack serve",
        "build": "webpack build",
-       "test": "npm run build"
+       "test": "echo \"Error: no test specified\" && exit 1"
      },
      // ...
    }
