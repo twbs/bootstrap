@@ -9,7 +9,7 @@
     z-index: -1;
     display: block;
     content: "";
-    background-image: linear-gradient(to bottom, rgba(var(--bd-violet-rgb), 1), rgba(var(--bd-violet-rgb), .95));
+    background-image: linear-gradient(rgba(var(--bd-violet-rgb), 1), rgba(var(--bd-violet-rgb), .95));
   }
 
   .bd-navbar-toggle {
@@ -39,7 +39,7 @@
 
   .navbar-brand {
     color: $white;
-    transition: .2s ease-in-out transform; // stylelint-disable-line property-disallowed-list
+    @include transition(transform .2s ease-in-out);
 
     &:hover {
       transform: rotate(-5deg) scale(1.1);
@@ -115,6 +115,10 @@
         display: block !important; // stylelint-disable-line declaration-no-important
       }
     }
+  }
+
+  .dropdown-menu-end {
+    --bs-dropdown-min-width: 8rem;
   }
 }
 

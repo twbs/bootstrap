@@ -29,8 +29,8 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
 {{< bs-table "table" >}}
 | | Chrome | Firefox | Safari | Android Browser &amp; WebView |
 | --- | --- | --- | --- | --- |
-| **Android** | Supported | Supported | <span class="text-muted">&mdash;</span> | v6.0+ |
-| **iOS** | Supported | Supported | Supported | <span class="text-muted">&mdash;</span> |
+| **Android** | Supported | Supported | <span class="text-body-secondary">&mdash;</span> | v6.0+ |
+| **iOS** | Supported | Supported | Supported | <span class="text-body-secondary">&mdash;</span> |
 {{< /bs-table >}}
 
 ### Desktop browsers
@@ -41,7 +41,7 @@ Similarly, the latest versions of most desktop browsers are supported.
 | | Chrome | Firefox | Microsoft Edge | Opera | Safari |
 | --- | --- | --- | --- | --- | --- |
 | **Mac** | Supported | Supported | Supported | Supported | Supported |
-| **Windows** | Supported | Supported | Supported | Supported | <span class="text-muted">&mdash;</span> |
+| **Windows** | Supported | Supported | Supported | Supported | <span class="text-body-secondary">&mdash;</span> |
 {{< /bs-table >}}
 
 For Firefox, in addition to the latest normal stable release, we also support the latest [Extended Support Release (ESR)](https://www.mozilla.org/en-US/firefox/enterprise/) version of Firefox.

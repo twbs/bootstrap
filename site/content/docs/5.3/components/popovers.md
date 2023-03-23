@@ -167,7 +167,7 @@ const popover = new bootstrap.Popover(exampleEl, options)
 
 Avoid adding an excessive amount of content in popovers with the `html` option. Once popovers are displayed, their content is tied to the trigger element with the `aria-describedby` attribute, causing all of the popover's content to be announced to assistive technology users as one long, uninterrupted stream.
 
-Popovers do not manage keyboard focus order, and their placement can be random in the DOM, so be careful when adding interactive elements (like forms or links). In cases where you must use these elements, consider using a modal dialog to help keep content accessible and usable for keyboard users and users of assistive technologies.
+Popovers do not manage keyboard focus order, and their placement can be random in the DOM, so be careful when adding interactive elements (like forms or links), as it may lead to an illogical focus order or make the popover content itself completely unreachable for keyboard users. In cases where you must use these elements, consider using a modal dialog instead.
 {{< /callout >}}
 
 ### Options

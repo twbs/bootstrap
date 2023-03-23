@@ -37,7 +37,7 @@ Bootstrap should always be referred to as just **Bootstrap**. No capital _s_.
     <strong class="text-success">Correct</strong>
   </div>
   <div class="bd-brand-item w-100 px-2 py-5">
-    <div class="h3 text-muted">BootStrap</div>
+    <div class="h3 text-body-secondary">BootStrap</div>
     <strong class="text-danger">Incorrect</strong>
   </div>
 </div>
