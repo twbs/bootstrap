@@ -35,10 +35,8 @@ const dataDefinitions = {
       group: z.string(),
       baseurl: z.string().url(),
       description: z.string(),
-      versions: z
-        .object({
-          v: z.union([zVersionSemver, zVersionMajorMinor]),
-        })
+      versions:
+        z.union([zVersionSemver, zVersionMajorMinor])
         .array(),
     })
     .array(),

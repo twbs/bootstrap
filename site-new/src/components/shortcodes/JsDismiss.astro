@@ -9,7 +9,7 @@ const { name } = Astro.props
 ---
 
 <p>
-  Dismissal can be achieved with the <code>data</code> attribute on a button <strong>within the {name}</strong> as demonstrated
+  Dismissal can be achieved with the <code>data-bs-dismiss</code> attribute on a button <strong>within the {name}</strong> as demonstrated
   below:
 </p>
 
@@ -18,7 +18,7 @@ const { name } = Astro.props
   lang="html"
 />
 
-<p>or on a button <strong>outside the {name}</strong> using the <code>data-bs-target</code> as demonstrated below:</p>
+<p>or on a button <strong>outside the {name}</strong> using the additional <code>data-bs-target</code> as demonstrated below:</p>
 
 <Code
   code={`<button type="button" class="btn-close" data-bs-dismiss="${name}" data-bs-target="#my-${name}" aria-label="Close"></button>`}

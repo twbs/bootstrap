@@ -12,15 +12,15 @@ Bootstrap has a base `.btn` class that sets up basic styles such as padding and 
 
 <Example code={`<button type="button" class="btn">Base class</button>`} />
 
-The `.btn` class is intended to be used in conjunction with our additional predefined button styles, or to serve as a basis for your own custom styles.
+The `.btn` class is intended to be used in conjunction with our button variants, or to serve as a basis for your own custom styles.
 
 <Callout type="warning">
 If you are using the `.btn` class on its own, remember to at least define some explicit `:focus` and/or `:focus-visible` styles.
 </Callout>
 
-## Predefined styles
+## Variants
 
-Bootstrap includes several predefined button styles, each serving its own semantic purpose, with a few extras thrown in for more control.
+Bootstrap includes several button variants, each serving its own semantic purpose, with a few extras thrown in for more control.
 
 <Example code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn btn-${themeColor.name}">${themeColor.title}</button>`), `
 <button type="button" class="btn btn-link">Link</button>`]} />
