@@ -32,11 +32,11 @@ aliases: "/examples/"
             </h3>
             <p class="text-body-secondary">{{ $example.description }}</p>
             <p>
-              {{ $htmlIndexLocation := "index.html" }}
-              {{ if $example.htmlIndexLocation }}
-                {{ $htmlIndexLocation = printf "%s/index.html" $example.htmlIndexLocation }}
-              {{ end }}
-              <a class="icon-link small link-secondary link-offset-1" href="https://stackblitz.com/github/twbs{{ $example.url }}?file={{ $htmlIndexLocation | urlquery }}" target="_blank">
+              {{- $htmlIndexLocation := "index.html" -}}
+              {{- if $example.htmlIndexLocation -}}
+                {{- $htmlIndexLocation = printf "%s/index.html" $example.htmlIndexLocation -}}
+              {{- end }}
+              <a class="icon-link small link-secondary link-offset-1" href="https://stackblitz.com/github/twbs{{ $example.url }}?file={{ $htmlIndexLocation | urlquery }}" target="_blank" rel="noopener">
                 <svg class="bi flex-shrink-0"><use xlink:href="#lightning-charge-fill"></use></svg>
                 Edit in StackBlitz
               </a>
