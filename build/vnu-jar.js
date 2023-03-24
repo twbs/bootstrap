@@ -51,7 +51,7 @@ execFile('java', ['-version'], (error, stdout, stderr) => {
     args.splice(0, 0, '-Xss512k')
   }
 
-  console.log(`command used: java ${args}`)
+  console.log(`command used: java ${args.join(' ')}`)
 
   return spawn('java', args, {
     shell: true,
