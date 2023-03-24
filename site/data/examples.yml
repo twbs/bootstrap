@@ -14,15 +14,18 @@
     - name: Webpack
       description: "Import and bundle Bootstrap's source Sass and JavaScript with Webpack."
       url: /examples/tree/main/webpack
+      htmlIndexLocation: src
     - name: Parcel
       description: "Import and bundle Bootstrap's source Sass and JavaScript via Parcel."
       url: /examples/tree/main/parcel
+      htmlIndexLocation: src
     - name: Vite
       description: "Import and bundle Bootstrap's source Sass and JavaScript with Vite."
       url: /examples/tree/main/vite
+      htmlIndexLocation: src
     - name: Bootstrap Icons
       description: "Import and compile Bootstrap's Sass with Stylelint, PurgeCSS, and the Bootstrap Icons web font."
-      url: /examples/tree/main/bootstrap-icons
+      url: /examples/tree/main/icons-font
 
 - category: Snippets
   description: "Common patterns for building sites and apps that build on existing components and utilities with custom CSS and more."
