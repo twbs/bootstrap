@@ -18,6 +18,8 @@ execFile('java', ['-version'], (error, stdout, stderr) => {
     return
   }
 
+  console.log('Running vnu-jar validation...')
+
   const is32bitJava = !/64-Bit/.test(stderr)
 
   // vnu-jar accepts multiple ignores joined with a `|`.
@@ -49,7 +51,6 @@ execFile('java', ['-version'], (error, stdout, stderr) => {
     args.splice(0, 0, '-Xss512k')
   }
 
-  console.log('Running vnu-jar validation...')
   console.log(`command used: java ${args}`)
 
   return spawn('java', args, {
