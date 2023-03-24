@@ -38,15 +38,13 @@
       }]
     },
     options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: false
-          }
-        }]
-      },
-      legend: {
-        display: false
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          boxPadding: 3
+        }
       }
     }
   })

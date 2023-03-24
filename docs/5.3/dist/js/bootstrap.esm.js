@@ -1,13 +1,13 @@
 /*!
-  * Bootstrap v5.3.0-alpha1 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap v5.3.0-alpha2 (https://getbootstrap.com/)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 import * as Popper from '@popperjs/core';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): util/index.js
+ * Bootstrap util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -254,7 +254,7 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): dom/event-handler.js
+ * Bootstrap dom/event-handler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -476,7 +476,7 @@ function hydrateObj(obj, meta = {}) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): dom/data.js
+ * Bootstrap dom/data.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -524,7 +524,7 @@ const Data = {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): dom/manipulator.js
+ * Bootstrap dom/manipulator.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -581,7 +581,7 @@ const Manipulator = {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): util/config.js
+ * Bootstrap util/config.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -633,7 +633,7 @@ class Config {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): base-component.js
+ * Bootstrap base-component.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -642,7 +642,7 @@ class Config {
  * Constants
  */
 
-const VERSION = '5.3.0-alpha1';
+const VERSION = '5.3.0-alpha2';
 
 /**
  * Class definition
@@ -701,7 +701,7 @@ class BaseComponent extends Config {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): dom/selector-engine.js
+ * Bootstrap dom/selector-engine.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -789,7 +789,7 @@ const SelectorEngine = {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): util/component-functions.js
+ * Bootstrap util/component-functions.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -813,7 +813,7 @@ const enableDismissTrigger = (component, method = 'hide') => {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): alert.js
+ * Bootstrap alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -887,7 +887,7 @@ defineJQueryPlugin(Alert);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): button.js
+ * Bootstrap button.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -950,7 +950,7 @@ defineJQueryPlugin(Button);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): util/swipe.js
+ * Bootstrap util/swipe.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1069,7 +1069,7 @@ class Swipe extends Config {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): carousel.js
+ * Bootstrap carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1441,7 +1441,7 @@ defineJQueryPlugin(Carousel);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): collapse.js
+ * Bootstrap collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1674,7 +1674,7 @@ defineJQueryPlugin(Collapse);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): dropdown.js
+ * Bootstrap dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2041,7 +2041,7 @@ defineJQueryPlugin(Dropdown);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): util/scrollBar.js
+ * Bootstrap util/scrollBar.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2138,7 +2138,7 @@ class ScrollBarHelper {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): util/backdrop.js
+ * Bootstrap util/backdrop.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2262,7 +2262,7 @@ class Backdrop extends Config {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): util/focustrap.js
+ * Bootstrap util/focustrap.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2360,7 +2360,7 @@ class FocusTrap extends Config {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): modal.js
+ * Bootstrap modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2523,7 +2523,6 @@ class Modal extends BaseComponent {
         return;
       }
       if (this._config.keyboard) {
-        event.preventDefault();
         this.hide();
         return;
       }
@@ -2666,7 +2665,7 @@ defineJQueryPlugin(Modal);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): offcanvas.js
+ * Bootstrap offcanvas.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2824,11 +2823,11 @@ class Offcanvas extends BaseComponent {
       if (event.key !== ESCAPE_KEY) {
         return;
       }
-      if (!this._config.keyboard) {
-        EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED);
+      if (this._config.keyboard) {
+        this.hide();
         return;
       }
-      this.hide();
+      EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED);
     });
   }
 
@@ -2896,7 +2895,7 @@ defineJQueryPlugin(Offcanvas);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): util/sanitizer.js
+ * Bootstrap util/sanitizer.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2991,7 +2990,7 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): util/template-factory.js
+ * Bootstrap util/template-factory.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3126,7 +3125,7 @@ class TemplateFactory extends Config {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): tooltip.js
+ * Bootstrap tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3637,7 +3636,7 @@ defineJQueryPlugin(Tooltip);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): popover.js
+ * Bootstrap popover.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3717,7 +3716,7 @@ defineJQueryPlugin(Popover);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): scrollspy.js
+ * Bootstrap scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3976,7 +3975,7 @@ defineJQueryPlugin(ScrollSpy);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): tab.js
+ * Bootstrap tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4155,7 +4154,7 @@ class Tab extends BaseComponent {
     }
     this._setAttributeIfNotExists(target, 'role', 'tabpanel');
     if (child.id) {
-      this._setAttributeIfNotExists(target, 'aria-labelledby', `#${child.id}`);
+      this._setAttributeIfNotExists(target, 'aria-labelledby', `${child.id}`);
     }
   }
   _toggleDropDown(element, open) {
@@ -4237,7 +4236,7 @@ defineJQueryPlugin(Tab);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): toast.js
+ * Bootstrap toast.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

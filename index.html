@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.108.0">
+<meta name="generator" content="Hugo 0.111.3">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -36,16 +36,16 @@
 <meta name="twitter:creator" content="@getbootstrap">
 <meta name="twitter:title" content="Bootstrap">
 <meta name="twitter:description" content="Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.">
-<meta name="twitter:image" content="/docs/5.3/assets/brand/bootstrap-social.png">
+<meta name="twitter:image" content="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-social.png">
 
 <meta property="og:url" content="https://getbootstrap.com/">
 <meta property="og:title" content="Bootstrap">
 <meta property="og:description" content="Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-social.png">
 <meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1000">
-<meta property="og:image:height" content="500">
-<meta property="og:image" content="/docs/5.3/assets/brand/bootstrap-social.png">
+<meta property="og:image:width" content="2000">
+<meta property="og:image:height" content="1000">
 
 <script defer src="https://cdn.usefathom.com/script.js" data-site="ITUSEYJG"></script>
 
@@ -68,8 +68,8 @@
 </div>
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-  <symbol id="arrow-right-short" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+  <symbol id="arrow-right" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
   </symbol>
   <symbol id="book-half" viewBox="0 0 16 16">
     <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
@@ -263,27 +263,28 @@
                     type="button"
                     aria-expanded="false"
                     data-bs-toggle="dropdown"
-                    data-bs-display="static">
+                    data-bs-display="static"
+                    aria-label="Toggle theme (auto)">
               <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
-              <span class="d-lg-none ms-2">Toggle theme</span>
+              <span class="d-lg-none ms-2" id="bd-theme-text">Toggle theme</span>
             </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme" style="--bs-dropdown-min-width: 8rem;">
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
               <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
                   <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
                   Light
                   <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
                 </button>
               </li>
               <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
                   <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
                   Dark
                   <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
                 </button>
               </li>
               <li>
-                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto">
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
                   <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
                   Auto
                   <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
@@ -305,24 +306,24 @@
     <div class="col-md-8 mx-auto text-center">
       <a class="d-flex flex-column flex-lg-row justify-content-center align-items-center mb-4 text-dark lh-sm text-decoration-none" href="https://blog.getbootstrap.com/">
         <strong class="d-sm-inline-block p-2 me-2 mb-2 mb-lg-0 rounded-3 masthead-notice">New in v5.3</strong>
-        <span class="text-muted">Color mode support, expanded color palette, and more!</span>
+        <span class="text-body-secondary">Color mode support, expanded color palette, and more!</span>
       </a>
-      <img src="/docs/5.3/assets/brand/bootstrap-logo-shadow.png" width="200" height="165" alt="Bootstrap" class="d-block mx-auto mb-3">
+      <img src="/docs/5.3/assets/brand/bootstrap-logo-shadow.png" width="200" height="165" alt="Bootstrap" class="d-none d-sm-block mx-auto mb-3">
       <h1 class="mb-3 fw-semibold lh-1">Build fast, responsive sites with&nbsp;Bootstrap</h1>
       <p class="lead mb-4">
         Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.
       </p>
       <div class="d-flex flex-column flex-lg-row align-items-md-stretch justify-content-md-center gap-3 mb-4">
         <div class="d-inline-block v-align-middle fs-5">
-          <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npm i bootstrap@5.3.0-alpha1</span></span></code></pre></div>
+          <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npm i bootstrap@5.3.0-alpha2</span></span></code></pre></div>
         </div>
         <a href="/docs/5.3/getting-started/introduction/" class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold" onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">
           <svg class="bi me-2" aria-hidden="true"><use xlink:href="#book-half"></use></svg>
           Read the docs
         </a>
       </div>
-      <p class="text-muted mb-0">
-        Currently <strong>v5.3.0-alpha1</strong>
+      <p class="text-body-secondary mb-0">
+        Currently <strong>v5.3.0-alpha2</strong>
         <span class="px-1">&middot;</span>
         <a href="/docs/5.3/getting-started/download/" class="link-secondary">Download</a>
         <span class="px-1">&middot;</span>
@@ -346,34 +347,34 @@
     Jump right into building with Bootstrap—use the CDN, install it via package manager, or download the source code.
   </p>
   <p class="d-flex justify-content-md-start justify-content-md-center lead fw-normal">
-    <a href="/docs/5.3/getting-started/download/" class="icon-link fw-semibold justify-content-center ps-md-4">
+    <a href="/docs/5.3/getting-started/download/" class="icon-link icon-link-hover fw-semibold ps-md-4">
       Read installation docs
-      <svg class="bi"><use xlink:href="#arrow-right-short"></use></svg>
+      <svg class="bi"><use xlink:href="#arrow-right"></use></svg>
     </a>
   </p>
 </div>
 
 <section class="row g-3 g-md-5 mb-5 pb-5 justify-content-center">
   <div class="col-lg-6 py-lg-4 pe-lg-5">
-    <svg class="bi mb-2 fs-2 text-muted"><use xlink:href="#box-seam"></use></svg>
+    <svg class="bi mb-2 fs-2 text-body-secondary"><use xlink:href="#box-seam"></use></svg>
     <h3 class="fw-semibold">Install via package manager</h3>
     <p class="pe-lg-5">
-      Install Bootstrap’s source Sass and JavaScript files via npm, RubyGems, Composer, or Meteor. Package managed installs don’t include documentation or our full build scripts. You can also <a href="https://github.com/twbs/bootstrap-npm-starter">use our npm template repo</a> to quickly generate a Bootstrap project via npm.
+      Install Bootstrap’s source Sass and JavaScript files via npm, RubyGems, Composer, or Meteor. Package managed installs don’t include documentation or our full build scripts. You can also <a href="https://github.com/twbs/examples/">use any demo from our Examples repo</a> to quickly jumpstart Bootstrap projects.
     </p>
-    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npm install bootstrap@5.3.0-alpha1</span></span></code></pre></div>
-    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">gem install bootstrap -v 5.3.0-alpha1</span></span></code></pre></div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npm install bootstrap@5.3.0-alpha2</span></span></code></pre></div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">gem install bootstrap -v 5.3.0-alpha2</span></span></code></pre></div>
     <p>
       <a href="/docs/5.3/getting-started/download/">Read our installation docs</a> for more info and additional package managers.
     </p>
   </div>
   <div class="col-lg-6 py-lg-4 ps-lg-5 border-lg-start">
-    <svg class="bi mb-2 fs-2 text-muted"><use xlink:href="#globe2"></use></svg>
+    <svg class="bi mb-2 fs-2 text-body-secondary"><use xlink:href="#globe2"></use></svg>
     <h3 class="fw-semibold">Include via CDN</h3>
     <p class="pe-lg-5">
       When you only need to include Bootstrap’s compiled CSS or JS, you can use <a href="https://www.jsdelivr.com/package/npm/bootstrap">jsDelivr</a>. See it in action with our simple <a href="/docs/5.3/getting-started/introduction/#quick-start">quick start</a>, or <a href="/docs/5.3/examples/">browse the examples</a> to jumpstart your next project. You can also choose to include Popper and our JS <a href="/docs/5.3/getting-started/introduction/#separate">separately</a>.
     </p>
-    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD&#34;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;</span></span></span></code></pre></div>
-    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js&#34;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN&#34;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span></span></code></pre></div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp&#34;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;</span></span></span></code></pre></div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js&#34;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N&#34;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span></span></code></pre></div>
   </div>
 
   <div class="col-md-8 mx-auto text-center">
@@ -382,15 +383,15 @@
     <div class="d-flex flex-wrap align-items-center justify-content-center gap-4 mt-4">
       <a class="d-flex flex-column align-items-center text-decoration-none animate-img" href="/docs/5.3/getting-started/webpack">
         <img class="d-block mb-2" src="/docs/5.3/assets/img/webpack.svg" alt="" width="72" height="72" loading="lazy">
-        <span class="text-muted">Webpack</span>
+        <span class="text-body-secondary">Webpack</span>
       </a>
       <a class="d-flex flex-column align-items-center text-decoration-none animate-img" href="/docs/5.3/getting-started/parcel">
         <img class="d-block mb-2" src="/docs/5.3/assets/img/parcel.png" alt="" width="72" height="72" loading="lazy">
-        <span class="text-muted">Parcel</span>
+        <span class="text-body-secondary">Parcel</span>
       </a>
       <a class="d-flex flex-column align-items-center text-decoration-none animate-img" href="/docs/5.3/getting-started/vite">
         <img class="d-block mb-2" src="/docs/5.3/assets/img/vite.svg" alt="" width="72" height="72" loading="lazy">
-        <span class="text-muted">Vite</span>
+        <span class="text-body-secondary">Vite</span>
       </a>
     </div>
   </div>
@@ -405,9 +406,9 @@
     Bootstrap utilizes Sass for a modular and customizable architecture. Import only the components you need, enable global options like gradients and shadows, and write your own CSS with our variables, maps, functions, and mixins.
   </p>
   <p class="d-flex justify-content-start lead fw-normal">
-    <a href="/docs/5.3/customize/overview/" class="icon-link fw-semibold">
+    <a href="/docs/5.3/customize/overview/" class="icon-link icon-link-hover fw-semibold">
       Learn more about customizing
-      <svg class="bi"><use xlink:href="#arrow-right-short"></use></svg>
+      <svg class="bi"><use xlink:href="#arrow-right"></use></svg>
     </a>
   </p>
 </section>
@@ -465,9 +466,9 @@
       Bootstrap 5 is evolving with each release to better utilize CSS variables for global theme styles, individual components, and even utilities. We provide dozens of variables for colors, font styles, and more at a <code>:root</code> level for use anywhere. On components and utilities, CSS variables are scoped to the relevant class and can easily be modified.
     </p>
     <p class="d-flex align-items-start flex-column lead fw-normal mb-0">
-      <a href="/docs/5.3/customize/css-variables/" class="icon-link fw-semibold mb-3">
+      <a href="/docs/5.3/customize/css-variables/" class="icon-link icon-link-hover fw-semibold mb-3">
         Learn more about CSS variables
-        <svg class="bi"><use xlink:href="#arrow-right-short"></use></svg>
+        <svg class="bi"><use xlink:href="#arrow-right"></use></svg>
       </a>
     </p>
   </div>
@@ -509,7 +510,7 @@
     <div class="masthead-followup-icon d-inline-block mb-3 me-2" style="--bg-rgb: var(--bs-danger-rgb);">
       <svg class="bi fs-1"><use xlink:href="#menu-button-wide-fill"></use></svg>
     </div>
-    <svg class="bi me-2 fs-2 text-muted"><use xlink:href="#plus"></use></svg>
+    <svg class="bi me-2 fs-2 text-body-secondary"><use xlink:href="#plus"></use></svg>
     <div class="masthead-followup-icon d-inline-block mb-3" style="--bg-rgb: var(--bs-info-rgb);">
       <svg class="bi fs-1"><use xlink:href="#braces-asterisk"></use></svg>
     </div>
@@ -559,9 +560,9 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </span></span></code></pre></div>
       <p class="d-flex justify-content-start mb-md-0">
-        <a href="/docs/5.3/examples#snippets" class="icon-link fw-semibold">
+        <a href="/docs/5.3/examples#snippets" class="icon-link icon-link-hover fw-semibold">
           Explore customized components
-          <svg class="bi"><use xlink:href="#arrow-right-short"></use></svg>
+          <svg class="bi"><use xlink:href="#arrow-right"></use></svg>
         </a>
       </p>
     </div>
@@ -584,9 +585,9 @@
 </span></span></code></pre></div>
 
       <p class="d-flex justify-content-start mb-md-0">
-        <a href="/docs/5.3/utilities/api/" class="icon-link fw-semibold mb-3">
+        <a href="/docs/5.3/utilities/api/" class="icon-link icon-link-hover fw-semibold mb-3">
           Explore the utility API
-          <svg class="bi"><use xlink:href="#arrow-right-short"></use></svg>
+          <svg class="bi"><use xlink:href="#arrow-right"></use></svg>
         </a>
       </p>
     </div>
@@ -603,9 +604,9 @@
       Add toggleable hidden elements, modals and offcanvas menus, popovers and tooltips, and so much more—all without jQuery. Bootstrap's JavaScript is HTML-first, meaning most plugins are added with <code>data</code> attributes in your HTML. Need more control? Include individual plugins programmatically.
     </p>
     <p class="d-flex justify-content-start lead fw-normal mb-md-0">
-      <a href="/docs/5.3/getting-started/javascript/" class="icon-link fw-semibold">
+      <a href="/docs/5.3/getting-started/javascript/" class="icon-link icon-link-hover fw-semibold">
         Learn more about Bootstrap JavaScript
-        <svg class="bi"><use xlink:href="#arrow-right-short"></use></svg>
+        <svg class="bi"><use xlink:href="#arrow-right"></use></svg>
       </a>
     </p>
   </div>
@@ -627,14 +628,14 @@
       </div>
 
       <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-primary dropdown-toggle&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-bs-toggle</span><span class="o">=</span><span class="s">&#34;dropdown&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  Dropdown
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-menu&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-item&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span><span class="p">&gt;</span>Dropdown item<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-item&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span><span class="p">&gt;</span>Dropdown item<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-item&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span><span class="p">&gt;</span>Dropdown item<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-primary dropdown-toggle&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">data-bs-toggle</span><span class="o">=</span><span class="s">&#34;dropdown&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;false&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    Dropdown
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-menu&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-item&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span><span class="p">&gt;</span>Dropdown item<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-item&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span><span class="p">&gt;</span>Dropdown item<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-item&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span><span class="p">&gt;</span>Dropdown item<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span></code></pre></div>
       <p>Learn more about <a href="/docs/5.3/getting-started/javascript/#using-bootstrap-as-a-module">our JavaScript as modules</a> and <a href="/docs/5.3/getting-started/javascript/#programmatic-api">using the programmatic API</a>.</p>
@@ -647,73 +648,73 @@
           <div class="col-sm-6 mb-2">
             <a class="d-block pe-lg-4 text-decoration-none lh-sm" href="/docs/5.3/components/alerts/#javascript-behavior">
               <h4 class="mb-0 fs-5 fw-semibold">Alert</h4>
-              <small class="text-muted">Show and hide alert messages to your users.</small>
+              <small class="text-body-secondary">Show and hide alert messages to your users.</small>
             </a>
           </div>
           <div class="col-sm-6 mb-2">
             <a class="d-block pe-lg-4 text-decoration-none lh-sm" href="/docs/5.3/components/buttons/#button-plugin">
               <h4 class="mb-0 fs-5 fw-semibold">Button</h4>
-              <small class="text-muted">Programmatically control the active state for buttons.</small>
+              <small class="text-body-secondary">Programmatically control the active state for buttons.</small>
             </a>
           </div>
           <div class="col-sm-6 mb-2">
             <a class="d-block pe-lg-4 text-decoration-none lh-sm" href="/docs/5.3/components/carousel/">
               <h4 class="mb-0 fs-5 fw-semibold">Carousel</h4>
-              <small class="text-muted">Add slideshows to any page, including support for crossfade.</small>
+              <small class="text-body-secondary">Add slideshows to any page, including support for crossfade.</small>
             </a>
           </div>
           <div class="col-sm-6 mb-2">
             <a class="d-block pe-lg-4 text-decoration-none lh-sm" href="/docs/5.3/components/collapse/">
               <h4 class="mb-0 fs-5 fw-semibold">Collapse</h4>
-              <small class="text-muted">Expand and collapse areas of content, or create accordions.</small>
+              <small class="text-body-secondary">Expand and collapse areas of content, or create accordions.</small>
             </a>
           </div>
           <div class="col-sm-6 mb-2">
             <a class="d-block pe-lg-4 text-decoration-none lh-sm" href="/docs/5.3/components/dropdowns/">
               <h4 class="mb-0 fs-5 fw-semibold">Dropdown</h4>
-              <small class="text-muted">Create menus of links, actions, forms, and more.</small>
+              <small class="text-body-secondary">Create menus of links, actions, forms, and more.</small>
             </a>
           </div>
           <div class="col-sm-6 mb-2">
             <a class="d-block pe-lg-4 text-decoration-none lh-sm" href="/docs/5.3/components/modal/">
               <h4 class="mb-0 fs-5 fw-semibold">Modal</h4>
-              <small class="text-muted">Add flexible and responsive dialogs to your project.</small>
+              <small class="text-body-secondary">Add flexible and responsive dialogs to your project.</small>
             </a>
           </div>
           <div class="col-sm-6 mb-2">
             <a class="d-block pe-lg-4 text-decoration-none lh-sm" href="/docs/5.3/components/offcanvas/">
               <h4 class="mb-0 fs-5 fw-semibold">Offcanvas</h4>
-              <small class="text-muted">Build and toggle hidden sidebars into any page.</small>
+              <small class="text-body-secondary">Build and toggle hidden sidebars into any page.</small>
             </a>
           </div>
           <div class="col-sm-6 mb-2">
             <a class="d-block pe-lg-4 text-decoration-none lh-sm" href="/docs/5.3/components/popovers/">
               <h4 class="mb-0 fs-5 fw-semibold">Popover</h4>
-              <small class="text-muted">Create custom overlays. Built on Popper.</small>
+              <small class="text-body-secondary">Create custom overlays. Built on Popper.</small>
             </a>
           </div>
           <div class="col-sm-6 mb-2">
             <a class="d-block pe-lg-4 text-decoration-none lh-sm" href="/docs/5.3/components/scrollspy/">
               <h4 class="mb-0 fs-5 fw-semibold">Scrollspy</h4>
-              <small class="text-muted">Automatically update active nav links based on page scroll.</small>
+              <small class="text-body-secondary">Automatically update active nav links based on page scroll.</small>
             </a>
           </div>
           <div class="col-sm-6 mb-2">
             <a class="d-block pe-lg-4 text-decoration-none lh-sm" href="/docs/5.3/components/navs-tabs/">
               <h4 class="mb-0 fs-5 fw-semibold">Tab</h4>
-              <small class="text-muted">Allow Bootstrap nav components to toggle contents.</small>
+              <small class="text-body-secondary">Allow Bootstrap nav components to toggle contents.</small>
             </a>
           </div>
           <div class="col-sm-6 mb-2">
             <a class="d-block pe-lg-4 text-decoration-none lh-sm" href="/docs/5.3/components/toasts/">
               <h4 class="mb-0 fs-5 fw-semibold">Toast</h4>
-              <small class="text-muted">Show and hide notifications to your visitors.</small>
+              <small class="text-body-secondary">Show and hide notifications to your visitors.</small>
             </a>
           </div>
           <div class="col-sm-6 mb-2">
             <a class="d-block pe-lg-4 text-decoration-none lh-sm" href="/docs/5.3/components/tooltips/">
               <h4 class="mb-0 fs-5 fw-semibold">Tooltip</h4>
-              <small class="text-muted">Replace browser tooltips with custom ones. Built on Popper.</small>
+              <small class="text-body-secondary">Replace browser tooltips with custom ones. Built on Popper.</small>
             </a>
           </div>
       </div>
@@ -736,9 +737,9 @@
       <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a> is an open source SVG icon library featuring over 1,800 glyphs, with more added every release. They're designed to work in any project, whether you use Bootstrap itself or not. Use them as SVGs or icon fonts—both options give you vector scaling and easy customization via CSS.
     </p>
     <p class="d-flex justify-content-start lead fw-normal mb-md-0">
-      <a href="https://icons.getbootstrap.com/" class="icon-link fw-semibold">
+      <a href="https://icons.getbootstrap.com/" class="icon-link icon-link-hover fw-semibold">
         Get Bootstrap Icons
-        <svg class="bi"><use xlink:href="#arrow-right-short"></use></svg>
+        <svg class="bi"><use xlink:href="#arrow-right"></use></svg>
       </a>
     </p>
   </div>
@@ -763,9 +764,9 @@
       Take Bootstrap to the next level with premium themes from the <a href="https://themes.getbootstrap.com/">official Bootstrap Themes marketplace</a>. Themes are built on Bootstrap as their own extended frameworks, rich with new components and plugins, documentation, and powerful build tools.
     </p>
     <p class="d-flex justify-content-start lead fw-normal mb-md-0">
-      <a href="https://themes.getbootstrap.com/" class="icon-link fw-semibold">
+      <a href="https://themes.getbootstrap.com/" class="icon-link icon-link-hover fw-semibold">
         Browse Bootstrap Themes
-        <svg class="bi"><use xlink:href="#arrow-right-short"></use></svg>
+        <svg class="bi"><use xlink:href="#arrow-right"></use></svg>
       </a>
     </p>
   </div>
@@ -787,14 +788,14 @@
   <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
     <div class="row">
       <div class="col-lg-3 mb-3">
-        <a class="d-inline-flex align-items-center mb-2 text-body-secondary text-decoration-none" href="/" aria-label="Bootstrap">
+        <a class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="/" aria-label="Bootstrap">
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="d-block me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"/></svg>
           <span class="fs-5">Bootstrap</span>
         </a>
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha1.</li>
+          <li class="mb-2">Currently v5.3.0-alpha2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -826,7 +827,7 @@
           <li class="mb-2"><a href="https://github.com/twbs/bootstrap/tree/v4-dev">Bootstrap 4</a></li>
           <li class="mb-2"><a href="https://github.com/twbs/icons">Icons</a></li>
           <li class="mb-2"><a href="https://github.com/twbs/rfs">RFS</a></li>
-          <li class="mb-2"><a href="https://github.com/twbs/bootstrap-npm-starter">npm starter</a></li>
+          <li class="mb-2"><a href="https://github.com/twbs/examples/">Examples repo</a></li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 mb-3">
@@ -843,7 +844,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 
 
 
