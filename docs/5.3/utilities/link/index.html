@@ -773,55 +773,54 @@
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
         </button>
       </div>
-    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl">    <span class="s2">&#34;link-opacity&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">css-var</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">link-opacity</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">state</span><span class="nd">:</span> <span class="nt">hover</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">10</span><span class="nd">:</span> <span class="nc">.1</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">25</span><span class="nd">:</span> <span class="nc">.25</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">50</span><span class="nd">:</span> <span class="nc">.5</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">75</span><span class="nd">:</span> <span class="nc">.75</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">100</span><span class="nd">:</span> <span class="nt">1</span>
-</span></span><span class="line"><span class="cl">      <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;link-offset&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">text-underline-offset</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">link-offset</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">state</span><span class="nd">:</span> <span class="nt">hover</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">1</span><span class="nd">:</span> <span class="nc">.125em</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">2</span><span class="nd">:</span> <span class="nc">.25em</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">3</span><span class="nd">:</span> <span class="nc">.375em</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;link-underline&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">text-decoration-color</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">link-underline</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">local-vars</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;link-underline-opacity&#34;</span><span class="nd">:</span> <span class="nt">1</span>
-</span></span><span class="line"><span class="cl">      <span class="o">),</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="nt">map-merge</span><span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="err">$</span><span class="nt">utilities-links-underline</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="o">(</span>
-</span></span><span class="line"><span class="cl">          <span class="nt">null</span><span class="nd">:</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">link-color-rgb</span><span class="o">),</span> <span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">link-underline-opacity</span><span class="o">,</span> <span class="nt">1</span><span class="o">)),</span>
-</span></span><span class="line"><span class="cl">        <span class="o">)</span>
-</span></span><span class="line"><span class="cl">      <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;link-underline-opacity&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">css-var</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">link-underline-opacity</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">state</span><span class="nd">:</span> <span class="nt">hover</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">0</span><span class="nd">:</span> <span class="nt">0</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">10</span><span class="nd">:</span> <span class="nc">.1</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">25</span><span class="nd">:</span> <span class="nc">.25</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">50</span><span class="nd">:</span> <span class="nc">.5</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">75</span><span class="nd">:</span> <span class="nc">.75</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">100</span><span class="nd">:</span> <span class="nt">1</span>
-</span></span><span class="line"><span class="cl">      <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    </span></span></code></pre></div></div>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="s2">&#34;link-opacity&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">css-var</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">link-opacity</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">state</span><span class="nd">:</span> <span class="nt">hover</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">10</span><span class="nd">:</span> <span class="nc">.1</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">25</span><span class="nd">:</span> <span class="nc">.25</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">50</span><span class="nd">:</span> <span class="nc">.5</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">75</span><span class="nd">:</span> <span class="nc">.75</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">100</span><span class="nd">:</span> <span class="nt">1</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;link-offset&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">text-underline-offset</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">link-offset</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">state</span><span class="nd">:</span> <span class="nt">hover</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">1</span><span class="nd">:</span> <span class="nc">.125em</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">2</span><span class="nd">:</span> <span class="nc">.25em</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">3</span><span class="nd">:</span> <span class="nc">.375em</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;link-underline&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">text-decoration-color</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">link-underline</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">local-vars</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;link-underline-opacity&#34;</span><span class="nd">:</span> <span class="nt">1</span>
+</span></span><span class="line"><span class="cl">  <span class="o">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="nt">map-merge</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="err">$</span><span class="nt">utilities-links-underline</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="o">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">null</span><span class="nd">:</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">link-color-rgb</span><span class="o">),</span> <span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">link-underline-opacity</span><span class="o">,</span> <span class="nt">1</span><span class="o">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;link-underline-opacity&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">css-var</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">link-underline-opacity</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">state</span><span class="nd">:</span> <span class="nt">hover</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">0</span><span class="nd">:</span> <span class="nt">0</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">10</span><span class="nd">:</span> <span class="nc">.1</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">25</span><span class="nd">:</span> <span class="nc">.25</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">50</span><span class="nd">:</span> <span class="nc">.5</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">75</span><span class="nd">:</span> <span class="nc">.75</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">100</span><span class="nd">:</span> <span class="nt">1</span>
+</span></span><span class="line"><span class="cl">  <span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span></span></span></code></pre></div></div>
 
       </div>
     </main>

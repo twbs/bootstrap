@@ -1513,103 +1513,102 @@
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
         </button>
       </div>
-    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl">    <span class="s2">&#34;flex&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">flex</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span><span class="nt">fill</span><span class="nd">:</span> <span class="nt">1</span> <span class="nt">1</span> <span class="nt">auto</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;flex-direction&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">flex-direction</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">flex</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="nt">row</span> <span class="nt">column</span> <span class="nt">row-reverse</span> <span class="nt">column-reverse</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;flex-grow&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">flex-grow</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">flex</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">grow-0</span><span class="nd">:</span> <span class="nt">0</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">grow-1</span><span class="nd">:</span> <span class="nt">1</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;flex-shrink&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">flex-shrink</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">flex</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">shrink-0</span><span class="nd">:</span> <span class="nt">0</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">shrink-1</span><span class="nd">:</span> <span class="nt">1</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;flex-wrap&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">flex-wrap</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">flex</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="nt">wrap</span> <span class="nt">nowrap</span> <span class="nt">wrap-reverse</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;justify-content&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">justify-content</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">start</span><span class="nd">:</span> <span class="nt">flex-start</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">end</span><span class="nd">:</span> <span class="nt">flex-end</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">center</span><span class="nd">:</span> <span class="nt">center</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">between</span><span class="nd">:</span> <span class="nt">space-between</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">around</span><span class="nd">:</span> <span class="nt">space-around</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">evenly</span><span class="nd">:</span> <span class="nt">space-evenly</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;align-items&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">align-items</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">start</span><span class="nd">:</span> <span class="nt">flex-start</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">end</span><span class="nd">:</span> <span class="nt">flex-end</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">center</span><span class="nd">:</span> <span class="nt">center</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">baseline</span><span class="nd">:</span> <span class="nt">baseline</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">stretch</span><span class="nd">:</span> <span class="nt">stretch</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;align-content&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">align-content</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">start</span><span class="nd">:</span> <span class="nt">flex-start</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">end</span><span class="nd">:</span> <span class="nt">flex-end</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">center</span><span class="nd">:</span> <span class="nt">center</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">between</span><span class="nd">:</span> <span class="nt">space-between</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">around</span><span class="nd">:</span> <span class="nt">space-around</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">stretch</span><span class="nd">:</span> <span class="nt">stretch</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;align-self&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">align-self</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">auto</span><span class="nd">:</span> <span class="nt">auto</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">start</span><span class="nd">:</span> <span class="nt">flex-start</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">end</span><span class="nd">:</span> <span class="nt">flex-end</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">center</span><span class="nd">:</span> <span class="nt">center</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">baseline</span><span class="nd">:</span> <span class="nt">baseline</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">stretch</span><span class="nd">:</span> <span class="nt">stretch</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;order&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">order</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">first</span><span class="nd">:</span> <span class="o">-</span><span class="nt">1</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">0</span><span class="nd">:</span> <span class="nt">0</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">1</span><span class="nd">:</span> <span class="nt">1</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">2</span><span class="nd">:</span> <span class="nt">2</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">3</span><span class="nd">:</span> <span class="nt">3</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">4</span><span class="nd">:</span> <span class="nt">4</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">5</span><span class="nd">:</span> <span class="nt">5</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">last</span><span class="nd">:</span> <span class="nt">6</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    </span></span></code></pre></div></div>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="s2">&#34;flex&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">flex</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span><span class="nt">fill</span><span class="nd">:</span> <span class="nt">1</span> <span class="nt">1</span> <span class="nt">auto</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;flex-direction&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">flex-direction</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">flex</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="nt">row</span> <span class="nt">column</span> <span class="nt">row-reverse</span> <span class="nt">column-reverse</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;flex-grow&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">flex-grow</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">flex</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">grow-0</span><span class="nd">:</span> <span class="nt">0</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">grow-1</span><span class="nd">:</span> <span class="nt">1</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;flex-shrink&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">flex-shrink</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">flex</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">shrink-0</span><span class="nd">:</span> <span class="nt">0</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">shrink-1</span><span class="nd">:</span> <span class="nt">1</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;flex-wrap&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">flex-wrap</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">flex</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="nt">wrap</span> <span class="nt">nowrap</span> <span class="nt">wrap-reverse</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;justify-content&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">justify-content</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">start</span><span class="nd">:</span> <span class="nt">flex-start</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">end</span><span class="nd">:</span> <span class="nt">flex-end</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">center</span><span class="nd">:</span> <span class="nt">center</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">between</span><span class="nd">:</span> <span class="nt">space-between</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">around</span><span class="nd">:</span> <span class="nt">space-around</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">evenly</span><span class="nd">:</span> <span class="nt">space-evenly</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;align-items&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">align-items</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">start</span><span class="nd">:</span> <span class="nt">flex-start</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">end</span><span class="nd">:</span> <span class="nt">flex-end</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">center</span><span class="nd">:</span> <span class="nt">center</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">baseline</span><span class="nd">:</span> <span class="nt">baseline</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">stretch</span><span class="nd">:</span> <span class="nt">stretch</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;align-content&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">align-content</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">start</span><span class="nd">:</span> <span class="nt">flex-start</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">end</span><span class="nd">:</span> <span class="nt">flex-end</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">center</span><span class="nd">:</span> <span class="nt">center</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">between</span><span class="nd">:</span> <span class="nt">space-between</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">around</span><span class="nd">:</span> <span class="nt">space-around</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">stretch</span><span class="nd">:</span> <span class="nt">stretch</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;align-self&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">align-self</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">auto</span><span class="nd">:</span> <span class="nt">auto</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">start</span><span class="nd">:</span> <span class="nt">flex-start</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">end</span><span class="nd">:</span> <span class="nt">flex-end</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">center</span><span class="nd">:</span> <span class="nt">center</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">baseline</span><span class="nd">:</span> <span class="nt">baseline</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">stretch</span><span class="nd">:</span> <span class="nt">stretch</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;order&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">order</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">first</span><span class="nd">:</span> <span class="o">-</span><span class="nt">1</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">0</span><span class="nd">:</span> <span class="nt">0</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">1</span><span class="nd">:</span> <span class="nt">1</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">2</span><span class="nd">:</span> <span class="nt">2</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">3</span><span class="nd">:</span> <span class="nt">3</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">4</span><span class="nd">:</span> <span class="nt">4</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">5</span><span class="nd">:</span> <span class="nt">5</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">last</span><span class="nd">:</span> <span class="nt">6</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span></span></span></code></pre></div></div>
 
       </div>
     </main>

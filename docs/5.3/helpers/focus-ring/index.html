@@ -622,10 +622,9 @@
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
         </button>
       </div>
-    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl">  <span class="na">--#{$prefix}focus-ring-width</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$focus-ring-width</span><span class="si">}</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="na">--#{$prefix}focus-ring-opacity</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$focus-ring-opacity</span><span class="si">}</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="na">--#{$prefix}focus-ring-color</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$focus-ring-color</span><span class="si">}</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  </span></span></code></pre></div></div>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="na">--#{$prefix}focus-ring-width</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$focus-ring-width</span><span class="si">}</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">--#{$prefix}focus-ring-opacity</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$focus-ring-opacity</span><span class="si">}</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">--#{$prefix}focus-ring-color</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$focus-ring-color</span><span class="si">}</span><span class="p">;</span></span></span></code></pre></div></div>
 <p>By default, there is no <code>--bs-focus-ring-x</code>, <code>--bs-focus-ring-y</code>, or <code>--bs-focus-ring-blur</code>, but we provide CSS variables with fallbacks to initial <code>0</code> values. Modify them to change the default appearance.</p>
 <div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
 <a href="#" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" style="--bs-focus-ring-x: 10px; --bs-focus-ring-y: 10px; --bs-focus-ring-blur: 4px">
@@ -701,13 +700,12 @@
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
         </button>
       </div>
-    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl">    <span class="s2">&#34;focus-ring&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">css-var</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">css-variable-name</span><span class="nd">:</span> <span class="nt">focus-ring-color</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">focus-ring</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="nt">map-loop</span><span class="o">(</span><span class="err">$</span><span class="nt">theme-colors-rgb</span><span class="o">,</span> <span class="nt">rgba-css-var</span><span class="o">,</span> <span class="s2">&#34;$key&#34;</span><span class="o">,</span> <span class="s2">&#34;focus-ring&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    </span></span></code></pre></div></div>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="s2">&#34;focus-ring&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">css-var</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">css-variable-name</span><span class="nd">:</span> <span class="nt">focus-ring-color</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">focus-ring</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="nt">map-loop</span><span class="o">(</span><span class="err">$</span><span class="nt">theme-colors-rgb</span><span class="o">,</span> <span class="nt">rgba-css-var</span><span class="o">,</span> <span class="s2">&#34;$key&#34;</span><span class="o">,</span> <span class="s2">&#34;focus-ring&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span></span></span></code></pre></div></div>
 
       </div>
     </main>

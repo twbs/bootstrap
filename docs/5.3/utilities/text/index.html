@@ -924,79 +924,78 @@ Note that <a href="https://rtlstyling.com/posts/rtl-styling#3.-line-break">break
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
         </button>
       </div>
-    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl">    <span class="s2">&#34;font-family&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">font-family</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">font</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span><span class="nt">monospace</span><span class="nd">:</span> <span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">font-monospace</span><span class="o">))</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;font-size&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">rfs</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">font-size</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">fs</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="err">$</span><span class="nt">font-sizes</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;font-style&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">font-style</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">fst</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="nt">italic</span> <span class="nt">normal</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;font-weight&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">font-weight</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">fw</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">lighter</span><span class="nd">:</span> <span class="err">$</span><span class="nt">font-weight-lighter</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">light</span><span class="nd">:</span> <span class="err">$</span><span class="nt">font-weight-light</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">normal</span><span class="nd">:</span> <span class="err">$</span><span class="nt">font-weight-normal</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">medium</span><span class="nd">:</span> <span class="err">$</span><span class="nt">font-weight-medium</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">semibold</span><span class="nd">:</span> <span class="err">$</span><span class="nt">font-weight-semibold</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">bold</span><span class="nd">:</span> <span class="err">$</span><span class="nt">font-weight-bold</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">bolder</span><span class="nd">:</span> <span class="err">$</span><span class="nt">font-weight-bolder</span>
-</span></span><span class="line"><span class="cl">      <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;line-height&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">line-height</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">lh</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">1</span><span class="nd">:</span> <span class="nt">1</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">sm</span><span class="nd">:</span> <span class="err">$</span><span class="nt">line-height-sm</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">base</span><span class="nd">:</span> <span class="err">$</span><span class="nt">line-height-base</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">lg</span><span class="nd">:</span> <span class="err">$</span><span class="nt">line-height-lg</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;text-align&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">text-align</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">text</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">start</span><span class="nd">:</span> <span class="nt">left</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">end</span><span class="nd">:</span> <span class="nt">right</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">center</span><span class="nd">:</span> <span class="nt">center</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;text-decoration&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">text-decoration</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="nt">none</span> <span class="nt">underline</span> <span class="nt">line-through</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;text-transform&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">text-transform</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">text</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="nt">lowercase</span> <span class="nt">uppercase</span> <span class="nt">capitalize</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;white-space&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">white-space</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">text</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">wrap</span><span class="nd">:</span> <span class="nt">normal</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">nowrap</span><span class="nd">:</span> <span class="nt">nowrap</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;word-wrap&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">word-wrap</span> <span class="nt">word-break</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">text</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span><span class="nt">break</span><span class="nd">:</span> <span class="nt">break-word</span><span class="o">),</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">rtl</span><span class="nd">:</span> <span class="nt">false</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    </span></span></code></pre></div></div>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="s2">&#34;font-family&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">font-family</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">font</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span><span class="nt">monospace</span><span class="nd">:</span> <span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">font-monospace</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;font-size&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">rfs</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">font-size</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">fs</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="err">$</span><span class="nt">font-sizes</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;font-style&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">font-style</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">fst</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="nt">italic</span> <span class="nt">normal</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;font-weight&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">font-weight</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">fw</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">lighter</span><span class="nd">:</span> <span class="err">$</span><span class="nt">font-weight-lighter</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">light</span><span class="nd">:</span> <span class="err">$</span><span class="nt">font-weight-light</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">normal</span><span class="nd">:</span> <span class="err">$</span><span class="nt">font-weight-normal</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">medium</span><span class="nd">:</span> <span class="err">$</span><span class="nt">font-weight-medium</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">semibold</span><span class="nd">:</span> <span class="err">$</span><span class="nt">font-weight-semibold</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">bold</span><span class="nd">:</span> <span class="err">$</span><span class="nt">font-weight-bold</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">bolder</span><span class="nd">:</span> <span class="err">$</span><span class="nt">font-weight-bolder</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;line-height&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">line-height</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">lh</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">1</span><span class="nd">:</span> <span class="nt">1</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">sm</span><span class="nd">:</span> <span class="err">$</span><span class="nt">line-height-sm</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">base</span><span class="nd">:</span> <span class="err">$</span><span class="nt">line-height-base</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">lg</span><span class="nd">:</span> <span class="err">$</span><span class="nt">line-height-lg</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;text-align&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">responsive</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">text-align</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">text</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">start</span><span class="nd">:</span> <span class="nt">left</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">end</span><span class="nd">:</span> <span class="nt">right</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">center</span><span class="nd">:</span> <span class="nt">center</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;text-decoration&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">text-decoration</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="nt">none</span> <span class="nt">underline</span> <span class="nt">line-through</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;text-transform&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">text-transform</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">text</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="nt">lowercase</span> <span class="nt">uppercase</span> <span class="nt">capitalize</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;white-space&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">white-space</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">text</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">wrap</span><span class="nd">:</span> <span class="nt">normal</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">nowrap</span><span class="nd">:</span> <span class="nt">nowrap</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;word-wrap&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">word-wrap</span> <span class="nt">word-break</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">text</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span><span class="nt">break</span><span class="nd">:</span> <span class="nt">break-word</span><span class="o">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">rtl</span><span class="nd">:</span> <span class="nt">false</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span></span></span></code></pre></div></div>
 
       </div>
     </main>

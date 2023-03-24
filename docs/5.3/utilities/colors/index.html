@@ -938,17 +938,16 @@ Color utilities like <code>.text-*</code> that generated from our original <code
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
         </button>
       </div>
-    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl">  <span class="nv">$theme-colors-text-dark</span><span class="o">:</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;primary&#34;</span><span class="o">:</span> <span class="nv">$primary-text-emphasis-dark</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;secondary&#34;</span><span class="o">:</span> <span class="nv">$secondary-text-emphasis-dark</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;success&#34;</span><span class="o">:</span> <span class="nv">$success-text-emphasis-dark</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;info&#34;</span><span class="o">:</span> <span class="nv">$info-text-emphasis-dark</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;warning&#34;</span><span class="o">:</span> <span class="nv">$warning-text-emphasis-dark</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;danger&#34;</span><span class="o">:</span> <span class="nv">$danger-text-emphasis-dark</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;light&#34;</span><span class="o">:</span> <span class="nv">$light-text-emphasis-dark</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;dark&#34;</span><span class="o">:</span> <span class="nv">$dark-text-emphasis-dark</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">  <span class="p">);</span>
-</span></span><span class="line"><span class="cl">  </span></span></code></pre></div></div>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="nv">$theme-colors-text-dark</span><span class="o">:</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;primary&#34;</span><span class="o">:</span> <span class="nv">$primary-text-emphasis-dark</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;secondary&#34;</span><span class="o">:</span> <span class="nv">$secondary-text-emphasis-dark</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;success&#34;</span><span class="o">:</span> <span class="nv">$success-text-emphasis-dark</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;info&#34;</span><span class="o">:</span> <span class="nv">$info-text-emphasis-dark</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;warning&#34;</span><span class="o">:</span> <span class="nv">$warning-text-emphasis-dark</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;danger&#34;</span><span class="o">:</span> <span class="nv">$danger-text-emphasis-dark</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;light&#34;</span><span class="o">:</span> <span class="nv">$light-text-emphasis-dark</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;dark&#34;</span><span class="o">:</span> <span class="nv">$dark-text-emphasis-dark</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span></span></span></code></pre></div></div>
 <h3 id="utilities-api">Utilities API <a class="anchor-link" href="#utilities-api" aria-label="Link to this section: Utilities API"></a></h3>
 <p>Color utilities are declared in our utilities API in <code>scss/_utilities.scss</code>. <a href="/docs/5.3/utilities/api/#using-the-api">Learn how to use the utilities API.</a></p>
 <div class="bd-example-snippet bd-code-snippet bd-scss-docs">
@@ -959,41 +958,40 @@ Color utilities like <code>.text-*</code> that generated from our original <code
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
         </button>
       </div>
-    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl">    <span class="s2">&#34;color&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">color</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">text</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">local-vars</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;text-opacity&#34;</span><span class="nd">:</span> <span class="nt">1</span>
-</span></span><span class="line"><span class="cl">      <span class="o">),</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="nt">map-merge</span><span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="err">$</span><span class="nt">utilities-text-colors</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="o">(</span>
-</span></span><span class="line"><span class="cl">          <span class="s2">&#34;muted&#34;</span><span class="nd">:</span> <span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">secondary-color</span><span class="o">),</span> <span class="o">//</span> <span class="nt">deprecated</span>
-</span></span><span class="line"><span class="cl">          <span class="s2">&#34;black-50&#34;</span><span class="nd">:</span> <span class="nt">rgba</span><span class="o">(</span><span class="err">$</span><span class="nt">black</span><span class="o">,</span> <span class="nc">.5</span><span class="o">),</span> <span class="o">//</span> <span class="nt">deprecated</span>
-</span></span><span class="line"><span class="cl">          <span class="s2">&#34;white-50&#34;</span><span class="nd">:</span> <span class="nt">rgba</span><span class="o">(</span><span class="err">$</span><span class="nt">white</span><span class="o">,</span> <span class="nc">.5</span><span class="o">),</span> <span class="o">//</span> <span class="nt">deprecated</span>
-</span></span><span class="line"><span class="cl">          <span class="s2">&#34;body-secondary&#34;</span><span class="nd">:</span> <span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">secondary-color</span><span class="o">),</span>
-</span></span><span class="line"><span class="cl">          <span class="s2">&#34;body-tertiary&#34;</span><span class="nd">:</span> <span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">tertiary-color</span><span class="o">),</span>
-</span></span><span class="line"><span class="cl">          <span class="s2">&#34;body-emphasis&#34;</span><span class="nd">:</span> <span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">emphasis-color</span><span class="o">),</span>
-</span></span><span class="line"><span class="cl">          <span class="s2">&#34;reset&#34;</span><span class="nd">:</span> <span class="nt">inherit</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="o">)</span>
-</span></span><span class="line"><span class="cl">      <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;text-opacity&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">css-var</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">text-opacity</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">25</span><span class="nd">:</span> <span class="nc">.25</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">50</span><span class="nd">:</span> <span class="nc">.5</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">75</span><span class="nd">:</span> <span class="nc">.75</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">100</span><span class="nd">:</span> <span class="nt">1</span>
-</span></span><span class="line"><span class="cl">      <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;text-color&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">color</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">text</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="err">$</span><span class="nt">utilities-text-emphasis-colors</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    </span></span></code></pre></div></div>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="s2">&#34;color&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">color</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">text</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">local-vars</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;text-opacity&#34;</span><span class="nd">:</span> <span class="nt">1</span>
+</span></span><span class="line"><span class="cl">  <span class="o">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="nt">map-merge</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="err">$</span><span class="nt">utilities-text-colors</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="o">(</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;muted&#34;</span><span class="nd">:</span> <span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">secondary-color</span><span class="o">),</span> <span class="o">//</span> <span class="nt">deprecated</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;black-50&#34;</span><span class="nd">:</span> <span class="nt">rgba</span><span class="o">(</span><span class="err">$</span><span class="nt">black</span><span class="o">,</span> <span class="nc">.5</span><span class="o">),</span> <span class="o">//</span> <span class="nt">deprecated</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;white-50&#34;</span><span class="nd">:</span> <span class="nt">rgba</span><span class="o">(</span><span class="err">$</span><span class="nt">white</span><span class="o">,</span> <span class="nc">.5</span><span class="o">),</span> <span class="o">//</span> <span class="nt">deprecated</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;body-secondary&#34;</span><span class="nd">:</span> <span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">secondary-color</span><span class="o">),</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;body-tertiary&#34;</span><span class="nd">:</span> <span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">tertiary-color</span><span class="o">),</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;body-emphasis&#34;</span><span class="nd">:</span> <span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">emphasis-color</span><span class="o">),</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;reset&#34;</span><span class="nd">:</span> <span class="nt">inherit</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;text-opacity&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">css-var</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">text-opacity</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">25</span><span class="nd">:</span> <span class="nc">.25</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">50</span><span class="nd">:</span> <span class="nc">.5</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">75</span><span class="nd">:</span> <span class="nc">.75</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">100</span><span class="nd">:</span> <span class="nt">1</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;text-color&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">color</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">text</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="err">$</span><span class="nt">utilities-text-emphasis-colors</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span></span></span></code></pre></div></div>
 
       </div>
     </main>

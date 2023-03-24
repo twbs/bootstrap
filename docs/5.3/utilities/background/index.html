@@ -929,17 +929,16 @@ Background utilities like <code>.bg-*</code> that generated from our original <c
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
         </button>
       </div>
-    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl">  <span class="nv">$theme-colors-bg-subtle-dark</span><span class="o">:</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;primary&#34;</span><span class="o">:</span> <span class="nv">$primary-bg-subtle-dark</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;secondary&#34;</span><span class="o">:</span> <span class="nv">$secondary-bg-subtle-dark</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;success&#34;</span><span class="o">:</span> <span class="nv">$success-bg-subtle-dark</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;info&#34;</span><span class="o">:</span> <span class="nv">$info-bg-subtle-dark</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;warning&#34;</span><span class="o">:</span> <span class="nv">$warning-bg-subtle-dark</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;danger&#34;</span><span class="o">:</span> <span class="nv">$danger-bg-subtle-dark</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;light&#34;</span><span class="o">:</span> <span class="nv">$light-bg-subtle-dark</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;dark&#34;</span><span class="o">:</span> <span class="nv">$dark-bg-subtle-dark</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">  <span class="p">);</span>
-</span></span><span class="line"><span class="cl">  </span></span></code></pre></div></div>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="nv">$theme-colors-bg-subtle-dark</span><span class="o">:</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;primary&#34;</span><span class="o">:</span> <span class="nv">$primary-bg-subtle-dark</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;secondary&#34;</span><span class="o">:</span> <span class="nv">$secondary-bg-subtle-dark</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;success&#34;</span><span class="o">:</span> <span class="nv">$success-bg-subtle-dark</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;info&#34;</span><span class="o">:</span> <span class="nv">$info-bg-subtle-dark</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;warning&#34;</span><span class="o">:</span> <span class="nv">$warning-bg-subtle-dark</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;danger&#34;</span><span class="o">:</span> <span class="nv">$danger-bg-subtle-dark</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;light&#34;</span><span class="o">:</span> <span class="nv">$light-bg-subtle-dark</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;dark&#34;</span><span class="o">:</span> <span class="nv">$dark-bg-subtle-dark</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span></span></span></code></pre></div></div>
 <h3 id="sass-mixins">Sass mixins <a class="anchor-link" href="#sass-mixins" aria-label="Link to this section: Sass mixins"></a></h3>
 <p><strong>No mixins are used to generate our background utilities</strong>, but we do have some additional mixins for other situations where you&rsquo;d like to create your own gradients.</p>
 <div class="bd-example-snippet bd-code-snippet bd-scss-docs">
@@ -1010,38 +1009,37 @@ Background utilities like <code>.bg-*</code> that generated from our original <c
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
         </button>
       </div>
-    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl">    <span class="s2">&#34;background-color&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">background-color</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">bg</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">local-vars</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;bg-opacity&#34;</span><span class="nd">:</span> <span class="nt">1</span>
-</span></span><span class="line"><span class="cl">      <span class="o">),</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="nt">map-merge</span><span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="err">$</span><span class="nt">utilities-bg-colors</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="o">(</span>
-</span></span><span class="line"><span class="cl">          <span class="s2">&#34;transparent&#34;</span><span class="nd">:</span> <span class="nt">transparent</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">          <span class="s2">&#34;body-secondary&#34;</span><span class="nd">:</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">secondary-bg-rgb</span><span class="o">),</span> <span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">bg-opacity</span><span class="o">)),</span>
-</span></span><span class="line"><span class="cl">          <span class="s2">&#34;body-tertiary&#34;</span><span class="nd">:</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">tertiary-bg-rgb</span><span class="o">),</span> <span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">bg-opacity</span><span class="o">)),</span>
-</span></span><span class="line"><span class="cl">        <span class="o">)</span>
-</span></span><span class="line"><span class="cl">      <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;bg-opacity&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">css-var</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">bg-opacity</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">10</span><span class="nd">:</span> <span class="nc">.1</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">25</span><span class="nd">:</span> <span class="nc">.25</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">50</span><span class="nd">:</span> <span class="nc">.5</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">75</span><span class="nd">:</span> <span class="nc">.75</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">100</span><span class="nd">:</span> <span class="nt">1</span>
-</span></span><span class="line"><span class="cl">      <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;subtle-background-color&#34;</span><span class="nd">:</span> <span class="o">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">property</span><span class="nd">:</span> <span class="nt">background-color</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">class</span><span class="nd">:</span> <span class="nt">bg</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">values</span><span class="nd">:</span> <span class="err">$</span><span class="nt">utilities-bg-subtle</span>
-</span></span><span class="line"><span class="cl">    <span class="o">),</span>
-</span></span><span class="line"><span class="cl">    </span></span></code></pre></div></div>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="s2">&#34;background-color&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">background-color</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">bg</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">local-vars</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;bg-opacity&#34;</span><span class="nd">:</span> <span class="nt">1</span>
+</span></span><span class="line"><span class="cl">  <span class="o">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="nt">map-merge</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="err">$</span><span class="nt">utilities-bg-colors</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="o">(</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;transparent&#34;</span><span class="nd">:</span> <span class="nt">transparent</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;body-secondary&#34;</span><span class="nd">:</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">secondary-bg-rgb</span><span class="o">),</span> <span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">bg-opacity</span><span class="o">)),</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;body-tertiary&#34;</span><span class="nd">:</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">tertiary-bg-rgb</span><span class="o">),</span> <span class="nt">var</span><span class="o">(--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="nt">bg-opacity</span><span class="o">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;bg-opacity&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">css-var</span><span class="nd">:</span> <span class="nt">true</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">bg-opacity</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">10</span><span class="nd">:</span> <span class="nc">.1</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">25</span><span class="nd">:</span> <span class="nc">.25</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">50</span><span class="nd">:</span> <span class="nc">.5</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">75</span><span class="nd">:</span> <span class="nc">.75</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">100</span><span class="nd">:</span> <span class="nt">1</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;subtle-background-color&#34;</span><span class="nd">:</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">property</span><span class="nd">:</span> <span class="nt">background-color</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">class</span><span class="nd">:</span> <span class="nt">bg</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">values</span><span class="nd">:</span> <span class="err">$</span><span class="nt">utilities-bg-subtle</span>
+</span></span><span class="line"><span class="cl"><span class="o">),</span></span></span></code></pre></div></div>
 
       </div>
     </main>
