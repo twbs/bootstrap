@@ -16,8 +16,6 @@ const uriAttributes = new Set([
   'xlink:href'
 ])
 
-const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i
-
 /**
  * A pattern that recognizes a commonly useful subset of URLs that are safe.
  *
@@ -48,6 +46,8 @@ const allowedAttribute = (attribute, allowedAttributeList) => {
     .some(regex => regex.test(attributeName))
 }
 
+// js-docs-start allow-list
+const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i
 export const DefaultAllowlist = {
   // Global attributes allowed on any supplied element below.
   '*': ['class', 'dir', 'id', 'lang', 'role', ARIA_ATTRIBUTE_PATTERN],
@@ -81,6 +81,7 @@ export const DefaultAllowlist = {
   u: [],
   ul: []
 }
+// js-docs-end allow-list
 
 export function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
   if (!unsafeHtml.length) {
