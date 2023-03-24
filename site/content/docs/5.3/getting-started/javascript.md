@@ -231,42 +231,7 @@ Tooltips and Popovers use our built-in sanitizer to sanitize options which accep
 
 The default `allowList` value is the following:
 
-```js
-const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i
-const DefaultAllowlist = {
-  // Global attributes allowed on any supplied element below.
-  '*': ['class', 'dir', 'id', 'lang', 'role', ARIA_ATTRIBUTE_PATTERN],
-  a: ['target', 'href', 'title', 'rel'],
-  area: [],
-  b: [],
-  br: [],
-  col: [],
-  code: [],
-  div: [],
-  em: [],
-  hr: [],
-  h1: [],
-  h2: [],
-  h3: [],
-  h4: [],
-  h5: [],
-  h6: [],
-  i: [],
-  img: ['src', 'srcset', 'alt', 'title', 'width', 'height'],
-  li: [],
-  ol: [],
-  p: [],
-  pre: [],
-  s: [],
-  small: [],
-  span: [],
-  sub: [],
-  sup: [],
-  strong: [],
-  u: [],
-  ul: []
-}
-```
+{{< js-docs name="allow-list" file="js/src/util/sanitizer.js" >}}
 
 If you want to add new values to this default `allowList` you can do the following:
 
