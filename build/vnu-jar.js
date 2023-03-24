@@ -13,7 +13,8 @@ const vnu = require('vnu-jar')
 
 execFile('java', ['-version'], (error, stdout, stderr) => {
   if (error) {
-    console.error('Skipping vnu-jar test; Java is missing.')
+    console.error('Skipping vnu-jar test; Java is probably missing.')
+    console.error(error)
     return
   }
 
@@ -47,6 +48,9 @@ execFile('java', ['-version'], (error, stdout, stderr) => {
   if (is32bitJava) {
     args.splice(0, 0, '-Xss512k')
   }
+
+  console.log('Running vnu-jar validation...')
+  console.log(`command used: java ${args}`)
 
   return spawn('java', args, {
     shell: true,
