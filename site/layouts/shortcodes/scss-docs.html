@@ -50,6 +50,27 @@
         </button>
       </div>
     </div>
-    {{- highlight $match "scss" "" -}}
+    {{- $unindent := 0 -}}
+    {{- $found := false -}}
+    {{- $first_line:= index (split $match "\n") 0 -}}
+    {{- range $char := split $first_line "" -}}
+      {{- if and (eq $char " ") (not $found) -}}
+        {{- $unindent = add $unindent 1 -}}
+      {{- else -}}
+        {{- $found = true -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $output := "" -}}
+    {{- if (gt $unindent 0) -}}
+      {{- $prefix := (strings.Repeat $unindent " ") -}}
+      {{- range $line := split $match "\n" -}}
+        {{- $line = strings.TrimPrefix $prefix $line -}}
+        {{ $output = printf "%s%s\n" $output $line }}
+      {{- end -}}
+      {{- $output = chomp $output -}}
+    {{- else -}}
+      {{- $output = $match -}}
+    {{- end -}}
+    {{- highlight $output "scss" "" -}}
   </div>
 {{- end -}}
