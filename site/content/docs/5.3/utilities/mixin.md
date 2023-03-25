@@ -22,9 +22,13 @@ Bootstrap generates hundreds of utilities to quickly and easily style elements t
 ```scss
 // Using the utility mixin in your custom Sass
 .test {
+  // Individual utilities
   @include util(d-inline-flex);
   @include util(p-4);
   @include util(mb-md-3);
+
+  // Multiple utilities
+  @include util(d-inline-flex, p-4, mb-md-3);
 }
 ```
 
@@ -94,6 +98,20 @@ While you can include responsive utilities individually, Sass will generate mult
 
 This way, you only output one media query in your compiled CSS and no further optimization or action is needed to clean up the output.
 
+## Multiple utilities
+
+Include multiple utilities in a single `util()` mixin call with a comma separated list. Once again, for multiple responsive utilities, use a media query to group them under a single compiled media query.
+
+```scss
+.test {
+  @include util(d-inline-flex, p-4, mb-3);
+  color: purple;
+
+  @include media-breakpoint-up(md) {
+    @include util(p-5, mb-5);
+  }
+}
+```
 
 ## Custom setup
 
@@ -114,9 +132,7 @@ Want to use only the utilities and mixin in your own project? In your project's 
 
 // Write your own styles
 .test {
-  @include util(d-inline-flex);
-  @include util(p-4);
-  @include util(mb-md-3);
+  @include util(d-inline-flex, p-4, mb-md-3);
   color: purple;
 }
 ```
