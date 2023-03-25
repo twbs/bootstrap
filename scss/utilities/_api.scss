@@ -51,8 +51,6 @@
 
 $utilities-map: build-utilities-map(); // stylelint-disable-line scss/dollar-variable-default
 
-// Sometimes it’s useful for a mixin to be able to take any number of arguments. If the last argument in a @mixin declaration ends in ..., then all extra arguments to that mixin are passed to that argument as a list. This argument is known as an argument list.
-
 @mixin util($classes...) {
   @each $class in $classes {
     @if map-has-key($utilities-map, $class) {

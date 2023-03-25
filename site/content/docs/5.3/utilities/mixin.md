@@ -113,11 +113,40 @@ Include multiple utilities in a single `util()` mixin call with a comma separate
 }
 ```
 
-## Custom setup
+## Usage
 
 Want to use only the utilities and mixin in your own project? In your project's Sass file, include the following:
 
 ```scss
+// Required Bootstrap imports
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+
+// Import the utilities maps and mixins
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
+
+// Write your own styles
+.test {
+  @include util(d-inline-flex, p-4, mb-md-3);
+  color: purple;
+}
+```
+
+### Disable generated utilities
+
+The `util()` mixin is powered by Sass placeholders, not the generated classes in the compiled CSS. This means you can disable the generated classes and still use the mixin in your custom Sass.
+
+To do this, disable the `$enable-utility-classes` global option, import the required Sass files, and start using the new mixin.
+
+```scss
+// Disable the generated utility classes
+$enable-utility-classes: false;
+
 // Required Bootstrap imports
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
