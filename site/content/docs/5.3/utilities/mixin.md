@@ -9,14 +9,23 @@ toc: true
 
 ## How it works
 
-Bootstrap generates hundreds of utilities to quickly and easily style elements through the addition of classes in your HTML. Now with Bootstrap v5.3.0, you can add utilities in your custom Sass with the `util()` mixin. Using the [utility API]({{< docsref "/utilities/api" >}}), we generate placeholders for every utility that can be included via Sass mixin. Use the mixin in your own Sass files to include quick styles, override defaults, or compose entire components.
+Bootstrap generates hundreds of utilities to quickly and easily style elements through the addition of classes in your HTML. Now with Bootstrap v5.3.0, you can add utilities in your custom Sass with the `util()` mixin. Using the [utility API]({{< docsref "/utilities/api" >}}), we generate placeholders for every utility that can then be included via Sass mixin. Use the mixin in your own Sass files to include quick styles, override defaults, or compose entire components.
 
 ```html
-<!-- Utility classes -->
+<!-- Using utility classes -->
 <div class="d-inline-flex p-4 mb-md-3">...</div>
 
-<!-- Utility mixin -->
+<!-- Using a custom class and the utility mixin -->
 <div class="test">...</div>
+```
+
+```scss
+// Using the utility mixin in your custom Sass
+.test {
+  @include util(d-inline-flex);
+  @include util(p-4);
+  @include util(mb-md-3);
+}
 ```
 
 ## Motivation
@@ -94,8 +103,10 @@ Want to use only the utilities and mixin in your own project? In your project's 
 // Required Bootstrap imports
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
 
 // Import the utilities maps and mixins
 @import "bootstrap/scss/utilities";
