@@ -7,7 +7,7 @@
       $breakpoints-map: map-merge(
         $breakpoints-map,
         (
-          "-" + $name: $name,
+          "-#{$name}": $name,
         )
       );
     }
