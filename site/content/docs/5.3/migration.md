@@ -7,6 +7,14 @@ aliases: "/migration/"
 toc: true
 ---
 
+## v5.3.0
+
+If you're migrating from our previous alpha releases of v5.3.0, please review their changes in addition to this section.
+
+### Utilities
+
+- Added new `.d-inline-grid` [display utility]({{< docsref "/utilities/display" >}}).
+
 ## v5.3.0-alpha2
 
 If you're migrating from our previous alpha release of v5.3.0, please reviewing the changes listed below.

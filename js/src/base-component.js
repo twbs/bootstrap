@@ -14,7 +14,7 @@ import Config from './util/config.js'
  * Constants
  */
 
-const VERSION = '5.3.0-alpha1'
+const VERSION = '5.3.0-alpha2'
 
 /**
  * Class definition
