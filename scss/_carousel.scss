@@ -230,9 +230,14 @@
 
 @if $enable-dark-mode {
   @include color-mode(dark) {
-    .carousel,
-    &.carousel {
+    .carousel {
       @include carousel-dark();
+    }
+
+    @if $color-mode-type == "data" {
+      &.carousel {
+        @include carousel-dark();
+      }
     }
   }
 }
