@@ -84,7 +84,11 @@
     }
   }
 
-  > .form-control:disabled ~ label {
+  > :disabled ~ label {
     color: $form-floating-label-disabled-color;
+
+    &::after {
+      background-color: $input-disabled-bg;
+    }
   }
 }
