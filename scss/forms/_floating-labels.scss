@@ -1,17 +1,6 @@
 .form-floating {
   position: relative;
 
-  // &:not(.form-control:disabled)::before {
-  //   position: absolute;
-  //   top: $input-border-width;
-  //   left: $input-border-width;
-  //   width: subtract(100%, add($input-height-inner-quarter, $input-height-inner-half));
-  //   height: $form-floating-label-height;
-  //   content: "";
-  //   background-color: $input-bg;
-  //   @include border-radius($input-border-radius);
-  // }
-
   > .form-control,
   > .form-control-plaintext,
   > .form-select {
@@ -74,6 +63,7 @@
         position: absolute;
         inset: $form-floating-padding-y ($form-floating-padding-x * .5);
         z-index: -1;
+        height: $form-floating-label-height;
         content: "";
         background-color: $input-bg;
         @include border-radius($input-border-radius);
