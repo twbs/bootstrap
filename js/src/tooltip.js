@@ -62,7 +62,7 @@ const Default = {
   delay: 0,
   fallbackPlacements: ['top', 'right', 'bottom', 'left'],
   html: false,
-  offset: [0, 0],
+  offset: [0, 6],
   placement: 'top',
   popperConfig: null,
   sanitize: true,
