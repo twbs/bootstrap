@@ -100,13 +100,13 @@
     "watch-js-docs": "nodemon --watch site/assets/js/ --ext js --exec \"npm run js-lint\""
   },
   "peerDependencies": {
-    "@popperjs/core": "^2.11.6"
+    "@popperjs/core": "^2.11.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
-    "@popperjs/core": "^2.11.6",
+    "@popperjs/core": "^2.11.7",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
@@ -124,7 +124,7 @@
     "find-unused-sass-variables": "^4.0.6",
     "globby": "^11.1.0",
     "hammer-simulator": "0.0.1",
-    "hugo-bin": "^0.101.2",
+    "hugo-bin": "^0.101.4",
     "ip": "^2.0.0",
     "jasmine": "^4.6.0",
     "jquery": "^3.6.4",
@@ -138,14 +138,14 @@
     "karma-jasmine-html-reporter": "^2.0.0",
     "karma-rollup-preprocessor": "7.0.7",
     "lockfile-lint": "^4.10.1",
-    "nodemon": "^2.0.21",
+    "nodemon": "^2.0.22",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
-    "rollup": "^3.20.0",
+    "rollup": "^3.20.2",
     "rollup-plugin-istanbul": "^4.0.0",
     "rtlcss": "^4.0.0",
-    "sass": "^1.59.3",
+    "sass": "^1.60.0",
     "sass-true": "^7.0.0",
     "shelljs": "^0.8.5",
     "stylelint": "^14.16.1",
@@ -178,7 +178,7 @@
     },
     "dependencies": {},
     "peerDependencies": {
-      "@popperjs/core": "^2.11.6"
+      "@popperjs/core": "^2.11.7"
     }
   }
 }
