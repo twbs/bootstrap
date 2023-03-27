@@ -7,61 +7,54 @@ const browsers = {
       browserName: 'Safari',
       browserVersion: 'latest',
       "LT:Options": {
-        "platformName": "MacOS Catalina",
-        "plugin": "bootstrap-karma"
+        "platformName": "MacOS Monterey"
       }
     },
     chromeMac: {
       browserName: 'Chrome',
       browserVersion: 'latest',
       "LT:Options": {
-        "platformName": "MacOS Catalina",
-        "plugin": "bootstrap-karma"
+        "platformName": "MacOS Monterey"
       }
     },
     firefoxMac: {
       browserName: 'Firefox',
       browserVersion: 'latest',
       "LT:Options": {
-        "platformName": "MacOS Catalina",
-        "plugin": "bootstrap-karma"
+        "platformName": "MacOS Monterey"
       }
     },
     chromeWin10: {
       browserName: 'Chrome',
       browserVersion: '60',
       "LT:Options": {
-        "platformName": "Windows 10",
-        "plugin": "bootstrap-karma"
+        "platformName": "Windows 10"
       }
     },
     firefoxWin10: {
       browserName: 'Firefox',
       browserVersion: '60',
       "LT:Options": {
-        "platformName": "Windows 10",
-        "plugin": "bootstrap-karma"
+        "platformName": "Windows 10"
       }
     },
     chromeWin10Latest: {
       browserName: 'Chrome',
       browserVersion: 'latest',
       "LT:Options": {
-        "platformName": "Windows 10",
-        "plugin": "bootstrap-karma"
+        "platformName": "Windows 10"
       }
     },
     firefoxWin10Latest: {
       browserName: 'Firefox',
       browserVersion: 'latest',
       "LT:Options": {
-        "platformName": "Windows 10",
-        "plugin": "bootstrap-karma"
+        "platformName": "Windows 10"
       }
     },
     iphone7: {
       platformName: 'ios',
-      platformVersion: '15',
+      platformVersion: '12',
       browserName: 'Safari',
       deviceName: 'iPhone 7',
       isRealMobile: true

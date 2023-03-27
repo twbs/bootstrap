@@ -66,6 +66,10 @@ const config = {
   colors: true,
   autoWatch: false,
   singleRun: true,
+  captureTimeout: 90000,
+  browserDisconnectTolerance: 3,
+  browserDisconnectTimeout: 90000,
+  browserNoActivityTimeout: 90000,
   concurrency: Number.POSITIVE_INFINITY,
   client: {
     clearContext: false
@@ -121,16 +125,18 @@ if (LAMBDATEST) {
         browsers['lambdaTest'][key].user = ENV.LT_USERNAME
         browsers['lambdaTest'][key].accessKey = ENV.LT_ACCESS_KEY
         browsers['lambdaTest'][key].tunnel = true
-        browsers['lambdaTest'][key].tunnelName =  process.env.LT_TUNNEL_NAME || 'jasmine'
+        browsers['lambdaTest'][key].tunnelName = process.env.LT_TUNNEL_NAME || 'jasmine'
       }
       else {
         browsers['lambdaTest'][key].config = webdriverConfig
         browsers['lambdaTest'][key]["LT:Options"].username = ENV.LT_USERNAME
         browsers['lambdaTest'][key]["LT:Options"].accessKey = ENV.LT_ACCESS_KEY
         browsers['lambdaTest'][key]["LT:Options"].tunnel = true
-        browsers['lambdaTest'][key]["LT:Options"].tunnelName =  process.env.LT_TUNNEL_NAME || 'jasmine'
+        browsers['lambdaTest'][key]["LT:Options"].tunnelName = process.env.LT_TUNNEL_NAME || 'jasmine'
+        browsers['lambdaTest'][key]["LT:Options"].plugin = 'bootstrap-karma'
       }
       browsers['lambdaTest'][key].retryLimit = 2
+      browsers['lambdaTest'][key].pseudoActivityInterval = 100
     })
   plugins.push('karma-webdriver-launcher', 'karma-jasmine', 'karma-jasmine-html-reporter')
   config.customLaunchers = browsers['lambdaTest']
