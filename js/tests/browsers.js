@@ -68,9 +68,9 @@ const browsers = {
     },
     pixel2: {
       platformName: 'android',
-      platformVersion: '9',
+      platformVersion: '12',
       browserName: 'Chrome',
-      deviceName: 'Google Pixel 3',
+      deviceName: 'Google Pixel 6',
       isRealMobile: true
     }
   },
