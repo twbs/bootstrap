@@ -17,7 +17,7 @@ If you're migrating from our previous alpha releases of v5.3.0, please review th
 
 ## v5.3.0-alpha2
 
-If you're migrating from our previous alpha release of v5.3.0, please reviewing the changes listed below.
+If you're migrating from our previous alpha release of v5.3.0, please review the changes listed below.
 
 ### CSS variables
 
