@@ -186,7 +186,7 @@ carousel.to('2') // !! Will be ignored, as the transition to the slide 1 is not 
 
 #### `dispose` method
 
-The hide method will complete asynchronously (assuming animations are enabled). As such, calling the `dispose` method immediately after `hide()` will lead to incorrect results.
+The hide method will complete asynchronously (assuming animations are enabled). As such, calling the `dispose` method immediately after `hide()` will lead to **incorrect** results.
 
 Here's an example of the proper usage:
 
