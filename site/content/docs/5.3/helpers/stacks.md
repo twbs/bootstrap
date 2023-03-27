@@ -17,11 +17,11 @@ Heads up! Support for gap utilities with flexbox was recently added to Safari, s
 
 Use `.vstack` to create vertical layouts. Stacked items are full-width by default. Use `.gap-*` utilities to add space between items.
 
-{{< example >}}
+{{< example class="bd-example-flex" >}}
 <div class="vstack gap-3">
-  <div class="bg-body-tertiary border">First item</div>
-  <div class="bg-body-tertiary border">Second item</div>
-  <div class="bg-body-tertiary border">Third item</div>
+  <div class="p-2">First item</div>
+  <div class="p-2">Second item</div>
+  <div class="p-2">Third item</div>
 </div>
 {{< /example >}}
 
@@ -29,32 +29,32 @@ Use `.vstack` to create vertical layouts. Stacked items are full-width by defaul
 
 Use `.hstack` for horizontal layouts. Stacked items are vertically centered by default and only take up their necessary width. Use `.gap-*` utilities to add space between items.
 
-{{< example >}}
+{{< example class="bd-example-flex" >}}
 <div class="hstack gap-3">
-  <div class="bg-body-tertiary border">First item</div>
-  <div class="bg-body-tertiary border">Second item</div>
-  <div class="bg-body-tertiary border">Third item</div>
+  <div class="p-2">First item</div>
+  <div class="p-2">Second item</div>
+  <div class="p-2">Third item</div>
 </div>
 {{< /example >}}
 
 Using horizontal margin utilities like `.ms-auto` as spacers:
 
-{{< example >}}
+{{< example class="bd-example-flex" >}}
 <div class="hstack gap-3">
-  <div class="bg-body-tertiary border">First item</div>
-  <div class="bg-body-tertiary border ms-auto">Second item</div>
-  <div class="bg-body-tertiary border">Third item</div>
+  <div class="p-2">First item</div>
+  <div class="p-2">Second item</div>
+  <div class="p-2">Third item</div>
 </div>
 {{< /example >}}
 
 And with [vertical rules]({{< docsref "/helpers/vertical-rule" >}}):
 
-{{< example >}}
+{{< example class="bd-example-flex" >}}
 <div class="hstack gap-3">
-  <div class="bg-body-tertiary border">First item</div>
-  <div class="bg-body-tertiary border ms-auto">Second item</div>
+  <div class="p-2">First item</div>
+  <div class="p-2">Second item</div>
   <div class="vr"></div>
-  <div class="bg-body-tertiary border">Third item</div>
+  <div class="p-2">Third item</div>
 </div>
 {{< /example >}}
 

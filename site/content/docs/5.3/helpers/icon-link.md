@@ -3,7 +3,6 @@ layout: docs
 title: Icon link
 description: Quickly create stylized hyperlinks with Bootstrap Icons or other icons.
 group: helpers
-aliases: "/docs/5.3/icon-link/"
 toc: true
 added: 5.3
 ---
@@ -13,7 +12,7 @@ The icon link helper component modifies our default link styles to enhance their
 Icon links assume [Bootstrap Icons](https://icons.getbootstrap.com) are being used, but you can use any icon or image you like.
 
 {{< callout >}}
-Icons used here are likely to be purely decorative, which means they should be hidden from assistive technologies using `aria-hidden="true"`, as we've done in our examples. For icons that are more than decorative, provide an appropriate text alternative via `alt` for `<img>` elements `role="img"` and `aria-label` for SVGs.
+When icons are purely decorative, they should be hidden from assistive technologies using `aria-hidden="true"`, as we've done in our examples. For icons that convey meaning, provide an appropriate text alternative by adding `role="img"` and an appropriate `aria-label="..."` to the SVGs.
 {{< /callout >}}
 
 ## Example
@@ -45,6 +44,14 @@ Add `.icon-link-hover` to move the icon to the right on hover.
 </a>
 {{< /example >}}
 
+## Customize
+
+Modify the styling of an icon link with our link CSS variables, Sass variables, utilities, or custom styles.
+
+### CSS variables
+
+Modify the `--bs-link-*` and `--bs-icon-link-*` CSS variables as needed to change the default appearance.
+
 Customize the hover `transform` by overriding the `--bs-icon-link-transform` CSS variable:
 
 {{< example >}}
@@ -54,7 +61,22 @@ Customize the hover `transform` by overriding the `--bs-icon-link-transform` CSS
 </a>
 {{< /example >}}
 
-## Pairs with link utilities
+Customize the color by overriding the `--bs-link-*` CSS variable:
+
+{{< example >}}
+<a class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" href="#">
+  Icon link
+  <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+</a>
+{{< /example >}}
+
+### Sass
+
+Customize the icon link Sass variables to modify all icon link styles across your Bootstrap-powered project.
+
+{{< scss-docs name="icon-link-variables" file="scss/_variables.scss" >}}
+
+### Utilities
 
 Modify icon links with any of [our link utilities]({{< docsref "/utilities/link/" >}}) for modifying underline color and offset.
 

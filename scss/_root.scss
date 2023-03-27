@@ -23,7 +23,7 @@
   }
 
   @each $color, $value in $theme-colors-text {
-    --#{$prefix}#{$color}-text: #{$value};
+    --#{$prefix}#{$color}-text-emphasis: #{$value};
   }
 
   @each $color, $value in $theme-colors-bg-subtle {
@@ -119,9 +119,14 @@
   --#{$prefix}focus-ring-width: #{$focus-ring-width};
   --#{$prefix}focus-ring-opacity: #{$focus-ring-opacity};
   --#{$prefix}focus-ring-color: #{$focus-ring-color};
-  // By default, there is no `--bs-focus-ring-x`, `--bs-focus-ring-y`, or `--bs-focus-ring-blur`, but we provide CSS variables with fallbacks to initial `0` values
-  --#{$prefix}focus-ring-box-shadow: var(--#{$prefix}focus-ring-x, 0) var(--#{$prefix}focus-ring-y, 0) var(--#{$prefix}focus-ring-blur, 0) var(--#{$prefix}focus-ring-width) var(--#{$prefix}focus-ring-color);
   // scss-docs-end root-focus-variables
+
+  // scss-docs-start root-form-validation-variables
+  --#{$prefix}form-valid-color: #{$form-valid-color};
+  --#{$prefix}form-valid-border-color: #{$form-valid-border-color};
+  --#{$prefix}form-invalid-color: #{$form-invalid-color};
+  --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color};
+  // scss-docs-end root-form-validation-variables
 }
 
 @if $enable-dark-mode {
@@ -148,7 +153,7 @@
     --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
 
     @each $color, $value in $theme-colors-text-dark {
-      --#{$prefix}#{$color}-text: #{$value};
+      --#{$prefix}#{$color}-text-emphasis: #{$value};
     }
 
     @each $color, $value in $theme-colors-bg-subtle-dark {
@@ -170,6 +175,11 @@
 
     --#{$prefix}border-color: #{$border-color-dark};
     --#{$prefix}border-color-translucent: #{$border-color-translucent-dark};
+
+    --#{$prefix}form-valid-color: #{$form-valid-color-dark};
+    --#{$prefix}form-valid-border-color: #{$form-valid-border-color-dark};
+    --#{$prefix}form-invalid-color: #{$form-invalid-color-dark};
+    --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color-dark};
     // scss-docs-end root-dark-mode-vars
   }
 }
