@@ -114,20 +114,28 @@ if (LAMBDATEST) {
   config.hostname = 'localhost.lambdatest.com',
     Object.keys(browsers['lambdaTest']).map(key => {
       browsers['lambdaTest'][key].base = 'WebDriver'
-      if (browsers['lambdaTest'][key].isRealMobile)
-        browsers['lambdaTest'][key].config = webdriverConfigMobile
-      else
-        browsers['lambdaTest'][key].config = webdriverConfig
-      browsers['lambdaTest'][key].user = ENV.LT_USERNAME
-      browsers['lambdaTest'][key].accessKey = ENV.LT_ACCESS_KEY
       browsers['lambdaTest'][key].build = `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`
       browsers['lambdaTest'][key].project = 'Bootstrap'
-      browsers['lambdaTest'][key].tunnel = true
-      browsers['lambdaTest'][key].tunnelName = 'jasmine'
+      if (browsers['lambdaTest'][key].isRealMobile) {
+        browsers['lambdaTest'][key].config = webdriverConfigMobile
+        browsers['lambdaTest'][key].user = ENV.LT_USERNAME
+        browsers['lambdaTest'][key].accessKey = ENV.LT_ACCESS_KEY
+        browsers['lambdaTest'][key].tunnel = true
+        browsers['lambdaTest'][key].tunnelName =  process.env.LT_TUNNEL_NAME || 'jasmine'
+      }
+      else {
+        browsers['lambdaTest'][key].config = webdriverConfig
+        browsers['lambdaTest'][key]["LT:Options"].username = ENV.LT_USERNAME
+        browsers['lambdaTest'][key]["LT:Options"].accessKey = ENV.LT_ACCESS_KEY
+        browsers['lambdaTest'][key]["LT:Options"].tunnel = true
+        browsers['lambdaTest'][key]["LT:Options"].tunnelName =  process.env.LT_TUNNEL_NAME || 'jasmine'
+      }
+      browsers['lambdaTest'][key].retryLimit = 2
     })
   plugins.push('karma-webdriver-launcher', 'karma-jasmine', 'karma-jasmine-html-reporter')
   config.customLaunchers = browsers['lambdaTest']
   config.browsers = Object.keys(browsers['lambdaTest'])
+  reporters.push('kjhtml')
 } else if (BROWSERSTACK) {
   config.hostname = ip.address()
   config.browserStack = {
