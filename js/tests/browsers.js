@@ -4,39 +4,60 @@
 const browsers = {
   lambdaTest: {
     safariMac: {
-      platform: 'macOS Catalina',
       browserName: 'Safari',
-      browserVersion: 'latest'
+      browserVersion: 'latest',
+      "LT:Options": {
+        "platformName": "MacOS Catalina",
+        "plugin": "bootstrap-karma"
+      }
     },
     chromeMac: {
-      platform: 'macOS Catalina',
       browserName: 'Chrome',
-      browserVersion: 'latest'
+      browserVersion: 'latest',
+      "LT:Options": {
+        "platformName": "MacOS Catalina",
+        "plugin": "bootstrap-karma"
+      }
     },
     firefoxMac: {
-      platform: 'macOS Catalina',
       browserName: 'Firefox',
-      browserVersion: 'latest'
+      browserVersion: 'latest',
+      "LT:Options": {
+        "platformName": "MacOS Catalina",
+        "plugin": "bootstrap-karma"
+      }
     },
     chromeWin10: {
-      platform: 'Windows 10',
       browserName: 'Chrome',
-      browserVersion: '60'
+      browserVersion: '60',
+      "LT:Options": {
+        "platformName": "Windows 10",
+        "plugin": "bootstrap-karma"
+      }
     },
     firefoxWin10: {
-      platform: 'Windows 10',
       browserName: 'Firefox',
-      browserVersion: '60'
+      browserVersion: '60',
+      "LT:Options": {
+        "platformName": "Windows 10",
+        "plugin": "bootstrap-karma"
+      }
     },
     chromeWin10Latest: {
-      platform: 'Windows 10',
       browserName: 'Chrome',
-      browserVersion: 'latest'
+      browserVersion: 'latest',
+      "LT:Options": {
+        "platformName": "Windows 10",
+        "plugin": "bootstrap-karma"
+      }
     },
     firefoxWin10Latest: {
-      platform: 'Windows 10',
       browserName: 'Firefox',
-      browserVersion: 'latest'
+      browserVersion: 'latest',
+      "LT:Options": {
+        "platformName": "Windows 10",
+        "plugin": "bootstrap-karma"
+      }
     },
     iphone7: {
       platformName: 'ios',
