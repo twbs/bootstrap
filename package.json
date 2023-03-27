@@ -124,7 +124,7 @@
     "find-unused-sass-variables": "^4.0.6",
     "globby": "^11.1.0",
     "hammer-simulator": "0.0.1",
-    "hugo-bin": "^0.101.4",
+    "hugo-bin": "^0.101.5",
     "ip": "^2.0.0",
     "jasmine": "^4.6.0",
     "jquery": "^3.6.4",
