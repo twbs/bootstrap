@@ -643,7 +643,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
 
 {{< bs-table >}}
 | Class | Availability |
-| --- | --- | --- |
+| --- | --- |
 | `.modal-fullscreen` | Always |
 | `.modal-fullscreen-sm-down` | `576px` |
 | `.modal-fullscreen-md-down` | `768px` |
