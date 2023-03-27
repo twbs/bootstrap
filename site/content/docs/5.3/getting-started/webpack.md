@@ -128,7 +128,7 @@ With dependencies installed and our project folder ready for us to start coding,
      // ...
      "scripts": {
        "start": "webpack serve",
-       "build": "webpack build",
+       "build": "webpack build --mode=production",
        "test": "echo \"Error: no test specified\" && exit 1"
      },
      // ...
