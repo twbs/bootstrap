@@ -115,7 +115,6 @@ With dependencies installed and our project folder ready for us to start coding,
          <h1>Hello, Bootstrap and Webpack!</h1>
          <button class="btn btn-primary">Primary button</button>
        </div>
-       <script src="./main.js"></script>
      </body>
    </html>
    ```
