@@ -303,8 +303,8 @@ Then instantiate and use the plugin in the Webpack configuration:
 After running `npm run build` again, there will be a new file `dist/main.css`, which will contain all of the CSS imported by `src/js/main.js`. If you view `dist/index.html` in your browser now, the style will be missing, as it is now in `dist/main.css`. You can include the generated CSS in `dist/index.html` like this:
 
 ```diff
---- a/webpack/dist/index.html
-+++ b/webpack/dist/index.html
+--- a/dist/index.html
++++ b/dist/index.html
 @@ -3,6 +3,7 @@
    <head>
      <meta charset="utf-8">
@@ -322,8 +322,8 @@ Bootstrap's CSS includes multiple references to SVG files via inline `data:` URI
 Configure Webpack to extract inline SVG files like this:
 
 ```diff
---- a/webpack/webpack.config.js
-+++ b/webpack/webpack.config.js
+--- a/webpack.config.js
++++ b/webpack.config.js
 @@ -23,6 +23,14 @@ module.exports = {
    },
    module: {

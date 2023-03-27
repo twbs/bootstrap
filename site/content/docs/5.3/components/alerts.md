@@ -38,28 +38,7 @@ Click the button below to show an alert (hidden with inline styles to start), th
 
 We use the following JavaScript to trigger our live alert demo:
 
-```js
-const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
-
-const alert = (message, type) => {
-  const wrapper = document.createElement('div')
-  wrapper.innerHTML = [
-    `<div class="alert alert-${type} alert-dismissible" role="alert">`,
-    `   <div>${message}</div>`,
-    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-    '</div>'
-  ].join('')
-
-  alertPlaceholder.append(wrapper)
-}
-
-const alertTrigger = document.getElementById('liveAlertBtn')
-if (alertTrigger) {
-  alertTrigger.addEventListener('click', () => {
-    alert('Nice, you triggered this alert message!', 'success')
-  })
-}
-```
+{{< js-docs name="live-alert" file="site/assets/js/snippets.js" >}}
 
 ### Link color
 

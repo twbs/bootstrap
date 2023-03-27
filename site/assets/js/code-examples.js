@@ -13,6 +13,7 @@
 
 (() => {
   'use strict'
+
   // Insert copy to clipboard button before .highlight
   const btnTitle = 'Copy to clipboard'
   const btnEdit = 'Edit on StackBlitz'
@@ -27,7 +28,7 @@
     '</div>'
   ].join('')
 
-  // wrap programmatically code blocks and add copy btn.
+  // Wrap programmatically code blocks and add copy btn.
   document.querySelectorAll('.highlight')
     .forEach(element => {
       if (!element.closest('.bd-example-snippet')) { // Ignore examples made be shortcode
@@ -51,7 +52,8 @@
   snippetButtonTooltip('.btn-edit', btnEdit)
 
   const clipboard = new ClipboardJS('.btn-clipboard', {
-    target: trigger => trigger.closest('.bd-code-snippet').querySelector('.highlight')
+    target: trigger => trigger.closest('.bd-code-snippet').querySelector('.highlight'),
+    text: trigger => trigger.parentNode.nextElementSibling.textContent.trimEnd()
   })
 
   clipboard.on('success', event => {
