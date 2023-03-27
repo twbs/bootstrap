@@ -126,6 +126,7 @@ if (LAMBDATEST) {
         browsers['lambdaTest'][key].accessKey = ENV.LT_ACCESS_KEY
         browsers['lambdaTest'][key].tunnel = true
         browsers['lambdaTest'][key].tunnelName = process.env.LT_TUNNEL_NAME || 'jasmine'
+        browsers['lambdaTest'][key].pseudoActivityInterval = 15000 // 5000 ms heartbeat
       }
       else {
         browsers['lambdaTest'][key].config = webdriverConfig
@@ -134,9 +135,9 @@ if (LAMBDATEST) {
         browsers['lambdaTest'][key]["LT:Options"].tunnel = true
         browsers['lambdaTest'][key]["LT:Options"].tunnelName = process.env.LT_TUNNEL_NAME || 'jasmine'
         browsers['lambdaTest'][key]["LT:Options"].plugin = 'bootstrap-karma'
+        browsers['lambdaTest'][key]["LT:Options"].pseudoActivityInterval = 15000 // 5000 ms heartbeat
       }
       browsers['lambdaTest'][key].retryLimit = 2
-      browsers['lambdaTest'][key].pseudoActivityInterval = 100
     })
   plugins.push('karma-webdriver-launcher', 'karma-jasmine', 'karma-jasmine-html-reporter')
   config.customLaunchers = browsers['lambdaTest']
