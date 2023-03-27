@@ -121,7 +121,7 @@
   }
 
   > :not(:first-child):not(.dropdown-menu)#{$validation-messages} {
-    margin-left: calc($input-border-width * -1); // stylelint-disable-line function-disallowed-list
+    margin-left: calc(#{$input-border-width} * -1); // stylelint-disable-line function-disallowed-list
     @include border-start-radius(0);
   }
 
