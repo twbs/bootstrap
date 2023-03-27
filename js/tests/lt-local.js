@@ -7,7 +7,7 @@ const tunnelArguments = {
     logFile: "local.log"
 };
 
-if (process.env.LAMBDATEST)
+if (process.env.LAMBDATEST == 'true')
     tunnelInstance
         .start(tunnelArguments)
         .then(_ => {
