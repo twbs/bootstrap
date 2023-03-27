@@ -7,12 +7,12 @@ const tunnelArguments = {
     logFile: "local.log"
 };
 
-if (process.env.LAMBDATEST == 'true')
-    tunnelInstance
-        .start(tunnelArguments)
-        .then(_ => {
-            console.log("Tunnel is Running Successfully")
-        })
-        .catch(err => {
-            console.log(err);
-        });
+if (process.env.LAMBDATEST == 'true') {
+    (async () => {
+        try {
+            await tunnelInstance.start(tunnelArguments)
+        } catch (err) {
+            console.log(err.message)
+        }
+    })()
+}
