@@ -15,13 +15,13 @@
 // Individual items
 .bd-brand-item {
   + .bd-brand-item {
-    border-top: 1px solid $white;
+    border-top: 1px solid var(--bs-border-color);
   }
 
   @include media-breakpoint-up(md) {
     + .bd-brand-item {
       border-top: 0;
-      border-left: 1px solid $white;
+      border-left: 1px solid var(--bs-border-color);
     }
   }
 }

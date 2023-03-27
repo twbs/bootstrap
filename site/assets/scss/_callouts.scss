@@ -3,9 +3,13 @@
 //
 
 .bd-callout {
+  --#{$prefix}link-color-rgb: var(--bd-callout-link);
+  --#{$prefix}code-color: var(--bd-callout-code-color);
+
   padding: 1.25rem;
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
+  color: var(--bd-callout-color, inherit);
   background-color: var(--bd-callout-bg, var(--bs-gray-100));
   border-left: .25rem solid var(--bd-callout-border, var(--bs-gray-300));
 
@@ -29,7 +33,8 @@
 // Variations
 @each $variant in $bd-callout-variants {
   .bd-callout-#{$variant} {
-    --bd-callout-bg: rgba(var(--bs-#{$variant}-rgb), .075);
-    --bd-callout-border: rgba(var(--bs-#{$variant}-rgb), .5);
+    --bd-callout-color: var(--bs-#{$variant}-text-emphasis);
+    --bd-callout-bg: var(--bs-#{$variant}-bg-subtle);
+    --bd-callout-border: var(--bs-#{$variant}-border-subtle);
   }
 }

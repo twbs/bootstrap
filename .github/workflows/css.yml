@@ -2,14 +2,17 @@ name: CSS
 
 on:
   push:
-    branches-ignore:
-      - "dependabot/**"
+    branches:
+      - main
   pull_request:
   workflow_dispatch:
 
 env:
   FORCE_COLOR: 2
   NODE: 18
+
+permissions:
+  contents: read
 
 jobs:
   css:
@@ -32,3 +35,6 @@ jobs:
 
       - name: Build CSS
         run: npm run css
+
+      - name: Run CSS tests
+        run: npm run css-test

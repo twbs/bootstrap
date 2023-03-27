@@ -2,8 +2,7 @@
 
 /*!
  * Script to run vnu-jar if Java is available.
- * Copyright 2017-2022 The Bootstrap Authors
- * Copyright 2017-2022 Twitter, Inc.
+ * Copyright 2017-2023 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
@@ -14,9 +13,12 @@ const vnu = require('vnu-jar')
 
 execFile('java', ['-version'], (error, stdout, stderr) => {
   if (error) {
-    console.error('Skipping vnu-jar test; Java is missing.')
+    console.error('Skipping vnu-jar test; Java is probably missing.')
+    console.error(error)
     return
   }
+
+  console.log('Running vnu-jar validation...')
 
   const is32bitJava = !/64-Bit/.test(stderr)
 
@@ -48,6 +50,8 @@ execFile('java', ['-version'], (error, stdout, stderr) => {
   if (is32bitJava) {
     args.splice(0, 0, '-Xss512k')
   }
+
+  console.log(`command used: java ${args.join(' ')}`)
 
   return spawn('java', args, {
     shell: true,

@@ -3,12 +3,13 @@
 //
 
 .bd-content {
-  // Offset content from fixed navbar when jumping to headings
-  > :target {
-    padding-top: 5rem;
-    margin-top: -5rem;
+  > h2,
+  > h3,
+  > h4 {
+    --bs-heading-color: var(--bs-emphasis-color);
   }
 
+  // Offset content from fixed navbar when jumping to headings
   > h2:not(:first-child) {
     margin-top: 3rem;
   }
@@ -32,6 +33,9 @@
   // Override Bootstrap defaults
   > .table,
   > .table-responsive .table {
+    --bs-table-border-color: var(--bs-border-color);
+
+    max-width: 100%;
     margin-bottom: 1.5rem;
     @include font-size(.875rem);
 
@@ -60,6 +64,14 @@
       }
     }
 
+    th {
+      color: var(--bs-emphasis-color);
+    }
+
+    strong {
+      color: var(--bs-emphasis-color);
+    }
+
     // Prevent breaking of code
     // stylelint-disable-next-line selector-max-compound-selectors
     th,
@@ -80,7 +92,18 @@
   min-width: 280px;
 }
 
+.table-swatches {
+  th {
+    color: var(--bs-emphasis-color);
+  }
+
+  td code {
+    white-space: nowrap;
+  }
+}
+
 .bd-title {
+  --bs-heading-color: var(--bs-emphasis-color);
   @include font-size(3rem);
 }
 
@@ -89,38 +112,52 @@
   font-weight: 300;
 }
 
-.bd-bg-violet {
-  background-color: $bd-violet;
-}
-
 .bi {
   width: 1em;
   height: 1em;
+  vertical-align: -.125em;
   fill: currentcolor;
-}
-
-.icon-link {
-  display: flex;
-  align-items: center;
-  text-decoration-color: rgba($primary, .5);
-  text-underline-offset: .5rem;
-  backface-visibility: hidden;
-
-  .bi {
-    width: 1.5em;
-    height: 1.5em;
-    transition: .2s ease-in-out transform; // stylelint-disable-line property-disallowed-list
-  }
-
-  &:hover {
-    .bi {
-      transform: translate3d(5px, 0, 0);
-    }
-  }
 }
 
 .border-lg-start {
   @include media-breakpoint-up(lg) {
-    border-left: $border-width solid $border-color;
+    border-left: var(--bs-border-width) solid var(--bs-border-color);
   }
 }
+
+// stylelint-disable selector-no-qualifying-type
+.bd-summary-link {
+  color: var(--bs-link-color);
+
+  &:hover,
+  details[open] > & {
+    color: var(--bs-link-hover-color);
+  }
+}
+// stylelint-enable selector-no-qualifying-type
+
+// scss-docs-start custom-color-mode
+[data-bs-theme="blue"] {
+  --bs-body-color: var(--bs-white);
+  --bs-body-color-rgb: #{to-rgb($white)};
+  --bs-body-bg: var(--bs-blue);
+  --bs-body-bg-rgb: #{to-rgb($blue)};
+  --bs-tertiary-bg: #{$blue-600};
+
+  .dropdown-menu {
+    --bs-dropdown-bg: #{mix($blue-500, $blue-600)};
+    --bs-dropdown-link-active-bg: #{$blue-700};
+  }
+
+  .btn-secondary {
+    --bs-btn-bg: #{mix($gray-600, $blue-400, .5)};
+    --bs-btn-border-color: #{rgba($white, .25)};
+    --bs-btn-hover-bg: #{darken(mix($gray-600, $blue-400, .5), 5%)};
+    --bs-btn-hover-border-color: #{rgba($white, .25)};
+    --bs-btn-active-bg: #{darken(mix($gray-600, $blue-400, .5), 10%)};
+    --bs-btn-active-border-color: #{rgba($white, .5)};
+    --bs-btn-focus-border-color: #{rgba($white, .5)};
+    --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);
+  }
+}
+// scss-docs-end custom-color-mode
