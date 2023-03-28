@@ -76,6 +76,8 @@ describe('Dropdown', () => {
         })
 
         dropdown.show()
+
+        expect.nothing()
       })
     })
 
