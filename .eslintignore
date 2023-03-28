@@ -3,6 +3,5 @@
 **/vendor/
 /_site/
 /js/coverage/
-/js/tests/integration/
 /site/static/sw.js
-/site/layouts/
+/site/layouts/partials/
