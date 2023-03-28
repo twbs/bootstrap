@@ -66,10 +66,10 @@ const config = {
   colors: true,
   autoWatch: false,
   singleRun: true,
-  captureTimeout: 90_000,
+  captureTimeout: 180_000,
   browserDisconnectTolerance: 3,
-  browserDisconnectTimeout: 90_000,
-  browserNoActivityTimeout: 90_000,
+  browserDisconnectTimeout: 180_000,
+  browserNoActivityTimeout: 180_000,
   concurrency: Number.POSITIVE_INFINITY,
   client: {
     clearContext: false
