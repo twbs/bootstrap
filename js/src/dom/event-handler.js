@@ -279,8 +279,7 @@ const EventHandler = {
       defaultPrevented = jQueryEvent.isDefaultPrevented()
     }
 
-    let evt = new Event(event, { bubbles, cancelable: true })
-    evt = hydrateObj(evt, args)
+    const evt = hydrateObj(new Event(event, { bubbles, cancelable: true }), args)
 
     if (defaultPrevented) {
       evt.preventDefault()
