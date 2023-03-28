@@ -1,4 +1,5 @@
 /* eslint-env node */
+/* eslint-disable no-console */
 
 'use strict'
 
@@ -19,7 +20,7 @@ if (process.env.LAMBDATEST === 'true') {
     try {
       await tunnelInstance.start(tunnelArguments)
     } catch (error) {
-      throw new Error(error)
+      console.log(error.message)
     }
   })()
 }
