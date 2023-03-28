@@ -6856,12 +6856,14 @@ textarea.form-control-lg {
   clear: both;
   content: "";
 }
-
 .text-bg-primary {
   color: #fff !important;
-  background-color: RGBA(13, 110, 253, var(--bs-bg-opacity, 1)) !important;
+  background-color: rgba(var(--blue-rgb), var(--bs-bg-opacity, 1)) !important;
 }
 
+.link-primary {
+  color: var(--blue) !important;
+}
 .text-bg-secondary {
   color: #fff !important;
   background-color: RGBA(108, 117, 125, var(--bs-bg-opacity, 1)) !important;
