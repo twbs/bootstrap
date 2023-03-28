@@ -17,8 +17,8 @@ const NAME = 'backdrop'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 const EVENT_KEY = `.bs.${NAME}`
-const EVENT_MOUSEDOWN = `mousedown.bs.${NAME}`
 const EVENT_KEYDOWN = `keydown.bs.${NAME}`
+const EVENT_MOUSEDOWN = `mousedown.bs.${NAME}`
 
 const Default = {
   className: 'modal-backdrop',
