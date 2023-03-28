@@ -72,7 +72,7 @@
     "js-test-integration-bundle": "rollup --config js/tests/integration/rollup.bundle.js",
     "js-test-integration-modularity": "rollup --config js/tests/integration/rollup.bundle-modularity.js",
     "js-test-cloud": "cross-env BROWSERSTACK=true npm run js-test-karma",
-    "js-test-ltcloud": "cross-env LAMBDATEST=true npm-run-all js-test-ltTunnel js-test-karma ",
+    "js-test-ltcloud": "cross-env LAMBDATEST=true npm-run-all --parallel --race js-test-ltTunnel js-test-karma",
     "js-test-ltTunnel": "node js/tests/lt-local",
     "js-test-jquery": "cross-env JQUERY=true npm run js-test-karma",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel js-lint css-lint lockfile-lint",
