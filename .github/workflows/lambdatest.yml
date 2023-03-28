@@ -5,6 +5,7 @@ on:
     branches:
       - "**"
       - "!dependabot/**"
+  pull_request: # TODO REMOVE BEFORE MERGE
   workflow_dispatch:
 
 env:
