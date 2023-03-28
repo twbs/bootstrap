@@ -14,9 +14,12 @@ const tunnelArguments = {
 }
 
 if (process.env.LAMBDATEST === 'true') {
-  try {
-    await tunnelInstance.start(tunnelArguments)
-  } catch (error) {
-    throw new Error(error)
-  }
+  // eslint-disable-next-line unicorn/prefer-top-level-await
+  (async () => {
+    try {
+      await tunnelInstance.start(tunnelArguments)
+    } catch (error) {
+      throw new Error(error)
+    }
+  })()
 }
