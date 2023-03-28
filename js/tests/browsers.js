@@ -52,11 +52,11 @@ const browsers = {
         platformName: 'Windows 10'
       }
     },
-    iphone11: {
+    iphone7: {
       platformName: 'ios',
-      platformVersion: '15',
+      platformVersion: '12',
       browserName: 'Safari',
-      deviceName: 'iPhone 13',
+      deviceName: 'iPhone 7',
       isRealMobile: true
     },
     iphone14: {
