@@ -72,7 +72,8 @@
     "js-test-integration-bundle": "rollup --config js/tests/integration/rollup.bundle.js",
     "js-test-integration-modularity": "rollup --config js/tests/integration/rollup.bundle-modularity.js",
     "js-test-cloud": "cross-env BROWSERSTACK=true npm run js-test-karma",
-    "js-test-ltcloud": "cross-env LAMBDATEST=true npm-run-all --parallel --race js-test-ltTunnel js-test-karma",
+    "js-test-ltcloud": "cross-env LAMBDATEST=true npm-run-all --parallel --race js-test-ltLocal js-test-karma",
+    "js-test-ltLocal": "npm-run-all js-test-ltTunnel sleep",
     "js-test-ltTunnel": "node js/tests/lt-local",
     "js-test-jquery": "cross-env JQUERY=true npm run js-test-karma",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel js-lint css-lint lockfile-lint",
@@ -99,7 +100,8 @@
     "watch-css-docs": "nodemon --watch site/assets/scss/ --ext scss --exec \"npm run css-lint\"",
     "watch-css-test": "nodemon --watch scss/ --ext scss,js --exec \"npm run css-test\"",
     "watch-js-main": "nodemon --watch js/src/ --ext js --exec \"npm-run-all js-lint js-compile\"",
-    "watch-js-docs": "nodemon --watch site/assets/js/ --ext js --exec \"npm run js-lint\""
+    "watch-js-docs": "nodemon --watch site/assets/js/ --ext js --exec \"npm run js-lint\"",
+    "sleep": "sleep 5"
   },
   "peerDependencies": {
     "@popperjs/core": "^2.11.7"

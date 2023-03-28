@@ -53,25 +53,25 @@ const browsers = {
         platformName: 'Windows 10'
       }
     },
-    iphone7: {
+    iphone11: {
       platformName: 'ios',
-      platformVersion: '12',
+      platformVersion: '15',
       browserName: 'Safari',
-      deviceName: 'iPhone 7',
+      deviceName: 'iPhone 13',
       isRealMobile: true
     },
-    iphone12: {
+    iphone14: {
       platformName: 'ios',
       platformVersion: '16',
       browserName: 'Safari',
-      deviceName: 'iPhone 12',
+      deviceName: 'iPhone 14',
       isRealMobile: true
     },
-    pixel2: {
+    galaxyS22: {
       platformName: 'android',
       platformVersion: '12',
       browserName: 'Chrome',
-      deviceName: 'Google Pixel 6',
+      deviceName: 'Galaxy S22 5G',
       isRealMobile: true
     }
   },
