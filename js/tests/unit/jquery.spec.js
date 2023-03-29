@@ -1,18 +1,18 @@
 /* eslint-env jquery */
 
-import Alert from '../../src/alert'
-import Button from '../../src/button'
-import Carousel from '../../src/carousel'
-import Collapse from '../../src/collapse'
-import Dropdown from '../../src/dropdown'
-import Modal from '../../src/modal'
-import Offcanvas from '../../src/offcanvas'
-import Popover from '../../src/popover'
-import ScrollSpy from '../../src/scrollspy'
-import Tab from '../../src/tab'
-import Toast from '../../src/toast'
-import Tooltip from '../../src/tooltip'
-import { clearFixture, getFixture } from '../helpers/fixture'
+import Alert from '../../src/alert.js'
+import Button from '../../src/button.js'
+import Carousel from '../../src/carousel.js'
+import Collapse from '../../src/collapse.js'
+import Dropdown from '../../src/dropdown.js'
+import Modal from '../../src/modal.js'
+import Offcanvas from '../../src/offcanvas.js'
+import Popover from '../../src/popover.js'
+import ScrollSpy from '../../src/scrollspy.js'
+import Tab from '../../src/tab.js'
+import Toast from '../../src/toast.js'
+import Tooltip from '../../src/tooltip.js'
+import { clearFixture, getFixture } from '../helpers/fixture.js'
 
 describe('jQuery', () => {
   let fixtureEl

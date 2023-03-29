@@ -5,8 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
-import Config from './config.js'
 import EventHandler from '../dom/event-handler.js'
+import Config from './config.js'
 import { execute } from './index.js'
 
 /**

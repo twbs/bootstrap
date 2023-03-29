@@ -5,6 +5,10 @@
  * --------------------------------------------------------------------------
  */
 
+import BaseComponent from './base-component.js'
+import EventHandler from './dom/event-handler.js'
+import Manipulator from './dom/manipulator.js'
+import SelectorEngine from './dom/selector-engine.js'
 import {
   defineJQueryPlugin,
   getNextActiveElement,
@@ -13,11 +17,7 @@ import {
   reflow,
   triggerTransitionEnd
 } from './util/index.js'
-import EventHandler from './dom/event-handler.js'
-import Manipulator from './dom/manipulator.js'
-import SelectorEngine from './dom/selector-engine.js'
 import Swipe from './util/swipe.js'
-import BaseComponent from './base-component.js'
 
 /**
  * Constants
@@ -329,7 +329,7 @@ class Carousel extends BaseComponent {
 
     if (!activeElement || !nextElement) {
       // Some weirdness is happening, so we bail
-      // todo: change tests that use empty divs to avoid this check
+      // TODO: change tests that use empty divs to avoid this check
       return
     }
 

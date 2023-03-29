@@ -5,8 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin } from './util/index.js'
 import Tooltip from './tooltip.js'
+import { defineJQueryPlugin } from './util/index.js'
 
 /**
  * Constants
