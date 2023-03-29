@@ -139,7 +139,7 @@ if (LAMBDATEST) {
       browsers.lambdaTest[key]['LT:Options'].pseudoActivityInterval = 15_000 // 5000 ms heartbeat
     }
 
-    browsers.lambdaTest[key].retryLimit = 2
+    browsers.lambdaTest[key].retryLimit = 3
   }
 
   plugins.push('karma-webdriver-launcher', 'karma-jasmine', 'karma-jasmine-html-reporter')
@@ -153,7 +153,7 @@ if (LAMBDATEST) {
     accessKey: ENV.BROWSER_STACK_ACCESS_KEY,
     build: `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`,
     project: 'Bootstrap',
-    retryLimit: 2
+    retryLimit: 3
   }
   plugins.push('karma-browserstack-launcher', 'karma-jasmine-html-reporter')
   config.customLaunchers = browsers.browserStack
