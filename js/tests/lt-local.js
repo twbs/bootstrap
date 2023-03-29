@@ -19,7 +19,9 @@ if (process.env.LAMBDATEST === 'true') {
   (async () => {
     try {
       await tunnelInstance.start(tunnelArguments)
-      await new Promise(res => setTimeout(res, 5000))
+      await new Promise(res => {
+        setTimeout(res, 5000)
+      })
     } catch (error) {
       console.log(error.message)
     }
