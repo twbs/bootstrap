@@ -1,4 +1,4 @@
-/* eslint-env node */
+'use strict'
 
 const { babel } = require('@rollup/plugin-babel')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')

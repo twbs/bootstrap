@@ -1,5 +1,5 @@
-import Data from '../../../src/dom/data'
-import { getFixture, clearFixture } from '../../helpers/fixture'
+import Data from '../../../src/dom/data.js'
+import { clearFixture, getFixture } from '../../helpers/fixture.js'
 
 describe('Data', () => {
   const TEST_KEY = 'bs.test'
@@ -89,7 +89,6 @@ describe('Data', () => {
     expect(Data.get(div, TEST_KEY)).toBeNull()
   })
 
-  /* eslint-disable no-console */
   it('should console.error a message if called with multiple keys', () => {
     console.error = jasmine.createSpy('console.error')
 
@@ -102,5 +101,4 @@ describe('Data', () => {
     expect(console.error).toHaveBeenCalled()
     expect(Data.get(div, UNKNOWN_KEY)).toBeNull()
   })
-  /* eslint-enable no-console */
 })

@@ -5,18 +5,18 @@
  * --------------------------------------------------------------------------
  */
 
+import BaseComponent from './base-component.js'
+import EventHandler from './dom/event-handler.js'
+import SelectorEngine from './dom/selector-engine.js'
+import Backdrop from './util/backdrop.js'
+import { enableDismissTrigger } from './util/component-functions.js'
+import FocusTrap from './util/focustrap.js'
 import {
   defineJQueryPlugin,
   isDisabled,
   isVisible
 } from './util/index.js'
 import ScrollBarHelper from './util/scrollbar.js'
-import EventHandler from './dom/event-handler.js'
-import BaseComponent from './base-component.js'
-import SelectorEngine from './dom/selector-engine.js'
-import Backdrop from './util/backdrop.js'
-import FocusTrap from './util/focustrap.js'
-import { enableDismissTrigger } from './util/component-functions.js'
 
 /**
  * Constants

@@ -30,6 +30,7 @@ A better alternative for those using this type of frameworks is to use a framewo
 
 We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootstrap.esm.min.js`) which allows you to use Bootstrap as a module in the browser, if your [targeted browsers support it](https://caniuse.com/es6-module).
 
+<!-- eslint-skip -->
 ```html
 <script type="module">
   import { Toast } from 'bootstrap.esm.min.js'
@@ -54,6 +55,7 @@ Uncaught TypeError: Failed to resolve module specifier "@popperjs/core". Relativ
 
 To fix this, you can use an `importmap` to resolve the arbitrary module names to complete paths. If your [targeted browsers](https://caniuse.com/?search=importmap) do not support `importmap`, you'll need to use the [es-module-shims](https://github.com/guybedford/es-module-shims) project. Here's how it works for Bootstrap and Popper:
 
+<!-- eslint-skip -->
 ```html
 <!doctype html>
 <html lang="en">

@@ -1,5 +1,5 @@
-import { clearFixture, getFixture } from '../../helpers/fixture'
-import TemplateFactory from '../../../src/util/template-factory'
+import TemplateFactory from '../../../src/util/template-factory.js'
+import { clearFixture, getFixture } from '../../helpers/fixture.js'
 
 describe('TemplateFactory', () => {
   let fixtureEl
