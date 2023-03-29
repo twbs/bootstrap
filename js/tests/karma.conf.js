@@ -72,7 +72,10 @@ const config = {
   browserNoActivityTimeout: 180_000,
   concurrency: Number.POSITIVE_INFINITY,
   client: {
-    clearContext: false
+    clearContext: false,
+    jasmine: {
+      timeoutInterval: 20_000
+    }
   },
   files: [
     'node_modules/hammer-simulator/index.js',
