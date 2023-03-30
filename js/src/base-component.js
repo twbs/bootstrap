@@ -6,9 +6,9 @@
  */
 
 import Data from './dom/data.js'
-import { executeAfterTransition, getElement } from './util/index.js'
 import EventHandler from './dom/event-handler.js'
 import Config from './util/config.js'
+import { executeAfterTransition, getElement } from './util/index.js'
 
 /**
  * Constants

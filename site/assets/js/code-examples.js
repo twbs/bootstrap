@@ -53,7 +53,7 @@
 
   const clipboard = new ClipboardJS('.btn-clipboard', {
     target: trigger => trigger.closest('.bd-code-snippet').querySelector('.highlight'),
-    text: trigger => trigger.parentNode.nextElementSibling.textContent.trimEnd()
+    text: trigger => trigger.closest('.bd-code-snippet').querySelector('.highlight').textContent.trimEnd()
   })
 
   clipboard.on('success', event => {

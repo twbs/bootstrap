@@ -6,8 +6,8 @@
  */
 
 import EventHandler from '../dom/event-handler.js'
-import { execute, executeAfterTransition, getElement, reflow } from './index.js'
 import Config from './config.js'
+import { execute, executeAfterTransition, getElement, reflow } from './index.js'
 
 /**
  * Constants
