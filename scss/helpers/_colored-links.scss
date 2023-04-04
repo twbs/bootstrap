@@ -3,7 +3,7 @@
 // All-caps `RGBA()` function used because of this Sass bug: https://github.com/sass/node-sass/issues/2251
 @each $color, $value in $theme-colors {
   .link-#{$color} {
-    color: RGBA(var(--#{$prefix}#{$color}-rgb, var(--#{$prefix}link-opacity, 1)));
+    color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}link-opacity, 1));
     text-decoration-color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}link-underline-opacity, 1));
 
     @if $link-shade-percentage != 0 {
