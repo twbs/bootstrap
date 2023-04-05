@@ -17,22 +17,22 @@
     - name: Bootstrap Icons
       description: "Import and compile Bootstrap's Sass with Stylelint, PurgeCSS, and the Bootstrap Icons web font."
       url: /examples/tree/main/icons-font
-    - name: Bootstrap with Parcel
+    - name: Parcel
       description: "Import and bundle Bootstrap's source Sass and JavaScript via Parcel."
       url: /examples/tree/main/parcel
       indexPath: src/index.html
       indexPath: src/index.html
-    - name: Bootstrap with React
+    - name: React
       description: "Import and bundle Bootstrap's source Sass and JavaScript with React, Next.js, and React Bootstrap."
       url: /examples/tree/main/react-nextjs
       indexPath: src/pages/index.tsx
-    - name: Bootstrap with Vite
+    - name: Vite
       description: "Import and bundle Bootstrap's source Sass and JavaScript with Vite."
       url: /examples/tree/main/vite
-    - name: Bootstrap with Vue
+    - name: Vue
       description: "Import and bundle Bootstrap's source Sass and JavaScript with Vue and Vite."
       url: /examples/tree/main/vue
-    - name: Bootstrap with Webpack
+    - name: Webpack
       description: "Import and bundle Bootstrap's source Sass and JavaScript with Webpack."
       url: /examples/tree/main/webpack
       indexPath: src/index.html
