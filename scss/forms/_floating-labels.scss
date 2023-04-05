@@ -1,17 +1,6 @@
 .form-floating {
   position: relative;
 
-  &::before:not(.form-control:disabled) {
-    position: absolute;
-    top: $input-border-width;
-    left: $input-border-width;
-    width: subtract(100%, add($input-height-inner-quarter, $input-height-inner-half));
-    height: $form-floating-label-height;
-    content: "";
-    background-color: $input-bg;
-    @include border-radius($input-border-radius);
-  }
-
   > .form-control,
   > .form-control-plaintext,
   > .form-select {
@@ -23,7 +12,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    z-index: 2;
     height: 100%; // allow textareas
     padding: $form-floating-padding-y $form-floating-padding-x;
     overflow: hidden;
@@ -66,14 +55,24 @@
   > .form-control-plaintext,
   > .form-select {
     ~ label {
-      opacity: $form-floating-label-opacity;
+      color: rgba(var(--#{$prefix}body-color-rgb), #{$form-floating-label-opacity});
       transform: $form-floating-label-transform;
+
+      &::after {
+        position: absolute;
+        inset: $form-floating-padding-y ($form-floating-padding-x * .5);
+        z-index: -1;
+        height: $form-floating-label-height;
+        content: "";
+        background-color: $input-bg;
+        @include border-radius($input-border-radius);
+      }
     }
   }
   // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
   > .form-control:-webkit-autofill {
     ~ label {
-      opacity: $form-floating-label-opacity;
+      color: rgba(var(--#{$prefix}body-color-rgb), #{$form-floating-label-opacity});
       transform: $form-floating-label-transform;
     }
   }
@@ -84,7 +83,11 @@
     }
   }
 
-  > .form-control:disabled ~ label {
+  > :disabled ~ label {
     color: $form-floating-label-disabled-color;
+
+    &::after {
+      background-color: $input-disabled-bg;
+    }
   }
 }

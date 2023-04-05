@@ -180,13 +180,18 @@
 // Add modifier classes to change text and background color on individual items.
 // Organizationally, this must come after the `:hover` states.
 
-@each $state, $value in $theme-colors {
-  $list-group-variant-bg: shift-color($value, $list-group-item-bg-scale);
-  $list-group-variant-color: shift-color($value, $list-group-item-color-scale);
-  @if (contrast-ratio($list-group-variant-bg, $list-group-variant-color) < $min-contrast-ratio) {
-    $list-group-variant-color: mix($value, color-contrast($list-group-variant-bg), abs($list-group-item-color-scale));
+@each $state in map-keys($theme-colors) {
+  .list-group-item-#{$state} {
+    --#{$prefix}list-group-color: var(--#{$prefix}#{$state}-text-emphasis);
+    --#{$prefix}list-group-bg: var(--#{$prefix}#{$state}-bg-subtle);
+    --#{$prefix}list-group-border-color: var(--#{$prefix}#{$state}-border-subtle);
+    --#{$prefix}list-group-action-hover-color: var(--#{$prefix}emphasis-color);
+    --#{$prefix}list-group-action-hover-bg: var(--#{$prefix}#{$state}-border-subtle);
+    --#{$prefix}list-group-action-active-color: var(--#{$prefix}emphasis-color);
+    --#{$prefix}list-group-action-active-bg: var(--#{$prefix}#{$state}-border-subtle);
+    --#{$prefix}list-group-active-color: var(--#{$prefix}#{$state}-bg-subtle);
+    --#{$prefix}list-group-active-bg: var(--#{$prefix}#{$state}-text-emphasis);
+    --#{$prefix}list-group-active-border-color: var(--#{$prefix}#{$state}-text-emphasis);
   }
-
-  @include list-group-item-variant($state, $list-group-variant-bg, $list-group-variant-color);
 }
 // scss-docs-end list-group-modifiers

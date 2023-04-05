@@ -28,12 +28,19 @@
   font-weight: var(--#{$prefix}nav-link-font-weight);
   color: var(--#{$prefix}nav-link-color);
   text-decoration: if($link-decoration == none, null, none);
+  background: none;
+  border: 0;
   @include transition($nav-link-transition);
 
   &:hover,
   &:focus {
     color: var(--#{$prefix}nav-link-hover-color);
     text-decoration: if($link-hover-decoration == underline, none, null);
+  }
+
+  &:focus-visible {
+    outline: 0;
+    box-shadow: $nav-link-focus-box-shadow;
   }
 
   // Disabled state lightens text
@@ -63,7 +70,6 @@
 
   .nav-link {
     margin-bottom: calc(-1 * var(--#{$prefix}nav-tabs-border-width)); // stylelint-disable-line function-disallowed-list
-    background: none;
     border: var(--#{$prefix}nav-tabs-border-width) solid transparent;
     @include border-top-radius(var(--#{$prefix}nav-tabs-border-radius));
 
@@ -110,8 +116,6 @@
   // scss-docs-end nav-pills-css-vars
 
   .nav-link {
-    background: none;
-    border: 0;
     @include border-radius(var(--#{$prefix}nav-pills-border-radius));
 
     &:disabled {
@@ -125,6 +129,39 @@
   .show > .nav-link {
     color: var(--#{$prefix}nav-pills-link-active-color);
     @include gradient-bg(var(--#{$prefix}nav-pills-link-active-bg));
+  }
+}
+
+
+//
+// Underline
+//
+
+.nav-underline {
+  // scss-docs-start nav-underline-css-vars
+  --#{$prefix}nav-underline-gap: #{$nav-underline-gap};
+  --#{$prefix}nav-underline-border-width: #{$nav-underline-border-width};
+  --#{$prefix}nav-underline-link-active-color: #{$nav-underline-link-active-color};
+  // scss-docs-end nav-underline-css-vars
+
+  gap: var(--#{$prefix}nav-underline-gap);
+
+  .nav-link {
+    padding-right: 0;
+    padding-left: 0;
+    border-bottom: var(--#{$prefix}nav-underline-border-width) solid transparent;
+
+    &:hover,
+    &:focus {
+      border-bottom-color: currentcolor;
+    }
+  }
+
+  .nav-link.active,
+  .show > .nav-link {
+    font-weight: $font-weight-bold;
+    color: var(--#{$prefix}nav-underline-link-active-color);
+    border-bottom-color: currentcolor;
   }
 }
 

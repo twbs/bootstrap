@@ -4,8 +4,15 @@ on:
   issues:
     types: [labeled]
 
+permissions:
+  contents: read
+
 jobs:
   issue-labeled:
+    permissions:
+      # allow actions-cool/issues-helper to update issues and PRs
+      issues: write
+      pull-requests: write
     if: github.repository == 'twbs/bootstrap'
     runs-on: ubuntu-latest
     steps:

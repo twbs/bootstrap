@@ -10,14 +10,14 @@
   // stylelint-enable
 
   h1 {
+    --bs-heading-color: var(--bs-emphasis-color);
     @include font-size(4rem);
-    line-height: 1;
   }
 
   .lead {
     @include font-size(1rem);
     font-weight: 400;
-    color: $gray-700;
+    color: var(--bs-secondary-color);
   }
 
   .bd-code-snippet {
@@ -37,17 +37,24 @@
     @include media-breakpoint-up(lg) {
       padding-right: 4rem;
     }
+
+    pre {
+      padding: 0;
+      margin-top: .625rem;
+      margin-right: 1.875rem;
+      margin-bottom: .625rem;
+      overflow: hidden;
+    }
   }
   .btn-clipboard {
     position: absolute;
-    top: -.125rem;
+    top: -.625rem;
     right: 0;
     background-color: transparent;
   }
 
   #carbonads { // stylelint-disable-line selector-max-id
-    margin-right: auto;
-    margin-left: auto;
+    margin-inline: auto;
   }
 
   @include media-breakpoint-up(md) {
@@ -58,6 +65,12 @@
 }
 
 .masthead-followup {
+  h2,
+  h3,
+  h4 {
+    --bs-heading-color: var(--bs-emphasis-color);
+  }
+
   .lead {
     @include font-size(1rem);
   }
@@ -73,10 +86,6 @@
   }
 }
 
-.bd-btn-lg {
-  padding: .8rem 2rem;
-}
-
 .masthead-followup-icon {
   padding: 1rem;
   color: rgba(var(--bg-rgb), 1);
@@ -86,7 +95,7 @@
   mix-blend-mode: darken;
 
   svg {
-    filter: drop-shadow(0 1px 1px #fff);
+    filter: drop-shadow(0 1px 1px var(--bs-body-bg));
   }
 }
 
@@ -97,10 +106,18 @@
 
 .animate-img {
   > img {
-    transition: .2s ease-in-out transform; // stylelint-disable-line property-disallowed-list
+    @include transition(transform .2s ease-in-out);
   }
 
   &:hover > img {
     transform: scale(1.1);
+  }
+}
+
+@if $enable-dark-mode {
+  [data-bs-theme="dark"] {
+    .masthead-followup-icon {
+      mix-blend-mode: lighten;
+    }
   }
 }

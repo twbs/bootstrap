@@ -2,16 +2,23 @@ name: cspell
 
 on:
   push:
-    branches-ignore:
-      - "dependabot/**"
+    branches:
+      - main
   pull_request:
   workflow_dispatch:
 
 env:
   FORCE_COLOR: 2
 
+permissions:
+  contents: read
+
 jobs:
   cspell:
+    permissions:
+      # allow streetsidesoftware/cspell-action to fetch files for commits and PRs
+      contents: read
+      pull-requests: read
     runs-on: ubuntu-latest
 
     steps:

@@ -87,7 +87,7 @@ hr {
   font-style: $headings-font-style;
   font-weight: $headings-font-weight;
   line-height: $headings-line-height;
-  color: $headings-color;
+  color: var(--#{$prefix}heading-color, inherit);
 }
 
 h1 {
@@ -241,11 +241,11 @@ sup { top: -.5em; }
 // Links
 
 a {
-  color: var(--#{$prefix}link-color);
+  color: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-opacity, 1));
   text-decoration: $link-decoration;
 
   &:hover {
-    color: var(--#{$prefix}link-hover-color);
+    --#{$prefix}link-color-rgb: var(--#{$prefix}link-hover-color-rgb);
     text-decoration: $link-hover-decoration;
   }
 }

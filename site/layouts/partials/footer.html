@@ -1,12 +1,12 @@
-<footer class="bd-footer py-4 py-md-5 mt-5 bg-light">
-  <div class="container py-4 py-md-5 px-4 px-md-3">
+<footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+  <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
     <div class="row">
       <div class="col-lg-3 mb-3">
-        <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/" aria-label="Bootstrap">
+        <a class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="/" aria-label="Bootstrap">
           {{ partial "icons/bootstrap-white-fill.svg" (dict "class" "d-block me-2" "width" "40" "height" "32") }}
           <span class="fs-5">Bootstrap</span>
         </a>
-        <ul class="list-unstyled small text-muted">
+        <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/{{ .Site.Params.docs_version }}/about/team/">Bootstrap team</a> with the help of <a href="{{ .Site.Params.repo }}/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="{{ .Site.Params.repo }}/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
           <li class="mb-2">Currently v{{ .Site.Params.current_version }}.</li>
@@ -41,7 +41,7 @@
           <li class="mb-2"><a href="{{ .Site.Params.github_org }}/bootstrap/tree/v4-dev">Bootstrap 4</a></li>
           <li class="mb-2"><a href="{{ .Site.Params.github_org }}/icons">Icons</a></li>
           <li class="mb-2"><a href="{{ .Site.Params.github_org }}/rfs">RFS</a></li>
-          <li class="mb-2"><a href="{{ .Site.Params.github_org }}/bootstrap-npm-starter">npm starter</a></li>
+          <li class="mb-2"><a href="{{ .Site.Params.github_org }}/examples/">Examples repo</a></li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 mb-3">

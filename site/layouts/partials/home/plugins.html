@@ -8,9 +8,9 @@
       Add toggleable hidden elements, modals and offcanvas menus, popovers and tooltips, and so much more—all without jQuery. Bootstrap's JavaScript is HTML-first, meaning most plugins are added with <code>data</code> attributes in your HTML. Need more control? Include individual plugins programmatically.
     </p>
     <p class="d-flex justify-content-start lead fw-normal mb-md-0">
-      <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/javascript/" class="icon-link fw-semibold">
+      <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/javascript/" class="icon-link icon-link-hover fw-semibold">
         Learn more about Bootstrap JavaScript
-        <svg class="bi"><use xlink:href="#arrow-right-short"></use></svg>
+        <svg class="bi"><use xlink:href="#arrow-right"></use></svg>
       </a>
     </p>
   </div>
@@ -32,14 +32,14 @@
       </div>
 
       {{ highlight (printf `<div class="dropdown">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-  Dropdown
-</button>
-<ul class="dropdown-menu">
-  <li><button class="dropdown-item" type="button">Dropdown item</button></li>
-  <li><button class="dropdown-item" type="button">Dropdown item</button></li>
-  <li><button class="dropdown-item" type="button">Dropdown item</button></li>
-</ul>
+  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown
+  </button>
+  <ul class="dropdown-menu">
+    <li><button class="dropdown-item" type="button">Dropdown item</button></li>
+    <li><button class="dropdown-item" type="button">Dropdown item</button></li>
+    <li><button class="dropdown-item" type="button">Dropdown item</button></li>
+  </ul>
 </div>
 `) "html" "" }}
       <p>Learn more about <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/javascript/#using-bootstrap-as-a-module">our JavaScript as modules</a> and <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/javascript/#programmatic-api">using the programmatic API</a>.</p>
@@ -54,7 +54,7 @@
           <div class="col-sm-6 mb-2">
             <a class="d-block pe-lg-4 text-decoration-none lh-sm" href="{{ $href }}">
               <h4 class="mb-0 fs-5 fw-semibold">{{ $plugin.name }}</h4>
-              <small class="text-muted">{{ $plugin.description }}</small>
+              <small class="text-body-secondary">{{ $plugin.description }}</small>
             </a>
           </div>
         {{- end }}

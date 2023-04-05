@@ -1,7 +1,6 @@
 /*!
  * Bootstrap Docs (https://getbootstrap.com/)
- * Copyright 2011-2022 The Bootstrap Authors
- * Copyright 2011-2022 Twitter, Inc.
+ * Copyright 2011-2023 The Bootstrap Authors
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
@@ -29,8 +28,8 @@
 @import "../../../scss/mixins";
 
 // fusv-disable
-$enable-grid-classes: false; // stylelint-disable-line scss/dollar-variable-default
-$enable-cssgrid: true; // stylelint-disable-line scss/dollar-variable-default
+$enable-grid-classes: false;
+$enable-cssgrid: true;
 // fusv-enable
 @import "../../../scss/grid";
 
@@ -53,6 +52,7 @@ $enable-cssgrid: true; // stylelint-disable-line scss/dollar-variable-default
 @import "colors";
 @import "clipboard-js";
 @import "placeholder-img";
+@import "scrolling";
 
 // Load docs dependencies
 @import "syntax";

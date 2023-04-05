@@ -69,7 +69,7 @@ $utilities: map-merge(
       print: true,
       property: display,
       class: d,
-      values: inline inline-block block grid table table-row table-cell flex inline-flex none
+      values: inline inline-block block grid inline-grid table table-row table-cell flex inline-flex none
     ),
     // scss-docs-end utils-display
     // scss-docs-start utils-shadow
@@ -84,6 +84,14 @@ $utilities: map-merge(
       )
     ),
     // scss-docs-end utils-shadow
+    // scss-docs-start utils-focus-ring
+    "focus-ring": (
+      css-var: true,
+      css-variable-name: focus-ring-color,
+      class: focus-ring,
+      values: map-loop($theme-colors-rgb, rgba-css-var, "$key", "focus-ring")
+    ),
+    // scss-docs-end utils-focus-ring
     // scss-docs-start utils-position
     "position": (
       property: position,
@@ -163,9 +171,13 @@ $utilities: map-merge(
       ),
       values: $utilities-border-colors
     ),
+    "subtle-border-color": (
+      property: border-color,
+      class: border,
+      values: $utilities-border-subtle
+    ),
     "border-width": (
-      css-var: true,
-      css-variable-name: border-width,
+      property: border-width,
       class: border,
       values: $border-widths
     ),
@@ -570,9 +582,12 @@ $utilities: map-merge(
       values: map-merge(
         $utilities-text-colors,
         (
-          "muted": $text-muted,
+          "muted": var(--#{$prefix}secondary-color), // deprecated
           "black-50": rgba($black, .5), // deprecated
           "white-50": rgba($white, .5), // deprecated
+          "body-secondary": var(--#{$prefix}secondary-color),
+          "body-tertiary": var(--#{$prefix}tertiary-color),
+          "body-emphasis": var(--#{$prefix}emphasis-color),
           "reset": inherit,
         )
       )
@@ -587,7 +602,62 @@ $utilities: map-merge(
         100: 1
       )
     ),
+    "text-color": (
+      property: color,
+      class: text,
+      values: $utilities-text-emphasis-colors
+    ),
     // scss-docs-end utils-color
+    // scss-docs-start utils-links
+    "link-opacity": (
+      css-var: true,
+      class: link-opacity,
+      state: hover,
+      values: (
+        10: .1,
+        25: .25,
+        50: .5,
+        75: .75,
+        100: 1
+      )
+    ),
+    "link-offset": (
+      property: text-underline-offset,
+      class: link-offset,
+      state: hover,
+      values: (
+        1: .125em,
+        2: .25em,
+        3: .375em,
+      )
+    ),
+    "link-underline": (
+      property: text-decoration-color,
+      class: link-underline,
+      local-vars: (
+        "link-underline-opacity": 1
+      ),
+      values: map-merge(
+        $utilities-links-underline,
+        (
+          null: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-underline-opacity, 1)),
+        )
+      )
+    ),
+    "link-underline-opacity": (
+      css-var: true,
+      class: link-underline-opacity,
+      state: hover,
+      values: (
+        0: 0,
+        10: .1,
+        25: .25,
+        50: .5,
+        75: .75,
+        100: 1
+      ),
+    ),
+    // scss-docs-end utils-links
     // scss-docs-start utils-bg-color
     "background-color": (
       property: background-color,
@@ -598,7 +668,9 @@ $utilities: map-merge(
       values: map-merge(
         $utilities-bg-colors,
         (
-          "transparent": transparent
+          "transparent": transparent,
+          "body-secondary": rgba(var(--#{$prefix}secondary-bg-rgb), var(--#{$prefix}bg-opacity)),
+          "body-tertiary": rgba(var(--#{$prefix}tertiary-bg-rgb), var(--#{$prefix}bg-opacity)),
         )
       )
     ),
@@ -612,6 +684,11 @@ $utilities: map-merge(
         75: .75,
         100: 1
       )
+    ),
+    "subtle-background-color": (
+      property: background-color,
+      class: bg,
+      values: $utilities-bg-subtle
     ),
     // scss-docs-end utils-bg-color
     "gradient": (
@@ -641,7 +718,7 @@ $utilities: map-merge(
         2: var(--#{$prefix}border-radius),
         3: var(--#{$prefix}border-radius-lg),
         4: var(--#{$prefix}border-radius-xl),
-        5: var(--#{$prefix}border-radius-2xl),
+        5: var(--#{$prefix}border-radius-xxl),
         circle: 50%,
         pill: var(--#{$prefix}border-radius-pill)
       )
@@ -656,7 +733,7 @@ $utilities: map-merge(
         2: var(--#{$prefix}border-radius),
         3: var(--#{$prefix}border-radius-lg),
         4: var(--#{$prefix}border-radius-xl),
-        5: var(--#{$prefix}border-radius-2xl),
+        5: var(--#{$prefix}border-radius-xxl),
         circle: 50%,
         pill: var(--#{$prefix}border-radius-pill)
       )
@@ -671,7 +748,7 @@ $utilities: map-merge(
         2: var(--#{$prefix}border-radius),
         3: var(--#{$prefix}border-radius-lg),
         4: var(--#{$prefix}border-radius-xl),
-        5: var(--#{$prefix}border-radius-2xl),
+        5: var(--#{$prefix}border-radius-xxl),
         circle: 50%,
         pill: var(--#{$prefix}border-radius-pill)
       )
@@ -686,7 +763,7 @@ $utilities: map-merge(
         2: var(--#{$prefix}border-radius),
         3: var(--#{$prefix}border-radius-lg),
         4: var(--#{$prefix}border-radius-xl),
-        5: var(--#{$prefix}border-radius-2xl),
+        5: var(--#{$prefix}border-radius-xxl),
         circle: 50%,
         pill: var(--#{$prefix}border-radius-pill)
       )
@@ -701,7 +778,7 @@ $utilities: map-merge(
         2: var(--#{$prefix}border-radius),
         3: var(--#{$prefix}border-radius-lg),
         4: var(--#{$prefix}border-radius-xl),
-        5: var(--#{$prefix}border-radius-2xl),
+        5: var(--#{$prefix}border-radius-xxl),
         circle: 50%,
         pill: var(--#{$prefix}border-radius-pill)
       )
@@ -717,11 +794,13 @@ $utilities: map-merge(
       )
     ),
     // scss-docs-end utils-visibility
+    // scss-docs-start utils-zindex
     "z-index": (
       property: z-index,
       class: z,
       values: $zindex-levels,
     )
+    // scss-docs-end utils-zindex
   ),
   $utilities
 );

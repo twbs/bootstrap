@@ -1,0 +1,58 @@
+{{- /*
+  Usage: `js-docs name="name" file="file/_location.js`
+
+  Prints everything between `// js-docs-start "name"` and `// js-docs-end "name"`
+  comments in the docs.
+*/ -}}
+
+{{- $name := .Get "name" -}}
+{{- $file := .Get "file" -}}
+
+{{- /* If any parameters are missing, print an error and exit */ -}}
+{{- if or (not $name) (not $file) -}}
+  {{- errorf "%s: %q: Missing required parameters! Got: name=%q file=%q!" .Position .Name $name $file -}}
+{{- else -}}
+  {{- $capture_start := printf "// js-docs-start %s\n" $name -}}
+  {{- $capture_end := printf "// js-docs-end %s" $name -}}
+  {{- $regex := printf `%s((?:.|\n)*)%s` $capture_start $capture_end -}}
+
+  {{- $match := findRE $regex (readFile $file) -}}
+  {{- $match = index $match 0 -}}
+
+  {{- if not $match -}}
+    {{- errorf "%s: %q: Got no matches for name=%q in file=%q!" .Position .Name $name $file -}}
+  {{- end -}}
+
+  {{- $match = replace $match $capture_start "" -}}
+  {{- $match = replace $match $capture_end "" -}}
+
+  <div class="bd-example-snippet bd-code-snippet">
+    <div class="bd-clipboard">
+      <button type="button" class="btn-clipboard" title="Copy to clipboard">
+        <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"></use></svg>
+      </button>
+    </div>
+    {{- $unindent := 0 -}}
+    {{- $found := false -}}
+    {{- $first_line:= index (split $match "\n") 0 -}}
+    {{- range $char := split $first_line "" -}}
+      {{- if and (eq $char " ") (not $found) -}}
+        {{- $unindent = add $unindent 1 -}}
+      {{- else -}}
+        {{- $found = true -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $output := "" -}}
+    {{- if (gt $unindent 0) -}}
+      {{- $prefix := (strings.Repeat $unindent " ") -}}
+      {{- range $line := split $match "\n" -}}
+        {{- $line = strings.TrimPrefix $prefix $line -}}
+        {{ $output = printf "%s%s\n" $output $line }}
+      {{- end -}}
+      {{- $output = chomp $output -}}
+    {{- else -}}
+      {{- $output = $match -}}
+    {{- end -}}
+    {{- highlight $output "js" "" -}}
+  </div>
+{{- end -}}

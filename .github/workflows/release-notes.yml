@@ -6,8 +6,15 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   update_release_draft:
+    permissions:
+      # allow release-drafter/release-drafter to create GitHub releases and add labels to PRs
+      contents: write
+      pull-requests: write
     runs-on: ubuntu-latest
     if: github.repository == 'twbs/bootstrap'
     steps:
