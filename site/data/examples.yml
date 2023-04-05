@@ -5,37 +5,37 @@
     - name: CDN starter
       description: "Instantly include Bootstrap's compiled CSS and JavaScript via the jsDelivr CDN."
       url: /examples/tree/main/starter
+    - name: Bootstrap color modes
+      description: "Import and compile Bootstrap's Sass with Stylelint, and the Bootstrap color modes."
+      url: /examples/tree/main/color-modes
     - name: Sass & JS
       description: "Use npm to import and compile Bootstrap's Sass with Autoprefixer and Stylelint, plus our bundled JavaScript."
       url: /examples/tree/main/sass-js
     - name: Sass & ESM JS
       description: "Import and compile Bootstrap's Sass with Autoprefixer and Stylelint, and compile our source JavaScript with an ESM shim."
       url: /examples/tree/main/sass-js-esm
-    - name: Webpack
-      description: "Import and bundle Bootstrap's source Sass and JavaScript with Webpack."
-      url: /examples/tree/main/webpack
-      indexPath: src/index.html
+    - name: Bootstrap Icons
+      description: "Import and compile Bootstrap's Sass with Stylelint, PurgeCSS, and the Bootstrap Icons web font."
+      url: /examples/tree/main/icons-font
     - name: Parcel
       description: "Import and bundle Bootstrap's source Sass and JavaScript via Parcel."
       url: /examples/tree/main/parcel
       indexPath: src/index.html
-    - name: Vite
-      description: "Import and bundle Bootstrap's source Sass and JavaScript with Vite."
-      url: /examples/tree/main/vite
       indexPath: src/index.html
-    - name: Bootstrap Icons
-      description: "Import and compile Bootstrap's Sass with Stylelint, PurgeCSS, and the Bootstrap Icons web font."
-      url: /examples/tree/main/icons-font
-    - name: Bootstrap color modes
-      description: "Import and compile Bootstrap's Sass with Stylelint, and the Bootstrap color modes."
-      url: /examples/tree/main/color-modes
     - name: Bootstrap with React
       description: "Import and bundle Bootstrap's source Sass and JavaScript with React, Next.js, and React Bootstrap."
       url: /examples/tree/main/react-nextjs
       indexPath: src/pages/index.tsx
+    - name: Vite
+      description: "Import and bundle Bootstrap's source Sass and JavaScript with Vite."
+      url: /examples/tree/main/vite
     - name: Bootstrap with Vue
       description: "Import and bundle Bootstrap's source Sass and JavaScript with Vue and Vite."
       url: /examples/tree/main/vue
+    - name: Bootstrap with Webpack
+      description: "Import and bundle Bootstrap's source Sass and JavaScript with Webpack."
+      url: /examples/tree/main/webpack
+      indexPath: src/index.html
 
 - category: Snippets
   description: "Common patterns for building sites and apps that build on existing components and utilities with custom CSS and more."
