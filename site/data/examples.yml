@@ -37,7 +37,6 @@
       description: "Import and bundle Bootstrap's source Sass and JavaScript with Vue and Vite."
       url: /examples/tree/main/vue
 
-
 - category: Snippets
   description: "Common patterns for building sites and apps that build on existing components and utilities with custom CSS and more."
   examples:
