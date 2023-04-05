@@ -868,4 +868,11 @@ const myModalEl = document.getElementById('myModal')
 myModalEl.addEventListener('hidden.bs.modal', event => {
   // do something...
 })
+
+myModalEl.addEventListner('hide.bs.modal', event => {
+  // you can also abort the event...
+  if (!valid) {
+    return event.preventDefault();
+  }
+}
 ```
