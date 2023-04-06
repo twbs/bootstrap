@@ -3,8 +3,9 @@
 //
 
 .bd-footer {
+  color: var(--bs-dark-text-emphasis);
   a {
-    color: var(--bs-body-color);
+    color: var(--bs-emphasis-color);
     text-decoration: none;
 
     &:hover,
