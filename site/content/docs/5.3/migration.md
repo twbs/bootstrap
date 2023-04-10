@@ -11,6 +11,10 @@ toc: true
 
 If you're migrating from our previous alpha releases of v5.3.0, please review their changes in addition to this section.
 
+### Helpers
+
+- [Colored links]({{< docsref "/helpers/colored-links" >}}) once again have `!important` so they work better with our newly added link utilities.
+
 ### Utilities
 
 - Added new `.d-inline-grid` [display utility]({{< docsref "/utilities/display" >}}).
