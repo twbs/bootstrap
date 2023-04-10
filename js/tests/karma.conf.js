@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 'use strict'
 
 const path = require('node:path')
@@ -8,7 +6,7 @@ const { babel } = require('@rollup/plugin-babel')
 const istanbul = require('rollup-plugin-istanbul')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
 const replace = require('@rollup/plugin-replace')
-const { browsers } = require('./browsers')
+const { browsers } = require('./browsers.js')
 
 const ENV = process.env
 const BROWSERSTACK = Boolean(ENV.BROWSERSTACK)
