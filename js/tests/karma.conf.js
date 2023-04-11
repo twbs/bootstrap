@@ -65,10 +65,10 @@ const config = {
   colors: true,
   autoWatch: false,
   singleRun: true,
-  captureTimeout: 90_000,
+  captureTimeout: 180_000,
   browserDisconnectTolerance: 3,
-  browserDisconnectTimeout: 90_000,
-  browserNoActivityTimeout: 90_000,
+  browserDisconnectTimeout: 180_000,
+  browserNoActivityTimeout: 180_000,
   concurrency: 5,
   client: {
     clearContext: false,
@@ -118,10 +118,12 @@ const config = {
 
 if (LAMBDATEST) {
   config.hostname = 'localhost.lambdatest.com'
+
   for (const key of Object.keys(browsers.lambdaTest)) {
     browsers.lambdaTest[key].base = 'WebDriver'
     browsers.lambdaTest[key].build = `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`
     browsers.lambdaTest[key].project = 'Bootstrap'
+
     if (browsers.lambdaTest[key].isRealMobile) {
       browsers.lambdaTest[key].config = webdriverConfigMobile
       browsers.lambdaTest[key].user = ENV.LT_USERNAME
