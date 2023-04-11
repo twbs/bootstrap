@@ -44,5 +44,5 @@ jobs:
         env:
           LT_USERNAME: "${{ secrets.LT_USERNAME }}"
           LT_ACCESS_KEY: "${{ secrets.LT_ACCESS_KEY }}"
-          # LT_TUNNEL_NAME: "${{ secrets.LT_TUNNEL_NAME }}"
+          LT_TUNNEL_NAME: "${{ secrets.LT_TUNNEL_NAME }}"
           GITHUB_SHA: "${{ github.sha }}"

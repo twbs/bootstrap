@@ -109,7 +109,7 @@
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
     "@popperjs/core": "^2.11.7",
-    "@lambdatest/node-tunnel": "^3.0.12",
+    "@lambdatest/node-tunnel": "^3.0.14",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",

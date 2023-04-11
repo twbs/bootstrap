@@ -66,7 +66,7 @@ const browsers = {
       deviceName: 'iPhone 12',
       isRealMobile: true
     },
-    pixel2: {
+    pixel6: {
       platformName: 'android',
       platformVersion: '12',
       browserName: 'Chrome',
