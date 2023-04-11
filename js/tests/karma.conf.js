@@ -54,9 +54,16 @@ const config = {
   colors: true,
   autoWatch: false,
   singleRun: true,
-  concurrency: Number.POSITIVE_INFINITY,
+  captureTimeout: 180_000,
+  browserDisconnectTolerance: 3,
+  browserDisconnectTimeout: 180_000,
+  browserNoActivityTimeout: 180_000,
+  concurrency: 5,
   client: {
-    clearContext: false
+    clearContext: false,
+    jasmine: {
+      timeoutInterval: 20_000
+    }
   },
   files: [
     'node_modules/hammer-simulator/index.js',
@@ -105,7 +112,7 @@ if (BROWSERSTACK) {
     accessKey: ENV.BROWSER_STACK_ACCESS_KEY,
     build: `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`,
     project: 'Bootstrap',
-    retryLimit: 2
+    retryLimit: 3
   }
   plugins.push('karma-browserstack-launcher', 'karma-jasmine-html-reporter')
   config.customLaunchers = browsers
