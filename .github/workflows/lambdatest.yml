@@ -39,7 +39,7 @@ jobs:
         run: npm run dist
 
       - name: Run LambdaTest tests
-        run: npm run js-test-ltcloud
+        run: npm run js-test-cloud
         env:
           LT_USERNAME: "${{ secrets.LT_USERNAME }}"
           LT_ACCESS_KEY: "${{ secrets.LT_ACCESS_KEY }}"
