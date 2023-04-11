@@ -801,7 +801,7 @@ $utilities: map-merge(
       values: $zindex-levels,
     ),
     // scss-docs-end utils-zindex
-    // scss-docs-start animation utilities
+    // scss-docs-start utils-animation-direction
     "animation-direction": (
       property: animation-direction,
       class: animation-direction,
@@ -811,8 +811,8 @@ $utilities: map-merge(
         alternate: alternate,
         alternate-reverse: alternate-reverse,
       )
-    ),
-    // scss-docs-end animation utilities
+    )
+    // scss-docs-end utils-animation-direction
   ),
   $utilities
 );
