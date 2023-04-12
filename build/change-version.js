@@ -66,25 +66,36 @@ async function replaceRecursively(file, oldVersion, newVersion) {
 async function main(args) {
   let [oldVersion, newVersion] = args
 
-  if (!oldVersion || !newVersion || (oldVersion === newVersion)) {
-    console.error('USAGE: change-version old_version new_version [--verbose] [--dry[-run]]')
-    console.error('Got arguments:', args)
-    process.exit(1)
+  if (!oldVersion || !newVersion) {
+    showUsage()
   }
 
-  // Strip any leading `v` from arguments because otherwise we will end up with duplicate `v`s
+  // Strip any leading `v` from arguments because
+  // otherwise we will end up with duplicate `v`s
   [oldVersion, newVersion] = [oldVersion, newVersion].map(arg => {
     return arg.startsWith('v') ? arg.slice(1) : arg
   })
 
+  if (oldVersion === newVersion) {
+    showUsage()
+  }
+
   try {
     const files = await globby(GLOB, GLOBBY_OPTIONS)
 
-    await Promise.all(files.map(file => replaceRecursively(file, oldVersion, newVersion)))
+    await Promise.all(
+      files.map(file => replaceRecursively(file, oldVersion, newVersion))
+    )
   } catch (error) {
     console.error(error)
     process.exit(1)
   }
+}
+
+function showUsage() {
+    console.error('USAGE: change-version old_version new_version [--verbose] [--dry[-run]]')
+    console.error('Got arguments:', args)
+    process.exit(1)
 }
 
 main(process.argv.slice(2))
