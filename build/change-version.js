@@ -63,6 +63,12 @@ async function replaceRecursively(file, oldVersion, newVersion) {
   await fs.writeFile(file, newString, 'utf8')
 }
 
+function showUsage(args) {
+  console.error('USAGE: change-version old_version new_version [--verbose] [--dry[-run]]')
+  console.error('Got arguments:', args)
+  process.exit(1)
+}
+
 async function main(args) {
   let [oldVersion, newVersion] = args
 
@@ -90,12 +96,6 @@ async function main(args) {
     console.error(error)
     process.exit(1)
   }
-}
-
-function showUsage(args) {
-  console.error('USAGE: change-version old_version new_version [--verbose] [--dry[-run]]')
-  console.error('Got arguments:', args)
-  process.exit(1)
 }
 
 main(process.argv.slice(2))
