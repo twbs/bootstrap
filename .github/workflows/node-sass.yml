@@ -37,7 +37,7 @@ jobs:
 
       # Check that there are no Sass variables (`$`)
       - name: Check built CSS files
-        shell: bash
+        shell: bash {0}
         run: |
           SASS_VARS_FOUND=$(find dist-sass/css/ -name "*.css" | xargs grep -F "\$")
           if [ -z "$SASS_VARS_FOUND" ]; then
