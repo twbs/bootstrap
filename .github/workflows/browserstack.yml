@@ -1,4 +1,4 @@
-name: LambdaTest
+name: BrowserStack
 
 on:
   push:
@@ -15,7 +15,7 @@ permissions:
   contents: read
 
 jobs:
-  lambdatest:
+  browserstack:
     runs-on: ubuntu-latest
     if: github.repository == 'twbs/bootstrap'
     timeout-minutes: 30
@@ -38,10 +38,9 @@ jobs:
       - name: Run dist
         run: npm run dist
 
-      - name: Run LambdaTest tests
-        run: npm run js-test-lt-cloud
+      - name: Run BrowserStack tests
+        run: npm run js-test-cloud
         env:
-          LT_USERNAME: "${{ secrets.LT_USERNAME }}"
-          LT_ACCESS_KEY: "${{ secrets.LT_ACCESS_KEY }}"
-          LT_TUNNEL_NAME: "tunnel-${{ github.sha }}"
+          BROWSER_STACK_ACCESS_KEY: "${{ secrets.BROWSER_STACK_ACCESS_KEY }}"
+          BROWSER_STACK_USERNAME: "${{ secrets.BROWSER_STACK_USERNAME }}"
           GITHUB_SHA: "${{ github.sha }}"

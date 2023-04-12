@@ -10,6 +10,7 @@ const { browsers } = require('./browsers.js')
 
 const ENV = process.env
 const LAMBDATEST = Boolean(ENV.LAMBDATEST)
+const BROWSERSTACK = Boolean(ENV.BROWSERSTACK)
 const DEBUG = Boolean(ENV.DEBUG)
 const JQUERY_TEST = Boolean(ENV.JQUERY)
 
@@ -79,7 +80,7 @@ const config = {
     'node_modules/hammer-simulator/index.js',
     {
       pattern: 'js/tests/unit/**/!(jquery).spec.js',
-      watched: !LAMBDATEST
+      watched: !BROWSERSTACK && !LAMBDATEST
     }
   ],
   preprocessors: {
@@ -118,38 +119,51 @@ const config = {
 if (LAMBDATEST) {
   config.hostname = 'localhost.lambdatest.com'
 
-  for (const key of Object.keys(browsers)) {
-    browsers[key].base = 'WebDriver'
-    browsers[key].build = `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`
-    browsers[key].project = 'Bootstrap'
+  for (const key of Object.keys(browsers.lambdaTest)) {
+    browsers.lambdaTest[key].base = 'WebDriver'
+    browsers.lambdaTest[key].build = `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`
+    browsers.lambdaTest[key].project = 'Bootstrap'
 
-    if (browsers[key].isRealMobile) {
-      browsers[key].config = webdriverConfigMobile
-      browsers[key].user = ENV.LT_USERNAME
-      browsers[key].accessKey = ENV.LT_ACCESS_KEY
-      browsers[key].tunnel = true
-      browsers[key].console = true
-      browsers[key].network = true
-      browsers[key].tunnelName = process.env.LT_TUNNEL_NAME || 'jasmine'
-      browsers[key].pseudoActivityInterval = 5000 // 5000 ms heartbeat
+    if (browsers.lambdaTest[key].isRealMobile) {
+      browsers.lambdaTest[key].config = webdriverConfigMobile
+      browsers.lambdaTest[key].user = ENV.LT_USERNAME
+      browsers.lambdaTest[key].accessKey = ENV.LT_ACCESS_KEY
+      browsers.lambdaTest[key].tunnel = true
+      browsers.lambdaTest[key].console = true
+      browsers.lambdaTest[key].network = true
+      browsers.lambdaTest[key].tunnelName = process.env.LT_TUNNEL_NAME || 'jasmine'
+      browsers.lambdaTest[key].pseudoActivityInterval = 5000 // 5000 ms heartbeat
     } else {
-      browsers[key].config = webdriverConfig
-      browsers[key]['LT:Options'].username = ENV.LT_USERNAME
-      browsers[key]['LT:Options'].accessKey = ENV.LT_ACCESS_KEY
-      browsers[key]['LT:Options'].tunnel = true
-      browsers[key]['LT:Options'].console = true
-      browsers[key]['LT:Options'].network = true
-      browsers[key]['LT:Options'].tunnelName = process.env.LT_TUNNEL_NAME || 'jasmine'
-      browsers[key]['LT:Options'].pseudoActivityInterval = 5000 // 5000 ms heartbeat
+      browsers.lambdaTest[key].config = webdriverConfig
+      browsers.lambdaTest[key]['LT:Options'].username = ENV.LT_USERNAME
+      browsers.lambdaTest[key]['LT:Options'].accessKey = ENV.LT_ACCESS_KEY
+      browsers.lambdaTest[key]['LT:Options'].tunnel = true
+      browsers.lambdaTest[key]['LT:Options'].console = true
+      browsers.lambdaTest[key]['LT:Options'].network = true
+      browsers.lambdaTest[key]['LT:Options'].tunnelName = process.env.LT_TUNNEL_NAME || 'jasmine'
+      browsers.lambdaTest[key]['LT:Options'].pseudoActivityInterval = 5000 // 5000 ms heartbeat
     }
 
-    browsers[key].retryLimit = 3
+    browsers.lambdaTest[key].retryLimit = 3
   }
 
   plugins.push('karma-webdriver-launcher', 'karma-jasmine-html-reporter')
-  config.customLaunchers = browsers
-  config.browsers = Object.keys(browsers)
+  config.customLaunchers = browsers.lambdaTest
+  config.browsers = Object.keys(browsers.lambdaTest)
   reporters.push('kjhtml')
+} else if (BROWSERSTACK) {
+  config.hostname = ip.address()
+  config.browserStack = {
+    username: ENV.BROWSER_STACK_USERNAME,
+    accessKey: ENV.BROWSER_STACK_ACCESS_KEY,
+    build: `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`,
+    project: 'Bootstrap',
+    retryLimit: 3
+  }
+  plugins.push('karma-browserstack-launcher', 'karma-jasmine-html-reporter')
+  config.customLaunchers = browsers.browserStack
+  config.browsers = Object.keys(browsers.browserStack)
+  reporters.push('BrowserStack', 'kjhtml')
 } else if (JQUERY_TEST) {
   frameworks.push('detectBrowsers')
   plugins.push(
