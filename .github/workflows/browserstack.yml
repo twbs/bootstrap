@@ -18,7 +18,7 @@ jobs:
   browserstack:
     runs-on: ubuntu-latest
     if: github.repository == 'twbs/bootstrap'
-    timeout-minutes: 30
+    timeout-minutes: 15
 
     steps:
       - name: Clone repository
