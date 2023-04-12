@@ -39,10 +39,13 @@ jobs:
       - name: Check built CSS files
         shell: bash
         run: |
-          if [[ $(find dist-sass/css/ -name "*.css" | xargs grep -F "\$" | wc -l | bc) -eq 0 ]]; then
+          SASS_VARS_FOUND=`find dist-sass/css/ -name "*.css" | xargs grep -F "\$"`
+
+          if [ -z "$SASS_VARS_FOUND" ]; then
             echo "All good, no Sass variables found"
             exit 0
           else
-            echo "Found Sass variables!"
+            echo "Found $(echo "$SASS_VARS_FOUND" | wc -l | bc) Sass variables:"
+            echo "$SASS_VARS_FOUND"
             exit 1
           fi
