@@ -67,7 +67,7 @@ async function main(args) {
   let [oldVersion, newVersion] = args
 
   if (!oldVersion || !newVersion) {
-    showUsage()
+    showUsage(args)
   }
 
   // Strip any leading `v` from arguments because
@@ -77,7 +77,7 @@ async function main(args) {
   })
 
   if (oldVersion === newVersion) {
-    showUsage()
+    showUsage(args)
   }
 
   try {
@@ -92,10 +92,10 @@ async function main(args) {
   }
 }
 
-function showUsage() {
-    console.error('USAGE: change-version old_version new_version [--verbose] [--dry[-run]]')
-    console.error('Got arguments:', args)
-    process.exit(1)
+function showUsage(args) {
+  console.error('USAGE: change-version old_version new_version [--verbose] [--dry[-run]]')
+  console.error('Got arguments:', args)
+  process.exit(1)
 }
 
 main(process.argv.slice(2))
