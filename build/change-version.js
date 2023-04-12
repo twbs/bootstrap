@@ -35,8 +35,13 @@ function regExpQuoteReplacement(string) {
 
 async function replaceRecursively(file, oldVersion, newVersion) {
   const originalString = await fs.readFile(file, 'utf8')
-  const newString = originalString.replace(
+  var newString = originalString.replace(
     new RegExp(regExpQuote(oldVersion), 'g'), regExpQuoteReplacement(newVersion)
+  )
+
+  // Also replace the version used by Ruby sometimes in this case: '5.3.0.alpha3' which is different from '5.3.0-alpha3'
+  newString = newString.replace(
+    new RegExp(regExpQuote(oldVersion.replace(/-/g,'.')), 'g'), regExpQuoteReplacement(newVersion)
   )
 
   // No need to move any further if the strings are identical
