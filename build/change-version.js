@@ -35,14 +35,17 @@ function regExpQuoteReplacement(string) {
 
 async function replaceRecursively(file, oldVersion, newVersion) {
   const originalString = await fs.readFile(file, 'utf8')
-  var newString = originalString.replace(
-    new RegExp(regExpQuote(oldVersion), 'g'), regExpQuoteReplacement(newVersion)
-  )
-
-  // Also replace the version used by Ruby sometimes in this case: '5.3.0.alpha3' which is different from '5.3.0-alpha3'
-  newString = newString.replace(
-    new RegExp(regExpQuote(oldVersion.replace(/-/g,'.')), 'g'), regExpQuoteReplacement(newVersion)
-  )
+  const newString = originalString
+    .replace(
+      new RegExp(regExpQuote(oldVersion), 'g'),
+      regExpQuoteReplacement(newVersion)
+    )
+    // Also replace the version used by the rubygem,
+    // which is using periods (`.`) instead of hyphens (`-`)
+    .replace(
+      new RegExp(regExpQuote(oldVersion.replace(/-/g, '.')), 'g'),
+      regExpQuoteReplacement(newVersion.replace(/-/g, '.'))
+    )
 
   // No need to move any further if the strings are identical
   if (originalString === newString) {
@@ -70,7 +73,9 @@ async function main(args) {
   }
 
   // Strip any leading `v` from arguments because otherwise we will end up with duplicate `v`s
-  [oldVersion, newVersion] = [oldVersion, newVersion].map(arg => arg.startsWith('v') ? arg.slice(1) : arg)
+  [oldVersion, newVersion] = [oldVersion, newVersion].map(arg => {
+    return arg.startsWith('v') ? arg.slice(1) : arg
+  })
 
   try {
     const files = await globby(GLOB, GLOBBY_OPTIONS)
