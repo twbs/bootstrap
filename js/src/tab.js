@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, getElementFromSelector, getNextActiveElement, isDisabled } from './util/index'
+import { defineJQueryPlugin, getElementFromSelector, getNextActiveElement, isDisabled, getDocument, getWindow } from './util/index'
 import EventHandler from './dom/event-handler'
 import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
@@ -291,7 +291,7 @@ EventHandler.on(getDocument(), EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, funct
 /**
  * Initialize on focus
  */
-EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+EventHandler.on(getWindow(), EVENT_LOAD_DATA_API, () => {
   for (const element of SelectorEngine.find(SELECTOR_DATA_TOGGLE_ACTIVE)) {
     Tab.getOrCreateInstance(element)
   }

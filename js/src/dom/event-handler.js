@@ -182,7 +182,7 @@ function addHandler(element, originalTypeEvent, handler, delegationFunction, one
   handlers[uid] = fn
 
   if (element && typeof element.addEventListener === 'function') {
-    element.addEventListener(typeEvent, fn, delegation)
+    element.addEventListener(typeEvent, fn, isDelegated)
   }
 }
 
