@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap base-component.js v5.1.3 (https://getbootstrap.com/)
+  * Bootstrap base-component.js v5.2.3 (https://getbootstrap.com/)
   * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -17,7 +17,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.1.3): base-component.js
+   * Bootstrap (v5.2.3): base-component.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -25,7 +25,7 @@
    * Constants
    */
 
-  const VERSION = '5.1.3';
+  const VERSION = '5.2.3';
   /**
    * Class definition
    */
@@ -88,6 +88,10 @@
 
     static get EVENT_KEY() {
       return `.${this.DATA_KEY}`;
+    }
+
+    static eventName(name) {
+      return `${name}${this.EVENT_KEY}`;
     }
 
   }

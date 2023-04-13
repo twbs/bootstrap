@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap component-functions.js v5.1.3 (https://getbootstrap.com/)
+  * Bootstrap component-functions.js v5.2.3 (https://getbootstrap.com/)
   * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -15,7 +15,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.1.3): util/component-functions.js
+   * Bootstrap (v5.2.3): util/component-functions.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -41,7 +41,7 @@
 
   exports.enableDismissTrigger = enableDismissTrigger;
 
-  Object.defineProperty(exports, '__esModule', { value: true });
+  Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
 
 }));
 //# sourceMappingURL=component-functions.js.map

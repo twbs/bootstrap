@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap offcanvas.js v5.1.3 (https://getbootstrap.com/)
+  * Bootstrap offcanvas.js v5.2.3 (https://getbootstrap.com/)
   * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -20,7 +20,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.1.3): offcanvas.js
+   * Bootstrap (v5.2.3): offcanvas.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -42,7 +42,9 @@
   const EVENT_SHOW = `show${EVENT_KEY}`;
   const EVENT_SHOWN = `shown${EVENT_KEY}`;
   const EVENT_HIDE = `hide${EVENT_KEY}`;
+  const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY}`;
   const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
+  const EVENT_RESIZE = `resize${EVENT_KEY}`;
   const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
   const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`;
   const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="offcanvas"]';
@@ -52,7 +54,7 @@
     scroll: false
   };
   const DefaultType = {
-    backdrop: 'boolean',
+    backdrop: '(boolean|string)',
     keyboard: 'boolean',
     scroll: 'boolean'
   };
@@ -116,7 +118,7 @@
       this._element.classList.add(CLASS_NAME_SHOWING);
 
       const completeCallBack = () => {
-        if (!this._config.scroll) {
+        if (!this._config.scroll || this._config.backdrop) {
           this._focustrap.activate();
         }
 
@@ -180,12 +182,23 @@
 
 
     _initializeBackDrop() {
+      const clickCallback = () => {
+        if (this._config.backdrop === 'static') {
+          EventHandler__default.default.trigger(this._element, EVENT_HIDE_PREVENTED);
+          return;
+        }
+
+        this.hide();
+      }; // 'static' option will be translated to true, and booleans will keep their value
+
+
+      const isVisible = Boolean(this._config.backdrop);
       return new Backdrop__default.default({
         className: CLASS_NAME_BACKDROP,
-        isVisible: this._config.backdrop,
+        isVisible,
         isAnimated: true,
         rootElement: this._element.parentNode,
-        clickCallback: () => this.hide()
+        clickCallback: isVisible ? clickCallback : null
       });
     }
 
@@ -197,9 +210,16 @@
 
     _addEventListeners() {
       EventHandler__default.default.on(this._element, EVENT_KEYDOWN_DISMISS, event => {
-        if (this._config.keyboard && event.key === ESCAPE_KEY) {
-          this.hide();
+        if (event.key !== ESCAPE_KEY) {
+          return;
         }
+
+        if (!this._config.keyboard) {
+          EventHandler__default.default.trigger(this._element, EVENT_HIDE_PREVENTED);
+          return;
+        }
+
+        this.hide();
       });
     } // Static
 
@@ -256,6 +276,13 @@
   EventHandler__default.default.on(index.getWindow(), EVENT_LOAD_DATA_API, () => {
     for (const selector of SelectorEngine__default.default.find(OPEN_SELECTOR)) {
       Offcanvas.getOrCreateInstance(selector).show();
+    }
+  });
+  EventHandler__default.default.on(index.getWindow(), EVENT_RESIZE, () => {
+    for (const element of SelectorEngine__default.default.find('[aria-modal][class*=show][class*=offcanvas-]')) {
+      if (getComputedStyle(element).position !== 'fixed') {
+        Offcanvas.getOrCreateInstance(element).hide();
+      }
     }
   });
   componentFunctions.enableDismissTrigger(Offcanvas);
