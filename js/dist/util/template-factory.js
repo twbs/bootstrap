@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap template-factory.js v5.2.3 (https://getbootstrap.com/)
+  * Bootstrap template-factory.js v5.1.3 (https://getbootstrap.com/)
   * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -16,7 +16,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): util/template-factory.js
+   * Bootstrap (v5.1.3): util/template-factory.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -26,27 +26,27 @@
 
   const NAME = 'TemplateFactory';
   const Default = {
-    allowList: sanitizer.DefaultAllowlist,
+    extraClass: '',
+    template: '<div></div>',
     content: {},
     // { selector : text ,  selector2 : text2 , }
-    extraClass: '',
     html: false,
     sanitize: true,
     sanitizeFn: null,
-    template: '<div></div>'
+    allowList: sanitizer.DefaultAllowlist
   };
   const DefaultType = {
-    allowList: 'object',
-    content: 'object',
     extraClass: '(string|function)',
+    template: 'string',
+    content: 'object',
     html: 'boolean',
     sanitize: 'boolean',
     sanitizeFn: '(null|function)',
-    template: 'string'
+    allowList: 'object'
   };
   const DefaultContentType = {
-    entry: '(string|element|function|null)',
-    selector: '(string|element)'
+    selector: '(string|element)',
+    entry: '(string|element|function|null)'
   };
   /**
    * Class definition

@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap modal.js v5.2.3 (https://getbootstrap.com/)
+  * Bootstrap modal.js v5.1.3 (https://getbootstrap.com/)
   * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -20,7 +20,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): modal.js
+   * Bootstrap (v5.1.3): modal.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -39,8 +39,6 @@
   const EVENT_SHOW = `show${EVENT_KEY}`;
   const EVENT_SHOWN = `shown${EVENT_KEY}`;
   const EVENT_RESIZE = `resize${EVENT_KEY}`;
-  const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`;
-  const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`;
   const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`;
   const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
   const CLASS_NAME_OPEN = 'modal-open';
@@ -53,13 +51,13 @@
   const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="modal"]';
   const Default = {
     backdrop: true,
-    focus: true,
-    keyboard: true
+    keyboard: true,
+    focus: true
   };
   const DefaultType = {
     backdrop: '(boolean|string)',
-    focus: 'boolean',
-    keyboard: 'boolean'
+    keyboard: 'boolean',
+    focus: 'boolean'
   };
   /**
    * Class definition
@@ -74,8 +72,6 @@
       this._isShown = false;
       this._isTransitioning = false;
       this._scrollBar = new ScrollBarHelper__default.default();
-
-      this._addEventListeners();
     } // Getters
 
 
@@ -118,6 +114,10 @@
 
       this._adjustDialog();
 
+      this._toggleEscapeEventListener(true);
+
+      this._toggleResizeEventListener(true);
+
       this._backdrop.show(() => this._showElement(relatedTarget));
     }
 
@@ -134,6 +134,10 @@
 
       this._isShown = false;
       this._isTransitioning = true;
+
+      this._toggleEscapeEventListener(false);
+
+      this._toggleResizeEventListener(false);
 
       this._focustrap.deactivate();
 
@@ -160,10 +164,22 @@
 
 
     _initializeBackDrop() {
+      const clickCallback = () => {
+        if (this._config.backdrop === 'static') {
+          this._triggerBackdropTransition();
+
+          return;
+        }
+
+        this.hide();
+      }; // 'static' option will be translated to true, and booleans will keep their value
+
+
+      const isVisible = Boolean(this._config.backdrop);
       return new Backdrop__default.default({
-        isVisible: Boolean(this._config.backdrop),
-        // 'static' option will be translated to true, and booleans will keep their value,
-        isAnimated: this._isAnimated()
+        isVisible,
+        isAnimated: this._isAnimated(),
+        clickCallback: isVisible ? clickCallback : null
       });
     }
 
@@ -212,7 +228,12 @@
       this._queueCallback(transitionComplete, this._dialog, this._isAnimated());
     }
 
-    _addEventListeners() {
+    _toggleEscapeEventListener(enable) {
+      if (!enable) {
+        EventHandler__default.default.off(this._element, EVENT_KEYDOWN_DISMISS);
+        return;
+      }
+
       EventHandler__default.default.on(this._element, EVENT_KEYDOWN_DISMISS, event => {
         if (event.key !== ESCAPE_KEY) {
           return;
@@ -226,29 +247,15 @@
 
         this._triggerBackdropTransition();
       });
-      EventHandler__default.default.on(window, EVENT_RESIZE, () => {
-        if (this._isShown && !this._isTransitioning) {
-          this._adjustDialog();
-        }
-      });
-      EventHandler__default.default.on(this._element, EVENT_MOUSEDOWN_DISMISS, event => {
-        // a bad trick to segregate clicks that may start inside dialog but end outside, and avoid listen to scrollbar clicks
-        EventHandler__default.default.one(this._element, EVENT_CLICK_DISMISS, event2 => {
-          if (this._element !== event.target || this._element !== event2.target) {
-            return;
-          }
+    }
 
-          if (this._config.backdrop === 'static') {
-            this._triggerBackdropTransition();
+    _toggleResizeEventListener(enable) {
+      if (enable) {
+        EventHandler__default.default.on(window, EVENT_RESIZE, () => this._adjustDialog());
+        return;
+      }
 
-            return;
-          }
-
-          if (this._config.backdrop) {
-            this.hide();
-          }
-        });
-      });
+      EventHandler__default.default.off(window, EVENT_RESIZE);
     }
 
     _hideModal() {

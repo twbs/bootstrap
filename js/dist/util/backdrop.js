@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap backdrop.js v5.2.3 (https://getbootstrap.com/)
+  * Bootstrap backdrop.js v5.1.3 (https://getbootstrap.com/)
   * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -16,7 +16,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): util/backdrop.js
+   * Bootstrap (v5.1.3): util/backdrop.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -30,19 +30,19 @@
   const EVENT_MOUSEDOWN = `mousedown.bs.${NAME}`;
   const Default = {
     className: 'modal-backdrop',
-    clickCallback: null,
-    isAnimated: false,
     isVisible: true,
     // if false, we use the backdrop helper without adding any element to the dom
-    rootElement: 'body' // give the choice to place backdrop under different elements
-
+    isAnimated: false,
+    rootElement: 'body',
+    // give the choice to place backdrop under different elements
+    clickCallback: null
   };
   const DefaultType = {
     className: 'string',
-    clickCallback: '(function|null)',
-    isAnimated: 'boolean',
     isVisible: 'boolean',
-    rootElement: '(element|string)'
+    isAnimated: 'boolean',
+    rootElement: '(element|string)',
+    clickCallback: '(function|null)'
   };
   /**
    * Class definition

@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap dropdown.js v5.2.3 (https://getbootstrap.com/)
+  * Bootstrap dropdown.js v5.1.3 (https://getbootstrap.com/)
   * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -13,7 +13,7 @@
 
   function _interopNamespace(e) {
     if (e && e.__esModule) return e;
-    const n = Object.create(null, { [Symbol.toStringTag]: { value: 'Module' } });
+    const n = Object.create(null);
     if (e) {
       for (const k in e) {
         if (k !== 'default') {
@@ -37,7 +37,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): dropdown.js
+   * Bootstrap (v5.1.3): dropdown.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -66,10 +66,7 @@
   const CLASS_NAME_DROPUP = 'dropup';
   const CLASS_NAME_DROPEND = 'dropend';
   const CLASS_NAME_DROPSTART = 'dropstart';
-  const CLASS_NAME_DROPUP_CENTER = 'dropup-center';
-  const CLASS_NAME_DROPDOWN_CENTER = 'dropdown-center';
-  const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)';
-  const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE}.${CLASS_NAME_SHOW}`;
+  const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]';
   const SELECTOR_MENU = '.dropdown-menu';
   const SELECTOR_NAVBAR = '.navbar';
   const SELECTOR_NAVBAR_NAV = '.navbar-nav';
@@ -80,23 +77,21 @@
   const PLACEMENT_BOTTOMEND = index.isRTL() ? 'bottom-start' : 'bottom-end';
   const PLACEMENT_RIGHT = index.isRTL() ? 'left-start' : 'right-start';
   const PLACEMENT_LEFT = index.isRTL() ? 'right-start' : 'left-start';
-  const PLACEMENT_TOPCENTER = 'top';
-  const PLACEMENT_BOTTOMCENTER = 'bottom';
   const Default = {
-    autoClose: true,
-    boundary: 'clippingParents',
-    display: 'dynamic',
     offset: [0, 2],
+    boundary: 'clippingParents',
+    reference: 'toggle',
+    display: 'dynamic',
     popperConfig: null,
-    reference: 'toggle'
+    autoClose: true
   };
   const DefaultType = {
-    autoClose: '(boolean|string)',
-    boundary: '(string|element)',
-    display: 'string',
     offset: '(array|string|function)',
+    boundary: '(string|element)',
+    reference: '(string|element|object)',
+    display: 'string',
     popperConfig: '(null|object|function)',
-    reference: '(string|element|object)'
+    autoClose: '(boolean|string)'
   };
   /**
    * Class definition
@@ -107,9 +102,8 @@
       super(element, config);
       this._popper = null;
       this._parent = this._element.parentNode; // dropdown wrapper
-      // todo: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.2/forms/input-group/
 
-      this._menu = SelectorEngine__default.default.next(this._element, SELECTOR_MENU)[0] || SelectorEngine__default.default.prev(this._element, SELECTOR_MENU)[0] || SelectorEngine__default.default.findOne(SELECTOR_MENU, this._parent);
+      this._menu = SelectorEngine__default.default.findOne(SELECTOR_MENU, this._parent);
       this._inNavbar = this._detectNavbar();
     } // Getters
 
@@ -270,14 +264,6 @@
 
       if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) {
         return PLACEMENT_LEFT;
-      }
-
-      if (parentDropdown.classList.contains(CLASS_NAME_DROPUP_CENTER)) {
-        return PLACEMENT_TOPCENTER;
-      }
-
-      if (parentDropdown.classList.contains(CLASS_NAME_DROPDOWN_CENTER)) {
-        return PLACEMENT_BOTTOMCENTER;
       } // We need to trim the value because custom properties can also include spaces
 
 
@@ -377,12 +363,16 @@
         return;
       }
 
-      const openToggles = SelectorEngine__default.default.find(SELECTOR_DATA_TOGGLE_SHOWN);
+      const toggles = SelectorEngine__default.default.find(SELECTOR_DATA_TOGGLE);
 
-      for (const toggle of openToggles) {
+      for (const toggle of toggles) {
         const context = Dropdown.getInstance(toggle);
 
         if (!context || context._config.autoClose === false) {
+          continue;
+        }
+
+        if (!context._isShown()) {
           continue;
         }
 
@@ -411,39 +401,57 @@
     }
 
     static dataApiKeydownHandler(event) {
-      // If not an UP | DOWN | ESCAPE key => not a dropdown command
-      // If input/textarea && if key is other than ESCAPE => not a dropdown command
-      const isInput = /input|textarea/i.test(event.target.tagName);
-      const isEscapeEvent = event.key === ESCAPE_KEY;
-      const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key);
+      // If not input/textarea:
+      //  - And not a key in UP | DOWN | ESCAPE => not a dropdown command
+      // If input/textarea && If key is other than ESCAPE
+      //    - If key is not UP or DOWN => not a dropdown command
+      //    - If trigger inside the menu => not a dropdown command
+      const {
+        target,
+        key,
+        delegateTarget
+      } = event;
+      const isInput = /input|textarea/i.test(target.tagName);
+      const isEscapeEvent = key === ESCAPE_KEY;
+      const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(key);
 
-      if (!isUpOrDownEvent && !isEscapeEvent) {
+      if (!isInput && !(isUpOrDownEvent || isEscapeEvent)) {
         return;
       }
 
       if (isInput && !isEscapeEvent) {
+        // eslint-disable-next-line unicorn/no-lonely-if
+        if (!isUpOrDownEvent || target.closest(SELECTOR_MENU)) {
+          return;
+        }
+      }
+
+      const isActive = delegateTarget.classList.contains(CLASS_NAME_SHOW);
+
+      if (!isActive && isEscapeEvent) {
         return;
       }
 
-      event.preventDefault(); // todo: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.2/forms/input-group/
+      event.preventDefault();
+      event.stopPropagation();
 
-      const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine__default.default.prev(this, SELECTOR_DATA_TOGGLE)[0] || SelectorEngine__default.default.next(this, SELECTOR_DATA_TOGGLE)[0] || SelectorEngine__default.default.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode);
+      if (index.isDisabled(this)) {
+        return;
+      }
+
+      const getToggleButton = SelectorEngine__default.default.findOne(SELECTOR_DATA_TOGGLE, delegateTarget.parentNode);
       const instance = Dropdown.getOrCreateInstance(getToggleButton);
 
+      if (isEscapeEvent) {
+        instance.hide();
+        getToggleButton.focus();
+        return;
+      }
+
       if (isUpOrDownEvent) {
-        event.stopPropagation();
         instance.show();
 
         instance._selectMenuItem(event);
-
-        return;
-      }
-
-      if (instance._isShown()) {
-        // else is escape and we check if it is shown
-        event.stopPropagation();
-        instance.hide();
-        getToggleButton.focus();
       }
     }
 

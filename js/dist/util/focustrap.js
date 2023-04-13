@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap focustrap.js v5.2.3 (https://getbootstrap.com/)
+  * Bootstrap focustrap.js v5.1.3 (https://getbootstrap.com/)
   * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -17,7 +17,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): util/focustrap.js
+   * Bootstrap (v5.1.3): util/focustrap.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -34,13 +34,13 @@
   const TAB_NAV_FORWARD = 'forward';
   const TAB_NAV_BACKWARD = 'backward';
   const Default = {
-    autofocus: true,
-    trapElement: null // The element to trap focus inside of
-
+    trapElement: null,
+    // The element to trap focus inside of
+    autofocus: true
   };
   const DefaultType = {
-    autofocus: 'boolean',
-    trapElement: 'element'
+    trapElement: 'element',
+    autofocus: 'boolean'
   };
   /**
    * Class definition

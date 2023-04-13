@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap collapse.js v5.2.3 (https://getbootstrap.com/)
+  * Bootstrap collapse.js v5.1.3 (https://getbootstrap.com/)
   * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -17,7 +17,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): collapse.js
+   * Bootstrap (v5.1.3): collapse.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -45,12 +45,12 @@
   const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing';
   const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]';
   const Default = {
-    parent: null,
-    toggle: true
+    toggle: true,
+    parent: null
   };
   const DefaultType = {
-    parent: '(null|element)',
-    toggle: 'boolean'
+    toggle: 'boolean',
+    parent: '(null|element)'
   };
   /**
    * Class definition
@@ -259,13 +259,13 @@
 
 
     static jQueryInterface(config) {
-      const _config = {};
-
-      if (typeof config === 'string' && /show|hide/.test(config)) {
-        _config.toggle = false;
-      }
-
       return this.each(function () {
+        const _config = {};
+
+        if (typeof config === 'string' && /show|hide/.test(config)) {
+          _config.toggle = false;
+        }
+
         const data = Collapse.getOrCreateInstance(this, _config);
 
         if (typeof config === 'string') {

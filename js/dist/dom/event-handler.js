@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap event-handler.js v5.2.3 (https://getbootstrap.com/)
+  * Bootstrap event-handler.js v5.1.3 (https://getbootstrap.com/)
   * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -11,7 +11,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): dom/event-handler.js
+   * Bootstrap (v5.1.3): dom/event-handler.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -29,17 +29,18 @@
     mouseenter: 'mouseover',
     mouseleave: 'mouseout'
   };
+  const customEventsRegex = /^(mouseenter|mouseleave)/i;
   const nativeEvents = new Set(['click', 'dblclick', 'mouseup', 'mousedown', 'contextmenu', 'mousewheel', 'DOMMouseScroll', 'mouseover', 'mouseout', 'mousemove', 'selectstart', 'selectend', 'keydown', 'keypress', 'keyup', 'orientationchange', 'touchstart', 'touchmove', 'touchend', 'touchcancel', 'pointerdown', 'pointermove', 'pointerup', 'pointerleave', 'pointercancel', 'gesturestart', 'gesturechange', 'gestureend', 'focus', 'blur', 'change', 'reset', 'select', 'submit', 'focusin', 'focusout', 'load', 'unload', 'beforeunload', 'resize', 'move', 'DOMContentLoaded', 'readystatechange', 'error', 'abort', 'scroll']);
   /**
    * Private methods
    */
 
-  function makeEventUid(element, uid) {
+  function getUidEvent(element, uid) {
     return uid && `${uid}::${uidEvent++}` || element.uidEvent || uidEvent++;
   }
 
-  function getElementEvents(element) {
-    const uid = makeEventUid(element);
+  function getEvent(element) {
+    const uid = getUidEvent(element);
     element.uidEvent = uid;
     eventRegistry[uid] = eventRegistry[uid] || {};
     return eventRegistry[uid];
@@ -47,9 +48,7 @@
 
   function bootstrapHandler(element, fn) {
     return function handler(event) {
-      hydrateObj(event, {
-        delegateTarget: element
-      });
+      event.delegateTarget = element;
 
       if (handler.oneOff) {
         EventHandler.off(element, event.type, fn);
@@ -71,9 +70,7 @@
             continue;
           }
 
-          hydrateObj(event, {
-            delegateTarget: target
-          });
+          event.delegateTarget = target;
 
           if (handler.oneOff) {
             EventHandler.off(element, event.type, selector, fn);
@@ -81,25 +78,35 @@
 
           return fn.apply(target, [event]);
         }
-      }
+      } // To please ESLint
+
+
+      return null;
     };
   }
 
-  function findHandler(events, callable, delegationSelector = null) {
-    return Object.values(events).find(event => event.callable === callable && event.delegationSelector === delegationSelector);
+  function findHandler(events, handler, delegationSelector = null) {
+    for (const uidEvent of Object.keys(events)) {
+      const event = events[uidEvent];
+
+      if (event.originalHandler === handler && event.delegationSelector === delegationSelector) {
+        return event;
+      }
+    }
+
+    return null;
   }
 
   function normalizeParameters(originalTypeEvent, handler, delegationFunction) {
-    const isDelegated = typeof handler === 'string'; // todo: tooltip passes `false` instead of selector, so we need to check
-
-    const callable = isDelegated ? delegationFunction : handler || delegationFunction;
+    const delegation = typeof handler === 'string';
+    const originalHandler = delegation ? delegationFunction : handler;
     let typeEvent = getTypeEvent(originalTypeEvent);
 
     if (!nativeEvents.has(typeEvent)) {
       typeEvent = originalTypeEvent;
     }
 
-    return [isDelegated, callable, typeEvent];
+    return [delegation, originalHandler, typeEvent];
   }
 
   function addHandler(element, originalTypeEvent, handler, delegationFunction, oneOff) {
@@ -107,10 +114,14 @@
       return;
     }
 
-    let [isDelegated, callable, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction); // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM position
+    if (!handler) {
+      handler = delegationFunction;
+      delegationFunction = null;
+    } // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM position
     // this prevents the handler from being dispatched the same way as mouseover or mouseout does
 
-    if (originalTypeEvent in customEvents) {
+
+    if (customEventsRegex.test(originalTypeEvent)) {
       const wrapFunction = fn => {
         return function (event) {
           if (!event.relatedTarget || event.relatedTarget !== event.delegateTarget && !event.delegateTarget.contains(event.relatedTarget)) {
@@ -119,28 +130,33 @@
         };
       };
 
-      callable = wrapFunction(callable);
+      if (delegationFunction) {
+        delegationFunction = wrapFunction(delegationFunction);
+      } else {
+        handler = wrapFunction(handler);
+      }
     }
 
-    const events = getElementEvents(element);
+    const [delegation, originalHandler, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction);
+    const events = getEvent(element);
     const handlers = events[typeEvent] || (events[typeEvent] = {});
-    const previousFunction = findHandler(handlers, callable, isDelegated ? handler : null);
+    const previousFunction = findHandler(handlers, originalHandler, delegation ? handler : null);
 
     if (previousFunction) {
       previousFunction.oneOff = previousFunction.oneOff && oneOff;
       return;
     }
 
-    const uid = makeEventUid(callable, originalTypeEvent.replace(namespaceRegex, ''));
-    const fn = isDelegated ? bootstrapDelegationHandler(element, handler, callable) : bootstrapHandler(element, callable);
-    fn.delegationSelector = isDelegated ? handler : null;
-    fn.callable = callable;
+    const uid = getUidEvent(originalHandler, originalTypeEvent.replace(namespaceRegex, ''));
+    const fn = delegation ? bootstrapDelegationHandler(element, handler, delegationFunction) : bootstrapHandler(element, handler);
+    fn.delegationSelector = delegation ? handler : null;
+    fn.originalHandler = originalHandler;
     fn.oneOff = oneOff;
     fn.uidEvent = uid;
     handlers[uid] = fn;
 
     if (element && typeof element.addEventListener === 'function') {
-      element.addEventListener(typeEvent, fn, isDelegated);
+      element.addEventListener(typeEvent, fn, delegation);
     }
   }
 
@@ -161,7 +177,7 @@
     for (const handlerKey of Object.keys(storeElementEvent)) {
       if (handlerKey.includes(namespace)) {
         const event = storeElementEvent[handlerKey];
-        removeHandler(element, events, typeEvent, event.callable, event.delegationSelector);
+        removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector);
       }
     }
   }
@@ -186,19 +202,18 @@
         return;
       }
 
-      const [isDelegated, callable, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction);
+      const [delegation, originalHandler, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction);
       const inNamespace = typeEvent !== originalTypeEvent;
-      const events = getElementEvents(element);
-      const storeElementEvent = events[typeEvent] || {};
+      const events = getEvent(element);
       const isNamespace = originalTypeEvent.startsWith('.');
 
-      if (typeof callable !== 'undefined') {
+      if (typeof originalHandler !== 'undefined') {
         // Simplest case: handler is passed, remove that listener ONLY.
-        if (!Object.keys(storeElementEvent).length) {
+        if (!events || !events[typeEvent]) {
           return;
         }
 
-        removeHandler(element, events, typeEvent, callable, isDelegated ? handler : null);
+        removeHandler(element, events, typeEvent, originalHandler, delegation ? handler : null);
         return;
       }
 
@@ -208,12 +223,14 @@
         }
       }
 
+      const storeElementEvent = events[typeEvent] || {};
+
       for (const keyHandlers of Object.keys(storeElementEvent)) {
         const handlerKey = keyHandlers.replace(stripUidRegex, '');
 
         if (!inNamespace || originalTypeEvent.includes(handlerKey)) {
           const event = storeElementEvent[keyHandlers];
-          removeHandler(element, events, typeEvent, event.callable, event.delegationSelector);
+          removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector);
         }
       }
     },
@@ -226,7 +243,7 @@
       const $ = index.getjQuery();
       const typeEvent = getTypeEvent(event);
       const inNamespace = event !== typeEvent;
-      let jQueryEvent = null;
+      let jQueryEvent;
       let bubbles = true;
       let nativeDispatch = true;
       let defaultPrevented = false;
@@ -239,11 +256,21 @@
         defaultPrevented = jQueryEvent.isDefaultPrevented();
       }
 
-      let evt = new Event(event, {
+      const evt = new Event(event, {
         bubbles,
         cancelable: true
-      });
-      evt = hydrateObj(evt, args);
+      }); // merge custom information in our event
+
+      if (typeof args !== 'undefined') {
+        for (const key of Object.keys(args)) {
+          Object.defineProperty(evt, key, {
+            get() {
+              return args[key];
+            }
+
+          });
+        }
+      }
 
       if (defaultPrevented) {
         evt.preventDefault();
@@ -253,7 +280,7 @@
         element.dispatchEvent(evt);
       }
 
-      if (evt.defaultPrevented && jQueryEvent) {
+      if (evt.defaultPrevented && typeof jQueryEvent !== 'undefined') {
         jQueryEvent.preventDefault();
       }
 
@@ -261,25 +288,6 @@
     }
 
   };
-
-  function hydrateObj(obj, meta) {
-    for (const [key, value] of Object.entries(meta || {})) {
-      try {
-        obj[key] = value;
-      } catch (_unused) {
-        Object.defineProperty(obj, key, {
-          configurable: true,
-
-          get() {
-            return value;
-          }
-
-        });
-      }
-    }
-
-    return obj;
-  }
 
   return EventHandler;
 
