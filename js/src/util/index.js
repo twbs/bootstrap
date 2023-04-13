@@ -232,7 +232,14 @@ const onDOMContentLoaded = callback => {
   }
 }
 
-const isRTL = () => getDocument().documentElement.dir === 'rtl'
+const isRTL = () => {
+  const docEl = getDocument().documentElement
+  if (docEl === undefined) {
+    return false
+  }
+
+  return docEl.dir === 'rtl'
+}
 
 const defineJQueryPlugin = plugin => {
   onDOMContentLoaded(() => {
