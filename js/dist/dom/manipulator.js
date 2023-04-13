@@ -1,13 +1,13 @@
 /*!
   * Bootstrap manipulator.js v5.1.3 (https://getbootstrap.com/)
-  * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Manipulator = factory());
-})(this, (function () { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('../util/index')) :
+  typeof define === 'function' && define.amd ? define(['../util/index'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Manipulator = factory(global.Index));
+})(this, (function (index) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -15,24 +15,25 @@
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
-  function normalizeData(val) {
-    if (val === 'true') {
+
+  function normalizeData(value) {
+    if (value === 'true') {
       return true;
     }
 
-    if (val === 'false') {
+    if (value === 'false') {
       return false;
     }
 
-    if (val === Number(val).toString()) {
-      return Number(val);
+    if (value === Number(value).toString()) {
+      return Number(value);
     }
 
-    if (val === '' || val === 'null') {
+    if (value === '' || value === 'null') {
       return null;
     }
 
-    return val;
+    return value;
   }
 
   function normalizeDataKey(key) {
@@ -54,11 +55,14 @@
       }
 
       const attributes = {};
-      Object.keys(element.dataset).filter(key => key.startsWith('bs')).forEach(key => {
+      const bsKeys = Object.keys(element.dataset).filter(key => key.startsWith('bs'));
+
+      for (const key of bsKeys) {
         let pureKey = key.replace(/^bs/, '');
         pureKey = pureKey.charAt(0).toLowerCase() + pureKey.slice(1, pureKey.length);
         attributes[pureKey] = normalizeData(element.dataset[key]);
-      });
+      }
+
       return attributes;
     },
 
@@ -68,9 +72,10 @@
 
     offset(element) {
       const rect = element.getBoundingClientRect();
+      const windowRef = index.getWindow();
       return {
-        top: rect.top + window.pageYOffset,
-        left: rect.left + window.pageXOffset
+        top: rect.top + windowRef.pageYOffset,
+        left: rect.left + windowRef.pageXOffset
       };
     },
 

@@ -1,7 +1,7 @@
 /*!
  * Bootstrap Utilities v5.1.3 (https://getbootstrap.com/)
- * Copyright 2011-2021 The Bootstrap Authors
- * Copyright 2011-2021 Twitter, Inc.
+ * Copyright 2011-2022 The Bootstrap Authors
+ * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 .clearfix::after {
@@ -122,11 +122,25 @@
   z-index: 1020;
 }
 
+.sticky-bottom {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  z-index: 1020;
+}
+
 @media (min-width: 576px) {
   .sticky-sm-top {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
+    z-index: 1020;
+  }
+
+  .sticky-sm-bottom {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
     z-index: 1020;
   }
 }
@@ -137,12 +151,26 @@
     top: 0;
     z-index: 1020;
   }
+
+  .sticky-md-bottom {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    z-index: 1020;
+  }
 }
 @media (min-width: 992px) {
   .sticky-lg-top {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
+    z-index: 1020;
+  }
+
+  .sticky-lg-bottom {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
     z-index: 1020;
   }
 }
@@ -153,12 +181,26 @@
     top: 0;
     z-index: 1020;
   }
+
+  .sticky-xl-bottom {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    z-index: 1020;
+  }
 }
 @media (min-width: 1400px) {
   .sticky-xxl-top {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
+    z-index: 1020;
+  }
+
+  .sticky-xxl-bottom {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
     z-index: 1020;
   }
 }
