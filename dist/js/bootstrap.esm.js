@@ -1,6 +1,6 @@
 /*!
   * Bootstrap v5.2.3 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 import * as Popper from '@popperjs/core';
@@ -30,7 +30,7 @@ const toType = object => {
 const getUID = prefix => {
   do {
     prefix += Math.floor(Math.random() * MAX_UID);
-  } while (document.getElementById(prefix));
+  } while (getDocument().getElementById(prefix));
 
   return prefix;
 };
@@ -63,7 +63,7 @@ const getSelectorFromElement = element => {
   const selector = getSelector(element);
 
   if (selector) {
-    return document.querySelector(selector) ? selector : null;
+    return getDocument().querySelector(selector) ? selector : null;
   }
 
   return null;
@@ -71,7 +71,7 @@ const getSelectorFromElement = element => {
 
 const getElementFromSelector = element => {
   const selector = getSelector(element);
-  return selector ? document.querySelector(selector) : null;
+  return selector ? getDocument().querySelector(selector) : null;
 };
 
 const getTransitionDurationFromElement = element => {
@@ -83,7 +83,7 @@ const getTransitionDurationFromElement = element => {
   let {
     transitionDuration,
     transitionDelay
-  } = window.getComputedStyle(element);
+  } = getWindow().getComputedStyle(element);
   const floatTransitionDuration = Number.parseFloat(transitionDuration);
   const floatTransitionDelay = Number.parseFloat(transitionDelay); // Return 0 if element or transition duration is not found
 
@@ -171,7 +171,7 @@ const isDisabled = element => {
 };
 
 const findShadowRoot = element => {
-  if (!document.documentElement.attachShadow) {
+  if (!getDocument().documentElement.attachShadow) {
     return null;
   } // Can find the shadow root otherwise it'll return the document
 
@@ -205,11 +205,12 @@ const noop = () => {};
 
 
 const reflow = element => {
-  element.offsetHeight; // eslint-disable-line no-unused-expressions
+  // eslint-disable-next-line no-unused-expressions
+  element.offsetHeight;
 };
 
 const getjQuery = () => {
-  if (window.jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
+  if (getWindow().jQuery && !getDocument().body.hasAttribute('data-bs-no-jquery')) {
     return window.jQuery;
   }
 
@@ -219,10 +220,12 @@ const getjQuery = () => {
 const DOMContentLoadedCallbacks = [];
 
 const onDOMContentLoaded = callback => {
-  if (document.readyState === 'loading') {
+  const documentRef = getDocument();
+
+  if (documentRef.readyState === 'loading') {
     // add listener on the first call when the document is in loading state
     if (!DOMContentLoadedCallbacks.length) {
-      document.addEventListener('DOMContentLoaded', () => {
+      documentRef.addEventListener('DOMContentLoaded', () => {
         for (const callback of DOMContentLoadedCallbacks) {
           callback();
         }
@@ -235,7 +238,15 @@ const onDOMContentLoaded = callback => {
   }
 };
 
-const isRTL = () => document.documentElement.dir === 'rtl';
+const isRTL = () => {
+  const docEl = getDocument().documentElement;
+
+  if (docEl === undefined) {
+    return false;
+  }
+
+  return docEl.dir === 'rtl';
+};
 
 const defineJQueryPlugin = plugin => {
   onDOMContentLoaded(() => {
@@ -318,6 +329,22 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
   }
 
   return list[Math.max(0, Math.min(index, listLength - 1))];
+};
+/**
+ * @return {window|{}} The proper element
+ */
+
+
+const getWindow = () => {
+  return typeof window !== 'undefined' ? window : {};
+};
+/**
+ * @return {document|{}} The proper element
+ */
+
+
+const getDocument = () => {
+  return typeof document !== 'undefined' ? document : {};
 };
 
 /**
@@ -449,7 +476,10 @@ function addHandler(element, originalTypeEvent, handler, delegationFunction, one
   fn.oneOff = oneOff;
   fn.uidEvent = uid;
   handlers[uid] = fn;
-  element.addEventListener(typeEvent, fn, isDelegated);
+
+  if (element && typeof element.addEventListener === 'function') {
+    element.addEventListener(typeEvent, fn, isDelegated);
+  }
 }
 
 function removeHandler(element, events, typeEvent, handler, delegationSelector) {
@@ -797,6 +827,8 @@ class BaseComponent extends Config {
     }
 
     this._element = element;
+    this._window = getWindow();
+    this._document = getDocument();
     this._config = this._getConfig(config);
     Data.set(this._element, this.constructor.DATA_KEY, this);
   } // Public
@@ -861,7 +893,7 @@ class BaseComponent extends Config {
 const enableDismissTrigger = (component, method = 'hide') => {
   const clickEvent = `click.dismiss${component.EVENT_KEY}`;
   const name = component.NAME;
-  EventHandler.on(document, clickEvent, `[data-bs-dismiss="${name}"]`, function (event) {
+  EventHandler.on(getDocument(), clickEvent, `[data-bs-dismiss="${name}"]`, function (event) {
     if (['A', 'AREA'].includes(this.tagName)) {
       event.preventDefault();
     }
@@ -1007,7 +1039,7 @@ class Button extends BaseComponent {
  */
 
 
-EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$5, event => {
+EventHandler.on(getDocument(), EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$5, event => {
   event.preventDefault();
   const button = event.target.closest(SELECTOR_DATA_TOGGLE$5);
   const data = Button.getOrCreateInstance(button);
@@ -1030,11 +1062,11 @@ defineJQueryPlugin(Button);
  */
 
 const SelectorEngine = {
-  find(selector, element = document.documentElement) {
+  find(selector, element = getDocument().documentElement) {
     return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
   },
 
-  findOne(selector, element = document.documentElement) {
+  findOne(selector, element = getDocument().documentElement) {
     return Element.prototype.querySelector.call(element, selector);
   },
 
@@ -1136,7 +1168,7 @@ class Swipe extends Config {
 
     this._config = this._getConfig(config);
     this._deltaX = 0;
-    this._supportPointerEvents = Boolean(window.PointerEvent);
+    this._supportPointerEvents = Boolean(getWindow().PointerEvent);
 
     this._initEvents();
   } // Getters
@@ -1221,7 +1253,7 @@ class Swipe extends Config {
 
 
   static isSupported() {
-    return 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0;
+    return 'ontouchstart' in getDocument().documentElement || navigator.maxTouchPoints > 0;
   }
 
 }
@@ -1334,7 +1366,7 @@ class Carousel extends BaseComponent {
     // FIXME TODO use `document.visibilityState`
     // Don't call next when the page isn't visible
     // or the carousel or its parent isn't visible
-    if (!document.hidden && isVisible(this._element)) {
+    if (!this._document.hidden && isVisible(this._element)) {
       this.next();
     }
   }
@@ -1630,7 +1662,7 @@ class Carousel extends BaseComponent {
  */
 
 
-EventHandler.on(document, EVENT_CLICK_DATA_API$5, SELECTOR_DATA_SLIDE, function (event) {
+EventHandler.on(getDocument(), EVENT_CLICK_DATA_API$5, SELECTOR_DATA_SLIDE, function (event) {
   const target = getElementFromSelector(this);
 
   if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
@@ -1661,7 +1693,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$5, SELECTOR_DATA_SLIDE, function 
 
   carousel._maybeEnableCycle();
 });
-EventHandler.on(window, EVENT_LOAD_DATA_API$3, () => {
+EventHandler.on(getWindow(), EVENT_LOAD_DATA_API$3, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE);
 
   for (const carousel of carousels) {
@@ -1943,7 +1975,7 @@ class Collapse extends BaseComponent {
  */
 
 
-EventHandler.on(document, EVENT_CLICK_DATA_API$4, SELECTOR_DATA_TOGGLE$4, function (event) {
+EventHandler.on(getDocument(), EVENT_CLICK_DATA_API$4, SELECTOR_DATA_TOGGLE$4, function (event) {
   // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
   if (event.target.tagName === 'A' || event.delegateTarget && event.delegateTarget.tagName === 'A') {
     event.preventDefault();
@@ -2080,8 +2112,8 @@ class Dropdown extends BaseComponent {
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
 
-    if ('ontouchstart' in document.documentElement && !this._parent.closest(SELECTOR_NAVBAR_NAV)) {
-      for (const element of [].concat(...document.body.children)) {
+    if ('ontouchstart' in this._document.documentElement && !this._parent.closest(SELECTOR_NAVBAR_NAV)) {
+      for (const element of [].concat(...this._document.body.children)) {
         EventHandler.on(element, 'mouseover', noop);
       }
     }
@@ -2382,11 +2414,12 @@ class Dropdown extends BaseComponent {
  */
 
 
-EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE$3, Dropdown.dataApiKeydownHandler);
-EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataApiKeydownHandler);
-EventHandler.on(document, EVENT_CLICK_DATA_API$3, Dropdown.clearMenus);
-EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus);
-EventHandler.on(document, EVENT_CLICK_DATA_API$3, SELECTOR_DATA_TOGGLE$3, function (event) {
+const documentRef = getDocument();
+EventHandler.on(documentRef, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE$3, Dropdown.dataApiKeydownHandler);
+EventHandler.on(documentRef, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataApiKeydownHandler);
+EventHandler.on(documentRef, EVENT_CLICK_DATA_API$3, Dropdown.clearMenus);
+EventHandler.on(documentRef, EVENT_KEYUP_DATA_API, Dropdown.clearMenus);
+EventHandler.on(documentRef, EVENT_CLICK_DATA_API$3, SELECTOR_DATA_TOGGLE$3, function (event) {
   event.preventDefault();
   Dropdown.getOrCreateInstance(this).toggle();
 });
@@ -2416,14 +2449,15 @@ const PROPERTY_MARGIN = 'margin-right';
 
 class ScrollBarHelper {
   constructor() {
-    this._element = document.body;
+    this._element = getDocument().body;
+    this._window = getWindow();
   } // Public
 
 
   getWidth() {
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
     const documentWidth = document.documentElement.clientWidth;
-    return Math.abs(window.innerWidth - documentWidth);
+    return Math.abs(this._window.innerWidth - documentWidth);
   }
 
   hide() {
@@ -2465,13 +2499,14 @@ class ScrollBarHelper {
     const scrollbarWidth = this.getWidth();
 
     const manipulationCallBack = element => {
-      if (element !== this._element && window.innerWidth > element.clientWidth + scrollbarWidth) {
+      if (element !== this._element && this._window.innerWidth > element.clientWidth + scrollbarWidth) {
         return;
       }
 
       this._saveInitialAttribute(element, styleProperty);
 
-      const calculatedValue = window.getComputedStyle(element).getPropertyValue(styleProperty);
+      const calculatedValue = this._window.getComputedStyle(element).getPropertyValue(styleProperty);
+
       element.style.setProperty(styleProperty, `${callback(Number.parseFloat(calculatedValue))}px`);
     };
 
@@ -2698,6 +2733,7 @@ class FocusTrap extends Config {
     this._config = this._getConfig(config);
     this._isActive = false;
     this._lastTabNavDirection = null;
+    this._document = getDocument();
   } // Getters
 
 
@@ -2723,10 +2759,10 @@ class FocusTrap extends Config {
       this._config.trapElement.focus();
     }
 
-    EventHandler.off(document, EVENT_KEY$5); // guard against infinite focus loop
+    EventHandler.off(this._document, EVENT_KEY$5); // guard against infinite focus loop
 
-    EventHandler.on(document, EVENT_FOCUSIN$2, event => this._handleFocusin(event));
-    EventHandler.on(document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event));
+    EventHandler.on(this._document, EVENT_FOCUSIN$2, event => this._handleFocusin(event));
+    EventHandler.on(this._document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event));
     this._isActive = true;
   }
 
@@ -2736,7 +2772,7 @@ class FocusTrap extends Config {
     }
 
     this._isActive = false;
-    EventHandler.off(document, EVENT_KEY$5);
+    EventHandler.off(this._document, EVENT_KEY$5);
   } // Private
 
 
@@ -2745,7 +2781,7 @@ class FocusTrap extends Config {
       trapElement
     } = this._config;
 
-    if (event.target === document || event.target === trapElement || trapElement.contains(event.target)) {
+    if (event.target === this._document || event.target === trapElement || trapElement.contains(event.target)) {
       return;
     }
 
@@ -2927,8 +2963,8 @@ class Modal extends BaseComponent {
 
   _showElement(relatedTarget) {
     // try to append dynamic modal
-    if (!document.body.contains(this._element)) {
-      document.body.append(this._element);
+    if (!this._document.body.contains(this._element)) {
+      this._document.body.append(this._element);
     }
 
     this._element.style.display = 'block';
@@ -3015,7 +3051,7 @@ class Modal extends BaseComponent {
     this._isTransitioning = false;
 
     this._backdrop.hide(() => {
-      document.body.classList.remove(CLASS_NAME_OPEN);
+      this._document.body.classList.remove(CLASS_NAME_OPEN);
 
       this._resetAdjustments();
 
@@ -3036,7 +3072,7 @@ class Modal extends BaseComponent {
       return;
     }
 
-    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
+    const isModalOverflowing = this._element.scrollHeight > this._document.documentElement.clientHeight;
     const initialOverflowY = this._element.style.overflowY; // return if the following background transition hasn't yet completed
 
     if (initialOverflowY === 'hidden' || this._element.classList.contains(CLASS_NAME_STATIC)) {
@@ -3065,7 +3101,7 @@ class Modal extends BaseComponent {
 
 
   _adjustDialog() {
-    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
+    const isModalOverflowing = this._element.scrollHeight > this._document.documentElement.clientHeight;
 
     const scrollbarWidth = this._scrollBar.getWidth();
 
@@ -3110,7 +3146,7 @@ class Modal extends BaseComponent {
  */
 
 
-EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$2, function (event) {
+EventHandler.on(getDocument(), EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$2, function (event) {
   const target = getElementFromSelector(this);
 
   if (['A', 'AREA'].includes(this.tagName)) {
@@ -3374,7 +3410,7 @@ class Offcanvas extends BaseComponent {
  */
 
 
-EventHandler.on(document, EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$1, function (event) {
+EventHandler.on(getDocument(), EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$1, function (event) {
   const target = getElementFromSelector(this);
 
   if (['A', 'AREA'].includes(this.tagName)) {
@@ -3401,12 +3437,12 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$1, functi
   const data = Offcanvas.getOrCreateInstance(target);
   data.toggle(this);
 });
-EventHandler.on(window, EVENT_LOAD_DATA_API$2, () => {
+EventHandler.on(getWindow(), EVENT_LOAD_DATA_API$2, () => {
   for (const selector of SelectorEngine.find(OPEN_SELECTOR)) {
     Offcanvas.getOrCreateInstance(selector).show();
   }
 });
-EventHandler.on(window, EVENT_RESIZE, () => {
+EventHandler.on(getWindow(), EVENT_RESIZE, () => {
   for (const element of SelectorEngine.find('[aria-modal][class*=show][class*=offcanvas-]')) {
     if (getComputedStyle(element).position !== 'fixed') {
       Offcanvas.getOrCreateInstance(element).hide();
@@ -3500,7 +3536,8 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
     return sanitizeFunction(unsafeHtml);
   }
 
-  const domParser = new window.DOMParser();
+  const windowRef = getWindow();
+  const domParser = new windowRef.DOMParser();
   const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
   const elements = [].concat(...createdDocument.body.querySelectorAll('*'));
 
@@ -3884,8 +3921,8 @@ class Tooltip extends BaseComponent {
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
-    if ('ontouchstart' in document.documentElement) {
-      for (const element of [].concat(...document.body.children)) {
+    if ('ontouchstart' in this._document.documentElement) {
+      for (const element of [].concat(...this._document.body.children)) {
         EventHandler.on(element, 'mouseover', noop);
       }
     }
@@ -3919,8 +3956,8 @@ class Tooltip extends BaseComponent {
     tip.classList.remove(CLASS_NAME_SHOW$2); // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
 
-    if ('ontouchstart' in document.documentElement) {
-      for (const element of [].concat(...document.body.children)) {
+    if ('ontouchstart' in this._document.documentElement) {
+      for (const element of [].concat(...this._document.body.children)) {
         EventHandler.off(element, 'mouseover', noop);
       }
     }
@@ -4653,7 +4690,7 @@ class ScrollSpy extends BaseComponent {
  */
 
 
-EventHandler.on(window, EVENT_LOAD_DATA_API$1, () => {
+EventHandler.on(getWindow(), EVENT_LOAD_DATA_API$1, () => {
   for (const spy of SelectorEngine.find(SELECTOR_DATA_SPY)) {
     ScrollSpy.getOrCreateInstance(spy);
   }
@@ -4951,7 +4988,7 @@ class Tab extends BaseComponent {
  */
 
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+EventHandler.on(getDocument(), EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   if (['A', 'AREA'].includes(this.tagName)) {
     event.preventDefault();
   }
@@ -4966,7 +5003,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * Initialize on focus
  */
 
-EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+EventHandler.on(getWindow(), EVENT_LOAD_DATA_API, () => {
   for (const element of SelectorEngine.find(SELECTOR_DATA_TOGGLE_ACTIVE)) {
     Tab.getOrCreateInstance(element);
   }

@@ -1,6 +1,6 @@
 /*!
   * Bootstrap scrollbar.js v5.2.3 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -34,14 +34,15 @@
 
   class ScrollBarHelper {
     constructor() {
-      this._element = document.body;
+      this._element = index.getDocument().body;
+      this._window = index.getWindow();
     } // Public
 
 
     getWidth() {
       // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
       const documentWidth = document.documentElement.clientWidth;
-      return Math.abs(window.innerWidth - documentWidth);
+      return Math.abs(this._window.innerWidth - documentWidth);
     }
 
     hide() {
@@ -83,13 +84,14 @@
       const scrollbarWidth = this.getWidth();
 
       const manipulationCallBack = element => {
-        if (element !== this._element && window.innerWidth > element.clientWidth + scrollbarWidth) {
+        if (element !== this._element && this._window.innerWidth > element.clientWidth + scrollbarWidth) {
           return;
         }
 
         this._saveInitialAttribute(element, styleProperty);
 
-        const calculatedValue = window.getComputedStyle(element).getPropertyValue(styleProperty);
+        const calculatedValue = this._window.getComputedStyle(element).getPropertyValue(styleProperty);
+
         element.style.setProperty(styleProperty, `${callback(Number.parseFloat(calculatedValue))}px`);
       };
 

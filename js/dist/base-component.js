@@ -1,6 +1,6 @@
 /*!
   * Bootstrap base-component.js v5.2.3 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -40,6 +40,8 @@
       }
 
       this._element = element;
+      this._window = index.getWindow();
+      this._document = index.getDocument();
       this._config = this._getConfig(config);
       Data__default.default.set(this._element, this.constructor.DATA_KEY, this);
     } // Public

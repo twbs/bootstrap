@@ -1,6 +1,6 @@
 /*!
   * Bootstrap carousel.js v5.2.3 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -125,7 +125,7 @@
       // FIXME TODO use `document.visibilityState`
       // Don't call next when the page isn't visible
       // or the carousel or its parent isn't visible
-      if (!document.hidden && index.isVisible(this._element)) {
+      if (!this._document.hidden && index.isVisible(this._element)) {
         this.next();
       }
     }
@@ -421,7 +421,7 @@
    */
 
 
-  EventHandler__default.default.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (event) {
+  EventHandler__default.default.on(index.getDocument(), EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (event) {
     const target = index.getElementFromSelector(this);
 
     if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
@@ -452,7 +452,7 @@
 
     carousel._maybeEnableCycle();
   });
-  EventHandler__default.default.on(window, EVENT_LOAD_DATA_API, () => {
+  EventHandler__default.default.on(index.getWindow(), EVENT_LOAD_DATA_API, () => {
     const carousels = SelectorEngine__default.default.find(SELECTOR_DATA_RIDE);
 
     for (const carousel of carousels) {

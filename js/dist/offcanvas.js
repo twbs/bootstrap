@@ -1,6 +1,6 @@
 /*!
   * Bootstrap offcanvas.js v5.2.3 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -246,7 +246,7 @@
    */
 
 
-  EventHandler__default.default.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+  EventHandler__default.default.on(index.getDocument(), EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
     const target = index.getElementFromSelector(this);
 
     if (['A', 'AREA'].includes(this.tagName)) {
@@ -273,12 +273,12 @@
     const data = Offcanvas.getOrCreateInstance(target);
     data.toggle(this);
   });
-  EventHandler__default.default.on(window, EVENT_LOAD_DATA_API, () => {
+  EventHandler__default.default.on(index.getWindow(), EVENT_LOAD_DATA_API, () => {
     for (const selector of SelectorEngine__default.default.find(OPEN_SELECTOR)) {
       Offcanvas.getOrCreateInstance(selector).show();
     }
   });
-  EventHandler__default.default.on(window, EVENT_RESIZE, () => {
+  EventHandler__default.default.on(index.getWindow(), EVENT_RESIZE, () => {
     for (const element of SelectorEngine__default.default.find('[aria-modal][class*=show][class*=offcanvas-]')) {
       if (getComputedStyle(element).position !== 'fixed') {
         Offcanvas.getOrCreateInstance(element).hide();

@@ -1,6 +1,6 @@
 /*!
   * Bootstrap swipe.js v5.2.3 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -60,7 +60,7 @@
 
       this._config = this._getConfig(config);
       this._deltaX = 0;
-      this._supportPointerEvents = Boolean(window.PointerEvent);
+      this._supportPointerEvents = Boolean(index.getWindow().PointerEvent);
 
       this._initEvents();
     } // Getters
@@ -145,7 +145,7 @@
 
 
     static isSupported() {
-      return 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0;
+      return 'ontouchstart' in index.getDocument().documentElement || navigator.maxTouchPoints > 0;
     }
 
   }

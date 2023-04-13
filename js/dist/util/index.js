@@ -1,6 +1,6 @@
 /*!
   * Bootstrap index.js v5.2.3 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -34,7 +34,7 @@
   const getUID = prefix => {
     do {
       prefix += Math.floor(Math.random() * MAX_UID);
-    } while (document.getElementById(prefix));
+    } while (getDocument().getElementById(prefix));
 
     return prefix;
   };
@@ -67,7 +67,7 @@
     const selector = getSelector(element);
 
     if (selector) {
-      return document.querySelector(selector) ? selector : null;
+      return getDocument().querySelector(selector) ? selector : null;
     }
 
     return null;
@@ -75,7 +75,7 @@
 
   const getElementFromSelector = element => {
     const selector = getSelector(element);
-    return selector ? document.querySelector(selector) : null;
+    return selector ? getDocument().querySelector(selector) : null;
   };
 
   const getTransitionDurationFromElement = element => {
@@ -87,7 +87,7 @@
     let {
       transitionDuration,
       transitionDelay
-    } = window.getComputedStyle(element);
+    } = getWindow().getComputedStyle(element);
     const floatTransitionDuration = Number.parseFloat(transitionDuration);
     const floatTransitionDelay = Number.parseFloat(transitionDelay); // Return 0 if element or transition duration is not found
 
@@ -175,7 +175,7 @@
   };
 
   const findShadowRoot = element => {
-    if (!document.documentElement.attachShadow) {
+    if (!getDocument().documentElement.attachShadow) {
       return null;
     } // Can find the shadow root otherwise it'll return the document
 
@@ -209,11 +209,12 @@
 
 
   const reflow = element => {
-    element.offsetHeight; // eslint-disable-line no-unused-expressions
+    // eslint-disable-next-line no-unused-expressions
+    element.offsetHeight;
   };
 
   const getjQuery = () => {
-    if (window.jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
+    if (getWindow().jQuery && !getDocument().body.hasAttribute('data-bs-no-jquery')) {
       return window.jQuery;
     }
 
@@ -223,10 +224,12 @@
   const DOMContentLoadedCallbacks = [];
 
   const onDOMContentLoaded = callback => {
-    if (document.readyState === 'loading') {
+    const documentRef = getDocument();
+
+    if (documentRef.readyState === 'loading') {
       // add listener on the first call when the document is in loading state
       if (!DOMContentLoadedCallbacks.length) {
-        document.addEventListener('DOMContentLoaded', () => {
+        documentRef.addEventListener('DOMContentLoaded', () => {
           for (const callback of DOMContentLoadedCallbacks) {
             callback();
           }
@@ -239,7 +242,15 @@
     }
   };
 
-  const isRTL = () => document.documentElement.dir === 'rtl';
+  const isRTL = () => {
+    const docEl = getDocument().documentElement;
+
+    if (docEl === undefined) {
+      return false;
+    }
+
+    return docEl.dir === 'rtl';
+  };
 
   const defineJQueryPlugin = plugin => {
     onDOMContentLoaded(() => {
@@ -323,17 +334,35 @@
 
     return list[Math.max(0, Math.min(index, listLength - 1))];
   };
+  /**
+   * @return {window|{}} The proper element
+   */
+
+
+  const getWindow = () => {
+    return typeof window !== 'undefined' ? window : {};
+  };
+  /**
+   * @return {document|{}} The proper element
+   */
+
+
+  const getDocument = () => {
+    return typeof document !== 'undefined' ? document : {};
+  };
 
   exports.defineJQueryPlugin = defineJQueryPlugin;
   exports.execute = execute;
   exports.executeAfterTransition = executeAfterTransition;
   exports.findShadowRoot = findShadowRoot;
+  exports.getDocument = getDocument;
   exports.getElement = getElement;
   exports.getElementFromSelector = getElementFromSelector;
   exports.getNextActiveElement = getNextActiveElement;
   exports.getSelectorFromElement = getSelectorFromElement;
   exports.getTransitionDurationFromElement = getTransitionDurationFromElement;
   exports.getUID = getUID;
+  exports.getWindow = getWindow;
   exports.getjQuery = getjQuery;
   exports.isDisabled = isDisabled;
   exports.isElement = isElement;

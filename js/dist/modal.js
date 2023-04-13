@@ -1,6 +1,6 @@
 /*!
   * Bootstrap modal.js v5.2.3 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -175,8 +175,8 @@
 
     _showElement(relatedTarget) {
       // try to append dynamic modal
-      if (!document.body.contains(this._element)) {
-        document.body.append(this._element);
+      if (!this._document.body.contains(this._element)) {
+        this._document.body.append(this._element);
       }
 
       this._element.style.display = 'block';
@@ -263,7 +263,7 @@
       this._isTransitioning = false;
 
       this._backdrop.hide(() => {
-        document.body.classList.remove(CLASS_NAME_OPEN);
+        this._document.body.classList.remove(CLASS_NAME_OPEN);
 
         this._resetAdjustments();
 
@@ -284,7 +284,7 @@
         return;
       }
 
-      const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
+      const isModalOverflowing = this._element.scrollHeight > this._document.documentElement.clientHeight;
       const initialOverflowY = this._element.style.overflowY; // return if the following background transition hasn't yet completed
 
       if (initialOverflowY === 'hidden' || this._element.classList.contains(CLASS_NAME_STATIC)) {
@@ -313,7 +313,7 @@
 
 
     _adjustDialog() {
-      const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
+      const isModalOverflowing = this._element.scrollHeight > this._document.documentElement.clientHeight;
 
       const scrollbarWidth = this._scrollBar.getWidth();
 
@@ -358,7 +358,7 @@
    */
 
 
-  EventHandler__default.default.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+  EventHandler__default.default.on(index.getDocument(), EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
     const target = index.getElementFromSelector(this);
 
     if (['A', 'AREA'].includes(this.tagName)) {

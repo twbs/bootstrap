@@ -1,6 +1,6 @@
 /*!
   * Bootstrap tooltip.js v5.2.3 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -236,8 +236,8 @@
       // only needed because of broken event delegation on iOS
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
-      if ('ontouchstart' in document.documentElement) {
-        for (const element of [].concat(...document.body.children)) {
+      if ('ontouchstart' in this._document.documentElement) {
+        for (const element of [].concat(...this._document.body.children)) {
           EventHandler__default.default.on(element, 'mouseover', index.noop);
         }
       }
@@ -271,8 +271,8 @@
       tip.classList.remove(CLASS_NAME_SHOW); // If this is a touch-enabled device we remove the extra
       // empty mouseover listeners we added for iOS support
 
-      if ('ontouchstart' in document.documentElement) {
-        for (const element of [].concat(...document.body.children)) {
+      if ('ontouchstart' in this._document.documentElement) {
+        for (const element of [].concat(...this._document.body.children)) {
           EventHandler__default.default.off(element, 'mouseover', index.noop);
         }
       }

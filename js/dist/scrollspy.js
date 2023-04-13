@@ -1,6 +1,6 @@
 /*!
   * Bootstrap scrollspy.js v5.2.3 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -295,7 +295,7 @@
    */
 
 
-  EventHandler__default.default.on(window, EVENT_LOAD_DATA_API, () => {
+  EventHandler__default.default.on(index.getWindow(), EVENT_LOAD_DATA_API, () => {
     for (const spy of SelectorEngine__default.default.find(SELECTOR_DATA_SPY)) {
       ScrollSpy.getOrCreateInstance(spy);
     }

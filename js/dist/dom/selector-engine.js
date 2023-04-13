@@ -1,6 +1,6 @@
 /*!
   * Bootstrap selector-engine.js v5.2.3 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -20,11 +20,11 @@
    */
 
   const SelectorEngine = {
-    find(selector, element = document.documentElement) {
+    find(selector, element = index.getDocument().documentElement) {
       return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
     },
 
-    findOne(selector, element = document.documentElement) {
+    findOne(selector, element = index.getDocument().documentElement) {
       return Element.prototype.querySelector.call(element, selector);
     },
 

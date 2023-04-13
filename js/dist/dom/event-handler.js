@@ -1,6 +1,6 @@
 /*!
   * Bootstrap event-handler.js v5.2.3 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -138,7 +138,10 @@
     fn.oneOff = oneOff;
     fn.uidEvent = uid;
     handlers[uid] = fn;
-    element.addEventListener(typeEvent, fn, isDelegated);
+
+    if (element && typeof element.addEventListener === 'function') {
+      element.addEventListener(typeEvent, fn, isDelegated);
+    }
   }
 
   function removeHandler(element, events, typeEvent, handler, delegationSelector) {

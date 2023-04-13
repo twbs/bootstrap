@@ -1,13 +1,13 @@
 /*!
   * Bootstrap sanitizer.js v5.2.3 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.Sanitizer = {}));
-})(this, (function (exports) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('./index')) :
+  typeof define === 'function' && define.amd ? define(['exports', './index'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.Sanitizer = {}, global.Index));
+})(this, (function (exports, index) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -89,7 +89,8 @@
       return sanitizeFunction(unsafeHtml);
     }
 
-    const domParser = new window.DOMParser();
+    const windowRef = index.getWindow();
+    const domParser = new windowRef.DOMParser();
     const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
     const elements = [].concat(...createdDocument.body.querySelectorAll('*'));
 
