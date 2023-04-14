@@ -212,8 +212,8 @@ class ScrollSpy extends BaseComponent {
 
       // ensure that the observableSection exists & is visible
       if (isVisible(observableSection)) {
-        this._targetLinks.set(anchor.hash, anchor)
-        this._observableSections.set(anchor.hash, observableSection)
+        this._targetLinks.set(decodeURI(anchor.hash), anchor)
+        this._observableSections.set(decodeURI(anchor.hash), observableSection)
       }
     }
   }
