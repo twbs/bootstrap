@@ -181,7 +181,7 @@ For example, you can create a "blue theme" with the selector `data-bs-theme="blu
 
 To allow visitors or users to toggle color modes, you'll need to create a toggle element to control the `data-bs-theme` attribute on the root element, `<html>`. We've built a toggler in our documentation that initially defers to a user's current system color mode, but provides an option to override that and pick a specific color mode.
 
-Here's a look at the JavaScript that powers it. Feel free to inspect our own documentation navbar to see how it's implemented using HTML and CSS from our own components. Note that if you decide to use media queries for your color modes, your JavaScript may need to be modified or removed if you prefer an implicit control.
+Here's a look at the JavaScript that powers it. Feel free to inspect our own documentation navbar to see how it's implemented using HTML and CSS from our own components. It is suggested to include the JavaScript at the top of your page to reduce potential screen flickering during reloading of your site. Note that if you decide to use media queries for your color modes, your JavaScript may need to be modified or removed if you prefer an implicit control.
 
 {{< example lang="js" show_preview="false" >}}
 {{< js.inline >}}
@@ -203,7 +203,7 @@ CSS variables for our dark color mode are partially generated from dark mode spe
 
 {{< scss-docs name="sass-dark-mode-vars" file="scss/_variables-dark.scss" >}}
 
-### Sass mixin
+### Sass mixins
 
 Styles for dark mode, and any custom color modes you create, can be scoped appropriately to the `data-bs-theme` attribute selector or media query with the customizable `color-mode()` mixin. See the [Sass usage section](#building-with-sass) for more details.
 
