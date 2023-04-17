@@ -940,5 +940,40 @@ describe('ScrollSpy', () => {
       }, 100)
       link.click()
     })
+
+    it('should scroll to anchor links with french words as ids'), done => {
+      fixtureEl.innerHTML = [
+        '<nav id="navBar" class="navbar">',
+        '  <ul class="nav">',
+        '    <a id="anchor-1" href="#présentation">div 1</a></li>',
+        '    <a id="anchor-2" href="#foo">div 2</a></li>',
+        '  </ul>',
+        '</nav>',
+        '<div class="content" data-bs-target="#navBar" style="overflow-y: auto">',
+        '  <div id="présentation">Hello world!</div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('.content')
+      const link = fixtureEl.querySelector('[href="#présentation"]')
+      const observable = fixtureEl.querySelector('#présentation')
+      const clickSpy = getElementScrollSpy(div)
+
+      new ScrollSpy(div, {
+        offset: 1,
+        smoothScroll: true
+      })
+
+      setTimeout(() => {
+        if (div.scrollTo) {
+          expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop, behavior: 'smooth' })
+        } else {
+          expect(clickSpy).toHaveBeenCalledWith(observable.offsetTop - div.offsetTop)
+        }
+
+        done()
+      }, 100)
+      link.click()
+    }
   })
 })
