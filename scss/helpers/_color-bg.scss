@@ -1,5 +1,3 @@
-// stylelint-disable function-name-case
-
 // All-caps `RGBA()` function used because of this Sass bug: https://github.com/sass/node-sass/issues/2251
 @each $color, $value in $theme-colors {
   $color-rgb: to-rgb($value);

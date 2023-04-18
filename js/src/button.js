@@ -5,9 +5,9 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin } from './util/index.js'
-import EventHandler from './dom/event-handler.js'
 import BaseComponent from './base-component.js'
+import EventHandler from './dom/event-handler.js'
+import { defineJQueryPlugin } from './util/index.js'
 
 /**
  * Constants
