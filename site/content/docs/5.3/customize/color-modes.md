@@ -7,6 +7,10 @@ toc: true
 added: "5.3"
 ---
 
+{{< callout >}}
+**Try it yourself!** Download the source code and working demo for using Bootstrap with Stylelint, and the color modes from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/color-modes). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/color-modes?file=index.html).
+{{< /callout >}}
+
 ## Dark mode
 
 **Bootstrap now supports color modes, starting with dark mode!** With v5.3.0 you can implement your own color mode toggler (see below for an example from Bootstrap's docs) and apply the different color modes as you see fit. We support a light mode (default) and now dark mode. Color modes can be toggled globally on the `<html>` element, or on specific components and elements, thanks to the `data-bs-theme` attribute.
@@ -62,73 +66,6 @@ For example, to change the color mode of a dropdown menu, add `data-bs-theme="li
 
 - We use a custom `_variables-dark.scss` to power those shared global CSS variable overrides for dark mode. This file isn't required for your own custom color modes, but it's required for our dark mode for two reasons. First, it's better to have a single place to reset global colors. Second, some Sass variables had to be overridden for background images embedded in our CSS for accordions, form components, and more.
 
-## Nesting color modes
-
-Use `data-bs-theme` on a nested element to change the color mode for a group of elements or components. In the example below, we have an outer dark mode with a nested light mode. You'll notice components naturally adapt their appearance, but you may need to add some utilities along the way to utilize the styles specific to each color mode.
-
-For example, despite using `data-bs-theme="dark"` on a random `<div>`, the `<div>` has no `background-color` as it's set on the `<body>`. As such, if you want the `color` and `background-color` to adapt, you'll need to add `.text-body` and `.bg-body`.
-
-{{< example class="p-0" >}}
-<div data-bs-theme="dark" class="p-3 text-body bg-body">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Color modes</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Dark</li>
-    </ol>
-  </nav>
-
-  <p>This should be shown in a <strong>dark</strong> theme at all times.</p>
-
-  <div class="progress mb-4" role="progressbar" aria-label="Basic example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-    <div class="progress-bar" style="width: 25%"></div>
-  </div>
-
-  <div class="dropdown mb-4">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonDark2" data-bs-toggle="dropdown" aria-expanded="false">
-      Dark dropdown
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonDark2">
-      <li><a class="dropdown-item active" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
-  </div>
-
-  <div data-bs-theme="light" class="p-3 text-body bg-body rounded">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Color modes</a></li>
-        <li class="breadcrumb-item"><a href="#">Dark</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Light</li>
-      </ol>
-    </nav>
-
-    <p>This should be shown in a <strong>light</strong> theme at all times.</p>
-
-    <div class="progress mb-4" role="progressbar" aria-label="Basic example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-      <div class="progress-bar" style="width: 25%"></div>
-    </div>
-
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonLight2" data-bs-toggle="dropdown" aria-expanded="false">
-        Light dropdown
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonLight2">
-        <li><a class="dropdown-item active" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Separated link</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-{{< /example >}}
-
 ## Usage
 
 ### Enable dark mode
@@ -159,7 +96,7 @@ Our new dark mode option is available to use for all users of Bootstrap, but it'
 
 We use a custom Sass mixin, `color-mode()`, to help you control _how_ color modes are applied. By default, we use a `data` attribute approach, allowing you to create more user-friendly experiences where your visitors can choose to have an automatic dark mode or control their preference (like in our own docs here). This is also an easy and scalable way to add different themes and more custom color modes beyond light and dark.
 
-In case you want to use media queries and only make color modes automatic, you can change the mixin's default type via Sass variable. Consider the following snippet and it's compiled CSS output.
+In case you want to use media queries and only make color modes automatic, you can change the mixin's default type via Sass variable. Consider the following snippet and its compiled CSS output.
 
 ```scss
 $color-mode-type: data;
@@ -244,7 +181,7 @@ For example, you can create a "blue theme" with the selector `data-bs-theme="blu
 
 To allow visitors or users to toggle color modes, you'll need to create a toggle element to control the `data-bs-theme` attribute on the root element, `<html>`. We've built a toggler in our documentation that initially defers to a user's current system color mode, but provides an option to override that and pick a specific color mode.
 
-Here's a look at the JavaScript that powers it. Feel free to inspect our own documentation navbar to see how it's implemented using HTML and CSS from our own components. Note that if you decide to use media queries for your color modes, your JavaScript may need to be modified or removed if you prefer an implicit control.
+Here's a look at the JavaScript that powers it. Feel free to inspect our own documentation navbar to see how it's implemented using HTML and CSS from our own components. It is suggested to include the JavaScript at the top of your page to reduce potential screen flickering during reloading of your site. Note that if you decide to use media queries for your color modes, your JavaScript may need to be modified or removed if you prefer an implicit control.
 
 {{< example lang="js" show_preview="false" >}}
 {{< js.inline >}}
@@ -266,7 +203,7 @@ CSS variables for our dark color mode are partially generated from dark mode spe
 
 {{< scss-docs name="sass-dark-mode-vars" file="scss/_variables-dark.scss" >}}
 
-### Sass mixin
+### Sass mixins
 
 Styles for dark mode, and any custom color modes you create, can be scoped appropriately to the `data-bs-theme` attribute selector or media query with the customizable `color-mode()` mixin. See the [Sass usage section](#building-with-sass) for more details.
 

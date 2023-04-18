@@ -1025,7 +1025,7 @@ Variables for the CSS-based carets that indicate a dropdown's interactivity:
 
 {{< scss-docs name="caret-variables" file="scss/_variables.scss" >}}
 
-### Mixins
+### Sass mixins
 
 Mixins are used to generate the CSS-based carets and can be found in `scss/mixins/_caret.scss`.
 

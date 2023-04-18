@@ -1,5 +1,5 @@
-import Tab from '../../src/tab'
-import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
+import Tab from '../../src/tab.js'
+import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture.js'
 
 describe('Tab', () => {
   let fixtureEl
@@ -514,7 +514,7 @@ describe('Tab', () => {
       expect(tabPanel.hasAttribute('tabindex')).toBeFalse()
       expect(tabPanel.hasAttribute('tabindex2')).toBeFalse()
 
-      expect(tabPanel.getAttribute('aria-labelledby')).toEqual('#foo')
+      expect(tabPanel.getAttribute('aria-labelledby')).toEqual('foo')
       expect(tabPanel2.hasAttribute('aria-labelledby')).toBeFalse()
     })
   })

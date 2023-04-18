@@ -3,18 +3,13 @@
 //
 
 .bd-content {
-  // Offset content from fixed navbar when jumping to headings
-  > :target {
-    padding-top: 5rem;
-    margin-top: -5rem;
-  }
-
   > h2,
   > h3,
   > h4 {
     --bs-heading-color: var(--bs-emphasis-color);
   }
 
+  // Offset content from fixed navbar when jumping to headings
   > h2:not(:first-child) {
     margin-top: 3rem;
   }
