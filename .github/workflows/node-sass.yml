@@ -35,14 +35,15 @@ jobs:
           npx --package node-sass@latest node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/ -o dist-sass/css/
           ls -Al dist-sass/css
 
-      # Check that there are no Sass variables (`$`)
-      - name: Check built CSS files
+      - name: Check built CSS files for Sass variables
         shell: bash
         run: |
-          if [[ $(find dist-sass/css/ -name "*.css" | xargs grep -F "\$" | wc -l | bc) -eq 0 ]]; then
-            echo "All good, no Sass variables found"
+          SASS_VARS_FOUND=$(find "dist-sass/css/" -type f -name "*.css" -print0 | xargs -0 --no-run-if-empty grep -F "\$" || true)
+          if [[ -z "$SASS_VARS_FOUND" ]]; then
+            echo "All good, no Sass variables found!"
             exit 0
           else
-            echo "Found Sass variables!"
+            echo "Found $(echo "$SASS_VARS_FOUND" | wc -l | bc) Sass variables:"
+            echo "$SASS_VARS_FOUND"
             exit 1
           fi

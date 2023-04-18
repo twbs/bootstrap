@@ -53,7 +53,7 @@ params:
   authors:              "Mark Otto, Jacob Thornton, and Bootstrap contributors"
 
   current_version:      "5.3.0-alpha3"
-  current_ruby_version: "5.3.0-alpha3"
+  current_ruby_version: "5.3.0.alpha3"
   docs_version:         "5.3"
   rfs_version:          "v10.0.0"
   github_org:           "https://github.com/twbs"
