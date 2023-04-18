@@ -51,6 +51,8 @@
         "SwitchCase": 1
       }
     ],
+      
+      
     "max-params": [
       "warn",
       5
