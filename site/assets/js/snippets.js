@@ -12,7 +12,6 @@
  */
 
 /* global bootstrap: false */
-
 (() => {
   'use strict'
 
@@ -24,7 +23,20 @@
     .forEach(tooltip => {
       new bootstrap.Tooltip(tooltip)
     })
-
+  // const btnElements = document.querySelectorAll('.btn')
+  // btnElements.forEach(btnElement => {
+  //   const ripple = new bootstrap.MDCRippled(btnElement)
+  //   ripple.unbounded = true
+  //   const wave = document.createElement('span')
+  //   wave.classList.add('ripple-surface')
+  //   btnElement.append(wave)
+  // })
+  // const btnElements = document.querySelectorAll('.btn:not(input), .list-group-item')
+  // btnElements.forEach(btn => {
+  //   const ripple = new bootstrap.MDCRippled(btn)
+  //   ripple.unbounded = true
+  //   ripple.root.classList.add('ripple-surface')
+  // })
   // --------
   // Popovers
   // --------

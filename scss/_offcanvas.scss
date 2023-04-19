@@ -8,7 +8,7 @@
   --#{$prefix}offcanvas-padding-x: #{$offcanvas-padding-x};
   --#{$prefix}offcanvas-padding-y: #{$offcanvas-padding-y};
   --#{$prefix}offcanvas-color: #{$offcanvas-color};
-  --#{$prefix}offcanvas-bg: #{$offcanvas-bg-color};
+  --#{$prefix}offcanvas-bg:           var(--#{$prefix}surface-bg);
   --#{$prefix}offcanvas-border-width: #{$offcanvas-border-width};
   --#{$prefix}offcanvas-border-color: #{$offcanvas-border-color};
   --#{$prefix}offcanvas-box-shadow: #{$offcanvas-box-shadow};

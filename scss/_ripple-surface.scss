@@ -1,0 +1,19 @@
+@use "@material/ripple";
+@use "@material/ripple/mdc-ripple";
+
+.ripple-surface {
+  @include ripple.surface();
+  @include ripple.radius-bounded();
+  @include ripple.states-base-color($body-color);
+  @include ripple.states-opacities((hover: .1, focus: .15, press: .2));
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  box-sizing: content-box;
+  overflow: hidden;
+  @include border-radius(inherit);
+}

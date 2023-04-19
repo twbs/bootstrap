@@ -22,6 +22,7 @@
     pointer-events: none;
     border: $input-border-width solid transparent; // Required for aligning label's text with the input as it affects inner box model
     transform-origin: 0 0;
+    user-select: none;
     @include transition($form-floating-transition);
   }
 

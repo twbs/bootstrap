@@ -7,6 +7,18 @@
 //
 
 // scss-docs-start sass-dark-mode-vars
+$theme-dark-tint-amount:                35% !default;
+$theme-dark-hover-shade-amount:         20% !default;
+$theme-dark-hover-tint-amount:          20% !default;
+$theme-dark-active-shade-amount:        30% !default;
+$theme-dark-active-tint-amount:         30% !default;
+$theme-dark-subtle-shade-amount:        60% !default;
+$theme-dark-subtle-hover-shade-amount:  55% !default;
+$theme-dark-subtle-active-shade-amount: 40% !default;
+$theme-dark-emphasis-tint-amount:       55% !default;
+$theme-dark-emphasis-hover-tint-amount: 50% !default;
+$theme-dark-border-subtle-shade-amount: 40% !default;
+
 // scss-docs-start theme-text-dark-variables
 $primary-text-emphasis-dark:        tint-color($primary, 40%) !default;
 $secondary-text-emphasis-dark:      tint-color($secondary, 40%) !default;
@@ -46,6 +58,11 @@ $body-secondary-color-dark:         rgba($body-color-dark, .75) !default;
 $body-secondary-bg-dark:            $gray-800 !default;
 $body-tertiary-color-dark:          rgba($body-color-dark, .5) !default;
 $body-tertiary-bg-dark:             mix($gray-800, $gray-900, 50%) !default;
+
+$surface-color-dark:                $gray-900 !default;
+$surface-bg-dark:                   $surface-color-dark !default;
+$surface-bg-component-dark:         #0d1117 !default;
+
 $body-emphasis-color-dark:          $white !default;
 $border-color-dark:                 $gray-700 !default;
 $border-color-translucent-dark:     rgba($white, .15) !default;
@@ -54,6 +71,10 @@ $link-color-dark:                   tint-color($primary, 40%) !default;
 $link-hover-color-dark:             shift-color($link-color-dark, -$link-shade-percentage) !default;
 $code-color-dark:                   tint-color($code-color, 40%) !default;
 
+$card-bg-dark:                      $surface-bg-component-dark !default;
+$navbar-bg-dark:                    $surface-color-dark !default;
+$navbar-main-bg-dark:               $body-tertiary-color-dark !default;
+$offcanvas-bg-dark:                 $surface-bg-component-dark !default;
 
 //
 // Forms
@@ -64,6 +85,9 @@ $form-select-indicator-dark:        url("data:image/svg+xml,<svg xmlns='http://w
 
 $form-switch-color-dark:            rgba($white, .25) !default;
 $form-switch-bg-image-dark:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color-dark}'/></svg>") !default;
+
+$form-check-input-checked-bg-image-dark: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='none' stroke='#{$body-bg-dark}' stroke-width='3.5' d='M1.73,12.91 8.1,19.28 22.79,4.59'/></svg>") !default;
+$form-check-radio-checked-bg-image-dark: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='none' stroke='#{$body-bg-dark}' stroke-width='1.5'/></svg>") !default;
 
 // scss-docs-start form-validation-colors-dark
 $form-valid-color-dark:             $green-300 !default;

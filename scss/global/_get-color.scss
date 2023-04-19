@@ -1,0 +1,11 @@
+//@function get-color($key) {
+//  $response: map-get($colors, $key);
+//
+//  @if ($response) {
+//    @return $response;
+//  }
+//
+//  @warn #{'Color "' + $key + '" not found in $colors'};
+//
+//  @return null;
+//}

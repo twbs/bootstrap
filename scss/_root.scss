@@ -5,17 +5,23 @@
   // Colors
   //
   // Generate palettes for full colors, grays, and theme colors.
-
   @each $color, $value in $colors {
     --#{$prefix}#{$color}: #{$value};
   }
-
-  @each $color, $value in $grays {
-    --#{$prefix}gray-#{$color}: #{$value};
-  }
-
   @each $color, $value in $theme-colors {
     --#{$prefix}#{$color}: #{$value};
+    --#{$prefix}text-on-#{$color}: #{color-contrast($value)};
+    --#{$prefix}#{$color}-subtle: #{tint-color($value, $theme-subtle-tint-amount)};
+    --#{$prefix}#{$color}-emphasis: #{shade-color($value, $theme-emphasis-shade-amount)};
+    --#{$prefix}#{$color}-hover: #{if(color-contrast($value) == $color-contrast-light, shade-color($value, $theme-hover-shade-amount), tint-color($value, $theme-hover-tint-amount))};
+    --#{$prefix}#{$color}-active: #{if(color-contrast($value) == $color-contrast-light, shade-color($value, $theme-active-shade-amount), tint-color($value, $theme-active-tint-amount))};
+    --#{$prefix}#{$color}-subtle-hover: #{tint-color($value, $theme-subtle-hover-tint-amount)};
+    --#{$prefix}#{$color}-subtle-active: #{tint-color($value, $theme-subtle-active-tint-amount)};
+    --#{$prefix}#{$color}-emphasis-hover: #{shade-color($value, $theme-emphasis-hover-shade-amount)};
+    --#{$prefix}#{$color}-border-subtle: #{tint-color($value, $theme-border-subtle-tint-amount)};
+  }
+  @each $color, $value in $grays {
+    --#{$prefix}gray-#{$color}: #{$value};
   }
 
   @each $color, $value in $theme-colors-rgb {
@@ -77,6 +83,11 @@
   --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg)};
   // scss-docs-end root-body-variables
 
+  --#{$prefix}surface-color:      #{$surface-color};
+  --#{$prefix}surface-color-rgb:  #{to-rgb($surface-color)};
+  --#{$prefix}surface-bg:         #{$surface-color};
+  --#{$prefix}surface-bg-component:  #{$surface-color};
+
   @if $headings-color != null {
     --#{$prefix}heading-color: #{$headings-color};
   }
@@ -100,6 +111,7 @@
   --#{$prefix}border-style: #{$border-style};
   --#{$prefix}border-color: #{$border-color};
   --#{$prefix}border-color-translucent: #{$border-color-translucent};
+  --#{$prefix}border-color-forms: #{$border-color-forms};
 
   --#{$prefix}border-radius: #{$border-radius};
   --#{$prefix}border-radius-sm: #{$border-radius-sm};
@@ -115,6 +127,10 @@
   --#{$prefix}box-shadow-lg: #{$box-shadow-lg};
   --#{$prefix}box-shadow-inset: #{$box-shadow-inset};
 
+  @each $name, $value in $shadows {
+    --#{$prefix}shadow-#{$name}: #{$value};
+  }
+
   // Focus styles
   // scss-docs-start root-focus-variables
   --#{$prefix}focus-ring-width: #{$focus-ring-width};
@@ -128,12 +144,30 @@
   --#{$prefix}form-invalid-color: #{$form-invalid-color};
   --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color};
   // scss-docs-end root-form-validation-variables
+  --#{$prefix}navbar-bg:  #{$body-bg-dark};
+  --#{$prefix}offcanvas-bg: #{$surface-bg};
+  --#{$prefix}card-bg: #{$body-bg};
+
 }
 
 @if $enable-dark-mode {
   @include color-mode(dark, true) {
     color-scheme: dark;
 
+    @each $color, $value in $theme-colors {
+      $theme: tint-color($value, $theme-dark-tint-amount);
+      --#{$prefix}#{$color}: #{$theme};
+      --#{$prefix}text-on-#{$color}: #{color-contrast($theme)};
+      --#{$prefix}#{$color}-rgb: #{to-rgb($theme)};
+      --#{$prefix}#{$color}-hover: #{if(color-contrast($theme) == $color-contrast-light, shade-color($theme, $theme-dark-hover-shade-amount), tint-color($theme, $theme-dark-hover-tint-amount))};
+      --#{$prefix}#{$color}-active: #{if(color-contrast($theme) == $color-contrast-light, shade-color($theme, $theme-dark-active-shade-amount), tint-color($theme, $theme-dark-active-tint-amount))};
+      --#{$prefix}#{$color}-subtle: #{shade-color($value, $theme-dark-subtle-shade-amount)};
+      --#{$prefix}#{$color}-subtle-hover: #{shade-color($value, $theme-dark-subtle-hover-shade-amount)};
+      --#{$prefix}#{$color}-subtle-active: #{shade-color($value, $theme-dark-subtle-active-shade-amount)};
+      --#{$prefix}#{$color}-emphasis: #{tint-color($value, $theme-dark-emphasis-tint-amount)};
+      --#{$prefix}#{$color}-emphasis-hover: #{tint-color($value, $theme-dark-emphasis-hover-tint-amount)};
+      --#{$prefix}#{$color}-border-subtle: #{shade-color($value, $theme-dark-border-subtle-shade-amount)};
+    }
     // scss-docs-start root-dark-mode-vars
     --#{$prefix}body-color: #{$body-color-dark};
     --#{$prefix}body-color-rgb: #{to-rgb($body-color-dark)};
@@ -152,6 +186,15 @@
     --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color-dark)};
     --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
     --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
+
+    --#{$prefix}surface-color:        #{$surface-color-dark};
+    --#{$prefix}surface-color-rgb:    #{to-rgb($surface-color-dark)};
+    --#{$prefix}surface-bg:           #{$surface-color-dark};
+    --#{$prefix}surface-bg-component:  #{$surface-bg-component-dark};
+
+    --#{$prefix}navbar-bg:    #{$navbar-bg-dark};
+    --#{$prefix}offcanvas-bg: #{$offcanvas-bg-dark};
+    --#{$prefix}card-bg:      #{$card-bg-dark};
 
     @each $color, $value in $theme-colors-text-dark {
       --#{$prefix}#{$color}-text-emphasis: #{$value};
@@ -176,6 +219,7 @@
 
     --#{$prefix}code-color: #{$code-color-dark};
 
+    --#{$prefix}border-color-forms: #{$border-color-dark};
     --#{$prefix}border-color: #{$border-color-dark};
     --#{$prefix}border-color-translucent: #{$border-color-translucent-dark};
 

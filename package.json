@@ -42,7 +42,7 @@
     "start": "npm-run-all --parallel watch docs-serve",
     "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
     "css": "npm-run-all css-compile css-prefix css-rtl css-minify",
-    "css-compile": "sass --style expanded --source-map --embed-sources --no-error-css scss/:dist/css/",
+    "css-compile": "sass --load-path=node_modules/ --style expanded --source-map --embed-sources --no-error-css scss/:dist/css/",
     "css-rtl": "cross-env NODE_ENV=RTL postcss --config build/postcss.config.js --dir \"dist/css\" --ext \".rtl.css\" \"dist/css/*.css\" \"!dist/css/*.min.css\" \"!dist/css/*.rtl.css\"",
     "css-lint": "npm-run-all --aggregate-output --continue-on-error --parallel css-lint-*",
     "css-lint-stylelint": "stylelint \"**/*.{css,scss}\" --cache --cache-location .cache/.stylelintcache",
@@ -75,12 +75,12 @@
     "js-test-jquery": "cross-env JQUERY=true npm run js-test-karma",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel js-lint css-lint lockfile-lint",
     "docs": "npm-run-all docs-build docs-lint",
-    "docs-build": "hugo --cleanDestinationDir --printUnusedTemplates",
+    "docs-build": "hugo --cleanDestinationDir",
     "docs-compile": "npm run docs-build",
     "docs-vnu": "node build/vnu-jar.js",
     "docs-lint": "npm run docs-vnu",
-    "docs-serve": "hugo server --port 9001 --disableFastRender --printUnusedTemplates",
-    "docs-serve-only": "npx sirv-cli _site --port 9001",
+    "docs-serve": "hugo server --port 9090 --disableFastRender --printUnusedTemplates",
+    "docs-serve-only": "npx sirv-cli _site --port 9090",
     "lockfile-lint": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",
     "update-deps": "ncu -u -x globby,karma-browserstack-launcher,karma-rollup-preprocessor,terser && echo Manually update site/assets/js/vendor",
     "release": "npm-run-all dist release-sri docs-build release-zip*",
@@ -180,5 +180,9 @@
     "peerDependencies": {
       "@popperjs/core": "^2.11.7"
     }
+  },
+  "dependencies": {
+    "@material/elevation": "^14.0.0",
+    "@material/ripple": "^14.0.0"
   }
 }

@@ -1,0 +1,474 @@
+// stylelint-disable selector-max-class, selector-max-compound-selectors, selector-no-qualifying-type, function-disallowed-list
+$floating-label-line-height: add(3.5rem, $input-height-border) !default;
+$floating-label-height: add(2.5rem, $input-height-border) !default;
+$floating-label-line-height: 1.25 !default;
+$floating-label-padding-x: $input-padding-x !default;
+$floating-label-padding-y: 1rem !default;
+$floating-label-input-padding-t: 1.625rem !default;
+$floating-label-input-padding-b: .625rem !default;
+$floating-label-label-opacity: 1 !default;
+$floating-label-label-transform: scale(.85) translateY(-.5rem) translateX(.15rem) !default;
+$floating-label-transition: transform .15s cubic-bezier(.4, 0, .2, 1), opacity .15s cubic-bezier(.4, 0, .2, 1), background-color .15s cubic-bezier(.4, 0, .2, 1) !default; //opacity .1s ease-in-out, transform .1s ease-in-out !default;
+
+
+$form-field-color: var(--#{$prefix}emphasis-color) !default;
+$form-field-bg: var(--#{$prefix}surface-bg) !default;
+$form-field-hover-bg: var(--#{$prefix}surface-bg-hover) !default;
+$form-field-border-color: var(--#{$prefix}body-color) !default;
+$form-field-active-border-color: var(--#{$prefix}primary) !default;
+
+:not([class*="floating-label"]) > .form-control:focus,
+:not([class*="floating-label"]) > .form-select:focus {
+  border: 1px solid $input-focus-border-color;
+  box-shadow: $input-focus-box-shadow;
+}
+
+.floating-label, .floating-label-line {
+  --#{$prefix}form-field-color: #{$form-field-color};
+  --#{$prefix}form-field-bg: #{$form-field-bg};
+  --#{$prefix}form-field-hover-bg: #{$form-field-hover-bg};
+  --#{$prefix}form-field-border-color: #{$input-border-color};
+  --#{$prefix}form-field-active-border-color: #{$form-field-active-border-color};
+  --#{$prefix}form-select-indicator: #{escape-svg($form-select-indicator)};
+  --#{$prefix}form-select-checkmark: #{escape-svg($form-select-indicator)};
+
+  position: relative;
+  width: 100%;
+
+  &:not(.floating-label) {
+    background-color: var(--#{$prefix}form-field-bg);
+    @include border-top-start-radius($border-radius);
+    @include border-top-end-radius($border-radius);
+
+    > .form-control,
+    > .form-control-plaintext {
+      height: $floating-label-line-height;
+
+      &:hover {
+        background-color: var(--#{$prefix}form-field-hover-bg);
+      }
+    }
+  }
+
+  > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: $form-floating-padding-y $form-floating-padding-x;
+    overflow: hidden;
+    color: $input-color;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: none;
+    transform-origin: 0 0;
+    @include transition($floating-label-transition);
+    //@include transition($form-floating-transition);
+  }
+
+  > .form-control,
+  > .form-control-plaintext {
+    padding: $form-floating-padding-y var(--append-width, $form-floating-padding-x) $form-floating-padding-y var(--prepend-width, $form-floating-padding-x);
+    line-height: $form-floating-line-height;
+    color: var(--#{$prefix}form-field-color);
+    background-color: transparent;
+    border: 0;
+    @include border-bottom-end-radius(0);
+    @include border-bottom-start-radius(0);
+    box-shadow: none;
+
+    &::placeholder {
+      color: transparent;
+    }
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      padding-top: $form-floating-input-padding-t;
+      padding-bottom: $form-floating-input-padding-b;
+    }
+
+    // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
+    &:-webkit-autofill {
+      padding-top: $form-floating-input-padding-t;
+      padding-bottom: $form-floating-input-padding-b;
+    }
+  }
+
+  > textarea.form-control {
+    padding: 0 var(--prepend-width, $input-padding-x);
+    margin: 1.625rem 0 .2rem 0; // stylelint-disable-line shorthand-property-no-redundant-values
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      padding: 0 var(--prepend-width, $input-padding-x);
+    }
+  }
+
+  > .form-select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  > .dropdown {
+    > .dropdown-toggle {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-height: 60px;
+      max-height: 300px;
+      padding: $form-select-padding-y calc(var(--append-width, 0px) + $form-select-indicator-padding) $form-select-padding-y var(--prepend-width, $form-select-padding-x);
+      overflow: auto;
+      line-height: $form-floating-line-height;
+      color: var(--#{$prefix}form-field-color);
+      background-image: var(--#{$prefix}form-select-indicator);
+      background-repeat: no-repeat;
+      background-position: right var(--append-width, $form-select-padding-x) center;
+      background-size: $form-select-bg-size;
+      @include border-radius($border-radius $border-radius 0 0);
+
+      &::after {
+        display: none;
+      }
+    }
+
+    .dropdown-menu {
+      --#{$prefix}dropdown-link-color: var(--#{$prefix}form-field-color);
+      --#{$prefix}dropdown-link-hover-color: var(--#{$prefix}form-field-color);
+      --#{$prefix}dropdown-link-hover-bg: var(--#{$prefix}form-field-hover-bg);
+      --#{$prefix}dropdown-link-active-color: var(--#{$prefix}form-field-color);
+      --#{$prefix}dropdown-link-active-bg: var(--#{$prefix}form-field-hover-bg);
+      --#{$prefix}dropdown-link-active-hover-bg: var(--#{$prefix}form-field-hover-bg);
+
+      width: 100%;
+      max-height: 40vh;
+      padding: 0;
+      overflow-y: auto;
+      user-select: none;
+      border: hidden;
+    }
+
+    .dropdown-item {
+      min-height: 40px;
+
+      > * {
+        pointer-events: none;
+      }
+
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        outline: 0;
+      }
+
+      &.active,
+      &[aria-selected="true"],
+      &:active {
+        color: var(--#{$prefix}dropdown-link-active-color);
+        background-color: var(--#{$prefix}dropdown-link-active-bg);
+
+        &:hover,
+        &:focus,
+        &:focus-visible {
+          background-color: var(--#{$prefix}dropdown-link-active-hover-bg);
+          outline: 0;
+        }
+      }
+    }
+
+    &.float {
+      > .dropdown-toggle {
+        padding-top: $form-floating-input-padding-t;
+        padding-bottom: $form-floating-input-padding-b;
+      }
+    }
+  }
+
+  // Label & Ripple color
+  > .form-control:focus,
+  > .dropdown:focus-within {
+    ~ label {
+      color: var(--#{$prefix}form-field-active-border-color);
+    }
+
+    ~ .m-line-ripple {
+      background-size: 100% 2px, 100% 1px;
+    }
+  }
+
+  > .dropdown.float,
+  > .form-control:focus,
+  > .form-control:not(:placeholder-shown),
+  > .form-control-plaintext {
+    ~ label {
+      opacity: $form-floating-label-opacity;
+      transform: $form-floating-label-transform;
+    }
+  }
+
+  // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
+  > .form-control:-webkit-autofill {
+    ~ label {
+      opacity: $form-floating-label-opacity;
+      transform: $form-floating-label-transform;
+    }
+  }
+
+  > .form-control-plaintext {
+    ~ label {
+      border-width: $input-border-width 0; // Required to properly position label text - as explained above
+    }
+  }
+
+  // Search input
+  .search-input {
+    display: block;
+    width: 100%;
+    padding: $input-padding-x;
+    background: linear-gradient(#212121, #212121) center bottom/0 2px no-repeat border-box, linear-gradient(#9e9e9e, #9e9e9e) center bottom/ 100% 1px no-repeat border-box transparent;
+    border: 0;
+    @include border-radius(0);
+    @include transition(.3s cubic-bezier(.4, 0, .2, 1));
+
+    &:focus {
+      background-color: transparent;
+      background-size: 100% 2px, 100% 1px;
+      outline: 0;
+    }
+  }
+
+  // Multi select
+  &.multi-select {
+    .dropdown-toggle {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      white-space: normal;
+
+      .badge {
+        --bs-badge-color: var(--#{$prefix}form-field-color);
+
+        .btn-close {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .dropdown-item.btn-close {
+      box-sizing: border-box;
+      @include border-radius(0);
+      box-shadow: none;
+
+      &.btn-close-white {
+        --#{$prefix}btn-close-bg: #{ escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$white}'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/></svg>")) };
+        filter: none;
+      }
+    }
+
+    .checkmark {
+      width: 20px;
+      height: 20px;
+      visibility: hidden;
+      background-image: none;
+    }
+
+    .dropdown-item[aria-selected="true"] > .checkmark {
+      visibility: visible;
+      background-image: var(--#{$prefix}form-select-checkmark);
+    }
+  }
+
+  // Form floating outlined
+  &.floating-label {
+    .m-notch > .m-notch-between > label {
+      position: relative;
+      top: 0;
+      left: 0;
+      height: 100%;
+      padding: .5rem 0;
+      color: var(--#{$prefix}form-field-border-color);
+      pointer-events: none;
+      @include transition($floating-label-transition);
+      //@include transition(opacity .1s ease-in-out, transform .1s ease-in-out);
+      transform-origin: 0 0;
+    }
+
+    > textarea.form-control {
+      padding: 0 .75rem;
+      margin: .9125rem 0;
+
+      &:focus,
+      &:not(:placeholder-shown) {
+        padding: 0 .75rem;
+      }
+    }
+
+    // Padding
+    > .form-control {
+      height: $floating-label-height;
+
+      &:focus,
+      &:not(:placeholder-shown) {
+        padding: $input-padding-y var(--append-width, $input-padding-x) $input-padding-y var(--prepend-width, $input-padding-x);
+
+      }
+    }
+
+    > .dropdown.float {
+      > .dropdown-toggle {
+        padding: 1.125rem calc(var(--append-width, 0px) + $form-select-indicator-padding) 1.125rem var(--prepend-width, $form-select-padding-x);
+      }
+    }
+
+    // Focused
+    > .form-control:focus,
+    > .dropdown:focus-within {
+      ~ .m-notch {
+        > .m-notch-before,
+        > .m-notch-between,
+        > .m-notch-after {
+          border-color: var(--#{$prefix}form-field-active-border-color);
+          border-width: 2px;
+        }
+
+        > .m-notch-between > label {
+          color: var(--#{$prefix}form-field-active-border-color);
+        }
+      }
+    }
+
+    // Form field is either focused or it has content
+    > .form-control:focus,
+    > .form-control:not(:placeholder-shown),
+    > .dropdown:focus-within,
+    > .dropdown.float {
+      ~ .m-notch > .m-notch-between {
+        border-top: 0;
+
+        > label {
+          left: 0;
+          margin-right: var(--label-floating-margin-right, 0);
+          transform: scale(.85) translateY(-1.25rem);
+        }
+      }
+    }
+  }
+}
+
+@if $enable-dark-mode {
+  @include color-mode(dark) {
+    .floating-label, .floating-label-line {
+      --#{$prefix}form-select-indicator: #{escape-svg($form-select-indicator-dark)};
+      --#{$prefix}form-select-checkmark: #{escape-svg($form-select-indicator-dark)};
+    }
+  }
+}
+
+// Ripple and Notch
+.m-line-ripple {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  // stylelint-disable value-list-comma-newline-after, value-list-comma-space-after
+  background: linear-gradient(var(--#{$prefix}form-field-active-border-color), var(--#{$prefix}form-field-active-border-color)) bottom/0 2px no-repeat border-box,
+  linear-gradient(var(--#{$prefix}form-field-border-color), var(--#{$prefix}form-field-border-color)) bottom/100% 1px no-repeat border-box transparent;
+  // stylelint-enable value-list-comma-newline-after, value-list-comma-space-after
+  @include transition(.3s cubic-bezier(.4, 0, .2, 1));
+}
+
+.m-notch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  text-align: left;
+  pointer-events: none;
+  background: transparent;
+
+  .m-notch-before,
+  .m-notch-between,
+  .m-notch-after {
+    pointer-events: none;
+    border: 1px solid var(--#{$prefix}form-field-border-color);
+    @include border-radius(.25rem);
+  }
+
+  .m-notch-before {
+    width: .75rem;
+    border-right: 0;
+    @include border-top-end-radius(0);
+    @include border-bottom-end-radius(0);
+  }
+
+  .m-notch-between {
+    position: relative;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    width: auto;
+    padding: 0 5px;
+    border-right: 0;
+    border-left: 0;
+    @include border-radius(0);
+  }
+
+  .m-notch-after {
+    flex: 1;
+    border-left: 0;
+    @include border-top-start-radius(0);
+    @include border-bottom-start-radius(0);
+  }
+}
+
+// Form floating with icon
+.floating-label-line.with-icon {
+  position: relative;
+  width: 100%;
+
+  .prepend,
+  .append {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 .75rem;
+    pointer-events: none;
+  }
+
+  .prepend {
+    left: 0;
+  }
+
+  .append {
+    right: 0;
+  }
+
+  > .floating-label,
+  > .floating-label-line {
+    .form-control,
+    .dropdown {
+      ~ label {
+        left: var(--prepend-width, 0);
+      }
+    }
+
+    > .m-notch {
+      > .m-notch-between > label {
+        @include transition($floating-label-transition);
+        //transform: translateX(calc(var(--prepend-width, calc(.75rem + 5px)) - (.75rem + 5px)));
+      }
+    }
+  }
+}
+
+// stylelint-enable selector-max-class, selector-max-compound-selectors, selector-no-qualifying-type, function-disallowed-list

@@ -35,31 +35,31 @@ For custom Bootstrap form validation messages, you'll need to add the `novalidat
 Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback. Background icons for `<select>`s are only available with `.form-select`, and not `.form-control`.
 
 {{< example >}}
-<form class="row g-3 needs-validation" novalidate>
-  <div class="col-md-4">
-    <label for="validationCustom01" class="form-label">First name</label>
+<form class="row row-cols-1 g-3 needs-validation" novalidate>
+  <div class="floating-label mb-3">
     <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+    <label for="validationCustom01" class="form-label">First name</label>
     <div class="valid-feedback">
       Looks good!
     </div>
   </div>
-  <div class="col-md-4">
-    <label for="validationCustom02" class="form-label">Last name</label>
+  <div class="floating-label mb-3">
     <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+    <label for="validationCustom02" class="form-label">Last name</label>
     <div class="valid-feedback">
       Looks good!
     </div>
   </div>
-  <div class="col-md-4">
-    <label for="validationCustomUsername" class="form-label">Username</label>
-    <div class="input-group has-validation">
-      <span class="input-group-text" id="inputGroupPrepend">@</span>
-      <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-      <div class="invalid-feedback">
-        Please choose a username.
-      </div>
-    </div>
+<div class="input-group has-validation">
+  <span class="input-group-text">@</span>
+  <div class="floating-label is-invalid">
+    <input type="text" class="form-control is-invalid" id="floatingInputGroup2" placeholder="Username" required>
+    <label for="floatingInputGroup2">Username</label>
   </div>
+  <div class="invalid-feedback">
+    Please choose a username.
+  </div>
+</div>
   <div class="col-md-6">
     <label for="validationCustom03" class="form-label">City</label>
     <input type="text" class="form-control" id="validationCustom03" required>

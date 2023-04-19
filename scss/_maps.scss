@@ -50,6 +50,7 @@ $theme-colors-bg-subtle-dark: null !default;
 $theme-colors-border-subtle-dark: null !default;
 
 @if $enable-dark-mode {
+
   // scss-docs-start theme-text-dark-map
   $theme-colors-text-dark: (
     "primary": $primary-text-emphasis-dark,

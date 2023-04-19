@@ -11,7 +11,8 @@
 
   > .form-control,
   > .form-select,
-  > .form-floating {
+  > .form-floating,
+  > .floating-label {
     position: relative; // For focus state's z-index
     flex: 1 1 auto;
     width: 1%;
@@ -101,7 +102,10 @@
     > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating),
     > .dropdown-toggle:nth-last-child(n + 3),
     > .form-floating:not(:last-child) > .form-control,
-    > .form-floating:not(:last-child) > .form-select {
+    > .form-floating:not(:last-child) > .form-select,
+    > .floating-label:not(:last-child) > .m-notch > .m-notch-after,
+    > .floating-label:not(:last-child) > .form-control,
+    > .floating-label:not(:last-child) > .form-select {
       @include border-end-radius(0);
     }
   }
@@ -110,7 +114,9 @@
     > :nth-last-child(n + 3):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating),
     > .dropdown-toggle:nth-last-child(n + 4),
     > .form-floating:nth-last-child(n + 3) > .form-control,
-    > .form-floating:nth-last-child(n + 3) > .form-select {
+    > .form-floating:nth-last-child(n + 3) > .form-select,
+    > .floating-label:nth-last-child(n + 3) > .form-control,
+    > .floating-label:nth-last-child(n + 3) > .form-select {
       @include border-end-radius(0);
     }
   }
@@ -126,7 +132,43 @@
   }
 
   > .form-floating:not(:first-child) > .form-control,
-  > .form-floating:not(:first-child) > .form-select {
+  > .form-floating:not(:first-child) > .form-select,
+  > .floating-label:not(:first-child) > .m-notch > .m-notch-before,
+  > .floating-label:not(:first-child) > .form-control,
+  > .floating-label:not(:first-child) > .form-select {
+
     @include border-start-radius(0);
   }
 }
+
+
+//  $validation-messages: "";
+//  @each $state in map-keys($form-validation-states) {
+//    $validation-messages: $validation-messages + ":not(." + unquote($state) + "-tooltip)" + ":not(." + unquote($state) + "-feedback)";
+//  }
+//
+//  &.has-form-floating {
+//    > .form-control,
+//    > .form-select,
+//    > .input-group-text,
+//    > .btn {
+//      @include border-bottom-radius(0);
+//    }
+//
+//    .input-group-text {
+//      border-top: 0;
+//      border-right: 0;
+//      border-left: 0;
+//    }
+//  }
+//
+//  &.has-floating-label-outlined {
+//    > .input-group-text:not(:first-child) {
+//      border-left: 0;
+//    }
+//    > .input-group-text:not(:last-child) {
+//      border-right: 0;
+//    }
+//  }
+//}
+

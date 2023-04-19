@@ -1,6 +1,17 @@
 //
 // General form controls (plus a few specific high-level interventions)
 //
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  transition: background-color 5000s ease-in-out 0s;
+}
 
 .form-control {
   display: block;
@@ -33,14 +44,19 @@
   // Customize the `:focus` state to imitate native WebKit styles.
   &:focus {
     color: $input-focus-color;
-    background-color: $input-focus-bg;
+    background-color: var(--#{$prefix}body-bg);
+    //border-color: var(--#{$prefix}form-field-active-border-color);
+    border-width: 2px;
+    box-shadow: none;
     border-color: $input-focus-border-color;
     outline: 0;
     @if $enable-shadows {
+
       @include box-shadow($input-box-shadow, $input-focus-box-shadow);
     } @else {
       // Avoid using mixin so we can pass custom focus shadow properly
-      box-shadow: $input-focus-box-shadow;
+      box-shadow: none;
+      //box-shadow: $input-focus-box-shadow;
     }
   }
 
@@ -90,7 +106,13 @@
     // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
     opacity: 1;
   }
-
+  &:readonly {
+    color: $input-color;
+    background-color: $input-disabled-bg;
+    border-color: $input-disabled-border-color;
+    // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
+    opacity: 1;
+  }
   // File input buttons theming
   &::file-selector-button {
     padding: $input-padding-y $input-padding-x;

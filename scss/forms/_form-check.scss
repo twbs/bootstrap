@@ -27,13 +27,12 @@
 }
 
 .form-check-input {
-  --#{$prefix}form-check-bg: #{$form-check-input-bg};
-
+  position: relative;
   width: $form-check-input-width;
   height: $form-check-input-width;
   margin-top: ($line-height-base - $form-check-input-width) * .5; // line-height minus check height
   vertical-align: top;
-  background-color: var(--#{$prefix}form-check-bg);
+  background-color: #{$form-check-input-bg};
   background-image: var(--#{$prefix}form-check-bg-image);
   background-repeat: no-repeat;
   background-position: center;
@@ -42,6 +41,21 @@
   appearance: none;
   print-color-adjust: exact; // Keep themed appearance for print
   @include transition($form-check-transition);
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    box-shadow: $form-check-input-before-box-shadow;
+    border-radius: $form-check-input-before-border-radius;
+    background-color: transparent;
+    opacity: 0;
+    pointer-events: none;
+    transform: $form-check-input-before-transform;
+  }
 
   &[type="checkbox"] {
     @include border-radius($form-check-input-border-radius);
@@ -56,15 +70,45 @@
     filter: $form-check-input-active-filter;
   }
 
+
+  &:hover {
+    cursor: pointer;
+
+    &:not(.form-switch)::before {
+      opacity: $form-check-input-hover-before-opacity;
+      box-shadow: $form-check-input-hover-before-box-shadow;
+    }
+  }
+
   &:focus {
-    border-color: $form-check-input-focus-border;
-    outline: 0;
-    box-shadow: $form-check-input-focus-box-shadow;
+    box-shadow: none;
+    border-color: $input-border-color;
+    transition: $form-check-input-focus-transition;
+
+    &:not(.form-switch)::before {
+      opacity: $form-check-input-focus-before-opacity;
+      box-shadow: $form-check-input-hover-before-box-shadow;
+      transform: $form-check-input-focus-before-transform;
+      transition: $form-check-input-focus-before-transition;
+    }
   }
 
   &:checked {
     background-color: $form-check-input-checked-bg-color;
     border-color: $form-check-input-checked-border-color;
+
+    &:focus {
+      box-shadow: none;
+      border-color: $form-check-input-focus-border-color;
+      transition: $form-check-input-focus-transition;
+
+      &:not(.form-switch)::before {
+        opacity: $form-check-input-focus-before-opacity;
+        box-shadow: $form-check-input-checked-focus-before-box-shadow;
+        transform: $form-check-input-focus-before-transform;
+        transition: $form-check-input-focus-before-transition;
+      }
+    }
 
     &[type="checkbox"] {
       @if $enable-gradients {

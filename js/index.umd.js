@@ -14,10 +14,11 @@ import Modal from './src/modal.js'
 import Offcanvas from './src/offcanvas.js'
 import Popover from './src/popover.js'
 import ScrollSpy from './src/scrollspy.js'
+import TextField from './src/text-field.js'
 import Tab from './src/tab.js'
 import Toast from './src/toast.js'
 import Tooltip from './src/tooltip.js'
-
+import MDCRippled from './src/mdc-ripple.js'
 export default {
   Alert,
   Button,
@@ -28,7 +29,9 @@ export default {
   Offcanvas,
   Popover,
   ScrollSpy,
+  TextField,
   Tab,
   Toast,
-  Tooltip
+  Tooltip,
+  MDCRippled
 }

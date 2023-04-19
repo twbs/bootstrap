@@ -1,6 +1,29 @@
 //
 // Base styles
 //
+@use "@material/ripple";
+@use "@material/ripple/mdc-ripple";
+
+[class^='btn'] {
+  // MDC Ripple variables
+  @include ripple.surface();
+  @include ripple.radius-bounded();
+  @include ripple.states-base-color($light);
+  @include ripple.states-opacities((hover: .1, focus: .15, press: .2));
+
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: none;
+  overflow: hidden;
+
+  &::before, &::after {
+    box-shadow: none;
+    width: 200%;
+    height: 200%;
+  }
+}
 
 .btn {
   // scss-docs-start btn-css-vars
@@ -10,18 +33,26 @@
   @include rfs($btn-font-size, --#{$prefix}btn-font-size);
   --#{$prefix}btn-font-weight: #{$btn-font-weight};
   --#{$prefix}btn-line-height: #{$btn-line-height};
-  --#{$prefix}btn-color: #{$btn-color};
+  --#{$prefix}btn-color: #{$body-color};
   --#{$prefix}btn-bg: transparent;
-  --#{$prefix}btn-border-width: #{$btn-border-width};
-  --#{$prefix}btn-border-color: transparent;
   --#{$prefix}btn-border-radius: #{$btn-border-radius};
   --#{$prefix}btn-hover-border-color: transparent;
   --#{$prefix}btn-box-shadow: #{$btn-box-shadow};
+  --#{$prefix}btn-hover-box-shadow: #{$btn-hover-box-shadow};
+  --#{$prefix}btn-focus-box-shadow: #{$btn-focus-box-shadow};
+  --#{$prefix}btn-active-box-shadow: #{$btn-active-box-shadow};
   --#{$prefix}btn-disabled-opacity: #{$btn-disabled-opacity};
-  --#{$prefix}btn-focus-box-shadow: 0 0 0 #{$btn-focus-width} rgba(var(--#{$prefix}btn-focus-shadow-rgb), .5);
   // scss-docs-end btn-css-vars
 
-  display: inline-block;
+  @for $i from 1 through 10 {
+    &.elevated-#{$i} {
+      --#{$prefix}btn-box-shadow: var(--#{$prefix}shadow-#{$i}dp);
+      --#{$prefix}btn-hover-box-shadow: var(--#{$prefix}shadow-#{($i + 4)}dp);
+      --#{$prefix}btn-focus-box-shadow: var(--#{$prefix}shadow-#{($i + 4)}dp);
+      --#{$prefix}btn-active-box-shadow: var(--#{$prefix}shadow-#{($i + 8)}dp);
+    }
+  }
+
   padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
   font-family: var(--#{$prefix}btn-font-family);
   @include font-size(var(--#{$prefix}btn-font-size));
@@ -30,12 +61,13 @@
   color: var(--#{$prefix}btn-color);
   text-align: center;
   text-decoration: if($link-decoration == none, null, none);
+  border: 0;
   white-space: $btn-white-space;
   vertical-align: middle;
   cursor: if($enable-button-pointers, pointer, null);
   user-select: none;
-  border: var(--#{$prefix}btn-border-width) solid var(--#{$prefix}btn-border-color);
-  @include border-radius(var(--#{$prefix}btn-border-radius));
+  overflow: hidden;
+  @include border-radius(var(--#{$prefix}border-radius-sm));
   @include gradient-bg(var(--#{$prefix}btn-bg));
   @include box-shadow(var(--#{$prefix}btn-box-shadow));
   @include transition($btn-transition);
@@ -44,7 +76,10 @@
     color: var(--#{$prefix}btn-hover-color);
     text-decoration: if($link-hover-decoration == underline, none, null);
     background-color: var(--#{$prefix}btn-hover-bg);
-    border-color: var(--#{$prefix}btn-hover-border-color);
+  }
+
+  &:not([class*="btn-outline-"], [class*="btn-text-"], .btn-icon, .btn-link):hover {
+    @include box-shadow(var(--#{$prefix}btn-hover-box-shadow));
   }
 
   .btn-check + &:hover {
@@ -54,28 +89,16 @@
     border-color: var(--#{$prefix}btn-border-color);
   }
 
+  &:focus,
   &:focus-visible {
     color: var(--#{$prefix}btn-hover-color);
     @include gradient-bg(var(--#{$prefix}btn-hover-bg));
-    border-color: var(--#{$prefix}btn-hover-border-color);
     outline: 0;
-    // Avoid using mixin so we can pass custom focus shadow properly
-    @if $enable-shadows {
-      box-shadow: var(--#{$prefix}btn-box-shadow), var(--#{$prefix}btn-focus-box-shadow);
-    } @else {
-      box-shadow: var(--#{$prefix}btn-focus-box-shadow);
-    }
+    @include ripple.states-opacities((focus: .15));
   }
 
-  .btn-check:focus-visible + & {
-    border-color: var(--#{$prefix}btn-hover-border-color);
-    outline: 0;
-    // Avoid using mixin so we can pass custom focus shadow properly
-    @if $enable-shadows {
-      box-shadow: var(--#{$prefix}btn-box-shadow), var(--#{$prefix}btn-focus-box-shadow);
-    } @else {
-      box-shadow: var(--#{$prefix}btn-focus-box-shadow);
-    }
+  &:not([class*="btn-outline-"], [class*="btn-text-"], .btn-icon):focus {
+    @include box-shadow(var(--#{$prefix}btn-focus-box-shadow));
   }
 
   .btn-check:checked + &,
@@ -87,17 +110,17 @@
     background-color: var(--#{$prefix}btn-active-bg);
     // Remove CSS gradients if they're enabled
     background-image: if($enable-gradients, none, null);
-    border-color: var(--#{$prefix}btn-active-border-color);
-    @include box-shadow(var(--#{$prefix}btn-active-shadow));
+    @include box-shadow(var(--#{$prefix}btn-active-box-shadow));
 
+    &:focus,
     &:focus-visible {
-      // Avoid using mixin so we can pass custom focus shadow properly
-      @if $enable-shadows {
-        box-shadow: var(--#{$prefix}btn-active-shadow), var(--#{$prefix}btn-focus-box-shadow);
-      } @else {
-        box-shadow: var(--#{$prefix}btn-focus-box-shadow);
-      }
+      @include box-shadow(var(--#{$prefix}btn-active-box-shadow));
     }
+  }
+
+  &:not([class*="btn-outline-"], [class*="btn-text-"], .btn-icon):focus-visible,
+  .btn-check:focus-visible + & {
+    @include box-shadow(var(--#{$prefix}btn-focus-box-shadow));
   }
 
   &:disabled,
@@ -107,9 +130,80 @@
     pointer-events: none;
     background-color: var(--#{$prefix}btn-disabled-bg);
     background-image: if($enable-gradients, none, null);
-    border-color: var(--#{$prefix}btn-disabled-border-color);
     opacity: var(--#{$prefix}btn-disabled-opacity);
     @include box-shadow(none);
+  }
+
+  //
+  // Btn Icon
+  //
+
+  &.btn-icon,
+  &.btn-close {
+    will-change: transform, opacity;
+    display: flex;
+    position: relative;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 48px;
+    height: 48px;
+    padding: 12px;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    fill: currentColor;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 100%;
+
+    & span,
+    & i,
+    & svg {
+      font-size: $font-size-lg;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+
+  //
+  // Floating Action Buttons
+  //
+
+  &.btn-fab {
+    width: 56px;
+    height: 56px;
+    @include border-radius(100%);
+  }
+
+  &.mini-fab {
+    width: 40px;
+    height: 40px;
+    padding: 6px;
+  }
+
+  &.leaf-fab {
+    @include border-radius(0);
+    @include border-top-start-radius(50%);
+    @include border-bottom-end-radius(50%);
+  }
+
+  &.leaf-fab-inverted {
+    @include border-radius(0);
+    @include border-top-end-radius(50%);
+    @include border-bottom-start-radius(50%);
+  }
+
+  .fas,
+  .material-icons {
+    vertical-align: middle;
   }
 }
 
@@ -119,37 +213,47 @@
 //
 
 // scss-docs-start btn-variant-loops
-@each $color, $value in $theme-colors {
-  .btn-#{$color} {
-    @if $color == "light" {
-      @include button-variant(
-        $value,
-        $value,
-        $hover-background: shade-color($value, $btn-hover-bg-shade-amount),
-        $hover-border: shade-color($value, $btn-hover-border-shade-amount),
-        $active-background: shade-color($value, $btn-active-bg-shade-amount),
-        $active-border: shade-color($value, $btn-active-border-shade-amount)
-      );
-    } @else if $color == "dark" {
-      @include button-variant(
-        $value,
-        $value,
-        $hover-background: tint-color($value, $btn-hover-bg-tint-amount),
-        $hover-border: tint-color($value, $btn-hover-border-tint-amount),
-        $active-background: tint-color($value, $btn-active-bg-tint-amount),
-        $active-border: tint-color($value, $btn-active-border-tint-amount)
-      );
-    } @else {
-      @include button-variant($value, $value);
+// Generate contextual modifier classes for colorizing the alert
+@each $state in map-keys($theme-colors) {
+  .btn-#{$state} {
+    --mdc-ripple-color: var(--#{$prefix}text-on-#{$state});
+    --#{$prefix}btn-color: var(--#{$prefix}text-on-#{$state});
+    --#{$prefix}btn-bg: var(--#{$prefix}#{$state});
+    --#{$prefix}btn-hover-color: var(--#{$prefix}text-on-#{$state});
+    --#{$prefix}btn-hover-bg: var(--#{$prefix}#{$state}-hover);
+    --#{$prefix}btn-active-color: var(--#{$prefix}text-on-#{$state});
+    --#{$prefix}btn-active-bg: var(--#{$prefix}#{$state}-active);
+    --#{$prefix}btn-disabled-color: var(--#{$prefix}text-on-#{$state});
+    --#{$prefix}btn-disabled-bg: var(--#{$prefix}#{$state});
+  }
+  @include color-mode(dark) {
+    .btn-#{$state} {
+      --mdc-ripple-color: var(--#{$prefix}#{$state}-subtle);
+      --#{$prefix}btn-color: var(--#{$prefix}#{$state}-subtle);
+      --#{$prefix}btn-hover-color: var(--#{$prefix}#{$state}-subtle);
+      --#{$prefix}btn-active-color: var(--#{$prefix}#{$state}-subtle);
+      --#{$prefix}btn-disabled-color: var(--#{$prefix}#{$state}-subtle);
     }
   }
 }
 
-@each $color, $value in $theme-colors {
-  .btn-outline-#{$color} {
-    @include button-outline-variant($value);
+@each $state in map-keys($theme-colors) {
+  .btn-outline-#{$state} {
+    --mdc-ripple-color: var(--#{$prefix}#{$state});
+    --#{$prefix}btn-color: var(--#{$prefix}#{$state});
+    --#{$prefix}btn-border-color: var(--#{$prefix}#{$state});
+    --#{$prefix}btn-hover-color: var(--#{$prefix}#{$state}-emphasis);
+    --#{$prefix}btn-hover-bg: var(--#{$prefix}#{$state}-subtle);
+    --#{$prefix}btn-hover-border-color: var(--#{$prefix}#{$state});
+    --#{$prefix}btn-active-color: var(--#{$prefix}#{$state}-emphasis-hover);
+    --#{$prefix}btn-active-bg: var(--#{$prefix}#{$state}-subtle-hover);
+    --#{$prefix}btn-active-border-color: var(--#{$prefix}#{$state});
+    --#{$prefix}btn-disabled-color: var(--#{$prefix}#{$state});
+    --#{$prefix}btn-disabled-bg: transparent;
+    --#{$prefix}btn-disabled-border-color: var(--#{$prefix}#{$state});
   }
 }
+
 // scss-docs-end btn-variant-loops
 
 
@@ -162,35 +266,31 @@
   --#{$prefix}btn-font-weight: #{$font-weight-normal};
   --#{$prefix}btn-color: #{$btn-link-color};
   --#{$prefix}btn-bg: transparent;
+  --#{$prefix}btn-border-width: 0;
   --#{$prefix}btn-border-color: transparent;
   --#{$prefix}btn-hover-color: #{$btn-link-hover-color};
-  --#{$prefix}btn-hover-border-color: transparent;
+  --#{$prefix}btn-hover-border-color: #{$btn-link-hover-color};
   --#{$prefix}btn-active-color: #{$btn-link-hover-color};
-  --#{$prefix}btn-active-border-color: transparent;
+  --#{$prefix}btn-active-border-color: #{$btn-link-hover-color};
   --#{$prefix}btn-disabled-color: #{$btn-link-disabled-color};
   --#{$prefix}btn-disabled-border-color: transparent;
-  --#{$prefix}btn-box-shadow: 0 0 0 #000; // Can't use `none` as keyword negates all values when used with multiple shadows
-  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix(color-contrast($link-color), $link-color, 15%))};
+  --#{$prefix}btn-box-shadow: none;
+  --#{$prefix}btn-focus-box-shadow: none;
+  --#{$prefix}btn-active-box-shadow: none;
 
   text-decoration: $link-decoration;
+  border: var(--#{$prefix}btn-border-width) solid var(--#{$prefix}btn-border-color);
+
   @if $enable-gradients {
     background-image: none;
   }
 
   &:hover,
   &:focus-visible {
-    text-decoration: $link-hover-decoration;
-  }
-
-  &:focus-visible {
-    color: var(--#{$prefix}btn-color);
-  }
-
-  &:hover {
     color: var(--#{$prefix}btn-hover-color);
+    text-decoration: $link-hover-decoration;
+    border-color: var(--#{$prefix}btn-hover-border-color);
   }
-
-  // No need for an active state here
 }
 
 
@@ -204,4 +304,21 @@
 
 .btn-sm {
   @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+}
+
+[class*="btn-outline-"] {
+  --#{$prefix}btn-border-width: #{$border-width};
+  --#{$prefix}btn-box-shadow: none;
+  --#{$prefix}btn-active-box-shadow: none;
+  --#{$prefix}btn-focus-box-shadow: none;
+  --#{$prefix}gradient: none;
+  border: var(--#{$prefix}btn-border-width) solid var(--#{$prefix}btn-border-color);
+
+  .btn-check:checked + &,
+  :not(.btn-check) + &:active,
+  &:first-child:active,
+  &.active,
+  &.show {
+    border: var(--#{$prefix}btn-border-width) solid var(--#{$prefix}btn-active-border-color);
+  }
 }
