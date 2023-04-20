@@ -31,7 +31,7 @@
   $hover-background: rgba($color, .15),
   $active-background: rgba($color, .2),
 ) {
-  --mdc-ripple-color: #{$background};
+  --mdc-ripple-color: #{$color};
   --#{$prefix}btn-color: #{$color};
   --#{$prefix}btn-border-color: #{$color};
   --#{$prefix}btn-hover-color: #{$color};

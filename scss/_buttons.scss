@@ -4,29 +4,13 @@
 @use "@material/ripple";
 @use "@material/ripple/mdc-ripple";
 
-[class^='btn'] {
-  // MDC Ripple variables
+
+.btn {
+  // scss-docs-start btn-css-vars
   @include ripple.surface();
   @include ripple.radius-bounded();
   @include ripple.states-base-color($light);
   @include ripple.states-opacities((hover: .1, focus: .15, press: .2));
-
-  position: relative;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: none;
-  overflow: hidden;
-
-  &::before, &::after {
-    box-shadow: none;
-    width: 200%;
-    height: 200%;
-  }
-}
-
-.btn {
-  // scss-docs-start btn-css-vars
   --#{$prefix}btn-padding-x: #{$btn-padding-x};
   --#{$prefix}btn-padding-y: #{$btn-padding-y};
   --#{$prefix}btn-font-family: #{$btn-font-family};
@@ -52,7 +36,10 @@
       --#{$prefix}btn-active-box-shadow: var(--#{$prefix}shadow-#{($i + 8)}dp);
     }
   }
-
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
   font-family: var(--#{$prefix}btn-font-family);
   @include font-size(var(--#{$prefix}btn-font-size));

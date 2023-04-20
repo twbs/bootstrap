@@ -22,8 +22,7 @@
   color: var(--#{$prefix}btn-close-color);
   background: transparent var(--#{$prefix}btn-close-bg) center / $btn-close-width auto no-repeat; // include transparent for button elements
   border: 0; // for button elements
-  border-radius: 100%;
-  @include border-radius();
+  @include border-radius(50%);
   opacity: var(--#{$prefix}btn-close-opacity);
 
   // Override <a>'s hover style

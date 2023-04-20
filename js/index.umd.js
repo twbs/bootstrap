@@ -19,6 +19,7 @@ import Tab from './src/tab.js'
 import Toast from './src/toast.js'
 import Tooltip from './src/tooltip.js'
 import MDCRippled from './src/mdc-ripple.js'
+
 export default {
   Alert,
   Button,
