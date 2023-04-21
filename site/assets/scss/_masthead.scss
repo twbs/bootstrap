@@ -22,7 +22,7 @@
 
   .bd-code-snippet {
     margin: 0;
-    @include border-radius(.5rem);
+    border-color: var(--bs-border-color-translucent);
   }
 
   .highlight {
@@ -32,7 +32,6 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     background-color: rgba(var(--bs-body-color-rgb), .075);
-    @include border-radius(.5rem);
 
     @include media-breakpoint-up(lg) {
       padding-right: 4rem;
