@@ -64,11 +64,17 @@ Use `.container-fluid` for a full width container, spanning the entire width of 
 </div>
 ```
 
-## Sass
+## CSS
+
+### Sass variables
 
 As shown above, Bootstrap generates a series of predefined container classes to help you build the layouts you desire. You may customize these predefined container classes by modifying the Sass map (found in `_variables.scss`) that powers them:
 
 {{< scss-docs name="container-max-widths" file="scss/_variables.scss" >}}
+
+For more information and examples on how to modify our Sass maps and variables, please refer to [the Sass section of the Grid documentation]({{< docsref "/layout/grid#css" >}}).
+
+### Sass mixins
 
 In addition to customizing the Sass, you can also create your own containers with our Sass mixin.
 
@@ -87,5 +93,3 @@ In addition to customizing the Sass, you can also create your own containers wit
   @include make-container();
 }
 ```
-
-For more information and examples on how to modify our Sass maps and variables, please refer to [the Sass section of the Grid documentation]({{< docsref "/layout/grid#sass" >}}).

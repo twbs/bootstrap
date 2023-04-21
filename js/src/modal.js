@@ -5,14 +5,14 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, isRTL, isVisible, reflow } from './util/index.js'
+import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
-import ScrollBarHelper from './util/scrollbar.js'
-import BaseComponent from './base-component.js'
 import Backdrop from './util/backdrop.js'
-import FocusTrap from './util/focustrap.js'
 import { enableDismissTrigger } from './util/component-functions.js'
+import FocusTrap from './util/focustrap.js'
+import { defineJQueryPlugin, isRTL, isVisible, reflow } from './util/index.js'
+import ScrollBarHelper from './util/scrollbar.js'
 
 /**
  * Constants
@@ -139,12 +139,12 @@ class Modal extends BaseComponent {
   }
 
   dispose() {
-    for (const htmlElement of [window, this._dialog]) {
-      EventHandler.off(htmlElement, EVENT_KEY)
-    }
+    EventHandler.off(window, EVENT_KEY)
+    EventHandler.off(this._dialog, EVENT_KEY)
 
     this._backdrop.dispose()
     this._focustrap.deactivate()
+
     super.dispose()
   }
 

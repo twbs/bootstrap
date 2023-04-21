@@ -11,6 +11,10 @@ toc: true
 
 If you're migrating from our previous alpha releases of v5.3.0, please review their changes in addition to this section.
 
+### Helpers
+
+- [Colored links]({{< docsref "/helpers/colored-links" >}}) once again have `!important` so they work better with our newly added link utilities.
+
 ### Utilities
 
 - Added new `.d-inline-grid` [display utility]({{< docsref "/utilities/display" >}}).
@@ -148,13 +152,13 @@ Learn more by reading the new [color modes documentation]({{< docsref "/customiz
 
 - Alert variants are now styled via CSS variables.
 
-- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.alert-variant()` mixin is now deprecated. We now [use the Sass loop]({{< docsref "/components/alerts#sass-loop" >}}) directly to modify the component's default CSS variables for each variant.
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.alert-variant()` mixin is now deprecated. We now [use a Sass loop]({{< docsref "/components/alerts#sass-loops" >}}) directly to modify the component's default CSS variables for each variant.
 
 #### List group
 
 - List group item variants are now styled via CSS variables.
 
-- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.list-group-variant()` mixin is now deprecated. We now [use the Sass loop]({{< docsref "/components/list-group#sass-loop" >}}) directly to modify the component's default CSS variables for each variant.
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.list-group-variant()` mixin is now deprecated. We now [use a Sass loop]({{< docsref "/components/list-group#sass-loops" >}}) directly to modify the component's default CSS variables for each variant.
 
 #### Dropdowns
 

@@ -35,6 +35,13 @@
   --base0D: #{$blue-300}; // #61afef
   --base0E: #{$indigo-200}; // #c678dd
   --base0F: #{$red-300}; // #be5046
+
+  .language-diff .gd {
+    color: $red-400;
+  }
+  .language-diff .gi {
+    color: $green-400;
+  }
 }
 
 .hl { background-color: var(--base02); }
@@ -53,7 +60,7 @@
 .ge { font-style: italic; }
 .gh {
   font-weight: 600;
-  color: #fff;
+  color: var(--base0A);
 }
 .gi { color: var(--bs-success); }
 .gp {

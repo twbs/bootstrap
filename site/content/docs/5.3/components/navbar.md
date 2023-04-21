@@ -655,9 +655,9 @@ With a toggler on the left and brand name on the right:
 Sometimes you want to use the collapse plugin to trigger a container element for content that structurally sits outside of the `.navbar` . Because our plugin works on the `id` and `data-bs-target` matching, that's easily done!
 
 {{< example >}}
-<div class="collapse" id="navbarToggleExternalContent">
+<div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
   <div class="bg-dark p-4">
-    <h5 class="text-white h4">Collapsed content</h5>
+    <h5 class="text-body-emphasis h4">Collapsed content</h5>
     <span class="text-body-secondary">Toggleable via the navbar brand.</span>
   </div>
 </div>
@@ -810,7 +810,7 @@ Variables for the [dark navbar](#color-schemes):
 
 {{< scss-docs name="navbar-dark-variables" file="scss/_variables.scss" >}}
 
-### Sass loop
+### Sass loops
 
 [Responsive navbar expand/collapse classes](#responsive-behaviors) (e.g., `.navbar-expand-lg`) are combined with the `$breakpoints` map and generated through a loop in `scss/_navbar.scss`.
 
