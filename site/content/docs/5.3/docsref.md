@@ -26,7 +26,7 @@ toc: true
   Danger callout
 {{< /callout >}}
 
-## Code
+## Code example
 
 ```scss
 .test {
