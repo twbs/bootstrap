@@ -21,12 +21,8 @@ const tunnelArguments = {
 
 // eslint-disable-next-line unicorn/prefer-top-level-await
 (async () => {
-  try {
-    await tunnelInstance.start(tunnelArguments)
-    await new Promise(res => {
-      setTimeout(res, 5000)
-    })
-  } catch (error) {
-    console.log(error.message)
-  }
+  await tunnelInstance.start(tunnelArguments)
+  await new Promise(res => {
+    setTimeout(res, 5000)
+  })
 })()
