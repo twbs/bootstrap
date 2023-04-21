@@ -5,8 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
-import SelectorEngine from '../dom/selector-engine.js'
 import Manipulator from '../dom/manipulator.js'
+import SelectorEngine from '../dom/selector-engine.js'
 import { isElement } from './index.js'
 
 /**

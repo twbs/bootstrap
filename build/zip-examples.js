@@ -84,7 +84,7 @@ for (const file of sh.find(`${distFolder}/**/*.html`)) {
 }
 
 // create the zip file
-sh.exec(`zip -r9 "${distFolder}.zip" "${distFolder}"`)
+sh.exec(`zip -qr9 "${distFolder}.zip" "${distFolder}"`)
 
 // remove the folder we created
 sh.rm('-rf', distFolder)

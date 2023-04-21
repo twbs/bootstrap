@@ -19,6 +19,9 @@ While the Bootstrap CSS can be used with any framework, **the Bootstrap JavaScri
 A better alternative for those using this type of frameworks is to use a framework-specific package **instead of** the Bootstrap JavaScript. Here are some of the most popular options:
 
 - React: [React Bootstrap](https://react-bootstrap.github.io/)
+  {{< callout >}}
+  **Try it yourself!** Download the source code and working demo for using Bootstrap with React, Next.js, and React Bootstrap from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/react-nextjs). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/react-nextjs?file=src%2Fpages%2Findex.tsx).
+  {{< /callout >}}
 - Vue: [BootstrapVue](https://bootstrap-vue.org/) (currently only supports Vue 2 and Bootstrap 4)
 - Angular: [ng-bootstrap](https://ng-bootstrap.github.io/)
 
@@ -30,6 +33,7 @@ A better alternative for those using this type of frameworks is to use a framewo
 
 We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootstrap.esm.min.js`) which allows you to use Bootstrap as a module in the browser, if your [targeted browsers support it](https://caniuse.com/es6-module).
 
+<!-- eslint-skip -->
 ```html
 <script type="module">
   import { Toast } from 'bootstrap.esm.min.js'
@@ -54,6 +58,7 @@ Uncaught TypeError: Failed to resolve module specifier "@popperjs/core". Relativ
 
 To fix this, you can use an `importmap` to resolve the arbitrary module names to complete paths. If your [targeted browsers](https://caniuse.com/?search=importmap) do not support `importmap`, you'll need to use the [es-module-shims](https://github.com/guybedford/es-module-shims) project. Here's how it works for Bootstrap and Popper:
 
+<!-- eslint-skip -->
 ```html
 <!doctype html>
 <html lang="en">
