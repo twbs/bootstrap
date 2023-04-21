@@ -34,6 +34,10 @@ toc: true
 }
 ```
 
+<div class="bd-example">
+  The <abbr title="HyperText Markup Language">HTML</abbr> abbreviation element.
+</div>
+
 {{< example >}}
 <div class="test">This is a test.</div>
 {{< /example >}}

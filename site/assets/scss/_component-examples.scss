@@ -3,6 +3,8 @@
 //
 
 .bd-code-snippet {
+  margin-right: ($bd-gutter-x * -.5);
+  margin-left: ($bd-gutter-x * -.5);
   border: solid var(--bs-border-color);
   border-width: 1px 0;
 
@@ -17,7 +19,9 @@
 
   position: relative;
   padding: var(--bd-example-padding);
-  margin: 0 ($bd-gutter-x * -.5);
+  margin: 0 ($bd-gutter-x * -.5) 1rem;
+  border: solid var(--bs-border-color);
+  border-width: 1px 0;
   @include clearfix();
 
   @include media-breakpoint-up(md) {
@@ -26,6 +30,7 @@
     margin-right: 0;
     margin-left: 0;
     border-width: 1px;
+    @include border-radius(var(--bs-border-radius));
   }
 
   + p {
