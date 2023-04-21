@@ -974,6 +974,6 @@ describe('ScrollSpy', () => {
         done()
       }, 100)
       link.click()
-    }
+    })
   })
 })
