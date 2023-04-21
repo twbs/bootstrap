@@ -5,6 +5,7 @@
   > .form-control-plaintext,
   > .form-select {
     height: $form-floating-height;
+    min-height: $form-floating-height;
     line-height: $form-floating-line-height;
   }
 
