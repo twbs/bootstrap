@@ -110,7 +110,7 @@
     "@babel/cli": "^7.23.9",
     "@babel/core": "^7.24.0",
     "@babel/preset-env": "^7.24.0",
-    "@lambdatest/node-tunnel": "^3.0.14",
+    "@lambdatest/node-tunnel": "^4.0.7",
     "@popperjs/core": "^2.11.8",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
