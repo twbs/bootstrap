@@ -941,7 +941,7 @@ describe('ScrollSpy', () => {
       link.click()
     })
 
-    it('should scroll to anchor links with french words as ids'), done => {
+    it('should scroll to anchor links with french words as ids', done => {
       fixtureEl.innerHTML = [
         '<nav id="navBar" class="navbar">',
         '  <ul class="nav">',
@@ -958,7 +958,7 @@ describe('ScrollSpy', () => {
       const link = fixtureEl.querySelector('[href="#présentation"]')
       const observable = fixtureEl.querySelector('#présentation')
       const clickSpy = getElementScrollSpy(div)
-
+      // eslint-disable-next-line no-new
       new ScrollSpy(div, {
         offset: 1,
         smoothScroll: true
