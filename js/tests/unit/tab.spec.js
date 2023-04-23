@@ -630,6 +630,108 @@ describe('Tab', () => {
       expect(spyPrevent).toHaveBeenCalledTimes(2)
     })
 
+    it('if keydown event is Home, handle it', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav">',
+        '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab2" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab3" class="nav-link" data-bs-toggle="tab"></span>',
+        '</div>'
+      ].join('')
+
+      const tabEl1 = fixtureEl.querySelector('#tab1')
+      const tabEl2 = fixtureEl.querySelector('#tab2')
+      const tabEl3 = fixtureEl.querySelector('#tab3')
+      const tab1 = new Tab(tabEl1)
+      const tab2 = new Tab(tabEl2)
+      const tab3 = new Tab(tabEl3)
+      const spyShow1 = spyOn(tab1, 'show').and.callThrough()
+      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
+      const spyShow2 = spyOn(tab2, 'show').and.callThrough()
+      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
+      const spyShow3 = spyOn(tab3, 'show').and.callThrough()
+      const spyFocus3 = spyOn(tabEl3, 'focus').and.callThrough()
+
+      const spyStop = spyOn(Event.prototype, 'stopPropagation').and.callThrough()
+      const spyPrevent = spyOn(Event.prototype, 'preventDefault').and.callThrough()
+
+      let keydown = createEvent('keydown')
+      keydown.key = 'Home'
+
+      tabEl3.dispatchEvent(keydown)
+      expect(spyShow1).toHaveBeenCalled()
+      expect(spyFocus1).toHaveBeenCalled()
+      expect(spyShow2).not.toHaveBeenCalled()
+      expect(spyFocus2).not.toHaveBeenCalled()
+      expect(spyShow3).not.toHaveBeenCalled()
+      expect(spyFocus3).not.toHaveBeenCalled()
+
+      keydown = createEvent('keydown')
+      keydown.key = 'Home'
+
+      tabEl1.dispatchEvent(keydown)
+      expect(spyShow1).toHaveBeenCalled()
+      expect(spyFocus1).toHaveBeenCalled()
+      expect(spyShow2).not.toHaveBeenCalled()
+      expect(spyFocus2).not.toHaveBeenCalled()
+      expect(spyShow3).not.toHaveBeenCalled()
+      expect(spyFocus3).not.toHaveBeenCalled()
+
+      expect(spyStop).toHaveBeenCalledTimes(2)
+      expect(spyPrevent).toHaveBeenCalledTimes(2)
+    })
+
+    it('if keydown event is End, handle it', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav">',
+        '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab2" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab3" class="nav-link" data-bs-toggle="tab"></span>',
+        '</div>'
+      ].join('')
+
+      const tabEl1 = fixtureEl.querySelector('#tab1')
+      const tabEl2 = fixtureEl.querySelector('#tab2')
+      const tabEl3 = fixtureEl.querySelector('#tab3')
+      const tab1 = new Tab(tabEl1)
+      const tab2 = new Tab(tabEl2)
+      const tab3 = new Tab(tabEl3)
+      const spyShow1 = spyOn(tab1, 'show').and.callThrough()
+      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
+      const spyShow2 = spyOn(tab2, 'show').and.callThrough()
+      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
+      const spyShow3 = spyOn(tab3, 'show').and.callThrough()
+      const spyFocus3 = spyOn(tabEl3, 'focus').and.callThrough()
+
+      const spyStop = spyOn(Event.prototype, 'stopPropagation').and.callThrough()
+      const spyPrevent = spyOn(Event.prototype, 'preventDefault').and.callThrough()
+
+      let keydown = createEvent('keydown')
+      keydown.key = 'End'
+
+      tabEl1.dispatchEvent(keydown)
+      expect(spyShow1).not.toHaveBeenCalled()
+      expect(spyFocus1).not.toHaveBeenCalled()
+      expect(spyShow2).not.toHaveBeenCalled()
+      expect(spyFocus2).not.toHaveBeenCalled()
+      expect(spyShow3).toHaveBeenCalled()
+      expect(spyFocus3).toHaveBeenCalled()
+
+      keydown = createEvent('keydown')
+      keydown.key = 'End'
+
+      tabEl3.dispatchEvent(keydown)
+      expect(spyShow1).not.toHaveBeenCalled()
+      expect(spyFocus1).not.toHaveBeenCalled()
+      expect(spyShow2).not.toHaveBeenCalled()
+      expect(spyFocus2).not.toHaveBeenCalled()
+      expect(spyShow3).toHaveBeenCalled()
+      expect(spyFocus3).toHaveBeenCalled()
+
+      expect(spyStop).toHaveBeenCalledTimes(2)
+      expect(spyPrevent).toHaveBeenCalledTimes(2)
+    })
+
     it('if keydown event is right arrow and next element is disabled', () => {
       fixtureEl.innerHTML = [
         '<div class="nav">',
@@ -710,6 +812,74 @@ describe('Tab', () => {
       expect(spyFocus3).not.toHaveBeenCalled()
       expect(spyFocus2).not.toHaveBeenCalled()
       expect(spyFocus1).toHaveBeenCalledTimes(1)
+    })
+
+    it('if keydown event is Home and first element is disabled', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav">',
+        '  <span id="tab1" class="nav-link disabled" data-bs-toggle="tab" disabled></span>',
+        '  <span id="tab2" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab3" class="nav-link" data-bs-toggle="tab"></span>',
+        '</div>'
+      ].join('')
+
+      const tabEl1 = fixtureEl.querySelector('#tab1')
+      const tabEl2 = fixtureEl.querySelector('#tab2')
+      const tabEl3 = fixtureEl.querySelector('#tab3')
+      const tab1 = new Tab(tabEl1)
+      const tab2 = new Tab(tabEl2)
+      const tab3 = new Tab(tabEl3)
+      const spy1 = spyOn(tab1, 'show').and.callThrough()
+      const spy2 = spyOn(tab2, 'show').and.callThrough()
+      const spy3 = spyOn(tab3, 'show').and.callThrough()
+      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
+      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
+      const spyFocus3 = spyOn(tabEl3, 'focus').and.callThrough()
+
+      const keydown = createEvent('keydown')
+      keydown.key = 'Home'
+
+      tabEl3.dispatchEvent(keydown)
+      expect(spy3).not.toHaveBeenCalled()
+      expect(spy2).toHaveBeenCalledTimes(1)
+      expect(spy1).not.toHaveBeenCalled()
+      expect(spyFocus3).not.toHaveBeenCalled()
+      expect(spyFocus2).toHaveBeenCalledTimes(1)
+      expect(spyFocus1).not.toHaveBeenCalled()
+    })
+
+    it('if keydown event is End and last element is disabled', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav">',
+        '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab2" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab3" class="nav-link" data-bs-toggle="tab" disabled></span>',
+        '</div>'
+      ].join('')
+
+      const tabEl1 = fixtureEl.querySelector('#tab1')
+      const tabEl2 = fixtureEl.querySelector('#tab2')
+      const tabEl3 = fixtureEl.querySelector('#tab3')
+      const tab1 = new Tab(tabEl1)
+      const tab2 = new Tab(tabEl2)
+      const tab3 = new Tab(tabEl3)
+      const spy1 = spyOn(tab1, 'show').and.callThrough()
+      const spy2 = spyOn(tab2, 'show').and.callThrough()
+      const spy3 = spyOn(tab3, 'show').and.callThrough()
+      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
+      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
+      const spyFocus3 = spyOn(tabEl3, 'focus').and.callThrough()
+
+      const keydown = createEvent('keydown')
+      keydown.key = 'End'
+
+      tabEl1.dispatchEvent(keydown)
+      expect(spy3).not.toHaveBeenCalled()
+      expect(spy2).toHaveBeenCalledTimes(1)
+      expect(spy1).not.toHaveBeenCalled()
+      expect(spyFocus3).not.toHaveBeenCalled()
+      expect(spyFocus2).toHaveBeenCalledTimes(1)
+      expect(spyFocus1).not.toHaveBeenCalled()
     })
   })
 
