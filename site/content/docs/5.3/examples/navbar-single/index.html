@@ -1,0 +1,58 @@
+---
+layout: examples
+title: Single page website navbar
+extra_css:
+  - "navbar-single.css"
+---
+
+<nav id="navbar-example" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Single page offcanvas navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" data-bs-focus="false">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <a class="nav-link" href="#section-1">
+            <span data-bs-dismiss="offcanvas">Section 1</span>
+          </a>
+          <a class="nav-link" href="#section-2">
+            <span data-bs-dismiss="offcanvas">Section 2</span>
+          </a>
+          <a class="nav-link" href="#section-3">
+            <span data-bs-dismiss="offcanvas">Section 3</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="container" data-bs-spy="scroll" data-bs-target="#navbar-example" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
+  <div class="bg-body-tertiary p-5 rounded">
+    <h1>Navbar example for single page websites</h1>
+    <p class="lead">This example is a quick exercise to illustrate how to configure an offcanvas nav drawer to:</p>
+    <ul>
+      <li class="mb-3">close the offcanvas nav drawer when a link is clicked using <code>&lt;span data-bs-dismiss="offcanvas">&lt;/span></code></li>
+      <li>have focus be applied to the linked object rather than the offcanvas toggler using <code>data-bs-focus="false"</code></li>
+    </ul>
+    <a class="btn btn-lg btn-primary" href="{{< docsref "/components/navbar" >}}" role="button">View navbar docs &raquo;</a>
+  </div>
+  <section id="section-1">
+    <h1>Section 1</h1>
+    <p><a href="#section-2">Link to Section 2</a></p>
+  </section>
+  <section id="section-2">
+    <h1>Section 2</h1>
+    <p><a href="#section-3">Link to Section 3</a></p>
+  </section>
+  <section id="section-3">
+    <h1>Section 3</h1>
+    <p><a href="#section-1">Link to Section 1</a></p>
+  </section>
+</main>

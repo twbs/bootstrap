@@ -116,6 +116,8 @@
       description: "Single navbar example of a static top navbar along with some additional content."
     - name: Navbar fixed
       description: "Single navbar example with a fixed top navbar along with some additional content."
+    - name: Navbar single
+      description: "Navbar offcanvas example for use with a single-page website."
     - name: Navbar bottom
       description: "Single navbar example with a bottom navbar along with some additional content."
     - name: Offcanvas navbar

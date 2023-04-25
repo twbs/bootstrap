@@ -49,13 +49,15 @@ const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="offcanvas"]'
 const Default = {
   backdrop: true,
   keyboard: true,
-  scroll: false
+  scroll: false,
+  focus: true
 }
 
 const DefaultType = {
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
-  scroll: 'boolean'
+  scroll: 'boolean',
+  focus: 'boolean'
 }
 
 /**
@@ -240,13 +242,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     return
   }
 
-  EventHandler.one(target, EVENT_HIDDEN, () => {
-    // focus on trigger when it is closed
-    if (isVisible(this)) {
-      this.focus()
-    }
-  })
-
   // avoid conflict when clicking a toggler of an offcanvas, while another is open
   const alreadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
   if (alreadyOpen && alreadyOpen !== target) {
@@ -254,6 +249,16 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   }
 
   const data = Offcanvas.getOrCreateInstance(target)
+
+  if (data._config.focus) {
+    EventHandler.one(target, EVENT_HIDDEN, () => {
+      // focus on trigger when it is closed
+      if (isVisible(this)) {
+        this.focus({ preventScroll: true })
+      }
+    })
+  }
+
   data.toggle(this)
 })
 

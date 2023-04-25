@@ -1,0 +1,13 @@
+/* Show it is fixed to the top */
+html {
+  scroll-padding-top: 3.5rem;
+}
+
+body {
+  min-height: 75rem;
+  padding-top: 4.5rem;
+}
+
+section {
+  height: 120vh;
+}
