@@ -125,25 +125,25 @@ const browsers = {
         platformName: 'Windows 10'
       }
     },
-    iphone11: {
+    ios15: {
       platformName: 'ios',
       platformVersion: '15',
       browserName: 'Safari',
-      deviceName: 'iPhone 13',
+      deviceName: 'iPhone.*',
       isRealMobile: true
     },
-    iphone14: {
+    ios16: {
       platformName: 'ios',
       platformVersion: '16',
       browserName: 'Safari',
-      deviceName: 'iPhone 14',
+      deviceName: 'iPhone.*',
       isRealMobile: true
     },
-    pixel6: {
+    android12: {
       platformName: 'android',
       platformVersion: '12',
       browserName: 'Chrome',
-      deviceName: 'Pixel 6',
+      deviceName: 'Pixel.*',
       isRealMobile: true
     }
   }
