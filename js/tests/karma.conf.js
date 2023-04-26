@@ -69,12 +69,13 @@ const config = {
   captureTimeout: 180_000,
   browserDisconnectTolerance: 3,
   browserDisconnectTimeout: 180_000,
-  browserNoActivityTimeout: 180_000,
+  browserNoActivityTimeout: 400_000,
+  retryLimit: 3,
   concurrency: 5,
   client: {
     clearContext: false,
     jasmine: {
-      timeoutInterval: 20_000
+      timeoutInterval: 180_000
     }
   },
   files: [
@@ -119,6 +120,7 @@ const config = {
 
 if (LAMBDATEST) {
   config.hostname = 'localhost.lambdatest.com'
+  config.captureTimeout = 600_000
 
   for (const key of Object.keys(browsers.lambdaTest)) {
     browsers.lambdaTest[key].base = 'WebDriver'
@@ -144,8 +146,6 @@ if (LAMBDATEST) {
       browsers.lambdaTest[key]['LT:Options'].tunnelName = ENV.LT_TUNNEL_NAME || 'jasmine'
       browsers.lambdaTest[key]['LT:Options'].pseudoActivityInterval = 5000 // 5000 ms heartbeat
     }
-
-    browsers.lambdaTest[key].retryLimit = 3
   }
 
   plugins.push('karma-webdriver-launcher', 'karma-jasmine-html-reporter')
@@ -158,8 +158,7 @@ if (LAMBDATEST) {
     username: ENV.BROWSER_STACK_USERNAME,
     accessKey: ENV.BROWSER_STACK_ACCESS_KEY,
     build: `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`,
-    project: 'Bootstrap',
-    retryLimit: 3
+    project: 'Bootstrap'
   }
   plugins.push('karma-browserstack-launcher', 'karma-jasmine-html-reporter')
   config.customLaunchers = browsers.browserStack
