@@ -76,10 +76,6 @@
     @include font-size(1rem);
   }
 
-  .highlight {
-    @include border-radius(.5rem);
-  }
-
   @include media-breakpoint-up(md) {
     .lead {
       @include font-size(1.25rem);
