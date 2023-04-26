@@ -3,12 +3,13 @@
 //
 
 .bd-code-snippet {
-  margin-right: ($bd-gutter-x * -.5);
-  margin-left: ($bd-gutter-x * -.5);
+  margin: 0 ($bd-gutter-x * -.5) 1rem;
   border: solid var(--bs-border-color);
   border-width: 1px 0;
 
   @include media-breakpoint-up(md) {
+    margin-right: 0;
+    margin-left: 0;
     border-width: 1px;
     @include border-radius(var(--bs-border-radius));
   }
@@ -354,10 +355,15 @@
     @include border-radius(calc(var(--bs-border-radius) - 1px));
   }
 
+  @include media-breakpoint-up(lg) {
+    pre {
+      margin-right: 1.875rem;
+    }
+  }
+
   pre {
     padding: .25rem 0 .875rem;
     margin-top: .8125rem;
-    margin-right: 1.875rem;
     margin-bottom: 0;
     overflow: overlay;
     white-space: pre;
