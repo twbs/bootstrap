@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    "html"
+  ],
+  "extends": "../../../.eslintrc.json",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "settings": {
+    "html/html-extensions": [
+      ".html"
+    ]
+  },
+  "rules": {
+    "no-console": "off",
+    "no-new": "off",
+    "unicorn/no-array-for-each": "off"
+  }
+}

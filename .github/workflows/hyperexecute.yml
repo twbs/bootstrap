@@ -1,0 +1,30 @@
+name: HyperExecute
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        required: true
+        description: LT Username
+      accessKey:
+        description: LT Access Key
+        required: true
+jobs:
+  bootstrap-hye-lambda:
+    runs-on: windows-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Starting CLI testing
+        shell: bash
+        run: |
+          curl https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe -o hyperexecute.exe
+          chmod +x hyperexecute
+          export LT_USERNAME=${{ github.event.inputs.username }}
+          export LT_ACCESS_KEY=${{ github.event.inputs.accessKey }}
+          ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --download-artifacts --config .hyperexecute_autosplit.yaml
+          echo "Test completion"

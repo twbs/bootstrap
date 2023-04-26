@@ -1,5 +1,6 @@
 # Ignore docs files
 /_site/
+/coverage/
 # Hugo files
 /resources/
 /.hugo_build.lock
@@ -14,6 +15,9 @@
 *.swp
 *.vi
 *.zip
+*.exe.old
+*.exe
+*.log
 *~
 
 # OS or Editor folders
@@ -28,6 +32,8 @@
 *.sublime-project
 *.sublime-workspace
 nbproject
+hyperexecuteupdate
+.updatedhyperexecute.yaml
 Thumbs.db
 /.vscode/
 # Local Netlify folder
@@ -41,3 +47,7 @@ Thumbs.db
 /dist-sass/
 /js/coverage/
 /node_modules/
+/.lambdatest/
+/.hyperexecute/
+/logs/
+/coverage/

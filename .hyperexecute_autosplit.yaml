@@ -1,0 +1,37 @@
+version: 0.1
+globalTimeout: 150
+testSuiteTimeout: 150
+testSuiteStep: 150
+
+runson: win
+
+runtime:
+  language: node
+  version: 18.15.0
+
+autosplit: true
+retryOnFailure: false
+concurrency: 4
+pre:
+  - npm --version
+  - node --version
+  - npm install
+env:
+  HYPEREXECUTE: true
+cacheKey: '{{ checksum "package.json" }}'
+cacheDirectories:
+  - node_modules
+
+mergeArtifacts: true
+uploadArtefacts:
+ - name: Reports
+   path:
+    - coverage/**/**
+
+testDiscovery:
+  type: raw
+  mode: dynamic
+  command: |
+            printf 'chromeWin10\nchromeWin10Latest\nfirefoxWin10\nfirefoxWin10Latest'
+
+testRunnerCommand: node_modules\.bin\karma start js\tests\karma.conf.js --browsers=$test

@@ -1,0 +1,15 @@
+{
+  "env": {
+    "browser": false,
+    "node": true
+  },
+  "parserOptions": {
+    "sourceType": "script"
+  },
+  "extends": "../.eslintrc.json",
+  "rules": {
+    "no-console": "off",
+    "strict": "error",
+    "unicorn/prefer-top-level-await": "off"
+  }
+}

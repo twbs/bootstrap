@@ -9,9 +9,22 @@ const replace = require('@rollup/plugin-replace')
 const { browsers } = require('./browsers.js')
 
 const ENV = process.env
-const BROWSERSTACK = Boolean(ENV.BROWSERSTACK)
 const DEBUG = Boolean(ENV.DEBUG)
 const JQUERY_TEST = Boolean(ENV.JQUERY)
+const BROWSERSTACK = Boolean(ENV.BROWSERSTACK)
+const LAMBDATEST = Boolean(ENV.LAMBDATEST)
+const HYPEREXECUTE = Boolean(ENV.HYPEREXECUTE)
+
+const webDriverConfig = {
+  desktop: {
+    hostname: 'hub.lambdatest.com',
+    port: 80
+  },
+  mobile: {
+    hostname: 'mobile-hub.lambdatest.com',
+    port: 80
+  }
+}
 
 const frameworks = [
   'jasmine'
@@ -19,10 +32,11 @@ const frameworks = [
 
 const plugins = [
   'karma-jasmine',
-  'karma-rollup-preprocessor'
+  'karma-rollup-preprocessor',
+  require('karma-coverage')
 ]
 
-const reporters = ['dots']
+const reporters = ['coverage']
 
 const detectBrowsers = {
   usePhantomJS: false,
@@ -54,19 +68,31 @@ const config = {
   colors: true,
   autoWatch: false,
   singleRun: true,
-  concurrency: Number.POSITIVE_INFINITY,
+  captureTimeout: 180_000,
+  browserDisconnectTolerance: 3,
+  browserDisconnectTimeout: 180_000,
+  browserNoActivityTimeout: 180_000,
+  concurrency: 5,
   client: {
-    clearContext: false
+    clearContext: false,
+    jasmine: {
+      timeoutInterval: 20_000
+    }
   },
   files: [
     'node_modules/hammer-simulator/index.js',
     {
       pattern: 'js/tests/unit/**/!(jquery).spec.js',
-      watched: !BROWSERSTACK
+      watched: !BROWSERSTACK && !LAMBDATEST
     }
   ],
   preprocessors: {
     'js/tests/unit/**/*.spec.js': ['rollup']
+  },
+  coverageReporter: {
+    type: 'text',
+    dir: 'coverage/',
+    file: 'reports.txt'
   },
   rollupPreprocessor: {
     plugins: [
@@ -98,18 +124,72 @@ const config = {
   }
 }
 
-if (BROWSERSTACK) {
+if (HYPEREXECUTE) {
+  config.concurrency = 1,
+  config.port = 9876,
+  config.hostname = 'localhost.lambdatest.com',
+    Object.keys(browsers['lambdaTest']).map(key => {
+      browsers.lambdaTest[key].base = 'WebDriver'
+      browsers.lambdaTest[key].build = 'HYE'
+      browsers.lambdaTest[key].project = 'Bootstrap'
+      browsers.lambdaTest[key].config = webDriverConfig.desktop
+      browsers.lambdaTest[key].user = ENV.LT_USERNAME
+      browsers.lambdaTest[key].accessKey = ENV.LT_ACCESS_KEY
+      browsers.lambdaTest[key].console = true
+      browsers.lambdaTest[key].network = true
+      browsers.lambdaTest[key].pseudoActivityInterval = 5000 // 5000 ms heartbeat
+    })
+  plugins.push('karma-webdriver-launcher', 'karma-jasmine', 'karma-coverage')
+  config.customLaunchers = browsers.lambdaTest
+  config.browsers = Object.keys(browsers.lambdaTest)
+  reporters.push('coverage')
+} else if (LAMBDATEST) {
+  config.hostname = 'localhost.lambdatest.com'
+
+  for (const key of Object.keys(browsers.lambdaTest)) {
+    browsers.lambdaTest[key].base = 'WebDriver'
+    browsers.lambdaTest[key].build = `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`
+    browsers.lambdaTest[key].project = 'Bootstrap'
+
+    if (browsers.lambdaTest[key].isRealMobile) {
+      browsers.lambdaTest[key].config = webDriverConfig.mobile
+      browsers.lambdaTest[key].user = ENV.LT_USERNAME
+      browsers.lambdaTest[key].accessKey = ENV.LT_ACCESS_KEY
+      browsers.lambdaTest[key].tunnel = true
+      browsers.lambdaTest[key].console = true
+      browsers.lambdaTest[key].network = true
+      browsers.lambdaTest[key].tunnelName = ENV.LT_TUNNEL_NAME || 'jasmine'
+      browsers.lambdaTest[key].pseudoActivityInterval = 5000 // 5000 ms heartbeat
+    } else {
+      browsers.lambdaTest[key].config = webDriverConfig.desktop
+      browsers.lambdaTest[key]['LT:Options'].username = ENV.LT_USERNAME
+      browsers.lambdaTest[key]['LT:Options'].accessKey = ENV.LT_ACCESS_KEY
+      browsers.lambdaTest[key]['LT:Options'].tunnel = true
+      browsers.lambdaTest[key]['LT:Options'].console = true
+      browsers.lambdaTest[key]['LT:Options'].network = true
+      browsers.lambdaTest[key]['LT:Options'].tunnelName = ENV.LT_TUNNEL_NAME || 'jasmine'
+      browsers.lambdaTest[key]['LT:Options'].pseudoActivityInterval = 5000 // 5000 ms heartbeat
+    }
+
+    browsers.lambdaTest[key].retryLimit = 3
+  }
+
+  plugins.push('karma-webdriver-launcher', 'karma-jasmine-html-reporter')
+  config.customLaunchers = browsers.lambdaTest
+  config.browsers = Object.keys(browsers.lambdaTest)
+  reporters.push('kjhtml')
+} else if (BROWSERSTACK) {
   config.hostname = ip.address()
   config.browserStack = {
     username: ENV.BROWSER_STACK_USERNAME,
     accessKey: ENV.BROWSER_STACK_ACCESS_KEY,
     build: `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`,
     project: 'Bootstrap',
-    retryLimit: 2
+    retryLimit: 3
   }
   plugins.push('karma-browserstack-launcher', 'karma-jasmine-html-reporter')
-  config.customLaunchers = browsers
-  config.browsers = Object.keys(browsers)
+  config.customLaunchers = browsers.browserStack
+  config.browsers = Object.keys(browsers.browserStack)
   reporters.push('BrowserStack', 'kjhtml')
 } else if (JQUERY_TEST) {
   frameworks.push('detectBrowsers')

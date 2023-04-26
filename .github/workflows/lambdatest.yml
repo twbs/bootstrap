@@ -1,0 +1,54 @@
+name: LambdaTest
+
+on:
+  push:
+    branches:
+      - "**"
+      - "!dependabot/**"
+  workflow_dispatch:
+    inputs:
+      username:
+        required: true
+        description: LT Username
+      accessKey:
+        description: LT Access Key
+        required: true
+
+env:
+  FORCE_COLOR: 2
+  NODE: 18
+
+permissions:
+  contents: read
+
+jobs:
+  lambdatest:
+    runs-on: ubuntu-latest
+    if: github.repository == 'twbs/bootstrap'
+    timeout-minutes: 15
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "${{ env.NODE }}"
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Run dist
+        run: npm run dist
+
+      - name: Run LambdaTest tests
+        run: npm run js-test-lt-cloud
+        env:
+          LT_USERNAME: "${{ github.event.inputs.username }}"
+          LT_ACCESS_KEY: "${{ github.event.inputs.accessKey }}"
+          LT_TUNNEL_NAME: "tunnel-${{ github.sha }}"
+          GITHUB_SHA: "${{ github.sha }}"
