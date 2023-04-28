@@ -38,9 +38,10 @@ $warning-border-subtle-dark:        shade-color($warning, 40%) !default;
 $danger-border-subtle-dark:         shade-color($danger, 40%) !default;
 $light-border-subtle-dark:          $gray-700 !default;
 $dark-border-subtle-dark:           $gray-800 !default;
+
 // scss-docs-end theme-border-subtle-dark-variables
 
-$body-color-dark:                   $gray-500 !default;
+$body-color-dark:                   $white !default;
 $body-bg-dark:                      $gray-900 !default;
 $body-secondary-color-dark:         rgba($body-color-dark, .75) !default;
 $body-secondary-bg-dark:            $gray-800 !default;
