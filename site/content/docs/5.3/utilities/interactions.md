@@ -33,9 +33,9 @@ If possible, the simpler solution is:
 - For form controls, add the `disabled` HTML attribute.
 - For links, remove the `href` attribute, making it a non-interactive anchor or placeholder link.
 
-## Sass
+## CSS
 
-### Utilities API
+### Sass utilities API
 
 Interaction utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 
