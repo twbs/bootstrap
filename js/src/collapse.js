@@ -1,18 +1,18 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): collapse.js
+ * Bootstrap collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
+import BaseComponent from './base-component.js'
+import EventHandler from './dom/event-handler.js'
+import SelectorEngine from './dom/selector-engine.js'
 import {
   defineJQueryPlugin,
   getElement,
   reflow
 } from './util/index.js'
-import EventHandler from './dom/event-handler.js'
-import SelectorEngine from './dom/selector-engine.js'
-import BaseComponent from './base-component.js'
 
 /**
  * Constants

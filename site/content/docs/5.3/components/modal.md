@@ -481,24 +481,7 @@ Below is a live demo followed by example HTML and JavaScript. For more informati
 </div>
 {{< /example >}}
 
-```js
-const exampleModal = document.getElementById('exampleModal')
-exampleModal.addEventListener('show.bs.modal', event => {
-  // Button that triggered the modal
-  const button = event.relatedTarget
-  // Extract info from data-bs-* attributes
-  const recipient = button.getAttribute('data-bs-whatever')
-  // If necessary, you could initiate an Ajax request here
-  // and then do the updating in a callback.
-  //
-  // Update the modal's content.
-  const modalTitle = exampleModal.querySelector('.modal-title')
-  const modalBodyInput = exampleModal.querySelector('.modal-body input')
-
-  modalTitle.textContent = `New message to ${recipient}`
-  modalBodyInput.value = recipient
-})
-```
+{{< js-docs name="varying-modal-content" file="site/assets/js/snippets.js" >}}
 
 ### Toggle between modals
 
@@ -643,7 +626,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
 
 {{< bs-table >}}
 | Class | Availability |
-| --- | --- | --- |
+| --- | --- |
 | `.modal-fullscreen` | Always |
 | `.modal-fullscreen-sm-down` | `576px` |
 | `.modal-fullscreen-md-down` | `768px` |
@@ -786,7 +769,7 @@ As part of Bootstrap's evolving CSS variables approach, modals now use local CSS
 
 {{< scss-docs name="modal-variables" file="scss/_variables.scss" >}}
 
-### Sass loop
+### Sass loops
 
 [Responsive fullscreen modals](#fullscreen-modal) are generated via the `$breakpoints` map and a loop in `scss/_modal.scss`.
 

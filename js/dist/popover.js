@@ -1,17 +1,17 @@
 /*!
-  * Bootstrap popover.js v5.3.0-alpha1 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap popover.js v5.3.0-alpha3 (https://getbootstrap.com/)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./util/index.js'), require('./tooltip.js')) :
-  typeof define === 'function' && define.amd ? define(['./util/index', './tooltip'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Popover = factory(global.Index, global.Tooltip));
-})(this, (function (index_js, Tooltip) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./tooltip.js'), require('./util/index.js')) :
+  typeof define === 'function' && define.amd ? define(['./tooltip', './util/index'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Popover = factory(global.Tooltip, global.Index));
+})(this, (function (Tooltip, index_js) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.3.0-alpha1): popover.js
+   * Bootstrap popover.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
